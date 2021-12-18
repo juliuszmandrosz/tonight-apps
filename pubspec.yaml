@@ -41,6 +41,7 @@ dependencies:
   flutter_bloc: ^8.0.0
   google_sign_in: ^5.2.1
   firebase_auth: ^3.3.4
+  flutter_facebook_auth: ^3.5.7
 
 dev_dependencies:
   flutter_test:
