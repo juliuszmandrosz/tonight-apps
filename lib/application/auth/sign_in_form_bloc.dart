@@ -27,6 +27,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       registerWithEmailAndPasswordPressed: registerWithEmailAndPasswordPressed,
       signInWithEmailAndPasswordPressed: signInWithEmailAndPasswordPressed,
       signInWithGooglePressed: signInWithGooglePressed,
+      signInWithFacebookPressed: signInWithFacebookPressed,
     );
   }
 
@@ -95,5 +96,16 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       showErrorMessages: true,
       authFailureOrSuccessOption: optionOf(failureOrSuccess),
     );
+  }
+
+  Stream<SignInFormState> signInWithFacebookPressed(e) async* {
+    yield state.copyWith(
+      isSubmitting: true,
+      authFailureOrSuccessOption: none(),
+    );
+    final failureOrSuccess = await _authFacade.signInWithFacebook();
+    yield state.copyWith(
+        isSubmitting: false,
+        authFailureOrSuccessOption: some(failureOrSuccess));
   }
 }

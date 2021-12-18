@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:raver/domain/auth/auth_facade.dart';
 import 'package:raver/domain/auth/value_objects/password.dart';
@@ -74,6 +75,22 @@ class FirebaseAuthFacade implements AuthFacade {
       );
 
       await _firebaseAuth.signInWithCredential(authCredential);
+
+      return right(unit);
+    } on PlatformException {
+      return left(const AuthFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signInWithFacebook() async {
+    try {
+      final loginResult = await FacebookAuth.instance.login();
+
+      final authCredential =
+          FacebookAuthProvider.credential(loginResult.accessToken!.token);
+
+      await FirebaseAuth.instance.signInWithCredential(authCredential);
 
       return right(unit);
     } on PlatformException {

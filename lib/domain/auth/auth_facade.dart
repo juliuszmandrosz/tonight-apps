@@ -13,4 +13,5 @@ abstract class AuthFacade {
     required Password password,
   });
   Future<Either<AuthFailure, Unit>> signInWithGoogle();
+  Future<Either<AuthFailure, Unit>> signInWithFacebook();
 }
