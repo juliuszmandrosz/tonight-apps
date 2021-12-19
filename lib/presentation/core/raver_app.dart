@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:raver/presentation/sign_in/sign_in_page.dart';
 
 class RaverApp extends StatelessWidget {
   const RaverApp({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class RaverApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      home: const SignInPage(),
     );
   }
 }
-

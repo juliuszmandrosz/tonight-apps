@@ -95,7 +95,8 @@ class FirebaseAuthFacade implements AuthFacade {
       await FirebaseAuth.instance.signInWithCredential(authCredential);
 
       return right(unit);
-    } on PlatformException {
+    } on MissingPluginException {
+      // TODO - add in firebase
       return left(const AuthFailure.serverError());
     }
   }
