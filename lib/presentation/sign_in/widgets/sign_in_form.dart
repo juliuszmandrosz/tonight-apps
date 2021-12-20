@@ -7,8 +7,6 @@ class SignInForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var errorMessage = 'Error';
-
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (ctx, state) {
         state.authFailureOrSuccessOption.fold(
@@ -16,16 +14,15 @@ class SignInForm extends StatelessWidget {
             (either) => {
                   either.fold(
                     (l) => {
-                      l.map(
-                          cancelledByUser: (_) => {errorMessage = 'Cancelled'},
-                          serverError: (_) => {errorMessage = 'Server error'},
-                          emailAlreadyInUse: (_) =>
-                              {errorMessage = 'Email already in use'},
-                          invalidEmailAndPasswordCombination: (_) =>
-                              {errorMessage = 'Invalid email or password'}),
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text(errorMessage),
-                      )),
+                      ScaffoldMessenger.of(context)
+                        ..hideCurrentSnackBar()
+                        ..showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              state.failureMessage!,
+                            ),
+                          ),
+                        ),
                     },
                     (r) => null,
                   )

@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:raver/domain/auth/auth_facade.dart';
 import 'package:raver/domain/auth/auth_failure.dart';
+import 'package:raver/domain/auth/auth_failure_messages.dart';
 import 'package:raver/domain/auth/value_objects/email_address.dart';
 import 'package:raver/domain/auth/value_objects/password.dart';
 
@@ -38,8 +39,11 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
     ));
     final failureOrSuccess = await _authFacade.signInWithGoogle();
     emit(state.copyWith(
-        isSubmitting: false,
-        authFailureOrSuccessOption: some(failureOrSuccess)));
+      isSubmitting: false,
+      authFailureOrSuccessOption: some(failureOrSuccess),
+      failureMessage:
+          AuthFailureMessages.getFailureMessageOrNull(failureOrSuccess),
+    ));
   }
 
   void _onSignInWithEmailAndPasswordPressed(
@@ -110,6 +114,8 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       isSubmitting: false,
       showErrorMessages: true,
       authFailureOrSuccessOption: optionOf(failureOrSuccess),
+      failureMessage:
+          AuthFailureMessages.getFailureMessageOrNull(failureOrSuccess),
     ));
   }
 
@@ -122,8 +128,12 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       authFailureOrSuccessOption: none(),
     ));
     final failureOrSuccess = await _authFacade.signInWithFacebook();
+
     emit(state.copyWith(
-        isSubmitting: false,
-        authFailureOrSuccessOption: some(failureOrSuccess)));
+      isSubmitting: false,
+      authFailureOrSuccessOption: some(failureOrSuccess),
+      failureMessage:
+          AuthFailureMessages.getFailureMessageOrNull(failureOrSuccess),
+    ));
   }
 }
