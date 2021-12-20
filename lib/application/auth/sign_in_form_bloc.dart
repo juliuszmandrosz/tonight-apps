@@ -42,7 +42,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       isSubmitting: false,
       authFailureOrSuccessOption: some(failureOrSuccess),
       failureMessage:
-          AuthFailureMessages.getFailureMessageOrNull(failureOrSuccess),
+          AuthFailureMessages.getFailureMessageOrNone(failureOrSuccess),
     ));
   }
 
@@ -115,7 +115,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       showErrorMessages: true,
       authFailureOrSuccessOption: optionOf(failureOrSuccess),
       failureMessage:
-          AuthFailureMessages.getFailureMessageOrNull(failureOrSuccess),
+          AuthFailureMessages.getFailureMessageOrNone(failureOrSuccess),
     ));
   }
 
@@ -133,7 +133,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       isSubmitting: false,
       authFailureOrSuccessOption: some(failureOrSuccess),
       failureMessage:
-          AuthFailureMessages.getFailureMessageOrNull(failureOrSuccess),
+          AuthFailureMessages.getFailureMessageOrNone(failureOrSuccess),
     ));
   }
 }

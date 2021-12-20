@@ -1059,7 +1059,7 @@ class _$SignInFormStateTearOff {
       required bool showErrorMessages,
       required bool isSubmitting,
       required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
-      required String? failureMessage}) {
+      required Option<String> failureMessage}) {
     return _SignInFormState(
       emailAddress: emailAddress,
       password: password,
@@ -1082,7 +1082,7 @@ mixin _$SignInFormState {
   bool get isSubmitting => throw _privateConstructorUsedError;
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
-  String? get failureMessage => throw _privateConstructorUsedError;
+  Option<String> get failureMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignInFormStateCopyWith<SignInFormState> get copyWith =>
@@ -1100,7 +1100,7 @@ abstract class $SignInFormStateCopyWith<$Res> {
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
-      String? failureMessage});
+      Option<String> failureMessage});
 }
 
 /// @nodoc
@@ -1145,7 +1145,7 @@ class _$SignInFormStateCopyWithImpl<$Res>
       failureMessage: failureMessage == freezed
           ? _value.failureMessage
           : failureMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Option<String>,
     ));
   }
 }
@@ -1163,7 +1163,7 @@ abstract class _$SignInFormStateCopyWith<$Res>
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
-      String? failureMessage});
+      Option<String> failureMessage});
 }
 
 /// @nodoc
@@ -1210,7 +1210,7 @@ class __$SignInFormStateCopyWithImpl<$Res>
       failureMessage: failureMessage == freezed
           ? _value.failureMessage
           : failureMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Option<String>,
     ));
   }
 }
@@ -1237,7 +1237,7 @@ class _$_SignInFormState implements _SignInFormState {
   @override
   final Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption;
   @override
-  final String? failureMessage;
+  final Option<String> failureMessage;
 
   @override
   String toString() {
@@ -1285,7 +1285,7 @@ abstract class _SignInFormState implements SignInFormState {
       required bool showErrorMessages,
       required bool isSubmitting,
       required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
-      required String? failureMessage}) = _$_SignInFormState;
+      required Option<String> failureMessage}) = _$_SignInFormState;
 
   @override
   EmailAddress get emailAddress;
@@ -1298,7 +1298,7 @@ abstract class _SignInFormState implements SignInFormState {
   @override
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
   @override
-  String? get failureMessage;
+  Option<String> get failureMessage;
   @override
   @JsonKey(ignore: true)
   _$SignInFormStateCopyWith<_SignInFormState> get copyWith =>

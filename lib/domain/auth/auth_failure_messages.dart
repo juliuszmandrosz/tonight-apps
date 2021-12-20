@@ -17,8 +17,10 @@ class AuthFailureMessages {
     }
   }
 
-  static getFailureMessageOrNull(Either<AuthFailure, Unit>? failureOrSuccess) {
-    if (failureOrSuccess == null) return null;
-    return failureOrSuccess.fold((l) => _getFailureMessage(l), (r) => null);
+  static Option<String> getFailureMessageOrNone(
+      Either<AuthFailure, Unit>? failureOrSuccess) {
+    if (failureOrSuccess == null) return none();
+    return failureOrSuccess.fold(
+        (l) => some(_getFailureMessage(l)), (r) => none());
   }
 }

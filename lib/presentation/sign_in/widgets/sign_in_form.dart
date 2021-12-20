@@ -19,7 +19,8 @@ class SignInForm extends StatelessWidget {
                         ..showSnackBar(
                           SnackBar(
                             content: Text(
-                              state.failureMessage!,
+                              state.failureMessage
+                                  .getOrElse(() => 'Authentication failure'),
                             ),
                           ),
                         ),
