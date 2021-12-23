@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:raver/domain/auth/auth_failure.dart';
-import 'package:raver/domain/auth/value_objects/email_address.dart';
-import 'package:raver/domain/auth/value_objects/password.dart';
+import 'package:raver/domain/core/value_objects/email_address.dart';
+import 'package:raver/domain/core/value_objects/password.dart';
 
 abstract class AuthFacade {
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({

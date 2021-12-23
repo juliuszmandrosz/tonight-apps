@@ -5,9 +5,9 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:raver/domain/auth/auth_facade.dart';
-import 'package:raver/domain/auth/value_objects/password.dart';
-import 'package:raver/domain/auth/value_objects/email_address.dart';
 import 'package:raver/domain/auth/auth_failure.dart';
+import 'package:raver/domain/core/value_objects/email_address.dart';
+import 'package:raver/domain/core/value_objects/password.dart';
 
 @LazySingleton(as: AuthFacade)
 class FirebaseAuthFacade implements AuthFacade {
