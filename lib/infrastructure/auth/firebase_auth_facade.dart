@@ -4,10 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
+import 'package:raver/domain/auth/app_user.dart';
 import 'package:raver/domain/auth/auth_facade.dart';
 import 'package:raver/domain/auth/auth_failure.dart';
 import 'package:raver/domain/core/value_objects/email_address.dart';
 import 'package:raver/domain/core/value_objects/password.dart';
+import 'package:raver/infrastructure/auth/firebase_user_mapper.dart';
 
 @LazySingleton(as: AuthFacade)
 class FirebaseAuthFacade implements AuthFacade {
@@ -99,5 +101,20 @@ class FirebaseAuthFacade implements AuthFacade {
       // TODO - add in firebase
       return left(const AuthFailure.serverError());
     }
+  }
+
+  @override
+  Option<AppUser> getSignedUser() {
+    final firebaseUser = _firebaseAuth.currentUser;
+    return optionOf(firebaseUser?.toDomain());
+  }
+
+  @override
+  Future<void> signOut() {
+    return Future.wait([
+      _googleSignIn.signOut(),
+      _firebaseAuth.signOut(),
+      // TODO - add facebook sign out
+    ]);
   }
 }
