@@ -44,6 +44,7 @@ dependencies:
   flutter_facebook_auth: ^3.5.7
   injectable: ^1.5.0
   get_it: ^7.2.0
+  uuid: ^3.0.5
 
 dev_dependencies:
   flutter_test:
