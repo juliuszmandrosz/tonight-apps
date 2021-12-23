@@ -54,10 +54,12 @@ class SignInForm extends StatelessWidget {
                   .add(SignInFormEvent.emailChanged(value)),
               validator: (_) =>
                   ctx.read<SignInFormBloc>().state.emailAddress.value.fold(
-                        (l) => l.maybeMap(
-                          invalidEmail: (_) => 'Invalid Email',
-                          orElse: () => null,
-                        ),
+                        (failure) => failure.maybeMap(
+                            auth: (value) => value.failure.maybeMap(
+                                  invalidEmail: (_) => 'Invalid Email',
+                                  orElse: () => null,
+                                ),
+                            orElse: () {}),
                         (r) => null,
                       ),
             ),
@@ -73,10 +75,12 @@ class SignInForm extends StatelessWidget {
                   .add(SignInFormEvent.passwordChanged(value)),
               validator: (_) =>
                   ctx.read<SignInFormBloc>().state.password.value.fold(
-                        (l) => l.maybeMap(
-                          shortPassword: (_) => 'Password is too short',
-                          orElse: () => null,
-                        ),
+                        (failure) => failure.maybeMap(
+                            auth: (value) => value.failure.maybeMap(
+                                  shortPassword: (_) => 'Password is too short',
+                                  orElse: () => null,
+                                ),
+                            orElse: () {}),
                         (r) => null,
                       ),
             ),
