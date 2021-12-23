@@ -7,6 +7,6 @@ import 'package:raver/presentation/core/raver_app.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  configureInjection(Environment.prod);
+  configureInjection(Environment.dev);
   runApp(RaverApp());
 }
