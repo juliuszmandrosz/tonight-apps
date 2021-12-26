@@ -1,6 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:raver/application/auth/auth_bloc.dart';
 import 'package:raver/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({Key? key}) : super(key: key);
@@ -13,20 +16,23 @@ class SignInForm extends StatelessWidget {
             () {},
             (either) => {
                   either.fold(
-                    (l) => {
-                      ScaffoldMessenger.of(context)
-                        ..hideCurrentSnackBar()
-                        ..showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              state.failureMessage
-                                  .getOrElse(() => 'Authentication failure'),
-                            ),
-                          ),
-                        ),
-                    },
-                    (r) => null,
-                  )
+                      (l) => {
+                            ScaffoldMessenger.of(context)
+                              ..hideCurrentSnackBar()
+                              ..showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    state.failureMessage.getOrElse(
+                                        () => 'Authentication failure'),
+                                  ),
+                                ),
+                              ),
+                          }, (r) {
+                    AutoRouter.of(context).replace(const NavigatorRouter());
+                    context
+                        .read<AuthBloc>()
+                        .add(const AuthEvent.authCheckRequested());
+                  })
                 });
       },
       builder: (ctx, state) => Form(
