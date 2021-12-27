@@ -27,27 +27,23 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const NavigatorPage());
     },
-    ClubsRouter.name: (routeData) {
+    HomeRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const EmptyRouterPage());
+          routeData: routeData, child: const HomePage());
     },
-    EventsRouter.name: (routeData) {
-      return MaterialPageX<dynamic>(
-          routeData: routeData, child: const EmptyRouterPage());
-    },
-    ClubsRoute.name: (routeData) {
+    ClubRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const ClubsPage());
+    },
+    EventRouter.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const EventsPage());
     },
     ClubRoute.name: (routeData) {
       final args = routeData.argsAs<ClubRouteArgs>();
       return MaterialPageX<dynamic>(
           routeData: routeData,
           child: ClubPage(key: args.key, club: args.club));
-    },
-    EventsRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-          routeData: routeData, child: const EventsPage());
     },
     EventRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
@@ -60,23 +56,24 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(SplashRoute.name, path: '/'),
         RouteConfig(SignInRoute.name, path: '/sign-in-page'),
         RouteConfig(NavigatorRouter.name, path: '/navigator-page', children: [
-          RouteConfig(ClubsRouter.name,
-              path: 'clubs',
+          RouteConfig(HomeRouter.name,
+              path: 'home',
               parent: NavigatorRouter.name,
               children: [
-                RouteConfig(ClubsRoute.name,
-                    path: 'clubs-page', parent: ClubsRouter.name),
-                RouteConfig(ClubRoute.name,
-                    path: 'club-page', parent: ClubsRouter.name)
-              ]),
-          RouteConfig(EventsRouter.name,
-              path: 'events',
-              parent: NavigatorRouter.name,
-              children: [
-                RouteConfig(EventsRoute.name,
-                    path: 'events-page', parent: EventsRouter.name),
-                RouteConfig(EventRoute.name,
-                    path: 'event-page', parent: EventsRouter.name)
+                RouteConfig(ClubRouter.name,
+                    path: 'clubs-page',
+                    parent: HomeRouter.name,
+                    children: [
+                      RouteConfig(ClubRoute.name,
+                          path: 'club-page', parent: ClubRouter.name)
+                    ]),
+                RouteConfig(EventRouter.name,
+                    path: 'events-page',
+                    parent: HomeRouter.name,
+                    children: [
+                      RouteConfig(EventRoute.name,
+                          path: 'event-page', parent: EventRouter.name)
+                    ])
               ])
         ])
       ];
@@ -109,29 +106,30 @@ class NavigatorRouter extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [EmptyRouterPage]
-class ClubsRouter extends PageRouteInfo<void> {
-  const ClubsRouter({List<PageRouteInfo>? children})
-      : super(ClubsRouter.name, path: 'clubs', initialChildren: children);
+/// [HomePage]
+class HomeRouter extends PageRouteInfo<void> {
+  const HomeRouter({List<PageRouteInfo>? children})
+      : super(HomeRouter.name, path: 'home', initialChildren: children);
 
-  static const String name = 'ClubsRouter';
-}
-
-/// generated route for
-/// [EmptyRouterPage]
-class EventsRouter extends PageRouteInfo<void> {
-  const EventsRouter({List<PageRouteInfo>? children})
-      : super(EventsRouter.name, path: 'events', initialChildren: children);
-
-  static const String name = 'EventsRouter';
+  static const String name = 'HomeRouter';
 }
 
 /// generated route for
 /// [ClubsPage]
-class ClubsRoute extends PageRouteInfo<void> {
-  const ClubsRoute() : super(ClubsRoute.name, path: 'clubs-page');
+class ClubRouter extends PageRouteInfo<void> {
+  const ClubRouter({List<PageRouteInfo>? children})
+      : super(ClubRouter.name, path: 'clubs-page', initialChildren: children);
 
-  static const String name = 'ClubsRoute';
+  static const String name = 'ClubRouter';
+}
+
+/// generated route for
+/// [EventsPage]
+class EventRouter extends PageRouteInfo<void> {
+  const EventRouter({List<PageRouteInfo>? children})
+      : super(EventRouter.name, path: 'events-page', initialChildren: children);
+
+  static const String name = 'EventRouter';
 }
 
 /// generated route for
@@ -155,14 +153,6 @@ class ClubRouteArgs {
   String toString() {
     return 'ClubRouteArgs{key: $key, club: $club}';
   }
-}
-
-/// generated route for
-/// [EventsPage]
-class EventsRoute extends PageRouteInfo<void> {
-  const EventsRoute() : super(EventsRoute.name, path: 'events-page');
-
-  static const String name = 'EventsRoute';
 }
 
 /// generated route for

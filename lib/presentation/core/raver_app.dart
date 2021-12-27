@@ -4,6 +4,8 @@ import 'package:raver/application/auth/auth_bloc.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 
+import 'package:raver/presentation/config/themes/app_theme.dart';
+
 class RaverApp extends StatelessWidget {
   final _appRouter = AppRouter();
 
@@ -21,9 +23,7 @@ class RaverApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         title: 'Raver',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: appTheme,
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),
       ),

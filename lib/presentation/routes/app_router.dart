@@ -5,6 +5,7 @@ import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/presentation/clubs/club_page.dart';
 import 'package:raver/presentation/events/event_page.dart';
 import 'package:raver/presentation/events/events_page.dart';
+import 'package:raver/presentation/home/home_page.dart';
 import 'package:raver/presentation/sign_in/sign_in_page.dart';
 import 'package:raver/presentation/splash/splash_page.dart';
 
@@ -22,21 +23,24 @@ part 'app_router.gr.dart';
       page: NavigatorPage,
       children: [
         AutoRoute(
-          page: EmptyRouterPage,
-          path: 'clubs',
-          name: 'ClubsRouter',
+          page: HomePage,
+          path: 'home',
+          name: 'HomeRouter',
           children: [
-            AutoRoute(page: ClubsPage),
-            AutoRoute(page: ClubPage),
-          ],
-        ),
-        AutoRoute(
-          page: EmptyRouterPage,
-          path: 'events',
-          name: 'EventsRouter',
-          children: [
-            AutoRoute(page: EventsPage),
-            AutoRoute(page: EventPage),
+            AutoRoute(
+              page: ClubsPage,
+              name: "ClubRouter",
+              children: [
+                AutoRoute(page: ClubPage),
+              ],
+            ),
+            AutoRoute(
+              page: EventsPage,
+              name: "EventRouter",
+              children: [
+                AutoRoute(page: EventPage),
+              ],
+            ),
           ],
         ),
       ],

@@ -14,16 +14,13 @@ class NavigatorPage extends StatelessWidget {
         centerTitle: false,
       ),
       routes: const [
-        ClubsRouter(),
-        EventsRouter(),
+        HomeRouter(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             currentIndex: tabsRouter.activeIndex,
             onTap: tabsRouter.setActiveIndex,
-            unselectedItemColor: const Color(0x8a000000),
-            selectedItemColor: const Color(0xff3474e0),
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(
