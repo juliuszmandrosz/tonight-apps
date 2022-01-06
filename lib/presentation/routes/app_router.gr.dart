@@ -43,7 +43,7 @@ class _$AppRouter extends RootStackRouter {
       final args = routeData.argsAs<ClubRouteArgs>();
       return MaterialPageX<dynamic>(
           routeData: routeData,
-          child: ClubPage(key: args.key, club: args.club));
+          child: ClubPage(key: args.key, clubOverview: args.clubOverview));
     },
     EventRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
@@ -135,23 +135,24 @@ class EventRouter extends PageRouteInfo<void> {
 /// generated route for
 /// [ClubPage]
 class ClubRoute extends PageRouteInfo<ClubRouteArgs> {
-  ClubRoute({Key? key, required Club club})
+  ClubRoute({Key? key, required ClubOverview clubOverview})
       : super(ClubRoute.name,
-            path: 'club-page', args: ClubRouteArgs(key: key, club: club));
+            path: 'club-page',
+            args: ClubRouteArgs(key: key, clubOverview: clubOverview));
 
   static const String name = 'ClubRoute';
 }
 
 class ClubRouteArgs {
-  const ClubRouteArgs({this.key, required this.club});
+  const ClubRouteArgs({this.key, required this.clubOverview});
 
   final Key? key;
 
-  final Club club;
+  final ClubOverview clubOverview;
 
   @override
   String toString() {
-    return 'ClubRouteArgs{key: $key, club: $club}';
+    return 'ClubRouteArgs{key: $key, clubOverview: $clubOverview}';
   }
 }
 

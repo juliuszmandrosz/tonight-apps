@@ -18,3 +18,12 @@ Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
 
   return left(ValueFailure.empty(failedValue: input));
 }
+
+Either<ValueFailure<double>, double> validateReviewAvg(double input) {
+  if (input < 1) {
+    return left(ValueFailure.clubs(
+        ClubValueFailure.invalidReviewAvg(failedValue: input)));
+  }
+  return right(input);
+}
+

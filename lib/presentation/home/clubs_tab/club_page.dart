@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:raver/domain/clubs/club_entity.dart';
+import 'package:raver/domain/clubs/club_overview/club_overview_entity.dart';
 
 class ClubPage extends StatelessWidget {
   const ClubPage({
     Key? key,
-    required Club club,
-  })  : _club = club,
+    required ClubOverview clubOverview,
+  })  : _clubOverview = clubOverview,
         super(key: key);
 
-  final Club _club;
+  final ClubOverview _clubOverview;
 
   @override
   Widget build(BuildContext context) {

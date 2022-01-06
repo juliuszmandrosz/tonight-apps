@@ -9,7 +9,6 @@ class AboutUs extends ValueObject<String> {
   static const maxLength = 1000;
 
   factory AboutUs(String input) {
-    assert(input != null);
     return AboutUs._(validateMaxStringLength(input, maxLength)
         .flatMap(validateStringNotEmpty));
   }

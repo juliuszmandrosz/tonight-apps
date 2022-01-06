@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/clubs/clubs_page.dart';
-import 'package:raver/presentation/events/events_page.dart';
+
+import 'events_tab/events_page.dart';
+import 'clubs_tab/clubs_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

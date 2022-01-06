@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'clubs_bloc.dart';
+part of 'clubs_overview_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,14 +14,17 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$ClubsEventTearOff {
-  const _$ClubsEventTearOff();
+class _$ClubsOverviewEventTearOff {
+  const _$ClubsOverviewEventTearOff();
 
-  OnClubPageOpened onClubPageOpened() {
-    return const OnClubPageOpened();
+  OnClubPageOpened onClubPageOpened(ClubFilter clubFilter) {
+    return OnClubPageOpened(
+      clubFilter,
+    );
   }
 
-  ClubsReceived clubsReceived(Either<ClubFailure, List<Club>> failureOrClubs) {
+  ClubsReceived clubsReceived(
+      Either<ClubFailure, List<ClubOverview>> failureOrClubs) {
     return ClubsReceived(
       failureOrClubs,
     );
@@ -29,28 +32,29 @@ class _$ClubsEventTearOff {
 }
 
 /// @nodoc
-const $ClubsEvent = _$ClubsEventTearOff();
+const $ClubsOverviewEvent = _$ClubsOverviewEventTearOff();
 
 /// @nodoc
-mixin _$ClubsEvent {
+mixin _$ClubsOverviewEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() onClubPageOpened,
-    required TResult Function(Either<ClubFailure, List<Club>> failureOrClubs)
+    required TResult Function(ClubFilter clubFilter) onClubPageOpened,
+    required TResult Function(
+            Either<ClubFailure, List<ClubOverview>> failureOrClubs)
         clubsReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? onClubPageOpened,
-    TResult Function(Either<ClubFailure, List<Club>> failureOrClubs)?
+    TResult Function(ClubFilter clubFilter)? onClubPageOpened,
+    TResult Function(Either<ClubFailure, List<ClubOverview>> failureOrClubs)?
         clubsReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onClubPageOpened,
-    TResult Function(Either<ClubFailure, List<Club>> failureOrClubs)?
+    TResult Function(ClubFilter clubFilter)? onClubPageOpened,
+    TResult Function(Either<ClubFailure, List<ClubOverview>> failureOrClubs)?
         clubsReceived,
     required TResult orElse(),
   }) =>
@@ -77,19 +81,20 @@ mixin _$ClubsEvent {
 }
 
 /// @nodoc
-abstract class $ClubsEventCopyWith<$Res> {
-  factory $ClubsEventCopyWith(
-          ClubsEvent value, $Res Function(ClubsEvent) then) =
-      _$ClubsEventCopyWithImpl<$Res>;
+abstract class $ClubsOverviewEventCopyWith<$Res> {
+  factory $ClubsOverviewEventCopyWith(
+          ClubsOverviewEvent value, $Res Function(ClubsOverviewEvent) then) =
+      _$ClubsOverviewEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ClubsEventCopyWithImpl<$Res> implements $ClubsEventCopyWith<$Res> {
-  _$ClubsEventCopyWithImpl(this._value, this._then);
+class _$ClubsOverviewEventCopyWithImpl<$Res>
+    implements $ClubsOverviewEventCopyWith<$Res> {
+  _$ClubsOverviewEventCopyWithImpl(this._value, this._then);
 
-  final ClubsEvent _value;
+  final ClubsOverviewEvent _value;
   // ignore: unused_field
-  final $Res Function(ClubsEvent) _then;
+  final $Res Function(ClubsOverviewEvent) _then;
 }
 
 /// @nodoc
@@ -97,11 +102,14 @@ abstract class $OnClubPageOpenedCopyWith<$Res> {
   factory $OnClubPageOpenedCopyWith(
           OnClubPageOpened value, $Res Function(OnClubPageOpened) then) =
       _$OnClubPageOpenedCopyWithImpl<$Res>;
+  $Res call({ClubFilter clubFilter});
+
+  $ClubFilterCopyWith<$Res> get clubFilter;
 }
 
 /// @nodoc
 class _$OnClubPageOpenedCopyWithImpl<$Res>
-    extends _$ClubsEventCopyWithImpl<$Res>
+    extends _$ClubsOverviewEventCopyWithImpl<$Res>
     implements $OnClubPageOpenedCopyWith<$Res> {
   _$OnClubPageOpenedCopyWithImpl(
       OnClubPageOpened _value, $Res Function(OnClubPageOpened) _then)
@@ -109,57 +117,89 @@ class _$OnClubPageOpenedCopyWithImpl<$Res>
 
   @override
   OnClubPageOpened get _value => super._value as OnClubPageOpened;
+
+  @override
+  $Res call({
+    Object? clubFilter = freezed,
+  }) {
+    return _then(OnClubPageOpened(
+      clubFilter == freezed
+          ? _value.clubFilter
+          : clubFilter // ignore: cast_nullable_to_non_nullable
+              as ClubFilter,
+    ));
+  }
+
+  @override
+  $ClubFilterCopyWith<$Res> get clubFilter {
+    return $ClubFilterCopyWith<$Res>(_value.clubFilter, (value) {
+      return _then(_value.copyWith(clubFilter: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$OnClubPageOpened implements OnClubPageOpened {
-  const _$OnClubPageOpened();
+  const _$OnClubPageOpened(this.clubFilter);
+
+  @override
+  final ClubFilter clubFilter;
 
   @override
   String toString() {
-    return 'ClubsEvent.onClubPageOpened()';
+    return 'ClubsOverviewEvent.onClubPageOpened(clubFilter: $clubFilter)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is OnClubPageOpened);
+        (other.runtimeType == runtimeType &&
+            other is OnClubPageOpened &&
+            const DeepCollectionEquality()
+                .equals(other.clubFilter, clubFilter));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(clubFilter));
+
+  @JsonKey(ignore: true)
+  @override
+  $OnClubPageOpenedCopyWith<OnClubPageOpened> get copyWith =>
+      _$OnClubPageOpenedCopyWithImpl<OnClubPageOpened>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() onClubPageOpened,
-    required TResult Function(Either<ClubFailure, List<Club>> failureOrClubs)
+    required TResult Function(ClubFilter clubFilter) onClubPageOpened,
+    required TResult Function(
+            Either<ClubFailure, List<ClubOverview>> failureOrClubs)
         clubsReceived,
   }) {
-    return onClubPageOpened();
+    return onClubPageOpened(clubFilter);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? onClubPageOpened,
-    TResult Function(Either<ClubFailure, List<Club>> failureOrClubs)?
+    TResult Function(ClubFilter clubFilter)? onClubPageOpened,
+    TResult Function(Either<ClubFailure, List<ClubOverview>> failureOrClubs)?
         clubsReceived,
   }) {
-    return onClubPageOpened?.call();
+    return onClubPageOpened?.call(clubFilter);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onClubPageOpened,
-    TResult Function(Either<ClubFailure, List<Club>> failureOrClubs)?
+    TResult Function(ClubFilter clubFilter)? onClubPageOpened,
+    TResult Function(Either<ClubFailure, List<ClubOverview>> failureOrClubs)?
         clubsReceived,
     required TResult orElse(),
   }) {
     if (onClubPageOpened != null) {
-      return onClubPageOpened();
+      return onClubPageOpened(clubFilter);
     }
     return orElse();
   }
@@ -196,8 +236,13 @@ class _$OnClubPageOpened implements OnClubPageOpened {
   }
 }
 
-abstract class OnClubPageOpened implements ClubsEvent {
-  const factory OnClubPageOpened() = _$OnClubPageOpened;
+abstract class OnClubPageOpened implements ClubsOverviewEvent {
+  const factory OnClubPageOpened(ClubFilter clubFilter) = _$OnClubPageOpened;
+
+  ClubFilter get clubFilter;
+  @JsonKey(ignore: true)
+  $OnClubPageOpenedCopyWith<OnClubPageOpened> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -205,11 +250,12 @@ abstract class $ClubsReceivedCopyWith<$Res> {
   factory $ClubsReceivedCopyWith(
           ClubsReceived value, $Res Function(ClubsReceived) then) =
       _$ClubsReceivedCopyWithImpl<$Res>;
-  $Res call({Either<ClubFailure, List<Club>> failureOrClubs});
+  $Res call({Either<ClubFailure, List<ClubOverview>> failureOrClubs});
 }
 
 /// @nodoc
-class _$ClubsReceivedCopyWithImpl<$Res> extends _$ClubsEventCopyWithImpl<$Res>
+class _$ClubsReceivedCopyWithImpl<$Res>
+    extends _$ClubsOverviewEventCopyWithImpl<$Res>
     implements $ClubsReceivedCopyWith<$Res> {
   _$ClubsReceivedCopyWithImpl(
       ClubsReceived _value, $Res Function(ClubsReceived) _then)
@@ -226,7 +272,7 @@ class _$ClubsReceivedCopyWithImpl<$Res> extends _$ClubsEventCopyWithImpl<$Res>
       failureOrClubs == freezed
           ? _value.failureOrClubs
           : failureOrClubs // ignore: cast_nullable_to_non_nullable
-              as Either<ClubFailure, List<Club>>,
+              as Either<ClubFailure, List<ClubOverview>>,
     ));
   }
 }
@@ -237,11 +283,11 @@ class _$ClubsReceived implements ClubsReceived {
   const _$ClubsReceived(this.failureOrClubs);
 
   @override
-  final Either<ClubFailure, List<Club>> failureOrClubs;
+  final Either<ClubFailure, List<ClubOverview>> failureOrClubs;
 
   @override
   String toString() {
-    return 'ClubsEvent.clubsReceived(failureOrClubs: $failureOrClubs)';
+    return 'ClubsOverviewEvent.clubsReceived(failureOrClubs: $failureOrClubs)';
   }
 
   @override
@@ -265,8 +311,9 @@ class _$ClubsReceived implements ClubsReceived {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() onClubPageOpened,
-    required TResult Function(Either<ClubFailure, List<Club>> failureOrClubs)
+    required TResult Function(ClubFilter clubFilter) onClubPageOpened,
+    required TResult Function(
+            Either<ClubFailure, List<ClubOverview>> failureOrClubs)
         clubsReceived,
   }) {
     return clubsReceived(failureOrClubs);
@@ -275,8 +322,8 @@ class _$ClubsReceived implements ClubsReceived {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? onClubPageOpened,
-    TResult Function(Either<ClubFailure, List<Club>> failureOrClubs)?
+    TResult Function(ClubFilter clubFilter)? onClubPageOpened,
+    TResult Function(Either<ClubFailure, List<ClubOverview>> failureOrClubs)?
         clubsReceived,
   }) {
     return clubsReceived?.call(failureOrClubs);
@@ -285,8 +332,8 @@ class _$ClubsReceived implements ClubsReceived {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? onClubPageOpened,
-    TResult Function(Either<ClubFailure, List<Club>> failureOrClubs)?
+    TResult Function(ClubFilter clubFilter)? onClubPageOpened,
+    TResult Function(Either<ClubFailure, List<ClubOverview>> failureOrClubs)?
         clubsReceived,
     required TResult orElse(),
   }) {
@@ -328,19 +375,19 @@ class _$ClubsReceived implements ClubsReceived {
   }
 }
 
-abstract class ClubsReceived implements ClubsEvent {
-  const factory ClubsReceived(Either<ClubFailure, List<Club>> failureOrClubs) =
-      _$ClubsReceived;
+abstract class ClubsReceived implements ClubsOverviewEvent {
+  const factory ClubsReceived(
+      Either<ClubFailure, List<ClubOverview>> failureOrClubs) = _$ClubsReceived;
 
-  Either<ClubFailure, List<Club>> get failureOrClubs;
+  Either<ClubFailure, List<ClubOverview>> get failureOrClubs;
   @JsonKey(ignore: true)
   $ClubsReceivedCopyWith<ClubsReceived> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$ClubsStateTearOff {
-  const _$ClubsStateTearOff();
+class _$ClubsOverviewStateTearOff {
+  const _$ClubsOverviewStateTearOff();
 
   _Initial initial() {
     return const _Initial();
@@ -350,7 +397,7 @@ class _$ClubsStateTearOff {
     return const _LoadInProgress();
   }
 
-  _LoadSuccess loadSuccess(List<Club> clubs) {
+  _LoadSuccess loadSuccess(List<ClubOverview> clubs) {
     return _LoadSuccess(
       clubs,
     );
@@ -364,15 +411,15 @@ class _$ClubsStateTearOff {
 }
 
 /// @nodoc
-const $ClubsState = _$ClubsStateTearOff();
+const $ClubsOverviewState = _$ClubsOverviewStateTearOff();
 
 /// @nodoc
-mixin _$ClubsState {
+mixin _$ClubsOverviewState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function(List<Club> clubs) loadSuccess,
+    required TResult Function(List<ClubOverview> clubs) loadSuccess,
     required TResult Function(ClubFailure clubFailure) loadFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -380,7 +427,7 @@ mixin _$ClubsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(List<Club> clubs)? loadSuccess,
+    TResult Function(List<ClubOverview> clubs)? loadSuccess,
     TResult Function(ClubFailure clubFailure)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -388,7 +435,7 @@ mixin _$ClubsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(List<Club> clubs)? loadSuccess,
+    TResult Function(List<ClubOverview> clubs)? loadSuccess,
     TResult Function(ClubFailure clubFailure)? loadFailure,
     required TResult orElse(),
   }) =>
@@ -421,19 +468,20 @@ mixin _$ClubsState {
 }
 
 /// @nodoc
-abstract class $ClubsStateCopyWith<$Res> {
-  factory $ClubsStateCopyWith(
-          ClubsState value, $Res Function(ClubsState) then) =
-      _$ClubsStateCopyWithImpl<$Res>;
+abstract class $ClubsOverviewStateCopyWith<$Res> {
+  factory $ClubsOverviewStateCopyWith(
+          ClubsOverviewState value, $Res Function(ClubsOverviewState) then) =
+      _$ClubsOverviewStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ClubsStateCopyWithImpl<$Res> implements $ClubsStateCopyWith<$Res> {
-  _$ClubsStateCopyWithImpl(this._value, this._then);
+class _$ClubsOverviewStateCopyWithImpl<$Res>
+    implements $ClubsOverviewStateCopyWith<$Res> {
+  _$ClubsOverviewStateCopyWithImpl(this._value, this._then);
 
-  final ClubsState _value;
+  final ClubsOverviewState _value;
   // ignore: unused_field
-  final $Res Function(ClubsState) _then;
+  final $Res Function(ClubsOverviewState) _then;
 }
 
 /// @nodoc
@@ -443,7 +491,8 @@ abstract class _$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$ClubsStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res>
+    extends _$ClubsOverviewStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -459,7 +508,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'ClubsState.initial()';
+    return 'ClubsOverviewState.initial()';
   }
 
   @override
@@ -476,7 +525,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function(List<Club> clubs) loadSuccess,
+    required TResult Function(List<ClubOverview> clubs) loadSuccess,
     required TResult Function(ClubFailure clubFailure) loadFailure,
   }) {
     return initial();
@@ -487,7 +536,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(List<Club> clubs)? loadSuccess,
+    TResult Function(List<ClubOverview> clubs)? loadSuccess,
     TResult Function(ClubFailure clubFailure)? loadFailure,
   }) {
     return initial?.call();
@@ -498,7 +547,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(List<Club> clubs)? loadSuccess,
+    TResult Function(List<ClubOverview> clubs)? loadSuccess,
     TResult Function(ClubFailure clubFailure)? loadFailure,
     required TResult orElse(),
   }) {
@@ -546,7 +595,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements ClubsState {
+abstract class _Initial implements ClubsOverviewState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -558,7 +607,8 @@ abstract class _$LoadInProgressCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LoadInProgressCopyWithImpl<$Res> extends _$ClubsStateCopyWithImpl<$Res>
+class __$LoadInProgressCopyWithImpl<$Res>
+    extends _$ClubsOverviewStateCopyWithImpl<$Res>
     implements _$LoadInProgressCopyWith<$Res> {
   __$LoadInProgressCopyWithImpl(
       _LoadInProgress _value, $Res Function(_LoadInProgress) _then)
@@ -575,7 +625,7 @@ class _$_LoadInProgress implements _LoadInProgress {
 
   @override
   String toString() {
-    return 'ClubsState.loadInProgress()';
+    return 'ClubsOverviewState.loadInProgress()';
   }
 
   @override
@@ -592,7 +642,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function(List<Club> clubs) loadSuccess,
+    required TResult Function(List<ClubOverview> clubs) loadSuccess,
     required TResult Function(ClubFailure clubFailure) loadFailure,
   }) {
     return loadInProgress();
@@ -603,7 +653,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(List<Club> clubs)? loadSuccess,
+    TResult Function(List<ClubOverview> clubs)? loadSuccess,
     TResult Function(ClubFailure clubFailure)? loadFailure,
   }) {
     return loadInProgress?.call();
@@ -614,7 +664,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(List<Club> clubs)? loadSuccess,
+    TResult Function(List<ClubOverview> clubs)? loadSuccess,
     TResult Function(ClubFailure clubFailure)? loadFailure,
     required TResult orElse(),
   }) {
@@ -662,7 +712,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   }
 }
 
-abstract class _LoadInProgress implements ClubsState {
+abstract class _LoadInProgress implements ClubsOverviewState {
   const factory _LoadInProgress() = _$_LoadInProgress;
 }
 
@@ -671,11 +721,12 @@ abstract class _$LoadSuccessCopyWith<$Res> {
   factory _$LoadSuccessCopyWith(
           _LoadSuccess value, $Res Function(_LoadSuccess) then) =
       __$LoadSuccessCopyWithImpl<$Res>;
-  $Res call({List<Club> clubs});
+  $Res call({List<ClubOverview> clubs});
 }
 
 /// @nodoc
-class __$LoadSuccessCopyWithImpl<$Res> extends _$ClubsStateCopyWithImpl<$Res>
+class __$LoadSuccessCopyWithImpl<$Res>
+    extends _$ClubsOverviewStateCopyWithImpl<$Res>
     implements _$LoadSuccessCopyWith<$Res> {
   __$LoadSuccessCopyWithImpl(
       _LoadSuccess _value, $Res Function(_LoadSuccess) _then)
@@ -692,7 +743,7 @@ class __$LoadSuccessCopyWithImpl<$Res> extends _$ClubsStateCopyWithImpl<$Res>
       clubs == freezed
           ? _value.clubs
           : clubs // ignore: cast_nullable_to_non_nullable
-              as List<Club>,
+              as List<ClubOverview>,
     ));
   }
 }
@@ -703,11 +754,11 @@ class _$_LoadSuccess implements _LoadSuccess {
   const _$_LoadSuccess(this.clubs);
 
   @override
-  final List<Club> clubs;
+  final List<ClubOverview> clubs;
 
   @override
   String toString() {
-    return 'ClubsState.loadSuccess(clubs: $clubs)';
+    return 'ClubsOverviewState.loadSuccess(clubs: $clubs)';
   }
 
   @override
@@ -732,7 +783,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function(List<Club> clubs) loadSuccess,
+    required TResult Function(List<ClubOverview> clubs) loadSuccess,
     required TResult Function(ClubFailure clubFailure) loadFailure,
   }) {
     return loadSuccess(clubs);
@@ -743,7 +794,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(List<Club> clubs)? loadSuccess,
+    TResult Function(List<ClubOverview> clubs)? loadSuccess,
     TResult Function(ClubFailure clubFailure)? loadFailure,
   }) {
     return loadSuccess?.call(clubs);
@@ -754,7 +805,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(List<Club> clubs)? loadSuccess,
+    TResult Function(List<ClubOverview> clubs)? loadSuccess,
     TResult Function(ClubFailure clubFailure)? loadFailure,
     required TResult orElse(),
   }) {
@@ -802,10 +853,10 @@ class _$_LoadSuccess implements _LoadSuccess {
   }
 }
 
-abstract class _LoadSuccess implements ClubsState {
-  const factory _LoadSuccess(List<Club> clubs) = _$_LoadSuccess;
+abstract class _LoadSuccess implements ClubsOverviewState {
+  const factory _LoadSuccess(List<ClubOverview> clubs) = _$_LoadSuccess;
 
-  List<Club> get clubs;
+  List<ClubOverview> get clubs;
   @JsonKey(ignore: true)
   _$LoadSuccessCopyWith<_LoadSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -822,7 +873,8 @@ abstract class _$LoadFailureCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LoadFailureCopyWithImpl<$Res> extends _$ClubsStateCopyWithImpl<$Res>
+class __$LoadFailureCopyWithImpl<$Res>
+    extends _$ClubsOverviewStateCopyWithImpl<$Res>
     implements _$LoadFailureCopyWith<$Res> {
   __$LoadFailureCopyWithImpl(
       _LoadFailure _value, $Res Function(_LoadFailure) _then)
@@ -861,7 +913,7 @@ class _$_LoadFailure implements _LoadFailure {
 
   @override
   String toString() {
-    return 'ClubsState.loadFailure(clubFailure: $clubFailure)';
+    return 'ClubsOverviewState.loadFailure(clubFailure: $clubFailure)';
   }
 
   @override
@@ -887,7 +939,7 @@ class _$_LoadFailure implements _LoadFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function(List<Club> clubs) loadSuccess,
+    required TResult Function(List<ClubOverview> clubs) loadSuccess,
     required TResult Function(ClubFailure clubFailure) loadFailure,
   }) {
     return loadFailure(clubFailure);
@@ -898,7 +950,7 @@ class _$_LoadFailure implements _LoadFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(List<Club> clubs)? loadSuccess,
+    TResult Function(List<ClubOverview> clubs)? loadSuccess,
     TResult Function(ClubFailure clubFailure)? loadFailure,
   }) {
     return loadFailure?.call(clubFailure);
@@ -909,7 +961,7 @@ class _$_LoadFailure implements _LoadFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function(List<Club> clubs)? loadSuccess,
+    TResult Function(List<ClubOverview> clubs)? loadSuccess,
     TResult Function(ClubFailure clubFailure)? loadFailure,
     required TResult orElse(),
   }) {
@@ -957,7 +1009,7 @@ class _$_LoadFailure implements _LoadFailure {
   }
 }
 
-abstract class _LoadFailure implements ClubsState {
+abstract class _LoadFailure implements ClubsOverviewState {
   const factory _LoadFailure(ClubFailure clubFailure) = _$_LoadFailure;
 
   ClubFailure get clubFailure;
