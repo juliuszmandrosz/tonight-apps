@@ -7,8 +7,8 @@ import 'package:injectable/injectable.dart';
 import 'package:raver/domain/auth/app_user.dart';
 import 'package:raver/domain/auth/auth_facade.dart';
 import 'package:raver/domain/auth/auth_failure.dart';
-import 'package:raver/domain/core/value_objects/email_address.dart';
-import 'package:raver/domain/core/value_objects/password.dart';
+import 'package:raver/domain/auth/value_objects/email_address.dart';
+import 'package:raver/domain/auth/value_objects/password.dart';
 import 'package:raver/infrastructure/auth/firebase_user_mapper.dart';
 
 @LazySingleton(as: AuthFacade)

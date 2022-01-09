@@ -1,4 +1,4 @@
-import 'package:raver/domain/core/failures.dart';
+import 'package:raver/domain/core/value_failures.dart';
 
 class UnexpectedValueError extends Error {
   final ValueFailure valueFailure;

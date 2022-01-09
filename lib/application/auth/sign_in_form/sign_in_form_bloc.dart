@@ -5,8 +5,8 @@ import 'package:injectable/injectable.dart';
 import 'package:raver/domain/auth/auth_facade.dart';
 import 'package:raver/domain/auth/auth_failure.dart';
 import 'package:raver/domain/auth/auth_failure_messages.dart';
-import 'package:raver/domain/core/value_objects/email_address.dart';
-import 'package:raver/domain/core/value_objects/password.dart';
+import 'package:raver/domain/auth/value_objects/email_address.dart';
+import 'package:raver/domain/auth/value_objects/password.dart';
 
 part 'sign_in_form_event.dart';
 part 'sign_in_form_state.dart';

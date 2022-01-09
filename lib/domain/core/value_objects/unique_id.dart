@@ -1,4 +1,4 @@
-import 'package:raver/domain/core/failures.dart';
+import 'package:raver/domain/core/value_failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:raver/domain/core/value_object.dart';
 import 'package:uuid/uuid.dart';
