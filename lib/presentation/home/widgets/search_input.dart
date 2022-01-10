@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:raver/application/clubs/club_filters/club_filters_bloc.dart';
 
 class SearchField extends StatefulWidget {
-  final Function _onSearch;
-
-  const SearchField({Key? key, required Function onSearch})
-      : _onSearch = onSearch,
-        super(key: key);
+  const SearchField({Key? key}) : super(key: key);
 
   @override
   _SearchFieldState createState() => _SearchFieldState();
@@ -22,8 +20,13 @@ class _SearchFieldState extends State<SearchField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      onFieldSubmitted: (value) => widget._onSearch(value),
+    return TextField(
+      controller: textController,
+      onSubmitted: (value) {
+        print("Searched");
+        BlocProvider.of<ClubFiltersBloc>(context)
+            .add(ClubFiltersEvent.onSearchFieldUpdated(value));
+      },
       decoration: InputDecoration(
         hintText: "Search",
         border: OutlineInputBorder(
@@ -38,7 +41,9 @@ class _SearchFieldState extends State<SearchField> {
         suffixIcon: textController.text.isNotEmpty
             ? InkWell(
                 onTap: () => setState(
-                  () => textController.clear(),
+                  () {
+                    textController.clear();
+                  },
                 ),
                 child: const Icon(
                   Icons.clear,

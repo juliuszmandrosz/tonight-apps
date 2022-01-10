@@ -5,23 +5,23 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:raver/domain/clubs/club_overview/club_failure.dart';
-import 'package:raver/domain/clubs/club_overview/i_club_overview_repository.dart';
-
 import 'package:raver/domain/clubs/club_overview/club_overview_entity.dart';
+import 'package:raver/domain/clubs/club_overview/i_club_overview_facade.dart';
 import 'package:raver/infrastructure/clubs/clubs_overview/filters/club_filter.dart';
-
-part 'clubs_overview_event.dart';
-
-part 'clubs_overview_state.dart';
 
 part 'clubs_overview_bloc.freezed.dart';
 
+part 'clubs_overview_event.dart';
+part 'clubs_overview_state.dart';
+
 @injectable
 class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
-  final IClubOverviewRepository _clubRepository;
+  final IClubOverviewFacade _clubRepository;
 
-  ClubsOverviewBloc(this._clubRepository) : super(const ClubsOverviewState.initial()) {
+  ClubsOverviewBloc(this._clubRepository)
+      : super(const ClubsOverviewState.initial()) {
     on<OnClubPageOpened>(_onPageOpened);
+    on<OnFilterUpdated>(_onFilterUpdated);
     on<ClubsReceived>(_onClubsReceived);
   }
 
@@ -30,11 +30,19 @@ class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
     emit(const ClubsOverviewState.loadInProgress());
     final result = await _clubRepository.getClubs(event.clubFilter);
     add(ClubsOverviewEvent.clubsReceived(result));
-
   }
 
-  void _onClubsReceived(ClubsReceived event, Emitter<ClubsOverviewState> emit) async {
+  void _onFilterUpdated(
+      OnFilterUpdated event, Emitter<ClubsOverviewState> emit) {
+    add(ClubsOverviewEvent.onClubPageOpened(event.clubFilter));
+  }
+
+  void _onClubsReceived(
+      ClubsReceived event, Emitter<ClubsOverviewState> emit) async {
     event.failureOrClubs.fold((l) => emit(ClubsOverviewState.loadFailure(l)),
-        (r) => emit(ClubsOverviewState.loadSuccess(r)));
+        (r) {
+      var state = ClubsOverviewState.loadSuccess(r);
+      emit(state);
+    });
   }
 }

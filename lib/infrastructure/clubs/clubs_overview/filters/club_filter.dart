@@ -1,10 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'club_filters_settings.dart';
+
 part 'club_filter.freezed.dart';
 
 @freezed
-abstract class ClubFilter implements _$ClubFilter {
+abstract class ClubFilter with _$ClubFilter {
   const ClubFilter._();
 
-  const factory ClubFilter({required String phrase})=_ClubFilter;
+  factory ClubFilter(
+      {required String phrase,
+      required ClubFilterSettings clubFilterSettings}) = _ClubFilter;
+
+  factory ClubFilter.empty() = _ClubFilterEmpty;
 }

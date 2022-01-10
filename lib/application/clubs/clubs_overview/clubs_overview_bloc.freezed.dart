@@ -23,6 +23,12 @@ class _$ClubsOverviewEventTearOff {
     );
   }
 
+  OnFilterUpdated onFilterUpdated(ClubFilter clubFilter) {
+    return OnFilterUpdated(
+      clubFilter,
+    );
+  }
+
   ClubsReceived clubsReceived(
       Either<ClubFailure, List<ClubOverview>> failureOrClubs) {
     return ClubsReceived(
@@ -39,6 +45,7 @@ mixin _$ClubsOverviewEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ClubFilter clubFilter) onClubPageOpened,
+    required TResult Function(ClubFilter clubFilter) onFilterUpdated,
     required TResult Function(
             Either<ClubFailure, List<ClubOverview>> failureOrClubs)
         clubsReceived,
@@ -47,6 +54,7 @@ mixin _$ClubsOverviewEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(ClubFilter clubFilter)? onClubPageOpened,
+    TResult Function(ClubFilter clubFilter)? onFilterUpdated,
     TResult Function(Either<ClubFailure, List<ClubOverview>> failureOrClubs)?
         clubsReceived,
   }) =>
@@ -54,6 +62,7 @@ mixin _$ClubsOverviewEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ClubFilter clubFilter)? onClubPageOpened,
+    TResult Function(ClubFilter clubFilter)? onFilterUpdated,
     TResult Function(Either<ClubFailure, List<ClubOverview>> failureOrClubs)?
         clubsReceived,
     required TResult orElse(),
@@ -62,18 +71,21 @@ mixin _$ClubsOverviewEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(OnClubPageOpened value) onClubPageOpened,
+    required TResult Function(OnFilterUpdated value) onFilterUpdated,
     required TResult Function(ClubsReceived value) clubsReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(OnClubPageOpened value)? onClubPageOpened,
+    TResult Function(OnFilterUpdated value)? onFilterUpdated,
     TResult Function(ClubsReceived value)? clubsReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnClubPageOpened value)? onClubPageOpened,
+    TResult Function(OnFilterUpdated value)? onFilterUpdated,
     TResult Function(ClubsReceived value)? clubsReceived,
     required TResult orElse(),
   }) =>
@@ -173,6 +185,7 @@ class _$OnClubPageOpened implements OnClubPageOpened {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ClubFilter clubFilter) onClubPageOpened,
+    required TResult Function(ClubFilter clubFilter) onFilterUpdated,
     required TResult Function(
             Either<ClubFailure, List<ClubOverview>> failureOrClubs)
         clubsReceived,
@@ -184,6 +197,7 @@ class _$OnClubPageOpened implements OnClubPageOpened {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(ClubFilter clubFilter)? onClubPageOpened,
+    TResult Function(ClubFilter clubFilter)? onFilterUpdated,
     TResult Function(Either<ClubFailure, List<ClubOverview>> failureOrClubs)?
         clubsReceived,
   }) {
@@ -194,6 +208,7 @@ class _$OnClubPageOpened implements OnClubPageOpened {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ClubFilter clubFilter)? onClubPageOpened,
+    TResult Function(ClubFilter clubFilter)? onFilterUpdated,
     TResult Function(Either<ClubFailure, List<ClubOverview>> failureOrClubs)?
         clubsReceived,
     required TResult orElse(),
@@ -208,6 +223,7 @@ class _$OnClubPageOpened implements OnClubPageOpened {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(OnClubPageOpened value) onClubPageOpened,
+    required TResult Function(OnFilterUpdated value) onFilterUpdated,
     required TResult Function(ClubsReceived value) clubsReceived,
   }) {
     return onClubPageOpened(this);
@@ -217,6 +233,7 @@ class _$OnClubPageOpened implements OnClubPageOpened {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(OnClubPageOpened value)? onClubPageOpened,
+    TResult Function(OnFilterUpdated value)? onFilterUpdated,
     TResult Function(ClubsReceived value)? clubsReceived,
   }) {
     return onClubPageOpened?.call(this);
@@ -226,6 +243,7 @@ class _$OnClubPageOpened implements OnClubPageOpened {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnClubPageOpened value)? onClubPageOpened,
+    TResult Function(OnFilterUpdated value)? onFilterUpdated,
     TResult Function(ClubsReceived value)? clubsReceived,
     required TResult orElse(),
   }) {
@@ -240,8 +258,165 @@ abstract class OnClubPageOpened implements ClubsOverviewEvent {
   const factory OnClubPageOpened(ClubFilter clubFilter) = _$OnClubPageOpened;
 
   ClubFilter get clubFilter;
+
   @JsonKey(ignore: true)
   $OnClubPageOpenedCopyWith<OnClubPageOpened> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OnFilterUpdatedCopyWith<$Res> {
+  factory $OnFilterUpdatedCopyWith(
+          OnFilterUpdated value, $Res Function(OnFilterUpdated) then) =
+      _$OnFilterUpdatedCopyWithImpl<$Res>;
+
+  $Res call({ClubFilter clubFilter});
+
+  $ClubFilterCopyWith<$Res> get clubFilter;
+}
+
+/// @nodoc
+class _$OnFilterUpdatedCopyWithImpl<$Res>
+    extends _$ClubsOverviewEventCopyWithImpl<$Res>
+    implements $OnFilterUpdatedCopyWith<$Res> {
+  _$OnFilterUpdatedCopyWithImpl(
+      OnFilterUpdated _value, $Res Function(OnFilterUpdated) _then)
+      : super(_value, (v) => _then(v as OnFilterUpdated));
+
+  @override
+  OnFilterUpdated get _value => super._value as OnFilterUpdated;
+
+  @override
+  $Res call({
+    Object? clubFilter = freezed,
+  }) {
+    return _then(OnFilterUpdated(
+      clubFilter == freezed
+          ? _value.clubFilter
+          : clubFilter // ignore: cast_nullable_to_non_nullable
+              as ClubFilter,
+    ));
+  }
+
+  @override
+  $ClubFilterCopyWith<$Res> get clubFilter {
+    return $ClubFilterCopyWith<$Res>(_value.clubFilter, (value) {
+      return _then(_value.copyWith(clubFilter: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$OnFilterUpdated implements OnFilterUpdated {
+  const _$OnFilterUpdated(this.clubFilter);
+
+  @override
+  final ClubFilter clubFilter;
+
+  @override
+  String toString() {
+    return 'ClubsOverviewEvent.onFilterUpdated(clubFilter: $clubFilter)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OnFilterUpdated &&
+            const DeepCollectionEquality()
+                .equals(other.clubFilter, clubFilter));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(clubFilter));
+
+  @JsonKey(ignore: true)
+  @override
+  $OnFilterUpdatedCopyWith<OnFilterUpdated> get copyWith =>
+      _$OnFilterUpdatedCopyWithImpl<OnFilterUpdated>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ClubFilter clubFilter) onClubPageOpened,
+    required TResult Function(ClubFilter clubFilter) onFilterUpdated,
+    required TResult Function(
+            Either<ClubFailure, List<ClubOverview>> failureOrClubs)
+        clubsReceived,
+  }) {
+    return onFilterUpdated(clubFilter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(ClubFilter clubFilter)? onClubPageOpened,
+    TResult Function(ClubFilter clubFilter)? onFilterUpdated,
+    TResult Function(Either<ClubFailure, List<ClubOverview>> failureOrClubs)?
+        clubsReceived,
+  }) {
+    return onFilterUpdated?.call(clubFilter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ClubFilter clubFilter)? onClubPageOpened,
+    TResult Function(ClubFilter clubFilter)? onFilterUpdated,
+    TResult Function(Either<ClubFailure, List<ClubOverview>> failureOrClubs)?
+        clubsReceived,
+    required TResult orElse(),
+  }) {
+    if (onFilterUpdated != null) {
+      return onFilterUpdated(clubFilter);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnClubPageOpened value) onClubPageOpened,
+    required TResult Function(OnFilterUpdated value) onFilterUpdated,
+    required TResult Function(ClubsReceived value) clubsReceived,
+  }) {
+    return onFilterUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(OnClubPageOpened value)? onClubPageOpened,
+    TResult Function(OnFilterUpdated value)? onFilterUpdated,
+    TResult Function(ClubsReceived value)? clubsReceived,
+  }) {
+    return onFilterUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnClubPageOpened value)? onClubPageOpened,
+    TResult Function(OnFilterUpdated value)? onFilterUpdated,
+    TResult Function(ClubsReceived value)? clubsReceived,
+    required TResult orElse(),
+  }) {
+    if (onFilterUpdated != null) {
+      return onFilterUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnFilterUpdated implements ClubsOverviewEvent {
+  const factory OnFilterUpdated(ClubFilter clubFilter) = _$OnFilterUpdated;
+
+  ClubFilter get clubFilter;
+
+  @JsonKey(ignore: true)
+  $OnFilterUpdatedCopyWith<OnFilterUpdated> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -250,6 +425,7 @@ abstract class $ClubsReceivedCopyWith<$Res> {
   factory $ClubsReceivedCopyWith(
           ClubsReceived value, $Res Function(ClubsReceived) then) =
       _$ClubsReceivedCopyWithImpl<$Res>;
+
   $Res call({Either<ClubFailure, List<ClubOverview>> failureOrClubs});
 }
 
@@ -312,6 +488,7 @@ class _$ClubsReceived implements ClubsReceived {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ClubFilter clubFilter) onClubPageOpened,
+    required TResult Function(ClubFilter clubFilter) onFilterUpdated,
     required TResult Function(
             Either<ClubFailure, List<ClubOverview>> failureOrClubs)
         clubsReceived,
@@ -323,6 +500,7 @@ class _$ClubsReceived implements ClubsReceived {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(ClubFilter clubFilter)? onClubPageOpened,
+    TResult Function(ClubFilter clubFilter)? onFilterUpdated,
     TResult Function(Either<ClubFailure, List<ClubOverview>> failureOrClubs)?
         clubsReceived,
   }) {
@@ -333,6 +511,7 @@ class _$ClubsReceived implements ClubsReceived {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ClubFilter clubFilter)? onClubPageOpened,
+    TResult Function(ClubFilter clubFilter)? onFilterUpdated,
     TResult Function(Either<ClubFailure, List<ClubOverview>> failureOrClubs)?
         clubsReceived,
     required TResult orElse(),
@@ -347,6 +526,7 @@ class _$ClubsReceived implements ClubsReceived {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(OnClubPageOpened value) onClubPageOpened,
+    required TResult Function(OnFilterUpdated value) onFilterUpdated,
     required TResult Function(ClubsReceived value) clubsReceived,
   }) {
     return clubsReceived(this);
@@ -356,6 +536,7 @@ class _$ClubsReceived implements ClubsReceived {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(OnClubPageOpened value)? onClubPageOpened,
+    TResult Function(OnFilterUpdated value)? onFilterUpdated,
     TResult Function(ClubsReceived value)? clubsReceived,
   }) {
     return clubsReceived?.call(this);
@@ -365,6 +546,7 @@ class _$ClubsReceived implements ClubsReceived {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnClubPageOpened value)? onClubPageOpened,
+    TResult Function(OnFilterUpdated value)? onFilterUpdated,
     TResult Function(ClubsReceived value)? clubsReceived,
     required TResult orElse(),
   }) {

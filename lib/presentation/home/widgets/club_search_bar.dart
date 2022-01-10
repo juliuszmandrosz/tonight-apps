@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:raver/presentation/home/widgets/search_input.dart';
 
 class ClubSearchBar extends StatelessWidget {
-  final Function _onSearch;
-
-  const ClubSearchBar({Key? key, required Function onSearch})
-      : this._onSearch = onSearch,
-        super(key: key);
+  const ClubSearchBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +11,13 @@ class ClubSearchBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Expanded(
-          child: SearchField(
-            onSearch: _onSearch,
-          ),
+          child: SearchField(),
         ),
         IconButton(
           onPressed: () {},
           icon: const Icon(Icons.settings),
         ),
       ],
-    );  }
+    );
+  }
 }
