@@ -43,7 +43,6 @@ mixin _$ClubFilter {
     required TResult Function() empty,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult Function(String phrase, ClubFilterSettings clubFilterSettings)?
@@ -51,7 +50,6 @@ mixin _$ClubFilter {
     TResult Function()? empty,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String phrase, ClubFilterSettings clubFilterSettings)?
@@ -60,21 +58,18 @@ mixin _$ClubFilter {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ClubFilter value) $default, {
     required TResult Function(_ClubFilterEmpty value) empty,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult Function(_ClubFilter value)? $default, {
     TResult Function(_ClubFilterEmpty value)? empty,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_ClubFilter value)? $default, {
@@ -105,7 +100,6 @@ abstract class _$ClubFilterCopyWith<$Res> {
   factory _$ClubFilterCopyWith(
           _ClubFilter value, $Res Function(_ClubFilter) then) =
       __$ClubFilterCopyWithImpl<$Res>;
-
   $Res call({String phrase, ClubFilterSettings clubFilterSettings});
 
   $ClubFilterSettingsCopyWith<$Res> get clubFilterSettings;
@@ -254,13 +248,10 @@ abstract class _ClubFilter extends ClubFilter {
   factory _ClubFilter(
       {required String phrase,
       required ClubFilterSettings clubFilterSettings}) = _$_ClubFilter;
-
   _ClubFilter._() : super._();
 
   String get phrase;
-
   ClubFilterSettings get clubFilterSettings;
-
   @JsonKey(ignore: true)
   _$ClubFilterCopyWith<_ClubFilter> get copyWith =>
       throw _privateConstructorUsedError;
@@ -372,6 +363,5 @@ class _$_ClubFilterEmpty extends _ClubFilterEmpty {
 
 abstract class _ClubFilterEmpty extends ClubFilter {
   factory _ClubFilterEmpty() = _$_ClubFilterEmpty;
-
   _ClubFilterEmpty._() : super._();
 }

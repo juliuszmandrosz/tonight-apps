@@ -1,4 +1,6 @@
 class FromReviewAvg {
+  static const String FIRESTORE_FIELD_NAME = 'reviewAvg';
+
   final double fromReviewAvg;
 
   const FromReviewAvg._(this.fromReviewAvg);

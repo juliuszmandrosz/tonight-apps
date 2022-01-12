@@ -39,14 +39,12 @@ mixin _$ClubFilterSettings {
     required TResult Function() empty,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult Function(FromReviewAvg fromReviewAvg)? $default, {
     TResult Function()? empty,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(FromReviewAvg fromReviewAvg)? $default, {
@@ -54,21 +52,18 @@ mixin _$ClubFilterSettings {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_ClubFilterSettings value) $default, {
     required TResult Function(_ClubFilterSettingsEmpty value) empty,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult Function(_ClubFilterSettings value)? $default, {
     TResult Function(_ClubFilterSettingsEmpty value)? empty,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_ClubFilterSettings value)? $default, {
@@ -91,7 +86,6 @@ class _$ClubFilterSettingsCopyWithImpl<$Res>
   _$ClubFilterSettingsCopyWithImpl(this._value, this._then);
 
   final ClubFilterSettings _value;
-
   // ignore: unused_field
   final $Res Function(ClubFilterSettings) _then;
 }
@@ -101,7 +95,6 @@ abstract class _$ClubFilterSettingsCopyWith<$Res> {
   factory _$ClubFilterSettingsCopyWith(
           _ClubFilterSettings value, $Res Function(_ClubFilterSettings) then) =
       __$ClubFilterSettingsCopyWithImpl<$Res>;
-
   $Res call({FromReviewAvg fromReviewAvg});
 }
 
@@ -226,11 +219,9 @@ class _$_ClubFilterSettings extends _ClubFilterSettings {
 abstract class _ClubFilterSettings extends ClubFilterSettings {
   factory _ClubFilterSettings({required FromReviewAvg fromReviewAvg}) =
       _$_ClubFilterSettings;
-
   _ClubFilterSettings._() : super._();
 
   FromReviewAvg get fromReviewAvg;
-
   @JsonKey(ignore: true)
   _$ClubFilterSettingsCopyWith<_ClubFilterSettings> get copyWith =>
       throw _privateConstructorUsedError;
@@ -340,6 +331,5 @@ class _$_ClubFilterSettingsEmpty extends _ClubFilterSettingsEmpty {
 
 abstract class _ClubFilterSettingsEmpty extends ClubFilterSettings {
   factory _ClubFilterSettingsEmpty() = _$_ClubFilterSettingsEmpty;
-
   _ClubFilterSettingsEmpty._() : super._();
 }

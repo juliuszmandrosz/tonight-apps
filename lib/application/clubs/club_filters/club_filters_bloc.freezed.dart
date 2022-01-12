@@ -43,7 +43,6 @@ mixin _$ClubFiltersEvent {
         onFilterDetailsUpdated,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String value)? onSearchFieldUpdated,
@@ -51,7 +50,6 @@ mixin _$ClubFiltersEvent {
         onFilterDetailsUpdated,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String value)? onSearchFieldUpdated,
@@ -60,7 +58,6 @@ mixin _$ClubFiltersEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(OnSearchFieldUpdated value) onSearchFieldUpdated,
@@ -68,14 +65,12 @@ mixin _$ClubFiltersEvent {
         onFilterDetailsUpdated,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(OnSearchFieldUpdated value)? onSearchFieldUpdated,
     TResult Function(OnFilterDetailsUpdated value)? onFilterDetailsUpdated,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnSearchFieldUpdated value)? onSearchFieldUpdated,
@@ -98,7 +93,6 @@ class _$ClubFiltersEventCopyWithImpl<$Res>
   _$ClubFiltersEventCopyWithImpl(this._value, this._then);
 
   final ClubFiltersEvent _value;
-
   // ignore: unused_field
   final $Res Function(ClubFiltersEvent) _then;
 }
@@ -108,7 +102,6 @@ abstract class $OnSearchFieldUpdatedCopyWith<$Res> {
   factory $OnSearchFieldUpdatedCopyWith(OnSearchFieldUpdated value,
           $Res Function(OnSearchFieldUpdated) then) =
       _$OnSearchFieldUpdatedCopyWithImpl<$Res>;
-
   $Res call({String value});
 }
 
@@ -236,11 +229,9 @@ class _$OnSearchFieldUpdated extends OnSearchFieldUpdated {
 
 abstract class OnSearchFieldUpdated extends ClubFiltersEvent {
   const factory OnSearchFieldUpdated(String value) = _$OnSearchFieldUpdated;
-
   const OnSearchFieldUpdated._() : super._();
 
   String get value;
-
   @JsonKey(ignore: true)
   $OnSearchFieldUpdatedCopyWith<OnSearchFieldUpdated> get copyWith =>
       throw _privateConstructorUsedError;
@@ -251,7 +242,6 @@ abstract class $OnFilterDetailsUpdatedCopyWith<$Res> {
   factory $OnFilterDetailsUpdatedCopyWith(OnFilterDetailsUpdated value,
           $Res Function(OnFilterDetailsUpdated) then) =
       _$OnFilterDetailsUpdatedCopyWithImpl<$Res>;
-
   $Res call({ClubFilterSettings clubFilterSettings});
 
   $ClubFilterSettingsCopyWith<$Res> get clubFilterSettings;
@@ -391,11 +381,9 @@ class _$OnFilterDetailsUpdated extends OnFilterDetailsUpdated {
 abstract class OnFilterDetailsUpdated extends ClubFiltersEvent {
   const factory OnFilterDetailsUpdated(ClubFilterSettings clubFilterSettings) =
       _$OnFilterDetailsUpdated;
-
   const OnFilterDetailsUpdated._() : super._();
 
   ClubFilterSettings get clubFilterSettings;
-
   @JsonKey(ignore: true)
   $OnFilterDetailsUpdatedCopyWith<OnFilterDetailsUpdated> get copyWith =>
       throw _privateConstructorUsedError;
@@ -427,14 +415,12 @@ mixin _$ClubFiltersState {
     required TResult Function(ClubFilter clubFilter) filtersUpdated,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(ClubFilter clubFilter)? filtersUpdated,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -442,21 +428,18 @@ mixin _$ClubFiltersState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ClubFiltersInitial value) initial,
     required TResult Function(_ClubFiltersUpdated value) filtersUpdated,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ClubFiltersInitial value)? initial,
     TResult Function(_ClubFiltersUpdated value)? filtersUpdated,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ClubFiltersInitial value)? initial,
@@ -479,7 +462,6 @@ class _$ClubFiltersStateCopyWithImpl<$Res>
   _$ClubFiltersStateCopyWithImpl(this._value, this._then);
 
   final ClubFiltersState _value;
-
   // ignore: unused_field
   final $Res Function(ClubFiltersState) _then;
 }
@@ -587,7 +569,6 @@ class _$_ClubFiltersInitial extends _ClubFiltersInitial {
 
 abstract class _ClubFiltersInitial extends ClubFiltersState {
   const factory _ClubFiltersInitial() = _$_ClubFiltersInitial;
-
   const _ClubFiltersInitial._() : super._();
 }
 
@@ -596,7 +577,6 @@ abstract class _$ClubFiltersUpdatedCopyWith<$Res> {
   factory _$ClubFiltersUpdatedCopyWith(
           _ClubFiltersUpdated value, $Res Function(_ClubFiltersUpdated) then) =
       __$ClubFiltersUpdatedCopyWithImpl<$Res>;
-
   $Res call({ClubFilter clubFilter});
 
   $ClubFilterCopyWith<$Res> get clubFilter;
@@ -730,11 +710,9 @@ class _$_ClubFiltersUpdated extends _ClubFiltersUpdated {
 abstract class _ClubFiltersUpdated extends ClubFiltersState {
   const factory _ClubFiltersUpdated(ClubFilter clubFilter) =
       _$_ClubFiltersUpdated;
-
   const _ClubFiltersUpdated._() : super._();
 
   ClubFilter get clubFilter;
-
   @JsonKey(ignore: true)
   _$ClubFiltersUpdatedCopyWith<_ClubFiltersUpdated> get copyWith =>
       throw _privateConstructorUsedError;

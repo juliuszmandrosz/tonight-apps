@@ -258,7 +258,6 @@ abstract class OnClubPageOpened implements ClubsOverviewEvent {
   const factory OnClubPageOpened(ClubFilter clubFilter) = _$OnClubPageOpened;
 
   ClubFilter get clubFilter;
-
   @JsonKey(ignore: true)
   $OnClubPageOpenedCopyWith<OnClubPageOpened> get copyWith =>
       throw _privateConstructorUsedError;
@@ -269,7 +268,6 @@ abstract class $OnFilterUpdatedCopyWith<$Res> {
   factory $OnFilterUpdatedCopyWith(
           OnFilterUpdated value, $Res Function(OnFilterUpdated) then) =
       _$OnFilterUpdatedCopyWithImpl<$Res>;
-
   $Res call({ClubFilter clubFilter});
 
   $ClubFilterCopyWith<$Res> get clubFilter;
@@ -414,7 +412,6 @@ abstract class OnFilterUpdated implements ClubsOverviewEvent {
   const factory OnFilterUpdated(ClubFilter clubFilter) = _$OnFilterUpdated;
 
   ClubFilter get clubFilter;
-
   @JsonKey(ignore: true)
   $OnFilterUpdatedCopyWith<OnFilterUpdated> get copyWith =>
       throw _privateConstructorUsedError;
@@ -425,7 +422,6 @@ abstract class $ClubsReceivedCopyWith<$Res> {
   factory $ClubsReceivedCopyWith(
           ClubsReceived value, $Res Function(ClubsReceived) then) =
       _$ClubsReceivedCopyWithImpl<$Res>;
-
   $Res call({Either<ClubFailure, List<ClubOverview>> failureOrClubs});
 }
 

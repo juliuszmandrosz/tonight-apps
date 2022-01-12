@@ -29,7 +29,7 @@ class ClubCard extends StatelessWidget {
                       child: Stack(
                         children: [
                           Container(
-                            height: 210,
+                            height: 220,
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: Image.network(
@@ -54,53 +54,65 @@ class ClubCard extends StatelessWidget {
                               width: double.infinity,
                               decoration:
                                   BoxDecoration(color: theme.backgroundColor),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        _clubOverview.clubName.getOrCrash(),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(_clubOverview.addressString
-                                          .getOrCrash()),
-                                      const Icon(Icons.favorite_border),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      RatingBarIndicator(
-                                        rating: clubReviewAvg,
-                                        itemCount: 5,
-                                        itemSize: 24,
-                                        direction: Axis.horizontal,
-                                        itemBuilder: (context, index) =>
-                                            const Icon(Icons.star),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            20, 0, 0, 0),
-                                        child: Text(clubReviewAvg.toString()),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            20, 0, 0, 0),
-                                        child: Text(_clubOverview.reviewCount
-                                                .getOrCrash()
-                                                .toString() +
-                                            " opinii"),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          _clubOverview.clubName.getOrCrash(),
+                                        ),
+                                      ],
+                                    ),
+                                    const Padding(
+                                        padding: EdgeInsets.only(top: 5)),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(_clubOverview.addressString
+                                            .getOrCrash()),
+                                        const Icon(Icons.favorite_border),
+                                      ],
+                                    ),
+                                    const Padding(
+                                        padding: EdgeInsets.only(top: 5)),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        RatingBarIndicator(
+                                          rating: clubReviewAvg,
+                                          itemCount: 5,
+                                          itemSize: 24,
+                                          direction: Axis.horizontal,
+                                          itemBuilder: (context, index) =>
+                                              const Icon(Icons.star),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              20, 0, 0, 0),
+                                          child: Text(
+                                            clubReviewAvg.toString(),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              20, 0, 0, 0),
+                                          child: Text(
+                                            _clubOverview.reviewCount
+                                                    .getOrCrash()
+                                                    .toString() +
+                                                " opinii", //TODO: Add dynamic return from facade
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),

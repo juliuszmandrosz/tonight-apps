@@ -7,4 +7,8 @@ class ClubValueFailure<T> with _$ClubValueFailure<T> {
   const factory ClubValueFailure.invalidPhoneNumber({
     required T failedValue,
   }) = InvalidPhoneNumber<T>;
+
+  const factory ClubValueFailure.invalidReviewAvg({
+    required T failedValue,
+  }) = InvalidReviewAvg<T>;
 }

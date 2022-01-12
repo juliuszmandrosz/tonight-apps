@@ -41,13 +41,6 @@ class ClubOverviewFacade implements IClubOverviewFacade {
             .where('clubName',
                 isLessThanOrEqualTo: "${filterWithValues.phrase}\uf7ff");
       }
-      filterWithValues.clubFilterSettings.map((notEmpty) {
-        filteredQuery = filteredQuery.where('reviewAvg',
-            isGreaterThanOrEqualTo: notEmpty.fromReviewAvg.fromReviewAvg);
-      }, empty: (empty) {
-        // filteredQuery =
-        //     filteredQuery.where('reviewAvg', isGreaterThanOrEqualTo: 1.0);
-      });
     }, empty: (value) {
       filteredQuery = query;
     });

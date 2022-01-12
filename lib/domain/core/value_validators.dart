@@ -1,5 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:raver/domain/core/value_failures.dart';
+import 'package:raver/domain/clubs/club_value_failures.dart';
+
+import 'value_failures.dart';
 
 Either<ValueFailure<String>, String> validateMaxStringLength(
     String input, int maxLength) {
