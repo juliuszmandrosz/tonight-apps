@@ -7,8 +7,6 @@ import 'package:injectable/injectable.dart';
 import 'package:raver/domain/auth/app_user.dart';
 import 'package:raver/domain/auth/auth_facade.dart';
 import 'package:raver/domain/auth/auth_failure.dart';
-import 'package:raver/domain/auth/value_objects/email_address.dart';
-import 'package:raver/domain/auth/value_objects/password.dart';
 import 'package:raver/infrastructure/auth/firebase_user_mapper.dart';
 
 @LazySingleton(as: AuthFacade)
@@ -20,38 +18,34 @@ class FirebaseAuthFacade implements AuthFacade {
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
-    required EmailAddress emailAddress,
-    required Password password,
+    required String emailAddress,
+    required String password,
   }) async {
-    final emailAddressStr = emailAddress.getOrCrash();
-    final passwordStr = password.getOrCrash();
-
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
-        email: emailAddressStr,
-        password: passwordStr,
+        email: emailAddress,
+        password: password,
       );
 
       return right(unit);
     } on PlatformException catch (e) {
-      return e.code == 'email-already-in-use'
-          ? left(const AuthFailure.emailAlreadyInUse())
-          : left(const AuthFailure.serverError());
+      return e.code == 'invalid-email'
+          ? left(const AuthFailure.invalidEmail())
+          : e.code == 'email-already-in-use'
+              ? left(const AuthFailure.emailAlreadyInUse())
+              : left(const AuthFailure.serverError());
     }
   }
 
   @override
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword({
-    required EmailAddress emailAddress,
-    required Password password,
+    required String emailAddress,
+    required String password,
   }) async {
-    final emailAddressStr = emailAddress.getOrCrash();
-    final passwordStr = password.getOrCrash();
-
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
-        email: emailAddressStr,
-        password: passwordStr,
+        email: emailAddress,
+        password: password,
       );
 
       return right(unit);

@@ -4,6 +4,6 @@ import 'package:raver/infrastructure/clubs/clubs_overview/filters/club_filter.da
 
 import 'club_failure.dart';
 
-abstract class IClubOverviewFacade {
+abstract class ClubOverviewFacade {
   Future<Either<ClubFailure, List<ClubOverview>>> getClubs(ClubFilter filter);
 }

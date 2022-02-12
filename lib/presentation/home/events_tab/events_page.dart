@@ -9,7 +9,7 @@ class EventsPage extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.start,
-      children: [const EventSearchBar()],
+      children: const [EventSearchBar()],
     );
   }
 }

@@ -11,14 +11,15 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:google_sign_in/google_sign_in.dart' as _i8;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'application/auth/auth_bloc.dart' as _i14;
-import 'application/auth/sign_in_form/sign_in_form_bloc.dart' as _i13;
-import 'application/clubs/club_filters/club_filters_bloc.dart' as _i3;
-import 'application/clubs/clubs_overview/clubs_overview_bloc.dart' as _i4;
-import 'domain/auth/auth_facade.dart' as _i11;
-import 'domain/clubs/club_overview/i_club_overview_facade.dart' as _i9;
-import 'infrastructure/auth/firebase_auth_facade.dart' as _i12;
-import 'infrastructure/clubs/clubs_overview/club_overview_facade.dart' as _i10;
+import 'application/auth/auth_cubit.dart' as _i14;
+import 'application/auth/sign_in_form/sign_in_form_cubit.dart' as _i13;
+import 'application/clubs/club_filters/club_filters_cubit.dart' as _i3;
+import 'application/clubs/clubs_overview/clubs_overview_cubit.dart' as _i4;
+import 'domain/auth/auth_facade.dart' as _i9;
+import 'domain/clubs/club_overview/club_overview_facade.dart' as _i11;
+import 'infrastructure/auth/firebase_auth_facade.dart' as _i10;
+import 'infrastructure/clubs/clubs_overview/firebase_club_overview_facade.dart'
+    as _i12;
 import 'infrastructure/core/firebase_injectable_module.dart'
     as _i15; // ignore_for_file: unnecessary_lambdas
 
@@ -28,8 +29,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
     {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
   final firebaseInjectableModule = _$FirebaseInjectableModule();
-  gh.factoryParam<_i3.ClubFiltersBloc, _i4.ClubsOverviewBloc?, dynamic>(
-      (_clubsOverviewBloc, _) => _i3.ClubFiltersBloc(_clubsOverviewBloc));
+  gh.factoryParam<_i3.ClubFiltersCubit, _i4.ClubsOverviewCubit?, dynamic>(
+      (_clubsOverviewCubit, _) => _i3.ClubFiltersCubit(_clubsOverviewCubit));
   gh.lazySingleton<_i5.FirebaseAuth>(
       () => firebaseInjectableModule.firebaseAuth);
   gh.lazySingleton<_i6.FirebaseFirestore>(
@@ -38,15 +39,15 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => firebaseInjectableModule.firebaseStorage);
   gh.lazySingleton<_i8.GoogleSignIn>(
       () => firebaseInjectableModule.googleSignIn);
-  gh.lazySingleton<_i9.IClubOverviewFacade>(
-      () => _i10.ClubOverviewFacade(get<_i6.FirebaseFirestore>()));
-  gh.lazySingleton<_i11.AuthFacade>(() => _i12.FirebaseAuthFacade(
+  gh.lazySingleton<_i9.AuthFacade>(() => _i10.FirebaseAuthFacade(
       get<_i5.FirebaseAuth>(), get<_i8.GoogleSignIn>()));
-  gh.factory<_i4.ClubsOverviewBloc>(
-      () => _i4.ClubsOverviewBloc(get<_i9.IClubOverviewFacade>()));
-  gh.factory<_i13.SignInFormBloc>(
-      () => _i13.SignInFormBloc(get<_i11.AuthFacade>()));
-  gh.factory<_i14.AuthBloc>(() => _i14.AuthBloc(get<_i11.AuthFacade>()));
+  gh.lazySingleton<_i11.ClubOverviewFacade>(
+      () => _i12.FirebaseClubOverviewFacade(get<_i6.FirebaseFirestore>()));
+  gh.factory<_i4.ClubsOverviewCubit>(
+      () => _i4.ClubsOverviewCubit(get<_i11.ClubOverviewFacade>()));
+  gh.factory<_i13.SignInFormCubit>(
+      () => _i13.SignInFormCubit(get<_i9.AuthFacade>()));
+  gh.factory<_i14.AuthCubit>(() => _i14.AuthCubit(get<_i9.AuthFacade>()));
   return get;
 }
 

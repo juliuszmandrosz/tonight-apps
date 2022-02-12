@@ -7,6 +7,8 @@
 // **************************************************************************
 // AutoRouteGenerator
 // **************************************************************************
+//
+// ignore_for_file: type=lint
 
 part of 'app_router.dart';
 
@@ -53,8 +55,8 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   List<RouteConfig> get routes => [
-        RouteConfig(SplashRoute.name, path: '/'),
-        RouteConfig(SignInRoute.name, path: '/sign-in-page'),
+        RouteConfig(SplashRoute.name, path: '/splash-page'),
+        RouteConfig(SignInRoute.name, path: '/'),
         RouteConfig(NavigatorRouter.name, path: '/navigator-page', children: [
           RouteConfig(HomeRouter.name,
               path: 'home',
@@ -82,7 +84,7 @@ class _$AppRouter extends RootStackRouter {
 /// generated route for
 /// [SplashPage]
 class SplashRoute extends PageRouteInfo<void> {
-  const SplashRoute() : super(SplashRoute.name, path: '/');
+  const SplashRoute() : super(SplashRoute.name, path: '/splash-page');
 
   static const String name = 'SplashRoute';
 }
@@ -90,7 +92,7 @@ class SplashRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [SignInPage]
 class SignInRoute extends PageRouteInfo<void> {
-  const SignInRoute() : super(SignInRoute.name, path: '/sign-in-page');
+  const SignInRoute() : super(SignInRoute.name, path: '/');
 
   static const String name = 'SignInRoute';
 }

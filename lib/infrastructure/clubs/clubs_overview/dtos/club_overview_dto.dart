@@ -1,15 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:raver/domain/clubs/club_overview/club_overview_entity.dart';
-import 'package:raver/domain/clubs/club_overview/value_objects/address_string.dart';
-import 'package:raver/domain/clubs/club_overview/value_objects/club_image.dart';
-import 'package:raver/domain/clubs/club_overview/value_objects/club_name.dart';
-import 'package:raver/domain/clubs/club_overview/value_objects/review_avg.dart';
-import 'package:raver/domain/clubs/club_overview/value_objects/review_count.dart';
 
 part 'club_overview_dto.freezed.dart';
-
 part 'club_overview_dto.g.dart';
 
 @freezed
@@ -25,11 +18,11 @@ abstract class ClubOverviewDto implements _$ClubOverviewDto {
 
   factory ClubOverviewDto.fromDomain(ClubOverview club) {
     return ClubOverviewDto(
-        clubName: club.clubName.getOrCrash(),
-        clubImageUrl: club.clubImageUrl.getOrCrash(),
-        reviewCount: club.reviewCount.getOrCrash(),
-        reviewAvg: club.reviewAvg.getOrCrash(),
-        addressString: club.addressString.getOrCrash());
+        clubName: club.clubName,
+        clubImageUrl: club.clubImageUrl,
+        reviewCount: club.reviewCount,
+        reviewAvg: club.reviewAvg,
+        addressString: club.addressString);
   }
 
   factory ClubOverviewDto.fromJson(Map<String, dynamic> json) =>
@@ -42,10 +35,11 @@ abstract class ClubOverviewDto implements _$ClubOverviewDto {
 
   ClubOverview toDomain() {
     return ClubOverview(
-        clubName: ClubName(clubName),
-        clubImageUrl: ClubImageUrl(clubImageUrl),
-        reviewCount: ReviewCount(reviewCount),
-        reviewAvg: ReviewAvg(reviewAvg),
-        addressString: AddressString(addressString));
+      clubName: clubName,
+      clubImageUrl: clubImageUrl,
+      reviewCount: reviewCount,
+      reviewAvg: reviewAvg,
+      addressString: addressString,
+    );
   }
 }

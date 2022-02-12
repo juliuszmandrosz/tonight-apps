@@ -3,25 +3,16 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:raver/domain/auth/auth_facade.dart';
 
-part 'auth_event.dart';
+part 'auth_cubit.freezed.dart';
 part 'auth_state.dart';
-part 'auth_bloc.freezed.dart';
 
 @injectable
-class AuthBloc extends Bloc<AuthEvent, AuthState> {
+class AuthCubit extends Cubit<AuthState> {
   final AuthFacade _authFacade;
 
-  AuthState get initialState => const AuthState.initial();
+  AuthCubit(this._authFacade) : super(const AuthState.initial());
 
-  AuthBloc(this._authFacade) : super(const AuthState.initial()) {
-    on<AuthCheckRequested>(_onAuthCheckRequested);
-    on<SignedOut>(_onSignedOut);
-  }
-
-  void _onAuthCheckRequested(
-    AuthEvent event,
-    Emitter<AuthState> emit,
-  ) {
+  void requestAuthCheck() {
     final userOption = _authFacade.getSignedUser();
     userOption.fold(
       () => emit(const AuthState.unauthenticated()),
@@ -29,10 +20,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  void _onSignedOut(
-    AuthEvent event,
-    Emitter<AuthState> emit,
-  ) async {
+  void signOut() async {
     await _authFacade.signOut();
     emit(const AuthState.unauthenticated());
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/clubs/club_filters/club_filters_bloc.dart';
+import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
 
 class SearchField extends StatefulWidget {
   const SearchField({Key? key}) : super(key: key);
@@ -23,9 +23,8 @@ class _SearchFieldState extends State<SearchField> {
     return TextField(
       controller: textController,
       onSubmitted: (value) {
-        print("Searched");
-        BlocProvider.of<ClubFiltersBloc>(context)
-            .add(ClubFiltersEvent.onSearchFieldUpdated(value));
+        BlocProvider.of<ClubFiltersCubit>(context)
+            .onSearchFieldSubmitted(value);
       },
       decoration: InputDecoration(
         hintText: "Search",

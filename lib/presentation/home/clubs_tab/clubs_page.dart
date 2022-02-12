@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/clubs/club_filters/club_filters_bloc.dart';
-import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
+import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
+import 'package:raver/application/clubs/clubs_overview/clubs_overview_cubit.dart';
 import 'package:raver/infrastructure/clubs/clubs_overview/filters/club_filter.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_card.dart';
@@ -14,20 +14,22 @@ class ClubsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ClubsOverviewBloc>(
-            create: (context) => getIt<ClubsOverviewBloc>()
-              ..add(ClubsOverviewEvent.onClubPageOpened(ClubFilter.empty()))),
-        //TODO: Need to look if injectable has possibility to add factory params
+        BlocProvider<ClubsOverviewCubit>(
+          create: (context) =>
+              getIt<ClubsOverviewCubit>()..getClubs(ClubFilter.empty()),
+        ),
         BlocProvider(
-            create: (context) => getIt<ClubFiltersBloc>(
-                param1: BlocProvider.of<ClubsOverviewBloc>(context))),
+          create: (context) => getIt<ClubFiltersCubit>(
+            param1: BlocProvider.of<ClubsOverviewCubit>(context),
+          ),
+        ),
       ],
       child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const ClubSearchBar(),
-            BlocBuilder<ClubsOverviewBloc, ClubsOverviewState>(
+            BlocBuilder<ClubsOverviewCubit, ClubsOverviewState>(
               builder: (context, state) {
                 return state.map(
                   initial: (_) => Container(),

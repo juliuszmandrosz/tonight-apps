@@ -12,7 +12,7 @@ class ClubCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final clubReviewAvg = _clubOverview.reviewAvg.getOrCrash();
+    final clubReviewAvg = _clubOverview.reviewAvg;
     return Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -32,9 +32,9 @@ class ClubCard extends StatelessWidget {
                             height: 220,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: Image.network(
-                                    _clubOverview.clubImageUrl.getOrCrash(),
-                                  ).image,
+                                  image:
+                                      Image.network(_clubOverview.clubImageUrl)
+                                          .image,
                                   fit: BoxFit.cover),
                               boxShadow: const [
                                 BoxShadow(
@@ -60,9 +60,7 @@ class ClubCard extends StatelessWidget {
                                   children: [
                                     Row(
                                       children: [
-                                        Text(
-                                          _clubOverview.clubName.getOrCrash(),
-                                        ),
+                                        Text(_clubOverview.clubName),
                                       ],
                                     ),
                                     const Padding(
@@ -71,8 +69,7 @@ class ClubCard extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(_clubOverview.addressString
-                                            .getOrCrash()),
+                                        Text(_clubOverview.addressString),
                                         const Icon(Icons.favorite_border),
                                       ],
                                     ),
@@ -104,7 +101,6 @@ class ClubCard extends StatelessWidget {
                                               20, 0, 0, 0),
                                           child: Text(
                                             _clubOverview.reviewCount
-                                                    .getOrCrash()
                                                     .toString() +
                                                 " opinii", //TODO: Add dynamic return from facade
                                           ),

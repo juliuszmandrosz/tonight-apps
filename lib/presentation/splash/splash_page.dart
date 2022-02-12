@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/auth/auth_bloc.dart';
+import 'package:raver/application/auth/auth_cubit.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 
 class SplashPage extends StatelessWidget {
@@ -9,7 +9,7 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
+    return BlocListener<AuthCubit, AuthState>(
       listener: (ctx, state) {
         state.map(
           initial: (_) {},

@@ -1,20 +1,23 @@
 import 'package:dartz/dartz.dart';
-import 'package:raver/domain/auth/auth_failure.dart';
 import 'package:raver/domain/auth/app_user.dart';
-import 'package:raver/domain/auth/value_objects/email_address.dart';
-import 'package:raver/domain/auth/value_objects/password.dart';
+import 'package:raver/domain/auth/auth_failure.dart';
 
 abstract class AuthFacade {
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
-    required EmailAddress emailAddress,
-    required Password password,
+    required String emailAddress,
+    required String password,
   });
+
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword({
-    required EmailAddress emailAddress,
-    required Password password,
+    required String emailAddress,
+    required String password,
   });
+
   Future<Either<AuthFailure, Unit>> signInWithGoogle();
+
   Future<Either<AuthFailure, Unit>> signInWithFacebook();
+
   Option<AppUser> getSignedUser();
+
   Future<void> signOut();
 }

@@ -1,22 +1,18 @@
-part of 'sign_in_form_bloc.dart';
+part of 'sign_in_form_cubit.dart';
 
 @freezed
 class SignInFormState with _$SignInFormState {
   const factory SignInFormState({
-    required EmailAddress emailAddress,
-    required Password password,
-    required bool showErrorMessages,
+    required String emailAddress,
+    required String password,
     required bool isSubmitting,
     required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
-    required Option<String> failureMessage,
   }) = _SignInFormState;
 
   factory SignInFormState.initial() => SignInFormState(
-        emailAddress: EmailAddress(''),
-        password: Password(''),
-        showErrorMessages: false,
+        emailAddress: '',
+        password: '',
         isSubmitting: false,
         authFailureOrSuccessOption: none(),
-        failureMessage: none(),
       );
 }

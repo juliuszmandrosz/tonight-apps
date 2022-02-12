@@ -1,4 +1,4 @@
-part of 'club_filters_bloc.dart';
+part of 'club_filters_cubit.dart';
 
 @freezed
 abstract class ClubFiltersState with _$ClubFiltersState {
