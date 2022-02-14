@@ -15,9 +15,8 @@ part 'app_router.gr.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    AutoRoute(page: SplashPage),
-    // TODO - fix bloc listener in splash page and change initial route
-    AutoRoute(page: SignInPage, initial: true),
+    AutoRoute(page: SplashPage, initial: true),
+    AutoRoute(page: SignInPage),
     AutoRoute(
       name: "NavigatorRouter",
       page: NavigatorPage,

@@ -12,13 +12,11 @@ class SplashPage extends StatelessWidget {
     return BlocListener<AuthCubit, AuthState>(
       listener: (ctx, state) {
         state.map(
-          initial: (_) {},
-          authenticated: (_) => {
-            AutoRouter.of(context).replace(const NavigatorRouter()),
-          },
-          unauthenticated: (_) =>
-              AutoRouter.of(context).replace(const SignInRoute()),
-        );
+            initial: (_) {},
+            authenticated: (_) =>
+                AutoRouter.of(context).replace(const NavigatorRouter()),
+            unauthenticated: (_) =>
+                AutoRouter.of(context).replace(const SignInRoute()));
       },
       child: const Scaffold(
         body: Center(

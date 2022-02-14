@@ -17,7 +17,7 @@ abstract class AuthFacade {
 
   Future<Either<AuthFailure, Unit>> signInWithFacebook();
 
-  Option<AppUser> getSignedUser();
+  Future<Option<AppUser>> getSignedUser();
 
   Future<void> signOut();
 }

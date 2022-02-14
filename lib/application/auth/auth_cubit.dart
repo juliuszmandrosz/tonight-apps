@@ -12,8 +12,8 @@ class AuthCubit extends Cubit<AuthState> {
 
   AuthCubit(this._authFacade) : super(const AuthState.initial());
 
-  void requestAuthCheck() {
-    final userOption = _authFacade.getSignedUser();
+  void requestAuthCheck() async {
+    final userOption = await _authFacade.getSignedUser();
     userOption.fold(
       () => emit(const AuthState.unauthenticated()),
       (_) => emit(const AuthState.authenticated()),

@@ -98,9 +98,9 @@ class FirebaseAuthFacade implements AuthFacade {
   }
 
   @override
-  Option<AppUser> getSignedUser() {
+  Future<Option<AppUser>> getSignedUser() {
     final firebaseUser = _firebaseAuth.currentUser;
-    return optionOf(firebaseUser?.toDomain());
+    return Future.value(optionOf(firebaseUser?.toDomain()));
   }
 
   @override
