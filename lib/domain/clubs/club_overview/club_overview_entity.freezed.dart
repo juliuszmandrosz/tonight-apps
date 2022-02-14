@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'club_overview_entity.dart';
@@ -18,11 +19,11 @@ class _$ClubOverviewTearOff {
   const _$ClubOverviewTearOff();
 
   _ClubOverview call(
-      {required ClubName clubName,
-      required ClubImageUrl clubImageUrl,
-      required ReviewCount reviewCount,
-      required ReviewAvg reviewAvg,
-      required AddressString addressString}) {
+      {required String clubName,
+      required String clubImageUrl,
+      required int reviewCount,
+      required double reviewAvg,
+      required String addressString}) {
     return _ClubOverview(
       clubName: clubName,
       clubImageUrl: clubImageUrl,
@@ -38,11 +39,11 @@ const $ClubOverview = _$ClubOverviewTearOff();
 
 /// @nodoc
 mixin _$ClubOverview {
-  ClubName get clubName => throw _privateConstructorUsedError;
-  ClubImageUrl get clubImageUrl => throw _privateConstructorUsedError;
-  ReviewCount get reviewCount => throw _privateConstructorUsedError;
-  ReviewAvg get reviewAvg => throw _privateConstructorUsedError;
-  AddressString get addressString => throw _privateConstructorUsedError;
+  String get clubName => throw _privateConstructorUsedError;
+  String get clubImageUrl => throw _privateConstructorUsedError;
+  int get reviewCount => throw _privateConstructorUsedError;
+  double get reviewAvg => throw _privateConstructorUsedError;
+  String get addressString => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ClubOverviewCopyWith<ClubOverview> get copyWith =>
@@ -55,11 +56,11 @@ abstract class $ClubOverviewCopyWith<$Res> {
           ClubOverview value, $Res Function(ClubOverview) then) =
       _$ClubOverviewCopyWithImpl<$Res>;
   $Res call(
-      {ClubName clubName,
-      ClubImageUrl clubImageUrl,
-      ReviewCount reviewCount,
-      ReviewAvg reviewAvg,
-      AddressString addressString});
+      {String clubName,
+      String clubImageUrl,
+      int reviewCount,
+      double reviewAvg,
+      String addressString});
 }
 
 /// @nodoc
@@ -82,23 +83,23 @@ class _$ClubOverviewCopyWithImpl<$Res> implements $ClubOverviewCopyWith<$Res> {
       clubName: clubName == freezed
           ? _value.clubName
           : clubName // ignore: cast_nullable_to_non_nullable
-              as ClubName,
+              as String,
       clubImageUrl: clubImageUrl == freezed
           ? _value.clubImageUrl
           : clubImageUrl // ignore: cast_nullable_to_non_nullable
-              as ClubImageUrl,
+              as String,
       reviewCount: reviewCount == freezed
           ? _value.reviewCount
           : reviewCount // ignore: cast_nullable_to_non_nullable
-              as ReviewCount,
+              as int,
       reviewAvg: reviewAvg == freezed
           ? _value.reviewAvg
           : reviewAvg // ignore: cast_nullable_to_non_nullable
-              as ReviewAvg,
+              as double,
       addressString: addressString == freezed
           ? _value.addressString
           : addressString // ignore: cast_nullable_to_non_nullable
-              as AddressString,
+              as String,
     ));
   }
 }
@@ -111,11 +112,11 @@ abstract class _$ClubOverviewCopyWith<$Res>
       __$ClubOverviewCopyWithImpl<$Res>;
   @override
   $Res call(
-      {ClubName clubName,
-      ClubImageUrl clubImageUrl,
-      ReviewCount reviewCount,
-      ReviewAvg reviewAvg,
-      AddressString addressString});
+      {String clubName,
+      String clubImageUrl,
+      int reviewCount,
+      double reviewAvg,
+      String addressString});
 }
 
 /// @nodoc
@@ -140,23 +141,23 @@ class __$ClubOverviewCopyWithImpl<$Res> extends _$ClubOverviewCopyWithImpl<$Res>
       clubName: clubName == freezed
           ? _value.clubName
           : clubName // ignore: cast_nullable_to_non_nullable
-              as ClubName,
+              as String,
       clubImageUrl: clubImageUrl == freezed
           ? _value.clubImageUrl
           : clubImageUrl // ignore: cast_nullable_to_non_nullable
-              as ClubImageUrl,
+              as String,
       reviewCount: reviewCount == freezed
           ? _value.reviewCount
           : reviewCount // ignore: cast_nullable_to_non_nullable
-              as ReviewCount,
+              as int,
       reviewAvg: reviewAvg == freezed
           ? _value.reviewAvg
           : reviewAvg // ignore: cast_nullable_to_non_nullable
-              as ReviewAvg,
+              as double,
       addressString: addressString == freezed
           ? _value.addressString
           : addressString // ignore: cast_nullable_to_non_nullable
-              as AddressString,
+              as String,
     ));
   }
 }
@@ -173,15 +174,15 @@ class _$_ClubOverview extends _ClubOverview {
       : super._();
 
   @override
-  final ClubName clubName;
+  final String clubName;
   @override
-  final ClubImageUrl clubImageUrl;
+  final String clubImageUrl;
   @override
-  final ReviewCount reviewCount;
+  final int reviewCount;
   @override
-  final ReviewAvg reviewAvg;
+  final double reviewAvg;
   @override
-  final AddressString addressString;
+  final String addressString;
 
   @override
   String toString() {
@@ -220,23 +221,23 @@ class _$_ClubOverview extends _ClubOverview {
 
 abstract class _ClubOverview extends ClubOverview {
   const factory _ClubOverview(
-      {required ClubName clubName,
-      required ClubImageUrl clubImageUrl,
-      required ReviewCount reviewCount,
-      required ReviewAvg reviewAvg,
-      required AddressString addressString}) = _$_ClubOverview;
+      {required String clubName,
+      required String clubImageUrl,
+      required int reviewCount,
+      required double reviewAvg,
+      required String addressString}) = _$_ClubOverview;
   const _ClubOverview._() : super._();
 
   @override
-  ClubName get clubName;
+  String get clubName;
   @override
-  ClubImageUrl get clubImageUrl;
+  String get clubImageUrl;
   @override
-  ReviewCount get reviewCount;
+  int get reviewCount;
   @override
-  ReviewAvg get reviewAvg;
+  double get reviewAvg;
   @override
-  AddressString get addressString;
+  String get addressString;
   @override
   @JsonKey(ignore: true)
   _$ClubOverviewCopyWith<_ClubOverview> get copyWith =>

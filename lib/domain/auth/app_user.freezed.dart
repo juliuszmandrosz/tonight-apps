@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'app_user.dart';
@@ -17,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AppUserTearOff {
   const _$AppUserTearOff();
 
-  _AppUser call({required UniqueId id}) {
+  _AppUser call({required String id}) {
     return _AppUser(
       id: id,
     );
@@ -29,7 +30,7 @@ const $AppUser = _$AppUserTearOff();
 
 /// @nodoc
 mixin _$AppUser {
-  UniqueId get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppUserCopyWith<AppUser> get copyWith => throw _privateConstructorUsedError;
@@ -39,7 +40,7 @@ mixin _$AppUser {
 abstract class $AppUserCopyWith<$Res> {
   factory $AppUserCopyWith(AppUser value, $Res Function(AppUser) then) =
       _$AppUserCopyWithImpl<$Res>;
-  $Res call({UniqueId id});
+  $Res call({String id});
 }
 
 /// @nodoc
@@ -58,7 +59,7 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as String,
     ));
   }
 }
@@ -68,7 +69,7 @@ abstract class _$AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   factory _$AppUserCopyWith(_AppUser value, $Res Function(_AppUser) then) =
       __$AppUserCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id});
+  $Res call({String id});
 }
 
 /// @nodoc
@@ -88,7 +89,7 @@ class __$AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+              as String,
     ));
   }
 }
@@ -99,7 +100,7 @@ class _$_AppUser implements _AppUser {
   const _$_AppUser({required this.id});
 
   @override
-  final UniqueId id;
+  final String id;
 
   @override
   String toString() {
@@ -125,10 +126,10 @@ class _$_AppUser implements _AppUser {
 }
 
 abstract class _AppUser implements AppUser {
-  const factory _AppUser({required UniqueId id}) = _$_AppUser;
+  const factory _AppUser({required String id}) = _$_AppUser;
 
   @override
-  UniqueId get id;
+  String get id;
   @override
   @JsonKey(ignore: true)
   _$AppUserCopyWith<_AppUser> get copyWith =>
