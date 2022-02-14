@@ -1,5 +1,5 @@
 class FromReviewAvg {
-  static const String FIRESTORE_FIELD_NAME = 'reviewAvg';
+  static const String firestoreFieldName = 'reviewAvg';
 
   final double fromReviewAvg;
 

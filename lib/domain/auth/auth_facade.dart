@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:raver/domain/auth/app_user.dart';
+import 'package:raver/domain/auth/app_user_entity.dart';
 import 'package:raver/domain/auth/auth_failure.dart';
 
 abstract class AuthFacade {

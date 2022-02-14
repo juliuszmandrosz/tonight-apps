@@ -5,9 +5,9 @@ import 'package:logger/logger.dart';
 import 'package:raver/domain/clubs/club_overview/club_failure.dart';
 import 'package:raver/domain/clubs/club_overview/club_overview_entity.dart';
 import 'package:raver/domain/clubs/club_overview/club_overview_facade.dart';
+import 'package:raver/domain/clubs/filters/club_filter.dart';
 
 import 'dtos/club_overview_dto.dart';
-import 'filters/club_filter.dart';
 
 @LazySingleton(as: ClubOverviewFacade)
 class FirebaseClubOverviewFacade implements ClubOverviewFacade {

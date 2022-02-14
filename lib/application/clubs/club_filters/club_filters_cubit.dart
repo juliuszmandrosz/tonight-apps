@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_cubit.dart';
-import 'package:raver/infrastructure/clubs/clubs_overview/filters/club_filter.dart';
-import 'package:raver/infrastructure/clubs/clubs_overview/filters/club_filters_settings.dart';
+import 'package:raver/domain/clubs/filters/club_filter.dart';
+import 'package:raver/domain/clubs/filters/club_filters_settings.dart';
 
 part 'club_filters_cubit.freezed.dart';
 part 'club_filters_state.dart';

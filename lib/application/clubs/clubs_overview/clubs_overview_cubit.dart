@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 import 'package:raver/domain/clubs/club_overview/club_failure.dart';
 import 'package:raver/domain/clubs/club_overview/club_overview_entity.dart';
 import 'package:raver/domain/clubs/club_overview/club_overview_facade.dart';
-import 'package:raver/infrastructure/clubs/clubs_overview/filters/club_filter.dart';
+import 'package:raver/domain/clubs/filters/club_filter.dart';
 
 part 'clubs_overview_cubit.freezed.dart';
 part 'clubs_overview_state.dart';

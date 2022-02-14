@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import 'package:raver/domain/auth/app_user.dart';
+import 'package:raver/domain/auth/app_user_entity.dart';
 import 'package:raver/domain/auth/auth_facade.dart';
 import 'package:raver/domain/auth/auth_failure.dart';
 import 'package:raver/infrastructure/auth/firebase_user_mapper.dart';

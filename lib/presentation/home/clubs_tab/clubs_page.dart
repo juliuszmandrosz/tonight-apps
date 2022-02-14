@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_cubit.dart';
-import 'package:raver/infrastructure/clubs/clubs_overview/filters/club_filter.dart';
+import 'package:raver/domain/clubs/filters/club_filter.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_card.dart';
 import 'package:raver/presentation/home/widgets/club_search_bar.dart';
