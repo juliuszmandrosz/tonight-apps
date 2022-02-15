@@ -9,12 +9,13 @@ part 'club_overview_dto.g.dart';
 abstract class ClubOverviewDto implements _$ClubOverviewDto {
   const ClubOverviewDto._();
 
-  const factory ClubOverviewDto(
-      {required String clubName,
-      required String clubImageUrl,
-      required int reviewCount,
-      required double reviewAvg,
-      required String addressString}) = _ClubOverviewDto;
+  const factory ClubOverviewDto({
+    required String clubName,
+    required String clubImageUrl,
+    required int reviewCount,
+    required double reviewAvg,
+    required String addressString,
+  }) = _ClubOverviewDto;
 
   factory ClubOverviewDto.fromDomain(ClubOverview club) {
     return ClubOverviewDto(
