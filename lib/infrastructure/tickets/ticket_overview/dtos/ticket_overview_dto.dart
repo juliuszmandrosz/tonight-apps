@@ -7,24 +7,20 @@ part 'ticket_overview_dto.g.dart';
 
 @freezed
 class TicketOverviewDto with _$TicketOverviewDto {
+  const TicketOverviewDto._();
+
+  // ignore: invalid_annotation_target
+  @JsonSerializable()
   const factory TicketOverviewDto({
     required String clubName,
     required String eventName,
-    @JsonKey(fromJson: _stringFromTimestamp, toJson: _timestampFromString)
+    // ignore: invalid_annotation_target
+    @JsonKey(fromJson: dateTimeFromTimestamp, toJson: timestampFromDateTime)
     required  DateTime eventDateTime,
     required int price,
     required bool isVip,
     required bool isExpired,
   }) = _TicketOverviewDto;
-
-  static String _stringFromTimestamp(Timestamp timestamp) {
-    return timestamp.toDate().toString();
-  }
-
-  static Timestamp _timestampFromString(String string) {
-    return Timestamp.fromDate(DateTime.parse(string));
-  }
-
 
   factory TicketOverviewDto.fromDomain(TicketOverview ticket) {
     return TicketOverviewDto(
@@ -57,6 +53,12 @@ class TicketOverviewDto with _$TicketOverviewDto {
     );
   }
 }
+
+
+DateTime dateTimeFromTimestamp(Timestamp timestamp) => timestamp.toDate();
+
+Timestamp timestampFromDateTime(DateTime dateTime) => Timestamp.fromDate(dateTime);
+
 
 
 
