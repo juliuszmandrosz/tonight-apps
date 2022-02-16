@@ -1,23 +1,24 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:injectable/injectable.dart';
 import 'package:raver/domain/auth/app_user_entity.dart';
 import 'package:raver/domain/auth/auth_facade.dart';
 import 'package:raver/domain/auth/auth_failure.dart';
 import 'package:raver/infrastructure/auth/firebase_user_mapper.dart';
 import 'package:raver/infrastructure/core/firestore_helpers.dart';
 
-@LazySingleton(as: AuthFacade)
 class FirebaseAuthFacade implements AuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
   final FirebaseFirestore _firestore;
 
-  FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn, this._firestore);
+  FirebaseAuthFacade({
+    required FirebaseAuth firebaseAuth,
+    required GoogleSignIn googleSignIn,
+  })  : _firebaseAuth = firebaseAuth,
+        _googleSignIn = googleSignIn;
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({

@@ -6,8 +6,7 @@ abstract class ClubsOverviewState with _$ClubsOverviewState {
 
   const factory ClubsOverviewState.loadInProgress() = _LoadInProgress;
 
-  const factory ClubsOverviewState.loadSuccess(List<ClubOverview> clubs) =
-      _LoadSuccess;
+  const factory ClubsOverviewState.loadSuccess(List<Club> clubs) = _LoadSuccess;
 
   const factory ClubsOverviewState.loadFailure(ClubFailure clubFailure) =
       _LoadFailure;

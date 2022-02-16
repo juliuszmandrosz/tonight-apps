@@ -1,18 +1,24 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:raver/domain/clubs/club_overview/club_overview_entity.dart';
+import 'package:raver/domain/clubs/club_entity.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 
 class ClubCard extends StatelessWidget {
-  final ClubOverview _clubOverview;
+  static const heroTagPhrase = "clubPhoto";
 
-  const ClubCard({Key? key, required ClubOverview club})
-      : _clubOverview = club,
+  final Club _club;
+  final String _heroTagPhraseWithIndex;
+
+  ClubCard({Key? key, required Club club, required int index})
+      : _club = club,
+        _heroTagPhraseWithIndex = heroTagPhrase + index.toString(),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final clubReviewAvg = _clubOverview.reviewAvg;
+    final clubReviewAvg = _club.reviewAvg;
     return Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -23,27 +29,32 @@ class ClubCard extends StatelessWidget {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                    padding: const EdgeInsets.only(top: 5),
                     child: InkWell(
-                      onTap: () async {},
+                      onTap: () {
+                        context.router.push(ClubRoute(
+                            club: _club, heroTag: _heroTagPhraseWithIndex));
+                      },
                       child: Stack(
                         children: [
-                          Container(
-                            height: 220,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image:
-                                      Image.network(_clubOverview.clubImageUrl)
-                                          .image,
-                                  fit: BoxFit.cover),
-                              boxShadow: const [
-                                BoxShadow(
-                                  blurRadius: 3,
-                                  color: Color(0x33000000),
-                                  offset: Offset(0, 2),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(8),
+                          Hero(
+                            tag: _heroTagPhraseWithIndex,
+                            child: Container(
+                              height: 220,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image:
+                                        Image.network(_club.clubImageUrl).image,
+                                    fit: BoxFit.cover),
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 3,
+                                    color: theme.shadowColor,
+                                    offset: const Offset(0, 2),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(8),
+                              ),
                             ),
                           ),
                           Positioned(
@@ -60,7 +71,7 @@ class ClubCard extends StatelessWidget {
                                   children: [
                                     Row(
                                       children: [
-                                        Text(_clubOverview.clubName),
+                                        Text(_club.clubName),
                                       ],
                                     ),
                                     const Padding(
@@ -69,7 +80,7 @@ class ClubCard extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(_clubOverview.addressString),
+                                        Text(_club.locationString),
                                         const Icon(Icons.favorite_border),
                                       ],
                                     ),
@@ -90,18 +101,17 @@ class ClubCard extends StatelessWidget {
                                               const Icon(Icons.star),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              20, 0, 0, 0),
+                                          padding:
+                                              const EdgeInsets.only(left: 20),
                                           child: Text(
                                             clubReviewAvg.toString(),
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              20, 0, 0, 0),
+                                          padding:
+                                              const EdgeInsets.only(left: 20),
                                           child: Text(
-                                            _clubOverview.reviewCount
-                                                    .toString() +
+                                            _club.reviewCount.toString() +
                                                 " opinii", //TODO: Add dynamic return from facade
                                           ),
                                         ),

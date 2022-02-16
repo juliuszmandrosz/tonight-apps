@@ -25,35 +25,36 @@ class ClubsPage extends StatelessWidget {
         ),
       ],
       child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const ClubSearchBar(),
-            BlocBuilder<ClubsOverviewCubit, ClubsOverviewState>(
-              builder: (context, state) {
-                return state.map(
-                  initial: (_) => Container(),
-                  loadInProgress: (_) =>
-                      const Center(child: CircularProgressIndicator()),
-                  loadFailure: (state) => Center(
-                    child: Text(state.clubFailure.toString()),
-                  ),
-                  loadSuccess: (state) {
-                    return Expanded(
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: state.clubs.length,
-                        itemBuilder: (context, index) {
-                          final club = state.clubs[index];
-                          return ClubCard(club: club);
-                        },
-                      ),
-                    );
-                  },
-                );
-              },
-            ),
-          ]),
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const ClubSearchBar(),
+          BlocBuilder<ClubsOverviewCubit, ClubsOverviewState>(
+            builder: (context, state) {
+              return state.map(
+                initial: (_) => Container(),
+                loadInProgress: (_) =>
+                    const Center(child: CircularProgressIndicator()),
+                loadFailure: (state) => Center(
+                  child: Text(state.clubFailure.toString()),
+                ),
+                loadSuccess: (state) {
+                  return Expanded(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: state.clubs.length,
+                      itemBuilder: (context, index) {
+                        final club = state.clubs[index];
+                        return ClubCard(club: club, index: index);
+                      },
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }

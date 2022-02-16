@@ -5,6 +5,11 @@ import 'package:raver/presentation/config/themes/default_theme/default_colors.da
 class DefaultTextStyles {
   DefaultTextStyles._();
 
+  static TextStyle titleMedium = GoogleFonts.lexendDeca(
+      fontSize: 22,
+      color: DefaultColors.textColor,
+      fontWeight: FontWeight.bold);
+
   static TextStyle subtitle1 = GoogleFonts.lexendDeca(
     fontSize: 18,
     color: DefaultColors.textColor,
