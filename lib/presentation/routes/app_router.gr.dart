@@ -31,6 +31,10 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const HomePage());
     },
+    TicketsRouter.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const TicketOverviewPage());
+    },
     ClubRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const ClubsPage());
@@ -74,7 +78,9 @@ class _$AppRouter extends RootStackRouter {
                       RouteConfig(EventRoute.name,
                           path: 'event-page', parent: EventRouter.name)
                     ])
-              ])
+              ]),
+          RouteConfig(TicketsRouter.name,
+              path: 'tickets', parent: NavigatorRouter.name)
         ])
       ];
 }
@@ -112,6 +118,14 @@ class HomeRouter extends PageRouteInfo<void> {
       : super(HomeRouter.name, path: 'home', initialChildren: children);
 
   static const String name = 'HomeRouter';
+}
+
+/// generated route for
+/// [TicketOverviewPage]
+class TicketsRouter extends PageRouteInfo<void> {
+  const TicketsRouter() : super(TicketsRouter.name, path: 'tickets');
+
+  static const String name = 'TicketsRouter';
 }
 
 /// generated route for

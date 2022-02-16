@@ -9,6 +9,7 @@ import 'package:raver/presentation/home/home_page.dart';
 import 'package:raver/presentation/navigator/navigator_page.dart';
 import 'package:raver/presentation/sign_in/sign_in_page.dart';
 import 'package:raver/presentation/splash/splash_page.dart';
+import 'package:raver/presentation/tickets/ticket_overview_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -42,6 +43,11 @@ part 'app_router.gr.dart';
             ),
           ],
         ),
+        AutoRoute(
+          page: TicketOverviewPage,
+          path: 'tickets',
+          name: 'TicketsRouter',
+        )
       ],
     )
   ],
