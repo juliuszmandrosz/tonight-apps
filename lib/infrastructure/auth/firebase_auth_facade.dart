@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -8,13 +9,15 @@ import 'package:raver/domain/auth/app_user_entity.dart';
 import 'package:raver/domain/auth/auth_facade.dart';
 import 'package:raver/domain/auth/auth_failure.dart';
 import 'package:raver/infrastructure/auth/firebase_user_mapper.dart';
+import 'package:raver/infrastructure/core/firestore_helpers.dart';
 
 @LazySingleton(as: AuthFacade)
 class FirebaseAuthFacade implements AuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
+  final FirebaseFirestore _firestore;
 
-  FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn);
+  FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn, this._firestore);
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
@@ -22,13 +25,13 @@ class FirebaseAuthFacade implements AuthFacade {
     required String password,
   }) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
+      final result = await _firebaseAuth.createUserWithEmailAndPassword(
         email: emailAddress,
         password: password,
       );
-
+      await _addUser(emailAddress, result.user!.uid);
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseException catch (e) {
       return e.code == 'invalid-email'
           ? left(const AuthFailure.invalidEmail())
           : e.code == 'email-already-in-use'
@@ -47,9 +50,8 @@ class FirebaseAuthFacade implements AuthFacade {
         email: emailAddress,
         password: password,
       );
-
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseException catch (e) {
       return e.code == 'user-not-found' || e.code == 'wrong-password'
           ? left(const AuthFailure.invalidEmailAndPasswordCombination())
           : left(const AuthFailure.serverError());
@@ -110,5 +112,16 @@ class FirebaseAuthFacade implements AuthFacade {
       _firebaseAuth.signOut(),
       // TODO - add facebook sign out
     ]);
+  }
+
+  Future<Either<AuthFailure, Unit>> _addUser(
+      String emailAddress, String userId) async {
+    try {
+      final userDoc = _firestore.userCollection;
+      await userDoc.doc(userId).set({'email': emailAddress});
+      return right(unit);
+    } on PlatformException {
+      return left(const AuthFailure.serverError());
+    }
   }
 }
