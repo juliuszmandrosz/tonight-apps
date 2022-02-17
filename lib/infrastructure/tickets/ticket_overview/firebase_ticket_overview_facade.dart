@@ -16,22 +16,21 @@ class FirebaseTicketOverviewFacade implements TicketOverviewFacade {
   FirebaseTicketOverviewFacade(this._firestore);
 
   @override
-  Future<Either<TicketOverviewFailure, List<TicketOverview>>>
-      getTickets() async {
-    try {
-      final userDoc = await _firestore.userDocument();
-      final query = userDoc.ticketCollection.limit(10);
-      QuerySnapshot result = await query.get();
+  Stream<Either<TicketOverviewFailure, List<TicketOverview>>>
+      getTickets() async* {
+    final userDoc = await _firestore.userDocument();
 
-      return right(
-        result.docs
-            .map((QueryDocumentSnapshot document) =>
-                TicketOverviewDto.fromFirebase(document).toDomain())
-            .toList(),
-      );
-    } on FirebaseException catch (exception) {
-      logger.e("Exception during fetching tickets EXCEPTION: $exception");
+    yield* userDoc.ticketCollection
+        .snapshots()
+        .map(
+          (snapshot) => right<TicketOverviewFailure, List<TicketOverview>>(
+            snapshot.docs
+                .map((doc) => TicketOverviewDto.fromFirebase(doc).toDomain())
+                .toList(),
+          ),
+        )
+        .handleError((e) {
       return left(const TicketOverviewFailure.unexpected());
-    }
+    });
   }
 }
