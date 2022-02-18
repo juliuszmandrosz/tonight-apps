@@ -29,19 +29,15 @@ class _$AppRouter extends RootStackRouter {
     },
     HomeRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const HomePage());
+          routeData: routeData, child: HeroEmptyRouterPage());
     },
     TicketsRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const TicketOverviewPage());
     },
-    ClubRouter.name: (routeData) {
+    HomeRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const ClubsPage());
-    },
-    EventRouter.name: (routeData) {
-      return MaterialPageX<dynamic>(
-          routeData: routeData, child: const EventsPage());
+          routeData: routeData, child: const HomePage());
     },
     ClubRoute.name: (routeData) {
       final args = routeData.argsAs<ClubRouteArgs>();
@@ -64,20 +60,11 @@ class _$AppRouter extends RootStackRouter {
               path: 'home',
               parent: NavigatorRouter.name,
               children: [
-                RouteConfig(ClubRouter.name,
-                    path: 'clubs-page',
-                    parent: HomeRouter.name,
-                    children: [
-                      RouteConfig(ClubRoute.name,
-                          path: 'club-page', parent: ClubRouter.name)
-                    ]),
-                RouteConfig(EventRouter.name,
-                    path: 'events-page',
-                    parent: HomeRouter.name,
-                    children: [
-                      RouteConfig(EventRoute.name,
-                          path: 'event-page', parent: EventRouter.name)
-                    ])
+                RouteConfig(HomeRoute.name, path: '', parent: HomeRouter.name),
+                RouteConfig(ClubRoute.name,
+                    path: 'club-page', parent: HomeRouter.name),
+                RouteConfig(EventRoute.name,
+                    path: 'event-page', parent: HomeRouter.name)
               ]),
           RouteConfig(TicketsRouter.name,
               path: 'tickets', parent: NavigatorRouter.name)
@@ -112,7 +99,7 @@ class NavigatorRouter extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [HomePage]
+/// [HeroEmptyRouterPage]
 class HomeRouter extends PageRouteInfo<void> {
   const HomeRouter({List<PageRouteInfo>? children})
       : super(HomeRouter.name, path: 'home', initialChildren: children);
@@ -129,21 +116,11 @@ class TicketsRouter extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [ClubsPage]
-class ClubRouter extends PageRouteInfo<void> {
-  const ClubRouter({List<PageRouteInfo>? children})
-      : super(ClubRouter.name, path: 'clubs-page', initialChildren: children);
+/// [HomePage]
+class HomeRoute extends PageRouteInfo<void> {
+  const HomeRoute() : super(HomeRoute.name, path: '');
 
-  static const String name = 'ClubRouter';
-}
-
-/// generated route for
-/// [EventsPage]
-class EventRouter extends PageRouteInfo<void> {
-  const EventRouter({List<PageRouteInfo>? children})
-      : super(EventRouter.name, path: 'events-page', initialChildren: children);
-
-  static const String name = 'EventRouter';
+  static const String name = 'HomeRoute';
 }
 
 /// generated route for

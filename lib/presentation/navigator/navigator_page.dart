@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:raver/application/auth/auth_cubit.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 
 class NavigatorPage extends StatelessWidget {
@@ -8,45 +10,60 @@ class NavigatorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AutoTabsScaffold(
-      appBarBuilder: (_, tabsRouter) => AppBar(
-        title: const Text('Raver'),
-        centerTitle: false,
-      ),
-      routes: const [
-        HomeRouter(),
-      ],
-      bottomNavigationBuilder: (_, tabsRouter) {
-        return BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            currentIndex: tabsRouter.activeIndex,
-            onTap: tabsRouter.setActiveIndex,
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                ),
-                label: "Home",
+    return BlocBuilder<AuthCubit, AuthState>(
+      builder: (context, state) {
+        return AutoTabsScaffold(
+          appBarBuilder: (_, tabsRouter) => AppBar(
+            title: const Text('Raver'),
+            centerTitle: false,
+            actions: [
+              GestureDetector(
+                onTap: () {
+                  context.read<AuthCubit>().signOut();
+                  AutoRouter.of(context).replace(const SignInRoute());
+                },
+                child: const Icon(Icons.add),
               ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  FontAwesomeIcons.ticketAlt,
+            ],
+          ),
+          routes: const [
+            HomeRouter(),
+            TicketsRouter(),
+          ],
+          bottomNavigationBuilder: (_, tabsRouter) {
+            return BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              currentIndex: tabsRouter.activeIndex,
+              onTap: tabsRouter.setActiveIndex,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.home,
+                  ),
+                  label: "Home",
                 ),
-                label: "Tickets",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.favorite,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    FontAwesomeIcons.ticketAlt,
+                  ),
+                  label: "Tickets",
                 ),
-                label: "Favourites",
-              ),
-              BottomNavigationBarItem(
-                icon: FaIcon(
-                  FontAwesomeIcons.userAlt,
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.favorite,
+                  ),
+                  label: "Favourites",
                 ),
-                label: "Profile",
-              ),
-            ]);
+                BottomNavigationBarItem(
+                  icon: FaIcon(
+                    FontAwesomeIcons.userAlt,
+                  ),
+                  label: "Profile",
+                ),
+              ],
+            );
+          },
+        );
       },
     );
   }

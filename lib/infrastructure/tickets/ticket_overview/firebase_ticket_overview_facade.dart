@@ -30,7 +30,24 @@ class FirebaseTicketOverviewFacade implements TicketOverviewFacade {
           ),
         )
         .handleError((e) {
+      logger.e("Exception during fetching tickets EXCEPTION: $e");
       return left(const TicketOverviewFailure.unexpected());
     });
+  }
+
+  @override
+  Future<Either<TicketOverviewFailure, Unit>> addTicket(
+      TicketOverview ticketOverview) async {
+    try {
+      final userDoc = await _firestore.userDocument();
+      final ticketOverviewDto = TicketOverviewDto.fromDomain(ticketOverview);
+
+      await userDoc.ticketCollection.add(ticketOverviewDto.toJson());
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      logger.e("Exception during adding ticket EXCEPTION: $e");
+      return left(const TicketOverviewFailure.unexpected());
+    }
   }
 }

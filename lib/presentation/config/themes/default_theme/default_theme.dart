@@ -14,7 +14,9 @@ ThemeData get defaultTheme => ThemeData(
       ),
       textTheme: TextTheme(
         subtitle1: DefaultTextStyles.subtitle1,
+        subtitle2: DefaultTextStyles.subtitleImportant,
         bodyText1: DefaultTextStyles.bodyText1,
         bodyText2: DefaultTextStyles.bodyText2,
+        headline1: DefaultTextStyles.headline1,
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:intl/intl.dart';
 import 'package:raver/domain/tickets/ticket_overview/ticket_overview_entity.dart';
 
 part 'ticket_overview_dto.freezed.dart';
@@ -46,11 +47,17 @@ class TicketOverviewDto with _$TicketOverviewDto {
     return TicketOverview(
       clubName: clubName,
       eventName: eventName,
-      eventDateTime: eventDateTime.toString(),
+      eventDateTime: _formatDateToDomain(eventDateTime),
       price: price,
       isVip: isVip,
       isExpired: isExpired,
     );
+  }
+
+  // TODO - add global date format
+  _formatDateToDomain(DateTime date) {
+    final DateFormat formatter = DateFormat('yyyy-MM-dd hh:mm');
+    return formatter.format(date);
   }
 }
 
@@ -58,6 +65,7 @@ class TicketOverviewDto with _$TicketOverviewDto {
 DateTime dateTimeFromTimestamp(Timestamp timestamp) => timestamp.toDate();
 
 Timestamp timestampFromDateTime(DateTime dateTime) => Timestamp.fromDate(dateTime);
+
 
 
 

@@ -4,4 +4,7 @@ import 'package:raver/domain/tickets/ticket_overview/ticket_overview_failure.dar
 
 abstract class TicketOverviewFacade {
   Stream<Either<TicketOverviewFailure, List<TicketOverview>>> getTickets();
+
+  Future<Either<TicketOverviewFailure, Unit>> addTicket(
+      TicketOverview ticketOverview);
 }
