@@ -16,117 +16,124 @@ class SignInForm extends StatelessWidget {
     return BlocConsumer<SignInFormCubit, SignInFormState>(
       listener: (ctx, state) {
         state.authFailureOrSuccessOption.fold(
-            () {},
-            (authOrFailure) => {
-                  authOrFailure.fold(
-                      (failure) => {
-                            ScaffoldMessenger.of(context)
-                              ..hideCurrentSnackBar()
-                              ..showSnackBar(
-                                SnackBar(
-                                  content: failure.map(
-                                    cancelledByUser: ((_) =>
-                                        const Text('Cancelled')),
-                                    emailAlreadyInUse: ((_) =>
-                                        const Text('Email already in use')),
-                                    invalidEmail: ((_) =>
-                                        const Text('Invalid email format')),
-                                    invalidEmailAndPasswordCombination: ((_) =>
-                                        const Text(
-                                            'Invalid email and password combination')),
-                                    serverError: ((_) =>
-                                        const Text('Server error')),
-                                  ),
-                                ),
-                              ),
-                          }, (success) {
-                    AutoRouter.of(context).replace(const NavigatorRouter());
-                    context.read<AuthCubit>().requestAuthCheck();
-                  })
-                });
+                () {},
+                (authOrFailure) =>
+            {
+              authOrFailure.fold(
+                      (failure) =>
+                  {
+                    ScaffoldMessenger.of(context)
+                      ..hideCurrentSnackBar()
+                      ..showSnackBar(
+                        SnackBar(
+                          content: failure.map(
+                            cancelledByUser: ((_) =>
+                            const Text('Cancelled')),
+                            emailAlreadyInUse: ((_) =>
+                            const Text('Email already in use')),
+                            invalidEmail: ((_) =>
+                            const Text('Invalid email format')),
+                            invalidEmailAndPasswordCombination: ((_) =>
+                            const Text(
+                                'Invalid email and password combination')),
+                            serverError: ((_) =>
+                            const Text('Server error')),
+                          ),
+                        ),
+                      ),
+                  }, (success) {
+                AutoRouter.of(context).replace(const NavigatorRouter());
+                context.read<AuthCubit>().requestAuthCheck();
+              })
+            });
       },
-      builder: (ctx, state) => Form(
-        key: _formKey,
-        child: ListView(
-          children: [
-            Container(
-              padding: const EdgeInsets.only(top: 10),
-              child: const Text(
-                '✨',
-                style: TextStyle(fontSize: 80),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            TextFormField(
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.email),
-                  labelText: 'Email',
-                ),
-                autocorrect: false,
-                onChanged: (value) =>
-                    ctx.read<SignInFormCubit>().onEmailChanged(value),
-                validator: (value) {
-                  return value != null && value.isNotEmpty && isEmail(value)
-                      ? null
-                      : 'Enter valid email address';
-                }),
-            TextFormField(
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.lock),
-                  labelText: 'Password',
-                ),
-                autocorrect: false,
-                obscureText: true,
-                onChanged: (value) =>
-                    ctx.read<SignInFormCubit>().onPasswordChanged(value),
-                validator: (value) => value != null && value.length > 6
-                    ? null
-                    : 'Password should be at least 6 characters'),
-            Row(
+      builder: (ctx, state) =>
+          Form(
+            key: _formKey,
+            child: ListView(
               children: [
-                Expanded(
-                  child: TextButton(
-                    onPressed: () {
-                      ctx.read<SignInFormCubit>().signInWithEmailAndPassword();
-                    },
-                    child: const Text('SIGN IN'),
+                Container(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: const Text(
+                    '✨',
+                    style: TextStyle(fontSize: 80),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-                Expanded(
-                  child: TextButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        ctx
-                            .read<SignInFormCubit>()
-                            .registerWithEmailAndPassword();
-                      }
-                    },
-                    child: const Text('REGISTER'),
+                TextFormField(
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.email),
+                      labelText: 'Email',
+                    ),
+                    autocorrect: false,
+                    onChanged: (value) =>
+                        ctx.read<SignInFormCubit>().onEmailChanged(value),
+                    validator: (value) {
+                      return value != null && value.isNotEmpty && isEmail(value)
+                          ? null
+                          : 'Enter valid email address';
+                    }),
+                TextFormField(
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.lock),
+                      labelText: 'Password',
+                    ),
+                    autocorrect: false,
+                    obscureText: true,
+                    onChanged: (value) =>
+                        ctx.read<SignInFormCubit>().onPasswordChanged(value),
+                    validator: (value) =>
+                    value != null && value.length > 6
+                        ? null
+                        : 'Password should be at least 6 characters'),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            ctx.read<SignInFormCubit>()
+                                .signInWithEmailAndPassword();
+                          }
+                        },
+                        child: const Text('SIGN IN'),
+                      ),
+                    ),
+                    Expanded(
+                      child: TextButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            ctx
+                                .read<SignInFormCubit>()
+                                .registerWithEmailAndPassword();
+                          }
+                        },
+                        child: const Text('REGISTER'),
+                      ),
+                    ),
+                  ],
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    ctx.read<SignInFormCubit>().signInWithGoogle();
+                  },
+                  child: const Text(
+                    'SIGN IN WITH GOOGLE',
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
+                ElevatedButton(
+                  onPressed: () {
+                    ctx.read<SignInFormCubit>().signInWithFacebook();
+                  },
+                  child: const Text(
+                    'SIGN IN WITH FACEBOOK',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                )
               ],
             ),
-            ElevatedButton(
-              onPressed: () {
-                ctx.read<SignInFormCubit>().signInWithGoogle();
-              },
-              child: const Text(
-                'SIGN IN WITH GOOGLE',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                ctx.read<SignInFormCubit>().signInWithFacebook();
-              },
-              child: const Text(
-                'SIGN IN WITH FACEBOOK',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            )
-          ],
-        ),
-      ),
+          ),
     );
   }
 }
