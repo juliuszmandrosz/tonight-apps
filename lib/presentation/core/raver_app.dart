@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/auth/auth_cubit.dart';
+import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/config/themes/app_theme.dart';
 import 'package:raver/presentation/routes/app_router.dart';
@@ -17,6 +18,9 @@ class RaverApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (ctx) => getIt<AuthCubit>()..requestAuthCheck(),
+        ),
+        BlocProvider(
+          create: (ctx) => getIt<EventFavoriteCubit>()..getFavoriteEventIds(),
         ),
       ],
       child: MaterialApp.router(

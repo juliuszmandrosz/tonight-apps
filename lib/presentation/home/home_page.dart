@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:raver/application/events/event_overview/event_overview_bloc.dart';
+import 'package:raver/domain/events/filters/event_filter.dart';
+import 'package:raver/injection.dart';
 
-import 'events_tab/events_page.dart';
 import 'clubs_tab/clubs_page.dart';
+import 'events_tab/event_overview_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,8 +17,8 @@ class HomePage extends StatelessWidget {
         length: 2,
         initialIndex: 0,
         child: Column(
-          children: const [
-            TabBar(
+          children: [
+            const TabBar(
               tabs: [
                 Tab(
                   text: "Events",
@@ -26,11 +30,19 @@ class HomePage extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: TabBarView(
                   children: [
-                    EventsPage(),
-                    ClubsPage(),
+                    BlocProvider(
+                      create: (context) => getIt<EventOverviewBloc>()
+                        ..add(
+                          EventOverviewEvent.loadEvents(
+                            EventFilter.empty(),
+                          ),
+                        ),
+                      child: const EventOverviewPage(),
+                    ),
+                    const ClubsPage(),
                   ],
                 ),
               ),

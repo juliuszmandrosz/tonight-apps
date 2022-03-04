@@ -11,6 +11,18 @@ class DefaultTextStyles {
     fontWeight: FontWeight.w500,
   );
 
+  static TextStyle subtitleAccent = GoogleFonts.lexendDeca(
+    fontSize: 18,
+    color: DefaultColors.backgroundColor,
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle headlineAccent = GoogleFonts.lexendDeca(
+    fontSize: 20,
+    color: DefaultColors.backgroundColor,
+    fontWeight: FontWeight.w700,
+  );
+
   static TextStyle subtitleImportant = GoogleFonts.lexendDeca(
     fontSize: 18,
     color: DefaultColors.secondaryColor,

@@ -117,8 +117,10 @@ class FirebaseAuthFacade implements AuthFacade {
   Future<Either<AuthFailure, Unit>> _addUser(
       String emailAddress, String userId) async {
     try {
-      final userDoc = _firestore.userCollection;
-      await userDoc.doc(userId).set({'email': emailAddress});
+      final userDoc = await _firestore.userDocument();
+      await userDoc.set({'email': emailAddress});
+      await userDoc.set({'favoriteEvents': []});
+      await userDoc.set({'favoriteClubs': []});
       return right(unit);
     } on PlatformException {
       return left(const AuthFailure.serverError());

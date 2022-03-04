@@ -1,11 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:raver/domain/tickets/ticket_overview/ticket_overview_entity.dart';
+import 'package:raver/domain/tickets/ticket_entity.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 
 class TicketCard extends StatelessWidget {
-  final TicketOverview ticketOverview;
+  final Ticket ticket;
 
-  const TicketCard({Key? key, required this.ticketOverview}) : super(key: key);
+  const TicketCard({Key? key, required this.ticket}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,11 @@ class TicketCard extends StatelessWidget {
       padding: const EdgeInsets.all(5.0),
       child: Card(
         child: InkWell(
-          onTap: () async {},
+          onTap: ()  {
+            // AutoRouter.of(context).push(
+            //   EventDetailsRoute(eventId: ticket.eventId),
+            )
+          },
           child: IntrinsicHeight(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -27,17 +33,17 @@ class TicketCard extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(
-                          ticketOverview.clubName,
+                          ticket.clubName,
                           style: theme.textTheme.subtitle1,
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          ticketOverview.eventName,
+                          ticket.eventName,
                           style: theme.textTheme.bodyText1,
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          ticketOverview.eventDateTime,
+                          ticket.eventDateTime,
                           style: theme.textTheme.bodyText1,
                         ),
                       ],
@@ -48,7 +54,7 @@ class TicketCard extends StatelessWidget {
                     flex: 3,
                     child: Text(
                       // TODO - add currency
-                      ticketOverview.price.toString() + ' PLN',
+                      ticket.price.toString() + ' PLN',
                       style: theme.textTheme.headline1,
                     ),
                   ),
@@ -59,7 +65,7 @@ class TicketCard extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      ticketOverview.isVip ? 'V\nI\nP' : '',
+                      ticket.isVip ? 'V\nI\nP' : '',
                       textAlign: TextAlign.center,
                       style: theme.textTheme.subtitle2,
                     ),

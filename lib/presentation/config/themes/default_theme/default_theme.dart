@@ -18,5 +18,7 @@ ThemeData get defaultTheme => ThemeData(
         bodyText1: DefaultTextStyles.bodyText1,
         bodyText2: DefaultTextStyles.bodyText2,
         headline1: DefaultTextStyles.headline1,
+        headline2: DefaultTextStyles.headlineAccent,
+        headline3: DefaultTextStyles.subtitleAccent,
       ),
     );
