@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
                     BlocProvider(
                       create: (context) => getIt<EventOverviewBloc>()
                         ..add(
-                          EventOverviewEvent.loadEvents(
+                          EventOverviewEvent.eventsFetched(
                             EventFilter.empty(),
                           ),
                         ),

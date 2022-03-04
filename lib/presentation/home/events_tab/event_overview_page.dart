@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/core/cubit_status.dart';
 import 'package:raver/application/events/event_overview/event_overview_bloc.dart';
-import 'package:raver/domain/events/event_entity.dart';
-import 'package:raver/domain/events/event_facade.dart';
-import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/bottom_loader.dart';
 import 'package:raver/presentation/home/events_tab/widgets/event_card.dart';
-import 'package:raver/presentation/home/events_tab/widgets/event_filters.dart';
+import 'package:raver/presentation/home/widgets/event_search_bar.dart';
 
 class EventOverviewPage extends StatefulWidget {
   const EventOverviewPage({Key? key}) : super(key: key);
@@ -33,24 +30,6 @@ class _EventOverviewPageState extends State<EventOverviewPage> {
     return Column(
       children: [
         const EventSearchBar(),
-        TextButton(
-          onPressed: () => getIt<EventFacade>().addEvent(Event(
-            clubId: 'clubId',
-            eventName: 'eventName',
-            clubName: 'clubName',
-            eventDateTime: DateTime.now().toString(),
-            attending: 100,
-            minAge: 21,
-            price: 20,
-            allowedOutfits: [],
-            musicalGenres: [],
-            eventPlaceLongitude: 1,
-            eventPlaceLatitude: 1,
-            isConcert: true,
-            artistName: 'Mata',
-          )),
-          child: Text('ADD'),
-        ),
         const SizedBox(height: 10),
         BlocBuilder<EventOverviewBloc, EventOverviewState>(
             builder: (context, state) {
