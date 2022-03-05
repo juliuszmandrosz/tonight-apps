@@ -20,26 +20,27 @@ class HomePage extends StatelessWidget {
           children: [
             const TabBar(
               tabs: [
-                Tab(
-                  text: "Events",
-                ),
-                Tab(
-                  text: "Clubs",
-                ),
+                Tab(text: "Events"),
+                Tab(text: "Clubs"),
               ],
             ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(10),
                 child: TabBarView(
+                  physics: const NeverScrollableScrollPhysics(),
                   children: [
-                    BlocProvider(
-                      create: (context) => getIt<EventOverviewBloc>()
-                        ..add(
-                          EventOverviewEvent.eventsFetched(
-                            EventFilter.empty(),
-                          ),
+                    MultiBlocProvider(
+                      providers: [
+                        BlocProvider(
+                          create: (context) => getIt<EventOverviewBloc>()
+                            ..add(
+                              EventOverviewEvent.eventsFetched(
+                                EventFilter.empty(),
+                              ),
+                            ),
                         ),
+                      ],
                       child: const EventOverviewPage(),
                     ),
                     const ClubsPage(),
