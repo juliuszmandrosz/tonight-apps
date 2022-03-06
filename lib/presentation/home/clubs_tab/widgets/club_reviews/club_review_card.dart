@@ -5,14 +5,14 @@ class ClubReviewCard extends StatelessWidget {
   const ClubReviewCard({
     Key? key,
     required this.username,
-    required this.reviewDouble,
-    required this.reviewString,
+    required this.userRate,
+    required this.userOpinion,
     required this.timestamp,
   }) : super(key: key);
 
   final String username;
-  final double reviewDouble;
-  final String reviewString;
+  final double userRate;
+  final String userOpinion;
   final String timestamp;
 
   @override
@@ -74,7 +74,7 @@ class ClubReviewCard extends StatelessWidget {
                             size: 15,
                           ),
                         ),
-                        Text(reviewDouble.toString()),
+                        Text('$userRate'),
                       ],
                     )
                   ],
@@ -85,7 +85,7 @@ class ClubReviewCard extends StatelessWidget {
               padding: const EdgeInsetsDirectional.only(start: 8),
               child: Row(
                 children: [
-                  Text(reviewString),
+                  Text(userOpinion),
                 ],
               ),
             ),

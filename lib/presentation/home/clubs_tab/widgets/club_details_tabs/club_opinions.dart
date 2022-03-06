@@ -25,8 +25,8 @@ class ClubOpinions extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 8, right: 8),
                     child: ClubReviewCard(
                       username: review.username,
-                      reviewDouble: review.reviewDouble,
-                      reviewString: review.reviewString,
+                      userRate: review.userRate,
+                      userOpinion: review.userOpinion,
                       timestamp: review.timestamp,
                     ),
                   ),

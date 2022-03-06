@@ -6,7 +6,6 @@ import 'package:raver/infrastructure/core/domain_formatters/date_formatter.dart'
 import 'package:raver/infrastructure/core/json_converters/timestamp_json_converter.dart';
 
 part 'club_review_dto.freezed.dart';
-
 part 'club_review_dto.g.dart';
 
 @freezed
@@ -14,8 +13,8 @@ class ClubReviewDto with _$ClubReviewDto {
   const ClubReviewDto._();
 
   const factory ClubReviewDto({
-    required String reviewString,
-    required double reviewDouble,
+    required String userOpinion,
+    required double userRate,
     required String userId,
     required String username,
     @TimestampJsonConverter() required DateTime timestamp,
@@ -23,8 +22,8 @@ class ClubReviewDto with _$ClubReviewDto {
 
   factory ClubReviewDto.fromDomain(ClubReview clubReview) {
     return ClubReviewDto(
-      reviewString: clubReview.reviewString,
-      reviewDouble: clubReview.reviewDouble,
+      userOpinion: clubReview.userOpinion,
+      userRate: clubReview.userRate,
       userId: clubReview.userId,
       username: clubReview.username,
       timestamp: DateTime.parse(clubReview.timestamp),
@@ -41,8 +40,8 @@ class ClubReviewDto with _$ClubReviewDto {
 
   ClubReview toDomain() {
     return ClubReview(
-        reviewString: reviewString,
-        reviewDouble: reviewDouble,
+        userOpinion: userOpinion,
+        userRate: userRate,
         userId: userId,
         username: username,
         timestamp: timestamp.formatDate(DateFormats.reviewFormat));

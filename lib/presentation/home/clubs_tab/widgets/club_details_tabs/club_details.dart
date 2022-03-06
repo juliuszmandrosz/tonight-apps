@@ -20,7 +20,7 @@ class ClubDetails extends StatelessWidget {
     this.socialMedia,
   }) : super(key: key);
 
-  final String aboutUs;
+  final String? aboutUs;
   final String phoneNumber;
   final Map<String, String>? socialMedia;
 
@@ -31,21 +31,31 @@ class ClubDetails extends StatelessWidget {
         padding: const EdgeInsets.only(left: 15, right: 15),
         child: Column(
           children: [
-            DetailsSection(
-              content: Text(
-                aboutUs,
-                softWrap: true,
-              ),
-              title: "About Us",
-            ),
+            aboutUs != null
+                ? DetailsSection(
+                    content: Text(
+                      aboutUs!,
+                      softWrap: true,
+                    ),
+                    title: "About Us",
+                  )
+                : Container(),
             DetailsSection(
               content: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(phoneNumber),
                   RaverIconButton(
-                    onPressed: () {
-                      launchPhoneCall(phoneNumber);
+                    onPressed: () async {
+                      var result = await launchPhoneCall(phoneNumber);
+                      if (result.isLeft()) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                                "Error while launching phone app, check permissions"),
+                          ),
+                        );
+                      }
                     },
                     icon: const Icon(Icons.phone),
                   )

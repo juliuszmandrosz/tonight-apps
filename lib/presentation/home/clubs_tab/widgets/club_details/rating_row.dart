@@ -33,7 +33,7 @@ class RatingRow extends StatelessWidget {
         const SizedBox(
           width: 10,
         ),
-        Text(rateCount.toString() + " opinions")
+        Text('$rateCount opinions"')
       ],
     );
   }

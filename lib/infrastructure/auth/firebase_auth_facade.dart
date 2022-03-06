@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -14,11 +15,13 @@ class FirebaseAuthFacade implements AuthFacade {
   final GoogleSignIn _googleSignIn;
   final FirebaseFirestore _firestore;
 
-  FirebaseAuthFacade({
-    required FirebaseAuth firebaseAuth,
-    required GoogleSignIn googleSignIn,
-  })  : _firebaseAuth = firebaseAuth,
-        _googleSignIn = googleSignIn;
+  FirebaseAuthFacade(
+      {required FirebaseAuth firebaseAuth,
+      required GoogleSignIn googleSignIn,
+      required FirebaseFirestore firestore})
+      : _firebaseAuth = firebaseAuth,
+        _googleSignIn = googleSignIn,
+        _firestore = firestore;
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
@@ -36,8 +39,8 @@ class FirebaseAuthFacade implements AuthFacade {
       return e.code == 'invalid-email'
           ? left(const AuthFailure.invalidEmail())
           : e.code == 'email-already-in-use'
-              ? left(const AuthFailure.emailAlreadyInUse())
-              : left(const AuthFailure.serverError());
+          ? left(const AuthFailure.emailAlreadyInUse())
+          : left(const AuthFailure.serverError());
     }
   }
 
@@ -89,7 +92,7 @@ class FirebaseAuthFacade implements AuthFacade {
       final loginResult = await FacebookAuth.instance.login();
 
       final authCredential =
-          FacebookAuthProvider.credential(loginResult.accessToken!.token);
+      FacebookAuthProvider.credential(loginResult.accessToken!.token);
 
       await FirebaseAuth.instance.signInWithCredential(authCredential);
 
@@ -115,13 +118,14 @@ class FirebaseAuthFacade implements AuthFacade {
     ]);
   }
 
-  Future<Either<AuthFailure, Unit>> _addUser(
-      String emailAddress, String userId) async {
+  Future<Either<AuthFailure, Unit>> _addUser(String emailAddress, String userId) async {
     try {
       final userDoc = await _firestore.userDocument();
-      await userDoc.set({'email': emailAddress});
-      await userDoc.set({'favoriteEvents': []});
-      await userDoc.set({'favoriteClubs': []});
+      await userDoc.set({
+        'email': emailAddress,
+        'favoriteEvents': [],
+        'favoriteClubs': [],
+      });
       return right(unit);
     } on PlatformException {
       return left(const AuthFailure.serverError());

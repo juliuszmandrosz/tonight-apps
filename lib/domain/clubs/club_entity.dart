@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:raver/domain/clubs/club_review_entity.dart';
 
@@ -9,9 +8,9 @@ class Club extends Equatable {
   final int reviewCount;
   final double reviewAvg;
   final String locationString;
-  final GeoPoint location;
-  final String aboutUs;
+  final String? aboutUs;
   final String phoneNumber;
+  final Map<String, double> location;
   final Map<String, String> socialMedia;
   final List<ClubReview> reviews;
 
@@ -21,23 +20,22 @@ class Club extends Equatable {
       required this.clubImageUrl,
       required this.reviewCount,
       required this.reviewAvg,
-      required this.locationString,
       required this.location,
+      required this.locationString,
       required this.aboutUs,
       required this.phoneNumber,
       required this.socialMedia,
       required this.reviews});
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         id,
         clubName,
         clubImageUrl,
         reviewCount,
         reviewAvg,
-        locationString,
         location,
+        locationString,
         aboutUs,
         phoneNumber,
         socialMedia,

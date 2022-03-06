@@ -1,15 +1,15 @@
 import 'package:equatable/equatable.dart';
 
 class ClubReview extends Equatable {
-  final String reviewString;
-  final double reviewDouble;
+  final String userOpinion;
+  final double userRate;
   final String userId;
   final String username;
   final String timestamp;
 
   const ClubReview({
-    required this.reviewString,
-    required this.reviewDouble,
+    required this.userOpinion,
+    required this.userRate,
     required this.userId,
     required this.username,
     required this.timestamp,
@@ -18,8 +18,8 @@ class ClubReview extends Equatable {
   @override
   List<Object?> get props =>
       [
-        reviewString,
-        reviewDouble,
+        userOpinion,
+        userRate,
         userId,
         username,
         timestamp,

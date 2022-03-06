@@ -22,24 +22,12 @@ class ClubDetailsTabs extends StatelessWidget {
             const TabBar(
               isScrollable: true,
               tabs: [
-                Tab(
-                  text: 'Events',
-                ),
-                Tab(
-                  text: 'Buy ticket',
-                ),
-                Tab(
-                  text: 'Milestones',
-                ),
-                Tab(
-                  text: 'Details',
-                ),
-                Tab(
-                  text: 'Opinions',
-                ),
-                Tab(
-                  text: 'Photos',
-                ),
+                Tab(text: 'Events'),
+                Tab(text: 'Buy ticket'),
+                Tab(text: 'Milestones'),
+                Tab(text: 'Details'),
+                Tab(text: 'Opinions'),
+                Tab(text: 'Photos')
               ],
             ),
             Expanded(

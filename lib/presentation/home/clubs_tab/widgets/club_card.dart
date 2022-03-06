@@ -104,15 +104,14 @@ class ClubCard extends StatelessWidget {
                                           padding:
                                               const EdgeInsets.only(left: 20),
                                           child: Text(
-                                            clubReviewAvg.toString(),
+                                            '$clubReviewAvg.',
                                           ),
                                         ),
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(left: 20),
                                           child: Text(
-                                            _club.reviewCount.toString() +
-                                                " opinii", //TODO: Add dynamic return from facade
+                                            '${_club.reviewCount} opinii', //TODO: Add dynamic return from facade
                                           ),
                                         ),
                                       ],

@@ -26,7 +26,6 @@ class DetailsSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsetsDirectional.only(top: 10, bottom: 15),
           child: Row(
-            mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(child: content),
             ],

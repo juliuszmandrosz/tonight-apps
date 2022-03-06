@@ -4,7 +4,7 @@ import 'package:raver/application/core/cubit_status.dart';
 import 'package:raver/application/events/event_overview/event_overview_bloc.dart';
 import 'package:raver/presentation/core/bottom_loader.dart';
 import 'package:raver/presentation/home/events_tab/widgets/event_card.dart';
-import 'package:raver/presentation/home/widgets/event_search_bar.dart';
+import 'package:raver/presentation/home/widgets/event_filter_section.dart';
 
 class EventOverviewPage extends StatefulWidget {
   const EventOverviewPage({Key? key}) : super(key: key);

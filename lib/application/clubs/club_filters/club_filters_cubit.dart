@@ -28,12 +28,10 @@ class ClubFiltersCubit extends Cubit<ClubFiltersState> {
   }
 
   void onFilterDetailsUpdated() {
-    state.maybeMap(filtersUpdated: (state) {
+    state.mapOrNull(filtersUpdated: (state) {
       final filters = state.clubFilter.mapOrNull((value) =>
           value.copyWith(clubFilterSettings: value.clubFilterSettings));
       _clubsOverviewCubit!.getClubs(filters!);
-    }, orElse: () {
-      /*Never happen*/
     });
   }
 }

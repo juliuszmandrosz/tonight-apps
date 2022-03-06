@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/home/widgets/search_field.dart';
+import 'package:raver/presentation/home/widgets/club_search_field.dart';
+
+import 'club_search_field.dart';
 
 class ClubSearchBar extends StatelessWidget {
   const ClubSearchBar({Key? key}) : super(key: key);
@@ -11,7 +13,7 @@ class ClubSearchBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         const Expanded(
-          child: SearchField(),
+          child: ClubSearchField(),
         ),
         IconButton(
           onPressed: () {},

@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
-import 'package:raver/infrastructure/core/json_converters/geopoint_json_converter.dart';
 
 import 'club_review_dto.dart';
 
 part 'club_dto.freezed.dart';
-
 part 'club_dto.g.dart';
 
 @freezed
@@ -17,12 +15,12 @@ class ClubDto with _$ClubDto {
     required String id,
     required String clubName,
     required String clubImageUrl,
-    required int reviewCount,
-    required double reviewAvg,
+    @Default(0) int reviewCount,
+    @Default(0) double reviewAvg,
     required String locationString,
-    @GeoPointConverter() required GeoPoint location,
     required String phoneNumber,
-    required String aboutUs,
+    required Map<String, double> location,
+    String? aboutUs,
     @Default({}) Map<String, String> socialMedia,
     @Default([]) List<ClubReviewDto> reviews,
   }) = _ClubDto;
@@ -34,8 +32,8 @@ class ClubDto with _$ClubDto {
       clubImageUrl: club.clubImageUrl,
       reviewCount: club.reviewCount,
       reviewAvg: club.reviewAvg,
-      locationString: club.locationString,
       location: club.location,
+      locationString: club.locationString,
       aboutUs: club.aboutUs,
       phoneNumber: club.phoneNumber,
       socialMedia: club.socialMedia,

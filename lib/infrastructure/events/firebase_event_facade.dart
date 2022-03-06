@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
-import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:raver/domain/events/event_entity.dart';
 import 'package:raver/domain/events/event_facade.dart';
@@ -11,14 +10,17 @@ import 'package:raver/infrastructure/core/algolia_api.dart';
 import 'package:raver/infrastructure/core/firestore_helpers.dart';
 import 'package:raver/infrastructure/events/dtos/event_dto.dart';
 
-@LazySingleton(as: EventFacade)
 class FirebaseEventFacade implements EventFacade {
   final FirebaseFirestore _firestore;
   final AlgoliaAPI _algoliaAPI;
 
   final logger = Logger();
 
-  FirebaseEventFacade(this._firestore, this._algoliaAPI);
+  FirebaseEventFacade({
+    required FirebaseFirestore firestore,
+    required AlgoliaAPI algoliaAPI,
+  })  : _firestore = firestore,
+        _algoliaAPI = algoliaAPI;
 
   @override
   Future<Either<EventFailure, List<Event>>> getEvents(

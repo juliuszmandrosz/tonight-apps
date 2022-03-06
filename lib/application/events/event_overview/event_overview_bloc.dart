@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 import 'package:raver/application/core/cubit_status.dart';
 import 'package:raver/domain/events/event_entity.dart';
 import 'package:raver/domain/events/event_facade.dart';
@@ -25,7 +24,6 @@ EventTransformer<E> throttleDroppable<E>(
   };
 }
 
-@injectable
 class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
   final EventFacade _eventFacade;
 

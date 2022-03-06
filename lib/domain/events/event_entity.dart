@@ -12,11 +12,10 @@ class Event extends Equatable {
   final int price;
   final List<String> allowedOutfits;
   final List<String> musicalGenres;
-  final double eventPlaceLongitude;
-  final double eventPlaceLatitude;
   final String? artistName;
   final String? description;
   final List<String> photos;
+  final Map<String, String> location;
   final Map<String, String> urlLinks;
   final bool isConcert;
 
@@ -31,8 +30,7 @@ class Event extends Equatable {
     required this.price,
     required this.allowedOutfits,
     required this.musicalGenres,
-    required this.eventPlaceLongitude,
-    required this.eventPlaceLatitude,
+    required this.location,
     this.description,
     this.artistName,
     this.photos = const [],
@@ -52,8 +50,7 @@ class Event extends Equatable {
         price,
         allowedOutfits,
         musicalGenres,
-        eventPlaceLongitude,
-        eventPlaceLatitude,
+        location,
         photos,
         urlLinks,
         description,

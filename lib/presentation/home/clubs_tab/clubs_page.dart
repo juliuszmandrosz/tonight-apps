@@ -5,7 +5,7 @@ import 'package:raver/application/clubs/clubs_overview/clubs_overview_cubit.dart
 import 'package:raver/domain/clubs/filters/club_filter.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_card.dart';
-import 'package:raver/presentation/home/widgets/club_search_bar.dart';
+import 'package:raver/presentation/home/widgets/club_filter_section.dart';
 
 class ClubsPage extends StatelessWidget {
   const ClubsPage({Key? key}) : super(key: key);
@@ -19,9 +19,7 @@ class ClubsPage extends StatelessWidget {
               getIt<ClubsOverviewCubit>()..getClubs(ClubFilter.empty()),
         ),
         BlocProvider(
-          create: (context) => getIt<ClubFiltersCubit>(
-            param1: BlocProvider.of<ClubsOverviewCubit>(context),
-          ),
+          create: (context) => getIt<ClubFiltersCubit>(),
         ),
       ],
       child: Column(
@@ -35,8 +33,8 @@ class ClubsPage extends StatelessWidget {
                 initial: (_) => Container(),
                 loadInProgress: (_) =>
                     const Center(child: CircularProgressIndicator()),
-                loadFailure: (state) => Center(
-                  child: Text(state.clubFailure.toString()),
+                loadFailure: (state) => const Center(
+                  child: Text("Failed fetching clubs"),
                 ),
                 loadSuccess: (state) {
                   return Expanded(

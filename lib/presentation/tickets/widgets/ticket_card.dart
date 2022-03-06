@@ -7,7 +7,10 @@ import 'package:raver/presentation/routes/app_router.dart';
 class TicketCard extends StatelessWidget {
   final Ticket ticket;
 
-  const TicketCard({Key? key, required this.ticket}) : super(key: key);
+  const TicketCard({
+    Key? key,
+    required this.ticket,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +55,7 @@ class TicketCard extends StatelessWidget {
                     flex: 3,
                     child: Text(
                       // TODO - add currency
-                      ticket.price.toString() + ' PLN',
+                      '${ticket.price} PLN',
                       style: theme.textTheme.headline1,
                     ),
                   ),

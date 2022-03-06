@@ -1,12 +1,11 @@
 import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:raver/domain/core/extensions/date_formatters.dart';
 import 'package:raver/domain/events/event_entity.dart';
 import 'package:raver/infrastructure/core/firebase_converters.dart';
-import 'package:raver/domain/core/extensions/date_formatters.dart';
 
 part 'event_dto.freezed.dart';
-
 part 'event_dto.g.dart';
 
 @freezed
@@ -28,10 +27,9 @@ class EventDto with _$EventDto {
     required int price,
     required List<String> allowedOutfits,
     required List<String> musicalGenres,
-    required double eventPlaceLatitude,
-    required double eventPlaceLongitude,
     String? description,
     String? artistName,
+    required Map<String, String> location,
     @Default([]) List<String> photos,
     @Default({}) Map<String, String> urlLinks,
     @Default(false) bool isConcert,
@@ -51,8 +49,7 @@ class EventDto with _$EventDto {
       musicalGenres: event.musicalGenres,
       photos: event.photos,
       urlLinks: event.urlLinks,
-      eventPlaceLatitude: event.eventPlaceLatitude,
-      eventPlaceLongitude: event.eventPlaceLongitude,
+      location: event.location,
       artistName: event.artistName,
       description: event.description,
       isConcert: event.isConcert,
@@ -89,8 +86,7 @@ class EventDto with _$EventDto {
       attending: attending,
       minAge: minAge,
       musicalGenres: musicalGenres,
-      eventPlaceLatitude: eventPlaceLatitude,
-      eventPlaceLongitude: eventPlaceLongitude,
+      location: location,
       clubId: clubId,
       photos: photos,
       urlLinks: urlLinks,

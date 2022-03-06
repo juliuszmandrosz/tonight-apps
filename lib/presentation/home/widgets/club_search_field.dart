@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
 
-class SearchField extends StatefulWidget {
-  const SearchField({Key? key}) : super(key: key);
+class ClubSearchField extends StatefulWidget {
+  const ClubSearchField({Key? key}) : super(key: key);
 
   @override
-  _SearchFieldState createState() => _SearchFieldState();
+  _ClubSearchFieldState createState() => _ClubSearchFieldState();
 }
 
-class _SearchFieldState extends State<SearchField> {
+class _ClubSearchFieldState extends State<ClubSearchField> {
   late TextEditingController textController;
 
   @override

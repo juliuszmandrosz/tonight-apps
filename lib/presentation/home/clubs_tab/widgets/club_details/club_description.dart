@@ -49,9 +49,16 @@ class ClubDescription extends StatelessWidget {
                 FontAwesomeIcons.mapMarkerAlt,
                 size: 25,
               ),
-              onPressed: () {
-                launchGoogleMaps(
-                    club.location.latitude, club.location.longitude);
+              onPressed: () async {
+                var result = await launchGoogleMaps(
+                    club.location['latitude']!, club.location['longitude']!);
+                if (result.isLeft()) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Error while launching google maps"),
+                    ),
+                  );
+                }
               },
             ),
           ),

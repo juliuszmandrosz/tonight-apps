@@ -38,8 +38,8 @@ class ClubPhotos extends StatelessWidget {
                 },
               );
             },
-            loadFailure: (state) => Center(
-              child: Text(state.clubFailure.toString()),
+            loadFailure: (state) => const Center(
+              child: Text("Failed to fetch photos"),
             ),
           );
         },

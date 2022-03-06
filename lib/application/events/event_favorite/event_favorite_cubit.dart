@@ -3,14 +3,12 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 import 'package:raver/domain/events/event_facade.dart';
 import 'package:raver/domain/events/event_failure.dart';
 
 part 'event_favorite_cubit.freezed.dart';
 part 'event_favorite_state.dart';
 
-@injectable
 class EventFavoriteCubit extends Cubit<EventFavoriteState> {
   final EventFacade _eventFacade;
 
