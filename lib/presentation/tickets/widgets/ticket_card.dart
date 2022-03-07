@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:raver/domain/tickets/ticket_entity.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 
 class TicketCard extends StatelessWidget {
   final Ticket ticket;
@@ -14,10 +16,9 @@ class TicketCard extends StatelessWidget {
       padding: const EdgeInsets.all(5.0),
       child: Card(
         child: InkWell(
-          onTap: () {
-            // AutoRouter.of(context).push(
-            //   EventDetailsRoute(eventId: ticket.eventId),
-          },
+          onTap: () => AutoRouter.of(context).push(
+            EventDetailsRoute(eventId: ticket.eventId),
+          ),
           child: IntrinsicHeight(
             child: Padding(
               padding: const EdgeInsets.all(10.0),

@@ -20,17 +20,21 @@ class EventDetailsCubit extends Cubit<EventDetailsState> {
   Future<void> getEventById(String eventId) async {
     emit(const EventDetailsState.loadInProgress());
 
-    _eventFacade.getEventById(eventId).then((result) {
-      result.fold(
-        (failure) => emit(
-          EventDetailsState.loadFailure(failure),
+    final failureOrSuccess = await _eventFacade.getEventById(eventId);
+
+    failureOrSuccess.fold(
+      (failure) => emit(
+        EventDetailsState.loadFailure(failure),
+      ),
+      (event) => {
+        emit(
+          EventDetailsState.loadSuccess(event),
         ),
-        (event) => {
-          emit(
-            EventDetailsState.loadSuccess(event),
-          ),
-        },
-      );
-    });
+      },
+    );
+  }
+
+  void addEventToState(Event event) {
+    emit(EventDetailsState.loadSuccess(event));
   }
 }

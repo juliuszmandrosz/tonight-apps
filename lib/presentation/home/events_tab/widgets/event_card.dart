@@ -1,10 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:intl/intl.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
+import 'package:raver/domain/core/extensions/date_formatters.dart';
 import 'package:raver/domain/events/event_entity.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
+import 'package:raver/presentation/events/utils/event_details_formatters.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 
 class EventCard extends StatelessWidget {
   final Event event;
@@ -37,113 +40,43 @@ class EventCard extends StatelessWidget {
       },
       builder: (context, state) {
         final isFavorite = state.favoriteEventIds.any((id) => id == event.id);
-        return Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0, 8, 0, 8),
-          child: Container(
-            height: 220,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(8),
-                topRight: Radius.circular(8),
+        return InkWell(
+          splashColor: DefaultColors.navbarUnselectedColor,
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            AutoRouter.of(context).push(EventDetailsRoute(event: event));
+          },
+          child: Padding(
+            padding: const EdgeInsetsDirectional.only(top: 8, bottom: 8),
+            child: Container(
+              height: 220,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(8),
+                  topRight: Radius.circular(8),
+                ),
+                image: DecorationImage(
+                  fit: BoxFit.fitWidth,
+                  image: Image.asset('assets/images/party_photo.jpeg').image,
+                ),
+                boxShadow: const [
+                  BoxShadow(
+                    blurRadius: 3,
+                    color: DefaultColors.textColor,
+                    offset: Offset(0, 2),
+                  )
+                ],
               ),
-              image: DecorationImage(
-                fit: BoxFit.fitWidth,
-                image: Image.asset('assets/images/party_photo.jpeg').image,
-              ),
-              boxShadow: const [
-                BoxShadow(
-                  blurRadius: 3,
-                  color: DefaultColors.textColor,
-                  offset: Offset(0, 2),
-                )
-              ],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(8, 4, 8, 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Card(
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            elevation: 0,
-                            color: DefaultColors.accentColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  6, 2, 6, 2),
-                              child: Text(
-                                event.attending.toString() + ' ATTENDING',
-                                style: theme.textTheme.headline3,
-                              ),
-                            ),
-                          ),
-                          Card(
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            color: DefaultColors.navbarUnselectedColor,
-                            elevation: 2,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: state.isLoading
-                                ? const Padding(
-                                    padding: EdgeInsets.all(4),
-                                    child: SpinKitThreeBounce(
-                                      color: DefaultColors.backgroundColor,
-                                      size: 24,
-                                    ),
-                                  )
-                                : Padding(
-                                    padding: const EdgeInsets.all(4),
-                                    child: isFavorite
-                                        ? IconButton(
-                                            onPressed: state
-                                                    .isChangingFavoriteStatus
-                                                ? null
-                                                : () => context
-                                                    .read<EventFavoriteCubit>()
-                                                    .toggleEventFavoriteStatus(
-                                                      event.id,
-                                                    ),
-                                            icon: const Icon(
-                                              Icons.favorite,
-                                              color:
-                                                  DefaultColors.backgroundColor,
-                                              size: 24,
-                                            ),
-                                          )
-                                        : IconButton(
-                                            onPressed: state
-                                                    .isChangingFavoriteStatus
-                                                ? null
-                                                : () => context
-                                                    .read<EventFavoriteCubit>()
-                                                    .toggleEventFavoriteStatus(
-                                                      event.id,
-                                                    ),
-                                            icon: const Icon(
-                                              Icons.favorite_border,
-                                              color:
-                                                  DefaultColors.backgroundColor,
-                                              size: 24,
-                                            ),
-                                          ),
-                                  ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    if (event.isConcert)
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                            const EdgeInsetsDirectional.fromSTEB(8, 4, 8, 0),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Card(
                               clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -156,79 +89,161 @@ class EventCard extends StatelessWidget {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     6, 2, 6, 2),
                                 child: Text(
-                                  'LIVE - ${event.artistName!.toUpperCase()}',
+                                  '${event.attending} ATTENDING',
                                   style: theme.textTheme.headline3,
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                  ],
-                ),
-                Container(
-                  height: 80,
-                  decoration: const BoxDecoration(
-                    color: DefaultColors.navbarUnselectedColor,
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: DefaultColors.primaryColor,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(4),
-                              child: Text(
-                                _formatDateTimeToMonthAndDay(
-                                    event.eventDateTime),
-                                textAlign: TextAlign.center,
-                                style: theme.textTheme.headline2,
+                            Card(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              color: DefaultColors.navbarUnselectedColor,
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
                               ),
-                            ),
-                            Text(
-                              _formatDateTimeToHour(event.eventDateTime),
-                              style: theme.textTheme.headline3,
+                              child: state.isLoading
+                                  ? const Padding(
+                                      padding: EdgeInsets.all(4),
+                                      child: SpinKitThreeBounce(
+                                        color: DefaultColors.backgroundColor,
+                                        size: 24,
+                                      ),
+                                    )
+                                  : Padding(
+                                      padding: const EdgeInsets.all(4),
+                                      child: isFavorite
+                                          ? IconButton(
+                                              onPressed: state
+                                                      .isChangingFavoriteStatus
+                                                  ? null
+                                                  : () => context
+                                                      .read<
+                                                          EventFavoriteCubit>()
+                                                      .toggleEventFavoriteStatus(
+                                                        event.id,
+                                                      ),
+                                              icon: const Icon(
+                                                Icons.favorite,
+                                                color: DefaultColors
+                                                    .backgroundColor,
+                                                size: 24,
+                                              ),
+                                            )
+                                          : IconButton(
+                                              onPressed: state
+                                                      .isChangingFavoriteStatus
+                                                  ? null
+                                                  : () => context
+                                                      .read<
+                                                          EventFavoriteCubit>()
+                                                      .toggleEventFavoriteStatus(
+                                                        event.id,
+                                                      ),
+                                              icon: const Icon(
+                                                Icons.favorite_border,
+                                                color: DefaultColors
+                                                    .backgroundColor,
+                                                size: 24,
+                                              ),
+                                            ),
+                                    ),
                             ),
                           ],
                         ),
                       ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                      if (event.isConcert)
+                        Padding(
+                          padding: const EdgeInsetsDirectional.only(
+                            start: 8,
+                            end: 8,
+                          ),
+                          child: Row(
                             children: [
-                              Text(event.clubName,
-                                  style: theme.textTheme.headline3),
-                              Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.only(top: 3),
-                                child: Text(
-                                  event.eventName,
-                                  style: theme.textTheme.headline3,
+                              Card(
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                elevation: 0,
+                                color: DefaultColors.accentColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.only(top: 3),
-                                child: Text(
-                                  _displayEventDetails(),
-                                  style: theme.textTheme.headline3,
-                                  overflow: TextOverflow.ellipsis,
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      6, 2, 6, 2),
+                                  child: Text(
+                                    'LIVE - ${event.artistName!.toUpperCase()}',
+                                    style: theme.textTheme.headline3,
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                      ),
                     ],
                   ),
-                ),
-              ],
+                  Container(
+                    height: 80,
+                    decoration: const BoxDecoration(
+                      color: DefaultColors.navbarUnselectedColor,
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: DefaultColors.primaryColor,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(4),
+                                child: Text(
+                                  event.eventDateTime
+                                      .formatDateTimeToMonthAndDay(),
+                                  textAlign: TextAlign.center,
+                                  style: theme.textTheme.headline2,
+                                ),
+                              ),
+                              Text(
+                                event.eventDateTime.formatDateTimeToHour(),
+                                style: theme.textTheme.headline3,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 8),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(event.clubName,
+                                    style: theme.textTheme.headline3),
+                                Padding(
+                                  padding:
+                                      const EdgeInsetsDirectional.only(top: 3),
+                                  child: Text(
+                                    event.eventName,
+                                    style: theme.textTheme.headline3,
+                                  ),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.only(top: 3),
+                                  child: Text(
+                                    _displayEventDetails(),
+                                    style: theme.textTheme.headline3,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         );
@@ -237,41 +252,27 @@ class EventCard extends StatelessWidget {
   }
 
   _displayEventDetails() {
-    return '${event.minAge}+, ${event.price}pln ${_displayAllowedOutfits(event.allowedOutfits)} '
-        '${_displayMusicalGenres(event.musicalGenres)}';
-  }
+    var allowedOutfits = displayAllowedOutfits(
+      event.allowedOutfits,
+      EventDetailsSeparator.comma,
+    );
 
-  _displayAllowedOutfits(List<String> allowedOutfits) {
-    String displayedString = '';
-    for (var outfit in allowedOutfits) {
-      displayedString += outfit;
-      if (outfit != allowedOutfits.last) {
-        displayedString += ', ';
-      }
+    final musicalGenres = displayMusicalGenres(
+      event.musicalGenres,
+      EventDetailsSeparator.comma,
+    );
+
+    var price = '${event.price}pln';
+    final minAge = '${event.minAge}+';
+
+    if (allowedOutfits.isNotEmpty || musicalGenres.isNotEmpty) {
+      price += ', ';
     }
 
-    return displayedString;
-  }
-
-  _displayMusicalGenres(List<String> musicalGenres) {
-    String displayedString = '';
-    for (var genre in musicalGenres) {
-      displayedString += genre;
-      if (genre != musicalGenres.last) {
-        displayedString += ', ';
-      }
+    if (musicalGenres.isNotEmpty && allowedOutfits.isNotEmpty) {
+      allowedOutfits += ', ';
     }
-    return displayedString;
-  }
 
-  _formatDateTimeToMonthAndDay(String dateTime) {
-    final DateFormat formatter = DateFormat('dd.MM');
-    return formatter.format(DateTime.parse(dateTime));
-  }
-
-  _formatDateTimeToHour(String dateTime) {
-    // TODO - add 24h format
-    final DateFormat formatter = DateFormat('HH:mm');
-    return formatter.format(DateTime.parse(dateTime));
+    return '$minAge, $price$allowedOutfits$musicalGenres';
   }
 }

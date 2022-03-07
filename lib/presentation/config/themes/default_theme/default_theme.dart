@@ -21,4 +21,11 @@ ThemeData get defaultTheme => ThemeData(
         headline2: DefaultTextStyles.headlineAccent,
         headline3: DefaultTextStyles.subtitleAccent,
       ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(
+            DefaultColors.primaryColor,
+          ),
+        ),
+      ),
     );

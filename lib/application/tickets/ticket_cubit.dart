@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:raver/application/core/cubit_status.dart';
 import 'package:raver/domain/tickets/ticket_entity.dart';
 import 'package:raver/domain/tickets/ticket_facade.dart';
 import 'package:raver/domain/tickets/ticket_failure.dart';
@@ -18,19 +19,19 @@ class TicketCubit extends Cubit<TicketState> {
   late StreamSubscription<Either<TicketFailure, List<Ticket>>>
       _ticketsSubscription;
 
-  TicketCubit(this._ticketFacade) : super(const TicketState.initial());
+  TicketCubit(this._ticketFacade) : super(TicketState.initial());
 
   Future<void> getTickets() async {
-    emit(const TicketState.loadInProgress());
+    emit(state.copyWith(status: CubitStatus.loading));
 
     _ticketsSubscription = _ticketFacade.getTickets().listen((result) {
       result.fold(
           (failure) => emit(
-                TicketState.loadFailure(failure),
+                state.copyWith(status: CubitStatus.failure),
               ),
           (tickets) => {
                 emit(
-                  TicketState.loadSuccess(tickets),
+                  state.copyWith(status: CubitStatus.success, tickets: tickets),
                 ),
               });
     });

@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:raver/domain/clubs/club_overview/club_overview_entity.dart';
+import 'package:raver/domain/events/event_entity.dart';
+import 'package:raver/presentation/events/event_details_page.dart';
 import 'package:raver/presentation/home/clubs_tab/club_page.dart';
 import 'package:raver/presentation/home/events_tab/event_page.dart';
 import 'package:raver/presentation/home/home_page.dart';
@@ -41,7 +43,8 @@ part 'app_router.gr.dart';
           name: 'TicketsRouter',
         )
       ],
-    )
+    ),
+    AutoRoute(page: EventDetailsPage),
   ],
 )
 class AppRouter extends _$AppRouter {}

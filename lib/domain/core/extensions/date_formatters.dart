@@ -11,4 +11,15 @@ extension StringX on String {
   DateTime formatDateFromDomain() {
     return DateTime.parse(this);
   }
+
+  String formatDateTimeToMonthAndDay() {
+    final DateFormat formatter = DateFormat('dd.MM');
+    return formatter.format(DateTime.parse(this));
+  }
+
+  String formatDateTimeToHour() {
+    // TODO - add 24h format
+    final DateFormat formatter = DateFormat('HH:mm');
+    return formatter.format(DateTime.parse(this));
+  }
 }

@@ -3,17 +3,37 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/application/auth/auth_cubit.dart';
+import 'package:raver/presentation/home/home_page.dart';
 import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/tickets/ticket_overview_page.dart';
 
-class NavigatorPage extends StatelessWidget {
+class NavigatorPage extends StatefulWidget {
   const NavigatorPage({Key? key}) : super(key: key);
+
+  @override
+  State<NavigatorPage> createState() => _NavigatorPageState();
+}
+
+class _NavigatorPageState extends State<NavigatorPage> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  static const _pages = [
+    HomePage(),
+    TicketOverviewPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
-        return AutoTabsScaffold(
-          appBarBuilder: (_, tabsRouter) => AppBar(
+        return Scaffold(
+          appBar: AppBar(
             title: const Text('Raver'),
             centerTitle: false,
             actions: [
@@ -26,43 +46,38 @@ class NavigatorPage extends StatelessWidget {
               ),
             ],
           ),
-          routes: const [
-            HomeRouter(),
-            TicketsRouter(),
-          ],
-          bottomNavigationBuilder: (_, tabsRouter) {
-            return BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              currentIndex: tabsRouter.activeIndex,
-              onTap: tabsRouter.setActiveIndex,
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.home,
-                  ),
-                  label: "Home",
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    FontAwesomeIcons.ticketAlt,
-                  ),
-                  label: "Tickets",
+                label: "Home",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  FontAwesomeIcons.ticketAlt,
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.favorite,
-                  ),
-                  label: "Favourites",
+                label: "Tickets",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.favorite,
                 ),
-                BottomNavigationBarItem(
-                  icon: FaIcon(
-                    FontAwesomeIcons.userAlt,
-                  ),
-                  label: "Profile",
+                label: "Favourites",
+              ),
+              BottomNavigationBarItem(
+                icon: FaIcon(
+                  FontAwesomeIcons.userAlt,
                 ),
-              ],
-            );
-          },
+                label: "Profile",
+              ),
+            ],
+          ),
+          body: _pages[_selectedIndex],
         );
       },
     );

@@ -2,12 +2,17 @@ part of 'ticket_cubit.dart';
 
 @freezed
 class TicketState with _$TicketState {
-  const factory TicketState.initial() = _Initial;
+  TicketState._();
 
-  const factory TicketState.loadInProgress() = _LoadInProgress;
+  factory TicketState({
+    required List<Ticket> tickets,
+    required bool hasReachedMax,
+    required CubitStatus status,
+  }) = _TicketState;
 
-  const factory TicketState.loadSuccess(List<Ticket> tickets) = _LoadSuccess;
-
-  const factory TicketState.loadFailure(TicketFailure ticketFailure) =
-      _LoadFailure;
+  factory TicketState.initial() => TicketState(
+        hasReachedMax: false,
+        status: CubitStatus.initial,
+        tickets: [],
+      );
 }

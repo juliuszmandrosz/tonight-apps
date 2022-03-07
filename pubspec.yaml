@@ -61,6 +61,7 @@ dependencies:
   google_maps_flutter: ^2.1.2
   cloud_functions: ^3.2.9
   algolia: ^1.0.4
+  url_launcher: ^6.0.20
 
 dev_dependencies:
   flutter_test:
