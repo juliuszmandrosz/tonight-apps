@@ -1,7 +1,5 @@
 import 'package:algolia/algolia.dart';
-import 'package:injectable/injectable.dart';
 
-@injectable
 class AlgoliaAPI {
   final _algolia = const Algolia.init(
     applicationId: 'APP_ID',
