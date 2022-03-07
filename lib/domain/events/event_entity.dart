@@ -15,7 +15,7 @@ class Event extends Equatable {
   final String? artistName;
   final String? description;
   final List<String> photos;
-  final Map<String, String> location;
+  final Map<String, double> location;
   final Map<String, String> urlLinks;
   final bool isConcert;
 
@@ -37,6 +37,14 @@ class Event extends Equatable {
     this.urlLinks = const {},
     this.isConcert = false,
   }) : id = id ?? const Uuid().v1();
+
+  double getLatitude() {
+    return location['latitude']!;
+  }
+
+  double getLongitude() {
+    return location['longitude']!;
+  }
 
   @override
   List<Object?> get props => [

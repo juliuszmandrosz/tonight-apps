@@ -29,7 +29,7 @@ class EventDto with _$EventDto {
     required List<String> musicalGenres,
     String? description,
     String? artistName,
-    required Map<String, String> location,
+    required Map<String, double> location,
     @Default([]) List<String> photos,
     @Default({}) Map<String, String> urlLinks,
     @Default(false) bool isConcert,

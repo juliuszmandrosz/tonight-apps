@@ -16,8 +16,8 @@ class EventDetailsNavigateToClub extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final lat = event.eventPlaceLatitude;
-    final lng = event.eventPlaceLongitude;
+    final lat = event.getLatitude();
+    final lng = event.getLongitude();
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

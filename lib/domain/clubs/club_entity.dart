@@ -27,6 +27,14 @@ class Club extends Equatable {
       required this.socialMedia,
       required this.reviews});
 
+  double getLatitude() {
+    return location['latitude']!;
+  }
+
+  double getLongitude() {
+    return location['longitude']!;
+  }
+
   @override
   List<Object?> get props => [
         id,

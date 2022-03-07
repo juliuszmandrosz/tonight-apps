@@ -46,53 +46,56 @@ class ClubPage extends StatelessWidget {
             ),
             loadSuccess: (state) {
               final club = state.club;
-              return Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: SizedBox(
-                          height: 200,
-                          child: Stack(
-                            children: [
-                              Align(
-                                child: Hero(
-                                  tag: heroTag ?? "",
-                                  //this just wont animate hero
-                                  child: Container(
-                                    height: 200,
-                                    alignment: Alignment.topCenter,
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: Image.network(club.clubImageUrl)
-                                            .image,
+              return Scaffold(
+                body: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            height: 200,
+                            child: Stack(
+                              children: [
+                                Align(
+                                  child: Hero(
+                                    tag: heroTag ?? "",
+                                    //this just wont animate hero
+                                    child: Container(
+                                      height: 200,
+                                      alignment: Alignment.topCenter,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image:
+                                              Image.network(club.clubImageUrl)
+                                                  .image,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              const Align(
-                                alignment: AlignmentDirectional(-0.95, -0.7),
-                                child: BackButtonWidget(),
-                              ),
-                            ],
+                                const Align(
+                                  alignment: AlignmentDirectional(-0.95, -0.7),
+                                  child: BackButtonWidget(),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  ClubDescription(
-                    club: club,
-                  ),
-                  ClubDetailsTabs(
-                    club: club,
-                  ),
-                ],
+                      ],
+                    ),
+                    ClubDescription(
+                      club: club,
+                    ),
+                    ClubDetailsTabs(
+                      club: club,
+                    ),
+                  ],
+                ),
               );
             },
             loadFailure: (state) => Center(

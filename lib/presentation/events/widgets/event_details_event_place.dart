@@ -45,15 +45,15 @@ class _EventDetailsEventPlaceState extends State<EventDetailsEventPlace> {
               Marker(
                 markerId: const MarkerId('m1'),
                 position: LatLng(
-                  widget.event.eventPlaceLatitude,
-                  widget.event.eventPlaceLongitude,
+                  widget.event.getLatitude(),
+                  widget.event.getLongitude(),
                 ),
               ),
             },
             initialCameraPosition: CameraPosition(
               target: LatLng(
-                widget.event.eventPlaceLatitude,
-                widget.event.eventPlaceLongitude,
+                widget.event.getLatitude(),
+                widget.event.getLongitude(),
               ),
               zoom: 16,
             ),
