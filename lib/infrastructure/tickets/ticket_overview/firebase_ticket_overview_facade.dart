@@ -9,11 +9,13 @@ import 'package:raver/infrastructure/tickets/ticket_overview/dtos/ticket_overvie
 
 class FirebaseTicketOverviewFacade implements TicketOverviewFacade {
   final FirebaseFirestore _firestore;
-  final logger = Logger();
+  final Logger _logger;
 
   FirebaseTicketOverviewFacade({
     required FirebaseFirestore firestore,
-  }) : _firestore = firestore;
+    required Logger logger,
+  })  : _firestore = firestore,
+        _logger = logger;
 
   @override
   Stream<Either<TicketOverviewFailure, List<TicketOverview>>>
@@ -30,7 +32,7 @@ class FirebaseTicketOverviewFacade implements TicketOverviewFacade {
           ),
         )
         .handleError((e) {
-      logger.e("Exception during fetching tickets EXCEPTION: $e");
+      _logger.e("Exception during fetching tickets EXCEPTION: $e");
       return left(const TicketOverviewFailure.unexpected());
     });
   }
@@ -46,7 +48,7 @@ class FirebaseTicketOverviewFacade implements TicketOverviewFacade {
 
       return right(unit);
     } on FirebaseException catch (e) {
-      logger.e("Exception during adding ticket EXCEPTION: $e");
+      _logger.e("Exception during adding ticket EXCEPTION: $e");
       return left(const TicketOverviewFailure.unexpected());
     }
   }

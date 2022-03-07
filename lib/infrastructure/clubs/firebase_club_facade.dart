@@ -14,13 +14,15 @@ import 'dtos/club_dto.dart';
 class FirebaseClubFacade implements ClubFacade {
   final FirebaseFirestore _firestore;
   final FirebaseStorage _storage;
-  final logger = Logger();
+  final Logger _logger;
 
   FirebaseClubFacade({
     required FirebaseFirestore firestore,
     required FirebaseStorage storage,
+    required Logger logger,
   })  : _firestore = firestore,
-        _storage = storage;
+        _storage = storage,
+        _logger = logger;
 
   @override
   Future<Either<ClubFailure, List<Club>>> getClubs(ClubFilter filter) async {
@@ -33,7 +35,7 @@ class FirebaseClubFacade implements ClubFacade {
               ClubDto.fromFirebase(document).toDomain())
           .toList());
     } on FirebaseException catch (exception) {
-      logger.e("Exception during fetching clubs EXCEPTION: $exception");
+      _logger.e("Exception during fetching clubs EXCEPTION: $exception");
       return left(const ClubFailure.unexpected());
     }
   }
@@ -45,7 +47,7 @@ class FirebaseClubFacade implements ClubFacade {
       DocumentSnapshot result = await clubsQuery.get();
       return right(ClubDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (exception) {
-      logger.e("Exception during fetching clubs EXCEPTION: $exception");
+      _logger.e("Exception during fetching clubs EXCEPTION: $exception");
       return left(const ClubFailure.unexpected());
     }
   }
@@ -78,7 +80,7 @@ class FirebaseClubFacade implements ClubFacade {
       return right(await Future.wait(
           urls)); //Future.wait unpacks List<Future<String>> list from Futures to not overcomplicate overall UI building
     } on FirebaseException catch (exception) {
-      logger.e("Exception during fetching clubs images EXCEPTION: $exception");
+      _logger.e("Exception during fetching clubs images EXCEPTION: $exception");
       return left(const ClubFailure.unexpected());
     }
   }

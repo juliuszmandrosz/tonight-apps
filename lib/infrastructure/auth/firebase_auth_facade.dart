@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:logger/logger.dart';
 import 'package:raver/domain/auth/app_user_entity.dart';
 import 'package:raver/domain/auth/auth_facade.dart';
 import 'package:raver/domain/auth/auth_failure.dart';
@@ -14,14 +15,17 @@ class FirebaseAuthFacade implements AuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
   final FirebaseFirestore _firestore;
+  final Logger _logger;
 
-  FirebaseAuthFacade(
-      {required FirebaseAuth firebaseAuth,
-      required GoogleSignIn googleSignIn,
-      required FirebaseFirestore firestore})
-      : _firebaseAuth = firebaseAuth,
+  FirebaseAuthFacade({
+    required FirebaseAuth firebaseAuth,
+    required GoogleSignIn googleSignIn,
+    required FirebaseFirestore firestore,
+    required Logger logger,
+  })  : _firebaseAuth = firebaseAuth,
         _googleSignIn = googleSignIn,
-        _firestore = firestore;
+        _firestore = firestore,
+        _logger = logger;
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
@@ -36,11 +40,13 @@ class FirebaseAuthFacade implements AuthFacade {
       await _addUser(emailAddress, result.user!.uid);
       return right(unit);
     } on FirebaseException catch (e) {
+      _logger
+          .e("Exception during register with login and password EXCEPTION: $e");
       return e.code == 'invalid-email'
           ? left(const AuthFailure.invalidEmail())
           : e.code == 'email-already-in-use'
-          ? left(const AuthFailure.emailAlreadyInUse())
-          : left(const AuthFailure.serverError());
+              ? left(const AuthFailure.emailAlreadyInUse())
+              : left(const AuthFailure.serverError());
     }
   }
 
@@ -56,6 +62,8 @@ class FirebaseAuthFacade implements AuthFacade {
       );
       return right(unit);
     } on FirebaseException catch (e) {
+      _logger
+          .e("Exception during sign in with login and password EXCEPTION: $e");
       return e.code == 'user-not-found' || e.code == 'wrong-password'
           ? left(const AuthFailure.invalidEmailAndPasswordCombination())
           : left(const AuthFailure.serverError());
@@ -81,7 +89,8 @@ class FirebaseAuthFacade implements AuthFacade {
       await _firebaseAuth.signInWithCredential(authCredential);
 
       return right(unit);
-    } on PlatformException {
+    } on PlatformException catch (e) {
+      _logger.e("Exception during sign in with Google EXCEPTION: $e");
       return left(const AuthFailure.serverError());
     }
   }
@@ -92,7 +101,7 @@ class FirebaseAuthFacade implements AuthFacade {
       final loginResult = await FacebookAuth.instance.login();
 
       final authCredential =
-      FacebookAuthProvider.credential(loginResult.accessToken!.token);
+          FacebookAuthProvider.credential(loginResult.accessToken!.token);
 
       await FirebaseAuth.instance.signInWithCredential(authCredential);
 
@@ -118,7 +127,8 @@ class FirebaseAuthFacade implements AuthFacade {
     ]);
   }
 
-  Future<Either<AuthFailure, Unit>> _addUser(String emailAddress, String userId) async {
+  Future<Either<AuthFailure, Unit>> _addUser(
+      String emailAddress, String userId) async {
     try {
       final userDoc = await _firestore.userDocument();
       await userDoc.set({
@@ -127,7 +137,8 @@ class FirebaseAuthFacade implements AuthFacade {
         'favoriteClubs': [],
       });
       return right(unit);
-    } on PlatformException {
+    } on PlatformException catch (e) {
+      _logger.e("Exception during adding user to firestore: $e");
       return left(const AuthFailure.serverError());
     }
   }

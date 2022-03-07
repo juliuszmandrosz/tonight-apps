@@ -9,10 +9,13 @@ import 'package:raver/infrastructure/tickets/dtos/ticket_dto.dart';
 
 class FirebaseTicketFacade implements TicketFacade {
   final FirebaseFirestore _firestore;
-  final logger = Logger();
+  final Logger _logger;
 
-  FirebaseTicketFacade({required FirebaseFirestore firestore})
-      : _firestore = firestore;
+  FirebaseTicketFacade({
+    required FirebaseFirestore firestore,
+    required Logger logger,
+  })  : _firestore = firestore,
+        _logger = logger;
 
   @override
   Stream<Either<TicketFailure, List<Ticket>>> getTickets() async* {
@@ -28,7 +31,7 @@ class FirebaseTicketFacade implements TicketFacade {
           ),
         )
         .handleError((e) {
-      logger.e("Exception during fetching tickets EXCEPTION: $e");
+      _logger.e("Exception during fetching tickets EXCEPTION: $e");
       return left(const TicketFailure.unexpected());
     });
   }
@@ -43,7 +46,7 @@ class FirebaseTicketFacade implements TicketFacade {
 
       return right(unit);
     } on FirebaseException catch (e) {
-      logger.e("Exception during adding ticket EXCEPTION: $e");
+      _logger.e("Exception during adding ticket EXCEPTION: $e");
       return left(const TicketFailure.unexpected());
     }
   }

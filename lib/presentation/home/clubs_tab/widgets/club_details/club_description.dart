@@ -52,7 +52,7 @@ class ClubDescription extends StatelessWidget {
               onPressed: () async {
                 var result = await launchGoogleMaps(
                     club.location['latitude']!, club.location['longitude']!);
-                if (result.isLeft()) {
+                if (result.isSome()) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text("Error while launching google maps"),

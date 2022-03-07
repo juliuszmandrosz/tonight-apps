@@ -7,7 +7,7 @@ part 'event_filters_cubit.freezed.dart';
 part 'event_filters_state.dart';
 
 class EventFiltersCubit extends Cubit<EventFiltersState> {
-  final EventOverviewBloc? _eventOverviewBloc;
+  final EventOverviewBloc _eventOverviewBloc;
 
   EventFiltersCubit(this._eventOverviewBloc)
       : super(const EventFiltersState.initial());
@@ -17,11 +17,11 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
       final filters = EventFilter(
         phrase: value,
       );
-      _eventOverviewBloc!.add(EventOverviewEvent.eventsFetched(filters));
+      _eventOverviewBloc.add(EventOverviewEvent.eventsFetched(filters));
     }, filtersUpdated: (state) {
       final filters = state.eventFilter
           .mapOrNull((value) => value.copyWith(phrase: value.phrase));
-      _eventOverviewBloc!.add(EventOverviewEvent.eventsFetched(filters!));
+      _eventOverviewBloc.add(EventOverviewEvent.eventsFetched(filters!));
     });
   }
 }

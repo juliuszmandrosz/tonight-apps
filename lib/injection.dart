@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:logger/logger.dart';
 import 'package:raver/application/auth/auth_cubit.dart';
 import 'package:raver/application/clubs/club_details/club_details_cubit.dart';
 import 'package:raver/application/clubs/club_details/club_photos/club_photos_cubit.dart';
@@ -108,41 +109,50 @@ void _registerCubits() {
 }
 
 void _registerFacades() {
+  getIt.registerLazySingleton<Logger>(
+    () => Logger(),
+  );
+
   //Auth
   getIt.registerLazySingleton<AuthFacade>(
     () => FirebaseAuthFacade(
       firebaseAuth: getIt(),
       googleSignIn: getIt(),
       firestore: getIt(),
+      logger: getIt(),
     ),
   );
 
   //Club
   getIt.registerLazySingleton<ClubFacade>(
-    () => FirebaseClubFacade(
+        () => FirebaseClubFacade(
       firestore: getIt(),
       storage: getIt(),
+      logger: getIt(),
     ),
   );
 
   //Ticket
   getIt.registerLazySingleton<TicketOverviewFacade>(
-    () => FirebaseTicketOverviewFacade(
+        () => FirebaseTicketOverviewFacade(
       firestore: getIt(),
+      logger: getIt(),
     ),
   );
 
   getIt.registerLazySingleton<TicketFacade>(
-    () => FirebaseTicketFacade(
+        () => FirebaseTicketFacade(
       firestore: getIt(),
+      logger: getIt(),
     ),
   );
 
   //Event
   getIt.registerLazySingleton<EventFacade>(
-    () => FirebaseEventFacade(
+        () => FirebaseEventFacade(
       firestore: getIt(),
       algoliaAPI: getIt(),
+      logger: getIt(),
     ),
   );
 }

@@ -13,14 +13,15 @@ import 'package:raver/infrastructure/events/dtos/event_dto.dart';
 class FirebaseEventFacade implements EventFacade {
   final FirebaseFirestore _firestore;
   final AlgoliaAPI _algoliaAPI;
-
-  final logger = Logger();
+  final Logger _logger;
 
   FirebaseEventFacade({
     required FirebaseFirestore firestore,
     required AlgoliaAPI algoliaAPI,
+    required Logger logger,
   })  : _firestore = firestore,
-        _algoliaAPI = algoliaAPI;
+        _algoliaAPI = algoliaAPI,
+        _logger = logger;
 
   @override
   Future<Either<EventFailure, List<Event>>> getEvents(
@@ -40,7 +41,7 @@ class FirebaseEventFacade implements EventFacade {
           )
           .toList());
     } on PlatformException catch (e) {
-      logger.e("Platform exception during fetching events EXCEPTION: $e");
+      _logger.e("Platform exception during fetching events EXCEPTION: $e");
       return left(const EventFailure.unexpected());
     }
   }
@@ -52,7 +53,7 @@ class FirebaseEventFacade implements EventFacade {
 
       return right(EventDto.fromFirebase(eventDoc).toDomain());
     } on FirebaseException catch (e) {
-      logger.e("Exception during getting event by id EXCEPTION: $e");
+      _logger.e("Exception during getting event by id EXCEPTION: $e");
       return left(const EventFailure.unexpected());
     }
   }
@@ -73,7 +74,8 @@ class FirebaseEventFacade implements EventFacade {
 
       return right(unit);
     } on FirebaseException catch (e) {
-      logger.e("Exception during toggling event favorite status EXCEPTION: $e");
+      _logger
+          .e("Exception during toggling event favorite status EXCEPTION: $e");
       return left(const EventFailure.unexpected());
     }
   }
@@ -87,7 +89,7 @@ class FirebaseEventFacade implements EventFacade {
       final favoriteEventIds = await userDocSnapshot.get('favoriteEvents');
       return right(List<String>.from(favoriteEventIds));
     } on FirebaseException catch (e) {
-      logger.e("Exception during getting favorite event ids EXCEPTION: $e");
+      _logger.e("Exception during getting favorite event ids EXCEPTION: $e");
       return left(const EventFailure.unexpected());
     }
   }
@@ -102,7 +104,7 @@ class FirebaseEventFacade implements EventFacade {
 
       return right(unit);
     } on FirebaseException catch (e) {
-      logger.e("Exception during adding event EXCEPTION: $e");
+      _logger.e("Exception during adding event EXCEPTION: $e");
       return left(const EventFailure.unexpected());
     }
   }

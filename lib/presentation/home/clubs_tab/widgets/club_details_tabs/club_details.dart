@@ -48,7 +48,7 @@ class ClubDetails extends StatelessWidget {
                   RaverIconButton(
                     onPressed: () async {
                       var result = await launchPhoneCall(phoneNumber);
-                      if (result.isLeft()) {
+                      if (result.isSome()) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text(

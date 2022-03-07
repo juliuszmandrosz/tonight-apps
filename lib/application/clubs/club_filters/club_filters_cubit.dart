@@ -8,7 +8,7 @@ part 'club_filters_cubit.freezed.dart';
 part 'club_filters_state.dart';
 
 class ClubFiltersCubit extends Cubit<ClubFiltersState> {
-  final ClubsOverviewCubit? _clubsOverviewCubit;
+  final ClubsOverviewCubit _clubsOverviewCubit;
 
   ClubFiltersCubit(this._clubsOverviewCubit)
       : super(const ClubFiltersState.initial());
@@ -19,11 +19,11 @@ class ClubFiltersCubit extends Cubit<ClubFiltersState> {
         phrase: value,
         clubFilterSettings: ClubFilterSettings.empty(),
       );
-      _clubsOverviewCubit!.getClubs(filters);
+      _clubsOverviewCubit.getClubs(filters);
     }, filtersUpdated: (state) {
       final filters = state.clubFilter
           .mapOrNull((value) => value.copyWith(phrase: value.phrase));
-      _clubsOverviewCubit!.getClubs(filters!);
+      _clubsOverviewCubit.getClubs(filters!);
     });
   }
 
@@ -31,7 +31,7 @@ class ClubFiltersCubit extends Cubit<ClubFiltersState> {
     state.mapOrNull(filtersUpdated: (state) {
       final filters = state.clubFilter.mapOrNull((value) =>
           value.copyWith(clubFilterSettings: value.clubFilterSettings));
-      _clubsOverviewCubit!.getClubs(filters!);
+      _clubsOverviewCubit.getClubs(filters!);
     });
   }
 }
