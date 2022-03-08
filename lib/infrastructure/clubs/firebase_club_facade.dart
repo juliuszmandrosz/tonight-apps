@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -8,34 +9,46 @@ import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/domain/clubs/club_facade.dart';
 import 'package:raver/domain/clubs/failures/club_failure.dart';
 import 'package:raver/domain/clubs/filters/club_filter.dart';
+import 'package:raver/infrastructure/core/algolia_api.dart';
 
 import 'dtos/club_dto.dart';
 
 class FirebaseClubFacade implements ClubFacade {
   final FirebaseFirestore _firestore;
+  final AlgoliaAPI _algoliaAPI;
   final FirebaseStorage _storage;
   final Logger _logger;
 
+  final String clubsIndex = 'clubs';
+
   FirebaseClubFacade({
     required FirebaseFirestore firestore,
+    required AlgoliaAPI algoliaAPI,
     required FirebaseStorage storage,
     required Logger logger,
   })  : _firestore = firestore,
+        _algoliaAPI = algoliaAPI,
         _storage = storage,
         _logger = logger;
 
   @override
-  Future<Either<ClubFailure, List<Club>>> getClubs(ClubFilter filter) async {
-    Query clubsQuery = applyFiler(_firestore.collection('clubs'), filter)
-        .limit(10); //for now hard pagination limit, need to discuss that
+  Future<Either<ClubFailure, List<Club>>> getClubs(
+    ClubFilter filter, {
+    int pageSize = 10,
+    int offset = 0,
+  }) async {
+    String? text;
+    filter.mapOrNull((value) => text = value.phrase);
+
     try {
-      QuerySnapshot result = await clubsQuery.get();
-      return right(result.docs
-          .map((QueryDocumentSnapshot document) =>
-              ClubDto.fromFirebase(document).toDomain())
+      var clubs = await _algoliaAPI.search(text, clubsIndex, pageSize, offset);
+
+      return right(clubs.hits
+          .map((doc) => ClubDto.fromAlgolia(doc).toDomain())
           .toList());
-    } on FirebaseException catch (exception) {
-      _logger.e("Exception during fetching clubs EXCEPTION: $exception");
+    } on AlgoliaError catch (exception) {
+      _logger
+          .e("Algolia exception during fetching clubs EXCEPTION: $exception");
       return left(const ClubFailure.unexpected());
     }
   }

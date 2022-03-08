@@ -1,6 +1,6 @@
+import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:raver/domain/events/event_entity.dart';
 import 'package:raver/domain/events/event_facade.dart';
@@ -15,6 +15,9 @@ class FirebaseEventFacade implements EventFacade {
   final AlgoliaAPI _algoliaAPI;
   final Logger _logger;
 
+  final String eventsIndex = 'events';
+  final String favoriteEventsIndex = 'favoriteEvents';
+
   FirebaseEventFacade({
     required FirebaseFirestore firestore,
     required AlgoliaAPI algoliaAPI,
@@ -24,8 +27,7 @@ class FirebaseEventFacade implements EventFacade {
         _logger = logger;
 
   @override
-  Future<Either<EventFailure, List<Event>>> getEvents(
-    EventFilter filters, {
+  Future<Either<EventFailure, List<Event>>> getEvents(EventFilter filters, {
     int pageSize = 10,
     int offset = 0,
   }) async {
@@ -33,15 +35,16 @@ class FirebaseEventFacade implements EventFacade {
       String? text;
       filters.mapOrNull((value) => text = value.phrase);
 
-      var events = await _algoliaAPI.search(text, 'events', pageSize, offset);
+      var events =
+          await _algoliaAPI.search(text, eventsIndex, pageSize, offset);
 
       return right<EventFailure, List<Event>>(events.hits
           .map(
             (doc) => EventDto.fromAlgolia(doc).toDomain(),
           )
           .toList());
-    } on PlatformException catch (e) {
-      _logger.e("Platform exception during fetching events EXCEPTION: $e");
+    } on AlgoliaError catch (e) {
+      _logger.e("Algolia exception during fetching events EXCEPTION: $e");
       return left(const EventFailure.unexpected());
     }
   }
@@ -59,18 +62,18 @@ class FirebaseEventFacade implements EventFacade {
   }
 
   @override
-  Future<Either<EventFailure, Unit>> toggleEventFavoriteStatus(
-      String eventId) async {
+  Future<Either<EventFailure, Unit>> toggleEventFavoriteStatus(String eventId) async {
     try {
       final userDoc = await _firestore.userDocument();
       final userSnapshot = await userDoc.get();
-      final userFavorites = userSnapshot.get('favoriteEvents') as List<dynamic>;
+      final userFavorites =
+          userSnapshot.get(favoriteEventsIndex) as List<dynamic>;
 
       userFavorites.any((id) => id == eventId)
           ? userFavorites.remove(eventId)
           : userFavorites.add(eventId);
 
-      userDoc.update({'favoriteEvents': userFavorites});
+      userDoc.update({favoriteEventsIndex: userFavorites});
 
       return right(unit);
     } on FirebaseException catch (e) {
@@ -86,7 +89,7 @@ class FirebaseEventFacade implements EventFacade {
     final userDocSnapshot = await userDoc.get();
 
     try {
-      final favoriteEventIds = await userDocSnapshot.get('favoriteEvents');
+      final favoriteEventIds = await userDocSnapshot.get(favoriteEventsIndex);
       return right(List<String>.from(favoriteEventIds));
     } on FirebaseException catch (e) {
       _logger.e("Exception during getting favorite event ids EXCEPTION: $e");

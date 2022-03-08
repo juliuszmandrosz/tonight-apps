@@ -1,0 +1,7 @@
+part of 'clubs_overview_bloc.dart';
+
+@freezed
+class ClubsOverviewEvent with _$ClubsOverviewEvent {
+  const factory ClubsOverviewEvent.clubsFetched(ClubFilter clubFilter) =
+      _ClubsFetched;
+}

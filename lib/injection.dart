@@ -8,7 +8,6 @@ import 'package:raver/application/auth/auth_cubit.dart';
 import 'package:raver/application/clubs/club_details/club_details_cubit.dart';
 import 'package:raver/application/clubs/club_details/club_photos/club_photos_cubit.dart';
 import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
-import 'package:raver/application/clubs/clubs_overview/clubs_overview_cubit.dart';
 import 'package:raver/application/events/event_details/event_details_cubit.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
@@ -26,6 +25,7 @@ import 'package:raver/infrastructure/tickets/firebase_ticket_facade.dart';
 import 'package:raver/infrastructure/tickets/ticket_overview/firebase_ticket_overview_facade.dart';
 
 import 'application/auth/sign_in_form/sign_in_form_cubit.dart';
+import 'application/clubs/clubs_overview/clubs_overview_bloc.dart';
 import 'infrastructure/auth/firebase_auth_facade.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -58,7 +58,7 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => ClubsOverviewCubit(
+        () => ClubsOverviewBloc(
       getIt(),
     ),
   );
@@ -129,6 +129,7 @@ void _registerFacades() {
       firestore: getIt(),
       storage: getIt(),
       logger: getIt(),
+      algoliaAPI: getIt(),
     ),
   );
 

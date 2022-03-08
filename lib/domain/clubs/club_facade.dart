@@ -5,7 +5,11 @@ import 'club_entity.dart';
 import 'failures/club_failure.dart';
 
 abstract class ClubFacade {
-  Future<Either<ClubFailure, List<Club>>> getClubs(ClubFilter filter);
+  Future<Either<ClubFailure, List<Club>>> getClubs(
+    ClubFilter filter, {
+    int pageSize = 10,
+    int offset = 0,
+  });
 
   Future<Either<ClubFailure, Club>> getClubById(String id);
 

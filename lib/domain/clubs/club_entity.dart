@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:raver/domain/clubs/club_review_entity.dart';
+import 'package:uuid/uuid.dart';
 
 class Club extends Equatable {
   final String id;
@@ -14,18 +15,19 @@ class Club extends Equatable {
   final Map<String, String> socialMedia;
   final List<ClubReview> reviews;
 
-  const Club(
-      {required this.id,
-      required this.clubName,
-      required this.clubImageUrl,
-      required this.reviewCount,
-      required this.reviewAvg,
-      required this.location,
-      required this.locationString,
-      required this.aboutUs,
-      required this.phoneNumber,
-      required this.socialMedia,
-      required this.reviews});
+  Club({
+    String? id,
+    required this.clubName,
+    required this.clubImageUrl,
+    required this.reviewCount,
+    required this.reviewAvg,
+    required this.location,
+    required this.locationString,
+    required this.aboutUs,
+    required this.phoneNumber,
+    required this.socialMedia,
+    required this.reviews,
+  }) : id = id ?? const Uuid().v1();
 
   double getLatitude() {
     return location['latitude']!;

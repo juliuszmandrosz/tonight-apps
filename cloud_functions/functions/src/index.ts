@@ -7,7 +7,9 @@ const env = functions.config();
 
 const client = algoliasearch(env.algolia.appid, env.algolia.apikey);
 const eventIndex = client.initIndex('events');
+const clubIndex = client.initIndex('clubs');
 const eventPath = 'events/{eventId}'
+const clubsPath = 'clubs/{eventId}'
 
 
 exports.addEvent = functions.firestore
@@ -33,5 +35,26 @@ exports.updateEvent = functions.firestore
         return eventIndex.saveObject(afterUpdate);
     })
 
+exports.addClub = functions.firestore
+    .document(clubsPath)
+    .onCreate((snap, _) => {
+        const data = snap.data();
+        data.objectID = snap.id;
+        return clubIndex.saveObject(data)
+    });
+
+exports.deleteClub = functions.firestore
+    .document(clubsPath)
+    .onDelete((snap, _) => {
+        clubIndex.deleteObject(snap.id)
+    });
+
+exports.updateClub = functions.firestore
+    .document(clubsPath)
+    .onUpdate((change, _) => {
+        const afterUpdate = change.after.data();
+        afterUpdate.objectID = change.after.id;
+        return clubIndex.saveObject(afterUpdate)
+    });
 
 

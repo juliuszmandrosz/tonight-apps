@@ -48,7 +48,7 @@ class _EventOverviewPageState extends State<EventOverviewPage> {
                       EventOverviewEvent.eventsFetched(state.eventFilters),
                     ),
                 child: const Center(
-                  child: Text('Failed to fetch posts'),
+                  child: Text('Failed to fetch events'),
                 ),
               );
 

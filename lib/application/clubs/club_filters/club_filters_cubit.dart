@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/clubs/clubs_overview/clubs_overview_cubit.dart';
+import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
 import 'package:raver/domain/clubs/filters/club_filter.dart';
 import 'package:raver/domain/clubs/filters/club_filters_settings.dart';
 
@@ -8,9 +8,9 @@ part 'club_filters_cubit.freezed.dart';
 part 'club_filters_state.dart';
 
 class ClubFiltersCubit extends Cubit<ClubFiltersState> {
-  final ClubsOverviewCubit _clubsOverviewCubit;
+  final ClubsOverviewBloc _clubsOverviewBloc;
 
-  ClubFiltersCubit(this._clubsOverviewCubit)
+  ClubFiltersCubit(this._clubsOverviewBloc)
       : super(const ClubFiltersState.initial());
 
   void onSearchFieldSubmitted(String value) {
@@ -19,11 +19,11 @@ class ClubFiltersCubit extends Cubit<ClubFiltersState> {
         phrase: value,
         clubFilterSettings: ClubFilterSettings.empty(),
       );
-      _clubsOverviewCubit.getClubs(filters);
+      _clubsOverviewBloc.add(ClubsOverviewEvent.clubsFetched(filters));
     }, filtersUpdated: (state) {
       final filters = state.clubFilter
           .mapOrNull((value) => value.copyWith(phrase: value.phrase));
-      _clubsOverviewCubit.getClubs(filters!);
+      _clubsOverviewBloc.add(ClubsOverviewEvent.clubsFetched(filters!));
     });
   }
 
@@ -31,7 +31,7 @@ class ClubFiltersCubit extends Cubit<ClubFiltersState> {
     state.mapOrNull(filtersUpdated: (state) {
       final filters = state.clubFilter.mapOrNull((value) =>
           value.copyWith(clubFilterSettings: value.clubFilterSettings));
-      _clubsOverviewCubit.getClubs(filters!);
+      _clubsOverviewBloc.add(ClubsOverviewEvent.clubsFetched(filters!));
     });
   }
 }

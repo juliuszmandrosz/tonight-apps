@@ -1,13 +1,20 @@
-part of 'clubs_overview_cubit.dart';
+part of 'clubs_overview_bloc.dart';
 
 @freezed
 abstract class ClubsOverviewState with _$ClubsOverviewState {
-  const factory ClubsOverviewState.initial() = _Initial;
+  const ClubsOverviewState._();
 
-  const factory ClubsOverviewState.loadInProgress() = _LoadInProgress;
+  const factory ClubsOverviewState({
+    required CubitStatus status,
+    required List<Club> clubs,
+    required bool hasReachedMax,
+    required ClubFilter clubFilter,
+  }) = _ClubsOverviewState;
 
-  const factory ClubsOverviewState.loadSuccess(List<Club> clubs) = _LoadSuccess;
-
-  const factory ClubsOverviewState.loadFailure(ClubFailure clubFailure) =
-      _LoadFailure;
+  factory ClubsOverviewState.initial() => ClubsOverviewState(
+        status: CubitStatus.initial,
+        clubs: <Club>[],
+        hasReachedMax: false,
+        clubFilter: ClubFilter.empty(),
+      );
 }

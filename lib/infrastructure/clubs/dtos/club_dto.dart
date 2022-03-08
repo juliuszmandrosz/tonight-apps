@@ -1,3 +1,4 @@
+import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
@@ -11,8 +12,9 @@ part 'club_dto.g.dart';
 class ClubDto with _$ClubDto {
   const ClubDto._();
 
+  @JsonSerializable()
   const factory ClubDto({
-    required String id,
+    @JsonKey(ignore: true) String? id,
     required String clubName,
     required String clubImageUrl,
     @Default(0) int reviewCount,
@@ -38,7 +40,7 @@ class ClubDto with _$ClubDto {
       phoneNumber: club.phoneNumber,
       socialMedia: club.socialMedia,
       reviews: List.generate(club.reviews.length,
-          (index) => ClubReviewDto.fromDomain(club.reviews[index])),
+              (index) => ClubReviewDto.fromDomain(club.reviews[index])),
     );
   }
 
@@ -48,6 +50,11 @@ class ClubDto with _$ClubDto {
   factory ClubDto.fromFirebase(DocumentSnapshot documentSnapshot) {
     return ClubDto.fromJson(documentSnapshot.data() as Map<String, dynamic>)
         .copyWith(id: documentSnapshot.id);
+  }
+
+  factory ClubDto.fromAlgolia(AlgoliaObjectSnapshot documentSnapshot) {
+    return ClubDto.fromJson(documentSnapshot.data)
+        .copyWith(id: documentSnapshot.objectID);
   }
 
   Club toDomain() {
