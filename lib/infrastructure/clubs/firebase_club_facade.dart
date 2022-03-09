@@ -39,7 +39,7 @@ class FirebaseClubFacade implements ClubFacade {
     int offset = 0,
   }) async {
     String? text;
-    filter.mapOrNull((value) => text = value.phrase);
+    text ??= filter.phrase;
 
     try {
       var clubs = await _algoliaAPI.search(text, clubsIndex, pageSize, offset);
@@ -66,21 +66,22 @@ class FirebaseClubFacade implements ClubFacade {
     }
   }
 
-  Query applyFiler(Query query, ClubFilter filter) {
-    Query filteredQuery = query;
-    filter.map((filterWithValues) {
-      if (filterWithValues.phrase.isNotEmpty) {
-        // TODO - add case insensitive search
-        filteredQuery = filteredQuery
-            .where('clubName', isGreaterThanOrEqualTo: filterWithValues.phrase)
-            .where('clubName',
-                isLessThanOrEqualTo: "${filterWithValues.phrase}\uf7ff");
-      }
-    }, empty: (value) {
-      filteredQuery = query;
-    });
-    return filteredQuery;
-  }
+  //TODO: Filters functionality will be done in future pr ~ 09.03.2022
+  // Query applyFiler(Query query, ClubFilter filter) {
+  //   Query filteredQuery = query;
+  //   filter.map((filterWithValues) {
+  //     if (filterWithValues.phrase.isNotEmpty) {
+  //       // TODO - add case insensitive search
+  //       filteredQuery = filteredQuery
+  //           .where('clubName', isGreaterThanOrEqualTo: filterWithValues.phrase)
+  //           .where('clubName',
+  //               isLessThanOrEqualTo: "${filterWithValues.phrase}\uf7ff");
+  //     }
+  //   }, empty: (value) {
+  //     filteredQuery = query;
+  //   });
+  //   return filteredQuery;
+  // }
 
   @override
   Future<Either<ClubFailure, List<String>>> getClubPhotosUrls(

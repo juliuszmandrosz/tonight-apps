@@ -12,9 +12,7 @@ import 'package:raver/domain/clubs/filters/club_filter.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'clubs_overview_bloc.freezed.dart';
-
 part 'clubs_overview_event.dart';
-
 part 'clubs_overview_state.dart';
 
 const pageSize = 10;
@@ -31,35 +29,50 @@ class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
   final ClubFacade _clubFacade;
 
   ClubsOverviewBloc(this._clubFacade) : super(ClubsOverviewState.initial()) {
-    on<_ClubsFetched>(_onClubsFetched,
-        transformer: throttleDroppable(throttleDuration));
+    on<_NextPageClubsFetched>(
+      _onNextPageClubsFetched,
+      transformer: throttleDroppable(throttleDuration),
+    );
+
+    on<_ClubsFetched>(_onClubsFetched);
   }
 
   Future<void> _onClubsFetched(
       _ClubsFetched event, Emitter<ClubsOverviewState> emit) async {
-    if (state.hasReachedMax) {
-      return;
-    }
+    emit(state.copyWith(status: CubitStatus.loading));
 
-    if (state.clubs.isEmpty) {
-      emit(state.copyWith(status: CubitStatus.loading));
-    }
-
-    Either<ClubFailure, List<Club>> failureOrSuccess = await _clubFacade
-        .getClubs(event.clubFilter, offset: state.clubs.length, pageSize: 10);
+    Either<ClubFailure, List<Club>> failureOrSuccess =
+        await _clubFacade.getClubs(event.clubFilter, pageSize: pageSize);
 
     failureOrSuccess.fold(
-      (failure) => emit(state.copyWith(status: CubitStatus.failure)),
-      (clubs) => emit(
-        clubs.isEmpty
-            ? state.copyWith(hasReachedMax: true)
-            : state.copyWith(
+        (failure) => emit(state.copyWith(status: CubitStatus.failure)),
+        (clubs) => emit(
+              state.copyWith(
                 status: CubitStatus.success,
-                clubs: List.of(state.clubs)..addAll(clubs),
+                clubs: clubs,
                 hasReachedMax: clubs.length != pageSize,
                 clubFilter: event.clubFilter,
               ),
-      ),
-    );
+            ));
+  }
+
+  Future<void> _onNextPageClubsFetched(
+      _NextPageClubsFetched event, Emitter<ClubsOverviewState> emit) async {
+    if (state.hasReachedMax) return;
+
+    final failureOrSuccess = await _clubFacade.getClubs(state.clubFilter,
+        offset: state.clubs.length, pageSize: pageSize);
+
+    failureOrSuccess.fold(
+        (failure) => emit(
+              state.copyWith(status: CubitStatus.failure),
+            ),
+        (clubs) => emit(
+              state.copyWith(
+                status: CubitStatus.success,
+                clubs: List.of(state.clubs)..addAll(clubs),
+                hasReachedMax: clubs.length != pageSize,
+              ),
+            ));
   }
 }

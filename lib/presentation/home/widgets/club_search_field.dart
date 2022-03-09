@@ -19,12 +19,20 @@ class _ClubSearchFieldState extends State<ClubSearchField> {
   }
 
   @override
+  void dispose() {
+    textController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return TextField(
       controller: textController,
       onSubmitted: (value) {
-        BlocProvider.of<ClubFiltersCubit>(context)
-            .onSearchFieldSubmitted(value);
+        BlocProvider.of<ClubFiltersCubit>(context).searchFieldSubmitted(value);
+      },
+      onChanged: (_) {
+        setState(() {});
       },
       decoration: InputDecoration(
         hintText: "Search",
@@ -42,6 +50,8 @@ class _ClubSearchFieldState extends State<ClubSearchField> {
                 onTap: () => setState(
                   () {
                     textController.clear();
+                    BlocProvider.of<ClubFiltersCubit>(context)
+                        .searchFieldSubmitted("");
                   },
                 ),
                 child: const Icon(

@@ -155,9 +155,8 @@ class _ClubsPageState extends State<ClubsPage> {
 
   void _onScroll() {
     if (_isBottom) {
-      final clubFilter = getIt<ClubsOverviewBloc>().state.clubFilter;
       getIt<ClubsOverviewBloc>()
-          .add(ClubsOverviewEvent.clubsFetched(clubFilter));
+          .add(const ClubsOverviewEvent.nextPageClubsFetched());
     }
   }
 

@@ -8,9 +8,13 @@ part 'club_filter.freezed.dart';
 abstract class ClubFilter with _$ClubFilter {
   const ClubFilter._();
 
-  factory ClubFilter(
-      {required String phrase,
-      required ClubFilterSettings clubFilterSettings}) = _ClubFilter;
+  factory ClubFilter({
+    required String phrase,
+    required ClubFilterSettings clubFilterSettings,
+  }) = _ClubFilter;
 
-  factory ClubFilter.empty() = _ClubFilterEmpty;
+  factory ClubFilter.empty() => ClubFilter(
+        phrase: "",
+        clubFilterSettings: ClubFilterSettings.empty(),
+      );
 }

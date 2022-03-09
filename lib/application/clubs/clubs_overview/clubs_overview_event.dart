@@ -4,4 +4,7 @@ part of 'clubs_overview_bloc.dart';
 class ClubsOverviewEvent with _$ClubsOverviewEvent {
   const factory ClubsOverviewEvent.clubsFetched(ClubFilter clubFilter) =
       _ClubsFetched;
+
+  const factory ClubsOverviewEvent.nextPageClubsFetched() =
+      _NextPageClubsFetched;
 }
