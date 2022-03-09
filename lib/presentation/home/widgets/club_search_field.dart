@@ -49,9 +49,11 @@ class _ClubSearchFieldState extends State<ClubSearchField> {
             ? InkWell(
                 onTap: () => setState(
                   () {
+                    var provider = BlocProvider.of<ClubFiltersCubit>(context);
                     textController.clear();
-                    BlocProvider.of<ClubFiltersCubit>(context)
-                        .searchFieldSubmitted("");
+                    if (provider.state.filter.phrase.isNotEmpty) {
+                      provider.searchFieldSubmitted("");
+                    }
                   },
                 ),
                 child: const Icon(
