@@ -3,8 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
 import 'package:raver/application/core/cubit_status.dart';
+import 'package:raver/domain/clubs/club_entity.dart';
+import 'package:raver/domain/clubs/club_facade.dart';
 import 'package:raver/domain/clubs/filters/club_filter.dart';
 import 'package:raver/injection.dart';
+import 'package:raver/presentation/core/bottom_loader.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_card.dart';
 import 'package:raver/presentation/home/widgets/club_filter_section.dart';
 
@@ -43,6 +46,30 @@ class _ClubsPageState extends State<ClubsPage> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const ClubSearchBar(),
+          //For testing ONLY, remove on production
+          TextButton(
+              onPressed: () async {
+                final result = await getIt<ClubFacade>().addClub(Club(
+                    clubName: "Black Diamond",
+                    clubImageUrl:
+                        "https://firebasestorage.googleapis.com/v0/b/raver-1fec4.appspot.com/o/clubs%2FtLlSlPaZhRurTymJf9Aq%2Fclub_image%2Fclub_image.jpg?alt=media&token=cc18cc0c-4ae8-456f-a1d6-8e1ca5d00613",
+                    reviewCount: 5,
+                    reviewAvg: 5,
+                    location: {'latitude': 0, 'longitude': 0},
+                    locationString: "Bialystok, Stroma",
+                    aboutUs: "Good club for all",
+                    phoneNumber: "+48517853787",
+                    socialMedia: {},
+                    reviews: []));
+                if (result.isSome()) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Error while adding club"),
+                    ),
+                  );
+                }
+              },
+              child: Text("Add club")),
           BlocBuilder<ClubsOverviewBloc, ClubsOverviewState>(
             builder: (context, state) {
               switch (state.status) {
@@ -88,13 +115,26 @@ class _ClubsPageState extends State<ClubsPage> {
                     );
                   }
                   return Expanded(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: state.clubs.length,
-                      itemBuilder: (context, index) {
-                        final club = state.clubs[index];
-                        return ClubCard(club: club, index: index);
-                      },
+                    child: RefreshIndicator(
+                      onRefresh: () async => context
+                          .read<ClubsOverviewBloc>()
+                          .add(
+                            ClubsOverviewEvent.clubsFetched(state.clubFilter),
+                          ),
+                      child: ListView.builder(
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: state.hasReachedMax
+                            ? state.clubs.length
+                            : state.clubs.length + 1,
+                        itemBuilder: (context, index) {
+                          return index >= state.clubs.length
+                              ? const BottomLoader()
+                              : ClubCard(
+                                  club: state.clubs[index], index: index);
+                        },
+                        controller: _scrollController,
+                      ),
                     ),
                   );
               }
@@ -115,9 +155,8 @@ class _ClubsPageState extends State<ClubsPage> {
 
   void _onScroll() {
     if (_isBottom) {
-      final clubFilter = context.read<ClubsOverviewBloc>().state.clubFilter;
-      context
-          .read<ClubsOverviewBloc>()
+      final clubFilter = getIt<ClubsOverviewBloc>().state.clubFilter;
+      getIt<ClubsOverviewBloc>()
           .add(ClubsOverviewEvent.clubsFetched(clubFilter));
     }
   }
@@ -126,6 +165,6 @@ class _ClubsPageState extends State<ClubsPage> {
     if (!_scrollController.hasClients) return false;
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.offset;
-    return currentScroll >= (maxScroll * 0.9);
+    return currentScroll >= (maxScroll * 0.95);
   }
 }

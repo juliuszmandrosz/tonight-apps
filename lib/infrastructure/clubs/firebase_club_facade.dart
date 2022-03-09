@@ -10,6 +10,7 @@ import 'package:raver/domain/clubs/club_facade.dart';
 import 'package:raver/domain/clubs/failures/club_failure.dart';
 import 'package:raver/domain/clubs/filters/club_filter.dart';
 import 'package:raver/infrastructure/core/algolia_api.dart';
+import 'package:raver/infrastructure/core/firestore_helpers.dart';
 
 import 'dtos/club_dto.dart';
 
@@ -95,6 +96,22 @@ class FirebaseClubFacade implements ClubFacade {
     } on FirebaseException catch (exception) {
       _logger.e("Exception during fetching clubs images EXCEPTION: $exception");
       return left(const ClubFailure.unexpected());
+    }
+  }
+
+  //For testing purpose ONLY, remove on production release
+  @override
+  Future<Option<ClubFailure>> addClub(Club club) async {
+    try {
+      final clubDoc = _firestore.clubCollection;
+      final clubDto = ClubDto.fromDomain(club);
+
+      await clubDoc.doc(club.id).set(clubDto.toJson());
+
+      return const None();
+    } on FirebaseException catch (e) {
+      _logger.e("Exception during adding club EXCEPTION: $e");
+      return const Some(ClubFailure.unexpected());
     }
   }
 }

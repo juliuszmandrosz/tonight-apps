@@ -57,8 +57,8 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerFactory(
-        () => ClubsOverviewBloc(
+  getIt.registerLazySingleton(
+    () => ClubsOverviewBloc(
       getIt(),
     ),
   );

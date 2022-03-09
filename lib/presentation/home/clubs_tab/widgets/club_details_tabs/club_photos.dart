@@ -23,6 +23,9 @@ class ClubPhotos extends StatelessWidget {
               child: CircularProgressIndicator(),
             ),
             loadSuccess: (state) {
+              if (state.photosUrls.isEmpty) {
+                return const Center(child: Text("Nothing to show here"));
+              }
               return GridView.builder(
                 itemCount: 2,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

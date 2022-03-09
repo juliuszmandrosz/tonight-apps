@@ -17,7 +17,7 @@ part 'clubs_overview_event.dart';
 
 part 'clubs_overview_state.dart';
 
-const pageSize = 20;
+const pageSize = 10;
 
 const throttleDuration = Duration(milliseconds: 500);
 
@@ -37,12 +37,16 @@ class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
 
   Future<void> _onClubsFetched(
       _ClubsFetched event, Emitter<ClubsOverviewState> emit) async {
-    emit(state.copyWith(status: CubitStatus.loading));
+    if (state.hasReachedMax) {
+      return;
+    }
 
-    if (state.hasReachedMax) return;
+    if (state.clubs.isEmpty) {
+      emit(state.copyWith(status: CubitStatus.loading));
+    }
 
-    Either<ClubFailure, List<Club>> failureOrSuccess =
-        await _clubFacade.getClubs(event.clubFilter);
+    Either<ClubFailure, List<Club>> failureOrSuccess = await _clubFacade
+        .getClubs(event.clubFilter, offset: state.clubs.length, pageSize: 10);
 
     failureOrSuccess.fold(
       (failure) => emit(state.copyWith(status: CubitStatus.failure)),
@@ -52,7 +56,9 @@ class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
             : state.copyWith(
                 status: CubitStatus.success,
                 clubs: List.of(state.clubs)..addAll(clubs),
-                hasReachedMax: false),
+                hasReachedMax: clubs.length != pageSize,
+                clubFilter: event.clubFilter,
+              ),
       ),
     );
   }

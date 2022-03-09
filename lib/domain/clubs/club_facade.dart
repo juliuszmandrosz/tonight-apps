@@ -14,4 +14,6 @@ abstract class ClubFacade {
   Future<Either<ClubFailure, Club>> getClubById(String id);
 
   Future<Either<ClubFailure, List<String>>> getClubPhotosUrls(String clubId);
+
+  Future<Option<ClubFailure>> addClub(Club club);
 }
