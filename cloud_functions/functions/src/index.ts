@@ -9,7 +9,7 @@ const client = algoliasearch(env.algolia.appid, env.algolia.apikey);
 const eventIndex = client.initIndex('events');
 const clubIndex = client.initIndex('clubs');
 const eventPath = 'events/{eventId}'
-const clubsPath = 'clubs/{eventId}'
+const clubsPath = 'clubs/{clubId}'
 
 
 exports.addEvent = functions.firestore
