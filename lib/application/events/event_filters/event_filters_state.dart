@@ -4,8 +4,10 @@ part of 'event_filters_cubit.dart';
 class EventFiltersState with _$EventFiltersState {
   const EventFiltersState._();
 
-  const factory EventFiltersState.initial() = _EventFiltersInitial;
+  factory EventFiltersState({required EventFilters filters}) =
+      _EventFiltersState;
 
-  const factory EventFiltersState.filtersUpdated(EventFilter eventFilter) =
-      _EventFiltersUpdated;
+  factory EventFiltersState.initial() => EventFiltersState(
+        filters: EventFilters.empty(),
+      );
 }

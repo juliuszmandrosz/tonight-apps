@@ -32,7 +32,7 @@ class RaverApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (ctx) =>
-          getIt<AvailableFiltersCubit>()..getAvailableFilters(),
+              getIt<AvailableFiltersCubit>()..getAvailableFilters(),
         ),
         BlocProvider(create: (context) => getIt<EventOverviewBloc>()),
         BlocProvider(

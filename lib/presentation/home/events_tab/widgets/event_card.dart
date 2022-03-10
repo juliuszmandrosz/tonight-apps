@@ -39,7 +39,7 @@ class EventCard extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        final isFavorite = state.favoriteEventIds.any((id) => id == event.id);
+        final isFavorite = state.favoriteEventIds.contains(event.id);
         return InkWell(
           splashColor: DefaultColors.navbarUnselectedColor,
           onTap: () {
@@ -252,11 +252,6 @@ class EventCard extends StatelessWidget {
   }
 
   _displayEventDetails() {
-    var allowedOutfits = displayAllowedOutfits(
-      event.allowedOutfits,
-      EventDetailsSeparator.comma,
-    );
-
     final musicalGenres = displayMusicalGenres(
       event.musicalGenres,
       EventDetailsSeparator.comma,
@@ -264,15 +259,8 @@ class EventCard extends StatelessWidget {
 
     var price = '${event.price}pln';
     final minAge = '${event.minAge}+';
+    final allowedOutfit = event.allowedOutfit;
 
-    if (allowedOutfits.isNotEmpty || musicalGenres.isNotEmpty) {
-      price += ', ';
-    }
-
-    if (musicalGenres.isNotEmpty && allowedOutfits.isNotEmpty) {
-      allowedOutfits += ', ';
-    }
-
-    return '$minAge, $price$allowedOutfits$musicalGenres';
+    return '$minAge, $price, $allowedOutfit, $musicalGenres';
   }
 }

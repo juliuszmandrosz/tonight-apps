@@ -56,44 +56,39 @@ class EventDetailsSection extends StatelessWidget {
                   ),
                 ],
               ),
-              if (event.allowedOutfits.isNotEmpty)
-                Column(
-                  children: [
-                    const FaIcon(
-                      FontAwesomeIcons.tshirt,
-                      size: 30,
-                      color: DefaultColors.primaryColor,
+              Column(
+                children: [
+                  const FaIcon(
+                    FontAwesomeIcons.tshirt,
+                    size: 30,
+                    color: DefaultColors.primaryColor,
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    event.allowedOutfit,
+                    style: textTheme.subtitle1,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  const FaIcon(
+                    FontAwesomeIcons.music,
+                    size: 30,
+                    color: DefaultColors.primaryColor,
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    displayMusicalGenres(
+                      event.musicalGenres,
+                      EventDetailsSeparator.newLine,
                     ),
-                    const SizedBox(height: 10),
-                    Text(
-                      displayAllowedOutfits(
-                        event.allowedOutfits,
-                        EventDetailsSeparator.newLine,
-                      ),
-                      style: textTheme.subtitle1,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-              if (event.musicalGenres.isNotEmpty)
-                Column(
-                  children: [
-                    const FaIcon(
-                      FontAwesomeIcons.music,
-                      size: 30,
-                      color: DefaultColors.primaryColor,
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      displayMusicalGenres(
-                        event.musicalGenres,
-                        EventDetailsSeparator.newLine,
-                      ),
-                      style: textTheme.subtitle1,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                )
+                    style: textTheme.subtitle1,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              )
             ],
           ),
         ),

@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
 import 'package:raver/presentation/commons/utils/url_utils.dart';
+import 'package:raver/presentation/core/social_media_icons.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/details/social_icon_with_title.dart';
 
 import 'details/details_section.dart';
-
-Map<String, IconData> iconMap = {
-  "Facebook": FontAwesomeIcons.facebook,
-  "Instagram": FontAwesomeIcons.instagram,
-  "TikTok": FontAwesomeIcons.tiktok,
-};
 
 class ClubDetails extends StatelessWidget {
   const ClubDetails({
@@ -70,9 +64,9 @@ class ClubDetails extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: socialMedia!.entries.map((element) {
-                          if (iconMap.containsKey(element.key)) {
+                          if (socialMediaIcons.containsKey(element.key)) {
                             return SocialIconWithTitle(
-                              iconData: iconMap[element.key]!,
+                              iconData: socialMediaIcons[element.key]!,
                               title: element.key,
                               url: element.value,
                             );

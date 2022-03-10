@@ -50,3 +50,6 @@ app.*.map.json
 **/*.g.dart
 **/*.gr.dart
 **/*.config.dart
+
+# env variables
+*.env

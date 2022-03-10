@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:raver/domain/events/event_entity.dart';
 import 'package:raver/domain/events/event_failure.dart';
-import 'package:raver/domain/events/filters/event_filter.dart';
+import 'package:raver/domain/events/filters/event_filters_entity.dart';
 
 abstract class EventFacade {
   Future<Either<EventFailure, List<Event>>> getEvents(
-    EventFilter filters, {
+    EventFilters filters, {
     int pageSize = 10,
     int offset = 0,
   });

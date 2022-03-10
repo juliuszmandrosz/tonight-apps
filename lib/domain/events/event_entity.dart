@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:raver/presentation/commons/constants/location_constants.dart';
 import 'package:uuid/uuid.dart';
 
 class Event extends Equatable {
@@ -10,12 +11,13 @@ class Event extends Equatable {
   final int attending;
   final int minAge;
   final int price;
-  final List<String> allowedOutfits;
+  final String allowedOutfit;
   final List<String> musicalGenres;
   final String? artistName;
   final String? description;
   final List<String> photos;
   final Map<String, double> location;
+  final String cityId;
   final Map<String, String> urlLinks;
   final bool isConcert;
 
@@ -28,9 +30,10 @@ class Event extends Equatable {
     required this.attending,
     required this.minAge,
     required this.price,
-    required this.allowedOutfits,
+    required this.allowedOutfit,
     required this.musicalGenres,
     required this.location,
+    required this.cityId,
     this.description,
     this.artistName,
     this.photos = const [],
@@ -39,11 +42,11 @@ class Event extends Equatable {
   }) : id = id ?? const Uuid().v1();
 
   double getLatitude() {
-    return location['latitude']!;
+    return location[latitude]!;
   }
 
   double getLongitude() {
-    return location['longitude']!;
+    return location[longitude]!;
   }
 
   @override
@@ -56,9 +59,10 @@ class Event extends Equatable {
         attending,
         minAge,
         price,
-        allowedOutfits,
+        allowedOutfit,
         musicalGenres,
         location,
+        cityId,
         photos,
         urlLinks,
         description,

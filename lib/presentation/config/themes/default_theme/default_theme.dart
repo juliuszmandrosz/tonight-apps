@@ -23,8 +23,14 @@ ThemeData get defaultTheme => ThemeData(
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
-            DefaultColors.primaryColor,
+          textStyle:
+              MaterialStateProperty.all(DefaultTextStyles.subtitleAccent),
+          backgroundColor:
+              MaterialStateProperty.all(DefaultColors.primaryColor),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.0),
+            ),
           ),
         ),
       ),

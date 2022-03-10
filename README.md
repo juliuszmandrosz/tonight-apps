@@ -12,18 +12,21 @@ A new Flutter project.
 
 > flutter packages pub run build_runner build --delete-conflicting-outputs
 
-3. Set api codes in following files
+3. Create a .env file in the root of your project with content:
+
+> GOOGLE_API_KEY=''
+>
+>ALGOLIA_APP_ID=''
+>
+>ALGOLIA_API_KEY=''
+
+4. Set api codes in following files
 
 ### Google API
 
 > /ios/Runner/AppDelegate.swift
 >
 > /android/app/src/main/AndroidManifest.xml
-
-### Algolia API
-
-> AlogliaAPI.dart
-
 
 *Credentials for test user*
 > email: test@test.pl

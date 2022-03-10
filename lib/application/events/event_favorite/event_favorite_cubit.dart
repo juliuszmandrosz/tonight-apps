@@ -7,13 +7,14 @@ import 'package:raver/domain/events/event_facade.dart';
 import 'package:raver/domain/events/event_failure.dart';
 
 part 'event_favorite_cubit.freezed.dart';
+
 part 'event_favorite_state.dart';
 
 class EventFavoriteCubit extends Cubit<EventFavoriteState> {
   final EventFacade _eventFacade;
 
   late StreamSubscription<Either<EventFailure, List<String>>>
-      _favoriteEventsIdsSubscription;
+  _favoriteEventsIdsSubscription;
 
   EventFavoriteCubit(this._eventFacade) : super(EventFavoriteState.initial());
 
@@ -25,18 +26,20 @@ class EventFavoriteCubit extends Cubit<EventFavoriteState> {
     final failureOrSuccess = await _eventFacade.getFavoriteEventIds();
 
     failureOrSuccess.fold(
-      (failure) => emit(
-        state.copyWith(
-          isLoading: false,
-          failureOption: some(failure),
-        ),
-      ),
-      (favoriteEventIds) => emit(
-        state.copyWith(
-          isLoading: false,
-          favoriteEventIds: favoriteEventIds,
-        ),
-      ),
+          (failure) =>
+          emit(
+            state.copyWith(
+              isLoading: false,
+              failureOption: some(failure),
+            ),
+          ),
+          (favoriteEventIds) =>
+          emit(
+            state.copyWith(
+              isLoading: false,
+              favoriteEventIds: favoriteEventIds,
+            ),
+          ),
     );
   }
 
@@ -45,9 +48,10 @@ class EventFavoriteCubit extends Cubit<EventFavoriteState> {
       isChangingFavoriteStatus: true,
     ));
 
-    final favoriteEventsCopy = [...state.favoriteEventIds];
     final favoriteEvents = state.favoriteEventIds;
-    final currentStatus = favoriteEventsCopy.any((id) => id == eventId);
+    final favoriteEventsCopy = [...state.favoriteEventIds];
+
+    final currentStatus = favoriteEventsCopy.contains(eventId);
 
     currentStatus
         ? favoriteEventsCopy.remove(eventId)
@@ -58,20 +62,20 @@ class EventFavoriteCubit extends Cubit<EventFavoriteState> {
     ));
 
     final failureOrSuccess =
-        await _eventFacade.toggleEventFavoriteStatus(eventId);
+    await _eventFacade.toggleEventFavoriteStatus(eventId);
 
     emit(state.copyWith(
       isChangingFavoriteStatus: false,
     ));
 
     failureOrSuccess.fold(
-      (failure) {
+          (failure) {
         emit(state.copyWith(
           failureOption: some(failure),
           favoriteEventIds: favoriteEvents,
         ));
       },
-      (success) {},
+          (success) {},
     );
 
     emit(state.copyWith(

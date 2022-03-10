@@ -1,9 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:raver/domain/events/event_entity.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:raver/presentation/commons/utils/url_utils.dart';
 
 class EventDetailsNavigateToClub extends StatelessWidget {
   final Event event;
@@ -23,13 +20,9 @@ class EventDetailsNavigateToClub extends StatelessWidget {
       children: [
         ElevatedButton(
           onPressed: () async {
-            final url = Platform.isIOS
-                ? 'https://maps.apple.com/?q=$lat,$lng'
-                : 'https://www.google.com/maps/search/?api=1&query=$lat,$lng';
+            final result = await launchGoogleMaps(lat, lng);
 
-            try {
-              await launch(url);
-            } on PlatformException {
+            if (result.isSome()) {
               ScaffoldMessenger.of(context)
                 ..hideCurrentSnackBar()
                 ..showSnackBar(

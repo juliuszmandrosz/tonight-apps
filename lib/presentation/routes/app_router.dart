@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/domain/events/event_entity.dart';
+import 'package:raver/presentation/event_filters/event_filters_page.dart';
 import 'package:raver/presentation/events/event_details_page.dart';
 import 'package:raver/presentation/home/clubs_tab/club_page.dart';
 import 'package:raver/presentation/home/home_page.dart';
@@ -24,23 +25,24 @@ part 'app_router.gr.dart';
       page: NavigatorPage,
       children: [
         AutoRoute(
+          page: HeroEmptyRouterPage,
+          path: 'home',
+          name: 'HomeRouter',
+          children: [
+            AutoRoute(
+              path: '',
+              page: HomePage,
+            ),
+          ],
+        ),
+        AutoRoute(
           page: TicketOverviewPage,
           path: 'tickets',
           name: 'TicketsRouter',
         )
       ],
     ),
-    AutoRoute(
-      page: HeroEmptyRouterPage,
-      path: 'home',
-      name: 'HomeRouter',
-      children: [
-        AutoRoute(
-          path: '',
-          page: HomePage,
-        ),
-      ],
-    ),
+    AutoRoute(page: EventFiltersPage),
     AutoRoute(page: EventDetailsPage),
     AutoRoute(page: ClubPage),
   ],

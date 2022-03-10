@@ -6,7 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/core/cubit_status.dart';
 import 'package:raver/domain/events/event_entity.dart';
 import 'package:raver/domain/events/event_facade.dart';
-import 'package:raver/domain/events/filters/event_filter.dart';
+import 'package:raver/domain/events/filters/event_filters_entity.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'event_overview_bloc.freezed.dart';
@@ -71,16 +71,16 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
     );
 
     failureOrSuccess.fold(
-        (failure) => emit(
-              state.copyWith(status: CubitStatus.failure),
-            ), (events) {
-      emit(
+      (failure) => emit(
+        state.copyWith(status: CubitStatus.failure),
+      ),
+      (events) => emit(
         state.copyWith(
           status: CubitStatus.success,
           events: List.of(state.events)..addAll(events),
           hasReachedMax: events.length != pageSize,
         ),
-      );
-    });
+      ),
+    );
   }
 }

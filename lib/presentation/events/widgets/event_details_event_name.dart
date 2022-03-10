@@ -36,7 +36,7 @@ class EventDetailsEventName extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        final isFavorite = state.favoriteEventIds.any((id) => id == event.id);
+        final isFavorite = state.favoriteEventIds.contains(event.id);
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

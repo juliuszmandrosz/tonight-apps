@@ -8,13 +8,13 @@ class EventOverviewState with _$EventOverviewState {
     required List<Event> events,
     required bool hasReachedMax,
     required CubitStatus status,
-    required EventFilter eventFilters,
+    required EventFilters eventFilters,
   }) = _EventOverviewState;
 
   factory EventOverviewState.initial() => EventOverviewState(
         hasReachedMax: false,
         status: CubitStatus.initial,
         events: [],
-        eventFilters: EventFilter.empty(),
+        eventFilters: EventFilters.empty(),
       );
 }

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/domain/events/event_entity.dart';
+import 'package:raver/presentation/commons/utils/url_utils.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/social_media_icons.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class EventDetailsAdditionalInfo extends StatelessWidget {
   final Event event;
@@ -21,7 +20,9 @@ class EventDetailsAdditionalInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme
+        .of(context)
+        .textTheme;
     return Column(
       children: [
         Row(
@@ -35,7 +36,7 @@ class EventDetailsAdditionalInfo extends StatelessWidget {
         const SizedBox(height: 10),
         Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           for (final url in event.urlLinks.entries.where(
-            (url) => socialMediaIcons.containsKey(url.key),
+                (url) => socialMediaIcons.containsKey(url.key),
           ))
             Column(
               children: [
@@ -46,9 +47,8 @@ class EventDetailsAdditionalInfo extends StatelessWidget {
                     color: DefaultColors.primaryColor,
                   ),
                   onPressed: () async {
-                    try {
-                      await launch(url.value);
-                    } on PlatformException {
+                    final result = await launchURL(url.value);
+                    if (result.isSome()) {
                       ScaffoldMessenger.of(context)
                         ..hideCurrentSnackBar()
                         ..showSnackBar(

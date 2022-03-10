@@ -1,18 +1,3 @@
-String displayAllowedOutfits(
-  List<String> allowedOutfits,
-  EventDetailsSeparator separator,
-) {
-  String displayedString = '';
-  for (var outfit in allowedOutfits) {
-    displayedString += outfit;
-    if (outfit != allowedOutfits.last) {
-      displayedString += _addSeparator(separator);
-    }
-  }
-
-  return displayedString;
-}
-
 String displayMusicalGenres(
   List<String> musicalGenres,
   EventDetailsSeparator separator,

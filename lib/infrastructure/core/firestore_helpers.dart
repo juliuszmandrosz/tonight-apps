@@ -20,6 +20,9 @@ extension FirestoreX on FirebaseFirestore {
 
   CollectionReference get userFavoriteEventsCollection =>
       collection('userFavoriteEvents');
+
+  CollectionReference get availableFiltersCollection =>
+      collection('availableFilters');
 }
 
 extension DocumentReferenceX on DocumentReference {

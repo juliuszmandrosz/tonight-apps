@@ -1,13 +1,13 @@
 import 'package:algolia/algolia.dart';
 
 class AlgoliaAPI {
-  final _algolia = const Algolia.init(
-    applicationId: 'APP_ID',
-    apiKey: 'API_KEY',
-  );
+  final Algolia _algolia;
 
-  Future<AlgoliaQuerySnapshot> search(
-      String? text, String index, int pageSize, int offset) async {
+  AlgoliaAPI(this._algolia);
+
+
+  Future<AlgoliaQuerySnapshot> search(String? text, String index, int pageSize,
+      int offset) async {
     AlgoliaQuery query = _algolia.instance.index(index);
 
     if (text != null) {

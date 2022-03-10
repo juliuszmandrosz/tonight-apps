@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/core/cubit_status.dart';
+import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_overview/event_overview_bloc.dart';
+import 'package:raver/domain/events/filters/event_filters_entity.dart';
 import 'package:raver/presentation/core/bottom_loader.dart';
 import 'package:raver/presentation/home/events_tab/widgets/event_card.dart';
-import 'package:raver/presentation/home/widgets/event_filter_section.dart';
+import 'package:raver/presentation/home/events_tab/widgets/event_filters_section.dart';
 
 class EventOverviewPage extends StatefulWidget {
   const EventOverviewPage({Key? key}) : super(key: key);
@@ -25,14 +27,35 @@ class _EventOverviewPageState extends State<EventOverviewPage> {
     _eventOverviewBloc = BlocProvider.of<EventOverviewBloc>(context);
   }
 
+  _fetchEvents(BuildContext context) {
+    final eventsBloc = BlocProvider.of<EventOverviewBloc>(context);
+
+    if (eventsBloc.state.status != CubitStatus.initial) return;
+
+    final locationState = BlocProvider.of<UserLocationCubit>(context).state;
+    var eventFilters = EventFilters.empty();
+    locationState.userLocation.fold(
+      () => {},
+      (location) => {
+        eventFilters = eventFilters.copyWith(userLocation: location),
+      },
+    );
+
+    eventsBloc.add(
+      EventOverviewEvent.eventsFetched(eventFilters),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Column(
       children: [
-        const EventSearchBar(),
+        const EventFiltersSection(),
         const SizedBox(height: 10),
         BlocBuilder<EventOverviewBloc, EventOverviewState>(
             builder: (context, state) {
+          _fetchEvents(context);
           switch (state.status) {
             case CubitStatus.initial:
               return Container();
@@ -62,8 +85,14 @@ class _EventOverviewPageState extends State<EventOverviewPage> {
                     physics: const AlwaysScrollableScrollPhysics(),
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.3,
-                      child: const Center(
-                        child: Text('No events'),
+                      child: Center(
+                        child: Text(
+                          state.eventFilters.userLocation.isNotEmpty &&
+                                  state.eventFilters.isMaxDistanceOption
+                              ? 'No events near you'
+                              : 'No events',
+                          style: textTheme.subtitle1,
+                        ),
                       ),
                     ),
                   ),

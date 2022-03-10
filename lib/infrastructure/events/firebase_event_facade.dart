@@ -5,46 +5,40 @@ import 'package:logger/logger.dart';
 import 'package:raver/domain/events/event_entity.dart';
 import 'package:raver/domain/events/event_facade.dart';
 import 'package:raver/domain/events/event_failure.dart';
-import 'package:raver/domain/events/filters/event_filter.dart';
-import 'package:raver/infrastructure/core/algolia_api.dart';
+import 'package:raver/domain/events/filters/event_filters_entity.dart';
+import 'package:raver/infrastructure/core/algolia/algolia_events_api.dart';
 import 'package:raver/infrastructure/core/firestore_helpers.dart';
 import 'package:raver/infrastructure/events/dtos/event_dto.dart';
 
 class FirebaseEventFacade implements EventFacade {
   final FirebaseFirestore _firestore;
-  final AlgoliaAPI _algoliaAPI;
+  final AlgoliaEventsApi _algoliaEventsApi;
   final Logger _logger;
-
-  final String eventsIndex = 'events';
-  final String favoriteEventsIndex = 'favoriteEvents';
 
   FirebaseEventFacade({
     required FirebaseFirestore firestore,
-    required AlgoliaAPI algoliaAPI,
+    required AlgoliaEventsApi algoliaEventsApi,
     required Logger logger,
   })  : _firestore = firestore,
-        _algoliaAPI = algoliaAPI,
+        _algoliaEventsApi = algoliaEventsApi,
         _logger = logger;
 
   @override
-  Future<Either<EventFailure, List<Event>>> getEvents(EventFilter filters, {
+  Future<Either<EventFailure, List<Event>>> getEvents(
+    EventFilters filters, {
     int pageSize = 10,
     int offset = 0,
   }) async {
     try {
-      String? text;
-      filters.mapOrNull((value) => text = value.phrase);
-
-      var events =
-          await _algoliaAPI.search(text, eventsIndex, pageSize, offset);
-
+      final events =
+          await _algoliaEventsApi.getEvents(filters, pageSize, offset);
       return right<EventFailure, List<Event>>(events.hits
           .map(
             (doc) => EventDto.fromAlgolia(doc).toDomain(),
           )
           .toList());
     } on AlgoliaError catch (e) {
-      _logger.e("Algolia exception during fetching events EXCEPTION: $e");
+      _logger.e("Algolia error during fetching events EXCEPTION: $e");
       return left(const EventFailure.unexpected());
     }
   }
@@ -62,18 +56,18 @@ class FirebaseEventFacade implements EventFacade {
   }
 
   @override
-  Future<Either<EventFailure, Unit>> toggleEventFavoriteStatus(String eventId) async {
+  Future<Either<EventFailure, Unit>> toggleEventFavoriteStatus(
+      String eventId) async {
     try {
       final userDoc = await _firestore.userDocument();
       final userSnapshot = await userDoc.get();
-      final userFavorites =
-          userSnapshot.get(favoriteEventsIndex) as List<dynamic>;
+      final userFavorites = userSnapshot.get('favoriteEvents') as List<dynamic>;
 
-      userFavorites.any((id) => id == eventId)
+      userFavorites.contains(eventId)
           ? userFavorites.remove(eventId)
           : userFavorites.add(eventId);
 
-      userDoc.update({favoriteEventsIndex: userFavorites});
+      userDoc.update({'favoriteEvents': userFavorites});
 
       return right(unit);
     } on FirebaseException catch (e) {
@@ -89,7 +83,7 @@ class FirebaseEventFacade implements EventFacade {
     final userDocSnapshot = await userDoc.get();
 
     try {
-      final favoriteEventIds = await userDocSnapshot.get(favoriteEventsIndex);
+      final favoriteEventIds = await userDocSnapshot.get('favoriteEvents');
       return right(List<String>.from(favoriteEventIds));
     } on FirebaseException catch (e) {
       _logger.e("Exception during getting favorite event ids EXCEPTION: $e");
