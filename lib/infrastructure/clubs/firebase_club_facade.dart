@@ -42,7 +42,8 @@ class FirebaseClubFacade implements ClubFacade {
     text ??= filter.phrase;
 
     try {
-      var clubs = await _algoliaAPI.search(text, clubsIndex, pageSize, offset);
+      final clubs =
+          await _algoliaAPI.search(text, clubsIndex, pageSize, offset);
 
       return right(clubs.hits
           .map((doc) => ClubDto.fromAlgolia(doc).toDomain())
@@ -65,23 +66,6 @@ class FirebaseClubFacade implements ClubFacade {
       return left(const ClubFailure.unexpected());
     }
   }
-
-  //TODO: Filters functionality will be done in future pr ~ 09.03.2022
-  // Query applyFiler(Query query, ClubFilter filter) {
-  //   Query filteredQuery = query;
-  //   filter.map((filterWithValues) {
-  //     if (filterWithValues.phrase.isNotEmpty) {
-  //       // TODO - add case insensitive search
-  //       filteredQuery = filteredQuery
-  //           .where('clubName', isGreaterThanOrEqualTo: filterWithValues.phrase)
-  //           .where('clubName',
-  //               isLessThanOrEqualTo: "${filterWithValues.phrase}\uf7ff");
-  //     }
-  //   }, empty: (value) {
-  //     filteredQuery = query;
-  //   });
-  //   return filteredQuery;
-  // }
 
   @override
   Future<Either<ClubFailure, List<String>>> getClubPhotosUrls(

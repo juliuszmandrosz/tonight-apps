@@ -12,10 +12,12 @@ import 'package:raver/domain/clubs/filters/club_filter.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'clubs_overview_bloc.freezed.dart';
+
 part 'clubs_overview_event.dart';
+
 part 'clubs_overview_state.dart';
 
-const pageSize = 10;
+const pageSize = 20;
 
 const throttleDuration = Duration(milliseconds: 500);
 

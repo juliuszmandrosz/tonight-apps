@@ -13,7 +13,7 @@ abstract class ClubsOverviewState with _$ClubsOverviewState {
 
   factory ClubsOverviewState.initial() => ClubsOverviewState(
         status: CubitStatus.initial,
-        clubs: <Club>[],
+        clubs: [],
         hasReachedMax: false,
         clubFilter: ClubFilter.empty(),
       );
