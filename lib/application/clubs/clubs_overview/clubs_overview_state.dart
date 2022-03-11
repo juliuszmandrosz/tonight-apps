@@ -8,13 +8,13 @@ abstract class ClubsOverviewState with _$ClubsOverviewState {
     required CubitStatus status,
     required List<Club> clubs,
     required bool hasReachedMax,
-    required ClubFilter clubFilter,
+    required ClubFilters clubFilter,
   }) = _ClubsOverviewState;
 
   factory ClubsOverviewState.initial() => ClubsOverviewState(
-        status: CubitStatus.initial,
+    status: CubitStatus.initial,
         clubs: [],
         hasReachedMax: false,
-        clubFilter: ClubFilter.empty(),
+        clubFilter: ClubFilters.empty(),
       );
 }

@@ -5,7 +5,7 @@ import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart'
 import 'package:raver/application/core/cubit_status.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/domain/clubs/club_facade.dart';
-import 'package:raver/domain/clubs/filters/club_filter.dart';
+import 'package:raver/domain/clubs/filters/club_filters.dart';
 import 'package:raver/generated/l10n.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/bottom_loader.dart';
@@ -35,7 +35,7 @@ class _ClubsPageState extends State<ClubsPage> {
         BlocProvider<ClubsOverviewBloc>(
           create: (context) => getIt<ClubsOverviewBloc>()
             ..add(ClubsOverviewEvent.clubsFetched(
-              ClubFilter.empty(),
+              ClubFilters.empty(),
             )),
         ),
         BlocProvider(
@@ -51,6 +51,7 @@ class _ClubsPageState extends State<ClubsPage> {
           TextButton(
               onPressed: () async {
                 final result = await getIt<ClubFacade>().addClub(Club(
+                    id: "3zt2MqBmEra7Bglmwkt2",
                     clubName: "Black Diamond",
                     clubImageUrl:
                         "https://firebasestorage.googleapis.com/v0/b/raver-1fec4.appspot.com/o/clubs%2FtLlSlPaZhRurTymJf9Aq%2Fclub_image%2Fclub_image.jpg?alt=media&token=cc18cc0c-4ae8-456f-a1d6-8e1ca5d00613",
@@ -76,6 +77,7 @@ class _ClubsPageState extends State<ClubsPage> {
               switch (state.status) {
                 case CubitStatus.initial:
                   return Container();
+
                 case CubitStatus.failure:
                   return RefreshIndicator(
                     onRefresh: () async =>

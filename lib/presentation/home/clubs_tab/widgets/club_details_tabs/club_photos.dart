@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/clubs/club_details/club_photos/club_photos_cubit.dart';
+import 'package:raver/application/clubs/club_details/club_photos/club_photos_bloc.dart';
+import 'package:raver/application/core/cubit_status.dart';
+import 'package:raver/injection.dart';
+import 'package:raver/presentation/core/bottom_loader.dart';
 import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/photos/club_photo.dart';
 
-class ClubPhotos extends StatelessWidget {
+class ClubPhotos extends StatefulWidget {
   const ClubPhotos({
     Key? key,
     required this.clubId,
@@ -13,41 +16,107 @@ class ClubPhotos extends StatelessWidget {
   final String clubId;
 
   @override
+  State<ClubPhotos> createState() => _ClubPhotosState();
+}
+
+class _ClubPhotosState extends State<ClubPhotos> {
+  final _scrollController = ScrollController();
+  final _clubPhotoBloc = getIt<ClubPhotosBloc>();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 8, right: 8),
-      child: BlocBuilder<ClubPhotosCubit, ClubPhotosState>(
-        builder: (context, state) {
-          return state.map(
-            initial: (_) => Container(),
-            loadInProgress: (_) => const Center(
-              child: CircularProgressIndicator(),
-            ),
-            loadSuccess: (state) {
-              if (state.photosUrls.isEmpty) {
-                return Center(child: Text(S().photos(0)));
-              }
-              return GridView.builder(
-                itemCount: 2,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 2,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
-                ),
-                itemBuilder: (context, index) {
-                  return ClubPhoto(
-                    url: state.photosUrls[index],
-                  );
-                },
-              );
-            },
-            loadFailure: (state) => Center(
-              child: Text(S().errorLoadingPhotos),
-            ),
-          );
-        },
+    return BlocProvider(
+      create: (context) =>
+          _clubPhotoBloc..add(ClubPhotosEvent.photosFetched(widget.clubId)),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8, right: 8),
+        child: BlocBuilder<ClubPhotosBloc, ClubPhotosState>(
+          builder: (context, state) {
+            switch (state.status) {
+              case CubitStatus.initial:
+                return Container();
+
+              case CubitStatus.failure:
+                return RefreshIndicator(
+                  onRefresh: () async => context.read<ClubPhotosBloc>().add(
+                        ClubPhotosEvent.photosFetched(widget.clubId),
+                      ),
+                  child: SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      child: const Center(
+                        child: Text(S().errorLoadingPhotos),
+                      ),
+                    ),
+                  ),
+                );
+
+              case CubitStatus.loading:
+                return const Center(child: CircularProgressIndicator());
+
+              case CubitStatus.success:
+                if (state.photosUrls.isEmpty) {
+                  return const Center(child: Text(S().photos(0)));
+                }
+
+                return CustomScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  controller: _scrollController,
+                  slivers: [
+                    SliverGrid(
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) =>
+                            ClubPhoto(url: state.photosUrls[index]),
+                        childCount: state.photosUrls.length,
+                      ),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisSpacing: 5,
+                        mainAxisSpacing: 5,
+                        childAspectRatio: 2,
+                        crossAxisCount: 2,
+                      ),
+                    ),
+                    if (state.nextPageToken != null)
+                      const SliverToBoxAdapter(
+                        child: BottomLoader(),
+                      )
+                  ],
+                );
+            }
+          },
+        ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _scrollController
+      ..removeListener(_onScroll)
+      ..dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    if (_isBottom) {
+      final nextPageToken = _clubPhotoBloc.state.nextPageToken;
+      _clubPhotoBloc.add(ClubPhotosEvent.nextPagePhotosFetched(
+          clubId: widget.clubId, nextPageToken: nextPageToken));
+    }
+  }
+
+  bool get _isBottom {
+    if (!_scrollController.hasClients) return false;
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.offset;
+    return currentScroll >= (maxScroll * 0.95);
   }
 }

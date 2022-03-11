@@ -10,7 +10,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:raver/application/auth/auth_cubit.dart';
 import 'package:raver/application/clubs/club_details/club_details_cubit.dart';
-import 'package:raver/application/clubs/club_details/club_photos/club_photos_cubit.dart';
+import 'package:raver/application/clubs/club_details/club_photos/club_photos_bloc.dart';
 import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
 import 'package:raver/application/core/available_filters/available_filters_cubit.dart';
@@ -29,6 +29,7 @@ import 'package:raver/domain/tickets/ticket_facade.dart';
 import 'package:raver/domain/tickets/ticket_overview/ticket_overview_facade.dart';
 import 'package:raver/env_keys.dart';
 import 'package:raver/infrastructure/clubs/firebase_club_facade.dart';
+import 'package:raver/infrastructure/core/algolia/algolia_clubs_api.dart';
 import 'package:raver/infrastructure/core/algolia/algolia_events_api.dart';
 import 'package:raver/infrastructure/core/algolia_api.dart';
 import 'package:raver/infrastructure/core/available_filters/firebase_available_filters_facade.dart';
@@ -82,7 +83,7 @@ void _registerCubits() {
 
   //Clubs
   getIt.registerFactory(
-    () => ClubPhotosCubit(
+        () => ClubPhotosBloc(
       getIt(),
     ),
   );
@@ -164,7 +165,7 @@ void _registerFacades() {
       firestore: getIt(),
       storage: getIt(),
       logger: getIt(),
-      algoliaAPI: getIt(),
+      algoliaClubsApi: getIt(),
     ),
   );
 
@@ -213,6 +214,12 @@ void _registerModules() {
 
   getIt.registerLazySingleton(
     () => AlgoliaEventsApi(
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
+    () => AlgoliaClubsApi(
       getIt(),
     ),
   );

@@ -4,8 +4,8 @@ part of 'club_filters_cubit.dart';
 abstract class ClubFiltersState with _$ClubFiltersState {
   const ClubFiltersState._();
 
-  factory ClubFiltersState({required ClubFilter filter}) = _ClubFiltersState;
+  factory ClubFiltersState({required ClubFilters filter}) = _ClubFiltersState;
 
   factory ClubFiltersState.initial() =>
-      ClubFiltersState(filter: ClubFilter.empty());
+      ClubFiltersState(filter: ClubFilters.empty());
 }

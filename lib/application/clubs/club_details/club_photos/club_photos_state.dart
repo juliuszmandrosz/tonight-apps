@@ -1,16 +1,18 @@
-part of 'club_photos_cubit.dart';
+part of 'club_photos_bloc.dart';
 
 @freezed
 class ClubPhotosState with _$ClubPhotosState {
   const ClubPhotosState._();
 
-  const factory ClubPhotosState.initial() = _Initial;
+  const factory ClubPhotosState({
+    required CubitStatus status,
+    required List<String> photosUrls,
+    required String? nextPageToken,
+  }) = _ClubPhotosState;
 
-  const factory ClubPhotosState.loadInProgress() = _LoadInProgress;
-
-  const factory ClubPhotosState.loadSuccess(List<String> photosUrls) =
-      _LoadSuccess;
-
-  const factory ClubPhotosState.loadFailure(ClubFailure clubFailure) =
-      _LoadFailure;
+  factory ClubPhotosState.initial() => const ClubPhotosState(
+        status: CubitStatus.initial,
+        photosUrls: [],
+        nextPageToken: null,
+      );
 }

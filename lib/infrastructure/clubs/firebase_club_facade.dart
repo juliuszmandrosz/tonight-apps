@@ -8,42 +8,40 @@ import 'package:logger/logger.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/domain/clubs/club_facade.dart';
 import 'package:raver/domain/clubs/failures/club_failure.dart';
-import 'package:raver/domain/clubs/filters/club_filter.dart';
-import 'package:raver/infrastructure/core/algolia_api.dart';
+import 'package:raver/domain/clubs/filters/club_filters.dart';
+import 'package:raver/infrastructure/core/algolia/algolia_clubs_api.dart';
 import 'package:raver/infrastructure/core/firestore_helpers.dart';
 
 import 'dtos/club_dto.dart';
 
 class FirebaseClubFacade implements ClubFacade {
   final FirebaseFirestore _firestore;
-  final AlgoliaAPI _algoliaAPI;
+  final AlgoliaClubsApi _algoliaClubsApi;
   final FirebaseStorage _storage;
   final Logger _logger;
-
   final String clubsIndex = 'clubs';
 
   FirebaseClubFacade({
     required FirebaseFirestore firestore,
-    required AlgoliaAPI algoliaAPI,
+    required AlgoliaClubsApi algoliaClubsApi,
     required FirebaseStorage storage,
     required Logger logger,
   })  : _firestore = firestore,
-        _algoliaAPI = algoliaAPI,
+        _algoliaClubsApi = algoliaClubsApi,
         _storage = storage,
         _logger = logger;
 
   @override
   Future<Either<ClubFailure, List<Club>>> getClubs(
-    ClubFilter filter, {
+    ClubFilters filters, {
     int pageSize = 10,
     int offset = 0,
   }) async {
     String? text;
-    text ??= filter.phrase;
+    text ??= filters.phrase;
 
     try {
-      final clubs =
-          await _algoliaAPI.search(text, clubsIndex, pageSize, offset);
+      final clubs = await _algoliaClubsApi.getClubs(filters, pageSize, offset);
 
       return right(clubs.hits
           .map((doc) => ClubDto.fromAlgolia(doc).toDomain())
@@ -57,7 +55,7 @@ class FirebaseClubFacade implements ClubFacade {
 
   @override
   Future<Either<ClubFailure, Club>> getClubById(String id) async {
-    DocumentReference clubsQuery = _firestore.collection('clubs').doc(id);
+    DocumentReference clubsQuery = _firestore.collection(clubsIndex).doc(id);
     try {
       DocumentSnapshot result = await clubsQuery.get();
       return right(ClubDto.fromFirebase(result).toDomain());
@@ -67,17 +65,23 @@ class FirebaseClubFacade implements ClubFacade {
     }
   }
 
+  //Tuple2<List<photosUrls>,String? tokenForNextPage <- if next page is available>>
   @override
-  Future<Either<ClubFailure, List<String>>> getClubPhotosUrls(
-      String clubId) async {
+  Future<Either<ClubFailure, Tuple2<List<String>, String?>>> getClubPhotosUrls({
+    required String clubId,
+    String? nextPageToken,
+    int pageSize = 10,
+  }) async {
     try {
-      final ListResult images = await _storage
-          .ref('clubs/$clubId/club_images/')
-          .list(const ListOptions(maxResults: 10)); //TODO add infinity scroll
+      final ListResult images =
+          await _storage.ref('clubs/$clubId/club_images/').list(ListOptions(
+            maxResults: pageSize,
+                pageToken: nextPageToken,
+              ));
       final List<Future<String>> urls =
           images.items.map((ref) async => await ref.getDownloadURL()).toList();
-      return right(await Future.wait(
-          urls)); //Future.wait unpacks List<Future<String>> list from Futures to not overcomplicate overall UI building
+      return right(Tuple2(await Future.wait(urls),
+          images.nextPageToken)); //if there is no page next, return empty token
     } on FirebaseException catch (exception) {
       _logger.e("Exception during fetching clubs images EXCEPTION: $exception");
       return left(const ClubFailure.unexpected());

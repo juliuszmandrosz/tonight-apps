@@ -1,13 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:raver/application/core/bloc_throttle_debounce.dart';
 import 'package:raver/application/core/cubit_status.dart';
 import 'package:raver/domain/events/event_entity.dart';
 import 'package:raver/domain/events/event_facade.dart';
 import 'package:raver/domain/events/filters/event_filters_entity.dart';
-import 'package:rxdart/rxdart.dart';
 
 part 'event_overview_bloc.freezed.dart';
 part 'event_overview_event.dart';
@@ -15,14 +14,6 @@ part 'event_overview_state.dart';
 
 const pageSize = 20;
 const throttleDuration = Duration(milliseconds: 500);
-
-EventTransformer<E> throttleDroppable<E>(
-  Duration duration,
-) {
-  return (events, mapper) {
-    return droppable<E>().call(events.debounceTime(duration), mapper);
-  };
-}
 
 class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
   final EventFacade _eventFacade;
