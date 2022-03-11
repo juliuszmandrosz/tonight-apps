@@ -51,15 +51,14 @@ class TicketOverviewPage extends StatelessWidget {
                                 child: RaverHeadline(text: S().upcoming),
                               ),
                             ),
-                          if (_upcomingTickets.isNotEmpty)
-                            ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: _upcomingTickets.length,
-                              itemBuilder: (ctx, i) => TicketCard(
-                                ticket: _upcomingTickets[i],
-                              ),
+                          ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: _upcomingTickets.length,
+                            itemBuilder: (ctx, i) => TicketCard(
+                              ticket: _upcomingTickets[i],
                             ),
+                          ),
                           if (_expiredTickets.isNotEmpty)
                             Padding(
                               padding:
@@ -69,15 +68,14 @@ class TicketOverviewPage extends StatelessWidget {
                                 child: RaverHeadline(text: S().pastTickets),
                               ),
                             ),
-                          if (_expiredTickets.isNotEmpty)
-                            ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: _expiredTickets.length,
-                              itemBuilder: (ctx, i) => TicketCard(
-                                ticket: _expiredTickets[i],
-                              ),
+                          ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: _expiredTickets.length,
+                            itemBuilder: (ctx, i) => TicketCard(
+                              ticket: _expiredTickets[i],
                             ),
+                          ),
                         ],
                       ),
                     );

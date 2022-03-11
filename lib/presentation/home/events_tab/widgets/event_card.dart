@@ -202,6 +202,7 @@ class EventCard extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 style: theme.textTheme.headline3,
                               ),
+                              const SizedBox(height: 5),
                               Text(
                                 context.formatDateTimeToLocaleHM(
                                     event.eventDateTime),

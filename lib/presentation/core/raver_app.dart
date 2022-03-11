@@ -10,6 +10,7 @@ import 'package:raver/application/events/event_favorite/event_favorite_cubit.dar
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/application/events/event_overview/event_overview_bloc.dart';
 import 'package:raver/application/tickets/ticket_cubit.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/domain/clubs/filters/club_filters.dart';
 import 'package:raver/generated/l10n.dart';
 import 'package:raver/injection.dart';
