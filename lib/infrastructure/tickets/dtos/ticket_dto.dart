@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/domain/core/extensions/date_formatters.dart';
 import 'package:raver/domain/tickets/ticket_entity.dart';
 import 'package:raver/infrastructure/core/firebase_converters.dart';
 
@@ -35,7 +34,7 @@ class TicketDto with _$TicketDto {
       eventId: ticket.eventId,
       clubName: ticket.clubName,
       eventName: ticket.eventName,
-      eventDateTime: ticket.eventDateTime.formatDateFromDomain(),
+      eventDateTime: ticket.eventDateTime,
       price: ticket.price,
       isVip: ticket.isVip,
       isExpired: ticket.isExpired,
@@ -57,7 +56,7 @@ class TicketDto with _$TicketDto {
       eventId: eventId,
       clubName: clubName,
       eventName: eventName,
-      eventDateTime: eventDateTime.formatDateToDomain(),
+      eventDateTime: eventDateTime,
       price: price,
       isVip: isVip,
       isExpired: isExpired,

@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/domain/events/event_entity.dart';
+import 'package:raver/generated/l10n.dart';
+import 'package:raver/presentation/commons/constants/social_media_icons.dart';
 import 'package:raver/presentation/commons/utils/url_utils.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
-import 'package:raver/presentation/core/social_media_icons.dart';
+import 'package:raver/presentation/core/raver_headline.dart';
 
 class EventDetailsAdditionalInfo extends StatelessWidget {
   final Event event;
 
   final urlLinksDescription = {
-    'Facebook': 'Facebook event',
-    'DjChannel': 'Dj Channel',
+    'Facebook': S().facebookEvent,
+    'DjChannel': S().djChannel,
   };
 
   EventDetailsAdditionalInfo({
@@ -20,23 +22,18 @@ class EventDetailsAdditionalInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme
-        .of(context)
-        .textTheme;
+    final textTheme = Theme.of(context).textTheme;
     return Column(
       children: [
         Row(
           children: [
-            Text(
-              'Additional info',
-              style: textTheme.headline1,
-            )
+            RaverHeadline(text: S().additionalInfo),
           ],
         ),
         const SizedBox(height: 10),
         Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           for (final url in event.urlLinks.entries.where(
-                (url) => socialMediaIcons.containsKey(url.key),
+            (url) => socialMediaIcons.containsKey(url.key),
           ))
             Column(
               children: [
@@ -52,7 +49,7 @@ class EventDetailsAdditionalInfo extends StatelessWidget {
                       ScaffoldMessenger.of(context)
                         ..hideCurrentSnackBar()
                         ..showSnackBar(
-                          const SnackBar(content: Text('Error opening link')),
+                          SnackBar(content: Text(S().errorOpeningLink)),
                         );
                     }
                   },

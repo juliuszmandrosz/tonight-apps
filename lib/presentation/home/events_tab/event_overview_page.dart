@@ -4,6 +4,7 @@ import 'package:raver/application/core/cubit_status.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_overview/event_overview_bloc.dart';
 import 'package:raver/domain/events/filters/event_filters_entity.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/core/bottom_loader.dart';
 import 'package:raver/presentation/home/events_tab/widgets/event_card.dart';
 import 'package:raver/presentation/home/events_tab/widgets/event_filters_section.dart';
@@ -70,8 +71,8 @@ class _EventOverviewPageState extends State<EventOverviewPage> {
                 onRefresh: () async => context.read<EventOverviewBloc>().add(
                       EventOverviewEvent.eventsFetched(state.eventFilters),
                     ),
-                child: const Center(
-                  child: Text('Failed to fetch events'),
+                child: Center(
+                  child: Text(S().errorLoadingEvents),
                 ),
               );
 
@@ -89,8 +90,8 @@ class _EventOverviewPageState extends State<EventOverviewPage> {
                         child: Text(
                           state.eventFilters.userLocation.isNotEmpty &&
                                   state.eventFilters.isMaxDistanceOption
-                              ? 'No events near you'
-                              : 'No events',
+                              ? S().noEventsNearYou
+                              : S().events(0),
                           style: textTheme.subtitle1,
                         ),
                       ),

@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:raver/domain/tickets/ticket_entity.dart';
+import 'package:raver/generated/l10n.dart';
+import 'package:raver/presentation/commons/extensions/build_context_extensions.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 
@@ -44,7 +46,8 @@ class TicketCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          ticket.eventDateTime,
+                          context.formatDateTimeToLocaleYMDHM(
+                              ticket.eventDateTime),
                           style: theme.textTheme.bodyText1,
                         ),
                       ],
@@ -54,8 +57,7 @@ class TicketCard extends StatelessWidget {
                   Expanded(
                     flex: 3,
                     child: Text(
-                      // TODO - add currency
-                      '${ticket.price} PLN',
+                      '${ticket.price} ${context.getCurrencySymbol()}',
                       style: theme.textTheme.headline1,
                     ),
                   ),
@@ -66,7 +68,7 @@ class TicketCard extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      ticket.isVip ? 'V\nI\nP' : '',
+                      ticket.isVip ? S().vipVertical : '',
                       textAlign: TextAlign.center,
                       style: theme.textTheme.subtitle2,
                     ),

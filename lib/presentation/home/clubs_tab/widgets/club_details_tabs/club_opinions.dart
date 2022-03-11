@@ -27,7 +27,7 @@ class ClubOpinions extends StatelessWidget {
                       username: review.username,
                       userRate: review.userRate,
                       userOpinion: review.userOpinion,
-                      timestamp: review.timestamp,
+                      dateTime: review.dateTime,
                     ),
                   ),
                   const SizedBox(

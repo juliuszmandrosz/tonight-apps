@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 
@@ -22,9 +23,7 @@ class EventFiltersMinAge extends StatelessWidget {
         return Column(
           children: [
             Row(
-              children: const [
-                RaverHeadline(text: 'Age'),
-              ],
+              children: [RaverHeadline(text: S().age)],
             ),
             const SizedBox(height: 10),
             Column(

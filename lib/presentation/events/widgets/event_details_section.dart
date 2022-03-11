@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/domain/events/event_entity.dart';
+import 'package:raver/generated/l10n.dart';
+import 'package:raver/presentation/commons/extensions/build_context_extensions.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
+import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/events/utils/event_details_formatters.dart';
 
 class EventDetailsSection extends StatelessWidget {
@@ -15,12 +18,7 @@ class EventDetailsSection extends StatelessWidget {
     return Column(
       children: [
         Row(
-          children: [
-            Text(
-              'Details',
-              style: textTheme.headline1,
-            )
-          ],
+          children: [RaverHeadline(text: S().details)],
         ),
         const SizedBox(height: 20),
         IntrinsicHeight(
@@ -51,7 +49,7 @@ class EventDetailsSection extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    '${event.price} PLN',
+                    '${event.price} ${context.getCurrencySymbol()}',
                     style: textTheme.subtitle1,
                   ),
                 ],

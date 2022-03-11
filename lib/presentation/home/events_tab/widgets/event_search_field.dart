@@ -14,7 +14,7 @@ class EventSearchField extends StatelessWidget {
           onSubmitted: (value) =>
               context.read<EventFiltersCubit>().submitSearchField(value),
           decoration: InputDecoration(
-            hintText: "Search",
+            hintText: MaterialLocalizations.of(context).searchFieldLabel,
             border: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.black, width: 2),
               borderRadius: BorderRadius.circular(25),

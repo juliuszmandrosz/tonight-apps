@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
-import 'package:raver/domain/core/extensions/date_formatters.dart';
 import 'package:raver/domain/events/event_entity.dart';
+import 'package:raver/generated/l10n.dart';
+import 'package:raver/presentation/commons/extensions/build_context_extensions.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/events/utils/event_details_formatters.dart';
 import 'package:raver/presentation/routes/app_router.dart';
@@ -29,10 +30,9 @@ class EventCard extends StatelessWidget {
             ..showSnackBar(
               SnackBar(
                 content: failure.map(
-                  unexpected: ((_) => const Text(
-                      'Error loading information about favorite events')),
+                  unexpected: ((_) => Text(S().errorLoadingFavoriteEventsInfo)),
                   toggleFavoriteEventFailure: ((_) =>
-                      const Text('Error while changing event status')),
+                      Text(S().errorChangingEventStatus)),
                 ),
               ),
             ),
@@ -89,7 +89,7 @@ class EventCard extends StatelessWidget {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     6, 2, 6, 2),
                                 child: Text(
-                                  '${event.attending} ATTENDING',
+                                  '${event.attending} ${S().attending(event.attending).toUpperCase()}',
                                   style: theme.textTheme.headline3,
                                 ),
                               ),
@@ -170,7 +170,7 @@ class EventCard extends StatelessWidget {
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       6, 2, 6, 2),
                                   child: Text(
-                                    'LIVE - ${event.artistName!.toUpperCase()}',
+                                    '${S().live.toUpperCase()} - ${event.artistName!.toUpperCase()}',
                                     style: theme.textTheme.headline3,
                                   ),
                                 ),
@@ -191,20 +191,21 @@ class EventCard extends StatelessWidget {
                           decoration: const BoxDecoration(
                             color: DefaultColors.primaryColor,
                           ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(4),
-                                child: Text(
-                                  event.eventDateTime
-                                      .formatDateTimeToMonthAndDay(),
-                                  textAlign: TextAlign.center,
-                                  style: theme.textTheme.headline2,
-                                ),
-                              ),
                               Text(
-                                event.eventDateTime.formatDateTimeToHour(),
+                                context.formatDateTimeToLocaleYMD(
+                                    event.eventDateTime),
+                                textAlign: TextAlign.center,
+                                style: theme.textTheme.headline3,
+                              ),
+                              const SizedBox(height: 5),
+                              Text(
+                                context.formatDateTimeToLocaleHM(
+                                    event.eventDateTime),
                                 style: theme.textTheme.headline3,
                               ),
                             ],
@@ -230,7 +231,7 @@ class EventCard extends StatelessWidget {
                                 Container(
                                   padding: const EdgeInsets.only(top: 3),
                                   child: Text(
-                                    _displayEventDetails(),
+                                    _displayEventDetails(context),
                                     style: theme.textTheme.headline3,
                                     overflow: TextOverflow.ellipsis,
                                   ),
@@ -251,13 +252,12 @@ class EventCard extends StatelessWidget {
     );
   }
 
-  _displayEventDetails() {
+  _displayEventDetails(BuildContext context) {
     final musicalGenres = displayMusicalGenres(
       event.musicalGenres,
       EventDetailsSeparator.comma,
     );
-
-    var price = '${event.price}pln';
+    var price = '${event.price}${context.getCurrencySymbol()}';
     final minAge = '${event.minAge}+';
     final allowedOutfit = event.allowedOutfit;
 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:raver/generated/l10n.dart';
+import 'package:raver/presentation/commons/constants/social_media_icons.dart';
 import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
 import 'package:raver/presentation/commons/utils/url_utils.dart';
-import 'package:raver/presentation/core/social_media_icons.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/details/social_icon_with_title.dart';
 
 import 'details/details_section.dart';
@@ -31,7 +32,7 @@ class ClubDetails extends StatelessWidget {
                       aboutUs!,
                       softWrap: true,
                     ),
-                    title: "About Us",
+                    title: S().aboutUs,
                   )
                 : Container(),
             DetailsSection(
@@ -44,9 +45,8 @@ class ClubDetails extends StatelessWidget {
                       var result = await launchPhoneCall(phoneNumber);
                       if (result.isSome()) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                                "Error while launching phone app, check permissions"),
+                          SnackBar(
+                            content: Text(S().errorMakingCall),
                           ),
                         );
                       }
@@ -55,7 +55,7 @@ class ClubDetails extends StatelessWidget {
                   )
                 ],
               ),
-              title: "Contact",
+              title: S().contact,
             ),
             socialMedia != null
                 ? DetailsSection(
@@ -76,7 +76,7 @@ class ClubDetails extends StatelessWidget {
                         }).toList(),
                       ),
                     ),
-                    title: "Social Media",
+                    title: S().socialMedia,
                   )
                 : Container()
           ],

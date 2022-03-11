@@ -6,7 +6,7 @@ class Ticket extends Equatable {
   final String clubName;
   final String eventName;
   final String eventId;
-  final String eventDateTime;
+  final DateTime eventDateTime;
   final int price;
   final bool isVip;
   final bool isExpired;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/club_buy_ticket.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/club_details.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/club_events.dart';
@@ -19,23 +20,23 @@ class ClubDetailsTabs extends StatelessWidget {
         length: 6,
         child: Column(
           children: [
-            const TabBar(
+            TabBar(
               isScrollable: true,
               tabs: [
-                Tab(text: 'Events'),
-                Tab(text: 'Buy ticket'),
-                Tab(text: 'Milestones'),
-                Tab(text: 'Details'),
-                Tab(text: 'Opinions'),
-                Tab(text: 'Photos')
+                Tab(text: S().events(2)),
+                Tab(text: S().buyTicket),
+                Tab(text: S().milestones),
+                Tab(text: S().details),
+                Tab(text: S().opinions),
+                Tab(text: S().photos(2))
               ],
             ),
             Expanded(
               child: TabBarView(
                 children: [
-                  ClubEvents(),
-                  ClubBuyTicket(),
-                  ClubMilestones(),
+                  const ClubEvents(),
+                  const ClubBuyTicket(),
+                  const ClubMilestones(),
                   ClubDetails(
                     aboutUs: club.aboutUs,
                     phoneNumber: club.phoneNumber,

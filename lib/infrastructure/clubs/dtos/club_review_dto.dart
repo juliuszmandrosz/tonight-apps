@@ -1,11 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/domain/clubs/club_review_entity.dart';
-import 'package:raver/infrastructure/core/domain_formatters/date_formats.dart';
-import 'package:raver/infrastructure/core/domain_formatters/date_formatter.dart';
 import 'package:raver/infrastructure/core/json_converters/timestamp_json_converter.dart';
 
 part 'club_review_dto.freezed.dart';
+
 part 'club_review_dto.g.dart';
 
 @freezed
@@ -17,7 +16,7 @@ class ClubReviewDto with _$ClubReviewDto {
     required double userRate,
     required String userId,
     required String username,
-    @TimestampJsonConverter() required DateTime timestamp,
+    @TimestampJsonConverter() required DateTime dateTime,
   }) = _ClubReviewDto;
 
   factory ClubReviewDto.fromDomain(ClubReview clubReview) {
@@ -26,7 +25,7 @@ class ClubReviewDto with _$ClubReviewDto {
       userRate: clubReview.userRate,
       userId: clubReview.userId,
       username: clubReview.username,
-      timestamp: DateTime.parse(clubReview.timestamp),
+      dateTime: clubReview.dateTime,
     );
   }
 
@@ -40,10 +39,11 @@ class ClubReviewDto with _$ClubReviewDto {
 
   ClubReview toDomain() {
     return ClubReview(
-        userOpinion: userOpinion,
-        userRate: userRate,
-        userId: userId,
-        username: username,
-        timestamp: timestamp.formatDate(DateFormats.reviewFormat));
+      userOpinion: userOpinion,
+      userRate: userRate,
+      userId: userId,
+      username: username,
+      dateTime: dateTime,
+    );
   }
 }

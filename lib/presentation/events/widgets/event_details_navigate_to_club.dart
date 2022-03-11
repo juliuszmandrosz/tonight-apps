@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:raver/domain/events/event_entity.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/commons/utils/url_utils.dart';
 
 class EventDetailsNavigateToClub extends StatelessWidget {
@@ -26,13 +27,13 @@ class EventDetailsNavigateToClub extends StatelessWidget {
               ScaffoldMessenger.of(context)
                 ..hideCurrentSnackBar()
                 ..showSnackBar(
-                  const SnackBar(content: Text('Error opening maps')),
+                  SnackBar(content: Text(S().errorOpeningMaps)),
                 );
             }
           },
           // TODO - change to navigation based on user location
           child: Text(
-            'Find in maps',
+            S().findInMap,
             style: textTheme.headline3,
           ),
         ),

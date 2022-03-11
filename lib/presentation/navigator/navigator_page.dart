@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
+import 'package:raver/generated/l10n.dart';
+import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 
 class NavigatorPage extends StatelessWidget {
@@ -20,40 +22,37 @@ class NavigatorPage extends StatelessWidget {
     _getUserLocation(context);
     // TODO - Find why this build method get called twice
     return AutoTabsScaffold(
-      appBarBuilder: (_, tabsRouter) => AppBar(
-        title: const Text('Raver'),
-        centerTitle: false,
-      ),
+      appBarBuilder: (_, tabsRouter) => const RaverAppBar(),
       routes: const [HomeRouter(), TicketsRouter()],
       bottomNavigationBuilder: (_, tabsRouter) {
         return BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           currentIndex: tabsRouter.activeIndex,
           onTap: tabsRouter.setActiveIndex,
-          items: const [
+          items: [
             BottomNavigationBarItem(
-              icon: Icon(
+              icon: const Icon(
                 Icons.home,
               ),
-              label: "Home",
+              label: S().home,
             ),
             BottomNavigationBarItem(
-              icon: Icon(
+              icon: const Icon(
                 FontAwesomeIcons.ticketAlt,
               ),
-              label: "Tickets",
+              label: S().tickets(2),
             ),
             BottomNavigationBarItem(
-              icon: Icon(
+              icon: const Icon(
                 Icons.favorite,
               ),
-              label: "Favourites",
+              label: S().favorites,
             ),
             BottomNavigationBarItem(
-              icon: FaIcon(
+              icon: const FaIcon(
                 FontAwesomeIcons.userAlt,
               ),
-              label: "Profile",
+              label: S().profile,
             ),
           ],
         );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:raver/generated/l10n.dart';
 
 class RatingRow extends StatelessWidget {
   const RatingRow({
@@ -33,7 +34,7 @@ class RatingRow extends StatelessWidget {
         const SizedBox(
           width: 10,
         ),
-        Text('$rateCount opinions"')
+        Text('$rateCount ${S().opinions}')
       ],
     );
   }

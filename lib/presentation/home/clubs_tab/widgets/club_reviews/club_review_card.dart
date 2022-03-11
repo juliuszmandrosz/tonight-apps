@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:raver/presentation/commons/extensions/build_context_extensions.dart';
 
 class ClubReviewCard extends StatelessWidget {
   const ClubReviewCard({
@@ -7,13 +8,13 @@ class ClubReviewCard extends StatelessWidget {
     required this.username,
     required this.userRate,
     required this.userOpinion,
-    required this.timestamp,
+    required this.dateTime,
   }) : super(key: key);
 
   final String username;
   final double userRate;
   final String userOpinion;
-  final String timestamp;
+  final DateTime dateTime;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +58,9 @@ class ClubReviewCard extends StatelessWidget {
                           children: [Text(username)],
                         ),
                         Row(
-                          children: [Text(timestamp)],
+                          children: [
+                            Text(context.formatDateTimeToLocaleYMD(dateTime))
+                          ],
                         ),
                       ],
                     ),

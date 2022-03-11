@@ -5,23 +5,22 @@ class ClubReview extends Equatable {
   final double userRate;
   final String userId;
   final String username;
-  final String timestamp;
+  final DateTime dateTime;
 
   const ClubReview({
     required this.userOpinion,
     required this.userRate,
     required this.userId,
     required this.username,
-    required this.timestamp,
+    required this.dateTime,
   });
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         userOpinion,
         userRate,
         userId,
         username,
-        timestamp,
+        dateTime,
       ];
 }

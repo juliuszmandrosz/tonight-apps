@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:raver/domain/events/event_entity.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 
 class EventDetailsArtistName extends StatelessWidget {
@@ -19,7 +20,7 @@ class EventDetailsArtistName extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'LIVE - ${event.artistName!.toUpperCase()}',
+              '${S().live.toUpperCase()} - ${event.artistName!.toUpperCase()}',
               style: textTheme.headline1!.copyWith(
                 color: DefaultColors.primaryColor,
               ),

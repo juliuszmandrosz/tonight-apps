@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
+import 'package:raver/generated/l10n.dart';
+import 'package:raver/presentation/commons/extensions/build_context_extensions.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 
@@ -36,7 +38,8 @@ class EventFiltersPrice extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const RaverHeadline(text: 'Price range (pln)'),
+                RaverHeadline(
+                    text: '${S().priceRange} (${context.getCurrencyName()})'),
                 RaverHeadline(
                   text:
                       '${_currentRangeValues.start.round()}-${_currentRangeValues.end.round()}',

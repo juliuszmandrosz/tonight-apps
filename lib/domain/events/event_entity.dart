@@ -7,7 +7,7 @@ class Event extends Equatable {
   final String clubId;
   final String eventName;
   final String clubName;
-  final String eventDateTime;
+  final DateTime eventDateTime;
   final int attending;
   final int minAge;
   final int price;

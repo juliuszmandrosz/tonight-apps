@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 
@@ -54,9 +55,7 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const RaverHeadline(
-                            text: 'Maximum distance',
-                          ),
+                          RaverHeadline(text: S().maxDistance),
                           if (locationState.isPermissionGranted)
                             RaverHeadline(
                               text: '${filtersState.filters.maxDistance}km',
@@ -93,9 +92,9 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
                                       onPressed: () => context
                                           .read<UserLocationCubit>()
                                           .openAppSettings(),
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(10.0),
-                                        child: Text('Enable location'),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Text(S().enableLocation),
                                       ),
                                     )
                         ],

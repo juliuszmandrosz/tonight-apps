@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
 import 'package:raver/presentation/commons/icons/raver_toggle_icon.dart';
 import 'package:raver/presentation/commons/utils/url_utils.dart';
@@ -54,9 +55,7 @@ class ClubDescription extends StatelessWidget {
                     club.getLatitude(), club.getLatitude());
                 if (result.isSome()) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("Error while launching google maps"),
-                    ),
+                    SnackBar(content: Text(S().errorOpeningMaps)),
                   );
                 }
               },

@@ -6,6 +6,7 @@ import 'package:raver/application/core/cubit_status.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/domain/clubs/club_facade.dart';
 import 'package:raver/domain/clubs/filters/club_filter.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/bottom_loader.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_card.dart';
@@ -85,8 +86,8 @@ class _ClubsPageState extends State<ClubsPage> {
                       physics: const AlwaysScrollableScrollPhysics(),
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height * 0.3,
-                        child: const Center(
-                          child: Text('Failed fetching clubs'),
+                        child: Center(
+                          child: Text(S().errorLoadingClubs),
                         ),
                       ),
                     ),
@@ -107,8 +108,8 @@ class _ClubsPageState extends State<ClubsPage> {
                         physics: const AlwaysScrollableScrollPhysics(),
                         child: SizedBox(
                           height: MediaQuery.of(context).size.height * 0.3,
-                          child: const Center(
-                            child: Text('No clubs'),
+                          child: Center(
+                            child: Text(S().clubs(0)),
                           ),
                         ),
                       ),

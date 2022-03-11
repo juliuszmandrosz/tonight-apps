@@ -35,7 +35,7 @@ class _ClubSearchFieldState extends State<ClubSearchField> {
         setState(() {});
       },
       decoration: InputDecoration(
-        hintText: "Search",
+        hintText: MaterialLocalizations.of(context).searchFieldLabel,
         border: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.black, width: 2),
           borderRadius: BorderRadius.circular(25),

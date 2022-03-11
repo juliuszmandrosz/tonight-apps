@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:raver/application/auth/auth_cubit.dart';
 import 'package:raver/application/core/available_filters/available_filters_cubit.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
@@ -7,6 +8,7 @@ import 'package:raver/application/events/event_favorite/event_favorite_cubit.dar
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/application/events/event_overview/event_overview_bloc.dart';
 import 'package:raver/application/tickets/ticket_cubit.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/config/themes/app_theme.dart';
 import 'package:raver/presentation/routes/app_router.dart';
@@ -51,6 +53,13 @@ class RaverApp extends StatelessWidget {
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),
         debugShowCheckedModeBanner: false,
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_place/google_place.dart';
 import 'package:raver/application/core/google_places/google_places_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:rxdart/rxdart.dart';
@@ -48,15 +49,14 @@ class _EventFiltersCityState extends State<EventFiltersCity> {
                 child: Column(
                   children: [
                     Row(
-                      children: const [
-                        RaverHeadline(text: 'City'),
-                      ],
+                      children: [RaverHeadline(text: S().city)],
                     ),
                     const SizedBox(height: 20),
                     TextField(
                       controller: _textController,
                       decoration: InputDecoration(
-                        labelText: "Search",
+                        labelText:
+                            MaterialLocalizations.of(context).searchFieldLabel,
                         focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
                             color: DefaultColors.primaryColor,

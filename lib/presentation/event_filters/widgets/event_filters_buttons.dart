@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 
 class EventFiltersButtons extends StatelessWidget {
@@ -17,9 +18,9 @@ class EventFiltersButtons extends StatelessWidget {
             BlocProvider.of<EventFiltersCubit>(context).resetFilters();
             AutoRouter.of(context).pop();
           },
-          child: const Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Text('Reset filters'),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(S().resetFilters),
           ),
           style: theme.elevatedButtonTheme.style!.copyWith(
             backgroundColor: MaterialStateProperty.all(
@@ -33,9 +34,9 @@ class EventFiltersButtons extends StatelessWidget {
             BlocProvider.of<EventFiltersCubit>(context).submitFilters();
             AutoRouter.of(context).pop();
           },
-          child: const Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Text('Apply filters'),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(S().applyFilters),
           ),
         ),
       ],

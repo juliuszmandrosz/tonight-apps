@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
+import 'package:raver/presentation/config/translations/translations.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 
 class EventFiltersDressCode extends StatelessWidget {
@@ -22,9 +24,7 @@ class EventFiltersDressCode extends StatelessWidget {
         return Column(
           children: [
             Row(
-              children: const [
-                RaverHeadline(text: 'Dress code'),
-              ],
+              children: [RaverHeadline(text: S().dressCode)],
             ),
             const SizedBox(height: 10),
             Column(
@@ -33,7 +33,7 @@ class EventFiltersDressCode extends StatelessWidget {
                   CheckboxListTile(
                     activeColor: DefaultColors.primaryColor,
                     title: Text(
-                      outfit,
+                      outfitsTranslations[outfit] ?? outfit,
                       style: textTheme.subtitle1,
                     ),
                     controlAffinity: ListTileControlAffinity.leading,

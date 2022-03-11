@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/tickets/ticket_cubit.dart';
 import 'package:raver/domain/events/event_entity.dart';
+import 'package:raver/generated/l10n.dart';
 
 class EventDetailsTicket extends StatelessWidget {
   final Event event;
@@ -20,11 +21,9 @@ class EventDetailsTicket extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () {
-                // TODO - handle this
-              },
+              onPressed: () {},
               child: Text(
-                ticket != null ? 'Show ticket' : 'Buy ticket',
+                ticket != null ? S().showTicket : S().buyTicket,
                 style: textTheme.headline3,
               ),
             ),

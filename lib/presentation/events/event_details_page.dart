@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_details/event_details_cubit.dart';
 import 'package:raver/domain/events/event_entity.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/injection.dart';
+import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/events/widgets/event_details_additional_info.dart';
 import 'package:raver/presentation/events/widgets/event_details_artist_name.dart';
 import 'package:raver/presentation/events/widgets/event_details_club_name.dart';
@@ -28,9 +30,7 @@ class EventDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Event details'),
-        ),
+        appBar: RaverAppBar(title: S().eventDetails),
         body: BlocProvider(
           create: (context) {
             final cubit = getIt<EventDetailsCubit>();
@@ -48,8 +48,8 @@ class EventDetailsPage extends StatelessWidget {
                     loadInProgress: (_) => const Center(
                       child: CircularProgressIndicator(),
                     ),
-                    loadFailure: (_) => const Center(
-                      child: Text('Failed to load event details'),
+                    loadFailure: (_) => Center(
+                      child: Text(S().errorLoadingEventDetails),
                     ),
                     loadSuccess: (state) {
                       final event = state.event;

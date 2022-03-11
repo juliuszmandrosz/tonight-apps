@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/core/available_filters/available_filters_cubit.dart';
 import 'package:raver/application/core/google_places/google_places_cubit.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/injection.dart';
-import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
+import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_buttons.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_city.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_dress_code.dart';
@@ -27,18 +28,15 @@ class _EventFiltersPageState extends State<EventFiltersPage> {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: DefaultColors.primaryColor,
-          title: const Text('Filters'),
-        ),
+        appBar: RaverAppBar(title: S().filters),
         body: BlocBuilder<AvailableFiltersCubit, AvailableFiltersState>(
           builder: (context, state) => state.map(
             initial: (_) => Container(),
             loadInProgress: (_) => const Center(
               child: CircularProgressIndicator(),
             ),
-            loadFailure: (_) => const Center(
-              child: Text('Error loading filters'),
+            loadFailure: (_) => Center(
+              child: Text(S().errorLoadingFilters),
             ),
             loadSuccess: (state) {
               return SafeArea(

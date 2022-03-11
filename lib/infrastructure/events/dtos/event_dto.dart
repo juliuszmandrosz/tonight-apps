@@ -1,7 +1,6 @@
 import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/domain/core/extensions/date_formatters.dart';
 import 'package:raver/domain/events/event_entity.dart';
 import 'package:raver/infrastructure/core/firebase_converters.dart';
 
@@ -43,7 +42,7 @@ class EventDto with _$EventDto {
       clubId: event.clubId,
       price: event.price,
       eventName: event.eventName,
-      eventDateTime: event.eventDateTime.formatDateFromDomain(),
+      eventDateTime: event.eventDateTime,
       clubName: event.clubName,
       allowedOutfit: event.allowedOutfit,
       attending: event.attending,
@@ -83,7 +82,7 @@ class EventDto with _$EventDto {
       id: id,
       price: price,
       eventName: eventName,
-      eventDateTime: eventDateTime.formatDateToDomain(),
+      eventDateTime: eventDateTime,
       clubName: clubName,
       allowedOutfit: allowedOutfit,
       attending: attending,
