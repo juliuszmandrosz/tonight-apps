@@ -25,6 +25,7 @@ class AlgoliaEventsApi {
     query = _setIsConcertValue(query, filters);
     query = _setMaxDistance(query, filters);
     query = _setCity(query, filters);
+    query = _setDay(query, filters);
 
     query = query.setLength(pageSize).setOffset(offset);
 
@@ -67,7 +68,7 @@ class AlgoliaEventsApi {
 
     final facetFilters = <String>[];
     for (var age in filters.minAges) {
-      facetFilters.add(_getMinAges(query, age));
+      facetFilters.add(_getMinAge(query, age));
     }
 
     return query.facetFilter(facetFilters);
@@ -94,6 +95,18 @@ class AlgoliaEventsApi {
     return query.facetFilter('cityId:${filters.cityId}');
   }
 
+  AlgoliaQuery _setDay(AlgoliaQuery query, EventFilters filters) {
+    if (filters.day == null) return query;
+
+    final endOfTheDay = filters.day!.add(const Duration(days: 1));
+    final startTimestamp = filters.day!.millisecondsSinceEpoch;
+    final endTimestamp = endOfTheDay.millisecondsSinceEpoch;
+
+    return query.setNumericFilter(
+      'eventDateTime:$startTimestamp TO $endTimestamp',
+    );
+  }
+
   String _getMusicalGenre(AlgoliaQuery query, String genre) {
     return 'musicalGenres:$genre';
   }
@@ -102,7 +115,7 @@ class AlgoliaEventsApi {
     return 'allowedOutfit:$outfit';
   }
 
-  String _getMinAges(AlgoliaQuery query, int age) {
+  String _getMinAge(AlgoliaQuery query, int age) {
     return 'minAge:$age';
   }
 }

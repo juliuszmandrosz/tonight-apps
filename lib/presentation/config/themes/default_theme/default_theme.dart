@@ -23,10 +23,19 @@ ThemeData get defaultTheme => ThemeData(
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-          textStyle:
-              MaterialStateProperty.all(DefaultTextStyles.subtitleAccent),
-          backgroundColor:
-              MaterialStateProperty.all(DefaultColors.primaryColor),
+          foregroundColor: MaterialStateProperty.all(
+            DefaultColors.backgroundColor,
+          ),
+          textStyle: MaterialStateProperty.all(
+            DefaultTextStyles.subtitleAccent,
+          ),
+          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+              (Set<MaterialState> states) {
+            if (states.contains(MaterialState.disabled)) {
+              return DefaultColors.textColorLight;
+            }
+            return DefaultColors.primaryColor; // Defer to the widget's default.
+          }),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18.0),

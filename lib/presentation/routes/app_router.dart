@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/domain/events/event_entity.dart';
 import 'package:raver/domain/tickets/ticket_entity.dart';
+import 'package:raver/presentation/event_date_picker/event_date_picker_page.dart';
 import 'package:raver/presentation/event_filters/event_filters_page.dart';
 import 'package:raver/presentation/events/event_details_page.dart';
 import 'package:raver/presentation/home/clubs_tab/club_page.dart';
@@ -48,6 +49,7 @@ part 'app_router.gr.dart';
     AutoRoute(page: EventDetailsPage),
     AutoRoute(page: ClubPage),
     AutoRoute(page: TicketQrPage),
+    AutoRoute(page: EventDatePickerPage),
   ],
 )
 class AppRouter extends _$AppRouter {}

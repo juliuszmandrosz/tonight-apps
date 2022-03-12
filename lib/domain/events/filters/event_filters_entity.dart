@@ -17,6 +17,7 @@ class EventFilters with _$EventFilters {
     required String cityId,
     required String cityName,
     required bool isMaxDistanceOption,
+    required DateTime? day,
     required int? maxPrice,
     required bool? isConcert,
   }) = _EventFilters;
@@ -32,6 +33,7 @@ class EventFilters with _$EventFilters {
         cityName: '',
         maxDistance: 50,
         isMaxDistanceOption: true,
+        day: null,
         maxPrice: null,
         isConcert: null,
       );

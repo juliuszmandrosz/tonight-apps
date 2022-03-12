@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
+import 'package:raver/generated/l10n.dart';
+import 'package:raver/presentation/core/raver_app_bar.dart';
+import 'package:raver/presentation/event_date_picker/widgets/event_date_picker.dart';
+import 'package:raver/presentation/event_date_picker/widgets/event_date_picker_buttons.dart';
+
+class EventDatePickerPage extends StatelessWidget {
+  const EventDatePickerPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: RaverAppBar(
+        title: S().date,
+      ),
+      body: BlocBuilder<EventFiltersCubit, EventFiltersState>(
+        builder: (context, state) {
+          return SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Flexible(
+                    flex: 4,
+                    child: EventDatePicker(),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: EventDatePickerButtons(),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}

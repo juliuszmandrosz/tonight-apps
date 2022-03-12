@@ -109,9 +109,26 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
     emit(state.copyWith(filters: currentFilters));
   }
 
+  void changeDay(DateTime day) {
+    final currentFilters = state.filters.copyWith(day: day);
+    emit(state.copyWith(filters: currentFilters));
+  }
+
   void resetFilters() {
-    emit(state.copyWith(filters: EventFilters.empty()));
+    final selectedDay = state.filters.day;
+
+    emit(state.copyWith(
+      filters: EventFilters.empty().copyWith(day: selectedDay),
+    ));
+
     _setUserLocation();
+    _eventOverviewBloc.add(EventOverviewEvent.eventsFetched(state.filters));
+  }
+
+  void resetSelectedDay() {
+    final currentFilters = state.filters.copyWith(day: null);
+    emit(state.copyWith(filters: currentFilters));
+
     _eventOverviewBloc.add(EventOverviewEvent.eventsFetched(state.filters));
   }
 
