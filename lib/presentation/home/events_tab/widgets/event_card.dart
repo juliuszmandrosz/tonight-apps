@@ -194,7 +194,7 @@ class EventCard extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 0),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
                                 context.formatDateTimeToLocaleYMD(
@@ -202,7 +202,6 @@ class EventCard extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 style: theme.textTheme.headline3,
                               ),
-                              const SizedBox(height: 5),
                               Text(
                                 context.formatDateTimeToLocaleHM(
                                     event.eventDateTime),
