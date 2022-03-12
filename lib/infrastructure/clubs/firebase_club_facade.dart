@@ -55,9 +55,9 @@ class FirebaseClubFacade implements ClubFacade {
 
   @override
   Future<Either<ClubFailure, Club>> getClubById(String id) async {
-    DocumentReference clubsQuery = _firestore.collection(clubsIndex).doc(id);
+    final clubsQuery = _firestore.collection(clubsIndex).doc(id);
     try {
-      DocumentSnapshot result = await clubsQuery.get();
+      final result = await clubsQuery.get();
       return right(ClubDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (exception) {
       _logger.e("Exception during fetching clubs EXCEPTION: $exception");
@@ -73,12 +73,12 @@ class FirebaseClubFacade implements ClubFacade {
     int pageSize = 10,
   }) async {
     try {
-      final ListResult images =
+      final images =
           await _storage.ref('clubs/$clubId/club_images/').list(ListOptions(
-            maxResults: pageSize,
+                maxResults: pageSize,
                 pageToken: nextPageToken,
               ));
-      final List<Future<String>> urls =
+      final urls =
           images.items.map((ref) async => await ref.getDownloadURL()).toList();
       return right(Tuple2(await Future.wait(urls),
           images.nextPageToken)); //if there is no page next, return empty token
