@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 
 class ClubCard extends StatelessWidget {
@@ -111,7 +112,7 @@ class ClubCard extends StatelessWidget {
                                           padding:
                                               const EdgeInsets.only(left: 20),
                                           child: Text(
-                                            '${_club.reviewCount} opinii', //TODO: Add dynamic return from facade
+                                            '${_club.reviewCount} ${S().opinions(_club.reviewCount)}',
                                           ),
                                         ),
                                       ],

@@ -12,12 +12,12 @@ class ClubDetails extends StatelessWidget {
     Key? key,
     required this.aboutUs,
     required this.phoneNumber,
-    this.socialMedia,
+    required this.socialMedia,
   }) : super(key: key);
 
   final String? aboutUs;
   final String phoneNumber;
-  final Map<String, String>? socialMedia;
+  final Map<String, String> socialMedia;
 
   @override
   Widget build(BuildContext context) {
@@ -57,13 +57,13 @@ class ClubDetails extends StatelessWidget {
               ),
               title: S().contact,
             ),
-            socialMedia != null
+            socialMedia.isNotEmpty
                 ? DetailsSection(
                     content: Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: socialMedia!.entries.map((element) {
+                        children: socialMedia.entries.map((element) {
                           if (socialMediaIcons.containsKey(element.key)) {
                             return SocialIconWithTitle(
                               iconData: socialMediaIcons[element.key]!,

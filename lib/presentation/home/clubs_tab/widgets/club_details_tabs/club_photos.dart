@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_details/club_photos/club_photos_bloc.dart';
 import 'package:raver/application/core/cubit_status.dart';
+import 'package:raver/generated/l10n.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/bottom_loader.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/photos/club_photo.dart';
 
 class ClubPhotos extends StatefulWidget {
@@ -51,7 +51,7 @@ class _ClubPhotosState extends State<ClubPhotos> {
                     physics: const AlwaysScrollableScrollPhysics(),
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.3,
-                      child: const Center(
+                      child: Center(
                         child: Text(S().errorLoadingPhotos),
                       ),
                     ),
@@ -63,7 +63,7 @@ class _ClubPhotosState extends State<ClubPhotos> {
 
               case CubitStatus.success:
                 if (state.photosUrls.isEmpty) {
-                  return const Center(child: Text(S().photos(0)));
+                  return Center(child: Text(S().photos(0)));
                 }
 
                 return CustomScrollView(

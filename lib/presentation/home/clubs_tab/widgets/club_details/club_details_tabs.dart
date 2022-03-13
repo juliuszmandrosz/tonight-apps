@@ -27,7 +27,7 @@ class ClubDetailsTabs extends StatelessWidget {
                 Tab(text: S().buyTicket),
                 Tab(text: S().milestones),
                 Tab(text: S().details),
-                Tab(text: S().opinions),
+                Tab(text: S().opinions(2)),
                 Tab(text: S().photos(2))
               ],
             ),
