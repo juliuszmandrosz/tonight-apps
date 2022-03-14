@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:raver/application/core/cubit_status.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/domain/events/event_entity.dart';
 import 'package:raver/generated/l10n.dart';
@@ -23,18 +24,12 @@ class EventCard extends StatelessWidget {
     final theme = Theme.of(context);
     return BlocConsumer<EventFavoriteCubit, EventFavoriteState>(
       listener: (ctx, state) {
-        state.failureOption.fold(
+        state.errorMessage.fold(
           () {},
-          (failure) => ScaffoldMessenger.of(context)
+          (error) => ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              SnackBar(
-                content: failure.map(
-                  unexpected: ((_) => Text(S().errorLoadingFavoriteEventsInfo)),
-                  toggleFavoriteEventFailure: ((_) =>
-                      Text(S().errorChangingEventStatus)),
-                ),
-              ),
+              SnackBar(content: Text(error)),
             ),
         );
       },
@@ -101,7 +96,7 @@ class EventCard extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
                               ),
-                              child: state.isLoading
+                              child: state.status == CubitStatus.loading
                                   ? const Padding(
                                       padding: EdgeInsets.all(4),
                                       child: SpinKitThreeBounce(

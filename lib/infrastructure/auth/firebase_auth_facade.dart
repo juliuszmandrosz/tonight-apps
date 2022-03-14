@@ -1,13 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:raver/domain/auth/app_user_entity.dart';
+import 'package:raver/domain/auth/auth_error_messages.dart';
 import 'package:raver/domain/auth/auth_facade.dart';
 import 'package:raver/domain/auth/auth_failure.dart';
+import 'package:raver/infrastructure/auth/firebase_auth_messages.dart';
 import 'package:raver/infrastructure/auth/firebase_user_mapper.dart';
 import 'package:raver/infrastructure/core/firestore_helpers.dart';
 
@@ -28,45 +29,44 @@ class FirebaseAuthFacade implements AuthFacade {
         _logger = logger;
 
   @override
-  Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
-    required String emailAddress,
-    required String password,
-  }) async {
-    try {
-      final result = await _firebaseAuth.createUserWithEmailAndPassword(
-        email: emailAddress,
-        password: password,
-      );
-      await _addUser(emailAddress, result.user!.uid);
-      return right(unit);
-    } on FirebaseException catch (e) {
-      _logger
-          .e("Exception during register with login and password EXCEPTION: $e");
-      return e.code == 'invalid-email'
-          ? left(const AuthFailure.invalidEmail())
-          : e.code == 'email-already-in-use'
-              ? left(const AuthFailure.emailAlreadyInUse())
-              : left(const AuthFailure.serverError());
-    }
-  }
-
-  @override
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword({
-    required String emailAddress,
+    required String email,
     required String password,
   }) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
-        email: emailAddress,
+        email: email,
         password: password,
       );
       return right(unit);
-    } on FirebaseException catch (e) {
+    } on FirebaseAuthException catch (e) {
       _logger
           .e("Exception during sign in with login and password EXCEPTION: $e");
-      return e.code == 'user-not-found' || e.code == 'wrong-password'
-          ? left(const AuthFailure.invalidEmailAndPasswordCombination())
-          : left(const AuthFailure.serverError());
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signUpWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final result = await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      // TODO - add phone / email confirmation
+      await _addUser(email, result.user!.uid);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      _logger
+          .e("Exception during register with login and password EXCEPTION: $e");
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
     }
   }
 
@@ -76,7 +76,7 @@ class FirebaseAuthFacade implements AuthFacade {
       final googleUser = await _googleSignIn.signIn();
 
       if (googleUser == null) {
-        return left(const AuthFailure.cancelledByUser());
+        return left(AuthFailure(message: cancelledByUser));
       }
 
       final googleAuth = await googleUser.authentication;
@@ -86,29 +86,18 @@ class FirebaseAuthFacade implements AuthFacade {
         accessToken: googleAuth.accessToken,
       );
 
-      await _firebaseAuth.signInWithCredential(authCredential);
+      final result = await _firebaseAuth.signInWithCredential(authCredential);
+
+      if (result.additionalUserInfo!.isNewUser) {
+        _addUser(result.user!.email!, result.user!.uid);
+      }
 
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       _logger.e("Exception during sign in with Google EXCEPTION: $e");
-      return left(const AuthFailure.serverError());
-    }
-  }
-
-  @override
-  Future<Either<AuthFailure, Unit>> signInWithFacebook() async {
-    try {
-      final loginResult = await FacebookAuth.instance.login();
-
-      final authCredential =
-          FacebookAuthProvider.credential(loginResult.accessToken!.token);
-
-      await FirebaseAuth.instance.signInWithCredential(authCredential);
-
-      return right(unit);
-    } on MissingPluginException {
-      // TODO - add in firebase
-      return left(const AuthFailure.serverError());
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
     }
   }
 
@@ -123,7 +112,6 @@ class FirebaseAuthFacade implements AuthFacade {
     return Future.wait([
       _googleSignIn.signOut(),
       _firebaseAuth.signOut(),
-      // TODO - add facebook sign out
     ]);
   }
 
@@ -137,9 +125,25 @@ class FirebaseAuthFacade implements AuthFacade {
         'favoriteClubs': [],
       });
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseException catch (e) {
       _logger.e("Exception during adding user to firestore: $e");
-      return left(const AuthFailure.serverError());
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> resetPassword(String email) async {
+    try {
+      await _firebaseAuth.setLanguageCode(Intl.getCurrentLocale());
+      await _firebaseAuth.sendPasswordResetEmail(email: email);
+      return right(unit);
+    } on FirebaseException catch (e) {
+      _logger.e("Exception during sending password reset email: $e");
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
     }
   }
 }

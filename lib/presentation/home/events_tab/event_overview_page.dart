@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/core/cubit_status.dart';
-import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_overview/event_overview_bloc.dart';
-import 'package:raver/domain/events/filters/event_filters_entity.dart';
 import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/core/bottom_loader.dart';
 import 'package:raver/presentation/home/events_tab/widgets/event_card.dart';
@@ -28,99 +26,90 @@ class _EventOverviewPageState extends State<EventOverviewPage> {
     _eventOverviewBloc = BlocProvider.of<EventOverviewBloc>(context);
   }
 
-  _fetchEvents(BuildContext context) {
-    final eventsBloc = BlocProvider.of<EventOverviewBloc>(context);
-
-    if (eventsBloc.state.status != CubitStatus.initial) return;
-
-    final locationState = BlocProvider.of<UserLocationCubit>(context).state;
-    var eventFilters = EventFilters.empty();
-    locationState.userLocation.fold(
-      () => {},
-      (location) => {
-        eventFilters = eventFilters.copyWith(userLocation: location),
-      },
-    );
-
-    eventsBloc.add(
-      EventOverviewEvent.eventsFetched(eventFilters),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme
+        .of(context)
+        .textTheme;
     return Column(
       children: [
         const EventFiltersSection(),
         const SizedBox(height: 10),
         BlocBuilder<EventOverviewBloc, EventOverviewState>(
             builder: (context, state) {
-          _fetchEvents(context);
-          switch (state.status) {
-            case CubitStatus.initial:
-              return Container();
+              switch (state.status) {
+                case CubitStatus.initial:
+                  return Container();
 
-            case CubitStatus.loading:
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+                case CubitStatus.loading:
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
 
-            case CubitStatus.failure:
-              return RefreshIndicator(
-                onRefresh: () async => context.read<EventOverviewBloc>().add(
-                      EventOverviewEvent.eventsFetched(state.eventFilters),
+                case CubitStatus.failure:
+                  return RefreshIndicator(
+                    onRefresh: () async =>
+                        context.read<EventOverviewBloc>().add(
+                          EventOverviewEvent.eventsFetched(state.eventFilters),
+                        ),
+                    child: Center(
+                      child: Text(S().errorLoadingEvents),
                     ),
-                child: Center(
-                  child: Text(S().errorLoadingEvents),
-                ),
-              );
+                  );
 
-            case CubitStatus.success:
-              if (state.events.isEmpty) {
-                return RefreshIndicator(
-                  onRefresh: () async => context.read<EventOverviewBloc>().add(
-                        EventOverviewEvent.eventsFetched(state.eventFilters),
-                      ),
-                  child: SingleChildScrollView(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.3,
-                      child: Center(
-                        child: Text(
-                          state.eventFilters.userLocation.isNotEmpty &&
+                case CubitStatus.success:
+                  if (state.events.isEmpty) {
+                    return RefreshIndicator(
+                      onRefresh: () async =>
+                          context.read<EventOverviewBloc>().add(
+                            EventOverviewEvent.eventsFetched(
+                                state.eventFilters),
+                          ),
+                      child: SingleChildScrollView(
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        child: SizedBox(
+                          height: MediaQuery
+                              .of(context)
+                              .size
+                              .height * 0.3,
+                          child: Center(
+                            child: Text(
+                              state.eventFilters.userLocation.isNotEmpty &&
                                   state.eventFilters.isMaxDistanceOption
-                              ? S().noEventsNearYou
-                              : S().events(0),
-                          style: textTheme.subtitle1,
+                                  ? S().noEventsNearYou
+                                  : S().events(0),
+                              style: textTheme.subtitle1,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                );
-              }
+                    );
+                  }
 
-              return Expanded(
-                child: RefreshIndicator(
-                  onRefresh: () async => context.read<EventOverviewBloc>().add(
-                        EventOverviewEvent.eventsFetched(state.eventFilters),
-                      ),
-                  child: ListView.builder(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    itemCount: state.hasReachedMax
-                        ? state.events.length
-                        : state.events.length + 1,
-                    itemBuilder: (ctx, i) => i >= state.events.length
-                        ? const BottomLoader()
-                        : Center(
-                            child: EventCard(event: state.events[i]),
+                  return Expanded(
+                    child: RefreshIndicator(
+                      onRefresh: () async =>
+                          context.read<EventOverviewBloc>().add(
+                            EventOverviewEvent.eventsFetched(
+                                state.eventFilters),
                           ),
-                    controller: _scrollController,
-                  ),
-                ),
-              );
-          }
-        }),
+                      child: ListView.builder(
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        itemCount: state.hasReachedMax
+                            ? state.events.length
+                            : state.events.length + 1,
+                        itemBuilder: (ctx, i) =>
+                        i >= state.events.length
+                            ? const BottomLoader()
+                            : Center(
+                          child: EventCard(event: state.events[i]),
+                        ),
+                        controller: _scrollController,
+                      ),
+                    ),
+                  );
+              }
+            }),
       ],
     );
   }

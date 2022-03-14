@@ -10,7 +10,6 @@ import 'package:raver/application/events/event_favorite/event_favorite_cubit.dar
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/application/events/event_overview/event_overview_bloc.dart';
 import 'package:raver/application/tickets/ticket_cubit.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/domain/clubs/filters/club_filters.dart';
 import 'package:raver/generated/l10n.dart';
 import 'package:raver/injection.dart';
@@ -31,16 +30,15 @@ class RaverApp extends StatelessWidget {
           create: (ctx) => getIt<AuthCubit>()..requestAuthCheck(),
         ),
         BlocProvider(
-          create: (ctx) => getIt<UserLocationCubit>(),
-        ),
-        BlocProvider(
-          create: (ctx) => getIt<EventFavoriteCubit>()..getFavoriteEventIds(),
-        ),
-        BlocProvider(
           create: (ctx) =>
               getIt<AvailableFiltersCubit>()..getAvailableFilters(),
         ),
-        BlocProvider(create: (context) => getIt<EventOverviewBloc>()),
+        BlocProvider(
+          create: (context) => getIt<EventOverviewBloc>(),
+        ),
+        BlocProvider(
+          create: (ctx) => getIt<UserLocationCubit>(),
+        ),
         BlocProvider(
           create: (ctx) => EventFiltersCubit(
             getIt<EventOverviewBloc>(),
@@ -48,7 +46,10 @@ class RaverApp extends StatelessWidget {
           ),
         ),
         BlocProvider(
-          create: (ctx) => getIt<TicketCubit>()..getTickets(),
+          create: (ctx) => getIt<TicketCubit>(),
+        ),
+        BlocProvider(
+          create: (ctx) => getIt<EventFavoriteCubit>(),
         ),
         BlocProvider<ClubsOverviewBloc>(
           create: (context) => getIt<ClubsOverviewBloc>()

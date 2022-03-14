@@ -18,22 +18,22 @@ class FirebaseTicketFacade implements TicketFacade {
         _logger = logger;
 
   @override
-  Stream<Either<TicketFailure, List<Ticket>>> getTickets() async* {
+  Future<Either<TicketFailure, List<Ticket>>> getTickets() async {
     final userDoc = await _firestore.userDocument();
 
-    yield* userDoc.ticketCollection
-        .snapshots()
-        .map(
-          (snapshot) => right<TicketFailure, List<Ticket>>(
-            snapshot.docs
-                .map((doc) => TicketDto.fromFirebase(doc).toDomain())
-                .toList(),
-          ),
-        )
-        .handleError((e) {
+    try {
+      final result = await userDoc.ticketCollection.get();
+      return right<TicketFailure, List<Ticket>>(
+        result.docs
+            .map(
+              (doc) => TicketDto.fromFirebase(doc).toDomain(),
+            )
+            .toList(),
+      );
+    } on FirebaseException catch (e) {
       _logger.e("Exception during fetching tickets EXCEPTION: $e");
       return left(const TicketFailure.unexpected());
-    });
+    }
   }
 
   @override

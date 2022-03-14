@@ -16,7 +16,7 @@ class SplashPage extends StatelessWidget {
             authenticated: (_) =>
                 AutoRouter.of(context).replace(const NavigatorRouter()),
             unauthenticated: (_) =>
-                AutoRouter.of(context).replace(const SignInRoute()));
+                AutoRouter.of(context).replace(const AuthRoute()));
       },
       child: const Scaffold(
         body: Center(

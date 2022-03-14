@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/domain/events/event_entity.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 
 class EventDetailsEventName extends StatelessWidget {
@@ -20,18 +19,12 @@ class EventDetailsEventName extends StatelessWidget {
 
     return BlocConsumer<EventFavoriteCubit, EventFavoriteState>(
       listener: (context, state) {
-        state.failureOption.fold(
+        state.errorMessage.fold(
           () {},
-          (failure) => ScaffoldMessenger.of(context)
+          (error) => ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              SnackBar(
-                content: failure.map(
-                  unexpected: ((_) => Text(S().errorLoadingFavoriteEventsInfo)),
-                  toggleFavoriteEventFailure: ((_) =>
-                      Text(S().errorChangingEventStatus)),
-                ),
-              ),
+              SnackBar(content: Text(error)),
             ),
         );
       },

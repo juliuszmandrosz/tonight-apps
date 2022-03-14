@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
-import 'package:raver/presentation/config/translations/translations.dart';
+import 'package:raver/presentation/config/translations/outfits_translations.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 
 class EventFiltersDressCode extends StatelessWidget {

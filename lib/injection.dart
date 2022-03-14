@@ -9,6 +9,9 @@ import 'package:google_place/google_place.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:raver/application/auth/auth_cubit.dart';
+import 'package:raver/application/auth/reset_password/reset_password_cubit.dart';
+import 'package:raver/application/auth/sign_in/sign_in_cubit.dart';
+import 'package:raver/application/auth/sign_up/sign_up_cubit.dart';
 import 'package:raver/application/clubs/club_details/club_details_cubit.dart';
 import 'package:raver/application/clubs/club_details/club_photos/club_photos_bloc.dart';
 import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
@@ -37,7 +40,6 @@ import 'package:raver/infrastructure/events/firebase_event_facade.dart';
 import 'package:raver/infrastructure/tickets/firebase_ticket_facade.dart';
 import 'package:raver/infrastructure/tickets/ticket_overview/firebase_ticket_overview_facade.dart';
 
-import 'application/auth/sign_in_form/sign_in_form_cubit.dart';
 import 'infrastructure/auth/firebase_auth_facade.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -76,7 +78,19 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => SignInFormCubit(
+    () => SignInCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => SignUpCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => ResetPasswordCubit(
       getIt(),
     ),
   );

@@ -4,14 +4,16 @@ import 'package:raver/presentation/config/themes/default_theme/default_colors.da
 
 class RaverAppBar extends StatelessWidget with PreferredSizeWidget {
   final String? title;
+  final List<Widget>? actions;
 
-  const RaverAppBar({this.title, Key? key}) : super(key: key);
+  const RaverAppBar({this.title, this.actions, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(title ?? S().raver),
       backgroundColor: DefaultColors.primaryColor,
+      actions: actions,
     );
   }
 

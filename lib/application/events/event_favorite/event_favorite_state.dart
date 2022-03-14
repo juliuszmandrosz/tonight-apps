@@ -4,15 +4,15 @@ part of 'event_favorite_cubit.dart';
 class EventFavoriteState with _$EventFavoriteState {
   const factory EventFavoriteState({
     required List<String> favoriteEventIds,
-    required Option<EventFailure> failureOption,
-    required bool isLoading,
+    required CubitStatus status,
     required bool isChangingFavoriteStatus,
+    required Option<String> errorMessage,
   }) = _EventFavoriteState;
 
   factory EventFavoriteState.initial() => EventFavoriteState(
         favoriteEventIds: [],
-        failureOption: none(),
-        isLoading: false,
+        status: CubitStatus.initial,
         isChangingFavoriteStatus: false,
+        errorMessage: none(),
       );
 }

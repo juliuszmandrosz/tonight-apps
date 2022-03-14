@@ -441,6 +441,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "9.2.0"
+  formz:
+    dependency: "direct main"
+    description:
+      name: formz
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.1"
   freezed:
     dependency: "direct dev"
     description:
@@ -1041,13 +1048,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.6"
-  validators:
-    dependency: "direct main"
-    description:
-      name: validators
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.0"
   vector_math:
     dependency: transitive
     description:
