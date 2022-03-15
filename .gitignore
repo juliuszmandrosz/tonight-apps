@@ -59,3 +59,5 @@ app.*.map.json
 /lib/generated/intl/messages_all.dart
 /lib/generated/intl/messages_en.dart
 /lib/generated/intl/messages_pl.dart
+/lib/l10n/intl_en.arb
+/lib/l10n/intl_pl.arb
