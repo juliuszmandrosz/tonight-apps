@@ -30,6 +30,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_localizations:
+    sdk: flutter
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -37,10 +40,26 @@ dependencies:
 
   firebase_core: ^1.13.1
   flutter_dotenv: ^5.0.2
+  auto_route: ^3.2.4
+  flutter_bloc: ^8.0.1
+  font_awesome_flutter: ^9.2.0
+  get_it: ^7.2.0
+  firebase_auth: ^3.3.11
+  google_sign_in: ^5.2.4
+  logger: ^1.1.0
+  cloud_firestore: ^3.1.10
+
+  raver_auth:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverAuth.git
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  build_runner: ^2.1.8
+  auto_route_generator: ^3.2.3
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -89,3 +108,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true
+  localizely:
+    project_id: 3eadb84f-b5ae-475a-9e36-7c40d4d1017d
