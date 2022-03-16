@@ -10,11 +10,12 @@ abstract class AlgoliaEventsApi {
   );
 }
 
-class AlgoliaEventsApiImpl {
+class AlgoliaEventsApiImpl implements AlgoliaEventsApi {
   final Algolia _algolia;
 
   AlgoliaEventsApiImpl(this._algolia);
 
+  @override
   Future<AlgoliaQuerySnapshot> getEvents(
     EventFilters filters,
     int pageSize,
