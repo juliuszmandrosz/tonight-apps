@@ -45,3 +45,11 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 /.env
+/lib/presentation/routes/app_router.gr.dart
+/lib/firebase_options.dart
+/lib/l10n/intl_en.arb
+/lib/l10n/intl_pl.arb
+/lib/generated/l10n.dart
+/lib/generated/intl/messages_all.dart
+/lib/generated/intl/messages_en.dart
+/lib/generated/intl/messages_pl.dart
