@@ -9,6 +9,7 @@ import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/domain/clubs/club_facade.dart';
 import 'package:raver/domain/clubs/failures/club_failure.dart';
 import 'package:raver/domain/clubs/filters/club_filters.dart';
+import 'package:raver/infrastructure/clubs/errors/invalid_id_error.dart';
 import 'package:raver/infrastructure/core/algolia/algolia_clubs_api.dart';
 import 'package:raver/infrastructure/core/firestore_helpers.dart';
 
@@ -58,6 +59,9 @@ class FirebaseClubFacade implements ClubFacade {
     final clubsQuery = _firestore.collection(clubsIndex).doc(id);
     try {
       final result = await clubsQuery.get();
+
+      if (result.data() == null) throw InvalidIdError();
+
       return right(ClubDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (exception) {
       _logger.e("Exception during fetching clubs EXCEPTION: $exception");

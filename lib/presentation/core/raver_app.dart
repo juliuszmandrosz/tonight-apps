@@ -9,6 +9,8 @@ import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/application/events/event_overview/event_overview_bloc.dart';
+import 'package:raver/application/initialization/remote_config_cubit.dart';
+import 'package:raver/application/network_check/network_check_cubit.dart';
 import 'package:raver/application/tickets/ticket_cubit.dart';
 import 'package:raver/domain/clubs/filters/club_filters.dart';
 import 'package:raver/generated/l10n.dart';
@@ -38,6 +40,12 @@ class RaverApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (ctx) => getIt<UserLocationCubit>(),
+        ),
+        BlocProvider(
+          create: (ctx) => getIt<RemoteConfigCubit>(),
+        ),
+        BlocProvider(
+          create: (ctx) => getIt<NetworkCheckCubit>()..initNetworkListener(),
         ),
         BlocProvider(
           create: (ctx) => EventFiltersCubit(

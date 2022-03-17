@@ -10,9 +10,11 @@ import 'package:raver/presentation/events/event_details_page.dart';
 import 'package:raver/presentation/home/clubs_tab/club_page.dart';
 import 'package:raver/presentation/home/home_page.dart';
 import 'package:raver/presentation/navigator/navigator_page.dart';
+import 'package:raver/presentation/network_lost/network_lost_page.dart';
 import 'package:raver/presentation/splash/splash_page.dart';
 import 'package:raver/presentation/ticket_qr/ticket_qr_page.dart';
 import 'package:raver/presentation/tickets/ticket_overview_page.dart';
+import 'package:raver/presentation/welcome_loader/welcome_loader_page.dart';
 
 import 'hero_empty_router_page.dart';
 
@@ -45,6 +47,8 @@ part 'app_router.gr.dart';
         )
       ],
     ),
+    AutoRoute(page: WelcomeLoaderPage),
+    AutoRoute(page: NetworkLostPage),
     AutoRoute(page: EventFiltersPage),
     AutoRoute(page: EventDetailsPage),
     AutoRoute(page: ClubPage),

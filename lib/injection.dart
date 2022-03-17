@@ -1,8 +1,9 @@
 import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_place/google_place.dart';
@@ -23,11 +24,14 @@ import 'package:raver/application/events/event_details/event_details_cubit.dart'
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/application/events/event_overview/event_overview_bloc.dart';
+import 'package:raver/application/initialization/remote_config_cubit.dart';
+import 'package:raver/application/network_check/network_check_cubit.dart';
 import 'package:raver/application/tickets/ticket_cubit.dart';
 import 'package:raver/domain/auth/auth_facade.dart';
 import 'package:raver/domain/clubs/club_facade.dart';
 import 'package:raver/domain/core/available_filters/available_filters_facade.dart';
 import 'package:raver/domain/events/event_facade.dart';
+import 'package:raver/domain/remote_config/remote_config_facade.dart';
 import 'package:raver/domain/tickets/ticket_facade.dart';
 import 'package:raver/domain/tickets/ticket_overview/ticket_overview_facade.dart';
 import 'package:raver/env_keys.dart';
@@ -37,9 +41,11 @@ import 'package:raver/infrastructure/core/algolia/algolia_events_api.dart';
 import 'package:raver/infrastructure/core/algolia_api.dart';
 import 'package:raver/infrastructure/core/available_filters/firebase_available_filters_facade.dart';
 import 'package:raver/infrastructure/events/firebase_event_facade.dart';
+import 'package:raver/infrastructure/remote_config/firebase_remote_config_facade.dart';
 import 'package:raver/infrastructure/tickets/firebase_ticket_facade.dart';
 import 'package:raver/infrastructure/tickets/ticket_overview/firebase_ticket_overview_facade.dart';
 
+import 'application/welcome_loading/welcome_loading_cubit.dart';
 import 'infrastructure/auth/firebase_auth_facade.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -97,7 +103,7 @@ void _registerCubits() {
 
   //Clubs
   getIt.registerFactory(
-        () => ClubPhotosBloc(
+    () => ClubPhotosBloc(
       getIt(),
     ),
   );
@@ -149,6 +155,25 @@ void _registerCubits() {
   getIt.registerFactory(
     () => EventFiltersCubit(
       getIt(),
+      getIt(),
+    ),
+  );
+
+  //Remote Config
+  getIt.registerFactory(
+    () => RemoteConfigCubit(
+      getIt(),
+    ),
+  );
+
+  //Welcome Loader
+  getIt.registerFactory(
+    () => WelcomeLoadingCubit(),
+  );
+
+  //Network Check
+  getIt.registerFactory(
+    () => NetworkCheckCubit(
       getIt(),
     ),
   );
@@ -206,6 +231,14 @@ void _registerFacades() {
       logger: getIt(),
     ),
   );
+
+  //Remote Config
+  getIt.registerLazySingleton<RemoteConfigFacade>(
+    () => FirebaseRemoteConfigFacade(
+      firebaseRemoteConfig: getIt(),
+      logger: getIt(),
+    ),
+  );
 }
 
 void _registerModules() {
@@ -217,12 +250,15 @@ void _registerModules() {
 
   getIt.registerLazySingleton(() => FirebaseAuth.instance);
 
-  getIt.registerLazySingleton(() => GooglePlace(dotenv.env[googleApiKey]!));
+  getIt.registerLazySingleton(() => FirebaseRemoteConfig.instance);
+
+  getIt.registerLazySingleton(
+      () => GooglePlace(FirebaseRemoteConfig.instance.getString(googleApiKey)));
 
   getIt.registerLazySingleton(
     () => Algolia.init(
-      applicationId: dotenv.env[algoliaAppId]!,
-      apiKey: dotenv.env[algoliaApiKey]!,
+      applicationId: FirebaseRemoteConfig.instance.getString(algoliaAppId),
+      apiKey: FirebaseRemoteConfig.instance.getString(algoliaApiKey),
     ),
   );
 
@@ -245,6 +281,8 @@ void _registerModules() {
   );
 
   getIt.registerLazySingleton(() => GeolocatorPlatform.instance);
+
+  getIt.registerLazySingleton(() => Connectivity());
 
   getIt.registerLazySingleton(() => Logger());
 }
