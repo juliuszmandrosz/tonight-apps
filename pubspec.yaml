@@ -48,10 +48,15 @@ dependencies:
   google_sign_in: ^5.2.4
   logger: ^1.1.0
   cloud_firestore: ^3.1.10
+  algolia: ^1.0.4
 
   raver_auth:
     git:
       url: https://github.com/juliuszmandrosz/RaverAuth.git
+
+  raver_events:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverEvents.git
 
 
 dev_dependencies:
