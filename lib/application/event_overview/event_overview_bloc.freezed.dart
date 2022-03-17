@@ -98,6 +98,8 @@ abstract class _$EventsFetchedCopyWith<$Res> {
           _EventsFetched value, $Res Function(_EventsFetched) then) =
       __$EventsFetchedCopyWithImpl<$Res>;
   $Res call({EventFilters filters});
+
+  $EventFiltersCopyWith<$Res> get filters;
 }
 
 /// @nodoc
@@ -121,6 +123,13 @@ class __$EventsFetchedCopyWithImpl<$Res>
           : filters // ignore: cast_nullable_to_non_nullable
               as EventFilters,
     ));
+  }
+
+  @override
+  $EventFiltersCopyWith<$Res> get filters {
+    return $EventFiltersCopyWith<$Res>(_value.filters, (value) {
+      return _then(_value.copyWith(filters: value));
+    });
   }
 }
 
@@ -376,6 +385,8 @@ abstract class $EventOverviewStateCopyWith<$Res> {
       bool hasReachedMax,
       CubitStatus status,
       EventFilters eventFilters});
+
+  $EventFiltersCopyWith<$Res> get eventFilters;
 }
 
 /// @nodoc
@@ -413,6 +424,13 @@ class _$EventOverviewStateCopyWithImpl<$Res>
               as EventFilters,
     ));
   }
+
+  @override
+  $EventFiltersCopyWith<$Res> get eventFilters {
+    return $EventFiltersCopyWith<$Res>(_value.eventFilters, (value) {
+      return _then(_value.copyWith(eventFilters: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -427,6 +445,9 @@ abstract class _$EventOverviewStateCopyWith<$Res>
       bool hasReachedMax,
       CubitStatus status,
       EventFilters eventFilters});
+
+  @override
+  $EventFiltersCopyWith<$Res> get eventFilters;
 }
 
 /// @nodoc

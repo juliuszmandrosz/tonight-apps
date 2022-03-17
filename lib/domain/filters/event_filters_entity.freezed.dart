@@ -29,8 +29,10 @@ class _$EventFiltersTearOff {
       required String cityId,
       required String cityName,
       required bool isMaxDistanceOption,
+      required DateTime? day,
       required int? maxPrice,
-      required bool? isConcert}) {
+      required bool? isConcert,
+      required String? clubId}) {
     return _EventFilters(
       phrase: phrase,
       minPrice: minPrice,
@@ -42,8 +44,10 @@ class _$EventFiltersTearOff {
       cityId: cityId,
       cityName: cityName,
       isMaxDistanceOption: isMaxDistanceOption,
+      day: day,
       maxPrice: maxPrice,
       isConcert: isConcert,
+      clubId: clubId,
     );
   }
 }
@@ -63,8 +67,10 @@ mixin _$EventFilters {
   String get cityId => throw _privateConstructorUsedError;
   String get cityName => throw _privateConstructorUsedError;
   bool get isMaxDistanceOption => throw _privateConstructorUsedError;
+  DateTime? get day => throw _privateConstructorUsedError;
   int? get maxPrice => throw _privateConstructorUsedError;
   bool? get isConcert => throw _privateConstructorUsedError;
+  String? get clubId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventFiltersCopyWith<EventFilters> get copyWith =>
@@ -87,8 +93,10 @@ abstract class $EventFiltersCopyWith<$Res> {
       String cityId,
       String cityName,
       bool isMaxDistanceOption,
+      DateTime? day,
       int? maxPrice,
-      bool? isConcert});
+      bool? isConcert,
+      String? clubId});
 }
 
 /// @nodoc
@@ -111,8 +119,10 @@ class _$EventFiltersCopyWithImpl<$Res> implements $EventFiltersCopyWith<$Res> {
     Object? cityId = freezed,
     Object? cityName = freezed,
     Object? isMaxDistanceOption = freezed,
+    Object? day = freezed,
     Object? maxPrice = freezed,
     Object? isConcert = freezed,
+    Object? clubId = freezed,
   }) {
     return _then(_value.copyWith(
       phrase: phrase == freezed
@@ -155,6 +165,10 @@ class _$EventFiltersCopyWithImpl<$Res> implements $EventFiltersCopyWith<$Res> {
           ? _value.isMaxDistanceOption
           : isMaxDistanceOption // ignore: cast_nullable_to_non_nullable
               as bool,
+      day: day == freezed
+          ? _value.day
+          : day // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       maxPrice: maxPrice == freezed
           ? _value.maxPrice
           : maxPrice // ignore: cast_nullable_to_non_nullable
@@ -163,6 +177,10 @@ class _$EventFiltersCopyWithImpl<$Res> implements $EventFiltersCopyWith<$Res> {
           ? _value.isConcert
           : isConcert // ignore: cast_nullable_to_non_nullable
               as bool?,
+      clubId: clubId == freezed
+          ? _value.clubId
+          : clubId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -185,8 +203,10 @@ abstract class _$EventFiltersCopyWith<$Res>
       String cityId,
       String cityName,
       bool isMaxDistanceOption,
+      DateTime? day,
       int? maxPrice,
-      bool? isConcert});
+      bool? isConcert,
+      String? clubId});
 }
 
 /// @nodoc
@@ -211,8 +231,10 @@ class __$EventFiltersCopyWithImpl<$Res> extends _$EventFiltersCopyWithImpl<$Res>
     Object? cityId = freezed,
     Object? cityName = freezed,
     Object? isMaxDistanceOption = freezed,
+    Object? day = freezed,
     Object? maxPrice = freezed,
     Object? isConcert = freezed,
+    Object? clubId = freezed,
   }) {
     return _then(_EventFilters(
       phrase: phrase == freezed
@@ -255,6 +277,10 @@ class __$EventFiltersCopyWithImpl<$Res> extends _$EventFiltersCopyWithImpl<$Res>
           ? _value.isMaxDistanceOption
           : isMaxDistanceOption // ignore: cast_nullable_to_non_nullable
               as bool,
+      day: day == freezed
+          ? _value.day
+          : day // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       maxPrice: maxPrice == freezed
           ? _value.maxPrice
           : maxPrice // ignore: cast_nullable_to_non_nullable
@@ -263,6 +289,10 @@ class __$EventFiltersCopyWithImpl<$Res> extends _$EventFiltersCopyWithImpl<$Res>
           ? _value.isConcert
           : isConcert // ignore: cast_nullable_to_non_nullable
               as bool?,
+      clubId: clubId == freezed
+          ? _value.clubId
+          : clubId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -281,8 +311,10 @@ class _$_EventFilters extends _EventFilters {
       required this.cityId,
       required this.cityName,
       required this.isMaxDistanceOption,
+      required this.day,
       required this.maxPrice,
-      required this.isConcert})
+      required this.isConcert,
+      required this.clubId})
       : super._();
 
   @override
@@ -306,13 +338,17 @@ class _$_EventFilters extends _EventFilters {
   @override
   final bool isMaxDistanceOption;
   @override
+  final DateTime? day;
+  @override
   final int? maxPrice;
   @override
   final bool? isConcert;
+  @override
+  final String? clubId;
 
   @override
   String toString() {
-    return 'EventFilters(phrase: $phrase, minPrice: $minPrice, minAges: $minAges, musicalGenres: $musicalGenres, allowedOutfits: $allowedOutfits, userLocation: $userLocation, maxDistance: $maxDistance, cityId: $cityId, cityName: $cityName, isMaxDistanceOption: $isMaxDistanceOption, maxPrice: $maxPrice, isConcert: $isConcert)';
+    return 'EventFilters(phrase: $phrase, minPrice: $minPrice, minAges: $minAges, musicalGenres: $musicalGenres, allowedOutfits: $allowedOutfits, userLocation: $userLocation, maxDistance: $maxDistance, cityId: $cityId, cityName: $cityName, isMaxDistanceOption: $isMaxDistanceOption, day: $day, maxPrice: $maxPrice, isConcert: $isConcert, clubId: $clubId)';
   }
 
   @override
@@ -335,8 +371,10 @@ class _$_EventFilters extends _EventFilters {
             const DeepCollectionEquality().equals(other.cityName, cityName) &&
             const DeepCollectionEquality()
                 .equals(other.isMaxDistanceOption, isMaxDistanceOption) &&
+            const DeepCollectionEquality().equals(other.day, day) &&
             const DeepCollectionEquality().equals(other.maxPrice, maxPrice) &&
-            const DeepCollectionEquality().equals(other.isConcert, isConcert));
+            const DeepCollectionEquality().equals(other.isConcert, isConcert) &&
+            const DeepCollectionEquality().equals(other.clubId, clubId));
   }
 
   @override
@@ -352,8 +390,10 @@ class _$_EventFilters extends _EventFilters {
       const DeepCollectionEquality().hash(cityId),
       const DeepCollectionEquality().hash(cityName),
       const DeepCollectionEquality().hash(isMaxDistanceOption),
+      const DeepCollectionEquality().hash(day),
       const DeepCollectionEquality().hash(maxPrice),
-      const DeepCollectionEquality().hash(isConcert));
+      const DeepCollectionEquality().hash(isConcert),
+      const DeepCollectionEquality().hash(clubId));
 
   @JsonKey(ignore: true)
   @override
@@ -373,8 +413,10 @@ abstract class _EventFilters extends EventFilters {
       required String cityId,
       required String cityName,
       required bool isMaxDistanceOption,
+      required DateTime? day,
       required int? maxPrice,
-      required bool? isConcert}) = _$_EventFilters;
+      required bool? isConcert,
+      required String? clubId}) = _$_EventFilters;
   _EventFilters._() : super._();
 
   @override
@@ -398,9 +440,13 @@ abstract class _EventFilters extends EventFilters {
   @override
   bool get isMaxDistanceOption;
   @override
+  DateTime? get day;
+  @override
   int? get maxPrice;
   @override
   bool? get isConcert;
+  @override
+  String? get clubId;
   @override
   @JsonKey(ignore: true)
   _$EventFiltersCopyWith<_EventFilters> get copyWith =>
