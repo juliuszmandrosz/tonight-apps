@@ -822,6 +822,16 @@ class S {
     );
   }
 
+  /// `Past`
+  String get past {
+    return Intl.message(
+      'Past',
+      name: 'past',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Past tickets`
   String get pastTickets {
     return Intl.message(

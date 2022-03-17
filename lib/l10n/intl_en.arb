@@ -152,6 +152,8 @@
   "@passwordTooShort": {},
   "passwordUpperCase": "Password should contain at least one upper case",
   "@passwordUpperCase": {},
+  "past": "Past",
+  "@past": {},
   "pastTickets": "Past tickets",
   "@pastTickets": {},
   "photos": "{count, plural, zero{No photos} one{Photo} other{Photos}}",

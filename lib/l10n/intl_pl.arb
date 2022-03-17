@@ -152,6 +152,8 @@
   "@passwordTooShort": {},
   "passwordUpperCase": "Hasło powinno zawierać co najmniej jedną wielką literę",
   "@passwordUpperCase": {},
+  "past": "Przeszłe",
+  "@past": {},
   "pastTickets": "Przeszłe bilety",
   "@pastTickets": {},
   "photos": "{count, plural, zero{Brak zdjęć} one{Zdjęcie} few{Zdjęcia} many{Zdjęć} other{Zdjęcia}}",

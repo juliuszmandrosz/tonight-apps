@@ -158,6 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password should contain at least one upper case"),
         "passwordsDoNotMatch":
             MessageLookupByLibrary.simpleMessage("Passwords do not match"),
+        "past": MessageLookupByLibrary.simpleMessage("Past"),
         "pastTickets": MessageLookupByLibrary.simpleMessage("Past tickets"),
         "photos": m4,
         "priceRange": MessageLookupByLibrary.simpleMessage("Price range"),

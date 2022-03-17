@@ -163,6 +163,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Hasło powinno zawierać co najmniej jedną wielką literę"),
         "passwordsDoNotMatch":
             MessageLookupByLibrary.simpleMessage("Hasła się nie zgadzają"),
+        "past": MessageLookupByLibrary.simpleMessage("Przeszłe"),
         "pastTickets": MessageLookupByLibrary.simpleMessage("Przeszłe bilety"),
         "photos": m4,
         "priceRange": MessageLookupByLibrary.simpleMessage("Zakres cen"),
