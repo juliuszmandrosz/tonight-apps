@@ -5,17 +5,21 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_common/raver_common.dart';
 
 class FirebaseAuthFacade implements AuthFacade {
   final FirebaseAuth _firebaseAuth;
+  final FirebaseFirestore _firestore;
   final GoogleSignIn _googleSignIn;
   final Logger _logger;
 
   FirebaseAuthFacade({
     required FirebaseAuth firebaseAuth,
+    required FirebaseFirestore firestore,
     required GoogleSignIn googleSignIn,
     required Logger logger,
   })  : _firebaseAuth = firebaseAuth,
+        _firestore = firestore,
         _googleSignIn = googleSignIn,
         _logger = logger;
 
@@ -137,9 +141,14 @@ class FirebaseAuthFacade implements AuthFacade {
     }
   }
 
-  Future<DocumentReference> _getCurrentUserDocument() async {
-    final userOption = await getSignedUser();
-    final user = userOption.getOrElse(() => throw NotAuthenticatedError());
-    return FirebaseFirestore.instance.userCollection.doc(user.id);
+
+  DocumentReference _getCurrentUserDocument() {
+    final firebaseUser = _firebaseAuth.currentUser;
+
+    if (firebaseUser == null) throw NotAuthenticatedError();
+
+    final userDoc = _firestore.userCollection.doc(firebaseUser.uid);
+
+    return userDoc;
   }
 }
