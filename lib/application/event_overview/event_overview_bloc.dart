@@ -6,6 +6,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/event_entity.dart';
 import 'package:raver_events/domain/event_facade.dart';
 import 'package:raver_events/domain/filters/event_filters_entity.dart';
+import 'package:raver_events/domain/sort/sort_model.dart';
 
 part 'event_overview_bloc.freezed.dart';
 
@@ -34,8 +35,11 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
   ) async {
     emit(state.copyWith(status: CubitStatus.loading));
 
-    final failureOrSuccess =
-        await _eventFacade.getEvents(event.filters, pageSize: pageSize);
+    final failureOrSuccess = await _eventFacade.getEvents(
+      event.filters,
+      event.sortModel,
+      pageSize: pageSize,
+    );
 
     failureOrSuccess.fold(
       (failure) => emit(
@@ -47,6 +51,7 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
           events: events,
           hasReachedMax: events.length != pageSize,
           eventFilters: event.filters,
+          sortModel: event.sortModel,
         ),
       ),
     );
@@ -58,6 +63,7 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
 
     final failureOrSuccess = await _eventFacade.getEvents(
       state.eventFilters,
+      state.sortModel,
       pageSize: pageSize,
       offset: state.events.length,
     );

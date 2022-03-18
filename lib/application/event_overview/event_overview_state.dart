@@ -9,6 +9,7 @@ class EventOverviewState with _$EventOverviewState {
     required bool hasReachedMax,
     required CubitStatus status,
     required EventFilters eventFilters,
+    required SortModel sortModel,
   }) = _EventOverviewState;
 
   factory EventOverviewState.initial() => EventOverviewState(
@@ -16,5 +17,6 @@ class EventOverviewState with _$EventOverviewState {
         status: CubitStatus.initial,
         events: [],
         eventFilters: EventFilters.empty(),
+        sortModel: SortModel.empty(),
       );
 }

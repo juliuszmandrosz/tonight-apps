@@ -7,16 +7,15 @@ import 'package:logger/logger.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/domain/event_entity.dart';
-import 'package:raver_events/domain/event_failure.dart';
-import 'package:raver_events/domain/filters/event_filters_entity.dart';
-import 'package:raver_events/infrastructure/algolia_events_api.dart';
-import 'package:raver_events/infrastructure/dtos/event_dto.dart';
-import 'package:raver_events/infrastructure/firebase_event_facade.dart';
+import 'package:raver_events/raver_events.dart';
 import 'firebase_event_facade_test.mocks.dart';
 
-@GenerateMocks(
-    [AlgoliaEventsApi, Logger, AlgoliaQuerySnapshot, AlgoliaObjectSnapshot])
+@GenerateMocks([
+  AlgoliaEventsApi,
+  Logger,
+  AlgoliaQuerySnapshot,
+  AlgoliaObjectSnapshot,
+])
 void main() {
   late MockFirebaseAuth auth;
   late MockUser user;
@@ -69,7 +68,8 @@ void main() {
     clubId: 'clubId',
     eventName: 'eventName',
     clubName: 'clubName',
-    eventDateTime: DateTime(2021, 10, 10),
+    eventStartDateTime: DateTime(2021, 10, 10),
+    eventEndDateTime: DateTime(2021, 10, 11),
     attending: 100,
     minAge: 21,
     price: 20,
@@ -183,15 +183,18 @@ void main() {
 
   group('get events', () {
     test('should return events', () async {
+      final now = DateTime.now();
+      final filters = EventFilters.empty().copyWith(startDate: now);
       when(algoliaObjects.objectID).thenReturn(eventId);
       when(algoliaObjects.data).thenReturn(eventDoc);
       when(algoliaQuery.hits).thenReturn([algoliaObjects]);
-      when(eventsApi.getEvents(EventFilters.empty(), 10, 0))
-          .thenAnswer((_) async => algoliaQuery);
+      when(
+        eventsApi.getEvents(filters, SortModel.empty(), 10, 0),
+      ).thenAnswer((_) async => algoliaQuery);
 
       final expected = [event];
 
-      final result = await facade.getEvents(EventFilters.empty());
+      final result = await facade.getEvents(filters, SortModel.empty());
 
       expect(result.getOrElse(() => []), expected);
     });

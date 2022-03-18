@@ -10,8 +10,10 @@ _$_EventDto _$$_EventDtoFromJson(Map<String, dynamic> json) => _$_EventDto(
       clubId: json['clubId'] as String,
       eventName: json['eventName'] as String,
       clubName: json['clubName'] as String,
-      eventDateTime:
-          const TimestampJsonConverter().fromJson(json['eventDateTime'] as int),
+      eventStartDateTime: const TimestampJsonConverter()
+          .fromJson(json['eventStartDateTime'] as int),
+      eventEndDateTime: const TimestampJsonConverter()
+          .fromJson(json['eventEndDateTime'] as int),
       attending: json['attending'] as int,
       minAge: json['minAge'] as int,
       price: json['price'] as int,
@@ -41,8 +43,10 @@ Map<String, dynamic> _$$_EventDtoToJson(_$_EventDto instance) =>
       'clubId': instance.clubId,
       'eventName': instance.eventName,
       'clubName': instance.clubName,
-      'eventDateTime':
-          const TimestampJsonConverter().toJson(instance.eventDateTime),
+      'eventStartDateTime':
+          const TimestampJsonConverter().toJson(instance.eventStartDateTime),
+      'eventEndDateTime':
+          const TimestampJsonConverter().toJson(instance.eventEndDateTime),
       'attending': instance.attending,
       'minAge': instance.minAge,
       'price': instance.price,

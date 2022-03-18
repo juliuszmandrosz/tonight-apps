@@ -4,10 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/domain/event_entity.dart';
-import 'package:raver_events/domain/event_facade.dart';
-import 'package:raver_events/domain/event_failure.dart';
-import 'package:raver_events/domain/filters/event_filters_entity.dart';
+import 'package:raver_events/domain/domain.dart';
 import 'package:raver_events/infrastructure/algolia_events_api.dart';
 import 'package:raver_events/infrastructure/dtos/event_dto.dart';
 
@@ -29,13 +26,14 @@ class FirebaseEventFacade implements EventFacade {
 
   @override
   Future<Either<EventFailure, List<Event>>> getEvents(
-    EventFilters filters, {
+    EventFilters filters,
+    SortModel sortModel, {
     int pageSize = 10,
     int offset = 0,
   }) async {
     try {
-      final events =
-          await _algoliaEventsApi.getEvents(filters, pageSize, offset);
+      final events = await _algoliaEventsApi.getEvents(
+          filters, sortModel, pageSize, offset);
       return right<EventFailure, List<Event>>(events.hits
           .map(
             (doc) => EventDto.fromAlgolia(doc).toDomain(),

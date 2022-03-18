@@ -18,9 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$EventOverviewEventTearOff {
   const _$EventOverviewEventTearOff();
 
-  _EventsFetched eventsFetched(EventFilters filters) {
+  _EventsFetched eventsFetched(EventFilters filters, SortModel sortModel) {
     return _EventsFetched(
       filters,
+      sortModel,
     );
   }
 
@@ -36,19 +37,20 @@ const $EventOverviewEvent = _$EventOverviewEventTearOff();
 mixin _$EventOverviewEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(EventFilters filters) eventsFetched,
+    required TResult Function(EventFilters filters, SortModel sortModel)
+        eventsFetched,
     required TResult Function() nextEventsPageFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(EventFilters filters)? eventsFetched,
+    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
     TResult Function()? nextEventsPageFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EventFilters filters)? eventsFetched,
+    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
     TResult Function()? nextEventsPageFetched,
     required TResult orElse(),
   }) =>
@@ -97,9 +99,10 @@ abstract class _$EventsFetchedCopyWith<$Res> {
   factory _$EventsFetchedCopyWith(
           _EventsFetched value, $Res Function(_EventsFetched) then) =
       __$EventsFetchedCopyWithImpl<$Res>;
-  $Res call({EventFilters filters});
+  $Res call({EventFilters filters, SortModel sortModel});
 
   $EventFiltersCopyWith<$Res> get filters;
+  $SortModelCopyWith<$Res> get sortModel;
 }
 
 /// @nodoc
@@ -116,12 +119,17 @@ class __$EventsFetchedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? filters = freezed,
+    Object? sortModel = freezed,
   }) {
     return _then(_EventsFetched(
       filters == freezed
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
               as EventFilters,
+      sortModel == freezed
+          ? _value.sortModel
+          : sortModel // ignore: cast_nullable_to_non_nullable
+              as SortModel,
     ));
   }
 
@@ -131,19 +139,28 @@ class __$EventsFetchedCopyWithImpl<$Res>
       return _then(_value.copyWith(filters: value));
     });
   }
+
+  @override
+  $SortModelCopyWith<$Res> get sortModel {
+    return $SortModelCopyWith<$Res>(_value.sortModel, (value) {
+      return _then(_value.copyWith(sortModel: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$_EventsFetched implements _EventsFetched {
-  const _$_EventsFetched(this.filters);
+  const _$_EventsFetched(this.filters, this.sortModel);
 
   @override
   final EventFilters filters;
+  @override
+  final SortModel sortModel;
 
   @override
   String toString() {
-    return 'EventOverviewEvent.eventsFetched(filters: $filters)';
+    return 'EventOverviewEvent.eventsFetched(filters: $filters, sortModel: $sortModel)';
   }
 
   @override
@@ -151,12 +168,15 @@ class _$_EventsFetched implements _EventsFetched {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _EventsFetched &&
-            const DeepCollectionEquality().equals(other.filters, filters));
+            const DeepCollectionEquality().equals(other.filters, filters) &&
+            const DeepCollectionEquality().equals(other.sortModel, sortModel));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(filters));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(filters),
+      const DeepCollectionEquality().hash(sortModel));
 
   @JsonKey(ignore: true)
   @override
@@ -166,30 +186,31 @@ class _$_EventsFetched implements _EventsFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(EventFilters filters) eventsFetched,
+    required TResult Function(EventFilters filters, SortModel sortModel)
+        eventsFetched,
     required TResult Function() nextEventsPageFetched,
   }) {
-    return eventsFetched(filters);
+    return eventsFetched(filters, sortModel);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(EventFilters filters)? eventsFetched,
+    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
     TResult Function()? nextEventsPageFetched,
   }) {
-    return eventsFetched?.call(filters);
+    return eventsFetched?.call(filters, sortModel);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EventFilters filters)? eventsFetched,
+    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
     TResult Function()? nextEventsPageFetched,
     required TResult orElse(),
   }) {
     if (eventsFetched != null) {
-      return eventsFetched(filters);
+      return eventsFetched(filters, sortModel);
     }
     return orElse();
   }
@@ -228,9 +249,11 @@ class _$_EventsFetched implements _EventsFetched {
 }
 
 abstract class _EventsFetched implements EventOverviewEvent {
-  const factory _EventsFetched(EventFilters filters) = _$_EventsFetched;
+  const factory _EventsFetched(EventFilters filters, SortModel sortModel) =
+      _$_EventsFetched;
 
   EventFilters get filters;
+  SortModel get sortModel;
   @JsonKey(ignore: true)
   _$EventsFetchedCopyWith<_EventsFetched> get copyWith =>
       throw _privateConstructorUsedError;
@@ -277,7 +300,8 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(EventFilters filters) eventsFetched,
+    required TResult Function(EventFilters filters, SortModel sortModel)
+        eventsFetched,
     required TResult Function() nextEventsPageFetched,
   }) {
     return nextEventsPageFetched();
@@ -286,7 +310,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(EventFilters filters)? eventsFetched,
+    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
     TResult Function()? nextEventsPageFetched,
   }) {
     return nextEventsPageFetched?.call();
@@ -295,7 +319,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EventFilters filters)? eventsFetched,
+    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
     TResult Function()? nextEventsPageFetched,
     required TResult orElse(),
   }) {
@@ -350,12 +374,14 @@ class _$EventOverviewStateTearOff {
       {required List<Event> events,
       required bool hasReachedMax,
       required CubitStatus status,
-      required EventFilters eventFilters}) {
+      required EventFilters eventFilters,
+      required SortModel sortModel}) {
     return _EventOverviewState(
       events: events,
       hasReachedMax: hasReachedMax,
       status: status,
       eventFilters: eventFilters,
+      sortModel: sortModel,
     );
   }
 }
@@ -369,6 +395,7 @@ mixin _$EventOverviewState {
   bool get hasReachedMax => throw _privateConstructorUsedError;
   CubitStatus get status => throw _privateConstructorUsedError;
   EventFilters get eventFilters => throw _privateConstructorUsedError;
+  SortModel get sortModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventOverviewStateCopyWith<EventOverviewState> get copyWith =>
@@ -384,9 +411,11 @@ abstract class $EventOverviewStateCopyWith<$Res> {
       {List<Event> events,
       bool hasReachedMax,
       CubitStatus status,
-      EventFilters eventFilters});
+      EventFilters eventFilters,
+      SortModel sortModel});
 
   $EventFiltersCopyWith<$Res> get eventFilters;
+  $SortModelCopyWith<$Res> get sortModel;
 }
 
 /// @nodoc
@@ -404,6 +433,7 @@ class _$EventOverviewStateCopyWithImpl<$Res>
     Object? hasReachedMax = freezed,
     Object? status = freezed,
     Object? eventFilters = freezed,
+    Object? sortModel = freezed,
   }) {
     return _then(_value.copyWith(
       events: events == freezed
@@ -422,6 +452,10 @@ class _$EventOverviewStateCopyWithImpl<$Res>
           ? _value.eventFilters
           : eventFilters // ignore: cast_nullable_to_non_nullable
               as EventFilters,
+      sortModel: sortModel == freezed
+          ? _value.sortModel
+          : sortModel // ignore: cast_nullable_to_non_nullable
+              as SortModel,
     ));
   }
 
@@ -429,6 +463,13 @@ class _$EventOverviewStateCopyWithImpl<$Res>
   $EventFiltersCopyWith<$Res> get eventFilters {
     return $EventFiltersCopyWith<$Res>(_value.eventFilters, (value) {
       return _then(_value.copyWith(eventFilters: value));
+    });
+  }
+
+  @override
+  $SortModelCopyWith<$Res> get sortModel {
+    return $SortModelCopyWith<$Res>(_value.sortModel, (value) {
+      return _then(_value.copyWith(sortModel: value));
     });
   }
 }
@@ -444,10 +485,13 @@ abstract class _$EventOverviewStateCopyWith<$Res>
       {List<Event> events,
       bool hasReachedMax,
       CubitStatus status,
-      EventFilters eventFilters});
+      EventFilters eventFilters,
+      SortModel sortModel});
 
   @override
   $EventFiltersCopyWith<$Res> get eventFilters;
+  @override
+  $SortModelCopyWith<$Res> get sortModel;
 }
 
 /// @nodoc
@@ -467,6 +511,7 @@ class __$EventOverviewStateCopyWithImpl<$Res>
     Object? hasReachedMax = freezed,
     Object? status = freezed,
     Object? eventFilters = freezed,
+    Object? sortModel = freezed,
   }) {
     return _then(_EventOverviewState(
       events: events == freezed
@@ -485,6 +530,10 @@ class __$EventOverviewStateCopyWithImpl<$Res>
           ? _value.eventFilters
           : eventFilters // ignore: cast_nullable_to_non_nullable
               as EventFilters,
+      sortModel: sortModel == freezed
+          ? _value.sortModel
+          : sortModel // ignore: cast_nullable_to_non_nullable
+              as SortModel,
     ));
   }
 }
@@ -496,7 +545,8 @@ class _$_EventOverviewState extends _EventOverviewState {
       {required this.events,
       required this.hasReachedMax,
       required this.status,
-      required this.eventFilters})
+      required this.eventFilters,
+      required this.sortModel})
       : super._();
 
   @override
@@ -507,10 +557,12 @@ class _$_EventOverviewState extends _EventOverviewState {
   final CubitStatus status;
   @override
   final EventFilters eventFilters;
+  @override
+  final SortModel sortModel;
 
   @override
   String toString() {
-    return 'EventOverviewState(events: $events, hasReachedMax: $hasReachedMax, status: $status, eventFilters: $eventFilters)';
+    return 'EventOverviewState(events: $events, hasReachedMax: $hasReachedMax, status: $status, eventFilters: $eventFilters, sortModel: $sortModel)';
   }
 
   @override
@@ -523,7 +575,8 @@ class _$_EventOverviewState extends _EventOverviewState {
                 .equals(other.hasReachedMax, hasReachedMax) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality()
-                .equals(other.eventFilters, eventFilters));
+                .equals(other.eventFilters, eventFilters) &&
+            const DeepCollectionEquality().equals(other.sortModel, sortModel));
   }
 
   @override
@@ -532,7 +585,8 @@ class _$_EventOverviewState extends _EventOverviewState {
       const DeepCollectionEquality().hash(events),
       const DeepCollectionEquality().hash(hasReachedMax),
       const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(eventFilters));
+      const DeepCollectionEquality().hash(eventFilters),
+      const DeepCollectionEquality().hash(sortModel));
 
   @JsonKey(ignore: true)
   @override
@@ -545,7 +599,8 @@ abstract class _EventOverviewState extends EventOverviewState {
       {required List<Event> events,
       required bool hasReachedMax,
       required CubitStatus status,
-      required EventFilters eventFilters}) = _$_EventOverviewState;
+      required EventFilters eventFilters,
+      required SortModel sortModel}) = _$_EventOverviewState;
   _EventOverviewState._() : super._();
 
   @override
@@ -556,6 +611,8 @@ abstract class _EventOverviewState extends EventOverviewState {
   CubitStatus get status;
   @override
   EventFilters get eventFilters;
+  @override
+  SortModel get sortModel;
   @override
   @JsonKey(ignore: true)
   _$EventOverviewStateCopyWith<_EventOverviewState> get copyWith =>

@@ -29,6 +29,11 @@ class _$EventFiltersTearOff {
       required String cityId,
       required String cityName,
       required bool isMaxDistanceOption,
+      required bool showOnlyLive,
+      required bool showOnlyUpcoming,
+      required bool showOnlyPast,
+      required DateTime startDate,
+      required DateTime? endDate,
       required DateTime? day,
       required int? maxPrice,
       required bool? isConcert,
@@ -44,6 +49,11 @@ class _$EventFiltersTearOff {
       cityId: cityId,
       cityName: cityName,
       isMaxDistanceOption: isMaxDistanceOption,
+      showOnlyLive: showOnlyLive,
+      showOnlyUpcoming: showOnlyUpcoming,
+      showOnlyPast: showOnlyPast,
+      startDate: startDate,
+      endDate: endDate,
       day: day,
       maxPrice: maxPrice,
       isConcert: isConcert,
@@ -67,6 +77,11 @@ mixin _$EventFilters {
   String get cityId => throw _privateConstructorUsedError;
   String get cityName => throw _privateConstructorUsedError;
   bool get isMaxDistanceOption => throw _privateConstructorUsedError;
+  bool get showOnlyLive => throw _privateConstructorUsedError;
+  bool get showOnlyUpcoming => throw _privateConstructorUsedError;
+  bool get showOnlyPast => throw _privateConstructorUsedError;
+  DateTime get startDate => throw _privateConstructorUsedError;
+  DateTime? get endDate => throw _privateConstructorUsedError;
   DateTime? get day => throw _privateConstructorUsedError;
   int? get maxPrice => throw _privateConstructorUsedError;
   bool? get isConcert => throw _privateConstructorUsedError;
@@ -93,6 +108,11 @@ abstract class $EventFiltersCopyWith<$Res> {
       String cityId,
       String cityName,
       bool isMaxDistanceOption,
+      bool showOnlyLive,
+      bool showOnlyUpcoming,
+      bool showOnlyPast,
+      DateTime startDate,
+      DateTime? endDate,
       DateTime? day,
       int? maxPrice,
       bool? isConcert,
@@ -119,6 +139,11 @@ class _$EventFiltersCopyWithImpl<$Res> implements $EventFiltersCopyWith<$Res> {
     Object? cityId = freezed,
     Object? cityName = freezed,
     Object? isMaxDistanceOption = freezed,
+    Object? showOnlyLive = freezed,
+    Object? showOnlyUpcoming = freezed,
+    Object? showOnlyPast = freezed,
+    Object? startDate = freezed,
+    Object? endDate = freezed,
     Object? day = freezed,
     Object? maxPrice = freezed,
     Object? isConcert = freezed,
@@ -165,6 +190,26 @@ class _$EventFiltersCopyWithImpl<$Res> implements $EventFiltersCopyWith<$Res> {
           ? _value.isMaxDistanceOption
           : isMaxDistanceOption // ignore: cast_nullable_to_non_nullable
               as bool,
+      showOnlyLive: showOnlyLive == freezed
+          ? _value.showOnlyLive
+          : showOnlyLive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showOnlyUpcoming: showOnlyUpcoming == freezed
+          ? _value.showOnlyUpcoming
+          : showOnlyUpcoming // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showOnlyPast: showOnlyPast == freezed
+          ? _value.showOnlyPast
+          : showOnlyPast // ignore: cast_nullable_to_non_nullable
+              as bool,
+      startDate: startDate == freezed
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endDate: endDate == freezed
+          ? _value.endDate
+          : endDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       day: day == freezed
           ? _value.day
           : day // ignore: cast_nullable_to_non_nullable
@@ -203,6 +248,11 @@ abstract class _$EventFiltersCopyWith<$Res>
       String cityId,
       String cityName,
       bool isMaxDistanceOption,
+      bool showOnlyLive,
+      bool showOnlyUpcoming,
+      bool showOnlyPast,
+      DateTime startDate,
+      DateTime? endDate,
       DateTime? day,
       int? maxPrice,
       bool? isConcert,
@@ -231,6 +281,11 @@ class __$EventFiltersCopyWithImpl<$Res> extends _$EventFiltersCopyWithImpl<$Res>
     Object? cityId = freezed,
     Object? cityName = freezed,
     Object? isMaxDistanceOption = freezed,
+    Object? showOnlyLive = freezed,
+    Object? showOnlyUpcoming = freezed,
+    Object? showOnlyPast = freezed,
+    Object? startDate = freezed,
+    Object? endDate = freezed,
     Object? day = freezed,
     Object? maxPrice = freezed,
     Object? isConcert = freezed,
@@ -277,6 +332,26 @@ class __$EventFiltersCopyWithImpl<$Res> extends _$EventFiltersCopyWithImpl<$Res>
           ? _value.isMaxDistanceOption
           : isMaxDistanceOption // ignore: cast_nullable_to_non_nullable
               as bool,
+      showOnlyLive: showOnlyLive == freezed
+          ? _value.showOnlyLive
+          : showOnlyLive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showOnlyUpcoming: showOnlyUpcoming == freezed
+          ? _value.showOnlyUpcoming
+          : showOnlyUpcoming // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showOnlyPast: showOnlyPast == freezed
+          ? _value.showOnlyPast
+          : showOnlyPast // ignore: cast_nullable_to_non_nullable
+              as bool,
+      startDate: startDate == freezed
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endDate: endDate == freezed
+          ? _value.endDate
+          : endDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       day: day == freezed
           ? _value.day
           : day // ignore: cast_nullable_to_non_nullable
@@ -311,6 +386,11 @@ class _$_EventFilters extends _EventFilters {
       required this.cityId,
       required this.cityName,
       required this.isMaxDistanceOption,
+      required this.showOnlyLive,
+      required this.showOnlyUpcoming,
+      required this.showOnlyPast,
+      required this.startDate,
+      required this.endDate,
       required this.day,
       required this.maxPrice,
       required this.isConcert,
@@ -338,6 +418,16 @@ class _$_EventFilters extends _EventFilters {
   @override
   final bool isMaxDistanceOption;
   @override
+  final bool showOnlyLive;
+  @override
+  final bool showOnlyUpcoming;
+  @override
+  final bool showOnlyPast;
+  @override
+  final DateTime startDate;
+  @override
+  final DateTime? endDate;
+  @override
   final DateTime? day;
   @override
   final int? maxPrice;
@@ -348,7 +438,7 @@ class _$_EventFilters extends _EventFilters {
 
   @override
   String toString() {
-    return 'EventFilters(phrase: $phrase, minPrice: $minPrice, minAges: $minAges, musicalGenres: $musicalGenres, allowedOutfits: $allowedOutfits, userLocation: $userLocation, maxDistance: $maxDistance, cityId: $cityId, cityName: $cityName, isMaxDistanceOption: $isMaxDistanceOption, day: $day, maxPrice: $maxPrice, isConcert: $isConcert, clubId: $clubId)';
+    return 'EventFilters(phrase: $phrase, minPrice: $minPrice, minAges: $minAges, musicalGenres: $musicalGenres, allowedOutfits: $allowedOutfits, userLocation: $userLocation, maxDistance: $maxDistance, cityId: $cityId, cityName: $cityName, isMaxDistanceOption: $isMaxDistanceOption, showOnlyLive: $showOnlyLive, showOnlyUpcoming: $showOnlyUpcoming, showOnlyPast: $showOnlyPast, startDate: $startDate, endDate: $endDate, day: $day, maxPrice: $maxPrice, isConcert: $isConcert, clubId: $clubId)';
   }
 
   @override
@@ -371,6 +461,14 @@ class _$_EventFilters extends _EventFilters {
             const DeepCollectionEquality().equals(other.cityName, cityName) &&
             const DeepCollectionEquality()
                 .equals(other.isMaxDistanceOption, isMaxDistanceOption) &&
+            const DeepCollectionEquality()
+                .equals(other.showOnlyLive, showOnlyLive) &&
+            const DeepCollectionEquality()
+                .equals(other.showOnlyUpcoming, showOnlyUpcoming) &&
+            const DeepCollectionEquality()
+                .equals(other.showOnlyPast, showOnlyPast) &&
+            const DeepCollectionEquality().equals(other.startDate, startDate) &&
+            const DeepCollectionEquality().equals(other.endDate, endDate) &&
             const DeepCollectionEquality().equals(other.day, day) &&
             const DeepCollectionEquality().equals(other.maxPrice, maxPrice) &&
             const DeepCollectionEquality().equals(other.isConcert, isConcert) &&
@@ -378,22 +476,28 @@ class _$_EventFilters extends _EventFilters {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(phrase),
-      const DeepCollectionEquality().hash(minPrice),
-      const DeepCollectionEquality().hash(minAges),
-      const DeepCollectionEquality().hash(musicalGenres),
-      const DeepCollectionEquality().hash(allowedOutfits),
-      const DeepCollectionEquality().hash(userLocation),
-      const DeepCollectionEquality().hash(maxDistance),
-      const DeepCollectionEquality().hash(cityId),
-      const DeepCollectionEquality().hash(cityName),
-      const DeepCollectionEquality().hash(isMaxDistanceOption),
-      const DeepCollectionEquality().hash(day),
-      const DeepCollectionEquality().hash(maxPrice),
-      const DeepCollectionEquality().hash(isConcert),
-      const DeepCollectionEquality().hash(clubId));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(phrase),
+        const DeepCollectionEquality().hash(minPrice),
+        const DeepCollectionEquality().hash(minAges),
+        const DeepCollectionEquality().hash(musicalGenres),
+        const DeepCollectionEquality().hash(allowedOutfits),
+        const DeepCollectionEquality().hash(userLocation),
+        const DeepCollectionEquality().hash(maxDistance),
+        const DeepCollectionEquality().hash(cityId),
+        const DeepCollectionEquality().hash(cityName),
+        const DeepCollectionEquality().hash(isMaxDistanceOption),
+        const DeepCollectionEquality().hash(showOnlyLive),
+        const DeepCollectionEquality().hash(showOnlyUpcoming),
+        const DeepCollectionEquality().hash(showOnlyPast),
+        const DeepCollectionEquality().hash(startDate),
+        const DeepCollectionEquality().hash(endDate),
+        const DeepCollectionEquality().hash(day),
+        const DeepCollectionEquality().hash(maxPrice),
+        const DeepCollectionEquality().hash(isConcert),
+        const DeepCollectionEquality().hash(clubId)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -413,6 +517,11 @@ abstract class _EventFilters extends EventFilters {
       required String cityId,
       required String cityName,
       required bool isMaxDistanceOption,
+      required bool showOnlyLive,
+      required bool showOnlyUpcoming,
+      required bool showOnlyPast,
+      required DateTime startDate,
+      required DateTime? endDate,
       required DateTime? day,
       required int? maxPrice,
       required bool? isConcert,
@@ -439,6 +548,16 @@ abstract class _EventFilters extends EventFilters {
   String get cityName;
   @override
   bool get isMaxDistanceOption;
+  @override
+  bool get showOnlyLive;
+  @override
+  bool get showOnlyUpcoming;
+  @override
+  bool get showOnlyPast;
+  @override
+  DateTime get startDate;
+  @override
+  DateTime? get endDate;
   @override
   DateTime? get day;
   @override

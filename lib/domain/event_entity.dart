@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:raver_events/domain/location_constants.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:uuid/uuid.dart';
 
 class Event extends Equatable {
@@ -7,7 +7,8 @@ class Event extends Equatable {
   final String clubId;
   final String eventName;
   final String clubName;
-  final DateTime eventDateTime;
+  final DateTime eventStartDateTime;
+  final DateTime eventEndDateTime;
   final int attending;
   final int minAge;
   final int price;
@@ -26,7 +27,8 @@ class Event extends Equatable {
     required this.clubId,
     required this.eventName,
     required this.clubName,
-    required this.eventDateTime,
+    required this.eventStartDateTime,
+    required this.eventEndDateTime,
     required this.attending,
     required this.minAge,
     required this.price,
@@ -55,7 +57,8 @@ class Event extends Equatable {
         clubId,
         eventName,
         clubName,
-        eventDateTime,
+        eventStartDateTime,
+        eventEndDateTime,
         attending,
         minAge,
         price,

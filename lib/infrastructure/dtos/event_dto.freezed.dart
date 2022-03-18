@@ -27,7 +27,8 @@ class _$EventDtoTearOff {
       required String clubId,
       required String eventName,
       required String clubName,
-      @TimestampJsonConverter() required DateTime eventDateTime,
+      @TimestampJsonConverter() required DateTime eventStartDateTime,
+      @TimestampJsonConverter() required DateTime eventEndDateTime,
       required int attending,
       required int minAge,
       required int price,
@@ -45,7 +46,8 @@ class _$EventDtoTearOff {
       clubId: clubId,
       eventName: eventName,
       clubName: clubName,
-      eventDateTime: eventDateTime,
+      eventStartDateTime: eventStartDateTime,
+      eventEndDateTime: eventEndDateTime,
       attending: attending,
       minAge: minAge,
       price: price,
@@ -77,7 +79,9 @@ mixin _$EventDto {
   String get eventName => throw _privateConstructorUsedError;
   String get clubName => throw _privateConstructorUsedError;
   @TimestampJsonConverter()
-  DateTime get eventDateTime => throw _privateConstructorUsedError;
+  DateTime get eventStartDateTime => throw _privateConstructorUsedError;
+  @TimestampJsonConverter()
+  DateTime get eventEndDateTime => throw _privateConstructorUsedError;
   int get attending => throw _privateConstructorUsedError;
   int get minAge => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
@@ -108,7 +112,8 @@ abstract class $EventDtoCopyWith<$Res> {
       String clubId,
       String eventName,
       String clubName,
-      @TimestampJsonConverter() DateTime eventDateTime,
+      @TimestampJsonConverter() DateTime eventStartDateTime,
+      @TimestampJsonConverter() DateTime eventEndDateTime,
       int attending,
       int minAge,
       int price,
@@ -137,7 +142,8 @@ class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
     Object? clubId = freezed,
     Object? eventName = freezed,
     Object? clubName = freezed,
-    Object? eventDateTime = freezed,
+    Object? eventStartDateTime = freezed,
+    Object? eventEndDateTime = freezed,
     Object? attending = freezed,
     Object? minAge = freezed,
     Object? price = freezed,
@@ -168,9 +174,13 @@ class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
           ? _value.clubName
           : clubName // ignore: cast_nullable_to_non_nullable
               as String,
-      eventDateTime: eventDateTime == freezed
-          ? _value.eventDateTime
-          : eventDateTime // ignore: cast_nullable_to_non_nullable
+      eventStartDateTime: eventStartDateTime == freezed
+          ? _value.eventStartDateTime
+          : eventStartDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      eventEndDateTime: eventEndDateTime == freezed
+          ? _value.eventEndDateTime
+          : eventEndDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
       attending: attending == freezed
           ? _value.attending
@@ -234,7 +244,8 @@ abstract class _$EventDtoCopyWith<$Res> implements $EventDtoCopyWith<$Res> {
       String clubId,
       String eventName,
       String clubName,
-      @TimestampJsonConverter() DateTime eventDateTime,
+      @TimestampJsonConverter() DateTime eventStartDateTime,
+      @TimestampJsonConverter() DateTime eventEndDateTime,
       int attending,
       int minAge,
       int price,
@@ -264,7 +275,8 @@ class __$EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
     Object? clubId = freezed,
     Object? eventName = freezed,
     Object? clubName = freezed,
-    Object? eventDateTime = freezed,
+    Object? eventStartDateTime = freezed,
+    Object? eventEndDateTime = freezed,
     Object? attending = freezed,
     Object? minAge = freezed,
     Object? price = freezed,
@@ -295,9 +307,13 @@ class __$EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
           ? _value.clubName
           : clubName // ignore: cast_nullable_to_non_nullable
               as String,
-      eventDateTime: eventDateTime == freezed
-          ? _value.eventDateTime
-          : eventDateTime // ignore: cast_nullable_to_non_nullable
+      eventStartDateTime: eventStartDateTime == freezed
+          ? _value.eventStartDateTime
+          : eventStartDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      eventEndDateTime: eventEndDateTime == freezed
+          ? _value.eventEndDateTime
+          : eventEndDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
       attending: attending == freezed
           ? _value.attending
@@ -360,7 +376,8 @@ class _$_EventDto extends _EventDto {
       required this.clubId,
       required this.eventName,
       required this.clubName,
-      @TimestampJsonConverter() required this.eventDateTime,
+      @TimestampJsonConverter() required this.eventStartDateTime,
+      @TimestampJsonConverter() required this.eventEndDateTime,
       required this.attending,
       required this.minAge,
       required this.price,
@@ -389,7 +406,10 @@ class _$_EventDto extends _EventDto {
   final String clubName;
   @override
   @TimestampJsonConverter()
-  final DateTime eventDateTime;
+  final DateTime eventStartDateTime;
+  @override
+  @TimestampJsonConverter()
+  final DateTime eventEndDateTime;
   @override
   final int attending;
   @override
@@ -421,7 +441,7 @@ class _$_EventDto extends _EventDto {
 
   @override
   String toString() {
-    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventDateTime: $eventDateTime, attending: $attending, minAge: $minAge, price: $price, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, photos: $photos, urlLinks: $urlLinks, isConcert: $isConcert)';
+    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, attending: $attending, minAge: $minAge, price: $price, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, photos: $photos, urlLinks: $urlLinks, isConcert: $isConcert)';
   }
 
   @override
@@ -434,7 +454,9 @@ class _$_EventDto extends _EventDto {
             const DeepCollectionEquality().equals(other.eventName, eventName) &&
             const DeepCollectionEquality().equals(other.clubName, clubName) &&
             const DeepCollectionEquality()
-                .equals(other.eventDateTime, eventDateTime) &&
+                .equals(other.eventStartDateTime, eventStartDateTime) &&
+            const DeepCollectionEquality()
+                .equals(other.eventEndDateTime, eventEndDateTime) &&
             const DeepCollectionEquality().equals(other.attending, attending) &&
             const DeepCollectionEquality().equals(other.minAge, minAge) &&
             const DeepCollectionEquality().equals(other.price, price) &&
@@ -460,7 +482,8 @@ class _$_EventDto extends _EventDto {
       const DeepCollectionEquality().hash(clubId),
       const DeepCollectionEquality().hash(eventName),
       const DeepCollectionEquality().hash(clubName),
-      const DeepCollectionEquality().hash(eventDateTime),
+      const DeepCollectionEquality().hash(eventStartDateTime),
+      const DeepCollectionEquality().hash(eventEndDateTime),
       const DeepCollectionEquality().hash(attending),
       const DeepCollectionEquality().hash(minAge),
       const DeepCollectionEquality().hash(price),
@@ -491,7 +514,8 @@ abstract class _EventDto extends EventDto {
       required String clubId,
       required String eventName,
       required String clubName,
-      @TimestampJsonConverter() required DateTime eventDateTime,
+      @TimestampJsonConverter() required DateTime eventStartDateTime,
+      @TimestampJsonConverter() required DateTime eventEndDateTime,
       required int attending,
       required int minAge,
       required int price,
@@ -519,7 +543,10 @@ abstract class _EventDto extends EventDto {
   String get clubName;
   @override
   @TimestampJsonConverter()
-  DateTime get eventDateTime;
+  DateTime get eventStartDateTime;
+  @override
+  @TimestampJsonConverter()
+  DateTime get eventEndDateTime;
   @override
   int get attending;
   @override

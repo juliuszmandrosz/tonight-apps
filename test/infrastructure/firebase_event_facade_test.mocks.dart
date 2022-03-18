@@ -7,7 +7,7 @@ import 'dart:async' as _i4;
 import 'package:algolia/algolia.dart' as _i2;
 import 'package:logger/src/logger.dart' as _i6;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:raver_events/domain/filters/event_filters_entity.dart' as _i5;
+import 'package:raver_events/domain/domain.dart' as _i5;
 import 'package:raver_events/infrastructure/algolia_events_api.dart' as _i3;
 
 // ignore_for_file: type=lint
@@ -37,13 +37,13 @@ class MockAlgoliaEventsApi extends _i1.Mock implements _i3.AlgoliaEventsApi {
   }
 
   @override
-  _i4.Future<_i2.AlgoliaQuerySnapshot> getEvents(
-          _i5.EventFilters? filters, int? pageSize, int? offset) =>
+  _i4.Future<_i2.AlgoliaQuerySnapshot> getEvents(_i5.EventFilters? filters,
+          _i5.SortModel? sortModel, int? pageSize, int? offset) =>
       (super.noSuchMethod(
-              Invocation.method(#getEvents, [filters, pageSize, offset]),
-              returnValue: Future<_i2.AlgoliaQuerySnapshot>.value(
-                  _FakeAlgoliaQuerySnapshot_0()))
-          as _i4.Future<_i2.AlgoliaQuerySnapshot>);
+          Invocation.method(#getEvents, [filters, sortModel, pageSize, offset]),
+          returnValue: Future<_i2.AlgoliaQuerySnapshot>.value(
+              _FakeAlgoliaQuerySnapshot_0())) as _i4
+          .Future<_i2.AlgoliaQuerySnapshot>);
 }
 
 /// A class which mocks [Logger].
