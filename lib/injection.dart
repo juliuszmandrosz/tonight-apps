@@ -6,11 +6,12 @@ import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/application/application.dart';
 import 'package:raver_events/domain/domain.dart';
 import 'package:raver_events/infrastructure/algolia_events_api.dart';
 import 'package:raver_events/infrastructure/firebase_event_facade.dart';
-import 'package:raver_partners/env_keys.dart';
+import 'package:raver_partners/application/event_filters/event_filters_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -32,6 +33,11 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  getIt.registerFactoryParam(
+    (EventOverviewBloc eventOverviewBloc, _) =>
+        EventFiltersCubit(eventOverviewBloc),
+  );
 }
 
 void _registerFacades() {
@@ -40,6 +46,7 @@ void _registerFacades() {
       firebaseAuth: getIt(),
       googleSignIn: getIt(),
       logger: getIt(),
+      firestore: getIt(),
     ),
   );
 

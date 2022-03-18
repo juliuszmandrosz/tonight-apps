@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:raver_auth/raver_auth.dart';
-import 'package:raver_partners/generated/l10n.dart';
 import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/config/themes/light_theme/light_theme.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class RaverPartnersApp extends StatelessWidget {
   final _appRouter = AppRouter();

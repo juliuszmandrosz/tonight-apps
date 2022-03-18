@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:raver_partners/generated/l10n.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class RaverPartnersAppBar extends StatelessWidget with PreferredSizeWidget {
   final String? title;

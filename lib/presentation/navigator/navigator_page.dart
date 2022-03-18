@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_partners/generated/l10n.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class NavigatorPage extends StatelessWidget {
   const NavigatorPage({Key? key}) : super(key: key);
@@ -11,6 +11,7 @@ class NavigatorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
+      resizeToAvoidBottomInset: false,
       appBarBuilder: (_, tabsRouter) => const RaverPartnersAppBar(),
       routes: const [
         DashboardRoute(),
