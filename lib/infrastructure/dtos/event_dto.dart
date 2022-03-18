@@ -1,21 +1,19 @@
 import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/event_entity.dart';
-import 'package:raver_events/infrastructure/json_converters/timestamp_json_converter.dart';
 
 part 'event_dto.freezed.dart';
+
 part 'event_dto.g.dart';
 
 @freezed
 class EventDto with _$EventDto {
   const EventDto._();
 
-  // https://github.com/rrousselGit/freezed/issues/527
-  // ignore: invalid_annotation_target
   @JsonSerializable()
   const factory EventDto({
-    // ignore: invalid_annotation_target
     @JsonKey(ignore: true) String? id,
     required String clubId,
     required String eventName,

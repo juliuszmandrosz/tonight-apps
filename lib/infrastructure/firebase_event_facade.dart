@@ -3,15 +3,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_events/domain/errors/invalid_id_error.dart';
-import 'package:raver_events/domain/errors/not_authenticated_error.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/event_entity.dart';
 import 'package:raver_events/domain/event_facade.dart';
 import 'package:raver_events/domain/event_failure.dart';
 import 'package:raver_events/domain/filters/event_filters_entity.dart';
 import 'package:raver_events/infrastructure/algolia_events_api.dart';
 import 'package:raver_events/infrastructure/dtos/event_dto.dart';
-import 'package:raver_events/infrastructure/firestore_helpers.dart';
 
 class FirebaseEventFacade implements EventFacade {
   final FirebaseAuth _firebaseAuth;

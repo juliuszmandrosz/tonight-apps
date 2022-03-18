@@ -71,7 +71,6 @@ const $EventDto = _$EventDtoTearOff();
 
 /// @nodoc
 mixin _$EventDto {
-// ignore: invalid_annotation_target
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
   String get clubId => throw _privateConstructorUsedError;
@@ -379,7 +378,7 @@ class _$_EventDto extends _EventDto {
   factory _$_EventDto.fromJson(Map<String, dynamic> json) =>
       _$$_EventDtoFromJson(json);
 
-  @override // ignore: invalid_annotation_target
+  @override
   @JsonKey(ignore: true)
   final String? id;
   @override
@@ -509,7 +508,7 @@ abstract class _EventDto extends EventDto {
 
   factory _EventDto.fromJson(Map<String, dynamic> json) = _$_EventDto.fromJson;
 
-  @override // ignore: invalid_annotation_target
+  @override
   @JsonKey(ignore: true)
   String? get id;
   @override
