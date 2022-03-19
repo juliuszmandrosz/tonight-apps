@@ -70,11 +70,31 @@ class S {
     );
   }
 
+  /// `Add event`
+  String get addEvent {
+    return Intl.message(
+      'Add event',
+      name: 'addEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Additional info`
   String get additionalInfo {
     return Intl.message(
       'Additional info',
       name: 'additionalInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add reward`
+  String get addReward {
+    return Intl.message(
+      'Add reward',
+      name: 'addReward',
       desc: '',
       args: [],
     );
@@ -704,6 +724,16 @@ class S {
     return Intl.message(
       'No dress code',
       name: 'noDressCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No events at this club yet`
+  String get noEventsInClub {
+    return Intl.message(
+      'No events at this club yet',
+      name: 'noEventsInClub',
       desc: '',
       args: [],
     );

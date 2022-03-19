@@ -46,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutUs": MessageLookupByLibrary.simpleMessage("O nas"),
         "accountExists": MessageLookupByLibrary.simpleMessage(
             "Konto dla tego adresu e-mail już istnieje"),
+        "addEvent": MessageLookupByLibrary.simpleMessage("Dodaj wydarzenie"),
+        "addReward": MessageLookupByLibrary.simpleMessage("Dodaj nagrodę"),
         "additionalInfo":
             MessageLookupByLibrary.simpleMessage("Dodatkowe informacje"),
         "age": MessageLookupByLibrary.simpleMessage("Wiek"),
@@ -143,6 +145,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "no": MessageLookupByLibrary.simpleMessage("Nie"),
         "noDressCode":
             MessageLookupByLibrary.simpleMessage("Brak dress code\'u"),
+        "noEventsInClub":
+            MessageLookupByLibrary.simpleMessage("Brak wydarzeń w tym klubie"),
         "noEventsNearYou":
             MessageLookupByLibrary.simpleMessage("Brak wydarzeń w pobliżu"),
         "operationNotAllowed":
