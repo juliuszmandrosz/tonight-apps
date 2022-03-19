@@ -55,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zatwierdź filtry"),
         "applySelectedDate":
             MessageLookupByLibrary.simpleMessage("Zatwierdź wybraną datę"),
+        "artistName": MessageLookupByLibrary.simpleMessage("Nazwa artysty"),
         "attending": m0,
         "buyTicket": MessageLookupByLibrary.simpleMessage("Kup bilet"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Anulowano"),
@@ -68,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contact": MessageLookupByLibrary.simpleMessage("Kontakt"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Panel"),
         "date": MessageLookupByLibrary.simpleMessage("Data"),
+        "description": MessageLookupByLibrary.simpleMessage("Opis"),
         "details": MessageLookupByLibrary.simpleMessage("Szczegóły"),
         "djChannel": MessageLookupByLibrary.simpleMessage("Kanał DJ\'a"),
         "dressCode": MessageLookupByLibrary.simpleMessage("Dress code"),
@@ -111,6 +113,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Błąd podczas otwierania map"),
         "eventDetails":
             MessageLookupByLibrary.simpleMessage("Szczegóły wydarzenia"),
+        "eventEndDateTime":
+            MessageLookupByLibrary.simpleMessage("Data zakończenia wydarzenia"),
+        "eventName": MessageLookupByLibrary.simpleMessage("Nazwa wydarzenia"),
+        "eventStartDateTime":
+            MessageLookupByLibrary.simpleMessage("Data rozpoczęcia wydarzenia"),
         "events": m2,
         "exitButtonTitle": MessageLookupByLibrary.simpleMessage("Wyjdź"),
         "facebookEvent":
@@ -141,6 +148,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "maxDistance":
             MessageLookupByLibrary.simpleMessage("Maksymalna odległość"),
         "milestones": MessageLookupByLibrary.simpleMessage("Kamienie milowe"),
+        "minAge": MessageLookupByLibrary.simpleMessage("Minimalny wiek"),
         "music": MessageLookupByLibrary.simpleMessage("Muzyka"),
         "no": MessageLookupByLibrary.simpleMessage("Nie"),
         "noDressCode":
@@ -170,6 +178,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "past": MessageLookupByLibrary.simpleMessage("Przeszłe"),
         "pastTickets": MessageLookupByLibrary.simpleMessage("Przeszłe bilety"),
         "photos": m4,
+        "price": MessageLookupByLibrary.simpleMessage("Cena"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Zakres cen"),
         "profile": MessageLookupByLibrary.simpleMessage("Profil"),
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
@@ -198,6 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "upcoming": MessageLookupByLibrary.simpleMessage("Nadchodzące"),
         "upcomingEvents":
             MessageLookupByLibrary.simpleMessage("Nadchodzące wydarzenia"),
+        "urlLinks": MessageLookupByLibrary.simpleMessage("Linki URL"),
         "userDisabled":
             MessageLookupByLibrary.simpleMessage("To konto zostało wyłączone"),
         "userNotFound": MessageLookupByLibrary.simpleMessage(

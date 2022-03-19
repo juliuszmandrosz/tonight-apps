@@ -130,6 +130,16 @@ class S {
     );
   }
 
+  /// `Artist name`
+  String get artistName {
+    return Intl.message(
+      'Artist name',
+      name: 'artistName',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{count, plural, zero{Attending} one{Attending} other{Attending}}`
   String attending(num count) {
     return Intl.plural(
@@ -241,6 +251,16 @@ class S {
     return Intl.message(
       'Date',
       name: 'date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message(
+      'Description',
+      name: 'description',
       desc: '',
       args: [],
     );
@@ -486,6 +506,26 @@ class S {
     );
   }
 
+  /// `Event end date time`
+  String get eventEndDateTime {
+    return Intl.message(
+      'Event end date time',
+      name: 'eventEndDateTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event name`
+  String get eventName {
+    return Intl.message(
+      'Event name',
+      name: 'eventName',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{count, plural, zero{No events} one{Event} other{Events}}`
   String events(num count) {
     return Intl.plural(
@@ -496,6 +536,16 @@ class S {
       name: 'events',
       desc: '',
       args: [count],
+    );
+  }
+
+  /// `Event start date time`
+  String get eventStartDateTime {
+    return Intl.message(
+      'Event start date time',
+      name: 'eventStartDateTime',
+      desc: '',
+      args: [],
     );
   }
 
@@ -699,6 +749,16 @@ class S {
     );
   }
 
+  /// `Minimum age`
+  String get minAge {
+    return Intl.message(
+      'Minimum age',
+      name: 'minAge',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Music`
   String get music {
     return Intl.message(
@@ -882,6 +942,16 @@ class S {
       name: 'photos',
       desc: '',
       args: [count],
+    );
+  }
+
+  /// `Price`
+  String get price {
+    return Intl.message(
+      'Price',
+      name: 'price',
+      desc: '',
+      args: [],
     );
   }
 
@@ -1106,6 +1176,16 @@ class S {
     return Intl.message(
       'Upcoming events',
       name: 'upcomingEvents',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `URL links`
+  String get urlLinks {
+    return Intl.message(
+      'URL links',
+      name: 'urlLinks',
       desc: '',
       args: [],
     );

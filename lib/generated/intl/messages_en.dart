@@ -54,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "applyFilters": MessageLookupByLibrary.simpleMessage("Apply filters"),
         "applySelectedDate":
             MessageLookupByLibrary.simpleMessage("Apply selected date"),
+        "artistName": MessageLookupByLibrary.simpleMessage("Artist name"),
         "attending": m0,
         "buyTicket": MessageLookupByLibrary.simpleMessage("Buy ticket"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
@@ -67,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contact": MessageLookupByLibrary.simpleMessage("Contact"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
+        "description": MessageLookupByLibrary.simpleMessage("Description"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "djChannel": MessageLookupByLibrary.simpleMessage("Dj channel"),
         "dressCode": MessageLookupByLibrary.simpleMessage("Dress code"),
@@ -109,6 +111,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorOpeningMaps":
             MessageLookupByLibrary.simpleMessage("Error opening maps"),
         "eventDetails": MessageLookupByLibrary.simpleMessage("Event details"),
+        "eventEndDateTime":
+            MessageLookupByLibrary.simpleMessage("Event end date time"),
+        "eventName": MessageLookupByLibrary.simpleMessage("Event name"),
+        "eventStartDateTime":
+            MessageLookupByLibrary.simpleMessage("Event start date time"),
         "events": m2,
         "exitButtonTitle": MessageLookupByLibrary.simpleMessage("Exit"),
         "facebookEvent": MessageLookupByLibrary.simpleMessage("Facebook event"),
@@ -137,6 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "map": MessageLookupByLibrary.simpleMessage("Map"),
         "maxDistance": MessageLookupByLibrary.simpleMessage("Maximum distance"),
         "milestones": MessageLookupByLibrary.simpleMessage("Milestones"),
+        "minAge": MessageLookupByLibrary.simpleMessage("Minimum age"),
         "music": MessageLookupByLibrary.simpleMessage("Music"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noDressCode": MessageLookupByLibrary.simpleMessage("No dress code"),
@@ -165,6 +173,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "past": MessageLookupByLibrary.simpleMessage("Past"),
         "pastTickets": MessageLookupByLibrary.simpleMessage("Past tickets"),
         "photos": m4,
+        "price": MessageLookupByLibrary.simpleMessage("Price"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Price range"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
@@ -192,6 +201,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "upcoming": MessageLookupByLibrary.simpleMessage("Upcoming"),
         "upcomingEvents":
             MessageLookupByLibrary.simpleMessage("Upcoming events"),
+        "urlLinks": MessageLookupByLibrary.simpleMessage("URL links"),
         "userDisabled": MessageLookupByLibrary.simpleMessage(
             "This account has been disabled"),
         "userNotFound": MessageLookupByLibrary.simpleMessage(
