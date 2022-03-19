@@ -336,6 +336,16 @@ class S {
     );
   }
 
+  /// `End date`
+  String get endDate {
+    return Intl.message(
+      'End date',
+      name: 'endDate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please enter your e-mail address`
   String get enterEmail {
     return Intl.message(
@@ -506,16 +516,6 @@ class S {
     );
   }
 
-  /// `Event end date time`
-  String get eventEndDateTime {
-    return Intl.message(
-      'Event end date time',
-      name: 'eventEndDateTime',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Event name`
   String get eventName {
     return Intl.message(
@@ -536,16 +536,6 @@ class S {
       name: 'events',
       desc: '',
       args: [count],
-    );
-  }
-
-  /// `Event start date time`
-  String get eventStartDateTime {
-    return Intl.message(
-      'Event start date time',
-      name: 'eventStartDateTime',
-      desc: '',
-      args: [],
     );
   }
 
@@ -1133,6 +1123,16 @@ class S {
     return Intl.message(
       'Sport',
       name: 'sport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start date`
+  String get startDate {
+    return Intl.message(
+      'Start date',
+      name: 'startDate',
       desc: '',
       args: [],
     );

@@ -79,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("E-mail jest już w użyciu"),
         "enableLocation":
             MessageLookupByLibrary.simpleMessage("Włącz lokalizację"),
+        "endDate": MessageLookupByLibrary.simpleMessage("Data zakończenia"),
         "enterEmail": MessageLookupByLibrary.simpleMessage(
             "Proszę wprowadź adres e-mail"),
         "enterPassword":
@@ -113,11 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Błąd podczas otwierania map"),
         "eventDetails":
             MessageLookupByLibrary.simpleMessage("Szczegóły wydarzenia"),
-        "eventEndDateTime":
-            MessageLookupByLibrary.simpleMessage("Data zakończenia wydarzenia"),
         "eventName": MessageLookupByLibrary.simpleMessage("Nazwa wydarzenia"),
-        "eventStartDateTime":
-            MessageLookupByLibrary.simpleMessage("Data rozpoczęcia wydarzenia"),
         "events": m2,
         "exitButtonTitle": MessageLookupByLibrary.simpleMessage("Wyjdź"),
         "facebookEvent":
@@ -201,6 +198,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "socialMedia":
             MessageLookupByLibrary.simpleMessage("Media społecznościowe"),
         "sport": MessageLookupByLibrary.simpleMessage("Sport"),
+        "startDate": MessageLookupByLibrary.simpleMessage("Data rozpoczęcia"),
         "tickets": m6,
         "unexpectedError":
             MessageLookupByLibrary.simpleMessage("Nieoczekiwany błąd"),

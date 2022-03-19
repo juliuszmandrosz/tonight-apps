@@ -78,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Email already in use"),
         "enableLocation":
             MessageLookupByLibrary.simpleMessage("Enable location"),
+        "endDate": MessageLookupByLibrary.simpleMessage("End date"),
         "enterEmail": MessageLookupByLibrary.simpleMessage(
             "Please enter your e-mail address"),
         "enterPassword":
@@ -111,11 +112,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorOpeningMaps":
             MessageLookupByLibrary.simpleMessage("Error opening maps"),
         "eventDetails": MessageLookupByLibrary.simpleMessage("Event details"),
-        "eventEndDateTime":
-            MessageLookupByLibrary.simpleMessage("Event end date time"),
         "eventName": MessageLookupByLibrary.simpleMessage("Event name"),
-        "eventStartDateTime":
-            MessageLookupByLibrary.simpleMessage("Event start date time"),
         "events": m2,
         "exitButtonTitle": MessageLookupByLibrary.simpleMessage("Exit"),
         "facebookEvent": MessageLookupByLibrary.simpleMessage("Facebook event"),
@@ -195,6 +192,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
         "socialMedia": MessageLookupByLibrary.simpleMessage("Social media"),
         "sport": MessageLookupByLibrary.simpleMessage("Sport"),
+        "startDate": MessageLookupByLibrary.simpleMessage("Start date"),
         "tickets": m6,
         "unexpectedError":
             MessageLookupByLibrary.simpleMessage("Unexpected error"),
