@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -7,12 +9,19 @@ class TicketCheckoutHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        RaverHeadline(
-          text: S().tickets(1),
-        ),
-      ],
+    return BlocBuilder<TicketCheckoutCubit, TicketCheckoutState>(
+      buildWhen: (previous, current) =>
+          previous.eventInitData != current.eventInitData ||
+          previous.ticketInitData != current.ticketInitData,
+      builder: (context, state) {
+        return Row(
+          children: [
+            RaverHeadline(
+              text: state.eventInitData.isSome() ? S().tickets(1) : S().vip,
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -6,7 +6,6 @@ class VipPayment extends Equatable {
   final String ticketId;
   final int price;
   final String currency;
-  final DateTime paymentDateTime;
   final String? promotionCode;
 
   VipPayment({
@@ -14,7 +13,6 @@ class VipPayment extends Equatable {
     required this.ticketId,
     required this.price,
     required this.currency,
-    required this.paymentDateTime,
     this.promotionCode,
   }) : id = id ?? const Uuid().v1();
 
@@ -24,7 +22,6 @@ class VipPayment extends Equatable {
         ticketId,
         price,
         currency,
-        paymentDateTime,
         promotionCode,
       ];
 
@@ -32,7 +29,6 @@ class VipPayment extends Equatable {
     String? ticketId,
     int? price,
     String? currency,
-    DateTime? paymentDateTime,
     String? promotionCode,
   }) {
     return VipPayment(
@@ -40,7 +36,6 @@ class VipPayment extends Equatable {
       ticketId: ticketId ?? this.ticketId,
       price: price ?? this.price,
       currency: currency ?? this.currency,
-      paymentDateTime: paymentDateTime ?? this.paymentDateTime,
       promotionCode: promotionCode ?? this.promotionCode,
     );
   }

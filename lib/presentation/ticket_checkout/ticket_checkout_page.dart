@@ -15,12 +15,20 @@ import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_ticke
 import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class TicketCheckoutPage extends StatelessWidget {
-  final Event event;
+  final Event? event;
+  final Ticket? ticket;
 
-  const TicketCheckoutPage({required this.event, Key? key}) : super(key: key);
+  const TicketCheckoutPage({
+    this.event,
+    this.ticket,
+    Key? key,
+  })  : assert((event != null || ticket != null),
+            'Event and ticket cannot be null at the same time'),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +36,17 @@ class TicketCheckoutPage extends StatelessWidget {
       child: Scaffold(
         appBar: RaverAppBar(title: S().checkout),
         body: BlocProvider(
-          create: (context) => getIt<TicketCheckoutCubit>(
-            param1: context.read<TicketListCubit>(),
-          )..initPaymentTicketData(event),
+          create: (context) {
+            final cubit = getIt<TicketCheckoutCubit>(
+              param1: context.read<TicketListCubit>(),
+            );
+
+            event != null
+                ? cubit.initEventData(event!)
+                : cubit.initTicketData(ticket!);
+
+            return cubit;
+          },
           child: BlocConsumer<TicketCheckoutCubit, TicketCheckoutState>(
             buildWhen: (previous, current) =>
                 previous.initialStatus != current.initialStatus,
@@ -41,23 +57,21 @@ class TicketCheckoutPage extends StatelessWidget {
                     current.proceedingToPaymentStatus,
             listener: (context, state) {
               if (state.proceedingToPaymentStatus.isSuccess() &&
-                  state.ticket.isSome()) {
+                  state.purchasedTicket.isSome()) {
                 AutoRouter.of(context).replace(
                   TicketPaymentConfirmRoute(
-                    ticket: state.ticket.getOrCrash(),
+                    ticket: state.purchasedTicket.getOrCrash(),
                   ),
                 );
               }
 
+              if (state.initialStatus.isFailure()) {
+                AutoRouter.of(context).pop();
+              }
+
               state.paymentFailureMessage.fold(
                 () {},
-                (error) {
-                  ScaffoldMessenger.of(context)
-                    ..hideCurrentSnackBar()
-                    ..showSnackBar(
-                      SnackBar(content: Text(error)),
-                    );
-                },
+                (error) => context.showSnackbarMessage(error),
               );
             },
             builder: (context, state) {
@@ -67,17 +81,19 @@ class TicketCheckoutPage extends StatelessWidget {
                     )
                   : Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
+                        horizontal: 20,
+                        vertical: 20,
+                      ),
                       child: ListView(
-                        children: const [
-                          TicketCheckoutHeader(),
-                          SizedBox(height: 20),
-                          TicketCheckoutTicketCard(),
-                          SizedBox(height: 20),
-                          TicketCheckoutIsVipSwitch(),
-                          TicketCheckoutPromotionCode(),
-                          SizedBox(height: 30),
-                          TicketCheckoutPayButton(),
+                        children: [
+                          const TicketCheckoutHeader(),
+                          const SizedBox(height: 20),
+                          const TicketCheckoutTicketCard(),
+                          const SizedBox(height: 20),
+                          if (event != null) const TicketCheckoutIsVipSwitch(),
+                          const TicketCheckoutPromotionCode(),
+                          const SizedBox(height: 30),
+                          const TicketCheckoutPayButton(),
                         ],
                       ),
                     );

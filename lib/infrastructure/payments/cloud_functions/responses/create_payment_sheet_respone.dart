@@ -1,19 +1,19 @@
 import 'package:equatable/equatable.dart';
 
-class CreateTicketPaymentSheetResponse extends Equatable {
+class CreatePaymentSheetResponse extends Equatable {
   final String customerId;
   final String paymentIntentSecret;
   final String ephemeralKeySecret;
   final String paymentIntentId;
 
-  const CreateTicketPaymentSheetResponse({
+  const CreatePaymentSheetResponse({
     required this.customerId,
     required this.paymentIntentSecret,
     required this.ephemeralKeySecret,
     required this.paymentIntentId,
   });
 
-  CreateTicketPaymentSheetResponse.fromJson(Map<String, dynamic> json)
+  CreatePaymentSheetResponse.fromJson(Map<String, dynamic> json)
       : customerId = json['customerId'],
         paymentIntentSecret = json['paymentIntentSecret'],
         ephemeralKeySecret = json['ephemeralKeySecret'],

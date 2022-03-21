@@ -1142,6 +1142,15 @@ packages:
       url: "https://github.com/juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
+  raver_tickets:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: develop
+      resolved-ref: e275d9a96036c08ed72323e8729b24a0e0c464a3
+      url: "https://github.com/juliuszmandrosz/RaverTickets.git"
+    source: git
+    version: "0.0.1"
   raver_translations:
     dependency: "direct main"
     description:

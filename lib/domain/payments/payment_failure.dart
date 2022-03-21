@@ -15,4 +15,6 @@ class PaymentFailure with _$PaymentFailure {
   const factory PaymentFailure.invalidEvent() = _InvalidEvent;
 
   const factory PaymentFailure.canceled() = _Canceled;
+
+  const factory PaymentFailure.ticketAlreadyHasVip() = _TicketAlreadyHasVip;
 }

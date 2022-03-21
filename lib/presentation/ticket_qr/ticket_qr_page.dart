@@ -8,6 +8,7 @@ import 'package:raver/application/ticket_qr/ticket_qr_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/ticket_qr/widgets/ticket_return_button.dart';
+import 'package:raver/presentation/ticket_qr/widgets/upgrade_to_vip_button.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -60,6 +61,7 @@ class TicketQrPage extends StatelessWidget {
                         size: 300,
                       ),
                     ),
+                    if (!ticket.isVip) const UpgradeToVipButton(),
                     if (ticket.eventDateTime.isAfter(
                       DateTime.now().add(const Duration(days: 1)),
                     ))

@@ -4,4 +4,5 @@ const cloudFunctionsFailures = {
   'invalid-promotion-code': PaymentFailure.invalidPromotionCode(),
   'expired-promotion-code': PaymentFailure.promotionCodeExpired(),
   'invalid-event': PaymentFailure.invalidEvent(),
+  'ticket-already-has-vip': PaymentFailure.ticketAlreadyHasVip(),
 };

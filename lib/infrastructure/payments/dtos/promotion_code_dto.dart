@@ -1,25 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/domain/payments/promotion_code_entity.dart';
+import 'package:raver_common/raver_common.dart';
 
 part 'promotion_code_dto.freezed.dart';
 part 'promotion_code_dto.g.dart';
-
-// TODO - move this to commons
-class FirebaseNullableTimestampJsonConverter
-    implements JsonConverter<DateTime?, Timestamp?> {
-  const FirebaseNullableTimestampJsonConverter();
-
-  @override
-  DateTime? fromJson(Timestamp? timestamp) {
-    return timestamp?.toDate();
-  }
-
-  @override
-  Timestamp? toJson(DateTime? datetime) {
-    return datetime != null ? Timestamp.fromDate(datetime) : null;
-  }
-}
 
 @freezed
 class PromotionCodeDto with _$PromotionCodeDto {

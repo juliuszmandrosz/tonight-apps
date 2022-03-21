@@ -49,9 +49,11 @@ class TicketPaymentConfirmPage extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () => AutoRouter.of(context).replace(
+                onPressed: () => AutoRouter.of(context).replaceAll([
+                  const NavigatorRouter(),
+                  EventDetailsRoute(eventId: ticket.eventId),
                   TicketQrRoute(ticket: ticket),
-                ),
+                ]),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text(S().showTicketQrCode),

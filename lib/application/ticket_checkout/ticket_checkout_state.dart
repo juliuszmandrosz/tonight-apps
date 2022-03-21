@@ -6,7 +6,8 @@ class TicketCheckoutState with _$TicketCheckoutState {
 
   factory TicketCheckoutState({
     required PromotionCode promotionCode,
-    required Option<Event> event,
+    required Option<Event> eventInitData,
+    required Option<Ticket> ticketInitData,
     required Option<String> invalidPromotionCodeMessage,
     required Option<String> paymentFailureMessage,
     required CubitStatus initialStatus,
@@ -14,13 +15,15 @@ class TicketCheckoutState with _$TicketCheckoutState {
     required CubitStatus proceedingToPaymentStatus,
     required bool isVip,
     required int price,
+    // Vip price is for ticket payments only, in case of vip payment, vip price is defined by 'price'
     required int? vipPrice,
-    required Option<Ticket> ticket,
+    required Option<Ticket> purchasedTicket,
   }) = _TicketPaymentState;
 
   factory TicketCheckoutState.initial() => TicketCheckoutState(
         promotionCode: PromotionCode.empty(),
-        event: none(),
+        eventInitData: none(),
+        ticketInitData: none(),
         invalidPromotionCodeMessage: none(),
         paymentFailureMessage: none(),
         initialStatus: CubitStatus.initial,
@@ -29,6 +32,6 @@ class TicketCheckoutState with _$TicketCheckoutState {
         isVip: false,
         price: 0,
         vipPrice: null,
-        ticket: none(),
+        purchasedTicket: none(),
       );
 }

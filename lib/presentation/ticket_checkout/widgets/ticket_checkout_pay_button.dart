@@ -19,8 +19,9 @@ class TicketCheckoutPayButton extends StatelessWidget {
             ? context.loaderOverlay.show()
             : context.loaderOverlay.hide();
         return ElevatedButton(
-          onPressed: () =>
-              context.read<TicketCheckoutCubit>().proceedToPayForTicket(),
+          onPressed: () => state.eventInitData.isSome()
+              ? context.read<TicketCheckoutCubit>().proceedToPayForTicket()
+              : context.read<TicketCheckoutCubit>().proceedToPayForVip(),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Text(S().proceedToPay),

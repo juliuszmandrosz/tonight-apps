@@ -11,21 +11,26 @@ class TicketReturnButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TicketQrCubit, TicketQrState>(
       builder: (context, state) {
-        return ElevatedButton(
-          onPressed: () async {
-            final confirmation =
-                await context.showConfirmationDialogWithCustomMessage(
-              S().confirmTicketReturn,
-            );
+        return Column(
+          children: [
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () async {
+                final confirmation =
+                    await context.showConfirmationDialogWithCustomMessage(
+                  S().confirmTicketReturn,
+                );
 
-            if (confirmation ?? false) {
-              context.read<TicketQrCubit>().returnTicket();
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text(S().returnTicket),
-          ),
+                if (confirmation ?? false) {
+                  context.read<TicketQrCubit>().returnTicket();
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(S().returnTicket),
+              ),
+            ),
+          ],
         );
       },
     );

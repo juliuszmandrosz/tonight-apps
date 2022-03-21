@@ -81,10 +81,6 @@ dependencies:
   loader_overlay: ^2.0.6
   random_string: ^2.3.1
 
-  raver_events:
-    git:
-      url: https://github.com/juliuszmandrosz/RaverEvents.git
-      ref: develop
 
   raver_translations:
     git:
@@ -110,6 +106,11 @@ dependencies:
     git:
       url: https://github.com/juliuszmandrosz/RaverAuth.git
 
+
+  raver_events:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverEvents.git
+      ref: develop
 
 dev_dependencies:
   flutter_test:

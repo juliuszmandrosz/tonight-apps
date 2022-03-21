@@ -4,6 +4,7 @@ import 'package:uuid/uuid.dart';
 class TicketPayment extends Equatable {
   final String id;
   final String eventId;
+  final String clubId;
   final int price;
   final String currency;
   final String clubName;
@@ -15,6 +16,7 @@ class TicketPayment extends Equatable {
   TicketPayment({
     String? id,
     required this.eventId,
+    required this.clubId,
     required this.price,
     required this.currency,
     required this.clubName,
@@ -28,6 +30,7 @@ class TicketPayment extends Equatable {
   List<Object?> get props => [
         id,
         eventId,
+        clubId,
         price,
         currency,
         promotionCode,
@@ -38,8 +41,8 @@ class TicketPayment extends Equatable {
       ];
 
   TicketPayment copyWith({
-    String? id,
     String? eventId,
+    String? clubId,
     int? price,
     String? currency,
     String? promotionCode,
@@ -49,8 +52,9 @@ class TicketPayment extends Equatable {
     String? clubName,
   }) {
     return TicketPayment(
-      id: id ?? this.id,
+      id: id,
       eventId: eventId ?? this.eventId,
+      clubId: clubId ?? this.clubId,
       price: price ?? this.price,
       currency: currency ?? this.currency,
       promotionCode: promotionCode ?? this.promotionCode,

@@ -39,4 +39,11 @@ class TicketListCubit extends Cubit<TicketListState> {
     ticketsCopy.add(ticket);
     emit(state.copyWith(tickets: ticketsCopy));
   }
+
+  updateTicketInState(Ticket oldTicket, Ticket updatedTicket) {
+    final ticketsCopy = [...state.tickets];
+    final index = ticketsCopy.indexOf(oldTicket);
+    ticketsCopy[index] = updatedTicket;
+    emit(state.copyWith(tickets: ticketsCopy));
+  }
 }
