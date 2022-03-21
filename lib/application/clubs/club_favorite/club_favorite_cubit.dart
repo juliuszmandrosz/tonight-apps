@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:raver/application/profile/profile_cubit_hub.dart';
-import 'package:raver/domain/clubs/club_facade.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/application/cubit_status.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -11,7 +11,7 @@ part 'club_favorite_cubit.freezed.dart';
 part 'club_favorite_state.dart';
 
 class ClubFavoriteCubit extends Cubit<ClubFavoriteState> {
-  final ClubFacade _clubFacade;
+  final UserClubFacade _clubFacade;
   final ProfileBroadcastSubject _profileBroadcastSubject;
 
   ClubFavoriteCubit(this._clubFacade, this._profileBroadcastSubject)

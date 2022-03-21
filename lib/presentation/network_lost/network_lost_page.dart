@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import 'package:raver/application/network_check/network_check_cubit.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class NetworkLostPage extends StatelessWidget {

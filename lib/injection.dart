@@ -25,28 +25,28 @@ import 'package:raver/application/events/event_details/event_details_cubit.dart'
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/application/initialization/remote_config_cubit.dart';
-import 'package:raver/application/network_check/network_check_cubit.dart';
 import 'package:raver/application/profile/profile_cubit_hub.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/application/ticket_qr/ticket_qr_cubit.dart';
 import 'package:raver/application/user_favorites/event_favorites/user_event_favorites_cubit.dart';
-import 'package:raver/domain/clubs/club_facade.dart';
 import 'package:raver/domain/payments/payment_facade.dart';
 import 'package:raver/domain/remote_config/remote_config_facade.dart';
-import 'package:raver/infrastructure/clubs/firebase_club_facade.dart';
-import 'package:raver/infrastructure/core/algolia/algolia_clubs_api.dart';
 import 'package:raver/infrastructure/payments/cloud_functions/payment_cloud_functions_facade.dart';
 import 'package:raver/infrastructure/payments/firebase_payment_facade.dart';
 import 'package:raver/infrastructure/remote_config/firebase_remote_config_facade.dart';
 import 'package:raver_account_settings/raver_account_settings.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 
+import 'application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
 import 'application/clubs/club_favorite/club_favorite_cubit.dart';
+import 'application/event_review/existing_review/existing_review_cubit.dart';
+import 'application/event_review/new_review/event_review_cubit.dart';
 import 'application/profile/profile_cubit.dart';
 import 'application/user_favorites/club_favorites/user_club_favorites_cubit.dart';
 
@@ -153,6 +153,27 @@ void _registerCubits() {
     (TicketListCubit ticketListCubit, _) => TicketQrCubit(
       ticketFacade: getIt(),
       ticketListCubit: ticketListCubit,
+    ),
+  );
+
+  //Reviews
+  getIt.registerFactoryParam(
+    (TicketListCubit ticketListCubit, _) => NewReviewCubit(
+      ticketListCubit: ticketListCubit,
+      profileBroadcastSubject: getIt(),
+      reviewFacade: getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => ClubReviewsBloc(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => ExistingReviewCubit(
+      getIt(),
     ),
   );
 
@@ -272,12 +293,14 @@ void _registerFacades() {
   );
 
   //Club
-  getIt.registerLazySingleton<ClubFacade>(
+  getIt.registerLazySingleton<UserClubFacade>(
     () => FirebaseClubFacade(
       firestore: getIt(),
-      storage: getIt(),
+      firebaseStorage: getIt(),
       logger: getIt(),
       algoliaClubsApi: getIt(),
+      firebaseAuth: getIt(),
+      cloudFunctionsFacade: getIt(),
     ),
   );
 
@@ -286,6 +309,15 @@ void _registerFacades() {
       firestore: getIt(),
       logger: getIt(),
       ticketCloudFunctionsFacade: getIt(),
+      firebaseAuth: getIt(),
+    ),
+  );
+
+  //Reviews
+  getIt.registerLazySingleton<UserReviewFacade>(
+    () => FirebaseReviewFacade(
+      firestore: getIt(),
+      logger: getIt(),
       firebaseAuth: getIt(),
     ),
   );
@@ -344,6 +376,13 @@ void _registerFacades() {
       firebaseAuth: getIt(),
     ),
   );
+
+  //Cloud functions
+  getIt.registerLazySingleton<ClubCloudFunctionsFacade>(
+    () => ClubCloudFunctionsFacadeImpl(
+      getIt(),
+    ),
+  );
 }
 
 void _registerModules() {
@@ -377,8 +416,8 @@ void _registerModules() {
     ),
   );
 
-  getIt.registerLazySingleton(
-    () => AlgoliaClubsApi(
+  getIt.registerLazySingleton<AlgoliaClubsApi>(
+    () => AlgoliaClubsApiImpl(
       getIt(),
     ),
   );

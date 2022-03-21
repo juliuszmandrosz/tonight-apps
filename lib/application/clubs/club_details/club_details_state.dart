@@ -10,6 +10,6 @@ abstract class ClubDetailsState with _$ClubDetailsState {
 
   const factory ClubDetailsState.loadSuccess(Club club) = _LoadSuccess;
 
-  const factory ClubDetailsState.loadFailure(ClubFailure clubFailure) =
+  const factory ClubDetailsState.loadFailure(UserClubFailure clubFailure) =
       _LoadFailure;
 }

@@ -51,7 +51,7 @@ class _ClubSearchFieldState extends State<ClubSearchField> {
                   () {
                     var provider = BlocProvider.of<ClubFiltersCubit>(context);
                     textController.clear();
-                    if (provider.state.filter.phrase.isNotEmpty) {
+                    if (provider.state.filter.phraseFilter.phrase.isNotEmpty) {
                       provider.searchFieldSubmitted("");
                     }
                   },

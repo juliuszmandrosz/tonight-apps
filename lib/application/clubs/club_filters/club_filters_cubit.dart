@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
-import 'package:raver/domain/clubs/filters/club_filters.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 
 part 'club_filters_cubit.freezed.dart';
 part 'club_filters_state.dart';
@@ -13,7 +13,12 @@ class ClubFiltersCubit extends Cubit<ClubFiltersState> {
 
   void searchFieldSubmitted(String value) {
     _clubsOverviewBloc.add(
-        ClubsOverviewEvent.clubsFetched(state.filter.copyWith(phrase: value)));
+      ClubsOverviewEvent.clubsFetched(
+        state.filter.copyWith(
+          phraseFilter: PhraseFilter(phrase: value),
+        ),
+      ),
+    );
   }
 
   //TODO: Filters functionality will be done in future pr ~ 09.03.2022

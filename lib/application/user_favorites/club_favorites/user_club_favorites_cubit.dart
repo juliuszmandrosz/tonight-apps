@@ -2,8 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:raver/application/profile/profile_cubit_hub.dart';
-import 'package:raver/domain/clubs/club_entity.dart';
-import 'package:raver/domain/clubs/club_facade.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/application/application.dart';
 import 'package:raver_common/application/cubit_status.dart';
 
@@ -12,7 +11,7 @@ part 'user_club_favorites_state.dart';
 
 //TODO implement bloc communication separation: POC on raver-common/favorites
 class UserClubFavoritesCubit extends Cubit<UserClubFavoritesState> {
-  final ClubFacade _clubFacade;
+  final UserClubFacade _clubFacade;
   final ProfileBroadcastSubject _profileBroadcastSubject;
 
   UserClubFavoritesCubit(

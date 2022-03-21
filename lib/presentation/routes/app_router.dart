@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/presentation/app_settings/app_settings_page.dart';
 import 'package:raver/presentation/event_date_picker/event_date_picker_page.dart';
 import 'package:raver/presentation/event_filters/event_filters_page.dart';
+import 'package:raver/presentation/event_review/review_page.dart';
 import 'package:raver/presentation/events/event_details_page.dart';
 import 'package:raver/presentation/favorites/favorites_page.dart';
 import 'package:raver/presentation/home/clubs_tab/club_page.dart';
@@ -23,6 +23,7 @@ import 'package:raver/presentation/ticket_payment_confirm/ticket_payment_confirm
 import 'package:raver/presentation/ticket_qr/ticket_qr_page.dart';
 import 'package:raver/presentation/tickets/ticket_overview_page.dart';
 import 'package:raver/presentation/welcome_loader/welcome_loader_page.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 
@@ -82,6 +83,7 @@ part 'app_router.gr.dart';
     AutoRoute(page: OnboardingPage),
     AutoRoute(page: ChangePasswordPage),
     AutoRoute(page: AboutUsPage),
+    AutoRoute(page: ReviewPage),
   ],
 )
 class AppRouter extends _$AppRouter {}

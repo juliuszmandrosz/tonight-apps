@@ -28,7 +28,7 @@ class ClubRatingRow extends StatelessWidget {
         const SizedBox(
           width: 10,
         ),
-        Text(rating.toString()),
+        Text(rating.toStringAsFixed(1)),
         const SizedBox(
           width: 10,
         ),

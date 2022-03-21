@@ -19,9 +19,13 @@ class TicketCard extends StatelessWidget {
     final theme = Theme.of(context);
     return Card(
       child: InkWell(
-        onTap: () => AutoRouter.of(context).push(
-          EventDetailsRoute(eventId: ticket.eventId),
-        ),
+        onTap: () =>
+            //TODO: Add case when user has not been on event but give him ability to show photos
+            ticket.isExpired
+                ? AutoRouter.of(context).push(ReviewRoute(ticket: ticket))
+                : AutoRouter.of(context).push(
+                    EventDetailsRoute(eventId: ticket.eventId),
+                  ),
         child: IntrinsicHeight(
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -44,8 +48,8 @@ class TicketCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        context
-                            .formatDateTimeToLocaleYMDHM(ticket.eventDateTime),
+                        context.formatDateTimeToLocaleYMDHM(
+                            ticket.eventStartDateTime),
                         style: theme.textTheme.bodyText1,
                       ),
                     ],

@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 
 class ClubReviewCard extends StatelessWidget {
+  final Review review;
+
   const ClubReviewCard({
     Key? key,
-    required this.username,
-    required this.userRate,
-    required this.userOpinion,
-    required this.dateTime,
+    required this.review,
   }) : super(key: key);
-
-  final String username;
-  final double userRate;
-  final String userOpinion;
-  final DateTime dateTime;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +40,7 @@ class ClubReviewCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(100)),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text(username.substring(0, 2)),
+                        child: Text(review.username.substring(0, 2)),
                       ),
                     ),
                     const SizedBox(
@@ -55,11 +50,12 @@ class ClubReviewCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
-                          children: [Text(username)],
+                          children: [Text(review.username)],
                         ),
                         Row(
                           children: [
-                            Text(context.formatDateTimeToLocaleYMD(dateTime))
+                            Text(context
+                                .formatDateTimeToLocaleYMD(review.dateAdded))
                           ],
                         ),
                       ],
@@ -77,7 +73,7 @@ class ClubReviewCard extends StatelessWidget {
                             size: 15,
                           ),
                         ),
-                        Text('$userRate'),
+                        Text('${review.userRate}'),
                       ],
                     )
                   ],
@@ -88,7 +84,7 @@ class ClubReviewCard extends StatelessWidget {
               padding: const EdgeInsetsDirectional.only(start: 8),
               child: Row(
                 children: [
-                  Text(userOpinion),
+                  Text(review.userOpinion),
                 ],
               ),
             ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -27,9 +27,7 @@ class ClubLocationRow extends StatelessWidget {
             var result =
                 await launchGoogleMaps(club.getLatitude(), club.getLatitude());
             if (result.isSome()) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(S().errorOpeningMaps)),
-              );
+              context.showSnackbarMessage(S().errorOpeningMaps);
             }
           },
         )

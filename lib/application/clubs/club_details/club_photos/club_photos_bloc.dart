@@ -1,8 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/domain/clubs/club_facade.dart';
-import 'package:raver/domain/clubs/failures/club_failure.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 
 part 'club_photos_bloc.freezed.dart';
@@ -14,7 +13,7 @@ const pageSize = 10;
 const throttleDuration = Duration(milliseconds: 500);
 
 class ClubPhotosBloc extends Bloc<ClubPhotosEvent, ClubPhotosState> {
-  final ClubFacade _clubFacade;
+  final UserClubFacade _clubFacade;
 
   ClubPhotosBloc(this._clubFacade) : super(ClubPhotosState.initial()) {
     on<_ClubPhotosFetched>(getClubPhotosUrls);
@@ -26,8 +25,8 @@ class ClubPhotosBloc extends Bloc<ClubPhotosEvent, ClubPhotosState> {
       _ClubPhotosFetched event, Emitter<ClubPhotosState> emit) async {
     emit(state.copyWith(status: CubitStatus.loading));
 
-    Either<ClubFailure, Tuple2<List<String>, String?>> failureOrSuccess =
-        await _clubFacade.getClubPhotosUrls(clubId: event.clubId);
+    Either<UserClubFailure, Tuple2<List<String>, String?>> failureOrSuccess =
+        await _clubFacade.getClubPhotosUrlsAsUser(clubId: event.clubId);
 
     failureOrSuccess.fold(
       (failure) => emit(
@@ -46,9 +45,9 @@ class ClubPhotosBloc extends Bloc<ClubPhotosEvent, ClubPhotosState> {
       _ClubPhotosNextPageFetched event, Emitter<ClubPhotosState> emit) async {
     if (state.nextPageToken == null) return;
 
-    Either<ClubFailure, Tuple2<List<String>, String?>> failureOrSuccess =
-        await _clubFacade.getClubPhotosUrls(
-          clubId: event.clubId,
+    Either<UserClubFailure, Tuple2<List<String>, String?>> failureOrSuccess =
+        await _clubFacade.getClubPhotosUrlsAsUser(
+      clubId: event.clubId,
       nextPageToken: event.nextPageToken,
       pageSize: pageSize,
     );

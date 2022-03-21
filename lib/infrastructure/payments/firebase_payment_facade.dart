@@ -212,7 +212,9 @@ class FirebasePaymentFacade implements PaymentFacade {
       clubName: ticketPayment.clubName,
       eventName: ticketPayment.eventName,
       eventId: ticketPayment.eventId,
-      eventDateTime: ticketPayment.eventDateTime,
+      //TODO: To be removed at all
+      eventStartDateTime: ticketPayment.eventDateTime,
+      eventEndDateTime: ticketPayment.eventDateTime,
       price: ticketPayment.price,
       currency: ticketPayment.currency,
       isVip: ticketPayment.isVip,

@@ -26,15 +26,8 @@ class UpdateUsernamePage extends StatelessWidget {
           body: BlocListener<UsernameCubit, UsernameState>(
             listener: (context, state) {
               state.errorMessage.fold(() {}, (error) {
-                ScaffoldMessenger.of(context)
-                  ..hideCurrentSnackBar()
-                  ..showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        authErrorMessages[error] ?? S().serverError,
-                      ),
-                    ),
-                  );
+                context.showSnackbarMessage(
+                    authErrorMessages[error] ?? S().serverError);
               });
               if (state.status.isSubmissionSuccess) {
                 context.showSnackbarMessage(S().usernameUpdatedMessage);

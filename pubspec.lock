@@ -685,7 +685,7 @@ packages:
       name: google_fonts
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.2"
+    version: "3.0.0"
   google_maps_flutter:
     dependency: "direct main"
     description:
@@ -699,7 +699,7 @@ packages:
       name: google_maps_flutter_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.5"
+    version: "2.1.6"
   google_place:
     dependency: "direct main"
     description:
@@ -720,14 +720,14 @@ packages:
       name: google_sign_in_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.2.7"
+    version: "5.2.8"
   google_sign_in_ios:
     dependency: transitive
     description:
       name: google_sign_in_ios
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.2.7"
+    version: "5.3.1"
   google_sign_in_platform_interface:
     dependency: transitive
     description:
@@ -783,7 +783,7 @@ packages:
       name: http_parser
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.0"
+    version: "4.0.1"
   hydrated_bloc:
     dependency: "direct main"
     description:
@@ -1098,7 +1098,7 @@ packages:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.2"
+    version: "6.0.3"
   pub_semver:
     dependency: transitive
     description:
@@ -1153,7 +1153,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: b6bb7b4cbac0ea1448e213c77d14fe162f12d2db
+      resolved-ref: "778ccbcf371d593cc9495b50782d33a031076fb1"
       url: "https://github.com/juliuszmandrosz/RaverAccountSettings.git"
     source: git
     version: "0.0.1"
@@ -1162,8 +1162,17 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: d723f8de18ce65a01997106c77f76ea866d258ed
+      resolved-ref: "1d0b473948d4db9799def269fcc78846ab42e8b2"
       url: "https://github.com/juliuszmandrosz/RaverAuth.git"
+    source: git
+    version: "0.0.1"
+  raver_clubs:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "feature/reviews"
+      resolved-ref: edba142aff8b18459d6dcfa90c364f3ee7fc0184
+      url: "https://github.com/juliuszmandrosz/RaverClubs.git"
     source: git
     version: "0.0.1"
   raver_common:
@@ -1171,7 +1180,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "807baec19400a01ae1a5cc2db16bc4c67f7786ea"
+      resolved-ref: "6c9933966e28b282ddd7f4d23ea9eac6c12752a1"
       url: "https://github.com/juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -1180,7 +1189,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "14d76f9ad404b49a6dbaaf45083c5d9dacea2c85"
+      resolved-ref: "8eea8ac35167fc7759d6cba92c8028c258bcb0e0"
       url: "https://github.com/juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
@@ -1197,8 +1206,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: develop
-      resolved-ref: "5232e5fe50eb28ac892e79ba64e84416baa62e7a"
+      ref: "feature/reviews"
+      resolved-ref: d9473ed4f3db16598da33a09723448cb4d6e2935
       url: "https://github.com/juliuszmandrosz/RaverTickets.git"
     source: git
     version: "0.0.1"
@@ -1207,7 +1216,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "68ad808e16911901dcb8b8cdb687f53d46cb2644"
+      resolved-ref: "88f194e36003f6d70a01308d53e3b368b7916379"
       url: "https://github.com/juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"
@@ -1397,7 +1406,7 @@ packages:
       name: url_launcher_ios
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.16"
+    version: "6.0.17"
   url_launcher_linux:
     dependency: transitive
     description:
@@ -1481,7 +1490,7 @@ packages:
       name: webview_flutter_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.1"
+    version: "1.9.0"
   webview_flutter_wkwebview:
     dependency: transitive
     description:

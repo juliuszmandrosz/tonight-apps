@@ -43,11 +43,7 @@ class ClubDetails extends StatelessWidget {
                     onPressed: () async {
                       var result = await launchPhoneCall(phoneNumber);
                       if (result.isSome()) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(S().errorMakingCall),
-                          ),
-                        );
+                        context.showSnackbarMessage(S().errorMakingCall);
                       }
                     },
                     icon: const Icon(Icons.phone),

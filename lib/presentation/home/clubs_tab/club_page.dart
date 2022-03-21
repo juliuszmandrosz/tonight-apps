@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_details/club_details_cubit.dart';
+import 'package:raver/application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
 import 'package:raver/application/clubs/club_rewards/club_rewards_cubit.dart';
-import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details/club_description.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details/club_details_tabs.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_image.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 
 class ClubPage extends StatelessWidget {
   final Club? club;
@@ -34,7 +35,10 @@ class ClubPage extends StatelessWidget {
         }),
         BlocProvider(
             create: (context) =>
-                getIt<ClubRewardsCubit>()..getRewards(clubId ?? club!.id))
+                getIt<ClubRewardsCubit>()..getRewards(clubId ?? club!.id)),
+        BlocProvider(
+            create: (context) => getIt<ClubReviewsBloc>()
+              ..add(ClubReviewsEvent.reviewsFetched(clubId ?? club!.id)))
       ],
       child: BlocBuilder<ClubDetailsCubit, ClubDetailsState>(
         builder: (context, state) {

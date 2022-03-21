@@ -1,12 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/domain/clubs/club_entity.dart';
-import 'package:raver/domain/clubs/club_facade.dart';
-import 'package:raver/domain/clubs/failures/club_failure.dart';
-import 'package:raver/domain/clubs/filters/club_filters.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 
 part 'clubs_overview_bloc.freezed.dart';
@@ -18,7 +14,7 @@ const pageSize = 20;
 const throttleDuration = Duration(milliseconds: 500);
 
 class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
-  final ClubFacade _clubFacade;
+  final UserClubFacade _clubFacade;
 
   ClubsOverviewBloc(this._clubFacade) : super(ClubsOverviewState.initial()) {
     on<_NextPageClubsFetched>(
@@ -33,19 +29,20 @@ class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
       _ClubsFetched event, Emitter<ClubsOverviewState> emit) async {
     emit(state.copyWith(status: CubitStatus.loading));
 
-    Either<ClubFailure, List<Club>> failureOrSuccess =
+    final failureOrSuccess =
         await _clubFacade.getClubs(event.clubFilter, pageSize: pageSize);
 
     failureOrSuccess.fold(
-        (failure) => emit(state.copyWith(status: CubitStatus.failure)),
-        (clubs) => emit(
-              state.copyWith(
-                status: CubitStatus.success,
-                clubs: clubs,
-                hasReachedMax: clubs.length != pageSize,
-                clubFilter: event.clubFilter,
-              ),
-            ));
+      (failure) => emit(state.copyWith(status: CubitStatus.failure)),
+      (clubs) => emit(
+        state.copyWith(
+          status: CubitStatus.success,
+          clubs: clubs,
+          hasReachedMax: clubs.length != pageSize,
+          clubFilter: event.clubFilter,
+        ),
+      ),
+    );
   }
 
   Future<void> _onNextPageClubsFetched(
@@ -56,15 +53,16 @@ class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
         offset: state.clubs.length, pageSize: pageSize);
 
     failureOrSuccess.fold(
-        (failure) => emit(
-              state.copyWith(status: CubitStatus.failure),
-            ),
-        (clubs) => emit(
-              state.copyWith(
-                status: CubitStatus.success,
-                clubs: List.of(state.clubs)..addAll(clubs),
-                hasReachedMax: clubs.length != pageSize,
-              ),
-            ));
+      (failure) => emit(
+        state.copyWith(status: CubitStatus.failure),
+      ),
+      (clubs) => emit(
+        state.copyWith(
+          status: CubitStatus.success,
+          clubs: List.of(state.clubs)..addAll(clubs),
+          hasReachedMax: clubs.length != pageSize,
+        ),
+      ),
+    );
   }
 }

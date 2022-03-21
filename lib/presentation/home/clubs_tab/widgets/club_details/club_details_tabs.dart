@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/club_buy_ticket.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/club_details.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/club_events.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/club_opinions.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/club_photos.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/club_rewards.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_translations/generated/generated.dart';
 
 class ClubDetailsTabs extends StatelessWidget {
@@ -46,7 +46,7 @@ class ClubDetailsTabs extends StatelessWidget {
                     socialMedia: club.socialMedia,
                   ),
                   ClubOpinions(
-                    reviews: club.reviews,
+                    clubId: club.id,
                   ),
                   ClubPhotos(
                     clubId: club.id,

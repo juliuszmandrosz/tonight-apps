@@ -24,11 +24,7 @@ class EventDetailsNavigateToClub extends StatelessWidget {
             final result = await launchGoogleMaps(lat, lng);
 
             if (result.isSome()) {
-              ScaffoldMessenger.of(context)
-                ..hideCurrentSnackBar()
-                ..showSnackBar(
-                  SnackBar(content: Text(S().errorOpeningMaps)),
-                );
+              context.showSnackbarMessage(S().errorOpeningMaps);
             }
           },
           // TODO - change to navigation based on user location

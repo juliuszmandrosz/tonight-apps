@@ -45,7 +45,8 @@ class TicketCheckoutTicketCard extends StatelessWidget {
                         const SizedBox(height: 5),
                         Text(
                           context.formatDateTimeToLocaleYMDHM(
-                            ticket?.eventDateTime ?? event!.eventStartDateTime,
+                            ticket?.eventStartDateTime ??
+                                event!.eventStartDateTime,
                           ),
                           style: theme.textTheme.bodyText1,
                         ),

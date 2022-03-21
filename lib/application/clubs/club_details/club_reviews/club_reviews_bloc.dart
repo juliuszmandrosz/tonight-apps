@@ -1,0 +1,70 @@
+import 'package:bloc/bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:raver_clubs/raver_clubs.dart';
+import 'package:raver_common/raver_common.dart';
+
+part 'club_reviews_bloc.freezed.dart';
+
+part 'club_reviews_event.dart';
+
+part 'club_reviews_state.dart';
+
+const pageSize = 20;
+
+const throttleDuration = Duration(milliseconds: 500);
+
+class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
+  final UserReviewFacade _reviewFacade;
+
+  ClubReviewsBloc(this._reviewFacade) : super(ClubReviewsState.initial()) {
+    on<_NextPageReviewsFetched>(
+      _onNextPageReviewsFetched,
+      transformer: throttleDroppable(throttleDuration),
+    );
+
+    on<_ReviewsFetched>(_onReviewsFetched);
+  }
+
+  Future<void> _onReviewsFetched(
+      _ReviewsFetched event, Emitter<ClubReviewsState> emit) async {
+    emit(state.copyWith(status: CubitStatus.loading));
+
+    final failureOrSuccess = await _reviewFacade
+        .getClubReviewsAsUser(event.clubId, pageSize: pageSize);
+
+    failureOrSuccess.fold(
+      (failure) => emit(state.copyWith(status: CubitStatus.failure)),
+      (reviews) => emit(
+        state.copyWith(
+          status: CubitStatus.success,
+          reviews: reviews,
+          hasReachedMax: reviews.length != pageSize,
+          clubId: event.clubId,
+        ),
+      ),
+    );
+  }
+
+  Future<void> _onNextPageReviewsFetched(
+      _NextPageReviewsFetched event, Emitter<ClubReviewsState> emit) async {
+    if (state.hasReachedMax) return;
+
+    final failureOrSuccess = await _reviewFacade.getClubReviewsAsUser(
+        state.clubId,
+        lastReview: state.reviews.last,
+        pageSize: pageSize);
+
+    failureOrSuccess.fold(
+      (failure) => emit(
+        state.copyWith(status: CubitStatus.failure),
+      ),
+      (reviews) => emit(
+        state.copyWith(
+          status: CubitStatus.success,
+          reviews: List.of(state.reviews)..addAll(reviews),
+          hasReachedMax: reviews.length != pageSize,
+        ),
+      ),
+    );
+  }
+}

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details/club_location_row.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details/club_name_row.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details/club_rating_row.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 
 class ClubDescription extends StatelessWidget {
   final Club club;

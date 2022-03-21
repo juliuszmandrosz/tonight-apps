@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:raver/domain/clubs/club_entity.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 
 import 'club_details_favorite_button.dart';
 
