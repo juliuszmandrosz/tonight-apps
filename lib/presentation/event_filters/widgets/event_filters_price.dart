@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -16,6 +15,7 @@ class EventFiltersPrice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
           previous.filters.priceRangeFilter.minPrice !=
@@ -27,7 +27,7 @@ class EventFiltersPrice extends StatelessWidget {
           context.read<EventFiltersCubit>().changePriceRange(
                 state.filters.priceRangeFilter.minPrice,
                 availableMaxPrice,
-              );
+          );
         }
 
         var _currentRangeValues = RangeValues(
@@ -45,7 +45,7 @@ class EventFiltersPrice extends StatelessWidget {
                     text: '${S().priceRange} (${context.getCurrencyName()})'),
                 RaverHeadline(
                   text:
-                      '${_currentRangeValues.start.round()}-${_currentRangeValues.end.round()}',
+                  '${_currentRangeValues.start.round()}-${_currentRangeValues.end.round()}',
                 ),
               ],
             ),
@@ -55,8 +55,8 @@ class EventFiltersPrice extends StatelessWidget {
                 Expanded(
                   child: RangeSlider(
                     values: _currentRangeValues,
-                    activeColor: DefaultColors.primaryColor,
-                    inactiveColor: DefaultColors.backgroundColor,
+                    activeColor: theme.primaryColor,
+                    inactiveColor: theme.backgroundColor,
                     max: availableMaxPrice.toDouble(),
                     min: 0,
                     divisions: (availableMaxPrice / 10).round(),
@@ -68,7 +68,7 @@ class EventFiltersPrice extends StatelessWidget {
                         context.read<EventFiltersCubit>().changePriceRange(
                               values.start.round(),
                               values.end.round(),
-                            ),
+                        ),
                   ),
                 ),
               ],

@@ -22,9 +22,8 @@ class RatingRow extends StatelessWidget {
           itemCount: 5,
           itemSize: 24,
           direction: Axis.horizontal,
-          itemBuilder: (context, index) => Icon(
+          itemBuilder: (context, index) => const Icon(
             Icons.star_rate_rounded,
-            color: theme.primaryColor,
           ),
         ),
         const SizedBox(

@@ -5,14 +5,14 @@ class WelcomeLoadingState with _$WelcomeLoadingState {
   const WelcomeLoadingState._();
 
   factory WelcomeLoadingState({
-    required bool isRemoteConfigLoaded,
-    required bool isLocationLoaded,
+    required bool dependenciesLoaded,
     required bool isFailure,
+    required bool onboardingCompleted,
   }) = _WelcomeLoadingState;
 
   factory WelcomeLoadingState.initial() => WelcomeLoadingState(
-        isRemoteConfigLoaded: false,
-        isLocationLoaded: false,
+        dependenciesLoaded: false,
         isFailure: false,
+        onboardingCompleted: false,
       );
 }

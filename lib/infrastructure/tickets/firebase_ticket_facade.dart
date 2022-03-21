@@ -20,9 +20,8 @@ class FirebaseTicketFacade implements TicketFacade {
 
   @override
   Future<Either<TicketFailure, List<Ticket>>> getTickets() async {
-    final userDoc = await _firestore.userDocument();
-
     try {
+      final userDoc = await _firestore.userDocument();
       final result = await userDoc.ticketCollection.get();
       return right<TicketFailure, List<Ticket>>(
         result.docs

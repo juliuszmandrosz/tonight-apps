@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
-import 'package:raver_events/domain/event_entity.dart';
+import 'package:raver_events/raver_events.dart';
 
 class EventDetailsEventName extends StatelessWidget {
   final Event event;

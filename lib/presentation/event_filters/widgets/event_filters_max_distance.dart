@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -40,6 +39,7 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
           previous.filters.maxDistanceFilter.maxDistance !=
@@ -51,34 +51,33 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
             ? Container()
             : BlocBuilder<UserLocationCubit, UserLocationState>(
                 builder: (context, locationState) {
-                  return Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          RaverHeadline(text: S().maxDistance),
-                          if (locationState.isPermissionGranted)
-                            RaverHeadline(
-                              text:
-                                  '${filtersState.filters.maxDistanceFilter.maxDistance}km',
-                            ),
-                        ],
+            return Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    RaverHeadline(text: S().maxDistance),
+                    if (locationState.isPermissionGranted)
+                      RaverHeadline(
+                        text:
+                        '${filtersState.filters.maxDistanceFilter.maxDistance}km',
                       ),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          locationState.isPermissionGranted
-                              ? Expanded(
-                                  child: Slider(
-                                    value: filtersState
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    locationState.isPermissionGranted
+                        ? Expanded(
+                      child: Slider(
+                        value: filtersState
                                         .filters.maxDistanceFilter.maxDistance
                                         .toDouble(),
                                     label:
                                         '${filtersState.filters.maxDistanceFilter.maxDistance.round()}',
-                                    activeColor: DefaultColors.primaryColor,
-                                    inactiveColor:
-                                        DefaultColors.backgroundColor,
+                                    activeColor: theme.primaryColor,
+                                    inactiveColor: theme.backgroundColor,
                                     min: 5,
                                     max: 50,
                                     divisions: 9,
@@ -86,26 +85,26 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
                                         .read<EventFiltersCubit>()
                                         .changeMaxDistance(value.round()),
                                   ),
-                                )
-                              : locationState.isLoading
-                                  ? const Center(
-                                      child: CircularProgressIndicator(),
-                                    )
-                                  : ElevatedButton(
-                                      onPressed: () => context
-                                          .read<UserLocationCubit>()
-                                          .openAppSettings(),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Text(S().enableLocation),
-                                      ),
-                                    )
-                        ],
+                    )
+                        : locationState.isLoading
+                        ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                        : ElevatedButton(
+                      onPressed: () => context
+                          .read<UserLocationCubit>()
+                          .openAppSettings(),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(S().enableLocation),
                       ),
-                    ],
-                  );
-                },
-              );
+                    )
+                  ],
+                ),
+              ],
+            );
+          },
+        );
       },
     );
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class RaverAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -12,7 +11,7 @@ class RaverAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(title ?? S().raver),
-      backgroundColor: DefaultColors.primaryColor,
+      backgroundColor: Theme.of(context).primaryColor,
       actions: actions,
     );
   }

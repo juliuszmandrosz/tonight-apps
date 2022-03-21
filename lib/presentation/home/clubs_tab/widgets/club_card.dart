@@ -44,9 +44,10 @@ class ClubCard extends StatelessWidget {
                               height: 220,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image:
-                                        Image.network(_club.clubImageUrl).image,
-                                    fit: BoxFit.cover),
+                                  image:
+                                      Image.network(_club.clubImageUrl).image,
+                                  fit: BoxFit.cover,
+                                ),
                                 boxShadow: [
                                   BoxShadow(
                                     blurRadius: 3,
@@ -64,8 +65,13 @@ class ClubCard extends StatelessWidget {
                             right: 0,
                             child: Container(
                               width: double.infinity,
-                              decoration:
-                                  BoxDecoration(color: theme.backgroundColor),
+                              decoration: BoxDecoration(
+                                color: theme.backgroundColor,
+                                borderRadius: const BorderRadius.only(
+                                  bottomLeft: Radius.circular(8),
+                                  bottomRight: Radius.circular(8),
+                                ),
+                              ),
                               child: Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Column(

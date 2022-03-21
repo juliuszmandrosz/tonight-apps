@@ -9,8 +9,10 @@ import 'package:get_it/get_it.dart';
 import 'package:google_place/google_place.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
+import 'package:raver/application/app_settings/app_settings_cubit.dart';
 import 'package:raver/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:raver/application/auth/sign_up/sign_up_cubit.dart';
+import 'package:raver/application/auth/username/username_cubit.dart';
 import 'package:raver/application/clubs/club_details/club_details_cubit.dart';
 import 'package:raver/application/clubs/club_details/club_photos/club_photos_bloc.dart';
 import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
@@ -34,11 +36,12 @@ import 'package:raver/infrastructure/payments/cloud_functions/payment_cloud_func
 import 'package:raver/infrastructure/payments/firebase_payment_facade.dart';
 import 'package:raver/infrastructure/remote_config/firebase_remote_config_facade.dart';
 import 'package:raver/infrastructure/tickets/firebase_ticket_facade.dart';
+import 'package:raver_account_settings/raver_account_settings.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 
-import 'application/welcome_loading/welcome_loading_cubit.dart';
+import 'application/profile/profile_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -83,6 +86,23 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => SignUpCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => ResetPasswordCubit(
+      getIt(),
+    ),
+  );
+  getIt.registerFactory(
+    () => ChangePasswordCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => UsernameCubit(
       getIt(),
     ),
   );
@@ -152,17 +172,21 @@ void _registerCubits() {
     ),
   );
 
-  //Welcome Loader
-  getIt.registerFactory(
-    () => WelcomeLoadingCubit(),
-  );
-
   //Network Check
   getIt.registerFactory(
     () => NetworkCheckCubit(
       getIt(),
     ),
   );
+
+  //App info
+  getIt.registerFactory(() => AppInfoCubit());
+
+  //Profile
+  getIt.registerFactory(() => ProfileCubit(getIt()));
+
+  //App settings
+  getIt.registerFactory(() => AppSettingsCubit());
 
   //Payment
   getIt.registerFactory(
@@ -250,6 +274,15 @@ void _registerFacades() {
 
   getIt.registerLazySingleton<PaymentCloudFunctionsFacade>(
     () => PaymentCloudFunctionsFacadeImpl(),
+  );
+
+  //Profile
+  getIt.registerLazySingleton<UserAccountFacade>(
+    () => FirebaseAccountFacade(
+      firestore: getIt(),
+      logger: getIt(),
+      firebaseAuth: getIt(),
+    ),
   );
 }
 

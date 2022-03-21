@@ -39,6 +39,7 @@ class _EventFiltersCityState extends State<EventFiltersCity> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
           previous.filters.cityFilter.cityName !=
@@ -51,79 +52,78 @@ class _EventFiltersCityState extends State<EventFiltersCity> {
         return state.filters.maxDistanceFilter.enabled
             ? Container()
             : SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Row(
-                      children: [RaverHeadline(text: S().city)],
-                    ),
-                    const SizedBox(height: 20),
-                    TextField(
-                      controller: _textController,
-                      decoration: InputDecoration(
-                        labelText:
-                            MaterialLocalizations.of(context).searchFieldLabel,
-                        focusedBorder: const OutlineInputBorder(
+          child: Column(
+            children: [
+              Row(
+                children: [RaverHeadline(text: S().city)],
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: _textController,
+                decoration: InputDecoration(
+                  labelText:
+                  MaterialLocalizations.of(context).searchFieldLabel,
+                  focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: DefaultColors.primaryColor,
+                            color: theme.primaryColor,
                             width: 2,
                           ),
                         ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: DefaultColors.textColorLight,
-                            width: 2,
-                          ),
-                        ),
-                        suffixIcon: state.filters.cityFilter.cityName.isNotEmpty
-                            ? InkWell(
-                                onTap: () {
-                                  context
-                                      .read<EventFiltersCubit>()
-                                      .changeCity('', '');
-                                  setState(() {
-                                    _textController.text = '';
-                                  });
-                                },
-                                child: const Icon(
-                                  Icons.clear,
-                                  color: DefaultColors.textColor,
-                                  size: 18,
-                                ),
-                              )
-                            : null,
-                      ),
-                      onChanged: (value) {
-                        _onSearchChanged.add(value);
-                      },
+                  enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: DefaultColors.textColorLight,
+                      width: 2,
                     ),
-                    const SizedBox(height: 10),
-                    BlocBuilder<GooglePlacesCubit, GooglePlacesState>(
-                      builder: (context, state) {
-                        return ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: state.predictions.length,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              leading: const CircleAvatar(
+                  ),
+                  suffixIcon: state.filters.cityFilter.cityName.isNotEmpty
+                      ? InkWell(
+                    onTap: () {
+                      context
+                          .read<EventFiltersCubit>()
+                          .changeCity('', '');
+                      setState(() {
+                        _textController.text = '';
+                      });
+                    },
+                    child: const Icon(
+                      Icons.clear,
+                      size: 18,
+                    ),
+                  )
+                      : null,
+                ),
+                onChanged: (value) {
+                  _onSearchChanged.add(value);
+                },
+              ),
+              const SizedBox(height: 10),
+              BlocBuilder<GooglePlacesCubit, GooglePlacesState>(
+                builder: (context, state) {
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: state.predictions.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        leading: CircleAvatar(
                                 child: Icon(
                                   Icons.pin_drop,
-                                  color: DefaultColors.backgroundColor,
+                                  color: theme.backgroundColor,
                                 ),
                               ),
-                              title:
-                                  Text(state.predictions[index].description!),
-                              onTap: () => _onPredictionTapped(
-                                state.predictions[index],
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              );
+                        title:
+                        Text(state.predictions[index].description!),
+                        onTap: () => _onPredictionTapped(
+                          state.predictions[index],
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            ],
+          ),
+        );
       },
     );
   }

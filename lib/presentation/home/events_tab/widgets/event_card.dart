@@ -96,10 +96,10 @@ class EventCard extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: state.status == CubitStatus.loading
-                                  ? const Padding(
+                                  ? Padding(
                                       padding: EdgeInsets.all(4),
                                       child: SpinKitThreeBounce(
-                                        color: DefaultColors.backgroundColor,
+                                        color: theme.backgroundColor,
                                         size: 24,
                                       ),
                                     )
@@ -116,10 +116,9 @@ class EventCard extends StatelessWidget {
                                                       .toggleEventFavoriteStatus(
                                                         event.id,
                                                       ),
-                                              icon: const Icon(
+                                  icon: Icon(
                                                 Icons.favorite,
-                                                color: DefaultColors
-                                                    .backgroundColor,
+                                                color: theme.backgroundColor,
                                                 size: 24,
                                               ),
                                             )
@@ -133,10 +132,8 @@ class EventCard extends StatelessWidget {
                                                       .toggleEventFavoriteStatus(
                                                         event.id,
                                                       ),
-                                              icon: const Icon(
+                                  icon: const Icon(
                                                 Icons.favorite_border,
-                                                color: DefaultColors
-                                                    .backgroundColor,
                                                 size: 24,
                                               ),
                                             ),

@@ -4,89 +4,74 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/initialization/remote_config_cubit.dart';
+import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:raver/application/welcome_loading/welcome_loading_cubit.dart';
-import 'package:raver/injection.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/error_alert/error_alert.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class WelcomeLoaderPage extends StatelessWidget {
-  final _welcomeBloc = getIt<WelcomeLoadingCubit>();
+  late WelcomeLoadingCubit _welcomeCubit;
 
   WelcomeLoaderPage({Key? key}) : super(key: key);
 
-  _fetchData(BuildContext context) async {
-    await context.read<UserLocationCubit>().requestUserLocationOnStart();
-    context.read<RemoteConfigCubit>().setupRemoteConfig();
+  _initWelcomeCubit(BuildContext context) {
+    _welcomeCubit = WelcomeLoadingCubit(
+        profileCubit: context.read<ProfileCubit>(),
+        userLocationCubit: context.read<UserLocationCubit>(),
+        remoteConfigCubit: context.read<RemoteConfigCubit>());
   }
 
   @override
   Widget build(BuildContext context) {
+    _initWelcomeCubit(context);
     final textTheme = Theme.of(context).textTheme;
-    _fetchData(context);
-
     return Scaffold(
       backgroundColor: DefaultColors.primaryColor,
       body: BlocProvider(
-        create: (ctx) => _welcomeBloc,
-        child: MultiBlocListener(
-          listeners: [
-            BlocListener<UserLocationCubit, UserLocationState>(
-                listener: (context, state) {
-              if (state.isLoading == false) {
-                _welcomeBloc.locationLoaded();
-              }
-            }),
-            BlocListener<RemoteConfigCubit, RemoteConfigState>(
-                listener: (context, state) {
-              state.mapOrNull(configLoaded: (_) {
-                _welcomeBloc.remoteConfigLoaded();
-              }, configFailure: (_) {
-                _welcomeBloc.failure();
-              });
-            }),
+        create: (ctx) => _welcomeCubit,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  S().raver,
+                  style: textTheme.headline2,
+                )
+              ],
+            ),
+            BlocConsumer<WelcomeLoadingCubit, WelcomeLoadingState>(
+              bloc: _welcomeCubit..loadDependencies(),
+              listener: (context, state) {
+                if (state.isFailure) {
+                  showDialog(
+                    barrierDismissible: false,
+                    context: context,
+                    builder: (context) {
+                      return ErrorAlert(
+                          errorMessage: S().errorCheckInternetConnection);
+                    },
+                  );
+                }
+                if (state.dependenciesLoaded) {
+                  AutoRouter.of(context).replace(const NavigatorRouter());
+                  if (!state.onboardingCompleted) {
+                    AutoRouter.of(context).push(OnboardingRoute());
+                  }
+                }
+              },
+              builder: (context, state) {
+                return !state.isFailure
+                    ? Lottie.asset("assets/animations/welcome_loader.json",
+                        frameRate: FrameRate(60))
+                    : Container();
+              },
+            )
           ],
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    S().raver,
-                    style: textTheme.headline2,
-                  )
-                ],
-              ),
-              BlocConsumer<WelcomeLoadingCubit, WelcomeLoadingState>(
-                bloc: _welcomeBloc,
-                listener: (context, state) {
-                  if (state.isFailure) {
-                    showDialog(
-                      barrierDismissible: false,
-                      context: context,
-                      builder: (context) {
-                        return ErrorAlert(
-                            errorMessage: S().errorCheckInternetConnection);
-                      },
-                    );
-                  }
-                  if (state.isRemoteConfigLoaded == true &&
-                      state.isLocationLoaded) {
-                    AutoRouter.of(context).replace(const NavigatorRouter());
-                  }
-                },
-                builder: (context, state) {
-                  return !state.isFailure
-                      ? Lottie.asset("assets/animations/welcome_loader.json",
-                          frameRate: FrameRate(60))
-                      : Container();
-                },
-              )
-            ],
-          ),
         ),
       ),
     );

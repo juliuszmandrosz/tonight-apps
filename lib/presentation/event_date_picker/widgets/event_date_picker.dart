@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class EventDatePicker extends StatelessWidget {
@@ -13,6 +12,7 @@ class EventDatePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
           previous.filters.dateRangeFilter.fromDate !=
@@ -24,8 +24,8 @@ class EventDatePicker extends StatelessWidget {
               _onSelectionChanged(context, args.value),
           view: DateRangePickerView.month,
           selectionMode: DateRangePickerSelectionMode.single,
-          selectionColor: DefaultColors.primaryColor,
-          todayHighlightColor: DefaultColors.primaryColor,
+          selectionColor: theme.primaryColor,
+          todayHighlightColor: theme.primaryColor,
           minDate: DateTime.now(),
         );
       },

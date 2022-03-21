@@ -3,24 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:raver/injection.dart';
-import 'package:raver/presentation/auth/reset_password/widgets/reset_password_button.dart';
-import 'package:raver/presentation/auth/reset_password/widgets/reset_password_email_input.dart';
+import 'package:raver/presentation/auth/forgot_password/widgets/forgot_password_button.dart';
+import 'package:raver/presentation/auth/forgot_password/widgets/forgot_password_email_input.dart';
 import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class ResetPasswordPage extends StatelessWidget {
-  const ResetPasswordPage({Key? key}) : super(key: key);
+class ForgotPasswordPage extends StatelessWidget {
+  const ForgotPasswordPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: RaverHeadline(text: S().resetPassword),
         elevation: 0,
-        backgroundColor: DefaultColors.backgroundColor,
+        backgroundColor: theme.backgroundColor,
         automaticallyImplyLeading: false,
         leading: RaverIconButton(
           icon: const Icon(

@@ -10,6 +10,10 @@ class RaverIconButton extends RaverIcon {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(onPressed: onPressed, icon: icon);
+    return IconButton(
+      onPressed: onPressed,
+      icon: icon,
+      color: Theme.of(context).primaryColor,
+    );
   }
 }

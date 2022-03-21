@@ -32,7 +32,9 @@ class EventTile extends StatelessWidget {
               flex: 2,
               child: Container(
                 decoration: BoxDecoration(
-                  color: theme.primaryColor,
+                  color: theme.brightness == Brightness.dark
+                      ? theme.primaryColorDark
+                      : theme.primaryColor,
                   borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(8),
                   ),
@@ -43,11 +45,13 @@ class EventTile extends StatelessWidget {
                     children: [
                       Text(
                         "${event.eventStartDateTime.day}.${event.eventStartDateTime.month}",
-                        style: theme.textTheme.headline2,
+                        style: theme.textTheme.titleMedium!
+                            .copyWith(color: DefaultColors.whiteColor),
                       ),
                       Text(
                         "${event.eventStartDateTime.hour}:${event.eventStartDateTime.minute}",
-                        style: theme.textTheme.headline3,
+                        style: theme.textTheme.titleMedium!
+                            .copyWith(color: DefaultColors.whiteColor),
                       ),
                     ],
                   ),
@@ -65,7 +69,8 @@ class EventTile extends StatelessWidget {
                       children: [
                         Text(
                           event.eventName,
-                          style: theme.textTheme.headline2,
+                          style: theme.textTheme.titleMedium!
+        .copyWith(color: DefaultColors.whiteColor),
                         )
                       ],
                     ),
@@ -73,7 +78,8 @@ class EventTile extends StatelessWidget {
                       children: [
                         Text(
                           displayEventTags(context, event),
-                          style: theme.textTheme.headline3,
+                          style: theme.textTheme.titleSmall!
+        .copyWith(color: DefaultColors.whiteColor),
                         )
                       ],
                     ),

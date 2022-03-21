@@ -10,6 +10,7 @@ class GoogleSignInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return BlocBuilder<SignInCubit, SignInState>(
       buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
@@ -23,9 +24,9 @@ class GoogleSignInButton extends StatelessWidget {
             ),
           ),
           child: RaverIconButton(
-            icon: const FaIcon(
+            icon: FaIcon(
               FontAwesomeIcons.google,
-              color: DefaultColors.backgroundColor,
+              color: theme.backgroundColor,
             ),
             onPressed: () => context.read<SignInCubit>().signInWithGoogle(),
           ),

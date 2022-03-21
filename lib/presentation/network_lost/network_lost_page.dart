@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:raver/application/network_check/network_check_cubit.dart';
-import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class NetworkLostPage extends StatelessWidget {
@@ -11,19 +10,19 @@ class NetworkLostPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    final theme = Theme.of(context);
     return WillPopScope(
       onWillPop: () async {
         return context.read<NetworkCheckCubit>().state.isConnected;
       },
       child: Scaffold(
-        backgroundColor: DefaultColors.backgroundColor,
+        backgroundColor: theme.backgroundColor,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               S().lostNetworkConnectionDescription,
-              style: textTheme.headline1,
+              style: theme.textTheme.headline1,
               textAlign: TextAlign.center,
             ),
             Lottie.asset("assets/animations/no_connection_anim.json"),

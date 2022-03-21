@@ -7,7 +7,6 @@ import 'package:raver/application/events/event_filters/event_filters_cubit.dart'
 import 'package:raver/application/network_check/network_check_cubit.dart';
 import 'package:raver/application/tickets/ticket_cubit.dart';
 import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
-import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_auth/raver_auth.dart';
@@ -28,6 +27,7 @@ class NavigatorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     _resetFiltersAndFetchData(context);
     // TODO - Find why this build method get called twice
+    final theme = Theme.of(context);
     return MultiBlocListener(
       listeners: [
         BlocListener<NetworkCheckCubit, NetworkCheckState>(
@@ -56,14 +56,19 @@ class NavigatorPage extends StatelessWidget {
                 context.read<AuthCubit>().signOut();
                 AutoRouter.of(context).replace(const AuthRoute());
               },
-              icon: const FaIcon(
+              icon: FaIcon(
                 FontAwesomeIcons.signOutAlt,
-                color: DefaultColors.backgroundColor,
+                color: theme.backgroundColor,
               ),
             )
           ],
         ),
-        routes: const [HomeRouter(), TicketsRouter()],
+        routes: const [
+          HomeRouter(),
+          TicketsRouter(),
+          FavoritesRouter(),
+          ProfileRouter(),
+        ],
         bottomNavigationBuilder: (_, tabsRouter) {
           return BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
