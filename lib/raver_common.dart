@@ -7,3 +7,4 @@ export 'utils/utils.dart';
 export 'constants/constants.dart';
 export 'application/application.dart';
 export 'extensions/extensions.dart';
+export 'translations/translations.dart';

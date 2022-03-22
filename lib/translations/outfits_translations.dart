@@ -1,0 +1,7 @@
+import 'package:raver_translations/raver_translations.dart';
+
+final outfitsTranslations = {
+  'sport': S().sport,
+  'elegant': S().elegant,
+  'no dress code': S().noDressCode,
+};

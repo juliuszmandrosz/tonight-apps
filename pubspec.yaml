@@ -1,6 +1,7 @@
 name: raver_common
 description: A new Flutter package project.
 version: 0.0.1
+publish_to: none
 
 environment:
   sdk: ">=2.16.1 <3.0.0"
@@ -21,6 +22,10 @@ dependencies:
   cloud_firestore: ^3.1.10
   equatable: ^2.0.3
   intl: ^0.17.0
+
+  raver_translations:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverTranslations.git
 
 dev_dependencies:
   flutter_test:
