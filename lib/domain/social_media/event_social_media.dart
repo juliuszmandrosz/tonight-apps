@@ -3,18 +3,10 @@ import 'package:raver_common/constants/social_media_constants.dart';
 import 'package:raver_common/domain/social_media/social_media_entity.dart';
 import 'package:raver_translations/generated/l10n.dart';
 
-final Map<String, SocialMedia> socialMedia = {
+final Map<String, SocialMedia> eventSocialMedia = {
   facebook: SocialMedia(
-    label: S().facebook,
+    label: S().facebookEvent,
     icon: FontAwesomeIcons.facebook,
-  ),
-  instagram: SocialMedia(
-    label: S().instagram,
-    icon: FontAwesomeIcons.instagram,
-  ),
-  tikTok: SocialMedia(
-    label: S().tikTok,
-    icon: FontAwesomeIcons.tiktok,
   ),
   djChannel: SocialMedia(
     label: S().djChannel,
