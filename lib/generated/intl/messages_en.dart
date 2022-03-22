@@ -115,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "eventName": MessageLookupByLibrary.simpleMessage("Event name"),
         "events": m2,
         "exitButtonTitle": MessageLookupByLibrary.simpleMessage("Exit"),
+        "facebook": MessageLookupByLibrary.simpleMessage("Facebook"),
         "facebookEvent": MessageLookupByLibrary.simpleMessage("Facebook event"),
         "favorites": MessageLookupByLibrary.simpleMessage("Favorites"),
         "filters": MessageLookupByLibrary.simpleMessage("Filters"),
@@ -127,6 +128,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
         "invalidCredential": MessageLookupByLibrary.simpleMessage(
             "The credential received are invalid or has expired"),
         "invalidEmail":
@@ -138,6 +140,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "isConcert": MessageLookupByLibrary.simpleMessage("Is concert"),
         "live": MessageLookupByLibrary.simpleMessage("Live"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "lostNetworkConnectionDescription":
+            MessageLookupByLibrary.simpleMessage(
+                "Seems you\'ve lost connection to internet"),
         "map": MessageLookupByLibrary.simpleMessage("Map"),
         "maxDistance": MessageLookupByLibrary.simpleMessage("Maximum distance"),
         "milestones": MessageLookupByLibrary.simpleMessage("Milestones"),
@@ -180,6 +185,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
         "resetSelectedDate":
             MessageLookupByLibrary.simpleMessage("Reset selected date"),
+        "retryConnection":
+            MessageLookupByLibrary.simpleMessage("Retry Connection"),
         "rewards": m5,
         "sendPasswordResetLink":
             MessageLookupByLibrary.simpleMessage("Send password reset link"),
@@ -194,6 +201,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sport": MessageLookupByLibrary.simpleMessage("Sport"),
         "startDate": MessageLookupByLibrary.simpleMessage("Start date"),
         "tickets": m6,
+        "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "unexpectedError":
             MessageLookupByLibrary.simpleMessage("Unexpected error"),
         "upcoming": MessageLookupByLibrary.simpleMessage("Upcoming"),

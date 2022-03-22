@@ -117,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "eventName": MessageLookupByLibrary.simpleMessage("Nazwa wydarzenia"),
         "events": m2,
         "exitButtonTitle": MessageLookupByLibrary.simpleMessage("Wyjdź"),
+        "facebook": MessageLookupByLibrary.simpleMessage("Facebook"),
         "facebookEvent":
             MessageLookupByLibrary.simpleMessage("Wydarzenie na Facebooku"),
         "favorites": MessageLookupByLibrary.simpleMessage("Ulubione"),
@@ -130,6 +131,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Zapomniałeś hasła?"),
         "home": MessageLookupByLibrary.simpleMessage("Główna"),
+        "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
         "invalidCredential": MessageLookupByLibrary.simpleMessage(
             "Otrzymane poświadczenia są nieprawidłowe lub wygasły"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(
@@ -141,6 +143,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "isConcert": MessageLookupByLibrary.simpleMessage("Koncert"),
         "live": MessageLookupByLibrary.simpleMessage("Na żywo"),
         "login": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
+        "lostNetworkConnectionDescription":
+            MessageLookupByLibrary.simpleMessage(
+                "Utraciłeś połączenie z internetem"),
         "map": MessageLookupByLibrary.simpleMessage("Mapa"),
         "maxDistance":
             MessageLookupByLibrary.simpleMessage("Maksymalna odległość"),
@@ -185,6 +190,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetPassword": MessageLookupByLibrary.simpleMessage("Zresetuj hasło"),
         "resetSelectedDate":
             MessageLookupByLibrary.simpleMessage("Zresetuj wybraną datę"),
+        "retryConnection":
+            MessageLookupByLibrary.simpleMessage("Ponów Połączenie"),
         "rewards": m5,
         "sendPasswordResetLink": MessageLookupByLibrary.simpleMessage(
             "Wyślij link do resetowania hasła"),
@@ -200,6 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sport": MessageLookupByLibrary.simpleMessage("Sport"),
         "startDate": MessageLookupByLibrary.simpleMessage("Data rozpoczęcia"),
         "tickets": m6,
+        "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "unexpectedError":
             MessageLookupByLibrary.simpleMessage("Nieoczekiwany błąd"),
         "upcoming": MessageLookupByLibrary.simpleMessage("Nadchodzące"),

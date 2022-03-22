@@ -549,6 +549,16 @@ class S {
     );
   }
 
+  /// `Facebook`
+  String get facebook {
+    return Intl.message(
+      'Facebook',
+      name: 'facebook',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Facebook event`
   String get facebookEvent {
     return Intl.message(
@@ -639,6 +649,16 @@ class S {
     );
   }
 
+  /// `Instagram`
+  String get instagram {
+    return Intl.message(
+      'Instagram',
+      name: 'instagram',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The credential received are invalid or has expired`
   String get invalidCredential {
     return Intl.message(
@@ -704,6 +724,16 @@ class S {
     return Intl.message(
       'Login',
       name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Seems you've lost connection to internet`
+  String get lostNetworkConnectionDescription {
+    return Intl.message(
+      'Seems you\'ve lost connection to internet',
+      name: 'lostNetworkConnectionDescription',
       desc: '',
       args: [],
     );
@@ -1025,6 +1055,16 @@ class S {
     );
   }
 
+  /// `Retry Connection`
+  String get retryConnection {
+    return Intl.message(
+      'Retry Connection',
+      name: 'retryConnection',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{count, plural, zero{No rewards} one{Reward} other{Rewards}}`
   String rewards(num count) {
     return Intl.plural(
@@ -1148,6 +1188,16 @@ class S {
       name: 'tickets',
       desc: '',
       args: [count],
+    );
+  }
+
+  /// `TikTok`
+  String get tikTok {
+    return Intl.message(
+      'TikTok',
+      name: 'tikTok',
+      desc: '',
+      args: [],
     );
   }
 
