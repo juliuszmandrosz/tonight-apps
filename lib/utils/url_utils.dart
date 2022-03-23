@@ -1,14 +1,21 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
+import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/utils/url_launch_failure.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<Option<UrlLaunchFailure>> launchURL(String url) async {
   final logger = Logger();
-  if (!await launch(url)) {
-    logger.e('Could not launch $url');
+  try {
+    final result = await launch(url);
+    if (!result) {
+      logger.e('Could not launch $url');
+      return const Some(UrlLaunchFailure.launchError());
+    }
+  } on PlatformException catch (e) {
+    logger.e('Exception during url launching URL: $url, EXCEPTION: $e');
     return const Some(UrlLaunchFailure.launchError());
   }
   return const None();
