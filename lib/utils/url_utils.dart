@@ -6,8 +6,9 @@ import 'package:logger/logger.dart';
 import 'package:raver_common/utils/url_launch_failure.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-Future<Option<UrlLaunchFailure>> launchURL(String url) async {
+Future<Option<UrlLaunchFailure>> launchURL(String rawUrl) async {
   final logger = Logger();
+  final url = buildUrl(rawUrl);
   try {
     final result = await launch(url);
     if (!result) {
@@ -36,4 +37,15 @@ Future<Option> launchGoogleMaps(double lat, double lng) {
       ? 'https://maps.apple.com/?q=$lat,$lng'
       : 'https://www.google.com/maps/search/?api=1&query=$lat,$lng';
   return launchURL(url);
+}
+
+String buildUrl(String url) {
+  const httpsPhrase = 'https://';
+  if (url.substring(0, 8) != httpsPhrase) {
+    if (url.substring(0, 7) == 'http://') {
+      return httpsPhrase + url.substring(7);
+    }
+    return httpsPhrase + url;
+  }
+  return url;
 }
