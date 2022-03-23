@@ -13,14 +13,18 @@ import 'package:raver_translations/raver_translations.dart';
 
 class WelcomeLoaderPage extends StatelessWidget {
   late WelcomeLoadingCubit _welcomeCubit;
+  var hasBeenInitialized = false;
 
   WelcomeLoaderPage({Key? key}) : super(key: key);
 
   _initWelcomeCubit(BuildContext context) {
-    _welcomeCubit = WelcomeLoadingCubit(
-        profileCubit: context.read<ProfileCubit>(),
-        userLocationCubit: context.read<UserLocationCubit>(),
-        remoteConfigCubit: context.read<RemoteConfigCubit>());
+    if (!hasBeenInitialized) {
+      hasBeenInitialized = true;
+      _welcomeCubit = WelcomeLoadingCubit(
+          profileCubit: context.read<ProfileCubit>(),
+          userLocationCubit: context.read<UserLocationCubit>(),
+          remoteConfigCubit: context.read<RemoteConfigCubit>());
+    }
   }
 
   @override

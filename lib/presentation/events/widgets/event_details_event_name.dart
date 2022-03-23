@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
-import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
+import 'package:raver/presentation/home/events_tab/widgets/event_details_favorite_button.dart';
 import 'package:raver_events/raver_events.dart';
 
 class EventDetailsEventName extends StatelessWidget {
@@ -17,44 +14,16 @@ class EventDetailsEventName extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return BlocConsumer<EventFavoriteCubit, EventFavoriteState>(
-      listener: (context, state) {
-        state.errorMessage.fold(
-          () {},
-          (error) => ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(content: Text(error)),
-            ),
-        );
-      },
-      builder: (context, state) {
-        final isFavorite = state.favoriteEventIds.contains(event.id);
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              event.eventName,
-              style: textTheme.headline1,
-            ),
-            const SizedBox(width: 10),
-            IconButton(
-              onPressed: () => context
-                  .read<EventFavoriteCubit>()
-                  .toggleEventFavoriteStatus(event.id),
-              icon: isFavorite
-                  ? const FaIcon(
-                      FontAwesomeIcons.solidHeart,
-                      color: DefaultColors.warningColor,
-                    )
-                  : const FaIcon(
-                      FontAwesomeIcons.heart,
-                      color: DefaultColors.warningColor,
-                    ),
-            ),
-          ],
-        );
-      },
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          event.eventName,
+          style: textTheme.headline1,
+        ),
+        const SizedBox(width: 10),
+        EventDetailsFavoriteButton(eventId: event.id)
+      ],
     );
   }
 }

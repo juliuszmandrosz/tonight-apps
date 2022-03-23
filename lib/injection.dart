@@ -24,8 +24,10 @@ import 'package:raver/application/events/event_favorite/event_favorite_cubit.dar
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/network_check/network_check_cubit.dart';
+import 'package:raver/application/profile/profile_cubit_hub.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:raver/application/tickets/ticket_cubit.dart';
+import 'package:raver/application/user_favorites/event_favorites/user_event_favorites_cubit.dart';
 import 'package:raver/domain/clubs/club_facade.dart';
 import 'package:raver/domain/payments/payment_facade.dart';
 import 'package:raver/domain/remote_config/remote_config_facade.dart';
@@ -41,7 +43,9 @@ import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 
+import 'application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'application/profile/profile_cubit.dart';
+import 'application/user_favorites/club_favorites/user_club_favorites_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -49,6 +53,7 @@ void registerDependencies() {
   _registerFacades();
   _registerCubits();
   _registerModules();
+  _registerCubitSubjects();
 }
 
 void _registerCubits() {
@@ -132,6 +137,13 @@ void _registerCubits() {
     ),
   );
 
+  getIt.registerFactory(
+    () => ClubFavoriteCubit(
+      getIt(),
+      getIt(),
+    ),
+  );
+
   //Tickets
   getIt.registerFactory(
     () => TicketCubit(
@@ -149,6 +161,7 @@ void _registerCubits() {
   getIt.registerFactory(
     () => EventFavoriteCubit(
       getIt(),
+      getIt(),
     ),
   );
 
@@ -161,6 +174,21 @@ void _registerCubits() {
   getIt.registerFactoryParam(
     (EventOverviewBloc eventOverviewBloc, _) => EventFiltersCubit(
       eventOverviewBloc,
+      getIt(),
+    ),
+  );
+
+  //Favorites
+  getIt.registerFactory(
+    () => UserEventFavoritesCubit(
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => UserClubFavoritesCubit(
+      getIt(),
       getIt(),
     ),
   );
@@ -183,7 +211,10 @@ void _registerCubits() {
   getIt.registerFactory(() => AppInfoCubit());
 
   //Profile
-  getIt.registerFactory(() => ProfileCubit(getIt()));
+  getIt.registerFactory(() => ProfileCubit(
+        getIt(),
+        getIt(),
+      ));
 
   //App settings
   getIt.registerFactory(() => AppSettingsCubit());
@@ -194,6 +225,10 @@ void _registerCubits() {
       getIt(),
     ),
   );
+}
+
+void _registerCubitSubjects() {
+  getIt.registerLazySingleton(() => ProfileBroadcastSubject());
 }
 
 void _registerFacades() {
@@ -246,7 +281,16 @@ void _registerFacades() {
   );
 
   //Event
-  getIt.registerLazySingleton<EventFacade>(
+  getIt.registerLazySingleton<UserEventFacade>(
+    () => FirebaseEventFacade(
+      firestore: getIt(),
+      algoliaEventsApi: getIt(),
+      logger: getIt(),
+      firebaseAuth: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<CommonEventFacade>(
     () => FirebaseEventFacade(
       firestore: getIt(),
       algoliaEventsApi: getIt(),

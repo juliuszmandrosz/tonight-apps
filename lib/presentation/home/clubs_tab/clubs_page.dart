@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
-import 'package:raver/domain/clubs/club_entity.dart';
-import 'package:raver/domain/clubs/club_facade.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_card.dart';
 import 'package:raver/presentation/home/widgets/club_filter_section.dart';
@@ -18,6 +16,7 @@ class ClubsPage extends StatefulWidget {
 
 class _ClubsPageState extends State<ClubsPage> {
   final _scrollController = ScrollController();
+  static const heroPhrase = "clubsPageHero";
 
   @override
   void initState() {
@@ -32,31 +31,6 @@ class _ClubsPageState extends State<ClubsPage> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const ClubSearchBar(),
-        //For testing ONLY, remove on production
-        TextButton(
-            onPressed: () async {
-              final result = await getIt<ClubFacade>().addClub(Club(
-                  id: "3zt2MqBmEra7Bglmwkt21",
-                  clubName: "Black Diamond",
-                  clubImageUrl:
-                      "https://firebasestorage.googleapis.com/v0/b/raver-1fec4.appspot.com/o/clubs%2FtLlSlPaZhRurTymJf9Aq%2Fclub_image%2Fclub_image.jpg?alt=media&token=cc18cc0c-4ae8-456f-a1d6-8e1ca5d00613",
-                  reviewCount: 5,
-                  reviewAvg: 5,
-                  location: {'latitude': 0, 'longitude': 0},
-                  locationString: "Bialystok, Stroma",
-                  aboutUs: "Good club for all",
-                  phoneNumber: "+48517853787",
-                  socialMedia: {},
-                  reviews: []));
-              if (result.isSome()) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text("Error while adding club"),
-                  ),
-                );
-              }
-            },
-            child: Text("Add club")),
         BlocBuilder<ClubsOverviewBloc, ClubsOverviewState>(
           builder: (context, state) {
             switch (state.status) {
@@ -106,7 +80,7 @@ class _ClubsPageState extends State<ClubsPage> {
                         context.read<ClubsOverviewBloc>().add(
                               ClubsOverviewEvent.clubsFetched(state.clubFilter),
                             ),
-                    child: ListView.builder(
+                    child: ListView.separated(
                       physics: const AlwaysScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: state.hasReachedMax
@@ -115,9 +89,16 @@ class _ClubsPageState extends State<ClubsPage> {
                       itemBuilder: (context, index) {
                         return index >= state.clubs.length
                             ? const BottomLoader()
-                            : ClubCard(club: state.clubs[index], index: index);
+                            : ClubCard(
+                                club: state.clubs[index],
+                                index: index,
+                                heroPhrase: heroPhrase,
+                              );
                       },
                       controller: _scrollController,
+                      separatorBuilder: (_, __) => const SizedBox(
+                        height: 10,
+                      ),
                     ),
                   ),
                 );

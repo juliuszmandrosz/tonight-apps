@@ -15,7 +15,7 @@ class ProfilePage extends StatelessWidget {
     final theme = Theme.of(context);
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder: (context, state) {
-        switch (state.cubitStatus) {
+        switch (state.status) {
           case CubitStatus.initial:
             return Container();
           case CubitStatus.loading:

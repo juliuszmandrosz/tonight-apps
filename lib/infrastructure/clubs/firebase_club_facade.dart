@@ -10,6 +10,7 @@ import 'package:raver/domain/clubs/club_facade.dart';
 import 'package:raver/domain/clubs/failures/club_failure.dart';
 import 'package:raver/domain/clubs/filters/club_filters.dart';
 import 'package:raver/infrastructure/core/algolia/algolia_clubs_api.dart';
+import 'package:raver/infrastructure/core/firestore_extension_user.dart';
 import 'package:raver_common/raver_common.dart';
 
 import 'dtos/club_dto.dart';
@@ -91,19 +92,40 @@ class FirebaseClubFacade implements ClubFacade {
     }
   }
 
-  //For testing purpose ONLY, remove on production release
   @override
-  Future<Option<ClubFailure>> addClub(Club club) async {
+  Future<Either<ClubFailure, Unit>> toggleClubFavoriteStatus(
+      String clubId) async {
     try {
-      final clubDoc = _firestore.clubCollection;
-      final clubDto = ClubDto.fromDomain(club);
+      final userDoc = await _firestore.userDocument();
+      final userSnapshot = await userDoc.get();
+      final userFavorites =
+          userSnapshot.get('favoriteClubIds') as List<dynamic>;
 
-      await clubDoc.doc(club.id).set(clubDto.toJson());
+      userFavorites.contains(clubId)
+          ? userFavorites.remove(clubId)
+          : userFavorites.add(clubId);
 
-      return const None();
+      await userDoc.update({'favoriteClubIds': userFavorites});
+
+      return right(unit);
     } on FirebaseException catch (e) {
-      _logger.e("Exception during adding club EXCEPTION: $e");
-      return const Some(ClubFailure.unexpected());
+      _logger.e("Exception during toggling club favorite status EXCEPTION: $e");
+      return left(const ClubFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<ClubFailure, List<Club>>> getClubsByIds(
+      List<String> clubIds) async {
+    final clubsQuery =
+        _firestore.clubCollection.where(FieldPath.documentId, whereIn: clubIds);
+    try {
+      final clubs = await clubsQuery.get();
+      return right(
+          clubs.docs.map((e) => ClubDto.fromFirebase(e).toDomain()).toList());
+    } on FirebaseException catch (e) {
+      _logger.e("Exception during fetching clubs by ids EXCEPTION: $e");
+      return left(const ClubFailure.unexpected());
     }
   }
 }

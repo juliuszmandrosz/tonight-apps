@@ -1,49 +1,46 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:raver/application/profile/profile_cubit_hub.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
+import 'package:raver/domain/clubs/club_facade.dart';
+import 'package:raver_common/application/cubit_status.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-part 'event_favorite_cubit.freezed.dart';
-part 'event_favorite_state.dart';
+part 'club_favorite_cubit.freezed.dart';
+part 'club_favorite_state.dart';
 
-class EventFavoriteCubit extends Cubit<EventFavoriteState> {
-  final UserEventFacade _eventFacade;
+class ClubFavoriteCubit extends Cubit<ClubFavoriteState> {
+  final ClubFacade _clubFacade;
   final ProfileBroadcastSubject _profileBroadcastSubject;
 
-  EventFavoriteCubit(this._eventFacade, this._profileBroadcastSubject)
-      : super(EventFavoriteState.initial());
+  ClubFavoriteCubit(this._clubFacade, this._profileBroadcastSubject)
+      : super(ClubFavoriteState.initial());
 
-  Future<void> getFavoriteEventIds() async {
+  Future<void> getFavoriteClubIds() async {
     _initBroadcastListener();
     emit(state.copyWith(status: CubitStatus.loading));
   }
 
-  Future<void> toggleEventFavoriteStatus(String eventId) async {
+  Future<void> toggleClubFavoriteStatus(String clubId) async {
     emit(state.copyWith(
       isChangingFavoriteStatus: true,
     ));
 
-    final favoriteEvents = state.favoriteEventIds;
-    final favoriteEventsCopy = [...state.favoriteEventIds];
+    final favoriteClubs = state.favoriteClubIds;
+    final favoriteClubsCopy = [...state.favoriteClubIds];
 
-    final currentStatus = favoriteEventsCopy.contains(eventId);
+    final currentStatus = favoriteClubsCopy.contains(clubId);
 
     currentStatus
-        ? favoriteEventsCopy.remove(eventId)
-        : favoriteEventsCopy.add(eventId);
+        ? favoriteClubsCopy.remove(clubId)
+        : favoriteClubsCopy.add(clubId);
 
     emit(state.copyWith(
-      favoriteEventIds: favoriteEventsCopy,
+      favoriteClubIds: favoriteClubsCopy,
     ));
 
-    final failureOrSuccess =
-        await _eventFacade.toggleEventFavoriteStatus(eventId);
+    final failureOrSuccess = await _clubFacade.toggleClubFavoriteStatus(clubId);
 
     emit(state.copyWith(
       isChangingFavoriteStatus: false,
@@ -53,9 +50,9 @@ class EventFavoriteCubit extends Cubit<EventFavoriteState> {
       (failure) {
         emit(
           state.copyWith(
-            errorMessage: some(S().errorChangingEventStatus),
+            errorMessage: some(S().errorChangingClubStatus),
             status: CubitStatus.failure,
-            favoriteEventIds: favoriteEvents,
+            favoriteClubIds: favoriteClubs,
           ),
         );
 
@@ -71,7 +68,7 @@ class EventFavoriteCubit extends Cubit<EventFavoriteState> {
     if (profileState.status == CubitStatus.success) {
       emit(state.copyWith(
           status: CubitStatus.success,
-          favoriteEventIds: profileState.user.favoriteEventIds));
+          favoriteClubIds: profileState.user.favoriteClubIds));
       return;
     }
     _emitFetchFailure();
@@ -86,7 +83,7 @@ class EventFavoriteCubit extends Cubit<EventFavoriteState> {
   void _emitFetchFailure() {
     emit(
       state.copyWith(
-        errorMessage: some(S().errorLoadingFavoriteEventsInfo),
+        errorMessage: some(S().errorLoadingFavoriteClubsInfo),
         status: CubitStatus.failure,
       ),
     );

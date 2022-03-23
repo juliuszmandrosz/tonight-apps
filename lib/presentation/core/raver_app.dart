@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:raver/application/app_settings/app_settings_cubit.dart';
+import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
@@ -63,6 +64,9 @@ class RaverApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (ctx) => getIt<EventFavoriteCubit>(),
+        ),
+        BlocProvider(
+          create: (ctx) => getIt<ClubFavoriteCubit>()..getFavoriteClubIds(),
         ),
         BlocProvider<ClubsOverviewBloc>(
           create: (context) => getIt<ClubsOverviewBloc>()

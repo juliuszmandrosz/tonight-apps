@@ -10,8 +10,7 @@ class ResetPasswordEmailInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
-      buildWhen: (previous, current) =>
-          previous.email != current.email || previous.status != current.status,
+      buildWhen: (previous, current) => previous.email != current.email,
       builder: (context, state) {
         return TextField(
           onChanged: (email) =>

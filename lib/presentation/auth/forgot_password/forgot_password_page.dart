@@ -42,8 +42,8 @@ class ForgotPasswordPage extends StatelessWidget {
           child: BlocListener<ResetPasswordCubit, ResetPasswordState>(
             listener: (context, state) {
               state.errorMessage.fold(
-                () {},
-                (error) {
+                    () {},
+                    (error) {
                   ScaffoldMessenger.of(context)
                     ..hideCurrentSnackBar()
                     ..showSnackBar(

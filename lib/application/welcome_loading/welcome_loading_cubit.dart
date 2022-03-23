@@ -32,7 +32,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     });
     _profileCubit.getUserProfile();
     _profileCubit.stream.listen((event) {
-      _checkAndEmitFailure(event.cubitStatus);
+      _checkAndEmitFailure(event.status);
       _emitSuccessIfAllLoaded();
     });
     _userLocationCubit.requestUserLocationOnStart();
@@ -47,7 +47,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   void _emitSuccessIfAllLoaded() {
     if (_remoteConfigCubit.state.cubitStatus == CubitStatus.success &&
         !_userLocationCubit.state.isLoading &&
-        _profileCubit.state.cubitStatus == CubitStatus.success) {
+        _profileCubit.state.status == CubitStatus.success) {
       if (_profileCubit.state.user.username.isEmpty) {
         emit(state.copyWith(onboardingCompleted: false));
       }

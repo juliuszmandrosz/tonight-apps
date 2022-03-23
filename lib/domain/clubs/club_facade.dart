@@ -13,11 +13,13 @@ abstract class ClubFacade {
 
   Future<Either<ClubFailure, Club>> getClubById(String id);
 
+  Future<Either<ClubFailure, List<Club>>> getClubsByIds(List<String> clubIds);
+
   Future<Either<ClubFailure, Tuple2<List<String>, String?>>> getClubPhotosUrls({
     required String clubId,
     String? nextPageToken,
     int pageSize = 10,
   });
 
-  Future<Option<ClubFailure>> addClub(Club club);
+  Future<Either<ClubFailure, Unit>> toggleClubFavoriteStatus(String clubId);
 }

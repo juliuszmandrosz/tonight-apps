@@ -86,7 +86,10 @@ class _EventOverviewPageState extends State<EventOverviewPage> {
                         EventOverviewEvent.eventsFetched(
                             state.eventFilters, state.sortModel),
                       ),
-                  child: ListView.builder(
+                  child: ListView.separated(
+                    separatorBuilder: (_, __) => const SizedBox(
+                      height: 10,
+                    ),
                     physics: const AlwaysScrollableScrollPhysics(),
                     itemCount: state.hasReachedMax
                         ? state.events.length

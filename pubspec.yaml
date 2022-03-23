@@ -90,6 +90,12 @@ dependencies:
     git:
       url: https://github.com/juliuszmandrosz/RaverTranslations.git
 
+  raver_account_settings:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverAccountSettings.git
+      ref: develop
+
+
   raver_common:
     git:
       url: https://github.com/juliuszmandrosz/RaverCommon.git
@@ -98,10 +104,6 @@ dependencies:
     git:
       url: https://github.com/juliuszmandrosz/RaverAuth.git
 
-  raver_account_settings:
-    git:
-      url: https://github.com/juliuszmandrosz/RaverAccountSettings.git
-      ref: feature/user-profile
 dev_dependencies:
   flutter_test:
     sdk: flutter

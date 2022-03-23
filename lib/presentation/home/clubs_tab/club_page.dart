@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_details/club_details_cubit.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/injection.dart';
-import 'package:raver/presentation/home/clubs_tab/widgets/club_details/back_button.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details/club_description.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details/club_details_tabs.dart';
+import 'package:raver/presentation/home/clubs_tab/widgets/club_details_image.dart';
 
 class ClubPage extends StatelessWidget {
   final Club? club;
@@ -46,51 +46,10 @@ class ClubPage extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: SizedBox(
-                              height: 200,
-                              child: Stack(
-                                children: [
-                                  Align(
-                                    child: Hero(
-                                      tag: heroTag ?? "",
-                                      //this just wont animate hero
-                                      child: Container(
-                                        height: 200,
-                                        alignment: Alignment.topCenter,
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image:
-                                                Image.network(club.clubImageUrl)
-                                                    .image,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const Align(
-                                    alignment:
-                                        AlignmentDirectional(-0.95, -0.7),
-                                    child: BackButtonWidget(),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      ClubDescription(
-                        club: club,
-                      ),
-                      ClubDetailsTabs(
-                        club: club,
-                      ),
+                      ClubDetailsImage(
+                          heroTag: heroTag, imageUrl: club.clubImageUrl),
+                      ClubDescription(club: club),
+                      ClubDetailsTabs(club: club),
                     ],
                   ),
                 ),

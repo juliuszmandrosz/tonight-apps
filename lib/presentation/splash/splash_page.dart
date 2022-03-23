@@ -9,6 +9,7 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<AuthCubit>().requestAuthCheck();
     return BlocListener<AuthCubit, AuthState>(
       listener: (ctx, state) {
         state.map(

@@ -8,7 +8,7 @@ part 'event_details_cubit.freezed.dart';
 part 'event_details_state.dart';
 
 class EventDetailsCubit extends Cubit<EventDetailsState> {
-  final EventFacade _eventFacade;
+  final UserEventFacade _eventFacade;
 
   EventDetailsCubit(this._eventFacade)
       : super(const EventDetailsState.initial());

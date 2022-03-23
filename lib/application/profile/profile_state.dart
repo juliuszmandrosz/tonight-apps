@@ -7,7 +7,7 @@ class ProfileState with _$ProfileState {
   factory ProfileState({
     required UserProfile user,
     required bool isFromOauth,
-    required CubitStatus cubitStatus,
+    required CubitStatus status,
   }) = _ProfileState;
 
   factory ProfileState.initial() => ProfileState(
@@ -19,6 +19,6 @@ class ProfileState with _$ProfileState {
             favoriteEventIds: [],
             ticketCount: 0),
         isFromOauth: false,
-        cubitStatus: CubitStatus.initial,
+        status: CubitStatus.initial,
       );
 }

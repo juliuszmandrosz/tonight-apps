@@ -1,10 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/events/utils/event_details_formatters.dart';
+import 'package:raver/presentation/home/events_tab/widgets/event_favorite_button.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
@@ -21,27 +19,16 @@ class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return BlocConsumer<EventFavoriteCubit, EventFavoriteState>(
-      listener: (ctx, state) {
-        state.errorMessage.fold(
-          () {},
-          (error) => ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(content: Text(error)),
-            ),
-        );
-      },
-      builder: (context, state) {
-        final isFavorite = state.favoriteEventIds.contains(event.id);
-        return InkWell(
-          splashColor: DefaultColors.navbarUnselectedColor,
-          onTap: () {
-            FocusScope.of(context).unfocus();
-            AutoRouter.of(context).push(EventDetailsRoute(event: event));
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(top: 8, bottom: 8),
+
+    return Row(
+      children: [
+        Expanded(
+          child: InkWell(
+            splashColor: DefaultColors.navbarUnselectedColor,
+            onTap: () {
+              FocusScope.of(context).unfocus();
+              AutoRouter.of(context).push(EventDetailsRoute(event: event));
+            },
             child: Container(
               height: 220,
               decoration: BoxDecoration(
@@ -50,7 +37,7 @@ class EventCard extends StatelessWidget {
                   topRight: Radius.circular(8),
                 ),
                 image: DecorationImage(
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.cover,
                   image: Image.asset('assets/images/party_photo.jpeg').image,
                 ),
                 boxShadow: const [
@@ -88,57 +75,7 @@ class EventCard extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Card(
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              color: DefaultColors.navbarUnselectedColor,
-                              elevation: 2,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: state.status == CubitStatus.loading
-                                  ? Padding(
-                                      padding: EdgeInsets.all(4),
-                                      child: SpinKitThreeBounce(
-                                        color: theme.backgroundColor,
-                                        size: 24,
-                                      ),
-                                    )
-                                  : Padding(
-                                      padding: const EdgeInsets.all(4),
-                                      child: isFavorite
-                                          ? IconButton(
-                                              onPressed: state
-                                                      .isChangingFavoriteStatus
-                                                  ? null
-                                                  : () => context
-                                                      .read<
-                                                          EventFavoriteCubit>()
-                                                      .toggleEventFavoriteStatus(
-                                                        event.id,
-                                                      ),
-                                  icon: Icon(
-                                                Icons.favorite,
-                                                color: theme.backgroundColor,
-                                                size: 24,
-                                              ),
-                                            )
-                                          : IconButton(
-                                              onPressed: state
-                                                      .isChangingFavoriteStatus
-                                                  ? null
-                                                  : () => context
-                                                      .read<
-                                                          EventFavoriteCubit>()
-                                                      .toggleEventFavoriteStatus(
-                                                        event.id,
-                                                      ),
-                                  icon: const Icon(
-                                                Icons.favorite_border,
-                                                size: 24,
-                                              ),
-                                            ),
-                                    ),
-                            ),
+                            EventFavoriteButton(eventId: event.id),
                           ],
                         ),
                       ),
@@ -205,14 +142,18 @@ class EventCard extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(event.clubName,
-                                    style: theme.textTheme.headline3),
+                                FittedBox(
+                                  child: Text(event.clubName,
+                                      style: theme.textTheme.headline3),
+                                ),
                                 Padding(
                                   padding:
                                       const EdgeInsetsDirectional.only(top: 3),
-                                  child: Text(
-                                    event.eventName,
-                                    style: theme.textTheme.headline3,
+                                  child: FittedBox(
+                                    child: Text(
+                                      event.eventName,
+                                      style: theme.textTheme.headline3,
+                                    ),
                                   ),
                                 ),
                                 Container(
@@ -234,8 +175,8 @@ class EventCard extends StatelessWidget {
               ),
             ),
           ),
-        );
-      },
+        ),
+      ],
     );
   }
 }

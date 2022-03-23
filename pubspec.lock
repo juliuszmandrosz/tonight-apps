@@ -1110,8 +1110,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/user-profile"
-      resolved-ref: "938c8ca136d729cc248d2b6cd9f0e11155042e7a"
+      ref: develop
+      resolved-ref: f2e35d6e51bc751ec1a39466018810de80cb0789
       url: "https://github.com/juliuszmandrosz/RaverAccountSettings.git"
     source: git
     version: "0.0.1"
@@ -1138,7 +1138,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: a3d172ae44456f8ba94e6265a8f631d5881d2a44
+      resolved-ref: cd391b9a99f1d178605d509657c4cc49c91ec181
       url: "https://github.com/juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
@@ -1147,7 +1147,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "2df9889aefdd67991aad453012a8d71db4ddf823"
+      resolved-ref: "186d572f0ea4f853708d32696effd0fe16fe6492"
       url: "https://github.com/juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"
@@ -1253,7 +1253,7 @@ packages:
       name: stripe_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.0"
+    version: "2.5.0+1"
   syncfusion_flutter_core:
     dependency: transitive
     description:
