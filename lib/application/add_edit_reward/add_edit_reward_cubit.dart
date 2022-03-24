@@ -70,6 +70,8 @@ class AddEditRewardCubit extends Cubit<AddEditRewardState> {
   }
 
   addRewardToState(Reward reward) {
+    rewardDescriptionChanged(reward.description);
+    requiredEntriesChanged(reward.requiredEntries);
     emit(state.copyWith(updatingReward: some(reward)));
   }
 

@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_partners/presentation/routes/app_router.dart';
 
 class EventListTile extends StatelessWidget {
   final Event event;
@@ -10,7 +12,7 @@ class EventListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isUpcomingEvent = event.eventEndDateTime.isAfter(DateTime.now());
+    final isPastEvent = event.eventEndDateTime.isBefore(DateTime.now());
     return Card(
       elevation: 5,
       shape: RoundedRectangleBorder(
@@ -19,9 +21,14 @@ class EventListTile extends StatelessWidget {
       margin: const EdgeInsets.all(5),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
-        onTap: () {},
+        onTap: () => isPastEvent
+            ? AutoRouter.of(context).push(PastEventDetailsRoute(event: event))
+            : AutoRouter.of(context).push(EventOverviewRoute(event: event)),
         child: ListTile(
-          title: Text(event.eventName, style: theme.textTheme.headline2),
+          title: Text(
+            event.eventName,
+            style: theme.textTheme.headline2,
+          ),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           subtitle: Padding(
@@ -34,17 +41,11 @@ class EventListTile extends StatelessWidget {
           trailing: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              isUpcomingEvent
-                  ? Icon(
-                      Icons.mode_edit,
-                      color: theme.iconTheme.color,
-                      size: 30,
-                    )
-                  : Icon(
-                      Icons.chevron_right_rounded,
-                      color: theme.iconTheme.color,
-                      size: 30,
-                    ),
+              Icon(
+                Icons.chevron_right_rounded,
+                color: theme.iconTheme.color,
+                size: 30,
+              ),
             ],
           ),
         ),

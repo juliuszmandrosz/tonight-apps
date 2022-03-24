@@ -7,7 +7,7 @@ import 'package:raver_partners/presentation/add_event/widgets/summary/event_summ
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_facebook_url.dart';
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_minimum_age.dart';
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_music.dart';
-import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_price.dart';
+import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_ticket_pools.dart';
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_start_date.dart';
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_event_name.dart';
 
@@ -33,7 +33,7 @@ class EventSummaryStep extends StatelessWidget {
           SizedBox(height: 30),
           EventSummaryMusic(),
           SizedBox(height: 30),
-          EventSummaryPrice(),
+          EventSummaryTicketPools(),
           SizedBox(height: 30),
           EventSummaryArtistName(),
           EventSummaryFacebookUrl(),

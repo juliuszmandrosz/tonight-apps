@@ -17,6 +17,9 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     secondary: LightColors.secondaryColor,
     outline: LightColors.textColorLight,
     background: LightColors.backgroundColor,
+    tertiaryContainer: LightColors.tertiaryContainer,
+    onTertiaryContainer: LightColors.onTertiaryContainer,
+    onPrimaryContainer: LightColors.onPrimaryContainer,
   ),
   listTileTheme: const ListTileThemeData(),
   tabBarTheme: const TabBarTheme(
@@ -31,6 +34,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     headline1: LightTextStyles.headline1,
     headline2: LightTextStyles.titleMedium,
     headline3: LightTextStyles.headlineAccent,
+    headline4: LightTextStyles.subtitleOnTertiary,
   ),
   iconTheme: const IconThemeData(
     color: LightColors.primaryColor,
@@ -75,5 +79,13 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   disabledColor: LightColors.textColorLight,
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: LightColors.primaryColor,
+  ),
+  dialogTheme: DialogTheme(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(30),
+    ),
+    titleTextStyle: LightTextStyles.subtitle1,
+    elevation: 5,
+    backgroundColor: LightColors.tertiaryContainer,
   ),
 );

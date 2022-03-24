@@ -41,13 +41,13 @@ class RewardListCubit extends Cubit<RewardListState> {
     final rewards = state.rewards;
     final rewardsCopy = [...state.rewards];
 
-    rewards.remove(reward);
-    emit(state.copyWith(rewards: rewards));
+    rewardsCopy.remove(reward);
+    emit(state.copyWith(rewards: rewardsCopy));
 
     final failureOrSuccess = await _rewardFacade.deleteReward(reward.id);
 
     failureOrSuccess.fold(
-      (failure) => _emitDeleteFailure(failure, rewardsCopy),
+      (failure) => _emitDeleteFailure(failure, rewards),
       (success) => emit(
         state.copyWith(deletingStatus: CubitStatus.success),
       ),

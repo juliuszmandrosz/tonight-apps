@@ -23,9 +23,9 @@ class EventSummaryMusic extends StatelessWidget {
         return Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 RaverPartnersHeadline(text: S().music),
-                const SizedBox(width: 20),
                 const EventSummarySwitchStepButton(step: AddEventStep.details),
               ],
             ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:formz/formz.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event/form_inputs/dj_channel_url.dart';
@@ -68,7 +69,7 @@ class EventDjChannelUrlInput extends HookWidget {
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                         labelText: eventSocialMedia[djChannel]!.label,
-                        errorText: getDjChannelUrlErrorMessage(state),
+                        errorText: _getDjChannelUrlErrorMessage(state),
                       ),
                     ),
                   ],
@@ -79,5 +80,15 @@ class EventDjChannelUrlInput extends HookWidget {
         );
       },
     );
+  }
+
+  String? _getDjChannelUrlErrorMessage(AddEventState state) {
+    if (!state.isDjChannelUrlEnabled) return null;
+
+    if (state.djChannelUrl.valid || state.status != FormzStatus.invalid) {
+      return null;
+    }
+
+    return djChannelUrlErrorMessages[state.djChannelUrl.error];
   }
 }

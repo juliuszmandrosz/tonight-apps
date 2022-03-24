@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_common/constants/constants.dart';
-import 'package:raver_common/domain/domain.dart';
+import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_events/domain/domain.dart';
+import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_event/add_event_step.dart';
 import 'package:raver_partners/application/add_event/form_inputs/artist_name.dart';
 import 'package:raver_partners/application/add_event/form_inputs/description.dart';
@@ -13,12 +14,11 @@ import 'package:raver_partners/application/add_event/form_inputs/dress_code.dart
 import 'package:raver_partners/application/add_event/form_inputs/end_date_time.dart';
 import 'package:raver_partners/application/add_event/form_inputs/event_name.dart';
 import 'package:raver_partners/application/add_event/form_inputs/facebook_url.dart';
-import 'package:raver_partners/application/add_event/form_inputs/price.dart';
 import 'package:raver_partners/application/add_event/form_inputs/start_date_time.dart';
 import 'package:raver_partners/application/add_event/form_inputs/min_age.dart';
 import 'package:raver_partners/application/add_event/form_inputs/musical_genres.dart';
-import 'package:raver_partners/application/add_event_notifier/add_event_notifier_cubit.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
+import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 part 'add_event_cubit.freezed.dart';
@@ -27,15 +27,15 @@ part 'add_event_state.dart';
 
 class AddEventCubit extends Cubit<AddEventState> {
   final EventFacade _eventFacade;
-  final AddEventNotifierCubit _addEventNotifierCubit;
+  final EventNotifierCubit _eventNotifierCubit;
   final ClubInfoCubit _clubInfoCubit;
 
   AddEventCubit({
     required EventFacade eventFacade,
-    required AddEventNotifierCubit addEventNotifierCubit,
+    required EventNotifierCubit eventNotifierCubit,
     required ClubInfoCubit clubInfoCubit,
   })  : _eventFacade = eventFacade,
-        _addEventNotifierCubit = addEventNotifierCubit,
+        _eventNotifierCubit = eventNotifierCubit,
         _clubInfoCubit = clubInfoCubit,
         super(AddEventState.initial());
 
@@ -83,11 +83,6 @@ class AddEventCubit extends Cubit<AddEventState> {
     emit(state.copyWith(musicalGenres: musicalGenres));
   }
 
-  void priceChanged(int? value) {
-    final price = Price.dirty(value);
-    emit(state.copyWith(price: price));
-  }
-
   void descriptionChanged(String value) {
     final description = Description.dirty(value);
     emit(state.copyWith(description: description));
@@ -127,6 +122,25 @@ class AddEventCubit extends Cubit<AddEventState> {
   void djChannelUrlChanged(String value) {
     final djChannelUrl = DjChannelUrl.dirty(value);
     emit(state.copyWith(djChannelUrl: djChannelUrl));
+  }
+
+  void addTicketPool(TicketPool ticketPool) {
+    final ticketPoolsCopy = [...state.ticketPools];
+    ticketPoolsCopy.add(ticketPool);
+    emit(state.copyWith(ticketPools: ticketPoolsCopy));
+  }
+
+  void editTicketPool(TicketPool oldTicketPool, TicketPool editedTicketPool) {
+    final ticketPoolsCopy = [...state.ticketPools];
+    final index = ticketPoolsCopy.indexOf(oldTicketPool);
+    ticketPoolsCopy[index] = editedTicketPool;
+    emit(state.copyWith(ticketPools: ticketPoolsCopy));
+  }
+
+  void deleteTicketPool(TicketPool ticketPool) {
+    final ticketPoolsCopy = [...state.ticketPools];
+    ticketPoolsCopy.remove(ticketPool);
+    emit(state.copyWith(ticketPools: ticketPoolsCopy));
   }
 
   incrementStep() {
@@ -246,9 +260,13 @@ class AddEventCubit extends Cubit<AddEventState> {
   }
 
   void _submitTicketsStep() {
-    emit(state.copyWith(price: Price.dirty(state.price.value)));
+    final status =
+        state.ticketPools.isEmpty ? FormzStatus.invalid : FormzStatus.valid;
 
-    final status = Formz.validate([state.price]);
+    if (state.ticketPools.isEmpty) {
+      // TODO - add transaltion
+      _showErrorMessage('At least one pool of tickets must be added');
+    }
 
     emit(state.copyWith(status: status));
   }
@@ -296,6 +314,11 @@ class AddEventCubit extends Cubit<AddEventState> {
     return Formz.validate(inputsToValidate);
   }
 
+  _showErrorMessage(String message) {
+    emit(state.copyWith(errorMessage: some(message)));
+    emit(state.copyWith(errorMessage: none()));
+  }
+
   _emitFailure(EventFailure failure) {
     emit(
       state.copyWith(
@@ -310,9 +333,7 @@ class AddEventCubit extends Cubit<AddEventState> {
   Future<void> _addEvent() async {
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
-    final club = _clubInfoCubit.state.club.getOrElse(
-      () => throw NotAuthenticatedError(),
-    );
+    final club = _clubInfoCubit.state.club.getOrCrash();
 
     final event = Event(
       currency: club.acceptedCurrency,
@@ -323,12 +344,13 @@ class AddEventCubit extends Cubit<AddEventState> {
       eventEndDateTime: state.endDateTime.value!,
       attending: 0,
       minAge: state.minAge.value!,
-      price: state.price.value!,
+      price: state.ticketPools.first.ticketPrice,
       allowedOutfit: state.dressCode.value,
       musicalGenres: state.musicalGenres.value,
       location: club.location,
       cityId: club.cityId,
       description: state.description.value,
+      // TODO - change
       urlLinks: {
         facebook: state.facebookUrl.value,
         djChannel: state.djChannelUrl.value,
@@ -337,12 +359,19 @@ class AddEventCubit extends Cubit<AddEventState> {
       isConcert: state.isConcert,
     );
 
-    final failureOrSuccess = await _eventFacade.addEvent(event);
+    final eventTickets = EventTickets(
+      ticketPools: state.ticketPools,
+      eventId: event.id,
+      ticketSales: TicketSales(currency: event.currency),
+      ticketQuantity: state.ticketPools.map((pool) => pool.ticketQuantity).sum,
+    );
+
+    final failureOrSuccess = await _eventFacade.addEvent(event, eventTickets);
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(failure),
       (success) {
-        _addEventNotifierCubit.notifyAboutNewEvent(event);
+        _eventNotifierCubit.notifyAboutNewEvent(event);
         emit(state.copyWith(status: FormzStatus.submissionSuccess));
       },
     );

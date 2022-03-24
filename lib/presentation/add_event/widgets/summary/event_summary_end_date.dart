@@ -20,9 +20,9 @@ class EventSummaryEndDate extends StatelessWidget {
         return Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 RaverPartnersHeadline(text: S().endDate),
-                const SizedBox(width: 20),
                 const EventSummarySwitchStepButton(step: AddEventStep.dateTime),
               ],
             ),

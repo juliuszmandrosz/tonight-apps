@@ -22,9 +22,9 @@ class EventSummaryFacebookUrl extends StatelessWidget {
             ? Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       RaverPartnersHeadline(text: S().facebookEvent),
-                      const SizedBox(width: 20),
                       const EventSummarySwitchStepButton(
                         step: AddEventStep.urlLinks,
                       ),

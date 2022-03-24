@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:raver_partners/presentation/auth/widgets/forgot_password_button.dart';
 import 'package:raver_partners/presentation/auth/widgets/sign_in_button.dart';
@@ -18,18 +19,15 @@ class SignInForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<SignInCubit, SignInState>(
+      listenWhen: (previous, current) =>
+          previous.errorMessage != current.errorMessage ||
+          previous.status != current.status,
       listener: (context, state) {
         state.errorMessage.fold(
           () {},
-          (error) {
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(
-                SnackBar(
-                  content: Text(authErrorMessages[error] ?? S().serverError),
-                ),
-              );
-          },
+          (error) => context.showSnackbarMessage(
+            authErrorMessages[error] ?? S().serverError,
+          ),
         );
 
         if (state.status.isSubmissionSuccess) {

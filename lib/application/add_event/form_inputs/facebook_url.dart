@@ -1,5 +1,4 @@
 import 'package:formz/formz.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_translations/generated/l10n.dart';
 import 'package:validators/validators.dart';
 
@@ -10,16 +9,6 @@ final facebookUrlErrorMessages = {
   FacebookUrlError.invalidUrl: S().invalidUrl,
   FacebookUrlError.notFacebook: S().enterFacebookLink,
 };
-
-String? getFacebookUrlErrorMessage(AddEventState state) {
-  if (!state.isFacebookUrlEnabled) return null;
-
-  if (state.facebookUrl.valid || state.status != FormzStatus.invalid) {
-    return null;
-  }
-
-  return facebookUrlErrorMessages[state.facebookUrl.error];
-}
 
 class FacebookUrl extends FormzInput<String, FacebookUrlError> {
   const FacebookUrl.pure() : super.pure('');
@@ -36,6 +25,7 @@ class FacebookUrl extends FormzInput<String, FacebookUrlError> {
       return FacebookUrlError.invalidUrl;
     }
 
+    // TODO - fix
     if (!value.contains('facebook')) {
       return FacebookUrlError.notFacebook;
     }

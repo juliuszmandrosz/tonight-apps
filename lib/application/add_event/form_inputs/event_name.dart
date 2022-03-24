@@ -1,5 +1,4 @@
 import 'package:formz/formz.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_translations/generated/l10n.dart';
 
 enum EventNameError { empty, tooLong, tooShort }
@@ -9,14 +8,6 @@ final eventNameErrorMessages = {
   EventNameError.tooLong: S().nameTooLong,
   EventNameError.tooShort: S().nameTooShort,
 };
-
-String? getEventNameErrorMessage(AddEventState state) {
-  if (state.eventName.valid || state.status != FormzStatus.invalid) {
-    return null;
-  }
-
-  return eventNameErrorMessages[state.eventName.error];
-}
 
 class EventName extends FormzInput<String, EventNameError> {
   const EventName.pure() : super.pure('');

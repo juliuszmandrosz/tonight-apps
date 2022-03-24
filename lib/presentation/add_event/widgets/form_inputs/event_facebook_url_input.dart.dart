@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:formz/formz.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event/form_inputs/facebook_url.dart';
@@ -70,7 +71,7 @@ class EventFacebookUrlInput extends HookWidget {
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                         labelText: eventSocialMedia[facebook]!.label,
-                        errorText: getFacebookUrlErrorMessage(state),
+                        errorText: _getFacebookUrlErrorMessage(state),
                       ),
                     ),
                   ],
@@ -81,5 +82,15 @@ class EventFacebookUrlInput extends HookWidget {
         );
       },
     );
+  }
+
+  String? _getFacebookUrlErrorMessage(AddEventState state) {
+    if (!state.isFacebookUrlEnabled) return null;
+
+    if (state.facebookUrl.valid || state.status != FormzStatus.invalid) {
+      return null;
+    }
+
+    return facebookUrlErrorMessages[state.facebookUrl.error];
   }
 }

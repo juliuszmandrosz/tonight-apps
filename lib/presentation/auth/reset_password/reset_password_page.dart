@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/auth/reset_password/widgets/reset_password_button.dart';
 import 'package:raver_partners/presentation/auth/reset_password/widgets/reset_password_email_input.dart';
@@ -39,31 +40,20 @@ class ResetPasswordPage extends StatelessWidget {
         child: BlocProvider(
           create: (context) => getIt<ResetPasswordCubit>(),
           child: BlocListener<ResetPasswordCubit, ResetPasswordState>(
+            listenWhen: (previous, current) =>
+                previous.errorMessage != current.errorMessage ||
+                previous.status != current.status,
             listener: (context, state) {
               state.errorMessage.fold(
                 () {},
-                (error) {
-                  ScaffoldMessenger.of(context)
-                    ..hideCurrentSnackBar()
-                    ..showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          authErrorMessages[error] ?? S().serverError,
-                        ),
-                      ),
-                    );
-                },
+                (error) => context.showSnackbarMessage(
+                  authErrorMessages[error] ?? S().serverError,
+                ),
               );
 
               if (state.status.isSubmissionSuccess) {
                 AutoRouter.of(context).pop();
-                ScaffoldMessenger.of(context)
-                  ..hideCurrentSnackBar()
-                  ..showSnackBar(
-                    SnackBar(
-                      content: Text(S().passwordResetLinkSent),
-                    ),
-                  );
+                context.showSnackbarMessage(S().passwordResetLinkSent);
               }
             },
             child: Column(

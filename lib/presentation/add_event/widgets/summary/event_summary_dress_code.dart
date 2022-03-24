@@ -19,9 +19,9 @@ class EventSummaryDressCode extends StatelessWidget {
         return Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 RaverPartnersHeadline(text: S().dressCode),
-                const SizedBox(width: 20),
                 const EventSummarySwitchStepButton(step: AddEventStep.details),
               ],
             ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:formz/formz.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
+import 'package:raver_partners/application/add_event/form_inputs/description.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class EventDescriptionInput extends HookWidget {
@@ -26,9 +28,18 @@ class EventDescriptionInput extends HookWidget {
           maxLines: null,
           decoration: InputDecoration(
             labelText: S().description,
+            errorText: _getDescriptionErrorMessage(state),
           ),
         );
       },
     );
+  }
+
+  String? _getDescriptionErrorMessage(AddEventState state) {
+    if (state.description.valid || state.status != FormzStatus.invalid) {
+      return null;
+    }
+
+    return descriptionErrorMessages[state.description.error];
   }
 }

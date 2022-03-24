@@ -22,9 +22,9 @@ class EventSummaryDjChannelUrl extends StatelessWidget {
             ? Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      RaverPartnersHeadline(text: S().djChannel),
-                      const SizedBox(width: 20),
+                      RaverPartnersHeadline(text: S().djYoutubeChannel),
                       const EventSummarySwitchStepButton(
                         step: AddEventStep.urlLinks,
                       ),

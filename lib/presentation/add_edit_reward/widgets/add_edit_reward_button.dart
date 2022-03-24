@@ -19,7 +19,10 @@ class AddEditRewardButton extends StatelessWidget {
                   () => context.read<AddEditRewardCubit>().addReward(),
                   (_) => context.read<AddEditRewardCubit>().updateReward(),
                 ),
-                child: const FaIcon(FontAwesomeIcons.check),
+                child: state.updatingReward.fold(
+                  () => const FaIcon(FontAwesomeIcons.plus),
+                  (_) => const FaIcon(FontAwesomeIcons.solidSave),
+                ),
               );
       },
     );

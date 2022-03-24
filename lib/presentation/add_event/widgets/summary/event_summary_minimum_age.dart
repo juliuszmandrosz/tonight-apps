@@ -18,9 +18,9 @@ class EventSummaryMinimumAge extends StatelessWidget {
         return Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 RaverPartnersHeadline(text: S().minAge),
-                const SizedBox(width: 20),
                 const EventSummarySwitchStepButton(step: AddEventStep.details),
               ],
             ),

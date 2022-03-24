@@ -11,6 +11,12 @@ class LightTextStyles {
     fontWeight: FontWeight.w500,
   );
 
+  static TextStyle subtitleOnTertiary = GoogleFonts.lexendDeca(
+    fontSize: 18,
+    color: LightColors.onTertiaryContainer,
+    fontWeight: FontWeight.w500,
+  );
+
   static TextStyle subtitleAccent = GoogleFonts.lexendDeca(
     fontSize: 18,
     color: LightColors.primaryColor,

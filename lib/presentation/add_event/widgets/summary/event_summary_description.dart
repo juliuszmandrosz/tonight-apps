@@ -19,9 +19,9 @@ class EventSummaryDescription extends StatelessWidget {
             ? Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       RaverPartnersHeadline(text: S().description),
-                      const SizedBox(width: 20),
                       const EventSummarySwitchStepButton(
                         step: AddEventStep.nameAndDesc,
                       ),

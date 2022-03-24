@@ -27,14 +27,15 @@ class AddEditRewardPage extends StatelessWidget {
         final cubit = getIt<AddEditRewardCubit>();
 
         if (reward != null) {
-          cubit.rewardDescriptionChanged(reward!.description);
-          cubit.requiredEntriesChanged(reward!.requiredEntries);
           cubit.addRewardToState(reward!);
         }
 
         return cubit;
       },
       child: BlocListener<AddEditRewardCubit, AddEditRewardState>(
+        listenWhen: (previous, current) =>
+            previous.errorMessage != current.errorMessage ||
+            previous.status != current.status,
         listener: (context, state) {
           state.errorMessage.fold(
             () {},

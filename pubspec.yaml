@@ -60,6 +60,7 @@ dependencies:
   flutter_hooks: ^0.18.2+1
   validators: ^3.0.0
   cloud_functions: ^3.2.11
+  auto_size_text: ^3.0.0
 
   raver_auth:
     git:
@@ -69,7 +70,7 @@ dependencies:
   raver_events:
     git:
       url: https://github.com/juliuszmandrosz/RaverEvents.git
-      ref: feature/add-sort-by-date-after-add-event-to-state
+      ref: feature/event-tickets-add-update-event
 
   raver_translations:
     git:

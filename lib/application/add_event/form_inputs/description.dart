@@ -1,5 +1,4 @@
 import 'package:formz/formz.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 enum DescriptionError { tooLong }
@@ -7,14 +6,6 @@ enum DescriptionError { tooLong }
 final descriptionErrorMessages = {
   DescriptionError.tooLong: S().descTooLong,
 };
-
-String? getDescriptionErrorMessage(AddEventState state) {
-  if (state.eventName.valid || state.status != FormzStatus.invalid) {
-    return null;
-  }
-
-  return descriptionErrorMessages[state.eventName.error];
-}
 
 class Description extends FormzInput<String, DescriptionError> {
   const Description.pure() : super.pure('');

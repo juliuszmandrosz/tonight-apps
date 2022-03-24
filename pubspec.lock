@@ -50,6 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.3"
+  auto_size_text:
+    dependency: "direct main"
+    description:
+      name: auto_size_text
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   bloc:
     dependency: transitive
     description:
@@ -807,7 +814,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "22732119238e23fa1c98caeef4417f1db8edce9f"
+      resolved-ref: "2daff6802822a89767740e55af8ad26191a982f0"
       url: "https://github.com/juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -815,8 +822,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/add-sort-by-date-after-add-event-to-state"
-      resolved-ref: "7582027ba945f5349f1759a9077248d3aac378cd"
+      ref: "feature/event-tickets-add-update-event"
+      resolved-ref: bb1755541becc2d62f0fe934b5e9eeb0606e375a
       url: "https://github.com/juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
@@ -834,7 +841,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "7432918fc4194db0652f64ef62c793555c7ed067"
+      resolved-ref: "186d572f0ea4f853708d32696effd0fe16fe6492"
       url: "https://github.com/juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"

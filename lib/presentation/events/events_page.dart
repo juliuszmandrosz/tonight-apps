@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_common/domain/domain.dart';
+import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/application/add_event_notifier/add_event_notifier_cubit.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
+import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
 import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/events/widgets/live_events_tab.dart';
 import 'package:raver_partners/presentation/events/widgets/past_events_tab.dart';
@@ -16,9 +16,7 @@ class EventsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentClub = context.read<ClubInfoCubit>().state.club.getOrElse(
-          () => throw NotAuthenticatedError(),
-        );
+    final currentClub = context.read<ClubInfoCubit>().state.club.getOrCrash();
 
     return DefaultTabController(
       length: 3,
@@ -51,8 +49,7 @@ class EventsPage extends StatelessWidget {
                   BlocProvider(
                     create: (context) => getIt<EventOverviewBloc>()
                       ..add(_liveEventsFetched(currentClub.id)),
-                    child: BlocBuilder<AddEventNotifierCubit,
-                        AddEventNotifierState>(
+                    child: BlocBuilder<EventNotifierCubit, EventNotifierState>(
                       builder: (context, state) {
                         //TODO: This could be handled with BlocConsumer, + use listenWhen to filter if event should be added to this tab
                         state.lastAddedEvent.fold(
@@ -66,6 +63,14 @@ class EventsPage extends StatelessWidget {
                           },
                         );
 
+                        state.lastEditedEvent.fold(
+                          () {},
+                          (event) {
+                            _emitEventInStateEdited(
+                                context, event.value1, event.value2);
+                          },
+                        );
+
                         return const LiveEventsTab();
                       },
                     ),
@@ -73,8 +78,7 @@ class EventsPage extends StatelessWidget {
                   BlocProvider(
                     create: (context) => getIt<EventOverviewBloc>()
                       ..add(_upcomingEventsFetched(currentClub.id)),
-                    child: BlocBuilder<AddEventNotifierCubit,
-                        AddEventNotifierState>(
+                    child: BlocBuilder<EventNotifierCubit, EventNotifierState>(
                       builder: (context, state) {
                         state.lastAddedEvent.fold(
                           () {},
@@ -86,6 +90,14 @@ class EventsPage extends StatelessWidget {
                           },
                         );
 
+                        state.lastEditedEvent.fold(
+                          () {},
+                          (event) {
+                            _emitEventInStateEdited(
+                                context, event.value1, event.value2);
+                          },
+                        );
+
                         return const UpcomingEventsTab();
                       },
                     ),
@@ -93,8 +105,7 @@ class EventsPage extends StatelessWidget {
                   BlocProvider(
                     create: (context) => getIt<EventOverviewBloc>()
                       ..add(_pastEventsFetched(currentClub.id)),
-                    child: BlocBuilder<AddEventNotifierCubit,
-                        AddEventNotifierState>(
+                    child: BlocBuilder<EventNotifierCubit, EventNotifierState>(
                       builder: (context, state) {
                         state.lastAddedEvent.fold(
                           () {},
@@ -138,6 +149,10 @@ class EventsPage extends StatelessWidget {
       EventFilters.empty().copyWith(
         showOnlyFilter: ShowOnlyFilter(showOnlyPast: true),
         clubFilter: ClubFilter(clubId: clubId),
+        dateRangeFilter: DateRangeFilter(
+          fromDate: null,
+          toDate: DateTime.now(),
+        ),
       ),
       SortModel(
         fieldName: eventStartDateTime,
@@ -160,5 +175,22 @@ class EventsPage extends StatelessWidget {
     context.read<EventOverviewBloc>().add(
           EventOverviewEvent.eventToStateAdded(event),
         );
+  }
+
+  _emitEventInStateEdited(
+    BuildContext context,
+    Event oldEvent,
+    Event editedEvent,
+  ) {
+    final eventOverviewBloc = context.read<EventOverviewBloc>();
+    final events = eventOverviewBloc.state.events;
+    if (events.contains(oldEvent)) {
+      eventOverviewBloc.add(
+        EventOverviewEvent.eventInStateUpdated(
+          oldEvent,
+          editedEvent,
+        ),
+      );
+    }
   }
 }

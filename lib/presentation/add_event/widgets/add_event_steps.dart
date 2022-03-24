@@ -22,7 +22,7 @@ class AddEventSteps extends StatelessWidget {
           EventStepContent(),
           SizedBox(height: 20),
           AddEventStepsButtons(),
-          SizedBox(height: 5),
+          SizedBox(height: 10),
         ],
       ),
     );

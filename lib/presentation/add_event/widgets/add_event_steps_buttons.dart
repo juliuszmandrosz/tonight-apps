@@ -28,12 +28,18 @@ class AddEventStepsButtons extends StatelessWidget {
                       onPressed: state.currentStep.index > 0
                           ? () => context.read<AddEventCubit>().decrementStep()
                           : null,
-                      child: Text(S().back),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(S().back),
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: () =>
                           context.read<AddEventCubit>().incrementStep(),
-                      child: Text(isLastStep ? S().submit : S().next),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(isLastStep ? S().submit : S().next),
+                      ),
                     ),
                   ],
                 ),
