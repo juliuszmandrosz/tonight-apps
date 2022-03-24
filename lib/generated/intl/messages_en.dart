@@ -56,6 +56,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Apply selected date"),
         "artistName": MessageLookupByLibrary.simpleMessage("Artist name"),
         "attending": m0,
+        "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "backToSummary":
+            MessageLookupByLibrary.simpleMessage("Back to summary"),
         "buyTicket": MessageLookupByLibrary.simpleMessage("Buy ticket"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
         "cancelledByUser":
@@ -63,11 +66,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "clubs": m1,
+        "concertInfo":
+            MessageLookupByLibrary.simpleMessage("Concert information"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "contact": MessageLookupByLibrary.simpleMessage("Contact"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
+        "dateAndTime": MessageLookupByLibrary.simpleMessage("Date and time"),
+        "descTooLong": MessageLookupByLibrary.simpleMessage(
+            "Description may contain up to 1000 characters"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "djChannel": MessageLookupByLibrary.simpleMessage("Dj channel"),
@@ -79,12 +87,34 @@ class MessageLookup extends MessageLookupByLibrary {
         "enableLocation":
             MessageLookupByLibrary.simpleMessage("Enable location"),
         "endDate": MessageLookupByLibrary.simpleMessage("End date"),
+        "endDateBeforeStart": MessageLookupByLibrary.simpleMessage(
+            "The end date cannot be before the start date"),
+        "enterArtistName":
+            MessageLookupByLibrary.simpleMessage("Please enter artist name"),
+        "enterDjChannelUrl": MessageLookupByLibrary.simpleMessage(
+            "Please enter link to dj channel"),
         "enterEmail": MessageLookupByLibrary.simpleMessage(
             "Please enter your e-mail address"),
+        "enterEndDateTime":
+            MessageLookupByLibrary.simpleMessage("Please enter end date time"),
+        "enterEventName":
+            MessageLookupByLibrary.simpleMessage("Please enter event name"),
+        "enterFacebookLink": MessageLookupByLibrary.simpleMessage(
+            "Please enter link to Facebook"),
+        "enterFacebookUrl": MessageLookupByLibrary.simpleMessage(
+            "Please enter link to Facebook event"),
         "enterPassword":
             MessageLookupByLibrary.simpleMessage("Please enter a password"),
+        "enterPrice":
+            MessageLookupByLibrary.simpleMessage("Please give the price"),
+        "enterStartDateTime": MessageLookupByLibrary.simpleMessage(
+            "Please enter start date time"),
         "enterValidEmail":
             MessageLookupByLibrary.simpleMessage("Enter valid email address"),
+        "enterYoutubeLink": MessageLookupByLibrary.simpleMessage(
+            "Please enter link to Youtube"),
+        "errorAddingEvent":
+            MessageLookupByLibrary.simpleMessage("Error adding event"),
         "errorChangingEventStatus": MessageLookupByLibrary.simpleMessage(
             "Error while changing event status"),
         "errorCheckInternetConnection": MessageLookupByLibrary.simpleMessage(
@@ -111,8 +141,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error opening link"),
         "errorOpeningMaps":
             MessageLookupByLibrary.simpleMessage("Error opening maps"),
+        "eventAddedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Event added successfully"),
         "eventDetails": MessageLookupByLibrary.simpleMessage("Event details"),
         "eventName": MessageLookupByLibrary.simpleMessage("Event name"),
+        "eventTimeTooShort": MessageLookupByLibrary.simpleMessage(
+            "The event should last at least one hour"),
         "events": m2,
         "exitButtonTitle": MessageLookupByLibrary.simpleMessage("Exit"),
         "facebook": MessageLookupByLibrary.simpleMessage("Facebook"),
@@ -133,6 +167,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "The credential received are invalid or has expired"),
         "invalidEmail":
             MessageLookupByLibrary.simpleMessage("Invalid email format"),
+        "invalidUrl":
+            MessageLookupByLibrary.simpleMessage("Invalid URL format"),
         "invalidVerificationCode":
             MessageLookupByLibrary.simpleMessage("Invalid verification code"),
         "invalidVerificationId":
@@ -145,9 +181,19 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Seems you\'ve lost connection to internet"),
         "map": MessageLookupByLibrary.simpleMessage("Map"),
         "maxDistance": MessageLookupByLibrary.simpleMessage("Maximum distance"),
+        "maxThreeMusicalGenres": MessageLookupByLibrary.simpleMessage(
+            "Please select up to 3 musical genres"),
         "milestones": MessageLookupByLibrary.simpleMessage("Milestones"),
         "minAge": MessageLookupByLibrary.simpleMessage("Minimum age"),
         "music": MessageLookupByLibrary.simpleMessage("Music"),
+        "musicalGenres": MessageLookupByLibrary.simpleMessage("Musical genres"),
+        "nameAndDesc":
+            MessageLookupByLibrary.simpleMessage("Name and description"),
+        "nameTooLong": MessageLookupByLibrary.simpleMessage(
+            "Name can contain up to 50 characters"),
+        "nameTooShort": MessageLookupByLibrary.simpleMessage(
+            "Name should be at least 3 characters"),
+        "next": MessageLookupByLibrary.simpleMessage("Next"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noDressCode": MessageLookupByLibrary.simpleMessage("No dress code"),
         "noEventsInClub":
@@ -177,6 +223,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "photos": m4,
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Price range"),
+        "priceTooLow": MessageLookupByLibrary.simpleMessage(
+            "The minimum ticket price is 20 PLN"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
         "raverPartners": MessageLookupByLibrary.simpleMessage("Raver Partners"),
@@ -188,6 +236,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "retryConnection":
             MessageLookupByLibrary.simpleMessage("Retry Connection"),
         "rewards": m5,
+        "selectDressCode":
+            MessageLookupByLibrary.simpleMessage("Please select dress code"),
+        "selectMinAge":
+            MessageLookupByLibrary.simpleMessage("Please select minumum age"),
+        "selectMusicalGenres": MessageLookupByLibrary.simpleMessage(
+            "Please select musical genres"),
         "sendPasswordResetLink":
             MessageLookupByLibrary.simpleMessage("Send password reset link"),
         "serverError": MessageLookupByLibrary.simpleMessage("Server error"),
@@ -200,6 +254,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "socialMedia": MessageLookupByLibrary.simpleMessage("Social media"),
         "sport": MessageLookupByLibrary.simpleMessage("Sport"),
         "startDate": MessageLookupByLibrary.simpleMessage("Start date"),
+        "submit": MessageLookupByLibrary.simpleMessage("Submit"),
+        "summary": MessageLookupByLibrary.simpleMessage("Summary"),
         "tickets": m6,
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "unexpectedError":

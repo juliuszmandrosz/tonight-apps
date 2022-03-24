@@ -57,6 +57,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zatwierdź wybraną datę"),
         "artistName": MessageLookupByLibrary.simpleMessage("Nazwa artysty"),
         "attending": m0,
+        "back": MessageLookupByLibrary.simpleMessage("Wróć"),
+        "backToSummary":
+            MessageLookupByLibrary.simpleMessage("Wróć do podsumowania"),
         "buyTicket": MessageLookupByLibrary.simpleMessage("Kup bilet"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Anulowano"),
         "cancelledByUser": MessageLookupByLibrary.simpleMessage(
@@ -64,11 +67,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "checkout": MessageLookupByLibrary.simpleMessage("Kasa"),
         "city": MessageLookupByLibrary.simpleMessage("Miasto"),
         "clubs": m1,
+        "concertInfo":
+            MessageLookupByLibrary.simpleMessage("Informacje o koncercie"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Potwierdź hasło"),
         "contact": MessageLookupByLibrary.simpleMessage("Kontakt"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Panel"),
         "date": MessageLookupByLibrary.simpleMessage("Data"),
+        "dateAndTime": MessageLookupByLibrary.simpleMessage("Data i czas"),
+        "descTooLong": MessageLookupByLibrary.simpleMessage(
+            "Opis może zawierać maksymalnie 1000 znaków"),
         "description": MessageLookupByLibrary.simpleMessage("Opis"),
         "details": MessageLookupByLibrary.simpleMessage("Szczegóły"),
         "djChannel": MessageLookupByLibrary.simpleMessage("Kanał DJ\'a"),
@@ -80,12 +88,33 @@ class MessageLookup extends MessageLookupByLibrary {
         "enableLocation":
             MessageLookupByLibrary.simpleMessage("Włącz lokalizację"),
         "endDate": MessageLookupByLibrary.simpleMessage("Data zakończenia"),
+        "endDateBeforeStart": MessageLookupByLibrary.simpleMessage(
+            "Data zakończenia nie może być przed datą rozpoczęcia"),
+        "enterArtistName": MessageLookupByLibrary.simpleMessage(
+            "Proszę podać nazwę wykonawcy"),
+        "enterDjChannelUrl": MessageLookupByLibrary.simpleMessage(
+            "Proszę podać link do kanału dj\'a"),
         "enterEmail": MessageLookupByLibrary.simpleMessage(
             "Proszę wprowadź adres e-mail"),
+        "enterEndDateTime": MessageLookupByLibrary.simpleMessage(
+            "Proszę wprowadzić datę i godzinę zakończenia"),
+        "enterEventName": MessageLookupByLibrary.simpleMessage(
+            "Proszę podać nazwę wydarzenia"),
+        "enterFacebookLink": MessageLookupByLibrary.simpleMessage(
+            "Porszę podać link do Facebooka"),
+        "enterFacebookUrl": MessageLookupByLibrary.simpleMessage(
+            "Proszę podać link do wydarzenia na Facebooku"),
         "enterPassword":
             MessageLookupByLibrary.simpleMessage("Proszę wprowadź hasło"),
+        "enterPrice": MessageLookupByLibrary.simpleMessage("Proszę podać cenę"),
+        "enterStartDateTime": MessageLookupByLibrary.simpleMessage(
+            "Proszę wprowadzić datę i godzinę rozpoczęcia"),
         "enterValidEmail": MessageLookupByLibrary.simpleMessage(
             "Wprowadź prawidłowy adres e-mail"),
+        "enterYoutubeLink": MessageLookupByLibrary.simpleMessage(
+            "Proszę podać link do Youtube"),
+        "errorAddingEvent": MessageLookupByLibrary.simpleMessage(
+            "Błąd podczas dodawania wydarzenia"),
         "errorChangingEventStatus": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas zmiany statusu zdarzenia"),
         "errorCheckInternetConnection": MessageLookupByLibrary.simpleMessage(
@@ -112,9 +141,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Błąd podczas otwierania linku"),
         "errorOpeningMaps":
             MessageLookupByLibrary.simpleMessage("Błąd podczas otwierania map"),
+        "eventAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Wydarzenie zostało dodane pomyślnie"),
         "eventDetails":
             MessageLookupByLibrary.simpleMessage("Szczegóły wydarzenia"),
         "eventName": MessageLookupByLibrary.simpleMessage("Nazwa wydarzenia"),
+        "eventTimeTooShort": MessageLookupByLibrary.simpleMessage(
+            "Wydarzenie powinno trwać co najmniej godzinę"),
         "events": m2,
         "exitButtonTitle": MessageLookupByLibrary.simpleMessage("Wyjdź"),
         "facebook": MessageLookupByLibrary.simpleMessage("Facebook"),
@@ -136,6 +169,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Otrzymane poświadczenia są nieprawidłowe lub wygasły"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy format adresu e-mail"),
+        "invalidUrl": MessageLookupByLibrary.simpleMessage(
+            "Nieprawidłowy format adresu URL"),
         "invalidVerificationCode": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy kod weryfikacyjny"),
         "invalidVerificationId": MessageLookupByLibrary.simpleMessage(
@@ -149,9 +184,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "map": MessageLookupByLibrary.simpleMessage("Mapa"),
         "maxDistance":
             MessageLookupByLibrary.simpleMessage("Maksymalna odległość"),
+        "maxThreeMusicalGenres": MessageLookupByLibrary.simpleMessage(
+            "Proszę wybrać maksymalnie 3 gatunki muzyczne"),
         "milestones": MessageLookupByLibrary.simpleMessage("Kamienie milowe"),
         "minAge": MessageLookupByLibrary.simpleMessage("Minimalny wiek"),
         "music": MessageLookupByLibrary.simpleMessage("Muzyka"),
+        "musicalGenres":
+            MessageLookupByLibrary.simpleMessage("Gatunki muzyczne"),
+        "nameAndDesc": MessageLookupByLibrary.simpleMessage("Nazwa i opis"),
+        "nameTooLong": MessageLookupByLibrary.simpleMessage(
+            "Nazwa może zawierać maksymalnie 50 znaków"),
+        "nameTooShort": MessageLookupByLibrary.simpleMessage(
+            "Nazwa powinna zawierać co najmniej 8 znaków"),
+        "next": MessageLookupByLibrary.simpleMessage("Dalej"),
         "no": MessageLookupByLibrary.simpleMessage("Nie"),
         "noDressCode":
             MessageLookupByLibrary.simpleMessage("Brak dress code\'u"),
@@ -182,6 +227,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "photos": m4,
         "price": MessageLookupByLibrary.simpleMessage("Cena"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Zakres cen"),
+        "priceTooLow": MessageLookupByLibrary.simpleMessage(
+            "Minimalna cena biletu to 20 złotych"),
         "profile": MessageLookupByLibrary.simpleMessage("Profil"),
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
         "raverPartners": MessageLookupByLibrary.simpleMessage("Raver Partners"),
@@ -193,6 +240,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "retryConnection":
             MessageLookupByLibrary.simpleMessage("Ponów Połączenie"),
         "rewards": m5,
+        "selectDressCode":
+            MessageLookupByLibrary.simpleMessage("Proszę wybrać dress code"),
+        "selectMinAge": MessageLookupByLibrary.simpleMessage(
+            "Proszę wybrać minimalny wiek"),
+        "selectMusicalGenres": MessageLookupByLibrary.simpleMessage(
+            "Proszę wybrać gatunki muzyczne"),
         "sendPasswordResetLink": MessageLookupByLibrary.simpleMessage(
             "Wyślij link do resetowania hasła"),
         "serverError": MessageLookupByLibrary.simpleMessage("Błąd serwera"),
@@ -206,6 +259,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Media społecznościowe"),
         "sport": MessageLookupByLibrary.simpleMessage("Sport"),
         "startDate": MessageLookupByLibrary.simpleMessage("Data rozpoczęcia"),
+        "submit": MessageLookupByLibrary.simpleMessage("Zatwierdź"),
+        "summary": MessageLookupByLibrary.simpleMessage("Podsumowanie"),
         "tickets": m6,
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "unexpectedError":

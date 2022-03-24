@@ -153,6 +153,26 @@ class S {
     );
   }
 
+  /// `Back`
+  String get back {
+    return Intl.message(
+      'Back',
+      name: 'back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to summary`
+  String get backToSummary {
+    return Intl.message(
+      'Back to summary',
+      name: 'backToSummary',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Buy ticket`
   String get buyTicket {
     return Intl.message(
@@ -216,6 +236,16 @@ class S {
     );
   }
 
+  /// `Concert information`
+  String get concertInfo {
+    return Intl.message(
+      'Concert information',
+      name: 'concertInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Confirm password`
   String get confirmPassword {
     return Intl.message(
@@ -256,11 +286,31 @@ class S {
     );
   }
 
+  /// `Date and time`
+  String get dateAndTime {
+    return Intl.message(
+      'Date and time',
+      name: 'dateAndTime',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Description`
   String get description {
     return Intl.message(
       'Description',
       name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description may contain up to 1000 characters`
+  String get descTooLong {
+    return Intl.message(
+      'Description may contain up to 1000 characters',
+      name: 'descTooLong',
       desc: '',
       args: [],
     );
@@ -346,11 +396,81 @@ class S {
     );
   }
 
+  /// `The end date cannot be before the start date`
+  String get endDateBeforeStart {
+    return Intl.message(
+      'The end date cannot be before the start date',
+      name: 'endDateBeforeStart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter artist name`
+  String get enterArtistName {
+    return Intl.message(
+      'Please enter artist name',
+      name: 'enterArtistName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter link to dj channel`
+  String get enterDjChannelUrl {
+    return Intl.message(
+      'Please enter link to dj channel',
+      name: 'enterDjChannelUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please enter your e-mail address`
   String get enterEmail {
     return Intl.message(
       'Please enter your e-mail address',
       name: 'enterEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter end date time`
+  String get enterEndDateTime {
+    return Intl.message(
+      'Please enter end date time',
+      name: 'enterEndDateTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter event name`
+  String get enterEventName {
+    return Intl.message(
+      'Please enter event name',
+      name: 'enterEventName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter link to Facebook`
+  String get enterFacebookLink {
+    return Intl.message(
+      'Please enter link to Facebook',
+      name: 'enterFacebookLink',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter link to Facebook event`
+  String get enterFacebookUrl {
+    return Intl.message(
+      'Please enter link to Facebook event',
+      name: 'enterFacebookUrl',
       desc: '',
       args: [],
     );
@@ -366,11 +486,51 @@ class S {
     );
   }
 
+  /// `Please give the price`
+  String get enterPrice {
+    return Intl.message(
+      'Please give the price',
+      name: 'enterPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter start date time`
+  String get enterStartDateTime {
+    return Intl.message(
+      'Please enter start date time',
+      name: 'enterStartDateTime',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Enter valid email address`
   String get enterValidEmail {
     return Intl.message(
       'Enter valid email address',
       name: 'enterValidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter link to Youtube`
+  String get enterYoutubeLink {
+    return Intl.message(
+      'Please enter link to Youtube',
+      name: 'enterYoutubeLink',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error adding event`
+  String get errorAddingEvent {
+    return Intl.message(
+      'Error adding event',
+      name: 'errorAddingEvent',
       desc: '',
       args: [],
     );
@@ -506,6 +666,16 @@ class S {
     );
   }
 
+  /// `Event added successfully`
+  String get eventAddedSuccessfully {
+    return Intl.message(
+      'Event added successfully',
+      name: 'eventAddedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Event details`
   String get eventDetails {
     return Intl.message(
@@ -536,6 +706,16 @@ class S {
       name: 'events',
       desc: '',
       args: [count],
+    );
+  }
+
+  /// `The event should last at least one hour`
+  String get eventTimeTooShort {
+    return Intl.message(
+      'The event should last at least one hour',
+      name: 'eventTimeTooShort',
+      desc: '',
+      args: [],
     );
   }
 
@@ -679,6 +859,16 @@ class S {
     );
   }
 
+  /// `Invalid URL format`
+  String get invalidUrl {
+    return Intl.message(
+      'Invalid URL format',
+      name: 'invalidUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Invalid verification code`
   String get invalidVerificationCode {
     return Intl.message(
@@ -759,6 +949,16 @@ class S {
     );
   }
 
+  /// `Please select up to 3 musical genres`
+  String get maxThreeMusicalGenres {
+    return Intl.message(
+      'Please select up to 3 musical genres',
+      name: 'maxThreeMusicalGenres',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Milestones`
   String get milestones {
     return Intl.message(
@@ -784,6 +984,56 @@ class S {
     return Intl.message(
       'Music',
       name: 'music',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Musical genres`
+  String get musicalGenres {
+    return Intl.message(
+      'Musical genres',
+      name: 'musicalGenres',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name and description`
+  String get nameAndDesc {
+    return Intl.message(
+      'Name and description',
+      name: 'nameAndDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name can contain up to 50 characters`
+  String get nameTooLong {
+    return Intl.message(
+      'Name can contain up to 50 characters',
+      name: 'nameTooLong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name should be at least 3 characters`
+  String get nameTooShort {
+    return Intl.message(
+      'Name should be at least 3 characters',
+      name: 'nameTooShort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next`
+  String get next {
+    return Intl.message(
+      'Next',
+      name: 'next',
       desc: '',
       args: [],
     );
@@ -985,6 +1235,16 @@ class S {
     );
   }
 
+  /// `The minimum ticket price is 20 PLN`
+  String get priceTooLow {
+    return Intl.message(
+      'The minimum ticket price is 20 PLN',
+      name: 'priceTooLow',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Profile`
   String get profile {
     return Intl.message(
@@ -1075,6 +1335,36 @@ class S {
       name: 'rewards',
       desc: '',
       args: [count],
+    );
+  }
+
+  /// `Please select dress code`
+  String get selectDressCode {
+    return Intl.message(
+      'Please select dress code',
+      name: 'selectDressCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select minumum age`
+  String get selectMinAge {
+    return Intl.message(
+      'Please select minumum age',
+      name: 'selectMinAge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select musical genres`
+  String get selectMusicalGenres {
+    return Intl.message(
+      'Please select musical genres',
+      name: 'selectMusicalGenres',
+      desc: '',
+      args: [],
     );
   }
 
@@ -1173,6 +1463,26 @@ class S {
     return Intl.message(
       'Start date',
       name: 'startDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit`
+  String get submit {
+    return Intl.message(
+      'Submit',
+      name: 'submit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Summary`
+  String get summary {
+    return Intl.message(
+      'Summary',
+      name: 'summary',
       desc: '',
       args: [],
     );
