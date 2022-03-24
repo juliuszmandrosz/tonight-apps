@@ -18,32 +18,40 @@ class AddEventPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: Scaffold(
-        appBar: RaverPartnersAppBar(
-          title: S().addEvent,
-        ),
-        body: SafeArea(
-          child: BlocProvider(
-            create: (context) => getIt<AddEventCubit>(
-              param1: context.read<EventNotifierCubit>(),
-              param2: context.read<ClubInfoCubit>(),
-            ),
-            child: BlocListener<AddEventCubit, AddEventState>(
-              listenWhen: (previous, current) =>
-                  previous.errorMessage != current.errorMessage ||
-                  previous.status != current.status,
-              listener: (context, state) {
-                state.errorMessage.fold(
-                  () {},
-                  (error) => context.showSnackbarMessage(error),
-                );
+      child: WillPopScope(
+        onWillPop: () async {
+          final result = await context
+              .showConfirmationDialogWithCustomMessage(S().confirmLeavingPage);
 
-                if (state.status.isSubmissionSuccess) {
-                  AutoRouter.of(context).pop();
-                  context.showSnackbarMessage(S().eventAddedSuccessfully);
-                }
-              },
-              child: const AddEventSteps(),
+          return result ?? false;
+        },
+        child: Scaffold(
+          appBar: RaverPartnersAppBar(
+            title: S().addEvent,
+          ),
+          body: SafeArea(
+            child: BlocProvider(
+              create: (context) => getIt<AddEventCubit>(
+                param1: context.read<EventNotifierCubit>(),
+                param2: context.read<ClubInfoCubit>(),
+              ),
+              child: BlocListener<AddEventCubit, AddEventState>(
+                listenWhen: (previous, current) =>
+                    previous.errorMessage != current.errorMessage ||
+                    previous.status != current.status,
+                listener: (context, state) {
+                  state.errorMessage.fold(
+                    () {},
+                    (error) => context.showSnackbarMessage(error),
+                  );
+
+                  if (state.status.isSubmissionSuccess) {
+                    AutoRouter.of(context).pop();
+                    context.showSnackbarMessage(S().eventAddedSuccessfully);
+                  }
+                },
+                child: const AddEventSteps(),
+              ),
             ),
           ),
         ),

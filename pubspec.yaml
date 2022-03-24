@@ -49,7 +49,7 @@ dependencies:
   logger: ^1.1.0
   cloud_firestore: ^3.1.10
   algolia: ^1.0.4
-  freezed_annotation: ^1.1.0
+  freezed_annotation: ^2.0.3
   google_fonts: ^2.3.1
   flutter_speed_dial: ^5.0.0+1
   formz: ^0.4.1
@@ -67,12 +67,11 @@ dependencies:
   raver_auth:
     git:
       url: https://github.com/juliuszmandrosz/RaverAuth.git
-      ref: feature/common-elements-for-auth-page
 
   raver_events:
     git:
       url: https://github.com/juliuszmandrosz/RaverEvents.git
-      ref: feature/get-event-in-date-range-for-current-partner
+      ref: develop
 
   raver_translations:
     git:
@@ -85,6 +84,7 @@ dependencies:
   raver_clubs:
     git:
       url: https://github.com/juliuszmandrosz/RaverClubs.git
+      ref: develop
 
   raver_rewards:
     git:
@@ -97,7 +97,7 @@ dev_dependencies:
 
   build_runner: ^2.1.8
   auto_route_generator: ^3.2.3
-  freezed: ^1.1.1
+  freezed: ^2.0.3
 
 
   # The "flutter_lints" package below contains a set of recommended lints to
