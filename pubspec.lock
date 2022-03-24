@@ -795,8 +795,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/selector-sign-in"
-      resolved-ref: e41b873533586151046051e7bdace4802a84edfe
+      ref: HEAD
+      resolved-ref: "2a2829f46afbeafe5edc6e42f2e3add64bdcfa44"
       url: "https://github.com/juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
@@ -822,8 +822,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/event-tickets-add-update-event"
-      resolved-ref: bb1755541becc2d62f0fe934b5e9eeb0606e375a
+      ref: "feature/distinct-facades"
+      resolved-ref: "0fca0cb70f5d618f871edf515c4e0e1c4acacc94"
       url: "https://github.com/juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"

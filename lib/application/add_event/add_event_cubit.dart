@@ -26,12 +26,12 @@ part 'add_event_cubit.freezed.dart';
 part 'add_event_state.dart';
 
 class AddEventCubit extends Cubit<AddEventState> {
-  final EventFacade _eventFacade;
+  final PartnerEventFacade _eventFacade;
   final EventNotifierCubit _eventNotifierCubit;
   final ClubInfoCubit _clubInfoCubit;
 
   AddEventCubit({
-    required EventFacade eventFacade,
+    required PartnerEventFacade eventFacade,
     required EventNotifierCubit eventNotifierCubit,
     required ClubInfoCubit clubInfoCubit,
   })  : _eventFacade = eventFacade,

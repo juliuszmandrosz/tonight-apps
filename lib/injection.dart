@@ -145,7 +145,16 @@ void _registerFacades() {
     () => AuthCloudFunctionsFacadeImpl(),
   );
 
-  getIt.registerLazySingleton<EventFacade>(
+  getIt.registerLazySingleton<CommonEventFacade>(
+    () => FirebaseEventFacade(
+      firebaseAuth: getIt(),
+      logger: getIt(),
+      algoliaEventsApi: getIt(),
+      firestore: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<PartnerEventFacade>(
     () => FirebaseEventFacade(
       firebaseAuth: getIt(),
       logger: getIt(),
@@ -188,7 +197,7 @@ void _registerFacades() {
     () => SelectorManagementCloudFunctionsFacadeImpl(),
   );
 
-  getIt.registerLazySingleton<EventTicketsFacade>(
+  getIt.registerLazySingleton<PartnerEventTicketsFacade>(
     () => FirebaseEventTicketsFacade(
       firestore: getIt(),
       logger: getIt(),

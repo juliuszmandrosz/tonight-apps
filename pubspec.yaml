@@ -65,12 +65,11 @@ dependencies:
   raver_auth:
     git:
       url: https://github.com/juliuszmandrosz/RaverAuth.git
-      ref: feature/selector-sign-in
 
   raver_events:
     git:
       url: https://github.com/juliuszmandrosz/RaverEvents.git
-      ref: feature/event-tickets-add-update-event
+      ref: feature/distinct-facades
 
   raver_translations:
     git:

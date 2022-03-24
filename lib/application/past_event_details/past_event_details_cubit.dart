@@ -11,7 +11,7 @@ part 'past_event_details_cubit.freezed.dart';
 part 'past_event_details_state.dart';
 
 class PastEventDetailsCubit extends Cubit<PastEventDetailsState> {
-  final EventTicketsFacade _eventTicketsFacade;
+  final PartnerEventTicketsFacade _eventTicketsFacade;
   late StreamSubscription _eventTicketsSub;
 
   PastEventDetailsCubit(this._eventTicketsFacade)

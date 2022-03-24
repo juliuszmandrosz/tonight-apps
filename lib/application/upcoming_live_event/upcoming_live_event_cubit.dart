@@ -19,15 +19,15 @@ part 'upcoming_live_event_cubit.freezed.dart';
 part 'upcoming_live_event_state.dart';
 
 class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
-  final EventTicketsFacade _eventTicketsFacade;
-  final EventFacade _eventFacade;
+  final PartnerEventTicketsFacade _eventTicketsFacade;
+  final PartnerEventFacade _eventFacade;
   final EventNotifierCubit _eventNotifierCubit;
 
   late StreamSubscription _eventTicketsSub;
 
   UpcomingLiveEventCubit({
-    required EventTicketsFacade eventTicketsFacade,
-    required EventFacade eventFacade,
+    required PartnerEventTicketsFacade eventTicketsFacade,
+    required PartnerEventFacade eventFacade,
     required EventNotifierCubit eventNotifierCubit,
   })  : _eventTicketsFacade = eventTicketsFacade,
         _eventFacade = eventFacade,
