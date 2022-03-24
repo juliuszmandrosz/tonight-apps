@@ -788,8 +788,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: HEAD
-      resolved-ref: "2a2829f46afbeafe5edc6e42f2e3add64bdcfa44"
+      ref: "feature/common-elements-for-auth-page"
+      resolved-ref: "84254424f62ba846aae5131ef6f6850731c307e4"
       url: "https://github.com/juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
@@ -818,6 +818,15 @@ packages:
       ref: HEAD
       resolved-ref: "8a2f76be93915317aaa36f58b71af16cdf5d81b1"
       url: "https://github.com/juliuszmandrosz/RaverEvents.git"
+    source: git
+    version: "0.0.1"
+  raver_rewards:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "87a20efceb4d125d9beeadfe260423c4c92a7f55"
+      url: "https://github.com/juliuszmandrosz/RaverRewards.git"
     source: git
     version: "0.0.1"
   raver_translations:

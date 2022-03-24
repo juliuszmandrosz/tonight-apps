@@ -11,9 +11,12 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event_notifier/add_event_notifier_cubit.dart';
+import 'package:raver_partners/application/add_reward/add_reward_cubit.dart';
 import 'package:raver_partners/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/event_filters/event_filters_cubit.dart';
+import 'package:raver_rewards/domain/domain.dart';
+import 'package:raver_rewards/raver_rewards.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -79,6 +82,12 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  getIt.registerFactory(
+    () => AddRewardCubit(
+      getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
@@ -122,6 +131,14 @@ void _registerFacades() {
 
   getIt.registerLazySingleton<PartnerClubFacade>(
     () => FirebaseClubFacade(
+      firestore: getIt(),
+      firebaseAuth: getIt(),
+      logger: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<PartnerRewardFacade>(
+    () => FirebaseRewardFacade(
       firestore: getIt(),
       firebaseAuth: getIt(),
       logger: getIt(),

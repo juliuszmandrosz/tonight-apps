@@ -73,4 +73,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     ),
   ),
   disabledColor: LightColors.textColorLight,
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
+    backgroundColor: LightColors.primaryColor,
+  ),
 );

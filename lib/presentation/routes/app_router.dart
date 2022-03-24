@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:raver_partners/presentation/add_event/add_event_page.dart';
 import 'package:raver_partners/presentation/auth/auth_page.dart';
 import 'package:raver_partners/presentation/auth/reset_password/reset_password_page.dart';
+import 'package:raver_partners/presentation/add_reward/add_reward_page.dart';
 import 'package:raver_partners/presentation/dashboard/dashboard_page.dart';
 import 'package:raver_partners/presentation/events/events_page.dart';
 import 'package:raver_partners/presentation/navigator/navigator_page.dart';
@@ -28,6 +29,7 @@ part 'app_router.gr.dart';
       ],
     ),
     AutoRoute(page: AddEventPage),
+    AutoRoute(page: AddRewardPage),
   ],
 )
 class AppRouter extends _$AppRouter {}
