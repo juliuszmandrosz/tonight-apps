@@ -342,7 +342,6 @@ class AddEventCubit extends Cubit<AddEventState> {
       clubName: club.clubName,
       eventStartDateTime: state.startDateTime.value!,
       eventEndDateTime: state.endDateTime.value!,
-      attending: 0,
       minAge: state.minAge.value!,
       price: state.ticketPools.first.ticketPrice,
       allowedOutfit: state.dressCode.value,
@@ -350,11 +349,7 @@ class AddEventCubit extends Cubit<AddEventState> {
       location: club.location,
       cityId: club.cityId,
       description: state.description.value,
-      // TODO - change
-      urlLinks: {
-        facebook: state.facebookUrl.value,
-        djChannel: state.djChannelUrl.value,
-      },
+      urlLinks: _getUrlLinks(),
       artistName: state.artistName.value,
       isConcert: state.isConcert,
     );
@@ -375,5 +370,19 @@ class AddEventCubit extends Cubit<AddEventState> {
         emit(state.copyWith(status: FormzStatus.submissionSuccess));
       },
     );
+  }
+
+  _getUrlLinks() {
+    final result = <String, String>{};
+
+    if (state.isFacebookUrlEnabled) {
+      result[facebook] = state.facebookUrl.value;
+    }
+
+    if (state.isDjChannelUrlEnabled) {
+      result[djChannel] = state.djChannelUrl.value;
+    }
+
+    return result;
   }
 }
