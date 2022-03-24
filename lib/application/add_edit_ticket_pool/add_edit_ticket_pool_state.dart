@@ -4,6 +4,7 @@ part of 'add_edit_ticket_pool_cubit.dart';
 class AddEditTicketPoolState with _$AddEditTicketPoolState {
   const factory AddEditTicketPoolState({
     required List<TicketPool> currentTicketPools,
+    required Option<Club> clubInfo,
     required TicketQuantity ticketQuantity,
     required TicketPrice ticketPrice,
     required Option<TicketPool> editingTicketPool,
@@ -14,8 +15,9 @@ class AddEditTicketPoolState with _$AddEditTicketPoolState {
 
   factory AddEditTicketPoolState.initial() => AddEditTicketPoolState(
         currentTicketPools: [],
+        clubInfo: none(),
         ticketQuantity: const TicketQuantity.pure(),
-        ticketPrice: const TicketPrice.pure(),
+        ticketPrice: TicketPrice.pure(none()),
         editingTicketPool: none(),
         status: FormzStatus.pure,
         errorMessage: none(),

@@ -19,7 +19,9 @@ import 'package:raver_partners/application/event_notifier/event_notifier_cubit.d
 import 'package:raver_partners/application/past_event_details/past_event_details_cubit.dart';
 import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
 import 'package:raver_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
+import 'package:raver_partners/domain/currency_params/currency_params_facade.dart';
 import 'package:raver_partners/domain/selector_management/selector_management_facade.dart';
+import 'package:raver_partners/infrastructure/currency_params/firebase_currency_params_facade.dart';
 import 'package:raver_partners/infrastructure/selector_management/cloud_functions/selector_cloud_functions_facade.dart';
 import 'package:raver_partners/infrastructure/selector_management/firebase_selector_management_facade.dart';
 import 'package:raver_rewards/raver_rewards.dart';
@@ -85,7 +87,8 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => ClubInfoCubit(
-      getIt(),
+      clubFacade: getIt(),
+      currencyParamsFacade: getIt(),
     ),
   );
 
@@ -186,6 +189,13 @@ void _registerFacades() {
     ),
   );
 
+  getIt.registerLazySingleton<PartnerEventTicketsFacade>(
+    () => FirebaseEventTicketsFacade(
+      firestore: getIt(),
+      logger: getIt(),
+    ),
+  );
+
   getIt.registerLazySingleton<SelectorManagementFacade>(
     () => FirebaseSelectorManagementFacade(
       selectorCloudFunctionsFacade: getIt(),
@@ -197,8 +207,8 @@ void _registerFacades() {
     () => SelectorManagementCloudFunctionsFacadeImpl(),
   );
 
-  getIt.registerLazySingleton<PartnerEventTicketsFacade>(
-    () => FirebaseEventTicketsFacade(
+  getIt.registerLazySingleton<CurrencyParamsFacade>(
+    () => FirebaseCurrencyParamsFacade(
       firestore: getIt(),
       logger: getIt(),
     ),

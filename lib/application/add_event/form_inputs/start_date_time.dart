@@ -2,10 +2,11 @@ import 'package:formz/formz.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_translations/generated/l10n.dart';
 
-enum StartDateTimeError { empty }
+enum StartDateTimeError { empty, fromPast }
 
 final startDateTimeErrorMessages = {
   StartDateTimeError.empty: S().enterStartDateTime,
+  StartDateTimeError.fromPast: S().startDateBeforeNow,
 };
 
 String? getStartDateTimeErrorMessage(AddEventState state) {
@@ -25,6 +26,10 @@ class StartDateTime extends FormzInput<DateTime?, StartDateTimeError> {
   StartDateTimeError? validator(DateTime? value) {
     if (value == null) {
       return StartDateTimeError.empty;
+    }
+
+    if (value.isBefore(DateTime.now())) {
+      return StartDateTimeError.fromPast;
     }
 
     return null;

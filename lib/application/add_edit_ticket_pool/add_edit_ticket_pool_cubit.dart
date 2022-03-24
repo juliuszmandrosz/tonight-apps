@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/ticket_price.dart';
@@ -20,7 +21,9 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
 
   AddEditTicketPoolCubit({required ClubInfoCubit clubInfoCubit})
       : _clubInfoCubit = clubInfoCubit,
-        super(AddEditTicketPoolState.initial());
+        super(AddEditTicketPoolState.initial()) {
+    emit(state.copyWith(clubInfo: _clubInfoCubit.state.club));
+  }
 
   void ticketQuantityChanged(int? value) {
     final quantity = TicketQuantity.dirty(value);
@@ -28,7 +31,10 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
   }
 
   void ticketPriceChanged(int? value) {
-    final price = TicketPrice.dirty(value);
+    final price = TicketPrice.dirty(
+      currencyParams: _clubInfoCubit.state.currencyParams,
+      value: value,
+    );
     emit(state.copyWith(ticketPrice: price));
   }
 
@@ -37,7 +43,10 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
   }
 
   addEditingTicketPoolToState(TicketPool ticketPool) {
-    final price = TicketPrice.dirty(ticketPool.ticketPrice);
+    final price = TicketPrice.dirty(
+      currencyParams: _clubInfoCubit.state.currencyParams,
+      value: ticketPool.ticketPrice,
+    );
     final quantity = TicketQuantity.dirty(ticketPool.ticketQuantity);
     emit(
       state.copyWith(
@@ -102,7 +111,10 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
     emit(
       state.copyWith(
         ticketQuantity: TicketQuantity.dirty(state.ticketQuantity.value),
-        ticketPrice: TicketPrice.dirty(state.ticketPrice.value),
+        ticketPrice: TicketPrice.dirty(
+          currencyParams: _clubInfoCubit.state.currencyParams,
+          value: state.ticketPrice.value,
+        ),
       ),
     );
 

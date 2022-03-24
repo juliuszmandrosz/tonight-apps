@@ -33,7 +33,10 @@ class EventEndDateInput extends StatelessWidget {
             errorText: getEndDateTimeErrorMessage(state),
             suffixIcon: IconButton(
               onPressed: () async {
-                final dateTime = await getDateTimeFromUser(context);
+                final dateTime = await getDateTimeFromUser(
+                  context,
+                  initialDate: state.startDateTime.value,
+                );
                 context.read<AddEventCubit>().eventEndDateTimeChanged(dateTime);
               },
               icon: Padding(

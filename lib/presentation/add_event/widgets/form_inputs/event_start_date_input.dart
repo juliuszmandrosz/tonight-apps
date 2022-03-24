@@ -32,7 +32,10 @@ class EventStartDateInput extends StatelessWidget {
             errorText: getStartDateTimeErrorMessage(state),
             suffixIcon: IconButton(
               onPressed: () async {
-                final dateTime = await getDateTimeFromUser(context);
+                final dateTime = await getDateTimeFromUser(
+                  context,
+                  initialDate: state.startDateTime.value,
+                );
                 context.read<AddEventCubit>().startDateTimeChanged(dateTime);
               },
               icon: Padding(

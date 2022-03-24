@@ -268,7 +268,7 @@ packages:
     source: hosted
     version: "1.5.0"
   equatable:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: equatable
       url: "https://pub.dartlang.org"
@@ -582,7 +582,7 @@ packages:
     source: hosted
     version: "4.5.0"
   json_serializable:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: json_serializable
       url: "https://pub.dartlang.org"
@@ -795,8 +795,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: HEAD
-      resolved-ref: "2a2829f46afbeafe5edc6e42f2e3add64bdcfa44"
+      ref: "feature/common-elements-for-auth-page"
+      resolved-ref: "84254424f62ba846aae5131ef6f6850731c307e4"
       url: "https://github.com/juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
@@ -822,8 +822,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/distinct-facades"
-      resolved-ref: "0fca0cb70f5d618f871edf515c4e0e1c4acacc94"
+      ref: "feature/get-event-in-date-range-for-current-partner"
+      resolved-ref: "68f76a1f02a806a5c0c874b56d9e63ddca143198"
       url: "https://github.com/juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
@@ -841,7 +841,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "186d572f0ea4f853708d32696effd0fe16fe6492"
+      resolved-ref: "3ad9e527b68ed17a22077b9d83cdec41466c4739"
       url: "https://github.com/juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"

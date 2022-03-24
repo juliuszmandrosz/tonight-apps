@@ -144,8 +144,8 @@ class AddEventCubit extends Cubit<AddEventState> {
     emit(state.copyWith(ticketPools: ticketPoolsCopy));
   }
 
-  incrementStep() {
-    _submitCurrentStep();
+  incrementStep() async {
+    await _submitCurrentStep();
 
     if (state.status == FormzStatus.invalid) return;
 
@@ -172,22 +172,22 @@ class AddEventCubit extends Cubit<AddEventState> {
     emit(state.copyWith(currentStep: step));
   }
 
-  backToSummary() {
-    _submitCurrentStep();
+  Future<void> backToSummary() async {
+    await _submitCurrentStep();
 
     if (state.status == FormzStatus.invalid) return;
 
     emit(state.copyWith(currentStep: AddEventStep.summary));
   }
 
-  _submitCurrentStep() {
+  Future<void> _submitCurrentStep() async {
     switch (state.currentStep) {
       case AddEventStep.nameAndDesc:
         _submitNameAndDescStep();
         break;
 
       case AddEventStep.dateTime:
-        _submitDateTimeStep();
+        await _submitDateTimeStep();
         break;
 
       case AddEventStep.details:
@@ -226,7 +226,7 @@ class AddEventCubit extends Cubit<AddEventState> {
     emit(state.copyWith(status: status));
   }
 
-  void _submitDateTimeStep() {
+  Future<void> _submitDateTimeStep() async {
     emit(
       state.copyWith(
         startDateTime: StartDateTime.dirty(state.startDateTime.value),
@@ -237,9 +237,7 @@ class AddEventCubit extends Cubit<AddEventState> {
       ),
     );
 
-    final status = Formz.validate([state.startDateTime, state.endDateTime]);
-
-    emit(state.copyWith(status: status));
+    emit(state.copyWith(status: await _getStatusFromDateTimeStep()));
   }
 
   void _submitDetailsStep() {
@@ -265,8 +263,7 @@ class AddEventCubit extends Cubit<AddEventState> {
         state.ticketPools.isEmpty ? FormzStatus.invalid : FormzStatus.valid;
 
     if (state.ticketPools.isEmpty) {
-      // TODO - add transaltion
-      _showErrorMessage('At least one pool of tickets must be added');
+      _showErrorMessage(S().addAtLeastOneTicketPool);
     }
 
     emit(state.copyWith(status: status));
@@ -320,10 +317,10 @@ class AddEventCubit extends Cubit<AddEventState> {
     emit(state.copyWith(errorMessage: none()));
   }
 
-  _emitFailure(EventFailure failure) {
+  _emitFailure(String message) {
     emit(
       state.copyWith(
-        errorMessage: some(S().errorAddingEvent),
+        errorMessage: some(message),
         status: FormzStatus.submissionFailure,
       ),
     );
@@ -365,7 +362,7 @@ class AddEventCubit extends Cubit<AddEventState> {
     final failureOrSuccess = await _eventFacade.addEvent(event, eventTickets);
 
     failureOrSuccess.fold(
-      (failure) => _emitFailure(failure),
+      (failure) => _emitFailure(S().errorAddingEvent),
       (success) {
         _eventNotifierCubit.notifyAboutNewEvent(event);
         emit(state.copyWith(status: FormzStatus.submissionSuccess));
@@ -385,6 +382,52 @@ class AddEventCubit extends Cubit<AddEventState> {
     }
 
     return result;
+  }
+
+  Future<FormzStatus> _getStatusFromDateTimeStep() async {
+    FormzStatus status;
+
+    status = Formz.validate([state.startDateTime, state.endDateTime]);
+
+    if (status.isInvalid) return status;
+
+    final result = await _checkIfEventAlreadyExistsInDateRange(
+      state.startDateTime.value!,
+      state.endDateTime.value!,
+    );
+
+    return result.fold(
+      (_) => FormzStatus.invalid,
+      (option) => option.fold(
+        () => FormzStatus.valid,
+        (_) => FormzStatus.invalid,
+      ),
+    );
+  }
+
+  Future<Either<EventFailure, Option<Event>>>
+      _checkIfEventAlreadyExistsInDateRange(
+    DateTime fromDate,
+    DateTime toDate,
+  ) async {
+    emit(state.copyWith(status: FormzStatus.submissionInProgress));
+
+    final currentEvent = await _eventFacade
+        .getEventInDateRangeForCurrentPartner(fromDate, toDate);
+
+    return currentEvent.fold((failure) {
+      _emitFailure(S().serverError);
+      return left(failure);
+    }, (option) {
+      emit(state.copyWith(status: FormzStatus.pure));
+      return option.fold(
+        () => right(none()),
+        (event) {
+          _emitFailure(S().eventExistsInDateRange);
+          return right(some(event));
+        },
+      );
+    });
   }
 
   _shiftNumbersOfNextPools(

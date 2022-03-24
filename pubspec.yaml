@@ -61,15 +61,18 @@ dependencies:
   validators: ^3.0.0
   cloud_functions: ^3.2.11
   auto_size_text: ^3.0.0
+  equatable: ^2.0.3
+  json_serializable: ^6.1.5
 
   raver_auth:
     git:
       url: https://github.com/juliuszmandrosz/RaverAuth.git
+      ref: feature/common-elements-for-auth-page
 
   raver_events:
     git:
       url: https://github.com/juliuszmandrosz/RaverEvents.git
-      ref: feature/distinct-facades
+      ref: feature/get-event-in-date-range-for-current-partner
 
   raver_translations:
     git:

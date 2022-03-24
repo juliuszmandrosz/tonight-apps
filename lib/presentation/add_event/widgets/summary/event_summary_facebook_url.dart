@@ -34,17 +34,11 @@ class EventSummaryFacebookUrl extends StatelessWidget {
                   Row(
                     children: [
                       Expanded(
-                        child: InkWell(
-                          onTap: () async {
-                            final result =
-                                await launchURL(state.facebookUrl.value);
-                            if (result.isSome()) {
-                              context.showSnackbarMessage(S().errorOpeningLink);
-                            }
-                          },
-                          child: Text(
+                        child: RaverHyperLink(
+                          url: state.facebookUrl.value,
+                          label: Text(
                             state.facebookUrl.value,
-                            style: theme.textTheme.subtitle1,
+                            style: theme.textTheme.subtitle2,
                           ),
                         ),
                       ),

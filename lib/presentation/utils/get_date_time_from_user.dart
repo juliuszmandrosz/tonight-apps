@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
-Future<DateTime?> getDateTimeFromUser(context) async {
+Future<DateTime?> getDateTimeFromUser(
+  BuildContext context, {
+  DateTime? initialDate,
+}) async {
   final now = DateTime.now();
 
   final date = await showDatePicker(
     context: context,
-    initialDate: DateTime.now(),
+    initialDate: initialDate ?? DateTime.now(),
     firstDate: DateTime.now(),
     lastDate: DateTime.now().add(
       const Duration(days: 365),
     ),
-
   );
 
   if (date == null) return null;

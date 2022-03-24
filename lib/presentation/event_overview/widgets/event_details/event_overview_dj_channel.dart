@@ -17,12 +17,10 @@ class EventOverviewDjChannel extends StatelessWidget {
     final theme = Theme.of(context);
 
     return BlocBuilder<UpcomingLiveEventCubit, UpcomingLiveEventState>(
-      buildWhen: (previous, current) =>
-          previous.event != current.event,
+      buildWhen: (previous, current) => previous.event != current.event,
       builder: (context, state) {
         final upcomingEventCubit = context.read<UpcomingLiveEventCubit>();
-        final djChannelUrl =
-            state.event.getOrCrash().urlLinks[djChannel];
+        final djChannelUrl = state.event.getOrCrash().urlLinks[djChannel];
         final isDjChannelUrlEmpty =
             djChannelUrl == null || djChannelUrl.isEmpty;
         return Column(
