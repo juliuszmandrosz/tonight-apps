@@ -19,45 +19,29 @@ class _$EventFiltersTearOff {
   const _$EventFiltersTearOff();
 
   _EventFilters call(
-      {required String phrase,
-      required int minPrice,
-      required List<int> minAges,
-      required List<String> musicalGenres,
-      required List<String> allowedOutfits,
-      required Map<String, double> userLocation,
-      required int maxDistance,
-      required String cityId,
-      required String cityName,
-      required bool isMaxDistanceOption,
-      required bool showOnlyLive,
-      required bool showOnlyUpcoming,
-      required bool showOnlyPast,
-      required DateTime startDate,
-      required DateTime? endDate,
-      required DateTime? day,
-      required int? maxPrice,
-      required bool? isConcert,
-      required String? clubId}) {
+      {required PhraseFilter phraseFilter,
+      required PriceRangeFilter priceRangeFilter,
+      required MinAgesFilter minAgesFilter,
+      required MusicalGenresFilter musicalGenresFilter,
+      required AllowedOutfitsFilter allowedOutfitsFilter,
+      required MaxDistanceFilter maxDistanceFilter,
+      required CityFilter cityFilter,
+      required ClubFilter clubFilter,
+      required DateRangeFilter dateRangeFilter,
+      required IsConcertFilter isConcertFilter,
+      required ShowOnlyFilter showOnlyFilter}) {
     return _EventFilters(
-      phrase: phrase,
-      minPrice: minPrice,
-      minAges: minAges,
-      musicalGenres: musicalGenres,
-      allowedOutfits: allowedOutfits,
-      userLocation: userLocation,
-      maxDistance: maxDistance,
-      cityId: cityId,
-      cityName: cityName,
-      isMaxDistanceOption: isMaxDistanceOption,
-      showOnlyLive: showOnlyLive,
-      showOnlyUpcoming: showOnlyUpcoming,
-      showOnlyPast: showOnlyPast,
-      startDate: startDate,
-      endDate: endDate,
-      day: day,
-      maxPrice: maxPrice,
-      isConcert: isConcert,
-      clubId: clubId,
+      phraseFilter: phraseFilter,
+      priceRangeFilter: priceRangeFilter,
+      minAgesFilter: minAgesFilter,
+      musicalGenresFilter: musicalGenresFilter,
+      allowedOutfitsFilter: allowedOutfitsFilter,
+      maxDistanceFilter: maxDistanceFilter,
+      cityFilter: cityFilter,
+      clubFilter: clubFilter,
+      dateRangeFilter: dateRangeFilter,
+      isConcertFilter: isConcertFilter,
+      showOnlyFilter: showOnlyFilter,
     );
   }
 }
@@ -67,25 +51,19 @@ const $EventFilters = _$EventFiltersTearOff();
 
 /// @nodoc
 mixin _$EventFilters {
-  String get phrase => throw _privateConstructorUsedError;
-  int get minPrice => throw _privateConstructorUsedError;
-  List<int> get minAges => throw _privateConstructorUsedError;
-  List<String> get musicalGenres => throw _privateConstructorUsedError;
-  List<String> get allowedOutfits => throw _privateConstructorUsedError;
-  Map<String, double> get userLocation => throw _privateConstructorUsedError;
-  int get maxDistance => throw _privateConstructorUsedError;
-  String get cityId => throw _privateConstructorUsedError;
-  String get cityName => throw _privateConstructorUsedError;
-  bool get isMaxDistanceOption => throw _privateConstructorUsedError;
-  bool get showOnlyLive => throw _privateConstructorUsedError;
-  bool get showOnlyUpcoming => throw _privateConstructorUsedError;
-  bool get showOnlyPast => throw _privateConstructorUsedError;
-  DateTime get startDate => throw _privateConstructorUsedError;
-  DateTime? get endDate => throw _privateConstructorUsedError;
-  DateTime? get day => throw _privateConstructorUsedError;
-  int? get maxPrice => throw _privateConstructorUsedError;
-  bool? get isConcert => throw _privateConstructorUsedError;
-  String? get clubId => throw _privateConstructorUsedError;
+  PhraseFilter get phraseFilter => throw _privateConstructorUsedError;
+  PriceRangeFilter get priceRangeFilter => throw _privateConstructorUsedError;
+  MinAgesFilter get minAgesFilter => throw _privateConstructorUsedError;
+  MusicalGenresFilter get musicalGenresFilter =>
+      throw _privateConstructorUsedError;
+  AllowedOutfitsFilter get allowedOutfitsFilter =>
+      throw _privateConstructorUsedError;
+  MaxDistanceFilter get maxDistanceFilter => throw _privateConstructorUsedError;
+  CityFilter get cityFilter => throw _privateConstructorUsedError;
+  ClubFilter get clubFilter => throw _privateConstructorUsedError;
+  DateRangeFilter get dateRangeFilter => throw _privateConstructorUsedError;
+  IsConcertFilter get isConcertFilter => throw _privateConstructorUsedError;
+  ShowOnlyFilter get showOnlyFilter => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventFiltersCopyWith<EventFilters> get copyWith =>
@@ -98,25 +76,17 @@ abstract class $EventFiltersCopyWith<$Res> {
           EventFilters value, $Res Function(EventFilters) then) =
       _$EventFiltersCopyWithImpl<$Res>;
   $Res call(
-      {String phrase,
-      int minPrice,
-      List<int> minAges,
-      List<String> musicalGenres,
-      List<String> allowedOutfits,
-      Map<String, double> userLocation,
-      int maxDistance,
-      String cityId,
-      String cityName,
-      bool isMaxDistanceOption,
-      bool showOnlyLive,
-      bool showOnlyUpcoming,
-      bool showOnlyPast,
-      DateTime startDate,
-      DateTime? endDate,
-      DateTime? day,
-      int? maxPrice,
-      bool? isConcert,
-      String? clubId});
+      {PhraseFilter phraseFilter,
+      PriceRangeFilter priceRangeFilter,
+      MinAgesFilter minAgesFilter,
+      MusicalGenresFilter musicalGenresFilter,
+      AllowedOutfitsFilter allowedOutfitsFilter,
+      MaxDistanceFilter maxDistanceFilter,
+      CityFilter cityFilter,
+      ClubFilter clubFilter,
+      DateRangeFilter dateRangeFilter,
+      IsConcertFilter isConcertFilter,
+      ShowOnlyFilter showOnlyFilter});
 }
 
 /// @nodoc
@@ -129,103 +99,63 @@ class _$EventFiltersCopyWithImpl<$Res> implements $EventFiltersCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? phrase = freezed,
-    Object? minPrice = freezed,
-    Object? minAges = freezed,
-    Object? musicalGenres = freezed,
-    Object? allowedOutfits = freezed,
-    Object? userLocation = freezed,
-    Object? maxDistance = freezed,
-    Object? cityId = freezed,
-    Object? cityName = freezed,
-    Object? isMaxDistanceOption = freezed,
-    Object? showOnlyLive = freezed,
-    Object? showOnlyUpcoming = freezed,
-    Object? showOnlyPast = freezed,
-    Object? startDate = freezed,
-    Object? endDate = freezed,
-    Object? day = freezed,
-    Object? maxPrice = freezed,
-    Object? isConcert = freezed,
-    Object? clubId = freezed,
+    Object? phraseFilter = freezed,
+    Object? priceRangeFilter = freezed,
+    Object? minAgesFilter = freezed,
+    Object? musicalGenresFilter = freezed,
+    Object? allowedOutfitsFilter = freezed,
+    Object? maxDistanceFilter = freezed,
+    Object? cityFilter = freezed,
+    Object? clubFilter = freezed,
+    Object? dateRangeFilter = freezed,
+    Object? isConcertFilter = freezed,
+    Object? showOnlyFilter = freezed,
   }) {
     return _then(_value.copyWith(
-      phrase: phrase == freezed
-          ? _value.phrase
-          : phrase // ignore: cast_nullable_to_non_nullable
-              as String,
-      minPrice: minPrice == freezed
-          ? _value.minPrice
-          : minPrice // ignore: cast_nullable_to_non_nullable
-              as int,
-      minAges: minAges == freezed
-          ? _value.minAges
-          : minAges // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      musicalGenres: musicalGenres == freezed
-          ? _value.musicalGenres
-          : musicalGenres // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      allowedOutfits: allowedOutfits == freezed
-          ? _value.allowedOutfits
-          : allowedOutfits // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      userLocation: userLocation == freezed
-          ? _value.userLocation
-          : userLocation // ignore: cast_nullable_to_non_nullable
-              as Map<String, double>,
-      maxDistance: maxDistance == freezed
-          ? _value.maxDistance
-          : maxDistance // ignore: cast_nullable_to_non_nullable
-              as int,
-      cityId: cityId == freezed
-          ? _value.cityId
-          : cityId // ignore: cast_nullable_to_non_nullable
-              as String,
-      cityName: cityName == freezed
-          ? _value.cityName
-          : cityName // ignore: cast_nullable_to_non_nullable
-              as String,
-      isMaxDistanceOption: isMaxDistanceOption == freezed
-          ? _value.isMaxDistanceOption
-          : isMaxDistanceOption // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showOnlyLive: showOnlyLive == freezed
-          ? _value.showOnlyLive
-          : showOnlyLive // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showOnlyUpcoming: showOnlyUpcoming == freezed
-          ? _value.showOnlyUpcoming
-          : showOnlyUpcoming // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showOnlyPast: showOnlyPast == freezed
-          ? _value.showOnlyPast
-          : showOnlyPast // ignore: cast_nullable_to_non_nullable
-              as bool,
-      startDate: startDate == freezed
-          ? _value.startDate
-          : startDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      endDate: endDate == freezed
-          ? _value.endDate
-          : endDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      day: day == freezed
-          ? _value.day
-          : day // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      maxPrice: maxPrice == freezed
-          ? _value.maxPrice
-          : maxPrice // ignore: cast_nullable_to_non_nullable
-              as int?,
-      isConcert: isConcert == freezed
-          ? _value.isConcert
-          : isConcert // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      clubId: clubId == freezed
-          ? _value.clubId
-          : clubId // ignore: cast_nullable_to_non_nullable
-              as String?,
+      phraseFilter: phraseFilter == freezed
+          ? _value.phraseFilter
+          : phraseFilter // ignore: cast_nullable_to_non_nullable
+              as PhraseFilter,
+      priceRangeFilter: priceRangeFilter == freezed
+          ? _value.priceRangeFilter
+          : priceRangeFilter // ignore: cast_nullable_to_non_nullable
+              as PriceRangeFilter,
+      minAgesFilter: minAgesFilter == freezed
+          ? _value.minAgesFilter
+          : minAgesFilter // ignore: cast_nullable_to_non_nullable
+              as MinAgesFilter,
+      musicalGenresFilter: musicalGenresFilter == freezed
+          ? _value.musicalGenresFilter
+          : musicalGenresFilter // ignore: cast_nullable_to_non_nullable
+              as MusicalGenresFilter,
+      allowedOutfitsFilter: allowedOutfitsFilter == freezed
+          ? _value.allowedOutfitsFilter
+          : allowedOutfitsFilter // ignore: cast_nullable_to_non_nullable
+              as AllowedOutfitsFilter,
+      maxDistanceFilter: maxDistanceFilter == freezed
+          ? _value.maxDistanceFilter
+          : maxDistanceFilter // ignore: cast_nullable_to_non_nullable
+              as MaxDistanceFilter,
+      cityFilter: cityFilter == freezed
+          ? _value.cityFilter
+          : cityFilter // ignore: cast_nullable_to_non_nullable
+              as CityFilter,
+      clubFilter: clubFilter == freezed
+          ? _value.clubFilter
+          : clubFilter // ignore: cast_nullable_to_non_nullable
+              as ClubFilter,
+      dateRangeFilter: dateRangeFilter == freezed
+          ? _value.dateRangeFilter
+          : dateRangeFilter // ignore: cast_nullable_to_non_nullable
+              as DateRangeFilter,
+      isConcertFilter: isConcertFilter == freezed
+          ? _value.isConcertFilter
+          : isConcertFilter // ignore: cast_nullable_to_non_nullable
+              as IsConcertFilter,
+      showOnlyFilter: showOnlyFilter == freezed
+          ? _value.showOnlyFilter
+          : showOnlyFilter // ignore: cast_nullable_to_non_nullable
+              as ShowOnlyFilter,
     ));
   }
 }
@@ -238,25 +168,17 @@ abstract class _$EventFiltersCopyWith<$Res>
       __$EventFiltersCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String phrase,
-      int minPrice,
-      List<int> minAges,
-      List<String> musicalGenres,
-      List<String> allowedOutfits,
-      Map<String, double> userLocation,
-      int maxDistance,
-      String cityId,
-      String cityName,
-      bool isMaxDistanceOption,
-      bool showOnlyLive,
-      bool showOnlyUpcoming,
-      bool showOnlyPast,
-      DateTime startDate,
-      DateTime? endDate,
-      DateTime? day,
-      int? maxPrice,
-      bool? isConcert,
-      String? clubId});
+      {PhraseFilter phraseFilter,
+      PriceRangeFilter priceRangeFilter,
+      MinAgesFilter minAgesFilter,
+      MusicalGenresFilter musicalGenresFilter,
+      AllowedOutfitsFilter allowedOutfitsFilter,
+      MaxDistanceFilter maxDistanceFilter,
+      CityFilter cityFilter,
+      ClubFilter clubFilter,
+      DateRangeFilter dateRangeFilter,
+      IsConcertFilter isConcertFilter,
+      ShowOnlyFilter showOnlyFilter});
 }
 
 /// @nodoc
@@ -271,103 +193,63 @@ class __$EventFiltersCopyWithImpl<$Res> extends _$EventFiltersCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? phrase = freezed,
-    Object? minPrice = freezed,
-    Object? minAges = freezed,
-    Object? musicalGenres = freezed,
-    Object? allowedOutfits = freezed,
-    Object? userLocation = freezed,
-    Object? maxDistance = freezed,
-    Object? cityId = freezed,
-    Object? cityName = freezed,
-    Object? isMaxDistanceOption = freezed,
-    Object? showOnlyLive = freezed,
-    Object? showOnlyUpcoming = freezed,
-    Object? showOnlyPast = freezed,
-    Object? startDate = freezed,
-    Object? endDate = freezed,
-    Object? day = freezed,
-    Object? maxPrice = freezed,
-    Object? isConcert = freezed,
-    Object? clubId = freezed,
+    Object? phraseFilter = freezed,
+    Object? priceRangeFilter = freezed,
+    Object? minAgesFilter = freezed,
+    Object? musicalGenresFilter = freezed,
+    Object? allowedOutfitsFilter = freezed,
+    Object? maxDistanceFilter = freezed,
+    Object? cityFilter = freezed,
+    Object? clubFilter = freezed,
+    Object? dateRangeFilter = freezed,
+    Object? isConcertFilter = freezed,
+    Object? showOnlyFilter = freezed,
   }) {
     return _then(_EventFilters(
-      phrase: phrase == freezed
-          ? _value.phrase
-          : phrase // ignore: cast_nullable_to_non_nullable
-              as String,
-      minPrice: minPrice == freezed
-          ? _value.minPrice
-          : minPrice // ignore: cast_nullable_to_non_nullable
-              as int,
-      minAges: minAges == freezed
-          ? _value.minAges
-          : minAges // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      musicalGenres: musicalGenres == freezed
-          ? _value.musicalGenres
-          : musicalGenres // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      allowedOutfits: allowedOutfits == freezed
-          ? _value.allowedOutfits
-          : allowedOutfits // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      userLocation: userLocation == freezed
-          ? _value.userLocation
-          : userLocation // ignore: cast_nullable_to_non_nullable
-              as Map<String, double>,
-      maxDistance: maxDistance == freezed
-          ? _value.maxDistance
-          : maxDistance // ignore: cast_nullable_to_non_nullable
-              as int,
-      cityId: cityId == freezed
-          ? _value.cityId
-          : cityId // ignore: cast_nullable_to_non_nullable
-              as String,
-      cityName: cityName == freezed
-          ? _value.cityName
-          : cityName // ignore: cast_nullable_to_non_nullable
-              as String,
-      isMaxDistanceOption: isMaxDistanceOption == freezed
-          ? _value.isMaxDistanceOption
-          : isMaxDistanceOption // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showOnlyLive: showOnlyLive == freezed
-          ? _value.showOnlyLive
-          : showOnlyLive // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showOnlyUpcoming: showOnlyUpcoming == freezed
-          ? _value.showOnlyUpcoming
-          : showOnlyUpcoming // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showOnlyPast: showOnlyPast == freezed
-          ? _value.showOnlyPast
-          : showOnlyPast // ignore: cast_nullable_to_non_nullable
-              as bool,
-      startDate: startDate == freezed
-          ? _value.startDate
-          : startDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      endDate: endDate == freezed
-          ? _value.endDate
-          : endDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      day: day == freezed
-          ? _value.day
-          : day // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      maxPrice: maxPrice == freezed
-          ? _value.maxPrice
-          : maxPrice // ignore: cast_nullable_to_non_nullable
-              as int?,
-      isConcert: isConcert == freezed
-          ? _value.isConcert
-          : isConcert // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      clubId: clubId == freezed
-          ? _value.clubId
-          : clubId // ignore: cast_nullable_to_non_nullable
-              as String?,
+      phraseFilter: phraseFilter == freezed
+          ? _value.phraseFilter
+          : phraseFilter // ignore: cast_nullable_to_non_nullable
+              as PhraseFilter,
+      priceRangeFilter: priceRangeFilter == freezed
+          ? _value.priceRangeFilter
+          : priceRangeFilter // ignore: cast_nullable_to_non_nullable
+              as PriceRangeFilter,
+      minAgesFilter: minAgesFilter == freezed
+          ? _value.minAgesFilter
+          : minAgesFilter // ignore: cast_nullable_to_non_nullable
+              as MinAgesFilter,
+      musicalGenresFilter: musicalGenresFilter == freezed
+          ? _value.musicalGenresFilter
+          : musicalGenresFilter // ignore: cast_nullable_to_non_nullable
+              as MusicalGenresFilter,
+      allowedOutfitsFilter: allowedOutfitsFilter == freezed
+          ? _value.allowedOutfitsFilter
+          : allowedOutfitsFilter // ignore: cast_nullable_to_non_nullable
+              as AllowedOutfitsFilter,
+      maxDistanceFilter: maxDistanceFilter == freezed
+          ? _value.maxDistanceFilter
+          : maxDistanceFilter // ignore: cast_nullable_to_non_nullable
+              as MaxDistanceFilter,
+      cityFilter: cityFilter == freezed
+          ? _value.cityFilter
+          : cityFilter // ignore: cast_nullable_to_non_nullable
+              as CityFilter,
+      clubFilter: clubFilter == freezed
+          ? _value.clubFilter
+          : clubFilter // ignore: cast_nullable_to_non_nullable
+              as ClubFilter,
+      dateRangeFilter: dateRangeFilter == freezed
+          ? _value.dateRangeFilter
+          : dateRangeFilter // ignore: cast_nullable_to_non_nullable
+              as DateRangeFilter,
+      isConcertFilter: isConcertFilter == freezed
+          ? _value.isConcertFilter
+          : isConcertFilter // ignore: cast_nullable_to_non_nullable
+              as IsConcertFilter,
+      showOnlyFilter: showOnlyFilter == freezed
+          ? _value.showOnlyFilter
+          : showOnlyFilter // ignore: cast_nullable_to_non_nullable
+              as ShowOnlyFilter,
     ));
   }
 }
@@ -376,69 +258,45 @@ class __$EventFiltersCopyWithImpl<$Res> extends _$EventFiltersCopyWithImpl<$Res>
 
 class _$_EventFilters extends _EventFilters {
   _$_EventFilters(
-      {required this.phrase,
-      required this.minPrice,
-      required this.minAges,
-      required this.musicalGenres,
-      required this.allowedOutfits,
-      required this.userLocation,
-      required this.maxDistance,
-      required this.cityId,
-      required this.cityName,
-      required this.isMaxDistanceOption,
-      required this.showOnlyLive,
-      required this.showOnlyUpcoming,
-      required this.showOnlyPast,
-      required this.startDate,
-      required this.endDate,
-      required this.day,
-      required this.maxPrice,
-      required this.isConcert,
-      required this.clubId})
+      {required this.phraseFilter,
+      required this.priceRangeFilter,
+      required this.minAgesFilter,
+      required this.musicalGenresFilter,
+      required this.allowedOutfitsFilter,
+      required this.maxDistanceFilter,
+      required this.cityFilter,
+      required this.clubFilter,
+      required this.dateRangeFilter,
+      required this.isConcertFilter,
+      required this.showOnlyFilter})
       : super._();
 
   @override
-  final String phrase;
+  final PhraseFilter phraseFilter;
   @override
-  final int minPrice;
+  final PriceRangeFilter priceRangeFilter;
   @override
-  final List<int> minAges;
+  final MinAgesFilter minAgesFilter;
   @override
-  final List<String> musicalGenres;
+  final MusicalGenresFilter musicalGenresFilter;
   @override
-  final List<String> allowedOutfits;
+  final AllowedOutfitsFilter allowedOutfitsFilter;
   @override
-  final Map<String, double> userLocation;
+  final MaxDistanceFilter maxDistanceFilter;
   @override
-  final int maxDistance;
+  final CityFilter cityFilter;
   @override
-  final String cityId;
+  final ClubFilter clubFilter;
   @override
-  final String cityName;
+  final DateRangeFilter dateRangeFilter;
   @override
-  final bool isMaxDistanceOption;
+  final IsConcertFilter isConcertFilter;
   @override
-  final bool showOnlyLive;
-  @override
-  final bool showOnlyUpcoming;
-  @override
-  final bool showOnlyPast;
-  @override
-  final DateTime startDate;
-  @override
-  final DateTime? endDate;
-  @override
-  final DateTime? day;
-  @override
-  final int? maxPrice;
-  @override
-  final bool? isConcert;
-  @override
-  final String? clubId;
+  final ShowOnlyFilter showOnlyFilter;
 
   @override
   String toString() {
-    return 'EventFilters(phrase: $phrase, minPrice: $minPrice, minAges: $minAges, musicalGenres: $musicalGenres, allowedOutfits: $allowedOutfits, userLocation: $userLocation, maxDistance: $maxDistance, cityId: $cityId, cityName: $cityName, isMaxDistanceOption: $isMaxDistanceOption, showOnlyLive: $showOnlyLive, showOnlyUpcoming: $showOnlyUpcoming, showOnlyPast: $showOnlyPast, startDate: $startDate, endDate: $endDate, day: $day, maxPrice: $maxPrice, isConcert: $isConcert, clubId: $clubId)';
+    return 'EventFilters(phraseFilter: $phraseFilter, priceRangeFilter: $priceRangeFilter, minAgesFilter: $minAgesFilter, musicalGenresFilter: $musicalGenresFilter, allowedOutfitsFilter: $allowedOutfitsFilter, maxDistanceFilter: $maxDistanceFilter, cityFilter: $cityFilter, clubFilter: $clubFilter, dateRangeFilter: $dateRangeFilter, isConcertFilter: $isConcertFilter, showOnlyFilter: $showOnlyFilter)';
   }
 
   @override
@@ -446,58 +304,44 @@ class _$_EventFilters extends _EventFilters {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _EventFilters &&
-            const DeepCollectionEquality().equals(other.phrase, phrase) &&
-            const DeepCollectionEquality().equals(other.minPrice, minPrice) &&
-            const DeepCollectionEquality().equals(other.minAges, minAges) &&
             const DeepCollectionEquality()
-                .equals(other.musicalGenres, musicalGenres) &&
+                .equals(other.phraseFilter, phraseFilter) &&
             const DeepCollectionEquality()
-                .equals(other.allowedOutfits, allowedOutfits) &&
+                .equals(other.priceRangeFilter, priceRangeFilter) &&
             const DeepCollectionEquality()
-                .equals(other.userLocation, userLocation) &&
+                .equals(other.minAgesFilter, minAgesFilter) &&
             const DeepCollectionEquality()
-                .equals(other.maxDistance, maxDistance) &&
-            const DeepCollectionEquality().equals(other.cityId, cityId) &&
-            const DeepCollectionEquality().equals(other.cityName, cityName) &&
+                .equals(other.musicalGenresFilter, musicalGenresFilter) &&
             const DeepCollectionEquality()
-                .equals(other.isMaxDistanceOption, isMaxDistanceOption) &&
+                .equals(other.allowedOutfitsFilter, allowedOutfitsFilter) &&
             const DeepCollectionEquality()
-                .equals(other.showOnlyLive, showOnlyLive) &&
+                .equals(other.maxDistanceFilter, maxDistanceFilter) &&
             const DeepCollectionEquality()
-                .equals(other.showOnlyUpcoming, showOnlyUpcoming) &&
+                .equals(other.cityFilter, cityFilter) &&
             const DeepCollectionEquality()
-                .equals(other.showOnlyPast, showOnlyPast) &&
-            const DeepCollectionEquality().equals(other.startDate, startDate) &&
-            const DeepCollectionEquality().equals(other.endDate, endDate) &&
-            const DeepCollectionEquality().equals(other.day, day) &&
-            const DeepCollectionEquality().equals(other.maxPrice, maxPrice) &&
-            const DeepCollectionEquality().equals(other.isConcert, isConcert) &&
-            const DeepCollectionEquality().equals(other.clubId, clubId));
+                .equals(other.clubFilter, clubFilter) &&
+            const DeepCollectionEquality()
+                .equals(other.dateRangeFilter, dateRangeFilter) &&
+            const DeepCollectionEquality()
+                .equals(other.isConcertFilter, isConcertFilter) &&
+            const DeepCollectionEquality()
+                .equals(other.showOnlyFilter, showOnlyFilter));
   }
 
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        const DeepCollectionEquality().hash(phrase),
-        const DeepCollectionEquality().hash(minPrice),
-        const DeepCollectionEquality().hash(minAges),
-        const DeepCollectionEquality().hash(musicalGenres),
-        const DeepCollectionEquality().hash(allowedOutfits),
-        const DeepCollectionEquality().hash(userLocation),
-        const DeepCollectionEquality().hash(maxDistance),
-        const DeepCollectionEquality().hash(cityId),
-        const DeepCollectionEquality().hash(cityName),
-        const DeepCollectionEquality().hash(isMaxDistanceOption),
-        const DeepCollectionEquality().hash(showOnlyLive),
-        const DeepCollectionEquality().hash(showOnlyUpcoming),
-        const DeepCollectionEquality().hash(showOnlyPast),
-        const DeepCollectionEquality().hash(startDate),
-        const DeepCollectionEquality().hash(endDate),
-        const DeepCollectionEquality().hash(day),
-        const DeepCollectionEquality().hash(maxPrice),
-        const DeepCollectionEquality().hash(isConcert),
-        const DeepCollectionEquality().hash(clubId)
-      ]);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(phraseFilter),
+      const DeepCollectionEquality().hash(priceRangeFilter),
+      const DeepCollectionEquality().hash(minAgesFilter),
+      const DeepCollectionEquality().hash(musicalGenresFilter),
+      const DeepCollectionEquality().hash(allowedOutfitsFilter),
+      const DeepCollectionEquality().hash(maxDistanceFilter),
+      const DeepCollectionEquality().hash(cityFilter),
+      const DeepCollectionEquality().hash(clubFilter),
+      const DeepCollectionEquality().hash(dateRangeFilter),
+      const DeepCollectionEquality().hash(isConcertFilter),
+      const DeepCollectionEquality().hash(showOnlyFilter));
 
   @JsonKey(ignore: true)
   @override
@@ -507,65 +351,41 @@ class _$_EventFilters extends _EventFilters {
 
 abstract class _EventFilters extends EventFilters {
   factory _EventFilters(
-      {required String phrase,
-      required int minPrice,
-      required List<int> minAges,
-      required List<String> musicalGenres,
-      required List<String> allowedOutfits,
-      required Map<String, double> userLocation,
-      required int maxDistance,
-      required String cityId,
-      required String cityName,
-      required bool isMaxDistanceOption,
-      required bool showOnlyLive,
-      required bool showOnlyUpcoming,
-      required bool showOnlyPast,
-      required DateTime startDate,
-      required DateTime? endDate,
-      required DateTime? day,
-      required int? maxPrice,
-      required bool? isConcert,
-      required String? clubId}) = _$_EventFilters;
+      {required PhraseFilter phraseFilter,
+      required PriceRangeFilter priceRangeFilter,
+      required MinAgesFilter minAgesFilter,
+      required MusicalGenresFilter musicalGenresFilter,
+      required AllowedOutfitsFilter allowedOutfitsFilter,
+      required MaxDistanceFilter maxDistanceFilter,
+      required CityFilter cityFilter,
+      required ClubFilter clubFilter,
+      required DateRangeFilter dateRangeFilter,
+      required IsConcertFilter isConcertFilter,
+      required ShowOnlyFilter showOnlyFilter}) = _$_EventFilters;
   _EventFilters._() : super._();
 
   @override
-  String get phrase;
+  PhraseFilter get phraseFilter;
   @override
-  int get minPrice;
+  PriceRangeFilter get priceRangeFilter;
   @override
-  List<int> get minAges;
+  MinAgesFilter get minAgesFilter;
   @override
-  List<String> get musicalGenres;
+  MusicalGenresFilter get musicalGenresFilter;
   @override
-  List<String> get allowedOutfits;
+  AllowedOutfitsFilter get allowedOutfitsFilter;
   @override
-  Map<String, double> get userLocation;
+  MaxDistanceFilter get maxDistanceFilter;
   @override
-  int get maxDistance;
+  CityFilter get cityFilter;
   @override
-  String get cityId;
+  ClubFilter get clubFilter;
   @override
-  String get cityName;
+  DateRangeFilter get dateRangeFilter;
   @override
-  bool get isMaxDistanceOption;
+  IsConcertFilter get isConcertFilter;
   @override
-  bool get showOnlyLive;
-  @override
-  bool get showOnlyUpcoming;
-  @override
-  bool get showOnlyPast;
-  @override
-  DateTime get startDate;
-  @override
-  DateTime? get endDate;
-  @override
-  DateTime? get day;
-  @override
-  int? get maxPrice;
-  @override
-  bool? get isConcert;
-  @override
-  String? get clubId;
+  ShowOnlyFilter get showOnlyFilter;
   @override
   @JsonKey(ignore: true)
   _$EventFiltersCopyWith<_EventFilters> get copyWith =>

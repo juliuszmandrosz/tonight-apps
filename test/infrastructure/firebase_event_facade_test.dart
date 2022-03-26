@@ -7,6 +7,7 @@ import 'package:logger/logger.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/domain/filters/filter/date_range_filter.dart';
 import 'package:raver_events/raver_events.dart';
 import 'firebase_event_facade_test.mocks.dart';
 
@@ -184,7 +185,8 @@ void main() {
   group('get events', () {
     test('should return events', () async {
       final now = DateTime.now();
-      final filters = EventFilters.empty().copyWith(startDate: now);
+      final filters = EventFilters.empty().copyWith(
+          dateRangeFilter: DateRangeFilter(fromDate: now, toDate: null));
       when(algoliaObjects.objectID).thenReturn(eventId);
       when(algoliaObjects.data).thenReturn(eventDoc);
       when(algoliaQuery.hits).thenReturn([algoliaObjects]);
