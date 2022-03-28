@@ -44,7 +44,7 @@ class EventFilters with _$EventFilters {
           userLocation: {},
           maxDistance: 50,
         ),
-        dateRangeFilter: DateRangeFilter(fromDate: null, toDate: null),
+        dateRangeFilter: DateRangeFilter(fromDate: DateTime.now(), toDate: null),
         isConcertFilter: IsConcertFilter(isConcert: null),
         clubFilter: ClubFilter(clubId: null),
         showOnlyFilter: ShowOnlyFilter(
