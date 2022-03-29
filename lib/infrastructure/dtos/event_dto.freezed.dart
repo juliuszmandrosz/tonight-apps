@@ -32,6 +32,7 @@ class _$EventDtoTearOff {
       required int attending,
       required int minAge,
       required int price,
+      required String currency,
       required String allowedOutfit,
       required List<String> musicalGenres,
       String? description,
@@ -51,6 +52,7 @@ class _$EventDtoTearOff {
       attending: attending,
       minAge: minAge,
       price: price,
+      currency: currency,
       allowedOutfit: allowedOutfit,
       musicalGenres: musicalGenres,
       description: description,
@@ -85,6 +87,7 @@ mixin _$EventDto {
   int get attending => throw _privateConstructorUsedError;
   int get minAge => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
+  String get currency => throw _privateConstructorUsedError;
   String get allowedOutfit => throw _privateConstructorUsedError;
   List<String> get musicalGenres => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -117,6 +120,7 @@ abstract class $EventDtoCopyWith<$Res> {
       int attending,
       int minAge,
       int price,
+      String currency,
       String allowedOutfit,
       List<String> musicalGenres,
       String? description,
@@ -147,6 +151,7 @@ class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
     Object? attending = freezed,
     Object? minAge = freezed,
     Object? price = freezed,
+    Object? currency = freezed,
     Object? allowedOutfit = freezed,
     Object? musicalGenres = freezed,
     Object? description = freezed,
@@ -194,6 +199,10 @@ class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      currency: currency == freezed
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
       allowedOutfit: allowedOutfit == freezed
           ? _value.allowedOutfit
           : allowedOutfit // ignore: cast_nullable_to_non_nullable
@@ -249,6 +258,7 @@ abstract class _$EventDtoCopyWith<$Res> implements $EventDtoCopyWith<$Res> {
       int attending,
       int minAge,
       int price,
+      String currency,
       String allowedOutfit,
       List<String> musicalGenres,
       String? description,
@@ -280,6 +290,7 @@ class __$EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
     Object? attending = freezed,
     Object? minAge = freezed,
     Object? price = freezed,
+    Object? currency = freezed,
     Object? allowedOutfit = freezed,
     Object? musicalGenres = freezed,
     Object? description = freezed,
@@ -327,6 +338,10 @@ class __$EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      currency: currency == freezed
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
       allowedOutfit: allowedOutfit == freezed
           ? _value.allowedOutfit
           : allowedOutfit // ignore: cast_nullable_to_non_nullable
@@ -381,6 +396,7 @@ class _$_EventDto extends _EventDto {
       required this.attending,
       required this.minAge,
       required this.price,
+      required this.currency,
       required this.allowedOutfit,
       required this.musicalGenres,
       this.description,
@@ -417,6 +433,8 @@ class _$_EventDto extends _EventDto {
   @override
   final int price;
   @override
+  final String currency;
+  @override
   final String allowedOutfit;
   @override
   final List<String> musicalGenres;
@@ -441,7 +459,7 @@ class _$_EventDto extends _EventDto {
 
   @override
   String toString() {
-    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, attending: $attending, minAge: $minAge, price: $price, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, photos: $photos, urlLinks: $urlLinks, isConcert: $isConcert)';
+    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, attending: $attending, minAge: $minAge, price: $price, currency: $currency, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, photos: $photos, urlLinks: $urlLinks, isConcert: $isConcert)';
   }
 
   @override
@@ -460,6 +478,7 @@ class _$_EventDto extends _EventDto {
             const DeepCollectionEquality().equals(other.attending, attending) &&
             const DeepCollectionEquality().equals(other.minAge, minAge) &&
             const DeepCollectionEquality().equals(other.price, price) &&
+            const DeepCollectionEquality().equals(other.currency, currency) &&
             const DeepCollectionEquality()
                 .equals(other.allowedOutfit, allowedOutfit) &&
             const DeepCollectionEquality()
@@ -476,26 +495,28 @@ class _$_EventDto extends _EventDto {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(clubId),
-      const DeepCollectionEquality().hash(eventName),
-      const DeepCollectionEquality().hash(clubName),
-      const DeepCollectionEquality().hash(eventStartDateTime),
-      const DeepCollectionEquality().hash(eventEndDateTime),
-      const DeepCollectionEquality().hash(attending),
-      const DeepCollectionEquality().hash(minAge),
-      const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(allowedOutfit),
-      const DeepCollectionEquality().hash(musicalGenres),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(artistName),
-      const DeepCollectionEquality().hash(location),
-      const DeepCollectionEquality().hash(cityId),
-      const DeepCollectionEquality().hash(photos),
-      const DeepCollectionEquality().hash(urlLinks),
-      const DeepCollectionEquality().hash(isConcert));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(id),
+        const DeepCollectionEquality().hash(clubId),
+        const DeepCollectionEquality().hash(eventName),
+        const DeepCollectionEquality().hash(clubName),
+        const DeepCollectionEquality().hash(eventStartDateTime),
+        const DeepCollectionEquality().hash(eventEndDateTime),
+        const DeepCollectionEquality().hash(attending),
+        const DeepCollectionEquality().hash(minAge),
+        const DeepCollectionEquality().hash(price),
+        const DeepCollectionEquality().hash(currency),
+        const DeepCollectionEquality().hash(allowedOutfit),
+        const DeepCollectionEquality().hash(musicalGenres),
+        const DeepCollectionEquality().hash(description),
+        const DeepCollectionEquality().hash(artistName),
+        const DeepCollectionEquality().hash(location),
+        const DeepCollectionEquality().hash(cityId),
+        const DeepCollectionEquality().hash(photos),
+        const DeepCollectionEquality().hash(urlLinks),
+        const DeepCollectionEquality().hash(isConcert)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -519,6 +540,7 @@ abstract class _EventDto extends EventDto {
       required int attending,
       required int minAge,
       required int price,
+      required String currency,
       required String allowedOutfit,
       required List<String> musicalGenres,
       String? description,
@@ -553,6 +575,8 @@ abstract class _EventDto extends EventDto {
   int get minAge;
   @override
   int get price;
+  @override
+  String get currency;
   @override
   String get allowedOutfit;
   @override

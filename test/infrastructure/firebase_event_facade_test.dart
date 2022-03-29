@@ -74,6 +74,7 @@ void main() {
     attending: 100,
     minAge: 21,
     price: 20,
+    currency: 'pln',
     allowedOutfit: 'sport',
     musicalGenres: const ['rap'],
     location: const {longitude: 123, latitude: 321},

@@ -12,6 +12,7 @@ class Event extends Equatable {
   final int attending;
   final int minAge;
   final int price;
+  final String currency;
   final String allowedOutfit;
   final List<String> musicalGenres;
   final String? artistName;
@@ -32,6 +33,7 @@ class Event extends Equatable {
     required this.attending,
     required this.minAge,
     required this.price,
+    required this.currency,
     required this.allowedOutfit,
     required this.musicalGenres,
     required this.location,
@@ -62,6 +64,7 @@ class Event extends Equatable {
         attending,
         minAge,
         price,
+        currency,
         allowedOutfit,
         musicalGenres,
         location,

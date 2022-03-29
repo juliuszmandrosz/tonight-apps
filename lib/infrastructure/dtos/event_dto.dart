@@ -23,6 +23,7 @@ class EventDto with _$EventDto {
     required int attending,
     required int minAge,
     required int price,
+    required String currency,
     required String allowedOutfit,
     required List<String> musicalGenres,
     String? description,
@@ -40,6 +41,7 @@ class EventDto with _$EventDto {
       id: event.id,
       clubId: event.clubId,
       price: event.price,
+      currency: event.currency,
       eventName: event.eventName,
       eventStartDateTime: event.eventStartDateTime,
       eventEndDateTime: event.eventEndDateTime,
@@ -78,6 +80,7 @@ class EventDto with _$EventDto {
     return Event(
       id: id,
       price: price,
+      currency: currency,
       eventName: eventName,
       eventStartDateTime: eventStartDateTime,
       eventEndDateTime: eventEndDateTime,

@@ -17,6 +17,7 @@ _$_EventDto _$$_EventDtoFromJson(Map<String, dynamic> json) => _$_EventDto(
       attending: json['attending'] as int,
       minAge: json['minAge'] as int,
       price: json['price'] as int,
+      currency: json['currency'] as String,
       allowedOutfit: json['allowedOutfit'] as String,
       musicalGenres: (json['musicalGenres'] as List<dynamic>)
           .map((e) => e as String)
@@ -50,6 +51,7 @@ Map<String, dynamic> _$$_EventDtoToJson(_$_EventDto instance) =>
       'attending': instance.attending,
       'minAge': instance.minAge,
       'price': instance.price,
+      'currency': instance.currency,
       'allowedOutfit': instance.allowedOutfit,
       'musicalGenres': instance.musicalGenres,
       'description': instance.description,
