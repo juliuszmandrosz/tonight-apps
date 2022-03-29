@@ -22,6 +22,7 @@ dependencies:
   cloud_firestore: ^3.1.10
   equatable: ^2.0.3
   intl: ^0.17.0
+  money2: ^3.1.2
 
   raver_translations:
     git:
