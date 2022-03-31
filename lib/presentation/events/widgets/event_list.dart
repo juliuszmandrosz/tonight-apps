@@ -66,10 +66,7 @@ class _EventListState extends State<EventList> {
                   height: MediaQuery.of(context).size.height * 0.3,
                   child: Center(
                     child: Text(
-                      state.eventFilters.userLocation.isNotEmpty &&
-                              state.eventFilters.isMaxDistanceOption
-                          ? S().noEventsNearYou
-                          : S().events(0),
+                      S().events(0),
                       style: textTheme.subtitle1,
                     ),
                   ),

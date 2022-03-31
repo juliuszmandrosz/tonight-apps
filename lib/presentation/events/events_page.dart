@@ -45,7 +45,8 @@ class EventsPage extends StatelessWidget {
                   BlocProvider(
                     create: (context) => getIt<EventOverviewBloc>()
                       ..add(_eventsFetched(
-                        EventFilters.empty().copyWith(showOnlyLive: true),
+                        EventFilters.empty().copyWith(
+                            showOnlyFilter: ShowOnlyFilter(showOnlyLive: true)),
                         SortModel.empty(),
                       )),
                     child: const LiveEventsTab(),
@@ -53,7 +54,9 @@ class EventsPage extends StatelessWidget {
                   BlocProvider(
                     create: (context) => getIt<EventOverviewBloc>()
                       ..add(_eventsFetched(
-                        EventFilters.empty().copyWith(showOnlyUpcoming: true),
+                        EventFilters.empty().copyWith(
+                            showOnlyFilter:
+                                ShowOnlyFilter(showOnlyUpcoming: true)),
                         SortModel.empty(),
                       )),
                     child: const UpcomingEventsTab(),
@@ -61,7 +64,8 @@ class EventsPage extends StatelessWidget {
                   BlocProvider(
                     create: (context) => getIt<EventOverviewBloc>()
                       ..add(_eventsFetched(
-                        EventFilters.empty().copyWith(showOnlyPast: true),
+                        EventFilters.empty().copyWith(
+                            showOnlyFilter: ShowOnlyFilter(showOnlyPast: true)),
                         SortModel(
                           fieldName: eventStartDateTime,
                           direction: SortDirection.desc,

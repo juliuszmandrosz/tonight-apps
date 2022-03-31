@@ -13,7 +13,8 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
       : super(EventFiltersState.initial());
 
   void submitSearchField(String value) async {
-    final currentFilters = state.filters.copyWith(phrase: value);
+    final currentFilters =
+        state.filters.copyWith(phraseFilter: PhraseFilter(phrase: value));
     final currentSortModel = _eventOverviewBloc.state.sortModel;
     emit(state.copyWith(filters: currentFilters));
 
