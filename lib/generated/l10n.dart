@@ -70,6 +70,16 @@ class S {
     );
   }
 
+  /// `Account settings`
+  String get accountSettings {
+    return Intl.message(
+      'Account settings',
+      name: 'accountSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add event`
   String get addEvent {
     return Intl.message(
@@ -85,6 +95,16 @@ class S {
     return Intl.message(
       'Additional info',
       name: 'additionalInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add promotion code`
+  String get addPromotionCode {
+    return Intl.message(
+      'Add promotion code',
+      name: 'addPromotionCode',
       desc: '',
       args: [],
     );
@@ -110,6 +130,26 @@ class S {
     );
   }
 
+  /// `Applied promotion code`
+  String get appliedPromotionCode {
+    return Intl.message(
+      'Applied promotion code',
+      name: 'appliedPromotionCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message(
+      'Apply',
+      name: 'apply',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Apply filters`
   String get applyFilters {
     return Intl.message(
@@ -125,6 +165,16 @@ class S {
     return Intl.message(
       'Apply selected date',
       name: 'applySelectedDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App version`
+  String get appVersion {
+    return Intl.message(
+      'App version',
+      name: 'appVersion',
       desc: '',
       args: [],
     );
@@ -158,6 +208,16 @@ class S {
     return Intl.message(
       'Back',
       name: 'back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to event list`
+  String get backToEventList {
+    return Intl.message(
+      'Back to event list',
+      name: 'backToEventList',
       desc: '',
       args: [],
     );
@@ -626,6 +686,16 @@ class S {
     );
   }
 
+  /// `Error while loading profile info`
+  String get errorLoadingProfile {
+    return Intl.message(
+      'Error while loading profile info',
+      name: 'errorLoadingProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Error loading tickets`
   String get errorLoadingTickets {
     return Intl.message(
@@ -859,6 +929,26 @@ class S {
     );
   }
 
+  /// `The event has been deleted by the club`
+  String get invalidEvent {
+    return Intl.message(
+      'The event has been deleted by the club',
+      name: 'invalidEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid promotion code`
+  String get invalidPromotionCode {
+    return Intl.message(
+      'Invalid promotion code',
+      name: 'invalidPromotionCode',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Invalid URL format`
   String get invalidUrl {
     return Intl.message(
@@ -1079,6 +1169,16 @@ class S {
     );
   }
 
+  /// `Notifications`
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Operation is not allowed`
   String get operationNotAllowed {
     return Intl.message(
@@ -1202,6 +1302,26 @@ class S {
     );
   }
 
+  /// `Payment confirmed`
+  String get paymentConfirmed {
+    return Intl.message(
+      'Payment confirmed',
+      name: 'paymentConfirmed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error during payment, please contact support`
+  String get paymentError {
+    return Intl.message(
+      'Error during payment, please contact support',
+      name: 'paymentError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{count, plural, zero{No photos} one{Photo} other{Photos}}`
   String photos(num count) {
     return Intl.plural(
@@ -1245,11 +1365,41 @@ class S {
     );
   }
 
+  /// `Proceed to pay`
+  String get proceedToPay {
+    return Intl.message(
+      'Proceed to pay',
+      name: 'proceedToPay',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Profile`
   String get profile {
     return Intl.message(
       'Profile',
       name: 'profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Promotion code has expired`
+  String get promotionCodeHasExpired {
+    return Intl.message(
+      'Promotion code has expired',
+      name: 'promotionCodeHasExpired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rate us`
+  String get rateUs {
+    return Intl.message(
+      'Rate us',
+      name: 'rateUs',
       desc: '',
       args: [],
     );
@@ -1408,6 +1558,16 @@ class S {
     );
   }
 
+  /// `Show ticket QR code`
+  String get showTicketQrCode {
+    return Intl.message(
+      'Show ticket QR code',
+      name: 'showTicketQrCode',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sign in`
   String get signIn {
     return Intl.message(
@@ -1483,6 +1643,16 @@ class S {
     return Intl.message(
       'Summary',
       name: 'summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms of Service`
+  String get termsOfService {
+    return Intl.message(
+      'Terms of Service',
+      name: 'termsOfService',
       desc: '',
       args: [],
     );

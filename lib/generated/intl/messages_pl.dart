@@ -46,11 +46,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutUs": MessageLookupByLibrary.simpleMessage("O nas"),
         "accountExists": MessageLookupByLibrary.simpleMessage(
             "Konto dla tego adresu e-mail już istnieje"),
+        "accountSettings":
+            MessageLookupByLibrary.simpleMessage("Ustawienia konta"),
         "addEvent": MessageLookupByLibrary.simpleMessage("Dodaj wydarzenie"),
+        "addPromotionCode":
+            MessageLookupByLibrary.simpleMessage("Dodaj kod promocyjny"),
         "addReward": MessageLookupByLibrary.simpleMessage("Dodaj nagrodę"),
         "additionalInfo":
             MessageLookupByLibrary.simpleMessage("Dodatkowe informacje"),
         "age": MessageLookupByLibrary.simpleMessage("Wiek"),
+        "appVersion": MessageLookupByLibrary.simpleMessage("Wersja aplikacji"),
+        "appliedPromotionCode":
+            MessageLookupByLibrary.simpleMessage("Zastosowany kod promocyjny"),
+        "apply": MessageLookupByLibrary.simpleMessage("Zastosuj"),
         "applyFilters":
             MessageLookupByLibrary.simpleMessage("Zatwierdź filtry"),
         "applySelectedDate":
@@ -58,6 +66,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "artistName": MessageLookupByLibrary.simpleMessage("Nazwa artysty"),
         "attending": m0,
         "back": MessageLookupByLibrary.simpleMessage("Wróć"),
+        "backToEventList":
+            MessageLookupByLibrary.simpleMessage("Wróć do listy wydarzeń"),
         "backToSummary":
             MessageLookupByLibrary.simpleMessage("Wróć do podsumowania"),
         "buyTicket": MessageLookupByLibrary.simpleMessage("Kup bilet"),
@@ -133,6 +143,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Błąd podczas ładowania filtrów"),
         "errorLoadingPhotos": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas ładowania zdjęć"),
+        "errorLoadingProfile": MessageLookupByLibrary.simpleMessage(
+            "Wystapił błąd podczas ładowania danych profilu"),
         "errorLoadingTickets": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas ładowania biletów"),
         "errorMakingCall": MessageLookupByLibrary.simpleMessage(
@@ -169,6 +181,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Otrzymane poświadczenia są nieprawidłowe lub wygasły"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy format adresu e-mail"),
+        "invalidEvent": MessageLookupByLibrary.simpleMessage(
+            "Wydarzenie zostało usunięte przez klub"),
+        "invalidPromotionCode": MessageLookupByLibrary.simpleMessage(
+            "Nieprawidłowy kod promocyjny"),
         "invalidUrl": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy format adresu URL"),
         "invalidVerificationCode": MessageLookupByLibrary.simpleMessage(
@@ -204,6 +220,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Brak wydarzeń w tym klubie"),
         "noEventsNearYou":
             MessageLookupByLibrary.simpleMessage("Brak wydarzeń w pobliżu"),
+        "notifications": MessageLookupByLibrary.simpleMessage("Powiadomienia"),
         "operationNotAllowed":
             MessageLookupByLibrary.simpleMessage("Operacja nie jest dozwolona"),
         "opinions": m3,
@@ -224,12 +241,21 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hasła się nie zgadzają"),
         "past": MessageLookupByLibrary.simpleMessage("Przeszłe"),
         "pastTickets": MessageLookupByLibrary.simpleMessage("Przeszłe bilety"),
+        "paymentConfirmed":
+            MessageLookupByLibrary.simpleMessage("Płatność potwierdzona"),
+        "paymentError": MessageLookupByLibrary.simpleMessage(
+            "Błąd podczas płatności, proszę skontaktuj się z obsługą"),
         "photos": m4,
         "price": MessageLookupByLibrary.simpleMessage("Cena"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Zakres cen"),
         "priceTooLow": MessageLookupByLibrary.simpleMessage(
             "Minimalna cena biletu to 20 złotych"),
+        "proceedToPay":
+            MessageLookupByLibrary.simpleMessage("Przejdź do płatności"),
         "profile": MessageLookupByLibrary.simpleMessage("Profil"),
+        "promotionCodeHasExpired":
+            MessageLookupByLibrary.simpleMessage("Kod promocyjny wygasł"),
+        "rateUs": MessageLookupByLibrary.simpleMessage("Oceń nas"),
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
         "raverPartners": MessageLookupByLibrary.simpleMessage("Raver Partners"),
         "register": MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
@@ -251,6 +277,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "serverError": MessageLookupByLibrary.simpleMessage("Błąd serwera"),
         "settings": MessageLookupByLibrary.simpleMessage("Ustawienia"),
         "showTicket": MessageLookupByLibrary.simpleMessage("Pokaż bilet"),
+        "showTicketQrCode":
+            MessageLookupByLibrary.simpleMessage("Pokaż kod QR biletu"),
         "signIn": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "signInWithGoogle": MessageLookupByLibrary.simpleMessage(
             "Zaloguj się za pomocą Google"),
@@ -261,6 +289,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "startDate": MessageLookupByLibrary.simpleMessage("Data rozpoczęcia"),
         "submit": MessageLookupByLibrary.simpleMessage("Zatwierdź"),
         "summary": MessageLookupByLibrary.simpleMessage("Podsumowanie"),
+        "termsOfService": MessageLookupByLibrary.simpleMessage("Warunki usług"),
         "tickets": m6,
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "unexpectedError":
