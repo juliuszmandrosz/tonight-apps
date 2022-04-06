@@ -124,6 +124,25 @@ class FirebaseAuthFacade implements AuthFacade {
     }
   }
 
+  @override
+  Future<Either<AuthFailure, Unit>> setUsernameForUser(String username) async {
+    try {
+      final usersWithSameUsername = await _firestore.userCollection
+          .where('username', isEqualTo: username)
+          .get();
+      if (usersWithSameUsername.size != 0) {
+        return left(AuthFailure(message: usernameAlreadyExist));
+      }
+      final userDoc = _getCurrentUserDocument();
+      await userDoc.update({'username': username});
+      return right(unit);
+    } on FirebaseException catch (exception) {
+      _logger.e(
+          "Exception during fetching or setting username for user EXCEPTION: $exception");
+      return left(AuthFailure(message: serverError));
+    }
+  }
+
   Future<Either<AuthFailure, Unit>> _addUser(String emailAddress) async {
     try {
       final userDoc = await _getCurrentUserDocument();
@@ -140,7 +159,6 @@ class FirebaseAuthFacade implements AuthFacade {
       );
     }
   }
-
 
   DocumentReference _getCurrentUserDocument() {
     final firebaseUser = _firebaseAuth.currentUser;

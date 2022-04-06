@@ -20,4 +20,6 @@ abstract class AuthFacade {
   Future<void> signOut();
 
   Future<Either<AuthFailure, Unit>> resetPassword(String email);
+
+  Future<Either<AuthFailure, Unit>> setUsernameForUser(String username);
 }
