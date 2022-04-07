@@ -7,6 +7,8 @@ extension FirestoreX on FirebaseFirestore {
 
   CollectionReference get userCollection => collection('users');
 
+  CollectionReference get partnersCollection => collection('partners');
+
   CollectionReference get eventCollection => collection('events');
 
   CollectionReference get userFavoriteEventsCollection =>
@@ -32,6 +34,5 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get ticketPaymentsCollection =>
       collection('ticketPayments');
 
-  CollectionReference get rewardsCollection =>
-      collection('rewards');
+  CollectionReference get rewardsCollection => collection('rewards');
 }
