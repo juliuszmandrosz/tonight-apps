@@ -1,0 +1,52 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:logger/logger.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_rewards/domain/reward_entity.dart';
+import 'package:raver_rewards/domain/reward_facade.dart';
+import 'package:raver_rewards/domain/reward_failure.dart';
+import 'package:raver_rewards/infrastructure/reward_dto.dart';
+
+class FirebaseRewardFacade implements RewardFacade {
+  final FirebaseFirestore _firestore;
+  final FirebaseAuth _firebaseAuth;
+  final Logger _logger;
+
+  FirebaseRewardFacade({
+    required FirebaseFirestore firestore,
+    required FirebaseAuth firebaseAuth,
+    required Logger logger,
+  })  : _firestore = firestore,
+        _firebaseAuth = firebaseAuth,
+        _logger = logger;
+
+  @override
+  Future<Either<RewardFailure, Unit>> addReward(Reward reward) async {
+    try {
+      final clubDoc = await _getCurrentPartnerClubDocumentRef();
+      final rewardDto = RewardDto.fromDomain(reward);
+
+      await clubDoc.rewardsCollection.doc(reward.id).set(rewardDto.toJson());
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      _logger.e("Exception during adding reward EXCEPTION: $e");
+      return left(const RewardFailure.unexpected());
+    }
+  }
+
+  Future<DocumentReference> _getCurrentPartnerClubDocumentRef() async {
+    final partnerDoc = await _getCurrentPartnerDocument();
+    final partnerClubId = partnerDoc.get('clubId');
+    return _firestore.clubCollection.doc(partnerClubId);
+  }
+
+  Future<DocumentSnapshot> _getCurrentPartnerDocument() {
+    final firebaseUser = _firebaseAuth.currentUser;
+
+    if (firebaseUser == null) throw NotAuthenticatedError();
+
+    return _firestore.partnersCollection.doc(firebaseUser.uid).get();
+  }
+}
