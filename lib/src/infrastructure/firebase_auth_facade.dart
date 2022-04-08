@@ -240,7 +240,7 @@ class FirebaseAuthFacade
       );
     }
   }
-  
+
   Future<UserCredential> _signInWithGoogleCredential(
       GoogleSignInAuthentication googleAuth) async {
     final authCredential = GoogleAuthProvider.credential(
@@ -248,5 +248,5 @@ class FirebaseAuthFacade
       accessToken: googleAuth.accessToken,
     );
     return _firebaseAuth.signInWithCredential(authCredential);
-  
+  }
 }

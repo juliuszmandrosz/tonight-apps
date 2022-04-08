@@ -20,6 +20,7 @@ dependencies:
   intl: ^0.17.0
   freezed_annotation: ^1.1.0
   cloud_functions: ^3.2.11
+  formz: ^0.4.1
 
   raver_translations:
     git:
