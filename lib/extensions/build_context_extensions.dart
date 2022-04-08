@@ -34,4 +34,10 @@ extension BuildContextX on BuildContext {
     final formatter = DateFormat.jm(locale.toLanguageTag());
     return formatter.format(dateTime);
   }
+
+  showSnackbarMessage(String message) {
+    ScaffoldMessenger.of(this)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text(message)));
+  }
 }
