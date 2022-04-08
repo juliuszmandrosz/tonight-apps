@@ -102,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Data zakończenia nie może być przed datą rozpoczęcia"),
         "enterArtistName": MessageLookupByLibrary.simpleMessage(
             "Proszę podać nazwę wykonawcy"),
+        "enterDesc": MessageLookupByLibrary.simpleMessage("Proszę podać opis"),
         "enterDjChannelUrl": MessageLookupByLibrary.simpleMessage(
             "Proszę podać link do kanału dj\'a"),
         "enterEmail": MessageLookupByLibrary.simpleMessage(
@@ -117,6 +118,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterPassword":
             MessageLookupByLibrary.simpleMessage("Proszę wprowadź hasło"),
         "enterPrice": MessageLookupByLibrary.simpleMessage("Proszę podać cenę"),
+        "enterRequiredEntries": MessageLookupByLibrary.simpleMessage(
+            "Proszę podać wymaganą liczbę wejść"),
         "enterStartDateTime": MessageLookupByLibrary.simpleMessage(
             "Proszę wprowadzić datę i godzinę rozpoczęcia"),
         "enterValidEmail": MessageLookupByLibrary.simpleMessage(
@@ -125,6 +128,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Proszę podać link do Youtube"),
         "errorAddingEvent": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas dodawania wydarzenia"),
+        "errorAddingReward": MessageLookupByLibrary.simpleMessage(
+            "Błąd podczas dodawania nagrody"),
         "errorChangingEventStatus": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas zmiany statusu zdarzenia"),
         "errorCheckInternetConnection": MessageLookupByLibrary.simpleMessage(
@@ -259,12 +264,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
         "raverPartners": MessageLookupByLibrary.simpleMessage("Raver Partners"),
         "register": MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
+        "requiredNumberOfEntries":
+            MessageLookupByLibrary.simpleMessage("Wymagana liczba wejść"),
         "resetFilters": MessageLookupByLibrary.simpleMessage("Zresetuj filtry"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Zresetuj hasło"),
         "resetSelectedDate":
             MessageLookupByLibrary.simpleMessage("Zresetuj wybraną datę"),
         "retryConnection":
             MessageLookupByLibrary.simpleMessage("Ponów Połączenie"),
+        "rewardAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Nagroda została dodana pomyślnie"),
         "rewards": m5,
         "selectDressCode":
             MessageLookupByLibrary.simpleMessage("Proszę wybrać dress code"),
@@ -292,6 +301,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "termsOfService": MessageLookupByLibrary.simpleMessage("Warunki usług"),
         "tickets": m6,
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
+        "tooMuchRequiredEntries": MessageLookupByLibrary.simpleMessage(
+            "Maksymalna liczba wymaganych wejść wynosi 1000"),
         "unexpectedError":
             MessageLookupByLibrary.simpleMessage("Nieoczekiwany błąd"),
         "upcoming": MessageLookupByLibrary.simpleMessage("Nadchodzące"),

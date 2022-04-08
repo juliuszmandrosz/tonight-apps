@@ -476,6 +476,16 @@ class S {
     );
   }
 
+  /// `Please enter description`
+  String get enterDesc {
+    return Intl.message(
+      'Please enter description',
+      name: 'enterDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please enter link to dj channel`
   String get enterDjChannelUrl {
     return Intl.message(
@@ -556,6 +566,16 @@ class S {
     );
   }
 
+  /// `Please enter required number of entries`
+  String get enterRequiredEntries {
+    return Intl.message(
+      'Please enter required number of entries',
+      name: 'enterRequiredEntries',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please enter start date time`
   String get enterStartDateTime {
     return Intl.message(
@@ -591,6 +611,16 @@ class S {
     return Intl.message(
       'Error adding event',
       name: 'errorAddingEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error adding reward`
+  String get errorAddingReward {
+    return Intl.message(
+      'Error adding reward',
+      name: 'errorAddingReward',
       desc: '',
       args: [],
     );
@@ -1435,6 +1465,16 @@ class S {
     );
   }
 
+  /// `Required number of entries`
+  String get requiredNumberOfEntries {
+    return Intl.message(
+      'Required number of entries',
+      name: 'requiredNumberOfEntries',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Reset filters`
   String get resetFilters {
     return Intl.message(
@@ -1470,6 +1510,16 @@ class S {
     return Intl.message(
       'Retry Connection',
       name: 'retryConnection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reward added successfully`
+  String get rewardAddedSuccessfully {
+    return Intl.message(
+      'Reward added successfully',
+      name: 'rewardAddedSuccessfully',
       desc: '',
       args: [],
     );
@@ -1676,6 +1726,16 @@ class S {
     return Intl.message(
       'TikTok',
       name: 'tikTok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The maximum number of required entries is 1000`
+  String get tooMuchRequiredEntries {
+    return Intl.message(
+      'The maximum number of required entries is 1000',
+      name: 'tooMuchRequiredEntries',
       desc: '',
       args: [],
     );
