@@ -5,4 +5,6 @@ import 'club_entity.dart';
 
 abstract class ClubFacade {
   Future<Either<ClubFailure, Club>> getClubById(String id);
+
+  Future<Either<ClubFailure, Club>> getCurrentPartnerClub();
 }
