@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_common/constants/constants.dart';
+import 'package:raver_common/domain/domain.dart';
 import 'package:raver_events/domain/domain.dart';
 import 'package:raver_partners/application/add_event/add_event_step.dart';
 import 'package:raver_partners/application/add_event/form_inputs/artist_name.dart';
@@ -17,6 +18,7 @@ import 'package:raver_partners/application/add_event/form_inputs/start_date_time
 import 'package:raver_partners/application/add_event/form_inputs/min_age.dart';
 import 'package:raver_partners/application/add_event/form_inputs/musical_genres.dart';
 import 'package:raver_partners/application/add_event_notifier/add_event_notifier_cubit.dart';
+import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 part 'add_event_cubit.freezed.dart';
@@ -26,12 +28,15 @@ part 'add_event_state.dart';
 class AddEventCubit extends Cubit<AddEventState> {
   final EventFacade _eventFacade;
   final AddEventNotifierCubit _addEventNotifierCubit;
+  final ClubInfoCubit _clubInfoCubit;
 
   AddEventCubit({
     required EventFacade eventFacade,
     required AddEventNotifierCubit addEventNotifierCubit,
+    required ClubInfoCubit clubInfoCubit,
   })  : _eventFacade = eventFacade,
         _addEventNotifierCubit = addEventNotifierCubit,
+        _clubInfoCubit = clubInfoCubit,
         super(AddEventState.initial());
 
   void eventNameChanged(String value) {
@@ -305,12 +310,15 @@ class AddEventCubit extends Cubit<AddEventState> {
   Future<void> _addEvent() async {
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
+    final club = _clubInfoCubit.state.club.getOrElse(
+      () => throw NotAuthenticatedError(),
+    );
+
     final event = Event(
-      // TODO - get info about club from Firestore
-      currency: 'PLN',
-      clubId: '123',
+      currency: club.acceptedCurrency,
+      clubId: club.id,
       eventName: state.eventName.value,
-      clubName: '321',
+      clubName: club.clubName,
       eventStartDateTime: state.startDateTime.value!,
       eventEndDateTime: state.endDateTime.value!,
       attending: 0,
@@ -318,8 +326,8 @@ class AddEventCubit extends Cubit<AddEventState> {
       price: state.price.value!,
       allowedOutfit: state.dressCode.value,
       musicalGenres: state.musicalGenres.value,
-      location: const {longitude: 10, latitude: 10},
-      cityId: '123',
+      location: club.location,
+      cityId: club.cityId,
       description: state.description.value,
       urlLinks: {
         facebook: state.facebookUrl.value,

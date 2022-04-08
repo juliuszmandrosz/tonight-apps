@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_events/domain/domain.dart';
+import 'package:raver_common/domain/domain.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_event_notifier/add_event_notifier_cubit.dart';
+import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/events/widgets/live_events_tab.dart';
 import 'package:raver_partners/presentation/events/widgets/past_events_tab.dart';
@@ -15,6 +16,10 @@ class EventsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentClub = context.read<ClubInfoCubit>().state.club.getOrElse(
+          () => throw NotAuthenticatedError(),
+        );
+
     return DefaultTabController(
       length: 3,
       initialIndex: 0,
@@ -47,7 +52,9 @@ class EventsPage extends StatelessWidget {
                     create: (context) => getIt<EventOverviewBloc>()
                       ..add(_eventsFetched(
                         EventFilters.empty().copyWith(
-                            showOnlyFilter: ShowOnlyFilter(showOnlyLive: true)),
+                          showOnlyFilter: ShowOnlyFilter(showOnlyLive: true),
+                          clubFilter: ClubFilter(clubId: currentClub.id),
+                        ),
                         SortModel.empty(),
                       )),
                     child: BlocBuilder<AddEventNotifierCubit,
@@ -62,8 +69,10 @@ class EventsPage extends StatelessWidget {
                     create: (context) => getIt<EventOverviewBloc>()
                       ..add(_eventsFetched(
                         EventFilters.empty().copyWith(
-                            showOnlyFilter:
-                                ShowOnlyFilter(showOnlyUpcoming: true)),
+                          showOnlyFilter:
+                              ShowOnlyFilter(showOnlyUpcoming: true),
+                          clubFilter: ClubFilter(clubId: currentClub.id),
+                        ),
                         SortModel.empty(),
                       )),
                     child: BlocBuilder<AddEventNotifierCubit,
@@ -78,7 +87,9 @@ class EventsPage extends StatelessWidget {
                     create: (context) => getIt<EventOverviewBloc>()
                       ..add(_eventsFetched(
                         EventFilters.empty().copyWith(
-                            showOnlyFilter: ShowOnlyFilter(showOnlyPast: true)),
+                          showOnlyFilter: ShowOnlyFilter(showOnlyPast: true),
+                          clubFilter: ClubFilter(clubId: currentClub.id),
+                        ),
                         SortModel(
                           fieldName: eventStartDateTime,
                           direction: SortDirection.desc,
@@ -102,7 +113,6 @@ class EventsPage extends StatelessWidget {
   }
 
   EventOverviewEvent _eventsFetched(EventFilters filters, SortModel sortModel) {
-    // TODO - add club id
     return EventOverviewEvent.eventsFetched(filters, sortModel);
   }
 

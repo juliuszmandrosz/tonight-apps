@@ -6,11 +6,13 @@ import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event_notifier/add_event_notifier_cubit.dart';
 import 'package:raver_partners/application/auth/sign_in/sign_in_cubit.dart';
+import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/event_filters/event_filters_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -55,7 +57,12 @@ void _registerCubits() {
   );
 
   getIt.registerFactoryParam(
-    (AddEventNotifierCubit addEventNotifierCubit, _) => AddEventCubit(
+    (
+      AddEventNotifierCubit addEventNotifierCubit,
+      ClubInfoCubit clubInfoCubit,
+    ) =>
+        AddEventCubit(
+      clubInfoCubit: clubInfoCubit,
       addEventNotifierCubit: addEventNotifierCubit,
       eventFacade: getIt(),
     ),
@@ -63,6 +70,12 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => AvailableFiltersCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => ClubInfoCubit(
       getIt(),
     ),
   );
@@ -87,6 +100,10 @@ void _registerFacades() {
     ),
   );
 
+  getIt.registerLazySingleton<AuthCloudFunctionsFacade>(
+    () => AuthCloudFunctionsFacadeImpl(),
+  );
+
   getIt.registerLazySingleton<EventFacade>(
     () => FirebaseEventFacade(
       firebaseAuth: getIt(),
@@ -103,8 +120,12 @@ void _registerFacades() {
     ),
   );
 
-  getIt.registerLazySingleton<AuthCloudFunctionsFacade>(
-    () => AuthCloudFunctionsFacadeImpl(),
+  getIt.registerLazySingleton<PartnerClubFacade>(
+    () => FirebaseClubFacade(
+      firestore: getIt(),
+      firebaseAuth: getIt(),
+      logger: getIt(),
+    ),
   );
 }
 

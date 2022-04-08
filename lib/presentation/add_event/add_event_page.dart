@@ -5,6 +5,7 @@ import 'package:formz/formz.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event_notifier/add_event_notifier_cubit.dart';
+import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/add_event/widgets/add_event_steps.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
@@ -25,6 +26,7 @@ class AddEventPage extends StatelessWidget {
           child: BlocProvider(
             create: (context) => getIt<AddEventCubit>(
               param1: context.read<AddEventNotifierCubit>(),
+              param2: context.read<ClubInfoCubit>(),
             ),
             child: BlocListener<AddEventCubit, AddEventState>(
               listener: (context, state) {

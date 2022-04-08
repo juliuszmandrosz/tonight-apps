@@ -63,7 +63,6 @@ dependencies:
   raver_auth:
     git:
       url: https://github.com/juliuszmandrosz/RaverAuth.git
-      ref: feature/selector-sign-in
 
   raver_events:
     git:
@@ -76,6 +75,10 @@ dependencies:
   raver_common:
     git:
       url: https://github.com/juliuszmandrosz/RaverCommon.git
+
+  raver_clubs:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverClubs.git
 
 
 dev_dependencies:
