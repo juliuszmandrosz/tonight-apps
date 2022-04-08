@@ -12,11 +12,12 @@ _$_ClubDto _$$_ClubDtoFromJson(Map<String, dynamic> json) => _$_ClubDto(
       reviewCount: json['reviewCount'] as int? ?? 0,
       reviewAvg: (json['reviewAvg'] as num?)?.toDouble() ?? 0,
       locationString: json['locationString'] as String,
+      cityId: json['cityId'] as String,
+      acceptedCurrency: json['acceptedCurrency'] as String,
       phoneNumber: json['phoneNumber'] as String,
       location: (json['location'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(k, (e as num).toDouble()),
       ),
-      aboutUs: json['aboutUs'] as String?,
       socialMedia: (json['socialMedia'] as Map<String, dynamic>?)?.map(
             (k, e) => MapEntry(k, e as String),
           ) ??
@@ -25,6 +26,7 @@ _$_ClubDto _$$_ClubDtoFromJson(Map<String, dynamic> json) => _$_ClubDto(
               ?.map((e) => ClubReviewDto.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      aboutUs: json['aboutUs'] as String?,
     );
 
 Map<String, dynamic> _$$_ClubDtoToJson(_$_ClubDto instance) =>
@@ -34,9 +36,11 @@ Map<String, dynamic> _$$_ClubDtoToJson(_$_ClubDto instance) =>
       'reviewCount': instance.reviewCount,
       'reviewAvg': instance.reviewAvg,
       'locationString': instance.locationString,
+      'cityId': instance.cityId,
+      'acceptedCurrency': instance.acceptedCurrency,
       'phoneNumber': instance.phoneNumber,
       'location': instance.location,
-      'aboutUs': instance.aboutUs,
       'socialMedia': instance.socialMedia,
       'reviews': instance.reviews,
+      'aboutUs': instance.aboutUs,
     };
