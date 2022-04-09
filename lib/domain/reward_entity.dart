@@ -24,6 +24,7 @@ class Reward extends Equatable {
     int? requiredEntries,
   }) {
     return Reward(
+      id: id,
       description: description ?? this.description,
       requiredEntries: requiredEntries ?? this.requiredEntries,
     );
