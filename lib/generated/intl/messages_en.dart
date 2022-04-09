@@ -286,6 +286,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Retry Connection"),
         "rewardAddedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Reward added successfully"),
+        "rewardUpdatedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Reward updated successfully"),
         "rewards": m6,
         "selectDressCode":
             MessageLookupByLibrary.simpleMessage("Please select dress code"),

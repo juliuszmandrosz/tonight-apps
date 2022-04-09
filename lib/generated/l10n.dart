@@ -1631,6 +1631,16 @@ class S {
     );
   }
 
+  /// `Reward updated successfully`
+  String get rewardUpdatedSuccessfully {
+    return Intl.message(
+      'Reward updated successfully',
+      name: 'rewardUpdatedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please select dress code`
   String get selectDressCode {
     return Intl.message(

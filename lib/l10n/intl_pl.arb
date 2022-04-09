@@ -312,6 +312,8 @@
   "@rewardAddedSuccessfully": {},
   "rewards": "{count, plural, zero{Brak nagród} one{Nagroda} few{Nagrody} many{Nagród} other{Nagrody}}",
   "@rewards": {},
+  "rewardUpdatedSuccessfully": "Nagroda została zaaktualizowana pomyślnie",
+  "@rewardUpdatedSuccessfully": {},
   "selectDressCode": "Proszę wybrać dress code",
   "@selectDressCode": {},
   "selectMinAge": "Proszę wybrać minimalny wiek",

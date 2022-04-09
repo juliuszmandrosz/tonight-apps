@@ -290,6 +290,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ponów Połączenie"),
         "rewardAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Nagroda została dodana pomyślnie"),
+        "rewardUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Nagroda została zaaktualizowana pomyślnie"),
         "rewards": m6,
         "selectDressCode":
             MessageLookupByLibrary.simpleMessage("Proszę wybrać dress code"),
