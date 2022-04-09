@@ -606,6 +606,19 @@ class S {
     );
   }
 
+  /// `{count, plural, zero{entries} one{entry} other{entries}}`
+  String entries(num count) {
+    return Intl.plural(
+      count,
+      zero: 'entries',
+      one: 'entry',
+      other: 'entries',
+      name: 'entries',
+      desc: '',
+      args: [count],
+    );
+  }
+
   /// `Error adding event`
   String get errorAddingEvent {
     return Intl.message(
@@ -721,6 +734,16 @@ class S {
     return Intl.message(
       'Error while loading profile info',
       name: 'errorLoadingProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error loading rewards`
+  String get errorLoadingRewards {
+    return Intl.message(
+      'Error loading rewards',
+      name: 'errorLoadingRewards',
       desc: '',
       args: [],
     );

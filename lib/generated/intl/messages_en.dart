@@ -27,18 +27,21 @@ class MessageLookup extends MessageLookupByLibrary {
       "${Intl.plural(count, zero: 'No clubs', one: 'Club', other: 'Clubs')}";
 
   static String m2(count) =>
-      "${Intl.plural(count, zero: 'No events', one: 'Event', other: 'Events')}";
+      "${Intl.plural(count, zero: 'entries', one: 'entry', other: 'entries')}";
 
   static String m3(count) =>
-      "${Intl.plural(count, zero: 'Opinions', one: 'Opinion', other: 'Opinions')}";
+      "${Intl.plural(count, zero: 'No events', one: 'Event', other: 'Events')}";
 
   static String m4(count) =>
-      "${Intl.plural(count, zero: 'No photos', one: 'Photo', other: 'Photos')}";
+      "${Intl.plural(count, zero: 'Opinions', one: 'Opinion', other: 'Opinions')}";
 
   static String m5(count) =>
-      "${Intl.plural(count, zero: 'No rewards', one: 'Reward', other: 'Rewards')}";
+      "${Intl.plural(count, zero: 'No photos', one: 'Photo', other: 'Photos')}";
 
   static String m6(count) =>
+      "${Intl.plural(count, zero: 'No rewards', one: 'Reward', other: 'Rewards')}";
+
+  static String m7(count) =>
       "${Intl.plural(count, zero: 'No tickets', one: 'Ticket', other: 'Tickets')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -127,6 +130,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter valid email address"),
         "enterYoutubeLink": MessageLookupByLibrary.simpleMessage(
             "Please enter link to Youtube"),
+        "entries": m2,
         "errorAddingEvent":
             MessageLookupByLibrary.simpleMessage("Error adding event"),
         "errorAddingReward":
@@ -151,6 +155,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error loading photos"),
         "errorLoadingProfile": MessageLookupByLibrary.simpleMessage(
             "Error while loading profile info"),
+        "errorLoadingRewards":
+            MessageLookupByLibrary.simpleMessage("Error loading rewards"),
         "errorLoadingTickets":
             MessageLookupByLibrary.simpleMessage("Error loading tickets"),
         "errorMakingCall":
@@ -165,7 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "eventName": MessageLookupByLibrary.simpleMessage("Event name"),
         "eventTimeTooShort": MessageLookupByLibrary.simpleMessage(
             "The event should last at least one hour"),
-        "events": m2,
+        "events": m3,
         "exitButtonTitle": MessageLookupByLibrary.simpleMessage("Exit"),
         "facebook": MessageLookupByLibrary.simpleMessage("Facebook"),
         "facebookEvent": MessageLookupByLibrary.simpleMessage("Facebook event"),
@@ -225,7 +231,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "operationNotAllowed":
             MessageLookupByLibrary.simpleMessage("Operation is not allowed"),
-        "opinions": m3,
+        "opinions": m4,
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordDigit": MessageLookupByLibrary.simpleMessage(
             "Password should contain at least one digit"),
@@ -247,7 +253,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Payment confirmed"),
         "paymentError": MessageLookupByLibrary.simpleMessage(
             "Error during payment, please contact support"),
-        "photos": m4,
+        "photos": m5,
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Price range"),
         "priceTooLow": MessageLookupByLibrary.simpleMessage(
@@ -270,7 +276,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Retry Connection"),
         "rewardAddedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Reward added successfully"),
-        "rewards": m5,
+        "rewards": m6,
         "selectDressCode":
             MessageLookupByLibrary.simpleMessage("Please select dress code"),
         "selectMinAge":
@@ -295,7 +301,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "summary": MessageLookupByLibrary.simpleMessage("Summary"),
         "termsOfService":
             MessageLookupByLibrary.simpleMessage("Terms of Service"),
-        "tickets": m6,
+        "tickets": m7,
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "tooMuchRequiredEntries": MessageLookupByLibrary.simpleMessage(
             "The maximum number of required entries is 1000"),

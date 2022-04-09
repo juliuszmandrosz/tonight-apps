@@ -27,18 +27,21 @@ class MessageLookup extends MessageLookupByLibrary {
       "${Intl.plural(count, zero: 'Brak klubów', one: 'Klub', few: 'Kluby', many: 'Klubów', other: 'Klubu')}";
 
   static String m2(count) =>
-      "${Intl.plural(count, zero: 'Brak wydarzeń', one: 'Wydarzenie', few: 'Wydarzenia', many: 'Wydarzeń', other: 'Wydarzenia')}";
+      "${Intl.plural(count, zero: 'wejść', one: 'wejście', few: 'wejścia', many: 'wejść', other: 'wejścia')}";
 
   static String m3(count) =>
-      "${Intl.plural(count, zero: 'Opinii', one: 'Opinia', few: 'Opinie', many: 'Opinii', other: 'Opinie')}";
+      "${Intl.plural(count, zero: 'Brak wydarzeń', one: 'Wydarzenie', few: 'Wydarzenia', many: 'Wydarzeń', other: 'Wydarzenia')}";
 
   static String m4(count) =>
-      "${Intl.plural(count, zero: 'Brak zdjęć', one: 'Zdjęcie', few: 'Zdjęcia', many: 'Zdjęć', other: 'Zdjęcia')}";
+      "${Intl.plural(count, zero: 'Opinii', one: 'Opinia', few: 'Opinie', many: 'Opinii', other: 'Opinie')}";
 
   static String m5(count) =>
-      "${Intl.plural(count, zero: 'Brak nagród', one: 'Nagroda', few: 'Nagrody', many: 'Nagród', other: 'Nagrody')}";
+      "${Intl.plural(count, zero: 'Brak zdjęć', one: 'Zdjęcie', few: 'Zdjęcia', many: 'Zdjęć', other: 'Zdjęcia')}";
 
   static String m6(count) =>
+      "${Intl.plural(count, zero: 'Brak nagród', one: 'Nagroda', few: 'Nagrody', many: 'Nagród', other: 'Nagrody')}";
+
+  static String m7(count) =>
       "${Intl.plural(count, zero: 'Brak biletów', one: 'Bilet', few: 'Bilety', many: 'Biletów', other: 'Biletu')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -126,6 +129,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wprowadź prawidłowy adres e-mail"),
         "enterYoutubeLink": MessageLookupByLibrary.simpleMessage(
             "Proszę podać link do Youtube"),
+        "entries": m2,
         "errorAddingEvent": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas dodawania wydarzenia"),
         "errorAddingReward": MessageLookupByLibrary.simpleMessage(
@@ -150,6 +154,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Błąd podczas ładowania zdjęć"),
         "errorLoadingProfile": MessageLookupByLibrary.simpleMessage(
             "Wystapił błąd podczas ładowania danych profilu"),
+        "errorLoadingRewards": MessageLookupByLibrary.simpleMessage(
+            "Błąd podczas ładowania nagród"),
         "errorLoadingTickets": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas ładowania biletów"),
         "errorMakingCall": MessageLookupByLibrary.simpleMessage(
@@ -165,7 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "eventName": MessageLookupByLibrary.simpleMessage("Nazwa wydarzenia"),
         "eventTimeTooShort": MessageLookupByLibrary.simpleMessage(
             "Wydarzenie powinno trwać co najmniej godzinę"),
-        "events": m2,
+        "events": m3,
         "exitButtonTitle": MessageLookupByLibrary.simpleMessage("Wyjdź"),
         "facebook": MessageLookupByLibrary.simpleMessage("Facebook"),
         "facebookEvent":
@@ -228,7 +234,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notifications": MessageLookupByLibrary.simpleMessage("Powiadomienia"),
         "operationNotAllowed":
             MessageLookupByLibrary.simpleMessage("Operacja nie jest dozwolona"),
-        "opinions": m3,
+        "opinions": m4,
         "password": MessageLookupByLibrary.simpleMessage("Hasło"),
         "passwordDigit": MessageLookupByLibrary.simpleMessage(
             "Hasło powinno zawierać co najmniej jedną cyfrę"),
@@ -250,7 +256,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Płatność potwierdzona"),
         "paymentError": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas płatności, proszę skontaktuj się z obsługą"),
-        "photos": m4,
+        "photos": m5,
         "price": MessageLookupByLibrary.simpleMessage("Cena"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Zakres cen"),
         "priceTooLow": MessageLookupByLibrary.simpleMessage(
@@ -274,7 +280,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ponów Połączenie"),
         "rewardAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Nagroda została dodana pomyślnie"),
-        "rewards": m5,
+        "rewards": m6,
         "selectDressCode":
             MessageLookupByLibrary.simpleMessage("Proszę wybrać dress code"),
         "selectMinAge": MessageLookupByLibrary.simpleMessage(
@@ -299,7 +305,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "submit": MessageLookupByLibrary.simpleMessage("Zatwierdź"),
         "summary": MessageLookupByLibrary.simpleMessage("Podsumowanie"),
         "termsOfService": MessageLookupByLibrary.simpleMessage("Warunki usług"),
-        "tickets": m6,
+        "tickets": m7,
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "tooMuchRequiredEntries": MessageLookupByLibrary.simpleMessage(
             "Maksymalna liczba wymaganych wejść wynosi 1000"),
