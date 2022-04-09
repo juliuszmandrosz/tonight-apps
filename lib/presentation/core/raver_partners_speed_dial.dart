@@ -52,7 +52,7 @@ class _RaverPartnersSpeedDialState extends State<RaverPartnersSpeedDial> {
           ),
           label: S().addReward,
           labelStyle: theme.textTheme.bodyText1,
-          onTap: () => AutoRouter.of(context).push(const AddRewardRoute()),
+          onTap: () => AutoRouter.of(context).push(AddEditRewardRoute()),
           backgroundColor: theme.primaryColor,
           labelBackgroundColor: theme.primaryColor,
         )

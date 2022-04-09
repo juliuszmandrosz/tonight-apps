@@ -1,5 +1,5 @@
 import 'package:formz/formz.dart';
-import 'package:raver_partners/application/add_reward/add_reward_cubit.dart';
+import 'package:raver_partners/application/add_edit_reward/add_edit_reward_cubit.dart';
 import 'package:raver_translations/generated/l10n.dart';
 
 enum RewardDescriptionError { empty, tooLong }
@@ -9,7 +9,7 @@ final rewardDescriptionErrorMessages = {
   RewardDescriptionError.tooLong: S().descTooLong,
 };
 
-String? getRewardDescriptionErrorMessage(AddRewardState state) {
+String? getRewardDescriptionErrorMessage(AddEditRewardState state) {
   if (state.rewardDescription.valid || state.status != FormzStatus.invalid) {
     return null;
   }

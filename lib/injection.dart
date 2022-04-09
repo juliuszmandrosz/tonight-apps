@@ -9,9 +9,8 @@ import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
+import 'package:raver_partners/application/add_edit_reward/add_edit_reward_cubit.dart';
 import 'package:raver_partners/application/add_event_notifier/add_event_notifier_cubit.dart';
-import 'package:raver_partners/application/add_reward/add_reward_cubit.dart';
 import 'package:raver_partners/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/event_filters/event_filters_cubit.dart';
@@ -84,7 +83,7 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-        () => AddRewardCubit(
+        () => AddEditRewardCubit(
       getIt(),
     ),
   );

@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
+import 'package:raver_partners/presentation/routes/app_router.dart';
 import 'package:raver_rewards/domain/domain.dart';
 
 class RewardListTile extends StatelessWidget {
@@ -26,7 +28,9 @@ class RewardListTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () => AutoRouter.of(context).push(
+                AddEditRewardRoute(reward: reward),
+              ),
               icon: Icon(
                 Icons.mode_edit,
                 color: theme.iconTheme.color,
