@@ -98,6 +98,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "djChannel": MessageLookupByLibrary.simpleMessage("Dj channel"),
         "dressCode": MessageLookupByLibrary.simpleMessage("Dress code"),
+        "editReward": MessageLookupByLibrary.simpleMessage("Edit reward"),
         "elegant": MessageLookupByLibrary.simpleMessage("Elegant"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailAlreadyInUse":
@@ -172,6 +173,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error opening link"),
         "errorOpeningMaps":
             MessageLookupByLibrary.simpleMessage("Error opening maps"),
+        "errorUpdatingReward":
+            MessageLookupByLibrary.simpleMessage("Error updating reward"),
         "eventAddedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Event added successfully"),
         "eventDetails": MessageLookupByLibrary.simpleMessage("Event details"),

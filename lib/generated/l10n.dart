@@ -446,6 +446,16 @@ class S {
     );
   }
 
+  /// `Edit reward`
+  String get editReward {
+    return Intl.message(
+      'Edit reward',
+      name: 'editReward',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Elegant`
   String get elegant {
     return Intl.message(
@@ -834,6 +844,16 @@ class S {
     return Intl.message(
       'Error opening maps',
       name: 'errorOpeningMaps',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error updating reward`
+  String get errorUpdatingReward {
+    return Intl.message(
+      'Error updating reward',
+      name: 'errorUpdatingReward',
       desc: '',
       args: [],
     );

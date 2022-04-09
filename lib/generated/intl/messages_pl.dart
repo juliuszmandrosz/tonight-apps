@@ -99,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "details": MessageLookupByLibrary.simpleMessage("Szczegóły"),
         "djChannel": MessageLookupByLibrary.simpleMessage("Kanał DJ\'a"),
         "dressCode": MessageLookupByLibrary.simpleMessage("Dress code"),
+        "editReward": MessageLookupByLibrary.simpleMessage("Edytuj nagrodę"),
         "elegant": MessageLookupByLibrary.simpleMessage("Elegant"),
         "email": MessageLookupByLibrary.simpleMessage("E-mail"),
         "emailAlreadyInUse":
@@ -171,6 +172,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Błąd podczas otwierania linku"),
         "errorOpeningMaps":
             MessageLookupByLibrary.simpleMessage("Błąd podczas otwierania map"),
+        "errorUpdatingReward": MessageLookupByLibrary.simpleMessage(
+            "Błąd podczas aktualizacji nagrody "),
         "eventAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Wydarzenie zostało dodane pomyślnie"),
         "eventDetails":
