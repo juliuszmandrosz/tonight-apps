@@ -24,10 +24,7 @@ class FirebaseRewardFacade implements RewardFacade {
   @override
   Future<Either<RewardFailure, Unit>> addReward(Reward reward) async {
     try {
-      final clubDoc = await _getCurrentPartnerClubDocumentRef();
-      final rewardDto = RewardDto.fromDomain(reward);
-
-      await clubDoc.rewardsCollection.doc(reward.id).set(rewardDto.toJson());
+      _setReward(reward);
 
       return right(unit);
     } on FirebaseException catch (e) {
@@ -85,5 +82,25 @@ class FirebaseRewardFacade implements RewardFacade {
     if (firebaseUser == null) throw NotAuthenticatedError();
 
     return _firestore.partnersCollection.doc(firebaseUser.uid).get();
+  }
+
+  @override
+  Future<Either<RewardFailure, Unit>> updateReward(Reward reward) async {
+    try {
+      _setReward(reward);
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      _logger.e("Firebase Exception during updating reward EXCEPTION: $e");
+      return left(const RewardFailure.unexpected());
+    }
+  }
+
+  _setReward(Reward reward) async {
+    final clubDoc = await _getCurrentPartnerClubDocumentRef();
+
+    final rewardDto = RewardDto.fromDomain(reward);
+
+    await clubDoc.rewardsCollection.doc(reward.id).update(rewardDto.toJson());
   }
 }
