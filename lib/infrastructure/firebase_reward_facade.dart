@@ -59,6 +59,20 @@ class FirebaseRewardFacade implements RewardFacade {
     });
   }
 
+  @override
+  Future<Either<RewardFailure, Unit>> deleteReward(String rewardId) async {
+    try {
+      final clubDoc = await _getCurrentPartnerClubDocumentRef();
+
+      await clubDoc.rewardsCollection.doc(rewardId).delete();
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      _logger.e("Firebase Exception during deleting reward EXCEPTION: $e");
+      return left(const RewardFailure.unexpected());
+    }
+  }
+
   Future<DocumentReference> _getCurrentPartnerClubDocumentRef() async {
     final partnerDoc = await _getCurrentPartnerDocument();
     final partnerClubId = partnerDoc.get('clubId');

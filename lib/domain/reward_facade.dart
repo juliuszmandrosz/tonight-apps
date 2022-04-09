@@ -6,4 +6,6 @@ abstract class RewardFacade {
   Future<Either<RewardFailure, Unit>> addReward(Reward reward);
 
   Stream<Either<RewardFailure, List<Reward>>> getCurrentPartnerRewards();
+
+  Future<Either<RewardFailure, Unit>> deleteReward(String rewardId);
 }
