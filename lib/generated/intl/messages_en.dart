@@ -73,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "backToSummary":
             MessageLookupByLibrary.simpleMessage("Back to summary"),
         "buyTicket": MessageLookupByLibrary.simpleMessage("Buy ticket"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
         "cancelledByUser":
             MessageLookupByLibrary.simpleMessage("Operation cancelled by user"),
@@ -81,12 +82,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "clubs": m1,
         "concertInfo":
             MessageLookupByLibrary.simpleMessage("Concert information"),
+        "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "confirmDeleteMessage": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you wish to delete this item?"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "contact": MessageLookupByLibrary.simpleMessage("Contact"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateAndTime": MessageLookupByLibrary.simpleMessage("Date and time"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "descTooLong": MessageLookupByLibrary.simpleMessage(
             "Description may contain up to 1000 characters"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),

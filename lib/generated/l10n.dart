@@ -243,6 +243,16 @@ class S {
     );
   }
 
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Cancelled`
   String get cancelled {
     return Intl.message(
@@ -306,6 +316,26 @@ class S {
     );
   }
 
+  /// `Confirm`
+  String get confirm {
+    return Intl.message(
+      'Confirm',
+      name: 'confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you wish to delete this item?`
+  String get confirmDeleteMessage {
+    return Intl.message(
+      'Are you sure you wish to delete this item?',
+      name: 'confirmDeleteMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Confirm password`
   String get confirmPassword {
     return Intl.message(
@@ -351,6 +381,16 @@ class S {
     return Intl.message(
       'Date and time',
       name: 'dateAndTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
       desc: '',
       args: [],
     );

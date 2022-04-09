@@ -74,6 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "backToSummary":
             MessageLookupByLibrary.simpleMessage("Wróć do podsumowania"),
         "buyTicket": MessageLookupByLibrary.simpleMessage("Kup bilet"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Anulowano"),
         "cancelledByUser": MessageLookupByLibrary.simpleMessage(
             "Operacja anulowana przez użytkownika"),
@@ -82,12 +83,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "clubs": m1,
         "concertInfo":
             MessageLookupByLibrary.simpleMessage("Informacje o koncercie"),
+        "confirm": MessageLookupByLibrary.simpleMessage("Potwierdź"),
+        "confirmDeleteMessage": MessageLookupByLibrary.simpleMessage(
+            "Czy na pewno chcesz usunąć ten element?"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Potwierdź hasło"),
         "contact": MessageLookupByLibrary.simpleMessage("Kontakt"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Panel"),
         "date": MessageLookupByLibrary.simpleMessage("Data"),
         "dateAndTime": MessageLookupByLibrary.simpleMessage("Data i czas"),
+        "delete": MessageLookupByLibrary.simpleMessage("Usuń"),
         "descTooLong": MessageLookupByLibrary.simpleMessage(
             "Opis może zawierać maksymalnie 1000 znaków"),
         "description": MessageLookupByLibrary.simpleMessage("Opis"),
