@@ -18,4 +18,14 @@ class Reward extends Equatable {
         description,
         requiredEntries,
       ];
+
+  Reward copyWith({
+    String? description,
+    int? requiredEntries,
+  }) {
+    return Reward(
+      description: description ?? this.description,
+      requiredEntries: requiredEntries ?? this.requiredEntries,
+    );
+  }
 }
