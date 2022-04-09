@@ -42,7 +42,7 @@ extension BuildContextX on BuildContext {
       ..showSnackBar(SnackBar(content: Text(message)));
   }
 
-  showDeleteConfirmationDialog() async {
+  Future<bool?> showDeleteConfirmationDialog() async {
     return await showDialog(
       context: this,
       builder: (context) {
