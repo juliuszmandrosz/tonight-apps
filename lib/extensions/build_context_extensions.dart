@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 extension BuildContextX on BuildContext {
   String getCurrencySymbol() {
@@ -39,5 +40,27 @@ extension BuildContextX on BuildContext {
     ScaffoldMessenger.of(this)
       ..hideCurrentSnackBar()
       ..showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  showDeleteConfirmationDialog() async {
+    return await showDialog(
+      context: this,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(S().confirm),
+          content: Text(S().confirmDeleteMessage),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: Text(S().delete.toUpperCase()),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: Text(S().cancel.toUpperCase()),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
