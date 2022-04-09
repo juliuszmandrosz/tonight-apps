@@ -31,17 +31,22 @@ class EventListTile extends StatelessWidget {
               style: theme.textTheme.subtitle2,
             ),
           ),
-          trailing: isUpcomingEvent
-              ? Icon(
-                  Icons.mode_edit,
-                  color: theme.iconTheme.color,
-                  size: 30,
-                )
-              : Icon(
-                  Icons.chevron_right_rounded,
-                  color: theme.iconTheme.color,
-                  size: 30,
-                ),
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              isUpcomingEvent
+                  ? Icon(
+                      Icons.mode_edit,
+                      color: theme.iconTheme.color,
+                      size: 30,
+                    )
+                  : Icon(
+                      Icons.chevron_right_rounded,
+                      color: theme.iconTheme.color,
+                      size: 30,
+                    ),
+            ],
+          ),
         ),
       ),
     );

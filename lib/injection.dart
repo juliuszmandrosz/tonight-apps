@@ -15,7 +15,8 @@ import 'package:raver_partners/application/add_reward/add_reward_cubit.dart';
 import 'package:raver_partners/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/event_filters/event_filters_cubit.dart';
-import 'package:raver_rewards/domain/domain.dart';
+import 'package:raver_rewards/raver_rewards.dart';
+import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
 import 'package:raver_rewards/raver_rewards.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -85,6 +86,12 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => AddRewardCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => RewardListCubit(
       getIt(),
     ),
   );
