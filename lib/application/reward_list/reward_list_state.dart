@@ -5,12 +5,16 @@ class RewardListState with _$RewardListState {
   const RewardListState._();
 
   factory RewardListState({
-    required CubitStatus status,
+    required CubitStatus initialStatus,
+    required CubitStatus deletingStatus,
     required List<Reward> rewards,
+    required Option<String> errorMessage,
   }) = _RewardListState;
 
   factory RewardListState.initial() => RewardListState(
-        status: CubitStatus.initial,
+        initialStatus: CubitStatus.initial,
+        deletingStatus: CubitStatus.initial,
         rewards: [],
+        errorMessage: none(),
       );
 }

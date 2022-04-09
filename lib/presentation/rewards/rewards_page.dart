@@ -15,15 +15,23 @@ class RewardsPage extends StatelessWidget {
       create: (context) => getIt<RewardListCubit>()..getRewards(),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
-        child: BlocBuilder<RewardListCubit, RewardListState>(
+        child: BlocConsumer<RewardListCubit, RewardListState>(
+          listenWhen: (previous, current) =>
+              previous.errorMessage != current.errorMessage,
+          listener: (context, state) {
+            state.errorMessage.fold(
+              () {},
+              (error) => context.showSnackbarMessage(error),
+            );
+          },
           builder: (context, state) {
-            if (state.status.isLoading()) {
+            if (state.initialStatus.isLoading()) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
             }
 
-            if (state.status.isFailure()) {
+            if (state.initialStatus.isFailure()) {
               return Center(
                 child: Text(S().errorLoadingRewards),
               );

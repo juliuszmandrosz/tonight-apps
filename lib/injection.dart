@@ -15,7 +15,6 @@ import 'package:raver_partners/application/add_reward/add_reward_cubit.dart';
 import 'package:raver_partners/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/event_filters/event_filters_cubit.dart';
-import 'package:raver_rewards/raver_rewards.dart';
 import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
 import 'package:raver_rewards/raver_rewards.dart';
 
@@ -29,63 +28,63 @@ void registerDependencies() {
 
 void _registerCubits() {
   getIt.registerFactory(
-    () => AuthCubit(
+        () => AuthCubit(
       getIt(),
     ),
   );
 
   getIt.registerFactory(
-    () => SignInCubit(
+        () => SignInCubit(
       getIt(),
     ),
   );
 
   getIt.registerFactory(
-    () => ResetPasswordCubit(
+        () => ResetPasswordCubit(
       getIt(),
     ),
   );
 
   getIt.registerFactory(
-    () => AddEventNotifierCubit(),
+        () => AddEventNotifierCubit(),
   );
 
   getIt.registerFactory(
-    () => EventOverviewBloc(
+        () => EventOverviewBloc(
       getIt(),
     ),
   );
 
   getIt.registerFactoryParam(
-    (EventOverviewBloc eventListBloc, _) => EventFiltersCubit(eventListBloc),
+        (EventOverviewBloc eventListBloc, _) => EventFiltersCubit(eventListBloc),
   );
 
   getIt.registerFactoryParam(
-    (
-      AddEventNotifierCubit addEventNotifierCubit,
-      ClubInfoCubit clubInfoCubit,
-    ) =>
+        (
+        AddEventNotifierCubit addEventNotifierCubit,
+        ClubInfoCubit clubInfoCubit,
+        ) =>
         AddEventCubit(
-      clubInfoCubit: clubInfoCubit,
-      addEventNotifierCubit: addEventNotifierCubit,
-      eventFacade: getIt(),
-    ),
+          clubInfoCubit: clubInfoCubit,
+          addEventNotifierCubit: addEventNotifierCubit,
+          eventFacade: getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => AvailableFiltersCubit(
+        () => AvailableFiltersCubit(
       getIt(),
     ),
   );
 
   getIt.registerFactory(
-    () => ClubInfoCubit(
+        () => ClubInfoCubit(
       getIt(),
     ),
   );
 
   getIt.registerFactory(
-    () => AddRewardCubit(
+        () => AddRewardCubit(
       getIt(),
     ),
   );
@@ -99,7 +98,7 @@ void _registerCubits() {
 
 void _registerFacades() {
   getIt.registerLazySingleton<CommonAuthFacade>(
-    () => FirebaseAuthFacade(
+        () => FirebaseAuthFacade(
       firebaseAuth: getIt(),
       googleSignIn: getIt(),
       logger: getIt(),
@@ -108,7 +107,7 @@ void _registerFacades() {
   );
 
   getIt.registerLazySingleton<PartnerAuthFacade>(
-    () => FirebaseAuthFacade(
+        () => FirebaseAuthFacade(
       firebaseAuth: getIt(),
       googleSignIn: getIt(),
       logger: getIt(),
@@ -117,11 +116,11 @@ void _registerFacades() {
   );
 
   getIt.registerLazySingleton<AuthCloudFunctionsFacade>(
-    () => AuthCloudFunctionsFacadeImpl(),
+        () => AuthCloudFunctionsFacadeImpl(),
   );
 
   getIt.registerLazySingleton<EventFacade>(
-    () => FirebaseEventFacade(
+        () => FirebaseEventFacade(
       firebaseAuth: getIt(),
       logger: getIt(),
       algoliaEventsApi: getIt(),
@@ -130,14 +129,14 @@ void _registerFacades() {
   );
 
   getIt.registerLazySingleton<AvailableFiltersFacade>(
-    () => FirebaseAvailableFiltersFacade(
+        () => FirebaseAvailableFiltersFacade(
       getIt(),
       getIt(),
     ),
   );
 
   getIt.registerLazySingleton<PartnerClubFacade>(
-    () => FirebaseClubFacade(
+        () => FirebaseClubFacade(
       firestore: getIt(),
       firebaseAuth: getIt(),
       logger: getIt(),
@@ -155,7 +154,7 @@ void _registerFacades() {
 
 void _registerModules() {
   getIt.registerLazySingleton(
-    () => Algolia.init(
+        () => Algolia.init(
       applicationId: dotenv.env[algoliaAppId]!,
       apiKey: dotenv.env[algoliaApiKey]!,
     ),
@@ -170,7 +169,7 @@ void _registerModules() {
   getIt.registerLazySingleton(() => Logger());
 
   getIt.registerLazySingleton<AlgoliaEventsApi>(
-    () => AlgoliaEventsApiImpl(
+        () => AlgoliaEventsApiImpl(
       getIt(),
     ),
   );
