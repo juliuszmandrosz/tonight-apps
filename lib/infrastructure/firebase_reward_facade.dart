@@ -31,9 +31,32 @@ class FirebaseRewardFacade implements RewardFacade {
 
       return right(unit);
     } on FirebaseException catch (e) {
-      _logger.e("Exception during adding reward EXCEPTION: $e");
+      _logger.e("Firebase Exception during adding reward EXCEPTION: $e");
       return left(const RewardFailure.unexpected());
     }
+  }
+
+  @override
+  Stream<Either<RewardFailure, List<Reward>>>
+      getCurrentPartnerRewards() async* {
+    final clubDoc = await _getCurrentPartnerClubDocumentRef();
+    yield* clubDoc.rewardsCollection
+        .orderBy('requiredEntries')
+        .snapshots()
+        .map(
+          (snapshot) => right<RewardFailure, List<Reward>>(
+            snapshot.docs
+                .map((doc) => RewardDto.fromFirebase(doc).toDomain())
+                .toList(),
+          ),
+        )
+        .handleError((e) {
+      if (e is FirebaseException) {
+        _logger.e(
+            "Firebase Exception during getting current partner rewards EXCEPTION: $e");
+        return left(const RewardFailure.unexpected());
+      }
+    });
   }
 
   Future<DocumentReference> _getCurrentPartnerClubDocumentRef() async {
