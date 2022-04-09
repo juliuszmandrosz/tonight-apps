@@ -699,6 +699,16 @@ class S {
     );
   }
 
+  /// `Error deleting reward`
+  String get errorDeletingReward {
+    return Intl.message(
+      'Error deleting reward',
+      name: 'errorDeletingReward',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Raver passed out!`
   String get errorDialogTitle {
     return Intl.message(

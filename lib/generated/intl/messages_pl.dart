@@ -143,6 +143,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Błąd podczas zmiany statusu zdarzenia"),
         "errorCheckInternetConnection": MessageLookupByLibrary.simpleMessage(
             "Sprawdź połączenie z internetem"),
+        "errorDeletingReward": MessageLookupByLibrary.simpleMessage(
+            "Błąd podczas dodawania nagrody"),
         "errorDialogTitle":
             MessageLookupByLibrary.simpleMessage("Raver się wykrzaczył!"),
         "errorLoadingClubs": MessageLookupByLibrary.simpleMessage(

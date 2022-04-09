@@ -128,6 +128,8 @@
   "@errorChangingEventStatus": {},
   "errorCheckInternetConnection": "Sprawdź połączenie z internetem",
   "@errorCheckInternetConnection": {},
+  "errorDeletingReward": "Błąd podczas dodawania nagrody",
+  "@errorDeletingReward": {},
   "errorDialogTitle": "Raver się wykrzaczył!",
   "@errorDialogTitle": {},
   "errorLoadingClubs": "Błąd podczas ładowania klubów",
