@@ -2,9 +2,11 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:raver_auth/src/infrastructure/cloud_functions/cloud_function_names.dart';
 
 abstract class AuthCloudFunctionsFacade {
-  Future<void> checkUserClaim(String userEmail);
+  Future<void> checkUserClaim(String email);
 
-  Future<void> checkPartnerClaim(String userEmail);
+  Future<void> checkPartnerClaim(String email);
+
+  Future<void> checkSelectorClaim(String email);
 
   Future<void> addUser();
 
@@ -13,31 +15,39 @@ abstract class AuthCloudFunctionsFacade {
 
 class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   @override
-  Future<void> checkUserClaim(String userEmail) async {
-    final checkUserClaim =
+  Future<void> checkUserClaim(String email) async {
+    final checkUserClaimFn =
         FirebaseFunctions.instance.httpsCallable(checkUserClaimFnName);
 
-    await checkUserClaim.call({'userEmail': userEmail});
+    await checkUserClaimFn.call({'email': email});
   }
 
   @override
-  Future<void> checkPartnerClaim(String userEmail) async {
-    final checkPartnerClaim =
+  Future<void> checkPartnerClaim(String email) async {
+    final checkPartnerClaimFn =
         FirebaseFunctions.instance.httpsCallable(checkPartnerClaimFnName);
 
-    await checkPartnerClaim.call({'userEmail': userEmail});
+    await checkPartnerClaimFn.call({'email': email});
+  }
+
+  @override
+  Future<void> checkSelectorClaim(String email) async {
+    final checkSelectorClaimFn =
+        FirebaseFunctions.instance.httpsCallable(checkSelectorClaimFnName);
+
+    await checkSelectorClaimFn.call({'email': email});
   }
 
   @override
   Future<void> addUser() async {
-    final addUser = FirebaseFunctions.instance.httpsCallable(addUserFnName);
-    await addUser.call();
+    final addUserFn = FirebaseFunctions.instance.httpsCallable(addUserFnName);
+    await addUserFn.call();
   }
 
   @override
   Future<void> addPartner() async {
-    final addPartner =
+    final addPartnerFn =
         FirebaseFunctions.instance.httpsCallable(addPartnerFnName);
-    await addPartner.call();
+    await addPartnerFn.call();
   }
 }

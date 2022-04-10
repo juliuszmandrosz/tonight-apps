@@ -7,7 +7,11 @@ import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
 
 class FirebaseAuthFacade
-    implements CommonAuthFacade, UserAuthFacade, PartnerAuthFacade {
+    implements
+        UserAuthFacade,
+        PartnerAuthFacade,
+        SelectorAuthFacade,
+        CommonAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
   final Logger _logger;
@@ -36,15 +40,19 @@ class FirebaseAuthFacade
       );
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      _logger
-          .e("Exception during sign in with login and password EXCEPTION: $e");
+      _logger.e(
+        "Exception during sign in with login"
+        " and password as user EXCEPTION: $e",
+      );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
     } on FirebaseFunctionsException catch (e) {
       await signOut();
       _logger.e(
-          "Firebase Functions Exception during sign in with login and password EXCEPTION: $e");
+        "Firebase Functions Exception during sign in "
+        "with login and password as user EXCEPTION: $e",
+      );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
@@ -65,15 +73,19 @@ class FirebaseAuthFacade
       await _authCloudFunctionsFacade.addUser();
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      _logger
-          .e("Exception during register with login and password EXCEPTION: $e");
+      _logger.e(
+        "Exception during register with "
+        "login and password  as user EXCEPTION: $e",
+      );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
     } on FirebaseFunctionsException catch (e) {
       await signOut();
       _logger.e(
-          "Firebase Functions Exception during register with login and password EXCEPTION: $e");
+        "Firebase Functions Exception during register "
+        "with login and password as user EXCEPTION: $e",
+      );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
@@ -102,14 +114,19 @@ class FirebaseAuthFacade
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      _logger.e("Exception during sign in with Google EXCEPTION: $e");
+      _logger.e(
+        "Exception during sign in "
+        "with Google as user EXCEPTION: $e",
+      );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
     } on FirebaseFunctionsException catch (e) {
       await signOut();
       _logger.e(
-          "Firebase Function Exception during sign in with Google EXCEPTION: $e");
+        "Firebase Function Exception during "
+        "sign in with Google as user EXCEPTION: $e",
+      );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
@@ -129,15 +146,19 @@ class FirebaseAuthFacade
       );
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      _logger
-          .e("Exception during sign in with login and password EXCEPTION: $e");
+      _logger.e(
+        "Exception during sign in "
+        "with login and password as partner EXCEPTION: $e",
+      );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
     } on FirebaseFunctionsException catch (e) {
       await signOut();
       _logger.e(
-          "Firebase Functions Exception during sign in with login and password EXCEPTION: $e");
+        "Firebase Functions Exception during "
+        "sign in with login and password as partner EXCEPTION: $e",
+      );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
@@ -158,15 +179,19 @@ class FirebaseAuthFacade
       await _authCloudFunctionsFacade.addPartner();
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      _logger
-          .e("Exception during register with login and password EXCEPTION: $e");
+      _logger.e(
+        "Exception during register with "
+        "login and password as partner EXCEPTION: $e",
+      );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
     } on FirebaseFunctionsException catch (e) {
       await signOut();
       _logger.e(
-          "Firebase Functions Exception during register with login and password EXCEPTION: $e");
+        "Firebase Functions Exception during register"
+        " with login and password as partner EXCEPTION: $e",
+      );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
@@ -174,12 +199,35 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Stream<Option<AppUser>>> listenToAuthStateChange() {
-    return Future.value(
-      _firebaseAuth
-          .authStateChanges()
-          .map((user) => user != null ? some(user.toDomain()) : none()),
-    );
+  Future<Either<AuthFailure, Unit>> signInWithEmailAndPasswordAsSelector({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      await _authCloudFunctionsFacade.checkSelectorClaim(email);
+      await _firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      _logger.e(
+        "Exception during sign in with "
+        "login and password as selector EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    } on FirebaseFunctionsException catch (e) {
+      await signOut();
+      _logger.e(
+        "Firebase Functions Exception during sign in "
+        "with login and password as selector EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    }
   }
 
   @override
@@ -195,7 +243,9 @@ class FirebaseAuthFacade
     } on FirebaseFunctionsException catch (e) {
       await signOut();
       _logger.e(
-          "Firebase Functions Exception during getting signed user EXCEPTION: $e");
+        "Firebase Functions Exception during "
+        "getting signed user EXCEPTION: $e",
+      );
       return none();
     }
   }
@@ -213,17 +263,40 @@ class FirebaseAuthFacade
     } on FirebaseFunctionsException catch (e) {
       await signOut();
       _logger.e(
-          "Firebase Functions Exception during getting signed partner EXCEPTION: $e");
+        "Firebase Functions Exception during "
+        "getting signed partner EXCEPTION: $e",
+      );
       return none();
     }
   }
 
   @override
-  Future<void> signOut() {
-    return Future.wait([
-      _googleSignIn.signOut(),
-      _firebaseAuth.signOut(),
-    ]);
+  Future<Option<AppUser>> getSignedSelector() async {
+    try {
+      final firebaseUser = _firebaseAuth.currentUser;
+
+      if (firebaseUser == null) return none();
+
+      await _authCloudFunctionsFacade.checkSelectorClaim(firebaseUser.email!);
+
+      return some(firebaseUser.toDomain());
+    } on FirebaseFunctionsException catch (e) {
+      await signOut();
+      _logger.e(
+        "Firebase Functions Exception during "
+        "getting signed selector EXCEPTION: $e",
+      );
+      return none();
+    }
+  }
+
+  @override
+  Future<Stream<Option<AppUser>>> listenToAuthStateChange() {
+    return Future.value(
+      _firebaseAuth
+          .authStateChanges()
+          .map((user) => user != null ? some(user.toDomain()) : none()),
+    );
   }
 
   @override
@@ -239,6 +312,14 @@ class FirebaseAuthFacade
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
     }
+  }
+
+  @override
+  Future<void> signOut() {
+    return Future.wait([
+      _googleSignIn.signOut(),
+      _firebaseAuth.signOut(),
+    ]);
   }
 
   Future<UserCredential> _signInWithGoogleCredential(
