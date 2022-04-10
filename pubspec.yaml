@@ -19,10 +19,16 @@ dependencies:
   cloud_firestore: ^3.1.11
   firebase_auth: ^3.3.13
   logger: ^1.1.0
+  package_info_plus: ^1.4.0
 
   raver_common:
     git:
       url: https://github.com/juliuszmandrosz/RaverCommon.git
+
+  raver_auth:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverAuth.git
+
 
 dev_dependencies:
   flutter_test:
