@@ -18,9 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AppUserTearOff {
   const _$AppUserTearOff();
 
-  _AppUser call({required String id}) {
+  _AppUser call({required String id, required String providerId}) {
     return _AppUser(
       id: id,
+      providerId: providerId,
     );
   }
 }
@@ -31,6 +32,7 @@ const $AppUser = _$AppUserTearOff();
 /// @nodoc
 mixin _$AppUser {
   String get id => throw _privateConstructorUsedError;
+  String get providerId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppUserCopyWith<AppUser> get copyWith => throw _privateConstructorUsedError;
@@ -40,7 +42,7 @@ mixin _$AppUser {
 abstract class $AppUserCopyWith<$Res> {
   factory $AppUserCopyWith(AppUser value, $Res Function(AppUser) then) =
       _$AppUserCopyWithImpl<$Res>;
-  $Res call({String id});
+  $Res call({String id, String providerId});
 }
 
 /// @nodoc
@@ -54,11 +56,16 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? providerId = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      providerId: providerId == freezed
+          ? _value.providerId
+          : providerId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -69,7 +76,7 @@ abstract class _$AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   factory _$AppUserCopyWith(_AppUser value, $Res Function(_AppUser) then) =
       __$AppUserCopyWithImpl<$Res>;
   @override
-  $Res call({String id});
+  $Res call({String id, String providerId});
 }
 
 /// @nodoc
@@ -84,11 +91,16 @@ class __$AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? providerId = freezed,
   }) {
     return _then(_AppUser(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      providerId: providerId == freezed
+          ? _value.providerId
+          : providerId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -97,14 +109,16 @@ class __$AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AppUser implements _AppUser {
-  const _$_AppUser({required this.id});
+  const _$_AppUser({required this.id, required this.providerId});
 
   @override
   final String id;
+  @override
+  final String providerId;
 
   @override
   String toString() {
-    return 'AppUser(id: $id)';
+    return 'AppUser(id: $id, providerId: $providerId)';
   }
 
   @override
@@ -112,12 +126,16 @@ class _$_AppUser implements _AppUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AppUser &&
-            const DeepCollectionEquality().equals(other.id, id));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.providerId, providerId));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(providerId));
 
   @JsonKey(ignore: true)
   @override
@@ -126,10 +144,13 @@ class _$_AppUser implements _AppUser {
 }
 
 abstract class _AppUser implements AppUser {
-  const factory _AppUser({required String id}) = _$_AppUser;
+  const factory _AppUser({required String id, required String providerId}) =
+      _$_AppUser;
 
   @override
   String get id;
+  @override
+  String get providerId;
   @override
   @JsonKey(ignore: true)
   _$AppUserCopyWith<_AppUser> get copyWith =>

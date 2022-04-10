@@ -111,7 +111,8 @@ class FirebaseAuthFacade implements AuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> resetPassword(String email) async {
+  Future<Either<AuthFailure, Unit>> sendForgotPasswordEmail(
+      String email) async {
     try {
       await _firebaseAuth.setLanguageCode(Intl.getCurrentLocale());
       await _firebaseAuth.sendPasswordResetEmail(email: email);
@@ -140,6 +141,28 @@ class FirebaseAuthFacade implements AuthFacade {
       _logger.e(
           "Exception during fetching or setting username for user EXCEPTION: $exception");
       return left(AuthFailure(message: serverError));
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> changePassword(
+      String oldPassword, String newPassword) async {
+    final firebaseUser = _firebaseAuth.currentUser;
+    if (firebaseUser == null) throw NotAuthenticatedError();
+    final email = firebaseUser.email;
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email!,
+        password: oldPassword,
+      );
+      await firebaseUser.updatePassword(newPassword);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      _logger.e(
+          "Exception during authentication when changing password EXCEPTION: $e");
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
     }
   }
 
