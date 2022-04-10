@@ -4,6 +4,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_scanner/injection.dart';
 import 'package:raver_scanner/presentation/routes/app_router.dart';
+import 'package:raver_scanner/presentation/themes/dark_theme/dark_theme.dart';
+import 'package:raver_scanner/presentation/themes/light_theme/light_theme.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class RaverScannerApp extends StatelessWidget {
@@ -11,15 +13,14 @@ class RaverScannerApp extends StatelessWidget {
 
   RaverScannerApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (ctx) => getIt<AuthCubit>()..requestAuthCheck(),
       child: MaterialApp.router(
         title: 'Raver Scanner',
-        theme: ThemeData(),
-        darkTheme: ThemeData.dark(),
+        theme: lightTheme,
+        darkTheme: darkTheme,
         themeMode: ThemeMode.system,
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),

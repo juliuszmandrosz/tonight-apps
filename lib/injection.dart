@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_scanner/application/sign_in/sign_in_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -26,11 +27,26 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  getIt.registerFactory(
+    () => SignInCubit(
+      getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
   //Auth
   getIt.registerLazySingleton<CommonAuthFacade>(
+    () => FirebaseAuthFacade(
+      firebaseAuth: getIt(),
+      googleSignIn: getIt(),
+      logger: getIt(),
+      authCloudFunctionsFacade: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<SelectorAuthFacade>(
     () => FirebaseAuthFacade(
       firebaseAuth: getIt(),
       googleSignIn: getIt(),

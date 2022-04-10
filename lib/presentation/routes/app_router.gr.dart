@@ -20,11 +20,23 @@ class _$AppRouter extends RootStackRouter {
     SplashRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const SplashPage());
+    },
+    SignInRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const SignInPage());
+    },
+    ResetPasswordRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const ResetPasswordPage());
     }
   };
 
   @override
-  List<RouteConfig> get routes => [RouteConfig(SplashRoute.name, path: '/')];
+  List<RouteConfig> get routes => [
+        RouteConfig(SplashRoute.name, path: '/'),
+        RouteConfig(SignInRoute.name, path: '/sign-in-page'),
+        RouteConfig(ResetPasswordRoute.name, path: '/reset-password-page')
+      ];
 }
 
 /// generated route for
@@ -33,4 +45,21 @@ class SplashRoute extends PageRouteInfo<void> {
   const SplashRoute() : super(SplashRoute.name, path: '/');
 
   static const String name = 'SplashRoute';
+}
+
+/// generated route for
+/// [SignInPage]
+class SignInRoute extends PageRouteInfo<void> {
+  const SignInRoute() : super(SignInRoute.name, path: '/sign-in-page');
+
+  static const String name = 'SignInRoute';
+}
+
+/// generated route for
+/// [ResetPasswordPage]
+class ResetPasswordRoute extends PageRouteInfo<void> {
+  const ResetPasswordRoute()
+      : super(ResetPasswordRoute.name, path: '/reset-password-page');
+
+  static const String name = 'ResetPasswordRoute';
 }

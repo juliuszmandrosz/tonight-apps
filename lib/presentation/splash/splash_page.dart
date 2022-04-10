@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_scanner/presentation/routes/app_router.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -11,8 +13,11 @@ class SplashPage extends StatelessWidget {
       listener: (ctx, state) {
         state.map(
           initial: (_) {},
-          authenticated: (_) {},
-          unauthenticated: (_) {},
+          authenticated: (_) =>
+              // TODO - change this
+              AutoRouter.of(context).replace(const SignInRoute()),
+          unauthenticated: (_) =>
+              AutoRouter.of(context).replace(const SignInRoute()),
         );
       },
       child: Container(),
