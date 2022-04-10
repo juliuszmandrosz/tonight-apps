@@ -125,54 +125,14 @@ class FirebaseAuthFacade implements AuthFacade {
     }
   }
 
-  @override
-  Future<Either<AuthFailure, Unit>> setUsernameForUser(String username) async {
-    try {
-      final usersWithSameUsername = await _firestore.userCollection
-          .where('username', isEqualTo: username)
-          .get();
-      if (usersWithSameUsername.size != 0) {
-        return left(AuthFailure(message: usernameAlreadyExist));
-      }
-      final userDoc = _getCurrentUserDocument();
-      await userDoc.update({'username': username});
-      return right(unit);
-    } on FirebaseException catch (exception) {
-      _logger.e(
-          "Exception during fetching or setting username for user EXCEPTION: $exception");
-      return left(AuthFailure(message: serverError));
-    }
-  }
-
-  @override
-  Future<Either<AuthFailure, Unit>> changePassword(
-      String oldPassword, String newPassword) async {
-    final firebaseUser = _firebaseAuth.currentUser;
-    if (firebaseUser == null) throw NotAuthenticatedError();
-    final email = firebaseUser.email;
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email!,
-        password: oldPassword,
-      );
-      await firebaseUser.updatePassword(newPassword);
-      return right(unit);
-    } on FirebaseAuthException catch (e) {
-      _logger.e(
-          "Exception during authentication when changing password EXCEPTION: $e");
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
-    }
-  }
-
   Future<Either<AuthFailure, Unit>> _addUser(String emailAddress) async {
     try {
-      final userDoc = await _getCurrentUserDocument();
+      final userDoc = _getCurrentUserDocument();
       await userDoc.set({
         'email': emailAddress,
         'favoriteEvents': [],
         'favoriteClubs': [],
+        'username': ''
       });
       return right(unit);
     } on FirebaseException catch (e) {
