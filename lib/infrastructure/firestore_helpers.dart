@@ -9,6 +9,8 @@ extension FirestoreX on FirebaseFirestore {
 
   CollectionReference get partnersCollection => collection('partners');
 
+  CollectionReference get selectorsCollection => collection('selectors');
+
   CollectionReference get eventCollection => collection('events');
 
   CollectionReference get userFavoriteEventsCollection =>
