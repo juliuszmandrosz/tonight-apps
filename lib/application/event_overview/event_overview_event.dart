@@ -9,4 +9,6 @@ class EventOverviewEvent with _$EventOverviewEvent {
 
   const factory EventOverviewEvent.nextEventsPageFetched() =
       _NextEventsPageFetched;
+
+  const factory EventOverviewEvent.eventAdded(Event event) = _EventAdded;
 }

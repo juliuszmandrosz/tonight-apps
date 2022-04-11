@@ -27,6 +27,8 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
     );
 
     on<_EventsFetched>((event, emit) => _onEventsFetched(event, emit));
+
+    on<_EventAdded>((event, emit) => _onEventAdded(event, emit));
   }
 
   Future<void> _onEventsFetched(
@@ -80,5 +82,11 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
         ),
       ),
     );
+  }
+
+  _onEventAdded(_EventAdded event, Emitter<EventOverviewState> emit) {
+    final currentEvents = [...state.events];
+    currentEvents.add(event.event);
+    emit(state.copyWith(events: currentEvents));
   }
 }
