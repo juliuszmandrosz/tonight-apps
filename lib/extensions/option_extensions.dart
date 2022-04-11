@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:raver_common/domain/errors/invalid_operation_error.dart';
 
-extension OptionX on Option {
+extension OptionX<T> on Option<T> {
   /// Throws [InvalidOperationError]
-  getOrCrash() {
+  T getOrCrash() {
     return getOrElse(() => throw InvalidOperationError());
   }
 }
