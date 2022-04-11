@@ -59,11 +59,12 @@ dependencies:
   im_stepper: ^0.1.3
   flutter_hooks: ^0.18.2+1
   validators: ^3.0.0
+  cloud_functions: ^3.2.11
 
   raver_auth:
     git:
       url: https://github.com/juliuszmandrosz/RaverAuth.git
-      ref: feature/common-elements-for-auth-page
+      ref: feature/selector-sign-in
 
   raver_events:
     git:
