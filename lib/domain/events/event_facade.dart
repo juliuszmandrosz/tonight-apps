@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:raver_events/domain/domain.dart';
+import 'package:raver_events/domain/event_tickets/entities/event_tickets_entity.dart';
 
 abstract class EventFacade {
   Future<Either<EventFailure, List<Event>>> getEvents(
@@ -15,5 +16,13 @@ abstract class EventFacade {
 
   Future<Either<EventFailure, Unit>> toggleEventFavoriteStatus(String eventId);
 
-  Future<Either<EventFailure, Unit>> addEvent(Event event);
+  Future<Either<EventFailure, Unit>> addEvent(
+    Event event,
+    EventTickets eventTickets,
+  );
+
+  Future<Either<EventFailure, Unit>> updateEvent(Event event);
+
+  Future<Either<EventFailure, Option<Event>>>
+      getCurrentEventFromClubAsSelector();
 }

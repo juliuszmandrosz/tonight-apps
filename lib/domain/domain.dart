@@ -1,9 +1,13 @@
 export 'filters/event_filters_entity.dart';
 export 'filters/filter/filter.dart';
-export 'event_entity.dart';
-export 'event_facade.dart';
-export 'selector_event_facade.dart';
-export 'event_failure.dart';
 export 'constants/sort_fields.dart';
 export 'enums/sort_direction.dart';
 export 'sort/sort_model.dart';
+export 'event_tickets/entities/ticket_pool_entity.dart';
+export 'event_tickets/entities/event_tickets_entity.dart';
+export 'event_tickets/entities/ticket_sales_entity.dart';
+export 'event_tickets/event_tickets_failure.dart';
+export 'event_tickets/event_tickets_facade.dart';
+export 'events/event_entity.dart';
+export 'events/event_facade.dart';
+export 'events/event_failure.dart';

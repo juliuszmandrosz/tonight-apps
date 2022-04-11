@@ -9,7 +9,6 @@ class Event extends Equatable {
   final String clubName;
   final DateTime eventStartDateTime;
   final DateTime eventEndDateTime;
-  final int attending;
   final int minAge;
   final int price;
   final String currency;
@@ -22,6 +21,7 @@ class Event extends Equatable {
   final String cityId;
   final Map<String, String> urlLinks;
   final bool isConcert;
+  final int attending;
 
   Event({
     String? id,
@@ -30,7 +30,6 @@ class Event extends Equatable {
     required this.clubName,
     required this.eventStartDateTime,
     required this.eventEndDateTime,
-    required this.attending,
     required this.minAge,
     required this.price,
     required this.currency,
@@ -43,6 +42,7 @@ class Event extends Equatable {
     this.photos = const [],
     this.urlLinks = const {},
     this.isConcert = false,
+    this.attending = 0,
   }) : id = id ?? const Uuid().v1();
 
   double getLatitude() {
@@ -61,7 +61,6 @@ class Event extends Equatable {
         clubName,
         eventStartDateTime,
         eventEndDateTime,
-        attending,
         minAge,
         price,
         currency,
@@ -74,5 +73,49 @@ class Event extends Equatable {
         description,
         artistName,
         isConcert,
+        attending,
       ];
+
+  Event copyWith({
+    String? clubId,
+    String? eventName,
+    String? clubName,
+    DateTime? eventStartDateTime,
+    DateTime? eventEndDateTime,
+    int? minAge,
+    int? price,
+    String? currency,
+    String? allowedOutfit,
+    List<String>? musicalGenres,
+    Map<String, double>? location,
+    String? cityId,
+    String? description,
+    int? attending,
+    Map<String, String>? urlLinks,
+    bool? isConcert,
+    String? artistName,
+    List<String>? photos,
+  }) {
+    return Event(
+      id: id,
+      clubId: clubId ?? this.clubId,
+      eventName: eventName ?? this.eventName,
+      clubName: clubName ?? this.clubName,
+      eventStartDateTime: eventStartDateTime ?? this.eventStartDateTime,
+      eventEndDateTime: eventEndDateTime ?? this.eventEndDateTime,
+      minAge: minAge ?? this.minAge,
+      price: price ?? this.price,
+      currency: currency ?? this.currency,
+      allowedOutfit: allowedOutfit ?? this.allowedOutfit,
+      musicalGenres: musicalGenres ?? this.musicalGenres,
+      location: location ?? this.location,
+      cityId: cityId ?? this.cityId,
+      description: description ?? this.description,
+      attending: attending ?? this.attending,
+      urlLinks: urlLinks ?? this.urlLinks,
+      isConcert: isConcert ?? this.isConcert,
+      artistName: artistName ?? this.artistName,
+      photos: photos ?? this.photos,
+    );
+  }
 }

@@ -12,4 +12,9 @@ class EventOverviewEvent with _$EventOverviewEvent {
 
   const factory EventOverviewEvent.eventToStateAdded(Event event) =
       _EventToStateAdded;
+
+  const factory EventOverviewEvent.eventInStateUpdated(
+    Event oldEvent,
+    Event updatedEvent,
+  ) = _EventInStateUpdated;
 }

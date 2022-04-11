@@ -4,6 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/domain.dart';
+import 'package:raver_events/domain/events/event_entity.dart';
+import 'package:raver_events/domain/events/event_facade.dart';
 
 part 'event_overview_bloc.freezed.dart';
 
@@ -26,6 +28,9 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
     on<_EventsFetched>((event, emit) => _onEventsFetched(event, emit));
 
     on<_EventToStateAdded>((event, emit) => _onEventToStateAdded(event, emit));
+
+    on<_EventInStateUpdated>(
+        (event, emit) => _onEventInStateUpdated(event, emit));
   }
 
   Future<void> _onEventsFetched(
@@ -98,5 +103,15 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
 
       return firstDate.compareTo(secondDate);
     });
+  }
+
+  _onEventInStateUpdated(
+    _EventInStateUpdated event,
+    Emitter<EventOverviewState> emit,
+  ) {
+    final eventsCopy = [...state.events];
+    final index = eventsCopy.indexOf(event.oldEvent);
+    eventsCopy[index] = event.updatedEvent;
+    emit(state.copyWith(events: eventsCopy));
   }
 }

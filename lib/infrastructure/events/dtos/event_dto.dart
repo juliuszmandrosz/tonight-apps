@@ -1,12 +1,13 @@
 import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/domain/event_entity.dart';
+import 'package:raver_common/infrastructure/json_converters/timestamp_json_converter.dart';
+import 'package:raver_events/domain/events/event_entity.dart';
 
 part 'event_dto.freezed.dart';
 
 part 'event_dto.g.dart';
+
 
 @freezed
 class EventDto with _$EventDto {
@@ -20,7 +21,6 @@ class EventDto with _$EventDto {
     required String clubName,
     @TimestampJsonConverter() required DateTime eventStartDateTime,
     @TimestampJsonConverter() required DateTime eventEndDateTime,
-    required int attending,
     required int minAge,
     required int price,
     required String currency,
@@ -28,12 +28,12 @@ class EventDto with _$EventDto {
     required List<String> musicalGenres,
     String? description,
     String? artistName,
-    // ignore: invalid_annotation_target
     @JsonKey(name: '_geoloc') required Map<String, double> location,
     required String cityId,
     @Default([]) List<String> photos,
     @Default({}) Map<String, String> urlLinks,
     @Default(false) bool isConcert,
+    @Default(0) int attending,
   }) = _EventDto;
 
   factory EventDto.fromDomain(Event event) {

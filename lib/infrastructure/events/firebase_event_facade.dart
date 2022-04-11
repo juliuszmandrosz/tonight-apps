@@ -5,8 +5,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/domain.dart';
+import 'package:raver_events/domain/selector_event_facade.dart';
 import 'package:raver_events/infrastructure/algolia_events_api.dart';
-import 'package:raver_events/infrastructure/dtos/event_dto.dart';
+import 'package:raver_events/infrastructure/events/dtos/event_dto.dart';
+import 'package:raver_events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
 
 class FirebaseEventFacade implements EventFacade, SelectorEventFacade {
   final FirebaseAuth _firebaseAuth;
@@ -96,18 +98,51 @@ class FirebaseEventFacade implements EventFacade, SelectorEventFacade {
   }
 
   @override
-  Future<Either<EventFailure, Unit>> addEvent(Event event) async {
+  Future<Either<EventFailure, Unit>> addEvent(
+    Event event,
+    EventTickets eventTickets,
+  ) async {
     try {
-      final eventDoc = _firestore.eventCollection;
-      final eventDto = EventDto.fromDomain(event);
+      final eventDoc = _firestore.eventCollection.doc(event.id);
+      final clubDoc = _firestore.clubCollection.doc(event.clubId);
+      final eventTicketDoc = clubDoc.eventTickets.doc(event.id);
 
-      await eventDoc.doc(event.id).set(eventDto.toJson());
+      final eventDto = EventDto.fromDomain(event);
+      final eventTicketsDto = EventTicketsDto.fromDomain(eventTickets);
+
+      await eventDoc.set(eventDto.toJson());
+      await eventTicketDoc.set(eventTicketsDto.toJson());
 
       return right(unit);
     } on FirebaseException catch (e) {
       _logger.e("Exception during adding event EXCEPTION: $e");
       return left(const EventFailure.unexpected());
     }
+  }
+
+  @override
+  Future<Either<EventFailure, Unit>> updateEvent(Event event) async {
+    final eventDocRef = _firestore.eventCollection.doc(event.id);
+
+    return _firestore
+        .runTransaction<Either<EventFailure, Unit>>((transaction) async {
+      final eventDoc = await transaction.get(eventDocRef);
+
+      if (!eventDoc.exists) throw InvalidIdError();
+
+      final eventDto = EventDto.fromDomain(event);
+
+      transaction.update(eventDocRef, eventDto.toJson());
+
+      return right(unit);
+    }).catchError((e) {
+      if (e is FirebaseException) {
+        _logger.e("Firebase Exception during updating event EXCEPTION: $e");
+        return left<EventFailure, Unit>(
+          const EventFailure.unexpected(),
+        );
+      }
+    });
   }
 
   @override

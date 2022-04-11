@@ -7,7 +7,6 @@ import 'package:logger/logger.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/domain/filters/filter/date_range_filter.dart';
 import 'package:raver_events/raver_events.dart';
 import 'firebase_event_facade_test.mocks.dart';
 
@@ -81,7 +80,16 @@ void main() {
     cityId: 'cityId',
   );
 
+  final eventTicketDto = EventTicketsDto(
+    eventId: eventDto.id,
+    ticketPools: [],
+    ticketSales: const TicketSalesDto(currency: 'pln'),
+    ticketQuantity: 10,
+  );
+
   final event = eventDto.toDomain();
+
+  final eventTicket = eventTicketDto.toDomain();
 
   final eventDoc = eventDto.toJson();
 
@@ -207,10 +215,25 @@ void main() {
     test('should add event', () async {
       final expected = eventId;
 
-      await facade.addEvent(event);
+      await facade.addEvent(event, eventTicket);
 
       final eventSnapshot = await firestore.collection('events').get();
       final result = eventSnapshot.docs.first.id;
+
+      expect(result, expected);
+    });
+  });
+
+  group('add event', () {
+    test('should update event', () async {
+      await firestore.collection('events').doc(eventId).set(eventDoc);
+
+      final expected = event;
+
+      await facade.updateEvent(event);
+
+      final eventSnapshot = await firestore.collection('events').get();
+      final result = EventDto.fromFirebase(eventSnapshot.docs.first).toDomain();
 
       expect(result, expected);
     });

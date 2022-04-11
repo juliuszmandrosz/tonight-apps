@@ -29,7 +29,6 @@ class _$EventDtoTearOff {
       required String clubName,
       @TimestampJsonConverter() required DateTime eventStartDateTime,
       @TimestampJsonConverter() required DateTime eventEndDateTime,
-      required int attending,
       required int minAge,
       required int price,
       required String currency,
@@ -41,7 +40,8 @@ class _$EventDtoTearOff {
       required String cityId,
       List<String> photos = const [],
       Map<String, String> urlLinks = const {},
-      bool isConcert = false}) {
+      bool isConcert = false,
+      int attending = 0}) {
     return _EventDto(
       id: id,
       clubId: clubId,
@@ -49,7 +49,6 @@ class _$EventDtoTearOff {
       clubName: clubName,
       eventStartDateTime: eventStartDateTime,
       eventEndDateTime: eventEndDateTime,
-      attending: attending,
       minAge: minAge,
       price: price,
       currency: currency,
@@ -62,6 +61,7 @@ class _$EventDtoTearOff {
       photos: photos,
       urlLinks: urlLinks,
       isConcert: isConcert,
+      attending: attending,
     );
   }
 
@@ -84,21 +84,20 @@ mixin _$EventDto {
   DateTime get eventStartDateTime => throw _privateConstructorUsedError;
   @TimestampJsonConverter()
   DateTime get eventEndDateTime => throw _privateConstructorUsedError;
-  int get attending => throw _privateConstructorUsedError;
   int get minAge => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
   String get allowedOutfit => throw _privateConstructorUsedError;
   List<String> get musicalGenres => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  String? get artistName =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  String? get artistName => throw _privateConstructorUsedError;
   @JsonKey(name: '_geoloc')
   Map<String, double> get location => throw _privateConstructorUsedError;
   String get cityId => throw _privateConstructorUsedError;
   List<String> get photos => throw _privateConstructorUsedError;
   Map<String, String> get urlLinks => throw _privateConstructorUsedError;
   bool get isConcert => throw _privateConstructorUsedError;
+  int get attending => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -117,7 +116,6 @@ abstract class $EventDtoCopyWith<$Res> {
       String clubName,
       @TimestampJsonConverter() DateTime eventStartDateTime,
       @TimestampJsonConverter() DateTime eventEndDateTime,
-      int attending,
       int minAge,
       int price,
       String currency,
@@ -129,7 +127,8 @@ abstract class $EventDtoCopyWith<$Res> {
       String cityId,
       List<String> photos,
       Map<String, String> urlLinks,
-      bool isConcert});
+      bool isConcert,
+      int attending});
 }
 
 /// @nodoc
@@ -148,7 +147,6 @@ class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
     Object? clubName = freezed,
     Object? eventStartDateTime = freezed,
     Object? eventEndDateTime = freezed,
-    Object? attending = freezed,
     Object? minAge = freezed,
     Object? price = freezed,
     Object? currency = freezed,
@@ -161,6 +159,7 @@ class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
     Object? photos = freezed,
     Object? urlLinks = freezed,
     Object? isConcert = freezed,
+    Object? attending = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -187,10 +186,6 @@ class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
           ? _value.eventEndDateTime
           : eventEndDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      attending: attending == freezed
-          ? _value.attending
-          : attending // ignore: cast_nullable_to_non_nullable
-              as int,
       minAge: minAge == freezed
           ? _value.minAge
           : minAge // ignore: cast_nullable_to_non_nullable
@@ -239,6 +234,10 @@ class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
           ? _value.isConcert
           : isConcert // ignore: cast_nullable_to_non_nullable
               as bool,
+      attending: attending == freezed
+          ? _value.attending
+          : attending // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -255,7 +254,6 @@ abstract class _$EventDtoCopyWith<$Res> implements $EventDtoCopyWith<$Res> {
       String clubName,
       @TimestampJsonConverter() DateTime eventStartDateTime,
       @TimestampJsonConverter() DateTime eventEndDateTime,
-      int attending,
       int minAge,
       int price,
       String currency,
@@ -267,7 +265,8 @@ abstract class _$EventDtoCopyWith<$Res> implements $EventDtoCopyWith<$Res> {
       String cityId,
       List<String> photos,
       Map<String, String> urlLinks,
-      bool isConcert});
+      bool isConcert,
+      int attending});
 }
 
 /// @nodoc
@@ -287,7 +286,6 @@ class __$EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
     Object? clubName = freezed,
     Object? eventStartDateTime = freezed,
     Object? eventEndDateTime = freezed,
-    Object? attending = freezed,
     Object? minAge = freezed,
     Object? price = freezed,
     Object? currency = freezed,
@@ -300,6 +298,7 @@ class __$EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
     Object? photos = freezed,
     Object? urlLinks = freezed,
     Object? isConcert = freezed,
+    Object? attending = freezed,
   }) {
     return _then(_EventDto(
       id: id == freezed
@@ -326,10 +325,6 @@ class __$EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
           ? _value.eventEndDateTime
           : eventEndDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      attending: attending == freezed
-          ? _value.attending
-          : attending // ignore: cast_nullable_to_non_nullable
-              as int,
       minAge: minAge == freezed
           ? _value.minAge
           : minAge // ignore: cast_nullable_to_non_nullable
@@ -378,6 +373,10 @@ class __$EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
           ? _value.isConcert
           : isConcert // ignore: cast_nullable_to_non_nullable
               as bool,
+      attending: attending == freezed
+          ? _value.attending
+          : attending // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -393,7 +392,6 @@ class _$_EventDto extends _EventDto {
       required this.clubName,
       @TimestampJsonConverter() required this.eventStartDateTime,
       @TimestampJsonConverter() required this.eventEndDateTime,
-      required this.attending,
       required this.minAge,
       required this.price,
       required this.currency,
@@ -405,7 +403,8 @@ class _$_EventDto extends _EventDto {
       required this.cityId,
       this.photos = const [],
       this.urlLinks = const {},
-      this.isConcert = false})
+      this.isConcert = false,
+      this.attending = 0})
       : super._();
 
   factory _$_EventDto.fromJson(Map<String, dynamic> json) =>
@@ -427,8 +426,6 @@ class _$_EventDto extends _EventDto {
   @TimestampJsonConverter()
   final DateTime eventEndDateTime;
   @override
-  final int attending;
-  @override
   final int minAge;
   @override
   final int price;
@@ -442,7 +439,7 @@ class _$_EventDto extends _EventDto {
   final String? description;
   @override
   final String? artistName;
-  @override // ignore: invalid_annotation_target
+  @override
   @JsonKey(name: '_geoloc')
   final Map<String, double> location;
   @override
@@ -456,10 +453,13 @@ class _$_EventDto extends _EventDto {
   @JsonKey()
   @override
   final bool isConcert;
+  @JsonKey()
+  @override
+  final int attending;
 
   @override
   String toString() {
-    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, attending: $attending, minAge: $minAge, price: $price, currency: $currency, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, photos: $photos, urlLinks: $urlLinks, isConcert: $isConcert)';
+    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, currency: $currency, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, photos: $photos, urlLinks: $urlLinks, isConcert: $isConcert, attending: $attending)';
   }
 
   @override
@@ -475,7 +475,6 @@ class _$_EventDto extends _EventDto {
                 .equals(other.eventStartDateTime, eventStartDateTime) &&
             const DeepCollectionEquality()
                 .equals(other.eventEndDateTime, eventEndDateTime) &&
-            const DeepCollectionEquality().equals(other.attending, attending) &&
             const DeepCollectionEquality().equals(other.minAge, minAge) &&
             const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality().equals(other.currency, currency) &&
@@ -491,7 +490,8 @@ class _$_EventDto extends _EventDto {
             const DeepCollectionEquality().equals(other.cityId, cityId) &&
             const DeepCollectionEquality().equals(other.photos, photos) &&
             const DeepCollectionEquality().equals(other.urlLinks, urlLinks) &&
-            const DeepCollectionEquality().equals(other.isConcert, isConcert));
+            const DeepCollectionEquality().equals(other.isConcert, isConcert) &&
+            const DeepCollectionEquality().equals(other.attending, attending));
   }
 
   @override
@@ -503,7 +503,6 @@ class _$_EventDto extends _EventDto {
         const DeepCollectionEquality().hash(clubName),
         const DeepCollectionEquality().hash(eventStartDateTime),
         const DeepCollectionEquality().hash(eventEndDateTime),
-        const DeepCollectionEquality().hash(attending),
         const DeepCollectionEquality().hash(minAge),
         const DeepCollectionEquality().hash(price),
         const DeepCollectionEquality().hash(currency),
@@ -515,7 +514,8 @@ class _$_EventDto extends _EventDto {
         const DeepCollectionEquality().hash(cityId),
         const DeepCollectionEquality().hash(photos),
         const DeepCollectionEquality().hash(urlLinks),
-        const DeepCollectionEquality().hash(isConcert)
+        const DeepCollectionEquality().hash(isConcert),
+        const DeepCollectionEquality().hash(attending)
       ]);
 
   @JsonKey(ignore: true)
@@ -537,7 +537,6 @@ abstract class _EventDto extends EventDto {
       required String clubName,
       @TimestampJsonConverter() required DateTime eventStartDateTime,
       @TimestampJsonConverter() required DateTime eventEndDateTime,
-      required int attending,
       required int minAge,
       required int price,
       required String currency,
@@ -549,7 +548,8 @@ abstract class _EventDto extends EventDto {
       required String cityId,
       List<String> photos,
       Map<String, String> urlLinks,
-      bool isConcert}) = _$_EventDto;
+      bool isConcert,
+      int attending}) = _$_EventDto;
   const _EventDto._() : super._();
 
   factory _EventDto.fromJson(Map<String, dynamic> json) = _$_EventDto.fromJson;
@@ -570,8 +570,6 @@ abstract class _EventDto extends EventDto {
   @TimestampJsonConverter()
   DateTime get eventEndDateTime;
   @override
-  int get attending;
-  @override
   int get minAge;
   @override
   int get price;
@@ -585,7 +583,7 @@ abstract class _EventDto extends EventDto {
   String? get description;
   @override
   String? get artistName;
-  @override // ignore: invalid_annotation_target
+  @override
   @JsonKey(name: '_geoloc')
   Map<String, double> get location;
   @override
@@ -596,6 +594,8 @@ abstract class _EventDto extends EventDto {
   Map<String, String> get urlLinks;
   @override
   bool get isConcert;
+  @override
+  int get attending;
   @override
   @JsonKey(ignore: true)
   _$EventDtoCopyWith<_EventDto> get copyWith =>
