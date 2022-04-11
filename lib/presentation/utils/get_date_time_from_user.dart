@@ -1,0 +1,35 @@
+import 'package:flutter/material.dart';
+
+Future<DateTime?> getDateTimeFromUser(context) async {
+  final now = DateTime.now();
+
+  final date = await showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime.now(),
+    lastDate: DateTime.now().add(
+      const Duration(days: 365),
+    ),
+
+  );
+
+  if (date == null) return null;
+
+  final time = await showTimePicker(
+    context: context,
+    initialTime: TimeOfDay(
+      hour: now.hour,
+      minute: now.minute,
+    ),
+  );
+
+  if (time == null) return null;
+
+  return DateTime(
+    date.year,
+    date.month,
+    date.day,
+    time.hour,
+    time.minute,
+  );
+}

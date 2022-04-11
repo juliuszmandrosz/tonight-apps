@@ -1,0 +1,42 @@
+import 'package:formz/formz.dart';
+import 'package:raver_partners/application/add_event/add_event_cubit.dart';
+import 'package:raver_translations/generated/l10n.dart';
+
+enum EventNameError { empty, tooLong, tooShort }
+
+final eventNameErrorMessages = {
+  EventNameError.empty: S().enterEventName,
+  EventNameError.tooLong: S().nameTooLong,
+  EventNameError.tooShort: S().nameTooShort,
+};
+
+String? getEventNameErrorMessage(AddEventState state) {
+  if (state.eventName.valid || state.status != FormzStatus.invalid) {
+    return null;
+  }
+
+  return eventNameErrorMessages[state.eventName.error];
+}
+
+class EventName extends FormzInput<String, EventNameError> {
+  const EventName.pure() : super.pure('');
+
+  const EventName.dirty([String value = '']) : super.dirty(value);
+
+  @override
+  EventNameError? validator(String value) {
+    if (value.isEmpty) {
+      return EventNameError.empty;
+    }
+
+    if (value.length < 3) {
+      return EventNameError.tooShort;
+    }
+
+    if (value.length > 50) {
+      return EventNameError.tooLong;
+    }
+
+    return null;
+  }
+}

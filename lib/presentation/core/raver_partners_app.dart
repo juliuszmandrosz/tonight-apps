@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_partners/application/add_event_notifier/add_event_notifier_cubit.dart';
 import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/config/themes/light_theme/light_theme.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
@@ -14,8 +15,15 @@ class RaverPartnersApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<AuthCubit>()..requestAuthCheck(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<AuthCubit>()..requestAuthCheck(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<AddEventNotifierCubit>(),
+        ),
+      ],
       child: MaterialApp.router(
         title: 'Raver Partners',
         debugShowCheckedModeBanner: false,

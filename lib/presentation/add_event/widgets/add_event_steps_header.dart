@@ -1,0 +1,70 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:raver_partners/application/add_event/add_event_cubit.dart';
+import 'package:raver_partners/application/add_event/add_event_step.dart';
+import 'package:raver_translations/generated/l10n.dart';
+
+class AddEventStepsHeader extends StatelessWidget {
+  const AddEventStepsHeader({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<AddEventCubit, AddEventState>(
+      buildWhen: (previous, current) =>
+          previous.currentStep != current.currentStep,
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.secondary,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    _getHeaderText(state.currentStep),
+                    style: Theme.of(context).textTheme.headline3,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  String _getHeaderText(AddEventStep currentStep) {
+    switch (currentStep) {
+      case AddEventStep.nameAndDesc:
+        return S().nameAndDesc;
+
+      case AddEventStep.dateTime:
+        return S().dateAndTime;
+
+      case AddEventStep.details:
+        return S().details;
+
+      case AddEventStep.tickets:
+        return S().tickets(2);
+
+      case AddEventStep.concertInfo:
+        return S().concertInfo;
+
+      case AddEventStep.urlLinks:
+        return S().urlLinks;
+
+      case AddEventStep.summary:
+        return S().summary;
+
+      default:
+        return '';
+    }
+  }
+}

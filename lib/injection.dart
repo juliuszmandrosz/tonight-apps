@@ -7,10 +7,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/application/application.dart';
-import 'package:raver_events/domain/domain.dart';
-import 'package:raver_events/infrastructure/algolia_events_api.dart';
-import 'package:raver_events/infrastructure/firebase_event_facade.dart';
+import 'package:raver_events/raver_events.dart';
+import 'package:raver_partners/application/add_event/add_event_cubit.dart';
+import 'package:raver_partners/application/add_event_notifier/add_event_notifier_cubit.dart';
 import 'package:raver_partners/application/event_filters/event_filters_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -29,14 +28,30 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
+    () => AddEventNotifierCubit(),
+  );
+
+  getIt.registerFactory(
     () => EventOverviewBloc(
       getIt(),
     ),
   );
 
   getIt.registerFactoryParam(
-    (EventOverviewBloc eventOverviewBloc, _) =>
-        EventFiltersCubit(eventOverviewBloc),
+    (EventOverviewBloc eventListBloc, _) => EventFiltersCubit(eventListBloc),
+  );
+
+  getIt.registerFactoryParam(
+    (AddEventNotifierCubit addEventNotifierCubit, _) => AddEventCubit(
+      addEventNotifierCubit: addEventNotifierCubit,
+      eventFacade: getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => AvailableFiltersCubit(
+      getIt(),
+    ),
   );
 }
 
@@ -56,6 +71,13 @@ void _registerFacades() {
       logger: getIt(),
       algoliaEventsApi: getIt(),
       firestore: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<AvailableFiltersFacade>(
+    () => FirebaseAvailableFiltersFacade(
+      getIt(),
+      getIt(),
     ),
   );
 }

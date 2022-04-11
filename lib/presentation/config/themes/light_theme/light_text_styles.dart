@@ -17,15 +17,27 @@ class LightTextStyles {
     fontWeight: FontWeight.w500,
   );
 
-  static TextStyle bodyText1 = GoogleFonts.lexendDeca(
+  static TextStyle bodyText = GoogleFonts.lexendDeca(
     fontSize: 16,
     color: LightColors.textColor,
+    fontWeight: FontWeight.w400,
+  );
+
+  static TextStyle bodyTextAccent = GoogleFonts.lexendDeca(
+    fontSize: 16,
+    color: LightColors.backgroundColor,
     fontWeight: FontWeight.w400,
   );
 
   static TextStyle headline1 = GoogleFonts.lexendDeca(
     fontSize: 24,
     color: LightColors.textColor,
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle headlineAccent = GoogleFonts.lexendDeca(
+    fontSize: 24,
+    color: LightColors.backgroundColor,
     fontWeight: FontWeight.w500,
   );
 

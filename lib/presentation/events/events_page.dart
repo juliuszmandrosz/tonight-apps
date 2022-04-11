@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_events/application/application.dart';
 import 'package:raver_events/domain/domain.dart';
+import 'package:raver_events/raver_events.dart';
+import 'package:raver_partners/application/add_event_notifier/add_event_notifier_cubit.dart';
 import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/events/widgets/live_events_tab.dart';
 import 'package:raver_partners/presentation/events/widgets/past_events_tab.dart';
@@ -49,7 +50,13 @@ class EventsPage extends StatelessWidget {
                             showOnlyFilter: ShowOnlyFilter(showOnlyLive: true)),
                         SortModel.empty(),
                       )),
-                    child: const LiveEventsTab(),
+                    child: BlocBuilder<AddEventNotifierCubit,
+                        AddEventNotifierState>(
+                      builder: (context, state) {
+                        _emitNewEventAdded(state, context);
+                        return const LiveEventsTab();
+                      },
+                    ),
                   ),
                   BlocProvider(
                     create: (context) => getIt<EventOverviewBloc>()
@@ -59,7 +66,13 @@ class EventsPage extends StatelessWidget {
                                 ShowOnlyFilter(showOnlyUpcoming: true)),
                         SortModel.empty(),
                       )),
-                    child: const UpcomingEventsTab(),
+                    child: BlocBuilder<AddEventNotifierCubit,
+                        AddEventNotifierState>(
+                      builder: (context, state) {
+                        _emitNewEventAdded(state, context);
+                        return const UpcomingEventsTab();
+                      },
+                    ),
                   ),
                   BlocProvider(
                     create: (context) => getIt<EventOverviewBloc>()
@@ -71,7 +84,13 @@ class EventsPage extends StatelessWidget {
                           direction: SortDirection.desc,
                         ),
                       )),
-                    child: const PastEventsTab(),
+                    child: BlocBuilder<AddEventNotifierCubit,
+                        AddEventNotifierState>(
+                      builder: (context, state) {
+                        _emitNewEventAdded(state, context);
+                        return const PastEventsTab();
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -85,5 +104,15 @@ class EventsPage extends StatelessWidget {
   EventOverviewEvent _eventsFetched(EventFilters filters, SortModel sortModel) {
     // TODO - add club id
     return EventOverviewEvent.eventsFetched(filters, sortModel);
+  }
+
+  _emitNewEventAdded(
+      AddEventNotifierState addEventNotifierState, BuildContext context) {
+    addEventNotifierState.lastAddedEvent.fold(
+      () {},
+      (event) => context
+          .read<EventOverviewBloc>()
+          .add(EventOverviewEvent.eventAdded(event)),
+    );
   }
 }

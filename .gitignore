@@ -53,3 +53,8 @@ app.*.map.json
 /lib/generated/intl/messages_all.dart
 /lib/generated/intl/messages_en.dart
 /lib/generated/intl/messages_pl.dart
+
+# freezed
+**/*.freezed.dart
+**/*.g.dart
+**/*.gr.dart
