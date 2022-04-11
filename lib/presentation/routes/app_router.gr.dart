@@ -28,6 +28,18 @@ class _$AppRouter extends RootStackRouter {
     ResetPasswordRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const ResetPasswordPage());
+    },
+    NavigatorRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const NavigatorPage());
+    },
+    ScannerRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const ScannerPage());
+    },
+    SettingsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const SettingsPage());
     }
   };
 
@@ -35,7 +47,13 @@ class _$AppRouter extends RootStackRouter {
   List<RouteConfig> get routes => [
         RouteConfig(SplashRoute.name, path: '/'),
         RouteConfig(SignInRoute.name, path: '/sign-in-page'),
-        RouteConfig(ResetPasswordRoute.name, path: '/reset-password-page')
+        RouteConfig(ResetPasswordRoute.name, path: '/reset-password-page'),
+        RouteConfig(NavigatorRoute.name, path: '/navigator-page', children: [
+          RouteConfig(ScannerRoute.name,
+              path: 'scanner-page', parent: NavigatorRoute.name),
+          RouteConfig(SettingsRoute.name,
+              path: 'settings-page', parent: NavigatorRoute.name)
+        ])
       ];
 }
 
@@ -62,4 +80,30 @@ class ResetPasswordRoute extends PageRouteInfo<void> {
       : super(ResetPasswordRoute.name, path: '/reset-password-page');
 
   static const String name = 'ResetPasswordRoute';
+}
+
+/// generated route for
+/// [NavigatorPage]
+class NavigatorRoute extends PageRouteInfo<void> {
+  const NavigatorRoute({List<PageRouteInfo>? children})
+      : super(NavigatorRoute.name,
+            path: '/navigator-page', initialChildren: children);
+
+  static const String name = 'NavigatorRoute';
+}
+
+/// generated route for
+/// [ScannerPage]
+class ScannerRoute extends PageRouteInfo<void> {
+  const ScannerRoute() : super(ScannerRoute.name, path: 'scanner-page');
+
+  static const String name = 'ScannerRoute';
+}
+
+/// generated route for
+/// [SettingsPage]
+class SettingsRoute extends PageRouteInfo<void> {
+  const SettingsRoute() : super(SettingsRoute.name, path: 'settings-page');
+
+  static const String name = 'SettingsRoute';
 }

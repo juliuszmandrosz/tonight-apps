@@ -705,7 +705,7 @@ packages:
     description:
       path: "."
       ref: "feature/selector-sign-in"
-      resolved-ref: "9b6c8ae5a67f4395e25ea32d9baa6d4f509f2303"
+      resolved-ref: "0798bb8d0aed905f6f281ddcdb064d917276f75f"
       url: "https://github.com/juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
@@ -723,7 +723,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "18748e1632deb41da8df5b0b3b24b127a4819bd3"
+      resolved-ref: b01520d393cf7a422eda3174765cc4acf49b8c1d
       url: "https://github.com/juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"

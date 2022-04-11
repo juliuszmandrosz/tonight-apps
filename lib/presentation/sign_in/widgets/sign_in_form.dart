@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_scanner/application/sign_in/sign_in_cubit.dart';
+import 'package:raver_scanner/presentation/routes/app_router.dart';
 import 'package:raver_scanner/presentation/sign_in/widgets/forgot_password_button.dart';
 import 'package:raver_scanner/presentation/sign_in/widgets/sign_in_button.dart';
 import 'package:raver_scanner/presentation/sign_in/widgets/sign_in_email_input.dart';
@@ -27,8 +29,7 @@ class SignInForm extends StatelessWidget {
         );
 
         if (state.status.isSubmissionSuccess) {
-          // TODO
-          // AutoRouter.of(context).replace(const NavigatorRoute());
+          AutoRouter.of(context).replace(const NavigatorRoute());
         }
       },
       child: Column(
