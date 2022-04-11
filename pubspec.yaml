@@ -45,6 +45,9 @@ dependencies:
   formz: ^0.4.1
   freezed_annotation: ^1.1.0
   google_fonts: ^2.3.1
+  dartz: ^0.10.1
+  firebase_remote_config: ^2.0.3
+  algolia: ^1.0.5+1
 
   raver_translations:
     git:
@@ -58,6 +61,11 @@ dependencies:
     git:
       url: https://github.com/juliuszmandrosz/RaverAuth.git
       ref: feature/selector-sign-in
+
+  raver_events:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverEvents.git
+      ref: feature/get-current-event
 
 
   # The following adds the Cupertino Icons font to your application.

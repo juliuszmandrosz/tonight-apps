@@ -5,7 +5,7 @@ import 'package:raver_scanner/presentation/scanner/scanner_page.dart';
 import 'package:raver_scanner/presentation/sign_in/reset_password/reset_password_page.dart';
 import 'package:raver_scanner/presentation/sign_in/sign_in_page.dart';
 import 'package:raver_scanner/presentation/splash/splash_page.dart';
-import 'package:raver_scanner/settings/settings_page.dart';
+import 'package:raver_scanner/presentation/settings/settings_page.dart';
 
 part 'app_router.gr.dart';
 

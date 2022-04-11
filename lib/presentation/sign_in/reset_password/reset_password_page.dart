@@ -5,6 +5,7 @@ import 'package:formz/formz.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_scanner/injection.dart';
+import 'package:raver_scanner/presentation/core/raver_scanner_headline.dart';
 import 'package:raver_scanner/presentation/sign_in/reset_password/widgets/reset_password_button.dart';
 import 'package:raver_scanner/presentation/sign_in/reset_password/widgets/reset_password_email_input.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -17,7 +18,7 @@ class ResetPasswordPage extends StatelessWidget {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(S().resetPassword, style: theme.textTheme.headline1),
+        title: RaverScannerHeadline(text: S().resetPassword),
         elevation: 0,
         backgroundColor: theme.colorScheme.background,
         automaticallyImplyLeading: false,
