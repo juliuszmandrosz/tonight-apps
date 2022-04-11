@@ -77,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
         "cancelledByUser":
             MessageLookupByLibrary.simpleMessage("Operation cancelled by user"),
+        "changePasswordTitle": MessageLookupByLibrary.simpleMessage(""),
         "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "clubs": m1,
@@ -88,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "contact": MessageLookupByLibrary.simpleMessage("Contact"),
+        "currentPasswordLabel": MessageLookupByLibrary.simpleMessage(""),
         "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateAndTime": MessageLookupByLibrary.simpleMessage("Date and time"),
@@ -253,6 +255,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password should contain at least one special character"),
         "passwordTooShort": MessageLookupByLibrary.simpleMessage(
             "Password should be at least 8 characters"),
+        "passwordUpdatedMessage": MessageLookupByLibrary.simpleMessage(""),
         "passwordUpperCase": MessageLookupByLibrary.simpleMessage(
             "Password should contain at least one upper case"),
         "passwordsDoNotMatch":
@@ -275,6 +278,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "rateUs": MessageLookupByLibrary.simpleMessage("Rate us"),
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
         "raverPartners": MessageLookupByLibrary.simpleMessage("Raver Partners"),
+        "raverScanner": MessageLookupByLibrary.simpleMessage("Raver Scanner"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "requiredNumberOfEntries":
             MessageLookupByLibrary.simpleMessage("Required number of entries"),
@@ -289,6 +293,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "rewardUpdatedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Reward updated successfully"),
         "rewards": m6,
+        "scanner": MessageLookupByLibrary.simpleMessage("Scanner"),
         "selectDressCode":
             MessageLookupByLibrary.simpleMessage("Please select dress code"),
         "selectMinAge":
@@ -322,11 +327,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "upcoming": MessageLookupByLibrary.simpleMessage("Upcoming"),
         "upcomingEvents":
             MessageLookupByLibrary.simpleMessage("Upcoming events"),
+        "updateUsernameTitle": MessageLookupByLibrary.simpleMessage(""),
         "urlLinks": MessageLookupByLibrary.simpleMessage("URL links"),
         "userDisabled": MessageLookupByLibrary.simpleMessage(
             "This account has been disabled"),
         "userNotFound": MessageLookupByLibrary.simpleMessage(
             "Email not found, please create an account"),
+        "usernameUpdatedMessage": MessageLookupByLibrary.simpleMessage(""),
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(
             "A verification link has been sent to the e-mail address provided"),
         "vipVertical": MessageLookupByLibrary.simpleMessage("V\nI\nP"),

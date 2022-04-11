@@ -273,6 +273,16 @@ class S {
     );
   }
 
+  /// ``
+  String get changePasswordTitle {
+    return Intl.message(
+      '',
+      name: 'changePasswordTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Checkout`
   String get checkout {
     return Intl.message(
@@ -351,6 +361,16 @@ class S {
     return Intl.message(
       'Contact',
       name: 'contact',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get currentPasswordLabel {
+    return Intl.message(
+      '',
+      name: 'currentPasswordLabel',
       desc: '',
       args: [],
     );
@@ -1395,6 +1415,16 @@ class S {
     );
   }
 
+  /// ``
+  String get passwordUpdatedMessage {
+    return Intl.message(
+      '',
+      name: 'passwordUpdatedMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Password should contain at least one upper case`
   String get passwordUpperCase {
     return Intl.message(
@@ -1548,6 +1578,16 @@ class S {
     );
   }
 
+  /// `Raver Scanner`
+  String get raverScanner {
+    return Intl.message(
+      'Raver Scanner',
+      name: 'raverScanner',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Register`
   String get register {
     return Intl.message(
@@ -1636,6 +1676,16 @@ class S {
     return Intl.message(
       'Reward updated successfully',
       name: 'rewardUpdatedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scanner`
+  String get scanner {
+    return Intl.message(
+      'Scanner',
+      name: 'scanner',
       desc: '',
       args: [],
     );
@@ -1874,6 +1924,16 @@ class S {
     );
   }
 
+  /// ``
+  String get updateUsernameTitle {
+    return Intl.message(
+      '',
+      name: 'updateUsernameTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `URL links`
   String get urlLinks {
     return Intl.message(
@@ -1889,6 +1949,16 @@ class S {
     return Intl.message(
       'This account has been disabled',
       name: 'userDisabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get usernameUpdatedMessage {
+    return Intl.message(
+      '',
+      name: 'usernameUpdatedMessage',
       desc: '',
       args: [],
     );
