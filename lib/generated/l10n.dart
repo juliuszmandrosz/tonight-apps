@@ -80,6 +80,16 @@ class S {
     );
   }
 
+  /// `Account Settings`
+  String get accountSettingsTitle {
+    return Intl.message(
+      'Account Settings',
+      name: 'accountSettingsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add event`
   String get addEvent {
     return Intl.message(
@@ -273,10 +283,10 @@ class S {
     );
   }
 
-  /// ``
+  /// `Change Password`
   String get changePasswordTitle {
     return Intl.message(
-      '',
+      'Change Password',
       name: 'changePasswordTitle',
       desc: '',
       args: [],
@@ -366,10 +376,10 @@ class S {
     );
   }
 
-  /// ``
+  /// `Current Password`
   String get currentPasswordLabel {
     return Intl.message(
-      '',
+      'Current Password',
       name: 'currentPasswordLabel',
       desc: '',
       args: [],
@@ -1312,6 +1322,16 @@ class S {
     );
   }
 
+  /// `No live event in your club`
+  String get noLiveEvent {
+    return Intl.message(
+      'No live event in your club',
+      name: 'noLiveEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Notifications`
   String get notifications {
     return Intl.message(
@@ -1415,10 +1435,10 @@ class S {
     );
   }
 
-  /// ``
+  /// `Password has been updated!`
   String get passwordUpdatedMessage {
     return Intl.message(
-      '',
+      'Password has been updated!',
       name: 'passwordUpdatedMessage',
       desc: '',
       args: [],
@@ -1831,6 +1851,16 @@ class S {
     );
   }
 
+  /// `Start scanning`
+  String get startScanning {
+    return Intl.message(
+      'Start scanning',
+      name: 'startScanning',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Submit`
   String get submit {
     return Intl.message(
@@ -1924,10 +1954,10 @@ class S {
     );
   }
 
-  /// ``
+  /// `Update username`
   String get updateUsernameTitle {
     return Intl.message(
-      '',
+      'Update username',
       name: 'updateUsernameTitle',
       desc: '',
       args: [],
@@ -1954,10 +1984,20 @@ class S {
     );
   }
 
-  /// ``
+  /// `Username`
+  String get username {
+    return Intl.message(
+      'Username',
+      name: 'username',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username has been updated!`
   String get usernameUpdatedMessage {
     return Intl.message(
-      '',
+      'Username has been updated!',
       name: 'usernameUpdatedMessage',
       desc: '',
       args: [],

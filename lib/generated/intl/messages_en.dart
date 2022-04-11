@@ -51,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "An account already exists for that email"),
         "accountSettings":
             MessageLookupByLibrary.simpleMessage("Account settings"),
+        "accountSettingsTitle":
+            MessageLookupByLibrary.simpleMessage("Account Settings"),
         "addEvent": MessageLookupByLibrary.simpleMessage("Add event"),
         "addPromotionCode":
             MessageLookupByLibrary.simpleMessage("Add promotion code"),
@@ -77,7 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
         "cancelledByUser":
             MessageLookupByLibrary.simpleMessage("Operation cancelled by user"),
-        "changePasswordTitle": MessageLookupByLibrary.simpleMessage(""),
+        "changePasswordTitle":
+            MessageLookupByLibrary.simpleMessage("Change Password"),
         "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "clubs": m1,
@@ -89,7 +92,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "contact": MessageLookupByLibrary.simpleMessage("Contact"),
-        "currentPasswordLabel": MessageLookupByLibrary.simpleMessage(""),
+        "currentPasswordLabel":
+            MessageLookupByLibrary.simpleMessage("Current Password"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateAndTime": MessageLookupByLibrary.simpleMessage("Date and time"),
@@ -240,6 +244,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No events at this club yet"),
         "noEventsNearYou":
             MessageLookupByLibrary.simpleMessage("No events near you"),
+        "noLiveEvent":
+            MessageLookupByLibrary.simpleMessage("No live event in your club"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "operationNotAllowed":
             MessageLookupByLibrary.simpleMessage("Operation is not allowed"),
@@ -255,7 +261,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password should contain at least one special character"),
         "passwordTooShort": MessageLookupByLibrary.simpleMessage(
             "Password should be at least 8 characters"),
-        "passwordUpdatedMessage": MessageLookupByLibrary.simpleMessage(""),
+        "passwordUpdatedMessage":
+            MessageLookupByLibrary.simpleMessage("Password has been updated!"),
         "passwordUpperCase": MessageLookupByLibrary.simpleMessage(
             "Password should contain at least one upper case"),
         "passwordsDoNotMatch":
@@ -314,6 +321,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "socialMedia": MessageLookupByLibrary.simpleMessage("Social media"),
         "sport": MessageLookupByLibrary.simpleMessage("Sport"),
         "startDate": MessageLookupByLibrary.simpleMessage("Start date"),
+        "startScanning": MessageLookupByLibrary.simpleMessage("Start scanning"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "summary": MessageLookupByLibrary.simpleMessage("Summary"),
         "termsOfService":
@@ -327,13 +335,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "upcoming": MessageLookupByLibrary.simpleMessage("Upcoming"),
         "upcomingEvents":
             MessageLookupByLibrary.simpleMessage("Upcoming events"),
-        "updateUsernameTitle": MessageLookupByLibrary.simpleMessage(""),
+        "updateUsernameTitle":
+            MessageLookupByLibrary.simpleMessage("Update username"),
         "urlLinks": MessageLookupByLibrary.simpleMessage("URL links"),
         "userDisabled": MessageLookupByLibrary.simpleMessage(
             "This account has been disabled"),
         "userNotFound": MessageLookupByLibrary.simpleMessage(
             "Email not found, please create an account"),
-        "usernameUpdatedMessage": MessageLookupByLibrary.simpleMessage(""),
+        "username": MessageLookupByLibrary.simpleMessage("Username"),
+        "usernameUpdatedMessage":
+            MessageLookupByLibrary.simpleMessage("Username has been updated!"),
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(
             "A verification link has been sent to the e-mail address provided"),
         "vipVertical": MessageLookupByLibrary.simpleMessage("V\nI\nP"),
