@@ -666,6 +666,16 @@ class S {
     );
   }
 
+  /// `Please enter a username`
+  String get enterUsername {
+    return Intl.message(
+      'Please enter a username',
+      name: 'enterUsername',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Enter valid email address`
   String get enterValidEmail {
     return Intl.message(
@@ -1272,6 +1282,16 @@ class S {
     );
   }
 
+  /// `New password`
+  String get newPassword {
+    return Intl.message(
+      'New password',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Next`
   String get next {
     return Intl.message(
@@ -1337,6 +1357,26 @@ class S {
     return Intl.message(
       'Notifications',
       name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Firstly lets set your username`
+  String get onboardingWelcomeSubtitle {
+    return Intl.message(
+      'Firstly lets set your username',
+      name: 'onboardingWelcomeSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome on board!`
+  String get onboardingWelcomeTitle {
+    return Intl.message(
+      'Welcome on board!',
+      name: 'onboardingWelcomeTitle',
       desc: '',
       args: [],
     );
@@ -1989,6 +2029,36 @@ class S {
     return Intl.message(
       'Username',
       name: 'username',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username cannot contain special characters`
+  String get usernameContainsSpecialCharacters {
+    return Intl.message(
+      'Username cannot contain special characters',
+      name: 'usernameContainsSpecialCharacters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username is too long, use max 20 characters`
+  String get usernameTooLong {
+    return Intl.message(
+      'Username is too long, use max 20 characters',
+      name: 'usernameTooLong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username is too short`
+  String get usernameTooShort {
+    return Intl.message(
+      'Username is too short',
+      name: 'usernameTooShort',
       desc: '',
       args: [],
     );

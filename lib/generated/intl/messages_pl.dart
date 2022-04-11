@@ -137,6 +137,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Proszę podać wymaganą liczbę wejść"),
         "enterStartDateTime": MessageLookupByLibrary.simpleMessage(
             "Proszę wprowadzić datę i godzinę rozpoczęcia"),
+        "enterUsername":
+            MessageLookupByLibrary.simpleMessage("Wprowadź nazwę użytkownika"),
         "enterValidEmail": MessageLookupByLibrary.simpleMessage(
             "Wprowadź prawidłowy adres e-mail"),
         "enterYoutubeLink": MessageLookupByLibrary.simpleMessage(
@@ -239,6 +241,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nazwa może zawierać maksymalnie 50 znaków"),
         "nameTooShort": MessageLookupByLibrary.simpleMessage(
             "Nazwa powinna zawierać co najmniej 8 znaków"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("Nowe hasło"),
         "next": MessageLookupByLibrary.simpleMessage("Dalej"),
         "no": MessageLookupByLibrary.simpleMessage("Nie"),
         "noDressCode":
@@ -250,6 +253,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "noLiveEvent": MessageLookupByLibrary.simpleMessage(
             "Brak wydarzenia na żywo w twoim klubie"),
         "notifications": MessageLookupByLibrary.simpleMessage("Powiadomienia"),
+        "onboardingWelcomeSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Na początek ustawmy Twoją nazwę użytkownika"),
+        "onboardingWelcomeTitle":
+            MessageLookupByLibrary.simpleMessage("Witaj na pokładzie!"),
         "operationNotAllowed":
             MessageLookupByLibrary.simpleMessage("Operacja nie jest dozwolona"),
         "opinions": m4,
@@ -348,6 +355,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "userNotFound": MessageLookupByLibrary.simpleMessage(
             "Nie znaleziono e-maila, utwórz konto"),
         "username": MessageLookupByLibrary.simpleMessage("Nazwa użytkownika"),
+        "usernameContainsSpecialCharacters":
+            MessageLookupByLibrary.simpleMessage(
+                "Nazwa użytkownika nie może posiadać znaków specjalnych"),
+        "usernameTooLong": MessageLookupByLibrary.simpleMessage(
+            "Nazwa użytkownika jest za długa, użyj maksymalnie 20 znaków"),
+        "usernameTooShort": MessageLookupByLibrary.simpleMessage(
+            "Nazwa użytkownika jest za krótka"),
         "usernameUpdatedMessage": MessageLookupByLibrary.simpleMessage(
             "Nazwa użytkownika została zaktualizowana!"),
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(

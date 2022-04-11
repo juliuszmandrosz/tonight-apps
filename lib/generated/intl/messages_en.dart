@@ -138,6 +138,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter required number of entries"),
         "enterStartDateTime": MessageLookupByLibrary.simpleMessage(
             "Please enter start date time"),
+        "enterUsername":
+            MessageLookupByLibrary.simpleMessage("Please enter a username"),
         "enterValidEmail":
             MessageLookupByLibrary.simpleMessage("Enter valid email address"),
         "enterYoutubeLink": MessageLookupByLibrary.simpleMessage(
@@ -237,6 +239,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Name can contain up to 50 characters"),
         "nameTooShort": MessageLookupByLibrary.simpleMessage(
             "Name should be at least 3 characters"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noDressCode": MessageLookupByLibrary.simpleMessage("No dress code"),
@@ -247,6 +250,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "noLiveEvent":
             MessageLookupByLibrary.simpleMessage("No live event in your club"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+        "onboardingWelcomeSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Firstly lets set your username"),
+        "onboardingWelcomeTitle":
+            MessageLookupByLibrary.simpleMessage("Welcome on board!"),
         "operationNotAllowed":
             MessageLookupByLibrary.simpleMessage("Operation is not allowed"),
         "opinions": m4,
@@ -343,6 +350,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "userNotFound": MessageLookupByLibrary.simpleMessage(
             "Email not found, please create an account"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
+        "usernameContainsSpecialCharacters":
+            MessageLookupByLibrary.simpleMessage(
+                "Username cannot contain special characters"),
+        "usernameTooLong": MessageLookupByLibrary.simpleMessage(
+            "Username is too long, use max 20 characters"),
+        "usernameTooShort":
+            MessageLookupByLibrary.simpleMessage("Username is too short"),
         "usernameUpdatedMessage":
             MessageLookupByLibrary.simpleMessage("Username has been updated!"),
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(
