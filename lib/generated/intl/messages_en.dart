@@ -214,6 +214,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "The event has been deleted by the club"),
         "invalidPromotionCode":
             MessageLookupByLibrary.simpleMessage("Invalid promotion code"),
+        "invalidQrCode":
+            MessageLookupByLibrary.simpleMessage("Invalid QR code"),
         "invalidUrl":
             MessageLookupByLibrary.simpleMessage("Invalid URL format"),
         "invalidVerificationCode":
@@ -308,6 +310,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "rewardUpdatedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Reward updated successfully"),
         "rewards": m6,
+        "scanAnotherTicket":
+            MessageLookupByLibrary.simpleMessage("Scan another ticket"),
+        "scanTicket": MessageLookupByLibrary.simpleMessage("Scan ticket"),
         "scanner": MessageLookupByLibrary.simpleMessage("Scanner"),
         "selectDressCode":
             MessageLookupByLibrary.simpleMessage("Please select dress code"),
@@ -335,6 +340,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "termsOfService":
             MessageLookupByLibrary.simpleMessage("Terms of Service"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "ticketExpired": MessageLookupByLibrary.simpleMessage("Ticket expired"),
+        "ticketForAnotherEvent":
+            MessageLookupByLibrary.simpleMessage("Ticket is for another event"),
         "tickets": m7,
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "tooMuchRequiredEntries": MessageLookupByLibrary.simpleMessage(
@@ -363,8 +371,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Username is too short"),
         "usernameUpdatedMessage":
             MessageLookupByLibrary.simpleMessage("Username has been updated!"),
+        "validTicket": MessageLookupByLibrary.simpleMessage("Valid ticket"),
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(
             "A verification link has been sent to the e-mail address provided"),
+        "vipValidTicket":
+            MessageLookupByLibrary.simpleMessage("VIP, valid ticket"),
         "vipVertical": MessageLookupByLibrary.simpleMessage("V\nI\nP"),
         "weakPassword":
             MessageLookupByLibrary.simpleMessage("Password is too weak"),

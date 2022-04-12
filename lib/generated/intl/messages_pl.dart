@@ -215,6 +215,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wydarzenie zostało usunięte przez klub"),
         "invalidPromotionCode": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy kod promocyjny"),
+        "invalidQrCode":
+            MessageLookupByLibrary.simpleMessage("Nieprawidłowy kod QR"),
         "invalidUrl": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy format adresu URL"),
         "invalidVerificationCode": MessageLookupByLibrary.simpleMessage(
@@ -312,6 +314,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "rewardUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Nagroda została zaaktualizowana pomyślnie"),
         "rewards": m6,
+        "scanAnotherTicket":
+            MessageLookupByLibrary.simpleMessage("Zeskanuj kolejny bilet"),
+        "scanTicket": MessageLookupByLibrary.simpleMessage("Zeskanuj bilet"),
         "scanner": MessageLookupByLibrary.simpleMessage("Skaner"),
         "selectDressCode":
             MessageLookupByLibrary.simpleMessage("Proszę wybrać dress code"),
@@ -340,6 +345,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "summary": MessageLookupByLibrary.simpleMessage("Podsumowanie"),
         "termsOfService": MessageLookupByLibrary.simpleMessage("Warunki usług"),
         "theme": MessageLookupByLibrary.simpleMessage("Motyw"),
+        "ticketExpired":
+            MessageLookupByLibrary.simpleMessage("Bilet stracił ważność"),
+        "ticketForAnotherEvent": MessageLookupByLibrary.simpleMessage(
+            "Bilet jest na inne wydarzenie"),
         "tickets": m7,
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "tooMuchRequiredEntries": MessageLookupByLibrary.simpleMessage(
@@ -368,8 +377,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nazwa użytkownika jest za krótka"),
         "usernameUpdatedMessage": MessageLookupByLibrary.simpleMessage(
             "Nazwa użytkownika została zaktualizowana!"),
+        "validTicket": MessageLookupByLibrary.simpleMessage("Ważny bilet"),
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(
             "Wysłano link weryfikacyjny na podany adres e-mail"),
+        "vipValidTicket":
+            MessageLookupByLibrary.simpleMessage("VIP, ważny bilet"),
         "vipVertical": MessageLookupByLibrary.simpleMessage("V\nI\nP"),
         "weakPassword":
             MessageLookupByLibrary.simpleMessage("Hasło jest za słabe"),

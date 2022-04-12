@@ -1122,6 +1122,16 @@ class S {
     );
   }
 
+  /// `Invalid QR code`
+  String get invalidQrCode {
+    return Intl.message(
+      'Invalid QR code',
+      name: 'invalidQrCode',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Invalid URL format`
   String get invalidUrl {
     return Intl.message(
@@ -1751,11 +1761,31 @@ class S {
     );
   }
 
+  /// `Scan another ticket`
+  String get scanAnotherTicket {
+    return Intl.message(
+      'Scan another ticket',
+      name: 'scanAnotherTicket',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Scanner`
   String get scanner {
     return Intl.message(
       'Scanner',
       name: 'scanner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan ticket`
+  String get scanTicket {
+    return Intl.message(
+      'Scan ticket',
+      name: 'scanTicket',
       desc: '',
       args: [],
     );
@@ -1951,6 +1981,26 @@ class S {
     );
   }
 
+  /// `Ticket expired`
+  String get ticketExpired {
+    return Intl.message(
+      'Ticket expired',
+      name: 'ticketExpired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ticket is for another event`
+  String get ticketForAnotherEvent {
+    return Intl.message(
+      'Ticket is for another event',
+      name: 'ticketForAnotherEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{count, plural, zero{No tickets} one{Ticket} other{Tickets}}`
   String tickets(num count) {
     return Intl.plural(
@@ -2114,11 +2164,31 @@ class S {
     );
   }
 
+  /// `Valid ticket`
+  String get validTicket {
+    return Intl.message(
+      'Valid ticket',
+      name: 'validTicket',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `A verification link has been sent to the e-mail address provided`
   String get verificationLinkSent {
     return Intl.message(
       'A verification link has been sent to the e-mail address provided',
       name: 'verificationLinkSent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `VIP, valid ticket`
+  String get vipValidTicket {
+    return Intl.message(
+      'VIP, valid ticket',
+      name: 'vipValidTicket',
       desc: '',
       args: [],
     );
