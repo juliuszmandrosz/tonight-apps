@@ -386,6 +386,16 @@ class S {
     );
   }
 
+  /// `Dark theme`
+  String get darkTheme {
+    return Intl.message(
+      'Dark theme',
+      name: 'darkTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Dashboard`
   String get dashboard {
     return Intl.message(
@@ -1931,6 +1941,16 @@ class S {
     );
   }
 
+  /// `Theme`
+  String get theme {
+    return Intl.message(
+      'Theme',
+      name: 'theme',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{count, plural, zero{No tickets} one{Ticket} other{Tickets}}`
   String tickets(num count) {
     return Intl.plural(
@@ -2029,6 +2049,16 @@ class S {
     return Intl.message(
       'Username',
       name: 'username',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username already in use`
+  String get usernameAlreadyInUse {
+    return Intl.message(
+      'Username already in use',
+      name: 'usernameAlreadyInUse',
       desc: '',
       args: [],
     );

@@ -94,6 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contact": MessageLookupByLibrary.simpleMessage("Contact"),
         "currentPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Current Password"),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateAndTime": MessageLookupByLibrary.simpleMessage("Date and time"),
@@ -333,6 +334,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "summary": MessageLookupByLibrary.simpleMessage("Summary"),
         "termsOfService":
             MessageLookupByLibrary.simpleMessage("Terms of Service"),
+        "theme": MessageLookupByLibrary.simpleMessage("Theme"),
         "tickets": m7,
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "tooMuchRequiredEntries": MessageLookupByLibrary.simpleMessage(
@@ -350,6 +352,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "userNotFound": MessageLookupByLibrary.simpleMessage(
             "Email not found, please create an account"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
+        "usernameAlreadyInUse":
+            MessageLookupByLibrary.simpleMessage("Username already in use"),
         "usernameContainsSpecialCharacters":
             MessageLookupByLibrary.simpleMessage(
                 "Username cannot contain special characters"),

@@ -95,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contact": MessageLookupByLibrary.simpleMessage("Kontakt"),
         "currentPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Aktualne Hasło"),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("Ciemny motyw"),
         "dashboard": MessageLookupByLibrary.simpleMessage("Panel"),
         "date": MessageLookupByLibrary.simpleMessage("Data"),
         "dateAndTime": MessageLookupByLibrary.simpleMessage("Data i czas"),
@@ -338,6 +339,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "submit": MessageLookupByLibrary.simpleMessage("Zatwierdź"),
         "summary": MessageLookupByLibrary.simpleMessage("Podsumowanie"),
         "termsOfService": MessageLookupByLibrary.simpleMessage("Warunki usług"),
+        "theme": MessageLookupByLibrary.simpleMessage("Motyw"),
         "tickets": m7,
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "tooMuchRequiredEntries": MessageLookupByLibrary.simpleMessage(
@@ -355,6 +357,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "userNotFound": MessageLookupByLibrary.simpleMessage(
             "Nie znaleziono e-maila, utwórz konto"),
         "username": MessageLookupByLibrary.simpleMessage("Nazwa użytkownika"),
+        "usernameAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+            "Nazwa użytkownika jest już w użyciu"),
         "usernameContainsSpecialCharacters":
             MessageLookupByLibrary.simpleMessage(
                 "Nazwa użytkownika nie może posiadać znaków specjalnych"),
