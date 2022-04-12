@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
+import 'package:raver_scanner/application/scanner/scanner_cubit.dart';
 import 'package:raver_scanner/injection.dart';
-import 'package:raver_scanner/presentation/core/raver_scanner_headline.dart';
+import 'package:raver_scanner/presentation/core/raver_scanner_app_bar.dart';
+import 'package:raver_scanner/presentation/scanner/widgets/qr_scanner.dart';
+import 'package:raver_scanner/presentation/scanner/widgets/scan_result.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class ScannerPage extends StatelessWidget {
@@ -11,42 +16,42 @@ class ScannerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<CurrentEventCubit>()..getCurrentEvent(),
-      child: BlocBuilder<CurrentEventCubit, CurrentEventState>(
-        builder: (context, state) {
-          if (state.status.isLoading()) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
+    return Scaffold(
+      appBar: RaverScannerAppBar(title: S().scanTicket),
+      body: BlocProvider(
+        create: (context) => getIt<ScannerCubit>(
+          param1: context.read<CurrentEventCubit>(),
+        ),
+        child: BlocBuilder<ScannerCubit, ScannerState>(
+          builder: (context, state) {
+            switch (state.status) {
+              case CubitStatus.initial:
+                return const QrScanner();
 
-          if (state.status.isFailure()) {
-            return Center(
-              child: Text(S().errorLoadingEventDetails),
-            );
-          }
+              case CubitStatus.loading:
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
 
-          return state.currentEvent.fold(
-            () => Center(child: Text(S().noLiveEvent)),
-            (event) => Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  RaverScannerHeadline(text: event.eventName),
-                  const SizedBox(height: 30),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text(S().startScanning),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        },
+              case CubitStatus.failure:
+                return ScanResult(
+                  color: Colors.red,
+                  icon: Icons.remove,
+                  message: state.errorMessage.getOrCrash(),
+                );
+
+              case CubitStatus.success:
+                final ticket = state.lastScannedTicket.getOrCrash();
+                return ScanResult(
+                  color: ticket.isVip ? Colors.blue : Colors.green,
+                  icon: ticket.isVip
+                      ? FontAwesomeIcons.star
+                      : FontAwesomeIcons.check,
+                  message: ticket.isVip ? S().vipValidTicket : S().validTicket,
+                );
+            }
+          },
+        ),
       ),
     );
   }

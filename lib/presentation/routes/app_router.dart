@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:raver_scanner/presentation/event/event_page.dart';
 import 'package:raver_scanner/presentation/navigator/navigator_page.dart';
 import 'package:raver_scanner/presentation/scanner/scanner_page.dart';
 import 'package:raver_scanner/presentation/sign_in/reset_password/reset_password_page.dart';
@@ -18,10 +19,11 @@ part 'app_router.gr.dart';
     AutoRoute(
       page: NavigatorPage,
       children: [
-        AutoRoute(page: ScannerPage),
+        AutoRoute(page: EventPage),
         AutoRoute(page: SettingsPage),
       ],
     ),
+    AutoRoute(page: ScannerPage),
   ],
 )
 class AppRouter extends _$AppRouter {}

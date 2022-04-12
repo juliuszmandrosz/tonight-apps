@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
 import 'package:raver_scanner/presentation/core/raver_scanner_app_bar.dart';
 import 'package:raver_scanner/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -12,6 +13,7 @@ class NavigatorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<CurrentEventCubit>().getCurrentEvent();
     final theme = Theme.of(context);
     return MultiBlocListener(
       listeners: [
@@ -42,7 +44,7 @@ class NavigatorPage extends StatelessWidget {
           ],
         ),
         routes: const [
-          ScannerRoute(),
+          EventRoute(),
           SettingsRoute(),
         ],
         bottomNavigationBuilder: (_, tabsRouter) {
@@ -53,9 +55,9 @@ class NavigatorPage extends StatelessWidget {
             items: [
               BottomNavigationBarItem(
                 icon: const FaIcon(
-                  FontAwesomeIcons.qrcode,
+                  FontAwesomeIcons.fire,
                 ),
-                label: S().scanner,
+                label: S().events(1),
               ),
               BottomNavigationBarItem(
                 icon: const FaIcon(

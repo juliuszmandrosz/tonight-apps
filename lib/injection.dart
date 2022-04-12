@@ -9,7 +9,10 @@ import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
+import 'package:raver_scanner/application/scanner/scanner_cubit.dart';
 import 'package:raver_scanner/application/sign_in/sign_in_cubit.dart';
+import 'package:raver_tickets/domain/domain.dart';
+import 'package:raver_tickets/infrastructure/firebase_ticket_facade.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -43,6 +46,13 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  getIt.registerFactoryParam(
+    (CurrentEventCubit currentEventCubit, _) => ScannerCubit(
+      currentEventCubit: currentEventCubit,
+      ticketFacade: getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
@@ -72,6 +82,14 @@ void _registerFacades() {
     () => FirebaseEventFacade(
       firestore: getIt(),
       algoliaEventsApi: getIt(),
+      firebaseAuth: getIt(),
+      logger: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<TicketFacade>(
+    () => FirebaseTicketFacade(
+      firestore: getIt(),
       firebaseAuth: getIt(),
       logger: getIt(),
     ),

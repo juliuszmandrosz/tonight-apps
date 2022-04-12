@@ -20,7 +20,9 @@ class CurrentEventCubit extends Cubit<CurrentEventState> {
         await _eventFacade.getCurrentEventFromClubAsSelector();
 
     failureOrSuccess.fold(
-      (failure) => emit(state.copyWith(status: CubitStatus.failure)),
+      (failure) => emit(
+        state.copyWith(status: CubitStatus.failure),
+      ),
       (event) => emit(
         state.copyWith(status: CubitStatus.success, currentEvent: event),
       ),

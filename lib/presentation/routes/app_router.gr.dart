@@ -37,6 +37,10 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const ScannerPage());
     },
+    EventRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const EventPage());
+    },
     SettingsRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const SettingsPage());
@@ -49,11 +53,12 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(SignInRoute.name, path: '/sign-in-page'),
         RouteConfig(ResetPasswordRoute.name, path: '/reset-password-page'),
         RouteConfig(NavigatorRoute.name, path: '/navigator-page', children: [
-          RouteConfig(ScannerRoute.name,
-              path: 'scanner-page', parent: NavigatorRoute.name),
+          RouteConfig(EventRoute.name,
+              path: 'event-page', parent: NavigatorRoute.name),
           RouteConfig(SettingsRoute.name,
               path: 'settings-page', parent: NavigatorRoute.name)
-        ])
+        ]),
+        RouteConfig(ScannerRoute.name, path: '/scanner-page')
       ];
 }
 
@@ -95,9 +100,17 @@ class NavigatorRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [ScannerPage]
 class ScannerRoute extends PageRouteInfo<void> {
-  const ScannerRoute() : super(ScannerRoute.name, path: 'scanner-page');
+  const ScannerRoute() : super(ScannerRoute.name, path: '/scanner-page');
 
   static const String name = 'ScannerRoute';
+}
+
+/// generated route for
+/// [EventPage]
+class EventRoute extends PageRouteInfo<void> {
+  const EventRoute() : super(EventRoute.name, path: 'event-page');
+
+  static const String name = 'EventRoute';
 }
 
 /// generated route for
