@@ -12,4 +12,6 @@ const firebaseAuthMessages = {
   'wrong-password': wrongPassword,
   'invalid-verification-code': invalidVerificationCode,
   'invalid-verification-id': invalidVerificationId,
+  'already-exists': accountExists,
+  'permission-denied': operationNotAllowed,
 };

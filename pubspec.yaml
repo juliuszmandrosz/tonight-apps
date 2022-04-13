@@ -17,9 +17,9 @@ dependencies:
   firebase_core: ^1.13.1
   firebase_auth: ^3.3.11
   google_sign_in: ^5.2.4
-  cloud_firestore: ^3.1.10
   intl: ^0.17.0
   freezed_annotation: ^1.1.0
+  cloud_functions: ^3.2.11
 
   raver_translations:
     git:
