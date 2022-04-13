@@ -24,11 +24,11 @@ class FirebaseRewardFacade implements RewardFacade {
   @override
   Future<Either<RewardFailure, Unit>> addReward(Reward reward) async {
     try {
-      final clubDoc = await _getCurrentPartnerClubDocumentRef();
+      final clubDocRef = _getCurrentClubDocumentRef();
 
       final rewardDto = RewardDto.fromDomain(reward);
 
-      await clubDoc.rewardsCollection.doc(reward.id).set(rewardDto.toJson());
+      await clubDocRef.rewardsCollection.doc(reward.id).set(rewardDto.toJson());
 
       return right(unit);
     } on FirebaseException catch (e) {
@@ -40,8 +40,8 @@ class FirebaseRewardFacade implements RewardFacade {
   @override
   Stream<Either<RewardFailure, List<Reward>>>
       getCurrentPartnerRewards() async* {
-    final clubDoc = await _getCurrentPartnerClubDocumentRef();
-    yield* clubDoc.rewardsCollection
+    final clubDocRef = _getCurrentClubDocumentRef();
+    yield* clubDocRef.rewardsCollection
         .orderBy('requiredEntries')
         .snapshots()
         .map(
@@ -54,7 +54,9 @@ class FirebaseRewardFacade implements RewardFacade {
         .handleError((e) {
       if (e is FirebaseException) {
         _logger.e(
-            "Firebase Exception during getting current partner rewards EXCEPTION: $e");
+          "Firebase Exception during getting "
+          "current partner rewards EXCEPTION: $e",
+        );
         return left(const RewardFailure.unexpected());
       }
     });
@@ -63,9 +65,9 @@ class FirebaseRewardFacade implements RewardFacade {
   @override
   Future<Either<RewardFailure, Unit>> deleteReward(String rewardId) async {
     try {
-      final clubDoc = await _getCurrentPartnerClubDocumentRef();
+      final clubDocRef = _getCurrentClubDocumentRef();
 
-      await clubDoc.rewardsCollection.doc(rewardId).delete();
+      await clubDocRef.rewardsCollection.doc(rewardId).delete();
 
       return right(unit);
     } on FirebaseException catch (e) {
@@ -74,24 +76,10 @@ class FirebaseRewardFacade implements RewardFacade {
     }
   }
 
-  Future<DocumentReference> _getCurrentPartnerClubDocumentRef() async {
-    final partnerDoc = await _getCurrentPartnerDocument();
-    final partnerClubId = partnerDoc.get('clubId');
-    return _firestore.clubCollection.doc(partnerClubId);
-  }
-
-  Future<DocumentSnapshot> _getCurrentPartnerDocument() {
-    final firebaseUser = _firebaseAuth.currentUser;
-
-    if (firebaseUser == null) throw NotAuthenticatedError();
-
-    return _firestore.partnersCollection.doc(firebaseUser.uid).get();
-  }
-
   @override
   Future<Either<RewardFailure, Unit>> updateReward(Reward reward) async {
     try {
-      final clubDoc = await _getCurrentPartnerClubDocumentRef();
+      final clubDoc = _getCurrentClubDocumentRef();
 
       final rewardDto = RewardDto.fromDomain(reward);
 
@@ -102,5 +90,13 @@ class FirebaseRewardFacade implements RewardFacade {
       _logger.e("Firebase Exception during updating reward EXCEPTION: $e");
       return left(const RewardFailure.unexpected());
     }
+  }
+
+  DocumentReference _getCurrentClubDocumentRef() {
+    final firebaseUser = _firebaseAuth.currentUser;
+
+    if (firebaseUser == null) throw NotAuthenticatedError();
+
+    return _firestore.clubCollection.doc(firebaseUser.uid);
   }
 }
