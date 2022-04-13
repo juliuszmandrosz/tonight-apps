@@ -92,6 +92,26 @@ class FirebaseRewardFacade implements RewardFacade {
     }
   }
 
+  @override
+  Future<Either<RewardFailure, List<Reward>>> getRewardsByClubId(
+    String clubId,
+  ) async {
+    try {
+      final result =
+          await _firestore.clubCollection.doc(clubId).rewardsCollection.get();
+
+      return right<RewardFailure, List<Reward>>(
+        result.docs
+            .map((doc) => RewardDto.fromFirebase(doc).toDomain())
+            .toList(),
+      );
+    } on FirebaseException catch (e) {
+      _logger.e(
+          "Firebase Exception during getting rewards by club id EXCEPTION: $e");
+      return left(const RewardFailure.unexpected());
+    }
+  }
+
   DocumentReference _getCurrentClubDocumentRef() {
     final firebaseUser = _firebaseAuth.currentUser;
 

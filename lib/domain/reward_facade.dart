@@ -10,4 +10,6 @@ abstract class RewardFacade {
   Future<Either<RewardFailure, Unit>> deleteReward(String rewardId);
 
   Future<Either<RewardFailure, Unit>> updateReward(Reward reward);
+
+  Future<Either<RewardFailure, List<Reward>>> getRewardsByClubId(String clubId);
 }
