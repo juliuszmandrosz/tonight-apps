@@ -39,12 +39,7 @@ class FirebaseClubFacade implements ClubFacade {
   @override
   Future<Either<ClubFailure, Club>> getCurrentPartnerClub() async {
     try {
-      final partnerDoc = await _getCurrentPartnerDocument();
-      final partnerClubId = partnerDoc.get('clubId');
-      final result = await _firestore.clubCollection.doc(partnerClubId).get();
-
-      if (result.data() == null) throw InvalidIdError();
-
+      final result = await _getCurrentClubDocument();
       return right(ClubDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (exception) {
       _logger.e(
@@ -53,11 +48,11 @@ class FirebaseClubFacade implements ClubFacade {
     }
   }
 
-  Future<DocumentSnapshot> _getCurrentPartnerDocument() {
+  Future<DocumentSnapshot> _getCurrentClubDocument() {
     final firebaseUser = _firebaseAuth.currentUser;
 
     if (firebaseUser == null) throw NotAuthenticatedError();
 
-    return _firestore.partnersCollection.doc(firebaseUser.uid).get();
+    return _firestore.clubCollection.doc(firebaseUser.uid).get();
   }
 }
