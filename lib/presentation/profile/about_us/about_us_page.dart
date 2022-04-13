@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
-import 'package:raver_translations/generated/l10n.dart';
 import 'package:raver_account_settings/raver_account_settings.dart';
+import 'package:raver_translations/generated/l10n.dart';
 
 class AboutUsPage extends StatelessWidget {
   const AboutUsPage({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class AboutUsPage extends StatelessWidget {
                 ListTile(
                   title: Text(S().appVersion),
                   trailing: state.maybeWhen(
-                    orElse: () => Container(),
+                    orElse: () => const SizedBox(),
                     loaded: (packageInfo) => Text(packageInfo.version),
                   ),
                 )

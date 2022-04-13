@@ -11,7 +11,7 @@ import 'package:raver/application/events/event_filters/event_filters_cubit.dart'
 import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/network_check/network_check_cubit.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
-import 'package:raver/application/tickets/ticket_cubit.dart';
+import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/domain/clubs/filters/club_filters.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/config/themes/dark_theme/dark_theme.dart';
@@ -24,7 +24,7 @@ import 'package:raver_translations/raver_translations.dart';
 
 class RaverApp extends StatelessWidget {
   final _appRouter = AppRouter();
-  late EventOverviewBloc _eventOverviewBloc;
+  late final EventOverviewBloc _eventOverviewBloc;
 
   RaverApp({Key? key}) : super(key: key);
 
@@ -60,7 +60,7 @@ class RaverApp extends StatelessWidget {
           create: (ctx) => getIt<EventFiltersCubit>(param1: _eventOverviewBloc),
         ),
         BlocProvider(
-          create: (ctx) => getIt<TicketCubit>(),
+          create: (ctx) => getIt<TicketListCubit>(),
         ),
         BlocProvider(
           create: (ctx) => getIt<EventFavoriteCubit>(),

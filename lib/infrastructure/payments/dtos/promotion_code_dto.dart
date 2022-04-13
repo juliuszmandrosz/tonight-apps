@@ -5,6 +5,7 @@ import 'package:raver/domain/payments/promotion_code_entity.dart';
 part 'promotion_code_dto.freezed.dart';
 part 'promotion_code_dto.g.dart';
 
+// TODO - move this to commons
 class FirebaseNullableTimestampJsonConverter
     implements JsonConverter<DateTime?, Timestamp?> {
   const FirebaseNullableTimestampJsonConverter();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/tickets/ticket_cubit.dart';
+import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/tickets/widgets/ticket_card.dart';
 import 'package:raver_common/raver_common.dart';
@@ -14,7 +14,8 @@ class TicketOverviewPage extends StatelessWidget {
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(10),
-        child: BlocBuilder<TicketCubit, TicketState>(builder: (ctx, state) {
+        child: BlocBuilder<TicketListCubit, TicketListState>(
+            builder: (ctx, state) {
           switch (state.status) {
             case CubitStatus.initial:
               return Container();

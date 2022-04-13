@@ -1,15 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class TicketPaymentConfirmPage extends StatelessWidget {
-  final String ticketId;
+  final Ticket ticket;
 
-  const TicketPaymentConfirmPage({
-    required this.ticketId,
-    Key? key,
-  }) : super(key: key);
+  const TicketPaymentConfirmPage({required this.ticket, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +50,7 @@ class TicketPaymentConfirmPage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () => AutoRouter.of(context).replace(
-                  TicketQrRoute(ticketId: ticketId),
+                  TicketQrRoute(ticket: ticket),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),

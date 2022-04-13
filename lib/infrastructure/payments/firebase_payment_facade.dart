@@ -9,7 +9,6 @@ import 'package:raver/domain/payments/payment_facade.dart';
 import 'package:raver/domain/payments/payment_failure.dart';
 import 'package:raver/domain/payments/promotion_code_entity.dart';
 import 'package:raver/domain/payments/ticket_payment_entity.dart';
-import 'package:raver/domain/tickets/ticket_entity.dart';
 import 'package:raver/infrastructure/core/cloud_functions_failures.dart';
 import 'package:raver/infrastructure/core/firestore_extension_user.dart';
 import 'package:raver/infrastructure/payments/cloud_functions/params/add_ticket_payment_params.dart';
@@ -17,8 +16,8 @@ import 'package:raver/infrastructure/payments/cloud_functions/params/create_tick
 import 'package:raver/infrastructure/payments/cloud_functions/params/get_vip_price_params.dart';
 import 'package:raver/infrastructure/payments/cloud_functions/payment_cloud_functions_facade.dart';
 import 'package:raver/infrastructure/payments/dtos/promotion_code_dto.dart';
-import 'package:raver/infrastructure/tickets/dtos/ticket_dto.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_tickets/raver_tickets.dart';
 
 class FirebasePaymentFacade implements PaymentFacade {
   final FirebaseFirestore _firestore;
@@ -34,16 +33,16 @@ class FirebasePaymentFacade implements PaymentFacade {
         _paymentCloudFunctionsFacade = paymentCloudFunctionsFacade;
 
   @override
-  Future<Either<PaymentFailure, String>> proceedToPayForTicket(
+  Future<Either<PaymentFailure, Ticket>> proceedToPayForTicket(
       TicketPayment ticketPayment) async {
     try {
       final paymentIntentId = await _createPaymentIntent(ticketPayment);
 
       await _addTicketPayment(ticketPayment, paymentIntentId);
 
-      final ticketId = await _addTicket(ticketPayment);
+      final ticket = await _addTicket(ticketPayment);
 
-      return right(ticketId);
+      return right(ticket);
     } on StripeException catch (e) {
       _logger.e("Stripe exception during payment EXCEPTION: $e");
       if (e.error.code == FailureCode.Canceled) {
@@ -130,7 +129,7 @@ class FirebasePaymentFacade implements PaymentFacade {
     return paymentSheet.paymentIntentId;
   }
 
-  _addTicket(TicketPayment ticketPayment) async {
+  Future<Ticket> _addTicket(TicketPayment ticketPayment) async {
     final userDoc = await _firestore.userDocument();
     final ticket = Ticket(
       clubName: ticketPayment.clubName,
@@ -147,7 +146,7 @@ class FirebasePaymentFacade implements PaymentFacade {
 
     await userDoc.ticketCollection.doc(ticket.id).set(ticketDto.toJson());
 
-    return ticket.id;
+    return ticket;
   }
 
   _addTicketPayment(

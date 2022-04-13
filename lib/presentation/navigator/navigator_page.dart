@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/application/network_check/network_check_cubit.dart';
-import 'package:raver/application/tickets/ticket_cubit.dart';
+import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/routes/app_router.dart';
@@ -20,7 +20,7 @@ class NavigatorPage extends StatelessWidget {
       ..resetFilters()
       ..resetSelectedDay();
     await context.read<EventFavoriteCubit>().getFavoriteEventIds();
-    await context.read<TicketCubit>().getTickets();
+    await context.read<TicketListCubit>().getTickets();
   }
 
   @override

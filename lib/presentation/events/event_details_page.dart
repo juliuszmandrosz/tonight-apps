@@ -68,7 +68,6 @@ class EventDetailsPage extends StatelessWidget {
                               EventDetailsSection(event: event),
                               const SizedBox(height: 10),
                               EventDetailsEventPlace(event: event),
-                              const SizedBox(height: 10),
                               EventDetailsAdditionalInfo(event: event),
                               const SizedBox(height: 30),
                               EventDetailsNavigateToClub(event: event),

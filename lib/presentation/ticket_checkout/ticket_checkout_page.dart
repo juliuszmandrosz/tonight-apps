@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
+import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/routes/app_router.dart';
@@ -11,6 +12,7 @@ import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_is_vi
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_pay_button.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_promotion_code.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_ticket_card.dart';
+import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -26,8 +28,9 @@ class TicketCheckoutPage extends StatelessWidget {
       child: Scaffold(
         appBar: RaverAppBar(title: S().checkout),
         body: BlocProvider(
-          create: (context) =>
-              getIt<TicketCheckoutCubit>()..initPaymentTicketData(event),
+          create: (context) => getIt<TicketCheckoutCubit>(
+            param1: context.read<TicketListCubit>(),
+          )..initPaymentTicketData(event),
           child: BlocConsumer<TicketCheckoutCubit, TicketCheckoutState>(
             buildWhen: (previous, current) =>
                 previous.initialStatus != current.initialStatus,
@@ -38,9 +41,11 @@ class TicketCheckoutPage extends StatelessWidget {
                     current.proceedingToPaymentStatus,
             listener: (context, state) {
               if (state.proceedingToPaymentStatus.isSuccess() &&
-                  state.ticketId != null) {
+                  state.ticket.isSome()) {
                 AutoRouter.of(context).replace(
-                  TicketPaymentConfirmRoute(ticketId: state.ticketId!),
+                  TicketPaymentConfirmRoute(
+                    ticket: state.ticket.getOrCrash(),
+                  ),
                 );
               }
 

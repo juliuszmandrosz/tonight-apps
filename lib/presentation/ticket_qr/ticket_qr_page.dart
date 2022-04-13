@@ -1,24 +1,72 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
+import 'package:raver/application/ticket_qr/ticket_qr_cubit.dart';
+import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
+import 'package:raver/presentation/ticket_qr/widgets/ticket_return_button.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class TicketQrPage extends StatelessWidget {
-  final String ticketId;
+  final Ticket ticket;
 
-  const TicketQrPage({required this.ticketId, Key? key}) : super(key: key);
+  const TicketQrPage({
+    required this.ticket,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: RaverAppBar(
-        title: S().tickets(1),
-      ),
-      body: Center(
-        child: QrImage(
-          data: ticketId,
-          version: QrVersions.auto,
-          size: 300,
+    return BlocProvider(
+      create: (context) => getIt<TicketQrCubit>(
+        param1: context.read<TicketListCubit>(),
+      )..initTicketData(ticket),
+      child: BlocListener<TicketQrCubit, TicketQrState>(
+        listener: (context, state) {
+          state.ticketReturnFailureMessage.fold(
+            () => null,
+            (message) => context.showSnackbarMessage(message),
+          );
+
+          state.ticketReturnStatus.isLoading()
+              ? context.loaderOverlay.show()
+              : context.loaderOverlay.hide();
+
+          if (state.ticketReturnStatus.isSuccess()) {
+            context.showSnackbarMessage(S().ticketReturnedSuccessfully);
+            AutoRouter.of(context).popUntilRoot();
+          }
+        },
+        child: LoaderOverlay(
+          child: Scaffold(
+            appBar: RaverAppBar(title: S().tickets(1)),
+            body: Padding(
+              padding: const EdgeInsets.only(top: 50, bottom: 30),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: QrImage(
+                        data: ticket.id,
+                        version: QrVersions.auto,
+                        size: 300,
+                      ),
+                    ),
+                    if (ticket.eventDateTime.isAfter(
+                      DateTime.now().add(const Duration(days: 1)),
+                    ))
+                      const TicketReturnButton(),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ),
       ),
     );

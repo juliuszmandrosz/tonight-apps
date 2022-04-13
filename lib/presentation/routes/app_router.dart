@@ -25,6 +25,7 @@ import 'package:raver/presentation/ticket_qr/ticket_qr_page.dart';
 import 'package:raver/presentation/tickets/ticket_overview_page.dart';
 import 'package:raver/presentation/welcome_loader/welcome_loader_page.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_tickets/raver_tickets.dart';
 
 import 'hero_empty_router_page.dart';
 

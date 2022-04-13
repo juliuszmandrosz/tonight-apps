@@ -1,12 +1,15 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/domain/payments/payment_facade.dart';
 import 'package:raver/domain/payments/payment_failure.dart';
 import 'package:raver/domain/payments/promotion_code_entity.dart';
 import 'package:raver/domain/payments/ticket_payment_entity.dart';
+import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 part 'ticket_checkout_cubit.freezed.dart';
@@ -14,19 +17,19 @@ part 'ticket_checkout_state.dart';
 
 class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   final PaymentFacade _paymentFacade;
-  final paymentFailureMessages = {
-    const PaymentFailure.invalidPromotionCode(): S().invalidPromotionCode,
-    const PaymentFailure.promotionCodeExpired(): S().promotionCodeHasExpired,
-    const PaymentFailure.invalidEvent(): S().invalidEvent,
-  };
+  final TicketListCubit _ticketListCubit;
 
-  TicketCheckoutCubit(this._paymentFacade)
-      : super(TicketCheckoutState.initial());
+  TicketCheckoutCubit({
+    required PaymentFacade paymentFacade,
+    required TicketListCubit ticketListCubit,
+  })  : _paymentFacade = paymentFacade,
+        _ticketListCubit = ticketListCubit,
+        super(TicketCheckoutState.initial());
 
   void proceedToPayForTicket() async {
     emit(state.copyWith(proceedingToPaymentStatus: CubitStatus.loading));
 
-    final event = state.event!;
+    final event = state.event.getOrCrash();
 
     var ticketPayment = TicketPayment(
       eventId: event.id,
@@ -48,31 +51,16 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
         await _paymentFacade.proceedToPayForTicket(ticketPayment);
 
     failureOrSuccess.fold(
-      (failure) {
-        if (failure == const PaymentFailure.canceled()) {
-          emit(state.copyWith(
-            proceedingToPaymentStatus: CubitStatus.failure,
-          ));
-          return;
-        }
-
-        final failureMessage =
-            paymentFailureMessages[failure] ?? S().paymentError;
-
+      (failure) => _emitProceedingToPaymentFailure(failure),
+      (ticket) {
+        _ticketListCubit.addTicketToState(ticket);
         emit(
           state.copyWith(
-            paymentFailureMessage: some(failureMessage),
+            proceedingToPaymentStatus: CubitStatus.success,
+            ticket: some(ticket),
           ),
         );
-        emit(state.copyWith(
-          paymentFailureMessage: none(),
-          proceedingToPaymentStatus: CubitStatus.failure,
-        ));
       },
-      (ticketId) => emit(state.copyWith(
-        proceedingToPaymentStatus: CubitStatus.success,
-        ticketId: ticketId,
-      )),
     );
   }
 
@@ -85,24 +73,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
         .getPromotionCode(state.promotionCode.code.toUpperCase());
 
     failureOrSuccess.fold(
-      (failure) {
-        final failureMessage =
-            paymentFailureMessages[failure] ?? S().serverError;
-
-        if (failure == const PaymentFailure.unexpected()) {
-          emit(state.copyWith(
-            promotionCodeStatus: CubitStatus.failure,
-            paymentFailureMessage: some(failureMessage),
-          ));
-          emit(state.copyWith(paymentFailureMessage: none()));
-          return;
-        }
-
-        emit(state.copyWith(
-          promotionCodeStatus: CubitStatus.failure,
-          invalidPromotionCodeMessage: some(failureMessage),
-        ));
-      },
+      (failure) => _emitPromotionCodeFailure(failure),
       (code) {
         emit(
           state.copyWith(
@@ -122,7 +93,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
     final vipPrice = await _getVipPrice(event.id);
 
     emit(state.copyWith(
-      event: event,
+      event: some(event),
       price: event.price,
       vipPrice: vipPrice,
       initialStatus: CubitStatus.success,
@@ -166,5 +137,44 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
     final result = await _paymentFacade.getVipPrice(eventId, null);
 
     return result.fold((failure) => null, (price) => price);
+  }
+
+  _emitProceedingToPaymentFailure(PaymentFailure failure) {
+    final message = _getFailureMessage(failure);
+
+    if (message.isNotEmpty) {
+      emit(state.copyWith(paymentFailureMessage: some(message)));
+    }
+
+    emit(state.copyWith(
+      paymentFailureMessage: none(),
+      proceedingToPaymentStatus: CubitStatus.failure,
+    ));
+  }
+
+  _emitPromotionCodeFailure(PaymentFailure failure) {
+    final message = _getFailureMessage(failure, isPayment: false);
+
+    message == S().serverError
+        ? emit(state.copyWith(paymentFailureMessage: some(message)))
+        : emit(state.copyWith(invalidPromotionCodeMessage: some(message)));
+
+    emit(
+      state.copyWith(
+        promotionCodeStatus: CubitStatus.failure,
+        paymentFailureMessage: none(),
+      ),
+    );
+  }
+
+  String _getFailureMessage(PaymentFailure failure, {bool isPayment = true}) {
+    return failure.map(
+      unexpected: (_) => isPayment ? S().paymentError : S().serverError,
+      stripeError: (_) => S().paymentError,
+      invalidPromotionCode: (_) => S().invalidPromotionCode,
+      promotionCodeExpired: (_) => S().promotionCodeHasExpired,
+      invalidEvent: (_) => S().invalidEvent,
+      canceled: (_) => '',
+    );
   }
 }

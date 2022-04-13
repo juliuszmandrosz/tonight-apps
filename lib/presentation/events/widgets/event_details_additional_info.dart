@@ -15,28 +15,33 @@ class EventDetailsAdditionalInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Row(
-        children: [
-          RaverHeadline(text: S().additionalInfo),
-        ],
-      ),
-      const SizedBox(height: 10),
-      Row(
-        mainAxisAlignment: event.urlLinks.length != 1
-            ? MainAxisAlignment.spaceEvenly
-            : MainAxisAlignment.center,
-        children: event.urlLinks.entries.map((element) {
-          if (eventSocialMedia.containsKey(element.key) &&
-              element.value.isNotEmpty) {
-            return SocialIconWithTitle(
-                url: element.value,
-                socialMedia: eventSocialMedia[element.key]!);
-          }
-          //This should never happen, but just in case
-          return const SizedBox.shrink();
-        }).toList(),
-      )
-    ]);
+    return event.urlLinks.isEmpty
+        ? const SizedBox()
+        : Column(
+            children: [
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  RaverHeadline(text: S().additionalInfo),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: event.urlLinks.length != 1
+                    ? MainAxisAlignment.spaceEvenly
+                    : MainAxisAlignment.center,
+                children: event.urlLinks.entries.map((element) {
+                  if (eventSocialMedia.containsKey(element.key) &&
+                      element.value.isNotEmpty) {
+                    return SocialIconWithTitle(
+                        url: element.value,
+                        socialMedia: eventSocialMedia[element.key]!);
+                  }
+                  //This should never happen, but just in case
+                  return const SizedBox.shrink();
+                }).toList(),
+              )
+            ],
+          );
   }
 }

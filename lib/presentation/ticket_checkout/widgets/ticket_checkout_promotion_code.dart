@@ -31,7 +31,7 @@ class TicketCheckoutPromotionCode extends HookWidget {
     }
 
     Widget? _getSuffix(TicketCheckoutState state) {
-      if (state.promotionCodeStatus.isSuccess()) {
+      if (state.promotionCodeStatus.isLoading()) {
         return const SizedBox(
           height: 20,
           width: 20,

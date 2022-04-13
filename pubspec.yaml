@@ -100,9 +100,16 @@ dependencies:
     git:
       url: https://github.com/juliuszmandrosz/RaverCommon.git
 
+
+  raver_tickets:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverTickets.git
+      ref: develop
+
   raver_auth:
     git:
       url: https://github.com/juliuszmandrosz/RaverAuth.git
+
 
 dev_dependencies:
   flutter_test:

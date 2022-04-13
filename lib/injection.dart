@@ -1,5 +1,6 @@
 import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -26,23 +27,21 @@ import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/network_check/network_check_cubit.dart';
 import 'package:raver/application/profile/profile_cubit_hub.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
-import 'package:raver/application/tickets/ticket_cubit.dart';
 import 'package:raver/application/user_favorites/event_favorites/user_event_favorites_cubit.dart';
+import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
+import 'package:raver/application/ticket_qr/ticket_qr_cubit.dart';
 import 'package:raver/domain/clubs/club_facade.dart';
 import 'package:raver/domain/payments/payment_facade.dart';
 import 'package:raver/domain/remote_config/remote_config_facade.dart';
-import 'package:raver/domain/tickets/ticket_facade.dart';
 import 'package:raver/infrastructure/clubs/firebase_club_facade.dart';
 import 'package:raver/infrastructure/core/algolia/algolia_clubs_api.dart';
 import 'package:raver/infrastructure/payments/cloud_functions/payment_cloud_functions_facade.dart';
 import 'package:raver/infrastructure/payments/firebase_payment_facade.dart';
 import 'package:raver/infrastructure/remote_config/firebase_remote_config_facade.dart';
-import 'package:raver/infrastructure/tickets/firebase_ticket_facade.dart';
 import 'package:raver_account_settings/raver_account_settings.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
-
 import 'application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'application/profile/profile_cubit.dart';
 import 'application/user_favorites/club_favorites/user_club_favorites_cubit.dart';
@@ -146,8 +145,15 @@ void _registerCubits() {
 
   //Tickets
   getIt.registerFactory(
-    () => TicketCubit(
+    () => TicketListCubit(
       getIt(),
+    ),
+  );
+
+  getIt.registerFactoryParam(
+    (TicketListCubit ticketListCubit, _) => TicketQrCubit(
+      ticketFacade: getIt(),
+      ticketListCubit: ticketListCubit,
     ),
   );
 
@@ -220,9 +226,10 @@ void _registerCubits() {
   getIt.registerFactory(() => AppSettingsCubit());
 
   //Payment
-  getIt.registerFactory(
-    () => TicketCheckoutCubit(
-      getIt(),
+  getIt.registerFactoryParam(
+    (TicketListCubit ticketListCubit, _) => TicketCheckoutCubit(
+      paymentFacade: getIt(),
+      ticketListCubit: ticketListCubit,
     ),
   );
 }
@@ -277,6 +284,14 @@ void _registerFacades() {
     () => FirebaseTicketFacade(
       firestore: getIt(),
       logger: getIt(),
+      ticketCloudFunctionsFacade: getIt(),
+      firebaseAuth: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<TicketCloudFunctionsFacade>(
+    () => TicketCloudFunctionsFacadeImpl(
+      firebaseFunctions: getIt(),
     ),
   );
 
@@ -340,6 +355,8 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebaseAuth.instance);
 
   getIt.registerLazySingleton(() => FirebaseRemoteConfig.instance);
+
+  getIt.registerLazySingleton(() => FirebaseFunctions.instance);
 
   getIt.registerLazySingleton(
       () => GooglePlace(FirebaseRemoteConfig.instance.getString(googleApiKey)));
