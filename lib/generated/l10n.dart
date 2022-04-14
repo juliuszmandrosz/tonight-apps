@@ -366,6 +366,16 @@ class S {
     );
   }
 
+  /// `Are you sure you want to return the ticket?`
+  String get confirmTicketReturn {
+    return Intl.message(
+      'Are you sure you want to return the ticket?',
+      name: 'confirmTicketReturn',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Contact`
   String get contact {
     return Intl.message(
@@ -1728,6 +1738,26 @@ class S {
     );
   }
 
+  /// `Return ticket`
+  String get returnTicket {
+    return Intl.message(
+      'Return ticket',
+      name: 'returnTicket',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time for a return is over`
+  String get returnTimeIsOver {
+    return Intl.message(
+      'Time for a return is over',
+      name: 'returnTimeIsOver',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Reward added successfully`
   String get rewardAddedSuccessfully {
     return Intl.message(
@@ -1831,10 +1861,10 @@ class S {
     );
   }
 
-  /// `Server error`
+  /// `An unexpected error has occurred, please contact support`
   String get serverError {
     return Intl.message(
-      'Server error',
+      'An unexpected error has occurred, please contact support',
       name: 'serverError',
       desc: '',
       args: [],
@@ -1996,6 +2026,16 @@ class S {
     return Intl.message(
       'Ticket is for another event',
       name: 'ticketForAnotherEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ticket returned successfully`
+  String get ticketReturnedSuccessfully {
+    return Intl.message(
+      'Ticket returned successfully',
+      name: 'ticketReturnedSuccessfully',
       desc: '',
       args: [],
     );

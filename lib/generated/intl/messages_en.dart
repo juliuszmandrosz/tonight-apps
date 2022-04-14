@@ -91,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you wish to delete this item?"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "confirmTicketReturn": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to return the ticket?"),
         "contact": MessageLookupByLibrary.simpleMessage("Contact"),
         "currentPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Current Password"),
@@ -305,6 +307,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Reset selected date"),
         "retryConnection":
             MessageLookupByLibrary.simpleMessage("Retry Connection"),
+        "returnTicket": MessageLookupByLibrary.simpleMessage("Return ticket"),
+        "returnTimeIsOver":
+            MessageLookupByLibrary.simpleMessage("Time for a return is over"),
         "rewardAddedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Reward added successfully"),
         "rewardUpdatedSuccessfully":
@@ -322,7 +327,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please select musical genres"),
         "sendPasswordResetLink":
             MessageLookupByLibrary.simpleMessage("Send password reset link"),
-        "serverError": MessageLookupByLibrary.simpleMessage("Server error"),
+        "serverError": MessageLookupByLibrary.simpleMessage(
+            "An unexpected error has occurred, please contact support"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "showTicket": MessageLookupByLibrary.simpleMessage("Show ticket"),
         "showTicketQrCode":
@@ -343,6 +349,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketExpired": MessageLookupByLibrary.simpleMessage("Ticket expired"),
         "ticketForAnotherEvent":
             MessageLookupByLibrary.simpleMessage("Ticket is for another event"),
+        "ticketReturnedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Ticket returned successfully"),
         "tickets": m7,
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "tooMuchRequiredEntries": MessageLookupByLibrary.simpleMessage(
