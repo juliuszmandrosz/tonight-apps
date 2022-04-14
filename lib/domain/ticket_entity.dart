@@ -11,6 +11,7 @@ class Ticket extends Equatable {
   final String currency;
   final bool isVip;
   final String ticketPaymentId;
+  final String? vipPaymentId;
   final bool isExpired;
 
   Ticket({
@@ -23,6 +24,7 @@ class Ticket extends Equatable {
     required this.currency,
     required this.isVip,
     required this.ticketPaymentId,
+    this.vipPaymentId,
     this.isExpired = false,
   }) : id = id ?? const Uuid().v1();
 
@@ -37,6 +39,34 @@ class Ticket extends Equatable {
         currency,
         isVip,
         ticketPaymentId,
+        vipPaymentId,
         isExpired
       ];
+
+  Ticket copyWith({
+    String? eventId,
+    int? price,
+    String? currency,
+    bool? isVip,
+    DateTime? eventDateTime,
+    String? eventName,
+    String? clubName,
+    String? ticketPaymentId,
+    String? vipPaymentId,
+    bool? isExpired,
+  }) {
+    return Ticket(
+      id: id,
+      eventId: eventId ?? this.eventId,
+      price: price ?? this.price,
+      currency: currency ?? this.currency,
+      isVip: isVip ?? this.isVip,
+      clubName: clubName ?? this.clubName,
+      eventName: eventName ?? this.eventName,
+      eventDateTime: eventDateTime ?? this.eventDateTime,
+      ticketPaymentId: ticketPaymentId ?? this.ticketPaymentId,
+      vipPaymentId: vipPaymentId ?? this.vipPaymentId,
+      isExpired: isExpired ?? this.isExpired,
+    );
+  }
 }

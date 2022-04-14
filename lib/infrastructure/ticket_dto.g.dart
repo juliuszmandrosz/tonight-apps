@@ -16,6 +16,7 @@ _$_TicketDto _$$_TicketDtoFromJson(Map<String, dynamic> json) => _$_TicketDto(
       currency: json['currency'] as String,
       isVip: json['isVip'] as bool,
       ticketPaymentId: json['ticketPaymentId'] as String,
+      vipPaymentId: json['vipPaymentId'] as String?,
       isExpired: json['isExpired'] as bool? ?? false,
     );
 
@@ -30,5 +31,6 @@ Map<String, dynamic> _$$_TicketDtoToJson(_$_TicketDto instance) =>
       'currency': instance.currency,
       'isVip': instance.isVip,
       'ticketPaymentId': instance.ticketPaymentId,
+      'vipPaymentId': instance.vipPaymentId,
       'isExpired': instance.isExpired,
     };

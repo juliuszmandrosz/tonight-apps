@@ -32,6 +32,7 @@ class _$TicketDtoTearOff {
       required String currency,
       required bool isVip,
       required String ticketPaymentId,
+      String? vipPaymentId,
       bool isExpired = false}) {
     return _TicketDto(
       id: id,
@@ -43,6 +44,7 @@ class _$TicketDtoTearOff {
       currency: currency,
       isVip: isVip,
       ticketPaymentId: ticketPaymentId,
+      vipPaymentId: vipPaymentId,
       isExpired: isExpired,
     );
   }
@@ -68,6 +70,7 @@ mixin _$TicketDto {
   String get currency => throw _privateConstructorUsedError;
   bool get isVip => throw _privateConstructorUsedError;
   String get ticketPaymentId => throw _privateConstructorUsedError;
+  String? get vipPaymentId => throw _privateConstructorUsedError;
   bool get isExpired => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -90,6 +93,7 @@ abstract class $TicketDtoCopyWith<$Res> {
       String currency,
       bool isVip,
       String ticketPaymentId,
+      String? vipPaymentId,
       bool isExpired});
 }
 
@@ -112,6 +116,7 @@ class _$TicketDtoCopyWithImpl<$Res> implements $TicketDtoCopyWith<$Res> {
     Object? currency = freezed,
     Object? isVip = freezed,
     Object? ticketPaymentId = freezed,
+    Object? vipPaymentId = freezed,
     Object? isExpired = freezed,
   }) {
     return _then(_value.copyWith(
@@ -151,6 +156,10 @@ class _$TicketDtoCopyWithImpl<$Res> implements $TicketDtoCopyWith<$Res> {
           ? _value.ticketPaymentId
           : ticketPaymentId // ignore: cast_nullable_to_non_nullable
               as String,
+      vipPaymentId: vipPaymentId == freezed
+          ? _value.vipPaymentId
+          : vipPaymentId // ignore: cast_nullable_to_non_nullable
+              as String?,
       isExpired: isExpired == freezed
           ? _value.isExpired
           : isExpired // ignore: cast_nullable_to_non_nullable
@@ -175,6 +184,7 @@ abstract class _$TicketDtoCopyWith<$Res> implements $TicketDtoCopyWith<$Res> {
       String currency,
       bool isVip,
       String ticketPaymentId,
+      String? vipPaymentId,
       bool isExpired});
 }
 
@@ -198,6 +208,7 @@ class __$TicketDtoCopyWithImpl<$Res> extends _$TicketDtoCopyWithImpl<$Res>
     Object? currency = freezed,
     Object? isVip = freezed,
     Object? ticketPaymentId = freezed,
+    Object? vipPaymentId = freezed,
     Object? isExpired = freezed,
   }) {
     return _then(_TicketDto(
@@ -237,6 +248,10 @@ class __$TicketDtoCopyWithImpl<$Res> extends _$TicketDtoCopyWithImpl<$Res>
           ? _value.ticketPaymentId
           : ticketPaymentId // ignore: cast_nullable_to_non_nullable
               as String,
+      vipPaymentId: vipPaymentId == freezed
+          ? _value.vipPaymentId
+          : vipPaymentId // ignore: cast_nullable_to_non_nullable
+              as String?,
       isExpired: isExpired == freezed
           ? _value.isExpired
           : isExpired // ignore: cast_nullable_to_non_nullable
@@ -259,6 +274,7 @@ class _$_TicketDto extends _TicketDto {
       required this.currency,
       required this.isVip,
       required this.ticketPaymentId,
+      this.vipPaymentId,
       this.isExpired = false})
       : super._();
 
@@ -285,13 +301,15 @@ class _$_TicketDto extends _TicketDto {
   final bool isVip;
   @override
   final String ticketPaymentId;
+  @override
+  final String? vipPaymentId;
   @JsonKey()
   @override
   final bool isExpired;
 
   @override
   String toString() {
-    return 'TicketDto(id: $id, clubName: $clubName, eventName: $eventName, eventId: $eventId, eventDateTime: $eventDateTime, price: $price, currency: $currency, isVip: $isVip, ticketPaymentId: $ticketPaymentId, isExpired: $isExpired)';
+    return 'TicketDto(id: $id, clubName: $clubName, eventName: $eventName, eventId: $eventId, eventDateTime: $eventDateTime, price: $price, currency: $currency, isVip: $isVip, ticketPaymentId: $ticketPaymentId, vipPaymentId: $vipPaymentId, isExpired: $isExpired)';
   }
 
   @override
@@ -310,6 +328,8 @@ class _$_TicketDto extends _TicketDto {
             const DeepCollectionEquality().equals(other.isVip, isVip) &&
             const DeepCollectionEquality()
                 .equals(other.ticketPaymentId, ticketPaymentId) &&
+            const DeepCollectionEquality()
+                .equals(other.vipPaymentId, vipPaymentId) &&
             const DeepCollectionEquality().equals(other.isExpired, isExpired));
   }
 
@@ -325,6 +345,7 @@ class _$_TicketDto extends _TicketDto {
       const DeepCollectionEquality().hash(currency),
       const DeepCollectionEquality().hash(isVip),
       const DeepCollectionEquality().hash(ticketPaymentId),
+      const DeepCollectionEquality().hash(vipPaymentId),
       const DeepCollectionEquality().hash(isExpired));
 
   @JsonKey(ignore: true)
@@ -349,6 +370,7 @@ abstract class _TicketDto extends TicketDto {
       required String currency,
       required bool isVip,
       required String ticketPaymentId,
+      String? vipPaymentId,
       bool isExpired}) = _$_TicketDto;
   const _TicketDto._() : super._();
 
@@ -375,6 +397,8 @@ abstract class _TicketDto extends TicketDto {
   bool get isVip;
   @override
   String get ticketPaymentId;
+  @override
+  String? get vipPaymentId;
   @override
   bool get isExpired;
   @override

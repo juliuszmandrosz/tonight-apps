@@ -22,6 +22,7 @@ class TicketDto with _$TicketDto {
     required String currency,
     required bool isVip,
     required String ticketPaymentId,
+    String? vipPaymentId,
     @Default(false) bool isExpired,
   }) = _TicketDto;
 
@@ -36,6 +37,7 @@ class TicketDto with _$TicketDto {
       currency: ticket.currency,
       isVip: ticket.isVip,
       ticketPaymentId: ticket.ticketPaymentId,
+      vipPaymentId: ticket.vipPaymentId,
       isExpired: ticket.isExpired,
     );
   }
@@ -59,6 +61,7 @@ class TicketDto with _$TicketDto {
       currency: currency,
       isVip: isVip,
       ticketPaymentId: ticketPaymentId,
+      vipPaymentId: vipPaymentId,
       isExpired: isExpired,
     );
   }
