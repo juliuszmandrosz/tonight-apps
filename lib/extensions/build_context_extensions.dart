@@ -63,4 +63,26 @@ extension BuildContextX on BuildContext {
       },
     );
   }
+
+  Future<bool?> showConfirmationDialogWithCustomMessage(String message) async {
+    return await showDialog(
+      context: this,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(S().confirm),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: Text(S().yes.toUpperCase()),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: Text(S().no.toUpperCase()),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
