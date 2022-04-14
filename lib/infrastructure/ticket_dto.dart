@@ -14,9 +14,10 @@ class TicketDto with _$TicketDto {
   @JsonSerializable()
   const factory TicketDto({
     @JsonKey(ignore: true) String? id,
+    required String eventId,
+    required String clubId,
     required String clubName,
     required String eventName,
-    required String eventId,
     @FirebaseTimestampJsonConverter() required DateTime eventDateTime,
     required int price,
     required String currency,
@@ -30,6 +31,7 @@ class TicketDto with _$TicketDto {
     return TicketDto(
       id: ticket.id,
       eventId: ticket.eventId,
+      clubId: ticket.clubId,
       clubName: ticket.clubName,
       eventName: ticket.eventName,
       eventDateTime: ticket.eventDateTime,
@@ -54,6 +56,7 @@ class TicketDto with _$TicketDto {
     return Ticket(
       id: id,
       eventId: eventId,
+      clubId: clubId,
       clubName: clubName,
       eventName: eventName,
       eventDateTime: eventDateTime,

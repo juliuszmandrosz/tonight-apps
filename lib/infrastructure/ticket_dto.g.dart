@@ -7,9 +7,10 @@ part of 'ticket_dto.dart';
 // **************************************************************************
 
 _$_TicketDto _$$_TicketDtoFromJson(Map<String, dynamic> json) => _$_TicketDto(
+      eventId: json['eventId'] as String,
+      clubId: json['clubId'] as String,
       clubName: json['clubName'] as String,
       eventName: json['eventName'] as String,
-      eventId: json['eventId'] as String,
       eventDateTime: const FirebaseTimestampJsonConverter()
           .fromJson(json['eventDateTime'] as Timestamp),
       price: json['price'] as int,
@@ -22,9 +23,10 @@ _$_TicketDto _$$_TicketDtoFromJson(Map<String, dynamic> json) => _$_TicketDto(
 
 Map<String, dynamic> _$$_TicketDtoToJson(_$_TicketDto instance) =>
     <String, dynamic>{
+      'eventId': instance.eventId,
+      'clubId': instance.clubId,
       'clubName': instance.clubName,
       'eventName': instance.eventName,
-      'eventId': instance.eventId,
       'eventDateTime':
           const FirebaseTimestampJsonConverter().toJson(instance.eventDateTime),
       'price': instance.price,

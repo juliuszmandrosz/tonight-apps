@@ -24,9 +24,10 @@ class _$TicketDtoTearOff {
 
   _TicketDto call(
       {@JsonKey(ignore: true) String? id,
+      required String eventId,
+      required String clubId,
       required String clubName,
       required String eventName,
-      required String eventId,
       @FirebaseTimestampJsonConverter() required DateTime eventDateTime,
       required int price,
       required String currency,
@@ -36,9 +37,10 @@ class _$TicketDtoTearOff {
       bool isExpired = false}) {
     return _TicketDto(
       id: id,
+      eventId: eventId,
+      clubId: clubId,
       clubName: clubName,
       eventName: eventName,
-      eventId: eventId,
       eventDateTime: eventDateTime,
       price: price,
       currency: currency,
@@ -61,9 +63,10 @@ const $TicketDto = _$TicketDtoTearOff();
 mixin _$TicketDto {
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
+  String get eventId => throw _privateConstructorUsedError;
+  String get clubId => throw _privateConstructorUsedError;
   String get clubName => throw _privateConstructorUsedError;
   String get eventName => throw _privateConstructorUsedError;
-  String get eventId => throw _privateConstructorUsedError;
   @FirebaseTimestampJsonConverter()
   DateTime get eventDateTime => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
@@ -85,9 +88,10 @@ abstract class $TicketDtoCopyWith<$Res> {
       _$TicketDtoCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(ignore: true) String? id,
+      String eventId,
+      String clubId,
       String clubName,
       String eventName,
-      String eventId,
       @FirebaseTimestampJsonConverter() DateTime eventDateTime,
       int price,
       String currency,
@@ -108,9 +112,10 @@ class _$TicketDtoCopyWithImpl<$Res> implements $TicketDtoCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? eventId = freezed,
+    Object? clubId = freezed,
     Object? clubName = freezed,
     Object? eventName = freezed,
-    Object? eventId = freezed,
     Object? eventDateTime = freezed,
     Object? price = freezed,
     Object? currency = freezed,
@@ -124,6 +129,14 @@ class _$TicketDtoCopyWithImpl<$Res> implements $TicketDtoCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      eventId: eventId == freezed
+          ? _value.eventId
+          : eventId // ignore: cast_nullable_to_non_nullable
+              as String,
+      clubId: clubId == freezed
+          ? _value.clubId
+          : clubId // ignore: cast_nullable_to_non_nullable
+              as String,
       clubName: clubName == freezed
           ? _value.clubName
           : clubName // ignore: cast_nullable_to_non_nullable
@@ -131,10 +144,6 @@ class _$TicketDtoCopyWithImpl<$Res> implements $TicketDtoCopyWith<$Res> {
       eventName: eventName == freezed
           ? _value.eventName
           : eventName // ignore: cast_nullable_to_non_nullable
-              as String,
-      eventId: eventId == freezed
-          ? _value.eventId
-          : eventId // ignore: cast_nullable_to_non_nullable
               as String,
       eventDateTime: eventDateTime == freezed
           ? _value.eventDateTime
@@ -176,9 +185,10 @@ abstract class _$TicketDtoCopyWith<$Res> implements $TicketDtoCopyWith<$Res> {
   @override
   $Res call(
       {@JsonKey(ignore: true) String? id,
+      String eventId,
+      String clubId,
       String clubName,
       String eventName,
-      String eventId,
       @FirebaseTimestampJsonConverter() DateTime eventDateTime,
       int price,
       String currency,
@@ -200,9 +210,10 @@ class __$TicketDtoCopyWithImpl<$Res> extends _$TicketDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? eventId = freezed,
+    Object? clubId = freezed,
     Object? clubName = freezed,
     Object? eventName = freezed,
-    Object? eventId = freezed,
     Object? eventDateTime = freezed,
     Object? price = freezed,
     Object? currency = freezed,
@@ -216,6 +227,14 @@ class __$TicketDtoCopyWithImpl<$Res> extends _$TicketDtoCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      eventId: eventId == freezed
+          ? _value.eventId
+          : eventId // ignore: cast_nullable_to_non_nullable
+              as String,
+      clubId: clubId == freezed
+          ? _value.clubId
+          : clubId // ignore: cast_nullable_to_non_nullable
+              as String,
       clubName: clubName == freezed
           ? _value.clubName
           : clubName // ignore: cast_nullable_to_non_nullable
@@ -223,10 +242,6 @@ class __$TicketDtoCopyWithImpl<$Res> extends _$TicketDtoCopyWithImpl<$Res>
       eventName: eventName == freezed
           ? _value.eventName
           : eventName // ignore: cast_nullable_to_non_nullable
-              as String,
-      eventId: eventId == freezed
-          ? _value.eventId
-          : eventId // ignore: cast_nullable_to_non_nullable
               as String,
       eventDateTime: eventDateTime == freezed
           ? _value.eventDateTime
@@ -266,9 +281,10 @@ class __$TicketDtoCopyWithImpl<$Res> extends _$TicketDtoCopyWithImpl<$Res>
 class _$_TicketDto extends _TicketDto {
   const _$_TicketDto(
       {@JsonKey(ignore: true) this.id,
+      required this.eventId,
+      required this.clubId,
       required this.clubName,
       required this.eventName,
-      required this.eventId,
       @FirebaseTimestampJsonConverter() required this.eventDateTime,
       required this.price,
       required this.currency,
@@ -285,11 +301,13 @@ class _$_TicketDto extends _TicketDto {
   @JsonKey(ignore: true)
   final String? id;
   @override
+  final String eventId;
+  @override
+  final String clubId;
+  @override
   final String clubName;
   @override
   final String eventName;
-  @override
-  final String eventId;
   @override
   @FirebaseTimestampJsonConverter()
   final DateTime eventDateTime;
@@ -309,7 +327,7 @@ class _$_TicketDto extends _TicketDto {
 
   @override
   String toString() {
-    return 'TicketDto(id: $id, clubName: $clubName, eventName: $eventName, eventId: $eventId, eventDateTime: $eventDateTime, price: $price, currency: $currency, isVip: $isVip, ticketPaymentId: $ticketPaymentId, vipPaymentId: $vipPaymentId, isExpired: $isExpired)';
+    return 'TicketDto(id: $id, eventId: $eventId, clubId: $clubId, clubName: $clubName, eventName: $eventName, eventDateTime: $eventDateTime, price: $price, currency: $currency, isVip: $isVip, ticketPaymentId: $ticketPaymentId, vipPaymentId: $vipPaymentId, isExpired: $isExpired)';
   }
 
   @override
@@ -318,9 +336,10 @@ class _$_TicketDto extends _TicketDto {
         (other.runtimeType == runtimeType &&
             other is _TicketDto &&
             const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.eventId, eventId) &&
+            const DeepCollectionEquality().equals(other.clubId, clubId) &&
             const DeepCollectionEquality().equals(other.clubName, clubName) &&
             const DeepCollectionEquality().equals(other.eventName, eventName) &&
-            const DeepCollectionEquality().equals(other.eventId, eventId) &&
             const DeepCollectionEquality()
                 .equals(other.eventDateTime, eventDateTime) &&
             const DeepCollectionEquality().equals(other.price, price) &&
@@ -337,9 +356,10 @@ class _$_TicketDto extends _TicketDto {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(eventId),
+      const DeepCollectionEquality().hash(clubId),
       const DeepCollectionEquality().hash(clubName),
       const DeepCollectionEquality().hash(eventName),
-      const DeepCollectionEquality().hash(eventId),
       const DeepCollectionEquality().hash(eventDateTime),
       const DeepCollectionEquality().hash(price),
       const DeepCollectionEquality().hash(currency),
@@ -362,9 +382,10 @@ class _$_TicketDto extends _TicketDto {
 abstract class _TicketDto extends TicketDto {
   const factory _TicketDto(
       {@JsonKey(ignore: true) String? id,
+      required String eventId,
+      required String clubId,
       required String clubName,
       required String eventName,
-      required String eventId,
       @FirebaseTimestampJsonConverter() required DateTime eventDateTime,
       required int price,
       required String currency,
@@ -381,11 +402,13 @@ abstract class _TicketDto extends TicketDto {
   @JsonKey(ignore: true)
   String? get id;
   @override
+  String get eventId;
+  @override
+  String get clubId;
+  @override
   String get clubName;
   @override
   String get eventName;
-  @override
-  String get eventId;
   @override
   @FirebaseTimestampJsonConverter()
   DateTime get eventDateTime;
