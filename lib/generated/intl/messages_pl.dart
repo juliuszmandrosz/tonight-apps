@@ -73,6 +73,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "back": MessageLookupByLibrary.simpleMessage("Wróć"),
         "backToEventList":
             MessageLookupByLibrary.simpleMessage("Wróć do listy wydarzeń"),
+        "backToMainMenu":
+            MessageLookupByLibrary.simpleMessage("Wróć do głównego menu"),
         "backToSummary":
             MessageLookupByLibrary.simpleMessage("Wróć do podsumowania"),
         "buyTicket": MessageLookupByLibrary.simpleMessage("Kup bilet"),
@@ -351,6 +353,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "summary": MessageLookupByLibrary.simpleMessage("Podsumowanie"),
         "termsOfService": MessageLookupByLibrary.simpleMessage("Warunki usług"),
         "theme": MessageLookupByLibrary.simpleMessage("Motyw"),
+        "ticketAlreadyHasVipStatus":
+            MessageLookupByLibrary.simpleMessage("Bilet ma już status VIP"),
         "ticketExpired":
             MessageLookupByLibrary.simpleMessage("Bilet stracił ważność"),
         "ticketForAnotherEvent": MessageLookupByLibrary.simpleMessage(
@@ -368,6 +372,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nadchodzące wydarzenia"),
         "updateUsernameTitle": MessageLookupByLibrary.simpleMessage(
             "Zaktualizuj nazwę użytkownika"),
+        "upgradeToVip": MessageLookupByLibrary.simpleMessage("Ulepsz do VIP-a"),
         "urlLinks": MessageLookupByLibrary.simpleMessage("Linki URL"),
         "userDisabled":
             MessageLookupByLibrary.simpleMessage("To konto zostało wyłączone"),
@@ -388,6 +393,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "validTicket": MessageLookupByLibrary.simpleMessage("Ważny bilet"),
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(
             "Wysłano link weryfikacyjny na podany adres e-mail"),
+        "vip": MessageLookupByLibrary.simpleMessage("VIP"),
         "vipValidTicket":
             MessageLookupByLibrary.simpleMessage("VIP, ważny bilet"),
         "vipVertical": MessageLookupByLibrary.simpleMessage("V\nI\nP"),

@@ -72,6 +72,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "backToEventList":
             MessageLookupByLibrary.simpleMessage("Back to event list"),
+        "backToMainMenu":
+            MessageLookupByLibrary.simpleMessage("Back to main menu"),
         "backToSummary":
             MessageLookupByLibrary.simpleMessage("Back to summary"),
         "buyTicket": MessageLookupByLibrary.simpleMessage("Buy ticket"),
@@ -346,6 +348,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "termsOfService":
             MessageLookupByLibrary.simpleMessage("Terms of Service"),
         "theme": MessageLookupByLibrary.simpleMessage("Theme"),
+        "ticketAlreadyHasVipStatus": MessageLookupByLibrary.simpleMessage(
+            "Ticket already has VIP status"),
         "ticketExpired": MessageLookupByLibrary.simpleMessage("Ticket expired"),
         "ticketForAnotherEvent":
             MessageLookupByLibrary.simpleMessage("Ticket is for another event"),
@@ -362,6 +366,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Upcoming events"),
         "updateUsernameTitle":
             MessageLookupByLibrary.simpleMessage("Update username"),
+        "upgradeToVip": MessageLookupByLibrary.simpleMessage("Upgrade to VIP"),
         "urlLinks": MessageLookupByLibrary.simpleMessage("URL links"),
         "userDisabled": MessageLookupByLibrary.simpleMessage(
             "This account has been disabled"),
@@ -382,6 +387,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "validTicket": MessageLookupByLibrary.simpleMessage("Valid ticket"),
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(
             "A verification link has been sent to the e-mail address provided"),
+        "vip": MessageLookupByLibrary.simpleMessage("VIP"),
         "vipValidTicket":
             MessageLookupByLibrary.simpleMessage("VIP, valid ticket"),
         "vipVertical": MessageLookupByLibrary.simpleMessage("V\nI\nP"),

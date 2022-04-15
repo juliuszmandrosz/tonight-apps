@@ -233,6 +233,16 @@ class S {
     );
   }
 
+  /// `Back to main menu`
+  String get backToMainMenu {
+    return Intl.message(
+      'Back to main menu',
+      name: 'backToMainMenu',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Back to summary`
   String get backToSummary {
     return Intl.message(
@@ -2011,6 +2021,16 @@ class S {
     );
   }
 
+  /// `Ticket already has VIP status`
+  String get ticketAlreadyHasVipStatus {
+    return Intl.message(
+      'Ticket already has VIP status',
+      name: 'ticketAlreadyHasVipStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Ticket expired`
   String get ticketExpired {
     return Intl.message(
@@ -2109,6 +2129,16 @@ class S {
     return Intl.message(
       'Update username',
       name: 'updateUsernameTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upgrade to VIP`
+  String get upgradeToVip {
+    return Intl.message(
+      'Upgrade to VIP',
+      name: 'upgradeToVip',
       desc: '',
       args: [],
     );
@@ -2219,6 +2249,16 @@ class S {
     return Intl.message(
       'A verification link has been sent to the e-mail address provided',
       name: 'verificationLinkSent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `VIP`
+  String get vip {
+    return Intl.message(
+      'VIP',
+      name: 'vip',
       desc: '',
       args: [],
     );
