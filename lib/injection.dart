@@ -20,6 +20,8 @@ import 'package:raver_partners/infrastructure/selector_management/cloud_function
 import 'package:raver_partners/infrastructure/selector_management/firebase_selector_management_facade.dart';
 import 'package:raver_rewards/raver_rewards.dart';
 
+import 'application/add_event/add_event_cubit.dart';
+
 final GetIt getIt = GetIt.instance;
 
 void registerDependencies() {
@@ -30,159 +32,175 @@ void registerDependencies() {
 
 void _registerCubits() {
   getIt.registerFactory(
-    () => AuthCubit(
-      getIt(),
-    ),
+        () =>
+        AuthCubit(
+          getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => SignInCubit(
-      getIt(),
-    ),
+        () =>
+        SignInCubit(
+          getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => ResetPasswordCubit(
-      getIt(),
-    ),
+        () =>
+        ResetPasswordCubit(
+          getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => AddEventNotifierCubit(),
+        () => AddEventNotifierCubit(),
   );
 
   getIt.registerFactory(
-    () => EventOverviewBloc(
-      getIt(),
-    ),
+        () =>
+        EventOverviewBloc(
+          getIt(),
+        ),
   );
 
   getIt.registerFactoryParam(
-    (EventOverviewBloc eventListBloc, _) => EventFiltersCubit(eventListBloc),
+        (EventOverviewBloc eventListBloc, _) =>
+        EventFiltersCubit(eventListBloc),
   );
 
   getIt.registerFactoryParam(
-    (
-      AddEventNotifierCubit addEventNotifierCubit,
-      ClubInfoCubit clubInfoCubit,
-    ) =>
+        (AddEventNotifierCubit addEventNotifierCubit,
+        ClubInfoCubit clubInfoCubit,) =>
         AddEventCubit(
-      clubInfoCubit: clubInfoCubit,
-      addEventNotifierCubit: addEventNotifierCubit,
-      eventFacade: getIt(),
-    ),
+          clubInfoCubit: clubInfoCubit,
+          addEventNotifierCubit: addEventNotifierCubit,
+          eventFacade: getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => AvailableFiltersCubit(
-      getIt(),
-    ),
+        () =>
+        AvailableFiltersCubit(
+          getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => ClubInfoCubit(
-      getIt(),
-    ),
+        () =>
+        ClubInfoCubit(
+          getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => AddEditRewardCubit(
-      getIt(),
-    ),
+        () =>
+        AddEditRewardCubit(
+          getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => RewardListCubit(
-      getIt(),
-    ),
-  );
-
-void _registerFacades() {
-  getIt.registerLazySingleton<CommonAuthFacade>(
-    () => FirebaseAuthFacade(
-      firebaseAuth: getIt(),
-      googleSignIn: getIt(),
-      logger: getIt(),
-      authCloudFunctionsFacade: getIt(),
-    ),
-  );
-
-  getIt.registerLazySingleton<PartnerAuthFacade>(
-    () => FirebaseAuthFacade(
-      firebaseAuth: getIt(),
-      googleSignIn: getIt(),
-      logger: getIt(),
-      authCloudFunctionsFacade: getIt(),
-    ),
-  );
-
-  getIt.registerLazySingleton<AuthCloudFunctionsFacade>(
-    () => AuthCloudFunctionsFacadeImpl(),
-  );
-
-  getIt.registerLazySingleton<EventFacade>(
-    () => FirebaseEventFacade(
-      firebaseAuth: getIt(),
-      logger: getIt(),
-      algoliaEventsApi: getIt(),
-      firestore: getIt(),
-    ),
-  );
-
-  getIt.registerLazySingleton<AvailableFiltersFacade>(
-    () => FirebaseAvailableFiltersFacade(
-      getIt(),
-      getIt(),
-    ),
-  );
-
-  getIt.registerLazySingleton<PartnerClubFacade>(
-    () => FirebaseClubFacade(
-      firestore: getIt(),
-      firebaseAuth: getIt(),
-      logger: getIt(),
-    ),
-  );
-
-  getIt.registerLazySingleton<PartnerRewardFacade>(
-    () => FirebaseRewardFacade(
-      firestore: getIt(),
-      firebaseAuth: getIt(),
-      logger: getIt(),
-    ),
-  );
-
-  getIt.registerLazySingleton<SelectorManagementFacade>(
-    () => FirebaseSelectorManagementFacade(
-      selectorCloudFunctionsFacade: getIt(),
-      logger: getIt(),
-    ),
-  );
-
-  getIt.registerLazySingleton<SelectorManagementCloudFunctionsFacade>(
-    () => SelectorManagementCloudFunctionsFacadeImpl(),
+        () =>
+        RewardListCubit(
+          getIt(),
+        ),
   );
 }
+  void _registerFacades() {
+    getIt.registerLazySingleton<CommonAuthFacade>(
+          () =>
+          FirebaseAuthFacade(
+            firebaseAuth: getIt(),
+            googleSignIn: getIt(),
+            logger: getIt(),
+            authCloudFunctionsFacade: getIt(),
+          ),
+    );
 
-void _registerModules() {
-  getIt.registerLazySingleton(
-    () => Algolia.init(
-      applicationId: dotenv.env[algoliaAppId]!,
-      apiKey: dotenv.env[algoliaApiKey]!,
-    ),
-  );
+    getIt.registerLazySingleton<PartnerAuthFacade>(
+          () =>
+          FirebaseAuthFacade(
+            firebaseAuth: getIt(),
+            googleSignIn: getIt(),
+            logger: getIt(),
+            authCloudFunctionsFacade: getIt(),
+          ),
+    );
 
-  getIt.registerLazySingleton(() => GoogleSignIn());
+    getIt.registerLazySingleton<AuthCloudFunctionsFacade>(
+          () => AuthCloudFunctionsFacadeImpl(),
+    );
 
-  getIt.registerLazySingleton(() => FirebaseFirestore.instance);
+    getIt.registerLazySingleton<EventFacade>(
+          () =>
+          FirebaseEventFacade(
+            firebaseAuth: getIt(),
+            logger: getIt(),
+            algoliaEventsApi: getIt(),
+            firestore: getIt(),
+          ),
+    );
 
-  getIt.registerLazySingleton(() => FirebaseAuth.instance);
+    getIt.registerLazySingleton<AvailableFiltersFacade>(
+          () =>
+          FirebaseAvailableFiltersFacade(
+            getIt(),
+            getIt(),
+          ),
+    );
 
-  getIt.registerLazySingleton(() => Logger());
+    getIt.registerLazySingleton<PartnerClubFacade>(
+          () =>
+          FirebaseClubFacade(
+            firestore: getIt(),
+            firebaseAuth: getIt(),
+            logger: getIt(),
+          ),
+    );
 
-  getIt.registerLazySingleton<AlgoliaEventsApi>(
-    () => AlgoliaEventsApiImpl(
-      getIt(),
-    ),
-  );
-}
+    getIt.registerLazySingleton<PartnerRewardFacade>(
+          () =>
+          FirebaseRewardFacade(
+            firestore: getIt(),
+            firebaseAuth: getIt(),
+            logger: getIt(),
+          ),
+    );
+
+    getIt.registerLazySingleton<SelectorManagementFacade>(
+          () =>
+          FirebaseSelectorManagementFacade(
+            selectorCloudFunctionsFacade: getIt(),
+            logger: getIt(),
+          ),
+    );
+
+    getIt.registerLazySingleton<SelectorManagementCloudFunctionsFacade>(
+          () => SelectorManagementCloudFunctionsFacadeImpl(),
+    );
+  }
+
+  void _registerModules() {
+    getIt.registerLazySingleton(
+          () =>
+          Algolia.init(
+            applicationId: dotenv.env[algoliaAppId]!,
+            apiKey: dotenv.env[algoliaApiKey]!,
+          ),
+    );
+
+    getIt.registerLazySingleton(() => GoogleSignIn());
+
+    getIt.registerLazySingleton(() => FirebaseFirestore.instance);
+
+    getIt.registerLazySingleton(() => FirebaseAuth.instance);
+
+    getIt.registerLazySingleton(() => Logger());
+
+    getIt.registerLazySingleton<AlgoliaEventsApi>(
+          () =>
+          AlgoliaEventsApiImpl(
+            getIt(),
+          ),
+    );
+  }

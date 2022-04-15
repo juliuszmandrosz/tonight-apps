@@ -69,6 +69,7 @@ dependencies:
   raver_events:
     git:
       url: https://github.com/juliuszmandrosz/RaverEvents.git
+      ref: feature/add-sort-by-date-after-add-event-to-state
 
   raver_translations:
     git:

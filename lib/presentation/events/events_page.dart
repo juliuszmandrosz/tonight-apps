@@ -50,55 +50,62 @@ class EventsPage extends StatelessWidget {
                 children: [
                   BlocProvider(
                     create: (context) => getIt<EventOverviewBloc>()
-                      ..add(_eventsFetched(
-                        EventFilters.empty().copyWith(
-                          showOnlyFilter: ShowOnlyFilter(showOnlyLive: true),
-                          clubFilter: ClubFilter(clubId: currentClub.id),
-                        ),
-                        SortModel.empty(),
-                      )),
+                      ..add(_liveEventsFetched(currentClub.id)),
                     child: BlocBuilder<AddEventNotifierCubit,
                         AddEventNotifierState>(
                       builder: (context, state) {
-                        _emitNewEventAdded(state, context);
+                        //TODO: This could be handled with BlocConsumer, + use listenWhen to filter if event should be added to this tab
+                        state.lastAddedEvent.fold(
+                          () {},
+                          (event) {
+                            final now = DateTime.now();
+                            if (event.eventStartDateTime.isBefore(now) &&
+                                event.eventEndDateTime.isAfter(now)) {
+                              _emitNewEventAdded(context, event);
+                            }
+                          },
+                        );
+
                         return const LiveEventsTab();
                       },
                     ),
                   ),
                   BlocProvider(
                     create: (context) => getIt<EventOverviewBloc>()
-                      ..add(_eventsFetched(
-                        EventFilters.empty().copyWith(
-                          showOnlyFilter:
-                              ShowOnlyFilter(showOnlyUpcoming: true),
-                          clubFilter: ClubFilter(clubId: currentClub.id),
-                        ),
-                        SortModel.empty(),
-                      )),
+                      ..add(_upcomingEventsFetched(currentClub.id)),
                     child: BlocBuilder<AddEventNotifierCubit,
                         AddEventNotifierState>(
                       builder: (context, state) {
-                        _emitNewEventAdded(state, context);
+                        state.lastAddedEvent.fold(
+                          () {},
+                          (event) {
+                            final now = DateTime.now();
+                            if (event.eventStartDateTime.isAfter(now)) {
+                              _emitNewEventAdded(context, event);
+                            }
+                          },
+                        );
+
                         return const UpcomingEventsTab();
                       },
                     ),
                   ),
                   BlocProvider(
                     create: (context) => getIt<EventOverviewBloc>()
-                      ..add(_eventsFetched(
-                        EventFilters.empty().copyWith(
-                          showOnlyFilter: ShowOnlyFilter(showOnlyPast: true),
-                          clubFilter: ClubFilter(clubId: currentClub.id),
-                        ),
-                        SortModel(
-                          fieldName: eventStartDateTime,
-                          direction: SortDirection.desc,
-                        ),
-                      )),
+                      ..add(_pastEventsFetched(currentClub.id)),
                     child: BlocBuilder<AddEventNotifierCubit,
                         AddEventNotifierState>(
                       builder: (context, state) {
-                        _emitNewEventAdded(state, context);
+                        state.lastAddedEvent.fold(
+                          () {},
+                          (event) {
+                            final now = DateTime.now();
+                            if (event.eventEndDateTime.isBefore(now)) {
+                              _emitNewEventAdded(context, event);
+                            }
+                          },
+                        );
+
                         return const PastEventsTab();
                       },
                     ),
@@ -116,13 +123,42 @@ class EventsPage extends StatelessWidget {
     return EventOverviewEvent.eventsFetched(filters, sortModel);
   }
 
-  _emitNewEventAdded(
-      AddEventNotifierState addEventNotifierState, BuildContext context) {
-    addEventNotifierState.lastAddedEvent.fold(
-      () {},
-      (event) => context
-          .read<EventOverviewBloc>()
-          .add(EventOverviewEvent.eventAdded(event)),
+  EventOverviewEvent _upcomingEventsFetched(String clubId) {
+    return _eventsFetched(
+      EventFilters.empty().copyWith(
+        showOnlyFilter: ShowOnlyFilter(showOnlyUpcoming: true),
+        clubFilter: ClubFilter(clubId: clubId),
+      ),
+      SortModel.empty(),
     );
+  }
+
+  EventOverviewEvent _pastEventsFetched(String clubId) {
+    return _eventsFetched(
+      EventFilters.empty().copyWith(
+        showOnlyFilter: ShowOnlyFilter(showOnlyPast: true),
+        clubFilter: ClubFilter(clubId: clubId),
+      ),
+      SortModel(
+        fieldName: eventStartDateTime,
+        direction: SortDirection.desc,
+      ),
+    );
+  }
+
+  EventOverviewEvent _liveEventsFetched(String clubId) {
+    return _eventsFetched(
+      EventFilters.empty().copyWith(
+        showOnlyFilter: ShowOnlyFilter(showOnlyLive: true),
+        clubFilter: ClubFilter(clubId: clubId),
+      ),
+      SortModel.empty(),
+    );
+  }
+
+  _emitNewEventAdded(BuildContext context, Event event) {
+    context.read<EventOverviewBloc>().add(
+          EventOverviewEvent.eventToStateAdded(event),
+        );
   }
 }

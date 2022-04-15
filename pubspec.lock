@@ -815,8 +815,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: HEAD
-      resolved-ref: "8a2f76be93915317aaa36f58b71af16cdf5d81b1"
+      ref: "feature/add-sort-by-date-after-add-event-to-state"
+      resolved-ref: "7582027ba945f5349f1759a9077248d3aac378cd"
       url: "https://github.com/juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
