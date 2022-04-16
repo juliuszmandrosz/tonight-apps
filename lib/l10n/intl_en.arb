@@ -144,6 +144,8 @@
   "@errorAddingEvent": {},
   "errorAddingReward": "Error adding reward",
   "@errorAddingReward": {},
+  "errorChangingClubStatus": "Error while changing club status",
+  "@errorChangingClubStatus": {},
   "errorChangingEventStatus": "Error while changing event status",
   "@errorChangingEventStatus": {},
   "errorCheckInternetConnection": "Please check your internet connection",

@@ -158,6 +158,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error adding event"),
         "errorAddingReward":
             MessageLookupByLibrary.simpleMessage("Error adding reward"),
+        "errorChangingClubStatus": MessageLookupByLibrary.simpleMessage(
+            "Error while changing club status"),
         "errorChangingEventStatus": MessageLookupByLibrary.simpleMessage(
             "Error while changing event status"),
         "errorCheckInternetConnection": MessageLookupByLibrary.simpleMessage(

@@ -779,6 +779,16 @@ class S {
     );
   }
 
+  /// `Error while changing club status`
+  String get errorChangingClubStatus {
+    return Intl.message(
+      'Error while changing club status',
+      name: 'errorChangingClubStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Error while changing event status`
   String get errorChangingEventStatus {
     return Intl.message(
