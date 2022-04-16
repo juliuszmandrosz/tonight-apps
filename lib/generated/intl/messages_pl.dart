@@ -57,6 +57,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addPromotionCode":
             MessageLookupByLibrary.simpleMessage("Dodaj kod promocyjny"),
         "addReward": MessageLookupByLibrary.simpleMessage("Dodaj nagrodę"),
+        "addTicketPool":
+            MessageLookupByLibrary.simpleMessage("Dodaj pulę biletów"),
         "additionalInfo":
             MessageLookupByLibrary.simpleMessage("Dodatkowe informacje"),
         "age": MessageLookupByLibrary.simpleMessage("Wiek"),
@@ -111,6 +113,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "djChannel": MessageLookupByLibrary.simpleMessage("Kanał DJ\'a"),
         "dressCode": MessageLookupByLibrary.simpleMessage("Dress code"),
         "editReward": MessageLookupByLibrary.simpleMessage("Edytuj nagrodę"),
+        "editTicketPool":
+            MessageLookupByLibrary.simpleMessage("Edytuj pulę biletów"),
         "elegant": MessageLookupByLibrary.simpleMessage("Elegant"),
         "email": MessageLookupByLibrary.simpleMessage("E-mail"),
         "emailAlreadyInUse":
@@ -142,6 +146,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterPassword":
             MessageLookupByLibrary.simpleMessage("Proszę wprowadź hasło"),
         "enterPrice": MessageLookupByLibrary.simpleMessage("Proszę podać cenę"),
+        "enterQuantity":
+            MessageLookupByLibrary.simpleMessage("Proszę podać ilość"),
         "enterRequiredEntries": MessageLookupByLibrary.simpleMessage(
             "Proszę podać wymaganą liczbę wejść"),
         "enterStartDateTime": MessageLookupByLibrary.simpleMessage(
@@ -271,6 +277,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "noLiveEvent": MessageLookupByLibrary.simpleMessage(
             "Brak wydarzenia na żywo w twoim klubie"),
         "notifications": MessageLookupByLibrary.simpleMessage("Powiadomienia"),
+        "numberOfTickets":
+            MessageLookupByLibrary.simpleMessage("Liczba biletów"),
         "onboardingWelcomeSubtitle": MessageLookupByLibrary.simpleMessage(
             "Na początek ustawmy Twoją nazwę użytkownika"),
         "onboardingWelcomeTitle":
@@ -302,8 +310,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "paymentError": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas płatności, proszę skontaktuj się z obsługą"),
         "photos": m5,
+        "pool": MessageLookupByLibrary.simpleMessage("Pula"),
+        "poolPriceLowerThanPreviousPools": MessageLookupByLibrary.simpleMessage(
+            "Cena biletów w puli powinna być wyższa niż najwyższa cena z poprzednich puli"),
         "price": MessageLookupByLibrary.simpleMessage("Cena"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Zakres cen"),
+        "priceTooHigh": MessageLookupByLibrary.simpleMessage(
+            "Maksymalna cena biletu to 100000 złotych"),
         "priceTooLow": MessageLookupByLibrary.simpleMessage(
             "Minimalna cena biletu to 20 złotych"),
         "proceedToPay":
@@ -311,6 +324,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "profile": MessageLookupByLibrary.simpleMessage("Profil"),
         "promotionCodeHasExpired":
             MessageLookupByLibrary.simpleMessage("Kod promocyjny wygasł"),
+        "quantityTooHigh": MessageLookupByLibrary.simpleMessage(
+            "Maksymalna ilość biletów to 100000"),
+        "quantityTooLow": MessageLookupByLibrary.simpleMessage(
+            "Minimalna ilość biletów to 1"),
         "rateUs": MessageLookupByLibrary.simpleMessage("Oceń nas"),
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
         "raverPartners": MessageLookupByLibrary.simpleMessage("Raver Partners"),
@@ -370,6 +387,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bilet stracił ważność"),
         "ticketForAnotherEvent": MessageLookupByLibrary.simpleMessage(
             "Bilet jest na inne wydarzenie"),
+        "ticketPrice": MessageLookupByLibrary.simpleMessage("Cena biletu"),
         "ticketReturnedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Bilet zwrócono pomyślnie"),
         "tickets": m7,

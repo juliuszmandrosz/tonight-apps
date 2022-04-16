@@ -130,6 +130,16 @@ class S {
     );
   }
 
+  /// `Add ticket pool`
+  String get addTicketPool {
+    return Intl.message(
+      'Add ticket pool',
+      name: 'addTicketPool',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Age`
   String get age {
     return Intl.message(
@@ -516,6 +526,16 @@ class S {
     );
   }
 
+  /// `Edit ticket pool`
+  String get editTicketPool {
+    return Intl.message(
+      'Edit ticket pool',
+      name: 'editTicketPool',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Elegant`
   String get elegant {
     return Intl.message(
@@ -691,6 +711,16 @@ class S {
     return Intl.message(
       'Please give the price',
       name: 'enterPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter quantity`
+  String get enterQuantity {
+    return Intl.message(
+      'Please enter quantity',
+      name: 'enterQuantity',
       desc: '',
       args: [],
     );
@@ -1462,6 +1492,16 @@ class S {
     );
   }
 
+  /// `Number of tickets`
+  String get numberOfTickets {
+    return Intl.message(
+      'Number of tickets',
+      name: 'numberOfTickets',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Firstly lets set your username`
   String get onboardingWelcomeSubtitle {
     return Intl.message(
@@ -1648,6 +1688,26 @@ class S {
     );
   }
 
+  /// `Pool`
+  String get pool {
+    return Intl.message(
+      'Pool',
+      name: 'pool',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The price of tickets in the pool should be higher than the highest price of the previous pools`
+  String get poolPriceLowerThanPreviousPools {
+    return Intl.message(
+      'The price of tickets in the pool should be higher than the highest price of the previous pools',
+      name: 'poolPriceLowerThanPreviousPools',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Price`
   String get price {
     return Intl.message(
@@ -1663,6 +1723,16 @@ class S {
     return Intl.message(
       'Price range',
       name: 'priceRange',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The maximum ticket price is 100000 PLN`
+  String get priceTooHigh {
+    return Intl.message(
+      'The maximum ticket price is 100000 PLN',
+      name: 'priceTooHigh',
       desc: '',
       args: [],
     );
@@ -1703,6 +1773,26 @@ class S {
     return Intl.message(
       'Promotion code has expired',
       name: 'promotionCodeHasExpired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The maximum number of tickets is 100000`
+  String get quantityTooHigh {
+    return Intl.message(
+      'The maximum number of tickets is 100000',
+      name: 'quantityTooHigh',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The minimum number of tickets is 1`
+  String get quantityTooLow {
+    return Intl.message(
+      'The minimum number of tickets is 1',
+      name: 'quantityTooLow',
       desc: '',
       args: [],
     );
@@ -2106,6 +2196,16 @@ class S {
     return Intl.message(
       'Ticket is for another event',
       name: 'ticketForAnotherEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ticket price`
+  String get ticketPrice {
+    return Intl.message(
+      'Ticket price',
+      name: 'ticketPrice',
       desc: '',
       args: [],
     );

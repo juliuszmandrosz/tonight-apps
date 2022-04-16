@@ -57,6 +57,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addPromotionCode":
             MessageLookupByLibrary.simpleMessage("Add promotion code"),
         "addReward": MessageLookupByLibrary.simpleMessage("Add reward"),
+        "addTicketPool":
+            MessageLookupByLibrary.simpleMessage("Add ticket pool"),
         "additionalInfo":
             MessageLookupByLibrary.simpleMessage("Additional info"),
         "age": MessageLookupByLibrary.simpleMessage("Age"),
@@ -110,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "djChannel": MessageLookupByLibrary.simpleMessage("Dj channel"),
         "dressCode": MessageLookupByLibrary.simpleMessage("Dress code"),
         "editReward": MessageLookupByLibrary.simpleMessage("Edit reward"),
+        "editTicketPool":
+            MessageLookupByLibrary.simpleMessage("Edit ticket pool"),
         "elegant": MessageLookupByLibrary.simpleMessage("Elegant"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailAlreadyInUse":
@@ -143,6 +147,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter a password"),
         "enterPrice":
             MessageLookupByLibrary.simpleMessage("Please give the price"),
+        "enterQuantity":
+            MessageLookupByLibrary.simpleMessage("Please enter quantity"),
         "enterRequiredEntries": MessageLookupByLibrary.simpleMessage(
             "Please enter required number of entries"),
         "enterStartDateTime": MessageLookupByLibrary.simpleMessage(
@@ -268,6 +274,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "noLiveEvent":
             MessageLookupByLibrary.simpleMessage("No live event in your club"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+        "numberOfTickets":
+            MessageLookupByLibrary.simpleMessage("Number of tickets"),
         "onboardingWelcomeSubtitle": MessageLookupByLibrary.simpleMessage(
             "Firstly lets set your username"),
         "onboardingWelcomeTitle":
@@ -299,14 +307,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "paymentError": MessageLookupByLibrary.simpleMessage(
             "Error during payment, please contact support"),
         "photos": m5,
+        "pool": MessageLookupByLibrary.simpleMessage("Pool"),
+        "poolPriceLowerThanPreviousPools": MessageLookupByLibrary.simpleMessage(
+            "The price of tickets in the pool should be higher than the highest price of the previous pools"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Price range"),
+        "priceTooHigh": MessageLookupByLibrary.simpleMessage(
+            "The maximum ticket price is 100000 PLN"),
         "priceTooLow": MessageLookupByLibrary.simpleMessage(
             "The minimum ticket price is 20 PLN"),
         "proceedToPay": MessageLookupByLibrary.simpleMessage("Proceed to pay"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "promotionCodeHasExpired":
             MessageLookupByLibrary.simpleMessage("Promotion code has expired"),
+        "quantityTooHigh": MessageLookupByLibrary.simpleMessage(
+            "The maximum number of tickets is 100000"),
+        "quantityTooLow": MessageLookupByLibrary.simpleMessage(
+            "The minimum number of tickets is 1"),
         "rateUs": MessageLookupByLibrary.simpleMessage("Rate us"),
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
         "raverPartners": MessageLookupByLibrary.simpleMessage("Raver Partners"),
@@ -364,6 +381,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketExpired": MessageLookupByLibrary.simpleMessage("Ticket expired"),
         "ticketForAnotherEvent":
             MessageLookupByLibrary.simpleMessage("Ticket is for another event"),
+        "ticketPrice": MessageLookupByLibrary.simpleMessage("Ticket price"),
         "ticketReturnedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Ticket returned successfully"),
         "tickets": m7,
