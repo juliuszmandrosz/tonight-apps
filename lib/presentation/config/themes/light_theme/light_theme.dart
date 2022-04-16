@@ -16,6 +16,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     primary: LightColors.primaryColor,
     secondary: LightColors.secondaryColor,
     outline: LightColors.textColorLight,
+    background: LightColors.backgroundColor,
   ),
   listTileTheme: const ListTileThemeData(),
   tabBarTheme: const TabBarTheme(

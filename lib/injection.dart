@@ -10,6 +10,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event_notifier/add_event_notifier_cubit.dart';
+import 'package:raver_partners/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:raver_partners/application/event_filters/event_filters_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -23,6 +24,18 @@ void registerDependencies() {
 void _registerCubits() {
   getIt.registerFactory(
     () => AuthCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => SignInCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => ResetPasswordCubit(
       getIt(),
     ),
   );
@@ -56,12 +69,21 @@ void _registerCubits() {
 }
 
 void _registerFacades() {
-  getIt.registerLazySingleton<AuthFacade>(
+  getIt.registerLazySingleton<CommonAuthFacade>(
     () => FirebaseAuthFacade(
       firebaseAuth: getIt(),
       googleSignIn: getIt(),
       logger: getIt(),
-      firestore: getIt(),
+      authCloudFunctionsFacade: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<PartnerAuthFacade>(
+    () => FirebaseAuthFacade(
+      firebaseAuth: getIt(),
+      googleSignIn: getIt(),
+      logger: getIt(),
+      authCloudFunctionsFacade: getIt(),
     ),
   );
 
@@ -79,6 +101,10 @@ void _registerFacades() {
       getIt(),
       getIt(),
     ),
+  );
+
+  getIt.registerLazySingleton<AuthCloudFunctionsFacade>(
+    () => AuthCloudFunctionsFacadeImpl(),
   );
 }
 
