@@ -115,6 +115,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("E-mail"),
         "emailAlreadyInUse":
             MessageLookupByLibrary.simpleMessage("E-mail jest już w użyciu"),
+        "emptyFavoriteClubsMessage": MessageLookupByLibrary.simpleMessage(
+            "Twoje ulubione kluby pojawią się tutaj"),
+        "emptyFavoriteEventsMessage": MessageLookupByLibrary.simpleMessage(
+            "Twoje ulubione wydarzenia pojawią się tutaj"),
         "enableLocation":
             MessageLookupByLibrary.simpleMessage("Włącz lokalizację"),
         "endDate": MessageLookupByLibrary.simpleMessage("Data zakończenia"),
@@ -167,6 +171,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Błąd podczas ładowania szczegółów wydarzenia"),
         "errorLoadingEvents": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas ładowania wydarzeń"),
+        "errorLoadingFavoriteClubsInfo": MessageLookupByLibrary.simpleMessage(
+            "Błąd podczas ładowania informacji o ulubionych klubach"),
         "errorLoadingFavoriteEventsInfo": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas ładowania informacji o ulubionych wydarzeniach"),
         "errorLoadingFilters": MessageLookupByLibrary.simpleMessage(
@@ -199,6 +205,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "facebook": MessageLookupByLibrary.simpleMessage("Facebook"),
         "facebookEvent":
             MessageLookupByLibrary.simpleMessage("Wydarzenie na Facebooku"),
+        "favoriteClubs": MessageLookupByLibrary.simpleMessage("Ulubione kluby"),
+        "favoriteEvents":
+            MessageLookupByLibrary.simpleMessage("Ulubione wydarzenia"),
         "favorites": MessageLookupByLibrary.simpleMessage("Ulubione"),
         "filters": MessageLookupByLibrary.simpleMessage("Filtry"),
         "findByCity": MessageLookupByLibrary.simpleMessage("Mieście"),

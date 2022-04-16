@@ -114,6 +114,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailAlreadyInUse":
             MessageLookupByLibrary.simpleMessage("Email already in use"),
+        "emptyFavoriteClubsMessage": MessageLookupByLibrary.simpleMessage(
+            "Your favorite clubs will be shown here"),
+        "emptyFavoriteEventsMessage": MessageLookupByLibrary.simpleMessage(
+            "Your favorite events will be shown here"),
         "enableLocation":
             MessageLookupByLibrary.simpleMessage("Enable location"),
         "endDate": MessageLookupByLibrary.simpleMessage("End date"),
@@ -168,6 +172,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error loading event details"),
         "errorLoadingEvents":
             MessageLookupByLibrary.simpleMessage("Error loading events"),
+        "errorLoadingFavoriteClubsInfo": MessageLookupByLibrary.simpleMessage(
+            "Error loading information about favorite clubs"),
         "errorLoadingFavoriteEventsInfo": MessageLookupByLibrary.simpleMessage(
             "Error loading information about favorite events"),
         "errorLoadingFilters":
@@ -198,6 +204,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "exitButtonTitle": MessageLookupByLibrary.simpleMessage("Exit"),
         "facebook": MessageLookupByLibrary.simpleMessage("Facebook"),
         "facebookEvent": MessageLookupByLibrary.simpleMessage("Facebook event"),
+        "favoriteClubs": MessageLookupByLibrary.simpleMessage("Favorite clubs"),
+        "favoriteEvents":
+            MessageLookupByLibrary.simpleMessage("Favorite events"),
         "favorites": MessageLookupByLibrary.simpleMessage("Favorites"),
         "filters": MessageLookupByLibrary.simpleMessage("Filters"),
         "findByCity": MessageLookupByLibrary.simpleMessage("City"),

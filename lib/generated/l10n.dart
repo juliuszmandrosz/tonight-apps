@@ -546,6 +546,26 @@ class S {
     );
   }
 
+  /// `Your favorite clubs will be shown here`
+  String get emptyFavoriteClubsMessage {
+    return Intl.message(
+      'Your favorite clubs will be shown here',
+      name: 'emptyFavoriteClubsMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your favorite events will be shown here`
+  String get emptyFavoriteEventsMessage {
+    return Intl.message(
+      'Your favorite events will be shown here',
+      name: 'emptyFavoriteEventsMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Enable location`
   String get enableLocation {
     return Intl.message(
@@ -829,6 +849,16 @@ class S {
     );
   }
 
+  /// `Error loading information about favorite clubs`
+  String get errorLoadingFavoriteClubsInfo {
+    return Intl.message(
+      'Error loading information about favorite clubs',
+      name: 'errorLoadingFavoriteClubsInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Error loading information about favorite events`
   String get errorLoadingFavoriteEventsInfo {
     return Intl.message(
@@ -1007,6 +1037,26 @@ class S {
     return Intl.message(
       'Facebook event',
       name: 'facebookEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Favorite clubs`
+  String get favoriteClubs {
+    return Intl.message(
+      'Favorite clubs',
+      name: 'favoriteClubs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Favorite events`
+  String get favoriteEvents {
+    return Intl.message(
+      'Favorite events',
+      name: 'favoriteEvents',
       desc: '',
       args: [],
     );
