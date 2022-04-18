@@ -37,4 +37,6 @@ extension DocumentReferenceX on DocumentReference {
       collection('ticketPayments');
 
   CollectionReference get rewardsCollection => collection('rewards');
+
+  CollectionReference get eventTickets => collection('eventTickets');
 }
