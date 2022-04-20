@@ -53,7 +53,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Account settings"),
         "accountSettingsTitle":
             MessageLookupByLibrary.simpleMessage("Account Settings"),
+        "add": MessageLookupByLibrary.simpleMessage("Add"),
+        "addDescription":
+            MessageLookupByLibrary.simpleMessage("Add description"),
+        "addDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
+            "Add YouTube DJ channel URL link"),
         "addEvent": MessageLookupByLibrary.simpleMessage("Add event"),
+        "addFacebookUrl":
+            MessageLookupByLibrary.simpleMessage("Add Facebook event URL link"),
         "addPromotionCode":
             MessageLookupByLibrary.simpleMessage("Add promotion code"),
         "addReward": MessageLookupByLibrary.simpleMessage("Add reward"),
@@ -107,12 +114,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateAndTime": MessageLookupByLibrary.simpleMessage("Date and time"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "deletedTicketPoolAfterTicketWasSold":
+            MessageLookupByLibrary.simpleMessage(
+                "The pool cannot be removed once the sale of tickets has started"),
         "descTooLong": MessageLookupByLibrary.simpleMessage(
             "Description may contain up to 1000 characters"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "djChannel": MessageLookupByLibrary.simpleMessage("Dj channel"),
         "dressCode": MessageLookupByLibrary.simpleMessage("Dress code"),
+        "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "editDescription":
+            MessageLookupByLibrary.simpleMessage("Edit description"),
+        "editDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
+            "Edit YouTube DJ channel URL link"),
+        "editEventName":
+            MessageLookupByLibrary.simpleMessage("Edit event name"),
+        "editFacebookUrl": MessageLookupByLibrary.simpleMessage(
+            "Edit Facebook event URL link"),
         "editReward": MessageLookupByLibrary.simpleMessage("Edit reward"),
         "editTicketPool":
             MessageLookupByLibrary.simpleMessage("Edit ticket pool"),
@@ -202,12 +221,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error opening link"),
         "errorOpeningMaps":
             MessageLookupByLibrary.simpleMessage("Error opening maps"),
+        "errorUpdatingEvent":
+            MessageLookupByLibrary.simpleMessage("Error updating event"),
         "errorUpdatingReward":
             MessageLookupByLibrary.simpleMessage("Error updating reward"),
         "eventAddedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Event added successfully"),
         "eventDetails": MessageLookupByLibrary.simpleMessage("Event details"),
         "eventName": MessageLookupByLibrary.simpleMessage("Event name"),
+        "eventOverview": MessageLookupByLibrary.simpleMessage("Event overview"),
+        "eventRevenue": MessageLookupByLibrary.simpleMessage("Event revenue"),
         "eventTimeTooShort": MessageLookupByLibrary.simpleMessage(
             "The event should last at least one hour"),
         "events": m3,
@@ -228,6 +251,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "income": MessageLookupByLibrary.simpleMessage("Income"),
         "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
         "invalidCredential": MessageLookupByLibrary.simpleMessage(
             "The credential received are invalid or has expired"),
@@ -310,9 +334,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Error during payment, please contact support"),
         "photos": m5,
         "pool": MessageLookupByLibrary.simpleMessage("Pool"),
+        "poolPriceHigherThanNextPool": MessageLookupByLibrary.simpleMessage(
+            "The price of tickets in the pool should be lower than price of the next pool"),
         "poolPriceLowerThanPreviousPools": MessageLookupByLibrary.simpleMessage(
             "The price of tickets in the pool should be higher than the highest price of the previous pools"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
+        "priceChangedAfterTicketWasSold": MessageLookupByLibrary.simpleMessage(
+            "The price cannot be changed after the sale of tickets has started"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Price range"),
         "priceTooHigh": MessageLookupByLibrary.simpleMessage(
             "The maximum ticket price is 100000 PLN"),
@@ -322,6 +350,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "promotionCodeHasExpired":
             MessageLookupByLibrary.simpleMessage("Promotion code has expired"),
+        "quantityChangedToLessThanTicketsSold":
+            MessageLookupByLibrary.simpleMessage(
+                "Number of tickets in the pool cannot be changed below the number of tickets sold"),
         "quantityTooHigh": MessageLookupByLibrary.simpleMessage(
             "The maximum number of tickets is 100000"),
         "quantityTooLow": MessageLookupByLibrary.simpleMessage(
@@ -379,6 +410,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sign in with Google"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
         "socialMedia": MessageLookupByLibrary.simpleMessage("Social media"),
+        "soldOut": MessageLookupByLibrary.simpleMessage("Sold out"),
         "sport": MessageLookupByLibrary.simpleMessage("Sport"),
         "startDate": MessageLookupByLibrary.simpleMessage("Start date"),
         "startScanning": MessageLookupByLibrary.simpleMessage("Start scanning"),
@@ -396,9 +428,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketReturnedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Ticket returned successfully"),
         "tickets": m7,
+        "ticketsSold": MessageLookupByLibrary.simpleMessage("Tickets sold"),
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "tooMuchRequiredEntries": MessageLookupByLibrary.simpleMessage(
             "The maximum number of required entries is 1000"),
+        "totalRevenue": MessageLookupByLibrary.simpleMessage("Total revenue"),
         "unexpectedError":
             MessageLookupByLibrary.simpleMessage("Unexpected error"),
         "upcoming": MessageLookupByLibrary.simpleMessage("Upcoming"),
@@ -431,6 +465,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "vipValidTicket":
             MessageLookupByLibrary.simpleMessage("VIP, valid ticket"),
         "vipVertical": MessageLookupByLibrary.simpleMessage("V\nI\nP"),
+        "vipsSold": MessageLookupByLibrary.simpleMessage("VIPs sold"),
         "weakPassword":
             MessageLookupByLibrary.simpleMessage("Password is too weak"),
         "wrongPassword": MessageLookupByLibrary.simpleMessage("Wrong password"),

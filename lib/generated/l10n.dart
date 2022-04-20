@@ -90,11 +90,51 @@ class S {
     );
   }
 
+  /// `Add`
+  String get add {
+    return Intl.message(
+      'Add',
+      name: 'add',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add description`
+  String get addDescription {
+    return Intl.message(
+      'Add description',
+      name: 'addDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add YouTube DJ channel URL link`
+  String get addDjChannelYoutubeUrl {
+    return Intl.message(
+      'Add YouTube DJ channel URL link',
+      name: 'addDjChannelYoutubeUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add event`
   String get addEvent {
     return Intl.message(
       'Add event',
       name: 'addEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Facebook event URL link`
+  String get addFacebookUrl {
+    return Intl.message(
+      'Add Facebook event URL link',
+      name: 'addFacebookUrl',
       desc: '',
       args: [],
     );
@@ -476,6 +516,16 @@ class S {
     );
   }
 
+  /// `The pool cannot be removed once the sale of tickets has started`
+  String get deletedTicketPoolAfterTicketWasSold {
+    return Intl.message(
+      'The pool cannot be removed once the sale of tickets has started',
+      name: 'deletedTicketPoolAfterTicketWasSold',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Description`
   String get description {
     return Intl.message(
@@ -521,6 +571,56 @@ class S {
     return Intl.message(
       'Dress code',
       name: 'dressCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message(
+      'Edit',
+      name: 'edit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit description`
+  String get editDescription {
+    return Intl.message(
+      'Edit description',
+      name: 'editDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit YouTube DJ channel URL link`
+  String get editDjChannelYoutubeUrl {
+    return Intl.message(
+      'Edit YouTube DJ channel URL link',
+      name: 'editDjChannelYoutubeUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit event name`
+  String get editEventName {
+    return Intl.message(
+      'Edit event name',
+      name: 'editEventName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Facebook event URL link`
+  String get editFacebookUrl {
+    return Intl.message(
+      'Edit Facebook event URL link',
+      name: 'editFacebookUrl',
       desc: '',
       args: [],
     );
@@ -999,6 +1099,16 @@ class S {
     );
   }
 
+  /// `Error updating event`
+  String get errorUpdatingEvent {
+    return Intl.message(
+      'Error updating event',
+      name: 'errorUpdatingEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Error updating reward`
   String get errorUpdatingReward {
     return Intl.message(
@@ -1034,6 +1144,26 @@ class S {
     return Intl.message(
       'Event name',
       name: 'eventName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event overview`
+  String get eventOverview {
+    return Intl.message(
+      'Event overview',
+      name: 'eventOverview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event revenue`
+  String get eventRevenue {
+    return Intl.message(
+      'Event revenue',
+      name: 'eventRevenue',
       desc: '',
       args: [],
     );
@@ -1187,6 +1317,16 @@ class S {
     return Intl.message(
       'Home',
       name: 'home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Income`
+  String get income {
+    return Intl.message(
+      'Income',
+      name: 'income',
       desc: '',
       args: [],
     );
@@ -1708,6 +1848,16 @@ class S {
     );
   }
 
+  /// `The price of tickets in the pool should be lower than price of the next pool`
+  String get poolPriceHigherThanNextPool {
+    return Intl.message(
+      'The price of tickets in the pool should be lower than price of the next pool',
+      name: 'poolPriceHigherThanNextPool',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The price of tickets in the pool should be higher than the highest price of the previous pools`
   String get poolPriceLowerThanPreviousPools {
     return Intl.message(
@@ -1723,6 +1873,16 @@ class S {
     return Intl.message(
       'Price',
       name: 'price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The price cannot be changed after the sale of tickets has started`
+  String get priceChangedAfterTicketWasSold {
+    return Intl.message(
+      'The price cannot be changed after the sale of tickets has started',
+      name: 'priceChangedAfterTicketWasSold',
       desc: '',
       args: [],
     );
@@ -1783,6 +1943,16 @@ class S {
     return Intl.message(
       'Promotion code has expired',
       name: 'promotionCodeHasExpired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of tickets in the pool cannot be changed below the number of tickets sold`
+  String get quantityChangedToLessThanTicketsSold {
+    return Intl.message(
+      'Number of tickets in the pool cannot be changed below the number of tickets sold',
+      name: 'quantityChangedToLessThanTicketsSold',
       desc: '',
       args: [],
     );
@@ -2171,6 +2341,16 @@ class S {
     );
   }
 
+  /// `Sold out`
+  String get soldOut {
+    return Intl.message(
+      'Sold out',
+      name: 'soldOut',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sport`
   String get sport {
     return Intl.message(
@@ -2304,6 +2484,16 @@ class S {
     );
   }
 
+  /// `Tickets sold`
+  String get ticketsSold {
+    return Intl.message(
+      'Tickets sold',
+      name: 'ticketsSold',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `TikTok`
   String get tikTok {
     return Intl.message(
@@ -2319,6 +2509,16 @@ class S {
     return Intl.message(
       'The maximum number of required entries is 1000',
       name: 'tooMuchRequiredEntries',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total revenue`
+  String get totalRevenue {
+    return Intl.message(
+      'Total revenue',
+      name: 'totalRevenue',
       desc: '',
       args: [],
     );
@@ -2489,6 +2689,16 @@ class S {
     return Intl.message(
       'VIP',
       name: 'vip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `VIPs sold`
+  String get vipsSold {
+    return Intl.message(
+      'VIPs sold',
+      name: 'vipsSold',
       desc: '',
       args: [],
     );
