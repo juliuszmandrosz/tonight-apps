@@ -88,6 +88,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zmień Hasło"),
         "checkout": MessageLookupByLibrary.simpleMessage("Kasa"),
         "city": MessageLookupByLibrary.simpleMessage("Miasto"),
+        "clubReviewsLoadingError": MessageLookupByLibrary.simpleMessage(
+            "Wystąpił błąd podczas ładowania opinii klubu"),
         "clubs": m1,
         "concertInfo":
             MessageLookupByLibrary.simpleMessage("Informacje o koncercie"),
@@ -328,6 +330,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Maksymalna ilość biletów to 100000"),
         "quantityTooLow": MessageLookupByLibrary.simpleMessage(
             "Minimalna ilość biletów to 1"),
+        "rateAddingError": MessageLookupByLibrary.simpleMessage(
+            "Błąd podczas dodawania opinii do wydarzenia"),
+        "rateButtonTitle":
+            MessageLookupByLibrary.simpleMessage("Wystaw opinię"),
+        "rateEvent": MessageLookupByLibrary.simpleMessage("Oceń wydarzenie"),
         "rateUs": MessageLookupByLibrary.simpleMessage("Oceń nas"),
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
         "raverPartners": MessageLookupByLibrary.simpleMessage("Raver Partners"),
@@ -344,6 +351,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "returnTicket": MessageLookupByLibrary.simpleMessage("Zwróć bilet"),
         "returnTimeIsOver":
             MessageLookupByLibrary.simpleMessage("Czas na zwrot minął"),
+        "reviewAdded": MessageLookupByLibrary.simpleMessage("Opinia dodana"),
+        "reviewLoadError": MessageLookupByLibrary.simpleMessage(
+            "Wystąpił błąd podczas ładowania opinii"),
+        "reviewLoadingFormFailure": MessageLookupByLibrary.simpleMessage(
+            "Wystąpił błąd podczas wczytywania formularza opinii"),
         "rewardAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Nagroda została dodana pomyślnie"),
         "rewardUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
@@ -430,6 +442,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hasło jest za słabe"),
         "wrongPassword":
             MessageLookupByLibrary.simpleMessage("Nieprawidłowe hasło"),
-        "yes": MessageLookupByLibrary.simpleMessage("Tak")
+        "yes": MessageLookupByLibrary.simpleMessage("Tak"),
+        "yourRate": MessageLookupByLibrary.simpleMessage("Twoja ocena")
       };
 }

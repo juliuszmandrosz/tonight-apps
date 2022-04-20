@@ -87,6 +87,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
+        "clubReviewsLoadingError": MessageLookupByLibrary.simpleMessage(
+            "Error while loading club reviews"),
         "clubs": m1,
         "concertInfo":
             MessageLookupByLibrary.simpleMessage("Concert information"),
@@ -324,6 +326,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "The maximum number of tickets is 100000"),
         "quantityTooLow": MessageLookupByLibrary.simpleMessage(
             "The minimum number of tickets is 1"),
+        "rateAddingError": MessageLookupByLibrary.simpleMessage(
+            "Error while adding review to event"),
+        "rateButtonTitle": MessageLookupByLibrary.simpleMessage("Rate"),
+        "rateEvent": MessageLookupByLibrary.simpleMessage("Rate the event"),
         "rateUs": MessageLookupByLibrary.simpleMessage("Rate us"),
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
         "raverPartners": MessageLookupByLibrary.simpleMessage("Raver Partners"),
@@ -340,6 +346,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "returnTicket": MessageLookupByLibrary.simpleMessage("Return ticket"),
         "returnTimeIsOver":
             MessageLookupByLibrary.simpleMessage("Time for a return is over"),
+        "reviewAdded": MessageLookupByLibrary.simpleMessage("Review added"),
+        "reviewLoadError":
+            MessageLookupByLibrary.simpleMessage("Error while loading review"),
+        "reviewLoadingFormFailure":
+            MessageLookupByLibrary.simpleMessage("Error loading review form"),
         "rewardAddedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Reward added successfully"),
         "rewardUpdatedSuccessfully":
@@ -423,6 +434,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "weakPassword":
             MessageLookupByLibrary.simpleMessage("Password is too weak"),
         "wrongPassword": MessageLookupByLibrary.simpleMessage("Wrong password"),
-        "yes": MessageLookupByLibrary.simpleMessage("Yes")
+        "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+        "yourRate": MessageLookupByLibrary.simpleMessage("Your rate")
       };
 }

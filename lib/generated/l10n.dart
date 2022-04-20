@@ -333,6 +333,16 @@ class S {
     );
   }
 
+  /// `Error while loading club reviews`
+  String get clubReviewsLoadingError {
+    return Intl.message(
+      'Error while loading club reviews',
+      name: 'clubReviewsLoadingError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{count, plural, zero{No clubs} one{Club} other{Clubs}}`
   String clubs(num count) {
     return Intl.plural(
@@ -1798,6 +1808,36 @@ class S {
     );
   }
 
+  /// `Error while adding review to event`
+  String get rateAddingError {
+    return Intl.message(
+      'Error while adding review to event',
+      name: 'rateAddingError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rate`
+  String get rateButtonTitle {
+    return Intl.message(
+      'Rate',
+      name: 'rateButtonTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rate the event`
+  String get rateEvent {
+    return Intl.message(
+      'Rate the event',
+      name: 'rateEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Rate us`
   String get rateUs {
     return Intl.message(
@@ -1913,6 +1953,36 @@ class S {
     return Intl.message(
       'Time for a return is over',
       name: 'returnTimeIsOver',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Review added`
+  String get reviewAdded {
+    return Intl.message(
+      'Review added',
+      name: 'reviewAdded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error while loading review`
+  String get reviewLoadError {
+    return Intl.message(
+      'Error while loading review',
+      name: 'reviewLoadError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error loading review form`
+  String get reviewLoadingFormFailure {
+    return Intl.message(
+      'Error loading review form',
+      name: 'reviewLoadingFormFailure',
       desc: '',
       args: [],
     );
@@ -2469,6 +2539,16 @@ class S {
     return Intl.message(
       'Yes',
       name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your rate`
+  String get yourRate {
+    return Intl.message(
+      'Your rate',
+      name: 'yourRate',
       desc: '',
       args: [],
     );
