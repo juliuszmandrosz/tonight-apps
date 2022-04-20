@@ -49,14 +49,23 @@ extension BuildContextX on BuildContext {
         return AlertDialog(
           title: Text(S().confirm),
           content: Text(S().confirmDeleteMessage),
+          actionsPadding:
+              const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+          actionsAlignment: MainAxisAlignment.spaceBetween,
           actions: [
             TextButton(
-              onPressed: () => Navigator.of(context).pop(true),
-              child: Text(S().delete.toUpperCase()),
-            ),
-            TextButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: Text(S().cancel.toUpperCase()),
+              child: Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Text(S().cancel.toUpperCase()),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Text(S().delete.toUpperCase()),
+              ),
             ),
           ],
         );
@@ -70,15 +79,24 @@ extension BuildContextX on BuildContext {
       builder: (context) {
         return AlertDialog(
           title: Text(S().confirm),
+          actionsAlignment: MainAxisAlignment.spaceBetween,
+          actionsPadding:
+              const EdgeInsets.only(left: 20, right: 20, bottom: 10),
           content: Text(message),
           actions: [
             TextButton(
-              onPressed: () => Navigator.of(context).pop(true),
-              child: Text(S().yes.toUpperCase()),
-            ),
-            TextButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: Text(S().no.toUpperCase()),
+              child: Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Text(S().no.toUpperCase()),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Text(S().yes.toUpperCase()),
+              ),
             ),
           ],
         );
