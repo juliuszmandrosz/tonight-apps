@@ -39,4 +39,7 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get rewardsCollection => collection('rewards');
 
   CollectionReference get eventTickets => collection('eventTickets');
+
+  CollectionReference get reviewCollection =>
+      collection('reviews');
 }
