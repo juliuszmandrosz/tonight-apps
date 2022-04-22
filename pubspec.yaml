@@ -70,6 +70,7 @@ dependencies:
   formz: ^0.4.1
   qr_flutter: ^4.0.0
   syncfusion_flutter_datepicker: ^19.4.55
+  webview_flutter: ^3.0.1
   connectivity_plus: ^2.2.1
   shimmer: ^2.0.0
   flutter_hooks: ^0.18.3

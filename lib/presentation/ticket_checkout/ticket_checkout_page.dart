@@ -50,9 +50,7 @@ class TicketCheckoutPage extends StatelessWidget {
                   ScaffoldMessenger.of(context)
                     ..hideCurrentSnackBar()
                     ..showSnackBar(
-                      SnackBar(
-                        content: Text(error),
-                      ),
+                      SnackBar(content: Text(error)),
                     );
                 },
               );

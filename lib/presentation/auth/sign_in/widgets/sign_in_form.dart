@@ -26,16 +26,13 @@ class SignInForm extends StatelessWidget {
               ..hideCurrentSnackBar()
               ..showSnackBar(
                 SnackBar(
-                  content: Text(
-                    authErrorMessages[error] ?? S().serverError,
-                  ),
+                  content: Text(authErrorMessages[error] ?? S().serverError),
                 ),
               );
           },
         );
 
         if (state.status.isSubmissionSuccess) {
-          context.read<AuthCubit>().requestAuthCheck();
           AutoRouter.of(context).replace(const NavigatorRouter());
         }
       },

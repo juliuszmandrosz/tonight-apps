@@ -28,28 +28,41 @@ class NavigatorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     _resetFiltersAndFetchData(context);
     // TODO - Find why this build method get called twice
-    return BlocListener<NetworkCheckCubit, NetworkCheckState>(
-      bloc: context.read<NetworkCheckCubit>(),
-      listener: (context, state) {
-        if (!state.isConnected) {
-          AutoRouter.of(context).push(const NetworkLostRoute());
-        }
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<NetworkCheckCubit, NetworkCheckState>(
+          bloc: context.read<NetworkCheckCubit>(),
+          listener: (context, state) {
+            if (!state.isConnected) {
+              AutoRouter.of(context).push(const NetworkLostRoute());
+            }
+          },
+        ),
+        BlocListener<AuthCubit, AuthState>(
+          bloc: context.read<AuthCubit>(),
+          listener: (context, state) => state.map(
+              initial: (_) {},
+              authenticated: (_) =>
+                  AutoRouter.of(context).replace(WelcomeLoaderRoute()),
+              unauthenticated: (_) =>
+                  AutoRouter.of(context).replace(const AuthRoute())),
+        )
+      ],
       child: AutoTabsScaffold(
         appBarBuilder: (_, tabsRouter) => RaverAppBar(
           actions: [
-                RaverIconButton(
-                  onPressed: () {
-                    context.read<AuthCubit>().signOut();
-                    AutoRouter.of(context).replace(const AuthRoute());
-                  },
-                  icon: const FaIcon(
-                    FontAwesomeIcons.signOutAlt,
-                    color: DefaultColors.backgroundColor,
-                  ),
-                )
-              ],
-            ),
+            RaverIconButton(
+              onPressed: () {
+                context.read<AuthCubit>().signOut();
+                AutoRouter.of(context).replace(const AuthRoute());
+              },
+              icon: const FaIcon(
+                FontAwesomeIcons.signOutAlt,
+                color: DefaultColors.backgroundColor,
+              ),
+            )
+          ],
+        ),
         routes: const [HomeRouter(), TicketsRouter()],
         bottomNavigationBuilder: (_, tabsRouter) {
           return BottomNavigationBar(
