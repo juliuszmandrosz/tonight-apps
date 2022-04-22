@@ -8,7 +8,9 @@ class Ticket extends Equatable {
   final String eventId;
   final DateTime eventDateTime;
   final int price;
+  final String currency;
   final bool isVip;
+  final String ticketPaymentId;
   final bool isExpired;
 
   Ticket({
@@ -18,7 +20,9 @@ class Ticket extends Equatable {
     required this.eventId,
     required this.eventDateTime,
     required this.price,
+    required this.currency,
     required this.isVip,
+    required this.ticketPaymentId,
     this.isExpired = false,
   }) : id = id ?? const Uuid().v1();
 
@@ -30,7 +34,9 @@ class Ticket extends Equatable {
         eventId,
         eventDateTime,
         price,
+        currency,
         isVip,
+        ticketPaymentId,
         isExpired
       ];
 }

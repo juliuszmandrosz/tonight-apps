@@ -2,22 +2,20 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/auth/form_inputs/email_input.dart';
-import 'package:raver/application/auth/form_inputs/password_input.dart';
 import 'package:raver_auth/raver_auth.dart';
 
 part 'sign_in_cubit.freezed.dart';
 part 'sign_in_state.dart';
 
 class SignInCubit extends Cubit<SignInState> {
-  final AuthFacade _authFacade;
+  final UserAuthFacade _authFacade;
 
   SignInCubit(this._authFacade) : super(SignInState.initial());
 
   Future<void> signInWithGoogle() async {
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
-    final failureOrSuccess = await _authFacade.signInWithGoogle();
+    final failureOrSuccess = await _authFacade.signInWithGoogleAsUser();
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(failure),
@@ -32,7 +30,7 @@ class SignInCubit extends Cubit<SignInState> {
 
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
-    final failureOrSuccess = await _authFacade.signInWithEmailAndPassword(
+    final failureOrSuccess = await _authFacade.signInWithEmailAndPasswordAsUser(
       email: state.email.value,
       password: state.password.value,
     );

@@ -49,7 +49,7 @@ class EventDetailsSection extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    '${event.price} ${context.getCurrencySymbol()}',
+                    '${event.price} ${getCurrencySymbolFromCode(event.currency)}',
                     style: textTheme.subtitle1,
                   ),
                 ],

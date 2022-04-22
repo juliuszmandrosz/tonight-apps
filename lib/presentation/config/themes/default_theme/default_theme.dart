@@ -9,6 +9,12 @@ ThemeData get defaultTheme => ThemeData(
         unselectedItemColor: DefaultColors.navbarUnselectedColor,
         selectedItemColor: DefaultColors.primaryColor,
       ),
+      // Temporarily
+      colorScheme: ColorScheme.fromSwatch().copyWith(
+        primary: DefaultColors.primaryColor,
+        secondary: DefaultColors.secondaryColor,
+        outline: DefaultColors.textColorLight,
+      ),
       tabBarTheme: const TabBarTheme(
         labelColor: DefaultColors.primaryColor,
       ),

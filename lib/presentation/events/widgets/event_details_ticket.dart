@@ -26,11 +26,8 @@ class EventDetailsTicket extends StatelessWidget {
               onPressed: () => ticket != null
                   ? AutoRouter.of(context)
                       .push(TicketQrRoute(ticketId: ticket.id))
-                  : ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(S().unexpectedError),
-                      ),
-                    ),
+                  : AutoRouter.of(context)
+                      .push(TicketCheckoutRoute(event: event)),
               child: Text(
                 ticket != null ? S().showTicket : S().buyTicket,
                 style: textTheme.headline3,

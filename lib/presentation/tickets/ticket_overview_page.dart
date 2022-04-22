@@ -37,9 +37,7 @@ class TicketOverviewPage extends StatelessWidget {
                   state.tickets.where((ticket) => !ticket.isExpired).toList();
 
               return state.tickets.isEmpty
-                  ? Center(
-                      child: Text(S().tickets(0)),
-                    )
+                  ? Center(child: Text(S().tickets(0)))
                   : SingleChildScrollView(
                       child: Column(
                         children: [

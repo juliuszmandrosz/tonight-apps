@@ -11,6 +11,8 @@ import 'package:raver/presentation/home/home_page.dart';
 import 'package:raver/presentation/navigator/navigator_page.dart';
 import 'package:raver/presentation/network_lost/network_lost_page.dart';
 import 'package:raver/presentation/splash/splash_page.dart';
+import 'package:raver/presentation/ticket_checkout/ticket_checkout_page.dart';
+import 'package:raver/presentation/ticket_payment_confirm/ticket_payment_confirm_page.dart';
 import 'package:raver/presentation/ticket_qr/ticket_qr_page.dart';
 import 'package:raver/presentation/tickets/ticket_overview_page.dart';
 import 'package:raver/presentation/welcome_loader/welcome_loader_page.dart';
@@ -55,6 +57,8 @@ part 'app_router.gr.dart';
     AutoRoute(page: ResetPasswordPage),
     AutoRoute(page: TicketQrPage),
     AutoRoute(page: EventDatePickerPage),
+    AutoRoute(page: TicketCheckoutPage),
+    AutoRoute(page: TicketPaymentConfirmPage),
   ],
 )
 class AppRouter extends _$AppRouter {}

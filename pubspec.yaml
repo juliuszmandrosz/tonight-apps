@@ -72,10 +72,15 @@ dependencies:
   syncfusion_flutter_datepicker: ^19.4.55
   connectivity_plus: ^2.2.1
   shimmer: ^2.0.0
+  flutter_hooks: ^0.18.3
+  flutter_stripe: ^2.4.0
+  loader_overlay: ^2.0.6
+  random_string: ^2.3.1
 
   raver_auth:
     git:
       url: https://github.com/juliuszmandrosz/RaverAuth.git
+      ref: hotfix/get-signed-user-provider-email
 
   raver_events:
     git:

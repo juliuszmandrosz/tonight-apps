@@ -2,16 +2,13 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/auth/form_inputs/confirm_password_input.dart';
-import 'package:raver/application/auth/form_inputs/email_input.dart';
-import 'package:raver/application/auth/form_inputs/password_input.dart';
 import 'package:raver_auth/raver_auth.dart';
 
 part 'sign_up_cubit.freezed.dart';
 part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
-  final AuthFacade _authFacade;
+  final UserAuthFacade _authFacade;
 
   SignUpCubit(this._authFacade) : super(SignUpState.initial());
 
@@ -20,7 +17,7 @@ class SignUpCubit extends Cubit<SignUpState> {
 
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
-    final failureOrSuccess = await _authFacade.signUpWithEmailAndPassword(
+    final failureOrSuccess = await _authFacade.signUpWithEmailAndPasswordAsUser(
       email: state.email.value,
       password: state.password.value,
     );

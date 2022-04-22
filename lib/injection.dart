@@ -9,7 +9,6 @@ import 'package:get_it/get_it.dart';
 import 'package:google_place/google_place.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
-import 'package:raver/application/auth/reset_password/reset_password_cubit.dart';
 import 'package:raver/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:raver/application/auth/sign_up/sign_up_cubit.dart';
 import 'package:raver/application/clubs/club_details/club_details_cubit.dart';
@@ -23,16 +22,18 @@ import 'package:raver/application/events/event_favorite/event_favorite_cubit.dar
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/network_check/network_check_cubit.dart';
+import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:raver/application/tickets/ticket_cubit.dart';
 import 'package:raver/domain/clubs/club_facade.dart';
+import 'package:raver/domain/payments/payment_facade.dart';
 import 'package:raver/domain/remote_config/remote_config_facade.dart';
 import 'package:raver/domain/tickets/ticket_facade.dart';
-import 'package:raver/domain/tickets/ticket_overview/ticket_overview_facade.dart';
 import 'package:raver/infrastructure/clubs/firebase_club_facade.dart';
 import 'package:raver/infrastructure/core/algolia/algolia_clubs_api.dart';
+import 'package:raver/infrastructure/payments/cloud_functions/payment_cloud_functions_facade.dart';
+import 'package:raver/infrastructure/payments/firebase_payment_facade.dart';
 import 'package:raver/infrastructure/remote_config/firebase_remote_config_facade.dart';
 import 'package:raver/infrastructure/tickets/firebase_ticket_facade.dart';
-import 'package:raver/infrastructure/tickets/ticket_overview/firebase_ticket_overview_facade.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
@@ -82,12 +83,6 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => SignUpCubit(
-      getIt(),
-    ),
-  );
-
-  getIt.registerFactory(
-    () => ResetPasswordCubit(
       getIt(),
     ),
   );
@@ -168,6 +163,13 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  //Payment
+  getIt.registerFactory(
+    () => TicketCheckoutCubit(
+      getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
@@ -180,13 +182,26 @@ void _registerFacades() {
   );
 
   //Auth
-  getIt.registerLazySingleton<AuthFacade>(
+  getIt.registerLazySingleton<CommonAuthFacade>(
     () => FirebaseAuthFacade(
       firebaseAuth: getIt(),
       googleSignIn: getIt(),
-      firestore: getIt(),
       logger: getIt(),
+      authCloudFunctionsFacade: getIt(),
     ),
+  );
+
+  getIt.registerLazySingleton<UserAuthFacade>(
+    () => FirebaseAuthFacade(
+      firebaseAuth: getIt(),
+      googleSignIn: getIt(),
+      logger: getIt(),
+      authCloudFunctionsFacade: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<AuthCloudFunctionsFacade>(
+    () => AuthCloudFunctionsFacadeImpl(),
   );
 
   //Club
@@ -196,14 +211,6 @@ void _registerFacades() {
       storage: getIt(),
       logger: getIt(),
       algoliaClubsApi: getIt(),
-    ),
-  );
-
-  //Ticket
-  getIt.registerLazySingleton<TicketOverviewFacade>(
-    () => FirebaseTicketOverviewFacade(
-      firestore: getIt(),
-      logger: getIt(),
     ),
   );
 
@@ -230,6 +237,19 @@ void _registerFacades() {
       firebaseRemoteConfig: getIt(),
       logger: getIt(),
     ),
+  );
+
+  //Payment
+  getIt.registerLazySingleton<PaymentFacade>(
+    () => FirebasePaymentFacade(
+      firestore: getIt(),
+      logger: getIt(),
+      paymentCloudFunctionsFacade: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<PaymentCloudFunctionsFacade>(
+    () => PaymentCloudFunctionsFacadeImpl(),
   );
 }
 

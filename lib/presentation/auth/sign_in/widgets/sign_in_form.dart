@@ -8,7 +8,6 @@ import 'package:raver/presentation/auth/sign_in/widgets/google_sign_in_button.da
 import 'package:raver/presentation/auth/sign_in/widgets/sign_in_button.dart';
 import 'package:raver/presentation/auth/sign_in/widgets/sign_in_email_input.dart';
 import 'package:raver/presentation/auth/sign_in/widgets/sign_in_password_input.dart';
-import 'package:raver/presentation/config/translations/auth_error_messages_translations.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_translations/raver_translations.dart';
