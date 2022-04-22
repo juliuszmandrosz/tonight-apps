@@ -2,9 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/domain/events/event_entity.dart';
-import 'package:raver/domain/events/event_facade.dart';
-import 'package:raver/domain/events/event_failure.dart';
+import 'package:raver_events/raver_events.dart';
 
 part 'event_details_cubit.freezed.dart';
 part 'event_details_state.dart';

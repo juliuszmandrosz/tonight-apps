@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventFiltersButtons extends StatelessWidget {
   const EventFiltersButtons({Key? key}) : super(key: key);

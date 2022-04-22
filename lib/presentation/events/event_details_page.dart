@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_details/event_details_cubit.dart';
-import 'package:raver/domain/events/event_entity.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/events/widgets/event_details_additional_info.dart';
@@ -14,6 +12,8 @@ import 'package:raver/presentation/events/widgets/event_details_event_place.dart
 import 'package:raver/presentation/events/widgets/event_details_navigate_to_club.dart';
 import 'package:raver/presentation/events/widgets/event_details_section.dart';
 import 'package:raver/presentation/events/widgets/event_details_ticket.dart';
+import 'package:raver_events/raver_events.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventDetailsPage extends StatelessWidget {
   final String? eventId;

@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/domain/clubs/club_review_entity.dart';
-import 'package:raver/infrastructure/core/json_converters/timestamp_json_converter.dart';
+import 'package:raver_common/raver_common.dart';
 
 part 'club_review_dto.freezed.dart';
-
 part 'club_review_dto.g.dart';
 
 @freezed

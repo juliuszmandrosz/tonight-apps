@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/core/cubit_status.dart';
 import 'package:raver/domain/tickets/ticket_entity.dart';
 import 'package:raver/domain/tickets/ticket_facade.dart';
+import 'package:raver_common/raver_common.dart';
 
 part 'ticket_cubit.freezed.dart';
 part 'ticket_state.dart';

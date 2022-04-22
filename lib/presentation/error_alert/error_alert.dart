@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
-import 'package:raver/generated/l10n.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class ErrorAlert extends StatelessWidget {
   final String errorMessage;

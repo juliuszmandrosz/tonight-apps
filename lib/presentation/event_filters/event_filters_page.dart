@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/core/available_filters/available_filters_cubit.dart';
 import 'package:raver/application/core/google_places/google_places_cubit.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_buttons.dart';
@@ -14,6 +12,8 @@ import 'package:raver/presentation/event_filters/widgets/event_filters_min_age.d
 import 'package:raver/presentation/event_filters/widgets/event_filters_music.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_place_option.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_price.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventFiltersPage extends StatefulWidget {
   const EventFiltersPage({Key? key}) : super(key: key);

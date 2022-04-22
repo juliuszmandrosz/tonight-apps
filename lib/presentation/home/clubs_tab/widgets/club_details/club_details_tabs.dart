@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/club_buy_ticket.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/club_details.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/club_events.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/club_milestones.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/club_opinions.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/club_photos.dart';
+import 'package:raver_translations/generated/generated.dart';
 
 class ClubDetailsTabs extends StatelessWidget {
   const ClubDetailsTabs({Key? key, required this.club}) : super(key: key);
@@ -33,8 +33,11 @@ class ClubDetailsTabs extends StatelessWidget {
             ),
             Expanded(
               child: TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  const ClubEvents(),
+                  ClubEvents(
+                    clubId: club.id,
+                  ),
                   const ClubBuyTicket(),
                   const ClubMilestones(),
                   ClubDetails(

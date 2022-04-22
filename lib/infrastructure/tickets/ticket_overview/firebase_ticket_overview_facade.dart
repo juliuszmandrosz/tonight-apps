@@ -4,8 +4,9 @@ import 'package:logger/logger.dart';
 import 'package:raver/domain/tickets/ticket_overview/ticket_overview_entity.dart';
 import 'package:raver/domain/tickets/ticket_overview/ticket_overview_facade.dart';
 import 'package:raver/domain/tickets/ticket_overview/ticket_overview_failure.dart';
-import 'package:raver/infrastructure/core/firestore_helpers.dart';
+import 'package:raver/infrastructure/core/firestore_extension_user.dart';
 import 'package:raver/infrastructure/tickets/ticket_overview/dtos/ticket_overview_dto.dart';
+import 'package:raver_common/raver_common.dart';
 
 class FirebaseTicketOverviewFacade implements TicketOverviewFacade {
   final FirebaseFirestore _firestore;

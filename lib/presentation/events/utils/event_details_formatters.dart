@@ -1,3 +1,7 @@
+import 'package:flutter/cupertino.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/raver_events.dart';
+
 String displayMusicalGenres(
   List<String> musicalGenres,
   EventDetailsSeparator separator,
@@ -10,6 +14,18 @@ String displayMusicalGenres(
     }
   }
   return displayedString;
+}
+
+String displayEventTags(BuildContext context, Event event) {
+  final musicalGenres = displayMusicalGenres(
+    event.musicalGenres,
+    EventDetailsSeparator.comma,
+  );
+  var price = '${event.price}${getCurrencySymbolFromCode(event.currency)}';
+  final minAge = '${event.minAge}+';
+  final allowedOutfit = event.allowedOutfit;
+
+  return '$minAge, $price, $allowedOutfit, $musicalGenres';
 }
 
 String _addSeparator(EventDetailsSeparator separator) {

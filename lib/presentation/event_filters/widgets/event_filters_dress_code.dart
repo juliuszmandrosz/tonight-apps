@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/config/translations/outfits_translations.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventFiltersDressCode extends StatelessWidget {
   final List<String> availableOutfits;
@@ -19,7 +19,8 @@ class EventFiltersDressCode extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
-          previous.filters.allowedOutfits != current.filters.allowedOutfits,
+          previous.filters.allowedOutfitsFilter.allowedOutfits !=
+          current.filters.allowedOutfitsFilter.allowedOutfits,
       builder: (context, state) {
         return Column(
           children: [
@@ -37,7 +38,8 @@ class EventFiltersDressCode extends StatelessWidget {
                       style: textTheme.subtitle1,
                     ),
                     controlAffinity: ListTileControlAffinity.leading,
-                    value: state.filters.allowedOutfits.contains(outfit),
+                    value: state.filters.allowedOutfitsFilter.allowedOutfits
+                        .contains(outfit),
                     onChanged: (value) => context
                         .read<EventFiltersCubit>()
                         .changeAllowedOutfits(outfit),

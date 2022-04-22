@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:raver/generated/l10n.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class RatingRow extends StatelessWidget {
   const RatingRow({

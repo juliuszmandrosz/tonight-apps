@@ -4,8 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:formz/formz.dart';
 import 'package:raver/application/auth/form_inputs/password_input.dart';
 import 'package:raver/application/auth/sign_up/sign_up_cubit.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class SignUpPasswordInput extends StatefulWidget {
   const SignUpPasswordInput({Key? key}) : super(key: key);

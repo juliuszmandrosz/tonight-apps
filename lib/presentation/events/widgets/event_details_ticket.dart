@@ -3,9 +3,9 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/tickets/ticket_cubit.dart';
-import 'package:raver/domain/events/event_entity.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver_events/raver_events.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventDetailsTicket extends StatelessWidget {
   final Event event;

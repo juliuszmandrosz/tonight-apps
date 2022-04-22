@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/auth/form_inputs/email_input.dart';
-import 'package:raver/domain/auth/auth_facade.dart';
-import 'package:raver/domain/auth/auth_failure.dart';
+import 'package:raver_auth/raver_auth.dart';
 
 part 'reset_password_cubit.freezed.dart';
 part 'reset_password_state.dart';

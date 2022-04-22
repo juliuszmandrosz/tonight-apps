@@ -4,8 +4,9 @@ import 'package:logger/logger.dart';
 import 'package:raver/domain/tickets/ticket_entity.dart';
 import 'package:raver/domain/tickets/ticket_facade.dart';
 import 'package:raver/domain/tickets/ticket_failure.dart';
-import 'package:raver/infrastructure/core/firestore_helpers.dart';
+import 'package:raver/infrastructure/core/firestore_extension_user.dart';
 import 'package:raver/infrastructure/tickets/dtos/ticket_dto.dart';
+import 'package:raver_common/raver_common.dart';
 
 class FirebaseTicketFacade implements TicketFacade {
   final FirebaseFirestore _firestore;

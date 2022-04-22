@@ -3,17 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
-import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
-import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/application/initialization/remote_config_cubit.dart';
-import 'package:raver/application/tickets/ticket_cubit.dart';
 import 'package:raver/application/welcome_loading/welcome_loading_cubit.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/injection.dart';
+import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/error_alert/error_alert.dart';
 import 'package:raver/presentation/routes/app_router.dart';
-
-import '../config/themes/default_theme/default_colors.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class WelcomeLoaderPage extends StatelessWidget {
   final _welcomeBloc = getIt<WelcomeLoadingCubit>();
@@ -21,11 +17,8 @@ class WelcomeLoaderPage extends StatelessWidget {
   WelcomeLoaderPage({Key? key}) : super(key: key);
 
   _fetchData(BuildContext context) async {
-    await context.read<EventFavoriteCubit>().getFavoriteEventIds();
-    await context.read<TicketCubit>().getTickets();
     await context.read<UserLocationCubit>().requestUserLocationOnStart();
     context.read<RemoteConfigCubit>().setupRemoteConfig();
-    context.read<EventFiltersCubit>().resetFilters();
   }
 
   @override

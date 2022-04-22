@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/generated/l10n.dart';
-import 'package:raver/presentation/commons/extensions/build_context_extensions.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventFiltersPrice extends StatelessWidget {
   final int availableMaxPrice;
@@ -18,19 +18,22 @@ class EventFiltersPrice extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
-          previous.filters.minPrice != current.filters.minPrice ||
-          previous.filters.maxPrice != current.filters.maxPrice,
+          previous.filters.priceRangeFilter.minPrice !=
+              current.filters.priceRangeFilter.minPrice ||
+          previous.filters.priceRangeFilter.maxPrice !=
+              current.filters.priceRangeFilter.maxPrice,
       builder: (context, state) {
-        if (state.filters.maxPrice == null) {
+        if (state.filters.priceRangeFilter.maxPrice == null) {
           context.read<EventFiltersCubit>().changePriceRange(
-                state.filters.minPrice,
+                state.filters.priceRangeFilter.minPrice,
                 availableMaxPrice,
               );
         }
 
         var _currentRangeValues = RangeValues(
-          state.filters.minPrice.toDouble(),
-          state.filters.maxPrice?.toDouble() ?? availableMaxPrice.toDouble(),
+          state.filters.priceRangeFilter.minPrice.toDouble(),
+          state.filters.priceRangeFilter.maxPrice?.toDouble() ??
+              availableMaxPrice.toDouble(),
         );
 
         return Column(

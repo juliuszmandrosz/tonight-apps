@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver_translations/generated/generated.dart';
 
 class ClubCard extends StatelessWidget {
   static const heroTagPhrase = "clubPhoto";

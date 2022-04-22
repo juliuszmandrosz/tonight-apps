@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
-import 'package:raver/application/core/cubit_status.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/domain/clubs/club_facade.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/injection.dart';
-import 'package:raver/presentation/core/bottom_loader.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_card.dart';
 import 'package:raver/presentation/home/widgets/club_filter_section.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class ClubsPage extends StatefulWidget {
   const ClubsPage({Key? key}) : super(key: key);

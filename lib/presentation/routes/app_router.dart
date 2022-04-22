@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
-import 'package:raver/domain/events/event_entity.dart';
 import 'package:raver/presentation/auth/auth_page.dart';
 import 'package:raver/presentation/auth/reset_password/reset_password_page.dart';
 import 'package:raver/presentation/event_date_picker/event_date_picker_page.dart';
@@ -15,6 +14,7 @@ import 'package:raver/presentation/splash/splash_page.dart';
 import 'package:raver/presentation/ticket_qr/ticket_qr_page.dart';
 import 'package:raver/presentation/tickets/ticket_overview_page.dart';
 import 'package:raver/presentation/welcome_loader/welcome_loader_page.dart';
+import 'package:raver_events/raver_events.dart';
 
 import 'hero_empty_router_page.dart';
 

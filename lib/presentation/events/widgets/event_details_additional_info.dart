@@ -1,69 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver/domain/events/event_entity.dart';
-import 'package:raver/generated/l10n.dart';
-import 'package:raver/presentation/commons/constants/social_media_icons.dart';
-import 'package:raver/presentation/commons/utils/url_utils.dart';
-import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
+import 'package:raver/presentation/commons/icons/social_icon_with_title.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/raver_events.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventDetailsAdditionalInfo extends StatelessWidget {
   final Event event;
 
-  final urlLinksDescription = {
-    'Facebook': S().facebookEvent,
-    'DjChannel': S().djChannel,
-  };
-
-  EventDetailsAdditionalInfo({
+  const EventDetailsAdditionalInfo({
     required this.event,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return Column(
-      children: [
-        Row(
-          children: [
-            RaverHeadline(text: S().additionalInfo),
-          ],
-        ),
-        const SizedBox(height: 10),
-        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-          for (final url in event.urlLinks.entries.where(
-            (url) => socialMediaIcons.containsKey(url.key),
-          ))
-            Column(
-              children: [
-                IconButton(
-                  icon: FaIcon(
-                    socialMediaIcons[url.key],
-                    size: 30,
-                    color: DefaultColors.primaryColor,
-                  ),
-                  onPressed: () async {
-                    final result = await launchURL(url.value);
-                    if (result.isSome()) {
-                      ScaffoldMessenger.of(context)
-                        ..hideCurrentSnackBar()
-                        ..showSnackBar(
-                          SnackBar(content: Text(S().errorOpeningLink)),
-                        );
-                    }
-                  },
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  urlLinksDescription[url.key]!,
-                  style: textTheme.subtitle1,
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-        ])
-      ],
-    );
+    return Column(children: [
+      Row(
+        children: [
+          RaverHeadline(text: S().additionalInfo),
+        ],
+      ),
+      const SizedBox(height: 10),
+      Row(
+        mainAxisAlignment: event.urlLinks.length != 1
+            ? MainAxisAlignment.spaceEvenly
+            : MainAxisAlignment.center,
+        children: event.urlLinks.entries.map((element) {
+          if (eventSocialMedia.containsKey(element.key) &&
+              element.value.isNotEmpty) {
+            return SocialIconWithTitle(
+                url: element.value,
+                socialMedia: eventSocialMedia[element.key]!);
+          }
+          //This should never happen, but just in case
+          return const SizedBox.shrink();
+        }).toList(),
+      )
+    ]);
   }
 }

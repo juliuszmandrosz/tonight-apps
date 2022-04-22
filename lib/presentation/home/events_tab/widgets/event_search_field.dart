@@ -10,7 +10,8 @@ class EventSearchField extends StatelessWidget {
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       builder: (context, state) {
         return TextField(
-          controller: TextEditingController(text: state.filters.phrase),
+          controller:
+              TextEditingController(text: state.filters.phraseFilter.phrase),
           onSubmitted: (value) =>
               context.read<EventFiltersCubit>().submitSearchField(value),
           decoration: InputDecoration(
@@ -24,7 +25,7 @@ class EventSearchField extends StatelessWidget {
               color: Colors.black,
               size: 18,
             ),
-            suffixIcon: state.filters.phrase.isEmpty
+            suffixIcon: state.filters.phraseFilter.phrase.isEmpty
                 ? null
                 : InkWell(
                     onTap: () =>

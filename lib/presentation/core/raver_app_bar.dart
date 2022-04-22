@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class RaverAppBar extends StatelessWidget with PreferredSizeWidget {
   final String? title;

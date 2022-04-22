@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:raver/application/auth/form_inputs/email_input.dart';
 import 'package:raver/application/auth/sign_up/sign_up_cubit.dart';
-import 'package:raver/generated/l10n.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class SignUpEmailInput extends StatelessWidget {
   const SignUpEmailInput({Key? key}) : super(key: key);

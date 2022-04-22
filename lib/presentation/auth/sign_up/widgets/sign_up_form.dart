@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:raver/application/auth/sign_up/sign_up_cubit.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/auth/sign_up/widgets/sign_up_button.dart';
 import 'package:raver/presentation/auth/sign_up/widgets/sign_up_confirm_password_input.dart';
 import 'package:raver/presentation/auth/sign_up/widgets/sign_up_email_input.dart';
 import 'package:raver/presentation/auth/sign_up/widgets/sign_up_password_input.dart';
 import 'package:raver/presentation/config/translations/auth_error_messages_translations.dart';
 import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class SignUpForm extends StatelessWidget {
   const SignUpForm({Key? key}) : super(key: key);

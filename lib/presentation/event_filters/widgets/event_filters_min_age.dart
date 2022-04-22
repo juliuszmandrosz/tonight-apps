@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventFiltersMinAge extends StatelessWidget {
   final List<int> availableMinAges;
@@ -18,7 +18,8 @@ class EventFiltersMinAge extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
-          previous.filters.minAges != current.filters.minAges,
+          previous.filters.minAgesFilter.minAges !=
+          current.filters.minAgesFilter.minAges,
       builder: (context, state) {
         return Column(
           children: [
@@ -36,7 +37,7 @@ class EventFiltersMinAge extends StatelessWidget {
                       style: textTheme.subtitle1,
                     ),
                     controlAffinity: ListTileControlAffinity.leading,
-                    value: state.filters.minAges.contains(age),
+                    value: state.filters.minAgesFilter.minAges.contains(age),
                     onChanged: (value) =>
                         BlocProvider.of<EventFiltersCubit>(context)
                             .changeMinAges(age),

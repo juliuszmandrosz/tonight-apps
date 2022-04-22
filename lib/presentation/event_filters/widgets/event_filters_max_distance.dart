@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventFiltersMaxDistance extends StatefulWidget {
   const EventFiltersMaxDistance({Key? key}) : super(key: key);
@@ -42,11 +42,12 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
   Widget build(BuildContext context) {
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
-          previous.filters.maxDistance != current.filters.maxDistance ||
-          previous.filters.isMaxDistanceOption !=
-              current.filters.isMaxDistanceOption,
+          previous.filters.maxDistanceFilter.maxDistance !=
+              current.filters.maxDistanceFilter.maxDistance ||
+          previous.filters.maxDistanceFilter.enabled !=
+              current.filters.maxDistanceFilter.enabled,
       builder: (context, filtersState) {
-        return !filtersState.filters.isMaxDistanceOption
+        return !filtersState.filters.maxDistanceFilter.enabled
             ? Container()
             : BlocBuilder<UserLocationCubit, UserLocationState>(
                 builder: (context, locationState) {
@@ -58,7 +59,8 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
                           RaverHeadline(text: S().maxDistance),
                           if (locationState.isPermissionGranted)
                             RaverHeadline(
-                              text: '${filtersState.filters.maxDistance}km',
+                              text:
+                                  '${filtersState.filters.maxDistanceFilter.maxDistance}km',
                             ),
                         ],
                       ),
@@ -69,10 +71,11 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
                           locationState.isPermissionGranted
                               ? Expanded(
                                   child: Slider(
-                                    value: filtersState.filters.maxDistance
+                                    value: filtersState
+                                        .filters.maxDistanceFilter.maxDistance
                                         .toDouble(),
                                     label:
-                                        '${filtersState.filters.maxDistance.round()}',
+                                        '${filtersState.filters.maxDistanceFilter.maxDistance.round()}',
                                     activeColor: DefaultColors.primaryColor,
                                     inactiveColor:
                                         DefaultColors.backgroundColor,

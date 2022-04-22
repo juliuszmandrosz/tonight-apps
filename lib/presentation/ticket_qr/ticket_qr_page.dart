@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class TicketQrPage extends StatelessWidget {
   final String ticketId;

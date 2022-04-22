@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_place/google_place.dart';
 import 'package:raver/application/core/google_places/google_places_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
+import 'package:raver_translations/raver_translations.dart';
 import 'package:rxdart/rxdart.dart';
 
 class EventFiltersCity extends StatefulWidget {
@@ -22,8 +22,11 @@ class _EventFiltersCityState extends State<EventFiltersCity> {
   @override
   void initState() {
     _subscribeToSearchChange();
-    _textController.text =
-        BlocProvider.of<EventFiltersCubit>(context).state.filters.cityName;
+    _textController.text = BlocProvider.of<EventFiltersCubit>(context)
+        .state
+        .filters
+        .cityFilter
+        .cityName;
     super.initState();
   }
 
@@ -38,12 +41,14 @@ class _EventFiltersCityState extends State<EventFiltersCity> {
   Widget build(BuildContext context) {
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
-          previous.filters.cityName != current.filters.cityName ||
-          previous.filters.cityId != current.filters.cityId ||
-          previous.filters.isMaxDistanceOption !=
-              current.filters.isMaxDistanceOption,
+          previous.filters.cityFilter.cityName !=
+              current.filters.cityFilter.cityName ||
+          previous.filters.cityFilter.cityId !=
+              current.filters.cityFilter.cityId ||
+          previous.filters.maxDistanceFilter.enabled !=
+              current.filters.maxDistanceFilter.enabled,
       builder: (context, state) {
-        return state.filters.isMaxDistanceOption
+        return state.filters.maxDistanceFilter.enabled
             ? Container()
             : SingleChildScrollView(
                 child: Column(
@@ -69,7 +74,7 @@ class _EventFiltersCityState extends State<EventFiltersCity> {
                             width: 2,
                           ),
                         ),
-                        suffixIcon: state.filters.cityName.isNotEmpty
+                        suffixIcon: state.filters.cityFilter.cityName.isNotEmpty
                             ? InkWell(
                                 onTap: () {
                                   context

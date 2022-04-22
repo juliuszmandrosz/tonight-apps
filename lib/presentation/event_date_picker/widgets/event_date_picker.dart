@@ -15,10 +15,11 @@ class EventDatePicker extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
-          previous.filters.day != current.filters.day,
+          previous.filters.dateRangeFilter.fromDate !=
+          current.filters.dateRangeFilter.fromDate,
       builder: (context, state) {
         return SfDateRangePicker(
-          initialSelectedDate: state.filters.day,
+          initialSelectedDate: state.filters.dateRangeFilter.fromDate,
           onSelectionChanged: (args) =>
               _onSelectionChanged(context, args.value),
           view: DateRangePickerView.month,

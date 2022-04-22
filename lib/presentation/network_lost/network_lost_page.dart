@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:raver/application/network_check/network_check_cubit.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class NetworkLostPage extends StatelessWidget {
   const NetworkLostPage({Key? key}) : super(key: key);

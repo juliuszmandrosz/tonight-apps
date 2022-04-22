@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
-import 'package:raver/generated/l10n.dart';
+import 'package:raver_translations/generated/generated.dart';
 
 import 'clubs_tab/clubs_page.dart';
 import 'events_tab/event_overview_page.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:raver/domain/events/event_entity.dart';
-import 'package:raver/presentation/commons/extensions/build_context_extensions.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/raver_events.dart';
 
 class EventDetailsEventDate extends StatelessWidget {
   final Event event;
@@ -17,7 +17,7 @@ class EventDetailsEventDate extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          context.formatDateTimeToLocaleYMDHM(event.eventDateTime),
+          context.formatDateTimeToLocaleYMDHM(event.eventStartDateTime),
           style: textTheme.subtitle1,
         ),
       ],

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:raver/application/auth/reset_password/reset_password_cubit.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/auth/reset_password/widgets/reset_password_button.dart';
 import 'package:raver/presentation/auth/reset_password/widgets/reset_password_email_input.dart';
@@ -11,6 +10,7 @@ import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/config/translations/auth_error_messages_translations.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class ResetPasswordPage extends StatelessWidget {
   const ResetPasswordPage({Key? key}) : super(key: key);

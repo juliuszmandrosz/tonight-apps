@@ -9,7 +9,6 @@ import 'package:get_it/get_it.dart';
 import 'package:google_place/google_place.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
-import 'package:raver/application/auth/auth_cubit.dart';
 import 'package:raver/application/auth/reset_password/reset_password_cubit.dart';
 import 'package:raver/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:raver/application/auth/sign_up/sign_up_cubit.dart';
@@ -17,36 +16,28 @@ import 'package:raver/application/clubs/club_details/club_details_cubit.dart';
 import 'package:raver/application/clubs/club_details/club_photos/club_photos_bloc.dart';
 import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
-import 'package:raver/application/core/available_filters/available_filters_cubit.dart';
 import 'package:raver/application/core/google_places/google_places_cubit.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_details/event_details_cubit.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/application/events/event_overview/event_overview_bloc.dart';
 import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/network_check/network_check_cubit.dart';
 import 'package:raver/application/tickets/ticket_cubit.dart';
-import 'package:raver/domain/auth/auth_facade.dart';
 import 'package:raver/domain/clubs/club_facade.dart';
-import 'package:raver/domain/core/available_filters/available_filters_facade.dart';
-import 'package:raver/domain/events/event_facade.dart';
 import 'package:raver/domain/remote_config/remote_config_facade.dart';
 import 'package:raver/domain/tickets/ticket_facade.dart';
 import 'package:raver/domain/tickets/ticket_overview/ticket_overview_facade.dart';
-import 'package:raver/env_keys.dart';
 import 'package:raver/infrastructure/clubs/firebase_club_facade.dart';
 import 'package:raver/infrastructure/core/algolia/algolia_clubs_api.dart';
-import 'package:raver/infrastructure/core/algolia/algolia_events_api.dart';
-import 'package:raver/infrastructure/core/algolia_api.dart';
-import 'package:raver/infrastructure/core/available_filters/firebase_available_filters_facade.dart';
-import 'package:raver/infrastructure/events/firebase_event_facade.dart';
 import 'package:raver/infrastructure/remote_config/firebase_remote_config_facade.dart';
 import 'package:raver/infrastructure/tickets/firebase_ticket_facade.dart';
 import 'package:raver/infrastructure/tickets/ticket_overview/firebase_ticket_overview_facade.dart';
+import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/raver_events.dart';
 
 import 'application/welcome_loading/welcome_loading_cubit.dart';
-import 'infrastructure/auth/firebase_auth_facade.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -146,15 +137,15 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerLazySingleton(
+  getIt.registerFactory(
     () => EventOverviewBloc(
       getIt(),
     ),
   );
 
-  getIt.registerFactory(
-    () => EventFiltersCubit(
-      getIt(),
+  getIt.registerFactoryParam(
+    (EventOverviewBloc eventOverviewBloc, _) => EventFiltersCubit(
+      eventOverviewBloc,
       getIt(),
     ),
   );
@@ -229,6 +220,7 @@ void _registerFacades() {
       firestore: getIt(),
       algoliaEventsApi: getIt(),
       logger: getIt(),
+      firebaseAuth: getIt(),
     ),
   );
 
@@ -262,20 +254,14 @@ void _registerModules() {
     ),
   );
 
-  getIt.registerLazySingleton(
-    () => AlgoliaEventsApi(
+  getIt.registerLazySingleton<AlgoliaEventsApi>(
+    () => AlgoliaEventsApiImpl(
       getIt(),
     ),
   );
 
   getIt.registerLazySingleton(
     () => AlgoliaClubsApi(
-      getIt(),
-    ),
-  );
-
-  getIt.registerLazySingleton(
-    () => AlgoliaAPI(
       getIt(),
     ),
   );

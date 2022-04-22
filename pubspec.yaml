@@ -54,7 +54,6 @@ dependencies:
   flutter_rating_bar: ^4.0.0
   google_fonts: ^2.1.0 #TODO: Decide if fonts should be stored as asset,
   json_annotation: ^4.4.0
-  intl: ^0.17.0
   flutter_spinkit: ^5.1.0
   rxdart: ^0.27.0
   bloc_concurrency: ^0.2.0
@@ -72,6 +71,24 @@ dependencies:
   qr_flutter: ^4.0.0
   syncfusion_flutter_datepicker: ^19.4.55
   connectivity_plus: ^2.2.1
+  shimmer: ^2.0.0
+
+  raver_auth:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverAuth.git
+
+  raver_events:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverEvents.git
+      ref: develop
+
+  raver_translations:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverTranslations.git
+
+  raver_common:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverCommon.git
 
 dev_dependencies:
   flutter_test:
@@ -133,7 +150,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-flutter_intl:
-  enabled: true
-  localizely:
-    project_id: 3eadb84f-b5ae-475a-9e36-7c40d4d1017d

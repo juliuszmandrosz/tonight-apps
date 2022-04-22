@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/domain/clubs/club_entity.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
 import 'package:raver/presentation/commons/icons/raver_toggle_icon.dart';
-import 'package:raver/presentation/commons/utils/url_utils.dart';
 import 'package:raver/presentation/home/clubs_tab/widgets/club_details/rating_row.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 import 'description_row.dart';
 

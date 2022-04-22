@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:raver/application/auth/sign_up/sign_up_cubit.dart';
-import 'package:raver/generated/l10n.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class SignUpButton extends StatelessWidget {
   const SignUpButton({Key? key}) : super(key: key);

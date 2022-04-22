@@ -9,9 +9,8 @@ import 'package:raver/domain/clubs/club_entity.dart';
 import 'package:raver/domain/clubs/club_facade.dart';
 import 'package:raver/domain/clubs/failures/club_failure.dart';
 import 'package:raver/domain/clubs/filters/club_filters.dart';
-import 'package:raver/infrastructure/clubs/errors/invalid_id_error.dart';
 import 'package:raver/infrastructure/core/algolia/algolia_clubs_api.dart';
-import 'package:raver/infrastructure/core/firestore_helpers.dart';
+import 'package:raver_common/raver_common.dart';
 
 import 'dtos/club_dto.dart';
 

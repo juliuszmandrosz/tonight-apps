@@ -4,8 +4,7 @@ import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/auth/form_inputs/email_input.dart';
 import 'package:raver/application/auth/form_inputs/password_input.dart';
-import 'package:raver/domain/auth/auth_facade.dart';
-import 'package:raver/domain/auth/auth_failure.dart';
+import 'package:raver_auth/raver_auth.dart';
 
 part 'sign_in_cubit.freezed.dart';
 part 'sign_in_state.dart';

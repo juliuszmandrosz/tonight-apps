@@ -1,5 +1,5 @@
-import 'package:raver/domain/auth/auth_error_messages.dart';
-import 'package:raver/generated/l10n.dart';
+import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 final authErrorMessages = {
   accountExists: S().accountExists,

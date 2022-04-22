@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/generated/l10n.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventDatePickerButtons extends StatelessWidget {
   const EventDatePickerButtons({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class EventDatePickerButtons extends StatelessWidget {
         return Column(
           children: [
             ElevatedButton(
-              onPressed: state.filters.day != null
+              onPressed: state.filters.dateRangeFilter.fromDate != null
                   ? () {
                       context.read<EventFiltersCubit>().resetSelectedDay();
                       AutoRouter.of(context).pop();
@@ -27,7 +27,7 @@ class EventDatePickerButtons extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: state.filters.day != null
+              onPressed: state.filters.dateRangeFilter.fromDate != null
                   ? () {
                       context.read<EventFiltersCubit>().submitFilters();
                       AutoRouter.of(context).pop();

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventFiltersPlaceOption extends StatelessWidget {
   const EventFiltersPlaceOption({Key? key}) : super(key: key);
@@ -12,8 +12,8 @@ class EventFiltersPlaceOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
-          previous.filters.isMaxDistanceOption !=
-          current.filters.isMaxDistanceOption,
+          previous.filters.maxDistanceFilter.enabled !=
+          current.filters.maxDistanceFilter.enabled,
       builder: (context, filtersState) {
         return Column(
           children: [
@@ -26,7 +26,7 @@ class EventFiltersPlaceOption extends StatelessWidget {
               activeColor: DefaultColors.primaryColor,
               title: Text(S().findByCity),
               value: false,
-              groupValue: filtersState.filters.isMaxDistanceOption,
+              groupValue: filtersState.filters.maxDistanceFilter.enabled,
               onChanged: (value) => BlocProvider.of<EventFiltersCubit>(context)
                   .changeIsMaxDistanceOption(false),
             ),
@@ -34,7 +34,7 @@ class EventFiltersPlaceOption extends StatelessWidget {
               activeColor: DefaultColors.primaryColor,
               title: Text(S().findByMaxDistance),
               value: true,
-              groupValue: filtersState.filters.isMaxDistanceOption,
+              groupValue: filtersState.filters.maxDistanceFilter.enabled,
               onChanged: (value) => BlocProvider.of<EventFiltersCubit>(context)
                   .changeIsMaxDistanceOption(true),
             ),

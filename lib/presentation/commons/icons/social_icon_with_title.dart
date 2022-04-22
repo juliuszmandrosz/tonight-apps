@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
-import 'package:raver/presentation/commons/utils/url_utils.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class SocialIconWithTitle extends StatelessWidget {
-  const SocialIconWithTitle(
-      {Key? key,
-      required this.iconData,
-      required this.title,
-      required this.url})
-      : super(key: key);
+  const SocialIconWithTitle({
+    Key? key,
+    required this.url,
+    required this.socialMedia,
+  }) : super(key: key);
 
-  final IconData iconData;
-  final String title;
+  final SocialMedia socialMedia;
   final String url;
 
   @override
@@ -23,17 +22,20 @@ class SocialIconWithTitle extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             RaverIconButton(
-              onPressed: () {
-                launchURL(url);
+              onPressed: () async {
+                final isFailure = await launchURL(url);
+                if (isFailure.isSome()) {
+                  context.showSnackbarMessage(S().errorOpeningLink);
+                }
               },
-              icon: Icon(iconData),
+              icon: Icon(socialMedia.icon),
             ),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(title),
+            Text(socialMedia.label),
           ],
         )
       ],

@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:raver/domain/events/event_entity.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
+import 'package:raver_events/raver_events.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventDetailsEventPlace extends StatefulWidget {
   final Event event;

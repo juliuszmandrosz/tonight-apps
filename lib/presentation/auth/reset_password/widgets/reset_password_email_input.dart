@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:raver/application/auth/form_inputs/email_input.dart';
 import 'package:raver/application/auth/reset_password/reset_password_cubit.dart';
-import 'package:raver/generated/l10n.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class ResetPasswordEmailInput extends StatelessWidget {
   const ResetPasswordEmailInput({Key? key}) : super(key: key);

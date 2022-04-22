@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/auth/sign_in/sign_in_tab.dart';
 import 'package:raver/presentation/auth/sign_up/sign_up_tab.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({Key? key}) : super(key: key);

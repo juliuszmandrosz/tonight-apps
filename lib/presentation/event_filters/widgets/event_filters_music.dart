@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/generated/l10n.dart';
-import 'package:raver/presentation/commons/extensions/string_extensions.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventFiltersMusic extends StatelessWidget {
   final List<String> availableMusicalGenres;
@@ -19,7 +19,8 @@ class EventFiltersMusic extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
-          previous.filters.musicalGenres != current.filters.musicalGenres,
+          previous.filters.musicalGenresFilter.musicalGenres !=
+          current.filters.musicalGenresFilter.musicalGenres,
       builder: (context, state) {
         return Column(
           children: [
@@ -37,7 +38,8 @@ class EventFiltersMusic extends StatelessWidget {
                       style: textTheme.subtitle1,
                     ),
                     controlAffinity: ListTileControlAffinity.leading,
-                    value: state.filters.musicalGenres.contains(genre),
+                    value: state.filters.musicalGenresFilter.musicalGenres
+                        .contains(genre),
                     onChanged: (value) => context
                         .read<EventFiltersCubit>()
                         .changeMusicalGenres(genre),

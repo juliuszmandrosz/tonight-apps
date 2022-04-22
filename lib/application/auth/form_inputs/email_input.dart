@@ -1,5 +1,5 @@
 import 'package:formz/formz.dart';
-import 'package:raver/generated/l10n.dart';
+import 'package:raver_translations/generated/generated.dart';
 
 enum EmailInputError { empty, invalid }
 

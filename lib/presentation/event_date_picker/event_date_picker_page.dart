@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/generated/l10n.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/event_date_picker/widgets/event_date_picker.dart';
 import 'package:raver/presentation/event_date_picker/widgets/event_date_picker_buttons.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventDatePickerPage extends StatelessWidget {
   const EventDatePickerPage({Key? key}) : super(key: key);

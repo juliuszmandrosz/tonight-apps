@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver/domain/events/event_entity.dart';
-import 'package:raver/generated/l10n.dart';
-import 'package:raver/presentation/commons/extensions/build_context_extensions.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/events/utils/event_details_formatters.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/raver_events.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventDetailsSection extends StatelessWidget {
   final Event event;

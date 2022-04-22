@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:raver/generated/l10n.dart';
-import 'package:raver/presentation/commons/constants/social_media_icons.dart';
 import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
-import 'package:raver/presentation/commons/utils/url_utils.dart';
-import 'package:raver/presentation/home/clubs_tab/widgets/club_details_tabs/details/social_icon_with_title.dart';
+import 'package:raver/presentation/commons/icons/social_icon_with_title.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 import 'details/details_section.dart';
 
@@ -60,14 +59,14 @@ class ClubDetails extends StatelessWidget {
             socialMedia.isNotEmpty
                 ? DetailsSection(
                     content: Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: socialMedia.entries.map((element) {
-                          if (socialMediaIcons.containsKey(element.key)) {
+                          if (clubSocialMedia.containsKey(element.key) &&
+                              element.value.isNotEmpty) {
                             return SocialIconWithTitle(
-                              iconData: socialMediaIcons[element.key]!,
-                              title: element.key,
+                              socialMedia: clubSocialMedia[element.key]!,
                               url: element.value,
                             );
                           }

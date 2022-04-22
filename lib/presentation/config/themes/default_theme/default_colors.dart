@@ -11,4 +11,5 @@ class DefaultColors {
   static const Color textColorLight = Color(0xFF9E9E9E);
   static const Color accentColor = Color(0x9839D2C0);
   static const Color warningColor = Color(0xFFB81B47);
+  static const Color eventTileColor = Color(0xFF090F13);
 }
