@@ -29,8 +29,8 @@ class _$EventOverviewEventTearOff {
     return const _NextEventsPageFetched();
   }
 
-  _EventAdded eventAdded(Event event) {
-    return _EventAdded(
+  _EventToStateAdded eventToStateAdded(Event event) {
+    return _EventToStateAdded(
       event,
     );
   }
@@ -46,21 +46,21 @@ mixin _$EventOverviewEvent {
     required TResult Function(EventFilters filters, SortModel sortModel)
         eventsFetched,
     required TResult Function() nextEventsPageFetched,
-    required TResult Function(Event event) eventAdded,
+    required TResult Function(Event event) eventToStateAdded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
     TResult Function()? nextEventsPageFetched,
-    TResult Function(Event event)? eventAdded,
+    TResult Function(Event event)? eventToStateAdded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
     TResult Function()? nextEventsPageFetched,
-    TResult Function(Event event)? eventAdded,
+    TResult Function(Event event)? eventToStateAdded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,21 +69,21 @@ mixin _$EventOverviewEvent {
     required TResult Function(_EventsFetched value) eventsFetched,
     required TResult Function(_NextEventsPageFetched value)
         nextEventsPageFetched,
-    required TResult Function(_EventAdded value) eventAdded,
+    required TResult Function(_EventToStateAdded value) eventToStateAdded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
-    TResult Function(_EventAdded value)? eventAdded,
+    TResult Function(_EventToStateAdded value)? eventToStateAdded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
-    TResult Function(_EventAdded value)? eventAdded,
+    TResult Function(_EventToStateAdded value)? eventToStateAdded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -201,7 +201,7 @@ class _$_EventsFetched implements _EventsFetched {
     required TResult Function(EventFilters filters, SortModel sortModel)
         eventsFetched,
     required TResult Function() nextEventsPageFetched,
-    required TResult Function(Event event) eventAdded,
+    required TResult Function(Event event) eventToStateAdded,
   }) {
     return eventsFetched(filters, sortModel);
   }
@@ -211,7 +211,7 @@ class _$_EventsFetched implements _EventsFetched {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
     TResult Function()? nextEventsPageFetched,
-    TResult Function(Event event)? eventAdded,
+    TResult Function(Event event)? eventToStateAdded,
   }) {
     return eventsFetched?.call(filters, sortModel);
   }
@@ -221,7 +221,7 @@ class _$_EventsFetched implements _EventsFetched {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
     TResult Function()? nextEventsPageFetched,
-    TResult Function(Event event)? eventAdded,
+    TResult Function(Event event)? eventToStateAdded,
     required TResult orElse(),
   }) {
     if (eventsFetched != null) {
@@ -236,7 +236,7 @@ class _$_EventsFetched implements _EventsFetched {
     required TResult Function(_EventsFetched value) eventsFetched,
     required TResult Function(_NextEventsPageFetched value)
         nextEventsPageFetched,
-    required TResult Function(_EventAdded value) eventAdded,
+    required TResult Function(_EventToStateAdded value) eventToStateAdded,
   }) {
     return eventsFetched(this);
   }
@@ -246,7 +246,7 @@ class _$_EventsFetched implements _EventsFetched {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
-    TResult Function(_EventAdded value)? eventAdded,
+    TResult Function(_EventToStateAdded value)? eventToStateAdded,
   }) {
     return eventsFetched?.call(this);
   }
@@ -256,7 +256,7 @@ class _$_EventsFetched implements _EventsFetched {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
-    TResult Function(_EventAdded value)? eventAdded,
+    TResult Function(_EventToStateAdded value)? eventToStateAdded,
     required TResult orElse(),
   }) {
     if (eventsFetched != null) {
@@ -321,7 +321,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
     required TResult Function(EventFilters filters, SortModel sortModel)
         eventsFetched,
     required TResult Function() nextEventsPageFetched,
-    required TResult Function(Event event) eventAdded,
+    required TResult Function(Event event) eventToStateAdded,
   }) {
     return nextEventsPageFetched();
   }
@@ -331,7 +331,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
     TResult Function()? nextEventsPageFetched,
-    TResult Function(Event event)? eventAdded,
+    TResult Function(Event event)? eventToStateAdded,
   }) {
     return nextEventsPageFetched?.call();
   }
@@ -341,7 +341,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
     TResult Function()? nextEventsPageFetched,
-    TResult Function(Event event)? eventAdded,
+    TResult Function(Event event)? eventToStateAdded,
     required TResult orElse(),
   }) {
     if (nextEventsPageFetched != null) {
@@ -356,7 +356,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
     required TResult Function(_EventsFetched value) eventsFetched,
     required TResult Function(_NextEventsPageFetched value)
         nextEventsPageFetched,
-    required TResult Function(_EventAdded value) eventAdded,
+    required TResult Function(_EventToStateAdded value) eventToStateAdded,
   }) {
     return nextEventsPageFetched(this);
   }
@@ -366,7 +366,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
-    TResult Function(_EventAdded value)? eventAdded,
+    TResult Function(_EventToStateAdded value)? eventToStateAdded,
   }) {
     return nextEventsPageFetched?.call(this);
   }
@@ -376,7 +376,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
-    TResult Function(_EventAdded value)? eventAdded,
+    TResult Function(_EventToStateAdded value)? eventToStateAdded,
     required TResult orElse(),
   }) {
     if (nextEventsPageFetched != null) {
@@ -391,29 +391,29 @@ abstract class _NextEventsPageFetched implements EventOverviewEvent {
 }
 
 /// @nodoc
-abstract class _$EventAddedCopyWith<$Res> {
-  factory _$EventAddedCopyWith(
-          _EventAdded value, $Res Function(_EventAdded) then) =
-      __$EventAddedCopyWithImpl<$Res>;
+abstract class _$EventToStateAddedCopyWith<$Res> {
+  factory _$EventToStateAddedCopyWith(
+          _EventToStateAdded value, $Res Function(_EventToStateAdded) then) =
+      __$EventToStateAddedCopyWithImpl<$Res>;
   $Res call({Event event});
 }
 
 /// @nodoc
-class __$EventAddedCopyWithImpl<$Res>
+class __$EventToStateAddedCopyWithImpl<$Res>
     extends _$EventOverviewEventCopyWithImpl<$Res>
-    implements _$EventAddedCopyWith<$Res> {
-  __$EventAddedCopyWithImpl(
-      _EventAdded _value, $Res Function(_EventAdded) _then)
-      : super(_value, (v) => _then(v as _EventAdded));
+    implements _$EventToStateAddedCopyWith<$Res> {
+  __$EventToStateAddedCopyWithImpl(
+      _EventToStateAdded _value, $Res Function(_EventToStateAdded) _then)
+      : super(_value, (v) => _then(v as _EventToStateAdded));
 
   @override
-  _EventAdded get _value => super._value as _EventAdded;
+  _EventToStateAdded get _value => super._value as _EventToStateAdded;
 
   @override
   $Res call({
     Object? event = freezed,
   }) {
-    return _then(_EventAdded(
+    return _then(_EventToStateAdded(
       event == freezed
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
@@ -424,22 +424,22 @@ class __$EventAddedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventAdded implements _EventAdded {
-  const _$_EventAdded(this.event);
+class _$_EventToStateAdded implements _EventToStateAdded {
+  const _$_EventToStateAdded(this.event);
 
   @override
   final Event event;
 
   @override
   String toString() {
-    return 'EventOverviewEvent.eventAdded(event: $event)';
+    return 'EventOverviewEvent.eventToStateAdded(event: $event)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EventAdded &&
+            other is _EventToStateAdded &&
             const DeepCollectionEquality().equals(other.event, event));
   }
 
@@ -449,8 +449,8 @@ class _$_EventAdded implements _EventAdded {
 
   @JsonKey(ignore: true)
   @override
-  _$EventAddedCopyWith<_EventAdded> get copyWith =>
-      __$EventAddedCopyWithImpl<_EventAdded>(this, _$identity);
+  _$EventToStateAddedCopyWith<_EventToStateAdded> get copyWith =>
+      __$EventToStateAddedCopyWithImpl<_EventToStateAdded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -458,9 +458,9 @@ class _$_EventAdded implements _EventAdded {
     required TResult Function(EventFilters filters, SortModel sortModel)
         eventsFetched,
     required TResult Function() nextEventsPageFetched,
-    required TResult Function(Event event) eventAdded,
+    required TResult Function(Event event) eventToStateAdded,
   }) {
-    return eventAdded(event);
+    return eventToStateAdded(event);
   }
 
   @override
@@ -468,9 +468,9 @@ class _$_EventAdded implements _EventAdded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
     TResult Function()? nextEventsPageFetched,
-    TResult Function(Event event)? eventAdded,
+    TResult Function(Event event)? eventToStateAdded,
   }) {
-    return eventAdded?.call(event);
+    return eventToStateAdded?.call(event);
   }
 
   @override
@@ -478,11 +478,11 @@ class _$_EventAdded implements _EventAdded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
     TResult Function()? nextEventsPageFetched,
-    TResult Function(Event event)? eventAdded,
+    TResult Function(Event event)? eventToStateAdded,
     required TResult orElse(),
   }) {
-    if (eventAdded != null) {
-      return eventAdded(event);
+    if (eventToStateAdded != null) {
+      return eventToStateAdded(event);
     }
     return orElse();
   }
@@ -493,9 +493,9 @@ class _$_EventAdded implements _EventAdded {
     required TResult Function(_EventsFetched value) eventsFetched,
     required TResult Function(_NextEventsPageFetched value)
         nextEventsPageFetched,
-    required TResult Function(_EventAdded value) eventAdded,
+    required TResult Function(_EventToStateAdded value) eventToStateAdded,
   }) {
-    return eventAdded(this);
+    return eventToStateAdded(this);
   }
 
   @override
@@ -503,9 +503,9 @@ class _$_EventAdded implements _EventAdded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
-    TResult Function(_EventAdded value)? eventAdded,
+    TResult Function(_EventToStateAdded value)? eventToStateAdded,
   }) {
-    return eventAdded?.call(this);
+    return eventToStateAdded?.call(this);
   }
 
   @override
@@ -513,22 +513,22 @@ class _$_EventAdded implements _EventAdded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_EventsFetched value)? eventsFetched,
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
-    TResult Function(_EventAdded value)? eventAdded,
+    TResult Function(_EventToStateAdded value)? eventToStateAdded,
     required TResult orElse(),
   }) {
-    if (eventAdded != null) {
-      return eventAdded(this);
+    if (eventToStateAdded != null) {
+      return eventToStateAdded(this);
     }
     return orElse();
   }
 }
 
-abstract class _EventAdded implements EventOverviewEvent {
-  const factory _EventAdded(Event event) = _$_EventAdded;
+abstract class _EventToStateAdded implements EventOverviewEvent {
+  const factory _EventToStateAdded(Event event) = _$_EventToStateAdded;
 
   Event get event;
   @JsonKey(ignore: true)
-  _$EventAddedCopyWith<_EventAdded> get copyWith =>
+  _$EventToStateAddedCopyWith<_EventToStateAdded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

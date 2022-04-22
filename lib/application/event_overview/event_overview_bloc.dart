@@ -3,10 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/domain/event_entity.dart';
-import 'package:raver_events/domain/event_facade.dart';
-import 'package:raver_events/domain/filters/event_filters_entity.dart';
-import 'package:raver_events/domain/sort/sort_model.dart';
+import 'package:raver_events/domain/domain.dart';
 
 part 'event_overview_bloc.freezed.dart';
 
@@ -28,7 +25,7 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
 
     on<_EventsFetched>((event, emit) => _onEventsFetched(event, emit));
 
-    on<_EventAdded>((event, emit) => _onEventAdded(event, emit));
+    on<_EventToStateAdded>((event, emit) => _onEventToStateAdded(event, emit));
   }
 
   Future<void> _onEventsFetched(
@@ -84,9 +81,22 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
     );
   }
 
-  _onEventAdded(_EventAdded event, Emitter<EventOverviewState> emit) {
-    final currentEvents = [...state.events];
-    currentEvents.add(event.event);
-    emit(state.copyWith(events: currentEvents));
+  _onEventToStateAdded(
+    _EventToStateAdded event,
+    Emitter<EventOverviewState> emit,
+  ) {
+    final eventsCopy = [...state.events];
+    eventsCopy.add(event.event);
+    _sortEventsByStartDate(eventsCopy);
+    emit(state.copyWith(events: eventsCopy));
+  }
+
+  _sortEventsByStartDate(List<Event> events) {
+    events.sort((a, b) {
+      final firstDate = a.eventStartDateTime;
+      final secondDate = b.eventStartDateTime;
+
+      return firstDate.compareTo(secondDate);
+    });
   }
 }
