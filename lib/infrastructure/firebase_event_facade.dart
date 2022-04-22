@@ -8,7 +8,7 @@ import 'package:raver_events/domain/domain.dart';
 import 'package:raver_events/infrastructure/algolia_events_api.dart';
 import 'package:raver_events/infrastructure/dtos/event_dto.dart';
 
-class FirebaseEventFacade implements EventFacade {
+class FirebaseEventFacade implements EventFacade, SelectorEventFacade {
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
   final AlgoliaEventsApi _algoliaEventsApi;
@@ -64,15 +64,15 @@ class FirebaseEventFacade implements EventFacade {
   Future<Either<EventFailure, Unit>> toggleEventFavoriteStatus(
       String eventId) async {
     try {
-      final userDoc = _getCurrentUserDocument();
-      final userSnapshot = await userDoc.get();
-      final userFavorites = userSnapshot.get('favoriteEvents') as List<dynamic>;
+      final userDoc = await _getCurrentUserDocument();
+      final userRef = _getCurrentUserReference();
+      final userFavorites = userDoc.get('favoriteEvents') as List<dynamic>;
 
       userFavorites.contains(eventId)
           ? userFavorites.remove(eventId)
           : userFavorites.add(eventId);
 
-      await userDoc.update({'favoriteEvents': userFavorites});
+      await userRef.update({'favoriteEvents': userFavorites});
 
       return right(unit);
     } on FirebaseException catch (e) {
@@ -84,11 +84,10 @@ class FirebaseEventFacade implements EventFacade {
 
   @override
   Future<Either<EventFailure, List<String>>> getFavoriteEventIds() async {
-    final userDoc = _getCurrentUserDocument();
-    final userSnapshot = await userDoc.get();
+    final userDoc = await _getCurrentUserDocument();
 
     try {
-      final favoriteEventIds = await userSnapshot.get('favoriteEvents');
+      final favoriteEventIds = await userDoc.get('favoriteEvents');
       return right(List<String>.from(favoriteEventIds));
     } on FirebaseException catch (e) {
       _logger.e("Exception during getting favorite event ids EXCEPTION: $e");
@@ -111,7 +110,48 @@ class FirebaseEventFacade implements EventFacade {
     }
   }
 
-  DocumentReference _getCurrentUserDocument() {
+  @override
+  Future<Either<EventFailure, Option<Event>>>
+      getCurrentEventFromClubAsSelector() async {
+    try {
+      final selectorDoc = await _getCurrentSelectorDocument();
+      final clubId = selectorDoc.get('clubId');
+
+      final filters = EventFilters.empty().copyWith(
+        clubFilter: ClubFilter(clubId: clubId),
+        showOnlyFilter: ShowOnlyFilter(showOnlyLive: true),
+      );
+
+      final result =
+          await _algoliaEventsApi.getEvents(filters, SortModel.empty(), 1, 0);
+
+      if (result.empty) return right(none());
+
+      final currentEvent = result.hits.first;
+
+      return right<EventFailure, Option<Event>>(
+        some(EventDto.fromAlgolia(currentEvent).toDomain()),
+      );
+    } on FirebaseException catch (e) {
+      _logger.e(
+        "Exception during getting "
+        "current event from club EXCEPTION: $e",
+      );
+      return left(const EventFailure.unexpected());
+    }
+  }
+
+  Future<DocumentSnapshot> _getCurrentUserDocument() async {
+    final firebaseUser = _firebaseAuth.currentUser;
+
+    if (firebaseUser == null) throw NotAuthenticatedError();
+
+    final userDoc = await _firestore.userCollection.doc(firebaseUser.uid).get();
+
+    return userDoc;
+  }
+
+  DocumentReference _getCurrentUserReference() {
     final firebaseUser = _firebaseAuth.currentUser;
 
     if (firebaseUser == null) throw NotAuthenticatedError();
@@ -119,5 +159,16 @@ class FirebaseEventFacade implements EventFacade {
     final userDoc = _firestore.userCollection.doc(firebaseUser.uid);
 
     return userDoc;
+  }
+
+  Future<DocumentSnapshot> _getCurrentSelectorDocument() async {
+    final firebaseUser = _firebaseAuth.currentUser;
+
+    if (firebaseUser == null) throw NotAuthenticatedError();
+
+    final selectorDoc =
+        await _firestore.selectorsCollection.doc(firebaseUser.uid).get();
+
+    return selectorDoc;
   }
 }

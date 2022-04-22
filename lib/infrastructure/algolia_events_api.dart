@@ -24,7 +24,7 @@ class AlgoliaEventsApiImpl implements AlgoliaEventsApi {
   ) async {
     AlgoliaQuery query = _algolia.instance.index(_getIndexName(sortModel));
 
-    query=filters.buildQuery(query);
+    query = filters.buildQuery(query);
 
     query = query.setLength(pageSize).setOffset(offset);
 
