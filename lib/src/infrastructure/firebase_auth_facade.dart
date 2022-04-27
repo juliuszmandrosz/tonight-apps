@@ -237,7 +237,9 @@ class FirebaseAuthFacade
 
       if (firebaseUser == null) return none();
 
-      await _authCloudFunctionsFacade.checkUserClaim(firebaseUser.email!);
+      final userEmail = _getUserEmail(firebaseUser);
+
+      await _authCloudFunctionsFacade.checkUserClaim(userEmail);
 
       return some(firebaseUser.toDomain());
     } on FirebaseFunctionsException catch (e) {
@@ -330,4 +332,8 @@ class FirebaseAuthFacade
     );
     return _firebaseAuth.signInWithCredential(authCredential);
   }
+}
+
+String _getUserEmail(User user) {
+  return user.email ?? user.providerData.first.email!;
 }
