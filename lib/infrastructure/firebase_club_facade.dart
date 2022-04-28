@@ -9,7 +9,7 @@ import 'package:raver_clubs/infrastructure/club_dto.dart';
 
 import 'package:raver_common/raver_common.dart';
 
-class FirebaseClubFacade implements ClubFacade {
+class FirebaseClubFacade implements UserClubFacade, PartnerClubFacade {
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;
   final Logger _logger;
