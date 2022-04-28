@@ -12,9 +12,10 @@ abstract class EventFacade {
 
   Future<Either<EventFailure, Event>> getEventById(String eventId);
 
-  Future<Either<EventFailure, List<String>>> getFavoriteEventIds();
-
   Future<Either<EventFailure, Unit>> toggleEventFavoriteStatus(String eventId);
+
+  Future<Either<EventFailure, List<Event>>> getFutureEventsByIds(
+      List<String> eventIds);
 
   Future<Either<EventFailure, Unit>> addEvent(
     Event event,

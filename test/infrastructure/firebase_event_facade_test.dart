@@ -166,31 +166,6 @@ void main() {
     });
   });
 
-  group('get favorite event ids', () {
-    test('should return favorite event ids if user is present', () async {
-      await signInUser();
-      final userDoc = firestore.collection('users').doc(userId);
-      await userDoc.update({
-        'favoriteEvents': [eventId]
-      });
-
-      final expected = [eventId];
-
-      final result = await facade.getFavoriteEventIds();
-
-      expect(result.getOrElse(() => []), expected);
-    });
-
-    test('should throw not authenticated error when user is not present',
-        () async {
-      final expected = throwsA(isA<NotAuthenticatedError>());
-
-      final call = facade.getFavoriteEventIds;
-
-      expect(() => call(), expected);
-    });
-  });
-
   group('get events', () {
     test('should return events', () async {
       final now = DateTime.now();

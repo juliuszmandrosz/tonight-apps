@@ -85,14 +85,35 @@ class FirebaseEventFacade implements EventFacade, SelectorEventFacade {
   }
 
   @override
-  Future<Either<EventFailure, List<String>>> getFavoriteEventIds() async {
-    final userDoc = await _getCurrentUserDocument();
-
+  Future<Either<EventFailure, List<Event>>> getFutureEventsByIds(
+      List<String> eventIds) async {
+    final eventsQuery = _firestore.eventCollection
+        .where('id', whereIn: eventIds)
+        .where('eventEndDateTime',
+            isGreaterThanOrEqualTo: DateTime.now().millisecondsSinceEpoch);
     try {
-      final favoriteEventIds = await userDoc.get('favoriteEvents');
-      return right(List<String>.from(favoriteEventIds));
+      final events = await eventsQuery.get();
+      return right(
+          events.docs.map((e) => EventDto.fromFirebase(e).toDomain()).toList());
     } on FirebaseException catch (e) {
-      _logger.e("Exception during getting favorite event ids EXCEPTION: $e");
+      _logger.e("Exception during fetching events by ids EXCEPTION: $e");
+      return left(const EventFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<EventFailure, List<Event>>> getFutureEventsByIds(
+      List<String> eventIds) async {
+    final eventsQuery = _firestore.eventCollection
+        .where('id', whereIn: eventIds)
+        .where('eventEndDateTime',
+            isGreaterThanOrEqualTo: DateTime.now().millisecondsSinceEpoch);
+    try {
+      final events = await eventsQuery.get();
+      return right(
+          events.docs.map((e) => EventDto.fromFirebase(e).toDomain()).toList());
+    } on FirebaseException catch (e) {
+      _logger.e("Exception during fetching events by ids EXCEPTION: $e");
       return left(const EventFailure.unexpected());
     }
   }
