@@ -3,12 +3,10 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_rewards/domain/reward_entity.dart';
-import 'package:raver_rewards/domain/reward_facade.dart';
-import 'package:raver_rewards/domain/reward_failure.dart';
+import 'package:raver_rewards/domain/domain.dart';
 import 'package:raver_rewards/infrastructure/reward_dto.dart';
 
-class FirebaseRewardFacade implements RewardFacade {
+class FirebaseRewardFacade implements UserRewardFacade, PartnerRewardFacade {
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;
   final Logger _logger;
