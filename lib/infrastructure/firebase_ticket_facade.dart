@@ -4,15 +4,13 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_tickets/domain/ticket_entity.dart';
-import 'package:raver_tickets/domain/ticket_facade.dart';
-import 'package:raver_tickets/domain/ticket_failure.dart';
+import 'package:raver_tickets/domain/domain.dart';
 import 'package:raver_tickets/infrastructure/cloud_functions/cloud_functions_failures.dart';
 import 'package:raver_tickets/infrastructure/cloud_functions/params/return_ticket_params.dart';
 import 'package:raver_tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
 import 'package:raver_tickets/infrastructure/ticket_dto.dart';
 
-class FirebaseTicketFacade implements TicketFacade {
+class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;
   final TicketCloudFunctionsFacade _ticketCloudFunctionsFacade;
