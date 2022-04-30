@@ -120,10 +120,10 @@ class S {
     );
   }
 
-  /// `Add YouTube DJ channel URL link`
+  /// `Add link to DJ channel on YouTube`
   String get addDjChannelYoutubeUrl {
     return Intl.message(
-      'Add YouTube DJ channel URL link',
+      'Add link to DJ channel on YouTube',
       name: 'addDjChannelYoutubeUrl',
       desc: '',
       args: [],
@@ -566,10 +566,10 @@ class S {
     );
   }
 
-  /// `DJ Youtube channel`
+  /// `DJ YouTube channel`
   String get djYoutubeChannel {
     return Intl.message(
-      'DJ Youtube channel',
+      'DJ YouTube channel',
       name: 'djYoutubeChannel',
       desc: '',
       args: [],
@@ -606,10 +606,10 @@ class S {
     );
   }
 
-  /// `Edit YouTube DJ channel URL link`
+  /// `Edit link to Dj channel on Youtube`
   String get editDjChannelYoutubeUrl {
     return Intl.message(
-      'Edit YouTube DJ channel URL link',
+      'Edit link to Dj channel on Youtube',
       name: 'editDjChannelYoutubeUrl',
       desc: '',
       args: [],
@@ -876,10 +876,10 @@ class S {
     );
   }
 
-  /// `Please enter link to Youtube`
+  /// `Please enter link to YouTube`
   String get enterYoutubeLink {
     return Intl.message(
-      'Please enter link to Youtube',
+      'Please enter link to YouTube',
       name: 'enterYoutubeLink',
       desc: '',
       args: [],

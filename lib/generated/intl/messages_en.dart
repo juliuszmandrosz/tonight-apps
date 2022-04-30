@@ -59,7 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addDescription":
             MessageLookupByLibrary.simpleMessage("Add description"),
         "addDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
-            "Add YouTube DJ channel URL link"),
+            "Add link to DJ channel on YouTube"),
         "addEvent": MessageLookupByLibrary.simpleMessage("Add event"),
         "addFacebookUrl":
             MessageLookupByLibrary.simpleMessage("Add Facebook event URL link"),
@@ -124,13 +124,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "djYoutubeChannel":
-            MessageLookupByLibrary.simpleMessage("DJ Youtube channel"),
+            MessageLookupByLibrary.simpleMessage("DJ YouTube channel"),
         "dressCode": MessageLookupByLibrary.simpleMessage("Dress code"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "editDescription":
             MessageLookupByLibrary.simpleMessage("Edit description"),
         "editDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
-            "Edit YouTube DJ channel URL link"),
+            "Edit link to Dj channel on Youtube"),
         "editEventName":
             MessageLookupByLibrary.simpleMessage("Edit event name"),
         "editFacebookUrl": MessageLookupByLibrary.simpleMessage(
@@ -180,7 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterValidEmail":
             MessageLookupByLibrary.simpleMessage("Enter valid email address"),
         "enterYoutubeLink": MessageLookupByLibrary.simpleMessage(
-            "Please enter link to Youtube"),
+            "Please enter link to YouTube"),
         "entries": m2,
         "errorAddingEvent":
             MessageLookupByLibrary.simpleMessage("Error adding event"),

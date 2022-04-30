@@ -58,7 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Należy dodać co najmniej jedną pulę biletów"),
         "addDescription": MessageLookupByLibrary.simpleMessage("Dodaj opis"),
         "addDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
-            "Dodaj link URL kanału na Youtubie DJ-a"),
+            "Dodaj link do kanału DJ-a na YouTube"),
         "addEvent": MessageLookupByLibrary.simpleMessage("Dodaj wydarzenie"),
         "addFacebookUrl": MessageLookupByLibrary.simpleMessage(
             "Dodaj link URL wydarzenia na Facebooku"),
@@ -124,12 +124,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "description": MessageLookupByLibrary.simpleMessage("Opis"),
         "details": MessageLookupByLibrary.simpleMessage("Szczegóły"),
         "djYoutubeChannel":
-            MessageLookupByLibrary.simpleMessage("Kanał DJ-a na Youtube"),
+            MessageLookupByLibrary.simpleMessage("Kanał DJ-a na YouTube"),
         "dressCode": MessageLookupByLibrary.simpleMessage("Dress code"),
         "edit": MessageLookupByLibrary.simpleMessage("Edytuj"),
         "editDescription": MessageLookupByLibrary.simpleMessage("Edytuj opis"),
         "editDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
-            "Edytuj link URL kanału na Youtubie DJ-a"),
+            "Edytuj link do kanału DJ-a na YouTube"),
         "editEventName":
             MessageLookupByLibrary.simpleMessage("Edytuj nazwę wydarzenia"),
         "editFacebookUrl": MessageLookupByLibrary.simpleMessage(
@@ -177,7 +177,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterValidEmail": MessageLookupByLibrary.simpleMessage(
             "Wprowadź prawidłowy adres e-mail"),
         "enterYoutubeLink": MessageLookupByLibrary.simpleMessage(
-            "Proszę podać link do Youtube"),
+            "Proszę podać link do YouTube"),
         "entries": m2,
         "errorAddingEvent": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas dodawania wydarzenia"),
