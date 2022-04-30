@@ -566,11 +566,11 @@ class S {
     );
   }
 
-  /// `Dj channel`
-  String get djChannel {
+  /// `DJ Youtube channel`
+  String get djYoutubeChannel {
     return Intl.message(
-      'Dj channel',
-      name: 'djChannel',
+      'DJ Youtube channel',
+      name: 'djYoutubeChannel',
       desc: '',
       args: [],
     );
@@ -751,16 +751,6 @@ class S {
     return Intl.message(
       'Please enter description',
       name: 'enterDesc',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please enter link to dj channel`
-  String get enterDjChannelUrl {
-    return Intl.message(
-      'Please enter link to dj channel',
-      name: 'enterDjChannelUrl',
       desc: '',
       args: [],
     );

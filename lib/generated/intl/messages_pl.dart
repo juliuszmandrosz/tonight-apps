@@ -58,7 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Należy dodać co najmniej jedną pulę biletów"),
         "addDescription": MessageLookupByLibrary.simpleMessage("Dodaj opis"),
         "addDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
-            "Dodaj link URL kanału na Youtubie DJ\'a"),
+            "Dodaj link URL kanału na Youtubie DJ-a"),
         "addEvent": MessageLookupByLibrary.simpleMessage("Dodaj wydarzenie"),
         "addFacebookUrl": MessageLookupByLibrary.simpleMessage(
             "Dodaj link URL wydarzenia na Facebooku"),
@@ -123,12 +123,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Opis może zawierać maksymalnie 1000 znaków"),
         "description": MessageLookupByLibrary.simpleMessage("Opis"),
         "details": MessageLookupByLibrary.simpleMessage("Szczegóły"),
-        "djChannel": MessageLookupByLibrary.simpleMessage("Kanał DJ\'a"),
+        "djYoutubeChannel":
+            MessageLookupByLibrary.simpleMessage("Kanał DJ-a na Youtube"),
         "dressCode": MessageLookupByLibrary.simpleMessage("Dress code"),
         "edit": MessageLookupByLibrary.simpleMessage("Edytuj"),
         "editDescription": MessageLookupByLibrary.simpleMessage("Edytuj opis"),
         "editDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
-            "Edytuj link URL kanału na Youtubie DJ\'a"),
+            "Edytuj link URL kanału na Youtubie DJ-a"),
         "editEventName":
             MessageLookupByLibrary.simpleMessage("Edytuj nazwę wydarzenia"),
         "editFacebookUrl": MessageLookupByLibrary.simpleMessage(
@@ -152,8 +153,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterArtistName": MessageLookupByLibrary.simpleMessage(
             "Proszę podać nazwę wykonawcy"),
         "enterDesc": MessageLookupByLibrary.simpleMessage("Proszę podać opis"),
-        "enterDjChannelUrl": MessageLookupByLibrary.simpleMessage(
-            "Proszę podać link do kanału dj\'a"),
         "enterEmail": MessageLookupByLibrary.simpleMessage(
             "Proszę wprowadź adres e-mail"),
         "enterEndDateTime": MessageLookupByLibrary.simpleMessage(

@@ -123,7 +123,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Description may contain up to 1000 characters"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
-        "djChannel": MessageLookupByLibrary.simpleMessage("Dj channel"),
+        "djYoutubeChannel":
+            MessageLookupByLibrary.simpleMessage("DJ Youtube channel"),
         "dressCode": MessageLookupByLibrary.simpleMessage("Dress code"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "editDescription":
@@ -154,8 +155,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter artist name"),
         "enterDesc":
             MessageLookupByLibrary.simpleMessage("Please enter description"),
-        "enterDjChannelUrl": MessageLookupByLibrary.simpleMessage(
-            "Please enter link to dj channel"),
         "enterEmail": MessageLookupByLibrary.simpleMessage(
             "Please enter your e-mail address"),
         "enterEndDateTime":
