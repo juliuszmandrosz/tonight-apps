@@ -50,6 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.3"
+  auto_size_text:
+    dependency: "direct main"
+    description:
+      name: auto_size_text
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   bloc:
     dependency: transitive
     description:
@@ -799,8 +806,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/distinct-facades"
-      resolved-ref: "69478f3c9e2e3229bedd44c14da0b96a4123080a"
+      ref: "hotfix/get-current-event-as-selector"
+      resolved-ref: "0069f4b3f4c5ae3becc8b8199f39256827dbd32c"
       url: "https://github.com/juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"

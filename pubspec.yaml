@@ -51,6 +51,7 @@ dependencies:
   mobile_scanner: ^1.0.0
   font_awesome_flutter: ^9.2.0
   cloud_functions: ^3.2.13
+  auto_size_text: ^3.0.0
 
   raver_translations:
     git:
@@ -67,7 +68,7 @@ dependencies:
   raver_events:
     git:
       url: https://github.com/juliuszmandrosz/RaverEvents.git
-      ref: feature/distinct-facades
+      ref: hotfix/get-current-event-as-selector
 
   raver_tickets:
     git:
