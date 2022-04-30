@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_events/domain/filters/filter/allowed_outfits_filter.dart';
 import 'package:raver_events/domain/filters/filter/city_filter.dart';
 import 'package:raver_events/domain/filters/filter/club_filter.dart';
+import 'package:raver_events/domain/filters/filter/date_includes_filter.dart';
 import 'package:raver_events/domain/filters/filter/date_range_filter.dart';
 import 'package:raver_events/domain/filters/filter/is_concert_filter.dart';
 import 'package:raver_events/domain/filters/filter/max_distance_filter.dart';
@@ -30,6 +31,7 @@ class EventFilters with _$EventFilters {
     required DateRangeFilter dateRangeFilter,
     required IsConcertFilter isConcertFilter,
     required ShowOnlyFilter showOnlyFilter,
+    required DateIncludesFilter dateIncludesFilter,
   }) = _EventFilters;
 
   factory EventFilters.empty() => EventFilters(
@@ -44,13 +46,18 @@ class EventFilters with _$EventFilters {
           userLocation: {},
           maxDistance: 50,
         ),
-        dateRangeFilter: DateRangeFilter(fromDate: DateTime.now(), toDate: null),
+        dateRangeFilter:
+            DateRangeFilter(fromDate: DateTime.now(), toDate: null),
         isConcertFilter: IsConcertFilter(isConcert: null),
         clubFilter: ClubFilter(clubId: null),
         showOnlyFilter: ShowOnlyFilter(
           showOnlyPast: false,
           showOnlyLive: false,
           showOnlyUpcoming: false,
+        ),
+        dateIncludesFilter: DateIncludesFilter(
+          fromDate: null,
+          toDate: null,
         ),
       );
 
@@ -67,6 +74,7 @@ class EventFilters with _$EventFilters {
       dateRangeFilter,
       isConcertFilter,
       showOnlyFilter,
+      dateIncludesFilter,
     ];
     for (final filter in filterList) {
       query = filter.buildQuery(query);

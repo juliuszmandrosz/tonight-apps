@@ -8,4 +8,10 @@ abstract class PartnerEventFacade {
   );
 
   Future<Either<EventFailure, Unit>> updateEvent(Event event);
+
+  Future<Either<EventFailure, Option<Event>>>
+      getEventInDateRangeForCurrentPartner(
+    DateTime fromDate,
+    DateTime toDate,
+  );
 }

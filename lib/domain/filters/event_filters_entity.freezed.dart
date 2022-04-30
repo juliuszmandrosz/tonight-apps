@@ -29,7 +29,8 @@ class _$EventFiltersTearOff {
       required ClubFilter clubFilter,
       required DateRangeFilter dateRangeFilter,
       required IsConcertFilter isConcertFilter,
-      required ShowOnlyFilter showOnlyFilter}) {
+      required ShowOnlyFilter showOnlyFilter,
+      required DateIncludesFilter dateIncludesFilter}) {
     return _EventFilters(
       phraseFilter: phraseFilter,
       priceRangeFilter: priceRangeFilter,
@@ -42,6 +43,7 @@ class _$EventFiltersTearOff {
       dateRangeFilter: dateRangeFilter,
       isConcertFilter: isConcertFilter,
       showOnlyFilter: showOnlyFilter,
+      dateIncludesFilter: dateIncludesFilter,
     );
   }
 }
@@ -64,6 +66,8 @@ mixin _$EventFilters {
   DateRangeFilter get dateRangeFilter => throw _privateConstructorUsedError;
   IsConcertFilter get isConcertFilter => throw _privateConstructorUsedError;
   ShowOnlyFilter get showOnlyFilter => throw _privateConstructorUsedError;
+  DateIncludesFilter get dateIncludesFilter =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventFiltersCopyWith<EventFilters> get copyWith =>
@@ -86,7 +90,8 @@ abstract class $EventFiltersCopyWith<$Res> {
       ClubFilter clubFilter,
       DateRangeFilter dateRangeFilter,
       IsConcertFilter isConcertFilter,
-      ShowOnlyFilter showOnlyFilter});
+      ShowOnlyFilter showOnlyFilter,
+      DateIncludesFilter dateIncludesFilter});
 }
 
 /// @nodoc
@@ -110,6 +115,7 @@ class _$EventFiltersCopyWithImpl<$Res> implements $EventFiltersCopyWith<$Res> {
     Object? dateRangeFilter = freezed,
     Object? isConcertFilter = freezed,
     Object? showOnlyFilter = freezed,
+    Object? dateIncludesFilter = freezed,
   }) {
     return _then(_value.copyWith(
       phraseFilter: phraseFilter == freezed
@@ -156,6 +162,10 @@ class _$EventFiltersCopyWithImpl<$Res> implements $EventFiltersCopyWith<$Res> {
           ? _value.showOnlyFilter
           : showOnlyFilter // ignore: cast_nullable_to_non_nullable
               as ShowOnlyFilter,
+      dateIncludesFilter: dateIncludesFilter == freezed
+          ? _value.dateIncludesFilter
+          : dateIncludesFilter // ignore: cast_nullable_to_non_nullable
+              as DateIncludesFilter,
     ));
   }
 }
@@ -178,7 +188,8 @@ abstract class _$EventFiltersCopyWith<$Res>
       ClubFilter clubFilter,
       DateRangeFilter dateRangeFilter,
       IsConcertFilter isConcertFilter,
-      ShowOnlyFilter showOnlyFilter});
+      ShowOnlyFilter showOnlyFilter,
+      DateIncludesFilter dateIncludesFilter});
 }
 
 /// @nodoc
@@ -204,6 +215,7 @@ class __$EventFiltersCopyWithImpl<$Res> extends _$EventFiltersCopyWithImpl<$Res>
     Object? dateRangeFilter = freezed,
     Object? isConcertFilter = freezed,
     Object? showOnlyFilter = freezed,
+    Object? dateIncludesFilter = freezed,
   }) {
     return _then(_EventFilters(
       phraseFilter: phraseFilter == freezed
@@ -250,6 +262,10 @@ class __$EventFiltersCopyWithImpl<$Res> extends _$EventFiltersCopyWithImpl<$Res>
           ? _value.showOnlyFilter
           : showOnlyFilter // ignore: cast_nullable_to_non_nullable
               as ShowOnlyFilter,
+      dateIncludesFilter: dateIncludesFilter == freezed
+          ? _value.dateIncludesFilter
+          : dateIncludesFilter // ignore: cast_nullable_to_non_nullable
+              as DateIncludesFilter,
     ));
   }
 }
@@ -268,7 +284,8 @@ class _$_EventFilters extends _EventFilters {
       required this.clubFilter,
       required this.dateRangeFilter,
       required this.isConcertFilter,
-      required this.showOnlyFilter})
+      required this.showOnlyFilter,
+      required this.dateIncludesFilter})
       : super._();
 
   @override
@@ -293,10 +310,12 @@ class _$_EventFilters extends _EventFilters {
   final IsConcertFilter isConcertFilter;
   @override
   final ShowOnlyFilter showOnlyFilter;
+  @override
+  final DateIncludesFilter dateIncludesFilter;
 
   @override
   String toString() {
-    return 'EventFilters(phraseFilter: $phraseFilter, priceRangeFilter: $priceRangeFilter, minAgesFilter: $minAgesFilter, musicalGenresFilter: $musicalGenresFilter, allowedOutfitsFilter: $allowedOutfitsFilter, maxDistanceFilter: $maxDistanceFilter, cityFilter: $cityFilter, clubFilter: $clubFilter, dateRangeFilter: $dateRangeFilter, isConcertFilter: $isConcertFilter, showOnlyFilter: $showOnlyFilter)';
+    return 'EventFilters(phraseFilter: $phraseFilter, priceRangeFilter: $priceRangeFilter, minAgesFilter: $minAgesFilter, musicalGenresFilter: $musicalGenresFilter, allowedOutfitsFilter: $allowedOutfitsFilter, maxDistanceFilter: $maxDistanceFilter, cityFilter: $cityFilter, clubFilter: $clubFilter, dateRangeFilter: $dateRangeFilter, isConcertFilter: $isConcertFilter, showOnlyFilter: $showOnlyFilter, dateIncludesFilter: $dateIncludesFilter)';
   }
 
   @override
@@ -325,7 +344,9 @@ class _$_EventFilters extends _EventFilters {
             const DeepCollectionEquality()
                 .equals(other.isConcertFilter, isConcertFilter) &&
             const DeepCollectionEquality()
-                .equals(other.showOnlyFilter, showOnlyFilter));
+                .equals(other.showOnlyFilter, showOnlyFilter) &&
+            const DeepCollectionEquality()
+                .equals(other.dateIncludesFilter, dateIncludesFilter));
   }
 
   @override
@@ -341,7 +362,8 @@ class _$_EventFilters extends _EventFilters {
       const DeepCollectionEquality().hash(clubFilter),
       const DeepCollectionEquality().hash(dateRangeFilter),
       const DeepCollectionEquality().hash(isConcertFilter),
-      const DeepCollectionEquality().hash(showOnlyFilter));
+      const DeepCollectionEquality().hash(showOnlyFilter),
+      const DeepCollectionEquality().hash(dateIncludesFilter));
 
   @JsonKey(ignore: true)
   @override
@@ -361,7 +383,8 @@ abstract class _EventFilters extends EventFilters {
       required ClubFilter clubFilter,
       required DateRangeFilter dateRangeFilter,
       required IsConcertFilter isConcertFilter,
-      required ShowOnlyFilter showOnlyFilter}) = _$_EventFilters;
+      required ShowOnlyFilter showOnlyFilter,
+      required DateIncludesFilter dateIncludesFilter}) = _$_EventFilters;
   _EventFilters._() : super._();
 
   @override
@@ -386,6 +409,8 @@ abstract class _EventFilters extends EventFilters {
   IsConcertFilter get isConcertFilter;
   @override
   ShowOnlyFilter get showOnlyFilter;
+  @override
+  DateIncludesFilter get dateIncludesFilter;
   @override
   @JsonKey(ignore: true)
   _$EventFiltersCopyWith<_EventFilters> get copyWith =>

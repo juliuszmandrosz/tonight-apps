@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/domain.dart';
+import 'package:raver_events/domain/filters/filter/date_includes_filter.dart';
 import 'package:raver_events/infrastructure/algolia_events_api.dart';
 import 'package:raver_events/infrastructure/events/dtos/event_dto.dart';
 import 'package:raver_events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
@@ -185,6 +186,42 @@ class FirebaseEventFacade
     }
   }
 
+  @override
+  Future<Either<EventFailure, Option<Event>>>
+      getEventInDateRangeForCurrentPartner(
+    DateTime fromDate,
+    DateTime toDate,
+  ) async {
+    try {
+      final partnerDoc = await _getCurrentPartnerDocument();
+
+      final filters = EventFilters.empty().copyWith(
+        clubFilter: ClubFilter(clubId: partnerDoc.id),
+        dateIncludesFilter: DateIncludesFilter(
+          fromDate: fromDate,
+          toDate: toDate,
+        ),
+      );
+
+      final result =
+          await _algoliaEventsApi.getEvents(filters, SortModel.empty(), 1, 0);
+
+      if (result.empty) return right(none());
+
+      final currentEvent = result.hits.first;
+
+      return right<EventFailure, Option<Event>>(
+        some(EventDto.fromAlgolia(currentEvent).toDomain()),
+      );
+    } on AlgoliaError catch (e) {
+      _logger.e(
+        "Algolia error during getting "
+        "event in date range for current partner EXCEPTION: $e",
+      );
+      return left(const EventFailure.unexpected());
+    }
+  }
+
   Future<DocumentSnapshot> _getCurrentUserDocument() async {
     final firebaseUser = _firebaseAuth.currentUser;
 
@@ -214,5 +251,16 @@ class FirebaseEventFacade
         await _firestore.selectorsCollection.doc(firebaseUser.uid).get();
 
     return selectorDoc;
+  }
+
+  Future<DocumentSnapshot> _getCurrentPartnerDocument() async {
+    final firebaseUser = _firebaseAuth.currentUser;
+
+    if (firebaseUser == null) throw NotAuthenticatedError();
+
+    final partnerDoc =
+        await _firestore.partnersCollection.doc(firebaseUser.uid).get();
+
+    return partnerDoc;
   }
 }

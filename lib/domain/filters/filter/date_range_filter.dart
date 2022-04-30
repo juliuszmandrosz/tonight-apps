@@ -1,4 +1,5 @@
 import 'package:algolia/algolia.dart';
+import 'package:flutter/material.dart';
 import 'package:raver_events/domain/filters/filter/ifilter.dart';
 import 'package:raver_events/infrastructure/algolia_query_builder.dart';
 
@@ -24,14 +25,20 @@ class DateRangeFilter implements IFilter {
           query: query, field: eventEndDateFieldName, than: startTimestamp);
     }
 
-    final endOfTheDay = toDate!.add(const Duration(days: 1));
-    final endTimestamp = endOfTheDay.millisecondsSinceEpoch;
-
     return AlgoliaQueryBuilder.setNumericBetween(
       query: query,
       field: eventStartDateFieldName,
       from: startTimestamp,
-      to: endTimestamp,
+      to: _getEndTimeStamp(),
     );
+  }
+
+  _getEndTimeStamp() {
+    final dateWithoutHours = DateUtils.dateOnly(toDate!);
+    final endOfTheDay = dateWithoutHours
+        .add(const Duration(days: 1))
+        .subtract(const Duration(seconds: 1));
+
+    return endOfTheDay.millisecondsSinceEpoch;
   }
 }
