@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:logger/logger.dart';
 import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
@@ -15,11 +14,11 @@ part 'scanner_cubit.freezed.dart';
 part 'scanner_state.dart';
 
 class ScannerCubit extends Cubit<ScannerState> {
-  final TicketFacade _ticketFacade;
+  final SelectorTicketFacade _ticketFacade;
   final CurrentEventCubit _currentEventCubit;
 
   ScannerCubit({
-    required TicketFacade ticketFacade,
+    required SelectorTicketFacade ticketFacade,
     required CurrentEventCubit currentEventCubit,
   })  : _ticketFacade = ticketFacade,
         _currentEventCubit = currentEventCubit,
@@ -81,6 +80,7 @@ class ScannerCubit extends Cubit<ScannerState> {
       invalidTicket: (_) => S().invalidQrCode,
       ticketExpired: (_) => S().ticketExpired,
       ticketForAnotherEvent: (_) => S().ticketForAnotherEvent,
+      returnTimeIsOver: (_) => S().returnTimeIsOver,
     );
 
     emit(

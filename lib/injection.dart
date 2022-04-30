@@ -1,5 +1,6 @@
 import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:get_it/get_it.dart';
@@ -11,8 +12,9 @@ import 'package:raver_events/raver_events.dart';
 import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
 import 'package:raver_scanner/application/scanner/scanner_cubit.dart';
 import 'package:raver_scanner/application/sign_in/sign_in_cubit.dart';
-import 'package:raver_tickets/domain/domain.dart';
+import 'package:raver_tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
 import 'package:raver_tickets/infrastructure/firebase_ticket_facade.dart';
+import 'package:raver_tickets/raver_tickets.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -78,7 +80,7 @@ void _registerFacades() {
     () => AuthCloudFunctionsFacadeImpl(),
   );
 
-  getIt.registerLazySingleton<EventFacade>(
+  getIt.registerLazySingleton<SelectorEventFacade>(
     () => FirebaseEventFacade(
       firestore: getIt(),
       algoliaEventsApi: getIt(),
@@ -87,11 +89,18 @@ void _registerFacades() {
     ),
   );
 
-  getIt.registerLazySingleton<TicketFacade>(
+  getIt.registerLazySingleton<SelectorTicketFacade>(
     () => FirebaseTicketFacade(
       firestore: getIt(),
       firebaseAuth: getIt(),
       logger: getIt(),
+      ticketCloudFunctionsFacade: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<TicketCloudFunctionsFacade>(
+    () => TicketCloudFunctionsFacadeImpl(
+      firebaseFunctions: getIt(),
     ),
   );
 }
@@ -104,6 +113,8 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebaseAuth.instance);
 
   getIt.registerLazySingleton(() => FirebaseRemoteConfig.instance);
+
+  getIt.registerLazySingleton(() => FirebaseFunctions.instance);
 
   getIt.registerLazySingleton(() => Logger());
 

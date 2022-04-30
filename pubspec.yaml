@@ -50,6 +50,7 @@ dependencies:
   algolia: ^1.0.5+1
   mobile_scanner: ^1.0.0
   font_awesome_flutter: ^9.2.0
+  cloud_functions: ^3.2.13
 
   raver_translations:
     git:
@@ -62,17 +63,16 @@ dependencies:
   raver_auth:
     git:
       url: https://github.com/juliuszmandrosz/RaverAuth.git
-      ref: feature/selector-sign-in
 
   raver_events:
     git:
       url: https://github.com/juliuszmandrosz/RaverEvents.git
-      ref: feature/get-current-event
+      ref: feature/distinct-facades
 
   raver_tickets:
     git:
       url: https://github.com/juliuszmandrosz/RaverTickets.git
-      ref: develop
+      ref: feature/distinct-facades
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -9,7 +9,7 @@ part 'current_event_cubit.freezed.dart';
 part 'current_event_state.dart';
 
 class CurrentEventCubit extends Cubit<CurrentEventState> {
-  final EventFacade _eventFacade;
+  final SelectorEventFacade _eventFacade;
 
   CurrentEventCubit(this._eventFacade) : super(CurrentEventState.initial());
 
