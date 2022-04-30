@@ -100,6 +100,16 @@ class S {
     );
   }
 
+  /// `At least one pool of tickets must be added`
+  String get addAtLeastOneTicketPool {
+    return Intl.message(
+      'At least one pool of tickets must be added',
+      name: 'addAtLeastOneTicketPool',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add description`
   String get addDescription {
     return Intl.message(
@@ -1139,6 +1149,26 @@ class S {
     );
   }
 
+  /// `The event may last a maximum of 24 hours`
+  String get eventDurationTooLong {
+    return Intl.message(
+      'The event may last a maximum of 24 hours',
+      name: 'eventDurationTooLong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An event already exists in the given date range`
+  String get eventExistsInDateRange {
+    return Intl.message(
+      'An event already exists in the given date range',
+      name: 'eventExistsInDateRange',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Event name`
   String get eventName {
     return Intl.message(
@@ -1898,20 +1928,20 @@ class S {
     );
   }
 
-  /// `The maximum ticket price is 100000 PLN`
+  /// `The maximum ticket price is`
   String get priceTooHigh {
     return Intl.message(
-      'The maximum ticket price is 100000 PLN',
+      'The maximum ticket price is',
       name: 'priceTooHigh',
       desc: '',
       args: [],
     );
   }
 
-  /// `The minimum ticket price is 20 PLN`
+  /// `The minimum ticket price is`
   String get priceTooLow {
     return Intl.message(
-      'The minimum ticket price is 20 PLN',
+      'The minimum ticket price is',
       name: 'priceTooLow',
       desc: '',
       args: [],

@@ -54,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountSettingsTitle":
             MessageLookupByLibrary.simpleMessage("Account Settings"),
         "add": MessageLookupByLibrary.simpleMessage("Add"),
+        "addAtLeastOneTicketPool": MessageLookupByLibrary.simpleMessage(
+            "At least one pool of tickets must be added"),
         "addDescription":
             MessageLookupByLibrary.simpleMessage("Add description"),
         "addDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
@@ -228,6 +230,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "eventAddedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Event added successfully"),
         "eventDetails": MessageLookupByLibrary.simpleMessage("Event details"),
+        "eventDurationTooLong": MessageLookupByLibrary.simpleMessage(
+            "The event may last a maximum of 24 hours"),
+        "eventExistsInDateRange": MessageLookupByLibrary.simpleMessage(
+            "An event already exists in the given date range"),
         "eventName": MessageLookupByLibrary.simpleMessage("Event name"),
         "eventOverview": MessageLookupByLibrary.simpleMessage("Event overview"),
         "eventRevenue": MessageLookupByLibrary.simpleMessage("Event revenue"),
@@ -342,10 +348,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "priceChangedAfterTicketWasSold": MessageLookupByLibrary.simpleMessage(
             "The price cannot be changed after the sale of tickets has started"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Price range"),
-        "priceTooHigh": MessageLookupByLibrary.simpleMessage(
-            "The maximum ticket price is 100000 PLN"),
-        "priceTooLow": MessageLookupByLibrary.simpleMessage(
-            "The minimum ticket price is 20 PLN"),
+        "priceTooHigh":
+            MessageLookupByLibrary.simpleMessage("The maximum ticket price is"),
+        "priceTooLow":
+            MessageLookupByLibrary.simpleMessage("The minimum ticket price is"),
         "proceedToPay": MessageLookupByLibrary.simpleMessage("Proceed to pay"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "promotionCodeHasExpired":

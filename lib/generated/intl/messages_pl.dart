@@ -54,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountSettingsTitle":
             MessageLookupByLibrary.simpleMessage("Ustawienia Konta"),
         "add": MessageLookupByLibrary.simpleMessage("Dodaj"),
+        "addAtLeastOneTicketPool": MessageLookupByLibrary.simpleMessage(
+            "Należy dodać co najmniej jedną pulę biletów"),
         "addDescription": MessageLookupByLibrary.simpleMessage("Dodaj opis"),
         "addDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
             "Dodaj link URL kanału na Youtubie DJ\'a"),
@@ -226,6 +228,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wydarzenie zostało dodane pomyślnie"),
         "eventDetails":
             MessageLookupByLibrary.simpleMessage("Szczegóły wydarzenia"),
+        "eventDurationTooLong": MessageLookupByLibrary.simpleMessage(
+            "Wydarzenie może trwać maksymalnie 24 godziny"),
+        "eventExistsInDateRange": MessageLookupByLibrary.simpleMessage(
+            "W podanym zakresie dat istnieje już wydarzenie"),
         "eventName": MessageLookupByLibrary.simpleMessage("Nazwa wydarzenia"),
         "eventOverview":
             MessageLookupByLibrary.simpleMessage("Przegląd wydarzenia"),
@@ -345,10 +351,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "priceChangedAfterTicketWasSold": MessageLookupByLibrary.simpleMessage(
             "Nie można zmienić ceny po rozpoczęciu sprzedaży biletów"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Zakres cen"),
-        "priceTooHigh": MessageLookupByLibrary.simpleMessage(
-            "Maksymalna cena biletu to 100000 złotych"),
-        "priceTooLow": MessageLookupByLibrary.simpleMessage(
-            "Minimalna cena biletu to 20 złotych"),
+        "priceTooHigh":
+            MessageLookupByLibrary.simpleMessage("Maksymalna cena biletu to"),
+        "priceTooLow":
+            MessageLookupByLibrary.simpleMessage("Minimalna cena biletu to"),
         "proceedToPay":
             MessageLookupByLibrary.simpleMessage("Przejdź do płatności"),
         "profile": MessageLookupByLibrary.simpleMessage("Profil"),
