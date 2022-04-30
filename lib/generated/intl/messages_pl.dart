@@ -292,6 +292,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "musicalGenres":
             MessageLookupByLibrary.simpleMessage("Gatunki muzyczne"),
         "nameAndDesc": MessageLookupByLibrary.simpleMessage("Nazwa i opis"),
+        "nameCannotContainSpecialCharacters":
+            MessageLookupByLibrary.simpleMessage(
+                "Nazwa nie może zawierać znaków specjalnych"),
         "nameTooLong": MessageLookupByLibrary.simpleMessage(
             "Nazwa może zawierać maksymalnie 50 znaków"),
         "nameTooShort": MessageLookupByLibrary.simpleMessage(

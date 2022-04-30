@@ -300,6 +300,8 @@
   "@musicalGenres": {},
   "nameAndDesc": "Nazwa i opis",
   "@nameAndDesc": {},
+  "nameCannotContainSpecialCharacters": "Nazwa nie może zawierać znaków specjalnych",
+  "@nameCannotContainSpecialCharacters": {},
   "nameTooLong": "Nazwa może zawierać maksymalnie 50 znaków",
   "@nameTooLong": {},
   "nameTooShort": "Nazwa powinna zawierać co najmniej 8 znaków",

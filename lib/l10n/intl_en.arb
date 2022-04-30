@@ -300,6 +300,8 @@
   "@musicalGenres": {},
   "nameAndDesc": "Name and description",
   "@nameAndDesc": {},
+  "nameCannotContainSpecialCharacters": "Name cannot contain special characters",
+  "@nameCannotContainSpecialCharacters": {},
   "nameTooLong": "Name can contain up to 50 characters",
   "@nameTooLong": {},
   "nameTooShort": "Name should be at least 3 characters",

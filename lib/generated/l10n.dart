@@ -1562,6 +1562,16 @@ class S {
     );
   }
 
+  /// `Name cannot contain special characters`
+  String get nameCannotContainSpecialCharacters {
+    return Intl.message(
+      'Name cannot contain special characters',
+      name: 'nameCannotContainSpecialCharacters',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Name can contain up to 50 characters`
   String get nameTooLong {
     return Intl.message(
