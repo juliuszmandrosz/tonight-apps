@@ -76,6 +76,8 @@
   "@confirm": {},
   "confirmDeleteMessage": "Czy na pewno chcesz usunąć ten element?",
   "@confirmDeleteMessage": {},
+  "confirmLeavingPage": "Czy na pewno chcesz opuścić bieżącą stronę? Zmiany nie zostaną zapisane",
+  "@confirmLeavingPage": {},
   "confirmPassword": "Potwierdź hasło",
   "@confirmPassword": {},
   "confirmTicketReturn": "Czy na pewno chcesz zwrócić bilet?",

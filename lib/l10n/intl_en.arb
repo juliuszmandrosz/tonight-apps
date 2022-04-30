@@ -76,6 +76,8 @@
   "@confirm": {},
   "confirmDeleteMessage": "Are you sure you wish to delete this item?",
   "@confirmDeleteMessage": {},
+  "confirmLeavingPage": "Are you sure you want to exit the current page? Changes will not be saved",
+  "@confirmLeavingPage": {},
   "confirmPassword": "Confirm password",
   "@confirmPassword": {},
   "confirmTicketReturn": "Are you sure you want to return the ticket?",

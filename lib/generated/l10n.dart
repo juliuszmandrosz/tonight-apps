@@ -436,6 +436,16 @@ class S {
     );
   }
 
+  /// `Are you sure you want to exit the current page? Changes will not be saved`
+  String get confirmLeavingPage {
+    return Intl.message(
+      'Are you sure you want to exit the current page? Changes will not be saved',
+      name: 'confirmLeavingPage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Confirm password`
   String get confirmPassword {
     return Intl.message(
