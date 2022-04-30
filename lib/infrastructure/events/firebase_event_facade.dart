@@ -163,6 +163,7 @@ class FirebaseEventFacade
       final filters = EventFilters.empty().copyWith(
         clubFilter: ClubFilter(clubId: clubId),
         showOnlyFilter: ShowOnlyFilter(showOnlyLive: true),
+        dateRangeFilter: DateRangeFilter(fromDate: null, toDate: null),
       );
 
       final result =
@@ -175,9 +176,9 @@ class FirebaseEventFacade
       return right<EventFailure, Option<Event>>(
         some(EventDto.fromAlgolia(currentEvent).toDomain()),
       );
-    } on FirebaseException catch (e) {
+    } on AlgoliaError catch (e) {
       _logger.e(
-        "Exception during getting "
+        "Algolia error during getting "
         "current event from club EXCEPTION: $e",
       );
       return left(const EventFailure.unexpected());
