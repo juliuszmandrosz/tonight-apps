@@ -9,7 +9,7 @@ final Map<String, SocialMedia> eventSocialMedia = {
     icon: FontAwesomeIcons.facebook,
   ),
   djChannel: SocialMedia(
-    label: S().djChannel,
+    label: S().djYoutubeChannel,
     icon: FontAwesomeIcons.youtube,
   ),
 };
