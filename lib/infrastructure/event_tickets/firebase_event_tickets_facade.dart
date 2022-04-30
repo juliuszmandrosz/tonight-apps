@@ -8,7 +8,8 @@ import 'package:raver_events/infrastructure/event_tickets/dtos/ticket_pool_dto.d
 import 'package:raver_events/infrastructure/events/dtos/event_dto.dart';
 import 'package:collection/collection.dart';
 
-class FirebaseEventTicketsFacade implements EventTicketsFacade {
+class FirebaseEventTicketsFacade
+    implements UserEventTicketsFacade, PartnerEventTicketsFacade {
   final FirebaseFirestore _firestore;
   final Logger _logger;
 

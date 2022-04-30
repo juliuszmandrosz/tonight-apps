@@ -5,12 +5,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/domain.dart';
-import 'package:raver_events/domain/selector_event_facade.dart';
 import 'package:raver_events/infrastructure/algolia_events_api.dart';
 import 'package:raver_events/infrastructure/events/dtos/event_dto.dart';
 import 'package:raver_events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
 
-class FirebaseEventFacade implements EventFacade, SelectorEventFacade {
+class FirebaseEventFacade
+    implements
+        CommonEventFacade,
+        SelectorEventFacade,
+        PartnerEventFacade,
+        UserEventFacade {
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
   final AlgoliaEventsApi _algoliaEventsApi;
@@ -80,23 +84,6 @@ class FirebaseEventFacade implements EventFacade, SelectorEventFacade {
     } on FirebaseException catch (e) {
       _logger
           .e("Exception during toggling event favorite status EXCEPTION: $e");
-      return left(const EventFailure.unexpected());
-    }
-  }
-
-  @override
-  Future<Either<EventFailure, List<Event>>> getFutureEventsByIds(
-      List<String> eventIds) async {
-    final eventsQuery = _firestore.eventCollection
-        .where('id', whereIn: eventIds)
-        .where('eventEndDateTime',
-            isGreaterThanOrEqualTo: DateTime.now().millisecondsSinceEpoch);
-    try {
-      final events = await eventsQuery.get();
-      return right(
-          events.docs.map((e) => EventDto.fromFirebase(e).toDomain()).toList());
-    } on FirebaseException catch (e) {
-      _logger.e("Exception during fetching events by ids EXCEPTION: $e");
       return left(const EventFailure.unexpected());
     }
   }

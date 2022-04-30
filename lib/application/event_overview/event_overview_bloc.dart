@@ -4,8 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/domain.dart';
-import 'package:raver_events/domain/events/event_entity.dart';
-import 'package:raver_events/domain/events/event_facade.dart';
 
 part 'event_overview_bloc.freezed.dart';
 
@@ -17,7 +15,7 @@ const pageSize = 20;
 const throttleDuration = Duration(milliseconds: 500);
 
 class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
-  final EventFacade _eventFacade;
+  final CommonEventFacade _eventFacade;
 
   EventOverviewBloc(this._eventFacade) : super(EventOverviewState.initial()) {
     on<_NextEventsPageFetched>(
