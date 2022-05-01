@@ -140,6 +140,7 @@ class AddEventCubit extends Cubit<AddEventState> {
   void deleteTicketPool(TicketPool ticketPool) {
     final ticketPoolsCopy = [...state.ticketPools];
     ticketPoolsCopy.remove(ticketPool);
+    _shiftNumbersOfNextPools(ticketPool, ticketPoolsCopy);
     emit(state.copyWith(ticketPools: ticketPoolsCopy));
   }
 
@@ -384,5 +385,18 @@ class AddEventCubit extends Cubit<AddEventState> {
     }
 
     return result;
+  }
+
+  _shiftNumbersOfNextPools(
+    TicketPool deletingPool,
+    List<TicketPool> ticketPools,
+  ) {
+    final nextPools =
+        ticketPools.where((pool) => pool.poolNumber > deletingPool.poolNumber);
+
+    for (var pool in nextPools) {
+      final index = ticketPools.indexOf(pool);
+      ticketPools[index] = pool.copyWith(poolNumber: pool.poolNumber - 1);
+    }
   }
 }
