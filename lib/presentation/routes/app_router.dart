@@ -10,9 +10,11 @@ import 'package:raver_partners/presentation/auth/reset_password/reset_password_p
 import 'package:raver_partners/presentation/dashboard/dashboard_page.dart';
 import 'package:raver_partners/presentation/event_overview/event_overview_page.dart';
 import 'package:raver_partners/presentation/events/events_page.dart';
+import 'package:raver_partners/presentation/invite_selector/invite_selector_page.dart';
 import 'package:raver_partners/presentation/navigator/navigator_page.dart';
 import 'package:raver_partners/presentation/past_event_details/past_event_details_page.dart';
 import 'package:raver_partners/presentation/rewards/rewards_page.dart';
+import 'package:raver_partners/presentation/selectors/selectors_page.dart';
 import 'package:raver_partners/presentation/settings/settings_page.dart';
 import 'package:raver_partners/presentation/splash/splash_page.dart';
 import 'package:raver_rewards/raver_rewards.dart';
@@ -31,6 +33,7 @@ part 'app_router.gr.dart';
         AutoRoute(page: DashboardPage),
         AutoRoute(page: EventsPage),
         AutoRoute(page: RewardsPage),
+        AutoRoute(page: SelectorsPage),
         AutoRoute(page: SettingsPage),
       ],
     ),
@@ -39,6 +42,7 @@ part 'app_router.gr.dart';
     AutoRoute<TicketPool>(page: AddEditTicketPoolPage),
     AutoRoute(page: EventOverviewPage),
     AutoRoute(page: PastEventDetailsPage),
+    AutoRoute(page: InviteSelectorPage),
   ],
 )
 class AppRouter extends _$AppRouter {}

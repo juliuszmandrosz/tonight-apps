@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
+import 'package:raver_partners/application/invite_selector/invite_selector_cubit.dart';
 import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/config/themes/light_theme/light_theme.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
@@ -26,6 +27,9 @@ class RaverPartnersApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<ClubInfoCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<InviteSelectorCubit>(),
         ),
       ],
       child: MaterialApp.router(

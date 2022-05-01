@@ -56,6 +56,7 @@ class NavigatorPage extends StatelessWidget {
               DashboardRoute(),
               EventsRoute(),
               RewardsRoute(),
+              SelectorsRoute(),
               SettingsRoute(),
             ],
             floatingActionButton: const RaverPartnersSpeedDial(),
@@ -77,6 +78,9 @@ class NavigatorPage extends StatelessWidget {
                     icon: const Icon(FontAwesomeIcons.trophy),
                     label: S().rewards(2),
                   ),
+                  BottomNavigationBarItem(
+                      icon: const Icon(FontAwesomeIcons.userFriends),
+                      label: S().selectors(2)),
                   BottomNavigationBarItem(
                     icon: const FaIcon(Icons.settings),
                     label: S().settings,

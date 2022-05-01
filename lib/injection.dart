@@ -16,8 +16,10 @@ import 'package:raver_partners/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/event_filters/event_filters_cubit.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
+import 'package:raver_partners/application/invite_selector/invite_selector_cubit.dart';
 import 'package:raver_partners/application/past_event_details/past_event_details_cubit.dart';
 import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
+import 'package:raver_partners/application/selector_list/selector_list_cubit.dart';
 import 'package:raver_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
 import 'package:raver_partners/domain/currency_params/currency_params_facade.dart';
 import 'package:raver_partners/domain/selector_management/selector_management_facade.dart';
@@ -123,6 +125,18 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  getIt.registerFactory(
+    () => InviteSelectorCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => SelectorListCubit(
+      getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
@@ -200,6 +214,7 @@ void _registerFacades() {
     () => FirebaseSelectorManagementFacade(
       selectorCloudFunctionsFacade: getIt(),
       logger: getIt(),
+      firestore: getIt(),
     ),
   );
 

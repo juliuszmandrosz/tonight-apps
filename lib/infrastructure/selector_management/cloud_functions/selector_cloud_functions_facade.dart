@@ -2,15 +2,16 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:raver_partners/infrastructure/selector_management/cloud_functions/cloud_function_names.dart';
 
 abstract class SelectorManagementCloudFunctionsFacade {
-  Future<void> addSelector(String email, String password);
+  Future<String> generateAccessCodeForSelector();
 }
 
 class SelectorManagementCloudFunctionsFacadeImpl
     implements SelectorManagementCloudFunctionsFacade {
   @override
-  Future<void> addSelector(String email, String password) async {
-    final addSelectorFn =
-        FirebaseFunctions.instance.httpsCallable(addSelectorFnName);
-    await addSelectorFn.call({'email': email, 'password': password});
+  Future<String> generateAccessCodeForSelector() async {
+    final generateAccessCodeForSelectorFn = FirebaseFunctions.instance
+        .httpsCallable(generateAccessCodeForSelectorFnName);
+    final result = await generateAccessCodeForSelectorFn.call();
+    return result.data;
   }
 }

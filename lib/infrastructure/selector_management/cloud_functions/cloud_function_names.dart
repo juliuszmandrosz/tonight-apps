@@ -1,1 +1,1 @@
-const addSelectorFnName = 'addSelector';
+const generateAccessCodeForSelectorFnName = 'generateAccessCodeForSelector';

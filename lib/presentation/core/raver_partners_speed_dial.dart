@@ -55,6 +55,17 @@ class _RaverPartnersSpeedDialState extends State<RaverPartnersSpeedDial> {
           onTap: () => AutoRouter.of(context).push(AddEditRewardRoute()),
           backgroundColor: theme.primaryColor,
           labelBackgroundColor: theme.primaryColor,
+        ),
+        SpeedDialChild(
+          child: FaIcon(
+            FontAwesomeIcons.userAlt,
+            color: theme.backgroundColor,
+          ),
+          label: S().inviteSelector,
+          labelStyle: theme.textTheme.bodyText1,
+          onTap: () => AutoRouter.of(context).push(InviteSelectorRoute()),
+          backgroundColor: theme.primaryColor,
+          labelBackgroundColor: theme.primaryColor,
         )
       ],
     );
