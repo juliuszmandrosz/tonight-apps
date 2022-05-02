@@ -72,13 +72,13 @@ class FirebaseEventFacade
     try {
       final userDoc = await _getCurrentUserDocument();
       final userRef = _getCurrentUserReference();
-      final userFavorites = userDoc.get('favoriteEvents') as List<dynamic>;
+      final userFavorites = userDoc.get('favoriteEventIds') as List<dynamic>;
 
       userFavorites.contains(eventId)
           ? userFavorites.remove(eventId)
           : userFavorites.add(eventId);
 
-      await userRef.update({'favoriteEvents': userFavorites});
+      await userRef.update({'favoriteEventIds': userFavorites});
 
       return right(unit);
     } on FirebaseException catch (e) {
