@@ -468,6 +468,8 @@
   "@sport": {},
   "startDate": "Start date",
   "@startDate": {},
+  "startDateBeforeNow": "The start date cannot be before the current date",
+  "@startDateBeforeNow": {},
   "startScanning": "Start scanning",
   "@startScanning": {},
   "submit": "Submit",

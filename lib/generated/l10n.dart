@@ -2411,6 +2411,16 @@ class S {
     );
   }
 
+  /// `The start date cannot be before the current date`
+  String get startDateBeforeNow {
+    return Intl.message(
+      'The start date cannot be before the current date',
+      name: 'startDateBeforeNow',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Start scanning`
   String get startScanning {
     return Intl.message(

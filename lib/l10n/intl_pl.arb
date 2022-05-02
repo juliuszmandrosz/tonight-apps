@@ -468,6 +468,8 @@
   "@sport": {},
   "startDate": "Data rozpoczęcia",
   "@startDate": {},
+  "startDateBeforeNow": "Data rozpoczęcia nie może być przed aktualną datą",
+  "@startDateBeforeNow": {},
   "startScanning": "Rozpocznij skanowanie",
   "@startScanning": {},
   "submit": "Zatwierdź",

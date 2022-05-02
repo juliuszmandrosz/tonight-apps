@@ -429,6 +429,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "soldOut": MessageLookupByLibrary.simpleMessage("Wyprzedane"),
         "sport": MessageLookupByLibrary.simpleMessage("Sport"),
         "startDate": MessageLookupByLibrary.simpleMessage("Data rozpoczęcia"),
+        "startDateBeforeNow": MessageLookupByLibrary.simpleMessage(
+            "Data rozpoczęcia nie może być przed aktualną datą"),
         "startScanning":
             MessageLookupByLibrary.simpleMessage("Rozpocznij skanowanie"),
         "submit": MessageLookupByLibrary.simpleMessage("Zatwierdź"),
