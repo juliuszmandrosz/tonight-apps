@@ -26,7 +26,7 @@ dependencies:
 
   raver_translations:
     git:
-      url: git@github.com:juliuszmandrosz/RaverTranslations.git
+      url: https://github.com/juliuszmandrosz/RaverTranslations.git
 
 dev_dependencies:
   flutter_test:
