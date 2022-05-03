@@ -5,9 +5,9 @@ import 'package:formz/formz.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_scanner/injection.dart';
+import 'package:raver_scanner/presentation/auth/forgot_password/widgets/reset_password_button.dart';
+import 'package:raver_scanner/presentation/auth/forgot_password/widgets/reset_password_email_input.dart';
 import 'package:raver_scanner/presentation/core/raver_scanner_headline.dart';
-import 'package:raver_scanner/presentation/sign_in/reset_password/widgets/reset_password_button.dart';
-import 'package:raver_scanner/presentation/sign_in/reset_password/widgets/reset_password_email_input.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class ResetPasswordPage extends StatelessWidget {
@@ -20,13 +20,13 @@ class ResetPasswordPage extends StatelessWidget {
       appBar: AppBar(
         title: RaverScannerHeadline(text: S().resetPassword),
         elevation: 0,
-        backgroundColor: theme.colorScheme.background,
+        backgroundColor: theme.backgroundColor,
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(
             Icons.chevron_left_rounded,
-            size: 32,
             color: theme.colorScheme.outline,
+            size: 32,
           ),
           onPressed: () => AutoRouter.of(context).pop(),
         ),

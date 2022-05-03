@@ -25,7 +25,7 @@ class NavigatorPage extends StatelessWidget {
               authenticated: (_) =>
                   AutoRouter.of(context).replace(const NavigatorRoute()),
               unauthenticated: (_) =>
-                  AutoRouter.of(context).replace(const SignInRoute())),
+                  AutoRouter.of(context).replace(const AuthRoute())),
         )
       ],
       child: AutoTabsScaffold(
@@ -34,7 +34,7 @@ class NavigatorPage extends StatelessWidget {
             IconButton(
               onPressed: () {
                 context.read<AuthCubit>().signOut();
-                AutoRouter.of(context).replace(const SignInRoute());
+                AutoRouter.of(context).replace(const AuthRoute());
               },
               icon: FaIcon(
                 FontAwesomeIcons.signOutAlt,

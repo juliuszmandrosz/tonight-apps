@@ -13,55 +13,43 @@ class SignInCubit extends Cubit<SignInState> {
 
   SignInCubit(this._authFacade) : super(SignInState.initial());
 
-  Future<void> signInWithEmailAndPassword() async {
+  Future<void> sendSignInWithEmailLink() async {
     if (!_validateForm()) return;
 
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
     final failureOrSuccess =
         await _authFacade.signInWithEmailAndPasswordAsSelector(
-      email: state.email.value,
-      password: state.password.value,
+      state.email.value,
+      state.password.value,
     );
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(failure),
       (success) => emit(
-        state.copyWith(
-          status: FormzStatus.submissionSuccess,
-        ),
+        state.copyWith(status: FormzStatus.submissionSuccess),
       ),
     );
   }
 
   void emailChanged(String value) {
     final email = EmailInput.dirty(value);
-    emit(
-      state.copyWith(
-        email: email,
-      ),
-    );
+    emit(state.copyWith(email: email));
   }
 
   void passwordChanged(String value) {
     final password = PasswordInput.dirty(isSignIn: true, value: value);
-    emit(
-      state.copyWith(
-        password: password,
-      ),
-    );
+    emit(state.copyWith(password: password));
   }
 
   _validateForm() {
-    emit(
-      state.copyWith(
-        email: EmailInput.dirty(state.email.value),
-        password: PasswordInput.dirty(
-          isSignIn: true,
-          value: state.password.value,
-        ),
+    emit(state.copyWith(
+      email: EmailInput.dirty(state.email.value),
+      password: PasswordInput.dirty(
+        isSignIn: true,
+        value: state.password.value,
       ),
-    );
+    ));
 
     final status = Formz.validate([state.email, state.password]);
 

@@ -10,9 +10,7 @@ class ForgotPasswordButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () => AutoRouter.of(context).push(const ResetPasswordRoute()),
-      child: Text(
-        S().forgotPassword,
-      ),
+      child: Text(S().forgotPassword),
     );
   }
 }

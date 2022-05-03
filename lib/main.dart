@@ -20,5 +20,6 @@ Future<void> main() async {
   await FirebaseRemoteConfig.instance.fetchAndActivate();
 
   registerDependencies();
+
   runApp(RaverScannerApp());
 }

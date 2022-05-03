@@ -29,6 +29,7 @@ class RaverScannerApp extends StatelessWidget {
         title: 'Raver Scanner',
         theme: lightTheme,
         darkTheme: darkTheme,
+        // TODO - change to system
         themeMode: ThemeMode.light,
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),
