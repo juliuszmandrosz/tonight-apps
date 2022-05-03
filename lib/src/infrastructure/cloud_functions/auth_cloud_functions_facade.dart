@@ -1,53 +1,92 @@
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:dartz/dartz.dart';
 import 'package:raver_auth/src/infrastructure/cloud_functions/cloud_function_names.dart';
 
 abstract class AuthCloudFunctionsFacade {
-  Future<void> checkUserClaim(String email);
+  Future<Unit> checkUserClaim(String email);
 
-  Future<void> checkPartnerClaim(String email);
+  Future<Unit> checkPartnerClaim(String email);
 
-  Future<void> checkSelectorClaim(String email);
+  Future<Unit> checkSelectorClaim(String email);
 
-  Future<void> addUser();
+  Future<Unit> addUser();
 
-  Future<void> addPartner();
+  Future<Unit> addPartner();
+
+  Future<Unit> addSelector(String email, String accessCode);
+
+  Future<Unit> checkSelectorAccessCode(String accessCode);
 }
 
 class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
+  final FirebaseFunctions _firebaseFunctions;
+
+  AuthCloudFunctionsFacadeImpl(this._firebaseFunctions);
+
   @override
-  Future<void> checkUserClaim(String email) async {
+  Future<Unit> checkUserClaim(String email) async {
     final checkUserClaimFn =
-        FirebaseFunctions.instance.httpsCallable(checkUserClaimFnName);
+        _firebaseFunctions.httpsCallable(checkUserClaimFnName);
 
     await checkUserClaimFn.call({'email': email});
+
+    return unit;
   }
 
   @override
-  Future<void> checkPartnerClaim(String email) async {
+  Future<Unit> checkPartnerClaim(String email) async {
     final checkPartnerClaimFn =
-        FirebaseFunctions.instance.httpsCallable(checkPartnerClaimFnName);
+        _firebaseFunctions.httpsCallable(checkPartnerClaimFnName);
 
     await checkPartnerClaimFn.call({'email': email});
+
+    return unit;
   }
 
   @override
-  Future<void> checkSelectorClaim(String email) async {
+  Future<Unit> checkSelectorClaim(String email) async {
     final checkSelectorClaimFn =
-        FirebaseFunctions.instance.httpsCallable(checkSelectorClaimFnName);
+        _firebaseFunctions.httpsCallable(checkSelectorClaimFnName);
 
     await checkSelectorClaimFn.call({'email': email});
+
+    return unit;
   }
 
   @override
-  Future<void> addUser() async {
-    final addUserFn = FirebaseFunctions.instance.httpsCallable(addUserFnName);
+  Future<Unit> addUser() async {
+    final addUserFn = _firebaseFunctions.httpsCallable(addUserFnName);
+
     await addUserFn.call();
+
+    return unit;
   }
 
   @override
-  Future<void> addPartner() async {
-    final addPartnerFn =
-        FirebaseFunctions.instance.httpsCallable(addPartnerFnName);
+  Future<Unit> addPartner() async {
+    final addPartnerFn = _firebaseFunctions.httpsCallable(addPartnerFnName);
+
     await addPartnerFn.call();
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> addSelector(String email, String accessCode) async {
+    final addSelectorFn = _firebaseFunctions.httpsCallable(addSelectorFnName);
+
+    await addSelectorFn.call({'email': email, 'accessCode': accessCode});
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> checkSelectorAccessCode(String accessCode) async {
+    final checkSelectorAccessCodeFn =
+        _firebaseFunctions.httpsCallable(checkSelectorAccessCodeFnName);
+
+    await checkSelectorAccessCodeFn.call({'accessCode': accessCode});
+
+    return unit;
   }
 }

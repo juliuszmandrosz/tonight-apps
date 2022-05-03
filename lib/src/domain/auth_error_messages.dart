@@ -12,3 +12,4 @@ const invalidVerificationId = 'invalidVerificationId';
 const serverError = 'serverError';
 const usernameAlreadyExist = 'usernameExist';
 const cancelledByUser = 'cancelledByUser';
+const invalidAccessCode = 'invalidAccessCode';

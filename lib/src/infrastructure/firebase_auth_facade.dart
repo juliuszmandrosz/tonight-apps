@@ -48,7 +48,6 @@ class FirebaseAuthFacade
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
     } on FirebaseFunctionsException catch (e) {
-      await signOut();
       _logger.e(
         "Firebase Functions Exception during sign in "
         "with login and password as user EXCEPTION: $e",
@@ -154,7 +153,6 @@ class FirebaseAuthFacade
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
     } on FirebaseFunctionsException catch (e) {
-      await signOut();
       _logger.e(
         "Firebase Functions Exception during "
         "sign in with login and password as partner EXCEPTION: $e",
@@ -199,10 +197,10 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithEmailAndPasswordAsSelector({
-    required String email,
-    required String password,
-  }) async {
+  Future<Either<AuthFailure, Unit>> signInWithEmailAndPasswordAsSelector(
+    String email,
+    String password,
+  ) async {
     try {
       await _authCloudFunctionsFacade.checkSelectorClaim(email);
       await _firebaseAuth.signInWithEmailAndPassword(
@@ -212,17 +210,52 @@ class FirebaseAuthFacade
       return right(unit);
     } on FirebaseAuthException catch (e) {
       _logger.e(
-        "Exception during sign in with "
-        "login and password as selector EXCEPTION: $e",
+        "Firebase Auth Exception during sign in with email and password as selector EXCEPTION: $e",
       );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
     } on FirebaseFunctionsException catch (e) {
-      await signOut();
       _logger.e(
-        "Firebase Functions Exception during sign in "
-        "with login and password as selector EXCEPTION: $e",
+        "Firebase Functions Exception during "
+        "sign in with login and password as selector EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>>
+      signUpWithEmailPasswordAndAccessCodeAsSelector(
+    String email,
+    String password,
+    String accessCode,
+  ) async {
+    try {
+      await _authCloudFunctionsFacade.checkSelectorAccessCode(accessCode);
+
+      await _firebaseAuth.createUserWithEmailAndPassword(
+          email: email, password: password);
+
+      await _authCloudFunctionsFacade.addSelector(email, accessCode);
+      return right(unit);
+    } on FirebaseFunctionsException catch (e) {
+      _logger.e(
+        "Firebase Functions Exception during sign up with email and password as selector EXCEPTION: $e",
+      );
+
+      return left(
+        AuthFailure(
+          message: firebaseAuthMessages[e.details] ??
+              firebaseAuthMessages[e.code] ??
+              serverError,
+        ),
+      );
+    } on FirebaseAuthException catch (e) {
+      _logger.e(
+        "Firebase Auth Exception during  sign up with email and password as selector EXCEPTION: $e",
       );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
@@ -332,8 +365,8 @@ class FirebaseAuthFacade
     );
     return _firebaseAuth.signInWithCredential(authCredential);
   }
-}
 
-String _getUserEmail(User user) {
-  return user.email ?? user.providerData.first.email!;
+  String _getUserEmail(User user) {
+    return user.email ?? user.providerData.first.email!;
+  }
 }

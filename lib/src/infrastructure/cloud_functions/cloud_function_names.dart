@@ -3,3 +3,5 @@ const checkPartnerClaimFnName = 'checkPartnerClaim';
 const checkSelectorClaimFnName = 'checkSelectorClaim';
 const addUserFnName = 'addUser';
 const addPartnerFnName = 'addPartner';
+const addSelectorFnName = 'addSelector';
+const checkSelectorAccessCodeFnName = 'checkSelectorAccessCode';

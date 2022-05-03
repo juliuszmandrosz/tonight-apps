@@ -15,4 +15,5 @@ final authErrorMessages = {
   invalidVerificationId: S().invalidVerificationId,
   cancelledByUser: S().cancelledByUser,
   serverError: S().serverError,
+  invalidAccessCode: S().invalidAccessCode,
 };

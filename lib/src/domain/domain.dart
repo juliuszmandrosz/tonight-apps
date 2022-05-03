@@ -5,3 +5,4 @@ export 'user_auth_facade.dart';
 export 'partner_auth_facade.dart';
 export 'common_auth_facade.dart';
 export 'selector_auth_facade.dart';
+export 'selector_access_code.dart';
