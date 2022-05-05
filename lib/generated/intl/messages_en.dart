@@ -47,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
+        "accessCode": MessageLookupByLibrary.simpleMessage("Access code"),
         "accountExists": MessageLookupByLibrary.simpleMessage(
             "An account already exists for that email"),
         "accountSettings":
@@ -111,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmTicketReturn": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to return the ticket?"),
         "contact": MessageLookupByLibrary.simpleMessage("Contact"),
+        "copiedToClipboard":
+            MessageLookupByLibrary.simpleMessage("Copied to clipboard"),
         "currentPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Current Password"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
@@ -153,6 +156,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "endDate": MessageLookupByLibrary.simpleMessage("End date"),
         "endDateBeforeStart": MessageLookupByLibrary.simpleMessage(
             "The end date cannot be before the start date"),
+        "enterAccessCode":
+            MessageLookupByLibrary.simpleMessage("Please enter access code"),
         "enterArtistName":
             MessageLookupByLibrary.simpleMessage("Please enter artist name"),
         "enterDesc":
@@ -257,9 +262,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "findInMap": MessageLookupByLibrary.simpleMessage("Find in map"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "generateAccessCode":
+            MessageLookupByLibrary.simpleMessage("Generate access code"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "income": MessageLookupByLibrary.simpleMessage("Income"),
         "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
+        "invalidAccessCode": MessageLookupByLibrary.simpleMessage(
+            "Access code is invalid or has expired"),
         "invalidCredential": MessageLookupByLibrary.simpleMessage(
             "The credential received are invalid or has expired"),
         "invalidEmail":
@@ -276,6 +285,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Invalid verification code"),
         "invalidVerificationId":
             MessageLookupByLibrary.simpleMessage("Invalid verification ID"),
+        "inviteSelector":
+            MessageLookupByLibrary.simpleMessage("Invite selector"),
         "isConcert": MessageLookupByLibrary.simpleMessage("Is concert"),
         "live": MessageLookupByLibrary.simpleMessage("Live"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
@@ -316,6 +327,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Firstly lets set your username"),
         "onboardingWelcomeTitle":
             MessageLookupByLibrary.simpleMessage("Welcome on board!"),
+        "oneTimeAccessCode": MessageLookupByLibrary.simpleMessage(
+            "One-time access code for selector"),
         "operationNotAllowed":
             MessageLookupByLibrary.simpleMessage("Operation is not allowed"),
         "opinions": m4,

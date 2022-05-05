@@ -47,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUs": MessageLookupByLibrary.simpleMessage("O nas"),
+        "accessCode": MessageLookupByLibrary.simpleMessage("Kod dostępu"),
         "accountExists": MessageLookupByLibrary.simpleMessage(
             "Konto dla tego adresu e-mail już istnieje"),
         "accountSettings":
@@ -111,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmTicketReturn": MessageLookupByLibrary.simpleMessage(
             "Czy na pewno chcesz zwrócić bilet?"),
         "contact": MessageLookupByLibrary.simpleMessage("Kontakt"),
+        "copiedToClipboard":
+            MessageLookupByLibrary.simpleMessage("Skopiowano do schowka"),
         "currentPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Aktualne Hasło"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Ciemny motyw"),
@@ -152,6 +155,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "endDate": MessageLookupByLibrary.simpleMessage("Data zakończenia"),
         "endDateBeforeStart": MessageLookupByLibrary.simpleMessage(
             "Data zakończenia nie może być przed datą rozpoczęcia"),
+        "enterAccessCode":
+            MessageLookupByLibrary.simpleMessage("Proszę podaj kod dostępu"),
         "enterArtistName": MessageLookupByLibrary.simpleMessage(
             "Proszę podać nazwę wykonawcy"),
         "enterDesc": MessageLookupByLibrary.simpleMessage("Proszę podać opis"),
@@ -258,9 +263,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "findInMap": MessageLookupByLibrary.simpleMessage("Znajdź na mapie"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Zapomniałeś hasła?"),
+        "generateAccessCode":
+            MessageLookupByLibrary.simpleMessage("Wygeneruj kod dostępu"),
         "home": MessageLookupByLibrary.simpleMessage("Główna"),
         "income": MessageLookupByLibrary.simpleMessage("Dochód"),
         "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
+        "invalidAccessCode": MessageLookupByLibrary.simpleMessage(
+            "Kod dostępu jest nieprawidłowy lub wygasł"),
         "invalidCredential": MessageLookupByLibrary.simpleMessage(
             "Otrzymane poświadczenia są nieprawidłowe lub wygasły"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(
@@ -277,6 +286,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nieprawidłowy kod weryfikacyjny"),
         "invalidVerificationId": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy identyfikator weryfikacji"),
+        "inviteSelector":
+            MessageLookupByLibrary.simpleMessage("Zaproś selekcjonera"),
         "isConcert": MessageLookupByLibrary.simpleMessage("Koncert"),
         "live": MessageLookupByLibrary.simpleMessage("Na żywo"),
         "login": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
@@ -319,6 +330,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Na początek ustawmy Twoją nazwę użytkownika"),
         "onboardingWelcomeTitle":
             MessageLookupByLibrary.simpleMessage("Witaj na pokładzie!"),
+        "oneTimeAccessCode": MessageLookupByLibrary.simpleMessage(
+            "Jednorazowy kod dostępu dla selekcjonera"),
         "operationNotAllowed":
             MessageLookupByLibrary.simpleMessage("Operacja nie jest dozwolona"),
         "opinions": m4,

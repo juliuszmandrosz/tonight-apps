@@ -60,6 +60,16 @@ class S {
     );
   }
 
+  /// `Access code`
+  String get accessCode {
+    return Intl.message(
+      'Access code',
+      name: 'accessCode',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `An account already exists for that email`
   String get accountExists {
     return Intl.message(
@@ -476,6 +486,16 @@ class S {
     );
   }
 
+  /// `Copied to clipboard`
+  String get copiedToClipboard {
+    return Intl.message(
+      'Copied to clipboard',
+      name: 'copiedToClipboard',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Current Password`
   String get currentPasswordLabel {
     return Intl.message(
@@ -741,6 +761,16 @@ class S {
     return Intl.message(
       'The end date cannot be before the start date',
       name: 'endDateBeforeStart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter access code`
+  String get enterAccessCode {
+    return Intl.message(
+      'Please enter access code',
+      name: 'enterAccessCode',
       desc: '',
       args: [],
     );
@@ -1342,6 +1372,16 @@ class S {
     );
   }
 
+  /// `Generate access code`
+  String get generateAccessCode {
+    return Intl.message(
+      'Generate access code',
+      name: 'generateAccessCode',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Home`
   String get home {
     return Intl.message(
@@ -1367,6 +1407,16 @@ class S {
     return Intl.message(
       'Instagram',
       name: 'instagram',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Access code is invalid or has expired`
+  String get invalidAccessCode {
+    return Intl.message(
+      'Access code is invalid or has expired',
+      name: 'invalidAccessCode',
       desc: '',
       args: [],
     );
@@ -1447,6 +1497,16 @@ class S {
     return Intl.message(
       'Invalid verification ID',
       name: 'invalidVerificationId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invite selector`
+  String get inviteSelector {
+    return Intl.message(
+      'Invite selector',
+      name: 'inviteSelector',
       desc: '',
       args: [],
     );
@@ -1707,6 +1767,16 @@ class S {
     return Intl.message(
       'Welcome on board!',
       name: 'onboardingWelcomeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `One-time access code for selector`
+  String get oneTimeAccessCode {
+    return Intl.message(
+      'One-time access code for selector',
+      name: 'oneTimeAccessCode',
       desc: '',
       args: [],
     );
