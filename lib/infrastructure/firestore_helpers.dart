@@ -22,6 +22,8 @@ extension FirestoreX on FirebaseFirestore {
   CollectionReference get stripeCustomers => collection('stripeCustomers');
 
   CollectionReference get currencyParams => collection('currencyParams');
+
+  CollectionReference get selectors => collection('selectors');
 }
 
 extension DocumentReferenceX on DocumentReference {
@@ -43,4 +45,6 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get eventTickets => collection('eventTickets');
 
   CollectionReference get reviewCollection => collection('reviews');
+
+  CollectionReference get selectors => collection('selectors');
 }
