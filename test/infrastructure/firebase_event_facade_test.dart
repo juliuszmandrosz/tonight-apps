@@ -99,7 +99,7 @@ void main() {
     test('should return event when event with provided id is present',
         () async {
       await firestore.collection('events').doc(eventId).set(eventDoc);
-      final expected = right<EventFailure, Event>(event);
+      final expected = right<UserEventFailure, Event>(event);
 
       final result = await facade.getEventById(eventId);
 
@@ -121,7 +121,7 @@ void main() {
     test('should return unit when current user is present', () async {
       await signInUser();
 
-      final expected = right<EventFailure, Unit>(unit);
+      final expected = right<UserEventFailure, Unit>(unit);
 
       final result = await facade.toggleEventFavoriteStatus(eventId);
 

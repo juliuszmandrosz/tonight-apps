@@ -2,14 +2,14 @@ import 'package:dartz/dartz.dart';
 import 'package:raver_events/domain/domain.dart';
 
 abstract class PartnerEventFacade {
-  Future<Either<EventFailure, Unit>> addEvent(
+  Future<Either<PartnerEventFailure, Unit>> addEvent(
     Event event,
     EventTickets eventTickets,
   );
 
-  Future<Either<EventFailure, Unit>> updateEvent(Event event);
+  Future<Either<PartnerEventFailure, Unit>> updateEvent(Event event);
 
-  Future<Either<EventFailure, Option<Event>>>
+  Future<Either<PartnerEventFailure, Option<Event>>>
       getEventInDateRangeForCurrentPartner(
     DateTime fromDate,
     DateTime toDate,

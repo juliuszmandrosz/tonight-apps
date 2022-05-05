@@ -32,7 +32,7 @@ class FirebaseEventFacade
         _logger = logger;
 
   @override
-  Future<Either<EventFailure, List<Event>>> getEvents(
+  Future<Either<CommonEventFailure, List<Event>>> getEvents(
     EventFilters filters,
     SortModel sortModel, {
     int pageSize = 10,
@@ -41,34 +41,34 @@ class FirebaseEventFacade
     try {
       final events = await _algoliaEventsApi.getEvents(
           filters, sortModel, pageSize, offset);
-      return right<EventFailure, List<Event>>(events.hits
+      return right<CommonEventFailure, List<Event>>(events.hits
           .map(
             (doc) => EventDto.fromAlgolia(doc).toDomain(),
           )
           .toList());
     } on AlgoliaError catch (e) {
       _logger.e("Algolia error during fetching events EXCEPTION: $e");
-      return left(const EventFailure.unexpected());
+      return left(const CommonEventFailure.unexpected());
     }
   }
 
   @override
-  Future<Either<EventFailure, Event>> getEventById(String eventId) async {
+  Future<Either<UserEventFailure, Event>> getEventById(String eventId) async {
     try {
       final eventDoc = await _firestore.eventCollection.doc(eventId).get();
 
       if (eventDoc.data() == null) throw InvalidIdError();
 
-      return right<EventFailure, Event>(
+      return right<UserEventFailure, Event>(
           EventDto.fromFirebase(eventDoc).toDomain());
     } on FirebaseException catch (e) {
       _logger.e("Exception during getting event by id EXCEPTION: $e");
-      return left(const EventFailure.unexpected());
+      return left(const UserEventFailure.unexpected());
     }
   }
 
   @override
-  Future<Either<EventFailure, Unit>> toggleEventFavoriteStatus(
+  Future<Either<UserEventFailure, Unit>> toggleEventFavoriteStatus(
       String eventId) async {
     try {
       final userDoc = await _getCurrentUserDocument();
@@ -85,12 +85,12 @@ class FirebaseEventFacade
     } on FirebaseException catch (e) {
       _logger
           .e("Exception during toggling event favorite status EXCEPTION: $e");
-      return left(const EventFailure.unexpected());
+      return left(const UserEventFailure.unexpected());
     }
   }
 
   @override
-  Future<Either<EventFailure, List<Event>>> getFutureEventsByIds(
+  Future<Either<UserEventFailure, List<Event>>> getFutureEventsByIds(
       List<String> eventIds) async {
     final eventsQuery = _firestore.eventCollection
         .where('id', whereIn: eventIds)
@@ -102,12 +102,12 @@ class FirebaseEventFacade
           events.docs.map((e) => EventDto.fromFirebase(e).toDomain()).toList());
     } on FirebaseException catch (e) {
       _logger.e("Exception during fetching events by ids EXCEPTION: $e");
-      return left(const EventFailure.unexpected());
+      return left(const UserEventFailure.unexpected());
     }
   }
 
   @override
-  Future<Either<EventFailure, Unit>> addEvent(
+  Future<Either<PartnerEventFailure, Unit>> addEvent(
     Event event,
     EventTickets eventTickets,
   ) async {
@@ -125,16 +125,16 @@ class FirebaseEventFacade
       return right(unit);
     } on FirebaseException catch (e) {
       _logger.e("Exception during adding event EXCEPTION: $e");
-      return left(const EventFailure.unexpected());
+      return left(const PartnerEventFailure.unexpected());
     }
   }
 
   @override
-  Future<Either<EventFailure, Unit>> updateEvent(Event event) async {
+  Future<Either<PartnerEventFailure, Unit>> updateEvent(Event event) async {
     final eventDocRef = _firestore.eventCollection.doc(event.id);
 
     return _firestore
-        .runTransaction<Either<EventFailure, Unit>>((transaction) async {
+        .runTransaction<Either<PartnerEventFailure, Unit>>((transaction) async {
       final eventDoc = await transaction.get(eventDocRef);
 
       if (!eventDoc.exists) throw InvalidIdError();
@@ -147,19 +147,29 @@ class FirebaseEventFacade
     }).catchError((e) {
       if (e is FirebaseException) {
         _logger.e("Firebase Exception during updating event EXCEPTION: $e");
-        return left<EventFailure, Unit>(
-          const EventFailure.unexpected(),
+        return left<PartnerEventFailure, Unit>(
+          const PartnerEventFailure.unexpected(),
         );
       }
     });
   }
 
   @override
-  Future<Either<EventFailure, Option<Event>>>
+  Future<Either<SelectorEventFailure, Option<Event>>>
       getCurrentEventFromClubAsSelector() async {
     try {
       final selectorDoc = await _getCurrentSelectorDocument();
       final clubId = selectorDoc.get('clubId');
+
+      final partnerSelectorDoc = await _firestore.partnersCollection
+          .doc(clubId)
+          .selectors
+          .doc(selectorDoc.id)
+          .get();
+
+      if (!partnerSelectorDoc.exists) {
+        return left(const SelectorEventFailure.noAccess());
+      }
 
       final filters = EventFilters.empty().copyWith(
         clubFilter: ClubFilter(clubId: clubId),
@@ -174,7 +184,7 @@ class FirebaseEventFacade
 
       final currentEvent = result.hits.first;
 
-      return right<EventFailure, Option<Event>>(
+      return right<SelectorEventFailure, Option<Event>>(
         some(EventDto.fromAlgolia(currentEvent).toDomain()),
       );
     } on AlgoliaError catch (e) {
@@ -182,12 +192,12 @@ class FirebaseEventFacade
         "Algolia error during getting "
         "current event from club EXCEPTION: $e",
       );
-      return left(const EventFailure.unexpected());
+      return left(const SelectorEventFailure.unexpected());
     }
   }
 
   @override
-  Future<Either<EventFailure, Option<Event>>>
+  Future<Either<PartnerEventFailure, Option<Event>>>
       getEventInDateRangeForCurrentPartner(
     DateTime fromDate,
     DateTime toDate,
@@ -210,7 +220,7 @@ class FirebaseEventFacade
 
       final currentEvent = result.hits.first;
 
-      return right<EventFailure, Option<Event>>(
+      return right<PartnerEventFailure, Option<Event>>(
         some(EventDto.fromAlgolia(currentEvent).toDomain()),
       );
     } on AlgoliaError catch (e) {
@@ -218,7 +228,7 @@ class FirebaseEventFacade
         "Algolia error during getting "
         "event in date range for current partner EXCEPTION: $e",
       );
-      return left(const EventFailure.unexpected());
+      return left(const PartnerEventFailure.unexpected());
     }
   }
 
