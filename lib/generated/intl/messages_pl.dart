@@ -42,6 +42,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "${Intl.plural(count, zero: 'Brak nagród', one: 'Nagroda', few: 'Nagrody', many: 'Nagród', other: 'Nagrody')}";
 
   static String m7(count) =>
+      "${Intl.plural(count, zero: 'Brak selekcjonerów', one: 'Selekcjoner', few: 'Selekcjonerzy', many: 'Selekcjonerów', other: 'Selekcjonerów')}";
+
+  static String m8(count) =>
       "${Intl.plural(count, zero: 'Brak biletów', one: 'Bilet', few: 'Bilety', many: 'Biletów', other: 'Biletu')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -198,6 +201,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Sprawdź połączenie z internetem"),
         "errorDeletingReward": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas dodawania nagrody"),
+        "errorDeletingSelector": MessageLookupByLibrary.simpleMessage(
+            "Błąd podczas usuwania selekcjonera"),
         "errorDialogTitle":
             MessageLookupByLibrary.simpleMessage("Raver się wykrzaczył!"),
         "errorLoadingClubs": MessageLookupByLibrary.simpleMessage(
@@ -218,6 +223,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wystapił błąd podczas ładowania danych profilu"),
         "errorLoadingRewards": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas ładowania nagród"),
+        "errorLoadingSelectors": MessageLookupByLibrary.simpleMessage(
+            "Błąd podczas ładowania selekcjonerów"),
         "errorLoadingTickets": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas ładowania biletów"),
         "errorMakingCall": MessageLookupByLibrary.simpleMessage(
@@ -425,6 +432,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Proszę wybrać minimalny wiek"),
         "selectMusicalGenres": MessageLookupByLibrary.simpleMessage(
             "Proszę wybrać gatunki muzyczne"),
+        "selectors": m7,
         "sendPasswordResetLink": MessageLookupByLibrary.simpleMessage(
             "Wyślij link do resetowania hasła"),
         "serverError": MessageLookupByLibrary.simpleMessage(
@@ -459,7 +467,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketPrice": MessageLookupByLibrary.simpleMessage("Cena biletu"),
         "ticketReturnedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Bilet zwrócono pomyślnie"),
-        "tickets": m7,
+        "tickets": m8,
         "ticketsSold":
             MessageLookupByLibrary.simpleMessage("Sprzedanych biletów"),
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),

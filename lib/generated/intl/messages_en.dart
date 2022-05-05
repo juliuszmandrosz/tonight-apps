@@ -42,6 +42,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "${Intl.plural(count, zero: 'No rewards', one: 'Reward', other: 'Rewards')}";
 
   static String m7(count) =>
+      "${Intl.plural(count, zero: 'No selectors', one: 'Selector', other: 'Selectors')}";
+
+  static String m8(count) =>
       "${Intl.plural(count, zero: 'No tickets', one: 'Ticket', other: 'Tickets')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -201,6 +204,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please check your internet connection"),
         "errorDeletingReward":
             MessageLookupByLibrary.simpleMessage("Error deleting reward"),
+        "errorDeletingSelector":
+            MessageLookupByLibrary.simpleMessage("Error deleting selector"),
         "errorDialogTitle":
             MessageLookupByLibrary.simpleMessage("Raver passed out!"),
         "errorLoadingClubs":
@@ -221,6 +226,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Error while loading profile info"),
         "errorLoadingRewards":
             MessageLookupByLibrary.simpleMessage("Error loading rewards"),
+        "errorLoadingSelectors":
+            MessageLookupByLibrary.simpleMessage("Error loading selectors"),
         "errorLoadingTickets":
             MessageLookupByLibrary.simpleMessage("Error loading tickets"),
         "errorMakingCall":
@@ -420,6 +427,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please select minumum age"),
         "selectMusicalGenres": MessageLookupByLibrary.simpleMessage(
             "Please select musical genres"),
+        "selectors": m7,
         "sendPasswordResetLink":
             MessageLookupByLibrary.simpleMessage("Send password reset link"),
         "serverError": MessageLookupByLibrary.simpleMessage(
@@ -452,7 +460,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketPrice": MessageLookupByLibrary.simpleMessage("Ticket price"),
         "ticketReturnedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Ticket returned successfully"),
-        "tickets": m7,
+        "tickets": m8,
         "ticketsSold": MessageLookupByLibrary.simpleMessage("Tickets sold"),
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "tooMuchRequiredEntries": MessageLookupByLibrary.simpleMessage(

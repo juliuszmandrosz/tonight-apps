@@ -999,6 +999,16 @@ class S {
     );
   }
 
+  /// `Error deleting selector`
+  String get errorDeletingSelector {
+    return Intl.message(
+      'Error deleting selector',
+      name: 'errorDeletingSelector',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Raver passed out!`
   String get errorDialogTitle {
     return Intl.message(
@@ -1094,6 +1104,16 @@ class S {
     return Intl.message(
       'Error loading rewards',
       name: 'errorLoadingRewards',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error loading selectors`
+  String get errorLoadingSelectors {
+    return Intl.message(
+      'Error loading selectors',
+      name: 'errorLoadingSelectors',
       desc: '',
       args: [],
     );
@@ -2358,6 +2378,19 @@ class S {
       name: 'selectMusicalGenres',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `{count, plural, zero{No selectors} one{Selector} other{Selectors}}`
+  String selectors(num count) {
+    return Intl.plural(
+      count,
+      zero: 'No selectors',
+      one: 'Selector',
+      other: 'Selectors',
+      name: 'selectors',
+      desc: '',
+      args: [count],
     );
   }
 
