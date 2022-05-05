@@ -133,6 +133,10 @@ class FirebaseEventTicketsFacade
             : _startNextPool(oldTicketPool, ticketPools, event.id);
       }
 
+      if (!isCurrentPoolSoldOut && updatedTicketPool.isCurrent) {
+        await _updateEventPrice(event.id, updatedTicketPool.ticketPrice);
+      }
+
       _updatePool(oldTicketPool, updatedTicketPool, ticketPools);
 
       eventTicketDto = eventTicketDto.copyWith(
