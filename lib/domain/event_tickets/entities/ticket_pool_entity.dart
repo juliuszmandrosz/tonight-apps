@@ -4,6 +4,7 @@ class TicketPool extends Equatable {
   final int poolNumber;
   final int ticketQuantity;
   final int ticketPrice;
+  final int vipPrice;
   final String currency;
   final int ticketsSold;
   final bool isCurrent;
@@ -13,6 +14,7 @@ class TicketPool extends Equatable {
     required this.poolNumber,
     required this.ticketQuantity,
     required this.ticketPrice,
+    required this.vipPrice,
     required this.currency,
     this.ticketsSold = 0,
     this.isCurrent = false,
@@ -24,6 +26,7 @@ class TicketPool extends Equatable {
         poolNumber,
         ticketQuantity,
         ticketPrice,
+        vipPrice,
         currency,
         ticketsSold,
         isCurrent,
@@ -34,6 +37,7 @@ class TicketPool extends Equatable {
     int? poolNumber,
     int? ticketQuantity,
     int? ticketPrice,
+    int? vipPrice,
     String? currency,
     int? ticketsSold,
     bool? isCurrent,
@@ -43,6 +47,7 @@ class TicketPool extends Equatable {
       poolNumber: poolNumber ?? this.poolNumber,
       ticketQuantity: ticketQuantity ?? this.ticketQuantity,
       ticketPrice: ticketPrice ?? this.ticketPrice,
+      vipPrice: vipPrice ?? this.vipPrice,
       currency: currency ?? this.currency,
       ticketsSold: ticketsSold ?? this.ticketsSold,
       isCurrent: isCurrent ?? this.isCurrent,

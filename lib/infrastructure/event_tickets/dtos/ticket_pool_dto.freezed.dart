@@ -26,6 +26,7 @@ class _$TicketPoolDtoTearOff {
       {required int poolNumber,
       required int ticketQuantity,
       required int ticketPrice,
+      required int vipPrice,
       required String currency,
       int ticketsSold = 0,
       bool isCurrent = false,
@@ -34,6 +35,7 @@ class _$TicketPoolDtoTearOff {
       poolNumber: poolNumber,
       ticketQuantity: ticketQuantity,
       ticketPrice: ticketPrice,
+      vipPrice: vipPrice,
       currency: currency,
       ticketsSold: ticketsSold,
       isCurrent: isCurrent,
@@ -54,6 +56,7 @@ mixin _$TicketPoolDto {
   int get poolNumber => throw _privateConstructorUsedError;
   int get ticketQuantity => throw _privateConstructorUsedError;
   int get ticketPrice => throw _privateConstructorUsedError;
+  int get vipPrice => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
   int get ticketsSold => throw _privateConstructorUsedError;
   bool get isCurrent => throw _privateConstructorUsedError;
@@ -74,6 +77,7 @@ abstract class $TicketPoolDtoCopyWith<$Res> {
       {int poolNumber,
       int ticketQuantity,
       int ticketPrice,
+      int vipPrice,
       String currency,
       int ticketsSold,
       bool isCurrent,
@@ -94,6 +98,7 @@ class _$TicketPoolDtoCopyWithImpl<$Res>
     Object? poolNumber = freezed,
     Object? ticketQuantity = freezed,
     Object? ticketPrice = freezed,
+    Object? vipPrice = freezed,
     Object? currency = freezed,
     Object? ticketsSold = freezed,
     Object? isCurrent = freezed,
@@ -111,6 +116,10 @@ class _$TicketPoolDtoCopyWithImpl<$Res>
       ticketPrice: ticketPrice == freezed
           ? _value.ticketPrice
           : ticketPrice // ignore: cast_nullable_to_non_nullable
+              as int,
+      vipPrice: vipPrice == freezed
+          ? _value.vipPrice
+          : vipPrice // ignore: cast_nullable_to_non_nullable
               as int,
       currency: currency == freezed
           ? _value.currency
@@ -143,6 +152,7 @@ abstract class _$TicketPoolDtoCopyWith<$Res>
       {int poolNumber,
       int ticketQuantity,
       int ticketPrice,
+      int vipPrice,
       String currency,
       int ticketsSold,
       bool isCurrent,
@@ -165,6 +175,7 @@ class __$TicketPoolDtoCopyWithImpl<$Res>
     Object? poolNumber = freezed,
     Object? ticketQuantity = freezed,
     Object? ticketPrice = freezed,
+    Object? vipPrice = freezed,
     Object? currency = freezed,
     Object? ticketsSold = freezed,
     Object? isCurrent = freezed,
@@ -182,6 +193,10 @@ class __$TicketPoolDtoCopyWithImpl<$Res>
       ticketPrice: ticketPrice == freezed
           ? _value.ticketPrice
           : ticketPrice // ignore: cast_nullable_to_non_nullable
+              as int,
+      vipPrice: vipPrice == freezed
+          ? _value.vipPrice
+          : vipPrice // ignore: cast_nullable_to_non_nullable
               as int,
       currency: currency == freezed
           ? _value.currency
@@ -211,6 +226,7 @@ class _$_TicketPoolDto extends _TicketPoolDto {
       {required this.poolNumber,
       required this.ticketQuantity,
       required this.ticketPrice,
+      required this.vipPrice,
       required this.currency,
       this.ticketsSold = 0,
       this.isCurrent = false,
@@ -227,6 +243,8 @@ class _$_TicketPoolDto extends _TicketPoolDto {
   @override
   final int ticketPrice;
   @override
+  final int vipPrice;
+  @override
   final String currency;
   @JsonKey()
   @override
@@ -240,7 +258,7 @@ class _$_TicketPoolDto extends _TicketPoolDto {
 
   @override
   String toString() {
-    return 'TicketPoolDto(poolNumber: $poolNumber, ticketQuantity: $ticketQuantity, ticketPrice: $ticketPrice, currency: $currency, ticketsSold: $ticketsSold, isCurrent: $isCurrent, isSoldOut: $isSoldOut)';
+    return 'TicketPoolDto(poolNumber: $poolNumber, ticketQuantity: $ticketQuantity, ticketPrice: $ticketPrice, vipPrice: $vipPrice, currency: $currency, ticketsSold: $ticketsSold, isCurrent: $isCurrent, isSoldOut: $isSoldOut)';
   }
 
   @override
@@ -254,6 +272,7 @@ class _$_TicketPoolDto extends _TicketPoolDto {
                 .equals(other.ticketQuantity, ticketQuantity) &&
             const DeepCollectionEquality()
                 .equals(other.ticketPrice, ticketPrice) &&
+            const DeepCollectionEquality().equals(other.vipPrice, vipPrice) &&
             const DeepCollectionEquality().equals(other.currency, currency) &&
             const DeepCollectionEquality()
                 .equals(other.ticketsSold, ticketsSold) &&
@@ -267,6 +286,7 @@ class _$_TicketPoolDto extends _TicketPoolDto {
       const DeepCollectionEquality().hash(poolNumber),
       const DeepCollectionEquality().hash(ticketQuantity),
       const DeepCollectionEquality().hash(ticketPrice),
+      const DeepCollectionEquality().hash(vipPrice),
       const DeepCollectionEquality().hash(currency),
       const DeepCollectionEquality().hash(ticketsSold),
       const DeepCollectionEquality().hash(isCurrent),
@@ -288,6 +308,7 @@ abstract class _TicketPoolDto extends TicketPoolDto {
       {required int poolNumber,
       required int ticketQuantity,
       required int ticketPrice,
+      required int vipPrice,
       required String currency,
       int ticketsSold,
       bool isCurrent,
@@ -303,6 +324,8 @@ abstract class _TicketPoolDto extends TicketPoolDto {
   int get ticketQuantity;
   @override
   int get ticketPrice;
+  @override
+  int get vipPrice;
   @override
   String get currency;
   @override
