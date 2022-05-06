@@ -117,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contact": MessageLookupByLibrary.simpleMessage("Contact"),
         "copiedToClipboard":
             MessageLookupByLibrary.simpleMessage("Copied to clipboard"),
+        "currency": MessageLookupByLibrary.simpleMessage("Currency"),
         "currentPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Current Password"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
@@ -269,6 +270,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "findInMap": MessageLookupByLibrary.simpleMessage("Find in map"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "from": MessageLookupByLibrary.simpleMessage("From"),
         "generateAccessCode":
             MessageLookupByLibrary.simpleMessage("Generate access code"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
@@ -421,6 +423,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Scan another ticket"),
         "scanTicket": MessageLookupByLibrary.simpleMessage("Scan ticket"),
         "scanner": MessageLookupByLibrary.simpleMessage("Scanner"),
+        "select": MessageLookupByLibrary.simpleMessage("Select"),
         "selectDressCode":
             MessageLookupByLibrary.simpleMessage("Please select dress code"),
         "selectMinAge":
@@ -463,6 +466,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tickets": m8,
         "ticketsSold": MessageLookupByLibrary.simpleMessage("Tickets sold"),
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
+        "to": MessageLookupByLibrary.simpleMessage("To"),
         "tooMuchRequiredEntries": MessageLookupByLibrary.simpleMessage(
             "The maximum number of required entries is 1000"),
         "totalRevenue": MessageLookupByLibrary.simpleMessage("Total revenue"),

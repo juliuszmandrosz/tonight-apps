@@ -496,6 +496,16 @@ class S {
     );
   }
 
+  /// `Currency`
+  String get currency {
+    return Intl.message(
+      'Currency',
+      name: 'currency',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Current Password`
   String get currentPasswordLabel {
     return Intl.message(
@@ -1387,6 +1397,16 @@ class S {
     return Intl.message(
       'Forgot password?',
       name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `From`
+  String get from {
+    return Intl.message(
+      'From',
+      name: 'from',
       desc: '',
       args: [],
     );
@@ -2351,6 +2371,16 @@ class S {
     );
   }
 
+  /// `Select`
+  String get select {
+    return Intl.message(
+      'Select',
+      name: 'select',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please select dress code`
   String get selectDressCode {
     return Intl.message(
@@ -2652,6 +2682,16 @@ class S {
     return Intl.message(
       'TikTok',
       name: 'tikTok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To`
+  String get to {
+    return Intl.message(
+      'To',
+      name: 'to',
       desc: '',
       args: [],
     );
