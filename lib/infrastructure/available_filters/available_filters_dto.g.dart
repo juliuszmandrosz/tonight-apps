@@ -15,8 +15,10 @@ _$_AvailableFiltersDto _$$_AvailableFiltersDtoFromJson(
       musicalGenres: (json['musicalGenres'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
+      currencies: (json['currencies'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       minAges: (json['minAges'] as List<dynamic>).map((e) => e as int).toList(),
-      maxPrice: json['maxPrice'] as int,
     );
 
 Map<String, dynamic> _$$_AvailableFiltersDtoToJson(
@@ -24,6 +26,6 @@ Map<String, dynamic> _$$_AvailableFiltersDtoToJson(
     <String, dynamic>{
       'allowedOutfits': instance.allowedOutfits,
       'musicalGenres': instance.musicalGenres,
+      'currencies': instance.currencies,
       'minAges': instance.minAges,
-      'maxPrice': instance.maxPrice,
     };

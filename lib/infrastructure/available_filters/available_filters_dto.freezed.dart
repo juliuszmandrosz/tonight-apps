@@ -25,13 +25,13 @@ class _$AvailableFiltersDtoTearOff {
   _AvailableFiltersDto call(
       {required List<String> allowedOutfits,
       required List<String> musicalGenres,
-      required List<int> minAges,
-      required int maxPrice}) {
+      required List<String> currencies,
+      required List<int> minAges}) {
     return _AvailableFiltersDto(
       allowedOutfits: allowedOutfits,
       musicalGenres: musicalGenres,
+      currencies: currencies,
       minAges: minAges,
-      maxPrice: maxPrice,
     );
   }
 
@@ -47,8 +47,8 @@ const $AvailableFiltersDto = _$AvailableFiltersDtoTearOff();
 mixin _$AvailableFiltersDto {
   List<String> get allowedOutfits => throw _privateConstructorUsedError;
   List<String> get musicalGenres => throw _privateConstructorUsedError;
+  List<String> get currencies => throw _privateConstructorUsedError;
   List<int> get minAges => throw _privateConstructorUsedError;
-  int get maxPrice => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -64,8 +64,8 @@ abstract class $AvailableFiltersDtoCopyWith<$Res> {
   $Res call(
       {List<String> allowedOutfits,
       List<String> musicalGenres,
-      List<int> minAges,
-      int maxPrice});
+      List<String> currencies,
+      List<int> minAges});
 }
 
 /// @nodoc
@@ -81,8 +81,8 @@ class _$AvailableFiltersDtoCopyWithImpl<$Res>
   $Res call({
     Object? allowedOutfits = freezed,
     Object? musicalGenres = freezed,
+    Object? currencies = freezed,
     Object? minAges = freezed,
-    Object? maxPrice = freezed,
   }) {
     return _then(_value.copyWith(
       allowedOutfits: allowedOutfits == freezed
@@ -93,14 +93,14 @@ class _$AvailableFiltersDtoCopyWithImpl<$Res>
           ? _value.musicalGenres
           : musicalGenres // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      currencies: currencies == freezed
+          ? _value.currencies
+          : currencies // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       minAges: minAges == freezed
           ? _value.minAges
           : minAges // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      maxPrice: maxPrice == freezed
-          ? _value.maxPrice
-          : maxPrice // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -115,8 +115,8 @@ abstract class _$AvailableFiltersDtoCopyWith<$Res>
   $Res call(
       {List<String> allowedOutfits,
       List<String> musicalGenres,
-      List<int> minAges,
-      int maxPrice});
+      List<String> currencies,
+      List<int> minAges});
 }
 
 /// @nodoc
@@ -134,8 +134,8 @@ class __$AvailableFiltersDtoCopyWithImpl<$Res>
   $Res call({
     Object? allowedOutfits = freezed,
     Object? musicalGenres = freezed,
+    Object? currencies = freezed,
     Object? minAges = freezed,
-    Object? maxPrice = freezed,
   }) {
     return _then(_AvailableFiltersDto(
       allowedOutfits: allowedOutfits == freezed
@@ -146,26 +146,27 @@ class __$AvailableFiltersDtoCopyWithImpl<$Res>
           ? _value.musicalGenres
           : musicalGenres // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      currencies: currencies == freezed
+          ? _value.currencies
+          : currencies // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       minAges: minAges == freezed
           ? _value.minAges
           : minAges // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      maxPrice: maxPrice == freezed
-          ? _value.maxPrice
-          : maxPrice // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
 
 /// @nodoc
+
 @JsonSerializable()
 class _$_AvailableFiltersDto extends _AvailableFiltersDto {
   const _$_AvailableFiltersDto(
       {required this.allowedOutfits,
       required this.musicalGenres,
-      required this.minAges,
-      required this.maxPrice})
+      required this.currencies,
+      required this.minAges})
       : super._();
 
   factory _$_AvailableFiltersDto.fromJson(Map<String, dynamic> json) =>
@@ -176,13 +177,13 @@ class _$_AvailableFiltersDto extends _AvailableFiltersDto {
   @override
   final List<String> musicalGenres;
   @override
-  final List<int> minAges;
+  final List<String> currencies;
   @override
-  final int maxPrice;
+  final List<int> minAges;
 
   @override
   String toString() {
-    return 'AvailableFiltersDto(allowedOutfits: $allowedOutfits, musicalGenres: $musicalGenres, minAges: $minAges, maxPrice: $maxPrice)';
+    return 'AvailableFiltersDto(allowedOutfits: $allowedOutfits, musicalGenres: $musicalGenres, currencies: $currencies, minAges: $minAges)';
   }
 
   @override
@@ -194,8 +195,9 @@ class _$_AvailableFiltersDto extends _AvailableFiltersDto {
                 .equals(other.allowedOutfits, allowedOutfits) &&
             const DeepCollectionEquality()
                 .equals(other.musicalGenres, musicalGenres) &&
-            const DeepCollectionEquality().equals(other.minAges, minAges) &&
-            const DeepCollectionEquality().equals(other.maxPrice, maxPrice));
+            const DeepCollectionEquality()
+                .equals(other.currencies, currencies) &&
+            const DeepCollectionEquality().equals(other.minAges, minAges));
   }
 
   @override
@@ -203,8 +205,8 @@ class _$_AvailableFiltersDto extends _AvailableFiltersDto {
       runtimeType,
       const DeepCollectionEquality().hash(allowedOutfits),
       const DeepCollectionEquality().hash(musicalGenres),
-      const DeepCollectionEquality().hash(minAges),
-      const DeepCollectionEquality().hash(maxPrice));
+      const DeepCollectionEquality().hash(currencies),
+      const DeepCollectionEquality().hash(minAges));
 
   @JsonKey(ignore: true)
   @override
@@ -222,8 +224,8 @@ abstract class _AvailableFiltersDto extends AvailableFiltersDto {
   const factory _AvailableFiltersDto(
       {required List<String> allowedOutfits,
       required List<String> musicalGenres,
-      required List<int> minAges,
-      required int maxPrice}) = _$_AvailableFiltersDto;
+      required List<String> currencies,
+      required List<int> minAges}) = _$_AvailableFiltersDto;
   const _AvailableFiltersDto._() : super._();
 
   factory _AvailableFiltersDto.fromJson(Map<String, dynamic> json) =
@@ -234,9 +236,9 @@ abstract class _AvailableFiltersDto extends AvailableFiltersDto {
   @override
   List<String> get musicalGenres;
   @override
-  List<int> get minAges;
+  List<String> get currencies;
   @override
-  int get maxPrice;
+  List<int> get minAges;
   @override
   @JsonKey(ignore: true)
   _$AvailableFiltersDtoCopyWith<_AvailableFiltersDto> get copyWith =>

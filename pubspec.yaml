@@ -23,6 +23,7 @@ dependencies:
   equatable: ^2.0.3
   intl: ^0.17.0
   money2: ^3.1.2
+  json_serializable: ^6.2.0
 
   raver_translations:
     git:
