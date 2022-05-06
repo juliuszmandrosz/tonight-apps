@@ -59,7 +59,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   ),
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
-      textStyle: MaterialStateProperty.all(DarkTextStyles.bodyText1),
+      textStyle: MaterialStateProperty.all(DarkTextStyles.subtitle1),
       foregroundColor: MaterialStateProperty.all(DarkColors.primaryColor),
     ),
   ),
@@ -74,5 +74,13 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
       horizontal: 20,
     ),
     focusColor: DarkColors.primaryColor,
+  ),
+  dialogTheme: DialogTheme(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(30),
+    ),
+    titleTextStyle: DarkTextStyles.subtitle1,
+    elevation: 5,
+    backgroundColor: DarkColors.textColorLight,
   ),
 );

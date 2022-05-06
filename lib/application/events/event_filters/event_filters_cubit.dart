@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
+import 'package:raver_events/domain/filters/filter/currency_filter.dart';
 import 'package:raver_events/raver_events.dart';
 
 part 'event_filters_cubit.freezed.dart';
-
 part 'event_filters_state.dart';
 
 class EventFiltersCubit extends Cubit<EventFiltersState> {
@@ -33,6 +33,7 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
     if (state.filters.maxDistanceFilter.enabled) {
       _setUserLocation();
     }
+
     _eventOverviewBloc.add(EventOverviewEvent.eventsFetched(
       state.filters,
       _eventOverviewBloc.state.sortModel,
@@ -69,10 +70,10 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
     emit(state.copyWith(filters: currentFilters));
   }
 
-  void changePriceRange(int minValue, int maxValue) {
+  void changePriceRange(int? minValue, int? maxValue) {
     final currentFilters = state.filters.copyWith(
         priceRangeFilter: PriceRangeFilter(
-      minPrice: minValue,
+      minPrice: minValue ?? 0,
       maxPrice: maxValue,
     ));
     emit(state.copyWith(filters: currentFilters));
@@ -133,6 +134,13 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
     emit(state.copyWith(filters: currentFilters));
   }
 
+  void changeCurrency(String value) {
+    final currentFilters = state.filters.copyWith(
+      currencyFilter: CurrencyFilter(currency: value.toLowerCase()),
+    );
+    emit(state.copyWith(filters: currentFilters));
+  }
+
   void resetFilters() {
     final selectedDay = state.filters.dateRangeFilter;
 
@@ -148,7 +156,7 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
   void resetSelectedDay() {
     final currentFilters = state.filters.copyWith(
         dateRangeFilter: DateRangeFilter(
-          fromDate: DateTime.now(),
+      fromDate: DateTime.now(),
       toDate: null,
     ));
     emit(state.copyWith(filters: currentFilters));

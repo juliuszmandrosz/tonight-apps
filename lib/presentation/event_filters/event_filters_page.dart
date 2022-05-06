@@ -5,6 +5,7 @@ import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_buttons.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_city.dart';
+import 'package:raver/presentation/event_filters/widgets/event_filters_currency.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_dress_code.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_is_concert.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_max_distance.dart';
@@ -51,6 +52,10 @@ class _EventFiltersPageState extends State<EventFiltersPage> {
                         BlocProvider(
                           create: (context) => getIt<GooglePlacesCubit>(),
                           child: const EventFiltersCity(),
+                        ),
+                        const SizedBox(height: 20),
+                        EventFiltersCurrency(
+                          currencies: state.availableFilters.currencies,
                         ),
                         const SizedBox(height: 20),
                         const EventFiltersPrice(),

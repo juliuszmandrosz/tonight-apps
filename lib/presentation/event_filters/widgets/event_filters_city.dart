@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_place/google_place.dart';
 import 'package:raver/application/core/google_places/google_places_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver_translations/raver_translations.dart';
 import 'package:rxdart/rxdart.dart';
@@ -52,78 +51,59 @@ class _EventFiltersCityState extends State<EventFiltersCity> {
         return state.filters.maxDistanceFilter.enabled
             ? Container()
             : SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                children: [RaverHeadline(text: S().city)],
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                controller: _textController,
-                decoration: InputDecoration(
-                  labelText:
-                  MaterialLocalizations.of(context).searchFieldLabel,
-                  focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: theme.primaryColor,
-                            width: 2,
-                          ),
-                        ),
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: DefaultColors.textColorLight,
-                      width: 2,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [RaverHeadline(text: S().city)],
                     ),
-                  ),
-                  suffixIcon: state.filters.cityFilter.cityName.isNotEmpty
-                      ? InkWell(
-                    onTap: () {
-                      context
-                          .read<EventFiltersCubit>()
-                          .changeCity('', '');
-                      setState(() {
-                        _textController.text = '';
-                      });
-                    },
-                    child: const Icon(
-                      Icons.clear,
-                      size: 18,
+                    const SizedBox(height: 20),
+                    TextField(
+                      controller: _textController,
+                      decoration: InputDecoration(
+                        labelText:
+                            MaterialLocalizations.of(context).searchFieldLabel,
+                        suffixIcon: state.filters.cityFilter.cityName.isNotEmpty
+                            ? InkWell(
+                                onTap: _resetCity,
+                                child: const Icon(
+                                  Icons.clear,
+                                  size: 18,
+                                ),
+                              )
+                            : null,
+                      ),
+                      onChanged: (value) {
+                        _onSearchChanged.add(value);
+                      },
                     ),
-                  )
-                      : null,
-                ),
-                onChanged: (value) {
-                  _onSearchChanged.add(value);
-                },
-              ),
-              const SizedBox(height: 10),
-              BlocBuilder<GooglePlacesCubit, GooglePlacesState>(
-                builder: (context, state) {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: state.predictions.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        leading: CircleAvatar(
+                    const SizedBox(height: 10),
+                    BlocBuilder<GooglePlacesCubit, GooglePlacesState>(
+                      builder: (context, state) {
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: state.predictions.length,
+                          itemBuilder: (context, index) {
+                            return ListTile(
+                              leading: CircleAvatar(
                                 child: Icon(
                                   Icons.pin_drop,
                                   color: theme.backgroundColor,
                                 ),
                               ),
-                        title:
-                        Text(state.predictions[index].description!),
-                        onTap: () => _onPredictionTapped(
-                          state.predictions[index],
-                        ),
-                      );
-                    },
-                  );
-                },
-              ),
-            ],
-          ),
-        );
+                              title:
+                                  Text(state.predictions[index].description!),
+                              onTap: () => _onPredictionTapped(
+                                state.predictions[index],
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              );
       },
     );
   }
@@ -158,5 +138,12 @@ class _EventFiltersCityState extends State<EventFiltersCity> {
     FocusManager.instance.primaryFocus?.unfocus();
 
     _onSearchChanged.add('');
+  }
+
+  _resetCity() {
+    context.read<EventFiltersCubit>().changeCity('', '');
+    setState(() {
+      _textController.text = '';
+    });
   }
 }

@@ -70,4 +70,12 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     ),
     focusColor: LightColors.primaryColor,
   ),
+  dialogTheme: DialogTheme(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(30),
+    ),
+    titleTextStyle: LightTextStyles.subtitle1,
+    elevation: 5,
+    backgroundColor: LightColors.backgroundColor,
+  ),
 );
