@@ -53,9 +53,7 @@ class _EventFiltersPageState extends State<EventFiltersPage> {
                           child: const EventFiltersCity(),
                         ),
                         const SizedBox(height: 20),
-                        EventFiltersPrice(
-                          availableMaxPrice: state.availableFilters.maxPrice,
-                        ),
+                        const EventFiltersPrice(),
                         const SizedBox(height: 20),
                         EventFiltersMinAge(
                           availableMinAges: state.availableFilters.minAges,

@@ -11,6 +11,8 @@ import 'package:raver/presentation/ticket_qr/widgets/ticket_return_button.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
+import 'package:raver/application/profile/profile_cubit.dart';
+import 'dart:convert';
 
 class TicketQrPage extends StatelessWidget {
   final Ticket ticket;
@@ -53,7 +55,7 @@ class TicketQrPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: QrImage(
-                        data: ticket.id,
+                        data: _getData(context),
                         version: QrVersions.auto,
                         size: 300,
                       ),
@@ -70,5 +72,15 @@ class TicketQrPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _getData(BuildContext context) {
+    final userId = context.read<ProfileCubit>().state.user.id;
+    final data = {
+      'ticketId': ticket.id,
+      'userId': userId,
+    };
+
+    return jsonEncode(data);
   }
 }

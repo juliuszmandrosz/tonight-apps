@@ -6,15 +6,13 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class EventFiltersPrice extends StatelessWidget {
-  final int availableMaxPrice;
-
-  const EventFiltersPrice({
-    required this.availableMaxPrice,
-    Key? key,
-  }) : super(key: key);
+  const EventFiltersPrice({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // TODO - change after merge https://github.com/juliuszmandrosz/Raver/pull/40
+    const availableMaxPrice = 1000;
+
     final theme = Theme.of(context);
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
@@ -27,7 +25,7 @@ class EventFiltersPrice extends StatelessWidget {
           context.read<EventFiltersCubit>().changePriceRange(
                 state.filters.priceRangeFilter.minPrice,
                 availableMaxPrice,
-          );
+              );
         }
 
         var _currentRangeValues = RangeValues(
@@ -45,7 +43,7 @@ class EventFiltersPrice extends StatelessWidget {
                     text: '${S().priceRange} (${context.getCurrencyName()})'),
                 RaverHeadline(
                   text:
-                  '${_currentRangeValues.start.round()}-${_currentRangeValues.end.round()}',
+                      '${_currentRangeValues.start.round()}-${_currentRangeValues.end.round()}',
                 ),
               ],
             ),
@@ -68,7 +66,7 @@ class EventFiltersPrice extends StatelessWidget {
                         context.read<EventFiltersCubit>().changePriceRange(
                               values.start.round(),
                               values.end.round(),
-                        ),
+                            ),
                   ),
                 ),
               ],

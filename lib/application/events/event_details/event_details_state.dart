@@ -8,6 +8,6 @@ class EventDetailsState with _$EventDetailsState {
 
   const factory EventDetailsState.loadSuccess(Event event) = _LoadSuccess;
 
-  const factory EventDetailsState.loadFailure(EventFailure eventFailure) =
+  const factory EventDetailsState.loadFailure(UserEventFailure eventFailure) =
       _LoadFailure;
 }
