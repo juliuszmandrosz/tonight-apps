@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
@@ -19,13 +20,16 @@ class EventSummaryTicketPoolItem extends StatelessWidget {
       children: [
         Align(
           alignment: Alignment.centerLeft,
-          child: Text(
+          child: AutoSizeText(
             '${ticketPool.poolNumber} '
             '${S().pool.toLowerCase()} - ${ticketPool.ticketQuantity} '
             '${S().tickets(ticketPool.ticketQuantity).toLowerCase()}, '
-            '${ticketPool.ticketPrice} '
+            '${S().entry.toLowerCase()} ${ticketPool.ticketPrice}'
+            '${getCurrencySymbolFromCode(ticketPool.currency)}, '
+            '${S().vip.toLowerCase()} ${ticketPool.vipPrice}'
             '${getCurrencySymbolFromCode(ticketPool.currency)}',
             style: textTheme.subtitle1,
+            maxLines: 1,
           ),
         ),
         const SizedBox(height: 5),

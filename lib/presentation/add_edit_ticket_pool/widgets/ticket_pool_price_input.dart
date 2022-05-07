@@ -21,19 +21,24 @@ class TicketPoolPriceInput extends HookWidget {
           previous.ticketPrice != current.ticketPrice ||
           previous.status != current.status,
       builder: (context, state) {
-        return TextField(
-          controller: _controller,
-          onChanged: (value) => context
-              .read<AddEditTicketPoolCubit>()
-              .ticketPriceChanged(int.tryParse(value)),
-          inputFormatters: [
-            FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+        return Column(
+          children: [
+            const SizedBox(height: 20),
+            TextField(
+              controller: _controller,
+              onChanged: (value) => context
+                  .read<AddEditTicketPoolCubit>()
+                  .ticketPriceChanged(int.tryParse(value)),
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+              ],
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: S().ticketPrice,
+                errorText: getTicketPriceErrorMessage(state),
+              ),
+            ),
           ],
-          keyboardType: TextInputType.number,
-          decoration: InputDecoration(
-            labelText: S().ticketPrice,
-            errorText: getTicketPriceErrorMessage(state),
-          ),
         );
       },
     );

@@ -104,30 +104,36 @@ class EventTicketPoolCard extends StatelessWidget {
     );
   }
 
-  Text _getSubtitle(ThemeData theme) {
+  AutoSizeText _getSubtitle(ThemeData theme) {
     if (ticketPool.isSoldOut) {
-      return Text(
+      return AutoSizeText(
         S().soldOut.toUpperCase(),
         style: theme.textTheme.subtitle1!.copyWith(color: Colors.red),
       );
     }
 
     if (ticketPool.isCurrent && ticketPool.ticketsSold > 0) {
-      return Text(
+      return AutoSizeText(
         '${ticketPool.ticketsSold}/${ticketPool.ticketQuantity} '
-        '${S().ticketsSold.toLowerCase()}',
+        '${S().ticketsSold.toLowerCase()}, '
+        '${S().vip} ${ticketPool.vipPrice} '
+        '${getCurrencySymbolFromCode(ticketPool.currency)}',
         style: theme.textTheme.subtitle1!.copyWith(
           color: theme.colorScheme.onTertiaryContainer,
         ),
+        maxLines: 1,
       );
     }
 
-    return Text(
+    return AutoSizeText(
       '${ticketPool.ticketQuantity} '
-      '${S().tickets(ticketPool.ticketQuantity).toLowerCase()}',
+      '${S().tickets(ticketPool.ticketQuantity).toLowerCase()}, '
+      '${S().vip} ${ticketPool.vipPrice} '
+      '${getCurrencySymbolFromCode(ticketPool.currency)}',
       style: theme.textTheme.subtitle1!.copyWith(
         color: theme.colorScheme.onTertiaryContainer,
       ),
+      maxLines: 1,
     );
   }
 }

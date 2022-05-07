@@ -405,7 +405,7 @@ class AddEventCubit extends Cubit<AddEventState> {
     );
   }
 
-  Future<Either<EventFailure, Option<Event>>>
+  Future<Either<PartnerEventFailure, Option<Event>>>
       _checkIfEventAlreadyExistsInDateRange(
     DateTime fromDate,
     DateTime toDate,

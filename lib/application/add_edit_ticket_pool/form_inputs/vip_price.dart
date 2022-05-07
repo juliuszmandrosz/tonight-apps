@@ -7,47 +7,47 @@ import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/pric
 import 'package:raver_partners/domain/currency_params/currency_params_entity.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-enum TicketPriceError { empty, tooHigh, tooLow }
+enum VipPriceError { empty, tooHigh, tooLow }
 
-String? getTicketPriceErrorMessage(AddEditTicketPoolState state) {
-  if (state.ticketPrice.valid || state.status != FormzStatus.invalid) {
+String? getVipPriceErrorMessage(AddEditTicketPoolState state) {
+  if (state.vipPrice.valid || state.status != FormzStatus.invalid) {
     return null;
   }
 
-  switch (state.ticketPrice.error) {
-    case TicketPriceError.empty:
+  switch (state.vipPrice.error) {
+    case VipPriceError.empty:
       return S().enterPrice;
-    case TicketPriceError.tooHigh:
-      return '${S().ticketPriceTooHigh} ${getMaxPriceWithCurrency(state)}';
-    case TicketPriceError.tooLow:
-      return '${S().ticketPriceTooLow} ${getMinPriceWithCurrency(state)}';
+    case VipPriceError.tooHigh:
+      return '${S().vipPriceTooHigh} ${getMaxPriceWithCurrency(state)}';
+    case VipPriceError.tooLow:
+      return '${S().vipPriceTooLow} ${getMinPriceWithCurrency(state)}';
     default:
       return S().serverError;
   }
 }
 
-class TicketPrice extends FormzInput<int?, TicketPriceError> {
+class VipPrice extends FormzInput<int?, VipPriceError> {
   final Option<CurrencyParams> currencyParams;
 
-  TicketPrice.pure(this.currencyParams) : super.pure(null);
+  VipPrice.pure(this.currencyParams) : super.pure(null);
 
-  TicketPrice.dirty({
+  VipPrice.dirty({
     required this.currencyParams,
     int? value,
   }) : super.dirty(value);
 
   @override
-  TicketPriceError? validator(int? value) {
+  VipPriceError? validator(int? value) {
     if (value == null) {
-      return TicketPriceError.empty;
+      return VipPriceError.empty;
     }
 
     if (value < currencyParams.getOrCrash().minTicketPrice) {
-      return TicketPriceError.tooLow;
+      return VipPriceError.tooLow;
     }
 
     if (value > currencyParams.getOrCrash().maxTicketPrice) {
-      return TicketPriceError.tooHigh;
+      return VipPriceError.tooHigh;
     }
 
     return null;

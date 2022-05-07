@@ -3,7 +3,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_edit_ticket_pool/add_edit_ticket_pool_cubit.dart';
@@ -12,6 +11,7 @@ import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/save_ticket_pool_button.dart';
 import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/ticket_pool_price_input.dart';
 import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/ticket_pool_quantity_input.dart';
+import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/vip_price_input.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -69,10 +69,11 @@ class AddEditTicketPoolPage extends StatelessWidget {
             child: ListView(
               children: [
                 const TicketPoolQuantityInput(),
-                const SizedBox(height: 20),
                 if (editingTicketPool.fold(
                     () => true, (pool) => pool.ticketsSold == 0))
                   const TicketPoolPriceInput(),
+                const SizedBox(height: 20),
+                const VipPriceInput(),
               ],
             ),
           ),

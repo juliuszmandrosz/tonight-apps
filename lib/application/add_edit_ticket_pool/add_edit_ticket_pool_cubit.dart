@@ -9,6 +9,7 @@ import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/ticket_price.dart';
 import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/ticket_quantity.dart';
+import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/vip_price.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -38,20 +39,33 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
     emit(state.copyWith(ticketPrice: price));
   }
 
+  void vipPriceChanged(int? value) {
+    final price = VipPrice.dirty(
+      currencyParams: _clubInfoCubit.state.currencyParams,
+      value: value,
+    );
+    emit(state.copyWith(vipPrice: price));
+  }
+
   addCurrentTicketPoolsToState(List<TicketPool> currentPools) {
     emit(state.copyWith(currentTicketPools: currentPools));
   }
 
   addEditingTicketPoolToState(TicketPool ticketPool) {
-    final price = TicketPrice.dirty(
+    final ticketPrice = TicketPrice.dirty(
       currencyParams: _clubInfoCubit.state.currencyParams,
       value: ticketPool.ticketPrice,
+    );
+    final vipPrice = VipPrice.dirty(
+      currencyParams: _clubInfoCubit.state.currencyParams,
+      value: ticketPool.vipPrice,
     );
     final quantity = TicketQuantity.dirty(ticketPool.ticketQuantity);
     emit(
       state.copyWith(
         editingTicketPool: some(ticketPool),
-        ticketPrice: price,
+        ticketPrice: ticketPrice,
+        vipPrice: vipPrice,
         ticketQuantity: quantity,
       ),
     );
@@ -70,6 +84,7 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
       currency: club.acceptedCurrency,
       poolNumber: currentPools.length + 1,
       ticketPrice: state.ticketPrice.value!,
+      vipPrice: state.vipPrice.value!,
       ticketQuantity: state.ticketQuantity.value!,
       isCurrent: isCurrent,
     );
@@ -97,6 +112,7 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
     final editedPool = poolInState.copyWith(
       ticketQuantity: state.ticketQuantity.value!,
       ticketPrice: state.ticketPrice.value!,
+      vipPrice: state.vipPrice.value!,
     );
 
     emit(
@@ -115,10 +131,18 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
           currencyParams: _clubInfoCubit.state.currencyParams,
           value: state.ticketPrice.value,
         ),
+        vipPrice: VipPrice.dirty(
+          currencyParams: _clubInfoCubit.state.currencyParams,
+          value: state.vipPrice.value,
+        ),
       ),
     );
 
-    final status = Formz.validate([state.ticketQuantity, state.ticketPrice]);
+    final status = Formz.validate([
+      state.ticketQuantity,
+      state.ticketPrice,
+      state.vipPrice,
+    ]);
 
     emit(state.copyWith(status: status));
 
