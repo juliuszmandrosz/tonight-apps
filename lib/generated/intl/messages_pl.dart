@@ -325,6 +325,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "newPassword": MessageLookupByLibrary.simpleMessage("Nowe hasło"),
         "next": MessageLookupByLibrary.simpleMessage("Dalej"),
         "no": MessageLookupByLibrary.simpleMessage("Nie"),
+        "noAccessToClub": MessageLookupByLibrary.simpleMessage(
+            "Nie masz dostępu do tego klubu"),
         "noDressCode":
             MessageLookupByLibrary.simpleMessage("Brak dress code\'u"),
         "noEventsInClub":

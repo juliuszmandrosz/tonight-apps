@@ -336,6 +336,8 @@
   "@next": {},
   "no": "Nie",
   "@no": {},
+  "noAccessToClub": "Nie masz dostępu do tego klubu",
+  "@noAccessToClub": {},
   "noDressCode": "Brak dress code'u",
   "@noDressCode": {},
   "noEventsInClub": "Brak wydarzeń w tym klubie",

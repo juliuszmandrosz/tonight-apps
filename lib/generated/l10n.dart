@@ -1742,6 +1742,16 @@ class S {
     );
   }
 
+  /// `You have no access to this club`
+  String get noAccessToClub {
+    return Intl.message(
+      'You have no access to this club',
+      name: 'noAccessToClub',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `No dress code`
   String get noDressCode {
     return Intl.message(
