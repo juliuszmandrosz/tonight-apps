@@ -24,6 +24,9 @@ extension FirestoreX on FirebaseFirestore {
   CollectionReference get currencyParams => collection('currencyParams');
 
   CollectionReference get selectors => collection('selectors');
+
+  CollectionReference get selectorsAccessCodes =>
+      collection('selectorsAccessCodes');
 }
 
 extension DocumentReferenceX on DocumentReference {
