@@ -5,11 +5,13 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_clubs/domain/domain.dart';
+import 'package:raver_clubs/domain/selector_club_facade.dart';
 import 'package:raver_clubs/infrastructure/club_dto.dart';
 
 import 'package:raver_common/raver_common.dart';
 
-class FirebaseClubFacade implements UserClubFacade, PartnerClubFacade {
+class FirebaseClubFacade
+    implements UserClubFacade, PartnerClubFacade, SelectorClubFacade {
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;
   final Logger _logger;
@@ -39,7 +41,7 @@ class FirebaseClubFacade implements UserClubFacade, PartnerClubFacade {
   @override
   Future<Either<ClubFailure, Club>> getCurrentPartnerClub() async {
     try {
-      final result = await _getCurrentClubDocument();
+      final result = await _getCurrentPartnerClubDoc();
       return right(ClubDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (exception) {
       _logger.e(
@@ -48,11 +50,36 @@ class FirebaseClubFacade implements UserClubFacade, PartnerClubFacade {
     }
   }
 
-  Future<DocumentSnapshot> _getCurrentClubDocument() {
-    final firebaseUser = _firebaseAuth.currentUser;
+  @override
+  Future<Either<ClubFailure, Club>> getCurrentSelectorClub() async {
+    try {
+      final result = await _getCurrentSelectorClubDoc();
+      return right(ClubDto.fromFirebase(result).toDomain());
+    } on FirebaseException catch (exception) {
+      _logger.e(
+          "Exception during getting current selector club EXCEPTION: $exception");
+      return left(const ClubFailure.unexpected());
+    }
+  }
 
-    if (firebaseUser == null) throw NotAuthenticatedError();
+  Future<DocumentSnapshot> _getCurrentPartnerClubDoc() async {
+    final currentPartner = _firebaseAuth.currentUser;
 
-    return _firestore.clubCollection.doc(firebaseUser.uid).get();
+    if (currentPartner == null) throw NotAuthenticatedError();
+
+    return _firestore.clubCollection.doc(currentPartner.uid).get();
+  }
+
+  Future<DocumentSnapshot> _getCurrentSelectorClubDoc() async {
+    final currentSelector = _firebaseAuth.currentUser;
+
+    if (currentSelector == null) throw NotAuthenticatedError();
+
+    final selectorDoc =
+        await _firestore.selectors.doc(currentSelector.uid).get();
+
+    final selectorClubId = selectorDoc.get('clubId');
+
+    return _firestore.clubCollection.doc(selectorClubId).get();
   }
 }
