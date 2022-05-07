@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'club_failure.dart';
+part of 'partner_club_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,19 +15,19 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$ClubFailureTearOff {
-  const _$ClubFailureTearOff();
+class _$PartnerClubFailureTearOff {
+  const _$PartnerClubFailureTearOff();
 
-  _ClubFailure unexpected() {
-    return const _ClubFailure();
+  _PartnerClubFailure unexpected() {
+    return const _PartnerClubFailure();
   }
 }
 
 /// @nodoc
-const $ClubFailure = _$ClubFailureTearOff();
+const $PartnerClubFailure = _$PartnerClubFailureTearOff();
 
 /// @nodoc
-mixin _$ClubFailure {
+mixin _$PartnerClubFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
@@ -46,70 +46,72 @@ mixin _$ClubFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ClubFailure value) unexpected,
+    required TResult Function(_PartnerClubFailure value) unexpected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ClubFailure value)? unexpected,
+    TResult Function(_PartnerClubFailure value)? unexpected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ClubFailure value)? unexpected,
+    TResult Function(_PartnerClubFailure value)? unexpected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ClubFailureCopyWith<$Res> {
-  factory $ClubFailureCopyWith(
-          ClubFailure value, $Res Function(ClubFailure) then) =
-      _$ClubFailureCopyWithImpl<$Res>;
+abstract class $PartnerClubFailureCopyWith<$Res> {
+  factory $PartnerClubFailureCopyWith(
+          PartnerClubFailure value, $Res Function(PartnerClubFailure) then) =
+      _$PartnerClubFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ClubFailureCopyWithImpl<$Res> implements $ClubFailureCopyWith<$Res> {
-  _$ClubFailureCopyWithImpl(this._value, this._then);
+class _$PartnerClubFailureCopyWithImpl<$Res>
+    implements $PartnerClubFailureCopyWith<$Res> {
+  _$PartnerClubFailureCopyWithImpl(this._value, this._then);
 
-  final ClubFailure _value;
+  final PartnerClubFailure _value;
   // ignore: unused_field
-  final $Res Function(ClubFailure) _then;
+  final $Res Function(PartnerClubFailure) _then;
 }
 
 /// @nodoc
-abstract class _$ClubFailureCopyWith<$Res> {
-  factory _$ClubFailureCopyWith(
-          _ClubFailure value, $Res Function(_ClubFailure) then) =
-      __$ClubFailureCopyWithImpl<$Res>;
+abstract class _$PartnerClubFailureCopyWith<$Res> {
+  factory _$PartnerClubFailureCopyWith(
+          _PartnerClubFailure value, $Res Function(_PartnerClubFailure) then) =
+      __$PartnerClubFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ClubFailureCopyWithImpl<$Res> extends _$ClubFailureCopyWithImpl<$Res>
-    implements _$ClubFailureCopyWith<$Res> {
-  __$ClubFailureCopyWithImpl(
-      _ClubFailure _value, $Res Function(_ClubFailure) _then)
-      : super(_value, (v) => _then(v as _ClubFailure));
+class __$PartnerClubFailureCopyWithImpl<$Res>
+    extends _$PartnerClubFailureCopyWithImpl<$Res>
+    implements _$PartnerClubFailureCopyWith<$Res> {
+  __$PartnerClubFailureCopyWithImpl(
+      _PartnerClubFailure _value, $Res Function(_PartnerClubFailure) _then)
+      : super(_value, (v) => _then(v as _PartnerClubFailure));
 
   @override
-  _ClubFailure get _value => super._value as _ClubFailure;
+  _PartnerClubFailure get _value => super._value as _PartnerClubFailure;
 }
 
 /// @nodoc
 
-class _$_ClubFailure implements _ClubFailure {
-  const _$_ClubFailure();
+class _$_PartnerClubFailure implements _PartnerClubFailure {
+  const _$_PartnerClubFailure();
 
   @override
   String toString() {
-    return 'ClubFailure.unexpected()';
+    return 'PartnerClubFailure.unexpected()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ClubFailure);
+        (other.runtimeType == runtimeType && other is _PartnerClubFailure);
   }
 
   @override
@@ -146,7 +148,7 @@ class _$_ClubFailure implements _ClubFailure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ClubFailure value) unexpected,
+    required TResult Function(_PartnerClubFailure value) unexpected,
   }) {
     return unexpected(this);
   }
@@ -154,7 +156,7 @@ class _$_ClubFailure implements _ClubFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_ClubFailure value)? unexpected,
+    TResult Function(_PartnerClubFailure value)? unexpected,
   }) {
     return unexpected?.call(this);
   }
@@ -162,7 +164,7 @@ class _$_ClubFailure implements _ClubFailure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ClubFailure value)? unexpected,
+    TResult Function(_PartnerClubFailure value)? unexpected,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -172,6 +174,6 @@ class _$_ClubFailure implements _ClubFailure {
   }
 }
 
-abstract class _ClubFailure implements ClubFailure {
-  const factory _ClubFailure() = _$_ClubFailure;
+abstract class _PartnerClubFailure implements PartnerClubFailure {
+  const factory _PartnerClubFailure() = _$_PartnerClubFailure;
 }

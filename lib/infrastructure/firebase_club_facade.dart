@@ -25,7 +25,7 @@ class FirebaseClubFacade
         _logger = logger;
 
   @override
-  Future<Either<ClubFailure, Club>> getClubById(String id) async {
+  Future<Either<UserClubFailure, Club>> getClubById(String id) async {
     try {
       final result = await _firestore.clubCollection.doc(id).get();
 
@@ -34,31 +34,56 @@ class FirebaseClubFacade
       return right(ClubDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (exception) {
       _logger.e("Exception during getting club by id EXCEPTION: $exception");
-      return left(const ClubFailure.unexpected());
+      return left(const UserClubFailure.unexpected());
     }
   }
 
   @override
-  Future<Either<ClubFailure, Club>> getCurrentPartnerClub() async {
+  Future<Either<PartnerClubFailure, Club>> getCurrentPartnerClub() async {
     try {
       final result = await _getCurrentPartnerClubDoc();
       return right(ClubDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (exception) {
       _logger.e(
           "Exception during getting current partner club EXCEPTION: $exception");
-      return left(const ClubFailure.unexpected());
+      return left(const PartnerClubFailure.unexpected());
     }
   }
 
   @override
-  Future<Either<ClubFailure, Club>> getCurrentSelectorClub() async {
+  Future<Either<SelectorClubFailure, Club>> getCurrentSelectorClub() async {
     try {
       final result = await _getCurrentSelectorClubDoc();
       return right(ClubDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (exception) {
       _logger.e(
           "Exception during getting current selector club EXCEPTION: $exception");
-      return left(const ClubFailure.unexpected());
+      return left(const SelectorClubFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<SelectorClubFailure, Unit>> enterAccessCodeToClub(
+    String accessCode,
+  ) async {
+    try {
+      return _firestore.runTransaction((transaction) async {
+        final accessCodeDocRef =
+            _firestore.selectorsAccessCodes.doc(accessCode);
+
+        final accessCodeDoc = await transaction.get(accessCodeDocRef);
+
+        if (!accessCodeDoc.exists) {
+          return left(const SelectorClubFailure.invalidAccessCode());
+        }
+
+        transaction.delete(accessCodeDocRef);
+
+        return right(unit);
+      });
+    } on FirebaseException catch (e) {
+      _logger.e("Exception during entering access code EXCEPTION: $e");
+      return left(const SelectorClubFailure.unexpected());
     }
   }
 

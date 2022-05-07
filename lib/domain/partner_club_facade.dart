@@ -1,8 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:raver_clubs/domain/club_failure.dart';
-
-import 'club_entity.dart';
+import 'package:raver_clubs/domain/domain.dart';
 
 abstract class PartnerClubFacade {
-  Future<Either<ClubFailure, Club>> getCurrentPartnerClub();
+  Future<Either<PartnerClubFailure, Club>> getCurrentPartnerClub();
 }
