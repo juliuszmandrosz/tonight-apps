@@ -949,6 +949,16 @@ class S {
     );
   }
 
+  /// `Entry`
+  String get entry {
+    return Intl.message(
+      'Entry',
+      name: 'entry',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Error adding event`
   String get errorAddingEvent {
     return Intl.message(
@@ -2048,26 +2058,6 @@ class S {
     );
   }
 
-  /// `The maximum ticket price is`
-  String get priceTooHigh {
-    return Intl.message(
-      'The maximum ticket price is',
-      name: 'priceTooHigh',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `The minimum ticket price is`
-  String get priceTooLow {
-    return Intl.message(
-      'The minimum ticket price is',
-      name: 'priceTooLow',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Proceed to pay`
   String get proceedToPay {
     return Intl.message(
@@ -2644,6 +2634,26 @@ class S {
     );
   }
 
+  /// `The maximum ticket price is`
+  String get ticketPriceTooHigh {
+    return Intl.message(
+      'The maximum ticket price is',
+      name: 'ticketPriceTooHigh',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The minimum ticket price is`
+  String get ticketPriceTooLow {
+    return Intl.message(
+      'The minimum ticket price is',
+      name: 'ticketPriceTooLow',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Ticket returned successfully`
   String get ticketReturnedSuccessfully {
     return Intl.message(
@@ -2882,6 +2892,36 @@ class S {
     return Intl.message(
       'VIP',
       name: 'vip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `VIP price`
+  String get vipPrice {
+    return Intl.message(
+      'VIP price',
+      name: 'vipPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The maximum VIP price is`
+  String get vipPriceTooHigh {
+    return Intl.message(
+      'The maximum VIP price is',
+      name: 'vipPriceTooHigh',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The minimum VIP price is`
+  String get vipPriceTooLow {
+    return Intl.message(
+      'The minimum VIP price is',
+      name: 'vipPriceTooLow',
       desc: '',
       args: [],
     );

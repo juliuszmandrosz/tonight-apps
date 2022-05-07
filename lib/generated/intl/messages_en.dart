@@ -193,6 +193,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterYoutubeLink": MessageLookupByLibrary.simpleMessage(
             "Please enter link to YouTube"),
         "entries": m2,
+        "entry": MessageLookupByLibrary.simpleMessage("Entry"),
         "errorAddingEvent":
             MessageLookupByLibrary.simpleMessage("Error adding event"),
         "errorAddingReward":
@@ -374,10 +375,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "priceChangedAfterTicketWasSold": MessageLookupByLibrary.simpleMessage(
             "The price cannot be changed after the sale of tickets has started"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Price range"),
-        "priceTooHigh":
-            MessageLookupByLibrary.simpleMessage("The maximum ticket price is"),
-        "priceTooLow":
-            MessageLookupByLibrary.simpleMessage("The minimum ticket price is"),
         "proceedToPay": MessageLookupByLibrary.simpleMessage("Proceed to pay"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "promotionCodeHasExpired":
@@ -461,6 +458,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketForAnotherEvent":
             MessageLookupByLibrary.simpleMessage("Ticket is for another event"),
         "ticketPrice": MessageLookupByLibrary.simpleMessage("Ticket price"),
+        "ticketPriceTooHigh":
+            MessageLookupByLibrary.simpleMessage("The maximum ticket price is"),
+        "ticketPriceTooLow":
+            MessageLookupByLibrary.simpleMessage("The minimum ticket price is"),
         "ticketReturnedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Ticket returned successfully"),
         "tickets": m8,
@@ -499,6 +500,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(
             "A verification link has been sent to the e-mail address provided"),
         "vip": MessageLookupByLibrary.simpleMessage("VIP"),
+        "vipPrice": MessageLookupByLibrary.simpleMessage("VIP price"),
+        "vipPriceTooHigh":
+            MessageLookupByLibrary.simpleMessage("The maximum VIP price is"),
+        "vipPriceTooLow":
+            MessageLookupByLibrary.simpleMessage("The minimum VIP price is"),
         "vipValidTicket":
             MessageLookupByLibrary.simpleMessage("VIP, valid ticket"),
         "vipVertical": MessageLookupByLibrary.simpleMessage("V\nI\nP"),
