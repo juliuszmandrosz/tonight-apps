@@ -21,10 +21,17 @@ class CurrentEventCubit extends Cubit<CurrentEventState> {
 
     failureOrSuccess.fold(
       (failure) => emit(
-        state.copyWith(status: CubitStatus.failure),
+        state.copyWith(
+          status: CubitStatus.failure,
+          failure: some(failure),
+        ),
       ),
       (event) => emit(
-        state.copyWith(status: CubitStatus.success, currentEvent: event),
+        state.copyWith(
+          status: CubitStatus.success,
+          currentEvent: event,
+          failure: none(),
+        ),
       ),
     );
   }

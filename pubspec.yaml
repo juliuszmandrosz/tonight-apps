@@ -69,7 +69,7 @@ dependencies:
   raver_events:
     git:
       url: https://github.com/juliuszmandrosz/RaverEvents.git
-      ref: hotfix/get-current-event-as-selector
+      ref: develop
 
   raver_tickets:
     git:

@@ -21,7 +21,12 @@ class EventPage extends StatelessWidget {
 
         if (state.status.isFailure()) {
           return Center(
-            child: Text(S().errorLoadingEventDetails),
+            child: Text(
+              state.failure.getOrCrash().map(
+                    unexpected: (_) => S().errorLoadingEventDetails,
+                    noAccess: (_) => S().noAccessToClub,
+                  ),
+            ),
           );
         }
 
