@@ -67,24 +67,34 @@ class FirebaseClubFacade
     String accessCode,
   ) async {
     try {
-      return _firestore.runTransaction((transaction) async {
-        final accessCodeDocRef =
-            _firestore.selectorsAccessCodes.doc(accessCode);
+      final accessCodeDocRef = _firestore.selectorsAccessCodes.doc(accessCode);
+      final accessCodeDoc = await accessCodeDocRef.get();
 
-        final accessCodeDoc = await transaction.get(accessCodeDocRef);
+      if (!accessCodeDoc.exists) {
+        return left(const SelectorClubFailure.invalidAccessCode());
+      }
 
-        if (!accessCodeDoc.exists) {
-          return left(const SelectorClubFailure.invalidAccessCode());
-        }
+      await accessCodeDocRef.delete();
 
-        transaction.delete(accessCodeDocRef);
+      await _addSelectorToClub();
 
-        return right(unit);
-      });
+      return right(unit);
     } on FirebaseException catch (e) {
       _logger.e("Exception during entering access code EXCEPTION: $e");
       return left(const SelectorClubFailure.unexpected());
     }
+  }
+
+  Future<void> _addSelectorToClub() async {
+    final clubDoc = await _getCurrentSelectorClubDoc();
+    final selector = _getCurrentUser();
+    final selectorEmail = _getCurrentUserEmail(selector);
+
+    _firestore.partnersCollection
+        .doc(clubDoc.id)
+        .selectors
+        .doc(selector.uid)
+        .set({'email': selectorEmail});
   }
 
   Future<DocumentSnapshot> _getCurrentPartnerClubDoc() async {
@@ -106,5 +116,17 @@ class FirebaseClubFacade
     final selectorClubId = selectorDoc.get('clubId');
 
     return _firestore.clubCollection.doc(selectorClubId).get();
+  }
+
+  User _getCurrentUser() {
+    final user = _firebaseAuth.currentUser;
+
+    if (user == null) throw NotAuthenticatedError();
+
+    return user;
+  }
+
+  String _getCurrentUserEmail(User user) {
+    return user.email ?? user.providerData.first.email!;
   }
 }
