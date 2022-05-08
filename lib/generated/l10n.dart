@@ -70,6 +70,16 @@ class S {
     );
   }
 
+  /// `Please enter access code`
+  String get accessCodeEmpty {
+    return Intl.message(
+      'Please enter access code',
+      name: 'accessCodeEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `An account already exists for that email`
   String get accountExists {
     return Intl.message(
@@ -776,10 +786,10 @@ class S {
     );
   }
 
-  /// `Please enter access code`
+  /// `Enter access code`
   String get enterAccessCode {
     return Intl.message(
-      'Please enter access code',
+      'Enter access code',
       name: 'enterAccessCode',
       desc: '',
       args: [],

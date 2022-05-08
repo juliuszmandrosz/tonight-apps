@@ -51,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUs": MessageLookupByLibrary.simpleMessage("O nas"),
         "accessCode": MessageLookupByLibrary.simpleMessage("Kod dostępu"),
+        "accessCodeEmpty":
+            MessageLookupByLibrary.simpleMessage("Proszę podaj kod dostępu"),
         "accountExists": MessageLookupByLibrary.simpleMessage(
             "Konto dla tego adresu e-mail już istnieje"),
         "accountSettings":
@@ -105,7 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "clubs": m1,
         "concertInfo":
             MessageLookupByLibrary.simpleMessage("Informacje o koncercie"),
-        "confirm": MessageLookupByLibrary.simpleMessage("Potwierdź"),
+        "confirm": MessageLookupByLibrary.simpleMessage("Zatwierdź"),
         "confirmDeleteMessage": MessageLookupByLibrary.simpleMessage(
             "Czy na pewno chcesz usunąć ten element?"),
         "confirmLeavingPage": MessageLookupByLibrary.simpleMessage(
@@ -160,7 +162,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "endDateBeforeStart": MessageLookupByLibrary.simpleMessage(
             "Data zakończenia nie może być przed datą rozpoczęcia"),
         "enterAccessCode":
-            MessageLookupByLibrary.simpleMessage("Proszę podaj kod dostępu"),
+            MessageLookupByLibrary.simpleMessage("Wprowadź kod dostępu"),
         "enterArtistName": MessageLookupByLibrary.simpleMessage(
             "Proszę podać nazwę wykonawcy"),
         "enterDesc": MessageLookupByLibrary.simpleMessage("Proszę podać opis"),

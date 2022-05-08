@@ -51,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
         "accessCode": MessageLookupByLibrary.simpleMessage("Access code"),
+        "accessCodeEmpty":
+            MessageLookupByLibrary.simpleMessage("Please enter access code"),
         "accountExists": MessageLookupByLibrary.simpleMessage(
             "An account already exists for that email"),
         "accountSettings":
@@ -161,7 +163,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "endDateBeforeStart": MessageLookupByLibrary.simpleMessage(
             "The end date cannot be before the start date"),
         "enterAccessCode":
-            MessageLookupByLibrary.simpleMessage("Please enter access code"),
+            MessageLookupByLibrary.simpleMessage("Enter access code"),
         "enterArtistName":
             MessageLookupByLibrary.simpleMessage("Please enter artist name"),
         "enterDesc":
