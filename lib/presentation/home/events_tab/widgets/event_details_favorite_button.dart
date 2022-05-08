@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/presentation/commons/icons/raver_toggle_icon.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
+import 'package:raver_common/raver_common.dart';
 
 class EventDetailsFavoriteButton extends StatelessWidget {
   final String eventId;
@@ -16,12 +17,8 @@ class EventDetailsFavoriteButton extends StatelessWidget {
     return BlocConsumer<EventFavoriteCubit, EventFavoriteState>(
       listener: (context, state) {
         state.errorMessage.fold(
-          () {},
-          (error) => ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(content: Text(error)),
-            ),
+              () {},
+          (error) => context.showSnackbarMessage(error),
         );
       },
       builder: (context, state) {

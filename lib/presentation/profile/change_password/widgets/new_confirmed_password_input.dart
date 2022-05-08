@@ -23,6 +23,7 @@ class _NewConfirmedPasswordInputState extends State<NewConfirmedPasswordInput> {
     return BlocBuilder<ChangePasswordCubit, ChangePasswordState>(
       buildWhen: (previous, current) =>
           previous.newConfirmedPassword != current.newConfirmedPassword ||
+          previous.newPassword != current.newPassword ||
           previous.status != current.status,
       builder: (context, state) {
         return TextField(

@@ -21,11 +21,7 @@ class EventFavoriteButton extends StatelessWidget {
       listener: (ctx, state) {
         state.errorMessage.fold(
           () {},
-          (error) => ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(content: Text(error)),
-            ),
+          (error) => context.showSnackbarMessage(error),
         );
       },
       builder: (context, state) {

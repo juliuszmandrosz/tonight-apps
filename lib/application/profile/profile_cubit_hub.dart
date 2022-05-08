@@ -2,8 +2,7 @@ import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:rxdart/rxdart.dart';
 
 class ProfileBroadcastSubject {
-  final BehaviorSubject<ProfileState> _profileSubject =
-      BehaviorSubject<ProfileState>();
+  final _profileSubject = BehaviorSubject<ProfileState>();
 
   BehaviorSubject<ProfileState> getSubject() {
     return _profileSubject;

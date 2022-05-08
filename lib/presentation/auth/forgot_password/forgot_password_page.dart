@@ -9,6 +9,7 @@ import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
 import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
@@ -58,13 +59,7 @@ class ForgotPasswordPage extends StatelessWidget {
 
               if (state.status.isSubmissionSuccess) {
                 AutoRouter.of(context).pop();
-                ScaffoldMessenger.of(context)
-                  ..hideCurrentSnackBar()
-                  ..showSnackBar(
-                    SnackBar(
-                      content: Text(S().passwordResetLinkSent),
-                    ),
-                  );
+                context.showSnackbarMessage(S().passwordResetLinkSent);
               }
             },
             child: Column(
