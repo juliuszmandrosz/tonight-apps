@@ -11,4 +11,6 @@ class LightColors {
   static const Color textColorLight = Color(0xFF9E9E9E);
   static const Color accentColor = Color(0x9839D2C0);
   static const Color warningColor = Color(0xFFB81B47);
+  static const Color tertiaryContainer = Color(0xFFF1F4F8);
+  static const Color onTertiaryContainer = Color(0xFF57636C);
 }

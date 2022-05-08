@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
+import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
 import 'package:raver_scanner/injection.dart';
 import 'package:raver_scanner/presentation/routes/app_router.dart';
 import 'package:raver_scanner/presentation/themes/dark_theme/dark_theme.dart';
@@ -23,6 +24,9 @@ class RaverScannerApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (ctx) => getIt<CurrentEventCubit>(),
+        ),
+        BlocProvider(
+          create: (ctx) => getIt<SelectorClubCubit>(),
         ),
       ],
       child: MaterialApp.router(

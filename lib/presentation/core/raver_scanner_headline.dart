@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class RaverScannerHeadline extends StatelessWidget {
@@ -8,9 +9,10 @@ class RaverScannerHeadline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Text(
+    return AutoSizeText(
       text,
       style: theme.textTheme.headline1,
+      maxLines: 1,
     );
   }
 }

@@ -7,10 +7,14 @@ import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_clubs/domain/selector_club_facade.dart';
+import 'package:raver_clubs/infrastructure/cloud_functions/club_cloud_functions_facade.dart';
+import 'package:raver_clubs/infrastructure/firebase_club_facade.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
 import 'package:raver_scanner/application/scanner/scanner_cubit.dart';
+import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
 import 'package:raver_scanner/application/sign_in/sign_in_cubit.dart';
 import 'package:raver_scanner/application/sign_up/sign_up_cubit.dart';
 import 'package:raver_tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
@@ -61,6 +65,12 @@ void _registerCubits() {
       ticketFacade: getIt(),
     ),
   );
+
+  getIt.registerFactory(
+    () => SelectorClubCubit(
+      getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
@@ -109,6 +119,21 @@ void _registerFacades() {
   getIt.registerLazySingleton<TicketCloudFunctionsFacade>(
     () => TicketCloudFunctionsFacadeImpl(
       firebaseFunctions: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<SelectorClubFacade>(
+    () => FirebaseClubFacade(
+      firestore: getIt(),
+      firebaseAuth: getIt(),
+      logger: getIt(),
+      cloudFunctionsFacade: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<ClubCloudFunctionsFacade>(
+    () => ClubCloudFunctionsFacadeImpl(
+      getIt(),
     ),
   );
 }

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
+import 'package:raver_scanner/presentation/core/raver_scanner_headline.dart';
 import 'package:raver_scanner/presentation/event/widgets/current_event.dart';
+import 'package:raver_scanner/presentation/event/widgets/no_access.dart';
 import 'package:raver_scanner/presentation/event/widgets/no_live_event.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -20,11 +22,14 @@ class EventPage extends StatelessWidget {
         }
 
         if (state.status.isFailure()) {
-          return Center(
-            child: Text(
-              state.failure.getOrCrash().map(
-                    unexpected: (_) => S().errorLoadingEventDetails,
-                    noAccess: (_) => S().noAccessToClub,
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Center(
+              child: state.failure.getOrCrash().map(
+                    unexpected: (_) => RaverScannerHeadline(
+                      text: S().errorLoadingEventDetails,
+                    ),
+                    noAccess: (_) => const NoAccess(),
                   ),
             ),
           );

@@ -17,6 +17,8 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     secondary: LightColors.secondaryColor,
     outline: LightColors.textColorLight,
     background: LightColors.backgroundColor,
+    tertiaryContainer: LightColors.tertiaryContainer,
+    onTertiaryContainer: LightColors.onTertiaryContainer,
   ),
   listTileTheme: const ListTileThemeData(),
   tabBarTheme: const TabBarTheme(
@@ -72,8 +74,23 @@ ThemeData lightTheme = ThemeData.light().copyWith(
       ),
     ),
   ),
+  textButtonTheme: TextButtonThemeData(
+    style: ButtonStyle(
+      textStyle: MaterialStateProperty.all(
+        LightTextStyles.subtitleAccent,
+      ),
+    ),
+  ),
   disabledColor: LightColors.textColorLight,
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: LightColors.primaryColor,
+  ),
+  dialogTheme: DialogTheme(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(30),
+    ),
+    titleTextStyle: LightTextStyles.subtitle1,
+    elevation: 5,
+    backgroundColor: LightColors.tertiaryContainer,
   ),
 );

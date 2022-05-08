@@ -76,6 +76,10 @@ dependencies:
       url: https://github.com/juliuszmandrosz/RaverTickets.git
       ref: feature/distinct-facades
 
+  raver_clubs:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverClubs.git
+      ref: feature/enter-access-code
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
