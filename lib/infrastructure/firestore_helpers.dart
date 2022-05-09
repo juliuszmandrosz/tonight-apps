@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 extension FirestoreX on FirebaseFirestore {
   CollectionReference get clubCollection => collection('clubs');
@@ -27,6 +28,24 @@ extension FirestoreX on FirebaseFirestore {
 
   CollectionReference get selectorsAccessCodes =>
       collection('selectorsAccessCodes');
+
+  DocumentReference getCurrentUserDocRef(User firebaseUser) {
+    final userDoc = userCollection.doc(firebaseUser.uid);
+
+    return userDoc;
+  }
+
+  DocumentReference getCurrentPartnerDocRef(User firebaseUser) {
+    final partnerDoc = partnersCollection.doc(firebaseUser.uid);
+
+    return partnerDoc;
+  }
+
+  DocumentReference getCurrentSelectorDocRef(User firebaseUser) {
+    final selectorDoc = selectorsCollection.doc(firebaseUser.uid);
+
+    return selectorDoc;
+  }
 }
 
 extension DocumentReferenceX on DocumentReference {
