@@ -7,6 +7,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/domain.dart';
 import 'package:raver_events/domain/filters/filter/date_includes_filter.dart';
 import 'package:raver_events/infrastructure/algolia_events_api.dart';
+import 'package:raver_events/infrastructure/event_costs/dtos/event_costs_dto.dart';
 import 'package:raver_events/infrastructure/events/dtos/event_dto.dart';
 import 'package:raver_events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
 
@@ -71,8 +72,8 @@ class FirebaseEventFacade
   Future<Either<UserEventFailure, Unit>> toggleEventFavoriteStatus(
       String eventId) async {
     try {
-      final userDoc = await _getCurrentUserDocument();
-      final userRef = _getCurrentUserReference();
+      final userRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+      final userDoc = await userRef.get();
       final userFavorites = userDoc.get('favoriteEventIds') as List<dynamic>;
 
       userFavorites.contains(eventId)
@@ -115,12 +116,18 @@ class FirebaseEventFacade
       final eventDoc = _firestore.eventCollection.doc(event.id);
       final clubDoc = _firestore.clubCollection.doc(event.clubId);
       final eventTicketDoc = clubDoc.eventTickets.doc(event.id);
+      final eventCostsDoc = clubDoc.eventCosts.doc(event.id);
 
       final eventDto = EventDto.fromDomain(event);
       final eventTicketsDto = EventTicketsDto.fromDomain(eventTickets);
+      final eventCostsDto = EventCostsDto(
+        eventId: event.id,
+        currency: event.currency,
+      );
 
       await eventDoc.set(eventDto.toJson());
       await eventTicketDoc.set(eventTicketsDto.toJson());
+      await eventCostsDoc.set(eventCostsDto.toJson());
 
       return right(unit);
     } on FirebaseException catch (e) {
@@ -158,7 +165,8 @@ class FirebaseEventFacade
   Future<Either<SelectorEventFailure, Option<Event>>>
       getCurrentEventFromClubAsSelector() async {
     try {
-      final selectorDoc = await _getCurrentSelectorDocument();
+      final selectorDoc =
+          await _firestore.getCurrentSelectorDocRef(_firebaseAuth).get();
       final clubId = selectorDoc.get('clubId');
 
       final partnerSelectorDoc = await _firestore.partnersCollection
@@ -203,7 +211,8 @@ class FirebaseEventFacade
     DateTime toDate,
   ) async {
     try {
-      final partnerDoc = await _getCurrentPartnerDocument();
+      final partnerDoc =
+          await _firestore.getCurrentPartnerDocRef(_firebaseAuth).get();
 
       final filters = EventFilters.empty().copyWith(
         clubFilter: ClubFilter(clubId: partnerDoc.id),
@@ -230,47 +239,5 @@ class FirebaseEventFacade
       );
       return left(const PartnerEventFailure.unexpected());
     }
-  }
-
-  Future<DocumentSnapshot> _getCurrentUserDocument() async {
-    final firebaseUser = _firebaseAuth.currentUser;
-
-    if (firebaseUser == null) throw NotAuthenticatedError();
-
-    final userDoc = await _firestore.userCollection.doc(firebaseUser.uid).get();
-
-    return userDoc;
-  }
-
-  DocumentReference _getCurrentUserReference() {
-    final firebaseUser = _firebaseAuth.currentUser;
-
-    if (firebaseUser == null) throw NotAuthenticatedError();
-
-    final userDoc = _firestore.userCollection.doc(firebaseUser.uid);
-
-    return userDoc;
-  }
-
-  Future<DocumentSnapshot> _getCurrentSelectorDocument() async {
-    final firebaseUser = _firebaseAuth.currentUser;
-
-    if (firebaseUser == null) throw NotAuthenticatedError();
-
-    final selectorDoc =
-        await _firestore.selectorsCollection.doc(firebaseUser.uid).get();
-
-    return selectorDoc;
-  }
-
-  Future<DocumentSnapshot> _getCurrentPartnerDocument() async {
-    final firebaseUser = _firebaseAuth.currentUser;
-
-    if (firebaseUser == null) throw NotAuthenticatedError();
-
-    final partnerDoc =
-        await _firestore.partnersCollection.doc(firebaseUser.uid).get();
-
-    return partnerDoc;
   }
 }

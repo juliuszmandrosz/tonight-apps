@@ -6,6 +6,7 @@ import 'package:raver_events/domain/filters/filter/club_filter.dart';
 import 'package:raver_events/domain/filters/filter/currency_filter.dart';
 import 'package:raver_events/domain/filters/filter/date_includes_filter.dart';
 import 'package:raver_events/domain/filters/filter/date_range_filter.dart';
+import 'package:raver_events/domain/filters/filter/is_canceled_filter.dart';
 import 'package:raver_events/domain/filters/filter/is_concert_filter.dart';
 import 'package:raver_events/domain/filters/filter/max_distance_filter.dart';
 import 'package:raver_events/domain/filters/filter/min_ages_filter.dart';
@@ -34,6 +35,7 @@ class EventFilters with _$EventFilters {
     required ShowOnlyFilter showOnlyFilter,
     required DateIncludesFilter dateIncludesFilter,
     required CurrencyFilter currencyFilter,
+    required IsCanceledFilter isCanceledFilter,
   }) = _EventFilters;
 
   factory EventFilters.empty() => EventFilters(
@@ -62,6 +64,7 @@ class EventFilters with _$EventFilters {
           toDate: null,
         ),
         currencyFilter: CurrencyFilter(currency: ''),
+        isCanceledFilter: IsCanceledFilter(isCanceled: false),
       );
 
   AlgoliaQuery buildQuery(AlgoliaQuery query) {
@@ -79,6 +82,7 @@ class EventFilters with _$EventFilters {
       showOnlyFilter,
       dateIncludesFilter,
       currencyFilter,
+      isCanceledFilter,
     ];
     for (final filter in filterList) {
       query = filter.buildQuery(query);

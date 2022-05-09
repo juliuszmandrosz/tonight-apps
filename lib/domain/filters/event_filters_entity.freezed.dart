@@ -31,7 +31,8 @@ class _$EventFiltersTearOff {
       required IsConcertFilter isConcertFilter,
       required ShowOnlyFilter showOnlyFilter,
       required DateIncludesFilter dateIncludesFilter,
-      required CurrencyFilter currencyFilter}) {
+      required CurrencyFilter currencyFilter,
+      required IsCanceledFilter isCanceledFilter}) {
     return _EventFilters(
       phraseFilter: phraseFilter,
       priceRangeFilter: priceRangeFilter,
@@ -46,6 +47,7 @@ class _$EventFiltersTearOff {
       showOnlyFilter: showOnlyFilter,
       dateIncludesFilter: dateIncludesFilter,
       currencyFilter: currencyFilter,
+      isCanceledFilter: isCanceledFilter,
     );
   }
 }
@@ -71,6 +73,7 @@ mixin _$EventFilters {
   DateIncludesFilter get dateIncludesFilter =>
       throw _privateConstructorUsedError;
   CurrencyFilter get currencyFilter => throw _privateConstructorUsedError;
+  IsCanceledFilter get isCanceledFilter => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventFiltersCopyWith<EventFilters> get copyWith =>
@@ -95,7 +98,8 @@ abstract class $EventFiltersCopyWith<$Res> {
       IsConcertFilter isConcertFilter,
       ShowOnlyFilter showOnlyFilter,
       DateIncludesFilter dateIncludesFilter,
-      CurrencyFilter currencyFilter});
+      CurrencyFilter currencyFilter,
+      IsCanceledFilter isCanceledFilter});
 }
 
 /// @nodoc
@@ -121,6 +125,7 @@ class _$EventFiltersCopyWithImpl<$Res> implements $EventFiltersCopyWith<$Res> {
     Object? showOnlyFilter = freezed,
     Object? dateIncludesFilter = freezed,
     Object? currencyFilter = freezed,
+    Object? isCanceledFilter = freezed,
   }) {
     return _then(_value.copyWith(
       phraseFilter: phraseFilter == freezed
@@ -175,6 +180,10 @@ class _$EventFiltersCopyWithImpl<$Res> implements $EventFiltersCopyWith<$Res> {
           ? _value.currencyFilter
           : currencyFilter // ignore: cast_nullable_to_non_nullable
               as CurrencyFilter,
+      isCanceledFilter: isCanceledFilter == freezed
+          ? _value.isCanceledFilter
+          : isCanceledFilter // ignore: cast_nullable_to_non_nullable
+              as IsCanceledFilter,
     ));
   }
 }
@@ -199,7 +208,8 @@ abstract class _$EventFiltersCopyWith<$Res>
       IsConcertFilter isConcertFilter,
       ShowOnlyFilter showOnlyFilter,
       DateIncludesFilter dateIncludesFilter,
-      CurrencyFilter currencyFilter});
+      CurrencyFilter currencyFilter,
+      IsCanceledFilter isCanceledFilter});
 }
 
 /// @nodoc
@@ -227,6 +237,7 @@ class __$EventFiltersCopyWithImpl<$Res> extends _$EventFiltersCopyWithImpl<$Res>
     Object? showOnlyFilter = freezed,
     Object? dateIncludesFilter = freezed,
     Object? currencyFilter = freezed,
+    Object? isCanceledFilter = freezed,
   }) {
     return _then(_EventFilters(
       phraseFilter: phraseFilter == freezed
@@ -281,6 +292,10 @@ class __$EventFiltersCopyWithImpl<$Res> extends _$EventFiltersCopyWithImpl<$Res>
           ? _value.currencyFilter
           : currencyFilter // ignore: cast_nullable_to_non_nullable
               as CurrencyFilter,
+      isCanceledFilter: isCanceledFilter == freezed
+          ? _value.isCanceledFilter
+          : isCanceledFilter // ignore: cast_nullable_to_non_nullable
+              as IsCanceledFilter,
     ));
   }
 }
@@ -301,7 +316,8 @@ class _$_EventFilters extends _EventFilters {
       required this.isConcertFilter,
       required this.showOnlyFilter,
       required this.dateIncludesFilter,
-      required this.currencyFilter})
+      required this.currencyFilter,
+      required this.isCanceledFilter})
       : super._();
 
   @override
@@ -330,10 +346,12 @@ class _$_EventFilters extends _EventFilters {
   final DateIncludesFilter dateIncludesFilter;
   @override
   final CurrencyFilter currencyFilter;
+  @override
+  final IsCanceledFilter isCanceledFilter;
 
   @override
   String toString() {
-    return 'EventFilters(phraseFilter: $phraseFilter, priceRangeFilter: $priceRangeFilter, minAgesFilter: $minAgesFilter, musicalGenresFilter: $musicalGenresFilter, allowedOutfitsFilter: $allowedOutfitsFilter, maxDistanceFilter: $maxDistanceFilter, cityFilter: $cityFilter, clubFilter: $clubFilter, dateRangeFilter: $dateRangeFilter, isConcertFilter: $isConcertFilter, showOnlyFilter: $showOnlyFilter, dateIncludesFilter: $dateIncludesFilter, currencyFilter: $currencyFilter)';
+    return 'EventFilters(phraseFilter: $phraseFilter, priceRangeFilter: $priceRangeFilter, minAgesFilter: $minAgesFilter, musicalGenresFilter: $musicalGenresFilter, allowedOutfitsFilter: $allowedOutfitsFilter, maxDistanceFilter: $maxDistanceFilter, cityFilter: $cityFilter, clubFilter: $clubFilter, dateRangeFilter: $dateRangeFilter, isConcertFilter: $isConcertFilter, showOnlyFilter: $showOnlyFilter, dateIncludesFilter: $dateIncludesFilter, currencyFilter: $currencyFilter, isCanceledFilter: $isCanceledFilter)';
   }
 
   @override
@@ -366,7 +384,9 @@ class _$_EventFilters extends _EventFilters {
             const DeepCollectionEquality()
                 .equals(other.dateIncludesFilter, dateIncludesFilter) &&
             const DeepCollectionEquality()
-                .equals(other.currencyFilter, currencyFilter));
+                .equals(other.currencyFilter, currencyFilter) &&
+            const DeepCollectionEquality()
+                .equals(other.isCanceledFilter, isCanceledFilter));
   }
 
   @override
@@ -384,7 +404,8 @@ class _$_EventFilters extends _EventFilters {
       const DeepCollectionEquality().hash(isConcertFilter),
       const DeepCollectionEquality().hash(showOnlyFilter),
       const DeepCollectionEquality().hash(dateIncludesFilter),
-      const DeepCollectionEquality().hash(currencyFilter));
+      const DeepCollectionEquality().hash(currencyFilter),
+      const DeepCollectionEquality().hash(isCanceledFilter));
 
   @JsonKey(ignore: true)
   @override
@@ -406,7 +427,8 @@ abstract class _EventFilters extends EventFilters {
       required IsConcertFilter isConcertFilter,
       required ShowOnlyFilter showOnlyFilter,
       required DateIncludesFilter dateIncludesFilter,
-      required CurrencyFilter currencyFilter}) = _$_EventFilters;
+      required CurrencyFilter currencyFilter,
+      required IsCanceledFilter isCanceledFilter}) = _$_EventFilters;
   _EventFilters._() : super._();
 
   @override
@@ -435,6 +457,8 @@ abstract class _EventFilters extends EventFilters {
   DateIncludesFilter get dateIncludesFilter;
   @override
   CurrencyFilter get currencyFilter;
+  @override
+  IsCanceledFilter get isCanceledFilter;
   @override
   @JsonKey(ignore: true)
   _$EventFiltersCopyWith<_EventFilters> get copyWith =>

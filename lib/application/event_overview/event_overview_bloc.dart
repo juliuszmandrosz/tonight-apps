@@ -29,6 +29,9 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
 
     on<_EventInStateUpdated>(
         (event, emit) => _onEventInStateUpdated(event, emit));
+
+    on<_EventInStateDeleted>(
+        (event, emit) => _onEventInStateDeleted(event, emit));
   }
 
   Future<void> _onEventsFetched(
@@ -110,6 +113,16 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
     final eventsCopy = [...state.events];
     final index = eventsCopy.indexOf(event.oldEvent);
     eventsCopy[index] = event.updatedEvent;
+    _sortEventsByStartDate(eventsCopy);
+    emit(state.copyWith(events: eventsCopy));
+  }
+
+  _onEventInStateDeleted(
+    _EventInStateDeleted event,
+    Emitter<EventOverviewState> emit,
+  ) {
+    final eventsCopy = [...state.events];
+    eventsCopy.remove(event.event);
     emit(state.copyWith(events: eventsCopy));
   }
 }

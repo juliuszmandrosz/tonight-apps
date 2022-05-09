@@ -41,6 +41,12 @@ class _$EventOverviewEventTearOff {
       updatedEvent,
     );
   }
+
+  _EventInStateDeleted eventInStateDeleted(Event event) {
+    return _EventInStateDeleted(
+      event,
+    );
+  }
 }
 
 /// @nodoc
@@ -56,6 +62,7 @@ mixin _$EventOverviewEvent {
     required TResult Function(Event event) eventToStateAdded,
     required TResult Function(Event oldEvent, Event updatedEvent)
         eventInStateUpdated,
+    required TResult Function(Event event) eventInStateDeleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +71,7 @@ mixin _$EventOverviewEvent {
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult Function(Event event)? eventInStateDeleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,6 +80,7 @@ mixin _$EventOverviewEvent {
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult Function(Event event)? eventInStateDeleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -82,6 +91,7 @@ mixin _$EventOverviewEvent {
         nextEventsPageFetched,
     required TResult Function(_EventToStateAdded value) eventToStateAdded,
     required TResult Function(_EventInStateUpdated value) eventInStateUpdated,
+    required TResult Function(_EventInStateDeleted value) eventInStateDeleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +100,7 @@ mixin _$EventOverviewEvent {
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
     TResult Function(_EventToStateAdded value)? eventToStateAdded,
     TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -98,6 +109,7 @@ mixin _$EventOverviewEvent {
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
     TResult Function(_EventToStateAdded value)? eventToStateAdded,
     TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -218,6 +230,7 @@ class _$_EventsFetched implements _EventsFetched {
     required TResult Function(Event event) eventToStateAdded,
     required TResult Function(Event oldEvent, Event updatedEvent)
         eventInStateUpdated,
+    required TResult Function(Event event) eventInStateDeleted,
   }) {
     return eventsFetched(filters, sortModel);
   }
@@ -229,6 +242,7 @@ class _$_EventsFetched implements _EventsFetched {
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult Function(Event event)? eventInStateDeleted,
   }) {
     return eventsFetched?.call(filters, sortModel);
   }
@@ -240,6 +254,7 @@ class _$_EventsFetched implements _EventsFetched {
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult Function(Event event)? eventInStateDeleted,
     required TResult orElse(),
   }) {
     if (eventsFetched != null) {
@@ -256,6 +271,7 @@ class _$_EventsFetched implements _EventsFetched {
         nextEventsPageFetched,
     required TResult Function(_EventToStateAdded value) eventToStateAdded,
     required TResult Function(_EventInStateUpdated value) eventInStateUpdated,
+    required TResult Function(_EventInStateDeleted value) eventInStateDeleted,
   }) {
     return eventsFetched(this);
   }
@@ -267,6 +283,7 @@ class _$_EventsFetched implements _EventsFetched {
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
     TResult Function(_EventToStateAdded value)? eventToStateAdded,
     TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
   }) {
     return eventsFetched?.call(this);
   }
@@ -278,6 +295,7 @@ class _$_EventsFetched implements _EventsFetched {
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
     TResult Function(_EventToStateAdded value)? eventToStateAdded,
     TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
     required TResult orElse(),
   }) {
     if (eventsFetched != null) {
@@ -345,6 +363,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
     required TResult Function(Event event) eventToStateAdded,
     required TResult Function(Event oldEvent, Event updatedEvent)
         eventInStateUpdated,
+    required TResult Function(Event event) eventInStateDeleted,
   }) {
     return nextEventsPageFetched();
   }
@@ -356,6 +375,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult Function(Event event)? eventInStateDeleted,
   }) {
     return nextEventsPageFetched?.call();
   }
@@ -367,6 +387,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult Function(Event event)? eventInStateDeleted,
     required TResult orElse(),
   }) {
     if (nextEventsPageFetched != null) {
@@ -383,6 +404,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
         nextEventsPageFetched,
     required TResult Function(_EventToStateAdded value) eventToStateAdded,
     required TResult Function(_EventInStateUpdated value) eventInStateUpdated,
+    required TResult Function(_EventInStateDeleted value) eventInStateDeleted,
   }) {
     return nextEventsPageFetched(this);
   }
@@ -394,6 +416,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
     TResult Function(_EventToStateAdded value)? eventToStateAdded,
     TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
   }) {
     return nextEventsPageFetched?.call(this);
   }
@@ -405,6 +428,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
     TResult Function(_EventToStateAdded value)? eventToStateAdded,
     TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
     required TResult orElse(),
   }) {
     if (nextEventsPageFetched != null) {
@@ -489,6 +513,7 @@ class _$_EventToStateAdded implements _EventToStateAdded {
     required TResult Function(Event event) eventToStateAdded,
     required TResult Function(Event oldEvent, Event updatedEvent)
         eventInStateUpdated,
+    required TResult Function(Event event) eventInStateDeleted,
   }) {
     return eventToStateAdded(event);
   }
@@ -500,6 +525,7 @@ class _$_EventToStateAdded implements _EventToStateAdded {
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult Function(Event event)? eventInStateDeleted,
   }) {
     return eventToStateAdded?.call(event);
   }
@@ -511,6 +537,7 @@ class _$_EventToStateAdded implements _EventToStateAdded {
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult Function(Event event)? eventInStateDeleted,
     required TResult orElse(),
   }) {
     if (eventToStateAdded != null) {
@@ -527,6 +554,7 @@ class _$_EventToStateAdded implements _EventToStateAdded {
         nextEventsPageFetched,
     required TResult Function(_EventToStateAdded value) eventToStateAdded,
     required TResult Function(_EventInStateUpdated value) eventInStateUpdated,
+    required TResult Function(_EventInStateDeleted value) eventInStateDeleted,
   }) {
     return eventToStateAdded(this);
   }
@@ -538,6 +566,7 @@ class _$_EventToStateAdded implements _EventToStateAdded {
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
     TResult Function(_EventToStateAdded value)? eventToStateAdded,
     TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
   }) {
     return eventToStateAdded?.call(this);
   }
@@ -549,6 +578,7 @@ class _$_EventToStateAdded implements _EventToStateAdded {
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
     TResult Function(_EventToStateAdded value)? eventToStateAdded,
     TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
     required TResult orElse(),
   }) {
     if (eventToStateAdded != null) {
@@ -650,6 +680,7 @@ class _$_EventInStateUpdated implements _EventInStateUpdated {
     required TResult Function(Event event) eventToStateAdded,
     required TResult Function(Event oldEvent, Event updatedEvent)
         eventInStateUpdated,
+    required TResult Function(Event event) eventInStateDeleted,
   }) {
     return eventInStateUpdated(oldEvent, updatedEvent);
   }
@@ -661,6 +692,7 @@ class _$_EventInStateUpdated implements _EventInStateUpdated {
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult Function(Event event)? eventInStateDeleted,
   }) {
     return eventInStateUpdated?.call(oldEvent, updatedEvent);
   }
@@ -672,6 +704,7 @@ class _$_EventInStateUpdated implements _EventInStateUpdated {
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult Function(Event event)? eventInStateDeleted,
     required TResult orElse(),
   }) {
     if (eventInStateUpdated != null) {
@@ -688,6 +721,7 @@ class _$_EventInStateUpdated implements _EventInStateUpdated {
         nextEventsPageFetched,
     required TResult Function(_EventToStateAdded value) eventToStateAdded,
     required TResult Function(_EventInStateUpdated value) eventInStateUpdated,
+    required TResult Function(_EventInStateDeleted value) eventInStateDeleted,
   }) {
     return eventInStateUpdated(this);
   }
@@ -699,6 +733,7 @@ class _$_EventInStateUpdated implements _EventInStateUpdated {
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
     TResult Function(_EventToStateAdded value)? eventToStateAdded,
     TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
   }) {
     return eventInStateUpdated?.call(this);
   }
@@ -710,6 +745,7 @@ class _$_EventInStateUpdated implements _EventInStateUpdated {
     TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
     TResult Function(_EventToStateAdded value)? eventToStateAdded,
     TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
     required TResult orElse(),
   }) {
     if (eventInStateUpdated != null) {
@@ -727,6 +763,162 @@ abstract class _EventInStateUpdated implements EventOverviewEvent {
   Event get updatedEvent;
   @JsonKey(ignore: true)
   _$EventInStateUpdatedCopyWith<_EventInStateUpdated> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$EventInStateDeletedCopyWith<$Res> {
+  factory _$EventInStateDeletedCopyWith(_EventInStateDeleted value,
+          $Res Function(_EventInStateDeleted) then) =
+      __$EventInStateDeletedCopyWithImpl<$Res>;
+  $Res call({Event event});
+}
+
+/// @nodoc
+class __$EventInStateDeletedCopyWithImpl<$Res>
+    extends _$EventOverviewEventCopyWithImpl<$Res>
+    implements _$EventInStateDeletedCopyWith<$Res> {
+  __$EventInStateDeletedCopyWithImpl(
+      _EventInStateDeleted _value, $Res Function(_EventInStateDeleted) _then)
+      : super(_value, (v) => _then(v as _EventInStateDeleted));
+
+  @override
+  _EventInStateDeleted get _value => super._value as _EventInStateDeleted;
+
+  @override
+  $Res call({
+    Object? event = freezed,
+  }) {
+    return _then(_EventInStateDeleted(
+      event == freezed
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as Event,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_EventInStateDeleted implements _EventInStateDeleted {
+  const _$_EventInStateDeleted(this.event);
+
+  @override
+  final Event event;
+
+  @override
+  String toString() {
+    return 'EventOverviewEvent.eventInStateDeleted(event: $event)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _EventInStateDeleted &&
+            const DeepCollectionEquality().equals(other.event, event));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(event));
+
+  @JsonKey(ignore: true)
+  @override
+  _$EventInStateDeletedCopyWith<_EventInStateDeleted> get copyWith =>
+      __$EventInStateDeletedCopyWithImpl<_EventInStateDeleted>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(EventFilters filters, SortModel sortModel)
+        eventsFetched,
+    required TResult Function() nextEventsPageFetched,
+    required TResult Function(Event event) eventToStateAdded,
+    required TResult Function(Event oldEvent, Event updatedEvent)
+        eventInStateUpdated,
+    required TResult Function(Event event) eventInStateDeleted,
+  }) {
+    return eventInStateDeleted(event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
+    TResult Function()? nextEventsPageFetched,
+    TResult Function(Event event)? eventToStateAdded,
+    TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult Function(Event event)? eventInStateDeleted,
+  }) {
+    return eventInStateDeleted?.call(event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
+    TResult Function()? nextEventsPageFetched,
+    TResult Function(Event event)? eventToStateAdded,
+    TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult Function(Event event)? eventInStateDeleted,
+    required TResult orElse(),
+  }) {
+    if (eventInStateDeleted != null) {
+      return eventInStateDeleted(event);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EventsFetched value) eventsFetched,
+    required TResult Function(_NextEventsPageFetched value)
+        nextEventsPageFetched,
+    required TResult Function(_EventToStateAdded value) eventToStateAdded,
+    required TResult Function(_EventInStateUpdated value) eventInStateUpdated,
+    required TResult Function(_EventInStateDeleted value) eventInStateDeleted,
+  }) {
+    return eventInStateDeleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_EventsFetched value)? eventsFetched,
+    TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
+    TResult Function(_EventToStateAdded value)? eventToStateAdded,
+    TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
+  }) {
+    return eventInStateDeleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EventsFetched value)? eventsFetched,
+    TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
+    TResult Function(_EventToStateAdded value)? eventToStateAdded,
+    TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
+    required TResult orElse(),
+  }) {
+    if (eventInStateDeleted != null) {
+      return eventInStateDeleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EventInStateDeleted implements EventOverviewEvent {
+  const factory _EventInStateDeleted(Event event) = _$_EventInStateDeleted;
+
+  Event get event;
+  @JsonKey(ignore: true)
+  _$EventInStateDeletedCopyWith<_EventInStateDeleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

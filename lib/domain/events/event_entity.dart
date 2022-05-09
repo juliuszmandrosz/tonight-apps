@@ -22,6 +22,8 @@ class Event extends Equatable {
   final Map<String, String> urlLinks;
   final bool isConcert;
   final int attending;
+  final bool isCanceled;
+  final bool isBeingPostponed;
 
   Event({
     String? id,
@@ -43,6 +45,8 @@ class Event extends Equatable {
     this.urlLinks = const {},
     this.isConcert = false,
     this.attending = 0,
+    this.isCanceled = false,
+    this.isBeingPostponed = false,
   }) : id = id ?? const Uuid().v1();
 
   double getLatitude() {
@@ -74,6 +78,8 @@ class Event extends Equatable {
         artistName,
         isConcert,
         attending,
+        isCanceled,
+        isBeingPostponed,
       ];
 
   Event copyWith({
@@ -95,6 +101,8 @@ class Event extends Equatable {
     bool? isConcert,
     String? artistName,
     List<String>? photos,
+    bool? isCanceled,
+    bool? isBeingPostponed,
   }) {
     return Event(
       id: id,
@@ -116,6 +124,8 @@ class Event extends Equatable {
       isConcert: isConcert ?? this.isConcert,
       artistName: artistName ?? this.artistName,
       photos: photos ?? this.photos,
+      isCanceled: isCanceled ?? this.isCanceled,
+      isBeingPostponed: isBeingPostponed ?? this.isBeingPostponed,
     );
   }
 }

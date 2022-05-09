@@ -41,7 +41,9 @@ class _$EventDtoTearOff {
       List<String> photos = const [],
       Map<String, String> urlLinks = const {},
       bool isConcert = false,
-      int attending = 0}) {
+      int attending = 0,
+      bool isCanceled = false,
+      bool isBeingPostponed = false}) {
     return _EventDto(
       id: id,
       clubId: clubId,
@@ -62,6 +64,8 @@ class _$EventDtoTearOff {
       urlLinks: urlLinks,
       isConcert: isConcert,
       attending: attending,
+      isCanceled: isCanceled,
+      isBeingPostponed: isBeingPostponed,
     );
   }
 
@@ -98,6 +102,8 @@ mixin _$EventDto {
   Map<String, String> get urlLinks => throw _privateConstructorUsedError;
   bool get isConcert => throw _privateConstructorUsedError;
   int get attending => throw _privateConstructorUsedError;
+  bool get isCanceled => throw _privateConstructorUsedError;
+  bool get isBeingPostponed => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -128,7 +134,9 @@ abstract class $EventDtoCopyWith<$Res> {
       List<String> photos,
       Map<String, String> urlLinks,
       bool isConcert,
-      int attending});
+      int attending,
+      bool isCanceled,
+      bool isBeingPostponed});
 }
 
 /// @nodoc
@@ -160,6 +168,8 @@ class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
     Object? urlLinks = freezed,
     Object? isConcert = freezed,
     Object? attending = freezed,
+    Object? isCanceled = freezed,
+    Object? isBeingPostponed = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -238,6 +248,14 @@ class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
           ? _value.attending
           : attending // ignore: cast_nullable_to_non_nullable
               as int,
+      isCanceled: isCanceled == freezed
+          ? _value.isCanceled
+          : isCanceled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isBeingPostponed: isBeingPostponed == freezed
+          ? _value.isBeingPostponed
+          : isBeingPostponed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -266,7 +284,9 @@ abstract class _$EventDtoCopyWith<$Res> implements $EventDtoCopyWith<$Res> {
       List<String> photos,
       Map<String, String> urlLinks,
       bool isConcert,
-      int attending});
+      int attending,
+      bool isCanceled,
+      bool isBeingPostponed});
 }
 
 /// @nodoc
@@ -299,6 +319,8 @@ class __$EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
     Object? urlLinks = freezed,
     Object? isConcert = freezed,
     Object? attending = freezed,
+    Object? isCanceled = freezed,
+    Object? isBeingPostponed = freezed,
   }) {
     return _then(_EventDto(
       id: id == freezed
@@ -377,6 +399,14 @@ class __$EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
           ? _value.attending
           : attending // ignore: cast_nullable_to_non_nullable
               as int,
+      isCanceled: isCanceled == freezed
+          ? _value.isCanceled
+          : isCanceled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isBeingPostponed: isBeingPostponed == freezed
+          ? _value.isBeingPostponed
+          : isBeingPostponed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -404,7 +434,9 @@ class _$_EventDto extends _EventDto {
       this.photos = const [],
       this.urlLinks = const {},
       this.isConcert = false,
-      this.attending = 0})
+      this.attending = 0,
+      this.isCanceled = false,
+      this.isBeingPostponed = false})
       : super._();
 
   factory _$_EventDto.fromJson(Map<String, dynamic> json) =>
@@ -456,10 +488,16 @@ class _$_EventDto extends _EventDto {
   @JsonKey()
   @override
   final int attending;
+  @JsonKey()
+  @override
+  final bool isCanceled;
+  @JsonKey()
+  @override
+  final bool isBeingPostponed;
 
   @override
   String toString() {
-    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, currency: $currency, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, photos: $photos, urlLinks: $urlLinks, isConcert: $isConcert, attending: $attending)';
+    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, currency: $currency, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, photos: $photos, urlLinks: $urlLinks, isConcert: $isConcert, attending: $attending, isCanceled: $isCanceled, isBeingPostponed: $isBeingPostponed)';
   }
 
   @override
@@ -491,7 +529,11 @@ class _$_EventDto extends _EventDto {
             const DeepCollectionEquality().equals(other.photos, photos) &&
             const DeepCollectionEquality().equals(other.urlLinks, urlLinks) &&
             const DeepCollectionEquality().equals(other.isConcert, isConcert) &&
-            const DeepCollectionEquality().equals(other.attending, attending));
+            const DeepCollectionEquality().equals(other.attending, attending) &&
+            const DeepCollectionEquality()
+                .equals(other.isCanceled, isCanceled) &&
+            const DeepCollectionEquality()
+                .equals(other.isBeingPostponed, isBeingPostponed));
   }
 
   @override
@@ -515,7 +557,9 @@ class _$_EventDto extends _EventDto {
         const DeepCollectionEquality().hash(photos),
         const DeepCollectionEquality().hash(urlLinks),
         const DeepCollectionEquality().hash(isConcert),
-        const DeepCollectionEquality().hash(attending)
+        const DeepCollectionEquality().hash(attending),
+        const DeepCollectionEquality().hash(isCanceled),
+        const DeepCollectionEquality().hash(isBeingPostponed)
       ]);
 
   @JsonKey(ignore: true)
@@ -549,7 +593,9 @@ abstract class _EventDto extends EventDto {
       List<String> photos,
       Map<String, String> urlLinks,
       bool isConcert,
-      int attending}) = _$_EventDto;
+      int attending,
+      bool isCanceled,
+      bool isBeingPostponed}) = _$_EventDto;
   const _EventDto._() : super._();
 
   factory _EventDto.fromJson(Map<String, dynamic> json) = _$_EventDto.fromJson;
@@ -596,6 +642,10 @@ abstract class _EventDto extends EventDto {
   bool get isConcert;
   @override
   int get attending;
+  @override
+  bool get isCanceled;
+  @override
+  bool get isBeingPostponed;
   @override
   @JsonKey(ignore: true)
   _$EventDtoCopyWith<_EventDto> get copyWith =>

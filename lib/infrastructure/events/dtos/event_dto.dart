@@ -8,7 +8,6 @@ part 'event_dto.freezed.dart';
 
 part 'event_dto.g.dart';
 
-
 @freezed
 class EventDto with _$EventDto {
   const EventDto._();
@@ -34,6 +33,8 @@ class EventDto with _$EventDto {
     @Default({}) Map<String, String> urlLinks,
     @Default(false) bool isConcert,
     @Default(0) int attending,
+    @Default(false) bool isCanceled,
+    @Default(false) bool isBeingPostponed,
   }) = _EventDto;
 
   factory EventDto.fromDomain(Event event) {
@@ -57,6 +58,8 @@ class EventDto with _$EventDto {
       artistName: event.artistName,
       description: event.description,
       isConcert: event.isConcert,
+      isCanceled: event.isCanceled,
+      isBeingPostponed: event.isBeingPostponed,
     );
   }
 
@@ -97,6 +100,8 @@ class EventDto with _$EventDto {
       isConcert: isConcert,
       description: description,
       artistName: artistName,
+      isCanceled: isCanceled,
+      isBeingPostponed: isBeingPostponed,
     );
   }
 }

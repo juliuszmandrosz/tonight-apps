@@ -17,4 +17,8 @@ class EventOverviewEvent with _$EventOverviewEvent {
     Event oldEvent,
     Event updatedEvent,
   ) = _EventInStateUpdated;
+
+  const factory EventOverviewEvent.eventInStateDeleted(
+    Event event,
+  ) = _EventInStateDeleted;
 }
