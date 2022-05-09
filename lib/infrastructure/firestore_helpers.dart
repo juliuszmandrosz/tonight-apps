@@ -50,4 +50,6 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get reviewCollection => collection('reviews');
 
   CollectionReference get selectors => collection('selectors');
+
+  CollectionReference get eventCosts => collection('eventCosts');
 }
