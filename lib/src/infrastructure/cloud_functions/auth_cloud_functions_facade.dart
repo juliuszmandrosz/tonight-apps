@@ -11,7 +11,7 @@ abstract class AuthCloudFunctionsFacade {
 
   Future<Unit> addUser();
 
-  Future<Unit> addPartner();
+  Future<Unit> addPartner(String connectedAccountId);
 
   Future<Unit> addSelector(String email, String accessCode);
 
@@ -63,10 +63,10 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   }
 
   @override
-  Future<Unit> addPartner() async {
+  Future<Unit> addPartner(String connectedAccountId) async {
     final addPartnerFn = _firebaseFunctions.httpsCallable(addPartnerFnName);
 
-    await addPartnerFn.call();
+    await addPartnerFn.call({'connectedAccountId': connectedAccountId});
 
     return unit;
   }

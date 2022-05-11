@@ -11,6 +11,7 @@ abstract class PartnerAuthFacade {
   Future<Either<AuthFailure, Unit>> signUpWithEmailAndPasswordAsPartner({
     required String email,
     required String password,
+    required String connectedAccountId,
   });
 
   Future<Option<AppUser>> getSignedPartner();

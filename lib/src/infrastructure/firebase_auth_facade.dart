@@ -168,13 +168,14 @@ class FirebaseAuthFacade
   Future<Either<AuthFailure, Unit>> signUpWithEmailAndPasswordAsPartner({
     required String email,
     required String password,
+    required String connectedAccountId,
   }) async {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-      await _authCloudFunctionsFacade.addPartner();
+      await _authCloudFunctionsFacade.addPartner(connectedAccountId);
       return right(unit);
     } on FirebaseAuthException catch (e) {
       _logger.e(
