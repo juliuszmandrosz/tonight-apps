@@ -1,1 +1,5 @@
-const createEventCancelationPaymentSheetFnName = 'createEventCancelationPaymentSheet';
+const createEventCancelationPaymentSheetFnName =
+    'createEventCancelationPaymentSheet';
+
+const cancelEventCancelationFnName =
+    'cancelEventCancelationOnClosingPaymentSheet';

@@ -43,6 +43,8 @@ class FirebasePaymentFacade implements PartnerPaymentFacade {
           } on StripeException catch (e) {
             _logger.e("Stripe exception during payment EXCEPTION: $e");
             if (e.error.code == FailureCode.Canceled) {
+              await _paymentCloudFunctionsFacade
+                  .cancelEventCancelation(response.paymentIntentId);
               return left(const PartnerPaymentFailure.canceledByPartner());
             }
             return left(const PartnerPaymentFailure.stripeError());

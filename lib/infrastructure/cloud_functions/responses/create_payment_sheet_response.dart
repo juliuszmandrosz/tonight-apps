@@ -4,7 +4,6 @@ class CreatePaymentSheetResponse extends Equatable {
   final String customerId;
   final String paymentIntentSecret;
   final String ephemeralKeySecret;
-  // TODO - remove this in future
   final String paymentIntentId;
 
   const CreatePaymentSheetResponse({

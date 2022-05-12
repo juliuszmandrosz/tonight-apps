@@ -7,6 +7,8 @@ abstract class PaymentCloudFunctionsFacade {
   Future<Option<CreatePaymentSheetResponse>> createEventCancelationPaymentSheet(
     String eventId,
   );
+
+  Future<Unit> cancelEventCancelation(String cancelEventPaymentSessionId);
 }
 
 class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
@@ -28,5 +30,18 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
     return result.data != null
         ? some(CreatePaymentSheetResponse.fromJson(result.data))
         : none();
+  }
+
+  @override
+  Future<Unit> cancelEventCancelation(
+      String cancelEventPaymentSessionId) async {
+    final cancelEventCancelationFn =
+        _functions.httpsCallable(cancelEventCancelationFnName);
+
+    await cancelEventCancelationFn.call({
+      'cancelEventPaymentSessionId': cancelEventPaymentSessionId,
+    });
+
+    return unit;
   }
 }
