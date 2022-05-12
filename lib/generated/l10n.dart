@@ -353,6 +353,16 @@ class S {
     );
   }
 
+  /// `Cancel event`
+  String get cancelEvent {
+    return Intl.message(
+      'Cancel event',
+      name: 'cancelEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Cancelled`
   String get cancelled {
     return Intl.message(
@@ -368,6 +378,16 @@ class S {
     return Intl.message(
       'Operation cancelled by user',
       name: 'cancelledByUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time to cancel the event has expired`
+  String get cancelTimeExpired {
+    return Intl.message(
+      'Time to cancel the event has expired',
+      name: 'cancelTimeExpired',
       desc: '',
       args: [],
     );
@@ -1214,6 +1234,16 @@ class S {
     return Intl.message(
       'Event added successfully',
       name: 'eventAddedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event canceled successfully`
+  String get eventCanceledSuccessfully {
+    return Intl.message(
+      'Event canceled successfully',
+      name: 'eventCanceledSuccessfully',
       desc: '',
       args: [],
     );

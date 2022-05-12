@@ -95,6 +95,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Back to summary"),
         "buyTicket": MessageLookupByLibrary.simpleMessage("Buy ticket"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "cancelEvent": MessageLookupByLibrary.simpleMessage("Cancel event"),
+        "cancelTimeExpired": MessageLookupByLibrary.simpleMessage(
+            "Time to cancel the event has expired"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
         "cancelledByUser":
             MessageLookupByLibrary.simpleMessage("Operation cancelled by user"),
@@ -246,6 +249,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error updating reward"),
         "eventAddedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Event added successfully"),
+        "eventCanceledSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Event canceled successfully"),
         "eventDetails": MessageLookupByLibrary.simpleMessage("Event details"),
         "eventDurationTooLong": MessageLookupByLibrary.simpleMessage(
             "The event may last a maximum of 24 hours"),

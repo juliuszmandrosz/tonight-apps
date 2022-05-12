@@ -95,6 +95,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wróć do podsumowania"),
         "buyTicket": MessageLookupByLibrary.simpleMessage("Kup bilet"),
         "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
+        "cancelEvent":
+            MessageLookupByLibrary.simpleMessage("Odwołaj wydarzenie"),
+        "cancelTimeExpired": MessageLookupByLibrary.simpleMessage(
+            "Czas na odwołanie wydarzenia upłynął"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Anulowano"),
         "cancelledByUser": MessageLookupByLibrary.simpleMessage(
             "Operacja anulowana przez użytkownika"),
@@ -243,6 +247,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Błąd podczas aktualizacji nagrody "),
         "eventAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Wydarzenie zostało dodane pomyślnie"),
+        "eventCanceledSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Wydarzenie odwołano pomyślnie"),
         "eventDetails":
             MessageLookupByLibrary.simpleMessage("Szczegóły wydarzenia"),
         "eventDurationTooLong": MessageLookupByLibrary.simpleMessage(
