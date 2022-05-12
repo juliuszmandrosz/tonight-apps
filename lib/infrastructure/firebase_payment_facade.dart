@@ -29,22 +29,26 @@ class FirebasePaymentFacade implements PartnerPaymentFacade {
       final result = await _paymentCloudFunctionsFacade
           .createEventCancelationPaymentSheet(eventId);
 
-      return result.fold(() => right(unit), (response) async {
-        await _presentPaymentSheet(
-          currency: currency,
-          customerId: response.customerId,
-          paymentIntentSecret: response.paymentIntentSecret,
-          ephemeralKeySecret: response.ephemeralKeySecret,
-        );
-
-        return right(unit);
-      });
-    } on StripeException catch (e) {
-      _logger.e("Stripe exception during payment EXCEPTION: $e");
-      if (e.error.code == FailureCode.Canceled) {
-        return left(const PartnerPaymentFailure.canceledByPartner());
-      }
-      return left(const PartnerPaymentFailure.stripeError());
+      return result.fold(
+        () => right(unit),
+        (response) async {
+          try {
+            await _presentPaymentSheet(
+              currency: currency,
+              customerId: response.customerId,
+              paymentIntentSecret: response.paymentIntentSecret,
+              ephemeralKeySecret: response.ephemeralKeySecret,
+            );
+            return right(unit);
+          } on StripeException catch (e) {
+            _logger.e("Stripe exception during payment EXCEPTION: $e");
+            if (e.error.code == FailureCode.Canceled) {
+              return left(const PartnerPaymentFailure.canceledByPartner());
+            }
+            return left(const PartnerPaymentFailure.stripeError());
+          }
+        },
+      );
     } on FirebaseFunctionsException catch (e) {
       _logger.e("Firebase Functions Exception during payment EXCEPTION: $e");
       return left(paymentCloudFunctionsErrors[e.details] ??
