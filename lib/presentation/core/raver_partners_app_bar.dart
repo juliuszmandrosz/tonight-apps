@@ -11,7 +11,7 @@ class RaverPartnersAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title ?? S().raverPartners),
+      title: Text(title ?? S().tonightPartners),
       actions: actions,
     );
   }

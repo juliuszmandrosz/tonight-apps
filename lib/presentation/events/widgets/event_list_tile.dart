@@ -34,7 +34,7 @@ class EventListTile extends StatelessWidget {
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 5),
             child: Text(
-              context.formatDateTimeToLocaleYMD(event.eventStartDateTime),
+              context.formatDateTimeToLocaleYMDHM(event.eventStartDateTime),
               style: theme.textTheme.subtitle2,
             ),
           ),

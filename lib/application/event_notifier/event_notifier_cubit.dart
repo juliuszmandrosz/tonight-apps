@@ -12,15 +12,20 @@ class EventNotifierCubit extends Cubit<EventNotifierState> {
 
   void notifyAboutNewEvent(Event event) {
     emit(state.copyWith(lastAddedEvent: some(event)));
+    emit(state.copyWith(lastAddedEvent: none()));
   }
 
   void notifyAboutEditedEvent(Event oldEvent, Event editedEvent) {
     emit(
-      state.copyWith(
-        lastEditedEvent: some(
-          Tuple2(oldEvent, editedEvent),
-        ),
-      ),
+      state.copyWith(lastEditedEvent: some(Tuple2(oldEvent, editedEvent))),
     );
+    emit(state.copyWith(lastEditedEvent: none()));
+  }
+
+  void notifyAboutDeletedEvent(Event deletedEvent) {
+    emit(
+      state.copyWith(lastDeletedEvent: some(deletedEvent)),
+    );
+    emit(state.copyWith(lastDeletedEvent: none()));
   }
 }

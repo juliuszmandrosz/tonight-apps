@@ -30,8 +30,7 @@ class EventSummaryEndDate extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  context
-                      .formatDateTimeToLocaleYMDHM(state.startDateTime.value!),
+                  context.formatDateTimeToLocaleYMDHM(state.endDateTime.value!),
                   style: theme.textTheme.subtitle1,
                 ),
               ],

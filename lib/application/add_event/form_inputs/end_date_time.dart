@@ -1,5 +1,4 @@
 import 'package:formz/formz.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 enum EndDateTimeError { empty, beforeStart, startDateEmpty, tooShort, tooLong }
@@ -11,14 +10,6 @@ final endDateTimeErrorMessages = {
   EndDateTimeError.tooShort: S().eventTimeTooShort,
   EndDateTimeError.tooLong: S().eventDurationTooLong,
 };
-
-String? getEndDateTimeErrorMessage(AddEventState state) {
-  if (state.endDateTime.valid || state.status != FormzStatus.invalid) {
-    return null;
-  }
-
-  return endDateTimeErrorMessages[state.endDateTime.error];
-}
 
 class EndDateTime extends FormzInput<DateTime?, EndDateTimeError> {
   final DateTime? startDateTime;

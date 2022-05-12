@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:formz/formz.dart';
 import 'package:raver_common/extensions/build_context_extensions.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event/form_inputs/start_date_time.dart';
@@ -29,7 +30,7 @@ class EventStartDateInput extends StatelessWidget {
           keyboardType: TextInputType.datetime,
           decoration: InputDecoration(
             labelText: S().startDate,
-            errorText: getStartDateTimeErrorMessage(state),
+            errorText: _getStartDateTimeErrorMessage(state),
             suffixIcon: IconButton(
               onPressed: () async {
                 final dateTime = await getDateTimeFromUser(
@@ -51,5 +52,13 @@ class EventStartDateInput extends StatelessWidget {
         );
       },
     );
+  }
+
+  String? _getStartDateTimeErrorMessage(AddEventState state) {
+    if (state.startDateTime.valid || state.status != FormzStatus.invalid) {
+      return null;
+    }
+
+    return startDateTimeErrorMessages[state.startDateTime.error];
   }
 }

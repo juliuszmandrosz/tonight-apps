@@ -11,7 +11,7 @@ Future<DateTime?> getDateTimeFromUser(
     initialDate: initialDate ?? DateTime.now(),
     firstDate: DateTime.now(),
     lastDate: DateTime.now().add(
-      const Duration(days: 365),
+      const Duration(days: 150),
     ),
   );
 

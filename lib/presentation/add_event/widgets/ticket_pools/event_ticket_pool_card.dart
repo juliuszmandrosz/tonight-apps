@@ -89,7 +89,7 @@ class EventTicketPoolCard extends StatelessWidget {
   AutoSizeText _getTitle(ThemeData theme) {
     return AutoSizeText(
       '${ticketPool.poolNumber} ${S().pool.toLowerCase()} - '
-      '${ticketPool.ticketPrice} '
+      '${ticketPool.ticketPrice}'
       '${getCurrencySymbolFromCode(ticketPool.currency)}',
       style: theme.textTheme.headline2!.copyWith(
         color: ticketPool.isCurrent && ticketPool.ticketsSold > 0
@@ -116,7 +116,7 @@ class EventTicketPoolCard extends StatelessWidget {
       return AutoSizeText(
         '${ticketPool.ticketsSold}/${ticketPool.ticketQuantity} '
         '${S().ticketsSold.toLowerCase()}, '
-        '${S().vip} ${ticketPool.vipPrice} '
+        '${S().vip} ${ticketPool.vipPrice}'
         '${getCurrencySymbolFromCode(ticketPool.currency)}',
         style: theme.textTheme.subtitle1!.copyWith(
           color: theme.colorScheme.onTertiaryContainer,
@@ -128,7 +128,7 @@ class EventTicketPoolCard extends StatelessWidget {
     return AutoSizeText(
       '${ticketPool.ticketQuantity} '
       '${S().tickets(ticketPool.ticketQuantity).toLowerCase()}, '
-      '${S().vip} ${ticketPool.vipPrice} '
+      '${S().vip} ${ticketPool.vipPrice}'
       '${getCurrencySymbolFromCode(ticketPool.currency)}',
       style: theme.textTheme.subtitle1!.copyWith(
         color: theme.colorScheme.onTertiaryContainer,

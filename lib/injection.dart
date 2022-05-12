@@ -2,7 +2,9 @@ import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
@@ -20,6 +22,7 @@ import 'package:raver_partners/application/event_filters/event_filters_cubit.dar
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
 import 'package:raver_partners/application/invite_selector/invite_selector_cubit.dart';
 import 'package:raver_partners/application/past_event_details/past_event_details_cubit.dart';
+import 'package:raver_partners/application/postpone_event/postpone_event_cubit.dart';
 import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
 import 'package:raver_partners/application/selector_list/selector_list_cubit.dart';
 import 'package:raver_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
@@ -28,6 +31,9 @@ import 'package:raver_partners/domain/selector_management/selector_management_fa
 import 'package:raver_partners/infrastructure/currency_params/firebase_currency_params_facade.dart';
 import 'package:raver_partners/infrastructure/selector_management/cloud_functions/selector_cloud_functions_facade.dart';
 import 'package:raver_partners/infrastructure/selector_management/firebase_selector_management_facade.dart';
+import 'package:raver_payments/domain/facades/partner_payment_facade.dart';
+import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
+import 'package:raver_payments/infrastructure/firebase_payment_facade.dart';
 import 'package:raver_rewards/raver_rewards.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -57,7 +63,7 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerFactory(
+  getIt.registerLazySingleton(
     () => EventNotifierCubit(),
   );
 
@@ -119,6 +125,7 @@ void _registerCubits() {
       eventTicketsFacade: getIt(),
       eventFacade: getIt(),
       eventNotifierCubit: eventNotifierCubit,
+      paymentFacade: getIt(),
     ),
   );
 
@@ -137,6 +144,14 @@ void _registerCubits() {
   getIt.registerFactory(
     () => SelectorListCubit(
       getIt(),
+    ),
+  );
+
+  getIt.registerFactoryParam(
+    (EventNotifierCubit eventNotifierCubit, _) => PostponeEventCubit(
+      eventNotifierCubit: eventNotifierCubit,
+      partnerPaymentFacade: getIt(),
+      partnerEventFacade: getIt(),
     ),
   );
 }
@@ -234,6 +249,20 @@ void _registerFacades() {
     ),
   );
 
+  getIt.registerLazySingleton<PartnerPaymentFacade>(
+    () => FirebasePaymentFacade(
+      paymentCloudFunctionsFacade: getIt(),
+      stripe: getIt(),
+      logger: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<PaymentCloudFunctionsFacade>(
+    () => PaymentCloudFunctionsFacadeImpl(
+      getIt(),
+    ),
+  );
+
   getIt.registerLazySingleton<ClubCloudFunctionsFacade>(
     () => ClubCloudFunctionsFacadeImpl(
       getIt(),
@@ -256,6 +285,10 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebaseAuth.instance);
 
   getIt.registerLazySingleton(() => FirebaseFunctions.instance);
+
+  getIt.registerLazySingleton(() => FirebaseRemoteConfig.instance);
+
+  getIt.registerLazySingleton(() => Stripe.instance);
 
   getIt.registerLazySingleton(() => Logger());
 

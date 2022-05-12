@@ -4,14 +4,15 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_event/form_inputs/description.dart';
 import 'package:raver_partners/application/add_event/form_inputs/dj_channel_url.dart';
 import 'package:raver_partners/application/add_event/form_inputs/event_name.dart';
 import 'package:raver_partners/application/add_event/form_inputs/facebook_url.dart';
+import 'package:raver_partners/application/core/get_payment_failure_message.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
+import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 part 'upcoming_live_event_cubit.freezed.dart';
@@ -22,6 +23,7 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
   final PartnerEventTicketsFacade _eventTicketsFacade;
   final PartnerEventFacade _eventFacade;
   final EventNotifierCubit _eventNotifierCubit;
+  final PartnerPaymentFacade _paymentFacade;
 
   late StreamSubscription _eventTicketsSub;
 
@@ -29,9 +31,11 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
     required PartnerEventTicketsFacade eventTicketsFacade,
     required PartnerEventFacade eventFacade,
     required EventNotifierCubit eventNotifierCubit,
+    required PartnerPaymentFacade paymentFacade,
   })  : _eventTicketsFacade = eventTicketsFacade,
         _eventFacade = eventFacade,
         _eventNotifierCubit = eventNotifierCubit,
+        _paymentFacade = paymentFacade,
         super(UpcomingLiveEventState.initial());
 
   void addEventToState(Event event) {
@@ -208,6 +212,26 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
     );
   }
 
+  Future<void> proceedToPayForEventCancelation() async {
+    emit(state.copyWith(cancelEventStatus: CubitStatus.loading));
+
+    final event = state.event.getOrCrash();
+
+    final failureOrSuccess =
+        await _paymentFacade.proceedToPayForEventCancelation(
+      eventId: event.id,
+      currency: event.currency,
+    );
+
+    failureOrSuccess.fold(
+      (failure) => _emitPaymentFailure(failure),
+      (success) {
+        _eventNotifierCubit.notifyAboutDeletedEvent(event);
+        emit(state.copyWith(cancelEventStatus: CubitStatus.success));
+      },
+    );
+  }
+
   Future<void> _updateEvent(Event oldEvent, Event editedEvent) async {
     emit(state.copyWith(
         editEventDetailsStatus: FormzStatus.submissionInProgress));
@@ -308,7 +332,21 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
     emit(state.copyWith(errorMessage: none()));
   }
 
-  _getEventTicketFailureMessage(EventTicketsFailure failure) {
+  _emitPaymentFailure(PartnerPaymentFailure failure) {
+    final errorMessage = getPaymentFailureMessage(failure);
+
+    if (errorMessage.isNotEmpty) {
+      emit(state.copyWith(errorMessage: some(errorMessage)));
+    }
+    emit(
+      state.copyWith(
+        cancelEventStatus: CubitStatus.failure,
+        errorMessage: none(),
+      ),
+    );
+  }
+
+  String _getEventTicketFailureMessage(EventTicketsFailure failure) {
     return failure.map(
       unexpected: (_) => S().serverError,
       priceChangedAfterTicketWasSold: (_) => S().priceChangedAfterTicketWasSold,

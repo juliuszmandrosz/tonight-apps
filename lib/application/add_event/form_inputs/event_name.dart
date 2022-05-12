@@ -21,7 +21,7 @@ class EventName extends FormzInput<String, EventNameError> {
       return EventNameError.empty;
     }
 
-    if (!RegExp('^[A-Za-z0-9]*\$').hasMatch(value)) {
+    if (!RegExp('^[A-Za-z0-9 ]*\$').hasMatch(value)) {
       return EventNameError.specialCharacter;
     }
 

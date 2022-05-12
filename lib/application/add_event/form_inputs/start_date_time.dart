@@ -1,21 +1,14 @@
+import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_translations/generated/l10n.dart';
 
-enum StartDateTimeError { empty, fromPast }
+enum StartDateTimeError { empty, fromPast, tooLate }
 
 final startDateTimeErrorMessages = {
   StartDateTimeError.empty: S().enterStartDateTime,
   StartDateTimeError.fromPast: S().startDateBeforeNow,
+  StartDateTimeError.tooLate: S().startDateTooLate,
 };
-
-String? getStartDateTimeErrorMessage(AddEventState state) {
-  if (state.startDateTime.valid || state.status != FormzStatus.invalid) {
-    return null;
-  }
-
-  return startDateTimeErrorMessages[state.startDateTime.error];
-}
 
 class StartDateTime extends FormzInput<DateTime?, StartDateTimeError> {
   const StartDateTime.pure() : super.pure(null);
@@ -32,6 +25,18 @@ class StartDateTime extends FormzInput<DateTime?, StartDateTimeError> {
       return StartDateTimeError.fromPast;
     }
 
+    if (value.isAfter(_getMaxEventDateTime())) {
+      return StartDateTimeError.tooLate;
+    }
+
     return null;
+  }
+
+  _getMaxEventDateTime() {
+    final maxDate = DateTime.now().add(const Duration(days: 150));
+    final dateWithoutHours = DateUtils.dateOnly(maxDate);
+    return dateWithoutHours
+        .add(const Duration(days: 1))
+        .subtract(const Duration(seconds: 1));
   }
 }

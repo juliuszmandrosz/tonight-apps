@@ -5,6 +5,7 @@ class UpcomingLiveEventState with _$UpcomingLiveEventState {
   const factory UpcomingLiveEventState({
     required CubitStatus initialStatus,
     required CubitStatus ticketPoolStatus,
+    required CubitStatus cancelEventStatus,
     required FormzStatus editEventDetailsStatus,
     required Option<String> errorMessage,
     required Option<EventTickets> eventTickets,
@@ -18,6 +19,7 @@ class UpcomingLiveEventState with _$UpcomingLiveEventState {
   factory UpcomingLiveEventState.initial() => UpcomingLiveEventState(
         initialStatus: CubitStatus.initial,
         ticketPoolStatus: CubitStatus.initial,
+        cancelEventStatus: CubitStatus.initial,
         editEventDetailsStatus: FormzStatus.pure,
         errorMessage: none(),
         eventTickets: none(),

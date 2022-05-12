@@ -17,7 +17,6 @@ class EventsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentClub = context.read<ClubInfoCubit>().state.club.getOrCrash();
-
     return DefaultTabController(
       length: 3,
       initialIndex: 0,
@@ -49,15 +48,12 @@ class EventsPage extends StatelessWidget {
                   BlocProvider(
                     create: (context) => getIt<EventOverviewBloc>()
                       ..add(_liveEventsFetched(currentClub.id)),
-                    child: BlocBuilder<EventNotifierCubit, EventNotifierState>(
-                      builder: (context, state) {
-                        //TODO: This could be handled with BlocConsumer, + use listenWhen to filter if event should be added to this tab
+                    child: BlocListener<EventNotifierCubit, EventNotifierState>(
+                      listener: (context, state) {
                         state.lastAddedEvent.fold(
                           () {},
                           (event) {
-                            final now = DateTime.now();
-                            if (event.eventStartDateTime.isBefore(now) &&
-                                event.eventEndDateTime.isAfter(now)) {
+                            if (_checkIfEventIsLive(event)) {
                               _emitNewEventAdded(context, event);
                             }
                           },
@@ -66,25 +62,30 @@ class EventsPage extends StatelessWidget {
                         state.lastEditedEvent.fold(
                           () {},
                           (event) {
-                            _emitEventInStateEdited(
-                                context, event.value1, event.value2);
+                            final oldEvent = event.value1;
+                            if (_checkIfEventIsLive(oldEvent)) {
+                              _emitEventInStateEdited(
+                                  context, oldEvent, event.value2);
+                            }
                           },
                         );
-
-                        return const LiveEventsTab();
                       },
+                      child: BlocBuilder<EventOverviewBloc, EventOverviewState>(
+                        builder: (context, state) {
+                          return const LiveEventsTab();
+                        },
+                      ),
                     ),
                   ),
                   BlocProvider(
                     create: (context) => getIt<EventOverviewBloc>()
                       ..add(_upcomingEventsFetched(currentClub.id)),
-                    child: BlocBuilder<EventNotifierCubit, EventNotifierState>(
-                      builder: (context, state) {
+                    child: BlocListener<EventNotifierCubit, EventNotifierState>(
+                      listener: (context, state) {
                         state.lastAddedEvent.fold(
                           () {},
                           (event) {
-                            final now = DateTime.now();
-                            if (event.eventStartDateTime.isAfter(now)) {
+                            if (_checkIfEventIsUpcoming(event)) {
                               _emitNewEventAdded(context, event);
                             }
                           },
@@ -93,30 +94,32 @@ class EventsPage extends StatelessWidget {
                         state.lastEditedEvent.fold(
                           () {},
                           (event) {
-                            _emitEventInStateEdited(
-                                context, event.value1, event.value2);
+                            final oldEvent = event.value1;
+                            if (_checkIfEventIsUpcoming(oldEvent)) {
+                              _emitEventInStateEdited(
+                                  context, oldEvent, event.value2);
+                            }
                           },
                         );
 
-                        return const UpcomingEventsTab();
+                        state.lastDeletedEvent.fold(() {}, (event) {
+                          if (_checkIfEventIsUpcoming(event)) {
+                            _emitEventDeleted(context, event);
+                          }
+                        });
                       },
+                      child: BlocBuilder<EventOverviewBloc, EventOverviewState>(
+                        builder: (context, state) {
+                          return const UpcomingEventsTab();
+                        },
+                      ),
                     ),
                   ),
                   BlocProvider(
                     create: (context) => getIt<EventOverviewBloc>()
                       ..add(_pastEventsFetched(currentClub.id)),
-                    child: BlocBuilder<EventNotifierCubit, EventNotifierState>(
+                    child: BlocBuilder<EventOverviewBloc, EventOverviewState>(
                       builder: (context, state) {
-                        state.lastAddedEvent.fold(
-                          () {},
-                          (event) {
-                            final now = DateTime.now();
-                            if (event.eventEndDateTime.isBefore(now)) {
-                              _emitNewEventAdded(context, event);
-                            }
-                          },
-                        );
-
                         return const PastEventsTab();
                       },
                     ),
@@ -192,5 +195,22 @@ class EventsPage extends StatelessWidget {
         ),
       );
     }
+  }
+
+  _emitEventDeleted(BuildContext context, Event event) {
+    context.read<EventOverviewBloc>().add(
+          EventOverviewEvent.eventInStateDeleted(event),
+        );
+  }
+
+  _checkIfEventIsLive(Event event) {
+    final now = DateTime.now();
+    return event.eventStartDateTime.isBefore(now) &&
+        event.eventEndDateTime.isAfter(now);
+  }
+
+  _checkIfEventIsUpcoming(Event event) {
+    final now = DateTime.now();
+    return event.eventStartDateTime.isAfter(now);
   }
 }

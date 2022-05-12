@@ -12,21 +12,7 @@ part of 'event_filters_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$EventFiltersStateTearOff {
-  const _$EventFiltersStateTearOff();
-
-  _EventFiltersState call({required EventFilters filters}) {
-    return _EventFiltersState(
-      filters: filters,
-    );
-  }
-}
-
-/// @nodoc
-const $EventFiltersState = _$EventFiltersStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$EventFiltersState {
@@ -77,11 +63,11 @@ class _$EventFiltersStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$EventFiltersStateCopyWith<$Res>
+abstract class _$$_EventFiltersStateCopyWith<$Res>
     implements $EventFiltersStateCopyWith<$Res> {
-  factory _$EventFiltersStateCopyWith(
-          _EventFiltersState value, $Res Function(_EventFiltersState) then) =
-      __$EventFiltersStateCopyWithImpl<$Res>;
+  factory _$$_EventFiltersStateCopyWith(_$_EventFiltersState value,
+          $Res Function(_$_EventFiltersState) then) =
+      __$$_EventFiltersStateCopyWithImpl<$Res>;
   @override
   $Res call({EventFilters filters});
 
@@ -90,21 +76,21 @@ abstract class _$EventFiltersStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$EventFiltersStateCopyWithImpl<$Res>
+class __$$_EventFiltersStateCopyWithImpl<$Res>
     extends _$EventFiltersStateCopyWithImpl<$Res>
-    implements _$EventFiltersStateCopyWith<$Res> {
-  __$EventFiltersStateCopyWithImpl(
-      _EventFiltersState _value, $Res Function(_EventFiltersState) _then)
-      : super(_value, (v) => _then(v as _EventFiltersState));
+    implements _$$_EventFiltersStateCopyWith<$Res> {
+  __$$_EventFiltersStateCopyWithImpl(
+      _$_EventFiltersState _value, $Res Function(_$_EventFiltersState) _then)
+      : super(_value, (v) => _then(v as _$_EventFiltersState));
 
   @override
-  _EventFiltersState get _value => super._value as _EventFiltersState;
+  _$_EventFiltersState get _value => super._value as _$_EventFiltersState;
 
   @override
   $Res call({
     Object? filters = freezed,
   }) {
-    return _then(_EventFiltersState(
+    return _then(_$_EventFiltersState(
       filters: filters == freezed
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
@@ -130,7 +116,7 @@ class _$_EventFiltersState extends _EventFiltersState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EventFiltersState &&
+            other is _$_EventFiltersState &&
             const DeepCollectionEquality().equals(other.filters, filters));
   }
 
@@ -140,19 +126,20 @@ class _$_EventFiltersState extends _EventFiltersState {
 
   @JsonKey(ignore: true)
   @override
-  _$EventFiltersStateCopyWith<_EventFiltersState> get copyWith =>
-      __$EventFiltersStateCopyWithImpl<_EventFiltersState>(this, _$identity);
+  _$$_EventFiltersStateCopyWith<_$_EventFiltersState> get copyWith =>
+      __$$_EventFiltersStateCopyWithImpl<_$_EventFiltersState>(
+          this, _$identity);
 }
 
 abstract class _EventFiltersState extends EventFiltersState {
-  factory _EventFiltersState({required EventFilters filters}) =
+  factory _EventFiltersState({required final EventFilters filters}) =
       _$_EventFiltersState;
   _EventFiltersState._() : super._();
 
   @override
-  EventFilters get filters;
+  EventFilters get filters => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$EventFiltersStateCopyWith<_EventFiltersState> get copyWith =>
+  _$$_EventFiltersStateCopyWith<_$_EventFiltersState> get copyWith =>
       throw _privateConstructorUsedError;
 }

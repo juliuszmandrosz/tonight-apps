@@ -23,7 +23,6 @@ class PastEventDetailsCubit extends Cubit<PastEventDetailsState> {
 
   Future<void> getEventTickets(Event event) async {
     emit(state.copyWith(status: CubitStatus.loading));
-
     _eventTicketsSub =
         _eventTicketsFacade.getEventTickets(event).listen((result) {
       result.fold(

@@ -63,12 +63,17 @@ dependencies:
   auto_size_text: ^3.0.0
   equatable: ^2.0.3
   json_serializable: ^6.1.5
+  flutter_stripe: ^3.0.0
+  firebase_remote_config: ^2.0.6
+  loader_overlay: ^2.0.6
+  json_annotation: ^4.5.0
   share_plus: ^4.0.4
   uuid: ^3.0.6
 
   raver_auth:
     git:
       url: https://github.com/juliuszmandrosz/RaverAuth.git
+      ref: develop
 
   raver_events:
     git:
@@ -91,6 +96,11 @@ dependencies:
   raver_rewards:
     git:
       url: https://github.com/juliuszmandrosz/RaverRewards.git
+
+  raver_payments:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverPayments.git
+      ref: develop
 
 
 dev_dependencies:
