@@ -25,6 +25,8 @@ class TicketDto with _$TicketDto {
     required String ticketPaymentId,
     String? vipPaymentId,
     @Default(false) bool isExpired,
+    @Default(false) bool isEventCanceled,
+    @Default(false) bool isReturnable,
   }) = _TicketDto;
 
   factory TicketDto.fromDomain(Ticket ticket) {
@@ -41,6 +43,8 @@ class TicketDto with _$TicketDto {
       ticketPaymentId: ticket.ticketPaymentId,
       vipPaymentId: ticket.vipPaymentId,
       isExpired: ticket.isExpired,
+      isEventCanceled: ticket.isEventCanceled,
+      isReturnable: ticket.isReturnable,
     );
   }
 
@@ -66,6 +70,8 @@ class TicketDto with _$TicketDto {
       ticketPaymentId: ticketPaymentId,
       vipPaymentId: vipPaymentId,
       isExpired: isExpired,
+      isEventCanceled: isEventCanceled,
+      isReturnable: isReturnable,
     );
   }
 }
