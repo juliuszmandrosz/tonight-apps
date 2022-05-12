@@ -1,9 +1,10 @@
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:dartz/dartz.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/cloud_functions_names.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/responses/create_payment_sheet_response.dart';
 
 abstract class PaymentCloudFunctionsFacade {
-  Future<CreatePaymentSheetResponse> createEventCancelationPaymentSheet(
+  Future<Option<CreatePaymentSheetResponse>> createEventCancelationPaymentSheet(
     String eventId,
   );
 }
@@ -14,7 +15,7 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
   PaymentCloudFunctionsFacadeImpl(this._functions);
 
   @override
-  Future<CreatePaymentSheetResponse> createEventCancelationPaymentSheet(
+  Future<Option<CreatePaymentSheetResponse>> createEventCancelationPaymentSheet(
     String eventId,
   ) async {
     final createEventCancelationPaymentSheetFn =
@@ -24,6 +25,8 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
       'eventId': eventId,
     });
 
-    return CreatePaymentSheetResponse.fromJson(result.data);
+    return result.data != null
+        ? some(CreatePaymentSheetResponse.fromJson(result.data))
+        : none();
   }
 }
