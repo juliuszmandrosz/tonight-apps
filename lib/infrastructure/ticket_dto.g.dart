@@ -21,6 +21,7 @@ _$_TicketDto _$$_TicketDtoFromJson(Map<String, dynamic> json) => _$_TicketDto(
       isExpired: json['isExpired'] as bool? ?? false,
       isEventCanceled: json['isEventCanceled'] as bool? ?? false,
       isReturnable: json['isReturnable'] as bool? ?? false,
+      isReturned: json['isReturned'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_TicketDtoToJson(_$_TicketDto instance) =>
@@ -39,4 +40,5 @@ Map<String, dynamic> _$$_TicketDtoToJson(_$_TicketDto instance) =>
       'isExpired': instance.isExpired,
       'isEventCanceled': instance.isEventCanceled,
       'isReturnable': instance.isReturnable,
+      'isReturned': instance.isReturned,
     };

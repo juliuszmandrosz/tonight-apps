@@ -36,7 +36,8 @@ class _$TicketDtoTearOff {
       String? vipPaymentId,
       bool isExpired = false,
       bool isEventCanceled = false,
-      bool isReturnable = false}) {
+      bool isReturnable = false,
+      bool isReturned = false}) {
     return _TicketDto(
       id: id,
       eventId: eventId,
@@ -52,6 +53,7 @@ class _$TicketDtoTearOff {
       isExpired: isExpired,
       isEventCanceled: isEventCanceled,
       isReturnable: isReturnable,
+      isReturned: isReturned,
     );
   }
 
@@ -81,6 +83,7 @@ mixin _$TicketDto {
   bool get isExpired => throw _privateConstructorUsedError;
   bool get isEventCanceled => throw _privateConstructorUsedError;
   bool get isReturnable => throw _privateConstructorUsedError;
+  bool get isReturned => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -106,7 +109,8 @@ abstract class $TicketDtoCopyWith<$Res> {
       String? vipPaymentId,
       bool isExpired,
       bool isEventCanceled,
-      bool isReturnable});
+      bool isReturnable,
+      bool isReturned});
 }
 
 /// @nodoc
@@ -133,6 +137,7 @@ class _$TicketDtoCopyWithImpl<$Res> implements $TicketDtoCopyWith<$Res> {
     Object? isExpired = freezed,
     Object? isEventCanceled = freezed,
     Object? isReturnable = freezed,
+    Object? isReturned = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -191,6 +196,10 @@ class _$TicketDtoCopyWithImpl<$Res> implements $TicketDtoCopyWith<$Res> {
           ? _value.isReturnable
           : isReturnable // ignore: cast_nullable_to_non_nullable
               as bool,
+      isReturned: isReturned == freezed
+          ? _value.isReturned
+          : isReturned // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -215,7 +224,8 @@ abstract class _$TicketDtoCopyWith<$Res> implements $TicketDtoCopyWith<$Res> {
       String? vipPaymentId,
       bool isExpired,
       bool isEventCanceled,
-      bool isReturnable});
+      bool isReturnable,
+      bool isReturned});
 }
 
 /// @nodoc
@@ -243,6 +253,7 @@ class __$TicketDtoCopyWithImpl<$Res> extends _$TicketDtoCopyWithImpl<$Res>
     Object? isExpired = freezed,
     Object? isEventCanceled = freezed,
     Object? isReturnable = freezed,
+    Object? isReturned = freezed,
   }) {
     return _then(_TicketDto(
       id: id == freezed
@@ -301,6 +312,10 @@ class __$TicketDtoCopyWithImpl<$Res> extends _$TicketDtoCopyWithImpl<$Res>
           ? _value.isReturnable
           : isReturnable // ignore: cast_nullable_to_non_nullable
               as bool,
+      isReturned: isReturned == freezed
+          ? _value.isReturned
+          : isReturned // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -323,7 +338,8 @@ class _$_TicketDto extends _TicketDto {
       this.vipPaymentId,
       this.isExpired = false,
       this.isEventCanceled = false,
-      this.isReturnable = false})
+      this.isReturnable = false,
+      this.isReturned = false})
       : super._();
 
   factory _$_TicketDto.fromJson(Map<String, dynamic> json) =>
@@ -362,10 +378,13 @@ class _$_TicketDto extends _TicketDto {
   @JsonKey()
   @override
   final bool isReturnable;
+  @JsonKey()
+  @override
+  final bool isReturned;
 
   @override
   String toString() {
-    return 'TicketDto(id: $id, eventId: $eventId, clubId: $clubId, clubName: $clubName, eventName: $eventName, eventDateTime: $eventDateTime, price: $price, currency: $currency, isVip: $isVip, ticketPaymentId: $ticketPaymentId, vipPaymentId: $vipPaymentId, isExpired: $isExpired, isEventCanceled: $isEventCanceled, isReturnable: $isReturnable)';
+    return 'TicketDto(id: $id, eventId: $eventId, clubId: $clubId, clubName: $clubName, eventName: $eventName, eventDateTime: $eventDateTime, price: $price, currency: $currency, isVip: $isVip, ticketPaymentId: $ticketPaymentId, vipPaymentId: $vipPaymentId, isExpired: $isExpired, isEventCanceled: $isEventCanceled, isReturnable: $isReturnable, isReturned: $isReturned)';
   }
 
   @override
@@ -391,7 +410,9 @@ class _$_TicketDto extends _TicketDto {
             const DeepCollectionEquality()
                 .equals(other.isEventCanceled, isEventCanceled) &&
             const DeepCollectionEquality()
-                .equals(other.isReturnable, isReturnable));
+                .equals(other.isReturnable, isReturnable) &&
+            const DeepCollectionEquality()
+                .equals(other.isReturned, isReturned));
   }
 
   @override
@@ -410,7 +431,8 @@ class _$_TicketDto extends _TicketDto {
       const DeepCollectionEquality().hash(vipPaymentId),
       const DeepCollectionEquality().hash(isExpired),
       const DeepCollectionEquality().hash(isEventCanceled),
-      const DeepCollectionEquality().hash(isReturnable));
+      const DeepCollectionEquality().hash(isReturnable),
+      const DeepCollectionEquality().hash(isReturned));
 
   @JsonKey(ignore: true)
   @override
@@ -438,7 +460,8 @@ abstract class _TicketDto extends TicketDto {
       String? vipPaymentId,
       bool isExpired,
       bool isEventCanceled,
-      bool isReturnable}) = _$_TicketDto;
+      bool isReturnable,
+      bool isReturned}) = _$_TicketDto;
   const _TicketDto._() : super._();
 
   factory _TicketDto.fromJson(Map<String, dynamic> json) =
@@ -474,6 +497,8 @@ abstract class _TicketDto extends TicketDto {
   bool get isEventCanceled;
   @override
   bool get isReturnable;
+  @override
+  bool get isReturned;
   @override
   @JsonKey(ignore: true)
   _$TicketDtoCopyWith<_TicketDto> get copyWith =>
