@@ -46,6 +46,14 @@ extension FirestoreX on FirebaseFirestore {
     return partnerDoc;
   }
 
+  DocumentReference getCurrentPartnerClubDocRef(FirebaseAuth auth) {
+    final firebaseUser = auth.tryGetFirebaseUser();
+
+    final clubDoc = clubCollection.doc(firebaseUser.uid);
+
+    return clubDoc;
+  }
+
   DocumentReference getCurrentSelectorDocRef(FirebaseAuth auth) {
     final firebaseUser = auth.tryGetFirebaseUser();
 
