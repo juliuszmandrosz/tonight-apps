@@ -41,7 +41,9 @@ class FirebasePaymentFacade implements PartnerPaymentFacade {
             );
             return right(unit);
           } on StripeException catch (e) {
-            _logger.e("Stripe exception during payment EXCEPTION: $e");
+            _logger.e(
+              "Stripe exception during proceeding to pay for event cancelation EXCEPTION: $e",
+            );
             if (e.error.code == FailureCode.Canceled) {
               await _paymentCloudFunctionsFacade
                   .cancelEventCancelation(response.paymentIntentId);
@@ -52,11 +54,67 @@ class FirebasePaymentFacade implements PartnerPaymentFacade {
         },
       );
     } on FirebaseFunctionsException catch (e) {
-      _logger.e("Firebase Functions Exception during payment EXCEPTION: $e");
+      _logger.e(
+        "Firebase Functions Exception during proceeding to pay for event cancelation EXCEPTION: $e",
+      );
       return left(paymentCloudFunctionsErrors[e.details] ??
           const PartnerPaymentFailure.unexpected());
     } on FirebaseException catch (e) {
-      _logger.e("Firebase Exception during payment EXCEPTION: $e");
+      _logger.e(
+        "Firebase Exception during proceeding to pay for event cancelation EXCEPTION: $e",
+      );
+      return left(const PartnerPaymentFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<PartnerPaymentFailure, Unit>> proceedToPayForEventPostpone({
+    required String eventId,
+    required String currency,
+    required DateTime newEventStartDateTime,
+    required DateTime newEventEndDateTime,
+  }) async {
+    try {
+      final result =
+          await _paymentCloudFunctionsFacade.createPostponeEventPaymentSheet(
+        eventId: eventId,
+        newEventStartDateTime: Timestamp.fromDate(newEventStartDateTime),
+        newEventEndDateTime: Timestamp.fromDate(newEventEndDateTime),
+      );
+
+      return result.fold(
+        () => right(unit),
+        (response) async {
+          try {
+            await _presentPaymentSheet(
+              currency: currency,
+              customerId: response.customerId,
+              paymentIntentSecret: response.paymentIntentSecret,
+              ephemeralKeySecret: response.ephemeralKeySecret,
+            );
+            return right(unit);
+          } on StripeException catch (e) {
+            _logger.e(
+                "Stripe exception during proceeding to pay for event postpone EXCEPTION: $e");
+            if (e.error.code == FailureCode.Canceled) {
+              await _paymentCloudFunctionsFacade
+                  .cancelEventPostpone(response.paymentIntentId);
+              return left(const PartnerPaymentFailure.canceledByPartner());
+            }
+            return left(const PartnerPaymentFailure.stripeError());
+          }
+        },
+      );
+    } on FirebaseFunctionsException catch (e) {
+      _logger.e(
+        "Firebase Functions Exception during proceeding to pay for event postpone EXCEPTION: $e",
+      );
+      return left(paymentCloudFunctionsErrors[e.details] ??
+          const PartnerPaymentFailure.unexpected());
+    } on FirebaseException catch (e) {
+      _logger.e(
+        "Firebase Exception during proceeding to pay for event postpone EXCEPTION: $e",
+      );
       return left(const PartnerPaymentFailure.unexpected());
     }
   }

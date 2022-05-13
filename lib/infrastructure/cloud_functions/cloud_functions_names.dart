@@ -3,3 +3,7 @@ const createEventCancelationPaymentSheetFnName =
 
 const cancelEventCancelationFnName =
     'cancelEventCancelationOnClosingPaymentSheet';
+
+const createPostponeEventPaymentSheetFnName = 'createPostponeEventPaymentSheet';
+
+const cancelEventPostponeFnName = 'cancelEventPostponeOnClosingPaymentSheet';

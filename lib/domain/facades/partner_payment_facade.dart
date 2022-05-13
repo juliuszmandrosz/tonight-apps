@@ -6,4 +6,11 @@ abstract class PartnerPaymentFacade {
     required String eventId,
     required String currency,
   });
+
+  Future<Either<PartnerPaymentFailure, Unit>> proceedToPayForEventPostpone({
+    required String eventId,
+    required String currency,
+    required DateTime newEventStartDateTime,
+    required DateTime newEventEndDateTime,
+  });
 }
