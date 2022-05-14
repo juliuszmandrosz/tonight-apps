@@ -6,6 +6,7 @@ class UserProfile extends Equatable {
   final String email;
   final List<String> favoriteClubIds;
   final List<String> favoriteEventIds;
+  final Map<String, int> attendance;
   final int ticketCount;
 
   const UserProfile({
@@ -14,6 +15,7 @@ class UserProfile extends Equatable {
     required this.email,
     required this.favoriteClubIds,
     required this.favoriteEventIds,
+    required this.attendance,
     required this.ticketCount,
   });
 
@@ -24,6 +26,7 @@ class UserProfile extends Equatable {
         email,
         favoriteClubIds,
         favoriteEventIds,
+        attendance,
         ticketCount,
       ];
 }

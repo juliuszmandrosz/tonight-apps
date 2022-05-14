@@ -18,6 +18,10 @@ _$_UserProfileDto _$$_UserProfileDtoFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList() ??
           const [],
+      attendance: (json['attendance'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, e as int),
+          ) ??
+          const {},
       ticketCount: json['ticketCount'] as int? ?? 0,
     );
 
@@ -27,5 +31,6 @@ Map<String, dynamic> _$$_UserProfileDtoToJson(_$_UserProfileDto instance) =>
       'email': instance.email,
       'favoriteClubIds': instance.favoriteClubIds,
       'favoriteEventIds': instance.favoriteEventIds,
+      'attendance': instance.attendance,
       'ticketCount': instance.ticketCount,
     };

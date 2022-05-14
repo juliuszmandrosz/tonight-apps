@@ -28,6 +28,7 @@ class _$UserProfileDtoTearOff {
       required String email,
       List<String> favoriteClubIds = const [],
       List<String> favoriteEventIds = const [],
+      Map<String, int> attendance = const {},
       int ticketCount = 0}) {
     return _UserProfileDto(
       id: id,
@@ -35,6 +36,7 @@ class _$UserProfileDtoTearOff {
       email: email,
       favoriteClubIds: favoriteClubIds,
       favoriteEventIds: favoriteEventIds,
+      attendance: attendance,
       ticketCount: ticketCount,
     );
   }
@@ -55,6 +57,7 @@ mixin _$UserProfileDto {
   String get email => throw _privateConstructorUsedError;
   List<String> get favoriteClubIds => throw _privateConstructorUsedError;
   List<String> get favoriteEventIds => throw _privateConstructorUsedError;
+  Map<String, int> get attendance => throw _privateConstructorUsedError;
   int get ticketCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -74,6 +77,7 @@ abstract class $UserProfileDtoCopyWith<$Res> {
       String email,
       List<String> favoriteClubIds,
       List<String> favoriteEventIds,
+      Map<String, int> attendance,
       int ticketCount});
 }
 
@@ -93,6 +97,7 @@ class _$UserProfileDtoCopyWithImpl<$Res>
     Object? email = freezed,
     Object? favoriteClubIds = freezed,
     Object? favoriteEventIds = freezed,
+    Object? attendance = freezed,
     Object? ticketCount = freezed,
   }) {
     return _then(_value.copyWith(
@@ -116,6 +121,10 @@ class _$UserProfileDtoCopyWithImpl<$Res>
           ? _value.favoriteEventIds
           : favoriteEventIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      attendance: attendance == freezed
+          ? _value.attendance
+          : attendance // ignore: cast_nullable_to_non_nullable
+              as Map<String, int>,
       ticketCount: ticketCount == freezed
           ? _value.ticketCount
           : ticketCount // ignore: cast_nullable_to_non_nullable
@@ -137,6 +146,7 @@ abstract class _$UserProfileDtoCopyWith<$Res>
       String email,
       List<String> favoriteClubIds,
       List<String> favoriteEventIds,
+      Map<String, int> attendance,
       int ticketCount});
 }
 
@@ -158,6 +168,7 @@ class __$UserProfileDtoCopyWithImpl<$Res>
     Object? email = freezed,
     Object? favoriteClubIds = freezed,
     Object? favoriteEventIds = freezed,
+    Object? attendance = freezed,
     Object? ticketCount = freezed,
   }) {
     return _then(_UserProfileDto(
@@ -181,6 +192,10 @@ class __$UserProfileDtoCopyWithImpl<$Res>
           ? _value.favoriteEventIds
           : favoriteEventIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      attendance: attendance == freezed
+          ? _value.attendance
+          : attendance // ignore: cast_nullable_to_non_nullable
+              as Map<String, int>,
       ticketCount: ticketCount == freezed
           ? _value.ticketCount
           : ticketCount // ignore: cast_nullable_to_non_nullable
@@ -199,6 +214,7 @@ class _$_UserProfileDto extends _UserProfileDto {
       required this.email,
       this.favoriteClubIds = const [],
       this.favoriteEventIds = const [],
+      this.attendance = const {},
       this.ticketCount = 0})
       : super._();
 
@@ -220,11 +236,14 @@ class _$_UserProfileDto extends _UserProfileDto {
   final List<String> favoriteEventIds;
   @JsonKey()
   @override
+  final Map<String, int> attendance;
+  @JsonKey()
+  @override
   final int ticketCount;
 
   @override
   String toString() {
-    return 'UserProfileDto(id: $id, username: $username, email: $email, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, ticketCount: $ticketCount)';
+    return 'UserProfileDto(id: $id, username: $username, email: $email, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, ticketCount: $ticketCount)';
   }
 
   @override
@@ -240,6 +259,8 @@ class _$_UserProfileDto extends _UserProfileDto {
             const DeepCollectionEquality()
                 .equals(other.favoriteEventIds, favoriteEventIds) &&
             const DeepCollectionEquality()
+                .equals(other.attendance, attendance) &&
+            const DeepCollectionEquality()
                 .equals(other.ticketCount, ticketCount));
   }
 
@@ -251,6 +272,7 @@ class _$_UserProfileDto extends _UserProfileDto {
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(favoriteClubIds),
       const DeepCollectionEquality().hash(favoriteEventIds),
+      const DeepCollectionEquality().hash(attendance),
       const DeepCollectionEquality().hash(ticketCount));
 
   @JsonKey(ignore: true)
@@ -271,6 +293,7 @@ abstract class _UserProfileDto extends UserProfileDto {
       required String email,
       List<String> favoriteClubIds,
       List<String> favoriteEventIds,
+      Map<String, int> attendance,
       int ticketCount}) = _$_UserProfileDto;
   const _UserProfileDto._() : super._();
 
@@ -288,6 +311,8 @@ abstract class _UserProfileDto extends UserProfileDto {
   List<String> get favoriteClubIds;
   @override
   List<String> get favoriteEventIds;
+  @override
+  Map<String, int> get attendance;
   @override
   int get ticketCount;
   @override

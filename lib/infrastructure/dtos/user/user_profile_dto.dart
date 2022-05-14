@@ -17,6 +17,7 @@ class UserProfileDto with _$UserProfileDto {
     required String email,
     @Default([]) List<String> favoriteClubIds,
     @Default([]) List<String> favoriteEventIds,
+    @Default({}) Map<String, int> attendance,
     @Default(0) int ticketCount,
   }) = _UserProfileDto;
 
@@ -27,6 +28,7 @@ class UserProfileDto with _$UserProfileDto {
       email: user.email,
       favoriteClubIds: user.favoriteClubIds,
       favoriteEventIds: user.favoriteEventIds,
+      attendance: user.attendance,
       ticketCount: user.ticketCount,
     );
   }
@@ -46,6 +48,7 @@ class UserProfileDto with _$UserProfileDto {
       email: email,
       favoriteClubIds: favoriteClubIds,
       favoriteEventIds: favoriteEventIds,
+      attendance: attendance,
       ticketCount: ticketCount,
     );
   }
