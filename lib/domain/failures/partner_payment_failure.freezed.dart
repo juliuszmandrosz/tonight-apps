@@ -33,6 +33,14 @@ class _$PartnerPaymentFailureTearOff {
   _CancelTimeExpired cancelTimeExpired() {
     return const _CancelTimeExpired();
   }
+
+  _PostponeTimeExpired postponeTimeExpired() {
+    return const _PostponeTimeExpired();
+  }
+
+  _PostponeTimeTooShort postponeTimeTooShort() {
+    return const _PostponeTimeTooShort();
+  }
 }
 
 /// @nodoc
@@ -46,6 +54,8 @@ mixin _$PartnerPaymentFailure {
     required TResult Function() stripeError,
     required TResult Function() canceledByPartner,
     required TResult Function() cancelTimeExpired,
+    required TResult Function() postponeTimeExpired,
+    required TResult Function() postponeTimeTooShort,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +64,8 @@ mixin _$PartnerPaymentFailure {
     TResult Function()? stripeError,
     TResult Function()? canceledByPartner,
     TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +74,8 @@ mixin _$PartnerPaymentFailure {
     TResult Function()? stripeError,
     TResult Function()? canceledByPartner,
     TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -71,6 +85,8 @@ mixin _$PartnerPaymentFailure {
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_CanceledByPartner value) canceledByPartner,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
+    required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
+    required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,6 +95,8 @@ mixin _$PartnerPaymentFailure {
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -87,6 +105,8 @@ mixin _$PartnerPaymentFailure {
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -154,6 +174,8 @@ class _$_PaymentFailure implements _PaymentFailure {
     required TResult Function() stripeError,
     required TResult Function() canceledByPartner,
     required TResult Function() cancelTimeExpired,
+    required TResult Function() postponeTimeExpired,
+    required TResult Function() postponeTimeTooShort,
   }) {
     return unexpected();
   }
@@ -165,6 +187,8 @@ class _$_PaymentFailure implements _PaymentFailure {
     TResult Function()? stripeError,
     TResult Function()? canceledByPartner,
     TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
   }) {
     return unexpected?.call();
   }
@@ -176,6 +200,8 @@ class _$_PaymentFailure implements _PaymentFailure {
     TResult Function()? stripeError,
     TResult Function()? canceledByPartner,
     TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -191,6 +217,8 @@ class _$_PaymentFailure implements _PaymentFailure {
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_CanceledByPartner value) canceledByPartner,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
+    required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
+    required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
   }) {
     return unexpected(this);
   }
@@ -202,6 +230,8 @@ class _$_PaymentFailure implements _PaymentFailure {
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
   }) {
     return unexpected?.call(this);
   }
@@ -213,6 +243,8 @@ class _$_PaymentFailure implements _PaymentFailure {
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -271,6 +303,8 @@ class _$_StripeError implements _StripeError {
     required TResult Function() stripeError,
     required TResult Function() canceledByPartner,
     required TResult Function() cancelTimeExpired,
+    required TResult Function() postponeTimeExpired,
+    required TResult Function() postponeTimeTooShort,
   }) {
     return stripeError();
   }
@@ -282,6 +316,8 @@ class _$_StripeError implements _StripeError {
     TResult Function()? stripeError,
     TResult Function()? canceledByPartner,
     TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
   }) {
     return stripeError?.call();
   }
@@ -293,6 +329,8 @@ class _$_StripeError implements _StripeError {
     TResult Function()? stripeError,
     TResult Function()? canceledByPartner,
     TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
     required TResult orElse(),
   }) {
     if (stripeError != null) {
@@ -308,6 +346,8 @@ class _$_StripeError implements _StripeError {
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_CanceledByPartner value) canceledByPartner,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
+    required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
+    required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
   }) {
     return stripeError(this);
   }
@@ -319,6 +359,8 @@ class _$_StripeError implements _StripeError {
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
   }) {
     return stripeError?.call(this);
   }
@@ -330,6 +372,8 @@ class _$_StripeError implements _StripeError {
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
     required TResult orElse(),
   }) {
     if (stripeError != null) {
@@ -388,6 +432,8 @@ class _$_CanceledByPartner implements _CanceledByPartner {
     required TResult Function() stripeError,
     required TResult Function() canceledByPartner,
     required TResult Function() cancelTimeExpired,
+    required TResult Function() postponeTimeExpired,
+    required TResult Function() postponeTimeTooShort,
   }) {
     return canceledByPartner();
   }
@@ -399,6 +445,8 @@ class _$_CanceledByPartner implements _CanceledByPartner {
     TResult Function()? stripeError,
     TResult Function()? canceledByPartner,
     TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
   }) {
     return canceledByPartner?.call();
   }
@@ -410,6 +458,8 @@ class _$_CanceledByPartner implements _CanceledByPartner {
     TResult Function()? stripeError,
     TResult Function()? canceledByPartner,
     TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
     required TResult orElse(),
   }) {
     if (canceledByPartner != null) {
@@ -425,6 +475,8 @@ class _$_CanceledByPartner implements _CanceledByPartner {
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_CanceledByPartner value) canceledByPartner,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
+    required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
+    required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
   }) {
     return canceledByPartner(this);
   }
@@ -436,6 +488,8 @@ class _$_CanceledByPartner implements _CanceledByPartner {
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
   }) {
     return canceledByPartner?.call(this);
   }
@@ -447,6 +501,8 @@ class _$_CanceledByPartner implements _CanceledByPartner {
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
     required TResult orElse(),
   }) {
     if (canceledByPartner != null) {
@@ -505,6 +561,8 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
     required TResult Function() stripeError,
     required TResult Function() canceledByPartner,
     required TResult Function() cancelTimeExpired,
+    required TResult Function() postponeTimeExpired,
+    required TResult Function() postponeTimeTooShort,
   }) {
     return cancelTimeExpired();
   }
@@ -516,6 +574,8 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
     TResult Function()? stripeError,
     TResult Function()? canceledByPartner,
     TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
   }) {
     return cancelTimeExpired?.call();
   }
@@ -527,6 +587,8 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
     TResult Function()? stripeError,
     TResult Function()? canceledByPartner,
     TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
     required TResult orElse(),
   }) {
     if (cancelTimeExpired != null) {
@@ -542,6 +604,8 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_CanceledByPartner value) canceledByPartner,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
+    required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
+    required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
   }) {
     return cancelTimeExpired(this);
   }
@@ -553,6 +617,8 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
   }) {
     return cancelTimeExpired?.call(this);
   }
@@ -564,6 +630,8 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
     required TResult orElse(),
   }) {
     if (cancelTimeExpired != null) {
@@ -575,4 +643,262 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
 
 abstract class _CancelTimeExpired implements PartnerPaymentFailure {
   const factory _CancelTimeExpired() = _$_CancelTimeExpired;
+}
+
+/// @nodoc
+abstract class _$PostponeTimeExpiredCopyWith<$Res> {
+  factory _$PostponeTimeExpiredCopyWith(_PostponeTimeExpired value,
+          $Res Function(_PostponeTimeExpired) then) =
+      __$PostponeTimeExpiredCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$PostponeTimeExpiredCopyWithImpl<$Res>
+    extends _$PartnerPaymentFailureCopyWithImpl<$Res>
+    implements _$PostponeTimeExpiredCopyWith<$Res> {
+  __$PostponeTimeExpiredCopyWithImpl(
+      _PostponeTimeExpired _value, $Res Function(_PostponeTimeExpired) _then)
+      : super(_value, (v) => _then(v as _PostponeTimeExpired));
+
+  @override
+  _PostponeTimeExpired get _value => super._value as _PostponeTimeExpired;
+}
+
+/// @nodoc
+
+class _$_PostponeTimeExpired implements _PostponeTimeExpired {
+  const _$_PostponeTimeExpired();
+
+  @override
+  String toString() {
+    return 'PartnerPaymentFailure.postponeTimeExpired()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _PostponeTimeExpired);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() stripeError,
+    required TResult Function() canceledByPartner,
+    required TResult Function() cancelTimeExpired,
+    required TResult Function() postponeTimeExpired,
+    required TResult Function() postponeTimeTooShort,
+  }) {
+    return postponeTimeExpired();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? stripeError,
+    TResult Function()? canceledByPartner,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
+  }) {
+    return postponeTimeExpired?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? stripeError,
+    TResult Function()? canceledByPartner,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
+    required TResult orElse(),
+  }) {
+    if (postponeTimeExpired != null) {
+      return postponeTimeExpired();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentFailure value) unexpected,
+    required TResult Function(_StripeError value) stripeError,
+    required TResult Function(_CanceledByPartner value) canceledByPartner,
+    required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
+    required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
+    required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
+  }) {
+    return postponeTimeExpired(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_StripeError value)? stripeError,
+    TResult Function(_CanceledByPartner value)? canceledByPartner,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+  }) {
+    return postponeTimeExpired?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_StripeError value)? stripeError,
+    TResult Function(_CanceledByPartner value)? canceledByPartner,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    required TResult orElse(),
+  }) {
+    if (postponeTimeExpired != null) {
+      return postponeTimeExpired(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PostponeTimeExpired implements PartnerPaymentFailure {
+  const factory _PostponeTimeExpired() = _$_PostponeTimeExpired;
+}
+
+/// @nodoc
+abstract class _$PostponeTimeTooShortCopyWith<$Res> {
+  factory _$PostponeTimeTooShortCopyWith(_PostponeTimeTooShort value,
+          $Res Function(_PostponeTimeTooShort) then) =
+      __$PostponeTimeTooShortCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$PostponeTimeTooShortCopyWithImpl<$Res>
+    extends _$PartnerPaymentFailureCopyWithImpl<$Res>
+    implements _$PostponeTimeTooShortCopyWith<$Res> {
+  __$PostponeTimeTooShortCopyWithImpl(
+      _PostponeTimeTooShort _value, $Res Function(_PostponeTimeTooShort) _then)
+      : super(_value, (v) => _then(v as _PostponeTimeTooShort));
+
+  @override
+  _PostponeTimeTooShort get _value => super._value as _PostponeTimeTooShort;
+}
+
+/// @nodoc
+
+class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
+  const _$_PostponeTimeTooShort();
+
+  @override
+  String toString() {
+    return 'PartnerPaymentFailure.postponeTimeTooShort()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _PostponeTimeTooShort);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() stripeError,
+    required TResult Function() canceledByPartner,
+    required TResult Function() cancelTimeExpired,
+    required TResult Function() postponeTimeExpired,
+    required TResult Function() postponeTimeTooShort,
+  }) {
+    return postponeTimeTooShort();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? stripeError,
+    TResult Function()? canceledByPartner,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
+  }) {
+    return postponeTimeTooShort?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? stripeError,
+    TResult Function()? canceledByPartner,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
+    required TResult orElse(),
+  }) {
+    if (postponeTimeTooShort != null) {
+      return postponeTimeTooShort();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PaymentFailure value) unexpected,
+    required TResult Function(_StripeError value) stripeError,
+    required TResult Function(_CanceledByPartner value) canceledByPartner,
+    required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
+    required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
+    required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
+  }) {
+    return postponeTimeTooShort(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_StripeError value)? stripeError,
+    TResult Function(_CanceledByPartner value)? canceledByPartner,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+  }) {
+    return postponeTimeTooShort?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_StripeError value)? stripeError,
+    TResult Function(_CanceledByPartner value)? canceledByPartner,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    required TResult orElse(),
+  }) {
+    if (postponeTimeTooShort != null) {
+      return postponeTimeTooShort(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PostponeTimeTooShort implements PartnerPaymentFailure {
+  const factory _PostponeTimeTooShort() = _$_PostponeTimeTooShort;
 }

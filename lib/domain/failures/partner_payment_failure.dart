@@ -11,4 +11,8 @@ class PartnerPaymentFailure with _$PartnerPaymentFailure {
   const factory PartnerPaymentFailure.canceledByPartner() = _CanceledByPartner;
 
   const factory PartnerPaymentFailure.cancelTimeExpired() = _CancelTimeExpired;
+
+  const factory PartnerPaymentFailure.postponeTimeExpired() = _PostponeTimeExpired;
+
+  const factory PartnerPaymentFailure.postponeTimeTooShort() = _PostponeTimeTooShort;
 }
