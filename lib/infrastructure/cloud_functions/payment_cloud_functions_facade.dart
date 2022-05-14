@@ -52,8 +52,8 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
 
     final result = await createPostponeEventPaymentSheetFn.call({
       'eventId': eventId,
-      'newEventStartDateTime': newEventStartDateTime,
-      'newEventEndDateTime': newEventEndDateTime,
+      'newEventStartTimestamp': newEventStartDateTime.millisecondsSinceEpoch,
+      'newEventEndTimestamp': newEventEndDateTime.millisecondsSinceEpoch,
     });
 
     return result.data != null
