@@ -7,7 +7,6 @@ import 'package:raver/domain/payments/payment_failure.dart';
 import 'package:raver/domain/payments/promotion_code_entity.dart';
 import 'package:raver/domain/payments/ticket_payment_entity.dart';
 import 'package:raver/domain/payments/vip_payment_entity.dart';
-import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_tickets/raver_tickets.dart';

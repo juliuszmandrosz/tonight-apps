@@ -12,7 +12,6 @@ import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_is_vi
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_pay_button.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_promotion_code.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_ticket_card.dart';
-import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_tickets/raver_tickets.dart';

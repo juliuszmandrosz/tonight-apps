@@ -20,7 +20,7 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
@@ -33,7 +33,7 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -51,27 +51,27 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
             ? Container()
             : BlocBuilder<UserLocationCubit, UserLocationState>(
                 builder: (context, locationState) {
-            return Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    RaverHeadline(text: S().maxDistance),
-                    if (locationState.isPermissionGranted)
-                      RaverHeadline(
-                        text:
-                        '${filtersState.filters.maxDistanceFilter.maxDistance}km',
+                  return Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          RaverHeadline(text: S().maxDistance),
+                          if (locationState.isPermissionGranted)
+                            RaverHeadline(
+                              text:
+                                  '${filtersState.filters.maxDistanceFilter.maxDistance}km',
+                            ),
+                        ],
                       ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    locationState.isPermissionGranted
-                        ? Expanded(
-                      child: Slider(
-                        value: filtersState
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          locationState.isPermissionGranted
+                              ? Expanded(
+                                  child: Slider(
+                                    value: filtersState
                                         .filters.maxDistanceFilter.maxDistance
                                         .toDouble(),
                                     label:
@@ -85,26 +85,26 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
                                         .read<EventFiltersCubit>()
                                         .changeMaxDistance(value.round()),
                                   ),
-                    )
-                        : locationState.isLoading
-                        ? const Center(
-                      child: CircularProgressIndicator(),
-                    )
-                        : ElevatedButton(
-                      onPressed: () => context
-                          .read<UserLocationCubit>()
-                          .openAppSettings(),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(S().enableLocation),
+                                )
+                              : locationState.isLoading
+                                  ? const Center(
+                                      child: CircularProgressIndicator(),
+                                    )
+                                  : ElevatedButton(
+                                      onPressed: () => context
+                                          .read<UserLocationCubit>()
+                                          .openAppSettings(),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Text(S().enableLocation),
+                                      ),
+                                    )
+                        ],
                       ),
-                    )
-                  ],
-                ),
-              ],
-            );
-          },
-        );
+                    ],
+                  );
+                },
+              );
       },
     );
   }

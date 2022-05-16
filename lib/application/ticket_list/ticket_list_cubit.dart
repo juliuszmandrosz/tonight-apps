@@ -9,7 +9,7 @@ part 'ticket_list_cubit.freezed.dart';
 part 'ticket_list_state.dart';
 
 class TicketListCubit extends Cubit<TicketListState> {
-  final TicketFacade _ticketFacade;
+  final UserTicketFacade _ticketFacade;
 
   TicketListCubit(this._ticketFacade) : super(TicketListState.initial());
 

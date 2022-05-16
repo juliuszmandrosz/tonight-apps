@@ -270,7 +270,9 @@ void _registerFacades() {
   );
 
   getIt.registerLazySingleton<AuthCloudFunctionsFacade>(
-    () => AuthCloudFunctionsFacadeImpl(),
+    () => AuthCloudFunctionsFacadeImpl(
+      getIt(),
+    ),
   );
 
   //Club
@@ -283,7 +285,7 @@ void _registerFacades() {
     ),
   );
 
-  getIt.registerLazySingleton<TicketFacade>(
+  getIt.registerLazySingleton<UserTicketFacade>(
     () => FirebaseTicketFacade(
       firestore: getIt(),
       logger: getIt(),

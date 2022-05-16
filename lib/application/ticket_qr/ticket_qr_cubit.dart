@@ -11,11 +11,11 @@ part 'ticket_qr_cubit.freezed.dart';
 part 'ticket_qr_state.dart';
 
 class TicketQrCubit extends Cubit<TicketQrState> {
-  final TicketFacade _ticketFacade;
+  final UserTicketFacade _ticketFacade;
   final TicketListCubit _ticketListCubit;
 
   TicketQrCubit({
-    required TicketFacade ticketFacade,
+    required UserTicketFacade ticketFacade,
     required TicketListCubit ticketListCubit,
   })  : _ticketFacade = ticketFacade,
         _ticketListCubit = ticketListCubit,

@@ -12,7 +12,7 @@ part 'club_details_cubit.freezed.dart';
 class ClubDetailsCubit extends Cubit<ClubDetailsState> {
   final ClubFacade _clubFacade;
 
-  ClubDetailsCubit(this._clubFacade) : super(ClubDetailsState.initial());
+  ClubDetailsCubit(this._clubFacade) : super(const ClubDetailsState.initial());
 
   Future<void> getClubById(String clubId) async {
     emit(const ClubDetailsState.loadInProgress());
