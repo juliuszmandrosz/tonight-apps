@@ -114,6 +114,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm": MessageLookupByLibrary.simpleMessage("Zatwierdź"),
         "confirmDeleteMessage": MessageLookupByLibrary.simpleMessage(
             "Czy na pewno chcesz usunąć ten element?"),
+        "confirmEventCancelation": MessageLookupByLibrary.simpleMessage(
+            "Czy na pewno chcesz anulować wydarzenie? Możesz ponieść opłaty związane z przetwarzaniem dotychczasowych płatności"),
+        "confirmEventPostpone": MessageLookupByLibrary.simpleMessage(
+            "Czy na pewno chcesz przełożyć wydarzenie? Możesz ponieść opłaty związane z przetwarzaniem dotychczasowych płatności"),
         "confirmLeavingPage": MessageLookupByLibrary.simpleMessage(
             "Czy na pewno chcesz opuścić bieżącą stronę? Zmiany nie zostaną zapisane"),
         "confirmPassword":
@@ -258,6 +262,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "eventName": MessageLookupByLibrary.simpleMessage("Nazwa wydarzenia"),
         "eventOverview":
             MessageLookupByLibrary.simpleMessage("Przegląd wydarzenia"),
+        "eventPostponedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Wydarzenie przełożono pomyślnie"),
         "eventRevenue":
             MessageLookupByLibrary.simpleMessage("Przychód z imprezy"),
         "eventTimeTooShort": MessageLookupByLibrary.simpleMessage(
@@ -384,6 +390,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Cena biletów w puli powinna być niższa niż cena następnej puli"),
         "poolPriceLowerThanPreviousPools": MessageLookupByLibrary.simpleMessage(
             "Cena biletów w puli powinna być wyższa niż najwyższa cena z poprzednich puli"),
+        "postpone": MessageLookupByLibrary.simpleMessage("Przełóż"),
+        "postponeEvent":
+            MessageLookupByLibrary.simpleMessage("Przełóż wydarzenie"),
+        "postponeTimeExpired": MessageLookupByLibrary.simpleMessage(
+            "Czas na przełożenie wydarzenia upłynął"),
+        "postponeTimeTooShort": MessageLookupByLibrary.simpleMessage(
+            "Minimalny czas o który można przełożyć wydarzenie wynosi 24 godziny"),
         "price": MessageLookupByLibrary.simpleMessage("Cena"),
         "priceChangedAfterTicketWasSold": MessageLookupByLibrary.simpleMessage(
             "Nie można zmienić ceny po rozpoczęciu sprzedaży biletów"),
@@ -462,6 +475,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "startDate": MessageLookupByLibrary.simpleMessage("Data rozpoczęcia"),
         "startDateBeforeNow": MessageLookupByLibrary.simpleMessage(
             "Data rozpoczęcia nie może być przed aktualną datą"),
+        "startDateTooLate": MessageLookupByLibrary.simpleMessage(
+            "Maksymalny czas daty rozpoczęcia wynosi 150 dni od dzisiaj"),
         "startScanning":
             MessageLookupByLibrary.simpleMessage("Rozpocznij skanowanie"),
         "submit": MessageLookupByLibrary.simpleMessage("Zatwierdź"),

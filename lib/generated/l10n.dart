@@ -476,6 +476,26 @@ class S {
     );
   }
 
+  /// `Are you sure you want to cancel the event? You may incur fees related to the processing of existing payments`
+  String get confirmEventCancelation {
+    return Intl.message(
+      'Are you sure you want to cancel the event? You may incur fees related to the processing of existing payments',
+      name: 'confirmEventCancelation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to postpone the event? You may incur fees related to the processing of existing payments`
+  String get confirmEventPostpone {
+    return Intl.message(
+      'Are you sure you want to postpone the event? You may incur fees related to the processing of existing payments',
+      name: 'confirmEventPostpone',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure you want to exit the current page? Changes will not be saved`
   String get confirmLeavingPage {
     return Intl.message(
@@ -1299,6 +1319,16 @@ class S {
     );
   }
 
+  /// `Event postponed successfully`
+  String get eventPostponedSuccessfully {
+    return Intl.message(
+      'Event postponed successfully',
+      name: 'eventPostponedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Event revenue`
   String get eventRevenue {
     return Intl.message(
@@ -2078,6 +2108,46 @@ class S {
     );
   }
 
+  /// `Postpone`
+  String get postpone {
+    return Intl.message(
+      'Postpone',
+      name: 'postpone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Postpone event`
+  String get postponeEvent {
+    return Intl.message(
+      'Postpone event',
+      name: 'postponeEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time to postpone the event has expired`
+  String get postponeTimeExpired {
+    return Intl.message(
+      'Time to postpone the event has expired',
+      name: 'postponeTimeExpired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The minimum time by which an event can be postponed is 24 hours`
+  String get postponeTimeTooShort {
+    return Intl.message(
+      'The minimum time by which an event can be postponed is 24 hours',
+      name: 'postponeTimeTooShort',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Price`
   String get price {
     return Intl.message(
@@ -2589,6 +2659,16 @@ class S {
     return Intl.message(
       'The start date cannot be before the current date',
       name: 'startDateBeforeNow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The maximum start date time is 150 days from today`
+  String get startDateTooLate {
+    return Intl.message(
+      'The maximum start date time is 150 days from today',
+      name: 'startDateTooLate',
       desc: '',
       args: [],
     );

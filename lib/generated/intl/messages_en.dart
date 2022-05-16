@@ -113,6 +113,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirmDeleteMessage": MessageLookupByLibrary.simpleMessage(
             "Are you sure you wish to delete this item?"),
+        "confirmEventCancelation": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to cancel the event? You may incur fees related to the processing of existing payments"),
+        "confirmEventPostpone": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to postpone the event? You may incur fees related to the processing of existing payments"),
         "confirmLeavingPage": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to exit the current page? Changes will not be saved"),
         "confirmPassword":
@@ -258,6 +262,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "An event already exists in the given date range"),
         "eventName": MessageLookupByLibrary.simpleMessage("Event name"),
         "eventOverview": MessageLookupByLibrary.simpleMessage("Event overview"),
+        "eventPostponedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Event postponed successfully"),
         "eventRevenue": MessageLookupByLibrary.simpleMessage("Event revenue"),
         "eventTimeTooShort": MessageLookupByLibrary.simpleMessage(
             "The event should last at least one hour"),
@@ -380,6 +386,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "The price of tickets in the pool should be lower than price of the next pool"),
         "poolPriceLowerThanPreviousPools": MessageLookupByLibrary.simpleMessage(
             "The price of tickets in the pool should be higher than the highest price of the previous pools"),
+        "postpone": MessageLookupByLibrary.simpleMessage("Postpone"),
+        "postponeEvent": MessageLookupByLibrary.simpleMessage("Postpone event"),
+        "postponeTimeExpired": MessageLookupByLibrary.simpleMessage(
+            "Time to postpone the event has expired"),
+        "postponeTimeTooShort": MessageLookupByLibrary.simpleMessage(
+            "The minimum time by which an event can be postponed is 24 hours"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "priceChangedAfterTicketWasSold": MessageLookupByLibrary.simpleMessage(
             "The price cannot be changed after the sale of tickets has started"),
@@ -455,6 +467,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "startDate": MessageLookupByLibrary.simpleMessage("Start date"),
         "startDateBeforeNow": MessageLookupByLibrary.simpleMessage(
             "The start date cannot be before the current date"),
+        "startDateTooLate": MessageLookupByLibrary.simpleMessage(
+            "The maximum start date time is 150 days from today"),
         "startScanning": MessageLookupByLibrary.simpleMessage("Start scanning"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "summary": MessageLookupByLibrary.simpleMessage("Summary"),
