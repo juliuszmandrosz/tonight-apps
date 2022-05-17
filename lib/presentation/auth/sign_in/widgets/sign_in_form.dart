@@ -10,6 +10,7 @@ import 'package:raver/presentation/auth/sign_in/widgets/sign_in_email_input.dart
 import 'package:raver/presentation/auth/sign_in/widgets/sign_in_password_input.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class SignInForm extends StatelessWidget {
@@ -21,34 +22,30 @@ class SignInForm extends StatelessWidget {
       listener: (context, state) {
         state.errorMessage.fold(
           () {},
-          (error) {
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(
-                SnackBar(
-                  content: Text(authErrorMessages[error] ?? S().serverError),
-                ),
-              );
-          },
+          (error) => context.showSnackbarMessage(
+            authErrorMessages[error] ?? S().serverError,
+          ),
         );
 
         if (state.status.isSubmissionSuccess) {
           AutoRouter.of(context).replace(const NavigatorRouter());
         }
       },
-      child: Column(
-        children: const [
-          SizedBox(height: 10),
-          SignInEmailInput(),
-          SizedBox(height: 20),
-          SignInPasswordInput(),
-          SizedBox(height: 30),
-          SignInButton(),
-          SizedBox(height: 10),
-          ForgotPasswordButton(),
-          SizedBox(height: 10),
-          GoogleSignInButton(),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: const [
+            SizedBox(height: 10),
+            SignInEmailInput(),
+            SizedBox(height: 20),
+            SignInPasswordInput(),
+            SizedBox(height: 30),
+            SignInButton(),
+            SizedBox(height: 10),
+            ForgotPasswordButton(),
+            SizedBox(height: 10),
+            GoogleSignInButton(),
+          ],
+        ),
       ),
     );
   }

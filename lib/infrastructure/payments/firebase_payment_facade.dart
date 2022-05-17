@@ -171,8 +171,6 @@ class FirebasePaymentFacade implements PaymentFacade {
       paymentIntentClientSecret: paymentSheet.paymentIntentSecret,
       customerEphemeralKeySecret: paymentSheet.ephemeralKeySecret,
       testEnv: true,
-      googlePay: true,
-      applePay: true,
       merchantDisplayName: 'Raver',
     ));
 

@@ -5,6 +5,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_place/google_place.dart';
@@ -386,6 +387,8 @@ void _registerModules() {
   );
 
   getIt.registerLazySingleton(() => GeolocatorPlatform.instance);
+
+  getIt.registerLazySingleton(() => Stripe.instance);
 
   getIt.registerLazySingleton(() => Connectivity());
 

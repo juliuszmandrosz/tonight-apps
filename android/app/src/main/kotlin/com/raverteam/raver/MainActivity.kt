@@ -1,4 +1,4 @@
-package com.example.raver
+package com.raverteam.raver
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.android.FlutterFragmentActivity

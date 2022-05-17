@@ -7,6 +7,7 @@ import 'package:raver/presentation/auth/sign_up/widgets/sign_up_confirm_password
 import 'package:raver/presentation/auth/sign_up/widgets/sign_up_email_input.dart';
 import 'package:raver/presentation/auth/sign_up/widgets/sign_up_password_input.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class SignUpForm extends StatelessWidget {
@@ -18,25 +19,13 @@ class SignUpForm extends StatelessWidget {
       listener: (context, state) {
         state.errorMessage.fold(
           () {},
-          (error) {
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(
-                SnackBar(
-                  content: Text(authErrorMessages[error] ?? S().serverError),
-                ),
-              );
-          },
+          (error) => context.showSnackbarMessage(
+            authErrorMessages[error] ?? S().serverError,
+          ),
         );
 
         if (state.status.isSubmissionSuccess) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Text(S().verificationLinkSent),
-              ),
-            );
+          context.showSnackbarMessage(S().verificationLinkSent);
         }
       },
       child: Column(
@@ -47,7 +36,7 @@ class SignUpForm extends StatelessWidget {
           SignUpPasswordInput(),
           SizedBox(height: 20),
           SignUpConfirmPasswordInput(),
-          SizedBox(height: 30),
+          Spacer(),
           SignUpButton(),
         ],
       ),

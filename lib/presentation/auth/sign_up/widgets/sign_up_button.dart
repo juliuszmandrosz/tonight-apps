@@ -14,15 +14,18 @@ class SignUpButton extends StatelessWidget {
       builder: (context, state) {
         return state.status.isSubmissionInProgress
             ? const CircularProgressIndicator()
-            : ElevatedButton(
-                onPressed: () =>
-                    context.read<SignUpCubit>().signUpWithEmailAndPassword(),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 30,
+            : SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () =>
+                      context.read<SignUpCubit>().signUpWithEmailAndPassword(),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 30,
+                    ),
+                    child: Text(S().register),
                   ),
-                  child: Text(S().register),
                 ),
               );
       },
