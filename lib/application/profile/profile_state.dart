@@ -17,6 +17,7 @@ class ProfileState with _$ProfileState {
             email: '',
             favoriteClubIds: [],
             favoriteEventIds: [],
+            attendance: {},
             ticketCount: 0),
         isFromOauth: false,
         status: CubitStatus.initial,
