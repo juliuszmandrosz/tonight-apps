@@ -2,14 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:raver_auth/raver_auth.dart';
 
 abstract class UserAuthFacade {
-  Future<Either<AuthFailure, Unit>> signInWithEmailAndPasswordAsUser({
-    required String email,
-    required String password,
-  });
+  Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForUser(String email);
 
-  Future<Either<AuthFailure, Unit>> signUpWithEmailAndPasswordAsUser({
+  Future<Either<AuthFailure, Unit>> signInWithEmailLinkAsUser({
     required String email,
-    required String password,
+    required Uri link,
   });
 
   Future<Either<AuthFailure, Unit>> signInWithGoogleAsUser();

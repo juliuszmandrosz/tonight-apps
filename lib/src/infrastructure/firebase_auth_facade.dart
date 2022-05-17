@@ -28,29 +28,31 @@ class FirebaseAuthFacade
         _authCloudFunctionsFacade = authCloudFunctionsFacade;
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithEmailAndPasswordAsUser({
-    required String email,
-    required String password,
-  }) async {
+  Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForUser(
+    String email,
+  ) async {
     try {
       await _authCloudFunctionsFacade.checkUserClaim(email);
-      await _firebaseAuth.signInWithEmailAndPassword(
+      await _firebaseAuth.sendSignInLinkToEmail(
         email: email,
-        password: password,
+        actionCodeSettings: ActionCodeSettings(
+          url: 'https://raverteam.page.link',
+          handleCodeInApp: true,
+          iOSBundleId: 'com.raver',
+          androidPackageName: 'com.raverteam.raver',
+        ),
       );
       return right(unit);
     } on FirebaseAuthException catch (e) {
       _logger.e(
-        "Exception during sign in with login"
-        " and password as user EXCEPTION: $e",
+        "Auth Exception sending sign in email link for user EXCEPTION: $e",
       );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
     } on FirebaseFunctionsException catch (e) {
       _logger.e(
-        "Firebase Functions Exception during sign in "
-        "with login and password as user EXCEPTION: $e",
+        "Functions Exception sending sign in email link for user EXCEPTION: $e",
       );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
@@ -59,31 +61,32 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signUpWithEmailAndPasswordAsUser({
+  Future<Either<AuthFailure, Unit>> signInWithEmailLinkAsUser({
     required String email,
-    required String password,
+    required Uri link,
   }) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
+      if (!_firebaseAuth.isSignInWithEmailLink(link.toString())) {
+        return left(AuthFailure(message: invalidLink));
+      }
+
+      final result = await _firebaseAuth.signInWithEmailLink(
         email: email,
-        password: password,
+        emailLink: link.toString(),
       );
-      // TODO - add phone / email confirmation
-      await _authCloudFunctionsFacade.addUser();
+
+      await _addUserToFirestoreIfNotExists(result);
       return right(unit);
     } on FirebaseAuthException catch (e) {
       _logger.e(
-        "Exception during register with "
-        "login and password  as user EXCEPTION: $e",
+        "Auth Exception sending sign in email link for user EXCEPTION: $e",
       );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
     } on FirebaseFunctionsException catch (e) {
-      await signOut();
       _logger.e(
-        "Firebase Functions Exception during register "
-        "with login and password as user EXCEPTION: $e",
+        "Functions Exception sending sign in email link for user EXCEPTION: $e",
       );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
@@ -105,11 +108,10 @@ class FirebaseAuthFacade
       final result = await _signInWithGoogleCredential(googleAuth);
 
       final email = result.user!.email!;
-      final isNewUser = result.additionalUserInfo!.isNewUser;
 
-      isNewUser
-          ? await _authCloudFunctionsFacade.addUser()
-          : await _authCloudFunctionsFacade.checkUserClaim(email);
+      await _authCloudFunctionsFacade.checkUserClaim(email);
+
+      await _addUserToFirestoreIfNotExists(result);
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -356,6 +358,15 @@ class FirebaseAuthFacade
       _googleSignIn.signOut(),
       _firebaseAuth.signOut(),
     ]);
+  }
+
+  Future<void> _addUserToFirestoreIfNotExists(
+      UserCredential userCredential) async {
+    final isNewUser = userCredential.additionalUserInfo!.isNewUser;
+
+    if (isNewUser) {
+      await _authCloudFunctionsFacade.addUser();
+    }
   }
 
   Future<UserCredential> _signInWithGoogleCredential(
