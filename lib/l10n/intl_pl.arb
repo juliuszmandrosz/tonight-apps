@@ -246,6 +246,8 @@
   "@eventDetails": {},
   "eventDurationTooLong": "Wydarzenie może trwać maksymalnie 24 godziny",
   "@eventDurationTooLong": {},
+  "eventEditedSuccessfully": "Wydarzenie edytowano pomyślnie",
+  "@eventEditedSuccessfully": {},
   "eventExistsInDateRange": "W podanym zakresie dat istnieje już wydarzenie",
   "@eventExistsInDateRange": {},
   "eventName": "Nazwa wydarzenia",

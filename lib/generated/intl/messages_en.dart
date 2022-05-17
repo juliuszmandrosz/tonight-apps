@@ -258,6 +258,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "eventDetails": MessageLookupByLibrary.simpleMessage("Event details"),
         "eventDurationTooLong": MessageLookupByLibrary.simpleMessage(
             "The event may last a maximum of 24 hours"),
+        "eventEditedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Event edited successfully"),
         "eventExistsInDateRange": MessageLookupByLibrary.simpleMessage(
             "An event already exists in the given date range"),
         "eventName": MessageLookupByLibrary.simpleMessage("Event name"),

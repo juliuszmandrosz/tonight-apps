@@ -246,6 +246,8 @@
   "@eventDetails": {},
   "eventDurationTooLong": "The event may last a maximum of 24 hours",
   "@eventDurationTooLong": {},
+  "eventEditedSuccessfully": "Event edited successfully",
+  "@eventEditedSuccessfully": {},
   "eventExistsInDateRange": "An event already exists in the given date range",
   "@eventExistsInDateRange": {},
   "eventName": "Event name",

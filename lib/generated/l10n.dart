@@ -1289,6 +1289,16 @@ class S {
     );
   }
 
+  /// `Event edited successfully`
+  String get eventEditedSuccessfully {
+    return Intl.message(
+      'Event edited successfully',
+      name: 'eventEditedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `An event already exists in the given date range`
   String get eventExistsInDateRange {
     return Intl.message(
