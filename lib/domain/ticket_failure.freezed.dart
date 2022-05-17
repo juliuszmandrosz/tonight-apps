@@ -12,35 +12,7 @@ part of 'ticket_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$TicketFailureTearOff {
-  const _$TicketFailureTearOff();
-
-  _Unexpected unexpected() {
-    return const _Unexpected();
-  }
-
-  _InvalidTicket invalidTicket() {
-    return const _InvalidTicket();
-  }
-
-  _TicketExpired ticketExpired() {
-    return const _TicketExpired();
-  }
-
-  _TicketForAnotherEvent ticketForAnotherEvent() {
-    return const _TicketForAnotherEvent();
-  }
-
-  _ReturnTimeIsOver returnTimeIsOver() {
-    return const _ReturnTimeIsOver();
-  }
-}
-
-/// @nodoc
-const $TicketFailure = _$TicketFailureTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$TicketFailure {
@@ -121,21 +93,22 @@ class _$TicketFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$UnexpectedCopyWith<$Res> {
-  factory _$UnexpectedCopyWith(
-          _Unexpected value, $Res Function(_Unexpected) then) =
-      __$UnexpectedCopyWithImpl<$Res>;
+abstract class _$$_UnexpectedCopyWith<$Res> {
+  factory _$$_UnexpectedCopyWith(
+          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
+      __$$_UnexpectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$UnexpectedCopyWithImpl<$Res> extends _$TicketFailureCopyWithImpl<$Res>
-    implements _$UnexpectedCopyWith<$Res> {
-  __$UnexpectedCopyWithImpl(
-      _Unexpected _value, $Res Function(_Unexpected) _then)
-      : super(_value, (v) => _then(v as _Unexpected));
+class __$$_UnexpectedCopyWithImpl<$Res>
+    extends _$TicketFailureCopyWithImpl<$Res>
+    implements _$$_UnexpectedCopyWith<$Res> {
+  __$$_UnexpectedCopyWithImpl(
+      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+      : super(_value, (v) => _then(v as _$_Unexpected));
 
   @override
-  _Unexpected get _value => super._value as _Unexpected;
+  _$_Unexpected get _value => super._value as _$_Unexpected;
 }
 
 /// @nodoc
@@ -151,7 +124,7 @@ class _$_Unexpected implements _Unexpected {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Unexpected);
+        (other.runtimeType == runtimeType && other is _$_Unexpected);
   }
 
   @override
@@ -244,22 +217,22 @@ abstract class _Unexpected implements TicketFailure {
 }
 
 /// @nodoc
-abstract class _$InvalidTicketCopyWith<$Res> {
-  factory _$InvalidTicketCopyWith(
-          _InvalidTicket value, $Res Function(_InvalidTicket) then) =
-      __$InvalidTicketCopyWithImpl<$Res>;
+abstract class _$$_InvalidTicketCopyWith<$Res> {
+  factory _$$_InvalidTicketCopyWith(
+          _$_InvalidTicket value, $Res Function(_$_InvalidTicket) then) =
+      __$$_InvalidTicketCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InvalidTicketCopyWithImpl<$Res>
+class __$$_InvalidTicketCopyWithImpl<$Res>
     extends _$TicketFailureCopyWithImpl<$Res>
-    implements _$InvalidTicketCopyWith<$Res> {
-  __$InvalidTicketCopyWithImpl(
-      _InvalidTicket _value, $Res Function(_InvalidTicket) _then)
-      : super(_value, (v) => _then(v as _InvalidTicket));
+    implements _$$_InvalidTicketCopyWith<$Res> {
+  __$$_InvalidTicketCopyWithImpl(
+      _$_InvalidTicket _value, $Res Function(_$_InvalidTicket) _then)
+      : super(_value, (v) => _then(v as _$_InvalidTicket));
 
   @override
-  _InvalidTicket get _value => super._value as _InvalidTicket;
+  _$_InvalidTicket get _value => super._value as _$_InvalidTicket;
 }
 
 /// @nodoc
@@ -275,7 +248,7 @@ class _$_InvalidTicket implements _InvalidTicket {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _InvalidTicket);
+        (other.runtimeType == runtimeType && other is _$_InvalidTicket);
   }
 
   @override
@@ -368,22 +341,22 @@ abstract class _InvalidTicket implements TicketFailure {
 }
 
 /// @nodoc
-abstract class _$TicketExpiredCopyWith<$Res> {
-  factory _$TicketExpiredCopyWith(
-          _TicketExpired value, $Res Function(_TicketExpired) then) =
-      __$TicketExpiredCopyWithImpl<$Res>;
+abstract class _$$_TicketExpiredCopyWith<$Res> {
+  factory _$$_TicketExpiredCopyWith(
+          _$_TicketExpired value, $Res Function(_$_TicketExpired) then) =
+      __$$_TicketExpiredCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$TicketExpiredCopyWithImpl<$Res>
+class __$$_TicketExpiredCopyWithImpl<$Res>
     extends _$TicketFailureCopyWithImpl<$Res>
-    implements _$TicketExpiredCopyWith<$Res> {
-  __$TicketExpiredCopyWithImpl(
-      _TicketExpired _value, $Res Function(_TicketExpired) _then)
-      : super(_value, (v) => _then(v as _TicketExpired));
+    implements _$$_TicketExpiredCopyWith<$Res> {
+  __$$_TicketExpiredCopyWithImpl(
+      _$_TicketExpired _value, $Res Function(_$_TicketExpired) _then)
+      : super(_value, (v) => _then(v as _$_TicketExpired));
 
   @override
-  _TicketExpired get _value => super._value as _TicketExpired;
+  _$_TicketExpired get _value => super._value as _$_TicketExpired;
 }
 
 /// @nodoc
@@ -399,7 +372,7 @@ class _$_TicketExpired implements _TicketExpired {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _TicketExpired);
+        (other.runtimeType == runtimeType && other is _$_TicketExpired);
   }
 
   @override
@@ -492,22 +465,23 @@ abstract class _TicketExpired implements TicketFailure {
 }
 
 /// @nodoc
-abstract class _$TicketForAnotherEventCopyWith<$Res> {
-  factory _$TicketForAnotherEventCopyWith(_TicketForAnotherEvent value,
-          $Res Function(_TicketForAnotherEvent) then) =
-      __$TicketForAnotherEventCopyWithImpl<$Res>;
+abstract class _$$_TicketForAnotherEventCopyWith<$Res> {
+  factory _$$_TicketForAnotherEventCopyWith(_$_TicketForAnotherEvent value,
+          $Res Function(_$_TicketForAnotherEvent) then) =
+      __$$_TicketForAnotherEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$TicketForAnotherEventCopyWithImpl<$Res>
+class __$$_TicketForAnotherEventCopyWithImpl<$Res>
     extends _$TicketFailureCopyWithImpl<$Res>
-    implements _$TicketForAnotherEventCopyWith<$Res> {
-  __$TicketForAnotherEventCopyWithImpl(_TicketForAnotherEvent _value,
-      $Res Function(_TicketForAnotherEvent) _then)
-      : super(_value, (v) => _then(v as _TicketForAnotherEvent));
+    implements _$$_TicketForAnotherEventCopyWith<$Res> {
+  __$$_TicketForAnotherEventCopyWithImpl(_$_TicketForAnotherEvent _value,
+      $Res Function(_$_TicketForAnotherEvent) _then)
+      : super(_value, (v) => _then(v as _$_TicketForAnotherEvent));
 
   @override
-  _TicketForAnotherEvent get _value => super._value as _TicketForAnotherEvent;
+  _$_TicketForAnotherEvent get _value =>
+      super._value as _$_TicketForAnotherEvent;
 }
 
 /// @nodoc
@@ -523,7 +497,7 @@ class _$_TicketForAnotherEvent implements _TicketForAnotherEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _TicketForAnotherEvent);
+        (other.runtimeType == runtimeType && other is _$_TicketForAnotherEvent);
   }
 
   @override
@@ -616,22 +590,22 @@ abstract class _TicketForAnotherEvent implements TicketFailure {
 }
 
 /// @nodoc
-abstract class _$ReturnTimeIsOverCopyWith<$Res> {
-  factory _$ReturnTimeIsOverCopyWith(
-          _ReturnTimeIsOver value, $Res Function(_ReturnTimeIsOver) then) =
-      __$ReturnTimeIsOverCopyWithImpl<$Res>;
+abstract class _$$_ReturnTimeIsOverCopyWith<$Res> {
+  factory _$$_ReturnTimeIsOverCopyWith(
+          _$_ReturnTimeIsOver value, $Res Function(_$_ReturnTimeIsOver) then) =
+      __$$_ReturnTimeIsOverCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ReturnTimeIsOverCopyWithImpl<$Res>
+class __$$_ReturnTimeIsOverCopyWithImpl<$Res>
     extends _$TicketFailureCopyWithImpl<$Res>
-    implements _$ReturnTimeIsOverCopyWith<$Res> {
-  __$ReturnTimeIsOverCopyWithImpl(
-      _ReturnTimeIsOver _value, $Res Function(_ReturnTimeIsOver) _then)
-      : super(_value, (v) => _then(v as _ReturnTimeIsOver));
+    implements _$$_ReturnTimeIsOverCopyWith<$Res> {
+  __$$_ReturnTimeIsOverCopyWithImpl(
+      _$_ReturnTimeIsOver _value, $Res Function(_$_ReturnTimeIsOver) _then)
+      : super(_value, (v) => _then(v as _$_ReturnTimeIsOver));
 
   @override
-  _ReturnTimeIsOver get _value => super._value as _ReturnTimeIsOver;
+  _$_ReturnTimeIsOver get _value => super._value as _$_ReturnTimeIsOver;
 }
 
 /// @nodoc
@@ -647,7 +621,7 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ReturnTimeIsOver);
+        (other.runtimeType == runtimeType && other is _$_ReturnTimeIsOver);
   }
 
   @override

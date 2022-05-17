@@ -17,6 +17,7 @@ class Ticket extends Equatable {
   final bool isEventCanceled;
   final bool isReturnable;
   final bool isReturned;
+  final String reviewId;
 
   Ticket({
     String? id,
@@ -34,6 +35,7 @@ class Ticket extends Equatable {
     this.isEventCanceled = false,
     this.isReturnable = false,
     this.isReturned = false,
+    this.reviewId = ''
   }) : id = id ?? const Uuid().v1();
 
   @override
@@ -53,6 +55,7 @@ class Ticket extends Equatable {
         isEventCanceled,
         isReturnable,
         isReturned,
+        reviewId
       ];
 
   Ticket copyWith({
@@ -70,6 +73,7 @@ class Ticket extends Equatable {
     bool? isEventCanceled,
     bool? isReturnable,
     bool? isReturned,
+    String? reviewId
   }) {
     return Ticket(
       id: id,
@@ -87,6 +91,7 @@ class Ticket extends Equatable {
       isEventCanceled: isEventCanceled ?? this.isEventCanceled,
       isReturnable: isReturnable ?? this.isReturnable,
       isReturned: isReturned ?? this.isReturned,
+      reviewId: reviewId ?? this.reviewId,
     );
   }
 }

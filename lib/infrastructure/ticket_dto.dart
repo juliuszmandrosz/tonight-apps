@@ -28,6 +28,7 @@ class TicketDto with _$TicketDto {
     @Default(false) bool isEventCanceled,
     @Default(false) bool isReturnable,
     @Default(false) bool isReturned,
+    @Default('') String reviewId,
   }) = _TicketDto;
 
   factory TicketDto.fromDomain(Ticket ticket) {
@@ -47,6 +48,7 @@ class TicketDto with _$TicketDto {
       isEventCanceled: ticket.isEventCanceled,
       isReturnable: ticket.isReturnable,
       isReturned: ticket.isReturned,
+      reviewId: ticket.reviewId
     );
   }
 
@@ -75,6 +77,7 @@ class TicketDto with _$TicketDto {
       isEventCanceled: isEventCanceled,
       isReturnable: isReturnable,
       isReturned: isReturned,
+      reviewId: reviewId
     );
   }
 }
