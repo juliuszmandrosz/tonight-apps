@@ -74,6 +74,8 @@
   "@checkout": {},
   "city": "Miasto",
   "@city": {},
+  "clubDoesNotOfferRewards": "Klub nie posiada systemu nagród",
+  "@clubDoesNotOfferRewards": {},
   "clubReviewsLoadingError": "Wystąpił błąd podczas ładowania opinii klubu",
   "@clubReviewsLoadingError": {},
   "clubs": "{count, plural, zero{Brak klubów} one{Klub} few{Kluby} many{Klubów} other{Klubu}}",

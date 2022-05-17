@@ -423,6 +423,16 @@ class S {
     );
   }
 
+  /// `Club does not offer rewards`
+  String get clubDoesNotOfferRewards {
+    return Intl.message(
+      'Club does not offer rewards',
+      name: 'clubDoesNotOfferRewards',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Error while loading club reviews`
   String get clubReviewsLoadingError {
     return Intl.message(

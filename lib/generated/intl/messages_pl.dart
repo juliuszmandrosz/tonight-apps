@@ -106,6 +106,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zmień Hasło"),
         "checkout": MessageLookupByLibrary.simpleMessage("Kasa"),
         "city": MessageLookupByLibrary.simpleMessage("Miasto"),
+        "clubDoesNotOfferRewards": MessageLookupByLibrary.simpleMessage(
+            "Klub nie posiada systemu nagród"),
         "clubReviewsLoadingError": MessageLookupByLibrary.simpleMessage(
             "Wystąpił błąd podczas ładowania opinii klubu"),
         "clubs": m1,

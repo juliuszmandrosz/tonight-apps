@@ -74,6 +74,8 @@
   "@checkout": {},
   "city": "City",
   "@city": {},
+  "clubDoesNotOfferRewards": "Club does not offer rewards",
+  "@clubDoesNotOfferRewards": {},
   "clubReviewsLoadingError": "Error while loading club reviews",
   "@clubReviewsLoadingError": {},
   "clubs": "{count, plural, zero{No clubs} one{Club} other{Clubs}}",
