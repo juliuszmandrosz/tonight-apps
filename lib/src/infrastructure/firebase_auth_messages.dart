@@ -15,4 +15,5 @@ const firebaseAuthMessages = {
   'already-exists': accountExists,
   'permission-denied': operationNotAllowed,
   'invalid-access-code': invalidAccessCode,
+  'not-found': userNotFound,
 };

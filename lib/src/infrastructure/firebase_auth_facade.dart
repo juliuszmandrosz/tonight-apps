@@ -28,6 +28,132 @@ class FirebaseAuthFacade
         _authCloudFunctionsFacade = authCloudFunctionsFacade;
 
   @override
+  Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForSelector(
+    String email,
+  ) async {
+    try {
+      await _authCloudFunctionsFacade.checkIfAccountExists(email);
+      await _authCloudFunctionsFacade.checkSelectorClaim(email);
+      await _sendSignInLinkForSelector(email);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      _logger.e(
+        "Auth Exception sending sign in email link for selector EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    } on FirebaseFunctionsException catch (e) {
+      _logger.e(
+        "Functions Exception sending sign in email link for selector EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> sendSignUpEmailLinkForSelector({
+    required String email,
+    required String accessCode,
+  }) async {
+    try {
+      await _authCloudFunctionsFacade.checkIfAccountNotExists(email);
+      await _authCloudFunctionsFacade.checkSelectorClaim(email);
+      await _authCloudFunctionsFacade.checkSelectorAccessCode(accessCode);
+      await _sendSignInLinkForSelector(email);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      _logger.e(
+        "Auth Exception sending sign up email link for selector EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    } on FirebaseFunctionsException catch (e) {
+      _logger.e(
+        "Functions Exception sending sign up email link for selector EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(
+          message: firebaseAuthMessages[e.details] ??
+              firebaseAuthMessages[e.code] ??
+              serverError,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signInWithEmailLinkAsSelector({
+    required String email,
+    required Uri link,
+  }) async {
+    try {
+      if (!_firebaseAuth.isSignInWithEmailLink(link.toString())) {
+        return left(AuthFailure(message: invalidLink));
+      }
+
+      await _signInWithEmailLink(email, link.toString());
+
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      _logger.e(
+        "Auth Exception signing in with email link as selector EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    } on FirebaseFunctionsException catch (e) {
+      _logger.e(
+        "Functions Exception signing in with email link as selector EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signUpWithEmailLinkAndAccessCodeAsSelector({
+    required String email,
+    required Uri link,
+    required String accessCode,
+  }) async {
+    try {
+      if (!_firebaseAuth.isSignInWithEmailLink(link.toString())) {
+        return left(AuthFailure(message: invalidLink));
+      }
+
+      await _signInWithEmailLink(email, link.toString());
+
+      await _authCloudFunctionsFacade.addSelector(accessCode);
+
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      _logger.e(
+        "Auth Exception signing up with email link and access code as selector EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    } on FirebaseFunctionsException catch (e) {
+      await signOut();
+      _logger.e(
+        "Functions Exception signing up with email link and access code as selector EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(
+          message: firebaseAuthMessages[e.details] ??
+              firebaseAuthMessages[e.code] ??
+              serverError,
+        ),
+      );
+    }
+  }
+
+  @override
   Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForUser(
     String email,
   ) async {
@@ -40,6 +166,7 @@ class FirebaseAuthFacade
           handleCodeInApp: true,
           iOSBundleId: 'com.raver',
           androidPackageName: 'com.raverteam.raver',
+          dynamicLinkDomain: 'raverteam.page.link',
         ),
       );
       return right(unit);
@@ -70,23 +197,20 @@ class FirebaseAuthFacade
         return left(AuthFailure(message: invalidLink));
       }
 
-      final result = await _firebaseAuth.signInWithEmailLink(
-        email: email,
-        emailLink: link.toString(),
-      );
+      final result = await _signInWithEmailLink(email, link.toString());
 
       await _addUserToFirestoreIfNotExists(result);
       return right(unit);
     } on FirebaseAuthException catch (e) {
       _logger.e(
-        "Auth Exception sending sign in email link for user EXCEPTION: $e",
+        "Auth Exception signing in with email link as user EXCEPTION: $e",
       );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
       );
     } on FirebaseFunctionsException catch (e) {
       _logger.e(
-        "Functions Exception sending sign in email link for user EXCEPTION: $e",
+        "Functions Exception signing in with email link as user EXCEPTION: $e",
       );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
@@ -200,73 +324,6 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithEmailAndPasswordAsSelector(
-    String email,
-    String password,
-  ) async {
-    try {
-      await _authCloudFunctionsFacade.checkSelectorClaim(email);
-      await _firebaseAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return right(unit);
-    } on FirebaseAuthException catch (e) {
-      _logger.e(
-        "Firebase Auth Exception during sign in with email and password as selector EXCEPTION: $e",
-      );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
-    } on FirebaseFunctionsException catch (e) {
-      _logger.e(
-        "Firebase Functions Exception during "
-        "sign in with login and password as selector EXCEPTION: $e",
-      );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
-    }
-  }
-
-  @override
-  Future<Either<AuthFailure, Unit>>
-      signUpWithEmailPasswordAndAccessCodeAsSelector(
-    String email,
-    String password,
-    String accessCode,
-  ) async {
-    try {
-      await _authCloudFunctionsFacade.checkSelectorAccessCode(accessCode);
-
-      await _firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
-
-      await _authCloudFunctionsFacade.addSelector(email, accessCode);
-      return right(unit);
-    } on FirebaseFunctionsException catch (e) {
-      _logger.e(
-        "Firebase Functions Exception during sign up with email and password as selector EXCEPTION: $e",
-      );
-
-      return left(
-        AuthFailure(
-          message: firebaseAuthMessages[e.details] ??
-              firebaseAuthMessages[e.code] ??
-              serverError,
-        ),
-      );
-    } on FirebaseAuthException catch (e) {
-      _logger.e(
-        "Firebase Auth Exception during  sign up with email and password as selector EXCEPTION: $e",
-      );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
-    }
-  }
-
-  @override
   Future<Option<AppUser>> getSignedUser() async {
     try {
       final firebaseUser = _firebaseAuth.currentUser;
@@ -361,7 +418,8 @@ class FirebaseAuthFacade
   }
 
   Future<void> _addUserToFirestoreIfNotExists(
-      UserCredential userCredential) async {
+    UserCredential userCredential,
+  ) async {
     final isNewUser = userCredential.additionalUserInfo!.isNewUser;
 
     if (isNewUser) {
@@ -380,5 +438,28 @@ class FirebaseAuthFacade
 
   String _getUserEmail(User user) {
     return user.email ?? user.providerData.first.email!;
+  }
+
+  Future<UserCredential> _signInWithEmailLink(
+    String email,
+    String link,
+  ) async {
+    return _firebaseAuth.signInWithEmailLink(
+      email: email,
+      emailLink: link.toString(),
+    );
+  }
+
+  Future<void> _sendSignInLinkForSelector(String email) async {
+    await _firebaseAuth.sendSignInLinkToEmail(
+      email: email,
+      actionCodeSettings: ActionCodeSettings(
+        url: 'https://raverscanner.page.link',
+        handleCodeInApp: true,
+        iOSBundleId: 'com.raverteam.raverScanner',
+        androidPackageName: 'com.raverteam.raverScanner',
+        dynamicLinkDomain: 'raverscanner.page.link',
+      ),
+    );
   }
 }

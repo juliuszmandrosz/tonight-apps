@@ -5,3 +5,5 @@ const addUserFnName = 'addUser';
 const addPartnerFnName = 'addPartner';
 const addSelectorFnName = 'addSelector';
 const checkSelectorAccessCodeFnName = 'checkSelectorAccessCode';
+const checkIfAccountExistsFnName = 'checkIfAccountExists';
+const checkIfAccountNotExistsFnName = 'checkIfAccountNotExists';

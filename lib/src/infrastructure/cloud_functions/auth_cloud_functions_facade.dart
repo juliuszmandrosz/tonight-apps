@@ -13,9 +13,13 @@ abstract class AuthCloudFunctionsFacade {
 
   Future<Unit> addPartner(String connectedAccountId);
 
-  Future<Unit> addSelector(String email, String accessCode);
+  Future<Unit> addSelector(String accessCode);
 
   Future<Unit> checkSelectorAccessCode(String accessCode);
+
+  Future<Unit> checkIfAccountExists(String email);
+
+  Future<Unit> checkIfAccountNotExists(String email);
 }
 
 class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
@@ -72,10 +76,10 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   }
 
   @override
-  Future<Unit> addSelector(String email, String accessCode) async {
+  Future<Unit> addSelector(String accessCode) async {
     final addSelectorFn = _firebaseFunctions.httpsCallable(addSelectorFnName);
 
-    await addSelectorFn.call({'email': email, 'accessCode': accessCode});
+    await addSelectorFn.call({'accessCode': accessCode});
 
     return unit;
   }
@@ -86,6 +90,26 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
         _firebaseFunctions.httpsCallable(checkSelectorAccessCodeFnName);
 
     await checkSelectorAccessCodeFn.call({'accessCode': accessCode});
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> checkIfAccountExists(String email) async {
+    final checkIfAccountExistsFn =
+        _firebaseFunctions.httpsCallable(checkIfAccountExistsFnName);
+
+    await checkIfAccountExistsFn.call({'email': email});
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> checkIfAccountNotExists(String email) async {
+    final checkIfAccountNotExistsFn =
+        _firebaseFunctions.httpsCallable(checkIfAccountNotExistsFnName);
+
+    await checkIfAccountNotExistsFn.call({'email': email});
 
     return unit;
   }
