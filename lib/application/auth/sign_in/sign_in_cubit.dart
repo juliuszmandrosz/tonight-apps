@@ -125,4 +125,10 @@ class SignInCubit extends Cubit<SignInState> {
 
     emit(state.copyWith(linkSentMessage: none()));
   }
+
+  @override
+  Future<void> close() {
+    _linkSub.cancel();
+    return super.close();
+  }
 }
