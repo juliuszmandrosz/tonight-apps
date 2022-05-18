@@ -1279,6 +1279,16 @@ class S {
     );
   }
 
+  /// `Event has been cancelled by club`
+  String get eventCancelled {
+    return Intl.message(
+      'Event has been cancelled by club',
+      name: 'eventCancelled',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Event details`
   String get eventDetails {
     return Intl.message(

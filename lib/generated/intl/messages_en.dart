@@ -257,6 +257,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Event added successfully"),
         "eventCanceledSuccessfully":
             MessageLookupByLibrary.simpleMessage("Event canceled successfully"),
+        "eventCancelled": MessageLookupByLibrary.simpleMessage(
+            "Event has been cancelled by club"),
         "eventDetails": MessageLookupByLibrary.simpleMessage("Event details"),
         "eventDurationTooLong": MessageLookupByLibrary.simpleMessage(
             "The event may last a maximum of 24 hours"),

@@ -244,6 +244,8 @@
   "@eventAddedSuccessfully": {},
   "eventCanceledSuccessfully": "Wydarzenie odwołano pomyślnie",
   "@eventCanceledSuccessfully": {},
+  "eventCancelled": "Wydarzenie zostało odwołane przez klub",
+  "@eventCancelled": {},
   "eventDetails": "Szczegóły wydarzenia",
   "@eventDetails": {},
   "eventDurationTooLong": "Wydarzenie może trwać maksymalnie 24 godziny",

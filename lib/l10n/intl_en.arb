@@ -244,6 +244,8 @@
   "@eventAddedSuccessfully": {},
   "eventCanceledSuccessfully": "Event canceled successfully",
   "@eventCanceledSuccessfully": {},
+  "eventCancelled": "Event has been cancelled by club",
+  "@eventCancelled": {},
   "eventDetails": "Event details",
   "@eventDetails": {},
   "eventDurationTooLong": "The event may last a maximum of 24 hours",

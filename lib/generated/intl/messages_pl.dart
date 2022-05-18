@@ -255,6 +255,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wydarzenie zostało dodane pomyślnie"),
         "eventCanceledSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Wydarzenie odwołano pomyślnie"),
+        "eventCancelled": MessageLookupByLibrary.simpleMessage(
+            "Wydarzenie zostało odwołane przez klub"),
         "eventDetails":
             MessageLookupByLibrary.simpleMessage("Szczegóły wydarzenia"),
         "eventDurationTooLong": MessageLookupByLibrary.simpleMessage(
