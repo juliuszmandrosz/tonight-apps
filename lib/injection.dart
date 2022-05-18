@@ -2,6 +2,7 @@ import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -43,13 +44,15 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => SignInCubit(
-      getIt(),
+      firebaseDynamicLinks: getIt(),
+      selectorAuthFacade: getIt(),
     ),
   );
 
   getIt.registerFactory(
     () => SignUpCubit(
-      getIt(),
+      selectorAuthFacade: getIt(),
+      firebaseDynamicLinks: getIt(),
     ),
   );
 
@@ -148,6 +151,8 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebaseRemoteConfig.instance);
 
   getIt.registerLazySingleton(() => FirebaseFunctions.instance);
+
+  getIt.registerLazySingleton(() => FirebaseDynamicLinks.instance);
 
   getIt.registerLazySingleton(() => Logger());
 

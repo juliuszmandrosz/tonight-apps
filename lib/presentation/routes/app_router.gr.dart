@@ -25,10 +25,6 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const AuthPage());
     },
-    ResetPasswordRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-          routeData: routeData, child: const ResetPasswordPage());
-    },
     NavigatorRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const NavigatorPage());
@@ -51,7 +47,6 @@ class _$AppRouter extends RootStackRouter {
   List<RouteConfig> get routes => [
         RouteConfig(SplashRoute.name, path: '/'),
         RouteConfig(AuthRoute.name, path: '/auth-page'),
-        RouteConfig(ResetPasswordRoute.name, path: '/reset-password-page'),
         RouteConfig(NavigatorRoute.name, path: '/navigator-page', children: [
           RouteConfig(EventRoute.name,
               path: 'event-page', parent: NavigatorRoute.name),
@@ -76,15 +71,6 @@ class AuthRoute extends PageRouteInfo<void> {
   const AuthRoute() : super(AuthRoute.name, path: '/auth-page');
 
   static const String name = 'AuthRoute';
-}
-
-/// generated route for
-/// [ResetPasswordPage]
-class ResetPasswordRoute extends PageRouteInfo<void> {
-  const ResetPasswordRoute()
-      : super(ResetPasswordRoute.name, path: '/reset-password-page');
-
-  static const String name = 'ResetPasswordRoute';
 }
 
 /// generated route for

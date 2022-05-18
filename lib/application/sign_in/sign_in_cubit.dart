@@ -1,8 +1,12 @@
+import 'dart:async';
+
 import 'package:dartz/dartz.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 part 'sign_in_cubit.freezed.dart';
 
@@ -10,8 +14,18 @@ part 'sign_in_state.dart';
 
 class SignInCubit extends Cubit<SignInState> {
   final SelectorAuthFacade _authFacade;
+  final FirebaseDynamicLinks _dynamicLinks;
 
-  SignInCubit(this._authFacade) : super(SignInState.initial());
+  late final StreamSubscription _linkSub;
+
+  SignInCubit({
+    required SelectorAuthFacade selectorAuthFacade,
+    required FirebaseDynamicLinks firebaseDynamicLinks,
+  })  : _authFacade = selectorAuthFacade,
+        _dynamicLinks = firebaseDynamicLinks,
+        super(SignInState.initial()) {
+    _subscribeToDynamicLinks();
+  }
 
   Future<void> sendSignInWithEmailLink() async {
     if (!_validateForm()) return;
@@ -19,16 +33,11 @@ class SignInCubit extends Cubit<SignInState> {
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
     final failureOrSuccess =
-        await _authFacade.signInWithEmailAndPasswordAsSelector(
-      state.email.value,
-      state.password.value,
-    );
+        await _authFacade.sendSignInEmailLinkForSelector(state.email.value);
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(failure),
-      (success) => emit(
-        state.copyWith(status: FormzStatus.submissionSuccess),
-      ),
+      (success) => _emitLinkSentSuccess(),
     );
   }
 
@@ -37,21 +46,40 @@ class SignInCubit extends Cubit<SignInState> {
     emit(state.copyWith(email: email));
   }
 
-  void passwordChanged(String value) {
-    final password = PasswordInput.dirty(isSignIn: true, value: value);
-    emit(state.copyWith(password: password));
+  _subscribeToDynamicLinks() {
+    _linkSub = _dynamicLinks.onLink.listen((dynamicLink) async {
+      final Uri? deepLink = dynamicLink.link;
+      if (deepLink != null) {
+        await _signInWithEmailLink(deepLink);
+        _linkSub.cancel();
+      }
+    });
+  }
+
+  Future<void> _signInWithEmailLink(Uri link) async {
+    emit(state.copyWith(status: FormzStatus.submissionInProgress));
+
+    final failureOrSuccess = await _authFacade.signInWithEmailLinkAsSelector(
+      email: state.email.value,
+      link: link,
+    );
+
+    failureOrSuccess.fold(
+      (failure) => _emitFailure(failure),
+      (success) => emit(
+        state.copyWith(
+          status: FormzStatus.submissionSuccess,
+        ),
+      ),
+    );
   }
 
   _validateForm() {
     emit(state.copyWith(
       email: EmailInput.dirty(state.email.value),
-      password: PasswordInput.dirty(
-        isSignIn: true,
-        value: state.password.value,
-      ),
     ));
 
-    final status = Formz.validate([state.email, state.password]);
+    final status = Formz.validate([state.email]);
 
     emit(state.copyWith(status: status));
     return status.isValidated;
@@ -66,5 +94,22 @@ class SignInCubit extends Cubit<SignInState> {
     );
 
     emit(state.copyWith(errorMessage: none()));
+  }
+
+  _emitLinkSentSuccess() {
+    emit(
+      state.copyWith(
+        linkSentMessage: some(S().verificationLinkSent),
+        status: FormzStatus.pure,
+      ),
+    );
+
+    emit(state.copyWith(linkSentMessage: none()));
+  }
+
+  @override
+  Future<void> close() {
+    _linkSub.cancel();
+    return super.close();
   }
 }
