@@ -45,7 +45,7 @@ class NavigatorPage extends StatelessWidget {
               authenticated: (_) =>
                   AutoRouter.of(context).replace(WelcomeLoaderRoute()),
               unauthenticated: (_) =>
-                  AutoRouter.of(context).replace(const AuthRoute())),
+                  AutoRouter.of(context).replace(const SignInRoute())),
         )
       ],
       child: AutoTabsScaffold(
@@ -54,7 +54,7 @@ class NavigatorPage extends StatelessWidget {
             RaverIconButton(
               onPressed: () {
                 context.read<AuthCubit>().signOut();
-                AutoRouter.of(context).replace(const AuthRoute());
+                AutoRouter.of(context).replace(const SignInRoute());
               },
               icon: FaIcon(
                 FontAwesomeIcons.signOutAlt,

@@ -8,6 +8,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
     backgroundColor: DarkColors.backgroundColor,
     primaryColorDark: DarkColors.primaryColor,
   ),
+  scaffoldBackgroundColor: DarkColors.backgroundColor,
   listTileTheme: const ListTileThemeData(),
   tabBarTheme: const TabBarTheme(
     labelColor: DarkColors.primaryColor,
@@ -30,8 +31,14 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
+      minimumSize: MaterialStateProperty.all(
+        const Size(300, 50),
+      ),
+      maximumSize: MaterialStateProperty.all(
+        const Size(300, 50),
+      ),
       foregroundColor: MaterialStateProperty.all(
-        DarkColors.backgroundColor,
+        DarkColors.textColor,
       ),
       textStyle: MaterialStateProperty.all(
         DarkTextStyles.subtitleAccent,

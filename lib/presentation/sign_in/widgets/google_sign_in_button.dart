@@ -12,17 +12,18 @@ class GoogleSignInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return BlocBuilder<SignInCubit, SignInState>(
-      buildWhen: (previous, current) => previous.status != current.status,
+      buildWhen: (previous, current) =>
+          previous.signInStatus != current.signInStatus,
       builder: (context, state) {
         return Container(
-          width: 50,
-          height: 50,
           decoration: const BoxDecoration(
-            color: DefaultColors.textColor,
+            color: DefaultColors.whiteColor,
             borderRadius: BorderRadius.all(
               Radius.circular(30),
             ),
           ),
+          width: 50,
+          height: 50,
           child: RaverIconButton(
             icon: FaIcon(
               FontAwesomeIcons.google,

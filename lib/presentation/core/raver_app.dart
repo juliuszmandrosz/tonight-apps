@@ -15,7 +15,6 @@ import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/domain/clubs/filters/club_filters.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/config/themes/dark_theme/dark_theme.dart';
-import 'package:raver/presentation/config/themes/light_theme/light_theme.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
@@ -94,7 +93,7 @@ class RaverApp extends StatelessWidget {
         builder: (context, state) {
           return MaterialApp.router(
             title: 'Raver',
-            theme: state.appSettings.isDarkTheme ? darkTheme : lightTheme,
+            theme: darkTheme,
             routerDelegate: _appRouter.delegate(),
             routeInformationParser: _appRouter.defaultRouteParser(),
             debugShowCheckedModeBanner: false,

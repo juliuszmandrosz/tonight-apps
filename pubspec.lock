@@ -57,6 +57,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.3"
+  auto_size_text:
+    dependency: "direct main"
+    description:
+      name: auto_size_text
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   back_button_interceptor:
     dependency: transitive
     description:
@@ -119,7 +126,7 @@ packages:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.10"
+    version: "2.1.11"
   build_runner_core:
     dependency: transitive
     description:
@@ -407,6 +414,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.4"
+  firebase_dynamic_links:
+    dependency: "direct main"
+    description:
+      name: firebase_dynamic_links
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.2.3"
+  firebase_dynamic_links_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_dynamic_links_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.3+2"
   firebase_remote_config:
     dependency: "direct main"
     description:
@@ -535,7 +556,7 @@ packages:
       name: flutter_rating_bar
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.0"
+    version: "4.0.1"
   flutter_spinkit:
     dependency: "direct main"
     description:
@@ -550,6 +571,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0"
+  flutter_svg:
+    dependency: "direct main"
+    description:
+      name: flutter_svg
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -594,7 +622,7 @@ packages:
       name: frontend_server_client
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.2"
+    version: "2.1.3"
   geolocator:
     dependency: "direct main"
     description:
@@ -727,7 +755,7 @@ packages:
       name: hive
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0"
+    version: "2.2.0"
   html:
     dependency: transitive
     description:
@@ -888,7 +916,7 @@ packages:
       name: mockito
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.1.0"
+    version: "5.2.0"
   money2:
     dependency: transitive
     description:
@@ -966,6 +994,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.1"
+  path_drawing:
+    dependency: transitive
+    description:
+      name: path_drawing
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+  path_parsing:
+    dependency: transitive
+    description:
+      name: path_parsing
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   path_provider:
     dependency: "direct main"
     description:
@@ -1110,8 +1152,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: develop
-      resolved-ref: d1a5a1d975032b470b39676ae95e71a5a5a11f7d
+      ref: "feature/user-link-sign-in"
+      resolved-ref: e481e803a300353fec614d21006612aed96574ff
       url: "https://github.com/juliuszmandrosz/RaverAccountSettings.git"
     source: git
     version: "0.0.1"
@@ -1119,8 +1161,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: develop
-      resolved-ref: d723f8de18ce65a01997106c77f76ea866d258ed
+      ref: "feature/user-link-sign-in"
+      resolved-ref: f6d81ca530d46d36a02aff930347fba532f649b2
       url: "https://github.com/juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
@@ -1147,7 +1189,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "04c1b61caca183d77330cdf1985bf4e49f08d44d"
+      resolved-ref: "5232e5fe50eb28ac892e79ba64e84416baa62e7a"
       url: "https://github.com/juliuszmandrosz/RaverTickets.git"
     source: git
     version: "0.0.1"
@@ -1156,7 +1198,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "0d76a3d54770942e20101a60ad75b051f0ef7a54"
+      resolved-ref: "68ad808e16911901dcb8b8cdb687f53d46cb2644"
       url: "https://github.com/juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"

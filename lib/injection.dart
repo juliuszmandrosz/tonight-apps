@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -13,7 +14,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:raver/application/app_settings/app_settings_cubit.dart';
 import 'package:raver/application/auth/sign_in/sign_in_cubit.dart';
-import 'package:raver/application/auth/sign_up/sign_up_cubit.dart';
 import 'package:raver/application/auth/username/username_cubit.dart';
 import 'package:raver/application/clubs/club_details/club_details_cubit.dart';
 import 'package:raver/application/clubs/club_details/club_photos/club_photos_bloc.dart';
@@ -88,13 +88,8 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => SignInCubit(
-      getIt(),
-    ),
-  );
-
-  getIt.registerFactory(
-    () => SignUpCubit(
-      getIt(),
+      firebaseDynamicLinks: getIt(),
+      authFacade: getIt(),
     ),
   );
 
@@ -363,6 +358,8 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebaseRemoteConfig.instance);
 
   getIt.registerLazySingleton(() => FirebaseFunctions.instance);
+
+  getIt.registerLazySingleton(() => FirebaseDynamicLinks.instance);
 
   getIt.registerLazySingleton(
       () => GooglePlace(FirebaseRemoteConfig.instance.getString(googleApiKey)));

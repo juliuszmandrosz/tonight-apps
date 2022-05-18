@@ -80,6 +80,9 @@ dependencies:
   flutter_stripe: ^3.0.0
   loader_overlay: ^2.0.6
   random_string: ^2.3.1
+  firebase_dynamic_links: ^4.2.3
+  flutter_svg: ^1.0.3
+  auto_size_text: ^3.0.0
 
 
   raver_translations:
@@ -89,13 +92,11 @@ dependencies:
   raver_account_settings:
     git:
       url: https://github.com/juliuszmandrosz/RaverAccountSettings.git
-      ref: develop
-
+      ref: feature/user-link-sign-in
 
   raver_common:
     git:
       url: https://github.com/juliuszmandrosz/RaverCommon.git
-
 
   raver_tickets:
     git:
@@ -105,7 +106,7 @@ dependencies:
   raver_auth:
     git:
       url: https://github.com/juliuszmandrosz/RaverAuth.git
-      ref: develop
+      ref: feature/user-link-sign-in
   
   
   raver_events:
@@ -146,6 +147,7 @@ flutter:
   assets:
     - assets/images/
     - assets/animations/
+    - assets/icons/
     - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see

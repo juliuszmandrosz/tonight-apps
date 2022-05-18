@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:raver/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class ResetPasswordEmailInput extends StatelessWidget {
-  const ResetPasswordEmailInput({Key? key}) : super(key: key);
+class SignInEmailInput extends StatelessWidget {
+  const SignInEmailInput({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
+    return BlocBuilder<SignInCubit, SignInState>(
       buildWhen: (previous, current) =>
-          previous.email != current.email || previous.status != current.status,
+          previous.email != current.email ||
+          previous.signInStatus != current.signInStatus,
       builder: (context, state) {
         return TextField(
-          onChanged: (email) =>
-              context.read<ResetPasswordCubit>().emailChanged(email),
+          onChanged: (email) => context.read<SignInCubit>().emailChanged(email),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             labelText: S().email,
@@ -26,8 +27,8 @@ class ResetPasswordEmailInput extends StatelessWidget {
     );
   }
 
-  String? _getEmailInputErrorMessage(ResetPasswordState state) {
-    if (state.email.valid || state.status != FormzStatus.invalid) {
+  String? _getEmailInputErrorMessage(SignInState state) {
+    if (state.email.valid || state.signInStatus != FormzStatus.invalid) {
       return null;
     }
 

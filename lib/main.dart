@@ -22,7 +22,7 @@ Future<void> main() async {
   await _initStripe();
 
   HydratedBlocOverrides.runZoned(
-        () => runApp(RaverApp()),
+    () => runApp(RaverApp()),
     storage: storage,
   );
 }
