@@ -1955,6 +1955,16 @@ class S {
     );
   }
 
+  /// `Or continue with`
+  String get orContinueWith {
+    return Intl.message(
+      'Or continue with',
+      name: 'orContinueWith',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Password`
   String get password {
     return Intl.message(

@@ -361,6 +361,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "operationNotAllowed":
             MessageLookupByLibrary.simpleMessage("Operation is not allowed"),
         "opinions": m4,
+        "orContinueWith":
+            MessageLookupByLibrary.simpleMessage("Or continue with"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordDigit": MessageLookupByLibrary.simpleMessage(
             "Password should contain at least one digit"),

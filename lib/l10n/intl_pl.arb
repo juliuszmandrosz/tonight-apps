@@ -378,6 +378,8 @@
   "@operationNotAllowed": {},
   "opinions": "{count, plural, zero{Opinii} one{Opinia} few{Opinie} many{Opinii} other{Opinie}}",
   "@opinions": {},
+  "orContinueWith": "Lub kontynuuj za pomocą",
+  "@orContinueWith": {},
   "password": "Hasło",
   "@password": {},
   "passwordDigit": "Hasło powinno zawierać co najmniej jedną cyfrę",

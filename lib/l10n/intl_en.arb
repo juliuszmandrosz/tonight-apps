@@ -378,6 +378,8 @@
   "@operationNotAllowed": {},
   "opinions": "{count, plural, zero{Opinions} one{Opinion} other{Opinions}}",
   "@opinions": {},
+  "orContinueWith": "Or continue with",
+  "@orContinueWith": {},
   "password": "Password",
   "@password": {},
   "passwordDigit": "Password should contain at least one digit",
