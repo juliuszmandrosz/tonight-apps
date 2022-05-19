@@ -5,6 +5,8 @@ import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event/form_inputs/musical_genres.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/color_extensions.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class EventMusicalGenresInput extends StatelessWidget {
@@ -17,7 +19,6 @@ class EventMusicalGenresInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<AddEventCubit, AddEventState>(
       buildWhen: (previous, current) =>
           !listEquals(
@@ -32,14 +33,10 @@ class EventMusicalGenresInput extends StatelessWidget {
           onTap: () async => await showDialog(
             context: context,
             builder: (ctx) => MultiSelectDialog<String>(
-              title: Text(
-                S().musicalGenres,
-                style: theme.textTheme.subtitle1,
-              ),
-              itemsTextStyle: theme.textTheme.bodyText2,
-              selectedItemsTextStyle: theme.textTheme.bodyText1,
-              selectedColor: theme.primaryColor,
+              title: Text(S().musicalGenres),
+              selectedColor: context.primaryColor,
               initialValue: state.musicalGenres.value,
+              selectedItemsTextStyle: context.bodyText1,
               items: musicalGenres
                   .map((genre) => MultiSelectItem(genre, genre.capitalize()))
                   .toList(),

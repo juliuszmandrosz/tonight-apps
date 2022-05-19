@@ -42,14 +42,23 @@ class SignUpTab extends StatelessWidget {
             AutoRouter.of(context).replace(const NavigatorRoute());
           }
         },
-        child: Column(
-          children: const [
-            SizedBox(height: 5),
-            SignUpEmailInput(),
-            SizedBox(height: 20),
-            SignUpAccessCodeInput(),
-            Spacer(),
-            SignUpButton(),
+        child: CustomScrollView(
+          physics: const NeverScrollableScrollPhysics(),
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                children: const [
+                  SizedBox(height: 10),
+                  SignUpEmailInput(),
+                  SizedBox(height: 20),
+                  SignUpAccessCodeInput(),
+                  Spacer(),
+                  SizedBox(height: 20),
+                  SignUpButton(),
+                ],
+              ),
+            ),
           ],
         ),
       ),

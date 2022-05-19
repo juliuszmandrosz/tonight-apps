@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/color_extensions.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -17,19 +19,23 @@ class _RaverPartnersSpeedDialState extends State<RaverPartnersSpeedDial> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return SpeedDial(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(15),
+        ),
+      ),
       onOpen: () => setState(() => _isDialOpen = true),
       onClose: () => setState(() => _isDialOpen = false),
       closeDialOnPop: false,
-      backgroundColor: theme.primaryColor,
-      activeBackgroundColor: theme.backgroundColor,
+      backgroundColor: context.primaryColor,
+      activeBackgroundColor: context.surfaceColor,
       icon: FontAwesomeIcons.plus,
       iconTheme: IconThemeData(
-        color: _isDialOpen ? theme.primaryColor : theme.backgroundColor,
+        color: _isDialOpen ? context.primaryColor : context.onSurfaceColor,
       ),
       activeIcon: Icons.close,
-      overlayColor: Colors.grey,
+      overlayColor: context.shadowColor,
       overlayOpacity: 0.5,
       spacing: 15,
       spaceBetweenChildren: 15,
@@ -37,35 +43,35 @@ class _RaverPartnersSpeedDialState extends State<RaverPartnersSpeedDial> {
         SpeedDialChild(
           child: FaIcon(
             FontAwesomeIcons.fire,
-            color: theme.backgroundColor,
+            color: context.onSurfaceColor,
           ),
           label: S().addEvent,
           onTap: () => AutoRouter.of(context).push(const AddEventRoute()),
-          labelStyle: theme.textTheme.bodyText1,
-          backgroundColor: theme.primaryColor,
-          labelBackgroundColor: theme.primaryColor,
+          labelStyle: context.bodyText1,
+          backgroundColor: context.primaryColor,
+          labelBackgroundColor: context.primaryColor,
         ),
         SpeedDialChild(
           child: FaIcon(
             FontAwesomeIcons.trophy,
-            color: theme.backgroundColor,
+            color: context.onSurfaceColor,
           ),
           label: S().addReward,
-          labelStyle: theme.textTheme.bodyText1,
+          labelStyle: context.bodyText1,
           onTap: () => AutoRouter.of(context).push(AddEditRewardRoute()),
-          backgroundColor: theme.primaryColor,
-          labelBackgroundColor: theme.primaryColor,
+          backgroundColor: context.primaryColor,
+          labelBackgroundColor: context.primaryColor,
         ),
         SpeedDialChild(
           child: FaIcon(
             FontAwesomeIcons.userAlt,
-            color: theme.backgroundColor,
+            color: context.onSurfaceColor,
           ),
           label: S().inviteSelector,
-          labelStyle: theme.textTheme.bodyText1,
+          labelStyle: context.bodyText1,
           onTap: () => AutoRouter.of(context).push(InviteSelectorRoute()),
-          backgroundColor: theme.primaryColor,
-          labelBackgroundColor: theme.primaryColor,
+          backgroundColor: context.primaryColor,
+          labelBackgroundColor: context.primaryColor,
         )
       ],
     );

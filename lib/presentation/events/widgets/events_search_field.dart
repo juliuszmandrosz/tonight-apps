@@ -10,18 +10,18 @@ class EventsSearchField extends StatelessWidget {
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       builder: (context, state) {
         return TextField(
-          controller: TextEditingController(text: state.filters.phraseFilter.phrase),
+          controller:
+              TextEditingController(text: state.filters.phraseFilter.phrase),
           onSubmitted: (value) =>
               context.read<EventFiltersCubit>().submitSearchField(value),
           decoration: InputDecoration(
             hintText: MaterialLocalizations.of(context).searchFieldLabel,
             border: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.black, width: 2),
+              borderSide: const BorderSide(width: 2),
               borderRadius: BorderRadius.circular(25),
             ),
             prefixIcon: const Icon(
               Icons.search,
-              color: Colors.black,
               size: 18,
             ),
             suffixIcon: state.filters.phraseFilter.phrase.isEmpty
@@ -31,7 +31,6 @@ class EventsSearchField extends StatelessWidget {
                         context.read<EventFiltersCubit>().submitSearchField(''),
                     child: const Icon(
                       Icons.clear,
-                      color: Colors.black,
                       size: 18,
                     ),
                   ),

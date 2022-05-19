@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
 import 'package:raver_rewards/domain/domain.dart';
 
@@ -13,7 +14,6 @@ class RewardListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Card(
       elevation: 5,
       shape: RoundedRectangleBorder(
@@ -21,7 +21,10 @@ class RewardListTile extends StatelessWidget {
       ),
       margin: const EdgeInsets.all(5),
       child: ListTile(
-        title: Text(reward.description, style: theme.textTheme.subtitle1),
+        title: Text(
+          reward.description,
+          style: context.subtitle1,
+        ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
@@ -31,9 +34,8 @@ class RewardListTile extends StatelessWidget {
               onPressed: () => AutoRouter.of(context).push(
                 AddEditRewardRoute(reward: reward),
               ),
-              icon: Icon(
+              icon: const Icon(
                 Icons.mode_edit,
-                color: theme.iconTheme.color,
                 size: 32,
               ),
             ),
@@ -45,9 +47,8 @@ class RewardListTile extends StatelessWidget {
                   context.read<RewardListCubit>().deleteReward(reward);
                 }
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.delete_rounded,
-                color: theme.iconTheme.color,
                 size: 32,
               ),
             ),

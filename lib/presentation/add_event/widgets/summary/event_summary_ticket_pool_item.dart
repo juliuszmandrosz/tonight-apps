@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class EventSummaryTicketPoolItem extends StatelessWidget {
@@ -14,8 +15,6 @@ class EventSummaryTicketPoolItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Column(
       children: [
         Align(
@@ -28,7 +27,7 @@ class EventSummaryTicketPoolItem extends StatelessWidget {
             '${getCurrencySymbolFromCode(ticketPool.currency)}, '
             '${S().vip.toLowerCase()} ${ticketPool.vipPrice}'
             '${getCurrencySymbolFromCode(ticketPool.currency)}',
-            style: textTheme.subtitle1,
+            style: context.subtitle1,
             maxLines: 1,
           ),
         ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:raver_partners/presentation/auth/sign_in/sign_in_tab.dart';
 import 'package:raver_partners/presentation/auth/sign_up/sign_up_tab.dart';
+import 'package:raver_partners/presentation/auth/widgets/partners_logo.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class AuthPage extends StatelessWidget {
@@ -9,7 +11,6 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return LoaderOverlay(
       child: Scaffold(
         body: SafeArea(
@@ -23,12 +24,16 @@ class AuthPage extends StatelessWidget {
             initialIndex: 0,
             child: Column(
               children: [
+                const Flexible(
+                  flex: 1,
+                  child: PartnersLogo(),
+                ),
                 PreferredSize(
                   preferredSize: const Size(350, 350),
                   child: SizedBox(
                     width: 350,
                     child: TabBar(
-                      labelStyle: textTheme.subtitle1,
+                      labelStyle: context.subtitle1,
                       tabs: [
                         SizedBox(
                           width: 350,
@@ -42,9 +47,10 @@ class AuthPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Expanded(
+                const Flexible(
+                  flex: 3,
                   child: Padding(
-                    padding: EdgeInsets.only(top: 50),
+                    padding: EdgeInsets.only(top: 20),
                     child: TabBarView(
                       physics: NeverScrollableScrollPhysics(),
                       children: [

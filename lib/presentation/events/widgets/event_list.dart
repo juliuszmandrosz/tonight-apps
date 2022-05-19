@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_partners/presentation/events/widgets/event_list_tile.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -26,7 +27,6 @@ class _EventListState extends State<EventList> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return BlocBuilder<EventOverviewBloc, EventOverviewState>(
         builder: (context, state) {
       switch (state.status) {
@@ -67,7 +67,7 @@ class _EventListState extends State<EventList> {
                   child: Center(
                     child: Text(
                       S().events(0),
-                      style: textTheme.subtitle1,
+                      style: context.subtitle1,
                     ),
                   ),
                 ),

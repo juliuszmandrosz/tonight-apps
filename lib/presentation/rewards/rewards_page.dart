@@ -52,7 +52,7 @@ class RewardsPage extends StatelessWidget {
                               .where(
                                   (reward) => reward.requiredEntries == entries)
                               .toList(),
-                        )
+                        ),
                     ],
                   );
           },

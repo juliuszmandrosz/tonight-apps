@@ -11,14 +11,10 @@ class EventSummarySwitchStepButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return IconButton(
       padding: EdgeInsets.zero,
       constraints: const BoxConstraints(),
-      icon: Icon(
-        Icons.mode_edit,
-        color: theme.primaryColor,
-      ),
+      icon: const Icon(Icons.mode_edit),
       onPressed: () => _switchStep(context),
     );
   }

@@ -6,6 +6,7 @@ import 'package:formz/formz.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event/form_inputs/dj_channel_url.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/color_extensions.dart';
 
 class EventDjChannelUrlInput extends HookWidget {
   const EventDjChannelUrlInput({Key? key}) : super(key: key);
@@ -15,8 +16,6 @@ class EventDjChannelUrlInput extends HookWidget {
     final _controller = useTextEditingController(
       text: context.read<AddEventCubit>().state.djChannelUrl.value,
     );
-
-    final theme = Theme.of(context);
 
     return BlocBuilder<AddEventCubit, AddEventState>(
       buildWhen: (previous, current) =>
@@ -34,14 +33,16 @@ class EventDjChannelUrlInput extends HookWidget {
               Flexible(
                 flex: 1,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
+                      padding: EdgeInsets.zero,
                       icon: FaIcon(
                         eventSocialMedia[djChannel]!.icon,
                         size: 40,
                         color: state.isDjChannelUrlEnabled
-                            ? theme.primaryColor
-                            : theme.colorScheme.outline,
+                            ? context.primaryColor
+                            : context.outlineColor,
                       ),
                       onPressed: () => context
                           .read<AddEventCubit>()
@@ -60,7 +61,7 @@ class EventDjChannelUrlInput extends HookWidget {
                       style: state.isDjChannelUrlEnabled
                           ? const TextStyle()
                           : const TextStyle().copyWith(
-                              color: Theme.of(context).disabledColor,
+                              color: context.outlineColor,
                             ),
                       controller: _controller,
                       onChanged: (value) => context

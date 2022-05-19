@@ -6,6 +6,7 @@ import 'package:formz/formz.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event/form_inputs/facebook_url.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/color_extensions.dart';
 
 class EventFacebookUrlInput extends HookWidget {
   const EventFacebookUrlInput({
@@ -17,8 +18,6 @@ class EventFacebookUrlInput extends HookWidget {
     final _controller = useTextEditingController(
       text: context.read<AddEventCubit>().state.facebookUrl.value,
     );
-
-    final theme = Theme.of(context);
 
     return BlocBuilder<AddEventCubit, AddEventState>(
       buildWhen: (previous, current) =>
@@ -36,14 +35,16 @@ class EventFacebookUrlInput extends HookWidget {
               Flexible(
                 flex: 1,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
+                      padding: EdgeInsets.zero,
                       icon: FaIcon(
                         eventSocialMedia[facebook]!.icon,
                         size: 40,
                         color: state.isFacebookUrlEnabled
-                            ? theme.primaryColor
-                            : theme.colorScheme.outline,
+                            ? context.primaryColor
+                            : context.outlineColor,
                       ),
                       onPressed: () => context
                           .read<AddEventCubit>()
@@ -62,7 +63,7 @@ class EventFacebookUrlInput extends HookWidget {
                       style: state.isFacebookUrlEnabled
                           ? const TextStyle()
                           : const TextStyle().copyWith(
-                              color: Theme.of(context).disabledColor,
+                              color: context.outlineColor,
                             ),
                       controller: _controller,
                       onChanged: (value) => context

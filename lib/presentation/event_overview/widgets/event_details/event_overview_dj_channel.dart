@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_partners/presentation/core/raver_partners_headline.dart';
 import 'package:raver_partners/presentation/event_overview/widgets/dialogs/edit_event_dj_channel_url_dialog.dart';
 import 'package:raver_partners/presentation/event_overview/widgets/event_details/delete_event_detail_button.dart';
@@ -14,8 +15,6 @@ class EventOverviewDjChannel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return BlocBuilder<UpcomingLiveEventCubit, UpcomingLiveEventState>(
       buildWhen: (previous, current) => previous.event != current.event,
       builder: (context, state) {
@@ -46,7 +45,7 @@ class EventOverviewDjChannel extends StatelessWidget {
                   Flexible(
                     child: Text(
                       djChannelUrl,
-                      style: theme.textTheme.headline4,
+                      style: context.subtitle1,
                     ),
                   ),
                 ],

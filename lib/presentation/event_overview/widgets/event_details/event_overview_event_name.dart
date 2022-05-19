@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_partners/presentation/core/raver_partners_headline.dart';
 import 'package:raver_partners/presentation/event_overview/widgets/dialogs/edit_event_name_dialog.dart';
 import 'package:raver_partners/presentation/event_overview/widgets/event_details/show_edit_event_dialog_button.dart';
@@ -12,7 +13,6 @@ class EventOverviewEventName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Column(
       children: [
         Row(
@@ -33,7 +33,7 @@ class EventOverviewEventName extends StatelessWidget {
                 Expanded(
                   child: Text(
                     state.event.getOrCrash().eventName,
-                    style: theme.textTheme.headline4,
+                    style: context.subtitle1,
                   ),
                 ),
               ],

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
 
 class EventListTile extends StatelessWidget {
@@ -11,7 +12,6 @@ class EventListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final isPastEvent = event.eventEndDateTime.isBefore(DateTime.now());
     return Card(
       elevation: 5,
@@ -27,7 +27,7 @@ class EventListTile extends StatelessWidget {
         child: ListTile(
           title: Text(
             event.eventName,
-            style: theme.textTheme.headline2,
+            style: context.headline5,
           ),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
@@ -35,15 +35,14 @@ class EventListTile extends StatelessWidget {
             padding: const EdgeInsets.only(top: 5),
             child: Text(
               context.formatDateTimeToLocaleYMDHM(event.eventStartDateTime),
-              style: theme.textTheme.subtitle2,
+              style: context.subtitle1,
             ),
           ),
           trailing: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: const [
               Icon(
                 Icons.chevron_right_rounded,
-                color: theme.iconTheme.color,
                 size: 30,
               ),
             ],

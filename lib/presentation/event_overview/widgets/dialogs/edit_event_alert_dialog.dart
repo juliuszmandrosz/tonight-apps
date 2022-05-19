@@ -20,25 +20,14 @@ class EditEventAlertDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return AlertDialog(
       insetPadding: EdgeInsets.zero,
       title: Text(title),
-      actionsPadding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
       contentPadding: const EdgeInsets.only(top: 20),
-      actionsAlignment: MainAxisAlignment.spaceBetween,
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: Padding(
-            padding: const EdgeInsets.all(3.0),
-            child: Text(
-              S().cancel.toUpperCase(),
-              style: theme.textTheme.bodyText1!.copyWith(
-                color: theme.colorScheme.onTertiaryContainer,
-              ),
-            ),
-          ),
+          child: Text(S().cancel.toUpperCase()),
         ),
         BlocBuilder<UpcomingLiveEventCubit, UpcomingLiveEventState>(
           buildWhen: (previous, current) =>
@@ -46,15 +35,12 @@ class EditEventAlertDialog extends StatelessWidget {
           builder: (context, state) {
             return state.editEventDetailsStatus.isSubmissionInProgress
                 ? const CircularProgressIndicator()
-                : ElevatedButton(
+                : TextButton(
                     onPressed: () => onSubmitted(),
-                    child: Padding(
-                      padding: const EdgeInsets.all(3.0),
-                      child: Text(
-                        isValueEmpty
-                            ? S().add.toUpperCase()
-                            : S().edit.toUpperCase(),
-                      ),
+                    child: Text(
+                      isValueEmpty
+                          ? S().add.toUpperCase()
+                          : S().edit.toUpperCase(),
                     ),
                   );
           },

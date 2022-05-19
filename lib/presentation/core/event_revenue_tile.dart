@@ -1,5 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/color_extensions.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 
 class EventRevenueTile extends StatelessWidget {
   final IconData icon;
@@ -17,12 +19,9 @@ class EventRevenueTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Container(
       decoration: BoxDecoration(
-        color: isFirst
-            ? theme.colorScheme.secondary
-            : theme.colorScheme.tertiaryContainer,
+        color: isFirst ? context.primaryColor : context.surfaceColor,
         borderRadius: BorderRadius.circular(24),
       ),
       child: Column(
@@ -32,7 +31,6 @@ class EventRevenueTile extends StatelessWidget {
             child: Icon(
               icon,
               size: 40,
-              color: isFirst ? Colors.white : Colors.black,
             ),
           ),
           const SizedBox(height: 12),
@@ -42,29 +40,12 @@ class EventRevenueTile extends StatelessWidget {
               child: AutoSizeText(
                 value,
                 maxLines: 1,
-                style: isFirst
-                    ? theme.textTheme.bodyText1!.copyWith(
-                        fontSize: 30,
-                        fontWeight: FontWeight.w500,
-                      )
-                    : theme.textTheme.bodyText2!.copyWith(
-                        fontSize: 30,
-                        fontWeight: FontWeight.w500,
-                      ),
+                style: context.headline5
               ),
             ),
           ),
           const SizedBox(height: 12),
-          Text(
-            label,
-            style: isFirst
-                ? theme.textTheme.bodyText1!.copyWith(
-                    color: theme.colorScheme.onPrimaryContainer,
-                  )
-                : theme.textTheme.bodyText2!.copyWith(
-                    color: theme.colorScheme.onTertiaryContainer,
-                  ),
-          ),
+          Text(label),
         ],
       ),
     );

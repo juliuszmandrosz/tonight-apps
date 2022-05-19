@@ -4,6 +4,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event/add_event_step.dart';
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_switch_step_button.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_partners/presentation/core/raver_partners_headline.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -12,7 +13,6 @@ class EventSummaryStartDate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<AddEventCubit, AddEventState>(
       buildWhen: (previous, current) =>
           previous.startDateTime != current.startDateTime,
@@ -32,7 +32,7 @@ class EventSummaryStartDate extends StatelessWidget {
                 Text(
                   context
                       .formatDateTimeToLocaleYMDHM(state.startDateTime.value!),
-                  style: theme.textTheme.subtitle1,
+                  style: context.subtitle1,
                 ),
               ],
             ),

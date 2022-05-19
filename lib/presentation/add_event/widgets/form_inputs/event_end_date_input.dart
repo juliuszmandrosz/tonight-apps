@@ -40,11 +40,10 @@ class EventEndDateInput extends StatelessWidget {
                 );
                 context.read<AddEventCubit>().eventEndDateTimeChanged(dateTime);
               },
-              icon: Padding(
-                padding: const EdgeInsets.only(right: 8),
+              icon: const Padding(
+                padding: EdgeInsets.only(right: 8),
                 child: FaIcon(
                   FontAwesomeIcons.calendarAlt,
-                  color: Theme.of(context).primaryColor,
                   size: 25,
                 ),
               ),

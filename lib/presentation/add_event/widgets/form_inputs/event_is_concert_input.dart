@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_translations/generated/l10n.dart';
 
 class EventIsConcertInput extends StatelessWidget {
@@ -8,7 +9,6 @@ class EventIsConcertInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<AddEventCubit, AddEventState>(
       buildWhen: (previous, current) => previous.isConcert != current.isConcert,
       builder: (context, state) {
@@ -19,7 +19,7 @@ class EventIsConcertInput extends StatelessWidget {
           child: SwitchListTile.adaptive(
             title: Text(
               S().isConcert,
-              style: theme.textTheme.subtitle1,
+              style: context.subtitle1,
             ),
             value: state.isConcert,
             onChanged: (value) =>

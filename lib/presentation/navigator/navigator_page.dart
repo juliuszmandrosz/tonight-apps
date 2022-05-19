@@ -53,11 +53,9 @@ class NavigatorPage extends StatelessWidget {
               ],
             ),
             routes: const [
-              DashboardRoute(),
               EventsRoute(),
               RewardsRoute(),
               SelectorsRoute(),
-              SettingsRoute(),
             ],
             floatingActionButton: const RaverPartnersSpeedDial(),
             bottomNavigationBuilder: (_, tabsRouter) {
@@ -66,10 +64,6 @@ class NavigatorPage extends StatelessWidget {
                 currentIndex: tabsRouter.activeIndex,
                 onTap: tabsRouter.setActiveIndex,
                 items: [
-                  BottomNavigationBarItem(
-                    icon: const Icon(Icons.dashboard),
-                    label: S().dashboard,
-                  ),
                   BottomNavigationBarItem(
                     icon: const Icon(FontAwesomeIcons.list),
                     label: S().events(2),
@@ -81,10 +75,6 @@ class NavigatorPage extends StatelessWidget {
                   BottomNavigationBarItem(
                       icon: const Icon(FontAwesomeIcons.userFriends),
                       label: S().selectors(2)),
-                  BottomNavigationBarItem(
-                    icon: const FaIcon(Icons.settings),
-                    label: S().settings,
-                  ),
                 ],
               );
             },

@@ -31,6 +31,7 @@ class EventStartDateInput extends StatelessWidget {
           decoration: InputDecoration(
             labelText: S().startDate,
             errorText: _getStartDateTimeErrorMessage(state),
+            errorMaxLines: 2,
             suffixIcon: IconButton(
               onPressed: () async {
                 final dateTime = await getDateTimeFromUser(
@@ -39,11 +40,10 @@ class EventStartDateInput extends StatelessWidget {
                 );
                 context.read<AddEventCubit>().startDateTimeChanged(dateTime);
               },
-              icon: Padding(
-                padding: const EdgeInsets.only(right: 8),
+              icon: const Padding(
+                padding: EdgeInsets.only(right: 8),
                 child: FaIcon(
                   FontAwesomeIcons.calendarAlt,
-                  color: Theme.of(context).primaryColor,
                   size: 25,
                 ),
               ),

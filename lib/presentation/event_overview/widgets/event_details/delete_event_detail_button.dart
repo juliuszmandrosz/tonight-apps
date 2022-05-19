@@ -11,7 +11,6 @@ class DeleteEventDetailButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return IconButton(
       onPressed: () async {
         final result = await context.showDeleteConfirmationDialog();
@@ -19,10 +18,9 @@ class DeleteEventDetailButton extends StatelessWidget {
           onDeleted();
         }
       },
-      icon: Icon(
+      icon: const Icon(
         Icons.delete_rounded,
         size: 30,
-        color: theme.colorScheme.primary,
       ),
     );
   }

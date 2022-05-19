@@ -16,10 +16,16 @@ class AddEventPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var _isEventAddedSuccessfully = false;
+
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: WillPopScope(
         onWillPop: () async {
+          if (_isEventAddedSuccessfully) {
+            return true;
+          }
+
           final result = await context
               .showConfirmationDialogWithCustomMessage(S().confirmLeavingPage);
 
@@ -46,6 +52,7 @@ class AddEventPage extends StatelessWidget {
                   );
 
                   if (state.status.isSubmissionSuccess) {
+                    _isEventAddedSuccessfully = true;
                     AutoRouter.of(context).pop();
                     context.showSnackbarMessage(S().eventAddedSuccessfully);
                   }

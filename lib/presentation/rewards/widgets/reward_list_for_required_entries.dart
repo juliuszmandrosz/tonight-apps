@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_partners/presentation/rewards/widgets/reward_list_tile.dart';
 import 'package:raver_rewards/raver_rewards.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -15,7 +16,6 @@ class RewardListForRequiredEntries extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Column(
       children: [
         Padding(
@@ -24,7 +24,7 @@ class RewardListForRequiredEntries extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Text(
               '$requiredEntries ${S().entries(requiredEntries)}',
-              style: textTheme.subtitle2,
+              style: context.subtitle2,
             ),
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 
 class RaverPartnersHeadline extends StatelessWidget {
   final String text;
@@ -7,10 +8,9 @@ class RaverPartnersHeadline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Text(
       text,
-      style: textTheme.headline1,
+      style: context.headline5,
     );
   }
 }

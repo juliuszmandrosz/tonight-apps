@@ -5,7 +5,6 @@ import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -57,7 +56,6 @@ class SignUpCubit extends Cubit<SignUpState> {
   _subscribeToDynamicLinks() {
     _linkSub = _dynamicLinks.onLink.listen((dynamicLink) async {
       final Uri? deepLink = dynamicLink.link;
-      Logger().wtf(deepLink);
       if (deepLink != null) {
         await _signUpWithEmailLink(deepLink);
         _linkSub.cancel();
@@ -67,9 +65,6 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   Future<void> _signUpWithEmailLink(Uri link) async {
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
-
-    Logger().i(state.accessCode.value);
-    Logger().i(state.email.value);
 
     final failureOrSuccess =
         await _authFacade.signUpWithEmailLinkAndAccessCodeAsPartner(
