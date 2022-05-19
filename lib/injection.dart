@@ -249,6 +249,12 @@ void _registerFacades() {
     ),
   );
 
+  getIt.registerLazySingleton<ClubCloudFunctionsFacade>(
+    () => ClubCloudFunctionsFacadeImpl(
+      getIt(),
+    ),
+  );
+
   getIt.registerLazySingleton<PartnerPaymentFacade>(
     () => FirebasePaymentFacade(
       paymentCloudFunctionsFacade: getIt(),
@@ -263,11 +269,6 @@ void _registerFacades() {
     ),
   );
 
-  getIt.registerLazySingleton<ClubCloudFunctionsFacade>(
-    () => ClubCloudFunctionsFacadeImpl(
-      getIt(),
-    ),
-  );
 }
 
 void _registerModules() {
