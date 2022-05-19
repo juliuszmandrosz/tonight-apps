@@ -536,7 +536,7 @@ class FirebaseAuthFacade
         handleCodeInApp: true,
         iOSBundleId: 'com.raverteam.tonightPartners',
         androidPackageName: 'com.raverteam.tonightPartners',
-        dynamicLinkDomain: 'tonight.page.link',
+        dynamicLinkDomain: 'tonightpartners.page.link',
       ),
     );
   }
