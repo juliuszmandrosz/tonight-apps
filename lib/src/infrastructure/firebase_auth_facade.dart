@@ -32,8 +32,8 @@ class FirebaseAuthFacade
     String email,
   ) async {
     try {
-      await _authCloudFunctionsFacade.checkIfAccountExists(email);
       await _authCloudFunctionsFacade.checkPartnerClaim(email);
+      await _authCloudFunctionsFacade.checkIfAccountExists(email);
       await _sendSignInLinkForPartner(email);
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -59,8 +59,8 @@ class FirebaseAuthFacade
     required String accessCode,
   }) async {
     try {
-      await _authCloudFunctionsFacade.checkIfAccountNotExists(email);
       await _authCloudFunctionsFacade.checkPartnerClaim(email);
+      await _authCloudFunctionsFacade.checkIfAccountNotExists(email);
       await _authCloudFunctionsFacade.checkPartnerAccessCode(accessCode);
       await _sendSignInLinkForPartner(email);
       return right(unit);
@@ -158,8 +158,8 @@ class FirebaseAuthFacade
     String email,
   ) async {
     try {
-      await _authCloudFunctionsFacade.checkIfAccountExists(email);
       await _authCloudFunctionsFacade.checkSelectorClaim(email);
+      await _authCloudFunctionsFacade.checkIfAccountExists(email);
       await _sendSignInLinkForSelector(email);
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -185,8 +185,8 @@ class FirebaseAuthFacade
     required String accessCode,
   }) async {
     try {
-      await _authCloudFunctionsFacade.checkIfAccountNotExists(email);
       await _authCloudFunctionsFacade.checkSelectorClaim(email);
+      await _authCloudFunctionsFacade.checkIfAccountNotExists(email);
       await _authCloudFunctionsFacade.checkSelectorAccessCode(accessCode);
       await _sendSignInLinkForSelector(email);
       return right(unit);
