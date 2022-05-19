@@ -28,6 +28,132 @@ class FirebaseAuthFacade
         _authCloudFunctionsFacade = authCloudFunctionsFacade;
 
   @override
+  Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForPartner(
+    String email,
+  ) async {
+    try {
+      await _authCloudFunctionsFacade.checkIfAccountExists(email);
+      await _authCloudFunctionsFacade.checkPartnerClaim(email);
+      await _sendSignInLinkForPartner(email);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      _logger.e(
+        "Auth Exception sending sign in email link for partner EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    } on FirebaseFunctionsException catch (e) {
+      _logger.e(
+        "Functions Exception sending sign in email link for partner EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> sendSignUpEmailLinkForPartner({
+    required String email,
+    required String accessCode,
+  }) async {
+    try {
+      await _authCloudFunctionsFacade.checkIfAccountNotExists(email);
+      await _authCloudFunctionsFacade.checkPartnerClaim(email);
+      await _authCloudFunctionsFacade.checkPartnerAccessCode(accessCode);
+      await _sendSignInLinkForPartner(email);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      _logger.e(
+        "Auth Exception sending sign up email link for partner EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    } on FirebaseFunctionsException catch (e) {
+      _logger.e(
+        "Functions Exception sending sign up email link for partner EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(
+          message: firebaseAuthMessages[e.details] ??
+              firebaseAuthMessages[e.code] ??
+              serverError,
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signInWithEmailLinkAsPartner({
+    required String email,
+    required Uri link,
+  }) async {
+    try {
+      if (!_firebaseAuth.isSignInWithEmailLink(link.toString())) {
+        return left(AuthFailure(message: invalidLink));
+      }
+
+      await _signInWithEmailLink(email, link.toString());
+
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      _logger.e(
+        "Auth Exception signing in with email link as partner EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    } on FirebaseFunctionsException catch (e) {
+      _logger.e(
+        "Functions Exception signing in with email link as partner EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> signUpWithEmailLinkAndAccessCodeAsPartner({
+    required String email,
+    required Uri link,
+    required String accessCode,
+  }) async {
+    try {
+      if (!_firebaseAuth.isSignInWithEmailLink(link.toString())) {
+        return left(AuthFailure(message: invalidLink));
+      }
+
+      await _signInWithEmailLink(email, link.toString());
+
+      await _authCloudFunctionsFacade.addPartner(accessCode);
+
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      _logger.e(
+        "Auth Exception signing up with email link and access code as partner EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
+      );
+    } on FirebaseFunctionsException catch (e) {
+      await signOut();
+      _logger.e(
+        "Functions Exception signing up with email link and access code as partner EXCEPTION: $e",
+      );
+      return left(
+        AuthFailure(
+          message: firebaseAuthMessages[e.details] ??
+              firebaseAuthMessages[e.code] ??
+              serverError,
+        ),
+      );
+    }
+  }
+
+  @override
   Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForSelector(
     String email,
   ) async {
@@ -159,16 +285,7 @@ class FirebaseAuthFacade
   ) async {
     try {
       await _authCloudFunctionsFacade.checkUserClaim(email);
-      await _firebaseAuth.sendSignInLinkToEmail(
-        email: email,
-        actionCodeSettings: ActionCodeSettings(
-          url: 'https://raverteam.page.link',
-          handleCodeInApp: true,
-          iOSBundleId: 'com.raver',
-          androidPackageName: 'com.raverteam.raver',
-          dynamicLinkDomain: 'raverteam.page.link',
-        ),
-      );
+      await _sendSignInLinkForUser(email);
       return right(unit);
     } on FirebaseAuthException catch (e) {
       _logger.e(
@@ -251,71 +368,6 @@ class FirebaseAuthFacade
       _logger.e(
         "Firebase Function Exception during "
         "sign in with Google as user EXCEPTION: $e",
-      );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
-    }
-  }
-
-  @override
-  Future<Either<AuthFailure, Unit>> signInWithEmailAndPasswordAsPartner({
-    required String email,
-    required String password,
-  }) async {
-    try {
-      await _authCloudFunctionsFacade.checkPartnerClaim(email);
-      await _firebaseAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return right(unit);
-    } on FirebaseAuthException catch (e) {
-      _logger.e(
-        "Exception during sign in "
-        "with login and password as partner EXCEPTION: $e",
-      );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
-    } on FirebaseFunctionsException catch (e) {
-      _logger.e(
-        "Firebase Functions Exception during "
-        "sign in with login and password as partner EXCEPTION: $e",
-      );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
-    }
-  }
-
-  // TODO - Implement onboarding for partners
-  @override
-  Future<Either<AuthFailure, Unit>> signUpWithEmailAndPasswordAsPartner({
-    required String email,
-    required String password,
-    required String connectedAccountId,
-  }) async {
-    try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      await _authCloudFunctionsFacade.addPartner(connectedAccountId);
-      return right(unit);
-    } on FirebaseAuthException catch (e) {
-      _logger.e(
-        "Exception during register with "
-        "login and password as partner EXCEPTION: $e",
-      );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
-    } on FirebaseFunctionsException catch (e) {
-      await signOut();
-      _logger.e(
-        "Firebase Functions Exception during register"
-        " with login and password as partner EXCEPTION: $e",
       );
       return left(
         AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
@@ -450,6 +502,19 @@ class FirebaseAuthFacade
     );
   }
 
+  Future<void> _sendSignInLinkForUser(String email) async {
+    await _firebaseAuth.sendSignInLinkToEmail(
+      email: email,
+      actionCodeSettings: ActionCodeSettings(
+        url: 'https://raverteam.page.link',
+        handleCodeInApp: true,
+        iOSBundleId: 'com.raver',
+        androidPackageName: 'com.raverteam.raver',
+        dynamicLinkDomain: 'raverteam.page.link',
+      ),
+    );
+  }
+
   Future<void> _sendSignInLinkForSelector(String email) async {
     await _firebaseAuth.sendSignInLinkToEmail(
       email: email,
@@ -459,6 +524,19 @@ class FirebaseAuthFacade
         iOSBundleId: 'com.raverteam.raverScanner',
         androidPackageName: 'com.raverteam.raverScanner',
         dynamicLinkDomain: 'raverscanner.page.link',
+      ),
+    );
+  }
+
+  Future<void> _sendSignInLinkForPartner(String email) async {
+    await _firebaseAuth.sendSignInLinkToEmail(
+      email: email,
+      actionCodeSettings: ActionCodeSettings(
+        url: 'https://tonightpartners.page.link',
+        handleCodeInApp: true,
+        iOSBundleId: 'com.raverteam.tonightPartners',
+        androidPackageName: 'com.raverteam.tonightPartners',
+        dynamicLinkDomain: 'tonight.page.link',
       ),
     );
   }

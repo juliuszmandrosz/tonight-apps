@@ -2,16 +2,24 @@ import 'package:dartz/dartz.dart';
 import 'package:raver_auth/raver_auth.dart';
 
 abstract class PartnerAuthFacade {
-  Future<Either<AuthFailure, Unit>> signInWithEmailAndPasswordAsPartner({
+  Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForPartner(
+    String email,
+  );
+
+  Future<Either<AuthFailure, Unit>> sendSignUpEmailLinkForPartner({
     required String email,
-    required String password,
+    required String accessCode,
   });
 
-  // TODO - Implement onboarding for partners
-  Future<Either<AuthFailure, Unit>> signUpWithEmailAndPasswordAsPartner({
+  Future<Either<AuthFailure, Unit>> signInWithEmailLinkAsPartner({
     required String email,
-    required String password,
-    required String connectedAccountId,
+    required Uri link,
+  });
+
+  Future<Either<AuthFailure, Unit>> signUpWithEmailLinkAndAccessCodeAsPartner({
+    required String email,
+    required Uri link,
+    required String accessCode,
   });
 
   Future<Option<AppUser>> getSignedPartner();
