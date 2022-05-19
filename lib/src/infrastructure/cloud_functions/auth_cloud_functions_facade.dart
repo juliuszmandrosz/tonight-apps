@@ -11,9 +11,11 @@ abstract class AuthCloudFunctionsFacade {
 
   Future<Unit> addUser();
 
-  Future<Unit> addPartner(String connectedAccountId);
+  Future<Unit> addPartner(String accessCode);
 
   Future<Unit> addSelector(String accessCode);
+
+  Future<Unit> checkPartnerAccessCode(String accessCode);
 
   Future<Unit> checkSelectorAccessCode(String accessCode);
 
@@ -67,10 +69,10 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   }
 
   @override
-  Future<Unit> addPartner(String connectedAccountId) async {
+  Future<Unit> addPartner(String accessCode) async {
     final addPartnerFn = _firebaseFunctions.httpsCallable(addPartnerFnName);
 
-    await addPartnerFn.call({'connectedAccountId': connectedAccountId});
+    await addPartnerFn.call({'accessCode': accessCode});
 
     return unit;
   }
@@ -80,6 +82,16 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
     final addSelectorFn = _firebaseFunctions.httpsCallable(addSelectorFnName);
 
     await addSelectorFn.call({'accessCode': accessCode});
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> checkPartnerAccessCode(String accessCode) async {
+    final checkPartnerAccessCodeFn =
+        _firebaseFunctions.httpsCallable(checkPartnerAccessCodeFnName);
+
+    await checkPartnerAccessCodeFn.call({'accessCode': accessCode});
 
     return unit;
   }
