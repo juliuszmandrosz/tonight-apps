@@ -12,6 +12,7 @@ import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/tick
 import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/vip_price.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
+import 'package:collection/collection.dart';
 
 part 'add_edit_ticket_pool_cubit.freezed.dart';
 
@@ -87,6 +88,8 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
       vipPrice: state.vipPrice.value!,
       ticketQuantity: state.ticketQuantity.value!,
       isCurrent: isCurrent,
+      // TODO - change after merge https://github.com/juliuszmandrosz/RaverPartners/pull/25
+      vipPrice: 0,
     );
 
     emit(

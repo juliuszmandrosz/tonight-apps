@@ -20,6 +20,7 @@ import 'package:raver_partners/application/add_event/form_inputs/musical_genres.
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
+import 'package:collection/collection.dart';
 
 part 'add_event_cubit.freezed.dart';
 

@@ -1,11 +1,13 @@
 import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_clubs/infrastructure/cloud_functions/club_cloud_functions_facade.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
@@ -159,7 +161,9 @@ void _registerFacades() {
   );
 
   getIt.registerLazySingleton<AuthCloudFunctionsFacade>(
-    () => AuthCloudFunctionsFacadeImpl(),
+    () => AuthCloudFunctionsFacadeImpl(
+      getIt(),
+    ),
   );
 
   getIt.registerLazySingleton<CommonEventFacade>(
@@ -192,6 +196,7 @@ void _registerFacades() {
       firestore: getIt(),
       firebaseAuth: getIt(),
       logger: getIt(),
+      cloudFunctionsFacade: getIt(),
     ),
   );
 
@@ -228,6 +233,12 @@ void _registerFacades() {
       logger: getIt(),
     ),
   );
+
+  getIt.registerLazySingleton<ClubCloudFunctionsFacade>(
+    () => ClubCloudFunctionsFacadeImpl(
+      getIt(),
+    ),
+  );
 }
 
 void _registerModules() {
@@ -243,6 +254,8 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebaseFirestore.instance);
 
   getIt.registerLazySingleton(() => FirebaseAuth.instance);
+
+  getIt.registerLazySingleton(() => FirebaseFunctions.instance);
 
   getIt.registerLazySingleton(() => Logger());
 
