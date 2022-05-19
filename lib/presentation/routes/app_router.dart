@@ -6,7 +6,6 @@ import 'package:raver_partners/presentation/add_edit_reward/add_edit_reward_page
 import 'package:raver_partners/presentation/add_edit_ticket_pool/add_edit_ticket_pool_page.dart';
 import 'package:raver_partners/presentation/add_event/add_event_page.dart';
 import 'package:raver_partners/presentation/auth/auth_page.dart';
-import 'package:raver_partners/presentation/auth/reset_password/reset_password_page.dart';
 import 'package:raver_partners/presentation/dashboard/dashboard_page.dart';
 import 'package:raver_partners/presentation/event_overview/event_overview_page.dart';
 import 'package:raver_partners/presentation/events/events_page.dart';
@@ -27,7 +26,6 @@ part 'app_router.gr.dart';
   routes: <AutoRoute>[
     AutoRoute(page: SplashPage, initial: true),
     AutoRoute(page: AuthPage),
-    AutoRoute(page: ResetPasswordPage),
     AutoRoute(
       page: NavigatorPage,
       children: [

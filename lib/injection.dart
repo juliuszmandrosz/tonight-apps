@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get_it/get_it.dart';
@@ -17,6 +18,7 @@ import 'package:raver_partners/application/add_edit_reward/add_edit_reward_cubit
 import 'package:raver_partners/application/add_edit_ticket_pool/add_edit_ticket_pool_cubit.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/auth/sign_in/sign_in_cubit.dart';
+import 'package:raver_partners/application/auth/sign_up/sign_up_cubit.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/event_filters/event_filters_cubit.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
@@ -53,7 +55,15 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => SignInCubit(
-      getIt(),
+      firebaseDynamicLinks: getIt(),
+      partnerAuthFacade: getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => SignUpCubit(
+      firebaseDynamicLinks: getIt(),
+      partnerAuthFacade: getIt(),
     ),
   );
 
@@ -286,6 +296,8 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebaseAuth.instance);
 
   getIt.registerLazySingleton(() => FirebaseFunctions.instance);
+
+  getIt.registerLazySingleton(() => FirebaseDynamicLinks.instance);
 
   getIt.registerLazySingleton(() => FirebaseRemoteConfig.instance);
 
