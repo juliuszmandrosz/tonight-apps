@@ -4,7 +4,7 @@ part 'partner_payment_failure.freezed.dart';
 
 @freezed
 class PartnerPaymentFailure with _$PartnerPaymentFailure {
-  const factory PartnerPaymentFailure.unexpected() = _PaymentFailure;
+  const factory PartnerPaymentFailure.unexpected() = _Unexpected;
 
   const factory PartnerPaymentFailure.stripeError() = _StripeError;
 

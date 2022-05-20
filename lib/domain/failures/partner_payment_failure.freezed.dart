@@ -12,39 +12,7 @@ part of 'partner_payment_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PartnerPaymentFailureTearOff {
-  const _$PartnerPaymentFailureTearOff();
-
-  _PaymentFailure unexpected() {
-    return const _PaymentFailure();
-  }
-
-  _StripeError stripeError() {
-    return const _StripeError();
-  }
-
-  _CanceledByPartner canceledByPartner() {
-    return const _CanceledByPartner();
-  }
-
-  _CancelTimeExpired cancelTimeExpired() {
-    return const _CancelTimeExpired();
-  }
-
-  _PostponeTimeExpired postponeTimeExpired() {
-    return const _PostponeTimeExpired();
-  }
-
-  _PostponeTimeTooShort postponeTimeTooShort() {
-    return const _PostponeTimeTooShort();
-  }
-}
-
-/// @nodoc
-const $PartnerPaymentFailure = _$PartnerPaymentFailureTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PartnerPaymentFailure {
@@ -81,7 +49,7 @@ mixin _$PartnerPaymentFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PaymentFailure value) unexpected,
+    required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_CanceledByPartner value) canceledByPartner,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
@@ -91,7 +59,7 @@ mixin _$PartnerPaymentFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
@@ -101,7 +69,7 @@ mixin _$PartnerPaymentFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
@@ -130,28 +98,28 @@ class _$PartnerPaymentFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PaymentFailureCopyWith<$Res> {
-  factory _$PaymentFailureCopyWith(
-          _PaymentFailure value, $Res Function(_PaymentFailure) then) =
-      __$PaymentFailureCopyWithImpl<$Res>;
+abstract class _$$_UnexpectedCopyWith<$Res> {
+  factory _$$_UnexpectedCopyWith(
+          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
+      __$$_UnexpectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$PaymentFailureCopyWithImpl<$Res>
+class __$$_UnexpectedCopyWithImpl<$Res>
     extends _$PartnerPaymentFailureCopyWithImpl<$Res>
-    implements _$PaymentFailureCopyWith<$Res> {
-  __$PaymentFailureCopyWithImpl(
-      _PaymentFailure _value, $Res Function(_PaymentFailure) _then)
-      : super(_value, (v) => _then(v as _PaymentFailure));
+    implements _$$_UnexpectedCopyWith<$Res> {
+  __$$_UnexpectedCopyWithImpl(
+      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+      : super(_value, (v) => _then(v as _$_Unexpected));
 
   @override
-  _PaymentFailure get _value => super._value as _PaymentFailure;
+  _$_Unexpected get _value => super._value as _$_Unexpected;
 }
 
 /// @nodoc
 
-class _$_PaymentFailure implements _PaymentFailure {
-  const _$_PaymentFailure();
+class _$_Unexpected implements _Unexpected {
+  const _$_Unexpected();
 
   @override
   String toString() {
@@ -161,7 +129,7 @@ class _$_PaymentFailure implements _PaymentFailure {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _PaymentFailure);
+        (other.runtimeType == runtimeType && other is _$_Unexpected);
   }
 
   @override
@@ -213,7 +181,7 @@ class _$_PaymentFailure implements _PaymentFailure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PaymentFailure value) unexpected,
+    required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_CanceledByPartner value) canceledByPartner,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
@@ -226,7 +194,7 @@ class _$_PaymentFailure implements _PaymentFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
@@ -239,7 +207,7 @@ class _$_PaymentFailure implements _PaymentFailure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
@@ -254,27 +222,27 @@ class _$_PaymentFailure implements _PaymentFailure {
   }
 }
 
-abstract class _PaymentFailure implements PartnerPaymentFailure {
-  const factory _PaymentFailure() = _$_PaymentFailure;
+abstract class _Unexpected implements PartnerPaymentFailure {
+  const factory _Unexpected() = _$_Unexpected;
 }
 
 /// @nodoc
-abstract class _$StripeErrorCopyWith<$Res> {
-  factory _$StripeErrorCopyWith(
-          _StripeError value, $Res Function(_StripeError) then) =
-      __$StripeErrorCopyWithImpl<$Res>;
+abstract class _$$_StripeErrorCopyWith<$Res> {
+  factory _$$_StripeErrorCopyWith(
+          _$_StripeError value, $Res Function(_$_StripeError) then) =
+      __$$_StripeErrorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$StripeErrorCopyWithImpl<$Res>
+class __$$_StripeErrorCopyWithImpl<$Res>
     extends _$PartnerPaymentFailureCopyWithImpl<$Res>
-    implements _$StripeErrorCopyWith<$Res> {
-  __$StripeErrorCopyWithImpl(
-      _StripeError _value, $Res Function(_StripeError) _then)
-      : super(_value, (v) => _then(v as _StripeError));
+    implements _$$_StripeErrorCopyWith<$Res> {
+  __$$_StripeErrorCopyWithImpl(
+      _$_StripeError _value, $Res Function(_$_StripeError) _then)
+      : super(_value, (v) => _then(v as _$_StripeError));
 
   @override
-  _StripeError get _value => super._value as _StripeError;
+  _$_StripeError get _value => super._value as _$_StripeError;
 }
 
 /// @nodoc
@@ -290,7 +258,7 @@ class _$_StripeError implements _StripeError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _StripeError);
+        (other.runtimeType == runtimeType && other is _$_StripeError);
   }
 
   @override
@@ -342,7 +310,7 @@ class _$_StripeError implements _StripeError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PaymentFailure value) unexpected,
+    required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_CanceledByPartner value) canceledByPartner,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
@@ -355,7 +323,7 @@ class _$_StripeError implements _StripeError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
@@ -368,7 +336,7 @@ class _$_StripeError implements _StripeError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
@@ -388,22 +356,22 @@ abstract class _StripeError implements PartnerPaymentFailure {
 }
 
 /// @nodoc
-abstract class _$CanceledByPartnerCopyWith<$Res> {
-  factory _$CanceledByPartnerCopyWith(
-          _CanceledByPartner value, $Res Function(_CanceledByPartner) then) =
-      __$CanceledByPartnerCopyWithImpl<$Res>;
+abstract class _$$_CanceledByPartnerCopyWith<$Res> {
+  factory _$$_CanceledByPartnerCopyWith(_$_CanceledByPartner value,
+          $Res Function(_$_CanceledByPartner) then) =
+      __$$_CanceledByPartnerCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$CanceledByPartnerCopyWithImpl<$Res>
+class __$$_CanceledByPartnerCopyWithImpl<$Res>
     extends _$PartnerPaymentFailureCopyWithImpl<$Res>
-    implements _$CanceledByPartnerCopyWith<$Res> {
-  __$CanceledByPartnerCopyWithImpl(
-      _CanceledByPartner _value, $Res Function(_CanceledByPartner) _then)
-      : super(_value, (v) => _then(v as _CanceledByPartner));
+    implements _$$_CanceledByPartnerCopyWith<$Res> {
+  __$$_CanceledByPartnerCopyWithImpl(
+      _$_CanceledByPartner _value, $Res Function(_$_CanceledByPartner) _then)
+      : super(_value, (v) => _then(v as _$_CanceledByPartner));
 
   @override
-  _CanceledByPartner get _value => super._value as _CanceledByPartner;
+  _$_CanceledByPartner get _value => super._value as _$_CanceledByPartner;
 }
 
 /// @nodoc
@@ -419,7 +387,7 @@ class _$_CanceledByPartner implements _CanceledByPartner {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _CanceledByPartner);
+        (other.runtimeType == runtimeType && other is _$_CanceledByPartner);
   }
 
   @override
@@ -471,7 +439,7 @@ class _$_CanceledByPartner implements _CanceledByPartner {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PaymentFailure value) unexpected,
+    required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_CanceledByPartner value) canceledByPartner,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
@@ -484,7 +452,7 @@ class _$_CanceledByPartner implements _CanceledByPartner {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
@@ -497,7 +465,7 @@ class _$_CanceledByPartner implements _CanceledByPartner {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
@@ -517,22 +485,22 @@ abstract class _CanceledByPartner implements PartnerPaymentFailure {
 }
 
 /// @nodoc
-abstract class _$CancelTimeExpiredCopyWith<$Res> {
-  factory _$CancelTimeExpiredCopyWith(
-          _CancelTimeExpired value, $Res Function(_CancelTimeExpired) then) =
-      __$CancelTimeExpiredCopyWithImpl<$Res>;
+abstract class _$$_CancelTimeExpiredCopyWith<$Res> {
+  factory _$$_CancelTimeExpiredCopyWith(_$_CancelTimeExpired value,
+          $Res Function(_$_CancelTimeExpired) then) =
+      __$$_CancelTimeExpiredCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$CancelTimeExpiredCopyWithImpl<$Res>
+class __$$_CancelTimeExpiredCopyWithImpl<$Res>
     extends _$PartnerPaymentFailureCopyWithImpl<$Res>
-    implements _$CancelTimeExpiredCopyWith<$Res> {
-  __$CancelTimeExpiredCopyWithImpl(
-      _CancelTimeExpired _value, $Res Function(_CancelTimeExpired) _then)
-      : super(_value, (v) => _then(v as _CancelTimeExpired));
+    implements _$$_CancelTimeExpiredCopyWith<$Res> {
+  __$$_CancelTimeExpiredCopyWithImpl(
+      _$_CancelTimeExpired _value, $Res Function(_$_CancelTimeExpired) _then)
+      : super(_value, (v) => _then(v as _$_CancelTimeExpired));
 
   @override
-  _CancelTimeExpired get _value => super._value as _CancelTimeExpired;
+  _$_CancelTimeExpired get _value => super._value as _$_CancelTimeExpired;
 }
 
 /// @nodoc
@@ -548,7 +516,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _CancelTimeExpired);
+        (other.runtimeType == runtimeType && other is _$_CancelTimeExpired);
   }
 
   @override
@@ -600,7 +568,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PaymentFailure value) unexpected,
+    required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_CanceledByPartner value) canceledByPartner,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
@@ -613,7 +581,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
@@ -626,7 +594,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
@@ -646,22 +614,22 @@ abstract class _CancelTimeExpired implements PartnerPaymentFailure {
 }
 
 /// @nodoc
-abstract class _$PostponeTimeExpiredCopyWith<$Res> {
-  factory _$PostponeTimeExpiredCopyWith(_PostponeTimeExpired value,
-          $Res Function(_PostponeTimeExpired) then) =
-      __$PostponeTimeExpiredCopyWithImpl<$Res>;
+abstract class _$$_PostponeTimeExpiredCopyWith<$Res> {
+  factory _$$_PostponeTimeExpiredCopyWith(_$_PostponeTimeExpired value,
+          $Res Function(_$_PostponeTimeExpired) then) =
+      __$$_PostponeTimeExpiredCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$PostponeTimeExpiredCopyWithImpl<$Res>
+class __$$_PostponeTimeExpiredCopyWithImpl<$Res>
     extends _$PartnerPaymentFailureCopyWithImpl<$Res>
-    implements _$PostponeTimeExpiredCopyWith<$Res> {
-  __$PostponeTimeExpiredCopyWithImpl(
-      _PostponeTimeExpired _value, $Res Function(_PostponeTimeExpired) _then)
-      : super(_value, (v) => _then(v as _PostponeTimeExpired));
+    implements _$$_PostponeTimeExpiredCopyWith<$Res> {
+  __$$_PostponeTimeExpiredCopyWithImpl(_$_PostponeTimeExpired _value,
+      $Res Function(_$_PostponeTimeExpired) _then)
+      : super(_value, (v) => _then(v as _$_PostponeTimeExpired));
 
   @override
-  _PostponeTimeExpired get _value => super._value as _PostponeTimeExpired;
+  _$_PostponeTimeExpired get _value => super._value as _$_PostponeTimeExpired;
 }
 
 /// @nodoc
@@ -677,7 +645,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _PostponeTimeExpired);
+        (other.runtimeType == runtimeType && other is _$_PostponeTimeExpired);
   }
 
   @override
@@ -729,7 +697,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PaymentFailure value) unexpected,
+    required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_CanceledByPartner value) canceledByPartner,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
@@ -742,7 +710,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
@@ -755,7 +723,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
@@ -775,22 +743,22 @@ abstract class _PostponeTimeExpired implements PartnerPaymentFailure {
 }
 
 /// @nodoc
-abstract class _$PostponeTimeTooShortCopyWith<$Res> {
-  factory _$PostponeTimeTooShortCopyWith(_PostponeTimeTooShort value,
-          $Res Function(_PostponeTimeTooShort) then) =
-      __$PostponeTimeTooShortCopyWithImpl<$Res>;
+abstract class _$$_PostponeTimeTooShortCopyWith<$Res> {
+  factory _$$_PostponeTimeTooShortCopyWith(_$_PostponeTimeTooShort value,
+          $Res Function(_$_PostponeTimeTooShort) then) =
+      __$$_PostponeTimeTooShortCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$PostponeTimeTooShortCopyWithImpl<$Res>
+class __$$_PostponeTimeTooShortCopyWithImpl<$Res>
     extends _$PartnerPaymentFailureCopyWithImpl<$Res>
-    implements _$PostponeTimeTooShortCopyWith<$Res> {
-  __$PostponeTimeTooShortCopyWithImpl(
-      _PostponeTimeTooShort _value, $Res Function(_PostponeTimeTooShort) _then)
-      : super(_value, (v) => _then(v as _PostponeTimeTooShort));
+    implements _$$_PostponeTimeTooShortCopyWith<$Res> {
+  __$$_PostponeTimeTooShortCopyWithImpl(_$_PostponeTimeTooShort _value,
+      $Res Function(_$_PostponeTimeTooShort) _then)
+      : super(_value, (v) => _then(v as _$_PostponeTimeTooShort));
 
   @override
-  _PostponeTimeTooShort get _value => super._value as _PostponeTimeTooShort;
+  _$_PostponeTimeTooShort get _value => super._value as _$_PostponeTimeTooShort;
 }
 
 /// @nodoc
@@ -806,7 +774,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _PostponeTimeTooShort);
+        (other.runtimeType == runtimeType && other is _$_PostponeTimeTooShort);
   }
 
   @override
@@ -858,7 +826,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PaymentFailure value) unexpected,
+    required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_CanceledByPartner value) canceledByPartner,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
@@ -871,7 +839,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
@@ -884,7 +852,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PaymentFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_CanceledByPartner value)? canceledByPartner,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
