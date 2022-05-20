@@ -49,23 +49,14 @@ extension BuildContextX on BuildContext {
         return AlertDialog(
           title: Text(S().confirm),
           content: Text(S().confirmDeleteMessage),
-          actionsPadding:
-              const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-          actionsAlignment: MainAxisAlignment.spaceBetween,
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: Padding(
-                padding: const EdgeInsets.all(3.0),
-                child: Text(S().cancel.toUpperCase()),
-              ),
+              child: Text(S().cancel.toUpperCase()),
             ),
-            ElevatedButton(
+            TextButton(
               onPressed: () => Navigator.of(context).pop(true),
-              child: Padding(
-                padding: const EdgeInsets.all(3.0),
-                child: Text(S().delete.toUpperCase()),
-              ),
+              child: Text(S().delete.toUpperCase()),
             ),
           ],
         );
@@ -79,24 +70,15 @@ extension BuildContextX on BuildContext {
       builder: (context) {
         return AlertDialog(
           title: Text(S().confirm),
-          actionsAlignment: MainAxisAlignment.spaceBetween,
-          actionsPadding:
-              const EdgeInsets.only(left: 20, right: 20, bottom: 10),
           content: Text(message),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: Padding(
-                padding: const EdgeInsets.all(3.0),
-                child: Text(S().no.toUpperCase()),
-              ),
+              child: Text(S().no.toUpperCase()),
             ),
-            ElevatedButton(
+            TextButton(
               onPressed: () => Navigator.of(context).pop(true),
-              child: Padding(
-                padding: const EdgeInsets.all(3.0),
-                child: Text(S().yes.toUpperCase()),
-              ),
+              child: Text(S().yes.toUpperCase()),
             ),
           ],
         );
