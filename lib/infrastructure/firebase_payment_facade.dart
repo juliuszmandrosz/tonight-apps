@@ -4,10 +4,11 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_payments/domain/domain.dart';
+import 'package:raver_payments/domain/facades/user_payment_facade.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_errors.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
 
-class FirebasePaymentFacade implements PartnerPaymentFacade {
+class FirebasePaymentFacade implements PartnerPaymentFacade, UserPaymentFacade {
   final Logger _logger;
   final Stripe _stripe;
   final PaymentCloudFunctionsFacade _paymentCloudFunctionsFacade;
@@ -55,15 +56,10 @@ class FirebasePaymentFacade implements PartnerPaymentFacade {
       );
     } on FirebaseFunctionsException catch (e) {
       _logger.e(
-        "Firebase Functions Exception during proceeding to pay for event cancelation EXCEPTION: $e",
+        "Firebase Functions Exception proceeding to pay for event cancelation EXCEPTION: $e",
       );
-      return left(paymentCloudFunctionsErrors[e.details] ??
+      return left(partnerPaymentCloudFunctionsErrors[e.details] ??
           const PartnerPaymentFailure.unexpected());
-    } on FirebaseException catch (e) {
-      _logger.e(
-        "Firebase Exception during proceeding to pay for event cancelation EXCEPTION: $e",
-      );
-      return left(const PartnerPaymentFailure.unexpected());
     }
   }
 
@@ -107,15 +103,91 @@ class FirebasePaymentFacade implements PartnerPaymentFacade {
       );
     } on FirebaseFunctionsException catch (e) {
       _logger.e(
-        "Firebase Functions Exception during proceeding to pay for event postpone EXCEPTION: $e",
+        "Firebase Functions Exception proceeding to pay for event postpone EXCEPTION: $e",
       );
-      return left(paymentCloudFunctionsErrors[e.details] ??
+      return left(partnerPaymentCloudFunctionsErrors[e.details] ??
           const PartnerPaymentFailure.unexpected());
-    } on FirebaseException catch (e) {
-      _logger.e(
-        "Firebase Exception during proceeding to pay for event postpone EXCEPTION: $e",
+    }
+  }
+
+  @override
+  Future<Either<UserPaymentFailure, Unit>> proceedToPayForTicket({
+    required String eventId,
+    required String currency,
+    String? promotionCode,
+    bool isVip = false,
+  }) async {
+    try {
+      final result =
+          await _paymentCloudFunctionsFacade.createTicketPaymentSheet(
+        eventId: eventId,
+        isVip: isVip,
+        promotionCode: promotionCode,
       );
-      return left(const PartnerPaymentFailure.unexpected());
+
+      try {
+        await _presentPaymentSheet(
+          currency: currency,
+          customerId: result.customerId,
+          paymentIntentSecret: result.paymentIntentSecret,
+          ephemeralKeySecret: result.ephemeralKeySecret,
+        );
+      } on StripeException catch (e) {
+        _logger.e(
+          "Stripe exception proceeding to pay for ticket EXCEPTION: $e",
+        );
+        if (e.error.code == FailureCode.Canceled) {
+          await _paymentCloudFunctionsFacade
+              .cancelTicketReservation(result.paymentIntentId);
+          return left(const UserPaymentFailure.canceledByUser());
+        }
+        return left(const UserPaymentFailure.stripeError());
+      }
+
+      return right(unit);
+    } on FirebaseFunctionsException catch (e) {
+      _logger.e(
+        "Firebase Functions Exception proceeding to pay for ticket EXCEPTION: $e",
+      );
+      return left(userPaymentCloudFunctionsErrors[e.details] ??
+          const UserPaymentFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<UserPaymentFailure, Unit>> proceedToPayForVip({
+    required String ticketId,
+    required String currency,
+    String? promotionCode,
+  }) async {
+    try {
+      final result = await _paymentCloudFunctionsFacade.createVipPaymentSheet(
+        ticketId: ticketId,
+        promotionCode: promotionCode,
+      );
+
+      await _presentPaymentSheet(
+        currency: currency,
+        customerId: result.customerId,
+        paymentIntentSecret: result.paymentIntentSecret,
+        ephemeralKeySecret: result.ephemeralKeySecret,
+      );
+
+      return right(unit);
+    } on FirebaseFunctionsException catch (e) {
+      _logger.e(
+        "Firebase Functions Exception proceeding to pay for vip EXCEPTION: $e",
+      );
+      return left(userPaymentCloudFunctionsErrors[e.details] ??
+          const UserPaymentFailure.unexpected());
+    } on StripeException catch (e) {
+      _logger.e(
+        "Stripe exception proceeding to pay for vip EXCEPTION: $e",
+      );
+      if (e.error.code == FailureCode.Canceled) {
+        return left(const UserPaymentFailure.canceledByUser());
+      }
+      return left(const UserPaymentFailure.stripeError());
     }
   }
 

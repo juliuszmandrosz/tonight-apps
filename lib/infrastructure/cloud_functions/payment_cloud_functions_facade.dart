@@ -29,6 +29,8 @@ abstract class PaymentCloudFunctionsFacade {
   Future<Unit> cancelEventCancelation(String cancelEventPaymentSessionId);
 
   Future<Unit> cancelEventPostpone(String postponeEventPaymentSessionId);
+
+  Future<Unit> cancelTicketReservation(String ticketPaymentSessionId);
 }
 
 class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
@@ -127,6 +129,18 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
 
     await cancelEventPostponeFn.call({
       'postponeEventPaymentSessionId': postponeEventPaymentSessionId,
+    });
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> cancelTicketReservation(String ticketPaymentSessionId) async {
+    final cancelTicketReservationFn =
+        _functions.httpsCallable(cancelTicketReservationFnName);
+
+    await cancelTicketReservationFn.call({
+      'ticketPaymentSessionId': ticketPaymentSessionId,
     });
 
     return unit;

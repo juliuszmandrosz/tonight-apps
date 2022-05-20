@@ -11,3 +11,6 @@ const cancelEventPostponeFnName = 'cancelEventPostponeOnClosingPaymentSheet';
 const createTicketPaymentSheetFnName = 'createTicketPaymentSheet';
 
 const createVipPaymentSheetFnName = 'createVipPaymentSheet';
+
+const cancelTicketReservationFnName =
+    'cancelTicketReservationOnClosingPaymentSheet';
