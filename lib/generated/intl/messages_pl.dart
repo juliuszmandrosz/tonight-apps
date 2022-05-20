@@ -428,7 +428,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "rateEvent": MessageLookupByLibrary.simpleMessage("Oceń wydarzenie"),
         "rateUs": MessageLookupByLibrary.simpleMessage("Oceń nas"),
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
-        "raverPartners": MessageLookupByLibrary.simpleMessage("Raver Partners"),
         "raverScanner": MessageLookupByLibrary.simpleMessage("Raver Scanner"),
         "register": MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "requiredNumberOfEntries":
@@ -509,6 +508,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sprzedanych biletów"),
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "to": MessageLookupByLibrary.simpleMessage("Do"),
+        "tonightPartners":
+            MessageLookupByLibrary.simpleMessage("Tonight Partners"),
         "tooMuchRequiredEntries": MessageLookupByLibrary.simpleMessage(
             "Maksymalna liczba wymaganych wejść wynosi 1000"),
         "totalRevenue":
