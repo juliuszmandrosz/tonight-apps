@@ -1,10 +1,13 @@
 import 'package:raver_payments/domain/failures/partner_payment_failure.dart';
 import 'package:raver_payments/domain/failures/user_payment_failure.dart';
 
-const paymentCloudFunctionsErrors = {
+const partnerPaymentCloudFunctionsErrors = {
   'cancel-time-expired': PartnerPaymentFailure.cancelTimeExpired(),
   'postpone-time-expired': PartnerPaymentFailure.postponeTimeExpired(),
   'postpone-time-too-short': PartnerPaymentFailure.postponeTimeTooShort(),
+};
+
+const userPaymentCloudFunctionsErrors = {
   'invalid-promotion-code': UserPaymentFailure.invalidPromotionCode(),
   'expired-promotion-code': UserPaymentFailure.promotionCodeExpired(),
   'invalid-event': UserPaymentFailure.invalidEvent(),
