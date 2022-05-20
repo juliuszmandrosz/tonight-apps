@@ -15,6 +15,17 @@ abstract class PaymentCloudFunctionsFacade {
     required Timestamp newEventEndDateTime,
   });
 
+  Future<CreatePaymentSheetResponse> createTicketPaymentSheet({
+    required String eventId,
+    String? promotionCode,
+    bool isVip = false,
+  });
+
+  Future<CreatePaymentSheetResponse> createVipPaymentSheet({
+    required String ticketId,
+    String? promotionCode,
+  });
+
   Future<Unit> cancelEventCancelation(String cancelEventPaymentSessionId);
 
   Future<Unit> cancelEventPostpone(String postponeEventPaymentSessionId);
@@ -59,6 +70,40 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
     return result.data != null
         ? some(CreatePaymentSheetResponse.fromJson(result.data))
         : none();
+  }
+
+  @override
+  Future<CreatePaymentSheetResponse> createTicketPaymentSheet({
+    required String eventId,
+    String? promotionCode,
+    bool isVip = false,
+  }) async {
+    final createTicketPaymentSheetFn =
+        _functions.httpsCallable(createTicketPaymentSheetFnName);
+
+    final result = await createTicketPaymentSheetFn.call({
+      'eventId': eventId,
+      'promotionCode': promotionCode,
+      'isVip': isVip,
+    });
+
+    return CreatePaymentSheetResponse.fromJson(result.data);
+  }
+
+  @override
+  Future<CreatePaymentSheetResponse> createVipPaymentSheet({
+    required String ticketId,
+    String? promotionCode,
+  }) async {
+    final createVipPaymentSheetFn =
+        _functions.httpsCallable(createVipPaymentSheetFnName);
+
+    final result = await createVipPaymentSheetFn.call({
+      'ticketId': ticketId,
+      'promotionCode': promotionCode,
+    });
+
+    return CreatePaymentSheetResponse.fromJson(result.data);
   }
 
   @override
