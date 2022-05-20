@@ -8,6 +8,4 @@ abstract class PartnerRewardFacade {
   Stream<Either<RewardFailure, List<Reward>>> getCurrentPartnerRewards();
 
   Future<Either<RewardFailure, Unit>> deleteReward(String rewardId);
-
-  Future<Either<RewardFailure, Unit>> updateReward(Reward reward);
 }

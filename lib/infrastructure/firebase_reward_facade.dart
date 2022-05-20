@@ -75,22 +75,6 @@ class FirebaseRewardFacade implements UserRewardFacade, PartnerRewardFacade {
   }
 
   @override
-  Future<Either<RewardFailure, Unit>> updateReward(Reward reward) async {
-    try {
-      final clubDoc = _getCurrentClubDocumentRef();
-
-      final rewardDto = RewardDto.fromDomain(reward);
-
-      await clubDoc.rewardsCollection.doc(reward.id).update(rewardDto.toJson());
-
-      return right(unit);
-    } on FirebaseException catch (e) {
-      _logger.e("Firebase Exception during updating reward EXCEPTION: $e");
-      return left(const RewardFailure.unexpected());
-    }
-  }
-
-  @override
   Future<Either<RewardFailure, List<Reward>>> getRewardsByClubId(
     String clubId,
   ) async {
