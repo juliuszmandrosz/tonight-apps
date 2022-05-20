@@ -94,6 +94,8 @@
   "@confirmLeavingPage": {},
   "confirmPassword": "Confirm password",
   "@confirmPassword": {},
+  "confirmSelectorDeletion": "Are you sure you want to delete this selector?",
+  "@confirmSelectorDeletion": {},
   "confirmTicketReturn": "Are you sure you want to return the ticket?",
   "@confirmTicketReturn": {},
   "contact": "Contact",

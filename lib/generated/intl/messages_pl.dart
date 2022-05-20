@@ -124,6 +124,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Czy na pewno chcesz opuścić bieżącą stronę? Zmiany nie zostaną zapisane"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Potwierdź hasło"),
+        "confirmSelectorDeletion": MessageLookupByLibrary.simpleMessage(
+            "Czy na pewno chcesz usunąć tego selekcjonera?"),
         "confirmTicketReturn": MessageLookupByLibrary.simpleMessage(
             "Czy na pewno chcesz zwrócić bilet?"),
         "contact": MessageLookupByLibrary.simpleMessage("Kontakt"),

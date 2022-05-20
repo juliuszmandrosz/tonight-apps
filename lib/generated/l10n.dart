@@ -526,6 +526,16 @@ class S {
     );
   }
 
+  /// `Are you sure you want to delete this selector?`
+  String get confirmSelectorDeletion {
+    return Intl.message(
+      'Are you sure you want to delete this selector?',
+      name: 'confirmSelectorDeletion',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure you want to return the ticket?`
   String get confirmTicketReturn {
     return Intl.message(

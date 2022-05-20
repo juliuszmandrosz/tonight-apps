@@ -94,6 +94,8 @@
   "@confirmLeavingPage": {},
   "confirmPassword": "Potwierdź hasło",
   "@confirmPassword": {},
+  "confirmSelectorDeletion": "Czy na pewno chcesz usunąć tego selekcjonera?",
+  "@confirmSelectorDeletion": {},
   "confirmTicketReturn": "Czy na pewno chcesz zwrócić bilet?",
   "@confirmTicketReturn": {},
   "contact": "Kontakt",

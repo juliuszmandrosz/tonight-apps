@@ -123,6 +123,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to exit the current page? Changes will not be saved"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "confirmSelectorDeletion": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this selector?"),
         "confirmTicketReturn": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to return the ticket?"),
         "contact": MessageLookupByLibrary.simpleMessage("Contact"),
