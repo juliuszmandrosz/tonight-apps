@@ -34,7 +34,7 @@ class UsernameInput extends FormzInput<String, UsernameInputError> {
     if (value.length > _maxLength) {
       return UsernameInputError.long;
     }
-    if (!RegExp("^[A-Za-z0-9]*\$").hasMatch(value)) {
+    if (!RegExp("^[A-Za-z0-9 ]*\$").hasMatch(value)) {
       return UsernameInputError.specialCharacters;
     }
     return null;
