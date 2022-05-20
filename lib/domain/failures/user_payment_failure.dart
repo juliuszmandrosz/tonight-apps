@@ -23,4 +23,6 @@ class UserPaymentFailure with _$UserPaymentFailure {
   const factory UserPaymentFailure.eventCanceled() = _EventCanceled;
 
   const factory UserPaymentFailure.eventBeingPostponed() = _EventBeingPostponed;
+
+  const factory UserPaymentFailure.returnTimeExpired() = _ReturnTimeExpired;
 }
