@@ -437,6 +437,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "returnTimeIsOver":
             MessageLookupByLibrary.simpleMessage("Time for a return is over"),
         "reviewAdded": MessageLookupByLibrary.simpleMessage("Review added"),
+        "reviewContent": MessageLookupByLibrary.simpleMessage("Your review"),
+        "reviewContentTooLong": MessageLookupByLibrary.simpleMessage(
+            "Review content may contain up to 1000 characters"),
         "reviewLoadError":
             MessageLookupByLibrary.simpleMessage("Error while loading review"),
         "reviewLoadingFormFailure":

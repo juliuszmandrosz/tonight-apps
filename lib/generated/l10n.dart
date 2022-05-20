@@ -2438,6 +2438,26 @@ class S {
     );
   }
 
+  /// `Your review`
+  String get reviewContent {
+    return Intl.message(
+      'Your review',
+      name: 'reviewContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Review content may contain up to 1000 characters`
+  String get reviewContentTooLong {
+    return Intl.message(
+      'Review content may contain up to 1000 characters',
+      name: 'reviewContentTooLong',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Error while loading review`
   String get reviewLoadError {
     return Intl.message(

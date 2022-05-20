@@ -444,6 +444,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "returnTimeIsOver":
             MessageLookupByLibrary.simpleMessage("Czas na zwrot minął"),
         "reviewAdded": MessageLookupByLibrary.simpleMessage("Opinia dodana"),
+        "reviewContent": MessageLookupByLibrary.simpleMessage("Twoja opinia"),
+        "reviewContentTooLong": MessageLookupByLibrary.simpleMessage(
+            "Opinia może zawierać maksymalnie 1000 znaków"),
         "reviewLoadError": MessageLookupByLibrary.simpleMessage(
             "Wystąpił błąd podczas ładowania opinii"),
         "reviewLoadingFormFailure": MessageLookupByLibrary.simpleMessage(
