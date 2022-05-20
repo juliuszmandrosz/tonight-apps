@@ -1,5 +1,5 @@
 import 'package:formz/formz.dart';
-import 'package:raver_partners/application/add_edit_reward/add_edit_reward_cubit.dart';
+import 'package:raver_partners/application/add_edit_reward/add_reward_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 enum RequiredEntriesError { empty, tooMuch }
@@ -9,7 +9,7 @@ final requiredEntriesErrorMessages = {
   RequiredEntriesError.tooMuch: S().tooMuchRequiredEntries,
 };
 
-String? getRequiredEntriesErrorMessage(AddEditRewardState state) {
+String? getRequiredEntriesErrorMessage(AddRewardState state) {
   if (state.requiredEntries.valid || state.status != FormzStatus.invalid) {
     return null;
   }

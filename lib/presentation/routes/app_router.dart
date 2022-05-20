@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/presentation/add_edit_reward/add_edit_reward_page.dart';
 import 'package:raver_partners/presentation/add_edit_ticket_pool/add_edit_ticket_pool_page.dart';
 import 'package:raver_partners/presentation/add_event/add_event_page.dart';
+import 'package:raver_partners/presentation/add_reward/add_reward_page.dart';
 import 'package:raver_partners/presentation/auth/auth_page.dart';
 import 'package:raver_partners/presentation/event_overview/event_overview_page.dart';
 import 'package:raver_partners/presentation/events/events_page.dart';
@@ -15,7 +15,6 @@ import 'package:raver_partners/presentation/postpone_event/postpone_event_page.d
 import 'package:raver_partners/presentation/rewards/rewards_page.dart';
 import 'package:raver_partners/presentation/selectors/selectors_page.dart';
 import 'package:raver_partners/presentation/splash/splash_page.dart';
-import 'package:raver_rewards/raver_rewards.dart';
 
 part 'app_router.gr.dart';
 
@@ -33,7 +32,7 @@ part 'app_router.gr.dart';
       ],
     ),
     AutoRoute(page: AddEventPage),
-    AutoRoute(page: AddEditRewardPage),
+    AutoRoute(page: AddRewardPage),
     AutoRoute<TicketPool>(page: AddEditTicketPoolPage),
     AutoRoute(page: EventOverviewPage),
     AutoRoute(page: PastEventDetailsPage),

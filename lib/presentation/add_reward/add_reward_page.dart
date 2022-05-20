@@ -3,36 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/add_edit_reward/add_edit_reward_cubit.dart';
+import 'package:raver_partners/application/add_edit_reward/add_reward_cubit.dart';
 import 'package:raver_partners/injection.dart';
-import 'package:raver_partners/presentation/add_edit_reward/widgets/add_edit_reward_button.dart';
-import 'package:raver_partners/presentation/add_edit_reward/widgets/reward_description_input.dart';
-import 'package:raver_partners/presentation/add_edit_reward/widgets/reward_required_entries_input.dart';
+import 'package:raver_partners/presentation/add_reward/widgets/add_reward_button.dart';
+import 'package:raver_partners/presentation/add_reward/widgets/reward_description_input.dart';
+import 'package:raver_partners/presentation/add_reward/widgets/reward_required_entries_input.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
-import 'package:raver_rewards/raver_rewards.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class AddEditRewardPage extends StatelessWidget {
-  final Reward? reward;
-
-  const AddEditRewardPage({
-    this.reward,
-    Key? key,
-  }) : super(key: key);
+class AddRewardPage extends StatelessWidget {
+  const AddRewardPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) {
-        final cubit = getIt<AddEditRewardCubit>();
-
-        if (reward != null) {
-          cubit.addRewardToState(reward!);
-        }
-
-        return cubit;
-      },
-      child: BlocListener<AddEditRewardCubit, AddEditRewardState>(
+      create: (context) => getIt<AddRewardCubit>(),
+      child: BlocListener<AddRewardCubit, AddRewardState>(
         listenWhen: (previous, current) =>
             previous.errorMessage != current.errorMessage ||
             previous.status != current.status,
@@ -44,16 +30,12 @@ class AddEditRewardPage extends StatelessWidget {
 
           if (state.status.isSubmissionSuccess) {
             AutoRouter.of(context).pop();
-            state.updatingReward.fold(
-              () => context.showSnackbarMessage(S().rewardAddedSuccessfully),
-              (_) => context.showSnackbarMessage(S().rewardUpdatedSuccessfully),
-            );
+            context.showSnackbarMessage(S().rewardAddedSuccessfully);
           }
         },
         child: Scaffold(
-          appBar: RaverPartnersAppBar(
-              title: reward != null ? S().editReward : S().addReward),
-          floatingActionButton: const AddEditRewardButton(),
+          appBar: RaverPartnersAppBar(title: S().addReward),
+          floatingActionButton: const AddRewardButton(),
           body: Padding(
             padding: const EdgeInsets.all(20),
             child: ListView(

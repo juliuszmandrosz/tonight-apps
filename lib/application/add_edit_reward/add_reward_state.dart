@@ -1,20 +1,18 @@
-part of 'add_edit_reward_cubit.dart';
+part of 'add_reward_cubit.dart';
 
 @freezed
-class AddEditRewardState with _$AddEditRewardState {
-  const factory AddEditRewardState({
+class AddRewardState with _$AddRewardState {
+  const factory AddRewardState({
     required RequiredEntries requiredEntries,
     required RewardDescription rewardDescription,
     required FormzStatus status,
     required Option<String> errorMessage,
-    required Option<Reward> updatingReward,
-  }) = _AddEditRewardState;
+  }) = _AddRewardState;
 
-  factory AddEditRewardState.initial() => AddEditRewardState(
+  factory AddRewardState.initial() => AddRewardState(
         requiredEntries: const RequiredEntries.pure(),
         rewardDescription: const RewardDescription.pure(),
         status: FormzStatus.pure,
         errorMessage: none(),
-        updatingReward: none(),
       );
 }

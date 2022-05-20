@@ -1,10 +1,8 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
 import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
-import 'package:raver_partners/presentation/routes/app_router.dart';
 import 'package:raver_rewards/domain/domain.dart';
 
 class RewardListTile extends StatelessWidget {
@@ -30,15 +28,6 @@ class RewardListTile extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            IconButton(
-              onPressed: () => AutoRouter.of(context).push(
-                AddEditRewardRoute(reward: reward),
-              ),
-              icon: const Icon(
-                Icons.mode_edit,
-                size: 32,
-              ),
-            ),
             IconButton(
               onPressed: () async {
                 final result = await context.showDeleteConfirmationDialog();

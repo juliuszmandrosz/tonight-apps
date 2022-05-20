@@ -7,14 +7,14 @@ import 'package:raver_partners/application/add_edit_reward/form_inputs/reward_de
 import 'package:raver_rewards/raver_rewards.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-part 'add_edit_reward_cubit.freezed.dart';
+part 'add_reward_cubit.freezed.dart';
 
-part 'add_edit_reward_state.dart';
+part 'add_reward_state.dart';
 
-class AddEditRewardCubit extends Cubit<AddEditRewardState> {
+class AddRewardCubit extends Cubit<AddRewardState> {
   final PartnerRewardFacade _rewardFacade;
 
-  AddEditRewardCubit(this._rewardFacade) : super(AddEditRewardState.initial());
+  AddRewardCubit(this._rewardFacade) : super(AddRewardState.initial());
 
   void requiredEntriesChanged(int? value) {
     final entries = RequiredEntries.dirty(value);
@@ -44,35 +44,6 @@ class AddEditRewardCubit extends Cubit<AddEditRewardState> {
         state.copyWith(status: FormzStatus.submissionSuccess),
       ),
     );
-  }
-
-  void updateReward() async {
-    if (!_validateForm()) return;
-
-    emit(state.copyWith(status: FormzStatus.submissionInProgress));
-
-    final reward = state.updatingReward.fold(
-      () {},
-      (updatingReward) => updatingReward.copyWith(
-        requiredEntries: state.requiredEntries.value,
-        description: state.rewardDescription.value,
-      ),
-    );
-
-    final failureOrSuccess = await _rewardFacade.updateReward(reward!);
-
-    failureOrSuccess.fold(
-      (failure) => _emitFailure(failure, S().errorUpdatingReward),
-      (success) => emit(
-        state.copyWith(status: FormzStatus.submissionSuccess),
-      ),
-    );
-  }
-
-  addRewardToState(Reward reward) {
-    rewardDescriptionChanged(reward.description);
-    requiredEntriesChanged(reward.requiredEntries);
-    emit(state.copyWith(updatingReward: some(reward)));
   }
 
   _validateForm() {

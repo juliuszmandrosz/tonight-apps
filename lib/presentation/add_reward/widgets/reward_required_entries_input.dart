@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:raver_partners/application/add_edit_reward/add_edit_reward_cubit.dart';
+import 'package:raver_partners/application/add_edit_reward/add_reward_cubit.dart';
 import 'package:raver_partners/application/add_edit_reward/form_inputs/required_entries.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -13,10 +13,10 @@ class RewardRequiredEntriesInput extends HookWidget {
   Widget build(BuildContext context) {
     final _controller = useTextEditingController(
       text:
-          '${context.read<AddEditRewardCubit>().state.requiredEntries.value ?? ''}',
+          '${context.read<AddRewardCubit>().state.requiredEntries.value ?? ''}',
     );
 
-    return BlocBuilder<AddEditRewardCubit, AddEditRewardState>(
+    return BlocBuilder<AddRewardCubit, AddRewardState>(
       buildWhen: (previous, current) =>
           previous.requiredEntries != current.requiredEntries ||
           previous.status != current.status,
@@ -24,7 +24,7 @@ class RewardRequiredEntriesInput extends HookWidget {
         return TextField(
           controller: _controller,
           onChanged: (value) => context
-              .read<AddEditRewardCubit>()
+              .read<AddRewardCubit>()
               .requiredEntriesChanged(int.tryParse(value)),
           inputFormatters: [
             FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
