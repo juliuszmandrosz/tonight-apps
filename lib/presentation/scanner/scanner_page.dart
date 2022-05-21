@@ -34,7 +34,7 @@ class ScannerPage extends StatelessWidget {
 
               case CubitStatus.failure:
                 return ScanResult(
-                  color: Colors.red,
+                  color: Colors.red.lighten(),
                   icon: Icons.remove,
                   message: state.errorMessage.getOrCrash(),
                 );
@@ -42,7 +42,9 @@ class ScannerPage extends StatelessWidget {
               case CubitStatus.success:
                 final ticket = state.lastScannedTicket.getOrCrash();
                 return ScanResult(
-                  color: ticket.isVip ? Colors.blue : Colors.green,
+                  color: ticket.isVip
+                      ? Colors.blue.lighten()
+                      : Colors.green.lighten(),
                   icon: ticket.isVip
                       ? FontAwesomeIcons.star
                       : FontAwesomeIcons.check,
