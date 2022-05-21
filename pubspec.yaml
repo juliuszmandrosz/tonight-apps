@@ -25,6 +25,7 @@ dependencies:
   money2: ^3.1.2
   json_serializable: ^6.2.0
   firebase_auth: ^3.3.17
+  google_fonts: ^3.0.0
 
   raver_translations:
     git:
