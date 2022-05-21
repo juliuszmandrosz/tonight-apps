@@ -8,3 +8,4 @@ export 'constants/constants.dart';
 export 'application/application.dart';
 export 'extensions/extensions.dart';
 export 'translations/translations.dart';
+export 'theme/theme.dart';
