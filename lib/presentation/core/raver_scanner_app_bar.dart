@@ -14,7 +14,7 @@ class RaverScannerAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title ?? 'Tonight Scanner'),
+      title: Text(title ?? S().tonightScanner),
       actions: actions,
     );
   }
