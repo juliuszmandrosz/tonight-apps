@@ -13,7 +13,6 @@ class EnterAccessCodeDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final selectorClubCubit = context.read<SelectorClubCubit>();
-    final theme = Theme.of(context);
     return BlocConsumer<SelectorClubCubit, SelectorClubState>(
       buildWhen: (previous, current) =>
           previous.accessCode != current.accessCode ||
@@ -31,31 +30,17 @@ class EnterAccessCodeDialog extends StatelessWidget {
         return AlertDialog(
           insetPadding: EdgeInsets.zero,
           title: Text(S().enterAccessCode),
-          actionsPadding:
-              const EdgeInsets.only(left: 20, right: 20, bottom: 10),
           contentPadding: const EdgeInsets.only(top: 20),
-          actionsAlignment: MainAxisAlignment.spaceBetween,
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Padding(
-                padding: const EdgeInsets.all(3.0),
-                child: Text(
-                  S().cancel.toUpperCase(),
-                  style: theme.textTheme.bodyText1!.copyWith(
-                    color: theme.colorScheme.onTertiaryContainer,
-                  ),
-                ),
-              ),
+              child: Text(S().cancel.toUpperCase()),
             ),
             state.enterAccessCodeStatus.isSubmissionInProgress
                 ? const CircularProgressIndicator()
-                : ElevatedButton(
+                : TextButton(
                     onPressed: () => selectorClubCubit.enterAccessCode(),
-                    child: Padding(
-                      padding: const EdgeInsets.all(3.0),
-                      child: Text(S().confirm.toUpperCase()),
-                    ),
+                    child: Text(S().confirm.toUpperCase()),
                   ),
           ],
           content: Container(

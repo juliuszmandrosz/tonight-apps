@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_scanner/application/scanner/scanner_cubit.dart';
 import 'package:raver_scanner/presentation/scanner/widgets/scan_another_ticket_button.dart';
 
@@ -18,7 +19,6 @@ class ScanResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<ScannerCubit, ScannerState>(
       builder: (context, state) {
         return Padding(
@@ -38,7 +38,6 @@ class ScanResult extends StatelessWidget {
                     padding: const EdgeInsetsDirectional.all(30),
                     child: FaIcon(
                       icon,
-                      color: theme.colorScheme.background,
                       size: 60,
                     ),
                   ),
@@ -47,7 +46,7 @@ class ScanResult extends StatelessWidget {
                 Expanded(
                   child: Text(
                     message,
-                    style: theme.textTheme.headline1!.copyWith(
+                    style: context.headline5.copyWith(
                       color: color,
                       fontSize: 28,
                     ),

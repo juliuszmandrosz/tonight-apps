@@ -7,6 +7,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
 import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
 import 'package:raver_scanner/presentation/core/raver_scanner_app_bar.dart';
+import 'package:raver_scanner/presentation/event/event_page.dart';
 import 'package:raver_scanner/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -17,7 +18,6 @@ class NavigatorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     context.read<CurrentEventCubit>().getCurrentEvent();
     context.read<SelectorClubCubit>().getClubInfo();
-    final theme = Theme.of(context);
     return MultiBlocListener(
       listeners: [
         // TODO - add network check here
@@ -43,47 +43,19 @@ class NavigatorPage extends StatelessWidget {
               return Center(child: Text(S().serverError));
 
             case CubitStatus.success:
-              return AutoTabsScaffold(
-                appBarBuilder: (_, tabsRouter) => RaverScannerAppBar(
-                  title: state.selectorClub.getOrCrash().clubName,
+              return Scaffold(
+                appBar: RaverScannerAppBar(
                   actions: [
                     IconButton(
                       onPressed: () {
                         context.read<AuthCubit>().signOut();
                         AutoRouter.of(context).replace(const AuthRoute());
                       },
-                      icon: FaIcon(
-                        FontAwesomeIcons.signOutAlt,
-                        color: theme.colorScheme.background,
-                      ),
+                      icon: const FaIcon(FontAwesomeIcons.signOutAlt),
                     )
                   ],
                 ),
-                routes: const [
-                  EventRoute(),
-                  SettingsRoute(),
-                ],
-                bottomNavigationBuilder: (_, tabsRouter) {
-                  return BottomNavigationBar(
-                    type: BottomNavigationBarType.fixed,
-                    currentIndex: tabsRouter.activeIndex,
-                    onTap: tabsRouter.setActiveIndex,
-                    items: [
-                      BottomNavigationBarItem(
-                        icon: const FaIcon(
-                          FontAwesomeIcons.fire,
-                        ),
-                        label: S().events(1),
-                      ),
-                      BottomNavigationBarItem(
-                        icon: const FaIcon(
-                          FontAwesomeIcons.cog,
-                        ),
-                        label: S().settings,
-                      ),
-                    ],
-                  );
-                },
+                body: const EventPage(),
               );
           }
         },

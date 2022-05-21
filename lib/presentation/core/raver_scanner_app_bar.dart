@@ -13,10 +13,8 @@ class RaverScannerAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return AppBar(
-      title: Text(title ?? S().raverScanner),
-      backgroundColor: theme.colorScheme.primary,
+      title: Text(title ?? 'Tonight Scanner'),
       actions: actions,
     );
   }

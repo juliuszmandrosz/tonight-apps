@@ -5,7 +5,6 @@ import 'package:raver_scanner/presentation/auth/auth_page.dart';
 import 'package:raver_scanner/presentation/navigator/navigator_page.dart';
 import 'package:raver_scanner/presentation/scanner/scanner_page.dart';
 import 'package:raver_scanner/presentation/splash/splash_page.dart';
-import 'package:raver_scanner/presentation/settings/settings_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -18,7 +17,6 @@ part 'app_router.gr.dart';
       page: NavigatorPage,
       children: [
         AutoRoute(page: EventPage),
-        AutoRoute(page: SettingsPage),
       ],
     ),
     AutoRoute(page: ScannerPage),

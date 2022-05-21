@@ -6,6 +6,7 @@ import 'package:raver_scanner/presentation/core/raver_scanner_headline.dart';
 import 'package:raver_scanner/presentation/event/widgets/current_event.dart';
 import 'package:raver_scanner/presentation/event/widgets/no_access.dart';
 import 'package:raver_scanner/presentation/event/widgets/no_live_event.dart';
+import 'package:raver_scanner/presentation/event/widgets/selector_club.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class EventPage extends StatelessWidget {
@@ -23,7 +24,7 @@ class EventPage extends StatelessWidget {
 
         if (state.status.isFailure()) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Center(
               child: state.failure.getOrCrash().map(
                     unexpected: (_) => RaverScannerHeadline(
@@ -35,9 +36,19 @@ class EventPage extends StatelessWidget {
           );
         }
 
-        return state.currentEvent.fold(
-          () => const NoLiveEvent(),
-          (event) => CurrentEvent(event: event),
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SelectorClub(),
+              const SizedBox(height: 30),
+              state.currentEvent.fold(
+                () => const NoLiveEvent(),
+                (event) => CurrentEvent(event: event),
+              ),
+            ],
+          ),
         );
       },
     );

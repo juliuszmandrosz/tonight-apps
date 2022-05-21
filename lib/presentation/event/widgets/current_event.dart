@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_scanner/presentation/event/widgets/refresh_icon.dart';
 import 'package:raver_scanner/presentation/routes/app_router.dart';
@@ -31,7 +32,7 @@ class CurrentEvent extends StatelessWidget {
                     event.eventName,
                     maxLines: 4,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline1,
+                    style: context.headline5,
                   ),
                 ),
                 const SizedBox(width: 10),
