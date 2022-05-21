@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'ticket_failure.dart';
+part of 'selector_ticket_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,14 +15,14 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$TicketFailure {
+mixin _$SelectorTicketFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() invalidTicket,
     required TResult Function() ticketExpired,
     required TResult Function() ticketForAnotherEvent,
-    required TResult Function() returnTimeIsOver,
+    required TResult Function() ticketReturned,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +31,7 @@ mixin _$TicketFailure {
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
-    TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketReturned,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +40,7 @@ mixin _$TicketFailure {
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
-    TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketReturned,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ mixin _$TicketFailure {
     required TResult Function(_TicketExpired value) ticketExpired,
     required TResult Function(_TicketForAnotherEvent value)
         ticketForAnotherEvent,
-    required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
+    required TResult Function(_TicketReturned value) ticketReturned,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,7 +60,7 @@ mixin _$TicketFailure {
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketReturned value)? ticketReturned,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,27 +69,27 @@ mixin _$TicketFailure {
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketReturned value)? ticketReturned,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TicketFailureCopyWith<$Res> {
-  factory $TicketFailureCopyWith(
-          TicketFailure value, $Res Function(TicketFailure) then) =
-      _$TicketFailureCopyWithImpl<$Res>;
+abstract class $SelectorTicketFailureCopyWith<$Res> {
+  factory $SelectorTicketFailureCopyWith(SelectorTicketFailure value,
+          $Res Function(SelectorTicketFailure) then) =
+      _$SelectorTicketFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$TicketFailureCopyWithImpl<$Res>
-    implements $TicketFailureCopyWith<$Res> {
-  _$TicketFailureCopyWithImpl(this._value, this._then);
+class _$SelectorTicketFailureCopyWithImpl<$Res>
+    implements $SelectorTicketFailureCopyWith<$Res> {
+  _$SelectorTicketFailureCopyWithImpl(this._value, this._then);
 
-  final TicketFailure _value;
+  final SelectorTicketFailure _value;
   // ignore: unused_field
-  final $Res Function(TicketFailure) _then;
+  final $Res Function(SelectorTicketFailure) _then;
 }
 
 /// @nodoc
@@ -101,7 +101,7 @@ abstract class _$$_UnexpectedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$TicketFailureCopyWithImpl<$Res>
+    extends _$SelectorTicketFailureCopyWithImpl<$Res>
     implements _$$_UnexpectedCopyWith<$Res> {
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
@@ -118,7 +118,7 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   String toString() {
-    return 'TicketFailure.unexpected()';
+    return 'SelectorTicketFailure.unexpected()';
   }
 
   @override
@@ -137,7 +137,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() invalidTicket,
     required TResult Function() ticketExpired,
     required TResult Function() ticketForAnotherEvent,
-    required TResult Function() returnTimeIsOver,
+    required TResult Function() ticketReturned,
   }) {
     return unexpected();
   }
@@ -149,7 +149,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
-    TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketReturned,
   }) {
     return unexpected?.call();
   }
@@ -161,7 +161,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
-    TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketReturned,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -178,7 +178,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_TicketExpired value) ticketExpired,
     required TResult Function(_TicketForAnotherEvent value)
         ticketForAnotherEvent,
-    required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
+    required TResult Function(_TicketReturned value) ticketReturned,
   }) {
     return unexpected(this);
   }
@@ -190,7 +190,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketReturned value)? ticketReturned,
   }) {
     return unexpected?.call(this);
   }
@@ -202,7 +202,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketReturned value)? ticketReturned,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -212,7 +212,7 @@ class _$_Unexpected implements _Unexpected {
   }
 }
 
-abstract class _Unexpected implements TicketFailure {
+abstract class _Unexpected implements SelectorTicketFailure {
   const factory _Unexpected() = _$_Unexpected;
 }
 
@@ -225,7 +225,7 @@ abstract class _$$_InvalidTicketCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InvalidTicketCopyWithImpl<$Res>
-    extends _$TicketFailureCopyWithImpl<$Res>
+    extends _$SelectorTicketFailureCopyWithImpl<$Res>
     implements _$$_InvalidTicketCopyWith<$Res> {
   __$$_InvalidTicketCopyWithImpl(
       _$_InvalidTicket _value, $Res Function(_$_InvalidTicket) _then)
@@ -242,7 +242,7 @@ class _$_InvalidTicket implements _InvalidTicket {
 
   @override
   String toString() {
-    return 'TicketFailure.invalidTicket()';
+    return 'SelectorTicketFailure.invalidTicket()';
   }
 
   @override
@@ -261,7 +261,7 @@ class _$_InvalidTicket implements _InvalidTicket {
     required TResult Function() invalidTicket,
     required TResult Function() ticketExpired,
     required TResult Function() ticketForAnotherEvent,
-    required TResult Function() returnTimeIsOver,
+    required TResult Function() ticketReturned,
   }) {
     return invalidTicket();
   }
@@ -273,7 +273,7 @@ class _$_InvalidTicket implements _InvalidTicket {
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
-    TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketReturned,
   }) {
     return invalidTicket?.call();
   }
@@ -285,7 +285,7 @@ class _$_InvalidTicket implements _InvalidTicket {
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
-    TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketReturned,
     required TResult orElse(),
   }) {
     if (invalidTicket != null) {
@@ -302,7 +302,7 @@ class _$_InvalidTicket implements _InvalidTicket {
     required TResult Function(_TicketExpired value) ticketExpired,
     required TResult Function(_TicketForAnotherEvent value)
         ticketForAnotherEvent,
-    required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
+    required TResult Function(_TicketReturned value) ticketReturned,
   }) {
     return invalidTicket(this);
   }
@@ -314,7 +314,7 @@ class _$_InvalidTicket implements _InvalidTicket {
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketReturned value)? ticketReturned,
   }) {
     return invalidTicket?.call(this);
   }
@@ -326,7 +326,7 @@ class _$_InvalidTicket implements _InvalidTicket {
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketReturned value)? ticketReturned,
     required TResult orElse(),
   }) {
     if (invalidTicket != null) {
@@ -336,7 +336,7 @@ class _$_InvalidTicket implements _InvalidTicket {
   }
 }
 
-abstract class _InvalidTicket implements TicketFailure {
+abstract class _InvalidTicket implements SelectorTicketFailure {
   const factory _InvalidTicket() = _$_InvalidTicket;
 }
 
@@ -349,7 +349,7 @@ abstract class _$$_TicketExpiredCopyWith<$Res> {
 
 /// @nodoc
 class __$$_TicketExpiredCopyWithImpl<$Res>
-    extends _$TicketFailureCopyWithImpl<$Res>
+    extends _$SelectorTicketFailureCopyWithImpl<$Res>
     implements _$$_TicketExpiredCopyWith<$Res> {
   __$$_TicketExpiredCopyWithImpl(
       _$_TicketExpired _value, $Res Function(_$_TicketExpired) _then)
@@ -366,7 +366,7 @@ class _$_TicketExpired implements _TicketExpired {
 
   @override
   String toString() {
-    return 'TicketFailure.ticketExpired()';
+    return 'SelectorTicketFailure.ticketExpired()';
   }
 
   @override
@@ -385,7 +385,7 @@ class _$_TicketExpired implements _TicketExpired {
     required TResult Function() invalidTicket,
     required TResult Function() ticketExpired,
     required TResult Function() ticketForAnotherEvent,
-    required TResult Function() returnTimeIsOver,
+    required TResult Function() ticketReturned,
   }) {
     return ticketExpired();
   }
@@ -397,7 +397,7 @@ class _$_TicketExpired implements _TicketExpired {
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
-    TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketReturned,
   }) {
     return ticketExpired?.call();
   }
@@ -409,7 +409,7 @@ class _$_TicketExpired implements _TicketExpired {
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
-    TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketReturned,
     required TResult orElse(),
   }) {
     if (ticketExpired != null) {
@@ -426,7 +426,7 @@ class _$_TicketExpired implements _TicketExpired {
     required TResult Function(_TicketExpired value) ticketExpired,
     required TResult Function(_TicketForAnotherEvent value)
         ticketForAnotherEvent,
-    required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
+    required TResult Function(_TicketReturned value) ticketReturned,
   }) {
     return ticketExpired(this);
   }
@@ -438,7 +438,7 @@ class _$_TicketExpired implements _TicketExpired {
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketReturned value)? ticketReturned,
   }) {
     return ticketExpired?.call(this);
   }
@@ -450,7 +450,7 @@ class _$_TicketExpired implements _TicketExpired {
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketReturned value)? ticketReturned,
     required TResult orElse(),
   }) {
     if (ticketExpired != null) {
@@ -460,7 +460,7 @@ class _$_TicketExpired implements _TicketExpired {
   }
 }
 
-abstract class _TicketExpired implements TicketFailure {
+abstract class _TicketExpired implements SelectorTicketFailure {
   const factory _TicketExpired() = _$_TicketExpired;
 }
 
@@ -473,7 +473,7 @@ abstract class _$$_TicketForAnotherEventCopyWith<$Res> {
 
 /// @nodoc
 class __$$_TicketForAnotherEventCopyWithImpl<$Res>
-    extends _$TicketFailureCopyWithImpl<$Res>
+    extends _$SelectorTicketFailureCopyWithImpl<$Res>
     implements _$$_TicketForAnotherEventCopyWith<$Res> {
   __$$_TicketForAnotherEventCopyWithImpl(_$_TicketForAnotherEvent _value,
       $Res Function(_$_TicketForAnotherEvent) _then)
@@ -491,7 +491,7 @@ class _$_TicketForAnotherEvent implements _TicketForAnotherEvent {
 
   @override
   String toString() {
-    return 'TicketFailure.ticketForAnotherEvent()';
+    return 'SelectorTicketFailure.ticketForAnotherEvent()';
   }
 
   @override
@@ -510,7 +510,7 @@ class _$_TicketForAnotherEvent implements _TicketForAnotherEvent {
     required TResult Function() invalidTicket,
     required TResult Function() ticketExpired,
     required TResult Function() ticketForAnotherEvent,
-    required TResult Function() returnTimeIsOver,
+    required TResult Function() ticketReturned,
   }) {
     return ticketForAnotherEvent();
   }
@@ -522,7 +522,7 @@ class _$_TicketForAnotherEvent implements _TicketForAnotherEvent {
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
-    TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketReturned,
   }) {
     return ticketForAnotherEvent?.call();
   }
@@ -534,7 +534,7 @@ class _$_TicketForAnotherEvent implements _TicketForAnotherEvent {
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
-    TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketReturned,
     required TResult orElse(),
   }) {
     if (ticketForAnotherEvent != null) {
@@ -551,7 +551,7 @@ class _$_TicketForAnotherEvent implements _TicketForAnotherEvent {
     required TResult Function(_TicketExpired value) ticketExpired,
     required TResult Function(_TicketForAnotherEvent value)
         ticketForAnotherEvent,
-    required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
+    required TResult Function(_TicketReturned value) ticketReturned,
   }) {
     return ticketForAnotherEvent(this);
   }
@@ -563,7 +563,7 @@ class _$_TicketForAnotherEvent implements _TicketForAnotherEvent {
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketReturned value)? ticketReturned,
   }) {
     return ticketForAnotherEvent?.call(this);
   }
@@ -575,7 +575,7 @@ class _$_TicketForAnotherEvent implements _TicketForAnotherEvent {
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketReturned value)? ticketReturned,
     required TResult orElse(),
   }) {
     if (ticketForAnotherEvent != null) {
@@ -585,43 +585,43 @@ class _$_TicketForAnotherEvent implements _TicketForAnotherEvent {
   }
 }
 
-abstract class _TicketForAnotherEvent implements TicketFailure {
+abstract class _TicketForAnotherEvent implements SelectorTicketFailure {
   const factory _TicketForAnotherEvent() = _$_TicketForAnotherEvent;
 }
 
 /// @nodoc
-abstract class _$$_ReturnTimeIsOverCopyWith<$Res> {
-  factory _$$_ReturnTimeIsOverCopyWith(
-          _$_ReturnTimeIsOver value, $Res Function(_$_ReturnTimeIsOver) then) =
-      __$$_ReturnTimeIsOverCopyWithImpl<$Res>;
+abstract class _$$_TicketReturnedCopyWith<$Res> {
+  factory _$$_TicketReturnedCopyWith(
+          _$_TicketReturned value, $Res Function(_$_TicketReturned) then) =
+      __$$_TicketReturnedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ReturnTimeIsOverCopyWithImpl<$Res>
-    extends _$TicketFailureCopyWithImpl<$Res>
-    implements _$$_ReturnTimeIsOverCopyWith<$Res> {
-  __$$_ReturnTimeIsOverCopyWithImpl(
-      _$_ReturnTimeIsOver _value, $Res Function(_$_ReturnTimeIsOver) _then)
-      : super(_value, (v) => _then(v as _$_ReturnTimeIsOver));
+class __$$_TicketReturnedCopyWithImpl<$Res>
+    extends _$SelectorTicketFailureCopyWithImpl<$Res>
+    implements _$$_TicketReturnedCopyWith<$Res> {
+  __$$_TicketReturnedCopyWithImpl(
+      _$_TicketReturned _value, $Res Function(_$_TicketReturned) _then)
+      : super(_value, (v) => _then(v as _$_TicketReturned));
 
   @override
-  _$_ReturnTimeIsOver get _value => super._value as _$_ReturnTimeIsOver;
+  _$_TicketReturned get _value => super._value as _$_TicketReturned;
 }
 
 /// @nodoc
 
-class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
-  const _$_ReturnTimeIsOver();
+class _$_TicketReturned implements _TicketReturned {
+  const _$_TicketReturned();
 
   @override
   String toString() {
-    return 'TicketFailure.returnTimeIsOver()';
+    return 'SelectorTicketFailure.ticketReturned()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ReturnTimeIsOver);
+        (other.runtimeType == runtimeType && other is _$_TicketReturned);
   }
 
   @override
@@ -634,9 +634,9 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
     required TResult Function() invalidTicket,
     required TResult Function() ticketExpired,
     required TResult Function() ticketForAnotherEvent,
-    required TResult Function() returnTimeIsOver,
+    required TResult Function() ticketReturned,
   }) {
-    return returnTimeIsOver();
+    return ticketReturned();
   }
 
   @override
@@ -646,9 +646,9 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
-    TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketReturned,
   }) {
-    return returnTimeIsOver?.call();
+    return ticketReturned?.call();
   }
 
   @override
@@ -658,11 +658,11 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
-    TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketReturned,
     required TResult orElse(),
   }) {
-    if (returnTimeIsOver != null) {
-      return returnTimeIsOver();
+    if (ticketReturned != null) {
+      return ticketReturned();
     }
     return orElse();
   }
@@ -675,9 +675,9 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
     required TResult Function(_TicketExpired value) ticketExpired,
     required TResult Function(_TicketForAnotherEvent value)
         ticketForAnotherEvent,
-    required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
+    required TResult Function(_TicketReturned value) ticketReturned,
   }) {
-    return returnTimeIsOver(this);
+    return ticketReturned(this);
   }
 
   @override
@@ -687,9 +687,9 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketReturned value)? ticketReturned,
   }) {
-    return returnTimeIsOver?.call(this);
+    return ticketReturned?.call(this);
   }
 
   @override
@@ -699,16 +699,16 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketReturned value)? ticketReturned,
     required TResult orElse(),
   }) {
-    if (returnTimeIsOver != null) {
-      return returnTimeIsOver(this);
+    if (ticketReturned != null) {
+      return ticketReturned(this);
     }
     return orElse();
   }
 }
 
-abstract class _ReturnTimeIsOver implements TicketFailure {
-  const factory _ReturnTimeIsOver() = _$_ReturnTimeIsOver;
+abstract class _TicketReturned implements SelectorTicketFailure {
+  const factory _TicketReturned() = _$_TicketReturned;
 }

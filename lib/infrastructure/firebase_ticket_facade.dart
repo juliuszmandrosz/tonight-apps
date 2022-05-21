@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_tickets/domain/domain.dart';
+import 'package:raver_tickets/domain/failures/selector_ticket_failure.dart';
 import 'package:raver_tickets/infrastructure/cloud_functions/cloud_functions_failures.dart';
 import 'package:raver_tickets/infrastructure/cloud_functions/params/return_ticket_params.dart';
 import 'package:raver_tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
@@ -27,23 +28,23 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
         _logger = logger;
 
   @override
-  Future<Either<TicketFailure, List<Ticket>>> getUserTickets() async {
+  Future<Either<UserTicketFailure, List<Ticket>>> getUserTickets() async {
     final userDoc = _getCurrentUserDocumentRef();
     try {
       final result = await userDoc.ticketCollection.get();
-      return right<TicketFailure, List<Ticket>>(
+      return right<UserTicketFailure, List<Ticket>>(
         result.docs
             .map((doc) => TicketDto.fromFirebase(doc).toDomain())
             .toList(),
       );
     } on FirebaseException catch (e) {
       _logger.e("Exception fetching tickets EXCEPTION: $e");
-      return left(const TicketFailure.unexpected());
+      return left(const UserTicketFailure.unexpected());
     }
   }
 
   @override
-  Future<Either<TicketFailure, Ticket>> scanTicket(
+  Future<Either<SelectorTicketFailure, Ticket>> scanTicket(
     String ticketId,
     String currentEventId,
     String userId,
@@ -57,17 +58,21 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
         final ticketDoc = await transaction.get(ticketDocRef);
 
         if (!ticketDoc.exists) {
-          return left(const TicketFailure.invalidTicket());
+          return left(const SelectorTicketFailure.invalidTicket());
         }
 
         var ticketDto = TicketDto.fromFirebase(ticketDoc);
 
+        if (ticketDto.isReturned) {
+          return left(const SelectorTicketFailure.ticketReturned());
+        }
+
         if (ticketDto.isExpired) {
-          return left(const TicketFailure.ticketExpired());
+          return left(const SelectorTicketFailure.ticketExpired());
         }
 
         if (ticketDto.eventId != currentEventId) {
-          return left(const TicketFailure.ticketForAnotherEvent());
+          return left(const SelectorTicketFailure.ticketForAnotherEvent());
         }
 
         ticketDto = ticketDto.copyWith(isExpired: true);
@@ -81,12 +86,12 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
       });
     } on FirebaseException catch (e) {
       _logger.e("Exception scanning ticket EXCEPTION: $e");
-      return left(const TicketFailure.unexpected());
+      return left(const SelectorTicketFailure.unexpected());
     }
   }
 
   @override
-  Future<Either<TicketFailure, Unit>> returnTicket(
+  Future<Either<UserTicketFailure, Unit>> returnTicket(
     String ticketPaymentId,
     String ticketId,
   ) async {
@@ -102,7 +107,8 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
         "Firebase Functions Exception during returning ticket EXCEPTION: $e",
       );
       return left(
-        cloudFunctionsFailures[e.details] ?? const TicketFailure.unexpected(),
+        cloudFunctionsFailures[e.details] ??
+            const UserTicketFailure.unexpected(),
       );
     }
   }
