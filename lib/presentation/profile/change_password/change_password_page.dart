@@ -12,7 +12,7 @@ import 'package:raver_account_settings/raver_account_settings.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
-
+//Its deprecated (passwordless signin) but will be left in case of something will change in future
 class ChangePasswordPage extends StatelessWidget {
   const ChangePasswordPage({Key? key}) : super(key: key);
 

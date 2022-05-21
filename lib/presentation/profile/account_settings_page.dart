@@ -35,20 +35,6 @@ class AccountSettingsPage extends StatelessWidget {
                 onTap: () =>
                     AutoRouter.of(context).push(const UpdateUsernameRoute()),
               ),
-              !state.isFromOauth
-                  ? ListTile(
-                      onTap: () => AutoRouter.of(context)
-                          .push(const ChangePasswordRoute()),
-                      title: Text(S().password),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(S().changePasswordTitle),
-                          const Icon(Icons.keyboard_arrow_right),
-                        ],
-                      ),
-                    )
-                  : Container(),
             ],
           );
         },
