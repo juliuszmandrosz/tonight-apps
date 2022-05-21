@@ -2338,16 +2338,6 @@ class S {
     );
   }
 
-  /// `Raver Scanner`
-  String get raverScanner {
-    return Intl.message(
-      'Raver Scanner',
-      name: 'raverScanner',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Register`
   String get register {
     return Intl.message(
@@ -2902,6 +2892,16 @@ class S {
     return Intl.message(
       'Tonight Partners',
       name: 'tonightPartners',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tonight Scanner`
+  String get tonightScanner {
+    return Intl.message(
+      'Tonight Scanner',
+      name: 'tonightScanner',
       desc: '',
       args: [],
     );

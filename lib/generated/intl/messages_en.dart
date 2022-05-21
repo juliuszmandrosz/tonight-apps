@@ -423,7 +423,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "rateEvent": MessageLookupByLibrary.simpleMessage("Rate the event"),
         "rateUs": MessageLookupByLibrary.simpleMessage("Rate us"),
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
-        "raverScanner": MessageLookupByLibrary.simpleMessage("Raver Scanner"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "requiredNumberOfEntries":
             MessageLookupByLibrary.simpleMessage("Required number of entries"),
@@ -505,6 +504,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "to": MessageLookupByLibrary.simpleMessage("To"),
         "tonightPartners":
             MessageLookupByLibrary.simpleMessage("Tonight Partners"),
+        "tonightScanner":
+            MessageLookupByLibrary.simpleMessage("Tonight Scanner"),
         "tooMuchRequiredEntries": MessageLookupByLibrary.simpleMessage(
             "The maximum number of required entries is 1000"),
         "totalRevenue": MessageLookupByLibrary.simpleMessage("Total revenue"),
