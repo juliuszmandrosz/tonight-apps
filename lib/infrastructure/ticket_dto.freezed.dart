@@ -27,7 +27,9 @@ mixin _$TicketDto {
   String get clubName => throw _privateConstructorUsedError;
   String get eventName => throw _privateConstructorUsedError;
   @FirebaseTimestampJsonConverter()
-  DateTime get eventDateTime => throw _privateConstructorUsedError;
+  DateTime get eventStartDateTime => throw _privateConstructorUsedError;
+  @FirebaseTimestampJsonConverter()
+  DateTime get eventEndDateTime => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
   bool get isVip => throw _privateConstructorUsedError;
@@ -55,7 +57,8 @@ abstract class $TicketDtoCopyWith<$Res> {
       String clubId,
       String clubName,
       String eventName,
-      @FirebaseTimestampJsonConverter() DateTime eventDateTime,
+      @FirebaseTimestampJsonConverter() DateTime eventStartDateTime,
+      @FirebaseTimestampJsonConverter() DateTime eventEndDateTime,
       int price,
       String currency,
       bool isVip,
@@ -83,7 +86,8 @@ class _$TicketDtoCopyWithImpl<$Res> implements $TicketDtoCopyWith<$Res> {
     Object? clubId = freezed,
     Object? clubName = freezed,
     Object? eventName = freezed,
-    Object? eventDateTime = freezed,
+    Object? eventStartDateTime = freezed,
+    Object? eventEndDateTime = freezed,
     Object? price = freezed,
     Object? currency = freezed,
     Object? isVip = freezed,
@@ -116,9 +120,13 @@ class _$TicketDtoCopyWithImpl<$Res> implements $TicketDtoCopyWith<$Res> {
           ? _value.eventName
           : eventName // ignore: cast_nullable_to_non_nullable
               as String,
-      eventDateTime: eventDateTime == freezed
-          ? _value.eventDateTime
-          : eventDateTime // ignore: cast_nullable_to_non_nullable
+      eventStartDateTime: eventStartDateTime == freezed
+          ? _value.eventStartDateTime
+          : eventStartDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      eventEndDateTime: eventEndDateTime == freezed
+          ? _value.eventEndDateTime
+          : eventEndDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
       price: price == freezed
           ? _value.price
@@ -176,7 +184,8 @@ abstract class _$$_TicketDtoCopyWith<$Res> implements $TicketDtoCopyWith<$Res> {
       String clubId,
       String clubName,
       String eventName,
-      @FirebaseTimestampJsonConverter() DateTime eventDateTime,
+      @FirebaseTimestampJsonConverter() DateTime eventStartDateTime,
+      @FirebaseTimestampJsonConverter() DateTime eventEndDateTime,
       int price,
       String currency,
       bool isVip,
@@ -206,7 +215,8 @@ class __$$_TicketDtoCopyWithImpl<$Res> extends _$TicketDtoCopyWithImpl<$Res>
     Object? clubId = freezed,
     Object? clubName = freezed,
     Object? eventName = freezed,
-    Object? eventDateTime = freezed,
+    Object? eventStartDateTime = freezed,
+    Object? eventEndDateTime = freezed,
     Object? price = freezed,
     Object? currency = freezed,
     Object? isVip = freezed,
@@ -239,9 +249,13 @@ class __$$_TicketDtoCopyWithImpl<$Res> extends _$TicketDtoCopyWithImpl<$Res>
           ? _value.eventName
           : eventName // ignore: cast_nullable_to_non_nullable
               as String,
-      eventDateTime: eventDateTime == freezed
-          ? _value.eventDateTime
-          : eventDateTime // ignore: cast_nullable_to_non_nullable
+      eventStartDateTime: eventStartDateTime == freezed
+          ? _value.eventStartDateTime
+          : eventStartDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      eventEndDateTime: eventEndDateTime == freezed
+          ? _value.eventEndDateTime
+          : eventEndDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
       price: price == freezed
           ? _value.price
@@ -297,7 +311,8 @@ class _$_TicketDto extends _TicketDto {
       required this.clubId,
       required this.clubName,
       required this.eventName,
-      @FirebaseTimestampJsonConverter() required this.eventDateTime,
+      @FirebaseTimestampJsonConverter() required this.eventStartDateTime,
+      @FirebaseTimestampJsonConverter() required this.eventEndDateTime,
       required this.price,
       required this.currency,
       required this.isVip,
@@ -326,7 +341,10 @@ class _$_TicketDto extends _TicketDto {
   final String eventName;
   @override
   @FirebaseTimestampJsonConverter()
-  final DateTime eventDateTime;
+  final DateTime eventStartDateTime;
+  @override
+  @FirebaseTimestampJsonConverter()
+  final DateTime eventEndDateTime;
   @override
   final int price;
   @override
@@ -355,7 +373,7 @@ class _$_TicketDto extends _TicketDto {
 
   @override
   String toString() {
-    return 'TicketDto(id: $id, eventId: $eventId, clubId: $clubId, clubName: $clubName, eventName: $eventName, eventDateTime: $eventDateTime, price: $price, currency: $currency, isVip: $isVip, ticketPaymentId: $ticketPaymentId, vipPaymentId: $vipPaymentId, isExpired: $isExpired, isEventCanceled: $isEventCanceled, isReturnable: $isReturnable, isReturned: $isReturned, reviewId: $reviewId)';
+    return 'TicketDto(id: $id, eventId: $eventId, clubId: $clubId, clubName: $clubName, eventName: $eventName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, price: $price, currency: $currency, isVip: $isVip, ticketPaymentId: $ticketPaymentId, vipPaymentId: $vipPaymentId, isExpired: $isExpired, isEventCanceled: $isEventCanceled, isReturnable: $isReturnable, isReturned: $isReturned, reviewId: $reviewId)';
   }
 
   @override
@@ -369,7 +387,9 @@ class _$_TicketDto extends _TicketDto {
             const DeepCollectionEquality().equals(other.clubName, clubName) &&
             const DeepCollectionEquality().equals(other.eventName, eventName) &&
             const DeepCollectionEquality()
-                .equals(other.eventDateTime, eventDateTime) &&
+                .equals(other.eventStartDateTime, eventStartDateTime) &&
+            const DeepCollectionEquality()
+                .equals(other.eventEndDateTime, eventEndDateTime) &&
             const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality().equals(other.currency, currency) &&
             const DeepCollectionEquality().equals(other.isVip, isVip) &&
@@ -396,7 +416,8 @@ class _$_TicketDto extends _TicketDto {
       const DeepCollectionEquality().hash(clubId),
       const DeepCollectionEquality().hash(clubName),
       const DeepCollectionEquality().hash(eventName),
-      const DeepCollectionEquality().hash(eventDateTime),
+      const DeepCollectionEquality().hash(eventStartDateTime),
+      const DeepCollectionEquality().hash(eventEndDateTime),
       const DeepCollectionEquality().hash(price),
       const DeepCollectionEquality().hash(currency),
       const DeepCollectionEquality().hash(isVip),
@@ -421,12 +442,16 @@ class _$_TicketDto extends _TicketDto {
 
 abstract class _TicketDto extends TicketDto {
   const factory _TicketDto(
-      {@JsonKey(ignore: true) final String? id,
+      {@JsonKey(ignore: true)
+          final String? id,
       required final String eventId,
       required final String clubId,
       required final String clubName,
       required final String eventName,
-      @FirebaseTimestampJsonConverter() required final DateTime eventDateTime,
+      @FirebaseTimestampJsonConverter()
+          required final DateTime eventStartDateTime,
+      @FirebaseTimestampJsonConverter()
+          required final DateTime eventEndDateTime,
       required final int price,
       required final String currency,
       required final bool isVip,
@@ -455,7 +480,10 @@ abstract class _TicketDto extends TicketDto {
   String get eventName => throw _privateConstructorUsedError;
   @override
   @FirebaseTimestampJsonConverter()
-  DateTime get eventDateTime => throw _privateConstructorUsedError;
+  DateTime get eventStartDateTime => throw _privateConstructorUsedError;
+  @override
+  @FirebaseTimestampJsonConverter()
+  DateTime get eventEndDateTime => throw _privateConstructorUsedError;
   @override
   int get price => throw _privateConstructorUsedError;
   @override

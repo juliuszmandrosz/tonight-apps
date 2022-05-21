@@ -11,8 +11,10 @@ _$_TicketDto _$$_TicketDtoFromJson(Map<String, dynamic> json) => _$_TicketDto(
       clubId: json['clubId'] as String,
       clubName: json['clubName'] as String,
       eventName: json['eventName'] as String,
-      eventDateTime: const FirebaseTimestampJsonConverter()
-          .fromJson(json['eventDateTime'] as Timestamp),
+      eventStartDateTime: const FirebaseTimestampJsonConverter()
+          .fromJson(json['eventStartDateTime'] as Timestamp),
+      eventEndDateTime: const FirebaseTimestampJsonConverter()
+          .fromJson(json['eventEndDateTime'] as Timestamp),
       price: json['price'] as int,
       currency: json['currency'] as String,
       isVip: json['isVip'] as bool,
@@ -31,8 +33,10 @@ Map<String, dynamic> _$$_TicketDtoToJson(_$_TicketDto instance) =>
       'clubId': instance.clubId,
       'clubName': instance.clubName,
       'eventName': instance.eventName,
-      'eventDateTime':
-          const FirebaseTimestampJsonConverter().toJson(instance.eventDateTime),
+      'eventStartDateTime': const FirebaseTimestampJsonConverter()
+          .toJson(instance.eventStartDateTime),
+      'eventEndDateTime': const FirebaseTimestampJsonConverter()
+          .toJson(instance.eventEndDateTime),
       'price': instance.price,
       'currency': instance.currency,
       'isVip': instance.isVip,

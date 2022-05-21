@@ -18,7 +18,8 @@ class TicketDto with _$TicketDto {
     required String clubId,
     required String clubName,
     required String eventName,
-    @FirebaseTimestampJsonConverter() required DateTime eventDateTime,
+    @FirebaseTimestampJsonConverter() required DateTime eventStartDateTime,
+    @FirebaseTimestampJsonConverter() required DateTime eventEndDateTime,
     required int price,
     required String currency,
     required bool isVip,
@@ -33,23 +34,23 @@ class TicketDto with _$TicketDto {
 
   factory TicketDto.fromDomain(Ticket ticket) {
     return TicketDto(
-      id: ticket.id,
-      eventId: ticket.eventId,
-      clubId: ticket.clubId,
-      clubName: ticket.clubName,
-      eventName: ticket.eventName,
-      eventDateTime: ticket.eventDateTime,
-      price: ticket.price,
-      currency: ticket.currency,
-      isVip: ticket.isVip,
-      ticketPaymentId: ticket.ticketPaymentId,
-      vipPaymentId: ticket.vipPaymentId,
-      isExpired: ticket.isExpired,
-      isEventCanceled: ticket.isEventCanceled,
-      isReturnable: ticket.isReturnable,
-      isReturned: ticket.isReturned,
-      reviewId: ticket.reviewId
-    );
+        id: ticket.id,
+        eventId: ticket.eventId,
+        clubId: ticket.clubId,
+        clubName: ticket.clubName,
+        eventName: ticket.eventName,
+        eventStartDateTime: ticket.eventStartDateTime,
+        eventEndDateTime: ticket.eventEndDateTime,
+        price: ticket.price,
+        currency: ticket.currency,
+        isVip: ticket.isVip,
+        ticketPaymentId: ticket.ticketPaymentId,
+        vipPaymentId: ticket.vipPaymentId,
+        isExpired: ticket.isExpired,
+        isEventCanceled: ticket.isEventCanceled,
+        isReturnable: ticket.isReturnable,
+        isReturned: ticket.isReturned,
+        reviewId: ticket.reviewId);
   }
 
   factory TicketDto.fromJson(Map<String, dynamic> json) =>
@@ -62,22 +63,22 @@ class TicketDto with _$TicketDto {
 
   Ticket toDomain() {
     return Ticket(
-      id: id,
-      eventId: eventId,
-      clubId: clubId,
-      clubName: clubName,
-      eventName: eventName,
-      eventDateTime: eventDateTime,
-      price: price,
-      currency: currency,
-      isVip: isVip,
-      ticketPaymentId: ticketPaymentId,
-      vipPaymentId: vipPaymentId,
-      isExpired: isExpired,
-      isEventCanceled: isEventCanceled,
-      isReturnable: isReturnable,
-      isReturned: isReturned,
-      reviewId: reviewId
-    );
+        id: id,
+        eventId: eventId,
+        clubId: clubId,
+        clubName: clubName,
+        eventName: eventName,
+        eventStartDateTime: eventStartDateTime,
+        eventEndDateTime: eventEndDateTime,
+        price: price,
+        currency: currency,
+        isVip: isVip,
+        ticketPaymentId: ticketPaymentId,
+        vipPaymentId: vipPaymentId,
+        isExpired: isExpired,
+        isEventCanceled: isEventCanceled,
+        isReturnable: isReturnable,
+        isReturned: isReturned,
+        reviewId: reviewId);
   }
 }
