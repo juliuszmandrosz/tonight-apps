@@ -40,7 +40,7 @@ class EventRevenueTile extends StatelessWidget {
               child: AutoSizeText(
                 value,
                 maxLines: 1,
-                style: context.headline5
+                style: context.headline5,
               ),
             ),
           ),

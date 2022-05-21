@@ -5,6 +5,8 @@ extension ColorExtensions on BuildContext {
 
   Color get secondaryColor => Theme.of(this).colorScheme.secondary;
 
+  Color get tertiaryColor => Theme.of(this).colorScheme.tertiary;
+
   Color get surfaceColor => Theme.of(this).colorScheme.surface;
 
   Color get surfaceVariantColor => Theme.of(this).colorScheme.surfaceVariant;

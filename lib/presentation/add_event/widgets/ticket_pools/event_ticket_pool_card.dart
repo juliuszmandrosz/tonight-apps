@@ -90,7 +90,7 @@ class EventTicketPoolCard extends StatelessWidget {
       '${getCurrencySymbolFromCode(ticketPool.currency)}',
       style: context.headline5.copyWith(
         color: ticketPool.isCurrent && ticketPool.ticketsSold > 0
-            ? context.secondaryColor
+            ? context.primaryColor
             : context.onSurfaceColor,
         decoration: ticketPool.isSoldOut
             ? TextDecoration.lineThrough
@@ -105,7 +105,7 @@ class EventTicketPoolCard extends StatelessWidget {
     if (ticketPool.isSoldOut) {
       return AutoSizeText(
         S().soldOut.toUpperCase(),
-        style: context.subtitle1.copyWith(color: context.errorColor),
+        style: context.subtitle1.copyWith(color: context.tertiaryColor),
         maxLines: 1,
       );
     }

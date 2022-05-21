@@ -153,6 +153,9 @@ ElevatedButtonThemeData get elevatedButtonTheme => ElevatedButtonThemeData(
         foregroundColor: MaterialStateProperty.all(
           colors.onSurface,
         ),
+        overlayColor: MaterialStateProperty.all(
+          colors.secondary,
+        ),
         textStyle: MaterialStateProperty.all(
           DarkTextStyles.subtitle1,
         ),
