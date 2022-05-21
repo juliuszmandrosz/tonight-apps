@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
@@ -24,35 +25,21 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         super(WelcomeLoadingState.initial());
 
   void loadDependencies() async {
-    // TODO - fix this
-    // _remoteConfigCubit.setupRemoteConfig();
-    // _remoteConfigCubit.stream.listen((event) {
-    //   _checkAndEmitFailure(event.cubitStatus);
-    //   _emitSuccessIfAllLoaded();
-    // });
-    _profileCubit.getUserProfile();
-    _profileCubit.stream.listen((event) {
-      _checkAndEmitFailure(event.status);
-      _emitSuccessIfAllLoaded();
-    });
-    _userLocationCubit.requestUserLocationOnStart();
-    _userLocationCubit.stream.listen((event) {
-      _emitSuccessIfAllLoaded();
-    });
-    // Stripe.publishableKey =
-    //     FirebaseRemoteConfig.instance.getString(stripePublishableKey);
+    _initRemoteConfigCubit();
+    _initProfileCubit();
+    _initUserLocationCubit();
+
+    Stripe.publishableKey =
+        FirebaseRemoteConfig.instance.getString(stripePublishableKey);
     await Stripe.instance.applySettings();
   }
 
   void _emitSuccessIfAllLoaded() {
-    if (
-        // _remoteConfigCubit.state.cubitStatus == CubitStatus.success &&
-        !_userLocationCubit.state.isLoading &&
-            _profileCubit.state.status == CubitStatus.success) {
-      if (_profileCubit.state.user.username.isEmpty) {
-        emit(state.copyWith(onboardingCompleted: false));
-      }
-      emit(state.copyWith(dependenciesLoaded: true));
+    if (_allDependenciesLoaded()) {
+      final isOnboardingCompleted = _onboardingCompleted();
+      emit(state.copyWith(
+          dependenciesLoaded: true,
+          onboardingCompleted: isOnboardingCompleted));
     }
   }
 
@@ -60,5 +47,38 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     if (cubitStatus == CubitStatus.failure) {
       emit(state.copyWith(isFailure: true));
     }
+  }
+
+  _initRemoteConfigCubit() {
+    _remoteConfigCubit.setupRemoteConfig();
+    _remoteConfigCubit.stream.listen((event) {
+      _checkAndEmitFailure(event.cubitStatus);
+      _emitSuccessIfAllLoaded();
+    });
+  }
+
+  _initProfileCubit() {
+    _profileCubit.getUserProfile();
+    _profileCubit.stream.listen((event) {
+      _checkAndEmitFailure(event.status);
+      _emitSuccessIfAllLoaded();
+    });
+  }
+
+  _initUserLocationCubit() {
+    _userLocationCubit.requestUserLocationOnStart();
+    _userLocationCubit.stream.listen((event) {
+      _emitSuccessIfAllLoaded();
+    });
+  }
+
+  _allDependenciesLoaded() {
+    return _remoteConfigCubit.state.cubitStatus == CubitStatus.success &&
+        !_userLocationCubit.state.isLoading &&
+        _profileCubit.state.status == CubitStatus.success;
+  }
+
+  _onboardingCompleted() {
+    return _profileCubit.state.user.username.isNotEmpty;
   }
 }
