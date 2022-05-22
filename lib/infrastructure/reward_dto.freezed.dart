@@ -12,34 +12,11 @@ part of 'reward_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 RewardDto _$RewardDtoFromJson(Map<String, dynamic> json) {
   return _RewardDto.fromJson(json);
 }
-
-/// @nodoc
-class _$RewardDtoTearOff {
-  const _$RewardDtoTearOff();
-
-  _RewardDto call(
-      {@JsonKey(ignore: true) String? id,
-      required String description,
-      required int requiredEntries}) {
-    return _RewardDto(
-      id: id,
-      description: description,
-      requiredEntries: requiredEntries,
-    );
-  }
-
-  RewardDto fromJson(Map<String, Object?> json) {
-    return RewardDto.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $RewardDto = _$RewardDtoTearOff();
 
 /// @nodoc
 mixin _$RewardDto {
@@ -96,10 +73,10 @@ class _$RewardDtoCopyWithImpl<$Res> implements $RewardDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$RewardDtoCopyWith<$Res> implements $RewardDtoCopyWith<$Res> {
-  factory _$RewardDtoCopyWith(
-          _RewardDto value, $Res Function(_RewardDto) then) =
-      __$RewardDtoCopyWithImpl<$Res>;
+abstract class _$$_RewardDtoCopyWith<$Res> implements $RewardDtoCopyWith<$Res> {
+  factory _$$_RewardDtoCopyWith(
+          _$_RewardDto value, $Res Function(_$_RewardDto) then) =
+      __$$_RewardDtoCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(ignore: true) String? id,
@@ -108,13 +85,14 @@ abstract class _$RewardDtoCopyWith<$Res> implements $RewardDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$RewardDtoCopyWithImpl<$Res> extends _$RewardDtoCopyWithImpl<$Res>
-    implements _$RewardDtoCopyWith<$Res> {
-  __$RewardDtoCopyWithImpl(_RewardDto _value, $Res Function(_RewardDto) _then)
-      : super(_value, (v) => _then(v as _RewardDto));
+class __$$_RewardDtoCopyWithImpl<$Res> extends _$RewardDtoCopyWithImpl<$Res>
+    implements _$$_RewardDtoCopyWith<$Res> {
+  __$$_RewardDtoCopyWithImpl(
+      _$_RewardDto _value, $Res Function(_$_RewardDto) _then)
+      : super(_value, (v) => _then(v as _$_RewardDto));
 
   @override
-  _RewardDto get _value => super._value as _RewardDto;
+  _$_RewardDto get _value => super._value as _$_RewardDto;
 
   @override
   $Res call({
@@ -122,7 +100,7 @@ class __$RewardDtoCopyWithImpl<$Res> extends _$RewardDtoCopyWithImpl<$Res>
     Object? description = freezed,
     Object? requiredEntries = freezed,
   }) {
-    return _then(_RewardDto(
+    return _then(_$_RewardDto(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -169,7 +147,7 @@ class _$_RewardDto extends _RewardDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RewardDto &&
+            other is _$_RewardDto &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
@@ -177,6 +155,7 @@ class _$_RewardDto extends _RewardDto {
                 .equals(other.requiredEntries, requiredEntries));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -186,8 +165,8 @@ class _$_RewardDto extends _RewardDto {
 
   @JsonKey(ignore: true)
   @override
-  _$RewardDtoCopyWith<_RewardDto> get copyWith =>
-      __$RewardDtoCopyWithImpl<_RewardDto>(this, _$identity);
+  _$$_RewardDtoCopyWith<_$_RewardDto> get copyWith =>
+      __$$_RewardDtoCopyWithImpl<_$_RewardDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -197,9 +176,9 @@ class _$_RewardDto extends _RewardDto {
 
 abstract class _RewardDto extends RewardDto {
   const factory _RewardDto(
-      {@JsonKey(ignore: true) String? id,
-      required String description,
-      required int requiredEntries}) = _$_RewardDto;
+      {@JsonKey(ignore: true) final String? id,
+      required final String description,
+      required final int requiredEntries}) = _$_RewardDto;
   const _RewardDto._() : super._();
 
   factory _RewardDto.fromJson(Map<String, dynamic> json) =
@@ -207,13 +186,13 @@ abstract class _RewardDto extends RewardDto {
 
   @override
   @JsonKey(ignore: true)
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String get description;
+  String get description => throw _privateConstructorUsedError;
   @override
-  int get requiredEntries;
+  int get requiredEntries => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RewardDtoCopyWith<_RewardDto> get copyWith =>
+  _$$_RewardDtoCopyWith<_$_RewardDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

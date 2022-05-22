@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
+import 'package:raver_rewards/domain/failures/partner_reward_failure.dart';
 import 'package:raver_rewards/domain/reward_entity.dart';
-import 'package:raver_rewards/domain/reward_failure.dart';
 
 abstract class PartnerRewardFacade {
-  Future<Either<RewardFailure, Unit>> addReward(Reward reward);
+  Future<Either<PartnerRewardFailure, Unit>> addReward(Reward reward);
 
-  Stream<Either<RewardFailure, List<Reward>>> getCurrentPartnerRewards();
+  Stream<Either<PartnerRewardFailure, List<Reward>>> getCurrentPartnerRewards();
 
-  Future<Either<RewardFailure, Unit>> deleteReward(String rewardId);
+  Future<Either<PartnerRewardFailure, Unit>> deleteReward(String rewardId);
 }

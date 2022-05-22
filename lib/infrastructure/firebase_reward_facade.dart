@@ -4,9 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_rewards/domain/domain.dart';
+import 'package:raver_rewards/domain/failures/partner_reward_failure.dart';
+import 'package:raver_rewards/domain/failures/selector_reward_failure.dart';
 import 'package:raver_rewards/infrastructure/reward_dto.dart';
 
-class FirebaseRewardFacade implements UserRewardFacade, PartnerRewardFacade {
+class FirebaseRewardFacade
+    implements UserRewardFacade, PartnerRewardFacade, SelectorRewardFacade {
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;
   final Logger _logger;
@@ -20,9 +23,9 @@ class FirebaseRewardFacade implements UserRewardFacade, PartnerRewardFacade {
         _logger = logger;
 
   @override
-  Future<Either<RewardFailure, Unit>> addReward(Reward reward) async {
+  Future<Either<PartnerRewardFailure, Unit>> addReward(Reward reward) async {
     try {
-      final clubDocRef = _getCurrentClubDocumentRef();
+      final clubDocRef = _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
 
       final rewardDto = RewardDto.fromDomain(reward);
 
@@ -30,20 +33,21 @@ class FirebaseRewardFacade implements UserRewardFacade, PartnerRewardFacade {
 
       return right(unit);
     } on FirebaseException catch (e) {
-      _logger.e("Firebase Exception during adding reward EXCEPTION: $e");
-      return left(const RewardFailure.unexpected());
+      _logger.e("Firebase Exception adding reward EXCEPTION: $e");
+      return left(const PartnerRewardFailure.unexpected());
     }
   }
 
   @override
-  Stream<Either<RewardFailure, List<Reward>>>
+  Stream<Either<PartnerRewardFailure, List<Reward>>>
       getCurrentPartnerRewards() async* {
-    final clubDocRef = _getCurrentClubDocumentRef();
+    final clubDocRef = _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
+
     yield* clubDocRef.rewardsCollection
         .orderBy('requiredEntries')
         .snapshots()
         .map(
-          (snapshot) => right<RewardFailure, List<Reward>>(
+          (snapshot) => right<PartnerRewardFailure, List<Reward>>(
             snapshot.docs
                 .map((doc) => RewardDto.fromFirebase(doc).toDomain())
                 .toList(),
@@ -52,53 +56,70 @@ class FirebaseRewardFacade implements UserRewardFacade, PartnerRewardFacade {
         .handleError((e) {
       if (e is FirebaseException) {
         _logger.e(
-          "Firebase Exception during getting "
+          "Firebase Exception getting "
           "current partner rewards EXCEPTION: $e",
         );
-        return left(const RewardFailure.unexpected());
+        return left(const PartnerRewardFailure.unexpected());
       }
     });
   }
 
   @override
-  Future<Either<RewardFailure, Unit>> deleteReward(String rewardId) async {
+  Future<Either<PartnerRewardFailure, Unit>> deleteReward(
+      String rewardId) async {
     try {
-      final clubDocRef = _getCurrentClubDocumentRef();
+      final clubDocRef = _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
 
       await clubDocRef.rewardsCollection.doc(rewardId).delete();
 
       return right(unit);
     } on FirebaseException catch (e) {
-      _logger.e("Firebase Exception during deleting reward EXCEPTION: $e");
-      return left(const RewardFailure.unexpected());
+      _logger.e("Firebase Exception deleting reward EXCEPTION: $e");
+      return left(const PartnerRewardFailure.unexpected());
     }
   }
 
   @override
-  Future<Either<RewardFailure, List<Reward>>> getRewardsByClubId(
+  Future<Either<UserRewardFailure, List<Reward>>> getRewardsByClubId(
     String clubId,
   ) async {
     try {
       final result =
           await _firestore.clubCollection.doc(clubId).rewardsCollection.get();
 
-      return right<RewardFailure, List<Reward>>(
+      return right<UserRewardFailure, List<Reward>>(
         result.docs
             .map((doc) => RewardDto.fromFirebase(doc).toDomain())
             .toList(),
       );
     } on FirebaseException catch (e) {
-      _logger.e(
-          "Firebase Exception during getting rewards by club id EXCEPTION: $e");
-      return left(const RewardFailure.unexpected());
+      _logger.e("Firebase Exception getting rewards by club id EXCEPTION: $e");
+      return left(const UserRewardFailure.unexpected());
     }
   }
 
-  DocumentReference _getCurrentClubDocumentRef() {
-    final firebaseUser = _firebaseAuth.currentUser;
+  @override
+  Stream<Either<SelectorRewardFailure, List<Reward>>>
+      getRewardsFromCurrentSelectorClub() async* {
+    final selectorClubDocRef =
+        await _firestore.getCurrentSelectorClubDocRef(_firebaseAuth);
 
-    if (firebaseUser == null) throw NotAuthenticatedError();
-
-    return _firestore.clubCollection.doc(firebaseUser.uid);
+    yield* selectorClubDocRef.rewardsCollection
+        .snapshots()
+        .map(
+          (snapshot) => right<SelectorRewardFailure, List<Reward>>(
+            snapshot.docs
+                .map((doc) => RewardDto.fromFirebase(doc).toDomain())
+                .toList(),
+          ),
+        )
+        .handleError((e) {
+      if (e is FirebaseException) {
+        _logger.e(
+          'Firebase Exception getting rewards from current partner club EXCEPTION: $e',
+        );
+        return left(const SelectorRewardFailure.unexpected());
+      }
+    });
   }
 }

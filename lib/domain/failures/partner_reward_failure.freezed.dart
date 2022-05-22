@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'reward_failure.dart';
+part of 'partner_reward_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,22 +12,10 @@ part of 'reward_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$RewardFailureTearOff {
-  const _$RewardFailureTearOff();
-
-  _Unexpected unexpected() {
-    return const _Unexpected();
-  }
-}
-
-/// @nodoc
-const $RewardFailure = _$RewardFailureTearOff();
-
-/// @nodoc
-mixin _$RewardFailure {
+mixin _$PartnerRewardFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
@@ -63,38 +51,39 @@ mixin _$RewardFailure {
 }
 
 /// @nodoc
-abstract class $RewardFailureCopyWith<$Res> {
-  factory $RewardFailureCopyWith(
-          RewardFailure value, $Res Function(RewardFailure) then) =
-      _$RewardFailureCopyWithImpl<$Res>;
+abstract class $PartnerRewardFailureCopyWith<$Res> {
+  factory $PartnerRewardFailureCopyWith(PartnerRewardFailure value,
+          $Res Function(PartnerRewardFailure) then) =
+      _$PartnerRewardFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RewardFailureCopyWithImpl<$Res>
-    implements $RewardFailureCopyWith<$Res> {
-  _$RewardFailureCopyWithImpl(this._value, this._then);
+class _$PartnerRewardFailureCopyWithImpl<$Res>
+    implements $PartnerRewardFailureCopyWith<$Res> {
+  _$PartnerRewardFailureCopyWithImpl(this._value, this._then);
 
-  final RewardFailure _value;
+  final PartnerRewardFailure _value;
   // ignore: unused_field
-  final $Res Function(RewardFailure) _then;
+  final $Res Function(PartnerRewardFailure) _then;
 }
 
 /// @nodoc
-abstract class _$UnexpectedCopyWith<$Res> {
-  factory _$UnexpectedCopyWith(
-          _Unexpected value, $Res Function(_Unexpected) then) =
-      __$UnexpectedCopyWithImpl<$Res>;
+abstract class _$$_UnexpectedCopyWith<$Res> {
+  factory _$$_UnexpectedCopyWith(
+          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
+      __$$_UnexpectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$UnexpectedCopyWithImpl<$Res> extends _$RewardFailureCopyWithImpl<$Res>
-    implements _$UnexpectedCopyWith<$Res> {
-  __$UnexpectedCopyWithImpl(
-      _Unexpected _value, $Res Function(_Unexpected) _then)
-      : super(_value, (v) => _then(v as _Unexpected));
+class __$$_UnexpectedCopyWithImpl<$Res>
+    extends _$PartnerRewardFailureCopyWithImpl<$Res>
+    implements _$$_UnexpectedCopyWith<$Res> {
+  __$$_UnexpectedCopyWithImpl(
+      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+      : super(_value, (v) => _then(v as _$_Unexpected));
 
   @override
-  _Unexpected get _value => super._value as _Unexpected;
+  _$_Unexpected get _value => super._value as _$_Unexpected;
 }
 
 /// @nodoc
@@ -104,13 +93,13 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   String toString() {
-    return 'RewardFailure.unexpected()';
+    return 'PartnerRewardFailure.unexpected()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Unexpected);
+        (other.runtimeType == runtimeType && other is _$_Unexpected);
   }
 
   @override
@@ -173,6 +162,6 @@ class _$_Unexpected implements _Unexpected {
   }
 }
 
-abstract class _Unexpected implements RewardFailure {
+abstract class _Unexpected implements PartnerRewardFailure {
   const factory _Unexpected() = _$_Unexpected;
 }
