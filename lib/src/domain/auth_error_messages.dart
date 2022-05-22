@@ -14,3 +14,4 @@ const usernameAlreadyExist = 'usernameExist';
 const cancelledByUser = 'cancelledByUser';
 const invalidAccessCode = 'invalidAccessCode';
 const invalidLink = 'invalidLink';
+const unavailable = 'unavailable';

@@ -18,4 +18,5 @@ final authErrorMessages = {
   invalidAccessCode: S().invalidAccessCode,
   // TODO - add different translation
   invalidLink: S().invalidUrl,
+  unavailable: S().errorCheckInternetConnection,
 };

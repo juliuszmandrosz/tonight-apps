@@ -16,4 +16,5 @@ const firebaseAuthMessages = {
   'permission-denied': operationNotAllowed,
   'invalid-access-code': invalidAccessCode,
   'not-found': userNotFound,
+  'unavailable': unavailable,
 };
