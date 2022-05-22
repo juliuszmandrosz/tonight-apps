@@ -13,7 +13,7 @@ class CurrentEventCubit extends Cubit<CurrentEventState> {
 
   CurrentEventCubit(this._eventFacade) : super(CurrentEventState.initial());
 
-  void getCurrentEvent() async {
+  Future<void> getCurrentEvent() async {
     emit(state.copyWith(status: CubitStatus.loading));
 
     final failureOrSuccess =

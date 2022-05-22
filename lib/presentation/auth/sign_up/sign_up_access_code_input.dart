@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:raver_scanner/application/sign_up/form_inputs/access_code_input.dart';
+import 'package:raver_scanner/application/core/access_code_input.dart';
 import 'package:raver_scanner/application/sign_up/sign_up_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 

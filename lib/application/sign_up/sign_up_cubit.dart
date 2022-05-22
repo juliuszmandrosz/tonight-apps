@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_auth/raver_auth.dart';
-import 'package:raver_scanner/application/sign_up/form_inputs/access_code_input.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 part 'sign_up_cubit.freezed.dart';

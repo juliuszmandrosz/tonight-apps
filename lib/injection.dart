@@ -1,6 +1,7 @@
 import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -20,6 +21,7 @@ import 'package:raver_scanner/application/scanner/scanner_cubit.dart';
 import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
 import 'package:raver_scanner/application/sign_in/sign_in_cubit.dart';
 import 'package:raver_scanner/application/sign_up/sign_up_cubit.dart';
+import 'package:raver_scanner/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:raver_tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 
@@ -58,7 +60,7 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerFactory(
+  getIt.registerLazySingleton(
     () => CurrentEventCubit(
       getIt(),
     ),
@@ -76,10 +78,24 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerFactory(
+  getIt.registerLazySingleton(
     () => SelectorClubCubit(
       selectorClubFacade: getIt(),
       selectorRewardFacade: getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => NetworkCheckCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
+    () => WelcomeLoaderCubit(
+      selectorClubCubit: getIt(),
+      currentEventCubit: getIt(),
+      firebaseRemoteConfig: getIt(),
     ),
   );
 }
@@ -184,4 +200,6 @@ void _registerModules() {
       getIt(),
     ),
   );
+
+  getIt.registerLazySingleton(() => Connectivity());
 }

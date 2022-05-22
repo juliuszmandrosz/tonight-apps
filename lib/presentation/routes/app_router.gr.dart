@@ -33,6 +33,10 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const ScannerPage());
     },
+    NetworkLostRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const NetworkLostPage());
+    },
     EventRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const EventPage());
@@ -47,7 +51,8 @@ class _$AppRouter extends RootStackRouter {
           RouteConfig(EventRoute.name,
               path: 'event-page', parent: NavigatorRoute.name)
         ]),
-        RouteConfig(ScannerRoute.name, path: '/scanner-page')
+        RouteConfig(ScannerRoute.name, path: '/scanner-page'),
+        RouteConfig(NetworkLostRoute.name, path: '/network-lost-page')
       ];
 }
 
@@ -83,6 +88,15 @@ class ScannerRoute extends PageRouteInfo<void> {
   const ScannerRoute() : super(ScannerRoute.name, path: '/scanner-page');
 
   static const String name = 'ScannerRoute';
+}
+
+/// generated route for
+/// [NetworkLostPage]
+class NetworkLostRoute extends PageRouteInfo<void> {
+  const NetworkLostRoute()
+      : super(NetworkLostRoute.name, path: '/network-lost-page');
+
+  static const String name = 'NetworkLostRoute';
 }
 
 /// generated route for

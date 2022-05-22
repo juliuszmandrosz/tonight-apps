@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:raver_scanner/network_lost/network_lost_page.dart';
 import 'package:raver_scanner/presentation/event/event_page.dart';
 import 'package:raver_scanner/presentation/auth/auth_page.dart';
 import 'package:raver_scanner/presentation/navigator/navigator_page.dart';
@@ -20,6 +21,7 @@ part 'app_router.gr.dart';
       ],
     ),
     AutoRoute(page: ScannerPage),
+    AutoRoute(page: NetworkLostPage),
   ],
 )
 class AppRouter extends _$AppRouter {}

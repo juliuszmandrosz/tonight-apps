@@ -7,6 +7,7 @@ import 'package:raver_scanner/presentation/core/raver_scanner_headline.dart';
 import 'package:raver_scanner/presentation/event/widgets/current_event.dart';
 import 'package:raver_scanner/presentation/event/widgets/no_access.dart';
 import 'package:raver_scanner/presentation/event/widgets/no_live_event.dart';
+import 'package:raver_scanner/presentation/event/widgets/refresh_icon.dart';
 import 'package:raver_scanner/presentation/event/widgets/selector_club.dart';
 import 'package:raver_scanner/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -50,6 +51,8 @@ class EventPage extends StatelessWidget {
                 () => const NoLiveEvent(),
                 (event) => CurrentEvent(event: event),
               ),
+              const SizedBox(height: 30),
+              const RefreshCurrentEventButton(),
               if (state.currentEvent.isSome()) const Spacer(),
               if (state.currentEvent.isSome())
                 SizedBox(
