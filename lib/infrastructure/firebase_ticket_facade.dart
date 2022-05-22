@@ -94,7 +94,7 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
         attendance = await _firestore.runTransaction((transaction) async {
           final userDoc = await transaction.get(userDocRef);
 
-          final attendance = userDoc.get('attendance') as Map<String, int>;
+          final attendance = userDoc.get('attendance') as Map<String, dynamic>;
 
           final ticket = result.getRightOrCrash();
 
