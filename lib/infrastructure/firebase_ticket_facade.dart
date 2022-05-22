@@ -55,7 +55,9 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
 
       final ticketDocRef = userDocRef.ticketCollection.doc(ticketId);
 
-      return _firestore.runTransaction((transaction) async {
+      final result = await _firestore
+          .runTransaction<Either<SelectorTicketFailure, Ticket>>(
+              (transaction) async {
         final ticketDoc = await transaction.get(ticketDocRef);
 
         if (!ticketDoc.exists) {
@@ -85,6 +87,25 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
 
         return right(ticketDto.toDomain());
       });
+
+      if (result.isRight()) {
+        await _firestore.runTransaction((transaction) async {
+          final userDoc = await transaction.get(userDocRef);
+
+          final attendance = userDoc.get('attendance') as Map<String, int>;
+
+          final ticket = result.getRightOrCrash();
+
+          final attendanceInCurrentClub = attendance[ticket.clubId] ?? 0;
+
+          transaction.update(
+            userDocRef,
+            {'attendance': attendanceInCurrentClub + 1},
+          );
+        });
+      }
+
+      return result;
     } on FirebaseException catch (e) {
       _logger.e("Exception scanning ticket EXCEPTION: $e");
       return left(const SelectorTicketFailure.unexpected());
