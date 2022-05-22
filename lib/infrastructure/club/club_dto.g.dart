@@ -22,10 +22,6 @@ _$_ClubDto _$$_ClubDtoFromJson(Map<String, dynamic> json) => _$_ClubDto(
             (k, e) => MapEntry(k, e as String),
           ) ??
           const {},
-      reviews: (json['reviews'] as List<dynamic>?)
-              ?.map((e) => ClubReviewDto.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
       aboutUs: json['aboutUs'] as String?,
     );
 
@@ -41,6 +37,5 @@ Map<String, dynamic> _$$_ClubDtoToJson(_$_ClubDto instance) =>
       'phoneNumber': instance.phoneNumber,
       'location': instance.location,
       'socialMedia': instance.socialMedia,
-      'reviews': instance.reviews,
       'aboutUs': instance.aboutUs,
     };

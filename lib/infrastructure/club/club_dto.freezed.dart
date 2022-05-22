@@ -12,54 +12,11 @@ part of 'club_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ClubDto _$ClubDtoFromJson(Map<String, dynamic> json) {
   return _ClubDto.fromJson(json);
 }
-
-/// @nodoc
-class _$ClubDtoTearOff {
-  const _$ClubDtoTearOff();
-
-  _ClubDto call(
-      {@JsonKey(ignore: true) String? id,
-      required String clubName,
-      required String clubImageUrl,
-      int reviewCount = 0,
-      double reviewAvg = 0,
-      required String locationString,
-      required String cityId,
-      required String acceptedCurrency,
-      required String phoneNumber,
-      required Map<String, double> location,
-      Map<String, String> socialMedia = const {},
-      List<ClubReviewDto> reviews = const [],
-      String? aboutUs}) {
-    return _ClubDto(
-      id: id,
-      clubName: clubName,
-      clubImageUrl: clubImageUrl,
-      reviewCount: reviewCount,
-      reviewAvg: reviewAvg,
-      locationString: locationString,
-      cityId: cityId,
-      acceptedCurrency: acceptedCurrency,
-      phoneNumber: phoneNumber,
-      location: location,
-      socialMedia: socialMedia,
-      reviews: reviews,
-      aboutUs: aboutUs,
-    );
-  }
-
-  ClubDto fromJson(Map<String, Object?> json) {
-    return ClubDto.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ClubDto = _$ClubDtoTearOff();
 
 /// @nodoc
 mixin _$ClubDto {
@@ -75,7 +32,6 @@ mixin _$ClubDto {
   String get phoneNumber => throw _privateConstructorUsedError;
   Map<String, double> get location => throw _privateConstructorUsedError;
   Map<String, String> get socialMedia => throw _privateConstructorUsedError;
-  List<ClubReviewDto> get reviews => throw _privateConstructorUsedError;
   String? get aboutUs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -99,7 +55,6 @@ abstract class $ClubDtoCopyWith<$Res> {
       String phoneNumber,
       Map<String, double> location,
       Map<String, String> socialMedia,
-      List<ClubReviewDto> reviews,
       String? aboutUs});
 }
 
@@ -124,7 +79,6 @@ class _$ClubDtoCopyWithImpl<$Res> implements $ClubDtoCopyWith<$Res> {
     Object? phoneNumber = freezed,
     Object? location = freezed,
     Object? socialMedia = freezed,
-    Object? reviews = freezed,
     Object? aboutUs = freezed,
   }) {
     return _then(_value.copyWith(
@@ -172,10 +126,6 @@ class _$ClubDtoCopyWithImpl<$Res> implements $ClubDtoCopyWith<$Res> {
           ? _value.socialMedia
           : socialMedia // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
-      reviews: reviews == freezed
-          ? _value.reviews
-          : reviews // ignore: cast_nullable_to_non_nullable
-              as List<ClubReviewDto>,
       aboutUs: aboutUs == freezed
           ? _value.aboutUs
           : aboutUs // ignore: cast_nullable_to_non_nullable
@@ -185,9 +135,10 @@ class _$ClubDtoCopyWithImpl<$Res> implements $ClubDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ClubDtoCopyWith<$Res> implements $ClubDtoCopyWith<$Res> {
-  factory _$ClubDtoCopyWith(_ClubDto value, $Res Function(_ClubDto) then) =
-      __$ClubDtoCopyWithImpl<$Res>;
+abstract class _$$_ClubDtoCopyWith<$Res> implements $ClubDtoCopyWith<$Res> {
+  factory _$$_ClubDtoCopyWith(
+          _$_ClubDto value, $Res Function(_$_ClubDto) then) =
+      __$$_ClubDtoCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(ignore: true) String? id,
@@ -201,18 +152,17 @@ abstract class _$ClubDtoCopyWith<$Res> implements $ClubDtoCopyWith<$Res> {
       String phoneNumber,
       Map<String, double> location,
       Map<String, String> socialMedia,
-      List<ClubReviewDto> reviews,
       String? aboutUs});
 }
 
 /// @nodoc
-class __$ClubDtoCopyWithImpl<$Res> extends _$ClubDtoCopyWithImpl<$Res>
-    implements _$ClubDtoCopyWith<$Res> {
-  __$ClubDtoCopyWithImpl(_ClubDto _value, $Res Function(_ClubDto) _then)
-      : super(_value, (v) => _then(v as _ClubDto));
+class __$$_ClubDtoCopyWithImpl<$Res> extends _$ClubDtoCopyWithImpl<$Res>
+    implements _$$_ClubDtoCopyWith<$Res> {
+  __$$_ClubDtoCopyWithImpl(_$_ClubDto _value, $Res Function(_$_ClubDto) _then)
+      : super(_value, (v) => _then(v as _$_ClubDto));
 
   @override
-  _ClubDto get _value => super._value as _ClubDto;
+  _$_ClubDto get _value => super._value as _$_ClubDto;
 
   @override
   $Res call({
@@ -227,10 +177,9 @@ class __$ClubDtoCopyWithImpl<$Res> extends _$ClubDtoCopyWithImpl<$Res>
     Object? phoneNumber = freezed,
     Object? location = freezed,
     Object? socialMedia = freezed,
-    Object? reviews = freezed,
     Object? aboutUs = freezed,
   }) {
-    return _then(_ClubDto(
+    return _then(_$_ClubDto(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -268,17 +217,13 @@ class __$ClubDtoCopyWithImpl<$Res> extends _$ClubDtoCopyWithImpl<$Res>
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
       location: location == freezed
-          ? _value.location
+          ? _value._location
           : location // ignore: cast_nullable_to_non_nullable
               as Map<String, double>,
       socialMedia: socialMedia == freezed
-          ? _value.socialMedia
+          ? _value._socialMedia
           : socialMedia // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
-      reviews: reviews == freezed
-          ? _value.reviews
-          : reviews // ignore: cast_nullable_to_non_nullable
-              as List<ClubReviewDto>,
       aboutUs: aboutUs == freezed
           ? _value.aboutUs
           : aboutUs // ignore: cast_nullable_to_non_nullable
@@ -301,11 +246,12 @@ class _$_ClubDto extends _ClubDto {
       required this.cityId,
       required this.acceptedCurrency,
       required this.phoneNumber,
-      required this.location,
-      this.socialMedia = const {},
-      this.reviews = const [],
+      required final Map<String, double> location,
+      final Map<String, String> socialMedia = const {},
       this.aboutUs})
-      : super._();
+      : _location = location,
+        _socialMedia = socialMedia,
+        super._();
 
   factory _$_ClubDto.fromJson(Map<String, dynamic> json) =>
       _$$_ClubDtoFromJson(json);
@@ -317,11 +263,11 @@ class _$_ClubDto extends _ClubDto {
   final String clubName;
   @override
   final String clubImageUrl;
-  @JsonKey()
   @override
+  @JsonKey()
   final int reviewCount;
-  @JsonKey()
   @override
+  @JsonKey()
   final double reviewAvg;
   @override
   final String locationString;
@@ -331,27 +277,34 @@ class _$_ClubDto extends _ClubDto {
   final String acceptedCurrency;
   @override
   final String phoneNumber;
+  final Map<String, double> _location;
   @override
-  final Map<String, double> location;
+  Map<String, double> get location {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_location);
+  }
+
+  final Map<String, String> _socialMedia;
+  @override
   @JsonKey()
-  @override
-  final Map<String, String> socialMedia;
-  @JsonKey()
-  @override
-  final List<ClubReviewDto> reviews;
+  Map<String, String> get socialMedia {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_socialMedia);
+  }
+
   @override
   final String? aboutUs;
 
   @override
   String toString() {
-    return 'ClubDto(id: $id, clubName: $clubName, clubImageUrl: $clubImageUrl, reviewCount: $reviewCount, reviewAvg: $reviewAvg, locationString: $locationString, cityId: $cityId, acceptedCurrency: $acceptedCurrency, phoneNumber: $phoneNumber, location: $location, socialMedia: $socialMedia, reviews: $reviews, aboutUs: $aboutUs)';
+    return 'ClubDto(id: $id, clubName: $clubName, clubImageUrl: $clubImageUrl, reviewCount: $reviewCount, reviewAvg: $reviewAvg, locationString: $locationString, cityId: $cityId, acceptedCurrency: $acceptedCurrency, phoneNumber: $phoneNumber, location: $location, socialMedia: $socialMedia, aboutUs: $aboutUs)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ClubDto &&
+            other is _$_ClubDto &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.clubName, clubName) &&
             const DeepCollectionEquality()
@@ -366,13 +319,13 @@ class _$_ClubDto extends _ClubDto {
                 .equals(other.acceptedCurrency, acceptedCurrency) &&
             const DeepCollectionEquality()
                 .equals(other.phoneNumber, phoneNumber) &&
-            const DeepCollectionEquality().equals(other.location, location) &&
+            const DeepCollectionEquality().equals(other._location, _location) &&
             const DeepCollectionEquality()
-                .equals(other.socialMedia, socialMedia) &&
-            const DeepCollectionEquality().equals(other.reviews, reviews) &&
+                .equals(other._socialMedia, _socialMedia) &&
             const DeepCollectionEquality().equals(other.aboutUs, aboutUs));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -385,15 +338,14 @@ class _$_ClubDto extends _ClubDto {
       const DeepCollectionEquality().hash(cityId),
       const DeepCollectionEquality().hash(acceptedCurrency),
       const DeepCollectionEquality().hash(phoneNumber),
-      const DeepCollectionEquality().hash(location),
-      const DeepCollectionEquality().hash(socialMedia),
-      const DeepCollectionEquality().hash(reviews),
+      const DeepCollectionEquality().hash(_location),
+      const DeepCollectionEquality().hash(_socialMedia),
       const DeepCollectionEquality().hash(aboutUs));
 
   @JsonKey(ignore: true)
   @override
-  _$ClubDtoCopyWith<_ClubDto> get copyWith =>
-      __$ClubDtoCopyWithImpl<_ClubDto>(this, _$identity);
+  _$$_ClubDtoCopyWith<_$_ClubDto> get copyWith =>
+      __$$_ClubDtoCopyWithImpl<_$_ClubDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -403,52 +355,49 @@ class _$_ClubDto extends _ClubDto {
 
 abstract class _ClubDto extends ClubDto {
   const factory _ClubDto(
-      {@JsonKey(ignore: true) String? id,
-      required String clubName,
-      required String clubImageUrl,
-      int reviewCount,
-      double reviewAvg,
-      required String locationString,
-      required String cityId,
-      required String acceptedCurrency,
-      required String phoneNumber,
-      required Map<String, double> location,
-      Map<String, String> socialMedia,
-      List<ClubReviewDto> reviews,
-      String? aboutUs}) = _$_ClubDto;
+      {@JsonKey(ignore: true) final String? id,
+      required final String clubName,
+      required final String clubImageUrl,
+      final int reviewCount,
+      final double reviewAvg,
+      required final String locationString,
+      required final String cityId,
+      required final String acceptedCurrency,
+      required final String phoneNumber,
+      required final Map<String, double> location,
+      final Map<String, String> socialMedia,
+      final String? aboutUs}) = _$_ClubDto;
   const _ClubDto._() : super._();
 
   factory _ClubDto.fromJson(Map<String, dynamic> json) = _$_ClubDto.fromJson;
 
   @override
   @JsonKey(ignore: true)
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String get clubName;
+  String get clubName => throw _privateConstructorUsedError;
   @override
-  String get clubImageUrl;
+  String get clubImageUrl => throw _privateConstructorUsedError;
   @override
-  int get reviewCount;
+  int get reviewCount => throw _privateConstructorUsedError;
   @override
-  double get reviewAvg;
+  double get reviewAvg => throw _privateConstructorUsedError;
   @override
-  String get locationString;
+  String get locationString => throw _privateConstructorUsedError;
   @override
-  String get cityId;
+  String get cityId => throw _privateConstructorUsedError;
   @override
-  String get acceptedCurrency;
+  String get acceptedCurrency => throw _privateConstructorUsedError;
   @override
-  String get phoneNumber;
+  String get phoneNumber => throw _privateConstructorUsedError;
   @override
-  Map<String, double> get location;
+  Map<String, double> get location => throw _privateConstructorUsedError;
   @override
-  Map<String, String> get socialMedia;
+  Map<String, String> get socialMedia => throw _privateConstructorUsedError;
   @override
-  List<ClubReviewDto> get reviews;
-  @override
-  String? get aboutUs;
+  String? get aboutUs => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ClubDtoCopyWith<_ClubDto> get copyWith =>
+  _$$_ClubDtoCopyWith<_$_ClubDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

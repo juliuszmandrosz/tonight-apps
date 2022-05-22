@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'club_review_dto.dart';
+part of 'review_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ClubReviewDto _$$_ClubReviewDtoFromJson(Map<String, dynamic> json) =>
-    _$_ClubReviewDto(
+_$_ReviewDto _$$_ReviewDtoFromJson(Map<String, dynamic> json) => _$_ReviewDto(
       userOpinion: json['userOpinion'] as String,
       userRate: (json['userRate'] as num).toDouble(),
       userId: json['userId'] as String,
       username: json['username'] as String,
-      dateTime:
-          const TimestampJsonConverter().fromJson(json['dateTime'] as int),
+      eventId: json['eventId'] as String,
+      dateAdded:
+          const TimestampJsonConverter().fromJson(json['dateAdded'] as int),
     );
 
-Map<String, dynamic> _$$_ClubReviewDtoToJson(_$_ClubReviewDto instance) =>
+Map<String, dynamic> _$$_ReviewDtoToJson(_$_ReviewDto instance) =>
     <String, dynamic>{
       'userOpinion': instance.userOpinion,
       'userRate': instance.userRate,
       'userId': instance.userId,
       'username': instance.username,
-      'dateTime': const TimestampJsonConverter().toJson(instance.dateTime),
+      'eventId': instance.eventId,
+      'dateAdded': const TimestampJsonConverter().toJson(instance.dateAdded),
     };

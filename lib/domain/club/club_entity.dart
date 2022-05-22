@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:raver_clubs/domain/club_review_entity.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:uuid/uuid.dart';
 
@@ -15,7 +14,6 @@ class Club extends Equatable {
   final String phoneNumber;
   final Map<String, double> location;
   final Map<String, String> socialMedia;
-  final List<ClubReview> reviews;
   final String? aboutUs;
 
   Club({
@@ -30,7 +28,6 @@ class Club extends Equatable {
     required this.acceptedCurrency,
     required this.phoneNumber,
     required this.socialMedia,
-    required this.reviews,
     required this.aboutUs,
   }) : id = id ?? const Uuid().v1();
 
@@ -55,7 +52,6 @@ class Club extends Equatable {
         acceptedCurrency,
         phoneNumber,
         socialMedia,
-        reviews,
         aboutUs,
       ];
 }

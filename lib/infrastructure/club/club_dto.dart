@@ -1,8 +1,7 @@
+import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_clubs/domain/domain.dart';
-
-import 'club_review_dto.dart';
 
 part 'club_dto.freezed.dart';
 
@@ -25,7 +24,6 @@ class ClubDto with _$ClubDto {
     required String phoneNumber,
     required Map<String, double> location,
     @Default({}) Map<String, String> socialMedia,
-    @Default([]) List<ClubReviewDto> reviews,
     String? aboutUs,
   }) = _ClubDto;
 
@@ -42,16 +40,17 @@ class ClubDto with _$ClubDto {
       acceptedCurrency: club.acceptedCurrency,
       phoneNumber: club.phoneNumber,
       socialMedia: club.socialMedia,
-      reviews: List.generate(
-        club.reviews.length,
-        (index) => ClubReviewDto.fromDomain(club.reviews[index]),
-      ),
       aboutUs: club.aboutUs,
     );
   }
 
   factory ClubDto.fromJson(Map<String, dynamic> json) =>
       _$ClubDtoFromJson(json);
+
+  factory ClubDto.fromAlgolia(AlgoliaObjectSnapshot documentSnapshot) {
+    return ClubDto.fromJson(documentSnapshot.data)
+        .copyWith(id: documentSnapshot.objectID);
+  }
 
   factory ClubDto.fromFirebase(DocumentSnapshot documentSnapshot) {
     return ClubDto.fromJson(documentSnapshot.data() as Map<String, dynamic>)
@@ -72,7 +71,6 @@ class ClubDto with _$ClubDto {
       aboutUs: aboutUs,
       phoneNumber: phoneNumber,
       socialMedia: socialMedia,
-      reviews: reviews.map((review) => review.toDomain()).toList(),
     );
   }
 }

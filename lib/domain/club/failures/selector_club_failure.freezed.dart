@@ -12,23 +12,7 @@ part of 'selector_club_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$SelectorClubFailureTearOff {
-  const _$SelectorClubFailureTearOff();
-
-  _SelectorClubFailure unexpected() {
-    return const _SelectorClubFailure();
-  }
-
-  _InvalidAccessCode invalidAccessCode() {
-    return const _InvalidAccessCode();
-  }
-}
-
-/// @nodoc
-const $SelectorClubFailure = _$SelectorClubFailureTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SelectorClubFailure {
@@ -90,22 +74,22 @@ class _$SelectorClubFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SelectorClubFailureCopyWith<$Res> {
-  factory _$SelectorClubFailureCopyWith(_SelectorClubFailure value,
-          $Res Function(_SelectorClubFailure) then) =
-      __$SelectorClubFailureCopyWithImpl<$Res>;
+abstract class _$$_SelectorClubFailureCopyWith<$Res> {
+  factory _$$_SelectorClubFailureCopyWith(_$_SelectorClubFailure value,
+          $Res Function(_$_SelectorClubFailure) then) =
+      __$$_SelectorClubFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$SelectorClubFailureCopyWithImpl<$Res>
+class __$$_SelectorClubFailureCopyWithImpl<$Res>
     extends _$SelectorClubFailureCopyWithImpl<$Res>
-    implements _$SelectorClubFailureCopyWith<$Res> {
-  __$SelectorClubFailureCopyWithImpl(
-      _SelectorClubFailure _value, $Res Function(_SelectorClubFailure) _then)
-      : super(_value, (v) => _then(v as _SelectorClubFailure));
+    implements _$$_SelectorClubFailureCopyWith<$Res> {
+  __$$_SelectorClubFailureCopyWithImpl(_$_SelectorClubFailure _value,
+      $Res Function(_$_SelectorClubFailure) _then)
+      : super(_value, (v) => _then(v as _$_SelectorClubFailure));
 
   @override
-  _SelectorClubFailure get _value => super._value as _SelectorClubFailure;
+  _$_SelectorClubFailure get _value => super._value as _$_SelectorClubFailure;
 }
 
 /// @nodoc
@@ -121,7 +105,7 @@ class _$_SelectorClubFailure implements _SelectorClubFailure {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _SelectorClubFailure);
+        (other.runtimeType == runtimeType && other is _$_SelectorClubFailure);
   }
 
   @override
@@ -195,22 +179,22 @@ abstract class _SelectorClubFailure implements SelectorClubFailure {
 }
 
 /// @nodoc
-abstract class _$InvalidAccessCodeCopyWith<$Res> {
-  factory _$InvalidAccessCodeCopyWith(
-          _InvalidAccessCode value, $Res Function(_InvalidAccessCode) then) =
-      __$InvalidAccessCodeCopyWithImpl<$Res>;
+abstract class _$$_InvalidAccessCodeCopyWith<$Res> {
+  factory _$$_InvalidAccessCodeCopyWith(_$_InvalidAccessCode value,
+          $Res Function(_$_InvalidAccessCode) then) =
+      __$$_InvalidAccessCodeCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InvalidAccessCodeCopyWithImpl<$Res>
+class __$$_InvalidAccessCodeCopyWithImpl<$Res>
     extends _$SelectorClubFailureCopyWithImpl<$Res>
-    implements _$InvalidAccessCodeCopyWith<$Res> {
-  __$InvalidAccessCodeCopyWithImpl(
-      _InvalidAccessCode _value, $Res Function(_InvalidAccessCode) _then)
-      : super(_value, (v) => _then(v as _InvalidAccessCode));
+    implements _$$_InvalidAccessCodeCopyWith<$Res> {
+  __$$_InvalidAccessCodeCopyWithImpl(
+      _$_InvalidAccessCode _value, $Res Function(_$_InvalidAccessCode) _then)
+      : super(_value, (v) => _then(v as _$_InvalidAccessCode));
 
   @override
-  _InvalidAccessCode get _value => super._value as _InvalidAccessCode;
+  _$_InvalidAccessCode get _value => super._value as _$_InvalidAccessCode;
 }
 
 /// @nodoc
@@ -226,7 +210,7 @@ class _$_InvalidAccessCode implements _InvalidAccessCode {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _InvalidAccessCode);
+        (other.runtimeType == runtimeType && other is _$_InvalidAccessCode);
   }
 
   @override

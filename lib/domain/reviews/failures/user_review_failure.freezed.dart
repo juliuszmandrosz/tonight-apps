@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'user_club_failure.dart';
+part of 'user_review_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,22 +12,10 @@ part of 'user_club_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$UserClubFailureTearOff {
-  const _$UserClubFailureTearOff();
-
-  _UserClubFailure unexpected() {
-    return const _UserClubFailure();
-  }
-}
-
-/// @nodoc
-const $UserClubFailure = _$UserClubFailureTearOff();
-
-/// @nodoc
-mixin _$UserClubFailure {
+mixin _$UserReviewFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
@@ -46,72 +34,72 @@ mixin _$UserClubFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UserClubFailure value) unexpected,
+    required TResult Function(_UserReviewFailure value) unexpected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UserClubFailure value)? unexpected,
+    TResult Function(_UserReviewFailure value)? unexpected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UserClubFailure value)? unexpected,
+    TResult Function(_UserReviewFailure value)? unexpected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserClubFailureCopyWith<$Res> {
-  factory $UserClubFailureCopyWith(
-          UserClubFailure value, $Res Function(UserClubFailure) then) =
-      _$UserClubFailureCopyWithImpl<$Res>;
+abstract class $UserReviewFailureCopyWith<$Res> {
+  factory $UserReviewFailureCopyWith(
+          UserReviewFailure value, $Res Function(UserReviewFailure) then) =
+      _$UserReviewFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UserClubFailureCopyWithImpl<$Res>
-    implements $UserClubFailureCopyWith<$Res> {
-  _$UserClubFailureCopyWithImpl(this._value, this._then);
+class _$UserReviewFailureCopyWithImpl<$Res>
+    implements $UserReviewFailureCopyWith<$Res> {
+  _$UserReviewFailureCopyWithImpl(this._value, this._then);
 
-  final UserClubFailure _value;
+  final UserReviewFailure _value;
   // ignore: unused_field
-  final $Res Function(UserClubFailure) _then;
+  final $Res Function(UserReviewFailure) _then;
 }
 
 /// @nodoc
-abstract class _$UserClubFailureCopyWith<$Res> {
-  factory _$UserClubFailureCopyWith(
-          _UserClubFailure value, $Res Function(_UserClubFailure) then) =
-      __$UserClubFailureCopyWithImpl<$Res>;
+abstract class _$$_UserReviewFailureCopyWith<$Res> {
+  factory _$$_UserReviewFailureCopyWith(_$_UserReviewFailure value,
+          $Res Function(_$_UserReviewFailure) then) =
+      __$$_UserReviewFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$UserClubFailureCopyWithImpl<$Res>
-    extends _$UserClubFailureCopyWithImpl<$Res>
-    implements _$UserClubFailureCopyWith<$Res> {
-  __$UserClubFailureCopyWithImpl(
-      _UserClubFailure _value, $Res Function(_UserClubFailure) _then)
-      : super(_value, (v) => _then(v as _UserClubFailure));
+class __$$_UserReviewFailureCopyWithImpl<$Res>
+    extends _$UserReviewFailureCopyWithImpl<$Res>
+    implements _$$_UserReviewFailureCopyWith<$Res> {
+  __$$_UserReviewFailureCopyWithImpl(
+      _$_UserReviewFailure _value, $Res Function(_$_UserReviewFailure) _then)
+      : super(_value, (v) => _then(v as _$_UserReviewFailure));
 
   @override
-  _UserClubFailure get _value => super._value as _UserClubFailure;
+  _$_UserReviewFailure get _value => super._value as _$_UserReviewFailure;
 }
 
 /// @nodoc
 
-class _$_UserClubFailure implements _UserClubFailure {
-  const _$_UserClubFailure();
+class _$_UserReviewFailure implements _UserReviewFailure {
+  const _$_UserReviewFailure();
 
   @override
   String toString() {
-    return 'UserClubFailure.unexpected()';
+    return 'UserReviewFailure.unexpected()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _UserClubFailure);
+        (other.runtimeType == runtimeType && other is _$_UserReviewFailure);
   }
 
   @override
@@ -148,7 +136,7 @@ class _$_UserClubFailure implements _UserClubFailure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UserClubFailure value) unexpected,
+    required TResult Function(_UserReviewFailure value) unexpected,
   }) {
     return unexpected(this);
   }
@@ -156,7 +144,7 @@ class _$_UserClubFailure implements _UserClubFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UserClubFailure value)? unexpected,
+    TResult Function(_UserReviewFailure value)? unexpected,
   }) {
     return unexpected?.call(this);
   }
@@ -164,7 +152,7 @@ class _$_UserClubFailure implements _UserClubFailure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UserClubFailure value)? unexpected,
+    TResult Function(_UserReviewFailure value)? unexpected,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -174,6 +162,6 @@ class _$_UserClubFailure implements _UserClubFailure {
   }
 }
 
-abstract class _UserClubFailure implements UserClubFailure {
-  const factory _UserClubFailure() = _$_UserClubFailure;
+abstract class _UserReviewFailure implements UserReviewFailure {
+  const factory _UserReviewFailure() = _$_UserReviewFailure;
 }
