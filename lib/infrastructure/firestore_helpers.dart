@@ -61,6 +61,17 @@ extension FirestoreX on FirebaseFirestore {
 
     return selectorDoc;
   }
+
+  Future<DocumentReference> getCurrentSelectorClubDocRef(
+      FirebaseAuth auth) async {
+    final firebaseUser = auth.tryGetFirebaseUser();
+
+    final selectorDoc = await selectors.doc(firebaseUser.uid).get();
+
+    final selectorClubId = selectorDoc.get('clubId');
+
+    return clubCollection.doc(selectorClubId);
+  }
 }
 
 extension DocumentReferenceX on DocumentReference {
