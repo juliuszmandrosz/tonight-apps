@@ -53,7 +53,7 @@ class EventPage extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               const RefreshCurrentEventButton(),
-              if (state.currentEvent.isSome()) const Spacer(),
+              const Spacer(),
               if (state.currentEvent.isSome())
                 SizedBox(
                   width: 300,
