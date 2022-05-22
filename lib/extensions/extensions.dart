@@ -5,3 +5,4 @@ export 'double_extensions.dart';
 export 'option_extensions.dart';
 export 'color_extensions.dart';
 export 'typography_extensions.dart';
+export 'either_extensions.dart';
