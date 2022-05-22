@@ -100,9 +100,11 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
 
           final attendanceInCurrentClub = attendance[ticket.clubId] ?? 0;
 
+          attendance[ticket.clubId] = attendanceInCurrentClub + 1;
+
           transaction.update(
             userDocRef,
-            {'attendance': attendanceInCurrentClub + 1},
+            {'attendance': attendance},
           );
 
           return attendanceInCurrentClub;
