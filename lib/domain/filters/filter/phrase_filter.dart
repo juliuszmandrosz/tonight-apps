@@ -4,7 +4,7 @@ import 'package:raver_common/raver_common.dart';
 
 class PhraseFilter implements IFilter {
   final String phrase;
-  static const fieldName = 'cityId';
+  static const fieldName = 'eventName';
 
   PhraseFilter({required this.phrase});
 
