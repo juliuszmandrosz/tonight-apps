@@ -45,7 +45,7 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
   }
 
   @override
-  Future<Either<SelectorTicketFailure, Ticket>> scanTicket(
+  Future<Either<SelectorTicketFailure, Tuple2<Ticket, int>>> scanTicket(
     String ticketId,
     String currentEventId,
     String userId,
@@ -88,8 +88,10 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
         return right(ticketDto.toDomain());
       });
 
+      var attendance = 0;
+
       if (result.isRight()) {
-        await _firestore.runTransaction((transaction) async {
+        attendance = await _firestore.runTransaction((transaction) async {
           final userDoc = await transaction.get(userDocRef);
 
           final attendance = userDoc.get('attendance') as Map<String, int>;
@@ -102,10 +104,17 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
             userDocRef,
             {'attendance': attendanceInCurrentClub + 1},
           );
+
+          return attendanceInCurrentClub;
         });
       }
 
-      return result;
+      return result.fold(
+        (failure) => left(failure),
+        (ticket) => right(
+          Tuple2(ticket, attendance),
+        ),
+      );
     } on FirebaseException catch (e) {
       _logger.e("Exception scanning ticket EXCEPTION: $e");
       return left(const SelectorTicketFailure.unexpected());
