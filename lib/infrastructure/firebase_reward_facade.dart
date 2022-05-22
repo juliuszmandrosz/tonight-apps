@@ -4,8 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_rewards/domain/domain.dart';
-import 'package:raver_rewards/domain/failures/partner_reward_failure.dart';
-import 'package:raver_rewards/domain/failures/selector_reward_failure.dart';
 import 'package:raver_rewards/infrastructure/reward_dto.dart';
 
 class FirebaseRewardFacade
