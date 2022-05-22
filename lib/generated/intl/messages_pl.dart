@@ -312,6 +312,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nieprawidłowy kod promocyjny"),
         "invalidQrCode":
             MessageLookupByLibrary.simpleMessage("Nieprawidłowy kod QR"),
+        "invalidTicket":
+            MessageLookupByLibrary.simpleMessage("Nieprawidłowy bilet"),
         "invalidUrl": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy format adresu URL"),
         "invalidVerificationCode": MessageLookupByLibrary.simpleMessage(
@@ -505,6 +507,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Maksymalna cena biletu to"),
         "ticketPriceTooLow":
             MessageLookupByLibrary.simpleMessage("Minimalna cena biletu to"),
+        "ticketReturned":
+            MessageLookupByLibrary.simpleMessage("Bilet został zwrócony"),
         "ticketReturnedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Bilet zwrócono pomyślnie"),
         "tickets": m8,

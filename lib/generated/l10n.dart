@@ -1632,6 +1632,16 @@ class S {
     );
   }
 
+  /// `Invalid ticket`
+  String get invalidTicket {
+    return Intl.message(
+      'Invalid ticket',
+      name: 'invalidTicket',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Invalid URL format`
   String get invalidUrl {
     return Intl.message(
@@ -2829,6 +2839,16 @@ class S {
     return Intl.message(
       'The minimum ticket price is',
       name: 'ticketPriceTooLow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ticket has been returned`
+  String get ticketReturned {
+    return Intl.message(
+      'Ticket has been returned',
+      name: 'ticketReturned',
       desc: '',
       args: [],
     );

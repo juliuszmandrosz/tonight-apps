@@ -310,6 +310,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Invalid promotion code"),
         "invalidQrCode":
             MessageLookupByLibrary.simpleMessage("Invalid QR code"),
+        "invalidTicket": MessageLookupByLibrary.simpleMessage("Invalid ticket"),
         "invalidUrl":
             MessageLookupByLibrary.simpleMessage("Invalid URL format"),
         "invalidVerificationCode":
@@ -496,6 +497,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("The maximum ticket price is"),
         "ticketPriceTooLow":
             MessageLookupByLibrary.simpleMessage("The minimum ticket price is"),
+        "ticketReturned":
+            MessageLookupByLibrary.simpleMessage("Ticket has been returned"),
         "ticketReturnedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Ticket returned successfully"),
         "tickets": m8,
