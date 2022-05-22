@@ -29,9 +29,10 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
 
   @override
   Future<Either<UserTicketFailure, List<Ticket>>> getUserTickets() async {
-    final userDoc = _getCurrentUserDocumentRef();
     try {
-      final result = await userDoc.ticketCollection.get();
+      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+
+      final result = await userDocRef.ticketCollection.get();
       return right<UserTicketFailure, List<Ticket>>(
         result.docs
             .map((doc) => TicketDto.fromFirebase(doc).toDomain())
@@ -111,13 +112,5 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
             const UserTicketFailure.unexpected(),
       );
     }
-  }
-
-  DocumentReference _getCurrentUserDocumentRef() {
-    final firebaseUser = _firebaseAuth.currentUser;
-
-    if (firebaseUser == null) throw NotAuthenticatedError();
-
-    return _firestore.userCollection.doc(firebaseUser.uid);
   }
 }
