@@ -832,7 +832,7 @@ packages:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.2"
+    version: "6.0.3"
   pub_semver:
     dependency: transitive
     description:
@@ -884,7 +884,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: b1138faab31693efa47dba63181aceb3636c9f34
+      resolved-ref: cef77e080dff50c331100d6b0903dc99b70dfc67
       url: "https://github.com/juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -897,12 +897,21 @@ packages:
       url: "https://github.com/juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
+  raver_rewards:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "feature/get-user-rewards-for-selector"
+      resolved-ref: e4eb2762961792b3221556317f1f35269c15a00d
+      url: "https://github.com/juliuszmandrosz/RaverRewards.git"
+    source: git
+    version: "0.0.1"
   raver_tickets:
     dependency: "direct main"
     description:
       path: "."
-      ref: develop
-      resolved-ref: "5232e5fe50eb28ac892e79ba64e84416baa62e7a"
+      ref: "feature/update-attendance-on-scan-ticket"
+      resolved-ref: "111fd5535f1b54994208f2fbabeb9c1ad2a3b2eb"
       url: "https://github.com/juliuszmandrosz/RaverTickets.git"
     source: git
     version: "0.0.1"
@@ -911,7 +920,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "8d4ee5ed7653c7842d38d5a620a4255ea3be4742"
+      resolved-ref: "88f194e36003f6d70a01308d53e3b368b7916379"
       url: "https://github.com/juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"

@@ -11,13 +11,24 @@ import 'package:raver_scanner/presentation/event/event_page.dart';
 import 'package:raver_scanner/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class NavigatorPage extends StatelessWidget {
+class NavigatorPage extends StatefulWidget {
   const NavigatorPage({Key? key}) : super(key: key);
 
   @override
+  State<NavigatorPage> createState() => _NavigatorPageState();
+}
+
+class _NavigatorPageState extends State<NavigatorPage> {
+  var _hasBeenInitialized = false;
+
+  @override
   Widget build(BuildContext context) {
-    context.read<CurrentEventCubit>().getCurrentEvent();
-    context.read<SelectorClubCubit>().getClubInfo();
+    if (!_hasBeenInitialized) {
+      context.read<CurrentEventCubit>().getCurrentEvent();
+      context.read<SelectorClubCubit>().getClubInfo();
+      _hasBeenInitialized = true;
+    }
+
     return MultiBlocListener(
       listeners: [
         // TODO - add network check here

@@ -76,12 +76,17 @@ dependencies:
   raver_tickets:
     git:
       url: https://github.com/juliuszmandrosz/RaverTickets.git
-      ref: develop
+      ref: feature/update-attendance-on-scan-ticket
 
   raver_clubs:
     git:
       url: https://github.com/juliuszmandrosz/RaverClubs.git
       ref: develop
+
+  raver_rewards:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverRewards.git
+      ref: feature/get-user-rewards-for-selector
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

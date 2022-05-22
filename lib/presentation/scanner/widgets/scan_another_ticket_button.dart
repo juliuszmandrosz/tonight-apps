@@ -8,10 +8,10 @@ class ScanAnotherTicketButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () => context.read<ScannerCubit>().resetStatus(),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
+    return SizedBox(
+      width: 300,
+      child: ElevatedButton(
+        onPressed: () => context.read<ScannerCubit>().resetStatus(),
         child: Text(S().scanAnotherTicket),
       ),
     );

@@ -13,6 +13,8 @@ import 'package:raver_clubs/infrastructure/cloud_functions/club_cloud_functions_
 import 'package:raver_clubs/infrastructure/firebase_club_facade.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_rewards/domain/domain.dart';
+import 'package:raver_rewards/infrastructure/firebase_reward_facade.dart';
 import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
 import 'package:raver_scanner/application/scanner/scanner_cubit.dart';
 import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
@@ -63,15 +65,21 @@ void _registerCubits() {
   );
 
   getIt.registerFactoryParam(
-    (CurrentEventCubit currentEventCubit, _) => ScannerCubit(
+    (
+      CurrentEventCubit currentEventCubit,
+      SelectorClubCubit selectorClubCubit,
+    ) =>
+        ScannerCubit(
       currentEventCubit: currentEventCubit,
+      selectorClubCubit: selectorClubCubit,
       ticketFacade: getIt(),
     ),
   );
 
   getIt.registerFactory(
     () => SelectorClubCubit(
-      getIt(),
+      selectorClubFacade: getIt(),
+      selectorRewardFacade: getIt(),
     ),
   );
 }
@@ -137,6 +145,14 @@ void _registerFacades() {
   getIt.registerLazySingleton<ClubCloudFunctionsFacade>(
     () => ClubCloudFunctionsFacadeImpl(
       getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<SelectorRewardFacade>(
+    () => FirebaseRewardFacade(
+      firestore: getIt(),
+      firebaseAuth: getIt(),
+      logger: getIt(),
     ),
   );
 }

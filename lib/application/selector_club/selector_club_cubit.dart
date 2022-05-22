@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:formz/formz.dart';
@@ -5,6 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_clubs/domain/selector_club_facade.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/application/application.dart';
+import 'package:raver_rewards/domain/domain.dart';
 import 'package:raver_scanner/application/core/access_code_input.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -14,8 +17,16 @@ part 'selector_club_state.dart';
 
 class SelectorClubCubit extends Cubit<SelectorClubState> {
   final SelectorClubFacade _clubFacade;
+  final SelectorRewardFacade _rewardFacade;
 
-  SelectorClubCubit(this._clubFacade) : super(SelectorClubState.initial());
+  late final StreamSubscription _rewardsSub;
+
+  SelectorClubCubit({
+    required SelectorClubFacade selectorClubFacade,
+    required SelectorRewardFacade selectorRewardFacade,
+  })  : _clubFacade = selectorClubFacade,
+        _rewardFacade = selectorRewardFacade,
+        super(SelectorClubState.initial());
 
   Future<void> getClubInfo() async {
     emit(state.copyWith(status: CubitStatus.loading));
@@ -24,12 +35,15 @@ class SelectorClubCubit extends Cubit<SelectorClubState> {
 
     failureOrSuccess.fold(
       (failure) => emit(state.copyWith(status: CubitStatus.failure)),
-      (club) => emit(
-        state.copyWith(
-          status: CubitStatus.success,
-          selectorClub: some(club),
-        ),
-      ),
+      (club) {
+        _getRewardsFromClub();
+        emit(
+          state.copyWith(
+            status: CubitStatus.success,
+            selectorClub: some(club),
+          ),
+        );
+      },
     );
   }
 
@@ -71,6 +85,22 @@ class SelectorClubCubit extends Cubit<SelectorClubState> {
     );
   }
 
+  _getRewardsFromClub() {
+    _rewardsSub = _rewardFacade.getRewardsFromCurrentSelectorClub().listen(
+      (result) {
+        result.fold(
+          (failure) => emit(state.copyWith(status: CubitStatus.failure)),
+          (rewards) => emit(
+            state.copyWith(
+              status: CubitStatus.success,
+              rewards: rewards,
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   _validateAccessCode() {
     emit(
       state.copyWith(
@@ -97,5 +127,11 @@ class SelectorClubCubit extends Cubit<SelectorClubState> {
       unexpected: (_) => S().serverError,
       invalidAccessCode: (_) => S().invalidAccessCode,
     );
+  }
+
+  @override
+  Future<void> close() {
+    _rewardsSub.cancel();
+    return super.close();
   }
 }

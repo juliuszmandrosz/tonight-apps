@@ -12,14 +12,6 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // TODO - get this from commons
-  await FirebaseRemoteConfig.instance.setConfigSettings(
-    RemoteConfigSettings(
-        fetchTimeout: const Duration(seconds: 10),
-        minimumFetchInterval: Duration.zero),
-  );
-  await FirebaseRemoteConfig.instance.fetchAndActivate();
-
   registerDependencies();
 
   SystemChrome.setPreferredOrientations([
@@ -27,5 +19,21 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
   ]);
 
+  await _initRemoteConfig();
+
   runApp(RaverScannerApp());
+}
+
+Future<void> _initRemoteConfig() async {
+  // TODO - get this from commons
+  final remoteConfig = getIt<FirebaseRemoteConfig>();
+
+  await remoteConfig.setConfigSettings(
+    RemoteConfigSettings(
+      fetchTimeout: const Duration(seconds: 10),
+      minimumFetchInterval: Duration.zero,
+    ),
+  );
+
+  await remoteConfig.fetchAndActivate();
 }

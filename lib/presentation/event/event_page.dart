@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
@@ -7,6 +8,7 @@ import 'package:raver_scanner/presentation/event/widgets/current_event.dart';
 import 'package:raver_scanner/presentation/event/widgets/no_access.dart';
 import 'package:raver_scanner/presentation/event/widgets/no_live_event.dart';
 import 'package:raver_scanner/presentation/event/widgets/selector_club.dart';
+import 'package:raver_scanner/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class EventPage extends StatelessWidget {
@@ -24,7 +26,7 @@ class EventPage extends StatelessWidget {
 
         if (state.status.isFailure()) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.all(20),
             child: Center(
               child: state.failure.getOrCrash().map(
                     unexpected: (_) => RaverScannerHeadline(
@@ -37,16 +39,28 @@ class EventPage extends StatelessWidget {
         }
 
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const Spacer(),
               const SelectorClub(),
               const SizedBox(height: 30),
               state.currentEvent.fold(
                 () => const NoLiveEvent(),
                 (event) => CurrentEvent(event: event),
               ),
+              if (state.currentEvent.isSome()) const Spacer(),
+              if (state.currentEvent.isSome())
+                SizedBox(
+                  width: 300,
+                  child: ElevatedButton(
+                    onPressed: () => AutoRouter.of(context).push(
+                      const ScannerRoute(),
+                    ),
+                    child: Text(S().startScanning),
+                  ),
+                ),
             ],
           ),
         );
