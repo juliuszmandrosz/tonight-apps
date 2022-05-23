@@ -32,8 +32,10 @@ PageTransitionsTheme get transitions => const PageTransitionsTheme(
     );
 
 ShapeBorder get shapeMedium => RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: borderRadiusShapeMedium,
     );
+
+BorderRadius get borderRadiusShapeMedium => BorderRadius.circular(8);
 
 ColorScheme get colors => ColorScheme.fromSeed(
       seedColor: DarkColors.primaryColor,
@@ -100,9 +102,7 @@ ListTileThemeData get listTileTheme => ListTileThemeData(
 
 InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
       border: OutlineInputBorder(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(20),
-        ),
+        borderRadius: borderRadiusShapeMedium,
         borderSide: BorderSide(color: colors.primary),
       ),
       contentPadding: const EdgeInsets.symmetric(
@@ -111,25 +111,19 @@ InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
       ),
       focusColor: colors.primary,
       focusedBorder: OutlineInputBorder(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(20),
-        ),
+        borderRadius: borderRadiusShapeMedium,
         borderSide: BorderSide(
           color: colors.primary,
         ),
       ),
       errorBorder: OutlineInputBorder(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(20),
-        ),
+        borderRadius: borderRadiusShapeMedium,
         borderSide: BorderSide(
           color: colors.error,
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(20),
-        ),
+        borderRadius: borderRadiusShapeMedium,
         borderSide: BorderSide(
           color: colors.error,
         ),
@@ -170,7 +164,7 @@ ElevatedButtonThemeData get elevatedButtonTheme => ElevatedButtonThemeData(
         ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18.0),
+            borderRadius: borderRadiusShapeMedium,
           ),
         ),
       ),
