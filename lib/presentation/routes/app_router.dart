@@ -10,6 +10,7 @@ import 'package:raver_partners/presentation/event_overview/event_overview_page.d
 import 'package:raver_partners/presentation/events/events_page.dart';
 import 'package:raver_partners/presentation/invite_selector/invite_selector_page.dart';
 import 'package:raver_partners/presentation/navigator/navigator_page.dart';
+import 'package:raver_partners/presentation/network_lost/network_lost_page.dart';
 import 'package:raver_partners/presentation/past_event_details/past_event_details_page.dart';
 import 'package:raver_partners/presentation/postpone_event/postpone_event_page.dart';
 import 'package:raver_partners/presentation/rewards/rewards_page.dart';
@@ -38,6 +39,7 @@ part 'app_router.gr.dart';
     AutoRoute(page: PastEventDetailsPage),
     AutoRoute(page: PostponeEventPage),
     AutoRoute(page: InviteSelectorPage),
+    AutoRoute(page: NetworkLostPage),
   ],
 )
 class AppRouter extends _$AppRouter {}

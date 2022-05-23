@@ -42,7 +42,9 @@ class EventOverviewFacebookEvent extends StatelessWidget {
                   Flexible(
                     child: Text(
                       facebookUrl,
-                      style: context.subtitle1,
+                      style: context.subtitle1.copyWith(
+                        color: context.secondaryColor,
+                      ),
                     ),
                   ),
                 ],

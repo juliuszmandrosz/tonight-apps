@@ -45,7 +45,9 @@ class EventOverviewDjChannel extends StatelessWidget {
                   Flexible(
                     child: Text(
                       djChannelUrl,
-                      style: context.subtitle1,
+                      style: context.subtitle1.copyWith(
+                        color: context.secondaryColor,
+                      ),
                     ),
                   ),
                 ],

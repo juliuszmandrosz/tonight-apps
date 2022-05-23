@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_partners/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
 
 class SplashPage extends StatelessWidget {
@@ -15,8 +16,10 @@ class SplashPage extends StatelessWidget {
           initial: (_) {},
           authenticated: (_) =>
               AutoRouter.of(context).replace(const NavigatorRoute()),
-          unauthenticated: (_) =>
-              AutoRouter.of(context).replace(const AuthRoute()),
+          unauthenticated: (_) {
+            context.read<WelcomeLoaderCubit>().resetState();
+            AutoRouter.of(context).replace(const AuthRoute());
+          },
         );
       },
       child: const Scaffold(

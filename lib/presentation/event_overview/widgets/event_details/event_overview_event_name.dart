@@ -32,7 +32,9 @@ class EventOverviewEventName extends StatelessWidget {
                 Expanded(
                   child: Text(
                     state.event.getOrCrash().eventName,
-                    style: context.subtitle1,
+                    style: context.subtitle1.copyWith(
+                      color: context.secondaryColor,
+                    ),
                   ),
                 ),
               ],

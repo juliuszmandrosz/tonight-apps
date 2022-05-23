@@ -1,6 +1,7 @@
 import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -28,6 +29,7 @@ import 'package:raver_partners/application/postpone_event/postpone_event_cubit.d
 import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
 import 'package:raver_partners/application/selector_list/selector_list_cubit.dart';
 import 'package:raver_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
+import 'package:raver_partners/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:raver_partners/domain/currency_params/currency_params_facade.dart';
 import 'package:raver_partners/domain/selector_management/selector_management_facade.dart';
 import 'package:raver_partners/infrastructure/currency_params/firebase_currency_params_facade.dart';
@@ -105,7 +107,7 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerFactory(
+  getIt.registerLazySingleton(
     () => ClubInfoCubit(
       clubFacade: getIt(),
       currencyParamsFacade: getIt(),
@@ -162,6 +164,20 @@ void _registerCubits() {
       eventNotifierCubit: eventNotifierCubit,
       partnerPaymentFacade: getIt(),
       partnerEventFacade: getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => NetworkCheckCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
+    () => WelcomeLoaderCubit(
+      clubInfoCubit: getIt(),
+      firebaseRemoteConfig: getIt(),
+      stripe: getIt(),
     ),
   );
 }
@@ -319,4 +335,6 @@ void _registerModules() {
       getIt(),
     ),
   );
+
+  getIt.registerLazySingleton(() => Connectivity());
 }

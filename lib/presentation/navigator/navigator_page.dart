@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/club_info/club_info_cubit.dart';
+import 'package:raver_partners/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
 import 'package:raver_partners/presentation/core/raver_partners_speed_dial.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
@@ -15,27 +15,49 @@ class NavigatorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<ClubInfoCubit>().getClubInfo();
-    // TODO - add network check here
-    return BlocListener<AuthCubit, AuthState>(
-      listener: (context, state) {
-        state.map(
-          initial: (_) {},
-          authenticated: (_) =>
-              AutoRouter.of(context).replace(const NavigatorRoute()),
-          unauthenticated: (_) =>
-              AutoRouter.of(context).replace(const AuthRoute()),
-        );
-      },
-      child: BlocBuilder<ClubInfoCubit, ClubInfoState>(
-        builder: (context, state) {
-          if (state.status.isLoading()) {
-            return const Center(
-              child: CircularProgressIndicator(),
+    context.read<WelcomeLoaderCubit>().loadData();
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<AuthCubit, AuthState>(
+          listener: (context, state) {
+            state.map(
+              initial: (_) {},
+              authenticated: (_) =>
+                  AutoRouter.of(context).replace(const NavigatorRoute()),
+              unauthenticated: (_) {
+                context.read<WelcomeLoaderCubit>().resetState();
+                AutoRouter.of(context).replace(const AuthRoute());
+              },
             );
+          },
+        ),
+        BlocListener<NetworkCheckCubit, NetworkCheckState>(
+          bloc: context.read<NetworkCheckCubit>(),
+          listener: (context, state) {
+            if (!state.isConnected) {
+              AutoRouter.of(context).replace(const NetworkLostRoute());
+            }
+          },
+        ),
+      ],
+      child: BlocConsumer<WelcomeLoaderCubit, WelcomeLoaderState>(
+        listener: (context, state) {
+          if (state.remoteConfigStatus.isFailure()) {
+            AutoRouter.of(context).replace(const NetworkLostRoute());
+          }
+        },
+        builder: (context, state) {
+          final welcomeLoaderCubit = context.read<WelcomeLoaderCubit>();
+
+          if (welcomeLoaderCubit.isStatusInitial) {
+            return const SizedBox();
           }
 
-          if (state.status.isFailure()) {
+          if (welcomeLoaderCubit.isStatusLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          if (welcomeLoaderCubit.isStatusFailure) {
             return Center(child: Text(S().serverError));
           }
 
@@ -45,6 +67,7 @@ class NavigatorPage extends StatelessWidget {
               actions: [
                 IconButton(
                   onPressed: () {
+                    context.read<WelcomeLoaderCubit>().resetState();
                     context.read<AuthCubit>().signOut();
                     AutoRouter.of(context).replace(const AuthRoute());
                   },

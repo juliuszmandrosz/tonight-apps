@@ -42,7 +42,9 @@ class EventOverviewDescription extends StatelessWidget {
                   Flexible(
                     child: Text(
                       description,
-                      style: context.subtitle1,
+                      style: context.subtitle1.copyWith(
+                        color: context.secondaryColor,
+                      ),
                     ),
                   ),
                 ],

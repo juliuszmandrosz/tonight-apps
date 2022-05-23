@@ -233,7 +233,7 @@ packages:
     source: hosted
     version: "1.16.0"
   connectivity_plus:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: connectivity_plus
       url: "https://pub.dartlang.org"
@@ -763,6 +763,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  lottie:
+    dependency: "direct main"
+    description:
+      name: lottie
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.3.0"
   matcher:
     dependency: transitive
     description:
@@ -996,7 +1003,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: e88023575801819481997fa5027e5c62c1212d35
+      resolved-ref: f4c9cbd586c18475fc74c86ac21ccc3035102536
       url: "https://github.com/juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
