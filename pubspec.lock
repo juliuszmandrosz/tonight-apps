@@ -930,8 +930,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/unavailable-error-message"
-      resolved-ref: cdae0059609f179265dfaa25ba436fba1e279afc
+      ref: "feature/invalid-link-message"
+      resolved-ref: "57037e819e79e54edfd05aeffb7e21a8ba7cfe3b"
       url: "https://github.com/juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
@@ -985,7 +985,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "88f194e36003f6d70a01308d53e3b368b7916379"
+      resolved-ref: e20e6a20b3591fe41fc00d16ae74b6c490c4b9f4
       url: "https://github.com/juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"

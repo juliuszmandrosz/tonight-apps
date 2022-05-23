@@ -72,7 +72,7 @@ dependencies:
   raver_auth:
     git:
       url: https://github.com/juliuszmandrosz/RaverAuth.git
-      ref: feature/unavailable-error-message
+      ref: feature/invalid-link-message
 
   raver_events:
     git:
