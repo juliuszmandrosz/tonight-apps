@@ -314,6 +314,8 @@
   "@invalidPromotionCode": {},
   "invalidQrCode": "Nieprawidłowy kod QR",
   "@invalidQrCode": {},
+  "invalidSignInLink": "Link jest nieprawidłowy lub wygasł",
+  "@invalidSignInLink": {},
   "invalidTicket": "Nieprawidłowy bilet",
   "@invalidTicket": {},
   "invalidUrl": "Nieprawidłowy format adresu URL",

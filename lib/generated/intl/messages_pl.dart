@@ -312,6 +312,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nieprawidłowy kod promocyjny"),
         "invalidQrCode":
             MessageLookupByLibrary.simpleMessage("Nieprawidłowy kod QR"),
+        "invalidSignInLink": MessageLookupByLibrary.simpleMessage(
+            "Link jest nieprawidłowy lub wygasł"),
         "invalidTicket":
             MessageLookupByLibrary.simpleMessage("Nieprawidłowy bilet"),
         "invalidUrl": MessageLookupByLibrary.simpleMessage(

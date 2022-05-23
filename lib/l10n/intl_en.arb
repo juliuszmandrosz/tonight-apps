@@ -314,6 +314,8 @@
   "@invalidPromotionCode": {},
   "invalidQrCode": "Invalid QR code",
   "@invalidQrCode": {},
+  "invalidSignInLink": "Link is invalid or has expired",
+  "@invalidSignInLink": {},
   "invalidTicket": "Invalid ticket",
   "@invalidTicket": {},
   "invalidUrl": "Invalid URL format",

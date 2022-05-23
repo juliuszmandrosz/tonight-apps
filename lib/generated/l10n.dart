@@ -1632,6 +1632,16 @@ class S {
     );
   }
 
+  /// `Link is invalid or has expired`
+  String get invalidSignInLink {
+    return Intl.message(
+      'Link is invalid or has expired',
+      name: 'invalidSignInLink',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Invalid ticket`
   String get invalidTicket {
     return Intl.message(
