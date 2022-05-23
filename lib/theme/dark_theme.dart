@@ -21,6 +21,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   progressIndicatorTheme: progressIndicatorTheme,
   switchTheme: switchTheme,
   floatingActionButtonTheme: floatingActionButtonTheme,
+  dividerTheme: dividerTheme,
 );
 
 PageTransitionsTheme get transitions => const PageTransitionsTheme(
@@ -205,3 +206,5 @@ FloatingActionButtonThemeData get floatingActionButtonTheme =>
     FloatingActionButtonThemeData(
       backgroundColor: colors.primary,
     );
+
+DividerThemeData get dividerTheme => const DividerThemeData(thickness: 2);
