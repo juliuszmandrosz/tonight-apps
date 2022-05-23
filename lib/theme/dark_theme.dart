@@ -134,7 +134,7 @@ OutlinedButtonThemeData get outlineButtonTheme => OutlinedButtonThemeData(
     foregroundColor: MaterialStateProperty.resolveWith<Color?>(
           (Set<MaterialState> states) {
         if (states.contains(MaterialState.disabled)) {
-          return colors.surface;
+          return colors.surface.lighten(0.2);
         }
         return colors.onSurface; // Defer to the widget's default.
       },
@@ -142,9 +142,15 @@ OutlinedButtonThemeData get outlineButtonTheme => OutlinedButtonThemeData(
     side: MaterialStateProperty.resolveWith<BorderSide?>(
           (Set<MaterialState> states) {
         if (states.contains(MaterialState.disabled)) {
-          return BorderSide(color: colors.surface);
+          return BorderSide(
+            color: colors.surface.lighten(),
+            width: 2,
+          );
         }
-        return BorderSide(color: colors.outline.darken(0.3));
+        return BorderSide(
+          color: colors.outline.darken(0.3),
+          width: 2,
+        );
       },
     ),
   ),
