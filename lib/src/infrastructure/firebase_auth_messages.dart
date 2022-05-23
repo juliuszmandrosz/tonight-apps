@@ -17,4 +17,5 @@ const firebaseAuthMessages = {
   'invalid-access-code': invalidAccessCode,
   'not-found': userNotFound,
   'unavailable': unavailable,
+  'invalid-action-code': invalidLink,
 };
