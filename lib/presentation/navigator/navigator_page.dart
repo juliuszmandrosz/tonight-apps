@@ -21,11 +21,14 @@ class NavigatorPage extends StatelessWidget {
         BlocListener<AuthCubit, AuthState>(
           bloc: context.read<AuthCubit>(),
           listener: (context, state) => state.map(
-              initial: (_) {},
-              authenticated: (_) =>
-                  AutoRouter.of(context).replace(const NavigatorRoute()),
-              unauthenticated: (_) =>
-                  AutoRouter.of(context).replace(const AuthRoute())),
+            initial: (_) {},
+            authenticated: (_) =>
+                AutoRouter.of(context).replace(const NavigatorRoute()),
+            unauthenticated: (_) {
+              context.read<WelcomeLoaderCubit>().resetState();
+              AutoRouter.of(context).replace(const AuthRoute());
+            },
+          ),
         ),
         BlocListener<NetworkCheckCubit, NetworkCheckState>(
           bloc: context.read<NetworkCheckCubit>(),
@@ -62,6 +65,7 @@ class NavigatorPage extends StatelessWidget {
               actions: [
                 IconButton(
                   onPressed: () {
+                    context.read<WelcomeLoaderCubit>().resetState();
                     context.read<AuthCubit>().signOut();
                     AutoRouter.of(context).replace(const AuthRoute());
                   },

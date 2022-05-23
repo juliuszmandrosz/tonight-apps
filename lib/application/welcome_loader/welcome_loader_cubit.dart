@@ -44,6 +44,10 @@ class WelcomeLoaderCubit extends Cubit<WelcomeLoaderState> {
     await _initCubitsData();
   }
 
+  Future<void> resetState() async {
+    emit(WelcomeLoaderState.initial());
+  }
+
   Future<void> _initCubitsData() async {
     if (!state.cubitStatuses.isInitial()) return;
 

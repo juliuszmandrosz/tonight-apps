@@ -19,7 +19,7 @@ class SelectorClubCubit extends Cubit<SelectorClubState> {
   final SelectorClubFacade _clubFacade;
   final SelectorRewardFacade _rewardFacade;
 
-  late final StreamSubscription _rewardsSub;
+  StreamSubscription? _rewardsSub;
 
   SelectorClubCubit({
     required SelectorClubFacade selectorClubFacade,
@@ -131,7 +131,7 @@ class SelectorClubCubit extends Cubit<SelectorClubState> {
 
   @override
   Future<void> close() {
-    _rewardsSub.cancel();
+    _rewardsSub?.cancel();
     return super.close();
   }
 }
