@@ -2,8 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/presentation/config/themes/dark_theme/color_extensions.dart';
-import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class EventTicketPoolCard extends StatelessWidget {
@@ -20,24 +18,23 @@ class EventTicketPoolCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: Card(
-        elevation: 5,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: ListTile(
+    return Column(
+      children: [
+        const SizedBox(height: 10),
+        ListTile(
           title: _getTitle(context),
+          dense: true,
           contentPadding:
-              const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 12),
             child: _getSubtitle(context),
           ),
           trailing: _getTrailing(),
         ),
-      ),
+        const SizedBox(height: 10),
+        const Divider(),
+      ],
     );
   }
 
@@ -88,10 +85,12 @@ class EventTicketPoolCard extends StatelessWidget {
       '${ticketPool.poolNumber} ${S().pool.toLowerCase()} - '
       '${ticketPool.ticketPrice}'
       '${getCurrencySymbolFromCode(ticketPool.currency)}',
-      style: context.headline5.copyWith(
+      style: context.headline6.copyWith(
         color: ticketPool.isCurrent && ticketPool.ticketsSold > 0
             ? context.primaryColor
-            : context.onSurfaceColor,
+            : ticketPool.isSoldOut
+                ? context.outlineColor
+                : context.onSurfaceColor,
         decoration: ticketPool.isSoldOut
             ? TextDecoration.lineThrough
             : TextDecoration.none,
@@ -117,7 +116,7 @@ class EventTicketPoolCard extends StatelessWidget {
         '${S().vip} ${ticketPool.vipPrice}'
         '${getCurrencySymbolFromCode(ticketPool.currency)}',
         style: context.subtitle1.copyWith(
-          color: context.onSurfaceVariantColor,
+          color: context.secondaryColor,
         ),
         maxLines: 1,
       );
@@ -129,7 +128,7 @@ class EventTicketPoolCard extends StatelessWidget {
       '${S().vip} ${ticketPool.vipPrice}'
       '${getCurrencySymbolFromCode(ticketPool.currency)}',
       style: context.subtitle1.copyWith(
-        color: context.onSurfaceColor,
+        color: context.secondaryColor,
       ),
       maxLines: 1,
     );

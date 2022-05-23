@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/presentation/rewards/widgets/reward_list_tile.dart';
 import 'package:raver_rewards/raver_rewards.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -18,24 +18,23 @@ class RewardListForRequiredEntries extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              '$requiredEntries ${S().entries(requiredEntries)}',
-              style: context.subtitle2,
-            ),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            '$requiredEntries ${S().entries(requiredEntries)}',
+            style: context.headline6.copyWith(color: context.primaryColor),
           ),
         ),
         const SizedBox(height: 10),
-        ListView.builder(
+        ListView.separated(
+          separatorBuilder: (context, index) => const Divider(),
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemCount: rewards.length,
           itemBuilder: (ctx, i) => RewardListTile(reward: rewards[i]),
         ),
-        const SizedBox(height: 20),
+        const Divider(),
+        const SizedBox(height: 10),
       ],
     );
   }

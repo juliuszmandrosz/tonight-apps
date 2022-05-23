@@ -6,17 +6,6 @@ class EventsFiltersSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: const [
-          Expanded(
-            child: EventsSearchField(),
-          ),
-        ],
-      ),
-    );
+    return const EventsSearchField();
   }
 }

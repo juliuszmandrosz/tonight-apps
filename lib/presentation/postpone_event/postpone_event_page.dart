@@ -26,6 +26,7 @@ class PostponeEventPage extends StatelessWidget {
         param1: context.read<EventNotifierCubit>(),
       )..addEventToState(event),
       child: LoaderOverlay(
+        overlayColor: context.shadowColor,
         child: Scaffold(
           appBar: RaverPartnersAppBar(title: S().postponeEvent),
           body: Padding(

@@ -26,7 +26,7 @@ class _UpcomingEventsTabState extends State<UpcomingEventsTab>
           ),
           child: const EventsFiltersSection(),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 20),
         const EventList(),
       ],
     );

@@ -2,15 +2,15 @@ import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
-import 'package:raver_clubs/infrastructure/cloud_functions/club_cloud_functions_facade.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
@@ -33,7 +33,7 @@ import 'package:raver_partners/domain/selector_management/selector_management_fa
 import 'package:raver_partners/infrastructure/currency_params/firebase_currency_params_facade.dart';
 import 'package:raver_partners/infrastructure/selector_management/cloud_functions/selector_cloud_functions_facade.dart';
 import 'package:raver_partners/infrastructure/selector_management/firebase_selector_management_facade.dart';
-import 'package:raver_payments/domain/facades/partner_payment_facade.dart';
+import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
 import 'package:raver_payments/infrastructure/firebase_payment_facade.dart';
 import 'package:raver_rewards/raver_rewards.dart';
@@ -222,6 +222,8 @@ void _registerFacades() {
       firebaseAuth: getIt(),
       logger: getIt(),
       cloudFunctionsFacade: getIt(),
+      algoliaClubsApi: getIt(),
+      firebaseStorage: getIt(),
     ),
   );
 
@@ -278,7 +280,6 @@ void _registerFacades() {
       getIt(),
     ),
   );
-
 }
 
 void _registerModules() {
@@ -301,12 +302,20 @@ void _registerModules() {
 
   getIt.registerLazySingleton(() => FirebaseRemoteConfig.instance);
 
+  getIt.registerLazySingleton(() => FirebaseStorage.instance);
+
   getIt.registerLazySingleton(() => Stripe.instance);
 
   getIt.registerLazySingleton(() => Logger());
 
   getIt.registerLazySingleton<AlgoliaEventsApi>(
     () => AlgoliaEventsApiImpl(
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<AlgoliaClubsApi>(
+    () => AlgoliaClubsApiImpl(
       getIt(),
     ),
   );

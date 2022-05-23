@@ -16,23 +16,13 @@ class EventsSearchField extends StatelessWidget {
               context.read<EventFiltersCubit>().submitSearchField(value),
           decoration: InputDecoration(
             hintText: MaterialLocalizations.of(context).searchFieldLabel,
-            border: OutlineInputBorder(
-              borderSide: const BorderSide(width: 2),
-              borderRadius: BorderRadius.circular(25),
-            ),
-            prefixIcon: const Icon(
-              Icons.search,
-              size: 18,
-            ),
+            prefixIcon: const Icon(Icons.search),
             suffixIcon: state.filters.phraseFilter.phrase.isEmpty
                 ? null
                 : InkWell(
                     onTap: () =>
                         context.read<EventFiltersCubit>().submitSearchField(''),
-                    child: const Icon(
-                      Icons.clear,
-                      size: 18,
-                    ),
+                    child: const Icon(Icons.clear),
                   ),
           ),
         );

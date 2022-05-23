@@ -9,7 +9,7 @@ class ConfirmEventPostponeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
+      width: 300,
       child: ElevatedButton(
         onPressed: () async {
           final postponeEventCubit = context.read<PostponeEventCubit>();

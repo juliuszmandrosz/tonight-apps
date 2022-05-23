@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
+
 import 'package:raver_partners/presentation/events/widgets/event_list_tile.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -83,19 +83,27 @@ class _EventListState extends State<EventList> {
                       state.sortModel,
                     ),
                   ),
-              child: ListView.builder(
-                physics: const AlwaysScrollableScrollPhysics(),
-                itemCount: state.hasReachedMax
-                    ? state.events.length
-                    : state.events.length + 1,
-                itemBuilder: (ctx, i) => i >= state.events.length
-                    ? const BottomLoader()
-                    : Center(
-                        child: EventListTile(
-                          event: state.events[i],
-                        ),
-                      ),
-                controller: _scrollController,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView.separated(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      itemCount: state.events.length + 1,
+                      itemBuilder: (ctx, i) => i >= state.events.length
+                          ? state.hasReachedMax
+                              ? const SizedBox()
+                              : const BottomLoader()
+                          : Center(
+                              child: EventListTile(
+                                event: state.events[i],
+                              ),
+                            ),
+                      controller: _scrollController,
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  ),
+                  const SizedBox(height: 60),
+                ],
               ),
             ),
           );

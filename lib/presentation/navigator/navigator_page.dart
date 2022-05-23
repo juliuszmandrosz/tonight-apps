@@ -59,20 +59,19 @@ class NavigatorPage extends StatelessWidget {
             ],
             floatingActionButton: const RaverPartnersSpeedDial(),
             bottomNavigationBuilder: (_, tabsRouter) {
-              return BottomNavigationBar(
-                type: BottomNavigationBarType.fixed,
-                currentIndex: tabsRouter.activeIndex,
-                onTap: tabsRouter.setActiveIndex,
-                items: [
-                  BottomNavigationBarItem(
+              return NavigationBar(
+                selectedIndex: tabsRouter.activeIndex,
+                onDestinationSelected: tabsRouter.setActiveIndex,
+                destinations: [
+                  NavigationDestination(
                     icon: const Icon(FontAwesomeIcons.list),
                     label: S().events(2),
                   ),
-                  BottomNavigationBarItem(
+                  NavigationDestination(
                     icon: const Icon(FontAwesomeIcons.trophy),
                     label: S().rewards(2),
                   ),
-                  BottomNavigationBarItem(
+                  NavigationDestination(
                       icon: const Icon(FontAwesomeIcons.userFriends),
                       label: S().selectors(2)),
                 ],

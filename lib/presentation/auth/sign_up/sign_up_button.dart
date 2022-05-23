@@ -12,7 +12,7 @@ class SignUpButton extends StatelessWidget {
       buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
         return SizedBox(
-          width: double.infinity,
+          width: 300,
           child: ElevatedButton(
             onPressed: () =>
                 context.read<SignUpCubit>().sendSignUpWithEmailLink(),

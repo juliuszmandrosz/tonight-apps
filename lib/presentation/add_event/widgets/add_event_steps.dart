@@ -11,13 +11,13 @@ class AddEventSteps extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8),
       child: Column(
         children: const [
           AddEventNumberStepper(),
-          SizedBox(height: 20),
+          SizedBox(height: 40),
           AddEventStepsHeader(),
-          SizedBox(height: 30),
+          SizedBox(height: 40),
           AddEventBackToSubmitButton(),
           EventStepContent(),
           SizedBox(height: 20),

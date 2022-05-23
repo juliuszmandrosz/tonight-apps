@@ -23,24 +23,24 @@ class GeneratedCode extends StatelessWidget {
               AutoSizeText(
                 S().oneTimeAccessCode,
                 maxLines: 1,
-                style: Theme.of(context).textTheme.headline1,
+                style: context.headline5,
               ),
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   RaverPartnersHeadline(text: code),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   IconButton(
                     onPressed: () {
                       Clipboard.setData(ClipboardData(text: code));
                       context.showSnackbarMessage(S().copiedToClipboard);
                     },
-                    icon: FaIcon(FontAwesomeIcons.copy),
+                    icon: const FaIcon(FontAwesomeIcons.copy),
                   ),
                   IconButton(
                     onPressed: () => Share.share(code),
-                    icon: FaIcon(FontAwesomeIcons.shareAlt),
+                    icon: const FaIcon(FontAwesomeIcons.shareAlt),
                   ),
                 ],
               ),

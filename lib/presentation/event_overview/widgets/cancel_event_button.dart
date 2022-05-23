@@ -12,21 +12,21 @@ class CancelEventButton extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () async {
-            final result =
-                await context.showConfirmationDialogWithCustomMessage(
-              S().confirmEventCancelation,
-            );
+        SizedBox(
+          width: 300,
+          child: ElevatedButton(
+            onPressed: () async {
+              final result =
+                  await context.showConfirmationDialogWithCustomMessage(
+                S().confirmEventCancelation,
+              );
 
-            if (result ?? false) {
-              context
-                  .read<UpcomingLiveEventCubit>()
-                  .proceedToPayForEventCancelation();
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
+              if (result ?? false) {
+                context
+                    .read<UpcomingLiveEventCubit>()
+                    .proceedToPayForEventCancelation();
+              }
+            },
             child: Text(S().cancelEvent),
           ),
         ),

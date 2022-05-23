@@ -14,7 +14,7 @@ class RewardsPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<RewardListCubit>()..getRewards(),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
+        padding: const EdgeInsets.all(15),
         child: BlocConsumer<RewardListCubit, RewardListState>(
           listenWhen: (previous, current) =>
               previous.errorMessage != current.errorMessage,
@@ -53,6 +53,7 @@ class RewardsPage extends StatelessWidget {
                                   (reward) => reward.requiredEntries == entries)
                               .toList(),
                         ),
+                      const SizedBox(height: 50),
                     ],
                   );
           },

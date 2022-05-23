@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:raver_partners/presentation/config/themes/dark_theme/color_extensions.dart';
-import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
+import 'package:raver_common/raver_common.dart';
 
 class EventRevenueTile extends StatelessWidget {
   final IconData icon;
@@ -45,7 +44,13 @@ class EventRevenueTile extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          Text(label),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: AutoSizeText(
+              label,
+              maxLines: 1,
+            ),
+          ),
         ],
       ),
     );

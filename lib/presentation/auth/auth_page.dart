@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/presentation/auth/sign_in/sign_in_tab.dart';
 import 'package:raver_partners/presentation/auth/sign_up/sign_up_tab.dart';
 import 'package:raver_partners/presentation/auth/widgets/partners_logo.dart';
-import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class AuthPage extends StatelessWidget {
@@ -12,6 +12,7 @@ class AuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LoaderOverlay(
+      overlayColor: context.shadowColor,
       child: Scaffold(
         body: SafeArea(
             child: Padding(

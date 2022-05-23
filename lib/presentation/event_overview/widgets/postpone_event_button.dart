@@ -14,24 +14,24 @@ class PostponeEventButton extends StatelessWidget {
     final upcomingLiveEventState = context.read<UpcomingLiveEventCubit>().state;
     return Column(
       children: [
-        const SizedBox(height: 30),
-        ElevatedButton(
-          onPressed: () async {
-            final result =
-                await context.showConfirmationDialogWithCustomMessage(
-              S().confirmEventPostpone,
-            );
-
-            if (result ?? false) {
-              AutoRouter.of(context).push(
-                PostponeEventRoute(
-                  event: upcomingLiveEventState.event.getOrCrash(),
-                ),
+        const SizedBox(height: 20),
+        SizedBox(
+          width: 300,
+          child: ElevatedButton(
+            onPressed: () async {
+              final result =
+                  await context.showConfirmationDialogWithCustomMessage(
+                S().confirmEventPostpone,
               );
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
+
+              if (result ?? false) {
+                AutoRouter.of(context).push(
+                  PostponeEventRoute(
+                    event: upcomingLiveEventState.event.getOrCrash(),
+                  ),
+                );
+              }
+            },
             child: Text(S().postponeEvent),
           ),
         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_translations/generated/l10n.dart';
 
 class EventIsConcertInput extends StatelessWidget {

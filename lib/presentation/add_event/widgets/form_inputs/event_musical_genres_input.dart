@@ -5,8 +5,6 @@ import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event/form_inputs/musical_genres.dart';
-import 'package:raver_partners/presentation/config/themes/dark_theme/color_extensions.dart';
-import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class EventMusicalGenresInput extends StatelessWidget {

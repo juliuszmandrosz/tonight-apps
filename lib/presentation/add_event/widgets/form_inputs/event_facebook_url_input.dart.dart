@@ -6,7 +6,6 @@ import 'package:formz/formz.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event/form_inputs/facebook_url.dart';
-import 'package:raver_partners/presentation/config/themes/dark_theme/color_extensions.dart';
 
 class EventFacebookUrlInput extends HookWidget {
   const EventFacebookUrlInput({

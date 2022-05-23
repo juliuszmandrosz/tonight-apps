@@ -8,24 +8,18 @@ class SignInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignInCubit, SignInState>(
-      buildWhen: (previous, current) => previous.status != current.status,
-      builder: (context, state) {
-        return SizedBox(
-          width: double.infinity,
-          child: ElevatedButton(
-            onPressed: () =>
-                context.read<SignInCubit>().sendSignInWithEmailLink(),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 30,
-              ),
-              child: Text(S().login),
-            ),
+    return SizedBox(
+      width: 300,
+      child: ElevatedButton(
+        onPressed: () => context.read<SignInCubit>().sendSignInWithEmailLink(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 10,
+            horizontal: 30,
           ),
-        );
-      },
+          child: Text(S().login),
+        ),
+      ),
     );
   }
 }

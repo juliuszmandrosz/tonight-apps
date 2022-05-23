@@ -3,7 +3,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
 import 'package:raver_partners/presentation/add_event/widgets/ticket_pools/event_ticket_pool_card.dart';

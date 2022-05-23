@@ -24,7 +24,7 @@ class AddEventStepsButtons extends StatelessWidget {
               : Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ElevatedButton(
+                    OutlinedButton(
                       onPressed: state.currentStep.index > 0
                           ? () => context.read<AddEventCubit>().decrementStep()
                           : null,
@@ -33,7 +33,7 @@ class AddEventStepsButtons extends StatelessWidget {
                         child: Text(S().back),
                       ),
                     ),
-                    ElevatedButton(
+                    OutlinedButton(
                       onPressed: () =>
                           context.read<AddEventCubit>().incrementStep(),
                       child: Padding(

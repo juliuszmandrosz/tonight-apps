@@ -20,28 +20,30 @@ class EventsPage extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       initialIndex: 0,
-      child: Column(
-        children: [
-          const SizedBox(height: 5),
-          TabBar(
-            isScrollable: false,
-            tabs: [
-              Tab(
-                icon: const Icon(FontAwesomeIcons.fire),
-                text: S().live,
-              ),
-              Tab(
-                icon: const Icon(FontAwesomeIcons.calendarPlus),
-                text: S().upcoming,
-              ),
-              Tab(
+      child: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TabBar(
+              isScrollable: false,
+              tabs: [
+                Tab(
+                  icon: const Icon(FontAwesomeIcons.fire),
+                  text: S().live,
+                ),
+                Tab(
+                  icon: const Icon(FontAwesomeIcons.calendarPlus),
+                  text: S().upcoming,
+                ),
+                Tab(
                   icon: const Icon(FontAwesomeIcons.calendarMinus),
-                  text: S().past),
-            ],
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(5, 15, 5, 10),
+                  text: S().past,
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Expanded(
               child: TabBarView(
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
@@ -127,8 +129,8 @@ class EventsPage extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

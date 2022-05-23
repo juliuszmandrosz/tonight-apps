@@ -21,7 +21,7 @@ class EditEventAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      insetPadding: EdgeInsets.zero,
+      insetPadding: const EdgeInsets.all(20),
       title: Text(title),
       contentPadding: const EdgeInsets.only(top: 20),
       actions: [

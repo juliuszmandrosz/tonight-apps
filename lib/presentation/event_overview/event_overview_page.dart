@@ -36,6 +36,7 @@ class EventOverviewPage extends StatelessWidget {
         ..getEventTickets(event)
         ..addEventToState(event),
       child: LoaderOverlay(
+        overlayColor: context.shadowColor,
         child: Scaffold(
           appBar: RaverPartnersAppBar(title: S().eventOverview),
           body: Padding(
@@ -82,7 +83,6 @@ class EventOverviewPage extends StatelessWidget {
 
                 return SingleChildScrollView(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       BlocBuilder<UpcomingLiveEventCubit,
                           UpcomingLiveEventState>(

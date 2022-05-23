@@ -1,8 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
-import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_rewards/domain/domain.dart';
 
 class RewardListTile extends StatelessWidget {
@@ -12,37 +12,28 @@ class RewardListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
+    return ListTile(
+      dense: true,
+      contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
+      title: AutoSizeText(
+        reward.description,
+        style: context.subtitle1,
+        maxLines: 3,
       ),
-      margin: const EdgeInsets.all(5),
-      child: ListTile(
-        title: Text(
-          reward.description,
-          style: context.subtitle1,
-        ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            IconButton(
-              onPressed: () async {
-                final result = await context.showDeleteConfirmationDialog();
+      trailing: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconButton(
+            onPressed: () async {
+              final result = await context.showDeleteConfirmationDialog();
 
-                if (result ?? false) {
-                  context.read<RewardListCubit>().deleteReward(reward);
-                }
-              },
-              icon: const Icon(
-                Icons.delete_rounded,
-                size: 32,
-              ),
-            ),
-          ],
-        ),
+              if (result ?? false) {
+                context.read<RewardListCubit>().deleteReward(reward);
+              }
+            },
+            icon: const Icon(Icons.delete_rounded),
+          ),
+        ],
       ),
     );
   }

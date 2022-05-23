@@ -17,42 +17,31 @@ class SelectorListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Card(
-      elevation: 5,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
+    return ListTile(
+      dense: true,
+      contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
+      title: AutoSizeText(
+        selector.email,
+        style: context.subtitle1,
+        maxLines: 1,
       ),
-      margin: const EdgeInsets.all(5),
-      child: ListTile(
-        title: AutoSizeText(
-          selector.email,
-          style: theme.textTheme.subtitle1,
-          maxLines: 1,
-        ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            IconButton(
-              onPressed: () async {
-                final result =
-                    await context.showConfirmationDialogWithCustomMessage(
-                  S().confirmSelectorDeletion,
-                );
+      trailing: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconButton(
+            onPressed: () async {
+              final result =
+                  await context.showConfirmationDialogWithCustomMessage(
+                S().confirmSelectorDeletion,
+              );
 
-                if (result ?? false) {
-                  context.read<SelectorListCubit>().deleteSelector(selector);
-                }
-              },
-              icon: FaIcon(
-                FontAwesomeIcons.ban,
-                color: theme.iconTheme.color,
-              ),
-            ),
-          ],
-        ),
+              if (result ?? false) {
+                context.read<SelectorListCubit>().deleteSelector(selector);
+              }
+            },
+            icon: const FaIcon(FontAwesomeIcons.ban),
+          ),
+        ],
       ),
     );
   }

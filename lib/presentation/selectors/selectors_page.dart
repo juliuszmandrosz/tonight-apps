@@ -14,7 +14,7 @@ class SelectorsPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<SelectorListCubit>()..getSelectors(),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
+        padding: const EdgeInsets.all(15),
         child: BlocConsumer<SelectorListCubit, SelectorListState>(
           listenWhen: (previous, current) =>
               previous.errorMessage != current.errorMessage,
@@ -41,11 +41,21 @@ class SelectorsPage extends StatelessWidget {
                 ? Center(
                     child: Text(S().selectors(0)),
                   )
-                : ListView.builder(
-                    itemCount: state.selectors.length,
-                    itemBuilder: (ctx, i) => SelectorListTile(
-                      selector: state.selectors[i],
-                    ),
+                : Column(
+                    children: [
+                      Expanded(
+                        child: ListView.separated(
+                          separatorBuilder: (context, i) => const Divider(),
+                          itemCount: state.selectors.length + 1,
+                          itemBuilder: (ctx, i) => i >= state.selectors.length
+                              ? const SizedBox()
+                              : SelectorListTile(
+                                  selector: state.selectors[i],
+                                ),
+                        ),
+                      ),
+                      const SizedBox(height: 60),
+                    ],
                   );
           },
         ),

@@ -17,7 +17,7 @@ class EventSummaryStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: const [
           EventSummaryEventName(),

@@ -88,8 +88,6 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
       vipPrice: state.vipPrice.value!,
       ticketQuantity: state.ticketQuantity.value!,
       isCurrent: isCurrent,
-      // TODO - change after merge https://github.com/juliuszmandrosz/RaverPartners/pull/25
-      vipPrice: 0,
     );
 
     emit(

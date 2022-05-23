@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event/add_event_step.dart';
-import 'package:raver_partners/presentation/config/themes/dark_theme/typography_extensions.dart';
 import 'package:raver_translations/generated/l10n.dart';
 
 class AddEventStepsHeader extends StatelessWidget {
@@ -19,22 +19,12 @@ class AddEventStepsHeader extends StatelessWidget {
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: AutoSizeText(
-                    _getHeaderText(state.currentStep),
-                    style: context.headline5,
-                    maxLines: 1,
-                  ),
-                ),
-              ],
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: AutoSizeText(
+              _getHeaderText(state.currentStep),
+              style: context.headline5,
+              maxLines: 1,
             ),
           ),
         );
