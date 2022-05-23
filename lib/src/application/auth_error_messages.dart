@@ -16,7 +16,6 @@ final authErrorMessages = {
   cancelledByUser: S().cancelledByUser,
   serverError: S().serverError,
   invalidAccessCode: S().invalidAccessCode,
-  // TODO - add different translation
-  invalidLink: S().invalidUrl,
+  invalidLink: S().invalidSignInLink,
   unavailable: S().errorCheckInternetConnection,
 };
