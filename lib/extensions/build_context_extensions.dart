@@ -24,6 +24,15 @@ extension BuildContextX on BuildContext {
     return '$formattedYMD, $formattedHM';
   }
 
+  String formatDateTimeToLocaleYMDH(DateTime dateTime) {
+    Locale locale = Localizations.localeOf(this);
+    final ymdFormatter = DateFormat.yMMMd(locale.toLanguageTag());
+    final hFormatter = DateFormat.H(locale.toLanguageTag());
+    final formattedYMD = ymdFormatter.format(dateTime);
+    final formattedH = hFormatter.format(dateTime);
+    return '$formattedYMD, $formattedH';
+  }
+
   String formatDateTimeToLocaleYMD(DateTime dateTime) {
     Locale locale = Localizations.localeOf(this);
     final formatter = DateFormat.yMMMd(locale.toLanguageTag());
