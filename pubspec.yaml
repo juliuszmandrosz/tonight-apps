@@ -15,7 +15,7 @@ dependencies:
   logger: ^1.1.0
   dartz: ^0.10.1
   freezed_annotation: ^2.0.3
-  font_awesome_flutter: ^9.2.0
+  font_awesome_flutter: ^10.1.0
   flutter_bloc: ^8.0.1
   rxdart: ^0.27.3
   bloc_concurrency: ^0.2.0
