@@ -12,38 +12,11 @@ part of 'event_tickets_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 EventTicketsDto _$EventTicketsDtoFromJson(Map<String, dynamic> json) {
   return _EventTicketsDto.fromJson(json);
 }
-
-/// @nodoc
-class _$EventTicketsDtoTearOff {
-  const _$EventTicketsDtoTearOff();
-
-  _EventTicketsDto call(
-      {@JsonKey(ignore: true) String? eventId,
-      required List<TicketPoolDto> ticketPools,
-      required TicketSalesDto ticketSales,
-      required int ticketQuantity,
-      bool isSoldOut = false}) {
-    return _EventTicketsDto(
-      eventId: eventId,
-      ticketPools: ticketPools,
-      ticketSales: ticketSales,
-      ticketQuantity: ticketQuantity,
-      isSoldOut: isSoldOut,
-    );
-  }
-
-  EventTicketsDto fromJson(Map<String, Object?> json) {
-    return EventTicketsDto.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $EventTicketsDto = _$EventTicketsDtoTearOff();
 
 /// @nodoc
 mixin _$EventTicketsDto {
@@ -125,11 +98,11 @@ class _$EventTicketsDtoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$EventTicketsDtoCopyWith<$Res>
+abstract class _$$_EventTicketsDtoCopyWith<$Res>
     implements $EventTicketsDtoCopyWith<$Res> {
-  factory _$EventTicketsDtoCopyWith(
-          _EventTicketsDto value, $Res Function(_EventTicketsDto) then) =
-      __$EventTicketsDtoCopyWithImpl<$Res>;
+  factory _$$_EventTicketsDtoCopyWith(
+          _$_EventTicketsDto value, $Res Function(_$_EventTicketsDto) then) =
+      __$$_EventTicketsDtoCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(ignore: true) String? eventId,
@@ -143,15 +116,15 @@ abstract class _$EventTicketsDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$EventTicketsDtoCopyWithImpl<$Res>
+class __$$_EventTicketsDtoCopyWithImpl<$Res>
     extends _$EventTicketsDtoCopyWithImpl<$Res>
-    implements _$EventTicketsDtoCopyWith<$Res> {
-  __$EventTicketsDtoCopyWithImpl(
-      _EventTicketsDto _value, $Res Function(_EventTicketsDto) _then)
-      : super(_value, (v) => _then(v as _EventTicketsDto));
+    implements _$$_EventTicketsDtoCopyWith<$Res> {
+  __$$_EventTicketsDtoCopyWithImpl(
+      _$_EventTicketsDto _value, $Res Function(_$_EventTicketsDto) _then)
+      : super(_value, (v) => _then(v as _$_EventTicketsDto));
 
   @override
-  _EventTicketsDto get _value => super._value as _EventTicketsDto;
+  _$_EventTicketsDto get _value => super._value as _$_EventTicketsDto;
 
   @override
   $Res call({
@@ -161,13 +134,13 @@ class __$EventTicketsDtoCopyWithImpl<$Res>
     Object? ticketQuantity = freezed,
     Object? isSoldOut = freezed,
   }) {
-    return _then(_EventTicketsDto(
+    return _then(_$_EventTicketsDto(
       eventId: eventId == freezed
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
               as String?,
       ticketPools: ticketPools == freezed
-          ? _value.ticketPools
+          ? _value._ticketPools
           : ticketPools // ignore: cast_nullable_to_non_nullable
               as List<TicketPoolDto>,
       ticketSales: ticketSales == freezed
@@ -192,11 +165,12 @@ class __$EventTicketsDtoCopyWithImpl<$Res>
 class _$_EventTicketsDto extends _EventTicketsDto {
   const _$_EventTicketsDto(
       {@JsonKey(ignore: true) this.eventId,
-      required this.ticketPools,
+      required final List<TicketPoolDto> ticketPools,
       required this.ticketSales,
       required this.ticketQuantity,
       this.isSoldOut = false})
-      : super._();
+      : _ticketPools = ticketPools,
+        super._();
 
   factory _$_EventTicketsDto.fromJson(Map<String, dynamic> json) =>
       _$$_EventTicketsDtoFromJson(json);
@@ -204,14 +178,19 @@ class _$_EventTicketsDto extends _EventTicketsDto {
   @override
   @JsonKey(ignore: true)
   final String? eventId;
+  final List<TicketPoolDto> _ticketPools;
   @override
-  final List<TicketPoolDto> ticketPools;
+  List<TicketPoolDto> get ticketPools {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_ticketPools);
+  }
+
   @override
   final TicketSalesDto ticketSales;
   @override
   final int ticketQuantity;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isSoldOut;
 
   @override
@@ -223,10 +202,10 @@ class _$_EventTicketsDto extends _EventTicketsDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EventTicketsDto &&
+            other is _$_EventTicketsDto &&
             const DeepCollectionEquality().equals(other.eventId, eventId) &&
             const DeepCollectionEquality()
-                .equals(other.ticketPools, ticketPools) &&
+                .equals(other._ticketPools, _ticketPools) &&
             const DeepCollectionEquality()
                 .equals(other.ticketSales, ticketSales) &&
             const DeepCollectionEquality()
@@ -234,19 +213,20 @@ class _$_EventTicketsDto extends _EventTicketsDto {
             const DeepCollectionEquality().equals(other.isSoldOut, isSoldOut));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(eventId),
-      const DeepCollectionEquality().hash(ticketPools),
+      const DeepCollectionEquality().hash(_ticketPools),
       const DeepCollectionEquality().hash(ticketSales),
       const DeepCollectionEquality().hash(ticketQuantity),
       const DeepCollectionEquality().hash(isSoldOut));
 
   @JsonKey(ignore: true)
   @override
-  _$EventTicketsDtoCopyWith<_EventTicketsDto> get copyWith =>
-      __$EventTicketsDtoCopyWithImpl<_EventTicketsDto>(this, _$identity);
+  _$$_EventTicketsDtoCopyWith<_$_EventTicketsDto> get copyWith =>
+      __$$_EventTicketsDtoCopyWithImpl<_$_EventTicketsDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -256,11 +236,11 @@ class _$_EventTicketsDto extends _EventTicketsDto {
 
 abstract class _EventTicketsDto extends EventTicketsDto {
   const factory _EventTicketsDto(
-      {@JsonKey(ignore: true) String? eventId,
-      required List<TicketPoolDto> ticketPools,
-      required TicketSalesDto ticketSales,
-      required int ticketQuantity,
-      bool isSoldOut}) = _$_EventTicketsDto;
+      {@JsonKey(ignore: true) final String? eventId,
+      required final List<TicketPoolDto> ticketPools,
+      required final TicketSalesDto ticketSales,
+      required final int ticketQuantity,
+      final bool isSoldOut}) = _$_EventTicketsDto;
   const _EventTicketsDto._() : super._();
 
   factory _EventTicketsDto.fromJson(Map<String, dynamic> json) =
@@ -268,17 +248,17 @@ abstract class _EventTicketsDto extends EventTicketsDto {
 
   @override
   @JsonKey(ignore: true)
-  String? get eventId;
+  String? get eventId => throw _privateConstructorUsedError;
   @override
-  List<TicketPoolDto> get ticketPools;
+  List<TicketPoolDto> get ticketPools => throw _privateConstructorUsedError;
   @override
-  TicketSalesDto get ticketSales;
+  TicketSalesDto get ticketSales => throw _privateConstructorUsedError;
   @override
-  int get ticketQuantity;
+  int get ticketQuantity => throw _privateConstructorUsedError;
   @override
-  bool get isSoldOut;
+  bool get isSoldOut => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$EventTicketsDtoCopyWith<_EventTicketsDto> get copyWith =>
+  _$$_EventTicketsDtoCopyWith<_$_EventTicketsDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

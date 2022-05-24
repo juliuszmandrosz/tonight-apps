@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'partner_event_failure.dart';
+part of 'event_review_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$PartnerEventFailure {
+mixin _$EventReviewFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
@@ -51,20 +51,20 @@ mixin _$PartnerEventFailure {
 }
 
 /// @nodoc
-abstract class $PartnerEventFailureCopyWith<$Res> {
-  factory $PartnerEventFailureCopyWith(
-          PartnerEventFailure value, $Res Function(PartnerEventFailure) then) =
-      _$PartnerEventFailureCopyWithImpl<$Res>;
+abstract class $EventReviewFailureCopyWith<$Res> {
+  factory $EventReviewFailureCopyWith(
+          EventReviewFailure value, $Res Function(EventReviewFailure) then) =
+      _$EventReviewFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PartnerEventFailureCopyWithImpl<$Res>
-    implements $PartnerEventFailureCopyWith<$Res> {
-  _$PartnerEventFailureCopyWithImpl(this._value, this._then);
+class _$EventReviewFailureCopyWithImpl<$Res>
+    implements $EventReviewFailureCopyWith<$Res> {
+  _$EventReviewFailureCopyWithImpl(this._value, this._then);
 
-  final PartnerEventFailure _value;
+  final EventReviewFailure _value;
   // ignore: unused_field
-  final $Res Function(PartnerEventFailure) _then;
+  final $Res Function(EventReviewFailure) _then;
 }
 
 /// @nodoc
@@ -76,7 +76,7 @@ abstract class _$$_UnexpectedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$PartnerEventFailureCopyWithImpl<$Res>
+    extends _$EventReviewFailureCopyWithImpl<$Res>
     implements _$$_UnexpectedCopyWith<$Res> {
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
@@ -93,7 +93,7 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   String toString() {
-    return 'PartnerEventFailure.unexpected()';
+    return 'EventReviewFailure.unexpected()';
   }
 
   @override
@@ -162,6 +162,6 @@ class _$_Unexpected implements _Unexpected {
   }
 }
 
-abstract class _Unexpected implements PartnerEventFailure {
+abstract class _Unexpected implements EventReviewFailure {
   const factory _Unexpected() = _$_Unexpected;
 }

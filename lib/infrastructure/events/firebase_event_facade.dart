@@ -8,6 +8,7 @@ import 'package:raver_events/domain/domain.dart';
 import 'package:raver_events/domain/filters/filter/date_includes_filter.dart';
 import 'package:raver_events/infrastructure/algolia_events_api.dart';
 import 'package:raver_events/infrastructure/event_costs/dtos/event_costs_dto.dart';
+import 'package:raver_events/infrastructure/event_review/dtos/event_review_dto.dart';
 import 'package:raver_events/infrastructure/events/dtos/event_dto.dart';
 import 'package:raver_events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
 
@@ -115,8 +116,10 @@ class FirebaseEventFacade
     try {
       final eventDoc = _firestore.eventCollection.doc(event.id);
       final clubDoc = _firestore.clubCollection.doc(event.clubId);
+
       final eventTicketDoc = clubDoc.eventTickets.doc(event.id);
       final eventCostsDoc = clubDoc.eventCosts.doc(event.id);
+      final eventReviewDoc = clubDoc.eventReview.doc(event.id);
 
       final eventDto = EventDto.fromDomain(event);
       final eventTicketsDto = EventTicketsDto.fromDomain(eventTickets);
@@ -124,10 +127,12 @@ class FirebaseEventFacade
         eventId: event.id,
         currency: event.currency,
       );
+      final eventReviewDto = EventReviewDto(eventId: event.id);
 
       await eventDoc.set(eventDto.toJson());
       await eventTicketDoc.set(eventTicketsDto.toJson());
       await eventCostsDoc.set(eventCostsDto.toJson());
+      await eventReviewDoc.set(eventReviewDto.toJson());
 
       return right(unit);
     } on FirebaseException catch (e) {

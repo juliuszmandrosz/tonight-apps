@@ -12,44 +12,11 @@ part of 'ticket_pool_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 TicketPoolDto _$TicketPoolDtoFromJson(Map<String, dynamic> json) {
   return _TicketPoolDto.fromJson(json);
 }
-
-/// @nodoc
-class _$TicketPoolDtoTearOff {
-  const _$TicketPoolDtoTearOff();
-
-  _TicketPoolDto call(
-      {required int poolNumber,
-      required int ticketQuantity,
-      required int ticketPrice,
-      required int vipPrice,
-      required String currency,
-      int ticketsSold = 0,
-      bool isCurrent = false,
-      bool isSoldOut = false}) {
-    return _TicketPoolDto(
-      poolNumber: poolNumber,
-      ticketQuantity: ticketQuantity,
-      ticketPrice: ticketPrice,
-      vipPrice: vipPrice,
-      currency: currency,
-      ticketsSold: ticketsSold,
-      isCurrent: isCurrent,
-      isSoldOut: isSoldOut,
-    );
-  }
-
-  TicketPoolDto fromJson(Map<String, Object?> json) {
-    return TicketPoolDto.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $TicketPoolDto = _$TicketPoolDtoTearOff();
 
 /// @nodoc
 mixin _$TicketPoolDto {
@@ -142,11 +109,11 @@ class _$TicketPoolDtoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$TicketPoolDtoCopyWith<$Res>
+abstract class _$$_TicketPoolDtoCopyWith<$Res>
     implements $TicketPoolDtoCopyWith<$Res> {
-  factory _$TicketPoolDtoCopyWith(
-          _TicketPoolDto value, $Res Function(_TicketPoolDto) then) =
-      __$TicketPoolDtoCopyWithImpl<$Res>;
+  factory _$$_TicketPoolDtoCopyWith(
+          _$_TicketPoolDto value, $Res Function(_$_TicketPoolDto) then) =
+      __$$_TicketPoolDtoCopyWithImpl<$Res>;
   @override
   $Res call(
       {int poolNumber,
@@ -160,15 +127,15 @@ abstract class _$TicketPoolDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$TicketPoolDtoCopyWithImpl<$Res>
+class __$$_TicketPoolDtoCopyWithImpl<$Res>
     extends _$TicketPoolDtoCopyWithImpl<$Res>
-    implements _$TicketPoolDtoCopyWith<$Res> {
-  __$TicketPoolDtoCopyWithImpl(
-      _TicketPoolDto _value, $Res Function(_TicketPoolDto) _then)
-      : super(_value, (v) => _then(v as _TicketPoolDto));
+    implements _$$_TicketPoolDtoCopyWith<$Res> {
+  __$$_TicketPoolDtoCopyWithImpl(
+      _$_TicketPoolDto _value, $Res Function(_$_TicketPoolDto) _then)
+      : super(_value, (v) => _then(v as _$_TicketPoolDto));
 
   @override
-  _TicketPoolDto get _value => super._value as _TicketPoolDto;
+  _$_TicketPoolDto get _value => super._value as _$_TicketPoolDto;
 
   @override
   $Res call({
@@ -181,7 +148,7 @@ class __$TicketPoolDtoCopyWithImpl<$Res>
     Object? isCurrent = freezed,
     Object? isSoldOut = freezed,
   }) {
-    return _then(_TicketPoolDto(
+    return _then(_$_TicketPoolDto(
       poolNumber: poolNumber == freezed
           ? _value.poolNumber
           : poolNumber // ignore: cast_nullable_to_non_nullable
@@ -246,14 +213,14 @@ class _$_TicketPoolDto extends _TicketPoolDto {
   final int vipPrice;
   @override
   final String currency;
-  @JsonKey()
   @override
+  @JsonKey()
   final int ticketsSold;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isCurrent;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isSoldOut;
 
   @override
@@ -265,7 +232,7 @@ class _$_TicketPoolDto extends _TicketPoolDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TicketPoolDto &&
+            other is _$_TicketPoolDto &&
             const DeepCollectionEquality()
                 .equals(other.poolNumber, poolNumber) &&
             const DeepCollectionEquality()
@@ -280,6 +247,7 @@ class _$_TicketPoolDto extends _TicketPoolDto {
             const DeepCollectionEquality().equals(other.isSoldOut, isSoldOut));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -294,8 +262,8 @@ class _$_TicketPoolDto extends _TicketPoolDto {
 
   @JsonKey(ignore: true)
   @override
-  _$TicketPoolDtoCopyWith<_TicketPoolDto> get copyWith =>
-      __$TicketPoolDtoCopyWithImpl<_TicketPoolDto>(this, _$identity);
+  _$$_TicketPoolDtoCopyWith<_$_TicketPoolDto> get copyWith =>
+      __$$_TicketPoolDtoCopyWithImpl<_$_TicketPoolDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -305,37 +273,37 @@ class _$_TicketPoolDto extends _TicketPoolDto {
 
 abstract class _TicketPoolDto extends TicketPoolDto {
   const factory _TicketPoolDto(
-      {required int poolNumber,
-      required int ticketQuantity,
-      required int ticketPrice,
-      required int vipPrice,
-      required String currency,
-      int ticketsSold,
-      bool isCurrent,
-      bool isSoldOut}) = _$_TicketPoolDto;
+      {required final int poolNumber,
+      required final int ticketQuantity,
+      required final int ticketPrice,
+      required final int vipPrice,
+      required final String currency,
+      final int ticketsSold,
+      final bool isCurrent,
+      final bool isSoldOut}) = _$_TicketPoolDto;
   const _TicketPoolDto._() : super._();
 
   factory _TicketPoolDto.fromJson(Map<String, dynamic> json) =
       _$_TicketPoolDto.fromJson;
 
   @override
-  int get poolNumber;
+  int get poolNumber => throw _privateConstructorUsedError;
   @override
-  int get ticketQuantity;
+  int get ticketQuantity => throw _privateConstructorUsedError;
   @override
-  int get ticketPrice;
+  int get ticketPrice => throw _privateConstructorUsedError;
   @override
-  int get vipPrice;
+  int get vipPrice => throw _privateConstructorUsedError;
   @override
-  String get currency;
+  String get currency => throw _privateConstructorUsedError;
   @override
-  int get ticketsSold;
+  int get ticketsSold => throw _privateConstructorUsedError;
   @override
-  bool get isCurrent;
+  bool get isCurrent => throw _privateConstructorUsedError;
   @override
-  bool get isSoldOut;
+  bool get isSoldOut => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$TicketPoolDtoCopyWith<_TicketPoolDto> get copyWith =>
+  _$$_TicketPoolDtoCopyWith<_$_TicketPoolDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

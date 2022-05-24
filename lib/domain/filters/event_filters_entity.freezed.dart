@@ -12,48 +12,7 @@ part of 'event_filters_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$EventFiltersTearOff {
-  const _$EventFiltersTearOff();
-
-  _EventFilters call(
-      {required PhraseFilter phraseFilter,
-      required PriceRangeFilter priceRangeFilter,
-      required MinAgesFilter minAgesFilter,
-      required MusicalGenresFilter musicalGenresFilter,
-      required AllowedOutfitsFilter allowedOutfitsFilter,
-      required MaxDistanceFilter maxDistanceFilter,
-      required CityFilter cityFilter,
-      required ClubFilter clubFilter,
-      required DateRangeFilter dateRangeFilter,
-      required IsConcertFilter isConcertFilter,
-      required ShowOnlyFilter showOnlyFilter,
-      required DateIncludesFilter dateIncludesFilter,
-      required CurrencyFilter currencyFilter,
-      required IsCanceledFilter isCanceledFilter}) {
-    return _EventFilters(
-      phraseFilter: phraseFilter,
-      priceRangeFilter: priceRangeFilter,
-      minAgesFilter: minAgesFilter,
-      musicalGenresFilter: musicalGenresFilter,
-      allowedOutfitsFilter: allowedOutfitsFilter,
-      maxDistanceFilter: maxDistanceFilter,
-      cityFilter: cityFilter,
-      clubFilter: clubFilter,
-      dateRangeFilter: dateRangeFilter,
-      isConcertFilter: isConcertFilter,
-      showOnlyFilter: showOnlyFilter,
-      dateIncludesFilter: dateIncludesFilter,
-      currencyFilter: currencyFilter,
-      isCanceledFilter: isCanceledFilter,
-    );
-  }
-}
-
-/// @nodoc
-const $EventFilters = _$EventFiltersTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$EventFilters {
@@ -189,11 +148,11 @@ class _$EventFiltersCopyWithImpl<$Res> implements $EventFiltersCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$EventFiltersCopyWith<$Res>
+abstract class _$$_EventFiltersCopyWith<$Res>
     implements $EventFiltersCopyWith<$Res> {
-  factory _$EventFiltersCopyWith(
-          _EventFilters value, $Res Function(_EventFilters) then) =
-      __$EventFiltersCopyWithImpl<$Res>;
+  factory _$$_EventFiltersCopyWith(
+          _$_EventFilters value, $Res Function(_$_EventFilters) then) =
+      __$$_EventFiltersCopyWithImpl<$Res>;
   @override
   $Res call(
       {PhraseFilter phraseFilter,
@@ -213,14 +172,15 @@ abstract class _$EventFiltersCopyWith<$Res>
 }
 
 /// @nodoc
-class __$EventFiltersCopyWithImpl<$Res> extends _$EventFiltersCopyWithImpl<$Res>
-    implements _$EventFiltersCopyWith<$Res> {
-  __$EventFiltersCopyWithImpl(
-      _EventFilters _value, $Res Function(_EventFilters) _then)
-      : super(_value, (v) => _then(v as _EventFilters));
+class __$$_EventFiltersCopyWithImpl<$Res>
+    extends _$EventFiltersCopyWithImpl<$Res>
+    implements _$$_EventFiltersCopyWith<$Res> {
+  __$$_EventFiltersCopyWithImpl(
+      _$_EventFilters _value, $Res Function(_$_EventFilters) _then)
+      : super(_value, (v) => _then(v as _$_EventFilters));
 
   @override
-  _EventFilters get _value => super._value as _EventFilters;
+  _$_EventFilters get _value => super._value as _$_EventFilters;
 
   @override
   $Res call({
@@ -239,7 +199,7 @@ class __$EventFiltersCopyWithImpl<$Res> extends _$EventFiltersCopyWithImpl<$Res>
     Object? currencyFilter = freezed,
     Object? isCanceledFilter = freezed,
   }) {
-    return _then(_EventFilters(
+    return _then(_$_EventFilters(
       phraseFilter: phraseFilter == freezed
           ? _value.phraseFilter
           : phraseFilter // ignore: cast_nullable_to_non_nullable
@@ -358,7 +318,7 @@ class _$_EventFilters extends _EventFilters {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EventFilters &&
+            other is _$_EventFilters &&
             const DeepCollectionEquality()
                 .equals(other.phraseFilter, phraseFilter) &&
             const DeepCollectionEquality()
@@ -409,58 +369,61 @@ class _$_EventFilters extends _EventFilters {
 
   @JsonKey(ignore: true)
   @override
-  _$EventFiltersCopyWith<_EventFilters> get copyWith =>
-      __$EventFiltersCopyWithImpl<_EventFilters>(this, _$identity);
+  _$$_EventFiltersCopyWith<_$_EventFilters> get copyWith =>
+      __$$_EventFiltersCopyWithImpl<_$_EventFilters>(this, _$identity);
 }
 
 abstract class _EventFilters extends EventFilters {
   factory _EventFilters(
-      {required PhraseFilter phraseFilter,
-      required PriceRangeFilter priceRangeFilter,
-      required MinAgesFilter minAgesFilter,
-      required MusicalGenresFilter musicalGenresFilter,
-      required AllowedOutfitsFilter allowedOutfitsFilter,
-      required MaxDistanceFilter maxDistanceFilter,
-      required CityFilter cityFilter,
-      required ClubFilter clubFilter,
-      required DateRangeFilter dateRangeFilter,
-      required IsConcertFilter isConcertFilter,
-      required ShowOnlyFilter showOnlyFilter,
-      required DateIncludesFilter dateIncludesFilter,
-      required CurrencyFilter currencyFilter,
-      required IsCanceledFilter isCanceledFilter}) = _$_EventFilters;
+      {required final PhraseFilter phraseFilter,
+      required final PriceRangeFilter priceRangeFilter,
+      required final MinAgesFilter minAgesFilter,
+      required final MusicalGenresFilter musicalGenresFilter,
+      required final AllowedOutfitsFilter allowedOutfitsFilter,
+      required final MaxDistanceFilter maxDistanceFilter,
+      required final CityFilter cityFilter,
+      required final ClubFilter clubFilter,
+      required final DateRangeFilter dateRangeFilter,
+      required final IsConcertFilter isConcertFilter,
+      required final ShowOnlyFilter showOnlyFilter,
+      required final DateIncludesFilter dateIncludesFilter,
+      required final CurrencyFilter currencyFilter,
+      required final IsCanceledFilter isCanceledFilter}) = _$_EventFilters;
   _EventFilters._() : super._();
 
   @override
-  PhraseFilter get phraseFilter;
+  PhraseFilter get phraseFilter => throw _privateConstructorUsedError;
   @override
-  PriceRangeFilter get priceRangeFilter;
+  PriceRangeFilter get priceRangeFilter => throw _privateConstructorUsedError;
   @override
-  MinAgesFilter get minAgesFilter;
+  MinAgesFilter get minAgesFilter => throw _privateConstructorUsedError;
   @override
-  MusicalGenresFilter get musicalGenresFilter;
+  MusicalGenresFilter get musicalGenresFilter =>
+      throw _privateConstructorUsedError;
   @override
-  AllowedOutfitsFilter get allowedOutfitsFilter;
+  AllowedOutfitsFilter get allowedOutfitsFilter =>
+      throw _privateConstructorUsedError;
   @override
-  MaxDistanceFilter get maxDistanceFilter;
+  MaxDistanceFilter get maxDistanceFilter => throw _privateConstructorUsedError;
   @override
-  CityFilter get cityFilter;
+  CityFilter get cityFilter => throw _privateConstructorUsedError;
   @override
-  ClubFilter get clubFilter;
+  ClubFilter get clubFilter => throw _privateConstructorUsedError;
   @override
-  DateRangeFilter get dateRangeFilter;
+  DateRangeFilter get dateRangeFilter => throw _privateConstructorUsedError;
   @override
-  IsConcertFilter get isConcertFilter;
+  IsConcertFilter get isConcertFilter => throw _privateConstructorUsedError;
   @override
-  ShowOnlyFilter get showOnlyFilter;
+  ShowOnlyFilter get showOnlyFilter => throw _privateConstructorUsedError;
   @override
-  DateIncludesFilter get dateIncludesFilter;
+  DateIncludesFilter get dateIncludesFilter =>
+      throw _privateConstructorUsedError;
   @override
-  CurrencyFilter get currencyFilter;
+  CurrencyFilter get currencyFilter => throw _privateConstructorUsedError;
   @override
-  IsCanceledFilter get isCanceledFilter;
+  IsCanceledFilter get isCanceledFilter => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$EventFiltersCopyWith<_EventFilters> get copyWith =>
+  _$$_EventFiltersCopyWith<_$_EventFilters> get copyWith =>
       throw _privateConstructorUsedError;
 }

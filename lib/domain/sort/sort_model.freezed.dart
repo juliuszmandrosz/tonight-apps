@@ -12,23 +12,7 @@ part of 'sort_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$SortModelTearOff {
-  const _$SortModelTearOff();
-
-  _SortModel call(
-      {required String fieldName, required SortDirection direction}) {
-    return _SortModel(
-      fieldName: fieldName,
-      direction: direction,
-    );
-  }
-}
-
-/// @nodoc
-const $SortModel = _$SortModelTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SortModel {
@@ -74,29 +58,30 @@ class _$SortModelCopyWithImpl<$Res> implements $SortModelCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$SortModelCopyWith<$Res> implements $SortModelCopyWith<$Res> {
-  factory _$SortModelCopyWith(
-          _SortModel value, $Res Function(_SortModel) then) =
-      __$SortModelCopyWithImpl<$Res>;
+abstract class _$$_SortModelCopyWith<$Res> implements $SortModelCopyWith<$Res> {
+  factory _$$_SortModelCopyWith(
+          _$_SortModel value, $Res Function(_$_SortModel) then) =
+      __$$_SortModelCopyWithImpl<$Res>;
   @override
   $Res call({String fieldName, SortDirection direction});
 }
 
 /// @nodoc
-class __$SortModelCopyWithImpl<$Res> extends _$SortModelCopyWithImpl<$Res>
-    implements _$SortModelCopyWith<$Res> {
-  __$SortModelCopyWithImpl(_SortModel _value, $Res Function(_SortModel) _then)
-      : super(_value, (v) => _then(v as _SortModel));
+class __$$_SortModelCopyWithImpl<$Res> extends _$SortModelCopyWithImpl<$Res>
+    implements _$$_SortModelCopyWith<$Res> {
+  __$$_SortModelCopyWithImpl(
+      _$_SortModel _value, $Res Function(_$_SortModel) _then)
+      : super(_value, (v) => _then(v as _$_SortModel));
 
   @override
-  _SortModel get _value => super._value as _SortModel;
+  _$_SortModel get _value => super._value as _$_SortModel;
 
   @override
   $Res call({
     Object? fieldName = freezed,
     Object? direction = freezed,
   }) {
-    return _then(_SortModel(
+    return _then(_$_SortModel(
       fieldName: fieldName == freezed
           ? _value.fieldName
           : fieldName // ignore: cast_nullable_to_non_nullable
@@ -128,7 +113,7 @@ class _$_SortModel extends _SortModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SortModel &&
+            other is _$_SortModel &&
             const DeepCollectionEquality().equals(other.fieldName, fieldName) &&
             const DeepCollectionEquality().equals(other.direction, direction));
   }
@@ -141,22 +126,22 @@ class _$_SortModel extends _SortModel {
 
   @JsonKey(ignore: true)
   @override
-  _$SortModelCopyWith<_SortModel> get copyWith =>
-      __$SortModelCopyWithImpl<_SortModel>(this, _$identity);
+  _$$_SortModelCopyWith<_$_SortModel> get copyWith =>
+      __$$_SortModelCopyWithImpl<_$_SortModel>(this, _$identity);
 }
 
 abstract class _SortModel extends SortModel {
   factory _SortModel(
-      {required String fieldName,
-      required SortDirection direction}) = _$_SortModel;
+      {required final String fieldName,
+      required final SortDirection direction}) = _$_SortModel;
   _SortModel._() : super._();
 
   @override
-  String get fieldName;
+  String get fieldName => throw _privateConstructorUsedError;
   @override
-  SortDirection get direction;
+  SortDirection get direction => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SortModelCopyWith<_SortModel> get copyWith =>
+  _$$_SortModelCopyWith<_$_SortModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

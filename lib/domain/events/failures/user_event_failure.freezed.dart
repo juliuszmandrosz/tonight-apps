@@ -12,23 +12,7 @@ part of 'user_event_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$UserEventFailureTearOff {
-  const _$UserEventFailureTearOff();
-
-  _Unexpected unexpected() {
-    return const _Unexpected();
-  }
-
-  _UserEventFailure toggleFavoriteEventFailure() {
-    return const _UserEventFailure();
-  }
-}
-
-/// @nodoc
-const $UserEventFailure = _$UserEventFailureTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$UserEventFailure {
@@ -91,22 +75,22 @@ class _$UserEventFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$UnexpectedCopyWith<$Res> {
-  factory _$UnexpectedCopyWith(
-          _Unexpected value, $Res Function(_Unexpected) then) =
-      __$UnexpectedCopyWithImpl<$Res>;
+abstract class _$$_UnexpectedCopyWith<$Res> {
+  factory _$$_UnexpectedCopyWith(
+          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
+      __$$_UnexpectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$UnexpectedCopyWithImpl<$Res>
+class __$$_UnexpectedCopyWithImpl<$Res>
     extends _$UserEventFailureCopyWithImpl<$Res>
-    implements _$UnexpectedCopyWith<$Res> {
-  __$UnexpectedCopyWithImpl(
-      _Unexpected _value, $Res Function(_Unexpected) _then)
-      : super(_value, (v) => _then(v as _Unexpected));
+    implements _$$_UnexpectedCopyWith<$Res> {
+  __$$_UnexpectedCopyWithImpl(
+      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+      : super(_value, (v) => _then(v as _$_Unexpected));
 
   @override
-  _Unexpected get _value => super._value as _Unexpected;
+  _$_Unexpected get _value => super._value as _$_Unexpected;
 }
 
 /// @nodoc
@@ -122,7 +106,7 @@ class _$_Unexpected implements _Unexpected {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Unexpected);
+        (other.runtimeType == runtimeType && other is _$_Unexpected);
   }
 
   @override
@@ -197,22 +181,22 @@ abstract class _Unexpected implements UserEventFailure {
 }
 
 /// @nodoc
-abstract class _$UserEventFailureCopyWith<$Res> {
-  factory _$UserEventFailureCopyWith(
-          _UserEventFailure value, $Res Function(_UserEventFailure) then) =
-      __$UserEventFailureCopyWithImpl<$Res>;
+abstract class _$$_UserEventFailureCopyWith<$Res> {
+  factory _$$_UserEventFailureCopyWith(
+          _$_UserEventFailure value, $Res Function(_$_UserEventFailure) then) =
+      __$$_UserEventFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$UserEventFailureCopyWithImpl<$Res>
+class __$$_UserEventFailureCopyWithImpl<$Res>
     extends _$UserEventFailureCopyWithImpl<$Res>
-    implements _$UserEventFailureCopyWith<$Res> {
-  __$UserEventFailureCopyWithImpl(
-      _UserEventFailure _value, $Res Function(_UserEventFailure) _then)
-      : super(_value, (v) => _then(v as _UserEventFailure));
+    implements _$$_UserEventFailureCopyWith<$Res> {
+  __$$_UserEventFailureCopyWithImpl(
+      _$_UserEventFailure _value, $Res Function(_$_UserEventFailure) _then)
+      : super(_value, (v) => _then(v as _$_UserEventFailure));
 
   @override
-  _UserEventFailure get _value => super._value as _UserEventFailure;
+  _$_UserEventFailure get _value => super._value as _$_UserEventFailure;
 }
 
 /// @nodoc
@@ -228,7 +212,7 @@ class _$_UserEventFailure implements _UserEventFailure {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _UserEventFailure);
+        (other.runtimeType == runtimeType && other is _$_UserEventFailure);
   }
 
   @override

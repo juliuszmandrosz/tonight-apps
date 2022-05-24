@@ -18,3 +18,6 @@ export 'events/failures/partner_event_failure.dart';
 export 'events/failures/selector_event_failure.dart';
 export 'event_tickets/user_event_tickets_facade.dart';
 export 'event_tickets/partner_event_tickets_facade.dart';
+export 'event_review/event_review_entity.dart';
+export 'event_review/event_review_failure.dart';
+export 'event_review/partner_event_review_facade.dart';

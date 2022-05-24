@@ -12,45 +12,7 @@ part of 'event_overview_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$EventOverviewEventTearOff {
-  const _$EventOverviewEventTearOff();
-
-  _EventsFetched eventsFetched(EventFilters filters, SortModel sortModel) {
-    return _EventsFetched(
-      filters,
-      sortModel,
-    );
-  }
-
-  _NextEventsPageFetched nextEventsPageFetched() {
-    return const _NextEventsPageFetched();
-  }
-
-  _EventToStateAdded eventToStateAdded(Event event) {
-    return _EventToStateAdded(
-      event,
-    );
-  }
-
-  _EventInStateUpdated eventInStateUpdated(Event oldEvent, Event updatedEvent) {
-    return _EventInStateUpdated(
-      oldEvent,
-      updatedEvent,
-    );
-  }
-
-  _EventInStateDeleted eventInStateDeleted(Event event) {
-    return _EventInStateDeleted(
-      event,
-    );
-  }
-}
-
-/// @nodoc
-const $EventOverviewEvent = _$EventOverviewEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$EventOverviewEvent {
@@ -133,10 +95,10 @@ class _$EventOverviewEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$EventsFetchedCopyWith<$Res> {
-  factory _$EventsFetchedCopyWith(
-          _EventsFetched value, $Res Function(_EventsFetched) then) =
-      __$EventsFetchedCopyWithImpl<$Res>;
+abstract class _$$_EventsFetchedCopyWith<$Res> {
+  factory _$$_EventsFetchedCopyWith(
+          _$_EventsFetched value, $Res Function(_$_EventsFetched) then) =
+      __$$_EventsFetchedCopyWithImpl<$Res>;
   $Res call({EventFilters filters, SortModel sortModel});
 
   $EventFiltersCopyWith<$Res> get filters;
@@ -144,22 +106,22 @@ abstract class _$EventsFetchedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$EventsFetchedCopyWithImpl<$Res>
+class __$$_EventsFetchedCopyWithImpl<$Res>
     extends _$EventOverviewEventCopyWithImpl<$Res>
-    implements _$EventsFetchedCopyWith<$Res> {
-  __$EventsFetchedCopyWithImpl(
-      _EventsFetched _value, $Res Function(_EventsFetched) _then)
-      : super(_value, (v) => _then(v as _EventsFetched));
+    implements _$$_EventsFetchedCopyWith<$Res> {
+  __$$_EventsFetchedCopyWithImpl(
+      _$_EventsFetched _value, $Res Function(_$_EventsFetched) _then)
+      : super(_value, (v) => _then(v as _$_EventsFetched));
 
   @override
-  _EventsFetched get _value => super._value as _EventsFetched;
+  _$_EventsFetched get _value => super._value as _$_EventsFetched;
 
   @override
   $Res call({
     Object? filters = freezed,
     Object? sortModel = freezed,
   }) {
-    return _then(_EventsFetched(
+    return _then(_$_EventsFetched(
       filters == freezed
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
@@ -205,7 +167,7 @@ class _$_EventsFetched implements _EventsFetched {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EventsFetched &&
+            other is _$_EventsFetched &&
             const DeepCollectionEquality().equals(other.filters, filters) &&
             const DeepCollectionEquality().equals(other.sortModel, sortModel));
   }
@@ -218,8 +180,8 @@ class _$_EventsFetched implements _EventsFetched {
 
   @JsonKey(ignore: true)
   @override
-  _$EventsFetchedCopyWith<_EventsFetched> get copyWith =>
-      __$EventsFetchedCopyWithImpl<_EventsFetched>(this, _$identity);
+  _$$_EventsFetchedCopyWith<_$_EventsFetched> get copyWith =>
+      __$$_EventsFetchedCopyWithImpl<_$_EventsFetched>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -306,33 +268,34 @@ class _$_EventsFetched implements _EventsFetched {
 }
 
 abstract class _EventsFetched implements EventOverviewEvent {
-  const factory _EventsFetched(EventFilters filters, SortModel sortModel) =
-      _$_EventsFetched;
+  const factory _EventsFetched(
+      final EventFilters filters, final SortModel sortModel) = _$_EventsFetched;
 
-  EventFilters get filters;
-  SortModel get sortModel;
+  EventFilters get filters => throw _privateConstructorUsedError;
+  SortModel get sortModel => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$EventsFetchedCopyWith<_EventsFetched> get copyWith =>
+  _$$_EventsFetchedCopyWith<_$_EventsFetched> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$NextEventsPageFetchedCopyWith<$Res> {
-  factory _$NextEventsPageFetchedCopyWith(_NextEventsPageFetched value,
-          $Res Function(_NextEventsPageFetched) then) =
-      __$NextEventsPageFetchedCopyWithImpl<$Res>;
+abstract class _$$_NextEventsPageFetchedCopyWith<$Res> {
+  factory _$$_NextEventsPageFetchedCopyWith(_$_NextEventsPageFetched value,
+          $Res Function(_$_NextEventsPageFetched) then) =
+      __$$_NextEventsPageFetchedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$NextEventsPageFetchedCopyWithImpl<$Res>
+class __$$_NextEventsPageFetchedCopyWithImpl<$Res>
     extends _$EventOverviewEventCopyWithImpl<$Res>
-    implements _$NextEventsPageFetchedCopyWith<$Res> {
-  __$NextEventsPageFetchedCopyWithImpl(_NextEventsPageFetched _value,
-      $Res Function(_NextEventsPageFetched) _then)
-      : super(_value, (v) => _then(v as _NextEventsPageFetched));
+    implements _$$_NextEventsPageFetchedCopyWith<$Res> {
+  __$$_NextEventsPageFetchedCopyWithImpl(_$_NextEventsPageFetched _value,
+      $Res Function(_$_NextEventsPageFetched) _then)
+      : super(_value, (v) => _then(v as _$_NextEventsPageFetched));
 
   @override
-  _NextEventsPageFetched get _value => super._value as _NextEventsPageFetched;
+  _$_NextEventsPageFetched get _value =>
+      super._value as _$_NextEventsPageFetched;
 }
 
 /// @nodoc
@@ -348,7 +311,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _NextEventsPageFetched);
+        (other.runtimeType == runtimeType && other is _$_NextEventsPageFetched);
   }
 
   @override
@@ -443,29 +406,29 @@ abstract class _NextEventsPageFetched implements EventOverviewEvent {
 }
 
 /// @nodoc
-abstract class _$EventToStateAddedCopyWith<$Res> {
-  factory _$EventToStateAddedCopyWith(
-          _EventToStateAdded value, $Res Function(_EventToStateAdded) then) =
-      __$EventToStateAddedCopyWithImpl<$Res>;
+abstract class _$$_EventToStateAddedCopyWith<$Res> {
+  factory _$$_EventToStateAddedCopyWith(_$_EventToStateAdded value,
+          $Res Function(_$_EventToStateAdded) then) =
+      __$$_EventToStateAddedCopyWithImpl<$Res>;
   $Res call({Event event});
 }
 
 /// @nodoc
-class __$EventToStateAddedCopyWithImpl<$Res>
+class __$$_EventToStateAddedCopyWithImpl<$Res>
     extends _$EventOverviewEventCopyWithImpl<$Res>
-    implements _$EventToStateAddedCopyWith<$Res> {
-  __$EventToStateAddedCopyWithImpl(
-      _EventToStateAdded _value, $Res Function(_EventToStateAdded) _then)
-      : super(_value, (v) => _then(v as _EventToStateAdded));
+    implements _$$_EventToStateAddedCopyWith<$Res> {
+  __$$_EventToStateAddedCopyWithImpl(
+      _$_EventToStateAdded _value, $Res Function(_$_EventToStateAdded) _then)
+      : super(_value, (v) => _then(v as _$_EventToStateAdded));
 
   @override
-  _EventToStateAdded get _value => super._value as _EventToStateAdded;
+  _$_EventToStateAdded get _value => super._value as _$_EventToStateAdded;
 
   @override
   $Res call({
     Object? event = freezed,
   }) {
-    return _then(_EventToStateAdded(
+    return _then(_$_EventToStateAdded(
       event == freezed
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
@@ -491,7 +454,7 @@ class _$_EventToStateAdded implements _EventToStateAdded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EventToStateAdded &&
+            other is _$_EventToStateAdded &&
             const DeepCollectionEquality().equals(other.event, event));
   }
 
@@ -501,8 +464,9 @@ class _$_EventToStateAdded implements _EventToStateAdded {
 
   @JsonKey(ignore: true)
   @override
-  _$EventToStateAddedCopyWith<_EventToStateAdded> get copyWith =>
-      __$EventToStateAddedCopyWithImpl<_EventToStateAdded>(this, _$identity);
+  _$$_EventToStateAddedCopyWith<_$_EventToStateAdded> get copyWith =>
+      __$$_EventToStateAddedCopyWithImpl<_$_EventToStateAdded>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -589,39 +553,39 @@ class _$_EventToStateAdded implements _EventToStateAdded {
 }
 
 abstract class _EventToStateAdded implements EventOverviewEvent {
-  const factory _EventToStateAdded(Event event) = _$_EventToStateAdded;
+  const factory _EventToStateAdded(final Event event) = _$_EventToStateAdded;
 
-  Event get event;
+  Event get event => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$EventToStateAddedCopyWith<_EventToStateAdded> get copyWith =>
+  _$$_EventToStateAddedCopyWith<_$_EventToStateAdded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$EventInStateUpdatedCopyWith<$Res> {
-  factory _$EventInStateUpdatedCopyWith(_EventInStateUpdated value,
-          $Res Function(_EventInStateUpdated) then) =
-      __$EventInStateUpdatedCopyWithImpl<$Res>;
+abstract class _$$_EventInStateUpdatedCopyWith<$Res> {
+  factory _$$_EventInStateUpdatedCopyWith(_$_EventInStateUpdated value,
+          $Res Function(_$_EventInStateUpdated) then) =
+      __$$_EventInStateUpdatedCopyWithImpl<$Res>;
   $Res call({Event oldEvent, Event updatedEvent});
 }
 
 /// @nodoc
-class __$EventInStateUpdatedCopyWithImpl<$Res>
+class __$$_EventInStateUpdatedCopyWithImpl<$Res>
     extends _$EventOverviewEventCopyWithImpl<$Res>
-    implements _$EventInStateUpdatedCopyWith<$Res> {
-  __$EventInStateUpdatedCopyWithImpl(
-      _EventInStateUpdated _value, $Res Function(_EventInStateUpdated) _then)
-      : super(_value, (v) => _then(v as _EventInStateUpdated));
+    implements _$$_EventInStateUpdatedCopyWith<$Res> {
+  __$$_EventInStateUpdatedCopyWithImpl(_$_EventInStateUpdated _value,
+      $Res Function(_$_EventInStateUpdated) _then)
+      : super(_value, (v) => _then(v as _$_EventInStateUpdated));
 
   @override
-  _EventInStateUpdated get _value => super._value as _EventInStateUpdated;
+  _$_EventInStateUpdated get _value => super._value as _$_EventInStateUpdated;
 
   @override
   $Res call({
     Object? oldEvent = freezed,
     Object? updatedEvent = freezed,
   }) {
-    return _then(_EventInStateUpdated(
+    return _then(_$_EventInStateUpdated(
       oldEvent == freezed
           ? _value.oldEvent
           : oldEvent // ignore: cast_nullable_to_non_nullable
@@ -653,7 +617,7 @@ class _$_EventInStateUpdated implements _EventInStateUpdated {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EventInStateUpdated &&
+            other is _$_EventInStateUpdated &&
             const DeepCollectionEquality().equals(other.oldEvent, oldEvent) &&
             const DeepCollectionEquality()
                 .equals(other.updatedEvent, updatedEvent));
@@ -667,8 +631,8 @@ class _$_EventInStateUpdated implements _EventInStateUpdated {
 
   @JsonKey(ignore: true)
   @override
-  _$EventInStateUpdatedCopyWith<_EventInStateUpdated> get copyWith =>
-      __$EventInStateUpdatedCopyWithImpl<_EventInStateUpdated>(
+  _$$_EventInStateUpdatedCopyWith<_$_EventInStateUpdated> get copyWith =>
+      __$$_EventInStateUpdatedCopyWithImpl<_$_EventInStateUpdated>(
           this, _$identity);
 
   @override
@@ -756,40 +720,40 @@ class _$_EventInStateUpdated implements _EventInStateUpdated {
 }
 
 abstract class _EventInStateUpdated implements EventOverviewEvent {
-  const factory _EventInStateUpdated(Event oldEvent, Event updatedEvent) =
-      _$_EventInStateUpdated;
+  const factory _EventInStateUpdated(
+      final Event oldEvent, final Event updatedEvent) = _$_EventInStateUpdated;
 
-  Event get oldEvent;
-  Event get updatedEvent;
+  Event get oldEvent => throw _privateConstructorUsedError;
+  Event get updatedEvent => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$EventInStateUpdatedCopyWith<_EventInStateUpdated> get copyWith =>
+  _$$_EventInStateUpdatedCopyWith<_$_EventInStateUpdated> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$EventInStateDeletedCopyWith<$Res> {
-  factory _$EventInStateDeletedCopyWith(_EventInStateDeleted value,
-          $Res Function(_EventInStateDeleted) then) =
-      __$EventInStateDeletedCopyWithImpl<$Res>;
+abstract class _$$_EventInStateDeletedCopyWith<$Res> {
+  factory _$$_EventInStateDeletedCopyWith(_$_EventInStateDeleted value,
+          $Res Function(_$_EventInStateDeleted) then) =
+      __$$_EventInStateDeletedCopyWithImpl<$Res>;
   $Res call({Event event});
 }
 
 /// @nodoc
-class __$EventInStateDeletedCopyWithImpl<$Res>
+class __$$_EventInStateDeletedCopyWithImpl<$Res>
     extends _$EventOverviewEventCopyWithImpl<$Res>
-    implements _$EventInStateDeletedCopyWith<$Res> {
-  __$EventInStateDeletedCopyWithImpl(
-      _EventInStateDeleted _value, $Res Function(_EventInStateDeleted) _then)
-      : super(_value, (v) => _then(v as _EventInStateDeleted));
+    implements _$$_EventInStateDeletedCopyWith<$Res> {
+  __$$_EventInStateDeletedCopyWithImpl(_$_EventInStateDeleted _value,
+      $Res Function(_$_EventInStateDeleted) _then)
+      : super(_value, (v) => _then(v as _$_EventInStateDeleted));
 
   @override
-  _EventInStateDeleted get _value => super._value as _EventInStateDeleted;
+  _$_EventInStateDeleted get _value => super._value as _$_EventInStateDeleted;
 
   @override
   $Res call({
     Object? event = freezed,
   }) {
-    return _then(_EventInStateDeleted(
+    return _then(_$_EventInStateDeleted(
       event == freezed
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
@@ -815,7 +779,7 @@ class _$_EventInStateDeleted implements _EventInStateDeleted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EventInStateDeleted &&
+            other is _$_EventInStateDeleted &&
             const DeepCollectionEquality().equals(other.event, event));
   }
 
@@ -825,8 +789,8 @@ class _$_EventInStateDeleted implements _EventInStateDeleted {
 
   @JsonKey(ignore: true)
   @override
-  _$EventInStateDeletedCopyWith<_EventInStateDeleted> get copyWith =>
-      __$EventInStateDeletedCopyWithImpl<_EventInStateDeleted>(
+  _$$_EventInStateDeletedCopyWith<_$_EventInStateDeleted> get copyWith =>
+      __$$_EventInStateDeletedCopyWithImpl<_$_EventInStateDeleted>(
           this, _$identity);
 
   @override
@@ -914,36 +878,14 @@ class _$_EventInStateDeleted implements _EventInStateDeleted {
 }
 
 abstract class _EventInStateDeleted implements EventOverviewEvent {
-  const factory _EventInStateDeleted(Event event) = _$_EventInStateDeleted;
+  const factory _EventInStateDeleted(final Event event) =
+      _$_EventInStateDeleted;
 
-  Event get event;
+  Event get event => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$EventInStateDeletedCopyWith<_EventInStateDeleted> get copyWith =>
+  _$$_EventInStateDeletedCopyWith<_$_EventInStateDeleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$EventOverviewStateTearOff {
-  const _$EventOverviewStateTearOff();
-
-  _EventOverviewState call(
-      {required List<Event> events,
-      required bool hasReachedMax,
-      required CubitStatus status,
-      required EventFilters eventFilters,
-      required SortModel sortModel}) {
-    return _EventOverviewState(
-      events: events,
-      hasReachedMax: hasReachedMax,
-      status: status,
-      eventFilters: eventFilters,
-      sortModel: sortModel,
-    );
-  }
-}
-
-/// @nodoc
-const $EventOverviewState = _$EventOverviewStateTearOff();
 
 /// @nodoc
 mixin _$EventOverviewState {
@@ -1031,11 +973,11 @@ class _$EventOverviewStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$EventOverviewStateCopyWith<$Res>
+abstract class _$$_EventOverviewStateCopyWith<$Res>
     implements $EventOverviewStateCopyWith<$Res> {
-  factory _$EventOverviewStateCopyWith(
-          _EventOverviewState value, $Res Function(_EventOverviewState) then) =
-      __$EventOverviewStateCopyWithImpl<$Res>;
+  factory _$$_EventOverviewStateCopyWith(_$_EventOverviewState value,
+          $Res Function(_$_EventOverviewState) then) =
+      __$$_EventOverviewStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {List<Event> events,
@@ -1051,15 +993,15 @@ abstract class _$EventOverviewStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$EventOverviewStateCopyWithImpl<$Res>
+class __$$_EventOverviewStateCopyWithImpl<$Res>
     extends _$EventOverviewStateCopyWithImpl<$Res>
-    implements _$EventOverviewStateCopyWith<$Res> {
-  __$EventOverviewStateCopyWithImpl(
-      _EventOverviewState _value, $Res Function(_EventOverviewState) _then)
-      : super(_value, (v) => _then(v as _EventOverviewState));
+    implements _$$_EventOverviewStateCopyWith<$Res> {
+  __$$_EventOverviewStateCopyWithImpl(
+      _$_EventOverviewState _value, $Res Function(_$_EventOverviewState) _then)
+      : super(_value, (v) => _then(v as _$_EventOverviewState));
 
   @override
-  _EventOverviewState get _value => super._value as _EventOverviewState;
+  _$_EventOverviewState get _value => super._value as _$_EventOverviewState;
 
   @override
   $Res call({
@@ -1069,9 +1011,9 @@ class __$EventOverviewStateCopyWithImpl<$Res>
     Object? eventFilters = freezed,
     Object? sortModel = freezed,
   }) {
-    return _then(_EventOverviewState(
+    return _then(_$_EventOverviewState(
       events: events == freezed
-          ? _value.events
+          ? _value._events
           : events // ignore: cast_nullable_to_non_nullable
               as List<Event>,
       hasReachedMax: hasReachedMax == freezed
@@ -1098,15 +1040,21 @@ class __$EventOverviewStateCopyWithImpl<$Res>
 
 class _$_EventOverviewState extends _EventOverviewState {
   _$_EventOverviewState(
-      {required this.events,
+      {required final List<Event> events,
       required this.hasReachedMax,
       required this.status,
       required this.eventFilters,
       required this.sortModel})
-      : super._();
+      : _events = events,
+        super._();
 
+  final List<Event> _events;
   @override
-  final List<Event> events;
+  List<Event> get events {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_events);
+  }
+
   @override
   final bool hasReachedMax;
   @override
@@ -1125,8 +1073,8 @@ class _$_EventOverviewState extends _EventOverviewState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EventOverviewState &&
-            const DeepCollectionEquality().equals(other.events, events) &&
+            other is _$_EventOverviewState &&
+            const DeepCollectionEquality().equals(other._events, _events) &&
             const DeepCollectionEquality()
                 .equals(other.hasReachedMax, hasReachedMax) &&
             const DeepCollectionEquality().equals(other.status, status) &&
@@ -1138,7 +1086,7 @@ class _$_EventOverviewState extends _EventOverviewState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(events),
+      const DeepCollectionEquality().hash(_events),
       const DeepCollectionEquality().hash(hasReachedMax),
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(eventFilters),
@@ -1146,31 +1094,32 @@ class _$_EventOverviewState extends _EventOverviewState {
 
   @JsonKey(ignore: true)
   @override
-  _$EventOverviewStateCopyWith<_EventOverviewState> get copyWith =>
-      __$EventOverviewStateCopyWithImpl<_EventOverviewState>(this, _$identity);
+  _$$_EventOverviewStateCopyWith<_$_EventOverviewState> get copyWith =>
+      __$$_EventOverviewStateCopyWithImpl<_$_EventOverviewState>(
+          this, _$identity);
 }
 
 abstract class _EventOverviewState extends EventOverviewState {
   factory _EventOverviewState(
-      {required List<Event> events,
-      required bool hasReachedMax,
-      required CubitStatus status,
-      required EventFilters eventFilters,
-      required SortModel sortModel}) = _$_EventOverviewState;
+      {required final List<Event> events,
+      required final bool hasReachedMax,
+      required final CubitStatus status,
+      required final EventFilters eventFilters,
+      required final SortModel sortModel}) = _$_EventOverviewState;
   _EventOverviewState._() : super._();
 
   @override
-  List<Event> get events;
+  List<Event> get events => throw _privateConstructorUsedError;
   @override
-  bool get hasReachedMax;
+  bool get hasReachedMax => throw _privateConstructorUsedError;
   @override
-  CubitStatus get status;
+  CubitStatus get status => throw _privateConstructorUsedError;
   @override
-  EventFilters get eventFilters;
+  EventFilters get eventFilters => throw _privateConstructorUsedError;
   @override
-  SortModel get sortModel;
+  SortModel get sortModel => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$EventOverviewStateCopyWith<_EventOverviewState> get copyWith =>
+  _$$_EventOverviewStateCopyWith<_$_EventOverviewState> get copyWith =>
       throw _privateConstructorUsedError;
 }

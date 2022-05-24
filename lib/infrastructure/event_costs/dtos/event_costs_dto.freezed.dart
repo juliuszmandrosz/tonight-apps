@@ -12,36 +12,11 @@ part of 'event_costs_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 EventCostsDto _$EventCostsDtoFromJson(Map<String, dynamic> json) {
   return _EventCostsDto.fromJson(json);
 }
-
-/// @nodoc
-class _$EventCostsDtoTearOff {
-  const _$EventCostsDtoTearOff();
-
-  _EventCostsDto call(
-      {@JsonKey(ignore: true) String? eventId,
-      required String currency,
-      double paymentProcessorFeeBalance = 0,
-      double eventPostponeBalance = 0}) {
-    return _EventCostsDto(
-      eventId: eventId,
-      currency: currency,
-      paymentProcessorFeeBalance: paymentProcessorFeeBalance,
-      eventPostponeBalance: eventPostponeBalance,
-    );
-  }
-
-  EventCostsDto fromJson(Map<String, Object?> json) {
-    return EventCostsDto.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $EventCostsDto = _$EventCostsDtoTearOff();
 
 /// @nodoc
 mixin _$EventCostsDto {
@@ -107,11 +82,11 @@ class _$EventCostsDtoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$EventCostsDtoCopyWith<$Res>
+abstract class _$$_EventCostsDtoCopyWith<$Res>
     implements $EventCostsDtoCopyWith<$Res> {
-  factory _$EventCostsDtoCopyWith(
-          _EventCostsDto value, $Res Function(_EventCostsDto) then) =
-      __$EventCostsDtoCopyWithImpl<$Res>;
+  factory _$$_EventCostsDtoCopyWith(
+          _$_EventCostsDto value, $Res Function(_$_EventCostsDto) then) =
+      __$$_EventCostsDtoCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(ignore: true) String? eventId,
@@ -121,15 +96,15 @@ abstract class _$EventCostsDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$EventCostsDtoCopyWithImpl<$Res>
+class __$$_EventCostsDtoCopyWithImpl<$Res>
     extends _$EventCostsDtoCopyWithImpl<$Res>
-    implements _$EventCostsDtoCopyWith<$Res> {
-  __$EventCostsDtoCopyWithImpl(
-      _EventCostsDto _value, $Res Function(_EventCostsDto) _then)
-      : super(_value, (v) => _then(v as _EventCostsDto));
+    implements _$$_EventCostsDtoCopyWith<$Res> {
+  __$$_EventCostsDtoCopyWithImpl(
+      _$_EventCostsDto _value, $Res Function(_$_EventCostsDto) _then)
+      : super(_value, (v) => _then(v as _$_EventCostsDto));
 
   @override
-  _EventCostsDto get _value => super._value as _EventCostsDto;
+  _$_EventCostsDto get _value => super._value as _$_EventCostsDto;
 
   @override
   $Res call({
@@ -138,7 +113,7 @@ class __$EventCostsDtoCopyWithImpl<$Res>
     Object? paymentProcessorFeeBalance = freezed,
     Object? eventPostponeBalance = freezed,
   }) {
-    return _then(_EventCostsDto(
+    return _then(_$_EventCostsDto(
       eventId: eventId == freezed
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
@@ -178,11 +153,11 @@ class _$_EventCostsDto extends _EventCostsDto {
   final String? eventId;
   @override
   final String currency;
-  @JsonKey()
   @override
+  @JsonKey()
   final double paymentProcessorFeeBalance;
-  @JsonKey()
   @override
+  @JsonKey()
   final double eventPostponeBalance;
 
   @override
@@ -194,7 +169,7 @@ class _$_EventCostsDto extends _EventCostsDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _EventCostsDto &&
+            other is _$_EventCostsDto &&
             const DeepCollectionEquality().equals(other.eventId, eventId) &&
             const DeepCollectionEquality().equals(other.currency, currency) &&
             const DeepCollectionEquality().equals(
@@ -203,6 +178,7 @@ class _$_EventCostsDto extends _EventCostsDto {
                 .equals(other.eventPostponeBalance, eventPostponeBalance));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -213,8 +189,8 @@ class _$_EventCostsDto extends _EventCostsDto {
 
   @JsonKey(ignore: true)
   @override
-  _$EventCostsDtoCopyWith<_EventCostsDto> get copyWith =>
-      __$EventCostsDtoCopyWithImpl<_EventCostsDto>(this, _$identity);
+  _$$_EventCostsDtoCopyWith<_$_EventCostsDto> get copyWith =>
+      __$$_EventCostsDtoCopyWithImpl<_$_EventCostsDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -224,10 +200,10 @@ class _$_EventCostsDto extends _EventCostsDto {
 
 abstract class _EventCostsDto extends EventCostsDto {
   const factory _EventCostsDto(
-      {@JsonKey(ignore: true) String? eventId,
-      required String currency,
-      double paymentProcessorFeeBalance,
-      double eventPostponeBalance}) = _$_EventCostsDto;
+      {@JsonKey(ignore: true) final String? eventId,
+      required final String currency,
+      final double paymentProcessorFeeBalance,
+      final double eventPostponeBalance}) = _$_EventCostsDto;
   const _EventCostsDto._() : super._();
 
   factory _EventCostsDto.fromJson(Map<String, dynamic> json) =
@@ -235,15 +211,15 @@ abstract class _EventCostsDto extends EventCostsDto {
 
   @override
   @JsonKey(ignore: true)
-  String? get eventId;
+  String? get eventId => throw _privateConstructorUsedError;
   @override
-  String get currency;
+  String get currency => throw _privateConstructorUsedError;
   @override
-  double get paymentProcessorFeeBalance;
+  double get paymentProcessorFeeBalance => throw _privateConstructorUsedError;
   @override
-  double get eventPostponeBalance;
+  double get eventPostponeBalance => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$EventCostsDtoCopyWith<_EventCostsDto> get copyWith =>
+  _$$_EventCostsDtoCopyWith<_$_EventCostsDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

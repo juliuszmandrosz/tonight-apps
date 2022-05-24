@@ -12,23 +12,7 @@ part of 'selector_event_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$SelectorEventFailureTearOff {
-  const _$SelectorEventFailureTearOff();
-
-  _Unexpected unexpected() {
-    return const _Unexpected();
-  }
-
-  _NoAccess noAccess() {
-    return const _NoAccess();
-  }
-}
-
-/// @nodoc
-const $SelectorEventFailure = _$SelectorEventFailureTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SelectorEventFailure {
@@ -90,22 +74,22 @@ class _$SelectorEventFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$UnexpectedCopyWith<$Res> {
-  factory _$UnexpectedCopyWith(
-          _Unexpected value, $Res Function(_Unexpected) then) =
-      __$UnexpectedCopyWithImpl<$Res>;
+abstract class _$$_UnexpectedCopyWith<$Res> {
+  factory _$$_UnexpectedCopyWith(
+          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
+      __$$_UnexpectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$UnexpectedCopyWithImpl<$Res>
+class __$$_UnexpectedCopyWithImpl<$Res>
     extends _$SelectorEventFailureCopyWithImpl<$Res>
-    implements _$UnexpectedCopyWith<$Res> {
-  __$UnexpectedCopyWithImpl(
-      _Unexpected _value, $Res Function(_Unexpected) _then)
-      : super(_value, (v) => _then(v as _Unexpected));
+    implements _$$_UnexpectedCopyWith<$Res> {
+  __$$_UnexpectedCopyWithImpl(
+      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+      : super(_value, (v) => _then(v as _$_Unexpected));
 
   @override
-  _Unexpected get _value => super._value as _Unexpected;
+  _$_Unexpected get _value => super._value as _$_Unexpected;
 }
 
 /// @nodoc
@@ -121,7 +105,7 @@ class _$_Unexpected implements _Unexpected {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Unexpected);
+        (other.runtimeType == runtimeType && other is _$_Unexpected);
   }
 
   @override
@@ -195,20 +179,22 @@ abstract class _Unexpected implements SelectorEventFailure {
 }
 
 /// @nodoc
-abstract class _$NoAccessCopyWith<$Res> {
-  factory _$NoAccessCopyWith(_NoAccess value, $Res Function(_NoAccess) then) =
-      __$NoAccessCopyWithImpl<$Res>;
+abstract class _$$_NoAccessCopyWith<$Res> {
+  factory _$$_NoAccessCopyWith(
+          _$_NoAccess value, $Res Function(_$_NoAccess) then) =
+      __$$_NoAccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$NoAccessCopyWithImpl<$Res>
+class __$$_NoAccessCopyWithImpl<$Res>
     extends _$SelectorEventFailureCopyWithImpl<$Res>
-    implements _$NoAccessCopyWith<$Res> {
-  __$NoAccessCopyWithImpl(_NoAccess _value, $Res Function(_NoAccess) _then)
-      : super(_value, (v) => _then(v as _NoAccess));
+    implements _$$_NoAccessCopyWith<$Res> {
+  __$$_NoAccessCopyWithImpl(
+      _$_NoAccess _value, $Res Function(_$_NoAccess) _then)
+      : super(_value, (v) => _then(v as _$_NoAccess));
 
   @override
-  _NoAccess get _value => super._value as _NoAccess;
+  _$_NoAccess get _value => super._value as _$_NoAccess;
 }
 
 /// @nodoc
@@ -224,7 +210,7 @@ class _$_NoAccess implements _NoAccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _NoAccess);
+        (other.runtimeType == runtimeType && other is _$_NoAccess);
   }
 
   @override
