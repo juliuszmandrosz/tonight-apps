@@ -76,7 +76,7 @@ class EventOverviewTicketPools extends StatelessWidget {
                                 .addTicketPool(result);
                           }
                         },
-                        icon: const FaIcon(FontAwesomeIcons.plus),
+                        icon: const FaIcon(Icons.add),
                       )
                     ],
                   ),

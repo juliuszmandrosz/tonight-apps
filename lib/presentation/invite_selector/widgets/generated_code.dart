@@ -40,7 +40,7 @@ class GeneratedCode extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () => Share.share(code),
-                    icon: const FaIcon(FontAwesomeIcons.shareAlt),
+                    icon: const FaIcon(FontAwesomeIcons.share),
                   ),
                 ],
               ),

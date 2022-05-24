@@ -18,8 +18,8 @@ class SaveTicketPoolButton extends StatelessWidget {
             (_) => context.read<AddEditTicketPoolCubit>().editTicketPool(),
           ),
           child: state.editingTicketPool.fold(
-            () => const FaIcon(FontAwesomeIcons.plus),
-            (_) => const FaIcon(FontAwesomeIcons.solidSave),
+            () => const FaIcon(Icons.add),
+            (_) => const FaIcon(Icons.save),
           ),
         );
       },

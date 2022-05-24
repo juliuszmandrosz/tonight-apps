@@ -29,7 +29,7 @@ class _RaverPartnersSpeedDialState extends State<RaverPartnersSpeedDial> {
       closeDialOnPop: false,
       backgroundColor: context.primaryColor,
       activeBackgroundColor: context.surfaceColor,
-      icon: FontAwesomeIcons.plus,
+      icon: Icons.add,
       iconTheme: IconThemeData(
         color: _isDialOpen ? context.primaryColor : context.onSurfaceColor,
       ),
@@ -63,12 +63,12 @@ class _RaverPartnersSpeedDialState extends State<RaverPartnersSpeedDial> {
         ),
         SpeedDialChild(
           child: FaIcon(
-            FontAwesomeIcons.userAlt,
+            FontAwesomeIcons.solidUser,
             color: context.onSurfaceColor,
           ),
           label: S().inviteSelector,
           labelStyle: context.bodyText1,
-          onTap: () => AutoRouter.of(context).push(InviteSelectorRoute()),
+          onTap: () => AutoRouter.of(context).push(const InviteSelectorRoute()),
           backgroundColor: context.primaryColor,
           labelBackgroundColor: context.primaryColor,
         )

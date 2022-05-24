@@ -147,7 +147,7 @@ packages:
       name: built_value
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "8.3.0"
+    version: "8.3.2"
   characters:
     dependency: transitive
     description:
@@ -566,7 +566,7 @@ packages:
       name: font_awesome_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "9.2.0"
+    version: "10.1.0"
   formz:
     dependency: "direct main"
     description:
@@ -994,7 +994,7 @@ packages:
     description:
       path: "."
       ref: "feature/reviews"
-      resolved-ref: "2169db5c1faeb5587a860ff1de2023a033817889"
+      resolved-ref: adfac43f6de0b4104b0065f8328bdba60a2f0452
       url: "https://github.com/juliuszmandrosz/RaverClubs.git"
     source: git
     version: "0.0.1"
@@ -1003,7 +1003,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: f4c9cbd586c18475fc74c86ac21ccc3035102536
+      resolved-ref: "664261dbac68b47f782434d66a49aa0e8e039ac7"
       url: "https://github.com/juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -1020,8 +1020,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: develop
-      resolved-ref: "44a13d71fa282adb9190d5f958aa79982df563c7"
+      ref: "feature/change-payment-sheet-button-color"
+      resolved-ref: "2f81a1b1c7ee5e8280b9532b628f3a053c617a84"
       url: "https://github.com/juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"

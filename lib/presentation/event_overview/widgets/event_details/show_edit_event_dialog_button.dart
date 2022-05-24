@@ -25,12 +25,8 @@ class ShowEditEventDialogButton extends StatelessWidget {
 
         context.read<UpcomingLiveEventCubit>().resetEditEventState();
       },
-      icon: isValueEmpty
-          ? const FaIcon(FontAwesomeIcons.plus)
-          : const Icon(
-              Icons.mode_edit,
-              size: 30,
-            ),
+      icon:
+          isValueEmpty ? const FaIcon(Icons.add) : const Icon(Icons.mode_edit),
     );
   }
 }

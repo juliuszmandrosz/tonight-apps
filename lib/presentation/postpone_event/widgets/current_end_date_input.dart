@@ -42,10 +42,7 @@ class CurrentEndDateInput extends StatelessWidget {
               },
               icon: const Padding(
                 padding: EdgeInsets.only(right: 8),
-                child: FaIcon(
-                  FontAwesomeIcons.calendarAlt,
-                  size: 25,
-                ),
+                child: FaIcon(FontAwesomeIcons.calendar),
               ),
             ),
           ),

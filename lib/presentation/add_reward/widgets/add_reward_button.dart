@@ -16,7 +16,7 @@ class AddRewardButton extends StatelessWidget {
             ? const CircularProgressIndicator()
             : FloatingActionButton(
                 onPressed: () => context.read<AddRewardCubit>().addReward(),
-                child: const FaIcon(FontAwesomeIcons.plus),
+                child: const FaIcon(Icons.add),
               );
       },
     );

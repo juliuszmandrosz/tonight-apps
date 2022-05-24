@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/past_event_details/past_event_details_cubit.dart';
@@ -45,6 +44,7 @@ class PastEventDetailsPage extends StatelessWidget {
                 children: [
                   EventRevenue(
                     ticketSales: state.eventTickets.getOrCrash().ticketSales,
+                    isPastEvent: true,
                   ),
                 ],
               );

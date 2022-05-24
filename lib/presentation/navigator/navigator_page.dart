@@ -63,22 +63,12 @@ class NavigatorPage extends StatelessWidget {
 
           return AutoTabsScaffold(
             resizeToAvoidBottomInset: false,
-            appBarBuilder: (_, tabsRouter) => RaverPartnersAppBar(
-              actions: [
-                IconButton(
-                  onPressed: () {
-                    context.read<WelcomeLoaderCubit>().resetState();
-                    context.read<AuthCubit>().signOut();
-                    AutoRouter.of(context).replace(const AuthRoute());
-                  },
-                  icon: const FaIcon(FontAwesomeIcons.signOutAlt),
-                )
-              ],
-            ),
+            appBarBuilder: (_, tabsRouter) => const RaverPartnersAppBar(),
             routes: const [
               EventsRoute(),
               RewardsRoute(),
               SelectorsRoute(),
+              SettingsRoute(),
             ],
             floatingActionButton: const RaverPartnersSpeedDial(),
             bottomNavigationBuilder: (_, tabsRouter) {
@@ -95,8 +85,11 @@ class NavigatorPage extends StatelessWidget {
                     label: S().rewards(2),
                   ),
                   NavigationDestination(
-                      icon: const Icon(FontAwesomeIcons.userFriends),
+                      icon: const Icon(FontAwesomeIcons.userGroup),
                       label: S().selectors(2)),
+                  NavigationDestination(
+                      icon: const Icon(FontAwesomeIcons.gear),
+                      label: S().settings),
                 ],
               );
             },

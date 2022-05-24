@@ -8,9 +8,11 @@ import 'package:raver_translations/raver_translations.dart';
 
 class EventRevenue extends StatelessWidget {
   final TicketSales ticketSales;
+  final bool isPastEvent;
 
   const EventRevenue({
     required this.ticketSales,
+    this.isPastEvent = false,
     Key? key,
   }) : super(key: key);
 
@@ -31,7 +33,7 @@ class EventRevenue extends StatelessWidget {
           crossAxisCount: 2,
           children: [
             EventRevenueTile(
-              icon: FontAwesomeIcons.chartLine,
+              icon: FontAwesomeIcons.chartSimple,
               value:
                   '${formatDoubleToMoneyDecimal(ticketSales.clubIncome, ticketSales.currency)} '
                   '${getCurrencySymbolFromCode(ticketSales.currency)}',
@@ -39,22 +41,36 @@ class EventRevenue extends StatelessWidget {
               isFirst: true,
             ),
             EventRevenueTile(
-              icon: FontAwesomeIcons.ticketAlt,
-              value: '${ticketSales.ticketsSold}',
-              label: S().ticketsSold,
-            ),
-            EventRevenueTile(
-              icon: FontAwesomeIcons.star,
-              value: '${ticketSales.vipsSold}',
-              label: S().vipsSold,
-            ),
-            EventRevenueTile(
-              icon: Icons.payments,
+              icon: FontAwesomeIcons.moneyBills,
               value:
                   '${formatDoubleToMoneyDecimal(ticketSales.totalRevenue, ticketSales.currency)} '
                   '${getCurrencySymbolFromCode(ticketSales.currency)}',
               label: S().totalRevenue,
             ),
+            EventRevenueTile(
+              icon: FontAwesomeIcons.ticket,
+              value: '${ticketSales.ticketsSold}',
+              label: S().ticketsSold,
+            ),
+            EventRevenueTile(
+              icon: FontAwesomeIcons.crown,
+              value: '${ticketSales.vipsSold}',
+              label: S().vipsSold,
+            ),
+            if (isPastEvent)
+              // TODO - implement
+              const EventRevenueTile(
+                icon: FontAwesomeIcons.solidStar,
+                value: '4.5',
+                label: 'Średnia z opinii',
+              ),
+            if (isPastEvent)
+              // TODO - implement
+              const EventRevenueTile(
+                icon: Icons.reviews,
+                value: '15',
+                label: 'Ilość opinii',
+              ),
           ],
         ),
       ],

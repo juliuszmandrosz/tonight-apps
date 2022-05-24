@@ -49,10 +49,7 @@ class EventTicketPoolCard extends StatelessWidget {
         children: [
           IconButton(
             onPressed: () => onTicketPoolEdited(ticketPool),
-            icon: const Icon(
-              Icons.mode_edit,
-              size: 32,
-            ),
+            icon: const Icon(Icons.mode_edit),
           )
         ],
       );
@@ -64,17 +61,11 @@ class EventTicketPoolCard extends StatelessWidget {
       children: [
         IconButton(
           onPressed: () => onTicketPoolEdited(ticketPool),
-          icon: const Icon(
-            Icons.mode_edit,
-            size: 32,
-          ),
+          icon: const Icon(Icons.mode_edit),
         ),
         IconButton(
           onPressed: () => onTicketPoolDeleted(ticketPool),
-          icon: const Icon(
-            Icons.delete_rounded,
-            size: 32,
-          ),
+          icon: const Icon(Icons.delete_rounded),
         ),
       ],
     );

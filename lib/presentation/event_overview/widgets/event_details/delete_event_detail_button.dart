@@ -18,10 +18,7 @@ class DeleteEventDetailButton extends StatelessWidget {
           onDeleted();
         }
       },
-      icon: const Icon(
-        Icons.delete_rounded,
-        size: 30,
-      ),
+      icon: const Icon(Icons.delete_rounded),
     );
   }
 }
