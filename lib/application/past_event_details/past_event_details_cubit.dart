@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/application/application.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 
 part 'past_event_details_cubit.freezed.dart';
@@ -12,36 +12,45 @@ part 'past_event_details_state.dart';
 
 class PastEventDetailsCubit extends Cubit<PastEventDetailsState> {
   final PartnerEventTicketsFacade _eventTicketsFacade;
-  late StreamSubscription _eventTicketsSub;
+  final PartnerEventReviewFacade _eventReviewFacade;
 
-  PastEventDetailsCubit(this._eventTicketsFacade)
-      : super(PastEventDetailsState.initial());
+  PastEventDetailsCubit({
+    required PartnerEventTicketsFacade partnerEventTicketsFacade,
+    required PartnerEventReviewFacade partnerEventReviewFacade,
+  })  : _eventTicketsFacade = partnerEventTicketsFacade,
+        _eventReviewFacade = partnerEventReviewFacade,
+        super(PastEventDetailsState.initial());
 
-  void addEventToState(Event event) {
-    emit(state.copyWith(event: some(event)));
+  Future<void> initData(Event event) async {
+    emit(state.copyWith(status: CubitStatus.loading, event: some(event)));
+
+    await _getEventTickets(event);
+    await _getEventReview(event);
+
+    if (!state.status.isFailure()) {
+      emit(state.copyWith(status: CubitStatus.success));
+    }
   }
 
-  Future<void> getEventTickets(Event event) async {
-    emit(state.copyWith(status: CubitStatus.loading));
-    _eventTicketsSub =
-        _eventTicketsFacade.getEventTickets(event).listen((result) {
+  Future<void> _getEventTickets(Event event) async {
+    _eventTicketsFacade.getEventTickets(event).take(1).listen((result) {
       result.fold(
-        (failure) => emit(
-          state.copyWith(status: CubitStatus.failure),
-        ),
+        (failure) => emit(state.copyWith(status: CubitStatus.failure)),
         (tickets) => emit(
-          state.copyWith(
-            status: CubitStatus.success,
-            eventTickets: some(tickets),
-          ),
+          state.copyWith(eventTickets: some(tickets)),
         ),
       );
     });
   }
 
-  @override
-  Future<void> close() {
-    _eventTicketsSub.cancel();
-    return super.close();
+  Future<void> _getEventReview(Event event) async {
+    final failureOrSuccess = await _eventReviewFacade.getEventReview(event);
+
+    failureOrSuccess.fold(
+      (failure) => emit(state.copyWith(status: CubitStatus.failure)),
+      (review) => emit(
+        state.copyWith(eventReview: some(review)),
+      ),
+    );
   }
 }

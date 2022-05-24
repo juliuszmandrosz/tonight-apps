@@ -83,7 +83,7 @@ dependencies:
   raver_events:
     git:
       url: https://github.com/juliuszmandrosz/RaverEvents.git
-      ref: develop
+      ref: feature/event-reviews
 
   raver_translations:
     git:

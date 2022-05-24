@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/domain/event_tickets/entities/ticket_sales_entity.dart';
+import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/presentation/core/event_revenue_tile.dart';
 import 'package:raver_partners/presentation/core/raver_partners_headline.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class EventRevenue extends StatelessWidget {
   final TicketSales ticketSales;
-  final bool isPastEvent;
+  final EventReview? eventReview;
 
   const EventRevenue({
     required this.ticketSales,
-    this.isPastEvent = false,
+    this.eventReview,
     Key? key,
   }) : super(key: key);
 
@@ -57,18 +57,18 @@ class EventRevenue extends StatelessWidget {
               value: '${ticketSales.vipsSold}',
               label: S().vipsSold,
             ),
-            if (isPastEvent)
-              // TODO - implement
-              const EventRevenueTile(
+            if (eventReview != null)
+              // TODO - add translation
+              EventRevenueTile(
                 icon: FontAwesomeIcons.solidStar,
-                value: '4.5',
+                value: eventReview!.reviewAvg.toStringAsFixed(1),
                 label: 'Średnia z opinii',
               ),
-            if (isPastEvent)
-              // TODO - implement
-              const EventRevenueTile(
+            if (eventReview != null)
+              // TODO - add translation
+              EventRevenueTile(
                 icon: Icons.reviews,
-                value: '15',
+                value: '${eventReview!.reviewQuantity}',
                 label: 'Ilość opinii',
               ),
           ],

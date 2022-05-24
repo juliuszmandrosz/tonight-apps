@@ -20,9 +20,7 @@ class PastEventDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<PastEventDetailsCubit>()
-        ..getEventTickets(event)
-        ..addEventToState(event),
+      create: (context) => getIt<PastEventDetailsCubit>()..initData(event),
       child: Scaffold(
         appBar: RaverPartnersAppBar(title: S().eventOverview),
         body: Padding(
@@ -44,7 +42,7 @@ class PastEventDetailsPage extends StatelessWidget {
                 children: [
                   EventRevenue(
                     ticketSales: state.eventTickets.getOrCrash().ticketSales,
-                    isPastEvent: true,
+                    eventReview: state.eventReview.getOrCrash(),
                   ),
                 ],
               );

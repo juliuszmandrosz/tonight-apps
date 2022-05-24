@@ -1003,7 +1003,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "664261dbac68b47f782434d66a49aa0e8e039ac7"
+      resolved-ref: "16efae08d362382b33bc317e8c1fed0f5a1660f4"
       url: "https://github.com/juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -1011,8 +1011,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: develop
-      resolved-ref: "8eea8ac35167fc7759d6cba92c8028c258bcb0e0"
+      ref: "feature/event-reviews"
+      resolved-ref: "96771cc6ec524ce5338fbafcc460716f858d89cd"
       url: "https://github.com/juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"

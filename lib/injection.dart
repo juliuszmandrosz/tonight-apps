@@ -143,7 +143,8 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => PastEventDetailsCubit(
-      getIt(),
+      partnerEventReviewFacade: getIt(),
+      partnerEventTicketsFacade: getIt(),
     ),
   );
 
@@ -294,6 +295,13 @@ void _registerFacades() {
   getIt.registerLazySingleton<PaymentCloudFunctionsFacade>(
     () => PaymentCloudFunctionsFacadeImpl(
       getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<PartnerEventReviewFacade>(
+    () => FirebaseEventReviewFacade(
+      logger: getIt(),
+      firestore: getIt(),
     ),
   );
 }
