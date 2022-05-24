@@ -97,4 +97,6 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get selectors => collection('selectors');
 
   CollectionReference get eventCosts => collection('eventCosts');
+
+  CollectionReference get eventReview => collection('eventReview');
 }
