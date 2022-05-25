@@ -7,6 +7,7 @@ import 'package:raver_partners/application/past_event_details/past_event_details
 import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/core/event_revenue.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
+import 'package:raver_partners/presentation/past_event_details/widgets/past_event_reviews.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class PastEventDetailsPage extends StatelessWidget {
@@ -24,7 +25,7 @@ class PastEventDetailsPage extends StatelessWidget {
       child: Scaffold(
         appBar: RaverPartnersAppBar(title: S().eventOverview),
         body: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(15),
           child: BlocBuilder<PastEventDetailsCubit, PastEventDetailsState>(
             builder: (context, state) {
               if (state.status.isLoading()) {
@@ -44,6 +45,8 @@ class PastEventDetailsPage extends StatelessWidget {
                     ticketSales: state.eventTickets.getOrCrash().ticketSales,
                     eventReview: state.eventReview.getOrCrash(),
                   ),
+                  const SizedBox(height: 30),
+                  const PastEventReviews()
                 ],
               );
             },

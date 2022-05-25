@@ -7,6 +7,8 @@ class PastEventDetailsState with _$PastEventDetailsState {
     required Option<Event> event,
     required Option<EventTickets> eventTickets,
     required Option<EventReview> eventReview,
+    required List<Review> reviews,
+    required bool hasReachedMax,
   }) = _PastEventDetailsState;
 
   factory PastEventDetailsState.initial() => PastEventDetailsState(
@@ -14,5 +16,7 @@ class PastEventDetailsState with _$PastEventDetailsState {
         event: none(),
         eventTickets: none(),
         eventReview: none(),
+        reviews: [],
+        hasReachedMax: false,
       );
 }

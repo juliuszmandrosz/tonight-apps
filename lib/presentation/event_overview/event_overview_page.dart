@@ -40,7 +40,7 @@ class EventOverviewPage extends StatelessWidget {
         child: Scaffold(
           appBar: RaverPartnersAppBar(title: S().eventOverview),
           body: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(15),
             child: BlocConsumer<UpcomingLiveEventCubit, UpcomingLiveEventState>(
               buildWhen: (previous, current) =>
                   previous.initialStatus != current.initialStatus ||

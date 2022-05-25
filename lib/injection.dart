@@ -145,6 +145,7 @@ void _registerCubits() {
     () => PastEventDetailsCubit(
       partnerEventReviewFacade: getIt(),
       partnerEventTicketsFacade: getIt(),
+      partnerReviewFacade: getIt(),
     ),
   );
 
@@ -302,6 +303,14 @@ void _registerFacades() {
     () => FirebaseEventReviewFacade(
       logger: getIt(),
       firestore: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<PartnerReviewFacade>(
+    () => FirebaseReviewFacade(
+      logger: getIt(),
+      firestore: getIt(),
+      firebaseAuth: getIt(),
     ),
   );
 }

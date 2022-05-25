@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:raver_partners/firebase_options.dart';
 import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 Future<void> main() async {
   await dotenv.load();
@@ -20,5 +21,12 @@ Future<void> main() async {
 
   registerDependencies();
 
+  _configureTimeAgo();
+
   runApp(RaverPartnersApp());
+}
+
+_configureTimeAgo() {
+  timeago.setLocaleMessages('pl', timeago.PlMessages());
+  timeago.setLocaleMessages('en', timeago.EnMessages());
 }

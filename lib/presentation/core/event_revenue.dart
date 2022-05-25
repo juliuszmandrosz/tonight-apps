@@ -20,9 +20,12 @@ class EventRevenue extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Align(
+        const Align(
           alignment: Alignment.centerLeft,
-          child: RaverPartnersHeadline(text: S().eventRevenue),
+          child: RaverPartnersHeadline(
+            // TODO - add translation
+            text: 'Statystyki',
+          ),
         ),
         const SizedBox(height: 20),
         GridView.count(
