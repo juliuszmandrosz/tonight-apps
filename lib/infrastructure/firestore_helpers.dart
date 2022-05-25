@@ -30,6 +30,8 @@ extension FirestoreX on FirebaseFirestore {
   CollectionReference get selectorsAccessCodes =>
       collection('selectorsAccessCodes');
 
+  CollectionReference get reviewReports => collection('reviewReports');
+
   DocumentReference getCurrentUserDocRef(FirebaseAuth auth) {
     final firebaseUser = auth.tryGetFirebaseUser();
 
