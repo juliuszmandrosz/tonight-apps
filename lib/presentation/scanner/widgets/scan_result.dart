@@ -24,15 +24,14 @@ class ScanResult extends StatelessWidget {
         return Center(
           child: Column(
             children: [
-              Card(
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                color: color,
-                elevation: 3,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(70),
+              Container(
+                height: 120,
+                width: 120,
+                decoration: BoxDecoration(
+                  color: color,
+                  shape: BoxShape.circle,
                 ),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.all(30),
+                child: Center(
                   child: FaIcon(
                     icon,
                     size: 60,

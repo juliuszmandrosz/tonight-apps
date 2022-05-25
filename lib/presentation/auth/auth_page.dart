@@ -12,58 +12,59 @@ class AuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LoaderOverlay(
+      overlayColor: context.shadowColor,
       child: Scaffold(
         body: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 25,
-                vertical: 20,
-              ),
-              child: DefaultTabController(
-                length: 2,
-                initialIndex: 0,
-                child: Column(
-                  children: [
-                    const Flexible(
-                      flex: 1,
-                      child: ScannerLogo(),
-                    ),
-                    PreferredSize(
-                      preferredSize: const Size(350, 350),
-                      child: SizedBox(
-                        width: 350,
-                        child: TabBar(
-                          labelStyle: context.subtitle1,
-                          tabs: [
-                            SizedBox(
-                              width: 350,
-                              child: Tab(text: S().signIn),
-                            ),
-                            SizedBox(
-                              width: 350,
-                              child: Tab(text: S().signUp),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const Flexible(
-                      flex: 3,
-                      child: Padding(
-                        padding: EdgeInsets.only(top: 20),
-                        child: TabBarView(
-                          physics: NeverScrollableScrollPhysics(),
-                          children: [
-                            SignInTab(),
-                            SignUpTab(),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
+          padding: const EdgeInsets.symmetric(
+            horizontal: 25,
+            vertical: 20,
+          ),
+          child: DefaultTabController(
+            length: 2,
+            initialIndex: 0,
+            child: Column(
+              children: [
+                const Flexible(
+                  flex: 1,
+                  child: ScannerLogo(),
                 ),
-              ),
-            )),
+                PreferredSize(
+                  preferredSize: const Size(350, 350),
+                  child: SizedBox(
+                    width: 350,
+                    child: TabBar(
+                      labelStyle: context.subtitle1,
+                      tabs: [
+                        SizedBox(
+                          width: 350,
+                          child: Tab(text: S().signIn),
+                        ),
+                        SizedBox(
+                          width: 350,
+                          child: Tab(text: S().signUp),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const Flexible(
+                  flex: 3,
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 20),
+                    child: TabBarView(
+                      physics: NeverScrollableScrollPhysics(),
+                      children: [
+                        SignInTab(),
+                        SignUpTab(),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        )),
       ),
     );
   }

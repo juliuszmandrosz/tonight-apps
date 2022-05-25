@@ -22,11 +22,14 @@ class UserRewards extends StatelessWidget {
           child: RaverScannerHeadline(text: S().rewards(2)),
         ),
         const SizedBox(height: 20),
-        ListView.builder(
+        ListView.separated(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: userRewards.length,
-          itemBuilder: (ctx, i) => RewardListTile(reward: userRewards[i]),
+          separatorBuilder: (context, i) => const Divider(),
+          itemCount: userRewards.length + 1,
+          itemBuilder: (ctx, i) => i >= userRewards.length
+              ? const SizedBox()
+              : RewardListTile(reward: userRewards[i]),
         ),
       ],
     );

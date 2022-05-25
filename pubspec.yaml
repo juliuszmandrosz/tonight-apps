@@ -83,7 +83,7 @@ dependencies:
   raver_tickets:
     git:
       url: https://github.com/juliuszmandrosz/RaverTickets.git
-      ref: feature/update-attendance-on-scan-ticket
+      ref: develop
 
   raver_clubs:
     git:

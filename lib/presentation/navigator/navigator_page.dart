@@ -25,7 +25,7 @@ class NavigatorPage extends StatelessWidget {
                 AutoRouter.of(context).replace(const NavigatorRoute()),
             unauthenticated: (_) {
               context.read<WelcomeLoaderCubit>().resetState();
-              AutoRouter.of(context).push(const AuthRoute());
+              AutoRouter.of(context).replace(const AuthRoute());
             },
           ),
         ),
@@ -33,7 +33,7 @@ class NavigatorPage extends StatelessWidget {
           bloc: context.read<NetworkCheckCubit>(),
           listener: (context, state) {
             if (!state.isConnected) {
-              AutoRouter.of(context).replace(const NetworkLostRoute());
+              AutoRouter.of(context).push(const NetworkLostRoute());
             }
           },
         ),
@@ -47,7 +47,8 @@ class NavigatorPage extends StatelessWidget {
         builder: (context, state) {
           final welcomeLoaderCubit = context.read<WelcomeLoaderCubit>();
 
-          if (welcomeLoaderCubit.isStatusInitial) {
+          if (welcomeLoaderCubit.isStatusInitial ||
+              state.remoteConfigStatus.isFailure()) {
             return const SizedBox();
           }
 

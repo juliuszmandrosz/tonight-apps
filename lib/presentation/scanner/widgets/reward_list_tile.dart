@@ -13,13 +13,13 @@ class RewardListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        title: AutoSizeText(
-          reward.description,
-          maxLines: 2,
-          style: context.subtitle1,
-        ),
+    return ListTile(
+      dense: true,
+      contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
+      title: AutoSizeText(
+        reward.description,
+        maxLines: 4,
+        style: context.subtitle1,
       ),
     );
   }

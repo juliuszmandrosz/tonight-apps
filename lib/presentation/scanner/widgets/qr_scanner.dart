@@ -29,6 +29,7 @@ class _QrScannerState extends State<QrScanner> {
     var scanArea = (size.width < 400 || size.height < 400) ? 250.0 : 300.0;
     return QRView(
       key: qrKey,
+      formatsAllowed: const [BarcodeFormat.qrcode],
       onQRViewCreated: _onQRViewCreated,
       overlay: QrScannerOverlayShape(
         borderColor: context.onSurfaceColor,

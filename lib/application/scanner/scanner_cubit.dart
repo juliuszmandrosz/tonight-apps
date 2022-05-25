@@ -29,6 +29,8 @@ class ScannerCubit extends Cubit<ScannerState> {
         super(ScannerState.initial());
 
   Future<void> scanTicket(String? ticketQrCode) async {
+    if (state.status.isLoading()) return;
+
     if (ticketQrCode == null) {
       _emitInvalidTicketFailure();
       return;

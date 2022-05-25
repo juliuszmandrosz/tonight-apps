@@ -31,8 +31,7 @@ class WelcomeLoaderCubit extends Cubit<WelcomeLoaderState> {
   bool get isStatusLoading =>
       state.remoteConfigStatus.isLoading() || state.cubitStatuses.isLoading();
 
-  bool get isStatusFailure =>
-      state.remoteConfigStatus.isFailure() || state.cubitStatuses.isFailure();
+  bool get isStatusFailure => state.cubitStatuses.isFailure();
 
   Future<void> loadData() async {
     await _setRemoteConfigSettings();

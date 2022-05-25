@@ -18,14 +18,16 @@ class ScannerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: RaverScannerAppBar(title: S().scanTicket),
-      body: BlocProvider(
-        create: (context) => getIt<ScannerCubit>(
-          param1: context.read<CurrentEventCubit>(),
-          param2: context.read<SelectorClubCubit>(),
-        ),
-        child: BlocBuilder<ScannerCubit, ScannerState>(
+    return BlocProvider(
+      create: (context) => getIt<ScannerCubit>(
+        param1: context.read<CurrentEventCubit>(),
+        param2: context.read<SelectorClubCubit>(),
+      ),
+      child: Scaffold(
+        floatingActionButton: const ScanAnotherTicketButton(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        appBar: RaverScannerAppBar(title: S().scanTicket),
+        body: BlocBuilder<ScannerCubit, ScannerState>(
           builder: (context, state) {
             switch (state.status) {
               case CubitStatus.initial:
@@ -39,16 +41,10 @@ class ScannerPage extends StatelessWidget {
               case CubitStatus.failure:
                 return Padding(
                   padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      ScanResult(
-                        color: Colors.red.lighten(),
-                        icon: Icons.remove,
-                        message: state.errorMessage.getOrCrash(),
-                      ),
-                      const Spacer(),
-                      const ScanAnotherTicketButton(),
-                    ],
+                  child: ScanResult(
+                    color: Colors.red.lighten(),
+                    icon: Icons.remove,
+                    message: state.errorMessage.getOrCrash(),
                   ),
                 );
 
@@ -66,7 +62,7 @@ class ScannerPage extends StatelessWidget {
                                   ? Colors.blue.lighten()
                                   : Colors.green.lighten(),
                               icon: ticket.isVip
-                                  ? FontAwesomeIcons.star
+                                  ? FontAwesomeIcons.crown
                                   : FontAwesomeIcons.check,
                               message: ticket.isVip
                                   ? S().vipValidTicket
@@ -79,8 +75,7 @@ class ScannerPage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 20),
-                      const ScanAnotherTicketButton(),
+                      const SizedBox(height: 60),
                     ],
                   ),
                 );

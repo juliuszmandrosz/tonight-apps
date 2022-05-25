@@ -996,8 +996,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/update-attendance-on-scan-ticket"
-      resolved-ref: "111fd5535f1b54994208f2fbabeb9c1ad2a3b2eb"
+      ref: develop
+      resolved-ref: d942f413c44485ca45715f73996dfacdf45b244c
       url: "https://github.com/juliuszmandrosz/RaverTickets.git"
     source: git
     version: "0.0.1"
@@ -1006,7 +1006,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "52541a25d9cc8dc06740738f256b3585e6fb28df"
+      resolved-ref: "3207daca68ed16c266b97eb88d278c8caf12666f"
       url: "https://github.com/juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"
