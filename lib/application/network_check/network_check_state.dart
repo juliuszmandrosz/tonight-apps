@@ -9,6 +9,6 @@ class NetworkCheckState with _$NetworkCheckState {
   }) = _NetworkCheckState;
 
   factory NetworkCheckState.initial() => NetworkCheckState(
-        isConnected: true,
+        isConnected: false,
       );
 }
