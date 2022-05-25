@@ -18,7 +18,7 @@ class NetworkLostPage extends StatelessWidget {
       listener: (context, state) {
         if (state.isConnected) {
           context.read<WelcomeLoaderCubit>().loadData();
-          AutoRouter.of(context).replace(const NavigatorRoute());
+          AutoRouter.of(context).pop(const NavigatorRoute());
         }
       },
       child: Scaffold(
