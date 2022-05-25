@@ -126,6 +126,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Potwierdź hasło"),
         "confirmSelectorDeletion": MessageLookupByLibrary.simpleMessage(
             "Czy na pewno chcesz usunąć tego selekcjonera?"),
+        "confirmSignOut": MessageLookupByLibrary.simpleMessage(
+            "Czy na pewno chcesz się wylogować?"),
         "confirmTicketReturn": MessageLookupByLibrary.simpleMessage(
             "Czy na pewno chcesz zwrócić bilet?"),
         "contact": MessageLookupByLibrary.simpleMessage("Kontakt"),
@@ -447,6 +449,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "returnTimeIsOver":
             MessageLookupByLibrary.simpleMessage("Czas na zwrot minął"),
         "reviewAdded": MessageLookupByLibrary.simpleMessage("Opinia dodana"),
+        "reviewAvg": MessageLookupByLibrary.simpleMessage("Średnia opinii"),
         "reviewContent": MessageLookupByLibrary.simpleMessage("Twoja opinia"),
         "reviewContentTooLong": MessageLookupByLibrary.simpleMessage(
             "Opinia może zawierać maksymalnie 1000 znaków"),
@@ -454,6 +457,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wystąpił błąd podczas ładowania opinii"),
         "reviewLoadingFormFailure": MessageLookupByLibrary.simpleMessage(
             "Wystąpił błąd podczas wczytywania formularza opinii"),
+        "reviewsQuantity": MessageLookupByLibrary.simpleMessage("Ilość opinii"),
         "rewardAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Nagroda została dodana pomyślnie"),
         "rewardUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
@@ -482,6 +486,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "signIn": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "signInWithGoogle": MessageLookupByLibrary.simpleMessage(
             "Zaloguj się za pomocą Google"),
+        "signOut": MessageLookupByLibrary.simpleMessage("Wyloguj się"),
         "signUp": MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "socialMedia":
             MessageLookupByLibrary.simpleMessage("Media społecznościowe"),
@@ -494,6 +499,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Maksymalny czas daty rozpoczęcia wynosi 150 dni od dzisiaj"),
         "startScanning":
             MessageLookupByLibrary.simpleMessage("Rozpocznij skanowanie"),
+        "statistics": MessageLookupByLibrary.simpleMessage("Statystyki"),
         "submit": MessageLookupByLibrary.simpleMessage("Zatwierdź"),
         "summary": MessageLookupByLibrary.simpleMessage("Podsumowanie"),
         "termsOfService": MessageLookupByLibrary.simpleMessage("Warunki usług"),

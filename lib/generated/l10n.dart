@@ -536,6 +536,16 @@ class S {
     );
   }
 
+  /// `Are you sure you want to log out?`
+  String get confirmSignOut {
+    return Intl.message(
+      'Are you sure you want to log out?',
+      name: 'confirmSignOut',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure you want to return the ticket?`
   String get confirmTicketReturn {
     return Intl.message(
@@ -2448,6 +2458,16 @@ class S {
     );
   }
 
+  /// `Opinions average`
+  String get reviewAvg {
+    return Intl.message(
+      'Opinions average',
+      name: 'reviewAvg',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Your review`
   String get reviewContent {
     return Intl.message(
@@ -2483,6 +2503,16 @@ class S {
     return Intl.message(
       'Error loading review form',
       name: 'reviewLoadingFormFailure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Opinions quantity`
+  String get reviewsQuantity {
+    return Intl.message(
+      'Opinions quantity',
+      name: 'reviewsQuantity',
       desc: '',
       args: [],
     );
@@ -2674,6 +2704,16 @@ class S {
     );
   }
 
+  /// `Sign out`
+  String get signOut {
+    return Intl.message(
+      'Sign out',
+      name: 'signOut',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sign up`
   String get signUp {
     return Intl.message(
@@ -2749,6 +2789,16 @@ class S {
     return Intl.message(
       'Start scanning',
       name: 'startScanning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Statistics`
+  String get statistics {
+    return Intl.message(
+      'Statistics',
+      name: 'statistics',
       desc: '',
       args: [],
     );

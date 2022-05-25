@@ -125,6 +125,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "confirmSelectorDeletion": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this selector?"),
+        "confirmSignOut": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to log out?"),
         "confirmTicketReturn": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to return the ticket?"),
         "contact": MessageLookupByLibrary.simpleMessage("Contact"),
@@ -439,6 +441,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "returnTimeIsOver":
             MessageLookupByLibrary.simpleMessage("Time for a return is over"),
         "reviewAdded": MessageLookupByLibrary.simpleMessage("Review added"),
+        "reviewAvg": MessageLookupByLibrary.simpleMessage("Opinions average"),
         "reviewContent": MessageLookupByLibrary.simpleMessage("Your review"),
         "reviewContentTooLong": MessageLookupByLibrary.simpleMessage(
             "Review content may contain up to 1000 characters"),
@@ -446,6 +449,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error while loading review"),
         "reviewLoadingFormFailure":
             MessageLookupByLibrary.simpleMessage("Error loading review form"),
+        "reviewsQuantity":
+            MessageLookupByLibrary.simpleMessage("Opinions quantity"),
         "rewardAddedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Reward added successfully"),
         "rewardUpdatedSuccessfully":
@@ -474,6 +479,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
         "signInWithGoogle":
             MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+        "signOut": MessageLookupByLibrary.simpleMessage("Sign out"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
         "socialMedia": MessageLookupByLibrary.simpleMessage("Social media"),
         "soldOut": MessageLookupByLibrary.simpleMessage("Sold out"),
@@ -484,6 +490,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "startDateTooLate": MessageLookupByLibrary.simpleMessage(
             "The maximum start date time is 150 days from today"),
         "startScanning": MessageLookupByLibrary.simpleMessage("Start scanning"),
+        "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "summary": MessageLookupByLibrary.simpleMessage("Summary"),
         "termsOfService":
