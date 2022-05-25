@@ -20,12 +20,9 @@ class EventRevenue extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Align(
+        Align(
           alignment: Alignment.centerLeft,
-          child: RaverPartnersHeadline(
-            // TODO - add translation
-            text: 'Statystyki',
-          ),
+          child: RaverPartnersHeadline(text: S().statistics),
         ),
         const SizedBox(height: 20),
         GridView.count(
@@ -61,18 +58,16 @@ class EventRevenue extends StatelessWidget {
               label: S().vipsSold,
             ),
             if (eventReview != null)
-              // TODO - add translation
               EventRevenueTile(
                 icon: FontAwesomeIcons.solidStar,
                 value: eventReview!.reviewAvg.toStringAsFixed(1),
-                label: 'Średnia z opinii',
+                label: S().reviewAvg,
               ),
             if (eventReview != null)
-              // TODO - add translation
               EventRevenueTile(
                 icon: Icons.reviews,
                 value: '${eventReview!.reviewQuantity}',
-                label: 'Ilość opinii',
+                label: S().reviewsQuantity,
               ),
           ],
         ),

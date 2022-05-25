@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/welcome_loader/welcome_loader_cubit.dart';
-import 'package:raver_partners/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class NetworkLostPage extends StatelessWidget {
@@ -18,7 +17,7 @@ class NetworkLostPage extends StatelessWidget {
       listener: (context, state) {
         if (state.isConnected) {
           context.read<WelcomeLoaderCubit>().loadData();
-          AutoRouter.of(context).replace(const NavigatorRoute());
+          AutoRouter.of(context).pop();
         }
       },
       child: Scaffold(

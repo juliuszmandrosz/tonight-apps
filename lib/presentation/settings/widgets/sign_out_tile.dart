@@ -5,6 +5,8 @@ import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_partners/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
 import 'package:raver_partners/presentation/settings/widgets/settings_tile.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class SignOutTile extends StatelessWidget {
   const SignOutTile({Key? key}) : super(key: key);
@@ -12,12 +14,17 @@ class SignOutTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SettingsTile(
-      // TODO - add translation
-      title: 'Wyloguj się',
-      onTap: () {
-        context.read<WelcomeLoaderCubit>().resetState();
-        context.read<AuthCubit>().signOut();
-        AutoRouter.of(context).replace(const AuthRoute());
+      title: S().signOut,
+      onTap: () async {
+        final result = await context.showConfirmationDialogWithCustomMessage(
+          S().confirmSignOut,
+        );
+
+        if (result ?? false) {
+          context.read<WelcomeLoaderCubit>().resetState();
+          context.read<AuthCubit>().signOut();
+          AutoRouter.of(context).replace(const AuthRoute());
+        }
       },
     );
   }

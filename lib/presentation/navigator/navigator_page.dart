@@ -35,7 +35,7 @@ class NavigatorPage extends StatelessWidget {
           bloc: context.read<NetworkCheckCubit>(),
           listener: (context, state) {
             if (!state.isConnected) {
-              AutoRouter.of(context).replace(const NetworkLostRoute());
+              AutoRouter.of(context).push(const NetworkLostRoute());
             }
           },
         ),
