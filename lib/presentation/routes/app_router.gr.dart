@@ -40,6 +40,10 @@ class _$AppRouter extends RootStackRouter {
     EventRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const EventPage());
+    },
+    SettingsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const SettingsPage());
     }
   };
 
@@ -49,7 +53,9 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(AuthRoute.name, path: '/auth-page'),
         RouteConfig(NavigatorRoute.name, path: '/navigator-page', children: [
           RouteConfig(EventRoute.name,
-              path: 'event-page', parent: NavigatorRoute.name)
+              path: 'event-page', parent: NavigatorRoute.name),
+          RouteConfig(SettingsRoute.name,
+              path: 'settings-page', parent: NavigatorRoute.name)
         ]),
         RouteConfig(ScannerRoute.name, path: '/scanner-page'),
         RouteConfig(NetworkLostRoute.name, path: '/network-lost-page')
@@ -105,4 +111,12 @@ class EventRoute extends PageRouteInfo<void> {
   const EventRoute() : super(EventRoute.name, path: 'event-page');
 
   static const String name = 'EventRoute';
+}
+
+/// generated route for
+/// [SettingsPage]
+class SettingsRoute extends PageRouteInfo<void> {
+  const SettingsRoute() : super(SettingsRoute.name, path: 'settings-page');
+
+  static const String name = 'SettingsRoute';
 }
