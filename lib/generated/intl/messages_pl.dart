@@ -537,7 +537,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Całkowity przychód"),
         "unexpectedError":
             MessageLookupByLibrary.simpleMessage("Nieoczekiwany błąd"),
-        "upcoming": MessageLookupByLibrary.simpleMessage("Przyszłe"),
+        "upcoming": MessageLookupByLibrary.simpleMessage("Nadchodzące"),
         "upcomingEvents":
             MessageLookupByLibrary.simpleMessage("Nadchodzące wydarzenia"),
         "updateUsernameTitle": MessageLookupByLibrary.simpleMessage(
