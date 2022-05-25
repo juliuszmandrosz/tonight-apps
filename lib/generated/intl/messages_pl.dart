@@ -331,7 +331,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "lostNetworkConnectionDescription":
             MessageLookupByLibrary.simpleMessage(
-                "Utraciłeś połączenie z internetem"),
+                "Utracono połączenie z internetem"),
         "map": MessageLookupByLibrary.simpleMessage("Mapa"),
         "maxDistance":
             MessageLookupByLibrary.simpleMessage("Maksymalna odległość"),
@@ -461,6 +461,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "reviewsQuantity": MessageLookupByLibrary.simpleMessage("Ilość opinii"),
         "rewardAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Nagroda została dodana pomyślnie"),
+        "rewardDescTooLong": MessageLookupByLibrary.simpleMessage(
+            "Opis może zawierać maksymalnie 100 znaków"),
         "rewardUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Nagroda została zaaktualizowana pomyślnie"),
         "rewards": m6,
@@ -535,7 +537,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Całkowity przychód"),
         "unexpectedError":
             MessageLookupByLibrary.simpleMessage("Nieoczekiwany błąd"),
-        "upcoming": MessageLookupByLibrary.simpleMessage("Nadchodzące"),
+        "upcoming": MessageLookupByLibrary.simpleMessage("Przyszłe"),
         "upcomingEvents":
             MessageLookupByLibrary.simpleMessage("Nadchodzące wydarzenia"),
         "updateUsernameTitle": MessageLookupByLibrary.simpleMessage(

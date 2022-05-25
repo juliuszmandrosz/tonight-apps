@@ -494,6 +494,8 @@
   "@reviewsQuantity": {},
   "rewardAddedSuccessfully": "Reward added successfully",
   "@rewardAddedSuccessfully": {},
+  "rewardDescTooLong": "Description may contain up to 100 characters",
+  "@rewardDescTooLong": {},
   "rewards": "{count, plural, zero{No rewards} one{Reward} other{Rewards}}",
   "@rewards": {},
   "rewardUpdatedSuccessfully": "Reward updated successfully",

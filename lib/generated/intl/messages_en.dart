@@ -454,6 +454,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Opinions quantity"),
         "rewardAddedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Reward added successfully"),
+        "rewardDescTooLong": MessageLookupByLibrary.simpleMessage(
+            "Description may contain up to 100 characters"),
         "rewardUpdatedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Reward updated successfully"),
         "rewards": m6,

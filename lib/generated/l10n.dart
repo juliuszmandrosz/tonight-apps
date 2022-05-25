@@ -2538,6 +2538,16 @@ class S {
     );
   }
 
+  /// `Description may contain up to 100 characters`
+  String get rewardDescTooLong {
+    return Intl.message(
+      'Description may contain up to 100 characters',
+      name: 'rewardDescTooLong',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{count, plural, zero{No rewards} one{Reward} other{Rewards}}`
   String rewards(num count) {
     return Intl.plural(
