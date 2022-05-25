@@ -436,6 +436,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "rateEvent": MessageLookupByLibrary.simpleMessage("Oceń wydarzenie"),
         "rateUs": MessageLookupByLibrary.simpleMessage("Oceń nas"),
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
+        "refresh": MessageLookupByLibrary.simpleMessage("Odśwież"),
         "register": MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "requiredNumberOfEntries":
             MessageLookupByLibrary.simpleMessage("Wymagana liczba wejść"),

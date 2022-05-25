@@ -460,6 +460,8 @@
   "@rateUs": {},
   "raver": "Raver",
   "@raver": {},
+  "refresh": "Refresh",
+  "@refresh": {},
   "register": "Register",
   "@register": {},
   "requiredNumberOfEntries": "Required number of entries",
