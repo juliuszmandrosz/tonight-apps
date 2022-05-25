@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/welcome_loader/welcome_loader_cubit.dart';
+import 'package:raver_partners/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class NetworkLostPage extends StatelessWidget {
@@ -16,26 +17,34 @@ class NetworkLostPage extends StatelessWidget {
       bloc: context.read<NetworkCheckCubit>(),
       listener: (context, state) {
         if (state.isConnected) {
+          final autoRouter = AutoRouter.of(context);
           context.read<WelcomeLoaderCubit>().loadData();
-          AutoRouter.of(context).pop();
+          autoRouter.canNavigateBack
+              ? autoRouter.pop()
+              : autoRouter.replace(const NavigatorRoute());
         }
       },
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Spacer(),
-              AutoSizeText(
-                S().lostNetworkConnectionDescription,
-                style: context.headline5,
-                textAlign: TextAlign.center,
-                maxLines: 2,
-              ),
-              const Spacer(),
-              Lottie.asset('assets/animations/no_connection.json'),
-            ],
+      child: WillPopScope(
+        onWillPop: () async {
+          return context.read<NetworkCheckCubit>().state.isConnected;
+        },
+        child: Scaffold(
+          body: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Spacer(),
+                AutoSizeText(
+                  S().lostNetworkConnectionDescription,
+                  style: context.headline5,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                ),
+                const Spacer(),
+                Lottie.asset('assets/animations/no_connection.json'),
+              ],
+            ),
           ),
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -27,18 +28,31 @@ class EventsPage extends StatelessWidget {
           children: [
             TabBar(
               isScrollable: false,
+              labelPadding: const EdgeInsets.symmetric(horizontal: 10.0),
               tabs: [
                 Tab(
                   icon: const Icon(FontAwesomeIcons.fire),
-                  text: S().live,
+                  child: AutoSizeText(
+                    S().live,
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                  ),
                 ),
                 Tab(
                   icon: const Icon(FontAwesomeIcons.calendarPlus),
-                  text: S().upcoming,
+                  child: AutoSizeText(
+                    S().upcoming,
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                  ),
                 ),
                 Tab(
                   icon: const Icon(FontAwesomeIcons.calendarMinus),
-                  text: S().past,
+                  child: AutoSizeText(
+                    S().past,
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                  ),
                 ),
               ],
             ),

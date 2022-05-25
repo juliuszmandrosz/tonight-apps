@@ -49,7 +49,8 @@ class NavigatorPage extends StatelessWidget {
         builder: (context, state) {
           final welcomeLoaderCubit = context.read<WelcomeLoaderCubit>();
 
-          if (welcomeLoaderCubit.isStatusInitial) {
+          if (welcomeLoaderCubit.isStatusInitial ||
+              state.remoteConfigStatus.isFailure()) {
             return const SizedBox();
           }
 
@@ -85,11 +86,13 @@ class NavigatorPage extends StatelessWidget {
                     label: S().rewards(2),
                   ),
                   NavigationDestination(
-                      icon: const Icon(FontAwesomeIcons.userGroup),
-                      label: S().selectors(2)),
+                    icon: const Icon(FontAwesomeIcons.userGroup),
+                    label: S().selectors(2),
+                  ),
                   NavigationDestination(
-                      icon: const Icon(FontAwesomeIcons.gear),
-                      label: S().settings),
+                    icon: const Icon(FontAwesomeIcons.gear),
+                    label: S().settings,
+                  ),
                 ],
               );
             },

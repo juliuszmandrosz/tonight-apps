@@ -6,7 +6,7 @@ enum RewardDescriptionError { empty, tooLong }
 
 final rewardDescriptionErrorMessages = {
   RewardDescriptionError.empty: S().description,
-  RewardDescriptionError.tooLong: S().descTooLong,
+  RewardDescriptionError.tooLong: S().rewardDescTooLong,
 };
 
 String? getRewardDescriptionErrorMessage(AddRewardState state) {

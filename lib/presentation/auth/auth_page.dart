@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:raver_common/raver_common.dart';
@@ -34,15 +35,30 @@ class AuthPage extends StatelessWidget {
                   child: SizedBox(
                     width: 350,
                     child: TabBar(
+                      isScrollable: false,
+                      labelPadding:
+                          const EdgeInsets.symmetric(horizontal: 10.0),
                       labelStyle: context.subtitle1,
                       tabs: [
                         SizedBox(
                           width: 350,
-                          child: Tab(text: S().signIn),
+                          child: Tab(
+                            child: AutoSizeText(
+                              S().signIn,
+                              textAlign: TextAlign.center,
+                              maxLines: 1,
+                            ),
+                          ),
                         ),
                         SizedBox(
                           width: 350,
-                          child: Tab(text: S().signUp),
+                          child: Tab(
+                            child: AutoSizeText(
+                              S().signUp,
+                              textAlign: TextAlign.center,
+                              maxLines: 1,
+                            ),
+                          ),
                         ),
                       ],
                     ),
