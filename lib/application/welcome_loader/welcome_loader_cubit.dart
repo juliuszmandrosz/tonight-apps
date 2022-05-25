@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/domain/domain.dart';
 import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
 import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
 
@@ -71,7 +73,8 @@ class WelcomeLoaderCubit extends Cubit<WelcomeLoaderState> {
 
   _checkIfCubitsHasFailures() {
     return _selectorClubCubit.state.status.isFailure() ||
-        _currentEventCubit.state.status.isFailure();
+        _currentEventCubit.state.failure ==
+            some(const SelectorEventFailure.unexpected());
   }
 
   Future<void> _setRemoteConfigSettings() async {

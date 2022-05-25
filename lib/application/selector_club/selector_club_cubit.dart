@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_clubs/domain/selector_club_facade.dart';
+import 'package:raver_clubs/domain/club/selector_club_facade.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/application/application.dart';
 import 'package:raver_rewards/domain/domain.dart';

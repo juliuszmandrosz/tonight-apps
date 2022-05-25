@@ -5,13 +5,13 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
-import 'package:raver_clubs/domain/selector_club_facade.dart';
-import 'package:raver_clubs/infrastructure/cloud_functions/club_cloud_functions_facade.dart';
-import 'package:raver_clubs/infrastructure/firebase_club_facade.dart';
+import 'package:raver_clubs/domain/club/selector_club_facade.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_rewards/domain/domain.dart';
@@ -155,6 +155,8 @@ void _registerFacades() {
       firebaseAuth: getIt(),
       logger: getIt(),
       cloudFunctionsFacade: getIt(),
+      algoliaClubsApi: getIt(),
+      firebaseStorage: getIt(),
     ),
   );
 
@@ -186,6 +188,8 @@ void _registerModules() {
 
   getIt.registerLazySingleton(() => FirebaseDynamicLinks.instance);
 
+  getIt.registerLazySingleton(() => FirebaseStorage.instance);
+
   getIt.registerLazySingleton(() => Logger());
 
   getIt.registerLazySingleton(
@@ -197,6 +201,12 @@ void _registerModules() {
 
   getIt.registerLazySingleton<AlgoliaEventsApi>(
     () => AlgoliaEventsApiImpl(
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<AlgoliaClubsApi>(
+    () => AlgoliaClubsApiImpl(
       getIt(),
     ),
   );
