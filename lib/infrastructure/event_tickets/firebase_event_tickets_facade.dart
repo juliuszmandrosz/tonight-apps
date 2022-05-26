@@ -20,10 +20,11 @@ class FirebaseEventTicketsFacade
         _logger = logger;
 
   @override
-  Stream<Either<EventTicketsFailure, EventTickets>> getEventTickets(
-    Event event,
-  ) async* {
-    final eventTicketDocRef = _getEventTicketDocRef(event.clubId, event.id);
+  Stream<Either<EventTicketsFailure, EventTickets>> getEventTickets({
+    required String clubId,
+    required String eventId,
+  }) async* {
+    final eventTicketDocRef = _getEventTicketDocRef(clubId, eventId);
 
     yield* eventTicketDocRef
         .snapshots()

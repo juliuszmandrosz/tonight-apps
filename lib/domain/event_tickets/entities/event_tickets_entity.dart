@@ -9,13 +9,15 @@ class EventTickets extends Equatable {
   final int ticketQuantity;
   final bool isSoldOut;
 
-  const EventTickets({
+  EventTickets({
     required this.eventId,
     required this.ticketPools,
     required this.ticketSales,
     required this.ticketQuantity,
     this.isSoldOut = false,
-  });
+  }) {
+    ticketPools.sort((a, b) => a.poolNumber.compareTo(b.poolNumber));
+  }
 
   @override
   List<Object?> get props => [
@@ -41,5 +43,15 @@ class EventTickets extends Equatable {
       ticketQuantity: ticketQuantity ?? this.ticketQuantity,
       isSoldOut: isSoldOut ?? this.isSoldOut,
     );
+  }
+
+  int getCurrentTicketPrice() {
+    final currentPool = getCurrentPool();
+    return currentPool.ticketPrice;
+  }
+
+  TicketPool getCurrentPool() {
+    if (isSoldOut) return ticketPools.last;
+    return ticketPools.firstWhere((pool) => pool.isCurrent);
   }
 }
