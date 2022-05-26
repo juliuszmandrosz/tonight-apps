@@ -4,7 +4,7 @@ import 'package:raver_translations/raver_translations.dart';
 
 class RaverIconLink extends StatelessWidget {
   final String url;
-  final Icon icon;
+  final Widget icon;
 
   const RaverIconLink({
     required this.url,
