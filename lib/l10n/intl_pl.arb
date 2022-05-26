@@ -380,6 +380,8 @@
   "@noEventsNearYou": {},
   "noLiveEvent": "Brak wydarzenia na żywo w twoim klubie",
   "@noLiveEvent": {},
+  "noOpinions": "Brak opinii",
+  "@noOpinions": {},
   "notifications": "Powiadomienia",
   "@notifications": {},
   "numberOfTickets": "Liczba biletów",

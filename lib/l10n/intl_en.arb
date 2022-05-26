@@ -380,6 +380,8 @@
   "@noEventsNearYou": {},
   "noLiveEvent": "No live event in your club",
   "@noLiveEvent": {},
+  "noOpinions": "No opinions",
+  "@noOpinions": {},
   "notifications": "Notifications",
   "@notifications": {},
   "numberOfTickets": "Number of tickets",

@@ -369,6 +369,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Brak wydarzeń w pobliżu"),
         "noLiveEvent": MessageLookupByLibrary.simpleMessage(
             "Brak wydarzenia na żywo w twoim klubie"),
+        "noOpinions": MessageLookupByLibrary.simpleMessage("Brak opinii"),
         "notifications": MessageLookupByLibrary.simpleMessage("Powiadomienia"),
         "numberOfTickets":
             MessageLookupByLibrary.simpleMessage("Liczba biletów"),

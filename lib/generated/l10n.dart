@@ -1962,6 +1962,16 @@ class S {
     );
   }
 
+  /// `No opinions`
+  String get noOpinions {
+    return Intl.message(
+      'No opinions',
+      name: 'noOpinions',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Notifications`
   String get notifications {
     return Intl.message(
