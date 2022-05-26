@@ -82,7 +82,7 @@ class EventOverviewTicketPools extends StatelessWidget {
                       )
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   for (var pool in ticketPools)
                     EventTicketPoolCard(
                       ticketPool: pool,

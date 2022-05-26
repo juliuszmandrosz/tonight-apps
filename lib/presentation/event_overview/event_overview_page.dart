@@ -95,9 +95,9 @@ class EventOverviewPage extends StatelessWidget {
                           );
                         },
                       ),
-                      const SizedBox(height: 30),
+                      const SizedBox(height: 20),
                       const EventOverviewTicketPools(),
-                      const SizedBox(height: 30),
+                      const SizedBox(height: 10),
                       const EventOverviewDetails(),
                       if (isMoreThanDayLeftToEvent) const PostponeEventButton(),
                       if (isMoreThanDayLeftToEvent) const CancelEventButton(),
