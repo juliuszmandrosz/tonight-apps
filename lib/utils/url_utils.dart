@@ -8,7 +8,6 @@ import 'package:url_launcher/url_launcher.dart' as launcher;
 
 Future<Option<UrlLaunchFailure>> launchURL(Uri uri) async {
   final logger = Logger();
-  // final uri = buildUri(rawUrl);
   try {
     final result = await launcher.launchUrl(
       uri,
@@ -48,16 +47,4 @@ Future<Option> launchGoogleMaps(double lat, double lng) {
       ? 'https://maps.apple.com/?q=$lat,$lng'
       : 'https://www.google.com/maps/search/?api=1&query=$lat,$lng';
   return launchURL(Uri.parse(url));
-}
-
-Uri buildUri(String url) {
-  var result = Uri.parse(url);
-  const httpsPhrase = 'https://';
-  if (url.substring(0, 8) != httpsPhrase) {
-    if (url.substring(0, 7) == 'http://') {
-      return Uri.parse('$httpsPhrase${url.substring(7)}');
-    }
-    return Uri.parse('$httpsPhrase$url');
-  }
-  return result;
 }
