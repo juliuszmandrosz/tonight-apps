@@ -20,6 +20,7 @@ class EventSummaryArtistName extends StatelessWidget {
         return state.isConcert
             ? Column(
                 children: [
+                  const SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -40,7 +41,6 @@ class EventSummaryArtistName extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30),
                 ],
               )
             : Container();

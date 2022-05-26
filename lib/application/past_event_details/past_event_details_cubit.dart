@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_clubs/domain/domain.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 part 'past_event_details_cubit.freezed.dart';
 
@@ -62,6 +63,28 @@ class PastEventDetailsCubit extends Cubit<PastEventDetailsState> {
     );
   }
 
+  Future<void> reportReview(String reviewId) async {
+    emit(
+      state.copyWith(
+        reviewReportStatus: CubitStatus.loading,
+        reportingReviewId: some(reviewId),
+      ),
+    );
+
+    final failureOrSuccess =
+        await _reviewFacade.reportReviewAsPartner(reviewId);
+
+    failureOrSuccess.fold(
+      (failure) => _emitReviewReportFailure(failure),
+      (success) => emit(
+        state.copyWith(
+          reviewReportStatus: CubitStatus.success,
+          reportingReviewId: none(),
+        ),
+      ),
+    );
+  }
+
   Future<void> _getEventTickets(Event event) async {
     _eventTicketsFacade.getEventTickets(event).take(1).listen((result) {
       result.fold(
@@ -96,5 +119,22 @@ class PastEventDetailsCubit extends Cubit<PastEventDetailsState> {
         ),
       ),
     );
+  }
+
+  _emitReviewReportFailure(PartnerReviewFailure reviewFailure) {
+    final failureMessage = reviewFailure.map(
+      unexpected: (_) => S().errorReportingReview,
+      reportExists: (_) => S().reviewAlreadyReported,
+    );
+
+    emit(
+      state.copyWith(
+        errorMessage: some(failureMessage),
+        reviewReportStatus: CubitStatus.failure,
+        reportingReviewId: none(),
+      ),
+    );
+
+    emit(state.copyWith(errorMessage: none()));
   }
 }

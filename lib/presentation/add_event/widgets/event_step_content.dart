@@ -19,13 +19,9 @@ class EventStepContent extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.currentStep != current.currentStep,
       builder: (context, state) {
-        return Expanded(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 10),
-              child: _getStepContent(state.currentStep),
-            ),
-          ),
+        return Padding(
+          padding: const EdgeInsets.all(10),
+          child: _getStepContent(state.currentStep),
         );
       },
     );

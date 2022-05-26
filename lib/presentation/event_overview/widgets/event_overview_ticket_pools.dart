@@ -49,6 +49,8 @@ class EventOverviewTicketPools extends StatelessWidget {
           previous.eventTickets != current.eventTickets ||
           previous.ticketPoolStatus != current.ticketPoolStatus,
       builder: (context, state) {
+        final ticketPools = state.eventTickets.getOrCrash().ticketPools;
+
         return state.ticketPoolStatus.isLoading()
             ? const Center(
                 child: CircularProgressIndicator(),
@@ -81,11 +83,12 @@ class EventOverviewTicketPools extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  for (var pool in state.eventTickets.getOrCrash().ticketPools)
+                  for (var pool in ticketPools)
                     EventTicketPoolCard(
                       ticketPool: pool,
                       onTicketPoolEdited: editTicketPool,
                       onTicketPoolDeleted: deleteTicketPool,
+                      isTheOnlyPool: ticketPools.length == 1,
                     ),
                 ],
               );

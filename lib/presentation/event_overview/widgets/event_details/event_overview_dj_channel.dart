@@ -28,6 +28,7 @@ class EventOverviewDjChannel extends StatelessWidget {
                 Expanded(
                   child: RaverPartnersHeadline(text: S().djYoutubeChannel),
                 ),
+                const SizedBox(width: 10),
                 ShowEditEventDialogButton(
                   dialog: EditEventDjChannelUrlDialog(blocContext: context),
                   isValueEmpty: isDjChannelUrlEmpty,

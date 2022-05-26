@@ -11,18 +11,31 @@ class AddEventSteps extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        children: const [
-          AddEventNumberStepper(),
-          SizedBox(height: 40),
-          AddEventStepsHeader(),
-          SizedBox(height: 40),
-          AddEventBackToSubmitButton(),
-          EventStepContent(),
-          SizedBox(height: 20),
-          AddEventStepsButtons(),
-          SizedBox(height: 10),
+      padding: const EdgeInsets.all(5),
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              children: const [
+                AddEventNumberStepper(),
+                SizedBox(height: 40),
+                AddEventStepsHeader(),
+                SizedBox(height: 40),
+                AddEventBackToSubmitButton(),
+                EventStepContent(),
+              ],
+            ),
+          ),
+          const SliverFillRemaining(
+            hasScrollBody: false,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 5, top: 30),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: AddEventStepsButtons(),
+              ),
+            ),
+          )
         ],
       ),
     );

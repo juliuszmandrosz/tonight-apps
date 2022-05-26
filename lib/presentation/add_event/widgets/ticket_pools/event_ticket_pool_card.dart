@@ -8,11 +8,13 @@ class EventTicketPoolCard extends StatelessWidget {
   final TicketPool ticketPool;
   final Function(TicketPool) onTicketPoolEdited;
   final Function(TicketPool) onTicketPoolDeleted;
+  final bool isTheOnlyPool;
 
   const EventTicketPoolCard({
     required this.ticketPool,
     required this.onTicketPoolEdited,
     required this.onTicketPoolDeleted,
+    this.isTheOnlyPool = false,
     Key? key,
   }) : super(key: key);
 
@@ -43,7 +45,7 @@ class EventTicketPoolCard extends StatelessWidget {
       return const SizedBox();
     }
 
-    if (ticketPool.ticketsSold > 0) {
+    if (ticketPool.ticketsSold > 0 || isTheOnlyPool) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

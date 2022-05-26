@@ -34,7 +34,6 @@ class EventSummaryStep extends StatelessWidget {
           EventSummaryMusic(),
           SizedBox(height: 30),
           EventSummaryTicketPools(),
-          SizedBox(height: 30),
           EventSummaryArtistName(),
           EventSummaryFacebookUrl(),
           EventSummaryDjChannelUrl(),

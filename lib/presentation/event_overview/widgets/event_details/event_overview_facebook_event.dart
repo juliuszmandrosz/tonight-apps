@@ -25,6 +25,7 @@ class EventOverviewFacebookEvent extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(child: RaverPartnersHeadline(text: S().facebookEvent)),
+                const SizedBox(width: 10),
                 ShowEditEventDialogButton(
                   dialog: EditEventFacebookUrlDialog(blocContext: context),
                   isValueEmpty: isFacebookUrlEmpty,

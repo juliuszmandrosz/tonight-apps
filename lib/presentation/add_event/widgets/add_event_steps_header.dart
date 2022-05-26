@@ -18,7 +18,7 @@ class AddEventStepsHeader extends StatelessWidget {
           previous.currentStep != current.currentStep,
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Align(
             alignment: Alignment.centerLeft,
             child: AutoSizeText(

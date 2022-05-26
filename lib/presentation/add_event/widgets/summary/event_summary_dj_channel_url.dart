@@ -20,10 +20,16 @@ class EventSummaryDjChannelUrl extends StatelessWidget {
         return state.isDjChannelUrlEnabled
             ? Column(
                 children: [
+                  const SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      RaverPartnersHeadline(text: S().djYoutubeChannel),
+                      Expanded(
+                        child: RaverPartnersHeadline(
+                          text: S().djYoutubeChannel,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
                       const EventSummarySwitchStepButton(
                         step: AddEventStep.urlLinks,
                       ),
@@ -43,7 +49,6 @@ class EventSummaryDjChannelUrl extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30),
                 ],
               )
             : Container();

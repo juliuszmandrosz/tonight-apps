@@ -20,10 +20,14 @@ class EventSummaryFacebookUrl extends StatelessWidget {
         return state.isFacebookUrlEnabled
             ? Column(
                 children: [
+                  const SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      RaverPartnersHeadline(text: S().facebookEvent),
+                      Expanded(
+                        child: RaverPartnersHeadline(text: S().facebookEvent),
+                      ),
+                      const SizedBox(width: 10),
                       const EventSummarySwitchStepButton(
                         step: AddEventStep.urlLinks,
                       ),
@@ -43,7 +47,6 @@ class EventSummaryFacebookUrl extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30),
                 ],
               )
             : Container();

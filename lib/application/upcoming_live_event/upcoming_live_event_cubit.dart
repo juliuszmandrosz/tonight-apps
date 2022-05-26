@@ -354,6 +354,7 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
           S().quantityChangedToLessThanTicketsSold,
       deletedTicketPoolAfterTicketWasSold: (_) =>
           S().deletedTicketPoolAfterTicketWasSold,
+      deletedAllTicketPools: (_) => S().deletedAllTicketPools,
     );
   }
 
