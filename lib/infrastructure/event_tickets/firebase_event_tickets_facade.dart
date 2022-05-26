@@ -47,41 +47,48 @@ class FirebaseEventTicketsFacade
     Event event,
     TicketPool ticketPool,
   ) async {
-    final eventTicketDocRef = _getEventTicketDocRef(event.clubId, event.id);
+    try {
+      final eventTicketDocRef = _getEventTicketDocRef(event.clubId, event.id);
 
-    return _firestore
-        .runTransaction<Either<EventTicketsFailure, Unit>>((transaction) async {
-      final eventTicketDoc = await transaction.get(eventTicketDocRef);
+      return _firestore.runTransaction<Either<EventTicketsFailure, Unit>>(
+          (transaction) async {
+        final eventTicketDoc = await transaction.get(eventTicketDocRef);
 
-      if (!eventTicketDoc.exists) throw InvalidIdError();
+        if (!eventTicketDoc.exists) throw InvalidIdError();
 
-      var eventTicketDto = EventTicketsDto.fromFirebase(eventTicketDoc);
+        var eventTicketDto = EventTicketsDto.fromFirebase(eventTicketDoc);
 
-      if (eventTicketDto.isSoldOut) {
-        eventTicketDto = eventTicketDto.copyWith(isSoldOut: false);
-        await _updateEventPrice(event.id, ticketPool.ticketPrice);
-      }
+        if (eventTicketDto.isSoldOut) {
+          eventTicketDto = eventTicketDto.copyWith(isSoldOut: false);
+          await _updateEventPrice(event.id, ticketPool.ticketPrice);
+        }
 
-      eventTicketDto = eventTicketDto.copyWith(
-        ticketQuantity:
-            eventTicketDto.ticketQuantity + ticketPool.ticketQuantity,
-      );
-
-      final ticketPoolDto = TicketPoolDto.fromDomain(ticketPool);
-
-      eventTicketDto.ticketPools.add(ticketPoolDto);
-
-      transaction.update(eventTicketDocRef, eventTicketDto.toJson());
-
-      return right(unit);
-    }).catchError((e) {
-      if (e is FirebaseException) {
-        _logger.e("Firebase Exception during adding ticket pool EXCEPTION: $e");
-        return left<EventTicketsFailure, Unit>(
-          const EventTicketsFailure.unexpected(),
+        eventTicketDto = eventTicketDto.copyWith(
+          ticketQuantity:
+              eventTicketDto.ticketQuantity + ticketPool.ticketQuantity,
         );
-      }
-    });
+
+        var ticketPoolDto = TicketPoolDto.fromDomain(ticketPool);
+
+        final ticketPools = [...eventTicketDto.ticketPools];
+
+        ticketPools.add(ticketPoolDto);
+
+        eventTicketDto = eventTicketDto.copyWith(ticketPools: ticketPools);
+
+        transaction.update(
+          eventTicketDocRef,
+          eventTicketDto.toJson(),
+        );
+
+        return right(unit);
+      });
+    } on FirebaseException catch (e) {
+      _logger.e("Firebase Exception during adding ticket pool EXCEPTION: $e");
+      return left<EventTicketsFailure, Unit>(
+        const EventTicketsFailure.unexpected(),
+      );
+    }
   }
 
   @override
@@ -89,73 +96,76 @@ class FirebaseEventTicketsFacade
     Event event,
     TicketPool updatedTicketPool,
   ) {
-    final eventTicketDocRef = _getEventTicketDocRef(event.clubId, event.id);
+    try {
+      final eventTicketDocRef = _getEventTicketDocRef(event.clubId, event.id);
 
-    return _firestore
-        .runTransaction<Either<EventTicketsFailure, Unit>>((transaction) async {
-      final eventTicketDoc = await transaction.get(eventTicketDocRef);
+      return _firestore.runTransaction<Either<EventTicketsFailure, Unit>>(
+          (transaction) async {
+        final eventTicketDoc = await transaction.get(eventTicketDocRef);
 
-      if (!eventTicketDoc.exists) throw InvalidIdError();
+        if (!eventTicketDoc.exists) throw InvalidIdError();
 
-      var eventTicketDto = EventTicketsDto.fromFirebase(eventTicketDoc);
-      final ticketPools = eventTicketDto.ticketPools;
-      final oldTicketPool = ticketPools.firstWhere(
-        (pool) => pool.poolNumber == updatedTicketPool.poolNumber,
-      );
-
-      final isPriceChangedAfterTicketSold = oldTicketPool.ticketsSold > 0 &&
-          oldTicketPool.ticketPrice != updatedTicketPool.ticketPrice;
-
-      if (isPriceChangedAfterTicketSold) {
-        return left(const EventTicketsFailure.priceChangedAfterTicketWasSold());
-      }
-
-      if (oldTicketPool.ticketsSold > updatedTicketPool.ticketQuantity) {
-        return left(
-          const EventTicketsFailure.quantityChangedToLessThanTicketsSold(),
-        );
-      }
-
-      final isCurrentPoolSoldOut =
-          oldTicketPool.ticketsSold == updatedTicketPool.ticketQuantity &&
-              updatedTicketPool.isCurrent;
-
-      if (isCurrentPoolSoldOut) {
-        updatedTicketPool = updatedTicketPool.copyWith(
-          isSoldOut: true,
-          isCurrent: false,
+        var eventTicketDto = EventTicketsDto.fromFirebase(eventTicketDoc);
+        final ticketPools = [...eventTicketDto.ticketPools];
+        final oldTicketPool = ticketPools.firstWhere(
+          (pool) => pool.poolNumber == updatedTicketPool.poolNumber,
         );
 
-        final isLastPool =
-            updatedTicketPool.poolNumber == ticketPools.last.poolNumber;
+        final isPriceChangedAfterTicketSold = oldTicketPool.ticketsSold > 0 &&
+            oldTicketPool.ticketPrice != updatedTicketPool.ticketPrice;
 
-        isLastPool
-            ? eventTicketDto = eventTicketDto.copyWith(isSoldOut: true)
-            : _startNextPool(oldTicketPool, ticketPools, event.id);
-      }
+        if (isPriceChangedAfterTicketSold) {
+          return left(
+              const EventTicketsFailure.priceChangedAfterTicketWasSold());
+        }
 
-      if (!isCurrentPoolSoldOut && updatedTicketPool.isCurrent) {
-        await _updateEventPrice(event.id, updatedTicketPool.ticketPrice);
-      }
+        if (oldTicketPool.ticketsSold > updatedTicketPool.ticketQuantity) {
+          return left(
+            const EventTicketsFailure.quantityChangedToLessThanTicketsSold(),
+          );
+        }
 
-      _updatePool(oldTicketPool, updatedTicketPool, ticketPools);
+        final isCurrentPoolSoldOut =
+            oldTicketPool.ticketsSold == updatedTicketPool.ticketQuantity &&
+                updatedTicketPool.isCurrent;
 
-      eventTicketDto = eventTicketDto.copyWith(
-        ticketQuantity: ticketPools.map((pool) => pool.ticketQuantity).sum,
-      );
+        if (isCurrentPoolSoldOut) {
+          updatedTicketPool = updatedTicketPool.copyWith(
+            isSoldOut: true,
+            isCurrent: false,
+          );
 
-      transaction.update(eventTicketDocRef, eventTicketDto.toJson());
+          final isLastPool =
+              updatedTicketPool.poolNumber == ticketPools.last.poolNumber;
 
-      return right(unit);
-    }).catchError((e) {
-      if (e is FirebaseException) {
-        _logger
-            .e("Firebase Exception during updating ticket pool EXCEPTION: $e");
-        return left<EventTicketsFailure, Unit>(
+          isLastPool
+              ? eventTicketDto = eventTicketDto.copyWith(isSoldOut: true)
+              : _startNextPool(oldTicketPool, ticketPools, event.id);
+        }
+
+        if (!isCurrentPoolSoldOut && updatedTicketPool.isCurrent) {
+          await _updateEventPrice(event.id, updatedTicketPool.ticketPrice);
+        }
+
+        _updatePool(oldTicketPool, updatedTicketPool, ticketPools);
+
+        eventTicketDto = eventTicketDto.copyWith(
+          ticketQuantity: ticketPools.map((pool) => pool.ticketQuantity).sum,
+          ticketPools: ticketPools,
+        );
+
+        transaction.update(eventTicketDocRef, eventTicketDto.toJson());
+
+        return right(unit);
+      });
+    } on FirebaseException catch (e) {
+      _logger.e("Firebase Exception during updating ticket pool EXCEPTION: $e");
+      return Future.value(
+        left<EventTicketsFailure, Unit>(
           const EventTicketsFailure.unexpected(),
-        );
-      }
-    });
+        ),
+      );
+    }
   }
 
   @override
@@ -163,59 +173,66 @@ class FirebaseEventTicketsFacade
     Event event,
     TicketPool ticketPool,
   ) {
-    final eventTicketDocRef = _getEventTicketDocRef(event.clubId, event.id);
+    try {
+      final eventTicketDocRef = _getEventTicketDocRef(event.clubId, event.id);
 
-    return _firestore
-        .runTransaction<Either<EventTicketsFailure, Unit>>((transaction) async {
-      final eventTicketDoc = await transaction.get(eventTicketDocRef);
+      return _firestore.runTransaction<Either<EventTicketsFailure, Unit>>(
+          (transaction) async {
+        final eventTicketDoc = await transaction.get(eventTicketDocRef);
 
-      if (!eventTicketDoc.exists) throw InvalidIdError();
+        if (!eventTicketDoc.exists) throw InvalidIdError();
 
-      var eventTicketDto = EventTicketsDto.fromFirebase(eventTicketDoc);
-      final ticketPools = eventTicketDto.ticketPools;
-      final deletingPool = ticketPools.firstWhere(
-        (pool) => pool.poolNumber == ticketPool.poolNumber,
-      );
-
-      if (deletingPool.ticketsSold > 0) {
-        return left(
-          const EventTicketsFailure.deletedTicketPoolAfterTicketWasSold(),
+        var eventTicketDto = EventTicketsDto.fromFirebase(eventTicketDoc);
+        final ticketPools = [...eventTicketDto.ticketPools];
+        final deletingPool = ticketPools.firstWhere(
+          (pool) => pool.poolNumber == ticketPool.poolNumber,
         );
-      }
 
-      final isLastPool = deletingPool.poolNumber == ticketPools.last.poolNumber;
-
-      if (!isLastPool) {
-        if (deletingPool.isCurrent) {
-          _startNextPool(deletingPool, ticketPools, event.id);
+        if (ticketPools.length == 1) {
+          return left(const EventTicketsFailure.deletedAllTicketPools());
         }
 
-        _shiftNumbersOfNextPools(deletingPool, ticketPools);
-      }
+        if (deletingPool.ticketsSold > 0) {
+          return left(
+            const EventTicketsFailure.deletedTicketPoolAfterTicketWasSold(),
+          );
+        }
 
-      ticketPools.remove(deletingPool);
+        final isLastPool =
+            deletingPool.poolNumber == ticketPools.last.poolNumber;
 
-      if (ticketPools.every((pool) => pool.isSoldOut)) {
-        eventTicketDto = eventTicketDto.copyWith(isSoldOut: true);
-      }
+        if (!isLastPool) {
+          if (deletingPool.isCurrent) {
+            _startNextPool(deletingPool, ticketPools, event.id);
+          }
 
-      eventTicketDto = eventTicketDto.copyWith(
-        ticketQuantity:
-            eventTicketDto.ticketQuantity - ticketPool.ticketQuantity,
-      );
+          _shiftNumbersOfNextPools(deletingPool, ticketPools);
+        }
 
-      transaction.update(eventTicketDocRef, eventTicketDto.toJson());
+        ticketPools.remove(deletingPool);
 
-      return right(unit);
-    }).catchError((e) {
-      if (e is FirebaseException) {
-        _logger
-            .e("Firebase Exception during deleting ticket pool EXCEPTION: $e");
-        return left<EventTicketsFailure, Unit>(
-          const EventTicketsFailure.unexpected(),
+        if (ticketPools.every((pool) => pool.isSoldOut)) {
+          eventTicketDto = eventTicketDto.copyWith(isSoldOut: true);
+        }
+
+        eventTicketDto = eventTicketDto.copyWith(
+          ticketQuantity:
+              eventTicketDto.ticketQuantity - ticketPool.ticketQuantity,
+          ticketPools: ticketPools,
         );
-      }
-    });
+
+        transaction.update(eventTicketDocRef, eventTicketDto.toJson());
+
+        return right(unit);
+      });
+    } on FirebaseException catch (e) {
+      _logger.e("Firebase Exception during deleting ticket pool EXCEPTION: $e");
+      return Future.value(
+        left<EventTicketsFailure, Unit>(
+          const EventTicketsFailure.unexpected(),
+        ),
+      );
+    }
   }
 
   DocumentReference _getEventTicketDocRef(String clubId, String eventId) {

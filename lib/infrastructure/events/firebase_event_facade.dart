@@ -143,27 +143,29 @@ class FirebaseEventFacade
 
   @override
   Future<Either<PartnerEventFailure, Unit>> updateEvent(Event event) async {
-    final eventDocRef = _firestore.eventCollection.doc(event.id);
+    try {
+      final eventDocRef = _firestore.eventCollection.doc(event.id);
 
-    return _firestore
-        .runTransaction<Either<PartnerEventFailure, Unit>>((transaction) async {
-      final eventDoc = await transaction.get(eventDocRef);
+      return _firestore.runTransaction<Either<PartnerEventFailure, Unit>>(
+          (transaction) async {
+        final eventDoc = await transaction.get(eventDocRef);
 
-      if (!eventDoc.exists) throw InvalidIdError();
+        if (!eventDoc.exists) throw InvalidIdError();
 
-      final eventDto = EventDto.fromDomain(event);
+        final eventDto = EventDto.fromDomain(event);
 
-      transaction.update(eventDocRef, eventDto.toJson());
+        transaction.update(eventDocRef, eventDto.toJson());
 
-      return right(unit);
-    }).catchError((e) {
-      if (e is FirebaseException) {
-        _logger.e("Firebase Exception during updating event EXCEPTION: $e");
-        return left<PartnerEventFailure, Unit>(
+        return right(unit);
+      });
+    } on FirebaseException catch (e) {
+      _logger.e("Firebase Exception during updating event EXCEPTION: $e");
+      return Future.value(
+        left<PartnerEventFailure, Unit>(
           const PartnerEventFailure.unexpected(),
-        );
-      }
-    });
+        ),
+      );
+    }
   }
 
   @override

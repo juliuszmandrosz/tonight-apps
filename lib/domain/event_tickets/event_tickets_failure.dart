@@ -14,4 +14,7 @@ class EventTicketsFailure with _$EventTicketsFailure {
 
   const factory EventTicketsFailure.deletedTicketPoolAfterTicketWasSold() =
       _DeletedTicketPoolAfterTicketWasSold;
+
+  const factory EventTicketsFailure.deletedAllTicketPools() =
+      _DeletedAllTicketPools;
 }
