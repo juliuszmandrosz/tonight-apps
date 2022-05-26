@@ -9,7 +9,7 @@ import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_header.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_is_vip_switch.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_pay_button.dart';
+import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_pay_section.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_promotion_code.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_ticket_card.dart';
 import 'package:raver_common/raver_common.dart';
@@ -53,7 +53,8 @@ class TicketCheckoutPage extends StatelessWidget {
                 previous.paymentFailureMessage !=
                     current.paymentFailureMessage ||
                 previous.proceedingToPaymentStatus !=
-                    current.proceedingToPaymentStatus,
+                    current.proceedingToPaymentStatus ||
+                previous.hasTicketPoolChanged != current.hasTicketPoolChanged,
             listener: (context, state) {
               if (state.proceedingToPaymentStatus.isSuccess() &&
                   state.purchasedTicket.isSome()) {
@@ -64,6 +65,10 @@ class TicketCheckoutPage extends StatelessWidget {
                 );
               }
 
+              state.proceedingToPaymentStatus.isLoading()
+                  ? context.loaderOverlay.show()
+                  : context.loaderOverlay.hide();
+
               if (state.initialStatus.isFailure()) {
                 AutoRouter.of(context).pop();
               }
@@ -72,6 +77,10 @@ class TicketCheckoutPage extends StatelessWidget {
                 () {},
                 (error) => context.showSnackbarMessage(error),
               );
+
+              if (state.hasTicketPoolChanged) {
+                context.showSnackbarMessage(S().ticketPoolHasSoldOut);
+              }
             },
             builder: (context, state) {
               return state.initialStatus.isLoading()
@@ -92,7 +101,7 @@ class TicketCheckoutPage extends StatelessWidget {
                           if (event != null) const TicketCheckoutIsVipSwitch(),
                           const TicketCheckoutPromotionCode(),
                           const SizedBox(height: 30),
-                          const TicketCheckoutPayButton(),
+                          const TicketCheckoutPaySection(),
                         ],
                       ),
                     );

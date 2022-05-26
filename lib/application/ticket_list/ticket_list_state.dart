@@ -1,5 +1,6 @@
 part of 'ticket_list_cubit.dart';
 
+
 @freezed
 class TicketListState with _$TicketListState {
   TicketListState._();
@@ -11,7 +12,7 @@ class TicketListState with _$TicketListState {
   }) = _TicketListState;
 
   factory TicketListState.initial() => TicketListState(
-        hasReachedMax: false,
+    hasReachedMax: false,
         status: CubitStatus.initial,
         tickets: [],
       );

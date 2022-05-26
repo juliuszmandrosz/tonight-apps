@@ -10,40 +10,28 @@ part 'ticket_list_state.dart';
 
 class TicketListCubit extends Cubit<TicketListState> {
   final UserTicketFacade _ticketFacade;
+  late StreamSubscription _ticketListSubscription;
 
   TicketListCubit(this._ticketFacade) : super(TicketListState.initial());
 
   Future<void> getTickets() async {
     emit(state.copyWith(status: CubitStatus.loading));
 
-    final failureOrSuccess = await _ticketFacade.getUserTickets();
-
-    failureOrSuccess.fold(
-      (failure) => emit(
-        state.copyWith(status: CubitStatus.failure),
-      ),
-      (tickets) => emit(
-        state.copyWith(status: CubitStatus.success, tickets: tickets),
-      ),
-    );
+    _ticketListSubscription = _ticketFacade.getUserTickets().listen((result) {
+      result.fold(
+        (failure) => emit(
+          state.copyWith(status: CubitStatus.failure),
+        ),
+        (tickets) => emit(
+          state.copyWith(status: CubitStatus.success, tickets: tickets),
+        ),
+      );
+    });
   }
 
-  removeTicketFromState(Ticket ticket) {
-    final ticketsCopy = [...state.tickets];
-    ticketsCopy.remove(ticket);
-    emit(state.copyWith(tickets: ticketsCopy));
-  }
-
-  addTicketToState(Ticket ticket) {
-    final ticketsCopy = [...state.tickets];
-    ticketsCopy.add(ticket);
-    emit(state.copyWith(tickets: ticketsCopy));
-  }
-
-  updateTicketInState(Ticket oldTicket, Ticket updatedTicket) {
-    final ticketsCopy = [...state.tickets];
-    final index = ticketsCopy.indexOf(oldTicket);
-    ticketsCopy[index] = updatedTicket;
-    emit(state.copyWith(tickets: ticketsCopy));
+  @override
+  Future<void> close() {
+    _ticketListSubscription.cancel();
+    return super.close();
   }
 }

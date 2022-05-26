@@ -1202,9 +1202,18 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: develop
-      resolved-ref: "8eea8ac35167fc7759d6cba92c8028c258bcb0e0"
+      ref: "feature/ticket-pools"
+      resolved-ref: e89743eb71504902413d53245d326a69ddbfb3b0
       url: "https://github.com/juliuszmandrosz/RaverEvents.git"
+    source: git
+    version: "0.0.1"
+  raver_payments:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "feature/methods-from-raver"
+      resolved-ref: f70d8dda0717441b3e17bddb4f247b1f345d87d0
+      url: "https://github.com/juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
   raver_rewards:
@@ -1220,8 +1229,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/reviews"
-      resolved-ref: d9473ed4f3db16598da33a09723448cb4d6e2935
+      ref: develop
+      resolved-ref: b9b096dcf494482e8670b7a7f3ee25f471307b0c
       url: "https://github.com/juliuszmandrosz/RaverTickets.git"
     source: git
     version: "0.0.1"
@@ -1470,6 +1479,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
+  visibility_detector:
+    dependency: "direct main"
+    description:
+      name: visibility_detector
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.3"
   watcher:
     dependency: transitive
     description:

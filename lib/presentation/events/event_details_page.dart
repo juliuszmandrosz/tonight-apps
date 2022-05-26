@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_details/event_details_cubit.dart';
+import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/events/widgets/canceled_event_message.dart';
@@ -13,6 +14,7 @@ import 'package:raver/presentation/events/widgets/event_details_event_place.dart
 import 'package:raver/presentation/events/widgets/event_details_navigate_to_club.dart';
 import 'package:raver/presentation/events/widgets/event_details_section.dart';
 import 'package:raver/presentation/events/widgets/event_details_ticket.dart';
+import 'package:raver/presentation/events/widgets/event_details_ticket_pools.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -55,37 +57,46 @@ class EventDetailsPage extends StatelessWidget {
                       ),
                       loadSuccess: (state) {
                         final event = state.event;
-                        return SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              if (event.isCanceled)
-                                const CanceledEventMessage(),
-                              Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: Column(
-                                  children: [
-                                    if (event.isConcert)
-                                      EventDetailsArtistName(event: event),
-                                    EventDetailsClubName(event: event),
-                                    EventDetailsEventName(event: event),
-                                    const SizedBox(height: 10),
-                                    EventDetailsEventDate(event: event),
-                                    const SizedBox(height: 10),
-                                    EventDetailsSection(event: event),
-                                    const SizedBox(height: 10),
-                                    EventDetailsEventPlace(event: event),
-                                    EventDetailsAdditionalInfo(event: event),
-                                    const SizedBox(height: 30),
-                                    EventDetailsNavigateToClub(event: event),
-                                    const SizedBox(height: 10),
-                                    if (!event.isCanceled &&
-                                        event.eventEndDateTime
-                                            .isAfter(DateTime.now()))
-                                      EventDetailsTicket(event: event),
-                                  ],
+                        return BlocProvider(
+                          create: (context) => getIt<EventTicketsCubit>()
+                            ..getEventTickets(
+                              eventId: event.id,
+                              clubId: event.clubId,
+                            ),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                if (event.isCanceled)
+                                  const CanceledEventMessage(),
+                                Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: Column(
+                                    children: [
+                                      if (event.isConcert)
+                                        EventDetailsArtistName(event: event),
+                                      EventDetailsClubName(event: event),
+                                      EventDetailsEventName(event: event),
+                                      const SizedBox(height: 10),
+                                      EventDetailsEventDate(event: event),
+                                      const SizedBox(height: 10),
+                                      EventDetailsSection(event: event),
+                                      const SizedBox(height: 10),
+                                      EventDetailsEventPlace(event: event),
+                                      EventDetailsAdditionalInfo(event: event),
+                                      const SizedBox(height: 30),
+                                      EventDetailsTicketPools(event: event),
+                                      const SizedBox(height: 30),
+                                      EventDetailsNavigateToClub(event: event),
+                                      const SizedBox(height: 10),
+                                      if (!event.isCanceled &&
+                                          event.eventEndDateTime
+                                              .isAfter(DateTime.now()))
+                                        EventDetailsTicket(event: event),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         );
                       },

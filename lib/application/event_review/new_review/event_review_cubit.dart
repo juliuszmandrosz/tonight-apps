@@ -79,9 +79,7 @@ class NewReviewCubit extends Cubit<EventReviewState> {
             submittingStatus: FormzStatus.submissionFailure,
             errorMessage: some(S().rateAddingError)));
       },
-      (reviewId) {
-        _ticketListCubit.updateTicketInState(
-            ticket, ticket.copyWith(reviewId: reviewId));
+      (_) {
         emit(
           state.copyWith(submittingStatus: FormzStatus.submissionSuccess),
         );

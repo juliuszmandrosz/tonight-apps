@@ -24,22 +24,22 @@ import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_details/event_details_cubit.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
+import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/profile/profile_cubit_hub.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/application/ticket_qr/ticket_qr_cubit.dart';
 import 'package:raver/application/user_favorites/event_favorites/user_event_favorites_cubit.dart';
-import 'package:raver/domain/payments/payment_facade.dart';
 import 'package:raver/domain/remote_config/remote_config_facade.dart';
-import 'package:raver/infrastructure/payments/cloud_functions/payment_cloud_functions_facade.dart';
-import 'package:raver/infrastructure/payments/firebase_payment_facade.dart';
 import 'package:raver/infrastructure/remote_config/firebase_remote_config_facade.dart';
 import 'package:raver_account_settings/raver_account_settings.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_payments/domain/facades/user_payment_facade.dart';
+import 'package:raver_payments/infrastructure/infrastructure.dart';
 import 'package:raver_tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 
@@ -149,6 +149,13 @@ void _registerCubits() {
     ),
   );
 
+  //Event ticket pools
+  getIt.registerFactory(
+    () => EventTicketsCubit(
+      getIt(),
+    ),
+  );
+
   getIt.registerFactoryParam(
     (TicketListCubit ticketListCubit, _) => TicketQrCubit(
       ticketFacade: getIt(),
@@ -249,6 +256,7 @@ void _registerCubits() {
   getIt.registerFactoryParam(
     (TicketListCubit ticketListCubit, _) => TicketCheckoutCubit(
       paymentFacade: getIt(),
+      eventTicketsCubit: getIt(),
       ticketListCubit: ticketListCubit,
     ),
   );
@@ -338,6 +346,14 @@ void _registerFacades() {
     ),
   );
 
+  //Event tickets
+  getIt.registerLazySingleton<UserEventTicketsFacade>(
+    () => FirebaseEventTicketsFacade(
+      firestore: getIt(),
+      logger: getIt(),
+    ),
+  );
+
   getIt.registerLazySingleton<CommonEventFacade>(
     () => FirebaseEventFacade(
       firestore: getIt(),
@@ -356,16 +372,20 @@ void _registerFacades() {
   );
 
   //Payment
-  getIt.registerLazySingleton<PaymentFacade>(
+  getIt.registerLazySingleton<UserPaymentFacade>(
     () => FirebasePaymentFacade(
       firestore: getIt(),
       logger: getIt(),
       paymentCloudFunctionsFacade: getIt(),
+      firebaseAuth: getIt(),
+      stripe: getIt(),
     ),
   );
 
   getIt.registerLazySingleton<PaymentCloudFunctionsFacade>(
-    () => PaymentCloudFunctionsFacadeImpl(),
+    () => PaymentCloudFunctionsFacadeImpl(
+      getIt(),
+    ),
   );
 
   //Profile

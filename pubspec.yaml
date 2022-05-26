@@ -83,6 +83,7 @@ dependencies:
   firebase_dynamic_links: ^4.2.3
   flutter_svg: ^1.0.3
   auto_size_text: ^3.0.0
+  visibility_detector: ^0.3.3
 
 
   raver_translations:
@@ -101,7 +102,7 @@ dependencies:
   raver_tickets:
     git:
       url: https://github.com/juliuszmandrosz/RaverTickets.git
-      ref: feature/reviews
+      ref: develop
 
   raver_auth:
     git:
@@ -115,12 +116,18 @@ dependencies:
   raver_events:
     git:
       url: https://github.com/juliuszmandrosz/RaverEvents.git
-      ref: develop
+      ref: feature/ticket-pools
 
   raver_clubs:
     git:
       url: https://github.com/juliuszmandrosz/RaverClubs.git
       ref: feature/reviews
+
+  raver_payments:
+    git:
+      url: https://github.com/juliuszmandrosz/RaverPayments.git
+      ref: feature/methods-from-raver
+
 
 dev_dependencies:
   flutter_test:

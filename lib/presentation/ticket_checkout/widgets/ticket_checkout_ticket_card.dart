@@ -13,6 +13,8 @@ class TicketCheckoutTicketCard extends StatelessWidget {
     final theme = Theme.of(context);
     return BlocBuilder<TicketCheckoutCubit, TicketCheckoutState>(
       builder: (context, state) {
+        final isSoldOut =
+            state.eventTickets.getOrCrash().getCurrentPool().isSoldOut;
         final ticket = state.ticketInitData.isSome()
             ? state.ticketInitData.getOrCrash()
             : null;
@@ -50,6 +52,14 @@ class TicketCheckoutTicketCard extends StatelessWidget {
                           ),
                           style: theme.textTheme.bodyText1,
                         ),
+                        if (isSoldOut)
+                          Text(
+                            S().soldOut,
+                            style: theme.textTheme.subtitle1!.copyWith(
+                              color: Colors.red,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          )
                       ],
                     ),
                   ),
@@ -57,10 +67,14 @@ class TicketCheckoutTicketCard extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: Text(
-                      '${state.price} ${getCurrencySymbolFromCode(
+                      '${state.checkoutPrice} ${getCurrencySymbolFromCode(
                         ticket?.currency ?? event!.currency,
                       )}',
-                      style: theme.textTheme.headline1,
+                      style: theme.textTheme.headline1!.copyWith(
+                        decoration: isSoldOut
+                            ? TextDecoration.lineThrough
+                            : TextDecoration.none,
+                      ),
                     ),
                   ),
                   const VerticalDivider(

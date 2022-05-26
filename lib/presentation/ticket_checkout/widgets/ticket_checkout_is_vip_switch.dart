@@ -10,29 +10,24 @@ class TicketCheckoutIsVipSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return BlocBuilder<TicketCheckoutCubit, TicketCheckoutState>(
-      buildWhen: (previous, current) =>
-          previous.isVip != current.isVip ||
-          previous.vipPrice != current.vipPrice,
+      buildWhen: (previous, current) => previous.isVip != current.isVip,
       builder: (context, state) {
-        return state.vipPrice != null
-            ? Column(
-                children: [
-                  InputDecorator(
-                    decoration: const InputDecoration().copyWith(
-                      contentPadding: const EdgeInsets.all(5),
-                    ),
-                    child: SwitchListTile.adaptive(
-                      title: Text(S().vip, style: theme.textTheme.subtitle1),
-                      value: state.isVip,
-                      onChanged: (value) => context
-                          .read<TicketCheckoutCubit>()
-                          .isVipChanged(value),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                ],
-              )
-            : const SizedBox();
+        return Column(
+          children: [
+            InputDecorator(
+              decoration: const InputDecoration().copyWith(
+                contentPadding: const EdgeInsets.all(5),
+              ),
+              child: SwitchListTile.adaptive(
+                title: Text(S().vip, style: theme.textTheme.subtitle1),
+                value: state.isVip,
+                onChanged: (value) =>
+                    context.read<TicketCheckoutCubit>().isVipChanged(value),
+              ),
+            ),
+            const SizedBox(height: 20),
+          ],
+        );
       },
     );
   }

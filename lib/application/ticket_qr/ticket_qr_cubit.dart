@@ -38,13 +38,23 @@ class TicketQrCubit extends Cubit<TicketQrState> {
     failureOrSuccess.fold(
       (failure) => _emitTicketReturnFailure(failure),
       (success) {
-        _ticketListCubit.removeTicketFromState(ticket);
-        emit(state.copyWith(ticketReturnStatus: CubitStatus.success));
+        _waitForTicketToBeDeleted();
       },
     );
   }
 
-  _emitTicketReturnFailure(TicketFailure failure) {
+  _waitForTicketToBeDeleted() {
+    final ticket = state.ticket.getOrCrash();
+
+    _ticketListCubit.stream.listen((ticketListState) {
+      final ticketExistInTicketList = ticketListState.tickets.contains(ticket);
+      if (!ticketExistInTicketList) {
+        emit(state.copyWith(ticketReturnStatus: CubitStatus.success));
+      }
+    });
+  }
+
+  _emitTicketReturnFailure(UserTicketFailure failure) {
     final message = _getFailureMessage(failure);
 
     if (message.isNotEmpty) {
@@ -57,13 +67,10 @@ class TicketQrCubit extends Cubit<TicketQrState> {
     ));
   }
 
-  _getFailureMessage(TicketFailure failure) {
+  _getFailureMessage(UserTicketFailure failure) {
     return failure.map(
       unexpected: (_) => S().serverError,
       returnTimeIsOver: (_) => S().returnTimeIsOver,
-      invalidTicket: (_) => '',
-      ticketExpired: (_) => '',
-      ticketForAnotherEvent: (_) => '',
     );
   }
 }
