@@ -47,6 +47,9 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m8(count) =>
       "${Intl.plural(count, zero: 'Brak biletów', one: 'Bilet', few: 'Bilety', many: 'Biletów', other: 'Biletu')}";
 
+  static String m9(count) =>
+      "${Intl.plural(count, zero: 'Wszystkie bilety wyprzedane!', one: 'bilet pozostał!', few: 'biletów pozostało!', many: 'biletów pozostało!', other: 'biletów pozostało!')}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUs": MessageLookupByLibrary.simpleMessage("O nas"),
@@ -263,6 +266,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Błąd podczas aktualizacji nagrody "),
         "eventAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Wydarzenie zostało dodane pomyślnie"),
+        "eventBeingPostponed": MessageLookupByLibrary.simpleMessage(
+            "Sprzedaż biletów została wstrzymana"),
         "eventCanceledSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Wydarzenie odwołano pomyślnie"),
         "eventCancelled": MessageLookupByLibrary.simpleMessage(
@@ -409,6 +414,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Błąd podczas płatności, proszę skontaktuj się z obsługą"),
         "photos": m5,
         "pool": MessageLookupByLibrary.simpleMessage("Pula"),
+        "poolNo": MessageLookupByLibrary.simpleMessage("Pula Nr."),
         "poolPriceHigherThanNextPool": MessageLookupByLibrary.simpleMessage(
             "Cena biletów w puli powinna być niższa niż cena następnej puli"),
         "poolPriceLowerThanPreviousPools": MessageLookupByLibrary.simpleMessage(
@@ -525,6 +531,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bilet stracił ważność"),
         "ticketForAnotherEvent": MessageLookupByLibrary.simpleMessage(
             "Bilet jest na inne wydarzenie"),
+        "ticketPools": MessageLookupByLibrary.simpleMessage("Pule biletów"),
         "ticketPrice": MessageLookupByLibrary.simpleMessage("Cena biletu"),
         "ticketPriceTooHigh":
             MessageLookupByLibrary.simpleMessage("Maksymalna cena biletu to"),
@@ -535,6 +542,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketReturnedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Bilet zwrócono pomyślnie"),
         "tickets": m8,
+        "ticketsLeft": m9,
         "ticketsSold":
             MessageLookupByLibrary.simpleMessage("Sprzedanych biletów"),
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),

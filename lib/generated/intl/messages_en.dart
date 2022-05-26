@@ -47,6 +47,9 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m8(count) =>
       "${Intl.plural(count, zero: 'No tickets', one: 'Ticket', other: 'Tickets')}";
 
+  static String m9(count) =>
+      "${Intl.plural(count, zero: 'All tickets have been sold!', one: 'ticket left!', other: 'tickets left!')}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
@@ -265,6 +268,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error updating reward"),
         "eventAddedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Event added successfully"),
+        "eventBeingPostponed": MessageLookupByLibrary.simpleMessage(
+            "Ticket sales has been suspended"),
         "eventCanceledSuccessfully":
             MessageLookupByLibrary.simpleMessage("Event canceled successfully"),
         "eventCancelled": MessageLookupByLibrary.simpleMessage(
@@ -404,6 +409,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Error during payment, please contact support"),
         "photos": m5,
         "pool": MessageLookupByLibrary.simpleMessage("Pool"),
+        "poolNo": MessageLookupByLibrary.simpleMessage("Pool No."),
         "poolPriceHigherThanNextPool": MessageLookupByLibrary.simpleMessage(
             "The price of tickets in the pool should be lower than price of the next pool"),
         "poolPriceLowerThanPreviousPools": MessageLookupByLibrary.simpleMessage(
@@ -516,6 +522,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketExpired": MessageLookupByLibrary.simpleMessage("Ticket expired"),
         "ticketForAnotherEvent":
             MessageLookupByLibrary.simpleMessage("Ticket is for another event"),
+        "ticketPools": MessageLookupByLibrary.simpleMessage("Ticket Pools"),
         "ticketPrice": MessageLookupByLibrary.simpleMessage("Ticket price"),
         "ticketPriceTooHigh":
             MessageLookupByLibrary.simpleMessage("The maximum ticket price is"),
@@ -526,6 +533,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketReturnedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Ticket returned successfully"),
         "tickets": m8,
+        "ticketsLeft": m9,
         "ticketsSold": MessageLookupByLibrary.simpleMessage("Tickets sold"),
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "to": MessageLookupByLibrary.simpleMessage("To"),

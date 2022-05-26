@@ -1319,6 +1319,16 @@ class S {
     );
   }
 
+  /// `Ticket sales has been suspended`
+  String get eventBeingPostponed {
+    return Intl.message(
+      'Ticket sales has been suspended',
+      name: 'eventBeingPostponed',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Event canceled successfully`
   String get eventCanceledSuccessfully {
     return Intl.message(
@@ -2208,6 +2218,16 @@ class S {
     );
   }
 
+  /// `Pool No.`
+  String get poolNo {
+    return Intl.message(
+      'Pool No.',
+      name: 'poolNo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The price of tickets in the pool should be lower than price of the next pool`
   String get poolPriceHigherThanNextPool {
     return Intl.message(
@@ -2964,6 +2984,16 @@ class S {
     );
   }
 
+  /// `Ticket Pools`
+  String get ticketPools {
+    return Intl.message(
+      'Ticket Pools',
+      name: 'ticketPools',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Ticket price`
   String get ticketPrice {
     return Intl.message(
@@ -3022,6 +3052,19 @@ class S {
       one: 'Ticket',
       other: 'Tickets',
       name: 'tickets',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{count, plural, zero{All tickets have been sold!} one{ticket left!} other{tickets left!}}`
+  String ticketsLeft(num count) {
+    return Intl.plural(
+      count,
+      zero: 'All tickets have been sold!',
+      one: 'ticket left!',
+      other: 'tickets left!',
+      name: 'ticketsLeft',
       desc: '',
       args: [count],
     );
