@@ -41,10 +41,13 @@ class EventOverviewFacebookEvent extends StatelessWidget {
               Row(
                 children: [
                   Flexible(
-                    child: Text(
-                      facebookUrl,
-                      style: context.subtitle1.copyWith(
-                        color: context.secondaryColor,
+                    child: RaverHyperLink(
+                      url: facebookUrl,
+                      label: Text(
+                        facebookUrl,
+                        style: context.subtitle1.copyWith(
+                          color: context.secondaryColor,
+                        ),
                       ),
                     ),
                   ),

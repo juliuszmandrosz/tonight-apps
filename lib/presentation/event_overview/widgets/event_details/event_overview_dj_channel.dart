@@ -44,10 +44,13 @@ class EventOverviewDjChannel extends StatelessWidget {
               Row(
                 children: [
                   Flexible(
-                    child: Text(
-                      djChannelUrl,
-                      style: context.subtitle1.copyWith(
-                        color: context.secondaryColor,
+                    child: RaverHyperLink(
+                      url: djChannelUrl,
+                      label: Text(
+                        djChannelUrl,
+                        style: context.subtitle1.copyWith(
+                          color: context.secondaryColor,
+                        ),
                       ),
                     ),
                   ),
