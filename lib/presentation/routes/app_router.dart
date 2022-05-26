@@ -6,6 +6,7 @@ import 'package:raver_partners/presentation/add_edit_ticket_pool/add_edit_ticket
 import 'package:raver_partners/presentation/add_event/add_event_page.dart';
 import 'package:raver_partners/presentation/add_reward/add_reward_page.dart';
 import 'package:raver_partners/presentation/auth/auth_page.dart';
+import 'package:raver_partners/presentation/contact/contact_page.dart';
 import 'package:raver_partners/presentation/event_overview/event_overview_page.dart';
 import 'package:raver_partners/presentation/events/events_page.dart';
 import 'package:raver_partners/presentation/invite_selector/invite_selector_page.dart';
@@ -17,6 +18,7 @@ import 'package:raver_partners/presentation/rewards/rewards_page.dart';
 import 'package:raver_partners/presentation/selectors/selectors_page.dart';
 import 'package:raver_partners/presentation/settings/settings_page.dart';
 import 'package:raver_partners/presentation/splash/splash_page.dart';
+import 'package:raver_partners/presentation/terms_of_service/terms_of_service_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -42,6 +44,8 @@ part 'app_router.gr.dart';
     AutoRoute(page: PostponeEventPage),
     AutoRoute(page: InviteSelectorPage),
     AutoRoute(page: NetworkLostPage),
+    AutoRoute(page: ContactPage),
+    AutoRoute(page: TermsOfServicePage),
   ],
 )
 class AppRouter extends _$AppRouter {}

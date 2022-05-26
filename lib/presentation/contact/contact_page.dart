@@ -1,0 +1,32 @@
+import 'package:flutter/material.dart';
+import 'package:raver_partners/presentation/contact/widgets/contact_mail.dart';
+import 'package:raver_partners/presentation/contact/widgets/contact_phone.dart';
+import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
+import 'package:raver_translations/raver_translations.dart';
+
+class ContactPage extends StatelessWidget {
+  const ContactPage({Key? key}) : super(key: key);
+
+  final contactDetails = const [
+    ContactMail(),
+    ContactPhone(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: RaverPartnersAppBar(title: S().contact),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          separatorBuilder: (context, i) => const Divider(),
+          itemCount: contactDetails.length + 1,
+          itemBuilder: (context, i) =>
+              i >= contactDetails.length ? const SizedBox() : contactDetails[i],
+        ),
+      ),
+    );
+  }
+}

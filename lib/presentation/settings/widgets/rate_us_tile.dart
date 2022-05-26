@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:launch_review/launch_review.dart';
 import 'package:raver_partners/presentation/settings/widgets/settings_tile.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -9,7 +10,10 @@ class RateUsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return SettingsTile(
       title: S().rateUs,
-      onTap: () {},
+      onTap: () => LaunchReview.launch(
+        // TODO - add ios app id
+        androidAppId: 'com.raverteam.tonightPartners',
+      ),
     );
   }
 }

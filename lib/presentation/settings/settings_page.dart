@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:raver_partners/presentation/settings/widgets/contact_us_tile.dart';
+import 'package:raver_partners/presentation/settings/widgets/contact_tile.dart';
 import 'package:raver_partners/presentation/settings/widgets/rate_us_tile.dart';
 import 'package:raver_partners/presentation/settings/widgets/sign_out_tile.dart';
 import 'package:raver_partners/presentation/settings/widgets/social_media/social_media_row.dart';
@@ -12,7 +12,7 @@ class SettingsPage extends StatelessWidget {
   final settingTiles = const [
     TermsOfServiceTile(),
     RateUsTile(),
-    ContactUsTile(),
+    ContactTile(),
     SignOutTile(),
   ];
 

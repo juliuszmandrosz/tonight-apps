@@ -1,0 +1,19 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_partners/presentation/contact/widgets/contact_details_tile.dart';
+import 'package:raver_translations/raver_translations.dart';
+
+class ContactMail extends StatelessWidget {
+  const ContactMail({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ContactDetailsTile(
+      contactType: S().email,
+      contactDetail: 'support@raverteam.io',
+      trailingIcon: const FaIcon(FontAwesomeIcons.solidPaperPlane),
+      onTap: () => launchEmail('support@raverteam.io'),
+    );
+  }
+}
