@@ -16,7 +16,7 @@ class RaverHyperLink extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        final result = await launchURL(url);
+        final result = await launchURL(Uri.parse(url));
         if (result.isSome()) {
           context.showSnackbarMessage(S().errorOpeningLink);
         }

@@ -16,7 +16,7 @@ class RaverIconLink extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () async {
-        final result = await launchURL(url);
+        final result = await launchURL(Uri.parse(url));
         if (result.isSome()) {
           context.showSnackbarMessage(S().errorOpeningLink);
         }
