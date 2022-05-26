@@ -140,7 +140,7 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
 
       final partnerId = partnerDoc.id;
 
-      if (await _checkIfReportExists(partnerId)) {
+      if (await _checkIfReportExists(partnerId, reviewId)) {
         return left(const PartnerReviewFailure.reportExists());
       }
 
@@ -163,7 +163,7 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
 
       final userId = userDoc.id;
 
-      if (await _checkIfReportExists(userId)) {
+      if (await _checkIfReportExists(userId, reviewId)) {
         return left(const UserReviewFailure.reportExists());
       }
 
@@ -182,9 +182,10 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
     return _firestore.userCollection.doc(currentUser.uid).ticketCollection;
   }
 
-  Future<bool> _checkIfReportExists(String reporterId) async {
+  Future<bool> _checkIfReportExists(String reporterId, String reviewId) async {
     final existingReportQuery = await _firestore.reviewReports
         .where('reporterId', isEqualTo: reporterId)
+        .where('reviewId', isEqualTo: reviewId)
         .get();
 
     return existingReportQuery.size > 0;
