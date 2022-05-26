@@ -28,20 +28,23 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
         _logger = logger;
 
   @override
-  Future<Either<UserTicketFailure, List<Ticket>>> getUserTickets() async {
-    try {
-      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+  Stream<Either<UserTicketFailure, List<Ticket>>> getUserTickets() async* {
+    final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
 
-      final result = await userDocRef.ticketCollection.get();
-      return right<UserTicketFailure, List<Ticket>>(
-        result.docs
+    final ticketQuery = userDocRef.ticketCollection;
+
+    yield* ticketQuery
+        .snapshots()
+        .map((snapshot) => right<UserTicketFailure, List<Ticket>>(snapshot.docs
             .map((doc) => TicketDto.fromFirebase(doc).toDomain())
-            .toList(),
-      );
-    } on FirebaseException catch (e) {
-      _logger.e("Exception fetching tickets EXCEPTION: $e");
-      return left(const UserTicketFailure.unexpected());
-    }
+            .toList()))
+        .handleError((e) {
+      if (e is FirebaseException) {
+        _logger
+            .e("Firebase Exception during getting user tickets EXCEPTION: $e");
+        return left(const UserTicketFailure.unexpected());
+      }
+    });
   }
 
   @override
