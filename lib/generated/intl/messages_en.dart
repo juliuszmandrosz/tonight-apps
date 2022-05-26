@@ -123,6 +123,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Are you sure you want to exit the current page? Changes will not be saved"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
+        "confirmReviewReport": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to report this opinion as inappropriate?"),
         "confirmSelectorDeletion": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this selector?"),
         "confirmSignOut": MessageLookupByLibrary.simpleMessage(
@@ -140,6 +142,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateAndTime": MessageLookupByLibrary.simpleMessage("Date and time"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "deletedAllTicketPools": MessageLookupByLibrary.simpleMessage(
+            "The only pool of tickets cannot be removed"),
         "deletedTicketPoolAfterTicketWasSold":
             MessageLookupByLibrary.simpleMessage(
                 "The pool cannot be removed once the sale of tickets has started"),
@@ -253,6 +257,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error opening link"),
         "errorOpeningMaps":
             MessageLookupByLibrary.simpleMessage("Error opening maps"),
+        "errorReportingReview":
+            MessageLookupByLibrary.simpleMessage("Error reporting review"),
         "errorUpdatingEvent":
             MessageLookupByLibrary.simpleMessage("Error updating event"),
         "errorUpdatingReward":
@@ -430,6 +436,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
         "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "report": MessageLookupByLibrary.simpleMessage("Report"),
         "requiredNumberOfEntries":
             MessageLookupByLibrary.simpleMessage("Required number of entries"),
         "resetFilters": MessageLookupByLibrary.simpleMessage("Reset filters"),
@@ -442,6 +449,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "returnTimeIsOver":
             MessageLookupByLibrary.simpleMessage("Time for a return is over"),
         "reviewAdded": MessageLookupByLibrary.simpleMessage("Review added"),
+        "reviewAlreadyReported": MessageLookupByLibrary.simpleMessage(
+            "You have already reported this opinion"),
         "reviewAvg": MessageLookupByLibrary.simpleMessage("Opinions average"),
         "reviewContent": MessageLookupByLibrary.simpleMessage("Your review"),
         "reviewContentTooLong": MessageLookupByLibrary.simpleMessage(
@@ -450,6 +459,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error while loading review"),
         "reviewLoadingFormFailure":
             MessageLookupByLibrary.simpleMessage("Error loading review form"),
+        "reviewReportedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Opinion reported successfully"),
         "reviewsQuantity":
             MessageLookupByLibrary.simpleMessage("Opinions quantity"),
         "rewardAddedSuccessfully":

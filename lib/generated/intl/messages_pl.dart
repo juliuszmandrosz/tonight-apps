@@ -124,6 +124,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Czy na pewno chcesz opuścić bieżącą stronę? Zmiany nie zostaną zapisane"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Potwierdź hasło"),
+        "confirmReviewReport": MessageLookupByLibrary.simpleMessage(
+            "Czy na pewno chcesz zgłosić tę opinię jako niewłaściwą?"),
         "confirmSelectorDeletion": MessageLookupByLibrary.simpleMessage(
             "Czy na pewno chcesz usunąć tego selekcjonera?"),
         "confirmSignOut": MessageLookupByLibrary.simpleMessage(
@@ -141,6 +143,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage("Data"),
         "dateAndTime": MessageLookupByLibrary.simpleMessage("Data i czas"),
         "delete": MessageLookupByLibrary.simpleMessage("Usuń"),
+        "deletedAllTicketPools": MessageLookupByLibrary.simpleMessage(
+            "Nie można usunąć jedynej puli biletów"),
         "deletedTicketPoolAfterTicketWasSold":
             MessageLookupByLibrary.simpleMessage(
                 "Nie można usunąć puli po rozpoczęciu sprzedaży biletów"),
@@ -251,6 +255,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Błąd podczas otwierania linku"),
         "errorOpeningMaps":
             MessageLookupByLibrary.simpleMessage("Błąd podczas otwierania map"),
+        "errorReportingReview": MessageLookupByLibrary.simpleMessage(
+            "Błąd podczas zgłaszania opinii"),
         "errorUpdatingEvent": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas aktualizacji wydarzenia"),
         "errorUpdatingReward": MessageLookupByLibrary.simpleMessage(
@@ -438,6 +444,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "raver": MessageLookupByLibrary.simpleMessage("Raver"),
         "refresh": MessageLookupByLibrary.simpleMessage("Odśwież"),
         "register": MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
+        "report": MessageLookupByLibrary.simpleMessage("Zgłoś"),
         "requiredNumberOfEntries":
             MessageLookupByLibrary.simpleMessage("Wymagana liczba wejść"),
         "resetFilters": MessageLookupByLibrary.simpleMessage("Zresetuj filtry"),
@@ -450,6 +457,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "returnTimeIsOver":
             MessageLookupByLibrary.simpleMessage("Czas na zwrot minął"),
         "reviewAdded": MessageLookupByLibrary.simpleMessage("Opinia dodana"),
+        "reviewAlreadyReported": MessageLookupByLibrary.simpleMessage(
+            "Ta opinia została już przez Ciebie zgłoszona"),
         "reviewAvg": MessageLookupByLibrary.simpleMessage("Średnia opinii"),
         "reviewContent": MessageLookupByLibrary.simpleMessage("Twoja opinia"),
         "reviewContentTooLong": MessageLookupByLibrary.simpleMessage(
@@ -458,6 +467,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wystąpił błąd podczas ładowania opinii"),
         "reviewLoadingFormFailure": MessageLookupByLibrary.simpleMessage(
             "Wystąpił błąd podczas wczytywania formularza opinii"),
+        "reviewReportedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Opinia zgłoszona pomyślnie"),
         "reviewsQuantity": MessageLookupByLibrary.simpleMessage("Ilość opinii"),
         "rewardAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Nagroda została dodana pomyślnie"),

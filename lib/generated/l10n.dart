@@ -526,6 +526,16 @@ class S {
     );
   }
 
+  /// `Are you sure you want to report this opinion as inappropriate?`
+  String get confirmReviewReport {
+    return Intl.message(
+      'Are you sure you want to report this opinion as inappropriate?',
+      name: 'confirmReviewReport',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure you want to delete this selector?`
   String get confirmSelectorDeletion {
     return Intl.message(
@@ -641,6 +651,16 @@ class S {
     return Intl.message(
       'Delete',
       name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The only pool of tickets cannot be removed`
+  String get deletedAllTicketPools {
+    return Intl.message(
+      'The only pool of tickets cannot be removed',
+      name: 'deletedAllTicketPools',
       desc: '',
       args: [],
     );
@@ -1254,6 +1274,16 @@ class S {
     return Intl.message(
       'Error opening maps',
       name: 'errorOpeningMaps',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error reporting review`
+  String get errorReportingReview {
+    return Intl.message(
+      'Error reporting review',
+      name: 'errorReportingReview',
       desc: '',
       args: [],
     );
@@ -2388,6 +2418,16 @@ class S {
     );
   }
 
+  /// `Report`
+  String get report {
+    return Intl.message(
+      'Report',
+      name: 'report',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Required number of entries`
   String get requiredNumberOfEntries {
     return Intl.message(
@@ -2468,6 +2508,16 @@ class S {
     );
   }
 
+  /// `You have already reported this opinion`
+  String get reviewAlreadyReported {
+    return Intl.message(
+      'You have already reported this opinion',
+      name: 'reviewAlreadyReported',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Opinions average`
   String get reviewAvg {
     return Intl.message(
@@ -2513,6 +2563,16 @@ class S {
     return Intl.message(
       'Error loading review form',
       name: 'reviewLoadingFormFailure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Opinion reported successfully`
+  String get reviewReportedSuccessfully {
+    return Intl.message(
+      'Opinion reported successfully',
+      name: 'reviewReportedSuccessfully',
       desc: '',
       args: [],
     );
