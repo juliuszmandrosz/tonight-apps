@@ -3,9 +3,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_clubs/domain/domain.dart';
 import 'package:raver_common/raver_common.dart';
 
-part 'review_dto.freezed.dart';
 
+part 'review_dto.freezed.dart';
 part 'review_dto.g.dart';
+
 
 @freezed
 class ReviewDto with _$ReviewDto {

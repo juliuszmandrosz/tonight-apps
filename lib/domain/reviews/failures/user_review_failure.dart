@@ -5,4 +5,6 @@ part 'user_review_failure.freezed.dart';
 @freezed
 abstract class UserReviewFailure with _$UserReviewFailure {
   const factory UserReviewFailure.unexpected() = _UserReviewFailure;
+
+  const factory UserReviewFailure.reportExists() = _ReportExists;
 }

@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:raver_clubs/domain/reviews/review_entity.dart';
+import 'package:raver_clubs/domain/reviews/entities/review_entity.dart';
 
 import 'failures/user_review_failure.dart';
 
@@ -11,10 +11,17 @@ abstract class UserReviewFacade {
   });
 
   Future<Either<UserReviewFailure, Review>> getReview(
-      String reviewId, String clubId);
+    String reviewId,
+    String clubId,
+  );
 
   Future<Either<UserReviewFailure, List<Review>>> getClubReviewsAsUser(
-      String clubId,
-      {int pageSize = 20,
-      Review? lastReview});
+    String clubId, {
+    int pageSize = 20,
+    Review? lastReview,
+  });
+
+  Future<Either<UserReviewFailure, Unit>> reportReviewAsUser(
+    String reviewId,
+  );
 }

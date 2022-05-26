@@ -2,14 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_clubs/domain/reviews/failures/partner_review_failure.dart';
-import 'package:raver_clubs/domain/reviews/failures/user_review_failure.dart';
-import 'package:raver_clubs/domain/reviews/partner_review_facade.dart';
-import 'package:raver_clubs/domain/reviews/review_entity.dart';
-import 'package:raver_clubs/domain/reviews/user_review_facade.dart';
+import 'package:raver_clubs/domain/domain.dart';
+import 'package:raver_clubs/infrastructure/infrastructure.dart';
 import 'package:raver_common/raver_common.dart';
-
-import 'review_dto.dart';
 
 class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
   final FirebaseFirestore _firestore;
@@ -135,10 +130,78 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
     }
   }
 
+  @override
+  Future<Either<PartnerReviewFailure, Unit>> reportReviewAsPartner(
+    String reviewId,
+  ) async {
+    try {
+      final partnerDoc =
+          await _firestore.getCurrentPartnerDocRef(_firebaseAuth).get();
+
+      final partnerId = partnerDoc.id;
+
+      if (await _checkIfReportExists(partnerId)) {
+        return left(const PartnerReviewFailure.reportExists());
+      }
+
+      await _addReviewReport(reviewId, partnerId);
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      _logger.e("Exception reporting review as partner EXCEPTION: $e");
+      return left(const PartnerReviewFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<UserReviewFailure, Unit>> reportReviewAsUser(
+    String reviewId,
+  ) async {
+    try {
+      final userDoc =
+          await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
+
+      final userId = userDoc.id;
+
+      if (await _checkIfReportExists(userId)) {
+        return left(const UserReviewFailure.reportExists());
+      }
+
+      await _addReviewReport(reviewId, userId);
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      _logger.e("Exception reporting review as user EXCEPTION: $e");
+      return left(const UserReviewFailure.unexpected());
+    }
+  }
+
   CollectionReference _getCurrentUserTicketCollection() {
     final currentUser = _firebaseAuth.tryGetFirebaseUser();
 
     return _firestore.userCollection.doc(currentUser.uid).ticketCollection;
+  }
+
+  Future<bool> _checkIfReportExists(String reporterId) async {
+    final existingReportQuery = await _firestore.reviewReports
+        .where('reporterId', isEqualTo: reporterId)
+        .get();
+
+    return existingReportQuery.size > 0;
+  }
+
+  Future<void> _addReviewReport(String reviewId, String reporterId) async {
+    final reviewReport = ReviewReport(
+      reviewId: reviewId,
+      reporterId: reporterId,
+      reportedAt: DateTime.now(),
+    );
+
+    final reviewReportDto = ReviewReportDto.fromDomain(reviewReport);
+
+    await _firestore.reviewReports
+        .doc(reviewReport.id)
+        .set(reviewReportDto.toJson());
   }
 
   Query _getClubReviewsQuery(String clubId,
