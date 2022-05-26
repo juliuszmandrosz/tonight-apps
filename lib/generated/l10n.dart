@@ -2195,6 +2195,16 @@ class S {
     );
   }
 
+  /// `Phone number`
+  String get phoneNumber {
+    return Intl.message(
+      'Phone number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{count, plural, zero{No photos} one{Photo} other{Photos}}`
   String photos(num count) {
     return Intl.plural(
@@ -2984,6 +2994,16 @@ class S {
     );
   }
 
+  /// `Ticket pool has sold out!`
+  String get ticketPoolHasSoldOut {
+    return Intl.message(
+      'Ticket pool has sold out!',
+      name: 'ticketPoolHasSoldOut',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Ticket Pools`
   String get ticketPools {
     return Intl.message(
@@ -3057,11 +3077,11 @@ class S {
     );
   }
 
-  /// `{count, plural, zero{All tickets have been sold!} one{ticket left!} other{tickets left!}}`
+  /// `{count, plural, zero{ } one{ticket left!} other{tickets left!}}`
   String ticketsLeft(num count) {
     return Intl.plural(
       count,
-      zero: 'All tickets have been sold!',
+      zero: ' ',
       one: 'ticket left!',
       other: 'tickets left!',
       name: 'ticketsLeft',

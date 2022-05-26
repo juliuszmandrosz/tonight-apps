@@ -48,7 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "${Intl.plural(count, zero: 'Brak biletów', one: 'Bilet', few: 'Bilety', many: 'Biletów', other: 'Biletu')}";
 
   static String m9(count) =>
-      "${Intl.plural(count, zero: 'Wszystkie bilety wyprzedane!', one: 'bilet pozostał!', few: 'biletów pozostało!', many: 'biletów pozostało!', other: 'biletów pozostało!')}";
+      "${Intl.plural(count, zero: ' ', one: 'bilet pozostał!', few: 'bilety pozostały!', many: 'biletów pozostało!', other: 'biletów pozostało!')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -412,6 +412,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Płatność potwierdzona"),
         "paymentError": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas płatności, proszę skontaktuj się z obsługą"),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("Numer telefonu"),
         "photos": m5,
         "pool": MessageLookupByLibrary.simpleMessage("Pula"),
         "poolNo": MessageLookupByLibrary.simpleMessage("Pula Nr."),
@@ -531,6 +532,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bilet stracił ważność"),
         "ticketForAnotherEvent": MessageLookupByLibrary.simpleMessage(
             "Bilet jest na inne wydarzenie"),
+        "ticketPoolHasSoldOut": MessageLookupByLibrary.simpleMessage(
+            "Pula biletów została wyprzedana!"),
         "ticketPools": MessageLookupByLibrary.simpleMessage("Pule biletów"),
         "ticketPrice": MessageLookupByLibrary.simpleMessage("Cena biletu"),
         "ticketPriceTooHigh":
