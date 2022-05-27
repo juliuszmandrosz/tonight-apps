@@ -27,7 +27,7 @@ dependencies:
 
   raver_common:
     git:
-      url: https://github.com/juliuszmandrosz/RaverCommon.git
+      url: git@github.com:juliuszmandrosz/RaverCommon.git
 
 dev_dependencies:
   flutter_test:
