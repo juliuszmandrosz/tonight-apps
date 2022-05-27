@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:raver_payments/domain/domain.dart';
+import 'package:raver_payments/domain/promotion_code_entity.dart';
 
 abstract class UserPaymentFacade {
   Future<Either<UserPaymentFailure, Unit>> proceedToPayForTicket({
@@ -14,4 +15,8 @@ abstract class UserPaymentFacade {
     required String currency,
     String? promotionCode,
   });
+
+  Future<Either<UserPaymentFailure, PromotionCode>> getPromotionCode(
+      String promotionCode,
+      );
 }

@@ -1,25 +1,60 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_payments/domain/domain.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_payments/domain/facades/user_payment_facade.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_errors.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
+import 'dtos/promotion_code_dto.dart';
 
 class FirebasePaymentFacade implements PartnerPaymentFacade, UserPaymentFacade {
   final Logger _logger;
   final Stripe _stripe;
   final PaymentCloudFunctionsFacade _paymentCloudFunctionsFacade;
+  final FirebaseFirestore _firestore;
+  final FirebaseAuth _firebaseAuth;
 
   FirebasePaymentFacade({
     required Stripe stripe,
     required Logger logger,
     required PaymentCloudFunctionsFacade paymentCloudFunctionsFacade,
+    required FirebaseFirestore firestore,
+    required FirebaseAuth firebaseAuth,
   })  : _logger = logger,
         _stripe = stripe,
-        _paymentCloudFunctionsFacade = paymentCloudFunctionsFacade;
+        _paymentCloudFunctionsFacade = paymentCloudFunctionsFacade,
+        _firestore = firestore,
+        _firebaseAuth = firebaseAuth;
+
+  @override
+  Future<Either<UserPaymentFailure, PromotionCode>> getPromotionCode(
+    String promotionCode,
+  ) async {
+    final userDoc = _firestore.getCurrentUserDocRef(_firebaseAuth);
+    try {
+      final result =
+          await userDoc.promotionCodesCollection.doc(promotionCode).get();
+
+      if (result.data() == null) {
+        return left(const UserPaymentFailure.invalidPromotionCode());
+      }
+
+      final code = PromotionCodeDto.fromFirebase(result).toDomain();
+
+      if (!code.isValid) {
+        return left(const UserPaymentFailure.promotionCodeExpired());
+      }
+
+      return right(code);
+    } on FirebaseException catch (e) {
+      _logger.e("Exception getting promotion code EXCEPTION: $e");
+      return left(const UserPaymentFailure.unexpected());
+    }
+  }
 
   @override
   Future<Either<PartnerPaymentFailure, Unit>> proceedToPayForEventCancelation({
