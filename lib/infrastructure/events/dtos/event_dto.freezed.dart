@@ -32,6 +32,7 @@ mixin _$EventDto {
   int get minAge => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
+  String get eventPhotoUrl => throw _privateConstructorUsedError;
   String get allowedOutfit => throw _privateConstructorUsedError;
   List<String> get musicalGenres => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -39,7 +40,6 @@ mixin _$EventDto {
   @JsonKey(name: '_geoloc')
   Map<String, double> get location => throw _privateConstructorUsedError;
   String get cityId => throw _privateConstructorUsedError;
-  List<String> get photos => throw _privateConstructorUsedError;
   Map<String, String> get urlLinks => throw _privateConstructorUsedError;
   bool get isConcert => throw _privateConstructorUsedError;
   int get attending => throw _privateConstructorUsedError;
@@ -66,13 +66,13 @@ abstract class $EventDtoCopyWith<$Res> {
       int minAge,
       int price,
       String currency,
+      String eventPhotoUrl,
       String allowedOutfit,
       List<String> musicalGenres,
       String? description,
       String? artistName,
       @JsonKey(name: '_geoloc') Map<String, double> location,
       String cityId,
-      List<String> photos,
       Map<String, String> urlLinks,
       bool isConcert,
       int attending,
@@ -99,13 +99,13 @@ class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
     Object? minAge = freezed,
     Object? price = freezed,
     Object? currency = freezed,
+    Object? eventPhotoUrl = freezed,
     Object? allowedOutfit = freezed,
     Object? musicalGenres = freezed,
     Object? description = freezed,
     Object? artistName = freezed,
     Object? location = freezed,
     Object? cityId = freezed,
-    Object? photos = freezed,
     Object? urlLinks = freezed,
     Object? isConcert = freezed,
     Object? attending = freezed,
@@ -149,6 +149,10 @@ class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
+      eventPhotoUrl: eventPhotoUrl == freezed
+          ? _value.eventPhotoUrl
+          : eventPhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       allowedOutfit: allowedOutfit == freezed
           ? _value.allowedOutfit
           : allowedOutfit // ignore: cast_nullable_to_non_nullable
@@ -173,10 +177,6 @@ class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
           ? _value.cityId
           : cityId // ignore: cast_nullable_to_non_nullable
               as String,
-      photos: photos == freezed
-          ? _value.photos
-          : photos // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       urlLinks: urlLinks == freezed
           ? _value.urlLinks
           : urlLinks // ignore: cast_nullable_to_non_nullable
@@ -217,13 +217,13 @@ abstract class _$$_EventDtoCopyWith<$Res> implements $EventDtoCopyWith<$Res> {
       int minAge,
       int price,
       String currency,
+      String eventPhotoUrl,
       String allowedOutfit,
       List<String> musicalGenres,
       String? description,
       String? artistName,
       @JsonKey(name: '_geoloc') Map<String, double> location,
       String cityId,
-      List<String> photos,
       Map<String, String> urlLinks,
       bool isConcert,
       int attending,
@@ -252,13 +252,13 @@ class __$$_EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
     Object? minAge = freezed,
     Object? price = freezed,
     Object? currency = freezed,
+    Object? eventPhotoUrl = freezed,
     Object? allowedOutfit = freezed,
     Object? musicalGenres = freezed,
     Object? description = freezed,
     Object? artistName = freezed,
     Object? location = freezed,
     Object? cityId = freezed,
-    Object? photos = freezed,
     Object? urlLinks = freezed,
     Object? isConcert = freezed,
     Object? attending = freezed,
@@ -302,6 +302,10 @@ class __$$_EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
+      eventPhotoUrl: eventPhotoUrl == freezed
+          ? _value.eventPhotoUrl
+          : eventPhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       allowedOutfit: allowedOutfit == freezed
           ? _value.allowedOutfit
           : allowedOutfit // ignore: cast_nullable_to_non_nullable
@@ -326,10 +330,6 @@ class __$$_EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
           ? _value.cityId
           : cityId // ignore: cast_nullable_to_non_nullable
               as String,
-      photos: photos == freezed
-          ? _value._photos
-          : photos // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       urlLinks: urlLinks == freezed
           ? _value._urlLinks
           : urlLinks // ignore: cast_nullable_to_non_nullable
@@ -368,13 +368,13 @@ class _$_EventDto extends _EventDto {
       required this.minAge,
       required this.price,
       required this.currency,
+      required this.eventPhotoUrl,
       required this.allowedOutfit,
       required final List<String> musicalGenres,
       this.description,
       this.artistName,
       @JsonKey(name: '_geoloc') required final Map<String, double> location,
       required this.cityId,
-      final List<String> photos = const [],
       final Map<String, String> urlLinks = const {},
       this.isConcert = false,
       this.attending = 0,
@@ -382,7 +382,6 @@ class _$_EventDto extends _EventDto {
       this.isBeingPostponed = false})
       : _musicalGenres = musicalGenres,
         _location = location,
-        _photos = photos,
         _urlLinks = urlLinks,
         super._();
 
@@ -411,6 +410,8 @@ class _$_EventDto extends _EventDto {
   @override
   final String currency;
   @override
+  final String eventPhotoUrl;
+  @override
   final String allowedOutfit;
   final List<String> _musicalGenres;
   @override
@@ -433,14 +434,6 @@ class _$_EventDto extends _EventDto {
 
   @override
   final String cityId;
-  final List<String> _photos;
-  @override
-  @JsonKey()
-  List<String> get photos {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_photos);
-  }
-
   final Map<String, String> _urlLinks;
   @override
   @JsonKey()
@@ -464,7 +457,7 @@ class _$_EventDto extends _EventDto {
 
   @override
   String toString() {
-    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, currency: $currency, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, photos: $photos, urlLinks: $urlLinks, isConcert: $isConcert, attending: $attending, isCanceled: $isCanceled, isBeingPostponed: $isBeingPostponed)';
+    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, urlLinks: $urlLinks, isConcert: $isConcert, attending: $attending, isCanceled: $isCanceled, isBeingPostponed: $isBeingPostponed)';
   }
 
   @override
@@ -484,6 +477,8 @@ class _$_EventDto extends _EventDto {
             const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality().equals(other.currency, currency) &&
             const DeepCollectionEquality()
+                .equals(other.eventPhotoUrl, eventPhotoUrl) &&
+            const DeepCollectionEquality()
                 .equals(other.allowedOutfit, allowedOutfit) &&
             const DeepCollectionEquality()
                 .equals(other._musicalGenres, _musicalGenres) &&
@@ -493,7 +488,6 @@ class _$_EventDto extends _EventDto {
                 .equals(other.artistName, artistName) &&
             const DeepCollectionEquality().equals(other._location, _location) &&
             const DeepCollectionEquality().equals(other.cityId, cityId) &&
-            const DeepCollectionEquality().equals(other._photos, _photos) &&
             const DeepCollectionEquality().equals(other._urlLinks, _urlLinks) &&
             const DeepCollectionEquality().equals(other.isConcert, isConcert) &&
             const DeepCollectionEquality().equals(other.attending, attending) &&
@@ -516,13 +510,13 @@ class _$_EventDto extends _EventDto {
         const DeepCollectionEquality().hash(minAge),
         const DeepCollectionEquality().hash(price),
         const DeepCollectionEquality().hash(currency),
+        const DeepCollectionEquality().hash(eventPhotoUrl),
         const DeepCollectionEquality().hash(allowedOutfit),
         const DeepCollectionEquality().hash(_musicalGenres),
         const DeepCollectionEquality().hash(description),
         const DeepCollectionEquality().hash(artistName),
         const DeepCollectionEquality().hash(_location),
         const DeepCollectionEquality().hash(cityId),
-        const DeepCollectionEquality().hash(_photos),
         const DeepCollectionEquality().hash(_urlLinks),
         const DeepCollectionEquality().hash(isConcert),
         const DeepCollectionEquality().hash(attending),
@@ -552,13 +546,13 @@ abstract class _EventDto extends EventDto {
       required final int minAge,
       required final int price,
       required final String currency,
+      required final String eventPhotoUrl,
       required final String allowedOutfit,
       required final List<String> musicalGenres,
       final String? description,
       final String? artistName,
       @JsonKey(name: '_geoloc') required final Map<String, double> location,
       required final String cityId,
-      final List<String> photos,
       final Map<String, String> urlLinks,
       final bool isConcert,
       final int attending,
@@ -590,6 +584,8 @@ abstract class _EventDto extends EventDto {
   @override
   String get currency => throw _privateConstructorUsedError;
   @override
+  String get eventPhotoUrl => throw _privateConstructorUsedError;
+  @override
   String get allowedOutfit => throw _privateConstructorUsedError;
   @override
   List<String> get musicalGenres => throw _privateConstructorUsedError;
@@ -602,8 +598,6 @@ abstract class _EventDto extends EventDto {
   Map<String, double> get location => throw _privateConstructorUsedError;
   @override
   String get cityId => throw _privateConstructorUsedError;
-  @override
-  List<String> get photos => throw _privateConstructorUsedError;
   @override
   Map<String, String> get urlLinks => throw _privateConstructorUsedError;
   @override

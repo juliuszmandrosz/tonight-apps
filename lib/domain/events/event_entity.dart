@@ -12,11 +12,11 @@ class Event extends Equatable {
   final int minAge;
   final int price;
   final String currency;
+  final String eventPhotoUrl;
   final String allowedOutfit;
   final List<String> musicalGenres;
   final String? artistName;
   final String? description;
-  final List<String> photos;
   final Map<String, double> location;
   final String cityId;
   final Map<String, String> urlLinks;
@@ -35,13 +35,13 @@ class Event extends Equatable {
     required this.minAge,
     required this.price,
     required this.currency,
+    required this.eventPhotoUrl,
     required this.allowedOutfit,
     required this.musicalGenres,
     required this.location,
     required this.cityId,
     this.description,
     this.artistName,
-    this.photos = const [],
     this.urlLinks = const {},
     this.isConcert = false,
     this.attending = 0,
@@ -72,7 +72,7 @@ class Event extends Equatable {
         musicalGenres,
         location,
         cityId,
-        photos,
+        eventPhotoUrl,
         urlLinks,
         description,
         artistName,
@@ -91,6 +91,7 @@ class Event extends Equatable {
     int? minAge,
     int? price,
     String? currency,
+    String? eventPhotoUrl,
     String? allowedOutfit,
     List<String>? musicalGenres,
     Map<String, double>? location,
@@ -100,7 +101,6 @@ class Event extends Equatable {
     Map<String, String>? urlLinks,
     bool? isConcert,
     String? artistName,
-    List<String>? photos,
     bool? isCanceled,
     bool? isBeingPostponed,
   }) {
@@ -114,6 +114,7 @@ class Event extends Equatable {
       minAge: minAge ?? this.minAge,
       price: price ?? this.price,
       currency: currency ?? this.currency,
+      eventPhotoUrl: eventPhotoUrl ?? this.eventPhotoUrl,
       allowedOutfit: allowedOutfit ?? this.allowedOutfit,
       musicalGenres: musicalGenres ?? this.musicalGenres,
       location: location ?? this.location,
@@ -123,7 +124,6 @@ class Event extends Equatable {
       urlLinks: urlLinks ?? this.urlLinks,
       isConcert: isConcert ?? this.isConcert,
       artistName: artistName ?? this.artistName,
-      photos: photos ?? this.photos,
       isCanceled: isCanceled ?? this.isCanceled,
       isBeingPostponed: isBeingPostponed ?? this.isBeingPostponed,
     );

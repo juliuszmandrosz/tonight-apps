@@ -17,6 +17,7 @@ _$_EventDto _$$_EventDtoFromJson(Map<String, dynamic> json) => _$_EventDto(
       minAge: json['minAge'] as int,
       price: json['price'] as int,
       currency: json['currency'] as String,
+      eventPhotoUrl: json['eventPhotoUrl'] as String,
       allowedOutfit: json['allowedOutfit'] as String,
       musicalGenres: (json['musicalGenres'] as List<dynamic>)
           .map((e) => e as String)
@@ -27,10 +28,6 @@ _$_EventDto _$$_EventDtoFromJson(Map<String, dynamic> json) => _$_EventDto(
         (k, e) => MapEntry(k, (e as num).toDouble()),
       ),
       cityId: json['cityId'] as String,
-      photos: (json['photos'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
       urlLinks: (json['urlLinks'] as Map<String, dynamic>?)?.map(
             (k, e) => MapEntry(k, e as String),
           ) ??
@@ -53,13 +50,13 @@ Map<String, dynamic> _$$_EventDtoToJson(_$_EventDto instance) =>
       'minAge': instance.minAge,
       'price': instance.price,
       'currency': instance.currency,
+      'eventPhotoUrl': instance.eventPhotoUrl,
       'allowedOutfit': instance.allowedOutfit,
       'musicalGenres': instance.musicalGenres,
       'description': instance.description,
       'artistName': instance.artistName,
       '_geoloc': instance.location,
       'cityId': instance.cityId,
-      'photos': instance.photos,
       'urlLinks': instance.urlLinks,
       'isConcert': instance.isConcert,
       'attending': instance.attending,
