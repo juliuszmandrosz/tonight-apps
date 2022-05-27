@@ -23,7 +23,7 @@ class SocialIconWithTitle extends StatelessWidget {
           children: [
             RaverIconButton(
               onPressed: () async {
-                final isFailure = await launchURL(url);
+                final isFailure = await launchURL(Uri.parse(url));
                 if (isFailure.isSome()) {
                   context.showSnackbarMessage(S().errorOpeningLink);
                 }

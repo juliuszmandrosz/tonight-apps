@@ -7,7 +7,7 @@ class TonightLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
-      'assets/icons/logo.svg',
+      'assets/icons/full_logo.svg',
       semanticsLabel: 'Tonight Logo',
     );
   }

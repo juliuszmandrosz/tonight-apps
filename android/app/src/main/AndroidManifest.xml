@@ -2,10 +2,13 @@
           package="com.raverteam.raver">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
-            android:label="raver"
+        android:label="Tonight"
             android:name="${applicationName}"
             android:icon="@mipmap/ic_launcher">
+
+
         <activity
                 android:name=".MainActivity"
                 android:exported="true"
