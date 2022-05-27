@@ -13,6 +13,7 @@ class Ticket extends Equatable {
   final String currency;
   final bool isVip;
   final String ticketPaymentId;
+  final int poolNumber;
   final String? vipPaymentId;
   final bool isExpired;
   final bool isEventCanceled;
@@ -20,25 +21,26 @@ class Ticket extends Equatable {
   final bool isReturned;
   final String reviewId;
 
-  Ticket(
-      {String? id,
-      required this.eventId,
-      required this.clubId,
-      required this.clubName,
-      required this.eventName,
-      required this.eventStartDateTime,
-      required this.eventEndDateTime,
-      required this.price,
-      required this.currency,
-      required this.isVip,
-      required this.ticketPaymentId,
-      this.vipPaymentId,
-      this.isExpired = false,
-      this.isEventCanceled = false,
-      this.isReturnable = false,
-      this.isReturned = false,
-      this.reviewId = ''})
-      : id = id ?? const Uuid().v1();
+  Ticket({
+    String? id,
+    required this.eventId,
+    required this.clubId,
+    required this.clubName,
+    required this.eventName,
+    required this.eventStartDateTime,
+    required this.eventEndDateTime,
+    required this.price,
+    required this.currency,
+    required this.isVip,
+    required this.ticketPaymentId,
+    required this.poolNumber,
+    this.vipPaymentId,
+    this.isExpired = false,
+    this.isEventCanceled = false,
+    this.isReturnable = false,
+    this.isReturned = false,
+    this.reviewId = '',
+  }) : id = id ?? const Uuid().v1();
 
   @override
   List<Object?> get props => [
@@ -53,6 +55,7 @@ class Ticket extends Equatable {
         currency,
         isVip,
         ticketPaymentId,
+        poolNumber,
         vipPaymentId,
         isExpired,
         isEventCanceled,
@@ -61,23 +64,25 @@ class Ticket extends Equatable {
         reviewId
       ];
 
-  Ticket copyWith(
-      {String? eventId,
-      String? clubId,
-      int? price,
-      String? currency,
-      bool? isVip,
-      DateTime? eventStartDateTime,
-      DateTime? eventEndDateTime,
-      String? eventName,
-      String? clubName,
-      String? ticketPaymentId,
-      String? vipPaymentId,
-      bool? isExpired,
-      bool? isEventCanceled,
-      bool? isReturnable,
-      bool? isReturned,
-      String? reviewId}) {
+  Ticket copyWith({
+    String? eventId,
+    String? clubId,
+    int? price,
+    String? currency,
+    bool? isVip,
+    DateTime? eventStartDateTime,
+    DateTime? eventEndDateTime,
+    String? eventName,
+    String? clubName,
+    String? ticketPaymentId,
+    int? poolNumber,
+    String? vipPaymentId,
+    bool? isExpired,
+    bool? isEventCanceled,
+    bool? isReturnable,
+    bool? isReturned,
+    String? reviewId,
+  }) {
     return Ticket(
       id: id,
       eventId: eventId ?? this.eventId,
@@ -90,6 +95,7 @@ class Ticket extends Equatable {
       eventStartDateTime: eventStartDateTime ?? this.eventStartDateTime,
       eventEndDateTime: eventEndDateTime ?? this.eventEndDateTime,
       ticketPaymentId: ticketPaymentId ?? this.ticketPaymentId,
+      poolNumber: poolNumber ?? this.poolNumber,
       vipPaymentId: vipPaymentId ?? this.vipPaymentId,
       isExpired: isExpired ?? this.isExpired,
       isEventCanceled: isEventCanceled ?? this.isEventCanceled,

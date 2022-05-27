@@ -34,6 +34,7 @@ mixin _$TicketDto {
   String get currency => throw _privateConstructorUsedError;
   bool get isVip => throw _privateConstructorUsedError;
   String get ticketPaymentId => throw _privateConstructorUsedError;
+  int get poolNumber => throw _privateConstructorUsedError;
   String? get vipPaymentId => throw _privateConstructorUsedError;
   bool get isExpired => throw _privateConstructorUsedError;
   bool get isEventCanceled => throw _privateConstructorUsedError;
@@ -63,6 +64,7 @@ abstract class $TicketDtoCopyWith<$Res> {
       String currency,
       bool isVip,
       String ticketPaymentId,
+      int poolNumber,
       String? vipPaymentId,
       bool isExpired,
       bool isEventCanceled,
@@ -92,6 +94,7 @@ class _$TicketDtoCopyWithImpl<$Res> implements $TicketDtoCopyWith<$Res> {
     Object? currency = freezed,
     Object? isVip = freezed,
     Object? ticketPaymentId = freezed,
+    Object? poolNumber = freezed,
     Object? vipPaymentId = freezed,
     Object? isExpired = freezed,
     Object? isEventCanceled = freezed,
@@ -144,6 +147,10 @@ class _$TicketDtoCopyWithImpl<$Res> implements $TicketDtoCopyWith<$Res> {
           ? _value.ticketPaymentId
           : ticketPaymentId // ignore: cast_nullable_to_non_nullable
               as String,
+      poolNumber: poolNumber == freezed
+          ? _value.poolNumber
+          : poolNumber // ignore: cast_nullable_to_non_nullable
+              as int,
       vipPaymentId: vipPaymentId == freezed
           ? _value.vipPaymentId
           : vipPaymentId // ignore: cast_nullable_to_non_nullable
@@ -190,6 +197,7 @@ abstract class _$$_TicketDtoCopyWith<$Res> implements $TicketDtoCopyWith<$Res> {
       String currency,
       bool isVip,
       String ticketPaymentId,
+      int poolNumber,
       String? vipPaymentId,
       bool isExpired,
       bool isEventCanceled,
@@ -221,6 +229,7 @@ class __$$_TicketDtoCopyWithImpl<$Res> extends _$TicketDtoCopyWithImpl<$Res>
     Object? currency = freezed,
     Object? isVip = freezed,
     Object? ticketPaymentId = freezed,
+    Object? poolNumber = freezed,
     Object? vipPaymentId = freezed,
     Object? isExpired = freezed,
     Object? isEventCanceled = freezed,
@@ -273,6 +282,10 @@ class __$$_TicketDtoCopyWithImpl<$Res> extends _$TicketDtoCopyWithImpl<$Res>
           ? _value.ticketPaymentId
           : ticketPaymentId // ignore: cast_nullable_to_non_nullable
               as String,
+      poolNumber: poolNumber == freezed
+          ? _value.poolNumber
+          : poolNumber // ignore: cast_nullable_to_non_nullable
+              as int,
       vipPaymentId: vipPaymentId == freezed
           ? _value.vipPaymentId
           : vipPaymentId // ignore: cast_nullable_to_non_nullable
@@ -317,6 +330,7 @@ class _$_TicketDto extends _TicketDto {
       required this.currency,
       required this.isVip,
       required this.ticketPaymentId,
+      required this.poolNumber,
       this.vipPaymentId,
       this.isExpired = false,
       this.isEventCanceled = false,
@@ -354,6 +368,8 @@ class _$_TicketDto extends _TicketDto {
   @override
   final String ticketPaymentId;
   @override
+  final int poolNumber;
+  @override
   final String? vipPaymentId;
   @override
   @JsonKey()
@@ -373,7 +389,7 @@ class _$_TicketDto extends _TicketDto {
 
   @override
   String toString() {
-    return 'TicketDto(id: $id, eventId: $eventId, clubId: $clubId, clubName: $clubName, eventName: $eventName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, price: $price, currency: $currency, isVip: $isVip, ticketPaymentId: $ticketPaymentId, vipPaymentId: $vipPaymentId, isExpired: $isExpired, isEventCanceled: $isEventCanceled, isReturnable: $isReturnable, isReturned: $isReturned, reviewId: $reviewId)';
+    return 'TicketDto(id: $id, eventId: $eventId, clubId: $clubId, clubName: $clubName, eventName: $eventName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, price: $price, currency: $currency, isVip: $isVip, ticketPaymentId: $ticketPaymentId, poolNumber: $poolNumber, vipPaymentId: $vipPaymentId, isExpired: $isExpired, isEventCanceled: $isEventCanceled, isReturnable: $isReturnable, isReturned: $isReturned, reviewId: $reviewId)';
   }
 
   @override
@@ -395,6 +411,8 @@ class _$_TicketDto extends _TicketDto {
             const DeepCollectionEquality().equals(other.isVip, isVip) &&
             const DeepCollectionEquality()
                 .equals(other.ticketPaymentId, ticketPaymentId) &&
+            const DeepCollectionEquality()
+                .equals(other.poolNumber, poolNumber) &&
             const DeepCollectionEquality()
                 .equals(other.vipPaymentId, vipPaymentId) &&
             const DeepCollectionEquality().equals(other.isExpired, isExpired) &&
@@ -422,6 +440,7 @@ class _$_TicketDto extends _TicketDto {
       const DeepCollectionEquality().hash(currency),
       const DeepCollectionEquality().hash(isVip),
       const DeepCollectionEquality().hash(ticketPaymentId),
+      const DeepCollectionEquality().hash(poolNumber),
       const DeepCollectionEquality().hash(vipPaymentId),
       const DeepCollectionEquality().hash(isExpired),
       const DeepCollectionEquality().hash(isEventCanceled),
@@ -456,6 +475,7 @@ abstract class _TicketDto extends TicketDto {
       required final String currency,
       required final bool isVip,
       required final String ticketPaymentId,
+      required final int poolNumber,
       final String? vipPaymentId,
       final bool isExpired,
       final bool isEventCanceled,
@@ -492,6 +512,8 @@ abstract class _TicketDto extends TicketDto {
   bool get isVip => throw _privateConstructorUsedError;
   @override
   String get ticketPaymentId => throw _privateConstructorUsedError;
+  @override
+  int get poolNumber => throw _privateConstructorUsedError;
   @override
   String? get vipPaymentId => throw _privateConstructorUsedError;
   @override
