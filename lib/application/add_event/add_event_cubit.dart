@@ -351,6 +351,7 @@ class AddEventCubit extends Cubit<AddEventState> {
       urlLinks: _getUrlLinks(),
       artistName: state.artistName.value,
       isConcert: state.isConcert,
+      eventPhotoUrl: club.clubImageUrl,
     );
 
     final eventTickets = EventTickets(

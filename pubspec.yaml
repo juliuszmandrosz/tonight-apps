@@ -87,7 +87,7 @@ dependencies:
   raver_events:
     git:
       url: https://github.com/juliuszmandrosz/RaverEvents.git
-      ref: feature/event-reviews
+      ref: feature/event-photo
 
   raver_translations:
     git:

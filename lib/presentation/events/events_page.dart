@@ -39,7 +39,7 @@ class EventsPage extends StatelessWidget {
                   ),
                 ),
                 Tab(
-                  icon: const Icon(FontAwesomeIcons.calendarPlus),
+                  icon: const FaIcon(FontAwesomeIcons.calendarPlus),
                   child: AutoSizeText(
                     S().upcoming,
                     textAlign: TextAlign.center,
@@ -47,7 +47,7 @@ class EventsPage extends StatelessWidget {
                   ),
                 ),
                 Tab(
-                  icon: const Icon(FontAwesomeIcons.calendarMinus),
+                  icon: const FaIcon(FontAwesomeIcons.calendarMinus),
                   child: AutoSizeText(
                     S().past,
                     textAlign: TextAlign.center,

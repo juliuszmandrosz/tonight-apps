@@ -294,7 +294,7 @@ packages:
       name: csslib
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.17.1"
+    version: "0.17.2"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -1032,8 +1032,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/event-reviews"
-      resolved-ref: ac00a1f7fed526805a36f6a40e7f4ae43bf2dfd6
+      ref: "feature/event-photo"
+      resolved-ref: ac94df55a08cbb969bac402a4658e849ddb78564
       url: "https://github.com/juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
