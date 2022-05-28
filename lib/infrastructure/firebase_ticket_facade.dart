@@ -33,8 +33,8 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
       final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
 
       final result = await userDocRef.ticketCollection
-          .where('eventStartDateTime', isGreaterThan: Timestamp.now())
-          .orderBy('eventStartDateTime')
+          .where('eventEndDateTime', isGreaterThan: Timestamp.now())
+          .orderBy('eventEndDateTime')
           .get();
 
       return right<UserTicketFailure, List<Ticket>>(
