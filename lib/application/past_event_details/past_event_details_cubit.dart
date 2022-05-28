@@ -13,7 +13,7 @@ part 'past_event_details_cubit.freezed.dart';
 part 'past_event_details_state.dart';
 
 class PastEventDetailsCubit extends Cubit<PastEventDetailsState> {
-  final pageSize = 5;
+  final pageSize = 20;
 
   final PartnerEventTicketsFacade _eventTicketsFacade;
   final PartnerEventReviewFacade _eventReviewFacade;
