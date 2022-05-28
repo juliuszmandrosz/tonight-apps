@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -23,7 +22,6 @@ class EventFiltersPlaceOption extends StatelessWidget {
               ],
             ),
             RadioListTile<bool>(
-              activeColor: DefaultColors.primaryColor,
               title: Text(S().findByCity),
               value: false,
               groupValue: filtersState.filters.maxDistanceFilter.enabled,
@@ -31,7 +29,6 @@ class EventFiltersPlaceOption extends StatelessWidget {
                   .changeIsMaxDistanceOption(false),
             ),
             RadioListTile<bool>(
-              activeColor: DefaultColors.primaryColor,
               title: Text(S().findByMaxDistance),
               value: true,
               groupValue: filtersState.filters.maxDistanceFilter.enabled,

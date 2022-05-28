@@ -8,6 +8,7 @@ import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:raver_common/raver_common.dart';
 
 part 'welcome_loading_cubit.freezed.dart';
+
 part 'welcome_loading_state.dart';
 
 class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
@@ -19,7 +20,8 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     required ProfileCubit profileCubit,
     required UserLocationCubit userLocationCubit,
     required RemoteConfigCubit remoteConfigCubit,
-  })  : _profileCubit = profileCubit,
+  })
+      : _profileCubit = profileCubit,
         _userLocationCubit = userLocationCubit,
         _remoteConfigCubit = remoteConfigCubit,
         super(WelcomeLoadingState.initial());
@@ -31,6 +33,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
     Stripe.publishableKey =
         FirebaseRemoteConfig.instance.getString(stripePublishableKey);
+
     await Stripe.instance.applySettings();
   }
 

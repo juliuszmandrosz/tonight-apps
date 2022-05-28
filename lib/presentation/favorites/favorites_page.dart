@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/user_favorites/club_favorites/user_club_favorites_cubit.dart';
 import 'package:raver/application/user_favorites/event_favorites/user_event_favorites_cubit.dart';
 import 'package:raver/injection.dart';
+import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/favorites/widgets/favorite_clubs_list.dart';
 import 'package:raver/presentation/favorites/widgets/favorite_events_list.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -12,7 +13,6 @@ class FavoritesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -27,9 +27,9 @@ class FavoritesPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(S().favoriteEvents, style: textTheme.headline2),
+            RaverHeadline(text: S().favoriteEvents),
             const FavoriteEventsList(),
-            Text(S().favoriteClubs, style: textTheme.headline2),
+            RaverHeadline(text: S().favoriteClubs),
             const FavoriteClubsList(),
           ],
         ),

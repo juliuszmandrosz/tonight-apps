@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/user_favorites/club_favorites/user_club_favorites_cubit.dart';
-import 'package:raver/presentation/home/clubs_tab/widgets/club_card.dart';
+import 'package:raver/presentation/clubs/widgets/club_card.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 

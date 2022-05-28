@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:raver_translations/raver_translations.dart';
 
 class RaverAppBar extends StatelessWidget with PreferredSizeWidget {
   final String? title;
@@ -10,8 +9,8 @@ class RaverAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title ?? S().raver),
-      backgroundColor: Theme.of(context).primaryColor,
+      // TODO - add translation
+      title: Text(title ?? 'Tonight'),
       actions: actions,
     );
   }

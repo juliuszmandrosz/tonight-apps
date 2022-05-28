@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class EventFiltersButtons extends StatelessWidget {
@@ -10,7 +9,6 @@ class EventFiltersButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Column(
       children: [
         ElevatedButton(
@@ -18,15 +16,7 @@ class EventFiltersButtons extends StatelessWidget {
             BlocProvider.of<EventFiltersCubit>(context).resetFilters();
             AutoRouter.of(context).pop();
           },
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text(S().resetFilters),
-          ),
-          style: theme.elevatedButtonTheme.style!.copyWith(
-            backgroundColor: MaterialStateProperty.all(
-              DefaultColors.textColorLight,
-            ),
-          ),
+          child: Text(S().resetFilters),
         ),
         const SizedBox(height: 10),
         ElevatedButton(
@@ -34,10 +24,7 @@ class EventFiltersButtons extends StatelessWidget {
             BlocProvider.of<EventFiltersCubit>(context).submitFilters();
             AutoRouter.of(context).pop();
           },
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text(S().applyFilters),
-          ),
+          child: Text(S().applyFilters),
         ),
       ],
     );

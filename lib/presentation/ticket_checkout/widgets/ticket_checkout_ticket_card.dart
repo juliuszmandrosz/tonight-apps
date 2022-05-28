@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
-import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -10,7 +9,6 @@ class TicketCheckoutTicketCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<TicketCheckoutCubit, TicketCheckoutState>(
       builder: (context, state) {
         final isSoldOut =
@@ -37,12 +35,12 @@ class TicketCheckoutTicketCard extends StatelessWidget {
                       children: [
                         Text(
                           ticket?.clubName ?? event!.clubName,
-                          style: theme.textTheme.subtitle1,
+                          style: context.subtitle1,
                         ),
                         const SizedBox(height: 5),
                         Text(
                           ticket?.eventName ?? event!.eventName,
-                          style: theme.textTheme.bodyText1,
+                          style: context.subtitle1,
                         ),
                         const SizedBox(height: 5),
                         Text(
@@ -50,12 +48,12 @@ class TicketCheckoutTicketCard extends StatelessWidget {
                             ticket?.eventStartDateTime ??
                                 event!.eventStartDateTime,
                           ),
-                          style: theme.textTheme.bodyText1,
+                          style: context.subtitle1,
                         ),
                         if (isSoldOut)
                           Text(
                             S().soldOut,
-                            style: theme.textTheme.subtitle1!.copyWith(
+                            style: context.subtitle1.copyWith(
                               color: Colors.red,
                               fontStyle: FontStyle.italic,
                             ),
@@ -70,7 +68,7 @@ class TicketCheckoutTicketCard extends StatelessWidget {
                       '${state.checkoutPrice} ${getCurrencySymbolFromCode(
                         ticket?.currency ?? event!.currency,
                       )}',
-                      style: theme.textTheme.headline1!.copyWith(
+                      style: context.headline6.copyWith(
                         decoration: isSoldOut
                             ? TextDecoration.lineThrough
                             : TextDecoration.none,
@@ -80,13 +78,12 @@ class TicketCheckoutTicketCard extends StatelessWidget {
                   const VerticalDivider(
                     width: 20,
                     thickness: 1,
-                    color: DefaultColors.textColorLight,
                   ),
                   Expanded(
                     child: Text(
                       state.isVip ? S().vipVertical : '',
                       textAlign: TextAlign.center,
-                      style: theme.textTheme.subtitle2,
+                      style: context.subtitle1,
                     ),
                   ),
                 ],

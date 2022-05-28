@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:raver/application/auth/username/username_cubit.dart';
 import 'package:raver/injection.dart';
-import 'package:raver/presentation/config/themes/extensions/text_theme_extension.dart';
+import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/onboarding/widgets/submit_button.dart';
 import 'package:raver/presentation/profile/update_username/widgets/username_input.dart';
 import 'package:raver_auth/raver_auth.dart';
@@ -18,7 +19,6 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return WillPopScope(
       onWillPop: () async => shouldPop,
       child: BlocProvider(
@@ -34,18 +34,16 @@ class OnboardingPage extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Text(
-                            S().onboardingWelcomeTitle,
-                            style: theme.onboardingTitle,
-                          ),
+                          RaverHeadline(text: S().onboardingWelcomeTitle),
                         ],
                       ),
                       const SizedBox(height: 10),
                       Row(
                         children: [
-                          Text(
+                          AutoSizeText(
                             S().onboardingWelcomeSubtitle,
-                            style: theme.onboardingSubtitle,
+                            style: context.subtitle1,
+                            maxLines: 1,
                           ),
                         ],
                       ),

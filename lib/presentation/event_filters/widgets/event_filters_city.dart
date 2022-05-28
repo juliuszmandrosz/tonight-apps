@@ -38,7 +38,6 @@ class _EventFiltersCityState extends State<EventFiltersCity> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
           previous.filters.cityFilter.cityName !=
@@ -85,11 +84,8 @@ class _EventFiltersCityState extends State<EventFiltersCity> {
                           itemCount: state.predictions.length,
                           itemBuilder: (context, index) {
                             return ListTile(
-                              leading: CircleAvatar(
-                                child: Icon(
-                                  Icons.pin_drop,
-                                  color: theme.backgroundColor,
-                                ),
+                              leading: const CircleAvatar(
+                                child: Icon(Icons.pin_drop),
                               ),
                               title:
                                   Text(state.predictions[index].description!),

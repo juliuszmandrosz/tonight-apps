@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:raver/application/clubs/club_details/club_details_cubit.dart';
+import 'package:raver/application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
+import 'package:raver/application/clubs/club_rewards/club_rewards_cubit.dart';
+import 'package:raver/injection.dart';
+import 'package:raver/presentation/club_details/widgets/club_description.dart';
+import 'package:raver/presentation/club_details/widgets/club_details_image.dart';
+import 'package:raver/presentation/club_details/widgets/club_details_tabs.dart';
+import 'package:raver_clubs/raver_clubs.dart';
+
+class ClubDetailsPage extends StatelessWidget {
+  final Club? club;
+  final String? clubId;
+  final String? heroTag;
+
+  const ClubDetailsPage({
+    Key? key,
+    this.clubId,
+    this.club,
+    this.heroTag,
+  })  : assert((club != null || clubId != null), 'Club not available'),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) {
+          final cubit = getIt<ClubDetailsCubit>();
+          clubId != null
+              ? cubit.getClubById(clubId!)
+              : cubit.addClubToState(club!);
+          return cubit;
+        }),
+        BlocProvider(
+            create: (context) =>
+                getIt<ClubRewardsCubit>()..getRewards(clubId ?? club!.id)),
+        BlocProvider(
+            create: (context) => getIt<ClubReviewsBloc>()
+              ..add(ClubReviewsEvent.reviewsFetched(clubId ?? club!.id)))
+      ],
+      child: BlocBuilder<ClubDetailsCubit, ClubDetailsState>(
+        builder: (context, state) {
+          return state.map(
+            initial: (_) => Container(),
+            loadInProgress: (_) => const Center(
+              child: CircularProgressIndicator(),
+            ),
+            loadSuccess: (state) {
+              final club = state.club;
+              return Scaffold(
+                body: SafeArea(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      ClubDetailsImage(
+                          heroTag: heroTag, imageUrl: club.clubImageUrl),
+                      ClubDescription(club: club),
+                      ClubDetailsTabs(club: club),
+                    ],
+                  ),
+                ),
+              );
+            },
+            loadFailure: (state) => Center(
+              child: Text(state.clubFailure.toString()),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}

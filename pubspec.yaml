@@ -84,49 +84,50 @@ dependencies:
   flutter_svg: ^1.0.3
   auto_size_text: ^3.0.0
   visibility_detector: ^0.3.3
+  maps_launcher: ^2.0.1
 
 
   raver_translations:
     git:
-      url: https://github.com/juliuszmandrosz/RaverTranslations.git
+      url: git@github.com:juliuszmandrosz/RaverTranslations.git
 
   raver_account_settings:
     git:
-      url: https://github.com/juliuszmandrosz/RaverAccountSettings.git
+      url: git@github.com:juliuszmandrosz/RaverAccountSettings.git
       ref: develop
 
   raver_common:
     git:
-      url: https://github.com/juliuszmandrosz/RaverCommon.git
+      url: git@github.com:juliuszmandrosz/RaverCommon.git
 
   raver_tickets:
     git:
-      url: https://github.com/juliuszmandrosz/RaverTickets.git
-      ref: develop
+      url: git@github.com:juliuszmandrosz/RaverTickets.git
+      ref: feature/change-get-user-tickets-to-future
 
   raver_auth:
     git:
-      url: https://github.com/juliuszmandrosz/RaverAuth.git
+      url: git@github.com:juliuszmandrosz/RaverAuth.git
       ref: develop
 
   raver_rewards:
     git:
-      url: https://github.com/juliuszmandrosz/RaverRewards.git
+      url: git@github.com:juliuszmandrosz/RaverRewards.git
 
   raver_events:
     git:
-      url: https://github.com/juliuszmandrosz/RaverEvents.git
-      ref: feature/ticket-pools
+      url: git@github.com:juliuszmandrosz/RaverEvents.git
+      ref: develop
 
   raver_clubs:
     git:
-      url: https://github.com/juliuszmandrosz/RaverClubs.git
-      ref: feature/reviews
+      url: git@github.com:juliuszmandrosz/RaverClubs.git
+      ref: develop
 
   raver_payments:
     git:
-      url: https://github.com/juliuszmandrosz/RaverPayments.git
-      ref: feature/methods-from-raver
+      url: git@github.com:juliuszmandrosz/RaverPayments.git
+      ref: develop
 
 
 dev_dependencies:

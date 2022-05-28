@@ -12,10 +12,10 @@ class SignInButton extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.signInStatus != current.signInStatus,
       builder: (context, state) {
-        return ElevatedButton(
-          onPressed: () => context.read<SignInCubit>().sendSignInEmailLink(),
-          child: Padding(
-            padding: const EdgeInsets.all(10),
+        return SizedBox(
+          width: 300,
+          child: ElevatedButton(
+            onPressed: () => context.read<SignInCubit>().sendSignInEmailLink(),
             child: Text(S().signIn),
           ),
         );

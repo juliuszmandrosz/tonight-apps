@@ -10,28 +10,44 @@ part 'ticket_list_state.dart';
 
 class TicketListCubit extends Cubit<TicketListState> {
   final UserTicketFacade _ticketFacade;
-  late StreamSubscription _ticketListSubscription;
 
   TicketListCubit(this._ticketFacade) : super(TicketListState.initial());
 
-  Future<void> getTickets() async {
+  Future<void> getUpcomingTickets() async {
     emit(state.copyWith(status: CubitStatus.loading));
 
-    _ticketListSubscription = _ticketFacade.getUserTickets().listen((result) {
-      result.fold(
-        (failure) => emit(
-          state.copyWith(status: CubitStatus.failure),
-        ),
-        (tickets) => emit(
-          state.copyWith(status: CubitStatus.success, tickets: tickets),
-        ),
-      );
-    });
+    final failureOrSuccess = await _ticketFacade.getUpcomingUserTickets();
+
+    failureOrSuccess.fold(
+      (failure) => emit(
+        state.copyWith(status: CubitStatus.failure),
+      ),
+      (tickets) => emit(
+        state.copyWith(status: CubitStatus.success, tickets: tickets),
+      ),
+    );
   }
 
-  @override
-  Future<void> close() {
-    _ticketListSubscription.cancel();
-    return super.close();
+  addTicketToState(Ticket ticket) {
+    final ticketsCopy = [...state.tickets];
+    ticketsCopy.add(ticket);
+    _sortTicketsByStartDate(ticketsCopy);
+    emit(state.copyWith(tickets: ticketsCopy));
+  }
+
+  updateTicketInState(Ticket oldTicket, Ticket updatedTicket) {
+    final ticketsCopy = [...state.tickets];
+    final index = ticketsCopy.indexOf(oldTicket);
+    ticketsCopy[index] = updatedTicket;
+    emit(state.copyWith(tickets: ticketsCopy));
+  }
+
+  _sortTicketsByStartDate(List<Ticket> tickets) {
+    tickets.sort((a, b) {
+      final firstDate = a.eventStartDateTime;
+      final secondDate = b.eventStartDateTime;
+
+      return firstDate.compareTo(secondDate);
+    });
   }
 }

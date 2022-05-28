@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -12,7 +13,6 @@ class TicketPaymentConfirmPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -23,16 +23,15 @@ class TicketPaymentConfirmPage extends StatelessWidget {
               Center(
                 child: Card(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                  color: theme.primaryColor,
+                  color: context.primaryColor,
                   elevation: 3,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(70),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.all(30),
+                  child: const Padding(
+                    padding: EdgeInsetsDirectional.all(30),
                     child: Icon(
                       Icons.check_rounded,
-                      color: theme.backgroundColor,
                       size: 60,
                     ),
                   ),
@@ -42,15 +41,15 @@ class TicketPaymentConfirmPage extends StatelessWidget {
               Expanded(
                 child: Text(
                   S().paymentConfirmed,
-                  style: theme.textTheme.headline1!.copyWith(
-                    color: theme.primaryColor,
+                  style: context.headline6.copyWith(
+                    color: context.primaryColor,
                     fontSize: 28,
                   ),
                 ),
               ),
               ElevatedButton(
                 onPressed: () => AutoRouter.of(context).replaceAll([
-                  const NavigatorRouter(),
+                  const NavigatorRoute(),
                   EventDetailsRoute(eventId: ticket.eventId),
                   TicketQrRoute(ticket: ticket),
                 ]),

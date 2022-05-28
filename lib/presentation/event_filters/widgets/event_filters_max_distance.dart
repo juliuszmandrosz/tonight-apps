@@ -39,7 +39,6 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
           previous.filters.maxDistanceFilter.maxDistance !=
@@ -76,8 +75,6 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
                                         .toDouble(),
                                     label:
                                         '${filtersState.filters.maxDistanceFilter.maxDistance.round()}',
-                                    activeColor: theme.primaryColor,
-                                    inactiveColor: theme.backgroundColor,
                                     min: 5,
                                     max: 50,
                                     divisions: 9,

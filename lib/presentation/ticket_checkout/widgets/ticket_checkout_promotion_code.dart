@@ -19,11 +19,7 @@ class TicketCheckoutPromotionCode extends HookWidget {
           state.promotionCodeStatus.isSuccess()) {
         return InkWell(
           onTap: () => context.read<TicketCheckoutCubit>().resetPromotionCode(),
-          child: const Icon(
-            Icons.clear,
-            color: Colors.black,
-            size: 18,
-          ),
+          child: const Icon(Icons.clear),
         );
       }
 
@@ -63,7 +59,6 @@ class TicketCheckoutPromotionCode extends HookWidget {
           previous.invalidPromotionCodeMessage !=
               current.invalidPromotionCodeMessage,
       builder: (context, state) {
-        final textTheme = Theme.of(context).textTheme;
         if (state.promotionCode.code.isEmpty) {
           _controller.text = '';
           FocusManager.instance.primaryFocus?.unfocus();
@@ -90,14 +85,14 @@ class TicketCheckoutPromotionCode extends HookWidget {
                       child: Center(
                         child: Text(
                           state.promotionCode.code.toUpperCase(),
-                          style: textTheme.subtitle1,
+                          style: context.subtitle1,
                         ),
                       ),
                     ),
                     avatar: Text(
                       '-${state.promotionCode.amountOff}'
                       '${getCurrencySymbolFromCode(state.promotionCode.currency)}',
-                      style: textTheme.subtitle1,
+                      style: context.subtitle1,
                     ),
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     onDeleted: () => context

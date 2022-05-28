@@ -8,10 +8,11 @@ class VipProceedToPayButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () => context.read<TicketCheckoutCubit>().proceedToPayForVip(),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
+    return SizedBox(
+      width: 300,
+      child: ElevatedButton(
+        onPressed: () =>
+            context.read<TicketCheckoutCubit>().proceedToPayForVip(),
         child: Text(S().proceedToPay),
       ),
     );

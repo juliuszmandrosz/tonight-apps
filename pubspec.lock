@@ -896,6 +896,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
+  maps_launcher:
+    dependency: "direct main"
+    description:
+      name: maps_launcher
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   matcher:
     dependency: transitive
     description:
@@ -1167,8 +1174,8 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "778ccbcf371d593cc9495b50782d33a031076fb1"
-      url: "https://github.com/juliuszmandrosz/RaverAccountSettings.git"
+      resolved-ref: cf731c7d464824295511e2582f1f7fdae54450be
+      url: "git@github.com:juliuszmandrosz/RaverAccountSettings.git"
     source: git
     version: "0.0.1"
   raver_auth:
@@ -1176,17 +1183,17 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: a74b3d133a3ed43a274de7332bdeeebf062a69a5
-      url: "https://github.com/juliuszmandrosz/RaverAuth.git"
+      resolved-ref: "5f9749fd3328704bfc574163055cada552c046ed"
+      url: "git@github.com:juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
   raver_clubs:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/reviews"
-      resolved-ref: adfac43f6de0b4104b0065f8328bdba60a2f0452
-      url: "https://github.com/juliuszmandrosz/RaverClubs.git"
+      ref: develop
+      resolved-ref: c2504f12b5e796451a2a69705b07c18402500f1c
+      url: "git@github.com:juliuszmandrosz/RaverClubs.git"
     source: git
     version: "0.0.1"
   raver_common:
@@ -1194,26 +1201,26 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "318194b9db21c6e82713b95e2e7c51a532e28e92"
-      url: "https://github.com/juliuszmandrosz/RaverCommon.git"
+      resolved-ref: "12cdf12346a7d6ffbaff3838cb4927ba9052d951"
+      url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
   raver_events:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/ticket-pools"
-      resolved-ref: e89743eb71504902413d53245d326a69ddbfb3b0
-      url: "https://github.com/juliuszmandrosz/RaverEvents.git"
+      ref: develop
+      resolved-ref: ba0ca2bdac029e9b7d0ba3126e46cde4258fdfb2
+      url: "git@github.com:juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
   raver_payments:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/methods-from-raver"
-      resolved-ref: f70d8dda0717441b3e17bddb4f247b1f345d87d0
-      url: "https://github.com/juliuszmandrosz/RaverPayments.git"
+      ref: develop
+      resolved-ref: "18278cb239955e58b18e52c2663ff298016e7878"
+      url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
   raver_rewards:
@@ -1221,17 +1228,17 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "74950e54160308f077114e18989d753c1ea26ed1"
-      url: "https://github.com/juliuszmandrosz/RaverRewards.git"
+      resolved-ref: "0256602042b39e3f04b4e6c604590e6e5c45e9f8"
+      url: "git@github.com:juliuszmandrosz/RaverRewards.git"
     source: git
     version: "0.0.1"
   raver_tickets:
     dependency: "direct main"
     description:
       path: "."
-      ref: develop
-      resolved-ref: b9b096dcf494482e8670b7a7f3ee25f471307b0c
-      url: "https://github.com/juliuszmandrosz/RaverTickets.git"
+      ref: "feature/change-get-user-tickets-to-future"
+      resolved-ref: "16f76dc277a4d4add629d2be820fb7cd0e4158ba"
+      url: "git@github.com:juliuszmandrosz/RaverTickets.git"
     source: git
     version: "0.0.1"
   raver_translations:
@@ -1240,7 +1247,7 @@ packages:
       path: "."
       ref: HEAD
       resolved-ref: ff994d923fa0de1e284624071b4203db31741aa5
-      url: "https://github.com/juliuszmandrosz/RaverTranslations.git"
+      url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"
   rxdart:

@@ -33,8 +33,8 @@ class TicketQrPage extends StatelessWidget {
       child: BlocListener<TicketQrCubit, TicketQrState>(
         listener: (context, state) {
           state.ticketReturnFailureMessage.fold(
-                () => null,
-                (message) => context.showSnackbarMessage(message),
+            () => null,
+            (message) => context.showSnackbarMessage(message),
           );
 
           state.ticketReturnStatus.isLoading()
@@ -55,13 +55,13 @@ class TicketQrPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: QrImage(
-                        data: _getData(context),
-                        version: QrVersions.auto,
-                        size: 300,
-                      ),
+                    QrImage(
+                      data: _getData(context),
+                      version: QrVersions.auto,
+                      size: 300,
+                      foregroundColor: context.onSurfaceColor,
                     ),
+                    const Spacer(),
                     if (!ticket.isVip) const UpgradeToVipButton(),
                     if (ticket.eventStartDateTime.isAfter(
                       DateTime.now().add(const Duration(days: 1)),

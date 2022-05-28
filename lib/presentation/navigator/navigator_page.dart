@@ -20,14 +20,13 @@ class NavigatorPage extends StatelessWidget {
       ..resetFilters()
       ..resetSelectedDay();
     await context.read<EventFavoriteCubit>().getFavoriteEventIds();
-    await context.read<TicketListCubit>().getTickets();
+    await context.read<TicketListCubit>().getUpcomingTickets();
   }
 
   @override
   Widget build(BuildContext context) {
     _resetFiltersAndFetchData(context);
     // TODO - Find why this build method get called twice
-    final theme = Theme.of(context);
     return MultiBlocListener(
       listeners: [
         BlocListener<NetworkCheckCubit, NetworkCheckState>(
@@ -56,47 +55,40 @@ class NavigatorPage extends StatelessWidget {
                 context.read<AuthCubit>().signOut();
                 AutoRouter.of(context).replace(const SignInRoute());
               },
-              icon: FaIcon(
-                FontAwesomeIcons.signOutAlt,
-                color: theme.backgroundColor,
-              ),
+              icon: const FaIcon(FontAwesomeIcons.car),
             )
           ],
         ),
         routes: const [
-          HomeRouter(),
-          TicketsRouter(),
-          FavoritesRouter(),
-          ProfileRouter(),
+          EventsRoute(),
+          ClubsRoute(),
+          TicketsRoute(),
+          FavoritesRoute(),
+          ProfileRoute(),
         ],
         bottomNavigationBuilder: (_, tabsRouter) {
-          return BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            currentIndex: tabsRouter.activeIndex,
-            onTap: tabsRouter.setActiveIndex,
-            items: [
-              BottomNavigationBarItem(
-                icon: const Icon(
-                  Icons.home,
-                ),
-                label: S().home,
+          return NavigationBar(
+            selectedIndex: tabsRouter.activeIndex,
+            onDestinationSelected: tabsRouter.setActiveIndex,
+            destinations: [
+              NavigationDestination(
+                icon: const FaIcon(FontAwesomeIcons.fire),
+                label: S().events(2),
               ),
-              BottomNavigationBarItem(
-                icon: const Icon(
-                  FontAwesomeIcons.ticketAlt,
-                ),
+              NavigationDestination(
+                icon: const FaIcon(FontAwesomeIcons.city),
+                label: S().clubs(2),
+              ),
+              NavigationDestination(
+                icon: const FaIcon(FontAwesomeIcons.ticket),
                 label: S().tickets(2),
               ),
-              BottomNavigationBarItem(
-                icon: const Icon(
-                  Icons.favorite,
-                ),
+              NavigationDestination(
+                icon: const FaIcon(FontAwesomeIcons.solidHeart),
                 label: S().favorites,
               ),
-              BottomNavigationBarItem(
-                icon: const FaIcon(
-                  FontAwesomeIcons.userAlt,
-                ),
+              NavigationDestination(
+                icon: const FaIcon(FontAwesomeIcons.solidUser),
                 label: S().profile,
               ),
             ],

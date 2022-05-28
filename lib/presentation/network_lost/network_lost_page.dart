@@ -10,19 +10,17 @@ class NetworkLostPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return WillPopScope(
       onWillPop: () async {
         return context.read<NetworkCheckCubit>().state.isConnected;
       },
       child: Scaffold(
-        backgroundColor: theme.backgroundColor,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               S().lostNetworkConnectionDescription,
-              style: theme.textTheme.headline1,
+              style: context.headline6,
               textAlign: TextAlign.center,
             ),
             Lottie.asset("assets/animations/no_connection_anim.json"),

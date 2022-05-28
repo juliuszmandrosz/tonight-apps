@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class TicketCheckoutIsVipSwitch extends StatelessWidget {
@@ -8,7 +9,6 @@ class TicketCheckoutIsVipSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocBuilder<TicketCheckoutCubit, TicketCheckoutState>(
       buildWhen: (previous, current) => previous.isVip != current.isVip,
       builder: (context, state) {
@@ -19,7 +19,10 @@ class TicketCheckoutIsVipSwitch extends StatelessWidget {
                 contentPadding: const EdgeInsets.all(5),
               ),
               child: SwitchListTile.adaptive(
-                title: Text(S().vip, style: theme.textTheme.subtitle1),
+                title: Text(
+                  S().vip,
+                  style: context.subtitle1,
+                ),
                 value: state.isVip,
                 onChanged: (value) =>
                     context.read<TicketCheckoutCubit>().isVipChanged(value),

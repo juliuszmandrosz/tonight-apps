@@ -1,16 +1,24 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:raver_common/raver_common.dart';
 
 class RaverHeadline extends StatelessWidget {
   final String text;
+  final bool isSmallerVersion;
 
-  const RaverHeadline({required this.text, Key? key}) : super(key: key);
+  const RaverHeadline({
+    required this.text,
+    this.isSmallerVersion = false,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return Text(
+    return AutoSizeText(
       text,
-      style: textTheme.headline1,
+      style: isSmallerVersion ? context.headline6 : context.headline5,
+      maxLines: 1,
+      textAlign: TextAlign.center,
     );
   }
 }

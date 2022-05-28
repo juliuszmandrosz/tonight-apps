@@ -13,7 +13,6 @@ class RaverIconButton extends RaverIcon {
     return IconButton(
       onPressed: onPressed,
       icon: icon,
-      color: Theme.of(context).primaryColor,
     );
   }
 }

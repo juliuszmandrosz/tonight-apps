@@ -15,13 +15,14 @@ class TicketCheckoutState with _$TicketCheckoutState {
     required CubitStatus proceedingToPaymentStatus,
     required bool isVip,
     required int checkoutPrice,
-    required bool hasTicketPoolChanged,
+    required bool hasTicketPoolSoldOut,
+    required bool hasTicketPoolRestored,
     required Option<Ticket> purchasedTicket,
     required Option<EventTickets> eventTickets,
   }) = _TicketPaymentState;
 
   factory TicketCheckoutState.initial() => TicketCheckoutState(
-    promotionCode: PromotionCode.empty(),
+        promotionCode: PromotionCode.empty(),
         eventInitData: none(),
         ticketInitData: none(),
         invalidPromotionCodeMessage: none(),
@@ -31,7 +32,8 @@ class TicketCheckoutState with _$TicketCheckoutState {
         promotionCodeStatus: CubitStatus.initial,
         isVip: false,
         checkoutPrice: 0,
-        hasTicketPoolChanged: false,
+        hasTicketPoolSoldOut: false,
+        hasTicketPoolRestored: false,
         purchasedTicket: none(),
         eventTickets: none(),
       );

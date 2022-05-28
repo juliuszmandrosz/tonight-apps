@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/presentation/config/themes/default_theme/default_colors.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -16,7 +15,6 @@ class EventFiltersMusic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
           previous.filters.musicalGenresFilter.musicalGenres !=
@@ -32,10 +30,9 @@ class EventFiltersMusic extends StatelessWidget {
               children: [
                 for (var genre in availableMusicalGenres)
                   CheckboxListTile(
-                    activeColor: DefaultColors.primaryColor,
                     title: Text(
                       genre.capitalize(),
-                      style: textTheme.subtitle1,
+                      style: context.subtitle1,
                     ),
                     controlAffinity: ListTileControlAffinity.leading,
                     value: state.filters.musicalGenresFilter.musicalGenres

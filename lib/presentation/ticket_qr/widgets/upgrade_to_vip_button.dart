@@ -13,16 +13,21 @@ class UpgradeToVipButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TicketQrCubit, TicketQrState>(
       builder: (context, state) {
-        return ElevatedButton(
-          onPressed: () => AutoRouter.of(context).push(
-            TicketCheckoutRoute(
-              ticket: state.ticket.getOrCrash(),
+        return Column(
+          children: [
+            SizedBox(
+              width: 300,
+              child: ElevatedButton(
+                onPressed: () => AutoRouter.of(context).push(
+                  TicketCheckoutRoute(
+                    ticket: state.ticket.getOrCrash(),
+                  ),
+                ),
+                child: Text(S().upgradeToVip),
+              ),
             ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text(S().upgradeToVip),
-          ),
+            const SizedBox(height: 20),
+          ],
         );
       },
     );

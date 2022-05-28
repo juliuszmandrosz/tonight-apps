@@ -35,23 +35,25 @@ class TicketQrCubit extends Cubit<TicketQrState> {
       ticket.id,
     );
 
-    failureOrSuccess.fold(
+    await failureOrSuccess.fold(
       (failure) => _emitTicketReturnFailure(failure),
-      (success) {
-        _waitForTicketToBeDeleted();
-      },
+      (success) async => await _waitForTicketToBeUpdated(),
     );
   }
 
-  _waitForTicketToBeDeleted() {
-    final ticket = state.ticket.getOrCrash();
+  Future<void> _waitForTicketToBeUpdated() async {
+    final oldTicket = state.ticket.getOrCrash();
 
-    _ticketListCubit.stream.listen((ticketListState) {
-      final ticketExistInTicketList = ticketListState.tickets.contains(ticket);
-      if (!ticketExistInTicketList) {
+    final failureOrSuccess =
+        await _ticketFacade.waitForTicketToBeUpdated(oldTicket.eventId);
+
+    failureOrSuccess.fold(
+      (failure) => _emitTicketReturnFailure(failure),
+      (ticket) {
+        _ticketListCubit.updateTicketInState(oldTicket, ticket);
         emit(state.copyWith(ticketReturnStatus: CubitStatus.success));
-      }
-    });
+      },
+    );
   }
 
   _emitTicketReturnFailure(UserTicketFailure failure) {

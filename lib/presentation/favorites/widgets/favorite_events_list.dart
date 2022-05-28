@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/user_favorites/event_favorites/user_event_favorites_cubit.dart';
-import 'package:raver/presentation/home/events_tab/widgets/event_card.dart';
 import 'package:raver_common/application/application.dart';
 import 'package:raver_translations/raver_translations.dart';
+
+import '../../events/widgets/event_card.dart';
 
 class FavoriteEventsList extends StatelessWidget {
   const FavoriteEventsList({Key? key}) : super(key: key);

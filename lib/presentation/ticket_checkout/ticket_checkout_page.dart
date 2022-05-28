@@ -54,7 +54,9 @@ class TicketCheckoutPage extends StatelessWidget {
                     current.paymentFailureMessage ||
                 previous.proceedingToPaymentStatus !=
                     current.proceedingToPaymentStatus ||
-                previous.hasTicketPoolChanged != current.hasTicketPoolChanged,
+                previous.hasTicketPoolRestored !=
+                    current.hasTicketPoolRestored ||
+                previous.hasTicketPoolRestored != current.hasTicketPoolRestored,
             listener: (context, state) {
               if (state.proceedingToPaymentStatus.isSuccess() &&
                   state.purchasedTicket.isSome()) {
@@ -78,8 +80,14 @@ class TicketCheckoutPage extends StatelessWidget {
                 (error) => context.showSnackbarMessage(error),
               );
 
-              if (state.hasTicketPoolChanged) {
+              if (state.hasTicketPoolSoldOut) {
                 context.showSnackbarMessage(S().ticketPoolHasSoldOut);
+              }
+
+              if (state.hasTicketPoolRestored) {
+                context.showSnackbarMessage(
+                    // TODO - add translation
+                    'Poprzednia pula biletów znowu jest dostępna!');
               }
             },
             builder: (context, state) {
@@ -92,7 +100,7 @@ class TicketCheckoutPage extends StatelessWidget {
                         horizontal: 20,
                         vertical: 20,
                       ),
-                      child: ListView(
+                      child: Column(
                         children: [
                           const TicketCheckoutHeader(),
                           const SizedBox(height: 20),
@@ -100,7 +108,7 @@ class TicketCheckoutPage extends StatelessWidget {
                           const SizedBox(height: 20),
                           if (event != null) const TicketCheckoutIsVipSwitch(),
                           const TicketCheckoutPromotionCode(),
-                          const SizedBox(height: 30),
+                          const Spacer(),
                           const TicketCheckoutPaySection(),
                         ],
                       ),

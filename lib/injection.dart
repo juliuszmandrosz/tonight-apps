@@ -18,6 +18,7 @@ import 'package:raver/application/auth/username/username_cubit.dart';
 import 'package:raver/application/clubs/club_details/club_details_cubit.dart';
 import 'package:raver/application/clubs/club_details/club_photos/club_photos_bloc.dart';
 import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
+import 'package:raver/application/clubs/club_rewards/club_rewards_cubit.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
 import 'package:raver/application/core/google_places/google_places_cubit.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
@@ -39,7 +40,10 @@ import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_payments/domain/facades/user_payment_facade.dart';
-import 'package:raver_payments/infrastructure/infrastructure.dart';
+import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
+import 'package:raver_payments/infrastructure/firebase_payment_facade.dart';
+import 'package:raver_rewards/domain/domain.dart';
+import 'package:raver_rewards/infrastructure/firebase_reward_facade.dart';
 import 'package:raver_tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 
@@ -258,8 +262,15 @@ void _registerCubits() {
       paymentFacade: getIt(),
       eventTicketsCubit: getIt(),
       ticketListCubit: ticketListCubit,
+      userTicketFacade: getIt(),
     ),
   );
+
+  //Rewards
+  getIt.registerFactory(() => ClubRewardsCubit(
+        getIt(),
+        getIt(),
+      ));
 }
 
 void _registerCubitSubjects() {
@@ -401,6 +412,15 @@ void _registerFacades() {
   getIt.registerLazySingleton<ClubCloudFunctionsFacade>(
     () => ClubCloudFunctionsFacadeImpl(
       getIt(),
+    ),
+  );
+
+  //Rewards
+  getIt.registerLazySingleton<UserRewardFacade>(
+    () => FirebaseRewardFacade(
+      firebaseAuth: getIt(),
+      firestore: getIt(),
+      logger: getIt(),
     ),
   );
 }
