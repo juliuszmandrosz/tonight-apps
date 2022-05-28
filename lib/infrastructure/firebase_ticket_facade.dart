@@ -44,7 +44,7 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
       );
     } on FirebaseException catch (e) {
       _logger
-          .e("Firebase Exception getting user upcoming tickets EXCEPTION: $e");
+          .e("Firebase Exception getting upcoming user tickets EXCEPTION: $e");
       return left(const UserTicketFailure.unexpected());
     }
   }
@@ -76,8 +76,69 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
             .toList(),
       );
     } on FirebaseException catch (e) {
-      _logger
-          .e("Firebase Exception getting user upcoming tickets EXCEPTION: $e");
+      _logger.e("Firebase Exception getting past user tickets EXCEPTION: $e");
+      return left(const UserTicketFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<UserTicketFailure, Ticket>> waitForTicketToBeCreated(
+    String eventId,
+  ) async {
+    try {
+      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+
+      Ticket result;
+
+      final query = userDocRef.ticketCollection
+          .where('eventId', isEqualTo: eventId)
+          .limit(1);
+
+      final snapshot = await query.snapshots().firstWhere(
+            (snap) => snap.docChanges
+                .any((change) => change.type == DocumentChangeType.added),
+          );
+
+      result = snapshot.docs
+          .map((doc) => TicketDto.fromFirebase(doc).toDomain())
+          .first;
+
+      return right(result);
+    } on FirebaseException catch (e) {
+      _logger.e(
+        "Firebase Exception waiting for ticket to be created EXCEPTION: $e",
+      );
+      return left(const UserTicketFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<UserTicketFailure, Ticket>> waitForTicketToBeUpdated(
+    String eventId,
+  ) async {
+    try {
+      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+
+      Ticket result;
+
+      final query = userDocRef.ticketCollection
+          .where('eventId', isEqualTo: eventId)
+          .limit(1);
+
+      final snapshot = await query.snapshots().firstWhere(
+            (snap) => snap.docChanges
+                .any((change) => change.type == DocumentChangeType.modified),
+          );
+
+      result = snapshot.docs
+          .map((doc) => TicketDto.fromFirebase(doc).toDomain())
+          .first;
+
+      return right(result);
+    } on FirebaseException catch (e) {
+      _logger.e(
+        "Firebase Exception waiting for ticket to be updated EXCEPTION: $e",
+      );
       return left(const UserTicketFailure.unexpected());
     }
   }

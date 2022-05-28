@@ -14,4 +14,12 @@ abstract class UserTicketFacade {
     String ticketPaymentId,
     String ticketId,
   );
+
+  Future<Either<UserTicketFailure, Ticket>> waitForTicketToBeCreated(
+    String eventId,
+  );
+
+  Future<Either<UserTicketFailure, Ticket>> waitForTicketToBeUpdated(
+    String eventId,
+  );
 }
