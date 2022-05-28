@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_tickets/domain/domain.dart';
-import 'package:raver_tickets/domain/failures/selector_ticket_failure.dart';
 import 'package:raver_tickets/infrastructure/cloud_functions/cloud_functions_failures.dart';
 import 'package:raver_tickets/infrastructure/cloud_functions/params/return_ticket_params.dart';
 import 'package:raver_tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
@@ -28,23 +27,59 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
         _logger = logger;
 
   @override
-  Stream<Either<UserTicketFailure, List<Ticket>>> getUserTickets() async* {
-    final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+  Future<Either<UserTicketFailure, List<Ticket>>>
+      getUpcomingUserTickets() async {
+    try {
+      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
 
-    final ticketQuery = userDocRef.ticketCollection;
+      final result = await userDocRef.ticketCollection
+          .where('eventStartDateTime', isGreaterThan: Timestamp.now())
+          .orderBy('eventStartDateTime')
+          .get();
 
-    yield* ticketQuery
-        .snapshots()
-        .map((snapshot) => right<UserTicketFailure, List<Ticket>>(snapshot.docs
+      return right<UserTicketFailure, List<Ticket>>(
+        result.docs
             .map((doc) => TicketDto.fromFirebase(doc).toDomain())
-            .toList()))
-        .handleError((e) {
-      if (e is FirebaseException) {
-        _logger
-            .e("Firebase Exception during getting user tickets EXCEPTION: $e");
-        return left(const UserTicketFailure.unexpected());
+            .toList(),
+      );
+    } on FirebaseException catch (e) {
+      _logger
+          .e("Firebase Exception getting user upcoming tickets EXCEPTION: $e");
+      return left(const UserTicketFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<UserTicketFailure, List<Ticket>>> getPastUserTickets({
+    int pageSize = 20,
+    Ticket? lastTicket,
+  }) async {
+    try {
+      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+
+      var query = userDocRef.ticketCollection
+          .where('eventEndDateTime', isLessThanOrEqualTo: Timestamp.now())
+          .orderBy('eventEndDateTime', descending: true)
+          .limit(pageSize);
+
+      if (lastTicket != null) {
+        query = query.startAfter(
+          [Timestamp.fromDate(lastTicket.eventEndDateTime)],
+        );
       }
-    });
+
+      final result = await query.get();
+
+      return right<UserTicketFailure, List<Ticket>>(
+        result.docs
+            .map((doc) => TicketDto.fromFirebase(doc).toDomain())
+            .toList(),
+      );
+    } on FirebaseException catch (e) {
+      _logger
+          .e("Firebase Exception getting user upcoming tickets EXCEPTION: $e");
+      return left(const UserTicketFailure.unexpected());
+    }
   }
 
   @override
