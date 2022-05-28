@@ -32,22 +32,20 @@ class OnboardingPage extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Row(
-                        children: [
-                          RaverHeadline(text: S().onboardingWelcomeTitle),
-                        ],
-                      ),
-                      const SizedBox(height: 10),
-                      Row(
-                        children: [
-                          AutoSizeText(
-                            S().onboardingWelcomeSubtitle,
-                            style: context.subtitle1,
-                            maxLines: 1,
-                          ),
-                        ],
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: RaverHeadline(text: S().onboardingWelcomeTitle),
                       ),
                       const SizedBox(height: 20),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: AutoSizeText(
+                          S().onboardingWelcomeSubtitle,
+                          style: context.headline6,
+                          maxLines: 1,
+                        ),
+                      ),
+                      const SizedBox(height: 30),
                       BlocListener<UsernameCubit, UsernameState>(
                         listener: (context, state) {
                           state.errorMessage.fold(() {}, (error) {

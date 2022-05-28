@@ -95,7 +95,7 @@ class EventDetailsPage extends StatelessWidget {
                                       EventDetailsEventPlace(event: event),
                                       const SizedBox(height: 30),
                                       EventDetailsTicketPools(event: event),
-                                      const SizedBox(height: 30),
+                                      const SizedBox(height: 20),
                                       if (!event.isCanceled &&
                                           event.eventEndDateTime
                                               .isAfter(DateTime.now()))

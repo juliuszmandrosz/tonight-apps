@@ -6,8 +6,25 @@ import 'package:raver/presentation/tickets/widgets/ticket_card.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class TicketsPage extends StatelessWidget {
+class TicketsPage extends StatefulWidget {
   const TicketsPage({Key? key}) : super(key: key);
+
+  @override
+  State<TicketsPage> createState() => _TicketsPageState();
+}
+
+class _TicketsPageState extends State<TicketsPage> {
+  final _scrollController = ScrollController();
+  final _scrollThreshold = 0.95;
+  late final TicketListCubit _ticketListCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+
+    _ticketListCubit = context.read<TicketListCubit>();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,51 +48,70 @@ class TicketsPage extends StatelessWidget {
               );
 
             case CubitStatus.success:
-              final _expiredTickets =
-                  state.tickets.where((ticket) => ticket.isExpired).toList();
-
-              final _upcomingTickets =
-                  state.tickets.where((ticket) => !ticket.isExpired).toList();
-
-              return state.tickets.isEmpty
+              return state.upcomingTickets.isEmpty && state.pastTickets.isEmpty
                   ? Center(child: Text(S().tickets(0)))
-                  : SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          if (_upcomingTickets.isNotEmpty)
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: RaverHeadline(text: S().upcoming),
-                            ),
-                          const SizedBox(height: 20),
-                          ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: _upcomingTickets.length,
-                            itemBuilder: (ctx, i) => TicketCard(
-                              ticket: _upcomingTickets[i],
-                            ),
+                  : ListView(
+                      controller: _scrollController,
+                      children: [
+                        if (state.upcomingTickets.isNotEmpty)
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RaverHeadline(text: S().upcoming),
                           ),
-                          if (_expiredTickets.isNotEmpty)
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: RaverHeadline(text: S().pastTickets),
-                            ),
-                          const SizedBox(height: 20),
-                          ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: _expiredTickets.length,
-                            itemBuilder: (ctx, i) => TicketCard(
-                              ticket: _expiredTickets[i],
-                            ),
+                        const SizedBox(height: 20),
+                        ListView.separated(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: state.upcomingTickets.length,
+                          itemBuilder: (ctx, i) => TicketCard(
+                            ticket: state.upcomingTickets[i],
                           ),
-                        ],
-                      ),
+                          separatorBuilder: (ctx, i) =>
+                              const SizedBox(height: 20),
+                        ),
+                        const SizedBox(height: 30),
+                        if (state.pastTickets.isNotEmpty)
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RaverHeadline(text: S().pastTickets),
+                          ),
+                        const SizedBox(height: 20),
+                        ListView.separated(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: state.pastTickets.length,
+                          itemBuilder: (ctx, i) => TicketCard(
+                            ticket: state.pastTickets[i],
+                          ),
+                          separatorBuilder: (ctx, i) =>
+                              const SizedBox(height: 20),
+                        ),
+                      ],
                     );
           }
         }),
       ),
     );
+  }
+
+  void _onScroll() {
+    if (_isBottom) {
+      _ticketListCubit.fetchNextPagePastTickets();
+    }
+  }
+
+  bool get _isBottom {
+    if (!_scrollController.hasClients) return false;
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.offset;
+    return currentScroll >= (maxScroll * _scrollThreshold);
+  }
+
+  @override
+  void dispose() {
+    _scrollController
+      ..removeListener(_onScroll)
+      ..dispose();
+    super.dispose();
   }
 }

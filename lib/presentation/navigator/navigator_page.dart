@@ -21,6 +21,7 @@ class NavigatorPage extends StatelessWidget {
       ..resetSelectedDay();
     await context.read<EventFavoriteCubit>().getFavoriteEventIds();
     await context.read<TicketListCubit>().getUpcomingTickets();
+    await context.read<TicketListCubit>().getPastTickets();
   }
 
   @override

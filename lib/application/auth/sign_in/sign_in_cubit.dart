@@ -68,7 +68,6 @@ class SignInCubit extends Cubit<SignInState> {
       final Uri? deepLink = dynamicLink.link;
       if (deepLink != null) {
         await _signInWithEmailLink(deepLink);
-        _linkSub.cancel();
       }
     });
   }

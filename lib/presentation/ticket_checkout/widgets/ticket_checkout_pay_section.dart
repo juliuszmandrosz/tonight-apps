@@ -18,11 +18,11 @@ class TicketCheckoutPaySection extends StatelessWidget {
               current.eventTickets.getOrCrash().isSoldOut,
       builder: (context, state) {
         final isVipPayment = state.ticketInitData.isSome();
-        final isCurrentPoolSoldOut = state.eventTickets.getOrCrash().isSoldOut;
+        final isSoldOut = state.eventTickets.getOrCrash().isSoldOut;
         if (isVipPayment) {
           return const VipProceedToPayButton();
         }
-        if (!isCurrentPoolSoldOut) {
+        if (!isSoldOut) {
           return const TicketProceedToPayButton();
         }
         return const SizedBox.shrink();

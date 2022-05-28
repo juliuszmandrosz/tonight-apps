@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
@@ -21,12 +22,10 @@ class TicketPaymentConfirmPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
-                child: Card(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  color: context.primaryColor,
-                  elevation: 3,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(70),
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: context.primaryColor,
                   ),
                   child: const Padding(
                     padding: EdgeInsetsDirectional.all(30),
@@ -38,31 +37,30 @@ class TicketPaymentConfirmPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 30),
-              Expanded(
-                child: Text(
-                  S().paymentConfirmed,
-                  style: context.headline6.copyWith(
-                    color: context.primaryColor,
-                    fontSize: 28,
-                  ),
+              AutoSizeText(
+                S().paymentConfirmed,
+                style: context.headline6.copyWith(
+                  color: context.primaryColor,
+                  fontSize: 28,
                 ),
               ),
-              ElevatedButton(
-                onPressed: () => AutoRouter.of(context).replaceAll([
-                  const NavigatorRoute(),
-                  EventDetailsRoute(eventId: ticket.eventId),
-                  TicketQrRoute(ticket: ticket),
-                ]),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
+              const Spacer(),
+              SizedBox(
+                width: 300,
+                child: ElevatedButton(
+                  onPressed: () => AutoRouter.of(context).replaceAll([
+                    const NavigatorRoute(),
+                    EventDetailsRoute(eventId: ticket.eventId),
+                    TicketQrRoute(ticket: ticket),
+                  ]),
                   child: Text(S().showTicketQrCode),
                 ),
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () => AutoRouter.of(context).popUntilRoot(),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
+              SizedBox(
+                width: 300,
+                child: ElevatedButton(
+                  onPressed: () => AutoRouter.of(context).popUntilRoot(),
                   child: Text(S().backToEventList),
                 ),
               ),

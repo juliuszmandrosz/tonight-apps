@@ -32,6 +32,7 @@ class TicketCheckoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LoaderOverlay(
+      overlayColor: context.shadowColor,
       child: Scaffold(
         appBar: RaverAppBar(title: S().checkout),
         body: BlocProvider(
@@ -48,7 +49,8 @@ class TicketCheckoutPage extends StatelessWidget {
           },
           child: BlocConsumer<TicketCheckoutCubit, TicketCheckoutState>(
             buildWhen: (previous, current) =>
-                previous.initialStatus != current.initialStatus,
+                previous.initialStatus != current.initialStatus ||
+                previous.eventTickets != current.eventTickets,
             listenWhen: (previous, current) =>
                 previous.paymentFailureMessage !=
                     current.paymentFailureMessage ||
@@ -56,7 +58,7 @@ class TicketCheckoutPage extends StatelessWidget {
                     current.proceedingToPaymentStatus ||
                 previous.hasTicketPoolRestored !=
                     current.hasTicketPoolRestored ||
-                previous.hasTicketPoolRestored != current.hasTicketPoolRestored,
+                previous.hasTicketPoolSoldOut != current.hasTicketPoolSoldOut,
             listener: (context, state) {
               if (state.proceedingToPaymentStatus.isSuccess() &&
                   state.purchasedTicket.isSome()) {
@@ -92,23 +94,27 @@ class TicketCheckoutPage extends StatelessWidget {
             },
             builder: (context, state) {
               return state.initialStatus.isLoading()
-                  ? const Center(
-                      child: CircularProgressIndicator(),
-                    )
+                  ? const Center(child: CircularProgressIndicator())
                   : Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 20,
-                      ),
+                      padding: const EdgeInsets.all(15),
                       child: Column(
                         children: [
-                          const TicketCheckoutHeader(),
-                          const SizedBox(height: 20),
-                          const TicketCheckoutTicketCard(),
-                          const SizedBox(height: 20),
-                          if (event != null) const TicketCheckoutIsVipSwitch(),
-                          const TicketCheckoutPromotionCode(),
-                          const Spacer(),
+                          Expanded(
+                            child: ListView(
+                              children: [
+                                const TicketCheckoutHeader(),
+                                const SizedBox(height: 20),
+                                const TicketCheckoutTicketCard(),
+                                const SizedBox(height: 30),
+                                if (event != null &&
+                                    !state.eventTickets.getOrCrash().isSoldOut)
+                                  const TicketCheckoutIsVipSwitch(),
+                                if (!state.eventTickets.getOrCrash().isSoldOut)
+                                  const TicketCheckoutPromotionCode(),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 30),
                           const TicketCheckoutPaySection(),
                         ],
                       ),

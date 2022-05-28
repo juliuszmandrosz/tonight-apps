@@ -14,12 +14,11 @@ class TicketCheckoutHeader extends StatelessWidget {
           previous.eventInitData != current.eventInitData ||
           previous.ticketInitData != current.ticketInitData,
       builder: (context, state) {
-        return Row(
-          children: [
-            RaverHeadline(
-              text: state.eventInitData.isSome() ? S().tickets(1) : S().vip,
-            ),
-          ],
+        return Align(
+          alignment: Alignment.centerLeft,
+          child: RaverHeadline(
+            text: state.eventInitData.isSome() ? S().tickets(1) : S().vip,
+          ),
         );
       },
     );

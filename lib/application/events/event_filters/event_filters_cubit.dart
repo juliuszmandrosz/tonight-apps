@@ -144,16 +144,19 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
   void resetFilters() {
     final selectedDay = state.filters.dateRangeFilter;
 
-    emit(state.copyWith(
-      filters: EventFilters.empty().copyWith(
-        dateRangeFilter: selectedDay,
-        maxDistanceFilter: MaxDistanceFilter(
-          enabled: false,
-          maxDistance: 100,
-          userLocation: {},
+    // TODO - change this
+    emit(
+      state.copyWith(
+        filters: EventFilters.empty().copyWith(
+          dateRangeFilter: selectedDay,
+          maxDistanceFilter: MaxDistanceFilter(
+            enabled: false,
+            maxDistance: 100,
+            userLocation: {},
+          ),
         ),
       ),
-    ));
+    );
 
     _setUserLocation();
     _eventOverviewBloc.add(

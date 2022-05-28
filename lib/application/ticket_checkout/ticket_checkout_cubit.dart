@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:logger/logger.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver_common/raver_common.dart';
@@ -146,12 +147,11 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
         emit(state.copyWith(initialStatus: CubitStatus.failure));
       }
       if (eventTicketsState.status == CubitStatus.success) {
-        final eventTickets = _eventTicketsCubit.state.eventTickets.getOrCrash();
+        final eventTickets = eventTicketsState.eventTickets.getOrCrash();
 
-        final ticketPoolForBoughtTicket = eventTickets.ticketPools
-            .firstWhere((pool) => pool.poolNumber == ticket.poolNumber);
+        final currentTicketPool = eventTickets.getCurrentPool();
 
-        final vipPrice = ticketPoolForBoughtTicket.vipPrice;
+        final vipPrice = currentTicketPool.vipPrice;
 
         emit(
           state.copyWith(
@@ -162,7 +162,6 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
             isVip: true,
           ),
         );
-        _eventTicketsSubscription.cancel();
       }
     });
   }
@@ -188,7 +187,8 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
           _notifyTicketPoolSoldOut();
         }
 
-        if (poolInState.poolNumber > currentTicketPool.poolNumber) {
+        if (poolInState.poolNumber > currentTicketPool.poolNumber ||
+            poolInState.isSoldOut && !currentTicketPool.isSoldOut) {
           _notifyTicketPoolRestored();
         }
       }
@@ -222,7 +222,8 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
         await _userTicketFacade.waitForTicketToBeCreated(eventId);
 
     failureOrSuccess.fold((failure) => _emitTicketFailure(failure), (ticket) {
-      _ticketListCubit.addTicketToState(ticket);
+      Logger().i(ticket);
+      _ticketListCubit.addUpcomingTicketToState(ticket);
       _emitTicketCreated(ticket);
     });
   }
@@ -243,7 +244,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
         await _userTicketFacade.waitForTicketToBeUpdated(oldTicket.eventId);
 
     failureOrSuccess.fold((failure) => _emitTicketFailure(failure), (ticket) {
-      _ticketListCubit.updateTicketInState(oldTicket, ticket);
+      _ticketListCubit.updateUpcomingTicketInState(oldTicket, ticket);
       _emitTicketUpdated(ticket);
     });
   }

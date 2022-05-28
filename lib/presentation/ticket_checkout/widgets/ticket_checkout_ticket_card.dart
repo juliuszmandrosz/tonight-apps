@@ -1,8 +1,10 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
+import 'package:ticket_widget/ticket_widget.dart';
 
 class TicketCheckoutTicketCard extends StatelessWidget {
   const TicketCheckoutTicketCard({Key? key}) : super(key: key);
@@ -11,8 +13,6 @@ class TicketCheckoutTicketCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TicketCheckoutCubit, TicketCheckoutState>(
       builder: (context, state) {
-        final isSoldOut =
-            state.eventTickets.getOrCrash().getCurrentPool().isSoldOut;
         final ticket = state.ticketInitData.isSome()
             ? state.ticketInitData.getOrCrash()
             : null;
@@ -21,74 +21,82 @@ class TicketCheckoutTicketCard extends StatelessWidget {
             ? state.eventInitData.getOrCrash()
             : null;
 
-        return Card(
-          child: IntrinsicHeight(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    flex: 5,
-                    child: Column(
-                      children: [
-                        Text(
-                          ticket?.clubName ?? event!.clubName,
-                          style: context.subtitle1,
-                        ),
-                        const SizedBox(height: 5),
-                        Text(
-                          ticket?.eventName ?? event!.eventName,
-                          style: context.subtitle1,
-                        ),
-                        const SizedBox(height: 5),
-                        Text(
-                          context.formatDateTimeToLocaleYMDHM(
-                            ticket?.eventStartDateTime ??
-                                event!.eventStartDateTime,
-                          ),
-                          style: context.subtitle1,
-                        ),
-                        if (isSoldOut)
-                          Text(
-                            S().soldOut,
-                            style: context.subtitle1.copyWith(
-                              color: Colors.red,
-                              fontStyle: FontStyle.italic,
-                            ),
-                          )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    flex: 2,
-                    child: Text(
-                      '${state.checkoutPrice} ${getCurrencySymbolFromCode(
-                        ticket?.currency ?? event!.currency,
-                      )}',
-                      style: context.headline6.copyWith(
-                        decoration: isSoldOut
-                            ? TextDecoration.lineThrough
-                            : TextDecoration.none,
-                      ),
-                    ),
-                  ),
-                  const VerticalDivider(
-                    width: 20,
-                    thickness: 1,
-                  ),
-                  Expanded(
-                    child: Text(
-                      state.isVip ? S().vipVertical : '',
+        final isSoldOut =
+            state.eventTickets.getOrCrash().isSoldOut && event != null;
+
+        return TicketWidget(
+          height: 140,
+          width: double.infinity,
+          color: context.surfaceColor,
+          isCornerRounded: true,
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                flex: 8,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AutoSizeText(
+                      ticket?.eventName ?? event!.eventName,
+                      style: context.headline6,
+                      maxLines: 3,
                       textAlign: TextAlign.center,
-                      style: context.subtitle1,
+                      softWrap: true,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 15),
+                    Text(
+                      context.formatDateTimeToLocaleYMDHM(
+                        ticket?.eventStartDateTime ?? event!.eventStartDateTime,
+                      ),
+                      style: context.bodyText1
+                          .copyWith(color: context.secondaryColor),
+                    ),
+                    if (isSoldOut)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: Text(
+                          S().soldOut.toUpperCase(),
+                          style: context.subtitle1.copyWith(
+                            color: context.tertiaryColor,
+                          ),
+                        ),
+                      )
+                  ],
+                ),
               ),
-            ),
+              const SizedBox(width: 20),
+              AutoSizeText(
+                '${state.checkoutPrice}'
+                '${getCurrencySymbolFromCode(
+                  ticket?.currency ?? event!.currency,
+                )}',
+                style: context.headline6.copyWith(
+                  decorationThickness: 2,
+                  decoration: isSoldOut
+                      ? TextDecoration.lineThrough
+                      : TextDecoration.none,
+                  color:
+                      isSoldOut ? context.outlineColor : context.onSurfaceColor,
+                ),
+                maxLines: 1,
+              ),
+              const SizedBox(width: 10),
+              const VerticalDivider(thickness: 2),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  state.isVip ? S().vipVertical : '',
+                  textAlign: TextAlign.center,
+                  style: context.subtitle1.copyWith(
+                    color: context.tertiaryColor,
+                  ),
+                ),
+              ),
+            ],
           ),
         );
       },

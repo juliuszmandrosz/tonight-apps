@@ -5,6 +5,7 @@ import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
+import 'package:ticket_widget/ticket_widget.dart';
 
 class TicketCard extends StatelessWidget {
   final Ticket ticket;
@@ -16,79 +17,79 @@ class TicketCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: InkWell(
-        onTap: () =>
-            //TODO: Add case when user has not been on event but give him ability to show photos
-            ticket.isExpired
-                ? AutoRouter.of(context).push(ReviewRoute(ticket: ticket))
-                : AutoRouter.of(context).push(
-                    EventDetailsRoute(eventId: ticket.eventId),
-                  ),
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: SizedBox(
-            height: 120,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  flex: 5,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      AutoSizeText(
-                        ticket.clubName,
-                        style: context.headline6,
-                        maxLines: 2,
-                        textAlign: TextAlign.center,
-                      ),
-                      AutoSizeText(
-                        ticket.eventName,
-                        style: context.subtitle1
-                            .copyWith(color: context.secondaryColor),
-                        maxLines: 2,
-                        textAlign: TextAlign.center,
-                      ),
-                      AutoSizeText(
-                        context.formatDateTimeToLocaleYMDHM(
-                          ticket.eventStartDateTime,
-                        ),
-                        style: context.subtitle1
-                            .copyWith(color: context.secondaryColor),
-                        maxLines: 1,
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
+    return InkWell(
+      onTap: () =>
+          // TODO: Add case when user has not been on event but give him ability to show photos
+          ticket.isExpired
+              ? AutoRouter.of(context).push(ReviewRoute(ticket: ticket))
+              : AutoRouter.of(context).push(
+                  EventDetailsRoute(eventId: ticket.eventId),
                 ),
-                const SizedBox(width: 10),
-                Expanded(
-                  flex: 2,
-                  child: AutoSizeText(
-                    '${ticket.price} ${getCurrencySymbolFromCode(ticket.currency)}',
-                    style: context.headline5,
-                    maxLines: 1,
-                  ),
-                ),
-                VerticalDivider(
-                  width: 20,
-                  thickness: 1,
-                  color: context.onSurfaceColor,
-                ),
-                Expanded(
-                  child: Text(
-                    ticket.isVip ? S().vipVertical : '',
+      child: TicketWidget(
+        height: 140,
+        width: double.infinity,
+        color: context.surfaceColor,
+        isCornerRounded: true,
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              flex: 8,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AutoSizeText(
+                    ticket.eventName,
+                    style: context.headline6,
+                    maxLines: 3,
                     textAlign: TextAlign.center,
-                    style: context.subtitle1.copyWith(
-                      color: context.tertiaryColor,
-                    ),
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-              ],
+                  const SizedBox(height: 15),
+                  Text(
+                    context.formatDateTimeToLocaleYMDHM(
+                      ticket.eventStartDateTime,
+                    ),
+                    style: context.bodyText1
+                        .copyWith(color: context.secondaryColor),
+                  ),
+                  if (ticket.isReturned || ticket.isEventCanceled)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: Text(
+                        // TODO - add translation
+                        ticket.isReturned ? 'ZWRÓCONO' : 'ODWOŁANO',
+                        style: context.subtitle1.copyWith(
+                          color: context.tertiaryColor,
+                        ),
+                      ),
+                    )
+                ],
+              ),
             ),
-          ),
+            const SizedBox(width: 20),
+            AutoSizeText(
+              '${ticket.price}'
+              '${getCurrencySymbolFromCode(ticket.currency)}',
+              style: context.headline6,
+              maxLines: 1,
+            ),
+            const SizedBox(width: 10),
+            const VerticalDivider(thickness: 2),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                ticket.isVip ? S().vipVertical : '',
+                textAlign: TextAlign.center,
+                style: context.subtitle1.copyWith(
+                  color: context.tertiaryColor,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

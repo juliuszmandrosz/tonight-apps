@@ -85,6 +85,7 @@ dependencies:
   auto_size_text: ^3.0.0
   visibility_detector: ^0.3.3
   maps_launcher: ^2.0.1
+  ticket_widget: ^0.0.1
 
 
   raver_translations:
@@ -94,7 +95,7 @@ dependencies:
   raver_account_settings:
     git:
       url: git@github.com:juliuszmandrosz/RaverAccountSettings.git
-      ref: develop
+      ref: feature/auth-links
 
   raver_common:
     git:
@@ -108,7 +109,7 @@ dependencies:
   raver_auth:
     git:
       url: git@github.com:juliuszmandrosz/RaverAuth.git
-      ref: develop
+      ref: feature/invalid-link-message
 
   raver_rewards:
     git:

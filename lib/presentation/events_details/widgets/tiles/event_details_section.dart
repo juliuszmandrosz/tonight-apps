@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/events_details/utils/event_details_formatters.dart';
 import 'package:raver/presentation/events_details/widgets/tiles/event_detail_tile.dart';
@@ -31,12 +33,19 @@ class EventDetailsSection extends StatelessWidget {
           mainAxisSpacing: 15,
           crossAxisCount: 2,
           children: [
-            EventDetailTile(
-              icon: FontAwesomeIcons.ticket,
-              value:
-                  '${event.price} ${getCurrencySymbolFromCode(event.currency)}',
-              label: S().price,
-              isFirst: true,
+            BlocBuilder<EventTicketsCubit, EventTicketsState>(
+              builder: (context, state) {
+                return EventDetailTile(
+                  icon: FontAwesomeIcons.ticket,
+                  value: state.eventTickets.fold(
+                    () => '',
+                    (tickets) => '${tickets.getCurrentPool().ticketPrice}'
+                        '${getCurrencySymbolFromCode(event.currency)}',
+                  ),
+                  label: S().price,
+                  isFirst: true,
+                );
+              },
             ),
             EventDetailTile(
               icon: FontAwesomeIcons.solidUser,

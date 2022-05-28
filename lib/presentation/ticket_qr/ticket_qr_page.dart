@@ -47,6 +47,7 @@ class TicketQrPage extends StatelessWidget {
           }
         },
         child: LoaderOverlay(
+          overlayColor: context.shadowColor,
           child: Scaffold(
             appBar: RaverAppBar(title: S().tickets(1)),
             body: Padding(
@@ -64,8 +65,9 @@ class TicketQrPage extends StatelessWidget {
                     const Spacer(),
                     if (!ticket.isVip) const UpgradeToVipButton(),
                     if (ticket.eventStartDateTime.isAfter(
-                      DateTime.now().add(const Duration(days: 1)),
-                    ))
+                          DateTime.now().add(const Duration(days: 1)),
+                        ) &&
+                        ticket.isReturnable)
                       const TicketReturnButton(),
                   ],
                 ),
