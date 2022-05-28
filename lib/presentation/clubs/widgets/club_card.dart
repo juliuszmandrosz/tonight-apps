@@ -38,11 +38,6 @@ class ClubCard extends StatelessWidget {
             Stack(
               alignment: Alignment.center,
               children: [
-                Positioned(
-                  top: 10,
-                  right: 15,
-                  child: ClubFavoriteButton(clubId: _club.id),
-                ),
                 Hero(
                   tag: _heroTagPhraseWithIndex,
                   child: Container(
@@ -54,6 +49,11 @@ class ClubCard extends StatelessWidget {
                       ),
                     ),
                   ),
+                ),
+                Positioned(
+                  top: 10,
+                  right: 15,
+                  child: ClubFavoriteButton(clubId: _club.id),
                 ),
               ],
             ),
