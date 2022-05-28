@@ -350,7 +350,9 @@ class FirebaseAuthFacade
 
       final email = result.user!.email!;
 
-      await _authCloudFunctionsFacade.checkUserClaim(email);
+      if (!result.additionalUserInfo!.isNewUser) {
+        await _authCloudFunctionsFacade.checkUserClaim(email);
+      }
 
       await _addUserToFirestoreIfNotExists(result);
 
