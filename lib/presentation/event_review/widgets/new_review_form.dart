@@ -5,8 +5,8 @@ import 'package:formz/formz.dart';
 import 'package:raver/application/event_review/new_review/event_review_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/injection.dart';
-import 'package:raver/presentation/event_review/widgets/review_club_name.dart';
 import 'package:raver/presentation/event_review/widgets/review_event_date.dart';
+import 'package:raver/presentation/event_review/widgets/review_event_name.dart';
 import 'package:raver/presentation/event_review/widgets/review_rating_bar.dart';
 import 'package:raver/presentation/event_review/widgets/review_submit_button.dart';
 import 'package:raver/presentation/event_review/widgets/review_text_input.dart';
@@ -16,18 +16,16 @@ import 'package:raver_translations/raver_translations.dart';
 
 class NewReviewForm extends StatelessWidget {
   final Ticket ticket;
-  var isUserAcceptedLeavingPage = false;
 
-  NewReviewForm({
-    Key? key,
-    required this.ticket,
-  }) : super(key: key);
+  const NewReviewForm({Key? key, required this.ticket}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var _isReviewAddedSuccessfully = false;
+
     return WillPopScope(
       onWillPop: () async {
-        if (isUserAcceptedLeavingPage) {
+        if (_isReviewAddedSuccessfully) {
           return true;
         }
 
@@ -37,7 +35,7 @@ class NewReviewForm extends StatelessWidget {
         return result ?? false;
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        padding: const EdgeInsets.all(15),
         child: BlocProvider(
           create: (context) => getIt<NewReviewCubit>(
             param1: context.read<TicketListCubit>(),
@@ -52,6 +50,7 @@ class NewReviewForm extends StatelessWidget {
                 (error) => context.showSnackbarMessage(error),
               );
               if (state.submittingStatus.isSubmissionSuccess) {
+                _isReviewAddedSuccessfully = true;
                 context.showSnackbarMessage(S().reviewAdded);
                 AutoRouter.of(context).pop();
               }
@@ -71,14 +70,20 @@ class NewReviewForm extends StatelessWidget {
                 case CubitStatus.success:
                   return Column(
                     children: [
-                      ReviewClubName(ticket: ticket),
-                      const SizedBox(height: 10),
-                      ReviewEventDate(ticket: ticket),
-                      const SizedBox(height: 20),
-                      const ReviewRatingBar(),
-                      const SizedBox(height: 10),
-                      const ReviewTextInput(),
-                      const SizedBox(height: 10),
+                      Expanded(
+                        child: ListView(
+                          children: [
+                            Center(child: ReviewEventName(ticket: ticket)),
+                            const SizedBox(height: 30),
+                            Center(child: ReviewEventDate(ticket: ticket)),
+                            const SizedBox(height: 30),
+                            const ReviewRatingBar(),
+                            const SizedBox(height: 30),
+                            const ReviewTextInput(),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 30),
                       ReviewSubmitButton(ticket: ticket),
                     ],
                   );

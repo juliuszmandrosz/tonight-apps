@@ -57,6 +57,11 @@ class NewReviewCubit extends Cubit<EventReviewState> {
   }
 
   void submitReview(Ticket ticket) async {
+    if (state.reviewValue == 0) {
+      _showErrorMessage('Nalezy wybrac ilosc gwiazdek');
+      return;
+    }
+
     if (!_validateForm()) return;
     emit(state.copyWith(submittingStatus: FormzStatus.submissionInProgress));
     final review = Review(
@@ -74,11 +79,7 @@ class NewReviewCubit extends Cubit<EventReviewState> {
     );
 
     failureOrSuccess.fold(
-      (failure) {
-        emit(state.copyWith(
-            submittingStatus: FormzStatus.submissionFailure,
-            errorMessage: some(S().rateAddingError)));
-      },
+      (failure) => _emitSubmitReviewFailure(),
       (_) {
         emit(
           state.copyWith(submittingStatus: FormzStatus.submissionSuccess),
@@ -87,12 +88,24 @@ class NewReviewCubit extends Cubit<EventReviewState> {
     );
   }
 
-  void _emitFetchFailure() {
+  _showErrorMessage(String errorMessage) {
+    emit(state.copyWith(errorMessage: some(errorMessage)));
+    emit(state.copyWith(errorMessage: none()));
+  }
+
+  _emitSubmitReviewFailure() {
     emit(
       state.copyWith(
-        status: CubitStatus.failure,
+        submittingStatus: FormzStatus.submissionFailure,
+        errorMessage: some(S().rateAddingError),
       ),
     );
+
+    emit(state.copyWith(errorMessage: none()));
+  }
+
+  void _emitFetchFailure() {
+    emit(state.copyWith(status: CubitStatus.failure));
   }
 
   _validateForm() {

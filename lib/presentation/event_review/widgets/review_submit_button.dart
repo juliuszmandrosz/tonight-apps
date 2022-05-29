@@ -18,10 +18,13 @@ class ReviewSubmitButton extends StatelessWidget {
       builder: (context, state) {
         return state.submittingStatus == CubitStatus.loading
             ? const CircularProgressIndicator()
-            : TextButton(
-                onPressed: () =>
-                    context.read<NewReviewCubit>().submitReview(ticket),
-                child: Text(S().rateButtonTitle));
+            : SizedBox(
+                width: 300,
+                child: ElevatedButton(
+                    onPressed: () =>
+                        context.read<NewReviewCubit>().submitReview(ticket),
+                    child: Text(S().rateButtonTitle)),
+              );
       },
     );
   }

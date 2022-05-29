@@ -15,7 +15,7 @@ abstract class EventReviewState with _$EventReviewState {
   }) = _EventReviewState;
 
   factory EventReviewState.initial() => EventReviewState(
-    reviewValue: 5,
+        reviewValue: 0,
         reviewContent: const ReviewContentInput.pure(),
         userId: '',
         username: '',

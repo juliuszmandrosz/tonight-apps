@@ -19,7 +19,7 @@ class ReviewTextInput extends StatelessWidget {
           children: [
             Expanded(
               child: TextField(
-                  maxLines: 4,
+                  maxLines: null,
                   keyboardType: TextInputType.multiline,
                   onChanged: (value) => context
                       .read<NewReviewCubit>()

@@ -8,17 +8,12 @@ class ReadOnlyReviewContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: TextField(
-            maxLines: 4,
-            readOnly: true,
-            controller: TextEditingController(text: content),
-            onChanged: (value) {},
-          ),
-        )
-      ],
+    return TextField(
+      maxLines: null,
+      readOnly: true,
+      controller: TextEditingController(text: content),
+      onChanged: null,
+      enabled: false,
     );
   }
 }

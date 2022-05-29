@@ -4,8 +4,8 @@ import 'package:raver/application/event_review/existing_review/existing_review_c
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/event_review/widgets/read_only_rating_indicator.dart';
 import 'package:raver/presentation/event_review/widgets/read_only_review_content.dart';
-import 'package:raver/presentation/event_review/widgets/review_club_name.dart';
 import 'package:raver/presentation/event_review/widgets/review_event_date.dart';
+import 'package:raver/presentation/event_review/widgets/review_event_name.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -20,7 +20,7 @@ class ExistingReviewForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      padding: const EdgeInsets.all(15),
       child: BlocProvider(
         create: (context) => getIt<ExistingReviewCubit>()
           ..getReview(ticket.reviewId, ticket.clubId),
@@ -37,13 +37,14 @@ class ExistingReviewForm extends StatelessWidget {
               loadSuccess: (review) {
                 return Column(
                   children: [
-                    ReviewClubName(ticket: ticket),
-                    const SizedBox(height: 10),
+                    ReviewEventName(ticket: ticket),
+                    const SizedBox(height: 30),
                     ReviewEventDate(ticket: ticket),
-                    const SizedBox(height: 20),
-                    ReadOnlyRatingIndicator(value: review.review.userRate),
-                    const SizedBox(height: 10),
-                    ReadOnlyReviewContent(content: review.review.userOpinion),
+                    const SizedBox(height: 30),
+                    ReadOnlyRatingIndicator(review: review.review),
+                    const SizedBox(height: 30),
+                    if (review.review.userOpinion.isNotEmpty)
+                      ReadOnlyReviewContent(content: review.review.userOpinion),
                   ],
                 );
               },
