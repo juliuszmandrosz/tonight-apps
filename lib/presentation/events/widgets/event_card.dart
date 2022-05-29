@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/presentation/events/widgets/event_favorite_button.dart';
 import 'package:raver/presentation/events_details/utils/event_details_formatters.dart';
@@ -36,14 +38,27 @@ class EventCard extends StatelessWidget {
             Stack(
               alignment: Alignment.center,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: Image.network(event.eventPhotoUrl).image,
-                      fit: BoxFit.cover,
+                CachedNetworkImage(
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      SizedBox(
+                    height: 220,
+                    child: Center(
+                      child: SpinKitThreeBounce(
+                        color: context.onSurfaceColor,
+                      ),
                     ),
                   ),
-                  height: 220,
+                  imageUrl: event.eventPhotoUrl,
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                  imageBuilder: (context, imageProvider) => Container(
+                    height: 220,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: imageProvider,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                 ),
                 Positioned(
                   top: 15,

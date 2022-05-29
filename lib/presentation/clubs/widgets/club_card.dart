@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/presentation/clubs/widgets/club_favorite_button.dart';
 import 'package:raver/presentation/routes/app_router.dart';
@@ -46,12 +48,26 @@ class ClubCard extends StatelessWidget {
               children: [
                 Hero(
                   tag: _heroTagPhraseWithIndex,
-                  child: Container(
-                    height: 220,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: Image.network(_club.clubImageUrl).image,
-                        fit: BoxFit.cover,
+                  child: CachedNetworkImage(
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) => SizedBox(
+                      height: 220,
+                      child: Center(
+                        child: SpinKitThreeBounce(
+                          color: context.onSurfaceColor,
+                        ),
+                      ),
+                    ),
+                    imageUrl: _club.clubImageUrl,
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                    imageBuilder: (context, imageProvider) => Container(
+                      height: 220,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: imageProvider,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
