@@ -88,6 +88,7 @@ dependencies:
   ticket_widget: ^0.0.1
   carousel_slider: ^4.1.1
   timeago: ^3.2.2
+  launch_review: ^3.0.1
 
 
   raver_translations:

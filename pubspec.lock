@@ -861,6 +861,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.2.0"
+  launch_review:
+    dependency: "direct main"
+    description:
+      name: launch_review
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.1"
   lint:
     dependency: "direct dev"
     description:

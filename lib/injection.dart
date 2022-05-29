@@ -139,7 +139,7 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerFactory(
+  getIt.registerLazySingleton(
     () => ClubFavoriteCubit(
       getIt(),
       getIt(),
@@ -195,7 +195,7 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerFactory(
+  getIt.registerLazySingleton(
     () => EventFavoriteCubit(
       getIt(),
       getIt(),
@@ -216,14 +216,14 @@ void _registerCubits() {
   );
 
   //Favorites
-  getIt.registerFactory(
+  getIt.registerLazySingleton(
     () => UserEventFavoritesCubit(
       getIt(),
       getIt(),
     ),
   );
 
-  getIt.registerFactory(
+  getIt.registerLazySingleton(
     () => UserClubFavoritesCubit(
       getIt(),
       getIt(),
