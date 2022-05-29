@@ -27,6 +27,7 @@ class EventDatePicker extends StatelessWidget {
           selectionColor: context.primaryColor,
           todayHighlightColor: context.primaryColor,
           minDate: DateTime.now(),
+          initialDisplayDate: state.filters.dateRangeFilter.fromDate,
         );
       },
     );

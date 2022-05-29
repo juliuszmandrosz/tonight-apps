@@ -23,13 +23,21 @@ class FavoritesPage extends StatelessWidget {
         ),
       ],
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        padding: const EdgeInsets.all(15),
+        child: ListView(
           children: [
-            RaverHeadline(text: S().favoriteEvents),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: RaverHeadline(text: S().favoriteEvents),
+            ),
+            const SizedBox(height: 20),
             const FavoriteEventsList(),
-            RaverHeadline(text: S().favoriteClubs),
+            const SizedBox(height: 30),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: RaverHeadline(text: S().favoriteClubs),
+            ),
+            const SizedBox(height: 20),
             const FavoriteClubsList(),
           ],
         ),

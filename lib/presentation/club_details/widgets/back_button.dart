@@ -1,5 +1,6 @@
 import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:flutter/material.dart';
+import 'package:raver_common/raver_common.dart';
 
 class BackButtonWidget extends StatelessWidget {
   const BackButtonWidget({
@@ -12,9 +13,11 @@ class BackButtonWidget extends StatelessWidget {
       onTap: () {
         context.router.pop();
       },
-      child: Card(
-        elevation: 3,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+      child: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: context.surfaceColor,
+        ),
         child: const Padding(
           padding: EdgeInsets.all(10),
           child: Icon(

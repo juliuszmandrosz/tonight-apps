@@ -15,7 +15,7 @@ class EventDetailsTicket extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TicketListCubit, TicketListState>(
       builder: (context, state) {
-        final ticket = state.upcomingTickets.singleWhereOrNull(
+        final ticket = state.upcomingLiveTickets.singleWhereOrNull(
             (ticket) => ticket.eventId == event.id && !ticket.isReturned);
         return ticket != null
             ? TicketShowQrButton(ticket: ticket)

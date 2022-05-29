@@ -6,10 +6,8 @@ import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:raver/application/welcome_loading/welcome_loading_cubit.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/error_alert/error_alert.dart';
 import 'package:raver/presentation/routes/app_router.dart';
-import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class WelcomeLoaderPage extends StatelessWidget {
@@ -32,18 +30,12 @@ class WelcomeLoaderPage extends StatelessWidget {
   Widget build(BuildContext context) {
     _initWelcomeCubit(context);
     return Scaffold(
-      backgroundColor: context.primaryColor,
       body: BlocProvider(
         create: (ctx) => _welcomeCubit,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              // TODO - add translation
-              children: const [RaverHeadline(text: 'Tonight')],
-            ),
             BlocConsumer<WelcomeLoadingCubit, WelcomeLoadingState>(
               bloc: _welcomeCubit..loadDependencies(),
               listener: (context, state) {
@@ -67,7 +59,7 @@ class WelcomeLoaderPage extends StatelessWidget {
               },
               builder: (context, state) {
                 return !state.isFailure
-                    ? Lottie.asset("assets/animations/welcome_loader.json",
+                    ? Lottie.asset("assets/animations/ticket_loader.json",
                         frameRate: FrameRate(60))
                     : Container();
               },

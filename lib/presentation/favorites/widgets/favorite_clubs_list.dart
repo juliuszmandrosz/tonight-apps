@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/user_favorites/club_favorites/user_club_favorites_cubit.dart';
@@ -22,25 +23,33 @@ class FavoriteClubsList extends StatelessWidget {
 
           case CubitStatus.success:
             return state.clubs.isEmpty
-                ? Center(
-                    child: Text(S().emptyFavoriteClubsMessage),
+                ? Align(
+                    alignment: Alignment.centerLeft,
+                    child: AutoSizeText(
+                      S().emptyFavoriteClubsMessage,
+                      style: context.bodyText2,
+                      maxLines: 1,
+                    ),
                   )
                 : SizedBox(
-                    height: 230,
+                    height: 315,
                     child: PageView.builder(
-                      onPageChanged: (index) => context
-                          .read<UserClubFavoritesCubit>()
-                          .changePageIndex(index),
-                      controller: PageController(viewportFraction: 0.7),
+                      controller: PageController(viewportFraction: 0.9),
                       itemCount: state.clubs.length,
                       itemBuilder: (ctx, i) {
-                        return Transform.scale(
-                            scale: i == state.currentVisibleIndex ? 1 : 0.9,
-                            child: ClubCard(
-                              club: state.clubs[i],
-                              index: i,
-                              heroPhrase: heroPhrase,
-                            ));
+                        return Padding(
+                          padding: i == 0
+                              ? const EdgeInsets.only(right: 5)
+                              : i == state.clubs.length - 1
+                                  ? const EdgeInsets.only(left: 5)
+                                  : const EdgeInsets.symmetric(horizontal: 5),
+                          child: ClubCard(
+                            club: state.clubs[i],
+                            index: i,
+                            heroPhrase: heroPhrase,
+                            isFavoriteCard: true,
+                          ),
+                        );
                       },
                     ),
                   );

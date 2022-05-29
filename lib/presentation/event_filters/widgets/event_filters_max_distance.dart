@@ -55,11 +55,15 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          RaverHeadline(text: S().maxDistance),
+                          RaverHeadline(
+                            text: S().maxDistance,
+                            isSmallerVersion: true,
+                          ),
                           if (locationState.isPermissionGranted)
                             RaverHeadline(
                               text:
                                   '${filtersState.filters.maxDistanceFilter.maxDistance}km',
+                              isSmallerVersion: true,
                             ),
                         ],
                       ),
@@ -80,7 +84,9 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
                                     divisions: 9,
                                     onChanged: (value) => context
                                         .read<EventFiltersCubit>()
-                                        .changeMaxDistance(value.round()),
+                                        .changeMaxDistance(
+                                          value.round(),
+                                        ),
                                   ),
                                 )
                               : locationState.isLoading

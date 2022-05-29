@@ -18,7 +18,10 @@ class EventFiltersCurrency extends StatelessWidget {
       children: [
         Align(
           alignment: Alignment.centerLeft,
-          child: RaverHeadline(text: S().currency),
+          child: RaverHeadline(
+            text: S().currency,
+            isSmallerVersion: true,
+          ),
         ),
         const SizedBox(height: 20),
         BlocBuilder<EventFiltersCubit, EventFiltersState>(

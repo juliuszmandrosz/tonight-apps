@@ -25,7 +25,7 @@ class TicketCheckoutTicketCard extends StatelessWidget {
             state.eventTickets.getOrCrash().isSoldOut && event != null;
 
         return TicketWidget(
-          height: 140,
+          height: isSoldOut ? 140 : 120,
           width: double.infinity,
           color: context.surfaceColor,
           isCornerRounded: true,
@@ -37,7 +37,7 @@ class TicketCheckoutTicketCard extends StatelessWidget {
               Expanded(
                 flex: 8,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     AutoSizeText(
                       ticket?.eventName ?? event!.eventName,
@@ -47,7 +47,6 @@ class TicketCheckoutTicketCard extends StatelessWidget {
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(height: 15),
                     Text(
                       context.formatDateTimeToLocaleYMDHM(
                         ticket?.eventStartDateTime ?? event!.eventStartDateTime,
@@ -56,13 +55,10 @@ class TicketCheckoutTicketCard extends StatelessWidget {
                           .copyWith(color: context.secondaryColor),
                     ),
                     if (isSoldOut)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 15),
-                        child: Text(
-                          S().soldOut.toUpperCase(),
-                          style: context.subtitle1.copyWith(
-                            color: context.tertiaryColor,
-                          ),
+                      Text(
+                        S().soldOut.toUpperCase(),
+                        style: context.subtitle1.copyWith(
+                          color: context.tertiaryColor,
                         ),
                       )
                   ],

@@ -22,14 +22,20 @@ class EventFiltersMinAge extends StatelessWidget {
       builder: (context, state) {
         return Column(
           children: [
-            Row(
-              children: [RaverHeadline(text: S().age)],
+            Align(
+              alignment: Alignment.centerLeft,
+              child: RaverHeadline(
+                text: S().age,
+                isSmallerVersion: true,
+              ),
             ),
             const SizedBox(height: 10),
             Column(
               children: [
                 for (var age in availableMinAges)
                   CheckboxListTile(
+                    contentPadding: EdgeInsets.zero,
+                    activeColor: context.primaryColor,
                     title: Text('$age+', style: context.subtitle1),
                     controlAffinity: ListTileControlAffinity.leading,
                     value: state.filters.minAgesFilter.minAges.contains(age),

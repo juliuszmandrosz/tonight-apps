@@ -11,10 +11,12 @@ import 'package:raver_translations/raver_translations.dart';
 
 class EventCard extends StatelessWidget {
   final Event event;
+  final bool isFavoriteCard;
 
   const EventCard({
     Key? key,
     required this.event,
+    this.isFavoriteCard = false,
   }) : super(key: key);
 
   @override
@@ -25,6 +27,10 @@ class EventCard extends StatelessWidget {
         AutoRouter.of(context).push(EventDetailsRoute(event: event));
       },
       child: Card(
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
         child: Column(
           children: [
             Stack(
@@ -78,7 +84,7 @@ class EventCard extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       child: AutoSizeText(
                         event.eventName,
-                        maxLines: 1,
+                        maxLines: 2,
                         style: context.headline6,
                         textAlign: TextAlign.center,
                       ),
@@ -90,10 +96,8 @@ class EventCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(15),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (event.isConcert)
+                  if (event.isConcert && !isFavoriteCard)
                     Column(
                       children: [
                         Row(
@@ -117,24 +121,6 @@ class EventCard extends StatelessWidget {
                   Row(
                     children: [
                       const FaIcon(
-                        FontAwesomeIcons.calendar,
-                        size: 18,
-                      ),
-                      const SizedBox(width: 10),
-                      AutoSizeText(
-                        context.formatDateTimeToLocaleYMDHM(
-                          event.eventStartDateTime,
-                        ),
-                        textAlign: TextAlign.center,
-                        style: context.subtitle1,
-                        maxLines: 1,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 15),
-                  Row(
-                    children: [
-                      const FaIcon(
                         FontAwesomeIcons.building,
                         size: 18,
                       ),
@@ -151,18 +137,41 @@ class EventCard extends StatelessWidget {
                   Row(
                     children: [
                       const FaIcon(
-                        FontAwesomeIcons.circleInfo,
+                        FontAwesomeIcons.calendar,
                         size: 18,
                       ),
                       const SizedBox(width: 10),
                       AutoSizeText(
-                        displayEventTags(context, event),
+                        context.formatDateTimeToLocaleYMDHM(
+                          event.eventStartDateTime,
+                        ),
+                        textAlign: TextAlign.center,
                         style: context.subtitle1,
-                        overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                       ),
                     ],
                   ),
+                  if (!isFavoriteCard)
+                    Column(
+                      children: [
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            const FaIcon(
+                              FontAwesomeIcons.circleInfo,
+                              size: 18,
+                            ),
+                            const SizedBox(width: 10),
+                            AutoSizeText(
+                              displayEventTags(context, event),
+                              style: context.subtitle1,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                 ],
               ),
             ),

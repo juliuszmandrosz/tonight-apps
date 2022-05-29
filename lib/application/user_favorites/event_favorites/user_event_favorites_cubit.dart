@@ -17,7 +17,6 @@ class UserEventFavoritesCubit extends Cubit<UserEventFavoritesState> {
 
   void getFavorites() async {
     _initBroadcastListener();
-    emit(state.copyWith(status: CubitStatus.loading));
   }
 
   void changePageIndex(int index) {
@@ -25,7 +24,10 @@ class UserEventFavoritesCubit extends Cubit<UserEventFavoritesState> {
   }
 
   Future<void> _refreshIdsList(ProfileState profileState) async {
-    if (profileState.status == CubitStatus.success) {
+    if (profileState.status == CubitStatus.success &&
+        state.status != CubitStatus.loading) {
+      emit(state.copyWith(status: CubitStatus.loading));
+
       final eventsFromProfile = profileState.user.favoriteEventIds;
       final currentIdList = state.events.map((element) => element.id).toList();
 
@@ -40,7 +42,7 @@ class UserEventFavoritesCubit extends Cubit<UserEventFavoritesState> {
       }
 
       final favoriteEvents =
-          await _eventFacade.getFutureEventsByIds(eventIdsToBeFetched);
+          await _eventFacade.getEventsByIds(eventIdsToBeFetched);
 
       favoriteEvents.fold(
         (failure) => emit(
@@ -48,7 +50,9 @@ class UserEventFavoritesCubit extends Cubit<UserEventFavoritesState> {
         ),
         (events) => emit(
           state.copyWith(
-              status: CubitStatus.success, events: events + state.events),
+            status: CubitStatus.success,
+            events: List.of(state.events)..addAll(events),
+          ),
         ),
       );
     }

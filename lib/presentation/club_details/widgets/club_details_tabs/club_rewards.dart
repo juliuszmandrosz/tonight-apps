@@ -1,7 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_rewards/club_rewards_cubit.dart';
-import 'package:raver/presentation/club_details/widgets/club_details_tabs/rewards/reward_card.dart';
+import 'package:raver/presentation/club_details/widgets/club_details_tabs/rewards/reward_list_for_required_entries.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -27,6 +28,7 @@ class ClubRewards extends StatelessWidget {
           case CubitStatus.success:
             final clubRewardsWithAttendance =
                 state.clubRewardsWithAttendance.getOrCrash();
+
             if (clubRewardsWithAttendance.rewards.isEmpty) {
               return Center(
                 child: Text(
@@ -35,21 +37,34 @@ class ClubRewards extends StatelessWidget {
                 ),
               );
             }
-            return ListView.separated(
-              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-              shrinkWrap: true,
-              itemCount: clubRewardsWithAttendance.rewards.length,
-              itemBuilder: (BuildContext context, int index) {
-                final clubReward = clubRewardsWithAttendance.rewards[index];
-                return RewardCard(
-                  rewardContent: clubReward.description,
-                  currentEntries: clubRewardsWithAttendance.userAttendance,
-                  requiredEntries: clubReward.requiredEntries,
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(height: 10);
-              },
+            return ListView(
+              children: [
+                Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Center(
+                      child: AutoSizeText(
+                        'Twoja liczba wejść: '
+                        '${clubRewardsWithAttendance.userAttendance}',
+                        maxLines: 1,
+                        style: context.subtitle1,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                for (var entries in clubRewardsWithAttendance.rewards
+                    .map((reward) => reward.requiredEntries)
+                    .toSet())
+                  RewardListForRequiredEntries(
+                    isCollected:
+                        clubRewardsWithAttendance.userAttendance >= entries,
+                    requiredEntries: entries,
+                    rewards: clubRewardsWithAttendance.rewards
+                        .where((reward) => reward.requiredEntries == entries)
+                        .toList(),
+                  ),
+              ],
             );
         }
       },

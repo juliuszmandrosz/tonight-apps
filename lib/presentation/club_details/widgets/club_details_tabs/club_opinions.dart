@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
-import 'package:raver/presentation/club_details/widgets/club_reviews/club_review_card.dart';
+import 'package:raver/presentation/club_details/widgets/club_reviews/club_review_list_tile.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -30,44 +30,53 @@ class _ClubOpinionsState extends State<ClubOpinions> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ClubReviewsBloc, ClubReviewsState>(
-      builder: (context, state) {
-        switch (state.status) {
-          case CubitStatus.initial:
-            return Container();
-          case CubitStatus.loading:
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          case CubitStatus.failure:
-            return Center(
-              child: Text(S().clubReviewsLoadingError),
-            );
-          case CubitStatus.success:
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Expanded(
-                    child: ListView.separated(
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        itemCount: state.hasReachedMax
-                            ? state.reviews.length
-                            : state.reviews.length + 1,
-                        itemBuilder: (context, index) {
-                          return index >= state.reviews.length
-                              ? const BottomLoader()
-                              : ClubReviewCard(review: state.reviews[index]);
-                        },
-                        controller: _scrollController,
-                        separatorBuilder: (_, __) => const SizedBox(
-                              height: 10,
-                            )),
-                  ),
-                ],
-              ),
-            );
+    return BlocConsumer<ClubReviewsBloc, ClubReviewsState>(
+      listenWhen: (previous, current) =>
+          previous.errorMessage != current.errorMessage ||
+          previous.reviewReportStatus != current.reviewReportStatus,
+      listener: (context, state) {
+        state.errorMessage.fold(
+          () {},
+          (error) => context.showSnackbarMessage(error),
+        );
+
+        if (state.reviewReportStatus.isSuccess()) {
+          context.showSnackbarMessage(S().reviewReportedSuccessfully);
         }
+      },
+      builder: (context, state) {
+        return BlocBuilder<ClubReviewsBloc, ClubReviewsState>(
+          builder: (context, state) {
+            switch (state.status) {
+              case CubitStatus.initial:
+                return Container();
+              case CubitStatus.loading:
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              case CubitStatus.failure:
+                return Center(
+                  child: Text(S().clubReviewsLoadingError),
+                );
+              case CubitStatus.success:
+                return Column(
+                  children: [
+                    Expanded(
+                      child: ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        separatorBuilder: (context, i) => const Divider(),
+                        itemCount: state.reviews.length + 1,
+                        itemBuilder: (ctx, i) => i >= state.reviews.length
+                            ? const SizedBox()
+                            : ClubReviewListTile(review: state.reviews[i]),
+                      ),
+                    ),
+                  ],
+                );
+            }
+          },
+        );
       },
     );
   }

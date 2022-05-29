@@ -22,14 +22,20 @@ class EventFiltersDressCode extends StatelessWidget {
       builder: (context, state) {
         return Column(
           children: [
-            Row(
-              children: [RaverHeadline(text: S().dressCode)],
+            Align(
+              alignment: Alignment.centerLeft,
+              child: RaverHeadline(
+                text: S().dressCode,
+                isSmallerVersion: true,
+              ),
             ),
             const SizedBox(height: 10),
             Column(
               children: [
                 for (final outfit in availableOutfits)
                   CheckboxListTile(
+                    contentPadding: EdgeInsets.zero,
+                    activeColor: context.primaryColor,
                     title: Text(
                       outfitsTranslations[outfit] ?? outfit,
                       style: context.subtitle1,

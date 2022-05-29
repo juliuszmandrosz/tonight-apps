@@ -50,7 +50,7 @@ class TicketQrCubit extends Cubit<TicketQrState> {
     failureOrSuccess.fold(
       (failure) => _emitTicketReturnFailure(failure),
       (ticket) {
-        _ticketListCubit.updateUpcomingTicketInState(oldTicket, ticket);
+        _ticketListCubit.updateUpcomingLiveTicketInState(oldTicket, ticket);
         emit(state.copyWith(ticketReturnStatus: CubitStatus.success));
       },
     );

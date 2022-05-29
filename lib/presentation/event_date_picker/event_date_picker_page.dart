@@ -24,13 +24,11 @@ class EventDatePickerPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   Flexible(
-                    flex: 4,
+                    flex: 6,
                     child: EventDatePicker(),
                   ),
-                  Flexible(
-                    flex: 1,
-                    child: EventDatePickerButtons(),
-                  ),
+                  Spacer(),
+                  EventDatePickerButtons(),
                 ],
               ),
             ),

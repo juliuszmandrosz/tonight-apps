@@ -151,7 +151,7 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
           dateRangeFilter: selectedDay,
           maxDistanceFilter: MaxDistanceFilter(
             enabled: false,
-            maxDistance: 100,
+            maxDistance: 50,
             userLocation: {},
           ),
         ),

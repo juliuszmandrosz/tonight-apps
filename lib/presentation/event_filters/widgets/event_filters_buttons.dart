@@ -11,20 +11,26 @@ class EventFiltersButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ElevatedButton(
-          onPressed: () {
-            BlocProvider.of<EventFiltersCubit>(context).resetFilters();
-            AutoRouter.of(context).pop();
-          },
-          child: Text(S().resetFilters),
+        SizedBox(
+          width: 300,
+          child: ElevatedButton(
+            onPressed: () {
+              BlocProvider.of<EventFiltersCubit>(context).resetFilters();
+              AutoRouter.of(context).pop();
+            },
+            child: Text(S().resetFilters),
+          ),
         ),
-        const SizedBox(height: 10),
-        ElevatedButton(
-          onPressed: () {
-            BlocProvider.of<EventFiltersCubit>(context).submitFilters();
-            AutoRouter.of(context).pop();
-          },
-          child: Text(S().applyFilters),
+        const SizedBox(height: 20),
+        SizedBox(
+          width: 300,
+          child: ElevatedButton(
+            onPressed: () {
+              BlocProvider.of<EventFiltersCubit>(context).submitFilters();
+              AutoRouter.of(context).pop();
+            },
+            child: Text(S().applyFilters),
+          ),
         ),
       ],
     );

@@ -13,12 +13,14 @@ class ClubCard extends StatelessWidget {
   final Club _club;
   final String _heroTagPhraseWithIndex;
   final String heroPhrase;
+  final bool isFavoriteCard;
 
   ClubCard({
     Key? key,
     required Club club,
     required int index,
     required this.heroPhrase,
+    this.isFavoriteCard = false,
   })  : _club = club,
         _heroTagPhraseWithIndex = heroPhrase + index.toString(),
         super(key: key);
@@ -33,6 +35,10 @@ class ClubCard extends StatelessWidget {
         );
       },
       child: Card(
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
         child: Column(
           children: [
             Stack(
@@ -63,56 +69,65 @@ class ClubCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
+                      const FaIcon(
+                        FontAwesomeIcons.building,
+                        size: 18,
+                      ),
+                      const SizedBox(width: 10),
                       AutoSizeText(
                         _club.clubName,
-                        style: context.headline6,
+                        style: context.subtitle1,
                         maxLines: 1,
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 15),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const FaIcon(
+                        FontAwesomeIcons.locationDot,
+                        size: 18,
+                      ),
+                      const SizedBox(width: 10),
+                      AutoSizeText(
                         _club.locationString,
-                        style: context.subtitle1.copyWith(
-                          color: context.secondaryColor,
-                        ),
+                        style: context.subtitle1,
+                        maxLines: 1,
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      RatingBarIndicator(
-                        rating: clubReviewAvg,
-                        itemCount: 5,
-                        itemSize: 20,
-                        direction: Axis.horizontal,
-                        itemBuilder: (context, index) =>
-                            const FaIcon(FontAwesomeIcons.solidStar),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Text(
-                          clubReviewAvg.toStringAsFixed(1),
-                          style: context.bodyText2.copyWith(
-                            color: context.secondaryColor,
-                          ),
+                  if (!isFavoriteCard)
+                    Column(
+                      children: [
+                        const SizedBox(height: 15),
+                        Row(
+                          children: [
+                            RatingBarIndicator(
+                              rating: clubReviewAvg,
+                              itemCount: 5,
+                              itemSize: 18,
+                              direction: Axis.horizontal,
+                              itemBuilder: (context, index) =>
+                                  const FaIcon(FontAwesomeIcons.solidStar),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Text(
+                                clubReviewAvg.toStringAsFixed(1),
+                                style: context.bodyText2,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Text(
+                                '${_club.reviewCount} ${S().opinions(_club.reviewCount)}',
+                                style: context.bodyText2,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Text(
-                          '${_club.reviewCount} ${S().opinions(_club.reviewCount)}',
-                          style: context.bodyText2.copyWith(
-                            color: context.secondaryColor,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
                 ],
               ),
             ),

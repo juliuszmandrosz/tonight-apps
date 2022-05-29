@@ -28,7 +28,10 @@ class EventFiltersPrice extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                RaverHeadline(text: '${S().priceRange} $currencyHeadline'),
+                RaverHeadline(
+                  text: '${S().priceRange} $currencyHeadline',
+                  isSmallerVersion: true,
+                ),
               ],
             ),
             const SizedBox(height: 20),

@@ -5,14 +5,14 @@ class TicketListState with _$TicketListState {
   TicketListState._();
 
   factory TicketListState({
-    required List<Ticket> upcomingTickets,
+    required List<Ticket> upcomingLiveTickets,
     required List<Ticket> pastTickets,
     required bool hasReachedMax,
     required CubitStatus status,
   }) = _TicketListState;
 
   factory TicketListState.initial() => TicketListState(
-        upcomingTickets: [],
+        upcomingLiveTickets: [],
         pastTickets: [],
         hasReachedMax: false,
         status: CubitStatus.initial,

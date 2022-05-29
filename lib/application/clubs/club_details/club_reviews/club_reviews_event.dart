@@ -7,4 +7,7 @@ class ClubReviewsEvent with _$ClubReviewsEvent {
 
   const factory ClubReviewsEvent.nextPageReviewsFetched() =
       _NextPageReviewsFetched;
+
+  const factory ClubReviewsEvent.reviewReported(String reviewId) =
+      _ReviewReported;
 }

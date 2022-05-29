@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/events_details/utils/event_details_formatters.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
@@ -12,74 +12,31 @@ class EventTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return ListTile(
+      dense: true,
+      contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
       onTap: () {
         AutoRouter.of(context).push(EventDetailsRoute(event: event));
       },
-      child: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(8),
-            bottomRight: Radius.circular(8),
+      title: AutoSizeText(
+        event.eventName,
+        style: context.headline6.copyWith(color: context.onSurfaceColor),
+        maxLines: 2,
+      ),
+      subtitle: Padding(
+        padding: const EdgeInsets.only(top: 10),
+        child: Text(
+          context.formatDateTimeToLocaleYMDHM(event.eventStartDateTime),
+          style: context.subtitle1.copyWith(
+            color: context.secondaryColor,
           ),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Expanded(
-              flex: 2,
-              child: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(8),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Text(
-                        "${event.eventStartDateTime.day}.${event.eventStartDateTime.month}",
-                        style: context.subtitle1,
-                      ),
-                      Text(
-                        "${event.eventStartDateTime.hour}:${event.eventStartDateTime.minute}",
-                        style: context.subtitle1,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 8,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          event.eventName,
-                          style: context.headline6,
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          displayEventTags(context, event),
-                          style: context.subtitle1,
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
+      ),
+      trailing: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Icon(Icons.chevron_right_rounded),
+        ],
       ),
     );
   }

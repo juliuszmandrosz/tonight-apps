@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver_common/raver_common.dart';
 
 class EventDetailTile extends StatelessWidget {
@@ -27,7 +28,7 @@ class EventDetailTile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: Icon(
+            child: FaIcon(
               icon,
               size: 40,
             ),

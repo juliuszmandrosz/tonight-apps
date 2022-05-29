@@ -86,6 +86,8 @@ dependencies:
   visibility_detector: ^0.3.3
   maps_launcher: ^2.0.1
   ticket_widget: ^0.0.1
+  carousel_slider: ^4.1.1
+  timeago: ^3.2.2
 
 
   raver_translations:
@@ -118,12 +120,12 @@ dependencies:
   raver_events:
     git:
       url: git@github.com:juliuszmandrosz/RaverEvents.git
-      ref: develop
+      ref: hotfix/fix-favorites
 
   raver_clubs:
     git:
       url: git@github.com:juliuszmandrosz/RaverClubs.git
-      ref: develop
+      ref: feature/report-review
 
   raver_payments:
     git:

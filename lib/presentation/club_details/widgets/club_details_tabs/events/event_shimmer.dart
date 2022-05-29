@@ -51,7 +51,7 @@ class EventShimmer extends StatelessWidget {
           ],
         ),
       ),
-      baseColor: context.backgroundColor,
+      baseColor: context.primaryColor,
       highlightColor: context.onSurfaceColor,
     );
   }

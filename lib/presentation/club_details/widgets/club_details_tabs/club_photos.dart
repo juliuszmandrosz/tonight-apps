@@ -66,7 +66,8 @@ class _ClubPhotosState extends State<ClubPhotos> {
                 }
 
                 return CustomScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
                   controller: _scrollController,
                   slivers: [
                     SliverGrid(

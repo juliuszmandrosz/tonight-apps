@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'back_button.dart';
+import 'package:raver/presentation/club_details/widgets/back_button.dart';
 
 class ClubDetailsImage extends StatelessWidget {
   final String imageUrl;
@@ -13,21 +12,18 @@ class ClubDetailsImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: SizedBox(
-            height: 200,
+            height: 220,
             child: Stack(
               children: [
                 Align(
                   child: Hero(
-                    tag: heroTag ?? "",
+                    tag: heroTag ?? '',
                     //this just wont animate hero
                     child: Container(
-                      height: 200,
+                      height: 220,
                       alignment: Alignment.topCenter,
                       decoration: BoxDecoration(
                         image: DecorationImage(
@@ -38,8 +34,9 @@ class ClubDetailsImage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Align(
-                  alignment: AlignmentDirectional(-0.95, -0.7),
+                const Positioned(
+                  top: 5,
+                  left: 5,
                   child: BackButtonWidget(),
                 ),
               ],

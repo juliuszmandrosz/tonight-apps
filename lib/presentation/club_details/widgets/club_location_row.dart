@@ -13,7 +13,6 @@ class ClubLocationRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
@@ -21,7 +20,7 @@ class ClubLocationRow extends StatelessWidget {
           style: context.subtitle1,
         ),
         RaverIconButton(
-          icon: const FaIcon(FontAwesomeIcons.marker),
+          icon: const FaIcon(FontAwesomeIcons.locationDot),
           onPressed: () async {
             var result =
                 await launchGoogleMaps(club.getLatitude(), club.getLatitude());

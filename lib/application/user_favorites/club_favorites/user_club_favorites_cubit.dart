@@ -21,7 +21,6 @@ class UserClubFavoritesCubit extends Cubit<UserClubFavoritesState> {
 
   void getFavorites() async {
     _initBroadcastListener();
-    emit(state.copyWith(status: CubitStatus.loading));
   }
 
   void changePageIndex(int index) {
@@ -29,7 +28,10 @@ class UserClubFavoritesCubit extends Cubit<UserClubFavoritesState> {
   }
 
   Future<void> _refreshIdsList(ProfileState profileState) async {
-    if (profileState.status == CubitStatus.success) {
+    if (profileState.status == CubitStatus.success &&
+        state.status != CubitStatus.loading) {
+      emit(state.copyWith(status: CubitStatus.loading));
+
       final clubsFromProfile = profileState.user.favoriteClubIds;
       final currentIdList = state.clubs.map((element) => element.id).toList();
 
@@ -51,7 +53,9 @@ class UserClubFavoritesCubit extends Cubit<UserClubFavoritesState> {
         ),
         (clubs) => emit(
           state.copyWith(
-              status: CubitStatus.success, clubs: clubs + state.clubs),
+            status: CubitStatus.success,
+            clubs: List.of(state.clubs)..addAll(clubs),
+          ),
         ),
       );
     }

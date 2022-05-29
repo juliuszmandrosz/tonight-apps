@@ -75,7 +75,7 @@ class _EventFiltersPageState extends State<EventFiltersPage> {
                         ),
                         const SizedBox(height: 20),
                         const EventFiltersIsConcert(),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 30),
                         const EventFiltersButtons(),
                       ],
                     ),

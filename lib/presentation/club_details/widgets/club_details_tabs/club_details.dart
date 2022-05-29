@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
-import 'package:raver/presentation/commons/icons/social_icon_with_title.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
-
-import 'details/details_section.dart';
+import 'package:raver/presentation/club_details/widgets/club_details_tabs/details/about_club_tile.dart';
+import 'package:raver/presentation/club_details/widgets/club_details_tabs/details/club_contact_tile.dart';
+import 'package:raver/presentation/club_details/widgets/club_details_tabs/details/club_social_media_row.dart';
 
 class ClubDetails extends StatelessWidget {
   const ClubDetails({
@@ -20,62 +17,26 @@ class ClubDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final clubDetailTiles = [
+      ClubContactTile(phoneNumber: phoneNumber),
+      AboutClubTile(aboutUs: aboutUs),
+    ];
+
     return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 15),
-        child: Column(
-          children: [
-            aboutUs != null
-                ? DetailsSection(
-                    content: Text(
-                      aboutUs!,
-                      softWrap: true,
-                    ),
-                    title: S().aboutUs,
-                  )
-                : Container(),
-            DetailsSection(
-              content: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(phoneNumber),
-                  RaverIconButton(
-                    onPressed: () async {
-                      var result = await launchPhoneCall(phoneNumber);
-                      if (result.isSome()) {
-                        context.showSnackbarMessage(S().errorMakingCall);
-                      }
-                    },
-                    icon: const Icon(Icons.phone),
-                  )
-                ],
-              ),
-              title: S().contact,
-            ),
-            socialMedia.isNotEmpty
-                ? DetailsSection(
-                    content: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: socialMedia.entries.map((element) {
-                          if (clubSocialMedia.containsKey(element.key) &&
-                              element.value.isNotEmpty) {
-                            return SocialIconWithTitle(
-                              socialMedia: clubSocialMedia[element.key]!,
-                              url: element.value,
-                            );
-                          }
-                          //This should never happen, but just in case
-                          return const SizedBox.shrink();
-                        }).toList(),
-                      ),
-                    ),
-                    title: S().socialMedia,
-                  )
-                : Container()
-          ],
-        ),
+      child: Column(
+        children: [
+          ListView.separated(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            separatorBuilder: (context, i) => const Divider(),
+            itemCount: clubDetailTiles.length + 1,
+            itemBuilder: (context, i) => i >= clubDetailTiles.length
+                ? const SizedBox()
+                : clubDetailTiles[i],
+          ),
+          const SizedBox(height: 20),
+          ClubSocialMediaRow(socialMedia: socialMedia),
+        ],
       ),
     );
   }

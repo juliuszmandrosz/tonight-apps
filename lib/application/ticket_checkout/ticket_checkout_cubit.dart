@@ -14,6 +14,7 @@ import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 part 'ticket_checkout_cubit.freezed.dart';
+
 part 'ticket_checkout_state.dart';
 
 class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
@@ -223,7 +224,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
 
     failureOrSuccess.fold((failure) => _emitTicketFailure(failure), (ticket) {
       Logger().i(ticket);
-      _ticketListCubit.addUpcomingTicketToState(ticket);
+      _ticketListCubit.addUpcomingLiveTicketToState(ticket);
       _emitTicketCreated(ticket);
     });
   }
@@ -244,7 +245,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
         await _userTicketFacade.waitForTicketToBeUpdated(oldTicket.eventId);
 
     failureOrSuccess.fold((failure) => _emitTicketFailure(failure), (ticket) {
-      _ticketListCubit.updateUpcomingTicketInState(oldTicket, ticket);
+      _ticketListCubit.updateUpcomingLiveTicketInState(oldTicket, ticket);
       _emitTicketUpdated(ticket);
     });
   }

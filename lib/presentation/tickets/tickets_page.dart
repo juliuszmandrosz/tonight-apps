@@ -48,23 +48,24 @@ class _TicketsPageState extends State<TicketsPage> {
               );
 
             case CubitStatus.success:
-              return state.upcomingTickets.isEmpty && state.pastTickets.isEmpty
+              return state.upcomingLiveTickets.isEmpty &&
+                      state.pastTickets.isEmpty
                   ? Center(child: Text(S().tickets(0)))
                   : ListView(
                       controller: _scrollController,
                       children: [
-                        if (state.upcomingTickets.isNotEmpty)
-                          Align(
+                        if (state.upcomingLiveTickets.isNotEmpty)
+                          const Align(
                             alignment: Alignment.centerLeft,
-                            child: RaverHeadline(text: S().upcoming),
+                            child: RaverHeadline(text: 'Nadchodzące i na żywo'),
                           ),
                         const SizedBox(height: 20),
                         ListView.separated(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          itemCount: state.upcomingTickets.length,
+                          itemCount: state.upcomingLiveTickets.length,
                           itemBuilder: (ctx, i) => TicketCard(
-                            ticket: state.upcomingTickets[i],
+                            ticket: state.upcomingLiveTickets[i],
                           ),
                           separatorBuilder: (ctx, i) =>
                               const SizedBox(height: 20),
