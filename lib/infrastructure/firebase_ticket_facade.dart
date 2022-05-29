@@ -27,14 +27,36 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
         _logger = logger;
 
   @override
+  Future<Either<UserTicketFailure, List<Ticket>>> getLiveUserTickets() async {
+    try {
+      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+
+      final result = await userDocRef.ticketCollection
+          .where('eventStartDateTime', isLessThanOrEqualTo: Timestamp.now())
+          .where('eventEndDateTime', isGreaterThan: Timestamp.now())
+          .orderBy('eventStartDateTime')
+          .get();
+
+      return right<UserTicketFailure, List<Ticket>>(
+        result.docs
+            .map((doc) => TicketDto.fromFirebase(doc).toDomain())
+            .toList(),
+      );
+    } on FirebaseException catch (e) {
+      _logger.e("Firebase Exception getting live user tickets EXCEPTION: $e");
+      return left(const UserTicketFailure.unexpected());
+    }
+  }
+
+  @override
   Future<Either<UserTicketFailure, List<Ticket>>>
       getUpcomingUserTickets() async {
     try {
       final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
 
       final result = await userDocRef.ticketCollection
-          .where('eventEndDateTime', isGreaterThan: Timestamp.now())
-          .orderBy('eventEndDateTime')
+          .where('eventStartDateTime', isGreaterThan: Timestamp.now())
+          .orderBy('eventStartDateTime')
           .get();
 
       return right<UserTicketFailure, List<Ticket>>(
@@ -63,9 +85,10 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
           .limit(pageSize);
 
       if (lastTicket != null) {
-        query = query.startAfter(
-          [Timestamp.fromDate(lastTicket.eventEndDateTime)],
-        );
+        final lastDoc =
+            await userDocRef.ticketCollection.doc(lastTicket.id).get();
+
+        query = query.startAfterDocument(lastDoc);
       }
 
       final result = await query.get();
