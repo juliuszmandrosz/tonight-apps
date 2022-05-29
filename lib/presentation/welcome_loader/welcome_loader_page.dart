@@ -1,28 +1,53 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
+import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
+import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
+import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
+import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
+import 'package:raver/application/user_favorites/club_favorites/user_club_favorites_cubit.dart';
+import 'package:raver/application/user_favorites/event_favorites/user_event_favorites_cubit.dart';
 import 'package:raver/application/welcome_loading/welcome_loading_cubit.dart';
 import 'package:raver/presentation/error_alert/error_alert.dart';
 import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/application/application.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class WelcomeLoaderPage extends StatelessWidget {
-  late WelcomeLoadingCubit _welcomeCubit;
-  var hasBeenInitialized = false;
+class WelcomeLoaderPage extends StatefulWidget {
+  const WelcomeLoaderPage({Key? key}) : super(key: key);
 
-  WelcomeLoaderPage({Key? key}) : super(key: key);
+  @override
+  State<WelcomeLoaderPage> createState() => _WelcomeLoaderPageState();
+}
+
+class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
+  late WelcomeLoadingCubit _welcomeCubit;
+
+  var hasBeenInitialized = false;
 
   _initWelcomeCubit(BuildContext context) {
     if (!hasBeenInitialized) {
       hasBeenInitialized = true;
       _welcomeCubit = WelcomeLoadingCubit(
-          profileCubit: context.read<ProfileCubit>(),
-          userLocationCubit: context.read<UserLocationCubit>(),
-          remoteConfigCubit: context.read<RemoteConfigCubit>());
+        profileCubit: context.read<ProfileCubit>(),
+        userLocationCubit: context.read<UserLocationCubit>(),
+        remoteConfigCubit: context.read<RemoteConfigCubit>(),
+        eventFiltersCubit: context.read<EventFiltersCubit>(),
+        eventOverviewBloc: context.read<EventOverviewBloc>(),
+        clubsOverviewBloc: context.read<ClubsOverviewBloc>(),
+        ticketListCubit: context.read<TicketListCubit>(),
+        eventFavoriteCubit: context.read<EventFavoriteCubit>(),
+        clubFavoriteCubit: context.read<ClubFavoriteCubit>(),
+        userEventFavoritesCubit: context.read<UserEventFavoritesCubit>(),
+        userClubFavoritesCubit: context.read<UserClubFavoritesCubit>(),
+      );
     }
   }
 
@@ -36,34 +61,43 @@ class WelcomeLoaderPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            BlocConsumer<WelcomeLoadingCubit, WelcomeLoadingState>(
-              bloc: _welcomeCubit..loadDependencies(),
-              listener: (context, state) {
-                if (state.isFailure) {
-                  showDialog(
-                    barrierDismissible: false,
-                    context: context,
-                    builder: (context) {
-                      return ErrorAlert(
-                        errorMessage: S().errorCheckInternetConnection,
-                      );
-                    },
-                  );
-                }
-                if (state.dependenciesLoaded) {
-                  AutoRouter.of(context).replace(const NavigatorRoute());
-                  if (!state.onboardingCompleted) {
-                    AutoRouter.of(context).push(OnboardingRoute());
+            const Spacer(),
+            Flexible(
+              child: SvgPicture.asset(
+                'assets/icons/icon_logo.svg',
+                semanticsLabel: 'Tonight Logo',
+              ),
+            ),
+            Flexible(
+              child: BlocConsumer<WelcomeLoadingCubit, WelcomeLoadingState>(
+                bloc: _welcomeCubit..loadDependencies(),
+                listener: (context, state) {
+                  if (state.isFailure) {
+                    showDialog(
+                      barrierDismissible: false,
+                      context: context,
+                      builder: (context) {
+                        return ErrorAlert(
+                          errorMessage: S().errorCheckInternetConnection,
+                        );
+                      },
+                    );
                   }
-                }
-              },
-              builder: (context, state) {
-                return !state.isFailure
-                    ? Lottie.asset("assets/animations/ticket_loader.json",
-                        frameRate: FrameRate(60))
-                    : Container();
-              },
-            )
+                  if (state.dependenciesLoaded) {
+                    AutoRouter.of(context).replace(const NavigatorRoute());
+                    if (!state.onboardingCompleted) {
+                      AutoRouter.of(context).push(OnboardingRoute());
+                    }
+                  }
+                },
+                builder: (context, state) {
+                  return !state.isFailure
+                      ? SpinKitFadingCube(color: context.onSurfaceColor)
+                      : Container();
+                },
+              ),
+            ),
+            const Spacer(),
           ],
         ),
       ),

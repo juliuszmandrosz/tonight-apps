@@ -45,6 +45,7 @@ class EventCard extends StatelessWidget {
                     child: Center(
                       child: SpinKitThreeBounce(
                         color: context.onSurfaceColor,
+                        size: 24,
                       ),
                     ),
                   ),

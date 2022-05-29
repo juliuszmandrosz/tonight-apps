@@ -1,5 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:raver/presentation/club_details/widgets/back_button.dart';
+import 'package:raver_common/raver_common.dart';
 
 class ClubDetailsImage extends StatelessWidget {
   final String imageUrl;
@@ -22,13 +25,27 @@ class ClubDetailsImage extends StatelessWidget {
                   child: Hero(
                     tag: heroTag ?? '',
                     //this just wont animate hero
-                    child: Container(
-                      height: 220,
-                      alignment: Alignment.topCenter,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: Image.network(imageUrl).image,
+                    child: CachedNetworkImage(
+                      progressIndicatorBuilder:
+                          (context, url, downloadProgress) => SizedBox(
+                        height: 220,
+                        child: Center(
+                          child: SpinKitThreeBounce(
+                            color: context.onSurfaceColor,
+                            size: 24,
+                          ),
+                        ),
+                      ),
+                      imageUrl: imageUrl,
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                      imageBuilder: (context, imageProvider) => Container(
+                        height: 220,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: imageProvider,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),

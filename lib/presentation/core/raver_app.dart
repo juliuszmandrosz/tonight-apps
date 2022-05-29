@@ -16,7 +16,6 @@ import 'package:raver/application/user_favorites/event_favorites/user_event_favo
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_auth/raver_auth.dart';
-import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -74,12 +73,7 @@ class RaverApp extends StatelessWidget {
           create: (ctx) => getIt<UserClubFavoritesCubit>(),
         ),
         BlocProvider<ClubsOverviewBloc>(
-          create: (context) => getIt<ClubsOverviewBloc>()
-            ..add(
-              ClubsOverviewEvent.clubsFetched(
-                ClubFilters.empty(),
-              ),
-            ),
+          create: (context) => getIt<ClubsOverviewBloc>(),
         ),
         BlocProvider(
           create: (context) => getIt<ClubFiltersCubit>(),
