@@ -18,4 +18,5 @@ final authErrorMessages = {
   invalidAccessCode: S().invalidAccessCode,
   invalidLink: S().invalidSignInLink,
   unavailable: S().errorCheckInternetConnection,
+  usernameExists: S().usernameAlreadyInUse,
 };
