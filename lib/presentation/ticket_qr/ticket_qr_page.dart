@@ -60,7 +60,7 @@ class TicketQrPage extends StatelessWidget {
                       data: _getData(context),
                       version: QrVersions.auto,
                       size: 300,
-                      foregroundColor: context.onSurfaceColor,
+                      backgroundColor: context.onSurfaceColor,
                     ),
                     const Spacer(),
                     if (!ticket.isVip) const UpgradeToVipButton(),
