@@ -9,7 +9,7 @@ import 'package:raver/presentation/club_details/widgets/club_details_tabs.dart';
 import 'package:raver/presentation/core/details_hero_image.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/application/application.dart';
+import 'package:raver_events/raver_events.dart';
 
 class ClubDetailsPage extends StatefulWidget {
   final Club? club;
@@ -28,30 +28,77 @@ class ClubDetailsPage extends StatefulWidget {
   State<ClubDetailsPage> createState() => _ClubDetailsPageState();
 }
 
-class _ClubDetailsPageState extends State<ClubDetailsPage> {
-  final _scrollController = ScrollController();
+class _ClubDetailsPageState extends State<ClubDetailsPage>
+    with SingleTickerProviderStateMixin {
   final _scrollThreshold = 0.95;
   late final ClubReviewsBloc _clubReviewsBloc;
   late final EventOverviewBloc _eventOverviewBloc;
+  late final ScrollController _scrollController;
+  late final TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController()..addListener(_onScroll);
+    _tabController = TabController(length: 4, vsync: this);
+  }
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) {
-          final cubit = getIt<ClubDetailsCubit>();
-          widget.clubId != null
-              ? cubit.getClubById(widget.clubId!)
-              : cubit.addClubToState(widget.club!);
-          return cubit;
-        }),
         BlocProvider(
-            create: (context) => getIt<ClubRewardsCubit>()
-              ..getRewards(widget.clubId ?? widget.club!.id)),
+          create: (context) {
+            final cubit = getIt<ClubDetailsCubit>();
+            widget.clubId != null
+                ? cubit.getClubById(widget.clubId!)
+                : cubit.addClubToState(widget.club!);
+            return cubit;
+          },
+        ),
         BlocProvider(
-            create: (context) => getIt<ClubReviewsBloc>()
-              ..add(ClubReviewsEvent.reviewsFetched(
-                  widget.clubId ?? widget.club!.id)))
+          create: (context) => getIt<ClubRewardsCubit>()
+            ..getRewards(widget.clubId ?? widget.club!.id),
+        ),
+        BlocProvider(
+          create: (context) => getIt<ClubReviewsBloc>()
+            ..add(
+              ClubReviewsEvent.reviewsFetched(widget.clubId ?? widget.club!.id),
+            ),
+        ),
+        BlocProvider(
+          create: (context) {
+            final reviewsBloc = getIt<ClubReviewsBloc>();
+
+            reviewsBloc.add(
+              ClubReviewsEvent.reviewsFetched(widget.clubId ?? widget.club!.id),
+            );
+
+            _clubReviewsBloc = reviewsBloc;
+
+            return reviewsBloc;
+          },
+        ),
+        BlocProvider(
+          create: (context) {
+            final eventsBloc = getIt<EventOverviewBloc>();
+            eventsBloc.add(
+              EventOverviewEvent.eventsFetched(
+                EventFilters.empty().copyWith(
+                  clubFilter:
+                      ClubFilter(clubId: widget.clubId ?? widget.club!.id),
+                  dateRangeFilter: DateRangeFilter(
+                    fromDate: DateTime.now(),
+                    toDate: null,
+                  ),
+                ),
+                SortModel.empty(),
+              ),
+            );
+            _eventOverviewBloc = eventsBloc;
+            return eventsBloc;
+          },
+        ),
       ],
       child: BlocBuilder<ClubDetailsCubit, ClubDetailsState>(
         builder: (context, state) {
@@ -91,7 +138,10 @@ class _ClubDetailsPageState extends State<ClubDetailsPage> {
                     },
                     body: Padding(
                       padding: const EdgeInsets.fromLTRB(15, 10, 15, 15),
-                      child: ClubDetailsTabs(club: club),
+                      child: ClubDetailsTabs(
+                        club: club,
+                        tabController: _tabController,
+                      ),
                     ),
                   ),
                 ),
@@ -104,5 +154,37 @@ class _ClubDetailsPageState extends State<ClubDetailsPage> {
         },
       ),
     );
+  }
+
+  void _onScroll() {
+    final selectedIndex = _tabController.index;
+
+    if (selectedIndex == 1 && selectedIndex == 2) return;
+
+    if (!_isBottom) return;
+
+    if (selectedIndex == 0) {
+      _eventOverviewBloc.add(const EventOverviewEvent.nextEventsPageFetched());
+    }
+
+    if (selectedIndex == 3) {
+      _clubReviewsBloc.add(const ClubReviewsEvent.nextPageReviewsFetched());
+    }
+  }
+
+  bool get _isBottom {
+    if (!_scrollController.hasClients) return false;
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.offset;
+    return currentScroll >= (maxScroll * _scrollThreshold);
+  }
+
+  @override
+  void dispose() {
+    _scrollController
+      ..removeListener(_onScroll)
+      ..dispose();
+    _tabController.dispose();
+    super.dispose();
   }
 }

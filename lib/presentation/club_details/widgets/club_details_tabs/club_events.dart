@@ -17,18 +17,6 @@ class ClubEvents extends StatelessWidget {
       children: [
         Expanded(
           child: BlocBuilder<EventOverviewBloc, EventOverviewState>(
-            bloc: context.read<EventOverviewBloc>()
-              ..add(
-                EventOverviewEvent.eventsFetched(
-                    EventFilters.empty().copyWith(
-                      clubFilter: ClubFilter(clubId: clubId),
-                      dateRangeFilter: DateRangeFilter(
-                        fromDate: DateTime.now(),
-                        toDate: null,
-                      ),
-                    ),
-                    SortModel.empty()),
-              ),
             builder: (context, state) {
               switch (state.status) {
                 case CubitStatus.initial:
