@@ -20,7 +20,7 @@ class TicketCard extends StatelessWidget {
     return InkWell(
       onTap: () =>
           // TODO: Add case when user has not been on event but give him ability to show photos
-          ticket.isExpired
+          ticket.isExpired && ticket.eventEndDateTime.isBefore(DateTime.now())
               ? AutoRouter.of(context).push(ReviewRoute(ticket: ticket))
               : AutoRouter.of(context).push(
                   EventDetailsRoute(eventId: ticket.eventId),
@@ -58,7 +58,7 @@ class TicketCard extends StatelessWidget {
                   if (ticket.isReturned || ticket.isEventCanceled)
                     Text(
                       // TODO - add translation
-                      ticket.isReturned ? 'ZWRÓCONO' : 'ODWOŁANO',
+                      ticket.isEventCanceled ? 'ODWOŁANO' : 'ZWRÓCONO',
                       style: context.subtitle1.copyWith(
                         color: context.tertiaryColor,
                       ),
