@@ -16,12 +16,15 @@ import 'package:raver_events/raver_events.dart';
 class EventCard extends StatelessWidget {
   final Event event;
   final bool isFavoriteCard;
+  final String heroTag;
 
-  const EventCard({
+  EventCard({
     Key? key,
     required this.event,
+    required String heroPhrase,
     this.isFavoriteCard = false,
-  }) : super(key: key);
+  })  : heroTag = '${event.id}$heroPhrase',
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,12 @@ class EventCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           FocusScope.of(context).unfocus();
-          AutoRouter.of(context).push(EventDetailsRoute(event: event));
+          AutoRouter.of(context).push(
+            EventDetailsRoute(
+              event: event,
+              heroTag: heroTag,
+            ),
+          );
         },
         child: Card(
           clipBehavior: Clip.antiAlias,
@@ -45,26 +53,29 @@ class EventCard extends StatelessWidget {
                   Stack(
                     alignment: Alignment.center,
                     children: [
-                      CachedNetworkImage(
-                        progressIndicatorBuilder:
-                            (context, url, downloadProgress) => SizedBox(
-                          height: 260,
-                          child: Center(
-                            child: SpinKitThreeBounce(
-                              color: context.onSurfaceColor,
-                              size: 24,
+                      Hero(
+                        tag: heroTag,
+                        child: CachedNetworkImage(
+                          progressIndicatorBuilder:
+                              (context, url, downloadProgress) => SizedBox(
+                            height: 250,
+                            child: Center(
+                              child: SpinKitThreeBounce(
+                                color: context.onSurfaceColor,
+                                size: 24,
+                              ),
                             ),
                           ),
-                        ),
-                        imageUrl: event.eventPhotoUrl,
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
-                        imageBuilder: (context, imageProvider) => Container(
-                          height: 260,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: imageProvider,
-                              fit: BoxFit.cover,
+                          imageUrl: event.eventPhotoUrl,
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                          imageBuilder: (context, imageProvider) => Container(
+                            height: 250,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: imageProvider,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),

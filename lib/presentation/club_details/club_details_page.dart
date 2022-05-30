@@ -5,8 +5,8 @@ import 'package:raver/application/clubs/club_details/club_reviews/club_reviews_b
 import 'package:raver/application/clubs/club_rewards/club_rewards_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/club_details/widgets/club_description.dart';
-import 'package:raver/presentation/club_details/widgets/club_details_image.dart';
 import 'package:raver/presentation/club_details/widgets/club_details_tabs.dart';
+import 'package:raver/presentation/core/details_hero_image.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/application/application.dart';
@@ -70,18 +70,18 @@ class _ClubDetailsPageState extends State<ClubDetailsPage> {
                       return [
                         SliverAppBar(
                           automaticallyImplyLeading: false,
-                          expandedHeight: 370,
+                          expandedHeight: 400,
                           floating: true,
                           backgroundColor: context.backgroundColor,
                           flexibleSpace: FlexibleSpaceBar(
                             collapseMode: CollapseMode.pin,
                             background: Column(
                               children: [
-                                ClubDetailsImage(
+                                DetailsHeroImage(
                                   imageUrl: club.clubImageUrl,
                                   heroTag: widget.heroTag,
                                 ),
-                                const SizedBox(height: 20),
+                                const SizedBox(height: 10),
                                 ClubDescription(club: club),
                               ],
                             ),
@@ -90,7 +90,7 @@ class _ClubDetailsPageState extends State<ClubDetailsPage> {
                       ];
                     },
                     body: Padding(
-                      padding: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.fromLTRB(15, 10, 15, 15),
                       child: ClubDetailsTabs(club: club),
                     ),
                   ),

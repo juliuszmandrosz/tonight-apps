@@ -142,13 +142,11 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
   }
 
   void resetFilters() {
-    final selectedDay = state.filters.dateRangeFilter;
-
     // TODO - change this
     emit(
       state.copyWith(
         filters: EventFilters.empty().copyWith(
-          dateRangeFilter: selectedDay,
+          dateRangeFilter: _getDateRangeFilterOnResetFilters(),
           maxDistanceFilter: MaxDistanceFilter(
             enabled: false,
             maxDistance: 50,
@@ -161,6 +159,27 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
     _setUserLocation();
     _eventOverviewBloc.add(
         EventOverviewEvent.eventsFetched(state.filters, SortModel.empty()));
+  }
+
+  _getDateRangeFilterOnResetFilters() {
+    var selectedDay = state.filters.dateRangeFilter;
+    var fromDate = selectedDay.fromDate;
+    final now = DateTime.now();
+    if (fromDate != null) {
+      fromDate = DateTime(
+        fromDate.year,
+        fromDate.month,
+        fromDate.day,
+        now.hour,
+        now.minute,
+        now.second,
+      );
+    }
+
+    return DateRangeFilter(
+      fromDate: fromDate,
+      toDate: selectedDay.toDate,
+    );
   }
 
   void resetSelectedDay() {

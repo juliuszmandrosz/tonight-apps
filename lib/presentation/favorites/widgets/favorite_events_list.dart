@@ -2,13 +2,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/user_favorites/event_favorites/user_event_favorites_cubit.dart';
+import 'package:raver/presentation/events/widgets/event_card.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-import '../../events/widgets/event_card.dart';
-
 class FavoriteEventsList extends StatelessWidget {
   const FavoriteEventsList({Key? key}) : super(key: key);
+  static const heroPhrase = 'favoritesPageHero';
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class FavoriteEventsList extends StatelessWidget {
                     ),
                   )
                 : SizedBox(
-                    height: 355,
+                    height: 345,
                     child: PageView.builder(
                       controller: PageController(viewportFraction: 0.9),
                       itemCount: state.events.length,
@@ -45,6 +45,7 @@ class FavoriteEventsList extends StatelessWidget {
                           child: EventCard(
                             event: state.events[i],
                             isFavoriteCard: true,
+                            heroPhrase: heroPhrase,
                           ),
                         );
                       },

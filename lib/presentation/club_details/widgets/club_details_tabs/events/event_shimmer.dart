@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:shimmer/shimmer.dart';
@@ -7,47 +8,27 @@ class EventShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO - fix shimmer
     return Shimmer.fromColors(
-      child: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(8),
-            bottomRight: Radius.circular(8),
+      child: ListTile(
+        dense: true,
+        contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
+        title: AutoSizeText(
+          '',
+          style: context.headline6,
+          maxLines: 2,
+        ),
+        subtitle: Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: Text(
+            '',
+            style: context.subtitle1,
           ),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(8),
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Text('', style: context.headline6),
-                    Text('', style: context.subtitle1),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [Text('', style: context.headline6)],
-                  ),
-                  Row(
-                    children: [Text('', style: context.subtitle1)],
-                  ),
-                ],
-              ),
-            )
+        trailing: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.chevron_right_rounded),
           ],
         ),
       ),

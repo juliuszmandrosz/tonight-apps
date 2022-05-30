@@ -32,7 +32,7 @@ class FavoriteClubsList extends StatelessWidget {
                     ),
                   )
                 : SizedBox(
-                    height: 355,
+                    height: 345,
                     child: PageView.builder(
                       controller: PageController(viewportFraction: 0.9),
                       itemCount: state.clubs.length,

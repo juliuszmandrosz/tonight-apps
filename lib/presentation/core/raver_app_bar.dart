@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class RaverAppBar extends StatelessWidget with PreferredSizeWidget {
   final String? title;
@@ -9,8 +10,17 @@ class RaverAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      // TODO - add translation
-      title: Text(title ?? 'Tonight'),
+      title: title != null && title!.isNotEmpty
+          ? Text(title!)
+          : Align(
+              alignment: Alignment.centerLeft,
+              child: SvgPicture.asset(
+                'assets/icons/text_logo.svg',
+                semanticsLabel: 'Tonight Logo',
+                alignment: Alignment.centerLeft,
+                height: kToolbarHeight * 1.5,
+              ),
+            ),
       actions: actions,
     );
   }

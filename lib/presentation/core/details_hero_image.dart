@@ -1,16 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:raver/presentation/club_details/widgets/back_button.dart';
+import 'package:raver/presentation/core/back_button.dart';
 import 'package:raver_common/raver_common.dart';
 
-class ClubDetailsImage extends StatelessWidget {
+class DetailsHeroImage extends StatelessWidget {
   final String imageUrl;
   final String? heroTag;
 
-  const ClubDetailsImage(
-      {Key? key, required this.imageUrl, required this.heroTag})
-      : super(key: key);
+  const DetailsHeroImage({
+    Key? key,
+    required this.imageUrl,
+    required this.heroTag,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class ClubDetailsImage extends StatelessWidget {
       children: [
         Expanded(
           child: SizedBox(
-            height: 220,
+            height: 250,
             child: Stack(
               children: [
                 Align(
@@ -28,7 +30,7 @@ class ClubDetailsImage extends StatelessWidget {
                     child: CachedNetworkImage(
                       progressIndicatorBuilder:
                           (context, url, downloadProgress) => SizedBox(
-                        height: 220,
+                        height: 250,
                         child: Center(
                           child: SpinKitThreeBounce(
                             color: context.onSurfaceColor,
@@ -40,7 +42,7 @@ class ClubDetailsImage extends StatelessWidget {
                       errorWidget: (context, url, error) =>
                           const Icon(Icons.error),
                       imageBuilder: (context, imageProvider) => Container(
-                        height: 220,
+                        height: 250,
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: imageProvider,

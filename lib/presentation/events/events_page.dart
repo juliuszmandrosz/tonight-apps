@@ -17,6 +17,7 @@ class _EventsPageState extends State<EventsPage> {
   final _scrollController = ScrollController();
   final _scrollThreshold = 0.95;
   late final EventOverviewBloc _eventOverviewBloc;
+  static const heroPhrase = 'eventsPageHero';
 
   @override
   void initState() {
@@ -92,7 +93,10 @@ class _EventsPageState extends State<EventsPage> {
                       itemBuilder: (ctx, i) => i >= state.events.length
                           ? const BottomLoader()
                           : Center(
-                              child: EventCard(event: state.events[i]),
+                              child: EventCard(
+                                event: state.events[i],
+                                heroPhrase: heroPhrase,
+                              ),
                             ),
                       controller: _scrollController,
                     ),

@@ -25,7 +25,7 @@ class EventDetailsSection extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: RaverHeadline(text: S().details, isSmallerVersion: true),
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 15),
         GridView.count(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),

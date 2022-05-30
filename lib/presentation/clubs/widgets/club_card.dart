@@ -51,7 +51,7 @@ class ClubCard extends StatelessWidget {
                   child: CachedNetworkImage(
                     progressIndicatorBuilder:
                         (context, url, downloadProgress) => SizedBox(
-                      height: 260,
+                      height: 250,
                       child: Center(
                         child: SpinKitThreeBounce(
                           color: context.onSurfaceColor,
@@ -63,7 +63,7 @@ class ClubCard extends StatelessWidget {
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error),
                     imageBuilder: (context, imageProvider) => Container(
-                      height: 260,
+                      height: 250,
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: imageProvider,
