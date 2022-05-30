@@ -14,7 +14,7 @@ class ClubNameRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         RaverHeadline(text: club.clubName),
-        ClubDetailsFavoriteButton(clubId: club.id)
+        ClubDetailsFavoriteButton(club: club)
       ],
     );
   }

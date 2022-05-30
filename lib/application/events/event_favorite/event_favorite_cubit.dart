@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/profile/profile_cubit.dart';
-import 'package:raver/application/profile/profile_cubit_hub.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -14,36 +12,34 @@ part 'event_favorite_state.dart';
 
 class EventFavoriteCubit extends Cubit<EventFavoriteState> {
   final UserEventFacade _eventFacade;
-  final ProfileBroadcastSubject _profileBroadcastSubject;
 
-  EventFavoriteCubit(this._eventFacade, this._profileBroadcastSubject)
-      : super(EventFavoriteState.initial());
+  EventFavoriteCubit(this._eventFacade) : super(EventFavoriteState.initial());
 
-  Future<void> getFavoriteEventIds() async {
-    _initBroadcastListener();
-    emit(state.copyWith(status: CubitStatus.loading));
+  Future<void> getFavoriteEvents() async {
+    // TODO - implement
+    emit(state.copyWith(status: CubitStatus.success));
   }
 
-  Future<void> toggleEventFavoriteStatus(String eventId) async {
+  Future<void> toggleEventFavoriteStatus(Event event) async {
     emit(state.copyWith(
       isChangingFavoriteStatus: true,
     ));
 
-    final favoriteEvents = state.favoriteEventIds;
-    final favoriteEventsCopy = [...state.favoriteEventIds];
+    final favoriteEvents = state.favoriteEvents;
+    final favoriteEventsCopy = [...favoriteEvents];
 
-    final currentStatus = favoriteEventsCopy.contains(eventId);
+    final currentStatus = favoriteEventsCopy.contains(event);
 
     currentStatus
-        ? favoriteEventsCopy.remove(eventId)
-        : favoriteEventsCopy.add(eventId);
+        ? favoriteEventsCopy.remove(event)
+        : favoriteEventsCopy.add(event);
 
     emit(state.copyWith(
-      favoriteEventIds: favoriteEventsCopy,
+      favoriteEvents: favoriteEventsCopy,
     ));
 
     final failureOrSuccess =
-        await _eventFacade.toggleEventFavoriteStatus(eventId);
+        await _eventFacade.toggleEventFavoriteStatus(event.id);
 
     emit(state.copyWith(
       isChangingFavoriteStatus: false,
@@ -55,7 +51,7 @@ class EventFavoriteCubit extends Cubit<EventFavoriteState> {
           state.copyWith(
             errorMessage: some(S().errorChangingEventStatus),
             status: CubitStatus.failure,
-            favoriteEventIds: favoriteEvents,
+            favoriteEvents: favoriteEvents,
           ),
         );
 
@@ -65,22 +61,6 @@ class EventFavoriteCubit extends Cubit<EventFavoriteState> {
       },
       (success) {},
     );
-  }
-
-  void _refreshIdsList(ProfileState profileState) {
-    if (profileState.status == CubitStatus.success) {
-      emit(state.copyWith(
-          status: CubitStatus.success,
-          favoriteEventIds: profileState.user.favoriteEventIds));
-      return;
-    }
-    _emitFetchFailure();
-  }
-
-  void _initBroadcastListener() {
-    _profileBroadcastSubject.getSubject().listen((profileState) {
-      _refreshIdsList(profileState);
-    });
   }
 
   void _emitFetchFailure() {

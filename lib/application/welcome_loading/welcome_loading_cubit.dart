@@ -10,8 +10,6 @@ import 'package:raver/application/events/event_filters/event_filters_cubit.dart'
 import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
-import 'package:raver/application/user_favorites/club_favorites/user_club_favorites_cubit.dart';
-import 'package:raver/application/user_favorites/event_favorites/user_event_favorites_cubit.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/application/application.dart';
@@ -33,8 +31,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   final ClubsOverviewBloc _clubsOverviewBloc;
   final EventFavoriteCubit _eventFavoriteCubit;
   final ClubFavoriteCubit _clubFavoriteCubit;
-  final UserEventFavoritesCubit _userEventFavoritesCubit;
-  final UserClubFavoritesCubit _userClubFavoritesCubit;
   final TicketListCubit _ticketListCubit;
 
   WelcomeLoadingCubit({
@@ -46,8 +42,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     required ClubsOverviewBloc clubsOverviewBloc,
     required EventFavoriteCubit eventFavoriteCubit,
     required ClubFavoriteCubit clubFavoriteCubit,
-    required UserEventFavoritesCubit userEventFavoritesCubit,
-    required UserClubFavoritesCubit userClubFavoritesCubit,
     required TicketListCubit ticketListCubit,
   })  : _profileCubit = profileCubit,
         _userLocationCubit = userLocationCubit,
@@ -57,8 +51,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         _clubsOverviewBloc = clubsOverviewBloc,
         _eventFavoriteCubit = eventFavoriteCubit,
         _clubFavoriteCubit = clubFavoriteCubit,
-        _userEventFavoritesCubit = userEventFavoritesCubit,
-        _userClubFavoritesCubit = userClubFavoritesCubit,
         _ticketListCubit = ticketListCubit,
         super(WelcomeLoadingState.initial());
 
@@ -71,8 +63,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _initTickets();
     _initFavoriteEvents();
     _initFavoriteClubs();
-    _initUserFavoriteEvents();
-    _initUserFavoriteClubs();
 
     Stripe.publishableKey =
         FirebaseRemoteConfig.instance.getString(stripePublishableKey);
@@ -122,7 +112,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   }
 
   _initFavoriteEvents() {
-    _eventFavoriteCubit.getFavoriteEventIds();
+    _eventFavoriteCubit.getFavoriteEvents();
     _eventFavoriteCubit.stream.listen((event) {
       _checkAndEmitFailure(event.status);
       _emitSuccessIfAllLoaded();
@@ -130,24 +120,8 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   }
 
   _initFavoriteClubs() {
-    _clubFavoriteCubit.getFavoriteClubIds();
+    _clubFavoriteCubit.getFavoriteClubs();
     _clubFavoriteCubit.stream.listen((event) {
-      _checkAndEmitFailure(event.status);
-      _emitSuccessIfAllLoaded();
-    });
-  }
-
-  _initUserFavoriteEvents() {
-    _userEventFavoritesCubit.getFavorites();
-    _userEventFavoritesCubit.stream.listen((event) {
-      _checkAndEmitFailure(event.status);
-      _emitSuccessIfAllLoaded();
-    });
-  }
-
-  _initUserFavoriteClubs() {
-    _userClubFavoritesCubit.getFavorites();
-    _userClubFavoritesCubit.stream.listen((event) {
       _checkAndEmitFailure(event.status);
       _emitSuccessIfAllLoaded();
     });
@@ -184,9 +158,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         _clubsOverviewBloc.state.status == CubitStatus.success &&
         _ticketListCubit.state.status == CubitStatus.success &&
         _eventFavoriteCubit.state.status == CubitStatus.success &&
-        _clubFavoriteCubit.state.status == CubitStatus.success &&
-        _userEventFavoritesCubit.state.status == CubitStatus.success &&
-        _userClubFavoritesCubit.state.status == CubitStatus.success;
+        _clubFavoriteCubit.state.status == CubitStatus.success;
   }
 
   _onboardingCompleted() {

@@ -4,14 +4,15 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:raver/presentation/commons/icons/raver_toggle_icon.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 
 class ClubFavoriteButton extends StatelessWidget {
-  final String clubId;
+  final Club club;
 
   const ClubFavoriteButton({
+    required this.club,
     Key? key,
-    required this.clubId,
   }) : super(key: key);
 
   @override
@@ -24,7 +25,7 @@ class ClubFavoriteButton extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        final isFavorite = state.favoriteClubIds.contains(clubId);
+        final isFavorite = state.favoriteClubs.contains(club);
         return Padding(
           padding: const EdgeInsets.all(4.0),
           child: state.status == CubitStatus.loading
@@ -46,7 +47,7 @@ class ClubFavoriteButton extends StatelessWidget {
                         ? null
                         : context
                             .read<ClubFavoriteCubit>()
-                            .toggleClubFavoriteStatus(clubId),
+                            .toggleClubFavoriteStatus(club),
                     offIcon: const FaIcon(FontAwesomeIcons.heart),
                     value: isFavorite,
                   ),

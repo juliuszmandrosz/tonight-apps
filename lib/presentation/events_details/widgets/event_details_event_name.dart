@@ -32,7 +32,9 @@ class EventDetailsEventName extends StatelessWidget {
       ),
       trailing: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [EventDetailsFavoriteButton(eventId: event.id)],
+        children: [
+          EventDetailsFavoriteButton(event: event),
+        ],
       ),
     );
   }

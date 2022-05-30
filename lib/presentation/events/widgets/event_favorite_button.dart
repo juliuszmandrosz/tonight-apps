@@ -5,13 +5,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/presentation/commons/icons/raver_toggle_icon.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/raver_events.dart';
 
 class EventFavoriteButton extends StatelessWidget {
-  final String eventId;
+  final Event event;
 
   const EventFavoriteButton({
     Key? key,
-    required this.eventId,
+    required this.event,
   }) : super(key: key);
 
   @override
@@ -24,7 +25,7 @@ class EventFavoriteButton extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        final isFavorite = state.favoriteEventIds.contains(eventId);
+        final isFavorite = state.favoriteEvents.contains(event);
         return state.status == CubitStatus.loading
             ? Padding(
                 padding: const EdgeInsets.all(4),
@@ -44,9 +45,7 @@ class EventFavoriteButton extends StatelessWidget {
                       ? null
                       : context
                           .read<EventFavoriteCubit>()
-                          .toggleEventFavoriteStatus(
-                            eventId,
-                          ),
+                          .toggleEventFavoriteStatus(event),
                   offIcon: const FaIcon(FontAwesomeIcons.heart),
                   value: isFavorite,
                 ),

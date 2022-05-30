@@ -31,7 +31,6 @@ import 'package:raver/application/profile/profile_cubit_hub.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/application/ticket_qr/ticket_qr_cubit.dart';
-import 'package:raver/application/user_favorites/event_favorites/user_event_favorites_cubit.dart';
 import 'package:raver/domain/remote_config/remote_config_facade.dart';
 import 'package:raver/infrastructure/remote_config/firebase_remote_config_facade.dart';
 import 'package:raver_account_settings/raver_account_settings.dart';
@@ -52,7 +51,6 @@ import 'application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'application/event_review/existing_review/existing_review_cubit.dart';
 import 'application/event_review/new_review/event_review_cubit.dart';
 import 'application/profile/profile_cubit.dart';
-import 'application/user_favorites/club_favorites/user_club_favorites_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -139,9 +137,8 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerLazySingleton(
+  getIt.registerFactory(
     () => ClubFavoriteCubit(
-      getIt(),
       getIt(),
     ),
   );
@@ -195,9 +192,8 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerLazySingleton(
+  getIt.registerFactory(
     () => EventFavoriteCubit(
-      getIt(),
       getIt(),
     ),
   );
@@ -211,21 +207,6 @@ void _registerCubits() {
   getIt.registerFactoryParam(
     (EventOverviewBloc eventOverviewBloc, _) => EventFiltersCubit(
       eventOverviewBloc,
-      getIt(),
-    ),
-  );
-
-  //Favorites
-  getIt.registerLazySingleton(
-    () => UserEventFavoritesCubit(
-      getIt(),
-      getIt(),
-    ),
-  );
-
-  getIt.registerLazySingleton(
-    () => UserClubFavoritesCubit(
-      getIt(),
       getIt(),
     ),
   );

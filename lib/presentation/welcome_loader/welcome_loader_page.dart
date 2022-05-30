@@ -11,8 +11,6 @@ import 'package:raver/application/events/event_filters/event_filters_cubit.dart'
 import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
-import 'package:raver/application/user_favorites/club_favorites/user_club_favorites_cubit.dart';
-import 'package:raver/application/user_favorites/event_favorites/user_event_favorites_cubit.dart';
 import 'package:raver/application/welcome_loading/welcome_loading_cubit.dart';
 import 'package:raver/presentation/error_alert/error_alert.dart';
 import 'package:raver/presentation/routes/app_router.dart';
@@ -45,8 +43,6 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
         ticketListCubit: context.read<TicketListCubit>(),
         eventFavoriteCubit: context.read<EventFavoriteCubit>(),
         clubFavoriteCubit: context.read<ClubFavoriteCubit>(),
-        userEventFavoritesCubit: context.read<UserEventFavoritesCubit>(),
-        userClubFavoritesCubit: context.read<UserClubFavoritesCubit>(),
       );
     }
   }

@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/user_favorites/event_favorites/user_event_favorites_cubit.dart';
+import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/presentation/events/widgets/event_card.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -12,7 +12,7 @@ class FavoriteEventsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserEventFavoritesCubit, UserEventFavoritesState>(
+    return BlocBuilder<EventFavoriteCubit, EventFavoriteState>(
       builder: (context, state) {
         switch (state.status) {
           case CubitStatus.loading:
@@ -21,7 +21,7 @@ class FavoriteEventsList extends StatelessWidget {
             );
 
           case CubitStatus.success:
-            return state.events.isEmpty
+            return state.favoriteEvents.isEmpty
                 ? Align(
                     alignment: Alignment.centerLeft,
                     child: AutoSizeText(
@@ -34,16 +34,16 @@ class FavoriteEventsList extends StatelessWidget {
                     height: 345,
                     child: PageView.builder(
                       controller: PageController(viewportFraction: 0.9),
-                      itemCount: state.events.length,
+                      itemCount: state.favoriteEvents.length,
                       itemBuilder: (ctx, i) {
                         return Padding(
                           padding: i == 0
                               ? const EdgeInsets.only(right: 5)
-                              : i == state.events.length - 1
+                              : i == state.favoriteEvents.length - 1
                                   ? const EdgeInsets.only(left: 5)
                                   : const EdgeInsets.symmetric(horizontal: 5),
                           child: EventCard(
-                            event: state.events[i],
+                            event: state.favoriteEvents[i],
                             isFavoriteCard: true,
                             heroPhrase: heroPhrase,
                           ),

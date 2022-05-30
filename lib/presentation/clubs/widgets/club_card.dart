@@ -76,7 +76,7 @@ class ClubCard extends StatelessWidget {
                 Positioned(
                   top: 10,
                   right: 15,
-                  child: ClubFavoriteButton(clubId: _club.id),
+                  child: ClubFavoriteButton(club: _club),
                 ),
               ],
             ),

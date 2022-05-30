@@ -3,12 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:raver/presentation/commons/icons/raver_toggle_icon.dart';
+import 'package:raver_clubs/domain/club/club_entity.dart';
 import 'package:raver_common/raver_common.dart';
 
 class ClubDetailsFavoriteButton extends StatelessWidget {
-  final String clubId;
+  final Club club;
 
-  const ClubDetailsFavoriteButton({Key? key, required this.clubId})
+  const ClubDetailsFavoriteButton({required this.club, Key? key})
       : super(key: key);
 
   @override
@@ -21,12 +22,11 @@ class ClubDetailsFavoriteButton extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        final isFavorite = state.favoriteClubIds.contains(clubId);
+        final isFavorite = state.favoriteClubs.contains(club);
         return RaverToggleIcon(
           onIcon: const FaIcon(FontAwesomeIcons.solidHeart),
-          onPressed: () => context
-              .read<ClubFavoriteCubit>()
-              .toggleClubFavoriteStatus(clubId),
+          onPressed: () =>
+              context.read<ClubFavoriteCubit>().toggleClubFavoriteStatus(club),
           offIcon: const FaIcon(FontAwesomeIcons.heart),
           value: isFavorite,
         );

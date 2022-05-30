@@ -83,7 +83,7 @@ class EventCard extends StatelessWidget {
                       Positioned(
                         top: 15,
                         right: 15,
-                        child: EventFavoriteButton(eventId: event.id),
+                        child: EventFavoriteButton(event: event),
                       ),
                       if (event.eventStartDateTime.isBefore(DateTime.now()) &&
                           event.eventEndDateTime.isAfter(DateTime.now()))
