@@ -16,16 +16,22 @@ String displayMusicalGenres(
   return displayedString;
 }
 
-String displayEventTags(BuildContext context, Event event) {
-  final musicalGenres = displayMusicalGenres(
-    event.musicalGenres,
-    EventDetailsSeparator.comma,
-  );
-  var price = '${event.price}${getCurrencySymbolFromCode(event.currency)}';
+String displayEventTags(
+    BuildContext context, Event event, EventTickets? eventTickets) {
+  var price = '${_getPrice(event, eventTickets)}'
+      '${getCurrencySymbolFromCode(event.currency)}';
   final minAge = '${event.minAge}+';
-  final allowedOutfit = event.allowedOutfit;
 
-  return '$minAge, $price, $allowedOutfit, $musicalGenres';
+  // TODO - add translation
+  return 'Wiek $minAge, wejście $price';
+}
+
+_getPrice(Event event, EventTickets? eventTickets) {
+  if (eventTickets == null) {
+    return event.price;
+  }
+
+  return eventTickets.getCurrentPool().ticketPrice;
 }
 
 String _addSeparator(EventDetailsSeparator separator) {

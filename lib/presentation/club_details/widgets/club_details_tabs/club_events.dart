@@ -48,13 +48,9 @@ class _ClubEventsState extends State<ClubEvents> {
                   return Container();
                 case CubitStatus.loading:
                   return ListView.separated(
-                    itemCount: 3,
-                    separatorBuilder: (_, __) => const SizedBox(
-                      height: 10,
-                    ),
-                    itemBuilder: (context, index) {
-                      return const EventShimmer();
-                    },
+                    itemCount: 4,
+                    separatorBuilder: (_, __) => const SizedBox(height: 10),
+                    itemBuilder: (context, index) => const EventShimmer(),
                   );
 
                 case CubitStatus.failure:

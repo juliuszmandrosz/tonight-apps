@@ -58,7 +58,6 @@ class EventDetailsPage extends StatelessWidget {
                       ),
                       loadSuccess: (state) {
                         final event = state.event;
-
                         return BlocProvider(
                           create: (context) => getIt<EventTicketsCubit>()
                             ..getEventTickets(

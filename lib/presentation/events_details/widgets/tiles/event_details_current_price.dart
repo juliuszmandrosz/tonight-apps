@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
@@ -32,7 +33,10 @@ class EventDetailsCurrentPrice extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(top: 15),
             child: state.status.isLoading()
-                ? const SizedBox()
+                ? SpinKitThreeBounce(
+                    color: context.onSurfaceColor,
+                    size: 24,
+                  )
                 : Text(
                     '${state.eventTickets.getOrCrash().getCurrentPool().ticketPrice}',
                     style: context.subtitle1

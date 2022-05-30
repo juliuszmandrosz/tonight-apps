@@ -84,7 +84,7 @@ class RaverApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<AppSettingsCubit>(),
-        )
+        ),
       ],
       child: BlocBuilder<AppSettingsCubit, AppSettingsState>(
         buildWhen: ((previous, current) =>
@@ -92,7 +92,8 @@ class RaverApp extends StatelessWidget {
             current.appSettings.isDarkTheme),
         builder: (context, state) {
           return MaterialApp.router(
-            title: 'Raver',
+            // TODO - add translation
+            title: 'Tonight',
             theme: darkTheme,
             routerDelegate: _appRouter.delegate(),
             routeInformationParser: _appRouter.defaultRouteParser(),

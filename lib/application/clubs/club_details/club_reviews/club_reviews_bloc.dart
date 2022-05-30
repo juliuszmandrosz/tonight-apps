@@ -8,12 +8,10 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 part 'club_reviews_bloc.freezed.dart';
-
 part 'club_reviews_event.dart';
-
 part 'club_reviews_state.dart';
 
-const pageSize = 5;
+const pageSize = 20;
 
 const throttleDuration = Duration(milliseconds: 500);
 

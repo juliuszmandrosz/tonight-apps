@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:logger/logger.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver_common/raver_common.dart';
@@ -14,7 +13,6 @@ import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 part 'ticket_checkout_cubit.freezed.dart';
-
 part 'ticket_checkout_state.dart';
 
 class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
@@ -223,7 +221,6 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
         await _userTicketFacade.waitForTicketToBeCreated(eventId);
 
     failureOrSuccess.fold((failure) => _emitTicketFailure(failure), (ticket) {
-      Logger().i(ticket);
       _ticketListCubit.addUpcomingLiveTicketToState(ticket);
       _emitTicketCreated(ticket);
     });

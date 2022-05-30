@@ -1282,7 +1282,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "18278cb239955e58b18e52c2663ff298016e7878"
+      resolved-ref: e82a9e2e665019b8ce3bbbbee52bbb209d829523
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
