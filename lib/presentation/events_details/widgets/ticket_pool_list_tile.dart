@@ -72,7 +72,8 @@ class TicketPoolListTile extends StatelessWidget {
             ),
             const SizedBox(width: 10),
             Text(
-              "$ticketsLeftCount ${S().ticketsLeft(ticketsLeftCount)}",
+              // TODO - add translation
+              'Pozostały ostatnie bilety!',
               style: context.bodyText1,
             ),
           ],
