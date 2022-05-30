@@ -59,21 +59,38 @@ class _ClubOpinionsState extends State<ClubOpinions> {
                   child: Text(S().clubReviewsLoadingError),
                 );
               case CubitStatus.success:
-                return Column(
-                  children: [
-                    Expanded(
-                      child: ListView.separated(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        separatorBuilder: (context, i) => const Divider(),
-                        itemCount: state.reviews.length + 1,
-                        itemBuilder: (ctx, i) => i >= state.reviews.length
-                            ? const SizedBox()
-                            : ClubReviewListTile(review: state.reviews[i]),
-                      ),
-                    ),
-                  ],
-                );
+                return state.reviews.isEmpty
+                    ? Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              S().noOpinions,
+                              style: context.subtitle1,
+                            ),
+                            const SizedBox(height: 20),
+                            OutlinedButton(
+                              onPressed: () =>
+                                  context.read<ClubReviewsBloc>().add(
+                                        ClubReviewsEvent.reviewsFetched(
+                                            widget.clubId),
+                                      ),
+                              child: Text(S().refresh),
+                            ),
+                          ],
+                        ),
+                      )
+                    : Expanded(
+                        child: ListView.separated(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          separatorBuilder: (context, i) => const Divider(),
+                          itemCount: state.reviews.length + 1,
+                          itemBuilder: (ctx, i) => i >= state.reviews.length
+                              ? const SizedBox()
+                              : ClubReviewListTile(review: state.reviews[i]),
+                        ),
+                      );
             }
           },
         );

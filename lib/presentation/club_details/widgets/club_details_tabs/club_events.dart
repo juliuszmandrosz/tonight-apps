@@ -70,23 +70,27 @@ class _ClubEventsState extends State<ClubEvents> {
                   );
                 case CubitStatus.success:
                   if (state.events.isEmpty) {
-                    return RefreshIndicator(
-                      onRefresh: () async =>
-                          context.read<EventOverviewBloc>().add(
-                                EventOverviewEvent.eventsFetched(
-                                    state.eventFilters, state.sortModel),
-                              ),
-                      child: SingleChildScrollView(
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        child: SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.3,
-                          child: Center(
-                            child: Text(
-                              S().noEventsInClub,
-                              style: context.subtitle1,
-                            ),
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            S().noEventsInClub,
+                            style: context.subtitle1,
                           ),
-                        ),
+                          const SizedBox(height: 20),
+                          OutlinedButton(
+                            onPressed: () {
+                              context.read<EventOverviewBloc>().add(
+                                    EventOverviewEvent.eventsFetched(
+                                      state.eventFilters,
+                                      state.sortModel,
+                                    ),
+                                  );
+                            },
+                            child: Text(S().refresh),
+                          )
+                        ],
                       ),
                     );
                   }

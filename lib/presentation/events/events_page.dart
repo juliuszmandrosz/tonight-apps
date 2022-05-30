@@ -45,42 +45,32 @@ class _EventsPageState extends State<EventsPage> {
                 );
 
               case CubitStatus.failure:
-                return RefreshIndicator(
-                  onRefresh: () async => context.read<EventOverviewBloc>().add(
-                        EventOverviewEvent.eventsFetched(
-                          state.eventFilters,
-                          state.sortModel,
-                        ),
-                      ),
-                  child: Center(
-                    child: Text(S().errorLoadingEvents),
-                  ),
-                );
+                return Center(child: Text(S().errorLoadingEvents));
 
               case CubitStatus.success:
                 if (state.events.isEmpty) {
-                  return RefreshIndicator(
-                    onRefresh: () async =>
-                        context.read<EventOverviewBloc>().add(
-                              EventOverviewEvent.eventsFetched(
-                                  state.eventFilters, state.sortModel),
-                            ),
-                    child: SingleChildScrollView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.3,
-                        child: Center(
-                          child: Text(
-                            state.eventFilters.maxDistanceFilter.userLocation
-                                        .isNotEmpty &&
-                                    state.eventFilters.maxDistanceFilter.enabled
-                                ? S().noEventsNearYou
-                                : S().events(0),
-                            style: context.subtitle1,
-                          ),
-                        ),
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // TODO - change this
+                      const SizedBox(height: 200),
+                      Text(
+                        state.eventFilters.maxDistanceFilter.userLocation
+                                    .isNotEmpty &&
+                                state.eventFilters.maxDistanceFilter.enabled
+                            ? S().noEventsNearYou
+                            : S().events(0),
+                        style: context.subtitle1,
                       ),
-                    ),
+                      const SizedBox(height: 20),
+                      OutlinedButton(
+                          onPressed: () =>
+                              context.read<EventOverviewBloc>().add(
+                                    EventOverviewEvent.eventsFetched(
+                                        state.eventFilters, state.sortModel),
+                                  ),
+                          child: Text(S().refresh)),
+                    ],
                   );
                 }
 
