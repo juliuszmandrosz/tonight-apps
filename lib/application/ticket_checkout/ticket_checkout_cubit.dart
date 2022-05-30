@@ -131,7 +131,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
     emit(
       state.copyWith(
         isVip: value,
-        checkoutPrice: newPrice - state.promotionCode.amountOff,
+        checkoutPrice: newPrice,
       ),
     );
   }
