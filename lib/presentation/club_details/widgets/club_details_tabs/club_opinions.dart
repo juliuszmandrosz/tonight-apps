@@ -5,28 +5,13 @@ import 'package:raver/presentation/club_details/widgets/club_reviews/club_review
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class ClubOpinions extends StatefulWidget {
+class ClubOpinions extends StatelessWidget {
   final String clubId;
 
   const ClubOpinions({
     Key? key,
     required this.clubId,
   }) : super(key: key);
-
-  @override
-  State<ClubOpinions> createState() => _ClubOpinionsState();
-}
-
-class _ClubOpinionsState extends State<ClubOpinions> {
-  final _scrollController = ScrollController();
-  late final ClubReviewsBloc _clubReviewsBloc;
-
-  @override
-  void initState() {
-    super.initState();
-    _scrollController.addListener(_onScroll);
-    _clubReviewsBloc = context.read<ClubReviewsBloc>();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,50 +57,26 @@ class _ClubOpinionsState extends State<ClubOpinions> {
                             OutlinedButton(
                               onPressed: () =>
                                   context.read<ClubReviewsBloc>().add(
-                                        ClubReviewsEvent.reviewsFetched(
-                                            widget.clubId),
+                                        ClubReviewsEvent.reviewsFetched(clubId),
                                       ),
                               child: Text(S().refresh),
                             ),
                           ],
                         ),
                       )
-                    : Expanded(
-                        child: ListView.separated(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          separatorBuilder: (context, i) => const Divider(),
-                          itemCount: state.reviews.length + 1,
-                          itemBuilder: (ctx, i) => i >= state.reviews.length
-                              ? const SizedBox()
-                              : ClubReviewListTile(review: state.reviews[i]),
-                        ),
+                    : ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        separatorBuilder: (context, i) => const Divider(),
+                        itemCount: state.reviews.length + 1,
+                        itemBuilder: (ctx, i) => i >= state.reviews.length
+                            ? const SizedBox()
+                            : ClubReviewListTile(review: state.reviews[i]),
                       );
             }
           },
         );
       },
     );
-  }
-
-  @override
-  void dispose() {
-    _scrollController
-      ..removeListener(_onScroll)
-      ..dispose();
-    super.dispose();
-  }
-
-  void _onScroll() {
-    if (_isBottom) {
-      _clubReviewsBloc.add(const ClubReviewsEvent.nextPageReviewsFetched());
-    }
-  }
-
-  bool get _isBottom {
-    if (!_scrollController.hasClients) return false;
-    final maxScroll = _scrollController.position.maxScrollExtent;
-    final currentScroll = _scrollController.offset;
-    return currentScroll >= (maxScroll * 0.95);
   }
 }

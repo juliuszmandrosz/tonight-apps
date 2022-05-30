@@ -1,31 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/injection.dart';
 import 'package:raver/presentation/club_details/widgets/club_details_tabs/events/event_shimmer.dart';
 import 'package:raver/presentation/club_details/widgets/club_details_tabs/events/event_tile.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class ClubEvents extends StatefulWidget {
+class ClubEvents extends StatelessWidget {
   final String clubId;
 
   const ClubEvents({Key? key, required this.clubId}) : super(key: key);
-
-  @override
-  State<ClubEvents> createState() => _ClubEventsState();
-}
-
-class _ClubEventsState extends State<ClubEvents> {
-  final _scrollController = ScrollController();
-  late final EventOverviewBloc _eventOverviewBloc;
-
-  @override
-  void initState() {
-    super.initState();
-    _scrollController.addListener(_onScroll);
-    _eventOverviewBloc = getIt<EventOverviewBloc>();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +17,18 @@ class _ClubEventsState extends State<ClubEvents> {
       children: [
         Expanded(
           child: BlocBuilder<EventOverviewBloc, EventOverviewState>(
-            bloc: _eventOverviewBloc
-              ..add(EventOverviewEvent.eventsFetched(
-                  EventFilters.empty().copyWith(
-                      clubFilter: ClubFilter(clubId: widget.clubId),
+            bloc: context.read<EventOverviewBloc>()
+              ..add(
+                EventOverviewEvent.eventsFetched(
+                    EventFilters.empty().copyWith(
+                      clubFilter: ClubFilter(clubId: clubId),
                       dateRangeFilter: DateRangeFilter(
                         fromDate: DateTime.now(),
                         toDate: null,
-                      )),
-                  SortModel.empty())),
+                      ),
+                    ),
+                    SortModel.empty()),
+              ),
             builder: (context, state) {
               switch (state.status) {
                 case CubitStatus.initial:
@@ -110,7 +97,6 @@ class _ClubEventsState extends State<ClubEvents> {
                                 event: state.events[i],
                               ),
                             ),
-                      controller: _scrollController,
                     ),
                   );
               }
@@ -119,28 +105,5 @@ class _ClubEventsState extends State<ClubEvents> {
         )
       ],
     );
-  }
-
-  @override
-  void dispose() {
-    _scrollController
-      ..removeListener(_onScroll)
-      ..dispose();
-    super.dispose();
-  }
-
-  void _onScroll() {
-    if (_isBottom) {
-      _eventOverviewBloc.add(
-        const EventOverviewEvent.nextEventsPageFetched(),
-      );
-    }
-  }
-
-  bool get _isBottom {
-    if (!_scrollController.hasClients) return false;
-    final maxScroll = _scrollController.position.maxScrollExtent;
-    final currentScroll = _scrollController.offset;
-    return currentScroll >= (maxScroll * 0.95);
   }
 }
