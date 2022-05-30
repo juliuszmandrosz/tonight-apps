@@ -77,6 +77,7 @@ class TicketCheckoutPromotionCode extends HookWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Chip(
+                    backgroundColor: context.surfaceColor,
                     padding:
                         const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                     label: SizedBox(
