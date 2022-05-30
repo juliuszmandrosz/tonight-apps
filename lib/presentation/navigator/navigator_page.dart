@@ -3,13 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
+import 'package:raver/presentation/navigator/widgets/sign_out_button.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class NavigatorPage extends StatelessWidget {
+class NavigatorPage extends StatefulWidget {
   const NavigatorPage({Key? key}) : super(key: key);
+
+  @override
+  State<NavigatorPage> createState() => _NavigatorPageState();
+}
+
+class _NavigatorPageState extends State<NavigatorPage> {
+  var selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +37,15 @@ class NavigatorPage extends StatelessWidget {
           listener: (context, state) => state.map(
               initial: (_) {},
               authenticated: (_) =>
-                  AutoRouter.of(context).replace(WelcomeLoaderRoute()),
+                  AutoRouter.of(context).replace(const WelcomeLoaderRoute()),
               unauthenticated: (_) =>
                   AutoRouter.of(context).replace(const SignInRoute())),
         )
       ],
       child: AutoTabsScaffold(
+        floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: selectedIndex == 4 ? const SignOutButton() : null,
         appBarBuilder: (_, tabsRouter) => const RaverAppBar(),
         routes: const [
           EventsRoute(),
@@ -46,7 +57,12 @@ class NavigatorPage extends StatelessWidget {
         bottomNavigationBuilder: (_, tabsRouter) {
           return NavigationBar(
             selectedIndex: tabsRouter.activeIndex,
-            onDestinationSelected: tabsRouter.setActiveIndex,
+            onDestinationSelected: (i) {
+              setState(() {
+                selectedIndex = i;
+              });
+              tabsRouter.setActiveIndex(i);
+            },
             destinations: [
               NavigationDestination(
                 icon: const FaIcon(FontAwesomeIcons.fire),

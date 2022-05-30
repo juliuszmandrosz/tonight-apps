@@ -13,15 +13,13 @@ class SubmitUsernameButton extends StatelessWidget {
       builder: (context, state) {
         return state.status.isSubmissionInProgress
             ? const CircularProgressIndicator()
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  ElevatedButton(
-                    child: Text(S().submit),
-                    onPressed: () =>
-                        context.read<UsernameCubit>().setUsernameForUser(),
-                  ),
-                ],
+            : SizedBox(
+                width: 300,
+                child: ElevatedButton(
+                  child: Text(S().submit),
+                  onPressed: () =>
+                      context.read<UsernameCubit>().setUsernameForUser(),
+                ),
               );
       },
     );

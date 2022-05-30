@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -11,7 +12,10 @@ class RaverAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: title != null && title!.isNotEmpty
-          ? Text(title!)
+          ? AutoSizeText(
+              title!,
+              maxLines: 1,
+            )
           : Align(
               alignment: Alignment.centerLeft,
               child: SvgPicture.asset(

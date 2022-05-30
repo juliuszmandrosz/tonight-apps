@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:raver/presentation/profile/widgets/contact_tile.dart';
-import 'package:raver/presentation/profile/widgets/language_tile.dart';
 import 'package:raver/presentation/profile/widgets/notifications_tile.dart';
 import 'package:raver/presentation/profile/widgets/rate_us_tile.dart';
-import 'package:raver/presentation/profile/widgets/social_media/sign_out_tile.dart';
 import 'package:raver/presentation/profile/widgets/terms_of_service_tile.dart';
 
 class ProfileMenuTiles extends StatelessWidget {
   const ProfileMenuTiles({Key? key}) : super(key: key);
 
   final settingTiles = const [
-    SignOutTile(),
     NotificationsTile(),
-    LanguageTile(),
+    // SettingsTile(),
     RateUsTile(),
     TermsOfServiceTile(),
     ContactTile(),

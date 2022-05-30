@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:raver/presentation/profile/widgets/profile_menu_list_tile.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class TermsOfServiceTile extends StatelessWidget {
@@ -9,8 +11,7 @@ class TermsOfServiceTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProfileMenuListTile(
       title: S().termsOfService,
-      // onTap: () => AutoRouter.of(context).push(const TermsOfServiceRoute()),
-      onTap: () {},
+      onTap: () => context.pushRoute(const TermsOfServiceRoute()),
     );
   }
 }

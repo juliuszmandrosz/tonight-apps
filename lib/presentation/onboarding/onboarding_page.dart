@@ -7,15 +7,20 @@ import 'package:raver/application/auth/username/username_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/onboarding/widgets/submit_button.dart';
-import 'package:raver/presentation/profile/update_username/widgets/username_input.dart';
+import 'package:raver/presentation/update_username/widgets/username_input.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/generated/l10n.dart';
 
-class OnboardingPage extends StatelessWidget {
-  bool shouldPop = false;
+class OnboardingPage extends StatefulWidget {
+  const OnboardingPage({Key? key}) : super(key: key);
 
-  OnboardingPage({Key? key}) : super(key: key);
+  @override
+  State<OnboardingPage> createState() => _OnboardingPageState();
+}
+
+class _OnboardingPageState extends State<OnboardingPage> {
+  var shouldPop = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,7 @@ class OnboardingPage extends StatelessWidget {
         child: Scaffold(
           body: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(15),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -59,11 +64,7 @@ class OnboardingPage extends StatelessWidget {
                             AutoRouter.of(context).pop();
                           }
                         },
-                        child: Column(
-                          children: const [
-                            UserNameInput(),
-                          ],
-                        ),
+                        child: const UsernameInput(),
                       ),
                     ],
                   ),

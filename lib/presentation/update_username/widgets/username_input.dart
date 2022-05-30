@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:formz/formz.dart';
-import 'package:raver/application/auth/form_inputs/username_input.dart';
+import 'package:raver/application/auth/form_inputs/username.dart';
 import 'package:raver/application/auth/username/username_cubit.dart';
 import 'package:raver_translations/generated/l10n.dart';
 
-class UserNameInput extends StatefulWidget {
-  const UserNameInput({Key? key}) : super(key: key);
+class UsernameInput extends HookWidget {
+  final String currentUsername;
 
-  @override
-  _UserNameInputState createState() => _UserNameInputState();
-}
+  const UsernameInput({
+    this.currentUsername = '',
+    Key? key,
+  }) : super(key: key);
 
-class _UserNameInputState extends State<UserNameInput> {
   @override
   Widget build(BuildContext context) {
+    final textController = useTextEditingController(text: currentUsername);
+
     return BlocBuilder<UsernameCubit, UsernameState>(
       buildWhen: (previous, current) =>
           previous.username != current.username ||
           previous.status != current.status,
       builder: (context, state) {
         return TextField(
+          controller: textController,
           onChanged: (username) =>
               context.read<UsernameCubit>().usernameChanged(username),
           decoration: InputDecoration(
@@ -37,6 +41,6 @@ class _UserNameInputState extends State<UserNameInput> {
       return null;
     }
 
-    return usernameInputErrorMessages[state.username.error];
+    return usernameErrorMessages[state.username.error];
   }
 }

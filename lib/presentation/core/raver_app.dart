@@ -87,9 +87,8 @@ class RaverApp extends StatelessWidget {
         ),
       ],
       child: BlocBuilder<AppSettingsCubit, AppSettingsState>(
-        buildWhen: ((previous, current) =>
-            previous.appSettings.isDarkTheme !=
-            current.appSettings.isDarkTheme),
+        buildWhen: (previous, current) =>
+            previous.appSettings.locale != current.appSettings.locale,
         builder: (context, state) {
           return MaterialApp.router(
             // TODO - add translation

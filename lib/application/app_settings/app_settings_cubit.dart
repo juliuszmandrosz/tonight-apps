@@ -10,14 +10,12 @@ part 'app_settings_state.dart';
 class AppSettingsCubit extends HydratedCubit<AppSettingsState> {
   AppSettingsCubit() : super(AppSettingsState.initial());
 
-  void changeTheme(bool isDarkTheme) {
-    emit(state.copyWith(
-        appSettings: state.appSettings.copyWith(isDarkTheme: isDarkTheme)));
-  }
-
   void changeLocale(String locale) {
-    emit(state.copyWith(
-        appSettings: state.appSettings.copyWith(locale: locale)));
+    emit(
+      state.copyWith(
+        appSettings: state.appSettings.copyWith(locale: locale),
+      ),
+    );
   }
 
   @override

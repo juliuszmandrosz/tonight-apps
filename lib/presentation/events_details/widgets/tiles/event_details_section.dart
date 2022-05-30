@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
@@ -35,15 +36,18 @@ class EventDetailsSection extends StatelessWidget {
           children: [
             BlocBuilder<EventTicketsCubit, EventTicketsState>(
               builder: (context, state) {
-                return EventDetailTile(
-                  icon: FontAwesomeIcons.ticket,
-                  value: state.eventTickets.fold(
-                    () => '',
-                    (tickets) => '${tickets.getCurrentPool().ticketPrice}'
-                        '${getCurrencySymbolFromCode(event.currency)}',
-                  ),
-                  label: S().price,
-                );
+                return state.status.isLoading()
+                    ? SpinKitThreeBounce(
+                        color: context.onSurfaceColor,
+                        size: 18,
+                      )
+                    : EventDetailTile(
+                        icon: FontAwesomeIcons.ticket,
+                        value:
+                            '${state.eventTickets.getOrCrash().getCurrentPool().ticketPrice}'
+                            '${getCurrencySymbolFromCode(event.currency)}',
+                        label: S().price,
+                      );
               },
             ),
             EventDetailTile(

@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/auth/form_inputs/username_input.dart';
+import 'package:raver/application/auth/form_inputs/username.dart';
 import 'package:raver_account_settings/raver_account_settings.dart';
 
 part 'username_cubit.freezed.dart';
@@ -22,27 +22,20 @@ class UsernameCubit extends Cubit<UsernameState> {
         await _userAccountFacade.setUsernameForUser(state.username.value);
 
     failureOrSuccess.fold(
-        (failure) => emit(
-              state.copyWith(
-                errorMessage: some(failure.message),
-                status: FormzStatus.submissionFailure,
-              ),
-            ),
+        (failure) => _emitFailure(failure),
         (success) =>
             emit(state.copyWith(status: FormzStatus.submissionSuccess)));
   }
 
   void usernameChanged(String value) {
-    final username = UsernameInput.dirty(value);
-    emit(
-      state.copyWith(username: username, errorMessage: none()),
-    );
+    final username = Username.dirty(value);
+    emit(state.copyWith(username: username));
   }
 
   _validateForm() {
     emit(
       state.copyWith(
-        username: UsernameInput.dirty(state.username.value),
+        username: Username.dirty(state.username.value),
       ),
     );
 
@@ -52,5 +45,16 @@ class UsernameCubit extends Cubit<UsernameState> {
     emit(state.copyWith(status: status));
 
     return status.isValidated;
+  }
+
+  _emitFailure(ProfileFailure failure) {
+    emit(
+      state.copyWith(
+        errorMessage: some(failure.message),
+        status: FormzStatus.submissionFailure,
+      ),
+    );
+
+    emit(state.copyWith(errorMessage: none()));
   }
 }
