@@ -43,7 +43,6 @@ class EventDetailsSection extends StatelessWidget {
                         '${getCurrencySymbolFromCode(event.currency)}',
                   ),
                   label: S().price,
-                  isFirst: true,
                 );
               },
             ),

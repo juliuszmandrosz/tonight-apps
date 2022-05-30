@@ -7,13 +7,11 @@ class EventDetailTile extends StatelessWidget {
   final IconData icon;
   final String value;
   final String label;
-  final bool isFirst;
 
   const EventDetailTile({
     required this.icon,
     required this.value,
     required this.label,
-    this.isFirst = false,
     Key? key,
   }) : super(key: key);
 
@@ -21,7 +19,7 @@ class EventDetailTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: isFirst ? context.primaryColor : context.surfaceColor,
+        color: context.surfaceColor,
         borderRadius: BorderRadius.circular(24),
       ),
       child: Column(
