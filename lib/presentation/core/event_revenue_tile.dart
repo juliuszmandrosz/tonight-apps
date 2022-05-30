@@ -40,6 +40,7 @@ class EventRevenueTile extends StatelessWidget {
                 value,
                 maxLines: 1,
                 style: context.headline5,
+                textAlign: TextAlign.center,
               ),
             ),
           ),
@@ -49,6 +50,7 @@ class EventRevenueTile extends StatelessWidget {
             child: AutoSizeText(
               label,
               maxLines: 1,
+              textAlign: TextAlign.center,
             ),
           ),
         ],
