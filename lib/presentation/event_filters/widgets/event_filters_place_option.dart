@@ -30,7 +30,7 @@ class EventFiltersPlaceOption extends StatelessWidget {
               contentPadding: EdgeInsets.zero,
               activeColor: context.primaryColor,
               title: AutoSizeText(
-                S().city,
+                S().findByCity,
                 maxLines: 1,
                 style: context.subtitle1,
               ),

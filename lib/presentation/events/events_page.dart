@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:raver/presentation/events/widgets/event_card.dart';
 import 'package:raver/presentation/events/widgets/event_filters_row.dart';
 import 'package:raver_common/raver_common.dart';
@@ -30,10 +31,11 @@ class _EventsPageState extends State<EventsPage> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(15),
-      child: Column(
+      child: ListView(
+        controller: _scrollController,
         children: [
           const EventFiltersRow(),
-          const SizedBox(height: 20),
+          const SizedBox(height: 15),
           BlocBuilder<EventOverviewBloc, EventOverviewState>(
               builder: (context, state) {
             switch (state.status) {
@@ -41,8 +43,11 @@ class _EventsPageState extends State<EventsPage> {
                 return Container();
 
               case CubitStatus.loading:
-                return const Center(
-                  child: CircularProgressIndicator(),
+                return Center(
+                  child: SpinKitThreeBounce(
+                    color: context.onSurfaceColor,
+                    size: 30,
+                  ),
                 );
 
               case CubitStatus.failure:
@@ -75,32 +80,21 @@ class _EventsPageState extends State<EventsPage> {
                   );
                 }
 
-                return Expanded(
-                  child: RefreshIndicator(
-                    onRefresh: () async =>
-                        context.read<EventOverviewBloc>().add(
-                              EventOverviewEvent.eventsFetched(
-                                  state.eventFilters, state.sortModel),
-                            ),
-                    child: ListView.separated(
-                      separatorBuilder: (_, __) => const SizedBox(
-                        height: 10,
-                      ),
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      itemCount: state.hasReachedMax
-                          ? state.events.length
-                          : state.events.length + 1,
-                      itemBuilder: (ctx, i) => i >= state.events.length
-                          ? const BottomLoader()
-                          : Center(
-                              child: EventCard(
-                                event: state.events[i],
-                                heroPhrase: heroPhrase,
-                              ),
-                            ),
-                      controller: _scrollController,
-                    ),
-                  ),
+                return ListView.separated(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  separatorBuilder: (_, __) => const SizedBox(height: 10),
+                  itemCount: state.hasReachedMax
+                      ? state.events.length
+                      : state.events.length + 1,
+                  itemBuilder: (ctx, i) => i >= state.events.length
+                      ? const BottomLoader()
+                      : Center(
+                          child: EventCard(
+                            event: state.events[i],
+                            heroPhrase: heroPhrase,
+                          ),
+                        ),
                 );
             }
           }),
