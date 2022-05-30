@@ -53,7 +53,12 @@ class _EventFiltersCityState extends State<EventFiltersCity> {
                 child: Column(
                   children: [
                     Row(
-                      children: [RaverHeadline(text: S().city)],
+                      children: [
+                        RaverHeadline(
+                          text: S().city,
+                          isSmallerVersion: true,
+                        )
+                      ],
                     ),
                     const SizedBox(height: 20),
                     TextField(
