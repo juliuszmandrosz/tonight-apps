@@ -41,6 +41,7 @@ class EventDetailTile extends StatelessWidget {
                 value,
                 maxLines: 2,
                 style: context.headline6,
+                textAlign: TextAlign.center,
               ),
             ),
           ),
@@ -50,6 +51,7 @@ class EventDetailTile extends StatelessWidget {
             child: AutoSizeText(
               label,
               maxLines: 1,
+              textAlign: TextAlign.center,
             ),
           ),
         ],
