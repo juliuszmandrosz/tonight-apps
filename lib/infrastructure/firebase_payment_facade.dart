@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_payments/domain/domain.dart';
@@ -233,16 +234,19 @@ class FirebasePaymentFacade implements PartnerPaymentFacade, UserPaymentFacade {
     required String ephemeralKeySecret,
   }) async {
     await _stripe.initPaymentSheet(
-        paymentSheetParameters: SetupPaymentSheetParameters(
-      currencyCode: currency,
-      customerId: customerId,
-      paymentIntentClientSecret: paymentIntentSecret,
-      customerEphemeralKeySecret: ephemeralKeySecret,
-      testEnv: true,
-      googlePay: true,
-      applePay: true,
-      merchantDisplayName: 'Raver',
-    ));
+      paymentSheetParameters: SetupPaymentSheetParameters(
+        currencyCode: currency,
+        customerId: customerId,
+        paymentIntentClientSecret: paymentIntentSecret,
+        customerEphemeralKeySecret: ephemeralKeySecret,
+        testEnv: true,
+        googlePay: true,
+        applePay: true,
+        merchantDisplayName: 'Tonight',
+        primaryButtonColor: DarkColors.primaryColor,
+        style: ThemeMode.dark,
+      ),
+    );
 
     await _stripe.presentPaymentSheet();
   }
