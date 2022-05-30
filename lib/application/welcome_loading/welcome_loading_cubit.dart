@@ -17,11 +17,6 @@ import 'package:raver_events/application/application.dart';
 part 'welcome_loading_cubit.freezed.dart';
 part 'welcome_loading_state.dart';
 
-// await context.read<EventFavoriteCubit>().getFavoriteEventIds();
-// await context.read<ClubFavoriteCubit>().getFavoriteClubIds();
-// context.read<UserEventFavoritesCubit>().getFavorites();
-// context.read<UserClubFavoritesCubit>().getFavorites();
-// await context.read<TicketListCubit>().fetchTickets();
 class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   final ProfileCubit _profileCubit;
   final UserLocationCubit _userLocationCubit;
