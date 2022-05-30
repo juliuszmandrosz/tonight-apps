@@ -50,7 +50,11 @@ class NetworkLostPage extends StatelessWidget {
                 SizedBox(
                   width: 300,
                   child: ElevatedButton(
-                    onPressed: () => networkCheckCubit.retryNetworkConnection(),
+                    onPressed: () async {
+                      if (networkCheckCubit.state.isConnected) {
+                        context.popRoute();
+                      }
+                    },
                     child: Text(S().retryConnection),
                   ),
                 ),
