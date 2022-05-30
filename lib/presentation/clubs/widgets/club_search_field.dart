@@ -35,7 +35,8 @@ class _ClubSearchFieldState extends State<ClubSearchField> {
         setState(() {});
       },
       decoration: InputDecoration(
-        hintText: MaterialLocalizations.of(context).searchFieldLabel,
+        // TODO - add translation
+        hintText: 'Rozpocznij wyszukiwanie...',
         prefixIcon: const Icon(Icons.search),
         suffixIcon: textController.text.isNotEmpty
             ? InkWell(
