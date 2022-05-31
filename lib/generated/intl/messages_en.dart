@@ -77,6 +77,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "additionalInfo":
             MessageLookupByLibrary.simpleMessage("Additional info"),
         "age": MessageLookupByLibrary.simpleMessage("Age"),
+        "allowVipTickets":
+            MessageLookupByLibrary.simpleMessage("Allow VIP tickets"),
         "appVersion": MessageLookupByLibrary.simpleMessage("App version"),
         "appliedPromotionCode":
             MessageLookupByLibrary.simpleMessage("Applied promotion code"),
@@ -591,6 +593,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(
             "A verification link has been sent to the e-mail address provided"),
         "vip": MessageLookupByLibrary.simpleMessage("VIP"),
+        "vipInfo": MessageLookupByLibrary.simpleMessage(
+            "VIP ticket allows to enter the club without queue"),
         "vipPrice": MessageLookupByLibrary.simpleMessage("VIP price"),
         "vipPriceTooHigh":
             MessageLookupByLibrary.simpleMessage("The maximum VIP price is"),

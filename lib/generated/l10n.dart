@@ -220,6 +220,16 @@ class S {
     );
   }
 
+  /// `Allow VIP tickets`
+  String get allowVipTickets {
+    return Intl.message(
+      'Allow VIP tickets',
+      name: 'allowVipTickets',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Applied promotion code`
   String get appliedPromotionCode {
     return Intl.message(
@@ -3442,6 +3452,16 @@ class S {
     return Intl.message(
       'VIP',
       name: 'vip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `VIP ticket allows to enter the club without queue`
+  String get vipInfo {
+    return Intl.message(
+      'VIP ticket allows to enter the club without queue',
+      name: 'vipInfo',
       desc: '',
       args: [],
     );
