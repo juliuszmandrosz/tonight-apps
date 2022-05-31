@@ -12,11 +12,9 @@ import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/application/welcome_loading/welcome_loading_cubit.dart';
-import 'package:raver/presentation/error_alert/error_alert.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/application/application.dart';
-import 'package:raver_translations/raver_translations.dart';
 
 class WelcomeLoaderPage extends StatefulWidget {
   const WelcomeLoaderPage({Key? key}) : super(key: key);
@@ -73,8 +71,9 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
                       barrierDismissible: false,
                       context: context,
                       builder: (context) {
-                        return ErrorAlert(
-                          errorMessage: S().errorCheckInternetConnection,
+                        // TODO - change
+                        return const Center(
+                          child: Text('Error'),
                         );
                       },
                     );

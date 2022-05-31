@@ -12,6 +12,7 @@ import 'package:raver/presentation/events_details/utils/event_details_formatters
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventCard extends StatelessWidget {
   final Event event;
@@ -105,8 +106,7 @@ class EventCard extends StatelessWidget {
                                   ),
                                   const SizedBox(width: 10),
                                   AutoSizeText(
-                                    // TODO - add translation
-                                    'W trakcie',
+                                    S().live,
                                     style: context.subtitle1,
                                     textAlign: TextAlign.center,
                                     maxLines: 1,
@@ -138,9 +138,8 @@ class EventCard extends StatelessWidget {
                                 children: [
                                   const FaIcon(FontAwesomeIcons.circleXmark),
                                   const SizedBox(width: 10),
-                                  // TODO - ref
                                   Text(
-                                    'WYPRZEDANE',
+                                    S().soldOut.toUpperCase(),
                                     style: context.bodyText1,
                                   ),
                                 ],
@@ -171,9 +170,8 @@ class EventCard extends StatelessWidget {
                                   const FaIcon(
                                       FontAwesomeIcons.circleExclamation),
                                   const SizedBox(width: 10),
-                                  // TODO - add translation
                                   Text(
-                                    'Pozostały ostatnie bilety!',
+                                    S().lastTicketsLeft,
                                     style: context.bodyText1,
                                   ),
                                 ],

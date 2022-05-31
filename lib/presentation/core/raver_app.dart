@@ -83,8 +83,7 @@ class RaverApp extends StatelessWidget {
             previous.appSettings.locale != current.appSettings.locale,
         builder: (context, state) {
           return MaterialApp.router(
-            // TODO - add translation
-            title: 'Tonight',
+            title: S().tonight,
             theme: darkTheme,
             routerDelegate: _appRouter.delegate(),
             routeInformationParser: _appRouter.defaultRouteParser(),

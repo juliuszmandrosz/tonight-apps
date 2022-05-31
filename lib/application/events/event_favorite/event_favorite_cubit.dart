@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -23,12 +22,12 @@ class EventFavoriteCubit extends Cubit<EventFavoriteState> {
 
     failureOrSuccess.fold(
       (_) => _emitFetchFailure(),
-      (favoriteEvents) {
-        Logger().i(favoriteEvents.length);
-
-        emit(state.copyWith(
-            status: CubitStatus.success, favoriteEvents: favoriteEvents));
-      },
+      (favoriteEvents) => emit(
+        state.copyWith(
+          status: CubitStatus.success,
+          favoriteEvents: favoriteEvents,
+        ),
+      ),
     );
 
     emit(state.copyWith(status: CubitStatus.success));

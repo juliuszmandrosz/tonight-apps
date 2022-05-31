@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class ClubSearchField extends StatefulWidget {
   const ClubSearchField({Key? key}) : super(key: key);
@@ -35,22 +36,22 @@ class _ClubSearchFieldState extends State<ClubSearchField> {
         setState(() {});
       },
       decoration: InputDecoration(
-        // TODO - add translation
-        hintText: 'Rozpocznij wyszukiwanie...',
+        hintText: S().startSearching,
         prefixIcon: const Icon(Icons.search),
         suffixIcon: textController.text.isNotEmpty
             ? InkWell(
-                onTap: () => setState(
-                  () {
-                    var provider = BlocProvider.of<ClubFiltersCubit>(context);
-                    textController.clear();
-                    if (provider.state.filter.phraseFilter.phrase.isNotEmpty) {
-                      provider.searchFieldSubmitted('');
-                    }
-                  },
-                ),
-                child: const Icon(Icons.clear),
-              )
+          onTap: () =>
+              setState(
+                    () {
+                  var provider = BlocProvider.of<ClubFiltersCubit>(context);
+                  textController.clear();
+                  if (provider.state.filter.phraseFilter.phrase.isNotEmpty) {
+                    provider.searchFieldSubmitted('');
+                  }
+                },
+              ),
+          child: const Icon(Icons.clear),
+        )
             : null,
       ),
     );

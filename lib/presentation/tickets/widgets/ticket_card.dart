@@ -55,10 +55,16 @@ class TicketCard extends StatelessWidget {
                     style: context.bodyText1
                         .copyWith(color: context.secondaryColor),
                   ),
-                  if (ticket.isReturned || ticket.isEventCanceled)
+                  if (ticket.isReturned ||
+                      ticket.isEventCanceled ||
+                      ticket.isReturnable)
                     Text(
-                      // TODO - add translation
-                      ticket.isEventCanceled ? 'ODWOŁANO' : 'ZWRÓCONO',
+                      // TODO - ref
+                      ticket.isEventCanceled
+                          ? S().canceled.toUpperCase()
+                          : ticket.isReturnable
+                              ? S().postponed.toUpperCase()
+                              : S().returned.toUpperCase(),
                       style: context.subtitle1.copyWith(
                         color: context.tertiaryColor,
                       ),

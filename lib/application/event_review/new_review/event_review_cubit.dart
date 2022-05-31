@@ -58,8 +58,7 @@ class NewReviewCubit extends Cubit<EventReviewState> {
 
   void submitReview(Ticket ticket) async {
     if (state.reviewValue == 0) {
-      // TODO - add translation
-      _showErrorMessage('Nalezy wybrac ilosc gwiazdek');
+      _showErrorMessage(S().selectNumberOfStars);
       return;
     }
 

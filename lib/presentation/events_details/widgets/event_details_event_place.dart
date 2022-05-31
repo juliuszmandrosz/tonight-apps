@@ -5,6 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventDetailsEventPlace extends StatefulWidget {
   final Event event;
@@ -27,11 +28,10 @@ class _EventDetailsEventPlaceState extends State<EventDetailsEventPlace> {
     final lng = widget.event.getLongitude();
     return Column(
       children: [
-        const Align(
+        Align(
           alignment: Alignment.centerLeft,
-          // TODO - add translation
           child: RaverHeadline(
-            text: 'Miejsce wydarzenia',
+            text: S().eventPlace,
             isSmallerVersion: true,
           ),
         ),

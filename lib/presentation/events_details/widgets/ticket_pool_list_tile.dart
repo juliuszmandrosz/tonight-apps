@@ -58,8 +58,6 @@ class TicketPoolListTile extends StatelessWidget {
       );
     }
     if (_shouldShowTicketsLeftMessage()) {
-      final ticketsLeftCount =
-          ticketPool.ticketQuantity - ticketPool.ticketsSold;
       return Padding(
         padding: const EdgeInsets.only(top: 10),
         child: Row(
@@ -72,8 +70,7 @@ class TicketPoolListTile extends StatelessWidget {
             ),
             const SizedBox(width: 10),
             Text(
-              // TODO - add translation
-              'Pozostały ostatnie bilety!',
+              S().lastTicketsLeft,
               style: context.bodyText1,
             ),
           ],

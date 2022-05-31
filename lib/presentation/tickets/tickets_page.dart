@@ -58,11 +58,9 @@ class _TicketsPageState extends State<TicketsPage> {
                         controller: _scrollController,
                         children: [
                           if (state.upcomingLiveTickets.isNotEmpty)
-                            const Align(
+                            Align(
                               alignment: Alignment.centerLeft,
-                              child:
-                                  // TODO - add translation
-                                  RaverHeadline(text: 'Nadchodzące i na żywo'),
+                              child: RaverHeadline(text: S().upcomingAndLive),
                             ),
                           const SizedBox(height: 20),
                           ListView.separated(

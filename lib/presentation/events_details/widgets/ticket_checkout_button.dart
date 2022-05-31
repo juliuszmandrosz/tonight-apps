@@ -6,6 +6,7 @@ import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart'
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class TicketCheckoutButton extends StatelessWidget {
   final Event event;
@@ -23,8 +24,7 @@ class TicketCheckoutButton extends StatelessWidget {
               child: FloatingActionButton.extended(
                 onPressed: () => AutoRouter.of(context)
                     .push(TicketCheckoutRoute(event: event)),
-                // TODO - add translation
-                label: const Text('Przejdź do kasy'),
+                label: Text(S().proceedToCheckout),
                 icon: const FaIcon(FontAwesomeIcons.cartShopping),
               ),
             );

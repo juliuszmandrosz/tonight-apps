@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/app_settings/app_settings_cubit.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class ChangeLocale extends StatelessWidget {
   const ChangeLocale({Key? key}) : super(key: key);
@@ -15,8 +16,7 @@ class ChangeLocale extends StatelessWidget {
           dense: true,
           contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
           title: AutoSizeText(
-            // TODO - add translation
-            'Język',
+            S().language,
             maxLines: 1,
             style: context.headline6,
           ),

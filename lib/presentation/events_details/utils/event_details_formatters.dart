@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 String displayMusicalGenres(
   List<String> musicalGenres,
@@ -22,8 +23,7 @@ String displayEventTags(
       '${getCurrencySymbolFromCode(event.currency)}';
   final minAge = '${event.minAge}+';
 
-  // TODO - add translation
-  return 'Wiek $minAge, wejście $price';
+  return '${S().age} $minAge, ${S().entry.toLowerCase()} $price';
 }
 
 _getPrice(Event event, EventTickets? eventTickets) {

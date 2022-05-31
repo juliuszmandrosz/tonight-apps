@@ -87,9 +87,7 @@ class TicketCheckoutPage extends StatelessWidget {
               }
 
               if (state.hasTicketPoolRestored) {
-                context.showSnackbarMessage(
-                    // TODO - add translation
-                    'Poprzednia pula biletów znowu jest dostępna!');
+                context.showSnackbarMessage(S().previousTicketPoolAvailable);
               }
             },
             builder: (context, state) {

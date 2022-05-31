@@ -1309,7 +1309,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: ff994d923fa0de1e284624071b4203db31741aa5
+      resolved-ref: "2fd6680d18866e5cc09810948e63e8a5b5300fc5"
       url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"

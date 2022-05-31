@@ -25,10 +25,7 @@ class UpdateUsernamePage extends StatelessWidget {
       create: (ctx) => getIt<UsernameCubit>()..usernameChanged(currentUsername),
       child: SafeArea(
         child: Scaffold(
-          appBar: const RaverAppBar(
-            // TODO - add translation
-            title: 'Zmień nazwę użytkownika',
-          ),
+          appBar: RaverAppBar(title: S().changeUsername),
           body: BlocListener<UsernameCubit, UsernameState>(
             listener: (context, state) {
               state.errorMessage.fold(
