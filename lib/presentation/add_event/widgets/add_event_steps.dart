@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:raver_partners/application/add_event/add_event_cubit.dart';
+import 'package:raver_partners/application/add_event/add_event_step.dart';
 import 'package:raver_partners/presentation/add_event/widgets/add_event_back_to_submit_button.dart';
 import 'package:raver_partners/presentation/add_event/widgets/add_event_number_stepper.dart';
 import 'package:raver_partners/presentation/add_event/widgets/add_event_steps_buttons.dart';
@@ -26,13 +29,21 @@ class AddEventSteps extends StatelessWidget {
               ],
             ),
           ),
-          const SliverFillRemaining(
+          SliverFillRemaining(
             hasScrollBody: false,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 5, top: 30),
+              padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: AddEventStepsButtons(),
+                child: BlocBuilder<AddEventCubit, AddEventState>(
+                  buildWhen: (previous, current) =>
+                      previous.currentStep != current.currentStep,
+                  builder: (context, state) {
+                    return state.currentStep == AddEventStep.summary
+                        ? const SizedBox()
+                        : const AddEventStepsButtons();
+                  },
+                ),
               ),
             ),
           )
