@@ -47,9 +47,6 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m8(count) =>
       "${Intl.plural(count, zero: 'No tickets', one: 'Ticket', other: 'Tickets')}";
 
-  static String m9(count) =>
-      "${Intl.plural(count, zero: ' ', one: 'ticket left!', other: 'tickets left!')}";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
@@ -106,10 +103,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Operation cancelled by user"),
         "changePasswordTitle":
             MessageLookupByLibrary.simpleMessage("Change Password"),
+        "changeUsername":
+            MessageLookupByLibrary.simpleMessage("Change username"),
         "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "clubDoesNotOfferRewards":
             MessageLookupByLibrary.simpleMessage("Club does not offer rewards"),
+        "clubName": MessageLookupByLibrary.simpleMessage("Club name"),
         "clubReviewsLoadingError": MessageLookupByLibrary.simpleMessage(
             "Error while loading club reviews"),
         "clubs": m1,
@@ -230,8 +230,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Error deleting reward"),
         "errorDeletingSelector":
             MessageLookupByLibrary.simpleMessage("Error deleting selector"),
-        "errorDialogTitle":
-            MessageLookupByLibrary.simpleMessage("Raver passed out!"),
         "errorLoadingClubs":
             MessageLookupByLibrary.simpleMessage("Error loading clubs"),
         "errorLoadingEventDetails":
@@ -283,6 +281,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "An event already exists in the given date range"),
         "eventName": MessageLookupByLibrary.simpleMessage("Event name"),
         "eventOverview": MessageLookupByLibrary.simpleMessage("Event overview"),
+        "eventPlace": MessageLookupByLibrary.simpleMessage("Event place"),
         "eventPostponedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Event postponed successfully"),
         "eventRevenue": MessageLookupByLibrary.simpleMessage("Event revenue"),
@@ -335,6 +334,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "inviteSelector":
             MessageLookupByLibrary.simpleMessage("Invite selector"),
         "isConcert": MessageLookupByLibrary.simpleMessage("Is concert"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "lastTicketsLeft":
+            MessageLookupByLibrary.simpleMessage("Last tickets left"),
         "live": MessageLookupByLibrary.simpleMessage("Live"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "lostNetworkConnectionDescription":
@@ -421,10 +423,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Time to postpone the event has expired"),
         "postponeTimeTooShort": MessageLookupByLibrary.simpleMessage(
             "The minimum time by which an event can be postponed is 24 hours"),
+        "previousTicketPoolAvailable": MessageLookupByLibrary.simpleMessage(
+            "The previous ticket pool is available again!"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "priceChangedAfterTicketWasSold": MessageLookupByLibrary.simpleMessage(
             "The price cannot be changed after the sale of tickets has started"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Price range"),
+        "proceedToCheckout":
+            MessageLookupByLibrary.simpleMessage("Proceed to checkout"),
         "proceedToPay": MessageLookupByLibrary.simpleMessage("Proceed to pay"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "promotionCodeHasExpired":
@@ -441,7 +447,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "rateButtonTitle": MessageLookupByLibrary.simpleMessage("Rate"),
         "rateEvent": MessageLookupByLibrary.simpleMessage("Rate the event"),
         "rateUs": MessageLookupByLibrary.simpleMessage("Rate us"),
-        "raver": MessageLookupByLibrary.simpleMessage("Raver"),
         "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "report": MessageLookupByLibrary.simpleMessage("Report"),
@@ -489,6 +494,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please select minumum age"),
         "selectMusicalGenres": MessageLookupByLibrary.simpleMessage(
             "Please select musical genres"),
+        "selectNumberOfStarts":
+            MessageLookupByLibrary.simpleMessage("Select the number of stars"),
         "selectors": m7,
         "sendPasswordResetLink":
             MessageLookupByLibrary.simpleMessage("Send password reset link"),
@@ -512,6 +519,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "startDateTooLate": MessageLookupByLibrary.simpleMessage(
             "The maximum start date time is 150 days from today"),
         "startScanning": MessageLookupByLibrary.simpleMessage("Start scanning"),
+        "startSearching":
+            MessageLookupByLibrary.simpleMessage("Start searching..."),
         "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "summary": MessageLookupByLibrary.simpleMessage("Summary"),
@@ -536,10 +545,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketReturnedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Ticket returned successfully"),
         "tickets": m8,
-        "ticketsLeft": m9,
         "ticketsSold": MessageLookupByLibrary.simpleMessage("Tickets sold"),
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "to": MessageLookupByLibrary.simpleMessage("To"),
+        "tonight": MessageLookupByLibrary.simpleMessage("Tonight"),
         "tonightPartners":
             MessageLookupByLibrary.simpleMessage("Tonight Partners"),
         "tonightScanner":
@@ -550,10 +559,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "unexpectedError":
             MessageLookupByLibrary.simpleMessage("Unexpected error"),
         "upcoming": MessageLookupByLibrary.simpleMessage("Upcoming"),
+        "upcomingAndLive":
+            MessageLookupByLibrary.simpleMessage("Upcoming and live"),
         "upcomingEvents":
             MessageLookupByLibrary.simpleMessage("Upcoming events"),
-        "updateUsernameTitle":
-            MessageLookupByLibrary.simpleMessage("Update username"),
         "upgradeToVip": MessageLookupByLibrary.simpleMessage("Upgrade to VIP"),
         "urlLinks": MessageLookupByLibrary.simpleMessage("URL links"),
         "userDisabled": MessageLookupByLibrary.simpleMessage(

@@ -403,6 +403,16 @@ class S {
     );
   }
 
+  /// `Change username`
+  String get changeUsername {
+    return Intl.message(
+      'Change username',
+      name: 'changeUsername',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Checkout`
   String get checkout {
     return Intl.message(
@@ -428,6 +438,16 @@ class S {
     return Intl.message(
       'Club does not offer rewards',
       name: 'clubDoesNotOfferRewards',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Club name`
+  String get clubName {
+    return Intl.message(
+      'Club name',
+      name: 'clubName',
       desc: '',
       args: [],
     );
@@ -1129,16 +1149,6 @@ class S {
     );
   }
 
-  /// `Raver passed out!`
-  String get errorDialogTitle {
-    return Intl.message(
-      'Raver passed out!',
-      name: 'errorDialogTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Error loading clubs`
   String get errorLoadingClubs {
     return Intl.message(
@@ -1404,6 +1414,16 @@ class S {
     return Intl.message(
       'Event overview',
       name: 'eventOverview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event place`
+  String get eventPlace {
+    return Intl.message(
+      'Event place',
+      name: 'eventPlace',
       desc: '',
       args: [],
     );
@@ -1747,6 +1767,26 @@ class S {
     return Intl.message(
       'Is concert',
       name: 'isConcert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last tickets left`
+  String get lastTicketsLeft {
+    return Intl.message(
+      'Last tickets left',
+      name: 'lastTicketsLeft',
       desc: '',
       args: [],
     );
@@ -2298,6 +2338,16 @@ class S {
     );
   }
 
+  /// `The previous ticket pool is available again!`
+  String get previousTicketPoolAvailable {
+    return Intl.message(
+      'The previous ticket pool is available again!',
+      name: 'previousTicketPoolAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Price`
   String get price {
     return Intl.message(
@@ -2323,6 +2373,16 @@ class S {
     return Intl.message(
       'Price range',
       name: 'priceRange',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Proceed to checkout`
+  String get proceedToCheckout {
+    return Intl.message(
+      'Proceed to checkout',
+      name: 'proceedToCheckout',
       desc: '',
       args: [],
     );
@@ -2423,16 +2483,6 @@ class S {
     return Intl.message(
       'Rate us',
       name: 'rateUs',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Raver`
-  String get raver {
-    return Intl.message(
-      'Raver',
-      name: 'raver',
       desc: '',
       args: [],
     );
@@ -2741,6 +2791,16 @@ class S {
     );
   }
 
+  /// `Select the number of stars`
+  String get selectNumberOfStarts {
+    return Intl.message(
+      'Select the number of stars',
+      name: 'selectNumberOfStarts',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{count, plural, zero{No selectors} one{Selector} other{Selectors}}`
   String selectors(num count) {
     return Intl.plural(
@@ -2914,6 +2974,16 @@ class S {
     );
   }
 
+  /// `Start searching...`
+  String get startSearching {
+    return Intl.message(
+      'Start searching...',
+      name: 'startSearching',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Statistics`
   String get statistics {
     return Intl.message(
@@ -3077,19 +3147,6 @@ class S {
     );
   }
 
-  /// `{count, plural, zero{ } one{ticket left!} other{tickets left!}}`
-  String ticketsLeft(num count) {
-    return Intl.plural(
-      count,
-      zero: ' ',
-      one: 'ticket left!',
-      other: 'tickets left!',
-      name: 'ticketsLeft',
-      desc: '',
-      args: [count],
-    );
-  }
-
   /// `Tickets sold`
   String get ticketsSold {
     return Intl.message(
@@ -3115,6 +3172,16 @@ class S {
     return Intl.message(
       'To',
       name: 'to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tonight`
+  String get tonight {
+    return Intl.message(
+      'Tonight',
+      name: 'tonight',
       desc: '',
       args: [],
     );
@@ -3180,21 +3247,21 @@ class S {
     );
   }
 
-  /// `Upcoming events`
-  String get upcomingEvents {
+  /// `Upcoming and live`
+  String get upcomingAndLive {
     return Intl.message(
-      'Upcoming events',
-      name: 'upcomingEvents',
+      'Upcoming and live',
+      name: 'upcomingAndLive',
       desc: '',
       args: [],
     );
   }
 
-  /// `Update username`
-  String get updateUsernameTitle {
+  /// `Upcoming events`
+  String get upcomingEvents {
     return Intl.message(
-      'Update username',
-      name: 'updateUsernameTitle',
+      'Upcoming events',
+      name: 'upcomingEvents',
       desc: '',
       args: [],
     );

@@ -47,9 +47,6 @@ class MessageLookup extends MessageLookupByLibrary {
   static String m8(count) =>
       "${Intl.plural(count, zero: 'Brak biletów', one: 'Bilet', few: 'Bilety', many: 'Biletów', other: 'Biletu')}";
 
-  static String m9(count) =>
-      "${Intl.plural(count, zero: ' ', one: 'bilet pozostał!', few: 'bilety pozostały!', many: 'biletów pozostało!', other: 'biletów pozostało!')}";
-
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUs": MessageLookupByLibrary.simpleMessage("O nas"),
@@ -107,10 +104,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Operacja anulowana przez użytkownika"),
         "changePasswordTitle":
             MessageLookupByLibrary.simpleMessage("Zmień Hasło"),
+        "changeUsername":
+            MessageLookupByLibrary.simpleMessage("Zmień nazwę użytkownika"),
         "checkout": MessageLookupByLibrary.simpleMessage("Kasa"),
         "city": MessageLookupByLibrary.simpleMessage("Miasto"),
         "clubDoesNotOfferRewards": MessageLookupByLibrary.simpleMessage(
             "Klub nie posiada systemu nagród"),
+        "clubName": MessageLookupByLibrary.simpleMessage("Nazwa klubu"),
         "clubReviewsLoadingError": MessageLookupByLibrary.simpleMessage(
             "Wystąpił błąd podczas ładowania opinii klubu"),
         "clubs": m1,
@@ -228,8 +228,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Błąd podczas dodawania nagrody"),
         "errorDeletingSelector": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas usuwania selekcjonera"),
-        "errorDialogTitle":
-            MessageLookupByLibrary.simpleMessage("Raver się wykrzaczył!"),
         "errorLoadingClubs": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas ładowania klubów"),
         "errorLoadingEventDetails": MessageLookupByLibrary.simpleMessage(
@@ -283,6 +281,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "eventName": MessageLookupByLibrary.simpleMessage("Nazwa wydarzenia"),
         "eventOverview":
             MessageLookupByLibrary.simpleMessage("Przegląd wydarzenia"),
+        "eventPlace":
+            MessageLookupByLibrary.simpleMessage("Miejsce wydarzenia"),
         "eventPostponedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Wydarzenie przełożono pomyślnie"),
         "eventRevenue":
@@ -338,6 +338,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "inviteSelector":
             MessageLookupByLibrary.simpleMessage("Zaproś selekcjonera"),
         "isConcert": MessageLookupByLibrary.simpleMessage("Koncert"),
+        "language": MessageLookupByLibrary.simpleMessage("Język"),
+        "lastTicketsLeft":
+            MessageLookupByLibrary.simpleMessage("Pozostały ostatnie bilety"),
         "live": MessageLookupByLibrary.simpleMessage("Na żywo"),
         "login": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "lostNetworkConnectionDescription":
@@ -427,10 +430,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Czas na przełożenie wydarzenia upłynął"),
         "postponeTimeTooShort": MessageLookupByLibrary.simpleMessage(
             "Minimalny czas o który można przełożyć wydarzenie wynosi 24 godziny"),
+        "previousTicketPoolAvailable": MessageLookupByLibrary.simpleMessage(
+            "Poprzednia pula biletów znowu jest dostępna!"),
         "price": MessageLookupByLibrary.simpleMessage("Cena"),
         "priceChangedAfterTicketWasSold": MessageLookupByLibrary.simpleMessage(
             "Nie można zmienić ceny po rozpoczęciu sprzedaży biletów"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Zakres cen"),
+        "proceedToCheckout":
+            MessageLookupByLibrary.simpleMessage("Przejdź do kasy"),
         "proceedToPay":
             MessageLookupByLibrary.simpleMessage("Przejdź do płatności"),
         "profile": MessageLookupByLibrary.simpleMessage("Profil"),
@@ -449,7 +456,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wystaw opinię"),
         "rateEvent": MessageLookupByLibrary.simpleMessage("Oceń wydarzenie"),
         "rateUs": MessageLookupByLibrary.simpleMessage("Oceń nas"),
-        "raver": MessageLookupByLibrary.simpleMessage("Raver"),
         "refresh": MessageLookupByLibrary.simpleMessage("Odśwież"),
         "register": MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "report": MessageLookupByLibrary.simpleMessage("Zgłoś"),
@@ -496,6 +502,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Proszę wybrać minimalny wiek"),
         "selectMusicalGenres": MessageLookupByLibrary.simpleMessage(
             "Proszę wybrać gatunki muzyczne"),
+        "selectNumberOfStarts": MessageLookupByLibrary.simpleMessage(
+            "Należy wybrać ilość gwiazdek"),
         "selectors": m7,
         "sendPasswordResetLink": MessageLookupByLibrary.simpleMessage(
             "Wyślij link do resetowania hasła"),
@@ -521,6 +529,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Maksymalny czas daty rozpoczęcia wynosi 150 dni od dzisiaj"),
         "startScanning":
             MessageLookupByLibrary.simpleMessage("Rozpocznij skanowanie"),
+        "startSearching":
+            MessageLookupByLibrary.simpleMessage("Rozpocznij wyszukiwanie..."),
         "statistics": MessageLookupByLibrary.simpleMessage("Statystyki"),
         "submit": MessageLookupByLibrary.simpleMessage("Zatwierdź"),
         "summary": MessageLookupByLibrary.simpleMessage("Podsumowanie"),
@@ -545,11 +555,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketReturnedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Bilet zwrócono pomyślnie"),
         "tickets": m8,
-        "ticketsLeft": m9,
         "ticketsSold":
             MessageLookupByLibrary.simpleMessage("Sprzedanych biletów"),
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),
         "to": MessageLookupByLibrary.simpleMessage("Do"),
+        "tonight": MessageLookupByLibrary.simpleMessage("Tonight"),
         "tonightPartners":
             MessageLookupByLibrary.simpleMessage("Tonight Partners"),
         "tonightScanner":
@@ -561,10 +571,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "unexpectedError":
             MessageLookupByLibrary.simpleMessage("Nieoczekiwany błąd"),
         "upcoming": MessageLookupByLibrary.simpleMessage("Nadchodzące"),
+        "upcomingAndLive":
+            MessageLookupByLibrary.simpleMessage("Nadchodzące i na żywo"),
         "upcomingEvents":
             MessageLookupByLibrary.simpleMessage("Nadchodzące wydarzenia"),
-        "updateUsernameTitle": MessageLookupByLibrary.simpleMessage(
-            "Zaktualizuj nazwę użytkownika"),
         "upgradeToVip": MessageLookupByLibrary.simpleMessage("Ulepsz do VIP-a"),
         "urlLinks": MessageLookupByLibrary.simpleMessage("Linki URL"),
         "userDisabled":
