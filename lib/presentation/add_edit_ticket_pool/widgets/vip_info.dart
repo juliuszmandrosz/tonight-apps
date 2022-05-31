@@ -11,7 +11,7 @@ class VipInfo extends StatelessWidget {
     return AutoSizeText(
       S().vipInfo,
       maxLines: 1,
-      style: context.bodyText2,
+      style: context.bodyText2.copyWith(color: context.secondaryColor),
       textAlign: TextAlign.center,
     );
   }
