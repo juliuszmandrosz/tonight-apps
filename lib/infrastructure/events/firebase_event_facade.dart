@@ -37,7 +37,7 @@ class FirebaseEventFacade
   Future<Either<CommonEventFailure, List<Event>>> getEvents(
     EventFilters filters,
     SortModel sortModel, {
-    int pageSize = 10,
+    int pageSize = 20,
     int offset = 0,
   }) async {
     try {
@@ -92,16 +92,13 @@ class FirebaseEventFacade
   }
 
   @override
-  Future<Either<UserEventFailure, List<Event>>> getFutureEventsByIds(
-      List<String> eventIds) async {
-    final eventsQuery = _firestore.eventCollection
-        .where('id', whereIn: eventIds)
-        .where('eventEndDateTime',
-            isGreaterThanOrEqualTo: DateTime.now().millisecondsSinceEpoch);
+  Future<Either<UserEventFailure, List<Event>>> getEventsByIds(
+    List<String> eventIds,
+  ) async {
     try {
-      final events = await eventsQuery.get();
-      return right(
-          events.docs.map((e) => EventDto.fromFirebase(e).toDomain()).toList());
+      final result = await _getEventsByIdsFromFirestore(eventIds);
+
+      return right(result);
     } on FirebaseException catch (e) {
       _logger.e("Exception during fetching events by ids EXCEPTION: $e");
       return left(const UserEventFailure.unexpected());
@@ -246,5 +243,49 @@ class FirebaseEventFacade
       );
       return left(const PartnerEventFailure.unexpected());
     }
+  }
+
+  @override
+  Future<Either<UserEventFailure, List<Event>>> getFavoriteEvents() async {
+    try {
+      final userDoc =
+          await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
+
+      final favoriteEventIds =
+          await userDoc.get('favoriteEventIds') as List<dynamic>;
+
+      final result = await _getEventsByIdsFromFirestore(favoriteEventIds);
+
+      return right(result);
+    } on FirebaseException catch (e) {
+      _logger.e('Exception getting favorite events EXCEPTION: $e');
+      return left(const UserEventFailure.unexpected());
+    }
+  }
+
+  Future<List<Event>> _getEventsByIdsFromFirestore(
+      List<dynamic> eventIds) async {
+    final result = <Event>[];
+
+    while (eventIds.isNotEmpty) {
+      final chunkSize = eventIds.length >= 10 ? 10 : eventIds.length;
+
+      final eventIdsChunk = eventIds.getRange(0, chunkSize).toList();
+
+      final eventsQuery = _firestore.eventCollection
+          .where(FieldPath.documentId, whereIn: eventIdsChunk);
+
+      final eventDocsChunk = await eventsQuery.get();
+
+      final eventsChunk = eventDocsChunk.docs
+          .map((doc) => EventDto.fromFirebase(doc).toDomain())
+          .toList();
+
+      result.addAll(eventsChunk);
+
+      eventIds.removeRange(0, chunkSize);
+    }
+
+    return result;
   }
 }
