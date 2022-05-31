@@ -99,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Odwołaj wydarzenie"),
         "cancelTimeExpired": MessageLookupByLibrary.simpleMessage(
             "Czas na odwołanie wydarzenia upłynął"),
+        "canceled": MessageLookupByLibrary.simpleMessage("Odwołano"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Anulowano"),
         "cancelledByUser": MessageLookupByLibrary.simpleMessage(
             "Operacja anulowana przez użytkownika"),
@@ -431,6 +432,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Czas na przełożenie wydarzenia upłynął"),
         "postponeTimeTooShort": MessageLookupByLibrary.simpleMessage(
             "Minimalny czas o który można przełożyć wydarzenie wynosi 24 godziny"),
+        "postponed": MessageLookupByLibrary.simpleMessage("Przełożono"),
         "previousTicketPoolAvailable": MessageLookupByLibrary.simpleMessage(
             "Poprzednia pula biletów znowu jest dostępna!"),
         "price": MessageLookupByLibrary.simpleMessage("Cena"),
@@ -471,6 +473,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "returnTicket": MessageLookupByLibrary.simpleMessage("Zwróć bilet"),
         "returnTimeIsOver":
             MessageLookupByLibrary.simpleMessage("Czas na zwrot minął"),
+        "returned": MessageLookupByLibrary.simpleMessage("Zwrócono"),
         "reviewAdded": MessageLookupByLibrary.simpleMessage("Opinia dodana"),
         "reviewAlreadyReported": MessageLookupByLibrary.simpleMessage(
             "Ta opinia została już przez Ciebie zgłoszona"),
@@ -569,6 +572,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Maksymalna liczba wymaganych wejść wynosi 1000"),
         "totalRevenue":
             MessageLookupByLibrary.simpleMessage("Całkowity przychód"),
+        "typeEventClubOrArtistName": MessageLookupByLibrary.simpleMessage(
+            "Wpisz nazwę wydarzenia, klubu lub artysty"),
         "unexpectedError":
             MessageLookupByLibrary.simpleMessage("Nieoczekiwany błąd"),
         "upcoming": MessageLookupByLibrary.simpleMessage("Nadchodzące"),

@@ -98,6 +98,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancelEvent": MessageLookupByLibrary.simpleMessage("Cancel event"),
         "cancelTimeExpired": MessageLookupByLibrary.simpleMessage(
             "Time to cancel the event has expired"),
+        "canceled": MessageLookupByLibrary.simpleMessage("Canceled"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
         "cancelledByUser":
             MessageLookupByLibrary.simpleMessage("Operation cancelled by user"),
@@ -424,6 +425,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Time to postpone the event has expired"),
         "postponeTimeTooShort": MessageLookupByLibrary.simpleMessage(
             "The minimum time by which an event can be postponed is 24 hours"),
+        "postponed": MessageLookupByLibrary.simpleMessage("Postponed"),
         "previousTicketPoolAvailable": MessageLookupByLibrary.simpleMessage(
             "The previous ticket pool is available again!"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
@@ -462,6 +464,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "returnTicket": MessageLookupByLibrary.simpleMessage("Return ticket"),
         "returnTimeIsOver":
             MessageLookupByLibrary.simpleMessage("Time for a return is over"),
+        "returned": MessageLookupByLibrary.simpleMessage("Returned"),
         "reviewAdded": MessageLookupByLibrary.simpleMessage("Review added"),
         "reviewAlreadyReported": MessageLookupByLibrary.simpleMessage(
             "You have already reported this opinion"),
@@ -557,6 +560,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "tooMuchRequiredEntries": MessageLookupByLibrary.simpleMessage(
             "The maximum number of required entries is 1000"),
         "totalRevenue": MessageLookupByLibrary.simpleMessage("Total revenue"),
+        "typeEventClubOrArtistName": MessageLookupByLibrary.simpleMessage(
+            "Enter the name of the event, club or artist"),
         "unexpectedError":
             MessageLookupByLibrary.simpleMessage("Unexpected error"),
         "upcoming": MessageLookupByLibrary.simpleMessage("Upcoming"),

@@ -353,6 +353,16 @@ class S {
     );
   }
 
+  /// `Canceled`
+  String get canceled {
+    return Intl.message(
+      'Canceled',
+      name: 'canceled',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Cancel event`
   String get cancelEvent {
     return Intl.message(
@@ -2318,6 +2328,16 @@ class S {
     );
   }
 
+  /// `Postponed`
+  String get postponed {
+    return Intl.message(
+      'Postponed',
+      name: 'postponed',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Postpone event`
   String get postponeEvent {
     return Intl.message(
@@ -2573,6 +2593,16 @@ class S {
     return Intl.message(
       'Retry Connection',
       name: 'retryConnection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Returned`
+  String get returned {
+    return Intl.message(
+      'Returned',
+      name: 'returned',
       desc: '',
       args: [],
     );
@@ -3232,6 +3262,16 @@ class S {
     return Intl.message(
       'Total revenue',
       name: 'totalRevenue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the name of the event, club or artist`
+  String get typeEventClubOrArtistName {
+    return Intl.message(
+      'Enter the name of the event, club or artist',
+      name: 'typeEventClubOrArtistName',
       desc: '',
       args: [],
     );
