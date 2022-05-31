@@ -78,6 +78,7 @@ void main() {
     musicalGenres: const ['rap'],
     location: const {longitude: 123, latitude: 321},
     cityId: 'cityId',
+    eventPhotoUrl: '',
   );
 
   final eventTicketDto = EventTicketsDto(

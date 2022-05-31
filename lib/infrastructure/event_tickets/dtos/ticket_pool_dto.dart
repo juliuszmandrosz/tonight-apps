@@ -15,11 +15,12 @@ class TicketPoolDto with _$TicketPoolDto {
     required int poolNumber,
     required int ticketQuantity,
     required int ticketPrice,
-    required int vipPrice,
     required String currency,
     @Default(0) int ticketsSold,
     @Default(false) bool isCurrent,
     @Default(false) bool isSoldOut,
+    @Default(false) bool isVipEnabled,
+    int? vipPrice,
   }) = _TicketPoolDto;
 
   factory TicketPoolDto.fromDomain(TicketPool ticketPool) {
@@ -27,11 +28,12 @@ class TicketPoolDto with _$TicketPoolDto {
       poolNumber: ticketPool.poolNumber,
       ticketQuantity: ticketPool.ticketQuantity,
       ticketPrice: ticketPool.ticketPrice,
-      vipPrice: ticketPool.vipPrice,
       currency: ticketPool.currency,
       ticketsSold: ticketPool.ticketsSold,
       isCurrent: ticketPool.isCurrent,
       isSoldOut: ticketPool.isSoldOut,
+      isVipEnabled: ticketPool.isVipEnabled,
+      vipPrice: ticketPool.vipPrice,
     );
   }
 
@@ -48,11 +50,12 @@ class TicketPoolDto with _$TicketPoolDto {
       poolNumber: poolNumber,
       ticketQuantity: ticketQuantity,
       ticketPrice: ticketPrice,
-      vipPrice: vipPrice,
       currency: currency,
       ticketsSold: ticketsSold,
       isCurrent: isCurrent,
       isSoldOut: isSoldOut,
+      isVipEnabled: isVipEnabled,
+      vipPrice: vipPrice,
     );
   }
 }
