@@ -91,7 +91,7 @@ class _EventListState extends State<EventList> {
                       itemCount: state.events.length + 1,
                       itemBuilder: (ctx, i) => i >= state.events.length
                           ? state.hasReachedMax
-                              ? const SizedBox()
+                              ? const SizedBox(height: 60)
                               : const BottomLoader()
                           : Center(
                               child: EventListTile(
@@ -102,7 +102,6 @@ class _EventListState extends State<EventList> {
                       separatorBuilder: (context, i) => const Divider(),
                     ),
                   ),
-                  const SizedBox(height: 60),
                 ],
               ),
             ),
