@@ -503,7 +503,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Proszę wybrać minimalny wiek"),
         "selectMusicalGenres": MessageLookupByLibrary.simpleMessage(
             "Proszę wybrać gatunki muzyczne"),
-        "selectNumberOfStarts": MessageLookupByLibrary.simpleMessage(
+        "selectNumberOfStars": MessageLookupByLibrary.simpleMessage(
             "Należy wybrać ilość gwiazdek"),
         "selectors": m7,
         "sendPasswordResetLink": MessageLookupByLibrary.simpleMessage(

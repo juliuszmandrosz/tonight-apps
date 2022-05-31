@@ -2802,10 +2802,10 @@ class S {
   }
 
   /// `Select the number of stars`
-  String get selectNumberOfStarts {
+  String get selectNumberOfStars {
     return Intl.message(
       'Select the number of stars',
-      name: 'selectNumberOfStarts',
+      name: 'selectNumberOfStars',
       desc: '',
       args: [],
     );

@@ -495,7 +495,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please select minumum age"),
         "selectMusicalGenres": MessageLookupByLibrary.simpleMessage(
             "Please select musical genres"),
-        "selectNumberOfStarts":
+        "selectNumberOfStars":
             MessageLookupByLibrary.simpleMessage("Select the number of stars"),
         "selectors": m7,
         "sendPasswordResetLink":
