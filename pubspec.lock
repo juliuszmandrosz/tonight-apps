@@ -1053,8 +1053,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/vip-optional"
-      resolved-ref: "2e6027862efb71b5e846970d6b879d93de03ed53"
+      ref: "feature/upload-event-photo"
+      resolved-ref: ff2f5a4e1fb310e3336fad8058f78887fe2d3ac3
       url: "git@github.com:juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"

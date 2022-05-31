@@ -8,6 +8,7 @@ class EventTicketsStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: const [
         AddTicketPoolButton(),
         SizedBox(height: 20),

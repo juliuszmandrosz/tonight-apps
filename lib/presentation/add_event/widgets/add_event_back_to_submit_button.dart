@@ -17,17 +17,14 @@ class AddEventBackToSubmitButton extends StatelessWidget {
         return state.isSubmitEnabled &&
                 state.currentStep != AddEventStep.summary
             ? Padding(
-                padding: const EdgeInsets.only(bottom: 20),
-                child: SizedBox(
-                  width: 300,
-                  child: ElevatedButton(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(S().backToSummary),
-                    ),
-                    onPressed: () =>
-                        context.read<AddEventCubit>().backToSummary(),
+                padding: const EdgeInsets.only(bottom: 20, left: 10, right: 10),
+                child: ElevatedButton(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(S().backToSummary),
                   ),
+                  onPressed: () =>
+                      context.read<AddEventCubit>().backToSummary(),
                 ),
               )
             : const SizedBox();

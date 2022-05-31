@@ -3,8 +3,8 @@ enum AddEventStep {
   dateTime,
   details,
   tickets,
-  concertInfo,
   photo,
+  concertInfo,
   urlLinks,
   summary,
 }

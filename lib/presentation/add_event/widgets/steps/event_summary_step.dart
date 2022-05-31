@@ -20,6 +20,7 @@ class EventSummaryStep extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: const [
+          // TOOD - add photo here
           EventSummaryEventName(),
           SizedBox(height: 30),
           EventSummaryDescription(),
@@ -37,7 +38,7 @@ class EventSummaryStep extends StatelessWidget {
           EventSummaryArtistName(),
           EventSummaryFacebookUrl(),
           EventSummaryDjChannelUrl(),
-          SizedBox(height: 30),
+          SizedBox(height: 60),
         ],
       ),
     );

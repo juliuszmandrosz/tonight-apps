@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/constants/constants.dart';
 import 'package:raver_common/extensions/option_extensions.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/domain.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_event/add_event_step.dart';
@@ -13,6 +17,7 @@ import 'package:raver_partners/application/add_event/form_inputs/dj_channel_url.
 import 'package:raver_partners/application/add_event/form_inputs/dress_code.dart';
 import 'package:raver_partners/application/add_event/form_inputs/end_date_time.dart';
 import 'package:raver_partners/application/add_event/form_inputs/event_name.dart';
+import 'package:raver_partners/application/add_event/form_inputs/event_photo.dart';
 import 'package:raver_partners/application/add_event/form_inputs/facebook_url.dart';
 import 'package:raver_partners/application/add_event/form_inputs/start_date_time.dart';
 import 'package:raver_partners/application/add_event/form_inputs/min_age.dart';
@@ -21,6 +26,7 @@ import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 import 'package:collection/collection.dart';
+import 'package:uuid/uuid.dart';
 
 part 'add_event_cubit.freezed.dart';
 
@@ -38,7 +44,9 @@ class AddEventCubit extends Cubit<AddEventState> {
   })  : _eventFacade = eventFacade,
         _eventNotifierCubit = eventNotifierCubit,
         _clubInfoCubit = clubInfoCubit,
-        super(AddEventState.initial());
+        super(AddEventState.initial()) {
+    emit(state.copyWith(clubInfo: _clubInfoCubit.state.club));
+  }
 
   void eventNameChanged(String value) {
     final eventName = EventName.dirty(value);
@@ -99,6 +107,11 @@ class AddEventCubit extends Cubit<AddEventState> {
   void artistNameChanged(String value) {
     final artistName = ArtistName.dirty(value);
     emit(state.copyWith(artistName: artistName));
+  }
+
+  void eventPhotoChanged(File value) {
+    final photo = EventPhoto.dirty(value);
+    emit(state.copyWith(eventPhoto: photo));
   }
 
   void toggleFacebookUrlEnabledState() {
@@ -204,7 +217,7 @@ class AddEventCubit extends Cubit<AddEventState> {
         break;
 
       case AddEventStep.photo:
-        // TODO: Handle this case.
+        _submitEventPhotoStep();
         break;
 
       case AddEventStep.urlLinks:
@@ -286,6 +299,22 @@ class AddEventCubit extends Cubit<AddEventState> {
     emit(state.copyWith(status: status));
   }
 
+  void _submitEventPhotoStep() {
+    emit(
+      state.copyWith(
+        eventPhoto: EventPhoto.dirty(state.eventPhoto.value),
+      ),
+    );
+
+    final status = Formz.validate([state.eventPhoto]);
+
+    if (status.isInvalid) {
+      _emitFailure(eventPhotoErrorMessages[state.eventPhoto.error]!);
+    }
+
+    emit(state.copyWith(status: status));
+  }
+
   void _submitUrlLinksStep() {
     emit(
       state.copyWith(
@@ -338,7 +367,16 @@ class AddEventCubit extends Cubit<AddEventState> {
 
     final club = _clubInfoCubit.state.club.getOrCrash();
 
+    final eventId = const Uuid().v1();
+
+    final eventPhotoUrl = await _uploadEventPhoto(eventId);
+
+    if (eventPhotoUrl.isLeft()) {
+      return;
+    }
+
     final event = Event(
+      id: eventId,
       currency: club.acceptedCurrency,
       clubId: club.id,
       eventName: state.eventName.value,
@@ -355,7 +393,7 @@ class AddEventCubit extends Cubit<AddEventState> {
       urlLinks: _getUrlLinks(),
       artistName: state.artistName.value,
       isConcert: state.isConcert,
-      eventPhotoUrl: club.clubImageUrl,
+      eventPhotoUrl: eventPhotoUrl.getRightOrCrash(),
     );
 
     final eventTickets = EventTickets(
@@ -373,6 +411,23 @@ class AddEventCubit extends Cubit<AddEventState> {
         _eventNotifierCubit.notifyAboutNewEvent(event);
         emit(state.copyWith(status: FormzStatus.submissionSuccess));
       },
+    );
+  }
+
+  Future<Either<PartnerEventFailure, String>> _uploadEventPhoto(
+      String eventId) async {
+    final failureOrSuccess = await _eventFacade.uploadEventPhoto(
+      eventId,
+      state.eventPhoto.value!,
+    );
+
+    // TODO - add translation
+    return failureOrSuccess.fold(
+      (failure) {
+        _emitFailure('Błąd podczas dodawania zdjęcia');
+        return left(failure);
+      },
+      (photoUrl) => right(photoUrl),
     );
   }
 

@@ -215,6 +215,7 @@ void _registerFacades() {
       logger: getIt(),
       algoliaEventsApi: getIt(),
       firestore: getIt(),
+      storage: getIt(),
     ),
   );
 
@@ -224,6 +225,7 @@ void _registerFacades() {
       logger: getIt(),
       algoliaEventsApi: getIt(),
       firestore: getIt(),
+      storage: getIt(),
     ),
   );
 

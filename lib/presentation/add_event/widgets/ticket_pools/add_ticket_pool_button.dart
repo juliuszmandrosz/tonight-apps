@@ -18,25 +18,22 @@ class AddTicketPoolButton extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.ticketPools != current.ticketPools,
       builder: (context, state) {
-        return SizedBox(
-          width: 300,
-          child: ElevatedButton(
-            onPressed: () async {
-              final result = await AutoRouter.of(context).push<TicketPool>(
-                AddEditTicketPoolRoute(
-                  editingTicketPool: none(),
-                  currentTicketPools: state.ticketPools,
-                ),
-              );
+        return ElevatedButton(
+          onPressed: () async {
+            final result = await AutoRouter.of(context).push<TicketPool>(
+              AddEditTicketPoolRoute(
+                editingTicketPool: none(),
+                currentTicketPools: state.ticketPools,
+              ),
+            );
 
-              if (result != null) {
-                context.read<AddEventCubit>().addTicketPool(result);
-              }
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(S().addTicketPool),
-            ),
+            if (result != null) {
+              context.read<AddEventCubit>().addTicketPool(result);
+            }
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(S().addTicketPool),
           ),
         );
       },

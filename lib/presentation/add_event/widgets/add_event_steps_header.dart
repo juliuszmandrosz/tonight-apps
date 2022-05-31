@@ -46,11 +46,11 @@ class AddEventStepsHeader extends StatelessWidget {
       case AddEventStep.tickets:
         return S().tickets(2);
 
-      case AddEventStep.concertInfo:
-        return S().concertInfo;
-
       case AddEventStep.photo:
         return S().photos(1);
+
+      case AddEventStep.concertInfo:
+        return S().concertInfo;
 
       case AddEventStep.urlLinks:
         return S().urlLinks;

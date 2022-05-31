@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event/add_event_step.dart';
+import 'package:raver_partners/presentation/add_event/widgets/steps/event_photo_step.dart';
 import 'package:raver_partners/presentation/add_event/widgets/steps/event_summary_step.dart';
 import 'package:raver_partners/presentation/add_event/widgets/steps/event_url_links_step.dart';
 import 'package:raver_partners/presentation/add_event/widgets/steps/event_concert_info_step.dart';
@@ -40,6 +41,9 @@ class EventStepContent extends StatelessWidget {
 
       case AddEventStep.tickets:
         return const EventTicketsStep();
+
+      case AddEventStep.photo:
+        return const EventPhotoStep();
 
       case AddEventStep.concertInfo:
         return const EventConcertInfoStep();

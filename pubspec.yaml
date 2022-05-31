@@ -87,7 +87,7 @@ dependencies:
   raver_events:
     git:
       url: git@github.com:juliuszmandrosz/RaverEvents.git
-      ref: feature/vip-optional
+      ref: feature/upload-event-photo
 
   raver_translations:
     git:

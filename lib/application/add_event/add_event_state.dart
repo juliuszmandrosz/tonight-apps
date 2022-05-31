@@ -3,6 +3,7 @@ part of 'add_event_cubit.dart';
 @freezed
 class AddEventState with _$AddEventState {
   const factory AddEventState({
+    required Option<Club> clubInfo,
     required EventName eventName,
     required StartDateTime startDateTime,
     required EndDateTime endDateTime,
@@ -17,6 +18,7 @@ class AddEventState with _$AddEventState {
     required FacebookUrl facebookUrl,
     required DjChannelUrl djChannelUrl,
     required List<TicketPool> ticketPools,
+    required EventPhoto eventPhoto,
     required FormzStatus status,
     required AddEventStep currentStep,
     required bool isSubmitEnabled,
@@ -24,6 +26,7 @@ class AddEventState with _$AddEventState {
   }) = _AddEventState;
 
   factory AddEventState.initial() => AddEventState(
+        clubInfo: none(),
         eventName: const EventName.pure(),
         startDateTime: const StartDateTime.pure(),
         endDateTime: const EndDateTime.pure(),
@@ -38,6 +41,7 @@ class AddEventState with _$AddEventState {
         facebookUrl: const FacebookUrl.pure(),
         djChannelUrl: const DjChannelUrl.pure(),
         ticketPools: [],
+        eventPhoto: EventPhoto.pure(),
         status: FormzStatus.pure,
         currentStep: AddEventStep.nameAndDesc,
         isSubmitEnabled: false,
