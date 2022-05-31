@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/domain.dart';
@@ -20,16 +23,19 @@ class FirebaseEventFacade
         UserEventFacade {
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
+  final FirebaseStorage _storage;
   final AlgoliaEventsApi _algoliaEventsApi;
   final Logger _logger;
 
   FirebaseEventFacade({
     required FirebaseAuth firebaseAuth,
     required FirebaseFirestore firestore,
+    required FirebaseStorage storage,
     required AlgoliaEventsApi algoliaEventsApi,
     required Logger logger,
   })  : _firebaseAuth = firebaseAuth,
         _firestore = firestore,
+        _storage = storage,
         _algoliaEventsApi = algoliaEventsApi,
         _logger = logger;
 
@@ -260,6 +266,22 @@ class FirebaseEventFacade
     } on FirebaseException catch (e) {
       _logger.e('Exception getting favorite events EXCEPTION: $e');
       return left(const UserEventFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<PartnerEventFailure, String>> uploadEventPhoto(
+    String eventId,
+    File photo,
+  ) async {
+    try {
+      final storageRef = _storage.ref('events/$eventId/');
+      final uploadTask = await storageRef.putFile(photo);
+      final result = await uploadTask.ref.getDownloadURL();
+      return right(result);
+    } on FirebaseException catch (e) {
+      _logger.e('Exception uploading event photo EXCEPTION: $e');
+      return left(const PartnerEventFailure.unexpected());
     }
   }
 

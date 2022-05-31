@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:raver_events/domain/domain.dart';
 
@@ -13,5 +15,11 @@ abstract class PartnerEventFacade {
       getEventInDateRangeForCurrentPartner(
     DateTime fromDate,
     DateTime toDate,
+  );
+
+  /// Returns photo url
+  Future<Either<PartnerEventFailure, String>> uploadEventPhoto(
+    String eventId,
+    File photo,
   );
 }
