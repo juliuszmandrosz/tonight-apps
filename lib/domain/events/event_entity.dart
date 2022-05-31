@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:uuid/uuid.dart';
@@ -96,11 +97,11 @@ class Event extends Equatable {
     List<String>? musicalGenres,
     Map<String, double>? location,
     String? cityId,
-    String? description,
+    Option<String>? description,
     int? attending,
     Map<String, String>? urlLinks,
     bool? isConcert,
-    String? artistName,
+    Option<String>? artistName,
     bool? isCanceled,
     bool? isBeingPostponed,
   }) {
@@ -119,13 +120,23 @@ class Event extends Equatable {
       musicalGenres: musicalGenres ?? this.musicalGenres,
       location: location ?? this.location,
       cityId: cityId ?? this.cityId,
-      description: description ?? this.description,
       attending: attending ?? this.attending,
       urlLinks: urlLinks ?? this.urlLinks,
       isConcert: isConcert ?? this.isConcert,
-      artistName: artistName ?? this.artistName,
       isCanceled: isCanceled ?? this.isCanceled,
       isBeingPostponed: isBeingPostponed ?? this.isBeingPostponed,
+      description: description != null
+          ? description.fold(
+              () => null,
+              (desc) => desc,
+            )
+          : this.description,
+      artistName: artistName != null
+          ? artistName.fold(
+              () => null,
+              (name) => name,
+            )
+          : this.artistName,
     );
   }
 }

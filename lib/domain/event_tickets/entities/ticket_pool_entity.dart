@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 class TicketPool extends Equatable {
@@ -45,7 +46,7 @@ class TicketPool extends Equatable {
     bool? isCurrent,
     bool? isSoldOut,
     bool? isVipEnabled,
-    int? vipPrice,
+    Option<int>? vipPrice,
   }) {
     return TicketPool(
       poolNumber: poolNumber ?? this.poolNumber,
@@ -56,7 +57,12 @@ class TicketPool extends Equatable {
       isCurrent: isCurrent ?? this.isCurrent,
       isSoldOut: isSoldOut ?? this.isSoldOut,
       isVipEnabled: isVipEnabled ?? this.isVipEnabled,
-      vipPrice: vipPrice ?? this.vipPrice,
+      vipPrice: vipPrice != null
+          ? vipPrice.fold(
+              () => null,
+              (price) => price,
+            )
+          : this.vipPrice,
     );
   }
 }
