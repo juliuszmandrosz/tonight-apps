@@ -89,6 +89,13 @@ class TicketListCubit extends Cubit<TicketListState> {
     emit(state.copyWith(upcomingLiveTickets: ticketsCopy));
   }
 
+  updatePastTicketInState(Ticket oldTicket, Ticket updatedTicket) {
+    final ticketsCopy = [...state.pastTickets];
+    final index = ticketsCopy.indexOf(oldTicket);
+    ticketsCopy[index] = updatedTicket;
+    emit(state.copyWith(pastTickets: ticketsCopy));
+  }
+
   _sortTicketsByStartDate(List<Ticket> tickets) {
     tickets.sort((a, b) {
       final firstDate = a.eventStartDateTime;

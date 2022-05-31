@@ -58,6 +58,7 @@ class NewReviewCubit extends Cubit<EventReviewState> {
 
   void submitReview(Ticket ticket) async {
     if (state.reviewValue == 0) {
+      // TODO - add translation
       _showErrorMessage('Nalezy wybrac ilosc gwiazdek');
       return;
     }
@@ -71,7 +72,9 @@ class NewReviewCubit extends Cubit<EventReviewState> {
       userId: state.userId,
       dateAdded: DateTime.now(),
       eventId: ticket.eventId,
+      eventName: ticket.eventName,
     );
+
     final failureOrSuccess = await _reviewFacade.submitReview(
       clubId: ticket.clubId,
       ticketId: ticket.id,
@@ -80,7 +83,11 @@ class NewReviewCubit extends Cubit<EventReviewState> {
 
     failureOrSuccess.fold(
       (failure) => _emitSubmitReviewFailure(),
-      (_) {
+      (reviewId) {
+        _ticketListCubit.updatePastTicketInState(
+          ticket,
+          ticket.copyWith(reviewId: reviewId),
+        );
         emit(
           state.copyWith(submittingStatus: FormzStatus.submissionSuccess),
         );

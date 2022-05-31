@@ -14,10 +14,9 @@ class ClubReviewListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      dense: true,
-      contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
-      title: ReviewTitle(review: review),
-      subtitle: ReviewSubtitle(review: review),
-    );
+        dense: true,
+        contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
+        title: ReviewTitle(review: review),
+        subtitle: ReviewSubtitle(review: review));
   }
 }

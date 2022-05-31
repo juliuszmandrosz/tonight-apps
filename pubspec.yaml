@@ -122,12 +122,12 @@ dependencies:
   raver_events:
     git:
       url: git@github.com:juliuszmandrosz/RaverEvents.git
-      ref: hotfix/fix-favorites
+      ref: develop
 
   raver_clubs:
     git:
       url: git@github.com:juliuszmandrosz/RaverClubs.git
-      ref: hotfix/fix-favorite-clubs
+      ref: develop
 
   raver_payments:
     git:

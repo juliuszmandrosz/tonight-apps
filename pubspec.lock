@@ -1254,8 +1254,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "hotfix/fix-favorite-clubs"
-      resolved-ref: "0dc1d004651132839f1b4dffe6762a7eccff8644"
+      ref: develop
+      resolved-ref: "811031fd0e45e4593677dd832ae941419df7a0fd"
       url: "git@github.com:juliuszmandrosz/RaverClubs.git"
     source: git
     version: "0.0.1"
@@ -1272,8 +1272,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "hotfix/fix-favorites"
-      resolved-ref: "8d3d79d35d36719c106ce356bfb18b21e7e86f40"
+      ref: develop
+      resolved-ref: "92598b967b14e2af4c4fae70fb6a075b24874b91"
       url: "git@github.com:juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"

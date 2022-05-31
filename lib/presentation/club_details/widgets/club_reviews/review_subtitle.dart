@@ -25,9 +25,30 @@ class ReviewSubtitle extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        Align(
-          alignment: Alignment.centerRight,
-          child: ReportReviewButton(review: review),
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return SizedBox(
+                    width: constraints.maxWidth * 0.6,
+                    child: AutoSizeText(
+                      review.eventName,
+                      maxLines: 2,
+                      style: context.bodyText2
+                          .copyWith(color: context.secondaryColor),
+                    ),
+                  );
+                },
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: ReportReviewButton(review: review),
+            ),
+          ],
         ),
       ],
     );
