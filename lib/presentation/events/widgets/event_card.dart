@@ -216,7 +216,7 @@ class EventCard extends StatelessWidget {
                                   ),
                                   const SizedBox(width: 10),
                                   AutoSizeText(
-                                    '${'Koncert'} - ${event.artistName!.capitalize()}',
+                                    '${S().concert} - ${event.artistName!.capitalize()}',
                                     style: context.subtitle1,
                                     textAlign: TextAlign.center,
                                     maxLines: 1,
