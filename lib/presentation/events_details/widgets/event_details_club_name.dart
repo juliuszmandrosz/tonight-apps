@@ -6,6 +6,7 @@ import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class EventDetailsClubName extends StatelessWidget {
   final Event event;
@@ -20,9 +21,9 @@ class EventDetailsClubName extends StatelessWidget {
     return ListTile(
       dense: true,
       contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
-      title: const Align(
+      title: Align(
         alignment: Alignment.centerLeft,
-        child: RaverHeadline(text: 'Club name', isSmallerVersion: true),
+        child: RaverHeadline(text: S().clubName, isSmallerVersion: true),
       ),
       subtitle: Padding(
         padding: const EdgeInsets.only(top: 15),
