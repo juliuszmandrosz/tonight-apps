@@ -84,6 +84,8 @@
   "@clubReviewsLoadingError": {},
   "clubs": "{count, plural, zero{No clubs} one{Club} other{Clubs}}",
   "@clubs": {},
+  "concert": "Concert",
+  "@concert": {},
   "concertInfo": "Concert information",
   "@concertInfo": {},
   "confirm": "Confirm",

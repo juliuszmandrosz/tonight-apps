@@ -113,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "clubReviewsLoadingError": MessageLookupByLibrary.simpleMessage(
             "Error while loading club reviews"),
         "clubs": m1,
+        "concert": MessageLookupByLibrary.simpleMessage("Concert"),
         "concertInfo":
             MessageLookupByLibrary.simpleMessage("Concert information"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),

@@ -476,6 +476,16 @@ class S {
     );
   }
 
+  /// `Concert`
+  String get concert {
+    return Intl.message(
+      'Concert',
+      name: 'concert',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Concert information`
   String get concertInfo {
     return Intl.message(

@@ -114,6 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "clubReviewsLoadingError": MessageLookupByLibrary.simpleMessage(
             "Wystąpił błąd podczas ładowania opinii klubu"),
         "clubs": m1,
+        "concert": MessageLookupByLibrary.simpleMessage("Koncert"),
         "concertInfo":
             MessageLookupByLibrary.simpleMessage("Informacje o koncercie"),
         "confirm": MessageLookupByLibrary.simpleMessage("Zatwierdź"),
@@ -341,7 +342,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("Język"),
         "lastTicketsLeft":
             MessageLookupByLibrary.simpleMessage("Pozostały ostatnie bilety"),
-        "live": MessageLookupByLibrary.simpleMessage("Na żywo"),
+        "live": MessageLookupByLibrary.simpleMessage("W trakcie"),
         "login": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "lostNetworkConnectionDescription":
             MessageLookupByLibrary.simpleMessage(
