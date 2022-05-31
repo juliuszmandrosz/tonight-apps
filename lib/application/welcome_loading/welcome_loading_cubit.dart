@@ -50,6 +50,10 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         super(WelcomeLoadingState.initial());
 
   void loadDependencies() async {
+    if (state.status != CubitStatus.initial) return;
+
+    emit(state.copyWith(status: CubitStatus.loading));
+
     _initRemoteConfigCubit();
     _initProfileCubit();
     _initUserLocationCubit();
@@ -68,9 +72,13 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   void _emitSuccessIfAllLoaded() {
     if (_allDependenciesLoaded()) {
       final isOnboardingCompleted = _onboardingCompleted();
-      emit(state.copyWith(
+      emit(
+        state.copyWith(
           dependenciesLoaded: true,
-          onboardingCompleted: isOnboardingCompleted));
+          onboardingCompleted: isOnboardingCompleted,
+          status: CubitStatus.success,
+        ),
+      );
     }
   }
 

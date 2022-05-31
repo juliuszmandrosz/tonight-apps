@@ -127,13 +127,12 @@ dependencies:
   raver_clubs:
     git:
       url: git@github.com:juliuszmandrosz/RaverClubs.git
-      ref: feature/report-review
+      ref: hotfix/fix-favorite-clubs
 
   raver_payments:
     git:
       url: git@github.com:juliuszmandrosz/RaverPayments.git
       ref: develop
-
 
 dev_dependencies:
   flutter_test:

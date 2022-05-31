@@ -14,8 +14,19 @@ class ClubFavoriteCubit extends Cubit<ClubFavoriteState> {
   ClubFavoriteCubit(this._clubFacade) : super(ClubFavoriteState.initial());
 
   Future<void> getFavoriteClubs() async {
-    // TODO - implement
-    emit(state.copyWith(status: CubitStatus.success));
+    emit(state.copyWith(status: CubitStatus.loading));
+
+    final failureOrSuccess = await _clubFacade.getFavoriteClubs();
+
+    failureOrSuccess.fold(
+      (_) => _emitFetchFailure(),
+      (favoriteClubs) => emit(
+        state.copyWith(
+          status: CubitStatus.success,
+          favoriteClubs: favoriteClubs,
+        ),
+      ),
+    );
   }
 
   Future<void> toggleClubFavoriteStatus(Club club) async {

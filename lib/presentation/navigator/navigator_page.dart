@@ -21,7 +21,6 @@ class _NavigatorPageState extends State<NavigatorPage> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO - Find why this build method get called twice
     return MultiBlocListener(
       listeners: [
         BlocListener<NetworkCheckCubit, NetworkCheckState>(
