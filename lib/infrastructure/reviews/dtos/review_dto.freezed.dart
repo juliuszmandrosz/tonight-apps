@@ -27,6 +27,7 @@ mixin _$ReviewDto {
   String get userId => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get eventId => throw _privateConstructorUsedError;
+  String get eventName => throw _privateConstructorUsedError;
   @TimestampJsonConverter()
   DateTime get dateAdded => throw _privateConstructorUsedError;
 
@@ -47,6 +48,7 @@ abstract class $ReviewDtoCopyWith<$Res> {
       String userId,
       String username,
       String eventId,
+      String eventName,
       @TimestampJsonConverter() DateTime dateAdded});
 }
 
@@ -66,6 +68,7 @@ class _$ReviewDtoCopyWithImpl<$Res> implements $ReviewDtoCopyWith<$Res> {
     Object? userId = freezed,
     Object? username = freezed,
     Object? eventId = freezed,
+    Object? eventName = freezed,
     Object? dateAdded = freezed,
   }) {
     return _then(_value.copyWith(
@@ -93,6 +96,10 @@ class _$ReviewDtoCopyWithImpl<$Res> implements $ReviewDtoCopyWith<$Res> {
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
               as String,
+      eventName: eventName == freezed
+          ? _value.eventName
+          : eventName // ignore: cast_nullable_to_non_nullable
+              as String,
       dateAdded: dateAdded == freezed
           ? _value.dateAdded
           : dateAdded // ignore: cast_nullable_to_non_nullable
@@ -114,6 +121,7 @@ abstract class _$$_ReviewDtoCopyWith<$Res> implements $ReviewDtoCopyWith<$Res> {
       String userId,
       String username,
       String eventId,
+      String eventName,
       @TimestampJsonConverter() DateTime dateAdded});
 }
 
@@ -135,6 +143,7 @@ class __$$_ReviewDtoCopyWithImpl<$Res> extends _$ReviewDtoCopyWithImpl<$Res>
     Object? userId = freezed,
     Object? username = freezed,
     Object? eventId = freezed,
+    Object? eventName = freezed,
     Object? dateAdded = freezed,
   }) {
     return _then(_$_ReviewDto(
@@ -162,6 +171,10 @@ class __$$_ReviewDtoCopyWithImpl<$Res> extends _$ReviewDtoCopyWithImpl<$Res>
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
               as String,
+      eventName: eventName == freezed
+          ? _value.eventName
+          : eventName // ignore: cast_nullable_to_non_nullable
+              as String,
       dateAdded: dateAdded == freezed
           ? _value.dateAdded
           : dateAdded // ignore: cast_nullable_to_non_nullable
@@ -180,6 +193,7 @@ class _$_ReviewDto extends _ReviewDto {
       required this.userId,
       required this.username,
       required this.eventId,
+      required this.eventName,
       @TimestampJsonConverter() required this.dateAdded})
       : super._();
 
@@ -200,12 +214,14 @@ class _$_ReviewDto extends _ReviewDto {
   @override
   final String eventId;
   @override
+  final String eventName;
+  @override
   @TimestampJsonConverter()
   final DateTime dateAdded;
 
   @override
   String toString() {
-    return 'ReviewDto(id: $id, userOpinion: $userOpinion, userRate: $userRate, userId: $userId, username: $username, eventId: $eventId, dateAdded: $dateAdded)';
+    return 'ReviewDto(id: $id, userOpinion: $userOpinion, userRate: $userRate, userId: $userId, username: $username, eventId: $eventId, eventName: $eventName, dateAdded: $dateAdded)';
   }
 
   @override
@@ -220,6 +236,7 @@ class _$_ReviewDto extends _ReviewDto {
             const DeepCollectionEquality().equals(other.userId, userId) &&
             const DeepCollectionEquality().equals(other.username, username) &&
             const DeepCollectionEquality().equals(other.eventId, eventId) &&
+            const DeepCollectionEquality().equals(other.eventName, eventName) &&
             const DeepCollectionEquality().equals(other.dateAdded, dateAdded));
   }
 
@@ -233,6 +250,7 @@ class _$_ReviewDto extends _ReviewDto {
       const DeepCollectionEquality().hash(userId),
       const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(eventId),
+      const DeepCollectionEquality().hash(eventName),
       const DeepCollectionEquality().hash(dateAdded));
 
   @JsonKey(ignore: true)
@@ -254,6 +272,7 @@ abstract class _ReviewDto extends ReviewDto {
           required final String userId,
           required final String username,
           required final String eventId,
+          required final String eventName,
           @TimestampJsonConverter() required final DateTime dateAdded}) =
       _$_ReviewDto;
   const _ReviewDto._() : super._();
@@ -274,6 +293,8 @@ abstract class _ReviewDto extends ReviewDto {
   String get username => throw _privateConstructorUsedError;
   @override
   String get eventId => throw _privateConstructorUsedError;
+  @override
+  String get eventName => throw _privateConstructorUsedError;
   @override
   @TimestampJsonConverter()
   DateTime get dateAdded => throw _privateConstructorUsedError;
