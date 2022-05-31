@@ -4,13 +4,13 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class EventTicketPoolCard extends StatelessWidget {
+class EventTicketPoolListTile extends StatelessWidget {
   final TicketPool ticketPool;
   final Function(TicketPool) onTicketPoolEdited;
   final Function(TicketPool) onTicketPoolDeleted;
   final bool isTheOnlyPool;
 
-  const EventTicketPoolCard({
+  const EventTicketPoolListTile({
     required this.ticketPool,
     required this.onTicketPoolEdited,
     required this.onTicketPoolDeleted,
@@ -106,8 +106,7 @@ class EventTicketPoolCard extends StatelessWidget {
       return AutoSizeText(
         '${ticketPool.ticketsSold}/${ticketPool.ticketQuantity} '
         '${S().ticketsSold.toLowerCase()}, '
-        '${S().vip} ${ticketPool.vipPrice}'
-        '${getCurrencySymbolFromCode(ticketPool.currency)}',
+        '${_getVipSubtitle()}',
         style: context.subtitle1.copyWith(
           color: context.secondaryColor,
         ),
@@ -117,13 +116,17 @@ class EventTicketPoolCard extends StatelessWidget {
 
     return AutoSizeText(
       '${ticketPool.ticketQuantity} '
-      '${S().tickets(ticketPool.ticketQuantity).toLowerCase()}, '
-      '${S().vip} ${ticketPool.vipPrice}'
-      '${getCurrencySymbolFromCode(ticketPool.currency)}',
+      '${S().tickets(ticketPool.ticketQuantity).toLowerCase()}'
+      '${_getVipSubtitle()}',
       style: context.subtitle1.copyWith(
         color: context.secondaryColor,
       ),
       maxLines: 1,
     );
+  }
+
+  _getVipSubtitle() {
+    return '${ticketPool.isVipEnabled ? ', ${S().vip}' : ''} ${ticketPool.vipPrice ?? ''}'
+        '${ticketPool.isVipEnabled ? getCurrencySymbolFromCode(ticketPool.currency) : ''}';
   }
 }

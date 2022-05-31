@@ -203,6 +203,10 @@ class AddEventCubit extends Cubit<AddEventState> {
         _submitConcertInfoStep();
         break;
 
+      case AddEventStep.photo:
+        // TODO: Handle this case.
+        break;
+
       case AddEventStep.urlLinks:
         _submitUrlLinksStep();
         break;

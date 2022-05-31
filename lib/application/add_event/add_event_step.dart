@@ -4,6 +4,7 @@ enum AddEventStep {
   details,
   tickets,
   concertInfo,
+  photo,
   urlLinks,
   summary,
 }

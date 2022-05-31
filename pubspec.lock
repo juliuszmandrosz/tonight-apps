@@ -238,14 +238,14 @@ packages:
       name: connectivity_plus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.1"
   connectivity_plus_linux:
     dependency: transitive
     description:
       name: connectivity_plus_linux
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.0"
+    version: "1.3.1"
   connectivity_plus_macos:
     dependency: transitive
     description:
@@ -259,14 +259,14 @@ packages:
       name: connectivity_plus_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "1.2.1"
   connectivity_plus_web:
     dependency: transitive
     description:
       name: connectivity_plus_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "1.2.1"
   connectivity_plus_windows:
     dependency: transitive
     description:
@@ -280,7 +280,7 @@ packages:
       name: convert
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1"
+    version: "3.0.2"
   crypto:
     dependency: transitive
     description:
@@ -322,7 +322,7 @@ packages:
       name: dbus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.4"
+    version: "0.7.5"
   decimal:
     dependency: transitive
     description:
@@ -357,7 +357,7 @@ packages:
       name: ffi
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.1"
+    version: "2.0.0"
   file:
     dependency: transitive
     description:
@@ -909,7 +909,7 @@ packages:
       name: path_provider_linux
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.6"
+    version: "2.1.7"
   path_provider_macos:
     dependency: transitive
     description:
@@ -930,7 +930,7 @@ packages:
       name: path_provider_windows
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.6"
+    version: "2.1.0"
   petitparser:
     dependency: transitive
     description:
@@ -994,6 +994,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.0"
+  random_string:
+    dependency: transitive
+    description:
+      name: random_string
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.3.1"
   rational:
     dependency: transitive
     description:
@@ -1006,17 +1013,17 @@ packages:
     description:
       path: "."
       ref: "feature/invalid-link-message"
-      resolved-ref: "57037e819e79e54edfd05aeffb7e21a8ba7cfe3b"
-      url: "https://github.com/juliuszmandrosz/RaverAuth.git"
+      resolved-ref: e54d8e60705ec1b8023c0b4318b73c51a09bc3b9
+      url: "git@github.com:juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
   raver_clubs:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/report-review"
-      resolved-ref: "9b8af97f221b6c347b72bca0c3e71d10d738cf1b"
-      url: "https://github.com/juliuszmandrosz/RaverClubs.git"
+      ref: develop
+      resolved-ref: "811031fd0e45e4593677dd832ae941419df7a0fd"
+      url: "git@github.com:juliuszmandrosz/RaverClubs.git"
     source: git
     version: "0.0.1"
   raver_common:
@@ -1024,26 +1031,26 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "318194b9db21c6e82713b95e2e7c51a532e28e92"
-      url: "https://github.com/juliuszmandrosz/RaverCommon.git"
+      resolved-ref: "5de4bf4556bd9dc37ac80761b5e3498f203a7183"
+      url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
   raver_events:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/event-photo"
-      resolved-ref: ac94df55a08cbb969bac402a4658e849ddb78564
-      url: "https://github.com/juliuszmandrosz/RaverEvents.git"
+      ref: "feature/vip-optional"
+      resolved-ref: "2e6027862efb71b5e846970d6b879d93de03ed53"
+      url: "git@github.com:juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
   raver_payments:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/change-payment-sheet-button-color"
-      resolved-ref: "2f81a1b1c7ee5e8280b9532b628f3a053c617a84"
-      url: "https://github.com/juliuszmandrosz/RaverPayments.git"
+      ref: develop
+      resolved-ref: e82a9e2e665019b8ce3bbbbee52bbb209d829523
+      url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
   raver_rewards:
@@ -1051,8 +1058,8 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "74950e54160308f077114e18989d753c1ea26ed1"
-      url: "https://github.com/juliuszmandrosz/RaverRewards.git"
+      resolved-ref: "0256602042b39e3f04b4e6c604590e6e5c45e9f8"
+      url: "git@github.com:juliuszmandrosz/RaverRewards.git"
     source: git
     version: "0.0.1"
   raver_translations:
@@ -1060,8 +1067,8 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: ff994d923fa0de1e284624071b4203db31741aa5
-      url: "https://github.com/juliuszmandrosz/RaverTranslations.git"
+      resolved-ref: af13102643adc5fab1dc98d6549c271204ff1fe2
+      url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"
   rxdart:
@@ -1070,14 +1077,14 @@ packages:
       name: rxdart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.27.3"
+    version: "0.27.4"
   share_plus:
     dependency: "direct main"
     description:
       name: share_plus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.4"
+    version: "4.0.5"
   share_plus_linux:
     dependency: transitive
     description:
@@ -1091,28 +1098,28 @@ packages:
       name: share_plus_macos
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.1"
   share_plus_platform_interface:
     dependency: transitive
     description:
       name: share_plus_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.2"
+    version: "3.0.3"
   share_plus_web:
     dependency: transitive
     description:
       name: share_plus_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.1"
   share_plus_windows:
     dependency: transitive
     description:
       name: share_plus_windows
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.1"
   shelf:
     dependency: transitive
     description:
@@ -1348,7 +1355,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.6.1"
+    version: "2.7.0"
   xdg_directories:
     dependency: transitive
     description:

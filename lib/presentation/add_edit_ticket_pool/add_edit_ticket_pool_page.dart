@@ -11,6 +11,8 @@ import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/save_ticket_pool_button.dart';
 import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/ticket_pool_price_input.dart';
 import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/ticket_pool_quantity_input.dart';
+import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/vip_availability_switch.dart';
+import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/vip_info.dart';
 import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/vip_price_input.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -40,6 +42,13 @@ class AddEditTicketPoolPage extends StatelessWidget {
 
         cubit.addCurrentTicketPoolsToState(currentTicketPools);
 
+        cubit.isVipEnabledChanged(
+          editingTicketPool.fold(
+            () => false,
+            (pool) => pool.isVipEnabled,
+          ),
+        );
+
         return cubit;
       },
       child: BlocListener<AddEditTicketPoolCubit, AddEditTicketPoolState>(
@@ -65,16 +74,26 @@ class AddEditTicketPoolPage extends StatelessWidget {
           ),
           floatingActionButton: const SaveTicketPoolButton(),
           body: Padding(
-            padding: const EdgeInsets.all(20),
-            child: ListView(
-              children: [
-                const TicketPoolQuantityInput(),
-                if (editingTicketPool.fold(
-                    () => true, (pool) => pool.ticketsSold == 0))
-                  const TicketPoolPriceInput(),
-                const SizedBox(height: 20),
-                const VipPriceInput(),
-              ],
+            padding: const EdgeInsets.all(15),
+            child: BlocBuilder<AddEditTicketPoolCubit, AddEditTicketPoolState>(
+              buildWhen: (previous, current) =>
+                  previous.isVipEnabled != current.isVipEnabled,
+              builder: (context, state) {
+                return ListView(
+                  children: [
+                    const TicketPoolQuantityInput(),
+                    if (editingTicketPool.fold(
+                        () => true, (pool) => pool.ticketsSold == 0))
+                      const TicketPoolPriceInput(),
+                    const SizedBox(height: 20),
+                    const VipAvailabilitySwitch(),
+                    const SizedBox(height: 20),
+                    if (!state.isVipEnabled) const VipInfo(),
+                    if (!state.isVipEnabled) const SizedBox(height: 20),
+                    if (state.isVipEnabled) const VipPriceInput()
+                  ],
+                );
+              },
             ),
           ),
         ),

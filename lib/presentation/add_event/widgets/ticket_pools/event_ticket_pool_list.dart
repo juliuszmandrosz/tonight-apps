@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_partners/presentation/add_event/widgets/ticket_pools/event_ticket_pool_card.dart';
+import 'package:raver_partners/presentation/add_event/widgets/ticket_pools/event_ticket_pool_list_tile.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
 
 class EventTicketPoolList extends StatelessWidget {
@@ -43,7 +43,7 @@ class EventTicketPoolList extends StatelessWidget {
         return Column(
           children: [
             for (var pool in state.ticketPools)
-              EventTicketPoolCard(
+              EventTicketPoolListTile(
                 ticketPool: pool,
                 onTicketPoolEdited: editTicketPool,
                 onTicketPoolDeleted: deleteTicketPool,

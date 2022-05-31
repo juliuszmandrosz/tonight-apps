@@ -81,36 +81,35 @@ dependencies:
 
   raver_auth:
     git:
-      url: https://github.com/juliuszmandrosz/RaverAuth.git
+      url: git@github.com:juliuszmandrosz/RaverAuth.git
       ref: feature/invalid-link-message
 
   raver_events:
     git:
-      url: https://github.com/juliuszmandrosz/RaverEvents.git
-      ref: feature/event-photo
+      url: git@github.com:juliuszmandrosz/RaverEvents.git
+      ref: feature/vip-optional
 
   raver_translations:
     git:
-      url: https://github.com/juliuszmandrosz/RaverTranslations.git
+      url: git@github.com:juliuszmandrosz/RaverTranslations.git
 
   raver_common:
     git:
-      url: https://github.com/juliuszmandrosz/RaverCommon.git
+      url: git@github.com:juliuszmandrosz/RaverCommon.git
 
   raver_clubs:
     git:
-      url: https://github.com/juliuszmandrosz/RaverClubs.git
-      ref: feature/report-review
+      url: git@github.com:juliuszmandrosz/RaverClubs.git
+      ref: develop
 
   raver_rewards:
     git:
-      url: https://github.com/juliuszmandrosz/RaverRewards.git
+      url: git@github.com:juliuszmandrosz/RaverRewards.git
 
   raver_payments:
     git:
-      url: https://github.com/juliuszmandrosz/RaverPayments.git
-      ref: feature/change-payment-sheet-button-color
-
+      url: git@github.com:juliuszmandrosz/RaverPayments.git
+      ref: develop
 
 dev_dependencies:
   flutter_test:

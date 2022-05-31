@@ -290,6 +290,8 @@ void _registerFacades() {
       paymentCloudFunctionsFacade: getIt(),
       stripe: getIt(),
       logger: getIt(),
+      firestore: getIt(),
+      firebaseAuth: getIt(),
     ),
   );
 

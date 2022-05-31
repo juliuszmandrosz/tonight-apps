@@ -12,6 +12,7 @@ class AddEditTicketPoolState with _$AddEditTicketPoolState {
     required FormzStatus status,
     required Option<String> errorMessage,
     required Option<TicketPool> result,
+    required bool isVipEnabled,
   }) = _AddEditTicketPoolState;
 
   factory AddEditTicketPoolState.initial() => AddEditTicketPoolState(
@@ -24,5 +25,6 @@ class AddEditTicketPoolState with _$AddEditTicketPoolState {
         status: FormzStatus.pure,
         errorMessage: none(),
         result: none(),
+        isVipEnabled: false,
       );
 }

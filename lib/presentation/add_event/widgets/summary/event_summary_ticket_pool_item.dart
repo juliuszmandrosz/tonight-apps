@@ -23,9 +23,9 @@ class EventSummaryTicketPoolItem extends StatelessWidget {
             '${S().pool.toLowerCase()} - ${ticketPool.ticketQuantity} '
             '${S().tickets(ticketPool.ticketQuantity).toLowerCase()}, '
             '${S().entry.toLowerCase()} ${ticketPool.ticketPrice}'
-            '${getCurrencySymbolFromCode(ticketPool.currency)}, '
-            '${S().vip.toLowerCase()} ${ticketPool.vipPrice}'
-            '${getCurrencySymbolFromCode(ticketPool.currency)}',
+            '${getCurrencySymbolFromCode(ticketPool.currency)}'
+            '${ticketPool.isVipEnabled ? ', ${S().vip.toLowerCase()}' : ''} ${ticketPool.vipPrice ?? ''}'
+            '${ticketPool.isVipEnabled ? getCurrencySymbolFromCode(ticketPool.currency) : ''}',
             style: context.subtitle1,
             maxLines: 1,
           ),

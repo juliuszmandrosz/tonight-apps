@@ -45,8 +45,9 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
   Future<void> getEventTickets(Event event) async {
     emit(state.copyWith(initialStatus: CubitStatus.loading));
 
-    _eventTicketsSub =
-        _eventTicketsFacade.getEventTickets(event).listen((result) {
+    _eventTicketsSub = _eventTicketsFacade
+        .getEventTickets(clubId: event.clubId, eventId: event.id)
+        .listen((result) {
       result.fold(
         (failure) => emit(state.copyWith(initialStatus: CubitStatus.failure)),
         (tickets) => emit(
@@ -131,7 +132,8 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
     if (!_validateDescription()) return;
 
     final oldEvent = state.event.getOrCrash();
-    final editedEvent = oldEvent.copyWith(description: state.description.value);
+    final editedEvent =
+        oldEvent.copyWith(description: some(state.description.value));
 
     _updateEvent(oldEvent, editedEvent);
   }
@@ -173,7 +175,7 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
 
   void deleteDescription() {
     final oldEvent = state.event.getOrCrash();
-    final editedEvent = oldEvent.copyWith(description: '');
+    final editedEvent = oldEvent.copyWith(description: none());
 
     _updateEvent(oldEvent, editedEvent);
   }

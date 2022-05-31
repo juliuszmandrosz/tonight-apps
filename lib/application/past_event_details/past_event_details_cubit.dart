@@ -86,7 +86,10 @@ class PastEventDetailsCubit extends Cubit<PastEventDetailsState> {
   }
 
   Future<void> _getEventTickets(Event event) async {
-    _eventTicketsFacade.getEventTickets(event).take(1).listen((result) {
+    _eventTicketsFacade
+        .getEventTickets(clubId: event.clubId, eventId: event.id)
+        .take(1)
+        .listen((result) {
       result.fold(
         (failure) => emit(state.copyWith(status: CubitStatus.failure)),
         (tickets) => emit(state.copyWith(eventTickets: some(tickets))),

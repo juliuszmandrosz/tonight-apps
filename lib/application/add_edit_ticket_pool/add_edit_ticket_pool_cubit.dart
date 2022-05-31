@@ -40,6 +40,10 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
     emit(state.copyWith(ticketPrice: price));
   }
 
+  void isVipEnabledChanged(bool value) {
+    emit(state.copyWith(isVipEnabled: value));
+  }
+
   void vipPriceChanged(int? value) {
     final price = VipPrice.dirty(
       currencyParams: _clubInfoCubit.state.currencyParams,
@@ -57,10 +61,14 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
       currencyParams: _clubInfoCubit.state.currencyParams,
       value: ticketPool.ticketPrice,
     );
-    final vipPrice = VipPrice.dirty(
-      currencyParams: _clubInfoCubit.state.currencyParams,
-      value: ticketPool.vipPrice,
-    );
+
+    final vipPrice = ticketPool.isVipEnabled
+        ? VipPrice.dirty(
+            currencyParams: _clubInfoCubit.state.currencyParams,
+            value: ticketPool.vipPrice,
+          )
+        : VipPrice.pure(_clubInfoCubit.state.currencyParams);
+
     final quantity = TicketQuantity.dirty(ticketPool.ticketQuantity);
     emit(
       state.copyWith(
@@ -85,9 +93,10 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
       currency: club.acceptedCurrency,
       poolNumber: currentPools.length + 1,
       ticketPrice: state.ticketPrice.value!,
-      vipPrice: state.vipPrice.value!,
+      vipPrice: state.isVipEnabled ? state.vipPrice.value : null,
       ticketQuantity: state.ticketQuantity.value!,
       isCurrent: isCurrent,
+      isVipEnabled: state.isVipEnabled,
     );
 
     emit(
@@ -113,7 +122,8 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
     final editedPool = poolInState.copyWith(
       ticketQuantity: state.ticketQuantity.value!,
       ticketPrice: state.ticketPrice.value!,
-      vipPrice: state.vipPrice.value!,
+      vipPrice: state.isVipEnabled ? some(state.vipPrice.value!) : none(),
+      isVipEnabled: state.isVipEnabled,
     );
 
     emit(
@@ -132,18 +142,27 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
           currencyParams: _clubInfoCubit.state.currencyParams,
           value: state.ticketPrice.value,
         ),
-        vipPrice: VipPrice.dirty(
-          currencyParams: _clubInfoCubit.state.currencyParams,
-          value: state.vipPrice.value,
-        ),
+        vipPrice: state.isVipEnabled
+            ? VipPrice.dirty(
+                currencyParams: _clubInfoCubit.state.currencyParams,
+                value: state.vipPrice.value,
+              )
+            : VipPrice.pure(_clubInfoCubit.state.currencyParams),
       ),
     );
 
-    final status = Formz.validate([
+    final inputsToValidate = <FormzInput>[];
+
+    inputsToValidate.addAll([
       state.ticketQuantity,
       state.ticketPrice,
-      state.vipPrice,
     ]);
+
+    if (state.isVipEnabled) {
+      inputsToValidate.add(state.vipPrice);
+    }
+
+    final status = Formz.validate(inputsToValidate);
 
     emit(state.copyWith(status: status));
 
