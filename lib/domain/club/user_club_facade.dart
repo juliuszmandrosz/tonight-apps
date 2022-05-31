@@ -14,7 +14,10 @@ abstract class UserClubFacade {
   });
 
   Future<Either<UserClubFailure, List<Club>>> getClubsByIds(
-      List<String> clubIds);
+    List<String> clubIds,
+  );
+
+  Future<Either<UserClubFailure, List<Club>>> getFavoriteClubs();
 
   Future<Either<UserClubFailure, Tuple2<List<String>, String?>>>
       getClubPhotosUrlsAsUser({

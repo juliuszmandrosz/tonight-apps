@@ -96,12 +96,9 @@ class FirebaseClubFacade
   @override
   Future<Either<UserClubFailure, List<Club>>> getClubsByIds(
       List<String> clubIds) async {
-    final clubsQuery =
-        _firestore.clubCollection.where(FieldPath.documentId, whereIn: clubIds);
     try {
-      final clubs = await clubsQuery.get();
-      return right(
-          clubs.docs.map((e) => ClubDto.fromFirebase(e).toDomain()).toList());
+      final result = await _getClubsByIdsFromFirestore(clubIds);
+      return right(result);
     } on FirebaseException catch (e) {
       _logger.e("Exception during fetching clubs by ids EXCEPTION: $e");
       return left(const UserClubFailure.unexpected());
@@ -149,7 +146,8 @@ class FirebaseClubFacade
   @override
   Future<Either<SelectorClubFailure, Club>> getCurrentSelectorClub() async {
     try {
-      final clubRef = await _firestore.getCurrentSelectorClubDocRef(_firebaseAuth);
+      final clubRef =
+          await _firestore.getCurrentSelectorClubDocRef(_firebaseAuth);
       final result = await clubRef.get();
       return right(ClubDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (exception) {
@@ -177,4 +175,46 @@ class FirebaseClubFacade
     }
   }
 
+  @override
+  Future<Either<UserClubFailure, List<Club>>> getFavoriteClubs() async {
+    try {
+      final userDoc =
+          await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
+
+      final favoriteClubIds =
+          await userDoc.get('favoriteClubIds') as List<dynamic>;
+
+      final result = await _getClubsByIdsFromFirestore(favoriteClubIds);
+
+      return right(result);
+    } on FirebaseException catch (e) {
+      _logger.e('Exception getting favorite clubs EXCEPTION: $e');
+      return left(const UserClubFailure.unexpected());
+    }
+  }
+
+  Future<List<Club>> _getClubsByIdsFromFirestore(List<dynamic> clubIds) async {
+    final result = <Club>[];
+
+    while (clubIds.isNotEmpty) {
+      final chunkSize = clubIds.length >= 10 ? 10 : clubIds.length;
+
+      final clubIdsChunk = clubIds.getRange(0, chunkSize).toList();
+
+      final clubsQuery = _firestore.clubCollection
+          .where(FieldPath.documentId, whereIn: clubIdsChunk);
+
+      final clubDocsChunk = await clubsQuery.get();
+
+      final clubsChunk = clubDocsChunk.docs
+          .map((doc) => ClubDto.fromFirebase(doc).toDomain())
+          .toList();
+
+      result.addAll(clubsChunk);
+
+      clubIds.removeRange(0, chunkSize);
+    }
+
+    return result;
+  }
 }
