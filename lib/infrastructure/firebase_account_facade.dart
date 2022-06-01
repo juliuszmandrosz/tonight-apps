@@ -76,7 +76,7 @@ class FirebaseAccountFacade
           .where('username', isEqualTo: username)
           .get();
       if (usersWithSameUsername.size != 0) {
-        return left(ProfileFailure(message: usernameAlreadyExist));
+        return left(ProfileFailure(message: usernameExists));
       }
       final userDoc = await _getUserDocument();
       await userDoc.update({'username': username});
