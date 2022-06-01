@@ -13,12 +13,13 @@ class NetworkLostPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final networkCheckCubit = context.read<NetworkCheckCubit>();
+
     return BlocListener<NetworkCheckCubit, NetworkCheckState>(
       bloc: context.read<NetworkCheckCubit>(),
       listener: (context, state) {
         if (state.isConnected) {
           final autoRouter = AutoRouter.of(context);
-
           context.read<WelcomeLoaderCubit>().loadData();
           autoRouter.canNavigateBack
               ? autoRouter.pop()
@@ -27,7 +28,7 @@ class NetworkLostPage extends StatelessWidget {
       },
       child: WillPopScope(
         onWillPop: () async {
-          return context.read<NetworkCheckCubit>().state.isConnected;
+          return networkCheckCubit.state.isConnected;
         },
         child: Scaffold(
           body: Padding(
@@ -35,15 +36,28 @@ class NetworkLostPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Spacer(),
+                const SizedBox(height: 50),
                 AutoSizeText(
                   S().lostNetworkConnectionDescription,
                   style: context.headline5,
                   textAlign: TextAlign.center,
-                  maxLines: 2,
+                  maxLines: 1,
                 ),
-                const Spacer(),
-                Lottie.asset('assets/animations/no_connection.json'),
+                const SizedBox(height: 50),
+                Expanded(
+                  child: Lottie.asset('assets/animations/no_connection.json'),
+                ),
+                SizedBox(
+                  width: 300,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      if (context.read<NetworkCheckCubit>().state.isConnected) {
+                        AutoRouter.of(context).pop();
+                      }
+                    },
+                    child: Text(S().retryConnection),
+                  ),
+                ),
               ],
             ),
           ),
