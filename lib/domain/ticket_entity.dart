@@ -13,7 +13,6 @@ class Ticket extends Equatable {
   final String currency;
   final bool isVip;
   final String ticketPaymentId;
-  final int poolNumber;
   final String? vipPaymentId;
   final bool isExpired;
   final bool isEventCanceled;
@@ -33,7 +32,6 @@ class Ticket extends Equatable {
     required this.currency,
     required this.isVip,
     required this.ticketPaymentId,
-    required this.poolNumber,
     this.vipPaymentId,
     this.isExpired = false,
     this.isEventCanceled = false,
@@ -55,7 +53,6 @@ class Ticket extends Equatable {
         currency,
         isVip,
         ticketPaymentId,
-        poolNumber,
         vipPaymentId,
         isExpired,
         isEventCanceled,
@@ -75,7 +72,6 @@ class Ticket extends Equatable {
     String? eventName,
     String? clubName,
     String? ticketPaymentId,
-    int? poolNumber,
     String? vipPaymentId,
     bool? isExpired,
     bool? isEventCanceled,
@@ -95,7 +91,6 @@ class Ticket extends Equatable {
       eventStartDateTime: eventStartDateTime ?? this.eventStartDateTime,
       eventEndDateTime: eventEndDateTime ?? this.eventEndDateTime,
       ticketPaymentId: ticketPaymentId ?? this.ticketPaymentId,
-      poolNumber: poolNumber ?? this.poolNumber,
       vipPaymentId: vipPaymentId ?? this.vipPaymentId,
       isExpired: isExpired ?? this.isExpired,
       isEventCanceled: isEventCanceled ?? this.isEventCanceled,
