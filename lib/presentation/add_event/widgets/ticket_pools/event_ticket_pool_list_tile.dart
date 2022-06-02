@@ -105,7 +105,7 @@ class EventTicketPoolListTile extends StatelessWidget {
     if (ticketPool.isCurrent && ticketPool.ticketsSold > 0) {
       return AutoSizeText(
         '${ticketPool.ticketsSold}/${ticketPool.ticketQuantity} '
-        '${S().ticketsSold.toLowerCase()}, '
+        '${S().ticketsSold.toLowerCase()}'
         '${_getVipSubtitle()}',
         style: context.subtitle1.copyWith(
           color: context.secondaryColor,

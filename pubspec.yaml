@@ -82,12 +82,12 @@ dependencies:
   raver_auth:
     git:
       url: git@github.com:juliuszmandrosz/RaverAuth.git
-      ref: feature/invalid-link-message
+      ref: develop
 
   raver_events:
     git:
       url: git@github.com:juliuszmandrosz/RaverEvents.git
-      ref: feature/upload-event-photo
+      ref: develop
 
   raver_translations:
     git:
