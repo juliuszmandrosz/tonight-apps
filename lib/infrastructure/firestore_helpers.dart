@@ -48,10 +48,14 @@ extension FirestoreX on FirebaseFirestore {
     return partnerDoc;
   }
 
-  DocumentReference getCurrentPartnerClubDocRef(FirebaseAuth auth) {
-    final firebaseUser = auth.tryGetFirebaseUser();
+  Future<DocumentReference> getCurrentPartnerClubDocRef(
+    FirebaseAuth auth,
+  ) async {
+    final partnerDoc = await getCurrentPartnerDocRef(auth).get();
 
-    final clubDoc = clubCollection.doc(firebaseUser.uid);
+    final clubId = partnerDoc.get('clubId');
+
+    final clubDoc = clubCollection.doc(clubId);
 
     return clubDoc;
   }
