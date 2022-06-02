@@ -133,7 +133,8 @@ class FirebaseClubFacade
   @override
   Future<Either<PartnerClubFailure, Club>> getCurrentPartnerClub() async {
     try {
-      final clubRef = _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
+      final clubRef =
+          await _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
       final result = await clubRef.get();
       return right(ClubDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (exception) {
