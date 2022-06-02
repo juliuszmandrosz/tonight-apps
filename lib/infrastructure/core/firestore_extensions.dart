@@ -5,11 +5,11 @@ import 'package:raver_partners/injection.dart';
 
 extension FirestoreX on FirebaseFirestore {
   Future<DocumentReference> getClubDocRef() async {
-    final partnerOption = await getIt<PartnerAuthFacade>().getSignedPartner();
-    final partner = partnerOption.getOrElse(
-      () => throw NotAuthenticatedError(),
-    );
-    return FirebaseFirestore.instance.clubCollection.doc(partner.id);
+    final partnerDoc = await getPartnerDocRef().then((ref) => ref.get());
+
+    final clubId = partnerDoc.get('clubId');
+
+    return clubCollection.doc(clubId);
   }
 
   Future<DocumentReference> getPartnerDocRef() async {
@@ -17,6 +17,6 @@ extension FirestoreX on FirebaseFirestore {
     final partner = partnerOption.getOrElse(
       () => throw NotAuthenticatedError(),
     );
-    return FirebaseFirestore.instance.partnersCollection.doc(partner.id);
+    return partnersCollection.doc(partner.id);
   }
 }

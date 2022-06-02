@@ -41,9 +41,9 @@ class FirebaseSelectorManagementFacade implements SelectorManagementFacade {
   @override
   Stream<Either<SelectorManagementFailure, List<Selector>>>
       getSelectors() async* {
-    final partnerDocRef = await _firestore.getPartnerDocRef();
+    final clubDocRef = await _firestore.getClubDocRef();
 
-    yield* partnerDocRef.selectors
+    yield* clubDocRef.selectors
         .orderBy('email')
         .snapshots()
         .map(
@@ -66,9 +66,9 @@ class FirebaseSelectorManagementFacade implements SelectorManagementFacade {
     String selectorId,
   ) async {
     try {
-      final partnerDocRef = await _firestore.getPartnerDocRef();
+      final clubDocRef = await _firestore.getClubDocRef();
 
-      await partnerDocRef.selectors.doc(selectorId).delete();
+      await clubDocRef.selectors.doc(selectorId).delete();
 
       return right(unit);
     } on FirebaseException catch (e) {
