@@ -179,13 +179,12 @@ class FirebaseEventFacade
           await _firestore.getCurrentSelectorDocRef(_firebaseAuth).get();
       final clubId = selectorDoc.get('clubId');
 
-      final partnerSelectorDoc = await _firestore.partnersCollection
-          .doc(clubId)
-          .selectors
-          .doc(selectorDoc.id)
-          .get();
+      final selectorClubDocRef = _firestore.clubCollection.doc(clubId);
 
-      if (!partnerSelectorDoc.exists) {
+      final clubSelectorDoc =
+          await selectorClubDocRef.selectors.doc(selectorDoc.id).get();
+
+      if (!clubSelectorDoc.exists) {
         return left(const SelectorEventFailure.noAccess());
       }
 
@@ -221,11 +220,13 @@ class FirebaseEventFacade
     DateTime toDate,
   ) async {
     try {
-      final partnerDoc =
-          await _firestore.getCurrentPartnerDocRef(_firebaseAuth).get();
+      final clubDocRef =
+          await _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
+
+      final clubDoc = await clubDocRef.get();
 
       final filters = EventFilters.empty().copyWith(
-        clubFilter: ClubFilter(clubId: partnerDoc.id),
+        clubFilter: ClubFilter(clubId: clubDoc.id),
         dateIncludesFilter: DateIncludesFilter(
           fromDate: fromDate,
           toDate: toDate,
