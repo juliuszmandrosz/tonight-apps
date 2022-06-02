@@ -103,10 +103,11 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
 
   @override
   Future<Either<PartnerReviewFailure, List<Review>>> getEventReviews(
-      String eventId,
-      {int pageSize = 20,
-      Review? lastReview}) async {
-    final clubRef = _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
+    String eventId, {
+    int pageSize = 20,
+    Review? lastReview,
+  }) async {
+    final clubRef = await _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
 
     var reviewRef = clubRef.reviewCollection
         .where('eventId', isEqualTo: eventId)
