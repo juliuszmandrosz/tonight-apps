@@ -23,7 +23,8 @@ class FirebaseRewardFacade
   @override
   Future<Either<PartnerRewardFailure, Unit>> addReward(Reward reward) async {
     try {
-      final clubDocRef = _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
+      final clubDocRef =
+          await _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
 
       final rewardDto = RewardDto.fromDomain(reward);
 
@@ -39,7 +40,8 @@ class FirebaseRewardFacade
   @override
   Stream<Either<PartnerRewardFailure, List<Reward>>>
       getCurrentPartnerRewards() async* {
-    final clubDocRef = _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
+    final clubDocRef =
+        await _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
 
     yield* clubDocRef.rewardsCollection
         .orderBy('requiredEntries')
@@ -66,7 +68,8 @@ class FirebaseRewardFacade
   Future<Either<PartnerRewardFailure, Unit>> deleteReward(
       String rewardId) async {
     try {
-      final clubDocRef = _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
+      final clubDocRef =
+          await _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
 
       await clubDocRef.rewardsCollection.doc(rewardId).delete();
 
