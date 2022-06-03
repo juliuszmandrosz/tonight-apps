@@ -16,7 +16,7 @@ class ConfirmEventPostponeButton extends StatelessWidget {
 
           if (!await postponeEventCubit.validateDateTimeRange()) return;
 
-          postponeEventCubit.proceedToPayForEventPostpone();
+          postponeEventCubit.postponeEvent();
         },
         child: Padding(
           padding: const EdgeInsets.all(10.0),

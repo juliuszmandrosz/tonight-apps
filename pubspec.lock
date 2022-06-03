@@ -273,7 +273,7 @@ packages:
       name: connectivity_plus_windows
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.1"
+    version: "1.2.2"
   convert:
     dependency: transitive
     description:
@@ -1036,7 +1036,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "811031fd0e45e4593677dd832ae941419df7a0fd"
+      resolved-ref: "0b5e632f38b890e257084e8255d926e736be78c0"
       url: "git@github.com:juliuszmandrosz/RaverClubs.git"
     source: git
     version: "0.0.1"
@@ -1054,7 +1054,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: d201c70a52b75bce4bafbd1e626b35a705cb94a4
+      resolved-ref: "33180da2abd6f78220b33ab0242605551b5cfeda"
       url: "git@github.com:juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
@@ -1063,7 +1063,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: e82a9e2e665019b8ce3bbbbee52bbb209d829523
+      resolved-ref: "61d8b4d66dbe4e0b91d3f47ebafbef8d20321732"
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
@@ -1098,7 +1098,7 @@ packages:
       name: share_plus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.5"
+    version: "4.0.6"
   share_plus_linux:
     dependency: transitive
     description:

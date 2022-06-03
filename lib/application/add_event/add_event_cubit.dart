@@ -399,7 +399,8 @@ class AddEventCubit extends Cubit<AddEventState> {
     final eventTickets = EventTickets(
       ticketPools: state.ticketPools,
       eventId: event.id,
-      ticketSales: TicketSales(currency: event.currency),
+      // TODO - change
+      ticketSales: TicketSales(currency: event.currency, eventFee: 0.08),
       ticketQuantity: state.ticketPools.map((pool) => pool.ticketQuantity).sum,
     );
 

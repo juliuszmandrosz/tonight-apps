@@ -22,9 +22,7 @@ class CancelEventButton extends StatelessWidget {
               );
 
               if (result ?? false) {
-                context
-                    .read<UpcomingLiveEventCubit>()
-                    .proceedToPayForEventCancelation();
+                context.read<UpcomingLiveEventCubit>().cancelEvent();
               }
             },
             child: Text(S().cancelEvent),

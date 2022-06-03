@@ -8,7 +8,6 @@ import 'package:raver_partners/application/add_event/form_inputs/end_date_time.d
 import 'package:raver_partners/application/add_event/form_inputs/start_date_time.dart';
 import 'package:raver_partners/application/core/get_payment_failure_message.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
-import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 part 'postpone_event_cubit.freezed.dart';
@@ -16,16 +15,13 @@ part 'postpone_event_cubit.freezed.dart';
 part 'postpone_event_state.dart';
 
 class PostponeEventCubit extends Cubit<PostponeEventState> {
-  final PartnerPaymentFacade _paymentFacade;
   final EventNotifierCubit _eventNotifierCubit;
   final PartnerEventFacade _eventFacade;
 
   PostponeEventCubit({
-    required PartnerPaymentFacade partnerPaymentFacade,
     required EventNotifierCubit eventNotifierCubit,
     required PartnerEventFacade partnerEventFacade,
-  })  : _paymentFacade = partnerPaymentFacade,
-        _eventNotifierCubit = eventNotifierCubit,
+  })  : _eventNotifierCubit = eventNotifierCubit,
         _eventFacade = partnerEventFacade,
         super(PostponeEventState.initial());
 
@@ -67,7 +63,7 @@ class PostponeEventCubit extends Cubit<PostponeEventState> {
     emit(state.copyWith(endDateTime: endDateTime));
   }
 
-  Future<void> proceedToPayForEventPostpone() async {
+  Future<void> postponeEvent() async {
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
     final event = state.event.getOrCrash();
@@ -75,15 +71,14 @@ class PostponeEventCubit extends Cubit<PostponeEventState> {
     final newStartDateTime = state.startDateTime.value!;
     final newEventEndDateTime = state.endDateTime.value!;
 
-    final failureOrSuccess = await _paymentFacade.proceedToPayForEventPostpone(
+    final failureOrSuccess = await _eventFacade.postponeEvent(
       eventId: event.id,
-      currency: event.currency,
       newEventStartDateTime: newStartDateTime,
       newEventEndDateTime: newEventEndDateTime,
     );
 
     failureOrSuccess.fold(
-      (failure) => _emitPaymentFailure(failure),
+      (failure) => _emitEventFailure(failure),
       (success) {
         final updatedEvent = event.copyWith(
           eventStartDateTime: newStartDateTime,
@@ -121,7 +116,7 @@ class PostponeEventCubit extends Cubit<PostponeEventState> {
     if (status.isInvalid) return status;
 
     if (!_checkIfEventPostponeTimeIsLongerThan24Hours()) {
-      _emitPaymentFailure(const PartnerPaymentFailure.postponeTimeTooShort());
+      _emitEventFailure(const PartnerEventFailure.postponeTimeTooShort());
       return FormzStatus.invalid;
     }
 
@@ -176,8 +171,8 @@ class PostponeEventCubit extends Cubit<PostponeEventState> {
     );
   }
 
-  _emitPaymentFailure(PartnerPaymentFailure failure) {
-    final errorMessage = getPaymentFailureMessage(failure);
+  _emitEventFailure(PartnerEventFailure failure) {
+    final errorMessage = getEventFailureMessage(failure);
 
     if (errorMessage.isNotEmpty) {
       emit(state.copyWith(errorMessage: some(errorMessage)));
