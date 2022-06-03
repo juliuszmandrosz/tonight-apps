@@ -7,5 +7,8 @@ String getEventFailureMessage(PartnerEventFailure failure) {
     cancelTimeExpired: (_) => S().cancelTimeExpired,
     postponeTimeExpired: (_) => S().postponeTimeExpired,
     postponeTimeTooShort: (_) => S().postponeTimeTooShort,
+    // TODO - add translations
+    discountExpired: (_) => 'Zniżka wygasła',
+    eventExistsInDateRange: (_) => 'Wydarzenie istnieje w podanym zakresie dat',
   );
 }

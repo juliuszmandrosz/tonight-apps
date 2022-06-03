@@ -1054,7 +1054,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: f3e8d04c199e22041a194fb7f49376f270be91b3
+      resolved-ref: ee21b93cae3fbd0d93ee4d7219a81ba198964cb3
       url: "git@github.com:juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"

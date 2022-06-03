@@ -10,7 +10,7 @@ import 'package:raver_partners/application/add_event/form_inputs/description.dar
 import 'package:raver_partners/application/add_event/form_inputs/dj_channel_url.dart';
 import 'package:raver_partners/application/add_event/form_inputs/event_name.dart';
 import 'package:raver_partners/application/add_event/form_inputs/facebook_url.dart';
-import 'package:raver_partners/application/core/get_payment_failure_message.dart';
+import 'package:raver_partners/application/core/get_event_failure_message.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 

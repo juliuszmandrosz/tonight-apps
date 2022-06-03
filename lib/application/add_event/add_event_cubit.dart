@@ -22,6 +22,7 @@ import 'package:raver_partners/application/add_event/form_inputs/start_date_time
 import 'package:raver_partners/application/add_event/form_inputs/min_age.dart';
 import 'package:raver_partners/application/add_event/form_inputs/musical_genres.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
+import 'package:raver_partners/application/core/get_event_failure_message.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
 import 'package:raver_partners/domain/discounts/discount_facade.dart';
 import 'package:raver_partners/domain/discounts/entities/collected_discount_entity.dart';
@@ -493,7 +494,7 @@ class AddEventCubit extends Cubit<AddEventState> {
     );
 
     failureOrSuccess.fold(
-      (failure) => _emitFailure(S().errorAddingEvent),
+      (failure) => _emitFailure(getEventFailureMessage(failure)),
       (success) {
         _eventNotifierCubit.notifyAboutNewEvent(event);
         emit(state.copyWith(status: FormzStatus.submissionSuccess));
@@ -502,7 +503,8 @@ class AddEventCubit extends Cubit<AddEventState> {
   }
 
   Future<Either<PartnerEventFailure, String>> _uploadEventPhoto(
-      String eventId) async {
+    String eventId,
+  ) async {
     final failureOrSuccess = await _eventFacade.uploadEventPhoto(
       eventId,
       state.eventPhoto.value!,
