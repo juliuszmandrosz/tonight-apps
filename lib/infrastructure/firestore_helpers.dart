@@ -32,6 +32,8 @@ extension FirestoreX on FirebaseFirestore {
 
   CollectionReference get reviewReports => collection('reviewReports');
 
+  CollectionReference get partnersDiscounts => collection('partnersDiscounts');
+
   DocumentReference getCurrentUserDocRef(FirebaseAuth auth) {
     final firebaseUser = auth.tryGetFirebaseUser();
 
@@ -105,4 +107,7 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get eventCosts => collection('eventCosts');
 
   CollectionReference get eventReview => collection('eventReview');
+
+  CollectionReference get collectedDiscounts =>
+      collection('collectedDiscounts');
 }
