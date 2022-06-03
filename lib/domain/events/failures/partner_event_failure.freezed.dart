@@ -19,32 +19,50 @@ mixin _$PartnerEventFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() cancelTimeExpired,
+    required TResult Function() postponeTimeExpired,
+    required TResult Function() postponeTimeTooShort,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
+    required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
+    required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -109,6 +127,9 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() cancelTimeExpired,
+    required TResult Function() postponeTimeExpired,
+    required TResult Function() postponeTimeTooShort,
   }) {
     return unexpected();
   }
@@ -117,6 +138,9 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
   }) {
     return unexpected?.call();
   }
@@ -125,6 +149,9 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -137,6 +164,9 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
+    required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
+    required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
   }) {
     return unexpected(this);
   }
@@ -145,6 +175,9 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
   }) {
     return unexpected?.call(this);
   }
@@ -153,6 +186,9 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -164,4 +200,355 @@ class _$_Unexpected implements _Unexpected {
 
 abstract class _Unexpected implements PartnerEventFailure {
   const factory _Unexpected() = _$_Unexpected;
+}
+
+/// @nodoc
+abstract class _$$_CancelTimeExpiredCopyWith<$Res> {
+  factory _$$_CancelTimeExpiredCopyWith(_$_CancelTimeExpired value,
+          $Res Function(_$_CancelTimeExpired) then) =
+      __$$_CancelTimeExpiredCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_CancelTimeExpiredCopyWithImpl<$Res>
+    extends _$PartnerEventFailureCopyWithImpl<$Res>
+    implements _$$_CancelTimeExpiredCopyWith<$Res> {
+  __$$_CancelTimeExpiredCopyWithImpl(
+      _$_CancelTimeExpired _value, $Res Function(_$_CancelTimeExpired) _then)
+      : super(_value, (v) => _then(v as _$_CancelTimeExpired));
+
+  @override
+  _$_CancelTimeExpired get _value => super._value as _$_CancelTimeExpired;
+}
+
+/// @nodoc
+
+class _$_CancelTimeExpired implements _CancelTimeExpired {
+  const _$_CancelTimeExpired();
+
+  @override
+  String toString() {
+    return 'PartnerEventFailure.cancelTimeExpired()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_CancelTimeExpired);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() cancelTimeExpired,
+    required TResult Function() postponeTimeExpired,
+    required TResult Function() postponeTimeTooShort,
+  }) {
+    return cancelTimeExpired();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
+  }) {
+    return cancelTimeExpired?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
+    required TResult orElse(),
+  }) {
+    if (cancelTimeExpired != null) {
+      return cancelTimeExpired();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
+    required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
+    required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
+  }) {
+    return cancelTimeExpired(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+  }) {
+    return cancelTimeExpired?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    required TResult orElse(),
+  }) {
+    if (cancelTimeExpired != null) {
+      return cancelTimeExpired(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CancelTimeExpired implements PartnerEventFailure {
+  const factory _CancelTimeExpired() = _$_CancelTimeExpired;
+}
+
+/// @nodoc
+abstract class _$$_PostponeTimeExpiredCopyWith<$Res> {
+  factory _$$_PostponeTimeExpiredCopyWith(_$_PostponeTimeExpired value,
+          $Res Function(_$_PostponeTimeExpired) then) =
+      __$$_PostponeTimeExpiredCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_PostponeTimeExpiredCopyWithImpl<$Res>
+    extends _$PartnerEventFailureCopyWithImpl<$Res>
+    implements _$$_PostponeTimeExpiredCopyWith<$Res> {
+  __$$_PostponeTimeExpiredCopyWithImpl(_$_PostponeTimeExpired _value,
+      $Res Function(_$_PostponeTimeExpired) _then)
+      : super(_value, (v) => _then(v as _$_PostponeTimeExpired));
+
+  @override
+  _$_PostponeTimeExpired get _value => super._value as _$_PostponeTimeExpired;
+}
+
+/// @nodoc
+
+class _$_PostponeTimeExpired implements _PostponeTimeExpired {
+  const _$_PostponeTimeExpired();
+
+  @override
+  String toString() {
+    return 'PartnerEventFailure.postponeTimeExpired()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PostponeTimeExpired);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() cancelTimeExpired,
+    required TResult Function() postponeTimeExpired,
+    required TResult Function() postponeTimeTooShort,
+  }) {
+    return postponeTimeExpired();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
+  }) {
+    return postponeTimeExpired?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
+    required TResult orElse(),
+  }) {
+    if (postponeTimeExpired != null) {
+      return postponeTimeExpired();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
+    required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
+    required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
+  }) {
+    return postponeTimeExpired(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+  }) {
+    return postponeTimeExpired?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    required TResult orElse(),
+  }) {
+    if (postponeTimeExpired != null) {
+      return postponeTimeExpired(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PostponeTimeExpired implements PartnerEventFailure {
+  const factory _PostponeTimeExpired() = _$_PostponeTimeExpired;
+}
+
+/// @nodoc
+abstract class _$$_PostponeTimeTooShortCopyWith<$Res> {
+  factory _$$_PostponeTimeTooShortCopyWith(_$_PostponeTimeTooShort value,
+          $Res Function(_$_PostponeTimeTooShort) then) =
+      __$$_PostponeTimeTooShortCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_PostponeTimeTooShortCopyWithImpl<$Res>
+    extends _$PartnerEventFailureCopyWithImpl<$Res>
+    implements _$$_PostponeTimeTooShortCopyWith<$Res> {
+  __$$_PostponeTimeTooShortCopyWithImpl(_$_PostponeTimeTooShort _value,
+      $Res Function(_$_PostponeTimeTooShort) _then)
+      : super(_value, (v) => _then(v as _$_PostponeTimeTooShort));
+
+  @override
+  _$_PostponeTimeTooShort get _value => super._value as _$_PostponeTimeTooShort;
+}
+
+/// @nodoc
+
+class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
+  const _$_PostponeTimeTooShort();
+
+  @override
+  String toString() {
+    return 'PartnerEventFailure.postponeTimeTooShort()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PostponeTimeTooShort);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() cancelTimeExpired,
+    required TResult Function() postponeTimeExpired,
+    required TResult Function() postponeTimeTooShort,
+  }) {
+    return postponeTimeTooShort();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
+  }) {
+    return postponeTimeTooShort?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
+    required TResult orElse(),
+  }) {
+    if (postponeTimeTooShort != null) {
+      return postponeTimeTooShort();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
+    required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
+    required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
+  }) {
+    return postponeTimeTooShort(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+  }) {
+    return postponeTimeTooShort?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    required TResult orElse(),
+  }) {
+    if (postponeTimeTooShort != null) {
+      return postponeTimeTooShort(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PostponeTimeTooShort implements PartnerEventFailure {
+  const factory _PostponeTimeTooShort() = _$_PostponeTimeTooShort;
 }

@@ -2,6 +2,7 @@ import 'package:algolia/algolia.dart';
 import 'package:dartz/dartz.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:logger/logger.dart';
 import 'package:mockito/annotations.dart';
@@ -44,10 +45,11 @@ void main() {
     algoliaObjects = MockAlgoliaObjectSnapshot();
 
     facade = FirebaseEventFacade(
-      firebaseAuth: auth,
-      firestore: firestore,
-      algoliaEventsApi: eventsApi,
-      logger: logger,
+        firebaseAuth: auth,
+        firestore: firestore,
+        algoliaEventsApi: eventsApi,
+        logger: logger,
+        storage:
     );
   });
 
@@ -98,24 +100,24 @@ void main() {
 
   group('get event by id', () {
     test('should return event when event with provided id is present',
-        () async {
-      await firestore.collection('events').doc(eventId).set(eventDoc);
-      final expected = right<UserEventFailure, Event>(event);
+            () async {
+          await firestore.collection('events').doc(eventId).set(eventDoc);
+          final expected = right<UserEventFailure, Event>(event);
 
-      final result = await facade.getEventById(eventId);
+          final result = await facade.getEventById(eventId);
 
-      expect(result, expected);
-    });
+          expect(result, expected);
+        });
 
     test(
         'should throw invalid id error when event with provided id is not present',
-        () async {
-      final expected = throwsA(isA<InvalidIdError>());
+            () async {
+          final expected = throwsA(isA<InvalidIdError>());
 
-      final call = facade.getEventById;
+          final call = facade.getEventById;
 
-      expect(() => call(eventId), expected);
-    });
+          expect(() => call(eventId), expected);
+        });
   });
 
   group('toggle event favorite status', () {
@@ -131,13 +133,13 @@ void main() {
 
     test(
         'should throw not authenticated error when current user is not present',
-        () async {
-      final expected = throwsA(isA<NotAuthenticatedError>());
+            () async {
+          final expected = throwsA(isA<NotAuthenticatedError>());
 
-      final call = facade.toggleEventFavoriteStatus;
+          final call = facade.toggleEventFavoriteStatus;
 
-      expect(() => call(eventId), expected);
-    });
+          expect(() => call(eventId), expected);
+        });
 
     test('should add event to favorites', () async {
       await signInUser();
@@ -145,7 +147,7 @@ void main() {
 
       await facade.toggleEventFavoriteStatus(eventId);
       final userSnapshot =
-          await firestore.collection('users').doc(userId).get();
+      await firestore.collection('users').doc(userId).get();
       final result = userSnapshot.get('favoriteEvents');
 
       expect(result, expected);

@@ -22,4 +22,12 @@ abstract class PartnerEventFacade {
     String eventId,
     File photo,
   );
+
+  Future<Either<PartnerEventFailure, Unit>> cancelEvent(String eventId);
+
+  Future<Either<PartnerEventFailure, Unit>> postponeEvent({
+    required String eventId,
+    required DateTime newEventStartDateTime,
+    required DateTime newEventEndDateTime,
+  });
 }

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -10,6 +11,8 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/domain.dart';
 import 'package:raver_events/domain/filters/filter/date_includes_filter.dart';
 import 'package:raver_events/infrastructure/algolia_events_api.dart';
+import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_functions_errors.dart';
+import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
 import 'package:raver_events/infrastructure/event_costs/dtos/event_costs_dto.dart';
 import 'package:raver_events/infrastructure/event_review/dtos/event_review_dto.dart';
 import 'package:raver_events/infrastructure/events/dtos/event_dto.dart';
@@ -25,6 +28,7 @@ class FirebaseEventFacade
   final FirebaseFirestore _firestore;
   final FirebaseStorage _storage;
   final AlgoliaEventsApi _algoliaEventsApi;
+  final EventCloudFunctionsFacade _eventCloudFunctionsFacade;
   final Logger _logger;
 
   FirebaseEventFacade({
@@ -32,11 +36,13 @@ class FirebaseEventFacade
     required FirebaseFirestore firestore,
     required FirebaseStorage storage,
     required AlgoliaEventsApi algoliaEventsApi,
+    required EventCloudFunctionsFacade eventCloudFunctionsFacade,
     required Logger logger,
   })  : _firebaseAuth = firebaseAuth,
         _firestore = firestore,
         _storage = storage,
         _algoliaEventsApi = algoliaEventsApi,
+        _eventCloudFunctionsFacade = eventCloudFunctionsFacade,
         _logger = logger;
 
   @override
@@ -283,6 +289,47 @@ class FirebaseEventFacade
     } on FirebaseException catch (e) {
       _logger.e('Exception uploading event photo EXCEPTION: $e');
       return left(const PartnerEventFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<PartnerEventFailure, Unit>> cancelEvent(String eventId) async {
+    try {
+      final result = await _eventCloudFunctionsFacade.cancelEvent(eventId);
+      return right(result);
+    } on FirebaseFunctionsException catch (e) {
+      _logger.e(
+        "Firebase Functions Exception canceling event EXCEPTION: $e",
+      );
+      return left(
+        eventCloudFunctionsErrors[e.details] ??
+            const PartnerEventFailure.unexpected(),
+      );
+    }
+  }
+
+  @override
+  Future<Either<PartnerEventFailure, Unit>> postponeEvent({
+    required String eventId,
+    required DateTime newEventStartDateTime,
+    required DateTime newEventEndDateTime,
+  }) async {
+    try {
+      final result = await _eventCloudFunctionsFacade.postponeEvent(
+        eventId: eventId,
+        newEventStartTimestamp: Timestamp.fromDate(newEventStartDateTime),
+        newEventEndTimestamp: Timestamp.fromDate(newEventEndDateTime),
+      );
+
+      return right(result);
+    } on FirebaseFunctionsException catch (e) {
+      _logger.e(
+        "Firebase Functions Exception postponing event EXCEPTION: $e",
+      );
+      return left(
+        eventCloudFunctionsErrors[e.details] ??
+            const PartnerEventFailure.unexpected(),
+      );
     }
   }
 
