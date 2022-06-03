@@ -14,14 +14,12 @@ class CollectedDiscountDto with _$CollectedDiscountDto {
   const factory CollectedDiscountDto({
     @JsonKey(ignore: true) String? id,
     required int percentageOff,
-    required int quantity,
   }) = _CollectedDiscountDto;
 
   factory CollectedDiscountDto.fromDomain(CollectedDiscount discount) {
     return CollectedDiscountDto(
       id: discount.id,
       percentageOff: discount.percentageOff,
-      quantity: discount.quantity,
     );
   }
 
@@ -38,7 +36,6 @@ class CollectedDiscountDto with _$CollectedDiscountDto {
     return CollectedDiscount(
       id: id,
       percentageOff: percentageOff,
-      quantity: quantity,
     );
   }
 }

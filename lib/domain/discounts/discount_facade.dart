@@ -4,7 +4,8 @@ import 'package:raver_partners/domain/discounts/entities/collected_discount_enti
 import 'package:raver_partners/domain/discounts/entities/partner_discount_entity.dart';
 
 abstract class DiscountFacade {
-  Either<DiscountFailure, List<CollectedDiscount>> getAvailableDiscounts();
+  Future<Either<DiscountFailure, List<CollectedDiscount>>>
+      getAvailableDiscounts();
 
-  Either<DiscountFailure, List<PartnerDiscount>> getDiscounts();
+  Future<Either<DiscountFailure, List<PartnerDiscount>>> getAllDiscounts();
 }
