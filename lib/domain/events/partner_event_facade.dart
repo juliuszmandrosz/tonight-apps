@@ -4,10 +4,11 @@ import 'package:dartz/dartz.dart';
 import 'package:raver_events/domain/domain.dart';
 
 abstract class PartnerEventFacade {
-  Future<Either<PartnerEventFailure, Unit>> addEvent(
-    Event event,
-    EventTickets eventTickets,
-  );
+  Future<Either<PartnerEventFailure, Unit>> addEvent({
+    required Event event,
+    required EventTickets eventTickets,
+    required Option<String> appliedDiscountId,
+  });
 
   Future<Either<PartnerEventFailure, Unit>> updateEvent(Event event);
 

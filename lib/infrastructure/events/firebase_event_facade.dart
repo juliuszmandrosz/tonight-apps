@@ -118,17 +118,18 @@ class FirebaseEventFacade
   }
 
   @override
-  Future<Either<PartnerEventFailure, Unit>> addEvent(
-    Event event,
-    EventTickets eventTickets,
-  ) async {
+  Future<Either<PartnerEventFailure, Unit>> addEvent({
+    required Event event,
+    required EventTickets eventTickets,
+    required Option<String> appliedDiscountId,
+  }) async {
     try {
-      final eventDoc = _firestore.eventCollection.doc(event.id);
-      final clubDoc = _firestore.clubCollection.doc(event.clubId);
+      final eventDocRef = _firestore.eventCollection.doc(event.id);
+      final clubDocRef = _firestore.clubCollection.doc(event.clubId);
 
-      final eventTicketDoc = clubDoc.eventTickets.doc(event.id);
-      final eventCostsDoc = clubDoc.eventCosts.doc(event.id);
-      final eventReviewDoc = clubDoc.eventReview.doc(event.id);
+      final eventTicketDoc = clubDocRef.eventTickets.doc(event.id);
+      final eventCostsDoc = clubDocRef.eventCosts.doc(event.id);
+      final eventReviewDoc = clubDocRef.eventReview.doc(event.id);
 
       final eventDto = EventDto.fromDomain(event);
       final eventTicketsDto = EventTicketsDto.fromDomain(eventTickets);
@@ -138,7 +139,13 @@ class FirebaseEventFacade
       );
       final eventReviewDto = EventReviewDto(eventId: event.id);
 
-      await eventDoc.set(eventDto.toJson());
+      if (appliedDiscountId.isSome()) {
+        clubDocRef.collectedDiscounts
+            .doc(appliedDiscountId.getOrCrash())
+            .update({'isApplied': true});
+      }
+
+      await eventDocRef.set(eventDto.toJson());
       await eventTicketDoc.set(eventTicketsDto.toJson());
       await eventCostsDoc.set(eventCostsDto.toJson());
       await eventReviewDoc.set(eventReviewDto.toJson());
