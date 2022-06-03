@@ -16,15 +16,20 @@ class EventSummaryDescription extends StatelessWidget {
           previous.description != current.description,
       builder: (context, state) {
         return state.description.value.isNotEmpty
-            ? EventSummaryListTile(
-                title: S().description,
-                subtitle: Text(
-                  state.description.value,
-                  style: context.subtitle1.copyWith(
-                    color: context.secondaryColor,
-                  ),
-                ),
-                step: AddEventStep.nameAndDesc)
+            ? Column(
+                children: [
+                  EventSummaryListTile(
+                      title: S().description,
+                      subtitle: Text(
+                        state.description.value,
+                        style: context.subtitle1.copyWith(
+                          color: context.secondaryColor,
+                        ),
+                      ),
+                      step: AddEventStep.nameAndDesc),
+                  const SizedBox(height: 20),
+                ],
+              )
             : Container();
       },
     );

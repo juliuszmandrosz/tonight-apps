@@ -17,7 +17,7 @@ class EventSummaryCost extends StatelessWidget {
           // TODO - add translation
           title: 'Prowizja',
           subtitle: Text(
-            '${state.eventFee.getOrCrash() * 100}%',
+            '${(state.eventFee.getOrCrash() * 100).toStringAsFixed(0)}%',
             style: context.subtitle1.copyWith(color: context.secondaryColor),
           ),
           step: AddEventStep.cost,

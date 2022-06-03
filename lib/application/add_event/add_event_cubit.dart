@@ -283,7 +283,7 @@ class AddEventCubit extends Cubit<AddEventState> {
         break;
 
       case AddEventStep.cost:
-        // TODO: Handle this case.
+        _submitCostStep();
         break;
 
       case AddEventStep.summary:
@@ -394,6 +394,18 @@ class AddEventCubit extends Cubit<AddEventState> {
     emit(state.copyWith(status: status));
   }
 
+  void _submitCostStep() {
+    var status = FormzStatus.valid;
+
+    if (state.isDiscountApplied && state.appliedDiscount.isNone()) {
+      status = FormzStatus.invalid;
+      // TODO - add translation
+      _showErrorMessage('Wybierz zniżkę');
+    }
+
+    emit(state.copyWith(status: status));
+  }
+
   _validateUrlLinks() {
     final inputsToValidate = <FormzInput>[];
 
@@ -461,12 +473,24 @@ class AddEventCubit extends Cubit<AddEventState> {
     final eventTickets = EventTickets(
       ticketPools: state.ticketPools,
       eventId: event.id,
-      // TODO - change
-      ticketSales: TicketSales(currency: event.currency, eventFee: 0.08),
+      ticketSales: TicketSales(
+        currency: event.currency,
+        eventFee: state.eventFee.getOrCrash(),
+        isExclusiveEvent: state.isExclusiveEvent,
+      ),
       ticketQuantity: state.ticketPools.map((pool) => pool.ticketQuantity).sum,
     );
 
-    final failureOrSuccess = await _eventFacade.addEvent(event, eventTickets);
+    Option<String> appliedDiscountId = state.appliedDiscount.fold(
+      () => none(),
+      (discount) => some(discount.id),
+    );
+
+    final failureOrSuccess = await _eventFacade.addEvent(
+      event: event,
+      eventTickets: eventTickets,
+      appliedDiscountId: appliedDiscountId,
+    );
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(S().errorAddingEvent),

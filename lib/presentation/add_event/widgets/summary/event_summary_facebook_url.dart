@@ -17,18 +17,24 @@ class EventSummaryFacebookUrl extends StatelessWidget {
           previous.isFacebookUrlEnabled != current.isFacebookUrlEnabled,
       builder: (context, state) {
         return state.isFacebookUrlEnabled
-            ? EventSummaryListTile(
-                title: S().facebookEvent,
-                subtitle: RaverHyperLink(
-                  url: state.facebookUrl.value,
-                  label: Text(
-                    state.facebookUrl.value,
-                    style: context.subtitle1.copyWith(
-                      color: context.secondaryColor,
+            ? Column(
+                children: [
+                  EventSummaryListTile(
+                    title: S().facebookEvent,
+                    subtitle: RaverHyperLink(
+                      url: state.facebookUrl.value,
+                      label: Text(
+                        state.facebookUrl.value,
+                        style: context.subtitle1.copyWith(
+                          color: context.secondaryColor,
+                        ),
+                      ),
                     ),
+                    step: AddEventStep.urlLinks,
                   ),
-                ),
-                step: AddEventStep.urlLinks)
+                  const SizedBox(height: 20),
+                ],
+              )
             : Container();
       },
     );

@@ -16,37 +16,39 @@ import 'package:raver_partners/presentation/add_event/widgets/summary/event_summ
 class EventSummaryStep extends StatelessWidget {
   const EventSummaryStep({Key? key}) : super(key: key);
 
-  final eventSummaryTiles = const [
-    EventSummaryPhoto(),
-    EventSummaryEventName(),
-    EventSummaryCost(),
-    EventSummaryDescription(),
-    EventSummaryStartDate(),
-    EventSummaryEndDate(),
-    EventSummaryMinimumAge(),
-    EventSummaryDressCode(),
-    EventSummaryMusic(),
-    EventSummaryTicketPools(),
-    EventSummaryArtistName(),
-    EventSummaryFacebookUrl(),
-    EventSummaryDjChannelUrl(),
-  ];
+  final eventSummaryTiles = const [];
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ListView.separated(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          separatorBuilder: (context, i) => const Divider(),
-          itemCount: eventSummaryTiles.length + 1,
-          itemBuilder: (ctx, i) => i >= eventSummaryTiles.length
-              ? const SizedBox()
-              : eventSummaryTiles[i],
-        ),
-        const SizedBox(height: 60),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      child: Column(
+        children: const [
+          EventSummaryPhoto(),
+          SizedBox(height: 20),
+          EventSummaryEventName(),
+          SizedBox(height: 20),
+          EventSummaryCost(),
+          SizedBox(height: 20),
+          EventSummaryDescription(),
+          EventSummaryStartDate(),
+          SizedBox(height: 20),
+          EventSummaryEndDate(),
+          SizedBox(height: 20),
+          EventSummaryMinimumAge(),
+          SizedBox(height: 20),
+          EventSummaryDressCode(),
+          SizedBox(height: 20),
+          EventSummaryMusic(),
+          SizedBox(height: 20),
+          EventSummaryTicketPools(),
+          SizedBox(height: 20),
+          EventSummaryArtistName(),
+          EventSummaryFacebookUrl(),
+          EventSummaryDjChannelUrl(),
+          SizedBox(height: 50),
+        ],
+      ),
     );
   }
 }

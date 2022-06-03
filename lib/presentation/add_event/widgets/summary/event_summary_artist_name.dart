@@ -17,15 +17,20 @@ class EventSummaryArtistName extends StatelessWidget {
           previous.isConcert != current.isConcert,
       builder: (context, state) {
         return state.isConcert
-            ? EventSummaryListTile(
-                title: S().artistName,
-                subtitle: Text(
-                  state.artistName.value,
-                  style: context.subtitle1.copyWith(
-                    color: context.secondaryColor,
-                  ),
-                ),
-                step: AddEventStep.concertInfo)
+            ? Column(
+                children: [
+                  EventSummaryListTile(
+                      title: S().artistName,
+                      subtitle: Text(
+                        state.artistName.value,
+                        style: context.subtitle1.copyWith(
+                          color: context.secondaryColor,
+                        ),
+                      ),
+                      step: AddEventStep.concertInfo),
+                  const SizedBox(height: 20),
+                ],
+              )
             : Container();
       },
     );

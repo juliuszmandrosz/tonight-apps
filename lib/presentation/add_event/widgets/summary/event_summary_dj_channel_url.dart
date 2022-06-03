@@ -17,18 +17,23 @@ class EventSummaryDjChannelUrl extends StatelessWidget {
           previous.isDjChannelUrlEnabled != current.isDjChannelUrlEnabled,
       builder: (context, state) {
         return state.isDjChannelUrlEnabled
-            ? EventSummaryListTile(
-                title: S().djYoutubeChannel,
-                subtitle: RaverHyperLink(
-                  url: state.djChannelUrl.value,
-                  label: Text(
-                    state.djChannelUrl.value,
-                    style: context.subtitle1.copyWith(
-                      color: context.secondaryColor,
-                    ),
-                  ),
-                ),
-                step: AddEventStep.urlLinks)
+            ? Column(
+                children: [
+                  EventSummaryListTile(
+                      title: S().djYoutubeChannel,
+                      subtitle: RaverHyperLink(
+                        url: state.djChannelUrl.value,
+                        label: Text(
+                          state.djChannelUrl.value,
+                          style: context.subtitle1.copyWith(
+                            color: context.secondaryColor,
+                          ),
+                        ),
+                      ),
+                      step: AddEventStep.urlLinks),
+                  const SizedBox(height: 20),
+                ],
+              )
             : Container();
       },
     );
