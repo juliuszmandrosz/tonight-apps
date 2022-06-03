@@ -12,7 +12,7 @@ import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_func
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
 import 'dtos/promotion_code_dto.dart';
 
-class FirebasePaymentFacade implements PartnerPaymentFacade, UserPaymentFacade {
+class FirebasePaymentFacade implements UserPaymentFacade {
   final Logger _logger;
   final Stripe _stripe;
   final PaymentCloudFunctionsFacade _paymentCloudFunctionsFacade;
@@ -54,95 +54,6 @@ class FirebasePaymentFacade implements PartnerPaymentFacade, UserPaymentFacade {
     } on FirebaseException catch (e) {
       _logger.e("Exception getting promotion code EXCEPTION: $e");
       return left(const UserPaymentFailure.unexpected());
-    }
-  }
-
-  @override
-  Future<Either<PartnerPaymentFailure, Unit>> proceedToPayForEventCancelation({
-    required String eventId,
-    required String currency,
-  }) async {
-    try {
-      final result = await _paymentCloudFunctionsFacade
-          .createEventCancelationPaymentSheet(eventId);
-
-      return result.fold(
-        () => right(unit),
-        (response) async {
-          try {
-            await _presentPaymentSheet(
-              currency: currency,
-              customerId: response.customerId,
-              paymentIntentSecret: response.paymentIntentSecret,
-              ephemeralKeySecret: response.ephemeralKeySecret,
-            );
-            return right(unit);
-          } on StripeException catch (e) {
-            _logger.e(
-              "Stripe exception during proceeding to pay for event cancelation EXCEPTION: $e",
-            );
-            if (e.error.code == FailureCode.Canceled) {
-              await _paymentCloudFunctionsFacade
-                  .cancelEventCancelation(response.paymentIntentId);
-              return left(const PartnerPaymentFailure.canceledByPartner());
-            }
-            return left(const PartnerPaymentFailure.stripeError());
-          }
-        },
-      );
-    } on FirebaseFunctionsException catch (e) {
-      _logger.e(
-        "Firebase Functions Exception proceeding to pay for event cancelation EXCEPTION: $e",
-      );
-      return left(partnerPaymentCloudFunctionsErrors[e.details] ??
-          const PartnerPaymentFailure.unexpected());
-    }
-  }
-
-  @override
-  Future<Either<PartnerPaymentFailure, Unit>> proceedToPayForEventPostpone({
-    required String eventId,
-    required String currency,
-    required DateTime newEventStartDateTime,
-    required DateTime newEventEndDateTime,
-  }) async {
-    try {
-      final result =
-          await _paymentCloudFunctionsFacade.createPostponeEventPaymentSheet(
-        eventId: eventId,
-        newEventStartDateTime: Timestamp.fromDate(newEventStartDateTime),
-        newEventEndDateTime: Timestamp.fromDate(newEventEndDateTime),
-      );
-
-      return result.fold(
-        () => right(unit),
-        (response) async {
-          try {
-            await _presentPaymentSheet(
-              currency: currency,
-              customerId: response.customerId,
-              paymentIntentSecret: response.paymentIntentSecret,
-              ephemeralKeySecret: response.ephemeralKeySecret,
-            );
-            return right(unit);
-          } on StripeException catch (e) {
-            _logger.e(
-                "Stripe exception during proceeding to pay for event postpone EXCEPTION: $e");
-            if (e.error.code == FailureCode.Canceled) {
-              await _paymentCloudFunctionsFacade
-                  .cancelEventPostpone(response.paymentIntentId);
-              return left(const PartnerPaymentFailure.canceledByPartner());
-            }
-            return left(const PartnerPaymentFailure.stripeError());
-          }
-        },
-      );
-    } on FirebaseFunctionsException catch (e) {
-      _logger.e(
-        "Firebase Functions Exception proceeding to pay for event postpone EXCEPTION: $e",
-      );
-      return left(partnerPaymentCloudFunctionsErrors[e.details] ??
-          const PartnerPaymentFailure.unexpected());
     }
   }
 
