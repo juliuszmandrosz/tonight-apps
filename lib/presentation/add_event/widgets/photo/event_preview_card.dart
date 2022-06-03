@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
@@ -50,11 +49,13 @@ class EventPreviewCard extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
-                        child: AutoSizeText(
+                        child: Text(
                           state.eventName.value,
-                          maxLines: 2,
                           style: context.headline6,
                           textAlign: TextAlign.center,
+                          softWrap: false,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ),

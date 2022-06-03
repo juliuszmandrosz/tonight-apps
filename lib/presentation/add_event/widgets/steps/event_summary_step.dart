@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_artist_name.dart';
+import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_cost.dart';
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_description.dart';
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_dj_channel_url.dart';
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_dress_code.dart';
@@ -7,6 +8,7 @@ import 'package:raver_partners/presentation/add_event/widgets/summary/event_summ
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_facebook_url.dart';
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_minimum_age.dart';
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_music.dart';
+import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_photo.dart';
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_ticket_pools.dart';
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_start_date.dart';
 import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_event_name.dart';
@@ -15,7 +17,9 @@ class EventSummaryStep extends StatelessWidget {
   const EventSummaryStep({Key? key}) : super(key: key);
 
   final eventSummaryTiles = const [
+    EventSummaryPhoto(),
     EventSummaryEventName(),
+    EventSummaryCost(),
     EventSummaryDescription(),
     EventSummaryStartDate(),
     EventSummaryEndDate(),
@@ -32,7 +36,6 @@ class EventSummaryStep extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // TOOD - add photo here
         ListView.separated(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -42,7 +45,6 @@ class EventSummaryStep extends StatelessWidget {
               ? const SizedBox()
               : eventSummaryTiles[i],
         ),
-
         const SizedBox(height: 60),
       ],
     );
