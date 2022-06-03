@@ -4,3 +4,6 @@ const algoliaApiKey = 'ALGOLIA_API_KEY';
 const androidApiKey = 'ANDROID_API_KEY';
 const iosApiKey = 'IOS_API_KEY';
 const stripePublishableKey = 'STRIPE_PUBLISHABLE_KEY';
+const normalEventFee = 'NORMAL_EVENT_FEE';
+const exclusiveEventFee = 'EXCLUSIVE_EVENT_FEE';
+const serviceFee = 'SERVICE_FEE';
