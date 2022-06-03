@@ -32,8 +32,10 @@ import 'package:raver_partners/application/selector_list/selector_list_cubit.dar
 import 'package:raver_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
 import 'package:raver_partners/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:raver_partners/domain/currency_params/currency_params_facade.dart';
+import 'package:raver_partners/domain/discounts/discount_facade.dart';
 import 'package:raver_partners/domain/selector_management/selector_management_facade.dart';
 import 'package:raver_partners/infrastructure/currency_params/firebase_currency_params_facade.dart';
+import 'package:raver_partners/infrastructure/discounts/firebase_discount_facade.dart';
 import 'package:raver_partners/infrastructure/selector_management/cloud_functions/selector_cloud_functions_facade.dart';
 import 'package:raver_partners/infrastructure/selector_management/firebase_selector_management_facade.dart';
 import 'package:raver_rewards/raver_rewards.dart';
@@ -95,7 +97,9 @@ void _registerCubits() {
         AddEventCubit(
       clubInfoCubit: clubInfoCubit,
       eventNotifierCubit: eventNotifierCubit,
+      discountFacade: getIt(),
       eventFacade: getIt(),
+      remoteConfig: getIt(),
     ),
   );
 
@@ -300,6 +304,14 @@ void _registerFacades() {
 
   getIt.registerLazySingleton<PartnerReviewFacade>(
     () => FirebaseReviewFacade(
+      logger: getIt(),
+      firestore: getIt(),
+      firebaseAuth: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<DiscountFacade>(
+    () => FirebaseDiscountFacade(
       logger: getIt(),
       firestore: getIt(),
       firebaseAuth: getIt(),

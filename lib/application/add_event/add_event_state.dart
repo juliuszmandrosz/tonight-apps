@@ -23,6 +23,12 @@ class AddEventState with _$AddEventState {
     required AddEventStep currentStep,
     required bool isSubmitEnabled,
     required Option<String> errorMessage,
+    required CubitStatus discountsStatus,
+    required List<CollectedDiscount> availableDiscounts,
+    required bool isExclusiveEvent,
+    required bool isDiscountApplied,
+    required Option<CollectedDiscount> appliedDiscount,
+    required Option<double> eventFee,
   }) = _AddEventState;
 
   factory AddEventState.initial() => AddEventState(
@@ -41,10 +47,16 @@ class AddEventState with _$AddEventState {
         facebookUrl: const FacebookUrl.pure(),
         djChannelUrl: const DjChannelUrl.pure(),
         ticketPools: [],
-        eventPhoto: EventPhoto.pure(),
+        eventPhoto: const EventPhoto.pure(),
         status: FormzStatus.pure,
         currentStep: AddEventStep.nameAndDesc,
         isSubmitEnabled: false,
         errorMessage: none(),
+        discountsStatus: CubitStatus.initial,
+        availableDiscounts: [],
+        appliedDiscount: none(),
+        isDiscountApplied: false,
+        isExclusiveEvent: false,
+        eventFee: none(),
       );
 }

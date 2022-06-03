@@ -1,12 +1,11 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_common/constants/constants.dart';
-import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/domain.dart';
 import 'package:raver_events/raver_events.dart';
@@ -24,6 +23,8 @@ import 'package:raver_partners/application/add_event/form_inputs/min_age.dart';
 import 'package:raver_partners/application/add_event/form_inputs/musical_genres.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
+import 'package:raver_partners/domain/discounts/discount_facade.dart';
+import 'package:raver_partners/domain/discounts/entities/collected_discount_entity.dart';
 import 'package:raver_translations/raver_translations.dart';
 import 'package:collection/collection.dart';
 import 'package:uuid/uuid.dart';
@@ -36,16 +37,28 @@ class AddEventCubit extends Cubit<AddEventState> {
   final PartnerEventFacade _eventFacade;
   final EventNotifierCubit _eventNotifierCubit;
   final ClubInfoCubit _clubInfoCubit;
+  final DiscountFacade _discountFacade;
+  final FirebaseRemoteConfig _remoteConfig;
 
   AddEventCubit({
     required PartnerEventFacade eventFacade,
     required EventNotifierCubit eventNotifierCubit,
     required ClubInfoCubit clubInfoCubit,
+    required DiscountFacade discountFacade,
+    required FirebaseRemoteConfig remoteConfig,
   })  : _eventFacade = eventFacade,
         _eventNotifierCubit = eventNotifierCubit,
         _clubInfoCubit = clubInfoCubit,
+        _discountFacade = discountFacade,
+        _remoteConfig = remoteConfig,
         super(AddEventState.initial()) {
-    emit(state.copyWith(clubInfo: _clubInfoCubit.state.club));
+    emit(
+      state.copyWith(
+        clubInfo: _clubInfoCubit.state.club,
+        eventFee: some(_remoteConfig.getDouble(normalEventFee)),
+      ),
+    );
+    _getAvailableDiscounts();
   }
 
   void eventNameChanged(String value) {
@@ -138,6 +151,51 @@ class AddEventCubit extends Cubit<AddEventState> {
     emit(state.copyWith(djChannelUrl: djChannelUrl));
   }
 
+  void isExclusiveEventChanged(bool value) {
+    var isDiscountApplied = state.isDiscountApplied;
+
+    if (!value) {
+      isDiscountApplied = false;
+    }
+
+    final eventFee = _getEventFee(value);
+
+    emit(
+      state.copyWith(
+        isExclusiveEvent: value,
+        isDiscountApplied: isDiscountApplied,
+        eventFee: some(eventFee),
+      ),
+    );
+  }
+
+  void toggleDiscountAppliedState() {
+    final eventFee = _getEventFee(state.isExclusiveEvent);
+
+    emit(
+      state.copyWith(
+        isDiscountApplied: !state.isDiscountApplied,
+        eventFee: some(eventFee),
+        appliedDiscount: none(),
+      ),
+    );
+  }
+
+  void appliedDiscountChanged(CollectedDiscount discount) {
+    final originalFee = _getEventFee(state.isExclusiveEvent);
+
+    final newFee = discount.percentageOff == 100
+        ? 0.0
+        : originalFee * discount.percentageOff / 100;
+
+    emit(
+      state.copyWith(
+        appliedDiscount: some(discount),
+        eventFee: some(newFee),
+      ),
+    );
+  }
+
   void addTicketPool(TicketPool ticketPool) {
     final ticketPoolsCopy = [...state.ticketPools];
     ticketPoolsCopy.add(ticketPool);
@@ -222,6 +280,10 @@ class AddEventCubit extends Cubit<AddEventState> {
 
       case AddEventStep.urlLinks:
         _submitUrlLinksStep();
+        break;
+
+      case AddEventStep.cost:
+        // TODO: Handle this case.
         break;
 
       case AddEventStep.summary:
@@ -503,5 +565,25 @@ class AddEventCubit extends Cubit<AddEventState> {
       final index = ticketPools.indexOf(pool);
       ticketPools[index] = pool.copyWith(poolNumber: pool.poolNumber - 1);
     }
+  }
+
+  Future<void> _getAvailableDiscounts() async {
+    final failureOrSuccess = await _discountFacade.getAvailableDiscounts();
+
+    failureOrSuccess.fold(
+      (failure) => emit(state.copyWith(discountsStatus: CubitStatus.failure)),
+      (discounts) => emit(
+        state.copyWith(
+          discountsStatus: CubitStatus.success,
+          availableDiscounts: discounts,
+        ),
+      ),
+    );
+  }
+
+  double _getEventFee(bool isExclusiveEvent) {
+    return isExclusiveEvent
+        ? _remoteConfig.getDouble(exclusiveEventFee)
+        : _remoteConfig.getDouble(normalEventFee);
   }
 }

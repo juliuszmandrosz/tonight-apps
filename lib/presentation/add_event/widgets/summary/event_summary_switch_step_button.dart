@@ -45,6 +45,14 @@ class EventSummarySwitchStepButton extends StatelessWidget {
         context.read<AddEventCubit>().switchStep(AddEventStep.dateTime);
         break;
 
+      case AddEventStep.photo:
+        context.read<AddEventCubit>().switchStep(AddEventStep.photo);
+        break;
+
+      case AddEventStep.cost:
+        context.read<AddEventCubit>().switchStep(AddEventStep.cost);
+        break;
+
       case AddEventStep.summary:
         break;
     }
