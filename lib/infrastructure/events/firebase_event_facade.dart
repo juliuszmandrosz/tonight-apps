@@ -137,12 +137,31 @@ class FirebaseEventFacade
         eventId: event.id,
         currency: event.currency,
       );
+
       final eventReviewDto = EventReviewDto(eventId: event.id);
 
+      final eventInDateRange = await getEventInDateRangeForCurrentPartner(
+          event.eventStartDateTime, event.eventEndDateTime);
+
+      if (eventInDateRange.isLeft()) {
+        return left(const PartnerEventFailure.unexpected());
+      }
+
+      if (eventInDateRange.getRightOrCrash().isSome()) {
+        return left(const PartnerEventFailure.eventExistsInDateRange());
+      }
+
       if (appliedDiscountId.isSome()) {
-        clubDocRef.collectedDiscounts
-            .doc(appliedDiscountId.getOrCrash())
-            .update({'isApplied': true});
+        final appliedDiscountDocRef =
+            clubDocRef.collectedDiscounts.doc(appliedDiscountId.getOrCrash());
+
+        final appliedDiscountDoc = await appliedDiscountDocRef.get();
+
+        if (appliedDiscountDoc.get('isApplied') == true) {
+          return left(const PartnerEventFailure.discountExpired());
+        }
+
+        appliedDiscountDocRef.update({'isApplied': true});
       }
 
       await eventDocRef.set(eventDto.toJson());
