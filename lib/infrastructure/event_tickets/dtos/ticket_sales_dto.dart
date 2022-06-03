@@ -13,19 +13,23 @@ class TicketSalesDto with _$TicketSalesDto {
   @JsonSerializable()
   const factory TicketSalesDto({
     required String currency,
+    required double eventFee,
     @Default(0) double totalRevenue,
     @Default(0) double clubIncome,
     @Default(0) int ticketsSold,
     @Default(0) int vipsSold,
+    @Default(false) bool isExclusiveEvent,
   }) = _TicketSalesDto;
 
   factory TicketSalesDto.fromDomain(TicketSales ticketSales) {
     return TicketSalesDto(
       currency: ticketSales.currency,
+      eventFee: ticketSales.eventFee,
       totalRevenue: ticketSales.totalRevenue,
       clubIncome: ticketSales.clubIncome,
       ticketsSold: ticketSales.ticketsSold,
       vipsSold: ticketSales.vipsSold,
+      isExclusiveEvent: ticketSales.isExclusiveEvent,
     );
   }
 
@@ -40,10 +44,12 @@ class TicketSalesDto with _$TicketSalesDto {
   TicketSales toDomain() {
     return TicketSales(
       currency: currency,
+      eventFee: eventFee,
       totalRevenue: totalRevenue,
       clubIncome: clubIncome,
       ticketsSold: ticketsSold,
       vipsSold: vipsSold,
+      isExclusiveEvent: isExclusiveEvent,
     );
   }
 }

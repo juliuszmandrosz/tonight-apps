@@ -21,10 +21,12 @@ TicketSalesDto _$TicketSalesDtoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TicketSalesDto {
   String get currency => throw _privateConstructorUsedError;
+  double get eventFee => throw _privateConstructorUsedError;
   double get totalRevenue => throw _privateConstructorUsedError;
   double get clubIncome => throw _privateConstructorUsedError;
   int get ticketsSold => throw _privateConstructorUsedError;
   int get vipsSold => throw _privateConstructorUsedError;
+  bool get isExclusiveEvent => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,10 +41,12 @@ abstract class $TicketSalesDtoCopyWith<$Res> {
       _$TicketSalesDtoCopyWithImpl<$Res>;
   $Res call(
       {String currency,
+      double eventFee,
       double totalRevenue,
       double clubIncome,
       int ticketsSold,
-      int vipsSold});
+      int vipsSold,
+      bool isExclusiveEvent});
 }
 
 /// @nodoc
@@ -57,16 +61,22 @@ class _$TicketSalesDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? currency = freezed,
+    Object? eventFee = freezed,
     Object? totalRevenue = freezed,
     Object? clubIncome = freezed,
     Object? ticketsSold = freezed,
     Object? vipsSold = freezed,
+    Object? isExclusiveEvent = freezed,
   }) {
     return _then(_value.copyWith(
       currency: currency == freezed
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
+      eventFee: eventFee == freezed
+          ? _value.eventFee
+          : eventFee // ignore: cast_nullable_to_non_nullable
+              as double,
       totalRevenue: totalRevenue == freezed
           ? _value.totalRevenue
           : totalRevenue // ignore: cast_nullable_to_non_nullable
@@ -83,6 +93,10 @@ class _$TicketSalesDtoCopyWithImpl<$Res>
           ? _value.vipsSold
           : vipsSold // ignore: cast_nullable_to_non_nullable
               as int,
+      isExclusiveEvent: isExclusiveEvent == freezed
+          ? _value.isExclusiveEvent
+          : isExclusiveEvent // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -96,10 +110,12 @@ abstract class _$$_TicketSalesDtoCopyWith<$Res>
   @override
   $Res call(
       {String currency,
+      double eventFee,
       double totalRevenue,
       double clubIncome,
       int ticketsSold,
-      int vipsSold});
+      int vipsSold,
+      bool isExclusiveEvent});
 }
 
 /// @nodoc
@@ -116,16 +132,22 @@ class __$$_TicketSalesDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? currency = freezed,
+    Object? eventFee = freezed,
     Object? totalRevenue = freezed,
     Object? clubIncome = freezed,
     Object? ticketsSold = freezed,
     Object? vipsSold = freezed,
+    Object? isExclusiveEvent = freezed,
   }) {
     return _then(_$_TicketSalesDto(
       currency: currency == freezed
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
+      eventFee: eventFee == freezed
+          ? _value.eventFee
+          : eventFee // ignore: cast_nullable_to_non_nullable
+              as double,
       totalRevenue: totalRevenue == freezed
           ? _value.totalRevenue
           : totalRevenue // ignore: cast_nullable_to_non_nullable
@@ -142,6 +164,10 @@ class __$$_TicketSalesDtoCopyWithImpl<$Res>
           ? _value.vipsSold
           : vipsSold // ignore: cast_nullable_to_non_nullable
               as int,
+      isExclusiveEvent: isExclusiveEvent == freezed
+          ? _value.isExclusiveEvent
+          : isExclusiveEvent // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -152,10 +178,12 @@ class __$$_TicketSalesDtoCopyWithImpl<$Res>
 class _$_TicketSalesDto extends _TicketSalesDto {
   const _$_TicketSalesDto(
       {required this.currency,
+      required this.eventFee,
       this.totalRevenue = 0,
       this.clubIncome = 0,
       this.ticketsSold = 0,
-      this.vipsSold = 0})
+      this.vipsSold = 0,
+      this.isExclusiveEvent = false})
       : super._();
 
   factory _$_TicketSalesDto.fromJson(Map<String, dynamic> json) =>
@@ -163,6 +191,8 @@ class _$_TicketSalesDto extends _TicketSalesDto {
 
   @override
   final String currency;
+  @override
+  final double eventFee;
   @override
   @JsonKey()
   final double totalRevenue;
@@ -175,10 +205,13 @@ class _$_TicketSalesDto extends _TicketSalesDto {
   @override
   @JsonKey()
   final int vipsSold;
+  @override
+  @JsonKey()
+  final bool isExclusiveEvent;
 
   @override
   String toString() {
-    return 'TicketSalesDto(currency: $currency, totalRevenue: $totalRevenue, clubIncome: $clubIncome, ticketsSold: $ticketsSold, vipsSold: $vipsSold)';
+    return 'TicketSalesDto(currency: $currency, eventFee: $eventFee, totalRevenue: $totalRevenue, clubIncome: $clubIncome, ticketsSold: $ticketsSold, vipsSold: $vipsSold, isExclusiveEvent: $isExclusiveEvent)';
   }
 
   @override
@@ -187,13 +220,16 @@ class _$_TicketSalesDto extends _TicketSalesDto {
         (other.runtimeType == runtimeType &&
             other is _$_TicketSalesDto &&
             const DeepCollectionEquality().equals(other.currency, currency) &&
+            const DeepCollectionEquality().equals(other.eventFee, eventFee) &&
             const DeepCollectionEquality()
                 .equals(other.totalRevenue, totalRevenue) &&
             const DeepCollectionEquality()
                 .equals(other.clubIncome, clubIncome) &&
             const DeepCollectionEquality()
                 .equals(other.ticketsSold, ticketsSold) &&
-            const DeepCollectionEquality().equals(other.vipsSold, vipsSold));
+            const DeepCollectionEquality().equals(other.vipsSold, vipsSold) &&
+            const DeepCollectionEquality()
+                .equals(other.isExclusiveEvent, isExclusiveEvent));
   }
 
   @JsonKey(ignore: true)
@@ -201,10 +237,12 @@ class _$_TicketSalesDto extends _TicketSalesDto {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(currency),
+      const DeepCollectionEquality().hash(eventFee),
       const DeepCollectionEquality().hash(totalRevenue),
       const DeepCollectionEquality().hash(clubIncome),
       const DeepCollectionEquality().hash(ticketsSold),
-      const DeepCollectionEquality().hash(vipsSold));
+      const DeepCollectionEquality().hash(vipsSold),
+      const DeepCollectionEquality().hash(isExclusiveEvent));
 
   @JsonKey(ignore: true)
   @override
@@ -220,10 +258,12 @@ class _$_TicketSalesDto extends _TicketSalesDto {
 abstract class _TicketSalesDto extends TicketSalesDto {
   const factory _TicketSalesDto(
       {required final String currency,
+      required final double eventFee,
       final double totalRevenue,
       final double clubIncome,
       final int ticketsSold,
-      final int vipsSold}) = _$_TicketSalesDto;
+      final int vipsSold,
+      final bool isExclusiveEvent}) = _$_TicketSalesDto;
   const _TicketSalesDto._() : super._();
 
   factory _TicketSalesDto.fromJson(Map<String, dynamic> json) =
@@ -232,6 +272,8 @@ abstract class _TicketSalesDto extends TicketSalesDto {
   @override
   String get currency => throw _privateConstructorUsedError;
   @override
+  double get eventFee => throw _privateConstructorUsedError;
+  @override
   double get totalRevenue => throw _privateConstructorUsedError;
   @override
   double get clubIncome => throw _privateConstructorUsedError;
@@ -239,6 +281,8 @@ abstract class _TicketSalesDto extends TicketSalesDto {
   int get ticketsSold => throw _privateConstructorUsedError;
   @override
   int get vipsSold => throw _privateConstructorUsedError;
+  @override
+  bool get isExclusiveEvent => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_TicketSalesDtoCopyWith<_$_TicketSalesDto> get copyWith =>
