@@ -26,11 +26,11 @@ class EventSummaryTicketPoolItem extends StatelessWidget {
             '${getCurrencySymbolFromCode(ticketPool.currency)}'
             '${ticketPool.isVipEnabled ? ', ${S().vip.toLowerCase()}' : ''} ${ticketPool.vipPrice ?? ''}'
             '${ticketPool.isVipEnabled ? getCurrencySymbolFromCode(ticketPool.currency) : ''}',
-            style: context.subtitle1,
+            style: context.subtitle1.copyWith(color: context.secondaryColor),
             maxLines: 1,
           ),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 10),
       ],
     );
   }

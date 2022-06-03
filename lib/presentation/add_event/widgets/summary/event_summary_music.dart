@@ -4,8 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/add_event/add_event_step.dart';
-import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_switch_step_button.dart';
-import 'package:raver_partners/presentation/core/raver_partners_headline.dart';
+import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_list_tile.dart';
 import 'package:raver_translations/generated/l10n.dart';
 
 class EventSummaryMusic extends StatelessWidget {
@@ -19,30 +18,17 @@ class EventSummaryMusic extends StatelessWidget {
         current.musicalGenres.value,
       ),
       builder: (context, state) {
-        return Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                RaverPartnersHeadline(text: S().music),
-                const EventSummarySwitchStepButton(step: AddEventStep.details),
-              ],
+        return EventSummaryListTile(
+          title: S().music,
+          subtitle: Text(
+            _displayMusicalGenres(
+              state.musicalGenres.value,
             ),
-            const SizedBox(height: 15),
-            Row(
-              children: [
-                Flexible(
-                  flex: 3,
-                  child: Text(
-                    _displayMusicalGenres(
-                      state.musicalGenres.value,
-                    ),
-                    style: context.subtitle1,
-                  ),
-                ),
-              ],
+            style: context.subtitle1.copyWith(
+              color: context.secondaryColor,
             ),
-          ],
+          ),
+          step: AddEventStep.details,
         );
       },
     );

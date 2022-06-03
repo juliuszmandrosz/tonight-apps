@@ -14,33 +14,37 @@ import 'package:raver_partners/presentation/add_event/widgets/summary/event_summ
 class EventSummaryStep extends StatelessWidget {
   const EventSummaryStep({Key? key}) : super(key: key);
 
+  final eventSummaryTiles = const [
+    EventSummaryEventName(),
+    EventSummaryDescription(),
+    EventSummaryStartDate(),
+    EventSummaryEndDate(),
+    EventSummaryMinimumAge(),
+    EventSummaryDressCode(),
+    EventSummaryMusic(),
+    EventSummaryTicketPools(),
+    EventSummaryArtistName(),
+    EventSummaryFacebookUrl(),
+    EventSummaryDjChannelUrl(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Column(
-        children: const [
-          // TOOD - add photo here
-          EventSummaryEventName(),
-          SizedBox(height: 30),
-          EventSummaryDescription(),
-          EventSummaryStartDate(),
-          SizedBox(height: 30),
-          EventSummaryEndDate(),
-          SizedBox(height: 30),
-          EventSummaryMinimumAge(),
-          SizedBox(height: 30),
-          EventSummaryDressCode(),
-          SizedBox(height: 30),
-          EventSummaryMusic(),
-          SizedBox(height: 30),
-          EventSummaryTicketPools(),
-          EventSummaryArtistName(),
-          EventSummaryFacebookUrl(),
-          EventSummaryDjChannelUrl(),
-          SizedBox(height: 60),
-        ],
-      ),
+    return Column(
+      children: [
+        // TOOD - add photo here
+        ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          separatorBuilder: (context, i) => const Divider(),
+          itemCount: eventSummaryTiles.length + 1,
+          itemBuilder: (ctx, i) => i >= eventSummaryTiles.length
+              ? const SizedBox()
+              : eventSummaryTiles[i],
+        ),
+
+        const SizedBox(height: 60),
+      ],
     );
   }
 }
