@@ -17,7 +17,6 @@ import 'package:raver_partners/presentation/past_event_details/past_event_detail
 import 'package:raver_partners/presentation/postpone_event/postpone_event_page.dart';
 import 'package:raver_partners/presentation/rewards/rewards_page.dart';
 import 'package:raver_partners/presentation/selectors/selectors_page.dart';
-import 'package:raver_partners/presentation/settings/settings_page.dart';
 import 'package:raver_partners/presentation/splash/splash_page.dart';
 import 'package:raver_partners/presentation/terms_of_service/terms_of_service_page.dart';
 
@@ -35,7 +34,6 @@ part 'app_router.gr.dart';
         AutoRoute(page: EventsPage),
         AutoRoute(page: RewardsPage),
         AutoRoute(page: SelectorsPage),
-        AutoRoute(page: SettingsPage),
       ],
     ),
     AutoRoute(page: AddEventPage),

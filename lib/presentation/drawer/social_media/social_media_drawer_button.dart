@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:raver_common/raver_common.dart';
 
-class SocialMediaButton extends StatelessWidget {
+class SocialMediaDrawerButton extends StatelessWidget {
   final Widget icon;
   final String url;
 
-  const SocialMediaButton({
+  const SocialMediaDrawerButton({
     required this.icon,
     required this.url,
     Key? key,
@@ -18,7 +18,7 @@ class SocialMediaButton extends StatelessWidget {
       height: 50,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: context.surfaceColor,
+        color: context.surfaceVariantColor,
       ),
       child: RaverIconLink(
         icon: icon,

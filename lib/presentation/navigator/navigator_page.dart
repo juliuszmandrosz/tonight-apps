@@ -6,6 +6,7 @@ import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
+import 'package:raver_partners/presentation/drawer/raver_partners_drawer.dart';
 import 'package:raver_partners/presentation/core/raver_partners_speed_dial.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -70,8 +71,8 @@ class NavigatorPage extends StatelessWidget {
               EventsRoute(),
               RewardsRoute(),
               SelectorsRoute(),
-              SettingsRoute(),
             ],
+            drawer: const RaverPartnersDrawer(),
             floatingActionButton: const RaverPartnersSpeedDial(),
             bottomNavigationBuilder: (_, tabsRouter) {
               return NavigationBar(
@@ -79,25 +80,21 @@ class NavigatorPage extends StatelessWidget {
                 onDestinationSelected: tabsRouter.setActiveIndex,
                 destinations: [
                   const NavigationDestination(
-                    icon: Icon(FontAwesomeIcons.chartSimple),
+                    icon: FaIcon(FontAwesomeIcons.chartSimple),
                     // TODO - add translation
                     label: 'Overview',
                   ),
                   NavigationDestination(
-                    icon: const Icon(FontAwesomeIcons.list),
+                    icon: const FaIcon(FontAwesomeIcons.list),
                     label: S().events(2),
                   ),
                   NavigationDestination(
-                    icon: const Icon(FontAwesomeIcons.trophy),
+                    icon: const FaIcon(FontAwesomeIcons.trophy),
                     label: S().rewards(2),
                   ),
                   NavigationDestination(
-                    icon: const Icon(FontAwesomeIcons.userGroup),
+                    icon: const FaIcon(FontAwesomeIcons.userGroup),
                     label: S().selectors(2),
-                  ),
-                  NavigationDestination(
-                    icon: const Icon(FontAwesomeIcons.gear),
-                    label: S().settings,
                   ),
                 ],
               );
