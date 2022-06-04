@@ -15,6 +15,7 @@ import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_fu
 import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
 import 'package:raver_events/infrastructure/event_costs/dtos/event_costs_dto.dart';
 import 'package:raver_events/infrastructure/event_review/dtos/event_review_dto.dart';
+import 'package:raver_events/infrastructure/events/dtos/applied_discount_dto.dart';
 import 'package:raver_events/infrastructure/events/dtos/event_dto.dart';
 import 'package:raver_events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
 
@@ -153,15 +154,20 @@ class FirebaseEventFacade
 
       if (appliedDiscountId.isSome()) {
         final appliedDiscountDocRef =
-            clubDocRef.collectedDiscounts.doc(appliedDiscountId.getOrCrash());
+            clubDocRef.appliedDiscounts.doc(appliedDiscountId.getOrCrash());
 
         final appliedDiscountDoc = await appliedDiscountDocRef.get();
 
-        if (appliedDiscountDoc.get('isApplied') == true) {
-          return left(const PartnerEventFailure.discountExpired());
+        if (appliedDiscountDoc.exists) {
+          return left(const PartnerEventFailure.discountAlreadyApplied());
         }
 
-        appliedDiscountDocRef.update({'isApplied': true});
+        final appliedDiscountDto = AppliedDiscountDto(
+          eventId: event.id,
+          realizationDateTime: DateTime.now(),
+        );
+
+        await appliedDiscountDocRef.set(appliedDiscountDto.toJson());
       }
 
       await eventDocRef.set(eventDto.toJson());

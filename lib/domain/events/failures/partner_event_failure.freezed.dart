@@ -22,7 +22,7 @@ mixin _$PartnerEventFailure {
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
-    required TResult Function() discountExpired,
+    required TResult Function() discountAlreadyApplied,
     required TResult Function() eventExistsInDateRange,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,7 +32,7 @@ mixin _$PartnerEventFailure {
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountExpired,
+    TResult Function()? discountAlreadyApplied,
     TResult Function()? eventExistsInDateRange,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ mixin _$PartnerEventFailure {
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountExpired,
+    TResult Function()? discountAlreadyApplied,
     TResult Function()? eventExistsInDateRange,
     required TResult orElse(),
   }) =>
@@ -53,7 +53,8 @@ mixin _$PartnerEventFailure {
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
-    required TResult Function(_DiscountExpired value) discountExpired,
+    required TResult Function(_DiscountAlreadyApplied value)
+        discountAlreadyApplied,
     required TResult Function(_EventExistsInDateRange value)
         eventExistsInDateRange,
   }) =>
@@ -64,7 +65,7 @@ mixin _$PartnerEventFailure {
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountExpired value)? discountExpired,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
     TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
   }) =>
       throw _privateConstructorUsedError;
@@ -74,7 +75,7 @@ mixin _$PartnerEventFailure {
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountExpired value)? discountExpired,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
     TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
     required TResult orElse(),
   }) =>
@@ -143,7 +144,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
-    required TResult Function() discountExpired,
+    required TResult Function() discountAlreadyApplied,
     required TResult Function() eventExistsInDateRange,
   }) {
     return unexpected();
@@ -156,7 +157,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountExpired,
+    TResult Function()? discountAlreadyApplied,
     TResult Function()? eventExistsInDateRange,
   }) {
     return unexpected?.call();
@@ -169,7 +170,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountExpired,
+    TResult Function()? discountAlreadyApplied,
     TResult Function()? eventExistsInDateRange,
     required TResult orElse(),
   }) {
@@ -186,7 +187,8 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
-    required TResult Function(_DiscountExpired value) discountExpired,
+    required TResult Function(_DiscountAlreadyApplied value)
+        discountAlreadyApplied,
     required TResult Function(_EventExistsInDateRange value)
         eventExistsInDateRange,
   }) {
@@ -200,7 +202,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountExpired value)? discountExpired,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
     TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
   }) {
     return unexpected?.call(this);
@@ -213,7 +215,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountExpired value)? discountExpired,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
     TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
     required TResult orElse(),
   }) {
@@ -273,7 +275,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
-    required TResult Function() discountExpired,
+    required TResult Function() discountAlreadyApplied,
     required TResult Function() eventExistsInDateRange,
   }) {
     return cancelTimeExpired();
@@ -286,7 +288,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountExpired,
+    TResult Function()? discountAlreadyApplied,
     TResult Function()? eventExistsInDateRange,
   }) {
     return cancelTimeExpired?.call();
@@ -299,7 +301,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountExpired,
+    TResult Function()? discountAlreadyApplied,
     TResult Function()? eventExistsInDateRange,
     required TResult orElse(),
   }) {
@@ -316,7 +318,8 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
-    required TResult Function(_DiscountExpired value) discountExpired,
+    required TResult Function(_DiscountAlreadyApplied value)
+        discountAlreadyApplied,
     required TResult Function(_EventExistsInDateRange value)
         eventExistsInDateRange,
   }) {
@@ -330,7 +333,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountExpired value)? discountExpired,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
     TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
   }) {
     return cancelTimeExpired?.call(this);
@@ -343,7 +346,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountExpired value)? discountExpired,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
     TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
     required TResult orElse(),
   }) {
@@ -403,7 +406,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
-    required TResult Function() discountExpired,
+    required TResult Function() discountAlreadyApplied,
     required TResult Function() eventExistsInDateRange,
   }) {
     return postponeTimeExpired();
@@ -416,7 +419,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountExpired,
+    TResult Function()? discountAlreadyApplied,
     TResult Function()? eventExistsInDateRange,
   }) {
     return postponeTimeExpired?.call();
@@ -429,7 +432,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountExpired,
+    TResult Function()? discountAlreadyApplied,
     TResult Function()? eventExistsInDateRange,
     required TResult orElse(),
   }) {
@@ -446,7 +449,8 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
-    required TResult Function(_DiscountExpired value) discountExpired,
+    required TResult Function(_DiscountAlreadyApplied value)
+        discountAlreadyApplied,
     required TResult Function(_EventExistsInDateRange value)
         eventExistsInDateRange,
   }) {
@@ -460,7 +464,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountExpired value)? discountExpired,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
     TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
   }) {
     return postponeTimeExpired?.call(this);
@@ -473,7 +477,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountExpired value)? discountExpired,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
     TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
     required TResult orElse(),
   }) {
@@ -533,7 +537,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
-    required TResult Function() discountExpired,
+    required TResult Function() discountAlreadyApplied,
     required TResult Function() eventExistsInDateRange,
   }) {
     return postponeTimeTooShort();
@@ -546,7 +550,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountExpired,
+    TResult Function()? discountAlreadyApplied,
     TResult Function()? eventExistsInDateRange,
   }) {
     return postponeTimeTooShort?.call();
@@ -559,7 +563,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountExpired,
+    TResult Function()? discountAlreadyApplied,
     TResult Function()? eventExistsInDateRange,
     required TResult orElse(),
   }) {
@@ -576,7 +580,8 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
-    required TResult Function(_DiscountExpired value) discountExpired,
+    required TResult Function(_DiscountAlreadyApplied value)
+        discountAlreadyApplied,
     required TResult Function(_EventExistsInDateRange value)
         eventExistsInDateRange,
   }) {
@@ -590,7 +595,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountExpired value)? discountExpired,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
     TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
   }) {
     return postponeTimeTooShort?.call(this);
@@ -603,7 +608,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountExpired value)? discountExpired,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
     TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
     required TResult orElse(),
   }) {
@@ -619,38 +624,40 @@ abstract class _PostponeTimeTooShort implements PartnerEventFailure {
 }
 
 /// @nodoc
-abstract class _$$_DiscountExpiredCopyWith<$Res> {
-  factory _$$_DiscountExpiredCopyWith(
-          _$_DiscountExpired value, $Res Function(_$_DiscountExpired) then) =
-      __$$_DiscountExpiredCopyWithImpl<$Res>;
+abstract class _$$_DiscountAlreadyAppliedCopyWith<$Res> {
+  factory _$$_DiscountAlreadyAppliedCopyWith(_$_DiscountAlreadyApplied value,
+          $Res Function(_$_DiscountAlreadyApplied) then) =
+      __$$_DiscountAlreadyAppliedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_DiscountExpiredCopyWithImpl<$Res>
+class __$$_DiscountAlreadyAppliedCopyWithImpl<$Res>
     extends _$PartnerEventFailureCopyWithImpl<$Res>
-    implements _$$_DiscountExpiredCopyWith<$Res> {
-  __$$_DiscountExpiredCopyWithImpl(
-      _$_DiscountExpired _value, $Res Function(_$_DiscountExpired) _then)
-      : super(_value, (v) => _then(v as _$_DiscountExpired));
+    implements _$$_DiscountAlreadyAppliedCopyWith<$Res> {
+  __$$_DiscountAlreadyAppliedCopyWithImpl(_$_DiscountAlreadyApplied _value,
+      $Res Function(_$_DiscountAlreadyApplied) _then)
+      : super(_value, (v) => _then(v as _$_DiscountAlreadyApplied));
 
   @override
-  _$_DiscountExpired get _value => super._value as _$_DiscountExpired;
+  _$_DiscountAlreadyApplied get _value =>
+      super._value as _$_DiscountAlreadyApplied;
 }
 
 /// @nodoc
 
-class _$_DiscountExpired implements _DiscountExpired {
-  const _$_DiscountExpired();
+class _$_DiscountAlreadyApplied implements _DiscountAlreadyApplied {
+  const _$_DiscountAlreadyApplied();
 
   @override
   String toString() {
-    return 'PartnerEventFailure.discountExpired()';
+    return 'PartnerEventFailure.discountAlreadyApplied()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_DiscountExpired);
+        (other.runtimeType == runtimeType &&
+            other is _$_DiscountAlreadyApplied);
   }
 
   @override
@@ -663,10 +670,10 @@ class _$_DiscountExpired implements _DiscountExpired {
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
-    required TResult Function() discountExpired,
+    required TResult Function() discountAlreadyApplied,
     required TResult Function() eventExistsInDateRange,
   }) {
-    return discountExpired();
+    return discountAlreadyApplied();
   }
 
   @override
@@ -676,10 +683,10 @@ class _$_DiscountExpired implements _DiscountExpired {
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountExpired,
+    TResult Function()? discountAlreadyApplied,
     TResult Function()? eventExistsInDateRange,
   }) {
-    return discountExpired?.call();
+    return discountAlreadyApplied?.call();
   }
 
   @override
@@ -689,12 +696,12 @@ class _$_DiscountExpired implements _DiscountExpired {
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountExpired,
+    TResult Function()? discountAlreadyApplied,
     TResult Function()? eventExistsInDateRange,
     required TResult orElse(),
   }) {
-    if (discountExpired != null) {
-      return discountExpired();
+    if (discountAlreadyApplied != null) {
+      return discountAlreadyApplied();
     }
     return orElse();
   }
@@ -706,11 +713,12 @@ class _$_DiscountExpired implements _DiscountExpired {
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
-    required TResult Function(_DiscountExpired value) discountExpired,
+    required TResult Function(_DiscountAlreadyApplied value)
+        discountAlreadyApplied,
     required TResult Function(_EventExistsInDateRange value)
         eventExistsInDateRange,
   }) {
-    return discountExpired(this);
+    return discountAlreadyApplied(this);
   }
 
   @override
@@ -720,10 +728,10 @@ class _$_DiscountExpired implements _DiscountExpired {
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountExpired value)? discountExpired,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
     TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
   }) {
-    return discountExpired?.call(this);
+    return discountAlreadyApplied?.call(this);
   }
 
   @override
@@ -733,19 +741,19 @@ class _$_DiscountExpired implements _DiscountExpired {
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountExpired value)? discountExpired,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
     TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
     required TResult orElse(),
   }) {
-    if (discountExpired != null) {
-      return discountExpired(this);
+    if (discountAlreadyApplied != null) {
+      return discountAlreadyApplied(this);
     }
     return orElse();
   }
 }
 
-abstract class _DiscountExpired implements PartnerEventFailure {
-  const factory _DiscountExpired() = _$_DiscountExpired;
+abstract class _DiscountAlreadyApplied implements PartnerEventFailure {
+  const factory _DiscountAlreadyApplied() = _$_DiscountAlreadyApplied;
 }
 
 /// @nodoc
@@ -795,7 +803,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
-    required TResult Function() discountExpired,
+    required TResult Function() discountAlreadyApplied,
     required TResult Function() eventExistsInDateRange,
   }) {
     return eventExistsInDateRange();
@@ -808,7 +816,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountExpired,
+    TResult Function()? discountAlreadyApplied,
     TResult Function()? eventExistsInDateRange,
   }) {
     return eventExistsInDateRange?.call();
@@ -821,7 +829,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountExpired,
+    TResult Function()? discountAlreadyApplied,
     TResult Function()? eventExistsInDateRange,
     required TResult orElse(),
   }) {
@@ -838,7 +846,8 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
-    required TResult Function(_DiscountExpired value) discountExpired,
+    required TResult Function(_DiscountAlreadyApplied value)
+        discountAlreadyApplied,
     required TResult Function(_EventExistsInDateRange value)
         eventExistsInDateRange,
   }) {
@@ -852,7 +861,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountExpired value)? discountExpired,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
     TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
   }) {
     return eventExistsInDateRange?.call(this);
@@ -865,7 +874,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountExpired value)? discountExpired,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
     TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
     required TResult orElse(),
   }) {
