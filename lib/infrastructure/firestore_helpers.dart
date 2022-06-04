@@ -80,6 +80,58 @@ extension FirestoreX on FirebaseFirestore {
 
     return clubCollection.doc(selectorClubId);
   }
+
+  Future<List<DocumentSnapshot>> getDocsByIdsWhereIn({
+    required List<String> ids,
+    required CollectionReference collection,
+  }) async {
+    final result = <DocumentSnapshot>[];
+
+    while (ids.isNotEmpty) {
+      final chunkSize = ids.length >= 10 ? 10 : ids.length;
+
+      final idsChunk = ids.getRange(0, chunkSize).toList();
+
+      final docsQuery = collection.where(
+        FieldPath.documentId,
+        whereIn: idsChunk,
+      );
+
+      final docsChunk = await docsQuery.get();
+
+      result.addAll(docsChunk.docs);
+
+      ids.removeRange(0, chunkSize);
+    }
+
+    return result;
+  }
+
+  Future<List<DocumentSnapshot>> getDocsByIdsWhereNotIn({
+    required List<String> ids,
+    required CollectionReference collection,
+  }) async {
+    final result = <DocumentSnapshot>[];
+
+    while (ids.isNotEmpty) {
+      final chunkSize = ids.length >= 10 ? 10 : ids.length;
+
+      final idsChunk = ids.getRange(0, chunkSize).toList();
+
+      final docsQuery = collection.where(
+        FieldPath.documentId,
+        whereNotIn: idsChunk,
+      );
+
+      final docsChunk = await docsQuery.get();
+
+      result.addAll(docsChunk.docs);
+
+      ids.removeRange(0, chunkSize);
+    }
+
+    return result;
+  }
 }
 
 extension DocumentReferenceX on DocumentReference {
