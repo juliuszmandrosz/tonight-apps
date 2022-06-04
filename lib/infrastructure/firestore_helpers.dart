@@ -34,6 +34,8 @@ extension FirestoreX on FirebaseFirestore {
 
   CollectionReference get partnersDiscounts => collection('partnersDiscounts');
 
+  CollectionReference get clubsSales => collection('clubsSales');
+
   DocumentReference getCurrentUserDocRef(FirebaseAuth auth) {
     final firebaseUser = auth.tryGetFirebaseUser();
 
