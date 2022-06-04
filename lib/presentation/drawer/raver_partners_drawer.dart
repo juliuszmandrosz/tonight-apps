@@ -18,7 +18,8 @@ class RaverPartnersDrawer extends StatelessWidget {
         elevation: 0,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(24, 80, 24, 0),
-          child: Column(
+          child: ListView(
+            padding: EdgeInsets.zero,
             children: const [
               RaverPartnersDrawerHeader(),
               SizedBox(height: 30),
