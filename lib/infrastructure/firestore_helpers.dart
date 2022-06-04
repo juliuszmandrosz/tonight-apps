@@ -108,6 +108,5 @@ extension DocumentReferenceX on DocumentReference {
 
   CollectionReference get eventReview => collection('eventReview');
 
-  CollectionReference get collectedDiscounts =>
-      collection('collectedDiscounts');
+  CollectionReference get appliedDiscounts => collection('appliedDiscounts');
 }
