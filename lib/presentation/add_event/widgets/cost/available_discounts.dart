@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_partners/domain/discounts/entities/collected_discount_entity.dart';
+import 'package:raver_partners/domain/discounts/partner_discount_entity.dart';
 import 'package:raver_partners/presentation/add_event/widgets/cost/discount_list_tile.dart';
 
 class AvailableDiscounts extends StatelessWidget {
@@ -16,7 +16,7 @@ class AvailableDiscounts extends StatelessWidget {
           previous.availableDiscounts != current.availableDiscounts ||
           previous.discountsStatus != current.discountsStatus,
       builder: (context, state) {
-        final groupedDiscounts = <int, List<CollectedDiscount>>{};
+        final groupedDiscounts = <int, List<PartnerDiscount>>{};
         for (var discount in state.availableDiscounts) {
           var group = groupedDiscounts[discount.percentageOff];
           groupedDiscounts[discount.percentageOff] = [...?group, discount];

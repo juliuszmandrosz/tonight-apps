@@ -24,10 +24,10 @@ class AddEventState with _$AddEventState {
     required bool isSubmitEnabled,
     required Option<String> errorMessage,
     required CubitStatus discountsStatus,
-    required List<CollectedDiscount> availableDiscounts,
+    required List<PartnerDiscount> availableDiscounts,
     required bool isExclusiveEvent,
     required bool isDiscountApplied,
-    required Option<CollectedDiscount> appliedDiscount,
+    required Option<PartnerDiscount> appliedDiscount,
     required Option<double> eventFee,
   }) = _AddEventState;
 

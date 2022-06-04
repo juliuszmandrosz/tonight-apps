@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_partners/domain/discounts/entities/collected_discount_entity.dart';
+import 'package:raver_partners/domain/discounts/partner_discount_entity.dart';
 
 class DiscountListTile extends StatelessWidget {
   final int percentageOff;
 
-  final List<CollectedDiscount> collectedDiscounts;
+  final List<PartnerDiscount> collectedDiscounts;
 
   const DiscountListTile({
     required this.percentageOff,

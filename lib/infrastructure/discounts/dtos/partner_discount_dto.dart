@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_partners/domain/discounts/entities/partner_discount_entity.dart';
+import 'package:raver_partners/domain/discounts/partner_discount_entity.dart';
 
 part 'partner_discount_dto.freezed.dart';
 

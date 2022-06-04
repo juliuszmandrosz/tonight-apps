@@ -66,6 +66,7 @@ class NavigatorPage extends StatelessWidget {
             resizeToAvoidBottomInset: false,
             appBarBuilder: (_, tabsRouter) => const RaverPartnersAppBar(),
             routes: const [
+              OverviewRoute(),
               EventsRoute(),
               RewardsRoute(),
               SelectorsRoute(),
@@ -77,6 +78,11 @@ class NavigatorPage extends StatelessWidget {
                 selectedIndex: tabsRouter.activeIndex,
                 onDestinationSelected: tabsRouter.setActiveIndex,
                 destinations: [
+                  const NavigationDestination(
+                    icon: Icon(FontAwesomeIcons.chartSimple),
+                    // TODO - add translation
+                    label: 'Overview',
+                  ),
                   NavigationDestination(
                     icon: const Icon(FontAwesomeIcons.list),
                     label: S().events(2),

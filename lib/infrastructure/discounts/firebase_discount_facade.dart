@@ -5,9 +5,7 @@ import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/domain/discounts/discount_facade.dart';
 import 'package:raver_partners/domain/discounts/discount_failure.dart';
-import 'package:raver_partners/domain/discounts/entities/collected_discount_entity.dart';
-import 'package:raver_partners/domain/discounts/entities/partner_discount_entity.dart';
-import 'package:raver_partners/infrastructure/discounts/dtos/collected_discount_dto.dart';
+import 'package:raver_partners/domain/discounts/partner_discount_entity.dart';
 import 'package:raver_partners/infrastructure/discounts/dtos/partner_discount_dto.dart';
 
 class FirebaseDiscountFacade implements DiscountFacade {
@@ -24,21 +22,27 @@ class FirebaseDiscountFacade implements DiscountFacade {
         _logger = logger;
 
   @override
-  Future<Either<DiscountFailure, List<CollectedDiscount>>>
+  Future<Either<DiscountFailure, List<PartnerDiscount>>>
       getAvailableDiscounts() async {
     try {
       final clubDocRef =
           await _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
 
-      final result = await clubDocRef.collectedDiscounts
-          .where('isApplied', isEqualTo: false)
-          .get();
+      final appliedDiscounts = await clubDocRef.appliedDiscounts.get();
 
-      return right<DiscountFailure, List<CollectedDiscount>>(
-        result.docs
-            .map((doc) => CollectedDiscountDto.fromFirebase(doc).toDomain())
-            .toList(),
+      final appliedDiscountIds =
+          appliedDiscounts.docs.map((doc) => doc.id).toList();
+
+      final discountDocs = await _firestore.getDocsByIdsWhereNotIn(
+        ids: appliedDiscountIds,
+        collection: _firestore.partnersDiscounts,
       );
+
+      final result = discountDocs
+          .map((doc) => PartnerDiscountDto.fromFirebase(doc).toDomain())
+          .toList();
+
+      return right(result);
     } on FirebaseException catch (e) {
       _logger.e(
         "Firebase Exception getting available discounts EXCEPTION: $e",

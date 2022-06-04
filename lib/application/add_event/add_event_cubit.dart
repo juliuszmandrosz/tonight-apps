@@ -25,7 +25,7 @@ import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/core/get_event_failure_message.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
 import 'package:raver_partners/domain/discounts/discount_facade.dart';
-import 'package:raver_partners/domain/discounts/entities/collected_discount_entity.dart';
+import 'package:raver_partners/domain/discounts/partner_discount_entity.dart';
 import 'package:raver_translations/raver_translations.dart';
 import 'package:collection/collection.dart';
 import 'package:uuid/uuid.dart';
@@ -182,7 +182,7 @@ class AddEventCubit extends Cubit<AddEventState> {
     );
   }
 
-  void appliedDiscountChanged(CollectedDiscount discount) {
+  void appliedDiscountChanged(PartnerDiscount discount) {
     final originalFee = _getEventFee(state.isExclusiveEvent);
 
     final newFee = discount.percentageOff == 100
