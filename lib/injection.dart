@@ -7,7 +7,6 @@ import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
@@ -25,6 +24,7 @@ import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/event_filters/event_filters_cubit.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
 import 'package:raver_partners/application/invite_selector/invite_selector_cubit.dart';
+import 'package:raver_partners/application/overview/overview_cubit.dart';
 import 'package:raver_partners/application/past_event_details/past_event_details_cubit.dart';
 import 'package:raver_partners/application/postpone_event/postpone_event_cubit.dart';
 import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
@@ -181,7 +181,14 @@ void _registerCubits() {
     () => WelcomeLoaderCubit(
       clubInfoCubit: getIt(),
       firebaseRemoteConfig: getIt(),
-      stripe: getIt(),
+      overviewCubit: getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => OverviewCubit(
+      clubSalesFacade: getIt(),
+      discountFacade: getIt(),
     ),
   );
 }
@@ -350,8 +357,6 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebaseRemoteConfig.instance);
 
   getIt.registerLazySingleton(() => FirebaseStorage.instance);
-
-  getIt.registerLazySingleton(() => Stripe.instance);
 
   getIt.registerLazySingleton(() => Logger());
 

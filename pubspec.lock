@@ -600,7 +600,7 @@ packages:
     source: hosted
     version: "5.1.0"
   flutter_stripe:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: flutter_stripe
       url: "https://pub.dartlang.org"

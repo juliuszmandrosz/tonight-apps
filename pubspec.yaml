@@ -65,7 +65,6 @@ dependencies:
   firebase_dynamic_links: ^4.2.3
   loader_overlay: ^2.0.6
   flutter_svg: ^1.0.3
-  flutter_stripe: ^3.0.0
   firebase_remote_config: ^2.0.6
   json_annotation: ^4.5.0
   share_plus: ^4.0.4

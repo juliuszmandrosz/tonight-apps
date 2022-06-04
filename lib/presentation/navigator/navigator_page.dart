@@ -48,18 +48,17 @@ class NavigatorPage extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          final welcomeLoaderCubit = context.read<WelcomeLoaderCubit>();
+          final loaderState = context.read<WelcomeLoaderCubit>().state;
 
-          if (welcomeLoaderCubit.isStatusInitial ||
-              state.remoteConfigStatus.isFailure()) {
+          if (loaderState.welcomeLoaderStatus.isInitial()) {
             return const SizedBox();
           }
 
-          if (welcomeLoaderCubit.isStatusLoading) {
+          if (loaderState.welcomeLoaderStatus.isLoading()) {
             return const Center(child: CircularProgressIndicator());
           }
 
-          if (welcomeLoaderCubit.isStatusFailure) {
+          if (loaderState.welcomeLoaderStatus.isFailure()) {
             return Center(child: Text(S().serverError));
           }
 

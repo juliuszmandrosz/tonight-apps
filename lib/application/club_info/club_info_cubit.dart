@@ -21,9 +21,14 @@ class ClubInfoCubit extends Cubit<ClubInfoState> {
         _currencyParamsFacade = currencyParamsFacade,
         super(ClubInfoState.initial());
 
-  Future<void> getClubInfo() async {
+  Future<void> initClubInfo() async {
     emit(state.copyWith(status: CubitStatus.loading));
 
+    await _getClubInfo();
+    await _getCurrencyParams();
+  }
+
+  Future<void> _getClubInfo() async {
     final failureOrSuccess = await _clubFacade.getCurrentPartnerClub();
 
     failureOrSuccess.fold(
@@ -37,11 +42,9 @@ class ClubInfoCubit extends Cubit<ClubInfoState> {
     );
   }
 
-  Future<void> getCurrencyParams(Club club) async {
-    emit(state.copyWith(status: CubitStatus.loading));
-
+  Future<void> _getCurrencyParams() async {
     final failureOrSuccess = await _currencyParamsFacade.getCurrencyParams(
-      club.acceptedCurrency,
+      state.club.getOrCrash().acceptedCurrency,
     );
 
     failureOrSuccess.fold(
