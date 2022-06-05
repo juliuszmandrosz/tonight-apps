@@ -21,6 +21,7 @@ import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:raver_partners/application/auth/sign_up/sign_up_cubit.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
+import 'package:raver_partners/application/discounts/discounts_cubit.dart';
 import 'package:raver_partners/application/event_filters/event_filters_cubit.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
 import 'package:raver_partners/application/invite_selector/invite_selector_cubit.dart';
@@ -188,6 +189,12 @@ void _registerCubits() {
   getIt.registerLazySingleton(
     () => OverviewCubit(
       clubSalesFacade: getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => DiscountsCubit(
+      overviewCubit: getIt(),
       discountFacade: getIt(),
     ),
   );

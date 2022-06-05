@@ -79,7 +79,7 @@ class WelcomeLoaderCubit extends Cubit<WelcomeLoaderState> {
   }
 
   _initOverview() {
-    _overviewCubit.initOverview();
+    _overviewCubit.getClubSales();
     _overviewCubit.stream.listen((state) {
       _checkAndEmitFailure(state.status);
       _emitSuccessIfAllLoaded();

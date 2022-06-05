@@ -7,6 +7,7 @@ import 'package:raver_partners/presentation/add_event/add_event_page.dart';
 import 'package:raver_partners/presentation/add_reward/add_reward_page.dart';
 import 'package:raver_partners/presentation/auth/auth_page.dart';
 import 'package:raver_partners/presentation/contact/contact_page.dart';
+import 'package:raver_partners/presentation/discounts/discounts_page.dart';
 import 'package:raver_partners/presentation/event_overview/event_overview_page.dart';
 import 'package:raver_partners/presentation/events/events_page.dart';
 import 'package:raver_partners/presentation/invite_selector/invite_selector_page.dart';
@@ -46,6 +47,7 @@ part 'app_router.gr.dart';
     AutoRoute(page: NetworkLostPage),
     AutoRoute(page: ContactPage),
     AutoRoute(page: TermsOfServicePage),
+    AutoRoute(page: DiscountsPage),
   ],
 )
 class AppRouter extends _$AppRouter {}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/presentation/drawer/contact_drawer_tile.dart';
+import 'package:raver_partners/presentation/drawer/discounts_drawer_tile.dart';
 import 'package:raver_partners/presentation/drawer/rate_us_drawer_tile.dart';
 import 'package:raver_partners/presentation/drawer/raver_partners_drawer_header.dart';
 import 'package:raver_partners/presentation/drawer/sign_out_drawer_tile.dart';
@@ -25,6 +26,10 @@ class RaverPartnersDrawer extends StatelessWidget {
               SizedBox(height: 30),
               Divider(),
               SizedBox(height: 30),
+              DiscountsDrawerTile(),
+              SizedBox(height: 30),
+              Divider(),
+              SizedBox(height: 30),
               ContactDrawerTile(),
               SizedBox(height: 30),
               RateUsDrawerTile(),
@@ -34,7 +39,7 @@ class RaverPartnersDrawer extends StatelessWidget {
               SignOutDrawerTile(),
               SizedBox(height: 30),
               Divider(),
-              SizedBox(height: 30),
+              SizedBox(height: 10),
               SocialMediaRow(),
               SizedBox(height: 30),
             ],

@@ -27,12 +27,8 @@ class DiscountListTile extends StatelessWidget {
         children: [
           // TODO - add translation
           Flexible(
-            // child: RaverPartnersHeadline(
-            //   text: '${discount.requiredExclusiveEventsSales} sprzedanych',
-            //   isSmallerVersion: true,
-            // ),
             child: Text(
-              '${discount.requiredExclusiveEventsSales} sprzedanych',
+              '${discount.requiredExclusiveEventsSales} sprzedanych sztuk',
               style: context.subtitle1,
             ),
           ),
