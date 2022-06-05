@@ -64,7 +64,7 @@ class RaverApp extends StatelessWidget {
         BlocProvider(
           create: (ctx) => getIt<ClubFavoriteCubit>(),
         ),
-        BlocProvider<ClubsOverviewBloc>(
+        BlocProvider(
           create: (context) => getIt<ClubsOverviewBloc>(),
         ),
         BlocProvider(

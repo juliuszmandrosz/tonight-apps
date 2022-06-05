@@ -6,10 +6,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
-import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/application/ticket_qr/ticket_qr_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
+import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/ticket_qr/widgets/ticket_return_button.dart';
 import 'package:raver/presentation/ticket_qr/widgets/upgrade_to_vip_button.dart';
 import 'package:raver_common/raver_common.dart';
@@ -27,12 +27,10 @@ class TicketQrPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<TicketQrCubit>(
-        param1: context.read<TicketListCubit>(),
-      )..initTicketData(ticket),
-      child: BlocListener<TicketQrCubit, TicketQrState>(
+      create: (context) => getIt<TicketQrCubit>()..initTicketData(ticket),
+      child: BlocConsumer<TicketQrCubit, TicketQrState>(
         listener: (context, state) {
-          state.ticketReturnFailureMessage.fold(
+          state.snackbarMessage.fold(
             () => null,
             (message) => context.showSnackbarMessage(message),
           );
@@ -46,35 +44,46 @@ class TicketQrPage extends StatelessWidget {
             AutoRouter.of(context).popUntilRoot();
           }
         },
-        child: LoaderOverlay(
-          overlayColor: context.shadowColor,
-          child: Scaffold(
-            appBar: RaverAppBar(title: S().tickets(1)),
-            body: Padding(
-              padding: const EdgeInsets.only(top: 50, bottom: 30),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    QrImage(
-                      data: _getData(context),
-                      version: QrVersions.auto,
-                      size: 300,
-                      backgroundColor: context.onSurfaceColor,
-                    ),
-                    const Spacer(),
-                    if (!ticket.isVip) const UpgradeToVipButton(),
-                    if (ticket.eventStartDateTime.isAfter(
-                          DateTime.now().add(const Duration(days: 1)),
-                        ) &&
-                        ticket.isReturnable)
-                      const TicketReturnButton(),
-                  ],
+        buildWhen: (previous, current) =>
+            previous.isVipEnabled != current.isVipEnabled ||
+            previous.ticket != current.ticket,
+        builder: (context, state) {
+          return LoaderOverlay(
+            overlayColor: context.shadowColor,
+            child: Scaffold(
+              appBar: RaverAppBar(title: S().tickets(1)),
+              body: Padding(
+                padding: const EdgeInsets.only(top: 50, bottom: 30),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      QrImage(
+                        data: _getData(context),
+                        version: QrVersions.auto,
+                        size: 300,
+                        backgroundColor: context.onSurfaceColor,
+                      ),
+                      if (state.ticket.getOrCrash().isVip)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: RaverHeadline(text: S().vip),
+                        ),
+                      const Spacer(),
+                      if (!ticket.isVip && state.isVipEnabled)
+                        const UpgradeToVipButton(),
+                      if (ticket.eventStartDateTime.isAfter(
+                            DateTime.now().add(const Duration(days: 1)),
+                          ) &&
+                          ticket.isReturnable)
+                        const TicketReturnButton(),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

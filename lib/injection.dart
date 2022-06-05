@@ -31,12 +31,14 @@ import 'package:raver/application/profile/profile_cubit_hub.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/application/ticket_qr/ticket_qr_cubit.dart';
+import 'package:raver/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:raver/domain/remote_config/remote_config_facade.dart';
 import 'package:raver/infrastructure/remote_config/firebase_remote_config_facade.dart';
 import 'package:raver_account_settings/raver_account_settings.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_payments/domain/facades/user_payment_facade.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
@@ -144,7 +146,7 @@ void _registerCubits() {
   );
 
   //Tickets
-  getIt.registerFactory(
+  getIt.registerLazySingleton(
     () => TicketListCubit(
       getIt(),
     ),
@@ -157,17 +159,17 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerFactoryParam(
-    (TicketListCubit ticketListCubit, _) => TicketQrCubit(
+  getIt.registerFactory(
+    () => TicketQrCubit(
       ticketFacade: getIt(),
-      ticketListCubit: ticketListCubit,
+      ticketListCubit: getIt(),
+      eventTicketsCubit: getIt(),
     ),
   );
 
   //Reviews
-  getIt.registerFactoryParam(
-    (TicketListCubit ticketListCubit, _) => NewReviewCubit(
-      ticketListCubit: ticketListCubit,
+  getIt.registerFactory(
+    () => NewReviewCubit(
       profileBroadcastSubject: getIt(),
       reviewFacade: getIt(),
     ),
@@ -238,20 +240,29 @@ void _registerCubits() {
   getIt.registerFactory(() => AppSettingsCubit());
 
   //Payment
-  getIt.registerFactoryParam(
-    (TicketListCubit ticketListCubit, _) => TicketCheckoutCubit(
+  getIt.registerFactory(
+    () => TicketCheckoutCubit(
       paymentFacade: getIt(),
       eventTicketsCubit: getIt(),
-      ticketListCubit: ticketListCubit,
-      userTicketFacade: getIt(),
+      ticketListCubit: getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => VipCheckoutCubit(
+      paymentFacade: getIt(),
+      eventTicketsCubit: getIt(),
+      ticketListCubit: getIt(),
     ),
   );
 
   //Rewards
-  getIt.registerFactory(() => ClubRewardsCubit(
-        getIt(),
-        getIt(),
-      ));
+  getIt.registerFactory(
+    () => ClubRewardsCubit(
+      getIt(),
+      getIt(),
+    ),
+  );
 }
 
 void _registerCubitSubjects() {
@@ -335,6 +346,8 @@ void _registerFacades() {
       algoliaEventsApi: getIt(),
       logger: getIt(),
       firebaseAuth: getIt(),
+      storage: getIt(),
+      eventCloudFunctionsFacade: getIt(),
     ),
   );
 
@@ -352,6 +365,8 @@ void _registerFacades() {
       algoliaEventsApi: getIt(),
       logger: getIt(),
       firebaseAuth: getIt(),
+      storage: getIt(),
+      eventCloudFunctionsFacade: getIt(),
     ),
   );
 
@@ -402,6 +417,12 @@ void _registerFacades() {
       firebaseAuth: getIt(),
       firestore: getIt(),
       logger: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<EventCloudFunctionsFacade>(
+    () => EventCloudFunctionsFacadeImpl(
+      getIt(),
     ),
   );
 }

@@ -1,34 +1,34 @@
-part of 'ticket_checkout_cubit.dart';
+part of 'vip_checkout_cubit.dart';
 
 @freezed
-class TicketCheckoutState with _$TicketCheckoutState {
-  const TicketCheckoutState._();
+class VipCheckoutState with _$VipCheckoutState {
+  const VipCheckoutState._();
 
-  factory TicketCheckoutState({
+  factory VipCheckoutState({
     required PromotionCode promotionCode,
-    required Option<Event> event,
+    required Option<Ticket> ticket,
     required Option<String> invalidPromotionCodeMessage,
-    required bool isVip,
-    required Option<int> ticketPrice,
-    required Option<Ticket> purchasedTicket,
+    required Option<int> vipPrice,
+    required Option<Ticket> upgradedTicket,
     required Option<EventTickets> eventTickets,
     required CubitStatus initialStatus,
     required CubitStatus promotionCodeStatus,
     required CubitStatus proceedingToPaymentStatus,
     required Option<String> snackbarMessage,
-  }) = _TicketPaymentState;
+    required bool isVipNoLongerAvailable,
+  }) = _VipCheckoutState;
 
-  factory TicketCheckoutState.initial() => TicketCheckoutState(
+  factory VipCheckoutState.initial() => VipCheckoutState(
         promotionCode: PromotionCode.empty(),
         invalidPromotionCodeMessage: none(),
         initialStatus: CubitStatus.initial,
         proceedingToPaymentStatus: CubitStatus.initial,
         promotionCodeStatus: CubitStatus.initial,
-        isVip: false,
-        purchasedTicket: none(),
         eventTickets: none(),
         snackbarMessage: none(),
-        event: none(),
-        ticketPrice: none(),
+        vipPrice: none(),
+        isVipNoLongerAvailable: false,
+        ticket: none(),
+        upgradedTicket: none(),
       );
 }

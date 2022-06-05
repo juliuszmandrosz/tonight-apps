@@ -11,6 +11,7 @@ part 'ticket_list_state.dart';
 class TicketListCubit extends Cubit<TicketListState> {
   final pageSize = 20;
   final UserTicketFacade _ticketFacade;
+  late final StreamSubscription _upcomingLiveTicketsSubscription;
 
   TicketListCubit(this._ticketFacade) : super(TicketListState.initial());
 
@@ -44,17 +45,21 @@ class TicketListCubit extends Cubit<TicketListState> {
   Future<void> _getUpcomingLiveTickets() async {
     emit(state.copyWith(status: CubitStatus.loading));
 
-    final failureOrSuccess =
-        await _ticketFacade.getUpcomingAndLiveUserTickets();
-
-    failureOrSuccess.fold(
-      (failure) => emit(
-        state.copyWith(status: CubitStatus.failure),
-      ),
-      (tickets) => emit(
-        state.copyWith(
-            status: CubitStatus.success, upcomingLiveTickets: tickets),
-      ),
+    _upcomingLiveTicketsSubscription =
+        _ticketFacade.getUpcomingAndLiveUserTickets().listen(
+      (result) {
+        result.fold(
+          (failure) => emit(
+            state.copyWith(status: CubitStatus.failure),
+          ),
+          (tickets) => emit(
+            state.copyWith(
+              status: CubitStatus.success,
+              upcomingLiveTickets: tickets,
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -75,33 +80,9 @@ class TicketListCubit extends Cubit<TicketListState> {
     );
   }
 
-  addUpcomingLiveTicketToState(Ticket ticket) {
-    final ticketsCopy = [...state.upcomingLiveTickets];
-    ticketsCopy.add(ticket);
-    _sortTicketsByStartDate(ticketsCopy);
-    emit(state.copyWith(upcomingLiveTickets: ticketsCopy));
-  }
-
-  updateUpcomingLiveTicketInState(Ticket oldTicket, Ticket updatedTicket) {
-    final ticketsCopy = [...state.upcomingLiveTickets];
-    final index = ticketsCopy.indexOf(oldTicket);
-    ticketsCopy[index] = updatedTicket;
-    emit(state.copyWith(upcomingLiveTickets: ticketsCopy));
-  }
-
-  updatePastTicketInState(Ticket oldTicket, Ticket updatedTicket) {
-    final ticketsCopy = [...state.pastTickets];
-    final index = ticketsCopy.indexOf(oldTicket);
-    ticketsCopy[index] = updatedTicket;
-    emit(state.copyWith(pastTickets: ticketsCopy));
-  }
-
-  _sortTicketsByStartDate(List<Ticket> tickets) {
-    tickets.sort((a, b) {
-      final firstDate = a.eventStartDateTime;
-      final secondDate = b.eventStartDateTime;
-
-      return firstDate.compareTo(secondDate);
-    });
+  @override
+  Future<void> close() {
+    _upcomingLiveTicketsSubscription.cancel();
+    return super.close();
   }
 }

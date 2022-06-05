@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/ticket_qr/ticket_qr_cubit.dart';
 import 'package:raver/presentation/routes/app_router.dart';
-import 'package:raver_common/extensions/option_extensions.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class UpgradeToVipButton extends StatelessWidget {
@@ -18,15 +18,12 @@ class UpgradeToVipButton extends StatelessWidget {
             SizedBox(
               width: 300,
               child: ElevatedButton(
-                onPressed: () => AutoRouter.of(context).push(
-                  TicketCheckoutRoute(
-                    ticket: state.ticket.getOrCrash(),
-                  ),
+                onPressed: () => context.pushRoute(
+                  VipCheckoutRoute(ticket: state.ticket.getOrCrash()),
                 ),
                 child: Text(S().upgradeToVip),
               ),
             ),
-            const SizedBox(height: 20),
           ],
         );
       },

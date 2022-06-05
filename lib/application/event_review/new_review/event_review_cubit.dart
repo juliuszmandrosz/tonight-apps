@@ -4,7 +4,6 @@ import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/event_review/new_review/form_inputs/review_content_input.dart';
 import 'package:raver/application/profile/profile_cubit_hub.dart';
-import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/application/application.dart';
 import 'package:raver_tickets/raver_tickets.dart';
@@ -15,15 +14,12 @@ part 'event_review_state.dart';
 
 class NewReviewCubit extends Cubit<EventReviewState> {
   final UserReviewFacade _reviewFacade;
-  final TicketListCubit _ticketListCubit;
   final ProfileBroadcastSubject _profileBroadcastSubject;
 
   NewReviewCubit({
     required UserReviewFacade reviewFacade,
     required ProfileBroadcastSubject profileBroadcastSubject,
-    required TicketListCubit ticketListCubit,
   })  : _reviewFacade = reviewFacade,
-        _ticketListCubit = ticketListCubit,
         _profileBroadcastSubject = profileBroadcastSubject,
         super(EventReviewState.initial());
 
@@ -83,13 +79,7 @@ class NewReviewCubit extends Cubit<EventReviewState> {
     failureOrSuccess.fold(
       (failure) => _emitSubmitReviewFailure(),
       (reviewId) {
-        _ticketListCubit.updatePastTicketInState(
-          ticket,
-          ticket.copyWith(reviewId: reviewId),
-        );
-        emit(
-          state.copyWith(submittingStatus: FormzStatus.submissionSuccess),
-        );
+        emit(state.copyWith(submittingStatus: FormzStatus.submissionSuccess));
       },
     );
   }

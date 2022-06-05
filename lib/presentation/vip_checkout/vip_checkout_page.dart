@@ -2,23 +2,22 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
+import 'package:raver/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/routes/app_router.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_header.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_is_vip_switch.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_pay_section.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_promotion_code.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_ticket_card.dart';
+import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_header.dart';
+import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_promotion_code.dart';
+import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_ticket_card.dart';
+import 'package:raver/presentation/vip_checkout/widgets/vip_proceed_to_pay_button.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
+import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class TicketCheckoutPage extends StatelessWidget {
-  final Event event;
+class VipCheckoutPage extends StatelessWidget {
+  final Ticket ticket;
 
-  const TicketCheckoutPage({required this.event, Key? key}) : super(key: key);
+  const VipCheckoutPage({required this.ticket, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,21 +26,23 @@ class TicketCheckoutPage extends StatelessWidget {
       child: Scaffold(
         appBar: RaverAppBar(title: S().checkout),
         body: BlocProvider(
-          create: (_) => getIt<TicketCheckoutCubit>()..initData(event),
-          child: BlocConsumer<TicketCheckoutCubit, TicketCheckoutState>(
+          create: (_) => getIt<VipCheckoutCubit>()..initData(ticket),
+          child: BlocConsumer<VipCheckoutCubit, VipCheckoutState>(
             buildWhen: (previous, current) =>
                 previous.initialStatus != current.initialStatus ||
                 previous.eventTickets != current.eventTickets,
             listenWhen: (previous, current) =>
                 previous.proceedingToPaymentStatus !=
                     current.proceedingToPaymentStatus ||
-                previous.snackbarMessage != current.snackbarMessage,
+                previous.snackbarMessage != current.snackbarMessage ||
+                previous.isVipNoLongerAvailable !=
+                    current.isVipNoLongerAvailable,
             listener: (context, state) {
               if (state.proceedingToPaymentStatus.isSuccess() &&
-                  state.purchasedTicket.isSome()) {
+                  state.upgradedTicket.isSome()) {
                 AutoRouter.of(context).replace(
                   TicketPaymentConfirmRoute(
-                    ticket: state.purchasedTicket.getOrCrash(),
+                    ticket: state.upgradedTicket.getOrCrash(),
                   ),
                 );
               }
@@ -54,6 +55,13 @@ class TicketCheckoutPage extends StatelessWidget {
                 () {},
                 (message) => context.showSnackbarMessage(message),
               );
+
+              if (state.isVipNoLongerAvailable) {
+                AutoRouter.of(context).replaceAll([
+                  const NavigatorRoute(),
+                  TicketQrRoute(ticket: state.ticket.getOrCrash()),
+                ]);
+              }
             },
             builder: (context, state) {
               return state.initialStatus.isLoading()
@@ -64,20 +72,17 @@ class TicketCheckoutPage extends StatelessWidget {
                         children: [
                           Expanded(
                             child: ListView(
-                              children: [
-                                const TicketCheckoutHeader(),
-                                const SizedBox(height: 20),
-                                const TicketCheckoutTicketCard(),
-                                const SizedBox(height: 30),
-                                if (_checkIfVipSwitchVisible(state))
-                                  const TicketCheckoutIsVipSwitch(),
-                                if (!state.eventTickets.getOrCrash().isSoldOut)
-                                  const TicketCheckoutPromotionCode(),
+                              children: const [
+                                VipCheckoutHeader(),
+                                SizedBox(height: 20),
+                                VipCheckoutTicketCard(),
+                                SizedBox(height: 30),
+                                VipCheckoutPromotionCode(),
                               ],
                             ),
                           ),
                           const SizedBox(height: 30),
-                          const TicketCheckoutPaySection(),
+                          const VipProceedToPayButton(),
                         ],
                       ),
                     );
@@ -86,11 +91,5 @@ class TicketCheckoutPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  bool _checkIfVipSwitchVisible(TicketCheckoutState state) {
-    final eventTickets = state.eventTickets.getOrCrash();
-    return !eventTickets.isSoldOut &&
-        eventTickets.getCurrentPool().isVipEnabled;
   }
 }

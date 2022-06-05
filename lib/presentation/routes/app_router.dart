@@ -22,6 +22,7 @@ import 'package:raver/presentation/ticket_payment_confirm/ticket_payment_confirm
 import 'package:raver/presentation/ticket_qr/ticket_qr_page.dart';
 import 'package:raver/presentation/tickets/tickets_page.dart';
 import 'package:raver/presentation/update_username/update_username_page.dart';
+import 'package:raver/presentation/vip_checkout/vip_checkout_page.dart';
 import 'package:raver/presentation/welcome_loader/welcome_loader_page.dart';
 import 'package:raver/terms_of_service/terms_of_service_page.dart';
 import 'package:raver_clubs/raver_clubs.dart';
@@ -53,6 +54,7 @@ part 'app_router.gr.dart';
     AutoRoute(page: TicketQrPage),
     AutoRoute(page: EventDatePickerPage),
     AutoRoute(page: TicketCheckoutPage),
+    AutoRoute(page: VipCheckoutPage),
     AutoRoute(page: TicketPaymentConfirmPage),
     AutoRoute(page: AppSettingsPage),
     AutoRoute(page: UpdateUsernamePage),

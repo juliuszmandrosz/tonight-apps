@@ -26,7 +26,10 @@ class TicketCard extends StatelessWidget {
                   EventDetailsRoute(eventId: ticket.eventId),
                 ),
       child: TicketWidget(
-        height: ticket.isReturned || ticket.isEventCanceled ? 140 : 120,
+        height:
+            ticket.isReturned || ticket.isEventCanceled || ticket.isReturnable
+                ? 140
+                : 120,
         width: double.infinity,
         color: context.surfaceColor,
         isCornerRounded: true,
@@ -48,12 +51,13 @@ class TicketCard extends StatelessWidget {
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  Text(
+                  AutoSizeText(
                     context.formatDateTimeToLocaleYMDHM(
                       ticket.eventStartDateTime,
                     ),
                     style: context.bodyText1
                         .copyWith(color: context.secondaryColor),
+                    maxLines: 1,
                   ),
                   if (ticket.isReturned ||
                       ticket.isEventCanceled ||
@@ -62,9 +66,9 @@ class TicketCard extends StatelessWidget {
                       // TODO - ref
                       ticket.isEventCanceled
                           ? S().canceled.toUpperCase()
-                          : ticket.isReturnable
-                              ? S().postponed.toUpperCase()
-                              : S().returned.toUpperCase(),
+                          : ticket.isReturned
+                              ? S().returned.toUpperCase()
+                              : S().postponed.toUpperCase(),
                       style: context.subtitle1.copyWith(
                         color: context.tertiaryColor,
                       ),

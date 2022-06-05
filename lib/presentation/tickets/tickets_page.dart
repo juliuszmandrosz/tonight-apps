@@ -51,47 +51,43 @@ class _TicketsPageState extends State<TicketsPage> {
               return state.upcomingLiveTickets.isEmpty &&
                       state.pastTickets.isEmpty
                   ? Center(child: Text(S().tickets(0)))
-                  : RefreshIndicator(
-                      onRefresh: () =>
-                          context.read<TicketListCubit>().fetchTickets(),
-                      child: ListView(
-                        controller: _scrollController,
-                        children: [
-                          if (state.upcomingLiveTickets.isNotEmpty)
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: RaverHeadline(text: S().upcomingAndLive),
-                            ),
-                          const SizedBox(height: 20),
-                          ListView.separated(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: state.upcomingLiveTickets.length,
-                            itemBuilder: (ctx, i) => TicketCard(
-                              ticket: state.upcomingLiveTickets[i],
-                            ),
-                            separatorBuilder: (ctx, i) =>
-                                const SizedBox(height: 20),
+                  : ListView(
+                      controller: _scrollController,
+                      children: [
+                        if (state.upcomingLiveTickets.isNotEmpty)
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RaverHeadline(text: S().upcomingAndLive),
                           ),
-                          const SizedBox(height: 30),
-                          if (state.pastTickets.isNotEmpty)
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: RaverHeadline(text: S().pastTickets),
-                            ),
-                          const SizedBox(height: 20),
-                          ListView.separated(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: state.pastTickets.length,
-                            itemBuilder: (ctx, i) => TicketCard(
-                              ticket: state.pastTickets[i],
-                            ),
-                            separatorBuilder: (ctx, i) =>
-                                const SizedBox(height: 20),
+                        const SizedBox(height: 20),
+                        ListView.separated(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: state.upcomingLiveTickets.length,
+                          itemBuilder: (ctx, i) => TicketCard(
+                            ticket: state.upcomingLiveTickets[i],
                           ),
-                        ],
-                      ),
+                          separatorBuilder: (ctx, i) =>
+                              const SizedBox(height: 20),
+                        ),
+                        const SizedBox(height: 30),
+                        if (state.pastTickets.isNotEmpty)
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: RaverHeadline(text: S().pastTickets),
+                          ),
+                        const SizedBox(height: 20),
+                        ListView.separated(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: state.pastTickets.length,
+                          itemBuilder: (ctx, i) => TicketCard(
+                            ticket: state.pastTickets[i],
+                          ),
+                          separatorBuilder: (ctx, i) =>
+                              const SizedBox(height: 20),
+                        ),
+                      ],
                     );
           }
         }),

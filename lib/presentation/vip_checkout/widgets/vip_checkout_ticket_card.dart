@@ -1,24 +1,22 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
+import 'package:raver/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 import 'package:ticket_widget/ticket_widget.dart';
 
-class TicketCheckoutTicketCard extends StatelessWidget {
-  const TicketCheckoutTicketCard({Key? key}) : super(key: key);
+class VipCheckoutTicketCard extends StatelessWidget {
+  const VipCheckoutTicketCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TicketCheckoutCubit, TicketCheckoutState>(
+    return BlocBuilder<VipCheckoutCubit, VipCheckoutState>(
       builder: (context, state) {
-        final event = state.event.getOrCrash();
-
-        final isSoldOut = state.eventTickets.getOrCrash().isSoldOut;
+        final ticket = state.ticket.getOrCrash();
 
         return TicketWidget(
-          height: isSoldOut ? 140 : 120,
+          height: 120,
           width: double.infinity,
           color: context.surfaceColor,
           isCornerRounded: true,
@@ -33,7 +31,7 @@ class TicketCheckoutTicketCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     AutoSizeText(
-                      event.eventName,
+                      ticket.eventName,
                       style: context.headline6,
                       maxLines: 3,
                       textAlign: TextAlign.center,
@@ -42,34 +40,20 @@ class TicketCheckoutTicketCard extends StatelessWidget {
                     ),
                     AutoSizeText(
                       context.formatDateTimeToLocaleYMDHM(
-                        event.eventStartDateTime,
+                        ticket.eventStartDateTime,
                       ),
                       style: context.bodyText1
                           .copyWith(color: context.secondaryColor),
                       maxLines: 1,
                     ),
-                    if (isSoldOut)
-                      Text(
-                        S().soldOut.toUpperCase(),
-                        style: context.subtitle1.copyWith(
-                          color: context.tertiaryColor,
-                        ),
-                      )
                   ],
                 ),
               ),
               const SizedBox(width: 20),
               AutoSizeText(
-                '${state.ticketPrice.getOrCrash()}'
-                '${getCurrencySymbolFromCode(event.currency)}',
-                style: context.headline6.copyWith(
-                  decorationThickness: 2,
-                  decoration: isSoldOut
-                      ? TextDecoration.lineThrough
-                      : TextDecoration.none,
-                  color:
-                      isSoldOut ? context.outlineColor : context.onSurfaceColor,
-                ),
+                '${state.vipPrice.getOrCrash()}'
+                '${getCurrencySymbolFromCode(ticket.currency)}',
+                style: context.headline6,
                 maxLines: 1,
               ),
               const SizedBox(width: 10),
@@ -77,7 +61,7 @@ class TicketCheckoutTicketCard extends StatelessWidget {
               const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  state.isVip ? S().vipVertical : '',
+                  S().vipVertical,
                   textAlign: TextAlign.center,
                   style: context.subtitle1.copyWith(
                     color: context.tertiaryColor,

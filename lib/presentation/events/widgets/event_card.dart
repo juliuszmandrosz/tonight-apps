@@ -192,9 +192,11 @@ class EventCard extends StatelessWidget {
                             padding: const EdgeInsets.all(10),
                             child: AutoSizeText(
                               event.eventName,
-                              maxLines: 2,
                               style: context.headline6,
                               textAlign: TextAlign.center,
+                              softWrap: true,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ),
@@ -215,11 +217,14 @@ class EventCard extends StatelessWidget {
                                     size: 18,
                                   ),
                                   const SizedBox(width: 10),
-                                  AutoSizeText(
-                                    '${S().concert} - ${event.artistName!.capitalize()}',
-                                    style: context.subtitle1,
-                                    textAlign: TextAlign.center,
-                                    maxLines: 1,
+                                  Expanded(
+                                    child: Text(
+                                      '${S().concert} - ${event.artistName!.capitalize()}',
+                                      style: context.subtitle1,
+                                      overflow: TextOverflow.fade,
+                                      maxLines: 1,
+                                      softWrap: false,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -233,11 +238,14 @@ class EventCard extends StatelessWidget {
                               size: 18,
                             ),
                             const SizedBox(width: 10),
-                            AutoSizeText(
-                              event.clubName,
-                              style: context.subtitle1,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
+                            Expanded(
+                              child: AutoSizeText(
+                                event.clubName,
+                                style: context.subtitle1,
+                                overflow: TextOverflow.fade,
+                                maxLines: 1,
+                                softWrap: false,
+                              ),
                             ),
                           ],
                         ),

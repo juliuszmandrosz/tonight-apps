@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:raver/application/core/get_payment_failure_message.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver_common/raver_common.dart';
@@ -19,24 +21,35 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   final UserPaymentFacade _paymentFacade;
   final TicketListCubit _ticketListCubit;
   final EventTicketsCubit _eventTicketsCubit;
-  final UserTicketFacade _userTicketFacade;
-  late StreamSubscription _eventTicketsSubscription;
+  late final StreamSubscription _eventTicketsSubscription;
+  StreamSubscription? _userTicketsSubscription;
 
   TicketCheckoutCubit({
     required UserPaymentFacade paymentFacade,
     required TicketListCubit ticketListCubit,
     required EventTicketsCubit eventTicketsCubit,
-    required UserTicketFacade userTicketFacade,
   })  : _paymentFacade = paymentFacade,
         _ticketListCubit = ticketListCubit,
         _eventTicketsCubit = eventTicketsCubit,
-        _userTicketFacade = userTicketFacade,
         super(TicketCheckoutState.initial());
+
+  void initData(Event event) {
+    emit(
+      state.copyWith(
+        initialStatus: CubitStatus.loading,
+        event: some(event),
+      ),
+    );
+
+    _initEventTickets(event);
+  }
 
   Future<void> proceedToPayForTicket() async {
     emit(state.copyWith(proceedingToPaymentStatus: CubitStatus.loading));
 
-    final event = state.eventInitData.getOrCrash();
+    final event = state.event.getOrCrash();
+
+    _waitForTicketToBeCreated();
 
     final failureOrSuccess = await _paymentFacade.proceedToPayForTicket(
       currency: event.currency,
@@ -45,32 +58,18 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
       isVip: state.isVip,
     );
 
-    await failureOrSuccess.fold(
+    failureOrSuccess.fold(
       (failure) => _emitProceedingToPaymentFailure(failure),
-      (success) async => await _waitForTicketToBeCreated(),
-    );
-  }
-
-  void proceedToPayForVip() async {
-    emit(state.copyWith(proceedingToPaymentStatus: CubitStatus.loading));
-
-    final ticketInitData = state.ticketInitData.getOrCrash();
-
-    final failureOrSuccess = await _paymentFacade.proceedToPayForVip(
-      ticketId: ticketInitData.id,
-      currency: ticketInitData.currency,
-    );
-
-    await failureOrSuccess.fold(
-      (failure) => _emitProceedingToPaymentFailure(failure),
-      (success) async => await _waitForTicketToBeUpdated(),
+      (success) => {},
     );
   }
 
   void getPromotionCode() async {
-    emit(state.copyWith(
-      promotionCodeStatus: CubitStatus.loading,
-    ));
+    emit(
+      state.copyWith(
+        promotionCodeStatus: CubitStatus.loading,
+      ),
+    );
 
     final failureOrSuccess = await _paymentFacade
         .getPromotionCode(state.promotionCode.code.toUpperCase());
@@ -83,23 +82,11 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
             promotionCode: code,
             promotionCodeStatus: CubitStatus.success,
             invalidPromotionCodeMessage: none(),
-            checkoutPrice: state.checkoutPrice - code.amountOff,
+            ticketPrice: some(state.ticketPrice.getOrCrash() - code.amountOff),
           ),
         );
       },
     );
-  }
-
-  void initEventData(Event event) async {
-    emit(state.copyWith(initialStatus: CubitStatus.loading));
-
-    _initEventTicketCubitForTicketPayment(event);
-  }
-
-  void initTicketData(Ticket ticket) async {
-    emit(state.copyWith(initialStatus: CubitStatus.loading));
-
-    _initEventTicketCubitForVipPayment(ticket);
   }
 
   void promotionCodeChanged(String value) {
@@ -113,7 +100,9 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   void resetPromotionCode() {
     emit(
       state.copyWith(
-        checkoutPrice: state.checkoutPrice + state.promotionCode.amountOff,
+        ticketPrice: some(
+          state.ticketPrice.getOrCrash() + state.promotionCode.amountOff,
+        ),
         promotionCode: PromotionCode.empty(),
         promotionCodeStatus: CubitStatus.initial,
         invalidPromotionCodeMessage: none(),
@@ -122,50 +111,26 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   }
 
   void isVipChanged(bool value) {
-    final currentTicketPool = state.eventTickets.getOrCrash().getCurrentPool();
-    final vipPrice = currentTicketPool.vipPrice;
+    final currentPool = state.eventTickets.getOrCrash().getCurrentPool();
+
+    if (!currentPool.isVipEnabled) return;
+
+    final vipPrice = currentPool.vipPrice;
+
+    final currentPrice = state.ticketPrice.getOrCrash();
 
     final newPrice =
-        value ? state.checkoutPrice + vipPrice : state.checkoutPrice - vipPrice;
+        value ? currentPrice + vipPrice! : currentPrice - vipPrice!;
 
     emit(
       state.copyWith(
         isVip: value,
-        checkoutPrice: newPrice,
+        ticketPrice: some(newPrice),
       ),
     );
   }
 
-  _initEventTicketCubitForVipPayment(Ticket ticket) {
-    _eventTicketsCubit.getEventTickets(
-        clubId: ticket.clubId, eventId: ticket.eventId);
-
-    _eventTicketsSubscription =
-        _eventTicketsCubit.stream.listen((eventTicketsState) {
-      if (eventTicketsState.status == CubitStatus.failure) {
-        emit(state.copyWith(initialStatus: CubitStatus.failure));
-      }
-      if (eventTicketsState.status == CubitStatus.success) {
-        final eventTickets = eventTicketsState.eventTickets.getOrCrash();
-
-        final currentTicketPool = eventTickets.getCurrentPool();
-
-        final vipPrice = currentTicketPool.vipPrice;
-
-        emit(
-          state.copyWith(
-            ticketInitData: some(ticket),
-            eventTickets: some(eventTickets),
-            checkoutPrice: vipPrice,
-            initialStatus: CubitStatus.success,
-            isVip: true,
-          ),
-        );
-      }
-    });
-  }
-
-  _initEventTicketCubitForTicketPayment(Event event) {
+  _initEventTickets(Event event) {
     _eventTicketsCubit.getEventTickets(clubId: event.clubId, eventId: event.id);
 
     _eventTicketsSubscription =
@@ -175,7 +140,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
       }
       if (eventTicketsState.status != CubitStatus.success) return;
 
-      final eventTickets = _eventTicketsCubit.state.eventTickets.getOrCrash();
+      final eventTickets = eventTicketsState.eventTickets.getOrCrash();
 
       final currentTicketPool = eventTickets.getCurrentPool();
 
@@ -183,47 +148,68 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
         final poolInState = state.eventTickets.getOrCrash().getCurrentPool();
 
         if (poolInState.poolNumber < currentTicketPool.poolNumber) {
-          _notifyTicketPoolSoldOut();
+          _showSnackbarMessage(S().ticketPoolHasSoldOut);
         }
 
         if (poolInState.poolNumber > currentTicketPool.poolNumber ||
             poolInState.isSoldOut && !currentTicketPool.isSoldOut) {
-          _notifyTicketPoolRestored();
+          _showSnackbarMessage(S().previousTicketPoolAvailable);
+        }
+
+        // TODO - add translation
+        if (poolInState.isVipEnabled && !currentTicketPool.isVipEnabled) {
+          _showSnackbarMessage('VIP nie jest już dostępny!');
+        }
+
+        if (!poolInState.isVipEnabled && currentTicketPool.isVipEnabled) {
+          _showSnackbarMessage('VIP znowu jest dostępny!');
         }
       }
 
-      final vipPrice = state.isVip ? currentTicketPool.vipPrice : 0;
-      final checkoutPrice = currentTicketPool.ticketPrice + vipPrice;
+      var ticketPrice = currentTicketPool.ticketPrice;
 
-      emit(state.copyWith(
-        eventInitData: some(event),
-        checkoutPrice: checkoutPrice - state.promotionCode.amountOff,
-        eventTickets: some(eventTickets),
-        initialStatus: CubitStatus.success,
-      ));
+      final vipPrice =
+          currentTicketPool.isVipEnabled ? currentTicketPool.vipPrice! : 0;
+
+      var isVip = state.isVip;
+
+      if (isVip) {
+        ticketPrice += vipPrice;
+        isVip = currentTicketPool.isVipEnabled;
+      }
+
+      emit(
+        state.copyWith(
+          ticketPrice: some(ticketPrice - state.promotionCode.amountOff),
+          eventTickets: some(eventTickets),
+          initialStatus: CubitStatus.success,
+          isVip: isVip,
+        ),
+      );
     });
-  }
-
-  _notifyTicketPoolSoldOut() {
-    emit(state.copyWith(hasTicketPoolSoldOut: true));
-    emit(state.copyWith(hasTicketPoolSoldOut: false));
-  }
-
-  _notifyTicketPoolRestored() {
-    emit(state.copyWith(hasTicketPoolRestored: true));
-    emit(state.copyWith(hasTicketPoolRestored: false));
   }
 
   Future<void> _waitForTicketToBeCreated() async {
-    final eventId = state.eventInitData.getOrCrash().id;
+    final eventId = state.event.getOrCrash().id;
 
-    final failureOrSuccess =
-        await _userTicketFacade.waitForTicketToBeCreated(eventId);
+    _userTicketsSubscription = _ticketListCubit.stream.listen(
+      (ticketListState) {
+        if (ticketListState.status == CubitStatus.failure) {
+          _showSnackbarMessage(S().serverError);
+          return;
+        }
 
-    failureOrSuccess.fold((failure) => _emitTicketFailure(failure), (ticket) {
-      _ticketListCubit.addUpcomingLiveTicketToState(ticket);
-      _emitTicketCreated(ticket);
-    });
+        final createdTicket =
+            ticketListState.upcomingLiveTickets.firstWhereOrNull(
+          (ticket) => ticket.eventId == eventId && !ticket.isReturned,
+        );
+
+        if (createdTicket != null) {
+          _emitTicketCreated(createdTicket);
+          _userTicketsSubscription?.cancel();
+        }
+      },
+    );
   }
 
   _emitTicketCreated(Ticket ticket) {
@@ -235,83 +221,51 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
     );
   }
 
-  Future<void> _waitForTicketToBeUpdated() async {
-    final oldTicket = state.ticketInitData.getOrCrash();
-
-    final failureOrSuccess =
-        await _userTicketFacade.waitForTicketToBeUpdated(oldTicket.eventId);
-
-    failureOrSuccess.fold((failure) => _emitTicketFailure(failure), (ticket) {
-      _ticketListCubit.updateUpcomingLiveTicketInState(oldTicket, ticket);
-      _emitTicketUpdated(ticket);
-    });
-  }
-
-  _emitTicketUpdated(Ticket ticket) {
-    emit(
-      state.copyWith(
-        proceedingToPaymentStatus: CubitStatus.success,
-        purchasedTicket: some(ticket),
-      ),
-    );
-  }
-
-  _emitTicketFailure(UserTicketFailure failure) {
-    emit(state.copyWith(paymentFailureMessage: some(S().serverError)));
+  _showSnackbarMessage(String message) {
+    emit(state.copyWith(snackbarMessage: some(message)));
 
     emit(state.copyWith(
-      paymentFailureMessage: none(),
+      snackbarMessage: none(),
       proceedingToPaymentStatus: CubitStatus.failure,
     ));
   }
 
   _emitProceedingToPaymentFailure(UserPaymentFailure failure) {
-    final message = _getFailureMessage(failure, isPayment: true);
+    _userTicketsSubscription?.cancel();
+
+    final message = getPaymentFailureMessage(failure);
 
     if (message.isNotEmpty) {
-      emit(state.copyWith(paymentFailureMessage: some(message)));
+      emit(state.copyWith(snackbarMessage: some(message)));
     }
 
-    emit(state.copyWith(
-      paymentFailureMessage: none(),
-      proceedingToPaymentStatus: CubitStatus.failure,
-    ));
+    emit(
+      state.copyWith(
+        snackbarMessage: none(),
+        proceedingToPaymentStatus: CubitStatus.failure,
+      ),
+    );
   }
 
   _emitPromotionCodeFailure(UserPaymentFailure failure) {
-    final message = _getFailureMessage(failure);
+    final message = getPaymentFailureMessage(failure);
 
     message == S().serverError
-        ? emit(state.copyWith(paymentFailureMessage: some(message)))
+        ? emit(state.copyWith(snackbarMessage: some(message)))
         : emit(state.copyWith(invalidPromotionCodeMessage: some(message)));
 
     emit(
       state.copyWith(
         promotionCodeStatus: CubitStatus.failure,
-        paymentFailureMessage: none(),
+        snackbarMessage: none(),
       ),
-    );
-  }
-
-  String _getFailureMessage(UserPaymentFailure failure,
-      {bool isPayment = false}) {
-    return failure.map(
-      unexpected: (_) => isPayment ? S().paymentError : S().serverError,
-      stripeError: (_) => S().paymentError,
-      invalidPromotionCode: (_) => S().invalidPromotionCode,
-      promotionCodeExpired: (_) => S().promotionCodeHasExpired,
-      invalidEvent: (_) => S().invalidEvent,
-      ticketAlreadyHasVip: (_) => S().ticketAlreadyHasVipStatus,
-      returnTimeExpired: (_) => S().returnTimeIsOver,
-      eventCanceled: (_) => S().eventCancelled,
-      eventBeingPostponed: (_) => S().eventBeingPostponed,
-      canceledByUser: (_) => '',
     );
   }
 
   @override
   Future<void> close() {
     _eventTicketsSubscription.cancel();
+    _userTicketsSubscription?.cancel();
     return super.close();
   }
 }
