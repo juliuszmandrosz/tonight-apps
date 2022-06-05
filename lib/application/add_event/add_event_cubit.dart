@@ -185,9 +185,7 @@ class AddEventCubit extends Cubit<AddEventState> {
   void appliedDiscountChanged(PartnerDiscount discount) {
     final originalFee = _getEventFee(state.isExclusiveEvent);
 
-    final newFee = discount.percentageOff == 100
-        ? 0.0
-        : originalFee * discount.percentageOff / 100;
+    final newFee = originalFee * (100 - discount.percentageOff) / 100;
 
     emit(
       state.copyWith(

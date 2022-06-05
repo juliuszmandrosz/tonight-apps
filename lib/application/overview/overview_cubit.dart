@@ -27,6 +27,10 @@ class OverviewCubit extends Cubit<OverviewState> {
 
     await _getClubSales();
     await _getDiscounts();
+
+    if (!state.status.isFailure()) {
+      emit(state.copyWith(status: CubitStatus.success));
+    }
   }
 
   Future<void> _getClubSales() async {
@@ -34,12 +38,7 @@ class OverviewCubit extends Cubit<OverviewState> {
 
     failureOrSuccess.fold(
       (_) => emit(state.copyWith(status: CubitStatus.failure)),
-      (sales) => emit(
-        state.copyWith(
-          status: CubitStatus.success,
-          clubSales: some(sales),
-        ),
-      ),
+      (sales) => emit(state.copyWith(clubSales: some(sales))),
     );
   }
 
@@ -48,12 +47,7 @@ class OverviewCubit extends Cubit<OverviewState> {
 
     failureOrSuccess.fold(
       (_) => emit(state.copyWith(status: CubitStatus.failure)),
-      (discounts) => emit(
-        state.copyWith(
-          status: CubitStatus.success,
-          discounts: discounts,
-        ),
-      ),
+      (discounts) => emit(state.copyWith(discounts: discounts)),
     );
   }
 }

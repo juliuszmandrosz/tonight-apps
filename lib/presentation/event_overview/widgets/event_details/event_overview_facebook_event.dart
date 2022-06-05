@@ -24,7 +24,12 @@ class EventOverviewFacebookEvent extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(child: RaverPartnersHeadline(text: S().facebookEvent)),
+                Expanded(
+                  child: RaverPartnersHeadline(
+                    text: S().facebookEvent,
+                    isSmallerVersion: true,
+                  ),
+                ),
                 const SizedBox(width: 10),
                 ShowEditEventDialogButton(
                   dialog: EditEventFacebookUrlDialog(blocContext: context),

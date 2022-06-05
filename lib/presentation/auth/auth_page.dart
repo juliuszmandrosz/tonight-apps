@@ -16,71 +16,72 @@ class AuthPage extends StatelessWidget {
       overlayColor: context.shadowColor,
       child: Scaffold(
         body: SafeArea(
-            child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 25,
-            vertical: 20,
-          ),
-          child: DefaultTabController(
-            length: 2,
-            initialIndex: 0,
-            child: Column(
-              children: [
-                const Flexible(
-                  flex: 1,
-                  child: PartnersLogo(),
-                ),
-                PreferredSize(
-                  preferredSize: const Size(350, 350),
-                  child: SizedBox(
-                    width: 350,
-                    child: TabBar(
-                      isScrollable: false,
-                      labelPadding:
-                          const EdgeInsets.symmetric(horizontal: 10.0),
-                      labelStyle: context.subtitle1,
-                      tabs: [
-                        SizedBox(
-                          width: 350,
-                          child: Tab(
-                            child: AutoSizeText(
-                              S().signIn,
-                              textAlign: TextAlign.center,
-                              maxLines: 1,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 25,
+              vertical: 20,
+            ),
+            child: DefaultTabController(
+              length: 2,
+              initialIndex: 0,
+              child: Column(
+                children: [
+                  const Flexible(
+                    flex: 1,
+                    child: PartnersLogo(),
+                  ),
+                  PreferredSize(
+                    preferredSize: const Size(350, 350),
+                    child: SizedBox(
+                      width: 350,
+                      child: TabBar(
+                        isScrollable: false,
+                        labelPadding:
+                            const EdgeInsets.symmetric(horizontal: 10.0),
+                        labelStyle: context.subtitle1,
+                        tabs: [
+                          SizedBox(
+                            width: 350,
+                            child: Tab(
+                              child: AutoSizeText(
+                                S().signIn,
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 350,
-                          child: Tab(
-                            child: AutoSizeText(
-                              S().signUp,
-                              textAlign: TextAlign.center,
-                              maxLines: 1,
+                          SizedBox(
+                            width: 350,
+                            child: Tab(
+                              child: AutoSizeText(
+                                S().signUp,
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                const Flexible(
-                  flex: 3,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 20),
-                    child: TabBarView(
-                      physics: NeverScrollableScrollPhysics(),
-                      children: [
-                        SignInTab(),
-                        SignUpTab(),
-                      ],
+                  const Flexible(
+                    flex: 3,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 20),
+                      child: TabBarView(
+                        physics: NeverScrollableScrollPhysics(),
+                        children: [
+                          SignInTab(),
+                          SignUpTab(),
+                        ],
+                      ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
-        )),
+        ),
       ),
     );
   }

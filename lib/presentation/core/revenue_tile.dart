@@ -2,13 +2,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:raver_common/raver_common.dart';
 
-class EventRevenueTile extends StatelessWidget {
+class RevenueTile extends StatelessWidget {
   final IconData icon;
   final String value;
   final String label;
   final bool isFirst;
 
-  const EventRevenueTile({
+  const RevenueTile({
     required this.icon,
     required this.value,
     required this.label,

@@ -26,7 +26,10 @@ class EventOverviewDjChannel extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
-                  child: RaverPartnersHeadline(text: S().djYoutubeChannel),
+                  child: RaverPartnersHeadline(
+                    text: S().djYoutubeChannel,
+                    isSmallerVersion: true,
+                  ),
                 ),
                 const SizedBox(width: 10),
                 ShowEditEventDialogButton(

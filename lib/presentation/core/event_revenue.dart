@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/presentation/core/event_revenue_tile.dart';
+import 'package:raver_partners/presentation/core/revenue_tile.dart';
 import 'package:raver_partners/presentation/core/raver_partners_headline.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -22,7 +22,10 @@ class EventRevenue extends StatelessWidget {
       children: [
         Align(
           alignment: Alignment.centerLeft,
-          child: RaverPartnersHeadline(text: S().statistics),
+          child: RaverPartnersHeadline(
+            text: S().statistics,
+            isSmallerVersion: true,
+          ),
         ),
         const SizedBox(height: 20),
         GridView.count(
@@ -32,7 +35,7 @@ class EventRevenue extends StatelessWidget {
           mainAxisSpacing: 15,
           crossAxisCount: 2,
           children: [
-            EventRevenueTile(
+            RevenueTile(
               icon: FontAwesomeIcons.chartSimple,
               value:
                   '${formatDoubleToMoneyDecimal(ticketSales.clubIncome, ticketSales.currency)} '
@@ -40,31 +43,31 @@ class EventRevenue extends StatelessWidget {
               label: S().income,
               isFirst: true,
             ),
-            EventRevenueTile(
+            RevenueTile(
               icon: FontAwesomeIcons.moneyBills,
               value:
                   '${formatDoubleToMoneyDecimal(ticketSales.totalRevenue, ticketSales.currency)} '
                   '${getCurrencySymbolFromCode(ticketSales.currency)}',
               label: S().totalRevenue,
             ),
-            EventRevenueTile(
+            RevenueTile(
               icon: FontAwesomeIcons.ticket,
               value: '${ticketSales.ticketsSold}',
               label: S().ticketsSold,
             ),
-            EventRevenueTile(
+            RevenueTile(
               icon: FontAwesomeIcons.crown,
               value: '${ticketSales.vipsSold}',
               label: S().vipsSold,
             ),
             if (eventReview != null)
-              EventRevenueTile(
+              RevenueTile(
                 icon: FontAwesomeIcons.solidStar,
                 value: eventReview!.reviewAvg.toStringAsFixed(1),
                 label: S().reviewAvg,
               ),
             if (eventReview != null)
-              EventRevenueTile(
+              RevenueTile(
                 icon: Icons.reviews,
                 value: '${eventReview!.reviewQuantity}',
                 label: S().reviewsQuantity,

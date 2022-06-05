@@ -11,8 +11,15 @@ import 'package:raver_partners/presentation/core/raver_partners_speed_dial.dart'
 import 'package:raver_partners/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class NavigatorPage extends StatelessWidget {
+class NavigatorPage extends StatefulWidget {
   const NavigatorPage({Key? key}) : super(key: key);
+
+  @override
+  State<NavigatorPage> createState() => _NavigatorPageState();
+}
+
+class _NavigatorPageState extends State<NavigatorPage> {
+  var selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -72,11 +79,17 @@ class NavigatorPage extends StatelessWidget {
               SelectorsRoute(),
             ],
             drawer: const RaverPartnersDrawer(),
-            floatingActionButton: const RaverPartnersSpeedDial(),
+            floatingActionButton:
+                selectedIndex > 0 ? const RaverPartnersSpeedDial() : null,
             bottomNavigationBuilder: (_, tabsRouter) {
               return NavigationBar(
                 selectedIndex: tabsRouter.activeIndex,
-                onDestinationSelected: tabsRouter.setActiveIndex,
+                onDestinationSelected: (i) {
+                  setState(() {
+                    selectedIndex = i;
+                  });
+                  tabsRouter.setActiveIndex(i);
+                },
                 destinations: [
                   const NavigationDestination(
                     icon: FaIcon(FontAwesomeIcons.chartSimple),

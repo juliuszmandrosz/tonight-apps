@@ -185,7 +185,7 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerFactory(
+  getIt.registerLazySingleton(
     () => OverviewCubit(
       clubSalesFacade: getIt(),
       discountFacade: getIt(),

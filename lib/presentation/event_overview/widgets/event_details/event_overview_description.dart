@@ -24,7 +24,12 @@ class EventOverviewDescription extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(child: RaverPartnersHeadline(text: S().description)),
+                Expanded(
+                  child: RaverPartnersHeadline(
+                    text: S().description,
+                    isSmallerVersion: true,
+                  ),
+                ),
                 ShowEditEventDialogButton(
                   dialog: EditEventDescriptionDialog(blocContext: context),
                   isValueEmpty: isDescriptionEmpty,

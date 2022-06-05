@@ -26,6 +26,10 @@ class ClubInfoCubit extends Cubit<ClubInfoState> {
 
     await _getClubInfo();
     await _getCurrencyParams();
+
+    if (!state.status.isFailure()) {
+      emit(state.copyWith(status: CubitStatus.success));
+    }
   }
 
   Future<void> _getClubInfo() async {
@@ -33,12 +37,7 @@ class ClubInfoCubit extends Cubit<ClubInfoState> {
 
     failureOrSuccess.fold(
       (failure) => emit(state.copyWith(status: CubitStatus.failure)),
-      (club) => emit(
-        state.copyWith(
-          status: CubitStatus.success,
-          club: some(club),
-        ),
-      ),
+      (club) => emit(state.copyWith(club: some(club))),
     );
   }
 
@@ -50,10 +49,7 @@ class ClubInfoCubit extends Cubit<ClubInfoState> {
     failureOrSuccess.fold(
       (failure) => emit(state.copyWith(status: CubitStatus.failure)),
       (currencyParams) => emit(
-        state.copyWith(
-          status: CubitStatus.success,
-          currencyParams: some(currencyParams),
-        ),
+        state.copyWith(currencyParams: some(currencyParams)),
       ),
     );
   }

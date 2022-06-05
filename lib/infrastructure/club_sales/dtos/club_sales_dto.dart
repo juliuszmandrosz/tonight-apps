@@ -12,17 +12,18 @@ class ClubSalesDto with _$ClubSalesDto {
 
   @JsonSerializable()
   const factory ClubSalesDto({
-    @JsonKey(ignore: true) String? id,
-    required double totalRevenue,
-    required double exclusiveEventsRevenue,
-    required int ticketsSold,
-    required int vipsSold,
-    required int exclusiveTicketsSold,
-    required int exclusiveVipsSold,
+    required String currency,
+    @Default(0) double totalRevenue,
+    @Default(0) double exclusiveEventsRevenue,
+    @Default(0) int ticketsSold,
+    @Default(0) int vipsSold,
+    @Default(0) int exclusiveTicketsSold,
+    @Default(0) int exclusiveVipsSold,
   }) = _ClubSalesDto;
 
   factory ClubSalesDto.fromDomain(ClubSales clubSales) {
     return ClubSalesDto(
+      currency: clubSales.currency,
       totalRevenue: clubSales.totalRevenue,
       exclusiveEventsRevenue: clubSales.exclusiveEventsRevenue,
       ticketsSold: clubSales.ticketsSold,
@@ -37,12 +38,12 @@ class ClubSalesDto with _$ClubSalesDto {
 
   factory ClubSalesDto.fromFirebase(DocumentSnapshot documentSnapshot) {
     return ClubSalesDto.fromJson(
-            documentSnapshot.data() as Map<String, dynamic>)
-        .copyWith(id: documentSnapshot.id);
+        documentSnapshot.data() as Map<String, dynamic>);
   }
 
   ClubSales toDomain() {
     return ClubSales(
+      currency: currency,
       totalRevenue: totalRevenue,
       exclusiveEventsRevenue: exclusiveEventsRevenue,
       ticketsSold: ticketsSold,

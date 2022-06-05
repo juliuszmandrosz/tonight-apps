@@ -55,7 +55,9 @@ class FirebaseDiscountFacade implements DiscountFacade {
   Future<Either<DiscountFailure, List<PartnerDiscount>>>
       getAllDiscounts() async {
     try {
-      final result = await _firestore.partnersDiscounts.get();
+      final result = await _firestore.partnersDiscounts
+          .orderBy('requiredExclusiveEventsSales')
+          .get();
 
       return right<DiscountFailure, List<PartnerDiscount>>(
         result.docs

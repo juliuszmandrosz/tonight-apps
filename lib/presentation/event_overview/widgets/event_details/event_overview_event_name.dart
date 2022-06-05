@@ -17,7 +17,12 @@ class EventOverviewEventName extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(child: RaverPartnersHeadline(text: S().eventName)),
+            Expanded(
+              child: RaverPartnersHeadline(
+                text: S().eventName,
+                isSmallerVersion: true,
+              ),
+            ),
             ShowEditEventDialogButton(
               dialog: EditEventNameDialog(blocContext: context),
               isValueEmpty: false,

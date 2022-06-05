@@ -60,7 +60,10 @@ class EventOverviewTicketPools extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      RaverPartnersHeadline(text: S().tickets(2)),
+                      RaverPartnersHeadline(
+                        text: S().tickets(2),
+                        isSmallerVersion: true,
+                      ),
                       IconButton(
                         onPressed: () async {
                           final result =

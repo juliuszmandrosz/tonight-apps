@@ -19,6 +19,7 @@ class PastEventReviews extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: RaverPartnersHeadline(
                 text: state.reviews.isEmpty ? S().noOpinions : S().opinions(2),
+                isSmallerVersion: true,
               ),
             ),
             const SizedBox(height: 20),

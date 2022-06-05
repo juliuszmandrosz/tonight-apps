@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class ClubSales extends Equatable {
+  final String currency;
   final double totalRevenue;
   final double exclusiveEventsRevenue;
   final int ticketsSold;
@@ -9,6 +10,7 @@ class ClubSales extends Equatable {
   final int exclusiveVipsSold;
 
   const ClubSales({
+    required this.currency,
     this.totalRevenue = 0,
     this.exclusiveEventsRevenue = 0,
     this.ticketsSold = 0,
@@ -19,6 +21,7 @@ class ClubSales extends Equatable {
 
   @override
   List<Object?> get props => [
+        currency,
         totalRevenue,
         exclusiveEventsRevenue,
         ticketsSold,
@@ -28,6 +31,7 @@ class ClubSales extends Equatable {
       ];
 
   ClubSales copyWith({
+    String? currency,
     double? totalRevenue,
     double? exclusiveEventsRevenue,
     int? ticketsSold,
@@ -36,6 +40,7 @@ class ClubSales extends Equatable {
     int? exclusiveVipsSold,
   }) {
     return ClubSales(
+      currency: currency ?? this.currency,
       totalRevenue: totalRevenue ?? this.totalRevenue,
       exclusiveEventsRevenue:
           exclusiveEventsRevenue ?? this.exclusiveEventsRevenue,
