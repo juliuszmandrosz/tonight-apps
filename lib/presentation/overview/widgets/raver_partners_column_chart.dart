@@ -41,6 +41,8 @@ class RaverPartnersColumnChart extends StatelessWidget {
           dataLabelSettings: DataLabelSettings(
             isVisible: true,
             textStyle: context.bodyText2,
+            labelPosition: ChartDataLabelPosition.outside,
+
           ),
         ),
       ],

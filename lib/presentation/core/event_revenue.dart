@@ -38,7 +38,7 @@ class EventRevenue extends StatelessWidget {
             RevenueTile(
               icon: FontAwesomeIcons.chartSimple,
               value:
-                  '${formatDoubleToMoneyDecimal(ticketSales.clubIncome, ticketSales.currency)} '
+                  '${formatDoubleToMoney(ticketSales.clubIncome, ticketSales.currency)}'
                   '${getCurrencySymbolFromCode(ticketSales.currency)}',
               label: S().income,
               isFirst: true,
@@ -46,7 +46,7 @@ class EventRevenue extends StatelessWidget {
             RevenueTile(
               icon: FontAwesomeIcons.moneyBills,
               value:
-                  '${formatDoubleToMoneyDecimal(ticketSales.totalRevenue, ticketSales.currency)} '
+                  '${formatDoubleToMoney(ticketSales.totalRevenue, ticketSales.currency)}'
                   '${getCurrencySymbolFromCode(ticketSales.currency)}',
               label: S().totalRevenue,
             ),

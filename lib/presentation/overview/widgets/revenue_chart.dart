@@ -19,7 +19,7 @@ class RevenueChart extends StatelessWidget {
           ChartData(
             x: 'Normal events',
             y: normalEventsRevenue,
-            label: '$normalEventsRevenue'
+            label: '${formatDoubleToMoney(normalEventsRevenue, sales.currency)}'
                 '${getCurrencySymbolFromCode(sales.currency)}',
             color: context.secondaryColor,
           ),
@@ -27,7 +27,8 @@ class RevenueChart extends StatelessWidget {
             // TODO - add translation
             x: 'Exclusive events',
             y: sales.exclusiveEventsRevenue,
-            label: '${sales.exclusiveEventsRevenue}'
+            label:
+                '${formatDoubleToMoney(sales.exclusiveEventsRevenue, sales.currency)}'
                 '${getCurrencySymbolFromCode(sales.currency)}',
             color: context.primaryColor,
           ),
