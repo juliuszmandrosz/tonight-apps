@@ -85,8 +85,11 @@ class FirebaseRewardFacade
     String clubId,
   ) async {
     try {
-      final result =
-          await _firestore.clubCollection.doc(clubId).rewardsCollection.get();
+      final result = await _firestore.clubCollection
+          .doc(clubId)
+          .rewardsCollection
+          .orderBy('requiredEntries')
+          .get();
 
       return right<UserRewardFailure, List<Reward>>(
         result.docs
