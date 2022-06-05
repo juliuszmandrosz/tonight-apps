@@ -48,6 +48,7 @@ class TicketQrPage extends StatelessWidget {
             previous.isVipEnabled != current.isVipEnabled ||
             previous.ticket != current.ticket,
         builder: (context, state) {
+          final ticketInState = state.ticket.getOrCrash();
           return LoaderOverlay(
             overlayColor: context.shadowColor,
             child: Scaffold(
@@ -64,18 +65,18 @@ class TicketQrPage extends StatelessWidget {
                         size: 300,
                         backgroundColor: context.onSurfaceColor,
                       ),
-                      if (state.ticket.getOrCrash().isVip)
+                      if (ticket.isVip)
                         Padding(
                           padding: const EdgeInsets.only(top: 20),
                           child: RaverHeadline(text: S().vip),
                         ),
                       const Spacer(),
-                      if (!ticket.isVip && state.isVipEnabled)
+                      if (!ticketInState.isVip && state.isVipEnabled)
                         const UpgradeToVipButton(),
-                      if (ticket.eventStartDateTime.isAfter(
+                      if (ticketInState.eventStartDateTime.isAfter(
                             DateTime.now().add(const Duration(days: 1)),
                           ) &&
-                          ticket.isReturnable)
+                          ticketInState.isReturnable)
                         const TicketReturnButton(),
                     ],
                   ),
