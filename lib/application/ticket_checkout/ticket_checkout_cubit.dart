@@ -110,6 +110,10 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
     );
   }
 
+  void sendInvoiceChanged(bool value) {
+    emit(state.copyWith(sendInvoice: value));
+  }
+
   void isVipChanged(bool value) {
     final currentPool = state.eventTickets.getOrCrash().getCurrentPool();
 

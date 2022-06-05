@@ -7,6 +7,7 @@ import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_header.dart';
+import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_invoice_checkbox.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_is_vip_switch.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_pay_section.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_promotion_code.dart';
@@ -73,6 +74,8 @@ class TicketCheckoutPage extends StatelessWidget {
                                   const TicketCheckoutIsVipSwitch(),
                                 if (!state.eventTickets.getOrCrash().isSoldOut)
                                   const TicketCheckoutPromotionCode(),
+                                const SizedBox(height: 20),
+                                const TicketCheckoutInvoiceCheckbox(),
                               ],
                             ),
                           ),

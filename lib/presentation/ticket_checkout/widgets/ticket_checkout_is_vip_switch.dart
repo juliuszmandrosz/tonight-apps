@@ -17,7 +17,7 @@ class TicketCheckoutIsVipSwitch extends StatelessWidget {
           children: [
             InputDecorator(
               decoration: const InputDecoration().copyWith(
-                contentPadding: const EdgeInsets.all(5),
+                contentPadding: const EdgeInsets.all(2),
               ),
               child: SwitchListTile.adaptive(
                 title: Text(

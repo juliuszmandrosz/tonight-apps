@@ -16,6 +16,7 @@ class TicketCheckoutState with _$TicketCheckoutState {
     required CubitStatus promotionCodeStatus,
     required CubitStatus proceedingToPaymentStatus,
     required Option<String> snackbarMessage,
+    required bool sendInvoice,
   }) = _TicketPaymentState;
 
   factory TicketCheckoutState.initial() => TicketCheckoutState(
@@ -30,5 +31,6 @@ class TicketCheckoutState with _$TicketCheckoutState {
         snackbarMessage: none(),
         event: none(),
         ticketPrice: none(),
+        sendInvoice: false,
       );
 }
