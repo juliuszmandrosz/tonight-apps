@@ -3,7 +3,7 @@ import 'package:raver_tickets/domain/ticket_entity.dart';
 import 'package:raver_tickets/domain/failures/user_ticket_failure.dart';
 
 abstract class UserTicketFacade {
-  Future<Either<UserTicketFailure, List<Ticket>>>
+  Stream<Either<UserTicketFailure, List<Ticket>>>
       getUpcomingAndLiveUserTickets();
 
   Future<Either<UserTicketFailure, List<Ticket>>> getPastUserTickets({
@@ -14,13 +14,5 @@ abstract class UserTicketFacade {
   Future<Either<UserTicketFailure, Unit>> returnTicket(
     String ticketPaymentId,
     String ticketId,
-  );
-
-  Future<Either<UserTicketFailure, Ticket>> waitForTicketToBeCreated(
-    String eventId,
-  );
-
-  Future<Either<UserTicketFailure, Ticket>> waitForTicketToBeUpdated(
-    String eventId,
   );
 }

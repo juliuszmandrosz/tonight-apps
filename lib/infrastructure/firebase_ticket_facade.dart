@@ -27,26 +27,30 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
         _logger = logger;
 
   @override
-  Future<Either<UserTicketFailure, List<Ticket>>>
-      getUpcomingAndLiveUserTickets() async {
-    try {
-      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+  Stream<Either<UserTicketFailure, List<Ticket>>>
+      getUpcomingAndLiveUserTickets() async* {
+    final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
 
-      final result = await userDocRef.ticketCollection
-          .where('eventEndDateTime', isGreaterThan: Timestamp.now())
-          .orderBy('eventEndDateTime')
-          .get();
+    final ticketsQuery = userDocRef.ticketCollection
+        .where('eventEndDateTime', isGreaterThan: Timestamp.now())
+        .orderBy('eventEndDateTime');
 
-      return right<UserTicketFailure, List<Ticket>>(
-        result.docs
-            .map((doc) => TicketDto.fromFirebase(doc).toDomain())
-            .toList(),
-      );
-    } on FirebaseException catch (e) {
-      _logger.e(
-          "Firebase Exception getting upcoming and live user tickets EXCEPTION: $e");
-      return left(const UserTicketFailure.unexpected());
-    }
+    yield* ticketsQuery
+        .snapshots()
+        .map(
+          (snapshot) => right<UserTicketFailure, List<Ticket>>(
+            snapshot.docs
+                .map((doc) => TicketDto.fromFirebase(doc).toDomain())
+                .toList(),
+          ),
+        )
+        .handleError((e) {
+      if (e is FirebaseException) {
+        _logger.e(
+            "Firebase Exception getting upcoming and live user tickets EXCEPTION: $e");
+        return left(const UserTicketFailure.unexpected());
+      }
+    });
   }
 
   @override
@@ -78,68 +82,6 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
       );
     } on FirebaseException catch (e) {
       _logger.e("Firebase Exception getting past user tickets EXCEPTION: $e");
-      return left(const UserTicketFailure.unexpected());
-    }
-  }
-
-  @override
-  Future<Either<UserTicketFailure, Ticket>> waitForTicketToBeCreated(
-    String eventId,
-  ) async {
-    try {
-      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
-
-      Ticket result;
-
-      final query = userDocRef.ticketCollection
-          .where('eventId', isEqualTo: eventId)
-          .limit(1);
-
-      final snapshot = await query.snapshots().firstWhere(
-            (snap) => snap.docChanges
-                .any((change) => change.type == DocumentChangeType.added),
-          );
-
-      result = snapshot.docs
-          .map((doc) => TicketDto.fromFirebase(doc).toDomain())
-          .first;
-
-      return right(result);
-    } on FirebaseException catch (e) {
-      _logger.e(
-        "Firebase Exception waiting for ticket to be created EXCEPTION: $e",
-      );
-      return left(const UserTicketFailure.unexpected());
-    }
-  }
-
-  @override
-  Future<Either<UserTicketFailure, Ticket>> waitForTicketToBeUpdated(
-    String eventId,
-  ) async {
-    try {
-      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
-
-      Ticket result;
-
-      final query = userDocRef.ticketCollection
-          .where('eventId', isEqualTo: eventId)
-          .limit(1);
-
-      final snapshot = await query.snapshots().firstWhere(
-            (snap) => snap.docChanges
-                .any((change) => change.type == DocumentChangeType.modified),
-          );
-
-      result = snapshot.docs
-          .map((doc) => TicketDto.fromFirebase(doc).toDomain())
-          .first;
-
-      return right(result);
-    } on FirebaseException catch (e) {
-      _logger.e(
-        "Firebase Exception waiting for ticket to be updated EXCEPTION: $e",
-      );
       return left(const UserTicketFailure.unexpected());
     }
   }
