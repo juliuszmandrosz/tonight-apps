@@ -7,8 +7,9 @@ import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
+import 'package:raver_partners/presentation/core/raver_partners_fab.dart';
+import 'package:raver_partners/presentation/core/selected_page.dart';
 import 'package:raver_partners/presentation/drawer/raver_partners_drawer.dart';
-import 'package:raver_partners/presentation/core/raver_partners_speed_dial.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -20,7 +21,7 @@ class NavigatorPage extends StatefulWidget {
 }
 
 class _NavigatorPageState extends State<NavigatorPage> {
-  var selectedIndex = 0;
+  var selectedPage = SelectedPage.overview;
 
   @override
   Widget build(BuildContext context) {
@@ -83,14 +84,28 @@ class _NavigatorPageState extends State<NavigatorPage> {
               SelectorsRoute(),
             ],
             drawer: const RaverPartnersDrawer(),
-            floatingActionButton:
-                selectedIndex > 0 ? const RaverPartnersSpeedDial() : null,
+            floatingActionButton: selectedPage != SelectedPage.overview
+                ? RaverPartnersFab(selectedPage: selectedPage)
+                : null,
             bottomNavigationBuilder: (_, tabsRouter) {
               return NavigationBar(
                 selectedIndex: tabsRouter.activeIndex,
                 onDestinationSelected: (i) {
                   setState(() {
-                    selectedIndex = i;
+                    switch (i) {
+                      case (0):
+                        selectedPage = SelectedPage.overview;
+                        break;
+                      case (1):
+                        selectedPage = SelectedPage.events;
+                        break;
+                      case (2):
+                        selectedPage = SelectedPage.rewards;
+                        break;
+                      case (3):
+                        selectedPage = SelectedPage.selectors;
+                        break;
+                    }
                   });
                   tabsRouter.setActiveIndex(i);
                 },
