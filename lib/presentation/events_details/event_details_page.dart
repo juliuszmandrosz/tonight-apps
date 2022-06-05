@@ -93,17 +93,21 @@ class EventDetailsPage extends StatelessWidget {
                           ),
                         ];
                       },
-                      body: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              if (event.isCanceled)
-                                const CanceledEventMessage(),
-                              Column(
+                      body: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            if (event.isCanceled) const CanceledEventMessage(),
+                            Padding(
+                              padding: const EdgeInsets.all(15),
+                              child: Column(
                                 children: [
-                                  EventDetailsSection(event: event),
-                                  const SizedBox(height: 20),
+                                  if (!event.isCanceled)
+                                    Column(
+                                      children: [
+                                        EventDetailsSection(event: event),
+                                        const SizedBox(height: 20),
+                                      ],
+                                    ),
                                   EventDetailsEventName(event: event),
                                   const SizedBox(height: 20),
                                   EventDetailsClubName(event: event),
@@ -121,16 +125,20 @@ class EventDetailsPage extends StatelessWidget {
                                     ),
                                   EventDetailsAdditionalInfo(event: event),
                                   EventDetailsEventPlace(event: event),
-                                  const SizedBox(height: 30),
-                                  EventDetailsTicketPools(event: event),
                                   if (!event.isCanceled &&
                                       event.eventEndDateTime
                                           .isAfter(DateTime.now()))
-                                    const SizedBox(height: 60),
+                                    Column(
+                                      children: [
+                                        const SizedBox(height: 30),
+                                        EventDetailsTicketPools(event: event),
+                                        const SizedBox(height: 60),
+                                      ],
+                                    ),
                                 ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
