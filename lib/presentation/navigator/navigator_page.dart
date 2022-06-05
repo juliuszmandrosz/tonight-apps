@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lottie/lottie.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/welcome_loader/welcome_loader_cubit.dart';
@@ -62,7 +63,10 @@ class _NavigatorPageState extends State<NavigatorPage> {
           }
 
           if (loaderState.welcomeLoaderStatus.isLoading()) {
-            return const Center(child: CircularProgressIndicator());
+            return Lottie.asset(
+              'assets/animations/tickets_logo.json',
+              frameRate: FrameRate(60),
+            );
           }
 
           if (loaderState.welcomeLoaderStatus.isFailure()) {
