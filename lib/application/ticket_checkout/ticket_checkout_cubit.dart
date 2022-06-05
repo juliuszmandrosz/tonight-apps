@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
+import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/core/form_inputs/name.dart';
 import 'package:raver/application/core/form_inputs/surname.dart';
@@ -115,6 +116,21 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
 
   void sendInvoiceChanged(bool value) {
     emit(state.copyWith(sendInvoice: value));
+  }
+
+  void nameChanged(String value) {
+    final name = Name.dirty(value);
+    emit(state.copyWith(name: name));
+  }
+
+  void surnameChanged(String value) {
+    final surname = Surname.dirty(value);
+    emit(state.copyWith(surname: surname));
+  }
+
+  void taxNumberChanged(String value) {
+    final taxNumber = TaxNumber.dirty(value);
+    emit(state.copyWith(taxNumber: taxNumber));
   }
 
   void isVipChanged(bool value) {

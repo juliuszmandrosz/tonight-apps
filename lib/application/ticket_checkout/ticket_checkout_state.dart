@@ -20,6 +20,7 @@ class TicketCheckoutState with _$TicketCheckoutState {
     required Name name,
     required Surname surname,
     required TaxNumber taxNumber,
+    required FormzStatus invoiceDataStatus,
   }) = _TicketPaymentState;
 
   factory TicketCheckoutState.initial() => TicketCheckoutState(
@@ -38,5 +39,6 @@ class TicketCheckoutState with _$TicketCheckoutState {
         name: const Name.pure(),
         surname: const Surname.pure(),
         taxNumber: const TaxNumber.pure(),
+        invoiceDataStatus: FormzStatus.pure,
       );
 }

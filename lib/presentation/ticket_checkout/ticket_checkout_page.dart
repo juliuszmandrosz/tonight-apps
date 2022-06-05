@@ -8,6 +8,7 @@ import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_header.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_invoice_checkbox.dart';
+import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_invoice_data.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_is_vip_switch.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_pay_section.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_promotion_code.dart';
@@ -32,7 +33,8 @@ class TicketCheckoutPage extends StatelessWidget {
           child: BlocConsumer<TicketCheckoutCubit, TicketCheckoutState>(
             buildWhen: (previous, current) =>
                 previous.initialStatus != current.initialStatus ||
-                previous.eventTickets != current.eventTickets,
+                previous.eventTickets != current.eventTickets ||
+                previous.sendInvoice != current.sendInvoice,
             listenWhen: (previous, current) =>
                 previous.proceedingToPaymentStatus !=
                     current.proceedingToPaymentStatus ||
@@ -62,6 +64,7 @@ class TicketCheckoutPage extends StatelessWidget {
                   : Padding(
                       padding: const EdgeInsets.all(15),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Expanded(
                             child: ListView(
@@ -76,6 +79,8 @@ class TicketCheckoutPage extends StatelessWidget {
                                   const TicketCheckoutPromotionCode(),
                                 const SizedBox(height: 20),
                                 const TicketCheckoutInvoiceCheckbox(),
+                                if (state.sendInvoice)
+                                  const TicketCheckoutInvoiceData(),
                               ],
                             ),
                           ),

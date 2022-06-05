@@ -20,7 +20,7 @@ class TicketCheckoutInvoiceCheckbox extends StatelessWidget {
             activeColor: context.primaryColor,
             // TODO - add translation
             title: Text(
-              'Chcę fakturę VAT',
+              'Chcę fakturę',
               style: context.subtitle1,
             ),
             value: state.sendInvoice,

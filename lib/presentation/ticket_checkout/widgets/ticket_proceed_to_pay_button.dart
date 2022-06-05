@@ -8,13 +8,10 @@ class TicketProceedToPayButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 300,
-      child: ElevatedButton(
-        onPressed: () =>
-            context.read<TicketCheckoutCubit>().proceedToPayForTicket(),
-        child: Text(S().proceedToPay),
-      ),
+    return ElevatedButton(
+      onPressed: () =>
+          context.read<TicketCheckoutCubit>().proceedToPayForTicket(),
+      child: Text(S().proceedToPay),
     );
   }
 }
