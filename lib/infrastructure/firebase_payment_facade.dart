@@ -63,6 +63,7 @@ class FirebasePaymentFacade implements UserPaymentFacade {
     required String currency,
     String? promotionCode,
     bool isVip = false,
+    bool sendInvoice = false,
   }) async {
     try {
       final result =
@@ -70,6 +71,7 @@ class FirebasePaymentFacade implements UserPaymentFacade {
         eventId: eventId,
         isVip: isVip,
         promotionCode: promotionCode,
+        sendInvoice: sendInvoice,
       );
 
       try {

@@ -8,6 +8,7 @@ abstract class PaymentCloudFunctionsFacade {
     required String eventId,
     String? promotionCode,
     bool isVip = false,
+    bool sendInvoice = false,
   });
 
   Future<CreatePaymentSheetResponse> createVipPaymentSheet({
@@ -28,6 +29,7 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
     required String eventId,
     String? promotionCode,
     bool isVip = false,
+    bool sendInvoice = false,
   }) async {
     final createTicketPaymentSheetFn =
         _functions.httpsCallable(createTicketPaymentSheetFnName);
@@ -36,6 +38,7 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
       'eventId': eventId,
       'promotionCode': promotionCode,
       'isVip': isVip,
+      'sendInvoice': sendInvoice,
     });
 
     return CreatePaymentSheetResponse.fromJson(result.data);
