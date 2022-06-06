@@ -200,7 +200,27 @@ class FirebasePaymentFacade implements UserPaymentFacade {
         googlePay: true,
         applePay: true,
         merchantDisplayName: 'Tonight',
-        primaryButtonColor: DarkColors.primaryColor,
+        appearance: PaymentSheetAppearance(
+          shapes: const PaymentSheetShape(borderRadius: 8),
+          colors: PaymentSheetAppearanceColors(
+            icon: colors.onSurface,
+            background: colors.background,
+            error: colors.error,
+            primary: colors.primary,
+            componentBackground: colors.surface,
+            primaryText: colors.onSurface,
+          ),
+          primaryButton: PaymentSheetPrimaryButtonAppearance(
+            shapes: const PaymentSheetPrimaryButtonShape(blurRadius: 20),
+            colors: PaymentSheetPrimaryButtonTheme(
+              dark: PaymentSheetPrimaryButtonThemeColors(
+                text: colors.onSurface,
+                background: colors.primary,
+                border: colors.primary,
+              ),
+            ),
+          ),
+        ),
         style: ThemeMode.dark,
       ),
     );
