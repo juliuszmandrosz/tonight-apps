@@ -26,4 +26,6 @@ abstract class UserPaymentFacade {
     String? countryCode,
     bool isCompany = false,
   });
+
+  Future<Either<UserPaymentFailure, InvoiceData>> getInvoiceData();
 }

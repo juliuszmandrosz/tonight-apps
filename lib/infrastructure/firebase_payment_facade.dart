@@ -10,6 +10,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_payments/domain/facades/user_payment_facade.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_errors.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
+import 'package:raver_payments/infrastructure/dtos/invoice_data_dto.dart';
 import 'dtos/promotion_code_dto.dart';
 
 class FirebasePaymentFacade implements UserPaymentFacade {
@@ -158,10 +159,28 @@ class FirebasePaymentFacade implements UserPaymentFacade {
       return right(unit);
     } on FirebaseFunctionsException catch (e) {
       _logger.e(
-        "Firebase Functions Exception updating invoice data EXCEPTION: $e",
+        'Firebase Functions Exception updating invoice data EXCEPTION: $e',
       );
       return left(userPaymentCloudFunctionsErrors[e.details] ??
           const UserPaymentFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<UserPaymentFailure, InvoiceData>> getInvoiceData() async {
+    try {
+      final userDoc =
+          await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
+
+      final invoiceData =
+          await _firestore.stripeCustomers.doc(userDoc.id).get();
+
+      final result = InvoiceDataDto.fromFirebase(invoiceData).toDomain();
+
+      return right(result);
+    } on FirebaseException catch (e) {
+      _logger.e('Firebase Exception getting invoice data EXCEPTION: $e');
+      return left(const UserPaymentFailure.unexpected());
     }
   }
 
