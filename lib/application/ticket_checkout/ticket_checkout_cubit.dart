@@ -5,9 +5,6 @@ import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/core/form_inputs/name.dart';
-import 'package:raver/application/core/form_inputs/surname.dart';
-import 'package:raver/application/core/form_inputs/tax_number.dart';
 import 'package:raver/application/core/get_payment_failure_message.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
@@ -60,6 +57,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
       eventId: event.id,
       promotionCode: state.promotionCode.code,
       isVip: state.isVip,
+      sendInvoice: state.sendInvoice,
     );
 
     failureOrSuccess.fold(
@@ -116,21 +114,6 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
 
   void sendInvoiceChanged(bool value) {
     emit(state.copyWith(sendInvoice: value));
-  }
-
-  void nameChanged(String value) {
-    final name = Name.dirty(value);
-    emit(state.copyWith(name: name));
-  }
-
-  void surnameChanged(String value) {
-    final surname = Surname.dirty(value);
-    emit(state.copyWith(surname: surname));
-  }
-
-  void taxNumberChanged(String value) {
-    final taxNumber = TaxNumber.dirty(value);
-    emit(state.copyWith(taxNumber: taxNumber));
   }
 
   void isVipChanged(bool value) {

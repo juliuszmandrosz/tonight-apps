@@ -17,9 +17,6 @@ class TicketCheckoutState with _$TicketCheckoutState {
     required CubitStatus proceedingToPaymentStatus,
     required Option<String> snackbarMessage,
     required bool sendInvoice,
-    required Name name,
-    required Surname surname,
-    required TaxNumber taxNumber,
     required FormzStatus invoiceDataStatus,
   }) = _TicketPaymentState;
 
@@ -36,9 +33,6 @@ class TicketCheckoutState with _$TicketCheckoutState {
         event: none(),
         ticketPrice: none(),
         sendInvoice: false,
-        name: const Name.pure(),
-        surname: const Surname.pure(),
-        taxNumber: const TaxNumber.pure(),
         invoiceDataStatus: FormzStatus.pure,
       );
 }

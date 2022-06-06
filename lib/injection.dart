@@ -27,6 +27,7 @@ import 'package:raver/application/events/event_favorite/event_favorite_cubit.dar
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:raver/application/initialization/remote_config_cubit.dart';
+import 'package:raver/application/invoice_data/invoice_data_cubit.dart';
 import 'package:raver/application/profile/profile_cubit_hub.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
@@ -260,6 +261,12 @@ void _registerCubits() {
   getIt.registerFactory(
     () => ClubRewardsCubit(
       getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => InvoiceDataCubit(
       getIt(),
     ),
   );

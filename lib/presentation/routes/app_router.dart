@@ -10,6 +10,7 @@ import 'package:raver/presentation/event_review/review_page.dart';
 import 'package:raver/presentation/events/events_page.dart';
 import 'package:raver/presentation/events_details/event_details_page.dart';
 import 'package:raver/presentation/favorites/favorites_page.dart';
+import 'package:raver/presentation/invoice_data/invoice_data_page.dart';
 import 'package:raver/presentation/navigator/navigator_page.dart';
 import 'package:raver/presentation/network_lost/network_lost_page.dart';
 import 'package:raver/presentation/notifications/notifications_page.dart';
@@ -63,6 +64,7 @@ part 'app_router.gr.dart';
     AutoRoute(page: ContactPage),
     AutoRoute(page: NotificationsPage),
     AutoRoute(page: TermsOfServicePage),
+    AutoRoute(page: InvoiceDataPage),
   ],
 )
 class AppRouter extends _$AppRouter {}

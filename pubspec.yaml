@@ -90,7 +90,8 @@ dependencies:
   timeago: ^3.2.2
   launch_review: ^3.0.1
   cached_network_image: ^3.2.1
-
+  country_code_picker: ^2.0.2
+  intl: ^0.17.0
 
   raver_translations:
     git:
@@ -132,7 +133,7 @@ dependencies:
   raver_payments:
     git:
       url: git@github.com:juliuszmandrosz/RaverPayments.git
-      ref: develop
+      ref: feature/send-invoice
 
 dev_dependencies:
   flutter_test:

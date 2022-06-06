@@ -12,6 +12,9 @@ String getPaymentFailureMessage(UserPaymentFailure failure) {
     returnTimeExpired: (_) => S().returnTimeIsOver,
     eventCanceled: (_) => S().eventCancelled,
     eventBeingPostponed: (_) => S().eventBeingPostponed,
+    // TODO - add translations
+    invalidCountryCode: (_) => 'Invalid country code',
+    invalidVatNumber: (_) => 'Invalid vat number',
     canceledByUser: (_) => '',
   );
 }
