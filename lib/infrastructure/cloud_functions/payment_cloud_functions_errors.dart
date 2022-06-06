@@ -8,4 +8,5 @@ const userPaymentCloudFunctionsErrors = {
   'ticket-already-has-vip': UserPaymentFailure.ticketAlreadyHasVip(),
   'event-canceled': UserPaymentFailure.eventCanceled(),
   'event-postponed': UserPaymentFailure.eventBeingPostponed(),
+  'invalid-vat-number': UserPaymentFailure.invalidVatNumber(),
 };

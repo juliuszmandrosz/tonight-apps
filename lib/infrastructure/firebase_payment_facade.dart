@@ -140,6 +140,31 @@ class FirebasePaymentFacade implements UserPaymentFacade {
     }
   }
 
+  @override
+  Future<Either<UserPaymentFailure, Unit>> updateInvoiceData({
+    required String name,
+    String? vatNumber,
+    String? countryCode,
+    bool isCompany = false,
+  }) async {
+    try {
+      await _paymentCloudFunctionsFacade.updateInvoiceData(
+        name: name,
+        vatNumber: vatNumber,
+        countryCode: countryCode,
+        isCompany: isCompany,
+      );
+
+      return right(unit);
+    } on FirebaseFunctionsException catch (e) {
+      _logger.e(
+        "Firebase Functions Exception updating invoice data EXCEPTION: $e",
+      );
+      return left(userPaymentCloudFunctionsErrors[e.details] ??
+          const UserPaymentFailure.unexpected());
+    }
+  }
+
   _presentPaymentSheet({
     required String currency,
     required String customerId,

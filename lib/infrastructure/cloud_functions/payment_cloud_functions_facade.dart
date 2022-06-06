@@ -17,6 +17,13 @@ abstract class PaymentCloudFunctionsFacade {
   });
 
   Future<Unit> cancelTicketReservation(String ticketPaymentSessionId);
+
+  Future<Unit> updateInvoiceData({
+    required String name,
+    String? vatNumber,
+    String? countryCode,
+    bool isCompany = false,
+  });
 }
 
 class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
@@ -67,6 +74,26 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
 
     await cancelTicketReservationFn.call({
       'ticketPaymentSessionId': ticketPaymentSessionId,
+    });
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> updateInvoiceData({
+    required String name,
+    String? vatNumber,
+    String? countryCode,
+    bool isCompany = false,
+  }) async {
+    final updateInvoiceDataFn =
+        _functions.httpsCallable(updateInvoiceDataFnName);
+
+    await updateInvoiceDataFn.call({
+      'name': name,
+      'vatNumber': vatNumber,
+      'countryCode': countryCode,
+      'isCompany': isCompany,
     });
 
     return unit;

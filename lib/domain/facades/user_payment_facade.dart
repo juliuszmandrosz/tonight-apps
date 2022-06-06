@@ -19,4 +19,11 @@ abstract class UserPaymentFacade {
   Future<Either<UserPaymentFailure, PromotionCode>> getPromotionCode(
     String promotionCode,
   );
+
+  Future<Either<UserPaymentFailure, Unit>> updateInvoiceData({
+    required String name,
+    String? vatNumber,
+    String? countryCode,
+    bool isCompany = false,
+  });
 }

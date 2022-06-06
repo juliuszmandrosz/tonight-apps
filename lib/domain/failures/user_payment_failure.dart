@@ -25,4 +25,8 @@ class UserPaymentFailure with _$UserPaymentFailure {
   const factory UserPaymentFailure.eventBeingPostponed() = _EventBeingPostponed;
 
   const factory UserPaymentFailure.returnTimeExpired() = _ReturnTimeExpired;
+
+  const factory UserPaymentFailure.invalidCountryCode() = _InvalidCountryCode;
+
+  const factory UserPaymentFailure.invalidVatNumber() = _InvalidVatNumber;
 }
