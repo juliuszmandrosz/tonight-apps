@@ -266,7 +266,7 @@ packages:
       name: connectivity_plus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.2"
+    version: "2.3.3"
   connectivity_plus_linux:
     dependency: transitive
     description:
@@ -280,7 +280,7 @@ packages:
       name: connectivity_plus_macos
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.2"
+    version: "1.2.3"
   connectivity_plus_platform_interface:
     dependency: transitive
     description:
@@ -1278,7 +1278,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "93e265f31dad6552bf1582f0d62e3f05cdaef970"
+      resolved-ref: "644e203fee1c8b089e6ec21da929bc71694003d1"
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -1632,7 +1632,7 @@ packages:
       name: webview_flutter_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.8.10"
+    version: "2.8.11"
   webview_flutter_platform_interface:
     dependency: transitive
     description:

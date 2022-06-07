@@ -38,6 +38,7 @@ import 'package:raver/infrastructure/remote_config/firebase_remote_config_facade
 import 'package:raver_account_settings/raver_account_settings.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_clubs/raver_clubs.dart';
+import 'package:raver_common/infrastructure/currency_params/firebase_currency_params_facade.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
 import 'package:raver_events/raver_events.dart';
@@ -247,6 +248,7 @@ void _registerCubits() {
       eventTicketsCubit: getIt(),
       ticketListCubit: getIt(),
       firebaseRemoteConfig: getIt(),
+      currencyParamsFacade: getIt(),
     ),
   );
 
@@ -431,6 +433,13 @@ void _registerFacades() {
   getIt.registerLazySingleton<EventCloudFunctionsFacade>(
     () => EventCloudFunctionsFacadeImpl(
       getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<CurrencyParamsFacade>(
+    () => FirebaseCurrencyParamsFacade(
+      firestore: getIt(),
+      logger: getIt(),
     ),
   );
 }

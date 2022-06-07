@@ -23,6 +23,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   final TicketListCubit _ticketListCubit;
   final EventTicketsCubit _eventTicketsCubit;
   final FirebaseRemoteConfig _remoteConfig;
+  final CurrencyParamsFacade _currencyParamsFacade;
   late final StreamSubscription _eventTicketsSubscription;
   StreamSubscription? _userTicketsSubscription;
 
@@ -30,10 +31,12 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
     required UserPaymentFacade paymentFacade,
     required TicketListCubit ticketListCubit,
     required EventTicketsCubit eventTicketsCubit,
+    required CurrencyParamsFacade currencyParamsFacade,
     required FirebaseRemoteConfig firebaseRemoteConfig,
   })  : _paymentFacade = paymentFacade,
         _ticketListCubit = ticketListCubit,
         _eventTicketsCubit = eventTicketsCubit,
+        _currencyParamsFacade = currencyParamsFacade,
         _remoteConfig = firebaseRemoteConfig,
         super(TicketCheckoutState.initial());
 
@@ -45,8 +48,11 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
       ),
     );
 
-    final fee = _remoteConfig.getDouble(serviceFee);
-    emit(state.copyWith(serviceFee: some(fee)));
+    _initServiceFee();
+
+    await _initCurrencyParams();
+
+    if (state.initialStatus.isFailure()) return;
 
     await _initInvoiceData();
 
@@ -168,6 +174,22 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
     );
   }
 
+  Future<void> _initCurrencyParams() async {
+    final currency = state.event.getOrCrash().currency;
+
+    final failureOrSuccess =
+        await _currencyParamsFacade.getCurrencyParams(currency);
+
+    failureOrSuccess.fold(
+        (failure) => emit(state.copyWith(initialStatus: CubitStatus.failure)),
+        (params) => emit(state.copyWith(currencyParams: some(params))));
+  }
+
+  _initServiceFee() {
+    final fee = _remoteConfig.getDouble(serviceFee);
+    emit(state.copyWith(serviceFee: some(fee)));
+  }
+
   bool _validateInvoiceData() {
     final invoiceData = state.invoiceData.getOrCrash();
     final hasName = invoiceData.name != null && invoiceData.name!.isNotEmpty;
@@ -245,8 +267,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   }
 
   double _getMinimalServiceFeeAmount() {
-    // TODO - add support for different currencies
-    return 1;
+    return state.currencyParams.getOrCrash().minServiceFeeAmount;
   }
 
   double _getTotalAmount(int ticketPrice, double serviceFeeAmount) {
