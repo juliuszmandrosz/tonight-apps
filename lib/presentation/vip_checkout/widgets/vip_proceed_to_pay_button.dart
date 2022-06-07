@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/application/vip_checkout/vip_checkout_cubit.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class VipProceedToPayButton extends StatelessWidget {
@@ -8,12 +10,25 @@ class VipProceedToPayButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 300,
-      child: ElevatedButton(
-        onPressed: () => context.read<VipCheckoutCubit>().proceedToPayForVip(),
-        child: Text(S().proceedToPay),
-      ),
+    return BlocBuilder<VipCheckoutCubit, VipCheckoutState>(
+      buildWhen: (previous, current) =>
+          previous.proceedingToPaymentStatus !=
+          current.proceedingToPaymentStatus,
+      builder: (context, state) {
+        return Visibility(
+          visible: MediaQuery.of(context).viewInsets.bottom == 0 &&
+              !state.proceedingToPaymentStatus.isLoading(),
+          child: SizedBox(
+            width: 300,
+            child: FloatingActionButton.extended(
+              onPressed: () =>
+                  context.read<VipCheckoutCubit>().proceedToPayForVip(),
+              label: Text(S().proceedToPay),
+              icon: const FaIcon(FontAwesomeIcons.coins),
+            ),
+          ),
+        );
+      },
     );
   }
 }

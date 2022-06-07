@@ -200,10 +200,17 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
           final currentTicketPool = eventTickets.getCurrentPool();
 
           if (!currentTicketPool.isVipEnabled) {
-            // TODO - add translation
+            // TODO - add translations
             emit(state.copyWith(isVipNoLongerAvailable: true));
             _showSnackbarMessage('VIP nie jest już dostępny!');
             return;
+          }
+
+          final currentVipPrice = state.vipPrice;
+
+          if (currentVipPrice.isSome() &&
+              currentVipPrice.getOrCrash() != currentTicketPool.vipPrice) {
+            _showSnackbarMessage('Cena VIP-a zmieniła się');
           }
 
           final newVipPrice = _getNewVipPrice(currentTicketPool);
