@@ -2,7 +2,6 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:intl/intl.dart';
 import 'package:raver/application/invoice_data/form_inputs/country_code.dart';
 import 'package:raver/application/invoice_data/invoice_data_cubit.dart';
 import 'package:raver_common/raver_common.dart';
@@ -12,7 +11,6 @@ class CountryCodeInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentLocale = Intl.getCurrentLocale().toUpperCase();
     return BlocBuilder<InvoiceDataCubit, InvoiceDataState>(
       buildWhen: (previous, current) =>
           previous.countryCode != current.countryCode ||
@@ -27,9 +25,9 @@ class CountryCodeInput extends StatelessWidget {
             onChanged: (value) => context
                 .read<InvoiceDataCubit>()
                 .countryCodeChanged(value.code!),
-            initialSelection: currentLocale,
+            initialSelection: state.countryCode.value,
             showDropDownButton: true,
-            favorite: [currentLocale],
+            favorite: [state.countryCode.value],
             showCountryOnly: true,
             showOnlyCountryWhenClosed: true,
             alignLeft: true,

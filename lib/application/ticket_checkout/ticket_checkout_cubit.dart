@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
-import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/core/get_payment_failure_message.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
@@ -34,13 +33,17 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
         _eventTicketsCubit = eventTicketsCubit,
         super(TicketCheckoutState.initial());
 
-  void initData(Event event) {
+  Future<void> initData(Event event) async {
     emit(
       state.copyWith(
         initialStatus: CubitStatus.loading,
         event: some(event),
       ),
     );
+
+    await _initInvoiceData();
+
+    if (state.initialStatus.isFailure()) return;
 
     _initEventTickets(event);
   }
@@ -116,6 +119,10 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
     emit(state.copyWith(sendInvoice: value));
   }
 
+  void invoiceDataChanged(InvoiceData data) {
+    emit(state.copyWith(invoiceData: some(data)));
+  }
+
   void isVipChanged(bool value) {
     final currentPool = state.eventTickets.getOrCrash().getCurrentPool();
 
@@ -133,6 +140,15 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
         isVip: value,
         ticketPrice: some(newPrice),
       ),
+    );
+  }
+
+  Future<void> _initInvoiceData() async {
+    final failureOrSuccess = await _paymentFacade.getInvoiceData();
+
+    failureOrSuccess.fold(
+      (failure) => emit(state.copyWith(initialStatus: CubitStatus.failure)),
+      (invoiceData) => emit(state.copyWith(invoiceData: some(invoiceData))),
     );
   }
 

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:lottie/lottie.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
@@ -26,6 +27,16 @@ class TicketCheckoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return LoaderOverlay(
       overlayColor: context.shadowColor,
+      overlayWidget: Container(
+        color: context.shadowColor.withOpacity(.5),
+        child: Center(
+          child: Lottie.asset(
+            'assets/animations/tickets_logo.json',
+            frameRate: FrameRate(60),
+          ),
+        ),
+      ),
+      useDefaultLoading: false,
       child: Scaffold(
         appBar: RaverAppBar(title: S().checkout),
         body: BlocProvider(

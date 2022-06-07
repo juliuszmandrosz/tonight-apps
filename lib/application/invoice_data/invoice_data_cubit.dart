@@ -18,6 +18,34 @@ class InvoiceDataCubit extends Cubit<InvoiceDataState> {
 
   InvoiceDataCubit(this._paymentFacade) : super(InvoiceDataState.initial());
 
+  Future<void> initInvoiceData(InvoiceData invoiceData) async {
+    final hasVatNumber =
+        invoiceData.vatNumber != null && invoiceData.vatNumber!.isNotEmpty;
+
+    final hasName = invoiceData.name != null && invoiceData.name!.isNotEmpty;
+
+    if (hasVatNumber) {
+      final vatNumber = invoiceData.vatNumber!;
+      final countryCode = vatNumber.substring(0, 2);
+      final vatNumberWithoutCountryCode =
+          vatNumber.substring(2, vatNumber.length);
+
+      emit(
+        state.copyWith(
+          invoiceDataType: InvoiceDataType.company,
+          countryCode: CountryCode.dirty(countryCode),
+          vatNumber: VatNumber.dirty(vatNumberWithoutCountryCode),
+        ),
+      );
+    }
+
+    emit(
+      state.copyWith(
+        name: hasName ? Name.dirty(invoiceData.name!) : const Name.pure(),
+      ),
+    );
+  }
+
   void nameChanged(String value) {
     final name = Name.dirty(value);
     emit(state.copyWith(name: name));
@@ -34,8 +62,7 @@ class InvoiceDataCubit extends Cubit<InvoiceDataState> {
   }
 
   void invoiceDataTypeChanged(InvoiceDataType value) {
-    emit(state.copyWith(status: FormzStatus.pure));
-    emit(state.copyWith(invoiceDataType: value));
+    emit(state.copyWith(invoiceDataType: value, status: FormzStatus.pure));
   }
 
   Future<void> updateInvoiceData() async {
@@ -52,7 +79,23 @@ class InvoiceDataCubit extends Cubit<InvoiceDataState> {
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(failure),
-      (success) => emit(state.copyWith(status: FormzStatus.submissionSuccess)),
+      (success) {
+        final vatNumberWithCountryCode =
+            '${state.countryCode.value}${state.vatNumber.value}';
+
+        final updatedInvoiceData = InvoiceData(
+          name: state.name.value,
+          vatNumber:
+              state.invoiceDataType.isCompany ? vatNumberWithCountryCode : '',
+        );
+
+        emit(
+          state.copyWith(
+            status: FormzStatus.submissionSuccess,
+            updatedInvoiceData: some(updatedInvoiceData),
+          ),
+        );
+      },
     );
   }
 

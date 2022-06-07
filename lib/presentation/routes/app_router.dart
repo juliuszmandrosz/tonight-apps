@@ -28,6 +28,7 @@ import 'package:raver/presentation/welcome_loader/welcome_loader_page.dart';
 import 'package:raver/terms_of_service/terms_of_service_page.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 
 part 'app_router.gr.dart';
@@ -64,7 +65,7 @@ part 'app_router.gr.dart';
     AutoRoute(page: ContactPage),
     AutoRoute(page: NotificationsPage),
     AutoRoute(page: TermsOfServicePage),
-    AutoRoute(page: InvoiceDataPage),
+    AutoRoute<InvoiceData>(page: InvoiceDataPage),
   ],
 )
 class AppRouter extends _$AppRouter {}
