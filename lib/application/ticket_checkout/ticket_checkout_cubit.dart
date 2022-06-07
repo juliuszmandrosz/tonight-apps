@@ -240,7 +240,13 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
 
   double _getServiceFeeAmount(int ticketPrice) {
     final serviceFee = state.serviceFee.getOrCrash();
-    return ticketPrice * serviceFee;
+    final serviceFeeAmount = ticketPrice * serviceFee;
+    return serviceFeeAmount + _getMinimalServiceFeeAmount();
+  }
+
+  double _getMinimalServiceFeeAmount() {
+    // TODO - add support for different currencies
+    return 1;
   }
 
   double _getTotalAmount(int ticketPrice, double serviceFeeAmount) {
@@ -266,6 +272,16 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
 
     if (!poolInState.isVipEnabled && currentPool.isVipEnabled) {
       _showSnackbarMessage('VIP znowu jest dostępny!');
+    }
+
+    if (poolInState.poolNumber == currentPool.poolNumber &&
+        poolInState.ticketPrice != currentPool.ticketPrice) {
+      _showSnackbarMessage('Cena biletu zmieniła się');
+    }
+
+    if (poolInState.isVipEnabled == currentPool.isVipEnabled &&
+        poolInState.vipPrice != currentPool.vipPrice) {
+      _showSnackbarMessage('Cena VIP-a zmieniła się');
     }
   }
 
