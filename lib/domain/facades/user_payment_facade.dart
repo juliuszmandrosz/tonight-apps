@@ -14,6 +14,7 @@ abstract class UserPaymentFacade {
     required String ticketId,
     required String currency,
     String? promotionCode,
+    bool sendInvoice = false,
   });
 
   Future<Either<UserPaymentFailure, PromotionCode>> getPromotionCode(

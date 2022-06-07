@@ -14,6 +14,7 @@ abstract class PaymentCloudFunctionsFacade {
   Future<CreatePaymentSheetResponse> createVipPaymentSheet({
     required String ticketId,
     String? promotionCode,
+    bool sendInvoice = false,
   });
 
   Future<Unit> cancelTicketReservation(String ticketPaymentSessionId);
@@ -55,12 +56,14 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
   Future<CreatePaymentSheetResponse> createVipPaymentSheet({
     required String ticketId,
     String? promotionCode,
+    bool sendInvoice = false,
   }) async {
     final createVipPaymentSheetFn =
         _functions.httpsCallable(createVipPaymentSheetFnName);
 
     final result = await createVipPaymentSheetFn.call({
       'ticketId': ticketId,
+      'sendInvoice': sendInvoice,
       'promotionCode': promotionCode,
     });
 

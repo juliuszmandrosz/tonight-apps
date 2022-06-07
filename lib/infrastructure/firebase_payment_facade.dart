@@ -109,11 +109,13 @@ class FirebasePaymentFacade implements UserPaymentFacade {
     required String ticketId,
     required String currency,
     String? promotionCode,
+    bool sendInvoice = false,
   }) async {
     try {
       final result = await _paymentCloudFunctionsFacade.createVipPaymentSheet(
         ticketId: ticketId,
         promotionCode: promotionCode,
+        sendInvoice: sendInvoice,
       );
 
       await _presentPaymentSheet(
