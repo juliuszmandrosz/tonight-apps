@@ -1295,8 +1295,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "feature/send-invoice"
-      resolved-ref: "52735dca40aea33885109aeedd88e84c70c9fb0a"
+      ref: develop
+      resolved-ref: "2db3daf0ec5c8126826035614cfcfdc65c80b78c"
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"

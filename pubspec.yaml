@@ -133,7 +133,7 @@ dependencies:
   raver_payments:
     git:
       url: git@github.com:juliuszmandrosz/RaverPayments.git
-      ref: feature/send-invoice
+      ref: develop
 
 dev_dependencies:
   flutter_test:
