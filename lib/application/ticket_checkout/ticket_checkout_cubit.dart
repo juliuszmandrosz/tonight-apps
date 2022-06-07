@@ -49,6 +49,8 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   }
 
   Future<void> proceedToPayForTicket() async {
+    if (state.sendInvoice && !_validateInvoiceData()) return;
+
     emit(state.copyWith(proceedingToPaymentStatus: CubitStatus.loading));
 
     final event = state.event.getOrCrash();
@@ -141,6 +143,18 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
         ticketPrice: some(newPrice),
       ),
     );
+  }
+
+  bool _validateInvoiceData() {
+    final invoiceData = state.invoiceData.getOrCrash();
+    final hasName = invoiceData.name != null && invoiceData.name!.isNotEmpty;
+    if (!hasName) {
+      // TODO - add translation
+      _showSnackbarMessage('Proszę podać dane do faktury');
+      return false;
+    }
+
+    return true;
   }
 
   Future<void> _initInvoiceData() async {
