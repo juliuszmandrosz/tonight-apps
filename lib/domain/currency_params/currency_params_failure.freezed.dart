@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'url_launch_failure.dart';
+part of 'currency_params_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,91 +15,91 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$UrlLaunchFailure {
+mixin _$CurrencyParamsFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() launchError,
+    required TResult Function() unexpected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? launchError,
+    TResult Function()? unexpected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? launchError,
+    TResult Function()? unexpected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LaunchError value) launchError,
+    required TResult Function(_Unexpected value) unexpected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_LaunchError value)? launchError,
+    TResult Function(_Unexpected value)? unexpected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LaunchError value)? launchError,
+    TResult Function(_Unexpected value)? unexpected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UrlLaunchFailureCopyWith<$Res> {
-  factory $UrlLaunchFailureCopyWith(
-          UrlLaunchFailure value, $Res Function(UrlLaunchFailure) then) =
-      _$UrlLaunchFailureCopyWithImpl<$Res>;
+abstract class $CurrencyParamsFailureCopyWith<$Res> {
+  factory $CurrencyParamsFailureCopyWith(CurrencyParamsFailure value,
+          $Res Function(CurrencyParamsFailure) then) =
+      _$CurrencyParamsFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UrlLaunchFailureCopyWithImpl<$Res>
-    implements $UrlLaunchFailureCopyWith<$Res> {
-  _$UrlLaunchFailureCopyWithImpl(this._value, this._then);
+class _$CurrencyParamsFailureCopyWithImpl<$Res>
+    implements $CurrencyParamsFailureCopyWith<$Res> {
+  _$CurrencyParamsFailureCopyWithImpl(this._value, this._then);
 
-  final UrlLaunchFailure _value;
+  final CurrencyParamsFailure _value;
   // ignore: unused_field
-  final $Res Function(UrlLaunchFailure) _then;
+  final $Res Function(CurrencyParamsFailure) _then;
 }
 
 /// @nodoc
-abstract class _$$_LaunchErrorCopyWith<$Res> {
-  factory _$$_LaunchErrorCopyWith(
-          _$_LaunchError value, $Res Function(_$_LaunchError) then) =
-      __$$_LaunchErrorCopyWithImpl<$Res>;
+abstract class _$$_UnexpectedCopyWith<$Res> {
+  factory _$$_UnexpectedCopyWith(
+          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
+      __$$_UnexpectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LaunchErrorCopyWithImpl<$Res>
-    extends _$UrlLaunchFailureCopyWithImpl<$Res>
-    implements _$$_LaunchErrorCopyWith<$Res> {
-  __$$_LaunchErrorCopyWithImpl(
-      _$_LaunchError _value, $Res Function(_$_LaunchError) _then)
-      : super(_value, (v) => _then(v as _$_LaunchError));
+class __$$_UnexpectedCopyWithImpl<$Res>
+    extends _$CurrencyParamsFailureCopyWithImpl<$Res>
+    implements _$$_UnexpectedCopyWith<$Res> {
+  __$$_UnexpectedCopyWithImpl(
+      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+      : super(_value, (v) => _then(v as _$_Unexpected));
 
   @override
-  _$_LaunchError get _value => super._value as _$_LaunchError;
+  _$_Unexpected get _value => super._value as _$_Unexpected;
 }
 
 /// @nodoc
 
-class _$_LaunchError extends _LaunchError {
-  const _$_LaunchError() : super._();
+class _$_Unexpected implements _Unexpected {
+  _$_Unexpected();
 
   @override
   String toString() {
-    return 'UrlLaunchFailure.launchError()';
+    return 'CurrencyParamsFailure.unexpected()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LaunchError);
+        (other.runtimeType == runtimeType && other is _$_Unexpected);
   }
 
   @override
@@ -108,27 +108,27 @@ class _$_LaunchError extends _LaunchError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() launchError,
+    required TResult Function() unexpected,
   }) {
-    return launchError();
+    return unexpected();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? launchError,
+    TResult Function()? unexpected,
   }) {
-    return launchError?.call();
+    return unexpected?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? launchError,
+    TResult Function()? unexpected,
     required TResult orElse(),
   }) {
-    if (launchError != null) {
-      return launchError();
+    if (unexpected != null) {
+      return unexpected();
     }
     return orElse();
   }
@@ -136,33 +136,32 @@ class _$_LaunchError extends _LaunchError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LaunchError value) launchError,
+    required TResult Function(_Unexpected value) unexpected,
   }) {
-    return launchError(this);
+    return unexpected(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_LaunchError value)? launchError,
+    TResult Function(_Unexpected value)? unexpected,
   }) {
-    return launchError?.call(this);
+    return unexpected?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LaunchError value)? launchError,
+    TResult Function(_Unexpected value)? unexpected,
     required TResult orElse(),
   }) {
-    if (launchError != null) {
-      return launchError(this);
+    if (unexpected != null) {
+      return unexpected(this);
     }
     return orElse();
   }
 }
 
-abstract class _LaunchError extends UrlLaunchFailure {
-  const factory _LaunchError() = _$_LaunchError;
-  const _LaunchError._() : super._();
+abstract class _Unexpected implements CurrencyParamsFailure {
+  factory _Unexpected() = _$_Unexpected;
 }

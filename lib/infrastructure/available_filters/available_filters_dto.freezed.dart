@@ -12,36 +12,11 @@ part of 'available_filters_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AvailableFiltersDto _$AvailableFiltersDtoFromJson(Map<String, dynamic> json) {
   return _AvailableFiltersDto.fromJson(json);
 }
-
-/// @nodoc
-class _$AvailableFiltersDtoTearOff {
-  const _$AvailableFiltersDtoTearOff();
-
-  _AvailableFiltersDto call(
-      {required List<String> allowedOutfits,
-      required List<String> musicalGenres,
-      required List<String> currencies,
-      required List<int> minAges}) {
-    return _AvailableFiltersDto(
-      allowedOutfits: allowedOutfits,
-      musicalGenres: musicalGenres,
-      currencies: currencies,
-      minAges: minAges,
-    );
-  }
-
-  AvailableFiltersDto fromJson(Map<String, Object?> json) {
-    return AvailableFiltersDto.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AvailableFiltersDto = _$AvailableFiltersDtoTearOff();
 
 /// @nodoc
 mixin _$AvailableFiltersDto {
@@ -106,11 +81,11 @@ class _$AvailableFiltersDtoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AvailableFiltersDtoCopyWith<$Res>
+abstract class _$$_AvailableFiltersDtoCopyWith<$Res>
     implements $AvailableFiltersDtoCopyWith<$Res> {
-  factory _$AvailableFiltersDtoCopyWith(_AvailableFiltersDto value,
-          $Res Function(_AvailableFiltersDto) then) =
-      __$AvailableFiltersDtoCopyWithImpl<$Res>;
+  factory _$$_AvailableFiltersDtoCopyWith(_$_AvailableFiltersDto value,
+          $Res Function(_$_AvailableFiltersDto) then) =
+      __$$_AvailableFiltersDtoCopyWithImpl<$Res>;
   @override
   $Res call(
       {List<String> allowedOutfits,
@@ -120,15 +95,15 @@ abstract class _$AvailableFiltersDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AvailableFiltersDtoCopyWithImpl<$Res>
+class __$$_AvailableFiltersDtoCopyWithImpl<$Res>
     extends _$AvailableFiltersDtoCopyWithImpl<$Res>
-    implements _$AvailableFiltersDtoCopyWith<$Res> {
-  __$AvailableFiltersDtoCopyWithImpl(
-      _AvailableFiltersDto _value, $Res Function(_AvailableFiltersDto) _then)
-      : super(_value, (v) => _then(v as _AvailableFiltersDto));
+    implements _$$_AvailableFiltersDtoCopyWith<$Res> {
+  __$$_AvailableFiltersDtoCopyWithImpl(_$_AvailableFiltersDto _value,
+      $Res Function(_$_AvailableFiltersDto) _then)
+      : super(_value, (v) => _then(v as _$_AvailableFiltersDto));
 
   @override
-  _AvailableFiltersDto get _value => super._value as _AvailableFiltersDto;
+  _$_AvailableFiltersDto get _value => super._value as _$_AvailableFiltersDto;
 
   @override
   $Res call({
@@ -137,21 +112,21 @@ class __$AvailableFiltersDtoCopyWithImpl<$Res>
     Object? currencies = freezed,
     Object? minAges = freezed,
   }) {
-    return _then(_AvailableFiltersDto(
+    return _then(_$_AvailableFiltersDto(
       allowedOutfits: allowedOutfits == freezed
-          ? _value.allowedOutfits
+          ? _value._allowedOutfits
           : allowedOutfits // ignore: cast_nullable_to_non_nullable
               as List<String>,
       musicalGenres: musicalGenres == freezed
-          ? _value.musicalGenres
+          ? _value._musicalGenres
           : musicalGenres // ignore: cast_nullable_to_non_nullable
               as List<String>,
       currencies: currencies == freezed
-          ? _value.currencies
+          ? _value._currencies
           : currencies // ignore: cast_nullable_to_non_nullable
               as List<String>,
       minAges: minAges == freezed
-          ? _value.minAges
+          ? _value._minAges
           : minAges // ignore: cast_nullable_to_non_nullable
               as List<int>,
     ));
@@ -163,23 +138,46 @@ class __$AvailableFiltersDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_AvailableFiltersDto extends _AvailableFiltersDto {
   const _$_AvailableFiltersDto(
-      {required this.allowedOutfits,
-      required this.musicalGenres,
-      required this.currencies,
-      required this.minAges})
-      : super._();
+      {required final List<String> allowedOutfits,
+      required final List<String> musicalGenres,
+      required final List<String> currencies,
+      required final List<int> minAges})
+      : _allowedOutfits = allowedOutfits,
+        _musicalGenres = musicalGenres,
+        _currencies = currencies,
+        _minAges = minAges,
+        super._();
 
   factory _$_AvailableFiltersDto.fromJson(Map<String, dynamic> json) =>
       _$$_AvailableFiltersDtoFromJson(json);
 
+  final List<String> _allowedOutfits;
   @override
-  final List<String> allowedOutfits;
+  List<String> get allowedOutfits {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_allowedOutfits);
+  }
+
+  final List<String> _musicalGenres;
   @override
-  final List<String> musicalGenres;
+  List<String> get musicalGenres {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_musicalGenres);
+  }
+
+  final List<String> _currencies;
   @override
-  final List<String> currencies;
+  List<String> get currencies {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_currencies);
+  }
+
+  final List<int> _minAges;
   @override
-  final List<int> minAges;
+  List<int> get minAges {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_minAges);
+  }
 
   @override
   String toString() {
@@ -190,28 +188,29 @@ class _$_AvailableFiltersDto extends _AvailableFiltersDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AvailableFiltersDto &&
+            other is _$_AvailableFiltersDto &&
             const DeepCollectionEquality()
-                .equals(other.allowedOutfits, allowedOutfits) &&
+                .equals(other._allowedOutfits, _allowedOutfits) &&
             const DeepCollectionEquality()
-                .equals(other.musicalGenres, musicalGenres) &&
+                .equals(other._musicalGenres, _musicalGenres) &&
             const DeepCollectionEquality()
-                .equals(other.currencies, currencies) &&
-            const DeepCollectionEquality().equals(other.minAges, minAges));
+                .equals(other._currencies, _currencies) &&
+            const DeepCollectionEquality().equals(other._minAges, _minAges));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(allowedOutfits),
-      const DeepCollectionEquality().hash(musicalGenres),
-      const DeepCollectionEquality().hash(currencies),
-      const DeepCollectionEquality().hash(minAges));
 
   @JsonKey(ignore: true)
   @override
-  _$AvailableFiltersDtoCopyWith<_AvailableFiltersDto> get copyWith =>
-      __$AvailableFiltersDtoCopyWithImpl<_AvailableFiltersDto>(
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_allowedOutfits),
+      const DeepCollectionEquality().hash(_musicalGenres),
+      const DeepCollectionEquality().hash(_currencies),
+      const DeepCollectionEquality().hash(_minAges));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_AvailableFiltersDtoCopyWith<_$_AvailableFiltersDto> get copyWith =>
+      __$$_AvailableFiltersDtoCopyWithImpl<_$_AvailableFiltersDto>(
           this, _$identity);
 
   @override
@@ -222,25 +221,25 @@ class _$_AvailableFiltersDto extends _AvailableFiltersDto {
 
 abstract class _AvailableFiltersDto extends AvailableFiltersDto {
   const factory _AvailableFiltersDto(
-      {required List<String> allowedOutfits,
-      required List<String> musicalGenres,
-      required List<String> currencies,
-      required List<int> minAges}) = _$_AvailableFiltersDto;
+      {required final List<String> allowedOutfits,
+      required final List<String> musicalGenres,
+      required final List<String> currencies,
+      required final List<int> minAges}) = _$_AvailableFiltersDto;
   const _AvailableFiltersDto._() : super._();
 
   factory _AvailableFiltersDto.fromJson(Map<String, dynamic> json) =
       _$_AvailableFiltersDto.fromJson;
 
   @override
-  List<String> get allowedOutfits;
+  List<String> get allowedOutfits => throw _privateConstructorUsedError;
   @override
-  List<String> get musicalGenres;
+  List<String> get musicalGenres => throw _privateConstructorUsedError;
   @override
-  List<String> get currencies;
+  List<String> get currencies => throw _privateConstructorUsedError;
   @override
-  List<int> get minAges;
+  List<int> get minAges => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AvailableFiltersDtoCopyWith<_AvailableFiltersDto> get copyWith =>
+  _$$_AvailableFiltersDtoCopyWith<_$_AvailableFiltersDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

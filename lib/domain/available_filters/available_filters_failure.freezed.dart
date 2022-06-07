@@ -12,19 +12,7 @@ part of 'available_filters_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AvailableFiltersFailureTearOff {
-  const _$AvailableFiltersFailureTearOff();
-
-  _AvailableFiltersFailure unexpected() {
-    return const _AvailableFiltersFailure();
-  }
-}
-
-/// @nodoc
-const $AvailableFiltersFailure = _$AvailableFiltersFailureTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AvailableFiltersFailure {
@@ -80,23 +68,23 @@ class _$AvailableFiltersFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$AvailableFiltersFailureCopyWith<$Res> {
-  factory _$AvailableFiltersFailureCopyWith(_AvailableFiltersFailure value,
-          $Res Function(_AvailableFiltersFailure) then) =
-      __$AvailableFiltersFailureCopyWithImpl<$Res>;
+abstract class _$$_AvailableFiltersFailureCopyWith<$Res> {
+  factory _$$_AvailableFiltersFailureCopyWith(_$_AvailableFiltersFailure value,
+          $Res Function(_$_AvailableFiltersFailure) then) =
+      __$$_AvailableFiltersFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$AvailableFiltersFailureCopyWithImpl<$Res>
+class __$$_AvailableFiltersFailureCopyWithImpl<$Res>
     extends _$AvailableFiltersFailureCopyWithImpl<$Res>
-    implements _$AvailableFiltersFailureCopyWith<$Res> {
-  __$AvailableFiltersFailureCopyWithImpl(_AvailableFiltersFailure _value,
-      $Res Function(_AvailableFiltersFailure) _then)
-      : super(_value, (v) => _then(v as _AvailableFiltersFailure));
+    implements _$$_AvailableFiltersFailureCopyWith<$Res> {
+  __$$_AvailableFiltersFailureCopyWithImpl(_$_AvailableFiltersFailure _value,
+      $Res Function(_$_AvailableFiltersFailure) _then)
+      : super(_value, (v) => _then(v as _$_AvailableFiltersFailure));
 
   @override
-  _AvailableFiltersFailure get _value =>
-      super._value as _AvailableFiltersFailure;
+  _$_AvailableFiltersFailure get _value =>
+      super._value as _$_AvailableFiltersFailure;
 }
 
 /// @nodoc
@@ -112,7 +100,8 @@ class _$_AvailableFiltersFailure implements _AvailableFiltersFailure {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _AvailableFiltersFailure);
+        (other.runtimeType == runtimeType &&
+            other is _$_AvailableFiltersFailure);
   }
 
   @override

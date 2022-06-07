@@ -4,3 +4,6 @@ export 'available_filters/available_filters_facade.dart';
 export 'social_media/club_social_media.dart';
 export 'social_media/social_media_entity.dart';
 export 'social_media/event_social_media.dart';
+export 'currency_params/currency_params_entity.dart';
+export 'currency_params/currency_params_facade.dart';
+export 'currency_params/currency_params_failure.dart';
