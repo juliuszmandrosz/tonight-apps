@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
@@ -11,6 +10,7 @@ import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/application/welcome_loading/welcome_loading_cubit.dart';
+import 'package:raver/presentation/core/ticket_logo_animation.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_events/application/application.dart';
 
@@ -77,12 +77,7 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
               },
               builder: (context, state) {
                 return !state.isFailure
-                    ? Center(
-                        child: Lottie.asset(
-                          'assets/animations/tickets_logo.json',
-                          frameRate: FrameRate(60),
-                        ),
-                      )
+                    ? const TicketLogoAnimation()
                     : Container();
               },
             ),

@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:raver/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
-import 'package:raver/presentation/core/raver_loading_overlay.dart';
+import 'package:raver/presentation/core/ticket_logo_animation.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_header.dart';
 import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_invoice_checkbox.dart';
@@ -47,8 +48,8 @@ class VipCheckoutPage extends StatelessWidget {
           }
 
           state.proceedingToPaymentStatus.isLoading()
-              ? RaverLoadingOverlay.show(context)
-              : RaverLoadingOverlay.hide();
+              ? context.loaderOverlay.show()
+              : context.loaderOverlay.hide();
 
           state.snackbarMessage.fold(
             () {},
@@ -65,27 +66,32 @@ class VipCheckoutPage extends StatelessWidget {
         builder: (context, state) {
           return state.initialStatus.isLoading()
               ? const Center(child: CircularProgressIndicator())
-              : Scaffold(
-                  appBar: RaverAppBar(title: S().checkout),
-                  floatingActionButton: const VipProceedToPayButton(),
-                  floatingActionButtonLocation:
-                      FloatingActionButtonLocation.centerFloat,
-                  body: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: ListView(
-                      children: [
-                        const VipCheckoutHeader(),
-                        const SizedBox(height: 20),
-                        const VipCheckoutTicketCard(),
-                        const SizedBox(height: 30),
-                        const VipCheckoutPromotionCode(),
-                        const SizedBox(height: 20),
-                        const VipCheckoutInvoiceCheckbox(),
-                        if (state.sendInvoice) const VipCheckoutInvoiceData(),
-                        const SizedBox(height: 20),
-                        const VipCheckoutSummary(),
-                        const SizedBox(height: 80),
-                      ],
+              : LoaderOverlay(
+                  overlayWidget: const TicketLogoAnimation(),
+                  overlayColor: context.shadowColor,
+                  useDefaultLoading: false,
+                  child: Scaffold(
+                    appBar: RaverAppBar(title: S().checkout),
+                    floatingActionButton: const VipProceedToPayButton(),
+                    floatingActionButtonLocation:
+                        FloatingActionButtonLocation.centerFloat,
+                    body: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: ListView(
+                        children: [
+                          const VipCheckoutHeader(),
+                          const SizedBox(height: 20),
+                          const VipCheckoutTicketCard(),
+                          const SizedBox(height: 30),
+                          const VipCheckoutPromotionCode(),
+                          const SizedBox(height: 20),
+                          const VipCheckoutInvoiceCheckbox(),
+                          if (state.sendInvoice) const VipCheckoutInvoiceData(),
+                          const SizedBox(height: 20),
+                          const VipCheckoutSummary(),
+                          const SizedBox(height: 80),
+                        ],
+                      ),
                     ),
                   ),
                 );

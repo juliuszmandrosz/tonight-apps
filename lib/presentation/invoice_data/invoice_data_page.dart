@@ -6,7 +6,6 @@ import 'package:raver/application/invoice_data/invoice_data_cubit.dart';
 import 'package:raver/application/invoice_data/invoice_data_type.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
-import 'package:raver/presentation/core/raver_loading_overlay.dart';
 import 'package:raver/presentation/invoice_data/widgets/country_code_input.dart';
 import 'package:raver/presentation/invoice_data/widgets/invoice_data_type_input.dart';
 import 'package:raver/presentation/invoice_data/widgets/name_input.dart';
@@ -15,70 +14,84 @@ import 'package:raver/presentation/invoice_data/widgets/vat_number_input.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_payments/domain/domain.dart';
 
-class InvoiceDataPage extends StatelessWidget {
+class InvoiceDataPage extends StatefulWidget {
   final InvoiceData invoiceData;
 
   const InvoiceDataPage({required this.invoiceData, Key? key})
       : super(key: key);
 
   @override
+  State<InvoiceDataPage> createState() => _InvoiceDataPageState();
+}
+
+class _InvoiceDataPageState extends State<InvoiceDataPage> {
+  var _isLoading = false;
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          getIt<InvoiceDataCubit>()..initInvoiceData(invoiceData),
-      child: Scaffold(
-        // TODO - add translation
-        appBar: const RaverAppBar(title: 'Dane do faktury'),
-        floatingActionButton: const UpdateInvoiceDataButton(),
-        body: Padding(
-          padding: const EdgeInsets.all(15),
-          child: BlocConsumer<InvoiceDataCubit, InvoiceDataState>(
-            listenWhen: (previous, current) =>
-                previous.errorMessage != current.errorMessage ||
-                previous.status != current.status,
-            buildWhen: (previous, current) =>
-                previous.invoiceDataType != current.invoiceDataType,
-            listener: (context, state) async {
-              state.errorMessage.fold(
+      getIt<InvoiceDataCubit>()
+        ..initInvoiceData(widget.invoiceData),
+      child: BlocConsumer<InvoiceDataCubit, InvoiceDataState>(
+        listenWhen: (previous, current) =>
+        previous.errorMessage != current.errorMessage ||
+            previous.status != current.status,
+        buildWhen: (previous, current) =>
+        previous.invoiceDataType != current.invoiceDataType ||
+            previous.status != current.status,
+        listener: (context, state) async {
+          state.errorMessage.fold(
                 () {},
                 (error) => context.showSnackbarMessage(error),
-              );
+          );
 
-              state.status.isSubmissionInProgress
-                  ? RaverLoadingOverlay.show(context)
-                  : RaverLoadingOverlay.hide();
+          setState(() {
+            _isLoading = state.status.isSubmissionInProgress;
+          });
 
-              if (state.status.isSubmissionSuccess) {
-                await context.popRoute<InvoiceData>(
-                  state.updatedInvoiceData.getOrCrash(),
-                );
+          if (state.status.isSubmissionSuccess) {
+            await context.popRoute<InvoiceData>(
+              state.updatedInvoiceData.getOrCrash(),
+            );
 
-                // TODO - add translation
-                context.showSnackbarMessage(
-                  'Pomyślnie zaaktualizowano dane do faktury',
-                );
-              }
+            // TODO - add translation
+            context.showSnackbarMessage(
+              'Pomyślnie zaaktualizowano dane do faktury',
+            );
+          }
+        },
+        builder: (context, state) {
+          return WillPopScope(
+            onWillPop: () async {
+              return !_isLoading;
             },
-            builder: (context, state) {
-              return ListView(
-                children: [
-                  const InvoiceDataTypeInput(),
-                  const SizedBox(height: 20),
-                  const NameInput(),
-                  if (state.invoiceDataType.isCompany)
-                    Column(
-                      children: const [
-                        SizedBox(height: 20),
-                        VatNumberInput(),
-                        SizedBox(height: 20),
-                        CountryCodeInput(),
-                      ],
-                    ),
-                ],
-              );
-            },
-          ),
-        ),
+            child: Scaffold(
+              // TODO - add translation
+              appBar: const RaverAppBar(title: 'Dane do faktury'),
+              floatingActionButton: const UpdateInvoiceDataButton(),
+              body: Padding(
+                padding: const EdgeInsets.all(15),
+                child: ListView(
+                  children: [
+                    const InvoiceDataTypeInput(),
+                    const SizedBox(height: 20),
+                    const NameInput(),
+                    if (state.invoiceDataType.isCompany)
+                      Column(
+                        children: const [
+                          SizedBox(height: 20),
+                          VatNumberInput(),
+                          SizedBox(height: 20),
+                          CountryCodeInput(),
+                        ],
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
