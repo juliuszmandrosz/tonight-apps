@@ -22,8 +22,8 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   final UserPaymentFacade _paymentFacade;
   final TicketListCubit _ticketListCubit;
   final EventTicketsCubit _eventTicketsCubit;
-  final FirebaseRemoteConfig _remoteConfig;
   final CurrencyParamsFacade _currencyParamsFacade;
+  final FirebaseRemoteConfig _remoteConfig;
   late final StreamSubscription _eventTicketsSubscription;
   StreamSubscription? _userTicketsSubscription;
 
@@ -253,7 +253,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   }
 
   int _getNewTicketPrice(TicketPool currentPool, bool isVip) {
-    var currentPoolTicketPrice = currentPool.ticketPrice;
+    final currentPoolTicketPrice = currentPool.ticketPrice;
 
     final vipPrice = isVip ? currentPool.vipPrice! : 0;
 
@@ -263,10 +263,10 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   double _getServiceFeeAmount(int ticketPrice) {
     final serviceFee = state.serviceFee.getOrCrash();
     final serviceFeeAmount = ticketPrice * serviceFee;
-    return serviceFeeAmount + _getMinimalServiceFeeAmount();
+    return serviceFeeAmount + _getMinServiceFeeAmount();
   }
 
-  double _getMinimalServiceFeeAmount() {
+  double _getMinServiceFeeAmount() {
     return state.currencyParams.getOrCrash().minServiceFeeAmount;
   }
 

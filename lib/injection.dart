@@ -257,6 +257,8 @@ void _registerCubits() {
       paymentFacade: getIt(),
       eventTicketsCubit: getIt(),
       ticketListCubit: getIt(),
+      currencyParamsFacade: getIt(),
+      firebaseRemoteConfig: getIt(),
     ),
   );
 

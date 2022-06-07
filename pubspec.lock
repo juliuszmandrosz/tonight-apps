@@ -1296,7 +1296,7 @@ packages:
     description:
       path: "."
       ref: "feature/send-invoice"
-      resolved-ref: "885aff57c0ae0bc8c32c55a48bd1adf2718d2dd2"
+      resolved-ref: f9a9846246d07a4785aff1b77029e8675e743740
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/core/get_payment_failure_message.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
@@ -20,6 +21,8 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
   final UserPaymentFacade _paymentFacade;
   final TicketListCubit _ticketListCubit;
   final EventTicketsCubit _eventTicketsCubit;
+  final CurrencyParamsFacade _currencyParamsFacade;
+  final FirebaseRemoteConfig _remoteConfig;
   late final StreamSubscription _eventTicketsSubscription;
   StreamSubscription? _userTicketsSubscription;
 
@@ -27,9 +30,13 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
     required UserPaymentFacade paymentFacade,
     required TicketListCubit ticketListCubit,
     required EventTicketsCubit eventTicketsCubit,
+    required CurrencyParamsFacade currencyParamsFacade,
+    required FirebaseRemoteConfig firebaseRemoteConfig,
   })  : _paymentFacade = paymentFacade,
         _ticketListCubit = ticketListCubit,
         _eventTicketsCubit = eventTicketsCubit,
+        _currencyParamsFacade = currencyParamsFacade,
+        _remoteConfig = firebaseRemoteConfig,
         super(VipCheckoutState.initial());
 
   void initData(Ticket ticket) async {
@@ -40,19 +47,41 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
       ),
     );
 
+    _initServiceFee();
+
+    await _initCurrencyParams();
+
+    if (state.initialStatus.isFailure()) return;
+
+    await _initInvoiceData();
+
+    if (state.initialStatus.isFailure()) return;
+
     _initEventTickets(ticket);
   }
 
+  void sendInvoiceChanged(bool value) {
+    emit(state.copyWith(sendInvoice: value));
+  }
+
+  void invoiceDataChanged(InvoiceData data) {
+    emit(state.copyWith(invoiceData: some(data)));
+  }
+
   void proceedToPayForVip() async {
+    if (state.sendInvoice && !_validateInvoiceData()) return;
+
     emit(state.copyWith(proceedingToPaymentStatus: CubitStatus.loading));
 
-    final ticketInitData = state.ticket.getOrCrash();
+    final ticket = state.ticket.getOrCrash();
 
     _waitForTicketToBeUpdated();
 
     final failureOrSuccess = await _paymentFacade.proceedToPayForVip(
-      ticketId: ticketInitData.id,
-      currency: ticketInitData.currency,
+      ticketId: ticket.id,
+      currency: ticket.currency,
+      sendInvoice: state.sendInvoice,
+      promotionCode: state.promotionCode.code,
     );
 
     await failureOrSuccess.fold(
@@ -72,12 +101,17 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
     failureOrSuccess.fold(
       (failure) => _emitPromotionCodeFailure(failure),
       (code) {
+        final newVipPrice = state.vipPrice.getOrCrash() - code.amountOff;
+        final serviceFeeAmount = _getServiceFeeAmount(newVipPrice);
+        final totalAmount = _getTotalAmount(newVipPrice, serviceFeeAmount);
         emit(
           state.copyWith(
             promotionCode: code,
             promotionCodeStatus: CubitStatus.success,
             invalidPromotionCodeMessage: none(),
-            vipPrice: some(state.vipPrice.getOrCrash() - code.amountOff),
+            vipPrice: some(newVipPrice),
+            serviceFeeAmount: some(serviceFeeAmount),
+            totalAmount: some(totalAmount),
           ),
         );
       },
@@ -93,15 +127,58 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
   }
 
   void resetPromotionCode() {
+    final newVipPrice =
+        state.vipPrice.getOrCrash() + state.promotionCode.amountOff;
+
+    final serviceFeeAmount = _getServiceFeeAmount(newVipPrice);
+    final totalAmount = _getTotalAmount(newVipPrice, serviceFeeAmount);
+
     emit(
       state.copyWith(
-        vipPrice: some(
-          state.vipPrice.getOrCrash() + state.promotionCode.amountOff,
-        ),
+        vipPrice: some(newVipPrice),
+        serviceFeeAmount: some(serviceFeeAmount),
+        totalAmount: some(totalAmount),
         promotionCode: PromotionCode.empty(),
         promotionCodeStatus: CubitStatus.initial,
         invalidPromotionCodeMessage: none(),
       ),
+    );
+  }
+
+  Future<void> _initCurrencyParams() async {
+    final currency = state.ticket.getOrCrash().currency;
+
+    final failureOrSuccess =
+        await _currencyParamsFacade.getCurrencyParams(currency);
+
+    failureOrSuccess.fold(
+        (failure) => emit(state.copyWith(initialStatus: CubitStatus.failure)),
+        (params) => emit(state.copyWith(currencyParams: some(params))));
+  }
+
+  _initServiceFee() {
+    final fee = _remoteConfig.getDouble(serviceFee);
+    emit(state.copyWith(serviceFee: some(fee)));
+  }
+
+  bool _validateInvoiceData() {
+    final invoiceData = state.invoiceData.getOrCrash();
+    final hasName = invoiceData.name != null && invoiceData.name!.isNotEmpty;
+    if (!hasName) {
+      // TODO - add translation
+      _showSnackbarMessage('Proszę podać dane do faktury');
+      return false;
+    }
+
+    return true;
+  }
+
+  Future<void> _initInvoiceData() async {
+    final failureOrSuccess = await _paymentFacade.getInvoiceData();
+
+    failureOrSuccess.fold(
+      (failure) => emit(state.copyWith(initialStatus: CubitStatus.failure)),
+      (invoiceData) => emit(state.copyWith(invoiceData: some(invoiceData))),
     );
   }
 
@@ -129,18 +206,41 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
             return;
           }
 
-          final vipPrice = currentTicketPool.vipPrice;
+          final newVipPrice = _getNewVipPrice(currentTicketPool);
+          final serviceFeeAmount = _getServiceFeeAmount(newVipPrice);
+          final totalAmount = _getTotalAmount(newVipPrice, serviceFeeAmount);
 
           emit(
             state.copyWith(
               eventTickets: some(eventTickets),
-              vipPrice: some(vipPrice!),
+              vipPrice: some(newVipPrice),
               initialStatus: CubitStatus.success,
+              serviceFeeAmount: some(serviceFeeAmount),
+              totalAmount: some(totalAmount),
             ),
           );
         }
       },
     );
+  }
+
+  int _getNewVipPrice(TicketPool currentPool) {
+    final currentPoolVipPrice = currentPool.vipPrice!;
+    return currentPoolVipPrice - state.promotionCode.amountOff;
+  }
+
+  double _getServiceFeeAmount(int vipPrice) {
+    final serviceFee = state.serviceFee.getOrCrash();
+    final serviceFeeAmount = vipPrice * serviceFee;
+    return serviceFeeAmount + _getMinServiceFeeAmount();
+  }
+
+  double _getMinServiceFeeAmount() {
+    return state.currencyParams.getOrCrash().minServiceFeeAmount;
+  }
+
+  double _getTotalAmount(int ticketPrice, double serviceFeeAmount) {
+    return ticketPrice + serviceFeeAmount;
   }
 
   Future<void> _waitForTicketToBeUpdated() async {
