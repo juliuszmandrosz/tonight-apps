@@ -18,6 +18,9 @@ class TicketCheckoutState with _$TicketCheckoutState {
     required Option<String> snackbarMessage,
     required bool sendInvoice,
     required Option<InvoiceData> invoiceData,
+    required Option<double> serviceFee,
+    required Option<double> serviceFeeAmount,
+    required Option<double> totalAmount,
   }) = _TicketPaymentState;
 
   factory TicketCheckoutState.initial() => TicketCheckoutState(
@@ -34,5 +37,8 @@ class TicketCheckoutState with _$TicketCheckoutState {
         ticketPrice: none(),
         sendInvoice: false,
         invoiceData: none(),
+        serviceFee: none(),
+        serviceFeeAmount: none(),
+        totalAmount: none(),
       );
 }

@@ -1,11 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:loader_overlay/loader_overlay.dart';
-import 'package:lottie/lottie.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
+import 'package:raver/presentation/core/raver_loading_overlay.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_header.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_invoice_checkbox.dart';
@@ -13,6 +12,7 @@ import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_invoi
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_is_vip_switch.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_pay_section.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_promotion_code.dart';
+import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_summary.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_ticket_card.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
@@ -25,84 +25,68 @@ class TicketCheckoutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LoaderOverlay(
-      overlayColor: context.shadowColor,
-      overlayWidget: Container(
-        color: context.shadowColor.withOpacity(.5),
-        child: Center(
-          child: Lottie.asset(
-            'assets/animations/tickets_logo.json',
-            frameRate: FrameRate(60),
-          ),
-        ),
-      ),
-      useDefaultLoading: false,
-      child: Scaffold(
-        appBar: RaverAppBar(title: S().checkout),
-        body: BlocProvider(
-          create: (_) => getIt<TicketCheckoutCubit>()..initData(event),
-          child: BlocConsumer<TicketCheckoutCubit, TicketCheckoutState>(
-            buildWhen: (previous, current) =>
-                previous.initialStatus != current.initialStatus ||
-                previous.eventTickets != current.eventTickets ||
-                previous.sendInvoice != current.sendInvoice,
-            listenWhen: (previous, current) =>
-                previous.proceedingToPaymentStatus !=
-                    current.proceedingToPaymentStatus ||
-                previous.snackbarMessage != current.snackbarMessage,
-            listener: (context, state) {
-              if (state.proceedingToPaymentStatus.isSuccess() &&
-                  state.purchasedTicket.isSome()) {
-                AutoRouter.of(context).replace(
-                  TicketPaymentConfirmRoute(
-                    ticket: state.purchasedTicket.getOrCrash(),
+    return BlocProvider(
+      create: (_) => getIt<TicketCheckoutCubit>()..initData(event),
+      child: BlocConsumer<TicketCheckoutCubit, TicketCheckoutState>(
+        buildWhen: (previous, current) =>
+            previous.initialStatus != current.initialStatus ||
+            previous.eventTickets != current.eventTickets ||
+            previous.sendInvoice != current.sendInvoice,
+        listenWhen: (previous, current) =>
+            previous.proceedingToPaymentStatus !=
+                current.proceedingToPaymentStatus ||
+            previous.snackbarMessage != current.snackbarMessage,
+        listener: (context, state) {
+          if (state.proceedingToPaymentStatus.isSuccess() &&
+              state.purchasedTicket.isSome()) {
+            AutoRouter.of(context).replace(
+              TicketPaymentConfirmRoute(
+                ticket: state.purchasedTicket.getOrCrash(),
+              ),
+            );
+          }
+
+          state.proceedingToPaymentStatus.isLoading()
+              ? RaverLoadingOverlay.show(context)
+              : RaverLoadingOverlay.hide();
+
+          state.snackbarMessage.fold(
+            () {},
+            (message) => context.showSnackbarMessage(message),
+          );
+        },
+        builder: (context, state) {
+          return state.initialStatus.isLoading()
+              ? const Center(child: CircularProgressIndicator())
+              : Scaffold(
+                  floatingActionButtonLocation:
+                      FloatingActionButtonLocation.centerFloat,
+                  floatingActionButton: const TicketCheckoutPaySection(),
+                  appBar: RaverAppBar(title: S().checkout),
+                  body: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: ListView(
+                      children: [
+                        const TicketCheckoutHeader(),
+                        const SizedBox(height: 20),
+                        const TicketCheckoutTicketCard(),
+                        const SizedBox(height: 30),
+                        if (_checkIfVipSwitchVisible(state))
+                          const TicketCheckoutIsVipSwitch(),
+                        if (!state.eventTickets.getOrCrash().isSoldOut)
+                          const TicketCheckoutPromotionCode(),
+                        const SizedBox(height: 20),
+                        const TicketCheckoutInvoiceCheckbox(),
+                        if (state.sendInvoice)
+                          const TicketCheckoutInvoiceData(),
+                        const SizedBox(height: 20),
+                        const TicketCheckoutSummary(),
+                        const SizedBox(height: 80),
+                      ],
+                    ),
                   ),
                 );
-              }
-
-              state.proceedingToPaymentStatus.isLoading()
-                  ? context.loaderOverlay.show()
-                  : context.loaderOverlay.hide();
-
-              state.snackbarMessage.fold(
-                () {},
-                (message) => context.showSnackbarMessage(message),
-              );
-            },
-            builder: (context, state) {
-              return state.initialStatus.isLoading()
-                  ? const Center(child: CircularProgressIndicator())
-                  : Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Expanded(
-                            child: ListView(
-                              children: [
-                                const TicketCheckoutHeader(),
-                                const SizedBox(height: 20),
-                                const TicketCheckoutTicketCard(),
-                                const SizedBox(height: 30),
-                                if (_checkIfVipSwitchVisible(state))
-                                  const TicketCheckoutIsVipSwitch(),
-                                if (!state.eventTickets.getOrCrash().isSoldOut)
-                                  const TicketCheckoutPromotionCode(),
-                                const SizedBox(height: 20),
-                                const TicketCheckoutInvoiceCheckbox(),
-                                if (state.sendInvoice)
-                                  const TicketCheckoutInvoiceData(),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 30),
-                          const TicketCheckoutPaySection(),
-                        ],
-                      ),
-                    );
-            },
-          ),
-        ),
+        },
       ),
     );
   }

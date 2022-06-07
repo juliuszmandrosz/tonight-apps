@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/core/get_payment_failure_message.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
@@ -21,6 +22,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   final UserPaymentFacade _paymentFacade;
   final TicketListCubit _ticketListCubit;
   final EventTicketsCubit _eventTicketsCubit;
+  final FirebaseRemoteConfig _remoteConfig;
   late final StreamSubscription _eventTicketsSubscription;
   StreamSubscription? _userTicketsSubscription;
 
@@ -28,9 +30,11 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
     required UserPaymentFacade paymentFacade,
     required TicketListCubit ticketListCubit,
     required EventTicketsCubit eventTicketsCubit,
+    required FirebaseRemoteConfig firebaseRemoteConfig,
   })  : _paymentFacade = paymentFacade,
         _ticketListCubit = ticketListCubit,
         _eventTicketsCubit = eventTicketsCubit,
+        _remoteConfig = firebaseRemoteConfig,
         super(TicketCheckoutState.initial());
 
   Future<void> initData(Event event) async {
@@ -40,6 +44,9 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
         event: some(event),
       ),
     );
+
+    final fee = _remoteConfig.getDouble(serviceFee);
+    emit(state.copyWith(serviceFee: some(fee)));
 
     await _initInvoiceData();
 
@@ -84,12 +91,17 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
     failureOrSuccess.fold(
       (failure) => _emitPromotionCodeFailure(failure),
       (code) {
+        final newTicketPrice = state.ticketPrice.getOrCrash() - code.amountOff;
+        final serviceFeeAmount = _getServiceFeeAmount(newTicketPrice);
+        final totalAmount = _getTotalAmount(newTicketPrice, serviceFeeAmount);
         emit(
           state.copyWith(
             promotionCode: code,
             promotionCodeStatus: CubitStatus.success,
             invalidPromotionCodeMessage: none(),
-            ticketPrice: some(state.ticketPrice.getOrCrash() - code.amountOff),
+            ticketPrice: some(newTicketPrice),
+            serviceFeeAmount: some(serviceFeeAmount),
+            totalAmount: some(totalAmount),
           ),
         );
       },
@@ -105,11 +117,17 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   }
 
   void resetPromotionCode() {
+    final newTicketPrice =
+        state.ticketPrice.getOrCrash() + state.promotionCode.amountOff;
+
+    final serviceFeeAmount = _getServiceFeeAmount(newTicketPrice);
+    final totalAmount = _getTotalAmount(newTicketPrice, serviceFeeAmount);
+
     emit(
       state.copyWith(
-        ticketPrice: some(
-          state.ticketPrice.getOrCrash() + state.promotionCode.amountOff,
-        ),
+        ticketPrice: some(newTicketPrice),
+        serviceFeeAmount: some(serviceFeeAmount),
+        totalAmount: some(totalAmount),
         promotionCode: PromotionCode.empty(),
         promotionCodeStatus: CubitStatus.initial,
         invalidPromotionCodeMessage: none(),
@@ -134,13 +152,18 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
 
     final currentPrice = state.ticketPrice.getOrCrash();
 
-    final newPrice =
+    final newTicketPrice =
         value ? currentPrice + vipPrice! : currentPrice - vipPrice!;
+
+    final serviceFeeAmount = _getServiceFeeAmount(newTicketPrice);
+    final totalAmount = _getTotalAmount(newTicketPrice, serviceFeeAmount);
 
     emit(
       state.copyWith(
         isVip: value,
-        ticketPrice: some(newPrice),
+        ticketPrice: some(newTicketPrice),
+        serviceFeeAmount: some(serviceFeeAmount),
+        totalAmount: some(totalAmount),
       ),
     );
   }
@@ -178,51 +201,72 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
 
       final eventTickets = eventTicketsState.eventTickets.getOrCrash();
 
-      final currentTicketPool = eventTickets.getCurrentPool();
+      final currentPool = eventTickets.getCurrentPool();
 
       if (state.eventTickets.isSome()) {
-        final poolInState = state.eventTickets.getOrCrash().getCurrentPool();
-
-        if (poolInState.poolNumber < currentTicketPool.poolNumber) {
-          _showSnackbarMessage(S().ticketPoolHasSoldOut);
-        }
-
-        if (poolInState.poolNumber > currentTicketPool.poolNumber ||
-            poolInState.isSoldOut && !currentTicketPool.isSoldOut) {
-          _showSnackbarMessage(S().previousTicketPoolAvailable);
-        }
-
-        // TODO - add translation
-        if (poolInState.isVipEnabled && !currentTicketPool.isVipEnabled) {
-          _showSnackbarMessage('VIP nie jest już dostępny!');
-        }
-
-        if (!poolInState.isVipEnabled && currentTicketPool.isVipEnabled) {
-          _showSnackbarMessage('VIP znowu jest dostępny!');
-        }
+        _emitMessagesIfPoolsHaveChanged(currentPool);
       }
-
-      var ticketPrice = currentTicketPool.ticketPrice;
-
-      final vipPrice =
-          currentTicketPool.isVipEnabled ? currentTicketPool.vipPrice! : 0;
 
       var isVip = state.isVip;
 
       if (isVip) {
-        ticketPrice += vipPrice;
-        isVip = currentTicketPool.isVipEnabled;
+        isVip = currentPool.isVipEnabled;
       }
+
+      final newTicketPrice = _getNewTicketPrice(currentPool, isVip);
+      final serviceFeeAmount = _getServiceFeeAmount(newTicketPrice);
+      final totalAmount = _getTotalAmount(newTicketPrice, serviceFeeAmount);
 
       emit(
         state.copyWith(
-          ticketPrice: some(ticketPrice - state.promotionCode.amountOff),
+          ticketPrice: some(newTicketPrice),
           eventTickets: some(eventTickets),
           initialStatus: CubitStatus.success,
           isVip: isVip,
+          serviceFeeAmount: some(serviceFeeAmount),
+          totalAmount: some(totalAmount),
         ),
       );
     });
+  }
+
+  int _getNewTicketPrice(TicketPool currentPool, bool isVip) {
+    var currentPoolTicketPrice = currentPool.ticketPrice;
+
+    final vipPrice = isVip ? currentPool.vipPrice! : 0;
+
+    return currentPoolTicketPrice + vipPrice - state.promotionCode.amountOff;
+  }
+
+  double _getServiceFeeAmount(int ticketPrice) {
+    final serviceFee = state.serviceFee.getOrCrash();
+    return ticketPrice * serviceFee;
+  }
+
+  double _getTotalAmount(int ticketPrice, double serviceFeeAmount) {
+    return ticketPrice + serviceFeeAmount;
+  }
+
+  _emitMessagesIfPoolsHaveChanged(TicketPool currentPool) {
+    final poolInState = state.eventTickets.getOrCrash().getCurrentPool();
+
+    if (poolInState.poolNumber < currentPool.poolNumber) {
+      _showSnackbarMessage(S().ticketPoolHasSoldOut);
+    }
+
+    if (poolInState.poolNumber > currentPool.poolNumber ||
+        poolInState.isSoldOut && !currentPool.isSoldOut) {
+      _showSnackbarMessage(S().previousTicketPoolAvailable);
+    }
+
+    // TODO - add translations
+    if (poolInState.isVipEnabled && !currentPool.isVipEnabled) {
+      _showSnackbarMessage('VIP nie jest już dostępny!');
+    }
+
+    if (!poolInState.isVipEnabled && currentPool.isVipEnabled) {
+      _showSnackbarMessage('VIP znowu jest dostępny!');
+    }
   }
 
   Future<void> _waitForTicketToBeCreated() async {
