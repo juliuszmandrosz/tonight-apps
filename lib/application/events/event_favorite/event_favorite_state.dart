@@ -6,13 +6,13 @@ class EventFavoriteState with _$EventFavoriteState {
     required List<Event> favoriteEvents,
     required CubitStatus status,
     required bool isChangingFavoriteStatus,
-    required Option<String> errorMessage,
+    required Option<String> snackbarMessage,
   }) = _EventFavoriteState;
 
   factory EventFavoriteState.initial() => EventFavoriteState(
         favoriteEvents: [],
         status: CubitStatus.initial,
         isChangingFavoriteStatus: false,
-        errorMessage: none(),
+        snackbarMessage: none(),
       );
 }

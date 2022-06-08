@@ -6,13 +6,13 @@ class ClubFavoriteState with _$ClubFavoriteState {
     required List<Club> favoriteClubs,
     required CubitStatus status,
     required bool isChangingFavoriteStatus,
-    required Option<String> errorMessage,
+    required Option<String> snackbarMessage,
   }) = _ClubFavoriteState;
 
   factory ClubFavoriteState.initial() => ClubFavoriteState(
         favoriteClubs: [],
         status: CubitStatus.initial,
         isChangingFavoriteStatus: false,
-        errorMessage: none(),
+        snackbarMessage: none(),
       );
 }

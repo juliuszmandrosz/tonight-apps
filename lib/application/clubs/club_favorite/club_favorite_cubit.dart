@@ -30,9 +30,7 @@ class ClubFavoriteCubit extends Cubit<ClubFavoriteState> {
   }
 
   Future<void> toggleClubFavoriteStatus(Club club) async {
-    emit(state.copyWith(
-      isChangingFavoriteStatus: true,
-    ));
+    emit(state.copyWith(isChangingFavoriteStatus: true));
 
     final favoriteClubs = state.favoriteClubs;
     final favoriteClubsCopy = [...state.favoriteClubs];
@@ -43,44 +41,41 @@ class ClubFavoriteCubit extends Cubit<ClubFavoriteState> {
         ? favoriteClubsCopy.remove(club)
         : favoriteClubsCopy.add(club);
 
-    emit(state.copyWith(
-      favoriteClubs: favoriteClubsCopy,
-    ));
+    emit(state.copyWith(favoriteClubs: favoriteClubsCopy));
 
     final failureOrSuccess =
         await _clubFacade.toggleClubFavoriteStatus(club.id);
 
-    emit(state.copyWith(
-      isChangingFavoriteStatus: false,
-    ));
+    emit(state.copyWith(isChangingFavoriteStatus: false));
 
     failureOrSuccess.fold(
-      (failure) {
-        emit(
-          state.copyWith(
-            errorMessage: some(S().errorChangingClubStatus),
-            status: CubitStatus.failure,
-            favoriteClubs: favoriteClubs,
-          ),
-        );
-
-        emit(
-          state.copyWith(errorMessage: none()),
-        );
-      },
+      (failure) => _emitToggleFailure(favoriteClubs),
       (success) {},
+    );
+  }
+
+  void _emitToggleFailure(List<Club> previousClubs) {
+    emit(
+      state.copyWith(
+        snackbarMessage: some(S().errorChangingClubStatus),
+        status: CubitStatus.failure,
+        favoriteClubs: previousClubs,
+      ),
+    );
+    emit(
+      state.copyWith(snackbarMessage: none()),
     );
   }
 
   void _emitFetchFailure() {
     emit(
       state.copyWith(
-        errorMessage: some(S().errorLoadingFavoriteClubsInfo),
+        snackbarMessage: some(S().errorLoadingFavoriteClubsInfo),
         status: CubitStatus.failure,
       ),
     );
     emit(
-      state.copyWith(errorMessage: none()),
+      state.copyWith(snackbarMessage: none()),
     );
   }
 }

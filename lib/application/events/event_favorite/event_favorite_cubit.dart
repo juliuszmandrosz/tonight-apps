@@ -34,9 +34,7 @@ class EventFavoriteCubit extends Cubit<EventFavoriteState> {
   }
 
   Future<void> toggleEventFavoriteStatus(Event event) async {
-    emit(state.copyWith(
-      isChangingFavoriteStatus: true,
-    ));
+    emit(state.copyWith(isChangingFavoriteStatus: true));
 
     final favoriteEvents = state.favoriteEvents;
     final favoriteEventsCopy = [...favoriteEvents];
@@ -47,44 +45,42 @@ class EventFavoriteCubit extends Cubit<EventFavoriteState> {
         ? favoriteEventsCopy.remove(event)
         : favoriteEventsCopy.add(event);
 
-    emit(state.copyWith(
-      favoriteEvents: favoriteEventsCopy,
-    ));
+    emit(state.copyWith(favoriteEvents: favoriteEventsCopy));
 
     final failureOrSuccess =
         await _eventFacade.toggleEventFavoriteStatus(event.id);
 
-    emit(state.copyWith(
-      isChangingFavoriteStatus: false,
-    ));
+    emit(state.copyWith(isChangingFavoriteStatus: false));
 
     failureOrSuccess.fold(
-      (failure) {
-        emit(
-          state.copyWith(
-            errorMessage: some(S().errorChangingEventStatus),
-            status: CubitStatus.failure,
-            favoriteEvents: favoriteEvents,
-          ),
-        );
-
-        emit(
-          state.copyWith(errorMessage: none()),
-        );
-      },
+      (failure) => _emitToggleFailure(favoriteEvents),
       (success) {},
+    );
+  }
+
+  void _emitToggleFailure(List<Event> previousEvents) {
+    emit(
+      state.copyWith(
+        snackbarMessage: some(S().errorChangingEventStatus),
+        status: CubitStatus.failure,
+        favoriteEvents: previousEvents,
+      ),
+    );
+
+    emit(
+      state.copyWith(snackbarMessage: none()),
     );
   }
 
   void _emitFetchFailure() {
     emit(
       state.copyWith(
-        errorMessage: some(S().errorLoadingFavoriteEventsInfo),
+        snackbarMessage: some(S().errorLoadingFavoriteEventsInfo),
         status: CubitStatus.failure,
       ),
     );
     emit(
-      state.copyWith(errorMessage: none()),
+      state.copyWith(snackbarMessage: none()),
     );
   }
 }

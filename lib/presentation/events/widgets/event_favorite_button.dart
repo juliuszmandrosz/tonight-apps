@@ -19,9 +19,9 @@ class EventFavoriteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<EventFavoriteCubit, EventFavoriteState>(
       listener: (ctx, state) {
-        state.errorMessage.fold(
+        state.snackbarMessage.fold(
           () {},
-          (error) => context.showSnackbarMessage(error),
+          (message) => context.showSnackbarMessage(message),
         );
       },
       builder: (context, state) {

@@ -19,9 +19,9 @@ class ClubFavoriteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<ClubFavoriteCubit, ClubFavoriteState>(
       listener: (ctx, state) {
-        state.errorMessage.fold(
+        state.snackbarMessage.fold(
           () {},
-          (error) => context.showSnackbarMessage(error),
+          (message) => context.showSnackbarMessage(message),
         );
       },
       builder: (context, state) {
