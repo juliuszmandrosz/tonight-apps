@@ -13,6 +13,7 @@ import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_clubs/domain/club/selector_club_facade.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_rewards/domain/domain.dart';
 import 'package:raver_rewards/infrastructure/firebase_reward_facade.dart';
@@ -130,6 +131,8 @@ void _registerFacades() {
       firestore: getIt(),
       algoliaEventsApi: getIt(),
       firebaseAuth: getIt(),
+      eventCloudFunctionsFacade: getIt(),
+      storage: getIt(),
       logger: getIt(),
     ),
   );
@@ -171,6 +174,12 @@ void _registerFacades() {
       firestore: getIt(),
       firebaseAuth: getIt(),
       logger: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<EventCloudFunctionsFacade>(
+    () => EventCloudFunctionsFacadeImpl(
+      getIt(),
     ),
   );
 }

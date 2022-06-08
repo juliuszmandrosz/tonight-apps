@@ -56,24 +56,21 @@ dependencies:
   connectivity_plus: ^2.3.0
   lottie: ^1.3.0
   firebase_storage: ^10.2.16
+  qr_code_scanner: ^1.0.0
 
-  qr_code_scanner:
-    git:
-      url: https://github.com/X-SLAYER/qr_code_scanner.git
-      ref: flutter-beta
 
   raver_translations:
     git:
-      url: https://github.com/juliuszmandrosz/RaverTranslations.git
+      url: git@github.com:juliuszmandrosz/RaverTranslations.git
 
   raver_common:
     git:
-      url: https://github.com/juliuszmandrosz/RaverCommon.git
+      url: git@github.com:juliuszmandrosz/RaverCommon.git
 
   raver_auth:
     git:
-      url: https://github.com/juliuszmandrosz/RaverAuth.git
-      ref: feature/invalid-link-message
+      url: git@github.com:juliuszmandrosz/RaverAuth.git
+      ref: develop
 
   raver_events:
     git:
@@ -82,18 +79,18 @@ dependencies:
 
   raver_tickets:
     git:
-      url: https://github.com/juliuszmandrosz/RaverTickets.git
+      url: git@github.com:juliuszmandrosz/RaverTickets.git
       ref: develop
 
   raver_clubs:
     git:
-      url: https://github.com/juliuszmandrosz/RaverClubs.git
+      url: git@github.com:juliuszmandrosz/RaverClubs.git
       ref: develop
 
   raver_rewards:
     git:
-      url: https://github.com/juliuszmandrosz/RaverRewards.git
-      ref: feature/get-user-rewards-for-selector
+      url: git@github.com:juliuszmandrosz/RaverRewards.git
+      ref: develop
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
