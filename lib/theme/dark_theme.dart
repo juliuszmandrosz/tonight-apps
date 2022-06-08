@@ -23,6 +23,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   dividerTheme: dividerTheme,
   navigationBarTheme: navigationBarTheme,
   outlinedButtonTheme: outlineButtonTheme,
+  sliderTheme: sliderTheme,
 );
 
 PageTransitionsTheme get transitions => const PageTransitionsTheme(
@@ -209,3 +210,7 @@ FloatingActionButtonThemeData get floatingActionButtonTheme =>
     );
 
 DividerThemeData get dividerTheme => const DividerThemeData(thickness: 2);
+
+SliderThemeData get sliderTheme => SliderThemeData(
+      overlayShape: SliderComponentShape.noOverlay,
+    );
