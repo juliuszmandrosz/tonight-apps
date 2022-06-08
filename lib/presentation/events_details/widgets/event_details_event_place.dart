@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -40,7 +41,12 @@ class _EventDetailsEventPlaceState extends State<EventDetailsEventPlace> {
           width: 400,
           height: 300,
           child: GoogleMap(
-            onTap: (_) async => await MapsLauncher.launchCoordinates(lat, lng),
+            onTap: (_) async {
+              var result = await MapsLauncher.launchCoordinates(lat, lng);
+              if (!result) {
+                context.showSnackbarMessage(S().errorOpeningMaps);
+              }
+            },
             zoomGesturesEnabled: false,
             scrollGesturesEnabled: false,
             tiltGesturesEnabled: false,
