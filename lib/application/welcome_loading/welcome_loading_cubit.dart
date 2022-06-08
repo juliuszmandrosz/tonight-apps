@@ -90,7 +90,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
   _initEvents() {
     _eventFiltersCubit.resetFilters();
-    _eventFiltersCubit.resetSelectedDay();
     _eventOverviewBloc.stream.listen((event) {
       _checkAndEmitFailure(event.status);
       _emitSuccessIfAllLoaded();

@@ -1,11 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver/presentation/events/widgets/event_search_field.dart';
+import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/presentation/routes/app_router.dart';
-import 'package:raver_events/raver_events.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class EventFiltersRow extends StatelessWidget {
@@ -13,55 +10,50 @@ class EventFiltersRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final eventsBloc = context.read<EventOverviewBloc>();
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        const EventSearchField(),
-        const SizedBox(height: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Flexible(
-              child: OutlinedButton.icon(
+            Expanded(
+              child: OutlinedButton(
                 onPressed: () => AutoRouter.of(context).push(
                   const EventDatePickerRoute(),
                 ),
-                icon: const FaIcon(
-                  FontAwesomeIcons.calendar,
-                  size: 16,
-                ),
-                label: Text(S().date),
+                child: Text(S().date),
               ),
             ),
-            Flexible(
-              child: OutlinedButton.icon(
+            const SizedBox(width: 10),
+            Expanded(
+              child: OutlinedButton(
                 onPressed: () => AutoRouter.of(context).push(
                   const EventFiltersRoute(),
                 ),
-                icon: const FaIcon(
-                  FontAwesomeIcons.filter,
-                  size: 16,
-                ),
-                label: Text(S().filters),
+                child: Text(S().filters),
               ),
             ),
-            Flexible(
-              child: OutlinedButton.icon(
-                onPressed: () => eventsBloc.add(
-                  EventOverviewEvent.eventsFetched(
-                    eventsBloc.state.eventFilters,
-                    eventsBloc.state.sortModel,
-                  ),
+            Row(
+              children: [
+                const SizedBox(width: 10),
+                BlocBuilder<EventFiltersCubit, EventFiltersState>(
+                  buildWhen: (previous, current) =>
+                      previous.isFilterApplied != current.isFilterApplied,
+                  builder: (context, state) {
+                    return OutlinedButton(
+                      onPressed: state.isFilterApplied
+                          ? () =>
+                              context.read<EventFiltersCubit>().resetFilters()
+                          : null,
+                      child: const Text(
+                        // TODO - add translation
+                        'Wyczyść filtry',
+                        textAlign: TextAlign.center,
+                      ),
+                    );
+                  },
                 ),
-                icon: const FaIcon(
-                  FontAwesomeIcons.arrowsRotate,
-                  size: 16,
-                ),
-                label: AutoSizeText(
-                  S().refresh,
-                  maxLines: 1,
-                ),
-              ),
+              ],
             ),
           ],
         ),

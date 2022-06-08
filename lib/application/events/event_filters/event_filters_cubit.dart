@@ -15,9 +15,16 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
       : super(EventFiltersState.initial());
 
   void submitSearchField(String value) async {
-    final currentFilters =
-        state.filters.copyWith(phraseFilter: PhraseFilter(phrase: value));
-    emit(state.copyWith(filters: currentFilters));
+    final currentFilters = state.filters.copyWith(
+      phraseFilter: PhraseFilter(phrase: value),
+    );
+
+    emit(
+      state.copyWith(
+        filters: currentFilters,
+        isFilterApplied: true,
+      ),
+    );
 
     if (state.filters.maxDistanceFilter.enabled) {
       _setUserLocation();
@@ -34,10 +41,14 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
       _setUserLocation();
     }
 
-    _eventOverviewBloc.add(EventOverviewEvent.eventsFetched(
-      state.filters,
-      _eventOverviewBloc.state.sortModel,
-    ));
+    emit(state.copyWith(isFilterApplied: true));
+
+    _eventOverviewBloc.add(
+      EventOverviewEvent.eventsFetched(
+        state.filters,
+        _eventOverviewBloc.state.sortModel,
+      ),
+    );
   }
 
   void changeIsMaxDistanceOption(bool value) {
@@ -142,58 +153,11 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
   }
 
   void resetFilters() {
-    // TODO - change this
-    emit(
-      state.copyWith(
-        filters: EventFilters.empty().copyWith(
-          dateRangeFilter: _getDateRangeFilterOnResetFilters(),
-          maxDistanceFilter: MaxDistanceFilter(
-            enabled: false,
-            maxDistance: 50,
-            userLocation: {},
-          ),
-        ),
-      ),
-    );
+    emit(state.copyWith(filters: EventFilters.empty(), isFilterApplied: false));
 
     _setUserLocation();
     _eventOverviewBloc.add(
         EventOverviewEvent.eventsFetched(state.filters, SortModel.empty()));
-  }
-
-  _getDateRangeFilterOnResetFilters() {
-    var selectedDay = state.filters.dateRangeFilter;
-    var fromDate = selectedDay.fromDate;
-    final now = DateTime.now();
-    if (fromDate != null) {
-      fromDate = DateTime(
-        fromDate.year,
-        fromDate.month,
-        fromDate.day,
-        now.hour,
-        now.minute,
-        now.second,
-      );
-    }
-
-    return DateRangeFilter(
-      fromDate: fromDate,
-      toDate: selectedDay.toDate,
-    );
-  }
-
-  void resetSelectedDay() {
-    final currentFilters = state.filters.copyWith(
-        dateRangeFilter: DateRangeFilter(
-      fromDate: DateTime.now(),
-      toDate: null,
-    ));
-    emit(state.copyWith(filters: currentFilters));
-
-    _eventOverviewBloc.add(EventOverviewEvent.eventsFetched(
-      state.filters,
-      _eventOverviewBloc.state.sortModel,
-    ));
   }
 
   _setUserLocation() {
@@ -203,8 +167,9 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
       () => {},
       (location) {
         final currentFilters = state.filters.copyWith(
-            maxDistanceFilter: state.filters.maxDistanceFilter
-                .copyWith(userLocation: location));
+          maxDistanceFilter:
+              state.filters.maxDistanceFilter.copyWith(userLocation: location),
+        );
 
         emit(state.copyWith(filters: currentFilters));
       },

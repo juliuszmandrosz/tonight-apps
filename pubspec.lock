@@ -1260,7 +1260,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "945ec9f10095002369530bdf431503176e4ed599"
+      resolved-ref: de7cf72f0dd56f85a1697e160e2918e17b2b1677
       url: "git@github.com:juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
@@ -1278,7 +1278,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "644e203fee1c8b089e6ec21da929bc71694003d1"
+      resolved-ref: b18ccbef92fa01ed1a946427dc3dc5562ecd8d7c
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"

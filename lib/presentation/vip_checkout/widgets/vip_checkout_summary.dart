@@ -35,8 +35,7 @@ class VipCheckoutSummary extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${formatDoubleToMoney(ticketPrice.toDouble(), currency)}'
-                      '${getCurrencySymbolFromCode(currency)}',
+                      formatDoubleToMoney(ticketPrice.toDouble(), currency),
                       style: context.bodyText2.copyWith(
                         color: context.secondaryColor,
                       ),
@@ -54,8 +53,7 @@ class VipCheckoutSummary extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${formatDoubleToMoney(serviceFeeAmount, currency)}'
-                      '${getCurrencySymbolFromCode(currency)}',
+                      formatDoubleToMoney(serviceFeeAmount, currency),
                       style: context.bodyText2.copyWith(
                         color: context.secondaryColor,
                       ),
@@ -73,8 +71,7 @@ class VipCheckoutSummary extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${formatDoubleToMoney(totalAmount, currency)}'
-                      '${getCurrencySymbolFromCode(currency)}',
+                      formatDoubleToMoney(totalAmount, currency),
                       style: context.headline6.copyWith(
                         color: context.primaryColor,
                       ),

@@ -11,34 +11,17 @@ class EventDatePickerButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       builder: (context, state) {
-        return Column(
-          children: [
-            SizedBox(
-              width: 300,
-              child: ElevatedButton(
-                onPressed: state.filters.dateRangeFilter.fromDate != null
-                    ? () {
-                        context.read<EventFiltersCubit>().resetSelectedDay();
-                        AutoRouter.of(context).pop();
-                      }
-                    : null,
-                child: Text(S().resetSelectedDate),
-              ),
-            ),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: 300,
-              child: ElevatedButton(
-                onPressed: state.filters.dateRangeFilter.fromDate != null
-                    ? () {
-                        context.read<EventFiltersCubit>().submitFilters();
-                        AutoRouter.of(context).pop();
-                      }
-                    : null,
-                child: Text(S().applySelectedDate),
-              ),
-            ),
-          ],
+        return SizedBox(
+          width: 300,
+          child: ElevatedButton(
+            onPressed: state.filters.dateRangeFilter.fromDate != null
+                ? () {
+                    context.read<EventFiltersCubit>().submitFilters();
+                    AutoRouter.of(context).pop();
+                  }
+                : null,
+            child: Text(S().applySelectedDate),
+          ),
         );
       },
     );
