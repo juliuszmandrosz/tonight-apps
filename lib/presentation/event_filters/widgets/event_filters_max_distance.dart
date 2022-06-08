@@ -67,7 +67,7 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
                             ),
                         ],
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 25),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

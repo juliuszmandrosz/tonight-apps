@@ -55,7 +55,7 @@ class _EventFiltersPageState extends State<EventFiltersPage> {
                           create: (context) => getIt<GooglePlacesCubit>(),
                           child: const EventFiltersCity(),
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 25),
                         EventFiltersCurrency(
                           currencies: state.availableFilters.currencies,
                         ),
