@@ -1,5 +1,6 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
+import 'package:intl/intl.dart';
 import 'package:raver_auth/src/infrastructure/cloud_functions/cloud_function_names.dart';
 
 abstract class AuthCloudFunctionsFacade {
@@ -63,7 +64,9 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   Future<Unit> addUser() async {
     final addUserFn = _firebaseFunctions.httpsCallable(addUserFnName);
 
-    await addUserFn.call();
+    await addUserFn.call({
+      'locale': Intl.getCurrentLocale(),
+    });
 
     return unit;
   }
@@ -72,7 +75,10 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   Future<Unit> addPartner(String accessCode) async {
     final addPartnerFn = _firebaseFunctions.httpsCallable(addPartnerFnName);
 
-    await addPartnerFn.call({'accessCode': accessCode});
+    await addPartnerFn.call({
+      'accessCode': accessCode,
+      'locale': Intl.getCurrentLocale(),
+    });
 
     return unit;
   }
