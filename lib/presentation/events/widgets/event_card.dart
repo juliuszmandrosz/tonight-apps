@@ -171,7 +171,8 @@ class EventCard extends StatelessWidget {
                                       FontAwesomeIcons.circleExclamation),
                                   const SizedBox(width: 10),
                                   Text(
-                                    S().lastTicketsLeft,
+                                    // TODO - add translation
+                                    'Ostatnie bilety w puli',
                                     style: context.bodyText1,
                                   ),
                                 ],
