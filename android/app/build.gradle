@@ -49,7 +49,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.raverteam.raver"
+        applicationId "com.raverteam.tonight"
         minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
