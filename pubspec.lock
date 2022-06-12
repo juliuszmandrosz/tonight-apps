@@ -365,6 +365,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.0"
+  dio:
+    dependency: "direct main"
+    description:
+      name: dio
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.6"
   equatable:
     dependency: "direct main"
     description:
@@ -1271,7 +1278,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: a4b592284ca120a7a6dc315b330e12cec033a3a3
+      resolved-ref: "8901c7f4a3d9ce20bfbc3240dfc260f50d0efeed"
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -1289,7 +1296,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "2db3daf0ec5c8126826035614cfcfdc65c80b78c"
+      resolved-ref: dcc5141dad7804ea24854fb7975969e9679f5d22
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"

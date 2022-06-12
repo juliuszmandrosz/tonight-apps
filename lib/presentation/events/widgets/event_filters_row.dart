@@ -18,8 +18,8 @@ class EventFiltersRow extends StatelessWidget {
           children: [
             Expanded(
               child: OutlinedButton(
-                onPressed: () => AutoRouter.of(context).push(
-                  const EventDatePickerRoute(),
+                onPressed: () => context.pushRoute(
+                  EventDatePickerRoute(blocContext: context),
                 ),
                 child: Text(S().date),
               ),
@@ -27,8 +27,8 @@ class EventFiltersRow extends StatelessWidget {
             const SizedBox(width: 10),
             Expanded(
               child: OutlinedButton(
-                onPressed: () => AutoRouter.of(context).push(
-                  const EventFiltersRoute(),
+                onPressed: () => context.pushRoute(
+                  EventFiltersRoute(blocContext: context),
                 ),
                 child: Text(S().filters),
               ),
@@ -47,7 +47,7 @@ class EventFiltersRow extends StatelessWidget {
                           : null,
                       child: const Text(
                         // TODO - add translation
-                        'Wyczyść filtry',
+                        'Clear filters',
                         textAlign: TextAlign.center,
                       ),
                     );

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/domain/remote_config/remote_config_facade.dart';
-import 'package:raver_common/application/cubit_status.dart';
+import 'package:raver_common/raver_common.dart';
 
 part 'remote_config_cubit.freezed.dart';
 part 'remote_config_state.dart';
@@ -14,6 +14,10 @@ class RemoteConfigCubit extends Cubit<RemoteConfigState> {
   ) : super(RemoteConfigState.initial());
 
   void setupRemoteConfig() async {
+    if (state.cubitStatus.isSuccess() || state.cubitStatus.isLoading()) {
+      return;
+    }
+
     emit(state.copyWith(cubitStatus: CubitStatus.loading));
 
     final failureOrSuccess = await _remoteConfigFacade.activateRemoteConfig();

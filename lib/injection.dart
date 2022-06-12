@@ -2,6 +2,7 @@ import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -123,15 +124,15 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerLazySingleton(
+  getIt.registerFactory(
     () => ClubsOverviewBloc(
       getIt(),
     ),
   );
 
-  getIt.registerFactory(
-    () => ClubFiltersCubit(
-      getIt(),
+  getIt.registerFactoryParam(
+    (ClubsOverviewBloc clubsOverviewBloc, _) => ClubFiltersCubit(
+      clubsOverviewBloc,
     ),
   );
 
@@ -148,7 +149,7 @@ void _registerCubits() {
   );
 
   //Tickets
-  getIt.registerLazySingleton(
+  getIt.registerFactory(
     () => TicketListCubit(
       getIt(),
     ),
@@ -161,10 +162,10 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerFactory(
-    () => TicketQrCubit(
+  getIt.registerFactoryParam(
+    (TicketListCubit ticketListCubit, _) => TicketQrCubit(
       ticketFacade: getIt(),
-      ticketListCubit: getIt(),
+      ticketListCubit: ticketListCubit,
       eventTicketsCubit: getIt(),
     ),
   );
@@ -216,7 +217,7 @@ void _registerCubits() {
   );
 
   //Remote Config
-  getIt.registerFactory(
+  getIt.registerLazySingleton(
     () => RemoteConfigCubit(
       getIt(),
     ),
@@ -233,30 +234,32 @@ void _registerCubits() {
   getIt.registerFactory(() => AppInfoCubit());
 
   //Profile
-  getIt.registerFactory(() => ProfileCubit(
-        getIt(),
-        getIt(),
-      ));
+  getIt.registerFactory(
+    () => ProfileCubit(
+      getIt(),
+      getIt(),
+    ),
+  );
 
   //App settings
   getIt.registerFactory(() => AppSettingsCubit());
 
   //Payment
-  getIt.registerFactory(
-    () => TicketCheckoutCubit(
+  getIt.registerFactoryParam(
+    (TicketListCubit ticketListCubit, _) => TicketCheckoutCubit(
       paymentFacade: getIt(),
       eventTicketsCubit: getIt(),
-      ticketListCubit: getIt(),
+      ticketListCubit: ticketListCubit,
       firebaseRemoteConfig: getIt(),
       currencyParamsFacade: getIt(),
     ),
   );
 
-  getIt.registerFactory(
-    () => VipCheckoutCubit(
+  getIt.registerFactoryParam(
+    (TicketListCubit ticketListCubit, _) => VipCheckoutCubit(
       paymentFacade: getIt(),
       eventTicketsCubit: getIt(),
-      ticketListCubit: getIt(),
+      ticketListCubit: ticketListCubit,
       currencyParamsFacade: getIt(),
       firebaseRemoteConfig: getIt(),
     ),
@@ -403,7 +406,8 @@ void _registerFacades() {
 
   getIt.registerLazySingleton<PaymentCloudFunctionsFacade>(
     () => PaymentCloudFunctionsFacadeImpl(
-      getIt(),
+      firebaseFunctions: getIt(),
+      dio: getIt(),
     ),
   );
 
@@ -490,4 +494,13 @@ void _registerModules() {
   getIt.registerLazySingleton(() => Connectivity());
 
   getIt.registerLazySingleton(() => Logger());
+
+  getIt.registerLazySingleton(
+    () => Dio(
+      BaseOptions(
+        baseUrl: FirebaseRemoteConfig.instance.getString(apiEndpoint),
+        headers: getHttpHeaders(),
+      ),
+    ),
+  );
 }

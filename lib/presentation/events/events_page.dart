@@ -2,6 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
+import 'package:raver/injection.dart';
 import 'package:raver/presentation/events/widgets/event_card.dart';
 import 'package:raver/presentation/events/widgets/event_filters_row.dart';
 import 'package:raver/presentation/events/widgets/event_search_field.dart';
@@ -26,96 +28,110 @@ class _EventsPageState extends State<EventsPage> {
   void initState() {
     super.initState();
     _scrollController.addListener(_onScroll);
-    _eventOverviewBloc = BlocProvider.of<EventOverviewBloc>(context);
+    _eventOverviewBloc = context.read<EventOverviewBloc>();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15),
-      child: Column(
-        children: [
-          const EventSearchField(),
-          const SizedBox(height: 15),
-          Expanded(
-            child: RefreshIndicator(
-              onRefresh: () async => _refreshEvents(),
-              child: ListView(
-                controller: _scrollController,
-                children: [
-                  AutoSizeText(
-                    S().typeEventClubOrArtistName,
-                    maxLines: 1,
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 15),
-                  const EventFiltersRow(),
-                  const SizedBox(height: 15),
-                  BlocBuilder<EventOverviewBloc, EventOverviewState>(
-                      builder: (context, state) {
-                    switch (state.status) {
-                      case CubitStatus.initial:
-                        return Container();
+    return BlocProvider(
+      create: (context) => getIt<EventFiltersCubit>(param1: _eventOverviewBloc),
+      child: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          children: [
+            const EventSearchField(),
+            const SizedBox(height: 15),
+            Expanded(
+              child: RefreshIndicator(
+                onRefresh: () async => _refreshEvents(),
+                child: ListView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  controller: _scrollController,
+                  children: [
+                    AutoSizeText(
+                      S().typeEventClubOrArtistName,
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 15),
+                    const EventFiltersRow(),
+                    const SizedBox(height: 15),
+                    BlocBuilder<EventOverviewBloc, EventOverviewState>(
+                        builder: (context, state) {
+                      switch (state.status) {
+                        case CubitStatus.initial:
+                          return Container();
 
-                      case CubitStatus.loading:
-                        return Center(
-                          child: SpinKitThreeBounce(
-                            color: context.onSurfaceColor,
-                            size: 30,
-                          ),
-                        );
-
-                      case CubitStatus.failure:
-                        return Center(child: Text(S().errorLoadingEvents));
-
-                      case CubitStatus.success:
-                        if (state.events.isEmpty) {
-                          return Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              // TODO - change this
-                              const SizedBox(height: 200),
-                              Text(
-                                state.eventFilters.maxDistanceFilter
-                                            .userLocation.isNotEmpty &&
-                                        state.eventFilters.maxDistanceFilter
-                                            .enabled
-                                    ? S().noEventsNearYou
-                                    : S().events(0),
-                                style: context.subtitle1,
-                              ),
-                              const SizedBox(height: 20),
-                              OutlinedButton(
-                                  onPressed: () => _refreshEvents(),
-                                  child: Text(S().refresh)),
-                            ],
+                        case CubitStatus.loading:
+                          return Center(
+                            child: SpinKitThreeBounce(
+                              color: context.onSurfaceColor,
+                              size: 30,
+                            ),
                           );
-                        }
 
-                        return ListView.separated(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          separatorBuilder: (_, __) =>
-                              const SizedBox(height: 10),
-                          itemCount: state.hasReachedMax
-                              ? state.events.length
-                              : state.events.length + 1,
-                          itemBuilder: (ctx, i) => i >= state.events.length
-                              ? const BottomLoader()
-                              : Center(
-                                  child: EventCard(
-                                    event: state.events[i],
-                                    heroPhrase: heroPhrase,
-                                  ),
+                        case CubitStatus.failure:
+                          return Center(
+                            child: Column(
+                              children: [
+                                Text(S().errorLoadingEvents),
+                                const SizedBox(height: 20),
+                                OutlinedButton(
+                                    onPressed: () => _refreshEvents(),
+                                    child: Text(S().refresh)),
+                              ],
+                            ),
+                          );
+
+                        case CubitStatus.success:
+                          if (state.events.isEmpty) {
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                // TODO - change this
+                                const SizedBox(height: 100),
+                                Text(
+                                  state.eventFilters.maxDistanceFilter
+                                              .userLocation.isNotEmpty &&
+                                          state.eventFilters.maxDistanceFilter
+                                              .enabled
+                                      ? S().noEventsNearYou
+                                      : S().events(0),
+                                  style: context.subtitle1,
                                 ),
-                        );
-                    }
-                  }),
-                ],
+                                const SizedBox(height: 20),
+                                OutlinedButton(
+                                    onPressed: () => _refreshEvents(),
+                                    child: Text(S().refresh)),
+                              ],
+                            );
+                          }
+
+                          return ListView.separated(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            separatorBuilder: (_, __) =>
+                                const SizedBox(height: 10),
+                            itemCount: state.hasReachedMax
+                                ? state.events.length
+                                : state.events.length + 1,
+                            itemBuilder: (ctx, i) => i >= state.events.length
+                                ? const BottomLoader()
+                                : Center(
+                                    child: EventCard(
+                                      event: state.events[i],
+                                      heroPhrase: heroPhrase,
+                                    ),
+                                  ),
+                          );
+                      }
+                    }),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

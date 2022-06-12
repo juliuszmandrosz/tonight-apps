@@ -1,17 +1,22 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
-import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/application/welcome_loading/welcome_loading_cubit.dart';
+import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/ticket_logo_animation.dart';
+import 'package:raver/presentation/navigator/navigator_page.dart';
 import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/application/application.dart';
 
 class WelcomeLoaderPage extends StatefulWidget {
@@ -22,67 +27,115 @@ class WelcomeLoaderPage extends StatefulWidget {
 }
 
 class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
-  late WelcomeLoadingCubit _welcomeCubit;
+  TicketLogoAnimation? _ticketLogoAnimation;
+  WelcomeLoadingCubit? _welcomeLoadingCubit;
 
-  var hasBeenInitialized = false;
+  WelcomeLoadingCubit _initWelcomeCubit(BuildContext context) {
+    _welcomeLoadingCubit = WelcomeLoadingCubit(
+      profileCubit: context.read<ProfileCubit>(),
+      userLocationCubit: context.read<UserLocationCubit>(),
+      eventOverviewBloc: context.read<EventOverviewBloc>(),
+      clubsOverviewBloc: context.read<ClubsOverviewBloc>(),
+      ticketListCubit: context.read<TicketListCubit>(),
+      eventFavoriteCubit: context.read<EventFavoriteCubit>(),
+      clubFavoriteCubit: context.read<ClubFavoriteCubit>(),
+      availableFiltersCubit: context.read<AvailableFiltersCubit>(),
+      firebaseRemoteConfig: getIt<FirebaseRemoteConfig>(),
+      stripe: getIt<Stripe>(),
+    );
 
-  _initWelcomeCubit(BuildContext context) {
-    if (!hasBeenInitialized) {
-      hasBeenInitialized = true;
-      _welcomeCubit = WelcomeLoadingCubit(
-        profileCubit: context.read<ProfileCubit>(),
-        userLocationCubit: context.read<UserLocationCubit>(),
-        remoteConfigCubit: context.read<RemoteConfigCubit>(),
-        eventFiltersCubit: context.read<EventFiltersCubit>(),
-        eventOverviewBloc: context.read<EventOverviewBloc>(),
-        clubsOverviewBloc: context.read<ClubsOverviewBloc>(),
-        ticketListCubit: context.read<TicketListCubit>(),
-        eventFavoriteCubit: context.read<EventFavoriteCubit>(),
-        clubFavoriteCubit: context.read<ClubFavoriteCubit>(),
-      );
-    }
+    return _welcomeLoadingCubit!;
   }
 
   @override
   Widget build(BuildContext context) {
-    _initWelcomeCubit(context);
-    return Scaffold(
-      body: BlocProvider(
-        create: (ctx) => _welcomeCubit,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            BlocConsumer<WelcomeLoadingCubit, WelcomeLoadingState>(
-              bloc: _welcomeCubit..loadDependencies(),
-              listener: (context, state) {
-                if (state.isFailure) {
-                  showDialog(
-                    barrierDismissible: false,
-                    context: context,
-                    builder: (context) {
-                      // TODO - change
-                      return const Center(
-                        child: Text('Error'),
-                      );
-                    },
-                  );
-                }
-                if (state.dependenciesLoaded) {
-                  AutoRouter.of(context).replace(const NavigatorRoute());
+    context.read<RemoteConfigCubit>().setupRemoteConfig();
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<NetworkCheckCubit, NetworkCheckState>(
+          bloc: context.read<NetworkCheckCubit>(),
+          listener: (context, state) {
+            final currentRoute = AutoRouter.of(context).current.name;
+            if (!state.isConnected && currentRoute != NetworkLostRoute.name) {
+              context.pushRoute(const NetworkLostRoute());
+            }
+          },
+        ),
+        BlocListener<AuthCubit, AuthState>(
+          bloc: context.read<AuthCubit>(),
+          listener: (context, state) => state.map(
+              initial: (_) {},
+              authenticated: (_) => {},
+              unauthenticated: (_) =>
+                  AutoRouter.of(context).replace(const SignInRoute())),
+        )
+      ],
+      child: BlocConsumer<RemoteConfigCubit, RemoteConfigState>(
+        listener: (context, state) {
+          if (state.cubitStatus.isFailure()) {
+            context.replaceRoute(const NetworkLostRoute());
+          }
+        },
+        builder: (context, state) {
+          if (state.cubitStatus.isInitial() || state.cubitStatus.isFailure()) {
+            return Container();
+          }
+
+          if (state.cubitStatus.isLoading()) {
+            return _ticketLogoAnimation ?? const TicketLogoAnimation();
+          }
+
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<EventOverviewBloc>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<ClubsOverviewBloc>(),
+              ),
+              BlocProvider(
+                create: (ctx) => getIt<AvailableFiltersCubit>(),
+              ),
+            ],
+            child: BlocProvider(
+              create: (ctx) => (_welcomeLoadingCubit ?? _initWelcomeCubit(ctx))
+                ..loadDependencies(),
+              child: BlocConsumer<WelcomeLoadingCubit, WelcomeLoadingState>(
+                listener: (context, state) {
+                  if (state.isFailure) {
+                    showDialog(
+                      barrierDismissible: false,
+                      context: context,
+                      builder: (context) {
+                        // TODO - change
+                        return const Scaffold(
+                          body: Center(
+                            child: Text('Error'),
+                          ),
+                        );
+                      },
+                    );
+                  }
+
                   if (!state.onboardingCompleted) {
                     AutoRouter.of(context).push(const OnboardingRoute());
                   }
-                }
-              },
-              builder: (context, state) {
-                return !state.isFailure
-                    ? const TicketLogoAnimation()
-                    : Container();
-              },
+                },
+                builder: (context, state) {
+                  if (state.isFailure) {
+                    return Container();
+                  }
+
+                  if (!state.dependenciesLoaded) {
+                    return _ticketLogoAnimation ?? const TicketLogoAnimation();
+                  }
+
+                  return const RaverNavigator();
+                },
+              ),
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

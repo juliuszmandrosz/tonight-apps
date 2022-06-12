@@ -77,11 +77,16 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
 
     _waitForTicketToBeUpdated();
 
+    final promotionCode =
+        state.promotionCode.code.isNotEmpty && state.promotionCode.isValid
+            ? state.promotionCode.code
+            : null;
+
     final failureOrSuccess = await _paymentFacade.proceedToPayForVip(
       ticketId: ticket.id,
       currency: ticket.currency,
       sendInvoice: state.sendInvoice,
-      promotionCode: state.promotionCode.code,
+      promotionCode: promotionCode,
     );
 
     await failureOrSuccess.fold(

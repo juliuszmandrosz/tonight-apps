@@ -55,11 +55,15 @@ class _TicketsPageState extends State<TicketsPage> {
                       controller: _scrollController,
                       children: [
                         if (state.upcomingLiveTickets.isNotEmpty)
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: RaverHeadline(text: S().upcomingAndLive),
+                          Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: RaverHeadline(text: S().upcomingAndLive),
+                              ),
+                              const SizedBox(height: 20),
+                            ],
                           ),
-                        const SizedBox(height: 20),
                         ListView.separated(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
@@ -70,13 +74,18 @@ class _TicketsPageState extends State<TicketsPage> {
                           separatorBuilder: (ctx, i) =>
                               const SizedBox(height: 20),
                         ),
-                        const SizedBox(height: 30),
+                        if (state.upcomingLiveTickets.isNotEmpty)
+                          const SizedBox(height: 30),
                         if (state.pastTickets.isNotEmpty)
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: RaverHeadline(text: S().pastTickets),
+                          Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: RaverHeadline(text: S().pastTickets),
+                              ),
+                              const SizedBox(height: 20),
+                            ],
                           ),
-                        const SizedBox(height: 20),
                         ListView.separated(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,

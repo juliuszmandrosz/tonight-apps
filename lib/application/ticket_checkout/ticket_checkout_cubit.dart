@@ -70,10 +70,15 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
 
     _waitForTicketToBeCreated();
 
+    final promotionCode =
+        state.promotionCode.code.isNotEmpty && state.promotionCode.isValid
+            ? state.promotionCode.code
+            : null;
+
     final failureOrSuccess = await _paymentFacade.proceedToPayForTicket(
       currency: event.currency,
       eventId: event.id,
-      promotionCode: state.promotionCode.code,
+      promotionCode: promotionCode,
       isVip: state.isVip,
       sendInvoice: state.sendInvoice,
     );

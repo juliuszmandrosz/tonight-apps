@@ -14,8 +14,8 @@ class EventFiltersSubmitButton extends StatelessWidget {
       width: 300,
       child: FloatingActionButton.extended(
         onPressed: () {
-          BlocProvider.of<EventFiltersCubit>(context).submitFilters();
-          AutoRouter.of(context).pop();
+          context.read<EventFiltersCubit>().submitFilters();
+          context.popRoute();
         },
         label: Text(S().applyFilters),
         icon: const FaIcon(FontAwesomeIcons.check),

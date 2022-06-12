@@ -11,7 +11,6 @@ import 'package:raver/presentation/events/events_page.dart';
 import 'package:raver/presentation/events_details/event_details_page.dart';
 import 'package:raver/presentation/favorites/favorites_page.dart';
 import 'package:raver/presentation/invoice_data/invoice_data_page.dart';
-import 'package:raver/presentation/navigator/navigator_page.dart';
 import 'package:raver/presentation/network_lost/network_lost_page.dart';
 import 'package:raver/presentation/notifications/notifications_page.dart';
 import 'package:raver/presentation/onboarding/onboarding_page.dart';
@@ -39,7 +38,7 @@ part 'app_router.gr.dart';
     AutoRoute(page: SplashPage, initial: true),
     AutoRoute(page: SignInPage),
     AutoRoute(
-      page: NavigatorPage,
+      page: WelcomeLoaderPage,
       children: [
         AutoRoute(page: EventsPage),
         AutoRoute(page: ClubsPage),
@@ -48,7 +47,6 @@ part 'app_router.gr.dart';
         AutoRoute(page: ProfilePage),
       ],
     ),
-    AutoRoute(page: WelcomeLoaderPage),
     AutoRoute(page: NetworkLostPage),
     AutoRoute(page: EventFiltersPage),
     AutoRoute(page: EventDetailsPage),

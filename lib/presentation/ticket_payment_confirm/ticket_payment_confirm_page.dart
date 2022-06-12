@@ -48,11 +48,15 @@ class TicketPaymentConfirmPage extends StatelessWidget {
               SizedBox(
                 width: 300,
                 child: ElevatedButton(
-                  onPressed: () => AutoRouter.of(context).replaceAll([
-                    const NavigatorRoute(),
-                    EventDetailsRoute(eventId: ticket.eventId),
-                    TicketQrRoute(ticket: ticket),
-                  ]),
+                  onPressed: () {
+                    AutoRouter.of(context).popUntilRouteWithName(
+                      EventDetailsRoute.name,
+                    );
+
+                    context.pushRoute(
+                      TicketQrRoute(ticket: ticket),
+                    );
+                  },
                   child: Text(S().showTicketQrCode),
                 ),
               ),

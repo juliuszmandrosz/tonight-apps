@@ -123,8 +123,8 @@ class EventCard extends StatelessWidget {
                           top: event.eventStartDateTime
                                       .isBefore(DateTime.now()) &&
                                   event.eventEndDateTime.isAfter(DateTime.now())
-                              ? 125
-                              : 70,
+                              ? 70
+                              : 15,
                           left: 15,
                           child: Container(
                             decoration: BoxDecoration(
@@ -172,7 +172,7 @@ class EventCard extends StatelessWidget {
                                   const SizedBox(width: 10),
                                   Text(
                                     // TODO - add translation
-                                    'Ostatnie bilety w puli',
+                                    'Last tickets in pool',
                                     style: context.bodyText1,
                                   ),
                                 ],

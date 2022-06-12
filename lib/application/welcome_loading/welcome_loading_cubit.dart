@@ -6,13 +6,12 @@ import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
-import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/application/application.dart';
+import 'package:raver_events/domain/domain.dart';
 
 part 'welcome_loading_cubit.freezed.dart';
 part 'welcome_loading_state.dart';
@@ -20,53 +19,52 @@ part 'welcome_loading_state.dart';
 class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   final ProfileCubit _profileCubit;
   final UserLocationCubit _userLocationCubit;
-  final RemoteConfigCubit _remoteConfigCubit;
   final EventOverviewBloc _eventOverviewBloc;
-  final EventFiltersCubit _eventFiltersCubit;
   final ClubsOverviewBloc _clubsOverviewBloc;
   final EventFavoriteCubit _eventFavoriteCubit;
   final ClubFavoriteCubit _clubFavoriteCubit;
   final TicketListCubit _ticketListCubit;
+  final AvailableFiltersCubit _availableFiltersCubit;
+  final Stripe _stripe;
+  final FirebaseRemoteConfig _firebaseRemoteConfig;
 
   WelcomeLoadingCubit({
     required ProfileCubit profileCubit,
     required UserLocationCubit userLocationCubit,
-    required RemoteConfigCubit remoteConfigCubit,
     required EventOverviewBloc eventOverviewBloc,
-    required EventFiltersCubit eventFiltersCubit,
     required ClubsOverviewBloc clubsOverviewBloc,
     required EventFavoriteCubit eventFavoriteCubit,
     required ClubFavoriteCubit clubFavoriteCubit,
     required TicketListCubit ticketListCubit,
+    required AvailableFiltersCubit availableFiltersCubit,
+    required Stripe stripe,
+    required FirebaseRemoteConfig firebaseRemoteConfig,
   })  : _profileCubit = profileCubit,
         _userLocationCubit = userLocationCubit,
-        _remoteConfigCubit = remoteConfigCubit,
         _eventOverviewBloc = eventOverviewBloc,
-        _eventFiltersCubit = eventFiltersCubit,
         _clubsOverviewBloc = clubsOverviewBloc,
         _eventFavoriteCubit = eventFavoriteCubit,
         _clubFavoriteCubit = clubFavoriteCubit,
         _ticketListCubit = ticketListCubit,
+        _availableFiltersCubit = availableFiltersCubit,
+        _stripe = stripe,
+        _firebaseRemoteConfig = firebaseRemoteConfig,
         super(WelcomeLoadingState.initial());
 
-  void loadDependencies() async {
+  Future<void> loadDependencies() async {
     if (state.status != CubitStatus.initial) return;
 
     emit(state.copyWith(status: CubitStatus.loading));
 
-    _initRemoteConfigCubit();
     _initProfileCubit();
     _initUserLocationCubit();
-    _initEvents();
-    _initClubs();
     _initTickets();
     _initFavoriteEvents();
     _initFavoriteClubs();
-
-    Stripe.publishableKey =
-        FirebaseRemoteConfig.instance.getString(stripePublishableKey);
-
-    await Stripe.instance.applySettings();
+    _initClubs();
+    _initEvents();
+    _initAvailableFiltersCubit();
+    await _initStripe();
   }
 
   void _emitSuccessIfAllLoaded() {
@@ -89,7 +87,13 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   }
 
   _initEvents() {
-    _eventFiltersCubit.resetFilters();
+    _eventOverviewBloc.add(
+      EventOverviewEvent.eventsFetched(
+        EventFilters.empty(),
+        SortModel.empty(),
+      ),
+    );
+
     _eventOverviewBloc.stream.listen((event) {
       _checkAndEmitFailure(event.status);
       _emitSuccessIfAllLoaded();
@@ -97,8 +101,12 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   }
 
   _initClubs() {
-    _clubsOverviewBloc
-        .add(ClubsOverviewEvent.clubsFetched(ClubFilters.empty()));
+    _clubsOverviewBloc.add(
+      ClubsOverviewEvent.clubsFetched(
+        ClubFilters.empty(),
+      ),
+    );
+
     _clubsOverviewBloc.stream.listen((event) {
       _checkAndEmitFailure(event.status);
       _emitSuccessIfAllLoaded();
@@ -129,14 +137,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     });
   }
 
-  _initRemoteConfigCubit() {
-    _remoteConfigCubit.setupRemoteConfig();
-    _remoteConfigCubit.stream.listen((event) {
-      _checkAndEmitFailure(event.cubitStatus);
-      _emitSuccessIfAllLoaded();
-    });
-  }
-
   _initProfileCubit() {
     _profileCubit.getUserProfile();
     _profileCubit.stream.listen((event) {
@@ -152,15 +152,37 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     });
   }
 
+  _initAvailableFiltersCubit() {
+    _availableFiltersCubit.getAvailableFilters();
+    _availableFiltersCubit.stream.listen((event) {
+      final status = event.map(
+        initial: (_) => CubitStatus.initial,
+        loadInProgress: (_) => CubitStatus.loading,
+        loadSuccess: (_) => CubitStatus.success,
+        loadFailure: (_) => CubitStatus.failure,
+      );
+      _checkAndEmitFailure(status);
+      _emitSuccessIfAllLoaded();
+    });
+  }
+
+  Future<void> _initStripe() async {
+    Stripe.publishableKey =
+        _firebaseRemoteConfig.getString(stripePublishableKey);
+
+    await _stripe.applySettings();
+  }
+
   _allDependenciesLoaded() {
-    return _remoteConfigCubit.state.cubitStatus == CubitStatus.success &&
-        !_userLocationCubit.state.isLoading &&
+    return !_userLocationCubit.state.isLoading &&
         _profileCubit.state.status == CubitStatus.success &&
         _eventOverviewBloc.state.status == CubitStatus.success &&
         _clubsOverviewBloc.state.status == CubitStatus.success &&
         _ticketListCubit.state.status == CubitStatus.success &&
         _eventFavoriteCubit.state.status == CubitStatus.success &&
-        _clubFavoriteCubit.state.status == CubitStatus.success;
+        _clubFavoriteCubit.state.status == CubitStatus.success &&
+        _availableFiltersCubit.state
+            .maybeWhen(orElse: () => false, loadSuccess: (_) => true);
   }
 
   _onboardingCompleted() {

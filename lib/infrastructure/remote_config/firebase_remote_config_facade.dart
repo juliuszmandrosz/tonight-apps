@@ -19,17 +19,19 @@ class FirebaseRemoteConfigFacade implements RemoteConfigFacade {
   Future<Either<RemoteConfigFailure, Unit>> activateRemoteConfig() async {
     try {
       //Duration.zero - force immediate fetch from server
-      await _firebaseRemoteConfig.setConfigSettings(RemoteConfigSettings(
-          fetchTimeout: const Duration(seconds: 10),
-          minimumFetchInterval: Duration.zero));
+      await _firebaseRemoteConfig.setConfigSettings(
+        RemoteConfigSettings(
+            fetchTimeout: const Duration(seconds: 10),
+            minimumFetchInterval: Duration.zero),
+      );
+
       await _firebaseRemoteConfig.fetchAndActivate();
       return right(unit);
     } on PlatformException catch (e) {
-      _logger.e("Remote Config error during fetching config EXCEPTION: $e");
+      _logger.e("Platform Exception fetching config EXCEPTION: $e");
       return left(RemoteConfigFailure.unexpected());
-    } on Exception catch (e) {
-      _logger.e(
-          "Unhandled exception occurred during remote config setup EXCEPTION: $e");
+    } on FormatException catch (e) {
+      _logger.e("Format Exception fetching config EXCEPTION: $e");
       return left(RemoteConfigFailure.unexpected());
     }
   }

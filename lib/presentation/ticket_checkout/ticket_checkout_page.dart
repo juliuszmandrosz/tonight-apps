@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
+import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/core/ticket_logo_animation.dart';
@@ -27,7 +28,9 @@ class TicketCheckoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => getIt<TicketCheckoutCubit>()..initData(event),
+      create: (_) => getIt<TicketCheckoutCubit>(
+        param1: context.read<TicketListCubit>(),
+      )..initData(event),
       child: BlocConsumer<TicketCheckoutCubit, TicketCheckoutState>(
         buildWhen: (previous, current) =>
             previous.initialStatus != current.initialStatus ||

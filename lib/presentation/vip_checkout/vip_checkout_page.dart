@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
@@ -26,7 +27,9 @@ class VipCheckoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => getIt<VipCheckoutCubit>()..initData(ticket),
+      create: (_) => getIt<VipCheckoutCubit>(
+        param1: context.read<TicketListCubit>(),
+      )..initData(ticket),
       child: BlocConsumer<VipCheckoutCubit, VipCheckoutState>(
         buildWhen: (previous, current) =>
             previous.initialStatus != current.initialStatus ||
@@ -57,10 +60,7 @@ class VipCheckoutPage extends StatelessWidget {
           );
 
           if (state.isVipNoLongerAvailable) {
-            AutoRouter.of(context).replaceAll([
-              const NavigatorRoute(),
-              TicketQrRoute(ticket: state.ticket.getOrCrash()),
-            ]);
+            context.popRoute();
           }
         },
         builder: (context, state) {

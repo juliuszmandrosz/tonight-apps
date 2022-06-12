@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -27,7 +28,10 @@ class NetworkLostPage extends StatelessWidget {
             TextButton(
                 onPressed: () {
                   if (context.read<NetworkCheckCubit>().state.isConnected) {
-                    AutoRouter.of(context).pop();
+                    final autoRouter = AutoRouter.of(context);
+                    autoRouter.canNavigateBack
+                        ? autoRouter.pop()
+                        : autoRouter.replace(const WelcomeLoaderRoute());
                   }
                 },
                 child: Text(S().retryConnection))
