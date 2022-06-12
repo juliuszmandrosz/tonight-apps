@@ -545,13 +545,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.0"
-  flutter_dotenv:
-    dependency: "direct main"
-    description:
-      name: flutter_dotenv
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "5.0.2"
   flutter_facebook_auth:
     dependency: "direct main"
     description:
@@ -692,14 +685,14 @@ packages:
       name: geolocator_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.8"
+    version: "3.2.0"
   geolocator_apple:
     dependency: transitive
     description:
       name: geolocator_apple
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.4"
+    version: "2.2.0"
   geolocator_platform_interface:
     dependency: transitive
     description:
@@ -811,7 +804,7 @@ packages:
       name: hive
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.1"
+    version: "2.2.2"
   html:
     dependency: transitive
     description:
@@ -1429,7 +1422,7 @@ packages:
       name: stripe_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.0"
+    version: "3.1.1"
   stripe_ios:
     dependency: transitive
     description:
