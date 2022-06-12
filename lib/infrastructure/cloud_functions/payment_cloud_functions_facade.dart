@@ -1,12 +1,8 @@
-import 'dart:convert';
-
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:dio/dio.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/cloud_functions_names.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/responses/create_payment_sheet_response.dart';
-import 'package:http/http.dart' as http;
 
 abstract class PaymentCloudFunctionsFacade {
   Future<CreatePaymentSheetResponse> createTicketPaymentSheet({
@@ -35,13 +31,13 @@ abstract class PaymentCloudFunctionsFacade {
 
 class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
   final FirebaseFunctions _functions;
-  final FirebaseRemoteConfig _config;
+  final Dio _dio;
 
   PaymentCloudFunctionsFacadeImpl({
     required FirebaseFunctions firebaseFunctions,
-    required FirebaseRemoteConfig firebaseRemoteConfig,
+    required Dio dio,
   })  : _functions = firebaseFunctions,
-        _config = firebaseRemoteConfig;
+        _dio = dio;
 
   @override
   Future<CreatePaymentSheetResponse> createTicketPaymentSheet({
@@ -51,23 +47,19 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
     bool isVip = false,
     bool sendInvoice = false,
   }) async {
-    final endpoint = _config.getString(apiEndpoint);
+    const endpoint = 'payments/createTicketPaymentSheet';
 
-    final url = Uri.parse(
-      '${endpoint}payments/createTicketPaymentSheet',
-    );
-
-    final body = json.encode({
+    final data = {
       'eventId': eventId,
       'userId': userId,
       'promotionCode': promotionCode,
       'isVip': isVip,
       'sendInvoice': sendInvoice,
-    });
+    };
 
-    final result = await http.post(url, headers: getHttpHeaders(), body: body);
+    final result = await _dio.post(endpoint, data: data);
 
-    return CreatePaymentSheetResponse.fromJson(json.decode(result.body));
+    return CreatePaymentSheetResponse.fromJson(result.data);
   }
 
   @override

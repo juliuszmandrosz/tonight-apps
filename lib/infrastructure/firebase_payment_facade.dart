@@ -1,8 +1,7 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -100,12 +99,13 @@ class FirebasePaymentFacade implements UserPaymentFacade {
       }
 
       return right(unit);
-    } on HttpException catch (e) {
+    } on DioError catch (e) {
       _logger.e(
-        "Http Exception proceeding to pay for ticket EXCEPTION: $e",
+        "Dio error proceeding to pay for ticket EXCEPTION: $e",
       );
-      return left(userPaymentCloudFunctionsErrors[e.message] ??
-          const UserPaymentFailure.unexpected());
+      return left(
+          userPaymentCloudFunctionsErrors[e.response?.data['message']] ??
+              const UserPaymentFailure.unexpected());
     }
   }
 

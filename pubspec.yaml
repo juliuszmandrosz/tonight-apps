@@ -23,8 +23,7 @@ dependencies:
   cloud_functions: ^3.2.14
   flutter_stripe: ^3.1.0
   random_string: ^2.3.1
-  http: ^0.13.4
-  firebase_remote_config: ^2.0.8
+  dio: ^4.0.6
 
   raver_common:
     git:
