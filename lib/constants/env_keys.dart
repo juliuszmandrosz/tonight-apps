@@ -7,3 +7,4 @@ const stripePublishableKey = 'STRIPE_PUBLISHABLE_KEY';
 const normalEventFee = 'NORMAL_EVENT_FEE';
 const exclusiveEventFee = 'EXCLUSIVE_EVENT_FEE';
 const serviceFee = 'SERVICE_FEE';
+const apiEndpoint = 'API_ENDPOINT';
