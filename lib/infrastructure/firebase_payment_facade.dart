@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
@@ -67,9 +69,12 @@ class FirebasePaymentFacade implements UserPaymentFacade {
     bool sendInvoice = false,
   }) async {
     try {
+      final userId = _firestore.getCurrentUserDocRef(_firebaseAuth).id;
+
       final result =
           await _paymentCloudFunctionsFacade.createTicketPaymentSheet(
         eventId: eventId,
+        userId: userId,
         isVip: isVip,
         promotionCode: promotionCode,
         sendInvoice: sendInvoice,
@@ -95,11 +100,11 @@ class FirebasePaymentFacade implements UserPaymentFacade {
       }
 
       return right(unit);
-    } on FirebaseFunctionsException catch (e) {
+    } on HttpException catch (e) {
       _logger.e(
-        "Firebase Functions Exception proceeding to pay for ticket EXCEPTION: $e",
+        "Http Exception proceeding to pay for ticket EXCEPTION: $e",
       );
-      return left(userPaymentCloudFunctionsErrors[e.details] ??
+      return left(userPaymentCloudFunctionsErrors[e.message] ??
           const UserPaymentFailure.unexpected());
     }
   }

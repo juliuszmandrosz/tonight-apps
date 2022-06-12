@@ -7,6 +7,6 @@ const userPaymentCloudFunctionsErrors = {
   'return-time-expired': UserPaymentFailure.returnTimeExpired(),
   'ticket-already-has-vip': UserPaymentFailure.ticketAlreadyHasVip(),
   'event-canceled': UserPaymentFailure.eventCanceled(),
-  'event-postponed': UserPaymentFailure.eventBeingPostponed(),
+  'event-being-postponed': UserPaymentFailure.eventBeingPostponed(),
   'invalid-vat-number': UserPaymentFailure.invalidVatNumber(),
 };
