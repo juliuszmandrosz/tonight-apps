@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_tickets/domain/domain.dart';
@@ -14,16 +15,19 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;
   final TicketCloudFunctionsFacade _ticketCloudFunctionsFacade;
+  final FirebaseCrashlytics _crashlytics;
   final Logger _logger;
 
   FirebaseTicketFacade({
     required FirebaseFirestore firestore,
     required FirebaseAuth firebaseAuth,
     required TicketCloudFunctionsFacade ticketCloudFunctionsFacade,
+    required FirebaseCrashlytics crashlytics,
     required Logger logger,
   })  : _firestore = firestore,
         _firebaseAuth = firebaseAuth,
         _ticketCloudFunctionsFacade = ticketCloudFunctionsFacade,
+        _crashlytics = crashlytics,
         _logger = logger;
 
   @override
@@ -48,6 +52,7 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
       if (e is FirebaseException) {
         _logger.e(
             "Firebase Exception getting upcoming and live user tickets EXCEPTION: $e");
+        _crashlytics.recordError(e, StackTrace.current);
         return left(const UserTicketFailure.unexpected());
       }
     });
@@ -82,6 +87,7 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
       );
     } on FirebaseException catch (e) {
       _logger.e("Firebase Exception getting past user tickets EXCEPTION: $e");
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const UserTicketFailure.unexpected());
     }
   }
@@ -161,6 +167,7 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
       );
     } on FirebaseException catch (e) {
       _logger.e("Exception scanning ticket EXCEPTION: $e");
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const SelectorTicketFailure.unexpected());
     }
   }
@@ -181,10 +188,15 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
       _logger.e(
         "Firebase Functions Exception during returning ticket EXCEPTION: $e",
       );
-      return left(
-        cloudFunctionsFailures[e.details] ??
-            const UserTicketFailure.unexpected(),
-      );
+
+      final failure = cloudFunctionsFailures[e.details];
+
+      if (failure != null) {
+        return left(failure);
+      }
+
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const UserTicketFailure.unexpected());
     }
   }
 }
