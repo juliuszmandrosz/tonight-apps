@@ -12,7 +12,7 @@ class RateUsTile extends StatelessWidget {
       title: S().rateUs,
       onTap: () => LaunchReview.launch(
         // TODO - add ios app id
-        androidAppId: 'com.raverteam.tonight',
+        androidAppId: 'com.raverteam.raver',
       ),
     );
   }
