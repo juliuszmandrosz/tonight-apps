@@ -2874,10 +2874,10 @@ class S {
     );
   }
 
-  /// `An unexpected error has occurred, please contact support`
+  /// `An unexpected error has occurred, we have been notified of it and we will try to fix it as soon as possible. Try again or restart the application.`
   String get serverError {
     return Intl.message(
-      'An unexpected error has occurred, please contact support',
+      'An unexpected error has occurred, we have been notified of it and we will try to fix it as soon as possible. Try again or restart the application.',
       name: 'serverError',
       desc: '',
       args: [],

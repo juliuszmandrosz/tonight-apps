@@ -560,7 +560,7 @@
   "@selectors": {},
   "sendPasswordResetLink": "Send password reset link",
   "@sendPasswordResetLink": {},
-  "serverError": "An unexpected error has occurred, please contact support",
+  "serverError": "An unexpected error has occurred, we have been notified of it and we will try to fix it as soon as possible. Try again or restart the application.",
   "@serverError": {},
   "settings": "Settings",
   "@settings": {},

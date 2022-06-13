@@ -514,7 +514,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sendPasswordResetLink": MessageLookupByLibrary.simpleMessage(
             "Wyślij link do resetowania hasła"),
         "serverError": MessageLookupByLibrary.simpleMessage(
-            "Wystąpił nieoczekiwany błąd, proszę skontaktować się z pomocą"),
+            "Wystąpił nieoczekiwany błąd, zostaliśmy o nim powiadomieni i postaramy się go jak najszybciej naprawić. Spróbuj ponownie lub zrestartuj aplikację."),
         "settings": MessageLookupByLibrary.simpleMessage("Ustawienia"),
         "showTicket": MessageLookupByLibrary.simpleMessage("Pokaż bilet"),
         "showTicketQrCode":

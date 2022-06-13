@@ -560,7 +560,7 @@
   "@selectors": {},
   "sendPasswordResetLink": "Wyślij link do resetowania hasła",
   "@sendPasswordResetLink": {},
-  "serverError": "Wystąpił nieoczekiwany błąd, proszę skontaktować się z pomocą",
+  "serverError": "Wystąpił nieoczekiwany błąd, zostaliśmy o nim powiadomieni i postaramy się go jak najszybciej naprawić. Spróbuj ponownie lub zrestartuj aplikację.",
   "@serverError": {},
   "settings": "Ustawienia",
   "@settings": {},

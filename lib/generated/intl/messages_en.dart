@@ -506,7 +506,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sendPasswordResetLink":
             MessageLookupByLibrary.simpleMessage("Send password reset link"),
         "serverError": MessageLookupByLibrary.simpleMessage(
-            "An unexpected error has occurred, please contact support"),
+            "An unexpected error has occurred, we have been notified of it and we will try to fix it as soon as possible. Try again or restart the application."),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "showTicket": MessageLookupByLibrary.simpleMessage("Show ticket"),
         "showTicketQrCode":
