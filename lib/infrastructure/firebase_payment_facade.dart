@@ -147,8 +147,15 @@ class FirebasePaymentFacade implements UserPaymentFacade {
       _logger.e(
         "Firebase Functions Exception proceeding to pay for vip EXCEPTION: $e",
       );
-      return left(userPaymentCloudFunctionsErrors[e.details] ??
-          const UserPaymentFailure.unexpected());
+
+      final failure = userPaymentCloudFunctionsErrors[e.details];
+
+      if (failure != null) {
+        return left(failure);
+      }
+
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const UserPaymentFailure.unexpected());
     } on StripeException catch (e) {
       _logger.e(
         "Stripe exception proceeding to pay for vip EXCEPTION: $e",
