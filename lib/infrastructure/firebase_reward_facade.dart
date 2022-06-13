@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_rewards/domain/domain.dart';
@@ -10,14 +11,17 @@ class FirebaseRewardFacade
     implements UserRewardFacade, PartnerRewardFacade, SelectorRewardFacade {
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;
+  final FirebaseCrashlytics _crashlytics;
   final Logger _logger;
 
   FirebaseRewardFacade({
     required FirebaseFirestore firestore,
     required FirebaseAuth firebaseAuth,
+    required FirebaseCrashlytics crashlytics,
     required Logger logger,
   })  : _firestore = firestore,
         _firebaseAuth = firebaseAuth,
+        _crashlytics = crashlytics,
         _logger = logger;
 
   @override
@@ -33,6 +37,7 @@ class FirebaseRewardFacade
       return right(unit);
     } on FirebaseException catch (e) {
       _logger.e("Firebase Exception adding reward EXCEPTION: $e");
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const PartnerRewardFailure.unexpected());
     }
   }
@@ -59,6 +64,7 @@ class FirebaseRewardFacade
           "Firebase Exception getting "
           "current partner rewards EXCEPTION: $e",
         );
+        _crashlytics.recordError(e, StackTrace.current);
         return left(const PartnerRewardFailure.unexpected());
       }
     });
@@ -76,6 +82,7 @@ class FirebaseRewardFacade
       return right(unit);
     } on FirebaseException catch (e) {
       _logger.e("Firebase Exception deleting reward EXCEPTION: $e");
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const PartnerRewardFailure.unexpected());
     }
   }
@@ -98,6 +105,7 @@ class FirebaseRewardFacade
       );
     } on FirebaseException catch (e) {
       _logger.e("Firebase Exception getting rewards by club id EXCEPTION: $e");
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const UserRewardFailure.unexpected());
     }
   }
@@ -122,6 +130,7 @@ class FirebaseRewardFacade
         _logger.e(
           'Firebase Exception getting rewards from current partner club EXCEPTION: $e',
         );
+        _crashlytics.recordError(e, StackTrace.current);
         return left(const SelectorRewardFailure.unexpected());
       }
     });

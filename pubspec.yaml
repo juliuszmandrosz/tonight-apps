@@ -20,6 +20,7 @@ dependencies:
   logger: ^1.1.0
   uuid: ^3.0.6
   json_serializable: ^6.1.5
+  firebase_crashlytics: ^2.8.1
 
   raver_common:
     git:
