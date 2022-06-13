@@ -23,6 +23,7 @@ dependencies:
   formz: ^0.4.1
   equatable: ^2.0.3
   json_serializable: ^6.1.5
+  firebase_crashlytics: ^2.8.1
 
   raver_translations:
     git:

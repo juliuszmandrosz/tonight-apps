@@ -1,6 +1,7 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
@@ -16,16 +17,19 @@ class FirebaseAuthFacade
   final GoogleSignIn _googleSignIn;
   final Logger _logger;
   final AuthCloudFunctionsFacade _authCloudFunctionsFacade;
+  final FirebaseCrashlytics _crashlytics;
 
   FirebaseAuthFacade({
     required FirebaseAuth firebaseAuth,
     required GoogleSignIn googleSignIn,
     required Logger logger,
     required AuthCloudFunctionsFacade authCloudFunctionsFacade,
+    required FirebaseCrashlytics crashlytics,
   })  : _firebaseAuth = firebaseAuth,
         _googleSignIn = googleSignIn,
         _logger = logger,
-        _authCloudFunctionsFacade = authCloudFunctionsFacade;
+        _authCloudFunctionsFacade = authCloudFunctionsFacade,
+        _crashlytics = crashlytics;
 
   @override
   Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForPartner(
@@ -40,16 +44,14 @@ class FirebaseAuthFacade
       _logger.e(
         "Auth Exception sending sign in email link for partner EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     } on FirebaseFunctionsException catch (e) {
       _logger.e(
         "Functions Exception sending sign in email link for partner EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -68,20 +70,14 @@ class FirebaseAuthFacade
       _logger.e(
         "Auth Exception sending sign up email link for partner EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     } on FirebaseFunctionsException catch (e) {
       _logger.e(
         "Functions Exception sending sign up email link for partner EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(
-          message: firebaseAuthMessages[e.details] ??
-              firebaseAuthMessages[e.code] ??
-              serverError,
-        ),
-      );
+
+      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -102,16 +98,14 @@ class FirebaseAuthFacade
       _logger.e(
         "Auth Exception signing in with email link as partner EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     } on FirebaseFunctionsException catch (e) {
       _logger.e(
         "Functions Exception signing in with email link as partner EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -135,21 +129,15 @@ class FirebaseAuthFacade
       _logger.e(
         "Auth Exception signing up with email link and access code as partner EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     } on FirebaseFunctionsException catch (e) {
       await signOut();
       _logger.e(
         "Functions Exception signing up with email link and access code as partner EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(
-          message: firebaseAuthMessages[e.details] ??
-              firebaseAuthMessages[e.code] ??
-              serverError,
-        ),
-      );
+
+      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -166,16 +154,14 @@ class FirebaseAuthFacade
       _logger.e(
         "Auth Exception sending sign in email link for selector EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     } on FirebaseFunctionsException catch (e) {
       _logger.e(
         "Functions Exception sending sign in email link for selector EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -194,20 +180,14 @@ class FirebaseAuthFacade
       _logger.e(
         "Auth Exception sending sign up email link for selector EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     } on FirebaseFunctionsException catch (e) {
       _logger.e(
         "Functions Exception sending sign up email link for selector EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(
-          message: firebaseAuthMessages[e.details] ??
-              firebaseAuthMessages[e.code] ??
-              serverError,
-        ),
-      );
+
+      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -228,16 +208,14 @@ class FirebaseAuthFacade
       _logger.e(
         "Auth Exception signing in with email link as selector EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     } on FirebaseFunctionsException catch (e) {
       _logger.e(
         "Functions Exception signing in with email link as selector EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -261,21 +239,15 @@ class FirebaseAuthFacade
       _logger.e(
         "Auth Exception signing up with email link and access code as selector EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     } on FirebaseFunctionsException catch (e) {
       await signOut();
       _logger.e(
         "Functions Exception signing up with email link and access code as selector EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(
-          message: firebaseAuthMessages[e.details] ??
-              firebaseAuthMessages[e.code] ??
-              serverError,
-        ),
-      );
+
+      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -291,16 +263,14 @@ class FirebaseAuthFacade
       _logger.e(
         "Auth Exception sending sign in email link for user EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     } on FirebaseFunctionsException catch (e) {
       _logger.e(
         "Functions Exception sending sign in email link for user EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -322,16 +292,14 @@ class FirebaseAuthFacade
       _logger.e(
         "Auth Exception signing in with email link as user EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     } on FirebaseFunctionsException catch (e) {
       _logger.e(
         "Functions Exception signing in with email link as user EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -362,18 +330,16 @@ class FirebaseAuthFacade
         "Exception during sign in "
         "with Google as user EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     } on FirebaseFunctionsException catch (e) {
       await signOut();
       _logger.e(
         "Firebase Function Exception during "
         "sign in with Google as user EXCEPTION: $e",
       );
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -395,6 +361,9 @@ class FirebaseAuthFacade
         "Firebase Functions Exception during "
         "getting signed user EXCEPTION: $e",
       );
+
+      await _handleFirebaseException(e);
+
       return none();
     }
   }
@@ -415,6 +384,9 @@ class FirebaseAuthFacade
         "Firebase Functions Exception during "
         "getting signed partner EXCEPTION: $e",
       );
+
+      await _handleFirebaseException(e);
+
       return none();
     }
   }
@@ -435,6 +407,9 @@ class FirebaseAuthFacade
         "Firebase Functions Exception during "
         "getting signed selector EXCEPTION: $e",
       );
+
+      await _handleFirebaseException(e);
+
       return none();
     }
   }
@@ -457,9 +432,8 @@ class FirebaseAuthFacade
       return right(unit);
     } on FirebaseException catch (e) {
       _logger.e("Exception during sending password reset email: $e");
-      return left(
-        AuthFailure(message: firebaseAuthMessages[e.code] ?? serverError),
-      );
+
+      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -541,5 +515,28 @@ class FirebaseAuthFacade
         dynamicLinkDomain: 'tonightpartners.page.link',
       ),
     );
+  }
+
+  Future<AuthFailure> _handleFirebaseException(
+    FirebaseException exception,
+  ) async {
+    final failure = _getAuthFailureOrNull(exception);
+
+    if (failure != null) {
+      return AuthFailure(message: failure);
+    }
+
+    await _crashlytics.recordError(exception, StackTrace.current);
+
+    return AuthFailure(message: serverError);
+  }
+
+  String? _getAuthFailureOrNull(FirebaseException exception) {
+    if (exception is FirebaseFunctionsException) {
+      return firebaseAuthMessages[exception.details] ??
+          firebaseAuthMessages[exception.code];
+    }
+
+    return firebaseAuthMessages[exception.code];
   }
 }
