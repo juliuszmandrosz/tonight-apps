@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_account_settings/domain/partner_account_facade.dart';
 import 'package:raver_account_settings/domain/profile_failure.dart';
@@ -15,14 +16,17 @@ class FirebaseAccountFacade
     implements PartnerAccountFacade, SelectorAccountFacade, UserAccountFacade {
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;
+  final FirebaseCrashlytics _firebaseCrashlytics;
   final Logger _logger;
 
   FirebaseAccountFacade({
     required FirebaseFirestore firestore,
     required FirebaseAuth firebaseAuth,
+    required FirebaseCrashlytics firebaseCrashlytics,
     required Logger logger,
   })  : _firestore = firestore,
         _firebaseAuth = firebaseAuth,
+        _firebaseCrashlytics = firebaseCrashlytics,
         _logger = logger;
 
   @override
@@ -34,6 +38,7 @@ class FirebaseAccountFacade
             UserProfileDto.fromFirebase(snapshot).toDomain()))
         .handleError((e) {
       if (e is FirebaseException) {
+        _firebaseCrashlytics.recordError(e, StackTrace.current);
         _logger.e("Exception during fetching profile EXCEPTION: $e");
         return left(ProfileFailure(message: serverError));
       }
@@ -81,9 +86,10 @@ class FirebaseAccountFacade
       final userDoc = await _getUserDocument();
       await userDoc.update({'username': username});
       return right(unit);
-    } on FirebaseException catch (exception) {
+    } on FirebaseException catch (e) {
+      _firebaseCrashlytics.recordError(e, StackTrace.current);
       _logger.e(
-          "Exception during fetching or setting username for user EXCEPTION: $exception");
+          "Exception during fetching or setting username for user EXCEPTION: $e");
       return left(ProfileFailure(message: serverError));
     }
   }
