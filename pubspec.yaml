@@ -24,6 +24,7 @@ dependencies:
   flutter_stripe: ^3.1.0
   random_string: ^2.3.1
   dio: ^4.0.6
+  firebase_crashlytics: ^2.8.1
 
   raver_common:
     git:

@@ -3,6 +3,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:logger/logger.dart';
@@ -20,6 +21,7 @@ class FirebasePaymentFacade implements UserPaymentFacade {
   final PaymentCloudFunctionsFacade _paymentCloudFunctionsFacade;
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;
+  final FirebaseCrashlytics _crashlytics;
 
   FirebasePaymentFacade({
     required Stripe stripe,
@@ -27,11 +29,13 @@ class FirebasePaymentFacade implements UserPaymentFacade {
     required PaymentCloudFunctionsFacade paymentCloudFunctionsFacade,
     required FirebaseFirestore firestore,
     required FirebaseAuth firebaseAuth,
+    required FirebaseCrashlytics firebaseCrashlytics,
   })  : _logger = logger,
         _stripe = stripe,
         _paymentCloudFunctionsFacade = paymentCloudFunctionsFacade,
         _firestore = firestore,
-        _firebaseAuth = firebaseAuth;
+        _firebaseAuth = firebaseAuth,
+        _crashlytics = firebaseCrashlytics;
 
   @override
   Future<Either<UserPaymentFailure, PromotionCode>> getPromotionCode(
@@ -55,6 +59,7 @@ class FirebasePaymentFacade implements UserPaymentFacade {
       return right(code);
     } on FirebaseException catch (e) {
       _logger.e("Exception getting promotion code EXCEPTION: $e");
+      _crashlytics.recordError(e, StackTrace.current);
       return left(const UserPaymentFailure.unexpected());
     }
   }
@@ -95,6 +100,7 @@ class FirebasePaymentFacade implements UserPaymentFacade {
               .cancelTicketReservation(result.paymentIntentId);
           return left(const UserPaymentFailure.canceledByUser());
         }
+        await _crashlytics.recordError(e, StackTrace.current);
         return left(const UserPaymentFailure.stripeError());
       }
 
@@ -103,9 +109,15 @@ class FirebasePaymentFacade implements UserPaymentFacade {
       _logger.e(
         "Dio error proceeding to pay for ticket EXCEPTION: $e",
       );
-      return left(
-          userPaymentCloudFunctionsErrors[e.response?.data['message']] ??
-              const UserPaymentFailure.unexpected());
+      final failure =
+          userPaymentCloudFunctionsErrors[e.response?.data['message']];
+
+      if (failure != null) {
+        return left(failure);
+      }
+
+      await _crashlytics.recordError(e.response, StackTrace.current);
+      return left(const UserPaymentFailure.unexpected());
     }
   }
 
@@ -144,6 +156,8 @@ class FirebasePaymentFacade implements UserPaymentFacade {
       if (e.error.code == FailureCode.Canceled) {
         return left(const UserPaymentFailure.canceledByUser());
       }
+
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const UserPaymentFailure.stripeError());
     }
   }
@@ -168,8 +182,15 @@ class FirebasePaymentFacade implements UserPaymentFacade {
       _logger.e(
         'Firebase Functions Exception updating invoice data EXCEPTION: $e',
       );
-      return left(userPaymentCloudFunctionsErrors[e.details] ??
-          const UserPaymentFailure.unexpected());
+
+      final failure = userPaymentCloudFunctionsErrors[e.details];
+
+      if (failure != null) {
+        return left(failure);
+      }
+
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const UserPaymentFailure.unexpected());
     }
   }
 
@@ -187,6 +208,7 @@ class FirebasePaymentFacade implements UserPaymentFacade {
       return right(result);
     } on FirebaseException catch (e) {
       _logger.e('Firebase Exception getting invoice data EXCEPTION: $e');
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const UserPaymentFailure.unexpected());
     }
   }
