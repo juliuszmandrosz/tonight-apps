@@ -1,4 +1,8 @@
+import 'dart:async';
+import 'dart:isolate';
+
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -8,23 +12,47 @@ import 'package:raver/presentation/core/raver_app.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  registerDependencies();
-  final storage = await HydratedStorage.build(
-    storageDirectory: await getApplicationDocumentsDirectory(),
+  await runZonedGuarded(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+
+      await Firebase.initializeApp();
+
+      registerDependencies();
+
+      final storage = await HydratedStorage.build(
+        storageDirectory: await getApplicationDocumentsDirectory(),
+      );
+
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ]);
+
+      _configureTimeAgo();
+
+      HydratedBlocOverrides.runZoned(
+        () => runApp(RaverApp()),
+        storage: storage,
+      );
+    },
+    (error, stack) =>
+        getIt<FirebaseCrashlytics>().recordError(error, stack, fatal: true),
   );
 
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
+  final crashlytics = getIt<FirebaseCrashlytics>();
 
-  _configureTimeAgo();
+  FlutterError.onError = crashlytics.recordFlutterFatalError;
 
-  HydratedBlocOverrides.runZoned(
-    () => runApp(RaverApp()),
-    storage: storage,
+  Isolate.current.addErrorListener(
+    RawReceivePort((pair) async {
+      final List<dynamic> errorAndStacktrace = pair;
+      await crashlytics.recordError(
+        errorAndStacktrace.first,
+        errorAndStacktrace.last,
+        fatal: true,
+      );
+    }).sendPort,
   );
 }
 

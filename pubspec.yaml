@@ -120,6 +120,7 @@ dependencies:
   raver_rewards:
     git:
       url: git@github.com:juliuszmandrosz/RaverRewards.git
+      ref: develop
 
   raver_events:
     git:

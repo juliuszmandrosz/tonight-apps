@@ -266,7 +266,7 @@ packages:
       name: connectivity_plus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.3"
+    version: "2.3.4"
   connectivity_plus_linux:
     dependency: transitive
     description:
@@ -294,7 +294,7 @@ packages:
       name: connectivity_plus_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.1"
+    version: "1.2.2"
   connectivity_plus_windows:
     dependency: transitive
     description:
@@ -1265,7 +1265,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "0d5aa24691e7901e1b9fca3a2c36a38551ca5e66"
+      resolved-ref: b69c561dae6955e458336d71d0c7efcedee17846
       url: "git@github.com:juliuszmandrosz/RaverAccountSettings.git"
     source: git
     version: "0.0.1"
@@ -1274,7 +1274,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: de7cf72f0dd56f85a1697e160e2918e17b2b1677
+      resolved-ref: ae052584233b24b0191519228abdaa9481e52e47
       url: "git@github.com:juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
@@ -1283,7 +1283,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "0b5e632f38b890e257084e8255d926e736be78c0"
+      resolved-ref: "615ee5220a86a9cdb7e54175da9218801f225fbf"
       url: "git@github.com:juliuszmandrosz/RaverClubs.git"
     source: git
     version: "0.0.1"
@@ -1292,7 +1292,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "8901c7f4a3d9ce20bfbc3240dfc260f50d0efeed"
+      resolved-ref: "2860e4bc84fcc6af8576fd4ceb9e96ae2169a978"
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -1301,7 +1301,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "202ee0198eb7291262a8fe0d054570d617baa514"
+      resolved-ref: "3e6709bbd302cab87535e1ce15b8954cb98a2d15"
       url: "git@github.com:juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
@@ -1310,7 +1310,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: dcc5141dad7804ea24854fb7975969e9679f5d22
+      resolved-ref: edbd4e774be649060dccb2c23ed003caa05c4e6e
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
@@ -1318,8 +1318,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: HEAD
-      resolved-ref: "0256602042b39e3f04b4e6c604590e6e5c45e9f8"
+      ref: develop
+      resolved-ref: "586dae0210d59a421e21db3d52801f58512d9650"
       url: "git@github.com:juliuszmandrosz/RaverRewards.git"
     source: git
     version: "0.0.1"
@@ -1328,7 +1328,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: b01d2e144e22cca4cd1a8d94e0f6dfae508fda58
+      resolved-ref: "3536c04b928fa91da3b3b415f8f974748b6a51d4"
       url: "git@github.com:juliuszmandrosz/RaverTickets.git"
     source: git
     version: "0.0.1"

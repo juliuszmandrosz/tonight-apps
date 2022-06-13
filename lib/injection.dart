@@ -4,6 +4,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -288,8 +289,9 @@ void _registerFacades() {
   //Core
   getIt.registerLazySingleton<AvailableFiltersFacade>(
     () => FirebaseAvailableFiltersFacade(
-      getIt(),
-      getIt(),
+      firestore: getIt(),
+      crashlytics: getIt(),
+      logger: getIt(),
     ),
   );
 
@@ -300,6 +302,7 @@ void _registerFacades() {
       googleSignIn: getIt(),
       logger: getIt(),
       authCloudFunctionsFacade: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -309,6 +312,7 @@ void _registerFacades() {
       googleSignIn: getIt(),
       logger: getIt(),
       authCloudFunctionsFacade: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -327,6 +331,7 @@ void _registerFacades() {
       algoliaClubsApi: getIt(),
       firebaseAuth: getIt(),
       cloudFunctionsFacade: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -336,6 +341,7 @@ void _registerFacades() {
       logger: getIt(),
       ticketCloudFunctionsFacade: getIt(),
       firebaseAuth: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -345,6 +351,7 @@ void _registerFacades() {
       firestore: getIt(),
       logger: getIt(),
       firebaseAuth: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -363,6 +370,7 @@ void _registerFacades() {
       firebaseAuth: getIt(),
       storage: getIt(),
       eventCloudFunctionsFacade: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -371,6 +379,7 @@ void _registerFacades() {
     () => FirebaseEventTicketsFacade(
       firestore: getIt(),
       logger: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -382,6 +391,7 @@ void _registerFacades() {
       firebaseAuth: getIt(),
       storage: getIt(),
       eventCloudFunctionsFacade: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -390,6 +400,7 @@ void _registerFacades() {
     () => FirebaseRemoteConfigFacade(
       firebaseRemoteConfig: getIt(),
       logger: getIt(),
+      firebaseCrashlytics: getIt(),
     ),
   );
 
@@ -401,6 +412,7 @@ void _registerFacades() {
       paymentCloudFunctionsFacade: getIt(),
       firebaseAuth: getIt(),
       stripe: getIt(),
+      firebaseCrashlytics: getIt(),
     ),
   );
 
@@ -417,6 +429,7 @@ void _registerFacades() {
       firestore: getIt(),
       logger: getIt(),
       firebaseAuth: getIt(),
+      firebaseCrashlytics: getIt(),
     ),
   );
 
@@ -433,6 +446,7 @@ void _registerFacades() {
       firebaseAuth: getIt(),
       firestore: getIt(),
       logger: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -446,6 +460,7 @@ void _registerFacades() {
     () => FirebaseCurrencyParamsFacade(
       firestore: getIt(),
       logger: getIt(),
+      crashlytics: getIt(),
     ),
   );
 }
@@ -464,6 +479,17 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebaseFunctions.instance);
 
   getIt.registerLazySingleton(() => FirebaseDynamicLinks.instance);
+
+  getIt.registerLazySingleton(() {
+    final crashlytics = FirebaseCrashlytics.instance;
+
+    try {
+      final currentUser = FirebaseAuth.instance.tryGetFirebaseUser();
+      crashlytics.setUserIdentifier(currentUser.uid);
+    } on NotAuthenticatedError {}
+
+    return crashlytics;
+  });
 
   getIt.registerLazySingleton(
       () => GooglePlace(FirebaseRemoteConfig.instance.getString(googleApiKey)));
