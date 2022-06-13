@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/event_costs/event_costs_entity.dart';
@@ -10,12 +11,15 @@ import 'package:raver_events/infrastructure/event_costs/dtos/event_costs_dto.dar
 
 class FirebaseEventCostsFacade implements EventCostsFacade {
   final FirebaseFirestore _firestore;
+  final FirebaseCrashlytics _crashlytics;
   final Logger _logger;
 
   FirebaseEventCostsFacade({
     required FirebaseFirestore firestore,
+    required FirebaseCrashlytics crashlytics,
     required Logger logger,
   })  : _firestore = firestore,
+        _crashlytics = crashlytics,
         _logger = logger;
 
   @override
@@ -30,6 +34,7 @@ class FirebaseEventCostsFacade implements EventCostsFacade {
       );
     } on FirebaseException catch (e) {
       _logger.e("Firebase Exception during getting event costs EXCEPTION: $e");
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const EventCostsFailure.unexpected());
     }
   }

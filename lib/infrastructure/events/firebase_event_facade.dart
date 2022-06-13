@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
@@ -30,6 +31,7 @@ class FirebaseEventFacade
   final FirebaseStorage _storage;
   final AlgoliaEventsApi _algoliaEventsApi;
   final EventCloudFunctionsFacade _eventCloudFunctionsFacade;
+  final FirebaseCrashlytics _crashlytics;
   final Logger _logger;
 
   FirebaseEventFacade({
@@ -38,12 +40,14 @@ class FirebaseEventFacade
     required FirebaseStorage storage,
     required AlgoliaEventsApi algoliaEventsApi,
     required EventCloudFunctionsFacade eventCloudFunctionsFacade,
+    required FirebaseCrashlytics crashlytics,
     required Logger logger,
   })  : _firebaseAuth = firebaseAuth,
         _firestore = firestore,
         _storage = storage,
         _algoliaEventsApi = algoliaEventsApi,
         _eventCloudFunctionsFacade = eventCloudFunctionsFacade,
+        _crashlytics = crashlytics,
         _logger = logger;
 
   @override
@@ -63,6 +67,7 @@ class FirebaseEventFacade
           .toList());
     } on AlgoliaError catch (e) {
       _logger.e("Algolia error during fetching events EXCEPTION: $e");
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const CommonEventFailure.unexpected());
     }
   }
@@ -78,6 +83,7 @@ class FirebaseEventFacade
           EventDto.fromFirebase(eventDoc).toDomain());
     } on FirebaseException catch (e) {
       _logger.e("Exception during getting event by id EXCEPTION: $e");
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const UserEventFailure.unexpected());
     }
   }
@@ -100,6 +106,7 @@ class FirebaseEventFacade
     } on FirebaseException catch (e) {
       _logger
           .e("Exception during toggling event favorite status EXCEPTION: $e");
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const UserEventFailure.unexpected());
     }
   }
@@ -114,6 +121,7 @@ class FirebaseEventFacade
       return right(result);
     } on FirebaseException catch (e) {
       _logger.e("Exception during fetching events by ids EXCEPTION: $e");
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const UserEventFailure.unexpected());
     }
   }
@@ -178,6 +186,7 @@ class FirebaseEventFacade
       return right(unit);
     } on FirebaseException catch (e) {
       _logger.e("Exception during adding event EXCEPTION: $e");
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const PartnerEventFailure.unexpected());
     }
   }
@@ -201,11 +210,8 @@ class FirebaseEventFacade
       });
     } on FirebaseException catch (e) {
       _logger.e("Firebase Exception during updating event EXCEPTION: $e");
-      return Future.value(
-        left<PartnerEventFailure, Unit>(
-          const PartnerEventFailure.unexpected(),
-        ),
-      );
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const PartnerEventFailure.unexpected());
     }
   }
 
@@ -247,6 +253,7 @@ class FirebaseEventFacade
         "Algolia error during getting "
         "current event from club EXCEPTION: $e",
       );
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const SelectorEventFailure.unexpected());
     }
   }
@@ -286,6 +293,7 @@ class FirebaseEventFacade
         "Algolia error during getting "
         "event in date range for current partner EXCEPTION: $e",
       );
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const PartnerEventFailure.unexpected());
     }
   }
@@ -304,6 +312,7 @@ class FirebaseEventFacade
       return right(result);
     } on FirebaseException catch (e) {
       _logger.e('Exception getting favorite events EXCEPTION: $e');
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const UserEventFailure.unexpected());
     }
   }
@@ -320,6 +329,7 @@ class FirebaseEventFacade
       return right(result);
     } on FirebaseException catch (e) {
       _logger.e('Exception uploading event photo EXCEPTION: $e');
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const PartnerEventFailure.unexpected());
     }
   }
@@ -333,10 +343,8 @@ class FirebaseEventFacade
       _logger.e(
         "Firebase Functions Exception canceling event EXCEPTION: $e",
       );
-      return left(
-        eventCloudFunctionsErrors[e.details] ??
-            const PartnerEventFailure.unexpected(),
-      );
+
+      return left(await _handleFirebaseFunctionsException(e));
     }
   }
 
@@ -358,10 +366,8 @@ class FirebaseEventFacade
       _logger.e(
         "Firebase Functions Exception postponing event EXCEPTION: $e",
       );
-      return left(
-        eventCloudFunctionsErrors[e.details] ??
-            const PartnerEventFailure.unexpected(),
-      );
+
+      return left(await _handleFirebaseFunctionsException(e));
     }
   }
 
@@ -389,5 +395,18 @@ class FirebaseEventFacade
     }
 
     return result;
+  }
+
+  Future<PartnerEventFailure> _handleFirebaseFunctionsException(
+    FirebaseFunctionsException exception,
+  ) async {
+    final failure = eventCloudFunctionsErrors[exception.details];
+
+    if (failure != null) {
+      return failure;
+    }
+
+    await _crashlytics.recordError(exception, StackTrace.current);
+    return const PartnerEventFailure.unexpected();
   }
 }

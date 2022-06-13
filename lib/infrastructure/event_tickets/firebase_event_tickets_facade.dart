@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/domain.dart';
@@ -11,12 +12,15 @@ import 'package:collection/collection.dart';
 class FirebaseEventTicketsFacade
     implements UserEventTicketsFacade, PartnerEventTicketsFacade {
   final FirebaseFirestore _firestore;
+  final FirebaseCrashlytics _crashlytics;
   final Logger _logger;
 
   FirebaseEventTicketsFacade({
     required FirebaseFirestore firestore,
+    required FirebaseCrashlytics crashlytics,
     required Logger logger,
   })  : _firestore = firestore,
+        _crashlytics = crashlytics,
         _logger = logger;
 
   @override
@@ -35,8 +39,10 @@ class FirebaseEventTicketsFacade
         )
         .handleError((e) {
       if (e is FirebaseException) {
-        _logger
-            .e("Firebase Exception during getting event tickets EXCEPTION: $e");
+        _logger.e(
+          "Firebase Exception during getting event tickets EXCEPTION: $e",
+        );
+        _crashlytics.recordError(e, StackTrace.current);
         return left(const EventTicketsFailure.unexpected());
       }
     });
@@ -85,6 +91,7 @@ class FirebaseEventTicketsFacade
       });
     } on FirebaseException catch (e) {
       _logger.e("Firebase Exception during adding ticket pool EXCEPTION: $e");
+      await _crashlytics.recordError(e, StackTrace.current);
       return left<EventTicketsFailure, Unit>(
         const EventTicketsFailure.unexpected(),
       );
@@ -95,7 +102,7 @@ class FirebaseEventTicketsFacade
   Future<Either<EventTicketsFailure, Unit>> updateTicketPool(
     Event event,
     TicketPool updatedTicketPool,
-  ) {
+  ) async {
     try {
       final eventTicketDocRef = _getEventTicketDocRef(event.clubId, event.id);
 
@@ -160,10 +167,9 @@ class FirebaseEventTicketsFacade
       });
     } on FirebaseException catch (e) {
       _logger.e("Firebase Exception during updating ticket pool EXCEPTION: $e");
-      return Future.value(
-        left<EventTicketsFailure, Unit>(
-          const EventTicketsFailure.unexpected(),
-        ),
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left<EventTicketsFailure, Unit>(
+        const EventTicketsFailure.unexpected(),
       );
     }
   }
@@ -172,7 +178,7 @@ class FirebaseEventTicketsFacade
   Future<Either<EventTicketsFailure, Unit>> deleteTicketPool(
     Event event,
     TicketPool ticketPool,
-  ) {
+  ) async {
     try {
       final eventTicketDocRef = _getEventTicketDocRef(event.clubId, event.id);
 
@@ -227,10 +233,9 @@ class FirebaseEventTicketsFacade
       });
     } on FirebaseException catch (e) {
       _logger.e("Firebase Exception during deleting ticket pool EXCEPTION: $e");
-      return Future.value(
-        left<EventTicketsFailure, Unit>(
-          const EventTicketsFailure.unexpected(),
-        ),
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left<EventTicketsFailure, Unit>(
+        const EventTicketsFailure.unexpected(),
       );
     }
   }
