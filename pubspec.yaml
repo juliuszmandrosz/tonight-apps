@@ -28,6 +28,7 @@ dependencies:
   google_fonts: ^3.0.0
   algolia: ^1.1.1
   connectivity_plus: ^2.3.0
+  firebase_crashlytics: ^2.8.1
 
   raver_translations:
     git:
