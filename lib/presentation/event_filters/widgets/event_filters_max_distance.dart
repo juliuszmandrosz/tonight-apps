@@ -93,13 +93,16 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
                                   ? const Center(
                                       child: CircularProgressIndicator(),
                                     )
-                                  : ElevatedButton(
-                                      onPressed: () => context
-                                          .read<UserLocationCubit>()
-                                          .openAppSettings(),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Text(S().enableLocation),
+                                  : SizedBox(
+                                      width: 300,
+                                      child: ElevatedButton(
+                                        onPressed: () => context
+                                            .read<UserLocationCubit>()
+                                            .openAppSettings(),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: Text(S().enableLocation),
+                                        ),
                                       ),
                                     )
                         ],
