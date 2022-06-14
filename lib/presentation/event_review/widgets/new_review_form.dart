@@ -16,67 +16,73 @@ import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class NewReviewForm extends StatelessWidget {
+  final BuildContext blocContext;
   final Ticket ticket;
 
-  const NewReviewForm({Key? key, required this.ticket}) : super(key: key);
+  const NewReviewForm({
+    required this.blocContext,
+    required this.ticket,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var _isReviewAddedSuccessfully = false;
 
-    return WillPopScope(
-      onWillPop: () async {
-        if (_isReviewAddedSuccessfully) {
-          return true;
-        }
+    return BlocProvider(
+      create: (context) => getIt<NewReviewCubit>(
+        param1: blocContext.read<TicketListCubit>(),
+      )..loadForm(),
+      child: BlocConsumer<NewReviewCubit, EventReviewState>(
+        listenWhen: (previous, current) =>
+            previous.status != current.status ||
+            previous.submittingStatus != current.submittingStatus ||
+            previous.errorMessage != current.errorMessage,
+        listener: (context, state) {
+          if (state.status.isFailure()) {
+            context.popRoute(
+              FailureRoute(
+                retryCallback: () => context.read<NewReviewCubit>().loadForm(),
+              ),
+            );
+          }
+          state.errorMessage.fold(
+            () {},
+            (error) => context.showSnackbarMessage(error),
+          );
 
-        final result = await context
-            .showConfirmationDialogWithCustomMessage(S().confirmLeavingPage);
-
-        return result ?? false;
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: BlocProvider(
-          create: (context) => getIt<NewReviewCubit>(
-            param1: context.read<TicketListCubit>(),
-          )..loadForm(),
-          child: BlocConsumer<NewReviewCubit, EventReviewState>(
-            listenWhen: (previous, current) =>
-                previous.status != current.status ||
-                previous.submittingStatus != current.submittingStatus ||
-                previous.errorMessage != current.errorMessage,
-            listener: (context, state) {
-              if (state.status.isFailure()) {
-                context.popRoute(
-                  FailureRoute(
-                    retryCallback: () =>
-                        context.read<NewReviewCubit>().loadForm(),
-                  ),
-                );
-              }
-              state.errorMessage.fold(
-                () {},
-                (error) => context.showSnackbarMessage(error),
+          if (state.submittingStatus.isSubmissionSuccess) {
+            _isReviewAddedSuccessfully = true;
+            context.showSnackbarMessage(S().reviewAdded);
+            context.popRoute();
+          }
+        },
+        builder: (context, state) {
+          switch (state.status) {
+            case CubitStatus.initial:
+              return Container();
+            case CubitStatus.loading:
+              return const Center(
+                child: CircularProgressIndicator(),
               );
-              if (state.submittingStatus.isSubmissionSuccess) {
-                _isReviewAddedSuccessfully = true;
-                context.showSnackbarMessage(S().reviewAdded);
-                context.popRoute();
-              }
-            },
-            builder: (context, state) {
-              switch (state.status) {
-                case CubitStatus.initial:
-                  return Container();
-                case CubitStatus.loading:
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                case CubitStatus.failure:
-                  return Container();
-                case CubitStatus.success:
-                  return Column(
+            case CubitStatus.failure:
+              return Container();
+            case CubitStatus.success:
+              return WillPopScope(
+                onWillPop: () async {
+                  if (_isReviewAddedSuccessfully) {
+                    return true;
+                  }
+
+                  final result =
+                      await context.showConfirmationDialogWithCustomMessage(
+                          S().confirmLeavingPage);
+
+                  return result ?? false;
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Column(
                     children: [
                       Expanded(
                         child: ListView(
@@ -94,11 +100,11 @@ class NewReviewForm extends StatelessWidget {
                       const SizedBox(height: 30),
                       ReviewSubmitButton(ticket: ticket),
                     ],
-                  );
-              }
-            },
-          ),
-        ),
+                  ),
+                ),
+              );
+          }
+        },
       ),
     );
   }

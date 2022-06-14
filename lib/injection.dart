@@ -172,9 +172,10 @@ void _registerCubits() {
   );
 
   //Reviews
-  getIt.registerFactory(
-    () => NewReviewCubit(
+  getIt.registerFactoryParam(
+    (TicketListCubit ticketListCubit, _) => NewReviewCubit(
       profileBroadcastSubject: getIt(),
+      ticketListCubit: ticketListCubit,
       reviewFacade: getIt(),
     ),
   );

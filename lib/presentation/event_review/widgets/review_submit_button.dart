@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:formz/formz.dart';
 import 'package:raver/application/event_review/new_review/event_review_cubit.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_tickets/raver_tickets.dart';
@@ -16,15 +18,18 @@ class ReviewSubmitButton extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.submittingStatus != current.submittingStatus,
       builder: (context, state) {
-        return state.submittingStatus == CubitStatus.loading
-            ? const CircularProgressIndicator()
-            : SizedBox(
-                width: 300,
-                child: ElevatedButton(
-                    onPressed: () =>
-                        context.read<NewReviewCubit>().submitReview(ticket),
-                    child: Text(S().rateButtonTitle)),
-              );
+        return SizedBox(
+          width: 300,
+          child: ElevatedButton(
+              onPressed: () =>
+                  context.read<NewReviewCubit>().submitReview(ticket),
+              child: state.submittingStatus.isSubmissionInProgress
+                  ? SpinKitThreeBounce(
+                      color: context.onSurfaceColor,
+                      size: 16,
+                    )
+                  : Text(S().rateButtonTitle)),
+        );
       },
     );
   }

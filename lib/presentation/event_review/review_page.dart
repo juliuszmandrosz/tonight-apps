@@ -6,9 +6,14 @@ import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class ReviewPage extends StatelessWidget {
+  final BuildContext blocContext;
   final Ticket ticket;
 
-  const ReviewPage({Key? key, required this.ticket}) : super(key: key);
+  const ReviewPage({
+    required this.blocContext,
+    required this.ticket,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +22,10 @@ class ReviewPage extends StatelessWidget {
         title: S().eventDetails,
       ),
       body: ticket.reviewId.isEmpty
-          ? NewReviewForm(ticket: ticket)
+          ? NewReviewForm(
+              ticket: ticket,
+              blocContext: blocContext,
+            )
           : ExistingReviewForm(ticket: ticket),
     );
   }

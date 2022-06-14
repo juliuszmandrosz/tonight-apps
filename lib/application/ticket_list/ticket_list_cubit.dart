@@ -42,6 +42,13 @@ class TicketListCubit extends Cubit<TicketListState> {
     );
   }
 
+  updatePastTicketInState(Ticket oldTicket, Ticket updatedTicket) {
+    final ticketsCopy = [...state.pastTickets];
+    final index = ticketsCopy.indexOf(oldTicket);
+    ticketsCopy[index] = updatedTicket;
+    emit(state.copyWith(pastTickets: ticketsCopy));
+  }
+
   Future<void> _getUpcomingLiveTickets() async {
     emit(state.copyWith(status: CubitStatus.loading));
 
