@@ -1,5 +1,6 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:intl/intl.dart';
 import 'package:raver_auth/src/infrastructure/cloud_functions/cloud_function_names.dart';
 
@@ -10,7 +11,10 @@ abstract class AuthCloudFunctionsFacade {
 
   Future<Unit> checkSelectorClaim(String email);
 
-  Future<Unit> addUser();
+  Future<Unit> addUser({
+    required String userId,
+    required String email,
+  });
 
   Future<Unit> addPartner(String accessCode);
 
@@ -26,16 +30,22 @@ abstract class AuthCloudFunctionsFacade {
 }
 
 class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
-  final FirebaseFunctions _firebaseFunctions;
+  final FirebaseFunctions _functions;
+  final Dio _dio;
 
-  AuthCloudFunctionsFacadeImpl(this._firebaseFunctions);
+  AuthCloudFunctionsFacadeImpl({
+    required FirebaseFunctions firebaseFunctions,
+    required Dio dio,
+  })  : _functions = firebaseFunctions,
+        _dio = dio;
 
   @override
   Future<Unit> checkUserClaim(String email) async {
-    final checkUserClaimFn =
-        _firebaseFunctions.httpsCallable(checkUserClaimFnName);
+    const endpoint = 'auth/checkUserClaim';
 
-    await checkUserClaimFn.call({'email': email});
+    final data = {'email': email};
+
+    await _dio.post(endpoint, data: data);
 
     return unit;
   }
@@ -43,7 +53,7 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   @override
   Future<Unit> checkPartnerClaim(String email) async {
     final checkPartnerClaimFn =
-        _firebaseFunctions.httpsCallable(checkPartnerClaimFnName);
+        _functions.httpsCallable(checkPartnerClaimFnName);
 
     await checkPartnerClaimFn.call({'email': email});
 
@@ -53,7 +63,7 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   @override
   Future<Unit> checkSelectorClaim(String email) async {
     final checkSelectorClaimFn =
-        _firebaseFunctions.httpsCallable(checkSelectorClaimFnName);
+        _functions.httpsCallable(checkSelectorClaimFnName);
 
     await checkSelectorClaimFn.call({'email': email});
 
@@ -61,19 +71,26 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   }
 
   @override
-  Future<Unit> addUser() async {
-    final addUserFn = _firebaseFunctions.httpsCallable(addUserFnName);
+  Future<Unit> addUser({
+    required String userId,
+    required String email,
+  }) async {
+    const endpoint = 'auth/addUser';
 
-    await addUserFn.call({
+    final data = {
+      'userId': userId,
+      'email': email,
       'locale': Intl.getCurrentLocale(),
-    });
+    };
+
+    await _dio.post(endpoint, data: data);
 
     return unit;
   }
 
   @override
   Future<Unit> addPartner(String accessCode) async {
-    final addPartnerFn = _firebaseFunctions.httpsCallable(addPartnerFnName);
+    final addPartnerFn = _functions.httpsCallable(addPartnerFnName);
 
     await addPartnerFn.call({
       'accessCode': accessCode,
@@ -85,7 +102,7 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
 
   @override
   Future<Unit> addSelector(String accessCode) async {
-    final addSelectorFn = _firebaseFunctions.httpsCallable(addSelectorFnName);
+    final addSelectorFn = _functions.httpsCallable(addSelectorFnName);
 
     await addSelectorFn.call({'accessCode': accessCode});
 
@@ -95,7 +112,7 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   @override
   Future<Unit> checkPartnerAccessCode(String accessCode) async {
     final checkPartnerAccessCodeFn =
-        _firebaseFunctions.httpsCallable(checkPartnerAccessCodeFnName);
+        _functions.httpsCallable(checkPartnerAccessCodeFnName);
 
     await checkPartnerAccessCodeFn.call({'accessCode': accessCode});
 
@@ -105,7 +122,7 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   @override
   Future<Unit> checkSelectorAccessCode(String accessCode) async {
     final checkSelectorAccessCodeFn =
-        _firebaseFunctions.httpsCallable(checkSelectorAccessCodeFnName);
+        _functions.httpsCallable(checkSelectorAccessCodeFnName);
 
     await checkSelectorAccessCodeFn.call({'accessCode': accessCode});
 
@@ -115,7 +132,7 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   @override
   Future<Unit> checkIfAccountExists(String email) async {
     final checkIfAccountExistsFn =
-        _firebaseFunctions.httpsCallable(checkIfAccountExistsFnName);
+        _functions.httpsCallable(checkIfAccountExistsFnName);
 
     await checkIfAccountExistsFn.call({'email': email});
 
@@ -125,7 +142,7 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   @override
   Future<Unit> checkIfAccountNotExists(String email) async {
     final checkIfAccountNotExistsFn =
-        _firebaseFunctions.httpsCallable(checkIfAccountNotExistsFnName);
+        _functions.httpsCallable(checkIfAccountNotExistsFnName);
 
     await checkIfAccountNotExistsFn.call({'email': email});
 

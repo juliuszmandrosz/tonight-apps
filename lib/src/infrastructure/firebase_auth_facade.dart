@@ -1,5 +1,6 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/services.dart';
@@ -266,12 +267,12 @@ class FirebaseAuthFacade
       );
 
       return left(await _handleFirebaseException(e));
-    } on FirebaseFunctionsException catch (e) {
+    } on DioError catch (e) {
       _logger.e(
-        "Functions Exception sending sign in email link for user EXCEPTION: $e",
+        "Dio Error sending sign in email link for user EXCEPTION: $e",
       );
 
-      return left(await _handleFirebaseException(e));
+      return left(await _handleDioError(e));
     }
   }
 
@@ -295,12 +296,12 @@ class FirebaseAuthFacade
       );
 
       return left(await _handleFirebaseException(e));
-    } on FirebaseFunctionsException catch (e) {
+    } on DioError catch (e) {
       _logger.e(
-        "Functions Exception signing in with email link as user EXCEPTION: $e",
+        "Dio error signing in with email link as user EXCEPTION: $e",
       );
 
-      return left(await _handleFirebaseException(e));
+      return left(await _handleDioError(e));
     }
   }
 
@@ -333,14 +334,13 @@ class FirebaseAuthFacade
       );
 
       return left(await _handleFirebaseException(e));
-    } on FirebaseFunctionsException catch (e) {
+    } on DioError catch (e) {
       await signOut();
       _logger.e(
-        "Firebase Function Exception during "
-        "sign in with Google as user EXCEPTION: $e",
+        "Dio Error during  sign in with Google as user EXCEPTION: $e",
       );
 
-      return left(await _handleFirebaseException(e));
+      return left(await _handleDioError(e));
     } on PlatformException catch (e) {
       _logger.e(
         "Platform Exception during "
@@ -362,14 +362,11 @@ class FirebaseAuthFacade
       await _authCloudFunctionsFacade.checkUserClaim(userEmail);
 
       return some(firebaseUser.toDomain());
-    } on FirebaseFunctionsException catch (e) {
+    } on DioError catch (e) {
       await signOut();
-      _logger.e(
-        "Firebase Functions Exception during "
-        "getting signed user EXCEPTION: $e",
-      );
+      _logger.e("Dio Error during getting signed user EXCEPTION: $e");
 
-      await _handleFirebaseException(e);
+      await _handleDioError(e);
 
       return none();
     }
@@ -458,7 +455,11 @@ class FirebaseAuthFacade
     final isNewUser = userCredential.additionalUserInfo!.isNewUser;
 
     if (isNewUser) {
-      await _authCloudFunctionsFacade.addUser();
+      final user = userCredential.user!;
+      await _authCloudFunctionsFacade.addUser(
+        userId: user.uid,
+        email: user.email!,
+      );
     }
   }
 
@@ -522,6 +523,18 @@ class FirebaseAuthFacade
         dynamicLinkDomain: 'tonightpartners.page.link',
       ),
     );
+  }
+
+  Future<AuthFailure> _handleDioError(DioError error) async {
+    final failure = firebaseAuthMessages[error.response?.data['message']];
+
+    if (failure != null) {
+      return AuthFailure(message: failure);
+    }
+
+    await _crashlytics.recordError(error, StackTrace.current);
+
+    return AuthFailure(message: serverError);
   }
 
   Future<AuthFailure> _handleFirebaseException(
