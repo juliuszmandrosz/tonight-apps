@@ -2,6 +2,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
@@ -340,6 +341,12 @@ class FirebaseAuthFacade
       );
 
       return left(await _handleFirebaseException(e));
+    } on PlatformException catch (e) {
+      _logger.e(
+        "Platform Exception during "
+        "sign in with Google as user EXCEPTION: $e",
+      );
+      return left(AuthFailure(message: unavailable));
     }
   }
 
