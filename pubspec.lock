@@ -769,7 +769,7 @@ packages:
       name: google_maps_flutter_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.7"
+    version: "2.2.0"
   google_place:
     dependency: "direct main"
     description:
@@ -1292,7 +1292,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "2860e4bc84fcc6af8576fd4ceb9e96ae2169a978"
+      resolved-ref: ec8882f9d5b459e3ac44a1be93eb9ad634cfa606
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
