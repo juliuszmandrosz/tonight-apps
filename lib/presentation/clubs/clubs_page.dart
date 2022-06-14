@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
 import 'package:raver/injection.dart';
@@ -62,7 +63,12 @@ class _ClubsPageState extends State<ClubsPage> {
                     return Container();
 
                   case CubitStatus.loading:
-                    return const Center(child: CircularProgressIndicator());
+                    return Center(
+                      child: SpinKitThreeBounce(
+                        color: context.onSurfaceColor,
+                        size: 30,
+                      ),
+                    );
 
                   case CubitStatus.success:
                     if (state.clubs.isEmpty) {

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/routes/app_router.dart';
@@ -52,8 +53,11 @@ class _TicketsPageState extends State<TicketsPage> {
                   return Container();
 
                 case CubitStatus.loading:
-                  return const Center(
-                    child: CircularProgressIndicator(),
+                  return Center(
+                    child: SpinKitThreeBounce(
+                      color: context.onSurfaceColor,
+                      size: 30,
+                    ),
                   );
 
                 case CubitStatus.failure:
