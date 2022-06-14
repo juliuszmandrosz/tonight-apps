@@ -27,11 +27,11 @@ class _ClubSearchFieldState extends State<ClubSearchField> {
 
   @override
   Widget build(BuildContext context) {
+    final filtersCubit = context.read<ClubFiltersCubit>();
+
     return TextField(
       controller: textController,
-      onSubmitted: (value) {
-        BlocProvider.of<ClubFiltersCubit>(context).searchFieldSubmitted(value);
-      },
+      onSubmitted: (value) => filtersCubit.searchFieldSubmitted(value),
       onChanged: (_) {
         setState(() {});
       },
@@ -40,18 +40,15 @@ class _ClubSearchFieldState extends State<ClubSearchField> {
         prefixIcon: const Icon(Icons.search),
         suffixIcon: textController.text.isNotEmpty
             ? InkWell(
-          onTap: () =>
-              setState(
-                    () {
-                  var provider = BlocProvider.of<ClubFiltersCubit>(context);
-                  textController.clear();
-                  if (provider.state.filter.phraseFilter.phrase.isNotEmpty) {
-                    provider.searchFieldSubmitted('');
-                  }
+                onTap: () {
+                  setState(() {
+                    textController.clear();
+                  });
+
+                  filtersCubit.searchFieldSubmitted('');
                 },
-              ),
-          child: const Icon(Icons.clear),
-        )
+                child: const Icon(Icons.clear),
+              )
             : null,
       ),
     );
