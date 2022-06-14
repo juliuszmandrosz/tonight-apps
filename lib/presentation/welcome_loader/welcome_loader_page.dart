@@ -67,7 +67,7 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
               initial: (_) {},
               authenticated: (_) => {},
               unauthenticated: (_) =>
-                  AutoRouter.of(context).replace(const SignInRoute())),
+                  context.replaceRoute(const SignInRoute())),
         )
       ],
       child: BlocConsumer<RemoteConfigCubit, RemoteConfigState>(
@@ -102,27 +102,22 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
                 ..loadDependencies(),
               child: BlocConsumer<WelcomeLoadingCubit, WelcomeLoadingState>(
                 listener: (context, state) {
-                  if (state.isFailure) {
-                    showDialog(
-                      barrierDismissible: false,
-                      context: context,
-                      builder: (context) {
-                        // TODO - change
-                        return const Scaffold(
-                          body: Center(
-                            child: Text('Error'),
-                          ),
-                        );
-                      },
+                  if (state.status.isFailure()) {
+                    context.pushRoute(
+                      FailureRoute(
+                        retryCallback: () =>
+                            (_welcomeLoadingCubit ?? _initWelcomeCubit(context))
+                                .loadDependencies(),
+                      ),
                     );
                   }
 
-                  if (!state.onboardingCompleted) {
-                    AutoRouter.of(context).push(const OnboardingRoute());
+                  if (!state.onboardingCompleted && state.dependenciesLoaded) {
+                    context.pushRoute(const OnboardingRoute());
                   }
                 },
                 builder: (context, state) {
-                  if (state.isFailure) {
+                  if (state.status.isFailure()) {
                     return Container();
                   }
 

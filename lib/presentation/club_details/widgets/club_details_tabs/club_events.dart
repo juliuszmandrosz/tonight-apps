@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/presentation/club_details/widgets/club_details_tabs/events/event_shimmer.dart';
 import 'package:raver/presentation/club_details/widgets/club_details_tabs/events/event_tile.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -16,11 +18,23 @@ class ClubEvents extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          child: BlocBuilder<EventOverviewBloc, EventOverviewState>(
+          child: BlocConsumer<EventOverviewBloc, EventOverviewState>(
+            listenWhen: (previous, current) =>
+                previous.status != current.status,
+            listener: (context, state) {
+              if (state.status.isFailure()) {
+                context.pushRoute(
+                  FailureRoute(
+                    retryCallback: () => _refreshEvents(context, state),
+                  ),
+                );
+              }
+            },
             builder: (context, state) {
               switch (state.status) {
                 case CubitStatus.initial:
                   return Container();
+
                 case CubitStatus.loading:
                   return ListView.separated(
                     itemCount: 4,
@@ -29,16 +43,8 @@ class ClubEvents extends StatelessWidget {
                   );
 
                 case CubitStatus.failure:
-                  return RefreshIndicator(
-                    onRefresh: () async =>
-                        context.read<EventOverviewBloc>().add(
-                              EventOverviewEvent.eventsFetched(
-                                  state.eventFilters, state.sortModel),
-                            ),
-                    child: Center(
-                      child: Text(S().errorLoadingEvents),
-                    ),
-                  );
+                  return Container();
+
                 case CubitStatus.success:
                   if (state.events.isEmpty) {
                     return Center(
@@ -51,14 +57,7 @@ class ClubEvents extends StatelessWidget {
                           ),
                           const SizedBox(height: 20),
                           OutlinedButton(
-                            onPressed: () {
-                              context.read<EventOverviewBloc>().add(
-                                    EventOverviewEvent.eventsFetched(
-                                      state.eventFilters,
-                                      state.sortModel,
-                                    ),
-                                  );
-                            },
+                            onPressed: () => _refreshEvents(context, state),
                             child: Text(S().refresh),
                           )
                         ],
@@ -66,11 +65,7 @@ class ClubEvents extends StatelessWidget {
                     );
                   }
                   return RefreshIndicator(
-                    onRefresh: () async =>
-                        context.read<EventOverviewBloc>().add(
-                              EventOverviewEvent.eventsFetched(
-                                  state.eventFilters, state.sortModel),
-                            ),
+                    onRefresh: () async => _refreshEvents(context, state),
                     child: ListView.separated(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -93,5 +88,14 @@ class ClubEvents extends StatelessWidget {
         )
       ],
     );
+  }
+
+  _refreshEvents(BuildContext context, EventOverviewState state) {
+    context.read<EventOverviewBloc>().add(
+          EventOverviewEvent.eventsFetched(
+            state.eventFilters,
+            state.sortModel,
+          ),
+        );
   }
 }

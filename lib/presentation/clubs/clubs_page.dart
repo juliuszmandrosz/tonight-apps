@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
@@ -5,6 +6,7 @@ import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart'
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/clubs/widgets/club_card.dart';
 import 'package:raver/presentation/clubs/widgets/club_filter_section.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -37,25 +39,27 @@ class _ClubsPageState extends State<ClubsPage> {
           children: [
             const ClubSearchBar(),
             const SizedBox(height: 20),
-            BlocBuilder<ClubsOverviewBloc, ClubsOverviewState>(
+            BlocConsumer<ClubsOverviewBloc, ClubsOverviewState>(
+              listenWhen: (previous, current) =>
+                  previous.status != current.status,
+              listener: (context, state) {
+                if (state.status.isFailure()) {
+                  context.pushRoute(
+                    FailureRoute(
+                      retryCallback: () => _clubsOverviewBloc.add(
+                        ClubsOverviewEvent.clubsFetched(state.clubFilter),
+                      ),
+                    ),
+                  );
+                }
+              },
               builder: (context, state) {
                 switch (state.status) {
                   case CubitStatus.initial:
                     return Container();
 
                   case CubitStatus.failure:
-                    return RefreshIndicator(
-                      onRefresh: () async => _refreshClubs(),
-                      child: SingleChildScrollView(
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        child: SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.3,
-                          child: Center(
-                            child: Text(S().errorLoadingClubs),
-                          ),
-                        ),
-                      ),
-                    );
+                    return Container();
 
                   case CubitStatus.loading:
                     return const Center(child: CircularProgressIndicator());

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/core/google_places/google_places_cubit.dart';
@@ -14,6 +15,7 @@ import 'package:raver/presentation/event_filters/widgets/event_filters_music.dar
 import 'package:raver/presentation/event_filters/widgets/event_filters_place_option.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_price.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_submit_button.dart.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -43,15 +45,25 @@ class EventFiltersPage extends StatelessWidget {
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
           appBar: RaverAppBar(title: S().filters),
-          body: BlocBuilder<AvailableFiltersCubit, AvailableFiltersState>(
+          body: BlocConsumer<AvailableFiltersCubit, AvailableFiltersState>(
+            listener: (context, state) {
+              if (state.maybeWhen(
+                  orElse: () => false, loadFailure: (_) => true)) {
+                context.pushRoute(
+                  FailureRoute(
+                    retryCallback: () => context
+                        .read<AvailableFiltersCubit>()
+                        .getAvailableFilters(),
+                  ),
+                );
+              }
+            },
             builder: (context, state) => state.map(
               initial: (_) => Container(),
               loadInProgress: (_) => const Center(
                 child: CircularProgressIndicator(),
               ),
-              loadFailure: (_) => Center(
-                child: Text(S().errorLoadingFilters),
-              ),
+              loadFailure: (_) => Container(),
               loadSuccess: (state) {
                 return SafeArea(
                   child: Padding(

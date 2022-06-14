@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:raver/failure/failure_page.dart';
 import 'package:raver/presentation/app_settings/app_settings_page.dart';
 import 'package:raver/presentation/club_details/club_details_page.dart';
 import 'package:raver/presentation/clubs/clubs_page.dart';
@@ -64,6 +65,7 @@ part 'app_router.gr.dart';
     AutoRoute(page: NotificationsPage),
     AutoRoute(page: TermsOfServicePage),
     AutoRoute<InvoiceData>(page: InvoiceDataPage),
+    AutoRoute(page: FailurePage),
   ],
 )
 class AppRouter extends _$AppRouter {}

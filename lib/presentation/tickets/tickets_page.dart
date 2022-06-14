@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver/presentation/tickets/widgets/ticket_card.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -31,75 +33,86 @@ class _TicketsPageState extends State<TicketsPage> {
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(15),
-        child: BlocBuilder<TicketListCubit, TicketListState>(
-            builder: (ctx, state) {
-          switch (state.status) {
-            case CubitStatus.initial:
-              return Container();
+        child: BlocConsumer<TicketListCubit, TicketListState>(
+            listenWhen: (previous, current) =>
+                previous.status != current.status,
+            listener: (context, state) {
+              if (state.status.isFailure()) {
+                context.pushRoute(
+                  FailureRoute(
+                    retryCallback: () =>
+                        context.read<TicketListCubit>().fetchTickets(),
+                  ),
+                );
+              }
+            },
+            builder: (context, state) {
+              switch (state.status) {
+                case CubitStatus.initial:
+                  return Container();
 
-            case CubitStatus.loading:
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+                case CubitStatus.loading:
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
 
-            case CubitStatus.failure:
-              return Center(
-                child: Text(S().errorLoadingTickets),
-              );
+                case CubitStatus.failure:
+                  return Container();
 
-            case CubitStatus.success:
-              return state.upcomingLiveTickets.isEmpty &&
-                      state.pastTickets.isEmpty
-                  ? Center(child: Text(S().tickets(0)))
-                  : ListView(
-                      controller: _scrollController,
-                      children: [
-                        if (state.upcomingLiveTickets.isNotEmpty)
-                          Column(
-                            children: [
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: RaverHeadline(text: S().upcomingAndLive),
+                case CubitStatus.success:
+                  return state.upcomingLiveTickets.isEmpty &&
+                          state.pastTickets.isEmpty
+                      ? Center(child: Text(S().tickets(0)))
+                      : ListView(
+                          controller: _scrollController,
+                          children: [
+                            if (state.upcomingLiveTickets.isNotEmpty)
+                              Column(
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: RaverHeadline(
+                                        text: S().upcomingAndLive),
+                                  ),
+                                  const SizedBox(height: 20),
+                                ],
                               ),
-                              const SizedBox(height: 20),
-                            ],
-                          ),
-                        ListView.separated(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: state.upcomingLiveTickets.length,
-                          itemBuilder: (ctx, i) => TicketCard(
-                            ticket: state.upcomingLiveTickets[i],
-                          ),
-                          separatorBuilder: (ctx, i) =>
-                              const SizedBox(height: 20),
-                        ),
-                        if (state.upcomingLiveTickets.isNotEmpty)
-                          const SizedBox(height: 30),
-                        if (state.pastTickets.isNotEmpty)
-                          Column(
-                            children: [
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: RaverHeadline(text: S().pastTickets),
+                            ListView.separated(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: state.upcomingLiveTickets.length,
+                              itemBuilder: (ctx, i) => TicketCard(
+                                ticket: state.upcomingLiveTickets[i],
                               ),
-                              const SizedBox(height: 20),
-                            ],
-                          ),
-                        ListView.separated(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: state.pastTickets.length,
-                          itemBuilder: (ctx, i) => TicketCard(
-                            ticket: state.pastTickets[i],
-                          ),
-                          separatorBuilder: (ctx, i) =>
-                              const SizedBox(height: 20),
-                        ),
-                      ],
-                    );
-          }
-        }),
+                              separatorBuilder: (ctx, i) =>
+                                  const SizedBox(height: 20),
+                            ),
+                            if (state.upcomingLiveTickets.isNotEmpty)
+                              const SizedBox(height: 30),
+                            if (state.pastTickets.isNotEmpty)
+                              Column(
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: RaverHeadline(text: S().pastTickets),
+                                  ),
+                                  const SizedBox(height: 20),
+                                ],
+                              ),
+                            ListView.separated(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: state.pastTickets.length,
+                              itemBuilder: (ctx, i) => TicketCard(
+                                ticket: state.pastTickets[i],
+                              ),
+                              separatorBuilder: (ctx, i) =>
+                                  const SizedBox(height: 20),
+                            ),
+                          ],
+                        );
+              }
+            }),
       ),
     );
   }

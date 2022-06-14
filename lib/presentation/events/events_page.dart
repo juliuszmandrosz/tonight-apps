@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +8,7 @@ import 'package:raver/injection.dart';
 import 'package:raver/presentation/events/widgets/event_card.dart';
 import 'package:raver/presentation/events/widgets/event_filters_row.dart';
 import 'package:raver/presentation/events/widgets/event_search_field.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -56,76 +58,78 @@ class _EventsPageState extends State<EventsPage> {
                     const SizedBox(height: 15),
                     const EventFiltersRow(),
                     const SizedBox(height: 15),
-                    BlocBuilder<EventOverviewBloc, EventOverviewState>(
-                        builder: (context, state) {
-                      switch (state.status) {
-                        case CubitStatus.initial:
-                          return Container();
-
-                        case CubitStatus.loading:
-                          return Center(
-                            child: SpinKitThreeBounce(
-                              color: context.onSurfaceColor,
-                              size: 30,
-                            ),
-                          );
-
-                        case CubitStatus.failure:
-                          return Center(
-                            child: Column(
-                              children: [
-                                Text(S().errorLoadingEvents),
-                                const SizedBox(height: 20),
-                                OutlinedButton(
-                                    onPressed: () => _refreshEvents(),
-                                    child: Text(S().refresh)),
-                              ],
-                            ),
-                          );
-
-                        case CubitStatus.success:
-                          if (state.events.isEmpty) {
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                // TODO - change this
-                                const SizedBox(height: 100),
-                                Text(
-                                  state.eventFilters.maxDistanceFilter
-                                              .userLocation.isNotEmpty &&
-                                          state.eventFilters.maxDistanceFilter
-                                              .enabled
-                                      ? S().noEventsNearYou
-                                      : S().events(0),
-                                  style: context.subtitle1,
-                                ),
-                                const SizedBox(height: 20),
-                                OutlinedButton(
-                                    onPressed: () => _refreshEvents(),
-                                    child: Text(S().refresh)),
-                              ],
+                    BlocConsumer<EventOverviewBloc, EventOverviewState>(
+                        listenWhen: (previous, current) =>
+                            previous.status != current.status,
+                        listener: (context, state) {
+                          if (state.status.isFailure()) {
+                            context.pushRoute(
+                              FailureRoute(
+                                retryCallback: () => _refreshEvents(),
+                              ),
                             );
                           }
+                        },
+                        builder: (context, state) {
+                          switch (state.status) {
+                            case CubitStatus.initial:
+                              return Container();
 
-                          return ListView.separated(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            separatorBuilder: (_, __) =>
-                                const SizedBox(height: 10),
-                            itemCount: state.hasReachedMax
-                                ? state.events.length
-                                : state.events.length + 1,
-                            itemBuilder: (ctx, i) => i >= state.events.length
-                                ? const BottomLoader()
-                                : Center(
-                                    child: EventCard(
-                                      event: state.events[i],
-                                      heroPhrase: heroPhrase,
+                            case CubitStatus.loading:
+                              return Center(
+                                child: SpinKitThreeBounce(
+                                  color: context.onSurfaceColor,
+                                  size: 30,
+                                ),
+                              );
+
+                            case CubitStatus.failure:
+                              return Container();
+
+                            case CubitStatus.success:
+                              if (state.events.isEmpty) {
+                                return Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    // TODO - change this
+                                    const SizedBox(height: 100),
+                                    Text(
+                                      state.eventFilters.maxDistanceFilter
+                                                  .userLocation.isNotEmpty &&
+                                              state.eventFilters
+                                                  .maxDistanceFilter.enabled
+                                          ? S().noEventsNearYou
+                                          : S().events(0),
+                                      style: context.subtitle1,
                                     ),
-                                  ),
-                          );
-                      }
-                    }),
+                                    const SizedBox(height: 20),
+                                    OutlinedButton(
+                                        onPressed: () => _refreshEvents(),
+                                        child: Text(S().refresh)),
+                                  ],
+                                );
+                              }
+
+                              return ListView.separated(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                separatorBuilder: (_, __) =>
+                                    const SizedBox(height: 10),
+                                itemCount: state.hasReachedMax
+                                    ? state.events.length
+                                    : state.events.length + 1,
+                                itemBuilder: (ctx, i) =>
+                                    i >= state.events.length
+                                        ? const BottomLoader()
+                                        : Center(
+                                            child: EventCard(
+                                              event: state.events[i],
+                                              heroPhrase: heroPhrase,
+                                            ),
+                                          ),
+                              );
+                          }
+                        }),
                   ],
                 ),
               ),

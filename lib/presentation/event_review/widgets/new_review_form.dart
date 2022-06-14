@@ -10,6 +10,7 @@ import 'package:raver/presentation/event_review/widgets/review_event_name.dart';
 import 'package:raver/presentation/event_review/widgets/review_rating_bar.dart';
 import 'package:raver/presentation/event_review/widgets/review_submit_button.dart';
 import 'package:raver/presentation/event_review/widgets/review_text_input.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -42,9 +43,18 @@ class NewReviewForm extends StatelessWidget {
           )..loadForm(),
           child: BlocConsumer<NewReviewCubit, EventReviewState>(
             listenWhen: (previous, current) =>
+                previous.status != current.status ||
                 previous.submittingStatus != current.submittingStatus ||
                 previous.errorMessage != current.errorMessage,
             listener: (context, state) {
+              if (state.status.isFailure()) {
+                context.popRoute(
+                  FailureRoute(
+                    retryCallback: () =>
+                        context.read<NewReviewCubit>().loadForm(),
+                  ),
+                );
+              }
               state.errorMessage.fold(
                 () {},
                 (error) => context.showSnackbarMessage(error),
@@ -52,7 +62,7 @@ class NewReviewForm extends StatelessWidget {
               if (state.submittingStatus.isSubmissionSuccess) {
                 _isReviewAddedSuccessfully = true;
                 context.showSnackbarMessage(S().reviewAdded);
-                AutoRouter.of(context).pop();
+                context.popRoute();
               }
             },
             builder: (context, state) {
@@ -64,9 +74,7 @@ class NewReviewForm extends StatelessWidget {
                     child: CircularProgressIndicator(),
                   );
                 case CubitStatus.failure:
-                  return Center(
-                    child: Text(S().reviewLoadingFormFailure),
-                  );
+                  return Container();
                 case CubitStatus.success:
                   return Column(
                     children: [

@@ -36,14 +36,23 @@ class VipCheckoutPage extends StatelessWidget {
             previous.eventTickets != current.eventTickets ||
             previous.sendInvoice != current.sendInvoice,
         listenWhen: (previous, current) =>
+            previous.initialStatus != current.initialStatus ||
             previous.proceedingToPaymentStatus !=
                 current.proceedingToPaymentStatus ||
             previous.snackbarMessage != current.snackbarMessage ||
             previous.isVipNoLongerAvailable != current.isVipNoLongerAvailable,
         listener: (context, state) {
+          if (state.initialStatus.isFailure()) {
+            context.pushRoute(
+              FailureRoute(
+                retryCallback: () =>
+                    context.read<VipCheckoutCubit>().initData(ticket),
+              ),
+            );
+          }
           if (state.proceedingToPaymentStatus.isSuccess() &&
               state.upgradedTicket.isSome()) {
-            AutoRouter.of(context).replace(
+            context.replaceRoute(
               TicketPaymentConfirmRoute(
                 ticket: state.upgradedTicket.getOrCrash(),
               ),
@@ -64,6 +73,11 @@ class VipCheckoutPage extends StatelessWidget {
           }
         },
         builder: (context, state) {
+          if (state.initialStatus.isInitial() ||
+              state.initialStatus.isFailure()) {
+            return Container();
+          }
+
           return state.initialStatus.isLoading()
               ? const Center(child: CircularProgressIndicator())
               : LoaderOverlay(

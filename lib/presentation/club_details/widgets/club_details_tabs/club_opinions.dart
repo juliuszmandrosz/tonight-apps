@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
 import 'package:raver/presentation/club_details/widgets/club_reviews/club_review_list_tile.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -17,6 +19,7 @@ class ClubOpinions extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<ClubReviewsBloc, ClubReviewsState>(
       listenWhen: (previous, current) =>
+          previous.status != current.status ||
           previous.errorMessage != current.errorMessage ||
           previous.reviewReportStatus != current.reviewReportStatus,
       listener: (context, state) {
@@ -27,6 +30,16 @@ class ClubOpinions extends StatelessWidget {
 
         if (state.reviewReportStatus.isSuccess()) {
           context.showSnackbarMessage(S().reviewReportedSuccessfully);
+        }
+
+        if (state.status.isFailure()) {
+          context.pushRoute(
+            FailureRoute(
+              retryCallback: () => context.read<ClubReviewsBloc>().add(
+                    ClubReviewsEvent.reviewsFetched(state.clubId),
+                  ),
+            ),
+          );
         }
       },
       builder: (context, state) {
@@ -40,9 +53,7 @@ class ClubOpinions extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 );
               case CubitStatus.failure:
-                return Center(
-                  child: Text(S().clubReviewsLoadingError),
-                );
+                return Container();
               case CubitStatus.success:
                 return state.reviews.isEmpty
                     ? Center(
@@ -55,10 +66,7 @@ class ClubOpinions extends StatelessWidget {
                             ),
                             const SizedBox(height: 20),
                             OutlinedButton(
-                              onPressed: () =>
-                                  context.read<ClubReviewsBloc>().add(
-                                        ClubReviewsEvent.reviewsFetched(clubId),
-                                      ),
+                              onPressed: () => _refreshOpinions(context),
                               child: Text(S().refresh),
                             ),
                           ],
@@ -78,5 +86,11 @@ class ClubOpinions extends StatelessWidget {
         );
       },
     );
+  }
+
+  _refreshOpinions(BuildContext context) {
+    context.read<ClubReviewsBloc>().add(
+          ClubReviewsEvent.reviewsFetched(clubId),
+        );
   }
 }

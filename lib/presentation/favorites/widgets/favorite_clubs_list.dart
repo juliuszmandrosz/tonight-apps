@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:raver/presentation/clubs/widgets/club_card.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -13,7 +15,18 @@ class FavoriteClubsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ClubFavoriteCubit, ClubFavoriteState>(
+    return BlocConsumer<ClubFavoriteCubit, ClubFavoriteState>(
+      listenWhen: (previous, current) => previous.status != current.status,
+      listener: (context, state) {
+        if (state.status.isFailure()) {
+          context.pushRoute(
+            FailureRoute(
+              retryCallback: () =>
+                  context.read<ClubFavoriteCubit>().getFavoriteClubs(),
+            ),
+          );
+        }
+      },
       builder: (context, state) {
         switch (state.status) {
           case CubitStatus.loading:
@@ -55,9 +68,7 @@ class FavoriteClubsList extends StatelessWidget {
                   );
 
           case CubitStatus.failure:
-            return Center(
-              child: Text(S().errorLoadingFavoriteClubsInfo),
-            );
+            return Container();
 
           case CubitStatus.initial:
             return Container();

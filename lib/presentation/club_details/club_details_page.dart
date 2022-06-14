@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_details/club_details_cubit.dart';
@@ -7,6 +8,7 @@ import 'package:raver/injection.dart';
 import 'package:raver/presentation/club_details/widgets/club_description.dart';
 import 'package:raver/presentation/club_details/widgets/club_details_tabs.dart';
 import 'package:raver/presentation/core/details_hero_image.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
@@ -61,12 +63,6 @@ class _ClubDetailsPageState extends State<ClubDetailsPage>
             ..getRewards(widget.clubId ?? widget.club!.id),
         ),
         BlocProvider(
-          create: (context) => getIt<ClubReviewsBloc>()
-            ..add(
-              ClubReviewsEvent.reviewsFetched(widget.clubId ?? widget.club!.id),
-            ),
-        ),
-        BlocProvider(
           create: (context) {
             final reviewsBloc = getIt<ClubReviewsBloc>();
 
@@ -100,7 +96,18 @@ class _ClubDetailsPageState extends State<ClubDetailsPage>
           },
         ),
       ],
-      child: BlocBuilder<ClubDetailsCubit, ClubDetailsState>(
+      child: BlocConsumer<ClubDetailsCubit, ClubDetailsState>(
+        listener: (context, state) {
+          if (state.maybeWhen(orElse: () => false, loadFailure: (_) => true)) {
+            context.pushRoute(
+              FailureRoute(
+                retryCallback: () => context
+                    .read<ClubDetailsCubit>()
+                    .getClubById(widget.clubId!),
+              ),
+            );
+          }
+        },
         builder: (context, state) {
           return state.map(
             initial: (_) => Container(),
@@ -147,9 +154,7 @@ class _ClubDetailsPageState extends State<ClubDetailsPage>
                 ),
               );
             },
-            loadFailure: (state) => Center(
-              child: Text(state.clubFailure.toString()),
-            ),
+            loadFailure: (state) => Container(),
           );
         },
       ),

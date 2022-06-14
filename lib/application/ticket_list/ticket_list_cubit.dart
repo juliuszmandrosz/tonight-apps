@@ -11,7 +11,7 @@ part 'ticket_list_state.dart';
 class TicketListCubit extends Cubit<TicketListState> {
   final pageSize = 20;
   final UserTicketFacade _ticketFacade;
-  late final StreamSubscription _upcomingLiveTicketsSubscription;
+  StreamSubscription? _upcomingLiveTicketsSubscription;
 
   TicketListCubit(this._ticketFacade) : super(TicketListState.initial());
 
@@ -82,7 +82,7 @@ class TicketListCubit extends Cubit<TicketListState> {
 
   @override
   Future<void> close() {
-    _upcomingLiveTicketsSubscription.cancel();
+    _upcomingLiveTicketsSubscription?.cancel();
     return super.close();
   }
 }

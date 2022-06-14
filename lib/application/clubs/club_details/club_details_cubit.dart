@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:raver_clubs/domain/domain.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 
 part 'club_details_cubit.freezed.dart';
-
 part 'club_details_state.dart';
 
 class ClubDetailsCubit extends Cubit<ClubDetailsState> {

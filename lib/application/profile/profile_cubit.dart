@@ -18,8 +18,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit(this._profileFacade, this._subject)
       : super(ProfileState.initial());
 
-  late StreamSubscription<Either<ProfileFailure, UserProfile>>
-      _profileSubscription;
+  StreamSubscription<Either<ProfileFailure, UserProfile>>? _profileSubscription;
 
   void getUserProfile() {
     emit(state.copyWith(status: CubitStatus.loading));
@@ -55,7 +54,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   @override
   Future<void> close() {
-    _profileSubscription.cancel();
+    _profileSubscription?.cancel();
     return super.close();
   }
 }

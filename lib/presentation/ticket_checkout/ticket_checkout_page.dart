@@ -37,10 +37,20 @@ class TicketCheckoutPage extends StatelessWidget {
             previous.eventTickets != current.eventTickets ||
             previous.sendInvoice != current.sendInvoice,
         listenWhen: (previous, current) =>
+            previous.initialStatus != current.initialStatus ||
             previous.proceedingToPaymentStatus !=
                 current.proceedingToPaymentStatus ||
             previous.snackbarMessage != current.snackbarMessage,
         listener: (context, state) {
+          if (state.initialStatus.isFailure()) {
+            context.pushRoute(
+              FailureRoute(
+                retryCallback: () =>
+                    context.read<TicketCheckoutCubit>().initData(event),
+              ),
+            );
+          }
+
           if (state.proceedingToPaymentStatus.isSuccess() &&
               state.purchasedTicket.isSome()) {
             AutoRouter.of(context).replace(
@@ -60,6 +70,10 @@ class TicketCheckoutPage extends StatelessWidget {
           );
         },
         builder: (context, state) {
+          if (state.initialStatus.isInitial() ||
+              state.initialStatus.isFailure()) {
+            return Container();
+          }
           return state.initialStatus.isLoading()
               ? const Center(child: CircularProgressIndicator())
               : LoaderOverlay(

@@ -24,7 +24,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   final EventTicketsCubit _eventTicketsCubit;
   final CurrencyParamsFacade _currencyParamsFacade;
   final FirebaseRemoteConfig _remoteConfig;
-  late final StreamSubscription _eventTicketsSubscription;
+  StreamSubscription? _eventTicketsSubscription;
   StreamSubscription? _userTicketsSubscription;
 
   TicketCheckoutCubit({
@@ -386,7 +386,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
 
   @override
   Future<void> close() {
-    _eventTicketsSubscription.cancel();
+    _eventTicketsSubscription?.cancel();
     _userTicketsSubscription?.cancel();
     return super.close();
   }

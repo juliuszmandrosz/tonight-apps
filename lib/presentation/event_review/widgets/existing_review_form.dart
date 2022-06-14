@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/event_review/existing_review/existing_review_cubit.dart';
@@ -6,6 +7,7 @@ import 'package:raver/presentation/event_review/widgets/read_only_rating_indicat
 import 'package:raver/presentation/event_review/widgets/read_only_review_content.dart';
 import 'package:raver/presentation/event_review/widgets/review_event_date.dart';
 import 'package:raver/presentation/event_review/widgets/review_event_name.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -24,7 +26,19 @@ class ExistingReviewForm extends StatelessWidget {
       child: BlocProvider(
         create: (context) => getIt<ExistingReviewCubit>()
           ..getReview(ticket.reviewId, ticket.clubId),
-        child: BlocBuilder<ExistingReviewCubit, ExistingReviewState>(
+        child: BlocConsumer<ExistingReviewCubit, ExistingReviewState>(
+          listener: (context, state) {
+            if (state.maybeWhen(
+                orElse: () => false, loadFailure: (_) => true)) {
+              context.pushRoute(
+                FailureRoute(
+                  retryCallback: () => context
+                      .read<ExistingReviewCubit>()
+                      .getReview(ticket.reviewId, ticket.clubId),
+                ),
+              );
+            }
+          },
           builder: (context, state) {
             return state.map(
               initial: (_) => Container(),

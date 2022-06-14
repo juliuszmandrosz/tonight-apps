@@ -52,7 +52,8 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         super(WelcomeLoadingState.initial());
 
   Future<void> loadDependencies() async {
-    if (state.status != CubitStatus.initial) return;
+    if (state.status == CubitStatus.loading ||
+        state.status == CubitStatus.success) return;
 
     emit(state.copyWith(status: CubitStatus.loading));
 
@@ -69,7 +70,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
   void _emitSuccessIfAllLoaded() {
     if (_allDependenciesLoaded()) {
-      final isOnboardingCompleted = _onboardingCompleted();
+      final isOnboardingCompleted = _checkIfOnboardingIsCompleted();
       emit(
         state.copyWith(
           dependenciesLoaded: true,
@@ -82,7 +83,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
   void _checkAndEmitFailure(CubitStatus cubitStatus) {
     if (cubitStatus == CubitStatus.failure) {
-      emit(state.copyWith(isFailure: true));
+      emit(state.copyWith(status: CubitStatus.failure));
     }
   }
 
@@ -185,7 +186,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
             .maybeWhen(orElse: () => false, loadSuccess: (_) => true);
   }
 
-  _onboardingCompleted() {
+  _checkIfOnboardingIsCompleted() {
     return _profileCubit.state.user.username.isNotEmpty;
   }
 }

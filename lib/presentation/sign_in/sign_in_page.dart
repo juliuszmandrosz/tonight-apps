@@ -44,7 +44,7 @@ class SignInPage extends StatelessWidget {
                   : context.loaderOverlay.hide();
 
               if (state.signInStatus.isSubmissionSuccess) {
-                AutoRouter.of(context).replace(WelcomeLoaderRoute());
+                context.replaceRoute(const WelcomeLoaderRoute());
               }
             },
             child: Padding(

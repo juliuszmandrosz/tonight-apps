@@ -35,27 +35,20 @@ class _ClubPhotosState extends State<ClubPhotos> {
           _clubPhotoBloc..add(ClubPhotosEvent.photosFetched(widget.clubId)),
       child: Padding(
         padding: const EdgeInsets.only(left: 8, right: 8),
-        child: BlocBuilder<ClubPhotosBloc, ClubPhotosState>(
+        child: BlocConsumer<ClubPhotosBloc, ClubPhotosState>(
+          listenWhen: (previous, current) => previous.status != current.status,
+          listener: (context, state) {
+            if (state.status.isFailure()) {
+              // TODO - handle this
+            }
+          },
           builder: (context, state) {
             switch (state.status) {
               case CubitStatus.initial:
                 return Container();
 
               case CubitStatus.failure:
-                return RefreshIndicator(
-                  onRefresh: () async => context.read<ClubPhotosBloc>().add(
-                        ClubPhotosEvent.photosFetched(widget.clubId),
-                      ),
-                  child: SingleChildScrollView(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.3,
-                      child: Center(
-                        child: Text(S().errorLoadingPhotos),
-                      ),
-                    ),
-                  ),
-                );
+                return Container();
 
               case CubitStatus.loading:
                 return const Center(child: CircularProgressIndicator());
