@@ -492,8 +492,8 @@ class FirebaseAuthFacade
       actionCodeSettings: ActionCodeSettings(
         url: 'https://raverteam.page.link',
         handleCodeInApp: true,
-        iOSBundleId: 'com.raver',
-        androidPackageName: 'com.raverteam.raver',
+        iOSBundleId: 'com.tonight',
+        androidPackageName: 'com.raverteam.tonight',
         dynamicLinkDomain: 'raverteam.page.link',
       ),
     );
