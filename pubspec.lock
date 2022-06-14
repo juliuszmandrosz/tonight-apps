@@ -1133,7 +1133,7 @@ packages:
       name: path_provider_ios
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.9"
+    version: "2.0.10"
   path_provider_linux:
     dependency: transitive
     description:
@@ -1274,7 +1274,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: ae052584233b24b0191519228abdaa9481e52e47
+      resolved-ref: f3fd31cb5ae5135a74bfb0dc1759ecc8ff849537
       url: "git@github.com:juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"

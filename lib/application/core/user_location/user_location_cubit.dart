@@ -27,10 +27,7 @@ class UserLocationCubit extends Cubit<UserLocationState> {
       return;
     }
 
-
     await _getUserLocation();
-
-    emit(state.copyWith(isLoading: false));
   }
 
   void openAppSettings() {
@@ -57,11 +54,9 @@ class UserLocationCubit extends Cubit<UserLocationState> {
     emit(
       state.copyWith(
         userLocation: some(
-          {
-            latitude: userLocation.latitude,
-            longitude: userLocation.longitude
-          },
+          {latitude: userLocation.latitude, longitude: userLocation.longitude},
         ),
+        isLoading: false,
       ),
     );
   }

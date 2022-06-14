@@ -69,6 +69,8 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   }
 
   void _emitSuccessIfAllLoaded() {
+    if (state.status.isSuccess()) return;
+
     if (_allDependenciesLoaded()) {
       final isOnboardingCompleted = _checkIfOnboardingIsCompleted();
       emit(
