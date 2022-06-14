@@ -72,16 +72,22 @@ class _ClubsPageState extends State<ClubsPage> {
 
                   case CubitStatus.success:
                     if (state.clubs.isEmpty) {
-                      return RefreshIndicator(
-                        onRefresh: () async => _refreshClubs(),
-                        child: SingleChildScrollView(
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          child: SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.3,
-                            child: Center(
-                              child: Text(S().clubs(0)),
+                      return Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // TODO - change this
+                            const SizedBox(height: 150),
+                            Text(
+                              S().clubs(0),
+                              style: context.subtitle1,
                             ),
-                          ),
+                            const SizedBox(height: 20),
+                            OutlinedButton(
+                              onPressed: () => _refreshClubs(),
+                              child: Text(S().refresh),
+                            ),
+                          ],
                         ),
                       );
                     }
