@@ -27,34 +27,34 @@ class TicketQrPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<TicketQrCubit>(
-        param1: context.read<TicketListCubit>(),
-      )..initTicketData(ticket),
-      child: BlocConsumer<TicketQrCubit, TicketQrState>(
-        listener: (context, state) {
-          state.snackbarMessage.fold(
-            () => null,
-            (message) => context.showSnackbarMessage(message),
-          );
+    return LoaderOverlay(
+      overlayColor: context.shadowColor,
+      child: BlocProvider(
+        create: (context) => getIt<TicketQrCubit>(
+          param1: context.read<TicketListCubit>(),
+        )..initTicketData(ticket),
+        child: BlocConsumer<TicketQrCubit, TicketQrState>(
+          listener: (context, state) {
+            state.snackbarMessage.fold(
+              () => null,
+              (message) => context.showSnackbarMessage(message),
+            );
 
-          state.ticketReturnStatus.isLoading()
-              ? context.loaderOverlay.show()
-              : context.loaderOverlay.hide();
+            state.ticketReturnStatus.isLoading()
+                ? context.loaderOverlay.show()
+                : context.loaderOverlay.hide();
 
-          if (state.ticketReturnStatus.isSuccess()) {
-            context.showSnackbarMessage(S().ticketReturnedSuccessfully);
-            AutoRouter.of(context).popUntilRoot();
-          }
-        },
-        buildWhen: (previous, current) =>
-            previous.isVipEnabled != current.isVipEnabled ||
-            previous.ticket != current.ticket,
-        builder: (context, state) {
-          final ticketInState = state.ticket.getOrCrash();
-          return LoaderOverlay(
-            overlayColor: context.shadowColor,
-            child: Scaffold(
+            if (state.ticketReturnStatus.isSuccess()) {
+              context.showSnackbarMessage(S().ticketReturnedSuccessfully);
+              AutoRouter.of(context).popUntilRoot();
+            }
+          },
+          buildWhen: (previous, current) =>
+              previous.isVipEnabled != current.isVipEnabled ||
+              previous.ticket != current.ticket,
+          builder: (context, state) {
+            final ticketInState = state.ticket.getOrCrash();
+            return Scaffold(
               appBar: RaverAppBar(title: S().tickets(1)),
               body: Padding(
                 padding: const EdgeInsets.only(top: 50, bottom: 30),
@@ -85,9 +85,9 @@ class TicketQrPage extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

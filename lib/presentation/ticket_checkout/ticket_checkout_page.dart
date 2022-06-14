@@ -27,60 +27,60 @@ class TicketCheckoutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<TicketCheckoutCubit>(
-        param1: context.read<TicketListCubit>(),
-      )..initData(event),
-      child: BlocConsumer<TicketCheckoutCubit, TicketCheckoutState>(
-        buildWhen: (previous, current) =>
-            previous.initialStatus != current.initialStatus ||
-            previous.eventTickets != current.eventTickets ||
-            previous.sendInvoice != current.sendInvoice,
-        listenWhen: (previous, current) =>
-            previous.initialStatus != current.initialStatus ||
-            previous.proceedingToPaymentStatus !=
-                current.proceedingToPaymentStatus ||
-            previous.snackbarMessage != current.snackbarMessage,
-        listener: (context, state) {
-          if (state.initialStatus.isFailure()) {
-            context.pushRoute(
-              FailureRoute(
-                retryCallback: () =>
-                    context.read<TicketCheckoutCubit>().initData(event),
-              ),
+    return LoaderOverlay(
+      overlayWidget: const TicketLogoAnimation(),
+      overlayColor: context.shadowColor,
+      useDefaultLoading: false,
+      child: BlocProvider(
+        create: (_) => getIt<TicketCheckoutCubit>(
+          param1: context.read<TicketListCubit>(),
+        )..initData(event),
+        child: BlocConsumer<TicketCheckoutCubit, TicketCheckoutState>(
+          buildWhen: (previous, current) =>
+              previous.initialStatus != current.initialStatus ||
+              previous.eventTickets != current.eventTickets ||
+              previous.sendInvoice != current.sendInvoice,
+          listenWhen: (previous, current) =>
+              previous.initialStatus != current.initialStatus ||
+              previous.proceedingToPaymentStatus !=
+                  current.proceedingToPaymentStatus ||
+              previous.snackbarMessage != current.snackbarMessage,
+          listener: (context, state) {
+            if (state.initialStatus.isFailure()) {
+              context.pushRoute(
+                FailureRoute(
+                  retryCallback: () =>
+                      context.read<TicketCheckoutCubit>().initData(event),
+                ),
+              );
+            }
+
+            if (state.proceedingToPaymentStatus.isSuccess() &&
+                state.purchasedTicket.isSome()) {
+              AutoRouter.of(context).replace(
+                TicketPaymentConfirmRoute(
+                  ticket: state.purchasedTicket.getOrCrash(),
+                ),
+              );
+            }
+
+            state.proceedingToPaymentStatus.isLoading()
+                ? context.loaderOverlay.show()
+                : context.loaderOverlay.hide();
+
+            state.snackbarMessage.fold(
+              () {},
+              (message) => context.showSnackbarMessage(message),
             );
-          }
-
-          if (state.proceedingToPaymentStatus.isSuccess() &&
-              state.purchasedTicket.isSome()) {
-            AutoRouter.of(context).replace(
-              TicketPaymentConfirmRoute(
-                ticket: state.purchasedTicket.getOrCrash(),
-              ),
-            );
-          }
-
-          state.proceedingToPaymentStatus.isLoading()
-              ? context.loaderOverlay.show()
-              : context.loaderOverlay.hide();
-
-          state.snackbarMessage.fold(
-            () {},
-            (message) => context.showSnackbarMessage(message),
-          );
-        },
-        builder: (context, state) {
-          if (state.initialStatus.isInitial() ||
-              state.initialStatus.isFailure()) {
-            return Container();
-          }
-          return state.initialStatus.isLoading()
-              ? const Center(child: CircularProgressIndicator())
-              : LoaderOverlay(
-                  overlayWidget: const TicketLogoAnimation(),
-                  overlayColor: context.shadowColor,
-                  useDefaultLoading: false,
-                  child: Scaffold(
+          },
+          builder: (context, state) {
+            if (state.initialStatus.isInitial() ||
+                state.initialStatus.isFailure()) {
+              return Container();
+            }
+            return state.initialStatus.isLoading()
+                ? const Center(child: CircularProgressIndicator())
+                : Scaffold(
                     floatingActionButtonLocation:
                         FloatingActionButtonLocation.centerFloat,
                     floatingActionButton: const TicketCheckoutPaySection(),
@@ -107,9 +107,9 @@ class TicketCheckoutPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                  ),
-                );
-        },
+                  );
+          },
+        ),
       ),
     );
   }
