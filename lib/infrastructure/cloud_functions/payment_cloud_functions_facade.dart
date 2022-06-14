@@ -15,6 +15,7 @@ abstract class PaymentCloudFunctionsFacade {
 
   Future<CreatePaymentSheetResponse> createVipPaymentSheet({
     required String ticketId,
+    required String userId,
     String? promotionCode,
     bool sendInvoice = false,
   });
@@ -65,17 +66,20 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
   @override
   Future<CreatePaymentSheetResponse> createVipPaymentSheet({
     required String ticketId,
+    required String userId,
     String? promotionCode,
     bool sendInvoice = false,
   }) async {
-    final createVipPaymentSheetFn =
-        _functions.httpsCallable(createVipPaymentSheetFnName);
+    const endpoint = 'payments/createVipPaymentSheet';
 
-    final result = await createVipPaymentSheetFn.call({
+    final data = {
       'ticketId': ticketId,
-      'sendInvoice': sendInvoice,
+      'userId': userId,
       'promotionCode': promotionCode,
-    });
+      'sendInvoice': sendInvoice,
+    };
+
+    final result = await _dio.post(endpoint, data: data);
 
     return CreatePaymentSheetResponse.fromJson(result.data);
   }

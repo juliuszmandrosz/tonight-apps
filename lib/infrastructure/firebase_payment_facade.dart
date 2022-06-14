@@ -106,18 +106,9 @@ class FirebasePaymentFacade implements UserPaymentFacade {
 
       return right(unit);
     } on DioError catch (e) {
-      _logger.e(
-        "Dio error proceeding to pay for ticket EXCEPTION: $e",
-      );
-      final failure =
-          userPaymentCloudFunctionsErrors[e.response?.data['message']];
+      _logger.e("Dio error proceeding to pay for ticket EXCEPTION: $e");
 
-      if (failure != null) {
-        return left(failure);
-      }
-
-      await _crashlytics.recordError(e.response, StackTrace.current);
-      return left(const UserPaymentFailure.unexpected());
+      return left(await _handleDioError(e));
     }
   }
 
@@ -129,10 +120,13 @@ class FirebasePaymentFacade implements UserPaymentFacade {
     bool sendInvoice = false,
   }) async {
     try {
+      final userId = _firestore.getCurrentUserDocRef(_firebaseAuth).id;
+
       final result = await _paymentCloudFunctionsFacade.createVipPaymentSheet(
         ticketId: ticketId,
         promotionCode: promotionCode,
         sendInvoice: sendInvoice,
+        userId: userId,
       );
 
       await _presentPaymentSheet(
@@ -143,19 +137,10 @@ class FirebasePaymentFacade implements UserPaymentFacade {
       );
 
       return right(unit);
-    } on FirebaseFunctionsException catch (e) {
-      _logger.e(
-        "Firebase Functions Exception proceeding to pay for vip EXCEPTION: $e",
-      );
+    } on DioError catch (e) {
+      _logger.e("Dio error proceeding to pay for vip EXCEPTION: $e");
 
-      final failure = userPaymentCloudFunctionsErrors[e.details];
-
-      if (failure != null) {
-        return left(failure);
-      }
-
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserPaymentFailure.unexpected());
+      return left(await _handleDioError(e));
     } on StripeException catch (e) {
       _logger.e(
         "Stripe exception proceeding to pay for vip EXCEPTION: $e",
@@ -218,6 +203,18 @@ class FirebasePaymentFacade implements UserPaymentFacade {
       await _crashlytics.recordError(e, StackTrace.current);
       return left(const UserPaymentFailure.unexpected());
     }
+  }
+
+  Future<UserPaymentFailure> _handleDioError(DioError error) async {
+    final failure =
+        userPaymentCloudFunctionsErrors[error.response?.data['message']];
+
+    if (failure != null) {
+      return failure;
+    }
+
+    await _crashlytics.recordError(error.response, StackTrace.current);
+    return const UserPaymentFailure.unexpected();
   }
 
   _presentPaymentSheet({

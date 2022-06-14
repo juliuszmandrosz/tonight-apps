@@ -29,4 +29,7 @@ class UserPaymentFailure with _$UserPaymentFailure {
   const factory UserPaymentFailure.invalidCountryCode() = _InvalidCountryCode;
 
   const factory UserPaymentFailure.invalidVatNumber() = _InvalidVatNumber;
+
+  const factory UserPaymentFailure.vipNoLongerAvailable() =
+      _VipNoLongerAvailable;
 }
