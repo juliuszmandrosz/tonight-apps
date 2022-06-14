@@ -15,6 +15,7 @@ String getPaymentFailureMessage(UserPaymentFailure failure) {
     // TODO - add translations
     invalidCountryCode: (_) => 'Invalid country code',
     invalidVatNumber: (_) => 'Invalid vat number',
+    vipNoLongerAvailable: (_) => 'Vip nie jest już dostępny',
     canceledByUser: (_) => '',
   );
 }

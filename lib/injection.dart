@@ -318,7 +318,8 @@ void _registerFacades() {
 
   getIt.registerLazySingleton<AuthCloudFunctionsFacade>(
     () => AuthCloudFunctionsFacadeImpl(
-      getIt(),
+      firebaseFunctions: getIt(),
+      dio: getIt(),
     ),
   );
 
