@@ -63,7 +63,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _initFavoriteEvents();
     _initFavoriteClubs();
     _initClubs();
-    _initEvents();
     _initAvailableFiltersCubit();
     await _initStripe();
   }
@@ -99,9 +98,21 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   }
 
   _initEvents() {
+    var filters = EventFilters.empty();
+
+    final userLocation = _userLocationCubit.state.userLocation;
+    if (userLocation.isSome() && userLocation.getOrCrash().isNotEmpty) {
+      final maxDistanceFilters = filters.maxDistanceFilter;
+      filters = filters.copyWith(
+        maxDistanceFilter: maxDistanceFilters.copyWith(
+          userLocation: userLocation.getOrCrash(),
+        ),
+      );
+    }
+
     _eventOverviewBloc.add(
       EventOverviewEvent.eventsFetched(
-        EventFilters.empty(),
+        filters,
         SortModel.empty(),
       ),
     );
@@ -153,6 +164,9 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _userLocationCubit.requestUserLocationOnStart();
     _userLocationCubit.stream.listen((event) {
       _emitSuccessIfAllLoaded();
+      if (!event.isLoading) {
+        _initEvents();
+      }
     });
   }
 
