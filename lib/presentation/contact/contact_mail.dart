@@ -9,6 +9,7 @@ class ContactMail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const supportEmail = 'support@tonightapp.pl';
     return ListTile(
       dense: true,
       contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
@@ -20,13 +21,13 @@ class ContactMail extends StatelessWidget {
       subtitle: Padding(
         padding: const EdgeInsets.only(top: 15),
         child: AutoSizeText(
-          'support@raverteam.io',
+          supportEmail,
           maxLines: 1,
           style: context.subtitle1.copyWith(color: context.secondaryColor),
         ),
       ),
       trailing: const FaIcon(FontAwesomeIcons.solidPaperPlane),
-      onTap: () => launchEmail('support@raverteam.io'),
+      onTap: () => launchEmail(supportEmail),
     );
   }
 }
