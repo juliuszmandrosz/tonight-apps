@@ -130,6 +130,16 @@ class S {
     );
   }
 
+  /// `Add a club to your favorites and receive notifications as soon as it adds a new event or reward`
+  String get addClubToFavoritesAndReceiveNotifications {
+    return Intl.message(
+      'Add a club to your favorites and receive notifications as soon as it adds a new event or reward',
+      name: 'addClubToFavoritesAndReceiveNotifications',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add description`
   String get addDescription {
     return Intl.message(
@@ -230,6 +240,16 @@ class S {
     );
   }
 
+  /// `Any`
+  String get anyCurrency {
+    return Intl.message(
+      'Any',
+      name: 'anyCurrency',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Applied promotion code`
   String get appliedPromotionCode {
     return Intl.message(
@@ -303,6 +323,16 @@ class S {
     );
   }
 
+  /// `Available soon`
+  String get availableSoon {
+    return Intl.message(
+      'Available soon',
+      name: 'availableSoon',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Back`
   String get back {
     return Intl.message(
@@ -318,6 +348,16 @@ class S {
     return Intl.message(
       'Back to event list',
       name: 'backToEventList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to home page`
+  String get backToHomePage {
+    return Intl.message(
+      'Back to home page',
+      name: 'backToHomePage',
       desc: '',
       args: [],
     );
@@ -453,6 +493,16 @@ class S {
     );
   }
 
+  /// `Clear filters`
+  String get clearFilters {
+    return Intl.message(
+      'Clear filters',
+      name: 'clearFilters',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Club does not offer rewards`
   String get clubDoesNotOfferRewards {
     return Intl.message(
@@ -493,6 +543,26 @@ class S {
       name: 'clubs',
       desc: '',
       args: [count],
+    );
+  }
+
+  /// `Company`
+  String get company {
+    return Intl.message(
+      'Company',
+      name: 'company',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Company name`
+  String get companyName {
+    return Intl.message(
+      'Company name',
+      name: 'companyName',
+      desc: '',
+      args: [],
     );
   }
 
@@ -756,6 +826,16 @@ class S {
     );
   }
 
+  /// `Explore nearby clubs and find a party for yourself`
+  String get discoverClubs {
+    return Intl.message(
+      'Explore nearby clubs and find a party for yourself',
+      name: 'discoverClubs',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `DJ YouTube channel`
   String get djYoutubeChannel {
     return Intl.message(
@@ -1006,6 +1086,16 @@ class S {
     );
   }
 
+  /// `Please enter invoice data`
+  String get enterInvoiceData {
+    return Intl.message(
+      'Please enter invoice data',
+      name: 'enterInvoiceData',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please enter a password`
   String get enterPassword {
     return Intl.message(
@@ -1071,6 +1161,16 @@ class S {
     return Intl.message(
       'Enter valid email address',
       name: 'enterValidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter VAT number`
+  String get enterVatNumber {
+    return Intl.message(
+      'Enter VAT number',
+      name: 'enterVatNumber',
       desc: '',
       args: [],
     );
@@ -1542,6 +1642,16 @@ class S {
     );
   }
 
+  /// `Add clubs to your favorites and receive notifications about new events`
+  String get favoriteClubsInfo {
+    return Intl.message(
+      'Add clubs to your favorites and receive notifications about new events',
+      name: 'favoriteClubsInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Favorite events`
   String get favoriteEvents {
     return Intl.message(
@@ -1552,11 +1662,31 @@ class S {
     );
   }
 
+  /// `Add events to your favorites and receive notifications when new tickets are available`
+  String get favoriteEventsInfo {
+    return Intl.message(
+      'Add events to your favorites and receive notifications when new tickets are available',
+      name: 'favoriteEventsInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Favorites`
   String get favorites {
     return Intl.message(
       'Favorites',
       name: 'favorites',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Field should not be empty`
+  String get fieldShouldNotBeEmpty {
+    return Intl.message(
+      'Field should not be empty',
+      name: 'fieldShouldNotBeEmpty',
       desc: '',
       args: [],
     );
@@ -1632,6 +1762,16 @@ class S {
     );
   }
 
+  /// `Full name`
+  String get fullName {
+    return Intl.message(
+      'Full name',
+      name: 'fullName',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Generate access code`
   String get generateAccessCode {
     return Intl.message(
@@ -1677,6 +1817,16 @@ class S {
     return Intl.message(
       'Access code is invalid or has expired',
       name: 'invalidAccessCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid country`
+  String get invalidCountryCode {
+    return Intl.message(
+      'Invalid country',
+      name: 'invalidCountryCode',
       desc: '',
       args: [],
     );
@@ -1762,6 +1912,16 @@ class S {
     );
   }
 
+  /// `Invalid VAT number`
+  String get invalidVatNumber {
+    return Intl.message(
+      'Invalid VAT number',
+      name: 'invalidVatNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Invalid verification code`
   String get invalidVerificationCode {
     return Intl.message(
@@ -1792,11 +1952,51 @@ class S {
     );
   }
 
+  /// `Invoice data`
+  String get invoiceData {
+    return Intl.message(
+      'Invoice data',
+      name: 'invoiceData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invoice data updated successfully`
+  String get invoiceDataUpdatedSuccessfully {
+    return Intl.message(
+      'Invoice data updated successfully',
+      name: 'invoiceDataUpdatedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The invoice will be sent to your email address`
+  String get invoiceWillBeSentToEmail {
+    return Intl.message(
+      'The invoice will be sent to your email address',
+      name: 'invoiceWillBeSentToEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Is concert`
   String get isConcert {
     return Intl.message(
       'Is concert',
       name: 'isConcert',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I want a VAT invoice`
+  String get iWantInvoice {
+    return Intl.message(
+      'I want a VAT invoice',
+      name: 'iWantInvoice',
       desc: '',
       args: [],
     );
@@ -1812,11 +2012,11 @@ class S {
     );
   }
 
-  /// `Last tickets left`
-  String get lastTicketsLeft {
+  /// `Last tickets in pool`
+  String get lastTicketsInPool {
     return Intl.message(
-      'Last tickets left',
-      name: 'lastTicketsLeft',
+      'Last tickets in pool',
+      name: 'lastTicketsInPool',
       desc: '',
       args: [],
     );
@@ -1962,6 +2162,16 @@ class S {
     );
   }
 
+  /// `Natural person`
+  String get naturalPerson {
+    return Intl.message(
+      'Natural person',
+      name: 'naturalPerson',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `New password`
   String get newPassword {
     return Intl.message(
@@ -1997,6 +2207,16 @@ class S {
     return Intl.message(
       'You have no access to this club',
       name: 'noAccessToClub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No data`
+  String get noData {
+    return Intl.message(
+      'No data',
+      name: 'noData',
       desc: '',
       args: [],
     );
@@ -2067,26 +2287,6 @@ class S {
     return Intl.message(
       'Number of tickets',
       name: 'numberOfTickets',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Firstly lets set your username`
-  String get onboardingWelcomeSubtitle {
-    return Intl.message(
-      'Firstly lets set your username',
-      name: 'onboardingWelcomeSubtitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Welcome on board!`
-  String get onboardingWelcomeTitle {
-    return Intl.message(
-      'Welcome on board!',
-      name: 'onboardingWelcomeTitle',
       desc: '',
       args: [],
     );
@@ -2240,6 +2440,16 @@ class S {
     return Intl.message(
       'Past tickets',
       name: 'pastTickets',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay conveniently using a card, Google Pay, Apple Pay, BLIK or another method available at Przelewy24`
+  String get payConveniently {
+    return Intl.message(
+      'Pay conveniently using a card, Google Pay, Apple Pay, BLIK or another method available at Przelewy24',
+      name: 'payConveniently',
       desc: '',
       args: [],
     );
@@ -2811,6 +3021,16 @@ class S {
     );
   }
 
+  /// `Select country`
+  String get selectCountry {
+    return Intl.message(
+      'Select country',
+      name: 'selectCountry',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please select dress code`
   String get selectDressCode {
     return Intl.message(
@@ -2884,11 +3104,31 @@ class S {
     );
   }
 
+  /// `Service fee`
+  String get serviceFee {
+    return Intl.message(
+      'Service fee',
+      name: 'serviceFee',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Settings`
   String get settings {
     return Intl.message(
       'Settings',
       name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set your username`
+  String get setYourUsername {
+    return Intl.message(
+      'Set your username',
+      name: 'setYourUsername',
       desc: '',
       args: [],
     );
@@ -2954,6 +3194,16 @@ class S {
     );
   }
 
+  /// `Skip the line`
+  String get skipTheLine {
+    return Intl.message(
+      'Skip the line',
+      name: 'skipTheLine',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Social media`
   String get socialMedia {
     return Intl.message(
@@ -2979,6 +3229,16 @@ class S {
     return Intl.message(
       'Sport',
       name: 'sport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start!`
+  String get start {
+    return Intl.message(
+      'Start!',
+      name: 'start',
       desc: '',
       args: [],
     );
@@ -3044,11 +3304,31 @@ class S {
     );
   }
 
+  /// `Stay updated`
+  String get stayUpdated {
+    return Intl.message(
+      'Stay updated',
+      name: 'stayUpdated',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Submit`
   String get submit {
     return Intl.message(
       'Submit',
       name: 'submit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subtotal`
+  String get subtotal {
+    return Intl.message(
+      'Subtotal',
+      name: 'subtotal',
       desc: '',
       args: [],
     );
@@ -3139,6 +3419,16 @@ class S {
     return Intl.message(
       'Ticket price',
       name: 'ticketPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ticket price has changed`
+  String get ticketPriceHasChanged {
+    return Intl.message(
+      'Ticket price has changed',
+      name: 'ticketPriceHasChanged',
       desc: '',
       args: [],
     );
@@ -3267,11 +3557,31 @@ class S {
     );
   }
 
+  /// `Total`
+  String get total {
+    return Intl.message(
+      'Total',
+      name: 'total',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Total revenue`
   String get totalRevenue {
     return Intl.message(
       'Total revenue',
       name: 'totalRevenue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try again`
+  String get tryAgain {
+    return Intl.message(
+      'Try again',
+      name: 'tryAgain',
       desc: '',
       args: [],
     );
@@ -3322,6 +3632,16 @@ class S {
     return Intl.message(
       'Upcoming events',
       name: 'upcomingEvents',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upgrade your ticket to VIP and skip the line to the club`
+  String get upgradeTicketToVipAndEnterClub {
+    return Intl.message(
+      'Upgrade your ticket to VIP and skip the line to the club',
+      name: 'upgradeTicketToVipAndEnterClub',
       desc: '',
       args: [],
     );
@@ -3397,10 +3717,10 @@ class S {
     );
   }
 
-  /// `Username is too short`
+  /// `Username should contain at least 3 characters`
   String get usernameTooShort {
     return Intl.message(
-      'Username is too short',
+      'Username should contain at least 3 characters',
       name: 'usernameTooShort',
       desc: '',
       args: [],
@@ -3437,6 +3757,16 @@ class S {
     );
   }
 
+  /// `VAT number`
+  String get vatNumber {
+    return Intl.message(
+      'VAT number',
+      name: 'vatNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `A verification link has been sent to the e-mail address provided`
   String get verificationLinkSent {
     return Intl.message(
@@ -3457,6 +3787,16 @@ class S {
     );
   }
 
+  /// `VIP is available again!`
+  String get vipAvailableAgain {
+    return Intl.message(
+      'VIP is available again!',
+      name: 'vipAvailableAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `VIP ticket allows to enter the club without queue`
   String get vipInfo {
     return Intl.message(
@@ -3467,11 +3807,31 @@ class S {
     );
   }
 
+  /// `VIP no longer available`
+  String get vipNoLongerAvailable {
+    return Intl.message(
+      'VIP no longer available',
+      name: 'vipNoLongerAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `VIP price`
   String get vipPrice {
     return Intl.message(
       'VIP price',
       name: 'vipPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `VIP price has changed`
+  String get vipPriceHasChanged {
+    return Intl.message(
+      'VIP price has changed',
+      name: 'vipPriceHasChanged',
       desc: '',
       args: [],
     );
@@ -3537,6 +3897,16 @@ class S {
     );
   }
 
+  /// `Welcome to Tonight!`
+  String get welcomeToTonight {
+    return Intl.message(
+      'Welcome to Tonight!',
+      name: 'welcomeToTonight',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Wrong password`
   String get wrongPassword {
     return Intl.message(
@@ -3552,6 +3922,16 @@ class S {
     return Intl.message(
       'Yes',
       name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your number of entries`
+  String get yourNumberOfEntries {
+    return Intl.message(
+      'Your number of entries',
+      name: 'yourNumberOfEntries',
       desc: '',
       args: [],
     );

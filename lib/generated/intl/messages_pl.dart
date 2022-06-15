@@ -62,6 +62,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "add": MessageLookupByLibrary.simpleMessage("Dodaj"),
         "addAtLeastOneTicketPool": MessageLookupByLibrary.simpleMessage(
             "Należy dodać co najmniej jedną pulę biletów"),
+        "addClubToFavoritesAndReceiveNotifications":
+            MessageLookupByLibrary.simpleMessage(
+                "Dodaj klub do ulubionych i otrzymuj powiadomienia jak tylko doda nowe wydarzenie lub nagrodę"),
         "addDescription": MessageLookupByLibrary.simpleMessage("Dodaj opis"),
         "addDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
             "Dodaj link do kanału DJ-a na YouTube"),
@@ -78,6 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "age": MessageLookupByLibrary.simpleMessage("Wiek"),
         "allowVipTickets":
             MessageLookupByLibrary.simpleMessage("Zezwól na bilety VIP"),
+        "anyCurrency": MessageLookupByLibrary.simpleMessage("Dowolna"),
         "appVersion": MessageLookupByLibrary.simpleMessage("Wersja aplikacji"),
         "appliedPromotionCode":
             MessageLookupByLibrary.simpleMessage("Zastosowany kod promocyjny"),
@@ -88,14 +92,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zatwierdź wybraną datę"),
         "artistName": MessageLookupByLibrary.simpleMessage("Nazwa artysty"),
         "attending": m0,
+        "availableSoon":
+            MessageLookupByLibrary.simpleMessage("Wkrótce dostępne"),
         "back": MessageLookupByLibrary.simpleMessage("Wróć"),
         "backToEventList":
             MessageLookupByLibrary.simpleMessage("Wróć do listy wydarzeń"),
+        "backToHomePage":
+            MessageLookupByLibrary.simpleMessage("Wróć do strony głównej"),
         "backToMainMenu":
             MessageLookupByLibrary.simpleMessage("Wróć do głównego menu"),
         "backToSummary":
             MessageLookupByLibrary.simpleMessage("Wróć do podsumowania"),
-        "buyTicket": MessageLookupByLibrary.simpleMessage("Kup bilet"),
+        "buyTicket": MessageLookupByLibrary.simpleMessage("Kup wejściówkę"),
         "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "cancelEvent":
             MessageLookupByLibrary.simpleMessage("Odwołaj wydarzenie"),
@@ -111,12 +119,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zmień nazwę użytkownika"),
         "checkout": MessageLookupByLibrary.simpleMessage("Kasa"),
         "city": MessageLookupByLibrary.simpleMessage("Miasto"),
+        "clearFilters": MessageLookupByLibrary.simpleMessage("Wyczyść filtry"),
         "clubDoesNotOfferRewards": MessageLookupByLibrary.simpleMessage(
             "Klub nie posiada systemu nagród"),
         "clubName": MessageLookupByLibrary.simpleMessage("Nazwa klubu"),
         "clubReviewsLoadingError": MessageLookupByLibrary.simpleMessage(
             "Wystąpił błąd podczas ładowania opinii klubu"),
         "clubs": m1,
+        "company": MessageLookupByLibrary.simpleMessage("Firma"),
+        "companyName": MessageLookupByLibrary.simpleMessage("Nazwa firmy"),
         "concert": MessageLookupByLibrary.simpleMessage("Koncert"),
         "concertInfo":
             MessageLookupByLibrary.simpleMessage("Informacje o koncercie"),
@@ -159,6 +170,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Opis może zawierać maksymalnie 1000 znaków"),
         "description": MessageLookupByLibrary.simpleMessage("Opis"),
         "details": MessageLookupByLibrary.simpleMessage("Szczegóły"),
+        "discoverClubs": MessageLookupByLibrary.simpleMessage(
+            "Odkrywaj pobliskie kluby i znajdź imprezę dla siebie"),
         "djYoutubeChannel":
             MessageLookupByLibrary.simpleMessage("Kanał DJ-a na YouTube"),
         "dressCode": MessageLookupByLibrary.simpleMessage("Dress code"),
@@ -201,6 +214,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Porszę podać link do Facebooka"),
         "enterFacebookUrl": MessageLookupByLibrary.simpleMessage(
             "Proszę podać link do wydarzenia na Facebooku"),
+        "enterInvoiceData": MessageLookupByLibrary.simpleMessage(
+            "Proszę podać dane do faktury"),
         "enterPassword":
             MessageLookupByLibrary.simpleMessage("Proszę wprowadź hasło"),
         "enterPrice": MessageLookupByLibrary.simpleMessage("Proszę podać cenę"),
@@ -214,6 +229,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wprowadź nazwę użytkownika"),
         "enterValidEmail": MessageLookupByLibrary.simpleMessage(
             "Wprowadź prawidłowy adres e-mail"),
+        "enterVatNumber":
+            MessageLookupByLibrary.simpleMessage("Podaj numer NIP"),
         "enterYoutubeLink": MessageLookupByLibrary.simpleMessage(
             "Proszę podać link do YouTube"),
         "entries": m2,
@@ -299,9 +316,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "facebookEvent":
             MessageLookupByLibrary.simpleMessage("Wydarzenie na Facebooku"),
         "favoriteClubs": MessageLookupByLibrary.simpleMessage("Ulubione kluby"),
+        "favoriteClubsInfo": MessageLookupByLibrary.simpleMessage(
+            "Dodaj kluby do ulubionych i otrzymuj powiadomienia o nowych wydarzeniach"),
         "favoriteEvents":
             MessageLookupByLibrary.simpleMessage("Ulubione wydarzenia"),
+        "favoriteEventsInfo": MessageLookupByLibrary.simpleMessage(
+            "Dodaj wydarzenia do ulubionych i otrzymuj powiadomienia kiedy pojawią się nowe bilety"),
         "favorites": MessageLookupByLibrary.simpleMessage("Ulubione"),
+        "fieldShouldNotBeEmpty":
+            MessageLookupByLibrary.simpleMessage("Pole nie powinno być puste"),
         "filters": MessageLookupByLibrary.simpleMessage("Filtry"),
         "findByCity": MessageLookupByLibrary.simpleMessage("Mieście"),
         "findByMaxDistance":
@@ -312,13 +335,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Zapomniałeś hasła?"),
         "from": MessageLookupByLibrary.simpleMessage("Od"),
+        "fullName": MessageLookupByLibrary.simpleMessage("Imię i nazwisko"),
         "generateAccessCode":
             MessageLookupByLibrary.simpleMessage("Wygeneruj kod dostępu"),
         "home": MessageLookupByLibrary.simpleMessage("Główna"),
+        "iWantInvoice":
+            MessageLookupByLibrary.simpleMessage("Chcę fakturę VAT"),
         "income": MessageLookupByLibrary.simpleMessage("Dochód"),
         "instagram": MessageLookupByLibrary.simpleMessage("Instagram"),
         "invalidAccessCode": MessageLookupByLibrary.simpleMessage(
             "Kod dostępu jest nieprawidłowy lub wygasł"),
+        "invalidCountryCode":
+            MessageLookupByLibrary.simpleMessage("Nieprawidłowy kraj"),
         "invalidCredential": MessageLookupByLibrary.simpleMessage(
             "Otrzymane poświadczenia są nieprawidłowe lub wygasły"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(
@@ -335,16 +363,23 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nieprawidłowy bilet"),
         "invalidUrl": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy format adresu URL"),
+        "invalidVatNumber":
+            MessageLookupByLibrary.simpleMessage("Nieprawidłowy numer NIP"),
         "invalidVerificationCode": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy kod weryfikacyjny"),
         "invalidVerificationId": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy identyfikator weryfikacji"),
         "inviteSelector":
             MessageLookupByLibrary.simpleMessage("Zaproś selekcjonera"),
+        "invoiceData": MessageLookupByLibrary.simpleMessage("Dane do faktury"),
+        "invoiceDataUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Pomyślnie zaaktualizowano dane do faktury"),
+        "invoiceWillBeSentToEmail": MessageLookupByLibrary.simpleMessage(
+            "Faktura zostanie wysłana na Twój adres email"),
         "isConcert": MessageLookupByLibrary.simpleMessage("Koncert"),
         "language": MessageLookupByLibrary.simpleMessage("Język"),
-        "lastTicketsLeft":
-            MessageLookupByLibrary.simpleMessage("Pozostały ostatnie bilety"),
+        "lastTicketsInPool":
+            MessageLookupByLibrary.simpleMessage("Ostatnie bilety w puli"),
         "live": MessageLookupByLibrary.simpleMessage("W trakcie"),
         "login": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "lostNetworkConnectionDescription":
@@ -368,11 +403,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nazwa może zawierać maksymalnie 50 znaków"),
         "nameTooShort": MessageLookupByLibrary.simpleMessage(
             "Nazwa powinna zawierać co najmniej 8 znaków"),
+        "naturalPerson": MessageLookupByLibrary.simpleMessage("Osoba fizyczna"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Nowe hasło"),
         "next": MessageLookupByLibrary.simpleMessage("Dalej"),
         "no": MessageLookupByLibrary.simpleMessage("Nie"),
         "noAccessToClub": MessageLookupByLibrary.simpleMessage(
             "Nie masz dostępu do tego klubu"),
+        "noData": MessageLookupByLibrary.simpleMessage("Brak danych"),
         "noDressCode":
             MessageLookupByLibrary.simpleMessage("Brak dress code\'u"),
         "noEventsInClub":
@@ -385,10 +422,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "notifications": MessageLookupByLibrary.simpleMessage("Powiadomienia"),
         "numberOfTickets":
             MessageLookupByLibrary.simpleMessage("Liczba biletów"),
-        "onboardingWelcomeSubtitle": MessageLookupByLibrary.simpleMessage(
-            "Na początek ustawmy Twoją nazwę użytkownika"),
-        "onboardingWelcomeTitle":
-            MessageLookupByLibrary.simpleMessage("Witaj na pokładzie!"),
         "oneTimeAccessCode": MessageLookupByLibrary.simpleMessage(
             "Jednorazowy kod dostępu dla selekcjonera"),
         "operationNotAllowed":
@@ -415,6 +448,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hasła się nie zgadzają"),
         "past": MessageLookupByLibrary.simpleMessage("Przeszłe"),
         "pastTickets": MessageLookupByLibrary.simpleMessage("Przeszłe bilety"),
+        "payConveniently": MessageLookupByLibrary.simpleMessage(
+            "Zapłać w wygodny sposób, korzystając z karty, Google Pay, Apple Pay, BLIK-a lub innej metody dostępnej w Przelewy24"),
         "paymentConfirmed":
             MessageLookupByLibrary.simpleMessage("Płatność potwierdzona"),
         "paymentError": MessageLookupByLibrary.simpleMessage(
@@ -502,6 +537,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "scanTicket": MessageLookupByLibrary.simpleMessage("Zeskanuj bilet"),
         "scanner": MessageLookupByLibrary.simpleMessage("Skaner"),
         "select": MessageLookupByLibrary.simpleMessage("Wybierz"),
+        "selectCountry": MessageLookupByLibrary.simpleMessage("Wybierz kraj"),
         "selectDressCode":
             MessageLookupByLibrary.simpleMessage("Proszę wybrać dress code"),
         "selectMinAge": MessageLookupByLibrary.simpleMessage(
@@ -515,6 +551,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wyślij link do resetowania hasła"),
         "serverError": MessageLookupByLibrary.simpleMessage(
             "Wystąpił nieoczekiwany błąd, zostaliśmy o nim powiadomieni i postaramy się go jak najszybciej naprawić. Spróbuj ponownie lub zrestartuj aplikację."),
+        "serviceFee": MessageLookupByLibrary.simpleMessage("Opłata serwisowa"),
+        "setYourUsername": MessageLookupByLibrary.simpleMessage(
+            "Ustaw swoją nazwę użytkownika"),
         "settings": MessageLookupByLibrary.simpleMessage("Ustawienia"),
         "showTicket": MessageLookupByLibrary.simpleMessage("Pokaż bilet"),
         "showTicketQrCode":
@@ -524,10 +563,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Zaloguj się za pomocą Google"),
         "signOut": MessageLookupByLibrary.simpleMessage("Wyloguj się"),
         "signUp": MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
+        "skipTheLine": MessageLookupByLibrary.simpleMessage("Omiń kolejkę"),
         "socialMedia":
             MessageLookupByLibrary.simpleMessage("Media społecznościowe"),
         "soldOut": MessageLookupByLibrary.simpleMessage("Wyprzedane"),
         "sport": MessageLookupByLibrary.simpleMessage("Sport"),
+        "start": MessageLookupByLibrary.simpleMessage("Rozpocznij!"),
         "startDate": MessageLookupByLibrary.simpleMessage("Data rozpoczęcia"),
         "startDateBeforeNow": MessageLookupByLibrary.simpleMessage(
             "Data rozpoczęcia nie może być przed aktualną datą"),
@@ -538,7 +579,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "startSearching":
             MessageLookupByLibrary.simpleMessage("Rozpocznij wyszukiwanie..."),
         "statistics": MessageLookupByLibrary.simpleMessage("Statystyki"),
+        "stayUpdated": MessageLookupByLibrary.simpleMessage("Bądź na bieżąco"),
         "submit": MessageLookupByLibrary.simpleMessage("Zatwierdź"),
+        "subtotal": MessageLookupByLibrary.simpleMessage("Cena podstawowa"),
         "summary": MessageLookupByLibrary.simpleMessage("Podsumowanie"),
         "termsOfService": MessageLookupByLibrary.simpleMessage("Warunki usług"),
         "theme": MessageLookupByLibrary.simpleMessage("Motyw"),
@@ -552,6 +595,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Pula biletów została wyprzedana!"),
         "ticketPools": MessageLookupByLibrary.simpleMessage("Pule biletów"),
         "ticketPrice": MessageLookupByLibrary.simpleMessage("Cena biletu"),
+        "ticketPriceHasChanged":
+            MessageLookupByLibrary.simpleMessage("Cena biletu zmieniła się"),
         "ticketPriceTooHigh":
             MessageLookupByLibrary.simpleMessage("Maksymalna cena biletu to"),
         "ticketPriceTooLow":
@@ -572,8 +617,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tonight Scanner"),
         "tooMuchRequiredEntries": MessageLookupByLibrary.simpleMessage(
             "Maksymalna liczba wymaganych wejść wynosi 1000"),
+        "total": MessageLookupByLibrary.simpleMessage("Suma"),
         "totalRevenue":
             MessageLookupByLibrary.simpleMessage("Całkowity przychód"),
+        "tryAgain": MessageLookupByLibrary.simpleMessage("Spróbuj ponownie"),
         "typeEventClubOrArtistName": MessageLookupByLibrary.simpleMessage(
             "Wpisz nazwę wydarzenia, klubu lub artysty"),
         "unexpectedError":
@@ -583,6 +630,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nadchodzące i na żywo"),
         "upcomingEvents":
             MessageLookupByLibrary.simpleMessage("Nadchodzące wydarzenia"),
+        "upgradeTicketToVipAndEnterClub": MessageLookupByLibrary.simpleMessage(
+            "Ulepsz swój bilet do VIP-a i wejdź do klubu bez kolejki"),
         "upgradeToVip": MessageLookupByLibrary.simpleMessage("Ulepsz do VIP-a"),
         "urlLinks": MessageLookupByLibrary.simpleMessage("Linki URL"),
         "userDisabled":
@@ -598,16 +647,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "usernameTooLong": MessageLookupByLibrary.simpleMessage(
             "Nazwa użytkownika jest za długa, użyj maksymalnie 20 znaków"),
         "usernameTooShort": MessageLookupByLibrary.simpleMessage(
-            "Nazwa użytkownika jest za krótka"),
+            "Nazwa użytkownika powinna zawierać co najmniej 3 znaki"),
         "usernameUpdatedMessage": MessageLookupByLibrary.simpleMessage(
             "Nazwa użytkownika została zaktualizowana!"),
         "validTicket": MessageLookupByLibrary.simpleMessage("Ważny bilet"),
+        "vatNumber": MessageLookupByLibrary.simpleMessage("Numer NIP"),
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(
             "Wysłano link weryfikacyjny na podany adres e-mail"),
         "vip": MessageLookupByLibrary.simpleMessage("VIP"),
+        "vipAvailableAgain":
+            MessageLookupByLibrary.simpleMessage("VIP znowu jest dostępny!"),
         "vipInfo": MessageLookupByLibrary.simpleMessage(
             "Bilet VIP umożliwia wejście do klubu bez kolejki"),
+        "vipNoLongerAvailable":
+            MessageLookupByLibrary.simpleMessage("VIP nie jest już dostępny"),
         "vipPrice": MessageLookupByLibrary.simpleMessage("Cena VIP-a"),
+        "vipPriceHasChanged":
+            MessageLookupByLibrary.simpleMessage("Cena VIP-a zmieniła się"),
         "vipPriceTooHigh":
             MessageLookupByLibrary.simpleMessage("Maksymalna cena VIP-a to"),
         "vipPriceTooLow":
@@ -618,9 +674,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "vipsSold": MessageLookupByLibrary.simpleMessage("Sprzedane VIP-y"),
         "weakPassword":
             MessageLookupByLibrary.simpleMessage("Hasło jest za słabe"),
+        "welcomeToTonight":
+            MessageLookupByLibrary.simpleMessage("Witamy w Tonight!"),
         "wrongPassword":
             MessageLookupByLibrary.simpleMessage("Nieprawidłowe hasło"),
         "yes": MessageLookupByLibrary.simpleMessage("Tak"),
+        "yourNumberOfEntries":
+            MessageLookupByLibrary.simpleMessage("Twoja liczba wejść"),
         "yourRate": MessageLookupByLibrary.simpleMessage("Twoja ocena")
       };
 }
