@@ -124,6 +124,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "clubReviewsLoadingError": MessageLookupByLibrary.simpleMessage(
             "Error while loading club reviews"),
         "clubs": m1,
+        "collectBenefitsInClubs": MessageLookupByLibrary.simpleMessage(
+            "Collect benefits at clubs by adding up attendance after scanning your ticket"),
         "company": MessageLookupByLibrary.simpleMessage("Company"),
         "companyName": MessageLookupByLibrary.simpleMessage("Company name"),
         "concert": MessageLookupByLibrary.simpleMessage("Concert"),
@@ -486,6 +488,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "rateButtonTitle": MessageLookupByLibrary.simpleMessage("Rate"),
         "rateEvent": MessageLookupByLibrary.simpleMessage("Rate the event"),
         "rateUs": MessageLookupByLibrary.simpleMessage("Rate us"),
+        "receiveRewards":
+            MessageLookupByLibrary.simpleMessage("Receive rewards"),
         "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "report": MessageLookupByLibrary.simpleMessage("Report"),

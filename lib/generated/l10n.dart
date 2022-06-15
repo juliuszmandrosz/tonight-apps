@@ -546,6 +546,16 @@ class S {
     );
   }
 
+  /// `Collect benefits at clubs by adding up attendance after scanning your ticket`
+  String get collectBenefitsInClubs {
+    return Intl.message(
+      'Collect benefits at clubs by adding up attendance after scanning your ticket',
+      name: 'collectBenefitsInClubs',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Company`
   String get company {
     return Intl.message(
@@ -2733,6 +2743,16 @@ class S {
     return Intl.message(
       'Rate us',
       name: 'rateUs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Receive rewards`
+  String get receiveRewards {
+    return Intl.message(
+      'Receive rewards',
+      name: 'receiveRewards',
       desc: '',
       args: [],
     );

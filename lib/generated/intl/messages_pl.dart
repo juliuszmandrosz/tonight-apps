@@ -126,6 +126,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "clubReviewsLoadingError": MessageLookupByLibrary.simpleMessage(
             "Wystąpił błąd podczas ładowania opinii klubu"),
         "clubs": m1,
+        "collectBenefitsInClubs": MessageLookupByLibrary.simpleMessage(
+            "Kolekcjonuj benefity w klubach, nabijając frekwencję po zeskanowaniu biletu"),
         "company": MessageLookupByLibrary.simpleMessage("Firma"),
         "companyName": MessageLookupByLibrary.simpleMessage("Nazwa firmy"),
         "concert": MessageLookupByLibrary.simpleMessage("Koncert"),
@@ -496,6 +498,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wystaw opinię"),
         "rateEvent": MessageLookupByLibrary.simpleMessage("Oceń wydarzenie"),
         "rateUs": MessageLookupByLibrary.simpleMessage("Oceń nas"),
+        "receiveRewards":
+            MessageLookupByLibrary.simpleMessage("Otrzymuj nagrody"),
         "refresh": MessageLookupByLibrary.simpleMessage("Odśwież"),
         "register": MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "report": MessageLookupByLibrary.simpleMessage("Zgłoś"),
