@@ -492,7 +492,7 @@ class FirebaseAuthFacade
       actionCodeSettings: ActionCodeSettings(
         url: 'https://tonightapp.page.link',
         handleCodeInApp: true,
-        iOSBundleId: 'com.tonight',
+        iOSBundleId: 'com.raverteam.tonight',
         androidPackageName: 'com.raverteam.tonight',
         dynamicLinkDomain: 'tonightapp.page.link',
       ),
