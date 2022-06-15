@@ -38,7 +38,7 @@ class ClubEvents extends StatelessWidget {
                 case CubitStatus.loading:
                   return ListView.separated(
                     itemCount: 4,
-                    separatorBuilder: (_, __) => const SizedBox(height: 10),
+                    separatorBuilder: (_, __) => const SizedBox(height: 20),
                     itemBuilder: (context, index) => const EventShimmer(),
                   );
 
