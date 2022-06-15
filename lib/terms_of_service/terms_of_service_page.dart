@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class TermsOfServicePage extends StatelessWidget {
@@ -9,6 +10,12 @@ class TermsOfServicePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: RaverAppBar(title: S().termsOfService),
+      body: Center(
+        child: Text(
+          S().availableSoon,
+          style: context.subtitle1,
+        ),
+      ),
     );
   }
 }
