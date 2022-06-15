@@ -11,7 +11,7 @@ class RateUsTile extends StatelessWidget {
     return ProfileMenuListTile(
       title: S().rateUs,
       onTap: () => LaunchReview.launch(
-        // TODO - add ios app id
+        iOSAppId: '1629723394',
         androidAppId: 'com.raverteam.tonight',
       ),
     );
