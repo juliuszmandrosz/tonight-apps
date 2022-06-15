@@ -66,7 +66,12 @@ class _TicketsPageState extends State<TicketsPage> {
                 case CubitStatus.success:
                   return state.upcomingLiveTickets.isEmpty &&
                           state.pastTickets.isEmpty
-                      ? Center(child: Text(S().tickets(0)))
+                      ? Center(
+                          child: Text(
+                            S().tickets(0),
+                            style: context.subtitle1,
+                          ),
+                        )
                       : RefreshIndicator(
                           onRefresh: () async =>
                               context.read<TicketListCubit>().fetchTickets(),

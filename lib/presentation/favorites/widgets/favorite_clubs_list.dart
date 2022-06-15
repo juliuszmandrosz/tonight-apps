@@ -6,7 +6,6 @@ import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:raver/presentation/clubs/widgets/club_card.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
 
 class FavoriteClubsList extends StatelessWidget {
   static const heroPhrase = "favoritesPageHero";
@@ -39,9 +38,13 @@ class FavoriteClubsList extends StatelessWidget {
                 ? Align(
                     alignment: Alignment.centerLeft,
                     child: AutoSizeText(
-                      S().emptyFavoriteClubsMessage,
-                      style: context.bodyText2,
-                      maxLines: 1,
+                      // TODO - add translation
+                      // S().emptyFavoriteClubsMessage,
+                      'Dodaj kluby do ulubionych i otrzymuj powiadomienia o nowych wydarzeniach',
+                      style: context.bodyText2.copyWith(
+                        color: context.secondaryColor,
+                      ),
+                      maxLines: 2,
                     ),
                   )
                 : SizedBox(
