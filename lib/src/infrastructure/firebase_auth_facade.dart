@@ -490,11 +490,11 @@ class FirebaseAuthFacade
     await _firebaseAuth.sendSignInLinkToEmail(
       email: email,
       actionCodeSettings: ActionCodeSettings(
-        url: 'https://raverteam.page.link',
+        url: 'https://tonightapp.page.link',
         handleCodeInApp: true,
         iOSBundleId: 'com.tonight',
         androidPackageName: 'com.raverteam.tonight',
-        dynamicLinkDomain: 'raverteam.page.link',
+        dynamicLinkDomain: 'tonightapp.page.link',
       ),
     );
   }
