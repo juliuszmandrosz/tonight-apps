@@ -17,6 +17,10 @@ import 'package:raver/presentation/notifications/notifications_page.dart';
 import 'package:raver/presentation/onboarding/onboarding_page.dart';
 import 'package:raver/presentation/onboarding/onboarding_username_page.dart';
 import 'package:raver/presentation/profile/profile_page.dart';
+import 'package:raver/presentation/routes/page_transitions/fade_in_transition.dart';
+import 'package:raver/presentation/routes/page_transitions/slide_left_transition.dart';
+import 'package:raver/presentation/routes/page_transitions/slide_right_transition.dart';
+import 'package:raver/presentation/routes/page_transitions/zoom_in_transition.dart';
 import 'package:raver/presentation/sign_in/sign_in_page.dart';
 import 'package:raver/presentation/splash/splash_page.dart';
 import 'package:raver/presentation/ticket_checkout/ticket_checkout_page.dart';
@@ -34,40 +38,144 @@ import 'package:raver_tickets/raver_tickets.dart';
 
 part 'app_router.gr.dart';
 
+const animationDuration = 300;
+
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute(page: SplashPage, initial: true),
-    AutoRoute(page: SignInPage),
-    AutoRoute(
+    CustomRoute(
+      page: SignInPage,
+      transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
       page: WelcomeLoaderPage,
       children: [
-        AutoRoute(page: EventsPage),
-        AutoRoute(page: ClubsPage),
-        AutoRoute(page: TicketsPage),
-        AutoRoute(page: FavoritesPage),
-        AutoRoute(page: ProfilePage),
+        CustomRoute(
+          page: EventsPage,
+          transitionsBuilder: slideLeftTransition,
+          durationInMilliseconds: animationDuration,
+        ),
+        CustomRoute(
+          page: ClubsPage,
+          transitionsBuilder: slideLeftTransition,
+          durationInMilliseconds: animationDuration,
+        ),
+        CustomRoute(
+          page: TicketsPage,
+          transitionsBuilder: slideLeftTransition,
+          durationInMilliseconds: animationDuration,
+        ),
+        CustomRoute(
+          page: FavoritesPage,
+          transitionsBuilder: slideLeftTransition,
+          durationInMilliseconds: animationDuration,
+        ),
+        CustomRoute(
+          page: ProfilePage,
+          transitionsBuilder: slideLeftTransition,
+          durationInMilliseconds: animationDuration,
+        ),
       ],
+      transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
     ),
-    AutoRoute(page: NetworkLostPage),
-    AutoRoute(page: EventFiltersPage),
-    AutoRoute(page: EventDetailsPage),
-    AutoRoute(page: ClubDetailsPage),
-    AutoRoute(page: TicketQrPage),
-    AutoRoute(page: EventDatePickerPage),
-    AutoRoute(page: TicketCheckoutPage),
-    AutoRoute(page: VipCheckoutPage),
-    AutoRoute(page: TicketPaymentConfirmPage),
-    AutoRoute(page: AppSettingsPage),
-    AutoRoute(page: UpdateUsernamePage),
-    AutoRoute(page: OnboardingPage),
-    AutoRoute(page: ReviewPage),
-    AutoRoute(page: ContactPage),
-    AutoRoute(page: NotificationsPage),
-    AutoRoute(page: TermsOfServicePage),
-    AutoRoute<InvoiceData>(page: InvoiceDataPage),
-    AutoRoute(page: FailurePage),
-    AutoRoute(page: OnboardingUsernamePage),
+    CustomRoute(
+      page: NetworkLostPage,
+      transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: EventFiltersPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: EventDetailsPage,
+      transitionsBuilder: fadeInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: ClubDetailsPage,
+      transitionsBuilder: fadeInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: TicketQrPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: EventDatePickerPage,
+      transitionsBuilder: slideRightTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: TicketCheckoutPage,
+      transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: VipCheckoutPage,
+      transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: TicketPaymentConfirmPage,
+      transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: OnboardingUsernamePage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: OnboardingPage,
+      transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute<InvoiceData>(
+      page: InvoiceDataPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: FailurePage,
+      transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: UpdateUsernamePage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: ReviewPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: AppSettingsPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: ContactPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: NotificationsPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: TermsOfServicePage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
   ],
 )
 class AppRouter extends _$AppRouter {}

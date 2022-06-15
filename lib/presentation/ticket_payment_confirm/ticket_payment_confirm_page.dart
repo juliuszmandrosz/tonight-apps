@@ -49,12 +49,12 @@ class TicketPaymentConfirmPage extends StatelessWidget {
                 width: 300,
                 child: ElevatedButton(
                   onPressed: () {
-                    AutoRouter.of(context).popUntilRouteWithName(
-                      EventDetailsRoute.name,
-                    );
-
-                    context.pushRoute(
-                      TicketQrRoute(ticket: ticket),
+                    context.router.replaceAll(
+                      [
+                        const WelcomeLoaderRoute(),
+                        EventDetailsRoute(eventId: ticket.eventId),
+                        TicketQrRoute(ticket: ticket),
+                      ],
                     );
                   },
                   child: Text(S().showTicketQrCode),
@@ -64,8 +64,11 @@ class TicketPaymentConfirmPage extends StatelessWidget {
               SizedBox(
                 width: 300,
                 child: ElevatedButton(
-                  onPressed: () => AutoRouter.of(context).popUntilRoot(),
-                  child: Text(S().backToEventList),
+                  onPressed: () => context.router.replaceAll(
+                    [const WelcomeLoaderRoute()],
+                  ),
+                  // TODO - add translation
+                  child: Text('Wróć do strony głównej'),
                 ),
               ),
             ],

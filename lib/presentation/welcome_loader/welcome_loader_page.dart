@@ -128,7 +128,12 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
                   );
                 },
                 builder: (context, state) {
-                  if (state.status.isFailure()) {
+                  if (state.status.isFailure() || state.username.isNone()) {
+                    return Container();
+                  }
+
+                  if (state.username.isSome() &&
+                      state.username.getOrCrash().isEmpty) {
                     return Container();
                   }
 
