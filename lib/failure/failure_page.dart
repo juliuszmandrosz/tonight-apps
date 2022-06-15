@@ -53,8 +53,7 @@ class _FailurePageState extends State<FailurePage> {
                       widget.retryCallback();
                       context.popRoute();
                     },
-                    // TODO - add translation
-                    child: const Text('Spróbuj ponownie'),
+                    child: Text(S().tryAgain),
                   ),
                 )
               ],

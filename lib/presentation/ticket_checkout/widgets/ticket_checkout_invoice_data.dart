@@ -8,6 +8,7 @@ import 'package:raver/presentation/core/raver_list_tile_with_title_and_subtitle.
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_payments/domain/entities/invoice_data_entity.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class TicketCheckoutInvoiceData extends StatelessWidget {
   const TicketCheckoutInvoiceData({Key? key}) : super(key: key);
@@ -39,10 +40,9 @@ class TicketCheckoutInvoiceData extends StatelessWidget {
                             child: Column(
                               children: [
                                 RaverListTileWithTitleAndSubtitle(
-                                  // TODO - add translations
                                   title: hasVatNumber
-                                      ? 'Nazwa firmy'
-                                      : 'Imię i nazwisko',
+                                      ? S().companyName
+                                      : S().fullName,
                                   subtitle: name!,
                                 ),
                                 if (hasVatNumber)
@@ -50,8 +50,7 @@ class TicketCheckoutInvoiceData extends StatelessWidget {
                                     children: [
                                       const SizedBox(height: 10),
                                       RaverListTileWithTitleAndSubtitle(
-                                        // TODO - add translations
-                                        title: 'Numer NIP',
+                                        title: S().vatNumber,
                                         subtitle: vatNumber,
                                       ),
                                     ],
@@ -59,9 +58,8 @@ class TicketCheckoutInvoiceData extends StatelessWidget {
                               ],
                             ),
                           )
-                        // TODO - add translation
                         : AutoSizeText(
-                            'Brak danych',
+                            S().noData,
                             maxLines: 1,
                             style: context.subtitle1,
                           ),

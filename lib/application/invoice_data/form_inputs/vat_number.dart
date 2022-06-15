@@ -1,11 +1,11 @@
 import 'package:formz/formz.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 enum VatNumberError { empty, invalid }
 
 final vatNumberErrorMessages = {
-  // TODO - add translation
-  VatNumberError.empty: 'Enter vat number',
-  VatNumberError.invalid: 'Invalid',
+  VatNumberError.empty: S().enterVatNumber,
+  VatNumberError.invalid: S().invalidVatNumber,
 };
 
 class VatNumber extends FormzInput<String, VatNumberError> {

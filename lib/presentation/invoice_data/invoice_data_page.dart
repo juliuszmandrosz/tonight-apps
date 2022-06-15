@@ -13,6 +13,7 @@ import 'package:raver/presentation/invoice_data/widgets/update_invoice_data_butt
 import 'package:raver/presentation/invoice_data/widgets/vat_number_input.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_payments/domain/domain.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class InvoiceDataPage extends StatefulWidget {
   final InvoiceData invoiceData;
@@ -31,19 +32,18 @@ class _InvoiceDataPageState extends State<InvoiceDataPage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-      getIt<InvoiceDataCubit>()
-        ..initInvoiceData(widget.invoiceData),
+          getIt<InvoiceDataCubit>()..initInvoiceData(widget.invoiceData),
       child: BlocConsumer<InvoiceDataCubit, InvoiceDataState>(
         listenWhen: (previous, current) =>
-        previous.errorMessage != current.errorMessage ||
+            previous.errorMessage != current.errorMessage ||
             previous.status != current.status,
         buildWhen: (previous, current) =>
-        previous.invoiceDataType != current.invoiceDataType ||
+            previous.invoiceDataType != current.invoiceDataType ||
             previous.status != current.status,
         listener: (context, state) async {
           state.errorMessage.fold(
-                () {},
-                (error) => context.showSnackbarMessage(error),
+            () {},
+            (error) => context.showSnackbarMessage(error),
           );
 
           setState(() {
@@ -55,10 +55,7 @@ class _InvoiceDataPageState extends State<InvoiceDataPage> {
               state.updatedInvoiceData.getOrCrash(),
             );
 
-            // TODO - add translation
-            context.showSnackbarMessage(
-              'Pomyślnie zaaktualizowano dane do faktury',
-            );
+            context.showSnackbarMessage(S().invoiceDataUpdatedSuccessfully);
           }
         },
         builder: (context, state) {
@@ -67,8 +64,7 @@ class _InvoiceDataPageState extends State<InvoiceDataPage> {
               return !_isLoading;
             },
             child: Scaffold(
-              // TODO - add translation
-              appBar: const RaverAppBar(title: 'Dane do faktury'),
+              appBar: RaverAppBar(title: S().invoiceData),
               floatingActionButton: const UpdateInvoiceDataButton(),
               body: Padding(
                 padding: const EdgeInsets.all(15),

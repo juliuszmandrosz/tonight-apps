@@ -70,7 +70,7 @@ class TicketPoolListTile extends StatelessWidget {
             ),
             const SizedBox(width: 10),
             Text(
-              S().lastTicketsLeft,
+              S().lastTicketsInPool,
               style: context.bodyText1,
             ),
           ],

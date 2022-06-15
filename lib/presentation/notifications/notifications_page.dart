@@ -12,8 +12,7 @@ class NotificationsPage extends StatelessWidget {
       appBar: RaverAppBar(title: S().notifications),
       body: Center(
         child: Text(
-          // TODO - add translation
-          'Coming soon!',
+          S().availableSoon,
           style: context.subtitle1,
         ),
       ),

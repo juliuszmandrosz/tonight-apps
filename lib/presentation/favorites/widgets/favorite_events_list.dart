@@ -6,6 +6,7 @@ import 'package:raver/application/events/event_favorite/event_favorite_cubit.dar
 import 'package:raver/presentation/events/widgets/event_card.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class FavoriteEventsList extends StatelessWidget {
   const FavoriteEventsList({Key? key}) : super(key: key);
@@ -37,9 +38,7 @@ class FavoriteEventsList extends StatelessWidget {
                 ? Align(
                     alignment: Alignment.centerLeft,
                     child: AutoSizeText(
-                      // TODO - add translation
-                      // S().emptyFavoriteEventsMessage,
-                      'Dodaj wydarzenia do ulubionych i otrzymuj powiadomienia o nowych dostępnych biletach',
+                      S().favoriteEventsInfo,
                       style: context.bodyText2.copyWith(
                         color: context.secondaryColor,
                       ),

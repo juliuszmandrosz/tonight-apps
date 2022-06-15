@@ -12,10 +12,9 @@ String getPaymentFailureMessage(UserPaymentFailure failure) {
     returnTimeExpired: (_) => S().returnTimeIsOver,
     eventCanceled: (_) => S().eventCancelled,
     eventBeingPostponed: (_) => S().eventBeingPostponed,
-    // TODO - add translations
-    invalidCountryCode: (_) => 'Invalid country code',
-    invalidVatNumber: (_) => 'Invalid vat number',
-    vipNoLongerAvailable: (_) => 'Vip nie jest już dostępny',
+    invalidCountryCode: (_) => S().invalidCountryCode,
+    invalidVatNumber: (_) => S().invalidVatNumber,
+    vipNoLongerAvailable: (_) => S().vipNoLongerAvailable,
     canceledByUser: (_) => '',
   );
 }

@@ -125,13 +125,12 @@ class TicketQrCubit extends Cubit<TicketQrState> {
           final isVipEnabled = currentTicketPool.isVipEnabled;
 
           if (state.isInitialized) {
-            // TODO - add translation
             if (state.isVipEnabled && !currentTicketPool.isVipEnabled) {
-              _showSnackbarMessage('VIP nie jest już dostępny!');
+              _showSnackbarMessage(S().vipNoLongerAvailable);
             }
 
             if (!state.isVipEnabled && currentTicketPool.isVipEnabled) {
-              _showSnackbarMessage('VIP znowu jest dostępny!');
+              _showSnackbarMessage(S().vipAvailableAgain);
             }
           }
 

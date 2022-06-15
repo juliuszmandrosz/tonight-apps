@@ -36,9 +36,8 @@ class EventFiltersCurrency extends StatelessWidget {
               items: currencies.map((value) {
                 return DropdownMenuItem(
                   value: value,
-                  // TODO - add translation
                   child: Text(
-                    value.isEmpty ? 'Dowolna' : value.toUpperCase(),
+                    value.isEmpty ? S().anyCurrency : value.toUpperCase(),
                   ),
                 );
               }).toList(),

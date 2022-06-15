@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/invoice_data/invoice_data_cubit.dart';
 import 'package:raver/application/invoice_data/invoice_data_type.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class InvoiceDataTypeInput extends StatelessWidget {
   const InvoiceDataTypeInput({Key? key}) : super(key: key);
@@ -16,11 +17,10 @@ class InvoiceDataTypeInput extends StatelessWidget {
       builder: (context, state) {
         return Column(
           children: [
-            // TODO - add translations
             RadioListTile<InvoiceDataType>(
               contentPadding: EdgeInsets.zero,
               activeColor: context.primaryColor,
-              title: const Text('Osoba fizyczna'),
+              title: Text(S().naturalPerson),
               value: InvoiceDataType.individual,
               groupValue: state.invoiceDataType,
               onChanged: (value) => onChanged(value!, context),
@@ -28,7 +28,7 @@ class InvoiceDataTypeInput extends StatelessWidget {
             RadioListTile<InvoiceDataType>(
               contentPadding: EdgeInsets.zero,
               activeColor: context.primaryColor,
-              title: const Text('Firma'),
+              title: Text(S().company),
               value: InvoiceDataType.company,
               groupValue: state.invoiceDataType,
               onChanged: (value) => onChanged(value!, context),

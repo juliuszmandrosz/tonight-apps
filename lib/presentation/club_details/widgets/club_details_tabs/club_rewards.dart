@@ -57,8 +57,7 @@ class ClubRewards extends StatelessWidget {
                     padding: const EdgeInsets.all(15),
                     child: Center(
                       child: AutoSizeText(
-                        // TODO - add translation
-                        'Twoja liczba wejść: '
+                        '${S().yourNumberOfEntries}: '
                         '${clubRewardsWithAttendance.userAttendance}',
                         maxLines: 1,
                         style: context.subtitle1,

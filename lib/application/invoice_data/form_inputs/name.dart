@@ -1,10 +1,10 @@
 import 'package:formz/formz.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 enum NameError { empty }
 
 final nameErrorMessages = {
-  // TODO - add translation
-  NameError.empty: 'Enter name'
+  NameError.empty: S().fieldShouldNotBeEmpty,
 };
 
 class Name extends FormzInput<String, NameError> {

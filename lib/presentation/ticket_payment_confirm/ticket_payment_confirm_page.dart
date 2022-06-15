@@ -67,8 +67,7 @@ class TicketPaymentConfirmPage extends StatelessWidget {
                   onPressed: () => context.router.replaceAll(
                     [const WelcomeLoaderRoute()],
                   ),
-                  // TODO - add translation
-                  child: Text('Wróć do strony głównej'),
+                  child: Text(S().backToHomePage),
                 ),
               ),
             ],

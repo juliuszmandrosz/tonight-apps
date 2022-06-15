@@ -5,6 +5,7 @@ import 'package:formz/formz.dart';
 import 'package:raver/application/invoice_data/form_inputs/name.dart';
 import 'package:raver/application/invoice_data/invoice_data_cubit.dart';
 import 'package:raver/application/invoice_data/invoice_data_type.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class NameInput extends HookWidget {
   const NameInput({Key? key}) : super(key: key);
@@ -29,10 +30,9 @@ class NameInput extends HookWidget {
               context.read<InvoiceDataCubit>().nameChanged(value),
           keyboardType: TextInputType.name,
           decoration: InputDecoration(
-            // TODO - add translation
             labelText: state.invoiceDataType.isCompany
-                ? 'Nazwa firmy'
-                : 'Imię i nazwisko',
+                ? S().companyName
+                : S().fullName,
             errorText: _getNameInputErrorMessage(state),
           ),
         );

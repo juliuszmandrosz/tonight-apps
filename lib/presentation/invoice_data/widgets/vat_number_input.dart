@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:formz/formz.dart';
 import 'package:raver/application/invoice_data/form_inputs/vat_number.dart';
 import 'package:raver/application/invoice_data/invoice_data_cubit.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class VatNumberInput extends HookWidget {
   const VatNumberInput({Key? key}) : super(key: key);
@@ -27,8 +28,7 @@ class VatNumberInput extends HookWidget {
               context.read<InvoiceDataCubit>().vatNumberChanged(value),
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
-            // TODO - add translation
-            labelText: 'Numer NIP',
+            labelText: S().vatNumber,
             errorText: _getVatNumberInputErrorMessage(state),
           ),
         );

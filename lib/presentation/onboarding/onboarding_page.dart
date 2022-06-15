@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:raver/presentation/onboarding/widgets/onboarding_page_view.dart';
 import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({Key? key}) : super(key: key);
@@ -11,45 +12,41 @@ class OnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      // TODO - add translations
       onWillPop: () async => false,
       child: IntroductionScreen(
         next: const FaIcon(FontAwesomeIcons.arrowRight),
-        done: const Text('Rozpocznij!'),
+        done: Text(S().start),
         onDone: () => context.pushRoute(const OnboardingUsernameRoute()),
         pages: [
           onboardingPageView(
             context: context,
             icon: FontAwesomeIcons.fire,
-            title: 'Witamy w Tonight!',
-            body: 'Odkrywaj pobliskie kluby i znajdź imprezę dla siebie',
+            title: S().welcomeToTonight,
+            body: S().discoverClubs,
           ),
           onboardingPageView(
             context: context,
             icon: FontAwesomeIcons.ticket,
-            title: 'Kup wejściówkę',
-            body:
-                'Zapłać w wygodny sposób, korzystając z karty, Google Pay, Apple Pay, BLIK-a lub innej metody dostępnej w Przelewy24',
+            title: S().buyTicket,
+            body: S().payConveniently,
           ),
           onboardingPageView(
             context: context,
             icon: FontAwesomeIcons.trophy,
-            title: 'Otrzymuj nagrody',
-            body:
-                'Kolekcjonuj benefity w klubach, nabijając frekwencję po zeskanowaniu biletu',
+            title: S().receiveRewards,
+            body: S().collectBenefitsInClubs,
           ),
           onboardingPageView(
             context: context,
             icon: FontAwesomeIcons.building,
-            title: 'Bądź na bieżąco',
-            body:
-                'Dodaj klub do ulubionych i otrzymuj powiadomienia jak tylko doda nowe wydarzenie lub nagrodę',
+            title: S().stayUpdated,
+            body: S().addClubToFavoritesAndReceiveNotifications,
           ),
           onboardingPageView(
             context: context,
             icon: FontAwesomeIcons.crown,
-            title: 'Omiń kolejkę',
-            body: 'Ulepsz swój bilet do VIP-a i wejdź do klubu bez kolejki',
+            title: S().skipTheLine,
+            body: S().upgradeTicketToVipAndEnterClub,
           ),
         ],
       ),

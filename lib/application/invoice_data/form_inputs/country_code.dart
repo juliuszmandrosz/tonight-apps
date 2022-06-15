@@ -1,11 +1,11 @@
 import 'package:formz/formz.dart';
 import 'package:intl/intl.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 enum CountryCodeError { empty }
 
 final countryCodeErrorMessages = {
-  // TODO - add translation
-  CountryCodeError.empty: 'Enter country code'
+  CountryCodeError.empty: S().selectCountry,
 };
 
 class CountryCode extends FormzInput<String, CountryCodeError> {

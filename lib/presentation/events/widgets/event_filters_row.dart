@@ -45,9 +45,8 @@ class EventFiltersRow extends StatelessWidget {
                           ? () =>
                               context.read<EventFiltersCubit>().resetFilters()
                           : null,
-                      child: const Text(
-                        // TODO - add translation
-                        'Clear filters',
+                      child: Text(
+                        S().clearFilters,
                         textAlign: TextAlign.center,
                       ),
                     );

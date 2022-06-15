@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:raver/presentation/core/invoice_info.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class VipCheckoutInvoiceCheckbox extends StatelessWidget {
   const VipCheckoutInvoiceCheckbox({Key? key}) : super(key: key);
@@ -21,9 +22,8 @@ class VipCheckoutInvoiceCheckbox extends StatelessWidget {
               ),
               child: CheckboxListTile(
                 activeColor: context.primaryColor,
-                // TODO - add translation
                 title: Text(
-                  'Chcę fakturę VAT',
+                  S().iWantInvoice,
                   style: context.subtitle1,
                 ),
                 value: state.sendInvoice,

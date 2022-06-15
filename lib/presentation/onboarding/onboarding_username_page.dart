@@ -66,11 +66,9 @@ class OnboardingUsernamePage extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 40),
-                            const Align(
+                            Align(
                               alignment: Alignment.centerLeft,
-                              // TODO - add translation
-                              child: RaverHeadline(
-                                  text: 'Ustaw swoją nazwę użytkownika'),
+                              child: RaverHeadline(text: S().setYourUsername),
                             ),
                             const SizedBox(height: 30),
                             const UsernameInput(),

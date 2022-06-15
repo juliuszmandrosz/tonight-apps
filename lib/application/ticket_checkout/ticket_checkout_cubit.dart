@@ -199,8 +199,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
     final invoiceData = state.invoiceData.getOrCrash();
     final hasName = invoiceData.name != null && invoiceData.name!.isNotEmpty;
     if (!hasName) {
-      // TODO - add translation
-      _showSnackbarMessage('Proszę podać dane do faktury');
+      _showSnackbarMessage(S().enterInvoiceData);
       return false;
     }
 
@@ -291,23 +290,22 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
       _showSnackbarMessage(S().previousTicketPoolAvailable);
     }
 
-    // TODO - add translations
     if (poolInState.isVipEnabled && !currentPool.isVipEnabled) {
-      _showSnackbarMessage('VIP nie jest już dostępny!');
+      _showSnackbarMessage(S().vipNoLongerAvailable);
     }
 
     if (!poolInState.isVipEnabled && currentPool.isVipEnabled) {
-      _showSnackbarMessage('VIP znowu jest dostępny!');
+      _showSnackbarMessage(S().vipAvailableAgain);
     }
 
     if (poolInState.poolNumber == currentPool.poolNumber &&
         poolInState.ticketPrice != currentPool.ticketPrice) {
-      _showSnackbarMessage('Cena biletu zmieniła się');
+      _showSnackbarMessage(S().ticketPriceHasChanged);
     }
 
     if (poolInState.isVipEnabled == currentPool.isVipEnabled &&
         poolInState.vipPrice != currentPool.vipPrice) {
-      _showSnackbarMessage('Cena VIP-a zmieniła się');
+      _showSnackbarMessage(S().vipPriceHasChanged);
     }
   }
 
