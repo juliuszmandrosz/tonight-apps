@@ -79,7 +79,7 @@ class TicketCheckoutPage extends StatelessWidget {
               return Container();
             }
             return state.initialStatus.isLoading()
-                ? const Center(child: CircularProgressIndicator())
+                ? const TicketLogoAnimation()
                 : Scaffold(
                     floatingActionButtonLocation:
                         FloatingActionButtonLocation.centerFloat,

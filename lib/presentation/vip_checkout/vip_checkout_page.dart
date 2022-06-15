@@ -83,7 +83,7 @@ class VipCheckoutPage extends StatelessWidget {
             }
 
             return state.initialStatus.isLoading()
-                ? const Center(child: CircularProgressIndicator())
+                ? const TicketLogoAnimation()
                 : Scaffold(
                     appBar: RaverAppBar(title: S().checkout),
                     floatingActionButton: const VipProceedToPayButton(),
