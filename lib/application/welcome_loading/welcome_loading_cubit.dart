@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -28,6 +30,15 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   final AvailableFiltersCubit _availableFiltersCubit;
   final Stripe _stripe;
   final FirebaseRemoteConfig _firebaseRemoteConfig;
+
+  StreamSubscription? _profileSub;
+  StreamSubscription? _locationSub;
+  StreamSubscription? _eventsSub;
+  StreamSubscription? _clubsSub;
+  StreamSubscription? _eventFavoritesSub;
+  StreamSubscription? _clubFavoritesSub;
+  StreamSubscription? _ticketsSub;
+  StreamSubscription? _filtersSub;
 
   WelcomeLoadingCubit({
     required ProfileCubit profileCubit,
@@ -69,7 +80,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
   initUserProfile() {
     _profileCubit.getUserProfile();
-    _profileCubit.stream.listen((event) {
+    _profileSub = _profileCubit.stream.listen((event) {
       _checkAndEmitFailure(event.status);
       _emitSuccessIfAllLoaded();
       if (event.status.isSuccess() && !state.status.isSuccess()) {
@@ -101,6 +112,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     var filters = EventFilters.empty();
 
     final userLocation = _userLocationCubit.state.userLocation;
+
     if (userLocation.isSome() && userLocation.getOrCrash().isNotEmpty) {
       final maxDistanceFilters = filters.maxDistanceFilter;
       filters = filters.copyWith(
@@ -117,7 +129,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
       ),
     );
 
-    _eventOverviewBloc.stream.listen((event) {
+    _eventsSub = _eventOverviewBloc.stream.listen((event) {
       _checkAndEmitFailure(event.status);
       _emitSuccessIfAllLoaded();
     });
@@ -130,7 +142,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
       ),
     );
 
-    _clubsOverviewBloc.stream.listen((event) {
+    _clubsSub = _clubsOverviewBloc.stream.listen((event) {
       _checkAndEmitFailure(event.status);
       _emitSuccessIfAllLoaded();
     });
@@ -138,7 +150,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
   _initTickets() {
     _ticketListCubit.fetchTickets();
-    _ticketListCubit.stream.listen((event) {
+    _ticketsSub = _ticketListCubit.stream.listen((event) {
       _checkAndEmitFailure(event.status);
       _emitSuccessIfAllLoaded();
     });
@@ -146,7 +158,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
   _initFavoriteEvents() {
     _eventFavoriteCubit.getFavoriteEvents();
-    _eventFavoriteCubit.stream.listen((event) {
+    _eventFavoritesSub = _eventFavoriteCubit.stream.listen((event) {
       _checkAndEmitFailure(event.status);
       _emitSuccessIfAllLoaded();
     });
@@ -154,7 +166,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
   _initFavoriteClubs() {
     _clubFavoriteCubit.getFavoriteClubs();
-    _clubFavoriteCubit.stream.listen((event) {
+    _clubFavoritesSub = _clubFavoriteCubit.stream.listen((event) {
       _checkAndEmitFailure(event.status);
       _emitSuccessIfAllLoaded();
     });
@@ -162,7 +174,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
   _initUserLocationCubit() {
     _userLocationCubit.requestUserLocationOnStart();
-    _userLocationCubit.stream.listen((event) {
+    _locationSub = _userLocationCubit.stream.listen((event) {
       _emitSuccessIfAllLoaded();
       if (!event.isLoading) {
         _initEvents();
@@ -172,7 +184,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
   _initAvailableFiltersCubit() {
     _availableFiltersCubit.getAvailableFilters();
-    _availableFiltersCubit.stream.listen((event) {
+    _filtersSub = _availableFiltersCubit.stream.listen((event) {
       final status = event.map(
         initial: (_) => CubitStatus.initial,
         loadInProgress: (_) => CubitStatus.loading,
@@ -201,5 +213,18 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         _clubFavoriteCubit.state.status == CubitStatus.success &&
         _availableFiltersCubit.state
             .maybeWhen(orElse: () => false, loadSuccess: (_) => true);
+  }
+
+  @override
+  Future<void> close() {
+    _filtersSub?.cancel();
+    _locationSub?.cancel();
+    _clubFavoritesSub?.cancel();
+    _eventFavoritesSub?.cancel();
+    _ticketsSub?.cancel();
+    _eventsSub?.cancel();
+    _clubsSub?.cancel();
+    _profileSub?.cancel();
+    return super.close();
   }
 }
