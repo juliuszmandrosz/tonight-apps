@@ -6,13 +6,13 @@ class WelcomeLoadingState with _$WelcomeLoadingState {
 
   factory WelcomeLoadingState({
     required bool dependenciesLoaded,
-    required bool onboardingCompleted,
+    required Option<String> username,
     required CubitStatus status,
   }) = _WelcomeLoadingState;
 
   factory WelcomeLoadingState.initial() => WelcomeLoadingState(
         dependenciesLoaded: false,
-        onboardingCompleted: false,
+        username: none(),
         status: CubitStatus.initial,
       );
 }

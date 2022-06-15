@@ -15,6 +15,7 @@ import 'package:raver/presentation/invoice_data/invoice_data_page.dart';
 import 'package:raver/presentation/network_lost/network_lost_page.dart';
 import 'package:raver/presentation/notifications/notifications_page.dart';
 import 'package:raver/presentation/onboarding/onboarding_page.dart';
+import 'package:raver/presentation/onboarding/onboarding_username_page.dart';
 import 'package:raver/presentation/profile/profile_page.dart';
 import 'package:raver/presentation/sign_in/sign_in_page.dart';
 import 'package:raver/presentation/splash/splash_page.dart';
@@ -66,6 +67,7 @@ part 'app_router.gr.dart';
     AutoRoute(page: TermsOfServicePage),
     AutoRoute<InvoiceData>(page: InvoiceDataPage),
     AutoRoute(page: FailurePage),
+    AutoRoute(page: OnboardingUsernamePage),
   ],
 )
 class AppRouter extends _$AppRouter {}

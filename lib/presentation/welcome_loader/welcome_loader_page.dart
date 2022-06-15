@@ -99,22 +99,33 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
             ],
             child: BlocProvider(
               create: (ctx) => (_welcomeLoadingCubit ?? _initWelcomeCubit(ctx))
-                ..loadDependencies(),
+                ..initUserProfile(),
               child: BlocConsumer<WelcomeLoadingCubit, WelcomeLoadingState>(
                 listener: (context, state) {
-                  if (state.status.isFailure()) {
+                  if (state.status.isFailure() &&
+                      context.router.current.name != FailureRoute.name) {
                     context.pushRoute(
                       FailureRoute(
                         retryCallback: () =>
-                            (_welcomeLoadingCubit ?? _initWelcomeCubit(context))
-                                .loadDependencies(),
+                            _welcomeLoadingCubit!.loadDependencies(),
                       ),
                     );
                   }
 
-                  if (!state.onboardingCompleted && state.dependenciesLoaded) {
-                    context.pushRoute(const OnboardingRoute());
-                  }
+                  state.username.fold(
+                    () => {},
+                    (username) {
+                      if (username.isEmpty &&
+                          context.router.current.name != OnboardingRoute.name) {
+                        context.pushRoute(const OnboardingRoute());
+                        return;
+                      }
+
+                      if (!state.status.isFailure() && username.isNotEmpty) {
+                        _welcomeLoadingCubit!.loadDependencies();
+                      }
+                    },
+                  );
                 },
                 builder: (context, state) {
                   if (state.status.isFailure()) {

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -57,7 +58,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
     emit(state.copyWith(status: CubitStatus.loading));
 
-    _initProfileCubit();
     _initUserLocationCubit();
     _initTickets();
     _initFavoriteEvents();
@@ -68,15 +68,24 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     await _initStripe();
   }
 
+  initUserProfile() {
+    _profileCubit.getUserProfile();
+    _profileCubit.stream.listen((event) {
+      _checkAndEmitFailure(event.status);
+      _emitSuccessIfAllLoaded();
+      if (event.status.isSuccess() && !state.status.isSuccess()) {
+        emit(state.copyWith(username: some(event.user.username)));
+      }
+    });
+  }
+
   void _emitSuccessIfAllLoaded() {
     if (state.status.isSuccess()) return;
 
     if (_allDependenciesLoaded()) {
-      final isOnboardingCompleted = _checkIfOnboardingIsCompleted();
       emit(
         state.copyWith(
           dependenciesLoaded: true,
-          onboardingCompleted: isOnboardingCompleted,
           status: CubitStatus.success,
         ),
       );
@@ -140,14 +149,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     });
   }
 
-  _initProfileCubit() {
-    _profileCubit.getUserProfile();
-    _profileCubit.stream.listen((event) {
-      _checkAndEmitFailure(event.status);
-      _emitSuccessIfAllLoaded();
-    });
-  }
-
   _initUserLocationCubit() {
     _userLocationCubit.requestUserLocationOnStart();
     _userLocationCubit.stream.listen((event) {
@@ -186,9 +187,5 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         _clubFavoriteCubit.state.status == CubitStatus.success &&
         _availableFiltersCubit.state
             .maybeWhen(orElse: () => false, loadSuccess: (_) => true);
-  }
-
-  _checkIfOnboardingIsCompleted() {
-    return _profileCubit.state.user.username.isNotEmpty;
   }
 }

@@ -1,80 +1,58 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formz/formz.dart';
-import 'package:raver/application/auth/username/username_cubit.dart';
-import 'package:raver/injection.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver/presentation/onboarding/widgets/submit_button.dart';
-import 'package:raver/presentation/update_username/widgets/username_input.dart';
-import 'package:raver_auth/raver_auth.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/generated/l10n.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:introduction_screen/introduction_screen.dart';
+import 'package:raver/presentation/onboarding/widgets/onboarding_page_view.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 
-class OnboardingPage extends StatefulWidget {
+class OnboardingPage extends StatelessWidget {
   const OnboardingPage({Key? key}) : super(key: key);
-
-  @override
-  State<OnboardingPage> createState() => _OnboardingPageState();
-}
-
-class _OnboardingPageState extends State<OnboardingPage> {
-  var shouldPop = false;
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async => shouldPop,
-      child: BlocProvider(
-        create: (context) => getIt<UsernameCubit>(),
-        child: Scaffold(
-          body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(15),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: RaverHeadline(text: S().onboardingWelcomeTitle),
-                      ),
-                      const SizedBox(height: 20),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: AutoSizeText(
-                          S().onboardingWelcomeSubtitle,
-                          style: context.headline6,
-                          maxLines: 1,
-                        ),
-                      ),
-                      const SizedBox(height: 30),
-                      BlocListener<UsernameCubit, UsernameState>(
-                        listener: (context, state) {
-                          state.errorMessage.fold(() {}, (error) {
-                            context.showSnackbarMessage(
-                                authErrorMessages[error] ?? S().serverError);
-                          });
-                          if (state.status.isSubmissionSuccess) {
-                            context.showSnackbarMessage(
-                                S().usernameUpdatedMessage);
-                            shouldPop = true;
-                            AutoRouter.of(context).pop();
-                          }
-                        },
-                        child: const UsernameInput(),
-                      ),
-                    ],
-                  ),
-                  const SubmitButton(),
-                ],
-              ),
-            ),
+      // TODO - add translations
+      onWillPop: () async => false,
+      child: IntroductionScreen(
+        next: const FaIcon(FontAwesomeIcons.arrowRight),
+        done: const Text('Rozpocznij!'),
+        onDone: () => context.pushRoute(const OnboardingUsernameRoute()),
+        pages: [
+          onboardingPageView(
+            context: context,
+            icon: FontAwesomeIcons.fire,
+            title: 'Witamy w Tonight!',
+            body: 'Odkrywaj pobliskie kluby i znajdź imprezę dla siebie',
           ),
-        ),
+          onboardingPageView(
+            context: context,
+            icon: FontAwesomeIcons.ticket,
+            title: 'Kup wejściówkę',
+            body:
+                'Zapłać w wygodny sposób, korzystając z karty, Google Pay, Apple Pay, BLIK-a lub innej metody dostępnej w Przelewy24',
+          ),
+          onboardingPageView(
+            context: context,
+            icon: FontAwesomeIcons.trophy,
+            title: 'Otrzymuj nagrody',
+            body:
+                'Kolekcjonuj benefity w klubach, nabijając frekwencję po zeskanowaniu biletu',
+          ),
+          onboardingPageView(
+            context: context,
+            icon: FontAwesomeIcons.building,
+            title: 'Bądź na bieżąco',
+            body:
+                'Dodaj klub do ulubionych i otrzymuj powiadomienia jak tylko doda nowe wydarzenie lub nagrodę',
+          ),
+          onboardingPageView(
+            context: context,
+            icon: FontAwesomeIcons.crown,
+            title: 'Omiń kolejkę',
+            body: 'Ulepsz swój bilet do VIP-a i wejdź do klubu bez kolejki',
+          ),
+        ],
       ),
-    );
+    ); //Material App
   }
 }

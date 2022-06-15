@@ -8,6 +8,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
@@ -526,7 +527,7 @@ void _registerModules() {
   getIt.registerLazySingleton(
     () => Dio(
       BaseOptions(
-        baseUrl: FirebaseRemoteConfig.instance.getString(apiEndpoint),
+        baseUrl: dotenv.env[apiEndpoint]!,
         headers: getHttpHeaders(),
       ),
     ),
