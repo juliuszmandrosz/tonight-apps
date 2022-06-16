@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_place/google_place.dart';
+import 'package:intl/intl.dart';
 
 part 'google_places_cubit.freezed.dart';
 part 'google_places_state.dart';
@@ -14,8 +15,9 @@ class GooglePlacesCubit extends Cubit<GooglePlacesState> {
     final result = await _googlePlace.autocomplete.get(
       value,
       types: '(cities)',
-      language: 'en',
+      language: Intl.getCurrentLocale(),
     );
+
     if (result?.predictions != null) {
       emit(state.copyWith(predictions: result!.predictions!));
     }
