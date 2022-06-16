@@ -479,7 +479,8 @@ void _registerModules() {
 
   getIt.registerLazySingleton(() => FirebaseRemoteConfig.instance);
 
-  getIt.registerLazySingleton(() => FirebaseFunctions.instance);
+  getIt.registerLazySingleton(
+      () => FirebaseFunctions.instanceFor(region: 'europe-central2'));
 
   getIt.registerLazySingleton(() => FirebaseDynamicLinks.instance);
 
