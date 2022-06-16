@@ -38,8 +38,7 @@ class FirebaseAuthFacade
     String email,
   ) async {
     try {
-      await _authCloudFunctionsFacade.checkPartnerClaim(email);
-      await _authCloudFunctionsFacade.checkIfAccountExists(email);
+      await _authCloudFunctionsFacade.checkIfPartnerCanSignIn(email);
       await _sendSignInLinkForPartner(email);
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -48,12 +47,12 @@ class FirebaseAuthFacade
       );
 
       return left(await _handleFirebaseException(e));
-    } on FirebaseFunctionsException catch (e) {
+    } on DioError catch (e) {
       _logger.e(
-        "Functions Exception sending sign in email link for partner EXCEPTION: $e",
+        "Dio error sending sign in email link for partner EXCEPTION: $e",
       );
 
-      return left(await _handleFirebaseException(e));
+      return left(await _handleDioError(e));
     }
   }
 
@@ -63,9 +62,10 @@ class FirebaseAuthFacade
     required String accessCode,
   }) async {
     try {
-      await _authCloudFunctionsFacade.checkPartnerClaim(email);
-      await _authCloudFunctionsFacade.checkIfAccountNotExists(email);
-      await _authCloudFunctionsFacade.checkPartnerAccessCode(accessCode);
+      await _authCloudFunctionsFacade.checkIfPartnerCanSignUp(
+        email: email,
+        accessCode: accessCode,
+      );
       await _sendSignInLinkForPartner(email);
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -74,12 +74,12 @@ class FirebaseAuthFacade
       );
 
       return left(await _handleFirebaseException(e));
-    } on FirebaseFunctionsException catch (e) {
+    } on DioError catch (e) {
       _logger.e(
-        "Functions Exception sending sign up email link for partner EXCEPTION: $e",
+        "Dio error sending sign up email link for partner EXCEPTION: $e",
       );
 
-      return left(await _handleFirebaseException(e));
+      return left(await _handleDioError(e));
     }
   }
 
@@ -122,9 +122,13 @@ class FirebaseAuthFacade
         return left(AuthFailure(message: invalidLink));
       }
 
-      await _signInWithEmailLink(email, link.toString());
+      final partner = await _signInWithEmailLink(email, link.toString());
 
-      await _authCloudFunctionsFacade.addPartner(accessCode);
+      await _authCloudFunctionsFacade.addPartner(
+        email: email,
+        accessCode: accessCode,
+        partnerId: partner.user!.uid,
+      );
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -133,13 +137,13 @@ class FirebaseAuthFacade
       );
 
       return left(await _handleFirebaseException(e));
-    } on FirebaseFunctionsException catch (e) {
+    } on DioError catch (e) {
       await signOut();
       _logger.e(
-        "Functions Exception signing up with email link and access code as partner EXCEPTION: $e",
+        "Dio error signing up with email link and access code as partner EXCEPTION: $e",
       );
 
-      return left(await _handleFirebaseException(e));
+      return left(await _handleDioError(e));
     }
   }
 
@@ -379,7 +383,8 @@ class FirebaseAuthFacade
 
       if (firebaseUser == null) return none();
 
-      await _authCloudFunctionsFacade.checkPartnerClaim(firebaseUser.email!);
+      // TODO - check partner claim here
+      // await _authCloudFunctionsFacade.checkPartnerClaim(firebaseUser.email!);
 
       return some(firebaseUser.toDomain());
     } on FirebaseFunctionsException catch (e) {

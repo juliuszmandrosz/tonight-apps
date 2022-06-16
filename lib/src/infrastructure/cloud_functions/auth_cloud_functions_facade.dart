@@ -7,20 +7,27 @@ import 'package:raver_auth/src/infrastructure/cloud_functions/cloud_function_nam
 abstract class AuthCloudFunctionsFacade {
   Future<Unit> checkUserClaim(String email);
 
-  Future<Unit> checkPartnerClaim(String email);
-
   Future<Unit> checkSelectorClaim(String email);
+
+  Future<Unit> checkIfPartnerCanSignIn(String email);
+
+  Future<Unit> checkIfPartnerCanSignUp({
+    required String email,
+    required String accessCode,
+  });
 
   Future<Unit> addUser({
     required String userId,
     required String email,
   });
 
-  Future<Unit> addPartner(String accessCode);
+  Future<Unit> addPartner({
+    required String partnerId,
+    required String email,
+    required String accessCode,
+  });
 
   Future<Unit> addSelector(String accessCode);
-
-  Future<Unit> checkPartnerAccessCode(String accessCode);
 
   Future<Unit> checkSelectorAccessCode(String accessCode);
 
@@ -46,16 +53,6 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
     final data = {'email': email};
 
     await _dio.post(endpoint, data: data);
-
-    return unit;
-  }
-
-  @override
-  Future<Unit> checkPartnerClaim(String email) async {
-    final checkPartnerClaimFn =
-        _functions.httpsCallable(checkPartnerClaimFnName);
-
-    await checkPartnerClaimFn.call({'email': email});
 
     return unit;
   }
@@ -89,13 +86,21 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   }
 
   @override
-  Future<Unit> addPartner(String accessCode) async {
-    final addPartnerFn = _functions.httpsCallable(addPartnerFnName);
+  Future<Unit> addPartner({
+    required String partnerId,
+    required String email,
+    required String accessCode,
+  }) async {
+    const endpoint = 'auth/addPartner';
 
-    await addPartnerFn.call({
+    final data = {
+      'partnerId': partnerId,
+      'email': email,
       'accessCode': accessCode,
       'locale': Intl.getCurrentLocale(),
-    });
+    };
+
+    await _dio.post(endpoint, data: data);
 
     return unit;
   }
@@ -105,16 +110,6 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
     final addSelectorFn = _functions.httpsCallable(addSelectorFnName);
 
     await addSelectorFn.call({'accessCode': accessCode});
-
-    return unit;
-  }
-
-  @override
-  Future<Unit> checkPartnerAccessCode(String accessCode) async {
-    final checkPartnerAccessCodeFn =
-        _functions.httpsCallable(checkPartnerAccessCodeFnName);
-
-    await checkPartnerAccessCodeFn.call({'accessCode': accessCode});
 
     return unit;
   }
@@ -145,6 +140,34 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
         _functions.httpsCallable(checkIfAccountNotExistsFnName);
 
     await checkIfAccountNotExistsFn.call({'email': email});
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> checkIfPartnerCanSignIn(String email) async {
+    const endpoint = 'auth/checkIfPartnerCanSignIn';
+
+    final data = {'email': email};
+
+    await _dio.post(endpoint, data: data);
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> checkIfPartnerCanSignUp({
+    required String email,
+    required String accessCode,
+  }) async {
+    const endpoint = 'auth/checkIfPartnerCanSignUp';
+
+    final data = {
+      'email': email,
+      'accessCode': accessCode,
+    };
+
+    await _dio.post(endpoint, data: data);
 
     return unit;
   }
