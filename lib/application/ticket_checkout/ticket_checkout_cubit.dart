@@ -283,29 +283,35 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
 
     if (poolInState.poolNumber < currentPool.poolNumber) {
       _showSnackbarMessage(S().ticketPoolHasSoldOut);
+      return;
     }
 
     if (poolInState.poolNumber > currentPool.poolNumber ||
         poolInState.isSoldOut && !currentPool.isSoldOut) {
       _showSnackbarMessage(S().previousTicketPoolAvailable);
+      return;
     }
 
     if (poolInState.isVipEnabled && !currentPool.isVipEnabled) {
       _showSnackbarMessage(S().vipNoLongerAvailable);
+      return;
     }
 
     if (!poolInState.isVipEnabled && currentPool.isVipEnabled) {
       _showSnackbarMessage(S().vipAvailableAgain);
+      return;
     }
 
     if (poolInState.poolNumber == currentPool.poolNumber &&
         poolInState.ticketPrice != currentPool.ticketPrice) {
       _showSnackbarMessage(S().ticketPriceHasChanged);
+      return;
     }
 
     if (poolInState.isVipEnabled == currentPool.isVipEnabled &&
         poolInState.vipPrice != currentPool.vipPrice) {
       _showSnackbarMessage(S().vipPriceHasChanged);
+      return;
     }
   }
 
