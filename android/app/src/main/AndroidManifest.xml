@@ -36,7 +36,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data
-                        android:host="https://raverteam.page.link"
+                        android:host="https://tonightapp.page.link"
                         android:scheme="https"/>
             </intent-filter>
         </activity>

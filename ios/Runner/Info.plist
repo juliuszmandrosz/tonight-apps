@@ -52,7 +52,7 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>FirebaseDynamicLinksCustomDomains</key>
 	<array>
-		<string>https://raverteam.page.link</string>
+		<string>https://tonightapp.page.link</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
