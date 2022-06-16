@@ -44,7 +44,7 @@
 			<string>Bundle Id</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.raverteam.tonight</string>
+				<string>tonightapp.page.link</string>
 			</array>
 		</dict>
 	</array>
