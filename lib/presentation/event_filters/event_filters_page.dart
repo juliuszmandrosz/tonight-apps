@@ -72,7 +72,7 @@ class EventFiltersPage extends StatelessWidget {
                       child: Column(
                         children: [
                           const EventFiltersPlaceOption(),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 25),
                           const EventFiltersMaxDistance(),
                           BlocProvider(
                             create: (context) => getIt<GooglePlacesCubit>(),
@@ -82,23 +82,23 @@ class EventFiltersPage extends StatelessWidget {
                           EventFiltersCurrency(
                             currencies: state.availableFilters.currencies,
                           ),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 25),
                           const EventFiltersPrice(),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 25),
                           EventFiltersMinAge(
                             availableMinAges: state.availableFilters.minAges,
                           ),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 25),
                           EventFiltersMusic(
                             availableMusicalGenres:
                                 state.availableFilters.musicalGenres,
                           ),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 25),
                           EventFiltersDressCode(
                             availableOutfits:
                                 state.availableFilters.allowedOutfits,
                           ),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 25),
                           const EventFiltersIsConcert(),
                           const SizedBox(height: 60),
                         ],
