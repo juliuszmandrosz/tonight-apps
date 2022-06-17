@@ -44,6 +44,7 @@
                 <data
                         android:host="tonightapp.page.link"
                         android:scheme="https"/>
+
             </intent-filter>
 
             <intent-filter>

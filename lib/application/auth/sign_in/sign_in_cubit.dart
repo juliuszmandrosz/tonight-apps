@@ -39,6 +39,19 @@ class SignInCubit extends Cubit<SignInState> {
     );
   }
 
+  Future<void> signInWithApple() async {
+    emit(state.copyWith(signInStatus: FormzStatus.submissionInProgress));
+
+    final failureOrSuccess = await _authFacade.signInWithAppleAsUser();
+
+    failureOrSuccess.fold(
+      (failure) => _emitFailure(failure),
+      (success) => emit(
+        state.copyWith(signInStatus: FormzStatus.submissionSuccess),
+      ),
+    );
+  }
+
   Future<void> sendSignInEmailLink() async {
     if (!_validateForm()) return;
 

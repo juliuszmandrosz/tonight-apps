@@ -4,7 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
 
 class AppleSignInButton extends StatelessWidget {
   const AppleSignInButton({Key? key}) : super(key: key);
@@ -23,8 +22,9 @@ class AppleSignInButton extends StatelessWidget {
           width: 50,
           height: 50,
           child: RaverIconButton(
-              icon: const FaIcon(FontAwesomeIcons.apple),
-              onPressed: () => context.showSnackbarMessage(S().availableSoon)),
+            icon: const FaIcon(FontAwesomeIcons.apple),
+            onPressed: () => context.read<SignInCubit>().signInWithApple(),
+          ),
         );
       },
     );
