@@ -20,6 +20,7 @@ class TicketCheckoutIsVipSwitch extends StatelessWidget {
                 contentPadding: const EdgeInsets.all(2),
               ),
               child: SwitchListTile.adaptive(
+                activeColor: context.primaryColor,
                 title: Text(
                   S().vip,
                   style: context.subtitle1,
