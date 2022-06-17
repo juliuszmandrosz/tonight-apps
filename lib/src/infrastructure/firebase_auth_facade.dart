@@ -1,4 +1,8 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:crypto/crypto.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,6 +12,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class FirebaseAuthFacade
     implements
@@ -355,6 +360,51 @@ class FirebaseAuthFacade
   }
 
   @override
+  Future<Either<AuthFailure, Unit>> signInWithAppleAsUser() async {
+    try {
+      final rawNonce = _generateNonce();
+      final nonce = _getShaFromString(rawNonce);
+
+      final appleCredential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+        nonce: nonce,
+      );
+
+      final oauthCredential = OAuthProvider("apple.com").credential(
+        idToken: appleCredential.identityToken,
+        rawNonce: rawNonce,
+      );
+
+      final result = await _firebaseAuth.signInWithCredential(oauthCredential);
+
+      final email = result.user!.email!;
+
+      if (!result.additionalUserInfo!.isNewUser) {
+        await _authCloudFunctionsFacade.checkUserClaim(email);
+      }
+
+      await _addUserToFirestoreIfNotExists(result);
+
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      _logger.e(
+        "Firebase Auth Exception signing in with Apple as user EXCEPTION: $e",
+      );
+
+      return left(await _handleFirebaseException(e));
+    } on PlatformException catch (e) {
+      _logger.e(
+        "Platform Exception signing in with Apple as user EXCEPTION: $e",
+      );
+
+      return left(AuthFailure(message: unavailable));
+    }
+  }
+
+  @override
   Future<Option<AppUser>> getSignedUser() async {
     try {
       final firebaseUser = _firebaseAuth.currentUser;
@@ -563,5 +613,22 @@ class FirebaseAuthFacade
     }
 
     return firebaseAuthMessages[exception.code];
+  }
+
+  String _generateNonce() {
+    const length = 32;
+    const charset =
+        '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+    final random = Random.secure();
+    return List.generate(
+      length,
+      (_) => charset[random.nextInt(charset.length)],
+    ).join();
+  }
+
+  String _getShaFromString(String input) {
+    final bytes = utf8.encode(input);
+    final digest = sha256.convert(bytes);
+    return digest.toString();
   }
 }

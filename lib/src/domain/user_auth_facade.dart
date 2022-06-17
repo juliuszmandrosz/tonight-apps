@@ -11,5 +11,7 @@ abstract class UserAuthFacade {
 
   Future<Either<AuthFailure, Unit>> signInWithGoogleAsUser();
 
+  Future<Either<AuthFailure, Unit>> signInWithAppleAsUser();
+
   Future<Option<AppUser>> getSignedUser();
 }
