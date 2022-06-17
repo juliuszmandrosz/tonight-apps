@@ -223,40 +223,42 @@ class FirebasePaymentFacade implements UserPaymentFacade {
     required String paymentIntentSecret,
     required String ephemeralKeySecret,
   }) async {
+    final user = _firebaseAuth.tryGetFirebaseUser();
+
     await _stripe.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
-        currencyCode: currency,
-        customerId: customerId,
-        paymentIntentClientSecret: paymentIntentSecret,
-        customerEphemeralKeySecret: ephemeralKeySecret,
-        testEnv: true,
-        googlePay: true,
-        applePay: true,
-        merchantDisplayName: 'Tonight',
-        merchantCountryCode: 'PL',
-        appearance: PaymentSheetAppearance(
-          shapes: const PaymentSheetShape(borderRadius: 8),
-          colors: PaymentSheetAppearanceColors(
-            icon: colors.onSurface,
-            background: colors.background,
-            error: colors.error,
-            primary: colors.primary,
-            componentBackground: colors.surface,
-            primaryText: colors.onSurface,
-          ),
-          primaryButton: PaymentSheetPrimaryButtonAppearance(
-            shapes: const PaymentSheetPrimaryButtonShape(blurRadius: 20),
-            colors: PaymentSheetPrimaryButtonTheme(
-              dark: PaymentSheetPrimaryButtonThemeColors(
-                text: colors.onSurface,
-                background: colors.primary,
-                border: colors.primary,
+          currencyCode: currency,
+          customerId: customerId,
+          paymentIntentClientSecret: paymentIntentSecret,
+          customerEphemeralKeySecret: ephemeralKeySecret,
+          testEnv: true,
+          googlePay: true,
+          applePay: true,
+          merchantDisplayName: 'Tonight',
+          merchantCountryCode: 'PL',
+          appearance: PaymentSheetAppearance(
+            shapes: const PaymentSheetShape(borderRadius: 8),
+            colors: PaymentSheetAppearanceColors(
+              icon: colors.onSurface,
+              background: colors.background,
+              error: colors.error,
+              primary: colors.primary,
+              componentBackground: colors.surface,
+              primaryText: colors.onSurface,
+            ),
+            primaryButton: PaymentSheetPrimaryButtonAppearance(
+              shapes: const PaymentSheetPrimaryButtonShape(blurRadius: 20),
+              colors: PaymentSheetPrimaryButtonTheme(
+                dark: PaymentSheetPrimaryButtonThemeColors(
+                  text: colors.onSurface,
+                  background: colors.primary,
+                  border: colors.primary,
+                ),
               ),
             ),
           ),
-        ),
-        style: ThemeMode.dark,
-      ),
+          style: ThemeMode.dark,
+          billingDetails: BillingDetails(email: user.email)),
     );
 
     await _stripe.presentPaymentSheet();
