@@ -200,6 +200,8 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     Stripe.publishableKey =
         _firebaseRemoteConfig.getString(stripePublishableKey);
 
+    Stripe.merchantIdentifier = 'merchant.com.raverteam.tonight';
+
     await _stripe.applySettings();
   }
 
