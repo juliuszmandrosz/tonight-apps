@@ -63,6 +63,7 @@ class SignInPage extends StatelessWidget {
                   OrContinueWith(),
                   SizedBox(height: 30),
                   AuthProviders(),
+                  SizedBox(height: 20),
                 ],
               ),
             ),
