@@ -338,22 +338,20 @@ class FirebaseAuthFacade
       return right(unit);
     } on FirebaseAuthException catch (e) {
       _logger.e(
-        "Exception during sign in "
-        "with Google as user EXCEPTION: $e",
+        "Exception  signing in with Google as user EXCEPTION: $e",
       );
 
       return left(await _handleFirebaseException(e));
     } on DioError catch (e) {
       await signOut();
       _logger.e(
-        "Dio Error during  sign in with Google as user EXCEPTION: $e",
+        "Dio Error signing in with Google as user EXCEPTION: $e",
       );
 
       return left(await _handleDioError(e));
     } on PlatformException catch (e) {
       _logger.e(
-        "Platform Exception during "
-        "sign in with Google as user EXCEPTION: $e",
+        "Platform Exception signing in with Google as user EXCEPTION: $e",
       );
       return left(AuthFailure(message: unavailable));
     }
@@ -399,6 +397,23 @@ class FirebaseAuthFacade
       _logger.e(
         "Platform Exception signing in with Apple as user EXCEPTION: $e",
       );
+
+      return left(AuthFailure(message: unavailable));
+    } on DioError catch (e) {
+      await signOut();
+      _logger.e(
+        "Dio Error signing in with Apple as user EXCEPTION: $e",
+      );
+
+      return left(await _handleDioError(e));
+    } on SignInWithAppleAuthorizationException catch (e) {
+      _logger.e(
+        "Apple Authorization Exception signing in with Apple as user EXCEPTION: $e",
+      );
+
+      if (e.code == AuthorizationErrorCode.canceled) {
+        return left(AuthFailure(message: cancelledByUser));
+      }
 
       return left(AuthFailure(message: unavailable));
     }
