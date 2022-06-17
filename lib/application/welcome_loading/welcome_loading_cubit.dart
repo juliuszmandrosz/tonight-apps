@@ -202,6 +202,8 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
     Stripe.merchantIdentifier = 'merchant.com.raverteam.tonight';
 
+    Stripe.urlScheme = 'com.raverteam.tonight';
+
     await _stripe.applySettings();
   }
 

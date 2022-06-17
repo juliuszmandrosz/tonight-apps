@@ -6,5 +6,9 @@
 	<array>
 		<string>applinks:tonightapp.page.link</string>
 	</array>
+	<key>com.apple.developer.in-app-payments</key>
+	<array>
+		<string>merchant.com.raverteam.tonight</string>
+	</array>
 </dict>
 </plist>
