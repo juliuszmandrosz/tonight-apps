@@ -233,6 +233,7 @@ class FirebasePaymentFacade implements UserPaymentFacade {
         googlePay: true,
         applePay: true,
         merchantDisplayName: 'Tonight',
+        merchantCountryCode: 'PL',
         appearance: PaymentSheetAppearance(
           shapes: const PaymentSheetShape(borderRadius: 8),
           colors: PaymentSheetAppearanceColors(
