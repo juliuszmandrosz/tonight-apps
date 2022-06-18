@@ -115,6 +115,10 @@ extension FirestoreX on FirebaseFirestore {
   }) async {
     final result = <DocumentSnapshot>[];
 
+    if (ids.isEmpty) {
+      return collection.get().then((res) => res.docs);
+    }
+
     while (ids.isNotEmpty) {
       final chunkSize = ids.length >= 10 ? 10 : ids.length;
 
