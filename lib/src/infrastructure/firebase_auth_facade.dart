@@ -8,10 +8,12 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class FirebaseAuthFacade
@@ -371,7 +373,7 @@ class FirebaseAuthFacade
         nonce: nonce,
       );
 
-      final oauthCredential = OAuthProvider("apple.com").credential(
+      final oauthCredential = OAuthProvider('apple.com').credential(
         idToken: appleCredential.identityToken,
         rawNonce: rawNonce,
       );
@@ -586,11 +588,11 @@ class FirebaseAuthFacade
     await _firebaseAuth.sendSignInLinkToEmail(
       email: email,
       actionCodeSettings: ActionCodeSettings(
-        url: 'https://tonightpartnersapp.page.link',
+        url: dotenv.env[partnerDynamicLinkUrl]!,
         handleCodeInApp: true,
         iOSBundleId: 'com.raverteam.tonightPartners',
         androidPackageName: 'com.raverteam.tonightPartners',
-        dynamicLinkDomain: 'tonightpartnersapp.page.link',
+        dynamicLinkDomain: dotenv.env[partnerDynamicLinkDomain]!,
       ),
     );
   }
