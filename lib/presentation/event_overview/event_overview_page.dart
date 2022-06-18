@@ -9,6 +9,7 @@ import 'package:raver_partners/application/upcoming_live_event/upcoming_live_eve
 import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/core/event_revenue.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
+import 'package:raver_partners/presentation/core/ticket_logo_animation.dart';
 import 'package:raver_partners/presentation/event_overview/widgets/cancel_event_button.dart';
 import 'package:raver_partners/presentation/event_overview/widgets/event_overview_details.dart';
 import 'package:raver_partners/presentation/event_overview/widgets/event_overview_ticket_pools.dart';
@@ -76,9 +77,7 @@ class EventOverviewPage extends StatelessWidget {
               },
               builder: (context, state) {
                 if (state.initialStatus.isLoading()) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return const TicketLogoAnimation();
                 }
 
                 return SingleChildScrollView(

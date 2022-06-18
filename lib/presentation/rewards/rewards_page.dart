@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
 import 'package:raver_partners/injection.dart';
+import 'package:raver_partners/presentation/core/dots_loading_indicator.dart';
 import 'package:raver_partners/presentation/rewards/widgets/reward_list_for_required_entries.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -26,9 +27,7 @@ class RewardsPage extends StatelessWidget {
           },
           builder: (context, state) {
             if (state.initialStatus.isLoading()) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return const DotsLoadingIndicator();
             }
 
             if (state.initialStatus.isFailure()) {

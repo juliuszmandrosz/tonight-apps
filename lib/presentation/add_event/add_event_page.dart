@@ -11,6 +11,7 @@ import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/add_event/widgets/add_event_button.dart';
 import 'package:raver_partners/presentation/add_event/widgets/add_event_steps.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
+import 'package:raver_partners/presentation/core/ticket_logo_animation.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class AddEventPage extends StatelessWidget {
@@ -40,6 +41,8 @@ class AddEventPage extends StatelessWidget {
           ),
           child: LoaderOverlay(
             overlayColor: context.shadowColor,
+            useDefaultLoading: false,
+            overlayWidget: const TicketLogoAnimation(),
             child: Scaffold(
               appBar: RaverPartnersAppBar(
                 title: S().addEvent,

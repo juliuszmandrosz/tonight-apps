@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/selector_list/selector_list_cubit.dart';
 import 'package:raver_partners/injection.dart';
+import 'package:raver_partners/presentation/core/dots_loading_indicator.dart';
 import 'package:raver_partners/presentation/selectors/widgets/selector_list_tile.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -26,9 +27,7 @@ class SelectorsPage extends StatelessWidget {
           },
           builder: (context, state) {
             if (state.initialStatus.isLoading()) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return const DotsLoadingIndicator();
             }
 
             if (state.initialStatus.isFailure()) {
