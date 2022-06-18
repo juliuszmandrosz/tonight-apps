@@ -83,6 +83,7 @@ dependencies:
   fl_chart: ^0.51.0
   firebase_crashlytics: ^2.8.1
   dio: ^4.0.6
+  google_fonts: ^3.0.0
 
   raver_auth:
     git:
@@ -151,6 +152,7 @@ flutter:
     - .env
     - assets/icons/
     - assets/animations/
+    - assets/google_fonts/montserrat/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
