@@ -190,6 +190,16 @@ class S {
     );
   }
 
+  /// `Add photo`
+  String get addPhoto {
+    return Intl.message(
+      'Add photo',
+      name: 'addPhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add promotion code`
   String get addPromotionCode {
     return Intl.message(
@@ -270,6 +280,16 @@ class S {
     );
   }
 
+  /// `Apply discount`
+  String get applyDiscount {
+    return Intl.message(
+      'Apply discount',
+      name: 'applyDiscount',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Apply filters`
   String get applyFilters {
     return Intl.message(
@@ -323,6 +343,16 @@ class S {
     );
   }
 
+  /// `Available discounts`
+  String get availableDiscounts {
+    return Intl.message(
+      'Available discounts',
+      name: 'availableDiscounts',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Available soon`
   String get availableSoon {
     return Intl.message(
@@ -358,16 +388,6 @@ class S {
     return Intl.message(
       'Back to home page',
       name: 'backToHomePage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Back to main menu`
-  String get backToMainMenu {
-    return Intl.message(
-      'Back to main menu',
-      name: 'backToMainMenu',
       desc: '',
       args: [],
     );
@@ -716,11 +736,31 @@ class S {
     );
   }
 
+  /// `Cost`
+  String get cost {
+    return Intl.message(
+      'Cost',
+      name: 'cost',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Currency`
   String get currency {
     return Intl.message(
       'Currency',
       name: 'currency',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current fee`
+  String get currentFee {
+    return Intl.message(
+      'Current fee',
+      name: 'currentFee',
       desc: '',
       args: [],
     );
@@ -836,6 +876,36 @@ class S {
     );
   }
 
+  /// `Discount has already been used`
+  String get discountHasBeenUsed {
+    return Intl.message(
+      'Discount has already been used',
+      name: 'discountHasBeenUsed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discounts`
+  String get discounts {
+    return Intl.message(
+      'Discounts',
+      name: 'discounts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discounts are added to the total amount of tickets sold and vips on exclusive events`
+  String get discountsInfo {
+    return Intl.message(
+      'Discounts are added to the total amount of tickets sold and vips on exclusive events',
+      name: 'discountsInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Explore nearby clubs and find a party for yourself`
   String get discoverClubs {
     return Intl.message(
@@ -911,6 +981,16 @@ class S {
     return Intl.message(
       'Edit Facebook event URL link',
       name: 'editFacebookUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change photo`
+  String get editPhoto {
+    return Intl.message(
+      'Change photo',
+      name: 'editPhoto',
       desc: '',
       args: [],
     );
@@ -1612,6 +1692,26 @@ class S {
     );
   }
 
+  /// `Exclusive`
+  String get exclusive {
+    return Intl.message(
+      'Exclusive',
+      name: 'exclusive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exclusive event`
+  String get exclusiveEvent {
+    return Intl.message(
+      'Exclusive event',
+      name: 'exclusiveEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Exit`
   String get exitButtonTitle {
     return Intl.message(
@@ -1687,6 +1787,16 @@ class S {
     return Intl.message(
       'Favorites',
       name: 'favorites',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fee`
+  String get fee {
+    return Intl.message(
+      'Fee',
+      name: 'fee',
       desc: '',
       args: [],
     );
@@ -2282,11 +2392,51 @@ class S {
     );
   }
 
+  /// `No revenue`
+  String get noRevenue {
+    return Intl.message(
+      'No revenue',
+      name: 'noRevenue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Normal`
+  String get normal {
+    return Intl.message(
+      'Normal',
+      name: 'normal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No tickets sold`
+  String get noTicketsSold {
+    return Intl.message(
+      'No tickets sold',
+      name: 'noTicketsSold',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Notifications`
   String get notifications {
     return Intl.message(
       'Notifications',
       name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No VIPs sold`
+  String get noVipsSold {
+    return Intl.message(
+      'No VIPs sold',
+      name: 'noVipsSold',
       desc: '',
       args: [],
     );
@@ -2340,6 +2490,16 @@ class S {
     return Intl.message(
       'Or continue with',
       name: 'orContinueWith',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Overview`
+  String get overview {
+    return Intl.message(
+      'Overview',
+      name: 'overview',
       desc: '',
       args: [],
     );
@@ -2505,6 +2665,16 @@ class S {
       name: 'photos',
       desc: '',
       args: [count],
+    );
+  }
+
+  /// `Please add a photo`
+  String get pleaseAddPhoto {
+    return Intl.message(
+      'Please add a photo',
+      name: 'pleaseAddPhoto',
+      desc: '',
+      args: [],
     );
   }
 
@@ -2868,6 +3038,16 @@ class S {
     );
   }
 
+  /// `Revenue`
+  String get revenue {
+    return Intl.message(
+      'Revenue',
+      name: 'revenue',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Review added`
   String get reviewAdded {
     return Intl.message(
@@ -3001,6 +3181,16 @@ class S {
     );
   }
 
+  /// `Sales`
+  String get sales {
+    return Intl.message(
+      'Sales',
+      name: 'sales',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Scan another ticket`
   String get scanAnotherTicket {
     return Intl.message(
@@ -3051,11 +3241,31 @@ class S {
     );
   }
 
+  /// `Select discount`
+  String get selectDiscount {
+    return Intl.message(
+      'Select discount',
+      name: 'selectDiscount',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please select dress code`
   String get selectDressCode {
     return Intl.message(
       'Please select dress code',
       name: 'selectDressCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select event photo`
+  String get selectEventPhoto {
+    return Intl.message(
+      'Select event photo',
+      name: 'selectEventPhoto',
       desc: '',
       args: [],
     );
@@ -3229,6 +3439,16 @@ class S {
     return Intl.message(
       'Social media',
       name: 'socialMedia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sold`
+  String get sold {
+    return Intl.message(
+      'Sold',
+      name: 'sold',
       desc: '',
       args: [],
     );
@@ -3872,6 +4092,16 @@ class S {
     return Intl.message(
       'The minimum VIP price is',
       name: 'vipPriceTooLow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `VIPs`
+  String get vips {
+    return Intl.message(
+      'VIPs',
+      name: 'vips',
       desc: '',
       args: [],
     );
