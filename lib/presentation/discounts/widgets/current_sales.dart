@@ -6,22 +6,22 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/discounts/discounts_cubit.dart';
 import 'package:raver_partners/presentation/core/revenue_tile.dart';
 import 'package:raver_partners/presentation/core/raver_partners_headline.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class CurrentSales extends StatelessWidget {
   const CurrentSales({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // TODO - add translations
     return BlocBuilder<DiscountsCubit, DiscountsState>(
       builder: (context, state) {
         final sales = state.clubSales.getOrCrash();
         return Column(
           children: [
-            const Align(
+            Align(
               alignment: Alignment.centerLeft,
               child: RaverPartnersHeadline(
-                text: 'Sales',
+                text: S().sales,
                 isSmallerVersion: true,
               ),
             ),
@@ -36,12 +36,12 @@ class CurrentSales extends StatelessWidget {
                 RevenueTile(
                   icon: FontAwesomeIcons.ticket,
                   value: '${sales.exclusiveTicketsSold}',
-                  label: 'Exclusive tickets sold',
+                  label: S().tickets(2),
                 ),
                 RevenueTile(
                   icon: FontAwesomeIcons.crown,
                   value: '${sales.exclusiveVipsSold}',
-                  label: 'Exclusive vips sold',
+                  label: S().vips,
                 ),
               ],
             ),
@@ -52,8 +52,7 @@ class CurrentSales extends StatelessWidget {
                 padding: const EdgeInsets.all(15),
                 child: Center(
                   child: AutoSizeText(
-                    // TODO - add translation
-                    'Suma: '
+                    '${S().total}: '
                     '${sales.exclusiveTicketsSold + sales.exclusiveVipsSold}',
                     maxLines: 1,
                     style: context.subtitle1,

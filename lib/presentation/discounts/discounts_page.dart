@@ -6,6 +6,7 @@ import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
 import 'package:raver_partners/presentation/discounts/widgets/current_sales.dart';
 import 'package:raver_partners/presentation/discounts/widgets/discount_list.dart';
 import 'package:raver_partners/presentation/discounts/widgets/discounts_info.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class DiscountsPage extends StatelessWidget {
   const DiscountsPage({Key? key}) : super(key: key);
@@ -13,8 +14,7 @@ class DiscountsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // TODO - add translation
-      appBar: const RaverPartnersAppBar(title: 'Discounts'),
+      appBar: RaverPartnersAppBar(title: S().discounts),
       body: BlocProvider(
         create: (context) => getIt<DiscountsCubit>()..getDiscounts(),
         child: Padding(

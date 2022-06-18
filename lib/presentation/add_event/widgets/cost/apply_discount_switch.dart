@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class ApplyDiscountSwitch extends StatelessWidget {
   const ApplyDiscountSwitch({Key? key}) : super(key: key);
@@ -16,8 +17,7 @@ class ApplyDiscountSwitch extends StatelessWidget {
           dense: true,
           contentPadding: const EdgeInsets.symmetric(horizontal: 0),
           title: Text(
-            // TODO - add translation
-            'Zastosuj zniżkę',
+            S().applyDiscount,
             style: context.subtitle1,
           ),
           value: state.isDiscountApplied,

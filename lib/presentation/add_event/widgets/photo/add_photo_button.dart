@@ -4,6 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class AddPhotoButton extends StatelessWidget {
   const AddPhotoButton({Key? key}) : super(key: key);
@@ -15,8 +16,7 @@ class AddPhotoButton extends StatelessWidget {
         final result = await FilePicker.platform.pickFiles(
           allowMultiple: false,
           type: FileType.custom,
-          // TODO - add translation
-          dialogTitle: 'Wybierz zdjęcie wydarzenia',
+          dialogTitle: S().selectEventPhoto,
           allowedExtensions: ['jpg', 'png'],
         );
 
@@ -30,9 +30,8 @@ class AddPhotoButton extends StatelessWidget {
         buildWhen: (previous, current) =>
             previous.eventPhoto != current.eventPhoto,
         builder: (context, state) {
-          // TODO - add translation
           return Text(
-            state.eventPhoto.value == null ? 'Dodaj zdjęcie' : 'Zmień zdjęcie',
+            state.eventPhoto.value == null ? S().addPhoto : S().editPhoto,
           );
         },
       ),

@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_common/extensions/option_extensions.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';

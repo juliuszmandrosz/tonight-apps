@@ -37,17 +37,15 @@ class EventRevenue extends StatelessWidget {
           children: [
             RevenueTile(
               icon: FontAwesomeIcons.chartSimple,
-              value:
-                  '${formatDoubleToMoney(ticketSales.clubIncome, ticketSales.currency)}'
-                  '${getCurrencySymbolFromCode(ticketSales.currency)}',
+              value: formatDoubleToMoney(
+                  ticketSales.clubIncome, ticketSales.currency),
               label: S().income,
               isFirst: true,
             ),
             RevenueTile(
               icon: FontAwesomeIcons.moneyBills,
-              value:
-                  '${formatDoubleToMoney(ticketSales.totalRevenue, ticketSales.currency)}'
-                  '${getCurrencySymbolFromCode(ticketSales.currency)}',
+              value: formatDoubleToMoney(
+                  ticketSales.totalRevenue, ticketSales.currency),
               label: S().totalRevenue,
             ),
             RevenueTile(

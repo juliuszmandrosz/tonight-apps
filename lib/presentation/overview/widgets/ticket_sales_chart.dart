@@ -4,6 +4,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/overview/overview_cubit.dart';
 import 'package:raver_partners/presentation/overview/widgets/chart_data.dart';
 import 'package:raver_partners/presentation/overview/widgets/raver_partners_column_chart.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class TicketSalesChart extends StatelessWidget {
   const TicketSalesChart({Key? key}) : super(key: key);
@@ -18,14 +19,13 @@ class TicketSalesChart extends StatelessWidget {
 
         final List<ChartData> chartData = [
           ChartData(
-            x: 'Normal events',
+            x: S().normal,
             y: normalTicketsSold.toDouble(),
             label: '$normalTicketsSold',
             color: context.secondaryColor,
           ),
           ChartData(
-            // TODO - add translation
-            x: 'Exclusive events',
+            x: S().exclusive,
             y: sales.exclusiveTicketsSold.toDouble(),
             label: '${sales.exclusiveTicketsSold}',
             color: context.primaryColor,
@@ -36,9 +36,7 @@ class TicketSalesChart extends StatelessWidget {
                 chartData: chartData,
                 maximum: sales.ticketsSold.toDouble(),
               )
-            : const Center(
-                child: Text('Brak sprzedanych biletów'),
-              );
+            : Center(child: Text(S().noTicketsSold));
       },
     );
   }

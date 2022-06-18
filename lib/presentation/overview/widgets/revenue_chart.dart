@@ -4,6 +4,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/overview/overview_cubit.dart';
 import 'package:raver_partners/presentation/overview/widgets/chart_data.dart';
 import 'package:raver_partners/presentation/overview/widgets/raver_partners_column_chart.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class RevenueChart extends StatelessWidget {
   const RevenueChart({Key? key}) : super(key: key);
@@ -17,15 +18,14 @@ class RevenueChart extends StatelessWidget {
             sales.totalRevenue - sales.exclusiveEventsRevenue;
         final List<ChartData> chartData = [
           ChartData(
-            x: 'Normal events',
+            x: S().normal,
             y: normalEventsRevenue,
             label: '${formatDoubleToMoney(normalEventsRevenue, sales.currency)}'
                 '${getCurrencySymbolFromCode(sales.currency)}',
             color: context.secondaryColor,
           ),
           ChartData(
-            // TODO - add translation
-            x: 'Exclusive events',
+            x: S().exclusive,
             y: sales.exclusiveEventsRevenue,
             label:
                 '${formatDoubleToMoney(sales.exclusiveEventsRevenue, sales.currency)}'
@@ -38,9 +38,7 @@ class RevenueChart extends StatelessWidget {
                 chartData: chartData,
                 maximum: sales.totalRevenue,
               )
-            : const Center(
-                child: Text('Brak przychodów'),
-              );
+            : Center(child: Text(S().noRevenue));
       },
     );
   }

@@ -23,11 +23,10 @@ class OverviewPage extends StatelessWidget {
               isScrollable: false,
               labelPadding: const EdgeInsets.symmetric(horizontal: 10.0),
               tabs: [
-                const Tab(
-                  icon: Icon(FontAwesomeIcons.coins),
+                Tab(
+                  icon: const Icon(FontAwesomeIcons.coins),
                   child: AutoSizeText(
-                    // TODO - add translation
-                    'Przychód',
+                    S().revenue,
                     textAlign: TextAlign.center,
                     maxLines: 1,
                   ),
@@ -40,10 +39,10 @@ class OverviewPage extends StatelessWidget {
                     maxLines: 1,
                   ),
                 ),
-                const Tab(
-                  icon: FaIcon(FontAwesomeIcons.crown),
+                Tab(
+                  icon: const FaIcon(FontAwesomeIcons.crown),
                   child: AutoSizeText(
-                    'Vipy',
+                    S().vips,
                     textAlign: TextAlign.center,
                     maxLines: 1,
                   ),

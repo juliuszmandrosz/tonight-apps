@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/domain/currency_params/currency_params_entity.dart';
-import 'package:raver_partners/domain/currency_params/currency_params_facade.dart';
 
 part 'club_info_cubit.freezed.dart';
 

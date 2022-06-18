@@ -110,10 +110,9 @@ class _NavigatorPageState extends State<NavigatorPage> {
                   tabsRouter.setActiveIndex(i);
                 },
                 destinations: [
-                  const NavigationDestination(
-                    icon: FaIcon(FontAwesomeIcons.chartSimple),
-                    // TODO - add translation
-                    label: 'Overview',
+                  NavigationDestination(
+                    icon: const FaIcon(FontAwesomeIcons.chartSimple),
+                    label: S().overview,
                   ),
                   NavigationDestination(
                     icon: const FaIcon(FontAwesomeIcons.list),

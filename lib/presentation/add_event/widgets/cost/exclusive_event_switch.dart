@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class ExclusiveEventSwitch extends StatelessWidget {
   const ExclusiveEventSwitch({Key? key}) : super(key: key);
@@ -15,9 +16,8 @@ class ExclusiveEventSwitch extends StatelessWidget {
         return SwitchListTile.adaptive(
           dense: true,
           contentPadding: const EdgeInsets.symmetric(horizontal: 0),
-          // TODO - add translation
           title: Text(
-            'Wydarzenie na wyłączność',
+            S().exclusiveEvent,
             style: context.subtitle1,
           ),
           value: state.isExclusiveEvent,

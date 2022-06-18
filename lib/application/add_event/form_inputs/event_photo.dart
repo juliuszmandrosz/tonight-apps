@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:formz/formz.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 enum EventPhotoError {
   empty,
@@ -8,9 +9,7 @@ enum EventPhotoError {
 }
 
 final eventPhotoErrorMessages = {
-  // TODO - add translations
-  EventPhotoError.empty: 'Dodaj zdjęcie',
-  EventPhotoError.wrongSize: 'Zły rozmiar',
+  EventPhotoError.empty: S().pleaseAddPhoto,
 };
 
 class EventPhoto extends FormzInput<File?, EventPhotoError> {

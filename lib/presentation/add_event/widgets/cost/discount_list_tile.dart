@@ -28,8 +28,7 @@ class DiscountListTile extends StatelessWidget {
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 5),
             child: Text(
-              // TODO - add translation
-              '${collectedDiscounts.length} sztuk',
+              '${collectedDiscounts.length}x',
               style: context.bodyText2.copyWith(
                 color: context.secondaryColor,
               ),

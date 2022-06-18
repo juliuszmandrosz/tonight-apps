@@ -1,10 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:formz/formz.dart';
-import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_edit_ticket_pool/add_edit_ticket_pool_cubit.dart';
 import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/price_utils.dart';
-import 'package:raver_partners/domain/currency_params/currency_params_entity.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 enum VipPriceError { empty, tooHigh, tooLow }

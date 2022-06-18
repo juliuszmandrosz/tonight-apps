@@ -54,7 +54,8 @@ class RewardListCubit extends Cubit<RewardListState> {
     );
   }
 
-  _emitDeleteFailure(RewardFailure failure, List<Reward> previousRewards) {
+  _emitDeleteFailure(
+      PartnerRewardFailure failure, List<Reward> previousRewards) {
     emit(
       state.copyWith(
         errorMessage: some(S().errorDeletingReward),

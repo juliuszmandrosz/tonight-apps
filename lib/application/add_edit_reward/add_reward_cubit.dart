@@ -63,7 +63,7 @@ class AddRewardCubit extends Cubit<AddRewardState> {
     return status.isValid;
   }
 
-  _emitFailure(RewardFailure failure, String message) {
+  _emitFailure(PartnerRewardFailure failure, String message) {
     emit(
       state.copyWith(
         errorMessage: some(message),

@@ -56,8 +56,7 @@ class AddEventStepsHeader extends StatelessWidget {
         return S().urlLinks;
 
       case AddEventStep.cost:
-        // TODO - add translation
-        return 'Koszt';
+        return S().cost;
 
       case AddEventStep.summary:
         return S().summary;

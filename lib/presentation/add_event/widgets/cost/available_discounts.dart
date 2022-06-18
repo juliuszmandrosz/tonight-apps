@@ -5,6 +5,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/domain/discounts/partner_discount_entity.dart';
 import 'package:raver_partners/presentation/add_event/widgets/cost/discount_list_tile.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class AvailableDiscounts extends StatelessWidget {
   const AvailableDiscounts({Key? key}) : super(key: key);
@@ -27,8 +28,7 @@ class AvailableDiscounts extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: AutoSizeText(
-                // TODO - add translation
-                'Dostępne zniżki',
+                S().availableDiscounts,
                 style: context.subtitle1,
               ),
             ),

@@ -398,8 +398,7 @@ class AddEventCubit extends Cubit<AddEventState> {
 
     if (state.isDiscountApplied && state.appliedDiscount.isNone()) {
       status = FormzStatus.invalid;
-      // TODO - add translation
-      _showErrorMessage('Wybierz zniżkę');
+      _showErrorMessage(S().selectDiscount);
     }
 
     emit(state.copyWith(status: status));
@@ -508,10 +507,9 @@ class AddEventCubit extends Cubit<AddEventState> {
       state.eventPhoto.value!,
     );
 
-    // TODO - add translation
     return failureOrSuccess.fold(
       (failure) {
-        _emitFailure('Błąd podczas dodawania zdjęcia');
+        _emitFailure(S().serverError);
         return left(failure);
       },
       (photoUrl) => right(photoUrl),

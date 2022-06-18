@@ -81,6 +81,8 @@ dependencies:
   charts_flutter: ^0.12.0
   syncfusion_flutter_charts: ^20.1.58+1
   fl_chart: ^0.51.0
+  firebase_crashlytics: ^2.8.1
+  dio: ^4.0.6
 
   raver_auth:
     git:
@@ -108,6 +110,7 @@ dependencies:
   raver_rewards:
     git:
       url: git@github.com:juliuszmandrosz/RaverRewards.git
+      ref: develop
 
   raver_payments:
     git:

@@ -7,11 +7,17 @@ abstract class SelectorManagementCloudFunctionsFacade {
 
 class SelectorManagementCloudFunctionsFacadeImpl
     implements SelectorManagementCloudFunctionsFacade {
+  final FirebaseFunctions _firebaseFunctions;
+
+  SelectorManagementCloudFunctionsFacadeImpl(this._firebaseFunctions);
+
   @override
   Future<String> generateAccessCodeForSelector() async {
-    final generateAccessCodeForSelectorFn = FirebaseFunctions.instance
-        .httpsCallable(generateAccessCodeForSelectorFnName);
+    final generateAccessCodeForSelectorFn =
+        _firebaseFunctions.httpsCallable(generateAccessCodeForSelectorFnName);
+
     final result = await generateAccessCodeForSelectorFn.call();
+
     return result.data;
   }
 }

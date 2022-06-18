@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/domain/club_sales/club_sales_entity.dart';
 import 'package:raver_partners/domain/discounts/partner_discount_entity.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class DiscountListTile extends StatelessWidget {
   final PartnerDiscount discount;
@@ -25,10 +26,9 @@ class DiscountListTile extends StatelessWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // TODO - add translation
           Flexible(
             child: Text(
-              '${discount.requiredExclusiveEventsSales} sprzedanych sztuk',
+              '${discount.requiredExclusiveEventsSales} ${S().sold}',
               style: context.subtitle1,
             ),
           ),
