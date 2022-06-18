@@ -20,16 +20,14 @@ class RevenueChart extends StatelessWidget {
           ChartData(
             x: S().normal,
             y: normalEventsRevenue,
-            label: '${formatDoubleToMoney(normalEventsRevenue, sales.currency)}'
-                '${getCurrencySymbolFromCode(sales.currency)}',
+            label: formatDoubleToMoney(normalEventsRevenue, sales.currency),
             color: context.secondaryColor,
           ),
           ChartData(
             x: S().exclusive,
             y: sales.exclusiveEventsRevenue,
-            label:
-                '${formatDoubleToMoney(sales.exclusiveEventsRevenue, sales.currency)}'
-                '${getCurrencySymbolFromCode(sales.currency)}',
+            label: formatDoubleToMoney(
+                sales.exclusiveEventsRevenue, sales.currency),
             color: context.primaryColor,
           ),
         ];
