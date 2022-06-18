@@ -8,3 +8,5 @@ const normalEventFee = 'NORMAL_EVENT_FEE';
 const exclusiveEventFee = 'EXCLUSIVE_EVENT_FEE';
 const serviceFee = 'SERVICE_FEE';
 const apiEndpoint = 'API_ENDPOINT';
+const partnerDynamicLinkUrl = 'PARTNER_DYNAMIC_LINK_URL';
+const partnerDynamicLinkDomain = 'PARTNER_DYNAMIC_LINK_DOMAIN';
