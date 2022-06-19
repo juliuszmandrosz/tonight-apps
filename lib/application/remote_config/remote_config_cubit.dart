@@ -24,6 +24,8 @@ class RemoteConfigCubit extends Cubit<RemoteConfigState> {
 
     emit(state.copyWith(status: CubitStatus.loading));
 
+    await _networkCheckCubit.retryNetworkConnection();
+
     if (!_networkCheckCubit.state.isConnected) {
       emit(state.copyWith(status: CubitStatus.failure));
       return;
