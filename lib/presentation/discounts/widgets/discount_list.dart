@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/discounts/discounts_cubit.dart';
-import 'package:raver_partners/presentation/core/ticket_logo_animation.dart';
+import 'package:raver_partners/presentation/core/dots_loading_indicator.dart';
 import 'package:raver_partners/presentation/discounts/widgets/discount_list_tile.dart';
 
 class DiscountList extends StatelessWidget {
@@ -13,7 +13,7 @@ class DiscountList extends StatelessWidget {
     return BlocBuilder<DiscountsCubit, DiscountsState>(
       builder: (context, state) {
         return state.status.isLoading()
-            ? const TicketLogoAnimation()
+            ? const DotsLoadingIndicator()
             : ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
