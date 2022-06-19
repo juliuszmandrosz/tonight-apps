@@ -72,14 +72,17 @@ class ClubOpinions extends StatelessWidget {
                           ],
                         ),
                       )
-                    : ListView.separated(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        separatorBuilder: (context, i) => const Divider(),
-                        itemCount: state.reviews.length + 1,
-                        itemBuilder: (ctx, i) => i >= state.reviews.length
-                            ? const SizedBox()
-                            : ClubReviewListTile(review: state.reviews[i]),
+                    : RefreshIndicator(
+                        onRefresh: () async => _refreshOpinions(context),
+                        child: ListView.separated(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          separatorBuilder: (context, i) => const Divider(),
+                          itemCount: state.reviews.length + 1,
+                          itemBuilder: (ctx, i) => i >= state.reviews.length
+                              ? const SizedBox()
+                              : ClubReviewListTile(review: state.reviews[i]),
+                        ),
                       );
             }
           },
