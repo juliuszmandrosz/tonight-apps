@@ -74,7 +74,7 @@ class AddEventPage extends StatelessWidget {
 
                       if (state.status.isSubmissionSuccess) {
                         _isEventAddedSuccessfully = true;
-                        AutoRouter.of(context).popUntilRoot();
+                        context.router.popUntilRoot();
                         context.showSnackbarMessage(S().eventAddedSuccessfully);
                       }
                     },

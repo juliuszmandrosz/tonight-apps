@@ -15,10 +15,10 @@ class AddEventSteps extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(5),
-      child: Column(
-        children: [
-          Expanded(
-            child: ListView(
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
               children: const [
                 AddEventNumberStepper(),
                 SizedBox(height: 40),
@@ -29,18 +29,24 @@ class AddEventSteps extends StatelessWidget {
               ],
             ),
           ),
-          BlocBuilder<AddEventCubit, AddEventState>(
-            buildWhen: (previous, current) =>
-                previous.currentStep != current.currentStep,
-            builder: (context, state) {
-              return state.currentStep == AddEventStep.summary
-                  ? const SizedBox()
-                  : const Padding(
-                      padding: EdgeInsets.all(10),
-                      child: AddEventStepsButtons(),
-                    );
-            },
-          ),
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: BlocBuilder<AddEventCubit, AddEventState>(
+              buildWhen: (previous, current) =>
+                  previous.currentStep != current.currentStep,
+              builder: (context, state) {
+                return state.currentStep == AddEventStep.summary
+                    ? const SizedBox()
+                    : const Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                          padding: EdgeInsets.all(10),
+                          child: AddEventStepsButtons(),
+                        ),
+                      );
+              },
+            ),
+          )
         ],
       ),
     );
