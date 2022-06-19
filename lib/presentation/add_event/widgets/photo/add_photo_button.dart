@@ -31,7 +31,7 @@ class AddPhotoButton extends StatelessWidget {
             previous.eventPhoto != current.eventPhoto,
         builder: (context, state) {
           return Text(
-            state.eventPhoto.value == null ? S().addPhoto : S().editPhoto,
+            state.eventPhoto.value == null ? S().addPhoto : S().changePhoto,
           );
         },
       ),
