@@ -9,6 +9,7 @@ import 'package:raver_partners/application/event_notifier/event_notifier_cubit.d
 import 'package:raver_partners/application/postpone_event/postpone_event_cubit.dart';
 import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
+import 'package:raver_partners/presentation/core/ticket_logo_animation.dart';
 import 'package:raver_partners/presentation/postpone_event/widgets/confirm_postpone_event_button.dart';
 import 'package:raver_partners/presentation/postpone_event/widgets/current_end_date_input.dart';
 import 'package:raver_partners/presentation/postpone_event/widgets/current_start_date_input.dart';
@@ -27,6 +28,8 @@ class PostponeEventPage extends StatelessWidget {
       )..addEventToState(event),
       child: LoaderOverlay(
         overlayColor: context.shadowColor,
+        overlayWidget: const TicketLogoAnimation(),
+        useDefaultLoading: false,
         child: Scaffold(
           appBar: RaverPartnersAppBar(title: S().postponeEvent),
           body: Padding(

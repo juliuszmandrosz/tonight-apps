@@ -48,6 +48,8 @@ class EventOverviewPage extends StatelessWidget {
       ],
       child: LoaderOverlay(
         overlayColor: context.shadowColor,
+        overlayWidget: const TicketLogoAnimation(),
+        useDefaultLoading: false,
         child: Scaffold(
           appBar: RaverPartnersAppBar(title: S().eventOverview),
           body: Padding(
