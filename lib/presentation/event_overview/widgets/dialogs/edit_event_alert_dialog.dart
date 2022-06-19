@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formz/formz.dart';
-import 'package:raver_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class EditEventAlertDialog extends StatelessWidget {
@@ -29,21 +26,11 @@ class EditEventAlertDialog extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
           child: Text(S().cancel.toUpperCase()),
         ),
-        BlocBuilder<UpcomingLiveEventCubit, UpcomingLiveEventState>(
-          buildWhen: (previous, current) =>
-              previous.editEventDetailsStatus != current.editEventDetailsStatus,
-          builder: (context, state) {
-            return state.editEventDetailsStatus.isSubmissionInProgress
-                ? const CircularProgressIndicator()
-                : TextButton(
-                    onPressed: () => onSubmitted(),
-                    child: Text(
-                      isValueEmpty
-                          ? S().add.toUpperCase()
-                          : S().edit.toUpperCase(),
-                    ),
-                  );
-          },
+        TextButton(
+          onPressed: () => onSubmitted(),
+          child: Text(
+            isValueEmpty ? S().add.toUpperCase() : S().edit.toUpperCase(),
+          ),
         ),
       ],
       content: Container(

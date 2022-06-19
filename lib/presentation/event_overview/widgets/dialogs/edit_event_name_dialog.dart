@@ -26,7 +26,7 @@ class EditEventNameDialog extends HookWidget {
       value: upcomingEventCubit,
       child: BlocConsumer<UpcomingLiveEventCubit, UpcomingLiveEventState>(
         listener: (context, state) {
-          if (state.editEventDetailsStatus.isSubmissionSuccess) {
+          if (state.editEventDetailsStatus.isSubmissionInProgress) {
             Navigator.of(context).pop();
           }
         },
