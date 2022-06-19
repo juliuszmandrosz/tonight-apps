@@ -117,6 +117,11 @@ const animationDuration = 300;
       transitionsBuilder: slideRightTransition,
       durationInMilliseconds: animationDuration,
     ),
+    CustomRoute(
+      page: FailurePage,
+      transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
   ],
 )
 class AppRouter extends _$AppRouter {}

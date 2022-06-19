@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/application/available_filters/available_filters_cubit.dart';
@@ -5,7 +6,7 @@ import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/add_event/widgets/form_inputs/event_dress_code_input.dart';
 import 'package:raver_partners/presentation/add_event/widgets/form_inputs/event_min_age_input.dart';
 import 'package:raver_partners/presentation/add_event/widgets/form_inputs/event_musical_genres_input.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:raver_partners/presentation/routes/app_router.dart';
 
 class EventDetailsStep extends StatelessWidget {
   const EventDetailsStep({Key? key}) : super(key: key);
@@ -15,16 +16,24 @@ class EventDetailsStep extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           getIt<AvailableFiltersCubit>()..getAvailableFilters(),
-      child: BlocBuilder<AvailableFiltersCubit, AvailableFiltersState>(
+      child: BlocConsumer<AvailableFiltersCubit, AvailableFiltersState>(
+        listener: (context, state) {
+          if (state.maybeWhen(orElse: () => false, loadFailure: (_) => true)) {
+            context.pushRoute(
+              FailureRoute(
+                retryCallback: () =>
+                    context.read<AvailableFiltersCubit>().getAvailableFilters(),
+              ),
+            );
+          }
+        },
         builder: (context, state) {
           return state.map(
             initial: (_) => Container(),
             loadInProgress: (_) => const Center(
               child: CircularProgressIndicator(),
             ),
-            loadFailure: (_) => Center(
-              child: Text(S().errorLoadingFilters),
-            ),
+            loadFailure: (_) => Container(),
             loadSuccess: (success) {
               final filters = success.availableFilters;
               return SingleChildScrollView(

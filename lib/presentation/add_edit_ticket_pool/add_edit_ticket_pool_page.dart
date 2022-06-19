@@ -66,7 +66,7 @@ class AddEditTicketPoolPage extends StatelessWidget {
             );
 
             if (state.status.isSubmissionSuccess) {
-              AutoRouter.of(context).pop<TicketPool>(state.result.getOrCrash());
+              context.popRoute<TicketPool>(state.result.getOrCrash());
             }
           },
           child: Scaffold(

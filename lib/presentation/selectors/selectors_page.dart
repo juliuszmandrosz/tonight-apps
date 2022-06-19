@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/selector_list/selector_list_cubit.dart';
 import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/core/dots_loading_indicator.dart';
+import 'package:raver_partners/presentation/routes/app_router.dart';
 import 'package:raver_partners/presentation/selectors/widgets/selector_list_tile.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -18,22 +20,31 @@ class SelectorsPage extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         child: BlocConsumer<SelectorListCubit, SelectorListState>(
           listenWhen: (previous, current) =>
-              previous.errorMessage != current.errorMessage,
+              previous.errorMessage != current.errorMessage ||
+              previous.initialStatus != current.initialStatus,
           listener: (context, state) {
+            if (state.initialStatus.isFailure()) {
+              context.pushRoute(
+                FailureRoute(
+                  retryCallback: () =>
+                      context.read<SelectorListCubit>().getSelectors(),
+                ),
+              );
+            }
+
             state.errorMessage.fold(
               () {},
               (error) => context.showSnackbarMessage(error),
             );
           },
           builder: (context, state) {
-            if (state.initialStatus.isLoading()) {
-              return const DotsLoadingIndicator();
+            if (state.initialStatus.isInitial() ||
+                state.initialStatus.isFailure()) {
+              return Container();
             }
 
-            if (state.initialStatus.isFailure()) {
-              return Center(
-                child: Text(S().errorLoadingSelectors),
-              );
+            if (state.initialStatus.isLoading()) {
+              return const DotsLoadingIndicator();
             }
 
             return state.selectors.isEmpty

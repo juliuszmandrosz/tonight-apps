@@ -7,7 +7,7 @@ import 'package:raver_partners/presentation/core/event_revenue.dart';
 import 'package:raver_partners/presentation/core/ticket_logo_animation.dart';
 
 import 'package:raver_partners/presentation/past_event_details/widgets/past_event_reviews.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:raver_partners/presentation/routes/app_router.dart';
 
 class PastEventDetailsListView extends StatefulWidget {
   const PastEventDetailsListView({Key? key}) : super(key: key);
@@ -32,15 +32,26 @@ class _PastEventDetailsListViewState extends State<PastEventDetailsListView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PastEventDetailsCubit, PastEventDetailsState>(
+    return BlocConsumer<PastEventDetailsCubit, PastEventDetailsState>(
+      listener: (context, state) {
+        if (state.status.isFailure()) {
+          context.pushRoute(
+            FailureRoute(
+              retryCallback: () =>
+                  context.read<PastEventDetailsCubit>().initData(
+                        state.event.getOrCrash(),
+                      ),
+            ),
+          );
+        }
+      },
       builder: (context, state) {
-        if (state.status.isLoading()) {
-          return const TicketLogoAnimation();
+        if (state.status.isInitial() || state.status.isFailure()) {
+          return Container();
         }
 
-        if (state.status.isFailure()) {
-          context.showSnackbarMessage(S().serverError);
-          AutoRouter.of(context).pop();
+        if (state.status.isLoading()) {
+          return const TicketLogoAnimation();
         }
 
         return ListView(

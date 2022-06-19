@@ -93,7 +93,18 @@ class _NavigatorPageState extends State<NavigatorPage> {
                       )..loadData(),
                     ),
                   ],
-                  child: BlocBuilder<WelcomeLoaderCubit, WelcomeLoaderState>(
+                  child: BlocConsumer<WelcomeLoaderCubit, WelcomeLoaderState>(
+                    listener: (context, state) {
+                      if (state.status.isFailure() &&
+                          context.router.current.name != FailureRoute.name) {
+                        context.pushRoute(
+                          FailureRoute(
+                            retryCallback: () =>
+                                context.read<WelcomeLoaderCubit>().loadData(),
+                          ),
+                        );
+                      }
+                    },
                     builder: (context, state) {
                       final loaderState =
                           context.read<WelcomeLoaderCubit>().state;
@@ -107,7 +118,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
                       }
 
                       if (loaderState.status.isFailure()) {
-                        return Center(child: Text(S().serverError));
+                        return Container();
                       }
 
                       return AutoTabsScaffold(

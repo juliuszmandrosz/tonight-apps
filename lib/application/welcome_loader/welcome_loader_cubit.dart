@@ -20,7 +20,7 @@ class WelcomeLoaderCubit extends Cubit<WelcomeLoaderState> {
         super(WelcomeLoaderState.initial());
 
   Future<void> loadData() async {
-    if (!_checkIfWelcomeLoaderIsNotInitialized()) return;
+    if (_checkIfWelcomeLoaderIsNotInitialized()) return;
 
     emit(state.copyWith(status: CubitStatus.loading));
 
@@ -45,7 +45,7 @@ class WelcomeLoaderCubit extends Cubit<WelcomeLoaderState> {
   }
 
   _checkIfWelcomeLoaderIsNotInitialized() {
-    return state.status.isInitial() || state.status.isFailure();
+    return state.status.isLoading() || state.status.isSuccess();
   }
 
   _emitSuccessIfAllLoaded() {

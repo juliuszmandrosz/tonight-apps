@@ -46,7 +46,7 @@ class PostponeEventPage extends StatelessWidget {
                     : context.loaderOverlay.hide();
 
                 if (state.status.isSubmissionSuccess) {
-                  AutoRouter.of(context).popUntilRoot();
+                  context.router.popUntilRoot();
                   context.showSnackbarMessage(S().eventPostponedSuccessfully);
                 }
               },

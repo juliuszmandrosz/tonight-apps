@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
@@ -5,6 +6,7 @@ import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/presentation/core/dots_loading_indicator.dart';
 
 import 'package:raver_partners/presentation/events/widgets/event_list_tile.dart';
+import 'package:raver_partners/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class EventList extends StatefulWidget {
@@ -28,85 +30,76 @@ class _EventListState extends State<EventList> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<EventOverviewBloc, EventOverviewState>(
-        builder: (context, state) {
-      switch (state.status) {
-        case CubitStatus.initial:
-          return Container();
-
-        case CubitStatus.loading:
-          return const DotsLoadingIndicator();
-
-        case CubitStatus.failure:
-          return RefreshIndicator(
-            onRefresh: () async => context.read<EventOverviewBloc>().add(
-                  EventOverviewEvent.eventsFetched(
-                    state.eventFilters,
-                    state.sortModel,
-                  ),
-                ),
-            child: Center(
-              child: Text(S().errorLoadingEvents),
-            ),
-          );
-
-        case CubitStatus.success:
-          if (state.events.isEmpty) {
-            return RefreshIndicator(
-              onRefresh: () async => context.read<EventOverviewBloc>().add(
-                    EventOverviewEvent.eventsFetched(
-                      state.eventFilters,
-                      state.sortModel,
-                    ),
-                  ),
-              child: SingleChildScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  child: Center(
-                    child: Text(
-                      S().events(0),
-                      style: context.subtitle1,
-                    ),
-                  ),
-                ),
+    return BlocConsumer<EventOverviewBloc, EventOverviewState>(
+        listenWhen: (previous, current) => previous.status != current.status,
+        listener: (context, state) {
+          if (state.status.isFailure()) {
+            context.pushRoute(
+              FailureRoute(
+                retryCallback: () => _refreshEvents(),
               ),
             );
           }
+        },
+        builder: (context, state) {
+          switch (state.status) {
+            case CubitStatus.initial:
+              return Container();
 
-          return Expanded(
-            child: RefreshIndicator(
-              onRefresh: () async => context.read<EventOverviewBloc>().add(
-                    EventOverviewEvent.eventsFetched(
-                      state.eventFilters,
-                      state.sortModel,
+            case CubitStatus.loading:
+              return const DotsLoadingIndicator();
+
+            case CubitStatus.failure:
+              return Container();
+
+            case CubitStatus.success:
+              if (state.events.isEmpty) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // TODO - change this
+                    const SizedBox(height: 100),
+                    Text(
+                      S().events(0),
+                      style: context.subtitle1,
                     ),
-                  ),
-              child: Column(
-                children: [
-                  Expanded(
-                    child: ListView.separated(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      itemCount: state.events.length + 1,
-                      itemBuilder: (ctx, i) => i >= state.events.length
-                          ? state.hasReachedMax
-                              ? const SizedBox(height: 60)
-                              : const BottomLoader()
-                          : Center(
-                              child: EventListTile(
-                                event: state.events[i],
-                              ),
-                            ),
-                      controller: _scrollController,
-                      separatorBuilder: (context, i) => const Divider(),
+                    const SizedBox(height: 20),
+                    OutlinedButton(
+                      onPressed: () => _refreshEvents(),
+                      child: Text(S().refresh),
                     ),
+                  ],
+                );
+              }
+
+              return Expanded(
+                child: RefreshIndicator(
+                  onRefresh: () async => _refreshEvents(),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: ListView.separated(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          itemCount: state.events.length + 1,
+                          itemBuilder: (ctx, i) => i >= state.events.length
+                              ? state.hasReachedMax
+                                  ? const SizedBox(height: 60)
+                                  : const BottomLoader()
+                              : Center(
+                                  child: EventListTile(
+                                    event: state.events[i],
+                                  ),
+                                ),
+                          controller: _scrollController,
+                          separatorBuilder: (context, i) => const Divider(),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          );
-      }
-    });
+                ),
+              );
+          }
+        });
   }
 
   @override
@@ -130,5 +123,14 @@ class _EventListState extends State<EventList> {
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.offset;
     return currentScroll >= (maxScroll * _scrollThreshold);
+  }
+
+  _refreshEvents() {
+    context.read<EventOverviewBloc>().add(
+          EventOverviewEvent.eventsFetched(
+            _eventOverviewBloc.state.eventFilters,
+            _eventOverviewBloc.state.sortModel,
+          ),
+        );
   }
 }
