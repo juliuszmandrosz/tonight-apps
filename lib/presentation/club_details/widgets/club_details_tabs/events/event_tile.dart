@@ -22,6 +22,8 @@ class EventTile extends StatelessWidget {
         event.eventName,
         style: context.headline6.copyWith(color: context.onSurfaceColor),
         maxLines: 2,
+        softWrap: false,
+        overflow: TextOverflow.ellipsis,
       ),
       subtitle: Padding(
         padding: const EdgeInsets.only(top: 10),
