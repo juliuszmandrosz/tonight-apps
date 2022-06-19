@@ -84,6 +84,13 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
+    () => RemoteConfigCubit(
+      networkCheckCubit: getIt(),
+      remoteConfigFacade: getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
     () => EventOverviewBloc(
       getIt(),
     ),
@@ -113,7 +120,7 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerLazySingleton(
+  getIt.registerFactory(
     () => ClubInfoCubit(
       clubFacade: getIt(),
       currencyParamsFacade: getIt(),
@@ -173,29 +180,32 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerFactory(
+  getIt.registerLazySingleton(
     () => NetworkCheckCubit(
       getIt(),
     ),
   );
 
-  getIt.registerLazySingleton(
-    () => WelcomeLoaderCubit(
-      clubInfoCubit: getIt(),
-      firebaseRemoteConfig: getIt(),
-      overviewCubit: getIt(),
+  getIt.registerFactoryParam(
+    (
+      OverviewCubit overviewCubit,
+      ClubInfoCubit clubInfoCubit,
+    ) =>
+        WelcomeLoaderCubit(
+      clubInfoCubit: clubInfoCubit,
+      overviewCubit: overviewCubit,
     ),
   );
 
-  getIt.registerLazySingleton(
+  getIt.registerFactory(
     () => OverviewCubit(
       clubSalesFacade: getIt(),
     ),
   );
 
-  getIt.registerFactory(
-    () => DiscountsCubit(
-      overviewCubit: getIt(),
+  getIt.registerFactoryParam(
+    (OverviewCubit overviewCubit, _) => DiscountsCubit(
+      overviewCubit: overviewCubit,
       discountFacade: getIt(),
     ),
   );
@@ -356,6 +366,14 @@ void _registerFacades() {
       firebaseAuth: getIt(),
     ),
   );
+
+  getIt.registerLazySingleton<RemoteConfigFacade>(
+    () => FirebaseRemoteConfigFacade(
+      logger: getIt(),
+      firebaseRemoteConfig: getIt(),
+      firebaseCrashlytics: getIt(),
+    ),
+  );
 }
 
 void _registerModules() {
@@ -373,7 +391,8 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebaseAuth.instance);
 
   getIt.registerLazySingleton(
-      () => FirebaseFunctions.instanceFor(region: 'europe-central2'));
+    () => FirebaseFunctions.instanceFor(region: 'europe-central2'),
+  );
 
   getIt.registerLazySingleton(() => FirebaseDynamicLinks.instance);
 

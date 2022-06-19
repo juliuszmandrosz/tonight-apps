@@ -24,6 +24,7 @@ class AddTicketPoolButton extends StatelessWidget {
               AddEditTicketPoolRoute(
                 editingTicketPool: none(),
                 currentTicketPools: state.ticketPools,
+                blocContext: context,
               ),
             );
 

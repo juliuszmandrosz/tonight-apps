@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
 import 'package:raver_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
 import 'package:raver_partners/injection.dart';
@@ -18,9 +19,11 @@ import 'package:raver_translations/raver_translations.dart';
 import 'package:formz/formz.dart';
 
 class EventOverviewPage extends StatelessWidget {
+  final BuildContext blocContext;
   final Event event;
 
   const EventOverviewPage({
+    required this.blocContext,
     required this.event,
     Key? key,
   }) : super(key: key);
@@ -30,12 +33,19 @@ class EventOverviewPage extends StatelessWidget {
     final isMoreThanDayLeftToEvent = event.eventStartDateTime.isAfter(
       DateTime.now().add(const Duration(days: 1)),
     );
-    return BlocProvider(
-      create: (context) => getIt<UpcomingLiveEventCubit>(
-        param1: context.read<EventNotifierCubit>(),
-      )
-        ..getEventTickets(event)
-        ..addEventToState(event),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<UpcomingLiveEventCubit>(
+            param1: context.read<EventNotifierCubit>(),
+          )
+            ..getEventTickets(event)
+            ..addEventToState(event),
+        ),
+        BlocProvider.value(
+          value: blocContext.read<ClubInfoCubit>(),
+        ),
+      ],
       child: LoaderOverlay(
         overlayColor: context.shadowColor,
         child: Scaffold(

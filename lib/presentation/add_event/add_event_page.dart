@@ -15,62 +15,71 @@ import 'package:raver_partners/presentation/core/ticket_logo_animation.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class AddEventPage extends StatelessWidget {
-  const AddEventPage({Key? key}) : super(key: key);
+  final BuildContext blocContext;
+
+  const AddEventPage({
+    required this.blocContext,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var _isEventAddedSuccessfully = false;
 
-    return GestureDetector(
-      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: WillPopScope(
-        onWillPop: () async {
-          if (_isEventAddedSuccessfully) {
-            return true;
-          }
+    return BlocProvider.value(
+      value: blocContext.read<ClubInfoCubit>(),
+      child: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: WillPopScope(
+          onWillPop: () async {
+            if (_isEventAddedSuccessfully) {
+              return true;
+            }
 
-          final result = await context
-              .showConfirmationDialogWithCustomMessage(S().confirmLeavingPage);
+            final result =
+                await context.showConfirmationDialogWithCustomMessage(
+                    S().confirmLeavingPage);
 
-          return result ?? false;
-        },
-        child: BlocProvider(
-          create: (context) => getIt<AddEventCubit>(
-            param1: context.read<EventNotifierCubit>(),
-            param2: context.read<ClubInfoCubit>(),
-          ),
-          child: LoaderOverlay(
-            overlayColor: context.shadowColor,
-            useDefaultLoading: false,
-            overlayWidget: const TicketLogoAnimation(),
-            child: Scaffold(
-              appBar: RaverPartnersAppBar(
-                title: S().addEvent,
-              ),
-              floatingActionButton: const AddEventButton(),
-              body: SafeArea(
-                child: BlocListener<AddEventCubit, AddEventState>(
-                  listenWhen: (previous, current) =>
-                      previous.errorMessage != current.errorMessage ||
-                      previous.status != current.status ||
-                      previous.currentStep != current.currentStep,
-                  listener: (context, state) {
-                    state.errorMessage.fold(
-                      () {},
-                      (error) => context.showSnackbarMessage(error),
-                    );
+            return result ?? false;
+          },
+          child: BlocProvider(
+            create: (context) => getIt<AddEventCubit>(
+              param1: context.read<EventNotifierCubit>(),
+              param2: context.read<ClubInfoCubit>(),
+            ),
+            child: LoaderOverlay(
+              overlayColor: context.shadowColor,
+              useDefaultLoading: false,
+              overlayWidget: const TicketLogoAnimation(),
+              child: Scaffold(
+                appBar: RaverPartnersAppBar(
+                  title: S().addEvent,
+                ),
+                floatingActionButton: const AddEventButton(),
+                body: SafeArea(
+                  child: BlocListener<AddEventCubit, AddEventState>(
+                    listenWhen: (previous, current) =>
+                        previous.errorMessage != current.errorMessage ||
+                        previous.status != current.status ||
+                        previous.currentStep != current.currentStep,
+                    listener: (context, state) {
+                      state.errorMessage.fold(
+                        () {},
+                        (error) => context.showSnackbarMessage(error),
+                      );
 
-                    state.status.isSubmissionInProgress
-                        ? context.loaderOverlay.show()
-                        : context.loaderOverlay.hide();
+                      state.status.isSubmissionInProgress
+                          ? context.loaderOverlay.show()
+                          : context.loaderOverlay.hide();
 
-                    if (state.status.isSubmissionSuccess) {
-                      _isEventAddedSuccessfully = true;
-                      AutoRouter.of(context).popUntilRoot();
-                      context.showSnackbarMessage(S().eventAddedSuccessfully);
-                    }
-                  },
-                  child: const AddEventSteps(),
+                      if (state.status.isSubmissionSuccess) {
+                        _isEventAddedSuccessfully = true;
+                        AutoRouter.of(context).popUntilRoot();
+                        context.showSnackbarMessage(S().eventAddedSuccessfully);
+                      }
+                    },
+                    child: const AddEventSteps(),
+                  ),
                 ),
               ),
             ),

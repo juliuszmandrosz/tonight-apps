@@ -22,10 +22,11 @@ class EventOverviewTicketPools extends StatelessWidget {
       final currentTicketPools =
           upcomingEventCubit.state.eventTickets.getOrCrash().ticketPools;
 
-      final result = await AutoRouter.of(context).push<TicketPool>(
+      final result = await context.pushRoute<TicketPool>(
         AddEditTicketPoolRoute(
           editingTicketPool: some(pool),
           currentTicketPools: currentTicketPools,
+          blocContext: context,
         ),
       );
 
@@ -72,6 +73,7 @@ class EventOverviewTicketPools extends StatelessWidget {
                               editingTicketPool: none(),
                               currentTicketPools:
                                   state.eventTickets.getOrCrash().ticketPools,
+                              blocContext: context,
                             ),
                           );
 

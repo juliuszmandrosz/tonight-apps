@@ -19,7 +19,7 @@ class RaverPartnersFab extends StatelessWidget {
           case SelectedPage.overview:
             break;
           case SelectedPage.events:
-            context.pushRoute(const AddEventRoute());
+            context.pushRoute(AddEventRoute(blocContext: context));
             break;
           case SelectedPage.rewards:
             context.pushRoute(const AddRewardRoute());

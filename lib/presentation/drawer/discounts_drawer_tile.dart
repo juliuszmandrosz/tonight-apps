@@ -13,7 +13,7 @@ class DiscountsDrawerTile extends StatelessWidget {
     return DrawerTile(
       label: S().discounts,
       icon: FontAwesomeIcons.percent,
-      onTap: () => context.pushRoute(const DiscountsRoute()),
+      onTap: () => context.pushRoute(DiscountsRoute(blocContext: context)),
     );
   }
 }

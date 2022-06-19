@@ -17,8 +17,13 @@ class EventListTile extends StatelessWidget {
       dense: true,
       contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
       onTap: () => isPastEvent
-          ? AutoRouter.of(context).push(PastEventDetailsRoute(event: event))
-          : AutoRouter.of(context).push(EventOverviewRoute(event: event)),
+          ? context.pushRoute(PastEventDetailsRoute(event: event))
+          : context.pushRoute(
+              EventOverviewRoute(
+                event: event,
+                blocContext: context,
+              ),
+            ),
       title: AutoSizeText(
         event.eventName,
         style: context.headline6.copyWith(color: context.onSurfaceColor),

@@ -1118,7 +1118,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "924d965b74353e5bcfe3ce52554b83e3e6ab36bb"
+      resolved-ref: "0a29e61106bfcb3678f2c52e8f12975c9b2522b0"
       url: "git@github.com:juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
@@ -1127,7 +1127,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "4472db700d159757f4d7bf729deee3ea295bbcaf"
+      resolved-ref: "90636f51f7b92c5301756a0915bb42478948d753"
       url: "git@github.com:juliuszmandrosz/RaverClubs.git"
     source: git
     version: "0.0.1"
@@ -1136,7 +1136,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: b674ddb2483f261f7304cad3a77576c6e0a7a76b
+      resolved-ref: f5968a1fd5d8e1dc661b5b0cf01476a00dbcd6b9
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"

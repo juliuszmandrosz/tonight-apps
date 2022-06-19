@@ -45,7 +45,9 @@ class _RaverPartnersSpeedDialState extends State<RaverPartnersSpeedDial> {
             color: context.onSurfaceColor,
           ),
           label: S().addEvent,
-          onTap: () => AutoRouter.of(context).push(const AddEventRoute()),
+          onTap: () => AutoRouter.of(context).push(
+            AddEventRoute(blocContext: context),
+          ),
           labelStyle: context.bodyText1,
           backgroundColor: context.primaryColor,
           labelBackgroundColor: context.primaryColor,

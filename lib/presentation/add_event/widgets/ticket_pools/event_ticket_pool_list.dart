@@ -20,6 +20,7 @@ class EventTicketPoolList extends StatelessWidget {
         AddEditTicketPoolRoute(
           editingTicketPool: some(pool),
           currentTicketPools: currentTicketPools,
+          blocContext: context,
         ),
       );
 

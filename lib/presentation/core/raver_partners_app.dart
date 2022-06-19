@@ -3,11 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
-import 'package:raver_partners/application/invite_selector/invite_selector_cubit.dart';
-import 'package:raver_partners/application/overview/overview_cubit.dart';
-import 'package:raver_partners/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -28,19 +24,7 @@ class RaverPartnersApp extends StatelessWidget {
           create: (context) => getIt<EventNotifierCubit>(),
         ),
         BlocProvider(
-          create: (context) => getIt<ClubInfoCubit>(),
-        ),
-        BlocProvider(
-          create: (context) => getIt<InviteSelectorCubit>(),
-        ),
-        BlocProvider(
           create: (ctx) => getIt<NetworkCheckCubit>()..initNetworkListener(),
-        ),
-        BlocProvider(
-          create: (ctx) => getIt<WelcomeLoaderCubit>(),
-        ),
-        BlocProvider(
-          create: (ctx) => getIt<OverviewCubit>(),
         ),
       ],
       child: MaterialApp.router(

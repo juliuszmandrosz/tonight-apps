@@ -11,9 +11,9 @@ class ContactMail extends StatelessWidget {
   Widget build(BuildContext context) {
     return ContactDetailsTile(
       contactType: S().email,
-      contactDetail: 'support@raverteam.io',
+      contactDetail: 'support@tonightapp.pl',
       trailingIcon: const FaIcon(FontAwesomeIcons.solidPaperPlane),
-      onTap: () => launchEmail('support@raverteam.io'),
+      onTap: () => launchEmail('support@tonightapp.pl'),
     );
   }
 }

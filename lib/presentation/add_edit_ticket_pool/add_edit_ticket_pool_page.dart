@@ -20,80 +20,86 @@ import 'package:raver_translations/raver_translations.dart';
 class AddEditTicketPoolPage extends StatelessWidget {
   final List<TicketPool> currentTicketPools;
   final Option<TicketPool> editingTicketPool;
+  final BuildContext blocContext;
 
   const AddEditTicketPoolPage({
     required this.currentTicketPools,
     required this.editingTicketPool,
+    required this.blocContext,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) {
-        final cubit = getIt<AddEditTicketPoolCubit>(
-          param1: context.read<ClubInfoCubit>(),
-        );
-
-        editingTicketPool.fold(
-          () {},
-          (pool) => cubit.addEditingTicketPoolToState(pool),
-        );
-
-        cubit.addCurrentTicketPoolsToState(currentTicketPools);
-
-        cubit.isVipEnabledChanged(
-          editingTicketPool.fold(
-            () => false,
-            (pool) => pool.isVipEnabled,
-          ),
-        );
-
-        return cubit;
-      },
-      child: BlocListener<AddEditTicketPoolCubit, AddEditTicketPoolState>(
-        listenWhen: (previous, current) =>
-            previous.errorMessage != current.errorMessage ||
-            previous.status != current.status,
-        listener: (context, state) {
-          state.errorMessage.fold(
-            () {},
-            (error) => context.showSnackbarMessage(error),
+    return BlocProvider.value(
+      value: blocContext.read<ClubInfoCubit>(),
+      child: BlocProvider(
+        create: (context) {
+          final cubit = getIt<AddEditTicketPoolCubit>(
+            param1: context.read<ClubInfoCubit>(),
           );
 
-          if (state.status.isSubmissionSuccess) {
-            AutoRouter.of(context).pop<TicketPool>(state.result.getOrCrash());
-          }
-        },
-        child: Scaffold(
-          appBar: RaverPartnersAppBar(
-            title: editingTicketPool.fold(
-              () => S().addTicketPool,
-              (_) => S().editTicketPool,
+          editingTicketPool.fold(
+            () {},
+            (pool) => cubit.addEditingTicketPoolToState(pool),
+          );
+
+          cubit.addCurrentTicketPoolsToState(currentTicketPools);
+
+          cubit.isVipEnabledChanged(
+            editingTicketPool.fold(
+              () => false,
+              (pool) => pool.isVipEnabled,
             ),
-          ),
-          floatingActionButton: const SaveTicketPoolButton(),
-          body: Padding(
-            padding: const EdgeInsets.all(15),
-            child: BlocBuilder<AddEditTicketPoolCubit, AddEditTicketPoolState>(
-              buildWhen: (previous, current) =>
-                  previous.isVipEnabled != current.isVipEnabled,
-              builder: (context, state) {
-                return ListView(
-                  children: [
-                    const TicketPoolQuantityInput(),
-                    if (editingTicketPool.fold(
-                        () => true, (pool) => pool.ticketsSold == 0))
-                      const TicketPoolPriceInput(),
-                    const SizedBox(height: 20),
-                    const VipAvailabilitySwitch(),
-                    const SizedBox(height: 20),
-                    if (!state.isVipEnabled) const VipInfo(),
-                    if (!state.isVipEnabled) const SizedBox(height: 20),
-                    if (state.isVipEnabled) const VipPriceInput()
-                  ],
-                );
-              },
+          );
+
+          return cubit;
+        },
+        child: BlocListener<AddEditTicketPoolCubit, AddEditTicketPoolState>(
+          listenWhen: (previous, current) =>
+              previous.errorMessage != current.errorMessage ||
+              previous.status != current.status,
+          listener: (context, state) {
+            state.errorMessage.fold(
+              () {},
+              (error) => context.showSnackbarMessage(error),
+            );
+
+            if (state.status.isSubmissionSuccess) {
+              AutoRouter.of(context).pop<TicketPool>(state.result.getOrCrash());
+            }
+          },
+          child: Scaffold(
+            appBar: RaverPartnersAppBar(
+              title: editingTicketPool.fold(
+                () => S().addTicketPool,
+                (_) => S().editTicketPool,
+              ),
+            ),
+            floatingActionButton: const SaveTicketPoolButton(),
+            body: Padding(
+              padding: const EdgeInsets.all(15),
+              child:
+                  BlocBuilder<AddEditTicketPoolCubit, AddEditTicketPoolState>(
+                buildWhen: (previous, current) =>
+                    previous.isVipEnabled != current.isVipEnabled,
+                builder: (context, state) {
+                  return ListView(
+                    children: [
+                      const TicketPoolQuantityInput(),
+                      if (editingTicketPool.fold(
+                          () => true, (pool) => pool.ticketsSold == 0))
+                        const TicketPoolPriceInput(),
+                      const SizedBox(height: 20),
+                      const VipAvailabilitySwitch(),
+                      const SizedBox(height: 20),
+                      if (!state.isVipEnabled) const VipInfo(),
+                      if (!state.isVipEnabled) const SizedBox(height: 20),
+                      if (state.isVipEnabled) const VipPriceInput()
+                    ],
+                  );
+                },
+              ),
             ),
           ),
         ),
