@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -21,10 +20,7 @@ class DrawerTile extends StatelessWidget {
     return ListTile(
       dense: true,
       contentPadding: const EdgeInsets.symmetric(horizontal: 0),
-      onTap: () {
-        context.popRoute();
-        onTap();
-      },
+      onTap: onTap,
       leading: FaIcon(
         icon,
         size: 20,
