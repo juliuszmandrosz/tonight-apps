@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:raver_clubs/raver_clubs.dart';
+import 'package:raver_clubs/domain/reviews/entities/review_entity.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/presentation/past_event_details/widgets/report_review_button.dart';
 
@@ -25,30 +25,9 @@ class ReviewSubtitle extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        Stack(
-          alignment: Alignment.center,
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  return SizedBox(
-                    width: constraints.maxWidth * 0.6,
-                    child: AutoSizeText(
-                      review.eventName,
-                      maxLines: 2,
-                      style: context.bodyText2
-                          .copyWith(color: context.secondaryColor),
-                    ),
-                  );
-                },
-              ),
-            ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: ReportReviewButton(review: review),
-            ),
-          ],
+        Align(
+          alignment: Alignment.centerRight,
+          child: ReportReviewButton(review: review),
         ),
       ],
     );
