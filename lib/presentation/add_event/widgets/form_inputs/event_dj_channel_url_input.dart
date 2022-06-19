@@ -70,6 +70,7 @@ class EventDjChannelUrlInput extends HookWidget {
                       decoration: InputDecoration(
                         labelText: eventSocialMedia[djChannel]!.label,
                         errorText: _getDjChannelUrlErrorMessage(state),
+                        errorMaxLines: 2,
                       ),
                     ),
                   ],

@@ -72,6 +72,7 @@ class EventFacebookUrlInput extends HookWidget {
                       decoration: InputDecoration(
                         labelText: eventSocialMedia[facebook]!.label,
                         errorText: _getFacebookUrlErrorMessage(state),
+                        errorMaxLines: 2,
                       ),
                     ),
                   ],
