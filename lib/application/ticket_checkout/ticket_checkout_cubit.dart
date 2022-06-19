@@ -320,7 +320,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
 
     _userTicketsSubscription = _ticketListCubit.stream.listen(
       (ticketListState) {
-        if (ticketListState.status == CubitStatus.failure) {
+        if (ticketListState.initialStatus == CubitStatus.failure) {
           _showSnackbarMessage(S().serverError);
           return;
         }

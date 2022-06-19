@@ -8,13 +8,15 @@ class TicketListState with _$TicketListState {
     required List<Ticket> upcomingLiveTickets,
     required List<Ticket> pastTickets,
     required bool hasReachedMax,
-    required CubitStatus status,
+    required CubitStatus initialStatus,
+    required CubitStatus fetchNextPageTicketsStatus,
   }) = _TicketListState;
 
   factory TicketListState.initial() => TicketListState(
         upcomingLiveTickets: [],
         pastTickets: [],
         hasReachedMax: false,
-        status: CubitStatus.initial,
+        initialStatus: CubitStatus.initial,
+        fetchNextPageTicketsStatus: CubitStatus.initial,
       );
 }

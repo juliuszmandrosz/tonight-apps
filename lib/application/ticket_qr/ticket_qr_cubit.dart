@@ -62,7 +62,7 @@ class TicketQrCubit extends Cubit<TicketQrState> {
 
     _userTicketsSubscription = _ticketListCubit.stream.listen(
       (ticketListState) {
-        if (ticketListState.status == CubitStatus.failure) {
+        if (ticketListState.initialStatus == CubitStatus.failure) {
           _emitTicketFailure(const UserTicketFailure.unexpected());
           return;
         }

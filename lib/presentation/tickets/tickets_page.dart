@@ -36,9 +36,9 @@ class _TicketsPageState extends State<TicketsPage> {
         padding: const EdgeInsets.all(15),
         child: BlocConsumer<TicketListCubit, TicketListState>(
             listenWhen: (previous, current) =>
-                previous.status != current.status,
+                previous.initialStatus != current.initialStatus,
             listener: (context, state) {
-              if (state.status.isFailure()) {
+              if (state.initialStatus.isFailure()) {
                 context.pushRoute(
                   FailureRoute(
                     retryCallback: () =>
@@ -48,7 +48,7 @@ class _TicketsPageState extends State<TicketsPage> {
               }
             },
             builder: (context, state) {
-              switch (state.status) {
+              switch (state.initialStatus) {
                 case CubitStatus.initial:
                   return Container();
 
@@ -116,10 +116,17 @@ class _TicketsPageState extends State<TicketsPage> {
                               ListView.separated(
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
-                                itemCount: state.pastTickets.length,
-                                itemBuilder: (ctx, i) => TicketCard(
-                                  ticket: state.pastTickets[i],
-                                ),
+                                itemCount: state.hasReachedMax
+                                    ? state.pastTickets.length
+                                    : state.pastTickets.length + 1,
+                                itemBuilder: (ctx, i) =>
+                                    i >= state.pastTickets.length
+                                        ? const BottomLoader()
+                                        : Center(
+                                            child: TicketCard(
+                                              ticket: state.pastTickets[i],
+                                            ),
+                                          ),
                                 separatorBuilder: (ctx, i) =>
                                     const SizedBox(height: 20),
                               ),

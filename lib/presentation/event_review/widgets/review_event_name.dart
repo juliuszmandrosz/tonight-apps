@@ -17,6 +17,7 @@ class ReviewEventName extends StatelessWidget {
       ticket.eventName,
       maxLines: 2,
       style: context.headline6,
+      textAlign: TextAlign.center,
     );
   }
 }

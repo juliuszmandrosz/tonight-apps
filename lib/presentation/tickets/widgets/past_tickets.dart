@@ -30,13 +30,13 @@ class _PastTicketsState extends State<PastTickets> {
   Widget build(BuildContext context) {
     return BlocBuilder<TicketListCubit, TicketListState>(
       builder: (context, state) {
-        if (state.status.isLoading()) {
+        if (state.initialStatus.isLoading()) {
           return const Center(
             child: CircularProgressIndicator(),
           );
         }
 
-        if (state.status.isFailure()) {
+        if (state.initialStatus.isFailure()) {
           context.showSnackbarMessage(S().serverError);
           AutoRouter.of(context).pop();
         }

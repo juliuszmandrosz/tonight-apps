@@ -151,7 +151,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   _initTickets() {
     _ticketListCubit.fetchTickets();
     _ticketsSub = _ticketListCubit.stream.listen((event) {
-      _checkAndEmitFailure(event.status);
+      _checkAndEmitFailure(event.initialStatus);
       _emitSuccessIfAllLoaded();
     });
   }
@@ -212,7 +212,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         _profileCubit.state.status == CubitStatus.success &&
         _eventOverviewBloc.state.status == CubitStatus.success &&
         _clubsOverviewBloc.state.status == CubitStatus.success &&
-        _ticketListCubit.state.status == CubitStatus.success &&
+        _ticketListCubit.state.initialStatus == CubitStatus.success &&
         _eventFavoriteCubit.state.status == CubitStatus.success &&
         _clubFavoriteCubit.state.status == CubitStatus.success &&
         _availableFiltersCubit.state

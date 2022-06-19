@@ -21,7 +21,11 @@ class TicketListCubit extends Cubit<TicketListState> {
   }
 
   Future<void> fetchNextPagePastTickets() async {
-    if (state.hasReachedMax) return;
+    if (state.hasReachedMax || state.fetchNextPageTicketsStatus.isLoading()) {
+      return;
+    }
+
+    emit(state.copyWith(fetchNextPageTicketsStatus: CubitStatus.loading));
 
     final failureOrSuccess = await _ticketFacade.getPastUserTickets(
       lastTicket: state.pastTickets.last,
@@ -30,13 +34,17 @@ class TicketListCubit extends Cubit<TicketListState> {
 
     failureOrSuccess.fold(
       (failure) => emit(
-        state.copyWith(status: CubitStatus.failure),
+        state.copyWith(
+          initialStatus: CubitStatus.failure,
+          fetchNextPageTicketsStatus: CubitStatus.failure,
+        ),
       ),
       (tickets) => emit(
         state.copyWith(
-          status: CubitStatus.success,
+          initialStatus: CubitStatus.success,
           pastTickets: List.of(state.pastTickets)..addAll(tickets),
           hasReachedMax: tickets.length != pageSize,
+          fetchNextPageTicketsStatus: CubitStatus.success,
         ),
       ),
     );
@@ -50,18 +58,18 @@ class TicketListCubit extends Cubit<TicketListState> {
   }
 
   Future<void> _getUpcomingLiveTickets() async {
-    emit(state.copyWith(status: CubitStatus.loading));
+    emit(state.copyWith(initialStatus: CubitStatus.loading));
 
     _upcomingLiveTicketsSubscription =
         _ticketFacade.getUpcomingAndLiveUserTickets().listen(
       (result) {
         result.fold(
           (failure) => emit(
-            state.copyWith(status: CubitStatus.failure),
+            state.copyWith(initialStatus: CubitStatus.failure),
           ),
           (tickets) => emit(
             state.copyWith(
-              status: CubitStatus.success,
+              initialStatus: CubitStatus.success,
               upcomingLiveTickets: tickets,
             ),
           ),
@@ -76,10 +84,10 @@ class TicketListCubit extends Cubit<TicketListState> {
     );
 
     failureOrSuccess.fold(
-      (failure) => emit(state.copyWith(status: CubitStatus.failure)),
+      (failure) => emit(state.copyWith(initialStatus: CubitStatus.failure)),
       (tickets) => emit(
         state.copyWith(
-          status: CubitStatus.success,
+          initialStatus: CubitStatus.success,
           pastTickets: tickets,
           hasReachedMax: tickets.length != pageSize,
         ),
