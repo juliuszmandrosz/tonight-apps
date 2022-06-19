@@ -5,6 +5,7 @@ import 'package:raver/application/events/event_details/event_details_cubit.dart'
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/details_hero_image.dart';
+import 'package:raver/presentation/core/ticket_logo_animation.dart';
 import 'package:raver/presentation/events_details/widgets/canceled_event_message.dart';
 import 'package:raver/presentation/events_details/widgets/event_details_additional_info.dart';
 import 'package:raver/presentation/events_details/widgets/event_details_artist_name.dart';
@@ -58,9 +59,7 @@ class EventDetailsPage extends StatelessWidget {
         builder: (context, state) {
           return state.map(
             initial: (_) => Container(),
-            loadInProgress: (_) => const Center(
-              child: CircularProgressIndicator(),
-            ),
+            loadInProgress: (_) => const TicketLogoAnimation(),
             loadFailure: (_) => Container(),
             loadSuccess: (state) {
               final event = state.event;
