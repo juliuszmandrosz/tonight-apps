@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
@@ -24,10 +23,12 @@ class EventListTile extends StatelessWidget {
                 blocContext: context,
               ),
             ),
-      title: AutoSizeText(
+      title: Text(
         event.eventName,
         style: context.headline6.copyWith(color: context.onSurfaceColor),
         maxLines: 2,
+        softWrap: false,
+        overflow: TextOverflow.ellipsis,
       ),
       subtitle: Padding(
         padding: const EdgeInsets.only(top: 10),
