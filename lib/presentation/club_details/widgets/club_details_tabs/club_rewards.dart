@@ -50,34 +50,39 @@ class ClubRewards extends StatelessWidget {
                 ),
               );
             }
-            return ListView(
-              children: [
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Center(
-                      child: AutoSizeText(
-                        '${S().yourNumberOfEntries}: '
-                        '${clubRewardsWithAttendance.userAttendance}',
-                        maxLines: 1,
-                        style: context.subtitle1,
+            return RefreshIndicator(
+              onRefresh: () async =>
+                  context.read<ClubRewardsCubit>().getRewards(state.clubId),
+              child: ListView(
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Center(
+                        child: AutoSizeText(
+                          '${S().yourNumberOfEntries}: '
+                          '${clubRewardsWithAttendance.userAttendance}',
+                          maxLines: 1,
+                          style: context.subtitle1,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 30),
-                for (var entries in clubRewardsWithAttendance.rewards
-                    .map((reward) => reward.requiredEntries)
-                    .toSet())
-                  RewardListForRequiredEntries(
-                    isCollected:
-                        clubRewardsWithAttendance.userAttendance >= entries,
-                    requiredEntries: entries,
-                    rewards: clubRewardsWithAttendance.rewards
-                        .where((reward) => reward.requiredEntries == entries)
-                        .toList(),
-                  ),
-              ],
+                  const SizedBox(height: 30),
+                  for (var entries in clubRewardsWithAttendance.rewards
+                      .map((reward) => reward.requiredEntries)
+                      .toSet())
+                    RewardListForRequiredEntries(
+                      isCollected:
+                          clubRewardsWithAttendance.userAttendance >= entries,
+                      requiredEntries: entries,
+                      rewards: clubRewardsWithAttendance.rewards
+                          .where((reward) => reward.requiredEntries == entries)
+                          .toList(),
+                    ),
+                ],
+              ),
             );
         }
       },
