@@ -164,9 +164,19 @@ class _EventsPageState extends State<EventsPage> {
   }
 
   _refreshEvents() {
+    var filters = _eventOverviewBloc.state.eventFilters;
+
+    if (filters.dateRangeFilter.toDate == null) {
+      final dateRangeFilter = DateRangeFilter(
+        fromDate: DateTime.now(),
+        toDate: null,
+      );
+      filters = filters.copyWith(dateRangeFilter: dateRangeFilter);
+    }
+
     _eventOverviewBloc.add(
       EventOverviewEvent.eventsFetched(
-        _eventOverviewBloc.state.eventFilters,
+        filters,
         _eventOverviewBloc.state.sortModel,
       ),
     );
