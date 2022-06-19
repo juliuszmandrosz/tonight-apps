@@ -8,6 +8,7 @@ import 'package:raver/injection.dart';
 import 'package:raver/presentation/club_details/widgets/club_description.dart';
 import 'package:raver/presentation/club_details/widgets/club_details_tabs.dart';
 import 'package:raver/presentation/core/details_hero_image.dart';
+import 'package:raver/presentation/core/ticket_logo_animation.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
@@ -111,9 +112,7 @@ class _ClubDetailsPageState extends State<ClubDetailsPage>
         builder: (context, state) {
           return state.map(
             initial: (_) => Container(),
-            loadInProgress: (_) => const Center(
-              child: CircularProgressIndicator(),
-            ),
+            loadInProgress: (_) => const TicketLogoAnimation(),
             loadSuccess: (state) {
               final club = state.club;
               return Scaffold(
