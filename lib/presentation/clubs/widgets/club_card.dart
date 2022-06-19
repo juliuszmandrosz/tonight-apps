@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -91,10 +90,14 @@ class ClubCard extends StatelessWidget {
                         size: 18,
                       ),
                       const SizedBox(width: 10),
-                      AutoSizeText(
-                        _club.clubName,
-                        style: context.subtitle1,
-                        maxLines: 1,
+                      Expanded(
+                        child: Text(
+                          _club.clubName,
+                          style: context.subtitle1,
+                          softWrap: false,
+                          overflow: TextOverflow.fade,
+                          maxLines: 1,
+                        ),
                       ),
                     ],
                   ),
@@ -106,10 +109,14 @@ class ClubCard extends StatelessWidget {
                         size: 18,
                       ),
                       const SizedBox(width: 10),
-                      AutoSizeText(
-                        _club.locationString,
-                        style: context.subtitle1,
-                        maxLines: 1,
+                      Expanded(
+                        child: Text(
+                          _club.locationString,
+                          style: context.subtitle1,
+                          softWrap: false,
+                          overflow: TextOverflow.fade,
+                          maxLines: 1,
+                        ),
                       ),
                     ],
                   ),
@@ -134,11 +141,16 @@ class ClubCard extends StatelessWidget {
                                 style: context.bodyText2,
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Text(
-                                '${_club.reviewCount} ${S().opinions(_club.reviewCount)}',
-                                style: context.bodyText2,
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Text(
+                                  '${_club.reviewCount} ${S().opinions(_club.reviewCount)}',
+                                  style: context.bodyText2,
+                                  softWrap: false,
+                                  overflow: TextOverflow.fade,
+                                  maxLines: 1,
+                                ),
                               ),
                             ),
                           ],
