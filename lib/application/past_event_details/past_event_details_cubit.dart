@@ -41,7 +41,9 @@ class PastEventDetailsCubit extends Cubit<PastEventDetailsState> {
   }
 
   Future<void> fetchNextPageReviews() async {
-    if (state.hasReachedMax) return;
+    if (state.hasReachedMax || state.fetchNextPageStatus.isLoading()) return;
+
+    emit(state.copyWith(fetchNextPageStatus: CubitStatus.loading));
 
     final failureOrSuccess = await _reviewFacade.getEventReviews(
       state.event.getOrCrash().id,
@@ -51,13 +53,17 @@ class PastEventDetailsCubit extends Cubit<PastEventDetailsState> {
 
     failureOrSuccess.fold(
       (failure) => emit(
-        state.copyWith(status: CubitStatus.failure),
+        state.copyWith(
+          status: CubitStatus.failure,
+          fetchNextPageStatus: CubitStatus.failure,
+        ),
       ),
       (reviews) => emit(
         state.copyWith(
           status: CubitStatus.success,
           reviews: List.of(state.reviews)..addAll(reviews),
           hasReachedMax: reviews.length != pageSize,
+          fetchNextPageStatus: CubitStatus.success,
         ),
       ),
     );

@@ -12,6 +12,7 @@ class PastEventDetailsState with _$PastEventDetailsState {
     required bool hasReachedMax,
     required Option<String> errorMessage,
     required Option<String> reportingReviewId,
+    required CubitStatus fetchNextPageStatus,
   }) = _PastEventDetailsState;
 
   factory PastEventDetailsState.initial() => PastEventDetailsState(
@@ -24,5 +25,6 @@ class PastEventDetailsState with _$PastEventDetailsState {
         hasReachedMax: false,
         errorMessage: none(),
         reportingReviewId: none(),
+        fetchNextPageStatus: CubitStatus.initial,
       );
 }
