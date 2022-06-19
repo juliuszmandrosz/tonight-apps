@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/invite_selector/invite_selector_cubit.dart';
+import 'package:raver_partners/presentation/core/ticket_logo_animation.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class GenerateAccessCodeButton extends StatelessWidget {
@@ -13,9 +14,7 @@ class GenerateAccessCodeButton extends StatelessWidget {
     return BlocBuilder<InviteSelectorCubit, InviteSelectorState>(
       builder: (context, state) {
         return state.status.isLoading()
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
+            ? const TicketLogoAnimation()
             : ElevatedButton(
                 onPressed: () => context
                     .read<InviteSelectorCubit>()

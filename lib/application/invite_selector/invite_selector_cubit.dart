@@ -16,7 +16,12 @@ class InviteSelectorCubit extends Cubit<InviteSelectorState> {
       : super(InviteSelectorState.initial());
 
   Future<void> createInvitationCodeForSelector() async {
-    emit(state.copyWith(status: CubitStatus.loading));
+    emit(
+      state.copyWith(
+        status: CubitStatus.loading,
+        accessCode: none(),
+      ),
+    );
 
     final failureOrSuccess =
         await _selectorManagementFacade.generateAccessCodeForSelector();
