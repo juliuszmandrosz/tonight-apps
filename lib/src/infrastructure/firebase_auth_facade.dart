@@ -598,6 +598,11 @@ class FirebaseAuthFacade
   }
 
   Future<AuthFailure> _handleDioError(DioError error) async {
+    if (error.type == DioErrorType.other &&
+        error.message.contains('SocketException')) {
+      return AuthFailure(message: unavailable);
+    }
+
     final failure = firebaseAuthMessages[error.response?.data['message']];
 
     if (failure != null) {
