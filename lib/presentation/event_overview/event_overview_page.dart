@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
@@ -60,12 +59,12 @@ class EventOverviewPage extends StatelessWidget {
                   previous.initialStatus != current.initialStatus ||
                   previous.ticketPoolStatus != current.ticketPoolStatus,
               listenWhen: (previous, current) =>
-                  previous.errorMessage != current.errorMessage ||
+                  previous.snackbarMessage != current.snackbarMessage ||
                   previous.cancelEventStatus != current.cancelEventStatus ||
                   previous.editEventDetailsStatus !=
                       current.editEventDetailsStatus,
               listener: (context, state) {
-                state.errorMessage.fold(
+                state.snackbarMessage.fold(
                   () {},
                   (message) => context.showSnackbarMessage(message),
                 );
@@ -73,8 +72,6 @@ class EventOverviewPage extends StatelessWidget {
                 if (state.editEventDetailsStatus.isSubmissionSuccess) {
                   context.showSnackbarMessage(S().eventEditedSuccessfully);
                 }
-
-                Logger().i(state.editEventDetailsStatus);
 
                 state.cancelEventStatus.isLoading() ||
                         state.editEventDetailsStatus.isSubmissionInProgress

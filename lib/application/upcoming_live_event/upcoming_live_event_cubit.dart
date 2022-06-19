@@ -66,9 +66,10 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
 
     failureOrSuccess.fold(
       (failure) => _emitEventTicketFailure(failure),
-      (success) => emit(
-        state.copyWith(ticketPoolStatus: CubitStatus.success),
-      ),
+      (success) {
+        emit(state.copyWith(ticketPoolStatus: CubitStatus.success));
+        _showSnackbarMessage(S().ticketPoolHasBeenUpdatedSuccessfully);
+      },
     );
   }
 
@@ -82,9 +83,10 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
 
     failureOrSuccess.fold(
       (failure) => _emitEventTicketFailure(failure),
-      (success) => emit(
-        state.copyWith(ticketPoolStatus: CubitStatus.success),
-      ),
+      (success) {
+        emit(state.copyWith(ticketPoolStatus: CubitStatus.success));
+        _showSnackbarMessage(S().ticketPoolHasBeenAddedSuccessfully);
+      },
     );
   }
 
@@ -98,9 +100,10 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
 
     failureOrSuccess.fold(
       (failure) => _emitEventTicketFailure(failure),
-      (success) => emit(
-        state.copyWith(ticketPoolStatus: CubitStatus.success),
-      ),
+      (success) {
+        emit(state.copyWith(ticketPoolStatus: CubitStatus.success));
+        _showSnackbarMessage(S().ticketPoolHasBeenDeletedSuccessfully);
+      },
     );
   }
 
@@ -306,11 +309,11 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
     emit(
       state.copyWith(
         editEventDetailsStatus: FormzStatus.submissionFailure,
-        errorMessage: some(S().errorUpdatingEvent),
+        snackbarMessage: some(S().errorUpdatingEvent),
       ),
     );
 
-    emit(state.copyWith(errorMessage: none()));
+    emit(state.copyWith(snackbarMessage: none()));
   }
 
   _emitEventTicketFailure(EventTicketsFailure failure) {
@@ -319,23 +322,23 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
     emit(
       state.copyWith(
         ticketPoolStatus: CubitStatus.failure,
-        errorMessage: some(message),
+        snackbarMessage: some(message),
       ),
     );
 
-    emit(state.copyWith(errorMessage: none()));
+    emit(state.copyWith(snackbarMessage: none()));
   }
 
   _emitEventFailure(PartnerEventFailure failure) {
     final errorMessage = getEventFailureMessage(failure);
 
     if (errorMessage.isNotEmpty) {
-      emit(state.copyWith(errorMessage: some(errorMessage)));
+      emit(state.copyWith(snackbarMessage: some(errorMessage)));
     }
     emit(
       state.copyWith(
         cancelEventStatus: CubitStatus.failure,
-        errorMessage: none(),
+        snackbarMessage: none(),
       ),
     );
   }
@@ -350,6 +353,11 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
           S().deletedTicketPoolAfterTicketWasSold,
       deletedAllTicketPools: (_) => S().deletedAllTicketPools,
     );
+  }
+
+  _showSnackbarMessage(String message) {
+    emit(state.copyWith(snackbarMessage: some(message)));
+    emit(state.copyWith(snackbarMessage: none()));
   }
 
   @override

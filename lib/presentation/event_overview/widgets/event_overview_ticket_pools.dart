@@ -66,8 +66,7 @@ class EventOverviewTicketPools extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () async {
-                          final result =
-                              await AutoRouter.of(context).push<TicketPool>(
+                          final result = await context.pushRoute<TicketPool>(
                             AddEditTicketPoolRoute(
                               editingTicketPool: none(),
                               currentTicketPools:
