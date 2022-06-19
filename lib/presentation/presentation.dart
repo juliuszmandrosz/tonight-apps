@@ -2,3 +2,7 @@ export 'bottom_loader.dart';
 export 'raver_hyper_link.dart';
 export 'raver_icon_link.dart';
 export 'social_media_button.dart';
+export 'page_transitions/fade_in_transition.dart';
+export 'page_transitions/slide_left_transition.dart';
+export 'page_transitions/slide_right_transition.dart';
+export 'page_transitions/zoom_in_transition.dart';
