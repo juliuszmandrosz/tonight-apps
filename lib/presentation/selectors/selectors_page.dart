@@ -49,7 +49,10 @@ class SelectorsPage extends StatelessWidget {
 
             return state.selectors.isEmpty
                 ? Center(
-                    child: Text(S().selectors(0)),
+                    child: Text(
+                      S().selectors(0),
+                      style: context.subtitle1,
+                    ),
                   )
                 : Column(
                     children: [

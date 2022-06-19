@@ -49,7 +49,10 @@ class RewardsPage extends StatelessWidget {
 
             return state.rewards.isEmpty
                 ? Center(
-                    child: Text(S().rewards(0)),
+                    child: Text(
+                      S().rewards(0),
+                      style: context.subtitle1,
+                    ),
                   )
                 : ListView(
                     children: [
