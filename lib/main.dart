@@ -16,7 +16,7 @@ import 'package:timeago/timeago.dart' as timeago;
 Future<void> main() async {
   GoogleFonts.config.allowRuntimeFetching = false;
 
-  await dotenv.load(fileName: '.env');
+  await dotenv.load();
 
   await runZonedGuarded(
     () async {
