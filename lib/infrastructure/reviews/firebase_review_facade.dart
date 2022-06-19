@@ -29,11 +29,14 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
     int pageSize = 20,
     Review? lastReview,
   }) async {
-    final reviewsQuery = _getClubReviewsQuery(clubId,
-        pageSize: pageSize, lastReview: lastReview);
+    final reviewsQuery = await _getClubReviewsQuery(
+      clubId,
+      pageSize: pageSize,
+      lastReview: lastReview,
+    );
+
     try {
       final result = await reviewsQuery.get();
-
       return right(result.docs
           .map((review) => ReviewDto.fromFirebase(review).toDomain())
           .toList());
@@ -45,14 +48,19 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
   }
 
   @override
-  Future<Either<PartnerReviewFailure, List<Review>>> getClubReviewsAsPartner(
-      {int pageSize = 20, Review? lastReview}) async {
+  Future<Either<PartnerReviewFailure, List<Review>>> getClubReviewsAsPartner({
+    int pageSize = 20,
+    Review? lastReview,
+  }) async {
     final clubId = _firebaseAuth.tryGetFirebaseUser().uid;
-    final reviewsQuery = _getClubReviewsQuery(clubId,
-        pageSize: pageSize, lastReview: lastReview);
+    final reviewsQuery = await _getClubReviewsQuery(
+      clubId,
+      pageSize: pageSize,
+      lastReview: lastReview,
+    );
+
     try {
       final result = await reviewsQuery.get();
-
       return right(result.docs
           .map((review) => ReviewDto.fromFirebase(review).toDomain())
           .toList());
@@ -124,8 +132,8 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
         .limit(pageSize);
 
     if (lastReview != null) {
-      reviewRef =
-          reviewRef.startAfter([Timestamp.fromDate(lastReview.dateAdded)]);
+      final lastDoc = await clubRef.reviewCollection.doc(lastReview.id).get();
+      reviewRef = reviewRef.startAfterDocument(lastDoc);
     }
 
     try {
@@ -218,19 +226,20 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
         .set(reviewReportDto.toJson());
   }
 
-  Query _getClubReviewsQuery(
+  Future<Query> _getClubReviewsQuery(
     String clubId, {
     int pageSize = 20,
     Review? lastReview,
-  }) {
-    final clubDocRef = _firestore.clubCollection.doc(clubId);
-    var reviewRef = clubDocRef.reviewCollection
+  }) async {
+    final clubRef = _firestore.clubCollection.doc(clubId);
+
+    var reviewRef = clubRef.reviewCollection
         .orderBy('dateAdded', descending: true)
         .limit(pageSize);
 
     if (lastReview != null) {
-      reviewRef =
-          reviewRef.startAfter([Timestamp.fromDate(lastReview.dateAdded)]);
+      final lastDoc = await clubRef.reviewCollection.doc(lastReview.id).get();
+      reviewRef = reviewRef.startAfterDocument(lastDoc);
     }
     return reviewRef;
   }
