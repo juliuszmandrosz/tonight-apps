@@ -239,7 +239,7 @@ class EventCard extends StatelessWidget {
                             ),
                             const SizedBox(width: 10),
                             Expanded(
-                              child: AutoSizeText(
+                              child: Text(
                                 event.clubName,
                                 style: context.subtitle1,
                                 overflow: TextOverflow.fade,
