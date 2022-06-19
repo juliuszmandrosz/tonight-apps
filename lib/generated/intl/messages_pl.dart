@@ -118,6 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Operacja anulowana przez użytkownika"),
         "changePasswordTitle":
             MessageLookupByLibrary.simpleMessage("Zmień Hasło"),
+        "changePhoto": MessageLookupByLibrary.simpleMessage("Zmień zdjęcie"),
         "changeUsername":
             MessageLookupByLibrary.simpleMessage("Zmień nazwę użytkownika"),
         "checkout": MessageLookupByLibrary.simpleMessage("Kasa"),
@@ -195,7 +196,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Edytuj nazwę wydarzenia"),
         "editFacebookUrl": MessageLookupByLibrary.simpleMessage(
             "Edytuj link URL wydarzenia na Facebooku"),
-        "editPhoto": MessageLookupByLibrary.simpleMessage("Zmień zdjęcie"),
         "editReward": MessageLookupByLibrary.simpleMessage("Edytuj nagrodę"),
         "editTicketPool":
             MessageLookupByLibrary.simpleMessage("Edytuj pulę biletów"),
@@ -626,6 +626,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bilet stracił ważność"),
         "ticketForAnotherEvent": MessageLookupByLibrary.simpleMessage(
             "Bilet jest na inne wydarzenie"),
+        "ticketPoolHasBeenAddedSuccessfully":
+            MessageLookupByLibrary.simpleMessage(
+                "Pula biletów została dodana pomyślnie"),
+        "ticketPoolHasBeenDeletedSuccessfully":
+            MessageLookupByLibrary.simpleMessage(
+                "Pula biletów została usunięta pomyślnie"),
+        "ticketPoolHasBeenUpdatedSuccessfully":
+            MessageLookupByLibrary.simpleMessage(
+                "Pula biletów została zaaktualizowana pomyślnie"),
         "ticketPoolHasSoldOut": MessageLookupByLibrary.simpleMessage(
             "Pula biletów została wyprzedana!"),
         "ticketPools": MessageLookupByLibrary.simpleMessage("Pule biletów"),

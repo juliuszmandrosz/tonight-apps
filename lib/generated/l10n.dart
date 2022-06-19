@@ -483,6 +483,16 @@ class S {
     );
   }
 
+  /// `Change photo`
+  String get changePhoto {
+    return Intl.message(
+      'Change photo',
+      name: 'changePhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Change username`
   String get changeUsername {
     return Intl.message(
@@ -981,16 +991,6 @@ class S {
     return Intl.message(
       'Edit Facebook event URL link',
       name: 'editFacebookUrl',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Change photo`
-  String get editPhoto {
-    return Intl.message(
-      'Change photo',
-      name: 'editPhoto',
       desc: '',
       args: [],
     );
@@ -3629,6 +3629,36 @@ class S {
     return Intl.message(
       'Ticket is for another event',
       name: 'ticketForAnotherEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ticket pool has been added successfully`
+  String get ticketPoolHasBeenAddedSuccessfully {
+    return Intl.message(
+      'Ticket pool has been added successfully',
+      name: 'ticketPoolHasBeenAddedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ticket pool has been deleted successfully`
+  String get ticketPoolHasBeenDeletedSuccessfully {
+    return Intl.message(
+      'Ticket pool has been deleted successfully',
+      name: 'ticketPoolHasBeenDeletedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ticket pool has been updated successfully`
+  String get ticketPoolHasBeenUpdatedSuccessfully {
+    return Intl.message(
+      'Ticket pool has been updated successfully',
+      name: 'ticketPoolHasBeenUpdatedSuccessfully',
       desc: '',
       args: [],
     );

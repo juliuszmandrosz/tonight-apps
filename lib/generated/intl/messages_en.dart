@@ -115,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Operation cancelled by user"),
         "changePasswordTitle":
             MessageLookupByLibrary.simpleMessage("Change Password"),
+        "changePhoto": MessageLookupByLibrary.simpleMessage("Change photo"),
         "changeUsername":
             MessageLookupByLibrary.simpleMessage("Change username"),
         "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
@@ -193,7 +194,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Edit event name"),
         "editFacebookUrl": MessageLookupByLibrary.simpleMessage(
             "Edit Facebook event URL link"),
-        "editPhoto": MessageLookupByLibrary.simpleMessage("Change photo"),
         "editReward": MessageLookupByLibrary.simpleMessage("Edit reward"),
         "editTicketPool":
             MessageLookupByLibrary.simpleMessage("Edit ticket pool"),
@@ -613,6 +613,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketExpired": MessageLookupByLibrary.simpleMessage("Ticket expired"),
         "ticketForAnotherEvent":
             MessageLookupByLibrary.simpleMessage("Ticket is for another event"),
+        "ticketPoolHasBeenAddedSuccessfully":
+            MessageLookupByLibrary.simpleMessage(
+                "Ticket pool has been added successfully"),
+        "ticketPoolHasBeenDeletedSuccessfully":
+            MessageLookupByLibrary.simpleMessage(
+                "Ticket pool has been deleted successfully"),
+        "ticketPoolHasBeenUpdatedSuccessfully":
+            MessageLookupByLibrary.simpleMessage(
+                "Ticket pool has been updated successfully"),
         "ticketPoolHasSoldOut":
             MessageLookupByLibrary.simpleMessage("Ticket pool has sold out!"),
         "ticketPools": MessageLookupByLibrary.simpleMessage("Ticket Pools"),
