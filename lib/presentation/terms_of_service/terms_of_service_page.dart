@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -10,6 +11,12 @@ class TermsOfServicePage extends StatelessWidget {
     return Scaffold(
       // TODO - add terms of service
       appBar: RaverPartnersAppBar(title: S().termsOfService),
+      body: Center(
+        child: Text(
+          S().availableSoon,
+          style: context.subtitle1,
+        ),
+      ),
     );
   }
 }
