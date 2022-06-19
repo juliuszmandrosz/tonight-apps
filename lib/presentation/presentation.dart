@@ -6,3 +6,4 @@ export 'page_transitions/fade_in_transition.dart';
 export 'page_transitions/slide_left_transition.dart';
 export 'page_transitions/slide_right_transition.dart';
 export 'page_transitions/zoom_in_transition.dart';
+export 'failure_page.dart';
