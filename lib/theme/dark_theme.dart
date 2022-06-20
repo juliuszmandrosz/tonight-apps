@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:raver_common/raver_common.dart';
 
@@ -27,9 +28,9 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
 );
 
 PageTransitionsTheme get transitions => const PageTransitionsTheme(
-      builders: <TargetPlatform, PageTransitionsBuilder>{
+      builders: {
+        TargetPlatform.iOS: NoShadowCupertinoPageTransitionsBuilder(),
         TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
-        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
       },
     );
 
