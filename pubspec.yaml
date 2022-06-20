@@ -84,6 +84,7 @@ dependencies:
   firebase_crashlytics: ^2.8.1
   dio: ^4.0.6
   google_fonts: ^3.0.0
+  flutter_native_splash: ^2.2.3+1
 
   raver_auth:
     git:
@@ -152,6 +153,7 @@ flutter:
     - .env
     - assets/icons/
     - assets/animations/
+    - assets/images/
     - assets/google_fonts/montserrat/
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -183,6 +185,25 @@ flutter:
 flutter_icons:
   android: false
   ios: true
-  image_path: "assets/icons/launcher_icon.png"
+  image_path: 'assets/images/ticket_logo.png'
 
 
+flutter_native_splash:
+  color: '#000000'
+  color_dark: '#000000'
+  image: 'assets/images/ticket_logo.png'
+  image_dark: 'assets/images/ticket_logo.png'
+  fullscreen: true
+  web: false
+  android: true
+  ios: true
+
+android_12:
+  color: '#000000'
+  color_dark: '#000000'
+  image: 'assets/images/ticket_logo.png'
+  image_dark: 'assets/images/ticket_logo.png'
+  fullscreen: true
+  web: false
+  android: true
+  ios: true
