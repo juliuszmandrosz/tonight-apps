@@ -330,6 +330,8 @@
   "@exclusive": {},
   "exclusiveEvent": "Wydarzenie na wyłączność",
   "@exclusiveEvent": {},
+  "exclusiveEventInfo": "Sprzedaż biletów jedynie na bramce oraz w aplikacji Tonight",
+  "@exclusiveEventInfo": {},
   "exitButtonTitle": "Wyjdź",
   "@exitButtonTitle": {},
   "facebook": "Facebook",

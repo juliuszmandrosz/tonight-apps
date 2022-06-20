@@ -1712,6 +1712,16 @@ class S {
     );
   }
 
+  /// `Ticket sales only at the gate and in the Tonight app`
+  String get exclusiveEventInfo {
+    return Intl.message(
+      'Ticket sales only at the gate and in the Tonight app',
+      name: 'exclusiveEventInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Exit`
   String get exitButtonTitle {
     return Intl.message(

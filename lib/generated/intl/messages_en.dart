@@ -323,6 +323,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "exclusive": MessageLookupByLibrary.simpleMessage("Exclusive"),
         "exclusiveEvent":
             MessageLookupByLibrary.simpleMessage("Exclusive event"),
+        "exclusiveEventInfo": MessageLookupByLibrary.simpleMessage(
+            "Ticket sales only at the gate and in the Tonight app"),
         "exitButtonTitle": MessageLookupByLibrary.simpleMessage("Exit"),
         "facebook": MessageLookupByLibrary.simpleMessage("Facebook"),
         "facebookEvent": MessageLookupByLibrary.simpleMessage("Facebook event"),
