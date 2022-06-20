@@ -594,13 +594,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.18.5"
-  flutter_launcher_icons:
-    dependency: "direct dev"
-    description:
-      name: flutter_launcher_icons
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.9.3"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -1150,7 +1143,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: f29152de78f315a514179632a4427b8fa7504473
+      resolved-ref: acb76209e39db767457d50c1059365fc0aa58dcc
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"

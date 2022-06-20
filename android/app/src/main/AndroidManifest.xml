@@ -28,7 +28,7 @@
     </queries>
 
     <application
-            android:label="Tonight Partners"
+        android:label="Tonight Partners"
             android:name="${applicationName}"
             android:icon="@mipmap/ic_launcher">
         <activity

@@ -38,26 +38,10 @@ const animationDuration = 300;
     CustomRoute(
       page: NavigatorPage,
       children: [
-        CustomRoute(
-          page: OverviewPage,
-          transitionsBuilder: slideLeftTransition,
-          durationInMilliseconds: animationDuration,
-        ),
-        CustomRoute(
-          page: EventsPage,
-          transitionsBuilder: slideLeftTransition,
-          durationInMilliseconds: animationDuration,
-        ),
-        CustomRoute(
-          page: RewardsPage,
-          transitionsBuilder: slideLeftTransition,
-          durationInMilliseconds: animationDuration,
-        ),
-        CustomRoute(
-          page: SelectorsPage,
-          transitionsBuilder: slideLeftTransition,
-          durationInMilliseconds: animationDuration,
-        ),
+        AutoRoute(page: OverviewPage),
+        AutoRoute(page: EventsPage),
+        AutoRoute(page: RewardsPage),
+        AutoRoute(page: SelectorsPage),
       ],
       transitionsBuilder: zoomInTransition,
       durationInMilliseconds: animationDuration,
