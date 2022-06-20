@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
@@ -86,7 +85,6 @@ class EventOverviewPage extends StatelessWidget {
                   context.showSnackbarMessage(S().eventCanceledSuccessfully);
                 }
 
-                Logger().i(state.initialStatus);
                 if (state.initialStatus.isFailure()) {
                   context.pushRoute(
                     FailureRoute(

@@ -4,6 +4,7 @@ import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/presentation/add_event/widgets/cost/apply_discount_switch.dart';
 import 'package:raver_partners/presentation/add_event/widgets/cost/available_discounts.dart';
 import 'package:raver_partners/presentation/add_event/widgets/cost/current_fee.dart';
+import 'package:raver_partners/presentation/add_event/widgets/cost/exclusive_event_info.dart';
 import 'package:raver_partners/presentation/add_event/widgets/cost/exclusive_event_switch.dart';
 
 class EventCostStep extends StatelessWidget {
@@ -23,6 +24,13 @@ class EventCostStep extends StatelessWidget {
             const Divider(),
             const ExclusiveEventSwitch(),
             const Divider(),
+            if (!state.isExclusiveEvent)
+              Column(
+                children: const [
+                  SizedBox(height: 10),
+                  ExclusiveEventInfo(),
+                ],
+              ),
             if (state.isExclusiveEvent && state.availableDiscounts.isNotEmpty)
               Column(
                 children: const [
