@@ -10,7 +10,7 @@ abstract class ClubReviewsState with _$ClubReviewsState {
     required String clubId,
     required List<Review> reviews,
     required bool hasReachedMax,
-    required Option<String> errorMessage,
+    required Option<String> snackbarMessage,
     required Option<String> reportingReviewId,
   }) = _ClubReviewsState;
 
@@ -20,7 +20,7 @@ abstract class ClubReviewsState with _$ClubReviewsState {
         clubId: '',
         reviews: [],
         hasReachedMax: false,
-        errorMessage: none(),
+        snackbarMessage: none(),
         reportingReviewId: none(),
       );
 }

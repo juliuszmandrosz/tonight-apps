@@ -21,17 +21,13 @@ class ClubOpinions extends StatelessWidget {
     return BlocConsumer<ClubReviewsBloc, ClubReviewsState>(
       listenWhen: (previous, current) =>
           previous.status != current.status ||
-          previous.errorMessage != current.errorMessage ||
+          previous.snackbarMessage != current.snackbarMessage ||
           previous.reviewReportStatus != current.reviewReportStatus,
       listener: (context, state) {
-        state.errorMessage.fold(
+        state.snackbarMessage.fold(
           () {},
           (error) => context.showSnackbarMessage(error),
         );
-
-        if (state.reviewReportStatus.isSuccess()) {
-          context.showSnackbarMessage(S().reviewReportedSuccessfully);
-        }
 
         if (state.status.isFailure()) {
           context.pushRoute(

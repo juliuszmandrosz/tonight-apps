@@ -88,13 +88,20 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
 
     failureOrSuccess.fold(
       (failure) => _emitReviewReportFailure(failure),
-      (success) => emit(
-        state.copyWith(
-          reviewReportStatus: CubitStatus.success,
-          reportingReviewId: none(),
-        ),
+      (success) => _emitReviewReportSuccess(),
+    );
+  }
+
+  _emitReviewReportSuccess() {
+    emit(
+      state.copyWith(
+        snackbarMessage: some(S().reviewReportedSuccessfully),
+        reviewReportStatus: CubitStatus.success,
+        reportingReviewId: none(),
       ),
     );
+
+    emit(state.copyWith(snackbarMessage: none()));
   }
 
   _emitReviewReportFailure(UserReviewFailure reviewFailure) {
@@ -105,12 +112,12 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
 
     emit(
       state.copyWith(
-        errorMessage: some(failureMessage),
+        snackbarMessage: some(failureMessage),
         reviewReportStatus: CubitStatus.failure,
         reportingReviewId: none(),
       ),
     );
 
-    emit(state.copyWith(errorMessage: none()));
+    emit(state.copyWith(snackbarMessage: none()));
   }
 }
