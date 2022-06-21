@@ -123,6 +123,7 @@ InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
         ),
       ),
       errorStyle: DarkTextStyles.bodyText1.copyWith(color: colors.error),
+      errorMaxLines: 2,
     );
 
 TextSelectionThemeData get textSelectionTheme => TextSelectionThemeData(
