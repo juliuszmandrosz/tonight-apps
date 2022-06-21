@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -7,7 +6,7 @@ class OrContinueWith extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AutoSizeText(
+    return Text(
       S().orContinueWith,
       maxLines: 1,
     );

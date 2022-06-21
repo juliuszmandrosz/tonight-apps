@@ -6,9 +6,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:raver/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/routes/app_router.dart';
-import 'package:raver/presentation/sign_in/widgets/auth_providers.dart';
-import 'package:raver/presentation/sign_in/widgets/or_continue_with.dart';
-import 'package:raver/presentation/sign_in/widgets/sign_in_button.dart';
+import 'package:raver/presentation/sign_in/widgets/sign_in_buttons.dart';
 import 'package:raver/presentation/sign_in/widgets/sign_in_email_input.dart';
 import 'package:raver/presentation/sign_in/widgets/tonight_logo.dart';
 import 'package:raver_auth/raver_auth.dart';
@@ -49,21 +47,25 @@ class SignInPage extends StatelessWidget {
             },
             child: Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  SizedBox(height: 10),
-                  Expanded(
-                    child: TonightLogo(),
+              child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Column(
+                      children: const [
+                        SizedBox(height: 10),
+                        TonightLogo(),
+                        SignInEmailInput(),
+                        SizedBox(height: 30),
+                      ],
+                    ),
                   ),
-                  SignInEmailInput(),
-                  SizedBox(height: 30),
-                  SignInButton(),
-                  SizedBox(height: 30),
-                  OrContinueWith(),
-                  SizedBox(height: 30),
-                  AuthProviders(),
-                  SizedBox(height: 20),
+                  const SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: SignInButtons(),
+                    ),
+                  ),
                 ],
               ),
             ),

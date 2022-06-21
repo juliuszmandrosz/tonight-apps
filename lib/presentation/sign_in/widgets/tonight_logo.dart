@@ -9,6 +9,7 @@ class TonightLogo extends StatelessWidget {
     return SvgPicture.asset(
       'assets/icons/full_logo.svg',
       semanticsLabel: 'Tonight Logo',
+      height: MediaQuery.of(context).size.height * 0.4,
     );
   }
 }
