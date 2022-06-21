@@ -7,7 +7,6 @@ import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
-import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/application/welcome_loading/welcome_loading_cubit.dart';
@@ -72,16 +71,16 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
       ],
       child: BlocConsumer<RemoteConfigCubit, RemoteConfigState>(
         listener: (context, state) {
-          if (state.cubitStatus.isFailure()) {
+          if (state.status.isFailure()) {
             context.replaceRoute(const NetworkLostRoute());
           }
         },
         builder: (context, state) {
-          if (state.cubitStatus.isInitial() || state.cubitStatus.isFailure()) {
+          if (state.status.isInitial() || state.status.isFailure()) {
             return Container();
           }
 
-          if (state.cubitStatus.isLoading()) {
+          if (state.status.isLoading()) {
             return _ticketLogoAnimation ?? const TicketLogoAnimation();
           }
 

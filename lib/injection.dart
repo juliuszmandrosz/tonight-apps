@@ -29,15 +29,12 @@ import 'package:raver/application/events/event_details/event_details_cubit.dart'
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
-import 'package:raver/application/initialization/remote_config_cubit.dart';
 import 'package:raver/application/invoice_data/invoice_data_cubit.dart';
 import 'package:raver/application/profile/profile_cubit_hub.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/application/ticket_qr/ticket_qr_cubit.dart';
 import 'package:raver/application/vip_checkout/vip_checkout_cubit.dart';
-import 'package:raver/domain/remote_config/remote_config_facade.dart';
-import 'package:raver/infrastructure/remote_config/firebase_remote_config_facade.dart';
 import 'package:raver_account_settings/raver_account_settings.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_clubs/raver_clubs.dart';
@@ -222,7 +219,8 @@ void _registerCubits() {
   //Remote Config
   getIt.registerLazySingleton(
     () => RemoteConfigCubit(
-      getIt(),
+      networkCheckCubit: getIt(),
+      remoteConfigFacade: getIt(),
     ),
   );
 
