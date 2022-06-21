@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:raver/application/clubs/club_rewards/club_rewards_cubit.dart';
 import 'package:raver/presentation/club_details/widgets/club_details_tabs/rewards/reward_list_for_required_entries.dart';
+import 'package:raver/presentation/club_details/widgets/club_details_tabs/rewards/user_attendance.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -49,19 +49,15 @@ class ClubRewards extends StatelessWidget {
             if (clubRewardsWithAttendance.rewards.isEmpty) {
               return Center(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    UserAttendance(
+                      clubRewardsWithAttendance: clubRewardsWithAttendance,
+                    ),
+                    const SizedBox(height: 30),
                     Text(
                       S().clubDoesNotOfferRewards,
                       style: context.subtitle1,
-                    ),
-                    const SizedBox(height: 20),
-                    OutlinedButton(
-                      onPressed: () =>
-                          context.read<ClubRewardsCubit>().getRewards(
-                                state.clubId,
-                              ),
-                      child: Text(S().refresh),
+                      textAlign: TextAlign.center,
                     ),
                   ],
                 ),
@@ -73,18 +69,8 @@ class ClubRewards extends StatelessWidget {
               child: ListView(
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Center(
-                        child: AutoSizeText(
-                          '${S().yourNumberOfEntries}: '
-                          '${clubRewardsWithAttendance.userAttendance}',
-                          maxLines: 1,
-                          style: context.subtitle1,
-                        ),
-                      ),
-                    ),
+                  UserAttendance(
+                    clubRewardsWithAttendance: clubRewardsWithAttendance,
                   ),
                   const SizedBox(height: 30),
                   for (var entries in clubRewardsWithAttendance.rewards
