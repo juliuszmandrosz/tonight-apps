@@ -11,6 +11,7 @@ import 'package:raver/application/ticket_qr/ticket_qr_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
+import 'package:raver/presentation/core/ticket_logo_animation.dart';
 import 'package:raver/presentation/ticket_qr/widgets/ticket_return_button.dart';
 import 'package:raver/presentation/ticket_qr/widgets/upgrade_to_vip_button.dart';
 import 'package:raver_common/raver_common.dart';
@@ -28,6 +29,8 @@ class TicketQrPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LoaderOverlay(
+      overlayWidget: const TicketLogoAnimation(),
+      useDefaultLoading: false,
       overlayColor: context.shadowColor,
       child: BlocProvider(
         create: (context) => getIt<TicketQrCubit>(
