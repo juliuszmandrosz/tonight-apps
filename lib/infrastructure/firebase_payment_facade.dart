@@ -4,7 +4,6 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_payments/domain/domain.dart';
@@ -30,7 +29,8 @@ class FirebasePaymentFacade implements UserPaymentFacade {
     required FirebaseFirestore firestore,
     required FirebaseAuth firebaseAuth,
     required FirebaseCrashlytics firebaseCrashlytics,
-  })  : _logger = logger,
+  })
+      : _logger = logger,
         _stripe = stripe,
         _paymentCloudFunctionsFacade = paymentCloudFunctionsFacade,
         _firestore = firestore,
@@ -39,12 +39,11 @@ class FirebasePaymentFacade implements UserPaymentFacade {
 
   @override
   Future<Either<UserPaymentFailure, PromotionCode>> getPromotionCode(
-    String promotionCode,
-  ) async {
+      String promotionCode,) async {
     final userDoc = _firestore.getCurrentUserDocRef(_firebaseAuth);
     try {
       final result =
-          await userDoc.promotionCodesCollection.doc(promotionCode).get();
+      await userDoc.promotionCodesCollection.doc(promotionCode).get();
 
       if (result.data() == null) {
         return left(const UserPaymentFailure.invalidPromotionCode());
@@ -73,10 +72,12 @@ class FirebasePaymentFacade implements UserPaymentFacade {
     bool sendInvoice = false,
   }) async {
     try {
-      final userId = _firestore.getCurrentUserDocRef(_firebaseAuth).id;
+      final userId = _firestore
+          .getCurrentUserDocRef(_firebaseAuth)
+          .id;
 
       final result =
-          await _paymentCloudFunctionsFacade.createTicketPaymentSheet(
+      await _paymentCloudFunctionsFacade.createTicketPaymentSheet(
         eventId: eventId,
         userId: userId,
         isVip: isVip,
@@ -120,7 +121,9 @@ class FirebasePaymentFacade implements UserPaymentFacade {
     bool sendInvoice = false,
   }) async {
     try {
-      final userId = _firestore.getCurrentUserDocRef(_firebaseAuth).id;
+      final userId = _firestore
+          .getCurrentUserDocRef(_firebaseAuth)
+          .id;
 
       final result = await _paymentCloudFunctionsFacade.createVipPaymentSheet(
         ticketId: ticketId,
@@ -190,10 +193,10 @@ class FirebasePaymentFacade implements UserPaymentFacade {
   Future<Either<UserPaymentFailure, InvoiceData>> getInvoiceData() async {
     try {
       final userDoc =
-          await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
+      await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
 
       final invoiceData =
-          await _firestore.stripeCustomers.doc(userDoc.id).get();
+      await _firestore.stripeCustomers.doc(userDoc.id).get();
 
       final result = InvoiceDataDto.fromFirebase(invoiceData).toDomain();
 
@@ -207,7 +210,7 @@ class FirebasePaymentFacade implements UserPaymentFacade {
 
   Future<UserPaymentFailure> _handleDioError(DioError error) async {
     final failure =
-        userPaymentCloudFunctionsErrors[error.response?.data['message']];
+    userPaymentCloudFunctionsErrors[error.response?.data['message']];
 
     if (failure != null) {
       return failure;
@@ -245,10 +248,20 @@ class FirebasePaymentFacade implements UserPaymentFacade {
               primary: colors.primary,
               componentBackground: colors.surface,
               primaryText: colors.onSurface,
+              placeholderText: colors.outline,
+              secondaryText: colors.onSurface,
+              componentBorder: colors.outline,
+              componentDivider: colors.outline,
+              componentText: colors.onSurface,
             ),
             primaryButton: PaymentSheetPrimaryButtonAppearance(
               shapes: const PaymentSheetPrimaryButtonShape(blurRadius: 20),
               colors: PaymentSheetPrimaryButtonTheme(
+                light: PaymentSheetPrimaryButtonThemeColors(
+                  text: colors.onSurface,
+                  background: colors.primary,
+                  border: colors.primary,
+                ),
                 dark: PaymentSheetPrimaryButtonThemeColors(
                   text: colors.onSurface,
                   background: colors.primary,
@@ -257,7 +270,6 @@ class FirebasePaymentFacade implements UserPaymentFacade {
               ),
             ),
           ),
-          style: ThemeMode.dark,
           billingDetails: BillingDetails(email: user.email)),
     );
 
