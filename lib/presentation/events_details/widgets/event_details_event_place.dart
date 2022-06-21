@@ -42,7 +42,11 @@ class _EventDetailsEventPlaceState extends State<EventDetailsEventPlace> {
           height: 300,
           child: GoogleMap(
             onTap: (_) async {
-              var result = await MapsLauncher.launchCoordinates(lat, lng);
+              var result = await MapsLauncher.launchCoordinates(
+                lat,
+                lng,
+                widget.event.clubName,
+              );
               if (!result) {
                 context.showSnackbarMessage(S().errorOpeningMaps);
               }

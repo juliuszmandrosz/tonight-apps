@@ -30,6 +30,7 @@ class ClubLocationRow extends StatelessWidget {
             var result = await MapsLauncher.launchCoordinates(
               club.getLatitude(),
               club.getLongitude(),
+              club.clubName,
             );
             if (!result) {
               context.showSnackbarMessage(S().errorOpeningMaps);
