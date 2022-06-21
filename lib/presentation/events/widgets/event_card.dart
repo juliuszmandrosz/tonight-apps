@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/events/utils/event_utils.dart';
+import 'package:raver/presentation/events/widgets/event_canceled_info.dart';
 import 'package:raver/presentation/events/widgets/event_club_info.dart';
 import 'package:raver/presentation/events/widgets/event_concert_info.dart';
 import 'package:raver/presentation/events/widgets/event_date_info.dart';
@@ -70,6 +71,12 @@ class EventCard extends StatelessWidget {
                         right: 15,
                         child: EventFavoriteButton(event: event),
                       ),
+                      if (event.isCanceled)
+                        const Positioned(
+                          top: 15,
+                          left: 15,
+                          child: EventCanceledInfo(),
+                        ),
                       if (checkIfEventIsLive(event))
                         const Positioned(
                           top: 15,
