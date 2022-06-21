@@ -31,6 +31,7 @@ class TicketCheckoutPage extends StatelessWidget {
       overlayWidget: const TicketLogoAnimation(),
       overlayColor: context.shadowColor,
       useDefaultLoading: false,
+      overlayOpacity: .7,
       child: BlocProvider(
         create: (_) => getIt<TicketCheckoutCubit>(
           param1: context.read<TicketListCubit>(),

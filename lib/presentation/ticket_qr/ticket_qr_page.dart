@@ -32,6 +32,7 @@ class TicketQrPage extends StatelessWidget {
       overlayWidget: const TicketLogoAnimation(),
       useDefaultLoading: false,
       overlayColor: context.shadowColor,
+      overlayOpacity: .7,
       child: BlocProvider(
         create: (context) => getIt<TicketQrCubit>(
           param1: context.read<TicketListCubit>(),

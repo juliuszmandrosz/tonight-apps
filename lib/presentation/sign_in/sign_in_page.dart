@@ -20,6 +20,7 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return LoaderOverlay(
       overlayColor: context.shadowColor,
+      overlayOpacity: .7,
       child: Scaffold(
         body: BlocProvider(
           create: (context) => getIt<SignInCubit>(),

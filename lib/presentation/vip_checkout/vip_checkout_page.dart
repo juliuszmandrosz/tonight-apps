@@ -29,6 +29,7 @@ class VipCheckoutPage extends StatelessWidget {
     return LoaderOverlay(
       overlayWidget: const TicketLogoAnimation(),
       overlayColor: context.shadowColor,
+      overlayOpacity: .7,
       useDefaultLoading: false,
       child: BlocProvider(
         create: (_) => getIt<VipCheckoutCubit>(
