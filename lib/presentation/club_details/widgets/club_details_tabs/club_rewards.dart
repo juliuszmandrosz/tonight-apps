@@ -48,9 +48,22 @@ class ClubRewards extends StatelessWidget {
 
             if (clubRewardsWithAttendance.rewards.isEmpty) {
               return Center(
-                child: Text(
-                  S().clubDoesNotOfferRewards,
-                  style: context.subtitle1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      S().clubDoesNotOfferRewards,
+                      style: context.subtitle1,
+                    ),
+                    const SizedBox(height: 20),
+                    OutlinedButton(
+                      onPressed: () =>
+                          context.read<ClubRewardsCubit>().getRewards(
+                                state.clubId,
+                              ),
+                      child: Text(S().refresh),
+                    ),
+                  ],
                 ),
               );
             }
