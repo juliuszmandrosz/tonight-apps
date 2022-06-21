@@ -5,6 +5,7 @@ import 'package:raver/application/core/google_places/google_places_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
+import 'package:raver/presentation/core/ticket_logo_animation.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_city.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_currency.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_dress_code.dart';
@@ -60,9 +61,7 @@ class EventFiltersPage extends StatelessWidget {
             },
             builder: (context, state) => state.map(
               initial: (_) => Container(),
-              loadInProgress: (_) => const Center(
-                child: CircularProgressIndicator(),
-              ),
+              loadInProgress: (_) => const TicketLogoAnimation(),
               loadFailure: (_) => Container(),
               loadSuccess: (state) {
                 return SafeArea(

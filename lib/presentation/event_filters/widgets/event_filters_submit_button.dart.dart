@@ -14,7 +14,9 @@ class EventFiltersSubmitButton extends StatelessWidget {
       width: 300,
       child: FloatingActionButton.extended(
         onPressed: () {
-          context.read<EventFiltersCubit>().submitFilters();
+          context.read<EventFiltersCubit>().submitFilters(
+                isMenuFilterApplied: true,
+              );
           context.popRoute();
         },
         label: Text(S().applyFilters),

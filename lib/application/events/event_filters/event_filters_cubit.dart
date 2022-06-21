@@ -36,12 +36,29 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
     ));
   }
 
-  void submitFilters() async {
+  void submitFilters({
+    bool isDateFilterApplied = false,
+    bool isMenuFilterApplied = false,
+  }) async {
     if (state.filters.maxDistanceFilter.enabled) {
       _setUserLocation();
     }
 
-    emit(state.copyWith(isFilterApplied: true));
+    if (state.isDateFilterApplied) {
+      isDateFilterApplied = true;
+    }
+
+    if (state.isMenuFilterApplied) {
+      isMenuFilterApplied = true;
+    }
+
+    emit(
+      state.copyWith(
+        isDateFilterApplied: isDateFilterApplied,
+        isMenuFilterApplied: isMenuFilterApplied,
+        isFilterApplied: true,
+      ),
+    );
 
     _eventOverviewBloc.add(
       EventOverviewEvent.eventsFetched(
@@ -153,7 +170,14 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
   }
 
   void resetFilters() {
-    emit(state.copyWith(filters: EventFilters.empty(), isFilterApplied: false));
+    emit(
+      state.copyWith(
+        filters: EventFilters.empty(),
+        isFilterApplied: false,
+        isMenuFilterApplied: false,
+        isDateFilterApplied: false,
+      ),
+    );
 
     _setUserLocation();
     _eventOverviewBloc.add(

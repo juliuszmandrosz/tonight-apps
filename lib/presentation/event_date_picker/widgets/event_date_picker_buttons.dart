@@ -16,8 +16,10 @@ class EventDatePickerButtons extends StatelessWidget {
           child: ElevatedButton(
             onPressed: state.filters.dateRangeFilter.fromDate != null
                 ? () {
-                    context.read<EventFiltersCubit>().submitFilters();
-                    AutoRouter.of(context).pop();
+                    context.read<EventFiltersCubit>().submitFilters(
+                          isDateFilterApplied: true,
+                        );
+                    context.popRoute();
                   }
                 : null,
             child: Text(S().applySelectedDate),
