@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:raver/application/clubs/club_rewards/club_rewards_cubit.dart';
 import 'package:raver/presentation/club_details/widgets/club_details_tabs/rewards/reward_list_for_required_entries.dart';
 import 'package:raver/presentation/routes/app_router.dart';
@@ -31,8 +32,11 @@ class ClubRewards extends StatelessWidget {
             return Container();
 
           case CubitStatus.loading:
-            return const Center(
-              child: CircularProgressIndicator(),
+            return Center(
+              child: SpinKitThreeBounce(
+                size: 24,
+                color: context.onSurfaceColor,
+              ),
             );
 
           case CubitStatus.failure:
