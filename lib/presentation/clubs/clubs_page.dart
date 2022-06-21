@@ -76,8 +76,9 @@ class _ClubsPageState extends State<ClubsPage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // TODO - change this
-                            const SizedBox(height: 150),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * .05,
+                            ),
                             Text(
                               S().clubs(0),
                               style: context.subtitle1,

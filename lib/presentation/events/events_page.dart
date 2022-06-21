@@ -91,8 +91,11 @@ class _EventsPageState extends State<EventsPage> {
                                 return Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    // TODO - change this
-                                    const SizedBox(height: 100),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.1,
+                                    ),
                                     Text(
                                       state.eventFilters.maxDistanceFilter
                                                   .userLocation.isNotEmpty &&
