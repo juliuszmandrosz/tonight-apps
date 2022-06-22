@@ -86,12 +86,11 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
 
   @override
   Future<Unit> cancelTicketReservation(String ticketPaymentSessionId) async {
-    final cancelTicketReservationFn =
-        _functions.httpsCallable(cancelTicketReservationFnName);
+    const endpoint = 'payments/cancelTicketReservation';
 
-    await cancelTicketReservationFn.call({
-      'ticketPaymentSessionId': ticketPaymentSessionId,
-    });
+    final data = {'ticketPaymentSessionId': ticketPaymentSessionId};
+
+    await _dio.post(endpoint, data: data);
 
     return unit;
   }
