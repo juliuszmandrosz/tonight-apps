@@ -10,6 +10,7 @@ class Event extends Equatable {
   final String clubName;
   final DateTime eventStartDateTime;
   final DateTime eventEndDateTime;
+  final DateTime originalStartDateTime;
   final int minAge;
   final int price;
   final String currency;
@@ -33,6 +34,7 @@ class Event extends Equatable {
     required this.clubName,
     required this.eventStartDateTime,
     required this.eventEndDateTime,
+    required this.originalStartDateTime,
     required this.minAge,
     required this.price,
     required this.currency,
@@ -66,6 +68,7 @@ class Event extends Equatable {
         clubName,
         eventStartDateTime,
         eventEndDateTime,
+        originalStartDateTime,
         minAge,
         price,
         currency,
@@ -89,6 +92,7 @@ class Event extends Equatable {
     String? clubName,
     DateTime? eventStartDateTime,
     DateTime? eventEndDateTime,
+    DateTime? originalStartDateTime,
     int? minAge,
     int? price,
     String? currency,
@@ -112,6 +116,8 @@ class Event extends Equatable {
       clubName: clubName ?? this.clubName,
       eventStartDateTime: eventStartDateTime ?? this.eventStartDateTime,
       eventEndDateTime: eventEndDateTime ?? this.eventEndDateTime,
+      originalStartDateTime:
+          originalStartDateTime ?? this.originalStartDateTime,
       minAge: minAge ?? this.minAge,
       price: price ?? this.price,
       currency: currency ?? this.currency,

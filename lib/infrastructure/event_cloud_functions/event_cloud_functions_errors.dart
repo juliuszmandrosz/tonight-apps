@@ -4,4 +4,5 @@ const eventCloudFunctionsErrors = {
   'cancel-time-expired': PartnerEventFailure.cancelTimeExpired(),
   'postpone-time-expired': PartnerEventFailure.postponeTimeExpired(),
   'postpone-time-too-short': PartnerEventFailure.postponeTimeTooShort(),
+  'postpone-date-too-late': PartnerEventFailure.postponeDateTooLate(),
 };

@@ -14,8 +14,12 @@ class PartnerEventFailure with _$PartnerEventFailure {
   const factory PartnerEventFailure.postponeTimeTooShort() =
       _PostponeTimeTooShort;
 
-  const factory PartnerEventFailure.discountAlreadyApplied() = _DiscountAlreadyApplied;
+  const factory PartnerEventFailure.discountAlreadyApplied() =
+      _DiscountAlreadyApplied;
 
   const factory PartnerEventFailure.eventExistsInDateRange() =
       _EventExistsInDateRange;
+
+  const factory PartnerEventFailure.postponeDateTooLate() =
+      _PostponeDateTooLate;
 }

@@ -1,7 +1,7 @@
 import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/infrastructure/json_converters/timestamp_json_converter.dart';
+import 'package:raver_common/infrastructure/infrastructure.dart';
 import 'package:raver_events/domain/events/event_entity.dart';
 
 part 'event_dto.freezed.dart';
@@ -20,6 +20,7 @@ class EventDto with _$EventDto {
     required String clubName,
     @TimestampJsonConverter() required DateTime eventStartDateTime,
     @TimestampJsonConverter() required DateTime eventEndDateTime,
+    @TimestampJsonConverter() required DateTime originalStartDateTime,
     required int minAge,
     required int price,
     required String currency,
@@ -46,6 +47,7 @@ class EventDto with _$EventDto {
       eventName: event.eventName,
       eventStartDateTime: event.eventStartDateTime,
       eventEndDateTime: event.eventEndDateTime,
+      originalStartDateTime: event.originalStartDateTime,
       eventPhotoUrl: event.eventPhotoUrl,
       clubName: event.clubName,
       allowedOutfit: event.allowedOutfit,
@@ -87,6 +89,7 @@ class EventDto with _$EventDto {
       eventName: eventName,
       eventStartDateTime: eventStartDateTime,
       eventEndDateTime: eventEndDateTime,
+      originalStartDateTime: originalStartDateTime,
       eventPhotoUrl: eventPhotoUrl,
       clubName: clubName,
       allowedOutfit: allowedOutfit,

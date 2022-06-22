@@ -14,6 +14,8 @@ _$_EventDto _$$_EventDtoFromJson(Map<String, dynamic> json) => _$_EventDto(
           .fromJson(json['eventStartDateTime'] as int),
       eventEndDateTime: const TimestampJsonConverter()
           .fromJson(json['eventEndDateTime'] as int),
+      originalStartDateTime: const TimestampJsonConverter()
+          .fromJson(json['originalStartDateTime'] as int),
       minAge: json['minAge'] as int,
       price: json['price'] as int,
       currency: json['currency'] as String,
@@ -47,6 +49,8 @@ Map<String, dynamic> _$$_EventDtoToJson(_$_EventDto instance) =>
           const TimestampJsonConverter().toJson(instance.eventStartDateTime),
       'eventEndDateTime':
           const TimestampJsonConverter().toJson(instance.eventEndDateTime),
+      'originalStartDateTime':
+          const TimestampJsonConverter().toJson(instance.originalStartDateTime),
       'minAge': instance.minAge,
       'price': instance.price,
       'currency': instance.currency,

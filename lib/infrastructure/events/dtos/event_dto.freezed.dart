@@ -29,6 +29,8 @@ mixin _$EventDto {
   DateTime get eventStartDateTime => throw _privateConstructorUsedError;
   @TimestampJsonConverter()
   DateTime get eventEndDateTime => throw _privateConstructorUsedError;
+  @TimestampJsonConverter()
+  DateTime get originalStartDateTime => throw _privateConstructorUsedError;
   int get minAge => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
@@ -63,6 +65,7 @@ abstract class $EventDtoCopyWith<$Res> {
       String clubName,
       @TimestampJsonConverter() DateTime eventStartDateTime,
       @TimestampJsonConverter() DateTime eventEndDateTime,
+      @TimestampJsonConverter() DateTime originalStartDateTime,
       int minAge,
       int price,
       String currency,
@@ -96,6 +99,7 @@ class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
     Object? clubName = freezed,
     Object? eventStartDateTime = freezed,
     Object? eventEndDateTime = freezed,
+    Object? originalStartDateTime = freezed,
     Object? minAge = freezed,
     Object? price = freezed,
     Object? currency = freezed,
@@ -136,6 +140,10 @@ class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
       eventEndDateTime: eventEndDateTime == freezed
           ? _value.eventEndDateTime
           : eventEndDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      originalStartDateTime: originalStartDateTime == freezed
+          ? _value.originalStartDateTime
+          : originalStartDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
       minAge: minAge == freezed
           ? _value.minAge
@@ -214,6 +222,7 @@ abstract class _$$_EventDtoCopyWith<$Res> implements $EventDtoCopyWith<$Res> {
       String clubName,
       @TimestampJsonConverter() DateTime eventStartDateTime,
       @TimestampJsonConverter() DateTime eventEndDateTime,
+      @TimestampJsonConverter() DateTime originalStartDateTime,
       int minAge,
       int price,
       String currency,
@@ -249,6 +258,7 @@ class __$$_EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
     Object? clubName = freezed,
     Object? eventStartDateTime = freezed,
     Object? eventEndDateTime = freezed,
+    Object? originalStartDateTime = freezed,
     Object? minAge = freezed,
     Object? price = freezed,
     Object? currency = freezed,
@@ -289,6 +299,10 @@ class __$$_EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
       eventEndDateTime: eventEndDateTime == freezed
           ? _value.eventEndDateTime
           : eventEndDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      originalStartDateTime: originalStartDateTime == freezed
+          ? _value.originalStartDateTime
+          : originalStartDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
       minAge: minAge == freezed
           ? _value.minAge
@@ -365,6 +379,7 @@ class _$_EventDto extends _EventDto {
       required this.clubName,
       @TimestampJsonConverter() required this.eventStartDateTime,
       @TimestampJsonConverter() required this.eventEndDateTime,
+      @TimestampJsonConverter() required this.originalStartDateTime,
       required this.minAge,
       required this.price,
       required this.currency,
@@ -403,6 +418,9 @@ class _$_EventDto extends _EventDto {
   @override
   @TimestampJsonConverter()
   final DateTime eventEndDateTime;
+  @override
+  @TimestampJsonConverter()
+  final DateTime originalStartDateTime;
   @override
   final int minAge;
   @override
@@ -457,7 +475,7 @@ class _$_EventDto extends _EventDto {
 
   @override
   String toString() {
-    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, urlLinks: $urlLinks, isConcert: $isConcert, attending: $attending, isCanceled: $isCanceled, isBeingPostponed: $isBeingPostponed)';
+    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, originalStartDateTime: $originalStartDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, urlLinks: $urlLinks, isConcert: $isConcert, attending: $attending, isCanceled: $isCanceled, isBeingPostponed: $isBeingPostponed)';
   }
 
   @override
@@ -473,6 +491,8 @@ class _$_EventDto extends _EventDto {
                 .equals(other.eventStartDateTime, eventStartDateTime) &&
             const DeepCollectionEquality()
                 .equals(other.eventEndDateTime, eventEndDateTime) &&
+            const DeepCollectionEquality()
+                .equals(other.originalStartDateTime, originalStartDateTime) &&
             const DeepCollectionEquality().equals(other.minAge, minAge) &&
             const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality().equals(other.currency, currency) &&
@@ -507,6 +527,7 @@ class _$_EventDto extends _EventDto {
         const DeepCollectionEquality().hash(clubName),
         const DeepCollectionEquality().hash(eventStartDateTime),
         const DeepCollectionEquality().hash(eventEndDateTime),
+        const DeepCollectionEquality().hash(originalStartDateTime),
         const DeepCollectionEquality().hash(minAge),
         const DeepCollectionEquality().hash(price),
         const DeepCollectionEquality().hash(currency),
@@ -543,6 +564,7 @@ abstract class _EventDto extends EventDto {
       required final String clubName,
       @TimestampJsonConverter() required final DateTime eventStartDateTime,
       @TimestampJsonConverter() required final DateTime eventEndDateTime,
+      @TimestampJsonConverter() required final DateTime originalStartDateTime,
       required final int minAge,
       required final int price,
       required final String currency,
@@ -577,6 +599,9 @@ abstract class _EventDto extends EventDto {
   @override
   @TimestampJsonConverter()
   DateTime get eventEndDateTime => throw _privateConstructorUsedError;
+  @override
+  @TimestampJsonConverter()
+  DateTime get originalStartDateTime => throw _privateConstructorUsedError;
   @override
   int get minAge => throw _privateConstructorUsedError;
   @override
