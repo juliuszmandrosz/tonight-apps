@@ -68,7 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addDescription":
             MessageLookupByLibrary.simpleMessage("Add description"),
         "addDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
-            "Add link to DJ channel on YouTube"),
+            "Please add link to DJ channel on YouTube"),
         "addEvent": MessageLookupByLibrary.simpleMessage("Add event"),
         "addFacebookUrl":
             MessageLookupByLibrary.simpleMessage("Add Facebook event URL link"),
@@ -121,6 +121,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "clearFilters": MessageLookupByLibrary.simpleMessage("Clear filters"),
+        "closeTicketPool":
+            MessageLookupByLibrary.simpleMessage("Close ticket pool"),
         "clubDoesNotOfferRewards":
             MessageLookupByLibrary.simpleMessage("Club does not offer rewards"),
         "clubName": MessageLookupByLibrary.simpleMessage("Club name"),
@@ -138,9 +140,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmDeleteMessage": MessageLookupByLibrary.simpleMessage(
             "Are you sure you wish to delete this item?"),
         "confirmEventCancelation": MessageLookupByLibrary.simpleMessage(
-            "Are you sure you want to cancel the event? You may incur fees related to the processing of existing payments"),
+            "Are you sure you want to cancel the event? The current cost of canceling the event related to payment processing is"),
         "confirmEventPostpone": MessageLookupByLibrary.simpleMessage(
-            "Are you sure you want to postpone the event? You may incur fees related to the processing of existing payments"),
+            "Are you sure you want to postpone the event? The current cost of postponing the event related to payment processing is"),
         "confirmLeavingPage": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to exit the current page? Changes will not be saved"),
         "confirmPassword":
@@ -311,6 +313,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Event edited successfully"),
         "eventExistsInDateRange": MessageLookupByLibrary.simpleMessage(
             "An event already exists in the given date range"),
+        "eventHasEnded":
+            MessageLookupByLibrary.simpleMessage("The event has ended"),
         "eventName": MessageLookupByLibrary.simpleMessage("Event name"),
         "eventOverview": MessageLookupByLibrary.simpleMessage("Event overview"),
         "eventPlace": MessageLookupByLibrary.simpleMessage("Event place"),
@@ -392,7 +396,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "isConcert": MessageLookupByLibrary.simpleMessage("Is concert"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "lastTicketsInPool":
-            MessageLookupByLibrary.simpleMessage("Last tickets in pool"),
+            MessageLookupByLibrary.simpleMessage("Last tickets"),
         "live": MessageLookupByLibrary.simpleMessage("Live"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "lostNetworkConnectionDescription":
@@ -412,7 +416,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Name cannot contain special characters"),
         "nameTooLong": MessageLookupByLibrary.simpleMessage(
-            "Name can contain up to 50 characters"),
+            "Name can contain up to 100 characters"),
         "nameTooShort": MessageLookupByLibrary.simpleMessage(
             "Name should be at least 3 characters"),
         "naturalPerson": MessageLookupByLibrary.simpleMessage("Natural person"),
@@ -482,6 +486,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "poolPriceLowerThanPreviousPools": MessageLookupByLibrary.simpleMessage(
             "The price of tickets in the pool should be higher than the highest price of the previous pools"),
         "postpone": MessageLookupByLibrary.simpleMessage("Postpone"),
+        "postponeDateTooLate": MessageLookupByLibrary.simpleMessage(
+            "The maximum start date time is 150 days from original start date"),
         "postponeEvent": MessageLookupByLibrary.simpleMessage("Postpone event"),
         "postponeTimeExpired": MessageLookupByLibrary.simpleMessage(
             "Time to postpone the event has expired"),

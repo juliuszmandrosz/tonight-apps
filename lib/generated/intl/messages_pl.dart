@@ -67,7 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Dodaj klub do ulubionych i otrzymuj powiadomienia jak tylko doda nowe wydarzenie lub nagrodę"),
         "addDescription": MessageLookupByLibrary.simpleMessage("Dodaj opis"),
         "addDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
-            "Dodaj link do kanału DJ-a na YouTube"),
+            "Proszę podać link do kanału DJ-a na YouTube"),
         "addEvent": MessageLookupByLibrary.simpleMessage("Dodaj wydarzenie"),
         "addFacebookUrl": MessageLookupByLibrary.simpleMessage(
             "Dodaj link URL wydarzenia na Facebooku"),
@@ -124,6 +124,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "checkout": MessageLookupByLibrary.simpleMessage("Kasa"),
         "city": MessageLookupByLibrary.simpleMessage("Miasto"),
         "clearFilters": MessageLookupByLibrary.simpleMessage("Wyczyść filtry"),
+        "closeTicketPool":
+            MessageLookupByLibrary.simpleMessage("Zamknij pulę biletów"),
         "clubDoesNotOfferRewards": MessageLookupByLibrary.simpleMessage(
             "Klub nie posiada systemu nagród"),
         "clubName": MessageLookupByLibrary.simpleMessage("Nazwa klubu"),
@@ -141,9 +143,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirmDeleteMessage": MessageLookupByLibrary.simpleMessage(
             "Czy na pewno chcesz usunąć ten element?"),
         "confirmEventCancelation": MessageLookupByLibrary.simpleMessage(
-            "Czy na pewno chcesz anulować wydarzenie? Możesz ponieść opłaty związane z przetwarzaniem dotychczasowych płatności"),
+            "Czy na pewno chcesz odwołać wydarzenie? Aktualny koszt odwołania wydarzenia związany z procesowaniem płatności wynosi"),
         "confirmEventPostpone": MessageLookupByLibrary.simpleMessage(
-            "Czy na pewno chcesz przełożyć wydarzenie? Możesz ponieść opłaty związane z przetwarzaniem dotychczasowych płatności"),
+            "Czy na pewno chcesz przełożyć wydarzenie? Aktualny koszt przełożenia wydarzenia związany z procesowaniem płatności wynosi"),
         "confirmLeavingPage": MessageLookupByLibrary.simpleMessage(
             "Czy na pewno chcesz opuścić bieżącą stronę? Zmiany nie zostaną zapisane"),
         "confirmPassword":
@@ -312,6 +314,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wydarzenie edytowano pomyślnie"),
         "eventExistsInDateRange": MessageLookupByLibrary.simpleMessage(
             "W podanym zakresie dat istnieje już wydarzenie"),
+        "eventHasEnded":
+            MessageLookupByLibrary.simpleMessage("Wydarzenie się zakończyło"),
         "eventName": MessageLookupByLibrary.simpleMessage("Nazwa wydarzenia"),
         "eventOverview":
             MessageLookupByLibrary.simpleMessage("Przegląd wydarzenia"),
@@ -398,7 +402,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "isConcert": MessageLookupByLibrary.simpleMessage("Koncert"),
         "language": MessageLookupByLibrary.simpleMessage("Język"),
         "lastTicketsInPool":
-            MessageLookupByLibrary.simpleMessage("Ostatnie bilety w puli"),
+            MessageLookupByLibrary.simpleMessage("Ostatnie bilety"),
         "live": MessageLookupByLibrary.simpleMessage("W trakcie"),
         "login": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "lostNetworkConnectionDescription":
@@ -419,7 +423,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Nazwa nie może zawierać znaków specjalnych"),
         "nameTooLong": MessageLookupByLibrary.simpleMessage(
-            "Nazwa może zawierać maksymalnie 50 znaków"),
+            "Nazwa może zawierać maksymalnie 100 znaków"),
         "nameTooShort": MessageLookupByLibrary.simpleMessage(
             "Nazwa powinna zawierać co najmniej 8 znaków"),
         "naturalPerson": MessageLookupByLibrary.simpleMessage("Osoba fizyczna"),
@@ -491,6 +495,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "poolPriceLowerThanPreviousPools": MessageLookupByLibrary.simpleMessage(
             "Cena biletów w puli powinna być wyższa niż najwyższa cena z poprzednich puli"),
         "postpone": MessageLookupByLibrary.simpleMessage("Przełóż"),
+        "postponeDateTooLate": MessageLookupByLibrary.simpleMessage(
+            "Maksymalny czas rozpoczęcia to 150 dni od pierwotnej daty rozpoczęcia"),
         "postponeEvent":
             MessageLookupByLibrary.simpleMessage("Przełóż wydarzenie"),
         "postponeTimeExpired": MessageLookupByLibrary.simpleMessage(

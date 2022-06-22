@@ -150,10 +150,10 @@ class S {
     );
   }
 
-  /// `Add link to DJ channel on YouTube`
+  /// `Please add link to DJ channel on YouTube`
   String get addDjChannelYoutubeUrl {
     return Intl.message(
-      'Add link to DJ channel on YouTube',
+      'Please add link to DJ channel on YouTube',
       name: 'addDjChannelYoutubeUrl',
       desc: '',
       args: [],
@@ -533,6 +533,16 @@ class S {
     );
   }
 
+  /// `Close ticket pool`
+  String get closeTicketPool {
+    return Intl.message(
+      'Close ticket pool',
+      name: 'closeTicketPool',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Club does not offer rewards`
   String get clubDoesNotOfferRewards {
     return Intl.message(
@@ -646,20 +656,20 @@ class S {
     );
   }
 
-  /// `Are you sure you want to cancel the event? You may incur fees related to the processing of existing payments`
+  /// `Are you sure you want to cancel the event? The current cost of canceling the event related to payment processing is`
   String get confirmEventCancelation {
     return Intl.message(
-      'Are you sure you want to cancel the event? You may incur fees related to the processing of existing payments',
+      'Are you sure you want to cancel the event? The current cost of canceling the event related to payment processing is',
       name: 'confirmEventCancelation',
       desc: '',
       args: [],
     );
   }
 
-  /// `Are you sure you want to postpone the event? You may incur fees related to the processing of existing payments`
+  /// `Are you sure you want to postpone the event? The current cost of postponing the event related to payment processing is`
   String get confirmEventPostpone {
     return Intl.message(
-      'Are you sure you want to postpone the event? You may incur fees related to the processing of existing payments',
+      'Are you sure you want to postpone the event? The current cost of postponing the event related to payment processing is',
       name: 'confirmEventPostpone',
       desc: '',
       args: [],
@@ -1619,6 +1629,16 @@ class S {
     );
   }
 
+  /// `The event has ended`
+  String get eventHasEnded {
+    return Intl.message(
+      'The event has ended',
+      name: 'eventHasEnded',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Event name`
   String get eventName {
     return Intl.message(
@@ -2142,10 +2162,10 @@ class S {
     );
   }
 
-  /// `Last tickets in pool`
+  /// `Last tickets`
   String get lastTicketsInPool {
     return Intl.message(
-      'Last tickets in pool',
+      'Last tickets',
       name: 'lastTicketsInPool',
       desc: '',
       args: [],
@@ -2272,10 +2292,10 @@ class S {
     );
   }
 
-  /// `Name can contain up to 50 characters`
+  /// `Name can contain up to 100 characters`
   String get nameTooLong {
     return Intl.message(
-      'Name can contain up to 50 characters',
+      'Name can contain up to 100 characters',
       name: 'nameTooLong',
       desc: '',
       args: [],
@@ -2743,6 +2763,16 @@ class S {
     return Intl.message(
       'Postponed',
       name: 'postponed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The maximum start date time is 150 days from original start date`
+  String get postponeDateTooLate {
+    return Intl.message(
+      'The maximum start date time is 150 days from original start date',
+      name: 'postponeDateTooLate',
       desc: '',
       args: [],
     );
