@@ -4,5 +4,5 @@ import 'package:raver_events/domain/event_costs/event_costs_failure.dart';
 import 'package:raver_events/raver_events.dart';
 
 abstract class EventCostsFacade {
-  Future<Either<EventCostsFailure, EventCosts>> getEventCosts(Event event);
+  Stream<Either<EventCostsFailure, EventCosts>> getEventCosts(Event event);
 }

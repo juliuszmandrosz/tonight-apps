@@ -23,20 +23,27 @@ class FirebaseEventCostsFacade implements EventCostsFacade {
         _logger = logger;
 
   @override
-  Future<Either<EventCostsFailure, EventCosts>> getEventCosts(
+  Stream<Either<EventCostsFailure, EventCosts>> getEventCosts(
     Event event,
-  ) async {
-    try {
-      final eventCostsDoc = await _getEventCostsDocRef(event).get();
+  ) async* {
+    final eventCostsDocRef = _getEventCostsDocRef(event);
 
-      return right<EventCostsFailure, EventCosts>(
-        EventCostsDto.fromFirebase(eventCostsDoc).toDomain(),
-      );
-    } on FirebaseException catch (e) {
-      _logger.e("Firebase Exception during getting event costs EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const EventCostsFailure.unexpected());
-    }
+    yield* eventCostsDocRef
+        .snapshots()
+        .map(
+          (snapshot) => right<EventCostsFailure, EventCosts>(
+            EventCostsDto.fromFirebase(snapshot).toDomain(),
+          ),
+        )
+        .handleError((e) {
+      if (e is FirebaseException) {
+        _logger.e(
+          "Firebase Exception getting event costs EXCEPTION: $e",
+        );
+        _crashlytics.recordError(e, StackTrace.current);
+        return left(const EventCostsFailure.unexpected());
+      }
+    });
   }
 
   DocumentReference _getEventCostsDocRef(Event event) {
