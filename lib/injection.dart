@@ -364,6 +364,7 @@ void _registerFacades() {
       logger: getIt(),
       firestore: getIt(),
       firebaseAuth: getIt(),
+      firebaseCrashlytics: getIt(),
     ),
   );
 

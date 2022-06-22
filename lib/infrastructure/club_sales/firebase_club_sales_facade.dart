@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/domain/club_sales/club_sales_entity.dart';
@@ -11,32 +12,41 @@ import 'package:raver_partners/infrastructure/club_sales/dtos/club_sales_dto.dar
 class FirebaseClubSalesFacade implements ClubSalesFacade {
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;
+  final FirebaseCrashlytics _crashlytics;
   final Logger _logger;
 
   FirebaseClubSalesFacade({
     required FirebaseFirestore firestore,
     required FirebaseAuth firebaseAuth,
+    required FirebaseCrashlytics firebaseCrashlytics,
     required Logger logger,
   })  : _firestore = firestore,
         _firebaseAuth = firebaseAuth,
+        _crashlytics = firebaseCrashlytics,
         _logger = logger;
 
   @override
-  Future<Either<ClubSalesFailure, ClubSales>> getClubSales() async {
-    try {
-      final clubDocRef =
-          await _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
+  Stream<Either<ClubSalesFailure, ClubSales>> getClubSales() async* {
+    final clubDocRef =
+        await _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
 
-      final clubSalesDoc = await _firestore.clubsSales.doc(clubDocRef.id).get();
+    final clubSalesDocRef = _firestore.clubsSales.doc(clubDocRef.id);
 
-      final result = ClubSalesDto.fromFirebase(clubSalesDoc).toDomain();
-
-      return right(result);
-    } on FirebaseException catch (e) {
-      _logger.e(
-        "Firebase Exception getting club sales EXCEPTION: $e",
-      );
-      return left(const ClubSalesFailure.unexpected());
-    }
+    yield* clubSalesDocRef
+        .snapshots()
+        .map(
+          (snapshot) => right<ClubSalesFailure, ClubSales>(
+            ClubSalesDto.fromFirebase(snapshot).toDomain(),
+          ),
+        )
+        .handleError((e) {
+      if (e is FirebaseException) {
+        _logger.e(
+          "Firebase Exception getting club sales EXCEPTION: $e",
+        );
+        _crashlytics.recordError(e, StackTrace.current);
+        return left(const ClubSalesFailure.unexpected());
+      }
+    });
   }
 }

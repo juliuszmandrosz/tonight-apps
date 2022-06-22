@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -11,6 +13,7 @@ part 'overview_state.dart';
 
 class OverviewCubit extends Cubit<OverviewState> {
   final ClubSalesFacade _clubSalesFacade;
+  StreamSubscription? _clubSalesSub;
 
   OverviewCubit({
     required ClubSalesFacade clubSalesFacade,
@@ -20,16 +23,24 @@ class OverviewCubit extends Cubit<OverviewState> {
   Future<void> getClubSales() async {
     emit(state.copyWith(status: CubitStatus.loading));
 
-    final failureOrSuccess = await _clubSalesFacade.getClubSales();
-
-    failureOrSuccess.fold(
-      (_) => emit(state.copyWith(status: CubitStatus.failure)),
-      (sales) => emit(
-        state.copyWith(
-          clubSales: some(sales),
-          status: CubitStatus.success,
-        ),
-      ),
+    _clubSalesSub = _clubSalesFacade.getClubSales().listen(
+      (result) {
+        result.fold(
+          (_) => emit(state.copyWith(status: CubitStatus.failure)),
+          (sales) => emit(
+            state.copyWith(
+              clubSales: some(sales),
+              status: CubitStatus.success,
+            ),
+          ),
+        );
+      },
     );
+  }
+
+  @override
+  Future<void> close() {
+    _clubSalesSub?.cancel();
+    return super.close();
   }
 }
