@@ -15,6 +15,7 @@ String getPaymentFailureMessage(UserPaymentFailure failure) {
     invalidCountryCode: (_) => S().invalidCountryCode,
     invalidVatNumber: (_) => S().invalidVatNumber,
     vipNoLongerAvailable: (_) => S().vipNoLongerAvailable,
+    eventHasEnded: (_) => S().eventHasEnded,
     canceledByUser: (_) => '',
   );
 }
