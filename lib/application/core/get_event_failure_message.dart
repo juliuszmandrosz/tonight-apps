@@ -9,5 +9,6 @@ String getEventFailureMessage(PartnerEventFailure failure) {
     postponeTimeTooShort: (_) => S().postponeTimeTooShort,
     discountAlreadyApplied: (_) => S().discountHasBeenUsed,
     eventExistsInDateRange: (_) => S().eventExistsInDateRange,
+    postponeDateTooLate: (_) => S().postponeDateTooLate,
   );
 }

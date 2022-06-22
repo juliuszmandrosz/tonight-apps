@@ -455,6 +455,7 @@ class AddEventCubit extends Cubit<AddEventState> {
       clubName: club.clubName,
       eventStartDateTime: state.startDateTime.value!,
       eventEndDateTime: state.endDateTime.value!,
+      originalStartDateTime: state.startDateTime.value!,
       minAge: state.minAge.value!,
       price: state.ticketPools.first.ticketPrice,
       allowedOutfit: state.dressCode.value,

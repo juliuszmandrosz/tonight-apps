@@ -50,6 +50,7 @@ class AddEventPage extends StatelessWidget {
             child: LoaderOverlay(
               overlayColor: context.shadowColor,
               useDefaultLoading: false,
+              overlayOpacity: .7,
               overlayWidget: const TicketLogoAnimation(),
               child: Scaffold(
                 appBar: RaverPartnersAppBar(

@@ -28,7 +28,7 @@ class ArtistName extends FormzInput<String, ArtistNameError> {
       return ArtistNameError.empty;
     }
 
-    if (value.length > 50) {
+    if (value.length > 100) {
       return ArtistNameError.tooLong;
     }
 

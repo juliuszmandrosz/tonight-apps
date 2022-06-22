@@ -51,6 +51,7 @@ class EventOverviewPage extends StatelessWidget {
         overlayColor: context.shadowColor,
         overlayWidget: const TicketLogoAnimation(),
         useDefaultLoading: false,
+        overlayOpacity: .7,
         child: Scaffold(
           appBar: RaverPartnersAppBar(title: S().eventOverview),
           body: Padding(

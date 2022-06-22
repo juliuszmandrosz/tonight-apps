@@ -29,6 +29,7 @@ class PostponeEventPage extends StatelessWidget {
       child: LoaderOverlay(
         overlayColor: context.shadowColor,
         overlayWidget: const TicketLogoAnimation(),
+        overlayOpacity: .7,
         useDefaultLoading: false,
         child: Scaffold(
           appBar: RaverPartnersAppBar(title: S().postponeEvent),

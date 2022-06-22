@@ -29,7 +29,7 @@ class EventName extends FormzInput<String, EventNameError> {
       return EventNameError.tooShort;
     }
 
-    if (value.length > 50) {
+    if (value.length > 100) {
       return EventNameError.tooLong;
     }
 

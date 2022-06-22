@@ -273,7 +273,7 @@ packages:
       name: connectivity_plus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.4"
+    version: "2.3.5"
   connectivity_plus_linux:
     dependency: transitive
     description:
@@ -287,7 +287,7 @@ packages:
       name: connectivity_plus_macos
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.3"
+    version: "1.2.4"
   connectivity_plus_platform_interface:
     dependency: transitive
     description:
@@ -1143,7 +1143,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "14401a49dbbf8c376d704cb4fce39781ca7eef38"
+      resolved-ref: aac2928477e128cbc2c0432492fab8250b66a7f9
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -1152,7 +1152,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "3e6709bbd302cab87535e1ce15b8954cb98a2d15"
+      resolved-ref: "1550d9a30b847715410f755f4d053c0a1298e52a"
       url: "git@github.com:juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
@@ -1161,7 +1161,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "21e920cc8db5b9b3a21b26c3914010e3d8088522"
+      resolved-ref: "19553a50b410adf3a951a64c8109d618ee236ab6"
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
@@ -1179,7 +1179,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "5e4853ab527fdb2bfeeb41fb927fc8a497b1c206"
+      resolved-ref: "373991d1504a9ae6f83d6d41de3a44fe2d130d7d"
       url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"
@@ -1362,14 +1362,14 @@ packages:
       name: syncfusion_flutter_charts
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "20.1.60+1"
+    version: "20.1.61"
   syncfusion_flutter_core:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "20.1.60"
+    version: "20.1.61"
   synchronized:
     dependency: transitive
     description:
