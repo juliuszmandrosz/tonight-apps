@@ -31,6 +31,7 @@ mixin _$UserPaymentFailure {
     required TResult Function() invalidCountryCode,
     required TResult Function() invalidVatNumber,
     required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -48,6 +49,7 @@ mixin _$UserPaymentFailure {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +67,7 @@ mixin _$UserPaymentFailure {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -83,6 +86,7 @@ mixin _$UserPaymentFailure {
     required TResult Function(_InvalidCountryCode value) invalidCountryCode,
     required TResult Function(_InvalidVatNumber value) invalidVatNumber,
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -100,6 +104,7 @@ mixin _$UserPaymentFailure {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -117,6 +122,7 @@ mixin _$UserPaymentFailure {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -193,6 +199,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() invalidCountryCode,
     required TResult Function() invalidVatNumber,
     required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
   }) {
     return unexpected();
   }
@@ -213,6 +220,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
   }) {
     return unexpected?.call();
   }
@@ -233,6 +241,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -257,6 +266,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_InvalidCountryCode value) invalidCountryCode,
     required TResult Function(_InvalidVatNumber value) invalidVatNumber,
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
   }) {
     return unexpected(this);
   }
@@ -277,6 +287,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
   }) {
     return unexpected?.call(this);
   }
@@ -297,6 +308,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -364,6 +376,7 @@ class _$_StripeError implements _StripeError {
     required TResult Function() invalidCountryCode,
     required TResult Function() invalidVatNumber,
     required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
   }) {
     return stripeError();
   }
@@ -384,6 +397,7 @@ class _$_StripeError implements _StripeError {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
   }) {
     return stripeError?.call();
   }
@@ -404,6 +418,7 @@ class _$_StripeError implements _StripeError {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
     required TResult orElse(),
   }) {
     if (stripeError != null) {
@@ -428,6 +443,7 @@ class _$_StripeError implements _StripeError {
     required TResult Function(_InvalidCountryCode value) invalidCountryCode,
     required TResult Function(_InvalidVatNumber value) invalidVatNumber,
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
   }) {
     return stripeError(this);
   }
@@ -448,6 +464,7 @@ class _$_StripeError implements _StripeError {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
   }) {
     return stripeError?.call(this);
   }
@@ -468,6 +485,7 @@ class _$_StripeError implements _StripeError {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
     required TResult orElse(),
   }) {
     if (stripeError != null) {
@@ -535,6 +553,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     required TResult Function() invalidCountryCode,
     required TResult Function() invalidVatNumber,
     required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
   }) {
     return invalidPromotionCode();
   }
@@ -555,6 +574,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
   }) {
     return invalidPromotionCode?.call();
   }
@@ -575,6 +595,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
     required TResult orElse(),
   }) {
     if (invalidPromotionCode != null) {
@@ -599,6 +620,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     required TResult Function(_InvalidCountryCode value) invalidCountryCode,
     required TResult Function(_InvalidVatNumber value) invalidVatNumber,
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
   }) {
     return invalidPromotionCode(this);
   }
@@ -619,6 +641,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
   }) {
     return invalidPromotionCode?.call(this);
   }
@@ -639,6 +662,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
     required TResult orElse(),
   }) {
     if (invalidPromotionCode != null) {
@@ -706,6 +730,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     required TResult Function() invalidCountryCode,
     required TResult Function() invalidVatNumber,
     required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
   }) {
     return promotionCodeExpired();
   }
@@ -726,6 +751,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
   }) {
     return promotionCodeExpired?.call();
   }
@@ -746,6 +772,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
     required TResult orElse(),
   }) {
     if (promotionCodeExpired != null) {
@@ -770,6 +797,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     required TResult Function(_InvalidCountryCode value) invalidCountryCode,
     required TResult Function(_InvalidVatNumber value) invalidVatNumber,
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
   }) {
     return promotionCodeExpired(this);
   }
@@ -790,6 +818,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
   }) {
     return promotionCodeExpired?.call(this);
   }
@@ -810,6 +839,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
     required TResult orElse(),
   }) {
     if (promotionCodeExpired != null) {
@@ -877,6 +907,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     required TResult Function() invalidCountryCode,
     required TResult Function() invalidVatNumber,
     required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
   }) {
     return invalidEvent();
   }
@@ -897,6 +928,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
   }) {
     return invalidEvent?.call();
   }
@@ -917,6 +949,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
     required TResult orElse(),
   }) {
     if (invalidEvent != null) {
@@ -941,6 +974,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     required TResult Function(_InvalidCountryCode value) invalidCountryCode,
     required TResult Function(_InvalidVatNumber value) invalidVatNumber,
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
   }) {
     return invalidEvent(this);
   }
@@ -961,6 +995,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
   }) {
     return invalidEvent?.call(this);
   }
@@ -981,6 +1016,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
     required TResult orElse(),
   }) {
     if (invalidEvent != null) {
@@ -1048,6 +1084,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     required TResult Function() invalidCountryCode,
     required TResult Function() invalidVatNumber,
     required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
   }) {
     return canceledByUser();
   }
@@ -1068,6 +1105,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
   }) {
     return canceledByUser?.call();
   }
@@ -1088,6 +1126,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
     required TResult orElse(),
   }) {
     if (canceledByUser != null) {
@@ -1112,6 +1151,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     required TResult Function(_InvalidCountryCode value) invalidCountryCode,
     required TResult Function(_InvalidVatNumber value) invalidVatNumber,
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
   }) {
     return canceledByUser(this);
   }
@@ -1132,6 +1172,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
   }) {
     return canceledByUser?.call(this);
   }
@@ -1152,6 +1193,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
     required TResult orElse(),
   }) {
     if (canceledByUser != null) {
@@ -1219,6 +1261,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     required TResult Function() invalidCountryCode,
     required TResult Function() invalidVatNumber,
     required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
   }) {
     return ticketAlreadyHasVip();
   }
@@ -1239,6 +1282,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
   }) {
     return ticketAlreadyHasVip?.call();
   }
@@ -1259,6 +1303,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
     required TResult orElse(),
   }) {
     if (ticketAlreadyHasVip != null) {
@@ -1283,6 +1328,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     required TResult Function(_InvalidCountryCode value) invalidCountryCode,
     required TResult Function(_InvalidVatNumber value) invalidVatNumber,
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
   }) {
     return ticketAlreadyHasVip(this);
   }
@@ -1303,6 +1349,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
   }) {
     return ticketAlreadyHasVip?.call(this);
   }
@@ -1323,6 +1370,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
     required TResult orElse(),
   }) {
     if (ticketAlreadyHasVip != null) {
@@ -1390,6 +1438,7 @@ class _$_EventCanceled implements _EventCanceled {
     required TResult Function() invalidCountryCode,
     required TResult Function() invalidVatNumber,
     required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
   }) {
     return eventCanceled();
   }
@@ -1410,6 +1459,7 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
   }) {
     return eventCanceled?.call();
   }
@@ -1430,6 +1480,7 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
     required TResult orElse(),
   }) {
     if (eventCanceled != null) {
@@ -1454,6 +1505,7 @@ class _$_EventCanceled implements _EventCanceled {
     required TResult Function(_InvalidCountryCode value) invalidCountryCode,
     required TResult Function(_InvalidVatNumber value) invalidVatNumber,
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
   }) {
     return eventCanceled(this);
   }
@@ -1474,6 +1526,7 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
   }) {
     return eventCanceled?.call(this);
   }
@@ -1494,6 +1547,7 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
     required TResult orElse(),
   }) {
     if (eventCanceled != null) {
@@ -1561,6 +1615,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     required TResult Function() invalidCountryCode,
     required TResult Function() invalidVatNumber,
     required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
   }) {
     return eventBeingPostponed();
   }
@@ -1581,6 +1636,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
   }) {
     return eventBeingPostponed?.call();
   }
@@ -1601,6 +1657,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
     required TResult orElse(),
   }) {
     if (eventBeingPostponed != null) {
@@ -1625,6 +1682,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     required TResult Function(_InvalidCountryCode value) invalidCountryCode,
     required TResult Function(_InvalidVatNumber value) invalidVatNumber,
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
   }) {
     return eventBeingPostponed(this);
   }
@@ -1645,6 +1703,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
   }) {
     return eventBeingPostponed?.call(this);
   }
@@ -1665,6 +1724,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
     required TResult orElse(),
   }) {
     if (eventBeingPostponed != null) {
@@ -1732,6 +1792,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     required TResult Function() invalidCountryCode,
     required TResult Function() invalidVatNumber,
     required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
   }) {
     return returnTimeExpired();
   }
@@ -1752,6 +1813,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
   }) {
     return returnTimeExpired?.call();
   }
@@ -1772,6 +1834,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
     required TResult orElse(),
   }) {
     if (returnTimeExpired != null) {
@@ -1796,6 +1859,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     required TResult Function(_InvalidCountryCode value) invalidCountryCode,
     required TResult Function(_InvalidVatNumber value) invalidVatNumber,
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
   }) {
     return returnTimeExpired(this);
   }
@@ -1816,6 +1880,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
   }) {
     return returnTimeExpired?.call(this);
   }
@@ -1836,6 +1901,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
     required TResult orElse(),
   }) {
     if (returnTimeExpired != null) {
@@ -1903,6 +1969,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     required TResult Function() invalidCountryCode,
     required TResult Function() invalidVatNumber,
     required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
   }) {
     return invalidCountryCode();
   }
@@ -1923,6 +1990,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
   }) {
     return invalidCountryCode?.call();
   }
@@ -1943,6 +2011,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
     required TResult orElse(),
   }) {
     if (invalidCountryCode != null) {
@@ -1967,6 +2036,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     required TResult Function(_InvalidCountryCode value) invalidCountryCode,
     required TResult Function(_InvalidVatNumber value) invalidVatNumber,
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
   }) {
     return invalidCountryCode(this);
   }
@@ -1987,6 +2057,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
   }) {
     return invalidCountryCode?.call(this);
   }
@@ -2007,6 +2078,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
     required TResult orElse(),
   }) {
     if (invalidCountryCode != null) {
@@ -2074,6 +2146,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     required TResult Function() invalidCountryCode,
     required TResult Function() invalidVatNumber,
     required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
   }) {
     return invalidVatNumber();
   }
@@ -2094,6 +2167,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
   }) {
     return invalidVatNumber?.call();
   }
@@ -2114,6 +2188,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
     required TResult orElse(),
   }) {
     if (invalidVatNumber != null) {
@@ -2138,6 +2213,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     required TResult Function(_InvalidCountryCode value) invalidCountryCode,
     required TResult Function(_InvalidVatNumber value) invalidVatNumber,
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
   }) {
     return invalidVatNumber(this);
   }
@@ -2158,6 +2234,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
   }) {
     return invalidVatNumber?.call(this);
   }
@@ -2178,6 +2255,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
     required TResult orElse(),
   }) {
     if (invalidVatNumber != null) {
@@ -2245,6 +2323,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     required TResult Function() invalidCountryCode,
     required TResult Function() invalidVatNumber,
     required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
   }) {
     return vipNoLongerAvailable();
   }
@@ -2265,6 +2344,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
   }) {
     return vipNoLongerAvailable?.call();
   }
@@ -2285,6 +2365,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     TResult Function()? invalidCountryCode,
     TResult Function()? invalidVatNumber,
     TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
     required TResult orElse(),
   }) {
     if (vipNoLongerAvailable != null) {
@@ -2309,6 +2390,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     required TResult Function(_InvalidCountryCode value) invalidCountryCode,
     required TResult Function(_InvalidVatNumber value) invalidVatNumber,
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
   }) {
     return vipNoLongerAvailable(this);
   }
@@ -2329,6 +2411,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
   }) {
     return vipNoLongerAvailable?.call(this);
   }
@@ -2349,6 +2432,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     TResult Function(_InvalidCountryCode value)? invalidCountryCode,
     TResult Function(_InvalidVatNumber value)? invalidVatNumber,
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
     required TResult orElse(),
   }) {
     if (vipNoLongerAvailable != null) {
@@ -2360,4 +2444,181 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
 
 abstract class _VipNoLongerAvailable implements UserPaymentFailure {
   const factory _VipNoLongerAvailable() = _$_VipNoLongerAvailable;
+}
+
+/// @nodoc
+abstract class _$$_EventHasEndedCopyWith<$Res> {
+  factory _$$_EventHasEndedCopyWith(
+          _$_EventHasEnded value, $Res Function(_$_EventHasEnded) then) =
+      __$$_EventHasEndedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_EventHasEndedCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    implements _$$_EventHasEndedCopyWith<$Res> {
+  __$$_EventHasEndedCopyWithImpl(
+      _$_EventHasEnded _value, $Res Function(_$_EventHasEnded) _then)
+      : super(_value, (v) => _then(v as _$_EventHasEnded));
+
+  @override
+  _$_EventHasEnded get _value => super._value as _$_EventHasEnded;
+}
+
+/// @nodoc
+
+class _$_EventHasEnded implements _EventHasEnded {
+  const _$_EventHasEnded();
+
+  @override
+  String toString() {
+    return 'UserPaymentFailure.eventHasEnded()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_EventHasEnded);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() stripeError,
+    required TResult Function() invalidPromotionCode,
+    required TResult Function() promotionCodeExpired,
+    required TResult Function() invalidEvent,
+    required TResult Function() canceledByUser,
+    required TResult Function() ticketAlreadyHasVip,
+    required TResult Function() eventCanceled,
+    required TResult Function() eventBeingPostponed,
+    required TResult Function() returnTimeExpired,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() invalidVatNumber,
+    required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
+  }) {
+    return eventHasEnded();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? stripeError,
+    TResult Function()? invalidPromotionCode,
+    TResult Function()? promotionCodeExpired,
+    TResult Function()? invalidEvent,
+    TResult Function()? canceledByUser,
+    TResult Function()? ticketAlreadyHasVip,
+    TResult Function()? eventCanceled,
+    TResult Function()? eventBeingPostponed,
+    TResult Function()? returnTimeExpired,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? invalidVatNumber,
+    TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
+  }) {
+    return eventHasEnded?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? stripeError,
+    TResult Function()? invalidPromotionCode,
+    TResult Function()? promotionCodeExpired,
+    TResult Function()? invalidEvent,
+    TResult Function()? canceledByUser,
+    TResult Function()? ticketAlreadyHasVip,
+    TResult Function()? eventCanceled,
+    TResult Function()? eventBeingPostponed,
+    TResult Function()? returnTimeExpired,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? invalidVatNumber,
+    TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
+    required TResult orElse(),
+  }) {
+    if (eventHasEnded != null) {
+      return eventHasEnded();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_StripeError value) stripeError,
+    required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
+    required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
+    required TResult Function(_InvalidEvent value) invalidEvent,
+    required TResult Function(_CanceledByUser value) canceledByUser,
+    required TResult Function(_TicketAlreadyHasVip value) ticketAlreadyHasVip,
+    required TResult Function(_EventCanceled value) eventCanceled,
+    required TResult Function(_EventBeingPostponed value) eventBeingPostponed,
+    required TResult Function(_ReturnTimeExpired value) returnTimeExpired,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_InvalidVatNumber value) invalidVatNumber,
+    required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
+  }) {
+    return eventHasEnded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_StripeError value)? stripeError,
+    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_CanceledByUser value)? canceledByUser,
+    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult Function(_EventCanceled value)? eventCanceled,
+    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
+  }) {
+    return eventHasEnded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_StripeError value)? stripeError,
+    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_CanceledByUser value)? canceledByUser,
+    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult Function(_EventCanceled value)? eventCanceled,
+    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
+    required TResult orElse(),
+  }) {
+    if (eventHasEnded != null) {
+      return eventHasEnded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EventHasEnded implements UserPaymentFailure {
+  const factory _EventHasEnded() = _$_EventHasEnded;
 }

@@ -10,4 +10,5 @@ const userPaymentCloudFunctionsErrors = {
   'event-being-postponed': UserPaymentFailure.eventBeingPostponed(),
   'invalid-vat-number': UserPaymentFailure.invalidVatNumber(),
   'vip-no-longer-available': UserPaymentFailure.vipNoLongerAvailable(),
+  'event-has-ended': UserPaymentFailure.eventHasEnded(),
 };

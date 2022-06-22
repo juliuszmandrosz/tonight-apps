@@ -32,4 +32,6 @@ class UserPaymentFailure with _$UserPaymentFailure {
 
   const factory UserPaymentFailure.vipNoLongerAvailable() =
       _VipNoLongerAvailable;
+
+  const factory UserPaymentFailure.eventHasEnded() = _EventHasEnded;
 }
