@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/domain/domain.dart';
 import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
-import 'package:raver_scanner/presentation/core/raver_scanner_headline.dart';
 import 'package:raver_scanner/presentation/core/ticket_logo_animation.dart';
 import 'package:raver_scanner/presentation/event/widgets/current_event.dart';
 import 'package:raver_scanner/presentation/event/widgets/no_access.dart';
@@ -19,7 +20,18 @@ class EventPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CurrentEventCubit, CurrentEventState>(
+    return BlocConsumer<CurrentEventCubit, CurrentEventState>(
+      listener: (context, state) {
+        if (state.status.isFailure() &&
+            state.failure == some(const SelectorEventFailure.unexpected())) {
+          context.pushRoute(
+            FailureRoute(
+              retryCallback: () =>
+                  context.read<CurrentEventCubit>().getCurrentEvent(),
+            ),
+          );
+        }
+      },
       builder: (context, state) {
         if (state.status.isLoading()) {
           return const TicketLogoAnimation();
@@ -30,9 +42,7 @@ class EventPage extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             child: Center(
               child: state.failure.getOrCrash().map(
-                    unexpected: (_) => RaverScannerHeadline(
-                      text: S().errorLoadingEventDetails,
-                    ),
+                    unexpected: (_) => Container(),
                     noAccess: (_) => const NoAccess(),
                   ),
             ),
