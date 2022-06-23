@@ -42,11 +42,11 @@ class PostponeEventPage extends StatelessWidget {
                   (message) => context.showSnackbarMessage(message),
                 );
 
-                state.status.isSubmissionInProgress
+                state.postponeEventStatus.isSubmissionInProgress
                     ? context.loaderOverlay.show()
                     : context.loaderOverlay.hide();
 
-                if (state.status.isSubmissionSuccess) {
+                if (state.postponeEventStatus.isSubmissionSuccess) {
                   context.router.popUntilRoot();
                   context.showSnackbarMessage(S().eventPostponedSuccessfully);
                 }

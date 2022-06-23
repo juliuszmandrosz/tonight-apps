@@ -34,6 +34,7 @@ class CancelEventButton extends StatelessWidget {
                       listener: (context, state) {
                         if (state.eventCostsStatus.isFailure()) {
                           context.showSnackbarMessage(S().serverError);
+                          eventCubit.cancelEventCostsSub();
                           Navigator.of(context).pop(false);
                         }
                       },

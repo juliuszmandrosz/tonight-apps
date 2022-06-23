@@ -18,20 +18,11 @@ class PostponeEventButton extends StatelessWidget {
         SizedBox(
           width: 300,
           child: ElevatedButton(
-            onPressed: () async {
-              final result =
-                  await context.showConfirmationDialogWithCustomMessage(
-                S().confirmEventPostpone,
-              );
-
-              if (result ?? false) {
-                AutoRouter.of(context).push(
-                  PostponeEventRoute(
-                    event: upcomingLiveEventState.event.getOrCrash(),
-                  ),
-                );
-              }
-            },
+            onPressed: () => context.pushRoute(
+              PostponeEventRoute(
+                event: upcomingLiveEventState.event.getOrCrash(),
+              ),
+            ),
             child: Text(S().postponeEvent),
           ),
         ),

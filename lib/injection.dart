@@ -180,6 +180,7 @@ void _registerCubits() {
     (EventNotifierCubit eventNotifierCubit, _) => PostponeEventCubit(
       eventNotifierCubit: eventNotifierCubit,
       partnerEventFacade: getIt(),
+      eventCostsFacade: getIt(),
     ),
   );
 

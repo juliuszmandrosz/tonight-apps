@@ -17,7 +17,7 @@ class CurrentEndDateInput extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.endDateTime != current.endDateTime ||
           previous.startDateTime != current.startDateTime ||
-          previous.status != current.status,
+          previous.postponeEventStatus != current.postponeEventStatus,
       builder: (context, state) {
         return TextField(
           readOnly: true,
@@ -52,7 +52,7 @@ class CurrentEndDateInput extends StatelessWidget {
   }
 
   String? _getEndDateTimeErrorMessage(PostponeEventState state) {
-    if (state.endDateTime.valid || state.status != FormzStatus.invalid) {
+    if (state.endDateTime.valid || state.postponeEventStatus != FormzStatus.invalid) {
       return null;
     }
 

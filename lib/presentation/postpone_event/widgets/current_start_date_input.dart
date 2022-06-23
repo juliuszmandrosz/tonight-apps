@@ -16,7 +16,7 @@ class CurrentStartDateInput extends StatelessWidget {
     return BlocBuilder<PostponeEventCubit, PostponeEventState>(
       buildWhen: (previous, current) =>
           previous.startDateTime != current.startDateTime ||
-          previous.status != current.status,
+          previous.postponeEventStatus != current.postponeEventStatus,
       builder: (context, state) {
         return TextField(
           readOnly: true,
@@ -53,7 +53,8 @@ class CurrentStartDateInput extends StatelessWidget {
   }
 
   String? _getStartDateTimeErrorMessage(PostponeEventState state) {
-    if (state.startDateTime.valid || state.status != FormzStatus.invalid) {
+    if (state.startDateTime.valid ||
+        state.postponeEventStatus != FormzStatus.invalid) {
       return null;
     }
 

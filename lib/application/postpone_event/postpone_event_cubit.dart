@@ -1,8 +1,12 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/domain/event_costs/event_costs_entity.dart';
+import 'package:raver_events/domain/event_costs/event_costs_facade.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_event/form_inputs/end_date_time.dart';
 import 'package:raver_partners/application/add_event/form_inputs/start_date_time.dart';
@@ -17,12 +21,17 @@ part 'postpone_event_state.dart';
 class PostponeEventCubit extends Cubit<PostponeEventState> {
   final EventNotifierCubit _eventNotifierCubit;
   final PartnerEventFacade _eventFacade;
+  final EventCostsFacade _eventCostsFacade;
+
+  StreamSubscription? _eventCostsSub;
 
   PostponeEventCubit({
     required EventNotifierCubit eventNotifierCubit,
     required PartnerEventFacade partnerEventFacade,
+    required EventCostsFacade eventCostsFacade,
   })  : _eventNotifierCubit = eventNotifierCubit,
         _eventFacade = partnerEventFacade,
+        _eventCostsFacade = eventCostsFacade,
         super(PostponeEventState.initial());
 
   void addEventToState(Event event) {
@@ -39,6 +48,30 @@ class PostponeEventCubit extends Cubit<PostponeEventState> {
         endDateTime: endDateTime,
       ),
     );
+  }
+
+  Future<void> getEventCosts() async {
+    emit(state.copyWith(eventCostsStatus: CubitStatus.loading));
+
+    _eventCostsSub =
+        _eventCostsFacade.getEventCosts(state.event.getOrCrash()).listen(
+      (result) {
+        result.fold(
+          (failure) =>
+              emit(state.copyWith(eventCostsStatus: CubitStatus.failure)),
+          (costs) => emit(
+            state.copyWith(
+              eventCostsStatus: CubitStatus.success,
+              eventCosts: some(costs),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  cancelEventCostsSub() {
+    _eventCostsSub?.cancel();
   }
 
   void startDateTimeChanged(DateTime? value) {
@@ -64,7 +97,7 @@ class PostponeEventCubit extends Cubit<PostponeEventState> {
   }
 
   Future<void> postponeEvent() async {
-    emit(state.copyWith(status: FormzStatus.submissionInProgress));
+    emit(state.copyWith(postponeEventStatus: FormzStatus.submissionInProgress));
 
     final event = state.event.getOrCrash();
 
@@ -85,7 +118,8 @@ class PostponeEventCubit extends Cubit<PostponeEventState> {
           eventEndDateTime: newEventEndDateTime,
         );
         _eventNotifierCubit.notifyAboutEditedEvent(event, updatedEvent);
-        emit(state.copyWith(status: FormzStatus.submissionSuccess));
+        emit(
+            state.copyWith(postponeEventStatus: FormzStatus.submissionSuccess));
       },
     );
   }
@@ -103,7 +137,7 @@ class PostponeEventCubit extends Cubit<PostponeEventState> {
 
     final status = await _getStatusForValidation();
 
-    emit(state.copyWith(status: status));
+    emit(state.copyWith(postponeEventStatus: status));
 
     return status.isValid;
   }
@@ -148,7 +182,7 @@ class PostponeEventCubit extends Cubit<PostponeEventState> {
     DateTime fromDate,
     DateTime toDate,
   ) async {
-    emit(state.copyWith(status: FormzStatus.submissionInProgress));
+    emit(state.copyWith(postponeEventStatus: FormzStatus.submissionInProgress));
 
     final currentEvent = await _eventFacade
         .getEventInDateRangeForCurrentPartner(fromDate, toDate);
@@ -159,7 +193,7 @@ class PostponeEventCubit extends Cubit<PostponeEventState> {
         return left(failure);
       },
       (option) {
-        emit(state.copyWith(status: FormzStatus.pure));
+        emit(state.copyWith(postponeEventStatus: FormzStatus.pure));
         return option.fold(
           () => right(none()),
           (event) {
@@ -179,7 +213,7 @@ class PostponeEventCubit extends Cubit<PostponeEventState> {
     }
     emit(
       state.copyWith(
-        status: FormzStatus.submissionFailure,
+        postponeEventStatus: FormzStatus.submissionFailure,
         errorMessage: none(),
       ),
     );
@@ -189,9 +223,15 @@ class PostponeEventCubit extends Cubit<PostponeEventState> {
     emit(state.copyWith(errorMessage: some(message ?? S().serverError)));
     emit(
       state.copyWith(
-        status: FormzStatus.submissionFailure,
+        postponeEventStatus: FormzStatus.submissionFailure,
         errorMessage: none(),
       ),
     );
+  }
+
+  @override
+  Future<void> close() {
+    _eventCostsSub?.cancel();
+    return super.close();
   }
 }
