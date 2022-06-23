@@ -3,13 +3,6 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <queries>
-        <intent>
-            <action android:name="android.intent.action.VIEW"/>
-            <data android:scheme="https"/>
-        </intent>
-    </queries>
-
-    <queries>
         <!-- If your app opens https URLs -->
         <intent>
             <action android:name="android.intent.action.VIEW"/>
@@ -58,7 +51,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data
-                        android:host="https://tonightpartnersapp.page.link"
+                        android:host="tonightpartnersapp.page.link"
                         android:scheme="https"/>
             </intent-filter>
         </activity>
