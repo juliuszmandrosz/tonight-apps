@@ -26,6 +26,9 @@ class RaverPartnersApp extends StatelessWidget {
         BlocProvider(
           create: (ctx) => getIt<NetworkCheckCubit>()..initNetworkListener(),
         ),
+        BlocProvider(
+          create: (context) => getIt<RemoteConfigCubit>(),
+        ),
       ],
       child: MaterialApp.router(
         title: S().tonightPartners,
