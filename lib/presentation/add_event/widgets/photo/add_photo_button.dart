@@ -15,9 +15,8 @@ class AddPhotoButton extends StatelessWidget {
       onPressed: () async {
         final result = await FilePicker.platform.pickFiles(
           allowMultiple: false,
-          type: FileType.custom,
+          type: FileType.image,
           dialogTitle: S().selectEventPhoto,
-          allowedExtensions: ['jpg', 'png'],
         );
 
         if (result != null) {
