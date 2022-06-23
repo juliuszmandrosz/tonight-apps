@@ -64,7 +64,7 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerLazySingleton(
+  getIt.registerFactory(
     () => CurrentEventCubit(
       getIt(),
     ),
@@ -82,7 +82,7 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerLazySingleton(
+  getIt.registerFactory(
     () => SelectorClubCubit(
       selectorClubFacade: getIt(),
       selectorRewardFacade: getIt(),
@@ -95,11 +95,21 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerLazySingleton(
-    () => WelcomeLoaderCubit(
-      selectorClubCubit: getIt(),
-      currentEventCubit: getIt(),
-      firebaseRemoteConfig: getIt(),
+  getIt.registerFactoryParam(
+    (
+      CurrentEventCubit currentEventCubit,
+      SelectorClubCubit selectorClubCubit,
+    ) =>
+        WelcomeLoaderCubit(
+      currentEventCubit: currentEventCubit,
+      selectorClubCubit: selectorClubCubit,
+    ),
+  );
+
+  getIt.registerFactory(
+    () => RemoteConfigCubit(
+      networkCheckCubit: getIt(),
+      remoteConfigFacade: getIt(),
     ),
   );
 }
@@ -191,6 +201,14 @@ void _registerFacades() {
       getIt(),
     ),
   );
+
+  getIt.registerLazySingleton<RemoteConfigFacade>(
+    () => FirebaseRemoteConfigFacade(
+      firebaseCrashlytics: getIt(),
+      firebaseRemoteConfig: getIt(),
+      logger: getIt(),
+    ),
+  );
 }
 
 void _registerModules() {
@@ -236,7 +254,7 @@ void _registerModules() {
   getIt.registerLazySingleton(() => Connectivity());
 
   getIt.registerLazySingleton(
-        () => Dio(
+    () => Dio(
       BaseOptions(
         baseUrl: dotenv.env[apiEndpoint]!,
         headers: getHttpHeaders(),

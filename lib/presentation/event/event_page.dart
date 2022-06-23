@@ -60,8 +60,8 @@ class EventPage extends StatelessWidget {
                     width: 300,
                     child: ElevatedButton.icon(
                       icon: const FaIcon(FontAwesomeIcons.qrcode),
-                      onPressed: () => AutoRouter.of(context).push(
-                        const ScannerRoute(),
+                      onPressed: () => context.pushRoute(
+                        ScannerRoute(blocContext: context),
                       ),
                       label: Text(S().startScanning),
                     ),

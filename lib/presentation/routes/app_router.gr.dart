@@ -30,12 +30,24 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData, child: const NavigatorPage());
     },
     ScannerRoute.name: (routeData) {
+      final args = routeData.argsAs<ScannerRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const ScannerPage());
+          routeData: routeData,
+          child: ScannerPage(blocContext: args.blocContext, key: args.key));
     },
     NetworkLostRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const NetworkLostPage());
+    },
+    FailureRoute.name: (routeData) {
+      final args = routeData.argsAs<FailureRouteArgs>();
+      return CustomPage<dynamic>(
+          routeData: routeData,
+          child: FailurePage(retryCallback: args.retryCallback, key: args.key),
+          transitionsBuilder: zoomInTransition,
+          durationInMilliseconds: 300,
+          opaque: true,
+          barrierDismissible: false);
     },
     EventRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
@@ -58,7 +70,8 @@ class _$AppRouter extends RootStackRouter {
               path: 'settings-page', parent: NavigatorRoute.name)
         ]),
         RouteConfig(ScannerRoute.name, path: '/scanner-page'),
-        RouteConfig(NetworkLostRoute.name, path: '/network-lost-page')
+        RouteConfig(NetworkLostRoute.name, path: '/network-lost-page'),
+        RouteConfig(FailureRoute.name, path: '/failure-page')
       ];
 }
 
@@ -90,10 +103,26 @@ class NavigatorRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ScannerPage]
-class ScannerRoute extends PageRouteInfo<void> {
-  const ScannerRoute() : super(ScannerRoute.name, path: '/scanner-page');
+class ScannerRoute extends PageRouteInfo<ScannerRouteArgs> {
+  ScannerRoute({required BuildContext blocContext, Key? key})
+      : super(ScannerRoute.name,
+            path: '/scanner-page',
+            args: ScannerRouteArgs(blocContext: blocContext, key: key));
 
   static const String name = 'ScannerRoute';
+}
+
+class ScannerRouteArgs {
+  const ScannerRouteArgs({required this.blocContext, this.key});
+
+  final BuildContext blocContext;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ScannerRouteArgs{blocContext: $blocContext, key: $key}';
+  }
 }
 
 /// generated route for
@@ -103,6 +132,30 @@ class NetworkLostRoute extends PageRouteInfo<void> {
       : super(NetworkLostRoute.name, path: '/network-lost-page');
 
   static const String name = 'NetworkLostRoute';
+}
+
+/// generated route for
+/// [FailurePage]
+class FailureRoute extends PageRouteInfo<FailureRouteArgs> {
+  FailureRoute({required Function retryCallback, Key? key})
+      : super(FailureRoute.name,
+            path: '/failure-page',
+            args: FailureRouteArgs(retryCallback: retryCallback, key: key));
+
+  static const String name = 'FailureRoute';
+}
+
+class FailureRouteArgs {
+  const FailureRouteArgs({required this.retryCallback, this.key});
+
+  final Function retryCallback;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'FailureRouteArgs{retryCallback: $retryCallback, key: $key}';
+  }
 }
 
 /// generated route for

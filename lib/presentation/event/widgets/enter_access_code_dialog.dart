@@ -52,6 +52,7 @@ class EnterAccessCodeDialog extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: S().accessCode,
                 errorText: _getAccessCodeInputErrorMessage(state),
+                errorMaxLines: 2,
               ),
             ),
           ),

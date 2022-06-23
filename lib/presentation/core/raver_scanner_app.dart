@@ -3,9 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
-import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
-import 'package:raver_scanner/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:raver_scanner/injection.dart';
 import 'package:raver_scanner/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -23,16 +20,7 @@ class RaverScannerApp extends StatelessWidget {
           create: (ctx) => getIt<AuthCubit>()..requestAuthCheck(),
         ),
         BlocProvider(
-          create: (ctx) => getIt<CurrentEventCubit>(),
-        ),
-        BlocProvider(
-          create: (ctx) => getIt<SelectorClubCubit>(),
-        ),
-        BlocProvider(
           create: (ctx) => getIt<NetworkCheckCubit>()..initNetworkListener(),
-        ),
-        BlocProvider(
-          create: (ctx) => getIt<WelcomeLoaderCubit>(),
         ),
       ],
       child: MaterialApp.router(

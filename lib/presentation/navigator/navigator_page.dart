@@ -4,88 +4,137 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
+import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
 import 'package:raver_scanner/application/welcome_loader/welcome_loader_cubit.dart';
+import 'package:raver_scanner/injection.dart';
 import 'package:raver_scanner/presentation/core/raver_scanner_app_bar.dart';
 import 'package:raver_scanner/presentation/core/ticket_logo_animation.dart';
 import 'package:raver_scanner/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class NavigatorPage extends StatelessWidget {
+class NavigatorPage extends StatefulWidget {
   const NavigatorPage({Key? key}) : super(key: key);
 
   @override
+  State<NavigatorPage> createState() => _NavigatorPageState();
+}
+
+class _NavigatorPageState extends State<NavigatorPage> {
+  late CurrentEventCubit currentEventCubit;
+  late SelectorClubCubit selectorClubCubit;
+
+  @override
   Widget build(BuildContext context) {
-    context.read<WelcomeLoaderCubit>().loadData();
-    return MultiBlocListener(
-      listeners: [
-        BlocListener<AuthCubit, AuthState>(
-          bloc: context.read<AuthCubit>(),
-          listener: (context, state) => state.map(
-            initial: (_) {},
-            authenticated: (_) =>
-                AutoRouter.of(context).replace(const NavigatorRoute()),
-            unauthenticated: (_) {
-              context.read<WelcomeLoaderCubit>().resetState();
-              AutoRouter.of(context).replace(const AuthRoute());
+    return BlocProvider(
+      create: (context) => getIt<RemoteConfigCubit>(),
+      child: MultiBlocListener(
+        listeners: [
+          BlocListener<AuthCubit, AuthState>(
+            bloc: context.read<AuthCubit>(),
+            listener: (context, state) => state.map(
+              initial: (_) {},
+              authenticated: (_) =>
+                  context.replaceRoute(const NavigatorRoute()),
+              unauthenticated: (_) => context.replaceRoute(const AuthRoute()),
+            ),
+          ),
+          BlocListener<NetworkCheckCubit, NetworkCheckState>(
+            listener: (context, state) {
+              final currentRoute = context.router.current.name;
+              if (!state.isConnected && currentRoute != NetworkLostRoute.name) {
+                context.pushRoute(const NetworkLostRoute());
+              }
             },
           ),
-        ),
-        BlocListener<NetworkCheckCubit, NetworkCheckState>(
-          bloc: context.read<NetworkCheckCubit>(),
-          listener: (context, state) {
-            if (!state.isConnected) {
-              AutoRouter.of(context).push(const NetworkLostRoute());
+        ],
+        child: BlocBuilder<RemoteConfigCubit, RemoteConfigState>(
+          builder: (context, state) {
+            context.read<RemoteConfigCubit>().setupRemoteConfig();
+
+            if (state.status.isInitial() || state.status.isFailure()) {
+              return Container();
             }
+
+            if (state.status.isLoading()) {
+              return const TicketLogoAnimation();
+            }
+
+
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  lazy: false,
+                  create: (ctx) {
+                    currentEventCubit = getIt<CurrentEventCubit>();
+                    return currentEventCubit;
+                  },
+                ),
+                BlocProvider(
+                  lazy: false,
+                  create: (ctx) {
+                    selectorClubCubit = getIt<SelectorClubCubit>();
+                    return selectorClubCubit;
+                  },
+                ),
+                BlocProvider(
+                  create: (ctx) => getIt<WelcomeLoaderCubit>(
+                    param1: currentEventCubit,
+                    param2: selectorClubCubit,
+                  )..loadData(),
+                ),
+              ],
+              child: BlocConsumer<WelcomeLoaderCubit, WelcomeLoaderState>(
+                listener: (context, state) {
+                  if (state.status.isFailure() &&
+                      context.router.current.name != FailureRoute.name) {
+                    context.pushRoute(
+                      FailureRoute(
+                        retryCallback: () =>
+                            context.read<WelcomeLoaderCubit>().loadData(),
+                      ),
+                    );
+                  }
+                },
+                builder: (context, state) {
+                  if (state.status.isInitial() || state.status.isFailure()) {
+                    return Container();
+                  }
+
+                  if (state.status.isLoading()) {
+                    return const TicketLogoAnimation();
+                  }
+
+                  return AutoTabsScaffold(
+                    resizeToAvoidBottomInset: false,
+                    appBarBuilder: (_, tabsRouter) =>
+                        const RaverScannerAppBar(),
+                    routes: const [
+                      EventRoute(),
+                      SettingsRoute(),
+                    ],
+                    bottomNavigationBuilder: (_, tabsRouter) {
+                      return NavigationBar(
+                        selectedIndex: tabsRouter.activeIndex,
+                        onDestinationSelected: tabsRouter.setActiveIndex,
+                        destinations: [
+                          NavigationDestination(
+                            icon: const Icon(FontAwesomeIcons.fire),
+                            label: S().events(1),
+                          ),
+                          NavigationDestination(
+                            icon: const Icon(FontAwesomeIcons.gear),
+                            label: S().settings,
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
+            );
           },
         ),
-      ],
-      child: BlocConsumer<WelcomeLoaderCubit, WelcomeLoaderState>(
-        listener: (context, state) {
-          if (state.remoteConfigStatus.isFailure()) {
-            AutoRouter.of(context).replace(const NetworkLostRoute());
-          }
-        },
-        builder: (context, state) {
-          final welcomeLoaderCubit = context.read<WelcomeLoaderCubit>();
-
-          if (welcomeLoaderCubit.isStatusInitial ||
-              state.remoteConfigStatus.isFailure()) {
-            return const SizedBox();
-          }
-
-          if (welcomeLoaderCubit.isStatusLoading) {
-            return const TicketLogoAnimation();
-          }
-
-          if (welcomeLoaderCubit.isStatusFailure) {
-            return Center(child: Text(S().serverError));
-          }
-
-          return AutoTabsScaffold(
-            resizeToAvoidBottomInset: false,
-            appBarBuilder: (_, tabsRouter) => const RaverScannerAppBar(),
-            routes: const [
-              EventRoute(),
-              SettingsRoute(),
-            ],
-            bottomNavigationBuilder: (_, tabsRouter) {
-              return NavigationBar(
-                selectedIndex: tabsRouter.activeIndex,
-                onDestinationSelected: tabsRouter.setActiveIndex,
-                destinations: [
-                  NavigationDestination(
-                    icon: const Icon(FontAwesomeIcons.fire),
-                    label: S().events(1),
-                  ),
-                  NavigationDestination(
-                    icon: const Icon(FontAwesomeIcons.gear),
-                    label: S().settings,
-                  ),
-                ],
-              );
-            },
-          );
-        },
       ),
     );
   }

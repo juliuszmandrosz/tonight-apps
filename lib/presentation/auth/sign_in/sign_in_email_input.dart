@@ -20,6 +20,7 @@ class SignInEmailInput extends StatelessWidget {
           decoration: InputDecoration(
             labelText: S().email,
             errorText: _getEmailInputErrorMessage(state),
+            errorMaxLines: 2,
           ),
         );
       },

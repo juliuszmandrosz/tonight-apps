@@ -3,12 +3,10 @@ part of 'welcome_loader_cubit.dart';
 @freezed
 class WelcomeLoaderState with _$WelcomeLoaderState {
   const factory WelcomeLoaderState({
-    required CubitStatus cubitStatuses,
-    required CubitStatus remoteConfigStatus,
+    required CubitStatus status,
   }) = _WelcomeLoaderState;
 
   factory WelcomeLoaderState.initial() => const WelcomeLoaderState(
-        cubitStatuses: CubitStatus.initial,
-        remoteConfigStatus: CubitStatus.initial,
+        status: CubitStatus.initial,
       );
 }
