@@ -31,8 +31,8 @@ class EventOverviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isMoreThanDayLeftToEvent = event.eventStartDateTime.isAfter(
-      DateTime.now().add(const Duration(days: 1)),
+    final isMoreThan3HoursLeftToEvent = event.eventStartDateTime.isAfter(
+      DateTime.now().add(const Duration(hours: 3)),
     );
     return MultiBlocProvider(
       providers: [
@@ -125,8 +125,10 @@ class EventOverviewPage extends StatelessWidget {
                       const EventOverviewTicketPools(),
                       const SizedBox(height: 10),
                       const EventOverviewDetails(),
-                      if (isMoreThanDayLeftToEvent) const PostponeEventButton(),
-                      if (isMoreThanDayLeftToEvent) const CancelEventButton(),
+                      if (isMoreThan3HoursLeftToEvent)
+                        const PostponeEventButton(),
+                      if (isMoreThan3HoursLeftToEvent)
+                        const CancelEventButton(),
                     ],
                   ),
                 );
