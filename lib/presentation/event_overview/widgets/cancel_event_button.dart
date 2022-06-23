@@ -89,7 +89,7 @@ class CancelEventButton extends StatelessWidget {
     return Text(
       '${S().confirmEventCancelation} '
       '${formatDoubleToMoney(
-        eventCosts.paymentProcessorFeeBalance / 100,
+        eventCosts.paymentProcessorFeeBalance,
         eventCosts.currency,
       )}',
     );

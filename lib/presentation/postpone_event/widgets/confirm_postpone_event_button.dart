@@ -89,7 +89,7 @@ class ConfirmEventPostponeButton extends StatelessWidget {
     return Text(
       '${S().confirmEventPostpone} '
       '${formatDoubleToMoney(
-        eventCosts.paymentProcessorFeeBalance / 100,
+        eventCosts.paymentProcessorFeeBalance,
         eventCosts.currency,
       )}',
     );
