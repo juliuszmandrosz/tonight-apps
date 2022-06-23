@@ -50,7 +50,7 @@ class TicketQrPage extends StatelessWidget {
 
             if (state.ticketReturnStatus.isSuccess()) {
               context.showSnackbarMessage(S().ticketReturnedSuccessfully);
-              AutoRouter.of(context).popUntilRoot();
+              context.router.popUntilRoot();
             }
           },
           buildWhen: (previous, current) =>
@@ -81,7 +81,7 @@ class TicketQrPage extends StatelessWidget {
                       if (!ticketInState.isVip && state.isVipEnabled)
                         const UpgradeToVipButton(),
                       if (ticketInState.eventStartDateTime.isAfter(
-                            DateTime.now().add(const Duration(days: 1)),
+                            DateTime.now(),
                           ) &&
                           ticketInState.isReturnable)
                         const TicketReturnButton(),
