@@ -16,7 +16,9 @@ import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/infrastructure/currency_params/firebase_currency_params_facade.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/domain/event_costs/event_costs_facade.dart';
 import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
+import 'package:raver_events/infrastructure/event_costs/firebase_event_costs_facade.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_edit_reward/add_reward_cubit.dart';
 import 'package:raver_partners/application/add_edit_ticket_pool/add_edit_ticket_pool_cubit.dart';
@@ -150,6 +152,7 @@ void _registerCubits() {
       eventTicketsFacade: getIt(),
       eventFacade: getIt(),
       eventNotifierCubit: eventNotifierCubit,
+      eventCostsFacade: getIt(),
     ),
   );
 
@@ -373,6 +376,14 @@ void _registerFacades() {
       logger: getIt(),
       firebaseRemoteConfig: getIt(),
       firebaseCrashlytics: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<EventCostsFacade>(
+    () => FirebaseEventCostsFacade(
+      logger: getIt(),
+      crashlytics: getIt(),
+      firestore: getIt(),
     ),
   );
 }

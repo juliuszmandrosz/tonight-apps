@@ -5,6 +5,8 @@ import 'package:dartz/dartz.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/domain/event_costs/event_costs_entity.dart';
+import 'package:raver_events/domain/event_costs/event_costs_facade.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_event/form_inputs/description.dart';
 import 'package:raver_partners/application/add_event/form_inputs/dj_channel_url.dart';
@@ -22,16 +24,20 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
   final PartnerEventTicketsFacade _eventTicketsFacade;
   final PartnerEventFacade _eventFacade;
   final EventNotifierCubit _eventNotifierCubit;
+  final EventCostsFacade _eventCostsFacade;
 
-  late StreamSubscription _eventTicketsSub;
+  StreamSubscription? _eventTicketsSub;
+  StreamSubscription? _eventCostsSub;
 
   UpcomingLiveEventCubit({
     required PartnerEventTicketsFacade eventTicketsFacade,
     required PartnerEventFacade eventFacade,
     required EventNotifierCubit eventNotifierCubit,
+    required EventCostsFacade eventCostsFacade,
   })  : _eventTicketsFacade = eventTicketsFacade,
         _eventFacade = eventFacade,
         _eventNotifierCubit = eventNotifierCubit,
+        _eventCostsFacade = eventCostsFacade,
         super(UpcomingLiveEventState.initial());
 
   void addEventToState(Event event) {
@@ -54,6 +60,30 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
         ),
       );
     });
+  }
+
+  Future<void> getEventCosts() async {
+    emit(state.copyWith(eventCostsStatus: CubitStatus.loading));
+
+    _eventCostsSub =
+        _eventCostsFacade.getEventCosts(state.event.getOrCrash()).listen(
+      (result) {
+        result.fold(
+          (failure) =>
+              emit(state.copyWith(eventCostsStatus: CubitStatus.failure)),
+          (costs) => emit(
+            state.copyWith(
+              eventCostsStatus: CubitStatus.success,
+              eventCosts: some(costs),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  cancelEventCostsSub() {
+    _eventCostsSub?.cancel();
   }
 
   void editTicketPool(TicketPool editedTicketPool) async {
@@ -362,7 +392,8 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
 
   @override
   Future<void> close() {
-    _eventTicketsSub.cancel();
+    _eventTicketsSub?.cancel();
+    _eventCostsSub?.cancel();
     return super.close();
   }
 }

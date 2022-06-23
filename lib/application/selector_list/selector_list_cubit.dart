@@ -15,7 +15,7 @@ part 'selector_list_state.dart';
 
 class SelectorListCubit extends Cubit<SelectorListState> {
   final SelectorManagementFacade _selectorManagementFacade;
-  late final StreamSubscription _selectorsSub;
+  StreamSubscription? _selectorsSub;
 
   SelectorListCubit(this._selectorManagementFacade)
       : super(SelectorListState.initial());
@@ -73,7 +73,7 @@ class SelectorListCubit extends Cubit<SelectorListState> {
 
   @override
   Future<void> close() {
-    _selectorsSub.cancel();
+    _selectorsSub?.cancel();
     return super.close();
   }
 }

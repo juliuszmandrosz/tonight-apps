@@ -16,7 +16,7 @@ class SignInCubit extends Cubit<SignInState> {
   final PartnerAuthFacade _authFacade;
   final FirebaseDynamicLinks _dynamicLinks;
 
-  late final StreamSubscription _linkSub;
+  StreamSubscription? _linkSub;
 
   SignInCubit({
     required PartnerAuthFacade partnerAuthFacade,
@@ -108,7 +108,7 @@ class SignInCubit extends Cubit<SignInState> {
 
   @override
   Future<void> close() {
-    _linkSub.cancel();
+    _linkSub?.cancel();
     return super.close();
   }
 }
