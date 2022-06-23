@@ -415,12 +415,14 @@ void _registerModules() {
 
   getIt.registerLazySingleton(() => FirebaseCrashlytics.instance);
 
-  getIt.registerLazySingleton(() => Dio(
-        BaseOptions(
-          baseUrl: dotenv.env[apiEndpoint]!,
-          headers: getHttpHeaders(),
-        ),
-      ));
+  getIt.registerLazySingleton(
+    () => Dio(
+      BaseOptions(
+        baseUrl: dotenv.env[apiEndpoint]!,
+        headers: getHttpHeaders(),
+      ),
+    ),
+  );
 
   getIt.registerLazySingleton(() => Logger());
 

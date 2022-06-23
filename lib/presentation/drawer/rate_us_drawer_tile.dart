@@ -13,7 +13,7 @@ class RateUsDrawerTile extends StatelessWidget {
       label: S().rateUs,
       icon: FontAwesomeIcons.solidStar,
       onTap: () => LaunchReview.launch(
-        // TODO - add ios app id
+        iOSAppId: '1630748612',
         androidAppId: 'com.raverteam.tonightPartners',
       ),
     );
