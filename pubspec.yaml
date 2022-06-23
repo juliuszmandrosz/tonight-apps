@@ -62,6 +62,7 @@ dependencies:
   flutter_dotenv: ^5.0.2
   google_fonts: ^3.0.0
   flutter_native_splash: ^2.2.3+1
+  launch_review: ^3.0.1
 
   raver_translations:
     git:
