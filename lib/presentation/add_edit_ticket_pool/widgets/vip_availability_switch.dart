@@ -18,6 +18,7 @@ class VipAvailabilitySwitch extends StatelessWidget {
             contentPadding: const EdgeInsets.all(5),
           ),
           child: SwitchListTile.adaptive(
+            activeColor: context.primaryColor,
             title: Text(
               S().allowVipTickets,
               style: context.subtitle1,
