@@ -13,6 +13,7 @@ class AuthPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return LoaderOverlay(
       overlayColor: context.shadowColor,
+      overlayOpacity: .7,
       child: Scaffold(
         body: SafeArea(
             child: Padding(

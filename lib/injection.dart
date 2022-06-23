@@ -2,10 +2,13 @@ import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
@@ -108,6 +111,7 @@ void _registerFacades() {
       googleSignIn: getIt(),
       logger: getIt(),
       authCloudFunctionsFacade: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -117,6 +121,7 @@ void _registerFacades() {
       googleSignIn: getIt(),
       logger: getIt(),
       authCloudFunctionsFacade: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -134,6 +139,7 @@ void _registerFacades() {
       eventCloudFunctionsFacade: getIt(),
       storage: getIt(),
       logger: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -143,6 +149,7 @@ void _registerFacades() {
       firebaseAuth: getIt(),
       logger: getIt(),
       ticketCloudFunctionsFacade: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -160,6 +167,7 @@ void _registerFacades() {
       cloudFunctionsFacade: getIt(),
       algoliaClubsApi: getIt(),
       firebaseStorage: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -174,6 +182,7 @@ void _registerFacades() {
       firestore: getIt(),
       firebaseAuth: getIt(),
       logger: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -193,11 +202,15 @@ void _registerModules() {
 
   getIt.registerLazySingleton(() => FirebaseRemoteConfig.instance);
 
-  getIt.registerLazySingleton(() => FirebaseFunctions.instance);
+  getIt.registerLazySingleton(
+    () => FirebaseFunctions.instanceFor(region: 'europe-central2'),
+  );
 
   getIt.registerLazySingleton(() => FirebaseDynamicLinks.instance);
 
   getIt.registerLazySingleton(() => FirebaseStorage.instance);
+
+  getIt.registerLazySingleton(() => FirebaseCrashlytics.instance);
 
   getIt.registerLazySingleton(() => Logger());
 
@@ -221,4 +234,13 @@ void _registerModules() {
   );
 
   getIt.registerLazySingleton(() => Connectivity());
+
+  getIt.registerLazySingleton(
+        () => Dio(
+      BaseOptions(
+        baseUrl: dotenv.env[apiEndpoint]!,
+        headers: getHttpHeaders(),
+      ),
+    ),
+  );
 }

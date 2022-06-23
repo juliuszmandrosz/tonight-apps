@@ -49,7 +49,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.raverteam.raverScanner"
+        applicationId "com.raverteam.tonightScanner"
         minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()

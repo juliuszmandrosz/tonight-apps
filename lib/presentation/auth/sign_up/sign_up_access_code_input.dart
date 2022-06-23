@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:raver_scanner/application/core/access_code_input.dart';
+import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_scanner/application/sign_up/sign_up_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -21,14 +21,15 @@ class SignUpAccessCodeInput extends StatelessWidget {
           keyboardType: TextInputType.text,
           decoration: InputDecoration(
             labelText: S().accessCode,
-            errorText: _getEmailInputErrorMessage(state),
+            errorText: _getAccessCodeInputErrorMessage(state),
+            errorMaxLines: 2,
           ),
         );
       },
     );
   }
 
-  String? _getEmailInputErrorMessage(SignUpState state) {
+  String? _getAccessCodeInputErrorMessage(SignUpState state) {
     if (state.accessCode.valid || state.status != FormzStatus.invalid) {
       return null;
     }

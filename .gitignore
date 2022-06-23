@@ -46,8 +46,12 @@ app.*.map.json
 /android/app/release
 
 
-# freezed
+# Freezed
 **/*.freezed.dart
 **/*.g.dart
 **/*.gr.dart
 /lib/firebase_options.dart
+
+# Env variables
+/.env
+

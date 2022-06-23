@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_scanner/application/core/access_code_input.dart';
 import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
 import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
