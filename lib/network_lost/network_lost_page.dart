@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_scanner/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:raver_scanner/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -13,46 +12,37 @@ class NetworkLostPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final networkCheckCubit = context.read<NetworkCheckCubit>();
-
     return BlocListener<NetworkCheckCubit, NetworkCheckState>(
-      bloc: context.read<NetworkCheckCubit>(),
       listener: (context, state) {
         if (state.isConnected) {
-          final autoRouter = AutoRouter.of(context);
-          context.read<WelcomeLoaderCubit>().loadData();
-          autoRouter.canNavigateBack
-              ? autoRouter.pop()
-              : autoRouter.replace(const NavigatorRoute());
+          _navigateToHomePage(context);
         }
       },
       child: WillPopScope(
         onWillPop: () async {
-          return networkCheckCubit.state.isConnected;
+          return context.read<NetworkCheckCubit>().state.isConnected;
         },
         child: Scaffold(
           body: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(15),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 50),
+                const Spacer(),
                 AutoSizeText(
                   S().lostNetworkConnectionDescription,
-                  style: context.headline5,
+                  style: context.headline6,
                   textAlign: TextAlign.center,
                   maxLines: 1,
                 ),
-                const SizedBox(height: 50),
-                Expanded(
-                  child: Lottie.asset('assets/animations/no_connection.json'),
-                ),
+                const Spacer(),
+                Lottie.asset("assets/animations/no_connection.json"),
+                const Spacer(),
                 SizedBox(
                   width: 300,
                   child: ElevatedButton(
-                    onPressed: () async {
+                    onPressed: () {
                       if (context.read<NetworkCheckCubit>().state.isConnected) {
-                        AutoRouter.of(context).pop();
+                        _navigateToHomePage(context);
                       }
                     },
                     child: Text(S().retryConnection),
@@ -64,5 +54,12 @@ class NetworkLostPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _navigateToHomePage(BuildContext context) {
+    final router = context.router;
+    router.canNavigateBack
+        ? router.pop()
+        : router.replace(const NavigatorRoute());
   }
 }
