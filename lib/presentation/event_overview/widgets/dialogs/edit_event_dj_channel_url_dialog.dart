@@ -24,11 +24,13 @@ class EditEventDjChannelUrlDialog extends HookWidget {
     final isDjChannelUrlEmpty = djChannelUrl == null || djChannelUrl.isEmpty;
     final controller = useTextEditingController(text: djChannelUrl);
 
+    upcomingEventCubit.onDjChannelUrlChanged(djChannelUrl ?? '');
+
     return BlocProvider.value(
       value: upcomingEventCubit,
       child: BlocConsumer<UpcomingLiveEventCubit, UpcomingLiveEventState>(
         listener: (context, state) {
-          if (state.editEventDetailsStatus.isSubmissionSuccess) {
+          if (state.editEventDetailsStatus.isSubmissionInProgress) {
             Navigator.of(context).pop();
           }
         },

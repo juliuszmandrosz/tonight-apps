@@ -22,6 +22,8 @@ class EditEventNameDialog extends HookWidget {
     final eventName = upcomingEventCubit.state.event.getOrCrash().eventName;
     final controller = useTextEditingController(text: eventName);
 
+    upcomingEventCubit.onEventNameChanged(eventName);
+
     return BlocProvider.value(
       value: upcomingEventCubit,
       child: BlocConsumer<UpcomingLiveEventCubit, UpcomingLiveEventState>(

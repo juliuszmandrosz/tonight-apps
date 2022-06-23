@@ -23,12 +23,13 @@ class EditEventDescriptionDialog extends HookWidget {
     final isDescriptionEmpty = description == null || description.isEmpty;
     final controller = useTextEditingController(text: description);
 
+    upcomingEventCubit.onDescriptionChanged(description ?? '');
+
     return BlocProvider.value(
       value: upcomingEventCubit,
       child: BlocConsumer<UpcomingLiveEventCubit, UpcomingLiveEventState>(
         listener: (context, state) {
-          if (state.editEventDetailsStatus.isSubmissionSuccess ||
-              state.editEventDetailsStatus.isSubmissionFailure) {
+          if (state.editEventDetailsStatus.isSubmissionInProgress) {
             Navigator.of(context).pop();
           }
         },

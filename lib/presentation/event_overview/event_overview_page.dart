@@ -72,8 +72,13 @@ class EventOverviewPage extends StatelessWidget {
                   (message) => context.showSnackbarMessage(message),
                 );
 
+                if (state.editEventDetailsStatus.isSubmissionFailure) {
+                  context.read<UpcomingLiveEventCubit>().resetEditEventState();
+                }
+
                 if (state.editEventDetailsStatus.isSubmissionSuccess) {
                   context.showSnackbarMessage(S().eventEditedSuccessfully);
+                  context.read<UpcomingLiveEventCubit>().resetEditEventState();
                 }
 
                 state.cancelEventStatus.isLoading() ||

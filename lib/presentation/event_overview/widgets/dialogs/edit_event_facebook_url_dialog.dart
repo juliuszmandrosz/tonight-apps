@@ -24,11 +24,13 @@ class EditEventFacebookUrlDialog extends HookWidget {
     final isFacebookUrlEmpty = facebookUrl == null || facebookUrl.isEmpty;
     final controller = useTextEditingController(text: facebookUrl);
 
+    upcomingEventCubit.onFacebookUrlChanged(facebookUrl ?? '');
+
     return BlocProvider.value(
       value: upcomingEventCubit,
       child: BlocConsumer<UpcomingLiveEventCubit, UpcomingLiveEventState>(
         listener: (context, state) {
-          if (state.editEventDetailsStatus.isSubmissionSuccess) {
+          if (state.editEventDetailsStatus.isSubmissionInProgress) {
             Navigator.of(context).pop();
           }
         },
