@@ -435,6 +435,11 @@ class AddEventCubit extends Cubit<AddEventState> {
   }
 
   Future<void> _addEvent() async {
+    if (state.startDateTime.value!.isBefore(DateTime.now())) {
+      _showErrorMessage(S().startDateBeforeNow);
+      return;
+    }
+
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
     final club = _clubInfoCubit.state.club.getOrCrash();
