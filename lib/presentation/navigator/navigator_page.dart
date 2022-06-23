@@ -60,130 +60,122 @@ class _NavigatorPageState extends State<NavigatorPage> {
         child: BlocBuilder<RemoteConfigCubit, RemoteConfigState>(
           builder: (context, state) {
             context.read<RemoteConfigCubit>().setupRemoteConfig();
-            return BlocBuilder<RemoteConfigCubit, RemoteConfigState>(
-              builder: (context, state) {
-                if (state.status.isInitial() || state.status.isFailure()) {
-                  return Container();
-                }
 
-                if (state.status.isLoading()) {
-                  return const TicketLogoAnimation();
-                }
+            if (state.status.isInitial() || state.status.isFailure()) {
+              return Container();
+            }
 
-                return MultiBlocProvider(
-                  providers: [
-                    BlocProvider(
-                      lazy: false,
-                      create: (context) {
-                        clubInfoCubit = getIt<ClubInfoCubit>();
-                        return clubInfoCubit;
-                      },
-                    ),
-                    BlocProvider(
-                      lazy: false,
-                      create: (context) {
-                        overviewCubit = getIt<OverviewCubit>();
-                        return overviewCubit;
-                      },
-                    ),
-                    BlocProvider(
-                      create: (context) => getIt<WelcomeLoaderCubit>(
-                        param1: overviewCubit,
-                        param2: clubInfoCubit,
-                      )..loadData(),
-                    ),
-                  ],
-                  child: BlocConsumer<WelcomeLoaderCubit, WelcomeLoaderState>(
-                    listener: (context, state) {
-                      if (state.status.isFailure() &&
-                          context.router.current.name != FailureRoute.name) {
-                        context.pushRoute(
-                          FailureRoute(
-                            retryCallback: () =>
-                                context.read<WelcomeLoaderCubit>().loadData(),
-                          ),
-                        );
-                      }
-                    },
-                    builder: (context, state) {
-                      final loaderState =
-                          context.read<WelcomeLoaderCubit>().state;
+            if (state.status.isLoading()) {
+              return const TicketLogoAnimation();
+            }
 
-                      if (loaderState.status.isInitial()) {
-                        return const SizedBox();
-                      }
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  lazy: false,
+                  create: (context) {
+                    clubInfoCubit = getIt<ClubInfoCubit>();
+                    return clubInfoCubit;
+                  },
+                ),
+                BlocProvider(
+                  lazy: false,
+                  create: (context) {
+                    overviewCubit = getIt<OverviewCubit>();
+                    return overviewCubit;
+                  },
+                ),
+                BlocProvider(
+                  create: (context) => getIt<WelcomeLoaderCubit>(
+                    param1: overviewCubit,
+                    param2: clubInfoCubit,
+                  )..loadData(),
+                ),
+              ],
+              child: BlocConsumer<WelcomeLoaderCubit, WelcomeLoaderState>(
+                listener: (context, state) {
+                  if (state.status.isFailure() &&
+                      context.router.current.name != FailureRoute.name) {
+                    context.pushRoute(
+                      FailureRoute(
+                        retryCallback: () =>
+                            context.read<WelcomeLoaderCubit>().loadData(),
+                      ),
+                    );
+                  }
+                },
+                builder: (context, state) {
+                  if (state.status.isInitial() || state.status.isFailure()) {
+                    return const SizedBox();
+                  }
 
-                      if (loaderState.status.isLoading()) {
-                        return const TicketLogoAnimation();
-                      }
+                  if (state.status.isLoading()) {
+                    return const TicketLogoAnimation();
+                  }
 
-                      if (loaderState.status.isFailure()) {
-                        return Container();
-                      }
+                  if (state.status.isFailure()) {
+                    return Container();
+                  }
 
-                      return AutoTabsScaffold(
-                        resizeToAvoidBottomInset: false,
-                        appBarBuilder: (_, tabsRouter) =>
-                            const RaverPartnersAppBar(),
-                        routes: const [
-                          OverviewRoute(),
-                          EventsRoute(),
-                          RewardsRoute(),
-                          SelectorsRoute(),
-                        ],
-                        drawer: const RaverPartnersDrawer(),
-                        floatingActionButton:
-                            selectedPage != SelectedPage.overview
-                                ? RaverPartnersFab(selectedPage: selectedPage)
-                                : null,
-                        bottomNavigationBuilder: (_, tabsRouter) {
-                          return NavigationBar(
-                            selectedIndex: tabsRouter.activeIndex,
-                            onDestinationSelected: (i) {
-                              setState(() {
-                                switch (i) {
-                                  case (0):
-                                    selectedPage = SelectedPage.overview;
-                                    break;
-                                  case (1):
-                                    selectedPage = SelectedPage.events;
-                                    break;
-                                  case (2):
-                                    selectedPage = SelectedPage.rewards;
-                                    break;
-                                  case (3):
-                                    selectedPage = SelectedPage.selectors;
-                                    break;
-                                }
-                              });
-                              tabsRouter.setActiveIndex(i);
-                            },
-                            destinations: [
-                              NavigationDestination(
-                                icon:
-                                    const FaIcon(FontAwesomeIcons.chartSimple),
-                                label: S().overview,
-                              ),
-                              NavigationDestination(
-                                icon: const FaIcon(FontAwesomeIcons.list),
-                                label: S().events(2),
-                              ),
-                              NavigationDestination(
-                                icon: const FaIcon(FontAwesomeIcons.trophy),
-                                label: S().rewards(2),
-                              ),
-                              NavigationDestination(
-                                icon: const FaIcon(FontAwesomeIcons.userGroup),
-                                label: S().selectors(2),
-                              ),
-                            ],
-                          );
+                  return AutoTabsScaffold(
+                    resizeToAvoidBottomInset: false,
+                    appBarBuilder: (_, tabsRouter) =>
+                        const RaverPartnersAppBar(),
+                    routes: const [
+                      OverviewRoute(),
+                      EventsRoute(),
+                      RewardsRoute(),
+                      SelectorsRoute(),
+                    ],
+                    drawer: const RaverPartnersDrawer(),
+                    floatingActionButton: selectedPage != SelectedPage.overview
+                        ? RaverPartnersFab(selectedPage: selectedPage)
+                        : null,
+                    bottomNavigationBuilder: (_, tabsRouter) {
+                      return NavigationBar(
+                        selectedIndex: tabsRouter.activeIndex,
+                        onDestinationSelected: (i) {
+                          setState(() {
+                            switch (i) {
+                              case (0):
+                                selectedPage = SelectedPage.overview;
+                                break;
+                              case (1):
+                                selectedPage = SelectedPage.events;
+                                break;
+                              case (2):
+                                selectedPage = SelectedPage.rewards;
+                                break;
+                              case (3):
+                                selectedPage = SelectedPage.selectors;
+                                break;
+                            }
+                          });
+                          tabsRouter.setActiveIndex(i);
                         },
+                        destinations: [
+                          NavigationDestination(
+                            icon: const FaIcon(FontAwesomeIcons.chartSimple),
+                            label: S().overview,
+                          ),
+                          NavigationDestination(
+                            icon: const FaIcon(FontAwesomeIcons.list),
+                            label: S().events(2),
+                          ),
+                          NavigationDestination(
+                            icon: const FaIcon(FontAwesomeIcons.trophy),
+                            label: S().rewards(2),
+                          ),
+                          NavigationDestination(
+                            icon: const FaIcon(FontAwesomeIcons.userGroup),
+                            label: S().selectors(2),
+                          ),
+                        ],
                       );
                     },
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             );
           },
         ),
