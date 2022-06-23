@@ -28,7 +28,7 @@
     </queries>
 
     <application
-        android:label="Tonight Partners"
+            android:label="Tonight Partners"
             android:name="${applicationName}"
             android:icon="@mipmap/ic_launcher">
         <activity
@@ -51,6 +51,15 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                        android:host="https://tonightpartnersapp.page.link"
+                        android:scheme="https"/>
             </intent-filter>
         </activity>
 
