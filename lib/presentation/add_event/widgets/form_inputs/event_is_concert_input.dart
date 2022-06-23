@@ -17,6 +17,7 @@ class EventIsConcertInput extends StatelessWidget {
             contentPadding: const EdgeInsets.all(5),
           ),
           child: SwitchListTile.adaptive(
+            activeColor: context.primaryColor,
             title: Text(
               S().isConcert,
               style: context.subtitle1,

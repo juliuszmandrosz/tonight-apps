@@ -14,6 +14,7 @@ class ApplyDiscountSwitch extends StatelessWidget {
           previous.isDiscountApplied != current.isDiscountApplied,
       builder: (context, state) {
         return SwitchListTile.adaptive(
+          activeColor: context.primaryColor,
           dense: true,
           contentPadding: const EdgeInsets.symmetric(horizontal: 0),
           title: Text(

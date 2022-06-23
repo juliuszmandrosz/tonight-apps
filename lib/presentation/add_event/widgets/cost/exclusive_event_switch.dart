@@ -14,6 +14,7 @@ class ExclusiveEventSwitch extends StatelessWidget {
           previous.isExclusiveEvent != current.isExclusiveEvent,
       builder: (context, state) {
         return SwitchListTile.adaptive(
+          activeColor: context.primaryColor,
           dense: true,
           contentPadding: const EdgeInsets.symmetric(horizontal: 0),
           title: Text(
