@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
 import 'package:raver_scanner/presentation/core/raver_scanner_headline.dart';
+import 'package:raver_scanner/presentation/core/ticket_logo_animation.dart';
 import 'package:raver_scanner/presentation/event/widgets/current_event.dart';
 import 'package:raver_scanner/presentation/event/widgets/no_access.dart';
 import 'package:raver_scanner/presentation/event/widgets/no_live_event.dart';
@@ -21,9 +22,7 @@ class EventPage extends StatelessWidget {
     return BlocBuilder<CurrentEventCubit, CurrentEventState>(
       builder: (context, state) {
         if (state.status.isLoading()) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const TicketLogoAnimation();
         }
 
         if (state.status.isFailure()) {

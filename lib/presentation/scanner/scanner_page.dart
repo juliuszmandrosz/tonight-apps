@@ -7,6 +7,7 @@ import 'package:raver_scanner/application/scanner/scanner_cubit.dart';
 import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
 import 'package:raver_scanner/injection.dart';
 import 'package:raver_scanner/presentation/core/raver_scanner_app_bar.dart';
+import 'package:raver_scanner/presentation/core/ticket_logo_animation.dart';
 import 'package:raver_scanner/presentation/scanner/widgets/qr_scanner.dart';
 import 'package:raver_scanner/presentation/scanner/widgets/scan_another_ticket_button.dart';
 import 'package:raver_scanner/presentation/scanner/widgets/scan_result.dart';
@@ -34,9 +35,7 @@ class ScannerPage extends StatelessWidget {
                 return const QrScanner();
 
               case CubitStatus.loading:
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
+                return const TicketLogoAnimation();
 
               case CubitStatus.failure:
                 return Padding(

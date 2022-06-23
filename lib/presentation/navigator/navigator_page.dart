@@ -6,6 +6,7 @@ import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_scanner/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:raver_scanner/presentation/core/raver_scanner_app_bar.dart';
+import 'package:raver_scanner/presentation/core/ticket_logo_animation.dart';
 import 'package:raver_scanner/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -53,7 +54,7 @@ class NavigatorPage extends StatelessWidget {
           }
 
           if (welcomeLoaderCubit.isStatusLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const TicketLogoAnimation();
           }
 
           if (welcomeLoaderCubit.isStatusFailure) {
