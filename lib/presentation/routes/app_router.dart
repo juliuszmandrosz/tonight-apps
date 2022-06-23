@@ -19,16 +19,30 @@ const animationDuration = 300;
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute(page: SplashPage, initial: true),
-    AutoRoute(page: AuthPage),
-    AutoRoute(
+    CustomRoute(
+      page: AuthPage,
+      transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
       page: NavigatorPage,
+      transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
       children: [
         AutoRoute(page: EventPage),
         AutoRoute(page: SettingsPage),
       ],
     ),
-    AutoRoute(page: ScannerPage),
-    AutoRoute(page: NetworkLostPage),
+    CustomRoute(
+      page: ScannerPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: NetworkLostPage,
+      transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
     CustomRoute(
       page: FailurePage,
       transitionsBuilder: zoomInTransition,
@@ -36,12 +50,12 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: ContactPage,
-      transitionsBuilder: slideRightTransition,
+      transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
     CustomRoute(
       page: TermsOfServicePage,
-      transitionsBuilder: slideRightTransition,
+      transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
   ],

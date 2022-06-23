@@ -22,22 +22,41 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData, child: const SplashPage());
     },
     AuthRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-          routeData: routeData, child: const AuthPage());
+      return CustomPage<dynamic>(
+          routeData: routeData,
+          child: const AuthPage(),
+          transitionsBuilder: zoomInTransition,
+          durationInMilliseconds: 300,
+          opaque: true,
+          barrierDismissible: false);
     },
     NavigatorRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-          routeData: routeData, child: const NavigatorPage());
+      return CustomPage<dynamic>(
+          routeData: routeData,
+          child: const NavigatorPage(),
+          transitionsBuilder: zoomInTransition,
+          durationInMilliseconds: 300,
+          opaque: true,
+          barrierDismissible: false);
     },
     ScannerRoute.name: (routeData) {
       final args = routeData.argsAs<ScannerRouteArgs>();
-      return MaterialPageX<dynamic>(
+      return CustomPage<dynamic>(
           routeData: routeData,
-          child: ScannerPage(blocContext: args.blocContext, key: args.key));
+          child: ScannerPage(blocContext: args.blocContext, key: args.key),
+          transitionsBuilder: slideLeftTransition,
+          durationInMilliseconds: 300,
+          opaque: true,
+          barrierDismissible: false);
     },
     NetworkLostRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-          routeData: routeData, child: const NetworkLostPage());
+      return CustomPage<dynamic>(
+          routeData: routeData,
+          child: const NetworkLostPage(),
+          transitionsBuilder: zoomInTransition,
+          durationInMilliseconds: 300,
+          opaque: true,
+          barrierDismissible: false);
     },
     FailureRoute.name: (routeData) {
       final args = routeData.argsAs<FailureRouteArgs>();
@@ -53,7 +72,7 @@ class _$AppRouter extends RootStackRouter {
       return CustomPage<dynamic>(
           routeData: routeData,
           child: const ContactPage(),
-          transitionsBuilder: slideRightTransition,
+          transitionsBuilder: slideLeftTransition,
           durationInMilliseconds: 300,
           opaque: true,
           barrierDismissible: false);
@@ -62,7 +81,7 @@ class _$AppRouter extends RootStackRouter {
       return CustomPage<dynamic>(
           routeData: routeData,
           child: const TermsOfServicePage(),
-          transitionsBuilder: slideRightTransition,
+          transitionsBuilder: slideLeftTransition,
           durationInMilliseconds: 300,
           opaque: true,
           barrierDismissible: false);
