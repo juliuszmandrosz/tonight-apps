@@ -109,12 +109,6 @@ class FirebaseAuthFacade
       );
 
       return left(await _handleFirebaseException(e));
-    } on FirebaseFunctionsException catch (e) {
-      _logger.e(
-        "Functions Exception signing in with email link as partner EXCEPTION: $e",
-      );
-
-      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -159,8 +153,7 @@ class FirebaseAuthFacade
     String email,
   ) async {
     try {
-      await _authCloudFunctionsFacade.checkSelectorClaim(email);
-      await _authCloudFunctionsFacade.checkIfAccountExists(email);
+      await _authCloudFunctionsFacade.checkIfSelectorCanSignIn(email);
       await _sendSignInLinkForSelector(email);
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -169,12 +162,12 @@ class FirebaseAuthFacade
       );
 
       return left(await _handleFirebaseException(e));
-    } on FirebaseFunctionsException catch (e) {
+    } on DioError catch (e) {
       _logger.e(
-        "Functions Exception sending sign in email link for selector EXCEPTION: $e",
+        "Dio error sending sign in email link for selector EXCEPTION: $e",
       );
 
-      return left(await _handleFirebaseException(e));
+      return left(await _handleDioError(e));
     }
   }
 
@@ -184,9 +177,10 @@ class FirebaseAuthFacade
     required String accessCode,
   }) async {
     try {
-      await _authCloudFunctionsFacade.checkSelectorClaim(email);
-      await _authCloudFunctionsFacade.checkIfAccountNotExists(email);
-      await _authCloudFunctionsFacade.checkSelectorAccessCode(accessCode);
+      await _authCloudFunctionsFacade.checkIfSelectorCanSignUp(
+        email: email,
+        accessCode: accessCode,
+      );
       await _sendSignInLinkForSelector(email);
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -195,12 +189,12 @@ class FirebaseAuthFacade
       );
 
       return left(await _handleFirebaseException(e));
-    } on FirebaseFunctionsException catch (e) {
+    } on DioError catch (e) {
       _logger.e(
-        "Functions Exception sending sign up email link for selector EXCEPTION: $e",
+        "Dio error sending sign up email link for selector EXCEPTION: $e",
       );
 
-      return left(await _handleFirebaseException(e));
+      return left(await _handleDioError(e));
     }
   }
 
@@ -223,12 +217,6 @@ class FirebaseAuthFacade
       );
 
       return left(await _handleFirebaseException(e));
-    } on FirebaseFunctionsException catch (e) {
-      _logger.e(
-        "Functions Exception signing in with email link as selector EXCEPTION: $e",
-      );
-
-      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -243,9 +231,13 @@ class FirebaseAuthFacade
         return left(AuthFailure(message: invalidLink));
       }
 
-      await _signInWithEmailLink(email, link.toString());
+      final selector = await _signInWithEmailLink(email, link.toString());
 
-      await _authCloudFunctionsFacade.addSelector(accessCode);
+      await _authCloudFunctionsFacade.addSelector(
+        email: email,
+        accessCode: accessCode,
+        selectorId: selector.user!.uid,
+      );
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -254,13 +246,13 @@ class FirebaseAuthFacade
       );
 
       return left(await _handleFirebaseException(e));
-    } on FirebaseFunctionsException catch (e) {
+    } on DioError catch (e) {
       await signOut();
       _logger.e(
-        "Functions Exception signing up with email link and access code as selector EXCEPTION: $e",
+        "Dio error signing up with email link and access code as selector EXCEPTION: $e",
       );
 
-      return left(await _handleFirebaseException(e));
+      return left(await _handleDioError(e));
     }
   }
 
@@ -269,7 +261,7 @@ class FirebaseAuthFacade
     String email,
   ) async {
     try {
-      await _authCloudFunctionsFacade.checkUserClaim(email);
+      await _authCloudFunctionsFacade.checkIfUserCanSignIn(email);
       await _sendSignInLinkForUser(email);
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -332,7 +324,7 @@ class FirebaseAuthFacade
       final email = result.user!.email!;
 
       if (!result.additionalUserInfo!.isNewUser) {
-        await _authCloudFunctionsFacade.checkUserClaim(email);
+        await _authCloudFunctionsFacade.checkIfUserCanSignIn(email);
       }
 
       await _addUserToFirestoreIfNotExists(result);
@@ -383,7 +375,7 @@ class FirebaseAuthFacade
       final email = result.user!.email!;
 
       if (!result.additionalUserInfo!.isNewUser) {
-        await _authCloudFunctionsFacade.checkUserClaim(email);
+        await _authCloudFunctionsFacade.checkIfUserCanSignIn(email);
       }
 
       await _addUserToFirestoreIfNotExists(result);
@@ -430,7 +422,7 @@ class FirebaseAuthFacade
 
       final userEmail = _getUserEmail(firebaseUser);
 
-      await _authCloudFunctionsFacade.checkUserClaim(userEmail);
+      await _authCloudFunctionsFacade.checkIfUserCanSignIn(userEmail);
 
       return some(firebaseUser.toDomain());
     } on DioError catch (e) {
@@ -450,18 +442,17 @@ class FirebaseAuthFacade
 
       if (firebaseUser == null) return none();
 
-      // TODO - check partner claim here
-      // await _authCloudFunctionsFacade.checkPartnerClaim(firebaseUser.email!);
+      await _authCloudFunctionsFacade
+          .checkIfPartnerCanSignIn(firebaseUser.email!);
 
       return some(firebaseUser.toDomain());
-    } on FirebaseFunctionsException catch (e) {
+    } on DioError catch (e) {
       await signOut();
       _logger.e(
-        "Firebase Functions Exception during "
-        "getting signed partner EXCEPTION: $e",
+        "Dio Error getting signed partner EXCEPTION: $e",
       );
 
-      await _handleFirebaseException(e);
+      await _handleDioError(e);
 
       return none();
     }
@@ -474,17 +465,17 @@ class FirebaseAuthFacade
 
       if (firebaseUser == null) return none();
 
-      await _authCloudFunctionsFacade.checkSelectorClaim(firebaseUser.email!);
+      await _authCloudFunctionsFacade
+          .checkIfSelectorCanSignIn(firebaseUser.email!);
 
       return some(firebaseUser.toDomain());
-    } on FirebaseFunctionsException catch (e) {
+    } on DioError catch (e) {
       await signOut();
       _logger.e(
-        "Firebase Functions Exception during "
-        "getting signed selector EXCEPTION: $e",
+        "Dio Error during getting signed selector EXCEPTION: $e",
       );
 
-      await _handleFirebaseException(e);
+      await _handleDioError(e);
 
       return none();
     }
@@ -562,11 +553,11 @@ class FirebaseAuthFacade
     await _firebaseAuth.sendSignInLinkToEmail(
       email: email,
       actionCodeSettings: ActionCodeSettings(
-        url: 'https://tonightapp.page.link',
+        url: dotenv.env[userDynamicLinkUrl]!,
         handleCodeInApp: true,
         iOSBundleId: 'com.raverteam.tonight',
         androidPackageName: 'com.raverteam.tonight',
-        dynamicLinkDomain: 'tonightapp.page.link',
+        dynamicLinkDomain: dotenv.env[userDynamicLinkDomain]!,
       ),
     );
   }
@@ -575,11 +566,11 @@ class FirebaseAuthFacade
     await _firebaseAuth.sendSignInLinkToEmail(
       email: email,
       actionCodeSettings: ActionCodeSettings(
-        url: 'https://raverscanner.page.link',
+        url: dotenv.env[selectorDynamicLinkUrl]!,
         handleCodeInApp: true,
-        iOSBundleId: 'com.raverteam.raverScanner',
-        androidPackageName: 'com.raverteam.raverScanner',
-        dynamicLinkDomain: 'raverscanner.page.link',
+        iOSBundleId: 'com.raverteam.tonightScanner',
+        androidPackageName: 'com.raverteam.tonightScanner',
+        dynamicLinkDomain: dotenv.env[selectorDynamicLinkDomain]!,
       ),
     );
   }
