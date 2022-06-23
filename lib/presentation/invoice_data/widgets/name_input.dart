@@ -34,6 +34,7 @@ class NameInput extends HookWidget {
                 ? S().companyName
                 : S().fullName,
             errorText: _getNameInputErrorMessage(state),
+            errorMaxLines: 2,
           ),
         );
       },

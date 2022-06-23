@@ -19,15 +19,16 @@ class ReviewTextInput extends StatelessWidget {
           children: [
             Expanded(
               child: TextField(
-                  maxLines: null,
-                  keyboardType: TextInputType.multiline,
-                  onChanged: (value) => context
-                      .read<NewReviewCubit>()
-                      .reviewContentChanged(value),
-                  decoration: InputDecoration(
-                    labelText: S().reviewContent,
-                    errorText: _getReviewContentInputErrorMessage(state),
-                  )),
+                maxLines: null,
+                keyboardType: TextInputType.multiline,
+                onChanged: (value) =>
+                    context.read<NewReviewCubit>().reviewContentChanged(value),
+                decoration: InputDecoration(
+                  labelText: S().reviewContent,
+                  errorText: _getReviewContentInputErrorMessage(state),
+                  errorMaxLines: 2,
+                ),
+              ),
             )
           ],
         );

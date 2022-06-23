@@ -30,6 +30,7 @@ class VatNumberInput extends HookWidget {
           decoration: InputDecoration(
             labelText: S().vatNumber,
             errorText: _getVatNumberInputErrorMessage(state),
+            errorMaxLines: 2,
           ),
         );
       },

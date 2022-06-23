@@ -118,6 +118,7 @@ class VipCheckoutPromotionCode extends HookWidget {
                   ),
                   suffixIcon: _getSuffixIcon(state),
                   suffix: _getSuffix(state),
+                  errorMaxLines: 2,
                 ),
               );
       },

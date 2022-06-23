@@ -20,6 +20,7 @@ class CountryCodeInput extends StatelessWidget {
           decoration: const InputDecoration().copyWith(
             contentPadding: const EdgeInsets.all(0),
             errorText: _getCountryCodeInputErrorMessage(state),
+            errorMaxLines: 2,
           ),
           child: CountryCodePicker(
             onChanged: (value) => context

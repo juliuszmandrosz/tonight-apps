@@ -30,6 +30,7 @@ class UsernameInput extends HookWidget {
           decoration: InputDecoration(
             labelText: S().username,
             errorText: _getUsernameInputErrorMessage(state),
+            errorMaxLines: 2,
           ),
         );
       },
