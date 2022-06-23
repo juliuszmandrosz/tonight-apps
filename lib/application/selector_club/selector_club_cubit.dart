@@ -59,10 +59,12 @@ class SelectorClubCubit extends Cubit<SelectorClubState> {
 
   void accessCodeChanged(String value) {
     final accessCode = AccessCodeInput.dirty(value);
-    emit(state.copyWith(
-      accessCode: accessCode,
-      errorMessage: none(),
-    ));
+    emit(
+      state.copyWith(
+        accessCode: accessCode,
+        errorMessage: none(),
+      ),
+    );
   }
 
   Future<void> enterAccessCode() async {
@@ -79,9 +81,11 @@ class SelectorClubCubit extends Cubit<SelectorClubState> {
 
     failureOrSuccess.fold(
       (failure) => _emitEnterAccessCodeFailure(failure),
-      (success) => emit(state.copyWith(
-        enterAccessCodeStatus: FormzStatus.submissionSuccess,
-      )),
+      (success) => emit(
+        state.copyWith(
+          enterAccessCodeStatus: FormzStatus.submissionSuccess,
+        ),
+      ),
     );
   }
 
@@ -116,10 +120,13 @@ class SelectorClubCubit extends Cubit<SelectorClubState> {
 
   _emitEnterAccessCodeFailure(SelectorClubFailure failure) {
     final errorMessage = _getErrorMessage(failure);
-    emit(state.copyWith(
-      enterAccessCodeStatus: FormzStatus.submissionFailure,
-      errorMessage: some(errorMessage),
-    ));
+    emit(
+      state.copyWith(
+        enterAccessCodeStatus: FormzStatus.submissionFailure,
+        errorMessage: some(errorMessage),
+      ),
+    );
+    emit(state.copyWith(errorMessage: none()));
   }
 
   _getErrorMessage(SelectorClubFailure failure) {

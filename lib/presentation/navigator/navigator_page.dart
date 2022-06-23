@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
@@ -60,7 +61,6 @@ class _NavigatorPageState extends State<NavigatorPage> {
               return const TicketLogoAnimation();
             }
 
-
             return MultiBlocProvider(
               providers: [
                 BlocProvider(
@@ -105,30 +105,36 @@ class _NavigatorPageState extends State<NavigatorPage> {
                     return const TicketLogoAnimation();
                   }
 
-                  return AutoTabsScaffold(
-                    resizeToAvoidBottomInset: false,
-                    appBarBuilder: (_, tabsRouter) =>
-                        const RaverScannerAppBar(),
-                    routes: const [
-                      EventRoute(),
-                      SettingsRoute(),
-                    ],
-                    bottomNavigationBuilder: (_, tabsRouter) {
-                      return NavigationBar(
-                        selectedIndex: tabsRouter.activeIndex,
-                        onDestinationSelected: tabsRouter.setActiveIndex,
-                        destinations: [
-                          NavigationDestination(
-                            icon: const Icon(FontAwesomeIcons.fire),
-                            label: S().events(1),
-                          ),
-                          NavigationDestination(
-                            icon: const Icon(FontAwesomeIcons.gear),
-                            label: S().settings,
-                          ),
-                        ],
-                      );
-                    },
+                  return LoaderOverlay(
+                    useDefaultLoading: false,
+                    overlayOpacity: .7,
+                    overlayColor: context.shadowColor,
+                    overlayWidget: const TicketLogoAnimation(),
+                    child: AutoTabsScaffold(
+                      resizeToAvoidBottomInset: false,
+                      appBarBuilder: (_, tabsRouter) =>
+                          const RaverScannerAppBar(),
+                      routes: const [
+                        EventRoute(),
+                        SettingsRoute(),
+                      ],
+                      bottomNavigationBuilder: (_, tabsRouter) {
+                        return NavigationBar(
+                          selectedIndex: tabsRouter.activeIndex,
+                          onDestinationSelected: tabsRouter.setActiveIndex,
+                          destinations: [
+                            NavigationDestination(
+                              icon: const Icon(FontAwesomeIcons.fire),
+                              label: S().events(1),
+                            ),
+                            NavigationDestination(
+                              icon: const Icon(FontAwesomeIcons.gear),
+                              label: S().settings,
+                            ),
+                          ],
+                        );
+                      },
+                    ),
                   );
                 },
               ),
