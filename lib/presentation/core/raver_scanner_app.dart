@@ -22,6 +22,9 @@ class RaverScannerApp extends StatelessWidget {
         BlocProvider(
           create: (ctx) => getIt<NetworkCheckCubit>()..initNetworkListener(),
         ),
+        BlocProvider(
+          create: (ctx) => getIt<RemoteConfigCubit>(),
+        ),
       ],
       child: MaterialApp.router(
         title: S().tonightScanner,
