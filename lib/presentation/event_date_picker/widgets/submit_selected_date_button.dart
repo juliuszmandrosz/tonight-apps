@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class EventDatePickerButtons extends StatelessWidget {
-  const EventDatePickerButtons({Key? key}) : super(key: key);
+class SubmitSelectedDateButton extends StatelessWidget {
+  const SubmitSelectedDateButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +16,12 @@ class EventDatePickerButtons extends StatelessWidget {
           child: ElevatedButton(
             onPressed: state.filters.dateRangeFilter.fromDate != null
                 ? () {
-                    context.read<EventFiltersCubit>().submitFilters(
-                          isDateFilterApplied: true,
-                        );
+                    final filtersCubit = context.read<EventFiltersCubit>();
+                    filtersCubit.changeDay(
+                      state.filters.dateRangeFilter.toDate ??
+                          DateUtils.dateOnly(DateTime.now()),
+                    );
+                    filtersCubit.submitFilters(isDateFilterApplied: true);
                     context.popRoute();
                   }
                 : null,
