@@ -30,9 +30,8 @@ class ClubDetailTile extends StatelessWidget {
           ? null
           : Padding(
               padding: const EdgeInsets.only(top: 15),
-              child: AutoSizeText(
+              child: Text(
                 subtitle,
-                maxLines: 10,
                 style: context.bodyText2.copyWith(
                   color: context.secondaryColor,
                 ),
