@@ -659,6 +659,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bilet został zwrócony"),
         "ticketReturnedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Bilet zwrócono pomyślnie"),
+        "ticketScanned":
+            MessageLookupByLibrary.simpleMessage("Bilet zeskanowany"),
         "tickets": m8,
         "ticketsSold":
             MessageLookupByLibrary.simpleMessage("Sprzedanych biletów"),

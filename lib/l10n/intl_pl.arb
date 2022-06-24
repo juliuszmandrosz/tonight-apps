@@ -746,6 +746,8 @@
   "@ticketReturnedSuccessfully": {},
   "tickets": "{count, plural, zero{Brak biletów} one{Bilet} few{Bilety} many{Biletów} other{Biletu}}",
   "@tickets": {},
+  "ticketScanned": "Bilet zeskanowany",
+  "@ticketScanned": {},
   "ticketsSold": "Sprzedanych biletów",
   "@ticketsSold": {},
   "tikTok": "TikTok",

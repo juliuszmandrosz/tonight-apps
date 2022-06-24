@@ -3807,6 +3807,16 @@ class S {
     );
   }
 
+  /// `Ticket scanned`
+  String get ticketScanned {
+    return Intl.message(
+      'Ticket scanned',
+      name: 'ticketScanned',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Tickets sold`
   String get ticketsSold {
     return Intl.message(

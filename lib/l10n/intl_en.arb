@@ -746,6 +746,8 @@
   "@ticketReturnedSuccessfully": {},
   "tickets": "{count, plural, zero{No tickets} one{Ticket} other{Tickets}}",
   "@tickets": {},
+  "ticketScanned": "Ticket scanned",
+  "@ticketScanned": {},
   "ticketsSold": "Tickets sold",
   "@ticketsSold": {},
   "tikTok": "TikTok",
