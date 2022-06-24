@@ -7,7 +7,6 @@ final eventNameErrorMessages = {
   EventNameError.empty: S().enterEventName,
   EventNameError.tooLong: S().nameTooLong,
   EventNameError.tooShort: S().nameTooShort,
-  EventNameError.specialCharacter: S().nameCannotContainSpecialCharacters,
 };
 
 class EventName extends FormzInput<String, EventNameError> {
@@ -19,10 +18,6 @@ class EventName extends FormzInput<String, EventNameError> {
   EventNameError? validator(String value) {
     if (value.isEmpty) {
       return EventNameError.empty;
-    }
-
-    if (!RegExp('^[A-Za-z0-9 ]*\$').hasMatch(value)) {
-      return EventNameError.specialCharacter;
     }
 
     if (value.length < 3) {
