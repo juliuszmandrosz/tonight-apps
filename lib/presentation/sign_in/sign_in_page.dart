@@ -62,10 +62,7 @@ class SignInPage extends StatelessWidget {
                   ),
                   const SliverFillRemaining(
                     hasScrollBody: false,
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: SignInButtons(),
-                    ),
+                    child: SignInButtons(),
                   ),
                 ],
               ),
