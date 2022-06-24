@@ -5,6 +5,7 @@ import 'package:formz/formz.dart';
 import 'package:raver/application/event_review/new_review/event_review_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/injection.dart';
+import 'package:raver/presentation/core/ticket_logo_animation.dart';
 import 'package:raver/presentation/event_review/widgets/review_event_date.dart';
 import 'package:raver/presentation/event_review/widgets/review_event_name.dart';
 import 'package:raver/presentation/event_review/widgets/review_rating_bar.dart';
@@ -62,9 +63,7 @@ class NewReviewForm extends StatelessWidget {
             case CubitStatus.initial:
               return Container();
             case CubitStatus.loading:
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return const TicketLogoAnimation();
             case CubitStatus.failure:
               return Container();
             case CubitStatus.success:

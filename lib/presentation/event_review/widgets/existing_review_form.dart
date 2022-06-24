@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/event_review/existing_review/existing_review_cubit.dart';
 import 'package:raver/injection.dart';
+import 'package:raver/presentation/core/ticket_logo_animation.dart';
 import 'package:raver/presentation/event_review/widgets/read_only_rating_indicator.dart';
 import 'package:raver/presentation/event_review/widgets/read_only_review_content.dart';
 import 'package:raver/presentation/event_review/widgets/review_event_date.dart';
@@ -42,9 +43,7 @@ class ExistingReviewForm extends StatelessWidget {
           builder: (context, state) {
             return state.map(
               initial: (_) => Container(),
-              loadInProgress: (_) => const Center(
-                child: CircularProgressIndicator(),
-              ),
+              loadInProgress: (_) => const TicketLogoAnimation(),
               loadFailure: (_) => Center(
                 child: Text(S().reviewLoadError),
               ),
