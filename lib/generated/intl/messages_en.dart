@@ -68,7 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addDescription":
             MessageLookupByLibrary.simpleMessage("Add description"),
         "addDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
-            "Please add link to DJ channel on YouTube"),
+            "Add link to DJ channel on YouTube"),
         "addEvent": MessageLookupByLibrary.simpleMessage("Add event"),
         "addFacebookUrl":
             MessageLookupByLibrary.simpleMessage("Add Facebook event URL link"),
@@ -218,6 +218,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter artist name"),
         "enterDesc":
             MessageLookupByLibrary.simpleMessage("Please enter description"),
+        "enterDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
+            "Please add link to DJ channel on YouTube"),
         "enterEmail": MessageLookupByLibrary.simpleMessage(
             "Please enter your e-mail address"),
         "enterEndDateTime":

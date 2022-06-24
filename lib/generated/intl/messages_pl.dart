@@ -67,7 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Dodaj klub do ulubionych i otrzymuj powiadomienia jak tylko doda nowe wydarzenie lub nagrodę"),
         "addDescription": MessageLookupByLibrary.simpleMessage("Dodaj opis"),
         "addDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
-            "Proszę podać link do kanału DJ-a na YouTube"),
+            "Dodaj link do kanału DJ-a na YouTube"),
         "addEvent": MessageLookupByLibrary.simpleMessage("Dodaj wydarzenie"),
         "addFacebookUrl": MessageLookupByLibrary.simpleMessage(
             "Dodaj link URL wydarzenia na Facebooku"),
@@ -219,6 +219,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterArtistName": MessageLookupByLibrary.simpleMessage(
             "Proszę podać nazwę wykonawcy"),
         "enterDesc": MessageLookupByLibrary.simpleMessage("Proszę podać opis"),
+        "enterDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
+            "Proszę podać link do kanału DJ-a na YouTube"),
         "enterEmail": MessageLookupByLibrary.simpleMessage(
             "Proszę wprowadź adres e-mail"),
         "enterEndDateTime": MessageLookupByLibrary.simpleMessage(

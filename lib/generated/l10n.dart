@@ -150,10 +150,10 @@ class S {
     );
   }
 
-  /// `Please add link to DJ channel on YouTube`
+  /// `Add link to DJ channel on YouTube`
   String get addDjChannelYoutubeUrl {
     return Intl.message(
-      'Please add link to DJ channel on YouTube',
+      'Add link to DJ channel on YouTube',
       name: 'addDjChannelYoutubeUrl',
       desc: '',
       args: [],
@@ -1131,6 +1131,16 @@ class S {
     return Intl.message(
       'Please enter description',
       name: 'enterDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please add link to DJ channel on YouTube`
+  String get enterDjChannelYoutubeUrl {
+    return Intl.message(
+      'Please add link to DJ channel on YouTube',
+      name: 'enterDjChannelYoutubeUrl',
       desc: '',
       args: [],
     );
