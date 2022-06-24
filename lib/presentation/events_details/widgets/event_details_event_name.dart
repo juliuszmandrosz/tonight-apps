@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/events_details/widgets/event_details_favorite_button.dart';
@@ -25,7 +24,7 @@ class EventDetailsEventName extends StatelessWidget {
       ),
       subtitle: Padding(
         padding: const EdgeInsets.only(top: 15),
-        child: AutoSizeText(
+        child: Text(
           event.eventName,
           style: context.subtitle1.copyWith(color: context.secondaryColor),
         ),
