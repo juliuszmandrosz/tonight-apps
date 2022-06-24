@@ -840,6 +840,8 @@
   "@yes": {},
   "yourNumberOfEntries": "Twoja liczba wejść",
   "@yourNumberOfEntries": {},
+  "yourOpinion": "Twoja opinia",
+  "@yourOpinion": {},
   "yourRate": "Twoja ocena",
   "@yourRate": {}
 }

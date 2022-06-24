@@ -738,6 +738,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "yes": MessageLookupByLibrary.simpleMessage("Tak"),
         "yourNumberOfEntries":
             MessageLookupByLibrary.simpleMessage("Twoja liczba wejść"),
+        "yourOpinion": MessageLookupByLibrary.simpleMessage("Twoja opinia"),
         "yourRate": MessageLookupByLibrary.simpleMessage("Twoja ocena")
       };
 }

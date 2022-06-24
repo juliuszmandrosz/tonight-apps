@@ -4277,6 +4277,16 @@ class S {
     );
   }
 
+  /// `Your opinion`
+  String get yourOpinion {
+    return Intl.message(
+      'Your opinion',
+      name: 'yourOpinion',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Your rate`
   String get yourRate {
     return Intl.message(

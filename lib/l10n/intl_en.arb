@@ -840,6 +840,8 @@
   "@yes": {},
   "yourNumberOfEntries": "Your number of entries",
   "@yourNumberOfEntries": {},
+  "yourOpinion": "Your opinion",
+  "@yourOpinion": {},
   "yourRate": "Your rate",
   "@yourRate": {}
 }
