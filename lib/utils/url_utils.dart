@@ -40,8 +40,6 @@ Future<Option> launchEmail(String email) async {
   return launchURL(launchUri);
 }
 
-//TODO: Check that on iOS device
-//Maybe change that to in-app map
 Future<Option> launchGoogleMaps(double lat, double lng) {
   final url = Platform.isIOS
       ? 'https://maps.apple.com/?q=$lat,$lng'
