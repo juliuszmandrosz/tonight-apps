@@ -17,10 +17,9 @@ class ReviewSubtitle extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Padding(
             padding: const EdgeInsets.only(top: 20),
-            child: AutoSizeText(
+            child: Text(
               review.userOpinion,
               style: context.subtitle1,
-              maxLines: 4,
             ),
           ),
         ),
