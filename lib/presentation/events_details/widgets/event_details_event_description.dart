@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver_common/raver_common.dart';
@@ -26,10 +25,9 @@ class EventDetailsEventDescription extends StatelessWidget {
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 15),
-            child: AutoSizeText(
+            child: Text(
               event.description!,
               style: context.subtitle1.copyWith(color: context.secondaryColor),
-              maxLines: 10,
             ),
           ),
         ),
