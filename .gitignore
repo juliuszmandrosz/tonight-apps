@@ -51,9 +51,6 @@ app.*.map.json
 **/*.gr.dart
 **/*.config.dart
 
-# env variables
-*.env
-
 # localizely
 /lib/generated/l10n.dart
 /lib/generated/intl/messages_all.dart
