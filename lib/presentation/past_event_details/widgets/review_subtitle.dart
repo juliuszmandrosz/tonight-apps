@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:raver_clubs/domain/reviews/entities/review_entity.dart';
 import 'package:raver_common/raver_common.dart';
@@ -17,10 +16,9 @@ class ReviewSubtitle extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Padding(
             padding: const EdgeInsets.only(top: 20),
-            child: AutoSizeText(
+            child: Text(
               review.userOpinion,
               style: context.subtitle1,
-              maxLines: 4,
             ),
           ),
         ),
