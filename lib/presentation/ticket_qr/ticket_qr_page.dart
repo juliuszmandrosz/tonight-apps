@@ -17,14 +17,26 @@ import 'package:raver/presentation/ticket_qr/widgets/upgrade_to_vip_button.dart'
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
+import 'package:screen_brightness/screen_brightness.dart';
 
-class TicketQrPage extends StatelessWidget {
+class TicketQrPage extends StatefulWidget {
   final Ticket ticket;
 
   const TicketQrPage({
     required this.ticket,
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<TicketQrPage> createState() => _TicketQrPageState();
+}
+
+class _TicketQrPageState extends State<TicketQrPage> {
+  @override
+  void initState() {
+    ScreenBrightness().setScreenBrightness(1);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +48,7 @@ class TicketQrPage extends StatelessWidget {
       child: BlocProvider(
         create: (context) => getIt<TicketQrCubit>(
           param1: context.read<TicketListCubit>(),
-        )..initTicketData(ticket),
+        )..initTicketData(widget.ticket),
         child: BlocConsumer<TicketQrCubit, TicketQrState>(
           listener: (context, state) {
             state.snackbarMessage.fold(
@@ -72,7 +84,7 @@ class TicketQrPage extends StatelessWidget {
                         size: 300,
                         backgroundColor: context.onSurfaceColor,
                       ),
-                      if (ticket.isVip)
+                      if (widget.ticket.isVip)
                         Padding(
                           padding: const EdgeInsets.only(top: 20),
                           child: RaverHeadline(text: S().vip),
@@ -99,10 +111,16 @@ class TicketQrPage extends StatelessWidget {
   _getData(BuildContext context) {
     final userId = context.read<ProfileCubit>().state.user.id;
     final data = {
-      'ticketId': ticket.id,
+      'ticketId': widget.ticket.id,
       'userId': userId,
     };
 
     return jsonEncode(data);
+  }
+
+  @override
+  void dispose() {
+    ScreenBrightness().resetScreenBrightness();
+    super.dispose();
   }
 }
