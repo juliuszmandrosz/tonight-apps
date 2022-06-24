@@ -5,7 +5,7 @@
         <!-- Show a splash screen on the activity. Automatically removed when
              Flutter draws its first frame -->
         <item name="android:windowBackground">@mipmap/ic_launcher</item>
-        <item name="android:forceDarkAllowed">true</item>
+        <item name="android:forceDarkAllowed">false</item>
         <item name="android:windowFullscreen">true</item>
     </style>
     <!-- Theme applied to the Android Window as soon as the process has started.
