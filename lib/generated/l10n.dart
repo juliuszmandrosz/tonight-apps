@@ -4147,10 +4147,10 @@ class S {
     );
   }
 
-  /// `VIP ticket allows to enter the club without queue`
+  /// `VIP ticket allows to skip the line to the club`
   String get vipInfo {
     return Intl.message(
-      'VIP ticket allows to enter the club without queue',
+      'VIP ticket allows to skip the line to the club',
       name: 'vipInfo',
       desc: '',
       args: [],
