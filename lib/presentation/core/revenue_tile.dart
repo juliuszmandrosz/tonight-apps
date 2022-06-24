@@ -48,7 +48,7 @@ class RevenueTile extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: AutoSizeText(
-              label,
+              label.toLowerCase(),
               maxLines: 1,
               textAlign: TextAlign.center,
             ),
