@@ -473,6 +473,16 @@ class S {
     );
   }
 
+  /// `Casual`
+  String get casual {
+    return Intl.message(
+      'Casual',
+      name: 'casual',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Change Password`
   String get changePasswordTitle {
     return Intl.message(
@@ -2142,10 +2152,10 @@ class S {
     );
   }
 
-  /// `Is concert`
+  /// `Concert`
   String get isConcert {
     return Intl.message(
-      'Is concert',
+      'Concert',
       name: 'isConcert',
       desc: '',
       args: [],
@@ -2447,6 +2457,16 @@ class S {
     return Intl.message(
       'Normal',
       name: 'normal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No sport`
+  String get noSport {
+    return Intl.message(
+      'No sport',
+      name: 'noSport',
       desc: '',
       args: [],
     );

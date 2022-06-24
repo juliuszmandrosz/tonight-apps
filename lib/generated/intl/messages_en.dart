@@ -113,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
         "cancelledByUser":
             MessageLookupByLibrary.simpleMessage("Operation cancelled by user"),
+        "casual": MessageLookupByLibrary.simpleMessage("Casual"),
         "changePasswordTitle":
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "changePhoto": MessageLookupByLibrary.simpleMessage("Change photo"),
@@ -395,7 +396,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Invoice data updated successfully"),
         "invoiceWillBeSentToEmail": MessageLookupByLibrary.simpleMessage(
             "The invoice will be sent to your email address"),
-        "isConcert": MessageLookupByLibrary.simpleMessage("Is concert"),
+        "isConcert": MessageLookupByLibrary.simpleMessage("Concert"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "lastTicketsInPool":
             MessageLookupByLibrary.simpleMessage("Last tickets"),
@@ -437,6 +438,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No live event in your club"),
         "noOpinions": MessageLookupByLibrary.simpleMessage("No opinions"),
         "noRevenue": MessageLookupByLibrary.simpleMessage("No revenue"),
+        "noSport": MessageLookupByLibrary.simpleMessage("No sport"),
         "noTicketsSold":
             MessageLookupByLibrary.simpleMessage("No tickets sold"),
         "noVipsSold": MessageLookupByLibrary.simpleMessage("No VIPs sold"),

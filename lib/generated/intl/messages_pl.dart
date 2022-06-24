@@ -116,6 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancelled": MessageLookupByLibrary.simpleMessage("Anulowano"),
         "cancelledByUser": MessageLookupByLibrary.simpleMessage(
             "Operacja anulowana przez użytkownika"),
+        "casual": MessageLookupByLibrary.simpleMessage("Casual"),
         "changePasswordTitle":
             MessageLookupByLibrary.simpleMessage("Zmień Hasło"),
         "changePhoto": MessageLookupByLibrary.simpleMessage("Zmień zdjęcie"),
@@ -445,6 +446,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Brak wydarzenia na żywo w twoim klubie"),
         "noOpinions": MessageLookupByLibrary.simpleMessage("Brak opinii"),
         "noRevenue": MessageLookupByLibrary.simpleMessage("Brak przychodów"),
+        "noSport": MessageLookupByLibrary.simpleMessage("No sport"),
         "noTicketsSold":
             MessageLookupByLibrary.simpleMessage("Brak sprzedanych biletów"),
         "noVipsSold":
