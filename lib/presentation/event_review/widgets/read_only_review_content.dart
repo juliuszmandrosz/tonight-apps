@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class ReadOnlyReviewContent extends StatelessWidget {
   final String content;
@@ -8,12 +10,24 @@ class ReadOnlyReviewContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      maxLines: null,
-      readOnly: true,
-      controller: TextEditingController(text: content),
-      onChanged: null,
-      enabled: false,
+    return Column(
+      children: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            S().yourOpinion,
+            style: context.headline6,
+          ),
+        ),
+        const SizedBox(height: 20),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            content,
+            style: context.bodyText2.copyWith(color: context.secondaryColor),
+          ),
+        )
+      ],
     );
   }
 }

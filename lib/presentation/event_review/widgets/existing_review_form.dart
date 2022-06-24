@@ -55,7 +55,7 @@ class ExistingReviewForm extends StatelessWidget {
                     ReviewEventDate(ticket: ticket),
                     const SizedBox(height: 30),
                     ReadOnlyRatingIndicator(review: review.review),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 40),
                     if (review.review.userOpinion.isNotEmpty)
                       ReadOnlyReviewContent(content: review.review.userOpinion),
                   ],

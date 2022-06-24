@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/application/event_review/new_review/event_review_cubit.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class ReviewRatingBar extends StatelessWidget {
@@ -13,9 +13,9 @@ class ReviewRatingBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          S().rateEvent,
-          style: context.subtitle1,
+        RaverHeadline(
+          text: S().rateEvent,
+          isSmallerVersion: true,
         ),
         const SizedBox(height: 20),
         Center(

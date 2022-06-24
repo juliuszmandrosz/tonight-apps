@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class ReadOnlyRatingIndicator extends StatelessWidget {
@@ -15,9 +15,9 @@ class ReadOnlyRatingIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          S().yourRate,
-          style: context.subtitle1,
+        RaverHeadline(
+          text: S().yourRate,
+          isSmallerVersion: true,
         ),
         const SizedBox(height: 20),
         Center(
