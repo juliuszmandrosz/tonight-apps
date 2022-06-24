@@ -5,7 +5,7 @@ import 'package:validators/validators.dart';
 enum DjChannelUrlError { empty, invalidUrl, notYoutube }
 
 final djChannelUrlErrorMessages = {
-  DjChannelUrlError.empty: S().addDjChannelYoutubeUrl,
+  DjChannelUrlError.empty: S().enterDjChannelYoutubeUrl,
   DjChannelUrlError.invalidUrl: S().invalidUrl,
   DjChannelUrlError.notYoutube: S().enterYoutubeLink,
 };
