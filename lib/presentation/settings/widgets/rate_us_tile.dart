@@ -11,8 +11,7 @@ class RateUsTile extends StatelessWidget {
     return SettingsTile(
       title: S().rateUs,
       onTap: () => LaunchReview.launch(
-        // TODO - add ios app id
-        // iOSAppId: '1630748612',
+        iOSAppId: '1631430958',
         androidAppId: 'com.raverteam.tonightScanner',
       ),
     );
