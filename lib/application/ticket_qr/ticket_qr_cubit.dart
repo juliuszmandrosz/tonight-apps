@@ -73,6 +73,11 @@ class TicketQrCubit extends Cubit<TicketQrState> {
         if (updatedTicket != state.ticket.getOrCrash()) {
           emit(state.copyWith(ticket: some(updatedTicket)));
 
+          if (updatedTicket.isExpired) {
+            emit(state.copyWith(isScanned: true));
+            return;
+          }
+
           if (updatedTicket.isReturned) {
             emit(state.copyWith(ticketReturnStatus: CubitStatus.success));
           }

@@ -26,6 +26,7 @@ import 'package:raver/presentation/splash/splash_page.dart';
 import 'package:raver/presentation/ticket_checkout/ticket_checkout_page.dart';
 import 'package:raver/presentation/ticket_payment_confirm/ticket_payment_confirm_page.dart';
 import 'package:raver/presentation/ticket_qr/ticket_qr_page.dart';
+import 'package:raver/presentation/ticket_scan_confirm/ticket_scan_confirm_page.dart';
 import 'package:raver/presentation/tickets/tickets_page.dart';
 import 'package:raver/presentation/update_username/update_username_page.dart';
 import 'package:raver/presentation/vip_checkout/vip_checkout_page.dart';
@@ -123,6 +124,11 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: TicketPaymentConfirmPage,
+      transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: TicketScanConfirmPage,
       transitionsBuilder: zoomInTransition,
       durationInMilliseconds: animationDuration,
     ),

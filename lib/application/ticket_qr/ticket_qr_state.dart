@@ -11,6 +11,7 @@ class TicketQrState with _$TicketQrState {
     required CubitStatus status,
     required bool isVipEnabled,
     required bool isInitialized,
+    required bool isScanned,
   }) = _TicketQrState;
 
   factory TicketQrState.initial() => TicketQrState(
@@ -20,5 +21,6 @@ class TicketQrState with _$TicketQrState {
         status: CubitStatus.initial,
         isVipEnabled: false,
         isInitialized: false,
+        isScanned: false,
       );
 }

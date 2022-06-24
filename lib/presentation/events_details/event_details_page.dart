@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/events/event_details/event_details_cubit.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
+import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/details_hero_image.dart';
 import 'package:raver/presentation/core/ticket_logo_animation.dart';
@@ -21,6 +23,7 @@ import 'package:raver/presentation/events_details/widgets/tiles/event_details_se
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_tickets/raver_tickets.dart';
 
 class EventDetailsPage extends StatelessWidget {
   final String? eventId;
@@ -69,88 +72,102 @@ class EventDetailsPage extends StatelessWidget {
                     eventId: event.id,
                     clubId: event.clubId,
                   ),
-                child: Scaffold(
-                  floatingActionButtonLocation:
-                      FloatingActionButtonLocation.centerFloat,
-                  floatingActionButtonAnimator:
-                      FloatingActionButtonAnimator.scaling,
-                  floatingActionButton: !event.isCanceled &&
-                          event.eventEndDateTime.isAfter(DateTime.now())
-                      ? EventDetailsTicket(event: event)
-                      : null,
-                  body: SafeArea(
-                    child: NestedScrollView(
-                      headerSliverBuilder: (context, value) {
-                        return [
-                          SliverAppBar(
-                            automaticallyImplyLeading: false,
-                            expandedHeight: 250,
-                            floating: true,
-                            backgroundColor: context.backgroundColor,
-                            flexibleSpace: FlexibleSpaceBar(
-                              collapseMode: CollapseMode.pin,
-                              background: Column(
-                                children: [
-                                  DetailsHeroImage(
-                                    imageUrl: event.eventPhotoUrl,
-                                    heroTag: heroTag,
+                child: BlocBuilder<TicketListCubit, TicketListState>(
+                  builder: (context, state) {
+                    final ticket = state.upcomingLiveTickets.singleWhereOrNull(
+                      (ticket) =>
+                          ticket.eventId == event.id && !ticket.isReturned,
+                    );
+                    return Scaffold(
+                      floatingActionButtonLocation:
+                          FloatingActionButtonLocation.centerFloat,
+                      floatingActionButtonAnimator:
+                          FloatingActionButtonAnimator.scaling,
+                      floatingActionButton:
+                          _checkIfFabIsAvailable(event, ticket)
+                              ? EventDetailsTicket(event: event)
+                              : null,
+                      body: SafeArea(
+                        child: NestedScrollView(
+                          headerSliverBuilder: (context, value) {
+                            return [
+                              SliverAppBar(
+                                automaticallyImplyLeading: false,
+                                expandedHeight: 250,
+                                floating: true,
+                                backgroundColor: context.backgroundColor,
+                                flexibleSpace: FlexibleSpaceBar(
+                                  collapseMode: CollapseMode.pin,
+                                  background: Column(
+                                    children: [
+                                      DetailsHeroImage(
+                                        imageUrl: event.eventPhotoUrl,
+                                        heroTag: heroTag,
+                                      ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
+                            ];
+                          },
+                          body: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                if (event.isCanceled)
+                                  const CanceledEventMessage(),
+                                Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Column(
+                                    children: [
+                                      if (!event.isCanceled)
+                                        Column(
+                                          children: [
+                                            EventDetailsSection(event: event),
+                                            const SizedBox(height: 20),
+                                          ],
+                                        ),
+                                      EventDetailsEventName(event: event),
+                                      const SizedBox(height: 20),
+                                      EventDetailsClubName(event: event),
+                                      const SizedBox(height: 20),
+                                      if (event.isConcert)
+                                        EventDetailsArtistName(event: event),
+                                      EventDetailsStartDateTime(event: event),
+                                      const SizedBox(height: 20),
+                                      EventDetailsEndDateTime(event: event),
+                                      const SizedBox(height: 20),
+                                      if (event.description != null &&
+                                          event.description!.isNotEmpty)
+                                        EventDetailsEventDescription(
+                                          event: event,
+                                        ),
+                                      EventDetailsAdditionalInfo(event: event),
+                                      EventDetailsEventPlace(event: event),
+                                      if (!event.isCanceled &&
+                                          event.eventEndDateTime
+                                              .isAfter(DateTime.now()))
+                                        Column(
+                                          children: [
+                                            const SizedBox(height: 30),
+                                            EventDetailsTicketPools(
+                                                event: event),
+                                            if (_checkIfFabIsAvailable(
+                                              event,
+                                              ticket,
+                                            ))
+                                              const SizedBox(height: 60),
+                                          ],
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ];
-                      },
-                      body: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            if (event.isCanceled) const CanceledEventMessage(),
-                            Padding(
-                              padding: const EdgeInsets.all(15),
-                              child: Column(
-                                children: [
-                                  if (!event.isCanceled)
-                                    Column(
-                                      children: [
-                                        EventDetailsSection(event: event),
-                                        const SizedBox(height: 20),
-                                      ],
-                                    ),
-                                  EventDetailsEventName(event: event),
-                                  const SizedBox(height: 20),
-                                  EventDetailsClubName(event: event),
-                                  const SizedBox(height: 20),
-                                  if (event.isConcert)
-                                    EventDetailsArtistName(event: event),
-                                  EventDetailsStartDateTime(event: event),
-                                  const SizedBox(height: 20),
-                                  EventDetailsEndDateTime(event: event),
-                                  const SizedBox(height: 20),
-                                  if (event.description != null &&
-                                      event.description!.isNotEmpty)
-                                    EventDetailsEventDescription(
-                                      event: event,
-                                    ),
-                                  EventDetailsAdditionalInfo(event: event),
-                                  EventDetailsEventPlace(event: event),
-                                  if (!event.isCanceled &&
-                                      event.eventEndDateTime
-                                          .isAfter(DateTime.now()))
-                                    Column(
-                                      children: [
-                                        const SizedBox(height: 30),
-                                        EventDetailsTicketPools(event: event),
-                                        const SizedBox(height: 60),
-                                      ],
-                                    ),
-                                ],
-                              ),
-                            ),
-                          ],
                         ),
                       ),
-                    ),
-                  ),
+                    );
+                  },
                 ),
               );
             },
@@ -158,5 +175,21 @@ class EventDetailsPage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  _checkIfFabIsAvailable(Event event, Ticket? ticket) {
+    if (event.isCanceled) {
+      return false;
+    }
+
+    if (event.eventEndDateTime.isBefore(DateTime.now())) {
+      return false;
+    }
+
+    if (ticket != null && ticket.isExpired) {
+      return false;
+    }
+
+    return true;
   }
 }
