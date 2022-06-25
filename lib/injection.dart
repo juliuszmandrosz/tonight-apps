@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -31,6 +32,7 @@ import 'package:raver/application/events/event_filters/event_filters_cubit.dart'
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:raver/application/invoice_data/invoice_data_cubit.dart';
 import 'package:raver/application/profile/profile_cubit_hub.dart';
+import 'package:raver/application/push_notifications/push_notifications_cubit.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/application/ticket_qr/ticket_qr_cubit.dart';
@@ -279,6 +281,12 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  getIt.registerFactory(
+    () => PushNotificationsCubit(
+      getIt(),
+    ),
+  );
 }
 
 void _registerCubitSubjects() {
@@ -475,6 +483,8 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebaseAuth.instance);
 
   getIt.registerLazySingleton(() => FirebaseRemoteConfig.instance);
+
+  getIt.registerLazySingleton(() => FirebaseMessaging.instance);
 
   getIt.registerLazySingleton(
       () => FirebaseFunctions.instanceFor(region: 'europe-central2'));

@@ -48,8 +48,10 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   bool _isFromOauth() {
     final providerId = _profileFacade.getProviderForUser();
-    return providersList[providerId] == ProviderId.facebook ||
-        providersList[providerId] == ProviderId.google;
+    final provider = providersList[providerId];
+    return provider == ProviderId.facebook ||
+        provider == ProviderId.google ||
+        provider == ProviderId.apple;
   }
 
   @override

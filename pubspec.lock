@@ -491,6 +491,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.3+4"
+  firebase_messaging:
+    dependency: "direct main"
+    description:
+      name: firebase_messaging
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "11.4.2"
+  firebase_messaging_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_messaging_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.5.2"
+  firebase_messaging_web:
+    dependency: transitive
+    description:
+      name: firebase_messaging_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.4.2"
   firebase_remote_config:
     dependency: "direct main"
     description:
@@ -1035,7 +1056,7 @@ packages:
       name: modal_bottom_sheet
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "2.1.0"
   money2:
     dependency: transitive
     description:
@@ -1286,7 +1307,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: b69c561dae6955e458336d71d0c7efcedee17846
+      resolved-ref: eb1352c3452a0ee41d53e18f30f8b0553703e458
       url: "git@github.com:juliuszmandrosz/RaverAccountSettings.git"
     source: git
     version: "0.0.1"

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -10,6 +11,7 @@ import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart'
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
+import 'package:raver/application/push_notifications/push_notifications_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
@@ -28,8 +30,10 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   final ClubFavoriteCubit _clubFavoriteCubit;
   final TicketListCubit _ticketListCubit;
   final AvailableFiltersCubit _availableFiltersCubit;
+  final PushNotificationsCubit _pushNotificationsCubit;
   final Stripe _stripe;
   final FirebaseRemoteConfig _firebaseRemoteConfig;
+  final FirebaseMessaging _firebaseMessaging;
 
   StreamSubscription? _profileSub;
   StreamSubscription? _locationSub;
@@ -39,6 +43,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   StreamSubscription? _clubFavoritesSub;
   StreamSubscription? _ticketsSub;
   StreamSubscription? _filtersSub;
+  StreamSubscription? _pushNotificationsSub;
 
   WelcomeLoadingCubit({
     required ProfileCubit profileCubit,
@@ -49,8 +54,10 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     required ClubFavoriteCubit clubFavoriteCubit,
     required TicketListCubit ticketListCubit,
     required AvailableFiltersCubit availableFiltersCubit,
+    required PushNotificationsCubit pushNotificationsCubit,
     required Stripe stripe,
     required FirebaseRemoteConfig firebaseRemoteConfig,
+    required FirebaseMessaging firebaseMessaging,
   })  : _profileCubit = profileCubit,
         _userLocationCubit = userLocationCubit,
         _eventOverviewBloc = eventOverviewBloc,
@@ -59,8 +66,10 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         _clubFavoriteCubit = clubFavoriteCubit,
         _ticketListCubit = ticketListCubit,
         _availableFiltersCubit = availableFiltersCubit,
+        _pushNotificationsCubit = pushNotificationsCubit,
         _stripe = stripe,
         _firebaseRemoteConfig = firebaseRemoteConfig,
+        _firebaseMessaging = firebaseMessaging,
         super(WelcomeLoadingState.initial());
 
   Future<void> loadDependencies() async {
@@ -76,6 +85,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _initClubs();
     _initAvailableFiltersCubit();
     await _initStripe();
+    await _initPushNotificationsCubit();
   }
 
   initUserProfile() {
@@ -196,6 +206,30 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     });
   }
 
+  Future<void> _initPushNotificationsCubit() async {
+    final settings = await _firebaseMessaging.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    );
+
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      _firebaseMessaging.onTokenRefresh.listen(
+        _pushNotificationsCubit.savePushNotificationToken,
+      );
+      final token = await _firebaseMessaging.getToken();
+      if (token == null) return;
+      _pushNotificationsCubit.savePushNotificationToken(token);
+      _pushNotificationsSub = _pushNotificationsCubit.stream.listen((event) {
+        _checkAndEmitFailure(event.status);
+      });
+    }
+  }
+
   Future<void> _initStripe() async {
     Stripe.publishableKey =
         _firebaseRemoteConfig.getString(stripePublishableKey);
@@ -229,6 +263,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _eventsSub?.cancel();
     _clubsSub?.cancel();
     _profileSub?.cancel();
+    _pushNotificationsSub?.cancel();
     return super.close();
   }
 }

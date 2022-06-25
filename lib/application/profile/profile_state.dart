@@ -13,12 +13,7 @@ class ProfileState with _$ProfileState {
   factory ProfileState.initial() => ProfileState(
         user: const UserProfile(
           id: '',
-          username: '',
           email: '',
-          favoriteClubIds: [],
-          favoriteEventIds: [],
-          attendance: {},
-          ticketCount: 0,
         ),
         isFromOauth: false,
         status: CubitStatus.initial,

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,6 +9,7 @@ import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart'
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
+import 'package:raver/application/push_notifications/push_notifications_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/application/welcome_loading/welcome_loading_cubit.dart';
 import 'package:raver/injection.dart';
@@ -39,8 +41,10 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
       eventFavoriteCubit: context.read<EventFavoriteCubit>(),
       clubFavoriteCubit: context.read<ClubFavoriteCubit>(),
       availableFiltersCubit: context.read<AvailableFiltersCubit>(),
+      pushNotificationsCubit: context.read<PushNotificationsCubit>(),
       firebaseRemoteConfig: getIt<FirebaseRemoteConfig>(),
       stripe: getIt<Stripe>(),
+      firebaseMessaging: getIt<FirebaseMessaging>(),
     );
 
     return _welcomeLoadingCubit!;
@@ -94,6 +98,9 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
               ),
               BlocProvider(
                 create: (ctx) => getIt<AvailableFiltersCubit>(),
+              ),
+              BlocProvider(
+                create: (ctx) => getIt<PushNotificationsCubit>(),
               ),
             ],
             child: BlocProvider(
