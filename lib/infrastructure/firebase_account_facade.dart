@@ -75,7 +75,8 @@ class FirebaseAccountFacade
 
   @override
   Future<Either<ProfileFailure, Unit>> setUsernameForUser(
-      String username) async {
+    String username,
+  ) async {
     try {
       final usersWithSameUsername = await _firestore.userCollection
           .where('username', isEqualTo: username)
@@ -88,8 +89,27 @@ class FirebaseAccountFacade
       return right(unit);
     } on FirebaseException catch (e) {
       _firebaseCrashlytics.recordError(e, StackTrace.current);
-      _logger.e(
-          "Exception during fetching or setting username for user EXCEPTION: $e");
+      _logger
+          .e("Exception fetching or setting username for user EXCEPTION: $e");
+      return left(ProfileFailure(message: serverError));
+    }
+  }
+
+  @override
+  Future<Either<ProfileFailure, Unit>> savePushNotificationsToken(
+    String token,
+  ) async {
+    try {
+      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+      final userDoc = await userDocRef.get();
+      var user = UserProfileDto.fromFirebase(userDoc);
+      final tokens = {...user.pushNotificationTokens, token}.toList();
+      user = user.copyWith(pushNotificationTokens: tokens);
+      await userDocRef.update(user.toJson());
+      return right(unit);
+    } on FirebaseException catch (e) {
+      _firebaseCrashlytics.recordError(e, StackTrace.current);
+      _logger.e("Exception saving push notifications token EXCEPTION: $e");
       return left(ProfileFailure(message: serverError));
     }
   }

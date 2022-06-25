@@ -12,53 +12,22 @@ part of 'user_profile_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 UserProfileDto _$UserProfileDtoFromJson(Map<String, dynamic> json) {
   return _UserProfileDto.fromJson(json);
 }
 
 /// @nodoc
-class _$UserProfileDtoTearOff {
-  const _$UserProfileDtoTearOff();
-
-  _UserProfileDto call(
-      {@JsonKey(ignore: true) String? id,
-      required String username,
-      required String email,
-      List<String> favoriteClubIds = const [],
-      List<String> favoriteEventIds = const [],
-      Map<String, int> attendance = const {},
-      int ticketCount = 0}) {
-    return _UserProfileDto(
-      id: id,
-      username: username,
-      email: email,
-      favoriteClubIds: favoriteClubIds,
-      favoriteEventIds: favoriteEventIds,
-      attendance: attendance,
-      ticketCount: ticketCount,
-    );
-  }
-
-  UserProfileDto fromJson(Map<String, Object?> json) {
-    return UserProfileDto.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $UserProfileDto = _$UserProfileDtoTearOff();
-
-/// @nodoc
 mixin _$UserProfileDto {
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   List<String> get favoriteClubIds => throw _privateConstructorUsedError;
   List<String> get favoriteEventIds => throw _privateConstructorUsedError;
   Map<String, int> get attendance => throw _privateConstructorUsedError;
-  int get ticketCount => throw _privateConstructorUsedError;
+  List<String> get pushNotificationTokens => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -73,12 +42,12 @@ abstract class $UserProfileDtoCopyWith<$Res> {
       _$UserProfileDtoCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(ignore: true) String? id,
-      String username,
       String email,
+      String username,
       List<String> favoriteClubIds,
       List<String> favoriteEventIds,
       Map<String, int> attendance,
-      int ticketCount});
+      List<String> pushNotificationTokens});
 }
 
 /// @nodoc
@@ -93,25 +62,25 @@ class _$UserProfileDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? username = freezed,
     Object? email = freezed,
+    Object? username = freezed,
     Object? favoriteClubIds = freezed,
     Object? favoriteEventIds = freezed,
     Object? attendance = freezed,
-    Object? ticketCount = freezed,
+    Object? pushNotificationTokens = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      username: username == freezed
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       favoriteClubIds: favoriteClubIds == freezed
           ? _value.favoriteClubIds
@@ -125,81 +94,81 @@ class _$UserProfileDtoCopyWithImpl<$Res>
           ? _value.attendance
           : attendance // ignore: cast_nullable_to_non_nullable
               as Map<String, int>,
-      ticketCount: ticketCount == freezed
-          ? _value.ticketCount
-          : ticketCount // ignore: cast_nullable_to_non_nullable
-              as int,
+      pushNotificationTokens: pushNotificationTokens == freezed
+          ? _value.pushNotificationTokens
+          : pushNotificationTokens // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$UserProfileDtoCopyWith<$Res>
+abstract class _$$_UserProfileDtoCopyWith<$Res>
     implements $UserProfileDtoCopyWith<$Res> {
-  factory _$UserProfileDtoCopyWith(
-          _UserProfileDto value, $Res Function(_UserProfileDto) then) =
-      __$UserProfileDtoCopyWithImpl<$Res>;
+  factory _$$_UserProfileDtoCopyWith(
+          _$_UserProfileDto value, $Res Function(_$_UserProfileDto) then) =
+      __$$_UserProfileDtoCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(ignore: true) String? id,
-      String username,
       String email,
+      String username,
       List<String> favoriteClubIds,
       List<String> favoriteEventIds,
       Map<String, int> attendance,
-      int ticketCount});
+      List<String> pushNotificationTokens});
 }
 
 /// @nodoc
-class __$UserProfileDtoCopyWithImpl<$Res>
+class __$$_UserProfileDtoCopyWithImpl<$Res>
     extends _$UserProfileDtoCopyWithImpl<$Res>
-    implements _$UserProfileDtoCopyWith<$Res> {
-  __$UserProfileDtoCopyWithImpl(
-      _UserProfileDto _value, $Res Function(_UserProfileDto) _then)
-      : super(_value, (v) => _then(v as _UserProfileDto));
+    implements _$$_UserProfileDtoCopyWith<$Res> {
+  __$$_UserProfileDtoCopyWithImpl(
+      _$_UserProfileDto _value, $Res Function(_$_UserProfileDto) _then)
+      : super(_value, (v) => _then(v as _$_UserProfileDto));
 
   @override
-  _UserProfileDto get _value => super._value as _UserProfileDto;
+  _$_UserProfileDto get _value => super._value as _$_UserProfileDto;
 
   @override
   $Res call({
     Object? id = freezed,
-    Object? username = freezed,
     Object? email = freezed,
+    Object? username = freezed,
     Object? favoriteClubIds = freezed,
     Object? favoriteEventIds = freezed,
     Object? attendance = freezed,
-    Object? ticketCount = freezed,
+    Object? pushNotificationTokens = freezed,
   }) {
-    return _then(_UserProfileDto(
+    return _then(_$_UserProfileDto(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      username: username == freezed
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
       favoriteClubIds: favoriteClubIds == freezed
-          ? _value.favoriteClubIds
+          ? _value._favoriteClubIds
           : favoriteClubIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
       favoriteEventIds: favoriteEventIds == freezed
-          ? _value.favoriteEventIds
+          ? _value._favoriteEventIds
           : favoriteEventIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
       attendance: attendance == freezed
-          ? _value.attendance
+          ? _value._attendance
           : attendance // ignore: cast_nullable_to_non_nullable
               as Map<String, int>,
-      ticketCount: ticketCount == freezed
-          ? _value.ticketCount
-          : ticketCount // ignore: cast_nullable_to_non_nullable
-              as int,
+      pushNotificationTokens: pushNotificationTokens == freezed
+          ? _value._pushNotificationTokens
+          : pushNotificationTokens // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -210,13 +179,17 @@ class __$UserProfileDtoCopyWithImpl<$Res>
 class _$_UserProfileDto extends _UserProfileDto {
   const _$_UserProfileDto(
       {@JsonKey(ignore: true) this.id,
-      required this.username,
       required this.email,
-      this.favoriteClubIds = const [],
-      this.favoriteEventIds = const [],
-      this.attendance = const {},
-      this.ticketCount = 0})
-      : super._();
+      this.username = '',
+      final List<String> favoriteClubIds = const [],
+      final List<String> favoriteEventIds = const [],
+      final Map<String, int> attendance = const {},
+      final List<String> pushNotificationTokens = const []})
+      : _favoriteClubIds = favoriteClubIds,
+        _favoriteEventIds = favoriteEventIds,
+        _attendance = attendance,
+        _pushNotificationTokens = pushNotificationTokens,
+        super._();
 
   factory _$_UserProfileDto.fromJson(Map<String, dynamic> json) =>
       _$$_UserProfileDtoFromJson(json);
@@ -225,60 +198,81 @@ class _$_UserProfileDto extends _UserProfileDto {
   @JsonKey(ignore: true)
   final String? id;
   @override
-  final String username;
-  @override
   final String email;
-  @JsonKey()
   @override
-  final List<String> favoriteClubIds;
   @JsonKey()
+  final String username;
+  final List<String> _favoriteClubIds;
   @override
-  final List<String> favoriteEventIds;
   @JsonKey()
+  List<String> get favoriteClubIds {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favoriteClubIds);
+  }
+
+  final List<String> _favoriteEventIds;
   @override
-  final Map<String, int> attendance;
   @JsonKey()
+  List<String> get favoriteEventIds {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favoriteEventIds);
+  }
+
+  final Map<String, int> _attendance;
   @override
-  final int ticketCount;
+  @JsonKey()
+  Map<String, int> get attendance {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_attendance);
+  }
+
+  final List<String> _pushNotificationTokens;
+  @override
+  @JsonKey()
+  List<String> get pushNotificationTokens {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pushNotificationTokens);
+  }
 
   @override
   String toString() {
-    return 'UserProfileDto(id: $id, username: $username, email: $email, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, ticketCount: $ticketCount)';
+    return 'UserProfileDto(id: $id, email: $email, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserProfileDto &&
+            other is _$_UserProfileDto &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.username, username) &&
             const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.username, username) &&
             const DeepCollectionEquality()
-                .equals(other.favoriteClubIds, favoriteClubIds) &&
+                .equals(other._favoriteClubIds, _favoriteClubIds) &&
             const DeepCollectionEquality()
-                .equals(other.favoriteEventIds, favoriteEventIds) &&
+                .equals(other._favoriteEventIds, _favoriteEventIds) &&
             const DeepCollectionEquality()
-                .equals(other.attendance, attendance) &&
-            const DeepCollectionEquality()
-                .equals(other.ticketCount, ticketCount));
+                .equals(other._attendance, _attendance) &&
+            const DeepCollectionEquality().equals(
+                other._pushNotificationTokens, _pushNotificationTokens));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(favoriteClubIds),
-      const DeepCollectionEquality().hash(favoriteEventIds),
-      const DeepCollectionEquality().hash(attendance),
-      const DeepCollectionEquality().hash(ticketCount));
+      const DeepCollectionEquality().hash(username),
+      const DeepCollectionEquality().hash(_favoriteClubIds),
+      const DeepCollectionEquality().hash(_favoriteEventIds),
+      const DeepCollectionEquality().hash(_attendance),
+      const DeepCollectionEquality().hash(_pushNotificationTokens));
 
   @JsonKey(ignore: true)
   @override
-  _$UserProfileDtoCopyWith<_UserProfileDto> get copyWith =>
-      __$UserProfileDtoCopyWithImpl<_UserProfileDto>(this, _$identity);
+  _$$_UserProfileDtoCopyWith<_$_UserProfileDto> get copyWith =>
+      __$$_UserProfileDtoCopyWithImpl<_$_UserProfileDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -288,13 +282,13 @@ class _$_UserProfileDto extends _UserProfileDto {
 
 abstract class _UserProfileDto extends UserProfileDto {
   const factory _UserProfileDto(
-      {@JsonKey(ignore: true) String? id,
-      required String username,
-      required String email,
-      List<String> favoriteClubIds,
-      List<String> favoriteEventIds,
-      Map<String, int> attendance,
-      int ticketCount}) = _$_UserProfileDto;
+      {@JsonKey(ignore: true) final String? id,
+      required final String email,
+      final String username,
+      final List<String> favoriteClubIds,
+      final List<String> favoriteEventIds,
+      final Map<String, int> attendance,
+      final List<String> pushNotificationTokens}) = _$_UserProfileDto;
   const _UserProfileDto._() : super._();
 
   factory _UserProfileDto.fromJson(Map<String, dynamic> json) =
@@ -302,21 +296,21 @@ abstract class _UserProfileDto extends UserProfileDto {
 
   @override
   @JsonKey(ignore: true)
-  String? get id;
+  String? get id => throw _privateConstructorUsedError;
   @override
-  String get username;
+  String get email => throw _privateConstructorUsedError;
   @override
-  String get email;
+  String get username => throw _privateConstructorUsedError;
   @override
-  List<String> get favoriteClubIds;
+  List<String> get favoriteClubIds => throw _privateConstructorUsedError;
   @override
-  List<String> get favoriteEventIds;
+  List<String> get favoriteEventIds => throw _privateConstructorUsedError;
   @override
-  Map<String, int> get attendance;
+  Map<String, int> get attendance => throw _privateConstructorUsedError;
   @override
-  int get ticketCount;
+  List<String> get pushNotificationTokens => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserProfileDtoCopyWith<_UserProfileDto> get copyWith =>
+  _$$_UserProfileDtoCopyWith<_$_UserProfileDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

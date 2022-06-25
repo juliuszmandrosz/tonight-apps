@@ -13,23 +13,23 @@ class UserProfileDto with _$UserProfileDto {
   @JsonSerializable()
   const factory UserProfileDto({
     @JsonKey(ignore: true) String? id,
-    required String username,
     required String email,
+    @Default('') String username,
     @Default([]) List<String> favoriteClubIds,
     @Default([]) List<String> favoriteEventIds,
     @Default({}) Map<String, int> attendance,
-    @Default(0) int ticketCount,
+    @Default([]) List<String> pushNotificationTokens,
   }) = _UserProfileDto;
 
   factory UserProfileDto.fromDomain(UserProfile user) {
     return UserProfileDto(
       id: user.id,
-      username: user.username,
       email: user.email,
+      username: user.username,
       favoriteClubIds: user.favoriteClubIds,
       favoriteEventIds: user.favoriteEventIds,
       attendance: user.attendance,
-      ticketCount: user.ticketCount,
+      pushNotificationTokens: user.pushNotificationTokens,
     );
   }
 
@@ -37,19 +37,20 @@ class UserProfileDto with _$UserProfileDto {
       _$UserProfileDtoFromJson(json);
 
   factory UserProfileDto.fromFirebase(DocumentSnapshot documentSnapshot) {
-    return UserProfileDto.fromJson(documentSnapshot.data() as Map<String, dynamic>)
+    return UserProfileDto.fromJson(
+            documentSnapshot.data() as Map<String, dynamic>)
         .copyWith(id: documentSnapshot.id);
   }
 
   UserProfile toDomain() {
     return UserProfile(
       id: id!,
-      username: username,
       email: email,
+      username: username,
       favoriteClubIds: favoriteClubIds,
       favoriteEventIds: favoriteEventIds,
       attendance: attendance,
-      ticketCount: ticketCount,
+      pushNotificationTokens: pushNotificationTokens,
     );
   }
 }

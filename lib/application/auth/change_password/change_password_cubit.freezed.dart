@@ -12,30 +12,7 @@ part of 'change_password_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ChangePasswordStateTearOff {
-  const _$ChangePasswordStateTearOff();
-
-  _ChangePasswordState call(
-      {required OldPasswordInput oldPassword,
-      required PasswordInput newPassword,
-      required ConfirmPasswordInput newConfirmedPassword,
-      required FormzStatus status,
-      required Option<String> errorMessage}) {
-    return _ChangePasswordState(
-      oldPassword: oldPassword,
-      newPassword: newPassword,
-      newConfirmedPassword: newConfirmedPassword,
-      status: status,
-      errorMessage: errorMessage,
-    );
-  }
-}
-
-/// @nodoc
-const $ChangePasswordState = _$ChangePasswordStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ChangePasswordState {
@@ -107,11 +84,11 @@ class _$ChangePasswordStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ChangePasswordStateCopyWith<$Res>
+abstract class _$$_ChangePasswordStateCopyWith<$Res>
     implements $ChangePasswordStateCopyWith<$Res> {
-  factory _$ChangePasswordStateCopyWith(_ChangePasswordState value,
-          $Res Function(_ChangePasswordState) then) =
-      __$ChangePasswordStateCopyWithImpl<$Res>;
+  factory _$$_ChangePasswordStateCopyWith(_$_ChangePasswordState value,
+          $Res Function(_$_ChangePasswordState) then) =
+      __$$_ChangePasswordStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {OldPasswordInput oldPassword,
@@ -122,15 +99,15 @@ abstract class _$ChangePasswordStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ChangePasswordStateCopyWithImpl<$Res>
+class __$$_ChangePasswordStateCopyWithImpl<$Res>
     extends _$ChangePasswordStateCopyWithImpl<$Res>
-    implements _$ChangePasswordStateCopyWith<$Res> {
-  __$ChangePasswordStateCopyWithImpl(
-      _ChangePasswordState _value, $Res Function(_ChangePasswordState) _then)
-      : super(_value, (v) => _then(v as _ChangePasswordState));
+    implements _$$_ChangePasswordStateCopyWith<$Res> {
+  __$$_ChangePasswordStateCopyWithImpl(_$_ChangePasswordState _value,
+      $Res Function(_$_ChangePasswordState) _then)
+      : super(_value, (v) => _then(v as _$_ChangePasswordState));
 
   @override
-  _ChangePasswordState get _value => super._value as _ChangePasswordState;
+  _$_ChangePasswordState get _value => super._value as _$_ChangePasswordState;
 
   @override
   $Res call({
@@ -140,7 +117,7 @@ class __$ChangePasswordStateCopyWithImpl<$Res>
     Object? status = freezed,
     Object? errorMessage = freezed,
   }) {
-    return _then(_ChangePasswordState(
+    return _then(_$_ChangePasswordState(
       oldPassword: oldPassword == freezed
           ? _value.oldPassword
           : oldPassword // ignore: cast_nullable_to_non_nullable
@@ -195,7 +172,7 @@ class _$_ChangePasswordState implements _ChangePasswordState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ChangePasswordState &&
+            other is _$_ChangePasswordState &&
             const DeepCollectionEquality()
                 .equals(other.oldPassword, oldPassword) &&
             const DeepCollectionEquality()
@@ -218,31 +195,32 @@ class _$_ChangePasswordState implements _ChangePasswordState {
 
   @JsonKey(ignore: true)
   @override
-  _$ChangePasswordStateCopyWith<_ChangePasswordState> get copyWith =>
-      __$ChangePasswordStateCopyWithImpl<_ChangePasswordState>(
+  _$$_ChangePasswordStateCopyWith<_$_ChangePasswordState> get copyWith =>
+      __$$_ChangePasswordStateCopyWithImpl<_$_ChangePasswordState>(
           this, _$identity);
 }
 
 abstract class _ChangePasswordState implements ChangePasswordState {
   const factory _ChangePasswordState(
-      {required OldPasswordInput oldPassword,
-      required PasswordInput newPassword,
-      required ConfirmPasswordInput newConfirmedPassword,
-      required FormzStatus status,
-      required Option<String> errorMessage}) = _$_ChangePasswordState;
+      {required final OldPasswordInput oldPassword,
+      required final PasswordInput newPassword,
+      required final ConfirmPasswordInput newConfirmedPassword,
+      required final FormzStatus status,
+      required final Option<String> errorMessage}) = _$_ChangePasswordState;
 
   @override
-  OldPasswordInput get oldPassword;
+  OldPasswordInput get oldPassword => throw _privateConstructorUsedError;
   @override
-  PasswordInput get newPassword;
+  PasswordInput get newPassword => throw _privateConstructorUsedError;
   @override
-  ConfirmPasswordInput get newConfirmedPassword;
+  ConfirmPasswordInput get newConfirmedPassword =>
+      throw _privateConstructorUsedError;
   @override
-  FormzStatus get status;
+  FormzStatus get status => throw _privateConstructorUsedError;
   @override
-  Option<String> get errorMessage;
+  Option<String> get errorMessage => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ChangePasswordStateCopyWith<_ChangePasswordState> get copyWith =>
+  _$$_ChangePasswordStateCopyWith<_$_ChangePasswordState> get copyWith =>
       throw _privateConstructorUsedError;
 }

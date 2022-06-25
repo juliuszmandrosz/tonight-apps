@@ -12,21 +12,7 @@ part of 'profile_failure.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$ProfileFailureTearOff {
-  const _$ProfileFailureTearOff();
-
-  _ProfileFailure call({required String message}) {
-    return _ProfileFailure(
-      message: message,
-    );
-  }
-}
-
-/// @nodoc
-const $ProfileFailure = _$ProfileFailureTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ProfileFailure {
@@ -68,31 +54,31 @@ class _$ProfileFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ProfileFailureCopyWith<$Res>
+abstract class _$$_ProfileFailureCopyWith<$Res>
     implements $ProfileFailureCopyWith<$Res> {
-  factory _$ProfileFailureCopyWith(
-          _ProfileFailure value, $Res Function(_ProfileFailure) then) =
-      __$ProfileFailureCopyWithImpl<$Res>;
+  factory _$$_ProfileFailureCopyWith(
+          _$_ProfileFailure value, $Res Function(_$_ProfileFailure) then) =
+      __$$_ProfileFailureCopyWithImpl<$Res>;
   @override
   $Res call({String message});
 }
 
 /// @nodoc
-class __$ProfileFailureCopyWithImpl<$Res>
+class __$$_ProfileFailureCopyWithImpl<$Res>
     extends _$ProfileFailureCopyWithImpl<$Res>
-    implements _$ProfileFailureCopyWith<$Res> {
-  __$ProfileFailureCopyWithImpl(
-      _ProfileFailure _value, $Res Function(_ProfileFailure) _then)
-      : super(_value, (v) => _then(v as _ProfileFailure));
+    implements _$$_ProfileFailureCopyWith<$Res> {
+  __$$_ProfileFailureCopyWithImpl(
+      _$_ProfileFailure _value, $Res Function(_$_ProfileFailure) _then)
+      : super(_value, (v) => _then(v as _$_ProfileFailure));
 
   @override
-  _ProfileFailure get _value => super._value as _ProfileFailure;
+  _$_ProfileFailure get _value => super._value as _$_ProfileFailure;
 
   @override
   $Res call({
     Object? message = freezed,
   }) {
-    return _then(_ProfileFailure(
+    return _then(_$_ProfileFailure(
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -118,7 +104,7 @@ class _$_ProfileFailure implements _ProfileFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProfileFailure &&
+            other is _$_ProfileFailure &&
             const DeepCollectionEquality().equals(other.message, message));
   }
 
@@ -128,17 +114,17 @@ class _$_ProfileFailure implements _ProfileFailure {
 
   @JsonKey(ignore: true)
   @override
-  _$ProfileFailureCopyWith<_ProfileFailure> get copyWith =>
-      __$ProfileFailureCopyWithImpl<_ProfileFailure>(this, _$identity);
+  _$$_ProfileFailureCopyWith<_$_ProfileFailure> get copyWith =>
+      __$$_ProfileFailureCopyWithImpl<_$_ProfileFailure>(this, _$identity);
 }
 
 abstract class _ProfileFailure implements ProfileFailure {
-  factory _ProfileFailure({required String message}) = _$_ProfileFailure;
+  factory _ProfileFailure({required final String message}) = _$_ProfileFailure;
 
   @override
-  String get message;
+  String get message => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProfileFailureCopyWith<_ProfileFailure> get copyWith =>
+  _$$_ProfileFailureCopyWith<_$_ProfileFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }

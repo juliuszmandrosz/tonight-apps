@@ -21,6 +21,8 @@ dependencies:
   logger: ^1.1.0
   package_info_plus: ^1.4.0
   firebase_crashlytics: ^2.8.1
+  firebase_messaging: ^11.4.2
+  json_annotation: ^4.5.0
 
   raver_common:
     git:

@@ -9,4 +9,8 @@ abstract class UserAccountFacade with AccountOperationMixin {
   String getProviderForUser();
 
   Future<Either<ProfileFailure, Unit>> setUsernameForUser(String username);
+
+  Future<Either<ProfileFailure, Unit>> savePushNotificationsToken(
+    String token,
+  );
 }

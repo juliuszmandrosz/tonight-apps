@@ -8,8 +8,8 @@ part of 'user_profile_dto.dart';
 
 _$_UserProfileDto _$$_UserProfileDtoFromJson(Map<String, dynamic> json) =>
     _$_UserProfileDto(
-      username: json['username'] as String,
       email: json['email'] as String,
+      username: json['username'] as String? ?? '',
       favoriteClubIds: (json['favoriteClubIds'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
@@ -22,15 +22,18 @@ _$_UserProfileDto _$$_UserProfileDtoFromJson(Map<String, dynamic> json) =>
             (k, e) => MapEntry(k, e as int),
           ) ??
           const {},
-      ticketCount: json['ticketCount'] as int? ?? 0,
+      pushNotificationTokens: (json['pushNotificationTokens'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_UserProfileDtoToJson(_$_UserProfileDto instance) =>
     <String, dynamic>{
-      'username': instance.username,
       'email': instance.email,
+      'username': instance.username,
       'favoriteClubIds': instance.favoriteClubIds,
       'favoriteEventIds': instance.favoriteEventIds,
       'attendance': instance.attendance,
-      'ticketCount': instance.ticketCount,
+      'pushNotificationTokens': instance.pushNotificationTokens,
     };
