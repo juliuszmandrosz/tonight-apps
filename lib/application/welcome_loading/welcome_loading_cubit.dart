@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
@@ -13,6 +15,7 @@ import 'package:raver/application/events/event_favorite/event_favorite_cubit.dar
 import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:raver/application/push_notifications/push_notifications_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
+import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/application/application.dart';
@@ -72,7 +75,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         _firebaseMessaging = firebaseMessaging,
         super(WelcomeLoadingState.initial());
 
-  Future<void> loadDependencies() async {
+  Future<void> loadDependencies(BuildContext context) async {
     if (state.status == CubitStatus.loading ||
         state.status == CubitStatus.success) return;
 
@@ -85,7 +88,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _initClubs();
     _initAvailableFiltersCubit();
     await _initStripe();
-    await _initPushNotificationsCubit();
+    await _initPushNotifications(context);
   }
 
   initUserProfile() {
@@ -206,7 +209,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     });
   }
 
-  Future<void> _initPushNotificationsCubit() async {
+  Future<void> _initPushNotifications(BuildContext context) async {
     final settings = await _firebaseMessaging.requestPermission(
       alert: true,
       announcement: false,
@@ -218,15 +221,35 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     );
 
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      _firebaseMessaging.onTokenRefresh.listen(
-        _pushNotificationsCubit.savePushNotificationToken,
+      _pushNotificationsCubit.initialize(context);
+
+      FirebaseMessaging.instance.getInitialMessage().then(
+        (message) {
+          if (message != null) {
+            final eventId = message.data['eventId'];
+            if (eventId != null) {
+              context.pushRoute(EventDetailsRoute(eventId: eventId));
+            }
+          }
+        },
       );
-      final token = await _firebaseMessaging.getToken();
-      if (token == null) return;
-      _pushNotificationsCubit.savePushNotificationToken(token);
-      _pushNotificationsSub = _pushNotificationsCubit.stream.listen((event) {
-        _checkAndEmitFailure(event.status);
-      });
+
+      FirebaseMessaging.onMessage.listen(
+        (message) {
+          if (message.notification != null) {
+            _pushNotificationsCubit.showNotification(message);
+          }
+        },
+      );
+
+      FirebaseMessaging.onMessageOpenedApp.listen(
+        (message) {
+          final eventId = message.data['eventId'];
+          if (eventId != null) {
+            context.pushRoute(EventDetailsRoute(eventId: eventId));
+          }
+        },
+      );
     }
   }
 

@@ -10,6 +10,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
@@ -531,6 +532,8 @@ void _registerModules() {
   getIt.registerLazySingleton(() => Connectivity());
 
   getIt.registerLazySingleton(() => Logger());
+
+  getIt.registerLazySingleton(() => FlutterLocalNotificationsPlugin());
 
   getIt.registerLazySingleton(
     () => Dio(

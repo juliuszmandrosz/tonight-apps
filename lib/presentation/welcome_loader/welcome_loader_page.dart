@@ -113,7 +113,7 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
                     context.pushRoute(
                       FailureRoute(
                         retryCallback: () =>
-                            _welcomeLoadingCubit!.loadDependencies(),
+                            _welcomeLoadingCubit!.loadDependencies(context),
                       ),
                     );
                   }
@@ -128,7 +128,7 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
                       }
 
                       if (!state.status.isFailure() && username.isNotEmpty) {
-                        _welcomeLoadingCubit!.loadDependencies();
+                        _welcomeLoadingCubit!.loadDependencies(context);
                       }
                     },
                   );

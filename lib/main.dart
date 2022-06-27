@@ -3,6 +3,7 @@ import 'dart:isolate';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -23,6 +24,8 @@ Future<void> main() async {
       WidgetsFlutterBinding.ensureInitialized();
 
       await Firebase.initializeApp();
+
+      FirebaseMessaging.onBackgroundMessage(_onBackgroundMessageHandler);
 
       registerDependencies();
 
@@ -65,4 +68,8 @@ Future<void> main() async {
 _configureTimeAgo() {
   timeago.setLocaleMessages('pl', timeago.PlMessages());
   timeago.setLocaleMessages('en', timeago.EnMessages());
+}
+
+Future<void> _onBackgroundMessageHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
 }
