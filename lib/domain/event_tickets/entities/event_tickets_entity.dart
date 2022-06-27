@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:raver_events/domain/event_tickets/entities/ticket_pool_entity.dart';
 import 'package:raver_events/domain/event_tickets/entities/ticket_sales_entity.dart';
+import 'package:collection/collection.dart';
 
 class EventTickets extends Equatable {
   final String eventId;
@@ -49,7 +50,7 @@ class EventTickets extends Equatable {
   }
 
   TicketPool getCurrentPool() {
-    if (isSoldOut) return ticketPools.last;
-    return ticketPools.firstWhere((pool) => pool.isCurrent);
+    return ticketPools.firstWhereOrNull((pool) => pool.isCurrent) ??
+        ticketPools.last;
   }
 }
