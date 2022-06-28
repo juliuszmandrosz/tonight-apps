@@ -6,13 +6,23 @@ handlePushNotification(BuildContext context, Map<String, dynamic> data) {
   final eventId = data['eventId'];
 
   if (eventId != null) {
-    context.pushRoute(EventDetailsRoute(eventId: eventId));
+    context.router.replaceAll(
+      [
+        const WelcomeLoaderRoute(),
+        EventDetailsRoute(eventId: eventId),
+      ],
+    );
     return;
   }
 
   final clubId = data['clubId'];
 
   if (clubId != null) {
-    context.pushRoute(ClubDetailsRoute(clubId: clubId));
+    context.router.replaceAll(
+      [
+        const WelcomeLoaderRoute(),
+        ClubDetailsRoute(clubId: clubId),
+      ],
+    );
   }
 }
