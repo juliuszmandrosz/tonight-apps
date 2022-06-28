@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/application/cubit_status.dart';
@@ -41,10 +40,6 @@ class ClubFavoriteCubit extends Cubit<ClubFavoriteState> {
     currentStatus
         ? favoriteClubsCopy.remove(club)
         : favoriteClubsCopy.add(club);
-
-    await FirebaseMessaging.instance
-        .subscribeToTopic('favoriteClubs-${club.id}');
-    await FirebaseMessaging.instance.subscribeToTopic('langPl');
 
     emit(state.copyWith(favoriteClubs: favoriteClubsCopy));
 
