@@ -16,6 +16,8 @@ String getPaymentFailureMessage(UserPaymentFailure failure) {
     invalidVatNumber: (_) => S().invalidVatNumber,
     vipNoLongerAvailable: (_) => S().vipNoLongerAvailable,
     eventHasEnded: (_) => S().eventHasEnded,
+    // TODO - add better message here
+    eventSoldOut: (_) => S().soldOut,
     canceledByUser: (_) => '',
   );
 }
