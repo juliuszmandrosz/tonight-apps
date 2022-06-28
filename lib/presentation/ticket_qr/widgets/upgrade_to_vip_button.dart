@@ -6,6 +6,7 @@ import 'package:raver/presentation/core/vip_info.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
+import 'package:screen_brightness/screen_brightness.dart';
 
 class UpgradeToVipButton extends StatelessWidget {
   const UpgradeToVipButton({Key? key}) : super(key: key);
@@ -24,9 +25,13 @@ class UpgradeToVipButton extends StatelessWidget {
             SizedBox(
               width: 300,
               child: ElevatedButton(
-                onPressed: () => context.pushRoute(
-                  VipCheckoutRoute(ticket: state.ticket.getOrCrash()),
-                ),
+                onPressed: () async {
+                  ScreenBrightness().resetScreenBrightness();
+                  await context.pushRoute(
+                    VipCheckoutRoute(ticket: state.ticket.getOrCrash()),
+                  );
+                  ScreenBrightness().setScreenBrightness(1);
+                },
                 child: Text(S().upgradeToVip),
               ),
             ),
