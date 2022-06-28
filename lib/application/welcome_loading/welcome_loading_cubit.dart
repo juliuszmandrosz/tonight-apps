@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -10,12 +9,12 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
+import 'package:raver/application/core/push_notifications_utils.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:raver/application/push_notifications/push_notifications_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
-import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/application/application.dart';
@@ -225,11 +224,8 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
       FirebaseMessaging.instance.getInitialMessage().then(
         (message) {
-          if (message != null) {
-            final eventId = message.data['eventId'];
-            if (eventId != null) {
-              context.pushRoute(EventDetailsRoute(eventId: eventId));
-            }
+          if (message?.data != null) {
+            handlePushNotification(context, message!.data);
           }
         },
       );
@@ -244,10 +240,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
       FirebaseMessaging.onMessageOpenedApp.listen(
         (message) {
-          final eventId = message.data['eventId'];
-          if (eventId != null) {
-            context.pushRoute(EventDetailsRoute(eventId: eventId));
-          }
+          handlePushNotification(context, message.data);
         },
       );
     }

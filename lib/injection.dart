@@ -285,7 +285,9 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => PushNotificationsCubit(
-      getIt(),
+      firebaseMessaging: getIt(),
+      flutterLocalNotificationsPlugin: getIt(),
+      userAccountFacade: getIt(),
     ),
   );
 }
