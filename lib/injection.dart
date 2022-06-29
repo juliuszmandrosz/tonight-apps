@@ -543,6 +543,19 @@ void _registerModules() {
         baseUrl: dotenv.env[apiEndpoint]!,
         headers: getHttpHeaders(),
       ),
-    ),
+    )..interceptors.add(
+        InterceptorsWrapper(
+          onRequest: (options, handler) async {
+            final headers = options.headers;
+
+            final idToken =
+                await FirebaseAuth.instance.currentUser?.getIdToken();
+
+            headers['token'] = idToken;
+
+            return handler.next(options);
+          },
+        ),
+      ),
   );
 }
