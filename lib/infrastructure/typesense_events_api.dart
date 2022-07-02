@@ -4,7 +4,7 @@ import 'package:typesense/typesense.dart';
 abstract class TypesenseEventsApi {
   Future<Map<String, dynamic>> getEvents(
     EventFilters filters,
-    SortModel sortModel,
+    EventSortModel sortModel,
     int pageSize,
     int offset,
   );
@@ -18,12 +18,12 @@ class TypesenseEventsApiImpl implements TypesenseEventsApi {
   @override
   Future<Map<String, dynamic>> getEvents(
     EventFilters filters,
-    SortModel sortModel,
+    EventSortModel sortModel,
     int pageSize,
     int offset,
   ) async {
     final filterBy = filters.buildFilters();
-    final pageNumber = (offset + 1 / pageSize).ceil();
+    final pageNumber = ((offset + 1) / pageSize).ceil();
     final sortBy = _getSortBy(sortModel);
 
     return await _typesense.collection('events').documents.search({
@@ -36,7 +36,7 @@ class TypesenseEventsApiImpl implements TypesenseEventsApi {
     });
   }
 
-  _getSortBy(SortModel sortModel) {
+  _getSortBy(EventSortModel sortModel) {
     if (sortModel.fieldName == eventStartDateTime) {
       return sortModel.direction == SortDirection.desc
           ? 'eventStartDateTime:desc'

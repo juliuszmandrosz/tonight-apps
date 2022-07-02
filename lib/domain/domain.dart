@@ -2,7 +2,7 @@ export 'filters/event_filters_entity.dart';
 export 'filters/filter/filter.dart';
 export 'constants/sort_fields.dart';
 export 'enums/sort_direction.dart';
-export 'sort/sort_model.dart';
+export 'sort/event_sort_model.dart';
 export 'event_tickets/entities/ticket_pool_entity.dart';
 export 'event_tickets/entities/event_tickets_entity.dart';
 export 'event_tickets/entities/ticket_sales_entity.dart';

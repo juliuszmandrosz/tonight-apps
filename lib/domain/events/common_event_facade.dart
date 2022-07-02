@@ -4,7 +4,7 @@ import 'package:raver_events/domain/domain.dart';
 abstract class CommonEventFacade {
   Future<Either<CommonEventFailure, List<Event>>> getEvents(
     EventFilters filters,
-    SortModel sortModel, {
+    EventSortModel sortModel, {
     int pageSize = 20,
     int offset = 0,
   });

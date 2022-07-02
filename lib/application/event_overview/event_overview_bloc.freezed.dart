@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventOverviewEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(EventFilters filters, SortModel sortModel)
+    required TResult Function(EventFilters filters, EventSortModel sortModel)
         eventsFetched,
     required TResult Function() nextEventsPageFetched,
     required TResult Function(Event event) eventToStateAdded,
@@ -29,7 +29,8 @@ mixin _$EventOverviewEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
+    TResult Function(EventFilters filters, EventSortModel sortModel)?
+        eventsFetched,
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
@@ -38,7 +39,8 @@ mixin _$EventOverviewEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
+    TResult Function(EventFilters filters, EventSortModel sortModel)?
+        eventsFetched,
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
@@ -99,10 +101,10 @@ abstract class _$$_EventsFetchedCopyWith<$Res> {
   factory _$$_EventsFetchedCopyWith(
           _$_EventsFetched value, $Res Function(_$_EventsFetched) then) =
       __$$_EventsFetchedCopyWithImpl<$Res>;
-  $Res call({EventFilters filters, SortModel sortModel});
+  $Res call({EventFilters filters, EventSortModel sortModel});
 
   $EventFiltersCopyWith<$Res> get filters;
-  $SortModelCopyWith<$Res> get sortModel;
+  $EventSortModelCopyWith<$Res> get sortModel;
 }
 
 /// @nodoc
@@ -129,7 +131,7 @@ class __$$_EventsFetchedCopyWithImpl<$Res>
       sortModel == freezed
           ? _value.sortModel
           : sortModel // ignore: cast_nullable_to_non_nullable
-              as SortModel,
+              as EventSortModel,
     ));
   }
 
@@ -141,8 +143,8 @@ class __$$_EventsFetchedCopyWithImpl<$Res>
   }
 
   @override
-  $SortModelCopyWith<$Res> get sortModel {
-    return $SortModelCopyWith<$Res>(_value.sortModel, (value) {
+  $EventSortModelCopyWith<$Res> get sortModel {
+    return $EventSortModelCopyWith<$Res>(_value.sortModel, (value) {
       return _then(_value.copyWith(sortModel: value));
     });
   }
@@ -156,7 +158,7 @@ class _$_EventsFetched implements _EventsFetched {
   @override
   final EventFilters filters;
   @override
-  final SortModel sortModel;
+  final EventSortModel sortModel;
 
   @override
   String toString() {
@@ -186,7 +188,7 @@ class _$_EventsFetched implements _EventsFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(EventFilters filters, SortModel sortModel)
+    required TResult Function(EventFilters filters, EventSortModel sortModel)
         eventsFetched,
     required TResult Function() nextEventsPageFetched,
     required TResult Function(Event event) eventToStateAdded,
@@ -200,7 +202,8 @@ class _$_EventsFetched implements _EventsFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
+    TResult Function(EventFilters filters, EventSortModel sortModel)?
+        eventsFetched,
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
@@ -212,7 +215,8 @@ class _$_EventsFetched implements _EventsFetched {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
+    TResult Function(EventFilters filters, EventSortModel sortModel)?
+        eventsFetched,
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
@@ -269,10 +273,11 @@ class _$_EventsFetched implements _EventsFetched {
 
 abstract class _EventsFetched implements EventOverviewEvent {
   const factory _EventsFetched(
-      final EventFilters filters, final SortModel sortModel) = _$_EventsFetched;
+          final EventFilters filters, final EventSortModel sortModel) =
+      _$_EventsFetched;
 
   EventFilters get filters => throw _privateConstructorUsedError;
-  SortModel get sortModel => throw _privateConstructorUsedError;
+  EventSortModel get sortModel => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$_EventsFetchedCopyWith<_$_EventsFetched> get copyWith =>
       throw _privateConstructorUsedError;
@@ -320,7 +325,7 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(EventFilters filters, SortModel sortModel)
+    required TResult Function(EventFilters filters, EventSortModel sortModel)
         eventsFetched,
     required TResult Function() nextEventsPageFetched,
     required TResult Function(Event event) eventToStateAdded,
@@ -334,7 +339,8 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
+    TResult Function(EventFilters filters, EventSortModel sortModel)?
+        eventsFetched,
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
@@ -346,7 +352,8 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
+    TResult Function(EventFilters filters, EventSortModel sortModel)?
+        eventsFetched,
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
@@ -471,7 +478,7 @@ class _$_EventToStateAdded implements _EventToStateAdded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(EventFilters filters, SortModel sortModel)
+    required TResult Function(EventFilters filters, EventSortModel sortModel)
         eventsFetched,
     required TResult Function() nextEventsPageFetched,
     required TResult Function(Event event) eventToStateAdded,
@@ -485,7 +492,8 @@ class _$_EventToStateAdded implements _EventToStateAdded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
+    TResult Function(EventFilters filters, EventSortModel sortModel)?
+        eventsFetched,
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
@@ -497,7 +505,8 @@ class _$_EventToStateAdded implements _EventToStateAdded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
+    TResult Function(EventFilters filters, EventSortModel sortModel)?
+        eventsFetched,
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
@@ -638,7 +647,7 @@ class _$_EventInStateUpdated implements _EventInStateUpdated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(EventFilters filters, SortModel sortModel)
+    required TResult Function(EventFilters filters, EventSortModel sortModel)
         eventsFetched,
     required TResult Function() nextEventsPageFetched,
     required TResult Function(Event event) eventToStateAdded,
@@ -652,7 +661,8 @@ class _$_EventInStateUpdated implements _EventInStateUpdated {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
+    TResult Function(EventFilters filters, EventSortModel sortModel)?
+        eventsFetched,
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
@@ -664,7 +674,8 @@ class _$_EventInStateUpdated implements _EventInStateUpdated {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
+    TResult Function(EventFilters filters, EventSortModel sortModel)?
+        eventsFetched,
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
@@ -796,7 +807,7 @@ class _$_EventInStateDeleted implements _EventInStateDeleted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(EventFilters filters, SortModel sortModel)
+    required TResult Function(EventFilters filters, EventSortModel sortModel)
         eventsFetched,
     required TResult Function() nextEventsPageFetched,
     required TResult Function(Event event) eventToStateAdded,
@@ -810,7 +821,8 @@ class _$_EventInStateDeleted implements _EventInStateDeleted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
+    TResult Function(EventFilters filters, EventSortModel sortModel)?
+        eventsFetched,
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
@@ -822,7 +834,8 @@ class _$_EventInStateDeleted implements _EventInStateDeleted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EventFilters filters, SortModel sortModel)? eventsFetched,
+    TResult Function(EventFilters filters, EventSortModel sortModel)?
+        eventsFetched,
     TResult Function()? nextEventsPageFetched,
     TResult Function(Event event)? eventToStateAdded,
     TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
@@ -893,7 +906,7 @@ mixin _$EventOverviewState {
   bool get hasReachedMax => throw _privateConstructorUsedError;
   CubitStatus get status => throw _privateConstructorUsedError;
   EventFilters get eventFilters => throw _privateConstructorUsedError;
-  SortModel get sortModel => throw _privateConstructorUsedError;
+  EventSortModel get sortModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventOverviewStateCopyWith<EventOverviewState> get copyWith =>
@@ -910,10 +923,10 @@ abstract class $EventOverviewStateCopyWith<$Res> {
       bool hasReachedMax,
       CubitStatus status,
       EventFilters eventFilters,
-      SortModel sortModel});
+      EventSortModel sortModel});
 
   $EventFiltersCopyWith<$Res> get eventFilters;
-  $SortModelCopyWith<$Res> get sortModel;
+  $EventSortModelCopyWith<$Res> get sortModel;
 }
 
 /// @nodoc
@@ -953,7 +966,7 @@ class _$EventOverviewStateCopyWithImpl<$Res>
       sortModel: sortModel == freezed
           ? _value.sortModel
           : sortModel // ignore: cast_nullable_to_non_nullable
-              as SortModel,
+              as EventSortModel,
     ));
   }
 
@@ -965,8 +978,8 @@ class _$EventOverviewStateCopyWithImpl<$Res>
   }
 
   @override
-  $SortModelCopyWith<$Res> get sortModel {
-    return $SortModelCopyWith<$Res>(_value.sortModel, (value) {
+  $EventSortModelCopyWith<$Res> get sortModel {
+    return $EventSortModelCopyWith<$Res>(_value.sortModel, (value) {
       return _then(_value.copyWith(sortModel: value));
     });
   }
@@ -984,12 +997,12 @@ abstract class _$$_EventOverviewStateCopyWith<$Res>
       bool hasReachedMax,
       CubitStatus status,
       EventFilters eventFilters,
-      SortModel sortModel});
+      EventSortModel sortModel});
 
   @override
   $EventFiltersCopyWith<$Res> get eventFilters;
   @override
-  $SortModelCopyWith<$Res> get sortModel;
+  $EventSortModelCopyWith<$Res> get sortModel;
 }
 
 /// @nodoc
@@ -1031,7 +1044,7 @@ class __$$_EventOverviewStateCopyWithImpl<$Res>
       sortModel: sortModel == freezed
           ? _value.sortModel
           : sortModel // ignore: cast_nullable_to_non_nullable
-              as SortModel,
+              as EventSortModel,
     ));
   }
 }
@@ -1062,7 +1075,7 @@ class _$_EventOverviewState extends _EventOverviewState {
   @override
   final EventFilters eventFilters;
   @override
-  final SortModel sortModel;
+  final EventSortModel sortModel;
 
   @override
   String toString() {
@@ -1105,7 +1118,7 @@ abstract class _EventOverviewState extends EventOverviewState {
       required final bool hasReachedMax,
       required final CubitStatus status,
       required final EventFilters eventFilters,
-      required final SortModel sortModel}) = _$_EventOverviewState;
+      required final EventSortModel sortModel}) = _$_EventOverviewState;
   _EventOverviewState._() : super._();
 
   @override
@@ -1117,7 +1130,7 @@ abstract class _EventOverviewState extends EventOverviewState {
   @override
   EventFilters get eventFilters => throw _privateConstructorUsedError;
   @override
-  SortModel get sortModel => throw _privateConstructorUsedError;
+  EventSortModel get sortModel => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_EventOverviewStateCopyWith<_$_EventOverviewState> get copyWith =>

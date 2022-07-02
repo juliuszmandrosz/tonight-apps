@@ -4,7 +4,7 @@ part of 'event_overview_bloc.dart';
 class EventOverviewEvent with _$EventOverviewEvent {
   const factory EventOverviewEvent.eventsFetched(
     EventFilters filters,
-    SortModel sortModel,
+    EventSortModel sortModel,
   ) = _EventsFetched;
 
   const factory EventOverviewEvent.nextEventsPageFetched() =

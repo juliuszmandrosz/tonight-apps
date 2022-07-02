@@ -52,7 +52,7 @@ class FirebaseEventFacade
   @override
   Future<Either<CommonEventFailure, List<Event>>> getEvents(
     EventFilters filters,
-    SortModel sortModel, {
+    EventSortModel sortModel, {
     int pageSize = 20,
     int offset = 0,
   }) async {
@@ -248,7 +248,7 @@ class FirebaseEventFacade
       );
 
       final result =
-          await _typesenseEventsApi.getEvents(filters, SortModel.empty(), 1, 0);
+          await _typesenseEventsApi.getEvents(filters, EventSortModel.empty(), 1, 0);
 
       if (result['found'] == 0) return right(none());
 
@@ -287,7 +287,7 @@ class FirebaseEventFacade
       );
 
       final result =
-          await _typesenseEventsApi.getEvents(filters, SortModel.empty(), 1, 0);
+          await _typesenseEventsApi.getEvents(filters, EventSortModel.empty(), 1, 0);
 
       if (result['found'] == 0) return right(none());
 
