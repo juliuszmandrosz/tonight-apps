@@ -131,7 +131,7 @@ class FirebaseAuthFacade
         partnerId: partner.user!.uid,
       );
 
-      await _firebaseAuth.currentUser!.reload();
+      await _refreshToken();
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -241,7 +241,7 @@ class FirebaseAuthFacade
         selectorId: selector.user!.uid,
       );
 
-      await _firebaseAuth.currentUser!.reload();
+      await _refreshToken();
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -533,7 +533,7 @@ class FirebaseAuthFacade
         userId: user.uid,
         email: user.email!,
       );
-      await _firebaseAuth.currentUser!.reload();
+      await _refreshToken();
     }
   }
 
@@ -654,5 +654,11 @@ class FirebaseAuthFacade
     final bytes = utf8.encode(input);
     final digest = sha256.convert(bytes);
     return digest.toString();
+  }
+
+  Future<void> _refreshToken() async {
+    final user = _firebaseAuth.tryGetFirebaseUser();
+    await user.reload();
+    await user.getIdToken(true);
   }
 }
