@@ -26,12 +26,12 @@ dependencies:
   json_serializable: ^6.2.0
   firebase_auth: ^3.3.17
   google_fonts: ^3.0.0
-  algolia: ^1.1.1
   connectivity_plus: ^2.3.0
   firebase_crashlytics: ^2.8.1
   firebase_remote_config: ^2.0.9
   lottie: ^1.2.2
   auto_route: ^4.0.1
+  typesense: ^0.2.0
 
   raver_translations:
     git:
