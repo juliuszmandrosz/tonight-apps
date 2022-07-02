@@ -10,17 +10,20 @@ class EventFiltersSubmitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 300,
-      child: FloatingActionButton.extended(
-        onPressed: () {
-          context.read<EventFiltersCubit>().submitFilters(
-                isMenuFilterApplied: true,
-              );
-          context.popRoute();
-        },
-        label: Text(S().applyFilters),
-        icon: const FaIcon(FontAwesomeIcons.check),
+    return Visibility(
+      visible: MediaQuery.of(context).viewInsets.bottom == 0,
+      child: SizedBox(
+        width: 300,
+        child: FloatingActionButton.extended(
+          onPressed: () {
+            context.read<EventFiltersCubit>().submitFilters(
+                  isMenuFilterApplied: true,
+                );
+            context.popRoute();
+          },
+          label: Text(S().applyFilters),
+          icon: const FaIcon(FontAwesomeIcons.check),
+        ),
       ),
     );
   }

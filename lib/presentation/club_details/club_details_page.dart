@@ -89,7 +89,7 @@ class _ClubDetailsPageState extends State<ClubDetailsPage>
                     toDate: null,
                   ),
                 ),
-                SortModel.empty(),
+                EventSortModel.empty(),
               ),
             );
             _eventOverviewBloc = eventsBloc;

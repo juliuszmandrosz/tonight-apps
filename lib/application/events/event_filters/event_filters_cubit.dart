@@ -5,6 +5,7 @@ import 'package:raver_events/domain/filters/filter/currency_filter.dart';
 import 'package:raver_events/raver_events.dart';
 
 part 'event_filters_cubit.freezed.dart';
+
 part 'event_filters_state.dart';
 
 class EventFiltersCubit extends Cubit<EventFiltersState> {
@@ -181,7 +182,8 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
 
     _setUserLocation();
     _eventOverviewBloc.add(
-        EventOverviewEvent.eventsFetched(state.filters, SortModel.empty()));
+      EventOverviewEvent.eventsFetched(state.filters, EventSortModel.empty()),
+    );
   }
 
   _setUserLocation() {

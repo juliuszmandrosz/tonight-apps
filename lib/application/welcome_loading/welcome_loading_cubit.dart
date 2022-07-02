@@ -137,7 +137,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _eventOverviewBloc.add(
       EventOverviewEvent.eventsFetched(
         filters,
-        SortModel.empty(),
+        EventSortModel.empty(),
       ),
     );
 

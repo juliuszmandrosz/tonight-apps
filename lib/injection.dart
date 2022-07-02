@@ -1,15 +1,11 @@
-import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:geolocator/geolocator.dart';
@@ -44,6 +40,7 @@ import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/infrastructure/currency_params/firebase_currency_params_facade.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
+import 'package:raver_events/infrastructure/typesense_events_api.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_payments/domain/facades/user_payment_facade.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
@@ -339,7 +336,7 @@ void _registerFacades() {
       firestore: getIt(),
       firebaseStorage: getIt(),
       logger: getIt(),
-      algoliaClubsApi: getIt(),
+      typesenseClubsApi: getIt(),
       firebaseAuth: getIt(),
       cloudFunctionsFacade: getIt(),
       crashlytics: getIt(),
@@ -376,7 +373,7 @@ void _registerFacades() {
   getIt.registerLazySingleton<UserEventFacade>(
     () => FirebaseEventFacade(
       firestore: getIt(),
-      algoliaEventsApi: getIt(),
+      typesenseEventsApi: getIt(),
       logger: getIt(),
       firebaseAuth: getIt(),
       storage: getIt(),
@@ -397,7 +394,7 @@ void _registerFacades() {
   getIt.registerLazySingleton<CommonEventFacade>(
     () => FirebaseEventFacade(
       firestore: getIt(),
-      algoliaEventsApi: getIt(),
+      typesenseEventsApi: getIt(),
       logger: getIt(),
       firebaseAuth: getIt(),
       storage: getIt(),
@@ -494,35 +491,21 @@ void _registerModules() {
 
   getIt.registerLazySingleton(() => FirebaseDynamicLinks.instance);
 
-  getIt.registerLazySingleton(() {
-    final crashlytics = FirebaseCrashlytics.instance;
-
-    try {
-      final currentUser = FirebaseAuth.instance.tryGetFirebaseUser();
-      crashlytics.setUserIdentifier(currentUser.uid);
-    } on NotAuthenticatedError {}
-
-    return crashlytics;
-  });
+  getIt.registerLazySingleton(crashlyticsConfig);
 
   getIt.registerLazySingleton(
       () => GooglePlace(FirebaseRemoteConfig.instance.getString(googleApiKey)));
 
-  getIt.registerLazySingleton(
-    () => Algolia.init(
-      applicationId: FirebaseRemoteConfig.instance.getString(algoliaAppId),
-      apiKey: FirebaseRemoteConfig.instance.getString(algoliaApiKey),
-    ),
-  );
+  getIt.registerLazySingleton(typesenseConfig);
 
-  getIt.registerLazySingleton<AlgoliaEventsApi>(
-    () => AlgoliaEventsApiImpl(
+  getIt.registerLazySingleton<TypesenseEventsApi>(
+    () => TypesenseEventsApiImpl(
       getIt(),
     ),
   );
 
-  getIt.registerLazySingleton<AlgoliaClubsApi>(
-    () => AlgoliaClubsApiImpl(
+  getIt.registerLazySingleton<TypesenseClubsApi>(
+    () => TypesenseClubsApiImpl(
       getIt(),
     ),
   );
@@ -537,25 +520,5 @@ void _registerModules() {
 
   getIt.registerLazySingleton(() => FlutterLocalNotificationsPlugin());
 
-  getIt.registerLazySingleton(
-    () => Dio(
-      BaseOptions(
-        baseUrl: dotenv.env[apiEndpoint]!,
-        headers: getHttpHeaders(),
-      ),
-    )..interceptors.add(
-        InterceptorsWrapper(
-          onRequest: (options, handler) async {
-            final headers = options.headers;
-
-            final idToken =
-                await FirebaseAuth.instance.currentUser?.getIdToken();
-
-            headers['token'] = idToken;
-
-            return handler.next(options);
-          },
-        ),
-      ),
-  );
+  getIt.registerLazySingleton(dioConfig);
 }

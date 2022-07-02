@@ -59,7 +59,6 @@ dependencies:
   bloc_concurrency: ^0.2.0
   google_maps_flutter: ^2.1.2
   cloud_functions: ^3.2.9
-  algolia: ^1.0.4
   url_launcher: ^6.0.20
   geolocator: ^8.2.0
   google_place: ^0.4.7
@@ -99,7 +98,7 @@ dependencies:
   screen_brightness: ^0.2.1
   firebase_messaging: ^11.4.2
   flutter_local_notifications: ^9.6.1
-
+  typesense: ^0.2.0
 
   raver_translations:
     git:
