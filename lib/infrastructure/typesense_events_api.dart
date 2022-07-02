@@ -1,4 +1,3 @@
-import 'package:logger/logger.dart';
 import 'package:raver_events/domain/domain.dart';
 import 'package:typesense/typesense.dart';
 
@@ -24,11 +23,8 @@ class TypesenseEventsApiImpl implements TypesenseEventsApi {
     int offset,
   ) async {
     final filterBy = filters.buildFilters();
-    final pageNumber = offset == 0 ? 1 : (offset / pageSize).ceil();
+    final pageNumber = (offset + 1 / pageSize).ceil();
     final sortBy = _getSortBy(sortModel);
-
-    Logger().i(pageNumber);
-    Logger().i(pageSize);
 
     return await _typesense.collection('events').documents.search({
       'q': filters.phraseFilter.phrase,
