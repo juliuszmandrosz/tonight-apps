@@ -68,15 +68,13 @@ class FirebaseEventFacade
         return right([]);
       }
 
-      final events = result['hits'];
+      final events = result['hits'] as List<dynamic>;
 
       Logger().i(events);
 
-      return right<CommonEventFailure, List<Event>>(events
-          .map(
-            (doc) => EventDto.fromTypesense(doc).toDomain(),
-          )
-          .toList());
+      return right<CommonEventFailure, List<Event>>(
+        events.map((doc) => EventDto.fromTypesense(doc).toDomain()).toList(),
+      );
     } on Exception catch (e) {
       _logger.e('Typesense exception  fetching events EXCEPTION: $e');
       await _crashlytics.recordError(e, StackTrace.current);
@@ -92,7 +90,8 @@ class FirebaseEventFacade
       if (eventDoc.data() == null) throw InvalidIdError();
 
       return right<UserEventFailure, Event>(
-          EventDto.fromFirebase(eventDoc).toDomain());
+        EventDto.fromFirebase(eventDoc).toDomain(),
+      );
     } on FirebaseException catch (e) {
       _logger.e("Exception during getting event by id EXCEPTION: $e");
       await _crashlytics.recordError(e, StackTrace.current);
@@ -255,7 +254,7 @@ class FirebaseEventFacade
 
       if (result['found'] == 0) return right(none());
 
-      final currentEvent = result['hits'][0];
+      final currentEvent = (result['hits'] as List<dynamic>)[0];
 
       return right<SelectorEventFailure, Option<Event>>(
         some(EventDto.fromTypesense(currentEvent).toDomain()),
@@ -294,7 +293,7 @@ class FirebaseEventFacade
 
       if (result['found'] == 0) return right(none());
 
-      final currentEvent = result['hits'][0];
+      final currentEvent = (result['hits'] as List<dynamic>)[0];
 
       return right<PartnerEventFailure, Option<Event>>(
         some(EventDto.fromTypesense(currentEvent).toDomain()),
