@@ -2,7 +2,7 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:typesense/typesense.dart';
 
-Function get typesenseConfig => () {
+Client Function() get typesenseConfig => () {
       final host = FirebaseRemoteConfig.instance.getString(typesenseClusterId);
       const protocol = Protocol.https;
       final config = Configuration(
