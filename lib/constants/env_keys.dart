@@ -15,3 +15,5 @@ const partnerDynamicLinkDomain = 'PARTNER_DYNAMIC_LINK_DOMAIN';
 const selectorDynamicLinkUrl = 'SELECTOR_DYNAMIC_LINK_URL';
 const selectorDynamicLinkDomain = 'SELECTOR_DYNAMIC_LINK_DOMAIN';
 const appleSignInClientIdKey = 'APPLE_SIGN_IN_CLIENT_ID';
+const typesenseClusterId = 'TYPESENSE_CLUSTER_ID';
+const typesenseApiKey = 'TYPESENSE_API_KEY';
