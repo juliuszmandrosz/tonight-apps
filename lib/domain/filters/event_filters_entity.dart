@@ -85,8 +85,9 @@ class EventFilters with _$EventFilters {
       isCanceledFilter,
     ];
     for (final filter in filterList) {
+      final previousQuery = query;
       query = filter.buildFilters(query);
-      if (filter != filterList.last) {
+      if (filter != filterList.last && previousQuery != query) {
         query += ' && ';
       }
     }
