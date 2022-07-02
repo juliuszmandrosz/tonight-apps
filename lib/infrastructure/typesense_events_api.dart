@@ -25,7 +25,10 @@ class TypesenseEventsApiImpl implements TypesenseEventsApi {
   ) async {
     final filterBy = filters.buildFilters();
     final pageNumber = offset == 0 ? 1 : (offset / pageSize).ceil();
-    Logger().i(filterBy);
+    final sortBy = _getSortBy(sortModel);
+
+    Logger().i(pageNumber);
+    Logger().i(pageSize);
 
     return await _typesense.collection('events').documents.search({
       'q': filters.phraseFilter.phrase,
@@ -33,6 +36,17 @@ class TypesenseEventsApiImpl implements TypesenseEventsApi {
       'filter_by': filterBy,
       'page': '$pageNumber',
       'per_page': '$pageSize',
+      'sort_by': sortBy,
     });
+  }
+
+  _getSortBy(SortModel sortModel) {
+    if (sortModel.fieldName == eventStartDateTime) {
+      return sortModel.direction == SortDirection.desc
+          ? 'eventStartDateTime:desc'
+          : 'eventStartDateTime:asc';
+    }
+
+    return '';
   }
 }
