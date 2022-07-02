@@ -149,7 +149,8 @@ class EventsPage extends StatelessWidget {
     );
   }
 
-  EventOverviewEvent _eventsFetched(EventFilters filters, SortModel sortModel) {
+  EventOverviewEvent _eventsFetched(
+      EventFilters filters, EventSortModel sortModel) {
     return EventOverviewEvent.eventsFetched(filters, sortModel);
   }
 
@@ -158,8 +159,9 @@ class EventsPage extends StatelessWidget {
       EventFilters.empty().copyWith(
         showOnlyFilter: ShowOnlyFilter(showOnlyUpcoming: true),
         clubFilter: ClubFilter(clubId: clubId),
+        dateRangeFilter: DateRangeFilter(fromDate: null, toDate: null),
       ),
-      SortModel.empty(),
+      EventSortModel.empty(),
     );
   }
 
@@ -168,12 +170,9 @@ class EventsPage extends StatelessWidget {
       EventFilters.empty().copyWith(
         showOnlyFilter: ShowOnlyFilter(showOnlyPast: true),
         clubFilter: ClubFilter(clubId: clubId),
-        dateRangeFilter: DateRangeFilter(
-          fromDate: null,
-          toDate: DateTime.now(),
-        ),
+        dateRangeFilter: DateRangeFilter(fromDate: null, toDate: null),
       ),
-      SortModel(
+      EventSortModel(
         fieldName: eventStartDateTime,
         direction: SortDirection.desc,
       ),
@@ -185,8 +184,9 @@ class EventsPage extends StatelessWidget {
       EventFilters.empty().copyWith(
         showOnlyFilter: ShowOnlyFilter(showOnlyLive: true),
         clubFilter: ClubFilter(clubId: clubId),
+        dateRangeFilter: DateRangeFilter(fromDate: null, toDate: null),
       ),
-      SortModel.empty(),
+      EventSortModel.empty(),
     );
   }
 

@@ -1,14 +1,11 @@
-import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
@@ -19,6 +16,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/event_costs/event_costs_facade.dart';
 import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
 import 'package:raver_events/infrastructure/event_costs/firebase_event_costs_facade.dart';
+import 'package:raver_events/infrastructure/typesense_events_api.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_edit_reward/add_reward_cubit.dart';
 import 'package:raver_partners/application/add_edit_ticket_pool/add_edit_ticket_pool_cubit.dart';
@@ -246,7 +244,7 @@ void _registerFacades() {
     () => FirebaseEventFacade(
       firebaseAuth: getIt(),
       logger: getIt(),
-      algoliaEventsApi: getIt(),
+      typesenseEventsApi: getIt(),
       firestore: getIt(),
       storage: getIt(),
       eventCloudFunctionsFacade: getIt(),
@@ -258,7 +256,7 @@ void _registerFacades() {
     () => FirebaseEventFacade(
       firebaseAuth: getIt(),
       logger: getIt(),
-      algoliaEventsApi: getIt(),
+      typesenseEventsApi: getIt(),
       firestore: getIt(),
       storage: getIt(),
       eventCloudFunctionsFacade: getIt(),
@@ -280,7 +278,7 @@ void _registerFacades() {
       firebaseAuth: getIt(),
       logger: getIt(),
       cloudFunctionsFacade: getIt(),
-      algoliaClubsApi: getIt(),
+      typesenseClubsApi: getIt(),
       firebaseStorage: getIt(),
       crashlytics: getIt(),
     ),
@@ -389,12 +387,7 @@ void _registerFacades() {
 }
 
 void _registerModules() {
-  getIt.registerLazySingleton(
-    () => Algolia.init(
-      applicationId: FirebaseRemoteConfig.instance.getString(algoliaAppId),
-      apiKey: FirebaseRemoteConfig.instance.getString(algoliaApiKey),
-    ),
-  );
+  getIt.registerLazySingleton(typesenseConfig);
 
   getIt.registerLazySingleton(() => GoogleSignIn());
 
@@ -412,27 +405,20 @@ void _registerModules() {
 
   getIt.registerLazySingleton(() => FirebaseStorage.instance);
 
-  getIt.registerLazySingleton(() => FirebaseCrashlytics.instance);
+  getIt.registerLazySingleton(crashlyticsConfig);
 
-  getIt.registerLazySingleton(
-    () => Dio(
-      BaseOptions(
-        baseUrl: dotenv.env[apiEndpoint]!,
-        headers: getHttpHeaders(),
-      ),
-    ),
-  );
+  getIt.registerLazySingleton(dioConfig);
 
   getIt.registerLazySingleton(() => Logger());
 
-  getIt.registerLazySingleton<AlgoliaEventsApi>(
-    () => AlgoliaEventsApiImpl(
+  getIt.registerLazySingleton<TypesenseEventsApi>(
+    () => TypesenseEventsApiImpl(
       getIt(),
     ),
   );
 
-  getIt.registerLazySingleton<AlgoliaClubsApi>(
-    () => AlgoliaClubsApiImpl(
+  getIt.registerLazySingleton<TypesenseClubsApi>(
+    () => TypesenseClubsApiImpl(
       getIt(),
     ),
   );
