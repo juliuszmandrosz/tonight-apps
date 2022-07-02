@@ -47,9 +47,8 @@ class ClubDto with _$ClubDto {
       _$ClubDtoFromJson(json);
 
   factory ClubDto.fromTypesense(Map<String, dynamic> documentSnapshot) {
-    return ClubDto.fromJson(documentSnapshot['document']).copyWith(
-      id: documentSnapshot['id'],
-    );
+    final document = documentSnapshot['document'];
+    return ClubDto.fromJson(document).copyWith(id: document['id']);
   }
 
   factory ClubDto.fromFirebase(DocumentSnapshot documentSnapshot) {
