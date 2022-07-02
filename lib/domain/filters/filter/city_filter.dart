@@ -1,6 +1,5 @@
-import 'package:algolia/algolia.dart';
-import 'package:raver_events/domain/filters/filter/ifilter.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/domain/filters/filter/ifilter.dart';
 
 class CityFilter implements IFilter {
   final String cityId;
@@ -13,9 +12,9 @@ class CityFilter implements IFilter {
   });
 
   @override
-  AlgoliaQuery buildQuery(AlgoliaQuery query) {
-    if(cityId.isEmpty) return query;
-    return AlgoliaQueryBuilder.setFacetFilter(
+  String buildFilters(String query) {
+    if (cityId.isEmpty) return query;
+    return TypesenseQueryBuilder.setFacetFilter(
       query: query,
       field: fieldName,
       value: cityId,

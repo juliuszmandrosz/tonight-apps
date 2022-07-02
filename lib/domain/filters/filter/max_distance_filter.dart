@@ -1,5 +1,3 @@
-import 'package:algolia/algolia.dart';
-import 'package:raver_common/constants/location_constants.dart';
 import 'package:raver_events/domain/filters/filter/ifilter.dart';
 import 'package:raver_common/raver_common.dart';
 
@@ -15,9 +13,9 @@ class MaxDistanceFilter implements IFilter {
   });
 
   @override
-  AlgoliaQuery buildQuery(AlgoliaQuery query) {
+  String buildFilters(String query) {
     if (userLocation.isEmpty || !enabled) return query;
-    return AlgoliaQueryBuilder.setAroundLatLng(
+    return TypesenseQueryBuilder.setAroundLatLng(
       query: query,
       lat: userLocation[latitude]!,
       lng: userLocation[longitude]!,

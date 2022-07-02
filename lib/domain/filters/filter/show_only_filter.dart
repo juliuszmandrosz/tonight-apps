@@ -1,4 +1,3 @@
-import 'package:algolia/algolia.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/filters/filter/ifilter.dart';
 
@@ -11,27 +10,26 @@ class ShowOnlyFilter implements IFilter {
   static const String eventEndDateTimeFieldName = 'eventEndDateTime';
 
   ShowOnlyFilter({
-     bool? showOnlyPast,
-     bool? showOnlyUpcoming,
-     bool? showOnlyLive,
-  }){
+    bool? showOnlyPast,
+    bool? showOnlyUpcoming,
+    bool? showOnlyLive,
+  }) {
     this.showOnlyPast = showOnlyPast ?? false;
     this.showOnlyUpcoming = showOnlyUpcoming ?? false;
     this.showOnlyLive = showOnlyLive ?? false;
-
   }
 
   @override
-  AlgoliaQuery buildQuery(AlgoliaQuery query) {
+  String buildFilters(String query) {
     if (showOnlyLive) {
       final now = _getCurrentTime();
-      query = AlgoliaQueryBuilder.setNumericLowerEqualThan(
+      query = TypesenseQueryBuilder.setNumericLowerEqualThan(
         query: query,
         field: eventStartDateTimeFieldName,
         than: now,
       );
 
-      return AlgoliaQueryBuilder.setNumericHigherEqualThan(
+      return TypesenseQueryBuilder.setNumericHigherEqualThan(
         query: query,
         field: eventEndDateTimeFieldName,
         than: now,
@@ -39,7 +37,7 @@ class ShowOnlyFilter implements IFilter {
     }
     if (showOnlyUpcoming) {
       final now = _getCurrentTime();
-      return AlgoliaQueryBuilder.setNumericHigherThan(
+      return TypesenseQueryBuilder.setNumericHigherThan(
         query: query,
         field: eventStartDateTimeFieldName,
         than: now,
@@ -47,7 +45,7 @@ class ShowOnlyFilter implements IFilter {
     }
     if (showOnlyPast) {
       final now = _getCurrentTime();
-      return AlgoliaQueryBuilder.setNumericLowerThan(
+      return TypesenseQueryBuilder.setNumericLowerThan(
         query: query,
         field: eventEndDateTimeFieldName,
         than: now,

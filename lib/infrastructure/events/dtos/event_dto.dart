@@ -1,4 +1,3 @@
-import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_common/infrastructure/infrastructure.dart';
@@ -75,9 +74,9 @@ class EventDto with _$EventDto {
     );
   }
 
-  factory EventDto.fromAlgolia(AlgoliaObjectSnapshot documentSnapshot) {
-    return EventDto.fromJson(documentSnapshot.data).copyWith(
-      id: documentSnapshot.objectID,
+  factory EventDto.fromTypesense(Map<String, dynamic> documentSnapshot) {
+    return EventDto.fromJson(documentSnapshot['document']).copyWith(
+      id: documentSnapshot['id'],
     );
   }
 

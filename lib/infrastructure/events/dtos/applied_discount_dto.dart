@@ -1,9 +1,6 @@
-import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_common/infrastructure/infrastructure.dart';
-import 'package:raver_common/infrastructure/json_converters/timestamp_json_converter.dart';
-import 'package:raver_events/domain/events/event_entity.dart';
 
 part 'applied_discount_dto.freezed.dart';
 

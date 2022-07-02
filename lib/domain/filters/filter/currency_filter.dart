@@ -1,4 +1,3 @@
-import 'package:algolia/algolia.dart';
 import 'package:raver_events/domain/filters/filter/ifilter.dart';
 import 'package:raver_common/raver_common.dart';
 
@@ -9,9 +8,9 @@ class CurrencyFilter implements IFilter {
   CurrencyFilter({required this.currency});
 
   @override
-  AlgoliaQuery buildQuery(AlgoliaQuery query) {
+  String buildFilters(String query) {
     if (currency.isEmpty) return query;
-    return AlgoliaQueryBuilder.setFacetFilter(
+    return TypesenseQueryBuilder.setFacetFilter(
       query: query,
       field: fieldName,
       value: currency,

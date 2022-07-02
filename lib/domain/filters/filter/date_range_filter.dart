@@ -1,4 +1,3 @@
-import 'package:algolia/algolia.dart';
 import 'package:flutter/material.dart';
 import 'package:raver_events/domain/filters/filter/ifilter.dart';
 import 'package:raver_common/raver_common.dart';
@@ -15,17 +14,17 @@ class DateRangeFilter implements IFilter {
   });
 
   @override
-  AlgoliaQuery buildQuery(AlgoliaQuery query) {
+  String buildFilters(String query) {
     if (fromDate == null) return query;
 
     final startTimestamp = fromDate!.millisecondsSinceEpoch;
 
     if (toDate == null) {
-      return AlgoliaQueryBuilder.setNumericHigherEqualThan(
+      return TypesenseQueryBuilder.setNumericHigherEqualThan(
           query: query, field: eventEndDateFieldName, than: startTimestamp);
     }
 
-    return AlgoliaQueryBuilder.setNumericBetween(
+    return TypesenseQueryBuilder.setNumericBetween(
       query: query,
       field: eventStartDateFieldName,
       from: startTimestamp,

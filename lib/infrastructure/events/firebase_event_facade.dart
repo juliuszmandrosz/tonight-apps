@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
@@ -11,7 +10,6 @@ import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/domain.dart';
 import 'package:raver_events/domain/filters/filter/date_includes_filter.dart';
-import 'package:raver_events/infrastructure/algolia_events_api.dart';
 import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_functions_errors.dart';
 import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
 import 'package:raver_events/infrastructure/event_costs/dtos/event_costs_dto.dart';
@@ -19,6 +17,7 @@ import 'package:raver_events/infrastructure/event_review/dtos/event_review_dto.d
 import 'package:raver_events/infrastructure/events/dtos/applied_discount_dto.dart';
 import 'package:raver_events/infrastructure/events/dtos/event_dto.dart';
 import 'package:raver_events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
+import 'package:raver_events/infrastructure/typesense_events_api.dart';
 
 class FirebaseEventFacade
     implements
@@ -29,7 +28,7 @@ class FirebaseEventFacade
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
   final FirebaseStorage _storage;
-  final AlgoliaEventsApi _algoliaEventsApi;
+  final TypesenseEventsApi _typesenseEventsApi;
   final EventCloudFunctionsFacade _eventCloudFunctionsFacade;
   final FirebaseCrashlytics _crashlytics;
   final Logger _logger;
@@ -38,14 +37,14 @@ class FirebaseEventFacade
     required FirebaseAuth firebaseAuth,
     required FirebaseFirestore firestore,
     required FirebaseStorage storage,
-    required AlgoliaEventsApi algoliaEventsApi,
+    required TypesenseEventsApi typesenseEventsApi,
     required EventCloudFunctionsFacade eventCloudFunctionsFacade,
     required FirebaseCrashlytics crashlytics,
     required Logger logger,
   })  : _firebaseAuth = firebaseAuth,
         _firestore = firestore,
         _storage = storage,
-        _algoliaEventsApi = algoliaEventsApi,
+        _typesenseEventsApi = typesenseEventsApi,
         _eventCloudFunctionsFacade = eventCloudFunctionsFacade,
         _crashlytics = crashlytics,
         _logger = logger;
@@ -58,15 +57,28 @@ class FirebaseEventFacade
     int offset = 0,
   }) async {
     try {
-      final events = await _algoliaEventsApi.getEvents(
-          filters, sortModel, pageSize, offset);
-      return right<CommonEventFailure, List<Event>>(events.hits
+      final result = await _typesenseEventsApi.getEvents(
+        filters,
+        sortModel,
+        pageSize,
+        offset,
+      );
+
+      if (result['found'] == 0) {
+        return right([]);
+      }
+
+      final events = result['hits'];
+
+      Logger().i(events);
+
+      return right<CommonEventFailure, List<Event>>(events
           .map(
-            (doc) => EventDto.fromAlgolia(doc).toDomain(),
+            (doc) => EventDto.fromTypesense(doc).toDomain(),
           )
           .toList());
-    } on AlgoliaError catch (e) {
-      _logger.e("Algolia error during fetching events EXCEPTION: $e");
+    } on Exception catch (e) {
+      _logger.e('Typesense exception  fetching events EXCEPTION: $e');
       await _crashlytics.recordError(e, StackTrace.current);
       return left(const CommonEventFailure.unexpected());
     }
@@ -239,19 +251,18 @@ class FirebaseEventFacade
       );
 
       final result =
-          await _algoliaEventsApi.getEvents(filters, SortModel.empty(), 1, 0);
+          await _typesenseEventsApi.getEvents(filters, SortModel.empty(), 1, 0);
 
-      if (result.empty) return right(none());
+      if (result['found'] == 0) return right(none());
 
-      final currentEvent = result.hits.first;
+      final currentEvent = result['hits'][0];
 
       return right<SelectorEventFailure, Option<Event>>(
-        some(EventDto.fromAlgolia(currentEvent).toDomain()),
+        some(EventDto.fromTypesense(currentEvent).toDomain()),
       );
-    } on AlgoliaError catch (e) {
+    } on Exception catch (e) {
       _logger.e(
-        "Algolia error during getting "
-        "current event from club EXCEPTION: $e",
+        'Typesense exception getting current event from club EXCEPTION: $e',
       );
       await _crashlytics.recordError(e, StackTrace.current);
       return left(const SelectorEventFailure.unexpected());
@@ -279,19 +290,18 @@ class FirebaseEventFacade
       );
 
       final result =
-          await _algoliaEventsApi.getEvents(filters, SortModel.empty(), 1, 0);
+          await _typesenseEventsApi.getEvents(filters, SortModel.empty(), 1, 0);
 
-      if (result.empty) return right(none());
+      if (result['found'] == 0) return right(none());
 
-      final currentEvent = result.hits.first;
+      final currentEvent = result['hits'][0];
 
       return right<PartnerEventFailure, Option<Event>>(
-        some(EventDto.fromAlgolia(currentEvent).toDomain()),
+        some(EventDto.fromTypesense(currentEvent).toDomain()),
       );
-    } on AlgoliaError catch (e) {
+    } on Exception catch (e) {
       _logger.e(
-        "Algolia error during getting "
-        "event in date range for current partner EXCEPTION: $e",
+        'Typesense exception getting event in date range for current partner EXCEPTION: $e',
       );
       await _crashlytics.recordError(e, StackTrace.current);
       return left(const PartnerEventFailure.unexpected());

@@ -6,7 +6,7 @@ export 'max_distance_filter.dart';
 export 'min_ages_filter.dart';
 export 'min_ages_filter.dart';
 export 'musical_genres_filter.dart';
-export 'phrase_filter.dart';
 export 'price_range_filter.dart';
 export 'show_only_filter.dart';
 export 'date_range_filter.dart';
+export 'phrase_filter.dart';

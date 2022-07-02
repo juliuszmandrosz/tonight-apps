@@ -1,6 +1,5 @@
-import 'package:algolia/algolia.dart';
-import 'package:raver_events/domain/filters/filter/ifilter.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_events/domain/filters/filter/ifilter.dart';
 
 class AllowedOutfitsFilter implements IFilter {
   final List<String> allowedOutfits;
@@ -9,11 +8,11 @@ class AllowedOutfitsFilter implements IFilter {
   AllowedOutfitsFilter({required this.allowedOutfits});
 
   @override
-  AlgoliaQuery buildQuery(AlgoliaQuery query) {
+  String buildFilters(String query) {
     if (allowedOutfits.isEmpty) {
       return query;
     }
-    return AlgoliaQueryBuilder.setFacetListFilter(
+    return TypesenseQueryBuilder.setFacetListFilter(
       query: query,
       field: fieldName,
       values: allowedOutfits,

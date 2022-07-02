@@ -1,4 +1,3 @@
-import 'package:algolia/algolia.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_events/domain/filters/filter/allowed_outfits_filter.dart';
 import 'package:raver_events/domain/filters/filter/city_filter.dart';
@@ -11,8 +10,8 @@ import 'package:raver_events/domain/filters/filter/is_concert_filter.dart';
 import 'package:raver_events/domain/filters/filter/max_distance_filter.dart';
 import 'package:raver_events/domain/filters/filter/min_ages_filter.dart';
 import 'package:raver_events/domain/filters/filter/musical_genres_filter.dart';
+import 'package:raver_events/domain/filters/filter/phrase_filter.dart';
 import 'package:raver_events/domain/filters/filter/price_range_filter.dart';
-import 'filter/phrase_filter.dart';
 import 'filter/show_only_filter.dart';
 
 part 'event_filters_entity.freezed.dart';
@@ -67,9 +66,10 @@ class EventFilters with _$EventFilters {
         isCanceledFilter: IsCanceledFilter(isCanceled: false),
       );
 
-  AlgoliaQuery buildQuery(AlgoliaQuery query) {
+  String buildFilters() {
+    var query = '';
+
     final filterList = [
-      phraseFilter,
       priceRangeFilter,
       minAgesFilter,
       musicalGenresFilter,
@@ -85,7 +85,10 @@ class EventFilters with _$EventFilters {
       isCanceledFilter,
     ];
     for (final filter in filterList) {
-      query = filter.buildQuery(query);
+      query = filter.buildFilters(query);
+      if (filter != filterList.last) {
+        query += ' && ';
+      }
     }
     return query;
   }

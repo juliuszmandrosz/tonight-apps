@@ -1,4 +1,3 @@
-import 'package:algolia/algolia.dart';
 import 'package:raver_events/domain/filters/filter/ifilter.dart';
 import 'package:raver_common/raver_common.dart';
 
@@ -9,11 +8,11 @@ class MinAgesFilter implements IFilter {
   MinAgesFilter({required this.minAges});
 
   @override
-  AlgoliaQuery buildQuery(AlgoliaQuery query) {
+  String buildFilters(String query) {
     if (minAges.isEmpty) {
       return query;
     }
-    return AlgoliaQueryBuilder.setFacetListFilter(
+    return TypesenseQueryBuilder.setFacetListFilter(
       query: query,
       field: fieldName,
       values: minAges.map((e) => '$e').toList(),

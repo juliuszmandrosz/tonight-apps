@@ -1,4 +1,3 @@
-import 'package:algolia/algolia.dart';
 import 'package:raver_events/domain/filters/filter/ifilter.dart';
 import 'package:raver_common/raver_common.dart';
 
@@ -10,16 +9,16 @@ class PriceRangeFilter implements IFilter {
   PriceRangeFilter({required this.minPrice, this.maxPrice});
 
   @override
-  AlgoliaQuery buildQuery(AlgoliaQuery query) {
+  String buildFilters(String query) {
     if (maxPrice != null) {
-      return AlgoliaQueryBuilder.setNumericBetween(
+      return TypesenseQueryBuilder.setNumericBetween(
         query: query,
         field: fieldName,
         from: minPrice,
         to: maxPrice!,
       );
     }
-    return AlgoliaQueryBuilder.setNumericHigherEqualThan(
+    return TypesenseQueryBuilder.setNumericHigherEqualThan(
         query: query, field: fieldName, than: minPrice);
   }
 }

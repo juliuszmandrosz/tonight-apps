@@ -1,4 +1,3 @@
-import 'package:algolia/algolia.dart';
 import 'package:raver_events/domain/filters/filter/ifilter.dart';
 import 'package:raver_common/raver_common.dart';
 
@@ -9,11 +8,11 @@ class MusicalGenresFilter implements IFilter {
   MusicalGenresFilter({required this.musicalGenres});
 
   @override
-  AlgoliaQuery buildQuery(AlgoliaQuery query) {
+  String buildFilters(String query) {
     if (musicalGenres.isEmpty) {
       return query;
     }
-    return AlgoliaQueryBuilder.setFacetListFilter(
+    return TypesenseQueryBuilder.setFacetListFilter(
       query: query,
       field: fieldName,
       values: musicalGenres,
