@@ -131,6 +131,8 @@ class FirebaseAuthFacade
         partnerId: partner.user!.uid,
       );
 
+      await _firebaseAuth.currentUser!.reload();
+
       return right(unit);
     } on FirebaseAuthException catch (e) {
       _logger.e(
@@ -238,6 +240,8 @@ class FirebaseAuthFacade
         accessCode: accessCode,
         selectorId: selector.user!.uid,
       );
+
+      await _firebaseAuth.currentUser!.reload();
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -523,6 +527,7 @@ class FirebaseAuthFacade
         userId: user.uid,
         email: user.email!,
       );
+      await _firebaseAuth.currentUser!.reload();
     }
   }
 
