@@ -1,3 +1,5 @@
+import 'package:logger/logger.dart';
+
 class TypesenseQueryBuilder {
   static String setNumericBetween({
     required String query,
@@ -45,14 +47,7 @@ class TypesenseQueryBuilder {
     required String field,
     required List<String> values,
   }) {
-    final facetFilters = <String>[];
-    for (var value in values) {
-      facetFilters.add(value);
-      if (value != values.last) {
-        facetFilters.add(', ');
-      }
-    }
-    return query += '$field: [$facetFilters]';
+    return query += '$field: $values';
   }
 
   static String setFacetFilter({
@@ -69,6 +64,6 @@ class TypesenseQueryBuilder {
     required double lng,
     required int radius,
   }) {
-    return 'location:($lat, $lng, $radius km)';
+    return query += 'location:($lat, $lng, $radius km)';
   }
 }
