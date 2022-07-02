@@ -18,6 +18,7 @@ import 'package:raver_events/infrastructure/events/dtos/applied_discount_dto.dar
 import 'package:raver_events/infrastructure/events/dtos/event_dto.dart';
 import 'package:raver_events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
 import 'package:raver_events/infrastructure/typesense_events_api.dart';
+import 'package:typesense/typesense.dart';
 
 class FirebaseEventFacade
     implements
@@ -73,7 +74,11 @@ class FirebaseEventFacade
       return right<CommonEventFailure, List<Event>>(
         events.map((doc) => EventDto.fromTypesense(doc).toDomain()).toList(),
       );
-    } on Exception catch (e) {
+    } on FirebaseException catch (e) {
+      _logger.e('Firebase exception  fetching events EXCEPTION: $e');
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const CommonEventFailure.unexpected());
+    } on TypesenseException catch (e) {
       _logger.e('Typesense exception  fetching events EXCEPTION: $e');
       await _crashlytics.recordError(e, StackTrace.current);
       return left(const CommonEventFailure.unexpected());
@@ -247,8 +252,8 @@ class FirebaseEventFacade
         dateRangeFilter: DateRangeFilter(fromDate: null, toDate: null),
       );
 
-      final result =
-          await _typesenseEventsApi.getEvents(filters, EventSortModel.empty(), 1, 0);
+      final result = await _typesenseEventsApi.getEvents(
+          filters, EventSortModel.empty(), 1, 0);
 
       if (result['found'] == 0) return right(none());
 
@@ -257,7 +262,13 @@ class FirebaseEventFacade
       return right<SelectorEventFailure, Option<Event>>(
         some(EventDto.fromTypesense(currentEvent).toDomain()),
       );
-    } on Exception catch (e) {
+    } on FirebaseException catch (e) {
+      _logger.e(
+        'Firebase exception getting current event from club EXCEPTION: $e',
+      );
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const SelectorEventFailure.unexpected());
+    } on TypesenseException catch (e) {
       _logger.e(
         'Typesense exception getting current event from club EXCEPTION: $e',
       );
@@ -286,8 +297,8 @@ class FirebaseEventFacade
         ),
       );
 
-      final result =
-          await _typesenseEventsApi.getEvents(filters, EventSortModel.empty(), 1, 0);
+      final result = await _typesenseEventsApi.getEvents(
+          filters, EventSortModel.empty(), 1, 0);
 
       if (result['found'] == 0) return right(none());
 
@@ -296,7 +307,13 @@ class FirebaseEventFacade
       return right<PartnerEventFailure, Option<Event>>(
         some(EventDto.fromTypesense(currentEvent).toDomain()),
       );
-    } on Exception catch (e) {
+    } on FirebaseException catch (e) {
+      _logger.e(
+        'Firebase exception getting event in date range for current partner EXCEPTION: $e',
+      );
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const PartnerEventFailure.unexpected());
+    } on TypesenseException catch (e) {
       _logger.e(
         'Typesense exception getting event in date range for current partner EXCEPTION: $e',
       );
