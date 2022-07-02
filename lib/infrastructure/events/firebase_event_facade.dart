@@ -70,8 +70,6 @@ class FirebaseEventFacade
 
       final events = result['hits'] as List<dynamic>;
 
-      Logger().i(events);
-
       return right<CommonEventFailure, List<Event>>(
         events.map((doc) => EventDto.fromTypesense(doc).toDomain()).toList(),
       );
