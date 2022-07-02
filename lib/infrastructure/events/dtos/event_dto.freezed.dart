@@ -39,7 +39,7 @@ mixin _$EventDto {
   List<String> get musicalGenres => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get artistName => throw _privateConstructorUsedError;
-  @JsonKey(name: '_geoloc')
+  @LocationConverter()
   Map<String, double> get location => throw _privateConstructorUsedError;
   String get cityId => throw _privateConstructorUsedError;
   Map<String, String> get urlLinks => throw _privateConstructorUsedError;
@@ -74,7 +74,7 @@ abstract class $EventDtoCopyWith<$Res> {
       List<String> musicalGenres,
       String? description,
       String? artistName,
-      @JsonKey(name: '_geoloc') Map<String, double> location,
+      @LocationConverter() Map<String, double> location,
       String cityId,
       Map<String, String> urlLinks,
       bool isConcert,
@@ -231,7 +231,7 @@ abstract class _$$_EventDtoCopyWith<$Res> implements $EventDtoCopyWith<$Res> {
       List<String> musicalGenres,
       String? description,
       String? artistName,
-      @JsonKey(name: '_geoloc') Map<String, double> location,
+      @LocationConverter() Map<String, double> location,
       String cityId,
       Map<String, String> urlLinks,
       bool isConcert,
@@ -388,7 +388,7 @@ class _$_EventDto extends _EventDto {
       required final List<String> musicalGenres,
       this.description,
       this.artistName,
-      @JsonKey(name: '_geoloc') required final Map<String, double> location,
+      @LocationConverter() required final Map<String, double> location,
       required this.cityId,
       final Map<String, String> urlLinks = const {},
       this.isConcert = false,
@@ -444,7 +444,7 @@ class _$_EventDto extends _EventDto {
   final String? artistName;
   final Map<String, double> _location;
   @override
-  @JsonKey(name: '_geoloc')
+  @LocationConverter()
   Map<String, double> get location {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_location);
@@ -573,7 +573,7 @@ abstract class _EventDto extends EventDto {
       required final List<String> musicalGenres,
       final String? description,
       final String? artistName,
-      @JsonKey(name: '_geoloc') required final Map<String, double> location,
+      @LocationConverter() required final Map<String, double> location,
       required final String cityId,
       final Map<String, String> urlLinks,
       final bool isConcert,
@@ -619,7 +619,7 @@ abstract class _EventDto extends EventDto {
   @override
   String? get artistName => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: '_geoloc')
+  @LocationConverter()
   Map<String, double> get location => throw _privateConstructorUsedError;
   @override
   String get cityId => throw _privateConstructorUsedError;

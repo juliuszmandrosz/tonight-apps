@@ -28,7 +28,7 @@ class EventDto with _$EventDto {
     required List<String> musicalGenres,
     String? description,
     String? artistName,
-    @JsonKey(name: '_geoloc') required Map<String, double> location,
+    @LocationConverter() required Map<String, double> location,
     required String cityId,
     @Default({}) Map<String, String> urlLinks,
     @Default(false) bool isConcert,

@@ -26,9 +26,7 @@ _$_EventDto _$$_EventDtoFromJson(Map<String, dynamic> json) => _$_EventDto(
           .toList(),
       description: json['description'] as String?,
       artistName: json['artistName'] as String?,
-      location: (json['_geoloc'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry(k, (e as num).toDouble()),
-      ),
+      location: const LocationConverter().fromJson(json['location'] as List),
       cityId: json['cityId'] as String,
       urlLinks: (json['urlLinks'] as Map<String, dynamic>?)?.map(
             (k, e) => MapEntry(k, e as String),
@@ -59,7 +57,7 @@ Map<String, dynamic> _$$_EventDtoToJson(_$_EventDto instance) =>
       'musicalGenres': instance.musicalGenres,
       'description': instance.description,
       'artistName': instance.artistName,
-      '_geoloc': instance.location,
+      'location': const LocationConverter().toJson(instance.location),
       'cityId': instance.cityId,
       'urlLinks': instance.urlLinks,
       'isConcert': instance.isConcert,
