@@ -367,6 +367,12 @@ class FirebaseAuthFacade
           AppleIDAuthorizationScopes.fullName,
         ],
         nonce: nonce,
+        webAuthenticationOptions: WebAuthenticationOptions(
+          clientId: dotenv.env[appleSignInClientIdKey]!,
+          redirectUri: Uri.parse(
+            'https://tonight-qa.firebaseapp.com/__/auth/handler',
+          ),
+        ),
       );
 
       final oauthCredential = OAuthProvider('apple.com').credential(
