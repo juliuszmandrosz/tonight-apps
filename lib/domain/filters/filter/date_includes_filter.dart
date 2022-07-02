@@ -22,6 +22,8 @@ class DateIncludesFilter implements IFilter {
     query = TypesenseQueryBuilder.setNumericLowerEqualThan(
         query: query, field: eventStartDateFieldName, than: endTimestamp);
 
+    query += ' && ';
+
     return TypesenseQueryBuilder.setNumericHigherEqualThan(
         query: query, field: eventEndDateFieldName, than: startTimestamp);
   }

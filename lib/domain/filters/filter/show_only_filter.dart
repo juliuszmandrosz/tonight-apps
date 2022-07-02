@@ -29,6 +29,8 @@ class ShowOnlyFilter implements IFilter {
         than: now,
       );
 
+      query += ' && ';
+
       return TypesenseQueryBuilder.setNumericHigherEqualThan(
         query: query,
         field: eventEndDateTimeFieldName,
