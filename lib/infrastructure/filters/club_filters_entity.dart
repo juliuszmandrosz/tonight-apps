@@ -1,5 +1,5 @@
-import 'package:algolia/algolia.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:raver_clubs/infrastructure/filters/filter/ifilter.dart';
 import 'package:raver_clubs/infrastructure/filters/filter/phrase_filter.dart';
 
 part 'club_filters_entity.freezed.dart';
@@ -16,13 +16,16 @@ abstract class ClubFilters with _$ClubFilters {
         phraseFilter: PhraseFilter(phrase: ""),
       );
 
-  AlgoliaQuery buildQuery(AlgoliaQuery query) {
-    final filterList = [
-      phraseFilter,
-    ];
+  String buildFilters() {
+    var filterBy = '';
+    final filterList = <IFilter>[];
     for (final filter in filterList) {
-      query = filter.buildQuery(query);
+      final previousQuery = filterBy;
+      filterBy = filter.buildFilters(filterBy);
+      if (filter != filterList.last && previousQuery != filterBy) {
+        filterBy += ' && ';
+      }
     }
-    return query;
+    return filterBy;
   }
 }

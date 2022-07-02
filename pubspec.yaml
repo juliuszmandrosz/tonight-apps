@@ -22,8 +22,8 @@ dependencies:
   json_serializable: ^6.1.5
   cloud_functions: ^3.2.14
   dartz: ^0.10.1
-  algolia: ^1.0.4
   firebase_crashlytics: ^2.8.1
+  typesense: ^0.2.0
 
   raver_common:
     git:

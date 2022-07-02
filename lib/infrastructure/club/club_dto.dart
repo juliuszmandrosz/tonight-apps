@@ -1,4 +1,3 @@
-import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_clubs/domain/domain.dart';
@@ -47,9 +46,10 @@ class ClubDto with _$ClubDto {
   factory ClubDto.fromJson(Map<String, dynamic> json) =>
       _$ClubDtoFromJson(json);
 
-  factory ClubDto.fromAlgolia(AlgoliaObjectSnapshot documentSnapshot) {
-    return ClubDto.fromJson(documentSnapshot.data)
-        .copyWith(id: documentSnapshot.objectID);
+  factory ClubDto.fromTypesense(Map<String, dynamic> documentSnapshot) {
+    return ClubDto.fromJson(documentSnapshot['document']).copyWith(
+      id: documentSnapshot['id'],
+    );
   }
 
   factory ClubDto.fromFirebase(DocumentSnapshot documentSnapshot) {

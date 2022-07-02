@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
@@ -10,15 +9,15 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_clubs/domain/domain.dart';
 import 'package:raver_clubs/domain/club/selector_club_facade.dart';
-import 'package:raver_clubs/infrastructure/algolia_clubs_api.dart';
 import 'package:raver_clubs/infrastructure/cloud_functions/club_cloud_functions_facade.dart';
 import 'package:raver_clubs/infrastructure/club/club_dto.dart';
 import 'package:raver_clubs/infrastructure/filters/club_filters_entity.dart';
+import 'package:raver_clubs/infrastructure/typesense_clubs_api.dart';
 import 'package:raver_common/raver_common.dart';
 
 class FirebaseClubFacade
     implements UserClubFacade, PartnerClubFacade, SelectorClubFacade {
-  final AlgoliaClubsApi _algoliaClubsApi;
+  final TypesenseClubsApi _typesenseClubsApi;
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;
   final FirebaseStorage _firebaseStorage;
@@ -31,14 +30,14 @@ class FirebaseClubFacade
     required FirebaseAuth firebaseAuth,
     required FirebaseStorage firebaseStorage,
     required ClubCloudFunctionsFacade cloudFunctionsFacade,
-    required AlgoliaClubsApi algoliaClubsApi,
+    required TypesenseClubsApi typesenseClubsApi,
     required FirebaseCrashlytics crashlytics,
     required Logger logger,
   })  : _firestore = firestore,
         _firebaseAuth = firebaseAuth,
         _firebaseStorage = firebaseStorage,
         _cloudFunctionsFacade = cloudFunctionsFacade,
-        _algoliaClubsApi = algoliaClubsApi,
+        _typesenseClubsApi = typesenseClubsApi,
         _firebaseCrashlytics = crashlytics,
         _logger = logger;
 
@@ -64,13 +63,19 @@ class FirebaseClubFacade
     int offset = 0,
   }) async {
     try {
-      final clubs = await _algoliaClubsApi.getClubs(filters, pageSize, offset);
+      final result =
+          await _typesenseClubsApi.getClubs(filters, pageSize, offset);
 
-      return right<UserClubFailure, List<Club>>(clubs.hits
-          .map((doc) => ClubDto.fromAlgolia(doc).toDomain())
-          .toList());
-    } on AlgoliaError catch (e) {
-      _logger.e("Algolia exception during fetching clubs EXCEPTION: $e");
+      if (result['found'] == 0) {
+        return right([]);
+      }
+
+      final clubs = result['hits'] as List<dynamic>;
+
+      return right<UserClubFailure, List<Club>>(
+          clubs.map((doc) => ClubDto.fromTypesense(doc).toDomain()).toList());
+    } on Exception catch (e) {
+      _logger.e('Typesense exception fetching clubs EXCEPTION: $e');
       await _firebaseCrashlytics.recordError(e, StackTrace.current);
       return left(const UserClubFailure.unexpected());
     }
