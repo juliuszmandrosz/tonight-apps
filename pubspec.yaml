@@ -33,6 +33,7 @@ dependencies:
   auto_route: ^4.0.1
   typesense: ^0.2.0
   dio: ^4.0.6
+  flutter_dotenv: ^5.0.2
 
   raver_translations:
     git:

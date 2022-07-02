@@ -4,4 +4,5 @@ export 'available_filters/available_filters_cubit.dart';
 export 'network_check/network_check_cubit.dart';
 export 'remote_config/remote_config_cubit.dart';
 export 'http_interceptors/dio_interceptor.dart';
-export 'injection_config//typesense_config.dart';
+export 'injection_config/typesense_config.dart';
+export 'injection_config/dio_config.dart';
