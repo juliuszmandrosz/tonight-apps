@@ -64,7 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Należy dodać co najmniej jedną pulę biletów"),
         "addClubToFavoritesAndReceiveNotifications":
             MessageLookupByLibrary.simpleMessage(
-                "Dodaj klub do ulubionych i otrzymuj powiadomienia jak tylko doda nowe wydarzenie lub nagrodę"),
+                "Dodaj klub do ulubionych i otrzymuj powiadomienia kiedy doda nowe wydarzenie lub nagrodę"),
         "addDescription": MessageLookupByLibrary.simpleMessage("Dodaj opis"),
         "addDjChannelYoutubeUrl": MessageLookupByLibrary.simpleMessage(
             "Dodaj link do kanału DJ-a na YouTube"),
@@ -134,7 +134,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wystąpił błąd podczas ładowania opinii klubu"),
         "clubs": m1,
         "collectBenefitsInClubs": MessageLookupByLibrary.simpleMessage(
-            "Kolekcjonuj benefity w klubach, nabijając frekwencję po zeskanowaniu biletu"),
+            "Kolekcjonuj benefity w klubach zbierając frekwencję za uczestnictwo w wydarzeniach"),
         "company": MessageLookupByLibrary.simpleMessage("Firma"),
         "companyName": MessageLookupByLibrary.simpleMessage("Nazwa firmy"),
         "concert": MessageLookupByLibrary.simpleMessage("Koncert"),
@@ -414,6 +414,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "map": MessageLookupByLibrary.simpleMessage("Mapa"),
         "maxDistance":
             MessageLookupByLibrary.simpleMessage("Maksymalna odległość"),
+        "maxNumberOfTicketPools": MessageLookupByLibrary.simpleMessage(
+            "Maksymalna ilośc pul biletów wynosi 5"),
         "maxThreeMusicalGenres": MessageLookupByLibrary.simpleMessage(
             "Proszę wybrać maksymalnie 3 gatunki muzyczne"),
         "milestones": MessageLookupByLibrary.simpleMessage("Kamienie milowe"),
@@ -535,7 +537,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "rateEvent": MessageLookupByLibrary.simpleMessage("Oceń wydarzenie"),
         "rateUs": MessageLookupByLibrary.simpleMessage("Oceń nas"),
         "receiveRewards":
-            MessageLookupByLibrary.simpleMessage("Otrzymuj nagrody"),
+            MessageLookupByLibrary.simpleMessage("Zbieraj nagrody"),
         "refresh": MessageLookupByLibrary.simpleMessage("Odśwież"),
         "register": MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "report": MessageLookupByLibrary.simpleMessage("Zgłoś"),
@@ -703,7 +705,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Nazwa użytkownika nie może posiadać znaków specjalnych"),
         "usernameTooLong": MessageLookupByLibrary.simpleMessage(
-            "Nazwa użytkownika jest za długa, użyj maksymalnie 20 znaków"),
+            "Nazwa użytkownika powinna zawierać maksymalnie 20 znaków"),
         "usernameTooShort": MessageLookupByLibrary.simpleMessage(
             "Nazwa użytkownika powinna zawierać co najmniej 3 znaki"),
         "usernameUpdatedMessage": MessageLookupByLibrary.simpleMessage(
@@ -711,7 +713,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "validTicket": MessageLookupByLibrary.simpleMessage("Ważny bilet"),
         "vatNumber": MessageLookupByLibrary.simpleMessage("Numer NIP"),
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(
-            "Wysłano link weryfikacyjny na podany adres e-mail"),
+            "Wysłano link weryfikacyjny na podany adres e-mail, należy go potwierdzić za pomocą skrzynki email w telefonie"),
         "vip": MessageLookupByLibrary.simpleMessage("VIP"),
         "vipAvailableAgain":
             MessageLookupByLibrary.simpleMessage("VIP znowu jest dostępny!"),

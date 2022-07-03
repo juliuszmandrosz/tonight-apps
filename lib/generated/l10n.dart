@@ -596,10 +596,10 @@ class S {
     );
   }
 
-  /// `Collect benefits at clubs by adding up attendance after scanning your ticket`
+  /// `Collect benefits in clubs by collecting attendance for participating in events`
   String get collectBenefitsInClubs {
     return Intl.message(
-      'Collect benefits at clubs by adding up attendance after scanning your ticket',
+      'Collect benefits in clubs by collecting attendance for participating in events',
       name: 'collectBenefitsInClubs',
       desc: '',
       args: [],
@@ -2242,6 +2242,16 @@ class S {
     );
   }
 
+  /// `The maximum number of ticket pools is 5`
+  String get maxNumberOfTicketPools {
+    return Intl.message(
+      'The maximum number of ticket pools is 5',
+      name: 'maxNumberOfTicketPools',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please select up to 3 musical genres`
   String get maxThreeMusicalGenres {
     return Intl.message(
@@ -2988,10 +2998,10 @@ class S {
     );
   }
 
-  /// `Receive rewards`
+  /// `Collect rewards`
   String get receiveRewards {
     return Intl.message(
-      'Receive rewards',
+      'Collect rewards',
       name: 'receiveRewards',
       desc: '',
       args: [],
@@ -4057,10 +4067,10 @@ class S {
     );
   }
 
-  /// `Username is too long, use max 20 characters`
+  /// `Username should contain up to 20 characters`
   String get usernameTooLong {
     return Intl.message(
-      'Username is too long, use max 20 characters',
+      'Username should contain up to 20 characters',
       name: 'usernameTooLong',
       desc: '',
       args: [],
@@ -4117,10 +4127,10 @@ class S {
     );
   }
 
-  /// `A verification link has been sent to the e-mail address provided`
+  /// `A verification link has been sent to the e-mail address provided, it must be confirmed using the email in the phone`
   String get verificationLinkSent {
     return Intl.message(
-      'A verification link has been sent to the e-mail address provided',
+      'A verification link has been sent to the e-mail address provided, it must be confirmed using the email in the phone',
       name: 'verificationLinkSent',
       desc: '',
       args: [],
@@ -4324,6 +4334,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'de'),
       Locale.fromSubtags(languageCode: 'pl'),
     ];
   }

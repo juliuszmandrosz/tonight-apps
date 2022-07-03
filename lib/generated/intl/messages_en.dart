@@ -131,7 +131,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Error while loading club reviews"),
         "clubs": m1,
         "collectBenefitsInClubs": MessageLookupByLibrary.simpleMessage(
-            "Collect benefits at clubs by adding up attendance after scanning your ticket"),
+            "Collect benefits in clubs by collecting attendance for participating in events"),
         "company": MessageLookupByLibrary.simpleMessage("Company"),
         "companyName": MessageLookupByLibrary.simpleMessage("Company name"),
         "concert": MessageLookupByLibrary.simpleMessage("Concert"),
@@ -407,6 +407,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Seems you\'ve lost connection to internet"),
         "map": MessageLookupByLibrary.simpleMessage("Map"),
         "maxDistance": MessageLookupByLibrary.simpleMessage("Maximum distance"),
+        "maxNumberOfTicketPools": MessageLookupByLibrary.simpleMessage(
+            "The maximum number of ticket pools is 5"),
         "maxThreeMusicalGenres": MessageLookupByLibrary.simpleMessage(
             "Please select up to 3 musical genres"),
         "milestones": MessageLookupByLibrary.simpleMessage("Milestones"),
@@ -523,7 +525,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "rateEvent": MessageLookupByLibrary.simpleMessage("Rate the event"),
         "rateUs": MessageLookupByLibrary.simpleMessage("Rate us"),
         "receiveRewards":
-            MessageLookupByLibrary.simpleMessage("Receive rewards"),
+            MessageLookupByLibrary.simpleMessage("Collect rewards"),
         "refresh": MessageLookupByLibrary.simpleMessage("Refresh"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "report": MessageLookupByLibrary.simpleMessage("Report"),
@@ -687,7 +689,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Username cannot contain special characters"),
         "usernameTooLong": MessageLookupByLibrary.simpleMessage(
-            "Username is too long, use max 20 characters"),
+            "Username should contain up to 20 characters"),
         "usernameTooShort": MessageLookupByLibrary.simpleMessage(
             "Username should contain at least 3 characters"),
         "usernameUpdatedMessage":
@@ -695,7 +697,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "validTicket": MessageLookupByLibrary.simpleMessage("Valid ticket"),
         "vatNumber": MessageLookupByLibrary.simpleMessage("VAT number"),
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(
-            "A verification link has been sent to the e-mail address provided"),
+            "A verification link has been sent to the e-mail address provided, it must be confirmed using the email in the phone"),
         "vip": MessageLookupByLibrary.simpleMessage("VIP"),
         "vipAvailableAgain":
             MessageLookupByLibrary.simpleMessage("VIP is available again!"),
