@@ -440,6 +440,8 @@
   "@maxDistance": {},
   "maxNumberOfTicketPools": "",
   "@maxNumberOfTicketPools": {},
+  "maxPhotoSize": "",
+  "@maxPhotoSize": {},
   "maxThreeMusicalGenres": "",
   "@maxThreeMusicalGenres": {},
   "milestones": "",

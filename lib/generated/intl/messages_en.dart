@@ -337,7 +337,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "facebookEvent": MessageLookupByLibrary.simpleMessage("Facebook event"),
         "favoriteClubs": MessageLookupByLibrary.simpleMessage("Favorite clubs"),
         "favoriteClubsInfo": MessageLookupByLibrary.simpleMessage(
-            "Add clubs to your favorites and receive notifications about new events"),
+            "Add clubs to your favorites and receive notifications about new events and rewards"),
         "favoriteEvents":
             MessageLookupByLibrary.simpleMessage("Favorite events"),
         "favoriteEventsInfo": MessageLookupByLibrary.simpleMessage(
@@ -411,6 +411,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "maxDistance": MessageLookupByLibrary.simpleMessage("Maximum distance"),
         "maxNumberOfTicketPools": MessageLookupByLibrary.simpleMessage(
             "The maximum number of ticket pools is 5"),
+        "maxPhotoSize": MessageLookupByLibrary.simpleMessage(
+            "The maximum size of the photo is 1MB"),
         "maxThreeMusicalGenres": MessageLookupByLibrary.simpleMessage(
             "Please select up to 3 musical genres"),
         "milestones": MessageLookupByLibrary.simpleMessage("Milestones"),

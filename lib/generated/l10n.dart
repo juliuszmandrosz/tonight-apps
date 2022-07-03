@@ -1802,10 +1802,10 @@ class S {
     );
   }
 
-  /// `Add clubs to your favorites and receive notifications about new events`
+  /// `Add clubs to your favorites and receive notifications about new events and rewards`
   String get favoriteClubsInfo {
     return Intl.message(
-      'Add clubs to your favorites and receive notifications about new events',
+      'Add clubs to your favorites and receive notifications about new events and rewards',
       name: 'favoriteClubsInfo',
       desc: '',
       args: [],
@@ -2257,6 +2257,16 @@ class S {
     return Intl.message(
       'The maximum number of ticket pools is 5',
       name: 'maxNumberOfTicketPools',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The maximum size of the photo is 1MB`
+  String get maxPhotoSize {
+    return Intl.message(
+      'The maximum size of the photo is 1MB',
+      name: 'maxPhotoSize',
       desc: '',
       args: [],
     );

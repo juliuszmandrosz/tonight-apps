@@ -267,6 +267,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "map": MessageLookupByLibrary.simpleMessage(""),
         "maxDistance": MessageLookupByLibrary.simpleMessage(""),
         "maxNumberOfTicketPools": MessageLookupByLibrary.simpleMessage(""),
+        "maxPhotoSize": MessageLookupByLibrary.simpleMessage(""),
         "maxThreeMusicalGenres": MessageLookupByLibrary.simpleMessage(""),
         "milestones": MessageLookupByLibrary.simpleMessage(""),
         "minAge": MessageLookupByLibrary.simpleMessage(""),
