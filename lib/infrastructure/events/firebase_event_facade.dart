@@ -344,10 +344,11 @@ class FirebaseEventFacade
   @override
   Future<Either<PartnerEventFailure, String>> uploadEventPhoto(
     String eventId,
+    String clubId,
     File photo,
   ) async {
     try {
-      final storageRef = _storage.ref('events/$eventId/');
+      final storageRef = _storage.ref('clubs/$clubId/event_images/$eventId');
       final uploadTask = await storageRef.putFile(photo);
       final result = await uploadTask.ref.getDownloadURL();
       return right(result);

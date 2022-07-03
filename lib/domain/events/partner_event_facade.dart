@@ -21,6 +21,7 @@ abstract class PartnerEventFacade {
   /// Returns photo url
   Future<Either<PartnerEventFailure, String>> uploadEventPhoto(
     String eventId,
+    String clubId,
     File photo,
   );
 
