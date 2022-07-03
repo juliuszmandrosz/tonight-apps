@@ -394,6 +394,8 @@
   "@invalidEmail": {},
   "invalidEvent": "The event has been deleted by the club",
   "@invalidEvent": {},
+  "invalidPriceRange": "Invalid price range",
+  "@invalidPriceRange": {},
   "invalidPromotionCode": "Invalid promotion code",
   "@invalidPromotionCode": {},
   "invalidQrCode": "Invalid QR code",

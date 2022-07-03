@@ -394,6 +394,8 @@
   "@invalidEmail": {},
   "invalidEvent": "",
   "@invalidEvent": {},
+  "invalidPriceRange": "",
+  "@invalidPriceRange": {},
   "invalidPromotionCode": "",
   "@invalidPromotionCode": {},
   "invalidQrCode": "",

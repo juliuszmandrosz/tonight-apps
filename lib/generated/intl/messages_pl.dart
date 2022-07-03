@@ -379,6 +379,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nieprawidłowy format adresu e-mail"),
         "invalidEvent": MessageLookupByLibrary.simpleMessage(
             "Wydarzenie zostało usunięte przez klub"),
+        "invalidPriceRange":
+            MessageLookupByLibrary.simpleMessage("Nieprawidłowy zakres cen"),
         "invalidPromotionCode": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy kod promocyjny"),
         "invalidQrCode":
@@ -415,7 +417,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "maxDistance":
             MessageLookupByLibrary.simpleMessage("Maksymalna odległość"),
         "maxNumberOfTicketPools": MessageLookupByLibrary.simpleMessage(
-            "Maksymalna ilośc pul biletów wynosi 5"),
+            "Maksymalna ilość pul biletów wynosi 5"),
         "maxThreeMusicalGenres": MessageLookupByLibrary.simpleMessage(
             "Proszę wybrać maksymalnie 3 gatunki muzyczne"),
         "milestones": MessageLookupByLibrary.simpleMessage("Kamienie milowe"),

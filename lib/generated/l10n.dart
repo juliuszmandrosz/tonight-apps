@@ -2032,6 +2032,16 @@ class S {
     );
   }
 
+  /// `Invalid price range`
+  String get invalidPriceRange {
+    return Intl.message(
+      'Invalid price range',
+      name: 'invalidPriceRange',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Invalid promotion code`
   String get invalidPromotionCode {
     return Intl.message(

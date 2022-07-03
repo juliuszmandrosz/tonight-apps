@@ -374,6 +374,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Invalid email format"),
         "invalidEvent": MessageLookupByLibrary.simpleMessage(
             "The event has been deleted by the club"),
+        "invalidPriceRange":
+            MessageLookupByLibrary.simpleMessage("Invalid price range"),
         "invalidPromotionCode":
             MessageLookupByLibrary.simpleMessage("Invalid promotion code"),
         "invalidQrCode":

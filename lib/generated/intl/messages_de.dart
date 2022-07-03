@@ -243,6 +243,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalidCredential": MessageLookupByLibrary.simpleMessage(""),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(""),
         "invalidEvent": MessageLookupByLibrary.simpleMessage(""),
+        "invalidPriceRange": MessageLookupByLibrary.simpleMessage(""),
         "invalidPromotionCode": MessageLookupByLibrary.simpleMessage(""),
         "invalidQrCode": MessageLookupByLibrary.simpleMessage(""),
         "invalidSignInLink": MessageLookupByLibrary.simpleMessage(""),
