@@ -626,7 +626,7 @@ packages:
       name: flutter_native_splash
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.3+1"
+    version: "2.2.4"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -1139,7 +1139,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: b212512f2d0512af3a0baa9fbd38cfae41444fb9
+      resolved-ref: "5033549572d32c3370b02aa29eb6410b0a3a82de"
       url: "git@github.com:juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
@@ -1148,7 +1148,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "4b6ade70be60e0956e658ae317d81f5f54a9fefc"
+      resolved-ref: d2bdee384fa3ccb167f48162048febde975d3713
       url: "git@github.com:juliuszmandrosz/RaverClubs.git"
     source: git
     version: "0.0.1"
@@ -1157,7 +1157,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "88295170cb18c1f03db33ad009af7dbce6cf9f0f"
+      resolved-ref: b81d8ac1d986d92865fa1e38862ffa90ce208ffb
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -1166,7 +1166,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: e34662b172d86f613c054a3667991a0a60b72d53
+      resolved-ref: "1c30d2c40eda37cbfd564ade72a96c467c841b82"
       url: "git@github.com:juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"

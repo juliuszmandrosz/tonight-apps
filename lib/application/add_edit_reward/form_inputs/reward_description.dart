@@ -5,7 +5,7 @@ import 'package:raver_translations/generated/l10n.dart';
 enum RewardDescriptionError { empty, tooLong }
 
 final rewardDescriptionErrorMessages = {
-  RewardDescriptionError.empty: S().description,
+  RewardDescriptionError.empty: S().enterDesc,
   RewardDescriptionError.tooLong: S().rewardDescTooLong,
 };
 
