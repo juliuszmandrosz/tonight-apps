@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
@@ -20,6 +21,11 @@ class AddTicketPoolButton extends StatelessWidget {
       builder: (context, state) {
         return ElevatedButton(
           onPressed: () async {
+            if (state.ticketPools.length == 5) {
+              context.showSnackbarMessage(S().maxNumberOfTicketPools);
+              return;
+            }
+
             final result = await AutoRouter.of(context).push<TicketPool>(
               AddEditTicketPoolRoute(
                 editingTicketPool: none(),

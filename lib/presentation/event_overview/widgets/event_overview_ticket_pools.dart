@@ -66,6 +66,12 @@ class EventOverviewTicketPools extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () async {
+                          if (ticketPools.length == 5) {
+                            context.showSnackbarMessage(
+                                S().maxNumberOfTicketPools);
+                            return;
+                          }
+
                           final result = await context.pushRoute<TicketPool>(
                             AddEditTicketPoolRoute(
                               editingTicketPool: none(),
