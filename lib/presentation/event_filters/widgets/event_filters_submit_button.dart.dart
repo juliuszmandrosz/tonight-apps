@@ -16,10 +16,12 @@ class EventFiltersSubmitButton extends StatelessWidget {
         width: 300,
         child: FloatingActionButton.extended(
           onPressed: () {
-            context.read<EventFiltersCubit>().submitFilters(
-                  isMenuFilterApplied: true,
-                );
-            context.popRoute();
+            final filtersCubit = context.read<EventFiltersCubit>();
+            final result =
+                filtersCubit.submitFilters(isMenuFilterApplied: true);
+            if (result) {
+              context.popRoute();
+            }
           },
           label: Text(S().applyFilters),
           icon: const FaIcon(FontAwesomeIcons.check),

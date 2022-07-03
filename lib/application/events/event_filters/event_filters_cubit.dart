@@ -1,11 +1,12 @@
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver_events/domain/filters/filter/currency_filter.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 part 'event_filters_cubit.freezed.dart';
-
 part 'event_filters_state.dart';
 
 class EventFiltersCubit extends Cubit<EventFiltersState> {
@@ -37,10 +38,10 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
     ));
   }
 
-  void submitFilters({
+  bool submitFilters({
     bool isDateFilterApplied = false,
     bool isMenuFilterApplied = false,
-  }) async {
+  }) {
     if (state.filters.maxDistanceFilter.enabled) {
       _setUserLocation();
     }
@@ -51,6 +52,15 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
 
     if (state.isMenuFilterApplied) {
       isMenuFilterApplied = true;
+    }
+
+    if (isMenuFilterApplied) {
+      final price = state.filters.priceRangeFilter;
+      if (price.maxPrice != null && price.maxPrice! < price.minPrice) {
+        emit(state.copyWith(snackbarMessage: some(S().invalidPriceRange)));
+        emit(state.copyWith(snackbarMessage: none()));
+        return false;
+      }
     }
 
     emit(
@@ -67,6 +77,8 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
         _eventOverviewBloc.state.sortModel,
       ),
     );
+
+    return true;
   }
 
   void changeIsMaxDistanceOption(bool value) {

@@ -39,73 +39,81 @@ class EventFiltersPage extends StatelessWidget {
           value: blocContext.read<AvailableFiltersCubit>(),
         ),
       ],
-      child: GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: Scaffold(
-          floatingActionButton: const EventFiltersSubmitButton(),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerFloat,
-          appBar: RaverAppBar(title: S().filters),
-          body: BlocConsumer<AvailableFiltersCubit, AvailableFiltersState>(
-            listener: (context, state) {
-              if (state.maybeWhen(
-                  orElse: () => false, loadFailure: (_) => true)) {
-                context.pushRoute(
-                  FailureRoute(
-                    retryCallback: () => context
-                        .read<AvailableFiltersCubit>()
-                        .getAvailableFilters(),
-                  ),
-                );
-              }
-            },
-            builder: (context, state) => state.map(
-              initial: (_) => Container(),
-              loadInProgress: (_) => const TicketLogoAnimation(),
-              loadFailure: (_) => Container(),
-              loadSuccess: (state) {
-                return SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.all(15),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          const EventFiltersPlaceOption(),
-                          const SizedBox(height: 25),
-                          const EventFiltersMaxDistance(),
-                          BlocProvider(
-                            create: (context) => getIt<GooglePlacesCubit>(),
-                            child: const EventFiltersCity(),
-                          ),
-                          const SizedBox(height: 25),
-                          EventFiltersCurrency(
-                            currencies: state.availableFilters.currencies,
-                          ),
-                          const SizedBox(height: 25),
-                          const EventFiltersPrice(),
-                          const SizedBox(height: 25),
-                          EventFiltersMinAge(
-                            availableMinAges: state.availableFilters.minAges,
-                          ),
-                          const SizedBox(height: 25),
-                          EventFiltersMusic(
-                            availableMusicalGenres:
-                                state.availableFilters.musicalGenres,
-                          ),
-                          const SizedBox(height: 25),
-                          EventFiltersDressCode(
-                            availableOutfits:
-                                state.availableFilters.allowedOutfits,
-                          ),
-                          const SizedBox(height: 25),
-                          const EventFiltersIsConcert(),
-                          const SizedBox(height: 60),
-                        ],
+      child: BlocListener<EventFiltersCubit, EventFiltersState>(
+        listener: (context, state) {
+          state.snackbarMessage.fold(
+            () {},
+            (message) => context.showSnackbarMessage(message),
+          );
+        },
+        child: GestureDetector(
+          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+          child: Scaffold(
+            floatingActionButton: const EventFiltersSubmitButton(),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerFloat,
+            appBar: RaverAppBar(title: S().filters),
+            body: BlocConsumer<AvailableFiltersCubit, AvailableFiltersState>(
+              listener: (context, state) {
+                if (state.maybeWhen(
+                    orElse: () => false, loadFailure: (_) => true)) {
+                  context.pushRoute(
+                    FailureRoute(
+                      retryCallback: () => context
+                          .read<AvailableFiltersCubit>()
+                          .getAvailableFilters(),
+                    ),
+                  );
+                }
+              },
+              builder: (context, state) => state.map(
+                initial: (_) => Container(),
+                loadInProgress: (_) => const TicketLogoAnimation(),
+                loadFailure: (_) => Container(),
+                loadSuccess: (state) {
+                  return SafeArea(
+                    child: Padding(
+                      padding: const EdgeInsetsDirectional.all(15),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            const EventFiltersPlaceOption(),
+                            const SizedBox(height: 25),
+                            const EventFiltersMaxDistance(),
+                            BlocProvider(
+                              create: (context) => getIt<GooglePlacesCubit>(),
+                              child: const EventFiltersCity(),
+                            ),
+                            const SizedBox(height: 25),
+                            EventFiltersCurrency(
+                              currencies: state.availableFilters.currencies,
+                            ),
+                            const SizedBox(height: 25),
+                            const EventFiltersPrice(),
+                            const SizedBox(height: 25),
+                            EventFiltersMinAge(
+                              availableMinAges: state.availableFilters.minAges,
+                            ),
+                            const SizedBox(height: 25),
+                            EventFiltersMusic(
+                              availableMusicalGenres:
+                                  state.availableFilters.musicalGenres,
+                            ),
+                            const SizedBox(height: 25),
+                            EventFiltersDressCode(
+                              availableOutfits:
+                                  state.availableFilters.allowedOutfits,
+                            ),
+                            const SizedBox(height: 25),
+                            const EventFiltersIsConcert(),
+                            const SizedBox(height: 60),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         ),
