@@ -19,11 +19,11 @@ abstract class PartnerEventFacade {
   );
 
   /// Returns photo url
-  Future<Either<PartnerEventFailure, String>> uploadEventPhoto(
-    String eventId,
-    String clubId,
-    File photo,
-  );
+  Future<Either<PartnerEventFailure, String>> uploadEventPhoto({
+    required String eventId,
+    required String clubId,
+    required File photo,
+  });
 
   Future<Either<PartnerEventFailure, Unit>> cancelEvent(String eventId);
 
