@@ -446,7 +446,7 @@ class AddEventCubit extends Cubit<AddEventState> {
 
     final eventId = const Uuid().v1();
 
-    final eventPhotoUrl = await _uploadEventPhoto(eventId);
+    final eventPhotoUrl = await _uploadEventPhoto(club.id, eventId);
 
     if (eventPhotoUrl.isLeft()) {
       return;
@@ -506,11 +506,13 @@ class AddEventCubit extends Cubit<AddEventState> {
   }
 
   Future<Either<PartnerEventFailure, String>> _uploadEventPhoto(
+    String clubId,
     String eventId,
   ) async {
     final failureOrSuccess = await _eventFacade.uploadEventPhoto(
-      eventId,
-      state.eventPhoto.value!,
+      clubId: clubId,
+      eventId: eventId,
+      photo: state.eventPhoto.value!,
     );
 
     return failureOrSuccess.fold(
