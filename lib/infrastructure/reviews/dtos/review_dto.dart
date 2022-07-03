@@ -3,10 +3,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_clubs/domain/domain.dart';
 import 'package:raver_common/raver_common.dart';
 
-
 part 'review_dto.freezed.dart';
-part 'review_dto.g.dart';
 
+part 'review_dto.g.dart';
 
 @freezed
 class ReviewDto with _$ReviewDto {
@@ -20,6 +19,7 @@ class ReviewDto with _$ReviewDto {
     required String username,
     required String eventId,
     required String eventName,
+    required String ticketId,
     @TimestampJsonConverter() required DateTime dateAdded,
   }) = _ReviewDto;
 
@@ -32,6 +32,7 @@ class ReviewDto with _$ReviewDto {
       dateAdded: review.dateAdded,
       eventId: review.eventId,
       eventName: review.eventName,
+      ticketId: review.ticketId,
     );
   }
 
@@ -53,6 +54,7 @@ class ReviewDto with _$ReviewDto {
       eventId: eventId,
       dateAdded: dateAdded,
       eventName: eventName,
+      ticketId: ticketId,
     );
   }
 }
