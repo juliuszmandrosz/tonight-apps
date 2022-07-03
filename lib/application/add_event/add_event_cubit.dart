@@ -123,8 +123,9 @@ class AddEventCubit extends Cubit<AddEventState> {
     emit(state.copyWith(artistName: artistName));
   }
 
-  void eventPhotoChanged(File value) {
-    final photo = EventPhoto.dirty(value);
+  Future<void> eventPhotoChanged(File value) async {
+    final size = await value.length();
+    final photo = EventPhoto.dirty(photoSize: size, value: value);
     emit(state.copyWith(eventPhoto: photo));
   }
 
@@ -274,7 +275,7 @@ class AddEventCubit extends Cubit<AddEventState> {
         break;
 
       case AddEventStep.photo:
-        _submitEventPhotoStep();
+        await _submitEventPhotoStep();
         break;
 
       case AddEventStep.urlLinks:
@@ -360,10 +361,13 @@ class AddEventCubit extends Cubit<AddEventState> {
     emit(state.copyWith(status: status));
   }
 
-  void _submitEventPhotoStep() {
+  Future<void> _submitEventPhotoStep() async {
+    final photo = state.eventPhoto.value;
+    final size = await photo?.length();
+
     emit(
       state.copyWith(
-        eventPhoto: EventPhoto.dirty(state.eventPhoto.value),
+        eventPhoto: EventPhoto.dirty(photoSize: size, value: photo),
       ),
     );
 

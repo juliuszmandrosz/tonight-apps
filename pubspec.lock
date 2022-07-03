@@ -1166,7 +1166,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: b8d075f4297e9f206637db5e4e4d268d3c58a8e4
+      resolved-ref: f0438acbbff9004c9ca61585a8cca83d5574b3d0
       url: "git@github.com:juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
@@ -1193,7 +1193,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "3fcc288d875bc701e17c6f8f6832b4f009e374cc"
+      resolved-ref: "3890288e64c4312dfd77185bf56827c28b7efc89"
       url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"

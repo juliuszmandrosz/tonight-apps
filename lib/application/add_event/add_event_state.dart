@@ -47,7 +47,7 @@ class AddEventState with _$AddEventState {
         facebookUrl: const FacebookUrl.pure(),
         djChannelUrl: const DjChannelUrl.pure(),
         ticketPools: [],
-        eventPhoto: const EventPhoto.pure(),
+        eventPhoto: const EventPhoto.pure(null),
         status: FormzStatus.pure,
         currentStep: AddEventStep.nameAndDesc,
         isSubmitEnabled: false,
