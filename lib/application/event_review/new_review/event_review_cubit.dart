@@ -72,6 +72,7 @@ class NewReviewCubit extends Cubit<EventReviewState> {
       dateAdded: DateTime.now(),
       eventId: ticket.eventId,
       eventName: ticket.eventName,
+      ticketId: ticket.id,
     );
 
     final failureOrSuccess = await _reviewFacade.submitReview(
