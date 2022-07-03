@@ -14,17 +14,14 @@ class AddRewardButton extends StatelessWidget {
     return BlocBuilder<AddRewardCubit, AddRewardState>(
       buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
-        return Visibility(
-          visible: MediaQuery.of(context).viewInsets.bottom == 0,
-          child: FloatingActionButton(
-            onPressed: () => context.read<AddRewardCubit>().addReward(),
-            child: state.status.isSubmissionInProgress
-                ? SpinKitThreeBounce(
-                    color: context.onSurfaceColor,
-                    size: 16,
-                  )
-                : const FaIcon(Icons.add),
-          ),
+        return FloatingActionButton(
+          onPressed: () => context.read<AddRewardCubit>().addReward(),
+          child: state.status.isSubmissionInProgress
+              ? SpinKitThreeBounce(
+                  color: context.onSurfaceColor,
+                  size: 16,
+                )
+              : const FaIcon(Icons.add),
         );
       },
     );
