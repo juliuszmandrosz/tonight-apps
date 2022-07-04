@@ -63,6 +63,9 @@ dependencies:
   google_fonts: ^3.0.0
   flutter_native_splash: ^2.2.3+1
   launch_review: ^3.0.1
+  firebase_app_check: ^0.0.6+16
+  firebase_performance: ^0.8.1+1
+  firebase_analytics: ^9.1.12
 
   raver_translations:
     git:

@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
+import 'package:firebase_performance/firebase_performance.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -224,6 +227,12 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebaseDynamicLinks.instance);
 
   getIt.registerLazySingleton(() => FirebaseStorage.instance);
+
+  getIt.registerLazySingleton(() => FirebaseAppCheck.instance);
+
+  getIt.registerLazySingleton(() => FirebaseAnalytics.instance);
+
+  getIt.registerLazySingleton(() => FirebasePerformance.instance);
 
   getIt.registerLazySingleton(crashlyticsConfig);
 

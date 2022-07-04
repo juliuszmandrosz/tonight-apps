@@ -5,6 +5,7 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:tonightscanner.page.link</string>
+		<string>applinks:raverscanner.page.link</string>
 	</array>
 </dict>
 </plist>
