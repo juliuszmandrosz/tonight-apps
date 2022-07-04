@@ -53,6 +53,10 @@
                 <data
                         android:host="tonightpartnersapp.page.link"
                         android:scheme="https"/>
+
+                <data
+                        android:host="tonightpartners.page.link"
+                        android:scheme="https"/>
             </intent-filter>
         </activity>
 
