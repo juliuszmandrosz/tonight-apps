@@ -369,9 +369,7 @@ class FirebaseAuthFacade
         nonce: nonce,
         webAuthenticationOptions: WebAuthenticationOptions(
           clientId: dotenv.env[appleSignInClientIdKey]!,
-          redirectUri: Uri.parse(
-            'https://tonight-qa.firebaseapp.com/__/auth/handler',
-          ),
+          redirectUri: Uri.parse(dotenv.env[appleSignInCallbackUrl]!),
         ),
       );
 
