@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,23 +12,19 @@ class AppleSignInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignInCubit, SignInState>(
-      buildWhen: (previous, current) =>
-          previous.signInStatus != current.signInStatus,
-      builder: (context, state) {
-        return Container(
-          decoration: BoxDecoration(
-            color: context.surfaceColor,
-            shape: BoxShape.circle,
-          ),
-          width: 50,
-          height: 50,
-          child: RaverIconButton(
-            icon: const FaIcon(FontAwesomeIcons.apple),
-            onPressed: () => context.read<SignInCubit>().signInWithApple(),
-          ),
-        );
-      },
-    );
+    return Platform.isIOS
+        ? Container(
+            decoration: BoxDecoration(
+              color: context.surfaceColor,
+              shape: BoxShape.circle,
+            ),
+            width: 50,
+            height: 50,
+            child: RaverIconButton(
+              icon: const FaIcon(FontAwesomeIcons.apple),
+              onPressed: () => context.read<SignInCubit>().signInWithApple(),
+            ),
+          )
+        : Container();
   }
 }

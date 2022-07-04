@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -485,6 +486,8 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebaseRemoteConfig.instance);
 
   getIt.registerLazySingleton(() => FirebaseMessaging.instance);
+
+  getIt.registerLazySingleton(() => FirebaseAppCheck.instance);
 
   getIt.registerLazySingleton(
       () => FirebaseFunctions.instanceFor(region: 'europe-central2'));

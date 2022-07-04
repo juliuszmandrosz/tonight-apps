@@ -10,23 +10,17 @@ class GoogleSignInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignInCubit, SignInState>(
-      buildWhen: (previous, current) =>
-          previous.signInStatus != current.signInStatus,
-      builder: (context, state) {
-        return Container(
-          decoration: BoxDecoration(
-            color: context.surfaceColor,
-            shape: BoxShape.circle,
-          ),
-          width: 50,
-          height: 50,
-          child: RaverIconButton(
-            icon: const FaIcon(FontAwesomeIcons.google),
-            onPressed: () => context.read<SignInCubit>().signInWithGoogle(),
-          ),
-        );
-      },
+    return Container(
+      decoration: BoxDecoration(
+        color: context.surfaceColor,
+        shape: BoxShape.circle,
+      ),
+      width: 50,
+      height: 50,
+      child: RaverIconButton(
+        icon: const FaIcon(FontAwesomeIcons.google),
+        onPressed: () => context.read<SignInCubit>().signInWithGoogle(),
+      ),
     );
   }
 }

@@ -9,6 +9,7 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:tonightapp.page.link</string>
+		<string>applinks:raverteam.page.link</string>
 	</array>
 	<key>com.apple.developer.in-app-payments</key>
 	<array>

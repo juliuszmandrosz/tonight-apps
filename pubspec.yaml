@@ -99,6 +99,7 @@ dependencies:
   firebase_messaging: ^11.4.2
   flutter_local_notifications: ^9.6.1
   typesense: ^0.2.0
+  firebase_app_check: ^0.0.6+16
 
   raver_translations:
     git:

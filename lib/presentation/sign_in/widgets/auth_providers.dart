@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:raver/presentation/sign_in/widgets/apple_sign_in_button.dart';
 import 'package:raver/presentation/sign_in/widgets/google_sign_in_button.dart';
@@ -8,7 +10,9 @@ class AuthProviders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: Platform.isIOS
+          ? MainAxisAlignment.spaceEvenly
+          : MainAxisAlignment.center,
       children: const [
         GoogleSignInButton(),
         AppleSignInButton(),
