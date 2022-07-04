@@ -235,7 +235,6 @@ class FirebasePaymentFacade implements UserPaymentFacade {
           applePay: true,
           merchantDisplayName: 'Tonight',
           merchantCountryCode: 'PL',
-          returnURL: 'flutterstripe://p24',
           appearance: PaymentSheetAppearance(
             shapes: const PaymentSheetShape(borderRadius: 8),
             colors: PaymentSheetAppearanceColors(
