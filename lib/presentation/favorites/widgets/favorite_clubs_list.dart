@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
@@ -38,12 +37,11 @@ class FavoriteClubsList extends StatelessWidget {
             return state.favoriteClubs.isEmpty
                 ? Align(
                     alignment: Alignment.centerLeft,
-                    child: AutoSizeText(
+                    child: Text(
                       S().favoriteClubsInfo,
                       style: context.bodyText2.copyWith(
                         color: context.secondaryColor,
                       ),
-                      maxLines: 2,
                     ),
                   )
                 : SizedBox(
