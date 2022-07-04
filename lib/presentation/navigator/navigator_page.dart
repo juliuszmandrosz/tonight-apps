@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
-import 'package:raver/presentation/navigator/widgets/sign_out_button.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -19,9 +18,6 @@ class _RaverNavigatorState extends State<RaverNavigator> {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: selectedIndex == 4 ? const SignOutButton() : null,
       appBarBuilder: (_, tabsRouter) => const RaverAppBar(),
       routes: const [
         EventsRoute(),
