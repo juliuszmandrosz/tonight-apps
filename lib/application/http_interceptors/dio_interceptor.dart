@@ -9,8 +9,8 @@ InterceptorsWrapper get dioInterceptor => InterceptorsWrapper(
         final idToken = await FirebaseAuth.instance.currentUser?.getIdToken();
         final appCheckToken = await FirebaseAppCheck.instance.getToken();
 
-        headers['X-Firebase-IdToken'] = idToken;
-        headers['X-Firebase-AppCheck'] = appCheckToken;
+        headers['x-firebase-id-token'] = idToken;
+        headers['x-firebase-app-check'] = appCheckToken;
 
         return handler.next(options);
       },
