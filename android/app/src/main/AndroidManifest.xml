@@ -45,6 +45,10 @@
                         android:host="tonightapp.page.link"
                         android:scheme="https"/>
 
+                <data
+                        android:host="raverteam.page.link"
+                        android:scheme="https"/>
+
                 <data android:scheme="signinwithapple"/>
                 <data android:path="https://raver-1fec4.firebaseapp.com/__/auth/handler"/>
             </intent-filter>
