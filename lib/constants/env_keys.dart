@@ -17,3 +17,4 @@ const selectorDynamicLinkDomain = 'SELECTOR_DYNAMIC_LINK_DOMAIN';
 const appleSignInClientIdKey = 'APPLE_SIGN_IN_CLIENT_ID';
 const typesenseClusterId = 'TYPESENSE_CLUSTER_ID';
 const typesenseApiKey = 'TYPESENSE_API_KEY';
+const appleSignInCallbackUrl = 'APPLE_SIGN_IN_CALLBACK_URL';
