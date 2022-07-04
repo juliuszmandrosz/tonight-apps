@@ -51,7 +51,7 @@ Future<void> main() async {
       );
     },
     (error, stack) =>
-        getIt<FirebaseCrashlytics>().recordError(error, stack, fatal: true),
+        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true),
   );
 
   final crashlytics = getIt<FirebaseCrashlytics>();
