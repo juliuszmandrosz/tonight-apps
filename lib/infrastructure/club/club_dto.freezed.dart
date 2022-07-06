@@ -30,6 +30,7 @@ mixin _$ClubDto {
   String get cityId => throw _privateConstructorUsedError;
   String get acceptedCurrency => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
+  @LocationConverter()
   Map<String, double> get location => throw _privateConstructorUsedError;
   Map<String, String> get socialMedia => throw _privateConstructorUsedError;
   String? get aboutUs => throw _privateConstructorUsedError;
@@ -53,7 +54,7 @@ abstract class $ClubDtoCopyWith<$Res> {
       String cityId,
       String acceptedCurrency,
       String phoneNumber,
-      Map<String, double> location,
+      @LocationConverter() Map<String, double> location,
       Map<String, String> socialMedia,
       String? aboutUs});
 }
@@ -150,7 +151,7 @@ abstract class _$$_ClubDtoCopyWith<$Res> implements $ClubDtoCopyWith<$Res> {
       String cityId,
       String acceptedCurrency,
       String phoneNumber,
-      Map<String, double> location,
+      @LocationConverter() Map<String, double> location,
       Map<String, String> socialMedia,
       String? aboutUs});
 }
@@ -246,7 +247,7 @@ class _$_ClubDto extends _ClubDto {
       required this.cityId,
       required this.acceptedCurrency,
       required this.phoneNumber,
-      required final Map<String, double> location,
+      @LocationConverter() required final Map<String, double> location,
       final Map<String, String> socialMedia = const {},
       this.aboutUs})
       : _location = location,
@@ -279,6 +280,7 @@ class _$_ClubDto extends _ClubDto {
   final String phoneNumber;
   final Map<String, double> _location;
   @override
+  @LocationConverter()
   Map<String, double> get location {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_location);
@@ -364,7 +366,7 @@ abstract class _ClubDto extends ClubDto {
       required final String cityId,
       required final String acceptedCurrency,
       required final String phoneNumber,
-      required final Map<String, double> location,
+      @LocationConverter() required final Map<String, double> location,
       final Map<String, String> socialMedia,
       final String? aboutUs}) = _$_ClubDto;
   const _ClubDto._() : super._();
@@ -373,29 +375,30 @@ abstract class _ClubDto extends ClubDto {
 
   @override
   @JsonKey(ignore: true)
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String get clubName => throw _privateConstructorUsedError;
+  String get clubName;
   @override
-  String get clubImageUrl => throw _privateConstructorUsedError;
+  String get clubImageUrl;
   @override
-  int get reviewCount => throw _privateConstructorUsedError;
+  int get reviewCount;
   @override
-  double get reviewAvg => throw _privateConstructorUsedError;
+  double get reviewAvg;
   @override
-  String get locationString => throw _privateConstructorUsedError;
+  String get locationString;
   @override
-  String get cityId => throw _privateConstructorUsedError;
+  String get cityId;
   @override
-  String get acceptedCurrency => throw _privateConstructorUsedError;
+  String get acceptedCurrency;
   @override
-  String get phoneNumber => throw _privateConstructorUsedError;
+  String get phoneNumber;
   @override
-  Map<String, double> get location => throw _privateConstructorUsedError;
+  @LocationConverter()
+  Map<String, double> get location;
   @override
-  Map<String, String> get socialMedia => throw _privateConstructorUsedError;
+  Map<String, String> get socialMedia;
   @override
-  String? get aboutUs => throw _privateConstructorUsedError;
+  String? get aboutUs;
   @override
   @JsonKey(ignore: true)
   _$$_ClubDtoCopyWith<_$_ClubDto> get copyWith =>

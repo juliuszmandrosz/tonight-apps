@@ -212,14 +212,14 @@ abstract class _ReviewReportDto extends ReviewReportDto {
 
   @override
   @JsonKey(ignore: true)
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String get reviewId => throw _privateConstructorUsedError;
+  String get reviewId;
   @override
-  String get reporterId => throw _privateConstructorUsedError;
+  String get reporterId;
   @override
   @FirebaseTimestampJsonConverter()
-  DateTime get reportedAt => throw _privateConstructorUsedError;
+  DateTime get reportedAt;
   @override
   @JsonKey(ignore: true)
   _$$_ReviewReportDtoCopyWith<_$_ReviewReportDto> get copyWith =>

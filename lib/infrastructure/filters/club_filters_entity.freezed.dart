@@ -123,7 +123,7 @@ abstract class _ClubFilter extends ClubFilters {
   _ClubFilter._() : super._();
 
   @override
-  PhraseFilter get phraseFilter => throw _privateConstructorUsedError;
+  PhraseFilter get phraseFilter;
   @override
   @JsonKey(ignore: true)
   _$$_ClubFilterCopyWith<_$_ClubFilter> get copyWith =>

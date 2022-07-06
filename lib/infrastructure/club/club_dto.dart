@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_clubs/domain/domain.dart';
+import 'package:raver_common/infrastructure/infrastructure.dart';
 
 part 'club_dto.freezed.dart';
 
@@ -21,7 +22,7 @@ class ClubDto with _$ClubDto {
     required String cityId,
     required String acceptedCurrency,
     required String phoneNumber,
-    required Map<String, double> location,
+    @LocationConverter() required Map<String, double> location,
     @Default({}) Map<String, String> socialMedia,
     String? aboutUs,
   }) = _ClubDto;

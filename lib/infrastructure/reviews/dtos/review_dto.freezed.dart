@@ -301,24 +301,24 @@ abstract class _ReviewDto extends ReviewDto {
 
   @override
   @JsonKey(ignore: true)
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String get userOpinion => throw _privateConstructorUsedError;
+  String get userOpinion;
   @override
-  double get userRate => throw _privateConstructorUsedError;
+  double get userRate;
   @override
-  String get userId => throw _privateConstructorUsedError;
+  String get userId;
   @override
-  String get username => throw _privateConstructorUsedError;
+  String get username;
   @override
-  String get eventId => throw _privateConstructorUsedError;
+  String get eventId;
   @override
-  String get eventName => throw _privateConstructorUsedError;
+  String get eventName;
   @override
-  String get ticketId => throw _privateConstructorUsedError;
+  String get ticketId;
   @override
   @TimestampJsonConverter()
-  DateTime get dateAdded => throw _privateConstructorUsedError;
+  DateTime get dateAdded;
   @override
   @JsonKey(ignore: true)
   _$$_ReviewDtoCopyWith<_$_ReviewDto> get copyWith =>
