@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -502,8 +504,12 @@ void _registerModules() {
 
   getIt.registerLazySingleton(crashlyticsConfig);
 
-  getIt.registerLazySingleton(
-      () => GooglePlace(FirebaseRemoteConfig.instance.getString(googleApiKey)));
+  getIt.registerLazySingleton(() {
+    final apiKey = Platform.isIOS ? iosApiKey : androidApiKey;
+    Logger().i(apiKey);
+    Logger().i(FirebaseRemoteConfig.instance.getString(apiKey));
+    return GooglePlace(FirebaseRemoteConfig.instance.getString(apiKey));
+  });
 
   getIt.registerLazySingleton(typesenseConfig);
 

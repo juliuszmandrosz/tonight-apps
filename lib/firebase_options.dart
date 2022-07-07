@@ -63,7 +63,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '98730591004',
     projectId: 'tonight-raver',
     storageBucket: 'tonight-raver.appspot.com',
-    iosClientId: '98730591004-kg1i4eot2j5tuscgubd1ihol5glmcal5.apps.googleusercontent.com',
+    androidClientId:
+        '98730591004-sg5rrjcfcbdl1g8ibih4ac3mg1rlu3gf.apps.googleusercontent.com',
+    iosClientId:
+        '98730591004-kg1i4eot2j5tuscgubd1ihol5glmcal5.apps.googleusercontent.com',
     iosBundleId: 'com.raverteam.tonight',
   );
 }

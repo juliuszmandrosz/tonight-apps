@@ -49,8 +49,12 @@
                         android:host="raverteam.page.link"
                         android:scheme="https"/>
 
+                <data
+                        android:host="tonightraver.page.link"
+                        android:scheme="https"/>
+
                 <data android:scheme="signinwithapple"/>
-                <data android:path="https://raver-1fec4.firebaseapp.com/__/auth/handler"/>
+                <data android:path="https://tonight-raver.firebaseapp.com/__/auth/handler"/>
             </intent-filter>
 
             <intent-filter>
@@ -61,7 +65,7 @@
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data android:name="com.google.android.geo.API_KEY"
-                   android:value="AIzaSyDIYNLmu3013gTkq3rjmY2p2lnp-l5oN2I"/>
+                   android:value="AIzaSyB0_MbQFy78XMQufSUNdg08H2gztVDZwbI"/>
         <meta-data
                 android:name="flutterEmbedding"
                 android:value="2"/>
