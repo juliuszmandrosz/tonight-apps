@@ -261,6 +261,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "eventPostponedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Event erfolgreich verschoben"),
         "eventRevenue": MessageLookupByLibrary.simpleMessage("Event Umsatz"),
+        "eventSoldOut": MessageLookupByLibrary.simpleMessage(""),
         "eventTimeTooShort": MessageLookupByLibrary.simpleMessage(""),
         "events": m3,
         "exclusive": MessageLookupByLibrary.simpleMessage("Exclusiv"),
@@ -574,6 +575,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Upgrade dein Ticket auf VIP und komm zum Club ohne Warteschlange "),
         "upgradeToVip": MessageLookupByLibrary.simpleMessage(""),
         "urlLinks": MessageLookupByLibrary.simpleMessage(""),
+        "userAlreadyHasTicket": MessageLookupByLibrary.simpleMessage(""),
         "userDisabled": MessageLookupByLibrary.simpleMessage(""),
         "userNotFound": MessageLookupByLibrary.simpleMessage(""),
         "username": MessageLookupByLibrary.simpleMessage(""),

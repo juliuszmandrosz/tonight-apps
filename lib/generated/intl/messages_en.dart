@@ -326,6 +326,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "eventPostponedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Event postponed successfully"),
         "eventRevenue": MessageLookupByLibrary.simpleMessage("Event revenue"),
+        "eventSoldOut": MessageLookupByLibrary.simpleMessage(
+            "Tickets for this event have been sold out"),
         "eventTimeTooShort": MessageLookupByLibrary.simpleMessage(
             "The event should last at least one hour"),
         "events": m3,
@@ -684,6 +686,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Upgrade your ticket to VIP and skip the line to the club"),
         "upgradeToVip": MessageLookupByLibrary.simpleMessage("Upgrade to VIP"),
         "urlLinks": MessageLookupByLibrary.simpleMessage("URL links"),
+        "userAlreadyHasTicket": MessageLookupByLibrary.simpleMessage(
+            "You already have a ticket for this event"),
         "userDisabled": MessageLookupByLibrary.simpleMessage(
             "This account has been disabled"),
         "userNotFound": MessageLookupByLibrary.simpleMessage(

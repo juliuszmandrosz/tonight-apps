@@ -330,6 +330,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wydarzenie przełożono pomyślnie"),
         "eventRevenue":
             MessageLookupByLibrary.simpleMessage("Przychód z imprezy"),
+        "eventSoldOut": MessageLookupByLibrary.simpleMessage(
+            "Bilety na to wydarzenie zostały wyprzedane"),
         "eventTimeTooShort": MessageLookupByLibrary.simpleMessage(
             "Wydarzenie powinno trwać co najmniej godzinę"),
         "events": m3,
@@ -700,6 +702,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Ulepsz swój bilet do VIP-a i wejdź do klubu bez kolejki"),
         "upgradeToVip": MessageLookupByLibrary.simpleMessage("Ulepsz do VIP-a"),
         "urlLinks": MessageLookupByLibrary.simpleMessage("Linki URL"),
+        "userAlreadyHasTicket": MessageLookupByLibrary.simpleMessage(
+            "Posiadasz już bilet na to wydarzenie"),
         "userDisabled":
             MessageLookupByLibrary.simpleMessage("To konto zostało wyłączone"),
         "userNotFound": MessageLookupByLibrary.simpleMessage(

@@ -1732,6 +1732,16 @@ class S {
     );
   }
 
+  /// `Tickets for this event have been sold out`
+  String get eventSoldOut {
+    return Intl.message(
+      'Tickets for this event have been sold out',
+      name: 'eventSoldOut',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The event should last at least one hour`
   String get eventTimeTooShort {
     return Intl.message(
@@ -4052,6 +4062,16 @@ class S {
     return Intl.message(
       'URL links',
       name: 'urlLinks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You already have a ticket for this event`
+  String get userAlreadyHasTicket {
+    return Intl.message(
+      'You already have a ticket for this event',
+      name: 'userAlreadyHasTicket',
       desc: '',
       args: [],
     );
