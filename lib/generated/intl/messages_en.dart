@@ -53,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "accessCode": MessageLookupByLibrary.simpleMessage("Access code"),
         "accessCodeEmpty":
             MessageLookupByLibrary.simpleMessage("Please enter access code"),
+        "accessCodeInfo": MessageLookupByLibrary.simpleMessage(
+            "The access code is only required when signing in for the first time"),
         "accountExists": MessageLookupByLibrary.simpleMessage(
             "An account already exists for that email"),
         "accountSettings":
@@ -701,7 +703,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "validTicket": MessageLookupByLibrary.simpleMessage("Valid ticket"),
         "vatNumber": MessageLookupByLibrary.simpleMessage("VAT number"),
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(
-            "A verification link has been sent to the e-mail address provided, it must be confirmed using the email in the phone"),
+            "A verification link has been sent to the e-mail address provided, it must be confirmed by phone"),
         "vip": MessageLookupByLibrary.simpleMessage("VIP"),
         "vipAvailableAgain":
             MessageLookupByLibrary.simpleMessage("VIP is available again!"),

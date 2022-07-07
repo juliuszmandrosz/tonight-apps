@@ -53,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "accessCode": MessageLookupByLibrary.simpleMessage("Kod dostępu"),
         "accessCodeEmpty":
             MessageLookupByLibrary.simpleMessage("Proszę podaj kod dostępu"),
+        "accessCodeInfo": MessageLookupByLibrary.simpleMessage(
+            "Kod dostępu jest wymagany tylko podczas pierwszego logowania"),
         "accountExists": MessageLookupByLibrary.simpleMessage(
             "Konto dla tego adresu e-mail już istnieje"),
         "accountSettings":
@@ -264,7 +266,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorCheckInternetConnection": MessageLookupByLibrary.simpleMessage(
             "Sprawdź połączenie z internetem"),
         "errorDeletingReward": MessageLookupByLibrary.simpleMessage(
-            "Błąd podczas dodawania nagrody"),
+            "Błąd podczas usuwania nagrody"),
         "errorDeletingSelector": MessageLookupByLibrary.simpleMessage(
             "Błąd podczas usuwania selekcjonera"),
         "errorLoadingClubs": MessageLookupByLibrary.simpleMessage(
@@ -717,7 +719,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "validTicket": MessageLookupByLibrary.simpleMessage("Ważny bilet"),
         "vatNumber": MessageLookupByLibrary.simpleMessage("Numer NIP"),
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(
-            "Wysłano link weryfikacyjny na podany adres e-mail, należy go potwierdzić za pomocą skrzynki email w telefonie"),
+            "Wysłano link weryfikacyjny na podany adres e-mail, należy go potwierdzić za pomocą telefonu"),
         "vip": MessageLookupByLibrary.simpleMessage("VIP"),
         "vipAvailableAgain":
             MessageLookupByLibrary.simpleMessage("VIP znowu jest dostępny!"),

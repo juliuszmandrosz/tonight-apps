@@ -80,6 +80,16 @@ class S {
     );
   }
 
+  /// `The access code is only required when signing in for the first time`
+  String get accessCodeInfo {
+    return Intl.message(
+      'The access code is only required when signing in for the first time',
+      name: 'accessCodeInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `An account already exists for that email`
   String get accountExists {
     return Intl.message(
@@ -4147,10 +4157,10 @@ class S {
     );
   }
 
-  /// `A verification link has been sent to the e-mail address provided, it must be confirmed using the email in the phone`
+  /// `A verification link has been sent to the e-mail address provided, it must be confirmed by phone`
   String get verificationLinkSent {
     return Intl.message(
-      'A verification link has been sent to the e-mail address provided, it must be confirmed using the email in the phone',
+      'A verification link has been sent to the e-mail address provided, it must be confirmed by phone',
       name: 'verificationLinkSent',
       desc: '',
       args: [],
