@@ -1404,7 +1404,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: ca69136fac951e6cf9e10f3572a092d6efea71fb
+      resolved-ref: "84cc0975cf778d101e0ff71b89ff44ed0c0d0419"
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
