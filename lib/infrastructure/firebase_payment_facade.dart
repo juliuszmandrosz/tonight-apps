@@ -99,6 +99,11 @@ class FirebasePaymentFacade implements UserPaymentFacade {
               .cancelTicketReservation(result.paymentIntentId);
           return left(const UserPaymentFailure.canceledByUser());
         }
+
+        if (_checkIfPaymentAlreadyBeenMade(e)) {
+          return left(const UserPaymentFailure.paymentHasAlreadyBeenMade());
+        }
+
         await _crashlytics.recordError(e, StackTrace.current);
         return left(const UserPaymentFailure.stripeError());
       }
@@ -146,6 +151,10 @@ class FirebasePaymentFacade implements UserPaymentFacade {
       );
       if (e.error.code == FailureCode.Canceled) {
         return left(const UserPaymentFailure.canceledByUser());
+      }
+
+      if (_checkIfPaymentAlreadyBeenMade(e)) {
+        return left(const UserPaymentFailure.paymentHasAlreadyBeenMade());
       }
 
       await _crashlytics.recordError(e, StackTrace.current);
@@ -270,5 +279,17 @@ class FirebasePaymentFacade implements UserPaymentFacade {
     );
 
     await _stripe.presentPaymentSheet();
+  }
+
+  bool _checkIfPaymentAlreadyBeenMade(StripeException exception) {
+    final message = exception.error.localizedMessage;
+
+    if (message == null) return false;
+
+    if (message.contains('succeeded')) {
+      return true;
+    }
+
+    return false;
   }
 }

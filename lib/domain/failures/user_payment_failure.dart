@@ -37,5 +37,9 @@ class UserPaymentFailure with _$UserPaymentFailure {
 
   const factory UserPaymentFailure.eventSoldOut() = _EventSoldOut;
 
-  const factory UserPaymentFailure.userAlreadyHasTicket() = _UserAlreadyHasTicket;
+  const factory UserPaymentFailure.userAlreadyHasTicket() =
+      _UserAlreadyHasTicket;
+
+  const factory UserPaymentFailure.paymentHasAlreadyBeenMade() =
+      _PaymentHasAlreadyBeenMade;
 }
