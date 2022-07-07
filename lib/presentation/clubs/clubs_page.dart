@@ -77,7 +77,7 @@ class _ClubsPageState extends State<ClubsPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(
-                              height: MediaQuery.of(context).size.height * .05,
+                              height: MediaQuery.of(context).size.height * .2,
                             ),
                             Text(
                               S().clubs(0),
