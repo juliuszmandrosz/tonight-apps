@@ -12,4 +12,5 @@ const userPaymentCloudFunctionsErrors = {
   'vip-no-longer-available': UserPaymentFailure.vipNoLongerAvailable(),
   'event-has-ended': UserPaymentFailure.eventHasEnded(),
   'event-sold-out': UserPaymentFailure.eventSoldOut(),
+  'user-already-has-ticket': UserPaymentFailure.userAlreadyHasTicket(),
 };

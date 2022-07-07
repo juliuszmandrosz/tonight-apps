@@ -33,6 +33,7 @@ mixin _$UserPaymentFailure {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +53,7 @@ mixin _$UserPaymentFailure {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +73,7 @@ mixin _$UserPaymentFailure {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -91,6 +94,7 @@ mixin _$UserPaymentFailure {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -110,6 +114,7 @@ mixin _$UserPaymentFailure {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -129,6 +134,7 @@ mixin _$UserPaymentFailure {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -207,6 +213,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) {
     return unexpected();
   }
@@ -229,6 +236,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) {
     return unexpected?.call();
   }
@@ -251,6 +259,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -277,6 +286,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) {
     return unexpected(this);
   }
@@ -299,6 +309,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) {
     return unexpected?.call(this);
   }
@@ -321,6 +332,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -390,6 +402,7 @@ class _$_StripeError implements _StripeError {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) {
     return stripeError();
   }
@@ -412,6 +425,7 @@ class _$_StripeError implements _StripeError {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) {
     return stripeError?.call();
   }
@@ -434,6 +448,7 @@ class _$_StripeError implements _StripeError {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (stripeError != null) {
@@ -460,6 +475,7 @@ class _$_StripeError implements _StripeError {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) {
     return stripeError(this);
   }
@@ -482,6 +498,7 @@ class _$_StripeError implements _StripeError {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) {
     return stripeError?.call(this);
   }
@@ -504,6 +521,7 @@ class _$_StripeError implements _StripeError {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (stripeError != null) {
@@ -573,6 +591,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) {
     return invalidPromotionCode();
   }
@@ -595,6 +614,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) {
     return invalidPromotionCode?.call();
   }
@@ -617,6 +637,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (invalidPromotionCode != null) {
@@ -643,6 +664,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) {
     return invalidPromotionCode(this);
   }
@@ -665,6 +687,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) {
     return invalidPromotionCode?.call(this);
   }
@@ -687,6 +710,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (invalidPromotionCode != null) {
@@ -756,6 +780,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) {
     return promotionCodeExpired();
   }
@@ -778,6 +803,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) {
     return promotionCodeExpired?.call();
   }
@@ -800,6 +826,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (promotionCodeExpired != null) {
@@ -826,6 +853,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) {
     return promotionCodeExpired(this);
   }
@@ -848,6 +876,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) {
     return promotionCodeExpired?.call(this);
   }
@@ -870,6 +899,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (promotionCodeExpired != null) {
@@ -939,6 +969,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) {
     return invalidEvent();
   }
@@ -961,6 +992,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) {
     return invalidEvent?.call();
   }
@@ -983,6 +1015,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (invalidEvent != null) {
@@ -1009,6 +1042,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) {
     return invalidEvent(this);
   }
@@ -1031,6 +1065,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) {
     return invalidEvent?.call(this);
   }
@@ -1053,6 +1088,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (invalidEvent != null) {
@@ -1122,6 +1158,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) {
     return canceledByUser();
   }
@@ -1144,6 +1181,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) {
     return canceledByUser?.call();
   }
@@ -1166,6 +1204,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (canceledByUser != null) {
@@ -1192,6 +1231,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) {
     return canceledByUser(this);
   }
@@ -1214,6 +1254,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) {
     return canceledByUser?.call(this);
   }
@@ -1236,6 +1277,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (canceledByUser != null) {
@@ -1305,6 +1347,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) {
     return ticketAlreadyHasVip();
   }
@@ -1327,6 +1370,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) {
     return ticketAlreadyHasVip?.call();
   }
@@ -1349,6 +1393,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (ticketAlreadyHasVip != null) {
@@ -1375,6 +1420,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) {
     return ticketAlreadyHasVip(this);
   }
@@ -1397,6 +1443,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) {
     return ticketAlreadyHasVip?.call(this);
   }
@@ -1419,6 +1466,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (ticketAlreadyHasVip != null) {
@@ -1488,6 +1536,7 @@ class _$_EventCanceled implements _EventCanceled {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) {
     return eventCanceled();
   }
@@ -1510,6 +1559,7 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) {
     return eventCanceled?.call();
   }
@@ -1532,6 +1582,7 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (eventCanceled != null) {
@@ -1558,6 +1609,7 @@ class _$_EventCanceled implements _EventCanceled {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) {
     return eventCanceled(this);
   }
@@ -1580,6 +1632,7 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) {
     return eventCanceled?.call(this);
   }
@@ -1602,6 +1655,7 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (eventCanceled != null) {
@@ -1671,6 +1725,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) {
     return eventBeingPostponed();
   }
@@ -1693,6 +1748,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) {
     return eventBeingPostponed?.call();
   }
@@ -1715,6 +1771,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (eventBeingPostponed != null) {
@@ -1741,6 +1798,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) {
     return eventBeingPostponed(this);
   }
@@ -1763,6 +1821,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) {
     return eventBeingPostponed?.call(this);
   }
@@ -1785,6 +1844,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (eventBeingPostponed != null) {
@@ -1854,6 +1914,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) {
     return returnTimeExpired();
   }
@@ -1876,6 +1937,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) {
     return returnTimeExpired?.call();
   }
@@ -1898,6 +1960,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (returnTimeExpired != null) {
@@ -1924,6 +1987,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) {
     return returnTimeExpired(this);
   }
@@ -1946,6 +2010,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) {
     return returnTimeExpired?.call(this);
   }
@@ -1968,6 +2033,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (returnTimeExpired != null) {
@@ -2037,6 +2103,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) {
     return invalidCountryCode();
   }
@@ -2059,6 +2126,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) {
     return invalidCountryCode?.call();
   }
@@ -2081,6 +2149,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (invalidCountryCode != null) {
@@ -2107,6 +2176,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) {
     return invalidCountryCode(this);
   }
@@ -2129,6 +2199,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) {
     return invalidCountryCode?.call(this);
   }
@@ -2151,6 +2222,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (invalidCountryCode != null) {
@@ -2220,6 +2292,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) {
     return invalidVatNumber();
   }
@@ -2242,6 +2315,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) {
     return invalidVatNumber?.call();
   }
@@ -2264,6 +2338,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (invalidVatNumber != null) {
@@ -2290,6 +2365,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) {
     return invalidVatNumber(this);
   }
@@ -2312,6 +2388,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) {
     return invalidVatNumber?.call(this);
   }
@@ -2334,6 +2411,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (invalidVatNumber != null) {
@@ -2403,6 +2481,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) {
     return vipNoLongerAvailable();
   }
@@ -2425,6 +2504,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) {
     return vipNoLongerAvailable?.call();
   }
@@ -2447,6 +2527,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (vipNoLongerAvailable != null) {
@@ -2473,6 +2554,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) {
     return vipNoLongerAvailable(this);
   }
@@ -2495,6 +2577,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) {
     return vipNoLongerAvailable?.call(this);
   }
@@ -2517,6 +2600,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (vipNoLongerAvailable != null) {
@@ -2586,6 +2670,7 @@ class _$_EventHasEnded implements _EventHasEnded {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) {
     return eventHasEnded();
   }
@@ -2608,6 +2693,7 @@ class _$_EventHasEnded implements _EventHasEnded {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) {
     return eventHasEnded?.call();
   }
@@ -2630,6 +2716,7 @@ class _$_EventHasEnded implements _EventHasEnded {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (eventHasEnded != null) {
@@ -2656,6 +2743,7 @@ class _$_EventHasEnded implements _EventHasEnded {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) {
     return eventHasEnded(this);
   }
@@ -2678,6 +2766,7 @@ class _$_EventHasEnded implements _EventHasEnded {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) {
     return eventHasEnded?.call(this);
   }
@@ -2700,6 +2789,7 @@ class _$_EventHasEnded implements _EventHasEnded {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (eventHasEnded != null) {
@@ -2769,6 +2859,7 @@ class _$_EventSoldOut implements _EventSoldOut {
     required TResult Function() vipNoLongerAvailable,
     required TResult Function() eventHasEnded,
     required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
   }) {
     return eventSoldOut();
   }
@@ -2791,6 +2882,7 @@ class _$_EventSoldOut implements _EventSoldOut {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
   }) {
     return eventSoldOut?.call();
   }
@@ -2813,6 +2905,7 @@ class _$_EventSoldOut implements _EventSoldOut {
     TResult Function()? vipNoLongerAvailable,
     TResult Function()? eventHasEnded,
     TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (eventSoldOut != null) {
@@ -2839,6 +2932,7 @@ class _$_EventSoldOut implements _EventSoldOut {
     required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
   }) {
     return eventSoldOut(this);
   }
@@ -2861,6 +2955,7 @@ class _$_EventSoldOut implements _EventSoldOut {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
   }) {
     return eventSoldOut?.call(this);
   }
@@ -2883,6 +2978,7 @@ class _$_EventSoldOut implements _EventSoldOut {
     TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     required TResult orElse(),
   }) {
     if (eventSoldOut != null) {
@@ -2894,4 +2990,193 @@ class _$_EventSoldOut implements _EventSoldOut {
 
 abstract class _EventSoldOut implements UserPaymentFailure {
   const factory _EventSoldOut() = _$_EventSoldOut;
+}
+
+/// @nodoc
+abstract class _$$_UserAlreadyHasTicketCopyWith<$Res> {
+  factory _$$_UserAlreadyHasTicketCopyWith(_$_UserAlreadyHasTicket value,
+          $Res Function(_$_UserAlreadyHasTicket) then) =
+      __$$_UserAlreadyHasTicketCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_UserAlreadyHasTicketCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    implements _$$_UserAlreadyHasTicketCopyWith<$Res> {
+  __$$_UserAlreadyHasTicketCopyWithImpl(_$_UserAlreadyHasTicket _value,
+      $Res Function(_$_UserAlreadyHasTicket) _then)
+      : super(_value, (v) => _then(v as _$_UserAlreadyHasTicket));
+
+  @override
+  _$_UserAlreadyHasTicket get _value => super._value as _$_UserAlreadyHasTicket;
+}
+
+/// @nodoc
+
+class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
+  const _$_UserAlreadyHasTicket();
+
+  @override
+  String toString() {
+    return 'UserPaymentFailure.userAlreadyHasTicket()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_UserAlreadyHasTicket);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() stripeError,
+    required TResult Function() invalidPromotionCode,
+    required TResult Function() promotionCodeExpired,
+    required TResult Function() invalidEvent,
+    required TResult Function() canceledByUser,
+    required TResult Function() ticketAlreadyHasVip,
+    required TResult Function() eventCanceled,
+    required TResult Function() eventBeingPostponed,
+    required TResult Function() returnTimeExpired,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() invalidVatNumber,
+    required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
+    required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
+  }) {
+    return userAlreadyHasTicket();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? stripeError,
+    TResult Function()? invalidPromotionCode,
+    TResult Function()? promotionCodeExpired,
+    TResult Function()? invalidEvent,
+    TResult Function()? canceledByUser,
+    TResult Function()? ticketAlreadyHasVip,
+    TResult Function()? eventCanceled,
+    TResult Function()? eventBeingPostponed,
+    TResult Function()? returnTimeExpired,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? invalidVatNumber,
+    TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
+    TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
+  }) {
+    return userAlreadyHasTicket?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? stripeError,
+    TResult Function()? invalidPromotionCode,
+    TResult Function()? promotionCodeExpired,
+    TResult Function()? invalidEvent,
+    TResult Function()? canceledByUser,
+    TResult Function()? ticketAlreadyHasVip,
+    TResult Function()? eventCanceled,
+    TResult Function()? eventBeingPostponed,
+    TResult Function()? returnTimeExpired,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? invalidVatNumber,
+    TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
+    TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
+    required TResult orElse(),
+  }) {
+    if (userAlreadyHasTicket != null) {
+      return userAlreadyHasTicket();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_StripeError value) stripeError,
+    required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
+    required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
+    required TResult Function(_InvalidEvent value) invalidEvent,
+    required TResult Function(_CanceledByUser value) canceledByUser,
+    required TResult Function(_TicketAlreadyHasVip value) ticketAlreadyHasVip,
+    required TResult Function(_EventCanceled value) eventCanceled,
+    required TResult Function(_EventBeingPostponed value) eventBeingPostponed,
+    required TResult Function(_ReturnTimeExpired value) returnTimeExpired,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_InvalidVatNumber value) invalidVatNumber,
+    required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
+    required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
+  }) {
+    return userAlreadyHasTicket(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_StripeError value)? stripeError,
+    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_CanceledByUser value)? canceledByUser,
+    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult Function(_EventCanceled value)? eventCanceled,
+    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
+    TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+  }) {
+    return userAlreadyHasTicket?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_StripeError value)? stripeError,
+    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_CanceledByUser value)? canceledByUser,
+    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult Function(_EventCanceled value)? eventCanceled,
+    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
+    TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    required TResult orElse(),
+  }) {
+    if (userAlreadyHasTicket != null) {
+      return userAlreadyHasTicket(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserAlreadyHasTicket implements UserPaymentFailure {
+  const factory _UserAlreadyHasTicket() = _$_UserAlreadyHasTicket;
 }
