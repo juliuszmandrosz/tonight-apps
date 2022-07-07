@@ -538,6 +538,8 @@
   "@paymentConfirmed": {},
   "paymentError": "",
   "@paymentError": {},
+  "paymentHasAlreadyBeenMade": "",
+  "@paymentHasAlreadyBeenMade": {},
   "phoneNumber": "Telefonnummer",
   "@phoneNumber": {},
   "photos": "{count, plural, other{}}",

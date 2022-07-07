@@ -395,6 +395,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bezahle bequem mit der Karte, Google Pay, Apple Pay, BLIK oder über eine andere bei Przelewy24 verfügbare Methode"),
         "paymentConfirmed": MessageLookupByLibrary.simpleMessage(""),
         "paymentError": MessageLookupByLibrary.simpleMessage(""),
+        "paymentHasAlreadyBeenMade": MessageLookupByLibrary.simpleMessage(""),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefonnummer"),
         "photos": m5,
         "pleaseAddPhoto":

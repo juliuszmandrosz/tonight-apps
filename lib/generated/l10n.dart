@@ -2755,6 +2755,16 @@ class S {
     );
   }
 
+  /// `Payment has already been made`
+  String get paymentHasAlreadyBeenMade {
+    return Intl.message(
+      'Payment has already been made',
+      name: 'paymentHasAlreadyBeenMade',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Phone number`
   String get phoneNumber {
     return Intl.message(

@@ -538,6 +538,8 @@
   "@paymentConfirmed": {},
   "paymentError": "Error during payment, please contact support",
   "@paymentError": {},
+  "paymentHasAlreadyBeenMade": "Payment has already been made",
+  "@paymentHasAlreadyBeenMade": {},
   "phoneNumber": "Phone number",
   "@phoneNumber": {},
   "photos": "{count, plural, zero{No photos} one{Photo} other{Photos}}",

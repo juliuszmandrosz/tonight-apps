@@ -489,6 +489,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Payment confirmed"),
         "paymentError": MessageLookupByLibrary.simpleMessage(
             "Error during payment, please contact support"),
+        "paymentHasAlreadyBeenMade": MessageLookupByLibrary.simpleMessage(
+            "Payment has already been made"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
         "photos": m5,
         "pleaseAddPhoto":
