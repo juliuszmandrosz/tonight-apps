@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_place/google_place.dart';
 import 'package:raver/application/core/google_places/google_places_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
+import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -83,23 +85,30 @@ class _EventFiltersCityState extends State<EventFiltersCity> {
                     const SizedBox(height: 10),
                     BlocBuilder<GooglePlacesCubit, GooglePlacesState>(
                       builder: (context, state) {
-                        return ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: state.predictions.length,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              leading: const CircleAvatar(
-                                child: Icon(Icons.pin_drop),
-                              ),
-                              title:
-                                  Text(state.predictions[index].description!),
-                              onTap: () => _onPredictionTapped(
-                                state.predictions[index],
-                              ),
-                            );
-                          },
-                        );
+                        return state.status.isLoading()
+                            ? Center(
+                                child: SpinKitThreeBounce(
+                                  color: context.onSurfaceColor,
+                                  size: 24,
+                                ),
+                              )
+                            : ListView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: state.predictions.length,
+                                itemBuilder: (context, index) {
+                                  return ListTile(
+                                    leading: const CircleAvatar(
+                                      child: Icon(Icons.pin_drop),
+                                    ),
+                                    title: Text(
+                                        state.predictions[index].description!),
+                                    onTap: () => _onPredictionTapped(
+                                      state.predictions[index],
+                                    ),
+                                  );
+                                },
+                              );
                       },
                     ),
                   ],

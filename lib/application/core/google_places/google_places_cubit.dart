@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_place/google_place.dart';
 import 'package:intl/intl.dart';
+import 'package:raver_common/application/application.dart';
 
 part 'google_places_cubit.freezed.dart';
 part 'google_places_state.dart';
@@ -12,6 +13,8 @@ class GooglePlacesCubit extends Cubit<GooglePlacesState> {
   GooglePlacesCubit(this._googlePlace) : super(GooglePlacesState.initial());
 
   void searchForCities(String value) async {
+    emit(state.copyWith(status: CubitStatus.loading));
+
     final result = await _googlePlace.autocomplete.get(
       value,
       types: '(cities)',
@@ -21,6 +24,8 @@ class GooglePlacesCubit extends Cubit<GooglePlacesState> {
     if (result?.predictions != null) {
       emit(state.copyWith(predictions: result!.predictions!));
     }
+
+    emit(state.copyWith(status: CubitStatus.success));
   }
 
   void clearPredictions() {

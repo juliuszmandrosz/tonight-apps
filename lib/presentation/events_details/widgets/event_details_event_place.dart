@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
@@ -22,6 +23,17 @@ class EventDetailsEventPlace extends StatefulWidget {
 
 class _EventDetailsEventPlaceState extends State<EventDetailsEventPlace> {
   final Completer<GoogleMapController> _controller = Completer();
+  late final String _mapStyle;
+
+  @override
+  void initState() {
+    rootBundle.loadString('assets/map_styles/aubergine_map_style.txt').then((
+      string,
+    ) {
+      _mapStyle = string;
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +68,8 @@ class _EventDetailsEventPlaceState extends State<EventDetailsEventPlace> {
             tiltGesturesEnabled: false,
             rotateGesturesEnabled: false,
             zoomControlsEnabled: false,
-            onMapCreated: (GoogleMapController controller) {
+            onMapCreated: (controller) {
+              controller.setMapStyle(_mapStyle);
               _controller.complete(controller);
             },
             markers: {

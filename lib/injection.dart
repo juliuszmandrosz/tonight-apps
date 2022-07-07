@@ -506,8 +506,6 @@ void _registerModules() {
 
   getIt.registerLazySingleton(() {
     final apiKey = Platform.isIOS ? iosApiKey : androidApiKey;
-    Logger().i(apiKey);
-    Logger().i(FirebaseRemoteConfig.instance.getString(apiKey));
     return GooglePlace(FirebaseRemoteConfig.instance.getString(apiKey));
   });
 
