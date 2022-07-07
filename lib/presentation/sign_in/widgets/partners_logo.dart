@@ -9,6 +9,7 @@ class PartnersLogo extends StatelessWidget {
     return SvgPicture.asset(
       'assets/icons/partners_logo.svg',
       semanticsLabel: 'Tonight Logo',
+      height: MediaQuery.of(context).size.height * 0.4,
     );
   }
 }

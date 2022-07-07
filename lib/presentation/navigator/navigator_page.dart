@@ -42,7 +42,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
               authenticated: (_) =>
                   context.replaceRoute(const NavigatorRoute()),
               unauthenticated: (_) {
-                context.replaceRoute(const AuthRoute());
+                context.replaceRoute(const SignInRoute());
               },
             );
           },

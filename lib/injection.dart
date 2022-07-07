@@ -23,8 +23,6 @@ import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_edit_reward/add_reward_cubit.dart';
 import 'package:raver_partners/application/add_edit_ticket_pool/add_edit_ticket_pool_cubit.dart';
 import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_partners/application/auth/sign_in/sign_in_cubit.dart';
-import 'package:raver_partners/application/auth/sign_up/sign_up_cubit.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
 import 'package:raver_partners/application/discounts/discounts_cubit.dart';
 import 'package:raver_partners/application/event_filters/event_filters_cubit.dart';
@@ -35,6 +33,7 @@ import 'package:raver_partners/application/past_event_details/past_event_details
 import 'package:raver_partners/application/postpone_event/postpone_event_cubit.dart';
 import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
 import 'package:raver_partners/application/selector_list/selector_list_cubit.dart';
+import 'package:raver_partners/application/sign_in/sign_in_cubit.dart';
 import 'package:raver_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
 import 'package:raver_partners/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:raver_partners/domain/club_sales/club_sales_facade.dart';
@@ -63,13 +62,6 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => SignInCubit(
-      firebaseDynamicLinks: getIt(),
-      partnerAuthFacade: getIt(),
-    ),
-  );
-
-  getIt.registerFactory(
-    () => SignUpCubit(
       firebaseDynamicLinks: getIt(),
       partnerAuthFacade: getIt(),
     ),

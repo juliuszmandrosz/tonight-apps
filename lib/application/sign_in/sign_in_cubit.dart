@@ -16,7 +16,7 @@ class SignInCubit extends Cubit<SignInState> {
   final PartnerAuthFacade _authFacade;
   final FirebaseDynamicLinks _dynamicLinks;
 
-  StreamSubscription? _linkSub;
+  late final StreamSubscription _linkSub;
 
   SignInCubit({
     required PartnerAuthFacade partnerAuthFacade,
@@ -32,8 +32,10 @@ class SignInCubit extends Cubit<SignInState> {
 
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
-    final failureOrSuccess =
-        await _authFacade.sendSignInEmailLinkForPartner(state.email.value);
+    final failureOrSuccess = await _authFacade.sendSignInEmailLinkForPartner(
+      email: state.email.value,
+      accessCode: state.accessCode,
+    );
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(failure),
@@ -44,6 +46,10 @@ class SignInCubit extends Cubit<SignInState> {
   void emailChanged(String value) {
     final email = EmailInput.dirty(value);
     emit(state.copyWith(email: email));
+  }
+
+  void accessCodeChanged(String value) {
+    emit(state.copyWith(accessCode: value));
   }
 
   _subscribeToDynamicLinks() {
@@ -60,6 +66,7 @@ class SignInCubit extends Cubit<SignInState> {
 
     final failureOrSuccess = await _authFacade.signInWithEmailLinkAsPartner(
       email: state.email.value,
+      accessCode: state.accessCode,
       link: link,
     );
 
@@ -74,9 +81,7 @@ class SignInCubit extends Cubit<SignInState> {
   }
 
   _validateForm() {
-    emit(state.copyWith(
-      email: EmailInput.dirty(state.email.value),
-    ));
+    emit(state.copyWith(email: EmailInput.dirty(state.email.value)));
 
     final status = Formz.validate([state.email]);
 
@@ -108,7 +113,7 @@ class SignInCubit extends Cubit<SignInState> {
 
   @override
   Future<void> close() {
-    _linkSub?.cancel();
+    _linkSub.cancel();
     return super.close();
   }
 }

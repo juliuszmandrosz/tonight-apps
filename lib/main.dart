@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:raver_partners/firebase_options.dart';
 import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -23,7 +24,9 @@ Future<void> main() async {
 
       _configureTimeAgo();
 
-      await Firebase.initializeApp();
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
 
       await FirebaseAppCheck.instance.activate(
         webRecaptchaSiteKey: 'recaptcha-v3-site-key',

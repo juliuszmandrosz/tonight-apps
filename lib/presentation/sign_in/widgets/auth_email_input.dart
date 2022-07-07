@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:raver_auth/raver_auth.dart';
-import 'package:raver_partners/application/auth/sign_in/sign_in_cubit.dart';
+import 'package:raver_partners/application/sign_in/sign_in_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class SignInEmailInput extends StatelessWidget {
-  const SignInEmailInput({Key? key}) : super(key: key);
+class AuthEmailInput extends StatelessWidget {
+  const AuthEmailInput({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

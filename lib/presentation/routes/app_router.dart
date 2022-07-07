@@ -6,7 +6,6 @@ import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/presentation/add_edit_ticket_pool/add_edit_ticket_pool_page.dart';
 import 'package:raver_partners/presentation/add_event/add_event_page.dart';
 import 'package:raver_partners/presentation/add_reward/add_reward_page.dart';
-import 'package:raver_partners/presentation/auth/auth_page.dart';
 import 'package:raver_partners/presentation/contact/contact_page.dart';
 import 'package:raver_partners/presentation/discounts/discounts_page.dart';
 import 'package:raver_partners/presentation/event_overview/event_overview_page.dart';
@@ -19,6 +18,7 @@ import 'package:raver_partners/presentation/past_event_details/past_event_detail
 import 'package:raver_partners/presentation/postpone_event/postpone_event_page.dart';
 import 'package:raver_partners/presentation/rewards/rewards_page.dart';
 import 'package:raver_partners/presentation/selectors/selectors_page.dart';
+import 'package:raver_partners/presentation/sign_in/sign_in_page.dart';
 import 'package:raver_partners/presentation/splash/splash_page.dart';
 import 'package:raver_partners/presentation/terms_of_service/terms_of_service_page.dart';
 
@@ -31,7 +31,7 @@ const animationDuration = 300;
   routes: <AutoRoute>[
     AutoRoute(page: SplashPage, initial: true),
     CustomRoute(
-      page: AuthPage,
+      page: SignInPage,
       transitionsBuilder: zoomInTransition,
       durationInMilliseconds: animationDuration,
     ),
