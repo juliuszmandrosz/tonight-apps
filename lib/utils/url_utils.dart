@@ -11,7 +11,7 @@ Future<Option<UrlLaunchFailure>> launchURL(Uri uri) async {
   try {
     final result = await launcher.launchUrl(
       uri,
-      mode: launcher.LaunchMode.externalApplication,
+      mode: launcher.LaunchMode.externalNonBrowserApplication,
     );
     if (!result) {
       logger.e('Could not launch $uri');
