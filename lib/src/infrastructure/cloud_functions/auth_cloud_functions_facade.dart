@@ -5,18 +5,14 @@ import 'package:intl/intl.dart';
 abstract class AuthCloudFunctionsFacade {
   Future<Unit> checkIfUserCanSignIn(String email);
 
-  Future<Unit> checkIfPartnerCanSignIn(String email);
-
-  Future<Unit> checkIfPartnerCanSignUp({
+  Future<Unit> checkIfPartnerCanSignIn({
     required String email,
-    required String accessCode,
+    String? accessCode,
   });
 
-  Future<Unit> checkIfSelectorCanSignIn(String email);
-
-  Future<Unit> checkIfSelectorCanSignUp({
+  Future<Unit> checkIfSelectorCanSignIn({
     required String email,
-    required String accessCode,
+    String? accessCode,
   });
 
   Future<Unit> addUser({
@@ -111,22 +107,11 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   }
 
   @override
-  Future<Unit> checkIfPartnerCanSignIn(String email) async {
-    const endpoint = 'auth/checkIfPartnerCanSignIn';
-
-    final data = {'email': email};
-
-    await _dio.post(endpoint, data: data);
-
-    return unit;
-  }
-
-  @override
-  Future<Unit> checkIfPartnerCanSignUp({
+  Future<Unit> checkIfPartnerCanSignIn({
     required String email,
-    required String accessCode,
+    String? accessCode,
   }) async {
-    const endpoint = 'auth/checkIfPartnerCanSignUp';
+    const endpoint = 'auth/checkIfPartnerCanSignIn';
 
     final data = {
       'email': email,
@@ -139,22 +124,11 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   }
 
   @override
-  Future<Unit> checkIfSelectorCanSignIn(String email) async {
-    const endpoint = 'auth/checkIfSelectorCanSignIn';
-
-    final data = {'email': email};
-
-    await _dio.post(endpoint, data: data);
-
-    return unit;
-  }
-
-  @override
-  Future<Unit> checkIfSelectorCanSignUp({
+  Future<Unit> checkIfSelectorCanSignIn({
     required String email,
-    required String accessCode,
+    String? accessCode,
   }) async {
-    const endpoint = 'auth/checkIfSelectorCanSignUp';
+    const endpoint = 'auth/checkIfSelectorCanSignIn';
 
     final data = {
       'email': email,

@@ -41,11 +41,15 @@ class FirebaseAuthFacade
         _crashlytics = crashlytics;
 
   @override
-  Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForPartner(
-    String email,
-  ) async {
+  Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForPartner({
+    required String email,
+    String? accessCode,
+  }) async {
     try {
-      await _authCloudFunctionsFacade.checkIfPartnerCanSignIn(email);
+      await _authCloudFunctionsFacade.checkIfPartnerCanSignIn(
+        email: email,
+        accessCode: accessCode,
+      );
       await _sendSignInLinkForPartner(email);
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -64,43 +68,22 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> sendSignUpEmailLinkForPartner({
-    required String email,
-    required String accessCode,
-  }) async {
-    try {
-      await _authCloudFunctionsFacade.checkIfPartnerCanSignUp(
-        email: email,
-        accessCode: accessCode,
-      );
-      await _sendSignInLinkForPartner(email);
-      return right(unit);
-    } on FirebaseAuthException catch (e) {
-      _logger.e(
-        "Auth Exception sending sign up email link for partner EXCEPTION: $e",
-      );
-
-      return left(await _handleFirebaseException(e));
-    } on DioError catch (e) {
-      _logger.e(
-        "Dio error sending sign up email link for partner EXCEPTION: $e",
-      );
-
-      return left(await _handleDioError(e));
-    }
-  }
-
-  @override
   Future<Either<AuthFailure, Unit>> signInWithEmailLinkAsPartner({
     required String email,
     required Uri link,
+    String? accessCode,
   }) async {
     try {
       if (!_firebaseAuth.isSignInWithEmailLink(link.toString())) {
         return left(AuthFailure(message: invalidLink));
       }
 
-      await _signInWithEmailLink(email, link.toString());
+      final result = await _signInWithEmailLink(email, link.toString());
+
+      await _addPartnerToFirestoreIfNotExists(
+        partnerCredential: result,
+        accessCode: accessCode,
+      );
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -113,49 +96,15 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signUpWithEmailLinkAndAccessCodeAsPartner({
+  Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForSelector({
     required String email,
-    required Uri link,
-    required String accessCode,
+    String? accessCode,
   }) async {
     try {
-      if (!_firebaseAuth.isSignInWithEmailLink(link.toString())) {
-        return left(AuthFailure(message: invalidLink));
-      }
-
-      final partner = await _signInWithEmailLink(email, link.toString());
-
-      await _authCloudFunctionsFacade.addPartner(
+      await _authCloudFunctionsFacade.checkIfSelectorCanSignIn(
         email: email,
         accessCode: accessCode,
-        partnerId: partner.user!.uid,
       );
-
-      await _refreshToken();
-
-      return right(unit);
-    } on FirebaseAuthException catch (e) {
-      _logger.e(
-        "Auth Exception signing up with email link and access code as partner EXCEPTION: $e",
-      );
-
-      return left(await _handleFirebaseException(e));
-    } on DioError catch (e) {
-      await signOut();
-      _logger.e(
-        "Dio error signing up with email link and access code as partner EXCEPTION: $e",
-      );
-
-      return left(await _handleDioError(e));
-    }
-  }
-
-  @override
-  Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForSelector(
-    String email,
-  ) async {
-    try {
-      await _authCloudFunctionsFacade.checkIfSelectorCanSignIn(email);
       await _sendSignInLinkForSelector(email);
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -174,43 +123,22 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> sendSignUpEmailLinkForSelector({
-    required String email,
-    required String accessCode,
-  }) async {
-    try {
-      await _authCloudFunctionsFacade.checkIfSelectorCanSignUp(
-        email: email,
-        accessCode: accessCode,
-      );
-      await _sendSignInLinkForSelector(email);
-      return right(unit);
-    } on FirebaseAuthException catch (e) {
-      _logger.e(
-        "Auth Exception sending sign up email link for selector EXCEPTION: $e",
-      );
-
-      return left(await _handleFirebaseException(e));
-    } on DioError catch (e) {
-      _logger.e(
-        "Dio error sending sign up email link for selector EXCEPTION: $e",
-      );
-
-      return left(await _handleDioError(e));
-    }
-  }
-
-  @override
   Future<Either<AuthFailure, Unit>> signInWithEmailLinkAsSelector({
     required String email,
     required Uri link,
+    String? accessCode,
   }) async {
     try {
       if (!_firebaseAuth.isSignInWithEmailLink(link.toString())) {
         return left(AuthFailure(message: invalidLink));
       }
 
-      await _signInWithEmailLink(email, link.toString());
+      final result = await _signInWithEmailLink(email, link.toString());
+
+      await _addSelectorToFirestoreIfNotExists(
+        selectorCredential: result,
+        accessCode: accessCode,
+      );
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -219,44 +147,6 @@ class FirebaseAuthFacade
       );
 
       return left(await _handleFirebaseException(e));
-    }
-  }
-
-  @override
-  Future<Either<AuthFailure, Unit>> signUpWithEmailLinkAndAccessCodeAsSelector({
-    required String email,
-    required Uri link,
-    required String accessCode,
-  }) async {
-    try {
-      if (!_firebaseAuth.isSignInWithEmailLink(link.toString())) {
-        return left(AuthFailure(message: invalidLink));
-      }
-
-      final selector = await _signInWithEmailLink(email, link.toString());
-
-      await _authCloudFunctionsFacade.addSelector(
-        email: email,
-        accessCode: accessCode,
-        selectorId: selector.user!.uid,
-      );
-
-      await _refreshToken();
-
-      return right(unit);
-    } on FirebaseAuthException catch (e) {
-      _logger.e(
-        "Auth Exception signing up with email link and access code as selector EXCEPTION: $e",
-      );
-
-      return left(await _handleFirebaseException(e));
-    } on DioError catch (e) {
-      await signOut();
-      _logger.e(
-        "Dio error signing up with email link and access code as selector EXCEPTION: $e",
-      );
-
-      return left(await _handleDioError(e));
     }
   }
 
@@ -450,8 +340,9 @@ class FirebaseAuthFacade
 
       if (firebaseUser == null) return none();
 
-      await _authCloudFunctionsFacade
-          .checkIfPartnerCanSignIn(firebaseUser.email!);
+      await _authCloudFunctionsFacade.checkIfPartnerCanSignIn(
+        email: firebaseUser.email!,
+      );
 
       return some(firebaseUser.toDomain());
     } on DioError catch (e) {
@@ -473,8 +364,9 @@ class FirebaseAuthFacade
 
       if (firebaseUser == null) return none();
 
-      await _authCloudFunctionsFacade
-          .checkIfSelectorCanSignIn(firebaseUser.email!);
+      await _authCloudFunctionsFacade.checkIfSelectorCanSignIn(
+        email: firebaseUser.email!,
+      );
 
       return some(firebaseUser.toDomain());
     } on DioError catch (e) {
@@ -530,6 +422,40 @@ class FirebaseAuthFacade
       await _authCloudFunctionsFacade.addUser(
         userId: user.uid,
         email: user.email!,
+      );
+      await _refreshToken();
+    }
+  }
+
+  Future<void> _addPartnerToFirestoreIfNotExists({
+    required UserCredential partnerCredential,
+    String? accessCode,
+  }) async {
+    final isNewPartner = partnerCredential.additionalUserInfo!.isNewUser;
+
+    if (isNewPartner) {
+      final partner = partnerCredential.user!;
+      await _authCloudFunctionsFacade.addPartner(
+        partnerId: partner.uid,
+        email: partner.email!,
+        accessCode: accessCode!,
+      );
+      await _refreshToken();
+    }
+  }
+
+  Future<void> _addSelectorToFirestoreIfNotExists({
+    required UserCredential selectorCredential,
+    String? accessCode,
+  }) async {
+    final isNewSelector = selectorCredential.additionalUserInfo!.isNewUser;
+
+    if (isNewSelector) {
+      final selector = selectorCredential.user!;
+      await _authCloudFunctionsFacade.addSelector(
+        selectorId: selector.uid,
+        email: selector.email!,
+        accessCode: accessCode!,
       );
       await _refreshToken();
     }
