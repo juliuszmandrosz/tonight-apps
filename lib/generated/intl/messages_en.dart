@@ -140,6 +140,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "concertInfo":
             MessageLookupByLibrary.simpleMessage("Concert information"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "confirmDeleteAccount": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete your account? The operation is irreversible, all your tickets and rewards will be deleted."),
         "confirmDeleteMessage": MessageLookupByLibrary.simpleMessage(
             "Are you sure you wish to delete this item?"),
         "confirmEventCancelation": MessageLookupByLibrary.simpleMessage(
@@ -171,6 +173,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateAndTime": MessageLookupByLibrary.simpleMessage("Date and time"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete account"),
         "deletedAllTicketPools": MessageLookupByLibrary.simpleMessage(
             "The only pool of tickets cannot be removed"),
         "deletedTicketPoolAfterTicketWasSold":

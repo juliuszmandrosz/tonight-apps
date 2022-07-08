@@ -666,6 +666,16 @@ class S {
     );
   }
 
+  /// `Are you sure you want to delete your account? The operation is irreversible, all your tickets and rewards will be deleted.`
+  String get confirmDeleteAccount {
+    return Intl.message(
+      'Are you sure you want to delete your account? The operation is irreversible, all your tickets and rewards will be deleted.',
+      name: 'confirmDeleteAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure you wish to delete this item?`
   String get confirmDeleteMessage {
     return Intl.message(
@@ -861,6 +871,16 @@ class S {
     return Intl.message(
       'Delete',
       name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete account`
+  String get deleteAccount {
+    return Intl.message(
+      'Delete account',
+      name: 'deleteAccount',
       desc: '',
       args: [],
     );

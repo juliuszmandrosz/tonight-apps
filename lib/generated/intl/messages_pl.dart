@@ -143,6 +143,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "concertInfo":
             MessageLookupByLibrary.simpleMessage("Informacje o koncercie"),
         "confirm": MessageLookupByLibrary.simpleMessage("Zatwierdź"),
+        "confirmDeleteAccount": MessageLookupByLibrary.simpleMessage(
+            "Czy na pewno chcesz usunąć swoje konto? Operacja jest nieodwracalna, Twoje wszystkie bilety oraz nagrody zostaną usunięte."),
         "confirmDeleteMessage": MessageLookupByLibrary.simpleMessage(
             "Czy na pewno chcesz usunąć ten element?"),
         "confirmEventCancelation": MessageLookupByLibrary.simpleMessage(
@@ -174,6 +176,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage("Data"),
         "dateAndTime": MessageLookupByLibrary.simpleMessage("Data i czas"),
         "delete": MessageLookupByLibrary.simpleMessage("Usuń"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("Usuń konto"),
         "deletedAllTicketPools": MessageLookupByLibrary.simpleMessage(
             "Nie można usunąć jedynej puli biletów"),
         "deletedTicketPoolAfterTicketWasSold":

@@ -45,7 +45,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "accessCode": MessageLookupByLibrary.simpleMessage("Zugangscode"),
         "accessCodeEmpty":
             MessageLookupByLibrary.simpleMessage("Bitte Zugangscode eingeben"),
-        "accessCodeInfo": MessageLookupByLibrary.simpleMessage(""),
+        "accessCodeInfo": MessageLookupByLibrary.simpleMessage(
+            "Der Zugangscode wird nur bei der erstmaligen Anmeldung benötigt"),
         "accountExists": MessageLookupByLibrary.simpleMessage(""),
         "accountSettings": MessageLookupByLibrary.simpleMessage(""),
         "accountSettingsTitle": MessageLookupByLibrary.simpleMessage(""),
@@ -65,7 +66,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addPhoto": MessageLookupByLibrary.simpleMessage("Foto hinzufügen"),
         "addPromotionCode": MessageLookupByLibrary.simpleMessage(""),
         "addReward": MessageLookupByLibrary.simpleMessage(""),
-        "addTicketPool": MessageLookupByLibrary.simpleMessage(""),
+        "addTicketPool":
+            MessageLookupByLibrary.simpleMessage("Ticketpool hinzufügen"),
         "additionalInfo": MessageLookupByLibrary.simpleMessage(""),
         "age": MessageLookupByLibrary.simpleMessage(""),
         "allowVipTickets":
@@ -118,6 +120,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "concert": MessageLookupByLibrary.simpleMessage("Konzert"),
         "concertInfo": MessageLookupByLibrary.simpleMessage(""),
         "confirm": MessageLookupByLibrary.simpleMessage(""),
+        "confirmDeleteAccount": MessageLookupByLibrary.simpleMessage(""),
         "confirmDeleteMessage": MessageLookupByLibrary.simpleMessage(""),
         "confirmEventCancelation": MessageLookupByLibrary.simpleMessage(
             "Möchtest du die Veranstaltung wirklich absagen? Die aktuellen Kosten für die Stornierung des Ereignisses im Zusammenhang mit der Zahlungsabwicklung betragen"),
@@ -132,7 +135,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Möchtest du diese Auswahl wirklich löschen?"),
         "confirmSignOut": MessageLookupByLibrary.simpleMessage(
             "Möchtest du dich wirklich abmelden?"),
-        "confirmTicketReturn": MessageLookupByLibrary.simpleMessage(""),
+        "confirmTicketReturn": MessageLookupByLibrary.simpleMessage(
+            "Möchtest du dein Ticket wirklich zurückgeben?"),
         "contact": MessageLookupByLibrary.simpleMessage(""),
         "copiedToClipboard": MessageLookupByLibrary.simpleMessage(
             "In die Zwischenablage kopiert"),
@@ -145,6 +149,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage(""),
         "dateAndTime": MessageLookupByLibrary.simpleMessage(""),
         "delete": MessageLookupByLibrary.simpleMessage(""),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage(""),
         "deletedAllTicketPools": MessageLookupByLibrary.simpleMessage(
             "Der einzige Pool von Tickets kann nicht entfernt werden"),
         "deletedTicketPoolAfterTicketWasSold": MessageLookupByLibrary.simpleMessage(
@@ -176,8 +181,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "elegant": MessageLookupByLibrary.simpleMessage(""),
         "email": MessageLookupByLibrary.simpleMessage(""),
         "emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(""),
-        "emptyFavoriteClubsMessage": MessageLookupByLibrary.simpleMessage(""),
-        "emptyFavoriteEventsMessage": MessageLookupByLibrary.simpleMessage(""),
+        "emptyFavoriteClubsMessage": MessageLookupByLibrary.simpleMessage(
+            "Hier werden deine Lieblingsclubs angezeigt"),
+        "emptyFavoriteEventsMessage": MessageLookupByLibrary.simpleMessage(
+            "Hier werden deine Lieblingsevents angezeigt"),
         "enableLocation": MessageLookupByLibrary.simpleMessage(""),
         "endDate": MessageLookupByLibrary.simpleMessage(""),
         "endDateBeforeStart": MessageLookupByLibrary.simpleMessage(""),
@@ -209,7 +216,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "entry": MessageLookupByLibrary.simpleMessage("Eingang"),
         "errorAddingEvent": MessageLookupByLibrary.simpleMessage(""),
         "errorAddingReward": MessageLookupByLibrary.simpleMessage(""),
-        "errorChangingClubStatus": MessageLookupByLibrary.simpleMessage(""),
+        "errorChangingClubStatus": MessageLookupByLibrary.simpleMessage(
+            "Fehler beim Ändern des Clubstatus"),
         "errorChangingEventStatus": MessageLookupByLibrary.simpleMessage(""),
         "errorCheckInternetConnection":
             MessageLookupByLibrary.simpleMessage(""),
@@ -219,8 +227,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "errorLoadingClubs": MessageLookupByLibrary.simpleMessage(""),
         "errorLoadingEventDetails": MessageLookupByLibrary.simpleMessage(""),
         "errorLoadingEvents": MessageLookupByLibrary.simpleMessage(""),
-        "errorLoadingFavoriteClubsInfo":
-            MessageLookupByLibrary.simpleMessage(""),
+        "errorLoadingFavoriteClubsInfo": MessageLookupByLibrary.simpleMessage(
+            "Fehler beim Laden von Informationen über Lieblingsclubs"),
         "errorLoadingFavoriteEventsInfo":
             MessageLookupByLibrary.simpleMessage(""),
         "errorLoadingFilters": MessageLookupByLibrary.simpleMessage(""),
@@ -261,7 +269,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "eventPostponedSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Event erfolgreich verschoben"),
         "eventRevenue": MessageLookupByLibrary.simpleMessage("Event Umsatz"),
-        "eventSoldOut": MessageLookupByLibrary.simpleMessage(""),
+        "eventSoldOut": MessageLookupByLibrary.simpleMessage(
+            "Tickets für diesen Event sind ausverkauft. "),
         "eventTimeTooShort": MessageLookupByLibrary.simpleMessage(""),
         "events": m3,
         "exclusive": MessageLookupByLibrary.simpleMessage("Exclusiv"),
@@ -272,10 +281,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "exitButtonTitle": MessageLookupByLibrary.simpleMessage(""),
         "facebook": MessageLookupByLibrary.simpleMessage(""),
         "facebookEvent": MessageLookupByLibrary.simpleMessage(""),
-        "favoriteClubs": MessageLookupByLibrary.simpleMessage(""),
+        "favoriteClubs": MessageLookupByLibrary.simpleMessage("Lieblingsclub"),
         "favoriteClubsInfo": MessageLookupByLibrary.simpleMessage(
             "Füge die Clubs zu Favoriten hinzu und erhalte Benachrichtigungen über neue Events und Prämien"),
-        "favoriteEvents": MessageLookupByLibrary.simpleMessage(""),
+        "favoriteEvents":
+            MessageLookupByLibrary.simpleMessage("Lieblingsevents"),
         "favoriteEventsInfo": MessageLookupByLibrary.simpleMessage(
             "Füge Veranstaltungen zu Favoriten hinzu und erhalte Benachrichtigungen, wenn neue Tickets verfügbar sind"),
         "favorites": MessageLookupByLibrary.simpleMessage(""),
@@ -395,7 +405,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bezahle bequem mit der Karte, Google Pay, Apple Pay, BLIK oder über eine andere bei Przelewy24 verfügbare Methode"),
         "paymentConfirmed": MessageLookupByLibrary.simpleMessage(""),
         "paymentError": MessageLookupByLibrary.simpleMessage(""),
-        "paymentHasAlreadyBeenMade": MessageLookupByLibrary.simpleMessage(""),
+        "paymentHasAlreadyBeenMade": MessageLookupByLibrary.simpleMessage(
+            "Die Zahlung ist bereits erfolgt. "),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefonnummer"),
         "photos": m5,
         "pleaseAddPhoto":
@@ -404,8 +415,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "poolNo": MessageLookupByLibrary.simpleMessage("Pool Nr. "),
         "poolPriceHigherThanNextPool": MessageLookupByLibrary.simpleMessage(
             "Der Preis der Tickets im Ticketspool sollte niedriger sein als der Preis des nächsten Ticketspool"),
-        "poolPriceLowerThanPreviousPools":
-            MessageLookupByLibrary.simpleMessage(""),
+        "poolPriceLowerThanPreviousPools": MessageLookupByLibrary.simpleMessage(
+            "Der Ticketspreis im Pool soll höher sein als der Höchstpreis der bisherigen Pools"),
         "postpone": MessageLookupByLibrary.simpleMessage("Verschiebe"),
         "postponeDateTooLate": MessageLookupByLibrary.simpleMessage(
             "Das maximale Startdatum beträgt 150 Tage ab dem ursprünglichen Startdatum"),
@@ -449,8 +460,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetPassword": MessageLookupByLibrary.simpleMessage(""),
         "resetSelectedDate": MessageLookupByLibrary.simpleMessage(""),
         "retryConnection": MessageLookupByLibrary.simpleMessage(""),
-        "returnTicket": MessageLookupByLibrary.simpleMessage(""),
-        "returnTimeIsOver": MessageLookupByLibrary.simpleMessage(""),
+        "returnTicket":
+            MessageLookupByLibrary.simpleMessage("Ticket zurückgeben"),
+        "returnTimeIsOver":
+            MessageLookupByLibrary.simpleMessage("Rückgabezeit ist abgelaufen"),
         "returned": MessageLookupByLibrary.simpleMessage("Erstattet"),
         "revenue": MessageLookupByLibrary.simpleMessage("Einnahmen"),
         "reviewAdded":
@@ -476,7 +489,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "rewardUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(""),
         "rewards": m6,
         "sales": MessageLookupByLibrary.simpleMessage("Verkauf"),
-        "scanAnotherTicket": MessageLookupByLibrary.simpleMessage(""),
+        "scanAnotherTicket":
+            MessageLookupByLibrary.simpleMessage("Scanne anderen Ticket"),
         "scanTicket": MessageLookupByLibrary.simpleMessage(""),
         "scanner": MessageLookupByLibrary.simpleMessage(""),
         "select": MessageLookupByLibrary.simpleMessage("Wähle"),
@@ -526,7 +540,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "summary": MessageLookupByLibrary.simpleMessage(""),
         "termsOfService": MessageLookupByLibrary.simpleMessage(""),
         "theme": MessageLookupByLibrary.simpleMessage(""),
-        "ticketAlreadyHasVipStatus": MessageLookupByLibrary.simpleMessage(""),
+        "ticketAlreadyHasVipStatus": MessageLookupByLibrary.simpleMessage(
+            "Ticket hat bereits VIP-Status"),
         "ticketExpired": MessageLookupByLibrary.simpleMessage(""),
         "ticketForAnotherEvent": MessageLookupByLibrary.simpleMessage(""),
         "ticketPoolHasBeenAddedSuccessfully":
@@ -549,7 +564,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketPriceTooLow": MessageLookupByLibrary.simpleMessage(""),
         "ticketReturned":
             MessageLookupByLibrary.simpleMessage("Ticket wurde zurückgegeben"),
-        "ticketReturnedSuccessfully": MessageLookupByLibrary.simpleMessage(""),
+        "ticketReturnedSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Ticket erfolgreich zurückgegeben"),
         "ticketScanned":
             MessageLookupByLibrary.simpleMessage("gescannter Ticket"),
         "tickets": m8,
@@ -574,9 +590,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "upcomingEvents": MessageLookupByLibrary.simpleMessage(""),
         "upgradeTicketToVipAndEnterClub": MessageLookupByLibrary.simpleMessage(
             "Upgrade dein Ticket auf VIP und komm zum Club ohne Warteschlange "),
-        "upgradeToVip": MessageLookupByLibrary.simpleMessage(""),
+        "upgradeToVip": MessageLookupByLibrary.simpleMessage("Upgrade auf VIP"),
         "urlLinks": MessageLookupByLibrary.simpleMessage(""),
-        "userAlreadyHasTicket": MessageLookupByLibrary.simpleMessage(""),
+        "userAlreadyHasTicket": MessageLookupByLibrary.simpleMessage(
+            "Du hast bereits Tickets für diesen Event. "),
         "userDisabled": MessageLookupByLibrary.simpleMessage(""),
         "userNotFound": MessageLookupByLibrary.simpleMessage(""),
         "username": MessageLookupByLibrary.simpleMessage(""),
@@ -589,7 +606,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "validTicket": MessageLookupByLibrary.simpleMessage(""),
         "vatNumber": MessageLookupByLibrary.simpleMessage("UID Nummer"),
         "verificationLinkSent": MessageLookupByLibrary.simpleMessage(""),
-        "vip": MessageLookupByLibrary.simpleMessage(""),
+        "vip": MessageLookupByLibrary.simpleMessage("VIP"),
         "vipAvailableAgain":
             MessageLookupByLibrary.simpleMessage("VIP ist wieder verfügbar!"),
         "vipInfo": MessageLookupByLibrary.simpleMessage(
