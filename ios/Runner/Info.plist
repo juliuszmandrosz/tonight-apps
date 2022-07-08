@@ -26,7 +26,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>$(FLUTTER_BUILD_NAME)</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -36,7 +36,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.860373834856-r5dgn8v3iqj4bpkhdal51kdu0s7vev6h</string>
+				<string>com.googleusercontent.apps.98730591004-loojab9i15qtlab8kgknc3ebpajgf4gf</string>
 			</array>
 		</dict>
 		<dict>
@@ -51,10 +51,10 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FirebaseDynamicLinksCustomDomains</key>
 	<array>
-		<string>https://tonightscanner.page.link</string>
+		<string>https://tonightscannerraver.page.link</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
