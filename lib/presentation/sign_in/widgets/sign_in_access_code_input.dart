@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver_partners/application/sign_in/sign_in_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class AuthAccessCodeInput extends StatelessWidget {
-  const AuthAccessCodeInput({Key? key}) : super(key: key);
+class SignInAccessCodeInput extends StatelessWidget {
+  const SignInAccessCodeInput({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

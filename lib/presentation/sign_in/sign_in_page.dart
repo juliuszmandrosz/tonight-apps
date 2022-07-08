@@ -10,7 +10,7 @@ import 'package:raver_partners/injection.dart';
 import 'package:raver_partners/presentation/routes/app_router.dart';
 import 'package:raver_partners/presentation/sign_in/widgets/access_code_info.dart';
 import 'package:raver_partners/presentation/sign_in/widgets/sign_in_access_code_input.dart';
-import 'package:raver_partners/presentation/sign_in/widgets/auth_email_input.dart';
+import 'package:raver_partners/presentation/sign_in/widgets/sign_in_email_input.dart';
 import 'package:raver_partners/presentation/sign_in/widgets/partners_logo.dart';
 import 'package:raver_partners/presentation/sign_in/widgets/sign_in_button.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -59,9 +59,9 @@ class SignInPage extends StatelessWidget {
                           SizedBox(height: 10),
                           PartnersLogo(),
                           SizedBox(height: 10),
-                          AuthEmailInput(),
+                          SignInEmailInput(),
                           SizedBox(height: 20),
-                          AuthAccessCodeInput(),
+                          SignInAccessCodeInput(),
                           SizedBox(height: 20),
                           AccessCodeInfo(),
                           SizedBox(height: 30),

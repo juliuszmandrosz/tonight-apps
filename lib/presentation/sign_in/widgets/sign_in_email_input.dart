@@ -5,8 +5,8 @@ import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_partners/application/sign_in/sign_in_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class AuthEmailInput extends StatelessWidget {
-  const AuthEmailInput({Key? key}) : super(key: key);
+class SignInEmailInput extends StatelessWidget {
+  const SignInEmailInput({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
