@@ -909,7 +909,7 @@ packages:
       name: google_sign_in_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.0"
+    version: "6.0.1"
   google_sign_in_ios:
     dependency: transitive
     description:
@@ -1028,7 +1028,7 @@ packages:
       name: json_serializable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.3.0"
+    version: "6.3.1"
   launch_review:
     dependency: "direct main"
     description:
@@ -1386,7 +1386,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "62e8d599bdb979897516b7b009258431a11b9c73"
+      resolved-ref: ed5a2dcfca81fc62daae2646f17e2b6ffffb580b
       url: "git@github.com:juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
@@ -1449,7 +1449,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: baff3799a22b5bc8f617539bd49df8808bc89e68
+      resolved-ref: e3a6b07fe30be69dde440fc2592a8dac420c2a3c
       url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"

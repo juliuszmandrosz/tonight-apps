@@ -242,8 +242,9 @@ void _registerCubits() {
   //Profile
   getIt.registerFactory(
     () => ProfileCubit(
-      getIt(),
-      getIt(),
+      commonAuthFacade: getIt(),
+      userAccountFacade: getIt(),
+      profileBroadcastSubject: getIt(),
     ),
   );
 

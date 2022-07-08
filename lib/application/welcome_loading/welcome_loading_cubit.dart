@@ -93,9 +93,9 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   initUserProfile() {
     _profileCubit.getUserProfile();
     _profileSub = _profileCubit.stream.listen((event) {
-      _checkAndEmitFailure(event.status);
+      _checkAndEmitFailure(event.initialStatus);
       _emitSuccessIfAllLoaded();
-      if (event.status.isSuccess() && !state.status.isSuccess()) {
+      if (event.initialStatus.isSuccess() && !state.status.isSuccess()) {
         emit(state.copyWith(username: some(event.user.username)));
       }
     });
@@ -259,7 +259,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
   _allDependenciesLoaded() {
     return !_userLocationCubit.state.isLoading &&
-        _profileCubit.state.status == CubitStatus.success &&
+        _profileCubit.state.initialStatus == CubitStatus.success &&
         _eventOverviewBloc.state.status == CubitStatus.success &&
         _clubsOverviewBloc.state.status == CubitStatus.success &&
         _ticketListCubit.state.initialStatus == CubitStatus.success &&

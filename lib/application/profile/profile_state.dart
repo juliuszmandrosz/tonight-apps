@@ -7,7 +7,9 @@ class ProfileState with _$ProfileState {
   factory ProfileState({
     required UserProfile user,
     required bool isFromOauth,
-    required CubitStatus status,
+    required CubitStatus initialStatus,
+    required CubitStatus deletingAccountStatus,
+    required Option<String> snackbarMessage,
   }) = _ProfileState;
 
   factory ProfileState.initial() => ProfileState(
@@ -16,6 +18,8 @@ class ProfileState with _$ProfileState {
           email: '',
         ),
         isFromOauth: false,
-        status: CubitStatus.initial,
+        initialStatus: CubitStatus.initial,
+        deletingAccountStatus: CubitStatus.initial,
+        snackbarMessage: none(),
       );
 }

@@ -7,7 +7,6 @@ import 'package:raver_common/application/application.dart';
 import 'package:raver_rewards/raver_rewards.dart';
 
 part 'club_rewards_cubit.freezed.dart';
-
 part 'club_rewards_state.dart';
 
 class ClubRewardsCubit extends Cubit<ClubRewardsState> {
@@ -26,14 +25,14 @@ class ClubRewardsCubit extends Cubit<ClubRewardsState> {
       (failure) => emit(state.copyWith(status: CubitStatus.failure)),
       (rewards) async {
         final userProfile = await _profileBroadcastSubject.getSubject().first;
-        if (userProfile.status == CubitStatus.success) {
+        if (userProfile.initialStatus == CubitStatus.success) {
           final clubRewardsWithAttendance = _mergeAttendanceWithClubRewards(
               rewards, userProfile.user.attendance);
           emit(state.copyWith(
               status: CubitStatus.success,
               clubRewardsWithAttendance: some(clubRewardsWithAttendance)));
         }
-        if (userProfile.status == CubitStatus.failure) {
+        if (userProfile.initialStatus == CubitStatus.failure) {
           emit(state.copyWith(status: CubitStatus.failure));
         }
       },

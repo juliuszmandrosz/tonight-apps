@@ -30,7 +30,7 @@ class NewReviewCubit extends Cubit<EventReviewState> {
   loadForm() async {
     emit(state.copyWith(status: CubitStatus.loading));
     final userProfile = await _profileBroadcastSubject.getSubject().first;
-    if (userProfile.status == CubitStatus.success) {
+    if (userProfile.initialStatus == CubitStatus.success) {
       emit(
         state.copyWith(
           status: CubitStatus.success,

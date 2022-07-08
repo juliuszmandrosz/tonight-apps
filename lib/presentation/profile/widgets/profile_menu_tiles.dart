@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:raver/presentation/profile/widgets/contact_tile.dart';
+import 'package:raver/presentation/profile/widgets/delete_account_tile.dart';
 import 'package:raver/presentation/profile/widgets/rate_us_tile.dart';
 import 'package:raver/presentation/profile/widgets/sign_out_tile.dart';
 
@@ -10,6 +11,7 @@ class ProfileMenuTiles extends StatelessWidget {
     RateUsTile(),
     ContactTile(),
     SignOutTile(),
+    DeleteAccountTile(),
   ];
 
   @override
