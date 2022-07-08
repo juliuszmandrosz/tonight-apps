@@ -32,14 +32,6 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.860373834856-b6aso5shplnefcip83iq9bacpts7u69l</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
 			<key>CFBundleURLName</key>
 			<string>Bundle Id</string>
 			<key>CFBundleURLSchemes</key>
@@ -61,14 +53,13 @@
 	<key>FirebaseDynamicLinksCustomDomains</key>
 	<array>
 		<string>https://tonightraver.page.link</string>
-		<string>https://tonightapp.page.link</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>We need to access your camera to add photo to review</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs access to location when open.</string>
+	<string>Turning on location services allows us to show nearby clubs and event</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
