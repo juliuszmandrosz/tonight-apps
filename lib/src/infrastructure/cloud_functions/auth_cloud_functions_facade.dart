@@ -31,6 +31,11 @@ abstract class AuthCloudFunctionsFacade {
     required String email,
     required String accessCode,
   });
+
+  Future<Unit> deleteAccount({
+    required String accountId,
+    required String email,
+  });
 }
 
 class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
@@ -133,6 +138,23 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
     final data = {
       'email': email,
       'accessCode': accessCode,
+    };
+
+    await _dio.post(endpoint, data: data);
+
+    return unit;
+  }
+
+  @override
+  Future<Unit> deleteAccount({
+    required String accountId,
+    required String email,
+  }) async {
+    const endpoint = 'auth/deleteAccount';
+
+    final data = {
+      'accountId': accountId,
+      'email': email,
     };
 
     await _dio.post(endpoint, data: data);

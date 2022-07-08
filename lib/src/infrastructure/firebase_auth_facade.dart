@@ -412,6 +412,21 @@ class FirebaseAuthFacade
     ]);
   }
 
+  @override
+  Future<Either<AuthFailure, Unit>> deleteAccount() async {
+    try {
+      final firebaseUser = _firebaseAuth.tryGetFirebaseUser();
+      await _authCloudFunctionsFacade.deleteAccount(
+        email: firebaseUser.email!,
+        accountId: firebaseUser.uid,
+      );
+      return right(unit);
+    } on DioError catch (e) {
+      _logger.e('Dio Error deleting account EXCEPTION: $e');
+      return left(await _handleDioError(e));
+    }
+  }
+
   Future<void> _addUserToFirestoreIfNotExists(
     UserCredential userCredential,
   ) async {

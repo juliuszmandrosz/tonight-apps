@@ -8,4 +8,6 @@ abstract class CommonAuthFacade {
   Future<Either<AuthFailure, Unit>> sendForgotPasswordEmail(String email);
 
   Future<Stream<Option<AppUser>>> listenToAuthStateChange();
+
+  Future<Either<AuthFailure, Unit>> deleteAccount();
 }
