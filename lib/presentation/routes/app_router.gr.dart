@@ -21,10 +21,10 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const SplashPage());
     },
-    AuthRoute.name: (routeData) {
+    SignInRoute.name: (routeData) {
       return CustomPage<dynamic>(
           routeData: routeData,
-          child: const AuthPage(),
+          child: const SignInPage(),
           transitionsBuilder: zoomInTransition,
           durationInMilliseconds: 300,
           opaque: true,
@@ -99,7 +99,7 @@ class _$AppRouter extends RootStackRouter {
   @override
   List<RouteConfig> get routes => [
         RouteConfig(SplashRoute.name, path: '/'),
-        RouteConfig(AuthRoute.name, path: '/auth-page'),
+        RouteConfig(SignInRoute.name, path: '/sign-in-page'),
         RouteConfig(NavigatorRoute.name, path: '/navigator-page', children: [
           RouteConfig(EventRoute.name,
               path: 'event-page', parent: NavigatorRoute.name),
@@ -123,11 +123,11 @@ class SplashRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [AuthPage]
-class AuthRoute extends PageRouteInfo<void> {
-  const AuthRoute() : super(AuthRoute.name, path: '/auth-page');
+/// [SignInPage]
+class SignInRoute extends PageRouteInfo<void> {
+  const SignInRoute() : super(SignInRoute.name, path: '/sign-in-page');
 
-  static const String name = 'AuthRoute';
+  static const String name = 'SignInRoute';
 }
 
 /// generated route for

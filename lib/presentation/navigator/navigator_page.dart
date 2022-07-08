@@ -35,7 +35,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
           listener: (context, state) => state.map(
             initial: (_) {},
             authenticated: (_) => context.replaceRoute(const NavigatorRoute()),
-            unauthenticated: (_) => context.replaceRoute(const AuthRoute()),
+            unauthenticated: (_) => context.replaceRoute(const SignInRoute()),
           ),
         ),
         BlocListener<NetworkCheckCubit, NetworkCheckState>(

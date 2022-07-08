@@ -21,7 +21,7 @@ class SignOutTile extends StatelessWidget {
 
         if (result ?? false) {
           context.read<AuthCubit>().signOut();
-          context.replaceRoute(const AuthRoute());
+          context.replaceRoute(const SignInRoute());
         }
       },
     );

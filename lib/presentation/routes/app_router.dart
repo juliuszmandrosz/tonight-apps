@@ -4,10 +4,10 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_scanner/network_lost/network_lost_page.dart';
 import 'package:raver_scanner/presentation/contact/contact_page.dart';
 import 'package:raver_scanner/presentation/event/event_page.dart';
-import 'package:raver_scanner/presentation/auth/auth_page.dart';
 import 'package:raver_scanner/presentation/navigator/navigator_page.dart';
 import 'package:raver_scanner/presentation/scanner/scanner_page.dart';
 import 'package:raver_scanner/presentation/settings/settings_page.dart';
+import 'package:raver_scanner/presentation/sign_in/sign_in_page.dart';
 import 'package:raver_scanner/presentation/splash/splash_page.dart';
 import 'package:raver_scanner/presentation/terms_of_service/terms_of_service_page.dart';
 
@@ -20,7 +20,7 @@ const animationDuration = 300;
   routes: <AutoRoute>[
     AutoRoute(page: SplashPage, initial: true),
     CustomRoute(
-      page: AuthPage,
+      page: SignInPage,
       transitionsBuilder: zoomInTransition,
       durationInMilliseconds: animationDuration,
     ),

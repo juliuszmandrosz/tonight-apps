@@ -24,7 +24,6 @@ import 'package:raver_scanner/application/current_event/current_event_cubit.dart
 import 'package:raver_scanner/application/scanner/scanner_cubit.dart';
 import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
 import 'package:raver_scanner/application/sign_in/sign_in_cubit.dart';
-import 'package:raver_scanner/application/sign_up/sign_up_cubit.dart';
 import 'package:raver_scanner/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:raver_tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
 import 'package:raver_tickets/raver_tickets.dart';
@@ -54,13 +53,6 @@ void _registerCubits() {
     () => SignInCubit(
       firebaseDynamicLinks: getIt(),
       selectorAuthFacade: getIt(),
-    ),
-  );
-
-  getIt.registerFactory(
-    () => SignUpCubit(
-      selectorAuthFacade: getIt(),
-      firebaseDynamicLinks: getIt(),
     ),
   );
 

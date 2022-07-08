@@ -9,6 +9,7 @@ class ScannerLogo extends StatelessWidget {
     return SvgPicture.asset(
       'assets/icons/scanner_logo.svg',
       semanticsLabel: 'Scanner Logo',
+      height: MediaQuery.of(context).size.height * 0.4,
     );
   }
 }

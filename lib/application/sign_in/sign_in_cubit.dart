@@ -32,8 +32,10 @@ class SignInCubit extends Cubit<SignInState> {
 
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
-    final failureOrSuccess =
-        await _authFacade.sendSignInEmailLinkForSelector(state.email.value);
+    final failureOrSuccess = await _authFacade.sendSignInEmailLinkForSelector(
+      email: state.email.value,
+      accessCode: state.accessCode,
+    );
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(failure),
@@ -44,6 +46,10 @@ class SignInCubit extends Cubit<SignInState> {
   void emailChanged(String value) {
     final email = EmailInput.dirty(value);
     emit(state.copyWith(email: email));
+  }
+
+  void accessCodeChanged(String value) {
+    emit(state.copyWith(accessCode: value));
   }
 
   _subscribeToDynamicLinks() {
@@ -60,6 +66,7 @@ class SignInCubit extends Cubit<SignInState> {
 
     final failureOrSuccess = await _authFacade.signInWithEmailLinkAsSelector(
       email: state.email.value,
+      accessCode: state.accessCode,
       link: link,
     );
 
@@ -74,9 +81,7 @@ class SignInCubit extends Cubit<SignInState> {
   }
 
   _validateForm() {
-    emit(state.copyWith(
-      email: EmailInput.dirty(state.email.value),
-    ));
+    emit(state.copyWith(email: EmailInput.dirty(state.email.value)));
 
     final status = Formz.validate([state.email]);
 
