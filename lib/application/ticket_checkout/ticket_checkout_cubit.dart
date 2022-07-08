@@ -349,11 +349,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
 
   _showSnackbarMessage(String message) {
     emit(state.copyWith(snackbarMessage: some(message)));
-
-    emit(state.copyWith(
-      snackbarMessage: none(),
-      proceedingToPaymentStatus: CubitStatus.failure,
-    ));
+    emit(state.copyWith(snackbarMessage: none()));
   }
 
   _emitProceedingToPaymentFailure(UserPaymentFailure failure) {
@@ -369,8 +365,11 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
       state.copyWith(
         snackbarMessage: none(),
         proceedingToPaymentStatus: CubitStatus.failure,
+        paymentFailure: some(failure),
       ),
     );
+
+    emit(state.copyWith(paymentFailure: none()));
   }
 
   _emitPromotionCodeFailure(UserPaymentFailure failure) {

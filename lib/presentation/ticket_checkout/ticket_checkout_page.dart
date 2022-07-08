@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -18,6 +19,7 @@ import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_summa
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_ticket_card.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class TicketCheckoutPage extends StatelessWidget {
@@ -45,7 +47,8 @@ class TicketCheckoutPage extends StatelessWidget {
               previous.initialStatus != current.initialStatus ||
               previous.proceedingToPaymentStatus !=
                   current.proceedingToPaymentStatus ||
-              previous.snackbarMessage != current.snackbarMessage,
+              previous.snackbarMessage != current.snackbarMessage ||
+              previous.paymentFailure != current.paymentFailure,
           listener: (context, state) {
             if (state.initialStatus.isFailure()) {
               context.pushRoute(
@@ -58,7 +61,7 @@ class TicketCheckoutPage extends StatelessWidget {
 
             if (state.proceedingToPaymentStatus.isSuccess() &&
                 state.purchasedTicket.isSome()) {
-              AutoRouter.of(context).replace(
+              context.replaceRoute(
                 TicketPaymentConfirmRoute(
                   ticket: state.purchasedTicket.getOrCrash(),
                 ),
@@ -73,6 +76,13 @@ class TicketCheckoutPage extends StatelessWidget {
               () {},
               (message) => context.showSnackbarMessage(message),
             );
+
+            if (state.paymentFailure ==
+                some(const UserPaymentFailure.paymentHasAlreadyBeenMade())) {
+              context.router.popUntil(
+                (route) => route.settings.name == EventDetailsRoute.name,
+              );
+            }
           },
           builder: (context, state) {
             if (state.initialStatus.isInitial() ||

@@ -286,13 +286,7 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
 
   _showSnackbarMessage(String message) {
     emit(state.copyWith(snackbarMessage: some(message)));
-
-    emit(
-      state.copyWith(
-        snackbarMessage: none(),
-        proceedingToPaymentStatus: CubitStatus.failure,
-      ),
-    );
+    emit(state.copyWith(snackbarMessage: none()));
   }
 
   _emitProceedingToPaymentFailure(UserPaymentFailure failure) {
@@ -304,10 +298,15 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
       emit(state.copyWith(snackbarMessage: some(message)));
     }
 
-    emit(state.copyWith(
-      snackbarMessage: none(),
-      proceedingToPaymentStatus: CubitStatus.failure,
-    ));
+    emit(
+      state.copyWith(
+        snackbarMessage: none(),
+        proceedingToPaymentStatus: CubitStatus.failure,
+        paymentFailure: some(failure),
+      ),
+    );
+
+    emit(state.copyWith(paymentFailure: none()));
   }
 
   _emitPromotionCodeFailure(UserPaymentFailure failure) {

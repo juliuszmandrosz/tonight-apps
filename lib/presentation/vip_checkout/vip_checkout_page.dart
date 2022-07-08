@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -16,6 +17,7 @@ import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_summary.dar
 import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_ticket_card.dart';
 import 'package:raver/presentation/vip_checkout/widgets/vip_proceed_to_pay_button.dart';
 import 'package:raver_common/raver_common.dart';
+import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -45,7 +47,9 @@ class VipCheckoutPage extends StatelessWidget {
               previous.proceedingToPaymentStatus !=
                   current.proceedingToPaymentStatus ||
               previous.snackbarMessage != current.snackbarMessage ||
-              previous.isVipNoLongerAvailable != current.isVipNoLongerAvailable,
+              previous.isVipNoLongerAvailable !=
+                  current.isVipNoLongerAvailable ||
+              previous.paymentFailure != current.paymentFailure,
           listener: (context, state) {
             if (state.initialStatus.isFailure()) {
               context.pushRoute(
@@ -75,6 +79,13 @@ class VipCheckoutPage extends StatelessWidget {
 
             if (state.isVipNoLongerAvailable) {
               context.popRoute();
+            }
+
+            if (state.paymentFailure ==
+                some(const UserPaymentFailure.paymentHasAlreadyBeenMade())) {
+              context.router.popUntil(
+                (route) => route.settings.name == TicketQrRoute.name,
+              );
             }
           },
           builder: (context, state) {

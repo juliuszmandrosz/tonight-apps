@@ -89,7 +89,7 @@ class _TicketQrPageState extends State<TicketQrPage> {
                         size: 300,
                         backgroundColor: context.onSurfaceColor,
                       ),
-                      if (widget.ticket.isVip)
+                      if (ticketInState.isVip)
                         Padding(
                           padding: const EdgeInsets.only(top: 20),
                           child: RaverHeadline(text: S().vip),

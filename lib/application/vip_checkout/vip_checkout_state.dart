@@ -22,6 +22,7 @@ class VipCheckoutState with _$VipCheckoutState {
     required Option<double> serviceFeeAmount,
     required Option<double> totalAmount,
     required Option<CurrencyParams> currencyParams,
+    required Option<UserPaymentFailure> paymentFailure,
   }) = _VipCheckoutState;
 
   factory VipCheckoutState.initial() => VipCheckoutState(
@@ -42,5 +43,6 @@ class VipCheckoutState with _$VipCheckoutState {
         serviceFeeAmount: none(),
         totalAmount: none(),
         currencyParams: none(),
+        paymentFailure: none(),
       );
 }
