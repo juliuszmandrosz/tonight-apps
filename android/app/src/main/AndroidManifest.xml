@@ -3,6 +3,20 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+
+    <queries>
+        <!-- URLs -->
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="https"/>
+        </intent>
+        <!-- Emails -->
+        <intent>
+            <action android:name="android.intent.action.SEND"/>
+            <data android:mimeType="*/*"/>
+        </intent>
+    </queries>
+
     <application
             android:label="Tonight"
             android:name="${applicationName}"
@@ -55,11 +69,6 @@
 
                 <data android:scheme="signinwithapple"/>
                 <data android:path="https://tonight-raver.firebaseapp.com/__/auth/handler"/>
-            </intent-filter>
-
-            <intent-filter>
-                <action android:name="FLUTTER_NOTIFICATION_CLICK"/>
-                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
