@@ -1,3 +1,3 @@
 # raver_scanner
 
-Tonight scanner for selectors
+Application for scanning tickets in the form of QR codes for the Tonight platform
