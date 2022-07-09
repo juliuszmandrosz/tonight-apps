@@ -57,7 +57,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>We need to access your camera to add photo to review</string>
+	<string>Turning on camera access allows us to scan your card and allow us to fill card data automatically for you.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Turning on location services allows us to show nearby clubs and event</string>
 	<key>UIBackgroundModes</key>
