@@ -1245,7 +1245,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "345b5b58b42246d9a299e69093d9dd537d94120c"
+      resolved-ref: "0a0e21c43c6a4b1b296b9d6fea27595df55a930e"
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
@@ -1263,7 +1263,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "70083374d020f43f5aa355bc47ae0387216040a6"
+      resolved-ref: baff3799a22b5bc8f617539bd49df8808bc89e68
       url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"

@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Tonight&#x0020;Partners</string>
+	<string>Tonight Partners</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -67,9 +67,9 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>This app need to access camera</string>
+	<string>To add photo to the event this app needs to access your camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Tonight needs access to library to add a photo</string>
+	<string>To add a photo to the event this app needs to access your gallery photos</string>
 	<key>UILaunchStoryboardName</key>
 	<string>$(LAUNCH_SCREEN_STORYBOARD)</string>
 	<key>UIMainStoryboardFile</key>
