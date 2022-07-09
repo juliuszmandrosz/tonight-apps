@@ -503,6 +503,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Błąd podczas płatności, proszę skontaktuj się z obsługą"),
         "paymentHasAlreadyBeenMade": MessageLookupByLibrary.simpleMessage(
             "Płatność została już zrealizowana"),
+        "paymentSessionExpired": MessageLookupByLibrary.simpleMessage(
+            "Twoja sesja płatności wygasła"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Numer telefonu"),
         "photos": m5,
         "pleaseAddPhoto":

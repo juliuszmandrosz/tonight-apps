@@ -2785,6 +2785,16 @@ class S {
     );
   }
 
+  /// `Your payment session has expired`
+  String get paymentSessionExpired {
+    return Intl.message(
+      'Your payment session has expired',
+      name: 'paymentSessionExpired',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Phone number`
   String get phoneNumber {
     return Intl.message(

@@ -544,6 +544,8 @@
   "@paymentError": {},
   "paymentHasAlreadyBeenMade": "Payment has already been made",
   "@paymentHasAlreadyBeenMade": {},
+  "paymentSessionExpired": "Your payment session has expired",
+  "@paymentSessionExpired": {},
   "phoneNumber": "Phone number",
   "@phoneNumber": {},
   "photos": "{count, plural, zero{No photos} one{Photo} other{Photos}}",

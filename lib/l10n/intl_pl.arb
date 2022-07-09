@@ -544,6 +544,8 @@
   "@paymentError": {},
   "paymentHasAlreadyBeenMade": "Płatność została już zrealizowana",
   "@paymentHasAlreadyBeenMade": {},
+  "paymentSessionExpired": "Twoja sesja płatności wygasła",
+  "@paymentSessionExpired": {},
   "phoneNumber": "Numer telefonu",
   "@phoneNumber": {},
   "photos": "{count, plural, zero{Brak zdjęć} one{Zdjęcie} few{Zdjęcia} many{Zdjęć} other{Zdjęcia}}",
