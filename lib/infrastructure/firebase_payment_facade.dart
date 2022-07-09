@@ -104,6 +104,10 @@ class FirebasePaymentFacade implements UserPaymentFacade {
           return left(const UserPaymentFailure.paymentHasAlreadyBeenMade());
         }
 
+        if (_checkIfSessionIsNotExpired(e)) {
+          return left(const UserPaymentFailure.paymentSessionHasExpired());
+        }
+
         await _crashlytics.recordError(e, StackTrace.current);
         return left(const UserPaymentFailure.stripeError());
       }
@@ -155,6 +159,10 @@ class FirebasePaymentFacade implements UserPaymentFacade {
 
       if (_checkIfPaymentAlreadyBeenMade(e)) {
         return left(const UserPaymentFailure.paymentHasAlreadyBeenMade());
+      }
+
+      if (_checkIfSessionIsNotExpired(e)) {
+        return left(const UserPaymentFailure.paymentSessionHasExpired());
       }
 
       await _crashlytics.recordError(e, StackTrace.current);
@@ -287,6 +295,18 @@ class FirebasePaymentFacade implements UserPaymentFacade {
     if (message == null) return false;
 
     if (message.contains('succeeded')) {
+      return true;
+    }
+
+    return false;
+  }
+
+  bool _checkIfSessionIsNotExpired(StripeException exception) {
+    final message = exception.error.localizedMessage;
+
+    if (message == null) return false;
+
+    if (message.contains('canceled')) {
       return true;
     }
 

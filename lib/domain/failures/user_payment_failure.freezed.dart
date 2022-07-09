@@ -35,6 +35,7 @@ mixin _$UserPaymentFailure {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +57,7 @@ mixin _$UserPaymentFailure {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +79,7 @@ mixin _$UserPaymentFailure {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -100,6 +103,8 @@ mixin _$UserPaymentFailure {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -122,6 +127,7 @@ mixin _$UserPaymentFailure {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -144,6 +150,7 @@ mixin _$UserPaymentFailure {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -224,6 +231,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return unexpected();
   }
@@ -248,6 +256,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return unexpected?.call();
   }
@@ -272,6 +281,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -301,6 +311,8 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return unexpected(this);
   }
@@ -326,6 +338,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return unexpected?.call(this);
   }
@@ -351,6 +364,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -422,6 +436,7 @@ class _$_StripeError implements _StripeError {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return stripeError();
   }
@@ -446,6 +461,7 @@ class _$_StripeError implements _StripeError {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return stripeError?.call();
   }
@@ -470,6 +486,7 @@ class _$_StripeError implements _StripeError {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (stripeError != null) {
@@ -499,6 +516,8 @@ class _$_StripeError implements _StripeError {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return stripeError(this);
   }
@@ -524,6 +543,7 @@ class _$_StripeError implements _StripeError {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return stripeError?.call(this);
   }
@@ -549,6 +569,7 @@ class _$_StripeError implements _StripeError {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (stripeError != null) {
@@ -620,6 +641,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return invalidPromotionCode();
   }
@@ -644,6 +666,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return invalidPromotionCode?.call();
   }
@@ -668,6 +691,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (invalidPromotionCode != null) {
@@ -697,6 +721,8 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return invalidPromotionCode(this);
   }
@@ -722,6 +748,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return invalidPromotionCode?.call(this);
   }
@@ -747,6 +774,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (invalidPromotionCode != null) {
@@ -818,6 +846,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return promotionCodeExpired();
   }
@@ -842,6 +871,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return promotionCodeExpired?.call();
   }
@@ -866,6 +896,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (promotionCodeExpired != null) {
@@ -895,6 +926,8 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return promotionCodeExpired(this);
   }
@@ -920,6 +953,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return promotionCodeExpired?.call(this);
   }
@@ -945,6 +979,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (promotionCodeExpired != null) {
@@ -1016,6 +1051,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return invalidEvent();
   }
@@ -1040,6 +1076,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return invalidEvent?.call();
   }
@@ -1064,6 +1101,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (invalidEvent != null) {
@@ -1093,6 +1131,8 @@ class _$_InvalidEvent implements _InvalidEvent {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return invalidEvent(this);
   }
@@ -1118,6 +1158,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return invalidEvent?.call(this);
   }
@@ -1143,6 +1184,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (invalidEvent != null) {
@@ -1214,6 +1256,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return canceledByUser();
   }
@@ -1238,6 +1281,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return canceledByUser?.call();
   }
@@ -1262,6 +1306,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (canceledByUser != null) {
@@ -1291,6 +1336,8 @@ class _$_CanceledByUser implements _CanceledByUser {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return canceledByUser(this);
   }
@@ -1316,6 +1363,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return canceledByUser?.call(this);
   }
@@ -1341,6 +1389,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (canceledByUser != null) {
@@ -1412,6 +1461,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return ticketAlreadyHasVip();
   }
@@ -1436,6 +1486,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return ticketAlreadyHasVip?.call();
   }
@@ -1460,6 +1511,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (ticketAlreadyHasVip != null) {
@@ -1489,6 +1541,8 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return ticketAlreadyHasVip(this);
   }
@@ -1514,6 +1568,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return ticketAlreadyHasVip?.call(this);
   }
@@ -1539,6 +1594,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (ticketAlreadyHasVip != null) {
@@ -1610,6 +1666,7 @@ class _$_EventCanceled implements _EventCanceled {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return eventCanceled();
   }
@@ -1634,6 +1691,7 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return eventCanceled?.call();
   }
@@ -1658,6 +1716,7 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (eventCanceled != null) {
@@ -1687,6 +1746,8 @@ class _$_EventCanceled implements _EventCanceled {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return eventCanceled(this);
   }
@@ -1712,6 +1773,7 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return eventCanceled?.call(this);
   }
@@ -1737,6 +1799,7 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (eventCanceled != null) {
@@ -1808,6 +1871,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return eventBeingPostponed();
   }
@@ -1832,6 +1896,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return eventBeingPostponed?.call();
   }
@@ -1856,6 +1921,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (eventBeingPostponed != null) {
@@ -1885,6 +1951,8 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return eventBeingPostponed(this);
   }
@@ -1910,6 +1978,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return eventBeingPostponed?.call(this);
   }
@@ -1935,6 +2004,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (eventBeingPostponed != null) {
@@ -2006,6 +2076,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return returnTimeExpired();
   }
@@ -2030,6 +2101,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return returnTimeExpired?.call();
   }
@@ -2054,6 +2126,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (returnTimeExpired != null) {
@@ -2083,6 +2156,8 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return returnTimeExpired(this);
   }
@@ -2108,6 +2183,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return returnTimeExpired?.call(this);
   }
@@ -2133,6 +2209,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (returnTimeExpired != null) {
@@ -2204,6 +2281,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return invalidCountryCode();
   }
@@ -2228,6 +2306,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return invalidCountryCode?.call();
   }
@@ -2252,6 +2331,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (invalidCountryCode != null) {
@@ -2281,6 +2361,8 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return invalidCountryCode(this);
   }
@@ -2306,6 +2388,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return invalidCountryCode?.call(this);
   }
@@ -2331,6 +2414,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (invalidCountryCode != null) {
@@ -2402,6 +2486,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return invalidVatNumber();
   }
@@ -2426,6 +2511,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return invalidVatNumber?.call();
   }
@@ -2450,6 +2536,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (invalidVatNumber != null) {
@@ -2479,6 +2566,8 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return invalidVatNumber(this);
   }
@@ -2504,6 +2593,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return invalidVatNumber?.call(this);
   }
@@ -2529,6 +2619,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (invalidVatNumber != null) {
@@ -2600,6 +2691,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return vipNoLongerAvailable();
   }
@@ -2624,6 +2716,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return vipNoLongerAvailable?.call();
   }
@@ -2648,6 +2741,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (vipNoLongerAvailable != null) {
@@ -2677,6 +2771,8 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return vipNoLongerAvailable(this);
   }
@@ -2702,6 +2798,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return vipNoLongerAvailable?.call(this);
   }
@@ -2727,6 +2824,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (vipNoLongerAvailable != null) {
@@ -2798,6 +2896,7 @@ class _$_EventHasEnded implements _EventHasEnded {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return eventHasEnded();
   }
@@ -2822,6 +2921,7 @@ class _$_EventHasEnded implements _EventHasEnded {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return eventHasEnded?.call();
   }
@@ -2846,6 +2946,7 @@ class _$_EventHasEnded implements _EventHasEnded {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (eventHasEnded != null) {
@@ -2875,6 +2976,8 @@ class _$_EventHasEnded implements _EventHasEnded {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return eventHasEnded(this);
   }
@@ -2900,6 +3003,7 @@ class _$_EventHasEnded implements _EventHasEnded {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return eventHasEnded?.call(this);
   }
@@ -2925,6 +3029,7 @@ class _$_EventHasEnded implements _EventHasEnded {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (eventHasEnded != null) {
@@ -2996,6 +3101,7 @@ class _$_EventSoldOut implements _EventSoldOut {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return eventSoldOut();
   }
@@ -3020,6 +3126,7 @@ class _$_EventSoldOut implements _EventSoldOut {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return eventSoldOut?.call();
   }
@@ -3044,6 +3151,7 @@ class _$_EventSoldOut implements _EventSoldOut {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (eventSoldOut != null) {
@@ -3073,6 +3181,8 @@ class _$_EventSoldOut implements _EventSoldOut {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return eventSoldOut(this);
   }
@@ -3098,6 +3208,7 @@ class _$_EventSoldOut implements _EventSoldOut {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return eventSoldOut?.call(this);
   }
@@ -3123,6 +3234,7 @@ class _$_EventSoldOut implements _EventSoldOut {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (eventSoldOut != null) {
@@ -3194,6 +3306,7 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return userAlreadyHasTicket();
   }
@@ -3218,6 +3331,7 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return userAlreadyHasTicket?.call();
   }
@@ -3242,6 +3356,7 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (userAlreadyHasTicket != null) {
@@ -3271,6 +3386,8 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return userAlreadyHasTicket(this);
   }
@@ -3296,6 +3413,7 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return userAlreadyHasTicket?.call(this);
   }
@@ -3321,6 +3439,7 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (userAlreadyHasTicket != null) {
@@ -3396,6 +3515,7 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
     required TResult Function() eventSoldOut,
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
   }) {
     return paymentHasAlreadyBeenMade();
   }
@@ -3420,6 +3540,7 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
   }) {
     return paymentHasAlreadyBeenMade?.call();
   }
@@ -3444,6 +3565,7 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
     TResult Function()? eventSoldOut,
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (paymentHasAlreadyBeenMade != null) {
@@ -3473,6 +3595,8 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
     required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
     required TResult Function(_PaymentHasAlreadyBeenMade value)
         paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
   }) {
     return paymentHasAlreadyBeenMade(this);
   }
@@ -3498,6 +3622,7 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
   }) {
     return paymentHasAlreadyBeenMade?.call(this);
   }
@@ -3523,6 +3648,7 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
     TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
     required TResult orElse(),
   }) {
     if (paymentHasAlreadyBeenMade != null) {
@@ -3534,4 +3660,212 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
 
 abstract class _PaymentHasAlreadyBeenMade implements UserPaymentFailure {
   const factory _PaymentHasAlreadyBeenMade() = _$_PaymentHasAlreadyBeenMade;
+}
+
+/// @nodoc
+abstract class _$$_PaymentSessionHasExpiredCopyWith<$Res> {
+  factory _$$_PaymentSessionHasExpiredCopyWith(
+          _$_PaymentSessionHasExpired value,
+          $Res Function(_$_PaymentSessionHasExpired) then) =
+      __$$_PaymentSessionHasExpiredCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_PaymentSessionHasExpiredCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    implements _$$_PaymentSessionHasExpiredCopyWith<$Res> {
+  __$$_PaymentSessionHasExpiredCopyWithImpl(_$_PaymentSessionHasExpired _value,
+      $Res Function(_$_PaymentSessionHasExpired) _then)
+      : super(_value, (v) => _then(v as _$_PaymentSessionHasExpired));
+
+  @override
+  _$_PaymentSessionHasExpired get _value =>
+      super._value as _$_PaymentSessionHasExpired;
+}
+
+/// @nodoc
+
+class _$_PaymentSessionHasExpired implements _PaymentSessionHasExpired {
+  const _$_PaymentSessionHasExpired();
+
+  @override
+  String toString() {
+    return 'UserPaymentFailure.paymentSessionHasExpired()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentSessionHasExpired);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() stripeError,
+    required TResult Function() invalidPromotionCode,
+    required TResult Function() promotionCodeExpired,
+    required TResult Function() invalidEvent,
+    required TResult Function() canceledByUser,
+    required TResult Function() ticketAlreadyHasVip,
+    required TResult Function() eventCanceled,
+    required TResult Function() eventBeingPostponed,
+    required TResult Function() returnTimeExpired,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() invalidVatNumber,
+    required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
+    required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
+    required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
+  }) {
+    return paymentSessionHasExpired();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? stripeError,
+    TResult Function()? invalidPromotionCode,
+    TResult Function()? promotionCodeExpired,
+    TResult Function()? invalidEvent,
+    TResult Function()? canceledByUser,
+    TResult Function()? ticketAlreadyHasVip,
+    TResult Function()? eventCanceled,
+    TResult Function()? eventBeingPostponed,
+    TResult Function()? returnTimeExpired,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? invalidVatNumber,
+    TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
+    TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
+    TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
+  }) {
+    return paymentSessionHasExpired?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? stripeError,
+    TResult Function()? invalidPromotionCode,
+    TResult Function()? promotionCodeExpired,
+    TResult Function()? invalidEvent,
+    TResult Function()? canceledByUser,
+    TResult Function()? ticketAlreadyHasVip,
+    TResult Function()? eventCanceled,
+    TResult Function()? eventBeingPostponed,
+    TResult Function()? returnTimeExpired,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? invalidVatNumber,
+    TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
+    TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
+    TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
+    required TResult orElse(),
+  }) {
+    if (paymentSessionHasExpired != null) {
+      return paymentSessionHasExpired();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_StripeError value) stripeError,
+    required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
+    required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
+    required TResult Function(_InvalidEvent value) invalidEvent,
+    required TResult Function(_CanceledByUser value) canceledByUser,
+    required TResult Function(_TicketAlreadyHasVip value) ticketAlreadyHasVip,
+    required TResult Function(_EventCanceled value) eventCanceled,
+    required TResult Function(_EventBeingPostponed value) eventBeingPostponed,
+    required TResult Function(_ReturnTimeExpired value) returnTimeExpired,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_InvalidVatNumber value) invalidVatNumber,
+    required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
+    required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
+    required TResult Function(_PaymentHasAlreadyBeenMade value)
+        paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
+  }) {
+    return paymentSessionHasExpired(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_StripeError value)? stripeError,
+    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_CanceledByUser value)? canceledByUser,
+    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult Function(_EventCanceled value)? eventCanceled,
+    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
+    TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult Function(_PaymentHasAlreadyBeenMade value)?
+        paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+  }) {
+    return paymentSessionHasExpired?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_StripeError value)? stripeError,
+    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_CanceledByUser value)? canceledByUser,
+    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult Function(_EventCanceled value)? eventCanceled,
+    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
+    TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult Function(_PaymentHasAlreadyBeenMade value)?
+        paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    required TResult orElse(),
+  }) {
+    if (paymentSessionHasExpired != null) {
+      return paymentSessionHasExpired(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PaymentSessionHasExpired implements UserPaymentFailure {
+  const factory _PaymentSessionHasExpired() = _$_PaymentSessionHasExpired;
 }

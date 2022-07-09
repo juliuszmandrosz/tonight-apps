@@ -42,4 +42,7 @@ class UserPaymentFailure with _$UserPaymentFailure {
 
   const factory UserPaymentFailure.paymentHasAlreadyBeenMade() =
       _PaymentHasAlreadyBeenMade;
+
+  const factory UserPaymentFailure.paymentSessionHasExpired() =
+      _PaymentSessionHasExpired;
 }
