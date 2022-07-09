@@ -19,6 +19,7 @@ String getPaymentFailureMessage(UserPaymentFailure failure) {
     eventSoldOut: (_) => S().eventSoldOut,
     userAlreadyHasTicket: (_) => S().userAlreadyHasTicket,
     paymentHasAlreadyBeenMade: (_) => S().paymentHasAlreadyBeenMade,
+    paymentSessionHasExpired: (_) => S().paymentSessionExpired,
     canceledByUser: (_) => '',
   );
 }
