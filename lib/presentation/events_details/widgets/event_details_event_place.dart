@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
@@ -24,6 +25,7 @@ class EventDetailsEventPlace extends StatefulWidget {
 class _EventDetailsEventPlaceState extends State<EventDetailsEventPlace> {
   final Completer<GoogleMapController> _controller = Completer();
   late final String _mapStyle;
+  var _isMapLoading = true;
 
   @override
   void initState() {
@@ -39,6 +41,8 @@ class _EventDetailsEventPlaceState extends State<EventDetailsEventPlace> {
   Widget build(BuildContext context) {
     final lat = widget.event.getLatitude();
     final lng = widget.event.getLongitude();
+    const mapHeight = 300.0;
+    const mapWidth = 400.0;
     return Column(
       children: [
         Align(
@@ -50,43 +54,59 @@ class _EventDetailsEventPlaceState extends State<EventDetailsEventPlace> {
         ),
         const SizedBox(height: 20),
         SizedBox(
-          width: 400,
-          height: 300,
-          child: GoogleMap(
-            onTap: (_) async {
-              var result = await MapsLauncher.launchCoordinates(
-                lat,
-                lng,
-                widget.event.clubName,
-              );
-              if (!result) {
-                context.showSnackbarMessage(S().errorOpeningMaps);
-              }
-            },
-            zoomGesturesEnabled: false,
-            scrollGesturesEnabled: false,
-            tiltGesturesEnabled: false,
-            rotateGesturesEnabled: false,
-            zoomControlsEnabled: false,
-            onMapCreated: (controller) {
-              controller.setMapStyle(_mapStyle);
-              _controller.complete(controller);
-            },
-            markers: {
-              Marker(
-                markerId: const MarkerId('m1'),
-                position: LatLng(
-                  widget.event.getLatitude(),
-                  widget.event.getLongitude(),
+          height: mapHeight,
+          width: mapWidth,
+          child: Stack(
+            children: [
+              GoogleMap(
+                onTap: (_) async {
+                  var result = await MapsLauncher.launchCoordinates(
+                    lat,
+                    lng,
+                    widget.event.clubName,
+                  );
+                  if (!result) {
+                    context.showSnackbarMessage(S().errorOpeningMaps);
+                  }
+                },
+                zoomGesturesEnabled: false,
+                scrollGesturesEnabled: false,
+                tiltGesturesEnabled: false,
+                rotateGesturesEnabled: false,
+                zoomControlsEnabled: false,
+                onMapCreated: (controller) {
+                  controller.setMapStyle(_mapStyle);
+                  setState(() {
+                    _isMapLoading = false;
+                  });
+                  _controller.complete(controller);
+                },
+                markers: {
+                  Marker(
+                    markerId: const MarkerId('m1'),
+                    position: LatLng(
+                      widget.event.getLatitude(),
+                      widget.event.getLongitude(),
+                    ),
+                    icon: BitmapDescriptor.defaultMarkerWithHue(245),
+                    alpha: 0.8,
+                  ),
+                },
+                initialCameraPosition: CameraPosition(
+                  target: LatLng(lat, lng),
+                  zoom: 16,
                 ),
-                icon: BitmapDescriptor.defaultMarkerWithHue(245),
-                alpha: 0.8,
               ),
-            },
-            initialCameraPosition: CameraPosition(
-              target: LatLng(lat, lng),
-              zoom: 16,
-            ),
+              if (_isMapLoading)
+                SizedBox(
+                  height: mapHeight,
+                  width: mapWidth,
+                  child: SpinKitThreeBounce(
+                    color: context.onSurfaceColor,
+                    size: 24,
+                  ),
+                ),
+            ],
           ),
         )
       ],
