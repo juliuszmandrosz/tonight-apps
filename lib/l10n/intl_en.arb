@@ -790,6 +790,8 @@
   "@totalRevenue": {},
   "tryAgain": "Try again",
   "@tryAgain": {},
+  "typeClubCityOrStreet": "Enter the name of the club, city or street",
+  "@typeClubCityOrStreet": {},
   "typeEventClubOrArtistName": "Enter the name of the event, club or artist",
   "@typeEventClubOrArtistName": {},
   "unexpectedError": "Unexpected error",

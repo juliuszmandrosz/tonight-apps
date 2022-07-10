@@ -4027,6 +4027,16 @@ class S {
     );
   }
 
+  /// `Enter the name of the club, city or street`
+  String get typeClubCityOrStreet {
+    return Intl.message(
+      'Enter the name of the club, city or street',
+      name: 'typeClubCityOrStreet',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Enter the name of the event, club or artist`
   String get typeEventClubOrArtistName {
     return Intl.message(

@@ -696,6 +696,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "totalRevenue":
             MessageLookupByLibrary.simpleMessage("Całkowity przychód"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Spróbuj ponownie"),
+        "typeClubCityOrStreet": MessageLookupByLibrary.simpleMessage(
+            "Wpisz nazwę klubu, miasto lub ulicę"),
         "typeEventClubOrArtistName": MessageLookupByLibrary.simpleMessage(
             "Wpisz nazwę wydarzenia, klubu lub artysty"),
         "unexpectedError":

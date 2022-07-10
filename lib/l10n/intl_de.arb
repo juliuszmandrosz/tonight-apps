@@ -790,6 +790,8 @@
   "@totalRevenue": {},
   "tryAgain": "Versuche es nochmal ",
   "@tryAgain": {},
+  "typeClubCityOrStreet": "",
+  "@typeClubCityOrStreet": {},
   "typeEventClubOrArtistName": "Gib den Namen von Event, Club oder Künstler ein",
   "@typeEventClubOrArtistName": {},
   "unexpectedError": "",
