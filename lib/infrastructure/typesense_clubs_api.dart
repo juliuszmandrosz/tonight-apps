@@ -23,12 +23,15 @@ class TypesenseClubsApiImpl implements TypesenseClubsApi {
     final filterBy = filters.buildFilters();
     final pageNumber = ((offset + 1) / pageSize).ceil();
 
-    return await _typesense.collection('clubs').documents.search({
-      'q': filters.phraseFilter.phrase,
-      'query_by': 'clubName, locationString',
-      'filter_by': filterBy,
-      'page': '$pageNumber',
-      'per_page': '$pageSize',
-    });
+    return await _typesense.collection('clubs').documents.search(
+      {
+        'q': filters.phraseFilter.phrase,
+        'query_by': 'clubName, locationString',
+        'filter_by': filterBy,
+        'page': '$pageNumber',
+        'per_page': '$pageSize',
+        'sort_by': 'reviewCount:desc, reviewAvg:desc'
+      },
+    );
   }
 }
