@@ -17,6 +17,7 @@ import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_pay_s
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_promotion_code.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_summary.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_ticket_card.dart';
+import 'package:raver/presentation/ticket_checkout/widgets/vip_not_enabled_info.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_payments/domain/domain.dart';
@@ -104,7 +105,9 @@ class TicketCheckoutPage extends StatelessWidget {
                           const SizedBox(height: 20),
                           const TicketCheckoutTicketCard(),
                           const SizedBox(height: 30),
-                          if (_checkIfVipSwitchVisible(state))
+                          if (_checkIfVipIsNotEnabled(state))
+                            const VipNotEnabledInfo(),
+                          if (_checkIfVipSwitchIsVisible(state))
                             const TicketCheckoutIsVipSwitch(),
                           if (!state.eventTickets.getOrCrash().isSoldOut)
                             const TicketCheckoutPromotionCode(),
@@ -125,9 +128,15 @@ class TicketCheckoutPage extends StatelessWidget {
     );
   }
 
-  bool _checkIfVipSwitchVisible(TicketCheckoutState state) {
+  bool _checkIfVipSwitchIsVisible(TicketCheckoutState state) {
     final eventTickets = state.eventTickets.getOrCrash();
     return !eventTickets.isSoldOut &&
         eventTickets.getCurrentPool().isVipEnabled;
+  }
+
+  bool _checkIfVipIsNotEnabled(TicketCheckoutState state) {
+    final eventTickets = state.eventTickets.getOrCrash();
+    return !eventTickets.isSoldOut &&
+        !eventTickets.getCurrentPool().isVipEnabled;
   }
 }

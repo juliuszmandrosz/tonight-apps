@@ -705,7 +705,7 @@ packages:
       name: flutter_local_notifications
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "9.6.1"
+    version: "9.7.0"
   flutter_local_notifications_linux:
     dependency: transitive
     description:
@@ -1449,7 +1449,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "0ae78327e96e23c33fe3b6f9f45e1671bab7c103"
+      resolved-ref: "62c5d8b8289d561f952accec32c8619bf93507eb"
       url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"
