@@ -838,6 +838,8 @@
   "@vipInfo": {},
   "vipNoLongerAvailable": "VIP nie jest już dostępny",
   "@vipNoLongerAvailable": {},
+  "vipNotEnabledInfo": "Bilet VIP nie jest aktualnie dostępny na to wydarzenie",
+  "@vipNotEnabledInfo": {},
   "vipPrice": "Cena VIP-a",
   "@vipPrice": {},
   "vipPriceHasChanged": "Cena VIP-a zmieniła się",

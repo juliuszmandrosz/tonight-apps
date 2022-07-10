@@ -4267,6 +4267,16 @@ class S {
     );
   }
 
+  /// `VIP ticket is not currently available for this event`
+  String get vipNotEnabledInfo {
+    return Intl.message(
+      'VIP ticket is not currently available for this event',
+      name: 'vipNotEnabledInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `VIP price`
   String get vipPrice {
     return Intl.message(

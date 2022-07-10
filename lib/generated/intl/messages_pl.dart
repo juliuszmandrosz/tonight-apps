@@ -738,6 +738,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bilet VIP umożliwia wejście do klubu bez kolejki"),
         "vipNoLongerAvailable":
             MessageLookupByLibrary.simpleMessage("VIP nie jest już dostępny"),
+        "vipNotEnabledInfo": MessageLookupByLibrary.simpleMessage(
+            "Bilet VIP nie jest aktualnie dostępny na to wydarzenie"),
         "vipPrice": MessageLookupByLibrary.simpleMessage("Cena VIP-a"),
         "vipPriceHasChanged":
             MessageLookupByLibrary.simpleMessage("Cena VIP-a zmieniła się"),

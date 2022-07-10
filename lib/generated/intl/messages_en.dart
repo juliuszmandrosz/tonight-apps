@@ -722,6 +722,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "VIP ticket allows to skip the line to the club"),
         "vipNoLongerAvailable":
             MessageLookupByLibrary.simpleMessage("VIP no longer available"),
+        "vipNotEnabledInfo": MessageLookupByLibrary.simpleMessage(
+            "VIP ticket is not currently available for this event"),
         "vipPrice": MessageLookupByLibrary.simpleMessage("VIP price"),
         "vipPriceHasChanged":
             MessageLookupByLibrary.simpleMessage("VIP price has changed"),
