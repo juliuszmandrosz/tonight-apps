@@ -68,7 +68,27 @@ class RaverApp extends StatelessWidget {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            supportedLocales: S.delegate.supportedLocales,
+            supportedLocales: const [
+              Locale.fromSubtags(languageCode: 'pl'),
+              Locale.fromSubtags(languageCode: 'en'),
+            ],
+            localeListResolutionCallback: (locales, supportedLocalesList) {
+              if (locales == null) {
+                return const Locale('en', 'EN');
+              }
+
+              final supportedLocales = supportedLocalesList
+                  .map((locale) => locale.toString().toLowerCase());
+
+              for (final locale in locales) {
+                if (supportedLocales.contains(
+                  locale.toString().toLowerCase().substring(0, 2),
+                )) {
+                  return locale;
+                }
+              }
+              return const Locale('en', 'EN');
+            },
           );
         },
       ),
