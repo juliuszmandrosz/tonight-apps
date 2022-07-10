@@ -425,6 +425,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Benachrichtigungen"),
         "numberOfTickets":
             MessageLookupByLibrary.simpleMessage("Anzahl der Tickets "),
+        "onPrivacyPolicy": MessageLookupByLibrary.simpleMessage(""),
         "oneTimeAccessCode": MessageLookupByLibrary.simpleMessage(
             "Einmaliger Zugangscode für Selektor"),
         "operationNotAllowed": MessageLookupByLibrary.simpleMessage(""),

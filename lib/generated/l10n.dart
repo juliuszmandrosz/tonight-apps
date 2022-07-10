@@ -2612,6 +2612,16 @@ class S {
     );
   }
 
+  /// `Privacy policy`
+  String get onPrivacyPolicy {
+    return Intl.message(
+      'Privacy policy',
+      name: 'onPrivacyPolicy',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Operation is not allowed`
   String get operationNotAllowed {
     return Intl.message(

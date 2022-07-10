@@ -510,6 +510,8 @@
   "@numberOfTickets": {},
   "oneTimeAccessCode": "Jednorazowy kod dostępu dla selekcjonera",
   "@oneTimeAccessCode": {},
+  "onPrivacyPolicy": "Politykę prywatności",
+  "@onPrivacyPolicy": {},
   "operationNotAllowed": "Operacja nie jest dozwolona",
   "@operationNotAllowed": {},
   "opinions": "{count, plural, zero{Opinii} one{Opinia} few{Opinie} many{Opinii} other{Opinie}}",
