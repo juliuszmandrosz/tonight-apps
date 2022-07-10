@@ -16,7 +16,7 @@ class EventConcertInfo extends StatelessWidget {
         Row(
           children: [
             const FaIcon(
-              FontAwesomeIcons.microphone,
+              FontAwesomeIcons.microphoneLines,
               size: 18,
             ),
             const SizedBox(width: 10),
