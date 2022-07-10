@@ -26,14 +26,16 @@ class TypesenseEventsApiImpl implements TypesenseEventsApi {
     final pageNumber = ((offset + 1) / pageSize).ceil();
     final sortBy = _getSortBy(sortModel);
 
-    return await _typesense.collection('events').documents.search({
-      'q': filters.phraseFilter.phrase,
-      'query_by': 'eventName, artistName, clubName',
-      'filter_by': filterBy,
-      'page': '$pageNumber',
-      'per_page': '$pageSize',
-      'sort_by': sortBy,
-    });
+    return await _typesense.collection('events').documents.search(
+      {
+        'q': filters.phraseFilter.phrase,
+        'query_by': 'eventName, artistName, clubName',
+        'filter_by': filterBy,
+        'page': '$pageNumber',
+        'per_page': '$pageSize',
+        'sort_by': sortBy,
+      },
+    );
   }
 
   _getSortBy(EventSortModel sortModel) {

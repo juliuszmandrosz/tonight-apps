@@ -19,6 +19,7 @@ import 'package:raver_events/infrastructure/events/dtos/event_dto.dart';
 import 'package:raver_events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
 import 'package:raver_events/infrastructure/typesense_events_api.dart';
 import 'package:typesense/typesense.dart';
+import 'package:uuid/uuid.dart';
 
 class FirebaseEventFacade
     implements
@@ -348,7 +349,9 @@ class FirebaseEventFacade
     required File photo,
   }) async {
     try {
-      final storageRef = _storage.ref('clubs/$clubId/event_images/$eventId');
+      final photoId = const Uuid().v1();
+      final storageRef =
+          _storage.ref('clubs/$clubId/event_images/$eventId/$photoId');
       final uploadTask = await storageRef.putFile(photo);
       final result = await uploadTask.ref.getDownloadURL();
       return right(result);
