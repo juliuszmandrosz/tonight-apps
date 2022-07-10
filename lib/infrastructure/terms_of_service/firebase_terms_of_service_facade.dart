@@ -22,7 +22,7 @@ class FirebaseTermsOfServiceFacade implements UserTermsOfServiceFacade {
       getTermsOfServiceForUser() async {
     try {
       final storageRef = _storage.ref(
-        'terms_of_service/tonight/terms_of_service/tonight_terms_of_service.pdf',
+        'terms_of_service/tonight/tonight_terms_of_service.pdf',
       );
       final url = await storageRef.getDownloadURL();
       return right(url);
