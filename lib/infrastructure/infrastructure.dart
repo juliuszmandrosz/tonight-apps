@@ -10,3 +10,4 @@ export 'firebase_auth_extensions.dart';
 export 'algolia_query_builder.dart';
 export 'remote_config/firebase_remote_config_facade.dart';
 export 'typesense_query_builder.dart';
+export 'terms_of_service/firebase_terms_of_service_facade.dart';

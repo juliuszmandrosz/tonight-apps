@@ -126,7 +126,7 @@ abstract class _NetworkCheckState extends NetworkCheckState {
   _NetworkCheckState._() : super._();
 
   @override
-  bool get isConnected => throw _privateConstructorUsedError;
+  bool get isConnected;
   @override
   @JsonKey(ignore: true)
   _$$_NetworkCheckStateCopyWith<_$_NetworkCheckState> get copyWith =>

@@ -125,7 +125,7 @@ abstract class _RemoteConfigState extends RemoteConfigState {
   _RemoteConfigState._() : super._();
 
   @override
-  CubitStatus get status => throw _privateConstructorUsedError;
+  CubitStatus get status;
   @override
   @JsonKey(ignore: true)
   _$$_RemoteConfigStateCopyWith<_$_RemoteConfigState> get copyWith =>

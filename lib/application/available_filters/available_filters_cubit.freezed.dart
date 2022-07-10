@@ -472,7 +472,7 @@ abstract class _LoadSuccess implements AvailableFiltersState {
   const factory _LoadSuccess(final AvailableFilters availableFilters) =
       _$_LoadSuccess;
 
-  AvailableFilters get availableFilters => throw _privateConstructorUsedError;
+  AvailableFilters get availableFilters;
   @JsonKey(ignore: true)
   _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -633,8 +633,7 @@ abstract class _LoadFailure implements AvailableFiltersState {
   const factory _LoadFailure(
       final AvailableFiltersFailure availableFiltersFailure) = _$_LoadFailure;
 
-  AvailableFiltersFailure get availableFiltersFailure =>
-      throw _privateConstructorUsedError;
+  AvailableFiltersFailure get availableFiltersFailure;
   @JsonKey(ignore: true)
   _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
       throw _privateConstructorUsedError;

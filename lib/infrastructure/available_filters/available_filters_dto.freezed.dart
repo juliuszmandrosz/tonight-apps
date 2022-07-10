@@ -231,13 +231,13 @@ abstract class _AvailableFiltersDto extends AvailableFiltersDto {
       _$_AvailableFiltersDto.fromJson;
 
   @override
-  List<String> get allowedOutfits => throw _privateConstructorUsedError;
+  List<String> get allowedOutfits;
   @override
-  List<String> get musicalGenres => throw _privateConstructorUsedError;
+  List<String> get musicalGenres;
   @override
-  List<String> get currencies => throw _privateConstructorUsedError;
+  List<String> get currencies;
   @override
-  List<int> get minAges => throw _privateConstructorUsedError;
+  List<int> get minAges;
   @override
   @JsonKey(ignore: true)
   _$$_AvailableFiltersDtoCopyWith<_$_AvailableFiltersDto> get copyWith =>

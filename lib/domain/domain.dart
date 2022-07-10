@@ -9,3 +9,5 @@ export 'currency_params/currency_params_facade.dart';
 export 'currency_params/currency_params_failure.dart';
 export 'remote_config/remote_config_facade.dart';
 export 'remote_config/remote_config_failure.dart';
+export 'terms_of_service/terms_of_service_failure.dart';
+export 'terms_of_service/user_terms_of_service_facade.dart';

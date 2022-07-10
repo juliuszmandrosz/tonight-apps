@@ -185,11 +185,11 @@ abstract class _CurrencyParamsDto extends CurrencyParamsDto {
       _$_CurrencyParamsDto.fromJson;
 
   @override
-  int get minTicketPrice => throw _privateConstructorUsedError;
+  int get minTicketPrice;
   @override
-  int get maxTicketPrice => throw _privateConstructorUsedError;
+  int get maxTicketPrice;
   @override
-  double get minServiceFeeAmount => throw _privateConstructorUsedError;
+  double get minServiceFeeAmount;
   @override
   @JsonKey(ignore: true)
   _$$_CurrencyParamsDtoCopyWith<_$_CurrencyParamsDto> get copyWith =>
