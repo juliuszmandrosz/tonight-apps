@@ -4,14 +4,14 @@ import 'package:raver/application/terms_of_service/terms_of_service_cubit.dart';
 import 'package:raver/presentation/profile/widgets/profile_menu_list_tile.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class TermsOfServiceTile extends StatelessWidget {
-  const TermsOfServiceTile({Key? key}) : super(key: key);
+class PrivacyPolicyTile extends StatelessWidget {
+  const PrivacyPolicyTile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ProfileMenuListTile(
-      title: S().termsOfService,
-      onTap: () => context.read<TermsOfServiceCubit>().getTermsOfService(),
+      title: S().privacyPolicy,
+      onTap: () => context.read<TermsOfServiceCubit>().getPrivacyPolicy(),
     );
   }
 }

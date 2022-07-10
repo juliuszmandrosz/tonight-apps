@@ -296,9 +296,10 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerFactory(
-    () => TermsOfServiceCubit(
-      getIt(),
+  getIt.registerFactoryParam(
+    (NetworkCheckCubit networkCheckCubit, _) => TermsOfServiceCubit(
+      networkCheckCubit: networkCheckCubit,
+      userTermsOfServiceFacade: getIt(),
     ),
   );
 }

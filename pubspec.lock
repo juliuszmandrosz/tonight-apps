@@ -1404,7 +1404,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "7bd19158ace6fc6a425270d3ea33ec6e36a052d9"
+      resolved-ref: "1da61e0f4e641bec72284828ad18dfe0c8676529"
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -1449,7 +1449,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: a27b218fd0fe791853a78fe8370e747028504d0b
+      resolved-ref: a8fec587d4bac94e3ed3717532c94274c63bbb9b
       url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"

@@ -8,6 +8,7 @@ import 'package:raver/injection.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver/presentation/sign_in/widgets/sign_in_buttons.dart';
 import 'package:raver/presentation/sign_in/widgets/sign_in_email_input.dart';
+import 'package:raver/presentation/sign_in/widgets/terms_of_service_info.dart';
 import 'package:raver/presentation/sign_in/widgets/tonight_logo.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
@@ -56,6 +57,8 @@ class SignInPage extends StatelessWidget {
                         SizedBox(height: 10),
                         TonightLogo(),
                         SignInEmailInput(),
+                        SizedBox(height: 20),
+                        TermsOfServiceInfo(),
                         SizedBox(height: 30),
                       ],
                     ),
