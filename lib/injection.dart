@@ -35,6 +35,7 @@ import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart'
 import 'package:raver/application/invoice_data/invoice_data_cubit.dart';
 import 'package:raver/application/profile/profile_cubit_hub.dart';
 import 'package:raver/application/push_notifications/push_notifications_cubit.dart';
+import 'package:raver/application/terms_of_service/terms_of_service_cubit.dart';
 import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/application/ticket_qr/ticket_qr_cubit.dart';
@@ -294,6 +295,12 @@ void _registerCubits() {
       userAccountFacade: getIt(),
     ),
   );
+
+  getIt.registerFactory(
+    () => TermsOfServiceCubit(
+      getIt(),
+    ),
+  );
 }
 
 void _registerCubitSubjects() {
@@ -476,6 +483,14 @@ void _registerFacades() {
       firestore: getIt(),
       logger: getIt(),
       crashlytics: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<UserTermsOfServiceFacade>(
+    () => FirebaseTermsOfServiceFacade(
+      firebaseStorage: getIt(),
+      logger: getIt(),
+      firebaseCrashlytics: getIt(),
     ),
   );
 }

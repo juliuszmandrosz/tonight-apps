@@ -97,7 +97,6 @@ class ProfilePage extends StatelessWidget {
                       const SocialMediaRow(),
                       const SizedBox(height: 20),
                       const ProfileMenuTiles(),
-                      const SizedBox(height: 70),
                     ],
                   ),
                 ),
