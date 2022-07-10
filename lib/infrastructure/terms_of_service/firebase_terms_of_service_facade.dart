@@ -34,4 +34,22 @@ class FirebaseTermsOfServiceFacade implements UserTermsOfServiceFacade {
       return left(TermsOfServiceFailure.unexpected());
     }
   }
+
+  @override
+  Future<Either<TermsOfServiceFailure, String>>
+      getPrivacyPolicyForUser() async {
+    try {
+      final storageRef = _storage.ref(
+        'terms_of_service/tonight/tonight_privacy_policy.pdf',
+      );
+      final url = await storageRef.getDownloadURL();
+      return right(url);
+    } on FirebaseException catch (e) {
+      _logger.e(
+        'Firebase Exception getting privacy policy for user EXCEPTION: $e',
+      );
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(TermsOfServiceFailure.unexpected());
+    }
+  }
 }
