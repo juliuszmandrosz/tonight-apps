@@ -16,21 +16,30 @@ class NetworkCheckCubit extends Cubit<NetworkCheckState> {
 
   void initNetworkListener() {
     _connectivitySub = _connectivity.onConnectivityChanged.listen((result) {
-      _checkConnection(result);
+      _emitConnectionStatus(result);
     });
   }
 
   Future<void> retryNetworkConnection() async {
-    _checkConnection(await _connectivity.checkConnectivity());
+    _emitConnectionStatus(await _connectivity.checkConnectivity());
   }
 
-  _checkConnection(ConnectivityResult result) {
-    if (result == ConnectivityResult.wifi ||
-        result == ConnectivityResult.mobile) {
+  Future<bool> checkNetworkConnection() async {
+    final result = await _connectivity.checkConnectivity();
+    return _checkConnection(result);
+  }
+
+  _emitConnectionStatus(ConnectivityResult result) {
+    if (_checkConnection(result)) {
       emit(state.copyWith(isConnected: true));
       return;
     }
     emit(state.copyWith(isConnected: false));
+  }
+
+  _checkConnection(ConnectivityResult result) {
+    return result == ConnectivityResult.wifi ||
+        result == ConnectivityResult.mobile;
   }
 
   @override
