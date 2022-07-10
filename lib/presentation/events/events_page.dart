@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -8,6 +7,7 @@ import 'package:raver/injection.dart';
 import 'package:raver/presentation/events/widgets/event_card.dart';
 import 'package:raver/presentation/events/widgets/event_filters_row.dart';
 import 'package:raver/presentation/events/widgets/event_search_field.dart';
+import 'package:raver/presentation/events/widgets/search_events_info.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
@@ -50,11 +50,7 @@ class _EventsPageState extends State<EventsPage> {
                   physics: const AlwaysScrollableScrollPhysics(),
                   controller: _scrollController,
                   children: [
-                    AutoSizeText(
-                      S().typeEventClubOrArtistName,
-                      maxLines: 1,
-                      textAlign: TextAlign.center,
-                    ),
+                    const SearchEventsInfo(),
                     const SizedBox(height: 15),
                     const EventFiltersRow(),
                     const SizedBox(height: 15),
