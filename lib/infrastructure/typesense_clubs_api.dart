@@ -25,7 +25,7 @@ class TypesenseClubsApiImpl implements TypesenseClubsApi {
 
     return await _typesense.collection('clubs').documents.search({
       'q': filters.phraseFilter.phrase,
-      'query_by': 'clubName',
+      'query_by': 'clubName, locationString',
       'filter_by': filterBy,
       'page': '$pageNumber',
       'per_page': '$pageSize',
