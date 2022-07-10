@@ -41,166 +41,159 @@ class EventDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) {
-        final cubit = getIt<EventDetailsCubit>();
-        eventId != null
-            ? cubit.getEventById(eventId!)
-            : cubit.addEventToState(event!);
-        return cubit;
-      },
-      child: BlocConsumer<EventDetailsCubit, EventDetailsState>(
-        listener: (context, state) {
-          if (state.maybeWhen(orElse: () => false, loadFailure: (_) => true)) {
-            context.pushRoute(
-              FailureRoute(
-                retryCallback: () =>
-                    context.read<EventDetailsCubit>().getEventById(eventId!),
-              ),
-            );
-          }
+      create: (context) => getIt<EventTicketsCubit>(),
+      child: BlocProvider(
+        create: (context) {
+          final cubit = getIt<EventDetailsCubit>(
+            param1: context.read<EventTicketsCubit>(),
+          );
+          eventId != null
+              ? cubit.getEventById(eventId!)
+              : cubit.addEventToState(event!);
+          return cubit;
         },
-        builder: (context, state) {
-          return state.map(
-            initial: (_) => Container(),
-            loadInProgress: (_) => const TicketLogoAnimation(),
-            loadFailure: (_) => Container(),
-            loadSuccess: (state) {
-              final event = state.event;
-              return BlocProvider(
-                create: (context) => getIt<EventTicketsCubit>()
-                  ..getEventTickets(
-                    eventId: event.id,
-                    clubId: event.clubId,
-                  ),
-                child: BlocBuilder<TicketListCubit, TicketListState>(
+        child: BlocConsumer<EventDetailsCubit, EventDetailsState>(
+          listener: (context, state) {
+            if (state.status.isFailure()) {
+              final cubit = context.read<EventDetailsCubit>();
+              final callback = eventId != null
+                  ? cubit.getEventById(eventId!)
+                  : cubit.addEventToState(event!);
+              context.pushRoute(
+                FailureRoute(retryCallback: () => callback),
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state.status.isInitial() || state.status.isFailure()) {
+              return Container();
+            }
+
+            if (state.status.isLoading()) {
+              return const TicketLogoAnimation();
+            }
+
+            final event = state.event.getOrCrash();
+            return BlocBuilder<TicketListCubit, TicketListState>(
+              builder: (context, state) {
+                final ticket = state.upcomingLiveTickets.singleWhereOrNull(
+                  (ticket) => ticket.eventId == event.id && !ticket.isReturned,
+                );
+                return BlocBuilder<EventTicketsCubit, EventTicketsState>(
                   builder: (context, state) {
-                    final ticket = state.upcomingLiveTickets.singleWhereOrNull(
-                      (ticket) =>
-                          ticket.eventId == event.id && !ticket.isReturned,
-                    );
-                    return BlocBuilder<EventTicketsCubit, EventTicketsState>(
-                      builder: (context, state) {
-                        final eventTickets = state.eventTickets.fold(
-                          () => null,
-                          (tickets) => tickets,
-                        );
-                        return Scaffold(
-                          floatingActionButtonLocation:
-                              FloatingActionButtonLocation.centerFloat,
-                          floatingActionButtonAnimator:
-                              FloatingActionButtonAnimator.scaling,
-                          floatingActionButton: _checkIfFabIsAvailable(
-                            event: event,
-                            ticket: ticket,
-                            eventTickets: eventTickets,
-                          )
-                              ? EventDetailsTicket(event: event)
-                              : null,
-                          body: SafeArea(
-                            child: NestedScrollView(
-                              headerSliverBuilder: (context, value) {
-                                return [
-                                  SliverAppBar(
-                                    automaticallyImplyLeading: false,
-                                    expandedHeight: 250,
-                                    floating: true,
-                                    backgroundColor: context.backgroundColor,
-                                    flexibleSpace: FlexibleSpaceBar(
-                                      collapseMode: CollapseMode.pin,
-                                      background: Column(
-                                        children: [
-                                          DetailsHeroImage(
-                                            imageUrl: event.eventPhotoUrl,
-                                            heroTag: heroTag,
-                                          ),
-                                        ],
+                    final eventTickets = state.eventTickets.getOrCrash();
+                    return Scaffold(
+                      floatingActionButtonLocation:
+                          FloatingActionButtonLocation.centerFloat,
+                      floatingActionButtonAnimator:
+                          FloatingActionButtonAnimator.scaling,
+                      floatingActionButton: _checkIfFabIsAvailable(
+                        event: event,
+                        ticket: ticket,
+                        eventTickets: eventTickets,
+                      )
+                          ? EventDetailsTicket(event: event)
+                          : null,
+                      body: SafeArea(
+                        child: NestedScrollView(
+                          headerSliverBuilder: (context, value) {
+                            return [
+                              SliverAppBar(
+                                automaticallyImplyLeading: false,
+                                expandedHeight: 250,
+                                floating: true,
+                                backgroundColor: context.backgroundColor,
+                                flexibleSpace: FlexibleSpaceBar(
+                                  collapseMode: CollapseMode.pin,
+                                  background: Column(
+                                    children: [
+                                      DetailsHeroImage(
+                                        imageUrl: event.eventPhotoUrl,
+                                        heroTag: heroTag,
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ];
-                              },
-                              body: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    if (event.isCanceled)
-                                      const CanceledEventMessage(),
-                                    Padding(
-                                      padding: const EdgeInsets.all(15),
-                                      child: Column(
-                                        children: [
-                                          if (!event.isCanceled)
-                                            Column(
-                                              children: [
-                                                EventDetailsSection(
-                                                    event: event),
-                                                const SizedBox(height: 20),
-                                              ],
-                                            ),
-                                          EventDetailsEventName(event: event),
-                                          const SizedBox(height: 20),
-                                          EventDetailsClubName(event: event),
-                                          const SizedBox(height: 20),
-                                          if (event.isConcert)
-                                            EventDetailsArtistName(
-                                                event: event),
-                                          EventDetailsStartDateTime(
-                                              event: event),
-                                          const SizedBox(height: 20),
-                                          EventDetailsEndDateTime(event: event),
-                                          const SizedBox(height: 20),
-                                          if (event.description != null &&
-                                              event.description!.isNotEmpty)
-                                            EventDetailsEventDescription(
-                                              event: event,
-                                            ),
-                                          EventDetailsAdditionalInfo(
-                                              event: event),
-                                          EventDetailsEventPlace(event: event),
-                                          if (!event.isCanceled &&
-                                              event.eventEndDateTime
-                                                  .isAfter(DateTime.now()))
-                                            BlocBuilder<EventTicketsCubit,
-                                                EventTicketsState>(
-                                              builder: (context, state) {
-                                                final eventTickets =
-                                                    state.eventTickets.fold(
-                                                  () => null,
-                                                  (tickets) => tickets,
-                                                );
-                                                return Column(
-                                                  children: [
-                                                    const SizedBox(height: 30),
-                                                    EventDetailsTicketPools(
-                                                        event: event),
-                                                    if (_checkIfFabIsAvailable(
-                                                      event: event,
-                                                      ticket: ticket,
-                                                      eventTickets:
-                                                          eventTickets,
-                                                    ))
-                                                      const SizedBox(
-                                                          height: 60),
-                                                  ],
-                                                );
-                                              },
-                                            ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
                                 ),
                               ),
+                            ];
+                          },
+                          body: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                if (event.isCanceled)
+                                  const CanceledEventMessage(),
+                                Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Column(
+                                    children: [
+                                      if (!event.isCanceled)
+                                        Column(
+                                          children: [
+                                            EventDetailsSection(
+                                              event: event,
+                                              eventTickets: eventTickets,
+                                            ),
+                                            const SizedBox(height: 20),
+                                          ],
+                                        ),
+                                      EventDetailsEventName(event: event),
+                                      const SizedBox(height: 20),
+                                      EventDetailsClubName(event: event),
+                                      const SizedBox(height: 20),
+                                      if (event.isConcert)
+                                        EventDetailsArtistName(event: event),
+                                      EventDetailsStartDateTime(event: event),
+                                      const SizedBox(height: 20),
+                                      EventDetailsEndDateTime(event: event),
+                                      const SizedBox(height: 20),
+                                      if (event.description != null &&
+                                          event.description!.isNotEmpty)
+                                        EventDetailsEventDescription(
+                                          event: event,
+                                        ),
+                                      EventDetailsAdditionalInfo(event: event),
+                                      EventDetailsEventPlace(event: event),
+                                      if (!event.isCanceled &&
+                                          event.eventEndDateTime
+                                              .isAfter(DateTime.now()))
+                                        BlocBuilder<EventTicketsCubit,
+                                            EventTicketsState>(
+                                          builder: (context, state) {
+                                            final eventTickets =
+                                                state.eventTickets.fold(
+                                              () => null,
+                                              (tickets) => tickets,
+                                            );
+                                            return Column(
+                                              children: [
+                                                const SizedBox(height: 30),
+                                                EventDetailsTicketPools(
+                                                    event: event),
+                                                if (_checkIfFabIsAvailable(
+                                                  event: event,
+                                                  ticket: ticket,
+                                                  eventTickets: eventTickets,
+                                                ))
+                                                  const SizedBox(height: 60),
+                                              ],
+                                            );
+                                          },
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        );
-                      },
+                        ),
+                      ),
                     );
                   },
-                ),
-              );
-            },
-          );
-        },
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }

@@ -196,9 +196,10 @@ void _registerCubits() {
   );
 
   //Events
-  getIt.registerFactory(
-    () => EventDetailsCubit(
-      getIt(),
+  getIt.registerFactoryParam(
+    (EventTicketsCubit eventTicketsCubit, _) => EventDetailsCubit(
+      eventTicketsCubit: eventTicketsCubit,
+      userEventFacade: getIt(),
     ),
   );
 
