@@ -84,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "age": MessageLookupByLibrary.simpleMessage("Wiek"),
         "allowVipTickets":
             MessageLookupByLibrary.simpleMessage("Zezwól na bilety VIP"),
+        "and": MessageLookupByLibrary.simpleMessage("oraz"),
         "anyCurrency": MessageLookupByLibrary.simpleMessage("Dowolna"),
         "appVersion": MessageLookupByLibrary.simpleMessage("Wersja aplikacji"),
         "appliedPromotionCode":
@@ -109,6 +110,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "backToSummary":
             MessageLookupByLibrary.simpleMessage("Wróć do podsumowania"),
         "buyTicket": MessageLookupByLibrary.simpleMessage("Kup wejściówkę"),
+        "byContinuingYouAgreeTo": MessageLookupByLibrary.simpleMessage(
+            "Kontynuując, zgadzasz się na "),
         "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "cancelEvent":
             MessageLookupByLibrary.simpleMessage("Odwołaj wydarzenie"),
@@ -531,6 +534,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "priceChangedAfterTicketWasSold": MessageLookupByLibrary.simpleMessage(
             "Nie można zmienić ceny po rozpoczęciu sprzedaży biletów"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Zakres cen"),
+        "privacyPolicy":
+            MessageLookupByLibrary.simpleMessage("Polityka prywatności"),
         "proceedToCheckout":
             MessageLookupByLibrary.simpleMessage("Przejdź do kasy"),
         "proceedToPay":
@@ -647,7 +652,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "submit": MessageLookupByLibrary.simpleMessage("Zatwierdź"),
         "subtotal": MessageLookupByLibrary.simpleMessage("Cena podstawowa"),
         "summary": MessageLookupByLibrary.simpleMessage("Podsumowanie"),
-        "termsOfService": MessageLookupByLibrary.simpleMessage("Warunki usług"),
+        "termsOfService": MessageLookupByLibrary.simpleMessage("Regulamin"),
         "theme": MessageLookupByLibrary.simpleMessage("Motyw"),
         "ticketAlreadyHasVipStatus":
             MessageLookupByLibrary.simpleMessage("Bilet ma już status VIP"),

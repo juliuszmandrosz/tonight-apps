@@ -85,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "age": MessageLookupByLibrary.simpleMessage("Age"),
         "allowVipTickets":
             MessageLookupByLibrary.simpleMessage("Allow VIP tickets"),
+        "and": MessageLookupByLibrary.simpleMessage("and"),
         "anyCurrency": MessageLookupByLibrary.simpleMessage("Any"),
         "appVersion": MessageLookupByLibrary.simpleMessage("App version"),
         "appliedPromotionCode":
@@ -107,6 +108,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "backToSummary":
             MessageLookupByLibrary.simpleMessage("Back to summary"),
         "buyTicket": MessageLookupByLibrary.simpleMessage("Buy ticket"),
+        "byContinuingYouAgreeTo":
+            MessageLookupByLibrary.simpleMessage("By continuing, you agree to"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cancelEvent": MessageLookupByLibrary.simpleMessage("Cancel event"),
         "cancelTimeExpired": MessageLookupByLibrary.simpleMessage(
@@ -521,6 +524,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "priceChangedAfterTicketWasSold": MessageLookupByLibrary.simpleMessage(
             "The price cannot be changed after the sale of tickets has started"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Price range"),
+        "privacyPolicy": MessageLookupByLibrary.simpleMessage("Privacy policy"),
         "proceedToCheckout":
             MessageLookupByLibrary.simpleMessage("Proceed to checkout"),
         "proceedToPay": MessageLookupByLibrary.simpleMessage("Proceed to pay"),

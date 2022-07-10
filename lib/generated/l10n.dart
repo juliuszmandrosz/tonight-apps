@@ -260,6 +260,16 @@ class S {
     );
   }
 
+  /// `and`
+  String get and {
+    return Intl.message(
+      'and',
+      name: 'and',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Any`
   String get anyCurrency {
     return Intl.message(
@@ -418,6 +428,16 @@ class S {
     return Intl.message(
       'Buy ticket',
       name: 'buyTicket',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By continuing, you agree to`
+  String get byContinuingYouAgreeTo {
+    return Intl.message(
+      'By continuing, you agree to',
+      name: 'byContinuingYouAgreeTo',
       desc: '',
       args: [],
     );
@@ -2963,6 +2983,16 @@ class S {
     return Intl.message(
       'Price range',
       name: 'priceRange',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy policy`
+  String get privacyPolicy {
+    return Intl.message(
+      'Privacy policy',
+      name: 'privacyPolicy',
       desc: '',
       args: [],
     );
