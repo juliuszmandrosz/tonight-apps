@@ -247,7 +247,7 @@ class FirebasePaymentFacade implements UserPaymentFacade {
           customerId: customerId,
           paymentIntentClientSecret: paymentIntentSecret,
           customerEphemeralKeySecret: ephemeralKeySecret,
-          testEnv: true,
+          testEnv: false,
           googlePay: true,
           applePay: true,
           merchantDisplayName: 'Tonight',
