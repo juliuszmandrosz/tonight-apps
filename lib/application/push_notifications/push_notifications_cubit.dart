@@ -5,7 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/core/push_notifications_utils.dart';
+import 'package:raver/application/core/deep_links_utils.dart';
 import 'package:raver_account_settings/domain/domain.dart';
 import 'package:raver_common/raver_common.dart';
 
@@ -43,7 +43,7 @@ class PushNotificationsCubit extends Cubit<PushNotificationsState> {
       onSelectNotification: (data) async {
         if (data == null) return;
         final payload = json.decode(data);
-        handlePushNotification(context, payload);
+        handleDeepLink(context, payload);
       },
     );
 

@@ -2,7 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 
-handlePushNotification(BuildContext context, Map<String, dynamic> data) {
+handleDeepLink(BuildContext context, Map<String, dynamic>? data) {
+  if (data == null) return;
+
   final eventId = data['eventId'];
 
   if (eventId != null) {

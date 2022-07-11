@@ -102,6 +102,7 @@ dependencies:
   firebase_app_check: ^0.0.6+16
   firebase_performance: ^0.8.1+1
   firebase_analytics: ^9.1.12
+  share_plus: ^4.0.10
 
   raver_translations:
     git:

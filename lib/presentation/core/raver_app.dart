@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -14,9 +16,10 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class RaverApp extends StatelessWidget {
+  final PendingDynamicLinkData? initialLink;
   final _appRouter = AppRouter();
 
-  RaverApp({Key? key}) : super(key: key);
+  RaverApp({required this.initialLink, Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -56,6 +59,19 @@ class RaverApp extends StatelessWidget {
         buildWhen: (previous, current) =>
             previous.appSettings.locale != current.appSettings.locale,
         builder: (context, state) {
+          if (initialLink != null &&
+              FirebaseAuth.instance.currentUser != null) {
+            final eventId = initialLink!.link.queryParameters['eventId'];
+
+            if (eventId != null) {
+              _appRouter.replaceAll(
+                [
+                  const WelcomeLoaderRoute(),
+                  EventDetailsRoute(eventId: eventId),
+                ],
+              );
+            }
+          }
           return MaterialApp.router(
             title: S().tonight,
             theme: darkTheme,

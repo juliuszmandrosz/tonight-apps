@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/events_details/widgets/event_details_favorite_button.dart';
+import 'package:raver/presentation/events_details/widgets/event_details_share_button.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -32,7 +33,13 @@ class EventDetailsEventName extends StatelessWidget {
       trailing: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          EventDetailsFavoriteButton(event: event),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              EventDetailsShareButton(event: event),
+              EventDetailsFavoriteButton(event: event),
+            ],
+          ),
         ],
       ),
     );

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,7 +10,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
-import 'package:raver/application/core/push_notifications_utils.dart';
+import 'package:raver/application/core/deep_links_utils.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:raver/application/profile/profile_cubit.dart';
@@ -88,6 +89,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _initAvailableFiltersCubit();
     await _initStripe();
     await _initPushNotifications(context);
+    _initDynamicLinks(context);
   }
 
   initUserProfile() {
@@ -225,7 +227,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
       FirebaseMessaging.instance.getInitialMessage().then(
         (message) {
           if (message?.data != null) {
-            handlePushNotification(context, message!.data);
+            handleDeepLink(context, message!.data);
           }
         },
       );
@@ -240,10 +242,18 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
       FirebaseMessaging.onMessageOpenedApp.listen(
         (message) {
-          handlePushNotification(context, message.data);
+          handleDeepLink(context, message.data);
         },
       );
     }
+  }
+
+  _initDynamicLinks(BuildContext context) {
+    FirebaseDynamicLinks.instance.onLink.listen(
+      (data) {
+        handleDeepLink(context, data.link.queryParameters);
+      },
+    );
   }
 
   Future<void> _initStripe() async {
