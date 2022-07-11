@@ -1,5 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -16,10 +14,9 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class RaverApp extends StatelessWidget {
-  final PendingDynamicLinkData? initialLink;
   final _appRouter = AppRouter();
 
-  RaverApp({required this.initialLink, Key? key}) : super(key: key);
+  RaverApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -59,19 +56,6 @@ class RaverApp extends StatelessWidget {
         buildWhen: (previous, current) =>
             previous.appSettings.locale != current.appSettings.locale,
         builder: (context, state) {
-          if (initialLink != null &&
-              FirebaseAuth.instance.currentUser != null) {
-            final eventId = initialLink!.link.queryParameters['eventId'];
-
-            if (eventId != null) {
-              _appRouter.replaceAll(
-                [
-                  const WelcomeLoaderRoute(),
-                  EventDetailsRoute(eventId: eventId),
-                ],
-              );
-            }
-          }
           return MaterialApp.router(
             title: S().tonight,
             theme: darkTheme,
@@ -84,26 +68,22 @@ class RaverApp extends StatelessWidget {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            supportedLocales: const [
-              Locale.fromSubtags(languageCode: 'pl'),
-              Locale.fromSubtags(languageCode: 'en'),
-            ],
-            localeListResolutionCallback: (locales, supportedLocalesList) {
+            supportedLocales: S.delegate.supportedLocales,
+            localeListResolutionCallback: (locales, supportedLocales) {
               if (locales == null) {
-                return const Locale('en', 'EN');
+                return const Locale('en');
               }
 
-              final supportedLocales = supportedLocalesList
-                  .map((locale) => locale.toString().toLowerCase());
+              final mappedLocales = locales.map(
+                (locale) => locale.toString().toLowerCase().substring(0, 2),
+              );
 
-              for (final locale in locales) {
-                if (supportedLocales.contains(
-                  locale.toString().toLowerCase().substring(0, 2),
-                )) {
-                  return locale;
+              for (final locale in mappedLocales.toList()) {
+                if (supportedLocales.toString().contains(locale)) {
+                  return Locale(locale);
                 }
               }
-              return const Locale('en', 'EN');
+              return const Locale('en');
             },
           );
         },

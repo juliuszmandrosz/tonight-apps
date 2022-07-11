@@ -248,7 +248,10 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     }
   }
 
-  _initDynamicLinks(BuildContext context) {
+  _initDynamicLinks(BuildContext context) async {
+    final initialLink = await FirebaseDynamicLinks.instance.getInitialLink();
+    handleDeepLink(context, initialLink?.link.queryParameters);
+
     FirebaseDynamicLinks.instance.onLink.listen(
       (data) {
         handleDeepLink(context, data.link.queryParameters);

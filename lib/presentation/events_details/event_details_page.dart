@@ -110,6 +110,7 @@ class EventDetailsPage extends StatelessWidget {
                                       DetailsHeroImage(
                                         imageUrl: event.eventPhotoUrl,
                                         heroTag: heroTag,
+                                        sharePath: 'events?eventId=${event.id}',
                                       ),
                                     ],
                                   ),
@@ -203,8 +204,6 @@ class EventDetailsPage extends StatelessWidget {
     required Ticket? ticket,
     required EventTickets? eventTickets,
   }) {
-    final isTicketExpired = ticket != null && ticket.isExpired;
-
     if (event.isCanceled) {
       return false;
     }
@@ -213,11 +212,11 @@ class EventDetailsPage extends StatelessWidget {
       return false;
     }
 
-    if (!isTicketExpired) {
+    if (ticket != null && !ticket.isExpired) {
       return true;
     }
 
-    if (isTicketExpired) {
+    if (ticket != null && ticket.isExpired) {
       return false;
     }
 

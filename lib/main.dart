@@ -4,7 +4,6 @@ import 'dart:isolate';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -36,8 +35,6 @@ Future<void> main() async {
 
       FirebaseMessaging.onBackgroundMessage(_onBackgroundMessageHandler);
 
-      final initialLink = await FirebaseDynamicLinks.instance.getInitialLink();
-
       registerDependencies();
 
       final storage = await HydratedStorage.build(
@@ -53,9 +50,7 @@ Future<void> main() async {
 
       HydratedBlocOverrides.runZoned(
         () => runApp(
-          RaverApp(
-            initialLink: initialLink,
-          ),
+          RaverApp(),
         ),
         storage: storage,
       );

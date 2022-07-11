@@ -1,9 +1,9 @@
-import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:raver_common/raver_common.dart';
 
-class BackButtonWidget extends StatelessWidget {
-  const BackButtonWidget({
+class ImageBackButton extends StatelessWidget {
+  const ImageBackButton({
     Key? key,
   }) : super(key: key);
 

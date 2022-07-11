@@ -8,6 +8,7 @@ handleDeepLink(BuildContext context, Map<String, dynamic>? data) {
   final eventId = data['eventId'];
 
   if (eventId != null) {
+    context.router.popUntilRoot();
     context.router.replaceAll(
       [
         const WelcomeLoaderRoute(),
@@ -20,6 +21,7 @@ handleDeepLink(BuildContext context, Map<String, dynamic>? data) {
   final clubId = data['clubId'];
 
   if (clubId != null) {
+    context.router.popUntilRoot();
     context.router.replaceAll(
       [
         const WelcomeLoaderRoute(),

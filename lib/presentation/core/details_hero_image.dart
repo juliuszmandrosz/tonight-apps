@@ -1,17 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:raver/presentation/core/back_button.dart';
+import 'package:raver/presentation/core/image_back_button.dart';
+import 'package:raver/presentation/core/image_share_button.dart';
 import 'package:raver_common/raver_common.dart';
 
 class DetailsHeroImage extends StatelessWidget {
   final String imageUrl;
   final String? heroTag;
+  final String sharePath;
 
   const DetailsHeroImage({
     Key? key,
     required this.imageUrl,
     required this.heroTag,
+    required this.sharePath,
   }) : super(key: key);
 
   @override
@@ -54,9 +57,14 @@ class DetailsHeroImage extends StatelessWidget {
                   ),
                 ),
                 const Positioned(
-                  top: 5,
-                  left: 5,
-                  child: BackButtonWidget(),
+                  top: 10,
+                  left: 10,
+                  child: ImageBackButton(),
+                ),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: ImageShareButton(path: sharePath),
                 ),
               ],
             ),

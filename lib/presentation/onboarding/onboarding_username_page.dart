@@ -28,7 +28,7 @@ class OnboardingUsernamePage extends StatelessWidget {
                   authErrorMessages[error] ?? S().serverError);
             });
             if (state.status.isSubmissionSuccess) {
-              AutoRouter.of(context).replaceAll(
+              context.router.replaceAll(
                 [const WelcomeLoaderRoute()],
               );
             }
