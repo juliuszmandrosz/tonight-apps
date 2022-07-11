@@ -759,7 +759,7 @@ packages:
       name: flutter_stripe
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.0"
+    version: "3.3.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -1422,7 +1422,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "77c4e2543201aae9e3402cc0e97aab2b4a6df81e"
+      resolved-ref: d329fea0b08eaf6d56557ec5faffb8c184b74575
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
@@ -1611,21 +1611,21 @@ packages:
       name: stripe_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.0"
+    version: "3.3.0"
   stripe_ios:
     dependency: transitive
     description:
       name: stripe_ios
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.0"
+    version: "3.3.0"
   stripe_platform_interface:
     dependency: transitive
     description:
       name: stripe_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.0"
+    version: "3.3.0"
   syncfusion_flutter_core:
     dependency: transitive
     description:
