@@ -131,9 +131,18 @@ class EventOverviewPage extends StatelessWidget {
                       const SizedBox(height: 10),
                       const EventOverviewDetails(),
                       if (isMoreThan3HoursLeftToEvent)
-                        const PostponeEventButton(),
-                      if (isMoreThan3HoursLeftToEvent)
-                        const CancelEventButton(),
+                        Column(
+                          children: [
+                            const SizedBox(height: 15),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: const [
+                                PostponeEventButton(),
+                                CancelEventButton(),
+                              ],
+                            ),
+                          ],
+                        ),
                     ],
                   ),
                 );
