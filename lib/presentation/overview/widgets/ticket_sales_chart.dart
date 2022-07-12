@@ -4,6 +4,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/overview/overview_cubit.dart';
 import 'package:raver_partners/presentation/overview/widgets/chart_data.dart';
 import 'package:raver_partners/presentation/overview/widgets/raver_partners_column_chart.dart';
+import 'package:raver_partners/presentation/overview/widgets/statistics_update_info.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class TicketSalesChart extends StatelessWidget {
@@ -36,7 +37,19 @@ class TicketSalesChart extends StatelessWidget {
                 chartData: chartData,
                 maximum: sales.ticketsSold.toDouble(),
               )
-            : Center(child: Text(S().noTicketsSold));
+            : Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      S().noTicketsSold,
+                      style: context.subtitle1,
+                    ),
+                    const SizedBox(height: 15),
+                    const StatisticsUpdateInfo(),
+                  ],
+                ),
+              );
       },
     );
   }

@@ -4,6 +4,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/overview/overview_cubit.dart';
 import 'package:raver_partners/presentation/overview/widgets/chart_data.dart';
 import 'package:raver_partners/presentation/overview/widgets/raver_partners_column_chart.dart';
+import 'package:raver_partners/presentation/overview/widgets/statistics_update_info.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class VipSalesChart extends StatelessWidget {
@@ -35,7 +36,19 @@ class VipSalesChart extends StatelessWidget {
                 chartData: chartData,
                 maximum: sales.vipsSold.toDouble(),
               )
-            : Center(child: Text(S().noVipsSold));
+            : Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      S().noVipsSold,
+                      style: context.subtitle1,
+                    ),
+                    const SizedBox(height: 15),
+                    const StatisticsUpdateInfo(),
+                  ],
+                ),
+              );
       },
     );
   }

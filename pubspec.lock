@@ -731,7 +731,7 @@ packages:
       name: flutter_stripe
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.0"
+    version: "3.3.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -769,7 +769,7 @@ packages:
       name: freezed
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.4"
+    version: "2.0.5"
   freezed_annotation:
     dependency: "direct main"
     description:
@@ -818,7 +818,7 @@ packages:
       name: google_sign_in_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.0"
+    version: "6.0.1"
   google_sign_in_ios:
     dependency: transitive
     description:
@@ -923,7 +923,7 @@ packages:
       name: json_serializable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.3.0"
+    version: "6.3.1"
   launch_review:
     dependency: "direct main"
     description:
@@ -1209,7 +1209,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "62e8d599bdb979897516b7b009258431a11b9c73"
+      resolved-ref: ed5a2dcfca81fc62daae2646f17e2b6ffffb580b
       url: "git@github.com:juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
@@ -1218,7 +1218,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "7163e61d9448be920f809bc8f2bf77a29f0a676c"
+      resolved-ref: bdc86875dfb70cf0e2f10ef87976dcfe19b364bc
       url: "git@github.com:juliuszmandrosz/RaverClubs.git"
     source: git
     version: "0.0.1"
@@ -1227,7 +1227,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "84cc0975cf778d101e0ff71b89ff44ed0c0d0419"
+      resolved-ref: "1da61e0f4e641bec72284828ad18dfe0c8676529"
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -1236,7 +1236,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: f0438acbbff9004c9ca61585a8cca83d5574b3d0
+      resolved-ref: a27d0decc7498d488d65ebf32f9c4f9a5c48aff6
       url: "git@github.com:juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
@@ -1245,7 +1245,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "0a0e21c43c6a4b1b296b9d6fea27595df55a930e"
+      resolved-ref: d329fea0b08eaf6d56557ec5faffb8c184b74575
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
@@ -1263,7 +1263,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: baff3799a22b5bc8f617539bd49df8808bc89e68
+      resolved-ref: "9617039d0763ac2d1aaf7ed8803d1980d2a9b70b"
       url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"
@@ -1425,35 +1425,35 @@ packages:
       name: stripe_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.0"
+    version: "3.3.0"
   stripe_ios:
     dependency: transitive
     description:
       name: stripe_ios
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.0"
+    version: "3.3.0"
   stripe_platform_interface:
     dependency: transitive
     description:
       name: stripe_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.0"
+    version: "3.3.0"
   syncfusion_flutter_charts:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_charts
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "20.2.36"
+    version: "20.2.38"
   syncfusion_flutter_core:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "20.2.36"
+    version: "20.2.38"
   synchronized:
     dependency: transitive
     description:

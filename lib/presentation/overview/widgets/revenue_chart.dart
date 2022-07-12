@@ -4,6 +4,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/application/overview/overview_cubit.dart';
 import 'package:raver_partners/presentation/overview/widgets/chart_data.dart';
 import 'package:raver_partners/presentation/overview/widgets/raver_partners_column_chart.dart';
+import 'package:raver_partners/presentation/overview/widgets/statistics_update_info.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class RevenueChart extends StatelessWidget {
@@ -36,7 +37,19 @@ class RevenueChart extends StatelessWidget {
                 chartData: chartData,
                 maximum: sales.totalRevenue,
               )
-            : Center(child: Text(S().noRevenue));
+            : Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      S().noRevenue,
+                      style: context.subtitle1,
+                    ),
+                    const SizedBox(height: 15),
+                    const StatisticsUpdateInfo(),
+                  ],
+                ),
+              );
       },
     );
   }
