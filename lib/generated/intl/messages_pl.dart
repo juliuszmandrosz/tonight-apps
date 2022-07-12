@@ -113,8 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "byContinuingYouAgreeTo": MessageLookupByLibrary.simpleMessage(
             "Kontynuując, zgadzasz się na "),
         "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
-        "cancelEvent":
-            MessageLookupByLibrary.simpleMessage("Odwołaj wydarzenie"),
+        "cancelEvent": MessageLookupByLibrary.simpleMessage("Odwołaj"),
         "cancelTimeExpired": MessageLookupByLibrary.simpleMessage(
             "Czas na odwołanie wydarzenia upłynął"),
         "canceled": MessageLookupByLibrary.simpleMessage("Odwołano"),
@@ -523,8 +522,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "postpone": MessageLookupByLibrary.simpleMessage("Przełóż"),
         "postponeDateTooLate": MessageLookupByLibrary.simpleMessage(
             "Maksymalny czas rozpoczęcia to 150 dni od pierwotnej daty rozpoczęcia"),
-        "postponeEvent":
-            MessageLookupByLibrary.simpleMessage("Przełóż wydarzenie"),
+        "postponeEvent": MessageLookupByLibrary.simpleMessage("Przełóż"),
         "postponeTimeExpired": MessageLookupByLibrary.simpleMessage(
             "Czas na przełożenie wydarzenia upłynął"),
         "postponeTimeTooShort": MessageLookupByLibrary.simpleMessage(

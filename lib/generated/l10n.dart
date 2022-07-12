@@ -463,10 +463,10 @@ class S {
     );
   }
 
-  /// `Cancel event`
+  /// `Cancel`
   String get cancelEvent {
     return Intl.message(
-      'Cancel event',
+      'Cancel',
       name: 'cancelEvent',
       desc: '',
       args: [],
@@ -2928,10 +2928,10 @@ class S {
     );
   }
 
-  /// `Postpone event`
+  /// `Postpone`
   String get postponeEvent {
     return Intl.message(
-      'Postpone event',
+      'Postpone',
       name: 'postponeEvent',
       desc: '',
       args: [],
