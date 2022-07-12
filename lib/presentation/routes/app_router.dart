@@ -20,7 +20,6 @@ import 'package:raver_partners/presentation/rewards/rewards_page.dart';
 import 'package:raver_partners/presentation/selectors/selectors_page.dart';
 import 'package:raver_partners/presentation/sign_in/sign_in_page.dart';
 import 'package:raver_partners/presentation/splash/splash_page.dart';
-import 'package:raver_partners/presentation/terms_of_service/terms_of_service_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -88,11 +87,6 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: ContactPage,
-      transitionsBuilder: slideRightTransition,
-      durationInMilliseconds: animationDuration,
-    ),
-    CustomRoute(
-      page: TermsOfServicePage,
       transitionsBuilder: slideRightTransition,
       durationInMilliseconds: animationDuration,
     ),

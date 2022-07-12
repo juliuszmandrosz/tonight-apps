@@ -6,7 +6,7 @@ import 'package:raver_partners/presentation/drawer/rate_us_drawer_tile.dart';
 import 'package:raver_partners/presentation/drawer/raver_partners_drawer_header.dart';
 import 'package:raver_partners/presentation/drawer/sign_out_drawer_tile.dart';
 import 'package:raver_partners/presentation/drawer/social_media/social_media_row.dart';
-import 'package:raver_partners/presentation/drawer/terms_of_service_drawer_tile.dart';
+import 'package:raver_partners/presentation/drawer/privacy_policy_drawer_tile.dart';
 
 class RaverPartnersDrawer extends StatelessWidget {
   const RaverPartnersDrawer({Key? key}) : super(key: key);
@@ -34,7 +34,7 @@ class RaverPartnersDrawer extends StatelessWidget {
               SizedBox(height: 30),
               RateUsDrawerTile(),
               SizedBox(height: 30),
-              TermsOfServiceDrawerTile(),
+              PrivacyPolicyDrawerTile(),
               SizedBox(height: 30),
               SignOutDrawerTile(),
               SizedBox(height: 30),

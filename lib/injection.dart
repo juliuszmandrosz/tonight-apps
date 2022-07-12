@@ -13,6 +13,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_clubs/raver_clubs.dart';
+import 'package:raver_common/domain/terms_of_service/partner_terms_of_service_facade.dart';
 import 'package:raver_common/infrastructure/currency_params/firebase_currency_params_facade.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/event_costs/event_costs_facade.dart';
@@ -31,6 +32,7 @@ import 'package:raver_partners/application/invite_selector/invite_selector_cubit
 import 'package:raver_partners/application/overview/overview_cubit.dart';
 import 'package:raver_partners/application/past_event_details/past_event_details_cubit.dart';
 import 'package:raver_partners/application/postpone_event/postpone_event_cubit.dart';
+import 'package:raver_partners/application/privacy_policy/privacy_policy_cubit.dart';
 import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
 import 'package:raver_partners/application/selector_list/selector_list_cubit.dart';
 import 'package:raver_partners/application/sign_in/sign_in_cubit.dart';
@@ -205,6 +207,13 @@ void _registerCubits() {
       discountFacade: getIt(),
     ),
   );
+
+  getIt.registerFactoryParam(
+    (NetworkCheckCubit networkCheckCubit, _) => PrivacyPolicyCubit(
+      networkCheckCubit: networkCheckCubit,
+      partnerTermsOfServiceFacade: getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
@@ -376,6 +385,14 @@ void _registerFacades() {
       logger: getIt(),
       crashlytics: getIt(),
       firestore: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<PartnerTermsOfServiceFacade>(
+    () => FirebaseTermsOfServiceFacade(
+      logger: getIt(),
+      firebaseCrashlytics: getIt(),
+      firebaseStorage: getIt(),
     ),
   );
 }
