@@ -3744,6 +3744,16 @@ class S {
     );
   }
 
+  /// `Statistics are updating after the event ends`
+  String get statisticsUpdateInfo {
+    return Intl.message(
+      'Statistics are updating after the event ends',
+      name: 'statisticsUpdateInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Stay updated`
   String get stayUpdated {
     return Intl.message(

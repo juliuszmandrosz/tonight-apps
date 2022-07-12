@@ -650,6 +650,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "startSearching":
             MessageLookupByLibrary.simpleMessage("Rozpocznij wyszukiwanie..."),
         "statistics": MessageLookupByLibrary.simpleMessage("Statystyki"),
+        "statisticsUpdateInfo": MessageLookupByLibrary.simpleMessage(
+            "Statystyki aktualizują się po zakończeniu wydarzenia"),
         "stayUpdated": MessageLookupByLibrary.simpleMessage("Bądź na bieżąco"),
         "submit": MessageLookupByLibrary.simpleMessage("Zatwierdź"),
         "subtotal": MessageLookupByLibrary.simpleMessage("Cena podstawowa"),

@@ -734,6 +734,8 @@
   "@startSearching": {},
   "statistics": "Statystyki",
   "@statistics": {},
+  "statisticsUpdateInfo": "Statystyki aktualizują się po zakończeniu wydarzenia",
+  "@statisticsUpdateInfo": {},
   "stayUpdated": "Bądź na bieżąco",
   "@stayUpdated": {},
   "submit": "Zatwierdź",

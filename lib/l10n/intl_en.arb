@@ -734,6 +734,8 @@
   "@startSearching": {},
   "statistics": "Statistics",
   "@statistics": {},
+  "statisticsUpdateInfo": "Statistics are updating after the event ends",
+  "@statisticsUpdateInfo": {},
   "stayUpdated": "Stay updated",
   "@stayUpdated": {},
   "submit": "Submit",
