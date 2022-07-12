@@ -9,7 +9,6 @@ import 'package:raver_scanner/presentation/scanner/scanner_page.dart';
 import 'package:raver_scanner/presentation/settings/settings_page.dart';
 import 'package:raver_scanner/presentation/sign_in/sign_in_page.dart';
 import 'package:raver_scanner/presentation/splash/splash_page.dart';
-import 'package:raver_scanner/presentation/terms_of_service/terms_of_service_page.dart';
 
 part 'app_router.gr.dart';
 
@@ -50,11 +49,6 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: ContactPage,
-      transitionsBuilder: slideLeftTransition,
-      durationInMilliseconds: animationDuration,
-    ),
-    CustomRoute(
-      page: TermsOfServicePage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),

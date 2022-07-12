@@ -77,15 +77,6 @@ class _$AppRouter extends RootStackRouter {
           opaque: true,
           barrierDismissible: false);
     },
-    TermsOfServiceRoute.name: (routeData) {
-      return CustomPage<dynamic>(
-          routeData: routeData,
-          child: const TermsOfServicePage(),
-          transitionsBuilder: slideLeftTransition,
-          durationInMilliseconds: 300,
-          opaque: true,
-          barrierDismissible: false);
-    },
     EventRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const EventPage());
@@ -109,8 +100,7 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(ScannerRoute.name, path: '/scanner-page'),
         RouteConfig(NetworkLostRoute.name, path: '/network-lost-page'),
         RouteConfig(FailureRoute.name, path: '/failure-page'),
-        RouteConfig(ContactRoute.name, path: '/contact-page'),
-        RouteConfig(TermsOfServiceRoute.name, path: '/terms-of-service-page')
+        RouteConfig(ContactRoute.name, path: '/contact-page')
       ];
 }
 
@@ -203,15 +193,6 @@ class ContactRoute extends PageRouteInfo<void> {
   const ContactRoute() : super(ContactRoute.name, path: '/contact-page');
 
   static const String name = 'ContactRoute';
-}
-
-/// generated route for
-/// [TermsOfServicePage]
-class TermsOfServiceRoute extends PageRouteInfo<void> {
-  const TermsOfServiceRoute()
-      : super(TermsOfServiceRoute.name, path: '/terms-of-service-page');
-
-  static const String name = 'TermsOfServiceRoute';
 }
 
 /// generated route for

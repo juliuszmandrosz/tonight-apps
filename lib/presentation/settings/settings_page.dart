@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:raver_scanner/presentation/settings/widgets/contact_us_tile.dart';
 import 'package:raver_scanner/presentation/settings/widgets/rate_us_tile.dart';
 import 'package:raver_scanner/presentation/settings/widgets/sign_out_tile.dart';
-import 'package:raver_scanner/presentation/settings/widgets/terms_of_service_tile.dart';
+import 'package:raver_scanner/presentation/settings/widgets/privacy_policy_tile.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
   final settingTiles = const [
-    TermsOfServiceTile(),
+    PrivacyPolicyTile(),
     RateUsTile(),
     ContactUsTile(),
     SignOutTile(),
