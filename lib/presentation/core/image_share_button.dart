@@ -2,6 +2,7 @@ import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:raver/application/core/raver_constants.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -24,15 +25,21 @@ class _ImageShareButtonState extends State<ImageShareButton> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
+        if (_isLoading) return;
         final link = '${dotenv.env[userDynamicLinkUrl]}/${widget.path}';
         final dynamicLinkParams = DynamicLinkParameters(
           link: Uri.parse(link),
           uriPrefix: dotenv.env[userDynamicLinkUrl]!,
-          androidParameters: const AndroidParameters(
-            packageName: 'com.raverteam.tonight',
+          androidParameters: AndroidParameters(
+            packageName: packageName,
+            fallbackUrl: Uri.parse(tonightAppUrl),
+            minimumVersion: 1,
           ),
-          iosParameters: const IOSParameters(
-            bundleId: 'com.raverteam.tonight',
+          iosParameters: IOSParameters(
+            bundleId: packageName,
+            appStoreId: appStoreId,
+            fallbackUrl: Uri.parse(tonightAppUrl),
+            minimumVersion: '1',
           ),
         );
 
@@ -42,7 +49,6 @@ class _ImageShareButtonState extends State<ImageShareButton> {
 
         final shortLink = await FirebaseDynamicLinks.instance.buildShortLink(
           dynamicLinkParams,
-          shortLinkType: ShortDynamicLinkType.unguessable,
         );
 
         setState(() {
