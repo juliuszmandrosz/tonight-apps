@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:raver_partners/presentation/contact/widgets/contact_mail.dart';
-import 'package:raver_partners/presentation/contact/widgets/contact_phone.dart';
 import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -9,7 +8,6 @@ class ContactPage extends StatelessWidget {
 
   final contactDetails = const [
     ContactMail(),
-    ContactPhone(),
   ];
 
   @override
