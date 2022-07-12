@@ -9,7 +9,7 @@ import 'package:raver_translations/raver_translations.dart';
 
 class FavoriteEventsList extends StatelessWidget {
   const FavoriteEventsList({Key? key}) : super(key: key);
-  static const heroPhrase = 'favoritesPageHero';
+  static const heroPhrase = 'favoriteEventsHero';
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +27,12 @@ class FavoriteEventsList extends StatelessWidget {
       },
       builder: (context, state) {
         switch (state.status) {
+          case CubitStatus.failure:
+            return Container();
+
+          case CubitStatus.initial:
+            return Container();
+
           case CubitStatus.loading:
             return const Center(
               child: CircularProgressIndicator(),
@@ -35,40 +41,35 @@ class FavoriteEventsList extends StatelessWidget {
           case CubitStatus.success:
             return state.favoriteEvents.isEmpty
                 ? Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      S().favoriteEventsInfo,
-                      style: context.bodyText2.copyWith(
-                        color: context.secondaryColor,
-                      ),
-                    ),
-                  )
+              alignment: Alignment.centerLeft,
+              child: Text(
+                S().favoriteEventsInfo,
+                style: context.bodyText2.copyWith(
+                  color: context.secondaryColor,
+                ),
+              ),
+            )
                 : SizedBox(
-                    height: 345,
-                    child: PageView.builder(
-                      controller: PageController(viewportFraction: 0.9),
-                      itemCount: state.favoriteEvents.length,
-                      itemBuilder: (ctx, i) {
-                        return Padding(
-                          padding: i == 0
-                              ? const EdgeInsets.only(right: 5)
-                              : i == state.favoriteEvents.length - 1
-                                  ? const EdgeInsets.only(left: 5)
-                                  : const EdgeInsets.symmetric(horizontal: 5),
-                          child: EventCard(
-                            event: state.favoriteEvents[i],
-                            isFavoriteCard: true,
-                            heroPhrase: heroPhrase,
-                          ),
-                        );
-                      },
+              height: 345,
+              child: PageView.builder(
+                controller: PageController(viewportFraction: 0.9),
+                itemCount: state.favoriteEvents.length,
+                itemBuilder: (ctx, i) {
+                  return Padding(
+                    padding: i == 0
+                        ? const EdgeInsets.only(right: 5)
+                        : i == state.favoriteEvents.length - 1
+                        ? const EdgeInsets.only(left: 5)
+                        : const EdgeInsets.symmetric(horizontal: 5),
+                    child: EventCard(
+                      event: state.favoriteEvents[i],
+                      isFavoriteCard: true,
+                      heroPhrase: heroPhrase,
                     ),
                   );
-          case CubitStatus.failure:
-            return Container();
-
-          case CubitStatus.initial:
-            return Container();
+                },
+              ),
+            );
         }
       },
     );

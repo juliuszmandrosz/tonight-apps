@@ -22,7 +22,7 @@ class ClubsPage extends StatefulWidget {
 class _ClubsPageState extends State<ClubsPage> {
   final _scrollController = ScrollController();
   late final ClubsOverviewBloc _clubsOverviewBloc;
-  static const heroPhrase = "clubsPageHero";
+  static const heroPhrase = 'clubsPageHero';
 
   @override
   void initState() {
@@ -111,12 +111,11 @@ class _ClubsPageState extends State<ClubsPage> {
                               itemCount: state.hasReachedMax
                                   ? state.clubs.length
                                   : state.clubs.length + 1,
-                              itemBuilder: (context, index) {
-                                return index >= state.clubs.length
+                              itemBuilder: (context, i) {
+                                return i >= state.clubs.length
                                     ? const BottomLoader()
                                     : ClubCard(
-                                        club: state.clubs[index],
-                                        index: index,
+                                        club: state.clubs[i],
                                         heroPhrase: heroPhrase,
                                       );
                               },

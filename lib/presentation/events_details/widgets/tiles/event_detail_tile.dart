@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver_common/raver_common.dart';
 
@@ -35,12 +36,17 @@ class EventDetailTile extends StatelessWidget {
           Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: AutoSizeText(
-                value,
-                maxLines: 2,
-                style: context.headline6,
-                textAlign: TextAlign.center,
-              ),
+              child: value.isEmpty
+                  ? SpinKitThreeBounce(
+                      color: context.onSurfaceColor,
+                      size: 18,
+                    )
+                  : AutoSizeText(
+                      value,
+                      maxLines: 2,
+                      style: context.headline6,
+                      textAlign: TextAlign.center,
+                    ),
             ),
           ),
           const SizedBox(height: 12),

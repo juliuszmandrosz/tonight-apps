@@ -39,22 +39,25 @@ class EventDetailsCubit extends Cubit<EventDetailsState> {
     emit(
       state.copyWith(
         event: some(event),
-        status: CubitStatus.loading,
+        status: CubitStatus.success,
       ),
     );
+
     _getEventTickets(event);
   }
 
   _getEventTickets(Event event) {
     _eventTicketsCubit.getEventTickets(clubId: event.clubId, eventId: event.id);
-    _eventTicketsCubit.stream.listen((event) {
-      if (event.status.isFailure()) {
-        emit(state.copyWith(status: CubitStatus.failure));
-      }
+    _eventTicketsCubit.stream.listen(
+      (event) {
+        if (event.status.isFailure()) {
+          emit(state.copyWith(status: CubitStatus.failure));
+        }
 
-      if (event.status.isSuccess()) {
-        emit(state.copyWith(status: CubitStatus.success));
-      }
-    });
+        if (event.status.isSuccess() && !state.status.isSuccess()) {
+          emit(state.copyWith(status: CubitStatus.success));
+        }
+      },
+    );
   }
 }

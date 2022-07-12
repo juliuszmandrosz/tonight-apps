@@ -8,7 +8,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class FavoriteClubsList extends StatelessWidget {
-  static const heroPhrase = "favoritesPageHero";
+  static const heroPhrase = 'favoriteClubsHero';
 
   const FavoriteClubsList({Key? key}) : super(key: key);
 
@@ -58,7 +58,6 @@ class FavoriteClubsList extends StatelessWidget {
                                   : const EdgeInsets.symmetric(horizontal: 5),
                           child: ClubCard(
                             club: state.favoriteClubs[i],
-                            index: i,
                             heroPhrase: heroPhrase,
                             isFavoriteCard: true,
                           ),

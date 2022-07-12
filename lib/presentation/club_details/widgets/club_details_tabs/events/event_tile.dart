@@ -16,7 +16,7 @@ class EventTile extends StatelessWidget {
       dense: true,
       contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
       onTap: () {
-        AutoRouter.of(context).push(EventDetailsRoute(event: event));
+        context.pushRoute(EventDetailsRoute(event: event));
       },
       title: AutoSizeText(
         event.eventName,

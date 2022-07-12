@@ -49,9 +49,7 @@ Future<void> main() async {
       _configureTimeAgo();
 
       HydratedBlocOverrides.runZoned(
-        () => runApp(
-          RaverApp(),
-        ),
+        () => runApp(RaverApp()),
         storage: storage,
       );
     },

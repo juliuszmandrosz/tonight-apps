@@ -12,18 +12,16 @@ import 'package:raver_translations/raver_translations.dart';
 
 class ClubCard extends StatelessWidget {
   final Club _club;
-  final String _heroTagPhraseWithIndex;
-  final String heroPhrase;
+  final String heroTag;
   final bool isFavoriteCard;
 
   ClubCard({
     Key? key,
     required Club club,
-    required int index,
-    required this.heroPhrase,
+    required String heroPhrase,
     this.isFavoriteCard = false,
   })  : _club = club,
-        _heroTagPhraseWithIndex = heroPhrase + index.toString(),
+        heroTag = '$heroPhrase-${club.id}',
         super(key: key);
 
   @override
@@ -32,7 +30,10 @@ class ClubCard extends StatelessWidget {
     return InkWell(
       onTap: () {
         context.router.push(
-          ClubDetailsRoute(club: _club, heroTag: _heroTagPhraseWithIndex),
+          ClubDetailsRoute(
+            club: _club,
+            heroTag: heroTag,
+          ),
         );
       },
       child: Card(
@@ -46,7 +47,7 @@ class ClubCard extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 Hero(
-                  tag: _heroTagPhraseWithIndex,
+                  tag: heroTag,
                   child: CachedNetworkImage(
                     progressIndicatorBuilder:
                         (context, url, downloadProgress) => SizedBox(

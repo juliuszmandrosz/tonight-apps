@@ -29,13 +29,16 @@ class EventDetailsPage extends StatelessWidget {
   final String? eventId;
   final Event? event;
   final String? heroTag;
+  final int? ticketPrice;
 
-  const EventDetailsPage({
+  EventDetailsPage({
     this.eventId,
     this.event,
     this.heroTag,
+    int? ticketPrice,
     Key? key,
-  })  : assert((eventId != null || event != null), 'Event is not available'),
+  })  : ticketPrice = ticketPrice ?? event?.price,
+        assert((eventId != null || event != null), 'Event is not available'),
         super(key: key);
 
   @override
@@ -81,7 +84,10 @@ class EventDetailsPage extends StatelessWidget {
                 );
                 return BlocBuilder<EventTicketsCubit, EventTicketsState>(
                   builder: (context, state) {
-                    final eventTickets = state.eventTickets.getOrCrash();
+                    final eventTickets = state.eventTickets.fold(
+                      () => null,
+                      (tickets) => tickets,
+                    );
                     return Scaffold(
                       floatingActionButtonLocation:
                           FloatingActionButtonLocation.centerFloat,
@@ -133,6 +139,7 @@ class EventDetailsPage extends StatelessWidget {
                                             EventDetailsSection(
                                               event: event,
                                               eventTickets: eventTickets,
+                                              ticketPrice: ticketPrice,
                                             ),
                                             const SizedBox(height: 20),
                                           ],
@@ -169,7 +176,8 @@ class EventDetailsPage extends StatelessWidget {
                                               children: [
                                                 const SizedBox(height: 30),
                                                 EventDetailsTicketPools(
-                                                    event: event),
+                                                  event: event,
+                                                ),
                                                 if (_checkIfFabIsAvailable(
                                                   event: event,
                                                   ticket: ticket,

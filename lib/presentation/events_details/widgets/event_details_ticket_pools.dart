@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/events_details/widgets/ticket_pool_list_tile.dart';
@@ -17,23 +18,24 @@ class EventDetailsTicketPools extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<EventTicketsCubit, EventTicketsState>(
       builder: (context, state) {
-        return state.status.isLoading()
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : ListTile(
-                dense: true,
-                contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
-                title: Align(
-                  alignment: Alignment.centerLeft,
-                  child: RaverHeadline(
-                    text: S().ticketPools,
-                    isSmallerVersion: true,
-                  ),
-                ),
-                subtitle: Padding(
-                  padding: const EdgeInsets.only(top: 15),
-                  child: ListView.separated(
+        return ListTile(
+          dense: true,
+          contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
+          title: Align(
+            alignment: Alignment.centerLeft,
+            child: RaverHeadline(
+              text: S().ticketPools,
+              isSmallerVersion: true,
+            ),
+          ),
+          subtitle: Padding(
+            padding: const EdgeInsets.only(top: 15),
+            child: state.status.isLoading()
+                ? SpinKitThreeBounce(
+                    color: context.onSurfaceColor,
+                    size: 24,
+                  )
+                : ListView.separated(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount:
@@ -48,8 +50,8 @@ class EventDetailsTicketPools extends StatelessWidget {
                               ),
                     separatorBuilder: (context, i) => const Divider(),
                   ),
-                ),
-              );
+          ),
+        );
       },
     );
   }

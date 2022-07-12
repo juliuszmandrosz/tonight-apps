@@ -9,16 +9,20 @@ import 'package:raver_translations/raver_translations.dart';
 
 class EventDetailsSection extends StatelessWidget {
   final Event event;
-  final EventTickets eventTickets;
+  final int? ticketPrice;
+  final EventTickets? eventTickets;
 
   const EventDetailsSection({
     required this.event,
+    required this.ticketPrice,
     required this.eventTickets,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final currentPrice =
+        ticketPrice ?? eventTickets?.getCurrentPool().ticketPrice;
     return Column(
       children: [
         Align(
@@ -35,8 +39,10 @@ class EventDetailsSection extends StatelessWidget {
           children: [
             EventDetailTile(
               icon: FontAwesomeIcons.ticket,
-              value: '${eventTickets.getCurrentPool().ticketPrice}'
-                  '${getCurrencySymbolFromCode(event.currency)}',
+              value: currentPrice == null
+                  ? ''
+                  : '$currentPrice'
+                      '${getCurrencySymbolFromCode(event.currency)}',
               label: S().price,
             ),
             EventDetailTile(
