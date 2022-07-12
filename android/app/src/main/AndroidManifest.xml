@@ -72,6 +72,10 @@
                         android:host="tonightraver.page.link"
                         android:scheme="https"/>
 
+                <data
+                        android:host="tonightapp.pl"
+                        android:scheme="https"/>
+
                 <data android:scheme="signinwithapple"/>
                 <data android:path="https://tonight-raver.firebaseapp.com/__/auth/handler"/>
             </intent-filter>
