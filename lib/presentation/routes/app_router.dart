@@ -13,7 +13,6 @@ import 'package:raver/presentation/events_details/event_details_page.dart';
 import 'package:raver/presentation/favorites/favorites_page.dart';
 import 'package:raver/presentation/invoice_data/invoice_data_page.dart';
 import 'package:raver/presentation/network_lost/network_lost_page.dart';
-import 'package:raver/presentation/notifications/notifications_page.dart';
 import 'package:raver/presentation/onboarding/onboarding_page.dart';
 import 'package:raver/presentation/onboarding/onboarding_username_page.dart';
 import 'package:raver/presentation/profile/profile_page.dart';
@@ -31,7 +30,6 @@ import 'package:raver/presentation/tickets/tickets_page.dart';
 import 'package:raver/presentation/update_username/update_username_page.dart';
 import 'package:raver/presentation/vip_checkout/vip_checkout_page.dart';
 import 'package:raver/presentation/welcome_loader/welcome_loader_page.dart';
-import 'package:raver/terms_of_service/terms_of_service_page.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_payments/domain/domain.dart';
@@ -169,16 +167,6 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: ContactPage,
-      transitionsBuilder: slideLeftTransition,
-      durationInMilliseconds: animationDuration,
-    ),
-    CustomRoute(
-      page: NotificationsPage,
-      transitionsBuilder: slideLeftTransition,
-      durationInMilliseconds: animationDuration,
-    ),
-    CustomRoute(
-      page: TermsOfServicePage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
