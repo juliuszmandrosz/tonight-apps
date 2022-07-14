@@ -26,6 +26,7 @@ dependencies:
   dio: ^4.0.6
   firebase_crashlytics: ^2.8.1
   json_annotation: ^4.4.0
+  flutter_dotenv: ^5.0.2
 
   raver_common:
     git:
