@@ -74,6 +74,12 @@ class EventDto with _$EventDto {
     );
   }
 
+  factory EventDto.fromApi(Map<String, dynamic> documentSnapshot) {
+    return EventDto.fromJson(documentSnapshot).copyWith(
+      id: documentSnapshot['id'],
+    );
+  }
+
   Event toDomain() {
     return Event(
       id: id,

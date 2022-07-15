@@ -194,7 +194,9 @@ class _$_EventCostsDto extends _EventCostsDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EventCostsDtoToJson(this);
+    return _$$_EventCostsDtoToJson(
+      this,
+    );
   }
 }
 
@@ -211,13 +213,13 @@ abstract class _EventCostsDto extends EventCostsDto {
 
   @override
   @JsonKey(ignore: true)
-  String? get eventId => throw _privateConstructorUsedError;
+  String? get eventId;
   @override
-  String get currency => throw _privateConstructorUsedError;
+  String get currency;
   @override
-  double get paymentProcessorFeeBalance => throw _privateConstructorUsedError;
+  double get paymentProcessorFeeBalance;
   @override
-  double get eventPostponeBalance => throw _privateConstructorUsedError;
+  double get eventPostponeBalance;
   @override
   @JsonKey(ignore: true)
   _$$_EventCostsDtoCopyWith<_$_EventCostsDto> get copyWith =>

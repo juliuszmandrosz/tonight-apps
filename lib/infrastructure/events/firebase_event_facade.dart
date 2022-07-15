@@ -68,7 +68,7 @@ class FirebaseEventFacade
       );
 
       return right<CommonEventFailure, List<Event>>(
-        result.map((doc) => EventDto.fromJson(doc).toDomain()).toList(),
+        result.map((doc) => EventDto.fromApi(doc).toDomain()).toList(),
       );
     } on FirebaseException catch (e) {
       _logger.e('Firebase exception  fetching events EXCEPTION: $e');
@@ -256,7 +256,7 @@ class FirebaseEventFacade
       final currentEvent = result.first;
 
       return right<SelectorEventFailure, Option<Event>>(
-        some(EventDto.fromJson(currentEvent).toDomain()),
+        some(EventDto.fromApi(currentEvent).toDomain()),
       );
     } on FirebaseException catch (e) {
       _logger.e(
@@ -301,7 +301,7 @@ class FirebaseEventFacade
       final currentEvent = result.first;
 
       return right<PartnerEventFailure, Option<Event>>(
-        some(EventDto.fromJson(currentEvent).toDomain()),
+        some(EventDto.fromApi(currentEvent).toDomain()),
       );
     } on FirebaseException catch (e) {
       _logger.e(

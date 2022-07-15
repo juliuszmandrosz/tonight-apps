@@ -230,7 +230,9 @@ class _$_EventTicketsDto extends _EventTicketsDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EventTicketsDtoToJson(this);
+    return _$$_EventTicketsDtoToJson(
+      this,
+    );
   }
 }
 
@@ -248,15 +250,15 @@ abstract class _EventTicketsDto extends EventTicketsDto {
 
   @override
   @JsonKey(ignore: true)
-  String? get eventId => throw _privateConstructorUsedError;
+  String? get eventId;
   @override
-  List<TicketPoolDto> get ticketPools => throw _privateConstructorUsedError;
+  List<TicketPoolDto> get ticketPools;
   @override
-  TicketSalesDto get ticketSales => throw _privateConstructorUsedError;
+  TicketSalesDto get ticketSales;
   @override
-  int get ticketQuantity => throw _privateConstructorUsedError;
+  int get ticketQuantity;
   @override
-  bool get isSoldOut => throw _privateConstructorUsedError;
+  bool get isSoldOut;
   @override
   @JsonKey(ignore: true)
   _$$_EventTicketsDtoCopyWith<_$_EventTicketsDto> get copyWith =>

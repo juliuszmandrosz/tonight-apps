@@ -287,7 +287,9 @@ class _$_TicketPoolDto extends _TicketPoolDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TicketPoolDtoToJson(this);
+    return _$$_TicketPoolDtoToJson(
+      this,
+    );
   }
 }
 
@@ -308,23 +310,23 @@ abstract class _TicketPoolDto extends TicketPoolDto {
       _$_TicketPoolDto.fromJson;
 
   @override
-  int get poolNumber => throw _privateConstructorUsedError;
+  int get poolNumber;
   @override
-  int get ticketQuantity => throw _privateConstructorUsedError;
+  int get ticketQuantity;
   @override
-  int get ticketPrice => throw _privateConstructorUsedError;
+  int get ticketPrice;
   @override
-  String get currency => throw _privateConstructorUsedError;
+  String get currency;
   @override
-  int get ticketsSold => throw _privateConstructorUsedError;
+  int get ticketsSold;
   @override
-  bool get isCurrent => throw _privateConstructorUsedError;
+  bool get isCurrent;
   @override
-  bool get isSoldOut => throw _privateConstructorUsedError;
+  bool get isSoldOut;
   @override
-  bool get isVipEnabled => throw _privateConstructorUsedError;
+  bool get isVipEnabled;
   @override
-  int? get vipPrice => throw _privateConstructorUsedError;
+  int? get vipPrice;
   @override
   @JsonKey(ignore: true)
   _$$_TicketPoolDtoCopyWith<_$_TicketPoolDto> get copyWith =>

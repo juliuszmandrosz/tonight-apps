@@ -392,36 +392,33 @@ abstract class _EventFilters extends EventFilters {
   _EventFilters._() : super._();
 
   @override
-  PhraseFilter get phraseFilter => throw _privateConstructorUsedError;
+  PhraseFilter get phraseFilter;
   @override
-  PriceRangeFilter get priceRangeFilter => throw _privateConstructorUsedError;
+  PriceRangeFilter get priceRangeFilter;
   @override
-  MinAgesFilter get minAgesFilter => throw _privateConstructorUsedError;
+  MinAgesFilter get minAgesFilter;
   @override
-  MusicalGenresFilter get musicalGenresFilter =>
-      throw _privateConstructorUsedError;
+  MusicalGenresFilter get musicalGenresFilter;
   @override
-  AllowedOutfitsFilter get allowedOutfitsFilter =>
-      throw _privateConstructorUsedError;
+  AllowedOutfitsFilter get allowedOutfitsFilter;
   @override
-  MaxDistanceFilter get maxDistanceFilter => throw _privateConstructorUsedError;
+  MaxDistanceFilter get maxDistanceFilter;
   @override
-  CityFilter get cityFilter => throw _privateConstructorUsedError;
+  CityFilter get cityFilter;
   @override
-  ClubFilter get clubFilter => throw _privateConstructorUsedError;
+  ClubFilter get clubFilter;
   @override
-  DateRangeFilter get dateRangeFilter => throw _privateConstructorUsedError;
+  DateRangeFilter get dateRangeFilter;
   @override
-  IsConcertFilter get isConcertFilter => throw _privateConstructorUsedError;
+  IsConcertFilter get isConcertFilter;
   @override
-  ShowOnlyFilter get showOnlyFilter => throw _privateConstructorUsedError;
+  ShowOnlyFilter get showOnlyFilter;
   @override
-  DateIncludesFilter get dateIncludesFilter =>
-      throw _privateConstructorUsedError;
+  DateIncludesFilter get dateIncludesFilter;
   @override
-  CurrencyFilter get currencyFilter => throw _privateConstructorUsedError;
+  CurrencyFilter get currencyFilter;
   @override
-  IsCanceledFilter get isCanceledFilter => throw _privateConstructorUsedError;
+  IsCanceledFilter get isCanceledFilter;
   @override
   @JsonKey(ignore: true)
   _$$_EventFiltersCopyWith<_$_EventFilters> get copyWith =>

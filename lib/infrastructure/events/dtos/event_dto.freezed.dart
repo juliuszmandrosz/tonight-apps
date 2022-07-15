@@ -552,7 +552,9 @@ class _$_EventDto extends _EventDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EventDtoToJson(this);
+    return _$$_EventDtoToJson(
+      this,
+    );
   }
 }
 
@@ -586,53 +588,53 @@ abstract class _EventDto extends EventDto {
 
   @override
   @JsonKey(ignore: true)
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String get clubId => throw _privateConstructorUsedError;
+  String get clubId;
   @override
-  String get eventName => throw _privateConstructorUsedError;
+  String get eventName;
   @override
-  String get clubName => throw _privateConstructorUsedError;
-  @override
-  @TimestampJsonConverter()
-  DateTime get eventStartDateTime => throw _privateConstructorUsedError;
+  String get clubName;
   @override
   @TimestampJsonConverter()
-  DateTime get eventEndDateTime => throw _privateConstructorUsedError;
+  DateTime get eventStartDateTime;
   @override
   @TimestampJsonConverter()
-  DateTime get originalStartDateTime => throw _privateConstructorUsedError;
+  DateTime get eventEndDateTime;
   @override
-  int get minAge => throw _privateConstructorUsedError;
+  @TimestampJsonConverter()
+  DateTime get originalStartDateTime;
   @override
-  int get price => throw _privateConstructorUsedError;
+  int get minAge;
   @override
-  String get currency => throw _privateConstructorUsedError;
+  int get price;
   @override
-  String get eventPhotoUrl => throw _privateConstructorUsedError;
+  String get currency;
   @override
-  String get allowedOutfit => throw _privateConstructorUsedError;
+  String get eventPhotoUrl;
   @override
-  List<String> get musicalGenres => throw _privateConstructorUsedError;
+  String get allowedOutfit;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  List<String> get musicalGenres;
   @override
-  String? get artistName => throw _privateConstructorUsedError;
+  String? get description;
+  @override
+  String? get artistName;
   @override
   @LocationConverter()
-  Map<String, double> get location => throw _privateConstructorUsedError;
+  Map<String, double> get location;
   @override
-  String get cityId => throw _privateConstructorUsedError;
+  String get cityId;
   @override
-  Map<String, String> get urlLinks => throw _privateConstructorUsedError;
+  Map<String, String> get urlLinks;
   @override
-  bool get isConcert => throw _privateConstructorUsedError;
+  bool get isConcert;
   @override
-  int get attending => throw _privateConstructorUsedError;
+  int get attending;
   @override
-  bool get isCanceled => throw _privateConstructorUsedError;
+  bool get isCanceled;
   @override
-  bool get isBeingPostponed => throw _privateConstructorUsedError;
+  bool get isBeingPostponed;
   @override
   @JsonKey(ignore: true)
   _$$_EventDtoCopyWith<_$_EventDto> get copyWith =>

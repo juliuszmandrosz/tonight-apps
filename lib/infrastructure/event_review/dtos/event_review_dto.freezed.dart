@@ -175,7 +175,9 @@ class _$_EventReviewDto extends _EventReviewDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EventReviewDtoToJson(this);
+    return _$$_EventReviewDtoToJson(
+      this,
+    );
   }
 }
 
@@ -191,11 +193,11 @@ abstract class _EventReviewDto extends EventReviewDto {
 
   @override
   @JsonKey(ignore: true)
-  String? get eventId => throw _privateConstructorUsedError;
+  String? get eventId;
   @override
-  int get reviewQuantity => throw _privateConstructorUsedError;
+  int get reviewQuantity;
   @override
-  double get reviewAvg => throw _privateConstructorUsedError;
+  double get reviewAvg;
   @override
   @JsonKey(ignore: true)
   _$$_EventReviewDtoCopyWith<_$_EventReviewDto> get copyWith =>

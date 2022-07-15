@@ -176,7 +176,9 @@ class _$_AppliedDiscountDto extends _AppliedDiscountDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppliedDiscountDtoToJson(this);
+    return _$$_AppliedDiscountDtoToJson(
+      this,
+    );
   }
 }
 
@@ -194,12 +196,12 @@ abstract class _AppliedDiscountDto extends AppliedDiscountDto {
 
   @override
   @JsonKey(ignore: true)
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String get eventId => throw _privateConstructorUsedError;
+  String get eventId;
   @override
   @FirebaseTimestampJsonConverter()
-  DateTime get realizationDateTime => throw _privateConstructorUsedError;
+  DateTime get realizationDateTime;
   @override
   @JsonKey(ignore: true)
   _$$_AppliedDiscountDtoCopyWith<_$_AppliedDiscountDto> get copyWith =>

@@ -142,9 +142,9 @@ abstract class _EventSortModel extends EventSortModel {
   _EventSortModel._() : super._();
 
   @override
-  String get fieldName => throw _privateConstructorUsedError;
+  String get fieldName;
   @override
-  SortDirection get direction => throw _privateConstructorUsedError;
+  SortDirection get direction;
   @override
   @JsonKey(ignore: true)
   _$$_EventSortModelCopyWith<_$_EventSortModel> get copyWith =>

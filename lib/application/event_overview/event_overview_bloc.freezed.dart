@@ -276,8 +276,8 @@ abstract class _EventsFetched implements EventOverviewEvent {
           final EventFilters filters, final EventSortModel sortModel) =
       _$_EventsFetched;
 
-  EventFilters get filters => throw _privateConstructorUsedError;
-  EventSortModel get sortModel => throw _privateConstructorUsedError;
+  EventFilters get filters;
+  EventSortModel get sortModel;
   @JsonKey(ignore: true)
   _$$_EventsFetchedCopyWith<_$_EventsFetched> get copyWith =>
       throw _privateConstructorUsedError;
@@ -564,7 +564,7 @@ class _$_EventToStateAdded implements _EventToStateAdded {
 abstract class _EventToStateAdded implements EventOverviewEvent {
   const factory _EventToStateAdded(final Event event) = _$_EventToStateAdded;
 
-  Event get event => throw _privateConstructorUsedError;
+  Event get event;
   @JsonKey(ignore: true)
   _$$_EventToStateAddedCopyWith<_$_EventToStateAdded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -734,8 +734,8 @@ abstract class _EventInStateUpdated implements EventOverviewEvent {
   const factory _EventInStateUpdated(
       final Event oldEvent, final Event updatedEvent) = _$_EventInStateUpdated;
 
-  Event get oldEvent => throw _privateConstructorUsedError;
-  Event get updatedEvent => throw _privateConstructorUsedError;
+  Event get oldEvent;
+  Event get updatedEvent;
   @JsonKey(ignore: true)
   _$$_EventInStateUpdatedCopyWith<_$_EventInStateUpdated> get copyWith =>
       throw _privateConstructorUsedError;
@@ -894,7 +894,7 @@ abstract class _EventInStateDeleted implements EventOverviewEvent {
   const factory _EventInStateDeleted(final Event event) =
       _$_EventInStateDeleted;
 
-  Event get event => throw _privateConstructorUsedError;
+  Event get event;
   @JsonKey(ignore: true)
   _$$_EventInStateDeletedCopyWith<_$_EventInStateDeleted> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1122,15 +1122,15 @@ abstract class _EventOverviewState extends EventOverviewState {
   _EventOverviewState._() : super._();
 
   @override
-  List<Event> get events => throw _privateConstructorUsedError;
+  List<Event> get events;
   @override
-  bool get hasReachedMax => throw _privateConstructorUsedError;
+  bool get hasReachedMax;
   @override
-  CubitStatus get status => throw _privateConstructorUsedError;
+  CubitStatus get status;
   @override
-  EventFilters get eventFilters => throw _privateConstructorUsedError;
+  EventFilters get eventFilters;
   @override
-  EventSortModel get sortModel => throw _privateConstructorUsedError;
+  EventSortModel get sortModel;
   @override
   @JsonKey(ignore: true)
   _$$_EventOverviewStateCopyWith<_$_EventOverviewState> get copyWith =>
