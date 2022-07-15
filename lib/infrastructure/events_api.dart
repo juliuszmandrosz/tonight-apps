@@ -1,8 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:raver_events/domain/domain.dart';
-import 'package:typesense/typesense.dart';
 
-abstract class TypesenseEventsApi {
-  Future<Map<String, dynamic>> getEvents(
+abstract class EventsApi {
+  Future<List<dynamic>> getEvents(
     EventFilters filters,
     EventSortModel sortModel,
     int pageSize,
@@ -10,13 +10,13 @@ abstract class TypesenseEventsApi {
   );
 }
 
-class TypesenseEventsApiImpl implements TypesenseEventsApi {
-  final Client _typesense;
+class EventsApiImpl implements EventsApi {
+  final Dio _dio;
 
-  TypesenseEventsApiImpl(this._typesense);
+  EventsApiImpl(this._dio);
 
   @override
-  Future<Map<String, dynamic>> getEvents(
+  Future<List<dynamic>> getEvents(
     EventFilters filters,
     EventSortModel sortModel,
     int pageSize,
@@ -26,16 +26,19 @@ class TypesenseEventsApiImpl implements TypesenseEventsApi {
     final pageNumber = ((offset + 1) / pageSize).ceil();
     final sortBy = _getSortBy(sortModel);
 
-    return await _typesense.collection('events').documents.search(
-      {
-        'q': filters.phraseFilter.phrase,
-        'query_by': 'eventName, artistName, clubName',
-        'filter_by': filterBy,
-        'page': '$pageNumber',
-        'per_page': '$pageSize',
-        'sort_by': sortBy,
-      },
-    );
+    const endpoint = 'events/getEvents';
+
+    final data = {
+      'query': filters.phraseFilter.phrase,
+      'filterBy': filterBy,
+      'pageNumber': pageNumber,
+      'pageSize': pageSize,
+      'sortBy': sortBy,
+    };
+
+    final result = await _dio.post(endpoint, data: data);
+
+    return result.data as List<dynamic>;
   }
 
   _getSortBy(EventSortModel sortModel) {

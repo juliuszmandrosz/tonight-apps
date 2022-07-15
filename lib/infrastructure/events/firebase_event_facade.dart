@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -17,7 +18,7 @@ import 'package:raver_events/infrastructure/event_review/dtos/event_review_dto.d
 import 'package:raver_events/infrastructure/events/dtos/applied_discount_dto.dart';
 import 'package:raver_events/infrastructure/events/dtos/event_dto.dart';
 import 'package:raver_events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
-import 'package:raver_events/infrastructure/typesense_events_api.dart';
+import 'package:raver_events/infrastructure/events_api.dart';
 import 'package:typesense/typesense.dart';
 import 'package:uuid/uuid.dart';
 
@@ -30,7 +31,7 @@ class FirebaseEventFacade
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
   final FirebaseStorage _storage;
-  final TypesenseEventsApi _typesenseEventsApi;
+  final EventsApi _typesenseEventsApi;
   final EventCloudFunctionsFacade _eventCloudFunctionsFacade;
   final FirebaseCrashlytics _crashlytics;
   final Logger _logger;
@@ -39,7 +40,7 @@ class FirebaseEventFacade
     required FirebaseAuth firebaseAuth,
     required FirebaseFirestore firestore,
     required FirebaseStorage storage,
-    required TypesenseEventsApi typesenseEventsApi,
+    required EventsApi typesenseEventsApi,
     required EventCloudFunctionsFacade eventCloudFunctionsFacade,
     required FirebaseCrashlytics crashlytics,
     required Logger logger,
@@ -66,21 +67,15 @@ class FirebaseEventFacade
         offset,
       );
 
-      if (result['found'] == 0) {
-        return right([]);
-      }
-
-      final events = result['hits'] as List<dynamic>;
-
       return right<CommonEventFailure, List<Event>>(
-        events.map((doc) => EventDto.fromTypesense(doc).toDomain()).toList(),
+        result.map((doc) => EventDto.fromJson(doc).toDomain()).toList(),
       );
     } on FirebaseException catch (e) {
       _logger.e('Firebase exception  fetching events EXCEPTION: $e');
       await _crashlytics.recordError(e, StackTrace.current);
       return left(const CommonEventFailure.unexpected());
-    } on TypesenseException catch (e) {
-      _logger.e('Typesense exception  fetching events EXCEPTION: $e');
+    } on DioError catch (e) {
+      _logger.e('Dio error fetching events EXCEPTION: $e');
       await _crashlytics.recordError(e, StackTrace.current);
       return left(const CommonEventFailure.unexpected());
     }
@@ -256,12 +251,12 @@ class FirebaseEventFacade
       final result = await _typesenseEventsApi.getEvents(
           filters, EventSortModel.empty(), 1, 0);
 
-      if (result['found'] == 0) return right(none());
+      if (result.isEmpty) return right(none());
 
-      final currentEvent = (result['hits'] as List<dynamic>)[0];
+      final currentEvent = result.first;
 
       return right<SelectorEventFailure, Option<Event>>(
-        some(EventDto.fromTypesense(currentEvent).toDomain()),
+        some(EventDto.fromJson(currentEvent).toDomain()),
       );
     } on FirebaseException catch (e) {
       _logger.e(
@@ -301,12 +296,12 @@ class FirebaseEventFacade
       final result = await _typesenseEventsApi.getEvents(
           filters, EventSortModel.empty(), 1, 0);
 
-      if (result['found'] == 0) return right(none());
+      if (result.isEmpty) return right(none());
 
-      final currentEvent = (result['hits'] as List<dynamic>)[0];
+      final currentEvent = result.first;
 
       return right<PartnerEventFailure, Option<Event>>(
-        some(EventDto.fromTypesense(currentEvent).toDomain()),
+        some(EventDto.fromJson(currentEvent).toDomain()),
       );
     } on FirebaseException catch (e) {
       _logger.e(

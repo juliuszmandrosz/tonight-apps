@@ -74,11 +74,6 @@ class EventDto with _$EventDto {
     );
   }
 
-  factory EventDto.fromTypesense(Map<String, dynamic> documentSnapshot) {
-    final document = documentSnapshot['document'];
-    return EventDto.fromJson(document).copyWith(id: document['id']);
-  }
-
   Event toDomain() {
     return Event(
       id: id,
