@@ -126,7 +126,7 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
 
     final result = await _dio.get(endpoint);
 
-    return result.data;
+    return double.parse(result.data);
   }
 
   @override
@@ -136,8 +136,8 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
     final result = await _dio.get(endpoint);
 
     return EventFees(
-      normal: result.data['normal'],
-      exclusive: result.data['exclusive'],
+      normal: double.parse(result.data['normal']),
+      exclusive: double.parse(result.data['exclusive']),
     );
   }
 }
