@@ -12,35 +12,12 @@ part of 'selector_access_code_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 SelectorAccessCodeDto _$SelectorAccessCodeDtoFromJson(
     Map<String, dynamic> json) {
   return _SelectorAccessCodeDto.fromJson(json);
 }
-
-/// @nodoc
-class _$SelectorAccessCodeDtoTearOff {
-  const _$SelectorAccessCodeDtoTearOff();
-
-  _SelectorAccessCodeDto call(
-      {@JsonKey(ignore: true) String? code,
-      required String partnerId,
-      @TimestampJsonConverter() required DateTime expirationDateTime}) {
-    return _SelectorAccessCodeDto(
-      code: code,
-      partnerId: partnerId,
-      expirationDateTime: expirationDateTime,
-    );
-  }
-
-  SelectorAccessCodeDto fromJson(Map<String, Object?> json) {
-    return SelectorAccessCodeDto.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $SelectorAccessCodeDto = _$SelectorAccessCodeDtoTearOff();
 
 /// @nodoc
 mixin _$SelectorAccessCodeDto {
@@ -100,11 +77,11 @@ class _$SelectorAccessCodeDtoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SelectorAccessCodeDtoCopyWith<$Res>
+abstract class _$$_SelectorAccessCodeDtoCopyWith<$Res>
     implements $SelectorAccessCodeDtoCopyWith<$Res> {
-  factory _$SelectorAccessCodeDtoCopyWith(_SelectorAccessCodeDto value,
-          $Res Function(_SelectorAccessCodeDto) then) =
-      __$SelectorAccessCodeDtoCopyWithImpl<$Res>;
+  factory _$$_SelectorAccessCodeDtoCopyWith(_$_SelectorAccessCodeDto value,
+          $Res Function(_$_SelectorAccessCodeDto) then) =
+      __$$_SelectorAccessCodeDtoCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(ignore: true) String? code,
@@ -113,15 +90,16 @@ abstract class _$SelectorAccessCodeDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$SelectorAccessCodeDtoCopyWithImpl<$Res>
+class __$$_SelectorAccessCodeDtoCopyWithImpl<$Res>
     extends _$SelectorAccessCodeDtoCopyWithImpl<$Res>
-    implements _$SelectorAccessCodeDtoCopyWith<$Res> {
-  __$SelectorAccessCodeDtoCopyWithImpl(_SelectorAccessCodeDto _value,
-      $Res Function(_SelectorAccessCodeDto) _then)
-      : super(_value, (v) => _then(v as _SelectorAccessCodeDto));
+    implements _$$_SelectorAccessCodeDtoCopyWith<$Res> {
+  __$$_SelectorAccessCodeDtoCopyWithImpl(_$_SelectorAccessCodeDto _value,
+      $Res Function(_$_SelectorAccessCodeDto) _then)
+      : super(_value, (v) => _then(v as _$_SelectorAccessCodeDto));
 
   @override
-  _SelectorAccessCodeDto get _value => super._value as _SelectorAccessCodeDto;
+  _$_SelectorAccessCodeDto get _value =>
+      super._value as _$_SelectorAccessCodeDto;
 
   @override
   $Res call({
@@ -129,7 +107,7 @@ class __$SelectorAccessCodeDtoCopyWithImpl<$Res>
     Object? partnerId = freezed,
     Object? expirationDateTime = freezed,
   }) {
-    return _then(_SelectorAccessCodeDto(
+    return _then(_$_SelectorAccessCodeDto(
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -177,13 +155,14 @@ class _$_SelectorAccessCodeDto extends _SelectorAccessCodeDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _SelectorAccessCodeDto &&
+            other is _$_SelectorAccessCodeDto &&
             const DeepCollectionEquality().equals(other.code, code) &&
             const DeepCollectionEquality().equals(other.partnerId, partnerId) &&
             const DeepCollectionEquality()
                 .equals(other.expirationDateTime, expirationDateTime));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -193,21 +172,25 @@ class _$_SelectorAccessCodeDto extends _SelectorAccessCodeDto {
 
   @JsonKey(ignore: true)
   @override
-  _$SelectorAccessCodeDtoCopyWith<_SelectorAccessCodeDto> get copyWith =>
-      __$SelectorAccessCodeDtoCopyWithImpl<_SelectorAccessCodeDto>(
+  _$$_SelectorAccessCodeDtoCopyWith<_$_SelectorAccessCodeDto> get copyWith =>
+      __$$_SelectorAccessCodeDtoCopyWithImpl<_$_SelectorAccessCodeDto>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SelectorAccessCodeDtoToJson(this);
+    return _$$_SelectorAccessCodeDtoToJson(
+      this,
+    );
   }
 }
 
 abstract class _SelectorAccessCodeDto extends SelectorAccessCodeDto {
   const factory _SelectorAccessCodeDto(
-          {@JsonKey(ignore: true) String? code,
-          required String partnerId,
-          @TimestampJsonConverter() required DateTime expirationDateTime}) =
+          {@JsonKey(ignore: true)
+              final String? code,
+          required final String partnerId,
+          @TimestampJsonConverter()
+              required final DateTime expirationDateTime}) =
       _$_SelectorAccessCodeDto;
   const _SelectorAccessCodeDto._() : super._();
 
@@ -224,6 +207,6 @@ abstract class _SelectorAccessCodeDto extends SelectorAccessCodeDto {
   DateTime get expirationDateTime;
   @override
   @JsonKey(ignore: true)
-  _$SelectorAccessCodeDtoCopyWith<_SelectorAccessCodeDto> get copyWith =>
+  _$$_SelectorAccessCodeDtoCopyWith<_$_SelectorAccessCodeDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

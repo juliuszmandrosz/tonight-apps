@@ -10,7 +10,6 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
@@ -75,7 +74,7 @@ class FirebaseAuthFacade
   }) async {
     try {
       if (!_firebaseAuth.isSignInWithEmailLink(link.toString())) {
-        return left(AuthFailure(message: invalidLink));
+        return left(const AuthFailure.invalidLink());
       }
 
       final result = await _signInWithEmailLink(email, link.toString());
@@ -130,7 +129,7 @@ class FirebaseAuthFacade
   }) async {
     try {
       if (!_firebaseAuth.isSignInWithEmailLink(link.toString())) {
-        return left(AuthFailure(message: invalidLink));
+        return left(const AuthFailure.invalidLink());
       }
 
       final result = await _signInWithEmailLink(email, link.toString());
@@ -180,7 +179,7 @@ class FirebaseAuthFacade
   }) async {
     try {
       if (!_firebaseAuth.isSignInWithEmailLink(link.toString())) {
-        return left(AuthFailure(message: invalidLink));
+        return left(const AuthFailure.invalidLink());
       }
 
       final result = await _signInWithEmailLink(email, link.toString());
@@ -208,7 +207,7 @@ class FirebaseAuthFacade
       final googleUser = await _googleSignIn.signIn();
 
       if (googleUser == null) {
-        return left(AuthFailure(message: cancelledByUser));
+        return left(const AuthFailure.canceledByUser());
       }
 
       final googleAuth = await googleUser.authentication;
@@ -241,7 +240,7 @@ class FirebaseAuthFacade
       _logger.e(
         "Platform Exception signing in with Google as user EXCEPTION: $e",
       );
-      return left(AuthFailure(message: unavailable));
+      return left(const AuthFailure.unavailable());
     }
   }
 
@@ -281,33 +280,33 @@ class FirebaseAuthFacade
       return right(unit);
     } on FirebaseAuthException catch (e) {
       _logger.e(
-        "Firebase Auth Exception signing in with Apple as user EXCEPTION: $e",
+        'Firebase Auth Exception signing in with Apple as user EXCEPTION: $e',
       );
 
       return left(await _handleFirebaseException(e));
     } on PlatformException catch (e) {
       _logger.e(
-        "Platform Exception signing in with Apple as user EXCEPTION: $e",
+        'Platform Exception signing in with Apple as user EXCEPTION: $e',
       );
 
-      return left(AuthFailure(message: unavailable));
+      return left(const AuthFailure.unavailable());
     } on DioError catch (e) {
       await signOut();
       _logger.e(
-        "Dio Error signing in with Apple as user EXCEPTION: $e",
+        'Dio Error signing in with Apple as user EXCEPTION: $e',
       );
 
       return left(await _handleDioError(e));
     } on SignInWithAppleAuthorizationException catch (e) {
       _logger.e(
-        "Apple Authorization Exception signing in with Apple as user EXCEPTION: $e",
+        'Apple Authorization Exception signing in with Apple as user EXCEPTION: $e',
       );
 
       if (e.code == AuthorizationErrorCode.canceled) {
-        return left(AuthFailure(message: cancelledByUser));
+        return left(const AuthFailure.canceledByUser());
       }
 
-      return left(AuthFailure(message: unavailable));
+      return left(const AuthFailure.unavailable());
     }
   }
 
@@ -388,20 +387,6 @@ class FirebaseAuthFacade
           .authStateChanges()
           .map((user) => user != null ? some(user.toDomain()) : none()),
     );
-  }
-
-  @override
-  Future<Either<AuthFailure, Unit>> sendForgotPasswordEmail(
-      String email) async {
-    try {
-      await _firebaseAuth.setLanguageCode(Intl.getCurrentLocale());
-      await _firebaseAuth.sendPasswordResetEmail(email: email);
-      return right(unit);
-    } on FirebaseException catch (e) {
-      _logger.e("Exception during sending password reset email: $e");
-
-      return left(await _handleFirebaseException(e));
-    }
   }
 
   @override
@@ -541,18 +526,18 @@ class FirebaseAuthFacade
   Future<AuthFailure> _handleDioError(DioError error) async {
     if (error.type == DioErrorType.other &&
         error.message.contains('SocketException')) {
-      return AuthFailure(message: unavailable);
+      return const AuthFailure.unavailable();
     }
 
     final failure = firebaseAuthMessages[error.response?.data['message']];
 
     if (failure != null) {
-      return AuthFailure(message: failure);
+      return failure;
     }
 
     await _crashlytics.recordError(error, StackTrace.current);
 
-    return AuthFailure(message: serverError);
+    return AuthFailure.unexpected();
   }
 
   Future<AuthFailure> _handleFirebaseException(
@@ -561,15 +546,15 @@ class FirebaseAuthFacade
     final failure = _getAuthFailureOrNull(exception);
 
     if (failure != null) {
-      return AuthFailure(message: failure);
+      return failure;
     }
 
     await _crashlytics.recordError(exception, StackTrace.current);
 
-    return AuthFailure(message: serverError);
+    return AuthFailure.unexpected();
   }
 
-  String? _getAuthFailureOrNull(FirebaseException exception) {
+  AuthFailure? _getAuthFailureOrNull(FirebaseException exception) {
     if (exception is FirebaseFunctionsException) {
       return firebaseAuthMessages[exception.details] ??
           firebaseAuthMessages[exception.code];
