@@ -4,6 +4,7 @@ import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/auth/form_inputs/username.dart';
 import 'package:raver_account_settings/raver_account_settings.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 part 'username_cubit.freezed.dart';
 part 'username_state.dart';
@@ -47,14 +48,22 @@ class UsernameCubit extends Cubit<UsernameState> {
     return status.isValidated;
   }
 
-  _emitFailure(ProfileFailure failure) {
+  _emitFailure(UserProfileFailure failure) {
     emit(
       state.copyWith(
-        errorMessage: some(failure.message),
+        errorMessage: some(_getUserProfileFailureMessage(failure)),
         status: FormzStatus.submissionFailure,
       ),
     );
 
     emit(state.copyWith(errorMessage: none()));
+  }
+
+  _getUserProfileFailureMessage(UserProfileFailure failure) {
+    return failure.map(
+      unexpected: (_) => S().serverError,
+      permissionDenied: (_) => S().operationNotAllowed,
+      usernameExists: (_) => S().usernameAlreadyInUse,
+    );
   }
 }

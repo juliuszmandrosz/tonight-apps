@@ -108,6 +108,7 @@ class TicketQrCubit extends Cubit<TicketQrState> {
     return failure.map(
       unexpected: (_) => S().serverError,
       returnTimeIsOver: (_) => S().returnTimeIsOver,
+      permissionDenied: (_) => S().operationNotAllowed,
     );
   }
 

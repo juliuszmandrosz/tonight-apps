@@ -7,7 +7,6 @@ import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/update_username/widgets/submit_username_button.dart';
 import 'package:raver/presentation/update_username/widgets/username_input.dart';
-import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -31,13 +30,13 @@ class UpdateUsernamePage extends StatelessWidget {
               state.errorMessage.fold(
                 () {},
                 (error) {
-                  context.showSnackbarMessage(
-                      authErrorMessages[error] ?? S().serverError);
+                  context.showSnackbarMessage(error);
                 },
               );
+
               if (state.status.isSubmissionSuccess) {
                 context.showSnackbarMessage(S().usernameUpdatedMessage);
-                AutoRouter.of(context).pop();
+                context.popRoute();
               }
             },
             child: Padding(

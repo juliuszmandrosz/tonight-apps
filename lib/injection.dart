@@ -106,17 +106,6 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => ResetPasswordCubit(
-      getIt(),
-    ),
-  );
-  getIt.registerFactory(
-    () => ChangePasswordCubit(
-      getIt(),
-    ),
-  );
-
-  getIt.registerFactory(
     () => UsernameCubit(
       getIt(),
     ),

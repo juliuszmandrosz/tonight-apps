@@ -8,7 +8,6 @@ import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/onboarding/widgets/submit_button.dart';
 import 'package:raver/presentation/routes/app_router.dart';
 import 'package:raver/presentation/update_username/widgets/username_input.dart';
-import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/generated/l10n.dart';
 
@@ -23,10 +22,13 @@ class OnboardingUsernamePage extends StatelessWidget {
         create: (context) => getIt<UsernameCubit>(),
         child: BlocConsumer<UsernameCubit, UsernameState>(
           listener: (context, state) {
-            state.errorMessage.fold(() {}, (error) {
-              context.showSnackbarMessage(
-                  authErrorMessages[error] ?? S().serverError);
-            });
+            state.errorMessage.fold(
+              () {},
+              (error) {
+                context.showSnackbarMessage(error);
+              },
+            );
+
             if (state.status.isSubmissionSuccess) {
               context.router.replaceAll(
                 [const WelcomeLoaderRoute()],

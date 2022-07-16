@@ -1377,7 +1377,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: eb1352c3452a0ee41d53e18f30f8b0553703e458
+      resolved-ref: "53a6c79418d1c554b1ee85d55287eb92fa70fe51"
       url: "git@github.com:juliuszmandrosz/RaverAccountSettings.git"
     source: git
     version: "0.0.1"
@@ -1386,7 +1386,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: ed5a2dcfca81fc62daae2646f17e2b6ffffb580b
+      resolved-ref: "43c48c4e2472ba50d22ae87c7aded2e367c8a936"
       url: "git@github.com:juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
@@ -1395,7 +1395,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: cafee3da6b76b2571d16f7bd71771e18c997ebc1
+      resolved-ref: f93466e2f425d7ad97c26f30fcfa97ac48952528
       url: "git@github.com:juliuszmandrosz/RaverClubs.git"
     source: git
     version: "0.0.1"
@@ -1404,7 +1404,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: cf58a2e76401b7d0a4b06e16c24e195f81a560a2
+      resolved-ref: "13bdcc9302fbe409e71d6b3b84de140c970e9eb8"
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -1413,7 +1413,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: c4c64dac2cdc04f8883dfc8c595c09bcd67e75cb
+      resolved-ref: fa1a905981a882f217392f9c703861810f8dcab9
       url: "git@github.com:juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
@@ -1422,7 +1422,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: e21e85f76207559eac9db9cdbd05d776cab6aed2
+      resolved-ref: f7c5b62ea2069c6ebae61df95da68b6090a922ba
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
@@ -1431,7 +1431,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "586dae0210d59a421e21db3d52801f58512d9650"
+      resolved-ref: "162f9da8ae0778e47b72c85b408ac7149c85b45b"
       url: "git@github.com:juliuszmandrosz/RaverRewards.git"
     source: git
     version: "0.0.1"
@@ -1440,7 +1440,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "3536c04b928fa91da3b3b415f8f974748b6a51d4"
+      resolved-ref: cd90f41b0fb648f758d74959679768a4dd1dff0b
       url: "git@github.com:juliuszmandrosz/RaverTickets.git"
     source: git
     version: "0.0.1"

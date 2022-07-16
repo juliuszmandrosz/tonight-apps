@@ -27,7 +27,8 @@ class ProfileCubit extends Cubit<ProfileState> {
         _profileSubject = profileBroadcastSubject,
         super(ProfileState.initial());
 
-  StreamSubscription<Either<ProfileFailure, UserProfile>>? _profileSubscription;
+  StreamSubscription<Either<UserProfileFailure, UserProfile>>?
+      _profileSubscription;
 
   void getUserProfile() {
     emit(state.copyWith(initialStatus: CubitStatus.loading));

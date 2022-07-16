@@ -55,80 +55,79 @@ class _EventsPageState extends State<EventsPage> {
                     const EventFiltersRow(),
                     const SizedBox(height: 15),
                     BlocConsumer<EventOverviewBloc, EventOverviewState>(
-                        listenWhen: (previous, current) =>
-                            previous.status != current.status,
-                        listener: (context, state) {
-                          if (state.status.isFailure()) {
-                            context.pushRoute(
-                              FailureRoute(
-                                retryCallback: () => _refreshEvents(),
+                      listenWhen: (previous, current) =>
+                          previous.status != current.status,
+                      listener: (context, state) {
+                        if (state.status.isFailure()) {
+                          context.pushRoute(
+                            FailureRoute(
+                              retryCallback: () => _refreshEvents(),
+                            ),
+                          );
+                        }
+                      },
+                      builder: (context, state) {
+                        switch (state.status) {
+                          case CubitStatus.initial:
+                            return Container();
+
+                          case CubitStatus.loading:
+                            return Center(
+                              child: SpinKitThreeBounce(
+                                color: context.onSurfaceColor,
+                                size: 30,
                               ),
                             );
-                          }
-                        },
-                        builder: (context, state) {
-                          switch (state.status) {
-                            case CubitStatus.initial:
-                              return Container();
 
-                            case CubitStatus.loading:
-                              return Center(
-                                child: SpinKitThreeBounce(
-                                  color: context.onSurfaceColor,
-                                  size: 30,
-                                ),
+                          case CubitStatus.failure:
+                            return Container();
+
+                          case CubitStatus.success:
+                            if (state.events.isEmpty) {
+                              return Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.1,
+                                  ),
+                                  Text(
+                                    state.eventFilters.maxDistanceFilter
+                                                .userLocation.isNotEmpty &&
+                                            state.eventFilters.maxDistanceFilter
+                                                .enabled
+                                        ? S().noEventsNearYou
+                                        : S().events(0),
+                                    style: context.subtitle1,
+                                  ),
+                                  const SizedBox(height: 20),
+                                  OutlinedButton(
+                                      onPressed: () => _refreshEvents(),
+                                      child: Text(S().refresh)),
+                                ],
                               );
+                            }
 
-                            case CubitStatus.failure:
-                              return Container();
-
-                            case CubitStatus.success:
-                              if (state.events.isEmpty) {
-                                return Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.1,
+                            return ListView.separated(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              separatorBuilder: (_, __) =>
+                                  const SizedBox(height: 10),
+                              itemCount: state.hasReachedMax
+                                  ? state.events.length
+                                  : state.events.length + 1,
+                              itemBuilder: (ctx, i) => i >= state.events.length
+                                  ? const BottomLoader()
+                                  : Center(
+                                      child: EventCard(
+                                        event: state.events[i],
+                                        heroPhrase: heroPhrase,
+                                      ),
                                     ),
-                                    Text(
-                                      state.eventFilters.maxDistanceFilter
-                                                  .userLocation.isNotEmpty &&
-                                              state.eventFilters
-                                                  .maxDistanceFilter.enabled
-                                          ? S().noEventsNearYou
-                                          : S().events(0),
-                                      style: context.subtitle1,
-                                    ),
-                                    const SizedBox(height: 20),
-                                    OutlinedButton(
-                                        onPressed: () => _refreshEvents(),
-                                        child: Text(S().refresh)),
-                                  ],
-                                );
-                              }
-
-                              return ListView.separated(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                separatorBuilder: (_, __) =>
-                                    const SizedBox(height: 10),
-                                itemCount: state.hasReachedMax
-                                    ? state.events.length
-                                    : state.events.length + 1,
-                                itemBuilder: (ctx, i) =>
-                                    i >= state.events.length
-                                        ? const BottomLoader()
-                                        : Center(
-                                            child: EventCard(
-                                              event: state.events[i],
-                                              heroPhrase: heroPhrase,
-                                            ),
-                                          ),
-                              );
-                          }
-                        }),
+                            );
+                        }
+                      },
+                    ),
                   ],
                 ),
               ),

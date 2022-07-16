@@ -10,9 +10,7 @@ import 'package:raver/presentation/sign_in/widgets/sign_in_buttons.dart';
 import 'package:raver/presentation/sign_in/widgets/sign_in_email_input.dart';
 import 'package:raver/presentation/sign_in/widgets/terms_of_service_info.dart';
 import 'package:raver/presentation/sign_in/widgets/tonight_logo.dart';
-import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -29,9 +27,7 @@ class SignInPage extends StatelessWidget {
             listener: (context, state) {
               state.errorMessage.fold(
                 () {},
-                (error) => context.showSnackbarMessage(
-                  authErrorMessages[error] ?? S().serverError,
-                ),
+                (error) => context.showSnackbarMessage(error),
               );
 
               state.linkSentMessage.fold(

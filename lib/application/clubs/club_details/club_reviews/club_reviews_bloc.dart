@@ -108,6 +108,7 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
     final failureMessage = reviewFailure.map(
       unexpected: (_) => S().errorReportingReview,
       reportExists: (_) => S().reviewAlreadyReported,
+      permissionDenied: (_) => S().operationNotAllowed,
     );
 
     emit(
