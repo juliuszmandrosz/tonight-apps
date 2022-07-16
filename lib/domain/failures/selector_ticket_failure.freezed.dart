@@ -19,6 +19,7 @@ mixin _$SelectorTicketFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() invalidTicket,
     required TResult Function() ticketExpired,
     required TResult Function() ticketForAnotherEvent,
@@ -28,6 +29,7 @@ mixin _$SelectorTicketFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
@@ -37,6 +39,7 @@ mixin _$SelectorTicketFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
@@ -47,6 +50,7 @@ mixin _$SelectorTicketFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_InvalidTicket value) invalidTicket,
     required TResult Function(_TicketExpired value) ticketExpired,
     required TResult Function(_TicketForAnotherEvent value)
@@ -57,6 +61,7 @@ mixin _$SelectorTicketFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
@@ -66,6 +71,7 @@ mixin _$SelectorTicketFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
@@ -134,6 +140,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() invalidTicket,
     required TResult Function() ticketExpired,
     required TResult Function() ticketForAnotherEvent,
@@ -146,6 +153,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
@@ -158,6 +166,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
@@ -174,6 +183,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_InvalidTicket value) invalidTicket,
     required TResult Function(_TicketExpired value) ticketExpired,
     required TResult Function(_TicketForAnotherEvent value)
@@ -187,6 +197,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
@@ -199,6 +210,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
@@ -214,6 +226,136 @@ class _$_Unexpected implements _Unexpected {
 
 abstract class _Unexpected implements SelectorTicketFailure {
   const factory _Unexpected() = _$_Unexpected;
+}
+
+/// @nodoc
+abstract class _$$_PermissionDeniedCopyWith<$Res> {
+  factory _$$_PermissionDeniedCopyWith(
+          _$_PermissionDenied value, $Res Function(_$_PermissionDenied) then) =
+      __$$_PermissionDeniedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_PermissionDeniedCopyWithImpl<$Res>
+    extends _$SelectorTicketFailureCopyWithImpl<$Res>
+    implements _$$_PermissionDeniedCopyWith<$Res> {
+  __$$_PermissionDeniedCopyWithImpl(
+      _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
+      : super(_value, (v) => _then(v as _$_PermissionDenied));
+
+  @override
+  _$_PermissionDenied get _value => super._value as _$_PermissionDenied;
+}
+
+/// @nodoc
+
+class _$_PermissionDenied implements _PermissionDenied {
+  const _$_PermissionDenied();
+
+  @override
+  String toString() {
+    return 'SelectorTicketFailure.permissionDenied()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PermissionDenied);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() invalidTicket,
+    required TResult Function() ticketExpired,
+    required TResult Function() ticketForAnotherEvent,
+    required TResult Function() ticketReturned,
+  }) {
+    return permissionDenied();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? invalidTicket,
+    TResult Function()? ticketExpired,
+    TResult Function()? ticketForAnotherEvent,
+    TResult Function()? ticketReturned,
+  }) {
+    return permissionDenied?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? invalidTicket,
+    TResult Function()? ticketExpired,
+    TResult Function()? ticketForAnotherEvent,
+    TResult Function()? ticketReturned,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_InvalidTicket value) invalidTicket,
+    required TResult Function(_TicketExpired value) ticketExpired,
+    required TResult Function(_TicketForAnotherEvent value)
+        ticketForAnotherEvent,
+    required TResult Function(_TicketReturned value) ticketReturned,
+  }) {
+    return permissionDenied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_InvalidTicket value)? invalidTicket,
+    TResult Function(_TicketExpired value)? ticketExpired,
+    TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
+    TResult Function(_TicketReturned value)? ticketReturned,
+  }) {
+    return permissionDenied?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_InvalidTicket value)? invalidTicket,
+    TResult Function(_TicketExpired value)? ticketExpired,
+    TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
+    TResult Function(_TicketReturned value)? ticketReturned,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PermissionDenied implements SelectorTicketFailure {
+  const factory _PermissionDenied() = _$_PermissionDenied;
 }
 
 /// @nodoc
@@ -258,6 +400,7 @@ class _$_InvalidTicket implements _InvalidTicket {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() invalidTicket,
     required TResult Function() ticketExpired,
     required TResult Function() ticketForAnotherEvent,
@@ -270,6 +413,7 @@ class _$_InvalidTicket implements _InvalidTicket {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
@@ -282,6 +426,7 @@ class _$_InvalidTicket implements _InvalidTicket {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
@@ -298,6 +443,7 @@ class _$_InvalidTicket implements _InvalidTicket {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_InvalidTicket value) invalidTicket,
     required TResult Function(_TicketExpired value) ticketExpired,
     required TResult Function(_TicketForAnotherEvent value)
@@ -311,6 +457,7 @@ class _$_InvalidTicket implements _InvalidTicket {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
@@ -323,6 +470,7 @@ class _$_InvalidTicket implements _InvalidTicket {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
@@ -382,6 +530,7 @@ class _$_TicketExpired implements _TicketExpired {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() invalidTicket,
     required TResult Function() ticketExpired,
     required TResult Function() ticketForAnotherEvent,
@@ -394,6 +543,7 @@ class _$_TicketExpired implements _TicketExpired {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
@@ -406,6 +556,7 @@ class _$_TicketExpired implements _TicketExpired {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
@@ -422,6 +573,7 @@ class _$_TicketExpired implements _TicketExpired {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_InvalidTicket value) invalidTicket,
     required TResult Function(_TicketExpired value) ticketExpired,
     required TResult Function(_TicketForAnotherEvent value)
@@ -435,6 +587,7 @@ class _$_TicketExpired implements _TicketExpired {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
@@ -447,6 +600,7 @@ class _$_TicketExpired implements _TicketExpired {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
@@ -507,6 +661,7 @@ class _$_TicketForAnotherEvent implements _TicketForAnotherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() invalidTicket,
     required TResult Function() ticketExpired,
     required TResult Function() ticketForAnotherEvent,
@@ -519,6 +674,7 @@ class _$_TicketForAnotherEvent implements _TicketForAnotherEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
@@ -531,6 +687,7 @@ class _$_TicketForAnotherEvent implements _TicketForAnotherEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
@@ -547,6 +704,7 @@ class _$_TicketForAnotherEvent implements _TicketForAnotherEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_InvalidTicket value) invalidTicket,
     required TResult Function(_TicketExpired value) ticketExpired,
     required TResult Function(_TicketForAnotherEvent value)
@@ -560,6 +718,7 @@ class _$_TicketForAnotherEvent implements _TicketForAnotherEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
@@ -572,6 +731,7 @@ class _$_TicketForAnotherEvent implements _TicketForAnotherEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
@@ -631,6 +791,7 @@ class _$_TicketReturned implements _TicketReturned {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() invalidTicket,
     required TResult Function() ticketExpired,
     required TResult Function() ticketForAnotherEvent,
@@ -643,6 +804,7 @@ class _$_TicketReturned implements _TicketReturned {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
@@ -655,6 +817,7 @@ class _$_TicketReturned implements _TicketReturned {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? invalidTicket,
     TResult Function()? ticketExpired,
     TResult Function()? ticketForAnotherEvent,
@@ -671,6 +834,7 @@ class _$_TicketReturned implements _TicketReturned {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_InvalidTicket value) invalidTicket,
     required TResult Function(_TicketExpired value) ticketExpired,
     required TResult Function(_TicketForAnotherEvent value)
@@ -684,6 +848,7 @@ class _$_TicketReturned implements _TicketReturned {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,
@@ -696,6 +861,7 @@ class _$_TicketReturned implements _TicketReturned {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_InvalidTicket value)? invalidTicket,
     TResult Function(_TicketExpired value)? ticketExpired,
     TResult Function(_TicketForAnotherEvent value)? ticketForAnotherEvent,

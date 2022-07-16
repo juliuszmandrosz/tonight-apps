@@ -50,12 +50,17 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
         )
         .handleError((e) {
       if (e is FirebaseException) {
-        _logger.e(
-            "Firebase Exception getting upcoming and live user tickets EXCEPTION: $e");
-        _crashlytics.recordError(e, StackTrace.current);
-
-        _logger.i(e.code);
-        return left(const UserTicketFailure.unexpected());
+        return left(
+          handleFirebaseError<UserTicketFailure>(
+            logger: _logger,
+            crashlytics: _crashlytics,
+            exception: e,
+            message:
+                'Firebase Exception getting upcoming and live user tickets EXCEPTION: $e',
+            unexpectedFailure: const UserTicketFailure.unexpected(),
+            permissionDeniedFailure: const UserTicketFailure.permissionDenied(),
+          ),
+        );
       }
     });
   }
@@ -88,9 +93,16 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
             .toList(),
       );
     } on FirebaseException catch (e) {
-      _logger.e("Firebase Exception getting past user tickets EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserTicketFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserTicketFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception getting past user tickets EXCEPTION: $e',
+          unexpectedFailure: const UserTicketFailure.unexpected(),
+          permissionDeniedFailure: const UserTicketFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -168,9 +180,17 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
         ),
       );
     } on FirebaseException catch (e) {
-      _logger.e("Exception scanning ticket EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const SelectorTicketFailure.unexpected());
+      return left(
+        await handleFirebaseError<SelectorTicketFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase exception scanning ticket EXCEPTION: $e',
+          unexpectedFailure: const SelectorTicketFailure.unexpected(),
+          permissionDeniedFailure:
+              const SelectorTicketFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -187,18 +207,22 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
       await _ticketCloudFunctionsFacade.returnTicket(params);
       return right(unit);
     } on FirebaseFunctionsException catch (e) {
-      _logger.e(
-        "Firebase Functions Exception during returning ticket EXCEPTION: $e",
-      );
-
       final failure = cloudFunctionsFailures[e.details];
 
       if (failure != null) {
         return left(failure);
       }
 
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserTicketFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserTicketFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase exception returning ticket EXCEPTION: $e',
+          unexpectedFailure: const UserTicketFailure.unexpected(),
+          permissionDeniedFailure: const UserTicketFailure.permissionDenied(),
+        ),
+      );
     }
   }
 }

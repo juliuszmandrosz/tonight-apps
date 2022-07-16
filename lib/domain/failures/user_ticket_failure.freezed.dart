@@ -19,18 +19,21 @@ mixin _$UserTicketFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() returnTimeIsOver,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? returnTimeIsOver,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? returnTimeIsOver,
     required TResult orElse(),
   }) =>
@@ -38,18 +41,21 @@ mixin _$UserTicketFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
     required TResult orElse(),
   }) =>
@@ -115,6 +121,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() returnTimeIsOver,
   }) {
     return unexpected();
@@ -124,6 +131,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? returnTimeIsOver,
   }) {
     return unexpected?.call();
@@ -133,6 +141,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? returnTimeIsOver,
     required TResult orElse(),
   }) {
@@ -146,6 +155,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
   }) {
     return unexpected(this);
@@ -155,6 +165,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
   }) {
     return unexpected?.call(this);
@@ -164,6 +175,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
     required TResult orElse(),
   }) {
@@ -176,6 +188,117 @@ class _$_Unexpected implements _Unexpected {
 
 abstract class _Unexpected implements UserTicketFailure {
   const factory _Unexpected() = _$_Unexpected;
+}
+
+/// @nodoc
+abstract class _$$_PermissionDeniedCopyWith<$Res> {
+  factory _$$_PermissionDeniedCopyWith(
+          _$_PermissionDenied value, $Res Function(_$_PermissionDenied) then) =
+      __$$_PermissionDeniedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_PermissionDeniedCopyWithImpl<$Res>
+    extends _$UserTicketFailureCopyWithImpl<$Res>
+    implements _$$_PermissionDeniedCopyWith<$Res> {
+  __$$_PermissionDeniedCopyWithImpl(
+      _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
+      : super(_value, (v) => _then(v as _$_PermissionDenied));
+
+  @override
+  _$_PermissionDenied get _value => super._value as _$_PermissionDenied;
+}
+
+/// @nodoc
+
+class _$_PermissionDenied implements _PermissionDenied {
+  const _$_PermissionDenied();
+
+  @override
+  String toString() {
+    return 'UserTicketFailure.permissionDenied()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PermissionDenied);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() returnTimeIsOver,
+  }) {
+    return permissionDenied();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? returnTimeIsOver,
+  }) {
+    return permissionDenied?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? returnTimeIsOver,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
+  }) {
+    return permissionDenied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+  }) {
+    return permissionDenied?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PermissionDenied implements UserTicketFailure {
+  const factory _PermissionDenied() = _$_PermissionDenied;
 }
 
 /// @nodoc
@@ -220,6 +343,7 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() returnTimeIsOver,
   }) {
     return returnTimeIsOver();
@@ -229,6 +353,7 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? returnTimeIsOver,
   }) {
     return returnTimeIsOver?.call();
@@ -238,6 +363,7 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? returnTimeIsOver,
     required TResult orElse(),
   }) {
@@ -251,6 +377,7 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
   }) {
     return returnTimeIsOver(this);
@@ -260,6 +387,7 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
   }) {
     return returnTimeIsOver?.call(this);
@@ -269,6 +397,7 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
     required TResult orElse(),
   }) {

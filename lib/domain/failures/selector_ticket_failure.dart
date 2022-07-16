@@ -6,6 +6,8 @@ part 'selector_ticket_failure.freezed.dart';
 class SelectorTicketFailure with _$SelectorTicketFailure {
   const factory SelectorTicketFailure.unexpected() = _Unexpected;
 
+  const factory SelectorTicketFailure.permissionDenied() = _PermissionDenied;
+
   const factory SelectorTicketFailure.invalidTicket() = _InvalidTicket;
 
   const factory SelectorTicketFailure.ticketExpired() = _TicketExpired;
