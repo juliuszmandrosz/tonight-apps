@@ -5,4 +5,6 @@ part 'partner_reward_failure.freezed.dart';
 @freezed
 class PartnerRewardFailure with _$PartnerRewardFailure {
   const factory PartnerRewardFailure.unexpected() = _Unexpected;
+
+  const factory PartnerRewardFailure.permissionDenied() = _PermissionDenied;
 }

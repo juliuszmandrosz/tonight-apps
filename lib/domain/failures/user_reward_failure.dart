@@ -5,4 +5,6 @@ part 'user_reward_failure.freezed.dart';
 @freezed
 class UserRewardFailure with _$UserRewardFailure {
   const factory UserRewardFailure.unexpected() = _Unexpected;
+
+  const factory UserRewardFailure.permissionDenied() = _PermissionDenied;
 }

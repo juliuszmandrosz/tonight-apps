@@ -36,9 +36,17 @@ class FirebaseRewardFacade
 
       return right(unit);
     } on FirebaseException catch (e) {
-      _logger.e("Firebase Exception adding reward EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const PartnerRewardFailure.unexpected());
+      return left(
+        await handleFirebaseError<PartnerRewardFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception adding reward EXCEPTION: $e',
+          unexpectedFailure: const PartnerRewardFailure.unexpected(),
+          permissionDeniedFailure:
+              const PartnerRewardFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -60,12 +68,18 @@ class FirebaseRewardFacade
         )
         .handleError((e) {
       if (e is FirebaseException) {
-        _logger.e(
-          "Firebase Exception getting "
-          "current partner rewards EXCEPTION: $e",
+        return left(
+          handleFirebaseError<PartnerRewardFailure>(
+            logger: _logger,
+            crashlytics: _crashlytics,
+            exception: e,
+            message:
+                'Firebase Exception getting current partner rewards EXCEPTION: $e',
+            unexpectedFailure: const PartnerRewardFailure.unexpected(),
+            permissionDeniedFailure:
+                const PartnerRewardFailure.permissionDenied(),
+          ),
         );
-        _crashlytics.recordError(e, StackTrace.current);
-        return left(const PartnerRewardFailure.unexpected());
       }
     });
   }
@@ -81,9 +95,17 @@ class FirebaseRewardFacade
 
       return right(unit);
     } on FirebaseException catch (e) {
-      _logger.e("Firebase Exception deleting reward EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const PartnerRewardFailure.unexpected());
+      return left(
+        await handleFirebaseError<PartnerRewardFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception deleting reward EXCEPTION: $e',
+          unexpectedFailure: const PartnerRewardFailure.unexpected(),
+          permissionDeniedFailure:
+              const PartnerRewardFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -104,9 +126,17 @@ class FirebaseRewardFacade
             .toList(),
       );
     } on FirebaseException catch (e) {
-      _logger.e("Firebase Exception getting rewards by club id EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserRewardFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserRewardFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message:
+              'Firebase Exception getting rewards by club id EXCEPTION: $e',
+          unexpectedFailure: const UserRewardFailure.unexpected(),
+          permissionDeniedFailure: const UserRewardFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -127,11 +157,18 @@ class FirebaseRewardFacade
         )
         .handleError((e) {
       if (e is FirebaseException) {
-        _logger.e(
-          'Firebase Exception getting rewards from current partner club EXCEPTION: $e',
+        return left(
+          handleFirebaseError<SelectorRewardFailure>(
+            logger: _logger,
+            crashlytics: _crashlytics,
+            exception: e,
+            message:
+                'Firebase Exception getting rewards from current selector club EXCEPTION: $e',
+            unexpectedFailure: const SelectorRewardFailure.unexpected(),
+            permissionDeniedFailure:
+                const SelectorRewardFailure.permissionDenied(),
+          ),
         );
-        _crashlytics.recordError(e, StackTrace.current);
-        return left(const SelectorRewardFailure.unexpected());
       }
     });
   }

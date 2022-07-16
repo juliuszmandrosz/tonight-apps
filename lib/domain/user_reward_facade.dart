@@ -4,5 +4,6 @@ import 'package:raver_rewards/domain/reward_entity.dart';
 
 abstract class UserRewardFacade {
   Future<Either<UserRewardFailure, List<Reward>>> getRewardsByClubId(
-      String clubId);
+    String clubId,
+  );
 }
