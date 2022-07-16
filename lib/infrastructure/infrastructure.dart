@@ -8,4 +8,4 @@ export 'cloud_functions/club_cloud_functions_facade.dart';
 export 'algolia_clubs_api.dart';
 export 'reviews/dtos/review_report_dto.dart';
 export 'reviews/firebase_review_facade.dart';
-export 'typesense_clubs_api.dart';
+export 'clubs_api.dart';

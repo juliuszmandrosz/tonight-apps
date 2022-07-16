@@ -12,12 +12,12 @@ import 'package:raver_clubs/domain/club/selector_club_facade.dart';
 import 'package:raver_clubs/infrastructure/cloud_functions/club_cloud_functions_facade.dart';
 import 'package:raver_clubs/infrastructure/club/club_dto.dart';
 import 'package:raver_clubs/infrastructure/filters/club_filters_entity.dart';
-import 'package:raver_clubs/infrastructure/typesense_clubs_api.dart';
+import 'package:raver_clubs/infrastructure/clubs_api.dart';
 import 'package:raver_common/raver_common.dart';
 
 class FirebaseClubFacade
     implements UserClubFacade, PartnerClubFacade, SelectorClubFacade {
-  final TypesenseClubsApi _typesenseClubsApi;
+  final ClubsApi _clubsApi;
   final FirebaseFirestore _firestore;
   final FirebaseAuth _firebaseAuth;
   final FirebaseStorage _firebaseStorage;
@@ -30,14 +30,14 @@ class FirebaseClubFacade
     required FirebaseAuth firebaseAuth,
     required FirebaseStorage firebaseStorage,
     required ClubCloudFunctionsFacade cloudFunctionsFacade,
-    required TypesenseClubsApi typesenseClubsApi,
+    required ClubsApi clubsApi,
     required FirebaseCrashlytics crashlytics,
     required Logger logger,
   })  : _firestore = firestore,
         _firebaseAuth = firebaseAuth,
         _firebaseStorage = firebaseStorage,
         _cloudFunctionsFacade = cloudFunctionsFacade,
-        _typesenseClubsApi = typesenseClubsApi,
+        _clubsApi = clubsApi,
         _firebaseCrashlytics = crashlytics,
         _logger = logger;
 
@@ -63,17 +63,15 @@ class FirebaseClubFacade
     int offset = 0,
   }) async {
     try {
-      final result =
-          await _typesenseClubsApi.getClubs(filters, pageSize, offset);
-
-      if (result['found'] == 0) {
-        return right([]);
-      }
-
-      final clubs = result['hits'] as List<dynamic>;
+      final result = await _clubsApi.getClubs(
+        filters,
+        pageSize,
+        offset,
+      );
 
       return right<UserClubFailure, List<Club>>(
-          clubs.map((doc) => ClubDto.fromTypesense(doc).toDomain()).toList());
+        result.map((doc) => ClubDto.fromApi(doc).toDomain()).toList(),
+      );
     } on Exception catch (e) {
       _logger.e('Typesense exception fetching clubs EXCEPTION: $e');
       await _firebaseCrashlytics.recordError(e, StackTrace.current);

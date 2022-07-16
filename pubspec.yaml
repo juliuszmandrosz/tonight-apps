@@ -23,7 +23,7 @@ dependencies:
   cloud_functions: ^3.2.14
   dartz: ^0.10.1
   firebase_crashlytics: ^2.8.1
-  typesense: ^0.2.0
+  dio: ^4.0.6
 
   raver_common:
     git:
