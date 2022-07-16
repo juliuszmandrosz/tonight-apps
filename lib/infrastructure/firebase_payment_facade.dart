@@ -9,13 +9,12 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_payments/domain/facades/user_payment_facade.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_errors.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
 import 'package:raver_payments/infrastructure/dtos/invoice_data_dto.dart';
 import 'dtos/promotion_code_dto.dart';
 
-class FirebasePaymentFacade implements UserPaymentFacade {
+class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
   final Logger _logger;
   final Stripe _stripe;
   final PaymentCloudFunctionsFacade _paymentCloudFunctionsFacade;
@@ -116,7 +115,6 @@ class FirebasePaymentFacade implements UserPaymentFacade {
       return right(unit);
     } on DioError catch (e) {
       _logger.e("Dio error proceeding to pay for ticket EXCEPTION: $e");
-
       return left(await _handleDioError(e));
     }
   }
@@ -219,6 +217,29 @@ class FirebasePaymentFacade implements UserPaymentFacade {
       _logger.e('Firebase Exception getting invoice data EXCEPTION: $e');
       await _crashlytics.recordError(e, StackTrace.current);
       return left(const UserPaymentFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<UserPaymentFailure, double>> getServiceFee() async {
+    try {
+      final result = await _paymentCloudFunctionsFacade.getServiceFee();
+      return right(result);
+    } on DioError catch (e) {
+      _logger.e('Dio error getting service fee: $e');
+      return left(await _handleDioError(e));
+    }
+  }
+
+  @override
+  Future<Either<PartnerPaymentFailure, EventFees>> getEventFees() async {
+    try {
+      final result = await _paymentCloudFunctionsFacade.getEventFees();
+      return right(result);
+    } on DioError catch (e) {
+      _logger.e('Dio error getting event fees: $e');
+      await _crashlytics.recordError(e.response, StackTrace.current);
+      return left(const PartnerPaymentFailure.unexpected());
     }
   }
 

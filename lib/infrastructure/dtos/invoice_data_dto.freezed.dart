@@ -160,9 +160,9 @@ abstract class _InvoiceDataDto extends InvoiceDataDto {
       _$_InvoiceDataDto.fromJson;
 
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get vatNumber => throw _privateConstructorUsedError;
+  String? get vatNumber;
   @override
   @JsonKey(ignore: true)
   _$$_InvoiceDataDtoCopyWith<_$_InvoiceDataDto> get copyWith =>

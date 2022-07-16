@@ -1,6 +1,7 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/cloud_functions_names.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/responses/create_payment_sheet_response.dart';
 
@@ -28,6 +29,10 @@ abstract class PaymentCloudFunctionsFacade {
     String? countryCode,
     bool isCompany = false,
   });
+
+  Future<double> getServiceFee();
+
+  Future<EventFees> getEventFees();
 }
 
 class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
@@ -113,5 +118,26 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
     });
 
     return unit;
+  }
+
+  @override
+  Future<double> getServiceFee() async {
+    const endpoint = 'payments/getServiceFee';
+
+    final result = await _dio.get(endpoint);
+
+    return result.data;
+  }
+
+  @override
+  Future<EventFees> getEventFees() async {
+    const endpoint = 'payments/getEventFees';
+
+    final result = await _dio.get(endpoint);
+
+    return EventFees(
+      normal: result.data['normal'],
+      exclusive: result.data['exclusive'],
+    );
   }
 }

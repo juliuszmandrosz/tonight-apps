@@ -271,20 +271,20 @@ abstract class _PromotionCodeDto extends PromotionCodeDto {
 
   @override
   @JsonKey(ignore: true)
-  String? get code => throw _privateConstructorUsedError;
+  String? get code;
   @override
-  bool get isValid => throw _privateConstructorUsedError;
+  bool get isValid;
   @override
-  int get amountOff => throw _privateConstructorUsedError;
+  int get amountOff;
   @override
-  String get currency => throw _privateConstructorUsedError;
+  String get currency;
   @override
-  int? get maxRedemptions => throw _privateConstructorUsedError;
+  int? get maxRedemptions;
   @override
   @FirebaseNullableTimestampJsonConverter()
-  DateTime? get expirationDateTime => throw _privateConstructorUsedError;
+  DateTime? get expirationDateTime;
   @override
-  int get timesRedeemed => throw _privateConstructorUsedError;
+  int get timesRedeemed;
   @override
   @JsonKey(ignore: true)
   _$$_PromotionCodeDtoCopyWith<_$_PromotionCodeDto> get copyWith =>

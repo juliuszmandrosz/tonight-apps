@@ -29,4 +29,6 @@ abstract class UserPaymentFacade {
   });
 
   Future<Either<UserPaymentFailure, InvoiceData>> getInvoiceData();
+
+  Future<Either<UserPaymentFailure, double>> getServiceFee();
 }
