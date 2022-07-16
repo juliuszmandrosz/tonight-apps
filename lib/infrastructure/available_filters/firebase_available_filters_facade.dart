@@ -6,6 +6,7 @@ import 'package:raver_common/domain/available_filters/available_filters_entity.d
 import 'package:raver_common/domain/available_filters/available_filters_facade.dart';
 import 'package:raver_common/domain/available_filters/available_filters_failure.dart';
 import 'package:raver_common/infrastructure/available_filters/available_filters_dto.dart';
+import 'package:raver_common/infrastructure/core/handle_firebase_exception.dart';
 import 'package:raver_common/infrastructure/firestore_helpers.dart';
 
 class FirebaseAvailableFiltersFacade implements AvailableFiltersFacade {
@@ -31,9 +32,17 @@ class FirebaseAvailableFiltersFacade implements AvailableFiltersFacade {
       return right(
           AvailableFiltersDto.fromFirebase(availableFiltersDoc).toDomain());
     } on FirebaseException catch (e) {
-      _logger.e("Firebase exception during fetching events EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const AvailableFiltersFailure.unexpected());
+      return left(
+        await handleFirebaseError<AvailableFiltersFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase exception fetching events EXCEPTION: $e',
+          unexpectedFailure: const AvailableFiltersFailure.unexpected(),
+          permissionDeniedFailure:
+              const AvailableFiltersFailure.permissionDenied(),
+        ),
+      );
     }
   }
 }

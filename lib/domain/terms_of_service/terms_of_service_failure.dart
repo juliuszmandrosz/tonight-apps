@@ -4,5 +4,7 @@ part 'terms_of_service_failure.freezed.dart';
 
 @freezed
 class TermsOfServiceFailure with _$TermsOfServiceFailure {
-  factory TermsOfServiceFailure.unexpected() = _Unexpected;
+  const factory TermsOfServiceFailure.unexpected() = _Unexpected;
+
+  const factory TermsOfServiceFailure.permissionDenied() = _PermissionDenied;
 }

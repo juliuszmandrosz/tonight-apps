@@ -5,6 +5,7 @@ import 'package:logger/logger.dart';
 import 'package:raver_common/domain/domain.dart';
 import 'package:raver_common/domain/terms_of_service/partner_terms_of_service_facade.dart';
 import 'package:raver_common/domain/terms_of_service/selector_tems_of_service_facade.dart';
+import 'package:raver_common/infrastructure/core/handle_firebase_exception.dart';
 
 class FirebaseTermsOfServiceFacade
     implements
@@ -33,11 +34,18 @@ class FirebaseTermsOfServiceFacade
       final url = await storageRef.getDownloadURL();
       return right(url);
     } on FirebaseException catch (e) {
-      _logger.e(
-        'Firebase Exception getting terms of service for user EXCEPTION: $e',
+      return left(
+        await handleFirebaseError<TermsOfServiceFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message:
+              'Firebase Exception getting terms of service for user EXCEPTION: $e',
+          unexpectedFailure: const TermsOfServiceFailure.unexpected(),
+          permissionDeniedFailure:
+              const TermsOfServiceFailure.permissionDenied(),
+        ),
       );
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(TermsOfServiceFailure.unexpected());
     }
   }
 
@@ -51,11 +59,18 @@ class FirebaseTermsOfServiceFacade
       final url = await storageRef.getDownloadURL();
       return right(url);
     } on FirebaseException catch (e) {
-      _logger.e(
-        'Firebase Exception getting privacy policy for user EXCEPTION: $e',
+      return left(
+        await handleFirebaseError<TermsOfServiceFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message:
+              'Firebase Exception getting privacy policy for user EXCEPTION: $e',
+          unexpectedFailure: const TermsOfServiceFailure.unexpected(),
+          permissionDeniedFailure:
+              const TermsOfServiceFailure.permissionDenied(),
+        ),
       );
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(TermsOfServiceFailure.unexpected());
     }
   }
 
@@ -69,11 +84,18 @@ class FirebaseTermsOfServiceFacade
       final url = await storageRef.getDownloadURL();
       return right(url);
     } on FirebaseException catch (e) {
-      _logger.e(
-        'Firebase Exception getting privacy policy for partner EXCEPTION: $e',
+      return left(
+        await handleFirebaseError<TermsOfServiceFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message:
+              'Firebase Exception getting privacy policy for partner EXCEPTION: $e',
+          unexpectedFailure: const TermsOfServiceFailure.unexpected(),
+          permissionDeniedFailure:
+              const TermsOfServiceFailure.permissionDenied(),
+        ),
       );
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(TermsOfServiceFailure.unexpected());
     }
   }
 
@@ -87,11 +109,18 @@ class FirebaseTermsOfServiceFacade
       final url = await storageRef.getDownloadURL();
       return right(url);
     } on FirebaseException catch (e) {
-      _logger.e(
-        'Firebase Exception getting privacy policy for selector EXCEPTION: $e',
+      return left(
+        await handleFirebaseError<TermsOfServiceFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message:
+              'Firebase Exception getting privacy policy for selector EXCEPTION: $e',
+          unexpectedFailure: const TermsOfServiceFailure.unexpected(),
+          permissionDeniedFailure:
+              const TermsOfServiceFailure.permissionDenied(),
+        ),
       );
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(TermsOfServiceFailure.unexpected());
     }
   }
 }

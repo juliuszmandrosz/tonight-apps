@@ -4,5 +4,7 @@ part 'available_filters_failure.freezed.dart';
 
 @freezed
 class AvailableFiltersFailure with _$AvailableFiltersFailure {
-  const factory AvailableFiltersFailure.unexpected() = _AvailableFiltersFailure;
+  const factory AvailableFiltersFailure.unexpected() = _Unexpected;
+
+  const factory AvailableFiltersFailure.permissionDenied() = _PermissionDenied;
 }

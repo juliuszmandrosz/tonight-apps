@@ -30,9 +30,17 @@ class FirebaseCurrencyParamsFacade implements CurrencyParamsFacade {
         CurrencyParamsDto.fromFirebase(result).toDomain(),
       );
     } on FirebaseException catch (e) {
-      _logger.e('Firebase Exception getting currency params EXCEPTION: $e');
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(CurrencyParamsFailure.unexpected());
+      return left(
+        await handleFirebaseError<CurrencyParamsFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception getting currency params EXCEPTION: $e',
+          unexpectedFailure: const CurrencyParamsFailure.unexpected(),
+          permissionDeniedFailure:
+              const CurrencyParamsFailure.permissionDenied(),
+        ),
+      );
     }
   }
 }
