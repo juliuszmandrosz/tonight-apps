@@ -37,11 +37,16 @@ class FirebaseEventCostsFacade implements EventCostsFacade {
         )
         .handleError((e) {
       if (e is FirebaseException) {
-        _logger.e(
-          "Firebase Exception getting event costs EXCEPTION: $e",
+        return left(
+          handleFirebaseError<EventCostsFailure>(
+            logger: _logger,
+            crashlytics: _crashlytics,
+            exception: e,
+            message: 'Firebase Exception getting event costs EXCEPTION: $e',
+            unexpectedFailure: const EventCostsFailure.unexpected(),
+            permissionDeniedFailure: const EventCostsFailure.permissionDenied(),
+          ),
         );
-        _crashlytics.recordError(e, StackTrace.current);
-        return left(const EventCostsFailure.unexpected());
       }
     });
   }

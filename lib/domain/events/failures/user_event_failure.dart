@@ -6,6 +6,8 @@ part 'user_event_failure.freezed.dart';
 class UserEventFailure with _$UserEventFailure {
   const factory UserEventFailure.unexpected() = _Unexpected;
 
+  const factory UserEventFailure.permissionDenied() = _PermissionDenied;
+
   const factory UserEventFailure.toggleFavoriteEventFailure() =
       _UserEventFailure;
 }

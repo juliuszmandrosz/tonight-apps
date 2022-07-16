@@ -19,18 +19,21 @@ mixin _$SelectorEventFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() noAccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? noAccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? noAccess,
     required TResult orElse(),
   }) =>
@@ -38,18 +41,21 @@ mixin _$SelectorEventFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NoAccess value) noAccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NoAccess value)? noAccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NoAccess value)? noAccess,
     required TResult orElse(),
   }) =>
@@ -115,6 +121,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() noAccess,
   }) {
     return unexpected();
@@ -124,6 +131,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? noAccess,
   }) {
     return unexpected?.call();
@@ -133,6 +141,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? noAccess,
     required TResult orElse(),
   }) {
@@ -146,6 +155,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NoAccess value) noAccess,
   }) {
     return unexpected(this);
@@ -155,6 +165,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NoAccess value)? noAccess,
   }) {
     return unexpected?.call(this);
@@ -164,6 +175,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NoAccess value)? noAccess,
     required TResult orElse(),
   }) {
@@ -176,6 +188,117 @@ class _$_Unexpected implements _Unexpected {
 
 abstract class _Unexpected implements SelectorEventFailure {
   const factory _Unexpected() = _$_Unexpected;
+}
+
+/// @nodoc
+abstract class _$$_PermissionDeniedCopyWith<$Res> {
+  factory _$$_PermissionDeniedCopyWith(
+          _$_PermissionDenied value, $Res Function(_$_PermissionDenied) then) =
+      __$$_PermissionDeniedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_PermissionDeniedCopyWithImpl<$Res>
+    extends _$SelectorEventFailureCopyWithImpl<$Res>
+    implements _$$_PermissionDeniedCopyWith<$Res> {
+  __$$_PermissionDeniedCopyWithImpl(
+      _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
+      : super(_value, (v) => _then(v as _$_PermissionDenied));
+
+  @override
+  _$_PermissionDenied get _value => super._value as _$_PermissionDenied;
+}
+
+/// @nodoc
+
+class _$_PermissionDenied implements _PermissionDenied {
+  const _$_PermissionDenied();
+
+  @override
+  String toString() {
+    return 'SelectorEventFailure.permissionDenied()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PermissionDenied);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() noAccess,
+  }) {
+    return permissionDenied();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? noAccess,
+  }) {
+    return permissionDenied?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? noAccess,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoAccess value) noAccess,
+  }) {
+    return permissionDenied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoAccess value)? noAccess,
+  }) {
+    return permissionDenied?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoAccess value)? noAccess,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PermissionDenied implements SelectorEventFailure {
+  const factory _PermissionDenied() = _$_PermissionDenied;
 }
 
 /// @nodoc
@@ -220,6 +343,7 @@ class _$_NoAccess implements _NoAccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() noAccess,
   }) {
     return noAccess();
@@ -229,6 +353,7 @@ class _$_NoAccess implements _NoAccess {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? noAccess,
   }) {
     return noAccess?.call();
@@ -238,6 +363,7 @@ class _$_NoAccess implements _NoAccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? noAccess,
     required TResult orElse(),
   }) {
@@ -251,6 +377,7 @@ class _$_NoAccess implements _NoAccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NoAccess value) noAccess,
   }) {
     return noAccess(this);
@@ -260,6 +387,7 @@ class _$_NoAccess implements _NoAccess {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NoAccess value)? noAccess,
   }) {
     return noAccess?.call(this);
@@ -269,6 +397,7 @@ class _$_NoAccess implements _NoAccess {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NoAccess value)? noAccess,
     required TResult orElse(),
   }) {

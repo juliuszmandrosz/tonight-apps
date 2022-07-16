@@ -19,7 +19,6 @@ import 'package:raver_events/infrastructure/events/dtos/applied_discount_dto.dar
 import 'package:raver_events/infrastructure/events/dtos/event_dto.dart';
 import 'package:raver_events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
 import 'package:raver_events/infrastructure/events_api.dart';
-import 'package:typesense/typesense.dart';
 import 'package:uuid/uuid.dart';
 
 class FirebaseEventFacade
@@ -70,10 +69,6 @@ class FirebaseEventFacade
       return right<CommonEventFailure, List<Event>>(
         result.map((doc) => EventDto.fromApi(doc).toDomain()).toList(),
       );
-    } on FirebaseException catch (e) {
-      _logger.e('Firebase exception  fetching events EXCEPTION: $e');
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const CommonEventFailure.unexpected());
     } on DioError catch (e) {
       _logger.e('Dio error fetching events EXCEPTION: $e');
       await _crashlytics.recordError(e, StackTrace.current);
@@ -92,9 +87,16 @@ class FirebaseEventFacade
         EventDto.fromFirebase(eventDoc).toDomain(),
       );
     } on FirebaseException catch (e) {
-      _logger.e("Exception during getting event by id EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserEventFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserEventFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception getting event by id EXCEPTION: $e',
+          unexpectedFailure: const UserEventFailure.unexpected(),
+          permissionDeniedFailure: const UserEventFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -114,10 +116,17 @@ class FirebaseEventFacade
 
       return right(unit);
     } on FirebaseException catch (e) {
-      _logger
-          .e("Exception during toggling event favorite status EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserEventFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserEventFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message:
+              'Firebase Exception toggling event favorite status EXCEPTION: $e',
+          unexpectedFailure: const UserEventFailure.unexpected(),
+          permissionDeniedFailure: const UserEventFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -130,9 +139,16 @@ class FirebaseEventFacade
 
       return right(result);
     } on FirebaseException catch (e) {
-      _logger.e("Exception during fetching events by ids EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserEventFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserEventFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception fetching events by ids EXCEPTION: $e',
+          unexpectedFailure: const UserEventFailure.unexpected(),
+          permissionDeniedFailure: const UserEventFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -195,9 +211,16 @@ class FirebaseEventFacade
 
       return right(unit);
     } on FirebaseException catch (e) {
-      _logger.e("Exception during adding event EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const PartnerEventFailure.unexpected());
+      return left(
+        await handleFirebaseError<PartnerEventFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception adding event EXCEPTION: $e',
+          unexpectedFailure: const PartnerEventFailure.unexpected(),
+          permissionDeniedFailure: const PartnerEventFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -219,9 +242,16 @@ class FirebaseEventFacade
         return right(unit);
       });
     } on FirebaseException catch (e) {
-      _logger.e("Firebase Exception during updating event EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const PartnerEventFailure.unexpected());
+      return left(
+        await handleFirebaseError<PartnerEventFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception updating event EXCEPTION: $e',
+          unexpectedFailure: const PartnerEventFailure.unexpected(),
+          permissionDeniedFailure: const PartnerEventFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -248,8 +278,8 @@ class FirebaseEventFacade
         dateRangeFilter: DateRangeFilter(fromDate: null, toDate: null),
       );
 
-      final result = await _eventsApi.getEvents(
-          filters, EventSortModel.empty(), 1, 0);
+      final result =
+          await _eventsApi.getEvents(filters, EventSortModel.empty(), 1, 0);
 
       if (result.isEmpty) return right(none());
 
@@ -259,15 +289,20 @@ class FirebaseEventFacade
         some(EventDto.fromApi(currentEvent).toDomain()),
       );
     } on FirebaseException catch (e) {
-      _logger.e(
-        'Firebase exception getting current event from club EXCEPTION: $e',
+      return left(
+        await handleFirebaseError<SelectorEventFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message:
+              'Firebase Exception getting current event from club EXCEPTION: $e',
+          unexpectedFailure: const SelectorEventFailure.unexpected(),
+          permissionDeniedFailure:
+              const SelectorEventFailure.permissionDenied(),
+        ),
       );
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const SelectorEventFailure.unexpected());
-    } on TypesenseException catch (e) {
-      _logger.e(
-        'Typesense exception getting current event from club EXCEPTION: $e',
-      );
+    } on DioError catch (e) {
+      _logger.e('Dio error getting current event from club EXCEPTION: $e');
       await _crashlytics.recordError(e, StackTrace.current);
       return left(const SelectorEventFailure.unexpected());
     }
@@ -293,8 +328,8 @@ class FirebaseEventFacade
         ),
       );
 
-      final result = await _eventsApi.getEvents(
-          filters, EventSortModel.empty(), 1, 0);
+      final result =
+          await _eventsApi.getEvents(filters, EventSortModel.empty(), 1, 0);
 
       if (result.isEmpty) return right(none());
 
@@ -304,14 +339,20 @@ class FirebaseEventFacade
         some(EventDto.fromApi(currentEvent).toDomain()),
       );
     } on FirebaseException catch (e) {
-      _logger.e(
-        'Firebase exception getting event in date range for current partner EXCEPTION: $e',
+      return left(
+        await handleFirebaseError<PartnerEventFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message:
+              'Firebase Exception getting event in date range for current partner EXCEPTION: $e',
+          unexpectedFailure: const PartnerEventFailure.unexpected(),
+          permissionDeniedFailure: const PartnerEventFailure.permissionDenied(),
+        ),
       );
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const PartnerEventFailure.unexpected());
-    } on TypesenseException catch (e) {
+    } on DioError catch (e) {
       _logger.e(
-        'Typesense exception getting event in date range for current partner EXCEPTION: $e',
+        'Dio error getting event in date range for current partner EXCEPTION: $e',
       );
       await _crashlytics.recordError(e, StackTrace.current);
       return left(const PartnerEventFailure.unexpected());
@@ -331,9 +372,16 @@ class FirebaseEventFacade
 
       return right(result);
     } on FirebaseException catch (e) {
-      _logger.e('Exception getting favorite events EXCEPTION: $e');
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserEventFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserEventFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception getting favorite events EXCEPTION: $e',
+          unexpectedFailure: const UserEventFailure.unexpected(),
+          permissionDeniedFailure: const UserEventFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -351,9 +399,16 @@ class FirebaseEventFacade
       final result = await uploadTask.ref.getDownloadURL();
       return right(result);
     } on FirebaseException catch (e) {
-      _logger.e('Exception uploading event photo EXCEPTION: $e');
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const PartnerEventFailure.unexpected());
+      return left(
+        await handleFirebaseError<PartnerEventFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception uploading event photo EXCEPTION: $e',
+          unexpectedFailure: const PartnerEventFailure.unexpected(),
+          permissionDeniedFailure: const PartnerEventFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -364,9 +419,8 @@ class FirebaseEventFacade
       return right(result);
     } on FirebaseFunctionsException catch (e) {
       _logger.e(
-        "Firebase Functions Exception canceling event EXCEPTION: $e",
+        'Firebase Functions Exception canceling event EXCEPTION: $e',
       );
-
       return left(await _handleFirebaseFunctionsException(e));
     }
   }
@@ -387,9 +441,8 @@ class FirebaseEventFacade
       return right(result);
     } on FirebaseFunctionsException catch (e) {
       _logger.e(
-        "Firebase Functions Exception postponing event EXCEPTION: $e",
+        'Firebase Functions Exception postponing event EXCEPTION: $e',
       );
-
       return left(await _handleFirebaseFunctionsException(e));
     }
   }

@@ -5,4 +5,6 @@ part 'event_review_failure.freezed.dart';
 @freezed
 class EventReviewFailure with _$EventReviewFailure {
   const factory EventReviewFailure.unexpected() = _Unexpected;
+
+  const factory EventReviewFailure.permissionDenied() = _PermissionDenied;
 }

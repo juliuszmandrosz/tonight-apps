@@ -19,32 +19,38 @@ mixin _$EventReviewFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -109,6 +115,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
   }) {
     return unexpected();
   }
@@ -117,6 +124,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
   }) {
     return unexpected?.call();
   }
@@ -125,6 +133,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -137,6 +146,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
   }) {
     return unexpected(this);
   }
@@ -145,6 +155,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
   }) {
     return unexpected?.call(this);
   }
@@ -153,6 +164,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -164,4 +176,109 @@ class _$_Unexpected implements _Unexpected {
 
 abstract class _Unexpected implements EventReviewFailure {
   const factory _Unexpected() = _$_Unexpected;
+}
+
+/// @nodoc
+abstract class _$$_PermissionDeniedCopyWith<$Res> {
+  factory _$$_PermissionDeniedCopyWith(
+          _$_PermissionDenied value, $Res Function(_$_PermissionDenied) then) =
+      __$$_PermissionDeniedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_PermissionDeniedCopyWithImpl<$Res>
+    extends _$EventReviewFailureCopyWithImpl<$Res>
+    implements _$$_PermissionDeniedCopyWith<$Res> {
+  __$$_PermissionDeniedCopyWithImpl(
+      _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
+      : super(_value, (v) => _then(v as _$_PermissionDenied));
+
+  @override
+  _$_PermissionDenied get _value => super._value as _$_PermissionDenied;
+}
+
+/// @nodoc
+
+class _$_PermissionDenied implements _PermissionDenied {
+  const _$_PermissionDenied();
+
+  @override
+  String toString() {
+    return 'EventReviewFailure.permissionDenied()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PermissionDenied);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+  }) {
+    return permissionDenied();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+  }) {
+    return permissionDenied?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+  }) {
+    return permissionDenied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+  }) {
+    return permissionDenied?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PermissionDenied implements EventReviewFailure {
+  const factory _PermissionDenied() = _$_PermissionDenied;
 }

@@ -6,5 +6,7 @@ part 'selector_event_failure.freezed.dart';
 class SelectorEventFailure with _$SelectorEventFailure {
   const factory SelectorEventFailure.unexpected() = _Unexpected;
 
+  const factory SelectorEventFailure.permissionDenied() = _PermissionDenied;
+
   const factory SelectorEventFailure.noAccess() = _NoAccess;
 }

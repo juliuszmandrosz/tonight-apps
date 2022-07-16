@@ -30,9 +30,16 @@ class FirebaseEventReviewFacade implements PartnerEventReviewFacade {
         EventReviewDto.fromFirebase(eventReviewDoc).toDomain(),
       );
     } on FirebaseException catch (e) {
-      _logger.e("Firebase Exception getting event review EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const EventReviewFailure.unexpected());
+      return left(
+        await handleFirebaseError<EventReviewFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception getting event review EXCEPTION: $e',
+          unexpectedFailure: const EventReviewFailure.unexpected(),
+          permissionDeniedFailure: const EventReviewFailure.permissionDenied(),
+        ),
+      );
     }
   }
 

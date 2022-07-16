@@ -6,6 +6,8 @@ part 'partner_event_failure.freezed.dart';
 class PartnerEventFailure with _$PartnerEventFailure {
   const factory PartnerEventFailure.unexpected() = _Unexpected;
 
+  const factory PartnerEventFailure.permissionDenied() = _PermissionDenied;
+
   const factory PartnerEventFailure.cancelTimeExpired() = _CancelTimeExpired;
 
   const factory PartnerEventFailure.postponeTimeExpired() =

@@ -19,6 +19,7 @@ mixin _$PartnerEventFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -30,6 +31,7 @@ mixin _$PartnerEventFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -41,6 +43,7 @@ mixin _$PartnerEventFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -53,6 +56,7 @@ mixin _$PartnerEventFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -66,6 +70,7 @@ mixin _$PartnerEventFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -77,6 +82,7 @@ mixin _$PartnerEventFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -147,6 +153,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -161,6 +168,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -175,6 +183,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -193,6 +202,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -209,6 +219,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -223,6 +234,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -240,6 +252,149 @@ class _$_Unexpected implements _Unexpected {
 
 abstract class _Unexpected implements PartnerEventFailure {
   const factory _Unexpected() = _$_Unexpected;
+}
+
+/// @nodoc
+abstract class _$$_PermissionDeniedCopyWith<$Res> {
+  factory _$$_PermissionDeniedCopyWith(
+          _$_PermissionDenied value, $Res Function(_$_PermissionDenied) then) =
+      __$$_PermissionDeniedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_PermissionDeniedCopyWithImpl<$Res>
+    extends _$PartnerEventFailureCopyWithImpl<$Res>
+    implements _$$_PermissionDeniedCopyWith<$Res> {
+  __$$_PermissionDeniedCopyWithImpl(
+      _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
+      : super(_value, (v) => _then(v as _$_PermissionDenied));
+
+  @override
+  _$_PermissionDenied get _value => super._value as _$_PermissionDenied;
+}
+
+/// @nodoc
+
+class _$_PermissionDenied implements _PermissionDenied {
+  const _$_PermissionDenied();
+
+  @override
+  String toString() {
+    return 'PartnerEventFailure.permissionDenied()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PermissionDenied);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() cancelTimeExpired,
+    required TResult Function() postponeTimeExpired,
+    required TResult Function() postponeTimeTooShort,
+    required TResult Function() discountAlreadyApplied,
+    required TResult Function() eventExistsInDateRange,
+    required TResult Function() postponeDateTooLate,
+  }) {
+    return permissionDenied();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
+    TResult Function()? discountAlreadyApplied,
+    TResult Function()? eventExistsInDateRange,
+    TResult Function()? postponeDateTooLate,
+  }) {
+    return permissionDenied?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
+    TResult Function()? discountAlreadyApplied,
+    TResult Function()? eventExistsInDateRange,
+    TResult Function()? postponeDateTooLate,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
+    required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
+    required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
+    required TResult Function(_DiscountAlreadyApplied value)
+        discountAlreadyApplied,
+    required TResult Function(_EventExistsInDateRange value)
+        eventExistsInDateRange,
+    required TResult Function(_PostponeDateTooLate value) postponeDateTooLate,
+  }) {
+    return permissionDenied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
+    TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
+    TResult Function(_PostponeDateTooLate value)? postponeDateTooLate,
+  }) {
+    return permissionDenied?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
+    TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
+    TResult Function(_PostponeDateTooLate value)? postponeDateTooLate,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PermissionDenied implements PartnerEventFailure {
+  const factory _PermissionDenied() = _$_PermissionDenied;
 }
 
 /// @nodoc
@@ -284,6 +439,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -298,6 +454,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -312,6 +469,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -330,6 +488,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -346,6 +505,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -360,6 +520,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -421,6 +582,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -435,6 +597,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -449,6 +612,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -467,6 +631,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -483,6 +648,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -497,6 +663,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -558,6 +725,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -572,6 +740,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -586,6 +755,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -604,6 +774,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -620,6 +791,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -634,6 +806,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -697,6 +870,7 @@ class _$_DiscountAlreadyApplied implements _DiscountAlreadyApplied {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -711,6 +885,7 @@ class _$_DiscountAlreadyApplied implements _DiscountAlreadyApplied {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -725,6 +900,7 @@ class _$_DiscountAlreadyApplied implements _DiscountAlreadyApplied {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -743,6 +919,7 @@ class _$_DiscountAlreadyApplied implements _DiscountAlreadyApplied {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -759,6 +936,7 @@ class _$_DiscountAlreadyApplied implements _DiscountAlreadyApplied {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -773,6 +951,7 @@ class _$_DiscountAlreadyApplied implements _DiscountAlreadyApplied {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -836,6 +1015,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -850,6 +1030,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -864,6 +1045,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -882,6 +1064,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -898,6 +1081,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -912,6 +1096,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -973,6 +1158,7 @@ class _$_PostponeDateTooLate implements _PostponeDateTooLate {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -987,6 +1173,7 @@ class _$_PostponeDateTooLate implements _PostponeDateTooLate {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -1001,6 +1188,7 @@ class _$_PostponeDateTooLate implements _PostponeDateTooLate {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -1019,6 +1207,7 @@ class _$_PostponeDateTooLate implements _PostponeDateTooLate {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -1035,6 +1224,7 @@ class _$_PostponeDateTooLate implements _PostponeDateTooLate {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -1049,6 +1239,7 @@ class _$_PostponeDateTooLate implements _PostponeDateTooLate {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,

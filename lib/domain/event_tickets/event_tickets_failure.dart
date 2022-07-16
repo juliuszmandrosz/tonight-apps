@@ -4,7 +4,9 @@ part 'event_tickets_failure.freezed.dart';
 
 @freezed
 class EventTicketsFailure with _$EventTicketsFailure {
-  const factory EventTicketsFailure.unexpected() = _EventTicketsFailure;
+  const factory EventTicketsFailure.unexpected() = _Unexpected;
+
+  const factory EventTicketsFailure.permissionDenied() = _PermissionDenied;
 
   const factory EventTicketsFailure.priceChangedAfterTicketWasSold() =
       _PriceChangedAfterTicketWasSold;

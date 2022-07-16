@@ -39,11 +39,17 @@ class FirebaseEventTicketsFacade
         )
         .handleError((e) {
       if (e is FirebaseException) {
-        _logger.e(
-          "Firebase Exception during getting event tickets EXCEPTION: $e",
+        return left(
+          handleFirebaseError<EventTicketsFailure>(
+            logger: _logger,
+            crashlytics: _crashlytics,
+            exception: e,
+            message: 'Firebase Exception getting event tickets EXCEPTION: $e',
+            unexpectedFailure: const EventTicketsFailure.unexpected(),
+            permissionDeniedFailure:
+                const EventTicketsFailure.permissionDenied(),
+          ),
         );
-        _crashlytics.recordError(e, StackTrace.current);
-        return left(const EventTicketsFailure.unexpected());
       }
     });
   }
@@ -90,10 +96,15 @@ class FirebaseEventTicketsFacade
         return right(unit);
       });
     } on FirebaseException catch (e) {
-      _logger.e("Firebase Exception during adding ticket pool EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left<EventTicketsFailure, Unit>(
-        const EventTicketsFailure.unexpected(),
+      return left(
+        await handleFirebaseError<EventTicketsFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception adding ticket pool EXCEPTION: $e',
+          unexpectedFailure: const EventTicketsFailure.unexpected(),
+          permissionDeniedFailure: const EventTicketsFailure.permissionDenied(),
+        ),
       );
     }
   }
@@ -166,10 +177,15 @@ class FirebaseEventTicketsFacade
         return right(unit);
       });
     } on FirebaseException catch (e) {
-      _logger.e("Firebase Exception during updating ticket pool EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left<EventTicketsFailure, Unit>(
-        const EventTicketsFailure.unexpected(),
+      return left(
+        await handleFirebaseError<EventTicketsFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception updating ticket pool EXCEPTION: $e',
+          unexpectedFailure: const EventTicketsFailure.unexpected(),
+          permissionDeniedFailure: const EventTicketsFailure.permissionDenied(),
+        ),
       );
     }
   }
@@ -232,10 +248,15 @@ class FirebaseEventTicketsFacade
         return right(unit);
       });
     } on FirebaseException catch (e) {
-      _logger.e("Firebase Exception during deleting ticket pool EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left<EventTicketsFailure, Unit>(
-        const EventTicketsFailure.unexpected(),
+      return left(
+        await handleFirebaseError<EventTicketsFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception deleting ticket pool EXCEPTION: $e',
+          unexpectedFailure: const EventTicketsFailure.unexpected(),
+          permissionDeniedFailure: const EventTicketsFailure.permissionDenied(),
+        ),
       );
     }
   }
