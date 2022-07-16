@@ -207,22 +207,19 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
       await _ticketCloudFunctionsFacade.returnTicket(params);
       return right(unit);
     } on FirebaseFunctionsException catch (e) {
+      _logger.e(
+        "Firebase Functions Exception during returning ticket EXCEPTION: $e",
+      );
+
       final failure = cloudFunctionsFailures[e.details];
 
       if (failure != null) {
         return left(failure);
       }
 
-      return left(
-        await handleFirebaseError<UserTicketFailure>(
-          logger: _logger,
-          crashlytics: _crashlytics,
-          exception: e,
-          message: 'Firebase exception returning ticket EXCEPTION: $e',
-          unexpectedFailure: const UserTicketFailure.unexpected(),
-          permissionDeniedFailure: const UserTicketFailure.permissionDenied(),
-        ),
-      );
+      await _crashlytics.recordError(e, StackTrace.current);
+
+      return left(const UserTicketFailure.unexpected());
     }
   }
 }
