@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -42,7 +41,6 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
       clubFavoriteCubit: context.read<ClubFavoriteCubit>(),
       availableFiltersCubit: context.read<AvailableFiltersCubit>(),
       pushNotificationsCubit: context.read<PushNotificationsCubit>(),
-      firebaseRemoteConfig: getIt<FirebaseRemoteConfig>(),
       stripe: getIt<Stripe>(),
       firebaseMessaging: getIt<FirebaseMessaging>(),
     );
@@ -52,7 +50,6 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
 
   @override
   Widget build(BuildContext context) {
-    context.read<RemoteConfigCubit>().setupRemoteConfig();
     return MultiBlocListener(
       listeners: [
         BlocListener<NetworkCheckCubit, NetworkCheckState>(
@@ -73,86 +70,69 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
                   context.replaceRoute(const SignInRoute())),
         )
       ],
-      child: BlocConsumer<RemoteConfigCubit, RemoteConfigState>(
-        listener: (context, state) {
-          if (state.status.isFailure()) {
-            context.replaceRoute(const NetworkLostRoute());
-          }
-        },
-        builder: (context, state) {
-          if (state.status.isInitial() || state.status.isFailure()) {
-            return Container();
-          }
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => getIt<EventOverviewBloc>(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<ClubsOverviewBloc>(),
+          ),
+          BlocProvider(
+            create: (ctx) => getIt<AvailableFiltersCubit>(),
+          ),
+          BlocProvider(
+            create: (ctx) => getIt<PushNotificationsCubit>(),
+          ),
+        ],
+        child: BlocProvider(
+          create: (ctx) => (_welcomeLoadingCubit ?? _initWelcomeCubit(ctx))
+            ..initUserProfile(),
+          child: BlocConsumer<WelcomeLoadingCubit, WelcomeLoadingState>(
+            listener: (context, state) {
+              if (state.status.isFailure() &&
+                  context.router.current.name != FailureRoute.name) {
+                context.pushRoute(
+                  FailureRoute(
+                    retryCallback: () =>
+                        _welcomeLoadingCubit!.loadDependencies(context),
+                  ),
+                );
+              }
 
-          if (state.status.isLoading()) {
-            return _ticketLogoAnimation ?? const TicketLogoAnimation();
-          }
-
-          return MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                create: (context) => getIt<EventOverviewBloc>(),
-              ),
-              BlocProvider(
-                create: (context) => getIt<ClubsOverviewBloc>(),
-              ),
-              BlocProvider(
-                create: (ctx) => getIt<AvailableFiltersCubit>(),
-              ),
-              BlocProvider(
-                create: (ctx) => getIt<PushNotificationsCubit>(),
-              ),
-            ],
-            child: BlocProvider(
-              create: (ctx) => (_welcomeLoadingCubit ?? _initWelcomeCubit(ctx))
-                ..initUserProfile(),
-              child: BlocConsumer<WelcomeLoadingCubit, WelcomeLoadingState>(
-                listener: (context, state) {
-                  if (state.status.isFailure() &&
-                      context.router.current.name != FailureRoute.name) {
-                    context.pushRoute(
-                      FailureRoute(
-                        retryCallback: () =>
-                            _welcomeLoadingCubit!.loadDependencies(context),
-                      ),
-                    );
+              state.username.fold(
+                () => {},
+                (username) {
+                  if (username.isEmpty &&
+                      context.router.current.name != OnboardingRoute.name) {
+                    context.pushRoute(const OnboardingRoute());
+                    return;
                   }
 
-                  state.username.fold(
-                    () => {},
-                    (username) {
-                      if (username.isEmpty &&
-                          context.router.current.name != OnboardingRoute.name) {
-                        context.pushRoute(const OnboardingRoute());
-                        return;
-                      }
-
-                      if (!state.status.isFailure() && username.isNotEmpty) {
-                        _welcomeLoadingCubit!.loadDependencies(context);
-                      }
-                    },
-                  );
+                  if (!state.status.isFailure() && username.isNotEmpty) {
+                    _welcomeLoadingCubit!.loadDependencies(context);
+                  }
                 },
-                builder: (context, state) {
-                  if (state.status.isFailure() || state.username.isNone()) {
-                    return Container();
-                  }
+              );
+            },
+            builder: (context, state) {
+              if (state.status.isFailure() || state.username.isNone()) {
+                return Container();
+              }
 
-                  if (state.username.isSome() &&
-                      state.username.getOrCrash().isEmpty) {
-                    return Container();
-                  }
+              if (state.username.isSome() &&
+                  state.username.getOrCrash().isEmpty) {
+                return Container();
+              }
 
-                  if (!state.dependenciesLoaded) {
-                    return _ticketLogoAnimation ?? const TicketLogoAnimation();
-                  }
+              if (!state.dependenciesLoaded) {
+                return _ticketLogoAnimation ?? const TicketLogoAnimation();
+              }
 
-                  return const RaverNavigator();
-                },
-              ),
-            ),
-          );
-        },
+              return const RaverNavigator();
+            },
+          ),
+        ),
       ),
     );
   }

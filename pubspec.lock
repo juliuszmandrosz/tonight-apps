@@ -576,7 +576,7 @@ packages:
     source: hosted
     version: "0.1.1"
   firebase_remote_config:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: firebase_remote_config
       url: "https://pub.dartlang.org"
@@ -797,14 +797,14 @@ packages:
       name: freezed
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.5"
+    version: "2.1.0+1"
   freezed_annotation:
     dependency: "direct main"
     description:
       name: freezed_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.3"
+    version: "2.1.0"
   frontend_server_client:
     dependency: transitive
     description:
@@ -1395,7 +1395,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: bdc86875dfb70cf0e2f10ef87976dcfe19b364bc
+      resolved-ref: cafee3da6b76b2571d16f7bd71771e18c997ebc1
       url: "git@github.com:juliuszmandrosz/RaverClubs.git"
     source: git
     version: "0.0.1"
@@ -1413,7 +1413,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: a27d0decc7498d488d65ebf32f9c4f9a5c48aff6
+      resolved-ref: c4c64dac2cdc04f8883dfc8c595c09bcd67e75cb
       url: "git@github.com:juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
@@ -1422,7 +1422,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: ac553babc50dd0b1b32513d0f5e5d8ff0d822a95
+      resolved-ref: e21e85f76207559eac9db9cdbd05d776cab6aed2
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
@@ -1459,7 +1459,7 @@ packages:
       name: rxdart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.27.4"
+    version: "0.27.5"
   screen_brightness:
     dependency: "direct main"
     description:
@@ -1884,7 +1884,7 @@ packages:
       name: webview_flutter_wkwebview
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.9.0"
+    version: "2.9.1"
   win32:
     dependency: transitive
     description:

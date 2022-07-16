@@ -9,8 +9,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_performance/firebase_performance.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:geolocator/geolocator.dart';
@@ -46,7 +46,7 @@ import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/infrastructure/currency_params/firebase_currency_params_facade.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
-import 'package:raver_events/infrastructure/typesense_events_api.dart';
+import 'package:raver_events/infrastructure/events_api.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_payments/domain/facades/user_payment_facade.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
@@ -223,14 +223,6 @@ void _registerCubits() {
     ),
   );
 
-  //Remote Config
-  getIt.registerLazySingleton(
-    () => RemoteConfigCubit(
-      networkCheckCubit: getIt(),
-      remoteConfigFacade: getIt(),
-    ),
-  );
-
   //Network Check
   getIt.registerFactory(
     () => NetworkCheckCubit(
@@ -259,7 +251,6 @@ void _registerCubits() {
       paymentFacade: getIt(),
       eventTicketsCubit: getIt(),
       ticketListCubit: ticketListCubit,
-      firebaseRemoteConfig: getIt(),
       currencyParamsFacade: getIt(),
     ),
   );
@@ -270,7 +261,6 @@ void _registerCubits() {
       eventTicketsCubit: getIt(),
       ticketListCubit: ticketListCubit,
       currencyParamsFacade: getIt(),
-      firebaseRemoteConfig: getIt(),
     ),
   );
 
@@ -351,7 +341,7 @@ void _registerFacades() {
       firestore: getIt(),
       firebaseStorage: getIt(),
       logger: getIt(),
-      typesenseClubsApi: getIt(),
+      clubsApi: getIt(),
       firebaseAuth: getIt(),
       cloudFunctionsFacade: getIt(),
       crashlytics: getIt(),
@@ -388,7 +378,7 @@ void _registerFacades() {
   getIt.registerLazySingleton<UserEventFacade>(
     () => FirebaseEventFacade(
       firestore: getIt(),
-      typesenseEventsApi: getIt(),
+      eventsApi: getIt(),
       logger: getIt(),
       firebaseAuth: getIt(),
       storage: getIt(),
@@ -409,21 +399,12 @@ void _registerFacades() {
   getIt.registerLazySingleton<CommonEventFacade>(
     () => FirebaseEventFacade(
       firestore: getIt(),
-      typesenseEventsApi: getIt(),
+      eventsApi: getIt(),
       logger: getIt(),
       firebaseAuth: getIt(),
       storage: getIt(),
       eventCloudFunctionsFacade: getIt(),
       crashlytics: getIt(),
-    ),
-  );
-
-  //Remote Config
-  getIt.registerLazySingleton<RemoteConfigFacade>(
-    () => FirebaseRemoteConfigFacade(
-      firebaseRemoteConfig: getIt(),
-      logger: getIt(),
-      firebaseCrashlytics: getIt(),
     ),
   );
 
@@ -505,8 +486,6 @@ void _registerModules() {
 
   getIt.registerLazySingleton(() => FirebaseAuth.instance);
 
-  getIt.registerLazySingleton(() => FirebaseRemoteConfig.instance);
-
   getIt.registerLazySingleton(() => FirebaseMessaging.instance);
 
   getIt.registerLazySingleton(() => FirebaseAppCheck.instance);
@@ -524,19 +503,19 @@ void _registerModules() {
 
   getIt.registerLazySingleton(() {
     final apiKey = Platform.isIOS ? iosApiKey : androidApiKey;
-    return GooglePlace(FirebaseRemoteConfig.instance.getString(apiKey));
+    return GooglePlace(dotenv.get(apiKey));
   });
 
   getIt.registerLazySingleton(typesenseConfig);
 
-  getIt.registerLazySingleton<TypesenseEventsApi>(
-    () => TypesenseEventsApiImpl(
+  getIt.registerLazySingleton<EventsApi>(
+    () => EventsApiImpl(
       getIt(),
     ),
   );
 
-  getIt.registerLazySingleton<TypesenseClubsApi>(
-    () => TypesenseClubsApiImpl(
+  getIt.registerLazySingleton<ClubsApi>(
+    () => ClubsApiImpl(
       getIt(),
     ),
   );

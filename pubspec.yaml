@@ -63,7 +63,6 @@ dependencies:
   geolocator: ^8.2.0
   google_place: ^0.4.7
   equatable: ^2.0.3
-  firebase_remote_config: ^2.0.2
   lottie: ^1.2.2
   formz: ^0.4.1
   qr_flutter: ^4.0.0

@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/core/get_payment_failure_message.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
@@ -23,7 +22,6 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   final TicketListCubit _ticketListCubit;
   final EventTicketsCubit _eventTicketsCubit;
   final CurrencyParamsFacade _currencyParamsFacade;
-  final FirebaseRemoteConfig _remoteConfig;
   StreamSubscription? _eventTicketsSubscription;
   StreamSubscription? _userTicketsSubscription;
 
@@ -32,12 +30,10 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
     required TicketListCubit ticketListCubit,
     required EventTicketsCubit eventTicketsCubit,
     required CurrencyParamsFacade currencyParamsFacade,
-    required FirebaseRemoteConfig firebaseRemoteConfig,
   })  : _paymentFacade = paymentFacade,
         _ticketListCubit = ticketListCubit,
         _eventTicketsCubit = eventTicketsCubit,
         _currencyParamsFacade = currencyParamsFacade,
-        _remoteConfig = firebaseRemoteConfig,
         super(TicketCheckoutState.initial());
 
   Future<void> initData(Event event) async {
@@ -48,7 +44,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
       ),
     );
 
-    _initServiceFee();
+    await _initServiceFee();
 
     await _initCurrencyParams();
 
@@ -190,9 +186,12 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
         (params) => emit(state.copyWith(currencyParams: some(params))));
   }
 
-  _initServiceFee() {
-    final fee = _remoteConfig.getDouble(serviceFee);
-    emit(state.copyWith(serviceFee: some(fee)));
+  Future<void> _initServiceFee() async {
+    final failureOrSuccess = await _paymentFacade.getServiceFee();
+    failureOrSuccess.fold(
+      (failure) => emit(state.copyWith(initialStatus: CubitStatus.failure)),
+      (fee) => emit(state.copyWith(serviceFee: some(fee))),
+    );
   }
 
   bool _validateInvoiceData() {

@@ -4,8 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
@@ -35,7 +35,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   final AvailableFiltersCubit _availableFiltersCubit;
   final PushNotificationsCubit _pushNotificationsCubit;
   final Stripe _stripe;
-  final FirebaseRemoteConfig _firebaseRemoteConfig;
   final FirebaseMessaging _firebaseMessaging;
 
   StreamSubscription? _profileSub;
@@ -59,7 +58,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     required AvailableFiltersCubit availableFiltersCubit,
     required PushNotificationsCubit pushNotificationsCubit,
     required Stripe stripe,
-    required FirebaseRemoteConfig firebaseRemoteConfig,
     required FirebaseMessaging firebaseMessaging,
   })  : _profileCubit = profileCubit,
         _userLocationCubit = userLocationCubit,
@@ -71,7 +69,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         _availableFiltersCubit = availableFiltersCubit,
         _pushNotificationsCubit = pushNotificationsCubit,
         _stripe = stripe,
-        _firebaseRemoteConfig = firebaseRemoteConfig,
         _firebaseMessaging = firebaseMessaging,
         super(WelcomeLoadingState.initial());
 
@@ -260,8 +257,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   }
 
   Future<void> _initStripe() async {
-    Stripe.publishableKey =
-        _firebaseRemoteConfig.getString(stripePublishableKey);
+    Stripe.publishableKey = dotenv.env[stripePublishableKey]!;
 
     Stripe.merchantIdentifier = 'merchant.com.raverteam.tonight';
 
