@@ -53,6 +53,8 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
         _logger.e(
             "Firebase Exception getting upcoming and live user tickets EXCEPTION: $e");
         _crashlytics.recordError(e, StackTrace.current);
+
+        _logger.i(e.code);
         return left(const UserTicketFailure.unexpected());
       }
     });
