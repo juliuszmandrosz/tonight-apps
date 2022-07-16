@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -50,9 +51,16 @@ class FirebaseClubFacade
 
       return right(ClubDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (e) {
-      _logger.e("Exception during getting club by id EXCEPTION: $e");
-      await _firebaseCrashlytics.recordError(e, StackTrace.current);
-      return left(const UserClubFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserClubFailure>(
+          logger: _logger,
+          crashlytics: _firebaseCrashlytics,
+          exception: e,
+          message: 'Firebase Exception getting club by id EXCEPTION: $e',
+          unexpectedFailure: const UserClubFailure.unexpected(),
+          permissionDeniedFailure: const UserClubFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -72,8 +80,8 @@ class FirebaseClubFacade
       return right<UserClubFailure, List<Club>>(
         result.map((doc) => ClubDto.fromApi(doc).toDomain()).toList(),
       );
-    } on Exception catch (e) {
-      _logger.e('Typesense exception fetching clubs EXCEPTION: $e');
+    } on DioError catch (e) {
+      _logger.e('Dio error fetching clubs EXCEPTION: $e');
       await _firebaseCrashlytics.recordError(e, StackTrace.current);
       return left(const UserClubFailure.unexpected());
     }
@@ -96,9 +104,17 @@ class FirebaseClubFacade
 
       return right(unit);
     } on FirebaseException catch (e) {
-      _logger.e("Exception during toggling club favorite status EXCEPTION: $e");
-      await _firebaseCrashlytics.recordError(e, StackTrace.current);
-      return left(const UserClubFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserClubFailure>(
+          logger: _logger,
+          crashlytics: _firebaseCrashlytics,
+          exception: e,
+          message:
+              'Firebase Exception toggling club favorite status EXCEPTION: $e',
+          unexpectedFailure: const UserClubFailure.unexpected(),
+          permissionDeniedFailure: const UserClubFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -109,9 +125,16 @@ class FirebaseClubFacade
       final result = await _getClubsByIdsFromFirestore(clubIds);
       return right(result);
     } on FirebaseException catch (e) {
-      _logger.e("Exception during fetching clubs by ids EXCEPTION: $e");
-      await _firebaseCrashlytics.recordError(e, StackTrace.current);
-      return left(const UserClubFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserClubFailure>(
+          logger: _logger,
+          crashlytics: _firebaseCrashlytics,
+          exception: e,
+          message: 'Firebase Exception fetching clubs by ids EXCEPTION: $e',
+          unexpectedFailure: const UserClubFailure.unexpected(),
+          permissionDeniedFailure: const UserClubFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -135,9 +158,16 @@ class FirebaseClubFacade
       return right(Tuple2(await Future.wait(urls),
           images.nextPageToken)); //if there is no page next, return empty token
     } on FirebaseException catch (e) {
-      _logger.e("Exception during fetching clubs images EXCEPTION: $e");
-      await _firebaseCrashlytics.recordError(e, StackTrace.current);
-      return left(const UserClubFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserClubFailure>(
+          logger: _logger,
+          crashlytics: _firebaseCrashlytics,
+          exception: e,
+          message: 'Firebase Exception fetching club images EXCEPTION: $e',
+          unexpectedFailure: const UserClubFailure.unexpected(),
+          permissionDeniedFailure: const UserClubFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -149,9 +179,17 @@ class FirebaseClubFacade
       final result = await clubRef.get();
       return right(ClubDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (e) {
-      _logger.e("Exception during getting current partner club EXCEPTION: $e");
-      await _firebaseCrashlytics.recordError(e, StackTrace.current);
-      return left(const PartnerClubFailure.unexpected());
+      return left(
+        await handleFirebaseError<PartnerClubFailure>(
+          logger: _logger,
+          crashlytics: _firebaseCrashlytics,
+          exception: e,
+          message:
+              'Firebase Exception getting current partner club EXCEPTION: $e',
+          unexpectedFailure: const PartnerClubFailure.unexpected(),
+          permissionDeniedFailure: const PartnerClubFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -163,9 +201,17 @@ class FirebaseClubFacade
       final result = await clubRef.get();
       return right(ClubDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (e) {
-      _logger.e("Exception during getting current selector club EXCEPTION: $e");
-      await _firebaseCrashlytics.recordError(e, StackTrace.current);
-      return left(const SelectorClubFailure.unexpected());
+      return left(
+        await handleFirebaseError<SelectorClubFailure>(
+          logger: _logger,
+          crashlytics: _firebaseCrashlytics,
+          exception: e,
+          message:
+              'Firebase Exception getting current selector club EXCEPTION: $e',
+          unexpectedFailure: const SelectorClubFailure.unexpected(),
+          permissionDeniedFailure: const SelectorClubFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -178,8 +224,6 @@ class FirebaseClubFacade
 
       return right(unit);
     } on FirebaseFunctionsException catch (e) {
-      _logger.e("Exception during entering access code EXCEPTION: $e");
-
       if (e.details == 'invalid-access-code') {
         return left(const SelectorClubFailure.invalidAccessCode());
       }
@@ -202,9 +246,16 @@ class FirebaseClubFacade
 
       return right(result);
     } on FirebaseException catch (e) {
-      _logger.e('Exception getting favorite clubs EXCEPTION: $e');
-      await _firebaseCrashlytics.recordError(e, StackTrace.current);
-      return left(const UserClubFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserClubFailure>(
+          logger: _logger,
+          crashlytics: _firebaseCrashlytics,
+          exception: e,
+          message: 'Firebase Exception getting favorite clubs EXCEPTION: $e',
+          unexpectedFailure: const UserClubFailure.unexpected(),
+          permissionDeniedFailure: const UserClubFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -216,8 +267,10 @@ class FirebaseClubFacade
 
       final clubIdsChunk = clubIds.getRange(0, chunkSize).toList();
 
-      final clubsQuery = _firestore.clubCollection
-          .where(FieldPath.documentId, whereIn: clubIdsChunk);
+      final clubsQuery = _firestore.clubCollection.where(
+        FieldPath.documentId,
+        whereIn: clubIdsChunk,
+      );
 
       final clubDocsChunk = await clubsQuery.get();
 

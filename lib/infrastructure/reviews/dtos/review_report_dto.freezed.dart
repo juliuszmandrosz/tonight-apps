@@ -193,7 +193,9 @@ class _$_ReviewReportDto extends _ReviewReportDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReviewReportDtoToJson(this);
+    return _$$_ReviewReportDtoToJson(
+      this,
+    );
   }
 }
 

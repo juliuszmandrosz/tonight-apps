@@ -41,9 +41,16 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
           .map((review) => ReviewDto.fromFirebase(review).toDomain())
           .toList());
     } on FirebaseException catch (e) {
-      _logger.e("Exception during fetching reviews as user EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserReviewFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserReviewFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception fetching reviews as user EXCEPTION: $e',
+          unexpectedFailure: const UserReviewFailure.unexpected(),
+          permissionDeniedFailure: const UserReviewFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -65,9 +72,18 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
           .map((review) => ReviewDto.fromFirebase(review).toDomain())
           .toList());
     } on FirebaseException catch (e) {
-      _logger.e("Exception during fetching reviews as partner EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const PartnerReviewFailure.unexpected());
+      return left(
+        await handleFirebaseError<PartnerReviewFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message:
+              'Firebase Exception fetching reviews as partner EXCEPTION: $e',
+          unexpectedFailure: const PartnerReviewFailure.unexpected(),
+          permissionDeniedFailure:
+              const PartnerReviewFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -85,9 +101,16 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
 
       return right(ReviewDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (e) {
-      _logger.e("Exception during fetching review EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserReviewFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserReviewFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception fetching review EXCEPTION: $e',
+          unexpectedFailure: const UserReviewFailure.unexpected(),
+          permissionDeniedFailure: const UserReviewFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -112,9 +135,16 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
 
       return right(reviewId);
     } on FirebaseException catch (e) {
-      _logger.e("Exception during adding review EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserReviewFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserReviewFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception adding review EXCEPTION: $e',
+          unexpectedFailure: const UserReviewFailure.unexpected(),
+          permissionDeniedFailure: const UserReviewFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -143,9 +173,18 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
           .map((review) => ReviewDto.fromFirebase(review).toDomain())
           .toList());
     } on FirebaseException catch (e) {
-      _logger.e("Exception during fetching reviews by event id EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const PartnerReviewFailure.unexpected());
+      return left(
+        await handleFirebaseError<PartnerReviewFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message:
+              'Firebase Exception fetching reviews by event id EXCEPTION: $e',
+          unexpectedFailure: const PartnerReviewFailure.unexpected(),
+          permissionDeniedFailure:
+              const PartnerReviewFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -167,9 +206,18 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
 
       return right(unit);
     } on FirebaseException catch (e) {
-      _logger.e("Exception reporting review as partner EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const PartnerReviewFailure.unexpected());
+      return left(
+        await handleFirebaseError<PartnerReviewFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message:
+              'Firebase Exception reporting review as partner EXCEPTION: $e',
+          unexpectedFailure: const PartnerReviewFailure.unexpected(),
+          permissionDeniedFailure:
+              const PartnerReviewFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -191,9 +239,16 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
 
       return right(unit);
     } on FirebaseException catch (e) {
-      _logger.e("Exception reporting review as user EXCEPTION: $e");
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserReviewFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserReviewFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception reporting review as user EXCEPTION: $e',
+          unexpectedFailure: const UserReviewFailure.unexpected(),
+          permissionDeniedFailure: const UserReviewFailure.permissionDenied(),
+        ),
+      );
     }
   }
 

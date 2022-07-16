@@ -19,37 +19,43 @@ mixin _$UserReviewFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() reportExists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? reportExists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? reportExists,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UserReviewFailure value) unexpected,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_ReportExists value) reportExists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UserReviewFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReportExists value)? reportExists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UserReviewFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReportExists value)? reportExists,
     required TResult orElse(),
   }) =>
@@ -74,28 +80,28 @@ class _$UserReviewFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$_UserReviewFailureCopyWith<$Res> {
-  factory _$$_UserReviewFailureCopyWith(_$_UserReviewFailure value,
-          $Res Function(_$_UserReviewFailure) then) =
-      __$$_UserReviewFailureCopyWithImpl<$Res>;
+abstract class _$$_UnexpectedCopyWith<$Res> {
+  factory _$$_UnexpectedCopyWith(
+          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
+      __$$_UnexpectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_UserReviewFailureCopyWithImpl<$Res>
+class __$$_UnexpectedCopyWithImpl<$Res>
     extends _$UserReviewFailureCopyWithImpl<$Res>
-    implements _$$_UserReviewFailureCopyWith<$Res> {
-  __$$_UserReviewFailureCopyWithImpl(
-      _$_UserReviewFailure _value, $Res Function(_$_UserReviewFailure) _then)
-      : super(_value, (v) => _then(v as _$_UserReviewFailure));
+    implements _$$_UnexpectedCopyWith<$Res> {
+  __$$_UnexpectedCopyWithImpl(
+      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
+      : super(_value, (v) => _then(v as _$_Unexpected));
 
   @override
-  _$_UserReviewFailure get _value => super._value as _$_UserReviewFailure;
+  _$_Unexpected get _value => super._value as _$_Unexpected;
 }
 
 /// @nodoc
 
-class _$_UserReviewFailure implements _UserReviewFailure {
-  const _$_UserReviewFailure();
+class _$_Unexpected implements _Unexpected {
+  const _$_Unexpected();
 
   @override
   String toString() {
@@ -105,7 +111,7 @@ class _$_UserReviewFailure implements _UserReviewFailure {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UserReviewFailure);
+        (other.runtimeType == runtimeType && other is _$_Unexpected);
   }
 
   @override
@@ -115,6 +121,7 @@ class _$_UserReviewFailure implements _UserReviewFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() reportExists,
   }) {
     return unexpected();
@@ -124,6 +131,7 @@ class _$_UserReviewFailure implements _UserReviewFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? reportExists,
   }) {
     return unexpected?.call();
@@ -133,6 +141,7 @@ class _$_UserReviewFailure implements _UserReviewFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? reportExists,
     required TResult orElse(),
   }) {
@@ -145,7 +154,8 @@ class _$_UserReviewFailure implements _UserReviewFailure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UserReviewFailure value) unexpected,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_ReportExists value) reportExists,
   }) {
     return unexpected(this);
@@ -154,7 +164,8 @@ class _$_UserReviewFailure implements _UserReviewFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UserReviewFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReportExists value)? reportExists,
   }) {
     return unexpected?.call(this);
@@ -163,7 +174,8 @@ class _$_UserReviewFailure implements _UserReviewFailure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UserReviewFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReportExists value)? reportExists,
     required TResult orElse(),
   }) {
@@ -174,8 +186,119 @@ class _$_UserReviewFailure implements _UserReviewFailure {
   }
 }
 
-abstract class _UserReviewFailure implements UserReviewFailure {
-  const factory _UserReviewFailure() = _$_UserReviewFailure;
+abstract class _Unexpected implements UserReviewFailure {
+  const factory _Unexpected() = _$_Unexpected;
+}
+
+/// @nodoc
+abstract class _$$_PermissionDeniedCopyWith<$Res> {
+  factory _$$_PermissionDeniedCopyWith(
+          _$_PermissionDenied value, $Res Function(_$_PermissionDenied) then) =
+      __$$_PermissionDeniedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_PermissionDeniedCopyWithImpl<$Res>
+    extends _$UserReviewFailureCopyWithImpl<$Res>
+    implements _$$_PermissionDeniedCopyWith<$Res> {
+  __$$_PermissionDeniedCopyWithImpl(
+      _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
+      : super(_value, (v) => _then(v as _$_PermissionDenied));
+
+  @override
+  _$_PermissionDenied get _value => super._value as _$_PermissionDenied;
+}
+
+/// @nodoc
+
+class _$_PermissionDenied implements _PermissionDenied {
+  const _$_PermissionDenied();
+
+  @override
+  String toString() {
+    return 'UserReviewFailure.permissionDenied()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PermissionDenied);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() reportExists,
+  }) {
+    return permissionDenied();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? reportExists,
+  }) {
+    return permissionDenied?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? reportExists,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_ReportExists value) reportExists,
+  }) {
+    return permissionDenied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_ReportExists value)? reportExists,
+  }) {
+    return permissionDenied?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_ReportExists value)? reportExists,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PermissionDenied implements UserReviewFailure {
+  const factory _PermissionDenied() = _$_PermissionDenied;
 }
 
 /// @nodoc
@@ -220,6 +343,7 @@ class _$_ReportExists implements _ReportExists {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() reportExists,
   }) {
     return reportExists();
@@ -229,6 +353,7 @@ class _$_ReportExists implements _ReportExists {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? reportExists,
   }) {
     return reportExists?.call();
@@ -238,6 +363,7 @@ class _$_ReportExists implements _ReportExists {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? reportExists,
     required TResult orElse(),
   }) {
@@ -250,7 +376,8 @@ class _$_ReportExists implements _ReportExists {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UserReviewFailure value) unexpected,
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_ReportExists value) reportExists,
   }) {
     return reportExists(this);
@@ -259,7 +386,8 @@ class _$_ReportExists implements _ReportExists {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_UserReviewFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReportExists value)? reportExists,
   }) {
     return reportExists?.call(this);
@@ -268,7 +396,8 @@ class _$_ReportExists implements _ReportExists {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UserReviewFailure value)? unexpected,
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReportExists value)? reportExists,
     required TResult orElse(),
   }) {

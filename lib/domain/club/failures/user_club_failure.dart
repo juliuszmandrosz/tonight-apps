@@ -4,5 +4,7 @@ part 'user_club_failure.freezed.dart';
 
 @freezed
 abstract class UserClubFailure with _$UserClubFailure {
-  const factory UserClubFailure.unexpected() = _UserClubFailure;
+  const factory UserClubFailure.unexpected() = _Unexpected;
+
+  const factory UserClubFailure.permissionDenied() = _PermissionDenied;
 }

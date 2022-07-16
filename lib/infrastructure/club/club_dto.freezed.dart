@@ -351,7 +351,9 @@ class _$_ClubDto extends _ClubDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ClubDtoToJson(this);
+    return _$$_ClubDtoToJson(
+      this,
+    );
   }
 }
 
