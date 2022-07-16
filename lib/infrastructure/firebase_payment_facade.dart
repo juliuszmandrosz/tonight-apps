@@ -57,9 +57,16 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
       return right(code);
     } on FirebaseException catch (e) {
-      _logger.e("Exception getting promotion code EXCEPTION: $e");
-      _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserPaymentFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserPaymentFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception getting promotion code EXCEPTION: $e',
+          unexpectedFailure: const UserPaymentFailure.unexpected(),
+          permissionDeniedFailure: const UserPaymentFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -214,9 +221,16 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
       return right(result);
     } on FirebaseException catch (e) {
-      _logger.e('Firebase Exception getting invoice data EXCEPTION: $e');
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserPaymentFailure.unexpected());
+      return left(
+        await handleFirebaseError<UserPaymentFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception getting invoice data EXCEPTION: $e',
+          unexpectedFailure: const UserPaymentFailure.unexpected(),
+          permissionDeniedFailure: const UserPaymentFailure.permissionDenied(),
+        ),
+      );
     }
   }
 

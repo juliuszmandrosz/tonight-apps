@@ -249,7 +249,9 @@ class _$_PromotionCodeDto extends _PromotionCodeDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PromotionCodeDtoToJson(this);
+    return _$$_PromotionCodeDtoToJson(
+      this,
+    );
   }
 }
 

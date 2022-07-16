@@ -146,7 +146,9 @@ class _$_InvoiceDataDto extends _InvoiceDataDto {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_InvoiceDataDtoToJson(this);
+    return _$$_InvoiceDataDtoToJson(
+      this,
+    );
   }
 }
 

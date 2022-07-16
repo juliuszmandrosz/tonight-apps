@@ -6,6 +6,8 @@ part 'user_payment_failure.freezed.dart';
 class UserPaymentFailure with _$UserPaymentFailure {
   const factory UserPaymentFailure.unexpected() = _Unexpected;
 
+  const factory UserPaymentFailure.permissionDenied() = _PermissionDenied;
+
   const factory UserPaymentFailure.stripeError() = _StripeError;
 
   const factory UserPaymentFailure.invalidPromotionCode() =

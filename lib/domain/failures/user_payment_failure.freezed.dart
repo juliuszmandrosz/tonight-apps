@@ -19,6 +19,7 @@ mixin _$UserPaymentFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -41,6 +42,7 @@ mixin _$UserPaymentFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -63,6 +65,7 @@ mixin _$UserPaymentFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -86,6 +89,7 @@ mixin _$UserPaymentFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -110,6 +114,7 @@ mixin _$UserPaymentFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -133,6 +138,7 @@ mixin _$UserPaymentFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -215,6 +221,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -240,6 +247,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -265,6 +273,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -294,6 +303,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -321,6 +331,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -347,6 +358,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -376,6 +388,217 @@ class _$_Unexpected implements _Unexpected {
 
 abstract class _Unexpected implements UserPaymentFailure {
   const factory _Unexpected() = _$_Unexpected;
+}
+
+/// @nodoc
+abstract class _$$_PermissionDeniedCopyWith<$Res> {
+  factory _$$_PermissionDeniedCopyWith(
+          _$_PermissionDenied value, $Res Function(_$_PermissionDenied) then) =
+      __$$_PermissionDeniedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_PermissionDeniedCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    implements _$$_PermissionDeniedCopyWith<$Res> {
+  __$$_PermissionDeniedCopyWithImpl(
+      _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
+      : super(_value, (v) => _then(v as _$_PermissionDenied));
+
+  @override
+  _$_PermissionDenied get _value => super._value as _$_PermissionDenied;
+}
+
+/// @nodoc
+
+class _$_PermissionDenied implements _PermissionDenied {
+  const _$_PermissionDenied();
+
+  @override
+  String toString() {
+    return 'UserPaymentFailure.permissionDenied()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PermissionDenied);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() stripeError,
+    required TResult Function() invalidPromotionCode,
+    required TResult Function() promotionCodeExpired,
+    required TResult Function() invalidEvent,
+    required TResult Function() canceledByUser,
+    required TResult Function() ticketAlreadyHasVip,
+    required TResult Function() eventCanceled,
+    required TResult Function() eventBeingPostponed,
+    required TResult Function() returnTimeExpired,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() invalidVatNumber,
+    required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
+    required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
+    required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
+  }) {
+    return permissionDenied();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? stripeError,
+    TResult Function()? invalidPromotionCode,
+    TResult Function()? promotionCodeExpired,
+    TResult Function()? invalidEvent,
+    TResult Function()? canceledByUser,
+    TResult Function()? ticketAlreadyHasVip,
+    TResult Function()? eventCanceled,
+    TResult Function()? eventBeingPostponed,
+    TResult Function()? returnTimeExpired,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? invalidVatNumber,
+    TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
+    TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
+    TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
+  }) {
+    return permissionDenied?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? stripeError,
+    TResult Function()? invalidPromotionCode,
+    TResult Function()? promotionCodeExpired,
+    TResult Function()? invalidEvent,
+    TResult Function()? canceledByUser,
+    TResult Function()? ticketAlreadyHasVip,
+    TResult Function()? eventCanceled,
+    TResult Function()? eventBeingPostponed,
+    TResult Function()? returnTimeExpired,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? invalidVatNumber,
+    TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
+    TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
+    TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_StripeError value) stripeError,
+    required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
+    required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
+    required TResult Function(_InvalidEvent value) invalidEvent,
+    required TResult Function(_CanceledByUser value) canceledByUser,
+    required TResult Function(_TicketAlreadyHasVip value) ticketAlreadyHasVip,
+    required TResult Function(_EventCanceled value) eventCanceled,
+    required TResult Function(_EventBeingPostponed value) eventBeingPostponed,
+    required TResult Function(_ReturnTimeExpired value) returnTimeExpired,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_InvalidVatNumber value) invalidVatNumber,
+    required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
+    required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
+    required TResult Function(_PaymentHasAlreadyBeenMade value)
+        paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
+  }) {
+    return permissionDenied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_StripeError value)? stripeError,
+    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_CanceledByUser value)? canceledByUser,
+    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult Function(_EventCanceled value)? eventCanceled,
+    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
+    TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult Function(_PaymentHasAlreadyBeenMade value)?
+        paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+  }) {
+    return permissionDenied?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_StripeError value)? stripeError,
+    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_CanceledByUser value)? canceledByUser,
+    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult Function(_EventCanceled value)? eventCanceled,
+    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
+    TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult Function(_PaymentHasAlreadyBeenMade value)?
+        paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PermissionDenied implements UserPaymentFailure {
+  const factory _PermissionDenied() = _$_PermissionDenied;
 }
 
 /// @nodoc
@@ -420,6 +643,7 @@ class _$_StripeError implements _StripeError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -445,6 +669,7 @@ class _$_StripeError implements _StripeError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -470,6 +695,7 @@ class _$_StripeError implements _StripeError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -499,6 +725,7 @@ class _$_StripeError implements _StripeError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -526,6 +753,7 @@ class _$_StripeError implements _StripeError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -552,6 +780,7 @@ class _$_StripeError implements _StripeError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -625,6 +854,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -650,6 +880,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -675,6 +906,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -704,6 +936,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -731,6 +964,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -757,6 +991,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -830,6 +1065,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -855,6 +1091,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -880,6 +1117,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -909,6 +1147,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -936,6 +1175,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -962,6 +1202,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -1035,6 +1276,7 @@ class _$_InvalidEvent implements _InvalidEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -1060,6 +1302,7 @@ class _$_InvalidEvent implements _InvalidEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -1085,6 +1328,7 @@ class _$_InvalidEvent implements _InvalidEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -1114,6 +1358,7 @@ class _$_InvalidEvent implements _InvalidEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -1141,6 +1386,7 @@ class _$_InvalidEvent implements _InvalidEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -1167,6 +1413,7 @@ class _$_InvalidEvent implements _InvalidEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -1240,6 +1487,7 @@ class _$_CanceledByUser implements _CanceledByUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -1265,6 +1513,7 @@ class _$_CanceledByUser implements _CanceledByUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -1290,6 +1539,7 @@ class _$_CanceledByUser implements _CanceledByUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -1319,6 +1569,7 @@ class _$_CanceledByUser implements _CanceledByUser {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -1346,6 +1597,7 @@ class _$_CanceledByUser implements _CanceledByUser {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -1372,6 +1624,7 @@ class _$_CanceledByUser implements _CanceledByUser {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -1445,6 +1698,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -1470,6 +1724,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -1495,6 +1750,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -1524,6 +1780,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -1551,6 +1808,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -1577,6 +1835,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -1650,6 +1909,7 @@ class _$_EventCanceled implements _EventCanceled {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -1675,6 +1935,7 @@ class _$_EventCanceled implements _EventCanceled {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -1700,6 +1961,7 @@ class _$_EventCanceled implements _EventCanceled {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -1729,6 +1991,7 @@ class _$_EventCanceled implements _EventCanceled {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -1756,6 +2019,7 @@ class _$_EventCanceled implements _EventCanceled {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -1782,6 +2046,7 @@ class _$_EventCanceled implements _EventCanceled {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -1855,6 +2120,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -1880,6 +2146,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -1905,6 +2172,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -1934,6 +2202,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -1961,6 +2230,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -1987,6 +2257,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -2060,6 +2331,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -2085,6 +2357,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -2110,6 +2383,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -2139,6 +2413,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -2166,6 +2441,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -2192,6 +2468,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -2265,6 +2542,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -2290,6 +2568,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -2315,6 +2594,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -2344,6 +2624,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -2371,6 +2652,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -2397,6 +2679,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -2470,6 +2753,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -2495,6 +2779,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -2520,6 +2805,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -2549,6 +2835,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -2576,6 +2863,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -2602,6 +2890,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -2675,6 +2964,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -2700,6 +2990,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -2725,6 +3016,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -2754,6 +3046,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -2781,6 +3074,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -2807,6 +3101,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -2880,6 +3175,7 @@ class _$_EventHasEnded implements _EventHasEnded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -2905,6 +3201,7 @@ class _$_EventHasEnded implements _EventHasEnded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -2930,6 +3227,7 @@ class _$_EventHasEnded implements _EventHasEnded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -2959,6 +3257,7 @@ class _$_EventHasEnded implements _EventHasEnded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -2986,6 +3285,7 @@ class _$_EventHasEnded implements _EventHasEnded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -3012,6 +3312,7 @@ class _$_EventHasEnded implements _EventHasEnded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -3085,6 +3386,7 @@ class _$_EventSoldOut implements _EventSoldOut {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -3110,6 +3412,7 @@ class _$_EventSoldOut implements _EventSoldOut {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -3135,6 +3438,7 @@ class _$_EventSoldOut implements _EventSoldOut {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -3164,6 +3468,7 @@ class _$_EventSoldOut implements _EventSoldOut {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -3191,6 +3496,7 @@ class _$_EventSoldOut implements _EventSoldOut {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -3217,6 +3523,7 @@ class _$_EventSoldOut implements _EventSoldOut {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -3290,6 +3597,7 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -3315,6 +3623,7 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -3340,6 +3649,7 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -3369,6 +3679,7 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -3396,6 +3707,7 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -3422,6 +3734,7 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -3499,6 +3812,7 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -3524,6 +3838,7 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -3549,6 +3864,7 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -3578,6 +3894,7 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -3605,6 +3922,7 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -3631,6 +3949,7 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -3707,6 +4026,7 @@ class _$_PaymentSessionHasExpired implements _PaymentSessionHasExpired {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
     required TResult Function() stripeError,
     required TResult Function() invalidPromotionCode,
     required TResult Function() promotionCodeExpired,
@@ -3732,6 +4052,7 @@ class _$_PaymentSessionHasExpired implements _PaymentSessionHasExpired {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -3757,6 +4078,7 @@ class _$_PaymentSessionHasExpired implements _PaymentSessionHasExpired {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
     TResult Function()? stripeError,
     TResult Function()? invalidPromotionCode,
     TResult Function()? promotionCodeExpired,
@@ -3786,6 +4108,7 @@ class _$_PaymentSessionHasExpired implements _PaymentSessionHasExpired {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_StripeError value) stripeError,
     required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
     required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
@@ -3813,6 +4136,7 @@ class _$_PaymentSessionHasExpired implements _PaymentSessionHasExpired {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
@@ -3839,6 +4163,7 @@ class _$_PaymentSessionHasExpired implements _PaymentSessionHasExpired {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_StripeError value)? stripeError,
     TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
     TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
