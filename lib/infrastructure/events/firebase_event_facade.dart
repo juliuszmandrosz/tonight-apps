@@ -31,7 +31,7 @@ class FirebaseEventFacade
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firestore;
   final FirebaseStorage _storage;
-  final EventsApi _typesenseEventsApi;
+  final EventsApi _eventsApi;
   final EventCloudFunctionsFacade _eventCloudFunctionsFacade;
   final FirebaseCrashlytics _crashlytics;
   final Logger _logger;
@@ -40,14 +40,14 @@ class FirebaseEventFacade
     required FirebaseAuth firebaseAuth,
     required FirebaseFirestore firestore,
     required FirebaseStorage storage,
-    required EventsApi typesenseEventsApi,
+    required EventsApi eventsApi,
     required EventCloudFunctionsFacade eventCloudFunctionsFacade,
     required FirebaseCrashlytics crashlytics,
     required Logger logger,
   })  : _firebaseAuth = firebaseAuth,
         _firestore = firestore,
         _storage = storage,
-        _typesenseEventsApi = typesenseEventsApi,
+        _eventsApi = eventsApi,
         _eventCloudFunctionsFacade = eventCloudFunctionsFacade,
         _crashlytics = crashlytics,
         _logger = logger;
@@ -60,7 +60,7 @@ class FirebaseEventFacade
     int offset = 0,
   }) async {
     try {
-      final result = await _typesenseEventsApi.getEvents(
+      final result = await _eventsApi.getEvents(
         filters,
         sortModel,
         pageSize,
@@ -248,7 +248,7 @@ class FirebaseEventFacade
         dateRangeFilter: DateRangeFilter(fromDate: null, toDate: null),
       );
 
-      final result = await _typesenseEventsApi.getEvents(
+      final result = await _eventsApi.getEvents(
           filters, EventSortModel.empty(), 1, 0);
 
       if (result.isEmpty) return right(none());
@@ -293,7 +293,7 @@ class FirebaseEventFacade
         ),
       );
 
-      final result = await _typesenseEventsApi.getEvents(
+      final result = await _eventsApi.getEvents(
           filters, EventSortModel.empty(), 1, 0);
 
       if (result.isEmpty) return right(none());
