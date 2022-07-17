@@ -61,7 +61,6 @@ dependencies:
   cloud_functions: ^3.2.9
   url_launcher: ^6.0.20
   geolocator: ^8.2.0
-  google_place: ^0.4.7
   equatable: ^2.0.3
   lottie: ^1.2.2
   formz: ^0.4.1

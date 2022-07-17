@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -10,12 +8,10 @@ import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_performance/firebase_performance.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
-import 'package:google_place/google_place.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:raver/application/app_settings/app_settings_cubit.dart';
@@ -26,7 +22,7 @@ import 'package:raver/application/clubs/club_details/club_photos/club_photos_blo
 import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
 import 'package:raver/application/clubs/club_rewards/club_rewards_cubit.dart';
 import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
-import 'package:raver/application/core/google_places/google_places_cubit.dart';
+import 'package:raver/application/core/places/places_cubit.dart';
 import 'package:raver/application/core/user_location/user_location_cubit.dart';
 import 'package:raver/application/events/event_details/event_details_cubit.dart';
 import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
@@ -40,6 +36,8 @@ import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver/application/ticket_qr/ticket_qr_cubit.dart';
 import 'package:raver/application/vip_checkout/vip_checkout_cubit.dart';
+import 'package:raver/domain/places/places_facade.dart';
+import 'package:raver/infrastructure/google_places/google_places_facade.dart';
 import 'package:raver_account_settings/raver_account_settings.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_clubs/raver_clubs.dart';
@@ -86,7 +84,7 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => GooglePlacesCubit(
+    () => PlacesCubit(
       getIt(),
     ),
   );
@@ -464,6 +462,14 @@ void _registerFacades() {
       firebaseCrashlytics: getIt(),
     ),
   );
+
+  getIt.registerLazySingleton<PlacesFacade>(
+    () => GooglePlacesFacade(
+      dio: getIt(),
+      logger: getIt(),
+      firebaseCrashlytics: getIt(),
+    ),
+  );
 }
 
 void _registerModules() {
@@ -489,11 +495,6 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebasePerformance.instance);
 
   getIt.registerLazySingleton(crashlyticsConfig);
-
-  getIt.registerLazySingleton(() {
-    final apiKey = Platform.isIOS ? iosApiKey : androidApiKey;
-    return GooglePlace(dotenv.get(apiKey));
-  });
 
   getIt.registerLazySingleton(typesenseConfig);
 

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/core/google_places/google_places_cubit.dart';
+import 'package:raver/application/core/places/places_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
@@ -81,7 +81,7 @@ class EventFiltersPage extends StatelessWidget {
                             const SizedBox(height: 25),
                             const EventFiltersMaxDistance(),
                             BlocProvider(
-                              create: (context) => getIt<GooglePlacesCubit>(),
+                              create: (context) => getIt<PlacesCubit>(),
                               child: const EventFiltersCity(),
                             ),
                             const SizedBox(height: 25),

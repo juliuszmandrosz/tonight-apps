@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_place/google_place.dart';
-import 'package:raver/application/core/google_places/google_places_cubit.dart';
+import 'package:raver/application/core/places/places_cubit.dart';
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
+import 'package:raver/domain/places/city_entity.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -83,7 +83,7 @@ class _EventFiltersCityState extends State<EventFiltersCity> {
                       },
                     ),
                     const SizedBox(height: 10),
-                    BlocBuilder<GooglePlacesCubit, GooglePlacesState>(
+                    BlocBuilder<PlacesCubit, PlacesState>(
                       builder: (context, state) {
                         return state.status.isLoading()
                             ? Center(
@@ -95,16 +95,15 @@ class _EventFiltersCityState extends State<EventFiltersCity> {
                             : ListView.builder(
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
-                                itemCount: state.predictions.length,
+                                itemCount: state.cities.length,
                                 itemBuilder: (context, index) {
                                   return ListTile(
                                     leading: const CircleAvatar(
                                       child: Icon(Icons.pin_drop),
                                     ),
-                                    title: Text(
-                                        state.predictions[index].description!),
-                                    onTap: () => _onPredictionTapped(
-                                      state.predictions[index],
+                                    title: Text(state.cities[index].name),
+                                    onTap: () => _onCityTapped(
+                                      state.cities[index],
                                     ),
                                   );
                                 },
@@ -122,27 +121,28 @@ class _EventFiltersCityState extends State<EventFiltersCity> {
     _onSearchChanged
         .debounceTime(const Duration(milliseconds: 300))
         .listen((value) {
-      final placesCubit = BlocProvider.of<GooglePlacesCubit>(context);
+      final placesCubit = BlocProvider.of<PlacesCubit>(context);
+
+      if (value == placesCubit.state.previousSearch) {
+        return;
+      }
 
       if (value.isNotEmpty && mounted) {
         placesCubit.searchForCities(value);
         return;
       }
 
-      if (placesCubit.state.predictions.isNotEmpty && mounted) {
-        placesCubit.clearPredictions();
+      if (placesCubit.state.cities.isNotEmpty && mounted) {
+        placesCubit.clearCities();
       }
     });
   }
 
-  _onPredictionTapped(AutocompletePrediction prediction) {
-    final cityId = prediction.placeId!;
-    final cityName = prediction.structuredFormatting!.mainText!;
-
-    context.read<EventFiltersCubit>().changeCity(cityId, cityName);
+  _onCityTapped(City city) {
+    context.read<EventFiltersCubit>().changeCity(city.id, city.name);
 
     setState(() {
-      _textController.text = cityName;
+      _textController.text = city.name;
     });
 
     FocusManager.instance.primaryFocus?.unfocus();

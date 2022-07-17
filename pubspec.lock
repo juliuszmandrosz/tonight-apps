@@ -731,7 +731,7 @@ packages:
       name: flutter_native_splash
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.4"
+    version: "2.2.5"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -889,13 +889,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.0"
-  google_place:
-    dependency: "direct main"
-    description:
-      name: google_place
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.7"
   google_sign_in:
     dependency: "direct main"
     description:
@@ -1404,7 +1397,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "13bdcc9302fbe409e71d6b3b84de140c970e9eb8"
+      resolved-ref: "22deba327128e5d952eafd1a854035651a882a2b"
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"

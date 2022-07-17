@@ -1,0 +1,18 @@
+part of 'places_cubit.dart';
+
+@freezed
+class PlacesState with _$PlacesState {
+  const PlacesState._();
+
+  factory PlacesState({
+    required List<City> cities,
+    required String previousSearch,
+    required CubitStatus status,
+  }) = _PlacesState;
+
+  factory PlacesState.initial() => PlacesState(
+        cities: [],
+        previousSearch: '',
+        status: CubitStatus.initial,
+      );
+}
