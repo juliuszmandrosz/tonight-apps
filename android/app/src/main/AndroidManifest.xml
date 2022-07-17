@@ -61,19 +61,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data
-                        android:host="tonightapp.page.link"
-                        android:scheme="https"/>
-
-                <data
-                        android:host="raverteam.page.link"
-                        android:scheme="https"/>
-
-                <data
-                        android:host="tonightraver.page.link"
-                        android:scheme="https"/>
-
-                <data
-                        android:host="tonightapp.pl"
+                        android:host="links.tonightapp.pl"
                         android:scheme="https"/>
 
                 <data android:scheme="signinwithapple"/>

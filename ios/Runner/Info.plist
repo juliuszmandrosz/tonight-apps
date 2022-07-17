@@ -52,7 +52,7 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FirebaseDynamicLinksCustomDomains</key>
 	<array>
-		<string>https://tonightraver.page.link</string>
+		<string>https://links.tonightapp.pl</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
