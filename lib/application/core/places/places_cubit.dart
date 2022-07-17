@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/domain/places/city_entity.dart';
 import 'package:raver/domain/places/places_facade.dart';
-import 'package:raver_common/application/application.dart';
+import 'package:raver_common/raver_common.dart';
 
 part 'places_cubit.freezed.dart';
 part 'places_state.dart';
