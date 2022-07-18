@@ -2,6 +2,11 @@
           package="com.raverteam.tonightPartners">
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <supports-screens android:smallScreens="true"
+                      android:normalScreens="true"
+                      android:largeScreens="false"
+                      android:xlargeScreens="false"/>
+
     <queries>
         <!-- If your app opens https URLs -->
         <intent>
