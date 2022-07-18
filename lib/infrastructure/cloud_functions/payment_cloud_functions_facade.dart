@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/cloud_functions_names.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/responses/create_payment_sheet_response.dart';
+import 'package:raver_payments/infrastructure/dtos/event_fees_dto.dart';
 
 abstract class PaymentCloudFunctionsFacade {
   Future<CreatePaymentSheetResponse> createTicketPaymentSheet({
@@ -135,9 +136,6 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
 
     final result = await _dio.get(endpoint);
 
-    return EventFees(
-      normal: double.parse(result.data['normal']),
-      exclusive: double.parse(result.data['exclusive']),
-    );
+    return EventFeesDto.fromJson(result.data).toDomain();
   }
 }
