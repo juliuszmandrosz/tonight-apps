@@ -32,6 +32,7 @@ class RaverPartnersApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         title: S().tonightPartners,
+        theme: darkTheme,
         debugShowCheckedModeBanner: false,
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),
@@ -42,7 +43,7 @@ class RaverPartnersApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
-        theme: darkTheme,
+        localeListResolutionCallback: localeConfig,
       ),
     );
   }
