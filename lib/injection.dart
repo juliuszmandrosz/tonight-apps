@@ -6,8 +6,8 @@ import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_performance/firebase_performance.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
@@ -19,7 +19,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/event_costs/event_costs_facade.dart';
 import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
 import 'package:raver_events/infrastructure/event_costs/firebase_event_costs_facade.dart';
-import 'package:raver_events/infrastructure/typesense_events_api.dart';
+import 'package:raver_events/infrastructure/events_api.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_partners/application/add_edit_reward/add_reward_cubit.dart';
 import 'package:raver_partners/application/add_edit_ticket_pool/add_edit_ticket_pool_cubit.dart';
@@ -45,6 +45,9 @@ import 'package:raver_partners/infrastructure/club_sales/firebase_club_sales_fac
 import 'package:raver_partners/infrastructure/discounts/firebase_discount_facade.dart';
 import 'package:raver_partners/infrastructure/selector_management/cloud_functions/selector_cloud_functions_facade.dart';
 import 'package:raver_partners/infrastructure/selector_management/firebase_selector_management_facade.dart';
+import 'package:raver_payments/domain/domain.dart';
+import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
+import 'package:raver_payments/infrastructure/firebase_payment_facade.dart';
 import 'package:raver_rewards/raver_rewards.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -69,21 +72,8 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerFactory(
-    () => ResetPasswordCubit(
-      getIt(),
-    ),
-  );
-
   getIt.registerLazySingleton(
     () => EventNotifierCubit(),
-  );
-
-  getIt.registerFactory(
-    () => RemoteConfigCubit(
-      networkCheckCubit: getIt(),
-      remoteConfigFacade: getIt(),
-    ),
   );
 
   getIt.registerFactory(
@@ -106,7 +96,7 @@ void _registerCubits() {
       eventNotifierCubit: eventNotifierCubit,
       discountFacade: getIt(),
       eventFacade: getIt(),
-      remoteConfig: getIt(),
+      partnerPaymentFacade: getIt(),
     ),
   );
 
@@ -247,11 +237,11 @@ void _registerFacades() {
     () => FirebaseEventFacade(
       firebaseAuth: getIt(),
       logger: getIt(),
-      typesenseEventsApi: getIt(),
       firestore: getIt(),
       storage: getIt(),
       eventCloudFunctionsFacade: getIt(),
       crashlytics: getIt(),
+      eventsApi: getIt(),
     ),
   );
 
@@ -259,11 +249,11 @@ void _registerFacades() {
     () => FirebaseEventFacade(
       firebaseAuth: getIt(),
       logger: getIt(),
-      typesenseEventsApi: getIt(),
       firestore: getIt(),
       storage: getIt(),
       eventCloudFunctionsFacade: getIt(),
       crashlytics: getIt(),
+      eventsApi: getIt(),
     ),
   );
 
@@ -281,9 +271,9 @@ void _registerFacades() {
       firebaseAuth: getIt(),
       logger: getIt(),
       cloudFunctionsFacade: getIt(),
-      typesenseClubsApi: getIt(),
       firebaseStorage: getIt(),
       crashlytics: getIt(),
+      clubsApi: getIt(),
     ),
   );
 
@@ -372,14 +362,6 @@ void _registerFacades() {
     ),
   );
 
-  getIt.registerLazySingleton<RemoteConfigFacade>(
-    () => FirebaseRemoteConfigFacade(
-      logger: getIt(),
-      firebaseRemoteConfig: getIt(),
-      firebaseCrashlytics: getIt(),
-    ),
-  );
-
   getIt.registerLazySingleton<EventCostsFacade>(
     () => FirebaseEventCostsFacade(
       logger: getIt(),
@@ -393,6 +375,24 @@ void _registerFacades() {
       logger: getIt(),
       firebaseCrashlytics: getIt(),
       firebaseStorage: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<PartnerPaymentFacade>(
+    () => FirebasePaymentFacade(
+      logger: getIt(),
+      firebaseCrashlytics: getIt(),
+      firestore: getIt(),
+      stripe: getIt(),
+      firebaseAuth: getIt(),
+      paymentCloudFunctionsFacade: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<PaymentCloudFunctionsFacade>(
+    () => PaymentCloudFunctionsFacadeImpl(
+      firebaseFunctions: getIt(),
+      dio: getIt(),
     ),
   );
 }
@@ -412,8 +412,6 @@ void _registerModules() {
 
   getIt.registerLazySingleton(() => FirebaseDynamicLinks.instance);
 
-  getIt.registerLazySingleton(() => FirebaseRemoteConfig.instance);
-
   getIt.registerLazySingleton(() => FirebaseStorage.instance);
 
   getIt.registerLazySingleton(() => FirebaseAppCheck.instance);
@@ -422,20 +420,22 @@ void _registerModules() {
 
   getIt.registerLazySingleton(() => FirebaseAnalytics.instance);
 
+  getIt.registerLazySingleton(() => Stripe.instance);
+
   getIt.registerLazySingleton(crashlyticsConfig);
 
   getIt.registerLazySingleton(dioConfig);
 
   getIt.registerLazySingleton(() => Logger());
 
-  getIt.registerLazySingleton<TypesenseEventsApi>(
-    () => TypesenseEventsApiImpl(
+  getIt.registerLazySingleton<EventsApi>(
+    () => EventsApiImpl(
       getIt(),
     ),
   );
 
-  getIt.registerLazySingleton<TypesenseClubsApi>(
-    () => TypesenseClubsApiImpl(
+  getIt.registerLazySingleton<ClubsApi>(
+    () => ClubsApiImpl(
       getIt(),
     ),
   );

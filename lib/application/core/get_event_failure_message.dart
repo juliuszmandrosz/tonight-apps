@@ -10,5 +10,6 @@ String getEventFailureMessage(PartnerEventFailure failure) {
     discountAlreadyApplied: (_) => S().discountHasBeenUsed,
     eventExistsInDateRange: (_) => S().eventExistsInDateRange,
     postponeDateTooLate: (_) => S().postponeDateTooLate,
+    permissionDenied: (_) => S().operationNotAllowed,
   );
 }

@@ -382,6 +382,7 @@ class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {
       deletedTicketPoolAfterTicketWasSold: (_) =>
           S().deletedTicketPoolAfterTicketWasSold,
       deletedAllTicketPools: (_) => S().deletedAllTicketPools,
+      permissionDenied: (_) => S().operationNotAllowed,
     );
   }
 

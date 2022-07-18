@@ -12,12 +12,13 @@ class EventSummaryCost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddEventCubit, AddEventState>(
-      buildWhen: (previous, current) => previous.eventFee != current.eventFee,
+      buildWhen: (previous, current) =>
+          previous.selectedEventFee != current.selectedEventFee,
       builder: (context, state) {
         return EventSummaryListTile(
           title: S().fee,
           subtitle: Text(
-            '${(state.eventFee.getOrCrash() * 100).toStringAsFixed(0)}%',
+            '${(state.selectedEventFee.getOrCrash() * 100).toStringAsFixed(0)}%',
             style: context.subtitle1.copyWith(color: context.secondaryColor),
           ),
           step: AddEventStep.cost,

@@ -10,7 +10,8 @@ class CurrentFee extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddEventCubit, AddEventState>(
-      buildWhen: (previous, current) => previous.eventFee != current.eventFee,
+      buildWhen: (previous, current) =>
+          previous.selectedEventFee != current.selectedEventFee,
       builder: (context, state) {
         return ListTile(
           dense: true,
@@ -22,7 +23,7 @@ class CurrentFee extends StatelessWidget {
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 12),
             child: Text(
-              '${(state.eventFee.getOrCrash() * 100).toStringAsFixed(0)}%',
+              '${(state.selectedEventFee.getOrCrash() * 100).toStringAsFixed(0)}%',
               style: context.bodyText2.copyWith(color: context.secondaryColor),
             ),
           ),

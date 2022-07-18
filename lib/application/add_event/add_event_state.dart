@@ -28,7 +28,9 @@ class AddEventState with _$AddEventState {
     required bool isExclusiveEvent,
     required bool isDiscountApplied,
     required Option<PartnerDiscount> appliedDiscount,
-    required Option<double> eventFee,
+    required CubitStatus eventFeesStatus,
+    required Option<EventFees> eventFees,
+    required Option<double> selectedEventFee,
   }) = _AddEventState;
 
   factory AddEventState.initial() => AddEventState(
@@ -57,6 +59,8 @@ class AddEventState with _$AddEventState {
         appliedDiscount: none(),
         isDiscountApplied: false,
         isExclusiveEvent: false,
-        eventFee: none(),
+        eventFeesStatus: CubitStatus.initial,
+        eventFees: none(),
+        selectedEventFee: none(),
       );
 }

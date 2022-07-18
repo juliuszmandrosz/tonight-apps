@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -26,6 +25,7 @@ import 'package:raver_partners/application/core/get_event_failure_message.dart';
 import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
 import 'package:raver_partners/domain/discounts/discount_facade.dart';
 import 'package:raver_partners/domain/discounts/partner_discount_entity.dart';
+import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_translations/raver_translations.dart';
 import 'package:collection/collection.dart';
 import 'package:uuid/uuid.dart';
@@ -39,26 +39,21 @@ class AddEventCubit extends Cubit<AddEventState> {
   final EventNotifierCubit _eventNotifierCubit;
   final ClubInfoCubit _clubInfoCubit;
   final DiscountFacade _discountFacade;
-  final FirebaseRemoteConfig _remoteConfig;
+  final PartnerPaymentFacade _paymentFacade;
 
   AddEventCubit({
     required PartnerEventFacade eventFacade,
     required EventNotifierCubit eventNotifierCubit,
     required ClubInfoCubit clubInfoCubit,
     required DiscountFacade discountFacade,
-    required FirebaseRemoteConfig remoteConfig,
+    required PartnerPaymentFacade partnerPaymentFacade,
   })  : _eventFacade = eventFacade,
         _eventNotifierCubit = eventNotifierCubit,
         _clubInfoCubit = clubInfoCubit,
         _discountFacade = discountFacade,
-        _remoteConfig = remoteConfig,
+        _paymentFacade = partnerPaymentFacade,
         super(AddEventState.initial()) {
-    emit(
-      state.copyWith(
-        clubInfo: _clubInfoCubit.state.club,
-        eventFee: some(_remoteConfig.getDouble(normalEventFee)),
-      ),
-    );
+    _initEventFees();
     _getAvailableDiscounts();
   }
 
@@ -166,7 +161,7 @@ class AddEventCubit extends Cubit<AddEventState> {
       state.copyWith(
         isExclusiveEvent: value,
         isDiscountApplied: isDiscountApplied,
-        eventFee: some(eventFee),
+        selectedEventFee: some(eventFee),
       ),
     );
   }
@@ -177,7 +172,7 @@ class AddEventCubit extends Cubit<AddEventState> {
     emit(
       state.copyWith(
         isDiscountApplied: !state.isDiscountApplied,
-        eventFee: some(eventFee),
+        selectedEventFee: some(eventFee),
         appliedDiscount: none(),
       ),
     );
@@ -191,7 +186,7 @@ class AddEventCubit extends Cubit<AddEventState> {
     emit(
       state.copyWith(
         appliedDiscount: some(discount),
-        eventFee: some(newFee),
+        selectedEventFee: some(newFee),
       ),
     );
   }
@@ -483,7 +478,7 @@ class AddEventCubit extends Cubit<AddEventState> {
       eventId: event.id,
       ticketSales: TicketSales(
         currency: event.currency,
-        eventFee: state.eventFee.getOrCrash(),
+        eventFee: state.selectedEventFee.getOrCrash(),
         isExclusiveEvent: state.isExclusiveEvent,
       ),
       ticketQuantity: state.ticketPools.map((pool) => pool.ticketQuantity).sum,
@@ -615,9 +610,25 @@ class AddEventCubit extends Cubit<AddEventState> {
     );
   }
 
+  Future<void> _initEventFees() async {
+    emit(state.copyWith(eventFeesStatus: CubitStatus.loading));
+
+    final failureOrSuccess = await _paymentFacade.getEventFees();
+
+    failureOrSuccess.fold(
+      (failure) => emit(state.copyWith(eventFeesStatus: CubitStatus.failure)),
+      (fees) => emit(
+        state.copyWith(
+          eventFeesStatus: CubitStatus.success,
+          eventFees: some(fees),
+          selectedEventFee: some(fees.normal),
+        ),
+      ),
+    );
+  }
+
   double _getEventFee(bool isExclusiveEvent) {
-    return isExclusiveEvent
-        ? _remoteConfig.getDouble(exclusiveEventFee)
-        : _remoteConfig.getDouble(normalEventFee);
+    final fees = state.eventFees.getOrCrash();
+    return isExclusiveEvent ? fees.exclusive : fees.normal;
   }
 }

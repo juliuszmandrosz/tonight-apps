@@ -64,7 +64,6 @@ dependencies:
   firebase_dynamic_links: ^4.2.3
   loader_overlay: ^2.0.6
   flutter_svg: ^1.0.3
-  firebase_remote_config: ^2.0.9
   json_annotation: ^4.5.0
   share_plus: ^4.0.4
   uuid: ^3.0.6
@@ -87,6 +86,7 @@ dependencies:
   firebase_app_check: ^0.0.6+16
   firebase_performance: ^0.8.1+1
   firebase_analytics: ^9.1.12
+  flutter_stripe: ^3.3.0
 
   raver_auth:
     git:

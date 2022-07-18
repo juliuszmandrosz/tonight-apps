@@ -576,7 +576,7 @@ packages:
     source: hosted
     version: "0.1.1"
   firebase_remote_config:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: firebase_remote_config
       url: "https://pub.dartlang.org"
@@ -726,7 +726,7 @@ packages:
     source: hosted
     version: "5.1.0"
   flutter_stripe:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_stripe
       url: "https://pub.dartlang.org"
@@ -1245,7 +1245,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: f7c5b62ea2069c6ebae61df95da68b6090a922ba
+      resolved-ref: aae3a3c1cc3cf95f141d9c0b791fe80918921403
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
