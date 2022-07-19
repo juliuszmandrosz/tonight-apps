@@ -41,11 +41,16 @@ class FirebaseClubSalesFacade implements ClubSalesFacade {
         )
         .handleError((e) {
       if (e is FirebaseException) {
-        _logger.e(
-          "Firebase Exception getting club sales EXCEPTION: $e",
+        return left(
+          handleFirebaseError<ClubSalesFailure>(
+            logger: _logger,
+            crashlytics: _crashlytics,
+            exception: e,
+            message: 'Firebase Exception getting club sales EXCEPTION: $e',
+            unexpectedFailure: const ClubSalesFailure.unexpected(),
+            permissionDeniedFailure: const ClubSalesFailure.permissionDenied(),
+          ),
         );
-        _crashlytics.recordError(e, StackTrace.current);
-        return left(const ClubSalesFailure.unexpected());
       }
     });
   }

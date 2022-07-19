@@ -299,6 +299,7 @@ void _registerFacades() {
       selectorCloudFunctionsFacade: getIt(),
       logger: getIt(),
       firestore: getIt(),
+      crashlytics: getIt(),
     ),
   );
 
@@ -350,6 +351,7 @@ void _registerFacades() {
       logger: getIt(),
       firestore: getIt(),
       firebaseAuth: getIt(),
+      firebaseCrashlytics: getIt(),
     ),
   );
 

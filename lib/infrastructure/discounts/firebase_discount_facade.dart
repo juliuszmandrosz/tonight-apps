@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/domain/discounts/discount_facade.dart';
@@ -10,23 +11,25 @@ import 'package:raver_partners/infrastructure/discounts/dtos/partner_discount_dt
 
 class FirebaseDiscountFacade implements DiscountFacade {
   final FirebaseFirestore _firestore;
-  final FirebaseAuth _firebaseAuth;
+  final FirebaseAuth _auth;
+  final FirebaseCrashlytics _crashlytics;
   final Logger _logger;
 
   FirebaseDiscountFacade({
     required FirebaseFirestore firestore,
     required FirebaseAuth firebaseAuth,
+    required FirebaseCrashlytics firebaseCrashlytics,
     required Logger logger,
   })  : _firestore = firestore,
-        _firebaseAuth = firebaseAuth,
+        _auth = firebaseAuth,
+        _crashlytics = firebaseCrashlytics,
         _logger = logger;
 
   @override
   Future<Either<DiscountFailure, List<PartnerDiscount>>>
       getAvailableDiscounts() async {
     try {
-      final clubDocRef =
-          await _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
+      final clubDocRef = await _firestore.getCurrentPartnerClubDocRef(_auth);
 
       final appliedDiscounts = await clubDocRef.appliedDiscounts.get();
 
@@ -44,10 +47,17 @@ class FirebaseDiscountFacade implements DiscountFacade {
 
       return right(result);
     } on FirebaseException catch (e) {
-      _logger.e(
-        "Firebase Exception getting available discounts EXCEPTION: $e",
+      return left(
+        await handleFirebaseError<DiscountFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message:
+              'Firebase Exception getting available discounts EXCEPTION: $e',
+          unexpectedFailure: const DiscountFailure.unexpected(),
+          permissionDeniedFailure: const DiscountFailure.permissionDenied(),
+        ),
       );
-      return left(const DiscountFailure.unexpected());
     }
   }
 
@@ -65,10 +75,16 @@ class FirebaseDiscountFacade implements DiscountFacade {
             .toList(),
       );
     } on FirebaseException catch (e) {
-      _logger.e(
-        "Firebase Exception getting all discounts EXCEPTION: $e",
+      return left(
+        await handleFirebaseError<DiscountFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception getting all discounts EXCEPTION: $e',
+          unexpectedFailure: const DiscountFailure.unexpected(),
+          permissionDeniedFailure: const DiscountFailure.permissionDenied(),
+        ),
       );
-      return left(const DiscountFailure.unexpected());
     }
   }
 }

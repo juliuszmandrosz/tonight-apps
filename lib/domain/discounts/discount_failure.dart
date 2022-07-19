@@ -5,4 +5,6 @@ part 'discount_failure.freezed.dart';
 @freezed
 class DiscountFailure with _$DiscountFailure {
   const factory DiscountFailure.unexpected() = _Unexpected;
+
+  const factory DiscountFailure.permissionDenied() = _PermissionDenied;
 }
