@@ -52,7 +52,7 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FirebaseDynamicLinksCustomDomains</key>
 	<array>
-		<string>https://tonightpartnersraver.page.link</string>
+		<string>https://links.tonightapp.pl</string>
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
