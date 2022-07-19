@@ -1209,7 +1209,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "43c48c4e2472ba50d22ae87c7aded2e367c8a936"
+      resolved-ref: c36fa4eac4a3988eb7d61297665b464ec390df7b
       url: "git@github.com:juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
@@ -1227,7 +1227,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "9aa4c23f4676334a3c21ca42e5545c99521c65de"
+      resolved-ref: "9dde5a0cbab7bce39a3811228464ceef223f130b"
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -1245,7 +1245,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: aae3a3c1cc3cf95f141d9c0b791fe80918921403
+      resolved-ref: "908b2ba162df17c189b5d2b6842547ca1346a00f"
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
@@ -1446,14 +1446,14 @@ packages:
       name: syncfusion_flutter_charts
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "20.2.38"
+    version: "20.2.39"
   syncfusion_flutter_core:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "20.2.38"
+    version: "20.2.39"
   synchronized:
     dependency: transitive
     description:

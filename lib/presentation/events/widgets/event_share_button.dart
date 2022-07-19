@@ -27,10 +27,10 @@ class _EventShareButtonState extends State<EventShareButton> {
     return IconButton(
       onPressed: () async {
         final path = 'events?eventId=${widget.event.id}';
-        final link = '${dotenv.env[userDynamicLinkUrl]}/$path';
+        final link = '${dotenv.get(dynamicLinkUrl)}/$path';
         final dynamicLinkParams = DynamicLinkParameters(
           link: Uri.parse(link),
-          uriPrefix: dotenv.env[userDynamicLinkUrl]!,
+          uriPrefix: dotenv.get(dynamicLinkUrl),
           androidParameters: AndroidParameters(
             packageName: tonightPackageName,
             fallbackUrl: Uri.parse(tonightAppUrl),
