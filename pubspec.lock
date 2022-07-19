@@ -1379,7 +1379,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "43c48c4e2472ba50d22ae87c7aded2e367c8a936"
+      resolved-ref: c36fa4eac4a3988eb7d61297665b464ec390df7b
       url: "git@github.com:juliuszmandrosz/RaverAuth.git"
     source: git
     version: "0.0.1"
@@ -1397,7 +1397,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "9aa4c23f4676334a3c21ca42e5545c99521c65de"
+      resolved-ref: "9dde5a0cbab7bce39a3811228464ceef223f130b"
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -1415,7 +1415,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: f7c5b62ea2069c6ebae61df95da68b6090a922ba
+      resolved-ref: "908b2ba162df17c189b5d2b6842547ca1346a00f"
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
@@ -1442,7 +1442,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: e1cb8967586c063b00848d43ac3c324a48b86902
+      resolved-ref: "4f0d8115756853677b1430518128f7ec0929d631"
       url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"

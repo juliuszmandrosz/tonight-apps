@@ -26,10 +26,10 @@ class _ImageShareButtonState extends State<ImageShareButton> {
     return InkWell(
       onTap: () async {
         if (_isLoading) return;
-        final link = '${dotenv.env[userDynamicLinkUrl]}/${widget.path}';
+        final link = '${dotenv.get(dynamicLinkUrl)}/${widget.path}';
         final dynamicLinkParams = DynamicLinkParameters(
           link: Uri.parse(link),
-          uriPrefix: dotenv.env[userDynamicLinkUrl]!,
+          uriPrefix: dotenv.get(dynamicLinkUrl),
           androidParameters: AndroidParameters(
             packageName: packageName,
             fallbackUrl: Uri.parse(tonightAppUrl),
