@@ -257,8 +257,8 @@ class FirebaseAuthFacade
         ],
         nonce: nonce,
         webAuthenticationOptions: WebAuthenticationOptions(
-          clientId: dotenv.env[appleSignInClientIdKey]!,
-          redirectUri: Uri.parse(dotenv.env[appleSignInCallbackUrl]!),
+          clientId: dotenv.get(appleSignInClientIdKey),
+          redirectUri: Uri.parse(dotenv.get(appleSignInCallbackUrl)),
         ),
       );
 
@@ -488,11 +488,11 @@ class FirebaseAuthFacade
     await _firebaseAuth.sendSignInLinkToEmail(
       email: email,
       actionCodeSettings: ActionCodeSettings(
-        url: dotenv.env[userDynamicLinkUrl]!,
+        url: dotenv.get(dynamicLinkUrl),
         handleCodeInApp: true,
         iOSBundleId: 'com.raverteam.tonight',
         androidPackageName: 'com.raverteam.tonight',
-        dynamicLinkDomain: dotenv.env[userDynamicLinkDomain]!,
+        dynamicLinkDomain: dotenv.get(dynamicLinkDomain),
       ),
     );
   }
@@ -501,11 +501,11 @@ class FirebaseAuthFacade
     await _firebaseAuth.sendSignInLinkToEmail(
       email: email,
       actionCodeSettings: ActionCodeSettings(
-        url: dotenv.env[selectorDynamicLinkUrl]!,
+        url: dotenv.get(dynamicLinkUrl),
         handleCodeInApp: true,
         iOSBundleId: 'com.raverteam.tonightScanner',
         androidPackageName: 'com.raverteam.tonightScanner',
-        dynamicLinkDomain: dotenv.env[selectorDynamicLinkDomain]!,
+        dynamicLinkDomain: dotenv.get(dynamicLinkDomain),
       ),
     );
   }
@@ -514,11 +514,11 @@ class FirebaseAuthFacade
     await _firebaseAuth.sendSignInLinkToEmail(
       email: email,
       actionCodeSettings: ActionCodeSettings(
-        url: dotenv.env[partnerDynamicLinkUrl]!,
+        url: dotenv.get(dynamicLinkUrl),
         handleCodeInApp: true,
         iOSBundleId: 'com.raverteam.tonightPartners',
         androidPackageName: 'com.raverteam.tonightPartners',
-        dynamicLinkDomain: dotenv.env[partnerDynamicLinkDomain]!,
+        dynamicLinkDomain: dotenv.get(dynamicLinkDomain),
       ),
     );
   }
