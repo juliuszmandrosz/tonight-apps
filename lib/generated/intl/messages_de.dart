@@ -505,8 +505,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "past": MessageLookupByLibrary.simpleMessage("Vergangene"),
         "pastTickets":
             MessageLookupByLibrary.simpleMessage("Vergangene Tickets "),
-        "payConveniently": MessageLookupByLibrary.simpleMessage(
-            "Bezahle bequem mit der Karte, Google Pay, Apple Pay, BLIK oder über eine andere bei Przelewy24 verfügbare Methode"),
+        "payConveniently":
+            MessageLookupByLibrary.simpleMessage("Bequem per App bezahlen"),
         "paymentConfirmed":
             MessageLookupByLibrary.simpleMessage("Zahlung wurde bestätigt"),
         "paymentError": MessageLookupByLibrary.simpleMessage(

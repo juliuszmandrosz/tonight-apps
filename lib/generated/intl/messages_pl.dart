@@ -499,8 +499,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hasła się nie zgadzają"),
         "past": MessageLookupByLibrary.simpleMessage("Przeszłe"),
         "pastTickets": MessageLookupByLibrary.simpleMessage("Przeszłe bilety"),
-        "payConveniently": MessageLookupByLibrary.simpleMessage(
-            "Zapłać w wygodny sposób, korzystając z karty, Google Pay, Apple Pay, BLIK-a lub innej metody dostępnej w Przelewy24"),
+        "payConveniently":
+            MessageLookupByLibrary.simpleMessage("Zapłać wygodnie w aplikacji"),
         "paymentConfirmed":
             MessageLookupByLibrary.simpleMessage("Płatność potwierdzona"),
         "paymentError": MessageLookupByLibrary.simpleMessage(

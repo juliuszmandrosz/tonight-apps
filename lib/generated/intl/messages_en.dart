@@ -491,8 +491,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Passwords do not match"),
         "past": MessageLookupByLibrary.simpleMessage("Past"),
         "pastTickets": MessageLookupByLibrary.simpleMessage("Past tickets"),
-        "payConveniently": MessageLookupByLibrary.simpleMessage(
-            "Pay conveniently using a card, Google Pay, Apple Pay, BLIK or another method available at Przelewy24"),
+        "payConveniently":
+            MessageLookupByLibrary.simpleMessage("Pay conveniently in app"),
         "paymentConfirmed":
             MessageLookupByLibrary.simpleMessage("Payment confirmed"),
         "paymentError": MessageLookupByLibrary.simpleMessage(

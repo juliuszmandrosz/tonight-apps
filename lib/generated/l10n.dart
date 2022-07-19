@@ -2775,10 +2775,10 @@ class S {
     );
   }
 
-  /// `Pay conveniently using a card, Google Pay, Apple Pay, BLIK or another method available at Przelewy24`
+  /// `Pay conveniently in app`
   String get payConveniently {
     return Intl.message(
-      'Pay conveniently using a card, Google Pay, Apple Pay, BLIK or another method available at Przelewy24',
+      'Pay conveniently in app',
       name: 'payConveniently',
       desc: '',
       args: [],
