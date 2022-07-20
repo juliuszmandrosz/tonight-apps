@@ -8,7 +8,7 @@ class SelectorClubState with _$SelectorClubState {
     required CubitStatus status,
     required Option<String> errorMessage,
     required FormzStatus enterAccessCodeStatus,
-    required AccessCodeInput accessCode,
+    required String accessCode,
   }) = _SelectorClubState;
 
   factory SelectorClubState.initial() => SelectorClubState(
@@ -17,6 +17,6 @@ class SelectorClubState with _$SelectorClubState {
         status: CubitStatus.initial,
         errorMessage: none(),
         enterAccessCodeStatus: FormzStatus.pure,
-        accessCode: const AccessCodeInput.pure(),
+        accessCode: '',
       );
 }

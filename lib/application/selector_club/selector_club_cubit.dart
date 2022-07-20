@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_clubs/domain/club/selector_club_facade.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/application/application.dart';
@@ -51,25 +50,22 @@ class SelectorClubCubit extends Cubit<SelectorClubState> {
     emit(
       state.copyWith(
         enterAccessCodeStatus: FormzStatus.pure,
-        accessCode: const AccessCodeInput.pure(),
+        accessCode: '',
         errorMessage: none(),
       ),
     );
   }
 
   void accessCodeChanged(String value) {
-    final accessCode = AccessCodeInput.dirty(value);
     emit(
       state.copyWith(
-        accessCode: accessCode,
+        accessCode: value,
         errorMessage: none(),
       ),
     );
   }
 
   Future<void> enterAccessCode() async {
-    if (!_validateAccessCode()) return;
-
     emit(
       state.copyWith(
         enterAccessCodeStatus: FormzStatus.submissionInProgress,
@@ -77,7 +73,7 @@ class SelectorClubCubit extends Cubit<SelectorClubState> {
     );
 
     final failureOrSuccess =
-        await _clubFacade.enterAccessCodeToClub(state.accessCode.value);
+        await _clubFacade.enterAccessCodeToClub(state.accessCode);
 
     failureOrSuccess.fold(
       (failure) => _emitEnterAccessCodeFailure(failure),
@@ -105,19 +101,6 @@ class SelectorClubCubit extends Cubit<SelectorClubState> {
     );
   }
 
-  _validateAccessCode() {
-    emit(
-      state.copyWith(
-        accessCode: AccessCodeInput.dirty(state.accessCode.value),
-      ),
-    );
-
-    final status = Formz.validate([state.accessCode]);
-
-    emit(state.copyWith(enterAccessCodeStatus: status));
-    return status.isValidated;
-  }
-
   _emitEnterAccessCodeFailure(SelectorClubFailure failure) {
     final errorMessage = _getErrorMessage(failure);
     emit(
@@ -133,6 +116,7 @@ class SelectorClubCubit extends Cubit<SelectorClubState> {
     return failure.map(
       unexpected: (_) => S().serverError,
       invalidAccessCode: (_) => S().invalidAccessCode,
+      permissionDenied: (_) => S().operationNotAllowed,
     );
   }
 

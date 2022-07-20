@@ -14,10 +14,9 @@ import 'package:logger/logger.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_clubs/domain/club/selector_club_facade.dart';
 import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_common/domain/terms_of_service/selector_tems_of_service_facade.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
-import 'package:raver_events/infrastructure/typesense_events_api.dart';
+import 'package:raver_events/infrastructure/events_api.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_rewards/domain/domain.dart';
 import 'package:raver_rewards/infrastructure/firebase_reward_facade.dart';
@@ -41,12 +40,6 @@ void registerDependencies() {
 void _registerCubits() {
   getIt.registerFactory(
     () => AuthCubit(
-      getIt(),
-    ),
-  );
-
-  getIt.registerFactory(
-    () => ResetPasswordCubit(
       getIt(),
     ),
   );
@@ -145,12 +138,12 @@ void _registerFacades() {
   getIt.registerLazySingleton<SelectorEventFacade>(
     () => FirebaseEventFacade(
       firestore: getIt(),
-      typesenseEventsApi: getIt(),
       firebaseAuth: getIt(),
       eventCloudFunctionsFacade: getIt(),
       storage: getIt(),
       logger: getIt(),
       crashlytics: getIt(),
+      eventsApi: getIt(),
     ),
   );
 
@@ -176,9 +169,9 @@ void _registerFacades() {
       firebaseAuth: getIt(),
       logger: getIt(),
       cloudFunctionsFacade: getIt(),
-      typesenseClubsApi: getIt(),
       firebaseStorage: getIt(),
       crashlytics: getIt(),
+      clubsApi: getIt(),
     ),
   );
 
@@ -249,14 +242,14 @@ void _registerModules() {
 
   getIt.registerLazySingleton(typesenseConfig);
 
-  getIt.registerLazySingleton<TypesenseEventsApi>(
-    () => TypesenseEventsApiImpl(
+  getIt.registerLazySingleton<EventsApi>(
+    () => EventsApiImpl(
       getIt(),
     ),
   );
 
-  getIt.registerLazySingleton<TypesenseClubsApi>(
-    () => TypesenseClubsApiImpl(
+  getIt.registerLazySingleton<ClubsApi>(
+    () => ClubsApiImpl(
       getIt(),
     ),
   );

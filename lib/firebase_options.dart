@@ -58,12 +58,12 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCmvF9K97hBs2puGQQONicvndvHU9wSTDk',
+    apiKey: 'AIzaSyD8f2gV9Mq14LXFYKr1DjmEmjK-Qrt3PwI',
     appId: '1:98730591004:ios:9d1e77b1370d5201a0b0d9',
     messagingSenderId: '98730591004',
     projectId: 'tonight-raver',
     storageBucket: 'tonight-raver.appspot.com',
-    androidClientId: '98730591004-gaapuj74vv6np0q7i9f9tmhfqbg783ba.apps.googleusercontent.com',
+    androidClientId: '98730591004-239hv29qt7rqdrh88bqg511uipouj9di.apps.googleusercontent.com',
     iosClientId: '98730591004-loojab9i15qtlab8kgknc3ebpajgf4gf.apps.googleusercontent.com',
     iosBundleId: 'com.raverteam.tonightScanner',
   );

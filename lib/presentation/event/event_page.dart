@@ -61,6 +61,7 @@ class EventPage extends StatelessWidget {
               child: Center(
                 child: state.failure.getOrCrash().map(
                       unexpected: (_) => Container(),
+                      permissionDenied: (_) => Container(),
                       noAccess: (_) => const NoAccess(),
                     ),
               ),

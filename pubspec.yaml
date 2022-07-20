@@ -45,7 +45,6 @@ dependencies:
   formz: ^0.4.1
   freezed_annotation: ^2.0.3
   dartz: ^0.10.1
-  firebase_remote_config: ^2.0.7
   algolia: ^1.0.5+1
   font_awesome_flutter: ^10.1.0
   cloud_functions: ^3.2.13

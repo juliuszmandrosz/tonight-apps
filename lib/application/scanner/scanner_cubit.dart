@@ -95,6 +95,7 @@ class ScannerCubit extends Cubit<ScannerState> {
       ticketExpired: (_) => S().ticketExpired,
       ticketForAnotherEvent: (_) => S().ticketForAnotherEvent,
       ticketReturned: (_) => S().ticketReturned,
+      permissionDenied: (_) => S().operationNotAllowed,
     );
 
     emit(

@@ -26,9 +26,7 @@ class SignInPage extends StatelessWidget {
         listener: (context, state) {
           state.errorMessage.fold(
             () {},
-            (error) => context.showSnackbarMessage(
-              authErrorMessages[error] ?? S().serverError,
-            ),
+            (error) => context.showSnackbarMessage(error),
           );
 
           state.linkSentMessage.fold(

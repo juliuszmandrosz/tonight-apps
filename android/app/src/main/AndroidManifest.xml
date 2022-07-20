@@ -34,12 +34,9 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data
-                        android:host="tonightscanner.page.link"
+                        android:host="links.tonightapp.pl"
                         android:scheme="https"/>
 
-                <data
-                        android:host="tonightscannerraver.page.link"
-                        android:scheme="https"/>
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.

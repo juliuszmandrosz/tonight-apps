@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -38,24 +37,11 @@ class EnterAccessCodeDialog extends StatelessWidget {
             child: TextField(
               onChanged: (email) => selectorClubCubit.accessCodeChanged(email),
               keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                labelText: S().accessCode,
-                errorText: _getAccessCodeInputErrorMessage(state),
-                errorMaxLines: 2,
-              ),
+              decoration: InputDecoration(labelText: S().accessCode),
             ),
           ),
         );
       },
     );
-  }
-
-  String? _getAccessCodeInputErrorMessage(SelectorClubState state) {
-    if (state.accessCode.valid ||
-        state.enterAccessCodeStatus != FormzStatus.invalid) {
-      return null;
-    }
-
-    return accessCodeInputErrorMessages[state.accessCode.error];
   }
 }
