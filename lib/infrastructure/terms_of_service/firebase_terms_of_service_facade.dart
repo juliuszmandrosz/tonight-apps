@@ -4,7 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_common/domain/domain.dart';
 import 'package:raver_common/domain/terms_of_service/partner_terms_of_service_facade.dart';
-import 'package:raver_common/domain/terms_of_service/selector_tems_of_service_facade.dart';
+import 'package:raver_common/domain/terms_of_service/selector_terms_of_service_facade.dart';
 import 'package:raver_common/infrastructure/core/handle_firebase_exception.dart';
 
 class FirebaseTermsOfServiceFacade

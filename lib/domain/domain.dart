@@ -11,3 +11,5 @@ export 'remote_config/remote_config_facade.dart';
 export 'remote_config/remote_config_failure.dart';
 export 'terms_of_service/terms_of_service_failure.dart';
 export 'terms_of_service/user_terms_of_service_facade.dart';
+export 'terms_of_service/selector_terms_of_service_facade.dart';
+export 'terms_of_service/partner_terms_of_service_facade.dart';
