@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>FlutterDeepLinkingEnabled</key>
-	<true/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -49,16 +47,6 @@
 				<string>com.googleusercontent.apps.98730591004-kg1i4eot2j5tuscgubd1ihol5glmcal5</string>
 			</array>
 		</dict>
-		<dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLName</key>
-            <string>links.tonightapp.pl</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>tonight</string>
-            </array>
-        </dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
