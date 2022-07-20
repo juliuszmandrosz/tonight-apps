@@ -4,7 +4,6 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_payments/domain/domain.dart';
@@ -288,7 +287,6 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
           applePay: true,
           merchantDisplayName: 'Tonight',
           merchantCountryCode: 'PL',
-          returnURL: dotenv.get(dynamicLinkUrl),
           appearance: PaymentSheetAppearance(
             shapes: const PaymentSheetShape(borderRadius: 8),
             colors: PaymentSheetAppearanceColors(
