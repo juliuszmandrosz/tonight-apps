@@ -86,7 +86,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _initAvailableFiltersCubit();
     await _initStripe();
     await _initPushNotifications(context);
-    _initDynamicLinks(context);
+    await _initDynamicLinks(context);
   }
 
   initUserProfile() {
@@ -247,7 +247,10 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
   _initDynamicLinks(BuildContext context) async {
     final initialLink = await FirebaseDynamicLinks.instance.getInitialLink();
-    handleDeepLink(context, initialLink?.link.queryParameters);
+
+    if (initialLink != null) {
+      handleDeepLink(context, initialLink.link.queryParameters);
+    }
 
     FirebaseDynamicLinks.instance.onLink.listen(
       (data) {
