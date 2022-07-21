@@ -21,7 +21,7 @@ packages:
       name: archive
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.3.0"
+    version: "3.3.1"
   args:
     dependency: transitive
     description:
@@ -678,6 +678,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.18.5+1"
+  flutter_image_compress:
+    dependency: "direct main"
+    description:
+      name: flutter_image_compress
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -1072,7 +1079,7 @@ packages:
     source: hosted
     version: "1.0.0"
   path_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path_provider
       url: "https://pub.dartlang.org"
@@ -1227,7 +1234,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "9dde5a0cbab7bce39a3811228464ceef223f130b"
+      resolved-ref: b46492f49ac695f5098ff06e165ca3c869a525df
       url: "git@github.com:juliuszmandrosz/RaverCommon.git"
     source: git
     version: "0.0.1"
@@ -1245,7 +1252,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "908b2ba162df17c189b5d2b6842547ca1346a00f"
+      resolved-ref: "41b076c254911fa3ffc1ae1de003e88586d7af87"
       url: "git@github.com:juliuszmandrosz/RaverPayments.git"
     source: git
     version: "0.0.1"
@@ -1263,7 +1270,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: e1cb8967586c063b00848d43ac3c324a48b86902
+      resolved-ref: "4f0d8115756853677b1430518128f7ec0929d631"
       url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"
