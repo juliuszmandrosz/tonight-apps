@@ -11,4 +11,5 @@ export 'algolia_query_builder.dart';
 export 'remote_config/firebase_remote_config_facade.dart';
 export 'typesense_query_builder.dart';
 export 'terms_of_service/firebase_terms_of_service_facade.dart';
-export 'core/handle_firebase_exception.dart';
+export 'core/handle_firebase_error.dart';
+export 'core/handle_dio_error.dart';

@@ -6,7 +6,7 @@ import 'package:raver_common/domain/available_filters/available_filters_entity.d
 import 'package:raver_common/domain/available_filters/available_filters_facade.dart';
 import 'package:raver_common/domain/available_filters/available_filters_failure.dart';
 import 'package:raver_common/infrastructure/available_filters/available_filters_dto.dart';
-import 'package:raver_common/infrastructure/core/handle_firebase_exception.dart';
+import 'package:raver_common/infrastructure/core/handle_firebase_error.dart';
 import 'package:raver_common/infrastructure/firestore_helpers.dart';
 
 class FirebaseAvailableFiltersFacade implements AvailableFiltersFacade {
