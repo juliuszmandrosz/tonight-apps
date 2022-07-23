@@ -7,9 +7,11 @@ import 'package:raver_payments/infrastructure/cloud_functions/responses/create_p
 import 'package:raver_payments/infrastructure/dtos/event_fees_dto.dart';
 
 abstract class PaymentCloudFunctionsFacade {
-  Future<CreatePaymentSheetResponse> createTicketPaymentSheet({
+  Future<String> createTicketPaymentSheet({
     required String eventId,
     required String userId,
+    required String successUrl,
+    required String cancelUrl,
     String? promotionCode,
     bool isVip = false,
     bool sendInvoice = false,
@@ -47,9 +49,11 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
         _dio = dio;
 
   @override
-  Future<CreatePaymentSheetResponse> createTicketPaymentSheet({
+  Future<String> createTicketPaymentSheet({
     required String eventId,
     required String userId,
+    required String successUrl,
+    required String cancelUrl,
     String? promotionCode,
     bool isVip = false,
     bool sendInvoice = false,
@@ -62,11 +66,13 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
       'promotionCode': promotionCode,
       'isVip': isVip,
       'sendInvoice': sendInvoice,
+      'successUrl': successUrl,
+      'cancelUrl': cancelUrl,
     };
 
     final result = await _dio.post(endpoint, data: data);
 
-    return CreatePaymentSheetResponse.fromJson(result.data);
+    return result.data as String;
   }
 
   @override

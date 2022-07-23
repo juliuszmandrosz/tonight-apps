@@ -84,18 +84,20 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     try {
       final userId = _firestore.getCurrentUserDocRef(_firebaseAuth).id;
 
-      final result =
+      final checkoutId =
           await _paymentCloudFunctionsFacade.createTicketPaymentSheet(
         eventId: eventId,
         userId: userId,
         isVip: isVip,
         promotionCode: promotionCode,
         sendInvoice: sendInvoice,
+        successUrl: dotenv.get(dynamicLinkUrl),
+        cancelUrl: dotenv.get(dynamicLinkUrl),
       );
 
       try {
         await _redirectToCheckout(
-          sessionId: result.paymentIntentId,
+          sessionId: checkoutId,
           context: context,
         );
         // await _presentPaymentSheet(
@@ -109,8 +111,8 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
           "Stripe exception proceeding to pay for ticket EXCEPTION: $e",
         );
         if (e.error.code == FailureCode.Canceled) {
-          await _paymentCloudFunctionsFacade
-              .cancelTicketReservation(result.paymentIntentId);
+          // await _paymentCloudFunctionsFacade
+          //     .cancelTicketReservation(result.paymentIntentId);
           return left(const UserPaymentFailure.canceledByUser());
         }
 
