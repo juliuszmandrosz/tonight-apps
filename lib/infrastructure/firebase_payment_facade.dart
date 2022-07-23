@@ -90,8 +90,8 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
         isVip: isVip,
         promotionCode: promotionCode,
         sendInvoice: sendInvoice,
-        successUrl: dotenv.get(dynamicLinkUrl),
-        cancelUrl: dotenv.get(dynamicLinkUrl),
+        successUrl: dotenv.get(successLinkUrl),
+        cancelUrl: dotenv.get(cancelLinkUrl),
       );
 
       return right(checkout);
