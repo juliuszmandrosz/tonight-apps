@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:raver_payments/domain/domain.dart';
 
 abstract class UserPaymentFacade {
-  Future<Either<UserPaymentFailure, Unit>> proceedToPayForTicket({
+  Future<Either<UserPaymentFailure, String>> proceedToPayForTicket({
     required String eventId,
     required String currency,
     required BuildContext context,
