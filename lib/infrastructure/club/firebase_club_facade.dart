@@ -81,9 +81,17 @@ class FirebaseClubFacade
         result.map((doc) => ClubDto.fromApi(doc).toDomain()).toList(),
       );
     } on DioError catch (e) {
-      _logger.e('Dio error fetching clubs EXCEPTION: $e');
-      await _firebaseCrashlytics.recordError(e, StackTrace.current);
-      return left(const UserClubFailure.unexpected());
+
+      return left(
+        await handleDioError(
+          error: e,
+          crashlytics: _firebaseCrashlytics,
+          logger: _logger,
+          message: 'Dio error fetching clubs EXCEPTION: $e',
+          unexpectedFailure: const UserClubFailure.unexpected(),
+          socketFailure: const UserClubFailure.noConnection(),
+        ),
+      );
     }
   }
 
