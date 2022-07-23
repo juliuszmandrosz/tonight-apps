@@ -4,10 +4,18 @@ import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/responses/checkout.dart';
 
 abstract class UserPaymentFacade {
-  Future<Either<UserPaymentFailure, Checkout>> proceedToPayForTicket({
+  Future<Either<UserPaymentFailure, Checkout>> proceedToTicketCheckout({
     required String eventId,
     required String currency,
     required BuildContext context,
+    String? promotionCode,
+    bool isVip = false,
+    bool sendInvoice = false,
+  });
+
+  Future<Either<UserPaymentFailure, Unit>> presentPaymentSheet({
+    required String eventId,
+    required String currency,
     String? promotionCode,
     bool isVip = false,
     bool sendInvoice = false,

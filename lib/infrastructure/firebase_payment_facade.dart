@@ -73,7 +73,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
   }
 
   @override
-  Future<Either<UserPaymentFailure, Checkout>> proceedToPayForTicket({
+  Future<Either<UserPaymentFailure, Checkout>> proceedToTicketCheckout({
     required String eventId,
     required String currency,
     required BuildContext context,
@@ -95,37 +95,6 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
       );
 
       return right(checkout);
-
-      // try {
-      //   // await _presentPaymentSheet(
-      //   //   currency: currency,
-      //   //   customerId: result.customerId,
-      //   //   paymentIntentSecret: result.paymentIntentSecret,
-      //   //   ephemeralKeySecret: result.ephemeralKeySecret,
-      //   // );
-      // } on StripeException catch (e) {
-      //   _logger.e(
-      //     "Stripe exception proceeding to pay for ticket EXCEPTION: $e",
-      //   );
-      //   if (e.error.code == FailureCode.Canceled) {
-      //     // await _paymentCloudFunctionsFacade
-      //     //     .cancelTicketReservation(result.paymentIntentId);
-      //     return left(const UserPaymentFailure.canceledByUser());
-      //   }
-      //
-      //   if (_checkIfPaymentAlreadyBeenMade(e)) {
-      //     return left(const UserPaymentFailure.paymentHasAlreadyBeenMade());
-      //   }
-      //
-      //   if (_checkIfSessionIsNotExpired(e)) {
-      //     return left(const UserPaymentFailure.paymentSessionHasExpired());
-      //   }
-      //
-      //   await _crashlytics.recordError(e, StackTrace.current);
-      //   return left(const UserPaymentFailure.stripeError());
-      // }
-      //
-      // return right(unit);
     } on DioError catch (e) {
       _logger.e("Dio error proceeding to pay for ticket EXCEPTION: $e");
       return left(await _handleDioError(e));
@@ -273,6 +242,57 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
       _logger.e('Dio error canceling ticket reservation EXCEPTION: $e');
       return left(await _handleDioError(e));
     }
+  }
+
+  @override
+  Future<Either<UserPaymentFailure, Unit>> presentPaymentSheet({
+    required String eventId,
+    required String currency,
+    String? promotionCode,
+    bool isVip = false,
+    bool sendInvoice = false,
+  }) async {
+    final userId = _firestore.getCurrentUserDocRef(_firebaseAuth).id;
+
+    final paymentIntent =
+        await _paymentCloudFunctionsFacade.createTicketPaymentSheet(
+      eventId: eventId,
+      userId: userId,
+      sendInvoice: sendInvoice,
+      promotionCode: promotionCode,
+      isVip: isVip,
+    );
+
+    try {
+      await _stripe.presentGooglePay(
+        PresentGooglePayParams(
+          clientSecret: paymentIntent.paymentIntentSecret,
+          currencyCode: currency,
+        ),
+      );
+    } on StripeException catch (e) {
+      _logger.e(
+        "Stripe exception proceeding to pay for ticket EXCEPTION: $e",
+      );
+      if (e.error.code == FailureCode.Canceled) {
+        await _paymentCloudFunctionsFacade
+            .cancelTicketReservation(paymentIntent.paymentIntentId);
+        return left(const UserPaymentFailure.canceledByUser());
+      }
+
+      if (_checkIfPaymentAlreadyBeenMade(e)) {
+        return left(const UserPaymentFailure.paymentHasAlreadyBeenMade());
+      }
+
+      if (_checkIfSessionIsNotExpired(e)) {
+        return left(const UserPaymentFailure.paymentSessionHasExpired());
+      }
+
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const UserPaymentFailure.stripeError());
+    }
+
+    return right(unit);
   }
 
   Future<UserPaymentFailure> _handleDioError(DioError error) async {

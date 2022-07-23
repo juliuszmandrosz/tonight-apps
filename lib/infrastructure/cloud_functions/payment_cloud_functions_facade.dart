@@ -18,6 +18,14 @@ abstract class PaymentCloudFunctionsFacade {
     bool sendInvoice = false,
   });
 
+  Future<CreatePaymentSheetResponse> createTicketPaymentSheet({
+    required String eventId,
+    required String userId,
+    String? promotionCode,
+    bool isVip = false,
+    bool sendInvoice = false,
+  });
+
   Future<CreatePaymentSheetResponse> createVipPaymentSheet({
     required String ticketId,
     required String userId,
@@ -74,6 +82,29 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
     final result = await _dio.post(endpoint, data: data);
 
     return Checkout.fromJson(result.data);
+  }
+
+  @override
+  Future<CreatePaymentSheetResponse> createTicketPaymentSheet({
+    required String eventId,
+    required String userId,
+    String? promotionCode,
+    bool isVip = false,
+    bool sendInvoice = false,
+  }) async {
+    const endpoint = 'payments/createTicketPaymentSheet';
+
+    final data = {
+      'eventId': eventId,
+      'userId': userId,
+      'promotionCode': promotionCode,
+      'isVip': isVip,
+      'sendInvoice': sendInvoice,
+    };
+
+    final result = await _dio.post(endpoint, data: data);
+
+    return CreatePaymentSheetResponse.fromJson(result.data);
   }
 
   @override
