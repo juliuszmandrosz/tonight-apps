@@ -4,6 +4,8 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_payments/domain/domain.dart';
@@ -11,6 +13,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_errors.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
 import 'package:raver_payments/infrastructure/dtos/invoice_data_dto.dart';
+import 'package:stripe_checkout/stripe_checkout.dart';
 import 'dtos/promotion_code_dto.dart';
 
 class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
@@ -73,6 +76,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
   Future<Either<UserPaymentFailure, Unit>> proceedToPayForTicket({
     required String eventId,
     required String currency,
+    required BuildContext context,
     String? promotionCode,
     bool isVip = false,
     bool sendInvoice = false,
@@ -90,12 +94,16 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
       );
 
       try {
-        await _presentPaymentSheet(
-          currency: currency,
-          customerId: result.customerId,
-          paymentIntentSecret: result.paymentIntentSecret,
-          ephemeralKeySecret: result.ephemeralKeySecret,
+        await _redirectToCheckout(
+          sessionId: result.paymentIntentId,
+          context: context,
         );
+        // await _presentPaymentSheet(
+        //   currency: currency,
+        //   customerId: result.customerId,
+        //   paymentIntentSecret: result.paymentIntentSecret,
+        //   ephemeralKeySecret: result.ephemeralKeySecret,
+        // );
       } on StripeException catch (e) {
         _logger.e(
           "Stripe exception proceeding to pay for ticket EXCEPTION: $e",
@@ -266,6 +274,19 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
     await _crashlytics.recordError(error.response, StackTrace.current);
     return const UserPaymentFailure.unexpected();
+  }
+
+  _redirectToCheckout({
+    required String sessionId,
+    required BuildContext context,
+  }) async {
+    return await redirectToCheckout(
+      context: context,
+      sessionId: sessionId,
+      publishableKey: dotenv.get(stripePublishableKey),
+      canceledUrl: dotenv.get(dynamicLinkUrl),
+      successUrl: dotenv.get(dynamicLinkUrl),
+    );
   }
 
   _presentPaymentSheet({
