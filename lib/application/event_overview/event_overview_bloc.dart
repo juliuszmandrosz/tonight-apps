@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/domain/domain.dart';
@@ -48,7 +49,10 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
 
     failureOrSuccess.fold(
       (failure) => emit(
-        state.copyWith(status: CubitStatus.failure),
+        state.copyWith(
+          status: CubitStatus.failure,
+          failure: some(failure),
+        ),
       ),
       (events) => emit(
         state.copyWith(
@@ -75,7 +79,10 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
 
     failureOrSuccess.fold(
       (failure) => emit(
-        state.copyWith(status: CubitStatus.failure),
+        state.copyWith(
+          status: CubitStatus.failure,
+          failure: some(failure),
+        ),
       ),
       (events) => emit(
         state.copyWith(

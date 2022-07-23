@@ -10,6 +10,7 @@ class EventOverviewState with _$EventOverviewState {
     required CubitStatus status,
     required EventFilters eventFilters,
     required EventSortModel sortModel,
+    required Option<CommonEventFailure> failure,
   }) = _EventOverviewState;
 
   factory EventOverviewState.initial() => EventOverviewState(
@@ -18,5 +19,6 @@ class EventOverviewState with _$EventOverviewState {
         events: [],
         eventFilters: EventFilters.empty(),
         sortModel: EventSortModel.empty(),
+        failure: none(),
       );
 }

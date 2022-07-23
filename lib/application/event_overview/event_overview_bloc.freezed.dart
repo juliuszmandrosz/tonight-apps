@@ -907,6 +907,7 @@ mixin _$EventOverviewState {
   CubitStatus get status => throw _privateConstructorUsedError;
   EventFilters get eventFilters => throw _privateConstructorUsedError;
   EventSortModel get sortModel => throw _privateConstructorUsedError;
+  Option<CommonEventFailure> get failure => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventOverviewStateCopyWith<EventOverviewState> get copyWith =>
@@ -923,7 +924,8 @@ abstract class $EventOverviewStateCopyWith<$Res> {
       bool hasReachedMax,
       CubitStatus status,
       EventFilters eventFilters,
-      EventSortModel sortModel});
+      EventSortModel sortModel,
+      Option<CommonEventFailure> failure});
 
   $EventFiltersCopyWith<$Res> get eventFilters;
   $EventSortModelCopyWith<$Res> get sortModel;
@@ -945,6 +947,7 @@ class _$EventOverviewStateCopyWithImpl<$Res>
     Object? status = freezed,
     Object? eventFilters = freezed,
     Object? sortModel = freezed,
+    Object? failure = freezed,
   }) {
     return _then(_value.copyWith(
       events: events == freezed
@@ -967,6 +970,10 @@ class _$EventOverviewStateCopyWithImpl<$Res>
           ? _value.sortModel
           : sortModel // ignore: cast_nullable_to_non_nullable
               as EventSortModel,
+      failure: failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<CommonEventFailure>,
     ));
   }
 
@@ -997,7 +1004,8 @@ abstract class _$$_EventOverviewStateCopyWith<$Res>
       bool hasReachedMax,
       CubitStatus status,
       EventFilters eventFilters,
-      EventSortModel sortModel});
+      EventSortModel sortModel,
+      Option<CommonEventFailure> failure});
 
   @override
   $EventFiltersCopyWith<$Res> get eventFilters;
@@ -1023,6 +1031,7 @@ class __$$_EventOverviewStateCopyWithImpl<$Res>
     Object? status = freezed,
     Object? eventFilters = freezed,
     Object? sortModel = freezed,
+    Object? failure = freezed,
   }) {
     return _then(_$_EventOverviewState(
       events: events == freezed
@@ -1045,6 +1054,10 @@ class __$$_EventOverviewStateCopyWithImpl<$Res>
           ? _value.sortModel
           : sortModel // ignore: cast_nullable_to_non_nullable
               as EventSortModel,
+      failure: failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<CommonEventFailure>,
     ));
   }
 }
@@ -1057,7 +1070,8 @@ class _$_EventOverviewState extends _EventOverviewState {
       required this.hasReachedMax,
       required this.status,
       required this.eventFilters,
-      required this.sortModel})
+      required this.sortModel,
+      required this.failure})
       : _events = events,
         super._();
 
@@ -1076,10 +1090,12 @@ class _$_EventOverviewState extends _EventOverviewState {
   final EventFilters eventFilters;
   @override
   final EventSortModel sortModel;
+  @override
+  final Option<CommonEventFailure> failure;
 
   @override
   String toString() {
-    return 'EventOverviewState(events: $events, hasReachedMax: $hasReachedMax, status: $status, eventFilters: $eventFilters, sortModel: $sortModel)';
+    return 'EventOverviewState(events: $events, hasReachedMax: $hasReachedMax, status: $status, eventFilters: $eventFilters, sortModel: $sortModel, failure: $failure)';
   }
 
   @override
@@ -1093,7 +1109,8 @@ class _$_EventOverviewState extends _EventOverviewState {
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality()
                 .equals(other.eventFilters, eventFilters) &&
-            const DeepCollectionEquality().equals(other.sortModel, sortModel));
+            const DeepCollectionEquality().equals(other.sortModel, sortModel) &&
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
@@ -1103,7 +1120,8 @@ class _$_EventOverviewState extends _EventOverviewState {
       const DeepCollectionEquality().hash(hasReachedMax),
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(eventFilters),
-      const DeepCollectionEquality().hash(sortModel));
+      const DeepCollectionEquality().hash(sortModel),
+      const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
@@ -1114,11 +1132,13 @@ class _$_EventOverviewState extends _EventOverviewState {
 
 abstract class _EventOverviewState extends EventOverviewState {
   factory _EventOverviewState(
-      {required final List<Event> events,
-      required final bool hasReachedMax,
-      required final CubitStatus status,
-      required final EventFilters eventFilters,
-      required final EventSortModel sortModel}) = _$_EventOverviewState;
+          {required final List<Event> events,
+          required final bool hasReachedMax,
+          required final CubitStatus status,
+          required final EventFilters eventFilters,
+          required final EventSortModel sortModel,
+          required final Option<CommonEventFailure> failure}) =
+      _$_EventOverviewState;
   _EventOverviewState._() : super._();
 
   @override
@@ -1131,6 +1151,8 @@ abstract class _EventOverviewState extends EventOverviewState {
   EventFilters get eventFilters;
   @override
   EventSortModel get sortModel;
+  @override
+  Option<CommonEventFailure> get failure;
   @override
   @JsonKey(ignore: true)
   _$$_EventOverviewStateCopyWith<_$_EventOverviewState> get copyWith =>
