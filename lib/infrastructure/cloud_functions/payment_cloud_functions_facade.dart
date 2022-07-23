@@ -3,11 +3,12 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/cloud_functions_names.dart';
+import 'package:raver_payments/infrastructure/cloud_functions/responses/checkout.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/responses/create_payment_sheet_response.dart';
 import 'package:raver_payments/infrastructure/dtos/event_fees_dto.dart';
 
 abstract class PaymentCloudFunctionsFacade {
-  Future<String> createTicketPaymentSheet({
+  Future<Checkout> createTicketCheckout({
     required String eventId,
     required String userId,
     required String successUrl,
@@ -49,7 +50,7 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
         _dio = dio;
 
   @override
-  Future<String> createTicketPaymentSheet({
+  Future<Checkout> createTicketCheckout({
     required String eventId,
     required String userId,
     required String successUrl,
@@ -58,7 +59,7 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
     bool isVip = false,
     bool sendInvoice = false,
   }) async {
-    const endpoint = 'payments/createTicketPaymentSheet';
+    const endpoint = 'payments/createTicketCheckout';
 
     final data = {
       'eventId': eventId,
@@ -72,7 +73,7 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
 
     final result = await _dio.post(endpoint, data: data);
 
-    return result.data as String;
+    return Checkout.fromJson(result.data);
   }
 
   @override

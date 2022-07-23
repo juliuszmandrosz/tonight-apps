@@ -12,6 +12,7 @@ import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_errors.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
+import 'package:raver_payments/infrastructure/cloud_functions/responses/checkout.dart';
 import 'package:raver_payments/infrastructure/dtos/invoice_data_dto.dart';
 import 'dtos/promotion_code_dto.dart';
 
@@ -72,7 +73,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
   }
 
   @override
-  Future<Either<UserPaymentFailure, String>> proceedToPayForTicket({
+  Future<Either<UserPaymentFailure, Checkout>> proceedToPayForTicket({
     required String eventId,
     required String currency,
     required BuildContext context,
@@ -83,8 +84,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     try {
       final userId = _firestore.getCurrentUserDocRef(_firebaseAuth).id;
 
-      final checkoutId =
-          await _paymentCloudFunctionsFacade.createTicketPaymentSheet(
+      final checkout = await _paymentCloudFunctionsFacade.createTicketCheckout(
         eventId: eventId,
         userId: userId,
         isVip: isVip,
@@ -94,7 +94,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
         cancelUrl: dotenv.get(dynamicLinkUrl),
       );
 
-      return right(checkoutId);
+      return right(checkout);
 
       // try {
       //   // await _presentPaymentSheet(

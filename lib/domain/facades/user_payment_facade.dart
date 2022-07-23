@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:raver_payments/domain/domain.dart';
+import 'package:raver_payments/infrastructure/cloud_functions/responses/checkout.dart';
 
 abstract class UserPaymentFacade {
-  Future<Either<UserPaymentFailure, String>> proceedToPayForTicket({
+  Future<Either<UserPaymentFailure, Checkout>> proceedToPayForTicket({
     required String eventId,
     required String currency,
     required BuildContext context,
