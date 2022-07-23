@@ -118,12 +118,12 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
         userId: userId,
       );
 
-      await _presentPaymentSheet(
-        currency: currency,
-        customerId: result.customerId,
-        paymentIntentSecret: result.paymentIntentSecret,
-        ephemeralKeySecret: result.ephemeralKeySecret,
-      );
+      // await _presentPaymentSheet(
+      //   currency: currency,
+      //   customerId: result.customerId,
+      //   paymentIntentSecret: result.paymentIntentSecret,
+      //   ephemeralKeySecret: result.ephemeralKeySecret,
+      // );
 
       return right(unit);
     } on DioError catch (e) {
@@ -305,62 +305,6 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
     await _crashlytics.recordError(error.response, StackTrace.current);
     return const UserPaymentFailure.unexpected();
-  }
-
-  _presentPaymentSheet({
-    required String currency,
-    required String customerId,
-    required String paymentIntentSecret,
-    required String ephemeralKeySecret,
-  }) async {
-    final user = _firebaseAuth.tryGetFirebaseUser();
-
-    await _stripe.initPaymentSheet(
-      paymentSheetParameters: SetupPaymentSheetParameters(
-          currencyCode: currency,
-          customerId: customerId,
-          paymentIntentClientSecret: paymentIntentSecret,
-          customerEphemeralKeySecret: ephemeralKeySecret,
-          testEnv: false,
-          googlePay: true,
-          applePay: true,
-          merchantDisplayName: 'Tonight',
-          merchantCountryCode: 'PL',
-          appearance: PaymentSheetAppearance(
-            shapes: const PaymentSheetShape(borderRadius: 8),
-            colors: PaymentSheetAppearanceColors(
-              icon: colors.onSurface,
-              background: colors.background,
-              error: colors.error,
-              primary: colors.primary,
-              componentBackground: colors.surface,
-              primaryText: colors.onSurface,
-              placeholderText: colors.outline,
-              secondaryText: colors.onSurface,
-              componentBorder: colors.outline,
-              componentDivider: colors.outline,
-              componentText: colors.onSurface,
-            ),
-            primaryButton: PaymentSheetPrimaryButtonAppearance(
-              shapes: const PaymentSheetPrimaryButtonShape(blurRadius: 20),
-              colors: PaymentSheetPrimaryButtonTheme(
-                light: PaymentSheetPrimaryButtonThemeColors(
-                  text: colors.onSurface,
-                  background: colors.primary,
-                  border: colors.primary,
-                ),
-                dark: PaymentSheetPrimaryButtonThemeColors(
-                  text: colors.onSurface,
-                  background: colors.primary,
-                  border: colors.primary,
-                ),
-              ),
-            ),
-          ),
-          billingDetails: BillingDetails(email: user.email)),
-    );
-
-    await _stripe.presentPaymentSheet();
   }
 
   bool _checkIfPaymentAlreadyBeenMade(StripeException exception) {

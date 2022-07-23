@@ -21,13 +21,12 @@ dependencies:
   uuid: ^3.0.6
   json_serializable: ^6.1.5
   cloud_functions: ^3.2.14
-  flutter_stripe: ^3.1.0
+  flutter_stripe: ^4.0.0
   random_string: ^2.3.1
   dio: ^4.0.6
   firebase_crashlytics: ^2.8.1
   json_annotation: ^4.4.0
   flutter_dotenv: ^5.0.2
-  stripe_checkout: ^1.0.0
 
   raver_common:
     git:
