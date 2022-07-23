@@ -34,4 +34,8 @@ abstract class UserPaymentFacade {
   Future<Either<UserPaymentFailure, InvoiceData>> getInvoiceData();
 
   Future<Either<UserPaymentFailure, double>> getServiceFee();
+
+  Future<Either<UserPaymentFailure, Unit>> cancelTicketReservation(
+    String sessionId,
+  );
 }

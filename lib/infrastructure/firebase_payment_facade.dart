@@ -159,7 +159,6 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
       return right(unit);
     } on DioError catch (e) {
       _logger.e("Dio error proceeding to pay for vip EXCEPTION: $e");
-
       return left(await _handleDioError(e));
     } on StripeException catch (e) {
       _logger.e(
@@ -260,6 +259,19 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
       _logger.e('Dio error getting event fees: $e');
       await _crashlytics.recordError(e.response, StackTrace.current);
       return left(const PartnerPaymentFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<UserPaymentFailure, Unit>> cancelTicketReservation(
+    String sessionId,
+  ) async {
+    try {
+      await _paymentCloudFunctionsFacade.cancelTicketReservation(sessionId);
+      return right(unit);
+    } on DioError catch (e) {
+      _logger.e('Dio error canceling ticket reservation EXCEPTION: $e');
+      return left(await _handleDioError(e));
     }
   }
 
