@@ -20,6 +20,7 @@ mixin _$PartnerEventFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -32,6 +33,7 @@ mixin _$PartnerEventFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -44,6 +46,7 @@ mixin _$PartnerEventFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -57,6 +60,7 @@ mixin _$PartnerEventFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -71,6 +75,7 @@ mixin _$PartnerEventFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -83,6 +88,7 @@ mixin _$PartnerEventFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -154,6 +160,7 @@ class _$_Unexpected implements _Unexpected {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -169,6 +176,7 @@ class _$_Unexpected implements _Unexpected {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -184,6 +192,7 @@ class _$_Unexpected implements _Unexpected {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -203,6 +212,7 @@ class _$_Unexpected implements _Unexpected {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -220,6 +230,7 @@ class _$_Unexpected implements _Unexpected {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -235,6 +246,7 @@ class _$_Unexpected implements _Unexpected {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -297,6 +309,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -312,6 +325,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -327,6 +341,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -346,6 +361,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -363,6 +379,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -378,6 +395,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -395,6 +413,155 @@ class _$_PermissionDenied implements _PermissionDenied {
 
 abstract class _PermissionDenied implements PartnerEventFailure {
   const factory _PermissionDenied() = _$_PermissionDenied;
+}
+
+/// @nodoc
+abstract class _$$_NoConnectionCopyWith<$Res> {
+  factory _$$_NoConnectionCopyWith(
+          _$_NoConnection value, $Res Function(_$_NoConnection) then) =
+      __$$_NoConnectionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_NoConnectionCopyWithImpl<$Res>
+    extends _$PartnerEventFailureCopyWithImpl<$Res>
+    implements _$$_NoConnectionCopyWith<$Res> {
+  __$$_NoConnectionCopyWithImpl(
+      _$_NoConnection _value, $Res Function(_$_NoConnection) _then)
+      : super(_value, (v) => _then(v as _$_NoConnection));
+
+  @override
+  _$_NoConnection get _value => super._value as _$_NoConnection;
+}
+
+/// @nodoc
+
+class _$_NoConnection implements _NoConnection {
+  const _$_NoConnection();
+
+  @override
+  String toString() {
+    return 'PartnerEventFailure.noConnection()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NoConnection);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
+    required TResult Function() cancelTimeExpired,
+    required TResult Function() postponeTimeExpired,
+    required TResult Function() postponeTimeTooShort,
+    required TResult Function() discountAlreadyApplied,
+    required TResult Function() eventExistsInDateRange,
+    required TResult Function() postponeDateTooLate,
+  }) {
+    return noConnection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
+    TResult Function()? discountAlreadyApplied,
+    TResult Function()? eventExistsInDateRange,
+    TResult Function()? postponeDateTooLate,
+  }) {
+    return noConnection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
+    TResult Function()? cancelTimeExpired,
+    TResult Function()? postponeTimeExpired,
+    TResult Function()? postponeTimeTooShort,
+    TResult Function()? discountAlreadyApplied,
+    TResult Function()? eventExistsInDateRange,
+    TResult Function()? postponeDateTooLate,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
+    required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
+    required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
+    required TResult Function(_DiscountAlreadyApplied value)
+        discountAlreadyApplied,
+    required TResult Function(_EventExistsInDateRange value)
+        eventExistsInDateRange,
+    required TResult Function(_PostponeDateTooLate value) postponeDateTooLate,
+  }) {
+    return noConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
+    TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
+    TResult Function(_PostponeDateTooLate value)? postponeDateTooLate,
+  }) {
+    return noConnection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
+    TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
+    TResult Function(_PostponeDateTooLate value)? postponeDateTooLate,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoConnection implements PartnerEventFailure {
+  const factory _NoConnection() = _$_NoConnection;
 }
 
 /// @nodoc
@@ -440,6 +607,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -455,6 +623,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -470,6 +639,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -489,6 +659,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -506,6 +677,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -521,6 +693,7 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -583,6 +756,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -598,6 +772,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -613,6 +788,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -632,6 +808,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -649,6 +826,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -664,6 +842,7 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -726,6 +905,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -741,6 +921,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -756,6 +937,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -775,6 +957,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -792,6 +975,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -807,6 +991,7 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -871,6 +1056,7 @@ class _$_DiscountAlreadyApplied implements _DiscountAlreadyApplied {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -886,6 +1072,7 @@ class _$_DiscountAlreadyApplied implements _DiscountAlreadyApplied {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -901,6 +1088,7 @@ class _$_DiscountAlreadyApplied implements _DiscountAlreadyApplied {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -920,6 +1108,7 @@ class _$_DiscountAlreadyApplied implements _DiscountAlreadyApplied {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -937,6 +1126,7 @@ class _$_DiscountAlreadyApplied implements _DiscountAlreadyApplied {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -952,6 +1142,7 @@ class _$_DiscountAlreadyApplied implements _DiscountAlreadyApplied {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -1016,6 +1207,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -1031,6 +1223,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -1046,6 +1239,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -1065,6 +1259,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -1082,6 +1277,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -1097,6 +1293,7 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -1159,6 +1356,7 @@ class _$_PostponeDateTooLate implements _PostponeDateTooLate {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
     required TResult Function() cancelTimeExpired,
     required TResult Function() postponeTimeExpired,
     required TResult Function() postponeTimeTooShort,
@@ -1174,6 +1372,7 @@ class _$_PostponeDateTooLate implements _PostponeDateTooLate {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -1189,6 +1388,7 @@ class _$_PostponeDateTooLate implements _PostponeDateTooLate {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? cancelTimeExpired,
     TResult Function()? postponeTimeExpired,
     TResult Function()? postponeTimeTooShort,
@@ -1208,6 +1408,7 @@ class _$_PostponeDateTooLate implements _PostponeDateTooLate {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_CancelTimeExpired value) cancelTimeExpired,
     required TResult Function(_PostponeTimeExpired value) postponeTimeExpired,
     required TResult Function(_PostponeTimeTooShort value) postponeTimeTooShort,
@@ -1225,6 +1426,7 @@ class _$_PostponeDateTooLate implements _PostponeDateTooLate {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
@@ -1240,6 +1442,7 @@ class _$_PostponeDateTooLate implements _PostponeDateTooLate {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
     TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
     TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,

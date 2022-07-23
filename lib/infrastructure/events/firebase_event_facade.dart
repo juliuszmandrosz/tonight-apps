@@ -70,9 +70,16 @@ class FirebaseEventFacade
         result.map((doc) => EventDto.fromApi(doc).toDomain()).toList(),
       );
     } on DioError catch (e) {
-      _logger.e('Dio error fetching events EXCEPTION: $e');
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const CommonEventFailure.unexpected());
+      return left(
+        await handleDioError(
+          error: e,
+          crashlytics: _crashlytics,
+          logger: _logger,
+          message: 'Dio error fetching events EXCEPTION: $e',
+          unexpectedFailure: const CommonEventFailure.unexpected(),
+          socketFailure: const CommonEventFailure.noConnection(),
+        ),
+      );
     }
   }
 
@@ -302,9 +309,16 @@ class FirebaseEventFacade
         ),
       );
     } on DioError catch (e) {
-      _logger.e('Dio error getting current event from club EXCEPTION: $e');
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const SelectorEventFailure.unexpected());
+      return left(
+        await handleDioError(
+          error: e,
+          crashlytics: _crashlytics,
+          logger: _logger,
+          message: 'Dio error getting current event from club EXCEPTION: $e',
+          unexpectedFailure: const SelectorEventFailure.unexpected(),
+          socketFailure: const SelectorEventFailure.noConnection(),
+        ),
+      );
     }
   }
 
@@ -351,11 +365,17 @@ class FirebaseEventFacade
         ),
       );
     } on DioError catch (e) {
-      _logger.e(
-        'Dio error getting event in date range for current partner EXCEPTION: $e',
+      return left(
+        await handleDioError(
+          error: e,
+          crashlytics: _crashlytics,
+          logger: _logger,
+          message:
+              'Dio error getting event in date range for current partner EXCEPTION: $e',
+          unexpectedFailure: const PartnerEventFailure.unexpected(),
+          socketFailure: const PartnerEventFailure.noConnection(),
+        ),
       );
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const PartnerEventFailure.unexpected());
     }
   }
 

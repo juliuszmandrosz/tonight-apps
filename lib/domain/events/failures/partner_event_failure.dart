@@ -8,6 +8,8 @@ class PartnerEventFailure with _$PartnerEventFailure {
 
   const factory PartnerEventFailure.permissionDenied() = _PermissionDenied;
 
+  const factory PartnerEventFailure.noConnection() = _NoConnection;
+
   const factory PartnerEventFailure.cancelTimeExpired() = _CancelTimeExpired;
 
   const factory PartnerEventFailure.postponeTimeExpired() =

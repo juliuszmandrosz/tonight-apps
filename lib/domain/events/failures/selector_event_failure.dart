@@ -8,5 +8,7 @@ class SelectorEventFailure with _$SelectorEventFailure {
 
   const factory SelectorEventFailure.permissionDenied() = _PermissionDenied;
 
+  const factory SelectorEventFailure.noConnection() = _NoConnection;
+
   const factory SelectorEventFailure.noAccess() = _NoAccess;
 }
