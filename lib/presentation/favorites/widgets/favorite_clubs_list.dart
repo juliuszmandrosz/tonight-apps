@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:raver/presentation/clubs/widgets/club_card.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 

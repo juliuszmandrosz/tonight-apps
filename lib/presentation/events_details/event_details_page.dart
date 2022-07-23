@@ -20,7 +20,7 @@ import 'package:raver/presentation/events_details/widgets/event_details_start_da
 import 'package:raver/presentation/events_details/widgets/event_details_ticket.dart';
 import 'package:raver/presentation/events_details/widgets/event_details_ticket_pools.dart';
 import 'package:raver/presentation/events_details/widgets/tiles/event_details_section.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_tickets/raver_tickets.dart';

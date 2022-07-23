@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_translations/raver_translations.dart';

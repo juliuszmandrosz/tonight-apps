@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
@@ -33,7 +34,12 @@ class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
         await _clubFacade.getClubs(event.clubFilter, pageSize: pageSize);
 
     failureOrSuccess.fold(
-      (failure) => emit(state.copyWith(status: CubitStatus.failure)),
+      (failure) => emit(
+        state.copyWith(
+          status: CubitStatus.failure,
+          failure: some(failure),
+        ),
+      ),
       (clubs) => emit(
         state.copyWith(
           status: CubitStatus.success,
@@ -54,7 +60,10 @@ class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
 
     failureOrSuccess.fold(
       (failure) => emit(
-        state.copyWith(status: CubitStatus.failure),
+        state.copyWith(
+          status: CubitStatus.failure,
+          failure: some(failure),
+        ),
       ),
       (clubs) => emit(
         state.copyWith(

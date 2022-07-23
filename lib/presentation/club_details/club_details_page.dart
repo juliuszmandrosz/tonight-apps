@@ -9,7 +9,7 @@ import 'package:raver/presentation/club_details/widgets/club_description.dart';
 import 'package:raver/presentation/club_details/widgets/club_details_tabs.dart';
 import 'package:raver/presentation/core/details_hero_image.dart';
 import 'package:raver/presentation/core/ticket_logo_animation.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';

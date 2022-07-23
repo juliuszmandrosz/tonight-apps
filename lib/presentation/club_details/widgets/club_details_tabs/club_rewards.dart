@@ -5,7 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:raver/application/clubs/club_rewards/club_rewards_cubit.dart';
 import 'package:raver/presentation/club_details/widgets/club_details_tabs/rewards/reward_list_for_required_entries.dart';
 import 'package:raver/presentation/club_details/widgets/club_details_tabs/rewards/user_attendance.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 

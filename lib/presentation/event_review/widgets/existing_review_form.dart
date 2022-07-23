@@ -8,7 +8,7 @@ import 'package:raver/presentation/event_review/widgets/read_only_rating_indicat
 import 'package:raver/presentation/event_review/widgets/read_only_review_content.dart';
 import 'package:raver/presentation/event_review/widgets/review_event_date.dart';
 import 'package:raver/presentation/event_review/widgets/review_event_name.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
 

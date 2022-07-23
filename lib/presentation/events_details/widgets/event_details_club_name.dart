@@ -3,7 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
 import 'package:raver_translations/raver_translations.dart';
@@ -36,7 +36,7 @@ class EventDetailsClubName extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           IconButton(
-            onPressed: () => AutoRouter.of(context).push(
+            onPressed: () => context.pushRoute(
               ClubDetailsRoute(clubId: event.clubId),
             ),
             icon: const FaIcon(FontAwesomeIcons.circleInfo),

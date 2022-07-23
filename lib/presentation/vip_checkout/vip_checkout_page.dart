@@ -8,7 +8,7 @@ import 'package:raver/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/core/ticket_logo_animation.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_header.dart';
 import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_invoice_checkbox.dart';
 import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_invoice_data.dart';

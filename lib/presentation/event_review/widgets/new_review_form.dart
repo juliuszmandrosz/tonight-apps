@@ -11,7 +11,7 @@ import 'package:raver/presentation/event_review/widgets/review_event_name.dart';
 import 'package:raver/presentation/event_review/widgets/review_rating_bar.dart';
 import 'package:raver/presentation/event_review/widgets/review_submit_button.dart';
 import 'package:raver/presentation/event_review/widgets/review_text_input.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';

@@ -5,7 +5,7 @@ import 'package:formz/formz.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:raver/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:raver/injection.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver/presentation/sign_in/widgets/sign_in_buttons.dart';
 import 'package:raver/presentation/sign_in/widgets/sign_in_email_input.dart';
 import 'package:raver/presentation/sign_in/widgets/terms_of_service_info.dart';

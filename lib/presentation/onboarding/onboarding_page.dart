@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:raver/presentation/onboarding/widgets/onboarding_page_view.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -16,7 +16,7 @@ class OnboardingPage extends StatelessWidget {
       child: IntroductionScreen(
         next: const FaIcon(FontAwesomeIcons.arrowRight),
         done: Text(S().start),
-        onDone: () => context.pushRoute(const OnboardingUsernameRoute()),
+        onDone: () => context.pushRoute(const OnboardingRoute()),
         pages: [
           onboardingPageView(
             context: context,

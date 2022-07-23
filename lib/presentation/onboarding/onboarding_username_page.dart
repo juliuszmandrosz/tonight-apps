@@ -6,7 +6,7 @@ import 'package:raver/application/auth/username/username_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/onboarding/widgets/submit_button.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver/presentation/update_username/widgets/username_input.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/generated/l10n.dart';

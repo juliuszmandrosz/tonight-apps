@@ -9,12 +9,14 @@ abstract class ClubsOverviewState with _$ClubsOverviewState {
     required List<Club> clubs,
     required bool hasReachedMax,
     required ClubFilters clubFilter,
+    required Option<UserClubFailure> failure,
   }) = _ClubsOverviewState;
 
   factory ClubsOverviewState.initial() => ClubsOverviewState(
-    status: CubitStatus.initial,
+        status: CubitStatus.initial,
         clubs: [],
         hasReachedMax: false,
         clubFilter: ClubFilters.empty(),
+        failure: none(),
       );
 }

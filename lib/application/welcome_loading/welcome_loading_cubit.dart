@@ -36,6 +36,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   final PushNotificationsCubit _pushNotificationsCubit;
   final Stripe _stripe;
   final FirebaseMessaging _firebaseMessaging;
+  final NetworkCheckCubit _networkCheckCubit;
 
   StreamSubscription? _profileSub;
   StreamSubscription? _locationSub;
@@ -59,6 +60,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     required PushNotificationsCubit pushNotificationsCubit,
     required Stripe stripe,
     required FirebaseMessaging firebaseMessaging,
+    required NetworkCheckCubit networkCheckCubit,
   })  : _profileCubit = profileCubit,
         _userLocationCubit = userLocationCubit,
         _eventOverviewBloc = eventOverviewBloc,
@@ -70,6 +72,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         _pushNotificationsCubit = pushNotificationsCubit,
         _stripe = stripe,
         _firebaseMessaging = firebaseMessaging,
+        _networkCheckCubit = networkCheckCubit,
         super(WelcomeLoadingState.initial());
 
   Future<void> loadDependencies(BuildContext context) async {
@@ -77,6 +80,11 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         state.status == CubitStatus.success) return;
 
     emit(state.copyWith(status: CubitStatus.loading));
+
+    if (!await _networkCheckCubit.checkNetworkConnection()) {
+      emit(state.copyWith(hasConnection: false));
+      return;
+    }
 
     _initUserLocationCubit();
     _initTickets();

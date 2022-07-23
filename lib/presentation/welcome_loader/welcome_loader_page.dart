@@ -14,7 +14,7 @@ import 'package:raver/application/welcome_loading/welcome_loading_cubit.dart';
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/ticket_logo_animation.dart';
 import 'package:raver/presentation/navigator/navigator_page.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/application/application.dart';
@@ -43,6 +43,7 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
       pushNotificationsCubit: context.read<PushNotificationsCubit>(),
       stripe: getIt<Stripe>(),
       firebaseMessaging: getIt<FirebaseMessaging>(),
+      networkCheckCubit: context.read<NetworkCheckCubit>(),
     );
 
     return _welcomeLoadingCubit!;
@@ -55,7 +56,7 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
         BlocListener<NetworkCheckCubit, NetworkCheckState>(
           bloc: context.read<NetworkCheckCubit>(),
           listener: (context, state) {
-            final currentRoute = AutoRouter.of(context).current.name;
+            final currentRoute = context.router.current.name;
             if (!state.isConnected && currentRoute != NetworkLostRoute.name) {
               context.pushRoute(const NetworkLostRoute());
             }
@@ -64,10 +65,10 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
         BlocListener<AuthCubit, AuthState>(
           bloc: context.read<AuthCubit>(),
           listener: (context, state) => state.map(
-              initial: (_) {},
-              authenticated: (_) => {},
-              unauthenticated: (_) =>
-                  context.replaceRoute(const SignInRoute())),
+            initial: (_) {},
+            authenticated: (_) => {},
+            unauthenticated: (_) => context.replaceRoute(const SignInRoute()),
+          ),
         )
       ],
       child: MultiBlocProvider(
@@ -90,6 +91,14 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
             ..initUserProfile(),
           child: BlocConsumer<WelcomeLoadingCubit, WelcomeLoadingState>(
             listener: (context, state) {
+              final currentRoute = context.router.current.name;
+
+              if (!state.hasConnection &&
+                  currentRoute != NetworkLostRoute.name) {
+                context.replaceRoute(const NetworkLostRoute());
+                return;
+              }
+
               if (state.status.isFailure() &&
                   context.router.current.name != FailureRoute.name) {
                 context.pushRoute(

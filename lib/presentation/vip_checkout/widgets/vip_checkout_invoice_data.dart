@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:raver/presentation/core/raver_list_tile_with_title_and_subtitle.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_payments/domain/entities/invoice_data_entity.dart';
 import 'package:raver_translations/raver_translations.dart';

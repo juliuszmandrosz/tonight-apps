@@ -8,7 +8,7 @@ import 'package:raver/injection.dart';
 import 'package:raver/presentation/clubs/widgets/club_card.dart';
 import 'package:raver/presentation/clubs/widgets/club_filter_section.dart';
 import 'package:raver/presentation/clubs/widgets/search_clubs_info.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -59,7 +59,8 @@ class _ClubsPageState extends State<ClubsPage> {
                             FailureRoute(
                               retryCallback: () => _clubsOverviewBloc.add(
                                 ClubsOverviewEvent.clubsFetched(
-                                    state.clubFilter),
+                                  state.clubFilter,
+                                ),
                               ),
                             ),
                           );

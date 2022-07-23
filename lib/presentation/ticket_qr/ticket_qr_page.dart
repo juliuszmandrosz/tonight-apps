@@ -12,7 +12,7 @@ import 'package:raver/injection.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/core/raver_headline.dart';
 import 'package:raver/presentation/core/ticket_logo_animation.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver/presentation/ticket_qr/widgets/ticket_return_button.dart';
 import 'package:raver/presentation/ticket_qr/widgets/upgrade_to_vip_button.dart';
 import 'package:raver_common/raver_common.dart';

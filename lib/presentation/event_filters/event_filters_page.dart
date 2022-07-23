@@ -16,7 +16,7 @@ import 'package:raver/presentation/event_filters/widgets/event_filters_music.dar
 import 'package:raver/presentation/event_filters/widgets/event_filters_place_option.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_price.dart';
 import 'package:raver/presentation/event_filters/widgets/event_filters_submit_button.dart.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_translations/raver_translations.dart';
 

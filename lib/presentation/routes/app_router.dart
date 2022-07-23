@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
 import 'package:raver/failure/failure_page.dart';
 import 'package:raver/presentation/app_settings/app_settings_page.dart';
 import 'package:raver/presentation/club_details/club_details_page.dart';
@@ -30,12 +29,7 @@ import 'package:raver/presentation/tickets/tickets_page.dart';
 import 'package:raver/presentation/update_username/update_username_page.dart';
 import 'package:raver/presentation/vip_checkout/vip_checkout_page.dart';
 import 'package:raver/presentation/welcome_loader/welcome_loader_page.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_events/raver_events.dart';
 import 'package:raver_payments/domain/domain.dart';
-import 'package:raver_tickets/raver_tickets.dart';
-
-part 'app_router.gr.dart';
 
 const animationDuration = 300;
 
@@ -172,4 +166,4 @@ const animationDuration = 300;
     ),
   ],
 )
-class AppRouter extends _$AppRouter {}
+class $AppRouter {}

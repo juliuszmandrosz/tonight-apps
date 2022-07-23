@@ -15,7 +15,7 @@ import 'package:raver/presentation/events/widgets/event_photo.dart';
 import 'package:raver/presentation/events/widgets/event_sold_out_info.dart';
 import 'package:raver/presentation/events/widgets/event_tags_info.dart';
 import 'package:raver/presentation/events/widgets/last_tickets_left_info.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_events/raver_events.dart';
 
 class EventCard extends StatelessWidget {

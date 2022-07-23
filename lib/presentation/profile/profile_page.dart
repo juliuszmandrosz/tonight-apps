@@ -9,7 +9,7 @@ import 'package:raver/presentation/core/ticket_logo_animation.dart';
 import 'package:raver/presentation/profile/widgets/profile_menu_tiles.dart';
 import 'package:raver/presentation/profile/widgets/social_media/social_media_row.dart';
 import 'package:raver/presentation/profile/widgets/username_row.dart';
-import 'package:raver/presentation/routes/app_router.dart';
+import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_auth/raver_auth.dart';
 import 'package:raver_common/raver_common.dart';
 
