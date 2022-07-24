@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/core/get_payment_failure_message.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
@@ -23,7 +22,6 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   final TicketListCubit _ticketListCubit;
   final EventTicketsCubit _eventTicketsCubit;
   final CurrencyParamsFacade _currencyParamsFacade;
-  final Stripe _stripe;
   StreamSubscription? _eventTicketsSubscription;
   StreamSubscription? _userTicketsSubscription;
 
@@ -32,12 +30,10 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
     required TicketListCubit ticketListCubit,
     required EventTicketsCubit eventTicketsCubit,
     required CurrencyParamsFacade currencyParamsFacade,
-    required Stripe stripe,
   })  : _paymentFacade = paymentFacade,
         _ticketListCubit = ticketListCubit,
         _eventTicketsCubit = eventTicketsCubit,
         _currencyParamsFacade = currencyParamsFacade,
-        _stripe = stripe,
         super(TicketCheckoutState.initial());
 
   Future<void> initData(Event event) async {
