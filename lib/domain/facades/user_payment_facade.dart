@@ -26,6 +26,10 @@ abstract class UserPaymentFacade {
     String promotionCode,
   );
 
+  Future<Either<UserPaymentFailure, Unit>> updatePaymentMethod(
+    RaverPaymentMethod paymentMethod,
+  );
+
   Future<Either<UserPaymentFailure, Unit>> updateInvoiceData({
     required String name,
     String? vatNumber,

@@ -193,6 +193,30 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
   }
 
   @override
+  Future<Either<UserPaymentFailure, Unit>> updatePaymentMethod(
+    RaverPaymentMethod paymentMethod,
+  ) async {
+    try {
+      final userId = _firebaseAuth.tryGetFirebaseUser().uid;
+      await _firestore.stripeCustomers.doc(userId).update(
+        {'paymentMethod': paymentMethod.name},
+      );
+      return right(unit);
+    } on FirebaseException catch (e) {
+      return left(
+        await handleFirebaseError(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception updating invoice data EXCEPTION: $e',
+          unexpectedFailure: const UserPaymentFailure.unexpected(),
+          permissionDeniedFailure: const UserPaymentFailure.permissionDenied(),
+        ),
+      );
+    }
+  }
+
+  @override
   Future<Either<UserPaymentFailure, Unit>> updateInvoiceData({
     required String name,
     String? vatNumber,
