@@ -17,12 +17,13 @@ class VipCheckoutState with _$VipCheckoutState {
     required Option<String> snackbarMessage,
     required bool isVipNoLongerAvailable,
     required bool sendInvoice,
-    required Option<InvoiceData> invoiceData,
+    required Option<CustomerData> customerData,
     required Option<double> serviceFee,
     required Option<double> serviceFeeAmount,
     required Option<double> totalAmount,
     required Option<CurrencyParams> currencyParams,
     required Option<UserPaymentFailure> paymentFailure,
+    required Option<RaverPaymentMethod> paymentMethod,
   }) = _VipCheckoutState;
 
   factory VipCheckoutState.initial() => VipCheckoutState(
@@ -38,11 +39,12 @@ class VipCheckoutState with _$VipCheckoutState {
         ticket: none(),
         upgradedTicket: none(),
         sendInvoice: false,
-        invoiceData: none(),
+        customerData: none(),
         serviceFee: none(),
         serviceFeeAmount: none(),
         totalAmount: none(),
         currencyParams: none(),
         paymentFailure: none(),
+        paymentMethod: none(),
       );
 }

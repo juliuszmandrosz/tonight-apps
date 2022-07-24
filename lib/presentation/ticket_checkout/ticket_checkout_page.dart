@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dartz/dartz.dart';
+import 'package:dartz/dartz.dart' as dartz;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -14,6 +14,7 @@ import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_invoi
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_invoice_data.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_is_vip_switch.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_pay_section.dart';
+import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_payment_method.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_promotion_code.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_summary.dart';
 import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_ticket_card.dart';
@@ -23,11 +24,16 @@ import 'package:raver_events/raver_events.dart';
 import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class TicketCheckoutPage extends StatelessWidget {
+class TicketCheckoutPage extends StatefulWidget {
   final Event event;
 
   const TicketCheckoutPage({required this.event, Key? key}) : super(key: key);
 
+  @override
+  State<TicketCheckoutPage> createState() => _TicketCheckoutPageState();
+}
+
+class _TicketCheckoutPageState extends State<TicketCheckoutPage> {
   @override
   Widget build(BuildContext context) {
     return LoaderOverlay(
@@ -38,7 +44,9 @@ class TicketCheckoutPage extends StatelessWidget {
       child: BlocProvider(
         create: (_) => getIt<TicketCheckoutCubit>(
           param1: context.read<TicketListCubit>(),
-        )..initData(event),
+        )..initData(
+            widget.event,
+          ),
         child: BlocConsumer<TicketCheckoutCubit, TicketCheckoutState>(
           buildWhen: (previous, current) =>
               previous.initialStatus != current.initialStatus ||
@@ -54,8 +62,9 @@ class TicketCheckoutPage extends StatelessWidget {
             if (state.initialStatus.isFailure()) {
               context.pushRoute(
                 FailureRoute(
-                  retryCallback: () =>
-                      context.read<TicketCheckoutCubit>().initData(event),
+                  retryCallback: () => context
+                      .read<TicketCheckoutCubit>()
+                      .initData(widget.event),
                 ),
               );
             }
@@ -79,7 +88,8 @@ class TicketCheckoutPage extends StatelessWidget {
             );
 
             if (state.paymentFailure ==
-                some(const UserPaymentFailure.paymentHasAlreadyBeenMade())) {
+                dartz.some(
+                    const UserPaymentFailure.paymentHasAlreadyBeenMade())) {
               context.router.popUntil(
                 (route) => route.settings.name == EventDetailsRoute.name,
               );
@@ -109,14 +119,20 @@ class TicketCheckoutPage extends StatelessWidget {
                             const VipNotEnabledInfo(),
                           if (_checkIfVipSwitchIsVisible(state))
                             const TicketCheckoutIsVipSwitch(),
+                          const Divider(),
+                          const SizedBox(height: 15),
+                          const TicketCheckoutPaymentMethod(),
+                          const SizedBox(height: 20),
+                          const TicketCheckoutSummary(),
+                          const SizedBox(height: 15),
+                          const Divider(),
+                          const SizedBox(height: 15),
                           if (!state.eventTickets.getOrCrash().isSoldOut)
                             const TicketCheckoutPromotionCode(),
                           const SizedBox(height: 20),
                           const TicketCheckoutInvoiceCheckbox(),
                           if (state.sendInvoice)
                             const TicketCheckoutInvoiceData(),
-                          const SizedBox(height: 20),
-                          const TicketCheckoutSummary(),
                           const SizedBox(height: 80),
                         ],
                       ),

@@ -58,3 +58,8 @@ app.*.map.json
 /lib/generated/intl/messages_pl.dart
 /lib/l10n/intl_en.arb
 /lib/l10n/intl_pl.arb
+/.firebaserc
+/firestore.rules
+/firestore.indexes.json
+/firebase.json
+/storage.rules

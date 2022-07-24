@@ -17,12 +17,13 @@ class TicketCheckoutState with _$TicketCheckoutState {
     required CubitStatus proceedingToPaymentStatus,
     required Option<String> snackbarMessage,
     required bool sendInvoice,
-    required Option<InvoiceData> invoiceData,
+    required Option<CustomerData> customerData,
     required Option<double> serviceFee,
     required Option<double> serviceFeeAmount,
     required Option<double> totalAmount,
     required Option<CurrencyParams> currencyParams,
     required Option<UserPaymentFailure> paymentFailure,
+    required Option<RaverPaymentMethod> paymentMethod,
   }) = _TicketPaymentState;
 
   factory TicketCheckoutState.initial() => TicketCheckoutState(
@@ -38,11 +39,12 @@ class TicketCheckoutState with _$TicketCheckoutState {
         event: none(),
         ticketPrice: none(),
         sendInvoice: false,
-        invoiceData: none(),
+        customerData: none(),
         serviceFee: none(),
         serviceFeeAmount: none(),
         totalAmount: none(),
         currencyParams: none(),
         paymentFailure: none(),
+        paymentMethod: none(),
       );
 }

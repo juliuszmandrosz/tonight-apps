@@ -10,7 +10,7 @@ abstract class InvoiceDataState with _$InvoiceDataState {
     required VatNumber vatNumber,
     required CountryCode countryCode,
     required InvoiceDataType invoiceDataType,
-    required Option<InvoiceData> updatedInvoiceData,
+    required Option<CustomerData> updatedCustomerData,
     required Option<String> errorMessage,
   }) = _InvoiceDataState;
 
@@ -20,7 +20,7 @@ abstract class InvoiceDataState with _$InvoiceDataState {
         vatNumber: const VatNumber.pure(),
         countryCode: CountryCode.pure(),
         invoiceDataType: InvoiceDataType.individual,
-        updatedInvoiceData: none(),
+        updatedCustomerData: none(),
         errorMessage: none(),
       );
 }

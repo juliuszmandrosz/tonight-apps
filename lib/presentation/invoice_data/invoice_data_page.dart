@@ -16,7 +16,7 @@ import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class InvoiceDataPage extends StatefulWidget {
-  final InvoiceData invoiceData;
+  final CustomerData invoiceData;
 
   const InvoiceDataPage({required this.invoiceData, Key? key})
       : super(key: key);
@@ -51,8 +51,8 @@ class _InvoiceDataPageState extends State<InvoiceDataPage> {
           });
 
           if (state.status.isSubmissionSuccess) {
-            await context.popRoute<InvoiceData>(
-              state.updatedInvoiceData.getOrCrash(),
+            await context.popRoute<CustomerData>(
+              state.updatedCustomerData.getOrCrash(),
             );
 
             context.showSnackbarMessage(S().invoiceDataUpdatedSuccessfully);

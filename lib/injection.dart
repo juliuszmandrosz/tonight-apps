@@ -239,6 +239,7 @@ void _registerCubits() {
       eventTicketsCubit: getIt(),
       ticketListCubit: ticketListCubit,
       currencyParamsFacade: getIt(),
+      stripe: getIt(),
     ),
   );
 

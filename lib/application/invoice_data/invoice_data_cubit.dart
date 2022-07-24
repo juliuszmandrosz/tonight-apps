@@ -18,14 +18,14 @@ class InvoiceDataCubit extends Cubit<InvoiceDataState> {
 
   InvoiceDataCubit(this._paymentFacade) : super(InvoiceDataState.initial());
 
-  Future<void> initInvoiceData(InvoiceData invoiceData) async {
+  Future<void> initInvoiceData(CustomerData customerData) async {
     final hasVatNumber =
-        invoiceData.vatNumber != null && invoiceData.vatNumber!.isNotEmpty;
+        customerData.vatNumber != null && customerData.vatNumber!.isNotEmpty;
 
-    final hasName = invoiceData.name != null && invoiceData.name!.isNotEmpty;
+    final hasName = customerData.name != null && customerData.name!.isNotEmpty;
 
     if (hasVatNumber) {
-      final vatNumber = invoiceData.vatNumber!;
+      final vatNumber = customerData.vatNumber!;
       final countryCode = vatNumber.substring(0, 2);
       final vatNumberWithoutCountryCode =
           vatNumber.substring(2, vatNumber.length);
@@ -41,7 +41,7 @@ class InvoiceDataCubit extends Cubit<InvoiceDataState> {
 
     emit(
       state.copyWith(
-        name: hasName ? Name.dirty(invoiceData.name!) : const Name.pure(),
+        name: hasName ? Name.dirty(customerData.name!) : const Name.pure(),
       ),
     );
   }
@@ -83,7 +83,7 @@ class InvoiceDataCubit extends Cubit<InvoiceDataState> {
         final vatNumberWithCountryCode =
             '${state.countryCode.value}${state.vatNumber.value}';
 
-        final updatedInvoiceData = InvoiceData(
+        final updatedCustomerData = CustomerData(
           name: state.name.value,
           vatNumber:
               state.invoiceDataType.isCompany ? vatNumberWithCountryCode : '',
@@ -92,7 +92,7 @@ class InvoiceDataCubit extends Cubit<InvoiceDataState> {
         emit(
           state.copyWith(
             status: FormzStatus.submissionSuccess,
-            updatedInvoiceData: some(updatedInvoiceData),
+            updatedCustomerData: some(updatedCustomerData),
           ),
         );
       },

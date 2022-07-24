@@ -6,7 +6,7 @@ import 'package:raver/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:raver/presentation/core/raver_list_tile_with_title_and_subtitle.dart';
 import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_common/raver_common.dart';
-import 'package:raver_payments/domain/entities/invoice_data_entity.dart';
+import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class VipCheckoutInvoiceData extends StatelessWidget {
@@ -16,9 +16,9 @@ class VipCheckoutInvoiceData extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<VipCheckoutCubit, VipCheckoutState>(
       buildWhen: (previous, current) =>
-          previous.invoiceData != current.invoiceData,
+          previous.customerData != current.customerData,
       builder: (context, state) {
-        final invoiceData = state.invoiceData.getOrCrash();
+        final invoiceData = state.customerData.getOrCrash();
         final vatNumber = invoiceData.vatNumber;
         final name = invoiceData.name;
         final hasVatNumber = vatNumber != null && vatNumber.isNotEmpty;
@@ -74,9 +74,9 @@ class VipCheckoutInvoiceData extends StatelessWidget {
                           child: IconButton(
                             onPressed: () async {
                               final result =
-                                  await context.pushRoute<InvoiceData>(
+                                  await context.pushRoute<CustomerData>(
                                 InvoiceDataRoute(
-                                  invoiceData: state.invoiceData.getOrCrash(),
+                                  invoiceData: state.customerData.getOrCrash(),
                                 ),
                               );
 

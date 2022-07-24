@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/core/get_payment_failure_message.dart';
@@ -8,8 +9,8 @@ import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart'
 import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_events/raver_events.dart';
+import 'package:raver_payments/application/core/raver_payment_method.dart';
 import 'package:raver_payments/domain/domain.dart';
-import 'package:raver_payments/domain/facades/user_payment_facade.dart';
 import 'package:raver_tickets/raver_tickets.dart';
 import 'package:raver_translations/raver_translations.dart';
 
@@ -49,7 +50,7 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
 
     if (state.initialStatus.isFailure()) return;
 
-    await _initInvoiceData();
+    await _initCustomerData();
 
     if (state.initialStatus.isFailure()) return;
 
@@ -60,8 +61,8 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
     emit(state.copyWith(sendInvoice: value));
   }
 
-  void invoiceDataChanged(InvoiceData data) {
-    emit(state.copyWith(invoiceData: some(data)));
+  void invoiceDataChanged(CustomerData data) {
+    emit(state.copyWith(customerData: some(data)));
   }
 
   void proceedToPayForVip() async {
@@ -83,6 +84,10 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
       currency: ticket.currency,
       sendInvoice: state.sendInvoice,
       promotionCode: promotionCode,
+      paymentMethod: state.paymentMethod.getOrCrash(),
+      itemAmount: state.vipPrice.getOrCrash(),
+      eventName: ticket.eventName,
+      serviceFeeAmount: state.serviceFeeAmount.getOrCrash(),
     );
 
     await failureOrSuccess.fold(
@@ -167,7 +172,7 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
   }
 
   bool _validateInvoiceData() {
-    final invoiceData = state.invoiceData.getOrCrash();
+    final invoiceData = state.customerData.getOrCrash();
     final hasName = invoiceData.name != null && invoiceData.name!.isNotEmpty;
     if (!hasName) {
       _showSnackbarMessage(S().enterInvoiceData);
@@ -177,12 +182,22 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
     return true;
   }
 
-  Future<void> _initInvoiceData() async {
-    final failureOrSuccess = await _paymentFacade.getInvoiceData();
+  Future<void> _initCustomerData() async {
+    final failureOrSuccess = await _paymentFacade.getCustomerData();
 
     failureOrSuccess.fold(
       (failure) => emit(state.copyWith(initialStatus: CubitStatus.failure)),
-      (invoiceData) => emit(state.copyWith(invoiceData: some(invoiceData))),
+      (data) => emit(
+        state.copyWith(
+          customerData: some(data),
+          paymentMethod: some(
+            RaverPaymentMethod.values.firstWhereOrNull(
+                  (method) => data.paymentMethod == method.toString(),
+                ) ??
+                RaverPaymentMethod.card,
+          ),
+        ),
+      ),
     );
   }
 

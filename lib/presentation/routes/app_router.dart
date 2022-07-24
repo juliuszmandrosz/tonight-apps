@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:raver/failure/failure_page.dart';
 import 'package:raver/presentation/app_settings/app_settings_page.dart';
+import 'package:raver/presentation/checkout/checkout_page.dart';
 import 'package:raver/presentation/club_details/club_details_page.dart';
 import 'package:raver/presentation/clubs/clubs_page.dart';
 import 'package:raver/presentation/contact/contact_page.dart';
@@ -14,6 +15,7 @@ import 'package:raver/presentation/invoice_data/invoice_data_page.dart';
 import 'package:raver/presentation/network_lost/network_lost_page.dart';
 import 'package:raver/presentation/onboarding/onboarding_page.dart';
 import 'package:raver/presentation/onboarding/onboarding_username_page.dart';
+import 'package:raver/presentation/payment_method/payment_method_page.dart';
 import 'package:raver/presentation/profile/profile_page.dart';
 import 'package:raver/presentation/routes/page_transitions/fade_in_transition.dart';
 import 'package:raver/presentation/routes/page_transitions/slide_left_transition.dart';
@@ -134,7 +136,7 @@ const animationDuration = 300;
       transitionsBuilder: zoomInTransition,
       durationInMilliseconds: animationDuration,
     ),
-    CustomRoute<InvoiceData>(
+    CustomRoute<CustomerData>(
       page: InvoiceDataPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
@@ -161,6 +163,16 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: ContactPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute<bool>(
+      page: CheckoutPage,
+      transitionsBuilder: fadeInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: PaymentMethodPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
