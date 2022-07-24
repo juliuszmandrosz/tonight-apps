@@ -2,19 +2,19 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/core/payment_methods_translations.dart';
-import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
+import 'package:raver/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:raver/presentation/core/raver_list_tile_with_title_and_subtitle.dart';
 import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_payments/application/core/raver_payment_method.dart';
 import 'package:raver_payments/domain/domain.dart';
 
-class TicketCheckoutPaymentMethod extends StatelessWidget {
-  const TicketCheckoutPaymentMethod({Key? key}) : super(key: key);
+class VipCheckoutPaymentMethod extends StatelessWidget {
+  const VipCheckoutPaymentMethod({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TicketCheckoutCubit, TicketCheckoutState>(
+    return BlocBuilder<VipCheckoutCubit, VipCheckoutState>(
       buildWhen: (previous, current) =>
           previous.customerData != current.customerData,
       builder: (context, state) {
@@ -60,10 +60,10 @@ class TicketCheckoutPaymentMethod extends StatelessWidget {
                               );
 
                               if (result != null) {
-                                final ticketCheckoutCubit =
-                                    context.read<TicketCheckoutCubit>();
+                                final vipCheckoutCubit =
+                                    context.read<VipCheckoutCubit>();
 
-                                ticketCheckoutCubit.customerDataChanged(result);
+                                vipCheckoutCubit.customerDataChanged(result);
                               }
                             },
                             icon: Icon(

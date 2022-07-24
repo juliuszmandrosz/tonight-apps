@@ -37,7 +37,7 @@ class TicketCheckoutIsVipSwitch extends StatelessWidget {
                   VipInfo(),
                 ],
               ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 10),
           ],
         );
       },

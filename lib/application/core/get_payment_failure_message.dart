@@ -5,7 +5,7 @@ String getPaymentFailureMessage(UserPaymentFailure failure) {
   return failure.map(
     unexpected: (_) => S().serverError,
     permissionDenied: (_) => S().operationNotAllowed,
-    stripeError: (_) => S().paymentError,
+    stripeError: (error) => error.message ?? S().paymentError,
     invalidPromotionCode: (_) => S().invalidPromotionCode,
     promotionCodeExpired: (_) => S().promotionCodeHasExpired,
     invalidEvent: (_) => S().invalidEvent,

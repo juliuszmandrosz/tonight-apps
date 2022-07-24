@@ -12,6 +12,7 @@ import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_header.dart';
 import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_invoice_checkbox.dart';
 import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_invoice_data.dart';
+import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_payment_method.dart';
 import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_promotion_code.dart';
 import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_summary.dart';
 import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_ticket_card.dart';
@@ -108,13 +109,19 @@ class VipCheckoutPage extends StatelessWidget {
                           const VipCheckoutHeader(),
                           const SizedBox(height: 20),
                           const VipCheckoutTicketCard(),
-                          const SizedBox(height: 30),
+                          const SizedBox(height: 15),
+                          const Divider(),
+                          const SizedBox(height: 15),
+                          const VipCheckoutPaymentMethod(),
+                          const SizedBox(height: 20),
+                          const VipCheckoutSummary(),
+                          const SizedBox(height: 10),
+                          const Divider(),
+                          const SizedBox(height: 10),
                           const VipCheckoutPromotionCode(),
                           const SizedBox(height: 20),
                           const VipCheckoutInvoiceCheckbox(),
                           if (state.sendInvoice) const VipCheckoutInvoiceData(),
-                          const SizedBox(height: 20),
-                          const VipCheckoutSummary(),
                           const SizedBox(height: 80),
                         ],
                       ),

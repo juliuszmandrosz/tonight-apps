@@ -61,7 +61,7 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
     emit(state.copyWith(sendInvoice: value));
   }
 
-  void invoiceDataChanged(CustomerData data) {
+  void customerDataChanged(CustomerData data) {
     emit(state.copyWith(customerData: some(data)));
   }
 
@@ -79,15 +79,15 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
             ? state.promotionCode.code
             : null;
 
+    final customerData = state.customerData.getOrCrash();
+
     final failureOrSuccess = await _paymentFacade.proceedToPayForVip(
       ticketId: ticket.id,
       currency: ticket.currency,
       sendInvoice: state.sendInvoice,
       promotionCode: promotionCode,
-      paymentMethod: state.paymentMethod.getOrCrash(),
-      itemAmount: state.vipPrice.getOrCrash(),
-      eventName: ticket.eventName,
-      serviceFeeAmount: state.serviceFeeAmount.getOrCrash(),
+      paymentMethod: getPaymentMethodFromString(customerData.paymentMethod),
+      amount: state.totalAmount.getOrCrash(),
     );
 
     await failureOrSuccess.fold(
@@ -187,17 +187,7 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
 
     failureOrSuccess.fold(
       (failure) => emit(state.copyWith(initialStatus: CubitStatus.failure)),
-      (data) => emit(
-        state.copyWith(
-          customerData: some(data),
-          paymentMethod: some(
-            RaverPaymentMethod.values.firstWhereOrNull(
-                  (method) => data.paymentMethod == method.toString(),
-                ) ??
-                RaverPaymentMethod.card,
-          ),
-        ),
-      ),
+      (data) => emit(state.copyWith(customerData: some(data))),
     );
   }
 

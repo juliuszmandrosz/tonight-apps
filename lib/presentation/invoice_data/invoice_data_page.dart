@@ -16,9 +16,9 @@ import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_translations/raver_translations.dart';
 
 class InvoiceDataPage extends StatefulWidget {
-  final CustomerData invoiceData;
+  final CustomerData customerData;
 
-  const InvoiceDataPage({required this.invoiceData, Key? key})
+  const InvoiceDataPage({required this.customerData, Key? key})
       : super(key: key);
 
   @override
@@ -32,7 +32,7 @@ class _InvoiceDataPageState extends State<InvoiceDataPage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          getIt<InvoiceDataCubit>()..initInvoiceData(widget.invoiceData),
+          getIt<InvoiceDataCubit>()..initInvoiceData(widget.customerData),
       child: BlocConsumer<InvoiceDataCubit, InvoiceDataState>(
         listenWhen: (previous, current) =>
             previous.errorMessage != current.errorMessage ||

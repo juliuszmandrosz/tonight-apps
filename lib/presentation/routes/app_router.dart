@@ -171,7 +171,7 @@ const animationDuration = 300;
       transitionsBuilder: fadeInTransition,
       durationInMilliseconds: animationDuration,
     ),
-    CustomRoute(
+    CustomRoute<CustomerData>(
       page: PaymentMethodPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,

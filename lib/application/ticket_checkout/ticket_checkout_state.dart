@@ -23,7 +23,6 @@ class TicketCheckoutState with _$TicketCheckoutState {
     required Option<double> totalAmount,
     required Option<CurrencyParams> currencyParams,
     required Option<UserPaymentFailure> paymentFailure,
-    required Option<RaverPaymentMethod> paymentMethod,
   }) = _TicketPaymentState;
 
   factory TicketCheckoutState.initial() => TicketCheckoutState(
@@ -45,6 +44,5 @@ class TicketCheckoutState with _$TicketCheckoutState {
         totalAmount: none(),
         currencyParams: none(),
         paymentFailure: none(),
-        paymentMethod: none(),
       );
 }

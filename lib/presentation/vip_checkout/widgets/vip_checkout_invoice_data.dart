@@ -76,7 +76,7 @@ class VipCheckoutInvoiceData extends StatelessWidget {
                               final result =
                                   await context.pushRoute<CustomerData>(
                                 InvoiceDataRoute(
-                                  invoiceData: state.customerData.getOrCrash(),
+                                  customerData: state.customerData.getOrCrash(),
                                 ),
                               );
 
@@ -84,7 +84,7 @@ class VipCheckoutInvoiceData extends StatelessWidget {
                                 final ticketCheckoutCubit =
                                     context.read<VipCheckoutCubit>();
 
-                                ticketCheckoutCubit.invoiceDataChanged(result);
+                                ticketCheckoutCubit.customerDataChanged(result);
                               }
                             },
                             icon: Icon(

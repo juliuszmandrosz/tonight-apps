@@ -76,7 +76,7 @@ class TicketCheckoutInvoiceData extends StatelessWidget {
                               final result =
                                   await context.pushRoute<CustomerData>(
                                 InvoiceDataRoute(
-                                  invoiceData: state.customerData.getOrCrash(),
+                                  customerData: state.customerData.getOrCrash(),
                                 ),
                               );
 
@@ -84,7 +84,7 @@ class TicketCheckoutInvoiceData extends StatelessWidget {
                                 final ticketCheckoutCubit =
                                     context.read<TicketCheckoutCubit>();
 
-                                ticketCheckoutCubit.invoiceDataChanged(result);
+                                ticketCheckoutCubit.customerDataChanged(result);
                               }
                             },
                             icon: Icon(

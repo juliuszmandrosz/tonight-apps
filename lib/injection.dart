@@ -29,6 +29,7 @@ import 'package:raver/application/events/event_favorite/event_favorite_cubit.dar
 import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
 import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:raver/application/invoice_data/invoice_data_cubit.dart';
+import 'package:raver/application/payment_method/payment_method_cubit.dart';
 import 'package:raver/application/profile/profile_cubit_hub.dart';
 import 'package:raver/application/push_notifications/push_notifications_cubit.dart';
 import 'package:raver/application/terms_of_service/terms_of_service_cubit.dart';
@@ -278,6 +279,12 @@ void _registerCubits() {
     (NetworkCheckCubit networkCheckCubit, _) => TermsOfServiceCubit(
       networkCheckCubit: networkCheckCubit,
       userTermsOfServiceFacade: getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => PaymentMethodCubit(
+      getIt(),
     ),
   );
 }

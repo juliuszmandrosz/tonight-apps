@@ -120,13 +120,13 @@ class _TicketCheckoutPageState extends State<TicketCheckoutPage> {
                           if (_checkIfVipSwitchIsVisible(state))
                             const TicketCheckoutIsVipSwitch(),
                           const Divider(),
-                          const SizedBox(height: 15),
+                          const SizedBox(height: 10),
                           const TicketCheckoutPaymentMethod(),
                           const SizedBox(height: 20),
                           const TicketCheckoutSummary(),
-                          const SizedBox(height: 15),
+                          const SizedBox(height: 10),
                           const Divider(),
-                          const SizedBox(height: 15),
+                          const SizedBox(height: 10),
                           if (!state.eventTickets.getOrCrash().isSoldOut)
                             const TicketCheckoutPromotionCode(),
                           const SizedBox(height: 20),
