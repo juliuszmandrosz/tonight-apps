@@ -1,19 +1,21 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:logger/logger.dart';
+import 'package:raver_payments/application/core/raver_payment_method.dart';
 import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_errors.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
-import 'package:raver_payments/infrastructure/cloud_functions/responses/checkout.dart';
-import 'package:raver_payments/infrastructure/dtos/invoice_data_dto.dart';
+import 'package:raver_payments/infrastructure/cloud_functions/responses/create_payment_sheet_response.dart';
+import 'package:raver_payments/infrastructure/dtos/customer_data_dto.dart';
+import 'package:raver_translations/raver_translations.dart';
 import 'dtos/promotion_code_dto.dart';
 
 class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
@@ -73,10 +75,13 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
   }
 
   @override
-  Future<Either<UserPaymentFailure, Checkout>> proceedToTicketCheckout({
+  Future<Either<UserPaymentFailure, Unit>> proceedToPayForTicket({
     required String eventId,
     required String currency,
-    required BuildContext context,
+    required RaverPaymentMethod paymentMethod,
+    required int itemAmount,
+    required double serviceFeeAmount,
+    required String eventName,
     String? promotionCode,
     bool isVip = false,
     bool sendInvoice = false,
@@ -84,17 +89,51 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     try {
       final userId = _firestore.getCurrentUserDocRef(_firebaseAuth).id;
 
-      final checkout = await _paymentCloudFunctionsFacade.createTicketCheckout(
+      final user = _firebaseAuth.tryGetFirebaseUser();
+
+      final paymentIntent =
+          await _paymentCloudFunctionsFacade.createTicketPaymentSheet(
         eventId: eventId,
         userId: userId,
-        isVip: isVip,
-        promotionCode: promotionCode,
         sendInvoice: sendInvoice,
-        successUrl: dotenv.get(successLinkUrl),
-        cancelUrl: dotenv.get(cancelLinkUrl),
+        promotionCode: promotionCode,
+        paymentMethod: paymentMethod,
+        isVip: isVip,
       );
 
-      return right(checkout);
+      try {
+        await _initPayment(
+          userEmail: user.email!,
+          itemAmount: itemAmount,
+          eventName: eventName,
+          serviceFeeAmount: serviceFeeAmount,
+          currency: currency,
+          paymentMethod: paymentMethod,
+          paymentIntent: paymentIntent,
+        );
+      } on StripeException catch (e) {
+        _logger.e(
+          "Stripe exception proceeding to pay for ticket EXCEPTION: $e",
+        );
+        if (e.error.code == FailureCode.Canceled) {
+          await _paymentCloudFunctionsFacade
+              .cancelTicketReservation(paymentIntent.paymentIntentId);
+          return left(const UserPaymentFailure.canceledByUser());
+        }
+
+        if (_checkIfPaymentAlreadyBeenMade(e)) {
+          return left(const UserPaymentFailure.paymentHasAlreadyBeenMade());
+        }
+
+        if (_checkIfSessionIsNotExpired(e)) {
+          return left(const UserPaymentFailure.paymentSessionHasExpired());
+        }
+
+        await _crashlytics.recordError(e, StackTrace.current);
+        return left(const UserPaymentFailure.stripeError());
+      }
+
+      return right(unit);
     } on DioError catch (e) {
       _logger.e("Dio error proceeding to pay for ticket EXCEPTION: $e");
       return left(await _handleDioError(e));
@@ -105,25 +144,36 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
   Future<Either<UserPaymentFailure, Unit>> proceedToPayForVip({
     required String ticketId,
     required String currency,
+    required RaverPaymentMethod paymentMethod,
+    required int itemAmount,
+    required double serviceFeeAmount,
+    required String eventName,
     String? promotionCode,
     bool sendInvoice = false,
   }) async {
     try {
       final userId = _firestore.getCurrentUserDocRef(_firebaseAuth).id;
 
-      final result = await _paymentCloudFunctionsFacade.createVipPaymentSheet(
+      final user = _firebaseAuth.tryGetFirebaseUser();
+
+      final paymentIntent =
+          await _paymentCloudFunctionsFacade.createVipPaymentSheet(
         ticketId: ticketId,
         promotionCode: promotionCode,
         sendInvoice: sendInvoice,
+        paymentMethod: paymentMethod,
         userId: userId,
       );
 
-      // await _presentPaymentSheet(
-      //   currency: currency,
-      //   customerId: result.customerId,
-      //   paymentIntentSecret: result.paymentIntentSecret,
-      //   ephemeralKeySecret: result.ephemeralKeySecret,
-      // );
+      await _initPayment(
+        userEmail: user.email!,
+        itemAmount: itemAmount,
+        eventName: eventName,
+        serviceFeeAmount: serviceFeeAmount,
+        currency: currency,
+        paymentMethod: paymentMethod,
+        paymentIntent: paymentIntent,
+      );
 
       return right(unit);
     } on DioError catch (e) {
@@ -183,15 +233,15 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
   }
 
   @override
-  Future<Either<UserPaymentFailure, InvoiceData>> getInvoiceData() async {
+  Future<Either<UserPaymentFailure, CustomerData>> getCustomerData() async {
     try {
       final userDoc =
           await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
 
-      final invoiceData =
+      final customerData =
           await _firestore.stripeCustomers.doc(userDoc.id).get();
 
-      final result = InvoiceDataDto.fromFirebase(invoiceData).toDomain();
+      final result = CustomerDataDto.fromFirebase(customerData).toDomain();
 
       return right(result);
     } on FirebaseException catch (e) {
@@ -200,7 +250,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
           logger: _logger,
           crashlytics: _crashlytics,
           exception: e,
-          message: 'Firebase Exception getting invoice data EXCEPTION: $e',
+          message: 'Firebase Exception getting customer data EXCEPTION: $e',
           unexpectedFailure: const UserPaymentFailure.unexpected(),
           permissionDeniedFailure: const UserPaymentFailure.permissionDenied(),
         ),
@@ -244,63 +294,151 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     }
   }
 
-  @override
-  Future<Either<UserPaymentFailure, Unit>> presentPaymentSheet({
-    required String eventId,
+  Future<void> _initPayment({
+    required RaverPaymentMethod paymentMethod,
     required String currency,
-    String? promotionCode,
-    bool isVip = false,
-    bool sendInvoice = false,
+    required CreatePaymentSheetResponse paymentIntent,
+    required double serviceFeeAmount,
+    required String eventName,
+    required int itemAmount,
+    required String userEmail,
   }) async {
-    final userId = _firestore.getCurrentUserDocRef(_firebaseAuth).id;
+    switch (paymentMethod) {
+      case RaverPaymentMethod.wallet:
+        await _presentWalletPaymentSheet(
+          currency: currency,
+          paymentIntentSecret: paymentIntent.paymentIntentSecret,
+          serviceFeeAmount: serviceFeeAmount,
+          eventName: eventName,
+          itemAmount: itemAmount,
+        );
+        break;
+      case RaverPaymentMethod.p24:
+        await _presentP24Payment(
+          paymentIntentSecret: paymentIntent.paymentIntentSecret,
+          userEmail: userEmail,
+        );
+        break;
+      case RaverPaymentMethod.card:
+        await _presentCardPaymentSheet(
+          currency: currency,
+          customerId: paymentIntent.customerId,
+          paymentIntentSecret: paymentIntent.paymentIntentSecret,
+          ephemeralKeySecret: paymentIntent.ephemeralKeySecret,
+          userEmail: userEmail,
+        );
+        break;
+    }
+  }
 
-    final paymentIntent =
-        await _paymentCloudFunctionsFacade.createTicketPaymentSheet(
-      eventId: eventId,
-      userId: userId,
-      sendInvoice: sendInvoice,
-      promotionCode: promotionCode,
-      isVip: isVip,
+  Future<void> _presentP24Payment({
+    required String paymentIntentSecret,
+    required String userEmail,
+  }) async {
+    await _stripe.confirmPayment(
+      paymentIntentSecret,
+      PaymentMethodParams.p24(
+        paymentMethodData: PaymentMethodData(
+            billingDetails: BillingDetails(
+          email: userEmail,
+        )),
+      ),
     );
+  }
 
-    try {
-      await _stripe.initGooglePay(
-        const GooglePayInitParams(
-          merchantName: 'Tonight',
-          countryCode: 'PL',
-          testEnv: true,
+  Future<void> _presentWalletPaymentSheet({
+    required String currency,
+    required String paymentIntentSecret,
+    required String eventName,
+    required int itemAmount,
+    required double serviceFeeAmount,
+  }) async {
+    if (Platform.isIOS) {
+      await _stripe.presentApplePay(
+        ApplePayPresentParams(
+          cartItems: [
+            ApplePayCartSummaryItem.immediate(
+              label: eventName,
+              amount: '$itemAmount',
+            ),
+            ApplePayCartSummaryItem.immediate(
+              label: S().serviceFee,
+              amount: '$serviceFeeAmount',
+            ),
+          ],
+          country: 'PL',
+          currency: currency,
         ),
       );
 
-      await _stripe.presentGooglePay(
-        PresentGooglePayParams(
-          clientSecret: paymentIntent.paymentIntentSecret,
-          currencyCode: currency,
-        ),
-      );
-    } on StripeException catch (e) {
-      _logger.e(
-        "Stripe exception proceeding to pay for ticket EXCEPTION: $e",
-      );
-      if (e.error.code == FailureCode.Canceled) {
-        await _paymentCloudFunctionsFacade
-            .cancelTicketReservation(paymentIntent.paymentIntentId);
-        return left(const UserPaymentFailure.canceledByUser());
-      }
-
-      if (_checkIfPaymentAlreadyBeenMade(e)) {
-        return left(const UserPaymentFailure.paymentHasAlreadyBeenMade());
-      }
-
-      if (_checkIfSessionIsNotExpired(e)) {
-        return left(const UserPaymentFailure.paymentSessionHasExpired());
-      }
-
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserPaymentFailure.stripeError());
+      await _stripe.confirmApplePayPayment(paymentIntentSecret);
     }
 
-    return right(unit);
+    await _stripe.initGooglePay(
+      const GooglePayInitParams(
+        merchantName: 'Tonight',
+        countryCode: 'PL',
+        // TODO - change
+        testEnv: true,
+      ),
+    );
+
+    await _stripe.presentGooglePay(
+      PresentGooglePayParams(
+        clientSecret: paymentIntentSecret,
+        currencyCode: currency,
+      ),
+    );
+  }
+
+  Future<void> _presentCardPaymentSheet({
+    required String currency,
+    required String customerId,
+    required String paymentIntentSecret,
+    required String ephemeralKeySecret,
+    required String userEmail,
+  }) async {
+    await _stripe.initPaymentSheet(
+      paymentSheetParameters: SetupPaymentSheetParameters(
+          customerId: customerId,
+          paymentIntentClientSecret: paymentIntentSecret,
+          customerEphemeralKeySecret: ephemeralKeySecret,
+          merchantDisplayName: 'Tonight',
+          appearance: PaymentSheetAppearance(
+            shapes: const PaymentSheetShape(borderRadius: 8),
+            colors: PaymentSheetAppearanceColors(
+              icon: colors.onSurface,
+              background: colors.background,
+              error: colors.error,
+              primary: colors.primary,
+              componentBackground: colors.surface,
+              primaryText: colors.onSurface,
+              placeholderText: colors.outline,
+              secondaryText: colors.onSurface,
+              componentBorder: colors.outline,
+              componentDivider: colors.outline,
+              componentText: colors.onSurface,
+            ),
+            primaryButton: PaymentSheetPrimaryButtonAppearance(
+              shapes: const PaymentSheetPrimaryButtonShape(blurRadius: 20),
+              colors: PaymentSheetPrimaryButtonTheme(
+                light: PaymentSheetPrimaryButtonThemeColors(
+                  text: colors.onSurface,
+                  background: colors.primary,
+                  border: colors.primary,
+                ),
+                dark: PaymentSheetPrimaryButtonThemeColors(
+                  text: colors.onSurface,
+                  background: colors.primary,
+                  border: colors.primary,
+                ),
+              ),
+            ),
+          ),
+          billingDetails: BillingDetails(email: userEmail)),
+    );
+
+    await _stripe.presentPaymentSheet();
   }
 
   Future<UserPaymentFailure> _handleDioError(DioError error) async {

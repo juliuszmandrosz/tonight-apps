@@ -32,6 +32,11 @@ dependencies:
     git:
       url: git@github.com:juliuszmandrosz/RaverCommon.git
 
+  raver_translations:
+    git:
+      url: git@github.com:juliuszmandrosz/RaverTranslations.git
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

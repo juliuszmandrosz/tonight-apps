@@ -1,29 +1,42 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-class InvoiceData extends Equatable {
+class CustomerData extends Equatable {
+  final String? paymentMethod;
   final String? name;
   final String? vatNumber;
 
-  const InvoiceData({
+  const CustomerData({
+    this.paymentMethod,
     this.name,
     this.vatNumber,
   });
 
   @override
-  List<Object?> get props => [name, vatNumber];
+  List<Object?> get props => [
+        paymentMethod,
+        name,
+        vatNumber,
+      ];
 
-  InvoiceData copyWith({
+  CustomerData copyWith({
+    Option<String>? paymentMethod,
     Option<String>? name,
     Option<String>? vatNumber,
   }) {
-    return InvoiceData(
+    return CustomerData(
+      paymentMethod: paymentMethod != null
+          ? paymentMethod.fold(
+              () => null,
+              (method) => method,
+            )
+          : this.paymentMethod,
       name: name != null
           ? name.fold(
               () => null,
               (name) => name,
             )
-          : this.vatNumber,
+          : this.name,
       vatNumber: vatNumber != null
           ? vatNumber.fold(
               () => null,

@@ -1,21 +1,15 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:raver_payments/application/core/raver_payment_method.dart';
 import 'package:raver_payments/domain/domain.dart';
-import 'package:raver_payments/infrastructure/cloud_functions/responses/checkout.dart';
 
 abstract class UserPaymentFacade {
-  Future<Either<UserPaymentFailure, Checkout>> proceedToTicketCheckout({
+  Future<Either<UserPaymentFailure, Unit>> proceedToPayForTicket({
     required String eventId,
     required String currency,
-    required BuildContext context,
-    String? promotionCode,
-    bool isVip = false,
-    bool sendInvoice = false,
-  });
-
-  Future<Either<UserPaymentFailure, Unit>> presentPaymentSheet({
-    required String eventId,
-    required String currency,
+    required RaverPaymentMethod paymentMethod,
+    required int itemAmount,
+    required double serviceFeeAmount,
+    required String eventName,
     String? promotionCode,
     bool isVip = false,
     bool sendInvoice = false,
@@ -24,6 +18,10 @@ abstract class UserPaymentFacade {
   Future<Either<UserPaymentFailure, Unit>> proceedToPayForVip({
     required String ticketId,
     required String currency,
+    required RaverPaymentMethod paymentMethod,
+    required int itemAmount,
+    required double serviceFeeAmount,
+    required String eventName,
     String? promotionCode,
     bool sendInvoice = false,
   });
@@ -39,7 +37,7 @@ abstract class UserPaymentFacade {
     bool isCompany = false,
   });
 
-  Future<Either<UserPaymentFailure, InvoiceData>> getInvoiceData();
+  Future<Either<UserPaymentFailure, CustomerData>> getCustomerData();
 
   Future<Either<UserPaymentFailure, double>> getServiceFee();
 
