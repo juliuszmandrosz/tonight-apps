@@ -126,7 +126,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
         }
 
         await _crashlytics.recordError(e, StackTrace.current);
-        return left(const UserPaymentFailure.stripeError());
+        return left(UserPaymentFailure.stripeError('${e.error.message}'));
       }
 
       return right(unit);
@@ -188,7 +188,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
       }
 
       await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserPaymentFailure.stripeError());
+      return left(UserPaymentFailure.stripeError('${e.error.message}'));
     }
   }
 

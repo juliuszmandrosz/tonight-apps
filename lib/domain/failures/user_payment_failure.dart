@@ -8,7 +8,7 @@ class UserPaymentFailure with _$UserPaymentFailure {
 
   const factory UserPaymentFailure.permissionDenied() = _PermissionDenied;
 
-  const factory UserPaymentFailure.stripeError() = _StripeError;
+  factory UserPaymentFailure.stripeError(String? message) = _StripeError;
 
   const factory UserPaymentFailure.invalidPromotionCode() =
       _InvalidPromotionCode;
