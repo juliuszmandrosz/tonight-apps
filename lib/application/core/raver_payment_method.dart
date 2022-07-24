@@ -10,5 +10,5 @@ RaverPaymentMethod getPaymentMethodFromString(String? paymentMethod) {
   return RaverPaymentMethod.values.firstWhereOrNull(
         (method) => method.name == paymentMethod,
       ) ??
-      RaverPaymentMethod.card;
+      RaverPaymentMethod.p24;
 }
