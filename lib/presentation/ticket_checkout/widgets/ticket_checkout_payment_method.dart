@@ -8,6 +8,7 @@ import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_payments/application/core/raver_payment_method.dart';
 import 'package:raver_payments/domain/domain.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class TicketCheckoutPaymentMethod extends StatelessWidget {
   const TicketCheckoutPaymentMethod({Key? key}) : super(key: key);
@@ -35,8 +36,7 @@ class TicketCheckoutPaymentMethod extends StatelessWidget {
                       child: Column(
                         children: [
                           RaverListTileWithTitleAndSubtitle(
-                            // TODO - add translation
-                            title: 'Metoda płatności',
+                            title: S().paymentMethod,
                             subtitle:
                                 paymentMethodsTranslations[paymentMethod]!,
                           ),

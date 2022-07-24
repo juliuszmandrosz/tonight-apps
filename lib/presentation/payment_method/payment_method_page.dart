@@ -9,6 +9,7 @@ import 'package:raver/presentation/payment_method/widgets/update_payment_method_
 import 'package:raver_common/raver_common.dart';
 import 'package:raver_payments/application/core/raver_payment_method.dart';
 import 'package:raver_payments/domain/domain.dart';
+import 'package:raver_translations/raver_translations.dart';
 
 class PaymentMethodPage extends StatelessWidget {
   final CustomerData customerData;
@@ -35,15 +36,13 @@ class PaymentMethodPage extends StatelessWidget {
               state.updatedCustomerData.getOrCrash(),
             );
 
-            // TODO - add translation
-            context.showSnackbarMessage('Sukces');
+            context.showSnackbarMessage(S().paymentMethodUpdatedSuccessfully);
           }
         },
         builder: (context, state) {
           return Scaffold(
             floatingActionButton: const UpdatePaymentMethodButton(),
-            // TODO - add translation
-            appBar: const RaverAppBar(title: 'Metoda płatności'),
+            appBar: RaverAppBar(title: S().paymentMethod),
             body: Padding(
               padding: const EdgeInsets.all(15),
               child: Column(
