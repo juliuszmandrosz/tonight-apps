@@ -264,6 +264,14 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     );
 
     try {
+      await _stripe.initGooglePay(
+        const GooglePayInitParams(
+          merchantName: 'Tonight',
+          countryCode: 'PL',
+          testEnv: true,
+        ),
+      );
+
       await _stripe.presentGooglePay(
         PresentGooglePayParams(
           clientSecret: paymentIntent.paymentIntentSecret,
