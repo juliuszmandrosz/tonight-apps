@@ -339,9 +339,10 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
       paymentIntentSecret,
       PaymentMethodParams.p24(
         paymentMethodData: PaymentMethodData(
-            billingDetails: BillingDetails(
-          email: userEmail,
-        )),
+          billingDetails: BillingDetails(
+            email: userEmail,
+          ),
+        ),
       ),
     );
   }
