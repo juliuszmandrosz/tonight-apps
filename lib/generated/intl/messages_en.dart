@@ -118,6 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
         "cancelledByUser":
             MessageLookupByLibrary.simpleMessage("Operation cancelled by user"),
+        "card": MessageLookupByLibrary.simpleMessage("Card"),
         "casual": MessageLookupByLibrary.simpleMessage("Casual"),
         "changePasswordTitle":
             MessageLookupByLibrary.simpleMessage("Change Password"),
@@ -499,6 +500,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Error during payment, please contact support"),
         "paymentHasAlreadyBeenMade": MessageLookupByLibrary.simpleMessage(
             "Payment has already been made"),
+        "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment method"),
+        "paymentMethodUpdatedSuccessfully":
+            MessageLookupByLibrary.simpleMessage(
+                "Payment method updated successfully"),
         "paymentSessionExpired": MessageLookupByLibrary.simpleMessage(
             "Your payment session has expired"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),

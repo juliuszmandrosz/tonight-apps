@@ -503,6 +503,16 @@ class S {
     );
   }
 
+  /// `Card`
+  String get card {
+    return Intl.message(
+      'Card',
+      name: 'card',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Casual`
   String get casual {
     return Intl.message(
@@ -2810,6 +2820,26 @@ class S {
     return Intl.message(
       'Payment has already been made',
       name: 'paymentHasAlreadyBeenMade',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment method`
+  String get paymentMethod {
+    return Intl.message(
+      'Payment method',
+      name: 'paymentMethod',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment method updated successfully`
+  String get paymentMethodUpdatedSuccessfully {
+    return Intl.message(
+      'Payment method updated successfully',
+      name: 'paymentMethodUpdatedSuccessfully',
       desc: '',
       args: [],
     );
