@@ -79,9 +79,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     required String eventId,
     required String currency,
     required RaverPaymentMethod paymentMethod,
-    required int itemAmount,
-    required double serviceFeeAmount,
-    required String eventName,
+    required double amount,
     String? promotionCode,
     bool isVip = false,
     bool sendInvoice = false,
@@ -104,9 +102,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
       try {
         await _initPayment(
           userEmail: user.email!,
-          itemAmount: itemAmount,
-          eventName: eventName,
-          serviceFeeAmount: serviceFeeAmount,
+          amount: amount,
           currency: currency,
           paymentMethod: paymentMethod,
           paymentIntent: paymentIntent,
@@ -145,9 +141,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     required String ticketId,
     required String currency,
     required RaverPaymentMethod paymentMethod,
-    required int itemAmount,
-    required double serviceFeeAmount,
-    required String eventName,
+    required double amount,
     String? promotionCode,
     bool sendInvoice = false,
   }) async {
@@ -167,9 +161,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
       await _initPayment(
         userEmail: user.email!,
-        itemAmount: itemAmount,
-        eventName: eventName,
-        serviceFeeAmount: serviceFeeAmount,
+        amount: amount,
         currency: currency,
         paymentMethod: paymentMethod,
         paymentIntent: paymentIntent,
@@ -298,9 +290,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     required RaverPaymentMethod paymentMethod,
     required String currency,
     required CreatePaymentSheetResponse paymentIntent,
-    required double serviceFeeAmount,
-    required String eventName,
-    required int itemAmount,
+    required double amount,
     required String userEmail,
   }) async {
     switch (paymentMethod) {
@@ -308,9 +298,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
         await _presentWalletPaymentSheet(
           currency: currency,
           paymentIntentSecret: paymentIntent.paymentIntentSecret,
-          serviceFeeAmount: serviceFeeAmount,
-          eventName: eventName,
-          itemAmount: itemAmount,
+          amount: amount,
         );
         break;
       case RaverPaymentMethod.p24:
@@ -350,21 +338,15 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
   Future<void> _presentWalletPaymentSheet({
     required String currency,
     required String paymentIntentSecret,
-    required String eventName,
-    required int itemAmount,
-    required double serviceFeeAmount,
+    required double amount,
   }) async {
     if (Platform.isIOS) {
       await _stripe.presentApplePay(
         ApplePayPresentParams(
           cartItems: [
             ApplePayCartSummaryItem.immediate(
-              label: eventName,
-              amount: '$itemAmount',
-            ),
-            ApplePayCartSummaryItem.immediate(
-              label: S().serviceFee,
-              amount: '$serviceFeeAmount',
+              label: S().tickets(1),
+              amount: '$amount',
             ),
           ],
           country: 'PL',
