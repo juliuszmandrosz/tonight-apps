@@ -6,6 +6,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:logger/logger.dart';
 import 'package:raver_payments/application/core/raver_payment_method.dart';
@@ -127,6 +128,15 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
         await _crashlytics.recordError(e, StackTrace.current);
         return left(UserPaymentFailure.stripeError('${e.error.message}'));
+      } on PlatformException catch (e) {
+        if (e.code == 'Canceled') {
+          await _paymentCloudFunctionsFacade
+              .cancelTicketReservation(paymentIntent.paymentIntentId);
+          return left(const UserPaymentFailure.canceledByUser());
+        }
+
+        await _crashlytics.recordError(e, StackTrace.current);
+        return left(const UserPaymentFailure.unexpected());
       }
 
       return right(unit);
@@ -189,6 +199,13 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
       await _crashlytics.recordError(e, StackTrace.current);
       return left(UserPaymentFailure.stripeError('${e.error.message}'));
+    } on PlatformException catch (e) {
+      if (e.code == 'Canceled') {
+        return left(const UserPaymentFailure.canceledByUser());
+      }
+
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const UserPaymentFailure.unexpected());
     }
   }
 
