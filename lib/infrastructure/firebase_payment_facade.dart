@@ -96,7 +96,6 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
         userId: userId,
         sendInvoice: sendInvoice,
         promotionCode: promotionCode,
-        paymentMethod: paymentMethod,
         isVip: isVip,
       );
 
@@ -165,7 +164,6 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
         ticketId: ticketId,
         promotionCode: promotionCode,
         sendInvoice: sendInvoice,
-        paymentMethod: paymentMethod,
         userId: userId,
       );
 

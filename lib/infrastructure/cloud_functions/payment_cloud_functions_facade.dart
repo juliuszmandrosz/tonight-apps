@@ -1,7 +1,6 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:raver_payments/application/core/raver_payment_method.dart';
 import 'package:raver_payments/domain/domain.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/cloud_functions_names.dart';
 import 'package:raver_payments/infrastructure/cloud_functions/responses/create_payment_sheet_response.dart';
@@ -11,7 +10,6 @@ abstract class PaymentCloudFunctionsFacade {
   Future<CreatePaymentSheetResponse> createTicketPaymentSheet({
     required String eventId,
     required String userId,
-    required RaverPaymentMethod paymentMethod,
     String? promotionCode,
     bool isVip = false,
     bool sendInvoice = false,
@@ -20,7 +18,6 @@ abstract class PaymentCloudFunctionsFacade {
   Future<CreatePaymentSheetResponse> createVipPaymentSheet({
     required String ticketId,
     required String userId,
-    required RaverPaymentMethod paymentMethod,
     String? promotionCode,
     bool sendInvoice = false,
   });
@@ -53,7 +50,6 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
   Future<CreatePaymentSheetResponse> createTicketPaymentSheet({
     required String eventId,
     required String userId,
-    required RaverPaymentMethod paymentMethod,
     String? promotionCode,
     bool isVip = false,
     bool sendInvoice = false,
@@ -66,7 +62,6 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
       'promotionCode': promotionCode,
       'isVip': isVip,
       'sendInvoice': sendInvoice,
-      'paymentMethods': _getPaymentMethods(paymentMethod),
     };
 
     final result = await _dio.post(endpoint, data: data);
@@ -78,7 +73,6 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
   Future<CreatePaymentSheetResponse> createVipPaymentSheet({
     required String ticketId,
     required String userId,
-    required RaverPaymentMethod paymentMethod,
     String? promotionCode,
     bool sendInvoice = false,
   }) async {
@@ -89,7 +83,6 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
       'userId': userId,
       'promotionCode': promotionCode,
       'sendInvoice': sendInvoice,
-      'paymentMethods': _getPaymentMethods(paymentMethod),
     };
 
     final result = await _dio.post(endpoint, data: data);
@@ -144,15 +137,5 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
     final result = await _dio.get(endpoint);
 
     return EventFeesDto.fromJson(result.data).toDomain();
-  }
-
-  List<String> _getPaymentMethods(RaverPaymentMethod paymentMethod) {
-    var result = ['card'];
-
-    if (paymentMethod == RaverPaymentMethod.p24) {
-      result.add('p24');
-    }
-
-    return result;
   }
 }
