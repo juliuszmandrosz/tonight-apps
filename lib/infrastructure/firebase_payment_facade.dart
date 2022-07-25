@@ -126,7 +126,9 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
         }
 
         await _crashlytics.recordError(e, StackTrace.current);
-        return left(UserPaymentFailure.stripeError('${e.error.message}'));
+        return left(UserPaymentFailure.stripeError(
+          '${e.error.localizedMessage}',
+        ));
       } on PlatformException catch (e) {
         if (e.code == 'Canceled') {
           await _paymentCloudFunctionsFacade
@@ -196,7 +198,11 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
       }
 
       await _crashlytics.recordError(e, StackTrace.current);
-      return left(UserPaymentFailure.stripeError('${e.error.message}'));
+      return left(
+        UserPaymentFailure.stripeError(
+          '${e.error.localizedMessage}',
+        ),
+      );
     } on PlatformException catch (e) {
       if (e.code == 'Canceled') {
         return left(const UserPaymentFailure.canceledByUser());
