@@ -285,7 +285,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         _ticketListCubit.state.initialStatus == CubitStatus.success &&
         _eventFavoriteCubit.state.status == CubitStatus.success &&
         _clubFavoriteCubit.state.status == CubitStatus.success &&
-        _pushNotificationsCubit.state.status == CubitStatus.success &&
         _availableFiltersCubit.state
             .maybeWhen(orElse: () => false, loadSuccess: (_) => true);
   }
