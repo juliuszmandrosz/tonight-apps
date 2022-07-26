@@ -38,12 +38,12 @@ class PushNotificationsCubit extends Cubit<PushNotificationsState> {
       iOS: iosInit,
     );
 
-    _notificationsPlugin.initialize(
+    await _notificationsPlugin.initialize(
       initSetting,
       onSelectNotification: (data) async {
         if (data == null) return;
         final payload = json.decode(data);
-        handleDeepLink(context, payload);
+        await handleDeepLink(context, payload);
       },
     );
 

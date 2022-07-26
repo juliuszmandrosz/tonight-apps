@@ -230,24 +230,24 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
       await _pushNotificationsCubit.initialize(context);
 
       FirebaseMessaging.instance.getInitialMessage().then(
-        (message) {
+        (message) async {
           if (message?.data != null) {
-            handleDeepLink(context, message!.data);
+            await handleDeepLink(context, message!.data);
           }
         },
       );
 
       FirebaseMessaging.onMessage.listen(
-        (message) {
+        (message) async {
           if (message.notification != null) {
-            _pushNotificationsCubit.showNotification(message);
+            await _pushNotificationsCubit.showNotification(message);
           }
         },
       );
 
       FirebaseMessaging.onMessageOpenedApp.listen(
-        (message) {
-          handleDeepLink(context, message.data);
+        (message) async {
+          await handleDeepLink(context, message.data);
         },
       );
     }
@@ -257,12 +257,12 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     final initialLink = await FirebaseDynamicLinks.instance.getInitialLink();
 
     if (initialLink != null) {
-      handleDeepLink(context, initialLink.link.queryParameters);
+      await handleDeepLink(context, initialLink.link.queryParameters);
     }
 
     FirebaseDynamicLinks.instance.onLink.listen(
-      (data) {
-        handleDeepLink(context, data.link.queryParameters);
+      (data) async {
+        await handleDeepLink(context, data.link.queryParameters);
       },
     );
   }
