@@ -400,6 +400,8 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
       );
 
       await _stripe.confirmApplePayPayment(paymentIntentSecret);
+
+      return;
     }
 
     await _stripe.initGooglePay(
