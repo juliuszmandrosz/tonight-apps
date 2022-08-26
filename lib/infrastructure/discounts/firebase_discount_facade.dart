@@ -7,6 +7,7 @@ import 'package:raver_common/raver_common.dart';
 import 'package:raver_partners/domain/discounts/discount_facade.dart';
 import 'package:raver_partners/domain/discounts/discount_failure.dart';
 import 'package:raver_partners/domain/discounts/partner_discount_entity.dart';
+import 'package:raver_partners/infrastructure/club_sales/dtos/club_sales_dto.dart';
 import 'package:raver_partners/infrastructure/discounts/dtos/partner_discount_dto.dart';
 
 class FirebaseDiscountFacade implements DiscountFacade {
@@ -41,8 +42,14 @@ class FirebaseDiscountFacade implements DiscountFacade {
         collection: _firestore.partnersDiscounts,
       );
 
+      final clubSalesDoc = await _firestore.clubsSales.doc(clubDocRef.id).get();
+      final clubSales = ClubSalesDto.fromFirebase(clubSalesDoc).toDomain();
+      final exclusiveEventsSales =
+          clubSales.exclusiveTicketsSold + clubSales.exclusiveVipsSold;
+
       final result = discountDocs
           .map((doc) => PartnerDiscountDto.fromFirebase(doc).toDomain())
+          .where((d) => d.requiredExclusiveEventsSales <= exclusiveEventsSales)
           .toList();
 
       return right(result);
