@@ -39,6 +39,7 @@ class RaverScannerApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
+        localeListResolutionCallback: localeConfig,
       ),
     );
   }
