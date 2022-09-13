@@ -9,6 +9,7 @@ class EventTickets extends Equatable {
   final TicketSales ticketSales;
   final int ticketQuantity;
   final bool isSoldOut;
+  final bool isSaleActive;
 
   const EventTickets({
     required this.eventId,
@@ -16,6 +17,7 @@ class EventTickets extends Equatable {
     required this.ticketSales,
     required this.ticketQuantity,
     this.isSoldOut = false,
+    this.isSaleActive = true,
   });
 
   @override
@@ -25,6 +27,7 @@ class EventTickets extends Equatable {
         ticketSales,
         ticketQuantity,
         isSoldOut,
+        isSaleActive,
       ];
 
   EventTickets copyWith({
@@ -34,6 +37,7 @@ class EventTickets extends Equatable {
     int? ticketsSold,
     int? vipsSold,
     bool? isSoldOut,
+    bool? isSaleActive
   }) {
     return EventTickets(
       eventId: eventId,
@@ -41,6 +45,7 @@ class EventTickets extends Equatable {
       ticketSales: ticketSales ?? this.ticketSales,
       ticketQuantity: ticketQuantity ?? this.ticketQuantity,
       isSoldOut: isSoldOut ?? this.isSoldOut,
+      isSaleActive: isSaleActive ?? this.isSaleActive,
     );
   }
 
