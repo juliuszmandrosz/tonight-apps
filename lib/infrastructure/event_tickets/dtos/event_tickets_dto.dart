@@ -19,6 +19,7 @@ class EventTicketsDto with _$EventTicketsDto {
     required TicketSalesDto ticketSales,
     required int ticketQuantity,
     @Default(false) bool isSoldOut,
+    @Default(true) bool isSaleActive,
   }) = _EventTicketsDto;
 
   factory EventTicketsDto.fromDomain(EventTickets eventTickets) {
