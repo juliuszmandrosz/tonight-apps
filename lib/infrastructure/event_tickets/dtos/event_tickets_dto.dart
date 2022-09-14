@@ -20,6 +20,7 @@ class EventTicketsDto with _$EventTicketsDto {
     required int ticketQuantity,
     @Default(false) bool isSoldOut,
     @Default(true) bool isSaleActive,
+    int? priceAtGate,
   }) = _EventTicketsDto;
 
   factory EventTicketsDto.fromDomain(EventTickets eventTickets) {
@@ -31,6 +32,8 @@ class EventTicketsDto with _$EventTicketsDto {
       ticketPools: eventTickets.ticketPools
           .map((pool) => TicketPoolDto.fromDomain(pool))
           .toList(),
+      isSaleActive: eventTickets.isSaleActive,
+      priceAtGate: eventTickets.priceAtGate,
     );
   }
 
@@ -50,6 +53,8 @@ class EventTicketsDto with _$EventTicketsDto {
       ticketQuantity: ticketQuantity,
       isSoldOut: isSoldOut,
       ticketPools: ticketPools.map((pool) => pool.toDomain()).toList(),
+      isSaleActive: isSaleActive,
+      priceAtGate: priceAtGate,
     );
   }
 }

@@ -16,6 +16,7 @@ _$_EventTicketsDto _$$_EventTicketsDtoFromJson(Map<String, dynamic> json) =>
       ticketQuantity: json['ticketQuantity'] as int,
       isSoldOut: json['isSoldOut'] as bool? ?? false,
       isSaleActive: json['isSaleActive'] as bool? ?? true,
+      priceAtGate: json['priceAtGate'] as int?,
     );
 
 Map<String, dynamic> _$$_EventTicketsDtoToJson(_$_EventTicketsDto instance) =>
@@ -25,4 +26,5 @@ Map<String, dynamic> _$$_EventTicketsDtoToJson(_$_EventTicketsDto instance) =>
       'ticketQuantity': instance.ticketQuantity,
       'isSoldOut': instance.isSoldOut,
       'isSaleActive': instance.isSaleActive,
+      'priceAtGate': instance.priceAtGate,
     };
