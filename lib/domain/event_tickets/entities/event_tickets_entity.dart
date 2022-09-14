@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:raver_events/domain/event_tickets/entities/ticket_pool_entity.dart';
 import 'package:raver_events/domain/event_tickets/entities/ticket_sales_entity.dart';
@@ -10,6 +11,7 @@ class EventTickets extends Equatable {
   final int ticketQuantity;
   final bool isSoldOut;
   final bool isSaleActive;
+  final int? priceAtGate;
 
   const EventTickets({
     required this.eventId,
@@ -18,6 +20,7 @@ class EventTickets extends Equatable {
     required this.ticketQuantity,
     this.isSoldOut = false,
     this.isSaleActive = true,
+    this.priceAtGate,
   });
 
   @override
@@ -28,6 +31,7 @@ class EventTickets extends Equatable {
         ticketQuantity,
         isSoldOut,
         isSaleActive,
+        priceAtGate,
       ];
 
   EventTickets copyWith({
@@ -37,7 +41,8 @@ class EventTickets extends Equatable {
     int? ticketsSold,
     int? vipsSold,
     bool? isSoldOut,
-    bool? isSaleActive
+    bool? isSaleActive,
+    Option<int>? priceAtGate,
   }) {
     return EventTickets(
       eventId: eventId,
@@ -46,16 +51,26 @@ class EventTickets extends Equatable {
       ticketQuantity: ticketQuantity ?? this.ticketQuantity,
       isSoldOut: isSoldOut ?? this.isSoldOut,
       isSaleActive: isSaleActive ?? this.isSaleActive,
+      priceAtGate: priceAtGate != null
+          ? priceAtGate.fold(
+              () => null,
+              (price) => price,
+            )
+          : this.priceAtGate,
     );
   }
 
   int getCurrentTicketPrice() {
-    final currentPool = getCurrentPool();
-    return currentPool.ticketPrice;
+    if (isSaleActive) {
+      final currentPool = getCurrentPool()!;
+      return currentPool.ticketPrice;
+    }
+
+    return priceAtGate!;
   }
 
-  TicketPool getCurrentPool() {
+  TicketPool? getCurrentPool() {
     return ticketPools.firstWhereOrNull((pool) => pool.isCurrent) ??
-        ticketPools.last;
+        ticketPools.lastOrNull;
   }
 }
