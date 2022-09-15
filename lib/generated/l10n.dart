@@ -4217,10 +4217,10 @@ class S {
     );
   }
 
-  /// `URL links`
+  /// `Links`
   String get urlLinks {
     return Intl.message(
-      'URL links',
+      'Links',
       name: 'urlLinks',
       desc: '',
       args: [],

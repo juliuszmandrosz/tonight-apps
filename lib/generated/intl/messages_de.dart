@@ -740,7 +740,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "upgradeTicketToVipAndEnterClub": MessageLookupByLibrary.simpleMessage(
             "Upgrade dein Ticket auf VIP und komm zum Club ohne Warteschlange "),
         "upgradeToVip": MessageLookupByLibrary.simpleMessage("Upgrade auf VIP"),
-        "urlLinks": MessageLookupByLibrary.simpleMessage("URL-Links"),
+        "urlLinks": MessageLookupByLibrary.simpleMessage("Links"),
         "userAlreadyHasTicket": MessageLookupByLibrary.simpleMessage(
             "Du hast bereits Tickets für diesen Event. "),
         "userDisabled": MessageLookupByLibrary.simpleMessage(

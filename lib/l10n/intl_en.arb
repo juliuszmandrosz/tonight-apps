@@ -828,7 +828,7 @@
   "@upgradeTicketToVipAndEnterClub": {},
   "upgradeToVip": "Upgrade to VIP",
   "@upgradeToVip": {},
-  "urlLinks": "URL links",
+  "urlLinks": "Links",
   "@urlLinks": {},
   "userAlreadyHasTicket": "You already have a ticket for this event",
   "@userAlreadyHasTicket": {},
