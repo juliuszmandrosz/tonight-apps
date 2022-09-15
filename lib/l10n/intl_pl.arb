@@ -444,6 +444,8 @@
   "@lastTicketsInPool": {},
   "live": "W trakcie",
   "@live": {},
+  "location": "Lokalizacja",
+  "@location": {},
   "login": "Zaloguj się",
   "@login": {},
   "lostNetworkConnectionDescription": "Utracono połączenie z internetem",

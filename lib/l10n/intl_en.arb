@@ -444,6 +444,8 @@
   "@lastTicketsInPool": {},
   "live": "Live",
   "@live": {},
+  "location": "Location",
+  "@location": {},
   "login": "Login",
   "@login": {},
   "lostNetworkConnectionDescription": "Seems you've lost connection to internet",

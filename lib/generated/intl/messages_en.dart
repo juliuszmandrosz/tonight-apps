@@ -414,6 +414,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "lastTicketsInPool":
             MessageLookupByLibrary.simpleMessage("Last tickets"),
         "live": MessageLookupByLibrary.simpleMessage("Live"),
+        "location": MessageLookupByLibrary.simpleMessage("Location"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "lostNetworkConnectionDescription":
             MessageLookupByLibrary.simpleMessage(
