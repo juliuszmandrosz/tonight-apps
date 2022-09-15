@@ -786,6 +786,8 @@
   "@ticketReturnedSuccessfully": {},
   "tickets": "{count, plural, zero{Keine Tickets} one{Ticket} other{Tickets}}",
   "@tickets": {},
+  "ticketsAvailableOnlyAtGate": "Tickets nur an der Abendkasse erhältlich",
+  "@ticketsAvailableOnlyAtGate": {},
   "ticketScanned": "gescannter Ticket",
   "@ticketScanned": {},
   "ticketsSold": "Tickets verkauft",

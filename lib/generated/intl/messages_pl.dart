@@ -696,6 +696,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketScanned":
             MessageLookupByLibrary.simpleMessage("Bilet zeskanowany"),
         "tickets": m8,
+        "ticketsAvailableOnlyAtGate": MessageLookupByLibrary.simpleMessage(
+            "Bilety dostępne tylko na bramce"),
         "ticketsSold":
             MessageLookupByLibrary.simpleMessage("Sprzedanych biletów"),
         "tikTok": MessageLookupByLibrary.simpleMessage("TikTok"),

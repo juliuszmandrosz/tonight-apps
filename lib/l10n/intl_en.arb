@@ -786,6 +786,8 @@
   "@ticketReturnedSuccessfully": {},
   "tickets": "{count, plural, zero{No tickets} one{Ticket} other{Tickets}}",
   "@tickets": {},
+  "ticketsAvailableOnlyAtGate": "Tickets available only at the gate",
+  "@ticketsAvailableOnlyAtGate": {},
   "ticketScanned": "Ticket scanned",
   "@ticketScanned": {},
   "ticketsSold": "Tickets sold",

@@ -4007,6 +4007,16 @@ class S {
     );
   }
 
+  /// `Tickets available only at the gate`
+  String get ticketsAvailableOnlyAtGate {
+    return Intl.message(
+      'Tickets available only at the gate',
+      name: 'ticketsAvailableOnlyAtGate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Ticket scanned`
   String get ticketScanned {
     return Intl.message(
