@@ -668,6 +668,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bilet stracił ważność"),
         "ticketForAnotherEvent": MessageLookupByLibrary.simpleMessage(
             "Bilet jest na inne wydarzenie"),
+        "ticketNoLongerAvailable":
+            MessageLookupByLibrary.simpleMessage("Bilet nie jest już dostępny"),
         "ticketPoolHasBeenAddedSuccessfully":
             MessageLookupByLibrary.simpleMessage(
                 "Pula biletów została dodana pomyślnie"),

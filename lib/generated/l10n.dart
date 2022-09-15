@@ -3874,6 +3874,16 @@ class S {
     );
   }
 
+  /// `Ticket is no longer available`
+  String get ticketNoLongerAvailable {
+    return Intl.message(
+      'Ticket is no longer available',
+      name: 'ticketNoLongerAvailable',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Ticket pool has been added successfully`
   String get ticketPoolHasBeenAddedSuccessfully {
     return Intl.message(

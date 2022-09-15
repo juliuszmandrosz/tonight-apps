@@ -681,6 +681,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ticket abgelaufen"),
         "ticketForAnotherEvent": MessageLookupByLibrary.simpleMessage(
             "Das Ticket ist für ein anderes Event"),
+        "ticketNoLongerAvailable": MessageLookupByLibrary.simpleMessage(
+            "das Ticket ist nicht mehr verfügbar"),
         "ticketPoolHasBeenAddedSuccessfully":
             MessageLookupByLibrary.simpleMessage(
                 "Ticketpool wurde erfolgreich hinzugefügt "),

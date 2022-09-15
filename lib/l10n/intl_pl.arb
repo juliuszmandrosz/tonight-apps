@@ -760,6 +760,8 @@
   "@ticketExpired": {},
   "ticketForAnotherEvent": "Bilet jest na inne wydarzenie",
   "@ticketForAnotherEvent": {},
+  "ticketNoLongerAvailable": "Bilet nie jest już dostępny",
+  "@ticketNoLongerAvailable": {},
   "ticketPoolHasBeenAddedSuccessfully": "Pula biletów została dodana pomyślnie",
   "@ticketPoolHasBeenAddedSuccessfully": {},
   "ticketPoolHasBeenDeletedSuccessfully": "Pula biletów została usunięta pomyślnie",
