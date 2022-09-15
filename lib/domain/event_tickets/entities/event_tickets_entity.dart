@@ -10,7 +10,7 @@ class EventTickets extends Equatable {
   final TicketSales ticketSales;
   final int ticketQuantity;
   final bool isSoldOut;
-  final bool isSaleActive;
+  final bool isSaleOnlyAtGate;
   final int? priceAtGate;
 
   const EventTickets({
@@ -19,7 +19,7 @@ class EventTickets extends Equatable {
     required this.ticketSales,
     required this.ticketQuantity,
     this.isSoldOut = false,
-    this.isSaleActive = true,
+    this.isSaleOnlyAtGate = false,
     this.priceAtGate,
   });
 
@@ -30,7 +30,7 @@ class EventTickets extends Equatable {
         ticketSales,
         ticketQuantity,
         isSoldOut,
-        isSaleActive,
+        isSaleOnlyAtGate,
         priceAtGate,
       ];
 
@@ -41,7 +41,7 @@ class EventTickets extends Equatable {
     int? ticketsSold,
     int? vipsSold,
     bool? isSoldOut,
-    bool? isSaleActive,
+    bool? isSaleOnlyAtGate,
     Option<int>? priceAtGate,
   }) {
     return EventTickets(
@@ -50,7 +50,7 @@ class EventTickets extends Equatable {
       ticketSales: ticketSales ?? this.ticketSales,
       ticketQuantity: ticketQuantity ?? this.ticketQuantity,
       isSoldOut: isSoldOut ?? this.isSoldOut,
-      isSaleActive: isSaleActive ?? this.isSaleActive,
+      isSaleOnlyAtGate: isSaleOnlyAtGate ?? this.isSaleOnlyAtGate,
       priceAtGate: priceAtGate != null
           ? priceAtGate.fold(
               () => null,
@@ -61,12 +61,12 @@ class EventTickets extends Equatable {
   }
 
   int getCurrentTicketPrice() {
-    if (isSaleActive) {
-      final currentPool = getCurrentPool()!;
-      return currentPool.ticketPrice;
+    if (isSaleOnlyAtGate) {
+      return priceAtGate!;
     }
 
-    return priceAtGate!;
+    final currentPool = getCurrentPool()!;
+    return currentPool.ticketPrice;
   }
 
   TicketPool? getCurrentPool() {

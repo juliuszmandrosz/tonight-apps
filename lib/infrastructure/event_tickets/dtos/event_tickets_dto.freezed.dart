@@ -26,7 +26,7 @@ mixin _$EventTicketsDto {
   TicketSalesDto get ticketSales => throw _privateConstructorUsedError;
   int get ticketQuantity => throw _privateConstructorUsedError;
   bool get isSoldOut => throw _privateConstructorUsedError;
-  bool get isSaleActive => throw _privateConstructorUsedError;
+  bool get isSaleOnlyAtGate => throw _privateConstructorUsedError;
   int? get priceAtGate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ abstract class $EventTicketsDtoCopyWith<$Res> {
       TicketSalesDto ticketSales,
       int ticketQuantity,
       bool isSoldOut,
-      bool isSaleActive,
+      bool isSaleOnlyAtGate,
       int? priceAtGate});
 
   $TicketSalesDtoCopyWith<$Res> get ticketSales;
@@ -68,7 +68,7 @@ class _$EventTicketsDtoCopyWithImpl<$Res>
     Object? ticketSales = freezed,
     Object? ticketQuantity = freezed,
     Object? isSoldOut = freezed,
-    Object? isSaleActive = freezed,
+    Object? isSaleOnlyAtGate = freezed,
     Object? priceAtGate = freezed,
   }) {
     return _then(_value.copyWith(
@@ -92,9 +92,9 @@ class _$EventTicketsDtoCopyWithImpl<$Res>
           ? _value.isSoldOut
           : isSoldOut // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSaleActive: isSaleActive == freezed
-          ? _value.isSaleActive
-          : isSaleActive // ignore: cast_nullable_to_non_nullable
+      isSaleOnlyAtGate: isSaleOnlyAtGate == freezed
+          ? _value.isSaleOnlyAtGate
+          : isSaleOnlyAtGate // ignore: cast_nullable_to_non_nullable
               as bool,
       priceAtGate: priceAtGate == freezed
           ? _value.priceAtGate
@@ -124,7 +124,7 @@ abstract class _$$_EventTicketsDtoCopyWith<$Res>
       TicketSalesDto ticketSales,
       int ticketQuantity,
       bool isSoldOut,
-      bool isSaleActive,
+      bool isSaleOnlyAtGate,
       int? priceAtGate});
 
   @override
@@ -149,7 +149,7 @@ class __$$_EventTicketsDtoCopyWithImpl<$Res>
     Object? ticketSales = freezed,
     Object? ticketQuantity = freezed,
     Object? isSoldOut = freezed,
-    Object? isSaleActive = freezed,
+    Object? isSaleOnlyAtGate = freezed,
     Object? priceAtGate = freezed,
   }) {
     return _then(_$_EventTicketsDto(
@@ -173,9 +173,9 @@ class __$$_EventTicketsDtoCopyWithImpl<$Res>
           ? _value.isSoldOut
           : isSoldOut // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSaleActive: isSaleActive == freezed
-          ? _value.isSaleActive
-          : isSaleActive // ignore: cast_nullable_to_non_nullable
+      isSaleOnlyAtGate: isSaleOnlyAtGate == freezed
+          ? _value.isSaleOnlyAtGate
+          : isSaleOnlyAtGate // ignore: cast_nullable_to_non_nullable
               as bool,
       priceAtGate: priceAtGate == freezed
           ? _value.priceAtGate
@@ -195,7 +195,7 @@ class _$_EventTicketsDto extends _EventTicketsDto {
       required this.ticketSales,
       required this.ticketQuantity,
       this.isSoldOut = false,
-      this.isSaleActive = true,
+      this.isSaleOnlyAtGate = false,
       this.priceAtGate})
       : _ticketPools = ticketPools,
         super._();
@@ -222,13 +222,13 @@ class _$_EventTicketsDto extends _EventTicketsDto {
   final bool isSoldOut;
   @override
   @JsonKey()
-  final bool isSaleActive;
+  final bool isSaleOnlyAtGate;
   @override
   final int? priceAtGate;
 
   @override
   String toString() {
-    return 'EventTicketsDto(eventId: $eventId, ticketPools: $ticketPools, ticketSales: $ticketSales, ticketQuantity: $ticketQuantity, isSoldOut: $isSoldOut, isSaleActive: $isSaleActive, priceAtGate: $priceAtGate)';
+    return 'EventTicketsDto(eventId: $eventId, ticketPools: $ticketPools, ticketSales: $ticketSales, ticketQuantity: $ticketQuantity, isSoldOut: $isSoldOut, isSaleOnlyAtGate: $isSaleOnlyAtGate, priceAtGate: $priceAtGate)';
   }
 
   @override
@@ -245,7 +245,7 @@ class _$_EventTicketsDto extends _EventTicketsDto {
                 .equals(other.ticketQuantity, ticketQuantity) &&
             const DeepCollectionEquality().equals(other.isSoldOut, isSoldOut) &&
             const DeepCollectionEquality()
-                .equals(other.isSaleActive, isSaleActive) &&
+                .equals(other.isSaleOnlyAtGate, isSaleOnlyAtGate) &&
             const DeepCollectionEquality()
                 .equals(other.priceAtGate, priceAtGate));
   }
@@ -259,7 +259,7 @@ class _$_EventTicketsDto extends _EventTicketsDto {
       const DeepCollectionEquality().hash(ticketSales),
       const DeepCollectionEquality().hash(ticketQuantity),
       const DeepCollectionEquality().hash(isSoldOut),
-      const DeepCollectionEquality().hash(isSaleActive),
+      const DeepCollectionEquality().hash(isSaleOnlyAtGate),
       const DeepCollectionEquality().hash(priceAtGate));
 
   @JsonKey(ignore: true)
@@ -282,7 +282,7 @@ abstract class _EventTicketsDto extends EventTicketsDto {
       required final TicketSalesDto ticketSales,
       required final int ticketQuantity,
       final bool isSoldOut,
-      final bool isSaleActive,
+      final bool isSaleOnlyAtGate,
       final int? priceAtGate}) = _$_EventTicketsDto;
   const _EventTicketsDto._() : super._();
 
@@ -301,7 +301,7 @@ abstract class _EventTicketsDto extends EventTicketsDto {
   @override
   bool get isSoldOut;
   @override
-  bool get isSaleActive;
+  bool get isSaleOnlyAtGate;
   @override
   int? get priceAtGate;
   @override

@@ -19,7 +19,7 @@ class EventTicketsDto with _$EventTicketsDto {
     required TicketSalesDto ticketSales,
     required int ticketQuantity,
     @Default(false) bool isSoldOut,
-    @Default(true) bool isSaleActive,
+    @Default(false) bool isSaleOnlyAtGate,
     int? priceAtGate,
   }) = _EventTicketsDto;
 
@@ -32,7 +32,7 @@ class EventTicketsDto with _$EventTicketsDto {
       ticketPools: eventTickets.ticketPools
           .map((pool) => TicketPoolDto.fromDomain(pool))
           .toList(),
-      isSaleActive: eventTickets.isSaleActive,
+      isSaleOnlyAtGate: eventTickets.isSaleOnlyAtGate,
       priceAtGate: eventTickets.priceAtGate,
     );
   }
@@ -53,7 +53,7 @@ class EventTicketsDto with _$EventTicketsDto {
       ticketQuantity: ticketQuantity,
       isSoldOut: isSoldOut,
       ticketPools: ticketPools.map((pool) => pool.toDomain()).toList(),
-      isSaleActive: isSaleActive,
+      isSaleOnlyAtGate: isSaleOnlyAtGate,
       priceAtGate: priceAtGate,
     );
   }
