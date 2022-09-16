@@ -503,8 +503,6 @@ void _registerModules() {
 
   getIt.registerLazySingleton(crashlyticsConfig);
 
-  getIt.registerLazySingleton(typesenseConfig);
-
   getIt.registerLazySingleton<EventsApi>(
     () => EventsApiImpl(
       getIt(),
