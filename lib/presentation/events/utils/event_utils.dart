@@ -10,7 +10,11 @@ bool checkIfShouldShowLastTicketsMessage(
     Event event, EventTickets? eventTickets) {
   if (event.isCanceled) return false;
 
-  if (eventTickets == null || eventTickets.isSoldOut) return false;
+  if (eventTickets == null ||
+      eventTickets.isSoldOut ||
+      eventTickets.isSaleOnlyAtGate) {
+    return false;
+  }
 
   final currentPool = eventTickets.getCurrentPool();
 

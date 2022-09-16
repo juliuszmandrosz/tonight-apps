@@ -93,8 +93,11 @@ class EventCard extends StatelessWidget {
                             left: 15,
                             child: EventLiveInfo(),
                           ),
-                        if (state.eventTickets
-                            .fold(() => false, (tickets) => tickets.isSoldOut))
+                        if (state.eventTickets.fold(
+                          () => false,
+                          (tickets) =>
+                              tickets.isSoldOut && !tickets.isSaleOnlyAtGate,
+                        ))
                           Positioned(
                             top: checkIfEventIsLive(event) ? 70 : 15,
                             left: 15,
