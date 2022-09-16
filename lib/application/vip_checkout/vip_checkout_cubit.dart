@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver/application/core/get_payment_failure_message.dart';
@@ -207,6 +206,12 @@ class VipCheckoutCubit extends Cubit<VipCheckoutState> {
           final eventTickets = eventTicketsState.eventTickets.getOrCrash();
 
           final currentTicketPool = eventTickets.getCurrentPool();
+
+          if (currentTicketPool == null) {
+            emit(state.copyWith(isVipNoLongerAvailable: true));
+            _showSnackbarMessage(S().ticketNoLongerAvailable);
+            return;
+          }
 
           if (!currentTicketPool.isVipEnabled) {
             emit(state.copyWith(isVipNoLongerAvailable: true));

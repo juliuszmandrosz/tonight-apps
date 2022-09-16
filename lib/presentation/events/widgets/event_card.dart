@@ -51,7 +51,7 @@ class EventCard extends StatelessWidget {
                 heroTag: heroTag,
                 ticketPrice: eventTickets.fold(
                   () => null,
-                  (tickets) => tickets.getCurrentPool().ticketPrice,
+                  (tickets) => tickets.getCurrentTicketPrice(),
                 ),
               ),
             );

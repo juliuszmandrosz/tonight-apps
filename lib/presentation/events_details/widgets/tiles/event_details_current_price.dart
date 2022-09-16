@@ -38,7 +38,7 @@ class EventDetailsCurrentPrice extends StatelessWidget {
                     size: 24,
                   )
                 : Text(
-                    '${state.eventTickets.getOrCrash().getCurrentPool().ticketPrice}',
+                    '${state.eventTickets.getOrCrash().getCurrentTicketPrice()}',
                     style: context.subtitle1
                         .copyWith(color: context.secondaryColor),
                   ),

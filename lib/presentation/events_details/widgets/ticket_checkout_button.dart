@@ -17,25 +17,27 @@ class TicketCheckoutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<EventTicketsCubit, EventTicketsState>(
       builder: (context, state) {
-        if (state.status == CubitStatus.success) {
-          if (_checkIfPayIsAvailable(state)) {
-            return SizedBox(
-              width: 300,
-              child: FloatingActionButton.extended(
-                onPressed: () => AutoRouter.of(context)
-                    .push(TicketCheckoutRoute(event: event)),
-                label: Text(S().proceedToCheckout),
-                icon: const FaIcon(FontAwesomeIcons.cartShopping),
-              ),
-            );
-          }
+        if (!state.status.isSuccess() || !_checkIfPayIsAvailable(state)) {
+          return const SizedBox();
         }
-        return const SizedBox.shrink();
+
+        return SizedBox(
+          width: 300,
+          child: FloatingActionButton.extended(
+            onPressed: () =>
+                AutoRouter.of(context).push(TicketCheckoutRoute(event: event)),
+            label: Text(S().proceedToCheckout),
+            icon: const FaIcon(FontAwesomeIcons.cartShopping),
+          ),
+        );
       },
     );
   }
 
   bool _checkIfPayIsAvailable(EventTicketsState state) {
-    return !(state.eventTickets.getOrCrash().isSoldOut || event.isCanceled);
+    final eventTickets = state.eventTickets.getOrCrash();
+    return !eventTickets.isSoldOut &&
+        !event.isCanceled &&
+        !eventTickets.isSaleOnlyAtGate;
   }
 }

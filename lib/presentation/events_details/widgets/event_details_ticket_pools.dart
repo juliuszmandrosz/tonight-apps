@@ -35,21 +35,32 @@ class EventDetailsTicketPools extends StatelessWidget {
                     color: context.onSurfaceColor,
                     size: 24,
                   )
-                : ListView.separated(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount:
-                        state.eventTickets.getOrCrash().ticketPools.length + 1,
-                    itemBuilder: (context, i) =>
-                        i >= state.eventTickets.getOrCrash().ticketPools.length
+                : state.eventTickets.getOrCrash().isSaleOnlyAtGate
+                    ? Text(
+                        S().ticketsAvailableOnlyAtGate,
+                        style: context.subtitle1.copyWith(
+                          color: context.secondaryColor,
+                        ),
+                      )
+                    : ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount:
+                            state.eventTickets.getOrCrash().ticketPools.length +
+                                1,
+                        itemBuilder: (context, i) => i >=
+                                state.eventTickets
+                                    .getOrCrash()
+                                    .ticketPools
+                                    .length
                             ? const SizedBox()
                             : TicketPoolListTile(
                                 ticketPool: state.eventTickets
                                     .getOrCrash()
                                     .ticketPools[i],
                               ),
-                    separatorBuilder: (context, i) => const Divider(),
-                  ),
+                        separatorBuilder: (context, i) => const Divider(),
+                      ),
           ),
         );
       },

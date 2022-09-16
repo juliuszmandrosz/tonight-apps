@@ -57,7 +57,7 @@ dependencies:
   flutter_spinkit: ^5.1.0
   rxdart: ^0.27.0
   bloc_concurrency: ^0.2.0
-  google_maps_flutter: ^2.1.2
+  google_maps_flutter: ^2.2.0
   cloud_functions: ^3.2.9
   url_launcher: ^6.0.20
   geolocator: ^8.2.0
@@ -66,7 +66,6 @@ dependencies:
   formz: ^0.4.1
   qr_flutter: ^4.0.0
   syncfusion_flutter_datepicker: ^19.4.55
-  webview_flutter: ^3.0.1
   connectivity_plus: ^2.2.1
   shimmer: ^2.0.0
   hydrated_bloc: ^8.1.0
@@ -95,13 +94,12 @@ dependencies:
   flutter_native_splash: ^2.2.4
   screen_brightness: ^0.2.1
   firebase_messaging: ^11.4.2
-  flutter_local_notifications: ^9.6.1
+  flutter_local_notifications: ^9.9.1
   typesense: ^0.2.0
-  firebase_app_check: ^0.0.6+16
-  firebase_performance: ^0.8.1+1
-  firebase_analytics: ^9.1.12
-  share_plus: ^4.0.10
-  pay: ^1.0.10
+  firebase_app_check: ^0.0.7+1
+  firebase_performance: ^0.8.3
+  firebase_analytics: ^9.3.4
+  share_plus: ^4.1.0
 
   raver_translations:
     git:

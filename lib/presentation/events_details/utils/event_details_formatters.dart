@@ -31,7 +31,7 @@ _getPrice(Event event, EventTickets? eventTickets) {
     return event.price;
   }
 
-  return eventTickets.getCurrentPool().ticketPrice;
+  return eventTickets.getCurrentTicketPrice();
 }
 
 String _addSeparator(EventDetailsSeparator separator) {

@@ -157,7 +157,7 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
   void isVipChanged(bool value) {
     final currentPool = state.eventTickets.getOrCrash().getCurrentPool();
 
-    if (!currentPool.isVipEnabled) return;
+    if (currentPool == null || !currentPool.isVipEnabled) return;
 
     final vipPrice = currentPool.vipPrice;
 
@@ -234,6 +234,12 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
 
       final currentPool = eventTickets.getCurrentPool();
 
+      if (currentPool == null || eventTickets.isSaleOnlyAtGate) {
+        emit(state.copyWith(isTicketNoLongerAvailable: true));
+        _showSnackbarMessage(S().ticketNoLongerAvailable);
+        return;
+      }
+
       if (state.eventTickets.isSome()) {
         _emitMessagesIfPoolsHaveChanged(currentPool);
       }
@@ -285,6 +291,8 @@ class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {
 
   _emitMessagesIfPoolsHaveChanged(TicketPool currentPool) {
     final poolInState = state.eventTickets.getOrCrash().getCurrentPool();
+
+    if (poolInState == null) return;
 
     if (poolInState.poolNumber < currentPool.poolNumber) {
       _showSnackbarMessage(S().ticketPoolHasSoldOut);

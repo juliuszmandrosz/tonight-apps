@@ -49,12 +49,12 @@ class EventDetailsCubit extends Cubit<EventDetailsState> {
   _getEventTickets(Event event) {
     _eventTicketsCubit.getEventTickets(clubId: event.clubId, eventId: event.id);
     _eventTicketsCubit.stream.listen(
-      (event) {
-        if (event.status.isFailure()) {
+      (eventTicketsState) {
+        if (eventTicketsState.status.isFailure()) {
           emit(state.copyWith(status: CubitStatus.failure));
         }
 
-        if (event.status.isSuccess() && !state.status.isSuccess()) {
+        if (eventTicketsState.status.isSuccess() && !state.status.isSuccess()) {
           emit(state.copyWith(status: CubitStatus.success));
         }
       },

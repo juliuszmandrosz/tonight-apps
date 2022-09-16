@@ -21,8 +21,7 @@ class EventDetailsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentPrice =
-        ticketPrice ?? eventTickets?.getCurrentPool().ticketPrice;
+    final currentPrice = eventTickets?.getCurrentTicketPrice() ?? ticketPrice;
     return Column(
       children: [
         Align(

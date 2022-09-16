@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:raver/failure/failure_page.dart';
 import 'package:raver/presentation/app_settings/app_settings_page.dart';
-import 'package:raver/presentation/checkout/checkout_page.dart';
 import 'package:raver/presentation/club_details/club_details_page.dart';
 import 'package:raver/presentation/clubs/clubs_page.dart';
 import 'package:raver/presentation/contact/contact_page.dart';
@@ -164,11 +163,6 @@ const animationDuration = 300;
     CustomRoute(
       page: ContactPage,
       transitionsBuilder: slideLeftTransition,
-      durationInMilliseconds: animationDuration,
-    ),
-    CustomRoute<bool>(
-      page: CheckoutPage,
-      transitionsBuilder: fadeInTransition,
       durationInMilliseconds: animationDuration,
     ),
     CustomRoute<CustomerData>(

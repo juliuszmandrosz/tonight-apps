@@ -146,13 +146,15 @@ class _TicketCheckoutPageState extends State<TicketCheckoutPage> {
 
   bool _checkIfVipSwitchIsVisible(TicketCheckoutState state) {
     final eventTickets = state.eventTickets.getOrCrash();
+    if (eventTickets.isSaleOnlyAtGate) return false;
     return !eventTickets.isSoldOut &&
-        eventTickets.getCurrentPool().isVipEnabled;
+        eventTickets.getCurrentPool()!.isVipEnabled;
   }
 
   bool _checkIfVipIsNotEnabled(TicketCheckoutState state) {
     final eventTickets = state.eventTickets.getOrCrash();
+    if (eventTickets.isSaleOnlyAtGate) return false;
     return !eventTickets.isSoldOut &&
-        !eventTickets.getCurrentPool().isVipEnabled;
+        !eventTickets.getCurrentPool()!.isVipEnabled;
   }
 }

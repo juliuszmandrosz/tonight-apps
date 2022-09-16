@@ -26,6 +26,7 @@ class _EventDetailsEventPlaceState extends State<EventDetailsEventPlace> {
   final Completer<GoogleMapController> _controller = Completer();
   late final String _mapStyle;
   var _isMapLoading = true;
+  var _showMap = false;
 
   @override
   void initState() {
@@ -34,7 +35,18 @@ class _EventDetailsEventPlaceState extends State<EventDetailsEventPlace> {
     ) {
       _mapStyle = string;
     });
+
     super.initState();
+
+    Future.delayed(
+      const Duration(milliseconds: 500),
+      () => setState(() => _showMap = true),
+    );
+  }
+
+  Future<void> _disposeController() async {
+    final controller = await _controller.future;
+    controller.dispose();
   }
 
   @override
@@ -43,73 +55,83 @@ class _EventDetailsEventPlaceState extends State<EventDetailsEventPlace> {
     final lng = widget.event.getLongitude();
     const mapHeight = 300.0;
     const mapWidth = 400.0;
-    return Column(
-      children: [
-        Align(
-          alignment: Alignment.centerLeft,
-          child: RaverHeadline(
-            text: S().eventPlace,
-            isSmallerVersion: true,
+    return WillPopScope(
+      onWillPop: () async {
+        setState(() {
+          _showMap = false;
+        });
+        await _disposeController();
+        return true;
+      },
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: RaverHeadline(
+              text: S().eventPlace,
+              isSmallerVersion: true,
+            ),
           ),
-        ),
-        const SizedBox(height: 20),
-        SizedBox(
-          height: mapHeight,
-          width: mapWidth,
-          child: Stack(
-            children: [
-              GoogleMap(
-                onTap: (_) async {
-                  var result = await MapsLauncher.launchCoordinates(
-                    lat,
-                    lng,
-                    widget.event.clubName,
-                  );
-                  if (!result) {
-                    context.showSnackbarMessage(S().errorOpeningMaps);
-                  }
-                },
-                zoomGesturesEnabled: false,
-                scrollGesturesEnabled: false,
-                tiltGesturesEnabled: false,
-                rotateGesturesEnabled: false,
-                zoomControlsEnabled: false,
-                onMapCreated: (controller) {
-                  controller.setMapStyle(_mapStyle);
-                  setState(() {
-                    _isMapLoading = false;
-                  });
-                  _controller.complete(controller);
-                },
-                markers: {
-                  Marker(
-                    markerId: const MarkerId('m1'),
-                    position: LatLng(
-                      widget.event.getLatitude(),
-                      widget.event.getLongitude(),
+          const SizedBox(height: 20),
+          SizedBox(
+            height: mapHeight,
+            width: mapWidth,
+            child: Stack(
+              children: [
+                if (_showMap)
+                  GoogleMap(
+                    onTap: (_) async {
+                      var result = await MapsLauncher.launchCoordinates(
+                        lat,
+                        lng,
+                        widget.event.clubName,
+                      );
+                      if (!result) {
+                        context.showSnackbarMessage(S().errorOpeningMaps);
+                      }
+                    },
+                    zoomGesturesEnabled: false,
+                    scrollGesturesEnabled: false,
+                    tiltGesturesEnabled: false,
+                    rotateGesturesEnabled: false,
+                    zoomControlsEnabled: false,
+                    onMapCreated: (controller) {
+                      controller.setMapStyle(_mapStyle);
+                      setState(() {
+                        _isMapLoading = false;
+                      });
+                      _controller.complete(controller);
+                    },
+                    markers: {
+                      Marker(
+                        markerId: const MarkerId('m1'),
+                        position: LatLng(
+                          widget.event.getLatitude(),
+                          widget.event.getLongitude(),
+                        ),
+                        icon: BitmapDescriptor.defaultMarkerWithHue(245),
+                        alpha: 0.8,
+                      ),
+                    },
+                    initialCameraPosition: CameraPosition(
+                      target: LatLng(lat, lng),
+                      zoom: 16,
                     ),
-                    icon: BitmapDescriptor.defaultMarkerWithHue(245),
-                    alpha: 0.8,
                   ),
-                },
-                initialCameraPosition: CameraPosition(
-                  target: LatLng(lat, lng),
-                  zoom: 16,
-                ),
-              ),
-              if (_isMapLoading)
-                SizedBox(
-                  height: mapHeight,
-                  width: mapWidth,
-                  child: SpinKitThreeBounce(
-                    color: context.onSurfaceColor,
-                    size: 24,
+                if (_isMapLoading)
+                  SizedBox(
+                    height: mapHeight,
+                    width: mapWidth,
+                    child: SpinKitThreeBounce(
+                      color: context.onSurfaceColor,
+                      size: 24,
+                    ),
                   ),
-                ),
-            ],
-          ),
-        )
-      ],
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

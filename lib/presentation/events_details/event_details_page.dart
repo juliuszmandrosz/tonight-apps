@@ -12,11 +12,9 @@ import 'package:raver/presentation/events_details/widgets/canceled_event_message
 import 'package:raver/presentation/events_details/widgets/event_details_additional_info.dart';
 import 'package:raver/presentation/events_details/widgets/event_details_artist_name.dart';
 import 'package:raver/presentation/events_details/widgets/event_details_club_name.dart';
-import 'package:raver/presentation/events_details/widgets/event_details_end_date_time.dart';
+import 'package:raver/presentation/events_details/widgets/event_details_date_and_time.dart';
 import 'package:raver/presentation/events_details/widgets/event_details_event_description.dart';
 import 'package:raver/presentation/events_details/widgets/event_details_event_name.dart';
-import 'package:raver/presentation/events_details/widgets/event_details_event_place.dart';
-import 'package:raver/presentation/events_details/widgets/event_details_start_date_time.dart';
 import 'package:raver/presentation/events_details/widgets/event_details_ticket.dart';
 import 'package:raver/presentation/events_details/widgets/event_details_ticket_pools.dart';
 import 'package:raver/presentation/events_details/widgets/tiles/event_details_section.dart';
@@ -150,9 +148,7 @@ class EventDetailsPage extends StatelessWidget {
                                       const SizedBox(height: 20),
                                       if (event.isConcert)
                                         EventDetailsArtistName(event: event),
-                                      EventDetailsStartDateTime(event: event),
-                                      const SizedBox(height: 20),
-                                      EventDetailsEndDateTime(event: event),
+                                      EventDetailsDateAndTime(event: event),
                                       const SizedBox(height: 20),
                                       if (event.description != null &&
                                           event.description!.isNotEmpty)
@@ -160,7 +156,6 @@ class EventDetailsPage extends StatelessWidget {
                                           event: event,
                                         ),
                                       EventDetailsAdditionalInfo(event: event),
-                                      EventDetailsEventPlace(event: event),
                                       if (!event.isCanceled &&
                                           event.eventEndDateTime
                                               .isAfter(DateTime.now()))
@@ -174,7 +169,6 @@ class EventDetailsPage extends StatelessWidget {
                                             );
                                             return Column(
                                               children: [
-                                                const SizedBox(height: 30),
                                                 EventDetailsTicketPools(
                                                   event: event,
                                                 ),
@@ -229,6 +223,10 @@ class EventDetailsPage extends StatelessWidget {
     }
 
     if (eventTickets != null && eventTickets.isSoldOut) {
+      return false;
+    }
+
+    if (eventTickets != null && eventTickets.isSaleOnlyAtGate) {
       return false;
     }
 
