@@ -168,6 +168,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "copiedToClipboard":
             MessageLookupByLibrary.simpleMessage("Copied to clipboard"),
         "cost": MessageLookupByLibrary.simpleMessage("Cost"),
+        "costNotApplicableInfo": MessageLookupByLibrary.simpleMessage(
+            "The cost of organizing the event does not apply to the sale at the gate"),
         "currency": MessageLookupByLibrary.simpleMessage("Currency"),
         "currentFee": MessageLookupByLibrary.simpleMessage("Current fee"),
         "currentPasswordLabel":
@@ -529,6 +531,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "previousTicketPoolAvailable": MessageLookupByLibrary.simpleMessage(
             "The previous ticket pool is available again!"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
+        "priceAtGate": MessageLookupByLibrary.simpleMessage("Price at gate"),
         "priceChangedAfterTicketWasSold": MessageLookupByLibrary.simpleMessage(
             "The price cannot be changed after the sale of tickets has started"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Price range"),

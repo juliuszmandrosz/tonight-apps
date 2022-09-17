@@ -826,6 +826,16 @@ class S {
     );
   }
 
+  /// `The cost of organizing the event does not apply to the sale at the gate`
+  String get costNotApplicableInfo {
+    return Intl.message(
+      'The cost of organizing the event does not apply to the sale at the gate',
+      name: 'costNotApplicableInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Currency`
   String get currency {
     return Intl.message(
@@ -3013,6 +3023,16 @@ class S {
     return Intl.message(
       'Price',
       name: 'price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price at gate`
+  String get priceAtGate {
+    return Intl.message(
+      'Price at gate',
+      name: 'priceAtGate',
       desc: '',
       args: [],
     );

@@ -170,6 +170,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "copiedToClipboard":
             MessageLookupByLibrary.simpleMessage("Skopiowano do schowka"),
         "cost": MessageLookupByLibrary.simpleMessage("Koszt"),
+        "costNotApplicableInfo": MessageLookupByLibrary.simpleMessage(
+            "Koszt organizacji wydarzenia nie dotyczy sprzedaży na bramce"),
         "currency": MessageLookupByLibrary.simpleMessage("Waluta"),
         "currentFee": MessageLookupByLibrary.simpleMessage("Aktualna prowizja"),
         "currentPasswordLabel":
@@ -538,6 +540,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "previousTicketPoolAvailable": MessageLookupByLibrary.simpleMessage(
             "Poprzednia pula biletów znowu jest dostępna!"),
         "price": MessageLookupByLibrary.simpleMessage("Cena"),
+        "priceAtGate": MessageLookupByLibrary.simpleMessage("Cena na bramce"),
         "priceChangedAfterTicketWasSold": MessageLookupByLibrary.simpleMessage(
             "Nie można zmienić ceny po rozpoczęciu sprzedaży biletów"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Zakres cen"),
