@@ -40,8 +40,8 @@ class NetworkLostPage extends StatelessWidget {
                 SizedBox(
                   width: 300,
                   child: ElevatedButton(
-                    onPressed: () {
-                      if (context.read<NetworkCheckCubit>().state.isConnected) {
+                    onPressed: () async {
+                      if (await _checkNetworkConnection(context)) {
                         _navigateToHomePage(context);
                       }
                     },
@@ -61,5 +61,9 @@ class NetworkLostPage extends StatelessWidget {
     router.canNavigateBack
         ? router.pop()
         : router.replace(const WelcomeLoaderRoute());
+  }
+
+  Future<bool> _checkNetworkConnection(BuildContext context) async {
+    return await context.read<NetworkCheckCubit>().checkNetworkConnection();
   }
 }
