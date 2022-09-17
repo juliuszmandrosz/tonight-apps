@@ -7,7 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:raver_clubs/raver_clubs.dart';
 import 'package:raver_common/extensions/option_extensions.dart';
 import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/ticket_price.dart';
+import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/ticket_pool_price.dart';
 import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/ticket_quantity.dart';
 import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/vip_price.dart';
 import 'package:raver_partners/application/club_info/club_info_cubit.dart';
@@ -33,7 +33,7 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
   }
 
   void ticketPriceChanged(int? value) {
-    final price = TicketPrice.dirty(
+    final price = TicketPoolPrice.dirty(
       currencyParams: _clubInfoCubit.state.currencyParams,
       value: value,
     );
@@ -57,7 +57,7 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
   }
 
   addEditingTicketPoolToState(TicketPool ticketPool) {
-    final ticketPrice = TicketPrice.dirty(
+    final ticketPrice = TicketPoolPrice.dirty(
       currencyParams: _clubInfoCubit.state.currencyParams,
       value: ticketPool.ticketPrice,
     );
@@ -138,7 +138,7 @@ class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {
     emit(
       state.copyWith(
         ticketQuantity: TicketQuantity.dirty(state.ticketQuantity.value),
-        ticketPrice: TicketPrice.dirty(
+        ticketPrice: TicketPoolPrice.dirty(
           currencyParams: _clubInfoCubit.state.currencyParams,
           value: state.ticketPrice.value,
         ),

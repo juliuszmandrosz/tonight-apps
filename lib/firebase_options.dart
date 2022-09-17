@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -49,21 +46,32 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDoPE9S8jXtL5tHPdsDNZseRbr07jV9VAM',
+    appId: '1:133839090627:web:5d19c780f20b4f21e1c376',
+    messagingSenderId: '133839090627',
+    projectId: 'raver-1fec4',
+    authDomain: 'raver-1fec4.firebaseapp.com',
+    storageBucket: 'raver-1fec4.appspot.com',
+    measurementId: 'G-EWR90F10GE',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB0_MbQFy78XMQufSUNdg08H2gztVDZwbI',
-    appId: '1:98730591004:android:d9da1bb19a690d27a0b0d9',
-    messagingSenderId: '98730591004',
-    projectId: 'tonight-raver',
-    storageBucket: 'tonight-raver.appspot.com',
+    apiKey: 'AIzaSyDIYNLmu3013gTkq3rjmY2p2lnp-l5oN2I',
+    appId: '1:133839090627:android:b87be49fe08068abe1c376',
+    messagingSenderId: '133839090627',
+    projectId: 'raver-1fec4',
+    storageBucket: 'raver-1fec4.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD8f2gV9Mq14LXFYKr1DjmEmjK-Qrt3PwI',
-    appId: '1:98730591004:ios:7129c18671599768a0b0d9',
-    messagingSenderId: '98730591004',
-    projectId: 'tonight-raver',
-    storageBucket: 'tonight-raver.appspot.com',
-    iosClientId: '98730591004-u9990g3l0eml19paoe9ei86vh9frh789.apps.googleusercontent.com',
+    apiKey: 'AIzaSyD1iQ2EFscnd8ocsttiAvg7zERYrZc8lyM',
+    appId: '1:133839090627:ios:c3b5453cf7e12a2fe1c376',
+    messagingSenderId: '133839090627',
+    projectId: 'raver-1fec4',
+    storageBucket: 'raver-1fec4.appspot.com',
+    androidClientId: '133839090627-3vrcaoj7s27mteo7crlb86ugd52h1l16.apps.googleusercontent.com',
+    iosClientId: '133839090627-fkfrsai1vfhm1i3j2r8kcjjarsmf6b1b.apps.googleusercontent.com',
     iosBundleId: 'com.raverteam.tonightPartners',
   );
 }

@@ -17,6 +17,7 @@ import 'package:raver_partners/application/add_event/form_inputs/end_date_time.d
 import 'package:raver_partners/application/add_event/form_inputs/event_name.dart';
 import 'package:raver_partners/application/add_event/form_inputs/event_photo.dart';
 import 'package:raver_partners/application/add_event/form_inputs/facebook_url.dart';
+import 'package:raver_partners/application/add_event/form_inputs/price_at_gate.dart';
 import 'package:raver_partners/application/add_event/form_inputs/start_date_time.dart';
 import 'package:raver_partners/application/add_event/form_inputs/min_age.dart';
 import 'package:raver_partners/application/add_event/form_inputs/musical_genres.dart';
@@ -111,6 +112,21 @@ class AddEventCubit extends Cubit<AddEventState> {
       emit(state.copyWith(artistName: const ArtistName.pure()));
     }
     emit(state.copyWith(isConcert: value));
+  }
+
+  void isSaleOnlyAtGateChanged(bool value) {
+    emit(
+      state.copyWith(
+        isSaleOnlyAtGate: value,
+        ticketPools: [],
+        priceAtGate: none(),
+      ),
+    );
+  }
+
+  void priceAtGateChanged(int? value) {
+    final price = PriceAtGate.dirty(value);
+    emit(state.copyWith(priceAtGate: some(price)));
   }
 
   void artistNameChanged(String value) {
@@ -334,22 +350,41 @@ class AddEventCubit extends Cubit<AddEventState> {
   }
 
   void _submitTicketsStep() {
-    final status =
-        state.ticketPools.isEmpty ? FormzStatus.invalid : FormzStatus.valid;
-
-    if (state.ticketPools.isEmpty) {
-      _showErrorMessage(S().addAtLeastOneTicketPool);
-    }
-
+    final status = _getTicketsStepStatus();
     emit(state.copyWith(status: status));
   }
 
+  FormzStatus _getTicketsStepStatus() {
+    if (!state.isSaleOnlyAtGate && state.ticketPools.isEmpty) {
+      _showErrorMessage(S().addAtLeastOneTicketPool);
+      return FormzStatus.invalid;
+    }
+
+    if (state.isSaleOnlyAtGate) {
+      emit(
+        state.copyWith(
+          priceAtGate: some(
+            PriceAtGate.dirty(
+              state.priceAtGate.fold(() => null, (price) => price.value),
+            ),
+          ),
+        ),
+      );
+
+      return Formz.validate([state.priceAtGate.getOrCrash()]);
+    }
+
+    return FormzStatus.valid;
+  }
+
   void _submitConcertInfoStep() {
-    emit(state.copyWith(
-      artistName: state.isConcert
-          ? ArtistName.dirty(state.artistName.value)
-          : const ArtistName.pure(),
-    ));
+    emit(
+      state.copyWith(
+        artistName: state.isConcert
+            ? ArtistName.dirty(state.artistName.value)
+            : const ArtistName.pure(),
+      ),
+    );
 
     final status = Formz.validate([state.artistName]);
 
@@ -451,6 +486,10 @@ class AddEventCubit extends Cubit<AddEventState> {
       return;
     }
 
+    final price = state.isSaleOnlyAtGate
+        ? state.priceAtGate.getOrCrash().value!
+        : state.ticketPools.first.ticketPrice;
+
     final event = Event(
       id: eventId,
       currency: club.acceptedCurrency,
@@ -461,7 +500,7 @@ class AddEventCubit extends Cubit<AddEventState> {
       eventEndDateTime: state.endDateTime.value!,
       originalStartDateTime: state.startDateTime.value!,
       minAge: state.minAge.value!,
-      price: state.ticketPools.first.ticketPrice,
+      price: price,
       allowedOutfit: state.dressCode.value,
       musicalGenres: state.musicalGenres.value,
       location: club.location,
@@ -473,8 +512,20 @@ class AddEventCubit extends Cubit<AddEventState> {
       eventPhotoUrl: eventPhotoUrl.getRightOrCrash(),
     );
 
+    final ticketPools = state.isSaleOnlyAtGate
+        ? [
+            TicketPool(
+              poolNumber: 1,
+              ticketQuantity: 0,
+              ticketPrice: price,
+              currency: club.acceptedCurrency,
+              isSoldOut: true,
+            )
+          ]
+        : state.ticketPools;
+
     final eventTickets = EventTickets(
-      ticketPools: state.ticketPools,
+      ticketPools: ticketPools,
       eventId: event.id,
       ticketSales: TicketSales(
         currency: event.currency,
@@ -482,6 +533,9 @@ class AddEventCubit extends Cubit<AddEventState> {
         isExclusiveEvent: state.isExclusiveEvent,
       ),
       ticketQuantity: state.ticketPools.map((pool) => pool.ticketQuantity).sum,
+      isSaleOnlyAtGate: state.isSaleOnlyAtGate,
+      priceAtGate: state.priceAtGate.fold(() => null, (price) => price.value),
+      isSoldOut: state.isSaleOnlyAtGate,
     );
 
     Option<String> appliedDiscountId = state.appliedDiscount.fold(

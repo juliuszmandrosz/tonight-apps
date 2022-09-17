@@ -112,23 +112,27 @@ class EventOverviewPage extends StatelessWidget {
                   return const TicketLogoAnimation();
                 }
 
+                final areTicketsAvailable =
+                    !state.eventTickets.getOrCrash().isSaleOnlyAtGate;
+
                 return SingleChildScrollView(
                   child: Column(
                     children: [
-                      BlocBuilder<UpcomingLiveEventCubit,
-                          UpcomingLiveEventState>(
-                        buildWhen: (previous, current) =>
-                            previous.eventTickets != current.eventTickets,
-                        builder: (context, state) {
-                          return EventRevenue(
-                            ticketSales:
-                                state.eventTickets.getOrCrash().ticketSales,
-                          );
-                        },
-                      ),
-                      const SizedBox(height: 20),
-                      const EventOverviewTicketPools(),
-                      const SizedBox(height: 10),
+                      if (areTicketsAvailable)
+                        BlocBuilder<UpcomingLiveEventCubit,
+                            UpcomingLiveEventState>(
+                          buildWhen: (previous, current) =>
+                              previous.eventTickets != current.eventTickets,
+                          builder: (context, state) {
+                            return EventRevenue(
+                              ticketSales:
+                                  state.eventTickets.getOrCrash().ticketSales,
+                            );
+                          },
+                        ),
+                      if (areTicketsAvailable) const SizedBox(height: 20),
+                      if (areTicketsAvailable) const EventOverviewTicketPools(),
+                      if (areTicketsAvailable) const SizedBox(height: 10),
                       const EventOverviewDetails(),
                       if (isMoreThan3HoursLeftToEvent)
                         Column(

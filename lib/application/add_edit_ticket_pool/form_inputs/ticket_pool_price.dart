@@ -5,47 +5,47 @@ import 'package:raver_partners/application/add_edit_ticket_pool/add_edit_ticket_
 import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/price_utils.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-enum TicketPriceError { empty, tooHigh, tooLow }
+enum TicketPoolPriceError { empty, tooHigh, tooLow }
 
-String? getTicketPriceErrorMessage(AddEditTicketPoolState state) {
+String? getTicketPoolPriceErrorMessage(AddEditTicketPoolState state) {
   if (state.ticketPrice.valid || state.status != FormzStatus.invalid) {
     return null;
   }
 
   switch (state.ticketPrice.error) {
-    case TicketPriceError.empty:
+    case TicketPoolPriceError.empty:
       return S().enterPrice;
-    case TicketPriceError.tooHigh:
+    case TicketPoolPriceError.tooHigh:
       return '${S().ticketPriceTooHigh} ${getMaxPriceWithCurrency(state)}';
-    case TicketPriceError.tooLow:
+    case TicketPoolPriceError.tooLow:
       return '${S().ticketPriceTooLow} ${getMinPriceWithCurrency(state)}';
     default:
       return S().serverError;
   }
 }
 
-class TicketPrice extends FormzInput<int?, TicketPriceError> {
+class TicketPoolPrice extends FormzInput<int?, TicketPoolPriceError> {
   final Option<CurrencyParams> currencyParams;
 
-  TicketPrice.pure(this.currencyParams) : super.pure(null);
+  TicketPoolPrice.pure(this.currencyParams) : super.pure(null);
 
-  TicketPrice.dirty({
+  TicketPoolPrice.dirty({
     required this.currencyParams,
     int? value,
   }) : super.dirty(value);
 
   @override
-  TicketPriceError? validator(int? value) {
+  TicketPoolPriceError? validator(int? value) {
     if (value == null) {
-      return TicketPriceError.empty;
+      return TicketPoolPriceError.empty;
     }
 
     if (value < currencyParams.getOrCrash().minTicketPrice) {
-      return TicketPriceError.tooLow;
+      return TicketPoolPriceError.tooLow;
     }
 
     if (value > currencyParams.getOrCrash().maxTicketPrice) {
-      return TicketPriceError.tooHigh;
+      return TicketPoolPriceError.tooHigh;
     }
 
     return null;

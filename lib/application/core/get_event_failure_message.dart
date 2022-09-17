@@ -11,5 +11,6 @@ String getEventFailureMessage(PartnerEventFailure failure) {
     eventExistsInDateRange: (_) => S().eventExistsInDateRange,
     postponeDateTooLate: (_) => S().postponeDateTooLate,
     permissionDenied: (_) => S().operationNotAllowed,
+    noConnection: (_) => S().errorCheckInternetConnection,
   );
 }

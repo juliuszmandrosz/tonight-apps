@@ -2,23 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:raver_partners/application/add_edit_ticket_pool/add_edit_ticket_pool_cubit.dart';
-import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/ticket_pool_price.dart';
+import 'package:raver_partners/application/add_event/add_event_cubit.dart';
+import 'package:raver_partners/application/add_event/form_inputs/price_at_gate.dart';
 import 'package:raver_translations/raver_translations.dart';
 
-class TicketPoolPriceInput extends HookWidget {
-  const TicketPoolPriceInput({Key? key}) : super(key: key);
+class PriceAtGateInput extends HookWidget {
+  const PriceAtGateInput({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final _controller = useTextEditingController(
-      text:
-          '${context.read<AddEditTicketPoolCubit>().state.ticketPrice.value ?? ''}',
+      text: '${context.read<AddEventCubit>().state.priceAtGate.fold(
+            () => '',
+            (price) => price.value ?? '',
+          )}',
     );
 
-    return BlocBuilder<AddEditTicketPoolCubit, AddEditTicketPoolState>(
+    return BlocBuilder<AddEventCubit, AddEventState>(
       buildWhen: (previous, current) =>
-          previous.ticketPrice != current.ticketPrice ||
+          previous.priceAtGate != current.priceAtGate ||
           previous.status != current.status,
       builder: (context, state) {
         return Column(
@@ -27,15 +29,15 @@ class TicketPoolPriceInput extends HookWidget {
             TextField(
               controller: _controller,
               onChanged: (value) => context
-                  .read<AddEditTicketPoolCubit>()
-                  .ticketPriceChanged(int.tryParse(value)),
+                  .read<AddEventCubit>()
+                  .priceAtGateChanged(int.tryParse(value)),
               inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
               ],
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                labelText: S().ticketPrice,
-                errorText: getTicketPoolPriceErrorMessage(state),
+                labelText: S().priceAtGate,
+                errorText: getPriceAtGateErrorMessage(state),
               ),
             ),
           ],
