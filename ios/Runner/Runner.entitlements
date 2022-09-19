@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:tonightpartnersraver.page.link</string>
+		<string>applinks:tonightraver.page.link</string>
 	</array>
 </dict>
 </plist>
