@@ -15,14 +15,14 @@ dependencies:
   equatable: ^2.0.3
   logger: ^1.1.0
   freezed_annotation: ^2.0.3
-  firebase_core: ^1.14.0
-  firebase_auth: ^3.3.13
-  firebase_storage: ^10.2.4
-  cloud_firestore: ^3.1.11
+  firebase_core: ^2.1.1
+  firebase_auth: ^4.1.1
+  firebase_storage: ^11.0.4
+  cloud_firestore: ^4.0.4
   json_serializable: ^6.1.5
-  cloud_functions: ^3.2.14
+  cloud_functions: ^4.0.3
   dartz: ^0.10.1
-  firebase_crashlytics: ^2.8.1
+  firebase_crashlytics: ^3.0.4
   dio: ^4.0.6
 
   raver_common:
