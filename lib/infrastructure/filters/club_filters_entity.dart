@@ -18,7 +18,6 @@ abstract class ClubFilters with _$ClubFilters {
   factory ClubFilters.empty() => ClubFilters(
         phraseFilter: PhraseFilter(phrase: ''),
         maxDistanceFilter: MaxDistanceFilter(
-          enabled: true,
           userLocation: {},
           maxDistance: 50,
         ),
