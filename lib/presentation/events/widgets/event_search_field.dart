@@ -14,7 +14,8 @@ class EventSearchField extends StatelessWidget {
           children: [
             TextField(
               controller: TextEditingController(
-                  text: state.filters.phraseFilter.phrase),
+                text: state.filters.phraseFilter.phrase,
+              ),
               onSubmitted: (value) =>
                   context.read<EventFiltersCubit>().submitSearchField(value),
               decoration: InputDecoration(

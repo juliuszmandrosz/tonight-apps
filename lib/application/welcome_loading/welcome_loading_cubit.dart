@@ -90,7 +90,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _initTickets();
     _initFavoriteEvents();
     _initFavoriteClubs();
-    _initClubs();
     _initAvailableFiltersCubit();
     await _initStripe();
     await _initPushNotifications(context);
@@ -155,11 +154,20 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   }
 
   _initClubs() {
-    _clubsOverviewBloc.add(
-      ClubsOverviewEvent.clubsFetched(
-        ClubFilters.empty(),
-      ),
-    );
+    var filters = ClubFilters.empty();
+
+    final userLocation = _userLocationCubit.state.userLocation;
+
+    if (userLocation.isSome() && userLocation.getOrCrash().isNotEmpty) {
+      final maxDistanceFilters = filters.maxDistanceFilter;
+      filters = filters.copyWith(
+        maxDistanceFilter: maxDistanceFilters.copyWith(
+          userLocation: userLocation.getOrCrash(),
+        ),
+      );
+    }
+
+    _clubsOverviewBloc.add(ClubsOverviewEvent.clubsFetched(filters));
 
     _clubsSub = _clubsOverviewBloc.stream.listen((event) {
       _checkAndEmitFailure(event.status);
@@ -197,6 +205,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
       _emitSuccessIfAllLoaded();
       if (!event.isLoading) {
         _initEvents();
+        _initClubs();
       }
     });
   }

@@ -126,6 +126,7 @@ void _registerCubits() {
   getIt.registerFactoryParam(
     (ClubsOverviewBloc clubsOverviewBloc, _) => ClubFiltersCubit(
       clubsOverviewBloc,
+      getIt(),
     ),
   );
 

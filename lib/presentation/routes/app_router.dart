@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:raver/failure/failure_page.dart';
 import 'package:raver/presentation/app_settings/app_settings_page.dart';
 import 'package:raver/presentation/club_details/club_details_page.dart';
+import 'package:raver/presentation/club_filters/club_filters_page.dart';
 import 'package:raver/presentation/clubs/clubs_page.dart';
 import 'package:raver/presentation/contact/contact_page.dart';
 import 'package:raver/presentation/event_date_picker/event_date_picker_page.dart';
@@ -167,6 +168,11 @@ const animationDuration = 300;
     ),
     CustomRoute<CustomerData>(
       page: PaymentMethodPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: ClubFiltersPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),

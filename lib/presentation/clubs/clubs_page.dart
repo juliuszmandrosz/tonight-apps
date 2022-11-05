@@ -7,6 +7,7 @@ import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart'
 import 'package:raver/injection.dart';
 import 'package:raver/presentation/clubs/widgets/club_card.dart';
 import 'package:raver/presentation/clubs/widgets/club_filter_section.dart';
+import 'package:raver/presentation/clubs/widgets/club_filters_row.dart';
 import 'package:raver/presentation/clubs/widgets/search_clubs_info.dart';
 import 'package:raver/presentation/routes/app_router.gr.dart';
 import 'package:raver_common/raver_common.dart';
@@ -49,6 +50,8 @@ class _ClubsPageState extends State<ClubsPage> {
                   controller: _scrollController,
                   children: [
                     const SearchClubsInfo(),
+                    const SizedBox(height: 15),
+                    const ClubFiltersRow(),
                     const SizedBox(height: 15),
                     BlocConsumer<ClubsOverviewBloc, ClubsOverviewState>(
                       listenWhen: (previous, current) =>
