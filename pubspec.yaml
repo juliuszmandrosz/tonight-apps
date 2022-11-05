@@ -15,20 +15,20 @@ dependencies:
   equatable: ^2.0.3
   dartz: ^0.10.1
   uuid: ^3.0.6
-  cloud_firestore: ^3.1.10
+  cloud_firestore: ^4.0.4
   logger: ^1.1.0
-  firebase_auth: ^3.3.11
+  firebase_auth: ^4.1.1
   mockito: ^5.1.0
-  firebase_auth_mocks: ^0.8.2
-  fake_cloud_firestore: ^1.2.1
+  firebase_auth_mocks: ^0.9.0
+  fake_cloud_firestore: ^2.0.1
   json_annotation: ^4.5.0
   flutter_bloc: ^8.0.1
   bloc_concurrency: ^0.2.0
   rxdart: ^0.27.3
-  firebase_storage: ^10.2.17
-  cloud_functions: ^3.2.16
-  firebase_crashlytics: ^2.8.1
-  firebase_messaging: ^11.4.2
+  firebase_storage: ^11.0.4
+  cloud_functions: ^4.0.3
+  firebase_crashlytics: ^3.0.4
+  firebase_messaging: ^14.0.4
   dio: ^4.0.6
 
   raver_common:
