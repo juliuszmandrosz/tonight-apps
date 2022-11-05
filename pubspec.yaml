@@ -14,17 +14,17 @@ dependencies:
   freezed_annotation: ^2.0.3
   equatable: ^2.0.3
   dartz: ^0.10.1
-  firebase_core: ^1.14.0
-  cloud_firestore: ^3.1.11
-  firebase_auth: ^3.3.13
+  firebase_core: ^2.1.1
+  cloud_firestore: ^4.0.4
+  firebase_auth: ^4.1.1
   logger: ^1.1.0
   uuid: ^3.0.6
   json_serializable: ^6.1.5
-  cloud_functions: ^3.2.14
+  cloud_functions: ^4.0.3
   flutter_stripe: ^4.0.0
   random_string: ^2.3.1
   dio: ^4.0.6
-  firebase_crashlytics: ^2.8.1
+  firebase_crashlytics: ^3.0.4
   json_annotation: ^4.4.0
   flutter_dotenv: ^5.0.2
 
