@@ -14,16 +14,16 @@ dependencies:
   bloc: ^8.0.3
   dartz: ^0.10.1
   logger: ^1.1.0
-  firebase_core: ^1.13.1
-  firebase_auth: ^3.3.11
+  firebase_core: ^2.1.1
+  firebase_auth: ^4.1.1
   google_sign_in: ^5.2.4
   intl: ^0.17.0
   freezed_annotation: ^2.0.3
-  cloud_functions: ^3.2.11
+  cloud_functions: ^4.0.3
   formz: ^0.4.1
   equatable: ^2.0.3
   json_serializable: ^6.1.5
-  firebase_crashlytics: ^2.8.1
+  firebase_crashlytics: ^3.0.4
   dio: ^4.0.6
   sign_in_with_apple: ^4.0.0
   crypto: ^3.0.2
