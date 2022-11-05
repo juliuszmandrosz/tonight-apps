@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ClubFilters {
   PhraseFilter get phraseFilter => throw _privateConstructorUsedError;
+  MaxDistanceFilter get maxDistanceFilter => throw _privateConstructorUsedError;
+  CurrencyFilter get currencyFilter => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ClubFiltersCopyWith<ClubFilters> get copyWith =>
@@ -28,7 +30,10 @@ abstract class $ClubFiltersCopyWith<$Res> {
   factory $ClubFiltersCopyWith(
           ClubFilters value, $Res Function(ClubFilters) then) =
       _$ClubFiltersCopyWithImpl<$Res>;
-  $Res call({PhraseFilter phraseFilter});
+  $Res call(
+      {PhraseFilter phraseFilter,
+      MaxDistanceFilter maxDistanceFilter,
+      CurrencyFilter currencyFilter});
 }
 
 /// @nodoc
@@ -42,12 +47,22 @@ class _$ClubFiltersCopyWithImpl<$Res> implements $ClubFiltersCopyWith<$Res> {
   @override
   $Res call({
     Object? phraseFilter = freezed,
+    Object? maxDistanceFilter = freezed,
+    Object? currencyFilter = freezed,
   }) {
     return _then(_value.copyWith(
       phraseFilter: phraseFilter == freezed
           ? _value.phraseFilter
           : phraseFilter // ignore: cast_nullable_to_non_nullable
               as PhraseFilter,
+      maxDistanceFilter: maxDistanceFilter == freezed
+          ? _value.maxDistanceFilter
+          : maxDistanceFilter // ignore: cast_nullable_to_non_nullable
+              as MaxDistanceFilter,
+      currencyFilter: currencyFilter == freezed
+          ? _value.currencyFilter
+          : currencyFilter // ignore: cast_nullable_to_non_nullable
+              as CurrencyFilter,
     ));
   }
 }
@@ -59,7 +74,10 @@ abstract class _$$_ClubFilterCopyWith<$Res>
           _$_ClubFilter value, $Res Function(_$_ClubFilter) then) =
       __$$_ClubFilterCopyWithImpl<$Res>;
   @override
-  $Res call({PhraseFilter phraseFilter});
+  $Res call(
+      {PhraseFilter phraseFilter,
+      MaxDistanceFilter maxDistanceFilter,
+      CurrencyFilter currencyFilter});
 }
 
 /// @nodoc
@@ -75,12 +93,22 @@ class __$$_ClubFilterCopyWithImpl<$Res> extends _$ClubFiltersCopyWithImpl<$Res>
   @override
   $Res call({
     Object? phraseFilter = freezed,
+    Object? maxDistanceFilter = freezed,
+    Object? currencyFilter = freezed,
   }) {
     return _then(_$_ClubFilter(
       phraseFilter: phraseFilter == freezed
           ? _value.phraseFilter
           : phraseFilter // ignore: cast_nullable_to_non_nullable
               as PhraseFilter,
+      maxDistanceFilter: maxDistanceFilter == freezed
+          ? _value.maxDistanceFilter
+          : maxDistanceFilter // ignore: cast_nullable_to_non_nullable
+              as MaxDistanceFilter,
+      currencyFilter: currencyFilter == freezed
+          ? _value.currencyFilter
+          : currencyFilter // ignore: cast_nullable_to_non_nullable
+              as CurrencyFilter,
     ));
   }
 }
@@ -88,14 +116,22 @@ class __$$_ClubFilterCopyWithImpl<$Res> extends _$ClubFiltersCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ClubFilter extends _ClubFilter {
-  _$_ClubFilter({required this.phraseFilter}) : super._();
+  _$_ClubFilter(
+      {required this.phraseFilter,
+      required this.maxDistanceFilter,
+      required this.currencyFilter})
+      : super._();
 
   @override
   final PhraseFilter phraseFilter;
+  @override
+  final MaxDistanceFilter maxDistanceFilter;
+  @override
+  final CurrencyFilter currencyFilter;
 
   @override
   String toString() {
-    return 'ClubFilters(phraseFilter: $phraseFilter)';
+    return 'ClubFilters(phraseFilter: $phraseFilter, maxDistanceFilter: $maxDistanceFilter, currencyFilter: $currencyFilter)';
   }
 
   @override
@@ -104,12 +140,19 @@ class _$_ClubFilter extends _ClubFilter {
         (other.runtimeType == runtimeType &&
             other is _$_ClubFilter &&
             const DeepCollectionEquality()
-                .equals(other.phraseFilter, phraseFilter));
+                .equals(other.phraseFilter, phraseFilter) &&
+            const DeepCollectionEquality()
+                .equals(other.maxDistanceFilter, maxDistanceFilter) &&
+            const DeepCollectionEquality()
+                .equals(other.currencyFilter, currencyFilter));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(phraseFilter));
+      runtimeType,
+      const DeepCollectionEquality().hash(phraseFilter),
+      const DeepCollectionEquality().hash(maxDistanceFilter),
+      const DeepCollectionEquality().hash(currencyFilter));
 
   @JsonKey(ignore: true)
   @override
@@ -118,12 +161,18 @@ class _$_ClubFilter extends _ClubFilter {
 }
 
 abstract class _ClubFilter extends ClubFilters {
-  factory _ClubFilter({required final PhraseFilter phraseFilter}) =
-      _$_ClubFilter;
+  factory _ClubFilter(
+      {required final PhraseFilter phraseFilter,
+      required final MaxDistanceFilter maxDistanceFilter,
+      required final CurrencyFilter currencyFilter}) = _$_ClubFilter;
   _ClubFilter._() : super._();
 
   @override
   PhraseFilter get phraseFilter;
+  @override
+  MaxDistanceFilter get maxDistanceFilter;
+  @override
+  CurrencyFilter get currencyFilter;
   @override
   @JsonKey(ignore: true)
   _$$_ClubFilterCopyWith<_$_ClubFilter> get copyWith =>

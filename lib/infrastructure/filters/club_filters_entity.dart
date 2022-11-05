@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_clubs/infrastructure/filters/filter/ifilter.dart';
+import 'package:raver_clubs/infrastructure/filters/filter/currency_filter.dart';
+import 'package:raver_clubs/infrastructure/filters/filter/max_distance_filter.dart';
 import 'package:raver_clubs/infrastructure/filters/filter/phrase_filter.dart';
 
 part 'club_filters_entity.freezed.dart';
@@ -10,22 +11,30 @@ abstract class ClubFilters with _$ClubFilters {
 
   factory ClubFilters({
     required PhraseFilter phraseFilter,
+    required MaxDistanceFilter maxDistanceFilter,
+    required CurrencyFilter currencyFilter,
   }) = _ClubFilter;
 
   factory ClubFilters.empty() => ClubFilters(
-        phraseFilter: PhraseFilter(phrase: ""),
+        phraseFilter: PhraseFilter(phrase: ''),
+        maxDistanceFilter: MaxDistanceFilter(
+          enabled: true,
+          userLocation: {},
+          maxDistance: 50,
+        ),
+        currencyFilter: CurrencyFilter(currency: ''),
       );
 
   String buildFilters() {
-    var filterBy = '';
-    final filterList = <IFilter>[];
+    var query = '';
+    final filterList = [maxDistanceFilter, currencyFilter];
     for (final filter in filterList) {
-      final previousQuery = filterBy;
-      filterBy = filter.buildFilters(filterBy);
-      if (filter != filterList.last && previousQuery != filterBy) {
-        filterBy += ' && ';
+      final previousQuery = query;
+      query = filter.buildFilters(query);
+      if (filter != filterList.last && previousQuery != query) {
+        query += ' && ';
       }
     }
-    return filterBy;
+    return query;
   }
 }
