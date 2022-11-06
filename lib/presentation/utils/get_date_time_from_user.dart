@@ -9,7 +9,7 @@ Future<DateTime?> getDateTimeFromUser(
   final date = await showDatePicker(
     context: context,
     initialDate: initialDate ?? DateTime.now(),
-    firstDate: DateTime.now(),
+    firstDate: initialDate ?? DateTime.now(),
     lastDate: DateTime.now().add(
       const Duration(days: 150),
     ),
