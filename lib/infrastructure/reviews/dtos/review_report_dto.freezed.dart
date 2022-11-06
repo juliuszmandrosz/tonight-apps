@@ -37,7 +37,8 @@ mixin _$ReviewReportDto {
 abstract class $ReviewReportDtoCopyWith<$Res> {
   factory $ReviewReportDtoCopyWith(
           ReviewReportDto value, $Res Function(ReviewReportDto) then) =
-      _$ReviewReportDtoCopyWithImpl<$Res>;
+      _$ReviewReportDtoCopyWithImpl<$Res, ReviewReportDto>;
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String reviewId,
@@ -46,39 +47,41 @@ abstract class $ReviewReportDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ReviewReportDtoCopyWithImpl<$Res>
+class _$ReviewReportDtoCopyWithImpl<$Res, $Val extends ReviewReportDto>
     implements $ReviewReportDtoCopyWith<$Res> {
   _$ReviewReportDtoCopyWithImpl(this._value, this._then);
 
-  final ReviewReportDto _value;
   // ignore: unused_field
-  final $Res Function(ReviewReportDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? reviewId = freezed,
-    Object? reporterId = freezed,
-    Object? reportedAt = freezed,
+    Object? reviewId = null,
+    Object? reporterId = null,
+    Object? reportedAt = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      reviewId: reviewId == freezed
+      reviewId: null == reviewId
           ? _value.reviewId
           : reviewId // ignore: cast_nullable_to_non_nullable
               as String,
-      reporterId: reporterId == freezed
+      reporterId: null == reporterId
           ? _value.reporterId
           : reporterId // ignore: cast_nullable_to_non_nullable
               as String,
-      reportedAt: reportedAt == freezed
+      reportedAt: null == reportedAt
           ? _value.reportedAt
           : reportedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-    ));
+    ) as $Val);
   }
 }
 
@@ -89,6 +92,7 @@ abstract class _$$_ReviewReportDtoCopyWith<$Res>
           _$_ReviewReportDto value, $Res Function(_$_ReviewReportDto) then) =
       __$$_ReviewReportDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String reviewId,
@@ -98,36 +102,34 @@ abstract class _$$_ReviewReportDtoCopyWith<$Res>
 
 /// @nodoc
 class __$$_ReviewReportDtoCopyWithImpl<$Res>
-    extends _$ReviewReportDtoCopyWithImpl<$Res>
+    extends _$ReviewReportDtoCopyWithImpl<$Res, _$_ReviewReportDto>
     implements _$$_ReviewReportDtoCopyWith<$Res> {
   __$$_ReviewReportDtoCopyWithImpl(
       _$_ReviewReportDto _value, $Res Function(_$_ReviewReportDto) _then)
-      : super(_value, (v) => _then(v as _$_ReviewReportDto));
+      : super(_value, _then);
 
-  @override
-  _$_ReviewReportDto get _value => super._value as _$_ReviewReportDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? reviewId = freezed,
-    Object? reporterId = freezed,
-    Object? reportedAt = freezed,
+    Object? reviewId = null,
+    Object? reporterId = null,
+    Object? reportedAt = null,
   }) {
     return _then(_$_ReviewReportDto(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      reviewId: reviewId == freezed
+      reviewId: null == reviewId
           ? _value.reviewId
           : reviewId // ignore: cast_nullable_to_non_nullable
               as String,
-      reporterId: reporterId == freezed
+      reporterId: null == reporterId
           ? _value.reporterId
           : reporterId // ignore: cast_nullable_to_non_nullable
               as String,
-      reportedAt: reportedAt == freezed
+      reportedAt: null == reportedAt
           ? _value.reportedAt
           : reportedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
@@ -169,25 +171,23 @@ class _$_ReviewReportDto extends _ReviewReportDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ReviewReportDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.reviewId, reviewId) &&
-            const DeepCollectionEquality()
-                .equals(other.reporterId, reporterId) &&
-            const DeepCollectionEquality()
-                .equals(other.reportedAt, reportedAt));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.reviewId, reviewId) ||
+                other.reviewId == reviewId) &&
+            (identical(other.reporterId, reporterId) ||
+                other.reporterId == reporterId) &&
+            (identical(other.reportedAt, reportedAt) ||
+                other.reportedAt == reportedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(reviewId),
-      const DeepCollectionEquality().hash(reporterId),
-      const DeepCollectionEquality().hash(reportedAt));
+  int get hashCode =>
+      Object.hash(runtimeType, id, reviewId, reporterId, reportedAt);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ReviewReportDtoCopyWith<_$_ReviewReportDto> get copyWith =>
       __$$_ReviewReportDtoCopyWithImpl<_$_ReviewReportDto>(this, _$identity);
 

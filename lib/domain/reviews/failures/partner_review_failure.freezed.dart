@@ -25,9 +25,9 @@ mixin _$PartnerReviewFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? reportExists,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? reportExists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,9 +47,9 @@ mixin _$PartnerReviewFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_ReportExists value)? reportExists,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_ReportExists value)? reportExists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,17 +66,19 @@ mixin _$PartnerReviewFailure {
 abstract class $PartnerReviewFailureCopyWith<$Res> {
   factory $PartnerReviewFailureCopyWith(PartnerReviewFailure value,
           $Res Function(PartnerReviewFailure) then) =
-      _$PartnerReviewFailureCopyWithImpl<$Res>;
+      _$PartnerReviewFailureCopyWithImpl<$Res, PartnerReviewFailure>;
 }
 
 /// @nodoc
-class _$PartnerReviewFailureCopyWithImpl<$Res>
+class _$PartnerReviewFailureCopyWithImpl<$Res,
+        $Val extends PartnerReviewFailure>
     implements $PartnerReviewFailureCopyWith<$Res> {
   _$PartnerReviewFailureCopyWithImpl(this._value, this._then);
 
-  final PartnerReviewFailure _value;
   // ignore: unused_field
-  final $Res Function(PartnerReviewFailure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -88,14 +90,11 @@ abstract class _$$_UnexpectedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$PartnerReviewFailureCopyWithImpl<$Res>
+    extends _$PartnerReviewFailureCopyWithImpl<$Res, _$_Unexpected>
     implements _$$_UnexpectedCopyWith<$Res> {
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
-      : super(_value, (v) => _then(v as _$_Unexpected));
-
-  @override
-  _$_Unexpected get _value => super._value as _$_Unexpected;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -130,9 +129,9 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? reportExists,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? reportExists,
   }) {
     return unexpected?.call();
   }
@@ -164,9 +163,9 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_ReportExists value)? reportExists,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_ReportExists value)? reportExists,
   }) {
     return unexpected?.call(this);
   }
@@ -199,14 +198,11 @@ abstract class _$$_PermissionDeniedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PermissionDeniedCopyWithImpl<$Res>
-    extends _$PartnerReviewFailureCopyWithImpl<$Res>
+    extends _$PartnerReviewFailureCopyWithImpl<$Res, _$_PermissionDenied>
     implements _$$_PermissionDeniedCopyWith<$Res> {
   __$$_PermissionDeniedCopyWithImpl(
       _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
-      : super(_value, (v) => _then(v as _$_PermissionDenied));
-
-  @override
-  _$_PermissionDenied get _value => super._value as _$_PermissionDenied;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -241,9 +237,9 @@ class _$_PermissionDenied implements _PermissionDenied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? reportExists,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? reportExists,
   }) {
     return permissionDenied?.call();
   }
@@ -275,9 +271,9 @@ class _$_PermissionDenied implements _PermissionDenied {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_ReportExists value)? reportExists,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_ReportExists value)? reportExists,
   }) {
     return permissionDenied?.call(this);
   }
@@ -310,14 +306,11 @@ abstract class _$$_ReportExistsCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ReportExistsCopyWithImpl<$Res>
-    extends _$PartnerReviewFailureCopyWithImpl<$Res>
+    extends _$PartnerReviewFailureCopyWithImpl<$Res, _$_ReportExists>
     implements _$$_ReportExistsCopyWith<$Res> {
   __$$_ReportExistsCopyWithImpl(
       _$_ReportExists _value, $Res Function(_$_ReportExists) _then)
-      : super(_value, (v) => _then(v as _$_ReportExists));
-
-  @override
-  _$_ReportExists get _value => super._value as _$_ReportExists;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -352,9 +345,9 @@ class _$_ReportExists implements _ReportExists {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? reportExists,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? reportExists,
   }) {
     return reportExists?.call();
   }
@@ -386,9 +379,9 @@ class _$_ReportExists implements _ReportExists {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_ReportExists value)? reportExists,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_ReportExists value)? reportExists,
   }) {
     return reportExists?.call(this);
   }

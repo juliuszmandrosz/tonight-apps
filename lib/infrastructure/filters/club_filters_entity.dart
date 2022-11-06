@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:raver_clubs/infrastructure/filters/filter/city_filter.dart';
 import 'package:raver_clubs/infrastructure/filters/filter/currency_filter.dart';
 import 'package:raver_clubs/infrastructure/filters/filter/max_distance_filter.dart';
 import 'package:raver_clubs/infrastructure/filters/filter/phrase_filter.dart';
@@ -13,6 +14,7 @@ abstract class ClubFilters with _$ClubFilters {
     required PhraseFilter phraseFilter,
     required MaxDistanceFilter maxDistanceFilter,
     required CurrencyFilter currencyFilter,
+    required CityFilter cityFilter,
   }) = _ClubFilter;
 
   factory ClubFilters.empty() => ClubFilters(
@@ -23,6 +25,7 @@ abstract class ClubFilters with _$ClubFilters {
           maxDistance: 50,
         ),
         currencyFilter: CurrencyFilter(currency: ''),
+        cityFilter: CityFilter(cityId: ''),
       );
 
   String buildFilters() {

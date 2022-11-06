@@ -25,9 +25,9 @@ mixin _$UserClubFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? noConnection,
-    TResult Function()? permissionDenied,
+    TResult? Function()? unexpected,
+    TResult? Function()? noConnection,
+    TResult? Function()? permissionDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,9 +47,9 @@ mixin _$UserClubFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_NoConnection value)? noConnection,
-    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,17 +66,18 @@ mixin _$UserClubFailure {
 abstract class $UserClubFailureCopyWith<$Res> {
   factory $UserClubFailureCopyWith(
           UserClubFailure value, $Res Function(UserClubFailure) then) =
-      _$UserClubFailureCopyWithImpl<$Res>;
+      _$UserClubFailureCopyWithImpl<$Res, UserClubFailure>;
 }
 
 /// @nodoc
-class _$UserClubFailureCopyWithImpl<$Res>
+class _$UserClubFailureCopyWithImpl<$Res, $Val extends UserClubFailure>
     implements $UserClubFailureCopyWith<$Res> {
   _$UserClubFailureCopyWithImpl(this._value, this._then);
 
-  final UserClubFailure _value;
   // ignore: unused_field
-  final $Res Function(UserClubFailure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -88,14 +89,11 @@ abstract class _$$_UnexpectedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$UserClubFailureCopyWithImpl<$Res>
+    extends _$UserClubFailureCopyWithImpl<$Res, _$_Unexpected>
     implements _$$_UnexpectedCopyWith<$Res> {
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
-      : super(_value, (v) => _then(v as _$_Unexpected));
-
-  @override
-  _$_Unexpected get _value => super._value as _$_Unexpected;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -130,9 +128,9 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? noConnection,
-    TResult Function()? permissionDenied,
+    TResult? Function()? unexpected,
+    TResult? Function()? noConnection,
+    TResult? Function()? permissionDenied,
   }) {
     return unexpected?.call();
   }
@@ -164,9 +162,9 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_NoConnection value)? noConnection,
-    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
   }) {
     return unexpected?.call(this);
   }
@@ -199,14 +197,11 @@ abstract class _$$_NoConnectionCopyWith<$Res> {
 
 /// @nodoc
 class __$$_NoConnectionCopyWithImpl<$Res>
-    extends _$UserClubFailureCopyWithImpl<$Res>
+    extends _$UserClubFailureCopyWithImpl<$Res, _$_NoConnection>
     implements _$$_NoConnectionCopyWith<$Res> {
   __$$_NoConnectionCopyWithImpl(
       _$_NoConnection _value, $Res Function(_$_NoConnection) _then)
-      : super(_value, (v) => _then(v as _$_NoConnection));
-
-  @override
-  _$_NoConnection get _value => super._value as _$_NoConnection;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -241,9 +236,9 @@ class _$_NoConnection implements _NoConnection {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? noConnection,
-    TResult Function()? permissionDenied,
+    TResult? Function()? unexpected,
+    TResult? Function()? noConnection,
+    TResult? Function()? permissionDenied,
   }) {
     return noConnection?.call();
   }
@@ -275,9 +270,9 @@ class _$_NoConnection implements _NoConnection {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_NoConnection value)? noConnection,
-    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
   }) {
     return noConnection?.call(this);
   }
@@ -310,14 +305,11 @@ abstract class _$$_PermissionDeniedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PermissionDeniedCopyWithImpl<$Res>
-    extends _$UserClubFailureCopyWithImpl<$Res>
+    extends _$UserClubFailureCopyWithImpl<$Res, _$_PermissionDenied>
     implements _$$_PermissionDeniedCopyWith<$Res> {
   __$$_PermissionDeniedCopyWithImpl(
       _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
-      : super(_value, (v) => _then(v as _$_PermissionDenied));
-
-  @override
-  _$_PermissionDenied get _value => super._value as _$_PermissionDenied;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -352,9 +344,9 @@ class _$_PermissionDenied implements _PermissionDenied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? noConnection,
-    TResult Function()? permissionDenied,
+    TResult? Function()? unexpected,
+    TResult? Function()? noConnection,
+    TResult? Function()? permissionDenied,
   }) {
     return permissionDenied?.call();
   }
@@ -386,9 +378,9 @@ class _$_PermissionDenied implements _PermissionDenied {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_NoConnection value)? noConnection,
-    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
   }) {
     return permissionDenied?.call(this);
   }

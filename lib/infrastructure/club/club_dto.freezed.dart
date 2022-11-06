@@ -43,7 +43,8 @@ mixin _$ClubDto {
 /// @nodoc
 abstract class $ClubDtoCopyWith<$Res> {
   factory $ClubDtoCopyWith(ClubDto value, $Res Function(ClubDto) then) =
-      _$ClubDtoCopyWithImpl<$Res>;
+      _$ClubDtoCopyWithImpl<$Res, ClubDto>;
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String clubName,
@@ -60,78 +61,81 @@ abstract class $ClubDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClubDtoCopyWithImpl<$Res> implements $ClubDtoCopyWith<$Res> {
+class _$ClubDtoCopyWithImpl<$Res, $Val extends ClubDto>
+    implements $ClubDtoCopyWith<$Res> {
   _$ClubDtoCopyWithImpl(this._value, this._then);
 
-  final ClubDto _value;
   // ignore: unused_field
-  final $Res Function(ClubDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? clubName = freezed,
-    Object? clubImageUrl = freezed,
-    Object? reviewCount = freezed,
-    Object? reviewAvg = freezed,
-    Object? locationString = freezed,
-    Object? cityId = freezed,
-    Object? acceptedCurrency = freezed,
-    Object? phoneNumber = freezed,
-    Object? location = freezed,
-    Object? socialMedia = freezed,
+    Object? clubName = null,
+    Object? clubImageUrl = null,
+    Object? reviewCount = null,
+    Object? reviewAvg = null,
+    Object? locationString = null,
+    Object? cityId = null,
+    Object? acceptedCurrency = null,
+    Object? phoneNumber = null,
+    Object? location = null,
+    Object? socialMedia = null,
     Object? aboutUs = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      clubName: clubName == freezed
+      clubName: null == clubName
           ? _value.clubName
           : clubName // ignore: cast_nullable_to_non_nullable
               as String,
-      clubImageUrl: clubImageUrl == freezed
+      clubImageUrl: null == clubImageUrl
           ? _value.clubImageUrl
           : clubImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      reviewCount: reviewCount == freezed
+      reviewCount: null == reviewCount
           ? _value.reviewCount
           : reviewCount // ignore: cast_nullable_to_non_nullable
               as int,
-      reviewAvg: reviewAvg == freezed
+      reviewAvg: null == reviewAvg
           ? _value.reviewAvg
           : reviewAvg // ignore: cast_nullable_to_non_nullable
               as double,
-      locationString: locationString == freezed
+      locationString: null == locationString
           ? _value.locationString
           : locationString // ignore: cast_nullable_to_non_nullable
               as String,
-      cityId: cityId == freezed
+      cityId: null == cityId
           ? _value.cityId
           : cityId // ignore: cast_nullable_to_non_nullable
               as String,
-      acceptedCurrency: acceptedCurrency == freezed
+      acceptedCurrency: null == acceptedCurrency
           ? _value.acceptedCurrency
           : acceptedCurrency // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      location: location == freezed
+      location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as Map<String, double>,
-      socialMedia: socialMedia == freezed
+      socialMedia: null == socialMedia
           ? _value.socialMedia
           : socialMedia // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
-      aboutUs: aboutUs == freezed
+      aboutUs: freezed == aboutUs
           ? _value.aboutUs
           : aboutUs // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -141,6 +145,7 @@ abstract class _$$_ClubDtoCopyWith<$Res> implements $ClubDtoCopyWith<$Res> {
           _$_ClubDto value, $Res Function(_$_ClubDto) then) =
       __$$_ClubDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String clubName,
@@ -157,75 +162,74 @@ abstract class _$$_ClubDtoCopyWith<$Res> implements $ClubDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ClubDtoCopyWithImpl<$Res> extends _$ClubDtoCopyWithImpl<$Res>
+class __$$_ClubDtoCopyWithImpl<$Res>
+    extends _$ClubDtoCopyWithImpl<$Res, _$_ClubDto>
     implements _$$_ClubDtoCopyWith<$Res> {
   __$$_ClubDtoCopyWithImpl(_$_ClubDto _value, $Res Function(_$_ClubDto) _then)
-      : super(_value, (v) => _then(v as _$_ClubDto));
+      : super(_value, _then);
 
-  @override
-  _$_ClubDto get _value => super._value as _$_ClubDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? clubName = freezed,
-    Object? clubImageUrl = freezed,
-    Object? reviewCount = freezed,
-    Object? reviewAvg = freezed,
-    Object? locationString = freezed,
-    Object? cityId = freezed,
-    Object? acceptedCurrency = freezed,
-    Object? phoneNumber = freezed,
-    Object? location = freezed,
-    Object? socialMedia = freezed,
+    Object? clubName = null,
+    Object? clubImageUrl = null,
+    Object? reviewCount = null,
+    Object? reviewAvg = null,
+    Object? locationString = null,
+    Object? cityId = null,
+    Object? acceptedCurrency = null,
+    Object? phoneNumber = null,
+    Object? location = null,
+    Object? socialMedia = null,
     Object? aboutUs = freezed,
   }) {
     return _then(_$_ClubDto(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      clubName: clubName == freezed
+      clubName: null == clubName
           ? _value.clubName
           : clubName // ignore: cast_nullable_to_non_nullable
               as String,
-      clubImageUrl: clubImageUrl == freezed
+      clubImageUrl: null == clubImageUrl
           ? _value.clubImageUrl
           : clubImageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      reviewCount: reviewCount == freezed
+      reviewCount: null == reviewCount
           ? _value.reviewCount
           : reviewCount // ignore: cast_nullable_to_non_nullable
               as int,
-      reviewAvg: reviewAvg == freezed
+      reviewAvg: null == reviewAvg
           ? _value.reviewAvg
           : reviewAvg // ignore: cast_nullable_to_non_nullable
               as double,
-      locationString: locationString == freezed
+      locationString: null == locationString
           ? _value.locationString
           : locationString // ignore: cast_nullable_to_non_nullable
               as String,
-      cityId: cityId == freezed
+      cityId: null == cityId
           ? _value.cityId
           : cityId // ignore: cast_nullable_to_non_nullable
               as String,
-      acceptedCurrency: acceptedCurrency == freezed
+      acceptedCurrency: null == acceptedCurrency
           ? _value.acceptedCurrency
           : acceptedCurrency // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      location: location == freezed
+      location: null == location
           ? _value._location
           : location // ignore: cast_nullable_to_non_nullable
               as Map<String, double>,
-      socialMedia: socialMedia == freezed
+      socialMedia: null == socialMedia
           ? _value._socialMedia
           : socialMedia // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
-      aboutUs: aboutUs == freezed
+      aboutUs: freezed == aboutUs
           ? _value.aboutUs
           : aboutUs // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -307,45 +311,48 @@ class _$_ClubDto extends _ClubDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClubDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.clubName, clubName) &&
-            const DeepCollectionEquality()
-                .equals(other.clubImageUrl, clubImageUrl) &&
-            const DeepCollectionEquality()
-                .equals(other.reviewCount, reviewCount) &&
-            const DeepCollectionEquality().equals(other.reviewAvg, reviewAvg) &&
-            const DeepCollectionEquality()
-                .equals(other.locationString, locationString) &&
-            const DeepCollectionEquality().equals(other.cityId, cityId) &&
-            const DeepCollectionEquality()
-                .equals(other.acceptedCurrency, acceptedCurrency) &&
-            const DeepCollectionEquality()
-                .equals(other.phoneNumber, phoneNumber) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.clubName, clubName) ||
+                other.clubName == clubName) &&
+            (identical(other.clubImageUrl, clubImageUrl) ||
+                other.clubImageUrl == clubImageUrl) &&
+            (identical(other.reviewCount, reviewCount) ||
+                other.reviewCount == reviewCount) &&
+            (identical(other.reviewAvg, reviewAvg) ||
+                other.reviewAvg == reviewAvg) &&
+            (identical(other.locationString, locationString) ||
+                other.locationString == locationString) &&
+            (identical(other.cityId, cityId) || other.cityId == cityId) &&
+            (identical(other.acceptedCurrency, acceptedCurrency) ||
+                other.acceptedCurrency == acceptedCurrency) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
             const DeepCollectionEquality().equals(other._location, _location) &&
             const DeepCollectionEquality()
                 .equals(other._socialMedia, _socialMedia) &&
-            const DeepCollectionEquality().equals(other.aboutUs, aboutUs));
+            (identical(other.aboutUs, aboutUs) || other.aboutUs == aboutUs));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(clubName),
-      const DeepCollectionEquality().hash(clubImageUrl),
-      const DeepCollectionEquality().hash(reviewCount),
-      const DeepCollectionEquality().hash(reviewAvg),
-      const DeepCollectionEquality().hash(locationString),
-      const DeepCollectionEquality().hash(cityId),
-      const DeepCollectionEquality().hash(acceptedCurrency),
-      const DeepCollectionEquality().hash(phoneNumber),
+      id,
+      clubName,
+      clubImageUrl,
+      reviewCount,
+      reviewAvg,
+      locationString,
+      cityId,
+      acceptedCurrency,
+      phoneNumber,
       const DeepCollectionEquality().hash(_location),
       const DeepCollectionEquality().hash(_socialMedia),
-      const DeepCollectionEquality().hash(aboutUs));
+      aboutUs);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClubDtoCopyWith<_$_ClubDto> get copyWith =>
       __$$_ClubDtoCopyWithImpl<_$_ClubDto>(this, _$identity);
 

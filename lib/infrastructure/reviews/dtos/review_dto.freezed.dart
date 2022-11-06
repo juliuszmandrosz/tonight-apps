@@ -41,7 +41,8 @@ mixin _$ReviewDto {
 /// @nodoc
 abstract class $ReviewDtoCopyWith<$Res> {
   factory $ReviewDtoCopyWith(ReviewDto value, $Res Function(ReviewDto) then) =
-      _$ReviewDtoCopyWithImpl<$Res>;
+      _$ReviewDtoCopyWithImpl<$Res, ReviewDto>;
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String userOpinion,
@@ -55,63 +56,66 @@ abstract class $ReviewDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ReviewDtoCopyWithImpl<$Res> implements $ReviewDtoCopyWith<$Res> {
+class _$ReviewDtoCopyWithImpl<$Res, $Val extends ReviewDto>
+    implements $ReviewDtoCopyWith<$Res> {
   _$ReviewDtoCopyWithImpl(this._value, this._then);
 
-  final ReviewDto _value;
   // ignore: unused_field
-  final $Res Function(ReviewDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? userOpinion = freezed,
-    Object? userRate = freezed,
-    Object? userId = freezed,
-    Object? username = freezed,
-    Object? eventId = freezed,
-    Object? eventName = freezed,
-    Object? ticketId = freezed,
-    Object? dateAdded = freezed,
+    Object? userOpinion = null,
+    Object? userRate = null,
+    Object? userId = null,
+    Object? username = null,
+    Object? eventId = null,
+    Object? eventName = null,
+    Object? ticketId = null,
+    Object? dateAdded = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      userOpinion: userOpinion == freezed
+      userOpinion: null == userOpinion
           ? _value.userOpinion
           : userOpinion // ignore: cast_nullable_to_non_nullable
               as String,
-      userRate: userRate == freezed
+      userRate: null == userRate
           ? _value.userRate
           : userRate // ignore: cast_nullable_to_non_nullable
               as double,
-      userId: userId == freezed
+      userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      username: username == freezed
+      username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
-      eventId: eventId == freezed
+      eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
               as String,
-      eventName: eventName == freezed
+      eventName: null == eventName
           ? _value.eventName
           : eventName // ignore: cast_nullable_to_non_nullable
               as String,
-      ticketId: ticketId == freezed
+      ticketId: null == ticketId
           ? _value.ticketId
           : ticketId // ignore: cast_nullable_to_non_nullable
               as String,
-      dateAdded: dateAdded == freezed
+      dateAdded: null == dateAdded
           ? _value.dateAdded
           : dateAdded // ignore: cast_nullable_to_non_nullable
               as DateTime,
-    ));
+    ) as $Val);
   }
 }
 
@@ -121,6 +125,7 @@ abstract class _$$_ReviewDtoCopyWith<$Res> implements $ReviewDtoCopyWith<$Res> {
           _$_ReviewDto value, $Res Function(_$_ReviewDto) then) =
       __$$_ReviewDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String userOpinion,
@@ -134,61 +139,60 @@ abstract class _$$_ReviewDtoCopyWith<$Res> implements $ReviewDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ReviewDtoCopyWithImpl<$Res> extends _$ReviewDtoCopyWithImpl<$Res>
+class __$$_ReviewDtoCopyWithImpl<$Res>
+    extends _$ReviewDtoCopyWithImpl<$Res, _$_ReviewDto>
     implements _$$_ReviewDtoCopyWith<$Res> {
   __$$_ReviewDtoCopyWithImpl(
       _$_ReviewDto _value, $Res Function(_$_ReviewDto) _then)
-      : super(_value, (v) => _then(v as _$_ReviewDto));
+      : super(_value, _then);
 
-  @override
-  _$_ReviewDto get _value => super._value as _$_ReviewDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? userOpinion = freezed,
-    Object? userRate = freezed,
-    Object? userId = freezed,
-    Object? username = freezed,
-    Object? eventId = freezed,
-    Object? eventName = freezed,
-    Object? ticketId = freezed,
-    Object? dateAdded = freezed,
+    Object? userOpinion = null,
+    Object? userRate = null,
+    Object? userId = null,
+    Object? username = null,
+    Object? eventId = null,
+    Object? eventName = null,
+    Object? ticketId = null,
+    Object? dateAdded = null,
   }) {
     return _then(_$_ReviewDto(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      userOpinion: userOpinion == freezed
+      userOpinion: null == userOpinion
           ? _value.userOpinion
           : userOpinion // ignore: cast_nullable_to_non_nullable
               as String,
-      userRate: userRate == freezed
+      userRate: null == userRate
           ? _value.userRate
           : userRate // ignore: cast_nullable_to_non_nullable
               as double,
-      userId: userId == freezed
+      userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      username: username == freezed
+      username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
-      eventId: eventId == freezed
+      eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
               as String,
-      eventName: eventName == freezed
+      eventName: null == eventName
           ? _value.eventName
           : eventName // ignore: cast_nullable_to_non_nullable
               as String,
-      ticketId: ticketId == freezed
+      ticketId: null == ticketId
           ? _value.ticketId
           : ticketId // ignore: cast_nullable_to_non_nullable
               as String,
-      dateAdded: dateAdded == freezed
+      dateAdded: null == dateAdded
           ? _value.dateAdded
           : dateAdded // ignore: cast_nullable_to_non_nullable
               as DateTime,
@@ -245,34 +249,31 @@ class _$_ReviewDto extends _ReviewDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ReviewDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.userOpinion, userOpinion) &&
-            const DeepCollectionEquality().equals(other.userRate, userRate) &&
-            const DeepCollectionEquality().equals(other.userId, userId) &&
-            const DeepCollectionEquality().equals(other.username, username) &&
-            const DeepCollectionEquality().equals(other.eventId, eventId) &&
-            const DeepCollectionEquality().equals(other.eventName, eventName) &&
-            const DeepCollectionEquality().equals(other.ticketId, ticketId) &&
-            const DeepCollectionEquality().equals(other.dateAdded, dateAdded));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.userOpinion, userOpinion) ||
+                other.userOpinion == userOpinion) &&
+            (identical(other.userRate, userRate) ||
+                other.userRate == userRate) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.eventId, eventId) || other.eventId == eventId) &&
+            (identical(other.eventName, eventName) ||
+                other.eventName == eventName) &&
+            (identical(other.ticketId, ticketId) ||
+                other.ticketId == ticketId) &&
+            (identical(other.dateAdded, dateAdded) ||
+                other.dateAdded == dateAdded));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(userOpinion),
-      const DeepCollectionEquality().hash(userRate),
-      const DeepCollectionEquality().hash(userId),
-      const DeepCollectionEquality().hash(username),
-      const DeepCollectionEquality().hash(eventId),
-      const DeepCollectionEquality().hash(eventName),
-      const DeepCollectionEquality().hash(ticketId),
-      const DeepCollectionEquality().hash(dateAdded));
+  int get hashCode => Object.hash(runtimeType, id, userOpinion, userRate,
+      userId, username, eventId, eventName, ticketId, dateAdded);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ReviewDtoCopyWith<_$_ReviewDto> get copyWith =>
       __$$_ReviewDtoCopyWithImpl<_$_ReviewDto>(this, _$identity);
 

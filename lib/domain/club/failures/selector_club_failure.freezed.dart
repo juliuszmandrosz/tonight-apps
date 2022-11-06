@@ -25,9 +25,9 @@ mixin _$SelectorClubFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? invalidAccessCode,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? invalidAccessCode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,9 +47,9 @@ mixin _$SelectorClubFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,17 +66,18 @@ mixin _$SelectorClubFailure {
 abstract class $SelectorClubFailureCopyWith<$Res> {
   factory $SelectorClubFailureCopyWith(
           SelectorClubFailure value, $Res Function(SelectorClubFailure) then) =
-      _$SelectorClubFailureCopyWithImpl<$Res>;
+      _$SelectorClubFailureCopyWithImpl<$Res, SelectorClubFailure>;
 }
 
 /// @nodoc
-class _$SelectorClubFailureCopyWithImpl<$Res>
+class _$SelectorClubFailureCopyWithImpl<$Res, $Val extends SelectorClubFailure>
     implements $SelectorClubFailureCopyWith<$Res> {
   _$SelectorClubFailureCopyWithImpl(this._value, this._then);
 
-  final SelectorClubFailure _value;
   // ignore: unused_field
-  final $Res Function(SelectorClubFailure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -88,14 +89,11 @@ abstract class _$$_UnexpectedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$SelectorClubFailureCopyWithImpl<$Res>
+    extends _$SelectorClubFailureCopyWithImpl<$Res, _$_Unexpected>
     implements _$$_UnexpectedCopyWith<$Res> {
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
-      : super(_value, (v) => _then(v as _$_Unexpected));
-
-  @override
-  _$_Unexpected get _value => super._value as _$_Unexpected;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -130,9 +128,9 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? invalidAccessCode,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? invalidAccessCode,
   }) {
     return unexpected?.call();
   }
@@ -164,9 +162,9 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
   }) {
     return unexpected?.call(this);
   }
@@ -199,14 +197,11 @@ abstract class _$$_PermissionDeniedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PermissionDeniedCopyWithImpl<$Res>
-    extends _$SelectorClubFailureCopyWithImpl<$Res>
+    extends _$SelectorClubFailureCopyWithImpl<$Res, _$_PermissionDenied>
     implements _$$_PermissionDeniedCopyWith<$Res> {
   __$$_PermissionDeniedCopyWithImpl(
       _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
-      : super(_value, (v) => _then(v as _$_PermissionDenied));
-
-  @override
-  _$_PermissionDenied get _value => super._value as _$_PermissionDenied;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -241,9 +236,9 @@ class _$_PermissionDenied implements _PermissionDenied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? invalidAccessCode,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? invalidAccessCode,
   }) {
     return permissionDenied?.call();
   }
@@ -275,9 +270,9 @@ class _$_PermissionDenied implements _PermissionDenied {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
   }) {
     return permissionDenied?.call(this);
   }
@@ -310,14 +305,11 @@ abstract class _$$_InvalidAccessCodeCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InvalidAccessCodeCopyWithImpl<$Res>
-    extends _$SelectorClubFailureCopyWithImpl<$Res>
+    extends _$SelectorClubFailureCopyWithImpl<$Res, _$_InvalidAccessCode>
     implements _$$_InvalidAccessCodeCopyWith<$Res> {
   __$$_InvalidAccessCodeCopyWithImpl(
       _$_InvalidAccessCode _value, $Res Function(_$_InvalidAccessCode) _then)
-      : super(_value, (v) => _then(v as _$_InvalidAccessCode));
-
-  @override
-  _$_InvalidAccessCode get _value => super._value as _$_InvalidAccessCode;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -352,9 +344,9 @@ class _$_InvalidAccessCode implements _InvalidAccessCode {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? invalidAccessCode,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? invalidAccessCode,
   }) {
     return invalidAccessCode?.call();
   }
@@ -386,9 +378,9 @@ class _$_InvalidAccessCode implements _InvalidAccessCode {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
   }) {
     return invalidAccessCode?.call(this);
   }
