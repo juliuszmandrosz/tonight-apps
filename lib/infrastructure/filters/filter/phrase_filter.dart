@@ -4,6 +4,6 @@ class PhraseFilter {
 
   PhraseFilter({
     required this.phrase,
-    required this.isQueryByCityAvailable,
+    this.isQueryByCityAvailable = true,
   });
 }
