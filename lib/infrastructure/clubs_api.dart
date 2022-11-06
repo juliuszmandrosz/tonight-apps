@@ -30,7 +30,7 @@ class ClubsApiImpl implements ClubsApi {
 
     final data = {
       'query': filters.phraseFilter.phrase,
-      queryBy: queryBy,
+      'queryBy': queryBy,
       'filterBy': filterBy,
       'pageNumber': pageNumber,
       'pageSize': pageSize,
