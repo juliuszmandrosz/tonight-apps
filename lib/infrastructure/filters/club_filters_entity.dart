@@ -36,7 +36,11 @@ abstract class ClubFilters with _$ClubFilters {
 
   String buildFilters() {
     var query = '';
-    final filterList = [maxDistanceFilter, currencyFilter];
+    final filterList = [
+      maxDistanceFilter,
+      currencyFilter,
+      cityFilter,
+    ];
     for (final filter in filterList) {
       final previousQuery = query;
       query = filter.buildFilters(query);
