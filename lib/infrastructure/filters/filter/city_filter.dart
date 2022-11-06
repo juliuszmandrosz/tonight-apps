@@ -3,9 +3,13 @@ import 'package:raver_common/raver_common.dart';
 
 class CityFilter implements IFilter {
   final String cityId;
+  final String cityName;
   static const fieldName = 'cityId';
 
-  CityFilter({required this.cityId});
+  CityFilter({
+    required this.cityId,
+    required this.cityName,
+  });
 
   @override
   String buildFilters(String query) {
@@ -21,6 +25,9 @@ class CityFilter implements IFilter {
     String? cityId,
     String? cityName,
   }) {
-    return CityFilter(cityId: cityId ?? this.cityId);
+    return CityFilter(
+      cityId: cityId ?? this.cityId,
+      cityName: cityName ?? this.cityName,
+    );
   }
 }

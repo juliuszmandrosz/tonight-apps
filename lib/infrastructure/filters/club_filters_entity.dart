@@ -28,7 +28,10 @@ abstract class ClubFilters with _$ClubFilters {
           maxDistance: 50,
         ),
         currencyFilter: CurrencyFilter(currency: ''),
-        cityFilter: CityFilter(cityId: ''),
+        cityFilter: CityFilter(
+          cityId: '',
+          cityName: '',
+        ),
       );
 
   String buildFilters() {
