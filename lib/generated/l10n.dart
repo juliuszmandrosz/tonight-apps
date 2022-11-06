@@ -1972,6 +1972,16 @@ class S {
     );
   }
 
+  /// `Enter the name of the club`
+  String get findClubByName {
+    return Intl.message(
+      'Enter the name of the club',
+      name: 'findClubByName',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Find event place by`
   String get findEventPlaceBy {
     return Intl.message(

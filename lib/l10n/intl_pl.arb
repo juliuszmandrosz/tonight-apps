@@ -382,6 +382,8 @@
   "@findByCity": {},
   "findByMaxDistance": "Maksymalnej odległości",
   "@findByMaxDistance": {},
+  "findClubByName": "Wpisz nazwę klubu",
+  "@findClubByName": {},
   "findEventPlaceBy": "Znajdź miejsce wydarzenia po",
   "@findEventPlaceBy": {},
   "findInMap": "Znajdź na mapie",

@@ -363,6 +363,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "findByCity": MessageLookupByLibrary.simpleMessage("City"),
         "findByMaxDistance":
             MessageLookupByLibrary.simpleMessage("Maximum distance"),
+        "findClubByName":
+            MessageLookupByLibrary.simpleMessage("Enter the name of the club"),
         "findEventPlaceBy":
             MessageLookupByLibrary.simpleMessage("Find event place by"),
         "findInMap": MessageLookupByLibrary.simpleMessage("Find in map"),
