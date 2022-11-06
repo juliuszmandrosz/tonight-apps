@@ -24,11 +24,13 @@ class ClubsApiImpl implements ClubsApi {
     final filterBy = filters.buildFilters();
     final pageNumber = ((offset + 1) / pageSize).ceil();
     final sortBy = _getSortBy(filters);
+    final queryBy = _getQueryBy(filters);
 
     const endpoint = 'clubs/getClubs';
 
     final data = {
       'query': filters.phraseFilter.phrase,
+      queryBy: queryBy,
       'filterBy': filterBy,
       'pageNumber': pageNumber,
       'pageSize': pageSize,
@@ -38,6 +40,14 @@ class ClubsApiImpl implements ClubsApi {
     final result = await _dio.post(endpoint, data: data);
 
     return result.data as List<dynamic>;
+  }
+
+  String _getQueryBy(ClubFilters clubFilters) {
+    if (!clubFilters.phraseFilter.isQueryByCityAvailable) {
+      return 'clubName';
+    }
+
+    return 'clubName, locationString';
   }
 
   String _getSortBy(ClubFilters clubFilters) {
