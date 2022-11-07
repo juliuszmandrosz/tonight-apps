@@ -18,10 +18,7 @@ abstract class ClubFilters with _$ClubFilters {
   }) = _ClubFilter;
 
   factory ClubFilters.empty() => ClubFilters(
-        phraseFilter: PhraseFilter(
-          phrase: '',
-          isQueryByCityAvailable: true,
-        ),
+        phraseFilter: PhraseFilter(phrase: ''),
         maxDistanceFilter: MaxDistanceFilter(
           enabled: true,
           userLocation: {},

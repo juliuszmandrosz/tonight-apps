@@ -43,11 +43,7 @@ class ClubsApiImpl implements ClubsApi {
   }
 
   String _getQueryBy(ClubFilters clubFilters) {
-    if (!clubFilters.phraseFilter.isQueryByCityAvailable) {
-      return 'clubName';
-    }
-
-    return 'clubName, locationString';
+    return 'clubName';
   }
 
   String _getSortBy(ClubFilters clubFilters) {
