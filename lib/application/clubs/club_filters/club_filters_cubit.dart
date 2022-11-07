@@ -17,18 +17,14 @@ class ClubFiltersCubit extends Cubit<ClubFiltersState> {
   ) : super(ClubFiltersState.initial());
 
   void submitSearchField(String value) {
-    final filters = ClubFilters.empty().copyWith(
+    final filters = state.filters.copyWith(
       phraseFilter: PhraseFilter(phrase: value),
-      maxDistanceFilter: state.filters.maxDistanceFilter.copyWith(
-        enabled: false,
-      ),
     );
 
     emit(
       state.copyWith(
         filters: filters,
         isFilterApplied: true,
-        isMenuFilterApplied: false,
       ),
     );
 
@@ -37,7 +33,9 @@ class ClubFiltersCubit extends Cubit<ClubFiltersState> {
     _clubsOverviewBloc.add(
       ClubsOverviewEvent.clubsFetched(
         state.filters.copyWith(
-          phraseFilter: PhraseFilter(phrase: value),
+          phraseFilter: PhraseFilter(
+            phrase: value,
+          ),
         ),
       ),
     );
@@ -45,8 +43,7 @@ class ClubFiltersCubit extends Cubit<ClubFiltersState> {
 
   void changeMaxDistance(int value) {
     final currentFilters = state.filters.copyWith(
-      maxDistanceFilter:
-          state.filters.maxDistanceFilter.copyWith(maxDistance: value),
+      maxDistanceFilter: state.filters.maxDistanceFilter.copyWith(maxDistance: value),
     );
     emit(state.copyWith(filters: currentFilters));
   }
@@ -58,19 +55,28 @@ class ClubFiltersCubit extends Cubit<ClubFiltersState> {
     emit(state.copyWith(filters: currentFilters));
   }
 
-  submitFilters({bool isMenuFilterApplied = false}) {
+  void changeIsMaxDistanceOption(bool value) {
     final currentFilters = state.filters.copyWith(
-      phraseFilter: PhraseFilter(phrase: ''),
-      maxDistanceFilter: state.filters.maxDistanceFilter.copyWith(
-        enabled: true,
+      maxDistanceFilter: state.filters.maxDistanceFilter.copyWith(enabled: value),
+    );
+    emit(state.copyWith(filters: currentFilters));
+  }
+
+  void changeCity(String cityId, String cityName) {
+    final currentFilters = state.filters.copyWith(
+      cityFilter: CityFilter(
+        cityId: cityId,
+        cityName: cityName,
       ),
     );
+    emit(state.copyWith(filters: currentFilters));
+  }
 
+  submitFilters({bool isMenuFilterApplied = false}) {
     _setUserLocation();
 
     emit(
       state.copyWith(
-        filters: currentFilters,
         isMenuFilterApplied: isMenuFilterApplied,
         isFilterApplied: true,
       ),

@@ -490,7 +490,7 @@ packages:
       name: firebase_auth_mocks
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.9.0"
+    version: "0.9.1"
   firebase_auth_platform_interface:
     dependency: transitive
     description:
@@ -752,7 +752,7 @@ packages:
       name: flutter_native_splash
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.13"
+    version: "2.2.14"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -1430,7 +1430,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "655b18691aa7f926ffc81deb00c4a749f50bb9af"
+      resolved-ref: "8e856e471551348134b24ac67036298b85f08a5f"
       url: "git@github.com:juliuszmandrosz/RaverClubs.git"
     source: git
     version: "0.0.1"
@@ -1448,7 +1448,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: f17cce66e16d28353a3ef2c5316078cd5d6e1505
+      resolved-ref: d912cdfcf946b52be01645addd324d67bcdea789
       url: "git@github.com:juliuszmandrosz/RaverEvents.git"
     source: git
     version: "0.0.1"
@@ -1484,7 +1484,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "494bff0fbbb7aab89ff8ed15def20d0ef93bc5dd"
+      resolved-ref: "718ff3a8a2ef78c446b41c8e4bf8fdfc224f44a4"
       url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"
@@ -1905,7 +1905,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1"
+    version: "3.1.0"
   xdg_directories:
     dependency: transitive
     description:

@@ -2,8 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
+import 'package:raver/application/core/places/places_cubit.dart';
+import 'package:raver/injection.dart';
+import 'package:raver/presentation/club_filters/widgets/club_filters_city.dart';
 import 'package:raver/presentation/club_filters/widgets/club_filters_currency.dart';
 import 'package:raver/presentation/club_filters/widgets/club_filters_max_distance.dart';
+import 'package:raver/presentation/club_filters/widgets/club_filters_place_option.dart';
 import 'package:raver/presentation/club_filters/widgets/club_filters_submit_button.dart';
 import 'package:raver/presentation/core/raver_app_bar.dart';
 import 'package:raver/presentation/core/ticket_logo_animation.dart';
@@ -34,18 +38,14 @@ class ClubFiltersPage extends StatelessWidget {
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
           floatingActionButton: const ClubFiltersSubmitButton(),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerFloat,
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
           appBar: RaverAppBar(title: S().filters),
           body: BlocConsumer<AvailableFiltersCubit, AvailableFiltersState>(
             listener: (context, state) {
-              if (state.maybeWhen(
-                  orElse: () => false, loadFailure: (_) => true)) {
+              if (state.maybeWhen(orElse: () => false, loadFailure: (_) => true)) {
                 context.pushRoute(
                   FailureRoute(
-                    retryCallback: () => context
-                        .read<AvailableFiltersCubit>()
-                        .getAvailableFilters(),
+                    retryCallback: () => context.read<AvailableFiltersCubit>().getAvailableFilters(),
                   ),
                 );
               }
@@ -61,7 +61,13 @@ class ClubFiltersPage extends StatelessWidget {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
+                          const ClubFiltersPlaceOption(),
+                          const SizedBox(height: 25),
                           const ClubFiltersMaxDistance(),
+                          BlocProvider(
+                            create: (context) => getIt<PlacesCubit>(),
+                            child: const ClubFiltersCity(),
+                          ),
                           const SizedBox(height: 25),
                           ClubFiltersCurrency(
                             currencies: state.availableFilters.currencies,
