@@ -10,7 +10,7 @@ Future<T> handleDioError<T>({
   required T unexpectedFailure,
   required T socketFailure,
 }) async {
-  logger.e(message);
+  logger.e(error.message);
 
   if (error.type == DioErrorType.other &&
       error.message.contains('SocketException')) {
