@@ -8,12 +8,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_clubs/domain/domain.dart';
 import 'package:raver_clubs/domain/club/selector_club_facade.dart';
+import 'package:raver_clubs/domain/domain.dart';
 import 'package:raver_clubs/infrastructure/cloud_functions/club_cloud_functions_facade.dart';
 import 'package:raver_clubs/infrastructure/club/club_dto.dart';
-import 'package:raver_clubs/infrastructure/filters/club_filters_entity.dart';
 import 'package:raver_clubs/infrastructure/clubs_api.dart';
+import 'package:raver_clubs/infrastructure/filters/club_filters_entity.dart';
 import 'package:raver_common/raver_common.dart';
 
 class FirebaseClubFacade
@@ -65,7 +65,7 @@ class FirebaseClubFacade
   }
 
   @override
-  Future<Either<UserClubFailure, List<Club>>> getClubs(
+  Future<Either<CommonClubFailure, List<Club>>> getClubs(
     ClubFilters filters, {
     int pageSize = 20,
     int offset = 0,
@@ -77,19 +77,18 @@ class FirebaseClubFacade
         offset,
       );
 
-      return right<UserClubFailure, List<Club>>(
+      return right<CommonClubFailure, List<Club>>(
         result.map((doc) => ClubDto.fromApi(doc).toDomain()).toList(),
       );
     } on DioError catch (e) {
-
       return left(
         await handleDioError(
           error: e,
           crashlytics: _firebaseCrashlytics,
           logger: _logger,
           message: 'Dio error fetching clubs EXCEPTION: $e',
-          unexpectedFailure: const UserClubFailure.unexpected(),
-          socketFailure: const UserClubFailure.noConnection(),
+          unexpectedFailure: const CommonClubFailure.unexpected(),
+          socketFailure: const CommonClubFailure.noConnection(),
         ),
       );
     }
