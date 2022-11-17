@@ -4,4 +4,6 @@ import 'package:raver_clubs/domain/domain.dart';
 
 abstract class PartnerClubFacade with GetClubsMixin {
   Future<Either<PartnerClubFailure, Club>> getCurrentPartnerClub();
+
+  Future<Either<PartnerClubFailure, Unit>> changeClub(String clubId);
 }

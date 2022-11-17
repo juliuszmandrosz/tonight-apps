@@ -241,6 +241,26 @@ class FirebaseClubFacade
   }
 
   @override
+  Future<Either<PartnerClubFailure, Unit>> changeClub(String clubId) async {
+    try {
+      final partnerRef = _firestore.getCurrentPartnerDocRef(_firebaseAuth);
+      await partnerRef.update({'clubId': clubId});
+      return right(unit);
+    } on FirebaseException catch (e) {
+      return left(
+        await handleFirebaseError<PartnerClubFailure>(
+          logger: _logger,
+          crashlytics: _firebaseCrashlytics,
+          exception: e,
+          message: 'Firebase Exception changing club EXCEPTION: $e',
+          unexpectedFailure: const PartnerClubFailure.unexpected(),
+          permissionDeniedFailure: const PartnerClubFailure.permissionDenied(),
+        ),
+      );
+    }
+  }
+
+  @override
   Future<Either<UserClubFailure, List<Club>>> getFavoriteClubs() async {
     try {
       final userDoc =
