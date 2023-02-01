@@ -30,7 +30,7 @@ dependencies:
   firebase_crashlytics: ^3.0.4
   firebase_remote_config: ^3.0.4
   lottie: ^1.2.2
-  auto_route: ^4.0.1
+  auto_route: ^5.0.4
   typesense: ^0.2.0
   dio: ^4.0.6
   flutter_dotenv: ^5.0.2
