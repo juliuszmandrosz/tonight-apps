@@ -9,7 +9,7 @@ abstract class ClubsOverviewState with _$ClubsOverviewState {
     required List<Club> clubs,
     required bool hasReachedMax,
     required ClubFilters clubFilter,
-    required Option<UserClubFailure> failure,
+    required Option<CommonClubFailure> failure,
   }) = _ClubsOverviewState;
 
   factory ClubsOverviewState.initial() => ClubsOverviewState(
