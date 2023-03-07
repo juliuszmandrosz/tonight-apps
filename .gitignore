@@ -63,3 +63,7 @@ app.*.map.json
 /firestore.indexes.json
 /firebase.json
 /storage.rules
+/node_modules/
+/ios/Podfile.lock
+/package-lock.json
+/package.json
