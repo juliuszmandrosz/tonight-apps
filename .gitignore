@@ -44,7 +44,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-/lib/presentation/routes/app_router.gr.dart
 /lib/firebase_options.dart
 /lib/l10n/intl_en.arb
 /lib/l10n/intl_pl.arb
