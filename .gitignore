@@ -58,3 +58,9 @@ app.*.map.json
 **/*.freezed.dart
 **/*.g.dart
 **/*.gr.dart
+/.firebaserc
+/firebase.json
+/firestore.indexes.json
+/firestore.rules
+/android/app/google-services.json
+/storage.rules
