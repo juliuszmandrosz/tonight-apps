@@ -46,12 +46,6 @@ app.*.map.json
 /android/app/release
 
 
-# Freezed
-**/*.freezed.dart
-**/*.g.dart
-**/*.gr.dart
-/lib/firebase_options.dart
-
 
 /android/app/google-services.json
 /.firebaserc
