@@ -45,11 +45,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# freezed
-**/*.freezed.dart
-**/*.g.dart
-**/*.gr.dart
-**/*.config.dart
 
 # localizely
 /lib/generated/l10n.dart
