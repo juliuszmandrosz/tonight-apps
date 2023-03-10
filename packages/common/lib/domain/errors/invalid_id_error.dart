@@ -1,0 +1,1 @@
+class InvalidIdError extends Error {}
