@@ -1,0 +1,27 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:raver/application/payment_method/payment_method_cubit.dart';
+import 'package:raver_common/raver_common.dart';
+
+class UpdatePaymentMethodButton extends StatelessWidget {
+  const UpdatePaymentMethodButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<PaymentMethodCubit, PaymentMethodState>(
+      builder: (context, state) {
+        return FloatingActionButton(
+          onPressed: () =>
+              context.read<PaymentMethodCubit>().updatePaymentMethod(),
+          child: state.cubitStatus.isLoading()
+              ? SpinKitThreeBounce(
+                  color: context.onSurfaceColor,
+                  size: 16,
+                )
+              : const Icon(Icons.save),
+        );
+      },
+    );
+  }
+}
