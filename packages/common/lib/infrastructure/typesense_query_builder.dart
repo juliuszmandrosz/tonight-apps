@@ -1,0 +1,69 @@
+import 'package:logger/logger.dart';
+
+class TypesenseQueryBuilder {
+  static String setNumericBetween({
+    required String query,
+    required String field,
+    required int from,
+    required int to,
+  }) {
+    return query += '$field:[$from..$to]';
+  }
+
+  static String setNumericHigherThan({
+    required String query,
+    required String field,
+    required int than,
+  }) {
+    return query += '$field:>$than';
+  }
+
+  static String setNumericLowerThan({
+    required String query,
+    required String field,
+    required int than,
+  }) {
+    return query += '$field:<$than';
+  }
+
+  static String setNumericHigherEqualThan({
+    required String query,
+    required String field,
+    required int than,
+  }) {
+    return query += '$field:>=$than';
+  }
+
+  static String setNumericLowerEqualThan({
+    required String query,
+    required String field,
+    required int than,
+  }) {
+    return query += '$field:<=$than';
+  }
+
+  static String setFacetListFilter({
+    required String query,
+    required String field,
+    required List<String> values,
+  }) {
+    return query += '$field: $values';
+  }
+
+  static String setFacetFilter({
+    required String query,
+    required String field,
+    required String value,
+  }) {
+    return query += '$field: $value';
+  }
+
+  static String setAroundLatLng({
+    required String query,
+    required double lat,
+    required double lng,
+    required int radius,
+  }) {
+    return query += 'location:($lat, $lng, $radius km)';
+  }
+}

@@ -1,0 +1,22 @@
+import 'package:raver_auth/src/domain/auth_failure.dart';
+
+const firebaseAuthMessages = {
+  'account-exists-with-different-credential': AuthFailure.accountExists(),
+  'invalid-credential': AuthFailure.invalidCredential(),
+  'operation-not-allowed': AuthFailure.operationNotAllowed(),
+  'invalid-email': AuthFailure.invalidEmail(),
+  'user-disabled': AuthFailure.userDisabled(),
+  'email-already-in-use': AuthFailure.emailInUse(),
+  'weak-password': AuthFailure.weakPassword(),
+  'user-not-found': AuthFailure.userNotFound(),
+  'wrong-password': AuthFailure.wrongPassword(),
+  'invalid-verification-code': AuthFailure.invalidVerificationCode(),
+  'invalid-verification-id': AuthFailure.invalidVerificationId(),
+  'already-exists': AuthFailure.accountExists(),
+  'permission-denied': AuthFailure.operationNotAllowed(),
+  'invalid-access-code': AuthFailure.invalidAccessCode(),
+  'not-found': AuthFailure.userNotFound(),
+  'unavailable': AuthFailure.unavailable(),
+  'invalid-action-code': AuthFailure.invalidLink(),
+  'unknown': AuthFailure.invalidLink(),
+};

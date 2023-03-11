@@ -1,0 +1,48 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:raver_common/raver_common.dart';
+import 'package:raver_partners/application/selector_list/selector_list_cubit.dart';
+import 'package:raver_partners/domain/selector_management/selector_entity.dart';
+import 'package:raver_translations/raver_translations.dart';
+
+class SelectorListTile extends StatelessWidget {
+  final Selector selector;
+
+  const SelectorListTile({
+    required this.selector,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      dense: true,
+      contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
+      title: AutoSizeText(
+        selector.email,
+        style: context.subtitle1,
+        maxLines: 1,
+      ),
+      trailing: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconButton(
+            onPressed: () async {
+              final result =
+                  await context.showConfirmationDialogWithCustomMessage(
+                S().confirmSelectorDeletion,
+              );
+
+              if (result ?? false) {
+                context.read<SelectorListCubit>().deleteSelector(selector);
+              }
+            },
+            icon: const FaIcon(FontAwesomeIcons.ban),
+          ),
+        ],
+      ),
+    );
+  }
+}
