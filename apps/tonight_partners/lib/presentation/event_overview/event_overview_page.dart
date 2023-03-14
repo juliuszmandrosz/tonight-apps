@@ -1,23 +1,23 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:loader_overlay/loader_overlay.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/application/club_info/club_info_cubit.dart';
-import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
-import 'package:raver_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
-import 'package:raver_partners/injection.dart';
-import 'package:raver_partners/presentation/core/event_revenue.dart';
-import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
-import 'package:raver_partners/presentation/core/ticket_logo_animation.dart';
-import 'package:raver_partners/presentation/event_overview/widgets/cancel_event_button.dart';
-import 'package:raver_partners/presentation/event_overview/widgets/event_overview_details.dart';
-import 'package:raver_partners/presentation/event_overview/widgets/event_overview_ticket_pools.dart';
-import 'package:raver_partners/presentation/event_overview/widgets/postpone_event_button.dart';
-import 'package:raver_partners/presentation/routes/app_router.dart';
-import 'package:raver_translations/raver_translations.dart';
 import 'package:formz/formz.dart';
+import 'package:loader_overlay/loader_overlay.dart';
+import 'package:tonight_partners/application/club_info/club_info_cubit.dart';
+import 'package:tonight_partners/application/event_notifier/event_notifier_cubit.dart';
+import 'package:tonight_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
+import 'package:tonight_partners/injection.dart';
+import 'package:tonight_partners/presentation/core/event_revenue.dart';
+import 'package:tonight_partners/presentation/core/ticket_logo_animation.dart';
+import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart';
+import 'package:tonight_partners/presentation/event_overview/widgets/cancel_event_button.dart';
+import 'package:tonight_partners/presentation/event_overview/widgets/event_overview_details.dart';
+import 'package:tonight_partners/presentation/event_overview/widgets/event_overview_ticket_pools.dart';
+import 'package:tonight_partners/presentation/event_overview/widgets/postpone_event_button.dart';
+import 'package:tonight_partners/presentation/routes/app_router.dart';
+import 'package:translations/translations.dart';
 
 class EventOverviewPage extends StatelessWidget {
   final BuildContext blocContext;
@@ -53,7 +53,7 @@ class EventOverviewPage extends StatelessWidget {
         useDefaultLoading: false,
         overlayOpacity: .7,
         child: Scaffold(
-          appBar: RaverPartnersAppBar(title: S().eventOverview),
+          appBar: TonightPartnersAppBar(title: S().eventOverview),
           body: Padding(
             padding: const EdgeInsets.all(15),
             child: BlocConsumer<UpcomingLiveEventCubit, UpcomingLiveEventState>(

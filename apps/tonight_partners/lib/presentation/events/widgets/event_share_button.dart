@@ -1,10 +1,9 @@
+import 'package:common/common.dart';
+import 'package:events/events.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:raver_common/constants/env_keys.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
 import 'package:share_plus/share_plus.dart';
 
 class EventShareButton extends StatefulWidget {

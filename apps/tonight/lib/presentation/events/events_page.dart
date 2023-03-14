@@ -1,17 +1,17 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/injection.dart';
-import 'package:raver/presentation/events/widgets/event_card.dart';
-import 'package:raver/presentation/events/widgets/event_filters_row.dart';
-import 'package:raver/presentation/events/widgets/event_search_field.dart';
-import 'package:raver/presentation/events/widgets/search_events_info.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
+import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/events/widgets/event_card.dart';
+import 'package:tonight/presentation/events/widgets/event_filters_row.dart';
+import 'package:tonight/presentation/events/widgets/event_search_field.dart';
+import 'package:tonight/presentation/events/widgets/search_events_info.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class EventsPage extends StatefulWidget {
   const EventsPage({Key? key}) : super(key: key);

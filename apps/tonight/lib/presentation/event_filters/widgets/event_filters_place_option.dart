@@ -1,10 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:translations/translations.dart';
 
 class EventFiltersPlaceOption extends StatelessWidget {
   const EventFiltersPlaceOption({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class EventFiltersPlaceOption extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.centerLeft,
-              child: RaverHeadline(
+              child: TonightHeadline(
                 text: '${S().findEventPlaceBy}:',
                 isSmallerVersion: true,
               ),

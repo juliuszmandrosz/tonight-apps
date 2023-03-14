@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:translations/translations.dart';
 
 class VipCheckoutHeader extends StatelessWidget {
   const VipCheckoutHeader({Key? key}) : super(key: key);
@@ -9,7 +9,7 @@ class VipCheckoutHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerLeft,
-      child: RaverHeadline(text: S().vip),
+      child: TonightHeadline(text: S().vip),
     );
   }
 }

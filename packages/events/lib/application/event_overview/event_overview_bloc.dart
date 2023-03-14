@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/domain/domain.dart';
+import 'package:common/common.dart';
+import 'package:events/domain/domain.dart';
 
 part 'event_overview_bloc.freezed.dart';
 

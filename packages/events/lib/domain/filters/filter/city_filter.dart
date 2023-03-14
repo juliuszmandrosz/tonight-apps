@@ -1,5 +1,5 @@
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/domain/filters/filter/ifilter.dart';
+import 'package:common/common.dart';
+import 'package:events/domain/filters/filter/ifilter.dart';
 
 class CityFilter implements IFilter {
   final String cityId;

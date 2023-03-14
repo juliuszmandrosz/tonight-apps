@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/core/user_location/user_location_cubit.dart';
-import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/core/user_location/user_location_cubit.dart';
+import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:translations/translations.dart';
 
 class EventFiltersMaxDistance extends StatefulWidget {
   const EventFiltersMaxDistance({Key? key}) : super(key: key);
@@ -55,12 +55,12 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          RaverHeadline(
+                          TonightHeadline(
                             text: S().maxDistance,
                             isSmallerVersion: true,
                           ),
                           if (locationState.isPermissionGranted)
-                            RaverHeadline(
+                            TonightHeadline(
                               text:
                                   '${filtersState.filters.maxDistanceFilter.maxDistance}km',
                               isSmallerVersion: true,

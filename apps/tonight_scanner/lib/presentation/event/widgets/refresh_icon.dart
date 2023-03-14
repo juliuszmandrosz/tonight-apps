@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_scanner/application/current_event/current_event_cubit.dart';
+import 'package:translations/translations.dart';
 
 class RefreshCurrentEventButton extends StatelessWidget {
   const RefreshCurrentEventButton({Key? key}) : super(key: key);

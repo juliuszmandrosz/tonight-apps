@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:common/common.dart';
 
 part 'remote_config_cubit.freezed.dart';
 

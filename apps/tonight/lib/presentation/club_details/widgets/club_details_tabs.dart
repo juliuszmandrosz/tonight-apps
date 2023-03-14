@@ -1,12 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:clubs/clubs.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver/presentation/club_details/widgets/club_details_tabs/club_details.dart';
-import 'package:raver/presentation/club_details/widgets/club_details_tabs/club_events.dart';
-import 'package:raver/presentation/club_details/widgets/club_details_tabs/club_opinions.dart';
-import 'package:raver/presentation/club_details/widgets/club_details_tabs/club_rewards.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_details.dart';
+import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_events.dart';
+import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_opinions.dart';
+import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_rewards.dart';
+import 'package:translations/translations.dart';
 
 class ClubDetailsTabs extends StatelessWidget {
   final Club club;

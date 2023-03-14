@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_scanner/application/scanner/scanner_cubit.dart';
+import 'package:common/common.dart';
+import 'package:tonight_scanner/application/scanner/scanner_cubit.dart';
 
 class QrScanner extends StatefulWidget {
   const QrScanner({Key? key}) : super(key: key);

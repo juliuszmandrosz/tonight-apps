@@ -11,10 +11,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:raver/firebase_options.dart';
-import 'package:raver/injection.dart';
-import 'package:raver/presentation/core/raver_app.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:tonight/firebase_options.dart';
+import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/core/tonight_app.dart';
 
 Future<void> main() async {
   GoogleFonts.config.allowRuntimeFetching = false;
@@ -49,7 +49,7 @@ Future<void> main() async {
       _configureTimeAgo();
 
       HydratedBlocOverrides.runZoned(
-        () => runApp(RaverApp()),
+        () => runApp(TonightApp()),
         storage: storage,
       );
     },

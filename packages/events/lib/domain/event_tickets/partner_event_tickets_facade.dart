@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:raver_events/domain/domain.dart';
-import 'package:raver_events/domain/event_tickets/get_event_tickets_mixin.dart';
+import 'package:events/domain/domain.dart';
+import 'package:events/domain/event_tickets/get_event_tickets_mixin.dart';
 
 abstract class PartnerEventTicketsFacade with GetEventTicketsMixin {
   Future<Either<EventTicketsFailure, Unit>> addTicketPool(

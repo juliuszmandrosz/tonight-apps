@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:raver_partners/presentation/drawer/social_media/facebook_button.dart';
-import 'package:raver_partners/presentation/drawer/social_media/instagram_button.dart';
-import 'package:raver_partners/presentation/drawer/social_media/linked_in_button.dart';
-import 'package:raver_partners/presentation/drawer/social_media/tik_tok_button.dart';
+import 'package:tonight_partners/presentation/drawer/social_media/facebook_button.dart';
+import 'package:tonight_partners/presentation/drawer/social_media/instagram_button.dart';
+import 'package:tonight_partners/presentation/drawer/social_media/linked_in_button.dart';
+import 'package:tonight_partners/presentation/drawer/social_media/tik_tok_button.dart';
 
 class SocialMediaRow extends StatelessWidget {
   const SocialMediaRow({Key? key}) : super(key: key);

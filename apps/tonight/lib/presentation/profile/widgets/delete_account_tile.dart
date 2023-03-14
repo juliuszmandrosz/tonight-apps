@@ -1,9 +1,9 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/profile/profile_cubit.dart';
-import 'package:raver/presentation/profile/widgets/profile_menu_list_tile.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/profile/profile_cubit.dart';
+import 'package:tonight/presentation/profile/widgets/profile_menu_list_tile.dart';
+import 'package:translations/translations.dart';
 
 class DeleteAccountTile extends StatelessWidget {
   const DeleteAccountTile({Key? key}) : super(key: key);

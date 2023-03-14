@@ -1,12 +1,12 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/invite_selector/invite_selector_cubit.dart';
-import 'package:raver_partners/injection.dart';
-import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
-import 'package:raver_partners/presentation/invite_selector/widgets/generate_access_code_button.dart';
-import 'package:raver_partners/presentation/invite_selector/widgets/generated_code.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/invite_selector/invite_selector_cubit.dart';
+import 'package:tonight_partners/injection.dart';
+import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart';
+import 'package:tonight_partners/presentation/invite_selector/widgets/generate_access_code_button.dart';
+import 'package:tonight_partners/presentation/invite_selector/widgets/generated_code.dart';
+import 'package:translations/translations.dart';
 
 class InviteSelectorPage extends StatelessWidget {
   const InviteSelectorPage({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class InviteSelectorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: RaverPartnersAppBar(title: S().inviteSelector),
+      appBar: TonightPartnersAppBar(title: S().inviteSelector),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 25,

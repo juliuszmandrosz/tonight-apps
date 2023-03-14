@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:raver/presentation/core/image_back_button.dart';
-import 'package:raver/presentation/core/image_share_button.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:tonight/presentation/core/image_back_button.dart';
+import 'package:tonight/presentation/core/image_share_button.dart';
 
 class DetailsHeroImage extends StatelessWidget {
   final String imageUrl;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
-import 'package:raver/application/core/user_location/user_location_cubit.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/clubs/club_filters/club_filters_cubit.dart';
+import 'package:tonight/application/core/user_location/user_location_cubit.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:translations/translations.dart';
 
 class ClubFiltersMaxDistance extends StatefulWidget {
   const ClubFiltersMaxDistance({Key? key}) : super(key: key);
@@ -12,7 +12,8 @@ class ClubFiltersMaxDistance extends StatefulWidget {
   State<ClubFiltersMaxDistance> createState() => _ClubFiltersMaxDistanceState();
 }
 
-class _ClubFiltersMaxDistanceState extends State<ClubFiltersMaxDistance> with WidgetsBindingObserver {
+class _ClubFiltersMaxDistanceState extends State<ClubFiltersMaxDistance>
+    with WidgetsBindingObserver {
   var isPermissionGranted = false;
 
   @override
@@ -24,7 +25,9 @@ class _ClubFiltersMaxDistanceState extends State<ClubFiltersMaxDistance> with Wi
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async {
     if (state == AppLifecycleState.resumed) {
-      await context.read<UserLocationCubit>().setLocationIfPermissionIsGranted();
+      await context
+          .read<UserLocationCubit>()
+          .setLocationIfPermissionIsGranted();
     }
   }
 
@@ -38,8 +41,10 @@ class _ClubFiltersMaxDistanceState extends State<ClubFiltersMaxDistance> with Wi
   Widget build(BuildContext context) {
     return BlocBuilder<ClubFiltersCubit, ClubFiltersState>(
       buildWhen: (previous, current) =>
-          previous.filters.maxDistanceFilter.maxDistance != current.filters.maxDistanceFilter.maxDistance ||
-          previous.filters.maxDistanceFilter.enabled != current.filters.maxDistanceFilter.enabled,
+          previous.filters.maxDistanceFilter.maxDistance !=
+              current.filters.maxDistanceFilter.maxDistance ||
+          previous.filters.maxDistanceFilter.enabled !=
+              current.filters.maxDistanceFilter.enabled,
       builder: (context, filtersState) {
         return BlocBuilder<UserLocationCubit, UserLocationState>(
           builder: (context, locationState) {
@@ -50,13 +55,14 @@ class _ClubFiltersMaxDistanceState extends State<ClubFiltersMaxDistance> with Wi
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          RaverHeadline(
+                          TonightHeadline(
                             text: S().maxDistance,
                             isSmallerVersion: true,
                           ),
                           if (locationState.isPermissionGranted)
-                            RaverHeadline(
-                              text: '${filtersState.filters.maxDistanceFilter.maxDistance}km',
+                            TonightHeadline(
+                              text:
+                                  '${filtersState.filters.maxDistanceFilter.maxDistance}km',
                               isSmallerVersion: true,
                             ),
                         ],
@@ -68,13 +74,17 @@ class _ClubFiltersMaxDistanceState extends State<ClubFiltersMaxDistance> with Wi
                           locationState.isPermissionGranted
                               ? Expanded(
                                   child: Slider(
-                                    value: filtersState.filters.maxDistanceFilter.maxDistance.toDouble(),
-                                    label: '${filtersState.filters.maxDistanceFilter.maxDistance.round()}',
+                                    value: filtersState
+                                        .filters.maxDistanceFilter.maxDistance
+                                        .toDouble(),
+                                    label:
+                                        '${filtersState.filters.maxDistanceFilter.maxDistance.round()}',
                                     min: 5,
                                     max: 50,
                                     divisions: 9,
-                                    onChanged: (value) =>
-                                        context.read<ClubFiltersCubit>().changeMaxDistance(value.round()),
+                                    onChanged: (value) => context
+                                        .read<ClubFiltersCubit>()
+                                        .changeMaxDistance(value.round()),
                                   ),
                                 )
                               : locationState.isLoading
@@ -84,7 +94,9 @@ class _ClubFiltersMaxDistanceState extends State<ClubFiltersMaxDistance> with Wi
                                   : SizedBox(
                                       width: 300,
                                       child: ElevatedButton(
-                                        onPressed: () => context.read<UserLocationCubit>().openAppSettings(),
+                                        onPressed: () => context
+                                            .read<UserLocationCubit>()
+                                            .openAppSettings(),
                                         child: Padding(
                                           padding: const EdgeInsets.all(10.0),
                                           child: Text(S().enableLocation),

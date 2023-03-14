@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_ticket_pool_item.dart';
+import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
+import 'package:tonight_partners/presentation/add_event/widgets/summary/event_summary_ticket_pool_item.dart';
 
 class EventSummaryTicketPoolList extends StatelessWidget {
   const EventSummaryTicketPoolList({Key? key}) : super(key: key);

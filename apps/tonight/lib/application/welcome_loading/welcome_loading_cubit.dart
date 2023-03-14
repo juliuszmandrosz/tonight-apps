@@ -1,25 +1,25 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:clubs/clubs.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:events/application/application.dart';
+import 'package:events/domain/domain.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
-import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
-import 'package:raver/application/core/deep_links_utils.dart';
-import 'package:raver/application/core/user_location/user_location_cubit.dart';
-import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
-import 'package:raver/application/profile/profile_cubit.dart';
-import 'package:raver/application/push_notifications/push_notifications_cubit.dart';
-import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/application/application.dart';
-import 'package:raver_events/domain/domain.dart';
+import 'package:tonight/application/clubs/club_favorite/club_favorite_cubit.dart';
+import 'package:tonight/application/clubs/clubs_overview/clubs_overview_bloc.dart';
+import 'package:tonight/application/core/deep_links_utils.dart';
+import 'package:tonight/application/core/user_location/user_location_cubit.dart';
+import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
+import 'package:tonight/application/profile/profile_cubit.dart';
+import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
+import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
 
 part 'welcome_loading_cubit.freezed.dart';
 part 'welcome_loading_state.dart';

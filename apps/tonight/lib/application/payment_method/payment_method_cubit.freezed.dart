@@ -18,9 +18,12 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PaymentMethodState {
   Option<CustomerData> get updatedCustomerData =>
       throw _privateConstructorUsedError;
-  RaverPaymentMethod get selectedPaymentMethod =>
+
+  TonightPaymentMethod get selectedPaymentMethod =>
       throw _privateConstructorUsedError;
+
   CubitStatus get cubitStatus => throw _privateConstructorUsedError;
+
   Option<String> get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -33,10 +36,11 @@ abstract class $PaymentMethodStateCopyWith<$Res> {
   factory $PaymentMethodStateCopyWith(
           PaymentMethodState value, $Res Function(PaymentMethodState) then) =
       _$PaymentMethodStateCopyWithImpl<$Res, PaymentMethodState>;
+
   @useResult
   $Res call(
       {Option<CustomerData> updatedCustomerData,
-      RaverPaymentMethod selectedPaymentMethod,
+      TonightPaymentMethod selectedPaymentMethod,
       CubitStatus cubitStatus,
       Option<String> errorMessage});
 }
@@ -48,6 +52,7 @@ class _$PaymentMethodStateCopyWithImpl<$Res, $Val extends PaymentMethodState>
 
   // ignore: unused_field
   final $Val _value;
+
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -67,7 +72,7 @@ class _$PaymentMethodStateCopyWithImpl<$Res, $Val extends PaymentMethodState>
       selectedPaymentMethod: null == selectedPaymentMethod
           ? _value.selectedPaymentMethod
           : selectedPaymentMethod // ignore: cast_nullable_to_non_nullable
-              as RaverPaymentMethod,
+              as TonightPaymentMethod,
       cubitStatus: null == cubitStatus
           ? _value.cubitStatus
           : cubitStatus // ignore: cast_nullable_to_non_nullable
@@ -86,11 +91,12 @@ abstract class _$$_PaymentMethodStateCopyWith<$Res>
   factory _$$_PaymentMethodStateCopyWith(_$_PaymentMethodState value,
           $Res Function(_$_PaymentMethodState) then) =
       __$$_PaymentMethodStateCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
       {Option<CustomerData> updatedCustomerData,
-      RaverPaymentMethod selectedPaymentMethod,
+      TonightPaymentMethod selectedPaymentMethod,
       CubitStatus cubitStatus,
       Option<String> errorMessage});
 }
@@ -119,7 +125,7 @@ class __$$_PaymentMethodStateCopyWithImpl<$Res>
       selectedPaymentMethod: null == selectedPaymentMethod
           ? _value.selectedPaymentMethod
           : selectedPaymentMethod // ignore: cast_nullable_to_non_nullable
-              as RaverPaymentMethod,
+              as TonightPaymentMethod,
       cubitStatus: null == cubitStatus
           ? _value.cubitStatus
           : cubitStatus // ignore: cast_nullable_to_non_nullable
@@ -145,7 +151,7 @@ class _$_PaymentMethodState extends _PaymentMethodState {
   @override
   final Option<CustomerData> updatedCustomerData;
   @override
-  final RaverPaymentMethod selectedPaymentMethod;
+  final TonightPaymentMethod selectedPaymentMethod;
   @override
   final CubitStatus cubitStatus;
   @override
@@ -186,19 +192,24 @@ class _$_PaymentMethodState extends _PaymentMethodState {
 abstract class _PaymentMethodState extends PaymentMethodState {
   factory _PaymentMethodState(
       {required final Option<CustomerData> updatedCustomerData,
-      required final RaverPaymentMethod selectedPaymentMethod,
+      required final TonightPaymentMethod selectedPaymentMethod,
       required final CubitStatus cubitStatus,
       required final Option<String> errorMessage}) = _$_PaymentMethodState;
+
   _PaymentMethodState._() : super._();
 
   @override
   Option<CustomerData> get updatedCustomerData;
+
   @override
-  RaverPaymentMethod get selectedPaymentMethod;
+  TonightPaymentMethod get selectedPaymentMethod;
+
   @override
   CubitStatus get cubitStatus;
+
   @override
   Option<String> get errorMessage;
+
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodStateCopyWith<_$_PaymentMethodState> get copyWith =>

@@ -1,14 +1,14 @@
 import 'dart:async';
 
+import 'package:account_settings/account_settings.dart';
+import 'package:auth/auth.dart';
+import 'package:common/application/application.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/profile/profile_cubit_hub.dart';
-import 'package:raver/presentation/profile/providers_list.dart';
-import 'package:raver_account_settings/raver_account_settings.dart';
-import 'package:raver_auth/raver_auth.dart';
-import 'package:raver_common/application/application.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/profile/profile_cubit_hub.dart';
+import 'package:tonight/presentation/profile/providers_list.dart';
+import 'package:translations/translations.dart';
 
 part 'profile_cubit.freezed.dart';
 part 'profile_state.dart';

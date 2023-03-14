@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:common/common.dart';
+import 'package:translations/translations.dart';
 
 class EventCanceledInfo extends StatelessWidget {
   const EventCanceledInfo({Key? key}) : super(key: key);

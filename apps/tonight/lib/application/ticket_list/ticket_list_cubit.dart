@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_tickets/raver_tickets.dart';
+import 'package:common/common.dart';
+import 'package:tickets/tickets.dart';
 
 part 'ticket_list_cubit.freezed.dart';
 part 'ticket_list_state.dart';

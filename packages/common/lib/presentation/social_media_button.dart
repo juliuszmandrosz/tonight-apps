@@ -1,5 +1,5 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:raver_common/raver_common.dart';
 
 class SocialMediaButton extends StatelessWidget {
   final Widget icon;
@@ -20,7 +20,7 @@ class SocialMediaButton extends StatelessWidget {
         shape: BoxShape.circle,
         color: context.surfaceColor,
       ),
-      child: RaverIconLink(
+      child: TonightIconLink(
         icon: icon,
         url: url,
       ),

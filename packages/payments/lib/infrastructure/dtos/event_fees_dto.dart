@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_payments/domain/domain.dart';
+import 'package:payments/domain/domain.dart';
 
 part 'event_fees_dto.freezed.dart';
 

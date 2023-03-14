@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:raver/application/auth/username/username_cubit.dart';
-import 'package:raver_translations/generated/l10n.dart';
+import 'package:tonight/application/auth/username/username_cubit.dart';
+import 'package:translations/generated/l10n.dart';
 
 class SubmitUsernameButton extends StatelessWidget {
   const SubmitUsernameButton({Key? key}) : super(key: key);

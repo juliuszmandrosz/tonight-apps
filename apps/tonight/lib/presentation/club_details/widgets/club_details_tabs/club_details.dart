@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/club_details/widgets/club_details_tabs/details/about_club_tile.dart';
-import 'package:raver/presentation/club_details/widgets/club_details_tabs/details/club_contact_tile.dart';
-import 'package:raver/presentation/club_details/widgets/club_details_tabs/details/club_social_media_row.dart';
+import 'package:tonight/presentation/club_details/widgets/club_details_tabs/details/about_club_tile.dart';
+import 'package:tonight/presentation/club_details/widgets/club_details_tabs/details/club_contact_tile.dart';
+import 'package:tonight/presentation/club_details/widgets/club_details_tabs/details/club_social_media_row.dart';
 
 class ClubDetails extends StatelessWidget {
   const ClubDetails({

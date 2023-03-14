@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_common/utils/url_launch_failure.dart';
+import 'package:common/utils/url_launch_failure.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 
 Future<Option<UrlLaunchFailure>> launchURL(Uri uri) async {

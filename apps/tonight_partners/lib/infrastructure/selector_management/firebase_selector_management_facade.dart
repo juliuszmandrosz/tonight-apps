@@ -1,15 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/domain/selector_management/selector_entity.dart';
-import 'package:raver_partners/domain/selector_management/selector_management_facade.dart';
-import 'package:raver_partners/domain/selector_management/selector_management_failure.dart';
-import 'package:raver_partners/infrastructure/core/firestore_extensions.dart';
-import 'package:raver_partners/infrastructure/selector_management/cloud_functions/selector_cloud_functions_facade.dart';
-import 'package:raver_partners/infrastructure/selector_management/dtos/selector_dto.dart';
+import 'package:tonight_partners/domain/selector_management/selector_entity.dart';
+import 'package:tonight_partners/domain/selector_management/selector_management_facade.dart';
+import 'package:tonight_partners/domain/selector_management/selector_management_failure.dart';
+import 'package:tonight_partners/infrastructure/core/firestore_extensions.dart';
+import 'package:tonight_partners/infrastructure/selector_management/cloud_functions/selector_cloud_functions_facade.dart';
+import 'package:tonight_partners/infrastructure/selector_management/dtos/selector_dto.dart';
 
 class FirebaseSelectorManagementFacade implements SelectorManagementFacade {
   final SelectorManagementCloudFunctionsFacade _cloudFunctionsFacade;

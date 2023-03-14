@@ -1,14 +1,14 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:raver/application/auth/username/username_cubit.dart';
-import 'package:raver/injection.dart';
-import 'package:raver/presentation/core/raver_app_bar.dart';
-import 'package:raver/presentation/update_username/widgets/submit_username_button.dart';
-import 'package:raver/presentation/update_username/widgets/username_input.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/auth/username/username_cubit.dart';
+import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/core/tonight_app_bar.dart';
+import 'package:tonight/presentation/update_username/widgets/submit_username_button.dart';
+import 'package:tonight/presentation/update_username/widgets/username_input.dart';
+import 'package:translations/translations.dart';
 
 class UpdateUsernamePage extends StatelessWidget {
   final String currentUsername;
@@ -24,7 +24,7 @@ class UpdateUsernamePage extends StatelessWidget {
       create: (ctx) => getIt<UsernameCubit>()..usernameChanged(currentUsername),
       child: SafeArea(
         child: Scaffold(
-          appBar: RaverAppBar(title: S().changeUsername),
+          appBar: TonightAppBar(title: S().changeUsername),
           body: BlocListener<UsernameCubit, UsernameState>(
             listener: (context, state) {
               state.errorMessage.fold(

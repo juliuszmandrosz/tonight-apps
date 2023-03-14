@@ -1,4 +1,4 @@
-import 'package:raver_auth/src/domain/auth_failure.dart';
+import 'package:auth/src/domain/auth_failure.dart';
 
 const firebaseAuthMessages = {
   'account-exists-with-different-credential': AuthFailure.accountExists(),

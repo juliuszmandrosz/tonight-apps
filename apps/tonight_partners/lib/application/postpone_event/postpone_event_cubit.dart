@@ -1,21 +1,20 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:events/domain/event_costs/event_costs_entity.dart';
+import 'package:events/domain/event_costs/event_costs_facade.dart';
+import 'package:events/events.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/domain/event_costs/event_costs_entity.dart';
-import 'package:raver_events/domain/event_costs/event_costs_facade.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/application/add_event/form_inputs/end_date_time.dart';
-import 'package:raver_partners/application/add_event/form_inputs/start_date_time.dart';
-import 'package:raver_partners/application/core/get_event_failure_message.dart';
-import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/end_date_time.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/start_date_time.dart';
+import 'package:tonight_partners/application/core/get_event_failure_message.dart';
+import 'package:tonight_partners/application/event_notifier/event_notifier_cubit.dart';
+import 'package:translations/translations.dart';
 
 part 'postpone_event_cubit.freezed.dart';
-
 part 'postpone_event_state.dart';
 
 class PostponeEventCubit extends Cubit<PostponeEventState> {

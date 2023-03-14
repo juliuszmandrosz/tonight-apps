@@ -1,5 +1,5 @@
-import 'package:raver_events/domain/domain.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:events/domain/domain.dart';
+import 'package:translations/translations.dart';
 
 String getEventFailureMessage(PartnerEventFailure failure) {
   return failure.map(

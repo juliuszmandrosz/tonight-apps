@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:raver_rewards/raver_rewards.dart';
+import 'package:rewards/rewards.dart';
 
 class ClubRewardsWithAttendance extends Equatable {
   final List<Reward> rewards;

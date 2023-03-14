@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_partners/application/add_event/form_inputs/min_age.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/min_age.dart';
+import 'package:translations/translations.dart';
 
 class EventMinAgeInput extends StatelessWidget {
   final List<int> minAges;

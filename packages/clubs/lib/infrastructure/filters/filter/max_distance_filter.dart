@@ -1,5 +1,5 @@
-import 'package:raver_clubs/infrastructure/filters/filter/ifilter.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:clubs/infrastructure/filters/filter/ifilter.dart';
+import 'package:common/common.dart';
 
 class MaxDistanceFilter implements IFilter {
   final bool enabled;

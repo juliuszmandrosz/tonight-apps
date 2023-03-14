@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_common/domain/available_filters/available_filters_entity.dart';
-import 'package:raver_common/domain/available_filters/available_filters_facade.dart';
-import 'package:raver_common/domain/available_filters/available_filters_failure.dart';
-import 'package:raver_common/infrastructure/available_filters/available_filters_dto.dart';
-import 'package:raver_common/infrastructure/core/handle_firebase_error.dart';
-import 'package:raver_common/infrastructure/firestore_helpers.dart';
+import 'package:common/domain/available_filters/available_filters_entity.dart';
+import 'package:common/domain/available_filters/available_filters_facade.dart';
+import 'package:common/domain/available_filters/available_filters_failure.dart';
+import 'package:common/infrastructure/available_filters/available_filters_dto.dart';
+import 'package:common/infrastructure/core/handle_firebase_error.dart';
+import 'package:common/infrastructure/firestore_helpers.dart';
 
 class FirebaseAvailableFiltersFacade implements AvailableFiltersFacade {
   final FirebaseFirestore _firestore;

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/application/application.dart';
-import 'package:raver_events/raver_events.dart';
+import 'package:common/application/application.dart';
+import 'package:events/events.dart';
 
 part 'current_event_cubit.freezed.dart';
 

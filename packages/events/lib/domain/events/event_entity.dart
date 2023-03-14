@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:common/common.dart';
 import 'package:uuid/uuid.dart';
 
 class Event extends Equatable {

@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/application/available_filters/available_filters_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_common/application/available_filters/available_filters_cubit.dart';
-import 'package:raver_partners/injection.dart';
-import 'package:raver_partners/presentation/add_event/widgets/form_inputs/event_dress_code_input.dart';
-import 'package:raver_partners/presentation/add_event/widgets/form_inputs/event_min_age_input.dart';
-import 'package:raver_partners/presentation/add_event/widgets/form_inputs/event_musical_genres_input.dart';
-import 'package:raver_partners/presentation/routes/app_router.dart';
+import 'package:tonight_partners/injection.dart';
+import 'package:tonight_partners/presentation/add_event/widgets/form_inputs/event_dress_code_input.dart';
+import 'package:tonight_partners/presentation/add_event/widgets/form_inputs/event_min_age_input.dart';
+import 'package:tonight_partners/presentation/add_event/widgets/form_inputs/event_musical_genres_input.dart';
+import 'package:tonight_partners/presentation/routes/app_router.dart';
 
 class EventDetailsStep extends StatelessWidget {
   const EventDetailsStep({Key? key}) : super(key: key);

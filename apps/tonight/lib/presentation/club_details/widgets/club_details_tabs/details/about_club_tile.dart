@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/club_details/widgets/club_details_tabs/details/club_detail_tile.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/presentation/club_details/widgets/club_details_tabs/details/club_detail_tile.dart';
+import 'package:translations/translations.dart';
 
 class AboutClubTile extends StatelessWidget {
   final String? aboutUs;

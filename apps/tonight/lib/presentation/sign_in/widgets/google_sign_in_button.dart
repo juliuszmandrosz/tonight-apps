@@ -1,9 +1,9 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver/application/auth/sign_in/sign_in_cubit.dart';
-import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:tonight/application/auth/sign_in/sign_in_cubit.dart';
+import 'package:tonight/presentation/commons/icons/tonight_icon_button.dart';
 
 class GoogleSignInButton extends StatelessWidget {
   const GoogleSignInButton({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class GoogleSignInButton extends StatelessWidget {
       ),
       width: 50,
       height: 50,
-      child: RaverIconButton(
+      child: TonightIconButton(
         icon: const FaIcon(FontAwesomeIcons.google),
         onPressed: () => context.read<SignInCubit>().signInWithGoogle(),
       ),

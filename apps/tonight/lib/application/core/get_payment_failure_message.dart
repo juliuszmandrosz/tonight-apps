@@ -1,5 +1,5 @@
-import 'package:raver_payments/domain/domain.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:payments/domain/domain.dart';
+import 'package:translations/translations.dart';
 
 String getPaymentFailureMessage(UserPaymentFailure failure) {
   return failure.map(

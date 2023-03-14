@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:translations/translations.dart';
 
 class EventFiltersCurrency extends StatelessWidget {
   final List<String> currencies;
@@ -18,7 +18,7 @@ class EventFiltersCurrency extends StatelessWidget {
       children: [
         Align(
           alignment: Alignment.centerLeft,
-          child: RaverHeadline(
+          child: TonightHeadline(
             text: S().currency,
             isSmallerVersion: true,
           ),

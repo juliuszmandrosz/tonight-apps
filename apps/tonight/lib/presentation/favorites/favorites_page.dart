@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver/presentation/favorites/widgets/favorite_clubs_list.dart';
-import 'package:raver/presentation/favorites/widgets/favorite_events_list.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:tonight/presentation/favorites/widgets/favorite_clubs_list.dart';
+import 'package:tonight/presentation/favorites/widgets/favorite_events_list.dart';
+import 'package:translations/translations.dart';
 
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({Key? key}) : super(key: key);
@@ -15,14 +15,14 @@ class FavoritesPage extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.centerLeft,
-            child: RaverHeadline(text: S().favoriteEvents),
+            child: TonightHeadline(text: S().favoriteEvents),
           ),
           const SizedBox(height: 20),
           const FavoriteEventsList(),
           const SizedBox(height: 30),
           Align(
             alignment: Alignment.centerLeft,
-            child: RaverHeadline(text: S().favoriteClubs),
+            child: TonightHeadline(text: S().favoriteClubs),
           ),
           const SizedBox(height: 20),
           const FavoriteClubsList(),

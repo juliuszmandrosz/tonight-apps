@@ -1,28 +1,28 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart' as dartz;
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
-import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
-import 'package:raver/injection.dart';
-import 'package:raver/presentation/core/raver_app_bar.dart';
-import 'package:raver/presentation/core/ticket_logo_animation.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_header.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_invoice_checkbox.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_invoice_data.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_is_vip_switch.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_pay_section.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_payment_method.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_promotion_code.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_summary.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/ticket_checkout_ticket_card.dart';
-import 'package:raver/presentation/ticket_checkout/widgets/vip_not_enabled_info.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_payments/domain/domain.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:payments/domain/domain.dart';
+import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
+import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
+import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/core/ticket_logo_animation.dart';
+import 'package:tonight/presentation/core/tonight_app_bar.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_header.dart';
+import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_invoice_checkbox.dart';
+import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_invoice_data.dart';
+import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_is_vip_switch.dart';
+import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_pay_section.dart';
+import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_payment_method.dart';
+import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_promotion_code.dart';
+import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_summary.dart';
+import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_ticket_card.dart';
+import 'package:tonight/presentation/ticket_checkout/widgets/vip_not_enabled_info.dart';
+import 'package:translations/translations.dart';
 
 class TicketCheckoutPage extends StatefulWidget {
   final Event event;
@@ -106,7 +106,7 @@ class _TicketCheckoutPageState extends State<TicketCheckoutPage> {
                     floatingActionButtonLocation:
                         FloatingActionButtonLocation.centerFloat,
                     floatingActionButton: const TicketCheckoutPaySection(),
-                    appBar: RaverAppBar(title: S().checkout),
+                    appBar: TonightAppBar(title: S().checkout),
                     body: Padding(
                       padding: const EdgeInsets.all(15),
                       child: ListView(

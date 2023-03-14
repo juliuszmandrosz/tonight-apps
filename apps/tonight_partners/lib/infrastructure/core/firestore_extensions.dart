@@ -1,7 +1,7 @@
+import 'package:auth/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:raver_auth/raver_auth.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/injection.dart';
+import 'package:common/common.dart';
+import 'package:tonight_partners/injection.dart';
 
 extension FirestoreX on FirebaseFirestore {
   Future<DocumentReference> getClubDocRef() async {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_scanner/application/selector_club/selector_club_cubit.dart';
+import 'package:translations/translations.dart';
 
 class EnterAccessCodeDialog extends StatelessWidget {
   const EnterAccessCodeDialog({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_common/constants/constants.dart';
+import 'package:clubs/clubs.dart';
+import 'package:common/constants/constants.dart';
 
 abstract class ClubsApi {
   Future<List<dynamic>> getClubs(

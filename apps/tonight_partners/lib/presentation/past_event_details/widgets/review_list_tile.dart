@@ -1,7 +1,7 @@
+import 'package:clubs/clubs.dart';
 import 'package:flutter/material.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_partners/presentation/past_event_details/widgets/review_subtitle.dart';
-import 'package:raver_partners/presentation/past_event_details/widgets/review_title.dart';
+import 'package:tonight_partners/presentation/past_event_details/widgets/review_subtitle.dart';
+import 'package:tonight_partners/presentation/past_event_details/widgets/review_title.dart';
 
 class ReviewListTile extends StatelessWidget {
   final Review review;

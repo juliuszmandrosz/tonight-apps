@@ -1,14 +1,13 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/domain/club_sales/club_sales_entity.dart';
-import 'package:raver_partners/domain/club_sales/club_sales_facade.dart';
+import 'package:tonight_partners/domain/club_sales/club_sales_entity.dart';
+import 'package:tonight_partners/domain/club_sales/club_sales_facade.dart';
 
 part 'overview_cubit.freezed.dart';
-
 part 'overview_state.dart';
 
 class OverviewCubit extends Cubit<OverviewState> {

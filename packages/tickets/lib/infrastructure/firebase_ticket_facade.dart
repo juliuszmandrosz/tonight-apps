@@ -4,12 +4,12 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_tickets/domain/domain.dart';
-import 'package:raver_tickets/infrastructure/cloud_functions/cloud_functions_failures.dart';
-import 'package:raver_tickets/infrastructure/cloud_functions/params/return_ticket_params.dart';
-import 'package:raver_tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
-import 'package:raver_tickets/infrastructure/ticket_dto.dart';
+import 'package:common/common.dart';
+import 'package:tickets/domain/domain.dart';
+import 'package:tickets/infrastructure/cloud_functions/cloud_functions_failures.dart';
+import 'package:tickets/infrastructure/cloud_functions/params/return_ticket_params.dart';
+import 'package:tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
+import 'package:tickets/infrastructure/ticket_dto.dart';
 
 class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
   final FirebaseFirestore _firestore;

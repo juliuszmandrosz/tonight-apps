@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:common/common.dart';
+import 'package:translations/translations.dart';
 
 class EventLiveInfo extends StatelessWidget {
   const EventLiveInfo({Key? key}) : super(key: key);

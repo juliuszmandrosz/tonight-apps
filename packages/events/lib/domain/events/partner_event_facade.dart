@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:raver_events/domain/domain.dart';
+import 'package:events/domain/domain.dart';
 
 abstract class PartnerEventFacade {
   Future<Either<PartnerEventFailure, Unit>> addEvent({

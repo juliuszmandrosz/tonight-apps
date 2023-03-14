@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_events/domain/domain.dart';
+import 'package:events/domain/domain.dart';
 
 part 'event_review_dto.freezed.dart';
 

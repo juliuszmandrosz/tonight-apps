@@ -1,7 +1,7 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:translations/translations.dart';
 
 class CanceledEventMessage extends StatelessWidget {
   const CanceledEventMessage({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class CanceledEventMessage extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       color: context.surfaceColor,
       width: MediaQuery.of(context).size.width,
-      child: RaverHeadline(
+      child: TonightHeadline(
         text: S().eventCancelled,
         isSmallerVersion: true,
       ),

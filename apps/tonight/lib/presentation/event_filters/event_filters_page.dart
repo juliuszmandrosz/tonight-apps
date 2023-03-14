@@ -1,24 +1,24 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/core/places/places_cubit.dart';
-import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/injection.dart';
-import 'package:raver/presentation/core/raver_app_bar.dart';
-import 'package:raver/presentation/core/ticket_logo_animation.dart';
-import 'package:raver/presentation/event_filters/widgets/event_filters_city.dart';
-import 'package:raver/presentation/event_filters/widgets/event_filters_currency.dart';
-import 'package:raver/presentation/event_filters/widgets/event_filters_dress_code.dart';
-import 'package:raver/presentation/event_filters/widgets/event_filters_is_concert.dart';
-import 'package:raver/presentation/event_filters/widgets/event_filters_max_distance.dart';
-import 'package:raver/presentation/event_filters/widgets/event_filters_min_age.dart';
-import 'package:raver/presentation/event_filters/widgets/event_filters_music.dart';
-import 'package:raver/presentation/event_filters/widgets/event_filters_place_option.dart';
-import 'package:raver/presentation/event_filters/widgets/event_filters_price.dart';
-import 'package:raver/presentation/event_filters/widgets/event_filters_submit_button.dart.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/core/places/places_cubit.dart';
+import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
+import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/core/ticket_logo_animation.dart';
+import 'package:tonight/presentation/core/tonight_app_bar.dart';
+import 'package:tonight/presentation/event_filters/widgets/event_filters_city.dart';
+import 'package:tonight/presentation/event_filters/widgets/event_filters_currency.dart';
+import 'package:tonight/presentation/event_filters/widgets/event_filters_dress_code.dart';
+import 'package:tonight/presentation/event_filters/widgets/event_filters_is_concert.dart';
+import 'package:tonight/presentation/event_filters/widgets/event_filters_max_distance.dart';
+import 'package:tonight/presentation/event_filters/widgets/event_filters_min_age.dart';
+import 'package:tonight/presentation/event_filters/widgets/event_filters_music.dart';
+import 'package:tonight/presentation/event_filters/widgets/event_filters_place_option.dart';
+import 'package:tonight/presentation/event_filters/widgets/event_filters_price.dart';
+import 'package:tonight/presentation/event_filters/widgets/event_filters_submit_button.dart.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class EventFiltersPage extends StatelessWidget {
   final BuildContext blocContext;
@@ -52,7 +52,7 @@ class EventFiltersPage extends StatelessWidget {
             floatingActionButton: const EventFiltersSubmitButton(),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,
-            appBar: RaverAppBar(title: S().filters),
+            appBar: TonightAppBar(title: S().filters),
             body: BlocConsumer<AvailableFiltersCubit, AvailableFiltersState>(
               listener: (context, state) {
                 if (state.maybeWhen(

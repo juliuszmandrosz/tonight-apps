@@ -1,11 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/selector_list/selector_list_cubit.dart';
-import 'package:raver_partners/domain/selector_management/selector_entity.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/selector_list/selector_list_cubit.dart';
+import 'package:tonight_partners/domain/selector_management/selector_entity.dart';
+import 'package:translations/translations.dart';
 
 class SelectorListTile extends StatelessWidget {
   final Selector selector;

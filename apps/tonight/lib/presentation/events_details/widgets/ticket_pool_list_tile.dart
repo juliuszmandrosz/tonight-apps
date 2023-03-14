@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/domain/domain.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:common/common.dart';
+import 'package:events/domain/domain.dart';
+import 'package:translations/translations.dart';
 
 class TicketPoolListTile extends StatelessWidget {
   final TicketPool ticketPool;

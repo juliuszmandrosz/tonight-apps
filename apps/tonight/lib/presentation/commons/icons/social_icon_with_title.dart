@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class SocialIconWithTitle extends StatelessWidget {
   const SocialIconWithTitle({
@@ -33,7 +33,7 @@ class SocialIconWithTitle extends StatelessWidget {
       trailing: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          RaverIconLink(
+          TonightIconLink(
             url: url,
             icon: FaIcon(socialMedia.icon),
           ),

@@ -1,11 +1,11 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:formz/formz.dart';
-import 'package:raver/application/event_review/new_review/event_review_cubit.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_tickets/raver_tickets.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tickets/tickets.dart';
+import 'package:tonight/application/event_review/new_review/event_review_cubit.dart';
+import 'package:translations/translations.dart';
 
 class ReviewSubmitButton extends StatelessWidget {
   final Ticket ticket;

@@ -1,6 +1,6 @@
+import 'package:common/common.dart';
 import 'package:intl/intl.dart';
 import 'package:money2/money2.dart';
-import 'package:raver_common/raver_common.dart';
 
 String formatDoubleToMoney(double amount, String currencyCode) {
   final money = Money.fromNum(amount, code: currencyCode.toUpperCase());

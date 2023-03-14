@@ -1,16 +1,15 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:common/application/application.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/application/application.dart';
-import 'package:raver_partners/domain/selector_management/selector_entity.dart';
-import 'package:raver_partners/domain/selector_management/selector_management_facade.dart';
-import 'package:raver_partners/domain/selector_management/selector_management_failure.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/domain/selector_management/selector_entity.dart';
+import 'package:tonight_partners/domain/selector_management/selector_management_facade.dart';
+import 'package:tonight_partners/domain/selector_management/selector_management_failure.dart';
+import 'package:translations/translations.dart';
 
 part 'selector_list_cubit.freezed.dart';
-
 part 'selector_list_state.dart';
 
 class SelectorListCubit extends Cubit<SelectorListState> {

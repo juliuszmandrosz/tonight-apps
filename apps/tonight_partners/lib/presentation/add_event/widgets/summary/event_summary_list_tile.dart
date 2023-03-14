@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:raver_partners/application/add_event/add_event_step.dart';
-import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_switch_step_button.dart';
-import 'package:raver_partners/presentation/core/raver_partners_headline.dart';
+import 'package:tonight_partners/application/add_event/add_event_step.dart';
+import 'package:tonight_partners/presentation/add_event/widgets/summary/event_summary_switch_step_button.dart';
+import 'package:tonight_partners/presentation/core/tonight_partners_headline.dart';
 
 class EventSummaryListTile extends StatelessWidget {
   final String title;
@@ -23,7 +23,7 @@ class EventSummaryListTile extends StatelessWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          RaverPartnersHeadline(
+          TonightPartnersHeadline(
             text: title,
             isSmallerVersion: true,
           ),

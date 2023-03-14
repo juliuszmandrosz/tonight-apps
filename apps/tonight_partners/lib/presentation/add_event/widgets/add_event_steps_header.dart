@@ -1,10 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_partners/application/add_event/add_event_step.dart';
-import 'package:raver_translations/generated/l10n.dart';
+import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
+import 'package:tonight_partners/application/add_event/add_event_step.dart';
+import 'package:translations/generated/l10n.dart';
 
 class AddEventStepsHeader extends StatelessWidget {
   const AddEventStepsHeader({

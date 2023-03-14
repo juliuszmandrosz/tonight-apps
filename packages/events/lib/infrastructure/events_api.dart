@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:raver_events/domain/domain.dart';
+import 'package:events/domain/domain.dart';
 
 abstract class EventsApi {
   Future<List<dynamic>> getEvents(

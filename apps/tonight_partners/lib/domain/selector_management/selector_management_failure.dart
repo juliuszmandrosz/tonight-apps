@@ -6,5 +6,6 @@ part 'selector_management_failure.freezed.dart';
 class SelectorManagementFailure with _$SelectorManagementFailure {
   const factory SelectorManagementFailure.unexpected() = _Unexpected;
 
-  const factory SelectorManagementFailure.permissionDenied() = _PermissionDenied;
+  const factory SelectorManagementFailure.permissionDenied() =
+      _PermissionDenied;
 }

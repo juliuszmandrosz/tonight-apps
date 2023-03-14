@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:raver_partners/presentation/contact/widgets/contact_mail.dart';
-import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/presentation/contact/widgets/contact_mail.dart';
+import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart';
+import 'package:translations/translations.dart';
 
 class ContactPage extends StatelessWidget {
   const ContactPage({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class ContactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: RaverPartnersAppBar(title: S().contact),
+      appBar: TonightPartnersAppBar(title: S().contact),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: ListView.separated(

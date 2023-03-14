@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:launch_review/launch_review.dart';
-import 'package:raver_partners/presentation/drawer/drawer_tile.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/presentation/drawer/drawer_tile.dart';
+import 'package:translations/translations.dart';
 
 class RateUsDrawerTile extends StatelessWidget {
   const RateUsDrawerTile({Key? key}) : super(key: key);

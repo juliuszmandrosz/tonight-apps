@@ -1,15 +1,15 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:raver/application/auth/username/username_cubit.dart';
-import 'package:raver/injection.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver/presentation/onboarding/widgets/submit_button.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver/presentation/update_username/widgets/username_input.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/generated/l10n.dart';
+import 'package:tonight/application/auth/username/username_cubit.dart';
+import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:tonight/presentation/onboarding/widgets/submit_button.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/update_username/widgets/username_input.dart';
+import 'package:translations/generated/l10n.dart';
 
 class OnboardingUsernamePage extends StatelessWidget {
   const OnboardingUsernamePage({Key? key}) : super(key: key);
@@ -70,7 +70,7 @@ class OnboardingUsernamePage extends StatelessWidget {
                             const SizedBox(height: 40),
                             Align(
                               alignment: Alignment.centerLeft,
-                              child: RaverHeadline(text: S().setYourUsername),
+                              child: TonightHeadline(text: S().setYourUsername),
                             ),
                             const SizedBox(height: 30),
                             const UsernameInput(),

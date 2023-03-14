@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:events/domain/filters/filter/currency_filter.dart';
+import 'package:events/events.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/core/user_location/user_location_cubit.dart';
-import 'package:raver_events/domain/filters/filter/currency_filter.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/core/user_location/user_location_cubit.dart';
+import 'package:translations/translations.dart';
 
 part 'event_filters_cubit.freezed.dart';
 part 'event_filters_state.dart';

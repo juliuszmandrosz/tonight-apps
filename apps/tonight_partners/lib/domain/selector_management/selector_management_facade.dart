@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:raver_partners/domain/selector_management/selector_entity.dart';
-import 'package:raver_partners/domain/selector_management/selector_management_failure.dart';
+import 'package:tonight_partners/domain/selector_management/selector_entity.dart';
+import 'package:tonight_partners/domain/selector_management/selector_management_failure.dart';
 
 abstract class SelectorManagementFacade {
   Future<Either<SelectorManagementFailure, String>>

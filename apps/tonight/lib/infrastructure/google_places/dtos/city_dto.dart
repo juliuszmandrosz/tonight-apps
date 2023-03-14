@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/domain/places/city_entity.dart';
+import 'package:tonight/domain/places/city_entity.dart';
 
 part 'city_dto.freezed.dart';
 part 'city_dto.g.dart';

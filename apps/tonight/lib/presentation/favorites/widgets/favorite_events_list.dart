@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
-import 'package:raver/presentation/events/widgets/event_card.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
+import 'package:tonight/presentation/events/widgets/event_card.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class FavoriteEventsList extends StatelessWidget {
   const FavoriteEventsList({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:common/common.dart';
 
 FirebaseCrashlytics Function() get crashlyticsConfig => () {
       final crashlytics = FirebaseCrashlytics.instance;

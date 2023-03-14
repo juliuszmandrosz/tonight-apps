@@ -3,9 +3,9 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_clubs/domain/domain.dart';
-import 'package:raver_clubs/infrastructure/infrastructure.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:clubs/domain/domain.dart';
+import 'package:clubs/infrastructure/infrastructure.dart';
+import 'package:common/common.dart';
 
 class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
   final FirebaseFirestore _firestore;

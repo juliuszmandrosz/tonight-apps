@@ -1,6 +1,6 @@
 {
-    "name": "raver_scanner",
-    "short_name": "raver_scanner",
+    "name": "tonight_scanner",
+    "short_name": "tonight_scanner",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

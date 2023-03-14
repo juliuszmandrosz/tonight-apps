@@ -1,9 +1,9 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/ticket_checkout/ticket_checkout_cubit.dart';
-import 'package:raver/presentation/core/vip_info.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
+import 'package:tonight/presentation/core/vip_info.dart';
+import 'package:translations/translations.dart';
 
 class TicketCheckoutIsVipSwitch extends StatelessWidget {
   const TicketCheckoutIsVipSwitch({Key? key}) : super(key: key);

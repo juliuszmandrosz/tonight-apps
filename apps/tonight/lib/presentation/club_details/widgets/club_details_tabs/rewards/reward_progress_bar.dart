@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:common/common.dart';
+import 'package:translations/translations.dart';
 
 class RewardProgressBar extends StatelessWidget {
   final int currentEntries;

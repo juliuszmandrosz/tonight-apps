@@ -1,12 +1,12 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:formz/formz.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/add_event/form_inputs/event_name.dart';
-import 'package:raver_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
-import 'package:raver_partners/presentation/event_overview/widgets/dialogs/edit_event_alert_dialog.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/event_name.dart';
+import 'package:tonight_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
+import 'package:tonight_partners/presentation/event_overview/widgets/dialogs/edit_event_alert_dialog.dart';
+import 'package:translations/translations.dart';
 
 class EditEventNameDialog extends HookWidget {
   final BuildContext blocContext;

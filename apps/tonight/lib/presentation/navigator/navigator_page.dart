@@ -1,24 +1,24 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver/presentation/core/raver_app_bar.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/presentation/core/tonight_app_bar.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
-class RaverNavigator extends StatefulWidget {
-  const RaverNavigator({Key? key}) : super(key: key);
+class tonightNavigator extends StatefulWidget {
+  const tonightNavigator({Key? key}) : super(key: key);
 
   @override
-  State<RaverNavigator> createState() => _RaverNavigatorState();
+  State<tonightNavigator> createState() => _tonightNavigatorState();
 }
 
-class _RaverNavigatorState extends State<RaverNavigator> {
+class _tonightNavigatorState extends State<tonightNavigator> {
   var selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-      appBarBuilder: (_, tabsRouter) => const RaverAppBar(),
+      appBarBuilder: (_, tabsRouter) => const TonightAppBar(),
       routes: const [
         EventsRoute(),
         ClubsRoute(),

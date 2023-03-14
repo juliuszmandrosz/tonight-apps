@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:raver_scanner/injection.dart';
-import 'package:raver_scanner/presentation/core/raver_scanner_app.dart';
+import 'package:tonight_scanner/injection.dart';
+import 'package:tonight_scanner/presentation/core/tonight_scanner_app.dart';
 
 Future<void> main() async {
   GoogleFonts.config.allowRuntimeFetching = false;
@@ -33,7 +33,7 @@ Future<void> main() async {
         DeviceOrientation.portraitDown,
       ]);
 
-      runApp(RaverScannerApp());
+      runApp(TonightScannerApp());
     },
     (error, stack) =>
         getIt<FirebaseCrashlytics>().recordError(error, stack, fatal: true),

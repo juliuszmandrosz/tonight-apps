@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_partners/domain/club_sales/club_sales_entity.dart';
+import 'package:tonight_partners/domain/club_sales/club_sales_entity.dart';
 
 part 'club_sales_dto.freezed.dart';
-
 part 'club_sales_dto.g.dart';
 
 @freezed

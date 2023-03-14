@@ -1,21 +1,21 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/application/add_edit_ticket_pool/add_edit_ticket_pool_cubit.dart';
-import 'package:raver_partners/application/club_info/club_info_cubit.dart';
-import 'package:raver_partners/injection.dart';
-import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/save_ticket_pool_button.dart';
-import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/ticket_pool_price_input.dart';
-import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/ticket_pool_quantity_input.dart';
-import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/vip_availability_switch.dart';
-import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/vip_info.dart';
-import 'package:raver_partners/presentation/add_edit_ticket_pool/widgets/vip_price_input.dart';
-import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/add_edit_ticket_pool/add_edit_ticket_pool_cubit.dart';
+import 'package:tonight_partners/application/club_info/club_info_cubit.dart';
+import 'package:tonight_partners/injection.dart';
+import 'package:tonight_partners/presentation/add_edit_ticket_pool/widgets/save_ticket_pool_button.dart';
+import 'package:tonight_partners/presentation/add_edit_ticket_pool/widgets/ticket_pool_price_input.dart';
+import 'package:tonight_partners/presentation/add_edit_ticket_pool/widgets/ticket_pool_quantity_input.dart';
+import 'package:tonight_partners/presentation/add_edit_ticket_pool/widgets/vip_availability_switch.dart';
+import 'package:tonight_partners/presentation/add_edit_ticket_pool/widgets/vip_info.dart';
+import 'package:tonight_partners/presentation/add_edit_ticket_pool/widgets/vip_price_input.dart';
+import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart';
+import 'package:translations/translations.dart';
 
 class AddEditTicketPoolPage extends StatelessWidget {
   final List<TicketPool> currentTicketPools;
@@ -70,7 +70,7 @@ class AddEditTicketPoolPage extends StatelessWidget {
             }
           },
           child: Scaffold(
-            appBar: RaverPartnersAppBar(
+            appBar: TonightPartnersAppBar(
               title: editingTicketPool.fold(
                 () => S().addTicketPool,
                 (_) => S().editTicketPool,

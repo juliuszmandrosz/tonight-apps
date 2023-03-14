@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class EventDetailsClubName extends StatelessWidget {
   final Event event;
@@ -23,7 +23,7 @@ class EventDetailsClubName extends StatelessWidget {
       contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
       title: Align(
         alignment: Alignment.centerLeft,
-        child: RaverHeadline(text: S().clubName, isSmallerVersion: true),
+        child: TonightHeadline(text: S().clubName, isSmallerVersion: true),
       ),
       subtitle: Padding(
         padding: const EdgeInsets.only(top: 15),

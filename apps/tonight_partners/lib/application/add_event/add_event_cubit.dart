@@ -1,38 +1,37 @@
 import 'dart:io';
 
+import 'package:clubs/clubs.dart';
+import 'package:collection/collection.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:events/domain/domain.dart';
+import 'package:events/events.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/domain/domain.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/application/add_event/add_event_step.dart';
-import 'package:raver_partners/application/add_event/form_inputs/artist_name.dart';
-import 'package:raver_partners/application/add_event/form_inputs/description.dart';
-import 'package:raver_partners/application/add_event/form_inputs/dj_channel_url.dart';
-import 'package:raver_partners/application/add_event/form_inputs/dress_code.dart';
-import 'package:raver_partners/application/add_event/form_inputs/end_date_time.dart';
-import 'package:raver_partners/application/add_event/form_inputs/event_name.dart';
-import 'package:raver_partners/application/add_event/form_inputs/event_photo.dart';
-import 'package:raver_partners/application/add_event/form_inputs/facebook_url.dart';
-import 'package:raver_partners/application/add_event/form_inputs/price_at_gate.dart';
-import 'package:raver_partners/application/add_event/form_inputs/start_date_time.dart';
-import 'package:raver_partners/application/add_event/form_inputs/min_age.dart';
-import 'package:raver_partners/application/add_event/form_inputs/musical_genres.dart';
-import 'package:raver_partners/application/club_info/club_info_cubit.dart';
-import 'package:raver_partners/application/core/get_event_failure_message.dart';
-import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
-import 'package:raver_partners/domain/discounts/discount_facade.dart';
-import 'package:raver_partners/domain/discounts/partner_discount_entity.dart';
-import 'package:raver_payments/domain/domain.dart';
-import 'package:raver_translations/raver_translations.dart';
-import 'package:collection/collection.dart';
+import 'package:payments/domain/domain.dart';
+import 'package:tonight_partners/application/add_event/add_event_step.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/artist_name.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/description.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/dj_channel_url.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/dress_code.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/end_date_time.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/event_name.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/event_photo.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/facebook_url.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/min_age.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/musical_genres.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/price_at_gate.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/start_date_time.dart';
+import 'package:tonight_partners/application/club_info/club_info_cubit.dart';
+import 'package:tonight_partners/application/core/get_event_failure_message.dart';
+import 'package:tonight_partners/application/event_notifier/event_notifier_cubit.dart';
+import 'package:tonight_partners/domain/discounts/discount_facade.dart';
+import 'package:tonight_partners/domain/discounts/partner_discount_entity.dart';
+import 'package:translations/translations.dart';
 import 'package:uuid/uuid.dart';
 
 part 'add_event_cubit.freezed.dart';
-
 part 'add_event_state.dart';
 
 class AddEventCubit extends Cubit<AddEventState> {

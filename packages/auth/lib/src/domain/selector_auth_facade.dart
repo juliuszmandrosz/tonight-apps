@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:raver_auth/raver_auth.dart';
+import 'package:auth/auth.dart';
 
 abstract class SelectorAuthFacade {
   Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForSelector({

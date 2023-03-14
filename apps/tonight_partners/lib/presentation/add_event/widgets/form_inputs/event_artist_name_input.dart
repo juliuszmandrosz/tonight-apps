@@ -1,10 +1,10 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_partners/application/add_event/form_inputs/artist_name.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/artist_name.dart';
+import 'package:translations/translations.dart';
 
 class EventArtistNameInput extends HookWidget {
   const EventArtistNameInput({Key? key}) : super(key: key);

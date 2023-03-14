@@ -1,4 +1,4 @@
 ## Features
 
-Firebase authentication for Raver apps
+Firebase authentication for tonight apps
 

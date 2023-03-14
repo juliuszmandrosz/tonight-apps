@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/presentation/events/widgets/event_share_button.dart';
-import 'package:raver_partners/presentation/routes/app_router.dart';
+import 'package:tonight_partners/presentation/events/widgets/event_share_button.dart';
+import 'package:tonight_partners/presentation/routes/app_router.dart';
 
 class EventListTile extends StatelessWidget {
   final Event event;

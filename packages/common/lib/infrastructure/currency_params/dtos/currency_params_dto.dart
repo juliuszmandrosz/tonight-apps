@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/domain/currency_params/currency_params_entity.dart';
+import 'package:common/domain/currency_params/currency_params_entity.dart';
 
 part 'currency_params_dto.freezed.dart';
 

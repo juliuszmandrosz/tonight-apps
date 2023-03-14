@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/infrastructure/infrastructure.dart';
-import 'package:raver_tickets/domain/ticket_entity.dart';
+import 'package:common/infrastructure/infrastructure.dart';
+import 'package:tickets/domain/ticket_entity.dart';
 
 part 'ticket_dto.freezed.dart';
 

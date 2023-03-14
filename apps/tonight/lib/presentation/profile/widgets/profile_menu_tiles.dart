@@ -1,15 +1,15 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:raver/application/terms_of_service/terms_of_service_cubit.dart';
-import 'package:raver/injection.dart';
-import 'package:raver/presentation/profile/widgets/contact_tile.dart';
-import 'package:raver/presentation/profile/widgets/delete_account_tile.dart';
-import 'package:raver/presentation/profile/widgets/privacy_policy_tile.dart';
-import 'package:raver/presentation/profile/widgets/rate_us_tile.dart';
-import 'package:raver/presentation/profile/widgets/sign_out_tile.dart';
-import 'package:raver/presentation/profile/widgets/terms_of_service_tile.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:tonight/application/terms_of_service/terms_of_service_cubit.dart';
+import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/profile/widgets/contact_tile.dart';
+import 'package:tonight/presentation/profile/widgets/delete_account_tile.dart';
+import 'package:tonight/presentation/profile/widgets/privacy_policy_tile.dart';
+import 'package:tonight/presentation/profile/widgets/rate_us_tile.dart';
+import 'package:tonight/presentation/profile/widgets/sign_out_tile.dart';
+import 'package:tonight/presentation/profile/widgets/terms_of_service_tile.dart';
 
 class ProfileMenuTiles extends StatelessWidget {
   const ProfileMenuTiles({Key? key}) : super(key: key);

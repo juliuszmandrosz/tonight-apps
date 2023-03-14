@@ -1,13 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/presentation/core/dots_loading_indicator.dart';
-
-import 'package:raver_partners/presentation/events/widgets/event_list_tile.dart';
-import 'package:raver_partners/presentation/routes/app_router.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/presentation/core/dots_loading_indicator.dart';
+import 'package:tonight_partners/presentation/events/widgets/event_list_tile.dart';
+import 'package:tonight_partners/presentation/routes/app_router.dart';
+import 'package:translations/translations.dart';
 
 class EventList extends StatefulWidget {
   const EventList({Key? key}) : super(key: key);

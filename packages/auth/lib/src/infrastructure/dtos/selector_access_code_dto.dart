@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_auth/raver_auth.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:auth/auth.dart';
+import 'package:common/common.dart';
 
 part 'selector_access_code_dto.freezed.dart';
 

@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver/presentation/tickets/widgets/ticket_card.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/tickets/widgets/ticket_card.dart';
+import 'package:translations/translations.dart';
 
 class TicketsPage extends StatefulWidget {
   const TicketsPage({Key? key}) : super(key: key);
@@ -84,7 +84,7 @@ class _TicketsPageState extends State<TicketsPage> {
                                   children: [
                                     Align(
                                       alignment: Alignment.centerLeft,
-                                      child: RaverHeadline(
+                                      child: TonightHeadline(
                                           text: S().upcomingAndLive),
                                     ),
                                     const SizedBox(height: 20),
@@ -107,8 +107,8 @@ class _TicketsPageState extends State<TicketsPage> {
                                   children: [
                                     Align(
                                       alignment: Alignment.centerLeft,
-                                      child:
-                                          RaverHeadline(text: S().pastTickets),
+                                      child: TonightHeadline(
+                                          text: S().pastTickets),
                                     ),
                                     const SizedBox(height: 20),
                                   ],

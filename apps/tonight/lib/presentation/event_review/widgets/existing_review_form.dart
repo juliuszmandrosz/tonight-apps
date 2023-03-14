@@ -1,16 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/event_review/existing_review/existing_review_cubit.dart';
-import 'package:raver/injection.dart';
-import 'package:raver/presentation/core/ticket_logo_animation.dart';
-import 'package:raver/presentation/event_review/widgets/read_only_rating_indicator.dart';
-import 'package:raver/presentation/event_review/widgets/read_only_review_content.dart';
-import 'package:raver/presentation/event_review/widgets/review_event_date.dart';
-import 'package:raver/presentation/event_review/widgets/review_event_name.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver_tickets/raver_tickets.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tickets/tickets.dart';
+import 'package:tonight/application/event_review/existing_review/existing_review_cubit.dart';
+import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/core/ticket_logo_animation.dart';
+import 'package:tonight/presentation/event_review/widgets/read_only_rating_indicator.dart';
+import 'package:tonight/presentation/event_review/widgets/read_only_review_content.dart';
+import 'package:tonight/presentation/event_review/widgets/review_event_date.dart';
+import 'package:tonight/presentation/event_review/widgets/review_event_name.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class ExistingReviewForm extends StatelessWidget {
   final Ticket ticket;

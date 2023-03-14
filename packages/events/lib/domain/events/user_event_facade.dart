@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:raver_events/domain/domain.dart';
+import 'package:events/domain/domain.dart';
 
 abstract class UserEventFacade {
   Future<Either<UserEventFailure, Event>> getEventById(String eventId);

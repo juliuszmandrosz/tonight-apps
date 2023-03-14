@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:raver_payments/application/core/raver_payment_method.dart';
-import 'package:raver_payments/domain/domain.dart';
+import 'package:payments/application/core/tonight_payment_method.dart';
+import 'package:payments/domain/domain.dart';
 
 abstract class UserPaymentFacade {
   Future<Either<UserPaymentFailure, Unit>> proceedToPayForTicket({
     required String eventId,
     required String currency,
-    required RaverPaymentMethod paymentMethod,
+    required TonightPaymentMethod paymentMethod,
     required double amount,
     String? promotionCode,
     bool isVip = false,
@@ -16,7 +16,7 @@ abstract class UserPaymentFacade {
   Future<Either<UserPaymentFailure, Unit>> proceedToPayForVip({
     required String ticketId,
     required String currency,
-    required RaverPaymentMethod paymentMethod,
+    required TonightPaymentMethod paymentMethod,
     required double amount,
     String? promotionCode,
     bool sendInvoice = false,
@@ -27,7 +27,7 @@ abstract class UserPaymentFacade {
   );
 
   Future<Either<UserPaymentFailure, Unit>> updatePaymentMethod(
-    RaverPaymentMethod paymentMethod,
+    TonightPaymentMethod paymentMethod,
   );
 
   Future<Either<UserPaymentFailure, Unit>> updateInvoiceData({

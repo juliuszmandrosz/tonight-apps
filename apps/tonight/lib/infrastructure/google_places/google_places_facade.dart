@@ -3,10 +3,10 @@ import 'package:dio/dio.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
-import 'package:raver/domain/places/city_entity.dart';
-import 'package:raver/domain/places/places_facade.dart';
-import 'package:raver/domain/places/places_failure.dart';
-import 'package:raver/infrastructure/google_places/dtos/city_dto.dart';
+import 'package:tonight/domain/places/city_entity.dart';
+import 'package:tonight/domain/places/places_facade.dart';
+import 'package:tonight/domain/places/places_failure.dart';
+import 'package:tonight/infrastructure/google_places/dtos/city_dto.dart';
 
 class GooglePlacesFacade implements PlacesFacade {
   final Dio _dio;

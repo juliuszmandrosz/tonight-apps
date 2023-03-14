@@ -1,13 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/past_event_details/past_event_details_cubit.dart';
-import 'package:raver_partners/presentation/core/event_revenue.dart';
-import 'package:raver_partners/presentation/core/ticket_logo_animation.dart';
-
-import 'package:raver_partners/presentation/past_event_details/widgets/past_event_reviews.dart';
-import 'package:raver_partners/presentation/routes/app_router.dart';
+import 'package:tonight_partners/application/past_event_details/past_event_details_cubit.dart';
+import 'package:tonight_partners/presentation/core/event_revenue.dart';
+import 'package:tonight_partners/presentation/core/ticket_logo_animation.dart';
+import 'package:tonight_partners/presentation/past_event_details/widgets/past_event_reviews.dart';
+import 'package:tonight_partners/presentation/routes/app_router.dart';
 
 class PastEventDetailsListView extends StatefulWidget {
   const PastEventDetailsListView({Key? key}) : super(key: key);

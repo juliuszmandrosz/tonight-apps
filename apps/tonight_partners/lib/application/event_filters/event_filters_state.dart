@@ -5,9 +5,9 @@ class EventFiltersState with _$EventFiltersState {
   const EventFiltersState._();
 
   factory EventFiltersState({required EventFilters filters}) =
-  _EventFiltersState;
+      _EventFiltersState;
 
   factory EventFiltersState.initial() => EventFiltersState(
-    filters: EventFilters.empty(),
-  );
+        filters: EventFilters.empty(),
+      );
 }

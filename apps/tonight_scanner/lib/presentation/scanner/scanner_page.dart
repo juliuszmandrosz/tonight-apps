@@ -1,18 +1,18 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
-import 'package:raver_scanner/application/scanner/scanner_cubit.dart';
-import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
-import 'package:raver_scanner/injection.dart';
-import 'package:raver_scanner/presentation/core/raver_scanner_app_bar.dart';
-import 'package:raver_scanner/presentation/core/ticket_logo_animation.dart';
-import 'package:raver_scanner/presentation/scanner/widgets/qr_scanner.dart';
-import 'package:raver_scanner/presentation/scanner/widgets/scan_another_ticket_button.dart';
-import 'package:raver_scanner/presentation/scanner/widgets/scan_result.dart';
-import 'package:raver_scanner/presentation/scanner/widgets/user_rewards.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_scanner/application/current_event/current_event_cubit.dart';
+import 'package:tonight_scanner/application/scanner/scanner_cubit.dart';
+import 'package:tonight_scanner/application/selector_club/selector_club_cubit.dart';
+import 'package:tonight_scanner/injection.dart';
+import 'package:tonight_scanner/presentation/core/ticket_logo_animation.dart';
+import 'package:tonight_scanner/presentation/core/tonight_scanner_app_bar.dart';
+import 'package:tonight_scanner/presentation/scanner/widgets/qr_scanner.dart';
+import 'package:tonight_scanner/presentation/scanner/widgets/scan_another_ticket_button.dart';
+import 'package:tonight_scanner/presentation/scanner/widgets/scan_result.dart';
+import 'package:tonight_scanner/presentation/scanner/widgets/user_rewards.dart';
+import 'package:translations/translations.dart';
 
 class ScannerPage extends StatelessWidget {
   final BuildContext blocContext;
@@ -39,7 +39,7 @@ class ScannerPage extends StatelessWidget {
           floatingActionButton: const ScanAnotherTicketButton(),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
-          appBar: RaverScannerAppBar(title: S().scanTicket),
+          appBar: TonightScannerAppBar(title: S().scanTicket),
           body: BlocBuilder<ScannerCubit, ScannerState>(
             builder: (context, state) {
               switch (state.status) {

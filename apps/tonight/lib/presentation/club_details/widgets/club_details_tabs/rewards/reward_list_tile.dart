@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_rewards/domain/domain.dart';
+import 'package:common/common.dart';
+import 'package:rewards/domain/domain.dart';
 
 class RewardListTile extends StatelessWidget {
   final Reward reward;

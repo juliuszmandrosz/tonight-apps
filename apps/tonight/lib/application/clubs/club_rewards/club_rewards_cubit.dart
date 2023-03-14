@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:common/application/application.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/profile/profile_cubit_hub.dart';
-import 'package:raver/domain/clubs/club_rewards_with_attendance_entity.dart';
-import 'package:raver_common/application/application.dart';
-import 'package:raver_rewards/raver_rewards.dart';
+import 'package:rewards/rewards.dart';
+import 'package:tonight/application/profile/profile_cubit_hub.dart';
+import 'package:tonight/domain/clubs/club_rewards_with_attendance_entity.dart';
 
 part 'club_rewards_cubit.freezed.dart';
 part 'club_rewards_state.dart';

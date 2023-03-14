@@ -1,10 +1,10 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_partners/application/add_event/add_event_step.dart';
-import 'package:raver_partners/presentation/add_event/widgets/summary/event_summary_list_tile.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
+import 'package:tonight_partners/application/add_event/add_event_step.dart';
+import 'package:tonight_partners/presentation/add_event/widgets/summary/event_summary_list_tile.dart';
+import 'package:translations/translations.dart';
 
 class EventSummaryEventName extends StatelessWidget {
   const EventSummaryEventName({Key? key}) : super(key: key);

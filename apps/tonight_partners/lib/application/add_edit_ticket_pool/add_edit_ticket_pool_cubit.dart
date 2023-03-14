@@ -1,21 +1,20 @@
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
+import 'package:clubs/clubs.dart';
+import 'package:collection/collection.dart';
+import 'package:common/extensions/option_extensions.dart';
 import 'package:dartz/dartz.dart';
+import 'package:events/events.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_common/extensions/option_extensions.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/ticket_pool_price.dart';
-import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/ticket_quantity.dart';
-import 'package:raver_partners/application/add_edit_ticket_pool/form_inputs/vip_price.dart';
-import 'package:raver_partners/application/club_info/club_info_cubit.dart';
-import 'package:raver_translations/raver_translations.dart';
-import 'package:collection/collection.dart';
+import 'package:tonight_partners/application/add_edit_ticket_pool/form_inputs/ticket_pool_price.dart';
+import 'package:tonight_partners/application/add_edit_ticket_pool/form_inputs/ticket_quantity.dart';
+import 'package:tonight_partners/application/add_edit_ticket_pool/form_inputs/vip_price.dart';
+import 'package:tonight_partners/application/club_info/club_info_cubit.dart';
+import 'package:translations/translations.dart';
 
 part 'add_edit_ticket_pool_cubit.freezed.dart';
-
 part 'add_edit_ticket_pool_state.dart';
 
 class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {

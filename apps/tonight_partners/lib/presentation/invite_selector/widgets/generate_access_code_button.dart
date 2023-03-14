@@ -1,10 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/invite_selector/invite_selector_cubit.dart';
-import 'package:raver_partners/presentation/core/ticket_logo_animation.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/invite_selector/invite_selector_cubit.dart';
+import 'package:tonight_partners/presentation/core/ticket_logo_animation.dart';
+import 'package:translations/translations.dart';
 
 class GenerateAccessCodeButton extends StatelessWidget {
   const GenerateAccessCodeButton({Key? key}) : super(key: key);

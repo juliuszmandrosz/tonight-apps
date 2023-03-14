@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/domain/domain.dart';
-import 'package:raver_events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
-import 'package:raver_events/infrastructure/event_tickets/dtos/ticket_pool_dto.dart';
-import 'package:raver_events/infrastructure/events/dtos/event_dto.dart';
+import 'package:common/common.dart';
+import 'package:events/domain/domain.dart';
+import 'package:events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
+import 'package:events/infrastructure/event_tickets/dtos/ticket_pool_dto.dart';
+import 'package:events/infrastructure/events/dtos/event_dto.dart';
 import 'package:collection/collection.dart';
 
 class FirebaseEventTicketsFacade

@@ -1,10 +1,10 @@
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/application/event_filters/event_filters_cubit.dart';
-import 'package:raver_partners/injection.dart';
-import 'package:raver_partners/presentation/events/widgets/events_filters_section.dart';
-import 'package:raver_partners/presentation/events/widgets/event_list.dart';
+import 'package:tonight_partners/application/event_filters/event_filters_cubit.dart';
+import 'package:tonight_partners/injection.dart';
+import 'package:tonight_partners/presentation/events/widgets/event_list.dart';
+import 'package:tonight_partners/presentation/events/widgets/events_filters_section.dart';
 
 class PastEventsTab extends StatefulWidget {
   const PastEventsTab({Key? key}) : super(key: key);

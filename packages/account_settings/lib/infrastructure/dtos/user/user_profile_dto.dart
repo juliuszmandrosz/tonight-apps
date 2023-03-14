@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_account_settings/domain/user/user_profile_entity.dart';
+import 'package:account_settings/domain/user/user_profile_entity.dart';
 
 part 'user_profile_dto.freezed.dart';
 

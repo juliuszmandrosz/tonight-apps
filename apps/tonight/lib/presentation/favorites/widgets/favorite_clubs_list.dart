@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/clubs/club_favorite/club_favorite_cubit.dart';
-import 'package:raver/presentation/clubs/widgets/club_card.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/clubs/club_favorite/club_favorite_cubit.dart';
+import 'package:tonight/presentation/clubs/widgets/club_card.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class FavoriteClubsList extends StatelessWidget {
   static const heroPhrase = 'favoriteClubsHero';
