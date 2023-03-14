@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_clubs/infrastructure/filters/filter/city_filter.dart';
-import 'package:raver_clubs/infrastructure/filters/filter/currency_filter.dart';
-import 'package:raver_clubs/infrastructure/filters/filter/max_distance_filter.dart';
-import 'package:raver_clubs/infrastructure/filters/filter/phrase_filter.dart';
+import 'package:clubs/infrastructure/filters/filter/city_filter.dart';
+import 'package:clubs/infrastructure/filters/filter/currency_filter.dart';
+import 'package:clubs/infrastructure/filters/filter/max_distance_filter.dart';
+import 'package:clubs/infrastructure/filters/filter/phrase_filter.dart';
 
 part 'club_filters_entity.freezed.dart';
 

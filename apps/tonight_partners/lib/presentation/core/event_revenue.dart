@@ -1,10 +1,10 @@
+import 'package:common/common.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/presentation/core/revenue_tile.dart';
-import 'package:raver_partners/presentation/core/raver_partners_headline.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/presentation/core/revenue_tile.dart';
+import 'package:tonight_partners/presentation/core/tonight_partners_headline.dart';
+import 'package:translations/translations.dart';
 
 class EventRevenue extends StatelessWidget {
   final TicketSales ticketSales;
@@ -22,7 +22,7 @@ class EventRevenue extends StatelessWidget {
       children: [
         Align(
           alignment: Alignment.centerLeft,
-          child: RaverPartnersHeadline(
+          child: TonightPartnersHeadline(
             text: S().statistics,
             isSmallerVersion: true,
           ),

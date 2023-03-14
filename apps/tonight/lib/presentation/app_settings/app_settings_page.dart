@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/app_settings/widgets/change_locale.dart';
-import 'package:raver/presentation/core/raver_app_bar.dart';
-import 'package:raver_translations/generated/l10n.dart';
+import 'package:tonight/presentation/app_settings/widgets/change_locale.dart';
+import 'package:tonight/presentation/core/tonight_app_bar.dart';
+import 'package:translations/generated/l10n.dart';
 
 class AppSettingsPage extends StatelessWidget {
   const AppSettingsPage({Key? key}) : super(key: key);
@@ -9,7 +9,7 @@ class AppSettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: RaverAppBar(
+      appBar: TonightAppBar(
         title: S().settings,
       ),
       body: const Padding(

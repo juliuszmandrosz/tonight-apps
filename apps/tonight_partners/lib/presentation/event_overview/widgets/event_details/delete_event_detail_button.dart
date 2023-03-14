@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:common/common.dart';
 
 class DeleteEventDetailButton extends StatelessWidget {
   final VoidCallback onDeleted;

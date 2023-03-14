@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:raver_rewards/raver_rewards.dart';
-import 'package:raver_scanner/presentation/core/raver_scanner_headline.dart';
-import 'package:raver_scanner/presentation/scanner/widgets/reward_list_tile.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:rewards/rewards.dart';
+import 'package:tonight_scanner/presentation/core/tonight_scanner_headline.dart';
+import 'package:tonight_scanner/presentation/scanner/widgets/reward_list_tile.dart';
+import 'package:translations/translations.dart';
 
 class UserRewards extends StatelessWidget {
   final List<Reward> userRewards;
@@ -19,7 +19,7 @@ class UserRewards extends StatelessWidget {
         const SizedBox(height: 50),
         Align(
           alignment: Alignment.centerLeft,
-          child: RaverScannerHeadline(text: S().rewards(2)),
+          child: TonightScannerHeadline(text: S().rewards(2)),
         ),
         const SizedBox(height: 20),
         ListView.separated(

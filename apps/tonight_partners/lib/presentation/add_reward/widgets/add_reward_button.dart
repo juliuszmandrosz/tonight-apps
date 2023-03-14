@@ -1,10 +1,10 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:formz/formz.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/add_edit_reward/add_reward_cubit.dart';
+import 'package:tonight_partners/application/add_edit_reward/add_reward_cubit.dart';
 
 class AddRewardButton extends StatelessWidget {
   const AddRewardButton({Key? key}) : super(key: key);

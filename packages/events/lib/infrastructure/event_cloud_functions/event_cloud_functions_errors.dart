@@ -1,4 +1,4 @@
-import 'package:raver_events/domain/events/failures/partner_event_failure.dart';
+import 'package:events/domain/events/failures/partner_event_failure.dart';
 
 const eventCloudFunctionsErrors = {
   'cancel-time-expired': PartnerEventFailure.cancelTimeExpired(),

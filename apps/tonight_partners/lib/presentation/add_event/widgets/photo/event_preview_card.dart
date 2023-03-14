@@ -1,7 +1,7 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
+import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
 
 class EventPreviewCard extends StatelessWidget {
   const EventPreviewCard({Key? key}) : super(key: key);

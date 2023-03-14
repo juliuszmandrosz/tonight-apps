@@ -2,13 +2,12 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_partners/application/add_edit_reward/form_inputs/required_entries.dart';
-import 'package:raver_partners/application/add_edit_reward/form_inputs/reward_description.dart';
-import 'package:raver_rewards/raver_rewards.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:rewards/rewards.dart';
+import 'package:tonight_partners/application/add_edit_reward/form_inputs/required_entries.dart';
+import 'package:tonight_partners/application/add_edit_reward/form_inputs/reward_description.dart';
+import 'package:translations/translations.dart';
 
 part 'add_reward_cubit.freezed.dart';
-
 part 'add_reward_state.dart';
 
 class AddRewardCubit extends Cubit<AddRewardState> {

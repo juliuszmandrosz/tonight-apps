@@ -1,10 +1,10 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/clubs/club_details/club_photos/club_photos_bloc.dart';
-import 'package:raver/injection.dart';
-import 'package:raver/presentation/club_details/widgets/club_details_tabs/photos/club_photo.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/clubs/club_details/club_photos/club_photos_bloc.dart';
+import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/club_details/widgets/club_details_tabs/photos/club_photo.dart';
+import 'package:translations/translations.dart';
 
 class ClubPhotos extends StatefulWidget {
   const ClubPhotos({

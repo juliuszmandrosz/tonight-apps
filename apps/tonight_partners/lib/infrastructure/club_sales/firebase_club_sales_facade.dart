@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/domain/club_sales/club_sales_entity.dart';
-import 'package:raver_partners/domain/club_sales/club_sales_facade.dart';
-import 'package:raver_partners/domain/club_sales/club_sales_failure.dart';
-import 'package:raver_partners/infrastructure/club_sales/dtos/club_sales_dto.dart';
+import 'package:tonight_partners/domain/club_sales/club_sales_entity.dart';
+import 'package:tonight_partners/domain/club_sales/club_sales_facade.dart';
+import 'package:tonight_partners/domain/club_sales/club_sales_failure.dart';
+import 'package:tonight_partners/infrastructure/club_sales/dtos/club_sales_dto.dart';
 
 class FirebaseClubSalesFacade implements ClubSalesFacade {
   final FirebaseFirestore _firestore;

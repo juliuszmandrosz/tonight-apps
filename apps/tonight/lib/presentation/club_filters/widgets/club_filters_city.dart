@@ -1,13 +1,13 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
-import 'package:raver/application/core/places/places_cubit.dart';
-import 'package:raver/domain/places/city_entity.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:tonight/application/clubs/club_filters/club_filters_cubit.dart';
+import 'package:tonight/application/core/places/places_cubit.dart';
+import 'package:tonight/domain/places/city_entity.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:translations/translations.dart';
 
 class ClubFiltersCity extends StatefulWidget {
   const ClubFiltersCity({Key? key}) : super(key: key);
@@ -53,7 +53,7 @@ class _ClubFiltersCityState extends State<ClubFiltersCity> {
                   children: [
                     Row(
                       children: [
-                        RaverHeadline(
+                        TonightHeadline(
                           text: S().city,
                           isSmallerVersion: true,
                         )

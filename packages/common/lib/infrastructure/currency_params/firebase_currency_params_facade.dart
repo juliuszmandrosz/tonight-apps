@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_common/infrastructure/currency_params/dtos/currency_params_dto.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:common/infrastructure/currency_params/dtos/currency_params_dto.dart';
+import 'package:common/common.dart';
 
 class FirebaseCurrencyParamsFacade implements CurrencyParamsFacade {
   final FirebaseFirestore _firestore;

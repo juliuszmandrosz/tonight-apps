@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver/presentation/events_details/utils/event_details_formatters.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
+import 'package:tonight/presentation/events_details/utils/event_details_formatters.dart';
 
 class EventTagsInfo extends StatelessWidget {
   final Event event;

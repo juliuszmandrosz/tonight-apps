@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/clubs/club_filters/club_filters_cubit.dart';
+import 'package:translations/translations.dart';
 
 class ClubSearchField extends StatelessWidget {
   const ClubSearchField({Key? key}) : super(key: key);

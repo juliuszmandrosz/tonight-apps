@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/domain/available_filters/available_filters_entity.dart';
-import 'package:raver_common/domain/available_filters/available_filters_facade.dart';
-import 'package:raver_common/domain/available_filters/available_filters_failure.dart';
+import 'package:common/domain/available_filters/available_filters_entity.dart';
+import 'package:common/domain/available_filters/available_filters_facade.dart';
+import 'package:common/domain/available_filters/available_filters_failure.dart';
 
 part 'available_filters_cubit.freezed.dart';
 
@@ -18,17 +18,15 @@ class AvailableFiltersCubit extends Cubit<AvailableFiltersState> {
     emit(const AvailableFiltersState.loadInProgress());
 
     final failureOrSuccess =
-    await _availableFiltersFacade.getAvailableFilters();
+        await _availableFiltersFacade.getAvailableFilters();
 
     failureOrSuccess.fold(
-          (failure) =>
-          emit(
-            AvailableFiltersState.loadFailure(failure),
-          ),
-          (filters) =>
-          emit(
-            AvailableFiltersState.loadSuccess(filters),
-          ),
+      (failure) => emit(
+        AvailableFiltersState.loadFailure(failure),
+      ),
+      (filters) => emit(
+        AvailableFiltersState.loadSuccess(filters),
+      ),
     );
   }
 }

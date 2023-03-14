@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:raver_common/domain/errors/invalid_operation_error.dart';
+import 'package:common/domain/errors/invalid_operation_error.dart';
 
 extension OptionX<T> on Option<T> {
   /// Throws [InvalidOperationError]

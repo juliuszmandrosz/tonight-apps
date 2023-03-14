@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 extension BuildContextX on BuildContext {
   String getCurrencySymbol() {

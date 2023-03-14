@@ -53,18 +53,20 @@ class DefaultFirebaseOptions {
     apiKey: 'AIzaSyB0_MbQFy78XMQufSUNdg08H2gztVDZwbI',
     appId: '1:98730591004:android:7e99e2d387252529a0b0d9',
     messagingSenderId: '98730591004',
-    projectId: 'tonight-raver',
-    storageBucket: 'tonight-raver.appspot.com',
+    projectId: 'tonight-tonight',
+    storageBucket: 'tonight-tonight.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyD8f2gV9Mq14LXFYKr1DjmEmjK-Qrt3PwI',
     appId: '1:98730591004:ios:9d1e77b1370d5201a0b0d9',
     messagingSenderId: '98730591004',
-    projectId: 'tonight-raver',
-    storageBucket: 'tonight-raver.appspot.com',
-    androidClientId: '98730591004-239hv29qt7rqdrh88bqg511uipouj9di.apps.googleusercontent.com',
-    iosClientId: '98730591004-loojab9i15qtlab8kgknc3ebpajgf4gf.apps.googleusercontent.com',
+    projectId: 'tonight-tonight',
+    storageBucket: 'tonight-tonight.appspot.com',
+    androidClientId:
+        '98730591004-239hv29qt7rqdrh88bqg511uipouj9di.apps.googleusercontent.com',
+    iosClientId:
+        '98730591004-loojab9i15qtlab8kgknc3ebpajgf4gf.apps.googleusercontent.com',
     iosBundleId: 'com.raverteam.tonightScanner',
   );
 }

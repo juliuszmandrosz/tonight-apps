@@ -1,4 +1,4 @@
-import 'package:raver_events/raver_events.dart';
+import 'package:events/events.dart';
 
 bool checkIfEventIsLive(Event event) {
   if (event.isCanceled) return false;

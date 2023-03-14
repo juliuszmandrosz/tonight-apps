@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_events/raver_events.dart';
+import 'package:events/events.dart';
 
 part 'event_filters_cubit.freezed.dart';
 

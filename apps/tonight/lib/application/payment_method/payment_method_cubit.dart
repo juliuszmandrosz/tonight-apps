@@ -1,11 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:collection/collection.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_payments/application/core/raver_payment_method.dart';
-import 'package:raver_payments/domain/domain.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:payments/application/core/tonight_payment_method.dart';
+import 'package:payments/domain/domain.dart';
+import 'package:translations/translations.dart';
 
 part 'payment_method_cubit.freezed.dart';
 part 'payment_method_state.dart';
@@ -26,7 +25,7 @@ class PaymentMethodCubit extends Cubit<PaymentMethodState> {
     );
   }
 
-  paymentMethodChanged(RaverPaymentMethod paymentMethod) {
+  paymentMethodChanged(TonightPaymentMethod paymentMethod) {
     emit(state.copyWith(selectedPaymentMethod: paymentMethod));
   }
 

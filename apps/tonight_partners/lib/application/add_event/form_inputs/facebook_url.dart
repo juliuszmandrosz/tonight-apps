@@ -1,5 +1,5 @@
 import 'package:formz/formz.dart';
-import 'package:raver_translations/generated/l10n.dart';
+import 'package:translations/generated/l10n.dart';
 import 'package:validators/validators.dart';
 
 enum FacebookUrlError { empty, invalidUrl, notFacebook }

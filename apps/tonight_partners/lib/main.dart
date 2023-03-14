@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:raver_partners/firebase_options.dart';
-import 'package:raver_partners/injection.dart';
-import 'package:raver_partners/presentation/core/raver_partners_app.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:tonight_partners/firebase_options.dart';
+import 'package:tonight_partners/injection.dart';
+import 'package:tonight_partners/presentation/core/tonight_partners_app.dart';
 
 Future<void> main() async {
   GoogleFonts.config.allowRuntimeFetching = false;
@@ -41,7 +41,7 @@ Future<void> main() async {
 
       _configureTimeAgo();
 
-      runApp(RaverPartnersApp());
+      runApp(TonightPartnersApp());
     },
     (error, stack) =>
         FirebaseCrashlytics.instance.recordError(error, stack, fatal: true),

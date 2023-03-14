@@ -1,10 +1,10 @@
+import 'package:common/common.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/commons/icons/social_icon_with_title.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver/presentation/events_details/widgets/event_location_row.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/presentation/commons/icons/social_icon_with_title.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:tonight/presentation/events_details/widgets/event_location_row.dart';
+import 'package:translations/translations.dart';
 
 class EventDetailsAdditionalInfo extends StatelessWidget {
   final Event event;
@@ -28,7 +28,7 @@ class EventDetailsAdditionalInfo extends StatelessWidget {
       children: [
         Align(
           alignment: Alignment.centerLeft,
-          child: RaverHeadline(
+          child: TonightHeadline(
             text: S().urlLinks,
             isSmallerVersion: true,
           ),

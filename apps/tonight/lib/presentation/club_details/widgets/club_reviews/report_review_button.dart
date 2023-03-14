@@ -1,11 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:clubs/clubs.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:raver/application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
+import 'package:translations/translations.dart';
 
 class ReportReviewButton extends StatelessWidget {
   final Review review;

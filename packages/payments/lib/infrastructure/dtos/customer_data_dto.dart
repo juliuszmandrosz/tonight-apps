@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_payments/domain/domain.dart';
+import 'package:payments/domain/domain.dart';
 
 part 'customer_data_dto.freezed.dart';
 

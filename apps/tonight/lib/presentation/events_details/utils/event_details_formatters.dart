@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:common/common.dart';
+import 'package:events/events.dart';
+import 'package:translations/translations.dart';
 
 String displayMusicalGenres(
   List<String> musicalGenres,

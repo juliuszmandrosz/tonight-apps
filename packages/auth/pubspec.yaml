@@ -1,49 +1,33 @@
-name: raver_auth
+name: auth
 description: A new Flutter package project.
 version: 0.0.1
 publish_to: none
 
 environment:
-  sdk: ">=2.16.1 <3.0.0"
+  sdk: '>=2.18.0 <3.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  bloc: ^8.0.3
-  dartz: ^0.10.1
-  logger: ^1.1.0
-  firebase_core: ^2.1.1
-  firebase_auth: ^4.1.1
-  google_sign_in: ^5.2.4
-  intl: ^0.17.0
-  freezed_annotation: ^2.0.3
-  cloud_functions: ^4.0.3
-  formz: ^0.4.1
-  equatable: ^2.0.3
-  json_serializable: ^6.1.5
-  firebase_crashlytics: ^3.0.4
-  dio: ^4.0.6
-  sign_in_with_apple: ^4.0.0
+  # OAuth
+  google_sign_in: ^6.0.2
+  sign_in_with_apple: ^4.3.0
+
+  # Cryptographic hashing
   crypto: ^3.0.2
-  flutter_dotenv: ^5.0.2
 
-  raver_translations:
-    git:
-      url: git@github.com:juliuszmandrosz/RaverTranslations.git
+  common:
+    path: ../common
 
-
-  raver_common:
-    git:
-      url: git@github.com:juliuszmandrosz/RaverCommon.git
+  translations:
+    path: ../translations
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
-  build_runner: ^2.1.8
-  freezed: ^2.0.3
+  flutter_lints: ^2.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

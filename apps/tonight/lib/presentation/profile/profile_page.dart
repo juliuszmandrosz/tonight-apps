@@ -1,17 +1,17 @@
+import 'package:auth/auth.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:raver/application/profile/profile_cubit.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver/presentation/core/ticket_logo_animation.dart';
-import 'package:raver/presentation/profile/widgets/profile_menu_tiles.dart';
-import 'package:raver/presentation/profile/widgets/social_media/social_media_row.dart';
-import 'package:raver/presentation/profile/widgets/username_row.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver_auth/raver_auth.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:tonight/application/profile/profile_cubit.dart';
+import 'package:tonight/presentation/core/ticket_logo_animation.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:tonight/presentation/profile/widgets/profile_menu_tiles.dart';
+import 'package:tonight/presentation/profile/widgets/social_media/social_media_row.dart';
+import 'package:tonight/presentation/profile/widgets/username_row.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -76,7 +76,7 @@ class ProfilePage extends StatelessWidget {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),
-                            child: RaverHeadline(
+                            child: TonightHeadline(
                               text: state.user.username
                                   .substring(0, 2)
                                   .toUpperCase(),

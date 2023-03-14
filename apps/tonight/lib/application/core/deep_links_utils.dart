@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 Future<void> handleDeepLink(
   BuildContext context,

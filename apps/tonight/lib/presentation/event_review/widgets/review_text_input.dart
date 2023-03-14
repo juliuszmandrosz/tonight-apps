@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:raver/application/event_review/new_review/event_review_cubit.dart';
-import 'package:raver/application/event_review/new_review/form_inputs/review_content_input.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/event_review/new_review/event_review_cubit.dart';
+import 'package:tonight/application/event_review/new_review/form_inputs/review_content_input.dart';
+import 'package:translations/translations.dart';
 
 class ReviewTextInput extends StatelessWidget {
   const ReviewTextInput({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/add_edit_ticket_pool/add_edit_ticket_pool_cubit.dart';
+import 'package:common/common.dart';
+import 'package:tonight_partners/application/add_edit_ticket_pool/add_edit_ticket_pool_cubit.dart';
 
 String getMaxPriceWithCurrency(AddEditTicketPoolState state) {
   final maxPrice = _getCurrencyParams(state).maxTicketPrice;

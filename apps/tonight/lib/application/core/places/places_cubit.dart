@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:common/common.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/domain/places/city_entity.dart';
-import 'package:raver/domain/places/places_facade.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:tonight/domain/places/city_entity.dart';
+import 'package:tonight/domain/places/places_facade.dart';
 
 part 'places_cubit.freezed.dart';
 part 'places_state.dart';

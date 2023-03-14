@@ -1,4 +1,4 @@
-import 'package:raver_common/application/application.dart';
+import 'package:common/application/application.dart';
 
 extension CubitStatusX on CubitStatus {
   bool isInitial() {

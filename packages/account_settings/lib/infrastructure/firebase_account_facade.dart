@@ -3,11 +3,11 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_account_settings/domain/user_profile_failure.dart';
-import 'package:raver_account_settings/domain/user/user_profile_entity.dart';
-import 'package:raver_account_settings/domain/user_account_facade.dart';
-import 'package:raver_auth/raver_auth.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:account_settings/domain/user_profile_failure.dart';
+import 'package:account_settings/domain/user/user_profile_entity.dart';
+import 'package:account_settings/domain/user_account_facade.dart';
+import 'package:auth/auth.dart';
+import 'package:common/common.dart';
 import 'dtos/user/user_profile_dto.dart';
 
 class FirebaseAccountFacade implements UserAccountFacade {

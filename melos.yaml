@@ -4,10 +4,6 @@ packages:
   - apps/**
   - packages/**
 
-command:
-  bootstrap:
-    usePubspecOverrides: true
-
 scripts:
   analyze:
     run: melos exec -- "flutter analyze"
@@ -20,3 +16,4 @@ scripts:
   test:
     run: melos exec --dir-exists=test -- "flutter test"
     description: Run `flutter test` in all packages
+

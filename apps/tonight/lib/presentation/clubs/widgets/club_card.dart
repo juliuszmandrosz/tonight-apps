@@ -1,14 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:clubs/clubs.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver/presentation/clubs/widgets/club_favorite_button.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/presentation/clubs/widgets/club_favorite_button.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class ClubCard extends StatelessWidget {
   final Club _club;

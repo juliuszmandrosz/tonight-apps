@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
+import 'package:common/common.dart';
+import 'package:events/events.dart';
 
 class CurrentEvent extends StatelessWidget {
   final Event event;

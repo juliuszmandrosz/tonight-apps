@@ -1,24 +1,24 @@
 import 'dart:convert';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:raver/application/profile/profile_cubit.dart';
-import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
-import 'package:raver/application/ticket_qr/ticket_qr_cubit.dart';
-import 'package:raver/injection.dart';
-import 'package:raver/presentation/core/raver_app_bar.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver/presentation/core/ticket_logo_animation.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver/presentation/ticket_qr/widgets/ticket_return_button.dart';
-import 'package:raver/presentation/ticket_qr/widgets/upgrade_to_vip_button.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_tickets/raver_tickets.dart';
-import 'package:raver_translations/raver_translations.dart';
 import 'package:screen_brightness/screen_brightness.dart';
+import 'package:tickets/tickets.dart';
+import 'package:tonight/application/profile/profile_cubit.dart';
+import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
+import 'package:tonight/application/ticket_qr/ticket_qr_cubit.dart';
+import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/core/ticket_logo_animation.dart';
+import 'package:tonight/presentation/core/tonight_app_bar.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/ticket_qr/widgets/ticket_return_button.dart';
+import 'package:tonight/presentation/ticket_qr/widgets/upgrade_to_vip_button.dart';
+import 'package:translations/translations.dart';
 
 class TicketQrPage extends StatefulWidget {
   final Ticket ticket;
@@ -76,7 +76,7 @@ class _TicketQrPageState extends State<TicketQrPage> {
           builder: (context, state) {
             final ticketInState = state.ticket.getOrCrash();
             return Scaffold(
-              appBar: RaverAppBar(title: S().tickets(1)),
+              appBar: TonightAppBar(title: S().tickets(1)),
               body: Padding(
                 padding: const EdgeInsets.only(top: 50, bottom: 30),
                 child: Center(
@@ -92,7 +92,7 @@ class _TicketQrPageState extends State<TicketQrPage> {
                       if (ticketInState.isVip)
                         Padding(
                           padding: const EdgeInsets.only(top: 20),
-                          child: RaverHeadline(text: S().vip),
+                          child: TonightHeadline(text: S().vip),
                         ),
                       const Spacer(),
                       if (!ticketInState.isVip && state.isVipEnabled)

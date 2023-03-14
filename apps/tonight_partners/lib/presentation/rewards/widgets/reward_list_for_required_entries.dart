@@ -1,8 +1,8 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/presentation/rewards/widgets/reward_list_tile.dart';
-import 'package:raver_rewards/raver_rewards.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:rewards/rewards.dart';
+import 'package:tonight_partners/presentation/rewards/widgets/reward_list_tile.dart';
+import 'package:translations/translations.dart';
 
 class RewardListForRequiredEntries extends StatelessWidget {
   final int requiredEntries;

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:clubs/clubs.dart';
+import 'package:common/common.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class ReviewTitle extends StatelessWidget {

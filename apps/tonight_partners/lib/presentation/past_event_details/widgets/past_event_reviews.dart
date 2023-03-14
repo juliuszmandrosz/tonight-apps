@@ -1,11 +1,11 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/past_event_details/past_event_details_cubit.dart';
-import 'package:raver_partners/presentation/core/raver_partners_headline.dart';
-import 'package:raver_partners/presentation/past_event_details/widgets/review_list_tile.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/past_event_details/past_event_details_cubit.dart';
+import 'package:tonight_partners/presentation/core/tonight_partners_headline.dart';
+import 'package:tonight_partners/presentation/past_event_details/widgets/review_list_tile.dart';
+import 'package:translations/translations.dart';
 
 class PastEventReviews extends StatelessWidget {
   const PastEventReviews({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class PastEventReviews extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.centerLeft,
-              child: RaverPartnersHeadline(
+              child: TonightPartnersHeadline(
                 text: state.reviews.isEmpty ? S().noOpinions : S().opinions(2),
                 isSmallerVersion: true,
               ),

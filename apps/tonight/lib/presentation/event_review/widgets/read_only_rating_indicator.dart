@@ -1,9 +1,9 @@
+import 'package:clubs/clubs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:translations/translations.dart';
 
 class ReadOnlyRatingIndicator extends StatelessWidget {
   final Review review;
@@ -15,7 +15,7 @@ class ReadOnlyRatingIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        RaverHeadline(
+        TonightHeadline(
           text: S().yourRate,
           isSmallerVersion: true,
         ),

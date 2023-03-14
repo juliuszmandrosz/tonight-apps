@@ -1,6 +1,6 @@
 import 'package:formz/formz.dart';
 import 'package:intl/intl.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 enum CountryCodeError { empty }
 

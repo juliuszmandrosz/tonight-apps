@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_clubs/domain/domain.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:clubs/domain/domain.dart';
+import 'package:common/common.dart';
+import 'package:events/events.dart';
+import 'package:translations/translations.dart';
 
 part 'past_event_details_cubit.freezed.dart';
 

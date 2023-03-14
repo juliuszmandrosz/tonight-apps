@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:raver_payments/application/core/raver_payment_method.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:payments/application/core/tonight_payment_method.dart';
+import 'package:translations/translations.dart';
 
 final paymentMethodsTranslations = {
-  RaverPaymentMethod.card: S().card,
-  RaverPaymentMethod.p24: 'Przelewy24 / BLIK',
-  RaverPaymentMethod.wallet: Platform.isIOS ? 'Apple Pay' : 'Google Pay',
+  TonightPaymentMethod.card: S().card,
+  TonightPaymentMethod.p24: 'Przelewy24 / BLIK',
+  TonightPaymentMethod.wallet: Platform.isIOS ? 'Apple Pay' : 'Google Pay',
 };

@@ -1,12 +1,12 @@
+import 'package:common/common.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/application/past_event_details/past_event_details_cubit.dart';
-import 'package:raver_partners/injection.dart';
-import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
-import 'package:raver_partners/presentation/past_event_details/widgets/past_event_details_list_view.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/past_event_details/past_event_details_cubit.dart';
+import 'package:tonight_partners/injection.dart';
+import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart';
+import 'package:tonight_partners/presentation/past_event_details/widgets/past_event_details_list_view.dart';
+import 'package:translations/translations.dart';
 
 class PastEventDetailsPage extends StatelessWidget {
   final Event event;
@@ -35,7 +35,7 @@ class PastEventDetailsPage extends StatelessWidget {
           }
         },
         child: Scaffold(
-          appBar: RaverPartnersAppBar(title: S().eventOverview),
+          appBar: TonightPartnersAppBar(title: S().eventOverview),
           body: const Padding(
             padding: EdgeInsets.all(15),
             child: PastEventDetailsListView(),

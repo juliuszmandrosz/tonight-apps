@@ -2,8 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_scanner/application/scanner/scanner_cubit.dart';
+import 'package:common/common.dart';
+import 'package:tonight_scanner/application/scanner/scanner_cubit.dart';
 
 class ScanResult extends StatelessWidget {
   final Color color;

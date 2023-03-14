@@ -1,11 +1,11 @@
+import 'package:common/common.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver/presentation/events_details/utils/event_details_formatters.dart';
-import 'package:raver/presentation/events_details/widgets/tiles/event_detail_tile.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:tonight/presentation/events_details/utils/event_details_formatters.dart';
+import 'package:tonight/presentation/events_details/widgets/tiles/event_detail_tile.dart';
+import 'package:translations/translations.dart';
 
 class EventDetailsSection extends StatelessWidget {
   final Event event;
@@ -26,7 +26,7 @@ class EventDetailsSection extends StatelessWidget {
       children: [
         Align(
           alignment: Alignment.centerLeft,
-          child: RaverHeadline(text: S().details, isSmallerVersion: true),
+          child: TonightHeadline(text: S().details, isSmallerVersion: true),
         ),
         const SizedBox(height: 15),
         GridView.count(

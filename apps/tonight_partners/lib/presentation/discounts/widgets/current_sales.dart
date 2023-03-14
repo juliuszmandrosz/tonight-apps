@@ -1,12 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/discounts/discounts_cubit.dart';
-import 'package:raver_partners/presentation/core/revenue_tile.dart';
-import 'package:raver_partners/presentation/core/raver_partners_headline.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/discounts/discounts_cubit.dart';
+import 'package:tonight_partners/presentation/core/revenue_tile.dart';
+import 'package:tonight_partners/presentation/core/tonight_partners_headline.dart';
+import 'package:translations/translations.dart';
 
 class CurrentSales extends StatelessWidget {
   const CurrentSales({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class CurrentSales extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.centerLeft,
-              child: RaverPartnersHeadline(
+              child: TonightPartnersHeadline(
                 text: S().sales,
                 isSmallerVersion: true,
               ),

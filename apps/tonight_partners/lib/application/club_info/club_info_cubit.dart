@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:clubs/clubs.dart';
+import 'package:common/common.dart';
 
 part 'club_info_cubit.freezed.dart';
 

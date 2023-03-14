@@ -6,14 +6,14 @@ abstract class PaymentMethodState with _$PaymentMethodState {
 
   factory PaymentMethodState({
     required Option<CustomerData> updatedCustomerData,
-    required RaverPaymentMethod selectedPaymentMethod,
+    required TonightPaymentMethod selectedPaymentMethod,
     required CubitStatus cubitStatus,
     required Option<String> errorMessage,
   }) = _PaymentMethodState;
 
   factory PaymentMethodState.initial() => PaymentMethodState(
         updatedCustomerData: none(),
-        selectedPaymentMethod: RaverPaymentMethod.card,
+        selectedPaymentMethod: TonightPaymentMethod.card,
         cubitStatus: CubitStatus.initial,
         errorMessage: none(),
       );

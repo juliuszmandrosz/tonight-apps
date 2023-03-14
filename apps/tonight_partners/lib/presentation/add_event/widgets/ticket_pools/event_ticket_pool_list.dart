@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_partners/presentation/add_event/widgets/ticket_pools/event_ticket_pool_list_tile.dart';
-import 'package:raver_partners/presentation/routes/app_router.dart';
+import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
+import 'package:tonight_partners/presentation/add_event/widgets/ticket_pools/event_ticket_pool_list_tile.dart';
+import 'package:tonight_partners/presentation/routes/app_router.dart';
 
 class EventTicketPoolList extends StatelessWidget {
   const EventTicketPoolList({Key? key}) : super(key: key);

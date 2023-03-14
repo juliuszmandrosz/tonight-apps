@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:clubs/clubs.dart';
+import 'package:common/common.dart';
+import 'package:translations/translations.dart';
 
 part 'club_reviews_bloc.freezed.dart';
 part 'club_reviews_event.dart';

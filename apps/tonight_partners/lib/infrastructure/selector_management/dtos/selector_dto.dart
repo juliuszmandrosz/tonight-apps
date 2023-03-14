@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_partners/domain/selector_management/selector_entity.dart';
+import 'package:tonight_partners/domain/selector_management/selector_entity.dart';
 
 part 'selector_dto.freezed.dart';
-
 part 'selector_dto.g.dart';
 
 @freezed

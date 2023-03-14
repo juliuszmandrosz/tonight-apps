@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_rewards/domain/reward_entity.dart';
+import 'package:rewards/domain/reward_entity.dart';
 
 part 'reward_dto.g.dart';
 

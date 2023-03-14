@@ -1,17 +1,17 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:events/events.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/core/get_payment_failure_message.dart';
-import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
-import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_payments/application/core/raver_payment_method.dart';
-import 'package:raver_payments/domain/domain.dart';
-import 'package:raver_tickets/raver_tickets.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:payments/application/core/tonight_payment_method.dart';
+import 'package:payments/domain/domain.dart';
+import 'package:tickets/tickets.dart';
+import 'package:tonight/application/core/get_payment_failure_message.dart';
+import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dart';
+import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
+import 'package:translations/translations.dart';
 
 part 'vip_checkout_cubit.freezed.dart';
 part 'vip_checkout_state.dart';

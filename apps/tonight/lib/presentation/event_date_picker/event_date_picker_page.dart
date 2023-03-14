@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/presentation/core/raver_app_bar.dart';
-import 'package:raver/presentation/event_date_picker/widgets/event_date_picker.dart';
-import 'package:raver/presentation/event_date_picker/widgets/submit_selected_date_button.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
+import 'package:tonight/presentation/core/tonight_app_bar.dart';
+import 'package:tonight/presentation/event_date_picker/widgets/event_date_picker.dart';
+import 'package:tonight/presentation/event_date_picker/widgets/submit_selected_date_button.dart';
+import 'package:translations/translations.dart';
 
 class EventDatePickerPage extends StatelessWidget {
   final BuildContext blocContext;
@@ -17,7 +17,7 @@ class EventDatePickerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: RaverAppBar(
+      appBar: TonightAppBar(
         title: S().date,
       ),
       body: BlocProvider.value(

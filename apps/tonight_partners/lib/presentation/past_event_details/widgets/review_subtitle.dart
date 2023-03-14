@@ -1,7 +1,7 @@
+import 'package:clubs/domain/reviews/entities/review_entity.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:raver_clubs/domain/reviews/entities/review_entity.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/presentation/past_event_details/widgets/report_review_button.dart';
+import 'package:tonight_partners/presentation/past_event_details/widgets/report_review_button.dart';
 
 class ReviewSubtitle extends StatelessWidget {
   final Review review;

@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:raver_clubs/domain/reviews/entities/review_entity.dart';
+import 'package:clubs/domain/reviews/entities/review_entity.dart';
 
 import 'failures/user_review_failure.dart';
 

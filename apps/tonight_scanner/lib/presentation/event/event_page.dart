@@ -1,22 +1,22 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:events/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:formz/formz.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/domain/domain.dart';
-import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
-import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
-import 'package:raver_scanner/presentation/core/ticket_logo_animation.dart';
-import 'package:raver_scanner/presentation/event/widgets/current_event.dart';
-import 'package:raver_scanner/presentation/event/widgets/no_access.dart';
-import 'package:raver_scanner/presentation/event/widgets/no_live_event.dart';
-import 'package:raver_scanner/presentation/event/widgets/refresh_icon.dart';
-import 'package:raver_scanner/presentation/event/widgets/selector_club.dart';
-import 'package:raver_scanner/presentation/routes/app_router.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_scanner/application/current_event/current_event_cubit.dart';
+import 'package:tonight_scanner/application/selector_club/selector_club_cubit.dart';
+import 'package:tonight_scanner/presentation/core/ticket_logo_animation.dart';
+import 'package:tonight_scanner/presentation/event/widgets/current_event.dart';
+import 'package:tonight_scanner/presentation/event/widgets/no_access.dart';
+import 'package:tonight_scanner/presentation/event/widgets/no_live_event.dart';
+import 'package:tonight_scanner/presentation/event/widgets/refresh_icon.dart';
+import 'package:tonight_scanner/presentation/event/widgets/selector_club.dart';
+import 'package:tonight_scanner/presentation/routes/app_router.dart';
+import 'package:translations/translations.dart';
 
 class EventPage extends StatelessWidget {
   const EventPage({Key? key}) : super(key: key);
@@ -63,6 +63,7 @@ class EventPage extends StatelessWidget {
                       unexpected: (_) => Container(),
                       permissionDenied: (_) => Container(),
                       noAccess: (_) => const NoAccess(),
+                      noConnection: (_) => Container(),
                     ),
               ),
             );

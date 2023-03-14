@@ -3,9 +3,9 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_rewards/domain/domain.dart';
-import 'package:raver_rewards/infrastructure/reward_dto.dart';
+import 'package:common/common.dart';
+import 'package:rewards/domain/domain.dart';
+import 'package:rewards/infrastructure/reward_dto.dart';
 
 class FirebaseRewardFacade
     implements UserRewardFacade, PartnerRewardFacade, SelectorRewardFacade {

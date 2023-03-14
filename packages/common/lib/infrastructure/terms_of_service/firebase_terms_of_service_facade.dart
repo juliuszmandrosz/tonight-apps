@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_common/domain/domain.dart';
-import 'package:raver_common/infrastructure/core/handle_firebase_error.dart';
+import 'package:common/domain/domain.dart';
+import 'package:common/infrastructure/core/handle_firebase_error.dart';
 
 class FirebaseTermsOfServiceFacade
     implements
@@ -102,7 +102,7 @@ class FirebaseTermsOfServiceFacade
       getPrivacyPolicyForSelector() async {
     try {
       final storageRef = _storage.ref(
-        'terms_of_service/tonight_scanner/tonight_scanner_privacy_policy.pdf',
+        'terms_of_service/scanner/scanner_privacy_policy.pdf',
       );
       final url = await storageRef.getDownloadURL();
       return right(url);

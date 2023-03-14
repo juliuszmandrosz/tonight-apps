@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,14 +10,14 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_payments/application/core/raver_payment_method.dart';
-import 'package:raver_payments/domain/domain.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_errors.dart';
-import 'package:raver_payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
-import 'package:raver_payments/infrastructure/cloud_functions/responses/create_payment_sheet_response.dart';
-import 'package:raver_payments/infrastructure/dtos/customer_data_dto.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:payments/application/core/tonight_payment_method.dart';
+import 'package:payments/domain/domain.dart';
+import 'package:payments/infrastructure/cloud_functions/payment_cloud_functions_errors.dart';
+import 'package:payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
+import 'package:payments/infrastructure/cloud_functions/responses/create_payment_sheet_response.dart';
+import 'package:payments/infrastructure/dtos/customer_data_dto.dart';
+import 'package:translations/translations.dart';
+
 import 'dtos/promotion_code_dto.dart';
 
 class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
@@ -79,7 +80,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
   Future<Either<UserPaymentFailure, Unit>> proceedToPayForTicket({
     required String eventId,
     required String currency,
-    required RaverPaymentMethod paymentMethod,
+    required TonightPaymentMethod paymentMethod,
     required double amount,
     String? promotionCode,
     bool isVip = false,
@@ -151,7 +152,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
   Future<Either<UserPaymentFailure, Unit>> proceedToPayForVip({
     required String ticketId,
     required String currency,
-    required RaverPaymentMethod paymentMethod,
+    required TonightPaymentMethod paymentMethod,
     required double amount,
     String? promotionCode,
     bool sendInvoice = false,
@@ -215,7 +216,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
   @override
   Future<Either<UserPaymentFailure, Unit>> updatePaymentMethod(
-    RaverPaymentMethod paymentMethod,
+    TonightPaymentMethod paymentMethod,
   ) async {
     try {
       final userId = _firebaseAuth.tryGetFirebaseUser().uid;
@@ -332,27 +333,27 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
   }
 
   Future<void> _initPayment({
-    required RaverPaymentMethod paymentMethod,
+    required TonightPaymentMethod paymentMethod,
     required String currency,
     required CreatePaymentSheetResponse paymentIntent,
     required double amount,
     required String userEmail,
   }) async {
     switch (paymentMethod) {
-      case RaverPaymentMethod.wallet:
+      case TonightPaymentMethod.wallet:
         await _presentWalletPaymentSheet(
           currency: currency,
           paymentIntentSecret: paymentIntent.paymentIntentSecret,
           amount: amount,
         );
         break;
-      case RaverPaymentMethod.p24:
+      case TonightPaymentMethod.p24:
         await _presentP24Payment(
           paymentIntentSecret: paymentIntent.paymentIntentSecret,
           userEmail: userEmail,
         );
         break;
-      case RaverPaymentMethod.card:
+      case TonightPaymentMethod.card:
         await _presentCardPaymentSheet(
           currency: currency,
           customerId: paymentIntent.customerId,

@@ -1,6 +1,6 @@
 import 'package:formz/formz.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
+import 'package:translations/translations.dart';
 
 enum DressCodeError { empty }
 

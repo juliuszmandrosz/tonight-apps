@@ -1,12 +1,12 @@
+import 'package:common/extensions/build_context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:formz/formz.dart';
-import 'package:raver_common/extensions/build_context_extensions.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_partners/application/add_event/form_inputs/end_date_time.dart';
-import 'package:raver_partners/presentation/utils/get_date_time_from_user.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
+import 'package:tonight_partners/application/add_event/form_inputs/end_date_time.dart';
+import 'package:tonight_partners/presentation/utils/get_date_time_from_user.dart';
+import 'package:translations/translations.dart';
 
 class EventEndDateInput extends StatelessWidget {
   const EventEndDateInput({Key? key}) : super(key: key);

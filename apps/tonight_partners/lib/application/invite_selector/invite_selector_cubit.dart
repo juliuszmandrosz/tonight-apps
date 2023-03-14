@@ -1,13 +1,12 @@
 import 'package:bloc/bloc.dart';
+import 'package:common/application/application.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/application/application.dart';
-import 'package:raver_partners/domain/selector_management/selector_management_facade.dart';
-import 'package:raver_translations/raver_translations.dart';
-
-part 'invite_selector_state.dart';
+import 'package:tonight_partners/domain/selector_management/selector_management_facade.dart';
+import 'package:translations/translations.dart';
 
 part 'invite_selector_cubit.freezed.dart';
+part 'invite_selector_state.dart';
 
 class InviteSelectorCubit extends Cubit<InviteSelectorState> {
   final SelectorManagementFacade _selectorManagementFacade;

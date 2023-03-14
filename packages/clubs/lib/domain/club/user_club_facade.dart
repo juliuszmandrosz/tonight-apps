@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:raver_clubs/domain/club/failures/user_club_failure.dart';
-import 'package:raver_clubs/domain/club/get_clubs_mixin.dart';
+import 'package:clubs/domain/club/failures/user_club_failure.dart';
+import 'package:clubs/domain/club/get_clubs_mixin.dart';
 
 import 'club_entity.dart';
 

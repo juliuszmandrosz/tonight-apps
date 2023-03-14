@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/clubs/club_filters/club_filters_cubit.dart';
+import 'package:translations/translations.dart';
 
 class ClubFiltersSubmitButton extends StatelessWidget {
   const ClubFiltersSubmitButton({Key? key}) : super(key: key);

@@ -1,22 +1,22 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
-import 'package:raver/injection.dart';
-import 'package:raver/presentation/events/utils/event_utils.dart';
-import 'package:raver/presentation/events/widgets/event_canceled_info.dart';
-import 'package:raver/presentation/events/widgets/event_club_info.dart';
-import 'package:raver/presentation/events/widgets/event_concert_info.dart';
-import 'package:raver/presentation/events/widgets/event_date_info.dart';
-import 'package:raver/presentation/events/widgets/event_favorite_button.dart';
-import 'package:raver/presentation/events/widgets/event_live_info.dart';
-import 'package:raver/presentation/events/widgets/event_name_bar.dart';
-import 'package:raver/presentation/events/widgets/event_photo.dart';
-import 'package:raver/presentation/events/widgets/event_sold_out_info.dart';
-import 'package:raver/presentation/events/widgets/event_tags_info.dart';
-import 'package:raver/presentation/events/widgets/last_tickets_left_info.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver_events/raver_events.dart';
+import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dart';
+import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/events/utils/event_utils.dart';
+import 'package:tonight/presentation/events/widgets/event_canceled_info.dart';
+import 'package:tonight/presentation/events/widgets/event_club_info.dart';
+import 'package:tonight/presentation/events/widgets/event_concert_info.dart';
+import 'package:tonight/presentation/events/widgets/event_date_info.dart';
+import 'package:tonight/presentation/events/widgets/event_favorite_button.dart';
+import 'package:tonight/presentation/events/widgets/event_live_info.dart';
+import 'package:tonight/presentation/events/widgets/event_name_bar.dart';
+import 'package:tonight/presentation/events/widgets/event_photo.dart';
+import 'package:tonight/presentation/events/widgets/event_sold_out_info.dart';
+import 'package:tonight/presentation/events/widgets/event_tags_info.dart';
+import 'package:tonight/presentation/events/widgets/last_tickets_left_info.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class EventCard extends StatelessWidget {
   final Event event;

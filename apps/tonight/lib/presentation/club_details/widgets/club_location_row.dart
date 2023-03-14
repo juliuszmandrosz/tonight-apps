@@ -1,11 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:clubs/clubs.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
-import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/presentation/commons/icons/tonight_icon_button.dart';
+import 'package:translations/translations.dart';
 
 class ClubLocationRow extends StatelessWidget {
   final Club club;
@@ -24,7 +24,7 @@ class ClubLocationRow extends StatelessWidget {
             maxLines: 2,
           ),
         ),
-        RaverIconButton(
+        TonightIconButton(
           icon: const FaIcon(FontAwesomeIcons.locationDot),
           onPressed: () async {
             var result = await MapsLauncher.launchCoordinates(

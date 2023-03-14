@@ -3,8 +3,8 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_common/domain/remote_config/remote_config_facade.dart';
-import 'package:raver_common/domain/remote_config/remote_config_failure.dart';
+import 'package:common/domain/remote_config/remote_config_facade.dart';
+import 'package:common/domain/remote_config/remote_config_failure.dart';
 
 class FirebaseRemoteConfigFacade implements RemoteConfigFacade {
   final FirebaseRemoteConfig _remoteConfig;

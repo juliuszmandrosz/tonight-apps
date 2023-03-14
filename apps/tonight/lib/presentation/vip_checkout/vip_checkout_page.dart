@@ -1,26 +1,26 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
-import 'package:raver/application/vip_checkout/vip_checkout_cubit.dart';
-import 'package:raver/injection.dart';
-import 'package:raver/presentation/core/raver_app_bar.dart';
-import 'package:raver/presentation/core/ticket_logo_animation.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_header.dart';
-import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_invoice_checkbox.dart';
-import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_invoice_data.dart';
-import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_payment_method.dart';
-import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_promotion_code.dart';
-import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_summary.dart';
-import 'package:raver/presentation/vip_checkout/widgets/vip_checkout_ticket_card.dart';
-import 'package:raver/presentation/vip_checkout/widgets/vip_proceed_to_pay_button.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_payments/domain/domain.dart';
-import 'package:raver_tickets/raver_tickets.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:payments/domain/domain.dart';
+import 'package:tickets/tickets.dart';
+import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
+import 'package:tonight/application/vip_checkout/vip_checkout_cubit.dart';
+import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/core/ticket_logo_animation.dart';
+import 'package:tonight/presentation/core/tonight_app_bar.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/vip_checkout/widgets/vip_checkout_header.dart';
+import 'package:tonight/presentation/vip_checkout/widgets/vip_checkout_invoice_checkbox.dart';
+import 'package:tonight/presentation/vip_checkout/widgets/vip_checkout_invoice_data.dart';
+import 'package:tonight/presentation/vip_checkout/widgets/vip_checkout_payment_method.dart';
+import 'package:tonight/presentation/vip_checkout/widgets/vip_checkout_promotion_code.dart';
+import 'package:tonight/presentation/vip_checkout/widgets/vip_checkout_summary.dart';
+import 'package:tonight/presentation/vip_checkout/widgets/vip_checkout_ticket_card.dart';
+import 'package:tonight/presentation/vip_checkout/widgets/vip_proceed_to_pay_button.dart';
+import 'package:translations/translations.dart';
 
 class VipCheckoutPage extends StatelessWidget {
   final Ticket ticket;
@@ -98,7 +98,7 @@ class VipCheckoutPage extends StatelessWidget {
             return state.initialStatus.isLoading()
                 ? const TicketLogoAnimation()
                 : Scaffold(
-                    appBar: RaverAppBar(title: S().checkout),
+                    appBar: TonightAppBar(title: S().checkout),
                     floatingActionButton: const VipProceedToPayButton(),
                     floatingActionButtonLocation:
                         FloatingActionButtonLocation.centerFloat,

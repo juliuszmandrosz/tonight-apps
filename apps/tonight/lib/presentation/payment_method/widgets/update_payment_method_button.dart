@@ -1,8 +1,8 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:raver/application/payment_method/payment_method_cubit.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:tonight/application/payment_method/payment_method_cubit.dart';
 
 class UpdatePaymentMethodButton extends StatelessWidget {
   const UpdatePaymentMethodButton({Key? key}) : super(key: key);

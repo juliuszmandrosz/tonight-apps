@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/application/application.dart';
-import 'package:raver_rewards/raver_rewards.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:common/application/application.dart';
+import 'package:rewards/rewards.dart';
+import 'package:translations/translations.dart';
 
 part 'reward_list_cubit.freezed.dart';
 

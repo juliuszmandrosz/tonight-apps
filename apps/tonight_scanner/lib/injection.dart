@@ -1,6 +1,13 @@
+import 'package:auth/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:clubs/clubs.dart';
+import 'package:clubs/domain/club/selector_club_facade.dart';
+import 'package:common/common.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:events/events.dart';
+import 'package:events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
+import 'package:events/infrastructure/events_api.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,23 +18,16 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_auth/raver_auth.dart';
-import 'package:raver_clubs/domain/club/selector_club_facade.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
-import 'package:raver_events/infrastructure/events_api.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_rewards/domain/domain.dart';
-import 'package:raver_rewards/infrastructure/firebase_reward_facade.dart';
-import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
-import 'package:raver_scanner/application/privacy_policy/privacy_policy_cubit.dart';
-import 'package:raver_scanner/application/scanner/scanner_cubit.dart';
-import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
-import 'package:raver_scanner/application/sign_in/sign_in_cubit.dart';
-import 'package:raver_scanner/application/welcome_loader/welcome_loader_cubit.dart';
-import 'package:raver_tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
-import 'package:raver_tickets/raver_tickets.dart';
+import 'package:rewards/domain/domain.dart';
+import 'package:rewards/infrastructure/firebase_reward_facade.dart';
+import 'package:tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
+import 'package:tickets/tickets.dart';
+import 'package:tonight_scanner/application/current_event/current_event_cubit.dart';
+import 'package:tonight_scanner/application/privacy_policy/privacy_policy_cubit.dart';
+import 'package:tonight_scanner/application/scanner/scanner_cubit.dart';
+import 'package:tonight_scanner/application/selector_club/selector_club_cubit.dart';
+import 'package:tonight_scanner/application/sign_in/sign_in_cubit.dart';
+import 'package:tonight_scanner/application/welcome_loader/welcome_loader_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -239,8 +239,6 @@ void _registerModules() {
   getIt.registerLazySingleton(crashlyticsConfig);
 
   getIt.registerLazySingleton(() => Logger());
-
-  getIt.registerLazySingleton(typesenseConfig);
 
   getIt.registerLazySingleton<EventsApi>(
     () => EventsApiImpl(

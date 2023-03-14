@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:events/events.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/events/event_tickets/event_tickets_cubit.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
+import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dart';
 
 part 'event_details_cubit.freezed.dart';
 part 'event_details_state.dart';

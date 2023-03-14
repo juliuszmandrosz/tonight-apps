@@ -8,13 +8,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
-import 'package:raver_clubs/domain/club/selector_club_facade.dart';
-import 'package:raver_clubs/domain/domain.dart';
-import 'package:raver_clubs/infrastructure/cloud_functions/club_cloud_functions_facade.dart';
-import 'package:raver_clubs/infrastructure/club/club_dto.dart';
-import 'package:raver_clubs/infrastructure/clubs_api.dart';
-import 'package:raver_clubs/infrastructure/filters/club_filters_entity.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:clubs/domain/club/selector_club_facade.dart';
+import 'package:clubs/domain/domain.dart';
+import 'package:clubs/infrastructure/cloud_functions/club_cloud_functions_facade.dart';
+import 'package:clubs/infrastructure/club/club_dto.dart';
+import 'package:clubs/infrastructure/clubs_api.dart';
+import 'package:clubs/infrastructure/filters/club_filters_entity.dart';
+import 'package:common/common.dart';
 
 class FirebaseClubFacade
     implements UserClubFacade, PartnerClubFacade, SelectorClubFacade {

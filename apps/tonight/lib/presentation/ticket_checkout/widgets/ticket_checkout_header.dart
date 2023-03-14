@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:translations/translations.dart';
 
 class TicketCheckoutHeader extends StatelessWidget {
   const TicketCheckoutHeader({Key? key}) : super(key: key);
@@ -9,7 +9,7 @@ class TicketCheckoutHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerLeft,
-      child: RaverHeadline(text: S().tickets(1)),
+      child: TonightHeadline(text: S().tickets(1)),
     );
   }
 }

@@ -1,16 +1,16 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
-import 'package:raver_partners/presentation/add_event/widgets/ticket_pools/event_ticket_pool_list_tile.dart';
-import 'package:raver_partners/presentation/core/dots_loading_indicator.dart';
-import 'package:raver_partners/presentation/core/raver_partners_headline.dart';
-import 'package:raver_partners/presentation/routes/app_router.dart';
-import 'package:raver_translations/raver_translations.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:tonight_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
+import 'package:tonight_partners/presentation/add_event/widgets/ticket_pools/event_ticket_pool_list_tile.dart';
+import 'package:tonight_partners/presentation/core/dots_loading_indicator.dart';
+import 'package:tonight_partners/presentation/core/tonight_partners_headline.dart';
+import 'package:tonight_partners/presentation/routes/app_router.dart';
+import 'package:translations/translations.dart';
 
 class EventOverviewTicketPools extends StatelessWidget {
   const EventOverviewTicketPools({Key? key}) : super(key: key);
@@ -60,7 +60,7 @@ class EventOverviewTicketPools extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      RaverPartnersHeadline(
+                      TonightPartnersHeadline(
                         text: S().tickets(2),
                         isSmallerVersion: true,
                       ),

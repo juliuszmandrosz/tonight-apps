@@ -1,18 +1,18 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:clubs/clubs.dart';
+import 'package:common/common.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/clubs/club_details/club_details_cubit.dart';
-import 'package:raver/application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
-import 'package:raver/application/clubs/club_rewards/club_rewards_cubit.dart';
-import 'package:raver/injection.dart';
-import 'package:raver/presentation/club_details/widgets/club_description.dart';
-import 'package:raver/presentation/club_details/widgets/club_details_tabs.dart';
-import 'package:raver/presentation/core/details_hero_image.dart';
-import 'package:raver/presentation/core/ticket_logo_animation.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver_clubs/raver_clubs.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
+import 'package:tonight/application/clubs/club_details/club_details_cubit.dart';
+import 'package:tonight/application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
+import 'package:tonight/application/clubs/club_rewards/club_rewards_cubit.dart';
+import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/club_details/widgets/club_description.dart';
+import 'package:tonight/presentation/club_details/widgets/club_details_tabs.dart';
+import 'package:tonight/presentation/core/details_hero_image.dart';
+import 'package:tonight/presentation/core/ticket_logo_animation.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class ClubDetailsPage extends StatefulWidget {
   final Club? club;

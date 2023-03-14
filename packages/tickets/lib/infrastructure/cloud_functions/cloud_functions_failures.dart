@@ -1,4 +1,4 @@
-import 'package:raver_tickets/domain/domain.dart';
+import 'package:tickets/domain/domain.dart';
 
 const cloudFunctionsFailures = {
   'return-time-expired': UserTicketFailure.returnTimeIsOver(),

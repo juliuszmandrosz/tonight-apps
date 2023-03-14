@@ -1,11 +1,11 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/overview/overview_cubit.dart';
-import 'package:raver_partners/presentation/overview/widgets/chart_data.dart';
-import 'package:raver_partners/presentation/overview/widgets/raver_partners_column_chart.dart';
-import 'package:raver_partners/presentation/overview/widgets/statistics_update_info.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/overview/overview_cubit.dart';
+import 'package:tonight_partners/presentation/overview/widgets/chart_data.dart';
+import 'package:tonight_partners/presentation/overview/widgets/statistics_update_info.dart';
+import 'package:tonight_partners/presentation/overview/widgets/tonight_partners_column_chart.dart';
+import 'package:translations/translations.dart';
 
 class TicketSalesChart extends StatelessWidget {
   const TicketSalesChart({Key? key}) : super(key: key);
@@ -33,7 +33,7 @@ class TicketSalesChart extends StatelessWidget {
           ),
         ];
         return sales.ticketsSold > 0
-            ? RaverPartnersColumnChart(
+            ? TonightPartnersColumnChart(
                 chartData: chartData,
                 maximum: sales.ticketsSold.toDouble(),
               )

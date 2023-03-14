@@ -1,17 +1,16 @@
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_rewards/raver_rewards.dart';
-import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
-import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
-import 'package:raver_tickets/raver_tickets.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:rewards/rewards.dart';
+import 'package:tickets/tickets.dart';
+import 'package:tonight_scanner/application/current_event/current_event_cubit.dart';
+import 'package:tonight_scanner/application/selector_club/selector_club_cubit.dart';
+import 'package:translations/translations.dart';
 
 part 'scanner_cubit.freezed.dart';
-
 part 'scanner_state.dart';
 
 class ScannerCubit extends Cubit<ScannerState> {

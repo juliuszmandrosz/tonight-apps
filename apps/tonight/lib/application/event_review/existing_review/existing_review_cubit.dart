@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_clubs/raver_clubs.dart';
+import 'package:clubs/clubs.dart';
 
 part 'existing_review_cubit.freezed.dart';
 part 'existing_review_state.dart';

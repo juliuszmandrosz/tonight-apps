@@ -1,10 +1,10 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:raver_payments/domain/domain.dart';
-import 'package:raver_payments/infrastructure/cloud_functions/cloud_functions_names.dart';
-import 'package:raver_payments/infrastructure/cloud_functions/responses/create_payment_sheet_response.dart';
-import 'package:raver_payments/infrastructure/dtos/event_fees_dto.dart';
+import 'package:payments/domain/domain.dart';
+import 'package:payments/infrastructure/cloud_functions/cloud_functions_names.dart';
+import 'package:payments/infrastructure/cloud_functions/responses/create_payment_sheet_response.dart';
+import 'package:payments/infrastructure/dtos/event_fees_dto.dart';
 
 abstract class PaymentCloudFunctionsFacade {
   Future<CreatePaymentSheetResponse> createTicketPaymentSheet({

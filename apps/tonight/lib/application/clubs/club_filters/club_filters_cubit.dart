@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:clubs/clubs.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
-import 'package:raver/application/core/user_location/user_location_cubit.dart';
-import 'package:raver_clubs/raver_clubs.dart';
+import 'package:tonight/application/clubs/clubs_overview/clubs_overview_bloc.dart';
+import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 
 part 'club_filters_cubit.freezed.dart';
 part 'club_filters_state.dart';
@@ -43,7 +43,8 @@ class ClubFiltersCubit extends Cubit<ClubFiltersState> {
 
   void changeMaxDistance(int value) {
     final currentFilters = state.filters.copyWith(
-      maxDistanceFilter: state.filters.maxDistanceFilter.copyWith(maxDistance: value),
+      maxDistanceFilter:
+          state.filters.maxDistanceFilter.copyWith(maxDistance: value),
     );
     emit(state.copyWith(filters: currentFilters));
   }
@@ -57,7 +58,8 @@ class ClubFiltersCubit extends Cubit<ClubFiltersState> {
 
   void changeIsMaxDistanceOption(bool value) {
     final currentFilters = state.filters.copyWith(
-      maxDistanceFilter: state.filters.maxDistanceFilter.copyWith(enabled: value),
+      maxDistanceFilter:
+          state.filters.maxDistanceFilter.copyWith(enabled: value),
     );
     emit(state.copyWith(filters: currentFilters));
   }

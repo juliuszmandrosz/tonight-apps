@@ -1,6 +1,6 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
-import 'package:raver_clubs/infrastructure/cloud_functions/cloud_functions_names.dart';
+import 'package:clubs/infrastructure/cloud_functions/cloud_functions_names.dart';
 
 abstract class ClubCloudFunctionsFacade {
   Future<Unit> useSelectorAccessCode(String accessCode);

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_translations/generated/l10n.dart';
+import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
+import 'package:translations/generated/l10n.dart';
 
 class AddEventStepsButtons extends StatelessWidget {
   const AddEventStepsButtons({Key? key}) : super(key: key);

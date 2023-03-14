@@ -1,16 +1,16 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:raver/application/clubs/club_filters/club_filters_cubit.dart';
-import 'package:raver/application/clubs/clubs_overview/clubs_overview_bloc.dart';
-import 'package:raver/injection.dart';
-import 'package:raver/presentation/clubs/widgets/club_card.dart';
-import 'package:raver/presentation/clubs/widgets/club_filter_section.dart';
-import 'package:raver/presentation/clubs/widgets/club_filters_row.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/clubs/club_filters/club_filters_cubit.dart';
+import 'package:tonight/application/clubs/clubs_overview/clubs_overview_bloc.dart';
+import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/clubs/widgets/club_card.dart';
+import 'package:tonight/presentation/clubs/widgets/club_filter_section.dart';
+import 'package:tonight/presentation/clubs/widgets/club_filters_row.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class ClubsPage extends StatefulWidget {
   const ClubsPage({Key? key}) : super(key: key);
@@ -51,7 +51,8 @@ class _ClubsPageState extends State<ClubsPage> {
                     const ClubFiltersRow(),
                     const SizedBox(height: 15),
                     BlocConsumer<ClubsOverviewBloc, ClubsOverviewState>(
-                      listenWhen: (previous, current) => previous.status != current.status,
+                      listenWhen: (previous, current) =>
+                          previous.status != current.status,
                       listener: (context, state) {
                         if (state.status.isFailure()) {
                           context.pushRoute(
@@ -88,7 +89,9 @@ class _ClubsPageState extends State<ClubsPage> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     SizedBox(
-                                      height: MediaQuery.of(context).size.height * .2,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              .2,
                                     ),
                                     Text(
                                       S().clubs(0),
@@ -106,7 +109,9 @@ class _ClubsPageState extends State<ClubsPage> {
                             return ListView.separated(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
-                              itemCount: state.hasReachedMax ? state.clubs.length : state.clubs.length + 1,
+                              itemCount: state.hasReachedMax
+                                  ? state.clubs.length
+                                  : state.clubs.length + 1,
                               itemBuilder: (context, i) {
                                 return i >= state.clubs.length
                                     ? const BottomLoader()

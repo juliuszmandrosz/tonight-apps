@@ -1,9 +1,9 @@
+import 'package:auth/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:raver_auth/raver_auth.dart';
-import 'package:raver_partners/application/sign_in/sign_in_cubit.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/sign_in/sign_in_cubit.dart';
+import 'package:translations/translations.dart';
 
 class SignInEmailInput extends StatelessWidget {
   const SignInEmailInput({Key? key}) : super(key: key);

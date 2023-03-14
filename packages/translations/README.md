@@ -1,7 +1,6 @@
-
 ## Features
 
-Translations for Raver apps
+Translations for tonight apps
 
 ## Getting started
 

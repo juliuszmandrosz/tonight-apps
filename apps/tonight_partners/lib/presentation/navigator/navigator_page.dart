@@ -1,20 +1,20 @@
+import 'package:auth/auth.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_auth/raver_auth.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/club_info/club_info_cubit.dart';
-import 'package:raver_partners/application/overview/overview_cubit.dart';
-import 'package:raver_partners/application/welcome_loader/welcome_loader_cubit.dart';
-import 'package:raver_partners/injection.dart';
-import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
-import 'package:raver_partners/presentation/core/raver_partners_fab.dart';
-import 'package:raver_partners/presentation/core/selected_page.dart';
-import 'package:raver_partners/presentation/core/ticket_logo_animation.dart';
-import 'package:raver_partners/presentation/drawer/raver_partners_drawer.dart';
-import 'package:raver_partners/presentation/routes/app_router.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/club_info/club_info_cubit.dart';
+import 'package:tonight_partners/application/overview/overview_cubit.dart';
+import 'package:tonight_partners/application/welcome_loader/welcome_loader_cubit.dart';
+import 'package:tonight_partners/injection.dart';
+import 'package:tonight_partners/presentation/core/selected_page.dart';
+import 'package:tonight_partners/presentation/core/ticket_logo_animation.dart';
+import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart';
+import 'package:tonight_partners/presentation/core/tonight_partners_fab.dart';
+import 'package:tonight_partners/presentation/drawer/tonight_partners_drawer.dart';
+import 'package:tonight_partners/presentation/routes/app_router.dart';
+import 'package:translations/translations.dart';
 
 class NavigatorPage extends StatefulWidget {
   const NavigatorPage({Key? key}) : super(key: key);
@@ -105,16 +105,16 @@ class _NavigatorPageState extends State<NavigatorPage> {
 
             return AutoTabsScaffold(
               resizeToAvoidBottomInset: false,
-              appBarBuilder: (_, tabsRouter) => const RaverPartnersAppBar(),
+              appBarBuilder: (_, tabsRouter) => const TonightPartnersAppBar(),
               routes: const [
                 OverviewRoute(),
                 EventsRoute(),
                 RewardsRoute(),
                 SelectorsRoute(),
               ],
-              drawer: const RaverPartnersDrawer(),
+              drawer: const TonightPartnersDrawer(),
               floatingActionButton: selectedPage != SelectedPage.overview
-                  ? RaverPartnersFab(selectedPage: selectedPage)
+                  ? TonightPartnersFab(selectedPage: selectedPage)
                   : null,
               bottomNavigationBuilder: (_, tabsRouter) {
                 return NavigationBar(

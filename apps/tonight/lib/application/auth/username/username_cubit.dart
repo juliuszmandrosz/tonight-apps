@@ -1,10 +1,10 @@
+import 'package:account_settings/account_settings.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver/application/auth/form_inputs/username.dart';
-import 'package:raver_account_settings/raver_account_settings.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/auth/form_inputs/username.dart';
+import 'package:translations/translations.dart';
 
 part 'username_cubit.freezed.dart';
 part 'username_state.dart';

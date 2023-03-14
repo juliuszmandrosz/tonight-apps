@@ -1,11 +1,11 @@
+import 'package:common/common.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver/application/events/event_favorite/event_favorite_cubit.dart';
-import 'package:raver/presentation/commons/icons/raver_toggle_icon.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
+import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
+import 'package:tonight/presentation/commons/icons/tonight_toggle_icon.dart';
 
 class EventFavoriteButton extends StatelessWidget {
   final Event event;
@@ -39,7 +39,7 @@ class EventFavoriteButton extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: context.surfaceColor,
                 ),
-                child: RaverToggleIcon(
+                child: TonightToggleIcon(
                   onIcon: const FaIcon(FontAwesomeIcons.solidHeart),
                   onPressed: () => state.isChangingFavoriteStatus
                       ? null

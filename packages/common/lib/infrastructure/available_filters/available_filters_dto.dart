@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/domain/available_filters/available_filters_entity.dart';
+import 'package:common/domain/available_filters/available_filters_entity.dart';
 
 part 'available_filters_dto.freezed.dart';
 

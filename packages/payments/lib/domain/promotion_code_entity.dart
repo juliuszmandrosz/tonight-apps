@@ -21,22 +21,22 @@ class PromotionCode extends Equatable {
   }) : code = code ?? randomAlphaNumeric(6);
 
   factory PromotionCode.empty() => PromotionCode(
-    code: '',
-    isValid: false,
-    amountOff: 0,
-    currency: '',
-  );
+        code: '',
+        isValid: false,
+        amountOff: 0,
+        currency: '',
+      );
 
   @override
   List<Object?> get props => [
-    code,
-    isValid,
-    amountOff,
-    currency,
-    maxRedemptions,
-    expirationDateTime,
-    timesRedeemed,
-  ];
+        code,
+        isValid,
+        amountOff,
+        currency,
+        maxRedemptions,
+        expirationDateTime,
+        timesRedeemed,
+      ];
 
   PromotionCode copyWith({
     String? code,

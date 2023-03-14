@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/club_details/widgets/club_details_tabs/rewards/reward_progress_bar.dart';
+import 'package:tonight/presentation/club_details/widgets/club_details_tabs/rewards/reward_progress_bar.dart';
 
 class RewardCard extends StatelessWidget {
   final int currentEntries;

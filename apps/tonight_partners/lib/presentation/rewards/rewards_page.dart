@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
-import 'package:raver_partners/injection.dart';
-import 'package:raver_partners/presentation/core/dots_loading_indicator.dart';
-import 'package:raver_partners/presentation/rewards/widgets/reward_list_for_required_entries.dart';
-import 'package:raver_partners/presentation/routes/app_router.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/reward_list/reward_list_cubit.dart';
+import 'package:tonight_partners/injection.dart';
+import 'package:tonight_partners/presentation/core/dots_loading_indicator.dart';
+import 'package:tonight_partners/presentation/rewards/widgets/reward_list_for_required_entries.dart';
+import 'package:tonight_partners/presentation/routes/app_router.dart';
+import 'package:translations/translations.dart';
 
 class RewardsPage extends StatelessWidget {
   const RewardsPage({Key? key}) : super(key: key);

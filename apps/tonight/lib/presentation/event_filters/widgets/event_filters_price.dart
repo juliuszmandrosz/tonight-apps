@@ -1,11 +1,11 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/events/event_filters/event_filters_cubit.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver/presentation/event_filters/widgets/event_filters_max_price.dart';
-import 'package:raver/presentation/event_filters/widgets/event_filters_min_price.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:tonight/presentation/event_filters/widgets/event_filters_max_price.dart';
+import 'package:tonight/presentation/event_filters/widgets/event_filters_min_price.dart';
+import 'package:translations/translations.dart';
 
 class EventFiltersPrice extends StatelessWidget {
   const EventFiltersPrice({Key? key}) : super(key: key);
@@ -28,7 +28,7 @@ class EventFiltersPrice extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                RaverHeadline(
+                TonightHeadline(
                   text: '${S().priceRange} $currencyHeadline',
                   isSmallerVersion: true,
                 ),

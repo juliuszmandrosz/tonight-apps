@@ -1,18 +1,18 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_partners/application/club_info/club_info_cubit.dart';
-import 'package:raver_partners/application/event_notifier/event_notifier_cubit.dart';
-import 'package:raver_partners/injection.dart';
-import 'package:raver_partners/presentation/add_event/widgets/add_event_button.dart';
-import 'package:raver_partners/presentation/add_event/widgets/add_event_steps.dart';
-import 'package:raver_partners/presentation/core/raver_partners_app_bar.dart';
-import 'package:raver_partners/presentation/core/ticket_logo_animation.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
+import 'package:tonight_partners/application/club_info/club_info_cubit.dart';
+import 'package:tonight_partners/application/event_notifier/event_notifier_cubit.dart';
+import 'package:tonight_partners/injection.dart';
+import 'package:tonight_partners/presentation/add_event/widgets/add_event_button.dart';
+import 'package:tonight_partners/presentation/add_event/widgets/add_event_steps.dart';
+import 'package:tonight_partners/presentation/core/ticket_logo_animation.dart';
+import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart';
+import 'package:translations/translations.dart';
 
 class AddEventPage extends StatelessWidget {
   final BuildContext blocContext;
@@ -53,7 +53,7 @@ class AddEventPage extends StatelessWidget {
               overlayOpacity: .7,
               overlayWidget: const TicketLogoAnimation(),
               child: Scaffold(
-                appBar: RaverPartnersAppBar(
+                appBar: TonightPartnersAppBar(
                   title: S().addEvent,
                 ),
                 floatingActionButton: const AddEventButton(),

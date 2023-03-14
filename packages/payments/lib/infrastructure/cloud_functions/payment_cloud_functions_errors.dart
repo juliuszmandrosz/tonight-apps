@@ -1,4 +1,4 @@
-import 'package:raver_payments/domain/failures/user_payment_failure.dart';
+import 'package:payments/domain/failures/user_payment_failure.dart';
 
 const userPaymentCloudFunctionsErrors = {
   'invalid-promotion-code': UserPaymentFailure.invalidPromotionCode(),

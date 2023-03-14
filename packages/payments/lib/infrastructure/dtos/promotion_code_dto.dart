@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_payments/domain/promotion_code_entity.dart';
+import 'package:common/common.dart';
+import 'package:payments/domain/promotion_code_entity.dart';
 
 part 'promotion_code_dto.freezed.dart';
 part 'promotion_code_dto.g.dart';
@@ -37,7 +37,7 @@ class PromotionCodeDto with _$PromotionCodeDto {
 
   factory PromotionCodeDto.fromFirebase(DocumentSnapshot documentSnapshot) {
     return PromotionCodeDto.fromJson(
-        documentSnapshot.data() as Map<String, dynamic>)
+            documentSnapshot.data() as Map<String, dynamic>)
         .copyWith(code: documentSnapshot.id);
   }
 

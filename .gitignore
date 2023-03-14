@@ -1,2 +1,16 @@
 /.idea/
 /TonightMobile.iml
+/melos_tonight.iml
+/.dart_tool/package_config.json
+/apps/tonight/pubspec_overrides.yaml
+/apps/tonight_partners/pubspec_overrides.yaml
+/apps/tonight_scanner/pubspec_overrides.yaml
+/packages/account_settings/pubspec_overrides.yaml
+/packages/auth/pubspec_overrides.yaml
+/packages/clubs/pubspec_overrides.yaml
+/packages/common/pubspec_overrides.yaml
+/packages/events/pubspec_overrides.yaml
+/packages/payments/pubspec_overrides.yaml
+/packages/rewards/pubspec_overrides.yaml
+/packages/tickets/pubspec_overrides.yaml
+/.dart_tool/

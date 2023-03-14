@@ -1,5 +1,5 @@
-import 'package:raver/application/profile/profile_cubit.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:tonight/application/profile/profile_cubit.dart';
 
 class ProfileBroadcastSubject {
   final _profileSubject = BehaviorSubject<ProfileState>();

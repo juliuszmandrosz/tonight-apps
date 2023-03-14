@@ -1,10 +1,10 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:raver_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
-import 'package:raver_translations/raver_translations.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:tonight_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
+import 'package:translations/translations.dart';
 
 class CancelEventButton extends StatelessWidget {
   const CancelEventButton({Key? key}) : super(key: key);

@@ -1,14 +1,14 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/add_event/add_event_cubit.dart';
-import 'package:raver_partners/presentation/add_event/widgets/cost/apply_discount_switch.dart';
-import 'package:raver_partners/presentation/add_event/widgets/cost/available_discounts.dart';
-import 'package:raver_partners/presentation/add_event/widgets/cost/current_fee.dart';
-import 'package:raver_partners/presentation/add_event/widgets/cost/exclusive_event_switch.dart';
-import 'package:raver_partners/presentation/core/dots_loading_indicator.dart';
-import 'package:raver_partners/presentation/core/raver_info_row.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
+import 'package:tonight_partners/presentation/add_event/widgets/cost/apply_discount_switch.dart';
+import 'package:tonight_partners/presentation/add_event/widgets/cost/available_discounts.dart';
+import 'package:tonight_partners/presentation/add_event/widgets/cost/current_fee.dart';
+import 'package:tonight_partners/presentation/add_event/widgets/cost/exclusive_event_switch.dart';
+import 'package:tonight_partners/presentation/core/dots_loading_indicator.dart';
+import 'package:tonight_partners/presentation/core/tonight_info_row.dart';
+import 'package:translations/translations.dart';
 
 class EventCostStep extends StatelessWidget {
   const EventCostStep({Key? key}) : super(key: key);
@@ -29,7 +29,7 @@ class EventCostStep extends StatelessWidget {
 
         if (state.isSaleOnlyAtGate) {
           return Center(
-            child: RaverInfoRow(info: S().costNotApplicableInfo),
+            child: TonightInfoRow(info: S().costNotApplicableInfo),
           );
         }
 
@@ -43,7 +43,7 @@ class EventCostStep extends StatelessWidget {
               Column(
                 children: [
                   const SizedBox(height: 10),
-                  RaverInfoRow(info: S().exclusiveEventInfo),
+                  TonightInfoRow(info: S().exclusiveEventInfo),
                 ],
               ),
             if (state.isExclusiveEvent && state.availableDiscounts.isNotEmpty)

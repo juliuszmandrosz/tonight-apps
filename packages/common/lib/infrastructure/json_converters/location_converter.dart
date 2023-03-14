@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/constants/constants.dart';
+import 'package:common/constants/constants.dart';
 
 class LocationConverter
     implements JsonConverter<Map<String, double>, List<dynamic>> {

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:raver_common/raver_common.dart';
+import 'package:common/common.dart';
 
 extension FirestoreX on FirebaseFirestore {
   CollectionReference get clubCollection => collection('clubs');

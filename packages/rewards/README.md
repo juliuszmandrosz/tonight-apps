@@ -1,5 +1,3 @@
-
-
 ## Features
 
-Rewards for Raver apps
+Rewards for tonight apps

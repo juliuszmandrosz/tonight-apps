@@ -1,14 +1,13 @@
 import 'package:bloc/bloc.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/overview/overview_cubit.dart';
-import 'package:raver_partners/domain/club_sales/club_sales_entity.dart';
-import 'package:raver_partners/domain/discounts/discount_facade.dart';
-import 'package:raver_partners/domain/discounts/partner_discount_entity.dart';
+import 'package:tonight_partners/application/overview/overview_cubit.dart';
+import 'package:tonight_partners/domain/club_sales/club_sales_entity.dart';
+import 'package:tonight_partners/domain/discounts/discount_facade.dart';
+import 'package:tonight_partners/domain/discounts/partner_discount_entity.dart';
 
 part 'discounts_cubit.freezed.dart';
-
 part 'discounts_state.dart';
 
 class DiscountsCubit extends Cubit<DiscountsState> {

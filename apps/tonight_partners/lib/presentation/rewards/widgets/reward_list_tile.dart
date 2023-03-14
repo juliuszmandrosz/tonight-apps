@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/reward_list/reward_list_cubit.dart';
-import 'package:raver_rewards/domain/domain.dart';
+import 'package:rewards/domain/domain.dart';
+import 'package:tonight_partners/application/reward_list/reward_list_cubit.dart';
 
 class RewardListTile extends StatelessWidget {
   final Reward reward;

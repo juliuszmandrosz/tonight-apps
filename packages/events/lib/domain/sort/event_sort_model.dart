@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_events/domain/domain.dart';
+import 'package:events/domain/domain.dart';
 
 part 'event_sort_model.freezed.dart';
 

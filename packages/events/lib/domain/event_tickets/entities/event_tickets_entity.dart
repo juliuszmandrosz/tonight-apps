@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:raver_events/domain/event_tickets/entities/ticket_pool_entity.dart';
-import 'package:raver_events/domain/event_tickets/entities/ticket_sales_entity.dart';
+import 'package:events/domain/event_tickets/entities/ticket_pool_entity.dart';
+import 'package:events/domain/event_tickets/entities/ticket_sales_entity.dart';
 import 'package:collection/collection.dart';
 
 class EventTickets extends Equatable {

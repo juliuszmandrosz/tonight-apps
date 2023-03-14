@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/domain/domain.dart';
-import 'package:raver_scanner/application/current_event/current_event_cubit.dart';
-import 'package:raver_scanner/application/selector_club/selector_club_cubit.dart';
+import 'package:common/common.dart';
+import 'package:events/domain/domain.dart';
+import 'package:tonight_scanner/application/current_event/current_event_cubit.dart';
+import 'package:tonight_scanner/application/selector_club/selector_club_cubit.dart';
 
 part 'welcome_loader_cubit.freezed.dart';
 

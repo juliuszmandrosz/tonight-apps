@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:raver/application/ticket_list/ticket_list_cubit.dart';
-import 'package:raver/presentation/tickets/widgets/ticket_card.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
+import 'package:tonight/presentation/tickets/widgets/ticket_card.dart';
+import 'package:translations/translations.dart';
 
 class PastTickets extends StatefulWidget {
   const PastTickets({Key? key}) : super(key: key);

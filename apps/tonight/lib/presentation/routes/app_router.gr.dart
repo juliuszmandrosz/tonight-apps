@@ -13,10 +13,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i29;
 import 'package:flutter/material.dart' as _i30;
-import 'package:raver_clubs/raver_clubs.dart' as _i37;
-import 'package:raver_events/raver_events.dart' as _i36;
-import 'package:raver_payments/domain/domain.dart' as _i35;
-import 'package:raver_tickets/raver_tickets.dart' as _i38;
+import 'package:clubs/clubs.dart' as _i37;
+import 'package:events/events.dart' as _i36;
+import 'package:payments/domain/domain.dart' as _i35;
+import 'package:tickets/tickets.dart' as _i38;
 
 import '../../failure/failure_page.dart' as _i17;
 import '../app_settings/app_settings_page.dart' as _i20;

@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
-import 'package:raver/presentation/core/raver_headline.dart';
-import 'package:raver/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/commons/icons/tonight_icon_button.dart';
+import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class UsernameRow extends StatelessWidget {
   final String username;
@@ -17,12 +17,12 @@ class UsernameRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        RaverHeadline(
+        TonightHeadline(
           text: username,
           isSmallerVersion: true,
         ),
         const SizedBox(width: 5),
-        RaverIconButton(
+        TonightIconButton(
           onPressed: () => AutoRouter.of(context).push(
             UpdateUsernameRoute(
               currentUsername: username,

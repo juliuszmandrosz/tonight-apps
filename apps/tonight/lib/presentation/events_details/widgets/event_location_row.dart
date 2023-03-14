@@ -1,11 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
+import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
-import 'package:raver/presentation/commons/icons/raver_icon_button.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_events/raver_events.dart';
-import 'package:raver_translations/raver_translations.dart';
+import 'package:tonight/presentation/commons/icons/tonight_icon_button.dart';
+import 'package:translations/translations.dart';
 
 class EventLocationRow extends StatelessWidget {
   final Event event;
@@ -26,7 +26,7 @@ class EventLocationRow extends StatelessWidget {
       trailing: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          RaverIconButton(
+          TonightIconButton(
             icon: const FaIcon(FontAwesomeIcons.locationDot),
             onPressed: () => _launchMap(context),
           )

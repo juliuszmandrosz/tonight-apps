@@ -1,11 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:common/common.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:raver_common/raver_common.dart';
-import 'package:raver_partners/application/club_info/club_info_cubit.dart';
-import 'package:raver_partners/application/overview/overview_cubit.dart';
+import 'package:tonight_partners/application/club_info/club_info_cubit.dart';
+import 'package:tonight_partners/application/overview/overview_cubit.dart';
 
 part 'welcome_loader_cubit.freezed.dart';
-
 part 'welcome_loader_state.dart';
 
 class WelcomeLoaderCubit extends Cubit<WelcomeLoaderState> {

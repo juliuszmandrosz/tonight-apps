@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:formz/formz.dart';
-import 'package:raver_translations/generated/l10n.dart';
+import 'package:translations/generated/l10n.dart';
 
 enum StartDateTimeError { empty, fromPast, tooLate }
 

@@ -1,5 +1,5 @@
 // import 'package:algolia/algolia.dart';
-// import 'package:raver_events/domain/domain.dart';
+// import 'package:events/domain/domain.dart';
 //
 // abstract class AlgoliaEventsApi {
 //   Future<AlgoliaQuerySnapshot> getEvents(

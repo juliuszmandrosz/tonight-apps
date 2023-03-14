@@ -1,7 +1,7 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:dartz/dartz.dart';
-import 'package:raver_tickets/infrastructure/cloud_functions/cloud_function_names.dart';
-import 'package:raver_tickets/infrastructure/cloud_functions/params/return_ticket_params.dart';
+import 'package:tickets/infrastructure/cloud_functions/cloud_function_names.dart';
+import 'package:tickets/infrastructure/cloud_functions/params/return_ticket_params.dart';
 
 abstract class TicketCloudFunctionsFacade {
   Future<Unit> returnTicket(ReturnTicketParams params);
