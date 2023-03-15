@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:common/common.dart';
 import 'package:events/events.dart';
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class EventDateInfo extends StatelessWidget {
   final Event event;
@@ -23,7 +23,7 @@ class EventDateInfo extends StatelessWidget {
             event.eventStartDateTime,
           ),
           textAlign: TextAlign.center,
-          style: context.subtitle1,
+          style: context.titleMedium,
           maxLines: 1,
         ),
       ],

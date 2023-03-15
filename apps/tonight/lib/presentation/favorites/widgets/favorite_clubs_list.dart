@@ -39,7 +39,7 @@ class FavoriteClubsList extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       S().favoriteClubsInfo,
-                      style: context.bodyText2.copyWith(
+                      style: context.bodyMedium.copyWith(
                         color: context.secondaryColor,
                       ),
                     ),

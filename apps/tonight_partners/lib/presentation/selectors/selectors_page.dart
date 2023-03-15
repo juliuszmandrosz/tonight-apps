@@ -51,7 +51,7 @@ class SelectorsPage extends StatelessWidget {
                 ? Center(
                     child: Text(
                       S().selectors(0),
-                      style: context.subtitle1,
+                      style: context.titleMedium,
                     ),
                   )
                 : Column(

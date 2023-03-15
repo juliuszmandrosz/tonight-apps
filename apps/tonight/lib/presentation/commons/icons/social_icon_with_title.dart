@@ -27,7 +27,7 @@ class SocialIconWithTitle extends StatelessWidget {
       },
       title: AutoSizeText(
         socialMedia.label,
-        style: context.subtitle1.copyWith(color: context.secondaryColor),
+        style: context.titleMedium.copyWith(color: context.secondaryColor),
         maxLines: 1,
       ),
       trailing: Column(

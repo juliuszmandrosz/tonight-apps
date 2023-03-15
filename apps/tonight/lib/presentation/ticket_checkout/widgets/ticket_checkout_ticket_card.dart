@@ -34,7 +34,7 @@ class TicketCheckoutTicketCard extends StatelessWidget {
                   children: [
                     AutoSizeText(
                       event.eventName,
-                      style: context.headline6,
+                      style: context.titleLarge,
                       maxLines: 3,
                       textAlign: TextAlign.center,
                       softWrap: true,
@@ -44,14 +44,14 @@ class TicketCheckoutTicketCard extends StatelessWidget {
                       context.formatDateTimeToLocaleYMDHM(
                         event.eventStartDateTime,
                       ),
-                      style: context.bodyText1
+                      style: context.bodyLarge
                           .copyWith(color: context.secondaryColor),
                       maxLines: 1,
                     ),
                     if (isSoldOut)
                       Text(
                         S().soldOut.toUpperCase(),
-                        style: context.subtitle1.copyWith(
+                        style: context.titleMedium.copyWith(
                           color: context.tertiaryColor,
                         ),
                       )
@@ -62,7 +62,7 @@ class TicketCheckoutTicketCard extends StatelessWidget {
               AutoSizeText(
                 '${state.ticketPrice.getOrCrash()}'
                 '${getCurrencySymbolFromCode(event.currency)}',
-                style: context.headline6.copyWith(
+                style: context.titleLarge.copyWith(
                   decorationThickness: 2,
                   decoration: isSoldOut
                       ? TextDecoration.lineThrough
@@ -79,7 +79,7 @@ class TicketCheckoutTicketCard extends StatelessWidget {
                 child: Text(
                   state.isVip ? S().vipVertical : '',
                   textAlign: TextAlign.center,
-                  style: context.subtitle1.copyWith(
+                  style: context.titleMedium.copyWith(
                     color: context.tertiaryColor,
                   ),
                 ),

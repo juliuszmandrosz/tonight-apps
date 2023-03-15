@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:common/common.dart';
 import 'package:tickets/domain/ticket_entity.dart';
 
 class ReviewEventDate extends StatelessWidget {
@@ -17,7 +17,7 @@ class ReviewEventDate extends StatelessWidget {
         Flexible(
           child: AutoSizeText(
             context.formatDateTimeToLocaleYMDHM(ticket.eventStartDateTime),
-            style: context.subtitle1,
+            style: context.titleMedium,
             maxLines: 1,
           ),
         ),
@@ -27,7 +27,7 @@ class ReviewEventDate extends StatelessWidget {
         Flexible(
           child: AutoSizeText(
             context.formatDateTimeToLocaleYMDHM(ticket.eventEndDateTime),
-            style: context.subtitle1,
+            style: context.titleMedium,
             maxLines: 1,
           ),
         ),

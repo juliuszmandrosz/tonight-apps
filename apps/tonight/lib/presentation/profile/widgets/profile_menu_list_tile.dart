@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
 import 'package:common/common.dart';
+import 'package:flutter/material.dart';
 
 class ProfileMenuListTile extends StatelessWidget {
   final String title;
@@ -20,7 +20,7 @@ class ProfileMenuListTile extends StatelessWidget {
       title: AutoSizeText(
         title,
         maxLines: 1,
-        style: context.subtitle1,
+        style: context.titleMedium,
       ),
       trailing: const Icon(Icons.chevron_right_rounded),
       onTap: onTap,

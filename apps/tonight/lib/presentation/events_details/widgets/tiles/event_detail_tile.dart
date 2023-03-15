@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:common/common.dart';
 
 class EventDetailTile extends StatelessWidget {
   final IconData icon;
@@ -44,7 +44,7 @@ class EventDetailTile extends StatelessWidget {
                   : AutoSizeText(
                       value,
                       maxLines: 2,
-                      style: context.headline6,
+                      style: context.titleLarge,
                       textAlign: TextAlign.center,
                     ),
             ),

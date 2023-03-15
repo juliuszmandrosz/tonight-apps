@@ -20,14 +20,14 @@ class TonightListTileWithTitleAndSubtitle extends StatelessWidget {
       title: AutoSizeText(
         title,
         maxLines: 1,
-        style: context.subtitle1,
+        style: context.titleMedium,
       ),
       subtitle: Padding(
         padding: const EdgeInsets.only(top: 10),
         child: AutoSizeText(
           subtitle,
           maxLines: 3,
-          style: context.bodyText2.copyWith(color: context.secondaryColor),
+          style: context.bodyMedium.copyWith(color: context.secondaryColor),
         ),
       ),
     );

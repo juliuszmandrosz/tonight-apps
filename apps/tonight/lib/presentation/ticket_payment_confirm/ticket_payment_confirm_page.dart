@@ -39,7 +39,7 @@ class TicketPaymentConfirmPage extends StatelessWidget {
               const SizedBox(height: 30),
               AutoSizeText(
                 S().paymentConfirmed,
-                style: context.headline6.copyWith(
+                style: context.titleLarge.copyWith(
                   color: context.primaryColor,
                   fontSize: 28,
                 ),

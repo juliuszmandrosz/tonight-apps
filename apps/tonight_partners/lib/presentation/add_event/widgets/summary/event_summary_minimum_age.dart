@@ -18,7 +18,7 @@ class EventSummaryMinimumAge extends StatelessWidget {
           title: S().minAge,
           subtitle: Text(
             '${state.minAge.value}+',
-            style: context.subtitle1.copyWith(color: context.secondaryColor),
+            style: context.titleMedium.copyWith(color: context.secondaryColor),
           ),
           step: AddEventStep.details,
         );

@@ -28,7 +28,8 @@ class EventDetailsArtistName extends StatelessWidget {
             padding: const EdgeInsets.only(top: 15),
             child: Text(
               event.artistName!,
-              style: context.subtitle1.copyWith(color: context.secondaryColor),
+              style:
+                  context.titleMedium.copyWith(color: context.secondaryColor),
             ),
           ),
         ),

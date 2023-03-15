@@ -51,7 +51,7 @@ class EventPreviewCard extends StatelessWidget {
                         padding: const EdgeInsets.all(10),
                         child: Text(
                           state.eventName.value,
-                          style: context.headline6,
+                          style: context.titleLarge,
                           textAlign: TextAlign.center,
                           softWrap: false,
                           maxLines: 2,

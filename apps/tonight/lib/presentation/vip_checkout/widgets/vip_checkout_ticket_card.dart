@@ -32,7 +32,7 @@ class VipCheckoutTicketCard extends StatelessWidget {
                   children: [
                     AutoSizeText(
                       ticket.eventName,
-                      style: context.headline6,
+                      style: context.titleLarge,
                       maxLines: 3,
                       textAlign: TextAlign.center,
                       softWrap: true,
@@ -42,7 +42,7 @@ class VipCheckoutTicketCard extends StatelessWidget {
                       context.formatDateTimeToLocaleYMDHM(
                         ticket.eventStartDateTime,
                       ),
-                      style: context.bodyText1
+                      style: context.bodyLarge
                           .copyWith(color: context.secondaryColor),
                       maxLines: 1,
                     ),
@@ -53,7 +53,7 @@ class VipCheckoutTicketCard extends StatelessWidget {
               AutoSizeText(
                 '${state.vipPrice.getOrCrash()}'
                 '${getCurrencySymbolFromCode(ticket.currency)}',
-                style: context.headline6,
+                style: context.titleLarge,
                 maxLines: 1,
               ),
               const SizedBox(width: 10),
@@ -63,7 +63,7 @@ class VipCheckoutTicketCard extends StatelessWidget {
                 child: Text(
                   S().vipVertical,
                   textAlign: TextAlign.center,
-                  style: context.subtitle1.copyWith(
+                  style: context.titleMedium.copyWith(
                     color: context.tertiaryColor,
                   ),
                 ),

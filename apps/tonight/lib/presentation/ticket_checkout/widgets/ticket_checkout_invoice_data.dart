@@ -60,7 +60,7 @@ class TicketCheckoutInvoiceData extends StatelessWidget {
                         : AutoSizeText(
                             S().noData,
                             maxLines: 1,
-                            style: context.subtitle1,
+                            style: context.titleMedium,
                           ),
                     Column(
                       children: [

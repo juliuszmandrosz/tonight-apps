@@ -26,7 +26,7 @@ class EventDetailsStartDateTime extends StatelessWidget {
         padding: const EdgeInsets.only(top: 15),
         child: AutoSizeText(
           context.formatDateTimeToLocaleYMDHM(event.eventStartDateTime),
-          style: context.subtitle1.copyWith(color: context.secondaryColor),
+          style: context.titleMedium.copyWith(color: context.secondaryColor),
         ),
       ),
     );

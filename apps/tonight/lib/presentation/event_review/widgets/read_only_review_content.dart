@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:common/common.dart';
+import 'package:flutter/material.dart';
 import 'package:translations/translations.dart';
 
 class ReadOnlyReviewContent extends StatelessWidget {
@@ -16,7 +16,7 @@ class ReadOnlyReviewContent extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Text(
             S().yourOpinion,
-            style: context.headline6,
+            style: context.titleLarge,
           ),
         ),
         const SizedBox(height: 20),
@@ -24,7 +24,7 @@ class ReadOnlyReviewContent extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Text(
             content,
-            style: context.bodyText2.copyWith(color: context.secondaryColor),
+            style: context.bodyMedium.copyWith(color: context.secondaryColor),
           ),
         )
       ],

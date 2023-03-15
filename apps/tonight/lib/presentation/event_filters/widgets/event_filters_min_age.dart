@@ -36,7 +36,7 @@ class EventFiltersMinAge extends StatelessWidget {
                   CheckboxListTile(
                     contentPadding: EdgeInsets.zero,
                     activeColor: context.primaryColor,
-                    title: Text('$age+', style: context.subtitle1),
+                    title: Text('$age+', style: context.titleMedium),
                     controlAffinity: ListTileControlAffinity.leading,
                     value: state.filters.minAgesFilter.minAges.contains(age),
                     onChanged: (value) =>

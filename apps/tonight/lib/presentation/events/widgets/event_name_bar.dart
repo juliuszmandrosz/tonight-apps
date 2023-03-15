@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
 import 'package:common/common.dart';
 import 'package:events/events.dart';
+import 'package:flutter/material.dart';
 
 class EventNameBar extends StatelessWidget {
   final Event event;
@@ -19,7 +19,7 @@ class EventNameBar extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: AutoSizeText(
           event.eventName,
-          style: context.headline6,
+          style: context.titleLarge,
           textAlign: TextAlign.center,
           softWrap: true,
           maxLines: 2,

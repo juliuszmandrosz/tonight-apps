@@ -32,7 +32,7 @@ class EventFiltersPlaceOption extends StatelessWidget {
               title: AutoSizeText(
                 S().findByCity,
                 maxLines: 1,
-                style: context.subtitle1,
+                style: context.titleMedium,
               ),
               value: false,
               groupValue: filtersState.filters.maxDistanceFilter.enabled,
@@ -45,7 +45,7 @@ class EventFiltersPlaceOption extends StatelessWidget {
               title: AutoSizeText(
                 S().findByMaxDistance,
                 maxLines: 1,
-                style: context.subtitle1,
+                style: context.titleMedium,
               ),
               value: true,
               groupValue: filtersState.filters.maxDistanceFilter.enabled,

@@ -25,7 +25,7 @@ class ClubFiltersRow extends StatelessWidget {
                 ),
                 child: Text(
                   S().filters,
-                  style: context.bodyText2.copyWith(
+                  style: context.bodyMedium.copyWith(
                     color: state.isMenuFilterApplied
                         ? context.primaryColor
                         : context.onSurfaceColor,

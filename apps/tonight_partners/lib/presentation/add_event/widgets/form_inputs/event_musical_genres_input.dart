@@ -34,7 +34,7 @@ class EventMusicalGenresInput extends StatelessWidget {
               title: Text(S().musicalGenres),
               selectedColor: context.primaryColor,
               initialValue: state.musicalGenres.value,
-              selectedItemsTextStyle: context.bodyText1,
+              selectedItemsTextStyle: context.bodyLarge,
               items: musicalGenres
                   .map((genre) => MultiSelectItem(genre, genre.capitalize()))
                   .toList(),

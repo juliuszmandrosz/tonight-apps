@@ -20,7 +20,7 @@ class EventLocationRow extends StatelessWidget {
       onTap: () => _launchMap(context),
       title: AutoSizeText(
         S().location,
-        style: context.subtitle1.copyWith(color: context.secondaryColor),
+        style: context.titleMedium.copyWith(color: context.secondaryColor),
         maxLines: 1,
       ),
       trailing: Column(

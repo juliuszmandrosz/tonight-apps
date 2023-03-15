@@ -24,7 +24,7 @@ class TicketCheckoutInvoiceCheckbox extends StatelessWidget {
                 activeColor: context.primaryColor,
                 title: Text(
                   S().iWantInvoice,
-                  style: context.subtitle1,
+                  style: context.titleMedium,
                 ),
                 value: state.sendInvoice,
                 onChanged: (value) => context

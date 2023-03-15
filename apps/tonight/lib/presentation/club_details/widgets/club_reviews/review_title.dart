@@ -1,9 +1,9 @@
+import 'package:clubs/clubs.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:clubs/clubs.dart';
-import 'package:common/common.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class ReviewTitle extends StatelessWidget {
@@ -29,7 +29,7 @@ class ReviewTitle extends StatelessWidget {
               child: Center(
                 child: Text(
                   review.username.toUpperCase().substring(0, 2),
-                  style: context.subtitle1,
+                  style: context.titleMedium,
                 ),
               ),
             ),
@@ -49,7 +49,7 @@ class ReviewTitle extends StatelessWidget {
                     children: [
                       Text(
                         review.username,
-                        style: context.subtitle1.copyWith(
+                        style: context.titleMedium.copyWith(
                           color: context.secondaryColor,
                         ),
                       ),
@@ -73,7 +73,7 @@ class ReviewTitle extends StatelessWidget {
                         review.dateAdded,
                         locale: Intl.getCurrentLocale(),
                       ),
-                      style: context.bodyText1.copyWith(
+                      style: context.bodyLarge.copyWith(
                         color: context.secondaryColor,
                       ),
                     ),

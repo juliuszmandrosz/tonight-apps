@@ -17,7 +17,7 @@ class RewardListTile extends StatelessWidget {
       contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
       title: AutoSizeText(
         reward.description,
-        style: context.subtitle1,
+        style: context.titleMedium,
         maxLines: 3,
       ),
       trailing: Column(

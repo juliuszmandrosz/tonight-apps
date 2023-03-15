@@ -25,7 +25,7 @@ class EventSummaryDjChannelUrl extends StatelessWidget {
                         url: state.djChannelUrl.value,
                         label: Text(
                           state.djChannelUrl.value,
-                          style: context.subtitle1.copyWith(
+                          style: context.titleMedium.copyWith(
                             color: context.secondaryColor,
                           ),
                         ),

@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:common/common.dart';
 import 'package:translations/translations.dart';
 
 class SearchEventsInfo extends StatelessWidget {
@@ -18,7 +18,7 @@ class SearchEventsInfo extends StatelessWidget {
           child: AutoSizeText(
             S().typeEventClubOrArtistName,
             maxLines: 1,
-            style: context.bodyText2.copyWith(color: context.secondaryColor),
+            style: context.bodyMedium.copyWith(color: context.secondaryColor),
           ),
         ),
       ],

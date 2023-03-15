@@ -21,7 +21,7 @@ class SalesAvailabilitySwitch extends StatelessWidget {
             activeColor: context.primaryColor,
             title: Text(
               S().ticketsAvailableOnlyAtGate,
-              style: context.subtitle1,
+              style: context.titleMedium,
             ),
             value: state.isSaleOnlyAtGate,
             onChanged: (value) =>

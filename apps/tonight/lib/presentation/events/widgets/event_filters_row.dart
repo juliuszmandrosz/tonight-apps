@@ -30,7 +30,7 @@ class EventFiltersRow extends StatelessWidget {
                     ),
                     child: Text(
                       S().date,
-                      style: context.bodyText2.copyWith(
+                      style: context.bodyMedium.copyWith(
                         color: state.isDateFilterApplied
                             ? context.primaryColor
                             : context.onSurfaceColor,
@@ -54,7 +54,7 @@ class EventFiltersRow extends StatelessWidget {
                     ),
                     child: Text(
                       S().filters,
-                      style: context.bodyText2.copyWith(
+                      style: context.bodyMedium.copyWith(
                         color: state.isMenuFilterApplied
                             ? context.primaryColor
                             : context.onSurfaceColor,

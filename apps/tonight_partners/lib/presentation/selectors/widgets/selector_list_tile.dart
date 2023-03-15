@@ -22,7 +22,7 @@ class SelectorListTile extends StatelessWidget {
       contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
       title: AutoSizeText(
         selector.email,
-        style: context.subtitle1,
+        style: context.titleMedium,
         maxLines: 1,
       ),
       trailing: Column(

@@ -23,7 +23,7 @@ class AddEventStepsHeader extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: AutoSizeText(
               _getHeaderText(state.currentStep),
-              style: context.headline5,
+              style: context.headlineSmall,
               maxLines: 1,
             ),
           ),

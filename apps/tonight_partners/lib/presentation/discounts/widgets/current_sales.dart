@@ -55,7 +55,7 @@ class CurrentSales extends StatelessWidget {
                     '${S().total}: '
                     '${sales.exclusiveTicketsSold + sales.exclusiveVipsSold}',
                     maxLines: 1,
-                    style: context.subtitle1,
+                    style: context.titleMedium,
                   ),
                 ),
               ),

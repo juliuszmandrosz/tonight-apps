@@ -16,7 +16,7 @@ class TonightHeadline extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoSizeText(
       text,
-      style: isSmallerVersion ? context.headline6 : context.headline5,
+      style: isSmallerVersion ? context.titleLarge : context.headlineSmall,
       maxLines: 1,
       textAlign: TextAlign.center,
     );

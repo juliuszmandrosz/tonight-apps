@@ -23,7 +23,7 @@ class AddEventNumberStepper extends StatelessWidget {
           stepColor: context.outlineColor,
           activeStepColor: context.primaryColor,
           lineColor: context.primaryColor,
-          numberStyle: context.headline3,
+          numberStyle: context.displaySmall,
           activeStepBorderColor: context.primaryColor,
           enableStepTapping: false,
         );

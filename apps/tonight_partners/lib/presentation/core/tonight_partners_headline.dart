@@ -19,10 +19,10 @@ class TonightPartnersHeadline extends StatelessWidget {
     return AutoSizeText(
       text,
       style: isSmallerVersion
-          ? context.headline6.copyWith(
+          ? context.titleLarge.copyWith(
               color: color ?? context.onSurfaceColor,
             )
-          : context.headline5.copyWith(
+          : context.headlineSmall.copyWith(
               color: color ?? context.onSurfaceColor,
             ),
       maxLines: 1,

@@ -22,7 +22,7 @@ class EventDetailsMusicalGenres extends StatelessWidget {
         alignment: Alignment.centerLeft,
         child: AutoSizeText(
           S().musicalGenres,
-          style: context.headline6,
+          style: context.titleLarge,
           maxLines: 1,
         ),
       ),
@@ -31,7 +31,7 @@ class EventDetailsMusicalGenres extends StatelessWidget {
         child: AutoSizeText(
           displayMusicalGenres(
               event.musicalGenres, EventDetailsSeparator.comma),
-          style: context.subtitle1.copyWith(color: context.secondaryColor),
+          style: context.titleMedium.copyWith(color: context.secondaryColor),
           maxLines: 1,
         ),
       ),

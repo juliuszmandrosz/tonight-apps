@@ -89,7 +89,7 @@ class ProfilePage extends StatelessWidget {
                       const SizedBox(height: 20),
                       AutoSizeText(
                         state.user.email,
-                        style: context.subtitle1
+                        style: context.titleMedium
                             .copyWith(color: context.secondaryColor),
                         maxLines: 1,
                       ),

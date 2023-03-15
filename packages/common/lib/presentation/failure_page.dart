@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:common/common.dart';
 import 'package:translations/translations.dart';
 
 class FailurePage extends StatefulWidget {
@@ -39,7 +39,7 @@ class _FailurePageState extends State<FailurePage> {
                     padding: const EdgeInsets.all(12),
                     child: Text(
                       S().serverError,
-                      style: context.subtitle1.copyWith(height: 1.5),
+                      style: context.titleMedium.copyWith(height: 1.5),
                       textAlign: TextAlign.center,
                     ),
                   ),

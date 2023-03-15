@@ -19,7 +19,7 @@ class ReviewSubtitle extends StatelessWidget {
             padding: const EdgeInsets.only(top: 20),
             child: Text(
               review.userOpinion,
-              style: context.subtitle1,
+              style: context.titleMedium,
             ),
           ),
         ),
@@ -36,7 +36,7 @@ class ReviewSubtitle extends StatelessWidget {
                     child: AutoSizeText(
                       review.eventName,
                       maxLines: 2,
-                      style: context.bodyText2
+                      style: context.bodyMedium
                           .copyWith(color: context.secondaryColor),
                     ),
                   );

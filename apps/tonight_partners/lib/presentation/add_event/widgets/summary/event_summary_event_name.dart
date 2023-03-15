@@ -18,7 +18,7 @@ class EventSummaryEventName extends StatelessWidget {
           title: S().eventName,
           subtitle: Text(
             state.eventName.value,
-            style: context.subtitle1.copyWith(color: context.secondaryColor),
+            style: context.titleMedium.copyWith(color: context.secondaryColor),
           ),
           step: AddEventStep.nameAndDesc,
         );

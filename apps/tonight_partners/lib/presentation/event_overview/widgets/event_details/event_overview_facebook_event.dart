@@ -50,7 +50,7 @@ class EventOverviewFacebookEvent extends StatelessWidget {
                       url: facebookUrl,
                       label: Text(
                         facebookUrl,
-                        style: context.subtitle1.copyWith(
+                        style: context.titleMedium.copyWith(
                           color: context.secondaryColor,
                         ),
                       ),

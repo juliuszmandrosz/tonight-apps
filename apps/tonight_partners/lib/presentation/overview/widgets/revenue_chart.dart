@@ -43,7 +43,7 @@ class RevenueChart extends StatelessWidget {
                   children: [
                     Text(
                       S().noRevenue,
-                      style: context.subtitle1,
+                      style: context.titleMedium,
                     ),
                     const SizedBox(height: 15),
                     const StatisticsUpdateInfo(),

@@ -35,7 +35,7 @@ class TicketScanConfirmPage extends StatelessWidget {
               const SizedBox(height: 30),
               AutoSizeText(
                 S().ticketScanned,
-                style: context.headline6.copyWith(
+                style: context.titleLarge.copyWith(
                   color: context.primaryColor,
                   fontSize: 28,
                 ),

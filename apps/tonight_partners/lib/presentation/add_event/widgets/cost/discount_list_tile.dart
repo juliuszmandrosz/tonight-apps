@@ -29,7 +29,7 @@ class DiscountListTile extends StatelessWidget {
             padding: const EdgeInsets.only(top: 5),
             child: Text(
               '${collectedDiscounts.length}x',
-              style: context.bodyText2.copyWith(
+              style: context.bodyMedium.copyWith(
                 color: context.secondaryColor,
               ),
             ),

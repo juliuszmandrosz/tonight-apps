@@ -88,14 +88,14 @@ class TicketCheckoutPromotionCode extends HookWidget {
                       child: Center(
                         child: Text(
                           state.promotionCode.code.toUpperCase(),
-                          style: context.subtitle1,
+                          style: context.titleMedium,
                         ),
                       ),
                     ),
                     avatar: Text(
                       '-${state.promotionCode.amountOff}'
                       '${getCurrencySymbolFromCode(state.promotionCode.currency)}',
-                      style: context.subtitle1,
+                      style: context.titleMedium,
                     ),
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     onDeleted: () => context

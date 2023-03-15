@@ -51,7 +51,7 @@ class RewardsPage extends StatelessWidget {
                 ? Center(
                     child: Text(
                       S().rewards(0),
-                      style: context.subtitle1,
+                      style: context.titleMedium,
                     ),
                   )
                 : ListView(

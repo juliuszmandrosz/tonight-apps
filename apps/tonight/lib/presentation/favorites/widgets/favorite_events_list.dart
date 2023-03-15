@@ -44,7 +44,7 @@ class FavoriteEventsList extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       S().favoriteEventsInfo,
-                      style: context.bodyText2.copyWith(
+                      style: context.bodyMedium.copyWith(
                         color: context.secondaryColor,
                       ),
                     ),

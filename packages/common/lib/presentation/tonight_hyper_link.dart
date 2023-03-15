@@ -17,7 +17,7 @@ class TonightHyperLink extends StatelessWidget {
     return InkWell(
       onTap: () async {
         final result = await launchURL(Uri.parse(url));
-        if (result.isSome()) {
+        if (context.mounted && result.isSome()) {
           context.showSnackbarMessage(S().errorOpeningLink);
         }
       },

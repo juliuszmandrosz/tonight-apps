@@ -62,7 +62,7 @@ class ClubOpinions extends StatelessWidget {
                           children: [
                             Text(
                               S().noOpinions,
-                              style: context.subtitle1,
+                              style: context.titleMedium,
                             ),
                             const SizedBox(height: 20),
                             OutlinedButton(

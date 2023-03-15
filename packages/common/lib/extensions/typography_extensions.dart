@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 
 extension TypographyExtensions on BuildContext {
-  TextStyle get subtitle1 => Theme.of(this).textTheme.subtitle1!;
+  TextStyle get titleMedium => Theme.of(this).textTheme.titleMedium!;
 
-  TextStyle get subtitle2 => Theme.of(this).textTheme.subtitle2!;
+  TextStyle get titleSmall => Theme.of(this).textTheme.titleSmall!;
 
-  TextStyle get bodyText1 => Theme.of(this).textTheme.bodyText1!;
+  TextStyle get bodyLarge => Theme.of(this).textTheme.bodyLarge!;
 
-  TextStyle get bodyText2 => Theme.of(this).textTheme.bodyText2!;
+  TextStyle get bodyMedium => Theme.of(this).textTheme.bodyMedium!;
 
-  TextStyle get headline1 => Theme.of(this).textTheme.headline1!;
+  TextStyle get displayLarge => Theme.of(this).textTheme.displayLarge!;
 
-  TextStyle get headline2 => Theme.of(this).textTheme.headline2!;
+  TextStyle get displayMedium => Theme.of(this).textTheme.displayMedium!;
 
-  TextStyle get headline3 => Theme.of(this).textTheme.headline3!;
+  TextStyle get displaySmall => Theme.of(this).textTheme.displaySmall!;
 
-  TextStyle get headline6 => Theme.of(this).textTheme.headline6!;
+  TextStyle get titleLarge => Theme.of(this).textTheme.titleLarge!;
 
-  TextStyle get headline5 => Theme.of(this).textTheme.headline5!;
+  TextStyle get headlineSmall => Theme.of(this).textTheme.headlineSmall!;
 
-  TextStyle get caption => Theme.of(this).textTheme.caption!;
+  TextStyle get bodySmall => Theme.of(this).textTheme.bodySmall!;
 
-  TextStyle get button => Theme.of(this).textTheme.button!;
+  TextStyle get labelLarge => Theme.of(this).textTheme.labelLarge!;
 
-  TextStyle get headline4 => Theme.of(this).textTheme.headline4!;
+  TextStyle get headlineMedium => Theme.of(this).textTheme.headlineMedium!;
 
-  TextStyle get overline => Theme.of(this).textTheme.overline!;
+  TextStyle get labelSmall => Theme.of(this).textTheme.labelSmall!;
 }

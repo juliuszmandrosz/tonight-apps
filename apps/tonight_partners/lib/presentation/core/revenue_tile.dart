@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
 import 'package:common/common.dart';
+import 'package:flutter/material.dart';
 
 class RevenueTile extends StatelessWidget {
   final IconData icon;
@@ -39,7 +39,7 @@ class RevenueTile extends StatelessWidget {
               child: AutoSizeText(
                 value,
                 maxLines: 1,
-                style: context.headline5,
+                style: context.headlineSmall,
                 textAlign: TextAlign.center,
               ),
             ),

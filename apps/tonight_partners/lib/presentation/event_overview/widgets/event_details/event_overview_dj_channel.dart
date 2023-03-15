@@ -51,7 +51,7 @@ class EventOverviewDjChannel extends StatelessWidget {
                       url: djChannelUrl,
                       label: Text(
                         djChannelUrl,
-                        style: context.subtitle1.copyWith(
+                        style: context.titleMedium.copyWith(
                           color: context.secondaryColor,
                         ),
                       ),

@@ -20,7 +20,7 @@ class ClubLocationRow extends StatelessWidget {
         Expanded(
           child: AutoSizeText(
             club.locationString,
-            style: context.subtitle1,
+            style: context.titleMedium,
             maxLines: 2,
           ),
         ),

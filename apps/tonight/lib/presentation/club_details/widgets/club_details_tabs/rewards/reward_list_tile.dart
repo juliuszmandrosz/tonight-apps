@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:common/common.dart';
+import 'package:flutter/material.dart';
 import 'package:rewards/domain/domain.dart';
 
 class RewardListTile extends StatelessWidget {
@@ -14,7 +14,7 @@ class RewardListTile extends StatelessWidget {
       contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
       title: Text(
         reward.description,
-        style: context.subtitle1.copyWith(color: context.secondaryColor),
+        style: context.titleMedium.copyWith(color: context.secondaryColor),
       ),
     );
   }

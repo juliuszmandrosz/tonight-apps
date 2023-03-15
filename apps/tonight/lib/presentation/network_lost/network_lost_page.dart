@@ -30,7 +30,7 @@ class NetworkLostPage extends StatelessWidget {
                 const Spacer(),
                 AutoSizeText(
                   S().lostNetworkConnectionDescription,
-                  style: context.headline6,
+                  style: context.titleLarge,
                   textAlign: TextAlign.center,
                   maxLines: 1,
                 ),
