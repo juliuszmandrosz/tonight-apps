@@ -1,4 +1,7 @@
+import 'package:auth/auth.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
+import 'package:events/application/application.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,9 +18,6 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight/presentation/navigator/navigator_page.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:auth/auth.dart';
-import 'package:common/common.dart';
-import 'package:events/application/application.dart';
 
 class WelcomeLoaderPage extends StatefulWidget {
   const WelcomeLoaderPage({Key? key}) : super(key: key);
@@ -65,7 +65,7 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
         BlocListener<AuthCubit, AuthState>(
           bloc: context.read<AuthCubit>(),
           listener: (context, state) => state.map(
-            initial: (_) {},
+            initial: (_) => {},
             authenticated: (_) => {},
             unauthenticated: (_) => context.replaceRoute(const SignInRoute()),
           ),
@@ -138,7 +138,7 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
                 return _ticketLogoAnimation ?? const TicketLogoAnimation();
               }
 
-              return const tonightNavigator();
+              return const NavigatorPage();
             },
           ),
         ),

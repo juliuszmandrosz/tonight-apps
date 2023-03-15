@@ -21,7 +21,7 @@ class SocialIconWithTitle extends StatelessWidget {
       contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
       onTap: () async {
         final result = await launchURL(Uri.parse(url));
-        if (result.isSome()) {
+        if (context.mounted && result.isSome()) {
           context.showSnackbarMessage(S().errorOpeningLink);
         }
       },

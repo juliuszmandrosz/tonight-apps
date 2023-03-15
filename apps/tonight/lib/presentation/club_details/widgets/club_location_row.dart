@@ -32,7 +32,7 @@ class ClubLocationRow extends StatelessWidget {
               club.getLongitude(),
               club.clubName,
             );
-            if (!result) {
+            if (context.mounted && !result) {
               context.showSnackbarMessage(S().errorOpeningMaps);
             }
           },

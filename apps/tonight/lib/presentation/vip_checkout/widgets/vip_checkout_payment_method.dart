@@ -59,7 +59,7 @@ class VipCheckoutPaymentMethod extends StatelessWidget {
                                 ),
                               );
 
-                              if (result != null) {
+                              if (context.mounted && result != null) {
                                 final vipCheckoutCubit =
                                     context.read<VipCheckoutCubit>();
 

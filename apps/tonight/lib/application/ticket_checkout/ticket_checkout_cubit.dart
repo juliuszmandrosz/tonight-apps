@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:events/events.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:payments/application/core/tonight_payment_method.dart';
 import 'package:payments/domain/domain.dart';
@@ -15,6 +15,7 @@ import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
 import 'package:translations/translations.dart';
 
 part 'ticket_checkout_cubit.freezed.dart';
+
 part 'ticket_checkout_state.dart';
 
 class TicketCheckoutCubit extends Cubit<TicketCheckoutState> {

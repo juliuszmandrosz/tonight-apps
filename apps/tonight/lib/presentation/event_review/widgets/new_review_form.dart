@@ -28,7 +28,7 @@ class NewReviewForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _isReviewAddedSuccessfully = false;
+    var isReviewAddedSuccessfully = false;
 
     return BlocProvider(
       create: (context) => getIt<NewReviewCubit>(
@@ -53,7 +53,7 @@ class NewReviewForm extends StatelessWidget {
           );
 
           if (state.submittingStatus.isSubmissionSuccess) {
-            _isReviewAddedSuccessfully = true;
+            isReviewAddedSuccessfully = true;
             context.showSnackbarMessage(S().reviewAdded);
             context.popRoute();
           }
@@ -69,7 +69,7 @@ class NewReviewForm extends StatelessWidget {
             case CubitStatus.success:
               return WillPopScope(
                 onWillPop: () async {
-                  if (_isReviewAddedSuccessfully) {
+                  if (isReviewAddedSuccessfully) {
                     return true;
                   }
 

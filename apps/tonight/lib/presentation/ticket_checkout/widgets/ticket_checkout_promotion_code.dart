@@ -10,11 +10,11 @@ class TicketCheckoutPromotionCode extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _controller = useTextEditingController(
+    final controller = useTextEditingController(
       text: context.read<TicketCheckoutCubit>().state.promotionCode.code,
     );
 
-    Widget? _getSuffixIcon(TicketCheckoutState state) {
+    Widget? getSuffixIcon(TicketCheckoutState state) {
       if (state.invalidPromotionCodeMessage.isSome() ||
           state.promotionCodeStatus.isSuccess()) {
         return InkWell(
@@ -26,7 +26,7 @@ class TicketCheckoutPromotionCode extends HookWidget {
       return null;
     }
 
-    Widget? _getSuffix(TicketCheckoutState state) {
+    Widget? getSuffix(TicketCheckoutState state) {
       if (state.promotionCodeStatus.isLoading()) {
         return const SizedBox(
           height: 20,
@@ -35,7 +35,7 @@ class TicketCheckoutPromotionCode extends HookWidget {
         );
       }
 
-      if (_controller.text.isNotEmpty &&
+      if (controller.text.isNotEmpty &&
           state.invalidPromotionCodeMessage.isNone()) {
         return TextButton(
           style: TextButton.styleFrom(
@@ -62,7 +62,7 @@ class TicketCheckoutPromotionCode extends HookWidget {
               current.invalidPromotionCodeMessage,
       builder: (context, state) {
         if (state.promotionCode.code.isEmpty) {
-          _controller.text = '';
+          controller.text = '';
           FocusManager.instance.primaryFocus?.unfocus();
         }
 
@@ -105,7 +105,7 @@ class TicketCheckoutPromotionCode extends HookWidget {
                 ),
               )
             : TextField(
-                controller: _controller,
+                controller: controller,
                 textCapitalization: TextCapitalization.characters,
                 onChanged: (value) => context
                     .read<TicketCheckoutCubit>()
@@ -117,8 +117,8 @@ class TicketCheckoutPromotionCode extends HookWidget {
                     () => null,
                     (error) => error,
                   ),
-                  suffixIcon: _getSuffixIcon(state),
-                  suffix: _getSuffix(state),
+                  suffixIcon: getSuffixIcon(state),
+                  suffix: getSuffix(state),
                   errorMaxLines: 2,
                 ),
               );

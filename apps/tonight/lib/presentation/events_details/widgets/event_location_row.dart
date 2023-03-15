@@ -41,7 +41,7 @@ class EventLocationRow extends StatelessWidget {
       event.getLongitude(),
       event.clubName,
     );
-    if (!result) {
+    if (context.mounted && !result) {
       context.showSnackbarMessage(S().errorOpeningMaps);
     }
   }

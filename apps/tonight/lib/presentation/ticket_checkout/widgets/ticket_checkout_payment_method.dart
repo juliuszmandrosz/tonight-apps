@@ -59,7 +59,7 @@ class TicketCheckoutPaymentMethod extends StatelessWidget {
                                 ),
                               );
 
-                              if (result != null) {
+                              if (context.mounted && result != null) {
                                 final ticketCheckoutCubit =
                                     context.read<TicketCheckoutCubit>();
 

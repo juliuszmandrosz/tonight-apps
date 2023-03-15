@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:tonight/presentation/commons/icons/tonight_icon.dart';
 
-class TonightToggleIcon extends TonightIcon {
+class TonightToggleIcon extends StatelessWidget {
   const TonightToggleIcon({
     Key? key,
     required this.onIcon,
     required this.onPressed,
     required this.offIcon,
     required this.value,
-  }) : super(key: key, onPressed: onPressed);
+  }) : super(key: key);
 
   final bool value;
   final Widget offIcon;

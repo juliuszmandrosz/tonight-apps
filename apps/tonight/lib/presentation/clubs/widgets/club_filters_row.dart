@@ -23,20 +23,20 @@ class ClubFiltersRow extends StatelessWidget {
                 onPressed: () => context.pushRoute(
                   ClubFiltersRoute(blocContext: context),
                 ),
-                child: Text(
-                  S().filters,
-                  style: context.bodyMedium.copyWith(
-                    color: state.isMenuFilterApplied
-                        ? context.primaryColor
-                        : context.onSurfaceColor,
-                  ),
-                ),
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(
                     width: 2,
                     color: state.isMenuFilterApplied
                         ? context.primaryColor
                         : context.outlineColor.darken(0.3),
+                  ),
+                ),
+                child: Text(
+                  S().filters,
+                  style: context.bodyMedium.copyWith(
+                    color: state.isMenuFilterApplied
+                        ? context.primaryColor
+                        : context.onSurfaceColor,
                   ),
                 ),
               ),
