@@ -10,8 +10,8 @@ scripts:
     description: Run `flutter analyze` in all packages
 
   format:
-    run: melos exec -- "flutter format . --set-exit-if-changed"
-    description: Run `flutter format .` in all packages
+    run: melos exec -- "dart format . --set-exit-if-changed"
+    description: Run `dart format .` in all packages
 
   test:
     run: melos exec --dir-exists=test -- "flutter test"

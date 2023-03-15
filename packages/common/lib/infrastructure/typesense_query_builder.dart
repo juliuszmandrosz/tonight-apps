@@ -1,5 +1,3 @@
-import 'package:logger/logger.dart';
-
 class TypesenseQueryBuilder {
   static String setNumericBetween({
     required String query,

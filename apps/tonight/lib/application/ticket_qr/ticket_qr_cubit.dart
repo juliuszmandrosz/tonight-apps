@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:common/application/application.dart';
 import 'package:common/extensions/option_extensions.dart';
 import 'package:dartz/dartz.dart';

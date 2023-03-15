@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:clubs/clubs.dart';
 import 'package:common/common.dart';
-import 'package:common/domain/terms_of_service/partner_terms_of_service_facade.dart';
 import 'package:common/infrastructure/currency_params/firebase_currency_params_facade.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:events/domain/event_costs/event_costs_facade.dart';

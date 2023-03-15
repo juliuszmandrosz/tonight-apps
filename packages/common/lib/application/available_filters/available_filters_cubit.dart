@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:common/domain/available_filters/available_filters_entity.dart';
 import 'package:common/domain/available_filters/available_filters_facade.dart';
