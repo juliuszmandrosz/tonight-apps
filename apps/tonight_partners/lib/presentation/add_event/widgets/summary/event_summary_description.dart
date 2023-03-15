@@ -22,7 +22,7 @@ class EventSummaryDescription extends StatelessWidget {
                       title: S().description,
                       subtitle: Text(
                         state.description.value,
-                        style: context.subtitle1.copyWith(
+                        style: context.titleMedium.copyWith(
                           color: context.secondaryColor,
                         ),
                       ),

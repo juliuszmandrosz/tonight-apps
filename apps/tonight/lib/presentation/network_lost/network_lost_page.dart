@@ -30,7 +30,7 @@ class NetworkLostPage extends StatelessWidget {
                 const Spacer(),
                 AutoSizeText(
                   S().lostNetworkConnectionDescription,
-                  style: context.headline6,
+                  style: context.titleLarge,
                   textAlign: TextAlign.center,
                   maxLines: 1,
                 ),
@@ -41,7 +41,8 @@ class NetworkLostPage extends StatelessWidget {
                   width: 300,
                   child: ElevatedButton(
                     onPressed: () async {
-                      if (await _checkNetworkConnection(context)) {
+                      final result = await _checkNetworkConnection(context);
+                      if (context.mounted && result) {
                         _navigateToHomePage(context);
                       }
                     },

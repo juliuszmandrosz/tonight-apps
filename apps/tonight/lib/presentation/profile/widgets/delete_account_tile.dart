@@ -17,7 +17,7 @@ class DeleteAccountTile extends StatelessWidget {
           S().confirmDeleteAccount,
         );
 
-        if (result ?? false) {
+        if (context.mounted && (result ?? false)) {
           context.read<ProfileCubit>().deleteAccount();
         }
       },

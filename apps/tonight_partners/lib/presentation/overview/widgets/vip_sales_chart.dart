@@ -42,7 +42,7 @@ class VipSalesChart extends StatelessWidget {
                   children: [
                     Text(
                       S().noVipsSold,
-                      style: context.subtitle1,
+                      style: context.titleMedium,
                     ),
                     const SizedBox(height: 15),
                     const StatisticsUpdateInfo(),

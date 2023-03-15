@@ -25,7 +25,7 @@ class EventSummaryFacebookUrl extends StatelessWidget {
                       url: state.facebookUrl.value,
                       label: Text(
                         state.facebookUrl.value,
-                        style: context.subtitle1.copyWith(
+                        style: context.titleMedium.copyWith(
                           color: context.secondaryColor,
                         ),
                       ),

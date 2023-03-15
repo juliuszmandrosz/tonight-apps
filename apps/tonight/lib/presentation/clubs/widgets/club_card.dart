@@ -94,7 +94,7 @@ class ClubCard extends StatelessWidget {
                       Expanded(
                         child: Text(
                           _club.clubName,
-                          style: context.subtitle1,
+                          style: context.titleMedium,
                           softWrap: false,
                           overflow: TextOverflow.fade,
                           maxLines: 1,
@@ -113,7 +113,7 @@ class ClubCard extends StatelessWidget {
                       Expanded(
                         child: Text(
                           _club.locationString,
-                          style: context.subtitle1,
+                          style: context.titleMedium,
                           softWrap: false,
                           overflow: TextOverflow.fade,
                           maxLines: 1,
@@ -139,7 +139,7 @@ class ClubCard extends StatelessWidget {
                               padding: const EdgeInsets.only(left: 10),
                               child: Text(
                                 clubReviewAvg.toStringAsFixed(1),
-                                style: context.bodyText2,
+                                style: context.bodyMedium,
                               ),
                             ),
                             Expanded(
@@ -147,7 +147,7 @@ class ClubCard extends StatelessWidget {
                                 padding: const EdgeInsets.only(left: 10),
                                 child: Text(
                                   '${_club.reviewCount} ${S().opinions(_club.reviewCount)}',
-                                  style: context.bodyText2,
+                                  style: context.bodyMedium,
                                   softWrap: false,
                                   overflow: TextOverflow.fade,
                                   maxLines: 1,

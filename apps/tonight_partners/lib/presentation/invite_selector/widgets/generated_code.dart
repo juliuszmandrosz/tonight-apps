@@ -23,7 +23,7 @@ class GeneratedCode extends StatelessWidget {
               AutoSizeText(
                 S().oneTimeAccessCode,
                 maxLines: 1,
-                style: context.headline5,
+                style: context.headlineSmall,
               ),
               const SizedBox(height: 20),
               Row(

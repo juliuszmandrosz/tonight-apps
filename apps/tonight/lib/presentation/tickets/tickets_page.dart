@@ -69,7 +69,7 @@ class _TicketsPageState extends State<TicketsPage> {
                       ? Center(
                           child: Text(
                             S().tickets(0),
-                            style: context.subtitle1,
+                            style: context.titleMedium,
                           ),
                         )
                       : RefreshIndicator(

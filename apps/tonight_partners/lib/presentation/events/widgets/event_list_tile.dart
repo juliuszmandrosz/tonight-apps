@@ -26,7 +26,7 @@ class EventListTile extends StatelessWidget {
             ),
       title: Text(
         event.eventName,
-        style: context.headline6.copyWith(color: context.onSurfaceColor),
+        style: context.titleLarge.copyWith(color: context.onSurfaceColor),
         maxLines: 2,
         softWrap: false,
         overflow: TextOverflow.ellipsis,
@@ -35,7 +35,7 @@ class EventListTile extends StatelessWidget {
         padding: const EdgeInsets.only(top: 10),
         child: Text(
           context.formatDateTimeToLocaleYMDHM(event.eventStartDateTime),
-          style: context.subtitle1.copyWith(
+          style: context.titleMedium.copyWith(
             color: context.secondaryColor,
           ),
         ),

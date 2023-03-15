@@ -19,7 +19,7 @@ class EventSummaryCost extends StatelessWidget {
           title: S().fee,
           subtitle: Text(
             '${(state.selectedEventFee.getOrCrash() * 100).toStringAsFixed(0)}%',
-            style: context.subtitle1.copyWith(color: context.secondaryColor),
+            style: context.titleMedium.copyWith(color: context.secondaryColor),
           ),
           step: AddEventStep.cost,
         );

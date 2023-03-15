@@ -29,7 +29,7 @@ class AvailableDiscounts extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: AutoSizeText(
                 S().availableDiscounts,
-                style: context.subtitle1,
+                style: context.titleMedium,
               ),
             ),
             const SizedBox(height: 10),

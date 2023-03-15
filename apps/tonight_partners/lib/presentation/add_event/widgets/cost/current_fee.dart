@@ -18,13 +18,13 @@ class CurrentFee extends StatelessWidget {
           contentPadding: const EdgeInsets.symmetric(horizontal: 0),
           title: Text(
             S().currentFee,
-            style: context.subtitle1,
+            style: context.titleMedium,
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 12),
             child: Text(
               '${(state.selectedEventFee.getOrCrash() * 100).toStringAsFixed(0)}%',
-              style: context.bodyText2.copyWith(color: context.secondaryColor),
+              style: context.bodyMedium.copyWith(color: context.secondaryColor),
             ),
           ),
         );

@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:common/common.dart';
 import 'package:tonight_scanner/application/selector_club/selector_club_cubit.dart';
 
 class SelectorClub extends StatelessWidget {
@@ -14,7 +14,7 @@ class SelectorClub extends StatelessWidget {
     return AutoSizeText(
       club.clubName,
       maxLines: 1,
-      style: context.headline5.copyWith(
+      style: context.headlineSmall.copyWith(
         color: context.primaryColor,
       ),
     );

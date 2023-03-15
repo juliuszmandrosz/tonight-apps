@@ -1,8 +1,10 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+// ignore_for_file: library_private_types_in_public_api
+// Freezed classes are not private event though they starting with underscore
+
 import 'package:clubs/clubs.dart';
 import 'package:common/common.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'club_photos_bloc.freezed.dart';
 part 'club_photos_event.dart';
@@ -25,7 +27,7 @@ class ClubPhotosBloc extends Bloc<ClubPhotosEvent, ClubPhotosState> {
       _ClubPhotosFetched event, Emitter<ClubPhotosState> emit) async {
     emit(state.copyWith(status: CubitStatus.loading));
 
-    Either<UserClubFailure, Tuple2<List<String>, String?>> failureOrSuccess =
+    final failureOrSuccess =
         await _clubFacade.getClubPhotosUrlsAsUser(clubId: event.clubId);
 
     failureOrSuccess.fold(
@@ -45,8 +47,7 @@ class ClubPhotosBloc extends Bloc<ClubPhotosEvent, ClubPhotosState> {
       _ClubPhotosNextPageFetched event, Emitter<ClubPhotosState> emit) async {
     if (state.nextPageToken == null) return;
 
-    Either<UserClubFailure, Tuple2<List<String>, String?>> failureOrSuccess =
-        await _clubFacade.getClubPhotosUrlsAsUser(
+    final failureOrSuccess = await _clubFacade.getClubPhotosUrlsAsUser(
       clubId: event.clubId,
       nextPageToken: event.nextPageToken,
       pageSize: pageSize,

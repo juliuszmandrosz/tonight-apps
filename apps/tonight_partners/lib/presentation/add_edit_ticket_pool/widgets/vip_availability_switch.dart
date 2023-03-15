@@ -21,7 +21,7 @@ class VipAvailabilitySwitch extends StatelessWidget {
             activeColor: context.primaryColor,
             title: Text(
               S().allowVipTickets,
-              style: context.subtitle1,
+              style: context.titleMedium,
             ),
             value: state.isVipEnabled,
             onChanged: (value) => context

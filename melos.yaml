@@ -10,7 +10,7 @@ scripts:
     description: Run `flutter analyze` in all packages
 
   format:
-    run: melos exec -- "dart format . --set-exit-if-changed"
+    run: melos exec -- "dart format ."
     description: Run `dart format .` in all packages
 
   test:

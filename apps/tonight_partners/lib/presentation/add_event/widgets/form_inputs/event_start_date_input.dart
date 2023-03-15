@@ -38,7 +38,9 @@ class EventStartDateInput extends StatelessWidget {
                   context,
                   initialDate: state.startDateTime.value,
                 );
-                context.read<AddEventCubit>().startDateTimeChanged(dateTime);
+                if (context.mounted) {
+                  context.read<AddEventCubit>().startDateTimeChanged(dateTime);
+                }
               },
               icon: const Padding(
                 padding: EdgeInsets.only(right: 8),

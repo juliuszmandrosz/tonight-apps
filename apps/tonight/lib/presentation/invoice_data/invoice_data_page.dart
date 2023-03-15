@@ -55,7 +55,9 @@ class _InvoiceDataPageState extends State<InvoiceDataPage> {
               state.updatedCustomerData.getOrCrash(),
             );
 
-            context.showSnackbarMessage(S().invoiceDataUpdatedSuccessfully);
+            if (context.mounted) {
+              context.showSnackbarMessage(S().invoiceDataUpdatedSuccessfully);
+            }
           }
         },
         builder: (context, state) {

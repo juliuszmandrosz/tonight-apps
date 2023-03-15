@@ -53,7 +53,7 @@ class ClubEvents extends StatelessWidget {
                         children: [
                           Text(
                             S().noEventsInClub,
-                            style: context.subtitle1,
+                            style: context.titleMedium,
                           ),
                           const SizedBox(height: 20),
                           OutlinedButton(

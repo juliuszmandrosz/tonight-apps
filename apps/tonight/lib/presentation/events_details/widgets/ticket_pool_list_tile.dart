@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:common/common.dart';
 import 'package:events/domain/domain.dart';
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:translations/translations.dart';
 
 class TicketPoolListTile extends StatelessWidget {
@@ -27,14 +27,14 @@ class TicketPoolListTile extends StatelessWidget {
     if (ticketPool.isCurrent) {
       return Text(
         title,
-        style: context.subtitle1.copyWith(color: context.primaryColor),
+        style: context.titleMedium.copyWith(color: context.primaryColor),
       );
     }
 
     if (ticketPool.isSoldOut) {
       return Text(
         title,
-        style: context.subtitle1.copyWith(
+        style: context.titleMedium.copyWith(
           color: context.outlineColor,
           decoration: TextDecoration.lineThrough,
           decorationThickness: 2,
@@ -43,7 +43,7 @@ class TicketPoolListTile extends StatelessWidget {
     }
     return Text(
       title,
-      style: context.subtitle1.copyWith(color: context.secondaryColor),
+      style: context.titleMedium.copyWith(color: context.secondaryColor),
     );
   }
 
@@ -53,7 +53,7 @@ class TicketPoolListTile extends StatelessWidget {
         padding: const EdgeInsets.only(top: 10),
         child: Text(
           S().soldOut.toUpperCase(),
-          style: context.bodyText1.copyWith(color: context.tertiaryColor),
+          style: context.bodyLarge.copyWith(color: context.tertiaryColor),
         ),
       );
     }
@@ -71,7 +71,7 @@ class TicketPoolListTile extends StatelessWidget {
             const SizedBox(width: 10),
             Text(
               S().lastTicketsInPool,
-              style: context.bodyText1,
+              style: context.bodyLarge,
             ),
           ],
         ),
@@ -98,7 +98,7 @@ class TicketPoolListTile extends StatelessWidget {
       return Text(
         '${ticketPool.ticketPrice}'
         '${getCurrencySymbolFromCode(ticketPool.currency)}',
-        style: context.subtitle1.copyWith(color: context.primaryColor),
+        style: context.titleMedium.copyWith(color: context.primaryColor),
       );
     }
 
@@ -106,7 +106,7 @@ class TicketPoolListTile extends StatelessWidget {
       return Text(
         '${ticketPool.ticketPrice}'
         '${getCurrencySymbolFromCode(ticketPool.currency)}',
-        style: context.subtitle1.copyWith(
+        style: context.titleMedium.copyWith(
           decorationThickness: 2,
           decoration: TextDecoration.lineThrough,
           color: context.outlineColor,
@@ -117,7 +117,7 @@ class TicketPoolListTile extends StatelessWidget {
     return Text(
       '${ticketPool.ticketPrice}'
       '${getCurrencySymbolFromCode(ticketPool.currency)}',
-      style: context.subtitle1.copyWith(color: context.secondaryColor),
+      style: context.titleMedium.copyWith(color: context.secondaryColor),
     );
   }
 }

@@ -20,7 +20,7 @@ class EventIsConcertInput extends StatelessWidget {
             activeColor: context.primaryColor,
             title: Text(
               S().isConcert,
-              style: context.subtitle1,
+              style: context.titleMedium,
             ),
             value: state.isConcert,
             onChanged: (value) =>

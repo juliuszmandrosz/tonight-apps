@@ -19,7 +19,7 @@ class EventSummaryStartDate extends StatelessWidget {
           title: S().startDate,
           subtitle: Text(
             context.formatDateTimeToLocaleYMDHM(state.startDateTime.value!),
-            style: context.subtitle1.copyWith(color: context.secondaryColor),
+            style: context.titleMedium.copyWith(color: context.secondaryColor),
           ),
           step: AddEventStep.dateTime,
         );

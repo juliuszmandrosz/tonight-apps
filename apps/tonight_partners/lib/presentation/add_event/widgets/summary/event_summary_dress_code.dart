@@ -18,7 +18,7 @@ class EventSummaryDressCode extends StatelessWidget {
           title: S().dressCode,
           subtitle: Text(
             state.dressCode.value.capitalize(),
-            style: context.subtitle1.copyWith(color: context.secondaryColor),
+            style: context.titleMedium.copyWith(color: context.secondaryColor),
           ),
           step: AddEventStep.details,
         );

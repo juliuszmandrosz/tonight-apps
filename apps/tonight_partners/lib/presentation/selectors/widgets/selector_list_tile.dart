@@ -22,7 +22,7 @@ class SelectorListTile extends StatelessWidget {
       contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
       title: AutoSizeText(
         selector.email,
-        style: context.subtitle1,
+        style: context.titleMedium,
         maxLines: 1,
       ),
       trailing: Column(
@@ -35,7 +35,7 @@ class SelectorListTile extends StatelessWidget {
                 S().confirmSelectorDeletion,
               );
 
-              if (result ?? false) {
+              if (context.mounted && (result ?? false)) {
                 context.read<SelectorListCubit>().deleteSelector(selector);
               }
             },

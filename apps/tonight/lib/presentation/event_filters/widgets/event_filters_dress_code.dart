@@ -38,7 +38,7 @@ class EventFiltersDressCode extends StatelessWidget {
                     activeColor: context.primaryColor,
                     title: Text(
                       outfitsTranslations[outfit] ?? outfit,
-                      style: context.subtitle1,
+                      style: context.titleMedium,
                     ),
                     controlAffinity: ListTileControlAffinity.leading,
                     value: state.filters.allowedOutfitsFilter.allowedOutfits

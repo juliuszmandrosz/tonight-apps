@@ -29,7 +29,7 @@ class DiscountListTile extends StatelessWidget {
           Flexible(
             child: Text(
               '${discount.requiredExclusiveEventsSales} ${S().sold}',
-              style: context.subtitle1,
+              style: context.titleMedium,
             ),
           ),
           if (isCollected) const FaIcon(FontAwesomeIcons.circleCheck),
@@ -39,7 +39,7 @@ class DiscountListTile extends StatelessWidget {
         padding: const EdgeInsets.only(top: 12),
         child: AutoSizeText(
           '${discount.percentageOff}%',
-          style: context.subtitle1.copyWith(color: context.secondaryColor),
+          style: context.titleMedium.copyWith(color: context.secondaryColor),
           maxLines: 1,
         ),
       ),

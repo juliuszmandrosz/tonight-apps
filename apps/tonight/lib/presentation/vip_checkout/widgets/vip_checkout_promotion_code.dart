@@ -10,11 +10,11 @@ class VipCheckoutPromotionCode extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _controller = useTextEditingController(
+    final controller = useTextEditingController(
       text: context.read<VipCheckoutCubit>().state.promotionCode.code,
     );
 
-    Widget? _getSuffixIcon(VipCheckoutState state) {
+    Widget? getSuffixIcon(VipCheckoutState state) {
       if (state.invalidPromotionCodeMessage.isSome() ||
           state.promotionCodeStatus.isSuccess()) {
         return InkWell(
@@ -26,7 +26,7 @@ class VipCheckoutPromotionCode extends HookWidget {
       return null;
     }
 
-    Widget? _getSuffix(VipCheckoutState state) {
+    Widget? getSuffix(VipCheckoutState state) {
       if (state.promotionCodeStatus.isLoading()) {
         return const SizedBox(
           height: 20,
@@ -35,7 +35,7 @@ class VipCheckoutPromotionCode extends HookWidget {
         );
       }
 
-      if (_controller.text.isNotEmpty &&
+      if (controller.text.isNotEmpty &&
           state.invalidPromotionCodeMessage.isNone()) {
         return TextButton(
           style: TextButton.styleFrom(
@@ -62,7 +62,7 @@ class VipCheckoutPromotionCode extends HookWidget {
               current.invalidPromotionCodeMessage,
       builder: (context, state) {
         if (state.promotionCode.code.isEmpty) {
-          _controller.text = '';
+          controller.text = '';
           FocusManager.instance.primaryFocus?.unfocus();
         }
 
@@ -88,14 +88,14 @@ class VipCheckoutPromotionCode extends HookWidget {
                       child: Center(
                         child: Text(
                           state.promotionCode.code.toUpperCase(),
-                          style: context.subtitle1,
+                          style: context.titleMedium,
                         ),
                       ),
                     ),
                     avatar: Text(
                       '-${state.promotionCode.amountOff}'
                       '${getCurrencySymbolFromCode(state.promotionCode.currency)}',
-                      style: context.subtitle1,
+                      style: context.titleMedium,
                     ),
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     onDeleted: () =>
@@ -104,7 +104,7 @@ class VipCheckoutPromotionCode extends HookWidget {
                 ),
               )
             : TextField(
-                controller: _controller,
+                controller: controller,
                 textCapitalization: TextCapitalization.characters,
                 onChanged: (value) => context
                     .read<VipCheckoutCubit>()
@@ -116,8 +116,8 @@ class VipCheckoutPromotionCode extends HookWidget {
                     () => null,
                     (error) => error,
                   ),
-                  suffixIcon: _getSuffixIcon(state),
-                  suffix: _getSuffix(state),
+                  suffixIcon: getSuffixIcon(state),
+                  suffix: getSuffix(state),
                   errorMaxLines: 2,
                 ),
               );

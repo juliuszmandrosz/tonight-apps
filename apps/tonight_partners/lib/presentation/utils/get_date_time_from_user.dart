@@ -17,21 +17,25 @@ Future<DateTime?> getDateTimeFromUser(
 
   if (date == null) return null;
 
-  final time = await showTimePicker(
-    context: context,
-    initialTime: TimeOfDay(
-      hour: now.hour,
-      minute: now.minute,
-    ),
-  );
+  if (context.mounted) {
+    final time = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay(
+        hour: now.hour,
+        minute: now.minute,
+      ),
+    );
 
-  if (time == null) return null;
+    if (time == null) return null;
 
-  return DateTime(
-    date.year,
-    date.month,
-    date.day,
-    time.hour,
-    time.minute,
-  );
+    return DateTime(
+      date.year,
+      date.month,
+      date.day,
+      time.hour,
+      time.minute,
+    );
+  }
+
+  return null;
 }

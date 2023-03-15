@@ -29,7 +29,7 @@ class EventDetailsClubName extends StatelessWidget {
         padding: const EdgeInsets.only(top: 15),
         child: AutoSizeText(
           event.clubName,
-          style: context.subtitle1.copyWith(color: context.secondaryColor),
+          style: context.titleMedium.copyWith(color: context.secondaryColor),
         ),
       ),
       trailing: Column(

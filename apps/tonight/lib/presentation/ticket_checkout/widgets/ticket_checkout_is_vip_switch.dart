@@ -23,7 +23,7 @@ class TicketCheckoutIsVipSwitch extends StatelessWidget {
                 activeColor: context.primaryColor,
                 title: Text(
                   S().vip,
-                  style: context.subtitle1,
+                  style: context.titleMedium,
                 ),
                 value: state.isVip,
                 onChanged: (value) =>

@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:common/common.dart';
 import 'package:tonight_scanner/application/scanner/scanner_cubit.dart';
 
 class ScanResult extends StatelessWidget {
@@ -41,7 +41,7 @@ class ScanResult extends StatelessWidget {
               const SizedBox(height: 30),
               AutoSizeText(
                 message,
-                style: context.headline5.copyWith(
+                style: context.headlineSmall.copyWith(
                   color: color,
                 ),
                 maxLines: 1,

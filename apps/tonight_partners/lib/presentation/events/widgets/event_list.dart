@@ -60,7 +60,7 @@ class _EventListState extends State<EventList> {
                     const SizedBox(height: 100),
                     Text(
                       S().events(0),
-                      style: context.subtitle1,
+                      style: context.titleMedium,
                     ),
                     const SizedBox(height: 20),
                     OutlinedButton(

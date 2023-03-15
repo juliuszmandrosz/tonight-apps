@@ -33,7 +33,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
         BlocListener<AuthCubit, AuthState>(
           bloc: context.read<AuthCubit>(),
           listener: (context, state) => state.map(
-            initial: (_) {},
+            initial: (_) => {},
             authenticated: (_) => context.replaceRoute(const NavigatorRoute()),
             unauthenticated: (_) => context.replaceRoute(const SignInRoute()),
           ),

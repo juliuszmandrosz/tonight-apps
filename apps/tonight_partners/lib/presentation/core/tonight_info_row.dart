@@ -24,7 +24,7 @@ class TonightInfoRow extends StatelessWidget {
           child: AutoSizeText(
             info,
             maxLines: 2,
-            style: context.bodyText2.copyWith(color: context.secondaryColor),
+            style: context.bodyMedium.copyWith(color: context.secondaryColor),
           ),
         ),
       ],

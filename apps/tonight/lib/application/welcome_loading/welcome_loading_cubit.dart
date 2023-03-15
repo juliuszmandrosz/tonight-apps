@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:clubs/clubs.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
@@ -9,6 +8,7 @@ import 'package:events/domain/domain.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -92,8 +92,12 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _initFavoriteClubs();
     _initAvailableFiltersCubit();
     await _initStripe();
-    await _initPushNotifications(context);
-    await _initDynamicLinks(context);
+    if (context.mounted) {
+      await _initDynamicLinks(context);
+    }
+    if (context.mounted) {
+      await _initPushNotifications(context);
+    }
   }
 
   initUserProfile() {
@@ -235,7 +239,8 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
       sound: true,
     );
 
-    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+    if (context.mounted &&
+        settings.authorizationStatus == AuthorizationStatus.authorized) {
       await _pushNotificationsCubit.initialize(context);
 
       FirebaseMessaging.instance.getInitialMessage().then(
@@ -265,7 +270,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   _initDynamicLinks(BuildContext context) async {
     final initialLink = await FirebaseDynamicLinks.instance.getInitialLink();
 
-    if (initialLink != null) {
+    if (context.mounted && initialLink != null) {
       await handleDeepLink(context, initialLink.link.queryParameters);
     }
 

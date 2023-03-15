@@ -38,7 +38,7 @@ class EventFiltersMusic extends StatelessWidget {
                     contentPadding: EdgeInsets.zero,
                     title: Text(
                       genre.capitalize(),
-                      style: context.subtitle1,
+                      style: context.titleMedium,
                     ),
                     controlAffinity: ListTileControlAffinity.leading,
                     value: state.filters.musicalGenresFilter.musicalGenres

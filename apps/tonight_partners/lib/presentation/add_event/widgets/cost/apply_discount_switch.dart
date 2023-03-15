@@ -19,7 +19,7 @@ class ApplyDiscountSwitch extends StatelessWidget {
           contentPadding: const EdgeInsets.symmetric(horizontal: 0),
           title: Text(
             S().applyDiscount,
-            style: context.subtitle1,
+            style: context.titleMedium,
           ),
           value: state.isDiscountApplied,
           onChanged: (value) =>

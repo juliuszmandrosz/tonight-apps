@@ -19,7 +19,7 @@ class ClubContactTile extends StatelessWidget {
       subtitle: phoneNumber,
       onTap: () async {
         var result = await launchPhoneCall(phoneNumber);
-        if (result.isSome()) {
+        if (context.mounted && result.isSome()) {
           context.showSnackbarMessage(S().errorMakingCall);
         }
       },

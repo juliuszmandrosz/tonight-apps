@@ -12,7 +12,7 @@ class EventShareButton extends StatefulWidget {
   const EventShareButton({required this.event, Key? key}) : super(key: key);
 
   @override
-  _EventShareButtonState createState() => _EventShareButtonState();
+  State<EventShareButton> createState() => _EventShareButtonState();
 }
 
 class _EventShareButtonState extends State<EventShareButton> {

@@ -31,7 +31,7 @@
 
 
         <activity
-            android:name="apps.tonight.android.app.src.main.kotlin.com.raverteam.tonight.MainActivity"
+            android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:exported="true"
             android:hardwareAccelerated="true"

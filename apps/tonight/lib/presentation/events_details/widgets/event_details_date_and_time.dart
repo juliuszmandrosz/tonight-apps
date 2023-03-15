@@ -32,7 +32,7 @@ class EventDetailsDateAndTime extends StatelessWidget {
               child: AutoSizeText(
                 context.formatDateTimeToLocaleYMDHM(event.eventStartDateTime),
                 style:
-                    context.subtitle1.copyWith(color: context.secondaryColor),
+                    context.titleMedium.copyWith(color: context.secondaryColor),
                 maxLines: 1,
               ),
             ),
@@ -47,7 +47,7 @@ class EventDetailsDateAndTime extends StatelessWidget {
               child: AutoSizeText(
                 context.formatDateTimeToLocaleYMDHM(event.eventEndDateTime),
                 style:
-                    context.subtitle1.copyWith(color: context.secondaryColor),
+                    context.titleMedium.copyWith(color: context.secondaryColor),
                 maxLines: 1,
               ),
             ),

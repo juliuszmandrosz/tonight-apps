@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:clubs/clubs.dart';
 import 'package:common/common.dart';
+import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:translations/translations.dart';
 
 part 'club_reviews_bloc.freezed.dart';
@@ -87,12 +87,12 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
         await _reviewFacade.reportReviewAsUser(event.reviewId);
 
     failureOrSuccess.fold(
-      (failure) => _emitReviewReportFailure(failure),
-      (success) => _emitReviewReportSuccess(),
+      (failure) => _emitReviewReportFailure(failure, emit),
+      (success) => _emitReviewReportSuccess(emit),
     );
   }
 
-  _emitReviewReportSuccess() {
+  _emitReviewReportSuccess(Emitter<ClubReviewsState> emit) {
     emit(
       state.copyWith(
         snackbarMessage: some(S().reviewReportedSuccessfully),
@@ -104,7 +104,8 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
     emit(state.copyWith(snackbarMessage: none()));
   }
 
-  _emitReviewReportFailure(UserReviewFailure reviewFailure) {
+  _emitReviewReportFailure(
+      UserReviewFailure reviewFailure, Emitter<ClubReviewsState> emit) {
     final failureMessage = reviewFailure.map(
       unexpected: (_) => S().errorReportingReview,
       reportExists: (_) => S().reviewAlreadyReported,

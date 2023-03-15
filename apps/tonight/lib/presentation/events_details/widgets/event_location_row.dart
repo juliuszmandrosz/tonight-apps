@@ -20,7 +20,7 @@ class EventLocationRow extends StatelessWidget {
       onTap: () => _launchMap(context),
       title: AutoSizeText(
         S().location,
-        style: context.subtitle1.copyWith(color: context.secondaryColor),
+        style: context.titleMedium.copyWith(color: context.secondaryColor),
         maxLines: 1,
       ),
       trailing: Column(
@@ -41,7 +41,7 @@ class EventLocationRow extends StatelessWidget {
       event.getLongitude(),
       event.clubName,
     );
-    if (!result) {
+    if (context.mounted && !result) {
       context.showSnackbarMessage(S().errorOpeningMaps);
     }
   }

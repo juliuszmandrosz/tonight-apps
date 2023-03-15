@@ -98,7 +98,7 @@ class _EventsPageState extends State<EventsPage> {
                                                 .enabled
                                         ? S().noEventsNearYou
                                         : S().events(0),
-                                    style: context.subtitle1,
+                                    style: context.titleMedium,
                                   ),
                                   const SizedBox(height: 20),
                                   OutlinedButton(

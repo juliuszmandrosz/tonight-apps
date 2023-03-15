@@ -18,14 +18,15 @@ class ChangeLocale extends StatelessWidget {
           title: AutoSizeText(
             S().language,
             maxLines: 1,
-            style: context.headline6,
+            style: context.titleLarge,
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 15),
             child: AutoSizeText(
               state.appSettings.locale.toUpperCase(),
               maxLines: 1,
-              style: context.subtitle1.copyWith(color: context.secondaryColor),
+              style:
+                  context.titleMedium.copyWith(color: context.secondaryColor),
             ),
           ),
           trailing: const Icon(Icons.mode_edit),

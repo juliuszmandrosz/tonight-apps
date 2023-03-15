@@ -1,6 +1,6 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:common/common.dart';
 import 'package:translations/translations.dart';
 
 class EventCanceledInfo extends StatelessWidget {
@@ -22,7 +22,7 @@ class EventCanceledInfo extends StatelessWidget {
             const SizedBox(width: 10),
             Text(
               S().canceled.toUpperCase(),
-              style: context.bodyText1,
+              style: context.bodyLarge,
             ),
           ],
         ),

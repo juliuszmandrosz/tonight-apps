@@ -33,7 +33,7 @@ class EventTagsInfo extends StatelessWidget {
                 event,
                 eventTickets,
               ),
-              style: context.subtitle1,
+              style: context.titleMedium,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
             ),

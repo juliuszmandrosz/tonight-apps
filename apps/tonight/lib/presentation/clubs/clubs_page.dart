@@ -95,7 +95,7 @@ class _ClubsPageState extends State<ClubsPage> {
                                     ),
                                     Text(
                                       S().clubs(0),
-                                      style: context.subtitle1,
+                                      style: context.titleMedium,
                                     ),
                                     const SizedBox(height: 20),
                                     OutlinedButton(

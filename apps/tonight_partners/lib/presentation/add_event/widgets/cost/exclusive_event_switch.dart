@@ -19,7 +19,7 @@ class ExclusiveEventSwitch extends StatelessWidget {
           contentPadding: const EdgeInsets.symmetric(horizontal: 0),
           title: Text(
             S().exclusiveEvent,
-            style: context.subtitle1,
+            style: context.titleMedium,
           ),
           value: state.isExclusiveEvent,
           onChanged: (value) =>

@@ -1,15 +1,14 @@
 import 'dart:async';
 
+import 'package:auth/auth.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:auth/auth.dart';
 import 'package:translations/translations.dart';
 
 part 'sign_in_cubit.freezed.dart';
-
 part 'sign_in_state.dart';
 
 class SignInCubit extends Cubit<SignInState> {
@@ -54,10 +53,8 @@ class SignInCubit extends Cubit<SignInState> {
 
   _subscribeToDynamicLinks() {
     _linkSub = _dynamicLinks.onLink.listen((dynamicLink) async {
-      final Uri? deepLink = dynamicLink.link;
-      if (deepLink != null) {
-        await _signInWithEmailLink(deepLink);
-      }
+      final Uri deepLink = dynamicLink.link;
+      await _signInWithEmailLink(deepLink);
     });
   }
 

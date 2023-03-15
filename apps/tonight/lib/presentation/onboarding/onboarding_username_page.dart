@@ -63,7 +63,7 @@ class OnboardingUsernamePage extends StatelessWidget {
                                           : username
                                               .substring(0, 2)
                                               .toUpperCase(),
-                                  style: context.headline4,
+                                  style: context.headlineMedium,
                                 ),
                               ),
                             ),

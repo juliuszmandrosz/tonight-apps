@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:common/common.dart';
 import 'package:translations/translations.dart';
 
 class VipNotEnabledInfo extends StatelessWidget {
@@ -21,7 +21,7 @@ class VipNotEnabledInfo extends StatelessWidget {
                 S().vipNotEnabledInfo,
                 maxLines: 2,
                 style:
-                    context.bodyText2.copyWith(color: context.secondaryColor),
+                    context.bodyMedium.copyWith(color: context.secondaryColor),
               ),
             ),
           ],

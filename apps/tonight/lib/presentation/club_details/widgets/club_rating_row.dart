@@ -1,7 +1,7 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:common/common.dart';
 import 'package:translations/translations.dart';
 
 class ClubRatingRow extends StatelessWidget {
@@ -31,14 +31,14 @@ class ClubRatingRow extends StatelessWidget {
         ),
         Text(
           rating.toStringAsFixed(1),
-          style: context.bodyText2,
+          style: context.bodyMedium,
         ),
         const SizedBox(
           width: 10,
         ),
         Text(
           '$rateCount ${S().opinions(rateCount)}',
-          style: context.bodyText2,
+          style: context.bodyMedium,
         )
       ],
     );

@@ -12,7 +12,7 @@ class TonightScannerHeadline extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoSizeText(
       text,
-      style: context.headline5,
+      style: context.headlineSmall,
       maxLines: 1,
     );
   }

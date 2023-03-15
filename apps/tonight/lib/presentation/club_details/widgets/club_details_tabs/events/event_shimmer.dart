@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:common/common.dart';
+import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class EventShimmer extends StatelessWidget {
@@ -8,6 +8,8 @@ class EventShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
+      baseColor: context.surfaceColor,
+      highlightColor: context.secondaryColor,
       child: Row(
         children: [
           Expanded(
@@ -37,8 +39,6 @@ class EventShimmer extends StatelessWidget {
           ),
         ],
       ),
-      baseColor: context.surfaceColor,
-      highlightColor: context.secondaryColor,
     );
   }
 }

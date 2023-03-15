@@ -5,14 +5,14 @@ import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
-class tonightNavigator extends StatefulWidget {
-  const tonightNavigator({Key? key}) : super(key: key);
+class NavigatorPage extends StatefulWidget {
+  const NavigatorPage({Key? key}) : super(key: key);
 
   @override
-  State<tonightNavigator> createState() => _tonightNavigatorState();
+  State<NavigatorPage> createState() => _NavigatorPageState();
 }
 
-class _tonightNavigatorState extends State<tonightNavigator> {
+class _NavigatorPageState extends State<NavigatorPage> {
   var selectedIndex = 0;
 
   @override

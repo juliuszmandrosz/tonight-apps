@@ -21,7 +21,7 @@ class SignOutDrawerTile extends StatelessWidget {
           S().confirmSignOut,
         );
 
-        if (result ?? false) {
+        if (context.mounted && (result ?? false)) {
           context.read<AuthCubit>().signOut();
           context.replaceRoute(const SignInRoute());
         }

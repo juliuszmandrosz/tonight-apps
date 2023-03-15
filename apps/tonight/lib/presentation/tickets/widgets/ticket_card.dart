@@ -50,7 +50,7 @@ class TicketCard extends StatelessWidget {
                 children: [
                   AutoSizeText(
                     ticket.eventName,
-                    style: context.headline6,
+                    style: context.titleLarge,
                     maxLines: 3,
                     textAlign: TextAlign.center,
                     softWrap: true,
@@ -60,7 +60,7 @@ class TicketCard extends StatelessWidget {
                     context.formatDateTimeToLocaleYMDHM(
                       ticket.eventStartDateTime,
                     ),
-                    style: context.bodyText1
+                    style: context.bodyLarge
                         .copyWith(color: context.secondaryColor),
                     maxLines: 1,
                   ),
@@ -74,7 +74,7 @@ class TicketCard extends StatelessWidget {
                           : ticket.isReturned
                               ? S().returned.toUpperCase()
                               : S().postponed.toUpperCase(),
-                      style: context.subtitle1.copyWith(
+                      style: context.titleMedium.copyWith(
                         color: context.tertiaryColor,
                       ),
                     )
@@ -85,7 +85,7 @@ class TicketCard extends StatelessWidget {
             AutoSizeText(
               '${ticket.price}'
               '${getCurrencySymbolFromCode(ticket.currency)}',
-              style: context.headline6,
+              style: context.titleLarge,
               maxLines: 1,
             ),
             const SizedBox(width: 10),
@@ -95,7 +95,7 @@ class TicketCard extends StatelessWidget {
               child: Text(
                 ticket.isVip ? S().vipVertical : '',
                 textAlign: TextAlign.center,
-                style: context.subtitle1.copyWith(
+                style: context.titleMedium.copyWith(
                   color: context.tertiaryColor,
                 ),
               ),

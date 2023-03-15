@@ -60,7 +60,7 @@ class VipCheckoutInvoiceData extends StatelessWidget {
                         : AutoSizeText(
                             S().noData,
                             maxLines: 1,
-                            style: context.subtitle1,
+                            style: context.titleMedium,
                           ),
                     Column(
                       children: [
@@ -80,7 +80,7 @@ class VipCheckoutInvoiceData extends StatelessWidget {
                                 ),
                               );
 
-                              if (result != null) {
+                              if (context.mounted && result != null) {
                                 final ticketCheckoutCubit =
                                     context.read<VipCheckoutCubit>();
 

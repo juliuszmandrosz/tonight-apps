@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:common/common.dart';
 import 'package:events/events.dart';
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class EventClubInfo extends StatelessWidget {
   final Event event;
@@ -20,7 +20,7 @@ class EventClubInfo extends StatelessWidget {
         Expanded(
           child: Text(
             event.clubName,
-            style: context.subtitle1,
+            style: context.titleMedium,
             overflow: TextOverflow.fade,
             maxLines: 1,
             softWrap: false,

@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
 import 'package:common/common.dart';
+import 'package:flutter/material.dart';
 
 class ClubDetailTile extends StatelessWidget {
   final String title;
@@ -24,7 +24,7 @@ class ClubDetailTile extends StatelessWidget {
       title: AutoSizeText(
         title,
         maxLines: 1,
-        style: context.subtitle1,
+        style: context.titleMedium,
       ),
       subtitle: subtitle.isEmpty
           ? null
@@ -32,7 +32,7 @@ class ClubDetailTile extends StatelessWidget {
               padding: const EdgeInsets.only(top: 15),
               child: Text(
                 subtitle,
-                style: context.bodyText2.copyWith(
+                style: context.bodyMedium.copyWith(
                   color: context.secondaryColor,
                 ),
               ),

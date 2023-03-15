@@ -11,6 +11,7 @@ include: package:flutter_lints/flutter.yaml
 
 analyzer:
   exclude:
+    - "**/pubspec_overrides.yaml"
     - "**/*.g.dart"
     - "**/*.freezed.dart"
   errors:

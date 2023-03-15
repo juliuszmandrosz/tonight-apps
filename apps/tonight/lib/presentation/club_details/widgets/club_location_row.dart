@@ -20,7 +20,7 @@ class ClubLocationRow extends StatelessWidget {
         Expanded(
           child: AutoSizeText(
             club.locationString,
-            style: context.subtitle1,
+            style: context.titleMedium,
             maxLines: 2,
           ),
         ),
@@ -32,7 +32,7 @@ class ClubLocationRow extends StatelessWidget {
               club.getLongitude(),
               club.clubName,
             );
-            if (!result) {
+            if (context.mounted && !result) {
               context.showSnackbarMessage(S().errorOpeningMaps);
             }
           },

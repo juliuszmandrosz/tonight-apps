@@ -43,7 +43,7 @@ class TicketSalesChart extends StatelessWidget {
                   children: [
                     Text(
                       S().noTicketsSold,
-                      style: context.subtitle1,
+                      style: context.titleMedium,
                     ),
                     const SizedBox(height: 15),
                     const StatisticsUpdateInfo(),

@@ -42,13 +42,13 @@ class TermsOfServiceInfo extends StatelessWidget {
                 child: RichText(
                   text: TextSpan(
                     text: '${S().byContinuingYouAgreeTo} ',
-                    style: context.bodyText2.copyWith(
+                    style: context.bodyMedium.copyWith(
                       color: context.secondaryColor,
                     ),
                     children: [
                       TextSpan(
                         text: S().termsOfService.toLowerCase(),
-                        style: context.bodyText2.copyWith(
+                        style: context.bodyMedium.copyWith(
                           color: context.primaryColor,
                         ),
                         recognizer: TapGestureRecognizer()
@@ -58,13 +58,13 @@ class TermsOfServiceInfo extends StatelessWidget {
                       ),
                       TextSpan(
                         text: ' ${S().and} ',
-                        style: context.bodyText2.copyWith(
+                        style: context.bodyMedium.copyWith(
                           color: context.secondaryColor,
                         ),
                       ),
                       TextSpan(
                         text: S().onPrivacyPolicy.toLowerCase(),
-                        style: context.bodyText2.copyWith(
+                        style: context.bodyMedium.copyWith(
                           color: context.primaryColor,
                         ),
                         recognizer: TapGestureRecognizer()

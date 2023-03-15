@@ -28,7 +28,8 @@ class EventDetailsEventDescription extends StatelessWidget {
             padding: const EdgeInsets.only(top: 15),
             child: Text(
               event.description!,
-              style: context.subtitle1.copyWith(color: context.secondaryColor),
+              style:
+                  context.titleMedium.copyWith(color: context.secondaryColor),
             ),
           ),
         ),

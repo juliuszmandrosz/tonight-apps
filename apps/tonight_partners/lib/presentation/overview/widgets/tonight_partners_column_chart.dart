@@ -19,14 +19,14 @@ class TonightPartnersColumnChart extends StatelessWidget {
     return SfCartesianChart(
       plotAreaBorderWidth: 0,
       primaryXAxis: CategoryAxis(
-        labelStyle: context.bodyText2,
+        labelStyle: context.bodyMedium,
         axisLine: const AxisLine(width: 0),
         majorTickLines: const MajorTickLines(width: 0),
         majorGridLines: const MajorGridLines(width: 0),
       ),
       primaryYAxis: NumericAxis(
         maximum: maximum,
-        labelStyle: context.bodyText2,
+        labelStyle: context.bodyMedium,
         majorGridLines: const MajorGridLines(width: 0),
         numberFormat: NumberFormat.compact(),
       ),
@@ -40,7 +40,7 @@ class TonightPartnersColumnChart extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           dataLabelSettings: DataLabelSettings(
             isVisible: true,
-            textStyle: context.bodyText2,
+            textStyle: context.bodyMedium,
             labelPosition: ChartDataLabelPosition.outside,
           ),
         ),

@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
 import 'package:common/common.dart';
+import 'package:flutter/material.dart';
 import 'package:translations/translations.dart';
 
 class VipInfo extends StatelessWidget {
@@ -11,7 +11,7 @@ class VipInfo extends StatelessWidget {
     return AutoSizeText(
       S().vipInfo,
       maxLines: 1,
-      style: context.bodyText2.copyWith(color: context.secondaryColor),
+      style: context.bodyMedium.copyWith(color: context.secondaryColor),
       textAlign: TextAlign.center,
     );
   }

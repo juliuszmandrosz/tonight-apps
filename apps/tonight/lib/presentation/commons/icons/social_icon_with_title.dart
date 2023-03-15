@@ -21,13 +21,13 @@ class SocialIconWithTitle extends StatelessWidget {
       contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
       onTap: () async {
         final result = await launchURL(Uri.parse(url));
-        if (result.isSome()) {
+        if (context.mounted && result.isSome()) {
           context.showSnackbarMessage(S().errorOpeningLink);
         }
       },
       title: AutoSizeText(
         socialMedia.label,
-        style: context.subtitle1.copyWith(color: context.secondaryColor),
+        style: context.titleMedium.copyWith(color: context.secondaryColor),
         maxLines: 1,
       ),
       trailing: Column(

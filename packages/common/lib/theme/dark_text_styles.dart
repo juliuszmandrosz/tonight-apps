@@ -1,48 +1,50 @@
+import 'package:common/theme/dark_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:common/theme/dark_theme.dart';
 
 class DarkTextStyles {
   DarkTextStyles._();
 
   static TextTheme textTheme = GoogleFonts.montserratTextTheme();
 
-  static TextStyle subtitle1 =
-      textTheme.subtitle1!.copyWithOnSurfaceColorAndW400();
+  static TextStyle titleMedium =
+      textTheme.titleMedium!.copyWithOnSurfaceColorAndW400();
 
-  static TextStyle subtitle2 =
-      textTheme.subtitle2!.copyWithOnSurfaceColorAndW400();
+  static TextStyle titleSmall =
+      textTheme.titleSmall!.copyWithOnSurfaceColorAndW400();
 
-  static TextStyle bodyText1 =
-      textTheme.bodyText1!.copyWithOnSurfaceColorAndW400();
+  static TextStyle bodyLarge =
+      textTheme.bodyLarge!.copyWithOnSurfaceColorAndW400();
 
-  static TextStyle bodyText2 =
-      textTheme.bodyText2!.copyWithOnSurfaceColorAndW400();
+  static TextStyle bodyMedium =
+      textTheme.bodyMedium!.copyWithOnSurfaceColorAndW400();
 
-  static TextStyle headline1 =
-      textTheme.headline1!.copyWithOnSurfaceColorAndW400();
+  static TextStyle displayLarge =
+      textTheme.displayLarge!.copyWithOnSurfaceColorAndW400();
 
-  static TextStyle headline2 =
-      textTheme.headline2!.copyWithOnSurfaceColorAndW400();
+  static TextStyle displayMedium =
+      textTheme.displayMedium!.copyWithOnSurfaceColorAndW400();
 
-  static TextStyle headline3 =
-      textTheme.headline2!.copyWithOnSurfaceColorAndW400();
+  static TextStyle displaySmall =
+      textTheme.displayMedium!.copyWithOnSurfaceColorAndW400();
 
-  static TextStyle headline4 =
-      textTheme.headline4!.copyWithOnSurfaceColorAndW400();
+  static TextStyle headlineMedium =
+      textTheme.headlineMedium!.copyWithOnSurfaceColorAndW400();
 
-  static TextStyle button = textTheme.button!.copyWithOnSurfaceColorAndW400();
+  static TextStyle labelLarge =
+      textTheme.labelLarge!.copyWithOnSurfaceColorAndW400();
 
-  static TextStyle caption = textTheme.caption!.copyWithOnSurfaceColorAndW400();
+  static TextStyle bodySmall =
+      textTheme.bodySmall!.copyWithOnSurfaceColorAndW400();
 
-  static TextStyle headline5 =
-      textTheme.headline5!.copyWithOnSurfaceColorAndW400();
+  static TextStyle headlineSmall =
+      textTheme.headlineSmall!.copyWithOnSurfaceColorAndW400();
 
-  static TextStyle headline6 =
-      textTheme.headline6!.copyWithOnSurfaceColorAndW400();
+  static TextStyle titleLarge =
+      textTheme.titleLarge!.copyWithOnSurfaceColorAndW400();
 
-  static TextStyle overline =
-      textTheme.overline!.copyWithOnSurfaceColorAndW400();
+  static TextStyle labelSmall =
+      textTheme.labelSmall!.copyWithOnSurfaceColorAndW400();
 }
 
 extension TextStylex on TextStyle {

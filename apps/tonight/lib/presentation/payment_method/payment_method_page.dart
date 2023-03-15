@@ -36,7 +36,9 @@ class PaymentMethodPage extends StatelessWidget {
               state.updatedCustomerData.getOrCrash(),
             );
 
-            context.showSnackbarMessage(S().paymentMethodUpdatedSuccessfully);
+            if (context.mounted) {
+              context.showSnackbarMessage(S().paymentMethodUpdatedSuccessfully);
+            }
           }
         },
         builder: (context, state) {

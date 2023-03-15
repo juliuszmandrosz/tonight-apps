@@ -20,7 +20,7 @@ class SignOutButton extends StatelessWidget {
             S().confirmSignOut,
           );
 
-          if (result ?? false) {
+          if (context.mounted && (result ?? false)) {
             context.read<AuthCubit>().signOut();
             AutoRouter.of(context).replace(const SignInRoute());
           }

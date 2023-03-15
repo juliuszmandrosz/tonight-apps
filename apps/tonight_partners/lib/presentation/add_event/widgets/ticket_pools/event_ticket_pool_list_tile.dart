@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
 import 'package:common/common.dart';
 import 'package:events/events.dart';
+import 'package:flutter/material.dart';
 import 'package:translations/translations.dart';
 
 class EventTicketPoolListTile extends StatelessWidget {
@@ -78,7 +78,7 @@ class EventTicketPoolListTile extends StatelessWidget {
       '${ticketPool.poolNumber} ${S().pool.toLowerCase()} - '
       '${ticketPool.ticketPrice}'
       '${getCurrencySymbolFromCode(ticketPool.currency)}',
-      style: context.headline6.copyWith(
+      style: context.titleLarge.copyWith(
         color: ticketPool.isCurrent && ticketPool.ticketsSold > 0
             ? context.primaryColor
             : ticketPool.isSoldOut
@@ -97,7 +97,7 @@ class EventTicketPoolListTile extends StatelessWidget {
     if (ticketPool.isSoldOut) {
       return AutoSizeText(
         S().soldOut.toUpperCase(),
-        style: context.subtitle1.copyWith(color: context.tertiaryColor),
+        style: context.titleMedium.copyWith(color: context.tertiaryColor),
         maxLines: 1,
       );
     }
@@ -107,7 +107,7 @@ class EventTicketPoolListTile extends StatelessWidget {
         '${ticketPool.ticketsSold}/${ticketPool.ticketQuantity} '
         '${S().ticketsSold.toLowerCase()}'
         '${_getVipSubtitle()}',
-        style: context.subtitle1.copyWith(
+        style: context.titleMedium.copyWith(
           color: context.secondaryColor,
         ),
         maxLines: 1,
@@ -118,7 +118,7 @@ class EventTicketPoolListTile extends StatelessWidget {
       '${ticketPool.ticketQuantity} '
       '${S().tickets(ticketPool.ticketQuantity).toLowerCase()}'
       '${_getVipSubtitle()}',
-      style: context.subtitle1.copyWith(
+      style: context.titleMedium.copyWith(
         color: context.secondaryColor,
       ),
       maxLines: 1,

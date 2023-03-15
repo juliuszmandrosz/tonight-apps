@@ -56,7 +56,7 @@ class ClubRewards extends StatelessWidget {
                     const SizedBox(height: 30),
                     Text(
                       S().clubDoesNotOfferRewards,
-                      style: context.subtitle1,
+                      style: context.titleMedium,
                       textAlign: TextAlign.center,
                     ),
                   ],

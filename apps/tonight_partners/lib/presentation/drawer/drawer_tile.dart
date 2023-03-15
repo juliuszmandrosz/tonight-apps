@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:common/common.dart';
 
 class DrawerTile extends StatelessWidget {
   const DrawerTile({
@@ -28,7 +28,7 @@ class DrawerTile extends StatelessWidget {
       title: AutoSizeText(
         label,
         maxLines: 1,
-        style: context.subtitle1,
+        style: context.titleMedium,
       ),
     );
   }

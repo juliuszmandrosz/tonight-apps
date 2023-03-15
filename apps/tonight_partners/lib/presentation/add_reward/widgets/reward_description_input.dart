@@ -10,7 +10,7 @@ class RewardDescriptionInput extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _controller = useTextEditingController(
+    final controller = useTextEditingController(
       text: context.read<AddRewardCubit>().state.rewardDescription.value,
     );
 
@@ -20,7 +20,7 @@ class RewardDescriptionInput extends HookWidget {
           previous.status != current.status,
       builder: (context, state) {
         return TextField(
-          controller: _controller,
+          controller: controller,
           onChanged: (value) =>
               context.read<AddRewardCubit>().rewardDescriptionChanged(value),
           keyboardType: TextInputType.multiline,

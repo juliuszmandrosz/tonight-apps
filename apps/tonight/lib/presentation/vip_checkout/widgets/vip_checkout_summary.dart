@@ -30,13 +30,13 @@ class VipCheckoutSummary extends StatelessWidget {
                   children: [
                     Text(
                       S().subtotal,
-                      style: context.bodyText2.copyWith(
+                      style: context.bodyMedium.copyWith(
                         color: context.secondaryColor,
                       ),
                     ),
                     Text(
                       formatDoubleToMoney(ticketPrice.toDouble(), currency),
-                      style: context.bodyText2.copyWith(
+                      style: context.bodyMedium.copyWith(
                         color: context.secondaryColor,
                       ),
                     )
@@ -48,13 +48,13 @@ class VipCheckoutSummary extends StatelessWidget {
                   children: [
                     Text(
                       S().serviceFee,
-                      style: context.bodyText2.copyWith(
+                      style: context.bodyMedium.copyWith(
                         color: context.secondaryColor,
                       ),
                     ),
                     Text(
                       formatDoubleToMoney(serviceFeeAmount, currency),
-                      style: context.bodyText2.copyWith(
+                      style: context.bodyMedium.copyWith(
                         color: context.secondaryColor,
                       ),
                     )
@@ -66,13 +66,13 @@ class VipCheckoutSummary extends StatelessWidget {
                   children: [
                     Text(
                       S().total,
-                      style: context.headline6.copyWith(
+                      style: context.titleLarge.copyWith(
                         color: context.primaryColor,
                       ),
                     ),
                     Text(
                       formatDoubleToMoney(totalAmount, currency),
-                      style: context.headline6.copyWith(
+                      style: context.titleLarge.copyWith(
                         color: context.primaryColor,
                       ),
                     )

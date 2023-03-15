@@ -17,7 +17,7 @@ class TonightIconLink extends StatelessWidget {
     return IconButton(
       onPressed: () async {
         final result = await launchURL(Uri.parse(url));
-        if (result.isSome()) {
+        if (context.mounted && result.isSome()) {
           context.showSnackbarMessage(S().errorOpeningLink);
         }
       },

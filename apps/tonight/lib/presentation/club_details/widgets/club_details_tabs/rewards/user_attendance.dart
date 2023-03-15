@@ -22,7 +22,7 @@ class UserAttendance extends StatelessWidget {
             '${S().yourNumberOfEntries}: '
             '${clubRewardsWithAttendance.userAttendance}',
             maxLines: 1,
-            style: context.subtitle1,
+            style: context.titleMedium,
           ),
         ),
       ),

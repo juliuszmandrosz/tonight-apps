@@ -24,7 +24,7 @@ class EventDetailsCurrentPrice extends StatelessWidget {
         alignment: Alignment.centerLeft,
         child: AutoSizeText(
           S().price,
-          style: context.headline6,
+          style: context.titleLarge,
           maxLines: 1,
         ),
       ),
@@ -39,7 +39,7 @@ class EventDetailsCurrentPrice extends StatelessWidget {
                   )
                 : Text(
                     '${state.eventTickets.getOrCrash().getCurrentTicketPrice()}',
-                    style: context.subtitle1
+                    style: context.titleMedium
                         .copyWith(color: context.secondaryColor),
                   ),
           );

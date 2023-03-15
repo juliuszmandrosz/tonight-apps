@@ -38,7 +38,7 @@ class EventDetailsTicketPools extends StatelessWidget {
                 : state.eventTickets.getOrCrash().isSaleOnlyAtGate
                     ? Text(
                         S().ticketsAvailableOnlyAtGate,
-                        style: context.subtitle1.copyWith(
+                        style: context.titleMedium.copyWith(
                           color: context.secondaryColor,
                         ),
                       )

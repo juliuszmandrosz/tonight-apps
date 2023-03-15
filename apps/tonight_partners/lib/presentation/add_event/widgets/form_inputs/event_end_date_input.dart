@@ -38,7 +38,11 @@ class EventEndDateInput extends StatelessWidget {
                   context,
                   initialDate: state.startDateTime.value,
                 );
-                context.read<AddEventCubit>().eventEndDateTimeChanged(dateTime);
+                if (context.mounted) {
+                  context
+                      .read<AddEventCubit>()
+                      .eventEndDateTimeChanged(dateTime);
+                }
               },
               icon: const Padding(
                 padding: EdgeInsets.only(right: 8),

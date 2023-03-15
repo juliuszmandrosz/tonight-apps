@@ -24,7 +24,7 @@ class EventSummaryMusic extends StatelessWidget {
             _displayMusicalGenres(
               state.musicalGenres.value,
             ),
-            style: context.subtitle1.copyWith(
+            style: context.titleMedium.copyWith(
               color: context.secondaryColor,
             ),
           ),

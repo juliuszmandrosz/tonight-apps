@@ -22,7 +22,7 @@ class RewardListForRequiredEntries extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Text(
             '$requiredEntries ${S().entries(requiredEntries)}',
-            style: context.headline6.copyWith(color: context.primaryColor),
+            style: context.titleLarge.copyWith(color: context.primaryColor),
           ),
         ),
         const SizedBox(height: 10),

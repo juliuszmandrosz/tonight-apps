@@ -1,10 +1,10 @@
 import 'dart:async';
 
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:common/common.dart';
 
 part 'user_location_cubit.freezed.dart';
 part 'user_location_state.dart';
@@ -62,8 +62,8 @@ class UserLocationCubit extends Cubit<UserLocationState> {
   }
 
   Future<bool> _checkIfServiceIsEnabled() async {
-    var _serviceEnabled = await _geolocator.isLocationServiceEnabled();
-    if (!_serviceEnabled) {
+    var isServiceEnabled = await _geolocator.isLocationServiceEnabled();
+    if (!isServiceEnabled) {
       return false;
     }
     return true;

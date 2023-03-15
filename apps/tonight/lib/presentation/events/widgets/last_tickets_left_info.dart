@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:common/common.dart';
 import 'package:events/events.dart';
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:translations/translations.dart';
 
 class LastTicketsLeftInfo extends StatelessWidget {
@@ -25,7 +25,7 @@ class LastTicketsLeftInfo extends StatelessWidget {
             const SizedBox(width: 10),
             Text(
               S().lastTicketsInPool,
-              style: context.bodyText1,
+              style: context.bodyLarge,
             ),
           ],
         ),

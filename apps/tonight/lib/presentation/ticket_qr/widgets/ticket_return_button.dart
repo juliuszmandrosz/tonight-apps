@@ -23,7 +23,7 @@ class TicketReturnButton extends StatelessWidget {
                     S().confirmTicketReturn,
                   );
 
-                  if (confirmation ?? false) {
+                  if (context.mounted && (confirmation ?? false)) {
                     context.read<TicketQrCubit>().returnTicket();
                   }
                 },

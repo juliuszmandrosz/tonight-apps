@@ -48,19 +48,19 @@ ColorScheme get colors => ColorScheme.fromSeed(
     );
 
 TextTheme get textTheme => TextTheme(
-      subtitle1: DarkTextStyles.subtitle1,
-      subtitle2: DarkTextStyles.subtitle2,
-      bodyText1: DarkTextStyles.bodyText1,
-      bodyText2: DarkTextStyles.bodyText2,
-      headline1: DarkTextStyles.headline1,
-      headline2: DarkTextStyles.headline2,
-      headline3: DarkTextStyles.headline3,
-      headline6: DarkTextStyles.headline6,
-      headline5: DarkTextStyles.headline5,
-      caption: DarkTextStyles.caption,
-      button: DarkTextStyles.button,
-      headline4: DarkTextStyles.headline4,
-      overline: DarkTextStyles.overline,
+      titleMedium: DarkTextStyles.titleMedium,
+      titleSmall: DarkTextStyles.titleSmall,
+      bodyLarge: DarkTextStyles.bodyLarge,
+      bodyMedium: DarkTextStyles.bodyMedium,
+      displayLarge: DarkTextStyles.displayLarge,
+      displayMedium: DarkTextStyles.displayMedium,
+      displaySmall: DarkTextStyles.displaySmall,
+      titleLarge: DarkTextStyles.titleLarge,
+      headlineSmall: DarkTextStyles.headlineSmall,
+      bodySmall: DarkTextStyles.bodySmall,
+      labelLarge: DarkTextStyles.labelLarge,
+      headlineMedium: DarkTextStyles.headlineMedium,
+      labelSmall: DarkTextStyles.labelSmall,
     );
 
 NavigationBarThemeData get navigationBarTheme => NavigationBarThemeData(
@@ -122,7 +122,7 @@ InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
           color: colors.error,
         ),
       ),
-      errorStyle: DarkTextStyles.bodyText1.copyWith(color: colors.error),
+      errorStyle: DarkTextStyles.bodyLarge.copyWith(color: colors.error),
       errorMaxLines: 2,
     );
 
@@ -195,6 +195,7 @@ SwitchThemeData get switchTheme => SwitchThemeData(
           if (states.contains(MaterialState.selected)) {
             return colors.primary;
           }
+          return null;
         },
       ),
       trackColor: MaterialStateProperty.resolveWith<Color?>(
@@ -202,6 +203,7 @@ SwitchThemeData get switchTheme => SwitchThemeData(
           if (states.contains(MaterialState.selected)) {
             return colors.primaryContainer;
           }
+          return null;
         },
       ),
     );

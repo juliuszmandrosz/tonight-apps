@@ -86,7 +86,7 @@ class _EventDetailsEventPlaceState extends State<EventDetailsEventPlace> {
                         lng,
                         widget.event.clubName,
                       );
-                      if (!result) {
+                      if (context.mounted && !result) {
                         context.showSnackbarMessage(S().errorOpeningMaps);
                       }
                     },

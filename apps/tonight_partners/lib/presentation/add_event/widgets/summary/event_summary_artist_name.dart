@@ -23,7 +23,7 @@ class EventSummaryArtistName extends StatelessWidget {
                       title: S().artistName,
                       subtitle: Text(
                         state.artistName.value,
-                        style: context.subtitle1.copyWith(
+                        style: context.titleMedium.copyWith(
                           color: context.secondaryColor,
                         ),
                       ),
