@@ -35,7 +35,7 @@ class SelectorListTile extends StatelessWidget {
                 S().confirmSelectorDeletion,
               );
 
-              if (result ?? false) {
+              if (context.mounted && (result ?? false)) {
                 context.read<SelectorListCubit>().deleteSelector(selector);
               }
             },

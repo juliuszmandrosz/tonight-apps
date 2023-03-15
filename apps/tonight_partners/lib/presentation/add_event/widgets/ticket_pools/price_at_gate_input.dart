@@ -11,7 +11,7 @@ class PriceAtGateInput extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _controller = useTextEditingController(
+    final controller = useTextEditingController(
       text: '${context.read<AddEventCubit>().state.priceAtGate.fold(
             () => '',
             (price) => price.value ?? '',
@@ -27,7 +27,7 @@ class PriceAtGateInput extends HookWidget {
           children: [
             const SizedBox(height: 20),
             TextField(
-              controller: _controller,
+              controller: controller,
               onChanged: (value) => context
                   .read<AddEventCubit>()
                   .priceAtGateChanged(int.tryParse(value)),

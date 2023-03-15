@@ -11,7 +11,7 @@ class EventDescriptionInput extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _controller = useTextEditingController(
+    final controller = useTextEditingController(
       text: context.read<AddEventCubit>().state.description.value,
     );
 
@@ -21,7 +21,7 @@ class EventDescriptionInput extends HookWidget {
           previous.status != current.status,
       builder: (context, state) {
         return TextField(
-          controller: _controller,
+          controller: controller,
           onChanged: (value) =>
               context.read<AddEventCubit>().descriptionChanged(value),
           keyboardType: TextInputType.multiline,

@@ -24,7 +24,7 @@ class AddEventPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _isEventAddedSuccessfully = false;
+    var isEventAddedSuccessfully = false;
 
     return BlocProvider.value(
       value: blocContext.read<ClubInfoCubit>(),
@@ -32,7 +32,7 @@ class AddEventPage extends StatelessWidget {
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: WillPopScope(
           onWillPop: () async {
-            if (_isEventAddedSuccessfully) {
+            if (isEventAddedSuccessfully) {
               return true;
             }
 
@@ -74,7 +74,7 @@ class AddEventPage extends StatelessWidget {
                           : context.loaderOverlay.hide();
 
                       if (state.status.isSubmissionSuccess) {
-                        _isEventAddedSuccessfully = true;
+                        isEventAddedSuccessfully = true;
                         context.router.popUntilRoot();
                         context.showSnackbarMessage(S().eventAddedSuccessfully);
                       }

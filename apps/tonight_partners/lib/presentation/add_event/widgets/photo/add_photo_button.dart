@@ -22,7 +22,7 @@ class AddPhotoButton extends StatelessWidget {
           dialogTitle: S().selectEventPhoto,
         );
 
-        if (result != null) {
+        if (context.mounted && result != null) {
           final addEventCubit = context.read<AddEventCubit>();
           final file = File(result.files.first.path!);
           final tempDir = await getTemporaryDirectory();

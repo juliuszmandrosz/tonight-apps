@@ -14,7 +14,7 @@ class EventFacebookUrlInput extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _controller = useTextEditingController(
+    final controller = useTextEditingController(
       text: context.read<AddEventCubit>().state.facebookUrl.value,
     );
 
@@ -25,7 +25,7 @@ class EventFacebookUrlInput extends HookWidget {
           previous.status != current.status,
       builder: (context, state) {
         if (!state.isFacebookUrlEnabled) {
-          _controller.text = '';
+          controller.text = '';
         }
         return IntrinsicHeight(
           child: Row(
@@ -64,7 +64,7 @@ class EventFacebookUrlInput extends HookWidget {
                           : const TextStyle().copyWith(
                               color: context.outlineColor,
                             ),
-                      controller: _controller,
+                      controller: controller,
                       onChanged: (value) => context
                           .read<AddEventCubit>()
                           .facebookUrlChanged(value),

@@ -26,9 +26,9 @@ class FacebookUrl extends FormzInput<String, FacebookUrlError> {
     }
 
     if (!RegExp(
-      '(?:(?:http|https):\/\/)?(?:www.)?'
-      'facebook.com\/(?:(?:\w)*#!\/)?(?:pages\/)?'
-      '(?:[?\w\-]*\/)?(?:profile.php\?id=(?=\d.*))?([\w\-]*)?',
+      '(?:(?:http|https)://)?(?:www.)?'
+      'facebook.com/(?:(?:w)*#!/)?(?:pages/)?'
+      '(?:[?w-]*/)?(?:profile.php?id=(?=d.*))?([w-]*)?',
     ).hasMatch(value)) {
       return FacebookUrlError.notFacebook;
     }

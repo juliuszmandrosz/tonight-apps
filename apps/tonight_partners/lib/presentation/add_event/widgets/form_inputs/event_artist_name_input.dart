@@ -11,7 +11,7 @@ class EventArtistNameInput extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _controller = useTextEditingController(
+    final controller = useTextEditingController(
       text: context.read<AddEventCubit>().state.artistName.value,
     );
 
@@ -22,7 +22,7 @@ class EventArtistNameInput extends HookWidget {
           previous.status != current.status,
       builder: (context, state) {
         if (!state.isConcert) {
-          _controller.text = '';
+          controller.text = '';
         }
 
         return TextField(
@@ -30,7 +30,7 @@ class EventArtistNameInput extends HookWidget {
           style: state.isConcert
               ? const TextStyle()
               : const TextStyle().copyWith(color: context.outlineColor),
-          controller: _controller,
+          controller: controller,
           onChanged: (value) =>
               context.read<AddEventCubit>().artistNameChanged(value),
           keyboardType: TextInputType.text,

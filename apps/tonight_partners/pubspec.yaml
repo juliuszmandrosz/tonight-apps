@@ -81,6 +81,7 @@ dependencies:
   uuid:
   path_provider:
   collection:
+  equatable:
 
   auth:
     path: ../../packages/auth

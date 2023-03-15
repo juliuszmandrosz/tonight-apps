@@ -11,7 +11,7 @@ class TicketPoolQuantityInput extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _controller = useTextEditingController(
+    final controller = useTextEditingController(
       text:
           '${context.read<AddEditTicketPoolCubit>().state.ticketQuantity.value ?? ''}',
     );
@@ -22,7 +22,7 @@ class TicketPoolQuantityInput extends HookWidget {
           previous.status != current.status,
       builder: (context, state) {
         return TextField(
-          controller: _controller,
+          controller: controller,
           onChanged: (value) => context
               .read<AddEditTicketPoolCubit>()
               .ticketQuantityChanged(int.tryParse(value)),

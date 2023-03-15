@@ -27,7 +27,7 @@ class RewardListTile extends StatelessWidget {
             onPressed: () async {
               final result = await context.showDeleteConfirmationDialog();
 
-              if (result ?? false) {
+              if (context.mounted && (result ?? false)) {
                 context.read<RewardListCubit>().deleteReward(reward);
               }
             },

@@ -81,7 +81,7 @@ class EventOverviewTicketPools extends StatelessWidget {
                             ),
                           );
 
-                          if (result != null) {
+                          if (context.mounted && result != null) {
                             context
                                 .read<UpcomingLiveEventCubit>()
                                 .addTicketPool(result);

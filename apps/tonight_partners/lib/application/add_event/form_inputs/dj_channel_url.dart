@@ -25,7 +25,7 @@ class DjChannelUrl extends FormzInput<String, DjChannelUrlError> {
       return DjChannelUrlError.invalidUrl;
     }
 
-    if (!RegExp('^(https?\:\/\/)?((www\.)?youtube\.com|youtu\.be)\/.+\$')
+    if (!RegExp('^(https?://)?((www.)?youtube.com|youtu.be)/.+\$')
         .hasMatch(value)) {
       return DjChannelUrlError.notYoutube;
     }

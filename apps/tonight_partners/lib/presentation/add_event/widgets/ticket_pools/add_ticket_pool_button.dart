@@ -34,7 +34,7 @@ class AddTicketPoolButton extends StatelessWidget {
               ),
             );
 
-            if (result != null) {
+            if (context.mounted && (result != null)) {
               context.read<AddEventCubit>().addTicketPool(result);
             }
           },

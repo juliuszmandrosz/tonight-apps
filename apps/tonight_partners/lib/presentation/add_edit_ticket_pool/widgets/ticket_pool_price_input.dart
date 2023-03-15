@@ -11,7 +11,7 @@ class TicketPoolPriceInput extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _controller = useTextEditingController(
+    final controller = useTextEditingController(
       text:
           '${context.read<AddEditTicketPoolCubit>().state.ticketPrice.value ?? ''}',
     );
@@ -25,12 +25,12 @@ class TicketPoolPriceInput extends HookWidget {
           children: [
             const SizedBox(height: 20),
             TextField(
-              controller: _controller,
+              controller: controller,
               onChanged: (value) => context
                   .read<AddEditTicketPoolCubit>()
                   .ticketPriceChanged(int.tryParse(value)),
               inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                FilteringTextInputFormatter.allow(RegExp(r'\d')),
               ],
               keyboardType: TextInputType.number,
               decoration: InputDecoration(

@@ -41,7 +41,8 @@ class NetworkLostPage extends StatelessWidget {
                   width: 300,
                   child: ElevatedButton(
                     onPressed: () async {
-                      if (await _checkNetworkConnection(context)) {
+                      final result = await _checkNetworkConnection(context);
+                      if (context.mounted && result) {
                         _navigateToHomePage(context);
                       }
                     },
