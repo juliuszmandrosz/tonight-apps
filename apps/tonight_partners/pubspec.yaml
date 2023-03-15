@@ -40,6 +40,48 @@ dependencies:
   syncfusion_flutter_charts: ^20.4.53
   flutter_image_compress: ^1.1.3
 
+  # Inherited packages
+  auto_route:
+  flutter_bloc:
+  get_it:
+  logger:
+  google_sign_in:
+  formz:
+  freezed_annotation:
+  dartz:
+  font_awesome_flutter:
+  auto_size_text:
+  loader_overlay:
+  flutter_svg:
+  connectivity_plus:
+  lottie:
+  flutter_dotenv:
+  google_fonts:
+  flutter_native_splash:
+  launch_review:
+  firebase_core:
+  cloud_firestore:
+  firebase_auth:
+  firebase_storage:
+  firebase_crashlytics:
+  firebase_app_check:
+  firebase_performance:
+  firebase_analytics:
+  firebase_dynamic_links:
+  firebase_remote_config:
+  cloud_functions:
+  flutter_stripe:
+  timeago:
+  flutter_hooks:
+  flutter_spinkit:
+  share_plus:
+  intl:
+  cached_network_image:
+  flutter_rating_bar:
+  uuid:
+  path_provider:
+  collection:
+
   auth:
     path: ../../packages/auth
 
@@ -65,7 +107,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
+  build_runner:
+  auto_route_generator:
+  freezed:
+  flutter_lints:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

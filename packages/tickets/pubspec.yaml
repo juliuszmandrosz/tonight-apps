@@ -11,13 +11,30 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Inherited packages
+  freezed_annotation:
+  equatable:
+  dartz:
+  logger:
+  uuid:
+  json_annotation:
+  firebase_core:
+  cloud_firestore:
+  firebase_auth:
+  firebase_crashlytics:
+  cloud_functions:
+
   common:
     path: ../common
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
+  flutter_lints:
+  json_serializable:
+  freezed:
+  build_runner:
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -45,6 +45,54 @@ dependencies:
   screen_brightness: ^0.2.2
   flutter_local_notifications: ^9.9.1
 
+  # Inherited packages
+  auto_route:
+  flutter_bloc:
+  get_it:
+  logger:
+  google_sign_in:
+  formz:
+  freezed_annotation:
+  dartz:
+  font_awesome_flutter:
+  auto_size_text:
+  loader_overlay:
+  flutter_svg:
+  connectivity_plus:
+  lottie:
+  flutter_dotenv:
+  google_fonts:
+  flutter_native_splash:
+  launch_review:
+  firebase_core:
+  cloud_firestore:
+  firebase_auth:
+  firebase_storage:
+  firebase_crashlytics:
+  firebase_app_check:
+  firebase_performance:
+  firebase_analytics:
+  firebase_dynamic_links:
+  firebase_remote_config:
+  firebase_messaging:
+  cloud_functions:
+  flutter_stripe:
+  timeago:
+  flutter_hooks:
+  flutter_spinkit:
+  share_plus:
+  intl:
+  cached_network_image:
+  flutter_rating_bar:
+  path_provider:
+  hydrated_bloc:
+  package_info_plus:
+  rxdart:
+  collection:
+  equatable:
+  dio:
+
+
   translations:
     path: ../../packages/translations
 
@@ -75,7 +123,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
+  build_runner:
+  auto_route_generator:
+  freezed:
+  flutter_lints:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
