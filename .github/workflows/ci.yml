@@ -30,8 +30,8 @@ jobs:
       - name: Bootstrap melos
         run: melos bootstrap
 
-      - name: Run melos lint
-        run: melos run lint
+      - name: Run melos analyze
+        run: melos run analyze
 
       - name: Run melos test
         run: melos run test
