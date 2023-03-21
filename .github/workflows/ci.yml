@@ -21,14 +21,6 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Cache Flutter SDK
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.FLUTTER_HOME }}
-          key: ${{ runner.os }}-flutter-sdk-${{ env.FLUTTER_VERSION }}-${{ hashFiles('.github/workflows/deploy_flutter_app.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-flutter-sdk-${{ env.FLUTTER_VERSION }}-
-
       - name: Install melos
         run: dart pub global activate melos
 
