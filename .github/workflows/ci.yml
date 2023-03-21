@@ -1,0 +1,37 @@
+name: Flutter Monorepo CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Install melos
+        run: dart pub global activate melos
+
+      - name: Add melos to PATH
+        run: echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+
+      - name: Bootstrap melos
+        run: melos bootstrap
+
+      - name: Run melos lint
+        run: melos run lint
+
+      - name: Run melos test
+        run: melos run test
