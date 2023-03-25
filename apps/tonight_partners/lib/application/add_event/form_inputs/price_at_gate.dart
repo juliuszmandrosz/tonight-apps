@@ -3,7 +3,7 @@ import 'package:formz/formz.dart';
 import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
 import 'package:translations/translations.dart';
 
-// TODO - add price to high error
+// TODO - add price too high error
 enum PriceAtGateError { empty }
 
 final priceAtGateErrorMessages = {
