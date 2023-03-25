@@ -1,7 +1,7 @@
 default_platform(:android)
 
 platform :android do
-    lane :deploy_to_play_store_internal
+    lane :deploy_to_play_store_internal do
         build_flutter_app()
         upload_to_play_store_internal()
     end
