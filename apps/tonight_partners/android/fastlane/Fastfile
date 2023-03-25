@@ -8,7 +8,11 @@ platform :android do
 
     lane :promote_to_production do
         json_key_data = "#{ENV['GOOGLE_SERVICE_ACCOUNT_JSON']}"
-        promote(track: 'internal', to_track: 'production', json_key_data: json_key_data)
+        track_promote_to(
+            source_track: 'internal',
+            destination_track: 'production',
+            json_key_data: json_key_data
+        )
     end
 
     private_lane :build_flutter_app do
