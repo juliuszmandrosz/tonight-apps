@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ./app_affected.sh
+. ./check_if_app_affected.sh
 
 promote_android_app() {
   app_name=$1

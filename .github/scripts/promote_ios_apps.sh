@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ./app_affected.sh
+. ./check_if_app_affected.sh
 
 promote_ios_app() {
   app_name=$1
