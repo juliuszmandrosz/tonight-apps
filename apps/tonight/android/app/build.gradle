@@ -60,20 +60,18 @@ android {
         multiDexEnabled true
     }
 
-    buildTypes {
+    signingConfigs {
         release {
-            signingConfig signingConfigs.release
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
         }
     }
 
-    signingConfigs {
+    buildTypes {
         release {
-            if (keystoreProperties.exists()) {
-                keyAlias keystoreProperties['keyAlias']
-                keyPassword keystoreProperties['keyPassword']
-                storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-                storePassword keystoreProperties['storePassword']
-            }
+            signingConfig signingConfigs.release
         }
     }
 }
