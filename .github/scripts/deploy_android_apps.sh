@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. .github/scripts/app_affected.sh
+. ./app_affected.sh
 
 deploy_android_app() {
   app_name=$1

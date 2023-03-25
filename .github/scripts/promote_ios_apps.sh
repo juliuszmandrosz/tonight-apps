@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. .github/scripts/app_affected.sh
+. ./app_affected.sh
 
 promote_ios_app() {
   app_name=$1
