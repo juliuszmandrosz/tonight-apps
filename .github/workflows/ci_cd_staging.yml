@@ -10,10 +10,12 @@ on:
 
 jobs:
   ci_cd_staging:
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, macos-latest ]
-        platform: [ android, ios ]
+    matrix:
+      include:
+        - os: ubuntu-latest
+          platform: android
+        - os: macos-latest
+          platform: ios
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
