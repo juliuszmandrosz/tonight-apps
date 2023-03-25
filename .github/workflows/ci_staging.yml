@@ -9,7 +9,7 @@ on:
       - '**/packages/**'
 
 jobs:
-  ci_develop:
+  ci_staging:
     runs-on: ubuntu-latest
 
     steps:
