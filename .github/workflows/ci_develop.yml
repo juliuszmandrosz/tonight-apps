@@ -1,0 +1,43 @@
+name: CI for Develop Branch
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - '**/apps/**'
+      - '**/packages/**'
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - '**/apps/**'
+      - '**/packages/**'
+
+jobs:
+  ci_develop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Install melos
+        run: dart pub global activate melos
+
+      - name: Add melos to PATH
+        run: echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+
+      - name: Bootstrap melos
+        run: melos bootstrap
+
+      - name: Run melos analyze
+        run: melos run analyze
+
+      - name: Run melos test
+        run: melos run test

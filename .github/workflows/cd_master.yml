@@ -1,0 +1,56 @@
+name: CD for Master Branch
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '**/apps/**'
+      - '**/packages/**'
+
+jobs:
+  cd_master:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest ]
+        platform: [ android, ios ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Install melos
+        run: dart pub global activate melos
+
+      - name: Add melos to PATH
+        run: echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+
+      - name: Bootstrap melos
+        run: melos bootstrap
+
+      - name: Deploy Android apps
+        if: matrix.platform == 'android'
+        env:
+          KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_STORE_FILE: ${{ secrets.KEY_STORE_FILE }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          chmod +x .github/scripts/deploy_android_apps.sh
+          ./.github/scripts/promote_android_apps.sh
+
+      - name: Deploy IOS apps
+        if: matrix.platform == 'ios'
+        env:
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+        run: |
+          chmod +x .github/scripts/deploy_ios_apps.sh
+          ./.github/scripts/promote_ios_apps.sh

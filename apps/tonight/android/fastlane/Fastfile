@@ -1,0 +1,49 @@
+default_platform(:android)
+
+platform :android do
+    lane :deploy_to_play_store_internal
+        build_flutter_app()
+        upload_to_play_store_internal()
+    end
+
+    lane :promote_to_production do
+        json_key_data = "#{ENV['GOOGLE_SERVICE_ACCOUNT_JSON']}"
+        promote(track: 'internal', to_track: 'production', json_key_data: json_key_data)
+    end
+
+    private_lane :build_flutter_app do
+        sh("flutter", "clean")
+        sh("flutter", "pub", "get")
+        sh("flutter", "build", "appbundle", "--release")
+        sign_android_app()
+    end
+
+    private_lane :sign_android_app do
+    keystore_path = "android/app/keystore.jks"
+    sh("cp", "#{ENV['KEY_STORE_FILE']}", keystore_path)
+    gradle(
+        task: 'assemble',
+        build_type: 'Release',
+        print_command: false,
+        properties: {
+                "android.injected.signing.store.file" => keystore_path,
+                "android.injected.signing.store.password" => "#{ENV['KEY_STORE_PASSWORD']}",
+                "android.injected.signing.key.alias" => "#{ENV['KEY_ALIAS']}",
+                "android.injected.signing.key.password" => "#{ENV['KEY_PASSWORD']}",
+            }
+        )
+        sh("rm", keystore_path)
+    end
+
+    private_lane :upload_to_play_store_internal do
+        json_key_data = "#{ENV['GOOGLE_SERVICE_ACCOUNT_JSON']}"
+        upload_to_play_store(
+            track: 'internal',
+            aab: 'build/app/outputs/bundle/release/app-release.aab',
+            json_key_data: json_key_data,
+            skip_upload_metadata: true,
+            skip_upload_images: true,
+            skip_upload_screenshots: true
+        )
+    end
+end

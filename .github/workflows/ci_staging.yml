@@ -1,17 +1,15 @@
-name: Flutter Monorepo CI
+name: CI for Staging Branch
 
 on:
-  push:
-    branches:
-      - master
-      - develop
   pull_request:
     branches:
-      - master
-      - develop
+      - staging
+    paths:
+      - '**/apps/**'
+      - '**/packages/**'
 
 jobs:
-  build_and_test:
+  ci_develop:
     runs-on: ubuntu-latest
 
     steps:
