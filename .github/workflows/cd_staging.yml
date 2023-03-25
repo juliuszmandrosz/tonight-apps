@@ -9,7 +9,7 @@ on:
       - '**/packages/**'
 
 jobs:
-  ci_cd_staging:
+  cd_staging:
     matrix:
       include:
         - os: ubuntu-latest
