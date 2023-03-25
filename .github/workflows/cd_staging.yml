@@ -1,7 +1,9 @@
 name: CD for Staging Branch
 
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
       - staging
     paths:
