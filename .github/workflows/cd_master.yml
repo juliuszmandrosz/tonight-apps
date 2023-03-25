@@ -12,13 +12,14 @@ on:
 
 jobs:
   cd_master:
+  runs-on: ${{ matrix.os }}
+  strategy:
     matrix:
       include:
         - os: ubuntu-latest
           platform: android
         - os: macos-latest
           platform: ios
-    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
