@@ -1,12 +1,6 @@
 name: CI for Develop Branch
 
 on:
-  push:
-    branches:
-      - develop
-    paths:
-      - '**/apps/**'
-      - '**/packages/**'
   pull_request:
     branches:
       - develop
