@@ -1,4 +1,4 @@
-name: CI/CD for Staging Branch
+name: CD for Staging Branch
 
 on:
   push:
@@ -34,12 +34,6 @@ jobs:
 
       - name: Bootstrap melos
         run: melos bootstrap
-
-      - name: Run melos analyze
-        run: melos run analyze
-
-      - name: Run melos test
-        run: melos run test
 
       - name: Deploy Android apps
         if: matrix.platform == 'android'
