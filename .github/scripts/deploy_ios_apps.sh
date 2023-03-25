@@ -10,7 +10,7 @@ deploy_ios_app() {
 
   cd "apps/$app_name/ios" || exit
   eval "fastlane deploy_to_testflight"
-  cd ../.. || exit
+  cd ../../../ || exit
 }
 
 for app_name in tonight tonight_partners tonight_scanner; do

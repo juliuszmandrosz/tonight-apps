@@ -10,7 +10,7 @@ promote_ios_app() {
 
   cd "apps/$app_name/ios" || exit
   eval "fastlane promote_to_app_store"
-  cd ../.. || exit
+  cd ../../../ || exit
 }
 
 for app_name in tonight tonight_partners tonight_scanner; do

@@ -10,7 +10,7 @@ deploy_android_app() {
 
   cd "apps/$app_name/android" || exit
   eval "fastlane deploy_to_play_store_internal"
-  cd ../.. || exit
+  cd ../../../ || exit
 }
 
 for app_name in tonight tonight_partners tonight_scanner; do
