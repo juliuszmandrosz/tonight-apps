@@ -47,7 +47,7 @@ jobs:
           KEY_STORE_FILE: ${{ secrets.KEY_STORE_FILE }}
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
         run: |
-          chmod +x .github/scripts/deploy_android_apps.sh
+          chmod +x .github/scripts/promote_android_apps.sh
           ./.github/scripts/promote_android_apps.sh
 
       - name: Deploy IOS apps
@@ -57,5 +57,5 @@ jobs:
           APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
           APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
         run: |
-          chmod +x .github/scripts/deploy_ios_apps.sh
+          chmod +x .github/scripts/promote_ios_apps.sh
           ./.github/scripts/promote_ios_apps.sh
