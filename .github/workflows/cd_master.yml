@@ -51,7 +51,7 @@ jobs:
         run: |
           chmod +x .github/scripts/promote_android_apps.sh
           chmod +x .github/scripts/check_if_app_affected.sh
-          ./.github/scripts/promote_android_apps.sh
+          ./.github/scripts/promote_android_apps.sh "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}"
 
       - name: Deploy IOS apps
         if: matrix.platform == 'ios'
@@ -62,4 +62,4 @@ jobs:
         run: |
           chmod +x .github/scripts/promote_ios_apps.sh
           chmod +x .github/scripts/check_if_app_affected.sh
-          ./.github/scripts/promote_ios_apps.sh
+          ./.github/scripts/promote_ios_apps.sh "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}"

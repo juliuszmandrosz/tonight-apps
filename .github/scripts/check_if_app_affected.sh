@@ -8,12 +8,15 @@ check_dependency() {
 
 app_affected() {
   app_name=$1
-  if git diff HEAD~ --name-only | grep -q "apps/$app_name/"; then
-    return 0
+  base_sha=$2
+  head_sha=$3
+
+  if git diff "$base_sha" "$head_sha" --name-only | grep -q "apps/$app_name/"; then
+      return 0
   fi
 
   for package in account_settings auth clubs common events payments rewards tickets translations; do
-    if git diff HEAD~ --name-only | grep -q "packages/$package/"; then
+    if git diff "$base_sha" "$head_sha" --name-only | grep -q "packages/$package/"; then
       check_dependency "$package" "apps/$app_name" && return 0
     fi
   done
