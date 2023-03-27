@@ -16,6 +16,7 @@ import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
 import 'package:tonight/application/welcome_loading/welcome_loading_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/ticket_logo_animation.dart';
+import 'package:tonight/presentation/core/tonight_upgrade_alert.dart';
 import 'package:tonight/presentation/navigator/navigator_page.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
@@ -51,95 +52,97 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocListener(
-      listeners: [
-        BlocListener<NetworkCheckCubit, NetworkCheckState>(
-          bloc: context.read<NetworkCheckCubit>(),
-          listener: (context, state) {
-            final currentRoute = context.router.current.name;
-            if (!state.isConnected && currentRoute != NetworkLostRoute.name) {
-              context.pushRoute(const NetworkLostRoute());
-            }
-          },
-        ),
-        BlocListener<AuthCubit, AuthState>(
-          bloc: context.read<AuthCubit>(),
-          listener: (context, state) => state.map(
-            initial: (_) => {},
-            authenticated: (_) => {},
-            unauthenticated: (_) => context.replaceRoute(const SignInRoute()),
-          ),
-        )
-      ],
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => getIt<EventOverviewBloc>(),
-          ),
-          BlocProvider(
-            create: (context) => getIt<ClubsOverviewBloc>(),
-          ),
-          BlocProvider(
-            create: (ctx) => getIt<AvailableFiltersCubit>(),
-          ),
-          BlocProvider(
-            create: (ctx) => getIt<PushNotificationsCubit>(),
-          ),
-        ],
-        child: BlocProvider(
-          create: (ctx) => (_welcomeLoadingCubit ?? _initWelcomeCubit(ctx))
-            ..initUserProfile(),
-          child: BlocConsumer<WelcomeLoadingCubit, WelcomeLoadingState>(
+    return TonightUpgradeAlert(
+      child: MultiBlocListener(
+        listeners: [
+          BlocListener<NetworkCheckCubit, NetworkCheckState>(
+            bloc: context.read<NetworkCheckCubit>(),
             listener: (context, state) {
               final currentRoute = context.router.current.name;
-
-              if (!state.hasConnection &&
-                  currentRoute != NetworkLostRoute.name) {
-                context.replaceRoute(const NetworkLostRoute());
-                return;
+              if (!state.isConnected && currentRoute != NetworkLostRoute.name) {
+                context.pushRoute(const NetworkLostRoute());
               }
+            },
+          ),
+          BlocListener<AuthCubit, AuthState>(
+            bloc: context.read<AuthCubit>(),
+            listener: (context, state) => state.map(
+              initial: (_) => {},
+              authenticated: (_) => {},
+              unauthenticated: (_) => context.replaceRoute(const SignInRoute()),
+            ),
+          )
+        ],
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt<EventOverviewBloc>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<ClubsOverviewBloc>(),
+            ),
+            BlocProvider(
+              create: (ctx) => getIt<AvailableFiltersCubit>(),
+            ),
+            BlocProvider(
+              create: (ctx) => getIt<PushNotificationsCubit>(),
+            ),
+          ],
+          child: BlocProvider(
+            create: (ctx) => (_welcomeLoadingCubit ?? _initWelcomeCubit(ctx))
+              ..initUserProfile(),
+            child: BlocConsumer<WelcomeLoadingCubit, WelcomeLoadingState>(
+              listener: (context, state) {
+                final currentRoute = context.router.current.name;
 
-              if (state.status.isFailure() &&
-                  context.router.current.name != FailureRoute.name) {
-                context.pushRoute(
-                  FailureRoute(
-                    retryCallback: () =>
-                        _welcomeLoadingCubit!.loadDependencies(context),
-                  ),
+                if (!state.hasConnection &&
+                    currentRoute != NetworkLostRoute.name) {
+                  context.replaceRoute(const NetworkLostRoute());
+                  return;
+                }
+
+                if (state.status.isFailure() &&
+                    context.router.current.name != FailureRoute.name) {
+                  context.pushRoute(
+                    FailureRoute(
+                      retryCallback: () =>
+                          _welcomeLoadingCubit!.loadDependencies(context),
+                    ),
+                  );
+                }
+
+                state.username.fold(
+                  () => {},
+                  (username) {
+                    if (username.isEmpty &&
+                        context.router.current.name != OnboardingRoute.name) {
+                      context.pushRoute(const OnboardingRoute());
+                      return;
+                    }
+
+                    if (!state.status.isFailure() && username.isNotEmpty) {
+                      _welcomeLoadingCubit!.loadDependencies(context);
+                    }
+                  },
                 );
-              }
+              },
+              builder: (context, state) {
+                if (state.status.isFailure() || state.username.isNone()) {
+                  return Container();
+                }
 
-              state.username.fold(
-                () => {},
-                (username) {
-                  if (username.isEmpty &&
-                      context.router.current.name != OnboardingRoute.name) {
-                    context.pushRoute(const OnboardingRoute());
-                    return;
-                  }
+                if (state.username.isSome() &&
+                    state.username.getOrCrash().isEmpty) {
+                  return Container();
+                }
 
-                  if (!state.status.isFailure() && username.isNotEmpty) {
-                    _welcomeLoadingCubit!.loadDependencies(context);
-                  }
-                },
-              );
-            },
-            builder: (context, state) {
-              if (state.status.isFailure() || state.username.isNone()) {
-                return Container();
-              }
+                if (!state.dependenciesLoaded) {
+                  return _ticketLogoAnimation ?? const TicketLogoAnimation();
+                }
 
-              if (state.username.isSome() &&
-                  state.username.getOrCrash().isEmpty) {
-                return Container();
-              }
-
-              if (!state.dependenciesLoaded) {
-                return _ticketLogoAnimation ?? const TicketLogoAnimation();
-              }
-
-              return const NavigatorPage();
-            },
+                return const NavigatorPage();
+              },
+            ),
           ),
         ),
       ),
