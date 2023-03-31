@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -49,24 +46,32 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyA0hjgCqlxPjJPNitsnVRNeH7g5M7IURu8',
+    appId: '1:98730591004:web:bad8feb17597a20fa0b0d9',
+    messagingSenderId: '98730591004',
+    projectId: 'tonight-raver',
+    authDomain: 'tonight-raver.firebaseapp.com',
+    storageBucket: 'tonight-raver.appspot.com',
+    measurementId: 'G-2QTQ797B2C',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyB0_MbQFy78XMQufSUNdg08H2gztVDZwbI',
     appId: '1:98730591004:android:7e99e2d387252529a0b0d9',
     messagingSenderId: '98730591004',
-    projectId: 'tonight-tonight',
-    storageBucket: 'tonight-tonight.appspot.com',
+    projectId: 'tonight-raver',
+    storageBucket: 'tonight-raver.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyD8f2gV9Mq14LXFYKr1DjmEmjK-Qrt3PwI',
     appId: '1:98730591004:ios:9d1e77b1370d5201a0b0d9',
     messagingSenderId: '98730591004',
-    projectId: 'tonight-tonight',
-    storageBucket: 'tonight-tonight.appspot.com',
-    androidClientId:
-        '98730591004-239hv29qt7rqdrh88bqg511uipouj9di.apps.googleusercontent.com',
-    iosClientId:
-        '98730591004-loojab9i15qtlab8kgknc3ebpajgf4gf.apps.googleusercontent.com',
+    projectId: 'tonight-raver',
+    storageBucket: 'tonight-raver.appspot.com',
+    androidClientId: '98730591004-239hv29qt7rqdrh88bqg511uipouj9di.apps.googleusercontent.com',
+    iosClientId: '98730591004-loojab9i15qtlab8kgknc3ebpajgf4gf.apps.googleusercontent.com',
     iosBundleId: 'com.raverteam.tonightScanner',
   );
 }
