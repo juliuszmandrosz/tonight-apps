@@ -47,33 +47,31 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDoPE9S8jXtL5tHPdsDNZseRbr07jV9VAM',
-    appId: '1:133839090627:web:5d19c780f20b4f21e1c376',
-    messagingSenderId: '133839090627',
-    projectId: 'raver-1fec4',
-    authDomain: 'raver-1fec4.firebaseapp.com',
-    storageBucket: 'raver-1fec4.appspot.com',
-    measurementId: 'G-EWR90F10GE',
+    apiKey: 'AIzaSyA0hjgCqlxPjJPNitsnVRNeH7g5M7IURu8',
+    appId: '1:98730591004:web:bad8feb17597a20fa0b0d9',
+    messagingSenderId: '98730591004',
+    projectId: 'tonight-raver',
+    authDomain: 'tonight-raver.firebaseapp.com',
+    storageBucket: 'tonight-raver.appspot.com',
+    measurementId: 'G-2QTQ797B2C',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDIYNLmu3013gTkq3rjmY2p2lnp-l5oN2I',
-    appId: '1:133839090627:android:5650eff7cde98623e1c376',
-    messagingSenderId: '133839090627',
-    projectId: 'raver-1fec4',
-    storageBucket: 'raver-1fec4.appspot.com',
+    apiKey: 'AIzaSyB0_MbQFy78XMQufSUNdg08H2gztVDZwbI',
+    appId: '1:98730591004:android:b7746988d2264398a0b0d9',
+    messagingSenderId: '98730591004',
+    projectId: 'tonight-raver',
+    storageBucket: 'tonight-raver.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD1iQ2EFscnd8ocsttiAvg7zERYrZc8lyM',
-    appId: '1:133839090627:ios:a3711f920bbf5246e1c376',
-    messagingSenderId: '133839090627',
-    projectId: 'raver-1fec4',
-    storageBucket: 'raver-1fec4.appspot.com',
-    androidClientId:
-        '133839090627-3vrcaoj7s27mteo7crlb86ugd52h1l16.apps.googleusercontent.com',
-    iosClientId:
-        '133839090627-7g5e0li6omfire9666p5863ooa0dheen.apps.googleusercontent.com',
+    apiKey: 'AIzaSyD8f2gV9Mq14LXFYKr1DjmEmjK-Qrt3PwI',
+    appId: '1:98730591004:ios:6092b9ab4e90a57fa0b0d9',
+    messagingSenderId: '98730591004',
+    projectId: 'tonight-raver',
+    storageBucket: 'tonight-raver.appspot.com',
+    androidClientId: '98730591004-239hv29qt7rqdrh88bqg511uipouj9di.apps.googleusercontent.com',
+    iosClientId: '98730591004-hdf07gr59ak12sq9fhnjki2ov5ejtn3v.apps.googleusercontent.com',
     iosBundleId: 'com.raverteam.tonight',
   );
 }
