@@ -53,7 +53,6 @@ app.*.map.json
 /lib/generated/intl/messages_pl.dart
 
 
-/android/app/google-services.json
 /storage.rules
 /firestore.rules
 /firestore.indexes.json
