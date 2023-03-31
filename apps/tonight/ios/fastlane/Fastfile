@@ -3,7 +3,7 @@ default_platform(:ios)
 platform :ios do
     lane :deploy_to_testflight do
         build_flutter_app()
-        upload_to_testflight()
+        deploy_flutter_app()
     end
 
     lane :promote_to_app_store do
@@ -23,7 +23,7 @@ platform :ios do
         sh("flutter", "build", "ipa", "--release", "--export-options-plist", "ios/ExportOptions.plist")
     end
 
-    private_lane :upload_to_testflight do
+    private_lane :deploy_flutter_app do
         api_key = app_store_connect_api_key(
             key_id: "#{ENV['APP_STORE_CONNECT_KEY_ID']}",
             issuer_id: "#{ENV['APP_STORE_CONNECT_ISSUER_ID']}",
