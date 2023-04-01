@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 
 Future<T> handleFirebaseError<T>({
@@ -16,7 +17,9 @@ Future<T> handleFirebaseError<T>({
     return permissionDeniedFailure;
   }
 
-  await crashlytics.recordError(message, StackTrace.current);
+  if (!kIsWeb) {
+    await crashlytics.recordError(message, StackTrace.current);
+  }
 
   return unexpectedFailure;
 }

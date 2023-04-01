@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 
 Future<T> handleDioError<T>({
@@ -17,7 +18,9 @@ Future<T> handleDioError<T>({
     return socketFailure;
   }
 
-  await crashlytics.recordError(error, StackTrace.current);
+  if (!kIsWeb) {
+    await crashlytics.recordError(error, StackTrace.current);
+  }
 
   return unexpectedFailure;
 }
