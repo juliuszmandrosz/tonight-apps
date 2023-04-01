@@ -45,7 +45,6 @@ dependencies:
   screen_brightness: ^0.2.2
   flutter_local_notifications: ^9.9.1
   upgrader: ^6.2.0
-  responsive_framework: ^0.2.0
 
   # Inherited packages
   auto_route:
@@ -93,6 +92,8 @@ dependencies:
   collection:
   equatable:
   dio:
+  responsive_framework:
+
 
 
   translations:

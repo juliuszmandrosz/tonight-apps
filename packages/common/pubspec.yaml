@@ -132,6 +132,9 @@ dependencies:
   # Inherited packages
   intl:
 
+  # Responsive UI
+  responsive_framework: ^0.2.0
+
   translations:
     path: ../translations
 
