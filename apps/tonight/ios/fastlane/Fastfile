@@ -20,7 +20,7 @@ platform :ios do
     private_lane :build_flutter_app do
         sh("flutter", "clean")
         sh("flutter", "pub", "get")
-        sh("flutter", "build", "ipa", "--release", "--export-options-plist", "ios/ExportOptions.plist")
+        sh("flutter", "build", "ipa", "--release")
     end
 
     private_lane :deploy_flutter_app do
@@ -31,6 +31,7 @@ platform :ios do
             is_key_content_base64: true
         )
         app_store_connect_api_key(api_key: api_key)
+        match(type: "appstore", api_key: api_key)
         pilot(api_key: api_key, skip_waiting_for_build_processing: true)
     end
 end
