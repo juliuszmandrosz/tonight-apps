@@ -3,7 +3,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:tonight/application/app_settings/app_settings_cubit.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:tonight/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
@@ -18,7 +18,6 @@ class TonightApp extends StatelessWidget {
 
   TonightApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -48,30 +47,36 @@ class TonightApp extends StatelessWidget {
           lazy: false,
           create: (context) => getIt<ProfileCubit>(),
         ),
-        BlocProvider(
-          create: (context) => getIt<AppSettingsCubit>(),
-        ),
       ],
-      child: BlocBuilder<AppSettingsCubit, AppSettingsState>(
-        buildWhen: (previous, current) =>
-            previous.appSettings.locale != current.appSettings.locale,
-        builder: (context, state) {
-          return MaterialApp.router(
-            title: S().tonight,
-            theme: darkTheme,
-            routerDelegate: _appRouter.delegate(),
-            routeInformationParser: _appRouter.defaultRouteParser(),
-            debugShowCheckedModeBanner: false,
-            localizationsDelegates: const [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-            localeListResolutionCallback: localeConfig,
-          );
-        },
+      child: MaterialApp.router(
+        title: S().tonight,
+        theme: darkTheme,
+        routerDelegate: _appRouter.delegate(),
+        routeInformationParser: _appRouter.defaultRouteParser(),
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        localeListResolutionCallback: localeConfig,
+        builder: (ctx, child) => ResponsiveWrapper.builder(
+          child,
+          maxWidth: 1200,
+          minWidth: 480,
+          backgroundColor: ctx.backgroundColor,
+          background: Container(
+            color: ctx.backgroundColor,
+          ),
+          defaultScale: true,
+          breakpoints: const [
+            ResponsiveBreakpoint.resize(480, name: MOBILE),
+            ResponsiveBreakpoint.autoScale(800, name: TABLET),
+            ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+          ],
+        ),
       ),
     );
   }
