@@ -64,7 +64,6 @@ class TonightApp extends StatelessWidget {
         localeListResolutionCallback: localeConfig,
         builder: (ctx, child) => ResponsiveWrapper.builder(
           child,
-          maxWidth: 1200,
           minWidth: 480,
           backgroundColor: ctx.backgroundColor,
           background: Container(
