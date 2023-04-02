@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/sign_in/widgets/apple_sign_in_button.dart';
 import 'package:tonight/presentation/sign_in/widgets/google_sign_in_button.dart';
@@ -10,7 +11,7 @@ class AuthProviders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: Platform.isIOS
+      mainAxisAlignment: kIsWeb || Platform.isIOS
           ? MainAxisAlignment.spaceEvenly
           : MainAxisAlignment.center,
       children: const [
