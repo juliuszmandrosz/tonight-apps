@@ -39,111 +39,109 @@ class EventCard extends StatelessWidget {
           clubId: event.clubId,
           eventId: event.id,
         ),
-      child: Builder(builder: (context) {
-        return InkWell(
-          onTap: () {
-            final eventTickets =
-                context.read<EventTicketsCubit>().state.eventTickets;
-            FocusScope.of(context).unfocus();
-            context.pushRoute(
-              EventDetailsRoute(
-                event: event,
-                heroTag: heroTag,
-                ticketPrice: eventTickets.fold(
-                  () => null,
-                  (tickets) => tickets.getCurrentTicketPrice(),
-                ),
+      child: InkWell(
+        onTap: () {
+          final eventTickets =
+              context.read<EventTicketsCubit>().state.eventTickets;
+          FocusScope.of(context).unfocus();
+          context.pushRoute(
+            EventDetailsRoute(
+              event: event,
+              heroTag: heroTag,
+              ticketPrice: eventTickets.fold(
+                () => null,
+                (tickets) => tickets.getCurrentTicketPrice(),
               ),
-            );
-          },
-          child: Card(
-            clipBehavior: Clip.antiAlias,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24),
             ),
-            child: BlocBuilder<EventTicketsCubit, EventTicketsState>(
-              builder: (context, state) {
-                final eventTickets = state.eventTickets.fold(
-                  () => null,
-                  (tickets) => tickets,
-                );
-                return Column(
-                  children: [
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        EventPhoto(
-                          event: event,
-                          heroTag: heroTag,
-                        ),
-                        Positioned(
+          );
+        },
+        child: Card(
+          clipBehavior: Clip.antiAlias,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: BlocBuilder<EventTicketsCubit, EventTicketsState>(
+            builder: (context, state) {
+              final eventTickets = state.eventTickets.fold(
+                () => null,
+                (tickets) => tickets,
+              );
+              return Column(
+                children: [
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      EventPhoto(
+                        event: event,
+                        heroTag: heroTag,
+                      ),
+                      Positioned(
+                        top: 15,
+                        right: 15,
+                        child: EventFavoriteButton(event: event),
+                      ),
+                      if (event.isCanceled)
+                        const Positioned(
                           top: 15,
-                          right: 15,
-                          child: EventFavoriteButton(event: event),
-                        ),
-                        if (event.isCanceled)
-                          const Positioned(
-                            top: 15,
-                            left: 15,
-                            child: EventCanceledInfo(),
-                          ),
-                        if (checkIfEventIsLive(event))
-                          const Positioned(
-                            top: 15,
-                            left: 15,
-                            child: EventLiveInfo(),
-                          ),
-                        if (state.eventTickets.fold(
-                          () => false,
-                          (tickets) =>
-                              tickets.isSoldOut && !tickets.isSaleOnlyAtGate,
-                        ))
-                          Positioned(
-                            top: checkIfEventIsLive(event) ? 70 : 15,
-                            left: 15,
-                            child: EventSoldOutInfo(event: event),
-                          ),
-                        if (checkIfShouldShowLastTicketsMessage(
-                          event,
-                          eventTickets,
-                        ))
-                          Positioned(
-                            top: checkIfEventIsLive(event) ? 70 : 15,
-                            left: 15,
-                            child: LastTicketsLeftInfo(event: event),
-                          ),
-                        Positioned(
-                          bottom: 15,
-                          right: 15,
                           left: 15,
-                          child: EventNameBar(event: event),
+                          child: EventCanceledInfo(),
                         ),
+                      if (checkIfEventIsLive(event))
+                        const Positioned(
+                          top: 15,
+                          left: 15,
+                          child: EventLiveInfo(),
+                        ),
+                      if (state.eventTickets.fold(
+                        () => false,
+                        (tickets) =>
+                            tickets.isSoldOut && !tickets.isSaleOnlyAtGate,
+                      ))
+                        Positioned(
+                          top: checkIfEventIsLive(event) ? 70 : 15,
+                          left: 15,
+                          child: EventSoldOutInfo(event: event),
+                        ),
+                      if (checkIfShouldShowLastTicketsMessage(
+                        event,
+                        eventTickets,
+                      ))
+                        Positioned(
+                          top: checkIfEventIsLive(event) ? 70 : 15,
+                          left: 15,
+                          child: LastTicketsLeftInfo(event: event),
+                        ),
+                      Positioned(
+                        bottom: 15,
+                        right: 15,
+                        left: 15,
+                        child: EventNameBar(event: event),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
+                      children: [
+                        if (event.isConcert && !isFavoriteCard)
+                          EventConcertInfo(event: event),
+                        EventClubInfo(event: event),
+                        const SizedBox(height: 15),
+                        EventDateInfo(event: event),
+                        if (!isFavoriteCard)
+                          EventTagsInfo(
+                            event: event,
+                            eventTickets: eventTickets,
+                          ),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Column(
-                        children: [
-                          if (event.isConcert && !isFavoriteCard)
-                            EventConcertInfo(event: event),
-                          EventClubInfo(event: event),
-                          const SizedBox(height: 15),
-                          EventDateInfo(event: event),
-                          if (!isFavoriteCard)
-                            EventTagsInfo(
-                              event: event,
-                              eventTickets: eventTickets,
-                            ),
-                        ],
-                      ),
-                    ),
-                  ],
-                );
-              },
-            ),
+                  ),
+                ],
+              );
+            },
           ),
-        );
-      }),
+        ),
+      ),
     );
   }
 }
