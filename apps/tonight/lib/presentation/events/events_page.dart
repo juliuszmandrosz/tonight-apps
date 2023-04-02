@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:events/events.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -108,23 +109,54 @@ class _EventsPageState extends State<EventsPage> {
                               );
                             }
 
-                            return ListView.separated(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              separatorBuilder: (_, __) =>
-                                  const SizedBox(height: 10),
-                              itemCount: state.hasReachedMax
-                                  ? state.events.length
-                                  : state.events.length + 1,
-                              itemBuilder: (ctx, i) => i >= state.events.length
-                                  ? const BottomLoader()
-                                  : Center(
-                                      child: EventCard(
-                                        event: state.events[i],
-                                        heroPhrase: heroPhrase,
-                                      ),
+                            return context.isMobile
+                                ? ListView.separated(
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    separatorBuilder: (_, __) =>
+                                        const SizedBox(height: 10),
+                                    itemCount: state.hasReachedMax
+                                        ? state.events.length
+                                        : state.events.length + 1,
+                                    itemBuilder: (ctx, i) =>
+                                        i >= state.events.length
+                                            ? const BottomLoader()
+                                            : Center(
+                                                child: kIsWeb
+                                                    ? EventCard(
+                                                        event: state.events[i],
+                                                        heroPhrase: heroPhrase,
+                                                      )
+                                                    : EventCard(
+                                                        event: state.events[i],
+                                                        heroPhrase: heroPhrase,
+                                                      ),
+                                              ),
+                                  )
+                                : GridView.builder(
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    gridDelegate:
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 3,
+                                      crossAxisSpacing: 10,
+                                      mainAxisSpacing: 10,
                                     ),
-                            );
+                                    itemCount: state.hasReachedMax
+                                        ? state.events.length
+                                        : state.events.length + 1,
+                                    itemBuilder: (ctx, i) =>
+                                        i >= state.events.length
+                                            ? const BottomLoader()
+                                            : Center(
+                                                child: EventCard(
+                                                  event: state.events[i],
+                                                  heroPhrase: heroPhrase,
+                                                ),
+                                              ),
+                                  );
                         }
                       },
                     ),
