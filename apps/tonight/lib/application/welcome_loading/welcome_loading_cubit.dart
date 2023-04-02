@@ -8,6 +8,7 @@ import 'package:events/domain/domain.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -91,9 +92,11 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _initFavoriteEvents();
     _initFavoriteClubs();
     _initAvailableFiltersCubit();
-    await _initStripe();
-    if (context.mounted) {
-      await _initDynamicLinks(context);
+    if (!kIsWeb) {
+      await _initStripe();
+      if (context.mounted) {
+        await _initDynamicLinks(context);
+      }
     }
     if (context.mounted) {
       await _initPushNotifications(context);
