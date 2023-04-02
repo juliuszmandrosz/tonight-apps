@@ -16,6 +16,7 @@ import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_performance/firebase_performance.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:geolocator/geolocator.dart';
@@ -473,6 +474,18 @@ void _registerFacades() {
       logger: getIt(),
       firebaseCrashlytics: getIt(),
     ),
+  );
+
+  getIt.registerLazySingleton<TonightGoogleSignIn>(
+    () => kIsWeb
+        ? GoogleSignInWeb(
+            getIt(),
+            getIt(),
+          )
+        : GoogleSignInMobile(
+            getIt(),
+            getIt(),
+          ),
   );
 }
 

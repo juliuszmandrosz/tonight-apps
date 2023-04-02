@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:auth/auth.dart';
+import 'package:auth/src/infrastructure/google_sign_in/tonight_google_sign_in.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:common/common.dart';
 import 'package:crypto/crypto.dart';
@@ -11,7 +12,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
@@ -22,22 +22,22 @@ class FirebaseAuthFacade
         SelectorAuthFacade,
         CommonAuthFacade {
   final FirebaseAuth _firebaseAuth;
-  final GoogleSignIn _googleSignIn;
   final Logger _logger;
   final AuthCloudFunctionsFacade _authCloudFunctionsFacade;
   final FirebaseCrashlytics _crashlytics;
+  final TonightGoogleSignIn _googleSignIn;
 
   FirebaseAuthFacade({
     required FirebaseAuth firebaseAuth,
-    required GoogleSignIn googleSignIn,
     required Logger logger,
     required AuthCloudFunctionsFacade authCloudFunctionsFacade,
     required FirebaseCrashlytics crashlytics,
+    required TonightGoogleSignIn googleSignIn,
   })  : _firebaseAuth = firebaseAuth,
-        _googleSignIn = googleSignIn,
         _logger = logger,
         _authCloudFunctionsFacade = authCloudFunctionsFacade,
-        _crashlytics = crashlytics;
+        _crashlytics = crashlytics,
+        _googleSignIn = googleSignIn;
 
   @override
   Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForPartner({
@@ -204,15 +204,11 @@ class FirebaseAuthFacade
   @override
   Future<Either<AuthFailure, Unit>> signInWithGoogleAsUser() async {
     try {
-      final googleUser = await _googleSignIn.signIn();
+      final result = await _googleSignIn.signIn();
 
-      if (googleUser == null) {
+      if (result == null) {
         return left(const AuthFailure.canceledByUser());
       }
-
-      final googleAuth = await googleUser.authentication;
-
-      final result = await _signInWithGoogleCredential(googleAuth);
 
       final email = result.user!.email!;
 
@@ -459,15 +455,6 @@ class FirebaseAuthFacade
       );
       await _refreshToken();
     }
-  }
-
-  Future<UserCredential> _signInWithGoogleCredential(
-      GoogleSignInAuthentication googleAuth) async {
-    final authCredential = GoogleAuthProvider.credential(
-      idToken: googleAuth.idToken,
-      accessToken: googleAuth.accessToken,
-    );
-    return _firebaseAuth.signInWithCredential(authCredential);
   }
 
   String _getUserEmail(User user) {
