@@ -36,12 +36,6 @@ class OnboardingPage extends StatelessWidget {
             title: S().stayUpdated,
             body: S().addClubToFavoritesAndReceiveNotifications,
           ),
-          onboardingPageView(
-            context: context,
-            icon: FontAwesomeIcons.crown,
-            title: S().skipTheLine,
-            body: S().upgradeTicketToVipAndEnterClub,
-          ),
         ],
       ),
     ); //Material App
