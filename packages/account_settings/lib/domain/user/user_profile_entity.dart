@@ -4,6 +4,7 @@ class UserProfile extends Equatable {
   final String id;
   final String email;
   final String username;
+  final String profilePictureUrl;
   final List<String> favoriteClubIds;
   final List<String> favoriteEventIds;
   final Map<String, int> attendance;
@@ -12,6 +13,7 @@ class UserProfile extends Equatable {
   const UserProfile({
     required this.id,
     required this.email,
+    this.profilePictureUrl = '',
     this.username = '',
     this.favoriteClubIds = const [],
     this.favoriteEventIds = const [],
@@ -24,6 +26,7 @@ class UserProfile extends Equatable {
         id,
         email,
         username,
+        profilePictureUrl,
         favoriteClubIds,
         favoriteEventIds,
         attendance,
@@ -33,6 +36,7 @@ class UserProfile extends Equatable {
   UserProfile copyWith({
     String? email,
     String? username,
+    String? profilePictureUrl,
     List<String>? favoriteClubIds,
     List<String>? favoriteEventIds,
     Map<String, int>? attendance,
@@ -41,6 +45,7 @@ class UserProfile extends Equatable {
     return UserProfile(
       id: id,
       email: email ?? this.email,
+      profilePictureUrl: profilePictureUrl ?? this.profilePictureUrl,
       username: username ?? this.username,
       favoriteClubIds: favoriteClubIds ?? this.favoriteClubIds,
       favoriteEventIds: favoriteEventIds ?? this.favoriteEventIds,
