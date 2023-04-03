@@ -60,6 +60,8 @@
 	<string>Turning on camera access allows us to scan your card and allow us to fill card data automatically for you.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Turning on location services allows us to show nearby clubs and event</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>To add a profile photo this app needs to access your gallery</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
