@@ -5,5 +5,6 @@ export 'config/dio_config.dart';
 export 'config/locale_resolution_config.dart';
 export 'cubit_status.dart';
 export 'http_interceptors/dio_interceptor.dart';
+export 'image_compress/compress_image.dart';
 export 'network_check/network_check_cubit.dart';
 export 'remote_config/remote_config_cubit.dart';
