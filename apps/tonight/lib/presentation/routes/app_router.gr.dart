@@ -222,7 +222,7 @@ class AppRouter extends _i29.RootStackRouter {
         barrierDismissible: false,
       );
     },
-    OnboardingUsernameRoute.name: (routeData) {
+    OnboardingUserDetailsRoute.name: (routeData) {
       return _i29.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i14.OnboardingUserDetailsPage(),
@@ -481,8 +481,8 @@ class AppRouter extends _i29.RootStackRouter {
           path: '/ticket-scan-confirm-page',
         ),
         _i29.RouteConfig(
-          OnboardingUsernameRoute.name,
-          path: '/onboarding-username-page',
+          OnboardingUserDetailsRoute.name,
+          path: '/onboarding-user-details-page',
         ),
         _i29.RouteConfig(
           OnboardingRoute.name,
@@ -885,14 +885,14 @@ class TicketScanConfirmRoute extends _i29.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i14.OnboardingUserDetailsPage]
-class OnboardingUsernameRoute extends _i29.PageRouteInfo<void> {
-  const OnboardingUsernameRoute()
+class OnboardingUserDetailsRoute extends _i29.PageRouteInfo<void> {
+  const OnboardingUserDetailsRoute()
       : super(
-          OnboardingUsernameRoute.name,
-          path: '/onboarding-username-page',
+          OnboardingUserDetailsRoute.name,
+          path: '/onboarding-user-details-page',
         );
 
-  static const String name = 'OnboardingUsernameRoute';
+  static const String name = 'OnboardingUserDetailsRoute';
 }
 
 /// generated route for
