@@ -26,12 +26,6 @@ class OnboardingPage extends StatelessWidget {
           ),
           onboardingPageView(
             context: context,
-            icon: FontAwesomeIcons.ticket,
-            title: S().buyTicket,
-            body: S().payConveniently,
-          ),
-          onboardingPageView(
-            context: context,
             icon: FontAwesomeIcons.trophy,
             title: S().receiveRewards,
             body: S().collectBenefitsInClubs,
