@@ -132,6 +132,9 @@ dependencies:
   # Image compressing
   flutter_image_compress: ^1.1.3
 
+  # Image picker
+  file_picker: ^5.2.6
+
   # Inherited packages
   intl:
 
