@@ -16,7 +16,7 @@ class OnboardingPage extends StatelessWidget {
       child: IntroductionScreen(
         next: const FaIcon(FontAwesomeIcons.arrowRight),
         done: Text(S().start),
-        onDone: () => context.pushRoute(const OnboardingUsernameRoute()),
+        onDone: () => context.pushRoute(const OnboardingUserDetailsRoute()),
         pages: [
           onboardingPageView(
             context: context,

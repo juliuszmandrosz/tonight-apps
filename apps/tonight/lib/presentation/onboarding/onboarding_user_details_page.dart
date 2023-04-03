@@ -3,7 +3,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:tonight/application/auth/username/username_cubit.dart';
+import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/onboarding/widgets/submit_button.dart';
@@ -19,8 +19,8 @@ class OnboardingUserDetailsPage extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async => false,
       child: BlocProvider(
-        create: (context) => getIt<UsernameCubit>(),
-        child: BlocConsumer<UsernameCubit, UsernameState>(
+        create: (context) => getIt<OnboardingCubit>(),
+        child: BlocConsumer<OnboardingCubit, OnboardingState>(
           listener: (context, state) {
             state.errorMessage.fold(
               () {},
