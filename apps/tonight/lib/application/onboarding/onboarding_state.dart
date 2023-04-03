@@ -6,11 +6,13 @@ class OnboardingState with _$OnboardingState {
     required Username username,
     required FormzStatus status,
     required Option<String> errorMessage,
+    required Option<Uint8List> userPhoto,
   }) = _OnboardingState;
 
   factory OnboardingState.initial() => OnboardingState(
         username: const Username.pure(),
         status: FormzStatus.pure,
         errorMessage: none(),
+        userPhoto: none(),
       );
 }
