@@ -19,6 +19,7 @@ mixin _$OnboardingState {
   Username get username => throw _privateConstructorUsedError;
   FormzStatus get status => throw _privateConstructorUsedError;
   Option<String> get errorMessage => throw _privateConstructorUsedError;
+  Option<Uint8List> get userPhoto => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OnboardingStateCopyWith<OnboardingState> get copyWith =>
@@ -32,7 +33,10 @@ abstract class $OnboardingStateCopyWith<$Res> {
       _$OnboardingStateCopyWithImpl<$Res, OnboardingState>;
   @useResult
   $Res call(
-      {Username username, FormzStatus status, Option<String> errorMessage});
+      {Username username,
+      FormzStatus status,
+      Option<String> errorMessage,
+      Option<Uint8List> userPhoto});
 }
 
 /// @nodoc
@@ -51,6 +55,7 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
     Object? username = null,
     Object? status = null,
     Object? errorMessage = null,
+    Object? userPhoto = null,
   }) {
     return _then(_value.copyWith(
       username: null == username
@@ -65,6 +70,10 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      userPhoto: null == userPhoto
+          ? _value.userPhoto
+          : userPhoto // ignore: cast_nullable_to_non_nullable
+              as Option<Uint8List>,
     ) as $Val);
   }
 }
@@ -78,7 +87,10 @@ abstract class _$$_OnboardingStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Username username, FormzStatus status, Option<String> errorMessage});
+      {Username username,
+      FormzStatus status,
+      Option<String> errorMessage,
+      Option<Uint8List> userPhoto});
 }
 
 /// @nodoc
@@ -95,6 +107,7 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
     Object? username = null,
     Object? status = null,
     Object? errorMessage = null,
+    Object? userPhoto = null,
   }) {
     return _then(_$_OnboardingState(
       username: null == username
@@ -109,6 +122,10 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      userPhoto: null == userPhoto
+          ? _value.userPhoto
+          : userPhoto // ignore: cast_nullable_to_non_nullable
+              as Option<Uint8List>,
     ));
   }
 }
@@ -119,7 +136,8 @@ class _$_OnboardingState implements _OnboardingState {
   const _$_OnboardingState(
       {required this.username,
       required this.status,
-      required this.errorMessage});
+      required this.errorMessage,
+      required this.userPhoto});
 
   @override
   final Username username;
@@ -127,10 +145,12 @@ class _$_OnboardingState implements _OnboardingState {
   final FormzStatus status;
   @override
   final Option<String> errorMessage;
+  @override
+  final Option<Uint8List> userPhoto;
 
   @override
   String toString() {
-    return 'OnboardingState(username: $username, status: $status, errorMessage: $errorMessage)';
+    return 'OnboardingState(username: $username, status: $status, errorMessage: $errorMessage, userPhoto: $userPhoto)';
   }
 
   @override
@@ -142,11 +162,14 @@ class _$_OnboardingState implements _OnboardingState {
                 other.username == username) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.userPhoto, userPhoto) ||
+                other.userPhoto == userPhoto));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, username, status, errorMessage);
+  int get hashCode =>
+      Object.hash(runtimeType, username, status, errorMessage, userPhoto);
 
   @JsonKey(ignore: true)
   @override
@@ -159,7 +182,8 @@ abstract class _OnboardingState implements OnboardingState {
   const factory _OnboardingState(
       {required final Username username,
       required final FormzStatus status,
-      required final Option<String> errorMessage}) = _$_OnboardingState;
+      required final Option<String> errorMessage,
+      required final Option<Uint8List> userPhoto}) = _$_OnboardingState;
 
   @override
   Username get username;
@@ -167,6 +191,8 @@ abstract class _OnboardingState implements OnboardingState {
   FormzStatus get status;
   @override
   Option<String> get errorMessage;
+  @override
+  Option<Uint8List> get userPhoto;
   @override
   @JsonKey(ignore: true)
   _$$_OnboardingStateCopyWith<_$_OnboardingState> get copyWith =>
