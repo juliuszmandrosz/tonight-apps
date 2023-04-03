@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:account_settings/account_settings.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -33,6 +34,16 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   void usernameChanged(String value) {
     final username = Username.dirty(value);
     emit(state.copyWith(username: username));
+  }
+
+  Future<void> pickProfilePhoto() async {
+    final result = await pickImage(S().addPhoto);
+    if (result == null) return;
+    _userPhotoChanged(result);
+  }
+
+  void _userPhotoChanged(Uint8List value) {
+    emit(state.copyWith(userPhoto: some(value)));
   }
 
   _validateForm() {
