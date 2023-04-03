@@ -6,10 +6,10 @@ import 'package:formz/formz.dart';
 import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:tonight/presentation/onboarding/widgets/onboarding_profile_picture.dart';
 import 'package:tonight/presentation/onboarding/widgets/submit_button.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/update_username/widgets/username_input.dart';
-import 'package:translations/generated/l10n.dart';
 
 class OnboardingUserDetailsPage extends StatelessWidget {
   const OnboardingUserDetailsPage({Key? key}) : super(key: key);
@@ -36,7 +36,6 @@ class OnboardingUserDetailsPage extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            final username = state.username.value;
             return Scaffold(
               body: SafeArea(
                 child: Padding(
@@ -47,30 +46,14 @@ class OnboardingUserDetailsPage extends StatelessWidget {
                         child: ListView(
                           children: [
                             const SizedBox(height: 50),
-                            Container(
-                              height: 150,
-                              width: 150,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: context.surfaceColor,
-                              ),
-                              child: Center(
-                                child: Text(
-                                  username.isEmpty
-                                      ? ''
-                                      : username.length == 1
-                                          ? username[0].toUpperCase()
-                                          : username
-                                              .substring(0, 2)
-                                              .toUpperCase(),
-                                  style: context.headlineMedium,
-                                ),
-                              ),
-                            ),
+                            const OnboardingProfilePicture(),
                             const SizedBox(height: 40),
                             Align(
                               alignment: Alignment.centerLeft,
-                              child: TonightHeadline(text: S().setYourUsername),
+                              // TODO - add translation
+                              child: TonightHeadline(
+                                  text:
+                                      "Wybierz swój pseudonim i zdjęcie profilowe"),
                             ),
                             const SizedBox(height: 30),
                             const UsernameInput(),
