@@ -44,6 +44,7 @@ import 'package:tonight/application/events/event_favorite/event_favorite_cubit.d
 import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
 import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:tonight/application/invoice_data/invoice_data_cubit.dart';
+import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:tonight/application/payment_method/payment_method_cubit.dart';
 import 'package:tonight/application/profile/profile_cubit_hub.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
@@ -73,150 +74,172 @@ void registerDependencies() {
 void _registerCubits() {
   //Core
   getIt.registerFactory(
-    () => AvailableFiltersCubit(
-      getIt(),
-    ),
+        () =>
+        AvailableFiltersCubit(
+          getIt(),
+        ),
   );
 
   getIt.registerLazySingleton(
-    () => UserLocationCubit(
-      getIt(),
-    ),
+        () =>
+        UserLocationCubit(
+          getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => PlacesCubit(
-      getIt(),
-    ),
+        () =>
+        PlacesCubit(
+          getIt(),
+        ),
   );
 
   //Auth
   getIt.registerFactory(
-    () => AuthCubit(
-      getIt(),
-    ),
+        () =>
+        AuthCubit(
+          getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => SignInCubit(
-      firebaseDynamicLinks: getIt(),
-      authFacade: getIt(),
-    ),
+        () =>
+        SignInCubit(
+          firebaseDynamicLinks: getIt(),
+          authFacade: getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => UsernameCubit(
-      getIt(),
-    ),
+        () =>
+        UsernameCubit(
+          getIt(),
+        ),
   );
 
   //Clubs
   getIt.registerFactory(
-    () => ClubPhotosBloc(
-      getIt(),
-    ),
+        () =>
+        ClubPhotosBloc(
+          getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => ClubsOverviewBloc(
-      getIt(),
-    ),
+        () =>
+        ClubsOverviewBloc(
+          getIt(),
+        ),
   );
 
   getIt.registerFactoryParam(
-    (ClubsOverviewBloc clubsOverviewBloc, _) => ClubFiltersCubit(
-      clubsOverviewBloc,
-      getIt(),
-    ),
+        (ClubsOverviewBloc clubsOverviewBloc, _) =>
+        ClubFiltersCubit(
+          clubsOverviewBloc,
+          getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => ClubDetailsCubit(
-      getIt(),
-    ),
+        () =>
+        ClubDetailsCubit(
+          getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => ClubFavoriteCubit(
-      getIt(),
-    ),
+        () =>
+        ClubFavoriteCubit(
+          getIt(),
+        ),
   );
 
   //Tickets
   getIt.registerFactory(
-    () => TicketListCubit(
-      getIt(),
-    ),
+        () =>
+        TicketListCubit(
+          getIt(),
+        ),
   );
 
   //Event ticket pools
   getIt.registerFactory(
-    () => EventTicketsCubit(
-      getIt(),
-    ),
+        () =>
+        EventTicketsCubit(
+          getIt(),
+        ),
   );
 
   getIt.registerFactoryParam(
-    (TicketListCubit ticketListCubit, _) => TicketQrCubit(
-      ticketFacade: getIt(),
-      ticketListCubit: ticketListCubit,
-      eventTicketsCubit: getIt(),
-    ),
+        (TicketListCubit ticketListCubit, _) =>
+        TicketQrCubit(
+          ticketFacade: getIt(),
+          ticketListCubit: ticketListCubit,
+          eventTicketsCubit: getIt(),
+        ),
   );
 
   //Reviews
   getIt.registerFactoryParam(
-    (TicketListCubit ticketListCubit, _) => NewReviewCubit(
-      profileBroadcastSubject: getIt(),
-      ticketListCubit: ticketListCubit,
-      reviewFacade: getIt(),
-    ),
+        (TicketListCubit ticketListCubit, _) =>
+        NewReviewCubit(
+          profileBroadcastSubject: getIt(),
+          ticketListCubit: ticketListCubit,
+          reviewFacade: getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => ClubReviewsBloc(
-      getIt(),
-    ),
+        () =>
+        ClubReviewsBloc(
+          getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => ExistingReviewCubit(
-      getIt(),
-    ),
+        () =>
+        ExistingReviewCubit(
+          getIt(),
+        ),
   );
 
   //Events
   getIt.registerFactoryParam(
-    (EventTicketsCubit eventTicketsCubit, _) => EventDetailsCubit(
-      eventTicketsCubit: eventTicketsCubit,
-      userEventFacade: getIt(),
-    ),
+        (EventTicketsCubit eventTicketsCubit, _) =>
+        EventDetailsCubit(
+          eventTicketsCubit: eventTicketsCubit,
+          userEventFacade: getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => EventFavoriteCubit(
-      getIt(),
-    ),
+        () =>
+        EventFavoriteCubit(
+          getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => EventOverviewBloc(
-      getIt(),
-    ),
+        () =>
+        EventOverviewBloc(
+          getIt(),
+        ),
   );
 
   getIt.registerFactoryParam(
-    (EventOverviewBloc eventOverviewBloc, _) => EventFiltersCubit(
-      eventOverviewBloc,
-      getIt(),
-    ),
+        (EventOverviewBloc eventOverviewBloc, _) =>
+        EventFiltersCubit(
+          eventOverviewBloc,
+          getIt(),
+        ),
   );
 
   //Network Check
   getIt.registerFactory(
-    () => NetworkCheckCubit(
-      getIt(),
-    ),
+        () =>
+        NetworkCheckCubit(
+          getIt(),
+        ),
   );
 
   //App info
@@ -224,11 +247,12 @@ void _registerCubits() {
 
   //Profile
   getIt.registerFactory(
-    () => ProfileCubit(
-      commonAuthFacade: getIt(),
-      userAccountFacade: getIt(),
-      profileBroadcastSubject: getIt(),
-    ),
+        () =>
+        ProfileCubit(
+          commonAuthFacade: getIt(),
+          userAccountFacade: getIt(),
+          profileBroadcastSubject: getIt(),
+        ),
   );
 
   //App settings
@@ -236,56 +260,70 @@ void _registerCubits() {
 
   //Payment
   getIt.registerFactoryParam(
-    (TicketListCubit ticketListCubit, _) => TicketCheckoutCubit(
-      paymentFacade: getIt(),
-      eventTicketsCubit: getIt(),
-      ticketListCubit: ticketListCubit,
-      currencyParamsFacade: getIt(),
-    ),
+        (TicketListCubit ticketListCubit, _) =>
+        TicketCheckoutCubit(
+          paymentFacade: getIt(),
+          eventTicketsCubit: getIt(),
+          ticketListCubit: ticketListCubit,
+          currencyParamsFacade: getIt(),
+        ),
   );
 
   getIt.registerFactoryParam(
-    (TicketListCubit ticketListCubit, _) => VipCheckoutCubit(
-      paymentFacade: getIt(),
-      eventTicketsCubit: getIt(),
-      ticketListCubit: ticketListCubit,
-      currencyParamsFacade: getIt(),
-    ),
+        (TicketListCubit ticketListCubit, _) =>
+        VipCheckoutCubit(
+          paymentFacade: getIt(),
+          eventTicketsCubit: getIt(),
+          ticketListCubit: ticketListCubit,
+          currencyParamsFacade: getIt(),
+        ),
   );
 
   //Rewards
   getIt.registerFactory(
-    () => ClubRewardsCubit(
-      getIt(),
-      getIt(),
-    ),
+        () =>
+        ClubRewardsCubit(
+          getIt(),
+          getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => InvoiceDataCubit(
-      getIt(),
-    ),
+        () =>
+        InvoiceDataCubit(
+          getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => PushNotificationsCubit(
-      firebaseMessaging: getIt(),
-      flutterLocalNotificationsPlugin: getIt(),
-      userAccountFacade: getIt(),
-    ),
+        () =>
+        PushNotificationsCubit(
+          firebaseMessaging: getIt(),
+          flutterLocalNotificationsPlugin: getIt(),
+          userAccountFacade: getIt(),
+        ),
   );
 
   getIt.registerFactoryParam(
-    (NetworkCheckCubit networkCheckCubit, _) => TermsOfServiceCubit(
-      networkCheckCubit: networkCheckCubit,
-      userTermsOfServiceFacade: getIt(),
-    ),
+        (NetworkCheckCubit networkCheckCubit, _) =>
+        TermsOfServiceCubit(
+          networkCheckCubit: networkCheckCubit,
+          userTermsOfServiceFacade: getIt(),
+        ),
   );
 
   getIt.registerFactory(
-    () => PaymentMethodCubit(
-      getIt(),
-    ),
+        () =>
+        PaymentMethodCubit(
+          getIt(),
+        ),
+  );
+
+  getIt.registerFactory(
+        () =>
+        OnboardingCubit(
+          getIt(),
+        ),
   );
 }
 
@@ -296,187 +334,207 @@ void _registerCubitSubjects() {
 void _registerFacades() {
   //Core
   getIt.registerLazySingleton<AvailableFiltersFacade>(
-    () => FirebaseAvailableFiltersFacade(
-      firestore: getIt(),
-      crashlytics: getIt(),
-      logger: getIt(),
-    ),
+        () =>
+        FirebaseAvailableFiltersFacade(
+          firestore: getIt(),
+          crashlytics: getIt(),
+          logger: getIt(),
+        ),
   );
 
   //Auth
   getIt.registerLazySingleton<CommonAuthFacade>(
-    () => FirebaseAuthFacade(
-      firebaseAuth: getIt(),
-      googleSignIn: getIt(),
-      logger: getIt(),
-      authCloudFunctionsFacade: getIt(),
-      crashlytics: getIt(),
-    ),
+        () =>
+        FirebaseAuthFacade(
+          firebaseAuth: getIt(),
+          googleSignIn: getIt(),
+          logger: getIt(),
+          authCloudFunctionsFacade: getIt(),
+          crashlytics: getIt(),
+        ),
   );
 
   getIt.registerLazySingleton<UserAuthFacade>(
-    () => FirebaseAuthFacade(
-      firebaseAuth: getIt(),
-      googleSignIn: getIt(),
-      logger: getIt(),
-      authCloudFunctionsFacade: getIt(),
-      crashlytics: getIt(),
-    ),
+        () =>
+        FirebaseAuthFacade(
+          firebaseAuth: getIt(),
+          googleSignIn: getIt(),
+          logger: getIt(),
+          authCloudFunctionsFacade: getIt(),
+          crashlytics: getIt(),
+        ),
   );
 
   getIt.registerLazySingleton<AuthCloudFunctionsFacade>(
-    () => AuthCloudFunctionsFacadeImpl(
-      getIt(),
-    ),
+        () =>
+        AuthCloudFunctionsFacadeImpl(
+          getIt(),
+        ),
   );
 
   //Club
   getIt.registerLazySingleton<UserClubFacade>(
-    () => FirebaseClubFacade(
-      firestore: getIt(),
-      firebaseStorage: getIt(),
-      logger: getIt(),
-      clubsApi: getIt(),
-      firebaseAuth: getIt(),
-      cloudFunctionsFacade: getIt(),
-      crashlytics: getIt(),
-    ),
+        () =>
+        FirebaseClubFacade(
+          firestore: getIt(),
+          firebaseStorage: getIt(),
+          logger: getIt(),
+          clubsApi: getIt(),
+          firebaseAuth: getIt(),
+          cloudFunctionsFacade: getIt(),
+          crashlytics: getIt(),
+        ),
   );
 
   getIt.registerLazySingleton<UserTicketFacade>(
-    () => FirebaseTicketFacade(
-      firestore: getIt(),
-      logger: getIt(),
-      ticketCloudFunctionsFacade: getIt(),
-      firebaseAuth: getIt(),
-      crashlytics: getIt(),
-    ),
+        () =>
+        FirebaseTicketFacade(
+          firestore: getIt(),
+          logger: getIt(),
+          ticketCloudFunctionsFacade: getIt(),
+          firebaseAuth: getIt(),
+          crashlytics: getIt(),
+        ),
   );
 
   //Reviews
   getIt.registerLazySingleton<UserReviewFacade>(
-    () => FirebaseReviewFacade(
-      firestore: getIt(),
-      logger: getIt(),
-      firebaseAuth: getIt(),
-      crashlytics: getIt(),
-    ),
+        () =>
+        FirebaseReviewFacade(
+          firestore: getIt(),
+          logger: getIt(),
+          firebaseAuth: getIt(),
+          crashlytics: getIt(),
+        ),
   );
 
   getIt.registerLazySingleton<TicketCloudFunctionsFacade>(
-    () => TicketCloudFunctionsFacadeImpl(
-      firebaseFunctions: getIt(),
-    ),
+        () =>
+        TicketCloudFunctionsFacadeImpl(
+          firebaseFunctions: getIt(),
+        ),
   );
 
   //Event
   getIt.registerLazySingleton<UserEventFacade>(
-    () => FirebaseEventFacade(
-      firestore: getIt(),
-      eventsApi: getIt(),
-      logger: getIt(),
-      firebaseAuth: getIt(),
-      storage: getIt(),
-      eventCloudFunctionsFacade: getIt(),
-      crashlytics: getIt(),
-    ),
+        () =>
+        FirebaseEventFacade(
+          firestore: getIt(),
+          eventsApi: getIt(),
+          logger: getIt(),
+          firebaseAuth: getIt(),
+          storage: getIt(),
+          eventCloudFunctionsFacade: getIt(),
+          crashlytics: getIt(),
+        ),
   );
 
   //Event tickets
   getIt.registerLazySingleton<UserEventTicketsFacade>(
-    () => FirebaseEventTicketsFacade(
-      firestore: getIt(),
-      logger: getIt(),
-      crashlytics: getIt(),
-    ),
+        () =>
+        FirebaseEventTicketsFacade(
+          firestore: getIt(),
+          logger: getIt(),
+          crashlytics: getIt(),
+        ),
   );
 
   getIt.registerLazySingleton<CommonEventFacade>(
-    () => FirebaseEventFacade(
-      firestore: getIt(),
-      eventsApi: getIt(),
-      logger: getIt(),
-      firebaseAuth: getIt(),
-      storage: getIt(),
-      eventCloudFunctionsFacade: getIt(),
-      crashlytics: getIt(),
-    ),
+        () =>
+        FirebaseEventFacade(
+          firestore: getIt(),
+          eventsApi: getIt(),
+          logger: getIt(),
+          firebaseAuth: getIt(),
+          storage: getIt(),
+          eventCloudFunctionsFacade: getIt(),
+          crashlytics: getIt(),
+        ),
   );
 
   //Payment
   getIt.registerLazySingleton<UserPaymentFacade>(
-    () => FirebasePaymentFacade(
-      firestore: getIt(),
-      logger: getIt(),
-      paymentCloudFunctionsFacade: getIt(),
-      firebaseAuth: getIt(),
-      stripe: getIt(),
-      firebaseCrashlytics: getIt(),
-    ),
+        () =>
+        FirebasePaymentFacade(
+          firestore: getIt(),
+          logger: getIt(),
+          paymentCloudFunctionsFacade: getIt(),
+          firebaseAuth: getIt(),
+          stripe: getIt(),
+          firebaseCrashlytics: getIt(),
+        ),
   );
 
   getIt.registerLazySingleton<PaymentCloudFunctionsFacade>(
-    () => PaymentCloudFunctionsFacadeImpl(
-      firebaseFunctions: getIt(),
-      dio: getIt(),
-    ),
+        () =>
+        PaymentCloudFunctionsFacadeImpl(
+          firebaseFunctions: getIt(),
+          dio: getIt(),
+        ),
   );
 
   //Profile
   getIt.registerLazySingleton<UserAccountFacade>(
-    () => FirebaseAccountFacade(
-      firestore: getIt(),
-      logger: getIt(),
-      firebaseAuth: getIt(),
-      firebaseCrashlytics: getIt(),
-    ),
+        () =>
+        FirebaseAccountFacade(
+          firestore: getIt(),
+          logger: getIt(),
+          firebaseAuth: getIt(),
+          firebaseCrashlytics: getIt(),
+        ),
   );
 
   //Cloud functions
   getIt.registerLazySingleton<ClubCloudFunctionsFacade>(
-    () => ClubCloudFunctionsFacadeImpl(
-      getIt(),
-    ),
+        () =>
+        ClubCloudFunctionsFacadeImpl(
+          getIt(),
+        ),
   );
 
   //Rewards
   getIt.registerLazySingleton<UserRewardFacade>(
-    () => FirebaseRewardFacade(
-      firebaseAuth: getIt(),
-      firestore: getIt(),
-      logger: getIt(),
-      crashlytics: getIt(),
-    ),
+        () =>
+        FirebaseRewardFacade(
+          firebaseAuth: getIt(),
+          firestore: getIt(),
+          logger: getIt(),
+          crashlytics: getIt(),
+        ),
   );
 
   getIt.registerLazySingleton<EventCloudFunctionsFacade>(
-    () => EventCloudFunctionsFacadeImpl(
-      getIt(),
-    ),
+        () =>
+        EventCloudFunctionsFacadeImpl(
+          getIt(),
+        ),
   );
 
   getIt.registerLazySingleton<CurrencyParamsFacade>(
-    () => FirebaseCurrencyParamsFacade(
-      firestore: getIt(),
-      logger: getIt(),
-      crashlytics: getIt(),
-    ),
+        () =>
+        FirebaseCurrencyParamsFacade(
+          firestore: getIt(),
+          logger: getIt(),
+          crashlytics: getIt(),
+        ),
   );
 
   getIt.registerLazySingleton<UserTermsOfServiceFacade>(
-    () => FirebaseTermsOfServiceFacade(
-      firebaseStorage: getIt(),
-      logger: getIt(),
-      firebaseCrashlytics: getIt(),
-    ),
+        () =>
+        FirebaseTermsOfServiceFacade(
+          firebaseStorage: getIt(),
+          logger: getIt(),
+          firebaseCrashlytics: getIt(),
+        ),
   );
 
   getIt.registerLazySingleton<PlacesFacade>(
-    () => GooglePlacesFacade(
-      dio: getIt(),
-      logger: getIt(),
-      firebaseCrashlytics: getIt(),
-    ),
+        () =>
+        GooglePlacesFacade(
+          dio: getIt(),
+          logger: getIt(),
+          firebaseCrashlytics: getIt(),
+        ),
   );
 }
 
@@ -496,7 +554,7 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebaseAnalytics.instance);
 
   getIt.registerLazySingleton(
-      () => FirebaseFunctions.instanceFor(region: 'europe-central2'));
+          () => FirebaseFunctions.instanceFor(region: 'europe-central2'));
 
   getIt.registerLazySingleton(() => FirebaseDynamicLinks.instance);
 
@@ -505,15 +563,17 @@ void _registerModules() {
   getIt.registerLazySingleton(crashlyticsConfig);
 
   getIt.registerLazySingleton<EventsApi>(
-    () => EventsApiImpl(
-      getIt(),
-    ),
+        () =>
+        EventsApiImpl(
+          getIt(),
+        ),
   );
 
   getIt.registerLazySingleton<ClubsApi>(
-    () => ClubsApiImpl(
-      getIt(),
-    ),
+        () =>
+        ClubsApiImpl(
+          getIt(),
+        ),
   );
 
   getIt.registerLazySingleton(() => GeolocatorPlatform.instance);
