@@ -12,9 +12,9 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i29;
-import 'package:flutter/material.dart' as _i30;
 import 'package:clubs/clubs.dart' as _i37;
 import 'package:events/events.dart' as _i36;
+import 'package:flutter/material.dart' as _i30;
 import 'package:payments/domain/domain.dart' as _i35;
 import 'package:tickets/tickets.dart' as _i38;
 
@@ -33,7 +33,7 @@ import '../favorites/favorites_page.dart' as _i27;
 import '../invoice_data/invoice_data_page.dart' as _i16;
 import '../network_lost/network_lost_page.dart' as _i4;
 import '../onboarding/onboarding_page.dart' as _i15;
-import '../onboarding/onboarding_username_page.dart' as _i14;
+import '../onboarding/onboarding_user_details_page.dart' as _i14;
 import '../payment_method/payment_method_page.dart' as _i22;
 import '../profile/profile_page.dart' as _i28;
 import '../sign_in/sign_in_page.dart' as _i2;
@@ -225,7 +225,7 @@ class AppRouter extends _i29.RootStackRouter {
     OnboardingUsernameRoute.name: (routeData) {
       return _i29.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i14.OnboardingUsernamePage(),
+        child: const _i14.OnboardingUserDetailsPage(),
         transitionsBuilder: _i32.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
@@ -884,7 +884,7 @@ class TicketScanConfirmRoute extends _i29.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i14.OnboardingUsernamePage]
+/// [_i14.OnboardingUserDetailsPage]
 class OnboardingUsernameRoute extends _i29.PageRouteInfo<void> {
   const OnboardingUsernameRoute()
       : super(
