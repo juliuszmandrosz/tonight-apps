@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:formz/formz.dart';
 import 'package:tonight/application/auth/form_inputs/username.dart';
-import 'package:tonight/application/auth/username/username_cubit.dart';
+import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:translations/generated/l10n.dart';
 
 class UsernameInput extends HookWidget {
@@ -18,7 +18,7 @@ class UsernameInput extends HookWidget {
   Widget build(BuildContext context) {
     final textController = useTextEditingController(text: currentUsername);
 
-    return BlocBuilder<UsernameCubit, UsernameState>(
+    return BlocBuilder<OnboardingCubit, OnboardingState>(
       buildWhen: (previous, current) =>
           previous.username != current.username ||
           previous.status != current.status,
@@ -26,7 +26,7 @@ class UsernameInput extends HookWidget {
         return TextField(
           controller: textController,
           onChanged: (username) =>
-              context.read<UsernameCubit>().usernameChanged(username),
+              context.read<OnboardingCubit>().usernameChanged(username),
           decoration: InputDecoration(
             labelText: S().username,
             errorText: _getUsernameInputErrorMessage(state),
@@ -37,7 +37,7 @@ class UsernameInput extends HookWidget {
     );
   }
 
-  String? _getUsernameInputErrorMessage(UsernameState state) {
+  String? _getUsernameInputErrorMessage(OnboardingState state) {
     if (state.username.valid || state.status != FormzStatus.invalid) {
       return null;
     }
