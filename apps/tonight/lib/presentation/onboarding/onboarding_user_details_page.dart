@@ -11,8 +11,8 @@ import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/update_username/widgets/username_input.dart';
 import 'package:translations/generated/l10n.dart';
 
-class OnboardingUsernamePage extends StatelessWidget {
-  const OnboardingUsernamePage({Key? key}) : super(key: key);
+class OnboardingUserDetailsPage extends StatelessWidget {
+  const OnboardingUserDetailsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -15,7 +15,7 @@ import 'package:tonight/presentation/favorites/favorites_page.dart';
 import 'package:tonight/presentation/invoice_data/invoice_data_page.dart';
 import 'package:tonight/presentation/network_lost/network_lost_page.dart';
 import 'package:tonight/presentation/onboarding/onboarding_page.dart';
-import 'package:tonight/presentation/onboarding/onboarding_username_page.dart';
+import 'package:tonight/presentation/onboarding/onboarding_user_details_page.dart';
 import 'package:tonight/presentation/payment_method/payment_method_page.dart';
 import 'package:tonight/presentation/profile/profile_page.dart';
 import 'package:tonight/presentation/routes/page_transitions/fade_in_transition.dart';
@@ -127,7 +127,7 @@ const animationDuration = 300;
       durationInMilliseconds: animationDuration,
     ),
     CustomRoute(
-      page: OnboardingUsernamePage,
+      page: OnboardingUserDetailsPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
