@@ -4,12 +4,11 @@ import 'package:tonight/failure/failure_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
 import 'package:tonight/presentation/club_details/club_details_page.dart';
 import 'package:tonight/presentation/club_filters/club_filters_page.dart';
-import 'package:tonight/presentation/clubs/clubs_page.dart';
 import 'package:tonight/presentation/contact/contact_page.dart';
+import 'package:tonight/presentation/discover/discover_page.dart';
 import 'package:tonight/presentation/event_date_picker/event_date_picker_page.dart';
 import 'package:tonight/presentation/event_filters/event_filters_page.dart';
 import 'package:tonight/presentation/event_review/review_page.dart';
-import 'package:tonight/presentation/events/events_page.dart';
 import 'package:tonight/presentation/events_details/event_details_page.dart';
 import 'package:tonight/presentation/favorites/favorites_page.dart';
 import 'package:tonight/presentation/invoice_data/invoice_data_page.dart';
@@ -17,6 +16,7 @@ import 'package:tonight/presentation/network_lost/network_lost_page.dart';
 import 'package:tonight/presentation/onboarding/onboarding_page.dart';
 import 'package:tonight/presentation/onboarding/onboarding_user_details_page.dart';
 import 'package:tonight/presentation/payment_method/payment_method_page.dart';
+import 'package:tonight/presentation/photo_wall/photo_wall_page.dart';
 import 'package:tonight/presentation/profile/profile_page.dart';
 import 'package:tonight/presentation/routes/page_transitions/fade_in_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/slide_left_transition.dart';
@@ -49,12 +49,12 @@ const animationDuration = 300;
       page: WelcomeLoaderPage,
       children: [
         CustomRoute(
-          page: EventsPage,
+          page: PhotoWallPage,
           transitionsBuilder: slideLeftTransition,
           durationInMilliseconds: animationDuration,
         ),
         CustomRoute(
-          page: ClubsPage,
+          page: DiscoverPage,
           transitionsBuilder: slideLeftTransition,
           durationInMilliseconds: animationDuration,
         ),

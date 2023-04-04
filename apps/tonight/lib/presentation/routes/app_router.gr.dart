@@ -22,12 +22,11 @@ import '../../failure/failure_page.dart' as _i17;
 import '../app_settings/app_settings_page.dart' as _i21;
 import '../club_details/club_details_page.dart' as _i7;
 import '../club_filters/club_filters_page.dart' as _i24;
-import '../clubs/clubs_page.dart' as _i26;
 import '../contact/contact_page.dart' as _i22;
+import '../discover/discover_page.dart' as _i26;
 import '../event_date_picker/event_date_picker_page.dart' as _i9;
 import '../event_filters/event_filters_page.dart' as _i5;
 import '../event_review/review_page.dart' as _i20;
-import '../events/events_page.dart' as _i25;
 import '../events_details/event_details_page.dart' as _i6;
 import '../favorites/favorites_page.dart' as _i28;
 import '../invoice_data/invoice_data_page.dart' as _i16;
@@ -35,6 +34,7 @@ import '../network_lost/network_lost_page.dart' as _i4;
 import '../onboarding/onboarding_page.dart' as _i15;
 import '../onboarding/onboarding_user_details_page.dart' as _i14;
 import '../payment_method/payment_method_page.dart' as _i23;
+import '../photo_wall/photo_wall_page.dart' as _i25;
 import '../profile/profile_page.dart' as _i29;
 import '../sign_in/sign_in_page.dart' as _i2;
 import '../splash/splash_page.dart' as _i1;
@@ -363,20 +363,20 @@ class AppRouter extends _i30.RootStackRouter {
         barrierDismissible: false,
       );
     },
-    EventsRoute.name: (routeData) {
+    PhotoWallRoute.name: (routeData) {
       return _i30.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i25.EventsPage(),
+        child: const _i25.PhotoWallPage(),
         transitionsBuilder: _i33.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
       );
     },
-    ClubsRoute.name: (routeData) {
+    DiscoverRoute.name: (routeData) {
       return _i30.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i26.ClubsPage(),
+        child: const _i26.DiscoverPage(),
         transitionsBuilder: _i33.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
@@ -430,13 +430,13 @@ class AppRouter extends _i30.RootStackRouter {
           path: '/welcome-loader-page',
           children: [
             _i30.RouteConfig(
-              EventsRoute.name,
-              path: 'events-page',
+              PhotoWallRoute.name,
+              path: 'photo-wall-page',
               parent: WelcomeLoaderRoute.name,
             ),
             _i30.RouteConfig(
-              ClubsRoute.name,
-              path: 'clubs-page',
+              DiscoverRoute.name,
+              path: 'discover-page',
               parent: WelcomeLoaderRoute.name,
             ),
             _i30.RouteConfig(
@@ -1201,27 +1201,27 @@ class ClubFiltersRouteArgs {
 }
 
 /// generated route for
-/// [_i25.EventsPage]
-class EventsRoute extends _i30.PageRouteInfo<void> {
-  const EventsRoute()
+/// [_i25.PhotoWallPage]
+class PhotoWallRoute extends _i30.PageRouteInfo<void> {
+  const PhotoWallRoute()
       : super(
-          EventsRoute.name,
-          path: 'events-page',
+          PhotoWallRoute.name,
+          path: 'photo-wall-page',
         );
 
-  static const String name = 'EventsRoute';
+  static const String name = 'PhotoWallRoute';
 }
 
 /// generated route for
-/// [_i26.ClubsPage]
-class ClubsRoute extends _i30.PageRouteInfo<void> {
-  const ClubsRoute()
+/// [_i26.DiscoverPage]
+class DiscoverRoute extends _i30.PageRouteInfo<void> {
+  const DiscoverRoute()
       : super(
-          ClubsRoute.name,
-          path: 'clubs-page',
+          DiscoverRoute.name,
+          path: 'discover-page',
         );
 
-  static const String name = 'ClubsRoute';
+  static const String name = 'DiscoverRoute';
 }
 
 /// generated route for
