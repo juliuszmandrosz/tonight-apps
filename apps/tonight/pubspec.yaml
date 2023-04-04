@@ -92,6 +92,7 @@ dependencies:
   collection:
   equatable:
   dio:
+  uuid:
 
   translations:
     path: ../../packages/translations
