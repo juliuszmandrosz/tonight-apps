@@ -25,6 +25,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   navigationBarTheme: navigationBarTheme,
   outlinedButtonTheme: outlineButtonTheme,
   sliderTheme: sliderTheme,
+  iconButtonTheme: iconButtonThemeData,
 );
 
 PageTransitionsTheme get transitions => const PageTransitionsTheme(
@@ -188,6 +189,12 @@ DialogTheme get dialogTheme => DialogTheme(
     );
 
 IconThemeData get iconTheme => IconThemeData(color: colors.onSurface);
+
+IconButtonThemeData get iconButtonThemeData => IconButtonThemeData(
+      style: ButtonStyle(
+        iconColor: MaterialStateProperty.all(colors.onSurface),
+      ),
+    );
 
 SwitchThemeData get switchTheme => SwitchThemeData(
       thumbColor: MaterialStateProperty.resolveWith<Color?>(
