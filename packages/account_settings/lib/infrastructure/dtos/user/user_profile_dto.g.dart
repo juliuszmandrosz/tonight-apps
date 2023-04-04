@@ -27,6 +27,7 @@ _$_UserProfileDto _$$_UserProfileDtoFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList() ??
           const [],
+      raverCoins: json['raverCoins'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_UserProfileDtoToJson(_$_UserProfileDto instance) =>
@@ -38,4 +39,5 @@ Map<String, dynamic> _$$_UserProfileDtoToJson(_$_UserProfileDto instance) =>
       'favoriteEventIds': instance.favoriteEventIds,
       'attendance': instance.attendance,
       'pushNotificationTokens': instance.pushNotificationTokens,
+      'raverCoins': instance.raverCoins,
     };
