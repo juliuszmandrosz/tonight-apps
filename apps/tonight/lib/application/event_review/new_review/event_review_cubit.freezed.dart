@@ -18,11 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventReviewState {
   double get reviewValue => throw _privateConstructorUsedError;
   ReviewContentInput get reviewContent => throw _privateConstructorUsedError;
-  String get userId => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
   FormzStatus get submittingStatus => throw _privateConstructorUsedError;
   CubitStatus get status => throw _privateConstructorUsedError;
   Option<String> get errorMessage => throw _privateConstructorUsedError;
+  Option<UserProfile> get userProfile => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventReviewStateCopyWith<EventReviewState> get copyWith =>
@@ -38,11 +37,10 @@ abstract class $EventReviewStateCopyWith<$Res> {
   $Res call(
       {double reviewValue,
       ReviewContentInput reviewContent,
-      String userId,
-      String username,
       FormzStatus submittingStatus,
       CubitStatus status,
-      Option<String> errorMessage});
+      Option<String> errorMessage,
+      Option<UserProfile> userProfile});
 }
 
 /// @nodoc
@@ -60,11 +58,10 @@ class _$EventReviewStateCopyWithImpl<$Res, $Val extends EventReviewState>
   $Res call({
     Object? reviewValue = null,
     Object? reviewContent = null,
-    Object? userId = null,
-    Object? username = null,
     Object? submittingStatus = null,
     Object? status = null,
     Object? errorMessage = null,
+    Object? userProfile = null,
   }) {
     return _then(_value.copyWith(
       reviewValue: null == reviewValue
@@ -75,14 +72,6 @@ class _$EventReviewStateCopyWithImpl<$Res, $Val extends EventReviewState>
           ? _value.reviewContent
           : reviewContent // ignore: cast_nullable_to_non_nullable
               as ReviewContentInput,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
       submittingStatus: null == submittingStatus
           ? _value.submittingStatus
           : submittingStatus // ignore: cast_nullable_to_non_nullable
@@ -95,6 +84,10 @@ class _$EventReviewStateCopyWithImpl<$Res, $Val extends EventReviewState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      userProfile: null == userProfile
+          ? _value.userProfile
+          : userProfile // ignore: cast_nullable_to_non_nullable
+              as Option<UserProfile>,
     ) as $Val);
   }
 }
@@ -110,11 +103,10 @@ abstract class _$$_EventReviewStateCopyWith<$Res>
   $Res call(
       {double reviewValue,
       ReviewContentInput reviewContent,
-      String userId,
-      String username,
       FormzStatus submittingStatus,
       CubitStatus status,
-      Option<String> errorMessage});
+      Option<String> errorMessage,
+      Option<UserProfile> userProfile});
 }
 
 /// @nodoc
@@ -130,11 +122,10 @@ class __$$_EventReviewStateCopyWithImpl<$Res>
   $Res call({
     Object? reviewValue = null,
     Object? reviewContent = null,
-    Object? userId = null,
-    Object? username = null,
     Object? submittingStatus = null,
     Object? status = null,
     Object? errorMessage = null,
+    Object? userProfile = null,
   }) {
     return _then(_$_EventReviewState(
       reviewValue: null == reviewValue
@@ -145,14 +136,6 @@ class __$$_EventReviewStateCopyWithImpl<$Res>
           ? _value.reviewContent
           : reviewContent // ignore: cast_nullable_to_non_nullable
               as ReviewContentInput,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
       submittingStatus: null == submittingStatus
           ? _value.submittingStatus
           : submittingStatus // ignore: cast_nullable_to_non_nullable
@@ -165,6 +148,10 @@ class __$$_EventReviewStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      userProfile: null == userProfile
+          ? _value.userProfile
+          : userProfile // ignore: cast_nullable_to_non_nullable
+              as Option<UserProfile>,
     ));
   }
 }
@@ -175,11 +162,10 @@ class _$_EventReviewState extends _EventReviewState {
   const _$_EventReviewState(
       {required this.reviewValue,
       required this.reviewContent,
-      required this.userId,
-      required this.username,
       required this.submittingStatus,
       required this.status,
-      required this.errorMessage})
+      required this.errorMessage,
+      required this.userProfile})
       : super._();
 
   @override
@@ -187,19 +173,17 @@ class _$_EventReviewState extends _EventReviewState {
   @override
   final ReviewContentInput reviewContent;
   @override
-  final String userId;
-  @override
-  final String username;
-  @override
   final FormzStatus submittingStatus;
   @override
   final CubitStatus status;
   @override
   final Option<String> errorMessage;
+  @override
+  final Option<UserProfile> userProfile;
 
   @override
   String toString() {
-    return 'EventReviewState(reviewValue: $reviewValue, reviewContent: $reviewContent, userId: $userId, username: $username, submittingStatus: $submittingStatus, status: $status, errorMessage: $errorMessage)';
+    return 'EventReviewState(reviewValue: $reviewValue, reviewContent: $reviewContent, submittingStatus: $submittingStatus, status: $status, errorMessage: $errorMessage, userProfile: $userProfile)';
   }
 
   @override
@@ -211,19 +195,18 @@ class _$_EventReviewState extends _EventReviewState {
                 other.reviewValue == reviewValue) &&
             (identical(other.reviewContent, reviewContent) ||
                 other.reviewContent == reviewContent) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
             (identical(other.submittingStatus, submittingStatus) ||
                 other.submittingStatus == submittingStatus) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.userProfile, userProfile) ||
+                other.userProfile == userProfile));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, reviewValue, reviewContent,
-      userId, username, submittingStatus, status, errorMessage);
+      submittingStatus, status, errorMessage, userProfile);
 
   @JsonKey(ignore: true)
   @override
@@ -236,11 +219,10 @@ abstract class _EventReviewState extends EventReviewState {
   const factory _EventReviewState(
       {required final double reviewValue,
       required final ReviewContentInput reviewContent,
-      required final String userId,
-      required final String username,
       required final FormzStatus submittingStatus,
       required final CubitStatus status,
-      required final Option<String> errorMessage}) = _$_EventReviewState;
+      required final Option<String> errorMessage,
+      required final Option<UserProfile> userProfile}) = _$_EventReviewState;
   const _EventReviewState._() : super._();
 
   @override
@@ -248,15 +230,13 @@ abstract class _EventReviewState extends EventReviewState {
   @override
   ReviewContentInput get reviewContent;
   @override
-  String get userId;
-  @override
-  String get username;
-  @override
   FormzStatus get submittingStatus;
   @override
   CubitStatus get status;
   @override
   Option<String> get errorMessage;
+  @override
+  Option<UserProfile> get userProfile;
   @override
   @JsonKey(ignore: true)
   _$$_EventReviewStateCopyWith<_$_EventReviewState> get copyWith =>
