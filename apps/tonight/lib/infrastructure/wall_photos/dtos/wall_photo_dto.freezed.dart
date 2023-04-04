@@ -31,6 +31,8 @@ mixin _$WallPhotoDto {
   String get username => throw _privateConstructorUsedError;
   @TimestampJsonConverter()
   DateTime get eventEndDateTime => throw _privateConstructorUsedError;
+  @TimestampJsonConverter()
+  DateTime get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +55,8 @@ abstract class $WallPhotoDtoCopyWith<$Res> {
       String eventName,
       String userId,
       String username,
-      @TimestampJsonConverter() DateTime eventEndDateTime});
+      @TimestampJsonConverter() DateTime eventEndDateTime,
+      @TimestampJsonConverter() DateTime createdAt});
 }
 
 /// @nodoc
@@ -78,6 +81,7 @@ class _$WallPhotoDtoCopyWithImpl<$Res, $Val extends WallPhotoDto>
     Object? userId = null,
     Object? username = null,
     Object? eventEndDateTime = null,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -116,6 +120,10 @@ class _$WallPhotoDtoCopyWithImpl<$Res, $Val extends WallPhotoDto>
           ? _value.eventEndDateTime
           : eventEndDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -137,7 +145,8 @@ abstract class _$$_WallPhotoDtoCopyWith<$Res>
       String eventName,
       String userId,
       String username,
-      @TimestampJsonConverter() DateTime eventEndDateTime});
+      @TimestampJsonConverter() DateTime eventEndDateTime,
+      @TimestampJsonConverter() DateTime createdAt});
 }
 
 /// @nodoc
@@ -160,6 +169,7 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
     Object? userId = null,
     Object? username = null,
     Object? eventEndDateTime = null,
+    Object? createdAt = null,
   }) {
     return _then(_$_WallPhotoDto(
       id: freezed == id
@@ -198,6 +208,10 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
           ? _value.eventEndDateTime
           : eventEndDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -215,7 +229,8 @@ class _$_WallPhotoDto extends _WallPhotoDto {
       required this.eventName,
       required this.userId,
       required this.username,
-      @TimestampJsonConverter() required this.eventEndDateTime})
+      @TimestampJsonConverter() required this.eventEndDateTime,
+      @TimestampJsonConverter() required this.createdAt})
       : super._();
 
   factory _$_WallPhotoDto.fromJson(Map<String, dynamic> json) =>
@@ -241,10 +256,13 @@ class _$_WallPhotoDto extends _WallPhotoDto {
   @override
   @TimestampJsonConverter()
   final DateTime eventEndDateTime;
+  @override
+  @TimestampJsonConverter()
+  final DateTime createdAt;
 
   @override
   String toString() {
-    return 'WallPhotoDto(id: $id, photoUrl: $photoUrl, clubId: $clubId, clubName: $clubName, eventId: $eventId, eventName: $eventName, userId: $userId, username: $username, eventEndDateTime: $eventEndDateTime)';
+    return 'WallPhotoDto(id: $id, photoUrl: $photoUrl, clubId: $clubId, clubName: $clubName, eventId: $eventId, eventName: $eventName, userId: $userId, username: $username, eventEndDateTime: $eventEndDateTime, createdAt: $createdAt)';
   }
 
   @override
@@ -265,13 +283,15 @@ class _$_WallPhotoDto extends _WallPhotoDto {
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.eventEndDateTime, eventEndDateTime) ||
-                other.eventEndDateTime == eventEndDateTime));
+                other.eventEndDateTime == eventEndDateTime) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, photoUrl, clubId, clubName,
-      eventId, eventName, userId, username, eventEndDateTime);
+      eventId, eventName, userId, username, eventEndDateTime, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -297,7 +317,8 @@ abstract class _WallPhotoDto extends WallPhotoDto {
           required final String eventName,
           required final String userId,
           required final String username,
-          @TimestampJsonConverter() required final DateTime eventEndDateTime}) =
+          @TimestampJsonConverter() required final DateTime eventEndDateTime,
+          @TimestampJsonConverter() required final DateTime createdAt}) =
       _$_WallPhotoDto;
   const _WallPhotoDto._() : super._();
 
@@ -324,6 +345,9 @@ abstract class _WallPhotoDto extends WallPhotoDto {
   @override
   @TimestampJsonConverter()
   DateTime get eventEndDateTime;
+  @override
+  @TimestampJsonConverter()
+  DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$_WallPhotoDtoCopyWith<_$_WallPhotoDto> get copyWith =>
