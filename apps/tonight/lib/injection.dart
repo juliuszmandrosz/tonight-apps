@@ -52,6 +52,7 @@ import 'package:tonight/application/terms_of_service/terms_of_service_cubit.dart
 import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
 import 'package:tonight/application/ticket_qr/ticket_qr_cubit.dart';
+import 'package:tonight/application/update_profile_picture/update_profile_picture_cubit.dart';
 import 'package:tonight/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:tonight/domain/places/places_facade.dart';
 import 'package:tonight/infrastructure/google_places/google_places_facade.dart';
@@ -291,6 +292,12 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => OnboardingCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => UpdateProfilePictureCubit(
       getIt(),
     ),
   );
