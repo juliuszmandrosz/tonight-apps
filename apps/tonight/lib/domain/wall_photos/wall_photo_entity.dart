@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:uuid/uuid.dart';
 
-class PhotoWall extends Equatable {
+class WallPhoto extends Equatable {
   final String id;
   final String photoUrl;
   final String clubId;
@@ -11,7 +11,7 @@ class PhotoWall extends Equatable {
   final String userId;
   final String username;
 
-  PhotoWall({
+  WallPhoto({
     String? id,
     required this.photoUrl,
     required this.clubId,
@@ -34,7 +34,7 @@ class PhotoWall extends Equatable {
         username,
       ];
 
-  PhotoWall copyWith({
+  WallPhoto copyWith({
     String? photoUrl,
     String? clubId,
     String? clubName,
@@ -43,7 +43,7 @@ class PhotoWall extends Equatable {
     String? userId,
     String? username,
   }) {
-    return PhotoWall(
+    return WallPhoto(
       id: id,
       photoUrl: photoUrl ?? this.photoUrl,
       clubId: clubId ?? this.clubId,

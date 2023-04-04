@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:common/common.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 extension FirestoreX on FirebaseFirestore {
   CollectionReference get clubCollection => collection('clubs');
@@ -167,4 +167,6 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get eventReview => collection('eventReview');
 
   CollectionReference get appliedDiscounts => collection('appliedDiscounts');
+
+  CollectionReference get wallPhotos => collection('wallPhotos');
 }
