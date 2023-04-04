@@ -29,10 +29,10 @@ mixin _$ClubDto {
   String get locationString => throw _privateConstructorUsedError;
   String get cityId => throw _privateConstructorUsedError;
   String get acceptedCurrency => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
   @LocationConverter()
   Map<String, double> get location => throw _privateConstructorUsedError;
   Map<String, String> get socialMedia => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
   String? get aboutUs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,9 +54,9 @@ abstract class $ClubDtoCopyWith<$Res> {
       String locationString,
       String cityId,
       String acceptedCurrency,
-      String phoneNumber,
       @LocationConverter() Map<String, double> location,
       Map<String, String> socialMedia,
+      String? phoneNumber,
       String? aboutUs});
 }
 
@@ -81,9 +81,9 @@ class _$ClubDtoCopyWithImpl<$Res, $Val extends ClubDto>
     Object? locationString = null,
     Object? cityId = null,
     Object? acceptedCurrency = null,
-    Object? phoneNumber = null,
     Object? location = null,
     Object? socialMedia = null,
+    Object? phoneNumber = freezed,
     Object? aboutUs = freezed,
   }) {
     return _then(_value.copyWith(
@@ -119,10 +119,6 @@ class _$ClubDtoCopyWithImpl<$Res, $Val extends ClubDto>
           ? _value.acceptedCurrency
           : acceptedCurrency // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
       location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -131,6 +127,10 @@ class _$ClubDtoCopyWithImpl<$Res, $Val extends ClubDto>
           ? _value.socialMedia
           : socialMedia // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
       aboutUs: freezed == aboutUs
           ? _value.aboutUs
           : aboutUs // ignore: cast_nullable_to_non_nullable
@@ -155,9 +155,9 @@ abstract class _$$_ClubDtoCopyWith<$Res> implements $ClubDtoCopyWith<$Res> {
       String locationString,
       String cityId,
       String acceptedCurrency,
-      String phoneNumber,
       @LocationConverter() Map<String, double> location,
       Map<String, String> socialMedia,
+      String? phoneNumber,
       String? aboutUs});
 }
 
@@ -179,9 +179,9 @@ class __$$_ClubDtoCopyWithImpl<$Res>
     Object? locationString = null,
     Object? cityId = null,
     Object? acceptedCurrency = null,
-    Object? phoneNumber = null,
     Object? location = null,
     Object? socialMedia = null,
+    Object? phoneNumber = freezed,
     Object? aboutUs = freezed,
   }) {
     return _then(_$_ClubDto(
@@ -217,10 +217,6 @@ class __$$_ClubDtoCopyWithImpl<$Res>
           ? _value.acceptedCurrency
           : acceptedCurrency // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
       location: null == location
           ? _value._location
           : location // ignore: cast_nullable_to_non_nullable
@@ -229,6 +225,10 @@ class __$$_ClubDtoCopyWithImpl<$Res>
           ? _value._socialMedia
           : socialMedia // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
       aboutUs: freezed == aboutUs
           ? _value.aboutUs
           : aboutUs // ignore: cast_nullable_to_non_nullable
@@ -250,9 +250,9 @@ class _$_ClubDto extends _ClubDto {
       required this.locationString,
       required this.cityId,
       required this.acceptedCurrency,
-      required this.phoneNumber,
       @LocationConverter() required final Map<String, double> location,
       final Map<String, String> socialMedia = const {},
+      this.phoneNumber,
       this.aboutUs})
       : _location = location,
         _socialMedia = socialMedia,
@@ -280,8 +280,6 @@ class _$_ClubDto extends _ClubDto {
   final String cityId;
   @override
   final String acceptedCurrency;
-  @override
-  final String phoneNumber;
   final Map<String, double> _location;
   @override
   @LocationConverter()
@@ -301,11 +299,13 @@ class _$_ClubDto extends _ClubDto {
   }
 
   @override
+  final String? phoneNumber;
+  @override
   final String? aboutUs;
 
   @override
   String toString() {
-    return 'ClubDto(id: $id, clubName: $clubName, clubImageUrl: $clubImageUrl, reviewCount: $reviewCount, reviewAvg: $reviewAvg, locationString: $locationString, cityId: $cityId, acceptedCurrency: $acceptedCurrency, phoneNumber: $phoneNumber, location: $location, socialMedia: $socialMedia, aboutUs: $aboutUs)';
+    return 'ClubDto(id: $id, clubName: $clubName, clubImageUrl: $clubImageUrl, reviewCount: $reviewCount, reviewAvg: $reviewAvg, locationString: $locationString, cityId: $cityId, acceptedCurrency: $acceptedCurrency, location: $location, socialMedia: $socialMedia, phoneNumber: $phoneNumber, aboutUs: $aboutUs)';
   }
 
   @override
@@ -327,11 +327,11 @@ class _$_ClubDto extends _ClubDto {
             (identical(other.cityId, cityId) || other.cityId == cityId) &&
             (identical(other.acceptedCurrency, acceptedCurrency) ||
                 other.acceptedCurrency == acceptedCurrency) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
             const DeepCollectionEquality().equals(other._location, _location) &&
             const DeepCollectionEquality()
                 .equals(other._socialMedia, _socialMedia) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
             (identical(other.aboutUs, aboutUs) || other.aboutUs == aboutUs));
   }
 
@@ -347,9 +347,9 @@ class _$_ClubDto extends _ClubDto {
       locationString,
       cityId,
       acceptedCurrency,
-      phoneNumber,
       const DeepCollectionEquality().hash(_location),
       const DeepCollectionEquality().hash(_socialMedia),
+      phoneNumber,
       aboutUs);
 
   @JsonKey(ignore: true)
@@ -376,9 +376,9 @@ abstract class _ClubDto extends ClubDto {
       required final String locationString,
       required final String cityId,
       required final String acceptedCurrency,
-      required final String phoneNumber,
       @LocationConverter() required final Map<String, double> location,
       final Map<String, String> socialMedia,
+      final String? phoneNumber,
       final String? aboutUs}) = _$_ClubDto;
   const _ClubDto._() : super._();
 
@@ -402,12 +402,12 @@ abstract class _ClubDto extends ClubDto {
   @override
   String get acceptedCurrency;
   @override
-  String get phoneNumber;
-  @override
   @LocationConverter()
   Map<String, double> get location;
   @override
   Map<String, String> get socialMedia;
+  @override
+  String? get phoneNumber;
   @override
   String? get aboutUs;
   @override
