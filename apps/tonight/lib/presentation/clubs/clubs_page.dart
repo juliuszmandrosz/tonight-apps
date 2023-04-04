@@ -19,7 +19,8 @@ class ClubsPage extends StatefulWidget {
   State<ClubsPage> createState() => _ClubsPageState();
 }
 
-class _ClubsPageState extends State<ClubsPage> {
+class _ClubsPageState extends State<ClubsPage>
+    with AutomaticKeepAliveClientMixin<ClubsPage> {
   final _scrollController = ScrollController();
   late final ClubsOverviewBloc _clubsOverviewBloc;
   static const heroPhrase = 'clubsPageHero';
@@ -32,7 +33,11 @@ class _ClubsPageState extends State<ClubsPage> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return BlocProvider(
       create: (context) => getIt<ClubFiltersCubit>(param1: _clubsOverviewBloc),
       child: Padding(
