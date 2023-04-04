@@ -1,7 +1,8 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:account_settings/account_settings.dart';
 import 'package:clubs/clubs.dart';
-import 'package:common/application/application.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tickets/tickets.dart';
@@ -34,8 +35,7 @@ class NewReviewCubit extends Cubit<EventReviewState> {
       emit(
         state.copyWith(
           status: CubitStatus.success,
-          username: userProfile.user.username,
-          userId: userProfile.user.id,
+          userProfile: some(userProfile.user),
         ),
       );
       return;
@@ -64,15 +64,17 @@ class NewReviewCubit extends Cubit<EventReviewState> {
 
     if (!_validateForm()) return;
     emit(state.copyWith(submittingStatus: FormzStatus.submissionInProgress));
+    final user = state.userProfile.getOrCrash();
     final review = Review(
       userRate: state.reviewValue,
       userOpinion: state.reviewContent.value,
-      username: state.username,
-      userId: state.userId,
+      username: user.username,
+      userId: user.id,
       dateAdded: DateTime.now(),
       eventId: ticket.eventId,
       eventName: ticket.eventName,
       ticketId: ticket.id,
+      userPictureUrl: user.profilePictureUrl,
     );
 
     final failureOrSuccess = await _reviewFacade.submitReview(
