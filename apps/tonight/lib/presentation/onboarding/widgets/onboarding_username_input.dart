@@ -6,10 +6,10 @@ import 'package:tonight/application/auth/form_inputs/username.dart';
 import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:translations/generated/l10n.dart';
 
-class UsernameInput extends HookWidget {
+class OnboardingUsernameInput extends HookWidget {
   final String currentUsername;
 
-  const UsernameInput({
+  const OnboardingUsernameInput({
     this.currentUsername = '',
     Key? key,
   }) : super(key: key);
