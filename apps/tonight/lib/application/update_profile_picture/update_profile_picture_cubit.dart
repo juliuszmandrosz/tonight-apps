@@ -17,7 +17,7 @@ class UpdateProfilePictureCubit extends Cubit<UpdateProfilePictureState> {
   UpdateProfilePictureCubit(this._userAccountFacade)
       : super(UpdateProfilePictureState.initial());
 
-  Future<void> submitOnboarding() async {
+  Future<void> updateProfilePicture() async {
     if (state.profilePicture.isNone()) {
       // TODO - add translation
       _showErrorMessage("Please select a profile picture");
