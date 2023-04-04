@@ -20,9 +20,8 @@ class _NavigatorPageState extends State<NavigatorPage> {
     return AutoTabsScaffold(
       appBarBuilder: (_, tabsRouter) => const TonightAppBar(),
       routes: const [
-        EventsRoute(),
-        ClubsRoute(),
-        TicketsRoute(),
+        PhotoWallRoute(),
+        DiscoverRoute(),
         FavoritesRoute(),
         ProfileRoute(),
       ],
@@ -36,17 +35,14 @@ class _NavigatorPageState extends State<NavigatorPage> {
             tabsRouter.setActiveIndex(i);
           },
           destinations: [
-            NavigationDestination(
-              icon: const FaIcon(FontAwesomeIcons.fire),
-              label: S().events(2),
+            const NavigationDestination(
+              icon: FaIcon(FontAwesomeIcons.fire),
+              label: 'Tonight',
             ),
-            NavigationDestination(
-              icon: const FaIcon(FontAwesomeIcons.city),
-              label: S().clubs(2),
-            ),
-            NavigationDestination(
-              icon: const FaIcon(FontAwesomeIcons.ticket),
-              label: S().tickets(2),
+            const NavigationDestination(
+              icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
+              // TODO - add translation
+              label: 'Odkrywaj',
             ),
             NavigationDestination(
               icon: const FaIcon(FontAwesomeIcons.solidHeart),
