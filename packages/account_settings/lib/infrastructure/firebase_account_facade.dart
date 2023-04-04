@@ -36,8 +36,8 @@ class FirebaseAccountFacade implements UserAccountFacade {
 
   @override
   Stream<Either<UserProfileFailure, UserProfile>> getProfile() async* {
-    final userDoc = await _getUserDocument();
-    yield* userDoc
+    final userDocRef = _getUserDocRef();
+    yield* userDocRef
         .snapshots()
         .map((snapshot) => right<UserProfileFailure, UserProfile>(
             UserProfileDto.fromFirebase(snapshot).toDomain()))
@@ -65,18 +65,51 @@ class FirebaseAccountFacade implements UserAccountFacade {
   }
 
   @override
+  Future<Either<UserProfileFailure, Unit>> submitOnboardingForUser({
+    required String username,
+    Uint8List? profilePicture,
+  }) async {
+    try {
+      if (await _checkIfUsernameExists(username)) {
+        return left(const UserProfileFailure.usernameExists());
+      }
+      String? pictureUrl;
+      final userDocRef = _getUserDocRef();
+      if (profilePicture != null) {
+        pictureUrl = await _uploadProfilePicture(
+          profilePicture: profilePicture,
+          userId: userDocRef.id,
+        );
+      }
+      await userDocRef.update({
+        'username': username,
+        'profilePictureUrl': pictureUrl,
+      });
+      return right(unit);
+    } on FirebaseException catch (e) {
+      return left(
+        await handleFirebaseError<UserProfileFailure>(
+          logger: _logger,
+          crashlytics: _firebaseCrashlytics,
+          exception: e,
+          message: 'Firebase Exception submitting onboarding for EXCEPTION: $e',
+          unexpectedFailure: const UserProfileFailure.unexpected(),
+          permissionDeniedFailure: const UserProfileFailure.permissionDenied(),
+        ),
+      );
+    }
+  }
+
+  @override
   Future<Either<UserProfileFailure, Unit>> setUsernameForUser(
     String username,
   ) async {
     try {
-      final usersWithSameUsername = await _firestore.userCollection
-          .where('username', isEqualTo: username)
-          .get();
-      if (usersWithSameUsername.size != 0) {
+      if (await _checkIfUsernameExists(username)) {
         return left(const UserProfileFailure.usernameExists());
       }
-      final userDoc = await _getUserDocument();
-      await userDoc.update({'username': username});
+      final userDocRef = _getUserDocRef();
+      await userDocRef.update({'username': username});
       return right(unit);
     } on FirebaseException catch (e) {
       return left(
@@ -119,31 +152,18 @@ class FirebaseAccountFacade implements UserAccountFacade {
     }
   }
 
-  Future<DocumentReference> _getUserDocument() async {
-    final firebaseUser = _firebaseAuth.currentUser;
-    if (firebaseUser == null) throw NotAuthenticatedError();
-    return _firestore.userCollection.doc(firebaseUser.uid);
-  }
-
-  AppUser _getFirestoreUser() {
-    final firebaseUser = _firebaseAuth.currentUser;
-    if (firebaseUser == null) throw NotAuthenticatedError();
-    return firebaseUser.toDomain();
-  }
-
   @override
-  Future<Either<UserProfileFailure, String>> setProfilePictureForUser(
-    Uint8List profilePhoto,
+  Future<Either<UserProfileFailure, Unit>> setProfilePictureForUser(
+    Uint8List profilePicture,
   ) async {
     try {
-      final photoId = const Uuid().v1();
-      final userId = _getFirestoreUser().id;
-      final storageRef =
-          _firebaseStorage.ref('users/$userId/profile_pictures/$photoId');
-      final metadata = SettableMetadata(contentType: 'image/jpeg');
-      final uploadTask = await storageRef.putData(profilePhoto, metadata);
-      final result = await uploadTask.ref.getDownloadURL();
-      return right(result);
+      final userDocRef = _getUserDocRef();
+      final pictureUrl = await _uploadProfilePicture(
+        profilePicture: profilePicture,
+        userId: userDocRef.id,
+      );
+      await userDocRef.update({'profilePictureUrl': pictureUrl});
+      return right(unit);
     } on FirebaseException catch (e) {
       return left(
         await handleFirebaseError<UserProfileFailure>(
@@ -156,5 +176,42 @@ class FirebaseAccountFacade implements UserAccountFacade {
         ),
       );
     }
+  }
+
+  Future<String> _uploadProfilePicture({
+    required String userId,
+    required Uint8List profilePicture,
+  }) async {
+    final photoId = const Uuid().v1();
+    final storageRef =
+        _firebaseStorage.ref('users/$userId/profile_pictures/$photoId');
+    final metadata = SettableMetadata(contentType: 'image/jpeg');
+    final uploadTask = await storageRef.putData(profilePicture, metadata);
+    return uploadTask.ref.getDownloadURL();
+  }
+
+  Future<bool> _checkIfUsernameExists(String username) async {
+    final usersWithSameUsername = await _firestore.userCollection
+        .where('username', isEqualTo: username)
+        .count()
+        .get();
+
+    if (usersWithSameUsername.count > 0) {
+      return true;
+    }
+
+    return false;
+  }
+
+  DocumentReference _getUserDocRef() {
+    final firebaseUser = _firebaseAuth.currentUser;
+    if (firebaseUser == null) throw NotAuthenticatedError();
+    return _firestore.userCollection.doc(firebaseUser.uid);
+  }
+
+  AppUser _getFirestoreUser() {
+    final firebaseUser = _firebaseAuth.currentUser;
+    if (firebaseUser == null) throw NotAuthenticatedError();
+    return firebaseUser.toDomain();
   }
 }
