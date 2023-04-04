@@ -7,9 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:tonight/application/profile/profile_cubit.dart';
 import 'package:tonight/presentation/core/ticket_logo_animation.dart';
-import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/profile/widgets/profile_menu_tiles.dart';
-import 'package:tonight/presentation/profile/widgets/social_media/social_media_row.dart';
+import 'package:tonight/presentation/profile/widgets/profile_picture_container.dart';
 import 'package:tonight/presentation/profile/widgets/username_row.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
@@ -68,23 +67,11 @@ class ProfilePage extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      Center(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: context.surfaceColor,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: TonightHeadline(
-                              text: state.user.username
-                                  .substring(0, 2)
-                                  .toUpperCase(),
-                            ),
-                          ),
-                        ),
+                      ProfilePictureContainer(
+                        profilePictureUrl: state.user.profilePictureUrl,
+                        username: state.user.username,
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 30),
                       UsernameRow(username: state.user.username),
                       const SizedBox(height: 20),
                       AutoSizeText(
@@ -94,8 +81,6 @@ class ProfilePage extends StatelessWidget {
                         maxLines: 1,
                       ),
                       const SizedBox(height: 30),
-                      const SocialMediaRow(),
-                      const SizedBox(height: 20),
                       const ProfileMenuTiles(),
                     ],
                   ),
