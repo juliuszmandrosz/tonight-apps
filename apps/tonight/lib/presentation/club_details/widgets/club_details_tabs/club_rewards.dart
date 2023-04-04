@@ -7,7 +7,6 @@ import 'package:tonight/application/clubs/club_rewards/club_rewards_cubit.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/rewards/reward_list_for_required_entries.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/rewards/user_attendance.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/translations.dart';
 
 class ClubRewards extends StatelessWidget {
   const ClubRewards({Key? key}) : super(key: key);
@@ -54,8 +53,9 @@ class ClubRewards extends StatelessWidget {
                       clubRewardsWithAttendance: clubRewardsWithAttendance,
                     ),
                     const SizedBox(height: 30),
+                    // TODO - add translation
                     Text(
-                      S().clubDoesNotOfferRewards,
+                      'Rewards will be available soon!',
                       style: context.titleMedium,
                       textAlign: TextAlign.center,
                     ),
