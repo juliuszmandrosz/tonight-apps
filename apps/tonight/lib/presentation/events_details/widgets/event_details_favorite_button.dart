@@ -26,12 +26,13 @@ class EventDetailsFavoriteButton extends StatelessWidget {
       builder: (context, state) {
         final isFavorite = state.favoriteEvents.contains(event);
         return TonightToggleIcon(
-            onIcon: const FaIcon(FontAwesomeIcons.solidHeart),
-            onPressed: () => context
-                .read<EventFavoriteCubit>()
-                .toggleEventFavoriteStatus(event),
-            offIcon: const FaIcon(FontAwesomeIcons.heart),
-            value: isFavorite);
+          onIcon: const FaIcon(FontAwesomeIcons.solidHeart),
+          onPressed: () => context
+              .read<EventFavoriteCubit>()
+              .toggleEventFavoriteStatus(event),
+          offIcon: const FaIcon(FontAwesomeIcons.heart),
+          value: isFavorite,
+        );
       },
     );
   }
