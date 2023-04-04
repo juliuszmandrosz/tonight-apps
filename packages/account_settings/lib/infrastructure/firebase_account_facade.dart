@@ -132,10 +132,9 @@ class FirebaseAccountFacade implements UserAccountFacade {
     try {
       final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
       final userDoc = await userDocRef.get();
-      var user = UserProfileDto.fromFirebase(userDoc);
+      final user = UserProfileDto.fromFirebase(userDoc);
       final tokens = {...user.pushNotificationTokens, token}.toList();
-      user = user.copyWith(pushNotificationTokens: tokens);
-      await userDocRef.update(user.toJson());
+      await userDocRef.update({'pushNotificationTokens': tokens});
       return right(unit);
     } on FirebaseException catch (e) {
       return left(
