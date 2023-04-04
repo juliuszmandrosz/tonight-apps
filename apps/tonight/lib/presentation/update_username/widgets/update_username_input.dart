@@ -6,10 +6,10 @@ import 'package:tonight/application/auth/form_inputs/username.dart';
 import 'package:tonight/application/auth/username/username_cubit.dart';
 import 'package:translations/generated/l10n.dart';
 
-class ProfileUsernameInput extends HookWidget {
+class UpdateUsernameInput extends HookWidget {
   final String currentUsername;
 
-  const ProfileUsernameInput({
+  const UpdateUsernameInput({
     this.currentUsername = '',
     Key? key,
   }) : super(key: key);
