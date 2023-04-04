@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:clubs/domain/domain.dart';
 import 'package:common/common.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'review_dto.freezed.dart';
-
 part 'review_dto.g.dart';
 
 @freezed
@@ -21,6 +20,7 @@ class ReviewDto with _$ReviewDto {
     required String eventName,
     required String ticketId,
     @TimestampJsonConverter() required DateTime dateAdded,
+    @Default('') String userPictureUrl,
   }) = _ReviewDto;
 
   factory ReviewDto.fromDomain(Review review) {
@@ -33,6 +33,7 @@ class ReviewDto with _$ReviewDto {
       eventId: review.eventId,
       eventName: review.eventName,
       ticketId: review.ticketId,
+      userPictureUrl: review.userPictureUrl,
     );
   }
 
@@ -55,6 +56,7 @@ class ReviewDto with _$ReviewDto {
       dateAdded: dateAdded,
       eventName: eventName,
       ticketId: ticketId,
+      userPictureUrl: userPictureUrl,
     );
   }
 }
