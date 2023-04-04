@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:common/common.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 
@@ -19,6 +20,7 @@ class WallPhotoDto with _$WallPhotoDto {
     required String eventName,
     required String userId,
     required String username,
+    @TimestampJsonConverter() required DateTime eventEndDateTime,
   }) = _WallPhotoDto;
 
   factory WallPhotoDto.fromDomain(WallPhoto wallPhoto) {
@@ -31,6 +33,7 @@ class WallPhotoDto with _$WallPhotoDto {
       userId: wallPhoto.userId,
       eventId: wallPhoto.eventId,
       eventName: wallPhoto.eventName,
+      eventEndDateTime: wallPhoto.eventEndDateTime,
     );
   }
 
@@ -59,6 +62,7 @@ class WallPhotoDto with _$WallPhotoDto {
       eventName: eventName,
       userId: userId,
       username: username,
+      eventEndDateTime: eventEndDateTime,
     );
   }
 }

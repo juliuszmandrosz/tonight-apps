@@ -15,6 +15,8 @@ _$_WallPhotoDto _$$_WallPhotoDtoFromJson(Map<String, dynamic> json) =>
       eventName: json['eventName'] as String,
       userId: json['userId'] as String,
       username: json['username'] as String,
+      eventEndDateTime: const TimestampJsonConverter()
+          .fromJson(json['eventEndDateTime'] as int),
     );
 
 Map<String, dynamic> _$$_WallPhotoDtoToJson(_$_WallPhotoDto instance) =>
@@ -26,4 +28,6 @@ Map<String, dynamic> _$$_WallPhotoDtoToJson(_$_WallPhotoDto instance) =>
       'eventName': instance.eventName,
       'userId': instance.userId,
       'username': instance.username,
+      'eventEndDateTime':
+          const TimestampJsonConverter().toJson(instance.eventEndDateTime),
     };
