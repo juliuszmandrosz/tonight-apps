@@ -11,6 +11,7 @@ class Review extends Equatable {
   final String eventId;
   final String eventName;
   final String ticketId;
+  final String userPictureUrl;
 
   Review({
     String? id,
@@ -22,6 +23,7 @@ class Review extends Equatable {
     required this.dateAdded,
     required this.eventName,
     required this.ticketId,
+    this.userPictureUrl = '',
   }) : id = id ?? const Uuid().v1();
 
   @override
@@ -35,5 +37,6 @@ class Review extends Equatable {
         eventId,
         eventName,
         ticketId,
+        userPictureUrl,
       ];
 }
