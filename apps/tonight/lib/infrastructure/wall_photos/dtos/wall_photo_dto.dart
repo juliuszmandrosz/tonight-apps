@@ -21,6 +21,7 @@ class WallPhotoDto with _$WallPhotoDto {
     required String userId,
     required String username,
     @TimestampJsonConverter() required DateTime eventEndDateTime,
+    @TimestampJsonConverter() required DateTime createdAt,
   }) = _WallPhotoDto;
 
   factory WallPhotoDto.fromDomain(WallPhoto wallPhoto) {
@@ -34,6 +35,7 @@ class WallPhotoDto with _$WallPhotoDto {
       eventId: wallPhoto.eventId,
       eventName: wallPhoto.eventName,
       eventEndDateTime: wallPhoto.eventEndDateTime,
+      createdAt: wallPhoto.createdAt,
     );
   }
 
@@ -63,6 +65,7 @@ class WallPhotoDto with _$WallPhotoDto {
       userId: userId,
       username: username,
       eventEndDateTime: eventEndDateTime,
+      createdAt: createdAt,
     );
   }
 }
