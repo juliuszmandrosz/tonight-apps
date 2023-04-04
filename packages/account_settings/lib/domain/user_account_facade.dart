@@ -11,9 +11,13 @@ abstract class UserAccountFacade {
 
   Future<Either<UserProfileFailure, Unit>> setUsernameForUser(String username);
 
-  /// Returns profile picture url
-  Future<Either<UserProfileFailure, String>> setProfilePictureForUser(
-    Uint8List profilePhoto,
+  Future<Either<UserProfileFailure, Unit>> submitOnboardingForUser({
+    required String username,
+    Uint8List? profilePicture,
+  });
+
+  Future<Either<UserProfileFailure, Unit>> setProfilePictureForUser(
+    Uint8List profilePicture,
   );
 
   Future<Either<UserProfileFailure, Unit>> savePushNotificationsToken(
