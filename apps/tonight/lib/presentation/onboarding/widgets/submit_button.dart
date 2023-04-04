@@ -19,7 +19,7 @@ class SubmitButton extends StatelessWidget {
                   ElevatedButton(
                     child: Text(S().submit),
                     onPressed: () =>
-                        context.read<OnboardingCubit>().setUsernameForUser(),
+                        context.read<OnboardingCubit>().submitOnboarding(),
                   ),
                 ],
               );
