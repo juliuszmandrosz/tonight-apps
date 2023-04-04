@@ -12,15 +12,20 @@ class ClubDetails extends StatelessWidget {
   }) : super(key: key);
 
   final String? aboutUs;
-  final String phoneNumber;
+  final String? phoneNumber;
   final Map<String, String> socialMedia;
 
   @override
   Widget build(BuildContext context) {
-    final clubDetailTiles = [
-      ClubContactTile(phoneNumber: phoneNumber),
-      AboutClubTile(aboutUs: aboutUs),
-    ];
+    final clubDetailTiles = <Widget>[];
+
+    if (phoneNumber != null) {
+      clubDetailTiles.add(ClubContactTile(phoneNumber: phoneNumber!));
+    }
+
+    if (aboutUs != null) {
+      clubDetailTiles.add(AboutClubTile(aboutUs: aboutUs!));
+    }
 
     return SingleChildScrollView(
       child: Column(

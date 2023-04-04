@@ -3,7 +3,7 @@ import 'package:tonight/presentation/club_details/widgets/club_details_tabs/deta
 import 'package:translations/translations.dart';
 
 class AboutClubTile extends StatelessWidget {
-  final String? aboutUs;
+  final String aboutUs;
 
   const AboutClubTile({
     required this.aboutUs,
@@ -14,7 +14,7 @@ class AboutClubTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClubDetailTile(
       title: S().aboutUs,
-      subtitle: aboutUs ?? '',
+      subtitle: aboutUs,
     );
   }
 }

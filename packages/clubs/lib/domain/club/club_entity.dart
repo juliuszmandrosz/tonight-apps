@@ -1,5 +1,5 @@
-import 'package:equatable/equatable.dart';
 import 'package:common/common.dart';
+import 'package:equatable/equatable.dart';
 import 'package:uuid/uuid.dart';
 
 class Club extends Equatable {
@@ -11,10 +11,10 @@ class Club extends Equatable {
   final String locationString;
   final String cityId;
   final String acceptedCurrency;
-  final String phoneNumber;
   final Map<String, double> location;
   final Map<String, String> socialMedia;
   final String? aboutUs;
+  final String? phoneNumber;
 
   Club({
     String? id,
@@ -26,8 +26,8 @@ class Club extends Equatable {
     required this.locationString,
     required this.cityId,
     required this.acceptedCurrency,
-    required this.phoneNumber,
     required this.socialMedia,
+    required this.phoneNumber,
     required this.aboutUs,
   }) : id = id ?? const Uuid().v1();
 
@@ -50,8 +50,8 @@ class Club extends Equatable {
         locationString,
         cityId,
         acceptedCurrency,
-        phoneNumber,
         socialMedia,
         aboutUs,
+        phoneNumber,
       ];
 }
