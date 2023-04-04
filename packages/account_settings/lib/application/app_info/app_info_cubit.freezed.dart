@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'app_info_cubit.dart';
 
@@ -24,8 +24,8 @@ mixin _$AppInfoState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(PackageInfo packageInfo)? loaded,
+    TResult? Function()? initial,
+    TResult? Function(PackageInfo packageInfo)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,8 +43,8 @@ mixin _$AppInfoState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,16 +60,18 @@ mixin _$AppInfoState {
 abstract class $AppInfoStateCopyWith<$Res> {
   factory $AppInfoStateCopyWith(
           AppInfoState value, $Res Function(AppInfoState) then) =
-      _$AppInfoStateCopyWithImpl<$Res>;
+      _$AppInfoStateCopyWithImpl<$Res, AppInfoState>;
 }
 
 /// @nodoc
-class _$AppInfoStateCopyWithImpl<$Res> implements $AppInfoStateCopyWith<$Res> {
+class _$AppInfoStateCopyWithImpl<$Res, $Val extends AppInfoState>
+    implements $AppInfoStateCopyWith<$Res> {
   _$AppInfoStateCopyWithImpl(this._value, this._then);
 
-  final AppInfoState _value;
   // ignore: unused_field
-  final $Res Function(AppInfoState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -80,13 +82,11 @@ abstract class _$$_InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$AppInfoStateCopyWithImpl<$Res>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$AppInfoStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -120,8 +120,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(PackageInfo packageInfo)? loaded,
+    TResult? Function()? initial,
+    TResult? Function(PackageInfo packageInfo)? loaded,
   }) {
     return initial?.call();
   }
@@ -151,8 +151,8 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
   }) {
     return initial?.call(this);
   }
@@ -179,24 +179,24 @@ abstract class _Initial implements AppInfoState {
 abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
+  @useResult
   $Res call({PackageInfo packageInfo});
 }
 
 /// @nodoc
-class __$$_LoadedCopyWithImpl<$Res> extends _$AppInfoStateCopyWithImpl<$Res>
+class __$$_LoadedCopyWithImpl<$Res>
+    extends _$AppInfoStateCopyWithImpl<$Res, _$_Loaded>
     implements _$$_LoadedCopyWith<$Res> {
   __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
-      : super(_value, (v) => _then(v as _$_Loaded));
+      : super(_value, _then);
 
-  @override
-  _$_Loaded get _value => super._value as _$_Loaded;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? packageInfo = freezed,
+    Object? packageInfo = null,
   }) {
     return _then(_$_Loaded(
-      packageInfo == freezed
+      null == packageInfo
           ? _value.packageInfo
           : packageInfo // ignore: cast_nullable_to_non_nullable
               as PackageInfo,
@@ -222,16 +222,16 @@ class _$_Loaded implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Loaded &&
-            const DeepCollectionEquality()
-                .equals(other.packageInfo, packageInfo));
+            (identical(other.packageInfo, packageInfo) ||
+                other.packageInfo == packageInfo));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(packageInfo));
+  int get hashCode => Object.hash(runtimeType, packageInfo);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       __$$_LoadedCopyWithImpl<_$_Loaded>(this, _$identity);
 
@@ -247,8 +247,8 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(PackageInfo packageInfo)? loaded,
+    TResult? Function()? initial,
+    TResult? Function(PackageInfo packageInfo)? loaded,
   }) {
     return loaded?.call(packageInfo);
   }
@@ -278,8 +278,8 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loaded value)? loaded,
   }) {
     return loaded?.call(this);
   }
@@ -301,7 +301,7 @@ class _$_Loaded implements _Loaded {
 abstract class _Loaded implements AppInfoState {
   factory _Loaded(final PackageInfo packageInfo) = _$_Loaded;
 
-  PackageInfo get packageInfo => throw _privateConstructorUsedError;
+  PackageInfo get packageInfo;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
