@@ -13,7 +13,7 @@ abstract class UserAccountFacade {
 
   Future<Either<UserProfileFailure, Unit>> submitOnboardingForUser({
     required String username,
-    Uint8List? profilePicture,
+    required Uint8List? profilePicture,
   });
 
   Future<Either<UserProfileFailure, Unit>> setProfilePictureForUser(

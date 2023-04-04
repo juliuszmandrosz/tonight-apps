@@ -67,7 +67,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
   @override
   Future<Either<UserProfileFailure, Unit>> submitOnboardingForUser({
     required String username,
-    Uint8List? profilePicture,
+    required Uint8List? profilePicture,
   }) async {
     try {
       if (await _checkIfUsernameExists(username)) {
