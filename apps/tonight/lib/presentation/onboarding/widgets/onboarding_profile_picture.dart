@@ -12,57 +12,63 @@ class OnboardingProfilePicture extends StatelessWidget {
       builder: (context, state) {
         final photo = state.userPhoto;
         final username = state.username.value;
-        return Stack(
-          alignment: Alignment.center,
-          children: [
-            Container(
-              height: 150,
-              width: 150,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: context.surfaceColor,
-              ),
-              child: Center(
-                child: photo.isSome()
-                    ? Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: Image.memory(photo.getOrCrash()).image,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      )
-                    : Text(
-                        username.isEmpty
-                            ? ''
-                            : username.length == 1
-                                ? username[0].toUpperCase()
-                                : username.substring(0, 2).toUpperCase(),
-                        style: context.headlineMedium,
-                      ),
-              ),
-            ),
-            Positioned(
-              right: 90,
-              bottom: 0,
-              child: Container(
-                height: 40,
-                width: 40,
+        return LayoutBuilder(builder: (context, constraints) {
+          final maxWidth = constraints.maxWidth;
+          const imageSize = 150.0;
+          const buttonSize = 40.0;
+          const iconPadding = 10.0;
+          return Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                height: imageSize,
+                width: imageSize,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: colors.secondaryContainer,
+                  color: context.surfaceColor,
                 ),
-                child: IconButton(
-                  icon: const Icon(Icons.edit),
-                  onPressed: () =>
-                      context.read<OnboardingCubit>().pickProfilePhoto(),
-                  color: colors.onSecondaryContainer,
+                child: Center(
+                  child: photo.isSome()
+                      ? Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: Image.memory(photo.getOrCrash()).image,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        )
+                      : Text(
+                          username.isEmpty
+                              ? ''
+                              : username.length == 1
+                                  ? username[0].toUpperCase()
+                                  : username.substring(0, 2).toUpperCase(),
+                          style: context.headlineMedium,
+                        ),
                 ),
               ),
-            ),
-          ],
-        );
+              Positioned(
+                bottom: 0,
+                right: (maxWidth - imageSize) / 2 - iconPadding,
+                child: Container(
+                  height: buttonSize,
+                  width: buttonSize,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: colors.secondaryContainer,
+                  ),
+                  child: IconButton(
+                    icon: const Icon(Icons.edit),
+                    onPressed: () =>
+                        context.read<OnboardingCubit>().pickProfilePhoto(),
+                    color: colors.onSecondaryContainer,
+                  ),
+                ),
+              ),
+            ],
+          );
+        });
       },
     );
   }
