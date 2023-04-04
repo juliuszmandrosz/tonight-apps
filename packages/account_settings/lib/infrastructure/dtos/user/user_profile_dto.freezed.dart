@@ -29,6 +29,7 @@ mixin _$UserProfileDto {
   List<String> get favoriteEventIds => throw _privateConstructorUsedError;
   Map<String, int> get attendance => throw _privateConstructorUsedError;
   List<String> get pushNotificationTokens => throw _privateConstructorUsedError;
+  int get raverCoins => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,7 +51,8 @@ abstract class $UserProfileDtoCopyWith<$Res> {
       List<String> favoriteClubIds,
       List<String> favoriteEventIds,
       Map<String, int> attendance,
-      List<String> pushNotificationTokens});
+      List<String> pushNotificationTokens,
+      int raverCoins});
 }
 
 /// @nodoc
@@ -74,6 +76,7 @@ class _$UserProfileDtoCopyWithImpl<$Res, $Val extends UserProfileDto>
     Object? favoriteEventIds = null,
     Object? attendance = null,
     Object? pushNotificationTokens = null,
+    Object? raverCoins = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -108,6 +111,10 @@ class _$UserProfileDtoCopyWithImpl<$Res, $Val extends UserProfileDto>
           ? _value.pushNotificationTokens
           : pushNotificationTokens // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      raverCoins: null == raverCoins
+          ? _value.raverCoins
+          : raverCoins // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -128,7 +135,8 @@ abstract class _$$_UserProfileDtoCopyWith<$Res>
       List<String> favoriteClubIds,
       List<String> favoriteEventIds,
       Map<String, int> attendance,
-      List<String> pushNotificationTokens});
+      List<String> pushNotificationTokens,
+      int raverCoins});
 }
 
 /// @nodoc
@@ -150,6 +158,7 @@ class __$$_UserProfileDtoCopyWithImpl<$Res>
     Object? favoriteEventIds = null,
     Object? attendance = null,
     Object? pushNotificationTokens = null,
+    Object? raverCoins = null,
   }) {
     return _then(_$_UserProfileDto(
       id: freezed == id
@@ -184,6 +193,10 @@ class __$$_UserProfileDtoCopyWithImpl<$Res>
           ? _value._pushNotificationTokens
           : pushNotificationTokens // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      raverCoins: null == raverCoins
+          ? _value.raverCoins
+          : raverCoins // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -200,7 +213,8 @@ class _$_UserProfileDto extends _UserProfileDto {
       final List<String> favoriteClubIds = const [],
       final List<String> favoriteEventIds = const [],
       final Map<String, int> attendance = const {},
-      final List<String> pushNotificationTokens = const []})
+      final List<String> pushNotificationTokens = const [],
+      this.raverCoins = 0})
       : _favoriteClubIds = favoriteClubIds,
         _favoriteEventIds = favoriteEventIds,
         _attendance = attendance,
@@ -260,8 +274,12 @@ class _$_UserProfileDto extends _UserProfileDto {
   }
 
   @override
+  @JsonKey()
+  final int raverCoins;
+
+  @override
   String toString() {
-    return 'UserProfileDto(id: $id, email: $email, profilePictureUrl: $profilePictureUrl, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens)';
+    return 'UserProfileDto(id: $id, email: $email, profilePictureUrl: $profilePictureUrl, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens, raverCoins: $raverCoins)';
   }
 
   @override
@@ -282,7 +300,9 @@ class _$_UserProfileDto extends _UserProfileDto {
             const DeepCollectionEquality()
                 .equals(other._attendance, _attendance) &&
             const DeepCollectionEquality().equals(
-                other._pushNotificationTokens, _pushNotificationTokens));
+                other._pushNotificationTokens, _pushNotificationTokens) &&
+            (identical(other.raverCoins, raverCoins) ||
+                other.raverCoins == raverCoins));
   }
 
   @JsonKey(ignore: true)
@@ -296,7 +316,8 @@ class _$_UserProfileDto extends _UserProfileDto {
       const DeepCollectionEquality().hash(_favoriteClubIds),
       const DeepCollectionEquality().hash(_favoriteEventIds),
       const DeepCollectionEquality().hash(_attendance),
-      const DeepCollectionEquality().hash(_pushNotificationTokens));
+      const DeepCollectionEquality().hash(_pushNotificationTokens),
+      raverCoins);
 
   @JsonKey(ignore: true)
   @override
@@ -321,7 +342,8 @@ abstract class _UserProfileDto extends UserProfileDto {
       final List<String> favoriteClubIds,
       final List<String> favoriteEventIds,
       final Map<String, int> attendance,
-      final List<String> pushNotificationTokens}) = _$_UserProfileDto;
+      final List<String> pushNotificationTokens,
+      final int raverCoins}) = _$_UserProfileDto;
   const _UserProfileDto._() : super._();
 
   factory _UserProfileDto.fromJson(Map<String, dynamic> json) =
@@ -344,6 +366,8 @@ abstract class _UserProfileDto extends UserProfileDto {
   Map<String, int> get attendance;
   @override
   List<String> get pushNotificationTokens;
+  @override
+  int get raverCoins;
   @override
   @JsonKey(ignore: true)
   _$$_UserProfileDtoCopyWith<_$_UserProfileDto> get copyWith =>
