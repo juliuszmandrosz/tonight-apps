@@ -11,9 +11,11 @@ class WallPhoto extends Equatable {
   final String userId;
   final String username;
   final DateTime eventEndDateTime;
+  final DateTime createdAt;
 
   WallPhoto({
     String? id,
+    DateTime? createdAt,
     required this.photoUrl,
     required this.clubId,
     required this.clubName,
@@ -22,7 +24,8 @@ class WallPhoto extends Equatable {
     required this.userId,
     required this.username,
     required this.eventEndDateTime,
-  }) : id = id ?? const Uuid().v1();
+  })  : id = id ?? const Uuid().v1(),
+        createdAt = DateTime.now();
 
   @override
   List<Object?> get props => [
@@ -35,6 +38,7 @@ class WallPhoto extends Equatable {
         userId,
         username,
         eventEndDateTime,
+        createdAt,
       ];
 
   WallPhoto copyWith({
@@ -49,6 +53,7 @@ class WallPhoto extends Equatable {
   }) {
     return WallPhoto(
       id: id,
+      createdAt: createdAt,
       photoUrl: photoUrl ?? this.photoUrl,
       clubId: clubId ?? this.clubId,
       clubName: clubName ?? this.clubName,
