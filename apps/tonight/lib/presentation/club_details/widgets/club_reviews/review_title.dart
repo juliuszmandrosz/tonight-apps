@@ -5,6 +5,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:tonight/presentation/club_details/widgets/club_reviews/review_tile_user_picture.dart';
 
 class ReviewTitle extends StatelessWidget {
   final Review review;
@@ -13,6 +14,7 @@ class ReviewTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const containerSize = 40.0;
     return Row(
       children: [
         Column(
@@ -26,12 +28,17 @@ class ReviewTitle extends StatelessWidget {
                 color: context.surfaceColor,
                 shape: BoxShape.circle,
               ),
-              child: Center(
-                child: Text(
-                  review.username.toUpperCase().substring(0, 2),
-                  style: context.titleMedium,
-                ),
-              ),
+              child: review.userPictureUrl.isNotEmpty
+                  ? ReviewTileUserPicture(
+                      profilePictureUrl: review.userPictureUrl,
+                      containerSize: containerSize,
+                    )
+                  : Center(
+                      child: Text(
+                        review.username.toUpperCase().substring(0, 2),
+                        style: context.titleMedium,
+                      ),
+                    ),
             ),
           ],
         ),
