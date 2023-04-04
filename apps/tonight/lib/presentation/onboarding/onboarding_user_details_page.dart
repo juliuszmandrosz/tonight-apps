@@ -7,9 +7,9 @@ import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/onboarding/widgets/onboarding_profile_picture.dart';
+import 'package:tonight/presentation/onboarding/widgets/onboarding_username_input.dart';
 import 'package:tonight/presentation/onboarding/widgets/submit_button.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:tonight/presentation/update_username/widgets/username_input.dart';
 
 class OnboardingUserDetailsPage extends StatelessWidget {
   const OnboardingUserDetailsPage({Key? key}) : super(key: key);
@@ -56,7 +56,7 @@ class OnboardingUserDetailsPage extends StatelessWidget {
                                       "Wybierz swój pseudonim i zdjęcie profilowe"),
                             ),
                             const SizedBox(height: 30),
-                            const UsernameInput(),
+                            const OnboardingUsernameInput(),
                           ],
                         ),
                       ),
