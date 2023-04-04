@@ -18,12 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PaymentMethodState {
   Option<CustomerData> get updatedCustomerData =>
       throw _privateConstructorUsedError;
-
   TonightPaymentMethod get selectedPaymentMethod =>
       throw _privateConstructorUsedError;
-
   CubitStatus get cubitStatus => throw _privateConstructorUsedError;
-
   Option<String> get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -36,7 +33,6 @@ abstract class $PaymentMethodStateCopyWith<$Res> {
   factory $PaymentMethodStateCopyWith(
           PaymentMethodState value, $Res Function(PaymentMethodState) then) =
       _$PaymentMethodStateCopyWithImpl<$Res, PaymentMethodState>;
-
   @useResult
   $Res call(
       {Option<CustomerData> updatedCustomerData,
@@ -52,7 +48,6 @@ class _$PaymentMethodStateCopyWithImpl<$Res, $Val extends PaymentMethodState>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -91,7 +86,6 @@ abstract class _$$_PaymentMethodStateCopyWith<$Res>
   factory _$$_PaymentMethodStateCopyWith(_$_PaymentMethodState value,
           $Res Function(_$_PaymentMethodState) then) =
       __$$_PaymentMethodStateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -195,21 +189,16 @@ abstract class _PaymentMethodState extends PaymentMethodState {
       required final TonightPaymentMethod selectedPaymentMethod,
       required final CubitStatus cubitStatus,
       required final Option<String> errorMessage}) = _$_PaymentMethodState;
-
   _PaymentMethodState._() : super._();
 
   @override
   Option<CustomerData> get updatedCustomerData;
-
   @override
   TonightPaymentMethod get selectedPaymentMethod;
-
   @override
   CubitStatus get cubitStatus;
-
   @override
   Option<String> get errorMessage;
-
   @override
   @JsonKey(ignore: true)
   _$$_PaymentMethodStateCopyWith<_$_PaymentMethodState> get copyWith =>
