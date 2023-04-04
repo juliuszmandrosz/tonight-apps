@@ -20,7 +20,8 @@ class EventsPage extends StatefulWidget {
   State<EventsPage> createState() => _EventsPageState();
 }
 
-class _EventsPageState extends State<EventsPage> {
+class _EventsPageState extends State<EventsPage>
+    with AutomaticKeepAliveClientMixin<EventsPage> {
   final _scrollController = ScrollController();
   final _scrollThreshold = 0.95;
   late final EventOverviewBloc _eventOverviewBloc;
@@ -34,7 +35,11 @@ class _EventsPageState extends State<EventsPage> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return BlocProvider(
       create: (context) => getIt<EventFiltersCubit>(param1: _eventOverviewBloc),
       child: Padding(
@@ -56,7 +61,7 @@ class _EventsPageState extends State<EventsPage> {
                     const SizedBox(height: 15),
                     BlocConsumer<EventOverviewBloc, EventOverviewState>(
                       listenWhen: (previous, current) =>
-                          previous.status != current.status,
+                      previous.status != current.status,
                       listener: (context, state) {
                         if (state.status.isFailure()) {
                           context.pushRoute(
@@ -88,14 +93,17 @@ class _EventsPageState extends State<EventsPage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
-                                    height: MediaQuery.of(context).size.height *
+                                    height: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .height *
                                         0.1,
                                   ),
                                   Text(
                                     state.eventFilters.maxDistanceFilter
-                                                .userLocation.isNotEmpty &&
-                                            state.eventFilters.maxDistanceFilter
-                                                .enabled
+                                        .userLocation.isNotEmpty &&
+                                        state.eventFilters.maxDistanceFilter
+                                            .enabled
                                         ? S().noEventsNearYou
                                         : S().events(0),
                                     style: context.titleMedium,
@@ -112,18 +120,19 @@ class _EventsPageState extends State<EventsPage> {
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
                               separatorBuilder: (_, __) =>
-                                  const SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               itemCount: state.hasReachedMax
                                   ? state.events.length
                                   : state.events.length + 1,
-                              itemBuilder: (ctx, i) => i >= state.events.length
+                              itemBuilder: (ctx, i) =>
+                              i >= state.events.length
                                   ? const BottomLoader()
                                   : Center(
-                                      child: EventCard(
-                                        event: state.events[i],
-                                        heroPhrase: heroPhrase,
-                                      ),
-                                    ),
+                                child: EventCard(
+                                  event: state.events[i],
+                                  heroPhrase: heroPhrase,
+                                ),
+                              ),
                             );
                         }
                       },
