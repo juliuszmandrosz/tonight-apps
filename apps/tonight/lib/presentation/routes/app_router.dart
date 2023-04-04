@@ -29,6 +29,7 @@ import 'package:tonight/presentation/ticket_payment_confirm/ticket_payment_confi
 import 'package:tonight/presentation/ticket_qr/ticket_qr_page.dart';
 import 'package:tonight/presentation/ticket_scan_confirm/ticket_scan_confirm_page.dart';
 import 'package:tonight/presentation/tickets/tickets_page.dart';
+import 'package:tonight/presentation/update_profile_picture/update_profile_picture_page.dart';
 import 'package:tonight/presentation/update_username/update_username_page.dart';
 import 'package:tonight/presentation/vip_checkout/vip_checkout_page.dart';
 import 'package:tonight/presentation/welcome_loader/welcome_loader_page.dart';
@@ -148,6 +149,11 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: UpdateUsernamePage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: UpdateProfilePicturePage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
