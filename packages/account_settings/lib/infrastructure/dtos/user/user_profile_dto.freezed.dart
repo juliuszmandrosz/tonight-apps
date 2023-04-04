@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'user_profile_dto.dart';
 
@@ -23,6 +23,7 @@ mixin _$UserProfileDto {
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String get profilePictureUrl => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   List<String> get favoriteClubIds => throw _privateConstructorUsedError;
   List<String> get favoriteEventIds => throw _privateConstructorUsedError;
@@ -39,10 +40,12 @@ mixin _$UserProfileDto {
 abstract class $UserProfileDtoCopyWith<$Res> {
   factory $UserProfileDtoCopyWith(
           UserProfileDto value, $Res Function(UserProfileDto) then) =
-      _$UserProfileDtoCopyWithImpl<$Res>;
+      _$UserProfileDtoCopyWithImpl<$Res, UserProfileDto>;
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String email,
+      String profilePictureUrl,
       String username,
       List<String> favoriteClubIds,
       List<String> favoriteEventIds,
@@ -51,54 +54,61 @@ abstract class $UserProfileDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserProfileDtoCopyWithImpl<$Res>
+class _$UserProfileDtoCopyWithImpl<$Res, $Val extends UserProfileDto>
     implements $UserProfileDtoCopyWith<$Res> {
   _$UserProfileDtoCopyWithImpl(this._value, this._then);
 
-  final UserProfileDto _value;
   // ignore: unused_field
-  final $Res Function(UserProfileDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? email = freezed,
-    Object? username = freezed,
-    Object? favoriteClubIds = freezed,
-    Object? favoriteEventIds = freezed,
-    Object? attendance = freezed,
-    Object? pushNotificationTokens = freezed,
+    Object? email = null,
+    Object? profilePictureUrl = null,
+    Object? username = null,
+    Object? favoriteClubIds = null,
+    Object? favoriteEventIds = null,
+    Object? attendance = null,
+    Object? pushNotificationTokens = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      username: username == freezed
+      profilePictureUrl: null == profilePictureUrl
+          ? _value.profilePictureUrl
+          : profilePictureUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
-      favoriteClubIds: favoriteClubIds == freezed
+      favoriteClubIds: null == favoriteClubIds
           ? _value.favoriteClubIds
           : favoriteClubIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      favoriteEventIds: favoriteEventIds == freezed
+      favoriteEventIds: null == favoriteEventIds
           ? _value.favoriteEventIds
           : favoriteEventIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      attendance: attendance == freezed
+      attendance: null == attendance
           ? _value.attendance
           : attendance // ignore: cast_nullable_to_non_nullable
               as Map<String, int>,
-      pushNotificationTokens: pushNotificationTokens == freezed
+      pushNotificationTokens: null == pushNotificationTokens
           ? _value.pushNotificationTokens
           : pushNotificationTokens // ignore: cast_nullable_to_non_nullable
               as List<String>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -109,9 +119,11 @@ abstract class _$$_UserProfileDtoCopyWith<$Res>
           _$_UserProfileDto value, $Res Function(_$_UserProfileDto) then) =
       __$$_UserProfileDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String email,
+      String profilePictureUrl,
       String username,
       List<String> favoriteClubIds,
       List<String> favoriteEventIds,
@@ -121,51 +133,54 @@ abstract class _$$_UserProfileDtoCopyWith<$Res>
 
 /// @nodoc
 class __$$_UserProfileDtoCopyWithImpl<$Res>
-    extends _$UserProfileDtoCopyWithImpl<$Res>
+    extends _$UserProfileDtoCopyWithImpl<$Res, _$_UserProfileDto>
     implements _$$_UserProfileDtoCopyWith<$Res> {
   __$$_UserProfileDtoCopyWithImpl(
       _$_UserProfileDto _value, $Res Function(_$_UserProfileDto) _then)
-      : super(_value, (v) => _then(v as _$_UserProfileDto));
+      : super(_value, _then);
 
-  @override
-  _$_UserProfileDto get _value => super._value as _$_UserProfileDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? email = freezed,
-    Object? username = freezed,
-    Object? favoriteClubIds = freezed,
-    Object? favoriteEventIds = freezed,
-    Object? attendance = freezed,
-    Object? pushNotificationTokens = freezed,
+    Object? email = null,
+    Object? profilePictureUrl = null,
+    Object? username = null,
+    Object? favoriteClubIds = null,
+    Object? favoriteEventIds = null,
+    Object? attendance = null,
+    Object? pushNotificationTokens = null,
   }) {
     return _then(_$_UserProfileDto(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      username: username == freezed
+      profilePictureUrl: null == profilePictureUrl
+          ? _value.profilePictureUrl
+          : profilePictureUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
-      favoriteClubIds: favoriteClubIds == freezed
+      favoriteClubIds: null == favoriteClubIds
           ? _value._favoriteClubIds
           : favoriteClubIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      favoriteEventIds: favoriteEventIds == freezed
+      favoriteEventIds: null == favoriteEventIds
           ? _value._favoriteEventIds
           : favoriteEventIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      attendance: attendance == freezed
+      attendance: null == attendance
           ? _value._attendance
           : attendance // ignore: cast_nullable_to_non_nullable
               as Map<String, int>,
-      pushNotificationTokens: pushNotificationTokens == freezed
+      pushNotificationTokens: null == pushNotificationTokens
           ? _value._pushNotificationTokens
           : pushNotificationTokens // ignore: cast_nullable_to_non_nullable
               as List<String>,
@@ -180,6 +195,7 @@ class _$_UserProfileDto extends _UserProfileDto {
   const _$_UserProfileDto(
       {@JsonKey(ignore: true) this.id,
       required this.email,
+      this.profilePictureUrl = '',
       this.username = '',
       final List<String> favoriteClubIds = const [],
       final List<String> favoriteEventIds = const [],
@@ -201,11 +217,15 @@ class _$_UserProfileDto extends _UserProfileDto {
   final String email;
   @override
   @JsonKey()
+  final String profilePictureUrl;
+  @override
+  @JsonKey()
   final String username;
   final List<String> _favoriteClubIds;
   @override
   @JsonKey()
   List<String> get favoriteClubIds {
+    if (_favoriteClubIds is EqualUnmodifiableListView) return _favoriteClubIds;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_favoriteClubIds);
   }
@@ -214,6 +234,8 @@ class _$_UserProfileDto extends _UserProfileDto {
   @override
   @JsonKey()
   List<String> get favoriteEventIds {
+    if (_favoriteEventIds is EqualUnmodifiableListView)
+      return _favoriteEventIds;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_favoriteEventIds);
   }
@@ -222,6 +244,7 @@ class _$_UserProfileDto extends _UserProfileDto {
   @override
   @JsonKey()
   Map<String, int> get attendance {
+    if (_attendance is EqualUnmodifiableMapView) return _attendance;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_attendance);
   }
@@ -230,13 +253,15 @@ class _$_UserProfileDto extends _UserProfileDto {
   @override
   @JsonKey()
   List<String> get pushNotificationTokens {
+    if (_pushNotificationTokens is EqualUnmodifiableListView)
+      return _pushNotificationTokens;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_pushNotificationTokens);
   }
 
   @override
   String toString() {
-    return 'UserProfileDto(id: $id, email: $email, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens)';
+    return 'UserProfileDto(id: $id, email: $email, profilePictureUrl: $profilePictureUrl, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens)';
   }
 
   @override
@@ -244,9 +269,12 @@ class _$_UserProfileDto extends _UserProfileDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserProfileDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.username, username) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.profilePictureUrl, profilePictureUrl) ||
+                other.profilePictureUrl == profilePictureUrl) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             const DeepCollectionEquality()
                 .equals(other._favoriteClubIds, _favoriteClubIds) &&
             const DeepCollectionEquality()
@@ -261,9 +289,10 @@ class _$_UserProfileDto extends _UserProfileDto {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(username),
+      id,
+      email,
+      profilePictureUrl,
+      username,
       const DeepCollectionEquality().hash(_favoriteClubIds),
       const DeepCollectionEquality().hash(_favoriteEventIds),
       const DeepCollectionEquality().hash(_attendance),
@@ -271,12 +300,15 @@ class _$_UserProfileDto extends _UserProfileDto {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UserProfileDtoCopyWith<_$_UserProfileDto> get copyWith =>
       __$$_UserProfileDtoCopyWithImpl<_$_UserProfileDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserProfileDtoToJson(this);
+    return _$$_UserProfileDtoToJson(
+      this,
+    );
   }
 }
 
@@ -284,6 +316,7 @@ abstract class _UserProfileDto extends UserProfileDto {
   const factory _UserProfileDto(
       {@JsonKey(ignore: true) final String? id,
       required final String email,
+      final String profilePictureUrl,
       final String username,
       final List<String> favoriteClubIds,
       final List<String> favoriteEventIds,
@@ -296,19 +329,21 @@ abstract class _UserProfileDto extends UserProfileDto {
 
   @override
   @JsonKey(ignore: true)
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String get email => throw _privateConstructorUsedError;
+  String get email;
   @override
-  String get username => throw _privateConstructorUsedError;
+  String get profilePictureUrl;
   @override
-  List<String> get favoriteClubIds => throw _privateConstructorUsedError;
+  String get username;
   @override
-  List<String> get favoriteEventIds => throw _privateConstructorUsedError;
+  List<String> get favoriteClubIds;
   @override
-  Map<String, int> get attendance => throw _privateConstructorUsedError;
+  List<String> get favoriteEventIds;
   @override
-  List<String> get pushNotificationTokens => throw _privateConstructorUsedError;
+  Map<String, int> get attendance;
+  @override
+  List<String> get pushNotificationTokens;
   @override
   @JsonKey(ignore: true)
   _$$_UserProfileDtoCopyWith<_$_UserProfileDto> get copyWith =>
