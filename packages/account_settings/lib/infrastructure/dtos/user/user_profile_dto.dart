@@ -1,9 +1,8 @@
+import 'package:account_settings/domain/user/user_profile_entity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:account_settings/domain/user/user_profile_entity.dart';
 
 part 'user_profile_dto.freezed.dart';
-
 part 'user_profile_dto.g.dart';
 
 @freezed
@@ -14,6 +13,7 @@ class UserProfileDto with _$UserProfileDto {
   const factory UserProfileDto({
     @JsonKey(ignore: true) String? id,
     required String email,
+    @Default('') String profilePictureUrl,
     @Default('') String username,
     @Default([]) List<String> favoriteClubIds,
     @Default([]) List<String> favoriteEventIds,
@@ -25,6 +25,7 @@ class UserProfileDto with _$UserProfileDto {
     return UserProfileDto(
       id: user.id,
       email: user.email,
+      profilePictureUrl: user.profilePictureUrl,
       username: user.username,
       favoriteClubIds: user.favoriteClubIds,
       favoriteEventIds: user.favoriteEventIds,
@@ -46,6 +47,7 @@ class UserProfileDto with _$UserProfileDto {
     return UserProfile(
       id: id!,
       email: email,
+      profilePictureUrl: profilePictureUrl,
       username: username,
       favoriteClubIds: favoriteClubIds,
       favoriteEventIds: favoriteEventIds,
