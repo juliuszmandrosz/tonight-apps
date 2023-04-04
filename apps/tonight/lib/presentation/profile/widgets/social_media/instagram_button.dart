@@ -9,7 +9,7 @@ class InstagramButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SocialMediaButton(
       icon: FaIcon(FontAwesomeIcons.instagram),
-      url: 'https://www.instagram.com/tonighttonight',
+      url: 'https://www.instagram.com/tonightraver',
     );
   }
 }
