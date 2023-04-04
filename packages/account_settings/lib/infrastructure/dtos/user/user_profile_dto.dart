@@ -19,6 +19,7 @@ class UserProfileDto with _$UserProfileDto {
     @Default([]) List<String> favoriteEventIds,
     @Default({}) Map<String, int> attendance,
     @Default([]) List<String> pushNotificationTokens,
+    @Default(0) int raverCoins,
   }) = _UserProfileDto;
 
   factory UserProfileDto.fromDomain(UserProfile user) {

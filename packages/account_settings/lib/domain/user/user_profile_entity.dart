@@ -9,6 +9,7 @@ class UserProfile extends Equatable {
   final List<String> favoriteEventIds;
   final Map<String, int> attendance;
   final List<String> pushNotificationTokens;
+  final int raverCoins;
 
   const UserProfile({
     required this.id,
@@ -19,6 +20,7 @@ class UserProfile extends Equatable {
     this.favoriteEventIds = const [],
     this.attendance = const {},
     this.pushNotificationTokens = const [],
+    this.raverCoins = 0,
   });
 
   @override
@@ -31,6 +33,7 @@ class UserProfile extends Equatable {
         favoriteEventIds,
         attendance,
         pushNotificationTokens,
+        raverCoins,
       ];
 
   UserProfile copyWith({
@@ -41,6 +44,7 @@ class UserProfile extends Equatable {
     List<String>? favoriteEventIds,
     Map<String, int>? attendance,
     List<String>? pushNotificationTokens,
+    int? raverCoins,
   }) {
     return UserProfile(
       id: id,
@@ -52,6 +56,7 @@ class UserProfile extends Equatable {
       attendance: attendance ?? this.attendance,
       pushNotificationTokens:
           pushNotificationTokens ?? this.pushNotificationTokens,
+      raverCoins: raverCoins ?? this.raverCoins,
     );
   }
 }
