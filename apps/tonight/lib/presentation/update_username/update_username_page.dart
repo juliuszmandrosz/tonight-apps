@@ -6,8 +6,8 @@ import 'package:formz/formz.dart';
 import 'package:tonight/application/auth/username/username_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
-import 'package:tonight/presentation/update_username/widgets/profile_username_input.dart';
 import 'package:tonight/presentation/update_username/widgets/submit_username_button.dart';
+import 'package:tonight/presentation/update_username/widgets/update_username_input.dart';
 import 'package:translations/translations.dart';
 
 class UpdateUsernamePage extends StatelessWidget {
@@ -44,7 +44,7 @@ class UpdateUsernamePage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ProfileUsernameInput(currentUsername: currentUsername),
+                  UpdateUsernameInput(currentUsername: currentUsername),
                   const SubmitUsernameButton(),
                 ],
               ),
