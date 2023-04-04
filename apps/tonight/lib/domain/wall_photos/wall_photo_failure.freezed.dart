@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'photo_wall_failure.dart';
+part of 'wall_photo_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$PhotoWallFailure {
+mixin _$WallPhotoFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
@@ -57,16 +57,16 @@ mixin _$PhotoWallFailure {
 }
 
 /// @nodoc
-abstract class $PhotoWallFailureCopyWith<$Res> {
-  factory $PhotoWallFailureCopyWith(
-          PhotoWallFailure value, $Res Function(PhotoWallFailure) then) =
-      _$PhotoWallFailureCopyWithImpl<$Res, PhotoWallFailure>;
+abstract class $WallPhotoFailureCopyWith<$Res> {
+  factory $WallPhotoFailureCopyWith(
+          WallPhotoFailure value, $Res Function(WallPhotoFailure) then) =
+      _$WallPhotoFailureCopyWithImpl<$Res, WallPhotoFailure>;
 }
 
 /// @nodoc
-class _$PhotoWallFailureCopyWithImpl<$Res, $Val extends PhotoWallFailure>
-    implements $PhotoWallFailureCopyWith<$Res> {
-  _$PhotoWallFailureCopyWithImpl(this._value, this._then);
+class _$WallPhotoFailureCopyWithImpl<$Res, $Val extends WallPhotoFailure>
+    implements $WallPhotoFailureCopyWith<$Res> {
+  _$WallPhotoFailureCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,7 +83,7 @@ abstract class _$$_UnexpectedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$PhotoWallFailureCopyWithImpl<$Res, _$_Unexpected>
+    extends _$WallPhotoFailureCopyWithImpl<$Res, _$_Unexpected>
     implements _$$_UnexpectedCopyWith<$Res> {
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
@@ -97,7 +97,7 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   String toString() {
-    return 'PhotoWallFailure.unexpected()';
+    return 'WallPhotoFailure.unexpected()';
   }
 
   @override
@@ -172,7 +172,7 @@ class _$_Unexpected implements _Unexpected {
   }
 }
 
-abstract class _Unexpected implements PhotoWallFailure {
+abstract class _Unexpected implements WallPhotoFailure {
   const factory _Unexpected() = _$_Unexpected;
 }
 
@@ -185,7 +185,7 @@ abstract class _$$_PermissionDeniedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PermissionDeniedCopyWithImpl<$Res>
-    extends _$PhotoWallFailureCopyWithImpl<$Res, _$_PermissionDenied>
+    extends _$WallPhotoFailureCopyWithImpl<$Res, _$_PermissionDenied>
     implements _$$_PermissionDeniedCopyWith<$Res> {
   __$$_PermissionDeniedCopyWithImpl(
       _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
@@ -199,7 +199,7 @@ class _$_PermissionDenied implements _PermissionDenied {
 
   @override
   String toString() {
-    return 'PhotoWallFailure.permissionDenied()';
+    return 'WallPhotoFailure.permissionDenied()';
   }
 
   @override
@@ -274,6 +274,6 @@ class _$_PermissionDenied implements _PermissionDenied {
   }
 }
 
-abstract class _PermissionDenied implements PhotoWallFailure {
+abstract class _PermissionDenied implements WallPhotoFailure {
   const factory _PermissionDenied() = _$_PermissionDenied;
 }
