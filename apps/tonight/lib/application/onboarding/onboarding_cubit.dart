@@ -17,18 +17,20 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
   OnboardingCubit(this._userAccountFacade) : super(OnboardingState.initial());
 
-  Future<void> setUsernameForUser() async {
+  Future<void> submitOnboarding() async {
     if (!_validateForm()) return;
 
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
-    final failureOrSuccess =
-        await _userAccountFacade.setUsernameForUser(state.username.value);
+    final failureOrSuccess = await _userAccountFacade.submitOnboardingForUser(
+      username: state.username.value,
+      profilePicture: state.userPhoto.fold(() => null, (picture) => picture),
+    );
 
     failureOrSuccess.fold(
-        (failure) => _emitFailure(failure),
-        (success) =>
-            emit(state.copyWith(status: FormzStatus.submissionSuccess)));
+      _emitFailure,
+      (success) => emit(state.copyWith(status: FormzStatus.submissionSuccess)),
+    );
   }
 
   void usernameChanged(String value) {
