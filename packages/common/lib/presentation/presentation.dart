@@ -1,4 +1,5 @@
 export 'bottom_loader.dart';
+export 'circle_network_photo.dart';
 export 'failure_page.dart';
 export 'next_page_error.dart';
 export 'page_transitions/fade_in_transition.dart';
