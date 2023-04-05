@@ -13,6 +13,7 @@ import 'package:tonight/application/events/event_favorite/event_favorite_cubit.d
 import 'package:tonight/application/profile/profile_cubit.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
+import 'package:tonight/application/wall_photos/wall_photos_cubit.dart';
 import 'package:tonight/application/welcome_loading/welcome_loading_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/ticket_logo_animation.dart';
@@ -45,6 +46,7 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
       stripe: getIt<Stripe>(),
       firebaseMessaging: getIt<FirebaseMessaging>(),
       networkCheckCubit: context.read<NetworkCheckCubit>(),
+      wallPhotosCubit: context.read<WallPhotosCubit>(),
     );
 
     return _welcomeLoadingCubit!;
@@ -86,6 +88,9 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
             ),
             BlocProvider(
               create: (ctx) => getIt<PushNotificationsCubit>(),
+            ),
+            BlocProvider(
+              create: (ctx) => getIt<WallPhotosCubit>(),
             ),
           ],
           child: BlocProvider(
