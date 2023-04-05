@@ -5,11 +5,7 @@ extension StringX on String {
 }
 
 extension NullableStringX on String? {
-  bool isNullOrEmpty() {
-    return this == null || this!.isEmpty;
-  }
+  bool get isNullOrEmpty => this == null || this!.isEmpty;
 
-  bool isNotNullOrEmpty() {
-    return !isNullOrEmpty();
-  }
+  bool get isNotNullOrEmpty => !isNullOrEmpty;
 }
