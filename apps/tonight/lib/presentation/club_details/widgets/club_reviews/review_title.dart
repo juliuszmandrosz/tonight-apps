@@ -5,7 +5,6 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'package:tonight/presentation/club_details/widgets/club_reviews/review_tile_user_picture.dart';
 
 class ReviewTitle extends StatelessWidget {
   final Review review;
@@ -22,15 +21,15 @@ class ReviewTitle extends StatelessWidget {
           children: [
             Container(
               padding: EdgeInsets.zero,
-              height: 40,
-              width: 40,
+              height: containerSize,
+              width: containerSize,
               decoration: BoxDecoration(
                 color: context.surfaceColor,
                 shape: BoxShape.circle,
               ),
               child: review.userPictureUrl.isNotEmpty
-                  ? ReviewTileUserPicture(
-                      profilePictureUrl: review.userPictureUrl,
+                  ? CircleNetworkPhoto(
+                      photoUrl: review.userPictureUrl,
                       containerSize: containerSize,
                     )
                   : Center(
