@@ -16,6 +16,6 @@ abstract class WallPhotoFacade {
 
   Future<Either<WallPhotoFailure, List<WallPhoto>>> getPhotos({
     int pageSize = 20,
-    int offset = 0,
+    WallPhoto? lastPhoto,
   });
 }
