@@ -7,6 +7,7 @@ export 'page_transitions/fade_in_transition.dart';
 export 'page_transitions/slide_left_transition.dart';
 export 'page_transitions/slide_right_transition.dart';
 export 'page_transitions/zoom_in_transition.dart';
+export 'profile_picture_container.dart';
 export 'social_media_button.dart';
 export 'tonight_hyper_link.dart';
 export 'tonight_icon_link.dart';

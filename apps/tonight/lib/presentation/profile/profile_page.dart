@@ -9,7 +9,7 @@ import 'package:tonight/application/profile/profile_cubit.dart';
 import 'package:tonight/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight/presentation/profile/widgets/profile_menu_details_row.dart';
 import 'package:tonight/presentation/profile/widgets/profile_menu_tiles.dart';
-import 'package:tonight/presentation/profile/widgets/profile_picture_container.dart';
+import 'package:tonight/presentation/profile/widgets/profile_user_picture_.dart';
 import 'package:tonight/presentation/profile/widgets/username_row.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
@@ -68,7 +68,7 @@ class ProfilePage extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      ProfilePictureContainer(
+                      ProfileUserPicture(
                         profilePictureUrl: state.user.profilePictureUrl,
                         username: state.user.username,
                       ),
