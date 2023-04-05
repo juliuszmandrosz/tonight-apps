@@ -11,10 +11,10 @@ class WallPhotoImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final photoHeight = constraints.maxWidth - 10;
-        return CircleNetworkPhoto(
-          containerSize: photoHeight,
+        final photoHeight = constraints.maxWidth * 1.2;
+        return NetworkPhoto(
           photoUrl: wallPhoto.photoUrl,
+          photoHeight: photoHeight,
         );
       },
     );
