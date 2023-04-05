@@ -94,6 +94,7 @@ dependencies:
   dio:
   uuid:
   json_annotation:
+  very_good_infinite_list:
 
   translations:
     path: ../../packages/translations
