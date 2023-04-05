@@ -3,11 +3,11 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
-class ProfilePictureContainer extends StatelessWidget {
+class ProfileUserPicture extends StatelessWidget {
   final String profilePictureUrl;
   final String username;
 
-  const ProfilePictureContainer({
+  const ProfileUserPicture({
     required this.profilePictureUrl,
     required this.username,
     Key? key,
