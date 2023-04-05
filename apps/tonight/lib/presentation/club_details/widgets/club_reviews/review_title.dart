@@ -31,6 +31,7 @@ class ReviewTitle extends StatelessWidget {
                   ? CircleNetworkPhoto(
                       photoUrl: review.userPictureUrl,
                       containerSize: containerSize,
+                      loaderSize: 12,
                     )
                   : Center(
                       child: Text(

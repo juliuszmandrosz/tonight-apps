@@ -33,6 +33,7 @@ class WallPhotoUserRow extends StatelessWidget {
                 ? CircleNetworkPhoto(
                     photoUrl: wallPhoto.userProfilePhotoUrl!,
                     containerSize: containerSize,
+                    loaderSize: 12,
                   )
                 : Center(
                     child: Text(
