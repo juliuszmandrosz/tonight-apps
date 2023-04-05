@@ -28,7 +28,7 @@ class WallPhoto extends Equatable {
     required this.eventEndDateTime,
     this.userProfilePhotoUrl,
   })  : id = id ?? const Uuid().v1(),
-        createdAt = DateTime.now();
+        createdAt = createdAt ?? DateTime.now();
 
   @override
   List<Object?> get props => [
