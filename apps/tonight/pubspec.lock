@@ -2130,7 +2130,7 @@ packages:
     source: hosted
     version: "3.0.2"
   very_good_infinite_list:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: very_good_infinite_list
       sha256: "8f9ef71ecb142eab17aa3e7b1a4aec933e4913760396182ea98f27287e3e540d"
