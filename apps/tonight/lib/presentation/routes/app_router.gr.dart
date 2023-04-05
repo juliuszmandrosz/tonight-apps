@@ -34,7 +34,6 @@ import '../network_lost/network_lost_page.dart' as _i4;
 import '../onboarding/onboarding_page.dart' as _i15;
 import '../onboarding/onboarding_user_details_page.dart' as _i14;
 import '../payment_method/payment_method_page.dart' as _i23;
-import '../photo_wall/photo_wall_page.dart' as _i25;
 import '../profile/profile_page.dart' as _i29;
 import '../sign_in/sign_in_page.dart' as _i2;
 import '../splash/splash_page.dart' as _i1;
@@ -46,6 +45,7 @@ import '../tickets/tickets_page.dart' as _i27;
 import '../update_profile_picture/update_profile_picture_page.dart' as _i19;
 import '../update_username/update_username_page.dart' as _i18;
 import '../vip_checkout/vip_checkout_page.dart' as _i11;
+import '../wall_photos/wall_photos_page.dart' as _i25;
 import '../welcome_loader/welcome_loader_page.dart' as _i3;
 import 'page_transitions/fade_in_transition.dart' as _i34;
 import 'page_transitions/slide_left_transition.dart' as _i33;
@@ -363,10 +363,10 @@ class AppRouter extends _i30.RootStackRouter {
         barrierDismissible: false,
       );
     },
-    PhotoWallRoute.name: (routeData) {
+    WallPhotosRoute.name: (routeData) {
       return _i30.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i25.PhotoWallPage(),
+        child: const _i25.WallPhotosPage(),
         transitionsBuilder: _i33.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
@@ -430,8 +430,8 @@ class AppRouter extends _i30.RootStackRouter {
           path: '/welcome-loader-page',
           children: [
             _i30.RouteConfig(
-              PhotoWallRoute.name,
-              path: 'photo-wall-page',
+              WallPhotosRoute.name,
+              path: 'wall-photos-page',
               parent: WelcomeLoaderRoute.name,
             ),
             _i30.RouteConfig(
@@ -1201,15 +1201,15 @@ class ClubFiltersRouteArgs {
 }
 
 /// generated route for
-/// [_i25.PhotoWallPage]
-class PhotoWallRoute extends _i30.PageRouteInfo<void> {
-  const PhotoWallRoute()
+/// [_i25.WallPhotosPage]
+class WallPhotosRoute extends _i30.PageRouteInfo<void> {
+  const WallPhotosRoute()
       : super(
-          PhotoWallRoute.name,
-          path: 'photo-wall-page',
+          WallPhotosRoute.name,
+          path: 'wall-photos-page',
         );
 
-  static const String name = 'PhotoWallRoute';
+  static const String name = 'WallPhotosRoute';
 }
 
 /// generated route for
