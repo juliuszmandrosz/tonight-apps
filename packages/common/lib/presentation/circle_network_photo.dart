@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class CircleNetworkPhoto extends StatelessWidget {
-  final double containerSize;
   final String photoUrl;
+  final double containerSize;
+  final double loaderSize;
 
   const CircleNetworkPhoto({
-    required this.containerSize,
     required this.photoUrl,
+    required this.containerSize,
+    required this.loaderSize,
     Key? key,
   }) : super(key: key);
 
@@ -21,7 +23,7 @@ class CircleNetworkPhoto extends StatelessWidget {
         radius: containerSize,
         child: SpinKitThreeBounce(
           color: context.onSurfaceColor,
-          size: 12,
+          size: loaderSize,
         ),
       ),
       imageUrl: photoUrl,
