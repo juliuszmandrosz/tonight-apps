@@ -177,6 +177,37 @@ class FirebaseAccountFacade implements UserAccountFacade {
     }
   }
 
+  @override
+  Future<Either<UserProfileFailure, UserProfile>> getUserById(String id) async {
+    try {
+      final result = await _firestore.userCollection
+          .where(
+            FieldPath.documentId,
+            isEqualTo: id,
+          )
+          .get();
+
+      if (result.docs.isEmpty) {
+        return left(const UserProfileFailure.userNotFound());
+      }
+
+      final userDto = UserProfileDto.fromFirebase(result.docs.first);
+
+      return right(userDto.toDomain());
+    } on FirebaseException catch (e) {
+      return left(
+        await handleFirebaseError<UserProfileFailure>(
+          logger: _logger,
+          crashlytics: _firebaseCrashlytics,
+          exception: e,
+          message: 'Firebase Exception getting user by id EXCEPTION: $e',
+          unexpectedFailure: const UserProfileFailure.unexpected(),
+          permissionDeniedFailure: const UserProfileFailure.permissionDenied(),
+        ),
+      );
+    }
+  }
+
   Future<String> _uploadProfilePicture({
     required String userId,
     required Uint8List profilePicture,
