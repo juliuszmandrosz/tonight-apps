@@ -1,8 +1,7 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:clubs/domain/domain.dart';
 import 'package:clubs/clubs.dart';
+import 'package:clubs/domain/domain.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'club_details_cubit.freezed.dart';
 part 'club_details_state.dart';
@@ -15,8 +14,9 @@ class ClubDetailsCubit extends Cubit<ClubDetailsState> {
   Future<void> getClubById(String clubId) async {
     emit(const ClubDetailsState.loadInProgress());
 
-    Either<UserClubFailure, Club> failureOrSuccess =
-        await _clubFacade.getClubById(clubId);
+    final failureOrSuccess = await _clubFacade.getClubById(clubId);
+
+    await Future.delayed(const Duration(milliseconds: 300));
 
     failureOrSuccess.fold(
       (failure) => emit(

@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:events/events.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dart';
 
@@ -25,6 +25,8 @@ class EventDetailsCubit extends Cubit<EventDetailsState> {
     emit(state.copyWith(status: CubitStatus.loading));
 
     final failureOrSuccess = await _eventFacade.getEventById(eventId);
+
+    await Future.delayed(const Duration(milliseconds: 300));
 
     failureOrSuccess.fold(
       (failure) => emit(state.copyWith(status: CubitStatus.failure)),
