@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:uuid/uuid.dart';
 
@@ -12,6 +13,7 @@ class WallPhoto extends Equatable {
   final String username;
   final DateTime eventEndDateTime;
   final DateTime createdAt;
+  final String? userProfilePhotoUrl;
 
   WallPhoto({
     String? id,
@@ -24,6 +26,7 @@ class WallPhoto extends Equatable {
     required this.userId,
     required this.username,
     required this.eventEndDateTime,
+    this.userProfilePhotoUrl,
   })  : id = id ?? const Uuid().v1(),
         createdAt = DateTime.now();
 
@@ -39,6 +42,7 @@ class WallPhoto extends Equatable {
         username,
         eventEndDateTime,
         createdAt,
+        userProfilePhotoUrl,
       ];
 
   WallPhoto copyWith({
@@ -50,6 +54,7 @@ class WallPhoto extends Equatable {
     String? userId,
     String? username,
     DateTime? eventEndDateTime,
+    Option<String>? userProfilePhotoUrl,
   }) {
     return WallPhoto(
       id: id,
@@ -62,6 +67,12 @@ class WallPhoto extends Equatable {
       userId: userId ?? this.userId,
       username: username ?? this.username,
       eventEndDateTime: eventEndDateTime ?? this.eventEndDateTime,
+      userProfilePhotoUrl: userProfilePhotoUrl != null
+          ? userProfilePhotoUrl.fold(
+              () => null,
+              (url) => url,
+            )
+          : this.userProfilePhotoUrl,
     );
   }
 }
