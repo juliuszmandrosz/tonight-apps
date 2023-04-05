@@ -1,10 +1,9 @@
 import 'package:account_settings/account_settings.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/application/auth/form_inputs/username.dart';
-import 'package:translations/translations.dart';
 
 part 'username_cubit.freezed.dart';
 part 'username_state.dart';
@@ -51,19 +50,11 @@ class UsernameCubit extends Cubit<UsernameState> {
   _emitFailure(UserProfileFailure failure) {
     emit(
       state.copyWith(
-        errorMessage: some(_getUserProfileFailureMessage(failure)),
+        errorMessage: some(failure.message),
         status: FormzStatus.submissionFailure,
       ),
     );
 
     emit(state.copyWith(errorMessage: none()));
-  }
-
-  _getUserProfileFailureMessage(UserProfileFailure failure) {
-    return failure.map(
-      unexpected: (_) => S().serverError,
-      permissionDenied: (_) => S().operationNotAllowed,
-      usernameExists: (_) => S().usernameAlreadyInUse,
-    );
   }
 }
