@@ -66,19 +66,11 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   _emitFailure(UserProfileFailure failure) {
     emit(
       state.copyWith(
-        errorMessage: some(_getUserProfileFailureMessage(failure)),
+        errorMessage: some(failure.message),
         status: FormzStatus.submissionFailure,
       ),
     );
 
     emit(state.copyWith(errorMessage: none()));
-  }
-
-  _getUserProfileFailureMessage(UserProfileFailure failure) {
-    return failure.map(
-      unexpected: (_) => S().serverError,
-      permissionDenied: (_) => S().operationNotAllowed,
-      usernameExists: (_) => S().usernameAlreadyInUse,
-    );
   }
 }
