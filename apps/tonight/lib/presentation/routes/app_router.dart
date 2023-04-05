@@ -16,7 +16,6 @@ import 'package:tonight/presentation/network_lost/network_lost_page.dart';
 import 'package:tonight/presentation/onboarding/onboarding_page.dart';
 import 'package:tonight/presentation/onboarding/onboarding_user_details_page.dart';
 import 'package:tonight/presentation/payment_method/payment_method_page.dart';
-import 'package:tonight/presentation/photo_wall/photo_wall_page.dart';
 import 'package:tonight/presentation/profile/profile_page.dart';
 import 'package:tonight/presentation/routes/page_transitions/fade_in_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/slide_left_transition.dart';
@@ -32,6 +31,7 @@ import 'package:tonight/presentation/tickets/tickets_page.dart';
 import 'package:tonight/presentation/update_profile_picture/update_profile_picture_page.dart';
 import 'package:tonight/presentation/update_username/update_username_page.dart';
 import 'package:tonight/presentation/vip_checkout/vip_checkout_page.dart';
+import 'package:tonight/presentation/wall_photos/wall_photos_page.dart';
 import 'package:tonight/presentation/welcome_loader/welcome_loader_page.dart';
 
 const animationDuration = 300;
@@ -49,7 +49,7 @@ const animationDuration = 300;
       page: WelcomeLoaderPage,
       children: [
         CustomRoute(
-          page: PhotoWallPage,
+          page: WallPhotosPage,
           transitionsBuilder: slideLeftTransition,
           durationInMilliseconds: animationDuration,
         ),

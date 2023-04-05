@@ -20,7 +20,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
     return AutoTabsScaffold(
       appBarBuilder: (_, tabsRouter) => const TonightAppBar(),
       routes: const [
-        PhotoWallRoute(),
+        WallPhotosRoute(),
         DiscoverRoute(),
         FavoritesRoute(),
         ProfileRoute(),
