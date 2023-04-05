@@ -20,6 +20,7 @@ import 'package:tonight/application/events/event_favorite/event_favorite_cubit.d
 import 'package:tonight/application/profile/profile_cubit.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
+import 'package:tonight/application/wall_photos/wall_photos_cubit.dart';
 
 part 'welcome_loading_cubit.freezed.dart';
 part 'welcome_loading_state.dart';
@@ -37,6 +38,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   final Stripe _stripe;
   final FirebaseMessaging _firebaseMessaging;
   final NetworkCheckCubit _networkCheckCubit;
+  final WallPhotosCubit _wallPhotosCubit;
 
   StreamSubscription? _profileSub;
   StreamSubscription? _locationSub;
@@ -47,6 +49,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   StreamSubscription? _ticketsSub;
   StreamSubscription? _filtersSub;
   StreamSubscription? _pushNotificationsSub;
+  StreamSubscription? _wallPhotosSub;
 
   WelcomeLoadingCubit({
     required ProfileCubit profileCubit,
@@ -61,6 +64,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     required Stripe stripe,
     required FirebaseMessaging firebaseMessaging,
     required NetworkCheckCubit networkCheckCubit,
+    required WallPhotosCubit wallPhotosCubit,
   })  : _profileCubit = profileCubit,
         _userLocationCubit = userLocationCubit,
         _eventOverviewBloc = eventOverviewBloc,
@@ -73,6 +77,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         _stripe = stripe,
         _firebaseMessaging = firebaseMessaging,
         _networkCheckCubit = networkCheckCubit,
+        _wallPhotosCubit = wallPhotosCubit,
         super(WelcomeLoadingState.initial());
 
   Future<void> loadDependencies(BuildContext context) async {
@@ -179,6 +184,14 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     });
   }
 
+  _initWallPhotos() {
+    _wallPhotosCubit.getPhotos();
+    _wallPhotosSub = _wallPhotosCubit.stream.listen((event) {
+      _checkAndEmitFailure(event.getPhotosStatus);
+      _emitSuccessIfAllLoaded();
+    });
+  }
+
   _initTickets() {
     _ticketListCubit.fetchTickets();
     _ticketsSub = _ticketListCubit.stream.listen((event) {
@@ -200,6 +213,9 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _clubFavoritesSub = _clubFavoriteCubit.stream.listen((event) {
       _checkAndEmitFailure(event.status);
       _emitSuccessIfAllLoaded();
+      if (event.status.isSuccess()) {
+        _initWallPhotos();
+      }
     });
   }
 
@@ -299,6 +315,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         _ticketListCubit.state.initialStatus == CubitStatus.success &&
         _eventFavoriteCubit.state.status == CubitStatus.success &&
         _clubFavoriteCubit.state.status == CubitStatus.success &&
+        _wallPhotosCubit.state.getPhotosStatus == CubitStatus.success &&
         _availableFiltersCubit.state
             .maybeWhen(orElse: () => false, loadSuccess: (_) => true);
   }
@@ -314,6 +331,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _clubsSub?.cancel();
     _profileSub?.cancel();
     _pushNotificationsSub?.cancel();
+    _wallPhotosSub?.cancel();
     return super.close();
   }
 }
