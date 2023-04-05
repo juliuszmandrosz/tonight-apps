@@ -15,6 +15,7 @@ class WallPhotoImage extends StatelessWidget {
         return NetworkPhoto(
           photoUrl: wallPhoto.photoUrl,
           photoHeight: photoHeight,
+          loaderSize: 24,
         );
       },
     );
