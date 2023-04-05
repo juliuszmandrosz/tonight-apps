@@ -6,10 +6,12 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 class NetworkPhoto extends StatelessWidget {
   final String photoUrl;
   final double photoHeight;
+  final double loaderSize;
 
   const NetworkPhoto({
     required this.photoUrl,
     required this.photoHeight,
+    required this.loaderSize,
     Key? key,
   }) : super(key: key);
 
@@ -21,7 +23,7 @@ class NetworkPhoto extends StatelessWidget {
         child: Center(
           child: SpinKitThreeBounce(
             color: context.onSurfaceColor,
-            size: 24,
+            size: loaderSize,
           ),
         ),
       ),
