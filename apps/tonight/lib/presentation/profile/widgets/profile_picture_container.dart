@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class ProfilePictureContainer extends StatelessWidget {
@@ -31,21 +29,10 @@ class ProfilePictureContainer extends StatelessWidget {
           ),
           child: Center(
             child: profilePictureUrl.isNotEmpty
-                ? CachedNetworkImage(
-                    placeholder: (context, url) => CircleAvatar(
-                      radius: imageSize,
-                      child: SpinKitThreeBounce(
-                        color: context.onSurfaceColor,
-                        size: 16,
-                      ),
-                    ),
-                    imageUrl: profilePictureUrl,
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-                    imageBuilder: (context, image) => CircleAvatar(
-                      radius: imageSize,
-                      backgroundImage: image,
-                    ),
+                ? CircleNetworkPhoto(
+                    photoUrl: profilePictureUrl,
+                    containerSize: imageSize,
+                    loaderSize: 16,
                   )
                 : Text(
                     username.isEmpty
