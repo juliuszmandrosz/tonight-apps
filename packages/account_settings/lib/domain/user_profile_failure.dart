@@ -10,6 +10,8 @@ class UserProfileFailure with _$UserProfileFailure {
   const factory UserProfileFailure.permissionDenied() = _PermissionDenied;
 
   const factory UserProfileFailure.usernameExists() = _UsernameExists;
+
+  const factory UserProfileFailure.userNotFound() = _UserNotFound;
 }
 
 extension UserProfileFailureX on UserProfileFailure {
@@ -17,5 +19,7 @@ extension UserProfileFailureX on UserProfileFailure {
         unexpected: (_) => S().serverError,
         permissionDenied: (_) => S().operationNotAllowed,
         usernameExists: (_) => S().usernameAlreadyInUse,
+        // TODO - add translation
+        userNotFound: (_) => 'User not found',
       );
 }

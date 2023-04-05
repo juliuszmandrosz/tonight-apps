@@ -21,6 +21,7 @@ mixin _$UserProfileFailure {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() usernameExists,
+    required TResult Function() userNotFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$UserProfileFailure {
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
     TResult? Function()? usernameExists,
+    TResult? Function()? userNotFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$UserProfileFailure {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? usernameExists,
+    TResult Function()? userNotFound,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$UserProfileFailure {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_UsernameExists value) usernameExists,
+    required TResult Function(_UserNotFound value) userNotFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$UserProfileFailure {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_UserNotFound value)? userNotFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$UserProfileFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_UsernameExists value)? usernameExists,
+    TResult Function(_UserNotFound value)? userNotFound,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() usernameExists,
+    required TResult Function() userNotFound,
   }) {
     return unexpected();
   }
@@ -131,6 +138,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
     TResult? Function()? usernameExists,
+    TResult? Function()? userNotFound,
   }) {
     return unexpected?.call();
   }
@@ -141,6 +149,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? usernameExists,
+    TResult Function()? userNotFound,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -155,6 +164,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_UsernameExists value) usernameExists,
+    required TResult Function(_UserNotFound value) userNotFound,
   }) {
     return unexpected(this);
   }
@@ -165,6 +175,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_UserNotFound value)? userNotFound,
   }) {
     return unexpected?.call(this);
   }
@@ -175,6 +186,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_UsernameExists value)? usernameExists,
+    TResult Function(_UserNotFound value)? userNotFound,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -229,6 +241,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() usernameExists,
+    required TResult Function() userNotFound,
   }) {
     return permissionDenied();
   }
@@ -239,6 +252,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
     TResult? Function()? usernameExists,
+    TResult? Function()? userNotFound,
   }) {
     return permissionDenied?.call();
   }
@@ -249,6 +263,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? usernameExists,
+    TResult Function()? userNotFound,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -263,6 +278,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_UsernameExists value) usernameExists,
+    required TResult Function(_UserNotFound value) userNotFound,
   }) {
     return permissionDenied(this);
   }
@@ -273,6 +289,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_UserNotFound value)? userNotFound,
   }) {
     return permissionDenied?.call(this);
   }
@@ -283,6 +300,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_UsernameExists value)? usernameExists,
+    TResult Function(_UserNotFound value)? userNotFound,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -337,6 +355,7 @@ class _$_UsernameExists implements _UsernameExists {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() usernameExists,
+    required TResult Function() userNotFound,
   }) {
     return usernameExists();
   }
@@ -347,6 +366,7 @@ class _$_UsernameExists implements _UsernameExists {
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
     TResult? Function()? usernameExists,
+    TResult? Function()? userNotFound,
   }) {
     return usernameExists?.call();
   }
@@ -357,6 +377,7 @@ class _$_UsernameExists implements _UsernameExists {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? usernameExists,
+    TResult Function()? userNotFound,
     required TResult orElse(),
   }) {
     if (usernameExists != null) {
@@ -371,6 +392,7 @@ class _$_UsernameExists implements _UsernameExists {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_UsernameExists value) usernameExists,
+    required TResult Function(_UserNotFound value) userNotFound,
   }) {
     return usernameExists(this);
   }
@@ -381,6 +403,7 @@ class _$_UsernameExists implements _UsernameExists {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_UserNotFound value)? userNotFound,
   }) {
     return usernameExists?.call(this);
   }
@@ -391,6 +414,7 @@ class _$_UsernameExists implements _UsernameExists {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_UsernameExists value)? usernameExists,
+    TResult Function(_UserNotFound value)? userNotFound,
     required TResult orElse(),
   }) {
     if (usernameExists != null) {
@@ -402,4 +426,118 @@ class _$_UsernameExists implements _UsernameExists {
 
 abstract class _UsernameExists implements UserProfileFailure {
   const factory _UsernameExists() = _$_UsernameExists;
+}
+
+/// @nodoc
+abstract class _$$_UserNotFoundCopyWith<$Res> {
+  factory _$$_UserNotFoundCopyWith(
+          _$_UserNotFound value, $Res Function(_$_UserNotFound) then) =
+      __$$_UserNotFoundCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_UserNotFoundCopyWithImpl<$Res>
+    extends _$UserProfileFailureCopyWithImpl<$Res, _$_UserNotFound>
+    implements _$$_UserNotFoundCopyWith<$Res> {
+  __$$_UserNotFoundCopyWithImpl(
+      _$_UserNotFound _value, $Res Function(_$_UserNotFound) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_UserNotFound implements _UserNotFound {
+  const _$_UserNotFound();
+
+  @override
+  String toString() {
+    return 'UserProfileFailure.userNotFound()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_UserNotFound);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() usernameExists,
+    required TResult Function() userNotFound,
+  }) {
+    return userNotFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? usernameExists,
+    TResult? Function()? userNotFound,
+  }) {
+    return userNotFound?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? usernameExists,
+    TResult Function()? userNotFound,
+    required TResult orElse(),
+  }) {
+    if (userNotFound != null) {
+      return userNotFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_UsernameExists value) usernameExists,
+    required TResult Function(_UserNotFound value) userNotFound,
+  }) {
+    return userNotFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_UserNotFound value)? userNotFound,
+  }) {
+    return userNotFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_UsernameExists value)? usernameExists,
+    TResult Function(_UserNotFound value)? userNotFound,
+    required TResult orElse(),
+  }) {
+    if (userNotFound != null) {
+      return userNotFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserNotFound implements UserProfileFailure {
+  const factory _UserNotFound() = _$_UserNotFound;
 }
