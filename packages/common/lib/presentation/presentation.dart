@@ -1,5 +1,6 @@
 export 'bottom_loader.dart';
 export 'failure_page.dart';
+export 'next_page_error.dart';
 export 'page_transitions/fade_in_transition.dart';
 export 'page_transitions/slide_left_transition.dart';
 export 'page_transitions/slide_right_transition.dart';
