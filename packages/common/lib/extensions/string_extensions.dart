@@ -1,15 +1,15 @@
 extension StringX on String {
-  capitalize() {
+  String capitalize() {
     return '${this[0].toUpperCase()}${substring(1).toLowerCase()}';
   }
 }
 
 extension NullableStringX on String? {
-  isNullOrEmpty() {
+  bool isNullOrEmpty() {
     return this == null || this!.isEmpty;
   }
 
-  isNotNullOrEmpty() {
+  bool isNotNullOrEmpty() {
     return !isNullOrEmpty();
   }
 }
