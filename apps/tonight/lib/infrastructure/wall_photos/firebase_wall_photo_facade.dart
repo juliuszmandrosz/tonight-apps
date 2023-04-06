@@ -108,13 +108,21 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   }
 
   @override
-  Future<Either<WallPhotoFailure, List<WallPhoto>>> getUserPhotos() async {
+  Future<Either<WallPhotoFailure, List<WallPhoto>>> getUserPhotos(
+    WallPhoto? lastPhoto, {
+    int pageSize = 20,
+  }) async {
     try {
       final user = _firestore.getCurrentUserDocRef(_auth);
-      final result = await _firestore.wallPhotos
+      var query = _firestore.wallPhotos
           .where('userId', isEqualTo: user.id)
           .orderBy('createdAt', descending: true)
-          .get();
+          .limit(20);
+      if (lastPhoto != null) {
+        final lastDoc = await _firestore.wallPhotos.doc(lastPhoto.id).get();
+        query = query.startAfterDocument(lastDoc);
+      }
+      final result = await query.get();
       return right(
         result.docs
             .map((doc) => WallPhotoDto.fromFirebase(doc).toDomain())
