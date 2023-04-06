@@ -5,11 +5,11 @@ import 'package:dartz/dartz.dart';
 import 'package:tonight/domain/user_details/user_details_entity.dart';
 import 'package:tonight/domain/user_details/user_details_failure.dart';
 
-class UserDetailsRepository {
+class UserDetailsAggregator {
   final UserAccountFacade _userAccountFacade;
   final UserClubFacade _userClubFacade;
 
-  UserDetailsRepository(this._userAccountFacade, this._userClubFacade);
+  UserDetailsAggregator(this._userAccountFacade, this._userClubFacade);
 
   Future<Either<UserDetailsFailure, UserDetails>> getUserDetails(
     String userId,
