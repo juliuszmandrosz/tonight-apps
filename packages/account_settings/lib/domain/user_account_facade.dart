@@ -1,13 +1,13 @@
 import 'dart:typed_data';
 
-import 'package:account_settings/domain/user/user_profile_entity.dart';
+import 'package:account_settings/domain/user/user_account_entity.dart';
 import 'package:account_settings/domain/user_profile_failure.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class UserAccountFacade {
-  Stream<Either<UserProfileFailure, UserProfile>> getProfile();
+  Stream<Either<UserProfileFailure, UserAccount>> getProfile();
 
-  Future<Either<UserProfileFailure, UserProfile>> getUserById(String id);
+  Future<Either<UserProfileFailure, UserAccount>> getUserById(String id);
 
   String getProviderForUser();
 

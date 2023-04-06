@@ -10,7 +10,7 @@ abstract class EventReviewState with _$EventReviewState {
     required FormzStatus submittingStatus,
     required CubitStatus status,
     required Option<String> errorMessage,
-    required Option<UserProfile> userProfile,
+    required Option<UserAccount> userProfile,
   }) = _EventReviewState;
 
   factory EventReviewState.initial() => EventReviewState(
