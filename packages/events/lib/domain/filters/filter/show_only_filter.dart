@@ -1,5 +1,4 @@
 import 'package:common/common.dart';
-import 'package:events/domain/filters/filter/ifilter.dart';
 
 class ShowOnlyFilter implements IFilter {
   late final bool showOnlyPast;

@@ -1,4 +1,3 @@
-import 'package:clubs/infrastructure/filters/filter/ifilter.dart';
 import 'package:common/common.dart';
 
 class MaxDistanceFilter implements IFilter {

@@ -1,5 +1,4 @@
 import 'package:common/common.dart';
-import 'package:events/domain/filters/filter/ifilter.dart';
 
 class AllowedOutfitsFilter implements IFilter {
   final List<String> allowedOutfits;

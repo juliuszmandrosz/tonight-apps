@@ -20,18 +20,21 @@ mixin _$WallPhotoFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$WallPhotoFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$_Unexpected implements _Unexpected {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
   }) {
     return unexpected();
   }
@@ -123,6 +130,7 @@ class _$_Unexpected implements _Unexpected {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
   }) {
     return unexpected?.call();
   }
@@ -132,6 +140,7 @@ class _$_Unexpected implements _Unexpected {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -145,6 +154,7 @@ class _$_Unexpected implements _Unexpected {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
   }) {
     return unexpected(this);
   }
@@ -154,6 +164,7 @@ class _$_Unexpected implements _Unexpected {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
   }) {
     return unexpected?.call(this);
   }
@@ -163,6 +174,7 @@ class _$_Unexpected implements _Unexpected {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -216,6 +228,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
   }) {
     return permissionDenied();
   }
@@ -225,6 +238,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
   }) {
     return permissionDenied?.call();
   }
@@ -234,6 +248,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -247,6 +262,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
   }) {
     return permissionDenied(this);
   }
@@ -256,6 +272,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
   }) {
     return permissionDenied?.call(this);
   }
@@ -265,6 +282,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -276,4 +294,112 @@ class _$_PermissionDenied implements _PermissionDenied {
 
 abstract class _PermissionDenied implements WallPhotoFailure {
   const factory _PermissionDenied() = _$_PermissionDenied;
+}
+
+/// @nodoc
+abstract class _$$_NoConnectionCopyWith<$Res> {
+  factory _$$_NoConnectionCopyWith(
+          _$_NoConnection value, $Res Function(_$_NoConnection) then) =
+      __$$_NoConnectionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_NoConnectionCopyWithImpl<$Res>
+    extends _$WallPhotoFailureCopyWithImpl<$Res, _$_NoConnection>
+    implements _$$_NoConnectionCopyWith<$Res> {
+  __$$_NoConnectionCopyWithImpl(
+      _$_NoConnection _value, $Res Function(_$_NoConnection) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_NoConnection implements _NoConnection {
+  const _$_NoConnection();
+
+  @override
+  String toString() {
+    return 'WallPhotoFailure.noConnection()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NoConnection);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
+  }) {
+    return noConnection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
+  }) {
+    return noConnection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
+  }) {
+    return noConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
+  }) {
+    return noConnection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoConnection implements WallPhotoFailure {
+  const factory _NoConnection() = _$_NoConnection;
 }
