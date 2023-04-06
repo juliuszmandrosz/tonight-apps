@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProfileState {
-  UserProfile get user => throw _privateConstructorUsedError;
+  UserAccount get user => throw _privateConstructorUsedError;
   bool get isFromOauth => throw _privateConstructorUsedError;
   CubitStatus get initialStatus => throw _privateConstructorUsedError;
   CubitStatus get deletingAccountStatus => throw _privateConstructorUsedError;
@@ -34,7 +34,7 @@ abstract class $ProfileStateCopyWith<$Res> {
       _$ProfileStateCopyWithImpl<$Res, ProfileState>;
   @useResult
   $Res call(
-      {UserProfile user,
+      {UserAccount user,
       bool isFromOauth,
       CubitStatus initialStatus,
       CubitStatus deletingAccountStatus,
@@ -64,7 +64,7 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as UserProfile,
+              as UserAccount,
       isFromOauth: null == isFromOauth
           ? _value.isFromOauth
           : isFromOauth // ignore: cast_nullable_to_non_nullable
@@ -94,7 +94,7 @@ abstract class _$$_ProfileStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {UserProfile user,
+      {UserAccount user,
       bool isFromOauth,
       CubitStatus initialStatus,
       CubitStatus deletingAccountStatus,
@@ -122,7 +122,7 @@ class __$$_ProfileStateCopyWithImpl<$Res>
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as UserProfile,
+              as UserAccount,
       isFromOauth: null == isFromOauth
           ? _value.isFromOauth
           : isFromOauth // ignore: cast_nullable_to_non_nullable
@@ -155,7 +155,7 @@ class _$_ProfileState extends _ProfileState {
       : super._();
 
   @override
-  final UserProfile user;
+  final UserAccount user;
   @override
   final bool isFromOauth;
   @override
@@ -199,7 +199,7 @@ class _$_ProfileState extends _ProfileState {
 
 abstract class _ProfileState extends ProfileState {
   factory _ProfileState(
-      {required final UserProfile user,
+      {required final UserAccount user,
       required final bool isFromOauth,
       required final CubitStatus initialStatus,
       required final CubitStatus deletingAccountStatus,
@@ -207,7 +207,7 @@ abstract class _ProfileState extends ProfileState {
   _ProfileState._() : super._();
 
   @override
-  UserProfile get user;
+  UserAccount get user;
   @override
   bool get isFromOauth;
   @override
