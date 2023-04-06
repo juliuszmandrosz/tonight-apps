@@ -146,7 +146,11 @@ class FirebaseEventFacade
     List<String> eventIds,
   ) async {
     try {
-      final result = await _getEventsByIdsFromFirestore(eventIds);
+      final docs =
+          await _firestore.eventCollection.getDocsByIdsWhereIn(eventIds);
+
+      final result =
+          docs.map((doc) => EventDto.fromFirebase(doc).toDomain()).toList();
 
       return right(result);
     } on FirebaseException catch (e) {
@@ -392,7 +396,12 @@ class FirebaseEventFacade
       final favoriteEventIds =
           await userDoc.get('favoriteEventIds') as List<dynamic>;
 
-      final result = await _getEventsByIdsFromFirestore(favoriteEventIds);
+      final docs = await _firestore.eventCollection.getDocsByIdsWhereIn(
+        favoriteEventIds,
+      );
+
+      final result =
+          docs.map((doc) => EventDto.fromFirebase(doc).toDomain()).toList();
 
       return right(result);
     } on FirebaseException catch (e) {
@@ -469,32 +478,6 @@ class FirebaseEventFacade
       );
       return left(await _handleFirebaseFunctionsException(e));
     }
-  }
-
-  Future<List<Event>> _getEventsByIdsFromFirestore(
-      List<dynamic> eventIds) async {
-    final result = <Event>[];
-
-    while (eventIds.isNotEmpty) {
-      final chunkSize = eventIds.length >= 10 ? 10 : eventIds.length;
-
-      final eventIdsChunk = eventIds.getRange(0, chunkSize).toList();
-
-      final eventsQuery = _firestore.eventCollection
-          .where(FieldPath.documentId, whereIn: eventIdsChunk);
-
-      final eventDocsChunk = await eventsQuery.get();
-
-      final eventsChunk = eventDocsChunk.docs
-          .map((doc) => EventDto.fromFirebase(doc).toDomain())
-          .toList();
-
-      result.addAll(eventsChunk);
-
-      eventIds.removeRange(0, chunkSize);
-    }
-
-    return result;
   }
 
   Future<PartnerEventFailure> _handleFirebaseFunctionsException(
