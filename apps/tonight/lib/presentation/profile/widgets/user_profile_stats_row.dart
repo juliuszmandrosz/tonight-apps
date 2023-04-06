@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:translations/translations.dart';
 
 class UserProfileStatsRow extends StatelessWidget {
-  final UserProfile user;
+  final UserAccount user;
 
   const UserProfileStatsRow({
     required this.user,
