@@ -13,12 +13,10 @@ class UserProfileAggregator {
 
   UserProfileAggregator(this._userAccountFacade, this._wallPhotoFacade);
 
-  Stream<Either<UserProfileFailure, UserProfile>> getUserProfile(
-    WallPhoto? lastPhoto, {
+  Stream<Either<UserProfileFailure, UserProfile>> getUserProfile({
     int photosPageSize = 20,
   }) async* {
     final userPhotos = await _wallPhotoFacade.getUserPhotos(
-      lastPhoto: lastPhoto,
       pageSize: photosPageSize,
     );
 
@@ -42,5 +40,21 @@ class UserProfileAggregator {
             ),
           ),
         );
+  }
+
+  Future<Either<UserProfileFailure, List<WallPhoto>>> getNextPageOfUserPhotos({
+    WallPhoto? lastPhoto,
+    int photosPageSize = 20,
+  }) async {
+    final userPhotos = await _wallPhotoFacade.getUserPhotos(
+      lastPhoto: lastPhoto,
+      pageSize: photosPageSize,
+    );
+
+    if (userPhotos.isLeft()) {
+      return left(const UserProfileFailure.unexpected());
+    }
+
+    return right(userPhotos.getRightOrCrash());
   }
 }
