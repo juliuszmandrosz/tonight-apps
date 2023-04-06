@@ -16,7 +16,6 @@ import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
 import 'package:tonight/application/wall_photos/wall_photos_cubit.dart';
 import 'package:tonight/application/welcome_loading/welcome_loading_cubit.dart';
 import 'package:tonight/injection.dart';
-import 'package:tonight/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight/presentation/core/tonight_upgrade_alert.dart';
 import 'package:tonight/presentation/navigator/navigator_page.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';

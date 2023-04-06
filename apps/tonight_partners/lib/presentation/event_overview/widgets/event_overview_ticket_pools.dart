@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
 import 'package:tonight_partners/presentation/add_event/widgets/ticket_pools/event_ticket_pool_list_tile.dart';
-import 'package:tonight_partners/presentation/core/dots_loading_indicator.dart';
 import 'package:tonight_partners/presentation/core/tonight_partners_headline.dart';
 import 'package:tonight_partners/presentation/routes/app_router.dart';
 import 'package:translations/translations.dart';

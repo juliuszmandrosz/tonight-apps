@@ -6,7 +6,6 @@ import 'package:tonight_scanner/application/current_event/current_event_cubit.da
 import 'package:tonight_scanner/application/scanner/scanner_cubit.dart';
 import 'package:tonight_scanner/application/selector_club/selector_club_cubit.dart';
 import 'package:tonight_scanner/injection.dart';
-import 'package:tonight_scanner/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight_scanner/presentation/core/tonight_scanner_app_bar.dart';
 import 'package:tonight_scanner/presentation/scanner/widgets/qr_scanner.dart';
 import 'package:tonight_scanner/presentation/scanner/widgets/scan_another_ticket_button.dart';

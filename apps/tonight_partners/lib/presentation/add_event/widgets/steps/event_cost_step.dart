@@ -6,7 +6,6 @@ import 'package:tonight_partners/presentation/add_event/widgets/cost/apply_disco
 import 'package:tonight_partners/presentation/add_event/widgets/cost/available_discounts.dart';
 import 'package:tonight_partners/presentation/add_event/widgets/cost/current_fee.dart';
 import 'package:tonight_partners/presentation/add_event/widgets/cost/exclusive_event_switch.dart';
-import 'package:tonight_partners/presentation/core/dots_loading_indicator.dart';
 import 'package:tonight_partners/presentation/core/tonight_info_row.dart';
 import 'package:translations/translations.dart';
 

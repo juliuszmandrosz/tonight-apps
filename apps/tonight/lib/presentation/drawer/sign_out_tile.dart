@@ -3,7 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight/presentation/profile/widgets/profile_menu_list_tile.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
@@ -12,8 +12,9 @@ class SignOutTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProfileMenuListTile(
-      title: S().signOut,
+    return DrawerTile(
+      label: S().signOut,
+      icon: FontAwesomeIcons.arrowRightFromBracket,
       onTap: () async {
         final result = await context.showConfirmationDialogWithCustomMessage(
           S().confirmSignOut,
