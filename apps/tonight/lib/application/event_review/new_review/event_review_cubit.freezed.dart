@@ -21,7 +21,7 @@ mixin _$EventReviewState {
   FormzStatus get submittingStatus => throw _privateConstructorUsedError;
   CubitStatus get status => throw _privateConstructorUsedError;
   Option<String> get errorMessage => throw _privateConstructorUsedError;
-  Option<UserProfile> get userProfile => throw _privateConstructorUsedError;
+  Option<UserAccount> get userProfile => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventReviewStateCopyWith<EventReviewState> get copyWith =>
@@ -40,7 +40,7 @@ abstract class $EventReviewStateCopyWith<$Res> {
       FormzStatus submittingStatus,
       CubitStatus status,
       Option<String> errorMessage,
-      Option<UserProfile> userProfile});
+      Option<UserAccount> userProfile});
 }
 
 /// @nodoc
@@ -87,7 +87,7 @@ class _$EventReviewStateCopyWithImpl<$Res, $Val extends EventReviewState>
       userProfile: null == userProfile
           ? _value.userProfile
           : userProfile // ignore: cast_nullable_to_non_nullable
-              as Option<UserProfile>,
+              as Option<UserAccount>,
     ) as $Val);
   }
 }
@@ -106,7 +106,7 @@ abstract class _$$_EventReviewStateCopyWith<$Res>
       FormzStatus submittingStatus,
       CubitStatus status,
       Option<String> errorMessage,
-      Option<UserProfile> userProfile});
+      Option<UserAccount> userProfile});
 }
 
 /// @nodoc
@@ -151,7 +151,7 @@ class __$$_EventReviewStateCopyWithImpl<$Res>
       userProfile: null == userProfile
           ? _value.userProfile
           : userProfile // ignore: cast_nullable_to_non_nullable
-              as Option<UserProfile>,
+              as Option<UserAccount>,
     ));
   }
 }
@@ -179,7 +179,7 @@ class _$_EventReviewState extends _EventReviewState {
   @override
   final Option<String> errorMessage;
   @override
-  final Option<UserProfile> userProfile;
+  final Option<UserAccount> userProfile;
 
   @override
   String toString() {
@@ -222,7 +222,7 @@ abstract class _EventReviewState extends EventReviewState {
       required final FormzStatus submittingStatus,
       required final CubitStatus status,
       required final Option<String> errorMessage,
-      required final Option<UserProfile> userProfile}) = _$_EventReviewState;
+      required final Option<UserAccount> userProfile}) = _$_EventReviewState;
   const _EventReviewState._() : super._();
 
   @override
@@ -236,7 +236,7 @@ abstract class _EventReviewState extends EventReviewState {
   @override
   Option<String> get errorMessage;
   @override
-  Option<UserProfile> get userProfile;
+  Option<UserAccount> get userProfile;
   @override
   @JsonKey(ignore: true)
   _$$_EventReviewStateCopyWith<_$_EventReviewState> get copyWith =>
