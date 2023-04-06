@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user_profile_failure.dart';
+part of 'user_account_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$UserProfileFailure {
+mixin _$UserAccountFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
@@ -69,16 +69,16 @@ mixin _$UserProfileFailure {
 }
 
 /// @nodoc
-abstract class $UserProfileFailureCopyWith<$Res> {
-  factory $UserProfileFailureCopyWith(
-          UserProfileFailure value, $Res Function(UserProfileFailure) then) =
-      _$UserProfileFailureCopyWithImpl<$Res, UserProfileFailure>;
+abstract class $UserAccountFailureCopyWith<$Res> {
+  factory $UserAccountFailureCopyWith(
+          UserAccountFailure value, $Res Function(UserAccountFailure) then) =
+      _$UserAccountFailureCopyWithImpl<$Res, UserAccountFailure>;
 }
 
 /// @nodoc
-class _$UserProfileFailureCopyWithImpl<$Res, $Val extends UserProfileFailure>
-    implements $UserProfileFailureCopyWith<$Res> {
-  _$UserProfileFailureCopyWithImpl(this._value, this._then);
+class _$UserAccountFailureCopyWithImpl<$Res, $Val extends UserAccountFailure>
+    implements $UserAccountFailureCopyWith<$Res> {
+  _$UserAccountFailureCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +95,7 @@ abstract class _$$_UnexpectedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$UserProfileFailureCopyWithImpl<$Res, _$_Unexpected>
+    extends _$UserAccountFailureCopyWithImpl<$Res, _$_Unexpected>
     implements _$$_UnexpectedCopyWith<$Res> {
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
@@ -109,7 +109,7 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   String toString() {
-    return 'UserProfileFailure.unexpected()';
+    return 'UserAccountFailure.unexpected()';
   }
 
   @override
@@ -196,7 +196,7 @@ class _$_Unexpected implements _Unexpected {
   }
 }
 
-abstract class _Unexpected implements UserProfileFailure {
+abstract class _Unexpected implements UserAccountFailure {
   const factory _Unexpected() = _$_Unexpected;
 }
 
@@ -209,7 +209,7 @@ abstract class _$$_PermissionDeniedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PermissionDeniedCopyWithImpl<$Res>
-    extends _$UserProfileFailureCopyWithImpl<$Res, _$_PermissionDenied>
+    extends _$UserAccountFailureCopyWithImpl<$Res, _$_PermissionDenied>
     implements _$$_PermissionDeniedCopyWith<$Res> {
   __$$_PermissionDeniedCopyWithImpl(
       _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
@@ -223,7 +223,7 @@ class _$_PermissionDenied implements _PermissionDenied {
 
   @override
   String toString() {
-    return 'UserProfileFailure.permissionDenied()';
+    return 'UserAccountFailure.permissionDenied()';
   }
 
   @override
@@ -310,7 +310,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   }
 }
 
-abstract class _PermissionDenied implements UserProfileFailure {
+abstract class _PermissionDenied implements UserAccountFailure {
   const factory _PermissionDenied() = _$_PermissionDenied;
 }
 
@@ -323,7 +323,7 @@ abstract class _$$_UsernameExistsCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UsernameExistsCopyWithImpl<$Res>
-    extends _$UserProfileFailureCopyWithImpl<$Res, _$_UsernameExists>
+    extends _$UserAccountFailureCopyWithImpl<$Res, _$_UsernameExists>
     implements _$$_UsernameExistsCopyWith<$Res> {
   __$$_UsernameExistsCopyWithImpl(
       _$_UsernameExists _value, $Res Function(_$_UsernameExists) _then)
@@ -337,7 +337,7 @@ class _$_UsernameExists implements _UsernameExists {
 
   @override
   String toString() {
-    return 'UserProfileFailure.usernameExists()';
+    return 'UserAccountFailure.usernameExists()';
   }
 
   @override
@@ -424,7 +424,7 @@ class _$_UsernameExists implements _UsernameExists {
   }
 }
 
-abstract class _UsernameExists implements UserProfileFailure {
+abstract class _UsernameExists implements UserAccountFailure {
   const factory _UsernameExists() = _$_UsernameExists;
 }
 
@@ -437,7 +437,7 @@ abstract class _$$_UserNotFoundCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UserNotFoundCopyWithImpl<$Res>
-    extends _$UserProfileFailureCopyWithImpl<$Res, _$_UserNotFound>
+    extends _$UserAccountFailureCopyWithImpl<$Res, _$_UserNotFound>
     implements _$$_UserNotFoundCopyWith<$Res> {
   __$$_UserNotFoundCopyWithImpl(
       _$_UserNotFound _value, $Res Function(_$_UserNotFound) _then)
@@ -451,7 +451,7 @@ class _$_UserNotFound implements _UserNotFound {
 
   @override
   String toString() {
-    return 'UserProfileFailure.userNotFound()';
+    return 'UserAccountFailure.userNotFound()';
   }
 
   @override
@@ -538,6 +538,6 @@ class _$_UserNotFound implements _UserNotFound {
   }
 }
 
-abstract class _UserNotFound implements UserProfileFailure {
+abstract class _UserNotFound implements UserAccountFailure {
   const factory _UserNotFound() = _$_UserNotFound;
 }
