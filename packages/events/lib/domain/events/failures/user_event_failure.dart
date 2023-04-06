@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:translations/translations.dart';
 
 part 'user_event_failure.freezed.dart';
 
@@ -13,4 +14,17 @@ class UserEventFailure with _$UserEventFailure {
 
   const factory UserEventFailure.moreThan20FavoriteEvents() =
       _MoreThan20FavoriteEvents;
+}
+
+extension UserEventFailureX on UserEventFailure {
+  String get message {
+    return map(
+      unexpected: (_) => S().serverError,
+      permissionDenied: (_) => S().operationNotAllowed,
+      toggleFavoriteEventFailure: (_) => S().errorChangingEventStatus,
+      moreThan20FavoriteEvents: (_) =>
+          // TODO - add translation
+          'You can\'t have more than 20 favorite events',
+    );
+  }
 }
