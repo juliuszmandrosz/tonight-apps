@@ -87,9 +87,9 @@ extension FirestoreX on FirebaseFirestore {
 }
 
 extension CollectionReferenceX on CollectionReference {
-  Future<List<DocumentSnapshot>> getDocsByIdsWhereIn({
-    required List<String> ids,
-  }) async {
+  Future<List<DocumentSnapshot>> getDocsByIdsWhereIn(
+    List<String> ids,
+  ) async {
     final result = <DocumentSnapshot>[];
     final idsCopy = [...ids];
 
@@ -113,9 +113,9 @@ extension CollectionReferenceX on CollectionReference {
     return result;
   }
 
-  Future<List<DocumentSnapshot>> getDocsByIdsWhereNotIn({
-    required List<String> ids,
-  }) async {
+  Future<List<DocumentSnapshot>> getDocsByIdsWhereNotIn(
+    List<String> ids,
+  ) async {
     final result = <DocumentSnapshot>[];
     final idsCopy = [...ids];
 
