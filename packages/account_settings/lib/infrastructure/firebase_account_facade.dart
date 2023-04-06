@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:account_settings/domain/user/user_account_entity.dart';
 import 'package:account_settings/domain/user_account_facade.dart';
-import 'package:account_settings/domain/user_profile_failure.dart';
+import 'package:account_settings/domain/user_account_failure.dart';
 import 'package:auth/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/common.dart';
@@ -35,23 +35,23 @@ class FirebaseAccountFacade implements UserAccountFacade {
         _logger = logger;
 
   @override
-  Stream<Either<UserProfileFailure, UserAccount>> getUserAccount() async* {
+  Stream<Either<UserAccountFailure, UserAccount>> getUserAccount() async* {
     final userDocRef = _getUserDocRef();
     yield* userDocRef
         .snapshots()
-        .map((snapshot) => right<UserProfileFailure, UserAccount>(
+        .map((snapshot) => right<UserAccountFailure, UserAccount>(
             UserAccountDto.fromFirebase(snapshot).toDomain()))
         .handleError((e) {
       if (e is FirebaseException) {
         return left(
-          handleFirebaseError<UserProfileFailure>(
+          handleFirebaseError<UserAccountFailure>(
             logger: _logger,
             crashlytics: _firebaseCrashlytics,
             exception: e,
             message: 'Firebase Exception getting profile EXCEPTION: $e',
-            unexpectedFailure: const UserProfileFailure.unexpected(),
+            unexpectedFailure: const UserAccountFailure.unexpected(),
             permissionDeniedFailure:
-                const UserProfileFailure.permissionDenied(),
+                const UserAccountFailure.permissionDenied(),
           ),
         );
       }
@@ -65,13 +65,13 @@ class FirebaseAccountFacade implements UserAccountFacade {
   }
 
   @override
-  Future<Either<UserProfileFailure, Unit>> submitOnboardingForUser({
+  Future<Either<UserAccountFailure, Unit>> submitOnboardingForUser({
     required String username,
     required Uint8List? profilePicture,
   }) async {
     try {
       if (await _checkIfUsernameExists(username)) {
-        return left(const UserProfileFailure.usernameExists());
+        return left(const UserAccountFailure.usernameExists());
       }
       String? pictureUrl;
       final userDocRef = _getUserDocRef();
@@ -88,45 +88,45 @@ class FirebaseAccountFacade implements UserAccountFacade {
       return right(unit);
     } on FirebaseException catch (e) {
       return left(
-        await handleFirebaseError<UserProfileFailure>(
+        await handleFirebaseError<UserAccountFailure>(
           logger: _logger,
           crashlytics: _firebaseCrashlytics,
           exception: e,
           message: 'Firebase Exception submitting onboarding for EXCEPTION: $e',
-          unexpectedFailure: const UserProfileFailure.unexpected(),
-          permissionDeniedFailure: const UserProfileFailure.permissionDenied(),
+          unexpectedFailure: const UserAccountFailure.unexpected(),
+          permissionDeniedFailure: const UserAccountFailure.permissionDenied(),
         ),
       );
     }
   }
 
   @override
-  Future<Either<UserProfileFailure, Unit>> setUsernameForUser(
+  Future<Either<UserAccountFailure, Unit>> setUsernameForUser(
     String username,
   ) async {
     try {
       if (await _checkIfUsernameExists(username)) {
-        return left(const UserProfileFailure.usernameExists());
+        return left(const UserAccountFailure.usernameExists());
       }
       final userDocRef = _getUserDocRef();
       await userDocRef.update({'username': username});
       return right(unit);
     } on FirebaseException catch (e) {
       return left(
-        await handleFirebaseError<UserProfileFailure>(
+        await handleFirebaseError<UserAccountFailure>(
           logger: _logger,
           crashlytics: _firebaseCrashlytics,
           exception: e,
           message: 'Firebase Exception setting username for user EXCEPTION: $e',
-          unexpectedFailure: const UserProfileFailure.unexpected(),
-          permissionDeniedFailure: const UserProfileFailure.permissionDenied(),
+          unexpectedFailure: const UserAccountFailure.unexpected(),
+          permissionDeniedFailure: const UserAccountFailure.permissionDenied(),
         ),
       );
     }
   }
 
   @override
-  Future<Either<UserProfileFailure, Unit>> savePushNotificationsToken(
+  Future<Either<UserAccountFailure, Unit>> savePushNotificationsToken(
     String token,
   ) async {
     try {
@@ -138,21 +138,21 @@ class FirebaseAccountFacade implements UserAccountFacade {
       return right(unit);
     } on FirebaseException catch (e) {
       return left(
-        await handleFirebaseError<UserProfileFailure>(
+        await handleFirebaseError<UserAccountFailure>(
           logger: _logger,
           crashlytics: _firebaseCrashlytics,
           exception: e,
           message:
               'Firebase Exception saving push notifications token EXCEPTION: $e',
-          unexpectedFailure: const UserProfileFailure.unexpected(),
-          permissionDeniedFailure: const UserProfileFailure.permissionDenied(),
+          unexpectedFailure: const UserAccountFailure.unexpected(),
+          permissionDeniedFailure: const UserAccountFailure.permissionDenied(),
         ),
       );
     }
   }
 
   @override
-  Future<Either<UserProfileFailure, Unit>> setProfilePictureForUser(
+  Future<Either<UserAccountFailure, Unit>> setProfilePictureForUser(
     Uint8List profilePicture,
   ) async {
     try {
@@ -165,20 +165,20 @@ class FirebaseAccountFacade implements UserAccountFacade {
       return right(unit);
     } on FirebaseException catch (e) {
       return left(
-        await handleFirebaseError<UserProfileFailure>(
+        await handleFirebaseError<UserAccountFailure>(
           logger: _logger,
           crashlytics: _firebaseCrashlytics,
           exception: e,
           message: 'Firebase Exception uploading profile picture EXCEPTION: $e',
-          unexpectedFailure: const UserProfileFailure.unexpected(),
-          permissionDeniedFailure: const UserProfileFailure.permissionDenied(),
+          unexpectedFailure: const UserAccountFailure.unexpected(),
+          permissionDeniedFailure: const UserAccountFailure.permissionDenied(),
         ),
       );
     }
   }
 
   @override
-  Future<Either<UserProfileFailure, UserAccount>> getUserById(String id) async {
+  Future<Either<UserAccountFailure, UserAccount>> getUserById(String id) async {
     try {
       final result = await _firestore.userCollection
           .where(
@@ -188,7 +188,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
           .get();
 
       if (result.docs.isEmpty) {
-        return left(const UserProfileFailure.userNotFound());
+        return left(const UserAccountFailure.userNotFound());
       }
 
       final userDto = UserAccountDto.fromFirebase(result.docs.first);
@@ -196,13 +196,13 @@ class FirebaseAccountFacade implements UserAccountFacade {
       return right(userDto.toDomain());
     } on FirebaseException catch (e) {
       return left(
-        await handleFirebaseError<UserProfileFailure>(
+        await handleFirebaseError<UserAccountFailure>(
           logger: _logger,
           crashlytics: _firebaseCrashlytics,
           exception: e,
           message: 'Firebase Exception getting user by id EXCEPTION: $e',
-          unexpectedFailure: const UserProfileFailure.unexpected(),
-          permissionDeniedFailure: const UserProfileFailure.permissionDenied(),
+          unexpectedFailure: const UserAccountFailure.unexpected(),
+          permissionDeniedFailure: const UserAccountFailure.permissionDenied(),
         ),
       );
     }
