@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:common/common.dart';
+import 'package:dartz/dartz.dart';
 import 'package:events/events.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:translations/translations.dart';
 
 part 'event_favorite_cubit.freezed.dart';
@@ -53,16 +53,16 @@ class EventFavoriteCubit extends Cubit<EventFavoriteState> {
     emit(state.copyWith(isChangingFavoriteStatus: false));
 
     failureOrSuccess.fold(
-      (failure) => _emitToggleFailure(favoriteEvents),
+      (failure) => _emitToggleFailure(favoriteEvents, failure),
       (success) {},
     );
   }
 
-  void _emitToggleFailure(List<Event> previousEvents) {
+  void _emitToggleFailure(
+      List<Event> previousEvents, UserEventFailure failure) {
     emit(
       state.copyWith(
-        snackbarMessage: some(S().errorChangingEventStatus),
-        status: CubitStatus.failure,
+        snackbarMessage: some(failure.message),
         favoriteEvents: previousEvents,
       ),
     );

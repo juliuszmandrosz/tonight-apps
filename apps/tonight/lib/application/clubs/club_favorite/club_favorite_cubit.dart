@@ -1,8 +1,8 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:clubs/clubs.dart';
 import 'package:common/application/cubit_status.dart';
+import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:translations/translations.dart';
 
 part 'club_favorite_cubit.freezed.dart';
@@ -49,16 +49,15 @@ class ClubFavoriteCubit extends Cubit<ClubFavoriteState> {
     emit(state.copyWith(isChangingFavoriteStatus: false));
 
     failureOrSuccess.fold(
-      (failure) => _emitToggleFailure(favoriteClubs),
+      (failure) => _emitToggleFailure(favoriteClubs, failure),
       (success) {},
     );
   }
 
-  void _emitToggleFailure(List<Club> previousClubs) {
+  void _emitToggleFailure(List<Club> previousClubs, UserClubFailure failure) {
     emit(
       state.copyWith(
-        snackbarMessage: some(S().errorChangingClubStatus),
-        status: CubitStatus.failure,
+        snackbarMessage: some(failure.message),
         favoriteClubs: previousClubs,
       ),
     );
