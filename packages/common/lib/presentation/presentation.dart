@@ -1,5 +1,6 @@
 export 'bottom_loader.dart';
 export 'circle_network_photo.dart';
+export 'drawer_tile.dart';
 export 'failure_page.dart';
 export 'network_photo.dart';
 export 'next_page_error.dart';
