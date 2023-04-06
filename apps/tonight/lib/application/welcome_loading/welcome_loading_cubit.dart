@@ -92,6 +92,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     }
 
     _initUserLocationCubit();
+    _initWallPhotos();
     _initTickets();
     _initFavoriteEvents();
     _initFavoriteClubs();
@@ -126,6 +127,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
           status: CubitStatus.success,
         ),
       );
+      _cancelSubs();
     }
   }
 
@@ -213,9 +215,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _clubFavoritesSub = _clubFavoriteCubit.stream.listen((event) {
       _checkAndEmitFailure(event.status);
       _emitSuccessIfAllLoaded();
-      if (event.status.isSuccess()) {
-        _initWallPhotos();
-      }
     });
   }
 
@@ -320,8 +319,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
             .maybeWhen(orElse: () => false, loadSuccess: (_) => true);
   }
 
-  @override
-  Future<void> close() {
+  _cancelSubs() {
     _filtersSub?.cancel();
     _locationSub?.cancel();
     _clubFavoritesSub?.cancel();
@@ -332,6 +330,11 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _profileSub?.cancel();
     _pushNotificationsSub?.cancel();
     _wallPhotosSub?.cancel();
+  }
+
+  @override
+  Future<void> close() {
+    _cancelSubs();
     return super.close();
   }
 }
