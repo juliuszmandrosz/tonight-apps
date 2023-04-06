@@ -16,7 +16,7 @@ class WallPhotosPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final wallPhotosCubit = context.read<WallPhotosCubit>();
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(vertical: 16),
       child: BlocConsumer<WallPhotosCubit, WallPhotosState>(
         listenWhen: (previous, current) =>
             previous.getPhotosStatus != current.getPhotosStatus,
@@ -31,28 +31,27 @@ class WallPhotosPage extends StatelessWidget {
         },
         builder: (ctx, state) => state.getPhotosStatus.isLoading()
             ? const TicketLogoAnimation()
-            : RefreshIndicator(
-                onRefresh: () async => wallPhotosCubit.getPhotos(),
-                child: state.photos.isEmpty
-                    ? const RefreshWallPhotosButton()
-                    : InfiniteList(
-                        itemCount: state.photos.length,
-                        isLoading: state.nextPageStatus.isLoading(),
-                        hasError: state.nextPageStatus.isFailure(),
-                        hasReachedMax: state.hasReachedMax,
-                        onFetchData: () =>
-                            wallPhotosCubit.fetchNextPhotosPage(),
-                        separatorBuilder: (_, __) => const SizedBox(height: 12),
-                        itemBuilder: (_, i) => WallPhotoCard(
-                          wallPhoto: state.photos[i],
-                        ),
-                        loadingBuilder: (_) => const BottomLoader(),
-                        errorBuilder: (_) => NextPageError(
-                          retryCallback: () =>
-                              wallPhotosCubit.fetchNextPhotosPage(),
-                        ),
+            : state.photos.isEmpty
+                ? const RefreshWallPhotosButton()
+                : RefreshIndicator(
+                    onRefresh: () async => wallPhotosCubit.getPhotos(),
+                    child: InfiniteList(
+                      itemCount: state.photos.length,
+                      isLoading: state.nextPageStatus.isLoading(),
+                      hasError: state.nextPageStatus.isFailure(),
+                      hasReachedMax: state.hasReachedMax,
+                      onFetchData: () => wallPhotosCubit.fetchNextPhotosPage(),
+                      separatorBuilder: (_, __) => const SizedBox(height: 12),
+                      itemBuilder: (_, i) => WallPhotoCard(
+                        wallPhoto: state.photos[i],
                       ),
-              ),
+                      loadingBuilder: (_) => const BottomLoader(),
+                      errorBuilder: (_) => NextPageError(
+                        retryCallback: () =>
+                            wallPhotosCubit.fetchNextPhotosPage(),
+                      ),
+                    ),
+                  ),
       ),
     );
   }
