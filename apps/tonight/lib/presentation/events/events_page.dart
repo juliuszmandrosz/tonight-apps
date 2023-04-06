@@ -47,7 +47,7 @@ class _EventsPageState extends State<EventsPage>
         child: Column(
           children: [
             const EventSearchField(),
-            const SizedBox(height: 15),
+            const SizedBox(height: 16),
             Expanded(
               child: RefreshIndicator(
                 onRefresh: () async => _refreshEvents(),
@@ -61,7 +61,7 @@ class _EventsPageState extends State<EventsPage>
                     const SizedBox(height: 15),
                     BlocConsumer<EventOverviewBloc, EventOverviewState>(
                       listenWhen: (previous, current) =>
-                      previous.status != current.status,
+                          previous.status != current.status,
                       listener: (context, state) {
                         if (state.status.isFailure()) {
                           context.pushRoute(
@@ -93,17 +93,14 @@ class _EventsPageState extends State<EventsPage>
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
-                                    height: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .height *
+                                    height: MediaQuery.of(context).size.height *
                                         0.1,
                                   ),
                                   Text(
                                     state.eventFilters.maxDistanceFilter
-                                        .userLocation.isNotEmpty &&
-                                        state.eventFilters.maxDistanceFilter
-                                            .enabled
+                                                .userLocation.isNotEmpty &&
+                                            state.eventFilters.maxDistanceFilter
+                                                .enabled
                                         ? S().noEventsNearYou
                                         : S().events(0),
                                     style: context.titleMedium,
@@ -120,19 +117,18 @@ class _EventsPageState extends State<EventsPage>
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
                               separatorBuilder: (_, __) =>
-                              const SizedBox(height: 10),
+                                  const SizedBox(height: 10),
                               itemCount: state.hasReachedMax
                                   ? state.events.length
                                   : state.events.length + 1,
-                              itemBuilder: (ctx, i) =>
-                              i >= state.events.length
+                              itemBuilder: (ctx, i) => i >= state.events.length
                                   ? const BottomLoader()
                                   : Center(
-                                child: EventCard(
-                                  event: state.events[i],
-                                  heroPhrase: heroPhrase,
-                                ),
-                              ),
+                                      child: EventCard(
+                                        event: state.events[i],
+                                        heroPhrase: heroPhrase,
+                                      ),
+                                    ),
                             );
                         }
                       },
