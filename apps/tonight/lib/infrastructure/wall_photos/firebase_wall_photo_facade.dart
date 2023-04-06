@@ -108,8 +108,8 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   }
 
   @override
-  Future<Either<WallPhotoFailure, List<WallPhoto>>> getUserPhotos(
-    WallPhoto? lastPhoto, {
+  Future<Either<WallPhotoFailure, List<WallPhoto>>> getUserPhotos({
+    WallPhoto? lastPhoto,
     int pageSize = 20,
   }) async {
     try {
