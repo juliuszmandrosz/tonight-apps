@@ -15,17 +15,17 @@ class FavoritesPage extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.centerLeft,
-            child: TonightHeadline(text: S().favoriteEvents),
-          ),
-          const SizedBox(height: 20),
-          const FavoriteEventsList(),
-          const SizedBox(height: 30),
-          Align(
-            alignment: Alignment.centerLeft,
             child: TonightHeadline(text: S().favoriteClubs),
           ),
           const SizedBox(height: 20),
           const FavoriteClubsList(),
+          const SizedBox(height: 30),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TonightHeadline(text: S().favoriteEvents),
+          ),
+          const SizedBox(height: 20),
+          const FavoriteEventsList(),
         ],
       ),
     );
