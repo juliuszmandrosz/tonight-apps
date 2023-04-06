@@ -52,4 +52,6 @@ class WallPhotosCubit extends Cubit<WallPhotosState> {
       ),
     );
   }
+
+  Future<void> submitSearchField(String phrase) async {}
 }

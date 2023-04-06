@@ -8,7 +8,6 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:tonight_partners/application/event_notifier/event_notifier_cubit.dart';
 import 'package:tonight_partners/application/postpone_event/postpone_event_cubit.dart';
 import 'package:tonight_partners/injection.dart';
-import 'package:tonight_partners/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart';
 import 'package:tonight_partners/presentation/postpone_event/widgets/confirm_postpone_event_button.dart';
 import 'package:tonight_partners/presentation/postpone_event/widgets/current_end_date_input.dart';

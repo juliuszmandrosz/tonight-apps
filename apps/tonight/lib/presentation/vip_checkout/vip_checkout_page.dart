@@ -9,7 +9,6 @@ import 'package:tickets/tickets.dart';
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
 import 'package:tonight/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:tonight/injection.dart';
-import 'package:tonight/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/vip_checkout/widgets/vip_checkout_header.dart';

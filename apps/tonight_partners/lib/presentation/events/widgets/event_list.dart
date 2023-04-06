@@ -3,7 +3,6 @@ import 'package:common/common.dart';
 import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight_partners/presentation/core/dots_loading_indicator.dart';
 import 'package:tonight_partners/presentation/events/widgets/event_list_tile.dart';
 import 'package:tonight_partners/presentation/routes/app_router.dart';
 import 'package:translations/translations.dart';

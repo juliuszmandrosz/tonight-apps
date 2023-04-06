@@ -3,7 +3,6 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/wall_photos/wall_photos_cubit.dart';
-import 'package:tonight/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/wall_photos/widgets/refresh_wall_photos_button.dart';
 import 'package:tonight/presentation/wall_photos/widgets/wall_photo_card.dart';

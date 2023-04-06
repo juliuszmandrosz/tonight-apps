@@ -4,17 +4,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:tonight/application/terms_of_service/terms_of_service_cubit.dart';
 import 'package:tonight/injection.dart';
-import 'package:tonight/presentation/profile/widgets/contact_tile.dart';
-import 'package:tonight/presentation/profile/widgets/delete_account_tile.dart';
-import 'package:tonight/presentation/profile/widgets/privacy_policy_tile.dart';
-import 'package:tonight/presentation/profile/widgets/rate_us_tile.dart';
-import 'package:tonight/presentation/profile/widgets/sign_out_tile.dart';
-import 'package:tonight/presentation/profile/widgets/terms_of_service_tile.dart';
+import 'package:tonight/presentation/drawer/contact_tile.dart';
+import 'package:tonight/presentation/drawer/delete_account_tile.dart';
+import 'package:tonight/presentation/drawer/privacy_policy_tile.dart';
+import 'package:tonight/presentation/drawer/rate_us_tile.dart';
+import 'package:tonight/presentation/drawer/sign_out_tile.dart';
+import 'package:tonight/presentation/drawer/terms_of_service_tile.dart';
 
-class ProfileMenuTiles extends StatelessWidget {
-  const ProfileMenuTiles({Key? key}) : super(key: key);
+class TonightDrawerTiles extends StatelessWidget {
+  const TonightDrawerTiles({Key? key}) : super(key: key);
 
-  final settingTiles = const [
+  final tiles = const [
     RateUsTile(),
     ContactTile(),
     TermsOfServiceTile(),
@@ -48,10 +48,10 @@ class ProfileMenuTiles extends StatelessWidget {
           child: ListView.separated(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            separatorBuilder: (context, i) => const Divider(),
-            itemCount: settingTiles.length + 1,
+            separatorBuilder: (context, i) => const Divider(height: 30),
+            itemCount: tiles.length + 1,
             itemBuilder: (context, i) =>
-                i >= settingTiles.length ? const SizedBox() : settingTiles[i],
+                i >= tiles.length ? const SizedBox() : tiles[i],
           ),
         );
       }),
