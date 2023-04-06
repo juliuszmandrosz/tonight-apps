@@ -45,7 +45,7 @@ class UpdateProfilePictureCubit extends Cubit<UpdateProfilePictureState> {
     emit(state.copyWith(profilePicture: some(value)));
   }
 
-  _emitFailure(UserProfileFailure failure) {
+  _emitFailure(UserAccountFailure failure) {
     emit(
       state.copyWith(
         errorMessage: some(failure.message),
