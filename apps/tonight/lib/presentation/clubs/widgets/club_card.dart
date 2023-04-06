@@ -14,12 +14,14 @@ class ClubCard extends StatelessWidget {
   final Club _club;
   final String heroTag;
   final bool isFavoriteCard;
+  final double height;
 
   ClubCard({
     Key? key,
     required Club club,
     required String heroPhrase,
     this.isFavoriteCard = false,
+    this.height = 250,
   })  : _club = club,
         heroTag = '$heroPhrase-${club.id}',
         super(key: key);
@@ -51,7 +53,7 @@ class ClubCard extends StatelessWidget {
                   child: CachedNetworkImage(
                     progressIndicatorBuilder:
                         (context, url, downloadProgress) => SizedBox(
-                      height: 250,
+                      height: height,
                       child: Center(
                         child: SpinKitThreeBounce(
                           color: context.onSurfaceColor,
@@ -63,7 +65,7 @@ class ClubCard extends StatelessWidget {
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error),
                     imageBuilder: (context, imageProvider) => Container(
-                      height: 250,
+                      height: height,
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: imageProvider,
