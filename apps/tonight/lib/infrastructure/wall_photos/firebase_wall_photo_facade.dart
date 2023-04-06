@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -11,6 +12,9 @@ import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
 import 'package:tonight/infrastructure/wall_photos/dtos/wall_photo_dto.dart';
+import 'package:tonight/infrastructure/wall_photos/filters/show_only_other_users_photos_filter.dart';
+import 'package:tonight/infrastructure/wall_photos/filters/show_photos_from_clubs_filter.dart';
+import 'package:tonight/infrastructure/wall_photos/filters/wall_photo_filters.dart';
 import 'package:uuid/uuid.dart';
 
 class FirebaseWallPhotoFacade implements WallPhotoFacade {
@@ -18,13 +22,17 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   final FirebaseStorage _storage;
   final FirebaseAuth _auth;
   final FirebaseCrashlytics _crashlytics;
+  final Dio _dio;
   final Logger _logger;
 
-  FirebaseWallPhotoFacade(this._firestore,
-      this._storage,
-      this._auth,
-      this._crashlytics,
-      this._logger,);
+  FirebaseWallPhotoFacade(
+    this._firestore,
+    this._storage,
+    this._auth,
+    this._crashlytics,
+    this._logger,
+    this._dio,
+  );
 
   @override
   Future<Either<WallPhotoFailure, Unit>> addPhoto({
@@ -71,37 +79,67 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   @override
   Future<Either<WallPhotoFailure, List<WallPhoto>>> getPhotos({
     int pageSize = 20,
-    WallPhoto? lastPhoto,
+    int offset = 0,
   }) async {
     try {
-      var query = _firestore.wallPhotos
-          .orderBy('createdAt', descending: true)
-          .limit(pageSize);
-
-      if (lastPhoto != null) {
-        final lastDoc = await _firestore.wallPhotos.doc(lastPhoto.id).get();
-        query = query.startAfterDocument(lastDoc);
-      }
-
-      final result = await query.get();
-
-      return right(
-        result.docs
-            .map((photo) => WallPhotoDto.fromFirebase(photo).toDomain())
-            .toList(),
+      final userDoc = await _firestore.getCurrentUserDocRef(_auth).get();
+      final favoriteClubIds = userDoc['favoriteClubIds'] as List<dynamic>;
+      final result = await _getWallPhotosFromApi(
+        userId: userDoc.id,
+        favoriteClubIds: List<String>.from(favoriteClubIds),
+        offset: offset,
+        pageSize: pageSize,
       );
-    } on FirebaseException catch (e) {
+      return right(
+        result.map((doc) => WallPhotoDto.fromApi(doc).toDomain()).toList(),
+      );
+    } on DioError catch (e) {
       return left(
-        await handleFirebaseError<WallPhotoFailure>(
+        await handleDioError<WallPhotoFailure>(
           logger: _logger,
           crashlytics: _crashlytics,
-          exception: e,
+          error: e,
           message: 'Firebase Exception getting wall photos EXCEPTION: $e',
           unexpectedFailure: const WallPhotoFailure.unexpected(),
-          permissionDeniedFailure: const WallPhotoFailure.permissionDenied(),
+          socketFailure: const WallPhotoFailure.permissionDenied(),
         ),
       );
     }
+  }
+
+  Future<List<dynamic>> _getWallPhotosFromApi({
+    required String userId,
+    required List<String> favoriteClubIds,
+    required int pageSize,
+    required int offset,
+  }) async {
+    const endpoint = 'wallPhotos/getPhotos';
+    final pageNumber = ((offset + 1) / pageSize).ceil();
+    final filters = _getWallPhotoFilters(favoriteClubIds, userId);
+    final data = {
+      'query': '',
+      'queryBy': 'clubName',
+      'filterBy': filters.buildFilters(),
+      'pageNumber': pageNumber,
+      'pageSize': pageSize,
+      'sortBy': 'createdAt:desc',
+    };
+    final response = await _dio.post(
+      endpoint,
+      data: data,
+    );
+    return response.data as List<dynamic>;
+  }
+
+  _getWallPhotoFilters(List<String> favoriteClubIds, String userId) {
+    return WallPhotoFilters.empty().copyWith(
+      showPhotosFromClubsFilter: ShowPhotosFromClubsFilter(
+        clubIds: favoriteClubIds,
+      ),
+      showOnlyOtherUsersPhotosFilter: ShowOnlyOtherUsersPhotosFilter(
+        currentUserId: userId,
+      ),
+    );
   }
 
   Future<String> _uploadPhoto({

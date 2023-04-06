@@ -1,5 +1,4 @@
 import 'package:common/common.dart';
-import 'package:events/domain/filters/filter/ifilter.dart';
 
 class CityFilter implements IFilter {
   final String cityId;

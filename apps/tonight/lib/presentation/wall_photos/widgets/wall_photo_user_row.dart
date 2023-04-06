@@ -45,24 +45,27 @@ class WallPhotoUserRow extends StatelessWidget {
                   ),
           ),
           const SizedBox(width: 16),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AutoSizeText(
-                wallPhoto.username,
-                style: context.titleMedium,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                timeago.format(
-                  wallPhoto.createdAt,
-                  locale: Intl.getCurrentLocale(),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AutoSizeText(
+                  wallPhoto.username,
+                  style: context.titleMedium,
+                  maxLines: 1,
                 ),
-                style: context.titleSmall.copyWith(
-                  color: context.secondaryColor,
+                const SizedBox(height: 8),
+                Text(
+                  timeago.format(
+                    wallPhoto.createdAt,
+                    locale: Intl.getCurrentLocale(),
+                  ),
+                  style: context.titleSmall.copyWith(
+                    color: context.secondaryColor,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
