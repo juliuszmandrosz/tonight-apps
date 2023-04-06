@@ -107,6 +107,33 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
     }
   }
 
+  @override
+  Future<Either<WallPhotoFailure, List<WallPhoto>>> getUserPhotos() async {
+    try {
+      final user = _firestore.getCurrentUserDocRef(_auth);
+      final result = await _firestore.wallPhotos
+          .where('userId', isEqualTo: user.id)
+          .orderBy('createdAt', descending: true)
+          .get();
+      return right(
+        result.docs
+            .map((doc) => WallPhotoDto.fromFirebase(doc).toDomain())
+            .toList(),
+      );
+    } on FirebaseException catch (e) {
+      return left(
+        await handleFirebaseError<WallPhotoFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception getting user photos EXCEPTION: $e',
+          unexpectedFailure: const WallPhotoFailure.unexpected(),
+          permissionDeniedFailure: const WallPhotoFailure.permissionDenied(),
+        ),
+      );
+    }
+  }
+
   Future<List<dynamic>> _getWallPhotosFromApi({
     required String userId,
     required List<String> favoriteClubIds,
