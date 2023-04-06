@@ -2,23 +2,23 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:logger/logger.dart';
-import 'package:common/common.dart';
 import 'package:events/domain/domain.dart';
 import 'package:events/domain/filters/filter/date_includes_filter.dart';
 import 'package:events/infrastructure/event_cloud_functions/event_cloud_functions_errors.dart';
 import 'package:events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
 import 'package:events/infrastructure/event_costs/dtos/event_costs_dto.dart';
 import 'package:events/infrastructure/event_review/dtos/event_review_dto.dart';
+import 'package:events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
 import 'package:events/infrastructure/events/dtos/applied_discount_dto.dart';
 import 'package:events/infrastructure/events/dtos/event_dto.dart';
-import 'package:events/infrastructure/event_tickets/dtos/event_tickets_dto.dart';
 import 'package:events/infrastructure/events_api.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:logger/logger.dart';
 import 'package:uuid/uuid.dart';
 
 class FirebaseEventFacade
@@ -118,6 +118,10 @@ class FirebaseEventFacade
       userFavorites.contains(eventId)
           ? userFavorites.remove(eventId)
           : userFavorites.add(eventId);
+
+      if (userFavorites.length > 20) {
+        return left(const UserEventFailure.moreThan20FavoriteEvents());
+      }
 
       await userRef.update({'favoriteEventIds': userFavorites});
 
