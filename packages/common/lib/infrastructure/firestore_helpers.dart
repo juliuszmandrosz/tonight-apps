@@ -90,11 +90,12 @@ extension FirestoreX on FirebaseFirestore {
     required CollectionReference collection,
   }) async {
     final result = <DocumentSnapshot>[];
+    final idsCopy = [...ids];
 
-    while (ids.isNotEmpty) {
-      final chunkSize = ids.length >= 10 ? 10 : ids.length;
+    while (idsCopy.isNotEmpty) {
+      final chunkSize = idsCopy.length >= 10 ? 10 : idsCopy.length;
 
-      final idsChunk = ids.getRange(0, chunkSize).toList();
+      final idsChunk = idsCopy.getRange(0, chunkSize).toList();
 
       final docsQuery = collection.where(
         FieldPath.documentId,
@@ -105,7 +106,7 @@ extension FirestoreX on FirebaseFirestore {
 
       result.addAll(docsChunk.docs);
 
-      ids.removeRange(0, chunkSize);
+      idsCopy.removeRange(0, chunkSize);
     }
 
     return result;
@@ -116,15 +117,16 @@ extension FirestoreX on FirebaseFirestore {
     required CollectionReference collection,
   }) async {
     final result = <DocumentSnapshot>[];
+    final idsCopy = [...ids];
 
-    if (ids.isEmpty) {
+    if (idsCopy.isEmpty) {
       return collection.get().then((res) => res.docs);
     }
 
-    while (ids.isNotEmpty) {
-      final chunkSize = ids.length >= 10 ? 10 : ids.length;
+    while (idsCopy.isNotEmpty) {
+      final chunkSize = idsCopy.length >= 10 ? 10 : idsCopy.length;
 
-      final idsChunk = ids.getRange(0, chunkSize).toList();
+      final idsChunk = idsCopy.getRange(0, chunkSize).toList();
 
       final docsQuery = collection.where(
         FieldPath.documentId,
@@ -135,7 +137,7 @@ extension FirestoreX on FirebaseFirestore {
 
       result.addAll(docsChunk.docs);
 
-      ids.removeRange(0, chunkSize);
+      idsCopy.removeRange(0, chunkSize);
     }
 
     return result;
