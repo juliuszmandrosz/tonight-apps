@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight_partners/application/selector_list/selector_list_cubit.dart';
 import 'package:tonight_partners/injection.dart';
-import 'package:tonight_partners/presentation/core/dots_loading_indicator.dart';
 import 'package:tonight_partners/presentation/routes/app_router.dart';
 import 'package:tonight_partners/presentation/selectors/widgets/selector_list_tile.dart';
 import 'package:translations/translations.dart';

@@ -10,7 +10,6 @@ import 'package:tonight_partners/application/event_notifier/event_notifier_cubit
 import 'package:tonight_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
 import 'package:tonight_partners/injection.dart';
 import 'package:tonight_partners/presentation/core/event_revenue.dart';
-import 'package:tonight_partners/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart';
 import 'package:tonight_partners/presentation/event_overview/widgets/cancel_event_button.dart';
 import 'package:tonight_partners/presentation/event_overview/widgets/event_overview_details.dart';

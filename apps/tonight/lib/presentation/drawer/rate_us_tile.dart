@@ -1,6 +1,7 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:launch_review/launch_review.dart';
-import 'package:tonight/presentation/profile/widgets/profile_menu_list_tile.dart';
 import 'package:translations/translations.dart';
 
 class RateUsTile extends StatelessWidget {
@@ -8,8 +9,9 @@ class RateUsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProfileMenuListTile(
-      title: S().rateUs,
+    return DrawerTile(
+      label: S().rateUs,
+      icon: FontAwesomeIcons.solidStar,
       onTap: () => LaunchReview.launch(
         iOSAppId: '1629723394',
         androidAppId: 'com.raverteam.tonight',

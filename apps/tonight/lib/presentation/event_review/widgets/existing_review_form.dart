@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/presentation/ticket_logo_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tickets/tickets.dart';
 import 'package:tonight/application/event_review/existing_review/existing_review_cubit.dart';
 import 'package:tonight/injection.dart';
-import 'package:tonight/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight/presentation/event_review/widgets/read_only_rating_indicator.dart';
 import 'package:tonight/presentation/event_review/widgets/read_only_review_content.dart';
 import 'package:tonight/presentation/event_review/widgets/review_event_date.dart';
