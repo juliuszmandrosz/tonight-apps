@@ -34,8 +34,7 @@ class FirebaseClubFacade
     required ClubsApi clubsApi,
     required FirebaseCrashlytics crashlytics,
     required Logger logger,
-  })
-      : _firestore = firestore,
+  })  : _firestore = firestore,
         _firebaseAuth = firebaseAuth,
         _firebaseStorage = firebaseStorage,
         _cloudFunctionsFacade = cloudFunctionsFacade,
@@ -66,7 +65,8 @@ class FirebaseClubFacade
   }
 
   @override
-  Future<Either<CommonClubFailure, List<Club>>> getClubs(ClubFilters filters, {
+  Future<Either<CommonClubFailure, List<Club>>> getClubs(
+    ClubFilters filters, {
     int pageSize = 20,
     int offset = 0,
   }) async {
@@ -101,7 +101,7 @@ class FirebaseClubFacade
       final userRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
       final userSnapshot = await userRef.get();
       final userFavorites =
-      userSnapshot.get('favoriteClubIds') as List<dynamic>;
+          userSnapshot.get('favoriteClubIds') as List<dynamic>;
 
       userFavorites.contains(clubId)
           ? userFavorites.remove(clubId)
@@ -121,7 +121,7 @@ class FirebaseClubFacade
           crashlytics: _firebaseCrashlytics,
           exception: e,
           message:
-          'Firebase Exception toggling club favorite status EXCEPTION: $e',
+              'Firebase Exception toggling club favorite status EXCEPTION: $e',
           unexpectedFailure: const UserClubFailure.unexpected(),
           permissionDeniedFailure: const UserClubFailure.permissionDenied(),
         ),
@@ -131,9 +131,13 @@ class FirebaseClubFacade
 
   @override
   Future<Either<UserClubFailure, List<Club>>> getClubsByIds(
-      List<String> clubIds) async {
+    List<String> clubIds,
+  ) async {
     try {
-      final result = await _getClubsByIdsFromFirestore(clubIds);
+      final docs = await _firestore.clubCollection.getDocsByIdsWhereIn(clubIds);
+
+      final result =
+          docs.map((doc) => ClubDto.fromFirebase(doc).toDomain()).toList();
       return right(result);
     } on FirebaseException catch (e) {
       return left(
@@ -152,7 +156,7 @@ class FirebaseClubFacade
   ///Tuple2<List<photosUrls>,String? tokenForNextPage <- if next page is available>>
   @override
   Future<Either<UserClubFailure, Tuple2<List<String>, String?>>>
-  getClubPhotosUrlsAsUser({
+      getClubPhotosUrlsAsUser({
     required String clubId,
     String? nextPageToken,
     int pageSize = 10,
@@ -161,11 +165,11 @@ class FirebaseClubFacade
       final images = await _firebaseStorage
           .ref('clubs/$clubId/club_images/')
           .list(ListOptions(
-        maxResults: pageSize,
-        pageToken: nextPageToken,
-      ));
+            maxResults: pageSize,
+            pageToken: nextPageToken,
+          ));
       final urls =
-      images.items.map((ref) async => await ref.getDownloadURL()).toList();
+          images.items.map((ref) async => await ref.getDownloadURL()).toList();
       return right(Tuple2(await Future.wait(urls),
           images.nextPageToken)); //if there is no page next, return empty token
     } on FirebaseException catch (e) {
@@ -186,7 +190,7 @@ class FirebaseClubFacade
   Future<Either<PartnerClubFailure, Club>> getCurrentPartnerClub() async {
     try {
       final clubRef =
-      await _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
+          await _firestore.getCurrentPartnerClubDocRef(_firebaseAuth);
       final result = await clubRef.get();
       return right(ClubDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (e) {
@@ -196,7 +200,7 @@ class FirebaseClubFacade
           crashlytics: _firebaseCrashlytics,
           exception: e,
           message:
-          'Firebase Exception getting current partner club EXCEPTION: $e',
+              'Firebase Exception getting current partner club EXCEPTION: $e',
           unexpectedFailure: const PartnerClubFailure.unexpected(),
           permissionDeniedFailure: const PartnerClubFailure.permissionDenied(),
         ),
@@ -208,7 +212,7 @@ class FirebaseClubFacade
   Future<Either<SelectorClubFailure, Club>> getCurrentSelectorClub() async {
     try {
       final clubRef =
-      await _firestore.getCurrentSelectorClubDocRef(_firebaseAuth);
+          await _firestore.getCurrentSelectorClubDocRef(_firebaseAuth);
       final result = await clubRef.get();
       return right(ClubDto.fromFirebase(result).toDomain());
     } on FirebaseException catch (e) {
@@ -218,7 +222,7 @@ class FirebaseClubFacade
           crashlytics: _firebaseCrashlytics,
           exception: e,
           message:
-          'Firebase Exception getting current selector club EXCEPTION: $e',
+              'Firebase Exception getting current selector club EXCEPTION: $e',
           unexpectedFailure: const SelectorClubFailure.unexpected(),
           permissionDeniedFailure: const SelectorClubFailure.permissionDenied(),
         ),
@@ -228,7 +232,8 @@ class FirebaseClubFacade
 
   @override
   Future<Either<SelectorClubFailure, Unit>> enterAccessCodeToClub(
-      String accessCode,) async {
+    String accessCode,
+  ) async {
     try {
       await _cloudFunctionsFacade.useSelectorAccessCode(accessCode);
 
@@ -267,12 +272,16 @@ class FirebaseClubFacade
   Future<Either<UserClubFailure, List<Club>>> getFavoriteClubs() async {
     try {
       final userDoc =
-      await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
+          await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
 
       final favoriteClubIds =
-      await userDoc.get('favoriteClubIds') as List<dynamic>;
+          await userDoc.get('favoriteClubIds') as List<dynamic>;
 
-      final result = await _getClubsByIdsFromFirestore(favoriteClubIds);
+      final docs =
+          await _firestore.clubCollection.getDocsByIdsWhereIn(favoriteClubIds);
+
+      final result =
+          docs.map((doc) => ClubDto.fromFirebase(doc).toDomain()).toList();
 
       return right(result);
     } on FirebaseException catch (e) {
@@ -287,32 +296,5 @@ class FirebaseClubFacade
         ),
       );
     }
-  }
-
-  Future<List<Club>> _getClubsByIdsFromFirestore(List<dynamic> clubIds) async {
-    final result = <Club>[];
-
-    while (clubIds.isNotEmpty) {
-      final chunkSize = clubIds.length >= 10 ? 10 : clubIds.length;
-
-      final clubIdsChunk = clubIds.getRange(0, chunkSize).toList();
-
-      final clubsQuery = _firestore.clubCollection.where(
-        FieldPath.documentId,
-        whereIn: clubIdsChunk,
-      );
-
-      final clubDocsChunk = await clubsQuery.get();
-
-      final clubsChunk = clubDocsChunk.docs
-          .map((doc) => ClubDto.fromFirebase(doc).toDomain())
-          .toList();
-
-      result.addAll(clubsChunk);
-
-      clubIds.removeRange(0, chunkSize);
-    }
-
-    return result;
   }
 }
