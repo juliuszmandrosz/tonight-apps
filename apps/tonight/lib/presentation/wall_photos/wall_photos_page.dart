@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/wall_photos/wall_photos_cubit.dart';
 import 'package:tonight/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/wall_photos/widgets/refresh_wall_photos_button.dart';
 import 'package:tonight/presentation/wall_photos/widgets/wall_photo_card.dart';
 import 'package:very_good_infinite_list/very_good_infinite_list.dart';
 
@@ -32,21 +33,25 @@ class WallPhotosPage extends StatelessWidget {
             ? const TicketLogoAnimation()
             : RefreshIndicator(
                 onRefresh: () async => wallPhotosCubit.getPhotos(),
-                child: InfiniteList(
-                  itemCount: state.photos.length,
-                  isLoading: state.nextPageStatus.isLoading(),
-                  hasError: state.nextPageStatus.isFailure(),
-                  hasReachedMax: state.hasReachedMax,
-                  onFetchData: () => wallPhotosCubit.fetchNextPhotosPage(),
-                  separatorBuilder: (_, __) => const SizedBox(height: 12),
-                  itemBuilder: (_, i) => WallPhotoCard(
-                    wallPhoto: state.photos[i],
-                  ),
-                  loadingBuilder: (_) => const BottomLoader(),
-                  errorBuilder: (_) => NextPageError(
-                    retryCallback: () => wallPhotosCubit.fetchNextPhotosPage(),
-                  ),
-                ),
+                child: state.photos.isEmpty
+                    ? const RefreshWallPhotosButton()
+                    : InfiniteList(
+                        itemCount: state.photos.length,
+                        isLoading: state.nextPageStatus.isLoading(),
+                        hasError: state.nextPageStatus.isFailure(),
+                        hasReachedMax: state.hasReachedMax,
+                        onFetchData: () =>
+                            wallPhotosCubit.fetchNextPhotosPage(),
+                        separatorBuilder: (_, __) => const SizedBox(height: 12),
+                        itemBuilder: (_, i) => WallPhotoCard(
+                          wallPhoto: state.photos[i],
+                        ),
+                        loadingBuilder: (_) => const BottomLoader(),
+                        errorBuilder: (_) => NextPageError(
+                          retryCallback: () =>
+                              wallPhotosCubit.fetchNextPhotosPage(),
+                        ),
+                      ),
               ),
       ),
     );
