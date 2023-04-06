@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'applied_discount_dto.dart';
 
@@ -36,7 +36,8 @@ mixin _$AppliedDiscountDto {
 abstract class $AppliedDiscountDtoCopyWith<$Res> {
   factory $AppliedDiscountDtoCopyWith(
           AppliedDiscountDto value, $Res Function(AppliedDiscountDto) then) =
-      _$AppliedDiscountDtoCopyWithImpl<$Res>;
+      _$AppliedDiscountDtoCopyWithImpl<$Res, AppliedDiscountDto>;
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String eventId,
@@ -44,34 +45,36 @@ abstract class $AppliedDiscountDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AppliedDiscountDtoCopyWithImpl<$Res>
+class _$AppliedDiscountDtoCopyWithImpl<$Res, $Val extends AppliedDiscountDto>
     implements $AppliedDiscountDtoCopyWith<$Res> {
   _$AppliedDiscountDtoCopyWithImpl(this._value, this._then);
 
-  final AppliedDiscountDto _value;
   // ignore: unused_field
-  final $Res Function(AppliedDiscountDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? eventId = freezed,
-    Object? realizationDateTime = freezed,
+    Object? eventId = null,
+    Object? realizationDateTime = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      eventId: eventId == freezed
+      eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
               as String,
-      realizationDateTime: realizationDateTime == freezed
+      realizationDateTime: null == realizationDateTime
           ? _value.realizationDateTime
           : realizationDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-    ));
+    ) as $Val);
   }
 }
 
@@ -82,6 +85,7 @@ abstract class _$$_AppliedDiscountDtoCopyWith<$Res>
           $Res Function(_$_AppliedDiscountDto) then) =
       __$$_AppliedDiscountDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String eventId,
@@ -90,31 +94,29 @@ abstract class _$$_AppliedDiscountDtoCopyWith<$Res>
 
 /// @nodoc
 class __$$_AppliedDiscountDtoCopyWithImpl<$Res>
-    extends _$AppliedDiscountDtoCopyWithImpl<$Res>
+    extends _$AppliedDiscountDtoCopyWithImpl<$Res, _$_AppliedDiscountDto>
     implements _$$_AppliedDiscountDtoCopyWith<$Res> {
   __$$_AppliedDiscountDtoCopyWithImpl(
       _$_AppliedDiscountDto _value, $Res Function(_$_AppliedDiscountDto) _then)
-      : super(_value, (v) => _then(v as _$_AppliedDiscountDto));
+      : super(_value, _then);
 
-  @override
-  _$_AppliedDiscountDto get _value => super._value as _$_AppliedDiscountDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? eventId = freezed,
-    Object? realizationDateTime = freezed,
+    Object? eventId = null,
+    Object? realizationDateTime = null,
   }) {
     return _then(_$_AppliedDiscountDto(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      eventId: eventId == freezed
+      eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
               as String,
-      realizationDateTime: realizationDateTime == freezed
+      realizationDateTime: null == realizationDateTime
           ? _value.realizationDateTime
           : realizationDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
@@ -154,22 +156,20 @@ class _$_AppliedDiscountDto extends _AppliedDiscountDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppliedDiscountDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.eventId, eventId) &&
-            const DeepCollectionEquality()
-                .equals(other.realizationDateTime, realizationDateTime));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.eventId, eventId) || other.eventId == eventId) &&
+            (identical(other.realizationDateTime, realizationDateTime) ||
+                other.realizationDateTime == realizationDateTime));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(eventId),
-      const DeepCollectionEquality().hash(realizationDateTime));
+  int get hashCode =>
+      Object.hash(runtimeType, id, eventId, realizationDateTime);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AppliedDiscountDtoCopyWith<_$_AppliedDiscountDto> get copyWith =>
       __$$_AppliedDiscountDtoCopyWithImpl<_$_AppliedDiscountDto>(
           this, _$identity);

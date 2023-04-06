@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'partner_event_failure.dart';
 
@@ -31,15 +31,15 @@ mixin _$PartnerEventFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? noConnection,
-    TResult Function()? cancelTimeExpired,
-    TResult Function()? postponeTimeExpired,
-    TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountAlreadyApplied,
-    TResult Function()? eventExistsInDateRange,
-    TResult Function()? postponeDateTooLate,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
+    TResult? Function()? cancelTimeExpired,
+    TResult? Function()? postponeTimeExpired,
+    TResult? Function()? postponeTimeTooShort,
+    TResult? Function()? discountAlreadyApplied,
+    TResult? Function()? eventExistsInDateRange,
+    TResult? Function()? postponeDateTooLate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,15 +73,15 @@ mixin _$PartnerEventFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_NoConnection value)? noConnection,
-    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
-    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
-    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
-    TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
-    TResult Function(_PostponeDateTooLate value)? postponeDateTooLate,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult? Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult? Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    TResult? Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
+    TResult? Function(_EventExistsInDateRange value)? eventExistsInDateRange,
+    TResult? Function(_PostponeDateTooLate value)? postponeDateTooLate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -104,17 +104,18 @@ mixin _$PartnerEventFailure {
 abstract class $PartnerEventFailureCopyWith<$Res> {
   factory $PartnerEventFailureCopyWith(
           PartnerEventFailure value, $Res Function(PartnerEventFailure) then) =
-      _$PartnerEventFailureCopyWithImpl<$Res>;
+      _$PartnerEventFailureCopyWithImpl<$Res, PartnerEventFailure>;
 }
 
 /// @nodoc
-class _$PartnerEventFailureCopyWithImpl<$Res>
+class _$PartnerEventFailureCopyWithImpl<$Res, $Val extends PartnerEventFailure>
     implements $PartnerEventFailureCopyWith<$Res> {
   _$PartnerEventFailureCopyWithImpl(this._value, this._then);
 
-  final PartnerEventFailure _value;
   // ignore: unused_field
-  final $Res Function(PartnerEventFailure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -126,14 +127,11 @@ abstract class _$$_UnexpectedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$PartnerEventFailureCopyWithImpl<$Res>
+    extends _$PartnerEventFailureCopyWithImpl<$Res, _$_Unexpected>
     implements _$$_UnexpectedCopyWith<$Res> {
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
-      : super(_value, (v) => _then(v as _$_Unexpected));
-
-  @override
-  _$_Unexpected get _value => super._value as _$_Unexpected;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -174,15 +172,15 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? noConnection,
-    TResult Function()? cancelTimeExpired,
-    TResult Function()? postponeTimeExpired,
-    TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountAlreadyApplied,
-    TResult Function()? eventExistsInDateRange,
-    TResult Function()? postponeDateTooLate,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
+    TResult? Function()? cancelTimeExpired,
+    TResult? Function()? postponeTimeExpired,
+    TResult? Function()? postponeTimeTooShort,
+    TResult? Function()? discountAlreadyApplied,
+    TResult? Function()? eventExistsInDateRange,
+    TResult? Function()? postponeDateTooLate,
   }) {
     return unexpected?.call();
   }
@@ -228,15 +226,15 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_NoConnection value)? noConnection,
-    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
-    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
-    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
-    TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
-    TResult Function(_PostponeDateTooLate value)? postponeDateTooLate,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult? Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult? Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    TResult? Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
+    TResult? Function(_EventExistsInDateRange value)? eventExistsInDateRange,
+    TResult? Function(_PostponeDateTooLate value)? postponeDateTooLate,
   }) {
     return unexpected?.call(this);
   }
@@ -275,14 +273,11 @@ abstract class _$$_PermissionDeniedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PermissionDeniedCopyWithImpl<$Res>
-    extends _$PartnerEventFailureCopyWithImpl<$Res>
+    extends _$PartnerEventFailureCopyWithImpl<$Res, _$_PermissionDenied>
     implements _$$_PermissionDeniedCopyWith<$Res> {
   __$$_PermissionDeniedCopyWithImpl(
       _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
-      : super(_value, (v) => _then(v as _$_PermissionDenied));
-
-  @override
-  _$_PermissionDenied get _value => super._value as _$_PermissionDenied;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -323,15 +318,15 @@ class _$_PermissionDenied implements _PermissionDenied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? noConnection,
-    TResult Function()? cancelTimeExpired,
-    TResult Function()? postponeTimeExpired,
-    TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountAlreadyApplied,
-    TResult Function()? eventExistsInDateRange,
-    TResult Function()? postponeDateTooLate,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
+    TResult? Function()? cancelTimeExpired,
+    TResult? Function()? postponeTimeExpired,
+    TResult? Function()? postponeTimeTooShort,
+    TResult? Function()? discountAlreadyApplied,
+    TResult? Function()? eventExistsInDateRange,
+    TResult? Function()? postponeDateTooLate,
   }) {
     return permissionDenied?.call();
   }
@@ -377,15 +372,15 @@ class _$_PermissionDenied implements _PermissionDenied {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_NoConnection value)? noConnection,
-    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
-    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
-    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
-    TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
-    TResult Function(_PostponeDateTooLate value)? postponeDateTooLate,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult? Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult? Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    TResult? Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
+    TResult? Function(_EventExistsInDateRange value)? eventExistsInDateRange,
+    TResult? Function(_PostponeDateTooLate value)? postponeDateTooLate,
   }) {
     return permissionDenied?.call(this);
   }
@@ -424,14 +419,11 @@ abstract class _$$_NoConnectionCopyWith<$Res> {
 
 /// @nodoc
 class __$$_NoConnectionCopyWithImpl<$Res>
-    extends _$PartnerEventFailureCopyWithImpl<$Res>
+    extends _$PartnerEventFailureCopyWithImpl<$Res, _$_NoConnection>
     implements _$$_NoConnectionCopyWith<$Res> {
   __$$_NoConnectionCopyWithImpl(
       _$_NoConnection _value, $Res Function(_$_NoConnection) _then)
-      : super(_value, (v) => _then(v as _$_NoConnection));
-
-  @override
-  _$_NoConnection get _value => super._value as _$_NoConnection;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -472,15 +464,15 @@ class _$_NoConnection implements _NoConnection {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? noConnection,
-    TResult Function()? cancelTimeExpired,
-    TResult Function()? postponeTimeExpired,
-    TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountAlreadyApplied,
-    TResult Function()? eventExistsInDateRange,
-    TResult Function()? postponeDateTooLate,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
+    TResult? Function()? cancelTimeExpired,
+    TResult? Function()? postponeTimeExpired,
+    TResult? Function()? postponeTimeTooShort,
+    TResult? Function()? discountAlreadyApplied,
+    TResult? Function()? eventExistsInDateRange,
+    TResult? Function()? postponeDateTooLate,
   }) {
     return noConnection?.call();
   }
@@ -526,15 +518,15 @@ class _$_NoConnection implements _NoConnection {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_NoConnection value)? noConnection,
-    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
-    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
-    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
-    TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
-    TResult Function(_PostponeDateTooLate value)? postponeDateTooLate,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult? Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult? Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    TResult? Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
+    TResult? Function(_EventExistsInDateRange value)? eventExistsInDateRange,
+    TResult? Function(_PostponeDateTooLate value)? postponeDateTooLate,
   }) {
     return noConnection?.call(this);
   }
@@ -573,14 +565,11 @@ abstract class _$$_CancelTimeExpiredCopyWith<$Res> {
 
 /// @nodoc
 class __$$_CancelTimeExpiredCopyWithImpl<$Res>
-    extends _$PartnerEventFailureCopyWithImpl<$Res>
+    extends _$PartnerEventFailureCopyWithImpl<$Res, _$_CancelTimeExpired>
     implements _$$_CancelTimeExpiredCopyWith<$Res> {
   __$$_CancelTimeExpiredCopyWithImpl(
       _$_CancelTimeExpired _value, $Res Function(_$_CancelTimeExpired) _then)
-      : super(_value, (v) => _then(v as _$_CancelTimeExpired));
-
-  @override
-  _$_CancelTimeExpired get _value => super._value as _$_CancelTimeExpired;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -621,15 +610,15 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? noConnection,
-    TResult Function()? cancelTimeExpired,
-    TResult Function()? postponeTimeExpired,
-    TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountAlreadyApplied,
-    TResult Function()? eventExistsInDateRange,
-    TResult Function()? postponeDateTooLate,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
+    TResult? Function()? cancelTimeExpired,
+    TResult? Function()? postponeTimeExpired,
+    TResult? Function()? postponeTimeTooShort,
+    TResult? Function()? discountAlreadyApplied,
+    TResult? Function()? eventExistsInDateRange,
+    TResult? Function()? postponeDateTooLate,
   }) {
     return cancelTimeExpired?.call();
   }
@@ -675,15 +664,15 @@ class _$_CancelTimeExpired implements _CancelTimeExpired {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_NoConnection value)? noConnection,
-    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
-    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
-    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
-    TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
-    TResult Function(_PostponeDateTooLate value)? postponeDateTooLate,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult? Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult? Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    TResult? Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
+    TResult? Function(_EventExistsInDateRange value)? eventExistsInDateRange,
+    TResult? Function(_PostponeDateTooLate value)? postponeDateTooLate,
   }) {
     return cancelTimeExpired?.call(this);
   }
@@ -722,14 +711,11 @@ abstract class _$$_PostponeTimeExpiredCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PostponeTimeExpiredCopyWithImpl<$Res>
-    extends _$PartnerEventFailureCopyWithImpl<$Res>
+    extends _$PartnerEventFailureCopyWithImpl<$Res, _$_PostponeTimeExpired>
     implements _$$_PostponeTimeExpiredCopyWith<$Res> {
   __$$_PostponeTimeExpiredCopyWithImpl(_$_PostponeTimeExpired _value,
       $Res Function(_$_PostponeTimeExpired) _then)
-      : super(_value, (v) => _then(v as _$_PostponeTimeExpired));
-
-  @override
-  _$_PostponeTimeExpired get _value => super._value as _$_PostponeTimeExpired;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -770,15 +756,15 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? noConnection,
-    TResult Function()? cancelTimeExpired,
-    TResult Function()? postponeTimeExpired,
-    TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountAlreadyApplied,
-    TResult Function()? eventExistsInDateRange,
-    TResult Function()? postponeDateTooLate,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
+    TResult? Function()? cancelTimeExpired,
+    TResult? Function()? postponeTimeExpired,
+    TResult? Function()? postponeTimeTooShort,
+    TResult? Function()? discountAlreadyApplied,
+    TResult? Function()? eventExistsInDateRange,
+    TResult? Function()? postponeDateTooLate,
   }) {
     return postponeTimeExpired?.call();
   }
@@ -824,15 +810,15 @@ class _$_PostponeTimeExpired implements _PostponeTimeExpired {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_NoConnection value)? noConnection,
-    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
-    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
-    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
-    TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
-    TResult Function(_PostponeDateTooLate value)? postponeDateTooLate,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult? Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult? Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    TResult? Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
+    TResult? Function(_EventExistsInDateRange value)? eventExistsInDateRange,
+    TResult? Function(_PostponeDateTooLate value)? postponeDateTooLate,
   }) {
     return postponeTimeExpired?.call(this);
   }
@@ -871,14 +857,11 @@ abstract class _$$_PostponeTimeTooShortCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PostponeTimeTooShortCopyWithImpl<$Res>
-    extends _$PartnerEventFailureCopyWithImpl<$Res>
+    extends _$PartnerEventFailureCopyWithImpl<$Res, _$_PostponeTimeTooShort>
     implements _$$_PostponeTimeTooShortCopyWith<$Res> {
   __$$_PostponeTimeTooShortCopyWithImpl(_$_PostponeTimeTooShort _value,
       $Res Function(_$_PostponeTimeTooShort) _then)
-      : super(_value, (v) => _then(v as _$_PostponeTimeTooShort));
-
-  @override
-  _$_PostponeTimeTooShort get _value => super._value as _$_PostponeTimeTooShort;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -919,15 +902,15 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? noConnection,
-    TResult Function()? cancelTimeExpired,
-    TResult Function()? postponeTimeExpired,
-    TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountAlreadyApplied,
-    TResult Function()? eventExistsInDateRange,
-    TResult Function()? postponeDateTooLate,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
+    TResult? Function()? cancelTimeExpired,
+    TResult? Function()? postponeTimeExpired,
+    TResult? Function()? postponeTimeTooShort,
+    TResult? Function()? discountAlreadyApplied,
+    TResult? Function()? eventExistsInDateRange,
+    TResult? Function()? postponeDateTooLate,
   }) {
     return postponeTimeTooShort?.call();
   }
@@ -973,15 +956,15 @@ class _$_PostponeTimeTooShort implements _PostponeTimeTooShort {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_NoConnection value)? noConnection,
-    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
-    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
-    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
-    TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
-    TResult Function(_PostponeDateTooLate value)? postponeDateTooLate,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult? Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult? Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    TResult? Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
+    TResult? Function(_EventExistsInDateRange value)? eventExistsInDateRange,
+    TResult? Function(_PostponeDateTooLate value)? postponeDateTooLate,
   }) {
     return postponeTimeTooShort?.call(this);
   }
@@ -1020,15 +1003,11 @@ abstract class _$$_DiscountAlreadyAppliedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_DiscountAlreadyAppliedCopyWithImpl<$Res>
-    extends _$PartnerEventFailureCopyWithImpl<$Res>
+    extends _$PartnerEventFailureCopyWithImpl<$Res, _$_DiscountAlreadyApplied>
     implements _$$_DiscountAlreadyAppliedCopyWith<$Res> {
   __$$_DiscountAlreadyAppliedCopyWithImpl(_$_DiscountAlreadyApplied _value,
       $Res Function(_$_DiscountAlreadyApplied) _then)
-      : super(_value, (v) => _then(v as _$_DiscountAlreadyApplied));
-
-  @override
-  _$_DiscountAlreadyApplied get _value =>
-      super._value as _$_DiscountAlreadyApplied;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1070,15 +1049,15 @@ class _$_DiscountAlreadyApplied implements _DiscountAlreadyApplied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? noConnection,
-    TResult Function()? cancelTimeExpired,
-    TResult Function()? postponeTimeExpired,
-    TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountAlreadyApplied,
-    TResult Function()? eventExistsInDateRange,
-    TResult Function()? postponeDateTooLate,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
+    TResult? Function()? cancelTimeExpired,
+    TResult? Function()? postponeTimeExpired,
+    TResult? Function()? postponeTimeTooShort,
+    TResult? Function()? discountAlreadyApplied,
+    TResult? Function()? eventExistsInDateRange,
+    TResult? Function()? postponeDateTooLate,
   }) {
     return discountAlreadyApplied?.call();
   }
@@ -1124,15 +1103,15 @@ class _$_DiscountAlreadyApplied implements _DiscountAlreadyApplied {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_NoConnection value)? noConnection,
-    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
-    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
-    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
-    TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
-    TResult Function(_PostponeDateTooLate value)? postponeDateTooLate,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult? Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult? Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    TResult? Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
+    TResult? Function(_EventExistsInDateRange value)? eventExistsInDateRange,
+    TResult? Function(_PostponeDateTooLate value)? postponeDateTooLate,
   }) {
     return discountAlreadyApplied?.call(this);
   }
@@ -1171,15 +1150,11 @@ abstract class _$$_EventExistsInDateRangeCopyWith<$Res> {
 
 /// @nodoc
 class __$$_EventExistsInDateRangeCopyWithImpl<$Res>
-    extends _$PartnerEventFailureCopyWithImpl<$Res>
+    extends _$PartnerEventFailureCopyWithImpl<$Res, _$_EventExistsInDateRange>
     implements _$$_EventExistsInDateRangeCopyWith<$Res> {
   __$$_EventExistsInDateRangeCopyWithImpl(_$_EventExistsInDateRange _value,
       $Res Function(_$_EventExistsInDateRange) _then)
-      : super(_value, (v) => _then(v as _$_EventExistsInDateRange));
-
-  @override
-  _$_EventExistsInDateRange get _value =>
-      super._value as _$_EventExistsInDateRange;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1221,15 +1196,15 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? noConnection,
-    TResult Function()? cancelTimeExpired,
-    TResult Function()? postponeTimeExpired,
-    TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountAlreadyApplied,
-    TResult Function()? eventExistsInDateRange,
-    TResult Function()? postponeDateTooLate,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
+    TResult? Function()? cancelTimeExpired,
+    TResult? Function()? postponeTimeExpired,
+    TResult? Function()? postponeTimeTooShort,
+    TResult? Function()? discountAlreadyApplied,
+    TResult? Function()? eventExistsInDateRange,
+    TResult? Function()? postponeDateTooLate,
   }) {
     return eventExistsInDateRange?.call();
   }
@@ -1275,15 +1250,15 @@ class _$_EventExistsInDateRange implements _EventExistsInDateRange {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_NoConnection value)? noConnection,
-    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
-    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
-    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
-    TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
-    TResult Function(_PostponeDateTooLate value)? postponeDateTooLate,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult? Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult? Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    TResult? Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
+    TResult? Function(_EventExistsInDateRange value)? eventExistsInDateRange,
+    TResult? Function(_PostponeDateTooLate value)? postponeDateTooLate,
   }) {
     return eventExistsInDateRange?.call(this);
   }
@@ -1322,14 +1297,11 @@ abstract class _$$_PostponeDateTooLateCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PostponeDateTooLateCopyWithImpl<$Res>
-    extends _$PartnerEventFailureCopyWithImpl<$Res>
+    extends _$PartnerEventFailureCopyWithImpl<$Res, _$_PostponeDateTooLate>
     implements _$$_PostponeDateTooLateCopyWith<$Res> {
   __$$_PostponeDateTooLateCopyWithImpl(_$_PostponeDateTooLate _value,
       $Res Function(_$_PostponeDateTooLate) _then)
-      : super(_value, (v) => _then(v as _$_PostponeDateTooLate));
-
-  @override
-  _$_PostponeDateTooLate get _value => super._value as _$_PostponeDateTooLate;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1370,15 +1342,15 @@ class _$_PostponeDateTooLate implements _PostponeDateTooLate {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? noConnection,
-    TResult Function()? cancelTimeExpired,
-    TResult Function()? postponeTimeExpired,
-    TResult Function()? postponeTimeTooShort,
-    TResult Function()? discountAlreadyApplied,
-    TResult Function()? eventExistsInDateRange,
-    TResult Function()? postponeDateTooLate,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
+    TResult? Function()? cancelTimeExpired,
+    TResult? Function()? postponeTimeExpired,
+    TResult? Function()? postponeTimeTooShort,
+    TResult? Function()? discountAlreadyApplied,
+    TResult? Function()? eventExistsInDateRange,
+    TResult? Function()? postponeDateTooLate,
   }) {
     return postponeDateTooLate?.call();
   }
@@ -1424,15 +1396,15 @@ class _$_PostponeDateTooLate implements _PostponeDateTooLate {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_NoConnection value)? noConnection,
-    TResult Function(_CancelTimeExpired value)? cancelTimeExpired,
-    TResult Function(_PostponeTimeExpired value)? postponeTimeExpired,
-    TResult Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
-    TResult Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
-    TResult Function(_EventExistsInDateRange value)? eventExistsInDateRange,
-    TResult Function(_PostponeDateTooLate value)? postponeDateTooLate,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_CancelTimeExpired value)? cancelTimeExpired,
+    TResult? Function(_PostponeTimeExpired value)? postponeTimeExpired,
+    TResult? Function(_PostponeTimeTooShort value)? postponeTimeTooShort,
+    TResult? Function(_DiscountAlreadyApplied value)? discountAlreadyApplied,
+    TResult? Function(_EventExistsInDateRange value)? eventExistsInDateRange,
+    TResult? Function(_PostponeDateTooLate value)? postponeDateTooLate,
   }) {
     return postponeDateTooLate?.call(this);
   }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event_costs_dto.dart';
 
@@ -36,7 +36,8 @@ mixin _$EventCostsDto {
 abstract class $EventCostsDtoCopyWith<$Res> {
   factory $EventCostsDtoCopyWith(
           EventCostsDto value, $Res Function(EventCostsDto) then) =
-      _$EventCostsDtoCopyWithImpl<$Res>;
+      _$EventCostsDtoCopyWithImpl<$Res, EventCostsDto>;
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? eventId,
       String currency,
@@ -45,39 +46,41 @@ abstract class $EventCostsDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EventCostsDtoCopyWithImpl<$Res>
+class _$EventCostsDtoCopyWithImpl<$Res, $Val extends EventCostsDto>
     implements $EventCostsDtoCopyWith<$Res> {
   _$EventCostsDtoCopyWithImpl(this._value, this._then);
 
-  final EventCostsDto _value;
   // ignore: unused_field
-  final $Res Function(EventCostsDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? eventId = freezed,
-    Object? currency = freezed,
-    Object? paymentProcessorFeeBalance = freezed,
-    Object? eventPostponeBalance = freezed,
+    Object? currency = null,
+    Object? paymentProcessorFeeBalance = null,
+    Object? eventPostponeBalance = null,
   }) {
     return _then(_value.copyWith(
-      eventId: eventId == freezed
+      eventId: freezed == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
               as String?,
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      paymentProcessorFeeBalance: paymentProcessorFeeBalance == freezed
+      paymentProcessorFeeBalance: null == paymentProcessorFeeBalance
           ? _value.paymentProcessorFeeBalance
           : paymentProcessorFeeBalance // ignore: cast_nullable_to_non_nullable
               as double,
-      eventPostponeBalance: eventPostponeBalance == freezed
+      eventPostponeBalance: null == eventPostponeBalance
           ? _value.eventPostponeBalance
           : eventPostponeBalance // ignore: cast_nullable_to_non_nullable
               as double,
-    ));
+    ) as $Val);
   }
 }
 
@@ -88,6 +91,7 @@ abstract class _$$_EventCostsDtoCopyWith<$Res>
           _$_EventCostsDto value, $Res Function(_$_EventCostsDto) then) =
       __$$_EventCostsDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? eventId,
       String currency,
@@ -97,36 +101,34 @@ abstract class _$$_EventCostsDtoCopyWith<$Res>
 
 /// @nodoc
 class __$$_EventCostsDtoCopyWithImpl<$Res>
-    extends _$EventCostsDtoCopyWithImpl<$Res>
+    extends _$EventCostsDtoCopyWithImpl<$Res, _$_EventCostsDto>
     implements _$$_EventCostsDtoCopyWith<$Res> {
   __$$_EventCostsDtoCopyWithImpl(
       _$_EventCostsDto _value, $Res Function(_$_EventCostsDto) _then)
-      : super(_value, (v) => _then(v as _$_EventCostsDto));
+      : super(_value, _then);
 
-  @override
-  _$_EventCostsDto get _value => super._value as _$_EventCostsDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? eventId = freezed,
-    Object? currency = freezed,
-    Object? paymentProcessorFeeBalance = freezed,
-    Object? eventPostponeBalance = freezed,
+    Object? currency = null,
+    Object? paymentProcessorFeeBalance = null,
+    Object? eventPostponeBalance = null,
   }) {
     return _then(_$_EventCostsDto(
-      eventId: eventId == freezed
+      eventId: freezed == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
               as String?,
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      paymentProcessorFeeBalance: paymentProcessorFeeBalance == freezed
+      paymentProcessorFeeBalance: null == paymentProcessorFeeBalance
           ? _value.paymentProcessorFeeBalance
           : paymentProcessorFeeBalance // ignore: cast_nullable_to_non_nullable
               as double,
-      eventPostponeBalance: eventPostponeBalance == freezed
+      eventPostponeBalance: null == eventPostponeBalance
           ? _value.eventPostponeBalance
           : eventPostponeBalance // ignore: cast_nullable_to_non_nullable
               as double,
@@ -170,25 +172,25 @@ class _$_EventCostsDto extends _EventCostsDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EventCostsDto &&
-            const DeepCollectionEquality().equals(other.eventId, eventId) &&
-            const DeepCollectionEquality().equals(other.currency, currency) &&
-            const DeepCollectionEquality().equals(
-                other.paymentProcessorFeeBalance, paymentProcessorFeeBalance) &&
-            const DeepCollectionEquality()
-                .equals(other.eventPostponeBalance, eventPostponeBalance));
+            (identical(other.eventId, eventId) || other.eventId == eventId) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.paymentProcessorFeeBalance,
+                    paymentProcessorFeeBalance) ||
+                other.paymentProcessorFeeBalance ==
+                    paymentProcessorFeeBalance) &&
+            (identical(other.eventPostponeBalance, eventPostponeBalance) ||
+                other.eventPostponeBalance == eventPostponeBalance));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(eventId),
-      const DeepCollectionEquality().hash(currency),
-      const DeepCollectionEquality().hash(paymentProcessorFeeBalance),
-      const DeepCollectionEquality().hash(eventPostponeBalance));
+  int get hashCode => Object.hash(runtimeType, eventId, currency,
+      paymentProcessorFeeBalance, eventPostponeBalance);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventCostsDtoCopyWith<_$_EventCostsDto> get copyWith =>
       __$$_EventCostsDtoCopyWithImpl<_$_EventCostsDto>(this, _$identity);
 

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event_review_dto.dart';
 
@@ -35,7 +35,8 @@ mixin _$EventReviewDto {
 abstract class $EventReviewDtoCopyWith<$Res> {
   factory $EventReviewDtoCopyWith(
           EventReviewDto value, $Res Function(EventReviewDto) then) =
-      _$EventReviewDtoCopyWithImpl<$Res>;
+      _$EventReviewDtoCopyWithImpl<$Res, EventReviewDto>;
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? eventId,
       int reviewQuantity,
@@ -43,34 +44,36 @@ abstract class $EventReviewDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EventReviewDtoCopyWithImpl<$Res>
+class _$EventReviewDtoCopyWithImpl<$Res, $Val extends EventReviewDto>
     implements $EventReviewDtoCopyWith<$Res> {
   _$EventReviewDtoCopyWithImpl(this._value, this._then);
 
-  final EventReviewDto _value;
   // ignore: unused_field
-  final $Res Function(EventReviewDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? eventId = freezed,
-    Object? reviewQuantity = freezed,
-    Object? reviewAvg = freezed,
+    Object? reviewQuantity = null,
+    Object? reviewAvg = null,
   }) {
     return _then(_value.copyWith(
-      eventId: eventId == freezed
+      eventId: freezed == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
               as String?,
-      reviewQuantity: reviewQuantity == freezed
+      reviewQuantity: null == reviewQuantity
           ? _value.reviewQuantity
           : reviewQuantity // ignore: cast_nullable_to_non_nullable
               as int,
-      reviewAvg: reviewAvg == freezed
+      reviewAvg: null == reviewAvg
           ? _value.reviewAvg
           : reviewAvg // ignore: cast_nullable_to_non_nullable
               as double,
-    ));
+    ) as $Val);
   }
 }
 
@@ -81,6 +84,7 @@ abstract class _$$_EventReviewDtoCopyWith<$Res>
           _$_EventReviewDto value, $Res Function(_$_EventReviewDto) then) =
       __$$_EventReviewDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? eventId,
       int reviewQuantity,
@@ -89,31 +93,29 @@ abstract class _$$_EventReviewDtoCopyWith<$Res>
 
 /// @nodoc
 class __$$_EventReviewDtoCopyWithImpl<$Res>
-    extends _$EventReviewDtoCopyWithImpl<$Res>
+    extends _$EventReviewDtoCopyWithImpl<$Res, _$_EventReviewDto>
     implements _$$_EventReviewDtoCopyWith<$Res> {
   __$$_EventReviewDtoCopyWithImpl(
       _$_EventReviewDto _value, $Res Function(_$_EventReviewDto) _then)
-      : super(_value, (v) => _then(v as _$_EventReviewDto));
+      : super(_value, _then);
 
-  @override
-  _$_EventReviewDto get _value => super._value as _$_EventReviewDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? eventId = freezed,
-    Object? reviewQuantity = freezed,
-    Object? reviewAvg = freezed,
+    Object? reviewQuantity = null,
+    Object? reviewAvg = null,
   }) {
     return _then(_$_EventReviewDto(
-      eventId: eventId == freezed
+      eventId: freezed == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
               as String?,
-      reviewQuantity: reviewQuantity == freezed
+      reviewQuantity: null == reviewQuantity
           ? _value.reviewQuantity
           : reviewQuantity // ignore: cast_nullable_to_non_nullable
               as int,
-      reviewAvg: reviewAvg == freezed
+      reviewAvg: null == reviewAvg
           ? _value.reviewAvg
           : reviewAvg // ignore: cast_nullable_to_non_nullable
               as double,
@@ -154,22 +156,21 @@ class _$_EventReviewDto extends _EventReviewDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EventReviewDto &&
-            const DeepCollectionEquality().equals(other.eventId, eventId) &&
-            const DeepCollectionEquality()
-                .equals(other.reviewQuantity, reviewQuantity) &&
-            const DeepCollectionEquality().equals(other.reviewAvg, reviewAvg));
+            (identical(other.eventId, eventId) || other.eventId == eventId) &&
+            (identical(other.reviewQuantity, reviewQuantity) ||
+                other.reviewQuantity == reviewQuantity) &&
+            (identical(other.reviewAvg, reviewAvg) ||
+                other.reviewAvg == reviewAvg));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(eventId),
-      const DeepCollectionEquality().hash(reviewQuantity),
-      const DeepCollectionEquality().hash(reviewAvg));
+  int get hashCode =>
+      Object.hash(runtimeType, eventId, reviewQuantity, reviewAvg);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventReviewDtoCopyWith<_$_EventReviewDto> get copyWith =>
       __$$_EventReviewDtoCopyWithImpl<_$_EventReviewDto>(this, _$identity);
 

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event_dto.dart';
 
@@ -57,7 +57,8 @@ mixin _$EventDto {
 /// @nodoc
 abstract class $EventDtoCopyWith<$Res> {
   factory $EventDtoCopyWith(EventDto value, $Res Function(EventDto) then) =
-      _$EventDtoCopyWithImpl<$Res>;
+      _$EventDtoCopyWithImpl<$Res, EventDto>;
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String clubId,
@@ -84,128 +85,131 @@ abstract class $EventDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EventDtoCopyWithImpl<$Res> implements $EventDtoCopyWith<$Res> {
+class _$EventDtoCopyWithImpl<$Res, $Val extends EventDto>
+    implements $EventDtoCopyWith<$Res> {
   _$EventDtoCopyWithImpl(this._value, this._then);
 
-  final EventDto _value;
   // ignore: unused_field
-  final $Res Function(EventDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? clubId = freezed,
-    Object? eventName = freezed,
-    Object? clubName = freezed,
-    Object? eventStartDateTime = freezed,
-    Object? eventEndDateTime = freezed,
-    Object? originalStartDateTime = freezed,
-    Object? minAge = freezed,
-    Object? price = freezed,
-    Object? currency = freezed,
-    Object? eventPhotoUrl = freezed,
-    Object? allowedOutfit = freezed,
-    Object? musicalGenres = freezed,
+    Object? clubId = null,
+    Object? eventName = null,
+    Object? clubName = null,
+    Object? eventStartDateTime = null,
+    Object? eventEndDateTime = null,
+    Object? originalStartDateTime = null,
+    Object? minAge = null,
+    Object? price = null,
+    Object? currency = null,
+    Object? eventPhotoUrl = null,
+    Object? allowedOutfit = null,
+    Object? musicalGenres = null,
     Object? description = freezed,
     Object? artistName = freezed,
-    Object? location = freezed,
-    Object? cityId = freezed,
-    Object? urlLinks = freezed,
-    Object? isConcert = freezed,
-    Object? attending = freezed,
-    Object? isCanceled = freezed,
-    Object? isBeingPostponed = freezed,
+    Object? location = null,
+    Object? cityId = null,
+    Object? urlLinks = null,
+    Object? isConcert = null,
+    Object? attending = null,
+    Object? isCanceled = null,
+    Object? isBeingPostponed = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      clubId: clubId == freezed
+      clubId: null == clubId
           ? _value.clubId
           : clubId // ignore: cast_nullable_to_non_nullable
               as String,
-      eventName: eventName == freezed
+      eventName: null == eventName
           ? _value.eventName
           : eventName // ignore: cast_nullable_to_non_nullable
               as String,
-      clubName: clubName == freezed
+      clubName: null == clubName
           ? _value.clubName
           : clubName // ignore: cast_nullable_to_non_nullable
               as String,
-      eventStartDateTime: eventStartDateTime == freezed
+      eventStartDateTime: null == eventStartDateTime
           ? _value.eventStartDateTime
           : eventStartDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      eventEndDateTime: eventEndDateTime == freezed
+      eventEndDateTime: null == eventEndDateTime
           ? _value.eventEndDateTime
           : eventEndDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      originalStartDateTime: originalStartDateTime == freezed
+      originalStartDateTime: null == originalStartDateTime
           ? _value.originalStartDateTime
           : originalStartDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      minAge: minAge == freezed
+      minAge: null == minAge
           ? _value.minAge
           : minAge // ignore: cast_nullable_to_non_nullable
               as int,
-      price: price == freezed
+      price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      eventPhotoUrl: eventPhotoUrl == freezed
+      eventPhotoUrl: null == eventPhotoUrl
           ? _value.eventPhotoUrl
           : eventPhotoUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      allowedOutfit: allowedOutfit == freezed
+      allowedOutfit: null == allowedOutfit
           ? _value.allowedOutfit
           : allowedOutfit // ignore: cast_nullable_to_non_nullable
               as String,
-      musicalGenres: musicalGenres == freezed
+      musicalGenres: null == musicalGenres
           ? _value.musicalGenres
           : musicalGenres // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      artistName: artistName == freezed
+      artistName: freezed == artistName
           ? _value.artistName
           : artistName // ignore: cast_nullable_to_non_nullable
               as String?,
-      location: location == freezed
+      location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as Map<String, double>,
-      cityId: cityId == freezed
+      cityId: null == cityId
           ? _value.cityId
           : cityId // ignore: cast_nullable_to_non_nullable
               as String,
-      urlLinks: urlLinks == freezed
+      urlLinks: null == urlLinks
           ? _value.urlLinks
           : urlLinks // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
-      isConcert: isConcert == freezed
+      isConcert: null == isConcert
           ? _value.isConcert
           : isConcert // ignore: cast_nullable_to_non_nullable
               as bool,
-      attending: attending == freezed
+      attending: null == attending
           ? _value.attending
           : attending // ignore: cast_nullable_to_non_nullable
               as int,
-      isCanceled: isCanceled == freezed
+      isCanceled: null == isCanceled
           ? _value.isCanceled
           : isCanceled // ignore: cast_nullable_to_non_nullable
               as bool,
-      isBeingPostponed: isBeingPostponed == freezed
+      isBeingPostponed: null == isBeingPostponed
           ? _value.isBeingPostponed
           : isBeingPostponed // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -215,6 +219,7 @@ abstract class _$$_EventDtoCopyWith<$Res> implements $EventDtoCopyWith<$Res> {
           _$_EventDto value, $Res Function(_$_EventDto) then) =
       __$$_EventDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String clubId,
@@ -241,126 +246,125 @@ abstract class _$$_EventDtoCopyWith<$Res> implements $EventDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_EventDtoCopyWithImpl<$Res> extends _$EventDtoCopyWithImpl<$Res>
+class __$$_EventDtoCopyWithImpl<$Res>
+    extends _$EventDtoCopyWithImpl<$Res, _$_EventDto>
     implements _$$_EventDtoCopyWith<$Res> {
   __$$_EventDtoCopyWithImpl(
       _$_EventDto _value, $Res Function(_$_EventDto) _then)
-      : super(_value, (v) => _then(v as _$_EventDto));
+      : super(_value, _then);
 
-  @override
-  _$_EventDto get _value => super._value as _$_EventDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? clubId = freezed,
-    Object? eventName = freezed,
-    Object? clubName = freezed,
-    Object? eventStartDateTime = freezed,
-    Object? eventEndDateTime = freezed,
-    Object? originalStartDateTime = freezed,
-    Object? minAge = freezed,
-    Object? price = freezed,
-    Object? currency = freezed,
-    Object? eventPhotoUrl = freezed,
-    Object? allowedOutfit = freezed,
-    Object? musicalGenres = freezed,
+    Object? clubId = null,
+    Object? eventName = null,
+    Object? clubName = null,
+    Object? eventStartDateTime = null,
+    Object? eventEndDateTime = null,
+    Object? originalStartDateTime = null,
+    Object? minAge = null,
+    Object? price = null,
+    Object? currency = null,
+    Object? eventPhotoUrl = null,
+    Object? allowedOutfit = null,
+    Object? musicalGenres = null,
     Object? description = freezed,
     Object? artistName = freezed,
-    Object? location = freezed,
-    Object? cityId = freezed,
-    Object? urlLinks = freezed,
-    Object? isConcert = freezed,
-    Object? attending = freezed,
-    Object? isCanceled = freezed,
-    Object? isBeingPostponed = freezed,
+    Object? location = null,
+    Object? cityId = null,
+    Object? urlLinks = null,
+    Object? isConcert = null,
+    Object? attending = null,
+    Object? isCanceled = null,
+    Object? isBeingPostponed = null,
   }) {
     return _then(_$_EventDto(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      clubId: clubId == freezed
+      clubId: null == clubId
           ? _value.clubId
           : clubId // ignore: cast_nullable_to_non_nullable
               as String,
-      eventName: eventName == freezed
+      eventName: null == eventName
           ? _value.eventName
           : eventName // ignore: cast_nullable_to_non_nullable
               as String,
-      clubName: clubName == freezed
+      clubName: null == clubName
           ? _value.clubName
           : clubName // ignore: cast_nullable_to_non_nullable
               as String,
-      eventStartDateTime: eventStartDateTime == freezed
+      eventStartDateTime: null == eventStartDateTime
           ? _value.eventStartDateTime
           : eventStartDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      eventEndDateTime: eventEndDateTime == freezed
+      eventEndDateTime: null == eventEndDateTime
           ? _value.eventEndDateTime
           : eventEndDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      originalStartDateTime: originalStartDateTime == freezed
+      originalStartDateTime: null == originalStartDateTime
           ? _value.originalStartDateTime
           : originalStartDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      minAge: minAge == freezed
+      minAge: null == minAge
           ? _value.minAge
           : minAge // ignore: cast_nullable_to_non_nullable
               as int,
-      price: price == freezed
+      price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      eventPhotoUrl: eventPhotoUrl == freezed
+      eventPhotoUrl: null == eventPhotoUrl
           ? _value.eventPhotoUrl
           : eventPhotoUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      allowedOutfit: allowedOutfit == freezed
+      allowedOutfit: null == allowedOutfit
           ? _value.allowedOutfit
           : allowedOutfit // ignore: cast_nullable_to_non_nullable
               as String,
-      musicalGenres: musicalGenres == freezed
+      musicalGenres: null == musicalGenres
           ? _value._musicalGenres
           : musicalGenres // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      artistName: artistName == freezed
+      artistName: freezed == artistName
           ? _value.artistName
           : artistName // ignore: cast_nullable_to_non_nullable
               as String?,
-      location: location == freezed
+      location: null == location
           ? _value._location
           : location // ignore: cast_nullable_to_non_nullable
               as Map<String, double>,
-      cityId: cityId == freezed
+      cityId: null == cityId
           ? _value.cityId
           : cityId // ignore: cast_nullable_to_non_nullable
               as String,
-      urlLinks: urlLinks == freezed
+      urlLinks: null == urlLinks
           ? _value._urlLinks
           : urlLinks // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
-      isConcert: isConcert == freezed
+      isConcert: null == isConcert
           ? _value.isConcert
           : isConcert // ignore: cast_nullable_to_non_nullable
               as bool,
-      attending: attending == freezed
+      attending: null == attending
           ? _value.attending
           : attending // ignore: cast_nullable_to_non_nullable
               as int,
-      isCanceled: isCanceled == freezed
+      isCanceled: null == isCanceled
           ? _value.isCanceled
           : isCanceled // ignore: cast_nullable_to_non_nullable
               as bool,
-      isBeingPostponed: isBeingPostponed == freezed
+      isBeingPostponed: null == isBeingPostponed
           ? _value.isBeingPostponed
           : isBeingPostponed // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -434,6 +438,7 @@ class _$_EventDto extends _EventDto {
   final List<String> _musicalGenres;
   @override
   List<String> get musicalGenres {
+    if (_musicalGenres is EqualUnmodifiableListView) return _musicalGenres;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_musicalGenres);
   }
@@ -446,6 +451,7 @@ class _$_EventDto extends _EventDto {
   @override
   @LocationConverter()
   Map<String, double> get location {
+    if (_location is EqualUnmodifiableMapView) return _location;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_location);
   }
@@ -456,6 +462,7 @@ class _$_EventDto extends _EventDto {
   @override
   @JsonKey()
   Map<String, String> get urlLinks {
+    if (_urlLinks is EqualUnmodifiableMapView) return _urlLinks;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_urlLinks);
   }
@@ -483,70 +490,76 @@ class _$_EventDto extends _EventDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EventDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.clubId, clubId) &&
-            const DeepCollectionEquality().equals(other.eventName, eventName) &&
-            const DeepCollectionEquality().equals(other.clubName, clubName) &&
-            const DeepCollectionEquality()
-                .equals(other.eventStartDateTime, eventStartDateTime) &&
-            const DeepCollectionEquality()
-                .equals(other.eventEndDateTime, eventEndDateTime) &&
-            const DeepCollectionEquality()
-                .equals(other.originalStartDateTime, originalStartDateTime) &&
-            const DeepCollectionEquality().equals(other.minAge, minAge) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality().equals(other.currency, currency) &&
-            const DeepCollectionEquality()
-                .equals(other.eventPhotoUrl, eventPhotoUrl) &&
-            const DeepCollectionEquality()
-                .equals(other.allowedOutfit, allowedOutfit) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.clubId, clubId) || other.clubId == clubId) &&
+            (identical(other.eventName, eventName) ||
+                other.eventName == eventName) &&
+            (identical(other.clubName, clubName) ||
+                other.clubName == clubName) &&
+            (identical(other.eventStartDateTime, eventStartDateTime) ||
+                other.eventStartDateTime == eventStartDateTime) &&
+            (identical(other.eventEndDateTime, eventEndDateTime) ||
+                other.eventEndDateTime == eventEndDateTime) &&
+            (identical(other.originalStartDateTime, originalStartDateTime) ||
+                other.originalStartDateTime == originalStartDateTime) &&
+            (identical(other.minAge, minAge) || other.minAge == minAge) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.eventPhotoUrl, eventPhotoUrl) ||
+                other.eventPhotoUrl == eventPhotoUrl) &&
+            (identical(other.allowedOutfit, allowedOutfit) ||
+                other.allowedOutfit == allowedOutfit) &&
             const DeepCollectionEquality()
                 .equals(other._musicalGenres, _musicalGenres) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality()
-                .equals(other.artistName, artistName) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.artistName, artistName) ||
+                other.artistName == artistName) &&
             const DeepCollectionEquality().equals(other._location, _location) &&
-            const DeepCollectionEquality().equals(other.cityId, cityId) &&
+            (identical(other.cityId, cityId) || other.cityId == cityId) &&
             const DeepCollectionEquality().equals(other._urlLinks, _urlLinks) &&
-            const DeepCollectionEquality().equals(other.isConcert, isConcert) &&
-            const DeepCollectionEquality().equals(other.attending, attending) &&
-            const DeepCollectionEquality()
-                .equals(other.isCanceled, isCanceled) &&
-            const DeepCollectionEquality()
-                .equals(other.isBeingPostponed, isBeingPostponed));
+            (identical(other.isConcert, isConcert) ||
+                other.isConcert == isConcert) &&
+            (identical(other.attending, attending) ||
+                other.attending == attending) &&
+            (identical(other.isCanceled, isCanceled) ||
+                other.isCanceled == isCanceled) &&
+            (identical(other.isBeingPostponed, isBeingPostponed) ||
+                other.isBeingPostponed == isBeingPostponed));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(id),
-        const DeepCollectionEquality().hash(clubId),
-        const DeepCollectionEquality().hash(eventName),
-        const DeepCollectionEquality().hash(clubName),
-        const DeepCollectionEquality().hash(eventStartDateTime),
-        const DeepCollectionEquality().hash(eventEndDateTime),
-        const DeepCollectionEquality().hash(originalStartDateTime),
-        const DeepCollectionEquality().hash(minAge),
-        const DeepCollectionEquality().hash(price),
-        const DeepCollectionEquality().hash(currency),
-        const DeepCollectionEquality().hash(eventPhotoUrl),
-        const DeepCollectionEquality().hash(allowedOutfit),
+        id,
+        clubId,
+        eventName,
+        clubName,
+        eventStartDateTime,
+        eventEndDateTime,
+        originalStartDateTime,
+        minAge,
+        price,
+        currency,
+        eventPhotoUrl,
+        allowedOutfit,
         const DeepCollectionEquality().hash(_musicalGenres),
-        const DeepCollectionEquality().hash(description),
-        const DeepCollectionEquality().hash(artistName),
+        description,
+        artistName,
         const DeepCollectionEquality().hash(_location),
-        const DeepCollectionEquality().hash(cityId),
+        cityId,
         const DeepCollectionEquality().hash(_urlLinks),
-        const DeepCollectionEquality().hash(isConcert),
-        const DeepCollectionEquality().hash(attending),
-        const DeepCollectionEquality().hash(isCanceled),
-        const DeepCollectionEquality().hash(isBeingPostponed)
+        isConcert,
+        attending,
+        isCanceled,
+        isBeingPostponed
       ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventDtoCopyWith<_$_EventDto> get copyWith =>
       __$$_EventDtoCopyWithImpl<_$_EventDto>(this, _$identity);
 
