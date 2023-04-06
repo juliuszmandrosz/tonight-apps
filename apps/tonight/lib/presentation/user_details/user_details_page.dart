@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/user_details/user_details_cubit.dart';
 import 'package:tonight/injection.dart';
-import 'package:tonight/presentation/commons/icons/user_profile_details_row.dart';
 import 'package:tonight/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/user_details/widgets/user_details_stats_row.dart';
 
 class UserDetailsPage extends StatelessWidget {
   final String userId;
@@ -66,7 +66,7 @@ class UserDetailsPage extends StatelessWidget {
                                 isSmallerVersion: true,
                               ),
                               const SizedBox(height: 40),
-                              UserProfileDetailsRow(user: user),
+                              UserDetailsStatsRow(user: user),
                             ],
                           ),
                         ),

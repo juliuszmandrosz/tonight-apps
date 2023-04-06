@@ -1,21 +1,23 @@
-import 'package:account_settings/account_settings.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tonight/domain/user_details/user_details_entity.dart';
+import 'package:tonight/domain/user_details/user_details_repository.dart';
 
 part 'user_details_cubit.freezed.dart';
 part 'user_details_state.dart';
 
 class UserDetailsCubit extends Cubit<UserDetailsState> {
-  final UserAccountFacade _userAccountFacade;
+  final UserDetailsRepository _userDetailsRepository;
 
-  UserDetailsCubit(this._userAccountFacade) : super(UserDetailsState.initial());
+  UserDetailsCubit(this._userDetailsRepository)
+      : super(UserDetailsState.initial());
 
   Future<void> getUserById(String userId) async {
     emit(state.copyWith(status: CubitStatus.loading));
 
-    final result = await _userAccountFacade.getUserById(userId);
+    final result = await _userDetailsRepository.getUserDetails(userId);
 
     await Future.delayed(const Duration(milliseconds: 300));
 

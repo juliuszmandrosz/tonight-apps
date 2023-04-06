@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:tonight/application/profile/profile_cubit.dart';
-import 'package:tonight/presentation/commons/icons/user_profile_details_row.dart';
 import 'package:tonight/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight/presentation/profile/widgets/profile_menu_tiles.dart';
 import 'package:tonight/presentation/profile/widgets/profile_user_picture_.dart';
+import 'package:tonight/presentation/profile/widgets/user_profile_stats_row.dart';
 import 'package:tonight/presentation/profile/widgets/username_row.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
@@ -82,7 +82,7 @@ class ProfilePage extends StatelessWidget {
                         maxLines: 1,
                       ),
                       const SizedBox(height: 40),
-                      UserProfileDetailsRow(user: state.user),
+                      UserProfileStatsRow(user: state.user),
                       const SizedBox(height: 30),
                       const ProfileMenuTiles(),
                     ],
