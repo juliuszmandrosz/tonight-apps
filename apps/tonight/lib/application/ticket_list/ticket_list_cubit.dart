@@ -1,8 +1,8 @@
 import 'dart:async';
 
+import 'package:common/common.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:common/common.dart';
 import 'package:tickets/tickets.dart';
 
 part 'ticket_list_cubit.freezed.dart';

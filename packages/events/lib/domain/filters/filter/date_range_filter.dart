@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:events/domain/filters/filter/ifilter.dart';
 import 'package:common/common.dart';
+import 'package:flutter/material.dart';
 
 class DateRangeFilter implements IFilter {
   final DateTime? fromDate;
