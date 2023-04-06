@@ -21,6 +21,7 @@ mixin _$WallPhotosState {
   Option<String> get errorMessage => throw _privateConstructorUsedError;
   List<WallPhoto> get photos => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
+  String get filterPhrase => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WallPhotosStateCopyWith<WallPhotosState> get copyWith =>
@@ -38,7 +39,8 @@ abstract class $WallPhotosStateCopyWith<$Res> {
       CubitStatus nextPageStatus,
       Option<String> errorMessage,
       List<WallPhoto> photos,
-      bool hasReachedMax});
+      bool hasReachedMax,
+      String filterPhrase});
 }
 
 /// @nodoc
@@ -59,6 +61,7 @@ class _$WallPhotosStateCopyWithImpl<$Res, $Val extends WallPhotosState>
     Object? errorMessage = null,
     Object? photos = null,
     Object? hasReachedMax = null,
+    Object? filterPhrase = null,
   }) {
     return _then(_value.copyWith(
       getPhotosStatus: null == getPhotosStatus
@@ -81,6 +84,10 @@ class _$WallPhotosStateCopyWithImpl<$Res, $Val extends WallPhotosState>
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
               as bool,
+      filterPhrase: null == filterPhrase
+          ? _value.filterPhrase
+          : filterPhrase // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -98,7 +105,8 @@ abstract class _$$_WallPhotosStateCopyWith<$Res>
       CubitStatus nextPageStatus,
       Option<String> errorMessage,
       List<WallPhoto> photos,
-      bool hasReachedMax});
+      bool hasReachedMax,
+      String filterPhrase});
 }
 
 /// @nodoc
@@ -117,6 +125,7 @@ class __$$_WallPhotosStateCopyWithImpl<$Res>
     Object? errorMessage = null,
     Object? photos = null,
     Object? hasReachedMax = null,
+    Object? filterPhrase = null,
   }) {
     return _then(_$_WallPhotosState(
       getPhotosStatus: null == getPhotosStatus
@@ -139,6 +148,10 @@ class __$$_WallPhotosStateCopyWithImpl<$Res>
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
               as bool,
+      filterPhrase: null == filterPhrase
+          ? _value.filterPhrase
+          : filterPhrase // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -151,7 +164,8 @@ class _$_WallPhotosState implements _WallPhotosState {
       required this.nextPageStatus,
       required this.errorMessage,
       required final List<WallPhoto> photos,
-      required this.hasReachedMax})
+      required this.hasReachedMax,
+      required this.filterPhrase})
       : _photos = photos;
 
   @override
@@ -170,10 +184,12 @@ class _$_WallPhotosState implements _WallPhotosState {
 
   @override
   final bool hasReachedMax;
+  @override
+  final String filterPhrase;
 
   @override
   String toString() {
-    return 'WallPhotosState(getPhotosStatus: $getPhotosStatus, nextPageStatus: $nextPageStatus, errorMessage: $errorMessage, photos: $photos, hasReachedMax: $hasReachedMax)';
+    return 'WallPhotosState(getPhotosStatus: $getPhotosStatus, nextPageStatus: $nextPageStatus, errorMessage: $errorMessage, photos: $photos, hasReachedMax: $hasReachedMax, filterPhrase: $filterPhrase)';
   }
 
   @override
@@ -189,7 +205,9 @@ class _$_WallPhotosState implements _WallPhotosState {
                 other.errorMessage == errorMessage) &&
             const DeepCollectionEquality().equals(other._photos, _photos) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
-                other.hasReachedMax == hasReachedMax));
+                other.hasReachedMax == hasReachedMax) &&
+            (identical(other.filterPhrase, filterPhrase) ||
+                other.filterPhrase == filterPhrase));
   }
 
   @override
@@ -199,7 +217,8 @@ class _$_WallPhotosState implements _WallPhotosState {
       nextPageStatus,
       errorMessage,
       const DeepCollectionEquality().hash(_photos),
-      hasReachedMax);
+      hasReachedMax,
+      filterPhrase);
 
   @JsonKey(ignore: true)
   @override
@@ -214,7 +233,8 @@ abstract class _WallPhotosState implements WallPhotosState {
       required final CubitStatus nextPageStatus,
       required final Option<String> errorMessage,
       required final List<WallPhoto> photos,
-      required final bool hasReachedMax}) = _$_WallPhotosState;
+      required final bool hasReachedMax,
+      required final String filterPhrase}) = _$_WallPhotosState;
 
   @override
   CubitStatus get getPhotosStatus;
@@ -226,6 +246,8 @@ abstract class _WallPhotosState implements WallPhotosState {
   List<WallPhoto> get photos;
   @override
   bool get hasReachedMax;
+  @override
+  String get filterPhrase;
   @override
   @JsonKey(ignore: true)
   _$$_WallPhotosStateCopyWith<_$_WallPhotosState> get copyWith =>
