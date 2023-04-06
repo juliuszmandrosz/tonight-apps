@@ -3,10 +3,10 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:translations/translations.dart';
 
-class ProfileMenuDetailsRow extends StatelessWidget {
+class UserProfileDetailsRow extends StatelessWidget {
   final UserProfile user;
 
-  const ProfileMenuDetailsRow({
+  const UserProfileDetailsRow({
     required this.user,
     Key? key,
   }) : super(key: key);
