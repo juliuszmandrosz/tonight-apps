@@ -18,4 +18,6 @@ abstract class WallPhotoFacade {
     int pageSize = 20,
     int offset = 0,
   });
+
+  Future<Either<WallPhotoFailure, List<WallPhoto>>> getUserPhotos();
 }
