@@ -37,10 +37,8 @@ class FirebaseDiscountFacade implements DiscountFacade {
       final appliedDiscountIds =
           appliedDiscounts.docs.map((doc) => doc.id).toList();
 
-      final discountDocs = await _firestore.getDocsByIdsWhereNotIn(
-        ids: appliedDiscountIds,
-        collection: _firestore.partnersDiscounts,
-      );
+      final discountDocs = await _firestore.partnersDiscounts
+          .getDocsByIdsWhereNotIn(appliedDiscountIds);
 
       final clubSalesDoc = await _firestore.clubsSales.doc(clubDocRef.id).get();
       final clubSales = ClubSalesDto.fromFirebase(clubSalesDoc).toDomain();
