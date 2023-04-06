@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event_sort_model.dart';
 
@@ -28,34 +28,37 @@ mixin _$EventSortModel {
 abstract class $EventSortModelCopyWith<$Res> {
   factory $EventSortModelCopyWith(
           EventSortModel value, $Res Function(EventSortModel) then) =
-      _$EventSortModelCopyWithImpl<$Res>;
+      _$EventSortModelCopyWithImpl<$Res, EventSortModel>;
+  @useResult
   $Res call({String fieldName, SortDirection direction});
 }
 
 /// @nodoc
-class _$EventSortModelCopyWithImpl<$Res>
+class _$EventSortModelCopyWithImpl<$Res, $Val extends EventSortModel>
     implements $EventSortModelCopyWith<$Res> {
   _$EventSortModelCopyWithImpl(this._value, this._then);
 
-  final EventSortModel _value;
   // ignore: unused_field
-  final $Res Function(EventSortModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fieldName = freezed,
-    Object? direction = freezed,
+    Object? fieldName = null,
+    Object? direction = null,
   }) {
     return _then(_value.copyWith(
-      fieldName: fieldName == freezed
+      fieldName: null == fieldName
           ? _value.fieldName
           : fieldName // ignore: cast_nullable_to_non_nullable
               as String,
-      direction: direction == freezed
+      direction: null == direction
           ? _value.direction
           : direction // ignore: cast_nullable_to_non_nullable
               as SortDirection,
-    ));
+    ) as $Val);
   }
 }
 
@@ -66,31 +69,30 @@ abstract class _$$_EventSortModelCopyWith<$Res>
           _$_EventSortModel value, $Res Function(_$_EventSortModel) then) =
       __$$_EventSortModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String fieldName, SortDirection direction});
 }
 
 /// @nodoc
 class __$$_EventSortModelCopyWithImpl<$Res>
-    extends _$EventSortModelCopyWithImpl<$Res>
+    extends _$EventSortModelCopyWithImpl<$Res, _$_EventSortModel>
     implements _$$_EventSortModelCopyWith<$Res> {
   __$$_EventSortModelCopyWithImpl(
       _$_EventSortModel _value, $Res Function(_$_EventSortModel) _then)
-      : super(_value, (v) => _then(v as _$_EventSortModel));
+      : super(_value, _then);
 
-  @override
-  _$_EventSortModel get _value => super._value as _$_EventSortModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fieldName = freezed,
-    Object? direction = freezed,
+    Object? fieldName = null,
+    Object? direction = null,
   }) {
     return _then(_$_EventSortModel(
-      fieldName: fieldName == freezed
+      fieldName: null == fieldName
           ? _value.fieldName
           : fieldName // ignore: cast_nullable_to_non_nullable
               as String,
-      direction: direction == freezed
+      direction: null == direction
           ? _value.direction
           : direction // ignore: cast_nullable_to_non_nullable
               as SortDirection,
@@ -119,18 +121,18 @@ class _$_EventSortModel extends _EventSortModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EventSortModel &&
-            const DeepCollectionEquality().equals(other.fieldName, fieldName) &&
-            const DeepCollectionEquality().equals(other.direction, direction));
+            (identical(other.fieldName, fieldName) ||
+                other.fieldName == fieldName) &&
+            (identical(other.direction, direction) ||
+                other.direction == direction));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(fieldName),
-      const DeepCollectionEquality().hash(direction));
+  int get hashCode => Object.hash(runtimeType, fieldName, direction);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventSortModelCopyWith<_$_EventSortModel> get copyWith =>
       __$$_EventSortModelCopyWithImpl<_$_EventSortModel>(this, _$identity);
 }
