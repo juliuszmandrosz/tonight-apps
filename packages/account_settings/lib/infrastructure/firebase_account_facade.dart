@@ -35,7 +35,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
         _logger = logger;
 
   @override
-  Stream<Either<UserProfileFailure, UserAccount>> getProfile() async* {
+  Stream<Either<UserProfileFailure, UserAccount>> getUserAccount() async* {
     final userDocRef = _getUserDocRef();
     yield* userDocRef
         .snapshots()

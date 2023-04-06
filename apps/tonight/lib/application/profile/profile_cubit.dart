@@ -34,7 +34,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     emit(state.copyWith(initialStatus: CubitStatus.loading));
 
     _profileSubscription =
-        _accountFacade.getProfile().listen((failureOrSuccess) {
+        _accountFacade.getUserAccount().listen((failureOrSuccess) {
       failureOrSuccess.fold(
         (failure) {
           emit(state.copyWith(initialStatus: CubitStatus.failure));
