@@ -9,7 +9,6 @@ import 'package:tonight_partners/application/overview/overview_cubit.dart';
 import 'package:tonight_partners/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:tonight_partners/injection.dart';
 import 'package:tonight_partners/presentation/core/selected_page.dart';
-import 'package:tonight_partners/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart';
 import 'package:tonight_partners/presentation/core/tonight_partners_fab.dart';
 import 'package:tonight_partners/presentation/drawer/tonight_partners_drawer.dart';

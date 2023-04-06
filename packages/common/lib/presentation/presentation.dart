@@ -1,5 +1,6 @@
 export 'bottom_loader.dart';
 export 'circle_network_photo.dart';
+export 'dots_loading_indicator.dart';
 export 'drawer_tile.dart';
 export 'failure_page.dart';
 export 'network_photo.dart';
@@ -10,5 +11,7 @@ export 'page_transitions/slide_right_transition.dart';
 export 'page_transitions/zoom_in_transition.dart';
 export 'profile_picture_container.dart';
 export 'social_media_button.dart';
+export 'ticket_logo_animation.dart';
 export 'tonight_hyper_link.dart';
 export 'tonight_icon_link.dart';
+export 'tonight_overlay.dart';

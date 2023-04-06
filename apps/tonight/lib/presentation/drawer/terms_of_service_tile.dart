@@ -1,7 +1,8 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/terms_of_service/terms_of_service_cubit.dart';
-import 'package:tonight/presentation/profile/widgets/profile_menu_list_tile.dart';
 import 'package:translations/translations.dart';
 
 class TermsOfServiceTile extends StatelessWidget {
@@ -9,8 +10,9 @@ class TermsOfServiceTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProfileMenuListTile(
-      title: S().termsOfService,
+    return DrawerTile(
+      icon: FontAwesomeIcons.bookBookmark,
+      label: S().termsOfService,
       onTap: () => context.read<TermsOfServiceCubit>().getTermsOfService(),
     );
   }

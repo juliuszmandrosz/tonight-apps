@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/core/places/places_cubit.dart';
 import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
 import 'package:tonight/injection.dart';
-import 'package:tonight/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_city.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_currency.dart';

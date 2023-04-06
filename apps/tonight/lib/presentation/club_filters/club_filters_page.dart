@@ -10,7 +10,6 @@ import 'package:tonight/presentation/club_filters/widgets/club_filters_currency.
 import 'package:tonight/presentation/club_filters/widgets/club_filters_max_distance.dart';
 import 'package:tonight/presentation/club_filters/widgets/club_filters_place_option.dart';
 import 'package:tonight/presentation/club_filters/widgets/club_filters_submit_button.dart';
-import 'package:tonight/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
