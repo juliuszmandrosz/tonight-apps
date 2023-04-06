@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event_overview_bloc.dart';
 
@@ -29,12 +29,12 @@ mixin _$EventOverviewEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(EventFilters filters, EventSortModel sortModel)?
+    TResult? Function(EventFilters filters, EventSortModel sortModel)?
         eventsFetched,
-    TResult Function()? nextEventsPageFetched,
-    TResult Function(Event event)? eventToStateAdded,
-    TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
-    TResult Function(Event event)? eventInStateDeleted,
+    TResult? Function()? nextEventsPageFetched,
+    TResult? Function(Event event)? eventToStateAdded,
+    TResult? Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult? Function(Event event)? eventInStateDeleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,11 +60,11 @@ mixin _$EventOverviewEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
-    TResult Function(_EventToStateAdded value)? eventToStateAdded,
-    TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
-    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
+    TResult? Function(_EventsFetched value)? eventsFetched,
+    TResult? Function(_NextEventsPageFetched value)? nextEventsPageFetched,
+    TResult? Function(_EventToStateAdded value)? eventToStateAdded,
+    TResult? Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult? Function(_EventInStateDeleted value)? eventInStateDeleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,17 +83,18 @@ mixin _$EventOverviewEvent {
 abstract class $EventOverviewEventCopyWith<$Res> {
   factory $EventOverviewEventCopyWith(
           EventOverviewEvent value, $Res Function(EventOverviewEvent) then) =
-      _$EventOverviewEventCopyWithImpl<$Res>;
+      _$EventOverviewEventCopyWithImpl<$Res, EventOverviewEvent>;
 }
 
 /// @nodoc
-class _$EventOverviewEventCopyWithImpl<$Res>
+class _$EventOverviewEventCopyWithImpl<$Res, $Val extends EventOverviewEvent>
     implements $EventOverviewEventCopyWith<$Res> {
   _$EventOverviewEventCopyWithImpl(this._value, this._then);
 
-  final EventOverviewEvent _value;
   // ignore: unused_field
-  final $Res Function(EventOverviewEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -101,6 +102,7 @@ abstract class _$$_EventsFetchedCopyWith<$Res> {
   factory _$$_EventsFetchedCopyWith(
           _$_EventsFetched value, $Res Function(_$_EventsFetched) then) =
       __$$_EventsFetchedCopyWithImpl<$Res>;
+  @useResult
   $Res call({EventFilters filters, EventSortModel sortModel});
 
   $EventFiltersCopyWith<$Res> get filters;
@@ -109,26 +111,24 @@ abstract class _$$_EventsFetchedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_EventsFetchedCopyWithImpl<$Res>
-    extends _$EventOverviewEventCopyWithImpl<$Res>
+    extends _$EventOverviewEventCopyWithImpl<$Res, _$_EventsFetched>
     implements _$$_EventsFetchedCopyWith<$Res> {
   __$$_EventsFetchedCopyWithImpl(
       _$_EventsFetched _value, $Res Function(_$_EventsFetched) _then)
-      : super(_value, (v) => _then(v as _$_EventsFetched));
+      : super(_value, _then);
 
-  @override
-  _$_EventsFetched get _value => super._value as _$_EventsFetched;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? filters = freezed,
-    Object? sortModel = freezed,
+    Object? filters = null,
+    Object? sortModel = null,
   }) {
     return _then(_$_EventsFetched(
-      filters == freezed
+      null == filters
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
               as EventFilters,
-      sortModel == freezed
+      null == sortModel
           ? _value.sortModel
           : sortModel // ignore: cast_nullable_to_non_nullable
               as EventSortModel,
@@ -136,6 +136,7 @@ class __$$_EventsFetchedCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $EventFiltersCopyWith<$Res> get filters {
     return $EventFiltersCopyWith<$Res>(_value.filters, (value) {
       return _then(_value.copyWith(filters: value));
@@ -143,6 +144,7 @@ class __$$_EventsFetchedCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $EventSortModelCopyWith<$Res> get sortModel {
     return $EventSortModelCopyWith<$Res>(_value.sortModel, (value) {
       return _then(_value.copyWith(sortModel: value));
@@ -170,18 +172,17 @@ class _$_EventsFetched implements _EventsFetched {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EventsFetched &&
-            const DeepCollectionEquality().equals(other.filters, filters) &&
-            const DeepCollectionEquality().equals(other.sortModel, sortModel));
+            (identical(other.filters, filters) || other.filters == filters) &&
+            (identical(other.sortModel, sortModel) ||
+                other.sortModel == sortModel));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(filters),
-      const DeepCollectionEquality().hash(sortModel));
+  int get hashCode => Object.hash(runtimeType, filters, sortModel);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventsFetchedCopyWith<_$_EventsFetched> get copyWith =>
       __$$_EventsFetchedCopyWithImpl<_$_EventsFetched>(this, _$identity);
 
@@ -202,12 +203,12 @@ class _$_EventsFetched implements _EventsFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(EventFilters filters, EventSortModel sortModel)?
+    TResult? Function(EventFilters filters, EventSortModel sortModel)?
         eventsFetched,
-    TResult Function()? nextEventsPageFetched,
-    TResult Function(Event event)? eventToStateAdded,
-    TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
-    TResult Function(Event event)? eventInStateDeleted,
+    TResult? Function()? nextEventsPageFetched,
+    TResult? Function(Event event)? eventToStateAdded,
+    TResult? Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult? Function(Event event)? eventInStateDeleted,
   }) {
     return eventsFetched?.call(filters, sortModel);
   }
@@ -245,11 +246,11 @@ class _$_EventsFetched implements _EventsFetched {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
-    TResult Function(_EventToStateAdded value)? eventToStateAdded,
-    TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
-    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
+    TResult? Function(_EventsFetched value)? eventsFetched,
+    TResult? Function(_NextEventsPageFetched value)? nextEventsPageFetched,
+    TResult? Function(_EventToStateAdded value)? eventToStateAdded,
+    TResult? Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult? Function(_EventInStateDeleted value)? eventInStateDeleted,
   }) {
     return eventsFetched?.call(this);
   }
@@ -292,15 +293,11 @@ abstract class _$$_NextEventsPageFetchedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_NextEventsPageFetchedCopyWithImpl<$Res>
-    extends _$EventOverviewEventCopyWithImpl<$Res>
+    extends _$EventOverviewEventCopyWithImpl<$Res, _$_NextEventsPageFetched>
     implements _$$_NextEventsPageFetchedCopyWith<$Res> {
   __$$_NextEventsPageFetchedCopyWithImpl(_$_NextEventsPageFetched _value,
       $Res Function(_$_NextEventsPageFetched) _then)
-      : super(_value, (v) => _then(v as _$_NextEventsPageFetched));
-
-  @override
-  _$_NextEventsPageFetched get _value =>
-      super._value as _$_NextEventsPageFetched;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -339,12 +336,12 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(EventFilters filters, EventSortModel sortModel)?
+    TResult? Function(EventFilters filters, EventSortModel sortModel)?
         eventsFetched,
-    TResult Function()? nextEventsPageFetched,
-    TResult Function(Event event)? eventToStateAdded,
-    TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
-    TResult Function(Event event)? eventInStateDeleted,
+    TResult? Function()? nextEventsPageFetched,
+    TResult? Function(Event event)? eventToStateAdded,
+    TResult? Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult? Function(Event event)? eventInStateDeleted,
   }) {
     return nextEventsPageFetched?.call();
   }
@@ -382,11 +379,11 @@ class _$_NextEventsPageFetched implements _NextEventsPageFetched {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
-    TResult Function(_EventToStateAdded value)? eventToStateAdded,
-    TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
-    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
+    TResult? Function(_EventsFetched value)? eventsFetched,
+    TResult? Function(_NextEventsPageFetched value)? nextEventsPageFetched,
+    TResult? Function(_EventToStateAdded value)? eventToStateAdded,
+    TResult? Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult? Function(_EventInStateDeleted value)? eventInStateDeleted,
   }) {
     return nextEventsPageFetched?.call(this);
   }
@@ -417,26 +414,25 @@ abstract class _$$_EventToStateAddedCopyWith<$Res> {
   factory _$$_EventToStateAddedCopyWith(_$_EventToStateAdded value,
           $Res Function(_$_EventToStateAdded) then) =
       __$$_EventToStateAddedCopyWithImpl<$Res>;
+  @useResult
   $Res call({Event event});
 }
 
 /// @nodoc
 class __$$_EventToStateAddedCopyWithImpl<$Res>
-    extends _$EventOverviewEventCopyWithImpl<$Res>
+    extends _$EventOverviewEventCopyWithImpl<$Res, _$_EventToStateAdded>
     implements _$$_EventToStateAddedCopyWith<$Res> {
   __$$_EventToStateAddedCopyWithImpl(
       _$_EventToStateAdded _value, $Res Function(_$_EventToStateAdded) _then)
-      : super(_value, (v) => _then(v as _$_EventToStateAdded));
+      : super(_value, _then);
 
-  @override
-  _$_EventToStateAdded get _value => super._value as _$_EventToStateAdded;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? event = freezed,
+    Object? event = null,
   }) {
     return _then(_$_EventToStateAdded(
-      event == freezed
+      null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
               as Event,
@@ -462,15 +458,15 @@ class _$_EventToStateAdded implements _EventToStateAdded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EventToStateAdded &&
-            const DeepCollectionEquality().equals(other.event, event));
+            (identical(other.event, event) || other.event == event));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(event));
+  int get hashCode => Object.hash(runtimeType, event);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventToStateAddedCopyWith<_$_EventToStateAdded> get copyWith =>
       __$$_EventToStateAddedCopyWithImpl<_$_EventToStateAdded>(
           this, _$identity);
@@ -492,12 +488,12 @@ class _$_EventToStateAdded implements _EventToStateAdded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(EventFilters filters, EventSortModel sortModel)?
+    TResult? Function(EventFilters filters, EventSortModel sortModel)?
         eventsFetched,
-    TResult Function()? nextEventsPageFetched,
-    TResult Function(Event event)? eventToStateAdded,
-    TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
-    TResult Function(Event event)? eventInStateDeleted,
+    TResult? Function()? nextEventsPageFetched,
+    TResult? Function(Event event)? eventToStateAdded,
+    TResult? Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult? Function(Event event)? eventInStateDeleted,
   }) {
     return eventToStateAdded?.call(event);
   }
@@ -535,11 +531,11 @@ class _$_EventToStateAdded implements _EventToStateAdded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
-    TResult Function(_EventToStateAdded value)? eventToStateAdded,
-    TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
-    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
+    TResult? Function(_EventsFetched value)? eventsFetched,
+    TResult? Function(_NextEventsPageFetched value)? nextEventsPageFetched,
+    TResult? Function(_EventToStateAdded value)? eventToStateAdded,
+    TResult? Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult? Function(_EventInStateDeleted value)? eventInStateDeleted,
   }) {
     return eventToStateAdded?.call(this);
   }
@@ -575,31 +571,30 @@ abstract class _$$_EventInStateUpdatedCopyWith<$Res> {
   factory _$$_EventInStateUpdatedCopyWith(_$_EventInStateUpdated value,
           $Res Function(_$_EventInStateUpdated) then) =
       __$$_EventInStateUpdatedCopyWithImpl<$Res>;
+  @useResult
   $Res call({Event oldEvent, Event updatedEvent});
 }
 
 /// @nodoc
 class __$$_EventInStateUpdatedCopyWithImpl<$Res>
-    extends _$EventOverviewEventCopyWithImpl<$Res>
+    extends _$EventOverviewEventCopyWithImpl<$Res, _$_EventInStateUpdated>
     implements _$$_EventInStateUpdatedCopyWith<$Res> {
   __$$_EventInStateUpdatedCopyWithImpl(_$_EventInStateUpdated _value,
       $Res Function(_$_EventInStateUpdated) _then)
-      : super(_value, (v) => _then(v as _$_EventInStateUpdated));
+      : super(_value, _then);
 
-  @override
-  _$_EventInStateUpdated get _value => super._value as _$_EventInStateUpdated;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? oldEvent = freezed,
-    Object? updatedEvent = freezed,
+    Object? oldEvent = null,
+    Object? updatedEvent = null,
   }) {
     return _then(_$_EventInStateUpdated(
-      oldEvent == freezed
+      null == oldEvent
           ? _value.oldEvent
           : oldEvent // ignore: cast_nullable_to_non_nullable
               as Event,
-      updatedEvent == freezed
+      null == updatedEvent
           ? _value.updatedEvent
           : updatedEvent // ignore: cast_nullable_to_non_nullable
               as Event,
@@ -627,19 +622,18 @@ class _$_EventInStateUpdated implements _EventInStateUpdated {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EventInStateUpdated &&
-            const DeepCollectionEquality().equals(other.oldEvent, oldEvent) &&
-            const DeepCollectionEquality()
-                .equals(other.updatedEvent, updatedEvent));
+            (identical(other.oldEvent, oldEvent) ||
+                other.oldEvent == oldEvent) &&
+            (identical(other.updatedEvent, updatedEvent) ||
+                other.updatedEvent == updatedEvent));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(oldEvent),
-      const DeepCollectionEquality().hash(updatedEvent));
+  int get hashCode => Object.hash(runtimeType, oldEvent, updatedEvent);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventInStateUpdatedCopyWith<_$_EventInStateUpdated> get copyWith =>
       __$$_EventInStateUpdatedCopyWithImpl<_$_EventInStateUpdated>(
           this, _$identity);
@@ -661,12 +655,12 @@ class _$_EventInStateUpdated implements _EventInStateUpdated {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(EventFilters filters, EventSortModel sortModel)?
+    TResult? Function(EventFilters filters, EventSortModel sortModel)?
         eventsFetched,
-    TResult Function()? nextEventsPageFetched,
-    TResult Function(Event event)? eventToStateAdded,
-    TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
-    TResult Function(Event event)? eventInStateDeleted,
+    TResult? Function()? nextEventsPageFetched,
+    TResult? Function(Event event)? eventToStateAdded,
+    TResult? Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult? Function(Event event)? eventInStateDeleted,
   }) {
     return eventInStateUpdated?.call(oldEvent, updatedEvent);
   }
@@ -704,11 +698,11 @@ class _$_EventInStateUpdated implements _EventInStateUpdated {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
-    TResult Function(_EventToStateAdded value)? eventToStateAdded,
-    TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
-    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
+    TResult? Function(_EventsFetched value)? eventsFetched,
+    TResult? Function(_NextEventsPageFetched value)? nextEventsPageFetched,
+    TResult? Function(_EventToStateAdded value)? eventToStateAdded,
+    TResult? Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult? Function(_EventInStateDeleted value)? eventInStateDeleted,
   }) {
     return eventInStateUpdated?.call(this);
   }
@@ -746,26 +740,25 @@ abstract class _$$_EventInStateDeletedCopyWith<$Res> {
   factory _$$_EventInStateDeletedCopyWith(_$_EventInStateDeleted value,
           $Res Function(_$_EventInStateDeleted) then) =
       __$$_EventInStateDeletedCopyWithImpl<$Res>;
+  @useResult
   $Res call({Event event});
 }
 
 /// @nodoc
 class __$$_EventInStateDeletedCopyWithImpl<$Res>
-    extends _$EventOverviewEventCopyWithImpl<$Res>
+    extends _$EventOverviewEventCopyWithImpl<$Res, _$_EventInStateDeleted>
     implements _$$_EventInStateDeletedCopyWith<$Res> {
   __$$_EventInStateDeletedCopyWithImpl(_$_EventInStateDeleted _value,
       $Res Function(_$_EventInStateDeleted) _then)
-      : super(_value, (v) => _then(v as _$_EventInStateDeleted));
+      : super(_value, _then);
 
-  @override
-  _$_EventInStateDeleted get _value => super._value as _$_EventInStateDeleted;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? event = freezed,
+    Object? event = null,
   }) {
     return _then(_$_EventInStateDeleted(
-      event == freezed
+      null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
               as Event,
@@ -791,15 +784,15 @@ class _$_EventInStateDeleted implements _EventInStateDeleted {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EventInStateDeleted &&
-            const DeepCollectionEquality().equals(other.event, event));
+            (identical(other.event, event) || other.event == event));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(event));
+  int get hashCode => Object.hash(runtimeType, event);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventInStateDeletedCopyWith<_$_EventInStateDeleted> get copyWith =>
       __$$_EventInStateDeletedCopyWithImpl<_$_EventInStateDeleted>(
           this, _$identity);
@@ -821,12 +814,12 @@ class _$_EventInStateDeleted implements _EventInStateDeleted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(EventFilters filters, EventSortModel sortModel)?
+    TResult? Function(EventFilters filters, EventSortModel sortModel)?
         eventsFetched,
-    TResult Function()? nextEventsPageFetched,
-    TResult Function(Event event)? eventToStateAdded,
-    TResult Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
-    TResult Function(Event event)? eventInStateDeleted,
+    TResult? Function()? nextEventsPageFetched,
+    TResult? Function(Event event)? eventToStateAdded,
+    TResult? Function(Event oldEvent, Event updatedEvent)? eventInStateUpdated,
+    TResult? Function(Event event)? eventInStateDeleted,
   }) {
     return eventInStateDeleted?.call(event);
   }
@@ -864,11 +857,11 @@ class _$_EventInStateDeleted implements _EventInStateDeleted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_NextEventsPageFetched value)? nextEventsPageFetched,
-    TResult Function(_EventToStateAdded value)? eventToStateAdded,
-    TResult Function(_EventInStateUpdated value)? eventInStateUpdated,
-    TResult Function(_EventInStateDeleted value)? eventInStateDeleted,
+    TResult? Function(_EventsFetched value)? eventsFetched,
+    TResult? Function(_NextEventsPageFetched value)? nextEventsPageFetched,
+    TResult? Function(_EventToStateAdded value)? eventToStateAdded,
+    TResult? Function(_EventInStateUpdated value)? eventInStateUpdated,
+    TResult? Function(_EventInStateDeleted value)? eventInStateDeleted,
   }) {
     return eventInStateDeleted?.call(this);
   }
@@ -918,7 +911,8 @@ mixin _$EventOverviewState {
 abstract class $EventOverviewStateCopyWith<$Res> {
   factory $EventOverviewStateCopyWith(
           EventOverviewState value, $Res Function(EventOverviewState) then) =
-      _$EventOverviewStateCopyWithImpl<$Res>;
+      _$EventOverviewStateCopyWithImpl<$Res, EventOverviewState>;
+  @useResult
   $Res call(
       {List<Event> events,
       bool hasReachedMax,
@@ -932,62 +926,66 @@ abstract class $EventOverviewStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EventOverviewStateCopyWithImpl<$Res>
+class _$EventOverviewStateCopyWithImpl<$Res, $Val extends EventOverviewState>
     implements $EventOverviewStateCopyWith<$Res> {
   _$EventOverviewStateCopyWithImpl(this._value, this._then);
 
-  final EventOverviewState _value;
   // ignore: unused_field
-  final $Res Function(EventOverviewState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? events = freezed,
-    Object? hasReachedMax = freezed,
-    Object? status = freezed,
-    Object? eventFilters = freezed,
-    Object? sortModel = freezed,
-    Object? failure = freezed,
+    Object? events = null,
+    Object? hasReachedMax = null,
+    Object? status = null,
+    Object? eventFilters = null,
+    Object? sortModel = null,
+    Object? failure = null,
   }) {
     return _then(_value.copyWith(
-      events: events == freezed
+      events: null == events
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
               as List<Event>,
-      hasReachedMax: hasReachedMax == freezed
+      hasReachedMax: null == hasReachedMax
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
               as bool,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      eventFilters: eventFilters == freezed
+      eventFilters: null == eventFilters
           ? _value.eventFilters
           : eventFilters // ignore: cast_nullable_to_non_nullable
               as EventFilters,
-      sortModel: sortModel == freezed
+      sortModel: null == sortModel
           ? _value.sortModel
           : sortModel // ignore: cast_nullable_to_non_nullable
               as EventSortModel,
-      failure: failure == freezed
+      failure: null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as Option<CommonEventFailure>,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $EventFiltersCopyWith<$Res> get eventFilters {
     return $EventFiltersCopyWith<$Res>(_value.eventFilters, (value) {
-      return _then(_value.copyWith(eventFilters: value));
+      return _then(_value.copyWith(eventFilters: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $EventSortModelCopyWith<$Res> get sortModel {
     return $EventSortModelCopyWith<$Res>(_value.sortModel, (value) {
-      return _then(_value.copyWith(sortModel: value));
+      return _then(_value.copyWith(sortModel: value) as $Val);
     });
   }
 }
@@ -999,6 +997,7 @@ abstract class _$$_EventOverviewStateCopyWith<$Res>
           $Res Function(_$_EventOverviewState) then) =
       __$$_EventOverviewStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {List<Event> events,
       bool hasReachedMax,
@@ -1015,46 +1014,44 @@ abstract class _$$_EventOverviewStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_EventOverviewStateCopyWithImpl<$Res>
-    extends _$EventOverviewStateCopyWithImpl<$Res>
+    extends _$EventOverviewStateCopyWithImpl<$Res, _$_EventOverviewState>
     implements _$$_EventOverviewStateCopyWith<$Res> {
   __$$_EventOverviewStateCopyWithImpl(
       _$_EventOverviewState _value, $Res Function(_$_EventOverviewState) _then)
-      : super(_value, (v) => _then(v as _$_EventOverviewState));
+      : super(_value, _then);
 
-  @override
-  _$_EventOverviewState get _value => super._value as _$_EventOverviewState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? events = freezed,
-    Object? hasReachedMax = freezed,
-    Object? status = freezed,
-    Object? eventFilters = freezed,
-    Object? sortModel = freezed,
-    Object? failure = freezed,
+    Object? events = null,
+    Object? hasReachedMax = null,
+    Object? status = null,
+    Object? eventFilters = null,
+    Object? sortModel = null,
+    Object? failure = null,
   }) {
     return _then(_$_EventOverviewState(
-      events: events == freezed
+      events: null == events
           ? _value._events
           : events // ignore: cast_nullable_to_non_nullable
               as List<Event>,
-      hasReachedMax: hasReachedMax == freezed
+      hasReachedMax: null == hasReachedMax
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
               as bool,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      eventFilters: eventFilters == freezed
+      eventFilters: null == eventFilters
           ? _value.eventFilters
           : eventFilters // ignore: cast_nullable_to_non_nullable
               as EventFilters,
-      sortModel: sortModel == freezed
+      sortModel: null == sortModel
           ? _value.sortModel
           : sortModel // ignore: cast_nullable_to_non_nullable
               as EventSortModel,
-      failure: failure == freezed
+      failure: null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as Option<CommonEventFailure>,
@@ -1078,6 +1075,7 @@ class _$_EventOverviewState extends _EventOverviewState {
   final List<Event> _events;
   @override
   List<Event> get events {
+    if (_events is EqualUnmodifiableListView) return _events;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_events);
   }
@@ -1104,27 +1102,29 @@ class _$_EventOverviewState extends _EventOverviewState {
         (other.runtimeType == runtimeType &&
             other is _$_EventOverviewState &&
             const DeepCollectionEquality().equals(other._events, _events) &&
-            const DeepCollectionEquality()
-                .equals(other.hasReachedMax, hasReachedMax) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.eventFilters, eventFilters) &&
-            const DeepCollectionEquality().equals(other.sortModel, sortModel) &&
-            const DeepCollectionEquality().equals(other.failure, failure));
+            (identical(other.hasReachedMax, hasReachedMax) ||
+                other.hasReachedMax == hasReachedMax) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.eventFilters, eventFilters) ||
+                other.eventFilters == eventFilters) &&
+            (identical(other.sortModel, sortModel) ||
+                other.sortModel == sortModel) &&
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_events),
-      const DeepCollectionEquality().hash(hasReachedMax),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(eventFilters),
-      const DeepCollectionEquality().hash(sortModel),
-      const DeepCollectionEquality().hash(failure));
+      hasReachedMax,
+      status,
+      eventFilters,
+      sortModel,
+      failure);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventOverviewStateCopyWith<_$_EventOverviewState> get copyWith =>
       __$$_EventOverviewStateCopyWithImpl<_$_EventOverviewState>(
           this, _$identity);

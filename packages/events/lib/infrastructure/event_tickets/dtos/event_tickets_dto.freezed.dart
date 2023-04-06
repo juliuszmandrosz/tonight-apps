@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event_tickets_dto.dart';
 
@@ -39,7 +39,8 @@ mixin _$EventTicketsDto {
 abstract class $EventTicketsDtoCopyWith<$Res> {
   factory $EventTicketsDtoCopyWith(
           EventTicketsDto value, $Res Function(EventTicketsDto) then) =
-      _$EventTicketsDtoCopyWithImpl<$Res>;
+      _$EventTicketsDtoCopyWithImpl<$Res, EventTicketsDto>;
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? eventId,
       List<TicketPoolDto> ticketPools,
@@ -53,60 +54,63 @@ abstract class $EventTicketsDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EventTicketsDtoCopyWithImpl<$Res>
+class _$EventTicketsDtoCopyWithImpl<$Res, $Val extends EventTicketsDto>
     implements $EventTicketsDtoCopyWith<$Res> {
   _$EventTicketsDtoCopyWithImpl(this._value, this._then);
 
-  final EventTicketsDto _value;
   // ignore: unused_field
-  final $Res Function(EventTicketsDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? eventId = freezed,
-    Object? ticketPools = freezed,
-    Object? ticketSales = freezed,
-    Object? ticketQuantity = freezed,
-    Object? isSoldOut = freezed,
-    Object? isSaleOnlyAtGate = freezed,
+    Object? ticketPools = null,
+    Object? ticketSales = null,
+    Object? ticketQuantity = null,
+    Object? isSoldOut = null,
+    Object? isSaleOnlyAtGate = null,
     Object? priceAtGate = freezed,
   }) {
     return _then(_value.copyWith(
-      eventId: eventId == freezed
+      eventId: freezed == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
               as String?,
-      ticketPools: ticketPools == freezed
+      ticketPools: null == ticketPools
           ? _value.ticketPools
           : ticketPools // ignore: cast_nullable_to_non_nullable
               as List<TicketPoolDto>,
-      ticketSales: ticketSales == freezed
+      ticketSales: null == ticketSales
           ? _value.ticketSales
           : ticketSales // ignore: cast_nullable_to_non_nullable
               as TicketSalesDto,
-      ticketQuantity: ticketQuantity == freezed
+      ticketQuantity: null == ticketQuantity
           ? _value.ticketQuantity
           : ticketQuantity // ignore: cast_nullable_to_non_nullable
               as int,
-      isSoldOut: isSoldOut == freezed
+      isSoldOut: null == isSoldOut
           ? _value.isSoldOut
           : isSoldOut // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSaleOnlyAtGate: isSaleOnlyAtGate == freezed
+      isSaleOnlyAtGate: null == isSaleOnlyAtGate
           ? _value.isSaleOnlyAtGate
           : isSaleOnlyAtGate // ignore: cast_nullable_to_non_nullable
               as bool,
-      priceAtGate: priceAtGate == freezed
+      priceAtGate: freezed == priceAtGate
           ? _value.priceAtGate
           : priceAtGate // ignore: cast_nullable_to_non_nullable
               as int?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TicketSalesDtoCopyWith<$Res> get ticketSales {
     return $TicketSalesDtoCopyWith<$Res>(_value.ticketSales, (value) {
-      return _then(_value.copyWith(ticketSales: value));
+      return _then(_value.copyWith(ticketSales: value) as $Val);
     });
   }
 }
@@ -118,6 +122,7 @@ abstract class _$$_EventTicketsDtoCopyWith<$Res>
           _$_EventTicketsDto value, $Res Function(_$_EventTicketsDto) then) =
       __$$_EventTicketsDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? eventId,
       List<TicketPoolDto> ticketPools,
@@ -133,51 +138,49 @@ abstract class _$$_EventTicketsDtoCopyWith<$Res>
 
 /// @nodoc
 class __$$_EventTicketsDtoCopyWithImpl<$Res>
-    extends _$EventTicketsDtoCopyWithImpl<$Res>
+    extends _$EventTicketsDtoCopyWithImpl<$Res, _$_EventTicketsDto>
     implements _$$_EventTicketsDtoCopyWith<$Res> {
   __$$_EventTicketsDtoCopyWithImpl(
       _$_EventTicketsDto _value, $Res Function(_$_EventTicketsDto) _then)
-      : super(_value, (v) => _then(v as _$_EventTicketsDto));
+      : super(_value, _then);
 
-  @override
-  _$_EventTicketsDto get _value => super._value as _$_EventTicketsDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? eventId = freezed,
-    Object? ticketPools = freezed,
-    Object? ticketSales = freezed,
-    Object? ticketQuantity = freezed,
-    Object? isSoldOut = freezed,
-    Object? isSaleOnlyAtGate = freezed,
+    Object? ticketPools = null,
+    Object? ticketSales = null,
+    Object? ticketQuantity = null,
+    Object? isSoldOut = null,
+    Object? isSaleOnlyAtGate = null,
     Object? priceAtGate = freezed,
   }) {
     return _then(_$_EventTicketsDto(
-      eventId: eventId == freezed
+      eventId: freezed == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
               as String?,
-      ticketPools: ticketPools == freezed
+      ticketPools: null == ticketPools
           ? _value._ticketPools
           : ticketPools // ignore: cast_nullable_to_non_nullable
               as List<TicketPoolDto>,
-      ticketSales: ticketSales == freezed
+      ticketSales: null == ticketSales
           ? _value.ticketSales
           : ticketSales // ignore: cast_nullable_to_non_nullable
               as TicketSalesDto,
-      ticketQuantity: ticketQuantity == freezed
+      ticketQuantity: null == ticketQuantity
           ? _value.ticketQuantity
           : ticketQuantity // ignore: cast_nullable_to_non_nullable
               as int,
-      isSoldOut: isSoldOut == freezed
+      isSoldOut: null == isSoldOut
           ? _value.isSoldOut
           : isSoldOut // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSaleOnlyAtGate: isSaleOnlyAtGate == freezed
+      isSaleOnlyAtGate: null == isSaleOnlyAtGate
           ? _value.isSaleOnlyAtGate
           : isSaleOnlyAtGate // ignore: cast_nullable_to_non_nullable
               as bool,
-      priceAtGate: priceAtGate == freezed
+      priceAtGate: freezed == priceAtGate
           ? _value.priceAtGate
           : priceAtGate // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -209,6 +212,7 @@ class _$_EventTicketsDto extends _EventTicketsDto {
   final List<TicketPoolDto> _ticketPools;
   @override
   List<TicketPoolDto> get ticketPools {
+    if (_ticketPools is EqualUnmodifiableListView) return _ticketPools;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_ticketPools);
   }
@@ -236,34 +240,36 @@ class _$_EventTicketsDto extends _EventTicketsDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EventTicketsDto &&
-            const DeepCollectionEquality().equals(other.eventId, eventId) &&
+            (identical(other.eventId, eventId) || other.eventId == eventId) &&
             const DeepCollectionEquality()
                 .equals(other._ticketPools, _ticketPools) &&
-            const DeepCollectionEquality()
-                .equals(other.ticketSales, ticketSales) &&
-            const DeepCollectionEquality()
-                .equals(other.ticketQuantity, ticketQuantity) &&
-            const DeepCollectionEquality().equals(other.isSoldOut, isSoldOut) &&
-            const DeepCollectionEquality()
-                .equals(other.isSaleOnlyAtGate, isSaleOnlyAtGate) &&
-            const DeepCollectionEquality()
-                .equals(other.priceAtGate, priceAtGate));
+            (identical(other.ticketSales, ticketSales) ||
+                other.ticketSales == ticketSales) &&
+            (identical(other.ticketQuantity, ticketQuantity) ||
+                other.ticketQuantity == ticketQuantity) &&
+            (identical(other.isSoldOut, isSoldOut) ||
+                other.isSoldOut == isSoldOut) &&
+            (identical(other.isSaleOnlyAtGate, isSaleOnlyAtGate) ||
+                other.isSaleOnlyAtGate == isSaleOnlyAtGate) &&
+            (identical(other.priceAtGate, priceAtGate) ||
+                other.priceAtGate == priceAtGate));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(eventId),
+      eventId,
       const DeepCollectionEquality().hash(_ticketPools),
-      const DeepCollectionEquality().hash(ticketSales),
-      const DeepCollectionEquality().hash(ticketQuantity),
-      const DeepCollectionEquality().hash(isSoldOut),
-      const DeepCollectionEquality().hash(isSaleOnlyAtGate),
-      const DeepCollectionEquality().hash(priceAtGate));
+      ticketSales,
+      ticketQuantity,
+      isSoldOut,
+      isSaleOnlyAtGate,
+      priceAtGate);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventTicketsDtoCopyWith<_$_EventTicketsDto> get copyWith =>
       __$$_EventTicketsDtoCopyWithImpl<_$_EventTicketsDto>(this, _$identity);
 
