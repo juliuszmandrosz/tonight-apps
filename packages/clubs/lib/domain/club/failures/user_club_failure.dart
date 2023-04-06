@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:translations/translations.dart';
 
 part 'user_club_failure.freezed.dart';
 
@@ -12,4 +13,17 @@ abstract class UserClubFailure with _$UserClubFailure {
 
   const factory UserClubFailure.moreThan20FavoriteClubs() =
       _MoreThan20FavoriteClubs;
+}
+
+extension UserClubFailureX on UserClubFailure {
+  String get message {
+    return map(
+      unexpected: (_) => S().serverError,
+      noConnection: (_) => S().errorCheckInternetConnection,
+      permissionDenied: (_) => S().operationNotAllowed,
+      moreThan20FavoriteClubs: (_) =>
+          // TODO - add translation
+          'You can\'t have more than 20 favorite clubs',
+    );
+  }
 }
