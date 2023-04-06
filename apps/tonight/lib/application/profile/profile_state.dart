@@ -5,7 +5,7 @@ class ProfileState with _$ProfileState {
   const ProfileState._();
 
   factory ProfileState({
-    required UserProfile user,
+    required UserAccount user,
     required bool isFromOauth,
     required CubitStatus initialStatus,
     required CubitStatus deletingAccountStatus,
@@ -13,7 +13,7 @@ class ProfileState with _$ProfileState {
   }) = _ProfileState;
 
   factory ProfileState.initial() => ProfileState(
-        user: const UserProfile(
+        user: const UserAccount(
           id: '',
           email: '',
         ),

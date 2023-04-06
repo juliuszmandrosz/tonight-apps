@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:account_settings/domain/user/user_profile_entity.dart';
+import 'package:account_settings/domain/user/user_account_entity.dart';
 import 'package:account_settings/domain/user_account_facade.dart';
 import 'package:account_settings/domain/user_profile_failure.dart';
 import 'package:auth/auth.dart';
@@ -13,7 +13,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
 import 'package:uuid/uuid.dart';
 
-import 'dtos/user/user_profile_dto.dart';
+import 'dtos/user/user_account_dto.dart';
 
 class FirebaseAccountFacade implements UserAccountFacade {
   final FirebaseFirestore _firestore;
@@ -35,12 +35,12 @@ class FirebaseAccountFacade implements UserAccountFacade {
         _logger = logger;
 
   @override
-  Stream<Either<UserProfileFailure, UserProfile>> getProfile() async* {
+  Stream<Either<UserProfileFailure, UserAccount>> getProfile() async* {
     final userDocRef = _getUserDocRef();
     yield* userDocRef
         .snapshots()
-        .map((snapshot) => right<UserProfileFailure, UserProfile>(
-            UserProfileDto.fromFirebase(snapshot).toDomain()))
+        .map((snapshot) => right<UserProfileFailure, UserAccount>(
+            UserAccountDto.fromFirebase(snapshot).toDomain()))
         .handleError((e) {
       if (e is FirebaseException) {
         return left(
@@ -132,7 +132,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
     try {
       final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
       final userDoc = await userDocRef.get();
-      final user = UserProfileDto.fromFirebase(userDoc);
+      final user = UserAccountDto.fromFirebase(userDoc);
       final tokens = {...user.pushNotificationTokens, token}.toList();
       await userDocRef.update({'pushNotificationTokens': tokens});
       return right(unit);
@@ -178,7 +178,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
   }
 
   @override
-  Future<Either<UserProfileFailure, UserProfile>> getUserById(String id) async {
+  Future<Either<UserProfileFailure, UserAccount>> getUserById(String id) async {
     try {
       final result = await _firestore.userCollection
           .where(
@@ -191,7 +191,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
         return left(const UserProfileFailure.userNotFound());
       }
 
-      final userDto = UserProfileDto.fromFirebase(result.docs.first);
+      final userDto = UserAccountDto.fromFirebase(result.docs.first);
 
       return right(userDto.toDomain());
     } on FirebaseException catch (e) {
