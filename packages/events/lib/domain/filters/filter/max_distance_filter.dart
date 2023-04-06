@@ -1,4 +1,3 @@
-import 'package:events/domain/filters/filter/ifilter.dart';
 import 'package:common/common.dart';
 
 class MaxDistanceFilter implements IFilter {

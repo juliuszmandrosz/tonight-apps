@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
-import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
 
 part 'wall_photos_cubit.freezed.dart';
 part 'wall_photos_state.dart';
@@ -39,7 +38,7 @@ class WallPhotosCubit extends Cubit<WallPhotosState> {
     emit(state.copyWith(nextPageStatus: CubitStatus.loading));
 
     final result = await _wallPhotoFacade.getPhotos(
-      lastPhoto: state.photos.last,
+      offset: state.photos.length,
     );
 
     result.fold(
@@ -52,10 +51,5 @@ class WallPhotosCubit extends Cubit<WallPhotosState> {
         ),
       ),
     );
-  }
-
-  _showErrorMessage(WallPhotoFailure failure) {
-    emit(state.copyWith(errorMessage: some(failure.message)));
-    emit(state.copyWith(errorMessage: none()));
   }
 }
