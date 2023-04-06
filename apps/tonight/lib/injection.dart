@@ -58,6 +58,7 @@ import 'package:tonight/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:tonight/application/wall_photos/wall_photos_cubit.dart';
 import 'package:tonight/domain/places/places_facade.dart';
 import 'package:tonight/domain/user_details/user_details_aggregator.dart';
+import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/infrastructure/google_places/google_places_facade.dart';
 import 'package:tonight/infrastructure/wall_photos/firebase_wall_photo_facade.dart';
@@ -72,7 +73,7 @@ final GetIt getIt = GetIt.instance;
 
 void registerDependencies() {
   _registerFacades();
-  _registerRepositories();
+  _registerAggregators();
   _registerCubits();
   _registerModules();
   _registerCubitSubjects();
@@ -524,9 +525,16 @@ void _registerFacades() {
   );
 }
 
-void _registerRepositories() {
+void _registerAggregators() {
   getIt.registerLazySingleton(
     () => UserDetailsAggregator(
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
+    () => UserProfileAggregator(
       getIt(),
       getIt(),
     ),
