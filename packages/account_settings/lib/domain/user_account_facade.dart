@@ -5,7 +5,7 @@ import 'package:account_settings/domain/user_profile_failure.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class UserAccountFacade {
-  Stream<Either<UserProfileFailure, UserAccount>> getProfile();
+  Stream<Either<UserProfileFailure, UserAccount>> getUserAccount();
 
   Future<Either<UserProfileFailure, UserAccount>> getUserById(String id);
 
