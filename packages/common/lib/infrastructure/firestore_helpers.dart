@@ -84,10 +84,11 @@ extension FirestoreX on FirebaseFirestore {
 
     return clubCollection.doc(selectorClubId);
   }
+}
 
+extension CollectionReferenceX on CollectionReference {
   Future<List<DocumentSnapshot>> getDocsByIdsWhereIn({
     required List<String> ids,
-    required CollectionReference collection,
   }) async {
     final result = <DocumentSnapshot>[];
     final idsCopy = [...ids];
@@ -97,7 +98,7 @@ extension FirestoreX on FirebaseFirestore {
 
       final idsChunk = idsCopy.getRange(0, chunkSize).toList();
 
-      final docsQuery = collection.where(
+      final docsQuery = where(
         FieldPath.documentId,
         whereIn: idsChunk,
       );
@@ -114,13 +115,12 @@ extension FirestoreX on FirebaseFirestore {
 
   Future<List<DocumentSnapshot>> getDocsByIdsWhereNotIn({
     required List<String> ids,
-    required CollectionReference collection,
   }) async {
     final result = <DocumentSnapshot>[];
     final idsCopy = [...ids];
 
     if (idsCopy.isEmpty) {
-      return collection.get().then((res) => res.docs);
+      return get().then((res) => res.docs);
     }
 
     while (idsCopy.isNotEmpty) {
@@ -128,7 +128,7 @@ extension FirestoreX on FirebaseFirestore {
 
       final idsChunk = idsCopy.getRange(0, chunkSize).toList();
 
-      final docsQuery = collection.where(
+      final docsQuery = where(
         FieldPath.documentId,
         whereNotIn: idsChunk,
       );
