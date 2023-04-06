@@ -10,7 +10,6 @@ import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dar
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/details_hero_image.dart';
-import 'package:tonight/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight/presentation/events_details/widgets/canceled_event_message.dart';
 import 'package:tonight/presentation/events_details/widgets/event_details_additional_info.dart';
 import 'package:tonight/presentation/events_details/widgets/event_details_artist_name.dart';

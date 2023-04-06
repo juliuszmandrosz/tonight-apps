@@ -7,7 +7,6 @@ import 'package:tickets/tickets.dart';
 import 'package:tonight/application/event_review/new_review/event_review_cubit.dart';
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
 import 'package:tonight/injection.dart';
-import 'package:tonight/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight/presentation/event_review/widgets/review_event_date.dart';
 import 'package:tonight/presentation/event_review/widgets/review_event_name.dart';
 import 'package:tonight/presentation/event_review/widgets/review_rating_bar.dart';

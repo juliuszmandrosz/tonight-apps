@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
+import 'package:tonight/presentation/drawer/tonight_drawer.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
@@ -18,6 +19,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
+      drawer: const TonightDrawer(),
       appBarBuilder: (_, tabsRouter) => const TonightAppBar(),
       routes: const [
         WallPhotosRoute(),

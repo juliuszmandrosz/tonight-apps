@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight_partners/application/past_event_details/past_event_details_cubit.dart';
 import 'package:tonight_partners/presentation/core/event_revenue.dart';
-import 'package:tonight_partners/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight_partners/presentation/past_event_details/widgets/past_event_reviews.dart';
 import 'package:tonight_partners/presentation/routes/app_router.dart';
 

@@ -9,7 +9,6 @@ import 'package:formz/formz.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:tonight_scanner/application/current_event/current_event_cubit.dart';
 import 'package:tonight_scanner/application/selector_club/selector_club_cubit.dart';
-import 'package:tonight_scanner/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight_scanner/presentation/event/widgets/current_event.dart';
 import 'package:tonight_scanner/presentation/event/widgets/no_access.dart';
 import 'package:tonight_scanner/presentation/event/widgets/no_live_event.dart';

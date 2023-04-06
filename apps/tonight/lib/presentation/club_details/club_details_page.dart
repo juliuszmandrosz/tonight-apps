@@ -11,7 +11,6 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/club_details/widgets/club_description.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs.dart';
 import 'package:tonight/presentation/core/details_hero_image.dart';
-import 'package:tonight/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class ClubDetailsPage extends StatefulWidget {

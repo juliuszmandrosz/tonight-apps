@@ -1,8 +1,8 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/profile/profile_cubit.dart';
-import 'package:tonight/presentation/profile/widgets/profile_menu_list_tile.dart';
 import 'package:translations/translations.dart';
 
 class DeleteAccountTile extends StatelessWidget {
@@ -10,8 +10,9 @@ class DeleteAccountTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProfileMenuListTile(
-      title: S().deleteAccount,
+    return DrawerTile(
+      icon: FontAwesomeIcons.trash,
+      label: S().deleteAccount,
       onTap: () async {
         final result = await context.showConfirmationDialogWithCustomMessage(
           S().confirmDeleteAccount,

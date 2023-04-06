@@ -1,7 +1,8 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/terms_of_service/terms_of_service_cubit.dart';
-import 'package:tonight/presentation/profile/widgets/profile_menu_list_tile.dart';
 import 'package:translations/translations.dart';
 
 class PrivacyPolicyTile extends StatelessWidget {
@@ -9,9 +10,10 @@ class PrivacyPolicyTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProfileMenuListTile(
-      title: S().privacyPolicy,
+    return DrawerTile(
+      label: S().privacyPolicy,
       onTap: () => context.read<TermsOfServiceCubit>().getPrivacyPolicy(),
+      icon: FontAwesomeIcons.book,
     );
   }
 }
