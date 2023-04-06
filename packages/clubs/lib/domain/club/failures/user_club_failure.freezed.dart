@@ -21,6 +21,7 @@ mixin _$UserClubFailure {
     required TResult Function() unexpected,
     required TResult Function() noConnection,
     required TResult Function() permissionDenied,
+    required TResult Function() moreThan20FavoriteClubs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$UserClubFailure {
     TResult? Function()? unexpected,
     TResult? Function()? noConnection,
     TResult? Function()? permissionDenied,
+    TResult? Function()? moreThan20FavoriteClubs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$UserClubFailure {
     TResult Function()? unexpected,
     TResult Function()? noConnection,
     TResult Function()? permissionDenied,
+    TResult Function()? moreThan20FavoriteClubs,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,8 @@ mixin _$UserClubFailure {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_MoreThan20FavoriteClubs value)
+        moreThan20FavoriteClubs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +55,7 @@ mixin _$UserClubFailure {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_MoreThan20FavoriteClubs value)? moreThan20FavoriteClubs,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +63,7 @@ mixin _$UserClubFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_MoreThan20FavoriteClubs value)? moreThan20FavoriteClubs,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +128,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() unexpected,
     required TResult Function() noConnection,
     required TResult Function() permissionDenied,
+    required TResult Function() moreThan20FavoriteClubs,
   }) {
     return unexpected();
   }
@@ -131,6 +139,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function()? unexpected,
     TResult? Function()? noConnection,
     TResult? Function()? permissionDenied,
+    TResult? Function()? moreThan20FavoriteClubs,
   }) {
     return unexpected?.call();
   }
@@ -141,6 +150,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? unexpected,
     TResult Function()? noConnection,
     TResult Function()? permissionDenied,
+    TResult Function()? moreThan20FavoriteClubs,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -155,6 +165,8 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_MoreThan20FavoriteClubs value)
+        moreThan20FavoriteClubs,
   }) {
     return unexpected(this);
   }
@@ -165,6 +177,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_MoreThan20FavoriteClubs value)? moreThan20FavoriteClubs,
   }) {
     return unexpected?.call(this);
   }
@@ -175,6 +188,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_MoreThan20FavoriteClubs value)? moreThan20FavoriteClubs,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -229,6 +243,7 @@ class _$_NoConnection implements _NoConnection {
     required TResult Function() unexpected,
     required TResult Function() noConnection,
     required TResult Function() permissionDenied,
+    required TResult Function() moreThan20FavoriteClubs,
   }) {
     return noConnection();
   }
@@ -239,6 +254,7 @@ class _$_NoConnection implements _NoConnection {
     TResult? Function()? unexpected,
     TResult? Function()? noConnection,
     TResult? Function()? permissionDenied,
+    TResult? Function()? moreThan20FavoriteClubs,
   }) {
     return noConnection?.call();
   }
@@ -249,6 +265,7 @@ class _$_NoConnection implements _NoConnection {
     TResult Function()? unexpected,
     TResult Function()? noConnection,
     TResult Function()? permissionDenied,
+    TResult Function()? moreThan20FavoriteClubs,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -263,6 +280,8 @@ class _$_NoConnection implements _NoConnection {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_MoreThan20FavoriteClubs value)
+        moreThan20FavoriteClubs,
   }) {
     return noConnection(this);
   }
@@ -273,6 +292,7 @@ class _$_NoConnection implements _NoConnection {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_MoreThan20FavoriteClubs value)? moreThan20FavoriteClubs,
   }) {
     return noConnection?.call(this);
   }
@@ -283,6 +303,7 @@ class _$_NoConnection implements _NoConnection {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_MoreThan20FavoriteClubs value)? moreThan20FavoriteClubs,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -337,6 +358,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     required TResult Function() unexpected,
     required TResult Function() noConnection,
     required TResult Function() permissionDenied,
+    required TResult Function() moreThan20FavoriteClubs,
   }) {
     return permissionDenied();
   }
@@ -347,6 +369,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult? Function()? unexpected,
     TResult? Function()? noConnection,
     TResult? Function()? permissionDenied,
+    TResult? Function()? moreThan20FavoriteClubs,
   }) {
     return permissionDenied?.call();
   }
@@ -357,6 +380,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function()? unexpected,
     TResult Function()? noConnection,
     TResult Function()? permissionDenied,
+    TResult Function()? moreThan20FavoriteClubs,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -371,6 +395,8 @@ class _$_PermissionDenied implements _PermissionDenied {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_MoreThan20FavoriteClubs value)
+        moreThan20FavoriteClubs,
   }) {
     return permissionDenied(this);
   }
@@ -381,6 +407,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_MoreThan20FavoriteClubs value)? moreThan20FavoriteClubs,
   }) {
     return permissionDenied?.call(this);
   }
@@ -391,6 +418,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_MoreThan20FavoriteClubs value)? moreThan20FavoriteClubs,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -402,4 +430,120 @@ class _$_PermissionDenied implements _PermissionDenied {
 
 abstract class _PermissionDenied implements UserClubFailure {
   const factory _PermissionDenied() = _$_PermissionDenied;
+}
+
+/// @nodoc
+abstract class _$$_MoreThan20FavoriteClubsCopyWith<$Res> {
+  factory _$$_MoreThan20FavoriteClubsCopyWith(_$_MoreThan20FavoriteClubs value,
+          $Res Function(_$_MoreThan20FavoriteClubs) then) =
+      __$$_MoreThan20FavoriteClubsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_MoreThan20FavoriteClubsCopyWithImpl<$Res>
+    extends _$UserClubFailureCopyWithImpl<$Res, _$_MoreThan20FavoriteClubs>
+    implements _$$_MoreThan20FavoriteClubsCopyWith<$Res> {
+  __$$_MoreThan20FavoriteClubsCopyWithImpl(_$_MoreThan20FavoriteClubs _value,
+      $Res Function(_$_MoreThan20FavoriteClubs) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_MoreThan20FavoriteClubs implements _MoreThan20FavoriteClubs {
+  const _$_MoreThan20FavoriteClubs();
+
+  @override
+  String toString() {
+    return 'UserClubFailure.moreThan20FavoriteClubs()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MoreThan20FavoriteClubs);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() noConnection,
+    required TResult Function() permissionDenied,
+    required TResult Function() moreThan20FavoriteClubs,
+  }) {
+    return moreThan20FavoriteClubs();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? noConnection,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? moreThan20FavoriteClubs,
+  }) {
+    return moreThan20FavoriteClubs?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? noConnection,
+    TResult Function()? permissionDenied,
+    TResult Function()? moreThan20FavoriteClubs,
+    required TResult orElse(),
+  }) {
+    if (moreThan20FavoriteClubs != null) {
+      return moreThan20FavoriteClubs();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_MoreThan20FavoriteClubs value)
+        moreThan20FavoriteClubs,
+  }) {
+    return moreThan20FavoriteClubs(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_MoreThan20FavoriteClubs value)? moreThan20FavoriteClubs,
+  }) {
+    return moreThan20FavoriteClubs?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_MoreThan20FavoriteClubs value)? moreThan20FavoriteClubs,
+    required TResult orElse(),
+  }) {
+    if (moreThan20FavoriteClubs != null) {
+      return moreThan20FavoriteClubs(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MoreThan20FavoriteClubs implements UserClubFailure {
+  const factory _MoreThan20FavoriteClubs() = _$_MoreThan20FavoriteClubs;
 }
