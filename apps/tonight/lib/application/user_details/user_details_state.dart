@@ -4,7 +4,7 @@ part of 'user_details_cubit.dart';
 class UserDetailsState with _$UserDetailsState {
   const factory UserDetailsState({
     required CubitStatus status,
-    required Option<UserProfile> user,
+    required Option<UserDetails> user,
   }) = _UserDetailsState;
 
   factory UserDetailsState.initial() => UserDetailsState(
