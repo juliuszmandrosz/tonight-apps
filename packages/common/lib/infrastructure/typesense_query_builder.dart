@@ -56,6 +56,14 @@ class TypesenseQueryBuilder {
     return query += '$field: $value';
   }
 
+  static String setFacetNotEqualsFilter({
+    required String query,
+    required String field,
+    required String value,
+  }) {
+    return query += '$field:!= $value';
+  }
+
   static String setAroundLatLng({
     required String query,
     required double lat,
