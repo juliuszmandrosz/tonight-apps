@@ -8,6 +8,7 @@ class WallPhotosState with _$WallPhotosState {
     required Option<String> errorMessage,
     required List<WallPhoto> photos,
     required bool hasReachedMax,
+    required String filterPhrase,
   }) = _WallPhotosState;
 
   factory WallPhotosState.initial() => WallPhotosState(
@@ -16,5 +17,6 @@ class WallPhotosState with _$WallPhotosState {
         errorMessage: none(),
         hasReachedMax: false,
         photos: [],
+        filterPhrase: '',
       );
 }
