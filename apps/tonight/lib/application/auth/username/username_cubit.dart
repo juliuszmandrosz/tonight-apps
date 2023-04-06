@@ -47,7 +47,7 @@ class UsernameCubit extends Cubit<UsernameState> {
     return status.isValidated;
   }
 
-  _emitFailure(UserProfileFailure failure) {
+  _emitFailure(UserAccountFailure failure) {
     emit(
       state.copyWith(
         errorMessage: some(failure.message),
