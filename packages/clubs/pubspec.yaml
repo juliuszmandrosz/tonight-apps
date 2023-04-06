@@ -29,6 +29,9 @@ dependencies:
   common:
     path: ../common
 
+  translations:
+    path: ../translations
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
