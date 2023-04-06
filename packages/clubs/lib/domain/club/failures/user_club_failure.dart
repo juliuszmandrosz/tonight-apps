@@ -9,4 +9,7 @@ abstract class UserClubFailure with _$UserClubFailure {
   const factory UserClubFailure.noConnection() = _NoConnection;
 
   const factory UserClubFailure.permissionDenied() = _PermissionDenied;
+
+  const factory UserClubFailure.moreThan20FavoriteClubs() =
+      _MoreThan20FavoriteClubs;
 }

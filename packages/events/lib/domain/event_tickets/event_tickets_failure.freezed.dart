@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event_tickets_failure.dart';
 
@@ -28,12 +28,12 @@ mixin _$EventTicketsFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? priceChangedAfterTicketWasSold,
-    TResult Function()? quantityChangedToLessThanTicketsSold,
-    TResult Function()? deletedTicketPoolAfterTicketWasSold,
-    TResult Function()? deletedAllTicketPools,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? priceChangedAfterTicketWasSold,
+    TResult? Function()? quantityChangedToLessThanTicketsSold,
+    TResult? Function()? deletedTicketPoolAfterTicketWasSold,
+    TResult? Function()? deletedAllTicketPools,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,15 +63,15 @@ mixin _$EventTicketsFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_PriceChangedAfterTicketWasSold value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_PriceChangedAfterTicketWasSold value)?
         priceChangedAfterTicketWasSold,
-    TResult Function(_QuantityChangedToLessThanTicketsSold value)?
+    TResult? Function(_QuantityChangedToLessThanTicketsSold value)?
         quantityChangedToLessThanTicketsSold,
-    TResult Function(_DeletedTicketPoolAfterTicketWasSold value)?
+    TResult? Function(_DeletedTicketPoolAfterTicketWasSold value)?
         deletedTicketPoolAfterTicketWasSold,
-    TResult Function(_DeletedAllTicketPools value)? deletedAllTicketPools,
+    TResult? Function(_DeletedAllTicketPools value)? deletedAllTicketPools,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -94,17 +94,18 @@ mixin _$EventTicketsFailure {
 abstract class $EventTicketsFailureCopyWith<$Res> {
   factory $EventTicketsFailureCopyWith(
           EventTicketsFailure value, $Res Function(EventTicketsFailure) then) =
-      _$EventTicketsFailureCopyWithImpl<$Res>;
+      _$EventTicketsFailureCopyWithImpl<$Res, EventTicketsFailure>;
 }
 
 /// @nodoc
-class _$EventTicketsFailureCopyWithImpl<$Res>
+class _$EventTicketsFailureCopyWithImpl<$Res, $Val extends EventTicketsFailure>
     implements $EventTicketsFailureCopyWith<$Res> {
   _$EventTicketsFailureCopyWithImpl(this._value, this._then);
 
-  final EventTicketsFailure _value;
   // ignore: unused_field
-  final $Res Function(EventTicketsFailure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -116,14 +117,11 @@ abstract class _$$_UnexpectedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$EventTicketsFailureCopyWithImpl<$Res>
+    extends _$EventTicketsFailureCopyWithImpl<$Res, _$_Unexpected>
     implements _$$_UnexpectedCopyWith<$Res> {
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
-      : super(_value, (v) => _then(v as _$_Unexpected));
-
-  @override
-  _$_Unexpected get _value => super._value as _$_Unexpected;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -161,12 +159,12 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? priceChangedAfterTicketWasSold,
-    TResult Function()? quantityChangedToLessThanTicketsSold,
-    TResult Function()? deletedTicketPoolAfterTicketWasSold,
-    TResult Function()? deletedAllTicketPools,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? priceChangedAfterTicketWasSold,
+    TResult? Function()? quantityChangedToLessThanTicketsSold,
+    TResult? Function()? deletedTicketPoolAfterTicketWasSold,
+    TResult? Function()? deletedAllTicketPools,
   }) {
     return unexpected?.call();
   }
@@ -208,15 +206,15 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_PriceChangedAfterTicketWasSold value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_PriceChangedAfterTicketWasSold value)?
         priceChangedAfterTicketWasSold,
-    TResult Function(_QuantityChangedToLessThanTicketsSold value)?
+    TResult? Function(_QuantityChangedToLessThanTicketsSold value)?
         quantityChangedToLessThanTicketsSold,
-    TResult Function(_DeletedTicketPoolAfterTicketWasSold value)?
+    TResult? Function(_DeletedTicketPoolAfterTicketWasSold value)?
         deletedTicketPoolAfterTicketWasSold,
-    TResult Function(_DeletedAllTicketPools value)? deletedAllTicketPools,
+    TResult? Function(_DeletedAllTicketPools value)? deletedAllTicketPools,
   }) {
     return unexpected?.call(this);
   }
@@ -255,14 +253,11 @@ abstract class _$$_PermissionDeniedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PermissionDeniedCopyWithImpl<$Res>
-    extends _$EventTicketsFailureCopyWithImpl<$Res>
+    extends _$EventTicketsFailureCopyWithImpl<$Res, _$_PermissionDenied>
     implements _$$_PermissionDeniedCopyWith<$Res> {
   __$$_PermissionDeniedCopyWithImpl(
       _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
-      : super(_value, (v) => _then(v as _$_PermissionDenied));
-
-  @override
-  _$_PermissionDenied get _value => super._value as _$_PermissionDenied;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -300,12 +295,12 @@ class _$_PermissionDenied implements _PermissionDenied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? priceChangedAfterTicketWasSold,
-    TResult Function()? quantityChangedToLessThanTicketsSold,
-    TResult Function()? deletedTicketPoolAfterTicketWasSold,
-    TResult Function()? deletedAllTicketPools,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? priceChangedAfterTicketWasSold,
+    TResult? Function()? quantityChangedToLessThanTicketsSold,
+    TResult? Function()? deletedTicketPoolAfterTicketWasSold,
+    TResult? Function()? deletedAllTicketPools,
   }) {
     return permissionDenied?.call();
   }
@@ -347,15 +342,15 @@ class _$_PermissionDenied implements _PermissionDenied {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_PriceChangedAfterTicketWasSold value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_PriceChangedAfterTicketWasSold value)?
         priceChangedAfterTicketWasSold,
-    TResult Function(_QuantityChangedToLessThanTicketsSold value)?
+    TResult? Function(_QuantityChangedToLessThanTicketsSold value)?
         quantityChangedToLessThanTicketsSold,
-    TResult Function(_DeletedTicketPoolAfterTicketWasSold value)?
+    TResult? Function(_DeletedTicketPoolAfterTicketWasSold value)?
         deletedTicketPoolAfterTicketWasSold,
-    TResult Function(_DeletedAllTicketPools value)? deletedAllTicketPools,
+    TResult? Function(_DeletedAllTicketPools value)? deletedAllTicketPools,
   }) {
     return permissionDenied?.call(this);
   }
@@ -395,16 +390,13 @@ abstract class _$$_PriceChangedAfterTicketWasSoldCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PriceChangedAfterTicketWasSoldCopyWithImpl<$Res>
-    extends _$EventTicketsFailureCopyWithImpl<$Res>
+    extends _$EventTicketsFailureCopyWithImpl<$Res,
+        _$_PriceChangedAfterTicketWasSold>
     implements _$$_PriceChangedAfterTicketWasSoldCopyWith<$Res> {
   __$$_PriceChangedAfterTicketWasSoldCopyWithImpl(
       _$_PriceChangedAfterTicketWasSold _value,
       $Res Function(_$_PriceChangedAfterTicketWasSold) _then)
-      : super(_value, (v) => _then(v as _$_PriceChangedAfterTicketWasSold));
-
-  @override
-  _$_PriceChangedAfterTicketWasSold get _value =>
-      super._value as _$_PriceChangedAfterTicketWasSold;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -444,12 +436,12 @@ class _$_PriceChangedAfterTicketWasSold
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? priceChangedAfterTicketWasSold,
-    TResult Function()? quantityChangedToLessThanTicketsSold,
-    TResult Function()? deletedTicketPoolAfterTicketWasSold,
-    TResult Function()? deletedAllTicketPools,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? priceChangedAfterTicketWasSold,
+    TResult? Function()? quantityChangedToLessThanTicketsSold,
+    TResult? Function()? deletedTicketPoolAfterTicketWasSold,
+    TResult? Function()? deletedAllTicketPools,
   }) {
     return priceChangedAfterTicketWasSold?.call();
   }
@@ -491,15 +483,15 @@ class _$_PriceChangedAfterTicketWasSold
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_PriceChangedAfterTicketWasSold value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_PriceChangedAfterTicketWasSold value)?
         priceChangedAfterTicketWasSold,
-    TResult Function(_QuantityChangedToLessThanTicketsSold value)?
+    TResult? Function(_QuantityChangedToLessThanTicketsSold value)?
         quantityChangedToLessThanTicketsSold,
-    TResult Function(_DeletedTicketPoolAfterTicketWasSold value)?
+    TResult? Function(_DeletedTicketPoolAfterTicketWasSold value)?
         deletedTicketPoolAfterTicketWasSold,
-    TResult Function(_DeletedAllTicketPools value)? deletedAllTicketPools,
+    TResult? Function(_DeletedAllTicketPools value)? deletedAllTicketPools,
   }) {
     return priceChangedAfterTicketWasSold?.call(this);
   }
@@ -540,17 +532,13 @@ abstract class _$$_QuantityChangedToLessThanTicketsSoldCopyWith<$Res> {
 
 /// @nodoc
 class __$$_QuantityChangedToLessThanTicketsSoldCopyWithImpl<$Res>
-    extends _$EventTicketsFailureCopyWithImpl<$Res>
+    extends _$EventTicketsFailureCopyWithImpl<$Res,
+        _$_QuantityChangedToLessThanTicketsSold>
     implements _$$_QuantityChangedToLessThanTicketsSoldCopyWith<$Res> {
   __$$_QuantityChangedToLessThanTicketsSoldCopyWithImpl(
       _$_QuantityChangedToLessThanTicketsSold _value,
       $Res Function(_$_QuantityChangedToLessThanTicketsSold) _then)
-      : super(
-            _value, (v) => _then(v as _$_QuantityChangedToLessThanTicketsSold));
-
-  @override
-  _$_QuantityChangedToLessThanTicketsSold get _value =>
-      super._value as _$_QuantityChangedToLessThanTicketsSold;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -590,12 +578,12 @@ class _$_QuantityChangedToLessThanTicketsSold
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? priceChangedAfterTicketWasSold,
-    TResult Function()? quantityChangedToLessThanTicketsSold,
-    TResult Function()? deletedTicketPoolAfterTicketWasSold,
-    TResult Function()? deletedAllTicketPools,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? priceChangedAfterTicketWasSold,
+    TResult? Function()? quantityChangedToLessThanTicketsSold,
+    TResult? Function()? deletedTicketPoolAfterTicketWasSold,
+    TResult? Function()? deletedAllTicketPools,
   }) {
     return quantityChangedToLessThanTicketsSold?.call();
   }
@@ -637,15 +625,15 @@ class _$_QuantityChangedToLessThanTicketsSold
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_PriceChangedAfterTicketWasSold value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_PriceChangedAfterTicketWasSold value)?
         priceChangedAfterTicketWasSold,
-    TResult Function(_QuantityChangedToLessThanTicketsSold value)?
+    TResult? Function(_QuantityChangedToLessThanTicketsSold value)?
         quantityChangedToLessThanTicketsSold,
-    TResult Function(_DeletedTicketPoolAfterTicketWasSold value)?
+    TResult? Function(_DeletedTicketPoolAfterTicketWasSold value)?
         deletedTicketPoolAfterTicketWasSold,
-    TResult Function(_DeletedAllTicketPools value)? deletedAllTicketPools,
+    TResult? Function(_DeletedAllTicketPools value)? deletedAllTicketPools,
   }) {
     return quantityChangedToLessThanTicketsSold?.call(this);
   }
@@ -687,17 +675,13 @@ abstract class _$$_DeletedTicketPoolAfterTicketWasSoldCopyWith<$Res> {
 
 /// @nodoc
 class __$$_DeletedTicketPoolAfterTicketWasSoldCopyWithImpl<$Res>
-    extends _$EventTicketsFailureCopyWithImpl<$Res>
+    extends _$EventTicketsFailureCopyWithImpl<$Res,
+        _$_DeletedTicketPoolAfterTicketWasSold>
     implements _$$_DeletedTicketPoolAfterTicketWasSoldCopyWith<$Res> {
   __$$_DeletedTicketPoolAfterTicketWasSoldCopyWithImpl(
       _$_DeletedTicketPoolAfterTicketWasSold _value,
       $Res Function(_$_DeletedTicketPoolAfterTicketWasSold) _then)
-      : super(
-            _value, (v) => _then(v as _$_DeletedTicketPoolAfterTicketWasSold));
-
-  @override
-  _$_DeletedTicketPoolAfterTicketWasSold get _value =>
-      super._value as _$_DeletedTicketPoolAfterTicketWasSold;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -737,12 +721,12 @@ class _$_DeletedTicketPoolAfterTicketWasSold
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? priceChangedAfterTicketWasSold,
-    TResult Function()? quantityChangedToLessThanTicketsSold,
-    TResult Function()? deletedTicketPoolAfterTicketWasSold,
-    TResult Function()? deletedAllTicketPools,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? priceChangedAfterTicketWasSold,
+    TResult? Function()? quantityChangedToLessThanTicketsSold,
+    TResult? Function()? deletedTicketPoolAfterTicketWasSold,
+    TResult? Function()? deletedAllTicketPools,
   }) {
     return deletedTicketPoolAfterTicketWasSold?.call();
   }
@@ -784,15 +768,15 @@ class _$_DeletedTicketPoolAfterTicketWasSold
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_PriceChangedAfterTicketWasSold value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_PriceChangedAfterTicketWasSold value)?
         priceChangedAfterTicketWasSold,
-    TResult Function(_QuantityChangedToLessThanTicketsSold value)?
+    TResult? Function(_QuantityChangedToLessThanTicketsSold value)?
         quantityChangedToLessThanTicketsSold,
-    TResult Function(_DeletedTicketPoolAfterTicketWasSold value)?
+    TResult? Function(_DeletedTicketPoolAfterTicketWasSold value)?
         deletedTicketPoolAfterTicketWasSold,
-    TResult Function(_DeletedAllTicketPools value)? deletedAllTicketPools,
+    TResult? Function(_DeletedAllTicketPools value)? deletedAllTicketPools,
   }) {
     return deletedTicketPoolAfterTicketWasSold?.call(this);
   }
@@ -833,15 +817,11 @@ abstract class _$$_DeletedAllTicketPoolsCopyWith<$Res> {
 
 /// @nodoc
 class __$$_DeletedAllTicketPoolsCopyWithImpl<$Res>
-    extends _$EventTicketsFailureCopyWithImpl<$Res>
+    extends _$EventTicketsFailureCopyWithImpl<$Res, _$_DeletedAllTicketPools>
     implements _$$_DeletedAllTicketPoolsCopyWith<$Res> {
   __$$_DeletedAllTicketPoolsCopyWithImpl(_$_DeletedAllTicketPools _value,
       $Res Function(_$_DeletedAllTicketPools) _then)
-      : super(_value, (v) => _then(v as _$_DeletedAllTicketPools));
-
-  @override
-  _$_DeletedAllTicketPools get _value =>
-      super._value as _$_DeletedAllTicketPools;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -879,12 +859,12 @@ class _$_DeletedAllTicketPools implements _DeletedAllTicketPools {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? priceChangedAfterTicketWasSold,
-    TResult Function()? quantityChangedToLessThanTicketsSold,
-    TResult Function()? deletedTicketPoolAfterTicketWasSold,
-    TResult Function()? deletedAllTicketPools,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? priceChangedAfterTicketWasSold,
+    TResult? Function()? quantityChangedToLessThanTicketsSold,
+    TResult? Function()? deletedTicketPoolAfterTicketWasSold,
+    TResult? Function()? deletedAllTicketPools,
   }) {
     return deletedAllTicketPools?.call();
   }
@@ -926,15 +906,15 @@ class _$_DeletedAllTicketPools implements _DeletedAllTicketPools {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_PriceChangedAfterTicketWasSold value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_PriceChangedAfterTicketWasSold value)?
         priceChangedAfterTicketWasSold,
-    TResult Function(_QuantityChangedToLessThanTicketsSold value)?
+    TResult? Function(_QuantityChangedToLessThanTicketsSold value)?
         quantityChangedToLessThanTicketsSold,
-    TResult Function(_DeletedTicketPoolAfterTicketWasSold value)?
+    TResult? Function(_DeletedTicketPoolAfterTicketWasSold value)?
         deletedTicketPoolAfterTicketWasSold,
-    TResult Function(_DeletedAllTicketPools value)? deletedAllTicketPools,
+    TResult? Function(_DeletedAllTicketPools value)? deletedAllTicketPools,
   }) {
     return deletedAllTicketPools?.call(this);
   }

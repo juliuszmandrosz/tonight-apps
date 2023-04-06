@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'ticket_pool_dto.dart';
 
@@ -40,7 +40,8 @@ mixin _$TicketPoolDto {
 abstract class $TicketPoolDtoCopyWith<$Res> {
   factory $TicketPoolDtoCopyWith(
           TicketPoolDto value, $Res Function(TicketPoolDto) then) =
-      _$TicketPoolDtoCopyWithImpl<$Res>;
+      _$TicketPoolDtoCopyWithImpl<$Res, TicketPoolDto>;
+  @useResult
   $Res call(
       {int poolNumber,
       int ticketQuantity,
@@ -54,64 +55,66 @@ abstract class $TicketPoolDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TicketPoolDtoCopyWithImpl<$Res>
+class _$TicketPoolDtoCopyWithImpl<$Res, $Val extends TicketPoolDto>
     implements $TicketPoolDtoCopyWith<$Res> {
   _$TicketPoolDtoCopyWithImpl(this._value, this._then);
 
-  final TicketPoolDto _value;
   // ignore: unused_field
-  final $Res Function(TicketPoolDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? poolNumber = freezed,
-    Object? ticketQuantity = freezed,
-    Object? ticketPrice = freezed,
-    Object? currency = freezed,
-    Object? ticketsSold = freezed,
-    Object? isCurrent = freezed,
-    Object? isSoldOut = freezed,
-    Object? isVipEnabled = freezed,
+    Object? poolNumber = null,
+    Object? ticketQuantity = null,
+    Object? ticketPrice = null,
+    Object? currency = null,
+    Object? ticketsSold = null,
+    Object? isCurrent = null,
+    Object? isSoldOut = null,
+    Object? isVipEnabled = null,
     Object? vipPrice = freezed,
   }) {
     return _then(_value.copyWith(
-      poolNumber: poolNumber == freezed
+      poolNumber: null == poolNumber
           ? _value.poolNumber
           : poolNumber // ignore: cast_nullable_to_non_nullable
               as int,
-      ticketQuantity: ticketQuantity == freezed
+      ticketQuantity: null == ticketQuantity
           ? _value.ticketQuantity
           : ticketQuantity // ignore: cast_nullable_to_non_nullable
               as int,
-      ticketPrice: ticketPrice == freezed
+      ticketPrice: null == ticketPrice
           ? _value.ticketPrice
           : ticketPrice // ignore: cast_nullable_to_non_nullable
               as int,
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      ticketsSold: ticketsSold == freezed
+      ticketsSold: null == ticketsSold
           ? _value.ticketsSold
           : ticketsSold // ignore: cast_nullable_to_non_nullable
               as int,
-      isCurrent: isCurrent == freezed
+      isCurrent: null == isCurrent
           ? _value.isCurrent
           : isCurrent // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSoldOut: isSoldOut == freezed
+      isSoldOut: null == isSoldOut
           ? _value.isSoldOut
           : isSoldOut // ignore: cast_nullable_to_non_nullable
               as bool,
-      isVipEnabled: isVipEnabled == freezed
+      isVipEnabled: null == isVipEnabled
           ? _value.isVipEnabled
           : isVipEnabled // ignore: cast_nullable_to_non_nullable
               as bool,
-      vipPrice: vipPrice == freezed
+      vipPrice: freezed == vipPrice
           ? _value.vipPrice
           : vipPrice // ignore: cast_nullable_to_non_nullable
               as int?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -122,6 +125,7 @@ abstract class _$$_TicketPoolDtoCopyWith<$Res>
           _$_TicketPoolDto value, $Res Function(_$_TicketPoolDto) then) =
       __$$_TicketPoolDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int poolNumber,
       int ticketQuantity,
@@ -136,61 +140,59 @@ abstract class _$$_TicketPoolDtoCopyWith<$Res>
 
 /// @nodoc
 class __$$_TicketPoolDtoCopyWithImpl<$Res>
-    extends _$TicketPoolDtoCopyWithImpl<$Res>
+    extends _$TicketPoolDtoCopyWithImpl<$Res, _$_TicketPoolDto>
     implements _$$_TicketPoolDtoCopyWith<$Res> {
   __$$_TicketPoolDtoCopyWithImpl(
       _$_TicketPoolDto _value, $Res Function(_$_TicketPoolDto) _then)
-      : super(_value, (v) => _then(v as _$_TicketPoolDto));
+      : super(_value, _then);
 
-  @override
-  _$_TicketPoolDto get _value => super._value as _$_TicketPoolDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? poolNumber = freezed,
-    Object? ticketQuantity = freezed,
-    Object? ticketPrice = freezed,
-    Object? currency = freezed,
-    Object? ticketsSold = freezed,
-    Object? isCurrent = freezed,
-    Object? isSoldOut = freezed,
-    Object? isVipEnabled = freezed,
+    Object? poolNumber = null,
+    Object? ticketQuantity = null,
+    Object? ticketPrice = null,
+    Object? currency = null,
+    Object? ticketsSold = null,
+    Object? isCurrent = null,
+    Object? isSoldOut = null,
+    Object? isVipEnabled = null,
     Object? vipPrice = freezed,
   }) {
     return _then(_$_TicketPoolDto(
-      poolNumber: poolNumber == freezed
+      poolNumber: null == poolNumber
           ? _value.poolNumber
           : poolNumber // ignore: cast_nullable_to_non_nullable
               as int,
-      ticketQuantity: ticketQuantity == freezed
+      ticketQuantity: null == ticketQuantity
           ? _value.ticketQuantity
           : ticketQuantity // ignore: cast_nullable_to_non_nullable
               as int,
-      ticketPrice: ticketPrice == freezed
+      ticketPrice: null == ticketPrice
           ? _value.ticketPrice
           : ticketPrice // ignore: cast_nullable_to_non_nullable
               as int,
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      ticketsSold: ticketsSold == freezed
+      ticketsSold: null == ticketsSold
           ? _value.ticketsSold
           : ticketsSold // ignore: cast_nullable_to_non_nullable
               as int,
-      isCurrent: isCurrent == freezed
+      isCurrent: null == isCurrent
           ? _value.isCurrent
           : isCurrent // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSoldOut: isSoldOut == freezed
+      isSoldOut: null == isSoldOut
           ? _value.isSoldOut
           : isSoldOut // ignore: cast_nullable_to_non_nullable
               as bool,
-      isVipEnabled: isVipEnabled == freezed
+      isVipEnabled: null == isVipEnabled
           ? _value.isVipEnabled
           : isVipEnabled // ignore: cast_nullable_to_non_nullable
               as bool,
-      vipPrice: vipPrice == freezed
+      vipPrice: freezed == vipPrice
           ? _value.vipPrice
           : vipPrice // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -250,38 +252,43 @@ class _$_TicketPoolDto extends _TicketPoolDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TicketPoolDto &&
-            const DeepCollectionEquality()
-                .equals(other.poolNumber, poolNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.ticketQuantity, ticketQuantity) &&
-            const DeepCollectionEquality()
-                .equals(other.ticketPrice, ticketPrice) &&
-            const DeepCollectionEquality().equals(other.currency, currency) &&
-            const DeepCollectionEquality()
-                .equals(other.ticketsSold, ticketsSold) &&
-            const DeepCollectionEquality().equals(other.isCurrent, isCurrent) &&
-            const DeepCollectionEquality().equals(other.isSoldOut, isSoldOut) &&
-            const DeepCollectionEquality()
-                .equals(other.isVipEnabled, isVipEnabled) &&
-            const DeepCollectionEquality().equals(other.vipPrice, vipPrice));
+            (identical(other.poolNumber, poolNumber) ||
+                other.poolNumber == poolNumber) &&
+            (identical(other.ticketQuantity, ticketQuantity) ||
+                other.ticketQuantity == ticketQuantity) &&
+            (identical(other.ticketPrice, ticketPrice) ||
+                other.ticketPrice == ticketPrice) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.ticketsSold, ticketsSold) ||
+                other.ticketsSold == ticketsSold) &&
+            (identical(other.isCurrent, isCurrent) ||
+                other.isCurrent == isCurrent) &&
+            (identical(other.isSoldOut, isSoldOut) ||
+                other.isSoldOut == isSoldOut) &&
+            (identical(other.isVipEnabled, isVipEnabled) ||
+                other.isVipEnabled == isVipEnabled) &&
+            (identical(other.vipPrice, vipPrice) ||
+                other.vipPrice == vipPrice));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(poolNumber),
-      const DeepCollectionEquality().hash(ticketQuantity),
-      const DeepCollectionEquality().hash(ticketPrice),
-      const DeepCollectionEquality().hash(currency),
-      const DeepCollectionEquality().hash(ticketsSold),
-      const DeepCollectionEquality().hash(isCurrent),
-      const DeepCollectionEquality().hash(isSoldOut),
-      const DeepCollectionEquality().hash(isVipEnabled),
-      const DeepCollectionEquality().hash(vipPrice));
+      poolNumber,
+      ticketQuantity,
+      ticketPrice,
+      currency,
+      ticketsSold,
+      isCurrent,
+      isSoldOut,
+      isVipEnabled,
+      vipPrice);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TicketPoolDtoCopyWith<_$_TicketPoolDto> get copyWith =>
       __$$_TicketPoolDtoCopyWithImpl<_$_TicketPoolDto>(this, _$identity);
 

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event_filters_entity.dart';
 
@@ -43,7 +43,8 @@ mixin _$EventFilters {
 abstract class $EventFiltersCopyWith<$Res> {
   factory $EventFiltersCopyWith(
           EventFilters value, $Res Function(EventFilters) then) =
-      _$EventFiltersCopyWithImpl<$Res>;
+      _$EventFiltersCopyWithImpl<$Res, EventFilters>;
+  @useResult
   $Res call(
       {PhraseFilter phraseFilter,
       PriceRangeFilter priceRangeFilter,
@@ -62,88 +63,91 @@ abstract class $EventFiltersCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EventFiltersCopyWithImpl<$Res> implements $EventFiltersCopyWith<$Res> {
+class _$EventFiltersCopyWithImpl<$Res, $Val extends EventFilters>
+    implements $EventFiltersCopyWith<$Res> {
   _$EventFiltersCopyWithImpl(this._value, this._then);
 
-  final EventFilters _value;
   // ignore: unused_field
-  final $Res Function(EventFilters) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phraseFilter = freezed,
-    Object? priceRangeFilter = freezed,
-    Object? minAgesFilter = freezed,
-    Object? musicalGenresFilter = freezed,
-    Object? allowedOutfitsFilter = freezed,
-    Object? maxDistanceFilter = freezed,
-    Object? cityFilter = freezed,
-    Object? clubFilter = freezed,
-    Object? dateRangeFilter = freezed,
-    Object? isConcertFilter = freezed,
-    Object? showOnlyFilter = freezed,
-    Object? dateIncludesFilter = freezed,
-    Object? currencyFilter = freezed,
-    Object? isCanceledFilter = freezed,
+    Object? phraseFilter = null,
+    Object? priceRangeFilter = null,
+    Object? minAgesFilter = null,
+    Object? musicalGenresFilter = null,
+    Object? allowedOutfitsFilter = null,
+    Object? maxDistanceFilter = null,
+    Object? cityFilter = null,
+    Object? clubFilter = null,
+    Object? dateRangeFilter = null,
+    Object? isConcertFilter = null,
+    Object? showOnlyFilter = null,
+    Object? dateIncludesFilter = null,
+    Object? currencyFilter = null,
+    Object? isCanceledFilter = null,
   }) {
     return _then(_value.copyWith(
-      phraseFilter: phraseFilter == freezed
+      phraseFilter: null == phraseFilter
           ? _value.phraseFilter
           : phraseFilter // ignore: cast_nullable_to_non_nullable
               as PhraseFilter,
-      priceRangeFilter: priceRangeFilter == freezed
+      priceRangeFilter: null == priceRangeFilter
           ? _value.priceRangeFilter
           : priceRangeFilter // ignore: cast_nullable_to_non_nullable
               as PriceRangeFilter,
-      minAgesFilter: minAgesFilter == freezed
+      minAgesFilter: null == minAgesFilter
           ? _value.minAgesFilter
           : minAgesFilter // ignore: cast_nullable_to_non_nullable
               as MinAgesFilter,
-      musicalGenresFilter: musicalGenresFilter == freezed
+      musicalGenresFilter: null == musicalGenresFilter
           ? _value.musicalGenresFilter
           : musicalGenresFilter // ignore: cast_nullable_to_non_nullable
               as MusicalGenresFilter,
-      allowedOutfitsFilter: allowedOutfitsFilter == freezed
+      allowedOutfitsFilter: null == allowedOutfitsFilter
           ? _value.allowedOutfitsFilter
           : allowedOutfitsFilter // ignore: cast_nullable_to_non_nullable
               as AllowedOutfitsFilter,
-      maxDistanceFilter: maxDistanceFilter == freezed
+      maxDistanceFilter: null == maxDistanceFilter
           ? _value.maxDistanceFilter
           : maxDistanceFilter // ignore: cast_nullable_to_non_nullable
               as MaxDistanceFilter,
-      cityFilter: cityFilter == freezed
+      cityFilter: null == cityFilter
           ? _value.cityFilter
           : cityFilter // ignore: cast_nullable_to_non_nullable
               as CityFilter,
-      clubFilter: clubFilter == freezed
+      clubFilter: null == clubFilter
           ? _value.clubFilter
           : clubFilter // ignore: cast_nullable_to_non_nullable
               as ClubFilter,
-      dateRangeFilter: dateRangeFilter == freezed
+      dateRangeFilter: null == dateRangeFilter
           ? _value.dateRangeFilter
           : dateRangeFilter // ignore: cast_nullable_to_non_nullable
               as DateRangeFilter,
-      isConcertFilter: isConcertFilter == freezed
+      isConcertFilter: null == isConcertFilter
           ? _value.isConcertFilter
           : isConcertFilter // ignore: cast_nullable_to_non_nullable
               as IsConcertFilter,
-      showOnlyFilter: showOnlyFilter == freezed
+      showOnlyFilter: null == showOnlyFilter
           ? _value.showOnlyFilter
           : showOnlyFilter // ignore: cast_nullable_to_non_nullable
               as ShowOnlyFilter,
-      dateIncludesFilter: dateIncludesFilter == freezed
+      dateIncludesFilter: null == dateIncludesFilter
           ? _value.dateIncludesFilter
           : dateIncludesFilter // ignore: cast_nullable_to_non_nullable
               as DateIncludesFilter,
-      currencyFilter: currencyFilter == freezed
+      currencyFilter: null == currencyFilter
           ? _value.currencyFilter
           : currencyFilter // ignore: cast_nullable_to_non_nullable
               as CurrencyFilter,
-      isCanceledFilter: isCanceledFilter == freezed
+      isCanceledFilter: null == isCanceledFilter
           ? _value.isCanceledFilter
           : isCanceledFilter // ignore: cast_nullable_to_non_nullable
               as IsCanceledFilter,
-    ));
+    ) as $Val);
   }
 }
 
@@ -154,6 +158,7 @@ abstract class _$$_EventFiltersCopyWith<$Res>
           _$_EventFilters value, $Res Function(_$_EventFilters) then) =
       __$$_EventFiltersCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {PhraseFilter phraseFilter,
       PriceRangeFilter priceRangeFilter,
@@ -173,86 +178,84 @@ abstract class _$$_EventFiltersCopyWith<$Res>
 
 /// @nodoc
 class __$$_EventFiltersCopyWithImpl<$Res>
-    extends _$EventFiltersCopyWithImpl<$Res>
+    extends _$EventFiltersCopyWithImpl<$Res, _$_EventFilters>
     implements _$$_EventFiltersCopyWith<$Res> {
   __$$_EventFiltersCopyWithImpl(
       _$_EventFilters _value, $Res Function(_$_EventFilters) _then)
-      : super(_value, (v) => _then(v as _$_EventFilters));
+      : super(_value, _then);
 
-  @override
-  _$_EventFilters get _value => super._value as _$_EventFilters;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phraseFilter = freezed,
-    Object? priceRangeFilter = freezed,
-    Object? minAgesFilter = freezed,
-    Object? musicalGenresFilter = freezed,
-    Object? allowedOutfitsFilter = freezed,
-    Object? maxDistanceFilter = freezed,
-    Object? cityFilter = freezed,
-    Object? clubFilter = freezed,
-    Object? dateRangeFilter = freezed,
-    Object? isConcertFilter = freezed,
-    Object? showOnlyFilter = freezed,
-    Object? dateIncludesFilter = freezed,
-    Object? currencyFilter = freezed,
-    Object? isCanceledFilter = freezed,
+    Object? phraseFilter = null,
+    Object? priceRangeFilter = null,
+    Object? minAgesFilter = null,
+    Object? musicalGenresFilter = null,
+    Object? allowedOutfitsFilter = null,
+    Object? maxDistanceFilter = null,
+    Object? cityFilter = null,
+    Object? clubFilter = null,
+    Object? dateRangeFilter = null,
+    Object? isConcertFilter = null,
+    Object? showOnlyFilter = null,
+    Object? dateIncludesFilter = null,
+    Object? currencyFilter = null,
+    Object? isCanceledFilter = null,
   }) {
     return _then(_$_EventFilters(
-      phraseFilter: phraseFilter == freezed
+      phraseFilter: null == phraseFilter
           ? _value.phraseFilter
           : phraseFilter // ignore: cast_nullable_to_non_nullable
               as PhraseFilter,
-      priceRangeFilter: priceRangeFilter == freezed
+      priceRangeFilter: null == priceRangeFilter
           ? _value.priceRangeFilter
           : priceRangeFilter // ignore: cast_nullable_to_non_nullable
               as PriceRangeFilter,
-      minAgesFilter: minAgesFilter == freezed
+      minAgesFilter: null == minAgesFilter
           ? _value.minAgesFilter
           : minAgesFilter // ignore: cast_nullable_to_non_nullable
               as MinAgesFilter,
-      musicalGenresFilter: musicalGenresFilter == freezed
+      musicalGenresFilter: null == musicalGenresFilter
           ? _value.musicalGenresFilter
           : musicalGenresFilter // ignore: cast_nullable_to_non_nullable
               as MusicalGenresFilter,
-      allowedOutfitsFilter: allowedOutfitsFilter == freezed
+      allowedOutfitsFilter: null == allowedOutfitsFilter
           ? _value.allowedOutfitsFilter
           : allowedOutfitsFilter // ignore: cast_nullable_to_non_nullable
               as AllowedOutfitsFilter,
-      maxDistanceFilter: maxDistanceFilter == freezed
+      maxDistanceFilter: null == maxDistanceFilter
           ? _value.maxDistanceFilter
           : maxDistanceFilter // ignore: cast_nullable_to_non_nullable
               as MaxDistanceFilter,
-      cityFilter: cityFilter == freezed
+      cityFilter: null == cityFilter
           ? _value.cityFilter
           : cityFilter // ignore: cast_nullable_to_non_nullable
               as CityFilter,
-      clubFilter: clubFilter == freezed
+      clubFilter: null == clubFilter
           ? _value.clubFilter
           : clubFilter // ignore: cast_nullable_to_non_nullable
               as ClubFilter,
-      dateRangeFilter: dateRangeFilter == freezed
+      dateRangeFilter: null == dateRangeFilter
           ? _value.dateRangeFilter
           : dateRangeFilter // ignore: cast_nullable_to_non_nullable
               as DateRangeFilter,
-      isConcertFilter: isConcertFilter == freezed
+      isConcertFilter: null == isConcertFilter
           ? _value.isConcertFilter
           : isConcertFilter // ignore: cast_nullable_to_non_nullable
               as IsConcertFilter,
-      showOnlyFilter: showOnlyFilter == freezed
+      showOnlyFilter: null == showOnlyFilter
           ? _value.showOnlyFilter
           : showOnlyFilter // ignore: cast_nullable_to_non_nullable
               as ShowOnlyFilter,
-      dateIncludesFilter: dateIncludesFilter == freezed
+      dateIncludesFilter: null == dateIncludesFilter
           ? _value.dateIncludesFilter
           : dateIncludesFilter // ignore: cast_nullable_to_non_nullable
               as DateIncludesFilter,
-      currencyFilter: currencyFilter == freezed
+      currencyFilter: null == currencyFilter
           ? _value.currencyFilter
           : currencyFilter // ignore: cast_nullable_to_non_nullable
               as CurrencyFilter,
-      isCanceledFilter: isCanceledFilter == freezed
+      isCanceledFilter: null == isCanceledFilter
           ? _value.isCanceledFilter
           : isCanceledFilter // ignore: cast_nullable_to_non_nullable
               as IsCanceledFilter,
@@ -319,56 +322,57 @@ class _$_EventFilters extends _EventFilters {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EventFilters &&
-            const DeepCollectionEquality()
-                .equals(other.phraseFilter, phraseFilter) &&
-            const DeepCollectionEquality()
-                .equals(other.priceRangeFilter, priceRangeFilter) &&
-            const DeepCollectionEquality()
-                .equals(other.minAgesFilter, minAgesFilter) &&
-            const DeepCollectionEquality()
-                .equals(other.musicalGenresFilter, musicalGenresFilter) &&
-            const DeepCollectionEquality()
-                .equals(other.allowedOutfitsFilter, allowedOutfitsFilter) &&
-            const DeepCollectionEquality()
-                .equals(other.maxDistanceFilter, maxDistanceFilter) &&
-            const DeepCollectionEquality()
-                .equals(other.cityFilter, cityFilter) &&
-            const DeepCollectionEquality()
-                .equals(other.clubFilter, clubFilter) &&
-            const DeepCollectionEquality()
-                .equals(other.dateRangeFilter, dateRangeFilter) &&
-            const DeepCollectionEquality()
-                .equals(other.isConcertFilter, isConcertFilter) &&
-            const DeepCollectionEquality()
-                .equals(other.showOnlyFilter, showOnlyFilter) &&
-            const DeepCollectionEquality()
-                .equals(other.dateIncludesFilter, dateIncludesFilter) &&
-            const DeepCollectionEquality()
-                .equals(other.currencyFilter, currencyFilter) &&
-            const DeepCollectionEquality()
-                .equals(other.isCanceledFilter, isCanceledFilter));
+            (identical(other.phraseFilter, phraseFilter) ||
+                other.phraseFilter == phraseFilter) &&
+            (identical(other.priceRangeFilter, priceRangeFilter) ||
+                other.priceRangeFilter == priceRangeFilter) &&
+            (identical(other.minAgesFilter, minAgesFilter) ||
+                other.minAgesFilter == minAgesFilter) &&
+            (identical(other.musicalGenresFilter, musicalGenresFilter) ||
+                other.musicalGenresFilter == musicalGenresFilter) &&
+            (identical(other.allowedOutfitsFilter, allowedOutfitsFilter) ||
+                other.allowedOutfitsFilter == allowedOutfitsFilter) &&
+            (identical(other.maxDistanceFilter, maxDistanceFilter) ||
+                other.maxDistanceFilter == maxDistanceFilter) &&
+            (identical(other.cityFilter, cityFilter) ||
+                other.cityFilter == cityFilter) &&
+            (identical(other.clubFilter, clubFilter) ||
+                other.clubFilter == clubFilter) &&
+            (identical(other.dateRangeFilter, dateRangeFilter) ||
+                other.dateRangeFilter == dateRangeFilter) &&
+            (identical(other.isConcertFilter, isConcertFilter) ||
+                other.isConcertFilter == isConcertFilter) &&
+            (identical(other.showOnlyFilter, showOnlyFilter) ||
+                other.showOnlyFilter == showOnlyFilter) &&
+            (identical(other.dateIncludesFilter, dateIncludesFilter) ||
+                other.dateIncludesFilter == dateIncludesFilter) &&
+            (identical(other.currencyFilter, currencyFilter) ||
+                other.currencyFilter == currencyFilter) &&
+            (identical(other.isCanceledFilter, isCanceledFilter) ||
+                other.isCanceledFilter == isCanceledFilter));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(phraseFilter),
-      const DeepCollectionEquality().hash(priceRangeFilter),
-      const DeepCollectionEquality().hash(minAgesFilter),
-      const DeepCollectionEquality().hash(musicalGenresFilter),
-      const DeepCollectionEquality().hash(allowedOutfitsFilter),
-      const DeepCollectionEquality().hash(maxDistanceFilter),
-      const DeepCollectionEquality().hash(cityFilter),
-      const DeepCollectionEquality().hash(clubFilter),
-      const DeepCollectionEquality().hash(dateRangeFilter),
-      const DeepCollectionEquality().hash(isConcertFilter),
-      const DeepCollectionEquality().hash(showOnlyFilter),
-      const DeepCollectionEquality().hash(dateIncludesFilter),
-      const DeepCollectionEquality().hash(currencyFilter),
-      const DeepCollectionEquality().hash(isCanceledFilter));
+      phraseFilter,
+      priceRangeFilter,
+      minAgesFilter,
+      musicalGenresFilter,
+      allowedOutfitsFilter,
+      maxDistanceFilter,
+      cityFilter,
+      clubFilter,
+      dateRangeFilter,
+      isConcertFilter,
+      showOnlyFilter,
+      dateIncludesFilter,
+      currencyFilter,
+      isCanceledFilter);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventFiltersCopyWith<_$_EventFilters> get copyWith =>
       __$$_EventFiltersCopyWithImpl<_$_EventFilters>(this, _$identity);
 }
