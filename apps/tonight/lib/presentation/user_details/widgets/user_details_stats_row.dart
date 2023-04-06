@@ -1,12 +1,12 @@
-import 'package:account_settings/account_settings.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
+import 'package:tonight/domain/user_details/user_details_entity.dart';
 import 'package:translations/translations.dart';
 
-class UserProfileDetailsRow extends StatelessWidget {
-  final UserProfile user;
+class UserDetailsStatsRow extends StatelessWidget {
+  final UserDetails user;
 
-  const UserProfileDetailsRow({
+  const UserDetailsStatsRow({
     required this.user,
     Key? key,
   }) : super(key: key);
@@ -41,7 +41,7 @@ class UserProfileDetailsRow extends StatelessWidget {
           Column(
             children: [
               Text(
-                '${user.favoriteClubIds.length}',
+                '${user.favoriteClubs.length}',
                 style: context.titleMedium,
               ),
               const SizedBox(height: 5),

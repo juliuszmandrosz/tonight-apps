@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$UserDetailsState {
   CubitStatus get status => throw _privateConstructorUsedError;
-  Option<UserProfile> get user => throw _privateConstructorUsedError;
+  Option<UserDetails> get user => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserDetailsStateCopyWith<UserDetailsState> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $UserDetailsStateCopyWith<$Res> {
           UserDetailsState value, $Res Function(UserDetailsState) then) =
       _$UserDetailsStateCopyWithImpl<$Res, UserDetailsState>;
   @useResult
-  $Res call({CubitStatus status, Option<UserProfile> user});
+  $Res call({CubitStatus status, Option<UserDetails> user});
 }
 
 /// @nodoc
@@ -57,7 +57,7 @@ class _$UserDetailsStateCopyWithImpl<$Res, $Val extends UserDetailsState>
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as Option<UserProfile>,
+              as Option<UserDetails>,
     ) as $Val);
   }
 }
@@ -70,7 +70,7 @@ abstract class _$$_UserDetailsStateCopyWith<$Res>
       __$$_UserDetailsStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({CubitStatus status, Option<UserProfile> user});
+  $Res call({CubitStatus status, Option<UserDetails> user});
 }
 
 /// @nodoc
@@ -95,7 +95,7 @@ class __$$_UserDetailsStateCopyWithImpl<$Res>
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as Option<UserProfile>,
+              as Option<UserDetails>,
     ));
   }
 }
@@ -108,7 +108,7 @@ class _$_UserDetailsState implements _UserDetailsState {
   @override
   final CubitStatus status;
   @override
-  final Option<UserProfile> user;
+  final Option<UserDetails> user;
 
   @override
   String toString() {
@@ -137,12 +137,12 @@ class _$_UserDetailsState implements _UserDetailsState {
 abstract class _UserDetailsState implements UserDetailsState {
   const factory _UserDetailsState(
       {required final CubitStatus status,
-      required final Option<UserProfile> user}) = _$_UserDetailsState;
+      required final Option<UserDetails> user}) = _$_UserDetailsState;
 
   @override
   CubitStatus get status;
   @override
-  Option<UserProfile> get user;
+  Option<UserDetails> get user;
   @override
   @JsonKey(ignore: true)
   _$$_UserDetailsStateCopyWith<_$_UserDetailsState> get copyWith =>
