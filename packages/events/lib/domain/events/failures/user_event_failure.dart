@@ -10,4 +10,7 @@ class UserEventFailure with _$UserEventFailure {
 
   const factory UserEventFailure.toggleFavoriteEventFailure() =
       _UserEventFailure;
+
+  const factory UserEventFailure.moreThan20FavoriteEvents() =
+      _MoreThan20FavoriteEvents;
 }
