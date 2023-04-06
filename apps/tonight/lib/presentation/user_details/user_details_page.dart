@@ -8,6 +8,7 @@ import 'package:tonight/presentation/core/ticket_logo_animation.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/user_details/widgets/user_details_favorite_clubs.dart';
 import 'package:tonight/presentation/user_details/widgets/user_details_stats_row.dart';
 
 class UserDetailsPage extends StatelessWidget {
@@ -67,6 +68,10 @@ class UserDetailsPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 40),
                               UserDetailsStatsRow(user: user),
+                              const SizedBox(height: 40),
+                              UserDetailsFavoriteClubs(
+                                favoriteClubs: user.favoriteClubs,
+                              ),
                             ],
                           ),
                         ),
