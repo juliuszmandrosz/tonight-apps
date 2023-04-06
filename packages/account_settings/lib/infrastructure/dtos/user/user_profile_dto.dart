@@ -32,6 +32,7 @@ class UserProfileDto with _$UserProfileDto {
       favoriteEventIds: user.favoriteEventIds,
       attendance: user.attendance,
       pushNotificationTokens: user.pushNotificationTokens,
+      raverCoins: user.raverCoins,
     );
   }
 
@@ -54,6 +55,7 @@ class UserProfileDto with _$UserProfileDto {
       favoriteEventIds: favoriteEventIds,
       attendance: attendance,
       pushNotificationTokens: pushNotificationTokens,
+      raverCoins: raverCoins,
     );
   }
 }
