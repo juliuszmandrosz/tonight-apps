@@ -52,7 +52,10 @@ class FavoriteEventsList extends StatelessWidget {
                 : SizedBox(
                     height: 345,
                     child: PageView.builder(
-                      controller: PageController(viewportFraction: 0.9),
+                      controller: PageController(
+                        viewportFraction:
+                            state.favoriteEvents.length > 1 ? 0.9 : 1.0,
+                      ),
                       itemCount: state.favoriteEvents.length,
                       itemBuilder: (ctx, i) {
                         return Padding(

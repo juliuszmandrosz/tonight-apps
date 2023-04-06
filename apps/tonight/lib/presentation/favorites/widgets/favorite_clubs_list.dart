@@ -47,7 +47,10 @@ class FavoriteClubsList extends StatelessWidget {
                 : SizedBox(
                     height: 345,
                     child: PageView.builder(
-                      controller: PageController(viewportFraction: 0.9),
+                      controller: PageController(
+                        viewportFraction:
+                            state.favoriteClubs.length > 1 ? 0.9 : 1.0,
+                      ),
                       itemCount: state.favoriteClubs.length,
                       itemBuilder: (ctx, i) {
                         return Padding(
