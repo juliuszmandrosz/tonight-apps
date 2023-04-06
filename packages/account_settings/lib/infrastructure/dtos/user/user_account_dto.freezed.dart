@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user_profile_dto.dart';
+part of 'user_account_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-UserProfileDto _$UserProfileDtoFromJson(Map<String, dynamic> json) {
-  return _UserProfileDto.fromJson(json);
+UserAccountDto _$UserAccountDtoFromJson(Map<String, dynamic> json) {
+  return _UserAccountDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UserProfileDto {
+mixin _$UserAccountDto {
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
@@ -33,15 +33,15 @@ mixin _$UserProfileDto {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserProfileDtoCopyWith<UserProfileDto> get copyWith =>
+  $UserAccountDtoCopyWith<UserAccountDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserProfileDtoCopyWith<$Res> {
-  factory $UserProfileDtoCopyWith(
-          UserProfileDto value, $Res Function(UserProfileDto) then) =
-      _$UserProfileDtoCopyWithImpl<$Res, UserProfileDto>;
+abstract class $UserAccountDtoCopyWith<$Res> {
+  factory $UserAccountDtoCopyWith(
+          UserAccountDto value, $Res Function(UserAccountDto) then) =
+      _$UserAccountDtoCopyWithImpl<$Res, UserAccountDto>;
   @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
@@ -56,9 +56,9 @@ abstract class $UserProfileDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserProfileDtoCopyWithImpl<$Res, $Val extends UserProfileDto>
-    implements $UserProfileDtoCopyWith<$Res> {
-  _$UserProfileDtoCopyWithImpl(this._value, this._then);
+class _$UserAccountDtoCopyWithImpl<$Res, $Val extends UserAccountDto>
+    implements $UserAccountDtoCopyWith<$Res> {
+  _$UserAccountDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -120,11 +120,11 @@ class _$UserProfileDtoCopyWithImpl<$Res, $Val extends UserProfileDto>
 }
 
 /// @nodoc
-abstract class _$$_UserProfileDtoCopyWith<$Res>
-    implements $UserProfileDtoCopyWith<$Res> {
-  factory _$$_UserProfileDtoCopyWith(
-          _$_UserProfileDto value, $Res Function(_$_UserProfileDto) then) =
-      __$$_UserProfileDtoCopyWithImpl<$Res>;
+abstract class _$$_UserAccountDtoCopyWith<$Res>
+    implements $UserAccountDtoCopyWith<$Res> {
+  factory _$$_UserAccountDtoCopyWith(
+          _$_UserAccountDto value, $Res Function(_$_UserAccountDto) then) =
+      __$$_UserAccountDtoCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -140,11 +140,11 @@ abstract class _$$_UserProfileDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserProfileDtoCopyWithImpl<$Res>
-    extends _$UserProfileDtoCopyWithImpl<$Res, _$_UserProfileDto>
-    implements _$$_UserProfileDtoCopyWith<$Res> {
-  __$$_UserProfileDtoCopyWithImpl(
-      _$_UserProfileDto _value, $Res Function(_$_UserProfileDto) _then)
+class __$$_UserAccountDtoCopyWithImpl<$Res>
+    extends _$UserAccountDtoCopyWithImpl<$Res, _$_UserAccountDto>
+    implements _$$_UserAccountDtoCopyWith<$Res> {
+  __$$_UserAccountDtoCopyWithImpl(
+      _$_UserAccountDto _value, $Res Function(_$_UserAccountDto) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -160,7 +160,7 @@ class __$$_UserProfileDtoCopyWithImpl<$Res>
     Object? pushNotificationTokens = null,
     Object? raverCoins = null,
   }) {
-    return _then(_$_UserProfileDto(
+    return _then(_$_UserAccountDto(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -204,8 +204,8 @@ class __$$_UserProfileDtoCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable()
-class _$_UserProfileDto extends _UserProfileDto {
-  const _$_UserProfileDto(
+class _$_UserAccountDto extends _UserAccountDto {
+  const _$_UserAccountDto(
       {@JsonKey(ignore: true) this.id,
       required this.email,
       this.profilePictureUrl = '',
@@ -221,8 +221,8 @@ class _$_UserProfileDto extends _UserProfileDto {
         _pushNotificationTokens = pushNotificationTokens,
         super._();
 
-  factory _$_UserProfileDto.fromJson(Map<String, dynamic> json) =>
-      _$$_UserProfileDtoFromJson(json);
+  factory _$_UserAccountDto.fromJson(Map<String, dynamic> json) =>
+      _$$_UserAccountDtoFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -279,14 +279,14 @@ class _$_UserProfileDto extends _UserProfileDto {
 
   @override
   String toString() {
-    return 'UserProfileDto(id: $id, email: $email, profilePictureUrl: $profilePictureUrl, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens, raverCoins: $raverCoins)';
+    return 'UserAccountDto(id: $id, email: $email, profilePictureUrl: $profilePictureUrl, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens, raverCoins: $raverCoins)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserProfileDto &&
+            other is _$_UserAccountDto &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.profilePictureUrl, profilePictureUrl) ||
@@ -322,19 +322,19 @@ class _$_UserProfileDto extends _UserProfileDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserProfileDtoCopyWith<_$_UserProfileDto> get copyWith =>
-      __$$_UserProfileDtoCopyWithImpl<_$_UserProfileDto>(this, _$identity);
+  _$$_UserAccountDtoCopyWith<_$_UserAccountDto> get copyWith =>
+      __$$_UserAccountDtoCopyWithImpl<_$_UserAccountDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserProfileDtoToJson(
+    return _$$_UserAccountDtoToJson(
       this,
     );
   }
 }
 
-abstract class _UserProfileDto extends UserProfileDto {
-  const factory _UserProfileDto(
+abstract class _UserAccountDto extends UserAccountDto {
+  const factory _UserAccountDto(
       {@JsonKey(ignore: true) final String? id,
       required final String email,
       final String profilePictureUrl,
@@ -343,11 +343,11 @@ abstract class _UserProfileDto extends UserProfileDto {
       final List<String> favoriteEventIds,
       final Map<String, int> attendance,
       final List<String> pushNotificationTokens,
-      final int raverCoins}) = _$_UserProfileDto;
-  const _UserProfileDto._() : super._();
+      final int raverCoins}) = _$_UserAccountDto;
+  const _UserAccountDto._() : super._();
 
-  factory _UserProfileDto.fromJson(Map<String, dynamic> json) =
-      _$_UserProfileDto.fromJson;
+  factory _UserAccountDto.fromJson(Map<String, dynamic> json) =
+      _$_UserAccountDto.fromJson;
 
   @override
   @JsonKey(ignore: true)
@@ -370,6 +370,6 @@ abstract class _UserProfileDto extends UserProfileDto {
   int get raverCoins;
   @override
   @JsonKey(ignore: true)
-  _$$_UserProfileDtoCopyWith<_$_UserProfileDto> get copyWith =>
+  _$$_UserAccountDtoCopyWith<_$_UserAccountDto> get copyWith =>
       throw _privateConstructorUsedError;
 }

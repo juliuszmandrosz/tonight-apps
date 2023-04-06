@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class UserProfile extends Equatable {
+class UserAccount extends Equatable {
   final String id;
   final String email;
   final String username;
@@ -11,7 +11,7 @@ class UserProfile extends Equatable {
   final List<String> pushNotificationTokens;
   final int raverCoins;
 
-  const UserProfile({
+  const UserAccount({
     required this.id,
     required this.email,
     this.profilePictureUrl = '',
@@ -36,7 +36,7 @@ class UserProfile extends Equatable {
         raverCoins,
       ];
 
-  UserProfile copyWith({
+  UserAccount copyWith({
     String? email,
     String? username,
     String? profilePictureUrl,
@@ -46,7 +46,7 @@ class UserProfile extends Equatable {
     List<String>? pushNotificationTokens,
     int? raverCoins,
   }) {
-    return UserProfile(
+    return UserAccount(
       id: id,
       email: email ?? this.email,
       profilePictureUrl: profilePictureUrl ?? this.profilePictureUrl,
