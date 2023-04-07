@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/domain/user_details/user_details_aggregator.dart';
-import 'package:tonight/domain/user_details/user_details_entity.dart';
+import 'package:tonight/domain/user_details/user_details_model.dart';
 
 part 'user_details_cubit.freezed.dart';
 part 'user_details_state.dart';

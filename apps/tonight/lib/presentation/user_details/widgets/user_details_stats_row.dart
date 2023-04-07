@@ -1,6 +1,6 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:tonight/domain/user_details/user_details_entity.dart';
+import 'package:tonight/domain/user_details/user_details_model.dart';
 import 'package:translations/translations.dart';
 
 class UserDetailsStatsRow extends StatelessWidget {

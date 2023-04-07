@@ -11,17 +11,18 @@ class TonightDrawerHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder: (context, state) {
+        final userProfile = state.userProfile.getOrCrash();
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ProfilePictureContainer(
               imageSize: 80,
-              username: state.user.username,
-              profilePictureUrl: state.user.profilePictureUrl,
+              username: userProfile.username,
+              profilePictureUrl: userProfile.profilePictureUrl,
             ),
             const SizedBox(height: 20),
             TonightHeadline(
-              text: state.user.username,
+              text: userProfile.username,
               isSmallerVersion: true,
             ),
           ],

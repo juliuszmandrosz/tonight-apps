@@ -113,7 +113,8 @@ class _TicketQrPageState extends State<TicketQrPage> {
   }
 
   _getData(BuildContext context) {
-    final userId = context.read<ProfileCubit>().state.user.id;
+    final userId =
+        context.read<ProfileCubit>().state.userProfile.getOrCrash().userId;
     final data = {
       'ticketId': widget.ticket.id,
       'userId': userId,
