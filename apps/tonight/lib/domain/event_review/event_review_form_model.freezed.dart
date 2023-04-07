@@ -24,8 +24,8 @@ mixin _$EventReviewForm {
   DateTime get eventStartDateTime => throw _privateConstructorUsedError;
   DateTime get eventEndDateTime => throw _privateConstructorUsedError;
   String? get userPictureUrl => throw _privateConstructorUsedError;
-  dynamic get reviewValue => throw _privateConstructorUsedError;
-  dynamic get reviewContent => throw _privateConstructorUsedError;
+  double? get reviewValue => throw _privateConstructorUsedError;
+  String? get reviewContent => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventReviewFormCopyWith<EventReviewForm> get copyWith =>
@@ -47,8 +47,8 @@ abstract class $EventReviewFormCopyWith<$Res> {
       DateTime eventStartDateTime,
       DateTime eventEndDateTime,
       String? userPictureUrl,
-      dynamic reviewValue,
-      dynamic reviewContent});
+      double? reviewValue,
+      String? reviewContent});
 }
 
 /// @nodoc
@@ -111,11 +111,11 @@ class _$EventReviewFormCopyWithImpl<$Res, $Val extends EventReviewForm>
       reviewValue: freezed == reviewValue
           ? _value.reviewValue
           : reviewValue // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as double?,
       reviewContent: freezed == reviewContent
           ? _value.reviewContent
           : reviewContent // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
     ) as $Val);
   }
 }
@@ -137,8 +137,8 @@ abstract class _$$_EventReviewFormCopyWith<$Res>
       DateTime eventStartDateTime,
       DateTime eventEndDateTime,
       String? userPictureUrl,
-      dynamic reviewValue,
-      dynamic reviewContent});
+      double? reviewValue,
+      String? reviewContent});
 }
 
 /// @nodoc
@@ -196,9 +196,14 @@ class __$$_EventReviewFormCopyWithImpl<$Res>
           ? _value.userPictureUrl
           : userPictureUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      reviewValue: freezed == reviewValue ? _value.reviewValue! : reviewValue,
-      reviewContent:
-          freezed == reviewContent ? _value.reviewContent! : reviewContent,
+      reviewValue: freezed == reviewValue
+          ? _value.reviewValue
+          : reviewValue // ignore: cast_nullable_to_non_nullable
+              as double?,
+      reviewContent: freezed == reviewContent
+          ? _value.reviewContent
+          : reviewContent // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -215,8 +220,8 @@ class _$_EventReviewForm implements _EventReviewForm {
       required this.eventStartDateTime,
       required this.eventEndDateTime,
       this.userPictureUrl,
-      this.reviewValue = 0,
-      this.reviewContent = ''});
+      this.reviewValue,
+      this.reviewContent});
 
   @override
   final String clubId;
@@ -235,11 +240,9 @@ class _$_EventReviewForm implements _EventReviewForm {
   @override
   final String? userPictureUrl;
   @override
-  @JsonKey()
-  final dynamic reviewValue;
+  final double? reviewValue;
   @override
-  @JsonKey()
-  final dynamic reviewContent;
+  final String? reviewContent;
 
   @override
   String toString() {
@@ -264,10 +267,10 @@ class _$_EventReviewForm implements _EventReviewForm {
                 other.eventEndDateTime == eventEndDateTime) &&
             (identical(other.userPictureUrl, userPictureUrl) ||
                 other.userPictureUrl == userPictureUrl) &&
-            const DeepCollectionEquality()
-                .equals(other.reviewValue, reviewValue) &&
-            const DeepCollectionEquality()
-                .equals(other.reviewContent, reviewContent));
+            (identical(other.reviewValue, reviewValue) ||
+                other.reviewValue == reviewValue) &&
+            (identical(other.reviewContent, reviewContent) ||
+                other.reviewContent == reviewContent));
   }
 
   @override
@@ -281,8 +284,8 @@ class _$_EventReviewForm implements _EventReviewForm {
       eventStartDateTime,
       eventEndDateTime,
       userPictureUrl,
-      const DeepCollectionEquality().hash(reviewValue),
-      const DeepCollectionEquality().hash(reviewContent));
+      reviewValue,
+      reviewContent);
 
   @JsonKey(ignore: true)
   @override
@@ -301,8 +304,8 @@ abstract class _EventReviewForm implements EventReviewForm {
       required final DateTime eventStartDateTime,
       required final DateTime eventEndDateTime,
       final String? userPictureUrl,
-      final dynamic reviewValue,
-      final dynamic reviewContent}) = _$_EventReviewForm;
+      final double? reviewValue,
+      final String? reviewContent}) = _$_EventReviewForm;
 
   @override
   String get clubId;
@@ -321,9 +324,9 @@ abstract class _EventReviewForm implements EventReviewForm {
   @override
   String? get userPictureUrl;
   @override
-  dynamic get reviewValue;
+  double? get reviewValue;
   @override
-  dynamic get reviewContent;
+  String? get reviewContent;
   @override
   @JsonKey(ignore: true)
   _$$_EventReviewFormCopyWith<_$_EventReviewForm> get copyWith =>
