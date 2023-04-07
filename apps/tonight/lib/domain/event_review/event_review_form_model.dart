@@ -7,10 +7,12 @@ class EventReviewForm with _$EventReviewForm {
   const factory EventReviewForm({
     required String clubId,
     required String userId,
+    required String eventId,
     required String username,
     required String eventName,
     required DateTime eventStartDateTime,
     required DateTime eventEndDateTime,
+    String? userPictureUrl,
     @Default(0) reviewValue,
     @Default('') reviewContent,
   }) = _EventReviewForm;
