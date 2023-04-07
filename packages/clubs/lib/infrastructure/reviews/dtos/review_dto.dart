@@ -19,7 +19,7 @@ class ReviewDto with _$ReviewDto {
     required String eventId,
     required String eventName,
     @TimestampJsonConverter() required DateTime dateAdded,
-    @Default('') String userPictureUrl,
+    String? userPictureUrl,
   }) = _ReviewDto;
 
   factory ReviewDto.fromDomain(Review review) {
