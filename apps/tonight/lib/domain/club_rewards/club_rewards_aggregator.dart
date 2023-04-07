@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:rewards/domain/reward_entity.dart';
 import 'package:rewards/domain/user_reward_facade.dart';
 import 'package:tonight/domain/club_rewards/club_rewards_failure.dart';
-import 'package:tonight/domain/club_rewards/club_rewards_with_attendance_entity.dart';
+import 'package:tonight/domain/club_rewards/club_rewards_with_attendance_model.dart';
 
 class ClubRewardsAggregator {
   final UserRewardFacade _rewardFacade;

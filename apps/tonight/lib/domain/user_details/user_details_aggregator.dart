@@ -2,8 +2,8 @@ import 'package:account_settings/account_settings.dart';
 import 'package:clubs/clubs.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
-import 'package:tonight/domain/user_details/user_details_entity.dart';
 import 'package:tonight/domain/user_details/user_details_failure.dart';
+import 'package:tonight/domain/user_details/user_details_model.dart';
 
 class UserDetailsAggregator {
   final UserAccountFacade _userAccountFacade;
@@ -28,7 +28,7 @@ class UserDetailsAggregator {
     }
 
     final result = UserDetails(
-      id: user.id,
+      userId: user.id,
       raverCoins: user.raverCoins,
       username: user.username,
       profilePictureUrl: user.profilePictureUrl,

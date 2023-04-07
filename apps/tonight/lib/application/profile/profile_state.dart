@@ -5,19 +5,14 @@ class ProfileState with _$ProfileState {
   const ProfileState._();
 
   factory ProfileState({
-    required UserAccount user,
-    required bool isFromOauth,
+    required Option<UserProfile> userProfile,
     required CubitStatus initialStatus,
     required CubitStatus deletingAccountStatus,
     required Option<String> snackbarMessage,
   }) = _ProfileState;
 
   factory ProfileState.initial() => ProfileState(
-        user: const UserAccount(
-          id: '',
-          email: '',
-        ),
-        isFromOauth: false,
+        userProfile: none(),
         initialStatus: CubitStatus.initial,
         deletingAccountStatus: CubitStatus.initial,
         snackbarMessage: none(),

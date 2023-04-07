@@ -16,7 +16,7 @@ import 'package:clubs/clubs.dart' as _i39;
 import 'package:events/events.dart' as _i38;
 import 'package:flutter/material.dart' as _i32;
 import 'package:payments/domain/domain.dart' as _i37;
-import 'package:tickets/tickets.dart' as _i40;
+import 'package:tickets/domain/ticket_entity.dart' as _i40;
 
 import '../../failure/failure_page.dart' as _i18;
 import '../app_settings/app_settings_page.dart' as _i22;
@@ -320,8 +320,7 @@ class AppRouter extends _i31.RootStackRouter {
       return _i31.CustomPage<dynamic>(
         routeData: routeData,
         child: _i21.ReviewPage(
-          blocContext: args.blocContext,
-          ticket: args.ticket,
+          eventId: args.eventId,
           key: args.key,
         ),
         transitionsBuilder: _i34.slideLeftTransition,
@@ -1126,15 +1125,13 @@ class UpdateProfilePictureRouteArgs {
 /// [_i21.ReviewPage]
 class ReviewRoute extends _i31.PageRouteInfo<ReviewRouteArgs> {
   ReviewRoute({
-    required _i32.BuildContext blocContext,
-    required _i40.Ticket ticket,
+    required String eventId,
     _i32.Key? key,
   }) : super(
           ReviewRoute.name,
           path: '/review-page',
           args: ReviewRouteArgs(
-            blocContext: blocContext,
-            ticket: ticket,
+            eventId: eventId,
             key: key,
           ),
         );
@@ -1144,20 +1141,17 @@ class ReviewRoute extends _i31.PageRouteInfo<ReviewRouteArgs> {
 
 class ReviewRouteArgs {
   const ReviewRouteArgs({
-    required this.blocContext,
-    required this.ticket,
+    required this.eventId,
     this.key,
   });
 
-  final _i32.BuildContext blocContext;
-
-  final _i40.Ticket ticket;
+  final String eventId;
 
   final _i32.Key? key;
 
   @override
   String toString() {
-    return 'ReviewRouteArgs{blocContext: $blocContext, ticket: $ticket, key: $key}';
+    return 'ReviewRouteArgs{eventId: $eventId, key: $key}';
   }
 }
 

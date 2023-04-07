@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 
 class UserProfile extends Equatable {
-  final String id;
+  final String userId;
   final String email;
   final String username;
   final String profilePictureUrl;
@@ -11,7 +11,7 @@ class UserProfile extends Equatable {
   final List<WallPhoto> userPhotos;
 
   const UserProfile({
-    required this.id,
+    required this.userId,
     required this.email,
     this.profilePictureUrl = '',
     this.username = '',
@@ -22,7 +22,7 @@ class UserProfile extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
+        userId,
         email,
         username,
         profilePictureUrl,
@@ -40,7 +40,7 @@ class UserProfile extends Equatable {
     List<WallPhoto>? userPhotos,
   }) {
     return UserProfile(
-      id: id,
+      userId: userId,
       email: email ?? this.email,
       profilePictureUrl: profilePictureUrl ?? this.profilePictureUrl,
       username: username ?? this.username,
