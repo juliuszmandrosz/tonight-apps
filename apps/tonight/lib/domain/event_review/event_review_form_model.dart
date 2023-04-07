@@ -13,7 +13,7 @@ class EventReviewForm with _$EventReviewForm {
     required DateTime eventStartDateTime,
     required DateTime eventEndDateTime,
     String? userPictureUrl,
-    @Default(0) reviewValue,
-    @Default('') reviewContent,
+    double? reviewValue,
+    String? reviewContent,
   }) = _EventReviewForm;
 }

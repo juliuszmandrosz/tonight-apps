@@ -70,8 +70,8 @@ class EventReviewAggregator {
 
   _mapEventReviewFormToReview(EventReviewForm eventReviewForm) {
     return Review(
-      userOpinion: eventReviewForm.reviewContent,
-      userRate: eventReviewForm.reviewValue,
+      userOpinion: eventReviewForm.reviewContent!,
+      userRate: eventReviewForm.reviewValue!,
       username: eventReviewForm.username,
       userId: eventReviewForm.userId,
       eventId: eventReviewForm.eventId,
