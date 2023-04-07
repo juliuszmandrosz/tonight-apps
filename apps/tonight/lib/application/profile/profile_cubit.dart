@@ -1,54 +1,48 @@
 import 'dart:async';
 
-import 'package:account_settings/account_settings.dart';
 import 'package:auth/auth.dart';
 import 'package:common/application/application.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tonight/application/profile/profile_cubit_hub.dart';
-import 'package:tonight/presentation/profile/providers_list.dart';
+import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
+import 'package:tonight/domain/user_profile/user_profile_failure.dart';
+import 'package:tonight/domain/user_profile/user_profile_model.dart';
 import 'package:translations/translations.dart';
 
 part 'profile_cubit.freezed.dart';
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  final UserAccountFacade _accountFacade;
+  final UserProfileAggregator _userProfileAggregator;
   final CommonAuthFacade _authFacade;
-  final ProfileBroadcastSubject _profileSubject;
 
   ProfileCubit({
-    required UserAccountFacade userAccountFacade,
+    required UserProfileAggregator userProfileAggregator,
     required CommonAuthFacade commonAuthFacade,
-    required ProfileBroadcastSubject profileBroadcastSubject,
-  })  : _accountFacade = userAccountFacade,
+  })  : _userProfileAggregator = userProfileAggregator,
         _authFacade = commonAuthFacade,
-        _profileSubject = profileBroadcastSubject,
         super(ProfileState.initial());
 
-  StreamSubscription<Either<UserAccountFailure, UserAccount>>?
+  StreamSubscription<Either<UserProfileFailure, UserProfile>>?
       _profileSubscription;
 
   void getUserProfile() {
     emit(state.copyWith(initialStatus: CubitStatus.loading));
 
     _profileSubscription =
-        _accountFacade.getUserAccount().listen((failureOrSuccess) {
-      failureOrSuccess.fold(
+        _userProfileAggregator.getUserProfile().listen((result) {
+      result.fold(
         (failure) {
           emit(state.copyWith(initialStatus: CubitStatus.failure));
-          _profileSubject.addToSubject(state);
         },
-        (profile) async {
-          final isFromOauth = _isFromOauth();
+        (profile) {
           emit(
             state.copyWith(
-                initialStatus: CubitStatus.success,
-                user: profile,
-                isFromOauth: isFromOauth),
+              initialStatus: CubitStatus.success,
+              userProfile: some(profile),
+            ),
           );
-          _profileSubject.addToSubject(state);
         },
       );
     });
@@ -75,14 +69,6 @@ class ProfileCubit extends Cubit<ProfileState> {
       ),
     );
     emit(state.copyWith(snackbarMessage: none()));
-  }
-
-  bool _isFromOauth() {
-    final providerId = _accountFacade.getProviderForUser();
-    final provider = providersList[providerId];
-    return provider == ProviderId.facebook ||
-        provider == ProviderId.google ||
-        provider == ProviderId.apple;
   }
 
   @override

@@ -16,8 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProfileState {
-  UserAccount get user => throw _privateConstructorUsedError;
-  bool get isFromOauth => throw _privateConstructorUsedError;
+  Option<UserProfile> get userProfile => throw _privateConstructorUsedError;
   CubitStatus get initialStatus => throw _privateConstructorUsedError;
   CubitStatus get deletingAccountStatus => throw _privateConstructorUsedError;
   Option<String> get snackbarMessage => throw _privateConstructorUsedError;
@@ -34,8 +33,7 @@ abstract class $ProfileStateCopyWith<$Res> {
       _$ProfileStateCopyWithImpl<$Res, ProfileState>;
   @useResult
   $Res call(
-      {UserAccount user,
-      bool isFromOauth,
+      {Option<UserProfile> userProfile,
       CubitStatus initialStatus,
       CubitStatus deletingAccountStatus,
       Option<String> snackbarMessage});
@@ -54,21 +52,16 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
-    Object? isFromOauth = null,
+    Object? userProfile = null,
     Object? initialStatus = null,
     Object? deletingAccountStatus = null,
     Object? snackbarMessage = null,
   }) {
     return _then(_value.copyWith(
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as UserAccount,
-      isFromOauth: null == isFromOauth
-          ? _value.isFromOauth
-          : isFromOauth // ignore: cast_nullable_to_non_nullable
-              as bool,
+      userProfile: null == userProfile
+          ? _value.userProfile
+          : userProfile // ignore: cast_nullable_to_non_nullable
+              as Option<UserProfile>,
       initialStatus: null == initialStatus
           ? _value.initialStatus
           : initialStatus // ignore: cast_nullable_to_non_nullable
@@ -94,8 +87,7 @@ abstract class _$$_ProfileStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {UserAccount user,
-      bool isFromOauth,
+      {Option<UserProfile> userProfile,
       CubitStatus initialStatus,
       CubitStatus deletingAccountStatus,
       Option<String> snackbarMessage});
@@ -112,21 +104,16 @@ class __$$_ProfileStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
-    Object? isFromOauth = null,
+    Object? userProfile = null,
     Object? initialStatus = null,
     Object? deletingAccountStatus = null,
     Object? snackbarMessage = null,
   }) {
     return _then(_$_ProfileState(
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as UserAccount,
-      isFromOauth: null == isFromOauth
-          ? _value.isFromOauth
-          : isFromOauth // ignore: cast_nullable_to_non_nullable
-              as bool,
+      userProfile: null == userProfile
+          ? _value.userProfile
+          : userProfile // ignore: cast_nullable_to_non_nullable
+              as Option<UserProfile>,
       initialStatus: null == initialStatus
           ? _value.initialStatus
           : initialStatus // ignore: cast_nullable_to_non_nullable
@@ -147,17 +134,14 @@ class __$$_ProfileStateCopyWithImpl<$Res>
 
 class _$_ProfileState extends _ProfileState {
   _$_ProfileState(
-      {required this.user,
-      required this.isFromOauth,
+      {required this.userProfile,
       required this.initialStatus,
       required this.deletingAccountStatus,
       required this.snackbarMessage})
       : super._();
 
   @override
-  final UserAccount user;
-  @override
-  final bool isFromOauth;
+  final Option<UserProfile> userProfile;
   @override
   final CubitStatus initialStatus;
   @override
@@ -167,7 +151,7 @@ class _$_ProfileState extends _ProfileState {
 
   @override
   String toString() {
-    return 'ProfileState(user: $user, isFromOauth: $isFromOauth, initialStatus: $initialStatus, deletingAccountStatus: $deletingAccountStatus, snackbarMessage: $snackbarMessage)';
+    return 'ProfileState(userProfile: $userProfile, initialStatus: $initialStatus, deletingAccountStatus: $deletingAccountStatus, snackbarMessage: $snackbarMessage)';
   }
 
   @override
@@ -175,9 +159,8 @@ class _$_ProfileState extends _ProfileState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ProfileState &&
-            (identical(other.user, user) || other.user == user) &&
-            (identical(other.isFromOauth, isFromOauth) ||
-                other.isFromOauth == isFromOauth) &&
+            (identical(other.userProfile, userProfile) ||
+                other.userProfile == userProfile) &&
             (identical(other.initialStatus, initialStatus) ||
                 other.initialStatus == initialStatus) &&
             (identical(other.deletingAccountStatus, deletingAccountStatus) ||
@@ -187,7 +170,7 @@ class _$_ProfileState extends _ProfileState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user, isFromOauth, initialStatus,
+  int get hashCode => Object.hash(runtimeType, userProfile, initialStatus,
       deletingAccountStatus, snackbarMessage);
 
   @JsonKey(ignore: true)
@@ -199,17 +182,14 @@ class _$_ProfileState extends _ProfileState {
 
 abstract class _ProfileState extends ProfileState {
   factory _ProfileState(
-      {required final UserAccount user,
-      required final bool isFromOauth,
+      {required final Option<UserProfile> userProfile,
       required final CubitStatus initialStatus,
       required final CubitStatus deletingAccountStatus,
       required final Option<String> snackbarMessage}) = _$_ProfileState;
   _ProfileState._() : super._();
 
   @override
-  UserAccount get user;
-  @override
-  bool get isFromOauth;
+  Option<UserProfile> get userProfile;
   @override
   CubitStatus get initialStatus;
   @override

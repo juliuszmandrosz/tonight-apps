@@ -2,8 +2,8 @@ import 'package:account_settings/account_settings.dart';
 import 'package:account_settings/domain/user_account_facade.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
-import 'package:tonight/domain/user_profile/user_profile_entity.dart';
 import 'package:tonight/domain/user_profile/user_profile_failure.dart';
+import 'package:tonight/domain/user_profile/user_profile_model.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 
@@ -16,26 +16,26 @@ class UserProfileAggregator {
   Stream<Either<UserProfileFailure, UserProfile>> getUserProfile({
     int photosPageSize = 20,
   }) async* {
-    final userPhotos = await _wallPhotoFacade.getUserPhotos(
+    final userPhotosResult = await _wallPhotoFacade.getUserPhotos(
       pageSize: photosPageSize,
     );
 
-    if (userPhotos.isLeft()) {
+    if (userPhotosResult.isLeft()) {
       yield left(const UserProfileFailure.unexpected());
     }
 
     yield* _userAccountFacade.getUserAccount().map(
-          (result) => result.fold(
+          (accountResult) => accountResult.fold(
             (failure) => left(const UserProfileFailure.unexpected()),
             (account) => right(
               UserProfile(
-                id: account.id,
+                userId: account.id,
                 email: account.email,
                 raverCoins: account.raverCoins,
                 username: account.username,
                 favoriteClubsCount: account.favoriteClubIds.length,
                 profilePictureUrl: account.profilePictureUrl,
-                userPhotos: userPhotos.getRightOrCrash(),
+                userPhotos: userPhotosResult.getRightOrCrash(),
               ),
             ),
           ),
