@@ -6,7 +6,6 @@ import 'failures/user_review_failure.dart';
 abstract class UserReviewFacade {
   Future<Either<UserReviewFailure, String>> submitReview({
     required String clubId,
-    required String ticketId,
     required Review review,
   });
 
@@ -16,10 +15,12 @@ abstract class UserReviewFacade {
   });
 
   Future<Either<UserReviewFailure, List<Review>>> getClubReviewsAsUser(
-      String clubId, {
-        int pageSize = 20,
-        Review? lastReview,
-      });
+    String clubId, {
+    int pageSize = 20,
+    Review? lastReview,
+  });
 
-  Future<Either<UserReviewFailure, Unit>> reportReviewAsUser(String reviewId,);
+  Future<Either<UserReviewFailure, Unit>> reportReviewAsUser(
+    String reviewId,
+  );
 }
