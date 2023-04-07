@@ -27,9 +27,9 @@ class ReviewTitle extends StatelessWidget {
                 color: context.surfaceColor,
                 shape: BoxShape.circle,
               ),
-              child: review.userPictureUrl.isNotEmpty
+              child: review.userPictureUrl.isNotNullOrEmpty
                   ? CircleNetworkPhoto(
-                      photoUrl: review.userPictureUrl,
+                      photoUrl: review.userPictureUrl!,
                       containerSize: containerSize,
                       loaderSize: 12,
                     )
