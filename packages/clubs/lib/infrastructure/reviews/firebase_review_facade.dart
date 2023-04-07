@@ -122,7 +122,6 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
   @override
   Future<Either<UserReviewFailure, String>> submitReview({
     required String clubId,
-    required String ticketId,
     required Review review,
   }) async {
     final clubDocRef = _firestore.clubCollection.doc(clubId);
@@ -133,10 +132,6 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
       final reviewId = review.id;
 
       await reviewRef.doc(reviewId).set(reviewDto.toJson());
-
-      final ticketCollection = _getCurrentUserTicketCollection();
-
-      await ticketCollection.doc(ticketId).update({'reviewId': reviewId});
 
       return right(reviewId);
     } on FirebaseException catch (e) {
@@ -255,12 +250,6 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
         ),
       );
     }
-  }
-
-  CollectionReference _getCurrentUserTicketCollection() {
-    final currentUser = _firebaseAuth.tryGetFirebaseUser();
-
-    return _firestore.userCollection.doc(currentUser.uid).ticketCollection;
   }
 
   Future<bool> _checkIfReportExists(String reporterId, String reviewId) async {
