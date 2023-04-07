@@ -39,6 +39,7 @@ import 'package:tonight/application/clubs/club_rewards/club_rewards_cubit.dart';
 import 'package:tonight/application/clubs/clubs_overview/clubs_overview_bloc.dart';
 import 'package:tonight/application/core/places/places_cubit.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
+import 'package:tonight/application/event_review/event_review_cubit.dart';
 import 'package:tonight/application/events/event_details/event_details_cubit.dart';
 import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
@@ -46,7 +47,6 @@ import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dar
 import 'package:tonight/application/invoice_data/invoice_data_cubit.dart';
 import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:tonight/application/payment_method/payment_method_cubit.dart';
-import 'package:tonight/application/profile/profile_cubit_hub.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
 import 'package:tonight/application/terms_of_service/terms_of_service_cubit.dart';
 import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
@@ -56,6 +56,8 @@ import 'package:tonight/application/update_profile_picture/update_profile_pictur
 import 'package:tonight/application/user_details/user_details_cubit.dart';
 import 'package:tonight/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:tonight/application/wall_photos/wall_photos_cubit.dart';
+import 'package:tonight/domain/club_rewards/club_rewards_aggregator.dart';
+import 'package:tonight/domain/event_review/event_review_aggregator.dart';
 import 'package:tonight/domain/places/places_facade.dart';
 import 'package:tonight/domain/user_details/user_details_aggregator.dart';
 import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
@@ -65,8 +67,6 @@ import 'package:tonight/infrastructure/wall_photos/firebase_wall_photo_facade.da
 
 import 'application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
 import 'application/clubs/club_favorite/club_favorite_cubit.dart';
-import 'application/event_review/existing_review/existing_review_cubit.dart';
-import 'application/event_review/new_review/event_review_cubit.dart';
 import 'application/profile/profile_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -76,7 +76,6 @@ void registerDependencies() {
   _registerAggregators();
   _registerCubits();
   _registerModules();
-  _registerCubitSubjects();
 }
 
 void _registerCubits() {
@@ -174,22 +173,14 @@ void _registerCubits() {
   );
 
   //Reviews
-  getIt.registerFactoryParam(
-    (TicketListCubit ticketListCubit, _) => NewReviewCubit(
-      profileBroadcastSubject: getIt(),
-      ticketListCubit: ticketListCubit,
-      reviewFacade: getIt(),
-    ),
-  );
-
   getIt.registerFactory(
-    () => ClubReviewsBloc(
+    () => EventReviewCubit(
       getIt(),
     ),
   );
 
   getIt.registerFactory(
-    () => ExistingReviewCubit(
+    () => ClubReviewsBloc(
       getIt(),
     ),
   );
@@ -235,8 +226,7 @@ void _registerCubits() {
   getIt.registerFactory(
     () => ProfileCubit(
       commonAuthFacade: getIt(),
-      userAccountFacade: getIt(),
-      profileBroadcastSubject: getIt(),
+      userProfileAggregator: getIt(),
     ),
   );
 
@@ -265,7 +255,6 @@ void _registerCubits() {
   //Rewards
   getIt.registerFactory(
     () => ClubRewardsCubit(
-      getIt(),
       getIt(),
     ),
   );
@@ -320,10 +309,6 @@ void _registerCubits() {
       getIt(),
     ),
   );
-}
-
-void _registerCubitSubjects() {
-  getIt.registerLazySingleton(() => ProfileBroadcastSubject());
 }
 
 void _registerFacades() {
@@ -537,6 +522,21 @@ void _registerAggregators() {
     () => UserProfileAggregator(
       getIt(),
       getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
+    () => ClubRewardsAggregator(
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
+    () => EventReviewAggregator(
+      accountFacade: getIt(),
+      reviewFacade: getIt(),
+      eventFacade: getIt(),
     ),
   );
 }
