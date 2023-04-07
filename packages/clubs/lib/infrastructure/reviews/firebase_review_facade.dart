@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:clubs/domain/domain.dart';
+import 'package:clubs/infrastructure/infrastructure.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
-import 'package:clubs/domain/domain.dart';
-import 'package:clubs/infrastructure/infrastructure.dart';
-import 'package:common/common.dart';
 
 class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
   final FirebaseFirestore _firestore;
@@ -88,18 +88,23 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
   }
 
   @override
-  Future<Either<UserReviewFailure, Review>> getReview(
-      String reviewId, String clubId) async {
+  Future<Either<UserReviewFailure, Review>> getUserReviewFromEvent({
+    required String eventId,
+    required String clubId,
+  }) async {
+    final userId = _firestore.getCurrentUserDocRef(_firebaseAuth).id;
     final clubDocRef = _firestore.clubCollection.doc(clubId);
-
-    final reviewRef = clubDocRef.reviewCollection.doc(reviewId);
-
+    final reviewRef = clubDocRef.reviewCollection
+        .where('eventId', isEqualTo: eventId)
+        .where('userId', isEqualTo: userId);
     try {
       final result = await reviewRef.get();
 
-      if (result.data() == null) throw InvalidIdError();
+      if (result.size == 0) {
+        return left(const UserReviewFailure.reviewNotFound());
+      }
 
-      return right(ReviewDto.fromFirebase(result).toDomain());
+      return right(ReviewDto.fromFirebase(result.docs.first).toDomain());
     } on FirebaseException catch (e) {
       return left(
         await handleFirebaseError<UserReviewFailure>(
