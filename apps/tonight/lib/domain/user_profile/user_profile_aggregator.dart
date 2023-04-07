@@ -10,6 +10,7 @@ import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 class UserProfileAggregator {
   final UserAccountFacade _userAccountFacade;
   final WallPhotoFacade _wallPhotoFacade;
+  List<WallPhoto> _userPhotos = [];
 
   UserProfileAggregator(this._userAccountFacade, this._wallPhotoFacade);
 
@@ -24,6 +25,8 @@ class UserProfileAggregator {
       yield left(const UserProfileFailure.unexpected());
     }
 
+    _userPhotos = [...userPhotosResult.getRightOrCrash()];
+
     yield* _userAccountFacade.getUserAccount().map(
           (accountResult) => accountResult.fold(
             (failure) => left(const UserProfileFailure.unexpected()),
@@ -35,7 +38,7 @@ class UserProfileAggregator {
                 username: account.username,
                 favoriteClubsCount: account.favoriteClubIds.length,
                 profilePictureUrl: account.profilePictureUrl,
-                userPhotos: userPhotosResult.getRightOrCrash(),
+                userPhotos: [..._userPhotos],
               ),
             ),
           ),
@@ -55,6 +58,10 @@ class UserProfileAggregator {
       return left(const UserProfileFailure.unexpected());
     }
 
-    return right(userPhotos.getRightOrCrash());
+    final photos = userPhotos.getRightOrCrash();
+
+    _userPhotos = [..._userPhotos, ...photos];
+
+    return right(photos);
   }
 }
