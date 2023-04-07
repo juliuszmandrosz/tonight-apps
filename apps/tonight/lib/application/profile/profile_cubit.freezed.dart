@@ -18,8 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProfileState {
   Option<UserProfile> get userProfile => throw _privateConstructorUsedError;
   CubitStatus get initialStatus => throw _privateConstructorUsedError;
+  CubitStatus get nextPagePhotosStatus => throw _privateConstructorUsedError;
   CubitStatus get deletingAccountStatus => throw _privateConstructorUsedError;
   Option<String> get snackbarMessage => throw _privateConstructorUsedError;
+  bool get hasPhotosReachedMax => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileStateCopyWith<ProfileState> get copyWith =>
@@ -35,8 +37,10 @@ abstract class $ProfileStateCopyWith<$Res> {
   $Res call(
       {Option<UserProfile> userProfile,
       CubitStatus initialStatus,
+      CubitStatus nextPagePhotosStatus,
       CubitStatus deletingAccountStatus,
-      Option<String> snackbarMessage});
+      Option<String> snackbarMessage,
+      bool hasPhotosReachedMax});
 }
 
 /// @nodoc
@@ -54,8 +58,10 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   $Res call({
     Object? userProfile = null,
     Object? initialStatus = null,
+    Object? nextPagePhotosStatus = null,
     Object? deletingAccountStatus = null,
     Object? snackbarMessage = null,
+    Object? hasPhotosReachedMax = null,
   }) {
     return _then(_value.copyWith(
       userProfile: null == userProfile
@@ -66,6 +72,10 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.initialStatus
           : initialStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
+      nextPagePhotosStatus: null == nextPagePhotosStatus
+          ? _value.nextPagePhotosStatus
+          : nextPagePhotosStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
       deletingAccountStatus: null == deletingAccountStatus
           ? _value.deletingAccountStatus
           : deletingAccountStatus // ignore: cast_nullable_to_non_nullable
@@ -74,6 +84,10 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      hasPhotosReachedMax: null == hasPhotosReachedMax
+          ? _value.hasPhotosReachedMax
+          : hasPhotosReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -89,8 +103,10 @@ abstract class _$$_ProfileStateCopyWith<$Res>
   $Res call(
       {Option<UserProfile> userProfile,
       CubitStatus initialStatus,
+      CubitStatus nextPagePhotosStatus,
       CubitStatus deletingAccountStatus,
-      Option<String> snackbarMessage});
+      Option<String> snackbarMessage,
+      bool hasPhotosReachedMax});
 }
 
 /// @nodoc
@@ -106,8 +122,10 @@ class __$$_ProfileStateCopyWithImpl<$Res>
   $Res call({
     Object? userProfile = null,
     Object? initialStatus = null,
+    Object? nextPagePhotosStatus = null,
     Object? deletingAccountStatus = null,
     Object? snackbarMessage = null,
+    Object? hasPhotosReachedMax = null,
   }) {
     return _then(_$_ProfileState(
       userProfile: null == userProfile
@@ -118,6 +136,10 @@ class __$$_ProfileStateCopyWithImpl<$Res>
           ? _value.initialStatus
           : initialStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
+      nextPagePhotosStatus: null == nextPagePhotosStatus
+          ? _value.nextPagePhotosStatus
+          : nextPagePhotosStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
       deletingAccountStatus: null == deletingAccountStatus
           ? _value.deletingAccountStatus
           : deletingAccountStatus // ignore: cast_nullable_to_non_nullable
@@ -126,6 +148,10 @@ class __$$_ProfileStateCopyWithImpl<$Res>
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      hasPhotosReachedMax: null == hasPhotosReachedMax
+          ? _value.hasPhotosReachedMax
+          : hasPhotosReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -136,8 +162,10 @@ class _$_ProfileState extends _ProfileState {
   _$_ProfileState(
       {required this.userProfile,
       required this.initialStatus,
+      required this.nextPagePhotosStatus,
       required this.deletingAccountStatus,
-      required this.snackbarMessage})
+      required this.snackbarMessage,
+      required this.hasPhotosReachedMax})
       : super._();
 
   @override
@@ -145,13 +173,17 @@ class _$_ProfileState extends _ProfileState {
   @override
   final CubitStatus initialStatus;
   @override
+  final CubitStatus nextPagePhotosStatus;
+  @override
   final CubitStatus deletingAccountStatus;
   @override
   final Option<String> snackbarMessage;
+  @override
+  final bool hasPhotosReachedMax;
 
   @override
   String toString() {
-    return 'ProfileState(userProfile: $userProfile, initialStatus: $initialStatus, deletingAccountStatus: $deletingAccountStatus, snackbarMessage: $snackbarMessage)';
+    return 'ProfileState(userProfile: $userProfile, initialStatus: $initialStatus, nextPagePhotosStatus: $nextPagePhotosStatus, deletingAccountStatus: $deletingAccountStatus, snackbarMessage: $snackbarMessage, hasPhotosReachedMax: $hasPhotosReachedMax)';
   }
 
   @override
@@ -163,15 +195,25 @@ class _$_ProfileState extends _ProfileState {
                 other.userProfile == userProfile) &&
             (identical(other.initialStatus, initialStatus) ||
                 other.initialStatus == initialStatus) &&
+            (identical(other.nextPagePhotosStatus, nextPagePhotosStatus) ||
+                other.nextPagePhotosStatus == nextPagePhotosStatus) &&
             (identical(other.deletingAccountStatus, deletingAccountStatus) ||
                 other.deletingAccountStatus == deletingAccountStatus) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
-                other.snackbarMessage == snackbarMessage));
+                other.snackbarMessage == snackbarMessage) &&
+            (identical(other.hasPhotosReachedMax, hasPhotosReachedMax) ||
+                other.hasPhotosReachedMax == hasPhotosReachedMax));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userProfile, initialStatus,
-      deletingAccountStatus, snackbarMessage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      userProfile,
+      initialStatus,
+      nextPagePhotosStatus,
+      deletingAccountStatus,
+      snackbarMessage,
+      hasPhotosReachedMax);
 
   @JsonKey(ignore: true)
   @override
@@ -184,8 +226,10 @@ abstract class _ProfileState extends ProfileState {
   factory _ProfileState(
       {required final Option<UserProfile> userProfile,
       required final CubitStatus initialStatus,
+      required final CubitStatus nextPagePhotosStatus,
       required final CubitStatus deletingAccountStatus,
-      required final Option<String> snackbarMessage}) = _$_ProfileState;
+      required final Option<String> snackbarMessage,
+      required final bool hasPhotosReachedMax}) = _$_ProfileState;
   _ProfileState._() : super._();
 
   @override
@@ -193,9 +237,13 @@ abstract class _ProfileState extends ProfileState {
   @override
   CubitStatus get initialStatus;
   @override
+  CubitStatus get nextPagePhotosStatus;
+  @override
   CubitStatus get deletingAccountStatus;
   @override
   Option<String> get snackbarMessage;
+  @override
+  bool get hasPhotosReachedMax;
   @override
   @JsonKey(ignore: true)
   _$$_ProfileStateCopyWith<_$_ProfileState> get copyWith =>
