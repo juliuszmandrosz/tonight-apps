@@ -28,7 +28,6 @@ mixin _$ReviewDto {
   String get username => throw _privateConstructorUsedError;
   String get eventId => throw _privateConstructorUsedError;
   String get eventName => throw _privateConstructorUsedError;
-  String get ticketId => throw _privateConstructorUsedError;
   @TimestampJsonConverter()
   DateTime get dateAdded => throw _privateConstructorUsedError;
   String get userPictureUrl => throw _privateConstructorUsedError;
@@ -52,7 +51,6 @@ abstract class $ReviewDtoCopyWith<$Res> {
       String username,
       String eventId,
       String eventName,
-      String ticketId,
       @TimestampJsonConverter() DateTime dateAdded,
       String userPictureUrl});
 }
@@ -77,7 +75,6 @@ class _$ReviewDtoCopyWithImpl<$Res, $Val extends ReviewDto>
     Object? username = null,
     Object? eventId = null,
     Object? eventName = null,
-    Object? ticketId = null,
     Object? dateAdded = null,
     Object? userPictureUrl = null,
   }) {
@@ -110,10 +107,6 @@ class _$ReviewDtoCopyWithImpl<$Res, $Val extends ReviewDto>
           ? _value.eventName
           : eventName // ignore: cast_nullable_to_non_nullable
               as String,
-      ticketId: null == ticketId
-          ? _value.ticketId
-          : ticketId // ignore: cast_nullable_to_non_nullable
-              as String,
       dateAdded: null == dateAdded
           ? _value.dateAdded
           : dateAdded // ignore: cast_nullable_to_non_nullable
@@ -141,7 +134,6 @@ abstract class _$$_ReviewDtoCopyWith<$Res> implements $ReviewDtoCopyWith<$Res> {
       String username,
       String eventId,
       String eventName,
-      String ticketId,
       @TimestampJsonConverter() DateTime dateAdded,
       String userPictureUrl});
 }
@@ -164,7 +156,6 @@ class __$$_ReviewDtoCopyWithImpl<$Res>
     Object? username = null,
     Object? eventId = null,
     Object? eventName = null,
-    Object? ticketId = null,
     Object? dateAdded = null,
     Object? userPictureUrl = null,
   }) {
@@ -197,10 +188,6 @@ class __$$_ReviewDtoCopyWithImpl<$Res>
           ? _value.eventName
           : eventName // ignore: cast_nullable_to_non_nullable
               as String,
-      ticketId: null == ticketId
-          ? _value.ticketId
-          : ticketId // ignore: cast_nullable_to_non_nullable
-              as String,
       dateAdded: null == dateAdded
           ? _value.dateAdded
           : dateAdded // ignore: cast_nullable_to_non_nullable
@@ -224,7 +211,6 @@ class _$_ReviewDto extends _ReviewDto {
       required this.username,
       required this.eventId,
       required this.eventName,
-      required this.ticketId,
       @TimestampJsonConverter() required this.dateAdded,
       this.userPictureUrl = ''})
       : super._();
@@ -248,8 +234,6 @@ class _$_ReviewDto extends _ReviewDto {
   @override
   final String eventName;
   @override
-  final String ticketId;
-  @override
   @TimestampJsonConverter()
   final DateTime dateAdded;
   @override
@@ -258,7 +242,7 @@ class _$_ReviewDto extends _ReviewDto {
 
   @override
   String toString() {
-    return 'ReviewDto(id: $id, userOpinion: $userOpinion, userRate: $userRate, userId: $userId, username: $username, eventId: $eventId, eventName: $eventName, ticketId: $ticketId, dateAdded: $dateAdded, userPictureUrl: $userPictureUrl)';
+    return 'ReviewDto(id: $id, userOpinion: $userOpinion, userRate: $userRate, userId: $userId, username: $username, eventId: $eventId, eventName: $eventName, dateAdded: $dateAdded, userPictureUrl: $userPictureUrl)';
   }
 
   @override
@@ -277,8 +261,6 @@ class _$_ReviewDto extends _ReviewDto {
             (identical(other.eventId, eventId) || other.eventId == eventId) &&
             (identical(other.eventName, eventName) ||
                 other.eventName == eventName) &&
-            (identical(other.ticketId, ticketId) ||
-                other.ticketId == ticketId) &&
             (identical(other.dateAdded, dateAdded) ||
                 other.dateAdded == dateAdded) &&
             (identical(other.userPictureUrl, userPictureUrl) ||
@@ -287,18 +269,8 @@ class _$_ReviewDto extends _ReviewDto {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      userOpinion,
-      userRate,
-      userId,
-      username,
-      eventId,
-      eventName,
-      ticketId,
-      dateAdded,
-      userPictureUrl);
+  int get hashCode => Object.hash(runtimeType, id, userOpinion, userRate,
+      userId, username, eventId, eventName, dateAdded, userPictureUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -323,7 +295,6 @@ abstract class _ReviewDto extends ReviewDto {
       required final String username,
       required final String eventId,
       required final String eventName,
-      required final String ticketId,
       @TimestampJsonConverter() required final DateTime dateAdded,
       final String userPictureUrl}) = _$_ReviewDto;
   const _ReviewDto._() : super._();
@@ -346,8 +317,6 @@ abstract class _ReviewDto extends ReviewDto {
   String get eventId;
   @override
   String get eventName;
-  @override
-  String get ticketId;
   @override
   @TimestampJsonConverter()
   DateTime get dateAdded;
