@@ -10,7 +10,7 @@ abstract class EventReviewState with _$EventReviewState {
     required FormzStatus submittingStatus,
     required CubitStatus status,
     required Option<String> errorMessage,
-    required Option<UserAccount> userProfile,
+    required Option<EventReviewForm> eventReviewForm,
   }) = _EventReviewState;
 
   factory EventReviewState.initial() => EventReviewState(
@@ -19,6 +19,6 @@ abstract class EventReviewState with _$EventReviewState {
         status: CubitStatus.initial,
         submittingStatus: FormzStatus.pure,
         errorMessage: none(),
-        userProfile: none(),
+        eventReviewForm: none(),
       );
 }
