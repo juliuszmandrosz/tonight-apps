@@ -34,6 +34,7 @@ mixin _$WallPhotoDto {
   @TimestampJsonConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
   String? get userProfilePhotoUrl => throw _privateConstructorUsedError;
+  bool get isVerified => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -58,7 +59,8 @@ abstract class $WallPhotoDtoCopyWith<$Res> {
       String username,
       @TimestampJsonConverter() DateTime eventEndDateTime,
       @TimestampJsonConverter() DateTime createdAt,
-      String? userProfilePhotoUrl});
+      String? userProfilePhotoUrl,
+      bool isVerified});
 }
 
 /// @nodoc
@@ -85,6 +87,7 @@ class _$WallPhotoDtoCopyWithImpl<$Res, $Val extends WallPhotoDto>
     Object? eventEndDateTime = null,
     Object? createdAt = null,
     Object? userProfilePhotoUrl = freezed,
+    Object? isVerified = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -131,6 +134,10 @@ class _$WallPhotoDtoCopyWithImpl<$Res, $Val extends WallPhotoDto>
           ? _value.userProfilePhotoUrl
           : userProfilePhotoUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      isVerified: null == isVerified
+          ? _value.isVerified
+          : isVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -154,7 +161,8 @@ abstract class _$$_WallPhotoDtoCopyWith<$Res>
       String username,
       @TimestampJsonConverter() DateTime eventEndDateTime,
       @TimestampJsonConverter() DateTime createdAt,
-      String? userProfilePhotoUrl});
+      String? userProfilePhotoUrl,
+      bool isVerified});
 }
 
 /// @nodoc
@@ -179,6 +187,7 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
     Object? eventEndDateTime = null,
     Object? createdAt = null,
     Object? userProfilePhotoUrl = freezed,
+    Object? isVerified = null,
   }) {
     return _then(_$_WallPhotoDto(
       id: freezed == id
@@ -225,6 +234,10 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
           ? _value.userProfilePhotoUrl
           : userProfilePhotoUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      isVerified: null == isVerified
+          ? _value.isVerified
+          : isVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -244,7 +257,8 @@ class _$_WallPhotoDto extends _WallPhotoDto {
       required this.username,
       @TimestampJsonConverter() required this.eventEndDateTime,
       @TimestampJsonConverter() required this.createdAt,
-      this.userProfilePhotoUrl})
+      this.userProfilePhotoUrl,
+      this.isVerified = false})
       : super._();
 
   factory _$_WallPhotoDto.fromJson(Map<String, dynamic> json) =>
@@ -275,10 +289,13 @@ class _$_WallPhotoDto extends _WallPhotoDto {
   final DateTime createdAt;
   @override
   final String? userProfilePhotoUrl;
+  @override
+  @JsonKey()
+  final bool isVerified;
 
   @override
   String toString() {
-    return 'WallPhotoDto(id: $id, photoUrl: $photoUrl, clubId: $clubId, clubName: $clubName, eventId: $eventId, eventName: $eventName, userId: $userId, username: $username, eventEndDateTime: $eventEndDateTime, createdAt: $createdAt, userProfilePhotoUrl: $userProfilePhotoUrl)';
+    return 'WallPhotoDto(id: $id, photoUrl: $photoUrl, clubId: $clubId, clubName: $clubName, eventId: $eventId, eventName: $eventName, userId: $userId, username: $username, eventEndDateTime: $eventEndDateTime, createdAt: $createdAt, userProfilePhotoUrl: $userProfilePhotoUrl, isVerified: $isVerified)';
   }
 
   @override
@@ -303,7 +320,9 @@ class _$_WallPhotoDto extends _WallPhotoDto {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.userProfilePhotoUrl, userProfilePhotoUrl) ||
-                other.userProfilePhotoUrl == userProfilePhotoUrl));
+                other.userProfilePhotoUrl == userProfilePhotoUrl) &&
+            (identical(other.isVerified, isVerified) ||
+                other.isVerified == isVerified));
   }
 
   @JsonKey(ignore: true)
@@ -320,7 +339,8 @@ class _$_WallPhotoDto extends _WallPhotoDto {
       username,
       eventEndDateTime,
       createdAt,
-      userProfilePhotoUrl);
+      userProfilePhotoUrl,
+      isVerified);
 
   @JsonKey(ignore: true)
   @override
@@ -348,7 +368,8 @@ abstract class _WallPhotoDto extends WallPhotoDto {
       required final String username,
       @TimestampJsonConverter() required final DateTime eventEndDateTime,
       @TimestampJsonConverter() required final DateTime createdAt,
-      final String? userProfilePhotoUrl}) = _$_WallPhotoDto;
+      final String? userProfilePhotoUrl,
+      final bool isVerified}) = _$_WallPhotoDto;
   const _WallPhotoDto._() : super._();
 
   factory _WallPhotoDto.fromJson(Map<String, dynamic> json) =
@@ -379,6 +400,8 @@ abstract class _WallPhotoDto extends WallPhotoDto {
   DateTime get createdAt;
   @override
   String? get userProfilePhotoUrl;
+  @override
+  bool get isVerified;
   @override
   @JsonKey(ignore: true)
   _$$_WallPhotoDtoCopyWith<_$_WallPhotoDto> get copyWith =>
