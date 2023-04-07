@@ -1,20 +1,20 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:tickets/tickets.dart';
+import 'package:tonight/domain/event_review/event_review_form_model.dart';
 
 class ReviewEventName extends StatelessWidget {
-  final Ticket ticket;
+  final EventReviewForm eventReviewForm;
 
   const ReviewEventName({
-    required this.ticket,
+    required this.eventReviewForm,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AutoSizeText(
-      ticket.eventName,
+      eventReviewForm.eventName,
       maxLines: 2,
       style: context.titleLarge,
       textAlign: TextAlign.center,
