@@ -15,7 +15,7 @@ _$_ReviewDto _$$_ReviewDtoFromJson(Map<String, dynamic> json) => _$_ReviewDto(
       eventName: json['eventName'] as String,
       dateAdded:
           const TimestampJsonConverter().fromJson(json['dateAdded'] as int),
-      userPictureUrl: json['userPictureUrl'] as String? ?? '',
+      userPictureUrl: json['userPictureUrl'] as String?,
     );
 
 Map<String, dynamic> _$$_ReviewDtoToJson(_$_ReviewDto instance) =>
