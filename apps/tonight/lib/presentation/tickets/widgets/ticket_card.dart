@@ -21,13 +21,10 @@ class TicketCard extends StatelessWidget {
       onTap: () =>
           // TODO: Add case when user has not been on event but give him ability to show photos
           ticket.isExpired && ticket.eventEndDateTime.isBefore(DateTime.now())
-              ? AutoRouter.of(context).push(
-                  ReviewRoute(
-                    ticket: ticket,
-                    blocContext: context,
-                  ),
+              ? context.pushRoute(
+                  ReviewRoute(eventId: ticket.eventId),
                 )
-              : AutoRouter.of(context).push(
+              : context.pushRoute(
                   EventDetailsRoute(eventId: ticket.eventId),
                 ),
       child: TicketWidget(

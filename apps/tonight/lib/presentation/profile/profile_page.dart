@@ -56,26 +56,27 @@ class ProfilePage extends StatelessWidget {
           case CubitStatus.failure:
             return Container();
           case CubitStatus.success:
+            final userProfile = state.userProfile.getOrCrash();
             return Padding(
               padding: const EdgeInsets.all(15),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
                     ProfileUserPicture(
-                      profilePictureUrl: state.user.profilePictureUrl,
-                      username: state.user.username,
+                      profilePictureUrl: userProfile.profilePictureUrl,
+                      username: userProfile.username,
                     ),
                     const SizedBox(height: 30),
-                    UsernameRow(username: state.user.username),
+                    UsernameRow(username: userProfile.username),
                     const SizedBox(height: 20),
                     AutoSizeText(
-                      state.user.email,
+                      userProfile.email,
                       style: context.titleMedium
                           .copyWith(color: context.secondaryColor),
                       maxLines: 1,
                     ),
                     const SizedBox(height: 40),
-                    UserProfileStatsRow(user: state.user),
+                    UserProfileStatsRow(userProfile: userProfile),
                   ],
                 ),
               ),

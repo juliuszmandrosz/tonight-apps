@@ -3,14 +3,14 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 class UserDetails extends Equatable {
-  final String id;
+  final String userId;
   final String username;
   final List<Club> favoriteClubs;
   final int raverCoins;
   final String? profilePictureUrl;
 
   const UserDetails({
-    required this.id,
+    required this.userId,
     required this.username,
     required this.favoriteClubs,
     required this.raverCoins,
@@ -19,7 +19,7 @@ class UserDetails extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
+        userId,
         username,
         profilePictureUrl,
         raverCoins,
@@ -33,7 +33,7 @@ class UserDetails extends Equatable {
     Option<String>? profilePictureUrl,
   }) {
     return UserDetails(
-      id: id,
+      userId: userId,
       username: username ?? this.username,
       favoriteClubs: favoriteClubs ?? this.favoriteClubs,
       raverCoins: raverCoins ?? this.raverCoins,
