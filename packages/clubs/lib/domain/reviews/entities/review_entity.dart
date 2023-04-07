@@ -10,21 +10,20 @@ class Review extends Equatable {
   final DateTime dateAdded;
   final String eventId;
   final String eventName;
-  final String ticketId;
   final String userPictureUrl;
 
   Review({
     String? id,
+    DateTime? dateAdded,
     required this.userOpinion,
     required this.userRate,
     required this.username,
     required this.userId,
     required this.eventId,
-    required this.dateAdded,
     required this.eventName,
-    required this.ticketId,
     this.userPictureUrl = '',
-  }) : id = id ?? const Uuid().v1();
+  })  : id = id ?? const Uuid().v1(),
+        dateAdded = dateAdded ?? DateTime.now();
 
   @override
   List<Object?> get props => [
@@ -36,7 +35,6 @@ class Review extends Equatable {
         dateAdded,
         eventId,
         eventName,
-        ticketId,
         userPictureUrl,
       ];
 }

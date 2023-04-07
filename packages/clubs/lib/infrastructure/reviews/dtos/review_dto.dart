@@ -18,7 +18,6 @@ class ReviewDto with _$ReviewDto {
     required String username,
     required String eventId,
     required String eventName,
-    required String ticketId,
     @TimestampJsonConverter() required DateTime dateAdded,
     @Default('') String userPictureUrl,
   }) = _ReviewDto;
@@ -32,7 +31,6 @@ class ReviewDto with _$ReviewDto {
       dateAdded: review.dateAdded,
       eventId: review.eventId,
       eventName: review.eventName,
-      ticketId: review.ticketId,
       userPictureUrl: review.userPictureUrl,
     );
   }
@@ -55,7 +53,6 @@ class ReviewDto with _$ReviewDto {
       eventId: eventId,
       dateAdded: dateAdded,
       eventName: eventName,
-      ticketId: ticketId,
       userPictureUrl: userPictureUrl,
     );
   }
