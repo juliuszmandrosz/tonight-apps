@@ -14,6 +14,7 @@ class WallPhoto extends Equatable {
   final DateTime eventEndDateTime;
   final DateTime createdAt;
   final String? userProfilePhotoUrl;
+  final bool isVerified;
 
   WallPhoto({
     String? id,
@@ -27,6 +28,7 @@ class WallPhoto extends Equatable {
     required this.username,
     required this.eventEndDateTime,
     this.userProfilePhotoUrl,
+    this.isVerified = false,
   })  : id = id ?? const Uuid().v1(),
         createdAt = createdAt ?? DateTime.now();
 
@@ -43,6 +45,7 @@ class WallPhoto extends Equatable {
         eventEndDateTime,
         createdAt,
         userProfilePhotoUrl,
+        isVerified,
       ];
 
   WallPhoto copyWith({
@@ -55,6 +58,7 @@ class WallPhoto extends Equatable {
     String? username,
     DateTime? eventEndDateTime,
     Option<String>? userProfilePhotoUrl,
+    bool? isVerified,
   }) {
     return WallPhoto(
       id: id,
@@ -73,6 +77,7 @@ class WallPhoto extends Equatable {
               (url) => url,
             )
           : this.userProfilePhotoUrl,
+      isVerified: isVerified ?? this.isVerified,
     );
   }
 }
