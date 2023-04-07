@@ -21,7 +21,8 @@ mixin _$EventReviewState {
   FormzStatus get submittingStatus => throw _privateConstructorUsedError;
   CubitStatus get status => throw _privateConstructorUsedError;
   Option<String> get errorMessage => throw _privateConstructorUsedError;
-  Option<UserAccount> get userProfile => throw _privateConstructorUsedError;
+  Option<EventReviewForm> get eventReviewForm =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventReviewStateCopyWith<EventReviewState> get copyWith =>
@@ -40,7 +41,7 @@ abstract class $EventReviewStateCopyWith<$Res> {
       FormzStatus submittingStatus,
       CubitStatus status,
       Option<String> errorMessage,
-      Option<UserAccount> userProfile});
+      Option<EventReviewForm> eventReviewForm});
 }
 
 /// @nodoc
@@ -61,7 +62,7 @@ class _$EventReviewStateCopyWithImpl<$Res, $Val extends EventReviewState>
     Object? submittingStatus = null,
     Object? status = null,
     Object? errorMessage = null,
-    Object? userProfile = null,
+    Object? eventReviewForm = null,
   }) {
     return _then(_value.copyWith(
       reviewValue: null == reviewValue
@@ -84,10 +85,10 @@ class _$EventReviewStateCopyWithImpl<$Res, $Val extends EventReviewState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      userProfile: null == userProfile
-          ? _value.userProfile
-          : userProfile // ignore: cast_nullable_to_non_nullable
-              as Option<UserAccount>,
+      eventReviewForm: null == eventReviewForm
+          ? _value.eventReviewForm
+          : eventReviewForm // ignore: cast_nullable_to_non_nullable
+              as Option<EventReviewForm>,
     ) as $Val);
   }
 }
@@ -106,7 +107,7 @@ abstract class _$$_EventReviewStateCopyWith<$Res>
       FormzStatus submittingStatus,
       CubitStatus status,
       Option<String> errorMessage,
-      Option<UserAccount> userProfile});
+      Option<EventReviewForm> eventReviewForm});
 }
 
 /// @nodoc
@@ -125,7 +126,7 @@ class __$$_EventReviewStateCopyWithImpl<$Res>
     Object? submittingStatus = null,
     Object? status = null,
     Object? errorMessage = null,
-    Object? userProfile = null,
+    Object? eventReviewForm = null,
   }) {
     return _then(_$_EventReviewState(
       reviewValue: null == reviewValue
@@ -148,10 +149,10 @@ class __$$_EventReviewStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      userProfile: null == userProfile
-          ? _value.userProfile
-          : userProfile // ignore: cast_nullable_to_non_nullable
-              as Option<UserAccount>,
+      eventReviewForm: null == eventReviewForm
+          ? _value.eventReviewForm
+          : eventReviewForm // ignore: cast_nullable_to_non_nullable
+              as Option<EventReviewForm>,
     ));
   }
 }
@@ -165,7 +166,7 @@ class _$_EventReviewState extends _EventReviewState {
       required this.submittingStatus,
       required this.status,
       required this.errorMessage,
-      required this.userProfile})
+      required this.eventReviewForm})
       : super._();
 
   @override
@@ -179,11 +180,11 @@ class _$_EventReviewState extends _EventReviewState {
   @override
   final Option<String> errorMessage;
   @override
-  final Option<UserAccount> userProfile;
+  final Option<EventReviewForm> eventReviewForm;
 
   @override
   String toString() {
-    return 'EventReviewState(reviewValue: $reviewValue, reviewContent: $reviewContent, submittingStatus: $submittingStatus, status: $status, errorMessage: $errorMessage, userProfile: $userProfile)';
+    return 'EventReviewState(reviewValue: $reviewValue, reviewContent: $reviewContent, submittingStatus: $submittingStatus, status: $status, errorMessage: $errorMessage, eventReviewForm: $eventReviewForm)';
   }
 
   @override
@@ -200,13 +201,13 @@ class _$_EventReviewState extends _EventReviewState {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
-            (identical(other.userProfile, userProfile) ||
-                other.userProfile == userProfile));
+            (identical(other.eventReviewForm, eventReviewForm) ||
+                other.eventReviewForm == eventReviewForm));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, reviewValue, reviewContent,
-      submittingStatus, status, errorMessage, userProfile);
+      submittingStatus, status, errorMessage, eventReviewForm);
 
   @JsonKey(ignore: true)
   @override
@@ -217,12 +218,13 @@ class _$_EventReviewState extends _EventReviewState {
 
 abstract class _EventReviewState extends EventReviewState {
   const factory _EventReviewState(
-      {required final double reviewValue,
-      required final ReviewContentInput reviewContent,
-      required final FormzStatus submittingStatus,
-      required final CubitStatus status,
-      required final Option<String> errorMessage,
-      required final Option<UserAccount> userProfile}) = _$_EventReviewState;
+          {required final double reviewValue,
+          required final ReviewContentInput reviewContent,
+          required final FormzStatus submittingStatus,
+          required final CubitStatus status,
+          required final Option<String> errorMessage,
+          required final Option<EventReviewForm> eventReviewForm}) =
+      _$_EventReviewState;
   const _EventReviewState._() : super._();
 
   @override
@@ -236,7 +238,7 @@ abstract class _EventReviewState extends EventReviewState {
   @override
   Option<String> get errorMessage;
   @override
-  Option<UserAccount> get userProfile;
+  Option<EventReviewForm> get eventReviewForm;
   @override
   @JsonKey(ignore: true)
   _$$_EventReviewStateCopyWith<_$_EventReviewState> get copyWith =>
