@@ -30,7 +30,7 @@ mixin _$ReviewDto {
   String get eventName => throw _privateConstructorUsedError;
   @TimestampJsonConverter()
   DateTime get dateAdded => throw _privateConstructorUsedError;
-  String get userPictureUrl => throw _privateConstructorUsedError;
+  String? get userPictureUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +52,7 @@ abstract class $ReviewDtoCopyWith<$Res> {
       String eventId,
       String eventName,
       @TimestampJsonConverter() DateTime dateAdded,
-      String userPictureUrl});
+      String? userPictureUrl});
 }
 
 /// @nodoc
@@ -76,7 +76,7 @@ class _$ReviewDtoCopyWithImpl<$Res, $Val extends ReviewDto>
     Object? eventId = null,
     Object? eventName = null,
     Object? dateAdded = null,
-    Object? userPictureUrl = null,
+    Object? userPictureUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -111,10 +111,10 @@ class _$ReviewDtoCopyWithImpl<$Res, $Val extends ReviewDto>
           ? _value.dateAdded
           : dateAdded // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      userPictureUrl: null == userPictureUrl
+      userPictureUrl: freezed == userPictureUrl
           ? _value.userPictureUrl
           : userPictureUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -135,7 +135,7 @@ abstract class _$$_ReviewDtoCopyWith<$Res> implements $ReviewDtoCopyWith<$Res> {
       String eventId,
       String eventName,
       @TimestampJsonConverter() DateTime dateAdded,
-      String userPictureUrl});
+      String? userPictureUrl});
 }
 
 /// @nodoc
@@ -157,7 +157,7 @@ class __$$_ReviewDtoCopyWithImpl<$Res>
     Object? eventId = null,
     Object? eventName = null,
     Object? dateAdded = null,
-    Object? userPictureUrl = null,
+    Object? userPictureUrl = freezed,
   }) {
     return _then(_$_ReviewDto(
       id: freezed == id
@@ -192,10 +192,10 @@ class __$$_ReviewDtoCopyWithImpl<$Res>
           ? _value.dateAdded
           : dateAdded // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      userPictureUrl: null == userPictureUrl
+      userPictureUrl: freezed == userPictureUrl
           ? _value.userPictureUrl
           : userPictureUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -212,7 +212,7 @@ class _$_ReviewDto extends _ReviewDto {
       required this.eventId,
       required this.eventName,
       @TimestampJsonConverter() required this.dateAdded,
-      this.userPictureUrl = ''})
+      this.userPictureUrl})
       : super._();
 
   factory _$_ReviewDto.fromJson(Map<String, dynamic> json) =>
@@ -237,8 +237,7 @@ class _$_ReviewDto extends _ReviewDto {
   @TimestampJsonConverter()
   final DateTime dateAdded;
   @override
-  @JsonKey()
-  final String userPictureUrl;
+  final String? userPictureUrl;
 
   @override
   String toString() {
@@ -296,7 +295,7 @@ abstract class _ReviewDto extends ReviewDto {
       required final String eventId,
       required final String eventName,
       @TimestampJsonConverter() required final DateTime dateAdded,
-      final String userPictureUrl}) = _$_ReviewDto;
+      final String? userPictureUrl}) = _$_ReviewDto;
   const _ReviewDto._() : super._();
 
   factory _ReviewDto.fromJson(Map<String, dynamic> json) =
@@ -321,7 +320,7 @@ abstract class _ReviewDto extends ReviewDto {
   @TimestampJsonConverter()
   DateTime get dateAdded;
   @override
-  String get userPictureUrl;
+  String? get userPictureUrl;
   @override
   @JsonKey(ignore: true)
   _$$_ReviewDtoCopyWith<_$_ReviewDto> get copyWith =>
