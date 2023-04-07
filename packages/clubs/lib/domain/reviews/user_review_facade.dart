@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'failures/user_review_failure.dart';
 
 abstract class UserReviewFacade {
-  Future<Either<UserReviewFailure, String>> submitReview({
+  Future<Either<UserReviewFailure, Unit>> submitReview({
     required String clubId,
     required Review review,
   });

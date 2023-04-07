@@ -120,20 +120,17 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
   }
 
   @override
-  Future<Either<UserReviewFailure, String>> submitReview({
+  Future<Either<UserReviewFailure, Unit>> submitReview({
     required String clubId,
     required Review review,
   }) async {
     final clubDocRef = _firestore.clubCollection.doc(clubId);
     final reviewRef = clubDocRef.reviewCollection;
     final reviewDto = ReviewDto.fromDomain(review);
-
     try {
       final reviewId = review.id;
-
       await reviewRef.doc(reviewId).set(reviewDto.toJson());
-
-      return right(reviewId);
+      return right(unit);
     } on FirebaseException catch (e) {
       return left(
         await handleFirebaseError<UserReviewFailure>(
