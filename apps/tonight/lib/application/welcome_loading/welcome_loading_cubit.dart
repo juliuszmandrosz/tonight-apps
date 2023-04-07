@@ -112,7 +112,13 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
       _checkAndEmitFailure(event.initialStatus);
       _emitSuccessIfAllLoaded();
       if (event.initialStatus.isSuccess() && !state.status.isSuccess()) {
-        emit(state.copyWith(username: some(event.user.username)));
+        emit(
+          state.copyWith(
+            username: some(
+              event.userProfile.getOrCrash().username,
+            ),
+          ),
+        );
       }
     });
   }
