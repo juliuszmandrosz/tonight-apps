@@ -9,4 +9,6 @@ abstract class UserReviewFailure with _$UserReviewFailure {
   const factory UserReviewFailure.permissionDenied() = _PermissionDenied;
 
   const factory UserReviewFailure.reportExists() = _ReportExists;
+
+  const factory UserReviewFailure.reviewNotFound() = _ReviewNotFound;
 }
