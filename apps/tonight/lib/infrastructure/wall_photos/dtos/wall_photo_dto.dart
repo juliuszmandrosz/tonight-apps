@@ -23,6 +23,7 @@ class WallPhotoDto with _$WallPhotoDto {
     @TimestampJsonConverter() required DateTime eventEndDateTime,
     @TimestampJsonConverter() required DateTime createdAt,
     String? userProfilePhotoUrl,
+    @Default(false) bool isVerified,
   }) = _WallPhotoDto;
 
   factory WallPhotoDto.fromDomain(WallPhoto wallPhoto) {
@@ -38,6 +39,7 @@ class WallPhotoDto with _$WallPhotoDto {
       eventEndDateTime: wallPhoto.eventEndDateTime,
       createdAt: wallPhoto.createdAt,
       userProfilePhotoUrl: wallPhoto.userProfilePhotoUrl,
+      isVerified: wallPhoto.isVerified,
     );
   }
 
@@ -69,6 +71,7 @@ class WallPhotoDto with _$WallPhotoDto {
       eventEndDateTime: eventEndDateTime,
       createdAt: createdAt,
       userProfilePhotoUrl: userProfilePhotoUrl,
+      isVerified: isVerified,
     );
   }
 }
