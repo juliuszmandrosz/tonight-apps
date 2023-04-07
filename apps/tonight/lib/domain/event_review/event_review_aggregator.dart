@@ -1,4 +1,5 @@
 import 'package:account_settings/account_settings.dart';
+import 'package:clubs/domain/reviews/entities/review_entity.dart';
 import 'package:clubs/domain/reviews/user_review_facade.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
@@ -44,7 +45,47 @@ class EventReviewAggregator {
 
     final review = reviewResult.fold((_) => null, (review) => review);
 
-    final result = EventReviewForm(
+    final result = _mapEventReviewFromEntities(
+      user: user,
+      event: event,
+      review: review,
+    );
+
+    return right(result);
+  }
+
+  Future<Either<EventReviewFormFailure, Unit>> submitReview(
+    EventReviewForm eventReviewForm,
+  ) async {
+    final review = _mapEventReviewFormToReview(eventReviewForm);
+    final result = await _reviewFacade.submitReview(
+      clubId: eventReviewForm.clubId,
+      review: review,
+    );
+    return result.fold(
+      (_) => left(const EventReviewFormFailure.unexpected()),
+      (_) => right(unit),
+    );
+  }
+
+  _mapEventReviewFormToReview(EventReviewForm eventReviewForm) {
+    return Review(
+      userOpinion: eventReviewForm.reviewContent,
+      userRate: eventReviewForm.reviewValue,
+      username: eventReviewForm.username,
+      userId: eventReviewForm.userId,
+      eventId: eventReviewForm.eventId,
+      eventName: eventReviewForm.eventName,
+      userPictureUrl: eventReviewForm.userPictureUrl,
+    );
+  }
+
+  _mapEventReviewFromEntities({
+    required UserAccount user,
+    required Event event,
+    required Review? review,
+  }) {
+    return EventReviewForm(
       username: user.username,
       userId: user.id,
       eventName: event.eventName,
@@ -53,7 +94,8 @@ class EventReviewAggregator {
       eventStartDateTime: event.eventStartDateTime,
       reviewContent: review?.userOpinion,
       reviewValue: review?.userRate,
+      eventId: event.id,
+      userPictureUrl: user.profilePictureUrl,
     );
-    return right(result);
   }
 }
