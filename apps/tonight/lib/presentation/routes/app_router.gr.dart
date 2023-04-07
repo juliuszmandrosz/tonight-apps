@@ -16,7 +16,7 @@ import 'package:clubs/clubs.dart' as _i39;
 import 'package:events/events.dart' as _i38;
 import 'package:flutter/material.dart' as _i32;
 import 'package:payments/domain/domain.dart' as _i37;
-import 'package:tickets/domain/ticket_entity.dart' as _i40;
+import 'package:tickets/tickets.dart' as _i40;
 
 import '../../failure/failure_page.dart' as _i18;
 import '../app_settings/app_settings_page.dart' as _i22;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:tonight/application/event_review/new_review/event_review_cubit.dart';
-import 'package:tonight/application/event_review/new_review/form_inputs/review_content_input.dart';
+import 'package:tonight/application/event_review/event_review_cubit.dart';
+import 'package:tonight/application/event_review/form_inputs/review_content_input.dart';
 import 'package:translations/translations.dart';
 
 class ReviewTextInput extends StatelessWidget {
@@ -10,7 +10,7 @@ class ReviewTextInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NewReviewCubit, EventReviewState>(
+    return BlocBuilder<EventReviewCubit, EventReviewState>(
       buildWhen: (previous, current) =>
           previous.reviewContent != current.reviewContent ||
           previous.submittingStatus != current.submittingStatus,
@@ -21,8 +21,9 @@ class ReviewTextInput extends StatelessWidget {
               child: TextField(
                 maxLines: null,
                 keyboardType: TextInputType.multiline,
-                onChanged: (value) =>
-                    context.read<NewReviewCubit>().reviewContentChanged(value),
+                onChanged: (value) => context
+                    .read<EventReviewCubit>()
+                    .reviewContentChanged(value),
                 decoration: InputDecoration(
                   labelText: S().reviewContent,
                   errorText: _getReviewContentInputErrorMessage(state),
