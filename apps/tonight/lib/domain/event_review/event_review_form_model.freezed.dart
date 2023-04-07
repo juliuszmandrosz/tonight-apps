@@ -18,10 +18,12 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventReviewForm {
   String get clubId => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
+  String get eventId => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get eventName => throw _privateConstructorUsedError;
   DateTime get eventStartDateTime => throw _privateConstructorUsedError;
   DateTime get eventEndDateTime => throw _privateConstructorUsedError;
+  String? get userPictureUrl => throw _privateConstructorUsedError;
   dynamic get reviewValue => throw _privateConstructorUsedError;
   dynamic get reviewContent => throw _privateConstructorUsedError;
 
@@ -39,10 +41,12 @@ abstract class $EventReviewFormCopyWith<$Res> {
   $Res call(
       {String clubId,
       String userId,
+      String eventId,
       String username,
       String eventName,
       DateTime eventStartDateTime,
       DateTime eventEndDateTime,
+      String? userPictureUrl,
       dynamic reviewValue,
       dynamic reviewContent});
 }
@@ -62,10 +66,12 @@ class _$EventReviewFormCopyWithImpl<$Res, $Val extends EventReviewForm>
   $Res call({
     Object? clubId = null,
     Object? userId = null,
+    Object? eventId = null,
     Object? username = null,
     Object? eventName = null,
     Object? eventStartDateTime = null,
     Object? eventEndDateTime = null,
+    Object? userPictureUrl = freezed,
     Object? reviewValue = freezed,
     Object? reviewContent = freezed,
   }) {
@@ -77,6 +83,10 @@ class _$EventReviewFormCopyWithImpl<$Res, $Val extends EventReviewForm>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      eventId: null == eventId
+          ? _value.eventId
+          : eventId // ignore: cast_nullable_to_non_nullable
               as String,
       username: null == username
           ? _value.username
@@ -94,6 +104,10 @@ class _$EventReviewFormCopyWithImpl<$Res, $Val extends EventReviewForm>
           ? _value.eventEndDateTime
           : eventEndDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      userPictureUrl: freezed == userPictureUrl
+          ? _value.userPictureUrl
+          : userPictureUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       reviewValue: freezed == reviewValue
           ? _value.reviewValue
           : reviewValue // ignore: cast_nullable_to_non_nullable
@@ -117,10 +131,12 @@ abstract class _$$_EventReviewFormCopyWith<$Res>
   $Res call(
       {String clubId,
       String userId,
+      String eventId,
       String username,
       String eventName,
       DateTime eventStartDateTime,
       DateTime eventEndDateTime,
+      String? userPictureUrl,
       dynamic reviewValue,
       dynamic reviewContent});
 }
@@ -138,10 +154,12 @@ class __$$_EventReviewFormCopyWithImpl<$Res>
   $Res call({
     Object? clubId = null,
     Object? userId = null,
+    Object? eventId = null,
     Object? username = null,
     Object? eventName = null,
     Object? eventStartDateTime = null,
     Object? eventEndDateTime = null,
+    Object? userPictureUrl = freezed,
     Object? reviewValue = freezed,
     Object? reviewContent = freezed,
   }) {
@@ -153,6 +171,10 @@ class __$$_EventReviewFormCopyWithImpl<$Res>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      eventId: null == eventId
+          ? _value.eventId
+          : eventId // ignore: cast_nullable_to_non_nullable
               as String,
       username: null == username
           ? _value.username
@@ -170,6 +192,10 @@ class __$$_EventReviewFormCopyWithImpl<$Res>
           ? _value.eventEndDateTime
           : eventEndDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      userPictureUrl: freezed == userPictureUrl
+          ? _value.userPictureUrl
+          : userPictureUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       reviewValue: freezed == reviewValue ? _value.reviewValue! : reviewValue,
       reviewContent:
           freezed == reviewContent ? _value.reviewContent! : reviewContent,
@@ -183,10 +209,12 @@ class _$_EventReviewForm implements _EventReviewForm {
   const _$_EventReviewForm(
       {required this.clubId,
       required this.userId,
+      required this.eventId,
       required this.username,
       required this.eventName,
       required this.eventStartDateTime,
       required this.eventEndDateTime,
+      this.userPictureUrl,
       this.reviewValue = 0,
       this.reviewContent = ''});
 
@@ -194,6 +222,8 @@ class _$_EventReviewForm implements _EventReviewForm {
   final String clubId;
   @override
   final String userId;
+  @override
+  final String eventId;
   @override
   final String username;
   @override
@@ -203,6 +233,8 @@ class _$_EventReviewForm implements _EventReviewForm {
   @override
   final DateTime eventEndDateTime;
   @override
+  final String? userPictureUrl;
+  @override
   @JsonKey()
   final dynamic reviewValue;
   @override
@@ -211,7 +243,7 @@ class _$_EventReviewForm implements _EventReviewForm {
 
   @override
   String toString() {
-    return 'EventReviewForm(clubId: $clubId, userId: $userId, username: $username, eventName: $eventName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, reviewValue: $reviewValue, reviewContent: $reviewContent)';
+    return 'EventReviewForm(clubId: $clubId, userId: $userId, eventId: $eventId, username: $username, eventName: $eventName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, userPictureUrl: $userPictureUrl, reviewValue: $reviewValue, reviewContent: $reviewContent)';
   }
 
   @override
@@ -221,6 +253,7 @@ class _$_EventReviewForm implements _EventReviewForm {
             other is _$_EventReviewForm &&
             (identical(other.clubId, clubId) || other.clubId == clubId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.eventId, eventId) || other.eventId == eventId) &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.eventName, eventName) ||
@@ -229,6 +262,8 @@ class _$_EventReviewForm implements _EventReviewForm {
                 other.eventStartDateTime == eventStartDateTime) &&
             (identical(other.eventEndDateTime, eventEndDateTime) ||
                 other.eventEndDateTime == eventEndDateTime) &&
+            (identical(other.userPictureUrl, userPictureUrl) ||
+                other.userPictureUrl == userPictureUrl) &&
             const DeepCollectionEquality()
                 .equals(other.reviewValue, reviewValue) &&
             const DeepCollectionEquality()
@@ -240,10 +275,12 @@ class _$_EventReviewForm implements _EventReviewForm {
       runtimeType,
       clubId,
       userId,
+      eventId,
       username,
       eventName,
       eventStartDateTime,
       eventEndDateTime,
+      userPictureUrl,
       const DeepCollectionEquality().hash(reviewValue),
       const DeepCollectionEquality().hash(reviewContent));
 
@@ -258,10 +295,12 @@ abstract class _EventReviewForm implements EventReviewForm {
   const factory _EventReviewForm(
       {required final String clubId,
       required final String userId,
+      required final String eventId,
       required final String username,
       required final String eventName,
       required final DateTime eventStartDateTime,
       required final DateTime eventEndDateTime,
+      final String? userPictureUrl,
       final dynamic reviewValue,
       final dynamic reviewContent}) = _$_EventReviewForm;
 
@@ -270,6 +309,8 @@ abstract class _EventReviewForm implements EventReviewForm {
   @override
   String get userId;
   @override
+  String get eventId;
+  @override
   String get username;
   @override
   String get eventName;
@@ -277,6 +318,8 @@ abstract class _EventReviewForm implements EventReviewForm {
   DateTime get eventStartDateTime;
   @override
   DateTime get eventEndDateTime;
+  @override
+  String? get userPictureUrl;
   @override
   dynamic get reviewValue;
   @override
