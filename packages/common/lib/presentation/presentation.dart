@@ -3,6 +3,7 @@ export 'circle_network_photo.dart';
 export 'dots_loading_indicator.dart';
 export 'drawer_tile.dart';
 export 'failure_page.dart';
+export 'infinite_grid.dart';
 export 'network_photo.dart';
 export 'next_page_error.dart';
 export 'page_transitions/fade_in_transition.dart';
