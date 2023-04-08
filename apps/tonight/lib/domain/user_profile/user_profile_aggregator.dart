@@ -45,20 +45,35 @@ class UserProfileAggregator {
         );
   }
 
+  Future<Either<UserProfileFailure, List<WallPhoto>>>
+      refreshUserPhotos() async {
+    final result = await _wallPhotoFacade.getUserPhotos(
+      pageSize: _userPhotos.length,
+    );
+
+    if (result.isLeft()) {
+      return left(const UserProfileFailure.unexpected());
+    }
+
+    _userPhotos = [...result.getRightOrCrash()];
+
+    return right(_userPhotos);
+  }
+
   Future<Either<UserProfileFailure, List<WallPhoto>>> getNextPageOfUserPhotos({
     WallPhoto? lastPhoto,
     int photosPageSize = 20,
   }) async {
-    final userPhotos = await _wallPhotoFacade.getUserPhotos(
+    final result = await _wallPhotoFacade.getUserPhotos(
       lastPhoto: lastPhoto,
       pageSize: photosPageSize,
     );
 
-    if (userPhotos.isLeft()) {
+    if (result.isLeft()) {
       return left(const UserProfileFailure.unexpected());
     }
 
-    final photos = userPhotos.getRightOrCrash();
+    final photos = result.getRightOrCrash();
 
     _userPhotos = [..._userPhotos, ...photos];
 
