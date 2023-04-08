@@ -62,6 +62,6 @@ class UserProfileAggregator {
 
     _userPhotos = [..._userPhotos, ...photos];
 
-    return right(photos);
+    return right(_userPhotos);
   }
 }
