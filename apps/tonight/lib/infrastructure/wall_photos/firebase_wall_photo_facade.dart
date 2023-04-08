@@ -117,7 +117,7 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
       var query = _firestore.wallPhotos
           .where('userId', isEqualTo: user.id)
           .orderBy('createdAt', descending: true)
-          .limit(20);
+          .limit(pageSize);
       if (lastPhoto != null) {
         final lastDoc = await _firestore.wallPhotos.doc(lastPhoto.id).get();
         query = query.startAfterDocument(lastDoc);
@@ -166,7 +166,10 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
     return response.data as List<dynamic>;
   }
 
-  _getWallPhotoFilters(List<String> favoriteClubIds, String userId) {
+  WallPhotoFilters _getWallPhotoFilters(
+    List<String> favoriteClubIds,
+    String userId,
+  ) {
     return WallPhotoFilters.empty().copyWith(
       showPhotosFromClubsFilter: ShowPhotosFromClubsFilter(
         clubIds: favoriteClubIds,
