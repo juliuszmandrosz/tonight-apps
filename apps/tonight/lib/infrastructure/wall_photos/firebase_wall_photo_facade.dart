@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:account_settings/infrastructure/dtos/user/user_account_dto.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
@@ -7,6 +8,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:logger/logger.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
@@ -42,9 +44,11 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
     required String eventName,
     required DateTime eventEndDateTime,
     required Uint8List photo,
+    required LatLng location,
   }) async {
     try {
-      final user = await _firestore.getCurrentUserDocRef(_auth).get();
+      final userDoc = await _firestore.getCurrentUserDocRef(_auth).get();
+      final user = UserAccountDto.fromFirebase(userDoc);
       final photoUrl = await _uploadPhoto(
         clubId: clubId,
         photo: photo,
@@ -55,9 +59,11 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
         clubName: clubName,
         eventId: eventId,
         eventName: eventName,
-        userId: user.id,
-        username: user['username'],
+        userId: user.id!,
         eventEndDateTime: eventEndDateTime,
+        location: location,
+        username: user.username,
+        userProfilePhotoUrl: user.profilePictureUrl,
       );
       final wallPhotoDto = WallPhotoDto.fromDomain(wallPhoto);
       await _firestore.wallPhotos.doc(wallPhoto.id).set(wallPhotoDto.toJson());
