@@ -41,6 +41,9 @@ class _NavigatorPageState extends State<NavigatorPage> {
               unauthenticated: (_) {
                 context.replaceRoute(const SignInRoute());
               },
+              deleteAccountFailure: (_) => {},
+              deleteAccountInProgress: (_) => {},
+              deleteAccountSuccess: (_) => {},
             );
           },
         ),

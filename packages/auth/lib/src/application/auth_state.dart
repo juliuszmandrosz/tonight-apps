@@ -7,4 +7,10 @@ class AuthState with _$AuthState {
   const factory AuthState.authenticated() = _Authenticated;
 
   const factory AuthState.unauthenticated() = _Unauthenticated;
+
+  const factory AuthState.deleteAccountInProgress() = _DeleteAccountInProgress;
+
+  const factory AuthState.deleteAccountSuccess() = _DeleteAccountSuccess;
+
+  const factory AuthState.deleteAccountFailure() = _DeleteAccountFailure;
 }

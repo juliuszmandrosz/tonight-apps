@@ -1,19 +1,16 @@
 import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:common/common.dart';
+import 'package:dartz/dartz.dart';
 import 'package:events/domain/domain.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'event_overview_bloc.freezed.dart';
-
 part 'event_overview_event.dart';
-
 part 'event_overview_state.dart';
 
-const pageSize = 20;
-const throttleDuration = Duration(milliseconds: 500);
+const _pageSize = 20;
 
 class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
   final CommonEventFacade _eventFacade;
@@ -21,7 +18,7 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
   EventOverviewBloc(this._eventFacade) : super(EventOverviewState.initial()) {
     on<_NextEventsPageFetched>(
       _onNextEventsPageFetched,
-      transformer: throttleDroppable(throttleDuration),
+      transformer: throttleDroppable(),
     );
 
     on<_EventsFetched>((event, emit) => _onEventsFetched(event, emit));
@@ -44,7 +41,7 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
     final failureOrSuccess = await _eventFacade.getEvents(
       event.filters,
       event.sortModel,
-      pageSize: pageSize,
+      pageSize: _pageSize,
     );
 
     failureOrSuccess.fold(
@@ -58,7 +55,7 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
         state.copyWith(
           status: CubitStatus.success,
           events: events,
-          hasReachedMax: events.length != pageSize,
+          hasReachedMax: events.length != _pageSize,
           eventFilters: event.filters,
           sortModel: event.sortModel,
         ),
@@ -73,7 +70,7 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
     final failureOrSuccess = await _eventFacade.getEvents(
       state.eventFilters,
       state.sortModel,
-      pageSize: pageSize,
+      pageSize: _pageSize,
       offset: state.events.length,
     );
 
@@ -88,7 +85,7 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
         state.copyWith(
           status: CubitStatus.success,
           events: List.of(state.events)..addAll(events),
-          hasReachedMax: events.length != pageSize,
+          hasReachedMax: events.length != _pageSize,
         ),
       ),
     );

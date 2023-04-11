@@ -1,18 +1,16 @@
 import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:clubs/clubs.dart';
 import 'package:common/common.dart';
+import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'clubs_overview_bloc.freezed.dart';
 part 'clubs_overview_event.dart';
 part 'clubs_overview_state.dart';
 
-const pageSize = 20;
-
-const throttleDuration = Duration(milliseconds: 500);
+const _pageSize = 20;
 
 class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
   final UserClubFacade _clubFacade;
@@ -20,7 +18,7 @@ class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
   ClubsOverviewBloc(this._clubFacade) : super(ClubsOverviewState.initial()) {
     on<_NextPageClubsFetched>(
       _onNextPageClubsFetched,
-      transformer: throttleDroppable(throttleDuration),
+      transformer: throttleDroppable(),
     );
 
     on<_ClubsFetched>(_onClubsFetched);
@@ -31,7 +29,7 @@ class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
     emit(state.copyWith(status: CubitStatus.loading));
 
     final failureOrSuccess =
-        await _clubFacade.getClubs(event.clubFilter, pageSize: pageSize);
+        await _clubFacade.getClubs(event.clubFilter, pageSize: _pageSize);
 
     failureOrSuccess.fold(
       (failure) => emit(
@@ -44,7 +42,7 @@ class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
         state.copyWith(
           status: CubitStatus.success,
           clubs: clubs,
-          hasReachedMax: clubs.length != pageSize,
+          hasReachedMax: clubs.length != _pageSize,
           clubFilter: event.clubFilter,
         ),
       ),
@@ -56,7 +54,7 @@ class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
     if (state.hasReachedMax) return;
 
     final failureOrSuccess = await _clubFacade.getClubs(state.clubFilter,
-        offset: state.clubs.length, pageSize: pageSize);
+        offset: state.clubs.length, pageSize: _pageSize);
 
     failureOrSuccess.fold(
       (failure) => emit(
@@ -69,7 +67,7 @@ class ClubsOverviewBloc extends Bloc<ClubsOverviewEvent, ClubsOverviewState> {
         state.copyWith(
           status: CubitStatus.success,
           clubs: List.of(state.clubs)..addAll(clubs),
-          hasReachedMax: clubs.length != pageSize,
+          hasReachedMax: clubs.length != _pageSize,
         ),
       ),
     );

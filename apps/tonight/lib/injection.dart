@@ -47,6 +47,7 @@ import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dar
 import 'package:tonight/application/invoice_data/invoice_data_cubit.dart';
 import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:tonight/application/payment_method/payment_method_cubit.dart';
+import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
 import 'package:tonight/application/terms_of_service/terms_of_service_cubit.dart';
 import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
@@ -67,7 +68,6 @@ import 'package:tonight/infrastructure/wall_photos/firebase_wall_photo_facade.da
 
 import 'application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
 import 'application/clubs/club_favorite/club_favorite_cubit.dart';
-import 'application/profile/profile_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -224,9 +224,8 @@ void _registerCubits() {
 
   //Profile
   getIt.registerFactory(
-    () => ProfileCubit(
-      commonAuthFacade: getIt(),
-      userProfileAggregator: getIt(),
+    () => ProfileBloc(
+      getIt(),
     ),
   );
 

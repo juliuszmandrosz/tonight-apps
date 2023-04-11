@@ -35,110 +35,103 @@ class TicketCheckoutPage extends StatefulWidget {
 class _TicketCheckoutPageState extends State<TicketCheckoutPage> {
   @override
   Widget build(BuildContext context) {
-    return LoaderOverlay(
-      overlayWidget: const TicketLogoAnimation(),
-      overlayColor: context.shadowColor,
-      useDefaultLoading: false,
-      overlayOpacity: .7,
-      child: BlocProvider(
-        create: (_) => getIt<TicketCheckoutCubit>(
-          param1: context.read<TicketListCubit>(),
-        )..initData(
-            widget.event,
-          ),
-        child: BlocConsumer<TicketCheckoutCubit, TicketCheckoutState>(
-          buildWhen: (previous, current) =>
-              previous.initialStatus != current.initialStatus ||
-              previous.eventTickets != current.eventTickets ||
-              previous.sendInvoice != current.sendInvoice,
-          listenWhen: (previous, current) =>
-              previous.initialStatus != current.initialStatus ||
-              previous.proceedingToPaymentStatus !=
-                  current.proceedingToPaymentStatus ||
-              previous.snackbarMessage != current.snackbarMessage ||
-              previous.paymentFailure != current.paymentFailure,
-          listener: (context, state) {
-            if (state.initialStatus.isFailure()) {
-              context.pushRoute(
-                FailureRoute(
-                  retryCallback: () => context
-                      .read<TicketCheckoutCubit>()
-                      .initData(widget.event),
-                ),
-              );
-            }
-
-            if (state.proceedingToPaymentStatus.isSuccess() &&
-                state.purchasedTicket.isSome()) {
-              context.replaceRoute(
-                TicketPaymentConfirmRoute(
-                  ticket: state.purchasedTicket.getOrCrash(),
-                ),
-              );
-            }
-
-            state.proceedingToPaymentStatus.isLoading()
-                ? context.loaderOverlay.show()
-                : context.loaderOverlay.hide();
-
-            state.snackbarMessage.fold(
-              () {},
-              (message) => context.showSnackbarMessage(message),
-            );
-
-            if (state.paymentFailure ==
-                dartz.some(
-                    const UserPaymentFailure.paymentHasAlreadyBeenMade())) {
-              context.router.popUntil(
-                (route) => route.settings.name == EventDetailsRoute.name,
-              );
-            }
-          },
-          builder: (context, state) {
-            if (state.initialStatus.isInitial() ||
-                state.initialStatus.isFailure()) {
-              return Container();
-            }
-            return state.initialStatus.isLoading()
-                ? const TicketLogoAnimation()
-                : Scaffold(
-                    floatingActionButtonLocation:
-                        FloatingActionButtonLocation.centerFloat,
-                    floatingActionButton: const TicketCheckoutPaySection(),
-                    appBar: TonightAppBar(title: S().checkout),
-                    body: Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: ListView(
-                        children: [
-                          const TicketCheckoutHeader(),
-                          const SizedBox(height: 20),
-                          const TicketCheckoutTicketCard(),
-                          const SizedBox(height: 30),
-                          if (_checkIfVipIsNotEnabled(state))
-                            const VipNotEnabledInfo(),
-                          if (_checkIfVipSwitchIsVisible(state))
-                            const TicketCheckoutIsVipSwitch(),
-                          const Divider(),
-                          const SizedBox(height: 10),
-                          const TicketCheckoutPaymentMethod(),
-                          const SizedBox(height: 20),
-                          const TicketCheckoutSummary(),
-                          const SizedBox(height: 10),
-                          const Divider(),
-                          const SizedBox(height: 10),
-                          if (!state.eventTickets.getOrCrash().isSoldOut)
-                            const TicketCheckoutPromotionCode(),
-                          const SizedBox(height: 20),
-                          const TicketCheckoutInvoiceCheckbox(),
-                          if (state.sendInvoice)
-                            const TicketCheckoutInvoiceData(),
-                          const SizedBox(height: 80),
-                        ],
-                      ),
-                    ),
-                  );
-          },
+    return BlocProvider(
+      create: (_) => getIt<TicketCheckoutCubit>(
+        param1: context.read<TicketListCubit>(),
+      )..initData(
+          widget.event,
         ),
+      child: BlocConsumer<TicketCheckoutCubit, TicketCheckoutState>(
+        buildWhen: (previous, current) =>
+            previous.initialStatus != current.initialStatus ||
+            previous.eventTickets != current.eventTickets ||
+            previous.sendInvoice != current.sendInvoice,
+        listenWhen: (previous, current) =>
+            previous.initialStatus != current.initialStatus ||
+            previous.proceedingToPaymentStatus !=
+                current.proceedingToPaymentStatus ||
+            previous.snackbarMessage != current.snackbarMessage ||
+            previous.paymentFailure != current.paymentFailure,
+        listener: (context, state) {
+          if (state.initialStatus.isFailure()) {
+            context.pushRoute(
+              FailureRoute(
+                retryCallback: () =>
+                    context.read<TicketCheckoutCubit>().initData(widget.event),
+              ),
+            );
+          }
+
+          if (state.proceedingToPaymentStatus.isSuccess() &&
+              state.purchasedTicket.isSome()) {
+            context.replaceRoute(
+              TicketPaymentConfirmRoute(
+                ticket: state.purchasedTicket.getOrCrash(),
+              ),
+            );
+          }
+
+          state.proceedingToPaymentStatus.isLoading()
+              ? context.loaderOverlay.show()
+              : context.loaderOverlay.hide();
+
+          state.snackbarMessage.fold(
+            () {},
+            (message) => context.showSnackbarMessage(message),
+          );
+
+          if (state.paymentFailure ==
+              dartz
+                  .some(const UserPaymentFailure.paymentHasAlreadyBeenMade())) {
+            context.router.popUntil(
+              (route) => route.settings.name == EventDetailsRoute.name,
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state.initialStatus.isInitial() ||
+              state.initialStatus.isFailure()) {
+            return Container();
+          }
+          return state.initialStatus.isLoading()
+              ? const TicketLogoAnimation()
+              : Scaffold(
+                  floatingActionButtonLocation:
+                      FloatingActionButtonLocation.centerFloat,
+                  floatingActionButton: const TicketCheckoutPaySection(),
+                  appBar: TonightAppBar(title: S().checkout),
+                  body: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: ListView(
+                      children: [
+                        const TicketCheckoutHeader(),
+                        const SizedBox(height: 20),
+                        const TicketCheckoutTicketCard(),
+                        const SizedBox(height: 30),
+                        if (_checkIfVipIsNotEnabled(state))
+                          const VipNotEnabledInfo(),
+                        if (_checkIfVipSwitchIsVisible(state))
+                          const TicketCheckoutIsVipSwitch(),
+                        const Divider(),
+                        const SizedBox(height: 10),
+                        const TicketCheckoutPaymentMethod(),
+                        const SizedBox(height: 20),
+                        const TicketCheckoutSummary(),
+                        const SizedBox(height: 10),
+                        const Divider(),
+                        const SizedBox(height: 10),
+                        if (!state.eventTickets.getOrCrash().isSoldOut)
+                          const TicketCheckoutPromotionCode(),
+                        const SizedBox(height: 20),
+                        const TicketCheckoutInvoiceCheckbox(),
+                        if (state.sendInvoice)
+                          const TicketCheckoutInvoiceData(),
+                        const SizedBox(height: 80),
+                      ],
+                    ),
+                  ),
+                );
+        },
       ),
     );
   }

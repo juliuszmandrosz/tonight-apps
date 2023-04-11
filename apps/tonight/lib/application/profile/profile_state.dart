@@ -1,4 +1,4 @@
-part of 'profile_cubit.dart';
+part of 'profile_bloc.dart';
 
 @freezed
 class ProfileState with _$ProfileState {
@@ -8,7 +8,7 @@ class ProfileState with _$ProfileState {
     required Option<UserProfile> userProfile,
     required CubitStatus initialStatus,
     required CubitStatus nextPagePhotosStatus,
-    required CubitStatus deletingAccountStatus,
+    required CubitStatus refreshPhotosStatus,
     required Option<String> snackbarMessage,
     required bool hasPhotosReachedMax,
   }) = _ProfileState;
@@ -17,7 +17,7 @@ class ProfileState with _$ProfileState {
         userProfile: none(),
         initialStatus: CubitStatus.initial,
         nextPagePhotosStatus: CubitStatus.initial,
-        deletingAccountStatus: CubitStatus.initial,
+        refreshPhotosStatus: CubitStatus.initial,
         snackbarMessage: none(),
         hasPhotosReachedMax: false,
       );

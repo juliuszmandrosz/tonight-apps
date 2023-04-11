@@ -45,10 +45,11 @@ class UserProfileAggregator {
         );
   }
 
-  Future<Either<UserProfileFailure, List<WallPhoto>>>
-      refreshUserPhotos() async {
+  Future<Either<UserProfileFailure, List<WallPhoto>>> refreshUserPhotos({
+    int pageSize = 20,
+  }) async {
     final result = await _wallPhotoFacade.getUserPhotos(
-      pageSize: _userPhotos.length,
+      pageSize: pageSize,
     );
 
     if (result.isLeft()) {
