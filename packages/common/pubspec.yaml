@@ -135,6 +135,9 @@ dependencies:
   # Image picker
   file_picker: ^5.2.6
 
+  # Google maps SDK
+  google_maps_flutter: ^2.2.5
+
   # Inherited packages
   intl:
 
