@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/common.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 
 part 'wall_photo_dto.freezed.dart';
@@ -24,6 +25,7 @@ class WallPhotoDto with _$WallPhotoDto {
     @TimestampJsonConverter() required DateTime createdAt,
     String? userProfilePhotoUrl,
     @Default(false) bool isVerified,
+    @LatLngConverter() required LatLng location,
   }) = _WallPhotoDto;
 
   factory WallPhotoDto.fromDomain(WallPhoto wallPhoto) {
@@ -40,6 +42,7 @@ class WallPhotoDto with _$WallPhotoDto {
       createdAt: wallPhoto.createdAt,
       userProfilePhotoUrl: wallPhoto.userProfilePhotoUrl,
       isVerified: wallPhoto.isVerified,
+      location: wallPhoto.location,
     );
   }
 
@@ -72,6 +75,7 @@ class WallPhotoDto with _$WallPhotoDto {
       createdAt: createdAt,
       userProfilePhotoUrl: userProfilePhotoUrl,
       isVerified: isVerified,
+      location: location,
     );
   }
 }
