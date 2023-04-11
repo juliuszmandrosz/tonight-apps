@@ -1,7 +1,7 @@
+import 'package:auth/auth.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:auth/auth.dart';
 import 'package:tonight_scanner/presentation/routes/app_router.dart';
 
 class SplashPage extends StatelessWidget {
@@ -15,6 +15,9 @@ class SplashPage extends StatelessWidget {
           initial: (_) {},
           authenticated: (_) => context.replaceRoute(const NavigatorRoute()),
           unauthenticated: (_) => context.replaceRoute(const SignInRoute()),
+          deleteAccountFailure: (_) => {},
+          deleteAccountInProgress: (_) => {},
+          deleteAccountSuccess: (_) => {},
         );
       },
       child: Container(),

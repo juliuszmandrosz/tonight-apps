@@ -10,17 +10,17 @@ part 'club_photos_bloc.freezed.dart';
 part 'club_photos_event.dart';
 part 'club_photos_state.dart';
 
-const pageSize = 10;
-
-const throttleDuration = Duration(milliseconds: 500);
+const _pageSize = 10;
 
 class ClubPhotosBloc extends Bloc<ClubPhotosEvent, ClubPhotosState> {
   final UserClubFacade _clubFacade;
 
   ClubPhotosBloc(this._clubFacade) : super(ClubPhotosState.initial()) {
     on<_ClubPhotosFetched>(getClubPhotosUrls);
-    on<_ClubPhotosNextPageFetched>(getNextPageClubPhotosUrls,
-        transformer: throttleDroppable(throttleDuration));
+    on<_ClubPhotosNextPageFetched>(
+      getNextPageClubPhotosUrls,
+      transformer: throttleDroppable(),
+    );
   }
 
   Future<void> getClubPhotosUrls(
@@ -50,7 +50,7 @@ class ClubPhotosBloc extends Bloc<ClubPhotosEvent, ClubPhotosState> {
     final failureOrSuccess = await _clubFacade.getClubPhotosUrlsAsUser(
       clubId: event.clubId,
       nextPageToken: event.nextPageToken,
-      pageSize: pageSize,
+      pageSize: _pageSize,
     );
 
     failureOrSuccess.fold(

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'app_user_entity.dart';
 
@@ -26,33 +26,37 @@ mixin _$AppUser {
 /// @nodoc
 abstract class $AppUserCopyWith<$Res> {
   factory $AppUserCopyWith(AppUser value, $Res Function(AppUser) then) =
-      _$AppUserCopyWithImpl<$Res>;
+      _$AppUserCopyWithImpl<$Res, AppUser>;
+  @useResult
   $Res call({String id, String providerId});
 }
 
 /// @nodoc
-class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
+class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
+    implements $AppUserCopyWith<$Res> {
   _$AppUserCopyWithImpl(this._value, this._then);
 
-  final AppUser _value;
   // ignore: unused_field
-  final $Res Function(AppUser) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? providerId = freezed,
+    Object? id = null,
+    Object? providerId = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      providerId: providerId == freezed
+      providerId: null == providerId
           ? _value.providerId
           : providerId // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -62,29 +66,29 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
           _$_AppUser value, $Res Function(_$_AppUser) then) =
       __$$_AppUserCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String id, String providerId});
 }
 
 /// @nodoc
-class __$$_AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
+class __$$_AppUserCopyWithImpl<$Res>
+    extends _$AppUserCopyWithImpl<$Res, _$_AppUser>
     implements _$$_AppUserCopyWith<$Res> {
   __$$_AppUserCopyWithImpl(_$_AppUser _value, $Res Function(_$_AppUser) _then)
-      : super(_value, (v) => _then(v as _$_AppUser));
+      : super(_value, _then);
 
-  @override
-  _$_AppUser get _value => super._value as _$_AppUser;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? providerId = freezed,
+    Object? id = null,
+    Object? providerId = null,
   }) {
     return _then(_$_AppUser(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      providerId: providerId == freezed
+      providerId: null == providerId
           ? _value.providerId
           : providerId // ignore: cast_nullable_to_non_nullable
               as String,
@@ -112,19 +116,17 @@ class _$_AppUser implements _AppUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppUser &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.providerId, providerId));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.providerId, providerId) ||
+                other.providerId == providerId));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(providerId));
+  int get hashCode => Object.hash(runtimeType, id, providerId);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>
       __$$_AppUserCopyWithImpl<_$_AppUser>(this, _$identity);
 }

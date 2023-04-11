@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'auth_failure.dart';
 
@@ -39,23 +39,23 @@ mixin _$AuthFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -105,23 +105,23 @@ mixin _$AuthFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -152,16 +152,18 @@ mixin _$AuthFailure {
 abstract class $AuthFailureCopyWith<$Res> {
   factory $AuthFailureCopyWith(
           AuthFailure value, $Res Function(AuthFailure) then) =
-      _$AuthFailureCopyWithImpl<$Res>;
+      _$AuthFailureCopyWithImpl<$Res, AuthFailure>;
 }
 
 /// @nodoc
-class _$AuthFailureCopyWithImpl<$Res> implements $AuthFailureCopyWith<$Res> {
+class _$AuthFailureCopyWithImpl<$Res, $Val extends AuthFailure>
+    implements $AuthFailureCopyWith<$Res> {
   _$AuthFailureCopyWithImpl(this._value, this._then);
 
-  final AuthFailure _value;
   // ignore: unused_field
-  final $Res Function(AuthFailure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -172,14 +174,12 @@ abstract class _$$_UnexpectedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+class __$$_UnexpectedCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_Unexpected>
     implements _$$_UnexpectedCopyWith<$Res> {
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
-      : super(_value, (v) => _then(v as _$_Unexpected));
-
-  @override
-  _$_Unexpected get _value => super._value as _$_Unexpected;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -228,23 +228,23 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return unexpected?.call();
   }
@@ -306,23 +306,23 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return unexpected?.call(this);
   }
@@ -369,14 +369,11 @@ abstract class _$$_OperationNotAllowedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_OperationNotAllowedCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_OperationNotAllowed>
     implements _$$_OperationNotAllowedCopyWith<$Res> {
   __$$_OperationNotAllowedCopyWithImpl(_$_OperationNotAllowed _value,
       $Res Function(_$_OperationNotAllowed) _then)
-      : super(_value, (v) => _then(v as _$_OperationNotAllowed));
-
-  @override
-  _$_OperationNotAllowed get _value => super._value as _$_OperationNotAllowed;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -425,23 +422,23 @@ class _$_OperationNotAllowed implements _OperationNotAllowed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return operationNotAllowed?.call();
   }
@@ -503,23 +500,23 @@ class _$_OperationNotAllowed implements _OperationNotAllowed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return operationNotAllowed?.call(this);
   }
@@ -566,14 +563,11 @@ abstract class _$$_AccountExistsCopyWith<$Res> {
 
 /// @nodoc
 class __$$_AccountExistsCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_AccountExists>
     implements _$$_AccountExistsCopyWith<$Res> {
   __$$_AccountExistsCopyWithImpl(
       _$_AccountExists _value, $Res Function(_$_AccountExists) _then)
-      : super(_value, (v) => _then(v as _$_AccountExists));
-
-  @override
-  _$_AccountExists get _value => super._value as _$_AccountExists;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -622,23 +616,23 @@ class _$_AccountExists implements _AccountExists {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return accountExists?.call();
   }
@@ -700,23 +694,23 @@ class _$_AccountExists implements _AccountExists {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return accountExists?.call(this);
   }
@@ -763,14 +757,11 @@ abstract class _$$_InvalidCredentialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InvalidCredentialCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_InvalidCredential>
     implements _$$_InvalidCredentialCopyWith<$Res> {
   __$$_InvalidCredentialCopyWithImpl(
       _$_InvalidCredential _value, $Res Function(_$_InvalidCredential) _then)
-      : super(_value, (v) => _then(v as _$_InvalidCredential));
-
-  @override
-  _$_InvalidCredential get _value => super._value as _$_InvalidCredential;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -819,23 +810,23 @@ class _$_InvalidCredential implements _InvalidCredential {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return invalidCredential?.call();
   }
@@ -897,23 +888,23 @@ class _$_InvalidCredential implements _InvalidCredential {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return invalidCredential?.call(this);
   }
@@ -960,14 +951,11 @@ abstract class _$$_InvalidEmailCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InvalidEmailCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_InvalidEmail>
     implements _$$_InvalidEmailCopyWith<$Res> {
   __$$_InvalidEmailCopyWithImpl(
       _$_InvalidEmail _value, $Res Function(_$_InvalidEmail) _then)
-      : super(_value, (v) => _then(v as _$_InvalidEmail));
-
-  @override
-  _$_InvalidEmail get _value => super._value as _$_InvalidEmail;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1016,23 +1004,23 @@ class _$_InvalidEmail implements _InvalidEmail {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return invalidEmail?.call();
   }
@@ -1094,23 +1082,23 @@ class _$_InvalidEmail implements _InvalidEmail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return invalidEmail?.call(this);
   }
@@ -1157,14 +1145,11 @@ abstract class _$$_UserDisabledCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UserDisabledCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_UserDisabled>
     implements _$$_UserDisabledCopyWith<$Res> {
   __$$_UserDisabledCopyWithImpl(
       _$_UserDisabled _value, $Res Function(_$_UserDisabled) _then)
-      : super(_value, (v) => _then(v as _$_UserDisabled));
-
-  @override
-  _$_UserDisabled get _value => super._value as _$_UserDisabled;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1213,23 +1198,23 @@ class _$_UserDisabled implements _UserDisabled {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return userDisabled?.call();
   }
@@ -1291,23 +1276,23 @@ class _$_UserDisabled implements _UserDisabled {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return userDisabled?.call(this);
   }
@@ -1353,14 +1338,12 @@ abstract class _$$_EmailInUseCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_EmailInUseCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+class __$$_EmailInUseCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_EmailInUse>
     implements _$$_EmailInUseCopyWith<$Res> {
   __$$_EmailInUseCopyWithImpl(
       _$_EmailInUse _value, $Res Function(_$_EmailInUse) _then)
-      : super(_value, (v) => _then(v as _$_EmailInUse));
-
-  @override
-  _$_EmailInUse get _value => super._value as _$_EmailInUse;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1409,23 +1392,23 @@ class _$_EmailInUse implements _EmailInUse {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return emailInUse?.call();
   }
@@ -1487,23 +1470,23 @@ class _$_EmailInUse implements _EmailInUse {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return emailInUse?.call(this);
   }
@@ -1550,14 +1533,11 @@ abstract class _$$_WeakPasswordCopyWith<$Res> {
 
 /// @nodoc
 class __$$_WeakPasswordCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_WeakPassword>
     implements _$$_WeakPasswordCopyWith<$Res> {
   __$$_WeakPasswordCopyWithImpl(
       _$_WeakPassword _value, $Res Function(_$_WeakPassword) _then)
-      : super(_value, (v) => _then(v as _$_WeakPassword));
-
-  @override
-  _$_WeakPassword get _value => super._value as _$_WeakPassword;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1606,23 +1586,23 @@ class _$_WeakPassword implements _WeakPassword {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return weakPassword?.call();
   }
@@ -1684,23 +1664,23 @@ class _$_WeakPassword implements _WeakPassword {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return weakPassword?.call(this);
   }
@@ -1747,14 +1727,11 @@ abstract class _$$_UserNotFoundCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UserNotFoundCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_UserNotFound>
     implements _$$_UserNotFoundCopyWith<$Res> {
   __$$_UserNotFoundCopyWithImpl(
       _$_UserNotFound _value, $Res Function(_$_UserNotFound) _then)
-      : super(_value, (v) => _then(v as _$_UserNotFound));
-
-  @override
-  _$_UserNotFound get _value => super._value as _$_UserNotFound;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1803,23 +1780,23 @@ class _$_UserNotFound implements _UserNotFound {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return userNotFound?.call();
   }
@@ -1881,23 +1858,23 @@ class _$_UserNotFound implements _UserNotFound {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return userNotFound?.call(this);
   }
@@ -1944,14 +1921,11 @@ abstract class _$$_WrongPasswordCopyWith<$Res> {
 
 /// @nodoc
 class __$$_WrongPasswordCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_WrongPassword>
     implements _$$_WrongPasswordCopyWith<$Res> {
   __$$_WrongPasswordCopyWithImpl(
       _$_WrongPassword _value, $Res Function(_$_WrongPassword) _then)
-      : super(_value, (v) => _then(v as _$_WrongPassword));
-
-  @override
-  _$_WrongPassword get _value => super._value as _$_WrongPassword;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -2000,23 +1974,23 @@ class _$_WrongPassword implements _WrongPassword {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return wrongPassword?.call();
   }
@@ -2078,23 +2052,23 @@ class _$_WrongPassword implements _WrongPassword {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return wrongPassword?.call(this);
   }
@@ -2141,15 +2115,11 @@ abstract class _$$_InvalidVerificationCodeCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InvalidVerificationCodeCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_InvalidVerificationCode>
     implements _$$_InvalidVerificationCodeCopyWith<$Res> {
   __$$_InvalidVerificationCodeCopyWithImpl(_$_InvalidVerificationCode _value,
       $Res Function(_$_InvalidVerificationCode) _then)
-      : super(_value, (v) => _then(v as _$_InvalidVerificationCode));
-
-  @override
-  _$_InvalidVerificationCode get _value =>
-      super._value as _$_InvalidVerificationCode;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -2199,23 +2169,23 @@ class _$_InvalidVerificationCode implements _InvalidVerificationCode {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return invalidVerificationCode?.call();
   }
@@ -2277,23 +2247,23 @@ class _$_InvalidVerificationCode implements _InvalidVerificationCode {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return invalidVerificationCode?.call(this);
   }
@@ -2340,15 +2310,11 @@ abstract class _$$_InvalidVerificationIdCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InvalidVerificationIdCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_InvalidVerificationId>
     implements _$$_InvalidVerificationIdCopyWith<$Res> {
   __$$_InvalidVerificationIdCopyWithImpl(_$_InvalidVerificationId _value,
       $Res Function(_$_InvalidVerificationId) _then)
-      : super(_value, (v) => _then(v as _$_InvalidVerificationId));
-
-  @override
-  _$_InvalidVerificationId get _value =>
-      super._value as _$_InvalidVerificationId;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -2397,23 +2363,23 @@ class _$_InvalidVerificationId implements _InvalidVerificationId {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return invalidVerificationId?.call();
   }
@@ -2475,23 +2441,23 @@ class _$_InvalidVerificationId implements _InvalidVerificationId {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return invalidVerificationId?.call(this);
   }
@@ -2538,14 +2504,11 @@ abstract class _$$_UsernameExistsCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UsernameExistsCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_UsernameExists>
     implements _$$_UsernameExistsCopyWith<$Res> {
   __$$_UsernameExistsCopyWithImpl(
       _$_UsernameExists _value, $Res Function(_$_UsernameExists) _then)
-      : super(_value, (v) => _then(v as _$_UsernameExists));
-
-  @override
-  _$_UsernameExists get _value => super._value as _$_UsernameExists;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -2594,23 +2557,23 @@ class _$_UsernameExists implements _UsernameExists {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return usernameExists?.call();
   }
@@ -2672,23 +2635,23 @@ class _$_UsernameExists implements _UsernameExists {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return usernameExists?.call(this);
   }
@@ -2735,14 +2698,11 @@ abstract class _$$_CanceledByUserCopyWith<$Res> {
 
 /// @nodoc
 class __$$_CanceledByUserCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_CanceledByUser>
     implements _$$_CanceledByUserCopyWith<$Res> {
   __$$_CanceledByUserCopyWithImpl(
       _$_CanceledByUser _value, $Res Function(_$_CanceledByUser) _then)
-      : super(_value, (v) => _then(v as _$_CanceledByUser));
-
-  @override
-  _$_CanceledByUser get _value => super._value as _$_CanceledByUser;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -2791,23 +2751,23 @@ class _$_CanceledByUser implements _CanceledByUser {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return canceledByUser?.call();
   }
@@ -2869,23 +2829,23 @@ class _$_CanceledByUser implements _CanceledByUser {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return canceledByUser?.call(this);
   }
@@ -2932,14 +2892,11 @@ abstract class _$$_InvalidAccessCodeCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InvalidAccessCodeCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_InvalidAccessCode>
     implements _$$_InvalidAccessCodeCopyWith<$Res> {
   __$$_InvalidAccessCodeCopyWithImpl(
       _$_InvalidAccessCode _value, $Res Function(_$_InvalidAccessCode) _then)
-      : super(_value, (v) => _then(v as _$_InvalidAccessCode));
-
-  @override
-  _$_InvalidAccessCode get _value => super._value as _$_InvalidAccessCode;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -2988,23 +2945,23 @@ class _$_InvalidAccessCode implements _InvalidAccessCode {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return invalidAccessCode?.call();
   }
@@ -3066,23 +3023,23 @@ class _$_InvalidAccessCode implements _InvalidAccessCode {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return invalidAccessCode?.call(this);
   }
@@ -3128,14 +3085,12 @@ abstract class _$$_InvalidLinkCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InvalidLinkCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+class __$$_InvalidLinkCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_InvalidLink>
     implements _$$_InvalidLinkCopyWith<$Res> {
   __$$_InvalidLinkCopyWithImpl(
       _$_InvalidLink _value, $Res Function(_$_InvalidLink) _then)
-      : super(_value, (v) => _then(v as _$_InvalidLink));
-
-  @override
-  _$_InvalidLink get _value => super._value as _$_InvalidLink;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -3184,23 +3139,23 @@ class _$_InvalidLink implements _InvalidLink {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return invalidLink?.call();
   }
@@ -3262,23 +3217,23 @@ class _$_InvalidLink implements _InvalidLink {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return invalidLink?.call(this);
   }
@@ -3324,14 +3279,12 @@ abstract class _$$_UnavailableCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UnavailableCopyWithImpl<$Res> extends _$AuthFailureCopyWithImpl<$Res>
+class __$$_UnavailableCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_Unavailable>
     implements _$$_UnavailableCopyWith<$Res> {
   __$$_UnavailableCopyWithImpl(
       _$_Unavailable _value, $Res Function(_$_Unavailable) _then)
-      : super(_value, (v) => _then(v as _$_Unavailable));
-
-  @override
-  _$_Unavailable get _value => super._value as _$_Unavailable;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -3380,23 +3333,23 @@ class _$_Unavailable implements _Unavailable {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? operationNotAllowed,
-    TResult Function()? accountExists,
-    TResult Function()? invalidCredential,
-    TResult Function()? invalidEmail,
-    TResult Function()? userDisabled,
-    TResult Function()? emailInUse,
-    TResult Function()? weakPassword,
-    TResult Function()? userNotFound,
-    TResult Function()? wrongPassword,
-    TResult Function()? invalidVerificationCode,
-    TResult Function()? invalidVerificationId,
-    TResult Function()? usernameExists,
-    TResult Function()? canceledByUser,
-    TResult Function()? invalidAccessCode,
-    TResult Function()? invalidLink,
-    TResult Function()? unavailable,
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
   }) {
     return unavailable?.call();
   }
@@ -3458,23 +3411,23 @@ class _$_Unavailable implements _Unavailable {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
-    TResult Function(_AccountExists value)? accountExists,
-    TResult Function(_InvalidCredential value)? invalidCredential,
-    TResult Function(_InvalidEmail value)? invalidEmail,
-    TResult Function(_UserDisabled value)? userDisabled,
-    TResult Function(_EmailInUse value)? emailInUse,
-    TResult Function(_WeakPassword value)? weakPassword,
-    TResult Function(_UserNotFound value)? userNotFound,
-    TResult Function(_WrongPassword value)? wrongPassword,
-    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
-    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
-    TResult Function(_UsernameExists value)? usernameExists,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
-    TResult Function(_InvalidLink value)? invalidLink,
-    TResult Function(_Unavailable value)? unavailable,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
   }) {
     return unavailable?.call(this);
   }
