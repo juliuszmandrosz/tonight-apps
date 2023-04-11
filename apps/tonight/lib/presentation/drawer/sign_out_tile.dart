@@ -1,10 +1,8 @@
 import 'package:auth/auth.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
 class SignOutTile extends StatelessWidget {
@@ -22,7 +20,6 @@ class SignOutTile extends StatelessWidget {
 
         if (context.mounted && (result ?? false)) {
           context.read<AuthCubit>().signOut();
-          context.replaceRoute(const SignInRoute());
         }
       },
     );

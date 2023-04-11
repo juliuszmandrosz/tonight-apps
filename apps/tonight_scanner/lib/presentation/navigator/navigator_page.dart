@@ -35,6 +35,9 @@ class _NavigatorPageState extends State<NavigatorPage> {
             initial: (_) => {},
             authenticated: (_) => context.replaceRoute(const NavigatorRoute()),
             unauthenticated: (_) => context.replaceRoute(const SignInRoute()),
+            deleteAccountFailure: (_) => {},
+            deleteAccountInProgress: (_) => {},
+            deleteAccountSuccess: (_) => {},
           ),
         ),
         BlocListener<NetworkCheckCubit, NetworkCheckState>(

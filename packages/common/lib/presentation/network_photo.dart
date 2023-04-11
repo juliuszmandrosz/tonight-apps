@@ -10,8 +10,8 @@ class NetworkPhoto extends StatelessWidget {
 
   const NetworkPhoto({
     required this.photoUrl,
-    required this.photoHeight,
-    required this.loaderSize,
+    this.photoHeight = 160,
+    this.loaderSize = 16,
     Key? key,
   }) : super(key: key);
 

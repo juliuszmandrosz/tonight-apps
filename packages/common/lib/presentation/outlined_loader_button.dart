@@ -21,7 +21,7 @@ class OutlinedLoaderButton extends StatelessWidget {
         LayoutBuilder(
           builder: (context, constraints) {
             return SizedBox(
-              width: constraints.maxWidth * 0.25,
+              width: constraints.maxWidth * 0.3,
               child: OutlinedButton(
                 onPressed: onPressed,
                 child: isLoading

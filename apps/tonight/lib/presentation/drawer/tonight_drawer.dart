@@ -8,23 +8,21 @@ class TonightDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TonightOverlay(
-      child: Drawer(
-        child: Material(
-          color: context.surfaceColor,
-          elevation: 0,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(24, 80, 24, 0),
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: const [
-                TonightDrawerHeader(),
-                SizedBox(height: 30),
-                Divider(),
-                SizedBox(height: 10),
-                TonightDrawerTiles(),
-              ],
-            ),
+    return Drawer(
+      child: Material(
+        color: context.surfaceColor,
+        elevation: 0,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(24, 80, 24, 0),
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: const [
+              TonightDrawerHeader(),
+              SizedBox(height: 30),
+              Divider(),
+              SizedBox(height: 10),
+              TonightDrawerTiles(),
+            ],
           ),
         ),
       ),

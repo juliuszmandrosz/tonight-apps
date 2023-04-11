@@ -11,9 +11,7 @@ part 'club_reviews_bloc.freezed.dart';
 part 'club_reviews_event.dart';
 part 'club_reviews_state.dart';
 
-const pageSize = 20;
-
-const throttleDuration = Duration(milliseconds: 500);
+const _pageSize = 20;
 
 class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
   final UserReviewFacade _reviewFacade;
@@ -21,7 +19,7 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
   ClubReviewsBloc(this._reviewFacade) : super(ClubReviewsState.initial()) {
     on<_NextPageReviewsFetched>(
       _onNextPageReviewsFetched,
-      transformer: throttleDroppable(throttleDuration),
+      transformer: throttleDroppable(),
     );
 
     on<_ReviewsFetched>(_onReviewsFetched);
@@ -34,7 +32,7 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
     emit(state.copyWith(status: CubitStatus.loading));
 
     final failureOrSuccess = await _reviewFacade
-        .getClubReviewsAsUser(event.clubId, pageSize: pageSize);
+        .getClubReviewsAsUser(event.clubId, pageSize: _pageSize);
 
     failureOrSuccess.fold(
       (failure) => emit(state.copyWith(status: CubitStatus.failure)),
@@ -42,7 +40,7 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
         state.copyWith(
           status: CubitStatus.success,
           reviews: reviews,
-          hasReachedMax: reviews.length != pageSize,
+          hasReachedMax: reviews.length != _pageSize,
           clubId: event.clubId,
         ),
       ),
@@ -56,7 +54,7 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
     final failureOrSuccess = await _reviewFacade.getClubReviewsAsUser(
         state.clubId,
         lastReview: state.reviews.last,
-        pageSize: pageSize);
+        pageSize: _pageSize);
 
     failureOrSuccess.fold(
       (failure) => emit(
@@ -66,7 +64,7 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
         state.copyWith(
           status: CubitStatus.success,
           reviews: List.of(state.reviews)..addAll(reviews),
-          hasReachedMax: reviews.length != pageSize,
+          hasReachedMax: reviews.length != _pageSize,
         ),
       ),
     );
