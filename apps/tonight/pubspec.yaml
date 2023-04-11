@@ -95,6 +95,7 @@ dependencies:
   json_annotation:
   very_good_infinite_list:
   google_maps_flutter:
+  animated_bottom_navigation_bar: ^1.2.0
 
   translations:
     path: ../../packages/translations
