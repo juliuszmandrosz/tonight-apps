@@ -8,11 +8,13 @@ class ProfilePictureContainer extends StatelessWidget {
   final double imageSize;
   final String username;
   final String? profilePictureUrl;
+  final bool isOnSurfaceColor;
 
   const ProfilePictureContainer({
     required this.imageSize,
     required this.username,
     required this.profilePictureUrl,
+    this.isOnSurfaceColor = false,
     Key? key,
   }) : super(key: key);
 
@@ -23,7 +25,7 @@ class ProfilePictureContainer extends StatelessWidget {
       width: imageSize,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: context.surfaceColor,
+        color: isOnSurfaceColor ? context.onSurfaceColor : context.surfaceColor,
       ),
       child: Center(
         child: profilePictureUrl.isNotNullOrEmpty
@@ -38,7 +40,10 @@ class ProfilePictureContainer extends StatelessWidget {
                     : username.length == 1
                         ? username[0].toUpperCase()
                         : username.substring(0, 2).toUpperCase(),
-                style: context.headlineMedium,
+                style: isOnSurfaceColor
+                    ? context.headlineMedium
+                        .copyWith(color: context.surfaceColor)
+                    : context.headlineMedium,
               ),
       ),
     );

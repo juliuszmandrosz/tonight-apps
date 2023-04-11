@@ -12,10 +12,14 @@ class SplashPage extends StatelessWidget {
     return BlocListener<AuthCubit, AuthState>(
       listener: (ctx, state) {
         state.map(
-            initial: (_) {},
-            authenticated: (_) =>
-                context.replaceRoute(const WelcomeLoaderRoute()),
-            unauthenticated: (_) => context.replaceRoute(const SignInRoute()));
+          initial: (_) {},
+          authenticated: (_) =>
+              context.replaceRoute(const WelcomeLoaderRoute()),
+          unauthenticated: (_) => context.replaceRoute(const SignInRoute()),
+          deleteAccountSuccess: (_) => {},
+          deleteAccountFailure: (_) => {},
+          deleteAccountInProgress: (_) => {},
+        );
       },
       child: Container(),
     );
