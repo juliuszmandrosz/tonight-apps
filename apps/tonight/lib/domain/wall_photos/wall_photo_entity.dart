@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:uuid/uuid.dart';
 
 class WallPhoto extends Equatable {
@@ -13,6 +14,7 @@ class WallPhoto extends Equatable {
   final String username;
   final DateTime eventEndDateTime;
   final DateTime createdAt;
+  final LatLng location;
   final String? userProfilePhotoUrl;
   final bool isVerified;
 
@@ -27,6 +29,7 @@ class WallPhoto extends Equatable {
     required this.userId,
     required this.username,
     required this.eventEndDateTime,
+    required this.location,
     this.userProfilePhotoUrl,
     this.isVerified = false,
   })  : id = id ?? const Uuid().v1(),
@@ -46,6 +49,7 @@ class WallPhoto extends Equatable {
         createdAt,
         userProfilePhotoUrl,
         isVerified,
+        location,
       ];
 
   WallPhoto copyWith({
@@ -59,6 +63,7 @@ class WallPhoto extends Equatable {
     DateTime? eventEndDateTime,
     Option<String>? userProfilePhotoUrl,
     bool? isVerified,
+    LatLng? location,
   }) {
     return WallPhoto(
       id: id,
@@ -78,6 +83,7 @@ class WallPhoto extends Equatable {
             )
           : this.userProfilePhotoUrl,
       isVerified: isVerified ?? this.isVerified,
+      location: location ?? this.location,
     );
   }
 }

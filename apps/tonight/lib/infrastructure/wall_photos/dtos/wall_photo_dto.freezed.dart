@@ -35,6 +35,8 @@ mixin _$WallPhotoDto {
   DateTime get createdAt => throw _privateConstructorUsedError;
   String? get userProfilePhotoUrl => throw _privateConstructorUsedError;
   bool get isVerified => throw _privateConstructorUsedError;
+  @LatLngConverter()
+  LatLng get location => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -60,7 +62,8 @@ abstract class $WallPhotoDtoCopyWith<$Res> {
       @TimestampJsonConverter() DateTime eventEndDateTime,
       @TimestampJsonConverter() DateTime createdAt,
       String? userProfilePhotoUrl,
-      bool isVerified});
+      bool isVerified,
+      @LatLngConverter() LatLng location});
 }
 
 /// @nodoc
@@ -88,6 +91,7 @@ class _$WallPhotoDtoCopyWithImpl<$Res, $Val extends WallPhotoDto>
     Object? createdAt = null,
     Object? userProfilePhotoUrl = freezed,
     Object? isVerified = null,
+    Object? location = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -138,6 +142,10 @@ class _$WallPhotoDtoCopyWithImpl<$Res, $Val extends WallPhotoDto>
           ? _value.isVerified
           : isVerified // ignore: cast_nullable_to_non_nullable
               as bool,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as LatLng,
     ) as $Val);
   }
 }
@@ -162,7 +170,8 @@ abstract class _$$_WallPhotoDtoCopyWith<$Res>
       @TimestampJsonConverter() DateTime eventEndDateTime,
       @TimestampJsonConverter() DateTime createdAt,
       String? userProfilePhotoUrl,
-      bool isVerified});
+      bool isVerified,
+      @LatLngConverter() LatLng location});
 }
 
 /// @nodoc
@@ -188,6 +197,7 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? userProfilePhotoUrl = freezed,
     Object? isVerified = null,
+    Object? location = null,
   }) {
     return _then(_$_WallPhotoDto(
       id: freezed == id
@@ -238,6 +248,10 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
           ? _value.isVerified
           : isVerified // ignore: cast_nullable_to_non_nullable
               as bool,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as LatLng,
     ));
   }
 }
@@ -258,7 +272,8 @@ class _$_WallPhotoDto extends _WallPhotoDto {
       @TimestampJsonConverter() required this.eventEndDateTime,
       @TimestampJsonConverter() required this.createdAt,
       this.userProfilePhotoUrl,
-      this.isVerified = false})
+      this.isVerified = false,
+      @LatLngConverter() required this.location})
       : super._();
 
   factory _$_WallPhotoDto.fromJson(Map<String, dynamic> json) =>
@@ -292,10 +307,13 @@ class _$_WallPhotoDto extends _WallPhotoDto {
   @override
   @JsonKey()
   final bool isVerified;
+  @override
+  @LatLngConverter()
+  final LatLng location;
 
   @override
   String toString() {
-    return 'WallPhotoDto(id: $id, photoUrl: $photoUrl, clubId: $clubId, clubName: $clubName, eventId: $eventId, eventName: $eventName, userId: $userId, username: $username, eventEndDateTime: $eventEndDateTime, createdAt: $createdAt, userProfilePhotoUrl: $userProfilePhotoUrl, isVerified: $isVerified)';
+    return 'WallPhotoDto(id: $id, photoUrl: $photoUrl, clubId: $clubId, clubName: $clubName, eventId: $eventId, eventName: $eventName, userId: $userId, username: $username, eventEndDateTime: $eventEndDateTime, createdAt: $createdAt, userProfilePhotoUrl: $userProfilePhotoUrl, isVerified: $isVerified, location: $location)';
   }
 
   @override
@@ -322,7 +340,9 @@ class _$_WallPhotoDto extends _WallPhotoDto {
             (identical(other.userProfilePhotoUrl, userProfilePhotoUrl) ||
                 other.userProfilePhotoUrl == userProfilePhotoUrl) &&
             (identical(other.isVerified, isVerified) ||
-                other.isVerified == isVerified));
+                other.isVerified == isVerified) &&
+            (identical(other.location, location) ||
+                other.location == location));
   }
 
   @JsonKey(ignore: true)
@@ -340,7 +360,8 @@ class _$_WallPhotoDto extends _WallPhotoDto {
       eventEndDateTime,
       createdAt,
       userProfilePhotoUrl,
-      isVerified);
+      isVerified,
+      location);
 
   @JsonKey(ignore: true)
   @override
@@ -369,7 +390,8 @@ abstract class _WallPhotoDto extends WallPhotoDto {
       @TimestampJsonConverter() required final DateTime eventEndDateTime,
       @TimestampJsonConverter() required final DateTime createdAt,
       final String? userProfilePhotoUrl,
-      final bool isVerified}) = _$_WallPhotoDto;
+      final bool isVerified,
+      @LatLngConverter() required final LatLng location}) = _$_WallPhotoDto;
   const _WallPhotoDto._() : super._();
 
   factory _WallPhotoDto.fromJson(Map<String, dynamic> json) =
@@ -402,6 +424,9 @@ abstract class _WallPhotoDto extends WallPhotoDto {
   String? get userProfilePhotoUrl;
   @override
   bool get isVerified;
+  @override
+  @LatLngConverter()
+  LatLng get location;
   @override
   @JsonKey(ignore: true)
   _$$_WallPhotoDtoCopyWith<_$_WallPhotoDto> get copyWith =>
