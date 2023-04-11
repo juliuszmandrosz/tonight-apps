@@ -9,6 +9,7 @@ export 'ifilter.dart';
 export 'json_converters/firebase_nullable_timestamp_json_converter.dart';
 export 'json_converters/firebase_timestamp_json_converter.dart';
 export 'json_converters/geopoint_json_converter.dart';
+export 'json_converters/lat_lng_converter.dart';
 export 'json_converters/location_converter.dart';
 export 'json_converters/timestamp_json_converter.dart';
 export 'remote_config/firebase_remote_config_facade.dart';
