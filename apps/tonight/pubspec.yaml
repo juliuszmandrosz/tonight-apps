@@ -33,7 +33,6 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  google_maps_flutter: ^2.2.5
   geolocator: ^9.0.2
   qr_flutter: ^4.0.0
   syncfusion_flutter_datepicker: ^20.4.53
@@ -95,6 +94,7 @@ dependencies:
   uuid:
   json_annotation:
   very_good_infinite_list:
+  google_maps_flutter:
 
   translations:
     path: ../../packages/translations
