@@ -17,22 +17,20 @@ import 'package:tonight/application/clubs/clubs_overview/clubs_overview_bloc.dar
 import 'package:tonight/application/core/deep_links_utils.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
-import 'package:tonight/application/profile/profile_cubit.dart';
+import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
-import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
 import 'package:tonight/application/wall_photos/wall_photos_cubit.dart';
 
 part 'welcome_loading_cubit.freezed.dart';
 part 'welcome_loading_state.dart';
 
 class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
-  final ProfileCubit _profileCubit;
+  final ProfileBloc _profileBloc;
   final UserLocationCubit _userLocationCubit;
   final EventOverviewBloc _eventOverviewBloc;
   final ClubsOverviewBloc _clubsOverviewBloc;
   final EventFavoriteCubit _eventFavoriteCubit;
   final ClubFavoriteCubit _clubFavoriteCubit;
-  final TicketListCubit _ticketListCubit;
   final AvailableFiltersCubit _availableFiltersCubit;
   final PushNotificationsCubit _pushNotificationsCubit;
   final Stripe _stripe;
@@ -46,32 +44,29 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   StreamSubscription? _clubsSub;
   StreamSubscription? _eventFavoritesSub;
   StreamSubscription? _clubFavoritesSub;
-  StreamSubscription? _ticketsSub;
   StreamSubscription? _filtersSub;
   StreamSubscription? _pushNotificationsSub;
   StreamSubscription? _wallPhotosSub;
 
   WelcomeLoadingCubit({
-    required ProfileCubit profileCubit,
+    required ProfileBloc profileBloc,
     required UserLocationCubit userLocationCubit,
     required EventOverviewBloc eventOverviewBloc,
     required ClubsOverviewBloc clubsOverviewBloc,
     required EventFavoriteCubit eventFavoriteCubit,
     required ClubFavoriteCubit clubFavoriteCubit,
-    required TicketListCubit ticketListCubit,
     required AvailableFiltersCubit availableFiltersCubit,
     required PushNotificationsCubit pushNotificationsCubit,
     required Stripe stripe,
     required FirebaseMessaging firebaseMessaging,
     required NetworkCheckCubit networkCheckCubit,
     required WallPhotosCubit wallPhotosCubit,
-  })  : _profileCubit = profileCubit,
+  })  : _profileBloc = profileBloc,
         _userLocationCubit = userLocationCubit,
         _eventOverviewBloc = eventOverviewBloc,
         _clubsOverviewBloc = clubsOverviewBloc,
         _eventFavoriteCubit = eventFavoriteCubit,
         _clubFavoriteCubit = clubFavoriteCubit,
-        _ticketListCubit = ticketListCubit,
         _availableFiltersCubit = availableFiltersCubit,
         _pushNotificationsCubit = pushNotificationsCubit,
         _stripe = stripe,
@@ -93,7 +88,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
     _initUserLocationCubit();
     _initWallPhotos();
-    _initTickets();
     _initFavoriteEvents();
     _initFavoriteClubs();
     _initAvailableFiltersCubit();
@@ -107,8 +101,8 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   }
 
   initUserProfile() {
-    _profileCubit.getUserProfile();
-    _profileSub = _profileCubit.stream.listen((event) {
+    _profileBloc.add(const ProfileEvent.profileLoaded());
+    _profileSub = _profileBloc.stream.listen((event) {
       _checkAndEmitFailure(event.initialStatus);
       _emitSuccessIfAllLoaded();
       if (event.initialStatus.isSuccess() && !state.status.isSuccess()) {
@@ -196,14 +190,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _wallPhotosCubit.getPhotos();
     _wallPhotosSub = _wallPhotosCubit.stream.listen((event) {
       _checkAndEmitFailure(event.getPhotosStatus);
-      _emitSuccessIfAllLoaded();
-    });
-  }
-
-  _initTickets() {
-    _ticketListCubit.fetchTickets();
-    _ticketsSub = _ticketListCubit.stream.listen((event) {
-      _checkAndEmitFailure(event.initialStatus);
       _emitSuccessIfAllLoaded();
     });
   }
@@ -314,10 +300,9 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
   _allDependenciesLoaded() {
     return !_userLocationCubit.state.isLoading &&
-        _profileCubit.state.initialStatus == CubitStatus.success &&
+        _profileBloc.state.initialStatus == CubitStatus.success &&
         _eventOverviewBloc.state.status == CubitStatus.success &&
         _clubsOverviewBloc.state.status == CubitStatus.success &&
-        _ticketListCubit.state.initialStatus == CubitStatus.success &&
         _eventFavoriteCubit.state.status == CubitStatus.success &&
         _clubFavoriteCubit.state.status == CubitStatus.success &&
         _wallPhotosCubit.state.getPhotosStatus == CubitStatus.success &&
@@ -330,7 +315,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     _locationSub?.cancel();
     _clubFavoritesSub?.cancel();
     _eventFavoritesSub?.cancel();
-    _ticketsSub?.cancel();
     _eventsSub?.cancel();
     _clubsSub?.cancel();
     _profileSub?.cancel();

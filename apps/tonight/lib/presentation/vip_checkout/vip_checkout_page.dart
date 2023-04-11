@@ -28,106 +28,99 @@ class VipCheckoutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LoaderOverlay(
-      overlayWidget: const TicketLogoAnimation(),
-      overlayColor: context.shadowColor,
-      overlayOpacity: .7,
-      useDefaultLoading: false,
-      child: BlocProvider(
-        create: (_) => getIt<VipCheckoutCubit>(
-          param1: context.read<TicketListCubit>(),
-        )..initData(ticket),
-        child: BlocConsumer<VipCheckoutCubit, VipCheckoutState>(
-          buildWhen: (previous, current) =>
-              previous.initialStatus != current.initialStatus ||
-              previous.eventTickets != current.eventTickets ||
-              previous.sendInvoice != current.sendInvoice,
-          listenWhen: (previous, current) =>
-              previous.initialStatus != current.initialStatus ||
-              previous.proceedingToPaymentStatus !=
-                  current.proceedingToPaymentStatus ||
-              previous.snackbarMessage != current.snackbarMessage ||
-              previous.isVipNoLongerAvailable !=
-                  current.isVipNoLongerAvailable ||
-              previous.paymentFailure != current.paymentFailure,
-          listener: (context, state) {
-            if (state.initialStatus.isFailure()) {
-              context.pushRoute(
-                FailureRoute(
-                  retryCallback: () =>
-                      context.read<VipCheckoutCubit>().initData(ticket),
-                ),
-              );
-            }
-            if (state.proceedingToPaymentStatus.isSuccess() &&
-                state.upgradedTicket.isSome()) {
-              context.replaceRoute(
-                TicketPaymentConfirmRoute(
-                  ticket: state.upgradedTicket.getOrCrash(),
-                ),
-              );
-            }
-
-            state.proceedingToPaymentStatus.isLoading()
-                ? context.loaderOverlay.show()
-                : context.loaderOverlay.hide();
-
-            state.snackbarMessage.fold(
-              () {},
-              (message) => context.showSnackbarMessage(message),
+    return BlocProvider(
+      create: (_) => getIt<VipCheckoutCubit>(
+        param1: context.read<TicketListCubit>(),
+      )..initData(ticket),
+      child: BlocConsumer<VipCheckoutCubit, VipCheckoutState>(
+        buildWhen: (previous, current) =>
+            previous.initialStatus != current.initialStatus ||
+            previous.eventTickets != current.eventTickets ||
+            previous.sendInvoice != current.sendInvoice,
+        listenWhen: (previous, current) =>
+            previous.initialStatus != current.initialStatus ||
+            previous.proceedingToPaymentStatus !=
+                current.proceedingToPaymentStatus ||
+            previous.snackbarMessage != current.snackbarMessage ||
+            previous.isVipNoLongerAvailable != current.isVipNoLongerAvailable ||
+            previous.paymentFailure != current.paymentFailure,
+        listener: (context, state) {
+          if (state.initialStatus.isFailure()) {
+            context.pushRoute(
+              FailureRoute(
+                retryCallback: () =>
+                    context.read<VipCheckoutCubit>().initData(ticket),
+              ),
             );
+          }
+          if (state.proceedingToPaymentStatus.isSuccess() &&
+              state.upgradedTicket.isSome()) {
+            context.replaceRoute(
+              TicketPaymentConfirmRoute(
+                ticket: state.upgradedTicket.getOrCrash(),
+              ),
+            );
+          }
 
-            if (state.isVipNoLongerAvailable) {
-              context.popRoute();
-            }
+          state.proceedingToPaymentStatus.isLoading()
+              ? context.loaderOverlay.show()
+              : context.loaderOverlay.hide();
 
-            if (state.paymentFailure ==
-                some(const UserPaymentFailure.paymentHasAlreadyBeenMade())) {
-              context.router.popUntil(
-                (route) => route.settings.name == TicketQrRoute.name,
-              );
-            }
-          },
-          builder: (context, state) {
-            if (state.initialStatus.isInitial() ||
-                state.initialStatus.isFailure()) {
-              return Container();
-            }
+          state.snackbarMessage.fold(
+            () {},
+            (message) => context.showSnackbarMessage(message),
+          );
 
-            return state.initialStatus.isLoading()
-                ? const TicketLogoAnimation()
-                : Scaffold(
-                    appBar: TonightAppBar(title: S().checkout),
-                    floatingActionButton: const VipProceedToPayButton(),
-                    floatingActionButtonLocation:
-                        FloatingActionButtonLocation.centerFloat,
-                    body: Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: ListView(
-                        children: [
-                          const VipCheckoutHeader(),
-                          const SizedBox(height: 20),
-                          const VipCheckoutTicketCard(),
-                          const SizedBox(height: 15),
-                          const Divider(),
-                          const SizedBox(height: 15),
-                          const VipCheckoutPaymentMethod(),
-                          const SizedBox(height: 20),
-                          const VipCheckoutSummary(),
-                          const SizedBox(height: 10),
-                          const Divider(),
-                          const SizedBox(height: 10),
-                          const VipCheckoutPromotionCode(),
-                          const SizedBox(height: 20),
-                          const VipCheckoutInvoiceCheckbox(),
-                          if (state.sendInvoice) const VipCheckoutInvoiceData(),
-                          const SizedBox(height: 80),
-                        ],
-                      ),
+          if (state.isVipNoLongerAvailable) {
+            context.popRoute();
+          }
+
+          if (state.paymentFailure ==
+              some(const UserPaymentFailure.paymentHasAlreadyBeenMade())) {
+            context.router.popUntil(
+              (route) => route.settings.name == TicketQrRoute.name,
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state.initialStatus.isInitial() ||
+              state.initialStatus.isFailure()) {
+            return Container();
+          }
+
+          return state.initialStatus.isLoading()
+              ? const TicketLogoAnimation()
+              : Scaffold(
+                  appBar: TonightAppBar(title: S().checkout),
+                  floatingActionButton: const VipProceedToPayButton(),
+                  floatingActionButtonLocation:
+                      FloatingActionButtonLocation.centerFloat,
+                  body: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: ListView(
+                      children: [
+                        const VipCheckoutHeader(),
+                        const SizedBox(height: 20),
+                        const VipCheckoutTicketCard(),
+                        const SizedBox(height: 15),
+                        const Divider(),
+                        const SizedBox(height: 15),
+                        const VipCheckoutPaymentMethod(),
+                        const SizedBox(height: 20),
+                        const VipCheckoutSummary(),
+                        const SizedBox(height: 10),
+                        const Divider(),
+                        const SizedBox(height: 10),
+                        const VipCheckoutPromotionCode(),
+                        const SizedBox(height: 20),
+                        const VipCheckoutInvoiceCheckbox(),
+                        if (state.sendInvoice) const VipCheckoutInvoiceData(),
+                        const SizedBox(height: 80),
+                      ],
                     ),
-                  );
-          },
-        ),
+                  ),
+                );
+        },
       ),
     );
   }

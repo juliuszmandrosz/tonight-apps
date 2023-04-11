@@ -1,12 +1,11 @@
-import 'package:auth/auth.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:loader_overlay/loader_overlay.dart';
-import 'package:tonight/application/profile/profile_cubit.dart';
+import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/presentation/profile/widgets/profile_user_picture_.dart';
+import 'package:tonight/presentation/profile/widgets/profile_wall_photos.dart';
 import 'package:tonight/presentation/profile/widgets/user_profile_stats_row.dart';
 import 'package:tonight/presentation/profile/widgets/username_row.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
@@ -16,31 +15,24 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ProfileCubit, ProfileState>(
+    final scrollController = ScrollController();
+    return BlocConsumer<ProfileBloc, ProfileState>(
       listenWhen: (previous, current) =>
           previous.initialStatus != current.initialStatus ||
-          previous.deletingAccountStatus != current.deletingAccountStatus ||
-          previous.snackbarMessage != current.snackbarMessage,
+          previous.snackbarMessage != current.snackbarMessage ||
+          previous.refreshPhotosStatus != current.refreshPhotosStatus,
       listener: (context, state) {
-        state.deletingAccountStatus.isLoading()
-            ? context.loaderOverlay.show()
-            : context.loaderOverlay.hide();
-
         state.snackbarMessage.fold(
           () {},
           (message) => context.showSnackbarMessage(message),
         );
 
-        if (state.deletingAccountStatus.isSuccess()) {
-          context.read<AuthCubit>().signOut();
-          context.replaceRoute(const SignInRoute());
-        }
-
         if (state.initialStatus.isFailure()) {
           context.pushRoute(
             FailureRoute(
-              retryCallback: () =>
-                  context.read<ProfileCubit>().getUserProfile(),
+              retryCallback: () => context
+                  .read<ProfileBloc>()
+                  .add(const ProfileEvent.profileLoaded()),
             ),
           );
         }
@@ -58,26 +50,35 @@ class ProfilePage extends StatelessWidget {
           case CubitStatus.success:
             final userProfile = state.userProfile.getOrCrash();
             return Padding(
-              padding: const EdgeInsets.all(15),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    ProfileUserPicture(
-                      profilePictureUrl: userProfile.profilePictureUrl,
-                      username: userProfile.username,
-                    ),
-                    const SizedBox(height: 30),
-                    UsernameRow(username: userProfile.username),
-                    const SizedBox(height: 20),
-                    AutoSizeText(
-                      userProfile.email,
-                      style: context.titleMedium
-                          .copyWith(color: context.secondaryColor),
-                      maxLines: 1,
-                    ),
-                    const SizedBox(height: 40),
-                    UserProfileStatsRow(userProfile: userProfile),
-                  ],
+              padding: const EdgeInsets.all(16),
+              child: RefreshIndicator(
+                onRefresh: () async => context
+                    .read<ProfileBloc>()
+                    .add(const ProfileEvent.photosRefreshed()),
+                child: SingleChildScrollView(
+                  controller: scrollController,
+                  child: Column(
+                    children: [
+                      ProfileUserPicture(
+                        profilePictureUrl: userProfile.profilePictureUrl,
+                        username: userProfile.username,
+                      ),
+                      const SizedBox(height: 30),
+                      UsernameRow(username: userProfile.username),
+                      const SizedBox(height: 20),
+                      AutoSizeText(
+                        userProfile.email,
+                        style: context.titleMedium.copyWith(
+                          color: context.secondaryColor,
+                        ),
+                        maxLines: 1,
+                      ),
+                      const SizedBox(height: 40),
+                      UserProfileStatsRow(userProfile: userProfile),
+                      const SizedBox(height: 40),
+                      ProfileWallPhotos(scrollController: scrollController),
+                    ],
+                  ),
                 ),
               ),
             );

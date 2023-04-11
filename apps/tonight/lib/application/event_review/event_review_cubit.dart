@@ -23,7 +23,12 @@ class EventReviewCubit extends Cubit<EventReviewState> {
     final result = await _eventReviewAggregator.getEventReviewForm(eventId);
     result.fold(
       _emitFailure,
-      (model) => emit(state.copyWith(eventReviewForm: some(model))),
+      (model) => emit(
+        state.copyWith(
+          eventReviewForm: some(model),
+          status: CubitStatus.success,
+        ),
+      ),
     );
   }
 

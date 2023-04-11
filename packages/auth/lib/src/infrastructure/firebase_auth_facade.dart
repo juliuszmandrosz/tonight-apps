@@ -381,7 +381,7 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Stream<Option<AppUser>>> listenToAuthStateChange() {
+  Future<Stream<Option<AppUser>>> listenToAuthStateChange() async {
     return Future.value(
       _firebaseAuth
           .authStateChanges()
@@ -405,6 +405,7 @@ class FirebaseAuthFacade
         email: firebaseUser.email!,
         accountId: firebaseUser.uid,
       );
+      await signOut();
       return right(unit);
     } on DioError catch (e) {
       _logger.e('Dio Error deleting account EXCEPTION: $e');
