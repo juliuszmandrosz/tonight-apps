@@ -14,15 +14,14 @@ class TonightDrawerHeader extends StatelessWidget {
       selector: (state) => state.userProfile.getOrCrash(),
       builder: (context, profile) {
         return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ProfilePictureContainer(
-              imageSize: 80,
+              imageSize: 100,
               username: profile.username,
               profilePictureUrl: profile.profilePictureUrl,
               isOnSurfaceColor: true,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             TonightHeadline(
               text: profile.username,
               isSmallerVersion: true,
