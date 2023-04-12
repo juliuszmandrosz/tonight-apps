@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
@@ -32,10 +33,15 @@ class _NavigatorPageState extends State<NavigatorPage> {
       bottomNavigationBuilder: (_, tabsRouter) {
         return NavigationBar(
           selectedIndex: tabsRouter.activeIndex,
-          onDestinationSelected: (i) {
+          onDestinationSelected: (i) async {
             if (i == TonightNavigationDestinations.add.index) {
-              context.pushRoute(const AddWallPhotoRoute());
-              i = selectedIndex;
+              final cameras = await availableCameras();
+              if (context.mounted) {
+                context.pushRoute(
+                  WallPhotoCameraPreviewRoute(cameras: cameras),
+                );
+                i = selectedIndex;
+              }
             }
 
             setState(() {
@@ -53,9 +59,12 @@ class _NavigatorPageState extends State<NavigatorPage> {
               // TODO - add translation
               label: 'Odkrywaj',
             ),
-            NavigationDestination(
-              icon: const FaIcon(FontAwesomeIcons.plus),
-              label: S().add,
+            const NavigationDestination(
+              icon: FaIcon(
+                FontAwesomeIcons.camera,
+              ),
+              // TODO - add translation
+              label: 'Opublikuj',
             ),
             NavigationDestination(
               icon: const FaIcon(FontAwesomeIcons.solidHeart),
