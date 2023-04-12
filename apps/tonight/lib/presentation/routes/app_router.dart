@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:payments/domain/domain.dart';
 import 'package:tonight/failure/failure_page.dart';
+import 'package:tonight/presentation/add_wall_photo/add_wall_photo_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
 import 'package:tonight/presentation/club_details/club_details_page.dart';
 import 'package:tonight/presentation/club_filters/club_filters_page.dart';
@@ -20,6 +21,7 @@ import 'package:tonight/presentation/profile/profile_page.dart';
 import 'package:tonight/presentation/routes/page_transitions/fade_in_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/slide_left_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/slide_right_transition.dart';
+import 'package:tonight/presentation/routes/page_transitions/slide_up_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/zoom_in_transition.dart';
 import 'package:tonight/presentation/sign_in/sign_in_page.dart';
 import 'package:tonight/presentation/splash/splash_page.dart';
@@ -186,6 +188,11 @@ const animationDuration = 300;
     CustomRoute(
       page: ClubFiltersPage,
       transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: AddWallPhotoPage,
+      transitionsBuilder: slideUpTransition,
       durationInMilliseconds: animationDuration,
     ),
   ],
