@@ -138,6 +138,9 @@ dependencies:
   # Google maps SDK
   google_maps_flutter: ^2.2.5
 
+  # Image functions
+  image: ^4.0.15
+
   # Inherited packages
   intl:
 
