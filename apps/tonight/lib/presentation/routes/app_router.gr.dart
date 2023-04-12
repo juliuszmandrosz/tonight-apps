@@ -12,6 +12,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i32;
+import 'package:camera/camera.dart' as _i43;
 import 'package:clubs/clubs.dart' as _i41;
 import 'package:events/events.dart' as _i40;
 import 'package:flutter/material.dart' as _i33;
@@ -19,7 +20,6 @@ import 'package:payments/domain/domain.dart' as _i38;
 import 'package:tickets/tickets.dart' as _i42;
 
 import '../../failure/failure_page.dart' as _i18;
-import '../add_wall_photo/add_wall_photo_page.dart' as _i26;
 import '../app_settings/app_settings_page.dart' as _i22;
 import '../club_details/club_details_page.dart' as _i8;
 import '../club_filters/club_filters_page.dart' as _i25;
@@ -47,6 +47,8 @@ import '../update_profile_picture/update_profile_picture_page.dart' as _i20;
 import '../update_username/update_username_page.dart' as _i19;
 import '../user_details/user_details_page.dart' as _i7;
 import '../vip_checkout/vip_checkout_page.dart' as _i12;
+import '../wall_photo_camera_preview/wall_photo_camera_preview_page.dart'
+    as _i26;
 import '../wall_photos/wall_photos_page.dart' as _i27;
 import '../welcome_loader/welcome_loader_page.dart' as _i3;
 import 'page_transitions/fade_in_transition.dart' as _i36;
@@ -379,10 +381,14 @@ class AppRouter extends _i32.RootStackRouter {
         barrierDismissible: false,
       );
     },
-    AddWallPhotoRoute.name: (routeData) {
+    WallPhotoCameraPreviewRoute.name: (routeData) {
+      final args = routeData.argsAs<WallPhotoCameraPreviewRouteArgs>();
       return _i32.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i26.AddWallPhotoPage(),
+        child: _i26.WallPhotoCameraPreviewPage(
+          cameras: args.cameras,
+          key: args.key,
+        ),
         transitionsBuilder: _i39.slideUpTransition,
         durationInMilliseconds: 300,
         opaque: true,
@@ -571,8 +577,8 @@ class AppRouter extends _i32.RootStackRouter {
           path: '/club-filters-page',
         ),
         _i32.RouteConfig(
-          AddWallPhotoRoute.name,
-          path: '/add-wall-photo-page',
+          WallPhotoCameraPreviewRoute.name,
+          path: '/wall-photo-camera-preview-page',
         ),
       ];
 }
@@ -1264,15 +1270,38 @@ class ClubFiltersRouteArgs {
 }
 
 /// generated route for
-/// [_i26.AddWallPhotoPage]
-class AddWallPhotoRoute extends _i32.PageRouteInfo<void> {
-  const AddWallPhotoRoute()
-      : super(
-          AddWallPhotoRoute.name,
-          path: '/add-wall-photo-page',
+/// [_i26.WallPhotoCameraPreviewPage]
+class WallPhotoCameraPreviewRoute
+    extends _i32.PageRouteInfo<WallPhotoCameraPreviewRouteArgs> {
+  WallPhotoCameraPreviewRoute({
+    required List<_i43.CameraDescription> cameras,
+    _i33.Key? key,
+  }) : super(
+          WallPhotoCameraPreviewRoute.name,
+          path: '/wall-photo-camera-preview-page',
+          args: WallPhotoCameraPreviewRouteArgs(
+            cameras: cameras,
+            key: key,
+          ),
         );
 
-  static const String name = 'AddWallPhotoRoute';
+  static const String name = 'WallPhotoCameraPreviewRoute';
+}
+
+class WallPhotoCameraPreviewRouteArgs {
+  const WallPhotoCameraPreviewRouteArgs({
+    required this.cameras,
+    this.key,
+  });
+
+  final List<_i43.CameraDescription> cameras;
+
+  final _i33.Key? key;
+
+  @override
+  String toString() {
+    return 'WallPhotoCameraPreviewRouteArgs{cameras: $cameras, key: $key}';
+  }
 }
 
 /// generated route for
