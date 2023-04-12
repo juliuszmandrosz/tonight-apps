@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:payments/domain/domain.dart';
 import 'package:tonight/failure/failure_page.dart';
-import 'package:tonight/presentation/add_wall_photo/add_wall_photo_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
 import 'package:tonight/presentation/club_details/club_details_page.dart';
 import 'package:tonight/presentation/club_filters/club_filters_page.dart';
@@ -34,6 +33,7 @@ import 'package:tonight/presentation/update_profile_picture/update_profile_pictu
 import 'package:tonight/presentation/update_username/update_username_page.dart';
 import 'package:tonight/presentation/user_details/user_details_page.dart';
 import 'package:tonight/presentation/vip_checkout/vip_checkout_page.dart';
+import 'package:tonight/presentation/wall_photo_camera_preview/wall_photo_camera_preview_page.dart';
 import 'package:tonight/presentation/wall_photos/wall_photos_page.dart';
 import 'package:tonight/presentation/welcome_loader/welcome_loader_page.dart';
 
@@ -191,7 +191,7 @@ const animationDuration = 300;
       durationInMilliseconds: animationDuration,
     ),
     CustomRoute(
-      page: AddWallPhotoPage,
+      page: WallPhotoCameraPreviewPage,
       transitionsBuilder: slideUpTransition,
       durationInMilliseconds: animationDuration,
     ),
