@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/drawer/tonight_drawer.dart';
+import 'package:tonight/presentation/navigator/tonight_navigation_destinations.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
@@ -24,6 +25,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
       routes: const [
         WallPhotosRoute(),
         DiscoverRoute(),
+        WallPhotosRoute(),
         FavoritesRoute(),
         ProfileRoute(),
       ],
@@ -31,6 +33,11 @@ class _NavigatorPageState extends State<NavigatorPage> {
         return NavigationBar(
           selectedIndex: tabsRouter.activeIndex,
           onDestinationSelected: (i) {
+            if (i == TonightNavigationDestinations.add.index) {
+              context.pushRoute(const AddWallPhotoRoute());
+              i = selectedIndex;
+            }
+
             setState(() {
               selectedIndex = i;
             });
@@ -45,6 +52,10 @@ class _NavigatorPageState extends State<NavigatorPage> {
               icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
               // TODO - add translation
               label: 'Odkrywaj',
+            ),
+            NavigationDestination(
+              icon: const FaIcon(FontAwesomeIcons.plus),
+              label: S().add,
             ),
             NavigationDestination(
               icon: const FaIcon(FontAwesomeIcons.solidHeart),
