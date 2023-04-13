@@ -19,7 +19,6 @@ import 'package:flutter/material.dart' as _i34;
 import 'package:payments/domain/domain.dart' as _i39;
 import 'package:tickets/tickets.dart' as _i43;
 
-import '../../failure/failure_page.dart' as _i18;
 import '../add_wall_photo/add_wall_photo_page.dart' as _i27;
 import '../app_settings/app_settings_page.dart' as _i22;
 import '../club_details/club_details_page.dart' as _i8;
@@ -30,6 +29,7 @@ import '../event_date_picker/event_date_picker_page.dart' as _i10;
 import '../event_filters/event_filters_page.dart' as _i5;
 import '../event_review/review_page.dart' as _i21;
 import '../events_details/event_details_page.dart' as _i6;
+import '../failure/failure_page.dart' as _i18;
 import '../favorites/favorites_page.dart' as _i31;
 import '../invoice_data/invoice_data_page.dart' as _i17;
 import '../network_lost/network_lost_page.dart' as _i4;
@@ -49,7 +49,7 @@ import '../update_username/update_username_page.dart' as _i19;
 import '../user_details/user_details_page.dart' as _i7;
 import '../vip_checkout/vip_checkout_page.dart' as _i12;
 import '../wall_photo_camera_preview/wall_photo_camera_preview_page.dart'
-    as _i26;
+as _i26;
 import '../wall_photos/wall_photos_page.dart' as _i28;
 import '../welcome_loader/welcome_loader_page.dart' as _i3;
 import 'page_transitions/fade_in_transition.dart' as _i37;
@@ -464,7 +464,8 @@ class AppRouter extends _i33.RootStackRouter {
   };
 
   @override
-  List<_i33.RouteConfig> get routes => [
+  List<_i33.RouteConfig> get routes =>
+      [
         _i33.RouteConfig(
           SplashRoute.name,
           path: '/',
@@ -608,9 +609,9 @@ class AppRouter extends _i33.RootStackRouter {
 class SplashRoute extends _i33.PageRouteInfo<void> {
   const SplashRoute()
       : super(
-          SplashRoute.name,
-          path: '/',
-        );
+    SplashRoute.name,
+    path: '/',
+  );
 
   static const String name = 'SplashRoute';
 }
@@ -620,9 +621,9 @@ class SplashRoute extends _i33.PageRouteInfo<void> {
 class SignInRoute extends _i33.PageRouteInfo<void> {
   const SignInRoute()
       : super(
-          SignInRoute.name,
-          path: '/sign-in-page',
-        );
+    SignInRoute.name,
+    path: '/sign-in-page',
+  );
 
   static const String name = 'SignInRoute';
 }
@@ -632,10 +633,10 @@ class SignInRoute extends _i33.PageRouteInfo<void> {
 class WelcomeLoaderRoute extends _i33.PageRouteInfo<void> {
   const WelcomeLoaderRoute({List<_i33.PageRouteInfo>? children})
       : super(
-          WelcomeLoaderRoute.name,
-          path: '/welcome-loader-page',
-          initialChildren: children,
-        );
+    WelcomeLoaderRoute.name,
+    path: '/welcome-loader-page',
+    initialChildren: children,
+  );
 
   static const String name = 'WelcomeLoaderRoute';
 }
@@ -645,9 +646,9 @@ class WelcomeLoaderRoute extends _i33.PageRouteInfo<void> {
 class NetworkLostRoute extends _i33.PageRouteInfo<void> {
   const NetworkLostRoute()
       : super(
-          NetworkLostRoute.name,
-          path: '/network-lost-page',
-        );
+    NetworkLostRoute.name,
+    path: '/network-lost-page',
+  );
 
   static const String name = 'NetworkLostRoute';
 }
@@ -659,13 +660,13 @@ class EventFiltersRoute extends _i33.PageRouteInfo<EventFiltersRouteArgs> {
     required _i34.BuildContext blocContext,
     _i34.Key? key,
   }) : super(
-          EventFiltersRoute.name,
-          path: '/event-filters-page',
-          args: EventFiltersRouteArgs(
-            blocContext: blocContext,
-            key: key,
-          ),
-        );
+    EventFiltersRoute.name,
+    path: '/event-filters-page',
+    args: EventFiltersRouteArgs(
+      blocContext: blocContext,
+      key: key,
+    ),
+  );
 
   static const String name = 'EventFiltersRoute';
 }
@@ -696,16 +697,16 @@ class EventDetailsRoute extends _i33.PageRouteInfo<EventDetailsRouteArgs> {
     int? ticketPrice,
     _i34.Key? key,
   }) : super(
-          EventDetailsRoute.name,
-          path: '/event-details-page',
-          args: EventDetailsRouteArgs(
-            eventId: eventId,
-            event: event,
-            heroTag: heroTag,
-            ticketPrice: ticketPrice,
-            key: key,
-          ),
-        );
+    EventDetailsRoute.name,
+    path: '/event-details-page',
+    args: EventDetailsRouteArgs(
+      eventId: eventId,
+      event: event,
+      heroTag: heroTag,
+      ticketPrice: ticketPrice,
+      key: key,
+    ),
+  );
 
   static const String name = 'EventDetailsRoute';
 }
@@ -742,13 +743,13 @@ class UserDetailsRoute extends _i33.PageRouteInfo<UserDetailsRouteArgs> {
     required String userId,
     _i34.Key? key,
   }) : super(
-          UserDetailsRoute.name,
-          path: '/user-details-page',
-          args: UserDetailsRouteArgs(
-            userId: userId,
-            key: key,
-          ),
-        );
+    UserDetailsRoute.name,
+    path: '/user-details-page',
+    args: UserDetailsRouteArgs(
+      userId: userId,
+      key: key,
+    ),
+  );
 
   static const String name = 'UserDetailsRoute';
 }
@@ -778,15 +779,15 @@ class ClubDetailsRoute extends _i33.PageRouteInfo<ClubDetailsRouteArgs> {
     _i42.Club? club,
     String? heroTag,
   }) : super(
-          ClubDetailsRoute.name,
-          path: '/club-details-page',
-          args: ClubDetailsRouteArgs(
-            key: key,
-            clubId: clubId,
-            club: club,
-            heroTag: heroTag,
-          ),
-        );
+    ClubDetailsRoute.name,
+    path: '/club-details-page',
+    args: ClubDetailsRouteArgs(
+      key: key,
+      clubId: clubId,
+      club: club,
+      heroTag: heroTag,
+    ),
+  );
 
   static const String name = 'ClubDetailsRoute';
 }
@@ -820,13 +821,13 @@ class TicketQrRoute extends _i33.PageRouteInfo<TicketQrRouteArgs> {
     required _i43.Ticket ticket,
     _i34.Key? key,
   }) : super(
-          TicketQrRoute.name,
-          path: '/ticket-qr-page',
-          args: TicketQrRouteArgs(
-            ticket: ticket,
-            key: key,
-          ),
-        );
+    TicketQrRoute.name,
+    path: '/ticket-qr-page',
+    args: TicketQrRouteArgs(
+      ticket: ticket,
+      key: key,
+    ),
+  );
 
   static const String name = 'TicketQrRoute';
 }
@@ -855,13 +856,13 @@ class EventDatePickerRoute
     required _i34.BuildContext blocContext,
     _i34.Key? key,
   }) : super(
-          EventDatePickerRoute.name,
-          path: '/event-date-picker-page',
-          args: EventDatePickerRouteArgs(
-            blocContext: blocContext,
-            key: key,
-          ),
-        );
+    EventDatePickerRoute.name,
+    path: '/event-date-picker-page',
+    args: EventDatePickerRouteArgs(
+      blocContext: blocContext,
+      key: key,
+    ),
+  );
 
   static const String name = 'EventDatePickerRoute';
 }
@@ -889,13 +890,13 @@ class TicketCheckoutRoute extends _i33.PageRouteInfo<TicketCheckoutRouteArgs> {
     required _i41.Event event,
     _i34.Key? key,
   }) : super(
-          TicketCheckoutRoute.name,
-          path: '/ticket-checkout-page',
-          args: TicketCheckoutRouteArgs(
-            event: event,
-            key: key,
-          ),
-        );
+    TicketCheckoutRoute.name,
+    path: '/ticket-checkout-page',
+    args: TicketCheckoutRouteArgs(
+      event: event,
+      key: key,
+    ),
+  );
 
   static const String name = 'TicketCheckoutRoute';
 }
@@ -923,13 +924,13 @@ class VipCheckoutRoute extends _i33.PageRouteInfo<VipCheckoutRouteArgs> {
     required _i43.Ticket ticket,
     _i34.Key? key,
   }) : super(
-          VipCheckoutRoute.name,
-          path: '/vip-checkout-page',
-          args: VipCheckoutRouteArgs(
-            ticket: ticket,
-            key: key,
-          ),
-        );
+    VipCheckoutRoute.name,
+    path: '/vip-checkout-page',
+    args: VipCheckoutRouteArgs(
+      ticket: ticket,
+      key: key,
+    ),
+  );
 
   static const String name = 'VipCheckoutRoute';
 }
@@ -958,13 +959,13 @@ class TicketPaymentConfirmRoute
     required _i43.Ticket ticket,
     _i34.Key? key,
   }) : super(
-          TicketPaymentConfirmRoute.name,
-          path: '/ticket-payment-confirm-page',
-          args: TicketPaymentConfirmRouteArgs(
-            ticket: ticket,
-            key: key,
-          ),
-        );
+    TicketPaymentConfirmRoute.name,
+    path: '/ticket-payment-confirm-page',
+    args: TicketPaymentConfirmRouteArgs(
+      ticket: ticket,
+      key: key,
+    ),
+  );
 
   static const String name = 'TicketPaymentConfirmRoute';
 }
@@ -990,9 +991,9 @@ class TicketPaymentConfirmRouteArgs {
 class TicketScanConfirmRoute extends _i33.PageRouteInfo<void> {
   const TicketScanConfirmRoute()
       : super(
-          TicketScanConfirmRoute.name,
-          path: '/ticket-scan-confirm-page',
-        );
+    TicketScanConfirmRoute.name,
+    path: '/ticket-scan-confirm-page',
+  );
 
   static const String name = 'TicketScanConfirmRoute';
 }
@@ -1002,9 +1003,9 @@ class TicketScanConfirmRoute extends _i33.PageRouteInfo<void> {
 class OnboardingUserDetailsRoute extends _i33.PageRouteInfo<void> {
   const OnboardingUserDetailsRoute()
       : super(
-          OnboardingUserDetailsRoute.name,
-          path: '/onboarding-user-details-page',
-        );
+    OnboardingUserDetailsRoute.name,
+    path: '/onboarding-user-details-page',
+  );
 
   static const String name = 'OnboardingUserDetailsRoute';
 }
@@ -1014,9 +1015,9 @@ class OnboardingUserDetailsRoute extends _i33.PageRouteInfo<void> {
 class OnboardingRoute extends _i33.PageRouteInfo<void> {
   const OnboardingRoute()
       : super(
-          OnboardingRoute.name,
-          path: '/onboarding-page',
-        );
+    OnboardingRoute.name,
+    path: '/onboarding-page',
+  );
 
   static const String name = 'OnboardingRoute';
 }
@@ -1028,13 +1029,13 @@ class InvoiceDataRoute extends _i33.PageRouteInfo<InvoiceDataRouteArgs> {
     required _i39.CustomerData customerData,
     _i34.Key? key,
   }) : super(
-          InvoiceDataRoute.name,
-          path: '/invoice-data-page',
-          args: InvoiceDataRouteArgs(
-            customerData: customerData,
-            key: key,
-          ),
-        );
+    InvoiceDataRoute.name,
+    path: '/invoice-data-page',
+    args: InvoiceDataRouteArgs(
+      customerData: customerData,
+      key: key,
+    ),
+  );
 
   static const String name = 'InvoiceDataRoute';
 }
@@ -1062,13 +1063,13 @@ class FailureRoute extends _i33.PageRouteInfo<FailureRouteArgs> {
     required Function retryCallback,
     _i34.Key? key,
   }) : super(
-          FailureRoute.name,
-          path: '/failure-page',
-          args: FailureRouteArgs(
-            retryCallback: retryCallback,
-            key: key,
-          ),
-        );
+    FailureRoute.name,
+    path: '/failure-page',
+    args: FailureRouteArgs(
+      retryCallback: retryCallback,
+      key: key,
+    ),
+  );
 
   static const String name = 'FailureRoute';
 }
@@ -1096,13 +1097,13 @@ class UpdateUsernameRoute extends _i33.PageRouteInfo<UpdateUsernameRouteArgs> {
     required String currentUsername,
     _i34.Key? key,
   }) : super(
-          UpdateUsernameRoute.name,
-          path: '/update-username-page',
-          args: UpdateUsernameRouteArgs(
-            currentUsername: currentUsername,
-            key: key,
-          ),
-        );
+    UpdateUsernameRoute.name,
+    path: '/update-username-page',
+    args: UpdateUsernameRouteArgs(
+      currentUsername: currentUsername,
+      key: key,
+    ),
+  );
 
   static const String name = 'UpdateUsernameRoute';
 }
@@ -1132,14 +1133,14 @@ class UpdateProfilePictureRoute
     required String username,
     _i34.Key? key,
   }) : super(
-          UpdateProfilePictureRoute.name,
-          path: '/update-profile-picture-page',
-          args: UpdateProfilePictureRouteArgs(
-            currentProfilePictureUrl: currentProfilePictureUrl,
-            username: username,
-            key: key,
-          ),
-        );
+    UpdateProfilePictureRoute.name,
+    path: '/update-profile-picture-page',
+    args: UpdateProfilePictureRouteArgs(
+      currentProfilePictureUrl: currentProfilePictureUrl,
+      username: username,
+      key: key,
+    ),
+  );
 
   static const String name = 'UpdateProfilePictureRoute';
 }
@@ -1170,13 +1171,13 @@ class ReviewRoute extends _i33.PageRouteInfo<ReviewRouteArgs> {
     required String eventId,
     _i34.Key? key,
   }) : super(
-          ReviewRoute.name,
-          path: '/review-page',
-          args: ReviewRouteArgs(
-            eventId: eventId,
-            key: key,
-          ),
-        );
+    ReviewRoute.name,
+    path: '/review-page',
+    args: ReviewRouteArgs(
+      eventId: eventId,
+      key: key,
+    ),
+  );
 
   static const String name = 'ReviewRoute';
 }
@@ -1202,9 +1203,9 @@ class ReviewRouteArgs {
 class AppSettingsRoute extends _i33.PageRouteInfo<void> {
   const AppSettingsRoute()
       : super(
-          AppSettingsRoute.name,
-          path: '/app-settings-page',
-        );
+    AppSettingsRoute.name,
+    path: '/app-settings-page',
+  );
 
   static const String name = 'AppSettingsRoute';
 }
@@ -1214,9 +1215,9 @@ class AppSettingsRoute extends _i33.PageRouteInfo<void> {
 class ContactRoute extends _i33.PageRouteInfo<void> {
   const ContactRoute()
       : super(
-          ContactRoute.name,
-          path: '/contact-page',
-        );
+    ContactRoute.name,
+    path: '/contact-page',
+  );
 
   static const String name = 'ContactRoute';
 }
@@ -1228,13 +1229,13 @@ class PaymentMethodRoute extends _i33.PageRouteInfo<PaymentMethodRouteArgs> {
     required _i39.CustomerData customerData,
     _i34.Key? key,
   }) : super(
-          PaymentMethodRoute.name,
-          path: '/payment-method-page',
-          args: PaymentMethodRouteArgs(
-            customerData: customerData,
-            key: key,
-          ),
-        );
+    PaymentMethodRoute.name,
+    path: '/payment-method-page',
+    args: PaymentMethodRouteArgs(
+      customerData: customerData,
+      key: key,
+    ),
+  );
 
   static const String name = 'PaymentMethodRoute';
 }
@@ -1262,13 +1263,13 @@ class ClubFiltersRoute extends _i33.PageRouteInfo<ClubFiltersRouteArgs> {
     required _i34.BuildContext blocContext,
     _i34.Key? key,
   }) : super(
-          ClubFiltersRoute.name,
-          path: '/club-filters-page',
-          args: ClubFiltersRouteArgs(
-            blocContext: blocContext,
-            key: key,
-          ),
-        );
+    ClubFiltersRoute.name,
+    path: '/club-filters-page',
+    args: ClubFiltersRouteArgs(
+      blocContext: blocContext,
+      key: key,
+    ),
+  );
 
   static const String name = 'ClubFiltersRoute';
 }
@@ -1297,13 +1298,13 @@ class WallPhotoCameraPreviewRoute
     required List<_i44.CameraDescription> cameras,
     _i34.Key? key,
   }) : super(
-          WallPhotoCameraPreviewRoute.name,
-          path: '/wall-photo-camera-preview-page',
-          args: WallPhotoCameraPreviewRouteArgs(
-            cameras: cameras,
-            key: key,
-          ),
-        );
+    WallPhotoCameraPreviewRoute.name,
+    path: '/wall-photo-camera-preview-page',
+    args: WallPhotoCameraPreviewRouteArgs(
+      cameras: cameras,
+      key: key,
+    ),
+  );
 
   static const String name = 'WallPhotoCameraPreviewRoute';
 }
@@ -1332,14 +1333,14 @@ class AddWallPhotoRoute extends _i33.PageRouteInfo<AddWallPhotoRouteArgs> {
     required String heroTag,
     _i34.Key? key,
   }) : super(
-          AddWallPhotoRoute.name,
-          path: '/add-wall-photo-page',
-          args: AddWallPhotoRouteArgs(
-            photo: photo,
-            heroTag: heroTag,
-            key: key,
-          ),
-        );
+    AddWallPhotoRoute.name,
+    path: '/add-wall-photo-page',
+    args: AddWallPhotoRouteArgs(
+      photo: photo,
+      heroTag: heroTag,
+      key: key,
+    ),
+  );
 
   static const String name = 'AddWallPhotoRoute';
 }
@@ -1368,9 +1369,9 @@ class AddWallPhotoRouteArgs {
 class WallPhotosRoute extends _i33.PageRouteInfo<void> {
   const WallPhotosRoute()
       : super(
-          WallPhotosRoute.name,
-          path: 'wall-photos-page',
-        );
+    WallPhotosRoute.name,
+    path: 'wall-photos-page',
+  );
 
   static const String name = 'WallPhotosRoute';
 }
@@ -1380,9 +1381,9 @@ class WallPhotosRoute extends _i33.PageRouteInfo<void> {
 class DiscoverRoute extends _i33.PageRouteInfo<void> {
   const DiscoverRoute()
       : super(
-          DiscoverRoute.name,
-          path: 'discover-page',
-        );
+    DiscoverRoute.name,
+    path: 'discover-page',
+  );
 
   static const String name = 'DiscoverRoute';
 }
@@ -1392,9 +1393,9 @@ class DiscoverRoute extends _i33.PageRouteInfo<void> {
 class TicketsRoute extends _i33.PageRouteInfo<void> {
   const TicketsRoute()
       : super(
-          TicketsRoute.name,
-          path: 'tickets-page',
-        );
+    TicketsRoute.name,
+    path: 'tickets-page',
+  );
 
   static const String name = 'TicketsRoute';
 }
@@ -1404,9 +1405,9 @@ class TicketsRoute extends _i33.PageRouteInfo<void> {
 class FavoritesRoute extends _i33.PageRouteInfo<void> {
   const FavoritesRoute()
       : super(
-          FavoritesRoute.name,
-          path: 'favorites-page',
-        );
+    FavoritesRoute.name,
+    path: 'favorites-page',
+  );
 
   static const String name = 'FavoritesRoute';
 }
@@ -1416,9 +1417,9 @@ class FavoritesRoute extends _i33.PageRouteInfo<void> {
 class ProfileRoute extends _i33.PageRouteInfo<void> {
   const ProfileRoute()
       : super(
-          ProfileRoute.name,
-          path: 'profile-page',
-        );
+    ProfileRoute.name,
+    path: 'profile-page',
+  );
 
   static const String name = 'ProfileRoute';
 }
