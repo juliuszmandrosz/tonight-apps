@@ -1,11 +1,12 @@
-import 'dart:io';
-
 import 'package:camera/camera.dart';
-import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/add_wall_photo/add_wall_photo_cubit.dart';
 import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/add_wall_photo/widgets/add_wall_photo_button.dart';
+import 'package:tonight/presentation/add_wall_photo/widgets/add_wall_photo_club_tile.dart';
+import 'package:tonight/presentation/add_wall_photo/widgets/add_wall_photo_event_tile.dart';
+import 'package:tonight/presentation/add_wall_photo/widgets/add_wall_photo_preview.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 
 class AddWallPhotoPage extends StatelessWidget {
@@ -25,24 +26,32 @@ class AddWallPhotoPage extends StatelessWidget {
       child: Scaffold(
         // TODO - add translation
         appBar: const TonightAppBar(title: 'Opublikuj'),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            LayoutBuilder(
-              builder: (context, constraints) {
-                return SizedBox(
-                  height: constraints.maxWidth,
-                  child: Hero(
-                    tag: heroTag,
-                    //this just wont animate hero
-                    child: TransformHorizontally(
-                      child: Image.file(File(photo.path)),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ],
+        floatingActionButton: const AddWallPhotoButton(),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(height: 30),
+              AddWallPhotoPreview(
+                photo: photo,
+                heroTag: heroTag,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: const [
+                    SizedBox(height: 30),
+                    Divider(thickness: 1),
+                    SizedBox(height: 16),
+                    AddWallPhotoClubTile(),
+                    SizedBox(height: 16),
+                    AddWallPhotoEventTile(),
+                    SizedBox(height: 80),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
