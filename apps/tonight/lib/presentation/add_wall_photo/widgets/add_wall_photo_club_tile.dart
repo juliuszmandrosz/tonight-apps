@@ -11,10 +11,14 @@ class AddWallPhotoClubTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DenseListTile(
-      leading: const FaIcon(FontAwesomeIcons.building),
-      trailing: const FaIcon(
+      leading: FaIcon(
+        FontAwesomeIcons.building,
+        color: context.secondaryColor,
+      ),
+      trailing: FaIcon(
         FontAwesomeIcons.chevronRight,
         size: 16,
+        color: context.secondaryColor,
       ),
       title: Text(
         S().clubName,
