@@ -402,6 +402,7 @@ class AppRouter extends _i33.RootStackRouter {
         routeData: routeData,
         child: _i27.AddWallPhotoPage(
           photo: args.photo,
+          heroTag: args.heroTag,
           key: args.key,
         ),
         transitionsBuilder: _i36.slideLeftTransition,
@@ -1328,12 +1329,14 @@ class WallPhotoCameraPreviewRouteArgs {
 class AddWallPhotoRoute extends _i33.PageRouteInfo<AddWallPhotoRouteArgs> {
   AddWallPhotoRoute({
     required _i44.XFile photo,
+    required String heroTag,
     _i34.Key? key,
   }) : super(
           AddWallPhotoRoute.name,
           path: '/add-wall-photo-page',
           args: AddWallPhotoRouteArgs(
             photo: photo,
+            heroTag: heroTag,
             key: key,
           ),
         );
@@ -1344,16 +1347,19 @@ class AddWallPhotoRoute extends _i33.PageRouteInfo<AddWallPhotoRouteArgs> {
 class AddWallPhotoRouteArgs {
   const AddWallPhotoRouteArgs({
     required this.photo,
+    required this.heroTag,
     this.key,
   });
 
   final _i44.XFile photo;
 
+  final String heroTag;
+
   final _i34.Key? key;
 
   @override
   String toString() {
-    return 'AddWallPhotoRouteArgs{photo: $photo, key: $key}';
+    return 'AddWallPhotoRouteArgs{photo: $photo, heroTag: $heroTag, key: $key}';
   }
 }
 
