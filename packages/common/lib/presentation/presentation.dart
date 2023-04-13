@@ -17,3 +17,4 @@ export 'ticket_logo_animation.dart';
 export 'tonight_hyper_link.dart';
 export 'tonight_icon_link.dart';
 export 'tonight_overlay.dart';
+export 'transform_horizontally.dart';

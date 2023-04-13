@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'dart:math' as math;
 
 import 'package:camera/camera.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/add_wall_photo/add_wall_photo_cubit.dart';
@@ -28,22 +28,20 @@ class AddWallPhotoPage extends StatelessWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            LayoutBuilder(builder: (context, constraints) {
-              return SizedBox(
-                height: constraints.maxWidth,
-                child: Hero(
-                  tag: heroTag,
-                  //this just wont animate hero
-                  child: Transform(
-                    alignment: Alignment.center,
-                    transform: Matrix4.rotationY(math.pi),
-                    child: Image.file(
-                      File(photo.path),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                return SizedBox(
+                  height: constraints.maxWidth,
+                  child: Hero(
+                    tag: heroTag,
+                    //this just wont animate hero
+                    child: TransformHorizontally(
+                      child: Image.file(File(photo.path)),
                     ),
                   ),
-                ),
-              );
-            }),
+                );
+              },
+            ),
           ],
         ),
       ),
