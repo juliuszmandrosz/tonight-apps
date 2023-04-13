@@ -26,6 +26,7 @@ class _WallPhotoCameraPreviewPageState extends State<WallPhotoCameraPreviewPage>
   late CameraController _cameraController;
   XFile? _picture;
   var _flashScreen = false;
+  static const _pictureHeroTag = 'wallPhotoCameraPreviewHero';
 
   @override
   void initState() {
@@ -103,8 +104,12 @@ class _WallPhotoCameraPreviewPageState extends State<WallPhotoCameraPreviewPage>
         floatingActionButton: _picture == null
             ? null
             : FloatingActionButton.extended(
-                onPressed: () =>
-                    context.pushRoute(AddWallPhotoRoute(photo: _picture!)),
+                onPressed: () => context.pushRoute(
+                  AddWallPhotoRoute(
+                    photo: _picture!,
+                    heroTag: _pictureHeroTag,
+                  ),
+                ),
                 icon: const FaIcon(FontAwesomeIcons.forward),
                 label: Text(S().next),
               ),
@@ -165,10 +170,13 @@ class _WallPhotoCameraPreviewPageState extends State<WallPhotoCameraPreviewPage>
       return const TicketLogoAnimation();
     }
     if (_picture != null) {
-      return TransformHorizontally(
-        child: Image.file(
-          File(_picture!.path),
-          fit: BoxFit.cover,
+      return Hero(
+        tag: _pictureHeroTag,
+        child: TransformHorizontally(
+          child: Image.file(
+            File(_picture!.path),
+            fit: BoxFit.cover,
+          ),
         ),
       );
     }
