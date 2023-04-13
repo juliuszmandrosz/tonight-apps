@@ -49,6 +49,7 @@ import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:tonight/application/payment_method/payment_method_cubit.dart';
 import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
+import 'package:tonight/application/select_club/select_club_cubit.dart';
 import 'package:tonight/application/terms_of_service/terms_of_service_cubit.dart';
 import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
@@ -305,6 +306,12 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => UserDetailsCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => SelectClubCubit(
       getIt(),
     ),
   );
