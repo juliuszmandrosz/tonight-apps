@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/drawer/tonight_drawer.dart';
@@ -50,28 +51,32 @@ class _NavigatorPageState extends State<NavigatorPage> {
             tabsRouter.setActiveIndex(i);
           },
           destinations: [
-            const NavigationDestination(
-              icon: FaIcon(FontAwesomeIcons.fire),
+            NavigationDestination(
+              icon: SvgPicture.asset(
+                'assets/icons/icon_logo_transparent.svg',
+                semanticsLabel: 'Icon Logo',
+                height: 32,
+              ),
               label: 'Tonight',
             ),
             const NavigationDestination(
-              icon: FaIcon(FontAwesomeIcons.magnifyingGlass),
+              icon: FaIcon(FontAwesomeIcons.compass),
               // TODO - add translation
               label: 'Odkrywaj',
             ),
             const NavigationDestination(
               icon: FaIcon(
-                FontAwesomeIcons.camera,
+                FontAwesomeIcons.paperPlane,
               ),
               // TODO - add translation
               label: 'Opublikuj',
             ),
             NavigationDestination(
-              icon: const FaIcon(FontAwesomeIcons.solidHeart),
+              icon: const FaIcon(FontAwesomeIcons.heart),
               label: S().favorites,
             ),
             NavigationDestination(
-              icon: const FaIcon(FontAwesomeIcons.solidUser),
+              icon: const FaIcon(FontAwesomeIcons.user),
               label: S().profile,
             ),
           ],
