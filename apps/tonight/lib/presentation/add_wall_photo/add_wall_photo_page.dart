@@ -10,21 +10,21 @@ import 'package:tonight/presentation/core/tonight_app_bar.dart';
 
 class AddWallPhotoPage extends StatelessWidget {
   final XFile photo;
+  final String heroTag;
 
   const AddWallPhotoPage({
     required this.photo,
+    required this.heroTag,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // TODO - add hero tah
-    const heroTag = '';
     return BlocProvider(
       create: (context) => getIt<AddWallPhotoCubit>()..initState(photo),
       child: Scaffold(
         // TODO - add translation
-        appBar: TonightAppBar(title: 'Opublikuj'),
+        appBar: const TonightAppBar(title: 'Opublikuj'),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
