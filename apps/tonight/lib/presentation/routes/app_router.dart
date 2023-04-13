@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:payments/domain/domain.dart';
-import 'package:tonight/failure/failure_page.dart';
 import 'package:tonight/presentation/add_wall_photo/add_wall_photo_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
 import 'package:tonight/presentation/club_details/club_details_page.dart';
@@ -11,6 +10,7 @@ import 'package:tonight/presentation/event_date_picker/event_date_picker_page.da
 import 'package:tonight/presentation/event_filters/event_filters_page.dart';
 import 'package:tonight/presentation/event_review/review_page.dart';
 import 'package:tonight/presentation/events_details/event_details_page.dart';
+import 'package:tonight/presentation/failure/failure_page.dart';
 import 'package:tonight/presentation/favorites/favorites_page.dart';
 import 'package:tonight/presentation/invoice_data/invoice_data_page.dart';
 import 'package:tonight/presentation/network_lost/network_lost_page.dart';
