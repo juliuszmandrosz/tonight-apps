@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:payments/domain/domain.dart';
 import 'package:tonight/failure/failure_page.dart';
+import 'package:tonight/presentation/add_wall_photo/add_wall_photo_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
 import 'package:tonight/presentation/club_details/club_details_page.dart';
 import 'package:tonight/presentation/club_filters/club_filters_page.dart';
@@ -193,6 +194,11 @@ const animationDuration = 300;
     CustomRoute(
       page: WallPhotoCameraPreviewPage,
       transitionsBuilder: slideUpTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: AddWallPhotoPage,
+      transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
   ],
