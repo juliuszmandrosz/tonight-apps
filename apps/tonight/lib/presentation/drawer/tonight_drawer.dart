@@ -47,7 +47,7 @@ class _TonightDrawerState extends State<TonightDrawer> {
       label: S().privacyPolicy,
     ),
     DrawerDestination(
-      icon: FontAwesomeIcons.arrowRightFromBracket,
+      icon: FontAwesomeIcons.rightFromBracket,
       label: S().signOut,
     ),
     DrawerDestination(
