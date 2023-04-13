@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math' as math;
 
 import 'package:auto_route/auto_route.dart';
 import 'package:camera/camera.dart';
@@ -166,9 +165,7 @@ class _WallPhotoCameraPreviewPageState extends State<WallPhotoCameraPreviewPage>
       return const TicketLogoAnimation();
     }
     if (_picture != null) {
-      return Transform(
-        alignment: Alignment.center,
-        transform: Matrix4.rotationY(math.pi),
+      return TransformHorizontally(
         child: Image.file(
           File(_picture!.path),
           fit: BoxFit.cover,
