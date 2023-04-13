@@ -11,10 +11,14 @@ class AddWallPhotoEventTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DenseListTile(
-      leading: const FaIcon(FontAwesomeIcons.fire),
-      trailing: const FaIcon(
+      leading: FaIcon(
+        FontAwesomeIcons.fire,
+        color: context.secondaryColor,
+      ),
+      trailing: FaIcon(
         FontAwesomeIcons.chevronRight,
         size: 16,
+        color: context.secondaryColor,
       ),
       title: Text(
         S().eventName,

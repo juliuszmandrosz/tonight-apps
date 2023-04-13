@@ -41,7 +41,7 @@ class AddWallPhotoPage extends StatelessWidget {
                 child: Column(
                   children: const [
                     SizedBox(height: 30),
-                    Divider(thickness: 1),
+                    Divider(),
                     SizedBox(height: 16),
                     AddWallPhotoClubTile(),
                     SizedBox(height: 16),
