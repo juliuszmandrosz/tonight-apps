@@ -6,6 +6,7 @@ import 'package:camera/camera.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
 class WallPhotoCameraPreviewPage extends StatefulWidget {
@@ -25,6 +26,7 @@ class _WallPhotoCameraPreviewPageState extends State<WallPhotoCameraPreviewPage>
     with WidgetsBindingObserver {
   late CameraController _cameraController;
   XFile? _picture;
+  var _flashScreen = false;
 
   @override
   void initState() {
@@ -54,11 +56,9 @@ class _WallPhotoCameraPreviewPageState extends State<WallPhotoCameraPreviewPage>
       await Future.delayed(const Duration(milliseconds: 300));
       if (!mounted) return;
       setState(() {});
-    } on CameraException catch (e) {
+    } on CameraException {
       // TODO - add translation
-      context.showSnackbarMessage(
-        e.description ?? 'Błąd podczas inicjalizacji kamery',
-      );
+      context.showSnackbarMessage('Błąd podczas inicjalizacji kamery');
       context.popRoute();
     }
   }
@@ -67,15 +67,16 @@ class _WallPhotoCameraPreviewPageState extends State<WallPhotoCameraPreviewPage>
     if (!_cameraController.value.isInitialized) return;
     if (_cameraController.value.isTakingPicture) return;
     try {
+      setState(() {
+        _flashScreen = true;
+      });
       final picture = await _cameraController.takePicture();
       setState(() {
         _picture = picture;
       });
-    } on CameraException catch (e) {
+    } on CameraException {
       // TODO - add translation
-      context.showSnackbarMessage(
-        e.description ?? 'Błąd podczas zapisu zdjęcia',
-      );
+      context.showSnackbarMessage('Błąd podczas zapisu zdjęcia');
     }
   }
 
@@ -103,7 +104,8 @@ class _WallPhotoCameraPreviewPageState extends State<WallPhotoCameraPreviewPage>
         floatingActionButton: _picture == null
             ? null
             : FloatingActionButton.extended(
-                onPressed: () {},
+                onPressed: () =>
+                    context.pushRoute(AddWallPhotoRoute(photo: _picture!)),
                 icon: const FaIcon(FontAwesomeIcons.forward),
                 label: Text(S().next),
               ),
@@ -111,15 +113,6 @@ class _WallPhotoCameraPreviewPageState extends State<WallPhotoCameraPreviewPage>
           child: Stack(
             children: [
               _cameraPreview,
-              if (_picture == null)
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: IconButton(
-                    onPressed: _takePicture,
-                    icon: const Icon(Icons.circle),
-                    iconSize: 70,
-                  ),
-                ),
               Positioned(
                 top: 10,
                 left: 10,
@@ -136,6 +129,29 @@ class _WallPhotoCameraPreviewPageState extends State<WallPhotoCameraPreviewPage>
                         ? FontAwesomeIcons.arrowLeft
                         : FontAwesomeIcons.xmark,
                   ),
+                ),
+              ),
+              if (_picture == null)
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: IconButton(
+                    onPressed: _takePicture,
+                    icon: const Icon(Icons.circle),
+                    iconSize: 70,
+                  ),
+                ),
+              IgnorePointer(
+                ignoring: !_flashScreen,
+                child: AnimatedOpacity(
+                  opacity: _flashScreen ? 1.0 : 0.0,
+                  duration: const Duration(milliseconds: 100),
+                  curve: Curves.easeOut,
+                  child: Container(color: Colors.white),
+                  onEnd: () {
+                    setState(() {
+                      _flashScreen = false;
+                    });
+                  },
                 ),
               ),
             ],
