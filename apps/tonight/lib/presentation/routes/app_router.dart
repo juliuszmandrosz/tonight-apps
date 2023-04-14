@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:clubs/domain/club/club_entity.dart';
 import 'package:payments/domain/domain.dart';
 import 'package:tonight/presentation/add_wall_photo/add_wall_photo_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
@@ -23,6 +24,7 @@ import 'package:tonight/presentation/routes/page_transitions/slide_left_transiti
 import 'package:tonight/presentation/routes/page_transitions/slide_right_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/slide_up_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/zoom_in_transition.dart';
+import 'package:tonight/presentation/select_club/select_club_page.dart';
 import 'package:tonight/presentation/sign_in/sign_in_page.dart';
 import 'package:tonight/presentation/splash/splash_page.dart';
 import 'package:tonight/presentation/ticket_checkout/ticket_checkout_page.dart';
@@ -198,6 +200,11 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: AddWallPhotoPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute<Club>(
+      page: SelectClubPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
