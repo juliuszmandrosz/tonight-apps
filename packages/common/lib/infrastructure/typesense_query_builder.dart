@@ -68,7 +68,7 @@ class TypesenseQueryBuilder {
     required String query,
     required double lat,
     required double lng,
-    required int radius,
+    required double radius,
   }) {
     return query += 'location:($lat, $lng, $radius km)';
   }
