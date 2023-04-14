@@ -84,7 +84,7 @@ class _ClubFiltersMaxDistanceState extends State<ClubFiltersMaxDistance>
                                     divisions: 9,
                                     onChanged: (value) => context
                                         .read<ClubFiltersCubit>()
-                                        .changeMaxDistance(value.round()),
+                                        .changeMaxDistance(value),
                                   ),
                                 )
                               : locationState.isLoading
