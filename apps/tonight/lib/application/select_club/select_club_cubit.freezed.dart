@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SelectClubState {
   List<Club> get clubs => throw _privateConstructorUsedError;
-  Option<LatLng> get userLocation => throw _privateConstructorUsedError;
+  String get searchPhrase => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
   CubitStatus get initialStatus => throw _privateConstructorUsedError;
   CubitStatus get fetchNextPageStatus => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $SelectClubStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<Club> clubs,
-      Option<LatLng> userLocation,
+      String searchPhrase,
       bool hasReachedMax,
       CubitStatus initialStatus,
       CubitStatus fetchNextPageStatus,
@@ -61,7 +61,7 @@ class _$SelectClubStateCopyWithImpl<$Res, $Val extends SelectClubState>
   @override
   $Res call({
     Object? clubs = null,
-    Object? userLocation = null,
+    Object? searchPhrase = null,
     Object? hasReachedMax = null,
     Object? initialStatus = null,
     Object? fetchNextPageStatus = null,
@@ -74,10 +74,10 @@ class _$SelectClubStateCopyWithImpl<$Res, $Val extends SelectClubState>
           ? _value.clubs
           : clubs // ignore: cast_nullable_to_non_nullable
               as List<Club>,
-      userLocation: null == userLocation
-          ? _value.userLocation
-          : userLocation // ignore: cast_nullable_to_non_nullable
-              as Option<LatLng>,
+      searchPhrase: null == searchPhrase
+          ? _value.searchPhrase
+          : searchPhrase // ignore: cast_nullable_to_non_nullable
+              as String,
       hasReachedMax: null == hasReachedMax
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
@@ -116,7 +116,7 @@ abstract class _$$_SelectClubStateCopyWith<$Res>
   @useResult
   $Res call(
       {List<Club> clubs,
-      Option<LatLng> userLocation,
+      String searchPhrase,
       bool hasReachedMax,
       CubitStatus initialStatus,
       CubitStatus fetchNextPageStatus,
@@ -137,7 +137,7 @@ class __$$_SelectClubStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? clubs = null,
-    Object? userLocation = null,
+    Object? searchPhrase = null,
     Object? hasReachedMax = null,
     Object? initialStatus = null,
     Object? fetchNextPageStatus = null,
@@ -150,10 +150,10 @@ class __$$_SelectClubStateCopyWithImpl<$Res>
           ? _value._clubs
           : clubs // ignore: cast_nullable_to_non_nullable
               as List<Club>,
-      userLocation: null == userLocation
-          ? _value.userLocation
-          : userLocation // ignore: cast_nullable_to_non_nullable
-              as Option<LatLng>,
+      searchPhrase: null == searchPhrase
+          ? _value.searchPhrase
+          : searchPhrase // ignore: cast_nullable_to_non_nullable
+              as String,
       hasReachedMax: null == hasReachedMax
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
@@ -187,7 +187,7 @@ class __$$_SelectClubStateCopyWithImpl<$Res>
 class _$_SelectClubState implements _SelectClubState {
   _$_SelectClubState(
       {required final List<Club> clubs,
-      required this.userLocation,
+      required this.searchPhrase,
       required this.hasReachedMax,
       required this.initialStatus,
       required this.fetchNextPageStatus,
@@ -205,7 +205,7 @@ class _$_SelectClubState implements _SelectClubState {
   }
 
   @override
-  final Option<LatLng> userLocation;
+  final String searchPhrase;
   @override
   final bool hasReachedMax;
   @override
@@ -221,7 +221,7 @@ class _$_SelectClubState implements _SelectClubState {
 
   @override
   String toString() {
-    return 'SelectClubState(clubs: $clubs, userLocation: $userLocation, hasReachedMax: $hasReachedMax, initialStatus: $initialStatus, fetchNextPageStatus: $fetchNextPageStatus, filterClubsStatus: $filterClubsStatus, snackbarMessage: $snackbarMessage, selectedClub: $selectedClub)';
+    return 'SelectClubState(clubs: $clubs, searchPhrase: $searchPhrase, hasReachedMax: $hasReachedMax, initialStatus: $initialStatus, fetchNextPageStatus: $fetchNextPageStatus, filterClubsStatus: $filterClubsStatus, snackbarMessage: $snackbarMessage, selectedClub: $selectedClub)';
   }
 
   @override
@@ -230,8 +230,8 @@ class _$_SelectClubState implements _SelectClubState {
         (other.runtimeType == runtimeType &&
             other is _$_SelectClubState &&
             const DeepCollectionEquality().equals(other._clubs, _clubs) &&
-            (identical(other.userLocation, userLocation) ||
-                other.userLocation == userLocation) &&
+            (identical(other.searchPhrase, searchPhrase) ||
+                other.searchPhrase == searchPhrase) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
                 other.hasReachedMax == hasReachedMax) &&
             (identical(other.initialStatus, initialStatus) ||
@@ -250,7 +250,7 @@ class _$_SelectClubState implements _SelectClubState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_clubs),
-      userLocation,
+      searchPhrase,
       hasReachedMax,
       initialStatus,
       fetchNextPageStatus,
@@ -268,7 +268,7 @@ class _$_SelectClubState implements _SelectClubState {
 abstract class _SelectClubState implements SelectClubState {
   factory _SelectClubState(
       {required final List<Club> clubs,
-      required final Option<LatLng> userLocation,
+      required final String searchPhrase,
       required final bool hasReachedMax,
       required final CubitStatus initialStatus,
       required final CubitStatus fetchNextPageStatus,
@@ -279,7 +279,7 @@ abstract class _SelectClubState implements SelectClubState {
   @override
   List<Club> get clubs;
   @override
-  Option<LatLng> get userLocation;
+  String get searchPhrase;
   @override
   bool get hasReachedMax;
   @override

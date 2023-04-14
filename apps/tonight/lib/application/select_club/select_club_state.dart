@@ -4,7 +4,7 @@ part of 'select_club_cubit.dart';
 class SelectClubState with _$SelectClubState {
   factory SelectClubState({
     required List<Club> clubs,
-    required Option<LatLng> userLocation,
+    required String searchPhrase,
     required bool hasReachedMax,
     required CubitStatus initialStatus,
     required CubitStatus fetchNextPageStatus,
@@ -15,7 +15,7 @@ class SelectClubState with _$SelectClubState {
 
   factory SelectClubState.initial() => SelectClubState(
         clubs: [],
-        userLocation: none(),
+        searchPhrase: '',
         hasReachedMax: false,
         initialStatus: CubitStatus.initial,
         fetchNextPageStatus: CubitStatus.initial,
