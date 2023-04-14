@@ -48,12 +48,11 @@ class _WallPhotoCameraPreviewPageState extends State<WallPhotoCameraPreviewPage>
   Future<void> _initCamera(CameraDescription cameraDescription) async {
     _cameraController = CameraController(
       cameraDescription,
-      ResolutionPreset.max,
+      ResolutionPreset.medium,
       enableAudio: false,
     );
     try {
       await _cameraController.initialize();
-      await Future.delayed(const Duration(milliseconds: 300));
       if (!mounted) return;
       setState(() {});
     } on CameraException {
@@ -148,7 +147,7 @@ class _WallPhotoCameraPreviewPageState extends State<WallPhotoCameraPreviewPage>
                 ignoring: !_flashScreen,
                 child: AnimatedOpacity(
                   opacity: _flashScreen ? 1.0 : 0.0,
-                  duration: const Duration(milliseconds: 100),
+                  duration: const Duration(milliseconds: 300),
                   curve: Curves.easeOut,
                   child: Container(color: Colors.white),
                   onEnd: () {
@@ -169,17 +168,23 @@ class _WallPhotoCameraPreviewPageState extends State<WallPhotoCameraPreviewPage>
     if (!_cameraController.value.isInitialized) {
       return const TicketLogoAnimation();
     }
-    if (_picture != null) {
-      return Hero(
-        tag: _pictureHeroTag,
-        child: TransformHorizontally(
-          child: Image.file(
-            File(_picture!.path),
-            fit: BoxFit.cover,
-          ),
-        ),
-      );
-    }
-    return CameraPreview(_cameraController);
+
+    final content = _picture != null
+        ? Hero(
+            tag: _pictureHeroTag,
+            child: TransformHorizontally(
+              child: Image.file(
+                File(_picture!.path),
+                fit: BoxFit.cover,
+              ),
+            ),
+          )
+        : CameraPreview(_cameraController);
+
+    return Center(
+        child: Padding(
+      padding: const EdgeInsets.only(bottom: 20),
+      child: content,
+    ));
   }
 }
