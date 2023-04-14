@@ -84,9 +84,7 @@ class _EventFiltersMaxDistanceState extends State<EventFiltersMaxDistance>
                                     divisions: 9,
                                     onChanged: (value) => context
                                         .read<EventFiltersCubit>()
-                                        .changeMaxDistance(
-                                          value.round(),
-                                        ),
+                                        .changeMaxDistance(value),
                                   ),
                                 )
                               : locationState.isLoading

@@ -3,7 +3,7 @@ import 'package:common/common.dart';
 class MaxDistanceFilter implements IFilter {
   final bool enabled;
   final Map<String, double> userLocation;
-  final int maxDistance;
+  final double maxDistance;
 
   MaxDistanceFilter({
     required this.enabled,
@@ -25,7 +25,7 @@ class MaxDistanceFilter implements IFilter {
   MaxDistanceFilter copyWith({
     bool? enabled,
     Map<String, double>? userLocation,
-    int? maxDistance,
+    double? maxDistance,
   }) {
     return MaxDistanceFilter(
       enabled: enabled ?? this.enabled,
