@@ -1,5 +1,5 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:clubs/clubs.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/application/clubs/clubs_overview/clubs_overview_bloc.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
@@ -41,10 +41,11 @@ class ClubFiltersCubit extends Cubit<ClubFiltersState> {
     );
   }
 
-  void changeMaxDistance(int value) {
+  void changeMaxDistance(double value) {
     final currentFilters = state.filters.copyWith(
-      maxDistanceFilter:
-          state.filters.maxDistanceFilter.copyWith(maxDistance: value),
+      maxDistanceFilter: state.filters.maxDistanceFilter.copyWith(
+        maxDistance: value,
+      ),
     );
     emit(state.copyWith(filters: currentFilters));
   }
