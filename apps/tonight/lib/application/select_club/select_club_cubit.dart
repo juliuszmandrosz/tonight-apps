@@ -8,6 +8,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:translations/translations.dart';
 
 part 'select_club_cubit.freezed.dart';
 part 'select_club_state.dart';
@@ -19,17 +20,9 @@ class SelectClubCubit extends Cubit<SelectClubState> {
 
   SelectClubCubit(this._clubFacade) : super(SelectClubState.initial());
 
-  initState(LatLng? userLocation) {
-    emit(
-      state.copyWith(
-        userLocation: userLocation != null ? some(userLocation) : none(),
-      ),
-    );
-  }
-
-  Future<void> fetchClubs() async {
+  Future<void> fetchClubs(Future<LatLng> userLocation) async {
     emit(state.copyWith(initialStatus: CubitStatus.loading));
-    final filters = _getClubFilters();
+    final filters = await _getClubFilters(userLocation);
     final result = await _clubFacade.getClubs(filters, pageSize: _pageSize);
     result.fold(
       (_) => emit(state.copyWith(initialStatus: CubitStatus.failure)),
@@ -43,10 +36,10 @@ class SelectClubCubit extends Cubit<SelectClubState> {
     );
   }
 
-  Future<void> fetchNextClubsPage(LatLng? userLocation) async {
+  Future<void> fetchNextClubsPage(Future<LatLng> userLocation) async {
     if (state.hasReachedMax) return;
     emit(state.copyWith(fetchNextPageStatus: CubitStatus.loading));
-    final filters = _getClubFilters();
+    final filters = await _getClubFilters(userLocation);
     final result = await _clubFacade.getClubs(
       filters,
       pageSize: _pageSize,
@@ -68,38 +61,53 @@ class SelectClubCubit extends Cubit<SelectClubState> {
     emit(state.copyWith(selectedClub: some(club)));
   }
 
-  Future<void> filterClubs(String phrase) async {
-    final filters = _getClubFilters().copyWith(
+  Future<void> filterClubs({
+    required String phrase,
+    required Future<LatLng> userLocation,
+  }) async {
+    emit(state.copyWith(filterClubsStatus: CubitStatus.loading));
+    final locationFilters = await _getClubFilters(userLocation);
+    final filters = locationFilters.copyWith(
       phraseFilter: PhraseFilter(phrase: phrase),
     );
-    emit(state.copyWith(filterClubsStatus: CubitStatus.loading));
     final result = await _clubFacade.getClubs(filters, pageSize: _pageSize);
     result.fold(
-      (_) => emit(state.copyWith(filterClubsStatus: CubitStatus.failure)),
+      (_) {
+        emit(
+          state.copyWith(
+            filterClubsStatus: CubitStatus.failure,
+            searchPhrase: phrase,
+          ),
+        );
+        _showSnackbarMessage(S().serverError);
+      },
       (clubs) => emit(
         state.copyWith(
           clubs: clubs,
           hasReachedMax: clubs.length < _pageSize,
           filterClubsStatus: CubitStatus.success,
+          searchPhrase: phrase,
         ),
       ),
     );
   }
 
-  ClubFilters _getClubFilters() {
-    if (state.userLocation.isNone()) {
-      return ClubFilters.empty();
-    }
-    final userLocation = state.userLocation.getOrCrash();
+  Future<ClubFilters> _getClubFilters(Future<LatLng> userLocation) async {
+    final location = await Future.value(userLocation);
     return ClubFilters.empty().copyWith(
       maxDistanceFilter: MaxDistanceFilter(
         enabled: true,
         userLocation: {
-          latitude: userLocation.latitude,
-          longitude: userLocation.longitude,
+          latitude: location.latitude,
+          longitude: location.longitude,
         },
-        maxDistance: 50,
+        maxDistance: 0.1,
       ),
     );
+  }
+
+  _showSnackbarMessage(String message) {
+    emit(state.copyWith(snackbarMessage: some(message)));
+    emit(state.copyWith(snackbarMessage: none()));
   }
 }
