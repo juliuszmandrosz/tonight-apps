@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:common/common.dart';
+import 'package:common/domain/errors/invalid_operation_error.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 part 'user_location_cubit.freezed.dart';
 part 'user_location_state.dart';
@@ -27,11 +29,18 @@ class UserLocationCubit extends Cubit<UserLocationState> {
       return;
     }
 
-    await _getUserLocation();
+    await _setUserLocation();
   }
 
   void openAppSettings() {
     _geolocator.openAppSettings();
+  }
+
+  Future<LatLng> getCurrentLatLngOrCrash() async {
+    await setLocationIfPermissionIsGranted();
+    if (!state.isPermissionGranted) throw InvalidOperationError();
+    final location = state.userLocation.getOrCrash();
+    return LatLng(location[latitude]!, location[longitude]!);
   }
 
   Future<void> setLocationIfPermissionIsGranted() async {
@@ -42,21 +51,21 @@ class UserLocationCubit extends Cubit<UserLocationState> {
         permission == LocationPermission.always) {
       emit(state.copyWith(isPermissionGranted: true));
 
-      await _getUserLocation();
+      await _setUserLocation();
     }
-
-    emit(state.copyWith(isLoading: false));
   }
 
-  Future<void> _getUserLocation() async {
+  Future<void> _setUserLocation() async {
     final userLocation = await _geolocator.getCurrentPosition();
 
     emit(
       state.copyWith(
-        userLocation: some(
-          {latitude: userLocation.latitude, longitude: userLocation.longitude},
-        ),
+        userLocation: some({
+          latitude: userLocation.latitude,
+          longitude: userLocation.longitude,
+        }),
         isLoading: false,
+        isPermissionGranted: true,
       ),
     );
   }
@@ -83,8 +92,6 @@ class UserLocationCubit extends Cubit<UserLocationState> {
         return false;
       }
     }
-
-    emit(state.copyWith(isPermissionGranted: true));
 
     return true;
   }
