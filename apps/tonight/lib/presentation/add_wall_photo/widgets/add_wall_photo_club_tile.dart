@@ -1,8 +1,11 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:clubs/domain/club/club_entity.dart';
 import 'package:common/extensions/color_extensions.dart';
 import 'package:common/extensions/typography_extensions.dart';
 import 'package:common/presentation/dense_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
 class AddWallPhotoClubTile extends StatelessWidget {
@@ -11,6 +14,9 @@ class AddWallPhotoClubTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DenseListTile(
+      onTap: () async {
+        final club = await context.pushRoute<Club>(const SelectClubRoute());
+      },
       leading: FaIcon(
         FontAwesomeIcons.building,
         color: context.secondaryColor,
