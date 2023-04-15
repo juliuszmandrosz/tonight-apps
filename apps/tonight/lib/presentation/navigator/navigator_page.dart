@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -36,10 +35,9 @@ class _NavigatorPageState extends State<NavigatorPage> {
           selectedIndex: tabsRouter.activeIndex,
           onDestinationSelected: (i) async {
             if (i == TonightNavigationDestinations.add.index) {
-              final cameras = await availableCameras();
               if (context.mounted) {
                 context.pushRoute(
-                  WallPhotoCameraPreviewRoute(cameras: cameras),
+                  const WallPhotoCameraPreviewRoute(),
                 );
                 i = selectedIndex;
               }
