@@ -1,18 +1,10 @@
-import 'package:camera/camera.dart';
-import 'package:camerawesome/camerawesome_plugin.dart';
-import 'package:common/common.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:tonight/presentation/wall_photo_camera_preview/widgets/camera_preview_bottom_actions.dart';
-import 'package:tonight/presentation/wall_photo_camera_preview/widgets/camera_preview_middle_content.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class WallPhotoCameraPreviewPage extends StatefulWidget {
-  final List<CameraDescription> cameras;
-
-  const WallPhotoCameraPreviewPage({
-    required this.cameras,
-    Key? key,
-  }) : super(key: key);
+  const WallPhotoCameraPreviewPage({Key? key}) : super(key: key);
 
   @override
   State<WallPhotoCameraPreviewPage> createState() =>
@@ -21,69 +13,36 @@ class WallPhotoCameraPreviewPage extends StatefulWidget {
 
 class _WallPhotoCameraPreviewPageState extends State<WallPhotoCameraPreviewPage>
     with WidgetsBindingObserver {
-  String? _photoPath;
-  var _flashScreen = false;
+  final _picker = ImagePicker();
 
-  Future<String> get _path async {
-    final dir = await getTemporaryDirectory();
-    final name = DateTime.now().millisecondsSinceEpoch.toString();
-    return '${dir.path}/$name.jpg';
+  @override
+  initState() {
+    super.initState();
+    _takePhoto();
+  }
+
+  Future<void> _takePhoto() async {
+    final result = await _picker.pickImage(
+      source: ImageSource.camera,
+      preferredCameraDevice: CameraDevice.front,
+      imageQuality: 100,
+    );
+
+    if (!mounted) return;
+
+    if (result == null) await context.popRoute();
+
+    if (!mounted) return;
+
+    await context.pushRoute(AddWallPhotoRoute(photo: result!));
+
+    if (!mounted) return;
+
+    await _takePhoto();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: LayoutBuilder(builder: (context, constraints) {
-          return CameraAwesomeBuilder.awesome(
-            enableAudio: false,
-            showPreview: false,
-            enablePhysicalButton: true,
-            sensor: Sensors.front,
-            mirrorFrontCamera: true,
-            progressIndicator: const TicketLogoAnimation(),
-            // previewFit: CameraPreviewFit.fitHeight,
-            saveConfig: SaveConfig.photo(
-              pathBuilder: () => _path,
-            ),
-            onPreviewTapBuilder: (_) => OnPreviewTap(
-              onTapPainter: (_) => const SizedBox.shrink(),
-              onTap: (_, __, ___) => {},
-            ),
-            topActionsBuilder: (_) => const SizedBox.shrink(),
-            middleContentBuilder: (cameraState) => WillPopScope(
-              onWillPop: () async {
-                if (_photoPath == null) return true;
-                setState(() {
-                  _photoPath = null;
-                });
-                cameraState.setState(CaptureMode.photo);
-                return false;
-              },
-              child: CameraPreviewMiddleContent(
-                cameraState: cameraState,
-                flashScreen: _flashScreen,
-                onShutterAnimationEnd: () => setState(() {
-                  _flashScreen = false;
-                }),
-              ),
-            ),
-            bottomActionsBuilder: (cameraState) => CameraPreviewBottomActions(
-              height: constraints.maxHeight * 0.15,
-              cameraState: cameraState,
-              onCaptureTap: () => setState(() {
-                _flashScreen = true;
-              }),
-              onResult: (photoPath) => setState(() {
-                _photoPath = photoPath;
-              }),
-              onRetryTap: () => setState(() {
-                _photoPath = null;
-              }),
-            ),
-          );
-        }),
-      ),
-    );
+    return Container();
   }
 }
