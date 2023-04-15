@@ -29,6 +29,7 @@ import 'package:rewards/domain/domain.dart';
 import 'package:rewards/infrastructure/firebase_reward_facade.dart';
 import 'package:tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
 import 'package:tickets/tickets.dart';
+import 'package:tonight/application/add_wall_photo/add_wall_photo_cubit.dart';
 import 'package:tonight/application/app_settings/app_settings_cubit.dart';
 import 'package:tonight/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:tonight/application/auth/username/username_cubit.dart';
@@ -312,6 +313,12 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => SelectClubCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => AddWallPhotoCubit(
       getIt(),
     ),
   );
