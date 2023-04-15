@@ -25,6 +25,7 @@ dependencies:
   firebase_storage:
   cloud_functions:
   dio:
+  google_maps_flutter:
 
   common:
     path: ../common

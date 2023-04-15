@@ -14,6 +14,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:google_maps_flutter_platform_interface/src/types/location.dart';
 import 'package:logger/logger.dart';
 
 class FirebaseClubFacade
@@ -170,8 +171,9 @@ class FirebaseClubFacade
           ));
       final urls =
           images.items.map((ref) async => await ref.getDownloadURL()).toList();
-      return right(Tuple2(await Future.wait(urls),
-          images.nextPageToken)); //if there is no page next, return empty token
+      return right(
+        Tuple2(await Future.wait(urls), images.nextPageToken),
+      ); //if there is no page next, return empty token
     } on FirebaseException catch (e) {
       return left(
         await handleFirebaseError<UserClubFailure>(
@@ -293,6 +295,34 @@ class FirebaseClubFacade
           message: 'Firebase Exception getting favorite clubs EXCEPTION: $e',
           unexpectedFailure: const UserClubFailure.unexpected(),
           permissionDeniedFailure: const UserClubFailure.permissionDenied(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<UserClubFailure, List<Club>>> fetchNearestClubsInRange({
+    required LatLng userLocation,
+    required double radius,
+    int pageSize = 10,
+  }) async {
+    try {
+      final result = await _clubsApi.fetchNearestClubsInRange(
+        userLocation: userLocation,
+        radius: radius,
+      );
+      return right<UserClubFailure, List<Club>>(
+        result.map((doc) => ClubDto.fromApi(doc).toDomain()).toList(),
+      );
+    } on DioError catch (e) {
+      return left(
+        await handleDioError(
+          error: e,
+          crashlytics: _firebaseCrashlytics,
+          logger: _logger,
+          message: 'Dio error getting nearest club EXCEPTION: $e',
+          unexpectedFailure: const UserClubFailure.unexpected(),
+          socketFailure: const UserClubFailure.noConnection(),
         ),
       );
     }
