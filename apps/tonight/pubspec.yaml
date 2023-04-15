@@ -124,6 +124,13 @@ dependencies:
   payments:
     path: ../../packages/payments
 
+
+  camerawesome:
+    git:
+      url: git@github.com:juliuszmandrosz/CamerAwesome.git
+      ref: fix/add_preview_param_in_awesome_builder
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
