@@ -384,13 +384,9 @@ class AppRouter extends _i34.RootStackRouter {
       );
     },
     WallPhotoCameraPreviewRoute.name: (routeData) {
-      final args = routeData.argsAs<WallPhotoCameraPreviewRouteArgs>();
       return _i34.CustomPage<dynamic>(
         routeData: routeData,
-        child: _i26.WallPhotoCameraPreviewPage(
-          cameras: args.cameras,
-          key: args.key,
-        ),
+        child: const _i26.WallPhotoCameraPreviewPage(),
         transitionsBuilder: _i41.slideUpTransition,
         durationInMilliseconds: 300,
         opaque: true,
@@ -403,7 +399,6 @@ class AppRouter extends _i34.RootStackRouter {
         routeData: routeData,
         child: _i27.AddWallPhotoPage(
           photo: args.photo,
-          heroTag: args.heroTag,
           key: args.key,
         ),
         transitionsBuilder: _i37.slideLeftTransition,
@@ -1306,37 +1301,14 @@ class ClubFiltersRouteArgs {
 
 /// generated route for
 /// [_i26.WallPhotoCameraPreviewPage]
-class WallPhotoCameraPreviewRoute
-    extends _i34.PageRouteInfo<WallPhotoCameraPreviewRouteArgs> {
-  WallPhotoCameraPreviewRoute({
-    required List<_i45.CameraDescription> cameras,
-    _i35.Key? key,
-  }) : super(
+class WallPhotoCameraPreviewRoute extends _i34.PageRouteInfo<void> {
+  const WallPhotoCameraPreviewRoute()
+      : super(
           WallPhotoCameraPreviewRoute.name,
           path: '/wall-photo-camera-preview-page',
-          args: WallPhotoCameraPreviewRouteArgs(
-            cameras: cameras,
-            key: key,
-          ),
         );
 
   static const String name = 'WallPhotoCameraPreviewRoute';
-}
-
-class WallPhotoCameraPreviewRouteArgs {
-  const WallPhotoCameraPreviewRouteArgs({
-    required this.cameras,
-    this.key,
-  });
-
-  final List<_i45.CameraDescription> cameras;
-
-  final _i35.Key? key;
-
-  @override
-  String toString() {
-    return 'WallPhotoCameraPreviewRouteArgs{cameras: $cameras, key: $key}';
-  }
 }
 
 /// generated route for
@@ -1344,14 +1316,12 @@ class WallPhotoCameraPreviewRouteArgs {
 class AddWallPhotoRoute extends _i34.PageRouteInfo<AddWallPhotoRouteArgs> {
   AddWallPhotoRoute({
     required _i45.XFile photo,
-    required String heroTag,
     _i35.Key? key,
   }) : super(
           AddWallPhotoRoute.name,
           path: '/add-wall-photo-page',
           args: AddWallPhotoRouteArgs(
             photo: photo,
-            heroTag: heroTag,
             key: key,
           ),
         );
@@ -1362,19 +1332,16 @@ class AddWallPhotoRoute extends _i34.PageRouteInfo<AddWallPhotoRouteArgs> {
 class AddWallPhotoRouteArgs {
   const AddWallPhotoRouteArgs({
     required this.photo,
-    required this.heroTag,
     this.key,
   });
 
   final _i45.XFile photo;
 
-  final String heroTag;
-
   final _i35.Key? key;
 
   @override
   String toString() {
-    return 'AddWallPhotoRouteArgs{photo: $photo, heroTag: $heroTag, key: $key}';
+    return 'AddWallPhotoRouteArgs{photo: $photo, key: $key}';
   }
 }
 
