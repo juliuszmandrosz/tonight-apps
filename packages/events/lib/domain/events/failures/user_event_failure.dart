@@ -9,6 +9,8 @@ class UserEventFailure with _$UserEventFailure {
 
   const factory UserEventFailure.permissionDenied() = _PermissionDenied;
 
+  const factory UserEventFailure.noConnection() = _NoConnection;
+
   const factory UserEventFailure.toggleFavoriteEventFailure() =
       _UserEventFailure;
 
@@ -22,6 +24,7 @@ extension UserEventFailureX on UserEventFailure {
       unexpected: (_) => S().serverError,
       permissionDenied: (_) => S().operationNotAllowed,
       toggleFavoriteEventFailure: (_) => S().errorChangingEventStatus,
+      noConnection: (_) => S().errorCheckInternetConnection,
       moreThan20FavoriteEvents: (_) =>
           // TODO - add translation
           'You can\'t have more than 20 favorite events',
