@@ -1,15 +1,14 @@
 import 'dart:io';
 
-import 'package:camera/camera.dart';
 import 'package:common/presentation/transform_horizontally.dart';
 import 'package:flutter/material.dart';
 
 class AddWallPhotoPreview extends StatelessWidget {
-  final XFile photo;
+  final String photoPath;
   final String heroTag;
 
   const AddWallPhotoPreview({
-    required this.photo,
+    required this.photoPath,
     required this.heroTag,
     Key? key,
   }) : super(key: key);
@@ -23,7 +22,9 @@ class AddWallPhotoPreview extends StatelessWidget {
           child: Hero(
             tag: heroTag,
             child: TransformHorizontally(
-              child: Image.file(File(photo.path)),
+              child: Image.file(
+                File(photoPath),
+              ),
             ),
           ),
         );
