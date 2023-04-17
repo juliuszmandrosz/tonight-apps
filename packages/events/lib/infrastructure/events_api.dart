@@ -8,6 +8,10 @@ abstract class EventsApi {
     int pageSize,
     int offset,
   );
+
+  Future<List<dynamic>> getLiveEventsFromClub(
+    EventFilters filters,
+  );
 }
 
 class EventsApiImpl implements EventsApi {
@@ -39,6 +43,21 @@ class EventsApiImpl implements EventsApi {
 
     final result = await _dio.post(endpoint, data: data);
 
+    return result.data as List<dynamic>;
+  }
+
+  @override
+  Future<List> getLiveEventsFromClub(EventFilters filters) async {
+    const endpoint = 'events/getEvents';
+    final data = {
+      'query': '',
+      'queryBy': '',
+      'filterBy': filters.buildFilters(),
+      'pageNumber': 1,
+      'pageSize': 10,
+      'sortBy': '',
+    };
+    final result = await _dio.post(endpoint, data: data);
     return result.data as List<dynamic>;
   }
 
