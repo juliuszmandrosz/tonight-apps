@@ -480,6 +480,35 @@ class FirebaseEventFacade
     }
   }
 
+  @override
+  Future<Either<UserEventFailure, List<Event>>> fetchLiveEventsFromClub(
+    String clubId,
+  ) async {
+    try {
+      final filters = EventFilters.empty().copyWith(
+        clubFilter: ClubFilter(clubId: clubId),
+        showOnlyFilter: ShowOnlyFilter(showOnlyLive: true),
+      );
+
+      final result = await _eventsApi.getLiveEventsFromClub(filters);
+
+      return right<UserEventFailure, List<Event>>(
+        result.map((doc) => EventDto.fromApi(doc).toDomain()).toList(),
+      );
+    } on DioError catch (e) {
+      return left(
+        await handleDioError(
+          error: e,
+          crashlytics: _crashlytics,
+          logger: _logger,
+          message: 'Dio error fetching live events from club EXCEPTION: $e',
+          unexpectedFailure: const UserEventFailure.unexpected(),
+          socketFailure: const UserEventFailure.noConnection(),
+        ),
+      );
+    }
+  }
+
   Future<PartnerEventFailure> _handleFirebaseFunctionsException(
     FirebaseFunctionsException exception,
   ) async {
