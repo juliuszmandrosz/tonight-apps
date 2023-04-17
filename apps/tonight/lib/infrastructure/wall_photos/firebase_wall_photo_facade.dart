@@ -44,7 +44,7 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
     required String eventName,
     required DateTime eventEndDateTime,
     required Uint8List photo,
-    required LatLng location,
+    required LatLng? location,
   }) async {
     try {
       final userDoc = await _firestore.getCurrentUserDocRef(_auth).get();

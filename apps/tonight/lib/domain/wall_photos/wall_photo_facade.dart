@@ -13,7 +13,7 @@ abstract class WallPhotoFacade {
     required String eventName,
     required DateTime eventEndDateTime,
     required Uint8List photo,
-    required LatLng location,
+    required LatLng? location,
   });
 
   Future<Either<WallPhotoFailure, List<WallPhoto>>> getPhotos({
