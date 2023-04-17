@@ -11,6 +11,7 @@ export 'json_converters/firebase_timestamp_json_converter.dart';
 export 'json_converters/geopoint_json_converter.dart';
 export 'json_converters/lat_lng_converter.dart';
 export 'json_converters/location_converter.dart';
+export 'json_converters/nullable_lat_lng_converter.dart';
 export 'json_converters/timestamp_json_converter.dart';
 export 'remote_config/firebase_remote_config_facade.dart';
 export 'terms_of_service/firebase_terms_of_service_facade.dart';
