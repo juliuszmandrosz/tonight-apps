@@ -7,7 +7,7 @@ Future<Option<Uint8List>> flipImageHorizontallyAsync(Uint8List image) async {
 }
 
 Option<Uint8List> _flipImageHorizontally(Uint8List image) {
-  img.Image? inputImage = img.decodeImage(image);
+  img.Image? inputImage = img.decodeJpg(image);
 
   if (inputImage == null) {
     return none();
