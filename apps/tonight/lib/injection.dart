@@ -320,6 +320,8 @@ void _registerCubits() {
   getIt.registerFactory(
     () => AddWallPhotoCubit(
       getIt(),
+      getIt(),
+      getIt(),
     ),
   );
 }
