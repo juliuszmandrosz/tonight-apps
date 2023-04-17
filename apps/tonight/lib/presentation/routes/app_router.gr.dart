@@ -12,7 +12,6 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i34;
-import 'package:camera/camera.dart' as _i45;
 import 'package:clubs/domain/club/club_entity.dart' as _i42;
 import 'package:events/events.dart' as _i43;
 import 'package:flutter/material.dart' as _i35;
@@ -398,7 +397,8 @@ class AppRouter extends _i34.RootStackRouter {
       return _i34.CustomPage<dynamic>(
         routeData: routeData,
         child: _i27.AddWallPhotoPage(
-          photo: args.photo,
+          photoPath: args.photoPath,
+          heroTag: args.heroTag,
           key: args.key,
         ),
         transitionsBuilder: _i37.slideLeftTransition,
@@ -1315,13 +1315,15 @@ class WallPhotoCameraPreviewRoute extends _i34.PageRouteInfo<void> {
 /// [_i27.AddWallPhotoPage]
 class AddWallPhotoRoute extends _i34.PageRouteInfo<AddWallPhotoRouteArgs> {
   AddWallPhotoRoute({
-    required _i45.XFile photo,
+    required String photoPath,
+    required String heroTag,
     _i35.Key? key,
   }) : super(
           AddWallPhotoRoute.name,
           path: '/add-wall-photo-page',
           args: AddWallPhotoRouteArgs(
-            photo: photo,
+            photoPath: photoPath,
+            heroTag: heroTag,
             key: key,
           ),
         );
@@ -1331,17 +1333,20 @@ class AddWallPhotoRoute extends _i34.PageRouteInfo<AddWallPhotoRouteArgs> {
 
 class AddWallPhotoRouteArgs {
   const AddWallPhotoRouteArgs({
-    required this.photo,
+    required this.photoPath,
+    required this.heroTag,
     this.key,
   });
 
-  final _i45.XFile photo;
+  final String photoPath;
+
+  final String heroTag;
 
   final _i35.Key? key;
 
   @override
   String toString() {
-    return 'AddWallPhotoRouteArgs{photo: $photo, key: $key}';
+    return 'AddWallPhotoRouteArgs{photoPath: $photoPath, heroTag: $heroTag, key: $key}';
   }
 }
 
