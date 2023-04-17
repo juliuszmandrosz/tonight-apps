@@ -24,8 +24,8 @@ class WallPhotoDto with _$WallPhotoDto {
     @TimestampJsonConverter() required DateTime eventEndDateTime,
     @TimestampJsonConverter() required DateTime createdAt,
     String? userProfilePhotoUrl,
+    @NullableLatLngConverter() LatLng? location,
     @Default(false) bool isVerified,
-    @LatLngConverter() required LatLng location,
   }) = _WallPhotoDto;
 
   factory WallPhotoDto.fromDomain(WallPhoto wallPhoto) {
