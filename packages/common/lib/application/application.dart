@@ -7,6 +7,7 @@ export 'cubit_status.dart';
 export 'http_interceptors/dio_interceptor.dart';
 export 'image_utils/compress_image.dart';
 export 'image_utils/flip_image_horizontally.dart';
+export 'image_utils/flip_image_vertically.dart';
 export 'image_utils/pick_image.dart';
 export 'network_check/network_check_cubit.dart';
 export 'remote_config/remote_config_cubit.dart';
