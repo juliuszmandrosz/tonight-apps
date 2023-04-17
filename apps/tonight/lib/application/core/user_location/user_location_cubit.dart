@@ -43,6 +43,13 @@ class UserLocationCubit extends Cubit<UserLocationState> {
     return LatLng(location[latitude]!, location[longitude]!);
   }
 
+  Future<LatLng?> getCurrentLatLngOrNull() async {
+    await setLocationIfPermissionIsGranted();
+    if (!state.isPermissionGranted) return null;
+    final location = state.userLocation.getOrCrash();
+    return LatLng(location[latitude]!, location[longitude]!);
+  }
+
   Future<void> setLocationIfPermissionIsGranted() async {
     emit(state.copyWith(isLoading: true));
     var permission = await _geolocator.checkPermission();
