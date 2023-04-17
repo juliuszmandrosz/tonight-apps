@@ -20,6 +20,7 @@ mixin _$UserEventFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
     required TResult Function() toggleFavoriteEventFailure,
     required TResult Function() moreThan20FavoriteEvents,
   }) =>
@@ -28,6 +29,7 @@ mixin _$UserEventFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
     TResult? Function()? toggleFavoriteEventFailure,
     TResult? Function()? moreThan20FavoriteEvents,
   }) =>
@@ -36,6 +38,7 @@ mixin _$UserEventFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? toggleFavoriteEventFailure,
     TResult Function()? moreThan20FavoriteEvents,
     required TResult orElse(),
@@ -45,6 +48,7 @@ mixin _$UserEventFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_UserEventFailure value)
         toggleFavoriteEventFailure,
     required TResult Function(_MoreThan20FavoriteEvents value)
@@ -55,6 +59,7 @@ mixin _$UserEventFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_UserEventFailure value)? toggleFavoriteEventFailure,
     TResult? Function(_MoreThan20FavoriteEvents value)?
         moreThan20FavoriteEvents,
@@ -64,6 +69,7 @@ mixin _$UserEventFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_UserEventFailure value)? toggleFavoriteEventFailure,
     TResult Function(_MoreThan20FavoriteEvents value)? moreThan20FavoriteEvents,
     required TResult orElse(),
@@ -129,6 +135,7 @@ class _$_Unexpected implements _Unexpected {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
     required TResult Function() toggleFavoriteEventFailure,
     required TResult Function() moreThan20FavoriteEvents,
   }) {
@@ -140,6 +147,7 @@ class _$_Unexpected implements _Unexpected {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
     TResult? Function()? toggleFavoriteEventFailure,
     TResult? Function()? moreThan20FavoriteEvents,
   }) {
@@ -151,6 +159,7 @@ class _$_Unexpected implements _Unexpected {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? toggleFavoriteEventFailure,
     TResult Function()? moreThan20FavoriteEvents,
     required TResult orElse(),
@@ -166,6 +175,7 @@ class _$_Unexpected implements _Unexpected {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_UserEventFailure value)
         toggleFavoriteEventFailure,
     required TResult Function(_MoreThan20FavoriteEvents value)
@@ -179,6 +189,7 @@ class _$_Unexpected implements _Unexpected {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_UserEventFailure value)? toggleFavoriteEventFailure,
     TResult? Function(_MoreThan20FavoriteEvents value)?
         moreThan20FavoriteEvents,
@@ -191,6 +202,7 @@ class _$_Unexpected implements _Unexpected {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_UserEventFailure value)? toggleFavoriteEventFailure,
     TResult Function(_MoreThan20FavoriteEvents value)? moreThan20FavoriteEvents,
     required TResult orElse(),
@@ -246,6 +258,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
     required TResult Function() toggleFavoriteEventFailure,
     required TResult Function() moreThan20FavoriteEvents,
   }) {
@@ -257,6 +270,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
     TResult? Function()? toggleFavoriteEventFailure,
     TResult? Function()? moreThan20FavoriteEvents,
   }) {
@@ -268,6 +282,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? toggleFavoriteEventFailure,
     TResult Function()? moreThan20FavoriteEvents,
     required TResult orElse(),
@@ -283,6 +298,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_UserEventFailure value)
         toggleFavoriteEventFailure,
     required TResult Function(_MoreThan20FavoriteEvents value)
@@ -296,6 +312,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_UserEventFailure value)? toggleFavoriteEventFailure,
     TResult? Function(_MoreThan20FavoriteEvents value)?
         moreThan20FavoriteEvents,
@@ -308,6 +325,7 @@ class _$_PermissionDenied implements _PermissionDenied {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_UserEventFailure value)? toggleFavoriteEventFailure,
     TResult Function(_MoreThan20FavoriteEvents value)? moreThan20FavoriteEvents,
     required TResult orElse(),
@@ -321,6 +339,129 @@ class _$_PermissionDenied implements _PermissionDenied {
 
 abstract class _PermissionDenied implements UserEventFailure {
   const factory _PermissionDenied() = _$_PermissionDenied;
+}
+
+/// @nodoc
+abstract class _$$_NoConnectionCopyWith<$Res> {
+  factory _$$_NoConnectionCopyWith(
+          _$_NoConnection value, $Res Function(_$_NoConnection) then) =
+      __$$_NoConnectionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_NoConnectionCopyWithImpl<$Res>
+    extends _$UserEventFailureCopyWithImpl<$Res, _$_NoConnection>
+    implements _$$_NoConnectionCopyWith<$Res> {
+  __$$_NoConnectionCopyWithImpl(
+      _$_NoConnection _value, $Res Function(_$_NoConnection) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_NoConnection implements _NoConnection {
+  const _$_NoConnection();
+
+  @override
+  String toString() {
+    return 'UserEventFailure.noConnection()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NoConnection);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
+    required TResult Function() toggleFavoriteEventFailure,
+    required TResult Function() moreThan20FavoriteEvents,
+  }) {
+    return noConnection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
+    TResult? Function()? toggleFavoriteEventFailure,
+    TResult? Function()? moreThan20FavoriteEvents,
+  }) {
+    return noConnection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
+    TResult Function()? toggleFavoriteEventFailure,
+    TResult Function()? moreThan20FavoriteEvents,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_UserEventFailure value)
+        toggleFavoriteEventFailure,
+    required TResult Function(_MoreThan20FavoriteEvents value)
+        moreThan20FavoriteEvents,
+  }) {
+    return noConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_UserEventFailure value)? toggleFavoriteEventFailure,
+    TResult? Function(_MoreThan20FavoriteEvents value)?
+        moreThan20FavoriteEvents,
+  }) {
+    return noConnection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_UserEventFailure value)? toggleFavoriteEventFailure,
+    TResult Function(_MoreThan20FavoriteEvents value)? moreThan20FavoriteEvents,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoConnection implements UserEventFailure {
+  const factory _NoConnection() = _$_NoConnection;
 }
 
 /// @nodoc
@@ -363,6 +504,7 @@ class _$_UserEventFailure implements _UserEventFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
     required TResult Function() toggleFavoriteEventFailure,
     required TResult Function() moreThan20FavoriteEvents,
   }) {
@@ -374,6 +516,7 @@ class _$_UserEventFailure implements _UserEventFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
     TResult? Function()? toggleFavoriteEventFailure,
     TResult? Function()? moreThan20FavoriteEvents,
   }) {
@@ -385,6 +528,7 @@ class _$_UserEventFailure implements _UserEventFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? toggleFavoriteEventFailure,
     TResult Function()? moreThan20FavoriteEvents,
     required TResult orElse(),
@@ -400,6 +544,7 @@ class _$_UserEventFailure implements _UserEventFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_UserEventFailure value)
         toggleFavoriteEventFailure,
     required TResult Function(_MoreThan20FavoriteEvents value)
@@ -413,6 +558,7 @@ class _$_UserEventFailure implements _UserEventFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_UserEventFailure value)? toggleFavoriteEventFailure,
     TResult? Function(_MoreThan20FavoriteEvents value)?
         moreThan20FavoriteEvents,
@@ -425,6 +571,7 @@ class _$_UserEventFailure implements _UserEventFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_UserEventFailure value)? toggleFavoriteEventFailure,
     TResult Function(_MoreThan20FavoriteEvents value)? moreThan20FavoriteEvents,
     required TResult orElse(),
@@ -482,6 +629,7 @@ class _$_MoreThan20FavoriteEvents implements _MoreThan20FavoriteEvents {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
     required TResult Function() toggleFavoriteEventFailure,
     required TResult Function() moreThan20FavoriteEvents,
   }) {
@@ -493,6 +641,7 @@ class _$_MoreThan20FavoriteEvents implements _MoreThan20FavoriteEvents {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
     TResult? Function()? toggleFavoriteEventFailure,
     TResult? Function()? moreThan20FavoriteEvents,
   }) {
@@ -504,6 +653,7 @@ class _$_MoreThan20FavoriteEvents implements _MoreThan20FavoriteEvents {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
     TResult Function()? toggleFavoriteEventFailure,
     TResult Function()? moreThan20FavoriteEvents,
     required TResult orElse(),
@@ -519,6 +669,7 @@ class _$_MoreThan20FavoriteEvents implements _MoreThan20FavoriteEvents {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_UserEventFailure value)
         toggleFavoriteEventFailure,
     required TResult Function(_MoreThan20FavoriteEvents value)
@@ -532,6 +683,7 @@ class _$_MoreThan20FavoriteEvents implements _MoreThan20FavoriteEvents {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_UserEventFailure value)? toggleFavoriteEventFailure,
     TResult? Function(_MoreThan20FavoriteEvents value)?
         moreThan20FavoriteEvents,
@@ -544,6 +696,7 @@ class _$_MoreThan20FavoriteEvents implements _MoreThan20FavoriteEvents {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
     TResult Function(_UserEventFailure value)? toggleFavoriteEventFailure,
     TResult Function(_MoreThan20FavoriteEvents value)? moreThan20FavoriteEvents,
     required TResult orElse(),
