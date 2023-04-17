@@ -20,8 +20,9 @@ _$_WallPhotoDto _$$_WallPhotoDtoFromJson(Map<String, dynamic> json) =>
       createdAt:
           const TimestampJsonConverter().fromJson(json['createdAt'] as int),
       userProfilePhotoUrl: json['userProfilePhotoUrl'] as String?,
+      location:
+          const NullableLatLngConverter().fromJson(json['location'] as List?),
       isVerified: json['isVerified'] as bool? ?? false,
-      location: const LatLngConverter().fromJson(json['location'] as List),
     );
 
 Map<String, dynamic> _$$_WallPhotoDtoToJson(_$_WallPhotoDto instance) =>
@@ -37,6 +38,6 @@ Map<String, dynamic> _$$_WallPhotoDtoToJson(_$_WallPhotoDto instance) =>
           const TimestampJsonConverter().toJson(instance.eventEndDateTime),
       'createdAt': const TimestampJsonConverter().toJson(instance.createdAt),
       'userProfilePhotoUrl': instance.userProfilePhotoUrl,
+      'location': const NullableLatLngConverter().toJson(instance.location),
       'isVerified': instance.isVerified,
-      'location': const LatLngConverter().toJson(instance.location),
     };
