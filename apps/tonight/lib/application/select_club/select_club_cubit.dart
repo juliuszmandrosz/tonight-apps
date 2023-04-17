@@ -1,13 +1,11 @@
 import 'package:clubs/domain/club/club_entity.dart';
 import 'package:clubs/domain/club/user_club_facade.dart';
 import 'package:clubs/infrastructure/filters/club_filters_entity.dart';
-import 'package:clubs/infrastructure/filters/filter/max_distance_filter.dart';
 import 'package:clubs/infrastructure/filters/filter/phrase_filter.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:translations/translations.dart';
 
 part 'select_club_cubit.freezed.dart';
@@ -20,10 +18,12 @@ class SelectClubCubit extends Cubit<SelectClubState> {
 
   SelectClubCubit(this._clubFacade) : super(SelectClubState.initial());
 
-  Future<void> fetchClubs(Future<LatLng> userLocation) async {
+  Future<void> fetchClubs() async {
     emit(state.copyWith(initialStatus: CubitStatus.loading));
-    final filters = await _getClubFilters(userLocation);
-    final result = await _clubFacade.getClubs(filters, pageSize: _pageSize);
+    final result = await _clubFacade.getClubs(
+      ClubFilters.empty(),
+      pageSize: _pageSize,
+    );
     result.fold(
       (_) => emit(state.copyWith(initialStatus: CubitStatus.failure)),
       (clubs) => emit(
@@ -36,12 +36,11 @@ class SelectClubCubit extends Cubit<SelectClubState> {
     );
   }
 
-  Future<void> fetchNextClubsPage(Future<LatLng> userLocation) async {
+  Future<void> fetchNextClubsPage() async {
     if (state.hasReachedMax) return;
     emit(state.copyWith(fetchNextPageStatus: CubitStatus.loading));
-    final filters = await _getClubFilters(userLocation);
     final result = await _clubFacade.getClubs(
-      filters,
+      ClubFilters.empty(),
       pageSize: _pageSize,
       offset: state.clubs.length,
     );
@@ -61,13 +60,9 @@ class SelectClubCubit extends Cubit<SelectClubState> {
     emit(state.copyWith(selectedClub: some(club)));
   }
 
-  Future<void> filterClubs({
-    required String phrase,
-    required Future<LatLng> userLocation,
-  }) async {
+  Future<void> filterClubs(String phrase) async {
     emit(state.copyWith(filterClubsStatus: CubitStatus.loading));
-    final locationFilters = await _getClubFilters(userLocation);
-    final filters = locationFilters.copyWith(
+    final filters = ClubFilters.empty().copyWith(
       phraseFilter: PhraseFilter(phrase: phrase),
     );
     final result = await _clubFacade.getClubs(filters, pageSize: _pageSize);
@@ -88,20 +83,6 @@ class SelectClubCubit extends Cubit<SelectClubState> {
           filterClubsStatus: CubitStatus.success,
           searchPhrase: phrase,
         ),
-      ),
-    );
-  }
-
-  Future<ClubFilters> _getClubFilters(Future<LatLng> userLocation) async {
-    final location = await Future.value(userLocation);
-    return ClubFilters.empty().copyWith(
-      maxDistanceFilter: MaxDistanceFilter(
-        enabled: true,
-        userLocation: {
-          latitude: location.latitude,
-          longitude: location.longitude,
-        },
-        maxDistance: 0.1,
       ),
     );
   }
