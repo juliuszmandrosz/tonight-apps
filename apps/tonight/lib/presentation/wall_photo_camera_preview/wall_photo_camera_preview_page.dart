@@ -1,7 +1,11 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:camerawesome/camerawesome_plugin.dart';
+import 'package:camerawesome/pigeon.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:tonight/presentation/wall_photo_camera_preview/widgets/camera_preview_bottom_actions.dart';
+import 'package:tonight/presentation/wall_photo_camera_preview/widgets/camera_preview_middle_content.dart';
+import 'package:tonight/presentation/wall_photo_camera_preview/widgets/wall_photo_preview.dart';
 
 class WallPhotoCameraPreviewPage extends StatefulWidget {
   const WallPhotoCameraPreviewPage({Key? key}) : super(key: key);
@@ -11,38 +15,96 @@ class WallPhotoCameraPreviewPage extends StatefulWidget {
       _WallPhotoCameraPreviewPageState();
 }
 
-class _WallPhotoCameraPreviewPageState extends State<WallPhotoCameraPreviewPage>
-    with WidgetsBindingObserver {
-  final _picker = ImagePicker();
+class _WallPhotoCameraPreviewPageState
+    extends State<WallPhotoCameraPreviewPage> {
+  String? _photoPath;
+  var _flashScreen = false;
+  static const _photoHeroTag = 'wallPhotoCameraPreviewHero';
 
   @override
-  initState() {
+  void initState() {
     super.initState();
-    _takePhoto();
   }
 
-  Future<void> _takePhoto() async {
-    final result = await _picker.pickImage(
-      source: ImageSource.camera,
-      preferredCameraDevice: CameraDevice.front,
-      imageQuality: 100,
-    );
-
-    if (!mounted) return;
-
-    if (result == null) await context.popRoute();
-
-    if (!mounted) return;
-
-    await context.pushRoute(AddWallPhotoRoute(photo: result!));
-
-    if (!mounted) return;
-
-    await _takePhoto();
+  Future<String> get _path async {
+    final dir = await getTemporaryDirectory();
+    final name = DateTime.now().millisecondsSinceEpoch.toString();
+    return '${dir.path}/$name.jpg';
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: SafeArea(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final bottomHeight = constraints.maxHeight * 0.15;
+            return _photoPath != null
+                ? WallPhotoPreview(
+                    photoPath: _photoPath!,
+                    heroTag: _photoHeroTag,
+                    height: bottomHeight,
+                    onRetry: () {
+                      setState(() {
+                        _photoPath = null;
+                      });
+                    },
+                  )
+                : CameraAwesomeBuilder.awesome(
+                    enableAudio: false,
+                    enablePhysicalButton: true,
+                    sensor: Sensors.front,
+                    showPreview: false,
+                    progressIndicator: const TicketLogoAnimation(),
+                    exifPreferences: ExifPreferences(
+                      saveGPSLocation: false,
+                    ),
+                    // previewFit: CameraPreviewFit.fitHeight,
+                    saveConfig: SaveConfig.photo(
+                      pathBuilder: () => _path,
+                    ),
+                    onPreviewTapBuilder: (_) => OnPreviewTap(
+                      onTapPainter: (_) => const SizedBox.shrink(),
+                      onTap: (_, __, ___) => {},
+                    ),
+                    topActionsBuilder: (_) => const SizedBox.shrink(),
+                    middleContentBuilder: (cameraState) => WillPopScope(
+                      onWillPop: () async {
+                        if (_photoPath == null) return true;
+                        setState(() {
+                          _photoPath = null;
+                        });
+                        cameraState.setState(CaptureMode.photo);
+                        return false;
+                      },
+                      child: CameraPreviewMiddleContent(
+                        heroTag: _photoHeroTag,
+                        cameraState: cameraState,
+                        flashScreen: _flashScreen,
+                        onShutterAnimationEnd: () => setState(() {
+                          _flashScreen = false;
+                        }),
+                      ),
+                    ),
+                    bottomActionsBuilder: (cameraState) =>
+                        CameraPreviewBottomActions(
+                      height: bottomHeight,
+                      cameraState: cameraState,
+                      onCaptureTap: () => setState(() {
+                        _flashScreen = true;
+                      }),
+                      onResult: (photoPath) => setState(() {
+                        _photoPath = photoPath;
+                      }),
+                      onRetryTap: () => setState(() {
+                        _photoPath = null;
+                      }),
+                      photoHeroTag: _photoHeroTag,
+                    ),
+                  );
+          },
+        ),
+      ),
+    );
   }
 }
