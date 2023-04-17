@@ -7,12 +7,14 @@ Future<Uint8List> compressImage(
   int minWidth = 512,
   int minHeight = 512,
   int quality = 80,
+  int rotate = 0,
 }) async {
   var result = await FlutterImageCompress.compressWithList(
     file,
     minWidth: minWidth,
     minHeight: minHeight,
     quality: quality,
+    rotate: rotate,
   );
   return result;
 }
