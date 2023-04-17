@@ -8,6 +8,7 @@ class ShowOnlyOtherUsersPhotosFilter implements IFilter {
 
   @override
   String buildFilters(String query) {
+    return query;
     return TypesenseQueryBuilder.setFacetNotEqualsFilter(
       query: query,
       field: fieldName,

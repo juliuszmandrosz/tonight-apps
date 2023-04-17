@@ -38,7 +38,7 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     emit(state.copyWith(userLocation: some(location)));
     final result = await _clubFacade.fetchNearestClubsInRange(
       userLocation: location,
-      radius: 0.1,
+      radius: 5,
     );
 
     result.fold(

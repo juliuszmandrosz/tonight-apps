@@ -15,6 +15,6 @@ class ShowPhotosFromLiveEventsFilter implements IFilter {
   }
 
   int _getCurrentTime() {
-    return DateTime.now().millisecondsSinceEpoch;
+    return DateTime(2023, 4, 21, 22).millisecondsSinceEpoch;
   }
 }
