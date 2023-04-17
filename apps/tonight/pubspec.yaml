@@ -44,7 +44,6 @@ dependencies:
   screen_brightness: ^0.2.2
   flutter_local_notifications: ^9.9.1
   upgrader: ^6.2.0
-  image_picker: ^0.8.7+3
 
   # Inherited packages
   auto_route:
@@ -96,6 +95,7 @@ dependencies:
   json_annotation:
   very_good_infinite_list:
   google_maps_flutter:
+  image:
 
   translations:
     path: ../../packages/translations
