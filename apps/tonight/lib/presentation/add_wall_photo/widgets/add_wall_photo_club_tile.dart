@@ -15,11 +15,11 @@ class AddWallPhotoClubTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AddWallPhotoCubit, AddWallPhotoState>(
       listenWhen: (previous, current) =>
-      previous.selectedClub != current.selectedClub,
+          previous.selectedClub != current.selectedClub,
       listener: (context, state) {
         state.selectedClub.fold(
-              () => null,
-              (club) =>
+          () => null,
+          (club) =>
               context.read<AddWallPhotoCubit>().fetchLiveEventsFromClub(club),
         );
       },
@@ -35,23 +35,23 @@ class AddWallPhotoClubTile extends StatelessWidget {
               ),
               title: Text(
                 state.selectedClub.fold(
-                      () => S().clubName,
-                      (club) => club.clubName,
+                  () => S().clubName,
+                  (club) => club.clubName,
                 ),
                 style:
-                context.titleMedium.copyWith(color: context.secondaryColor),
+                    context.titleMedium.copyWith(color: context.secondaryColor),
               ),
               trailing: state.fetchNearestClubStatus.isLoading()
                   ? const SizedBox(
-                height: 20,
-                width: 20,
-                child: CircularProgressIndicator(),
-              )
+                      height: 20,
+                      width: 20,
+                      child: CircularProgressIndicator(),
+                    )
                   : FaIcon(
-                FontAwesomeIcons.chevronRight,
-                size: 16,
-                color: context.secondaryColor,
-              ),
+                      FontAwesomeIcons.chevronRight,
+                      size: 16,
+                      color: context.secondaryColor,
+                    ),
             );
           },
         );
@@ -68,7 +68,7 @@ class AddWallPhotoClubTile extends StatelessWidget {
   }) async {
     if (!_enabled(state)) return;
 
-    if (state.nearestClubs.isEmpty) {
+    if (state.userLocation.isSome() && state.nearestClubs.isEmpty) {
       // TODO - add translation
       context.showSnackbarMessage('Nie znaleziono klubów w pobliżu');
       return;
