@@ -12,4 +12,8 @@ abstract class UserEventFacade {
 
   Future<Either<UserEventFailure, Unit>> toggleEventFavoriteStatus(
       String eventId);
+
+  Future<Either<UserEventFailure, List<Event>>> fetchLiveEventsFromClub(
+    String clubId,
+  );
 }
