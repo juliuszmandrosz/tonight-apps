@@ -21,3 +21,4 @@ export 'tonight_hyper_link.dart';
 export 'tonight_icon_link.dart';
 export 'tonight_overlay.dart';
 export 'transform_horizontally.dart';
+export 'wave_loading_indicator.dart';
