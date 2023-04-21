@@ -28,6 +28,9 @@ class EventDatePicker extends StatelessWidget {
           todayHighlightColor: context.primaryColor,
           minDate: DateTime.now(),
           initialDisplayDate: state.filters.dateRangeFilter.fromDate,
+          monthViewSettings: const DateRangePickerMonthViewSettings(
+            firstDayOfWeek: 1,
+          ),
         );
       },
     );
