@@ -65,7 +65,9 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
 
   Future<void> _onNextEventsPageFetched(
       _NextEventsPageFetched event, Emitter<EventOverviewState> emit) async {
-    if (state.hasReachedMax) return;
+    if (state.hasReachedMax || state.events.isEmpty) return;
+
+    emit(state.copyWith(nextPageStatus: CubitStatus.loading));
 
     final failureOrSuccess = await _eventFacade.getEvents(
       state.eventFilters,
@@ -77,14 +79,14 @@ class EventOverviewBloc extends Bloc<EventOverviewEvent, EventOverviewState> {
     failureOrSuccess.fold(
       (failure) => emit(
         state.copyWith(
-          status: CubitStatus.failure,
+          nextPageStatus: CubitStatus.failure,
           failure: some(failure),
         ),
       ),
       (events) => emit(
         state.copyWith(
-          status: CubitStatus.success,
-          events: List.of(state.events)..addAll(events),
+          nextPageStatus: CubitStatus.success,
+          events: [...state.events, ...events],
           hasReachedMax: events.length != _pageSize,
         ),
       ),

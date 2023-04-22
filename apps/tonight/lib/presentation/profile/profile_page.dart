@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/presentation/profile/widgets/profile_user_picture_.dart';
 import 'package:tonight/presentation/profile/widgets/profile_wall_photos.dart';
@@ -10,12 +11,12 @@ import 'package:tonight/presentation/profile/widgets/user_profile_stats_row.dart
 import 'package:tonight/presentation/profile/widgets/username_row.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends HookWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final scrollController = ScrollController();
+    final scrollController = useScrollController();
     return BlocConsumer<ProfileBloc, ProfileState>(
       listenWhen: (previous, current) =>
           previous.initialStatus != current.initialStatus ||
@@ -42,9 +43,7 @@ class ProfilePage extends StatelessWidget {
           case CubitStatus.initial:
             return Container();
           case CubitStatus.loading:
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const WaveLoadingIndicator();
           case CubitStatus.failure:
             return Container();
           case CubitStatus.success:

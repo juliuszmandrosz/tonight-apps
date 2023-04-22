@@ -6,6 +6,8 @@ class ClubFilter implements IFilter {
 
   ClubFilter({required this.clubId});
 
+  factory ClubFilter.empty() => ClubFilter(clubId: null);
+
   @override
   String buildFilters(String query) {
     if (clubId == null) return query;

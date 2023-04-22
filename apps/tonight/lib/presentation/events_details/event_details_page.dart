@@ -70,7 +70,7 @@ class EventDetailsPage extends StatelessWidget {
             }
 
             if (state.status.isLoading()) {
-              return const TicketLogoAnimation();
+              return const WaveLoadingIndicator();
             }
 
             final event = state.event.getOrCrash();

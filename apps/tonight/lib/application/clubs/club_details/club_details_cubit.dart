@@ -16,8 +16,6 @@ class ClubDetailsCubit extends Cubit<ClubDetailsState> {
 
     final failureOrSuccess = await _clubFacade.getClubById(clubId);
 
-    await Future.delayed(const Duration(milliseconds: 300));
-
     failureOrSuccess.fold(
       (failure) => emit(
         ClubDetailsState.loadFailure(failure),

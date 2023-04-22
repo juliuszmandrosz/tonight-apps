@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,13 +17,13 @@ class NavigatorPage extends StatefulWidget {
 }
 
 class _NavigatorPageState extends State<NavigatorPage> {
-  var selectedIndex = 0;
+  var _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
       drawer: const TonightDrawer(),
-      appBarBuilder: (_, tabsRouter) => const TonightAppBar(),
+      appBarBuilder: _buildAppBar,
       routes: const [
         WallPhotosRoute(),
         DiscoverRoute(),
@@ -34,17 +35,17 @@ class _NavigatorPageState extends State<NavigatorPage> {
         return NavigationBar(
           selectedIndex: tabsRouter.activeIndex,
           onDestinationSelected: (i) async {
-            if (i == TonightNavigationDestinations.add.index) {
+            if (i == TonightNavigationDestination.add.index) {
               if (context.mounted) {
                 context.pushRoute(
                   const WallPhotoCameraPreviewRoute(),
                 );
-                i = selectedIndex;
+                i = _selectedIndex;
               }
             }
 
             setState(() {
-              selectedIndex = i;
+              _selectedIndex = i;
             });
             tabsRouter.setActiveIndex(i);
           },
@@ -81,5 +82,21 @@ class _NavigatorPageState extends State<NavigatorPage> {
         );
       },
     );
+  }
+
+  PreferredSizeWidget _buildAppBar(
+    BuildContext context,
+    TabsRouter tabsRouter,
+  ) {
+    if (tabsRouter.activeIndex == TonightNavigationDestination.discover.index) {
+      return PreferredSize(
+        preferredSize: Size.fromHeight(MediaQuery.of(context).padding.top),
+        child: Container(
+          color: context.surfaceColor,
+          height: MediaQuery.of(context).padding.top,
+        ),
+      );
+    }
+    return const TonightAppBar();
   }
 }

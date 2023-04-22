@@ -3,10 +3,11 @@ import 'package:clubs/domain/club/club_entity.dart';
 import 'package:payments/domain/domain.dart';
 import 'package:tonight/presentation/add_wall_photo/add_wall_photo_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
+import 'package:tonight/presentation/club_city_picker/club_city_picker_page.dart';
 import 'package:tonight/presentation/club_details/club_details_page.dart';
-import 'package:tonight/presentation/club_filters/club_filters_page.dart';
 import 'package:tonight/presentation/contact/contact_page.dart';
 import 'package:tonight/presentation/discover/discover_page.dart';
+import 'package:tonight/presentation/event_city_picker/event_city_picker_page.dart';
 import 'package:tonight/presentation/event_date_picker/event_date_picker_page.dart';
 import 'package:tonight/presentation/event_filters/event_filters_page.dart';
 import 'package:tonight/presentation/event_review/review_page.dart';
@@ -21,7 +22,6 @@ import 'package:tonight/presentation/payment_method/payment_method_page.dart';
 import 'package:tonight/presentation/profile/profile_page.dart';
 import 'package:tonight/presentation/routes/page_transitions/fade_in_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/slide_left_transition.dart';
-import 'package:tonight/presentation/routes/page_transitions/slide_right_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/slide_up_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/zoom_in_transition.dart';
 import 'package:tonight/presentation/select_club/select_club_page.dart';
@@ -48,7 +48,7 @@ const animationDuration = 300;
     AutoRoute(page: SplashPage, initial: true),
     CustomRoute(
       page: SignInPage,
-      transitionsBuilder: zoomInTransition,
+      transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
     CustomRoute(
@@ -115,7 +115,17 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: EventDatePickerPage,
-      transitionsBuilder: slideRightTransition,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: EventCityPickerPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: ClubCityPickerPage,
+      transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
     CustomRoute(
@@ -185,11 +195,6 @@ const animationDuration = 300;
     ),
     CustomRoute<CustomerData>(
       page: PaymentMethodPage,
-      transitionsBuilder: slideLeftTransition,
-      durationInMilliseconds: animationDuration,
-    ),
-    CustomRoute(
-      page: ClubFiltersPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),

@@ -7,6 +7,8 @@ class PriceRangeFilter implements IFilter {
 
   PriceRangeFilter({required this.minPrice, this.maxPrice});
 
+  factory PriceRangeFilter.empty() => PriceRangeFilter(minPrice: 0);
+
   @override
   String buildFilters(String query) {
     if (maxPrice != null) {

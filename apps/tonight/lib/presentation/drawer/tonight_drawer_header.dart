@@ -1,4 +1,5 @@
 import 'package:common/common.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/profile/profile_bloc.dart';
@@ -10,23 +11,26 @@ class TonightDrawerHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<ProfileBloc, ProfileState, UserProfile>(
-      selector: (state) => state.userProfile.getOrCrash(),
-      builder: (context, profile) {
-        return Column(
-          children: [
-            ProfilePictureContainer(
-              imageSize: 100,
-              username: profile.username,
-              profilePictureUrl: profile.profilePictureUrl,
-              isOnSurfaceColor: true,
-            ),
-            const SizedBox(height: 16),
-            TonightHeadline(
-              text: profile.username,
-              isSmallerVersion: true,
-            ),
-          ],
+    return BlocSelector<ProfileBloc, ProfileState, Option<UserProfile>>(
+      selector: (state) => state.userProfile,
+      builder: (context, userProfile) {
+        return userProfile.fold(
+          () => const WaveLoadingIndicator(),
+          (profile) => Column(
+            children: [
+              ProfilePictureContainer(
+                imageSize: 100,
+                username: profile.username,
+                profilePictureUrl: profile.profilePictureUrl,
+                isOnSurfaceColor: true,
+              ),
+              const SizedBox(height: 16),
+              TonightHeadline(
+                text: profile.username,
+                isSmallerVersion: true,
+              ),
+            ],
+          ),
         );
       },
     );

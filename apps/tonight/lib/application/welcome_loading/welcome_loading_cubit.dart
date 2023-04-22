@@ -1,10 +1,6 @@
 import 'dart:async';
 
-import 'package:clubs/clubs.dart';
 import 'package:common/common.dart';
-import 'package:dartz/dartz.dart';
-import 'package:events/application/application.dart';
-import 'package:events/domain/domain.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,66 +9,42 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/application/clubs/club_favorite/club_favorite_cubit.dart';
-import 'package:tonight/application/clubs/clubs_overview/clubs_overview_bloc.dart';
 import 'package:tonight/application/core/deep_links_utils.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
-import 'package:tonight/application/wall_photos/wall_photos_cubit.dart';
 
 part 'welcome_loading_cubit.freezed.dart';
 part 'welcome_loading_state.dart';
 
 class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
-  final ProfileBloc _profileBloc;
+  final PushNotificationsCubit _pushNotificationsCubit;
   final UserLocationCubit _userLocationCubit;
-  final EventOverviewBloc _eventOverviewBloc;
-  final ClubsOverviewBloc _clubsOverviewBloc;
+  final AvailableFiltersCubit _availableFiltersCubit;
   final EventFavoriteCubit _eventFavoriteCubit;
   final ClubFavoriteCubit _clubFavoriteCubit;
-  final AvailableFiltersCubit _availableFiltersCubit;
-  final PushNotificationsCubit _pushNotificationsCubit;
-  final Stripe _stripe;
   final FirebaseMessaging _firebaseMessaging;
-  final NetworkCheckCubit _networkCheckCubit;
-  final WallPhotosCubit _wallPhotosCubit;
-
-  StreamSubscription? _profileSub;
-  StreamSubscription? _locationSub;
-  StreamSubscription? _eventsSub;
-  StreamSubscription? _clubsSub;
-  StreamSubscription? _eventFavoritesSub;
-  StreamSubscription? _clubFavoritesSub;
-  StreamSubscription? _filtersSub;
-  StreamSubscription? _pushNotificationsSub;
-  StreamSubscription? _wallPhotosSub;
+  final ProfileBloc _profileBloc;
+  final Stripe _stripe;
 
   WelcomeLoadingCubit({
-    required ProfileBloc profileBloc,
+    required PushNotificationsCubit pushNotificationsCubit,
+    required AvailableFiltersCubit availableFiltersCubit,
     required UserLocationCubit userLocationCubit,
-    required EventOverviewBloc eventOverviewBloc,
-    required ClubsOverviewBloc clubsOverviewBloc,
     required EventFavoriteCubit eventFavoriteCubit,
     required ClubFavoriteCubit clubFavoriteCubit,
-    required AvailableFiltersCubit availableFiltersCubit,
-    required PushNotificationsCubit pushNotificationsCubit,
-    required Stripe stripe,
     required FirebaseMessaging firebaseMessaging,
-    required NetworkCheckCubit networkCheckCubit,
-    required WallPhotosCubit wallPhotosCubit,
-  })  : _profileBloc = profileBloc,
+    required ProfileBloc profileBloc,
+    required Stripe stripe,
+  })  : _pushNotificationsCubit = pushNotificationsCubit,
         _userLocationCubit = userLocationCubit,
-        _eventOverviewBloc = eventOverviewBloc,
-        _clubsOverviewBloc = clubsOverviewBloc,
         _eventFavoriteCubit = eventFavoriteCubit,
         _clubFavoriteCubit = clubFavoriteCubit,
         _availableFiltersCubit = availableFiltersCubit,
-        _pushNotificationsCubit = pushNotificationsCubit,
-        _stripe = stripe,
         _firebaseMessaging = firebaseMessaging,
-        _networkCheckCubit = networkCheckCubit,
-        _wallPhotosCubit = wallPhotosCubit,
+        _profileBloc = profileBloc,
+        _stripe = stripe,
         super(WelcomeLoadingState.initial());
 
   Future<void> loadDependencies(BuildContext context) async {
@@ -81,158 +53,27 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
     emit(state.copyWith(status: CubitStatus.loading));
 
-    if (!await _networkCheckCubit.checkNetworkConnection()) {
-      emit(state.copyWith(hasConnection: false));
-      return;
-    }
+    await _userLocationCubit.requestUserLocationOnStart();
 
-    _initUserLocationCubit();
-    _initWallPhotos();
-    _initFavoriteEvents();
-    _initFavoriteClubs();
-    _initAvailableFiltersCubit();
-    await _initStripe();
-    if (context.mounted) {
-      await _initDynamicLinks(context);
-    }
-    if (context.mounted) {
-      await _initPushNotifications(context);
-    }
-  }
+    emit(state.copyWith(status: CubitStatus.success));
 
-  initUserProfile() {
     _profileBloc.add(const ProfileEvent.profileLoaded());
-    _profileSub = _profileBloc.stream.listen((event) {
-      _checkAndEmitFailure(event.initialStatus);
-      _emitSuccessIfAllLoaded();
-      if (event.initialStatus.isSuccess() && !state.status.isSuccess()) {
-        emit(
-          state.copyWith(
-            username: some(
-              event.userProfile.getOrCrash().username,
-            ),
-          ),
-        );
-      }
-    });
-  }
 
-  void _emitSuccessIfAllLoaded() {
-    if (state.status.isSuccess()) return;
+    unawaited(_availableFiltersCubit.getAvailableFilters());
 
-    if (_allDependenciesLoaded()) {
-      emit(
-        state.copyWith(
-          dependenciesLoaded: true,
-          status: CubitStatus.success,
-        ),
-      );
-      _cancelSubs();
-    }
-  }
+    unawaited(_clubFavoriteCubit.getFavoriteClubs());
 
-  void _checkAndEmitFailure(CubitStatus cubitStatus) {
-    if (cubitStatus == CubitStatus.failure) {
-      emit(state.copyWith(status: CubitStatus.failure));
-    }
-  }
+    unawaited(_eventFavoriteCubit.getFavoriteEvents());
 
-  _initEvents() {
-    var filters = EventFilters.empty();
+    unawaited(_initStripe());
 
-    final userLocation = _userLocationCubit.state.userLocation;
-
-    if (userLocation.isSome() && userLocation.getOrCrash().isNotEmpty) {
-      final maxDistanceFilters = filters.maxDistanceFilter;
-      filters = filters.copyWith(
-        maxDistanceFilter: maxDistanceFilters.copyWith(
-          userLocation: userLocation.getOrCrash(),
-        ),
-      );
+    if (context.mounted) {
+      unawaited(_initDynamicLinks(context));
     }
 
-    _eventOverviewBloc.add(
-      EventOverviewEvent.eventsFetched(
-        filters,
-        EventSortModel.empty(),
-      ),
-    );
-
-    _eventsSub = _eventOverviewBloc.stream.listen((event) {
-      _checkAndEmitFailure(event.status);
-      _emitSuccessIfAllLoaded();
-    });
-  }
-
-  _initClubs() {
-    var filters = ClubFilters.empty();
-
-    final userLocation = _userLocationCubit.state.userLocation;
-
-    if (userLocation.isSome() && userLocation.getOrCrash().isNotEmpty) {
-      final maxDistanceFilters = filters.maxDistanceFilter;
-      filters = filters.copyWith(
-        maxDistanceFilter: maxDistanceFilters.copyWith(
-          userLocation: userLocation.getOrCrash(),
-        ),
-      );
+    if (context.mounted) {
+      unawaited(_initPushNotifications(context));
     }
-
-    _clubsOverviewBloc.add(ClubsOverviewEvent.clubsFetched(filters));
-
-    _clubsSub = _clubsOverviewBloc.stream.listen((event) {
-      _checkAndEmitFailure(event.status);
-      _emitSuccessIfAllLoaded();
-    });
-  }
-
-  _initWallPhotos() {
-    _wallPhotosCubit.getPhotos();
-    _wallPhotosSub = _wallPhotosCubit.stream.listen((event) {
-      _checkAndEmitFailure(event.getPhotosStatus);
-      _emitSuccessIfAllLoaded();
-    });
-  }
-
-  _initFavoriteEvents() {
-    _eventFavoriteCubit.getFavoriteEvents();
-    _eventFavoritesSub = _eventFavoriteCubit.stream.listen((event) {
-      _checkAndEmitFailure(event.status);
-      _emitSuccessIfAllLoaded();
-    });
-  }
-
-  _initFavoriteClubs() {
-    _clubFavoriteCubit.getFavoriteClubs();
-    _clubFavoritesSub = _clubFavoriteCubit.stream.listen((event) {
-      _checkAndEmitFailure(event.status);
-      _emitSuccessIfAllLoaded();
-    });
-  }
-
-  _initUserLocationCubit() {
-    _userLocationCubit.requestUserLocationOnStart();
-    _locationSub = _userLocationCubit.stream.listen((event) {
-      _emitSuccessIfAllLoaded();
-      if (!event.isLoading) {
-        _initEvents();
-        _initClubs();
-      }
-    });
-  }
-
-  _initAvailableFiltersCubit() {
-    _availableFiltersCubit.getAvailableFilters();
-    _filtersSub = _availableFiltersCubit.stream.listen((event) {
-      final status = event.map(
-        initial: (_) => CubitStatus.initial,
-        loadInProgress: (_) => CubitStatus.loading,
-        loadSuccess: (_) => CubitStatus.success,
-        loadFailure: (_) => CubitStatus.failure,
-      );
-      _checkAndEmitFailure(status);
-      _emitSuccessIfAllLoaded();
-    });
   }
 
   Future<void> _initPushNotifications(BuildContext context) async {
@@ -274,7 +115,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     }
   }
 
-  _initDynamicLinks(BuildContext context) async {
+  Future<void> _initDynamicLinks(BuildContext context) async {
     final initialLink = await FirebaseDynamicLinks.instance.getInitialLink();
 
     if (context.mounted && initialLink != null) {
@@ -296,35 +137,5 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     Stripe.urlScheme = 'com.raverteam.tonight';
 
     await _stripe.applySettings();
-  }
-
-  _allDependenciesLoaded() {
-    return !_userLocationCubit.state.isLoading &&
-        _profileBloc.state.initialStatus == CubitStatus.success &&
-        _eventOverviewBloc.state.status == CubitStatus.success &&
-        _clubsOverviewBloc.state.status == CubitStatus.success &&
-        _eventFavoriteCubit.state.status == CubitStatus.success &&
-        _clubFavoriteCubit.state.status == CubitStatus.success &&
-        _wallPhotosCubit.state.getPhotosStatus == CubitStatus.success &&
-        _availableFiltersCubit.state
-            .maybeWhen(orElse: () => false, loadSuccess: (_) => true);
-  }
-
-  _cancelSubs() {
-    _filtersSub?.cancel();
-    _locationSub?.cancel();
-    _clubFavoritesSub?.cancel();
-    _eventFavoritesSub?.cancel();
-    _eventsSub?.cancel();
-    _clubsSub?.cancel();
-    _profileSub?.cancel();
-    _pushNotificationsSub?.cancel();
-    _wallPhotosSub?.cancel();
-  }
-
-  @override
-  Future<void> close() {
-    _cancelSubs();
-    return super.close();
   }
 }

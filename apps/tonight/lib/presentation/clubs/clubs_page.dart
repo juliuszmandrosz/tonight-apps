@@ -2,172 +2,67 @@ import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:tonight/application/clubs/club_filters/club_filters_cubit.dart';
-import 'package:tonight/application/clubs/clubs_overview/clubs_overview_bloc.dart';
-import 'package:tonight/injection.dart';
+import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
 import 'package:tonight/presentation/clubs/widgets/club_card.dart';
-import 'package:tonight/presentation/clubs/widgets/club_filter_section.dart';
-import 'package:tonight/presentation/clubs/widgets/club_filters_row.dart';
+import 'package:tonight/presentation/clubs/widgets/no_clubs_info.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/translations.dart';
 
-class ClubsPage extends StatefulWidget {
+class ClubsPage extends StatelessWidget {
   const ClubsPage({Key? key}) : super(key: key);
 
-  @override
-  State<ClubsPage> createState() => _ClubsPageState();
-}
-
-class _ClubsPageState extends State<ClubsPage>
-    with AutomaticKeepAliveClientMixin<ClubsPage> {
-  final _scrollController = ScrollController();
-  late final ClubsOverviewBloc _clubsOverviewBloc;
   static const heroPhrase = 'clubsPageHero';
 
   @override
-  void initState() {
-    super.initState();
-    _scrollController.addListener(_onScroll);
-    _clubsOverviewBloc = context.read<ClubsOverviewBloc>();
-  }
-
-  @override
-  bool get wantKeepAlive => true;
-
-  @override
   Widget build(BuildContext context) {
-    super.build(context);
-    return BlocProvider(
-      create: (context) => getIt<ClubFiltersCubit>(param1: _clubsOverviewBloc),
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          children: [
-            const ClubSearchBar(),
-            const SizedBox(height: 15),
-            Expanded(
-              child: RefreshIndicator(
-                onRefresh: () async => _refreshClubs(),
-                child: ListView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  controller: _scrollController,
-                  children: [
-                    const ClubFiltersRow(),
-                    const SizedBox(height: 15),
-                    BlocConsumer<ClubsOverviewBloc, ClubsOverviewState>(
-                      listenWhen: (previous, current) =>
-                          previous.status != current.status,
-                      listener: (context, state) {
-                        if (state.status.isFailure()) {
-                          context.pushRoute(
-                            FailureRoute(
-                              retryCallback: () => _clubsOverviewBloc.add(
-                                ClubsOverviewEvent.clubsFetched(
-                                  state.clubFilter,
-                                ),
-                              ),
-                            ),
-                          );
-                        }
-                      },
-                      builder: (context, state) {
-                        switch (state.status) {
-                          case CubitStatus.initial:
-                            return Container();
-
-                          case CubitStatus.failure:
-                            return Container();
-
-                          case CubitStatus.loading:
-                            return Center(
-                              child: SpinKitThreeBounce(
-                                color: context.onSurfaceColor,
-                                size: 30,
-                              ),
-                            );
-
-                          case CubitStatus.success:
-                            if (state.clubs.isEmpty) {
-                              return Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              .2,
-                                    ),
-                                    Text(
-                                      S().clubs(0),
-                                      style: context.titleMedium,
-                                    ),
-                                    const SizedBox(height: 20),
-                                    OutlinedButton(
-                                      onPressed: () => _refreshClubs(),
-                                      child: Text(S().refresh),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }
-                            return ListView.separated(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: state.hasReachedMax
-                                  ? state.clubs.length
-                                  : state.clubs.length + 1,
-                              itemBuilder: (context, i) {
-                                return i >= state.clubs.length
-                                    ? const BottomLoader()
-                                    : ClubCard(
-                                        club: state.clubs[i],
-                                        heroPhrase: heroPhrase,
-                                      );
-                              },
-                              separatorBuilder: (_, __) => const SizedBox(
-                                height: 10,
-                              ),
-                            );
-                        }
-                      },
-                    ),
-                  ],
-                ),
-              ),
+    return BlocConsumer<ClubsBloc, ClubsState>(
+      listenWhen: (previous, current) =>
+          previous.getClubsStatus != current.getClubsStatus,
+      listener: (context, state) {
+        if (state.getClubsStatus.isFailure()) {
+          context.pushRoute(
+            FailureRoute(
+              retryCallback: () => _refreshClubs(context),
             ),
-          ],
-        ),
-      ),
+          );
+        }
+      },
+      builder: (context, state) {
+        switch (state.getClubsStatus) {
+          case CubitStatus.initial:
+            return const SizedBox.shrink();
+
+          case CubitStatus.loading:
+            return const WaveLoadingIndicator();
+
+          case CubitStatus.failure:
+            return const SizedBox.shrink();
+
+          case CubitStatus.success:
+            return state.clubs.isEmpty
+                ? NoClubsInfo(onClubsRefreshed: _refreshClubs)
+                : RefreshIndicator(
+                    onRefresh: () async => _refreshClubs(context),
+                    child: InfiniteList(
+                      itemCount: state.clubs.length,
+                      hasError: state.nextPageStatus.isFailure(),
+                      isLoading: state.nextPageStatus.isLoading(),
+                      hasReachedMax: state.hasReachedMax,
+                      onFetchData: () => context
+                          .read<ClubsBloc>()
+                          .add(const ClubsEvent.nextPageClubsFetched()),
+                      separatorBuilder: (_, __) => const SizedBox(height: 12),
+                      itemBuilder: (_, i) => ClubCard(
+                        club: state.clubs[i],
+                        heroPhrase: heroPhrase,
+                      ),
+                    ),
+                  );
+        }
+      },
     );
   }
 
-  @override
-  void dispose() {
-    _scrollController
-      ..removeListener(_onScroll)
-      ..dispose();
-    super.dispose();
-  }
-
-  void _onScroll() {
-    if (_isBottom) {
-      _clubsOverviewBloc.add(const ClubsOverviewEvent.nextPageClubsFetched());
-    }
-  }
-
-  bool get _isBottom {
-    if (!_scrollController.hasClients) return false;
-    final maxScroll = _scrollController.position.maxScrollExtent;
-    final currentScroll = _scrollController.offset;
-    return currentScroll >= (maxScroll * 0.95);
-  }
-
-  _refreshClubs() {
-    _clubsOverviewBloc.add(
-      ClubsOverviewEvent.clubsFetched(
-        _clubsOverviewBloc.state.clubFilter,
-      ),
-    );
+  Future<void> _refreshClubs(BuildContext context) async {
+    context.read<ClubsBloc>().add(const ClubsEvent.clubsRefreshed());
   }
 }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'remote_config_cubit.dart';
 
@@ -27,29 +27,32 @@ mixin _$RemoteConfigState {
 abstract class $RemoteConfigStateCopyWith<$Res> {
   factory $RemoteConfigStateCopyWith(
           RemoteConfigState value, $Res Function(RemoteConfigState) then) =
-      _$RemoteConfigStateCopyWithImpl<$Res>;
+      _$RemoteConfigStateCopyWithImpl<$Res, RemoteConfigState>;
+  @useResult
   $Res call({CubitStatus status});
 }
 
 /// @nodoc
-class _$RemoteConfigStateCopyWithImpl<$Res>
+class _$RemoteConfigStateCopyWithImpl<$Res, $Val extends RemoteConfigState>
     implements $RemoteConfigStateCopyWith<$Res> {
   _$RemoteConfigStateCopyWithImpl(this._value, this._then);
 
-  final RemoteConfigState _value;
   // ignore: unused_field
-  final $Res Function(RemoteConfigState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
+    Object? status = null,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-    ));
+    ) as $Val);
   }
 }
 
@@ -60,26 +63,25 @@ abstract class _$$_RemoteConfigStateCopyWith<$Res>
           $Res Function(_$_RemoteConfigState) then) =
       __$$_RemoteConfigStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({CubitStatus status});
 }
 
 /// @nodoc
 class __$$_RemoteConfigStateCopyWithImpl<$Res>
-    extends _$RemoteConfigStateCopyWithImpl<$Res>
+    extends _$RemoteConfigStateCopyWithImpl<$Res, _$_RemoteConfigState>
     implements _$$_RemoteConfigStateCopyWith<$Res> {
   __$$_RemoteConfigStateCopyWithImpl(
       _$_RemoteConfigState _value, $Res Function(_$_RemoteConfigState) _then)
-      : super(_value, (v) => _then(v as _$_RemoteConfigState));
+      : super(_value, _then);
 
-  @override
-  _$_RemoteConfigState get _value => super._value as _$_RemoteConfigState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
+    Object? status = null,
   }) {
     return _then(_$_RemoteConfigState(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
@@ -105,15 +107,15 @@ class _$_RemoteConfigState extends _RemoteConfigState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RemoteConfigState &&
-            const DeepCollectionEquality().equals(other.status, status));
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(status));
+  int get hashCode => Object.hash(runtimeType, status);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RemoteConfigStateCopyWith<_$_RemoteConfigState> get copyWith =>
       __$$_RemoteConfigStateCopyWithImpl<_$_RemoteConfigState>(
           this, _$identity);

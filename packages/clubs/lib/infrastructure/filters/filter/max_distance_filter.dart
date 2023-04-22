@@ -1,8 +1,10 @@
 import 'package:common/common.dart';
+import 'package:dartz/dartz.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MaxDistanceFilter implements IFilter {
   final bool enabled;
-  final Map<String, double> userLocation;
+  final Option<LatLng> userLocation;
   final double maxDistance;
 
   MaxDistanceFilter({
@@ -11,20 +13,27 @@ class MaxDistanceFilter implements IFilter {
     required this.maxDistance,
   });
 
+  factory MaxDistanceFilter.empty() => MaxDistanceFilter(
+        enabled: true,
+        userLocation: none(),
+        maxDistance: 50,
+      );
+
   @override
   String buildFilters(String query) {
-    if (userLocation.isEmpty || !enabled) return query;
+    if (userLocation.isNone() || !enabled) return query;
+    final location = userLocation.getOrCrash();
     return TypesenseQueryBuilder.setAroundLatLng(
       query: query,
-      lat: userLocation[latitude]!,
-      lng: userLocation[longitude]!,
+      lat: location.latitude,
+      lng: location.longitude,
       radius: maxDistance,
     );
   }
 
   MaxDistanceFilter copyWith({
     bool? enabled,
-    Map<String, double>? userLocation,
+    Option<LatLng>? userLocation,
     double? maxDistance,
   }) {
     return MaxDistanceFilter(
