@@ -45,6 +45,12 @@ extension BuildContextX on BuildContext {
     return formatter.format(dateTime);
   }
 
+  String formatDateTimeToLocaleMD(DateTime dateTime) {
+    Locale locale = Localizations.localeOf(this);
+    final formatter = DateFormat.Md(locale.toLanguageTag());
+    return formatter.format(dateTime);
+  }
+
   showSnackbarMessage(String message) {
     ScaffoldMessenger.of(this)
       ..hideCurrentSnackBar()
@@ -95,7 +101,5 @@ extension BuildContextX on BuildContext {
     );
   }
 
-  void unfocus() =>
-      FocusScope.of(this).unfocus();
-
+  void unfocus() => FocusScope.of(this).unfocus();
 }

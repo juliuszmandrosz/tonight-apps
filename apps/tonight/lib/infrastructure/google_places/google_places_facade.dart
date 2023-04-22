@@ -3,10 +3,10 @@ import 'package:dio/dio.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
-import 'package:tonight/domain/places/city_entity.dart';
+import 'package:tonight/domain/places/place_entity.dart';
 import 'package:tonight/domain/places/places_facade.dart';
 import 'package:tonight/domain/places/places_failure.dart';
-import 'package:tonight/infrastructure/google_places/dtos/city_dto.dart';
+import 'package:tonight/infrastructure/google_places/dtos/place_dto.dart';
 
 class GooglePlacesFacade implements PlacesFacade {
   final Dio _dio;
@@ -22,10 +22,10 @@ class GooglePlacesFacade implements PlacesFacade {
         _crashlytics = firebaseCrashlytics;
 
   @override
-  Future<Either<PlacesFailure, List<City>>> getCities(String query) async {
+  Future<Either<PlacesFailure, List<Place>>> getPlaces(String query) async {
     try {
       if (query.isEmpty) {
-        return Future.value(right(<City>[]));
+        return Future.value(right(<Place>[]));
       }
 
       const endpoint = 'googlePlaces/getCities';
@@ -39,7 +39,7 @@ class GooglePlacesFacade implements PlacesFacade {
       final cities = result.data as List<dynamic>;
 
       return right(
-        cities.map((city) => CityDto.fromJson(city).toDomain()).toList(),
+        cities.map((city) => PlaceDto.fromJson(city).toDomain()).toList(),
       );
     } on DioError catch (e) {
       _logger.e('Dio error getting cities EXCEPTION: $e');

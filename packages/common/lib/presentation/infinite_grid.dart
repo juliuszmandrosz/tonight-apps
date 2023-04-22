@@ -3,38 +3,33 @@ import 'package:flutter/material.dart';
 
 class InfiniteGrid extends StatefulWidget {
   final int itemCount;
-  final bool isLoading;
-  final bool hasError;
-  final bool hasReachedMax;
   final VoidCallback onFetchData;
+  final bool hasReachedMax;
+  final bool hasError;
+  final bool isLoading;
   final Widget Function(BuildContext context, int index) itemBuilder;
-  final ScrollController scrollController;
   final bool shrinkWrap;
   final double crossAxisSpacing;
   final double mainAxisSpacing;
   final double childAspectRatio;
   final int crossAxisCount;
+  final ScrollController? scrollController;
 
-  InfiniteGrid({
+  const InfiniteGrid({
     required this.itemCount,
-    required this.isLoading,
-    required this.hasError,
     required this.hasReachedMax,
+    required this.hasError,
+    required this.isLoading,
     required this.onFetchData,
     required this.itemBuilder,
-    ScrollController? scrollController,
     this.shrinkWrap = false,
     this.crossAxisSpacing = 5,
     this.mainAxisSpacing = 5,
     this.childAspectRatio = 1,
     this.crossAxisCount = 3,
+    this.scrollController,
     Key? key,
-  })  : assert(
-            (scrollController != null && shrinkWrap == true) ||
-                (scrollController == null && shrinkWrap == false),
-            'ShrinkWrap must be true when scrollController is provided'),
-        scrollController = scrollController ?? ScrollController(),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   State<InfiniteGrid> createState() => _InfiniteGridState();
@@ -44,55 +39,74 @@ class _InfiniteGridState extends State<InfiniteGrid> {
   @override
   void initState() {
     super.initState();
-    widget.scrollController.addListener(_onScroll);
+    if (widget.scrollController != null) {
+      widget.scrollController!.addListener(_onScrollControllerScroll);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      slivers: [
-        SliverGrid(
-          delegate: SliverChildBuilderDelegate(
-            widget.itemBuilder,
-            childCount: widget.itemCount,
+    return NotificationListener<ScrollNotification>(
+      onNotification: _onScrollNotification,
+      child: CustomScrollView(
+        shrinkWrap: widget.shrinkWrap,
+        physics:
+            widget.shrinkWrap ? const NeverScrollableScrollPhysics() : null,
+        slivers: [
+          SliverGrid(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisSpacing: widget.crossAxisSpacing,
+              mainAxisSpacing: widget.mainAxisSpacing,
+              childAspectRatio: widget.childAspectRatio,
+              crossAxisCount: widget.crossAxisCount,
+            ),
+            delegate: SliverChildBuilderDelegate(
+              widget.itemBuilder,
+              childCount: widget.itemCount,
+            ),
           ),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisSpacing: widget.crossAxisSpacing,
-            mainAxisSpacing: widget.mainAxisSpacing,
-            childAspectRatio: widget.childAspectRatio,
-            crossAxisCount: widget.crossAxisCount,
-          ),
-        ),
-        if (widget.isLoading || widget.hasError)
-          SliverToBoxAdapter(
-            child: widget.isLoading
-                ? const BottomLoader()
-                : NextPageError(retryCallback: widget.onFetchData),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              _buildBottom,
+              childCount: 1,
+            ),
           )
-      ],
+        ],
+      ),
     );
   }
 
-  @override
-  void dispose() {
-    widget.scrollController
-      ..removeListener(_onScroll)
-      ..dispose();
-    super.dispose();
+  Widget _buildBottom(BuildContext context, int index) {
+    if (widget.isLoading) return const BottomLoader();
+    if (widget.hasError) {
+      return NextPageError(retryCallback: widget.onFetchData);
+    }
+    return const SizedBox.shrink();
   }
 
-  void _onScroll() {
-    if (_isBottom) {
+  bool _onScrollNotification(ScrollNotification notification) {
+    if (widget.isLoading) return false;
+    if (_isBottomScrollNotification(notification) && !widget.hasError) {
+      widget.onFetchData();
+    }
+    return false;
+  }
+
+  bool _isBottomScrollNotification(ScrollNotification notification) {
+    if (!notification.metrics.atEdge) return false;
+    return notification.metrics.pixels != 0;
+  }
+
+  void _onScrollControllerScroll() {
+    if (_isScrollControllerBottom(widget.scrollController!)) {
       widget.onFetchData();
     }
   }
 
-  bool get _isBottom {
-    if (!widget.scrollController.hasClients) return false;
-    final maxScroll = widget.scrollController.position.maxScrollExtent;
-    final currentScroll = widget.scrollController.offset;
+  bool _isScrollControllerBottom(ScrollController scrollController) {
+    if (!scrollController.hasClients) return false;
+    final maxScroll = scrollController.position.maxScrollExtent;
+    final currentScroll = scrollController.offset;
     return currentScroll >= (maxScroll * 0.95);
   }
 }

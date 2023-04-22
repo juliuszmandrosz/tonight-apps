@@ -20,6 +20,10 @@ class WallPhotoCard extends StatelessWidget {
         ),
       ),
       child: Card(
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
         child: Column(
           children: [
             Padding(

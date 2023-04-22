@@ -1,11 +1,10 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:common/domain/available_filters/available_filters_entity.dart';
 import 'package:common/domain/available_filters/available_filters_facade.dart';
 import 'package:common/domain/available_filters/available_filters_failure.dart';
+import 'package:common/domain/available_filters/entities/available_filters_entity.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'available_filters_cubit.freezed.dart';
-
 part 'available_filters_state.dart';
 
 class AvailableFiltersCubit extends Cubit<AvailableFiltersState> {

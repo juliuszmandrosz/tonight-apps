@@ -1,7 +1,7 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:common/common.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tonight/domain/places/city_entity.dart';
+import 'package:tonight/domain/places/place_entity.dart';
 import 'package:tonight/domain/places/places_facade.dart';
 
 part 'places_cubit.freezed.dart';
@@ -15,14 +15,14 @@ class PlacesCubit extends Cubit<PlacesState> {
   void searchForCities(String value) async {
     emit(state.copyWith(status: CubitStatus.loading));
 
-    final failureOrSuccess = await _placesFacade.getCities(value);
+    final failureOrSuccess = await _placesFacade.getPlaces(value);
 
     failureOrSuccess.fold(
       (failure) => emit(state.copyWith(status: CubitStatus.failure)),
-      (cities) => emit(
+      (places) => emit(
         state.copyWith(
           status: CubitStatus.success,
-          cities: cities,
+          places: places,
           previousSearch: value,
         ),
       ),
@@ -30,6 +30,6 @@ class PlacesCubit extends Cubit<PlacesState> {
   }
 
   void clearCities() {
-    emit(state.copyWith(cities: []));
+    emit(state.copyWith(places: []));
   }
 }

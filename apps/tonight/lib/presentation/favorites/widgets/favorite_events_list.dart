@@ -34,9 +34,7 @@ class FavoriteEventsList extends StatelessWidget {
             return Container();
 
           case CubitStatus.loading:
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const WaveLoadingIndicator();
 
           case CubitStatus.success:
             return state.favoriteEvents.isEmpty

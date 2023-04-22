@@ -474,7 +474,8 @@ abstract class _ReviewReported implements ClubReviewsEvent {
 
 /// @nodoc
 mixin _$ClubReviewsState {
-  CubitStatus get status => throw _privateConstructorUsedError;
+  CubitStatus get getReviewsStatus => throw _privateConstructorUsedError;
+  CubitStatus get nextPageReviewsStatus => throw _privateConstructorUsedError;
   CubitStatus get reviewReportStatus => throw _privateConstructorUsedError;
   String get clubId => throw _privateConstructorUsedError;
   List<Review> get reviews => throw _privateConstructorUsedError;
@@ -494,7 +495,8 @@ abstract class $ClubReviewsStateCopyWith<$Res> {
       _$ClubReviewsStateCopyWithImpl<$Res, ClubReviewsState>;
   @useResult
   $Res call(
-      {CubitStatus status,
+      {CubitStatus getReviewsStatus,
+      CubitStatus nextPageReviewsStatus,
       CubitStatus reviewReportStatus,
       String clubId,
       List<Review> reviews,
@@ -516,7 +518,8 @@ class _$ClubReviewsStateCopyWithImpl<$Res, $Val extends ClubReviewsState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
+    Object? getReviewsStatus = null,
+    Object? nextPageReviewsStatus = null,
     Object? reviewReportStatus = null,
     Object? clubId = null,
     Object? reviews = null,
@@ -525,9 +528,13 @@ class _$ClubReviewsStateCopyWithImpl<$Res, $Val extends ClubReviewsState>
     Object? reportingReviewId = null,
   }) {
     return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      getReviewsStatus: null == getReviewsStatus
+          ? _value.getReviewsStatus
+          : getReviewsStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      nextPageReviewsStatus: null == nextPageReviewsStatus
+          ? _value.nextPageReviewsStatus
+          : nextPageReviewsStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
       reviewReportStatus: null == reviewReportStatus
           ? _value.reviewReportStatus
@@ -566,7 +573,8 @@ abstract class _$$_ClubReviewsStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {CubitStatus status,
+      {CubitStatus getReviewsStatus,
+      CubitStatus nextPageReviewsStatus,
       CubitStatus reviewReportStatus,
       String clubId,
       List<Review> reviews,
@@ -586,7 +594,8 @@ class __$$_ClubReviewsStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
+    Object? getReviewsStatus = null,
+    Object? nextPageReviewsStatus = null,
     Object? reviewReportStatus = null,
     Object? clubId = null,
     Object? reviews = null,
@@ -595,9 +604,13 @@ class __$$_ClubReviewsStateCopyWithImpl<$Res>
     Object? reportingReviewId = null,
   }) {
     return _then(_$_ClubReviewsState(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      getReviewsStatus: null == getReviewsStatus
+          ? _value.getReviewsStatus
+          : getReviewsStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      nextPageReviewsStatus: null == nextPageReviewsStatus
+          ? _value.nextPageReviewsStatus
+          : nextPageReviewsStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
       reviewReportStatus: null == reviewReportStatus
           ? _value.reviewReportStatus
@@ -631,7 +644,8 @@ class __$$_ClubReviewsStateCopyWithImpl<$Res>
 
 class _$_ClubReviewsState extends _ClubReviewsState {
   const _$_ClubReviewsState(
-      {required this.status,
+      {required this.getReviewsStatus,
+      required this.nextPageReviewsStatus,
       required this.reviewReportStatus,
       required this.clubId,
       required final List<Review> reviews,
@@ -642,7 +656,9 @@ class _$_ClubReviewsState extends _ClubReviewsState {
         super._();
 
   @override
-  final CubitStatus status;
+  final CubitStatus getReviewsStatus;
+  @override
+  final CubitStatus nextPageReviewsStatus;
   @override
   final CubitStatus reviewReportStatus;
   @override
@@ -664,7 +680,7 @@ class _$_ClubReviewsState extends _ClubReviewsState {
 
   @override
   String toString() {
-    return 'ClubReviewsState(status: $status, reviewReportStatus: $reviewReportStatus, clubId: $clubId, reviews: $reviews, hasReachedMax: $hasReachedMax, snackbarMessage: $snackbarMessage, reportingReviewId: $reportingReviewId)';
+    return 'ClubReviewsState(getReviewsStatus: $getReviewsStatus, nextPageReviewsStatus: $nextPageReviewsStatus, reviewReportStatus: $reviewReportStatus, clubId: $clubId, reviews: $reviews, hasReachedMax: $hasReachedMax, snackbarMessage: $snackbarMessage, reportingReviewId: $reportingReviewId)';
   }
 
   @override
@@ -672,7 +688,10 @@ class _$_ClubReviewsState extends _ClubReviewsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClubReviewsState &&
-            (identical(other.status, status) || other.status == status) &&
+            (identical(other.getReviewsStatus, getReviewsStatus) ||
+                other.getReviewsStatus == getReviewsStatus) &&
+            (identical(other.nextPageReviewsStatus, nextPageReviewsStatus) ||
+                other.nextPageReviewsStatus == nextPageReviewsStatus) &&
             (identical(other.reviewReportStatus, reviewReportStatus) ||
                 other.reviewReportStatus == reviewReportStatus) &&
             (identical(other.clubId, clubId) || other.clubId == clubId) &&
@@ -688,7 +707,8 @@ class _$_ClubReviewsState extends _ClubReviewsState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      status,
+      getReviewsStatus,
+      nextPageReviewsStatus,
       reviewReportStatus,
       clubId,
       const DeepCollectionEquality().hash(_reviews),
@@ -705,7 +725,8 @@ class _$_ClubReviewsState extends _ClubReviewsState {
 
 abstract class _ClubReviewsState extends ClubReviewsState {
   const factory _ClubReviewsState(
-      {required final CubitStatus status,
+      {required final CubitStatus getReviewsStatus,
+      required final CubitStatus nextPageReviewsStatus,
       required final CubitStatus reviewReportStatus,
       required final String clubId,
       required final List<Review> reviews,
@@ -715,7 +736,9 @@ abstract class _ClubReviewsState extends ClubReviewsState {
   const _ClubReviewsState._() : super._();
 
   @override
-  CubitStatus get status;
+  CubitStatus get getReviewsStatus;
+  @override
+  CubitStatus get nextPageReviewsStatus;
   @override
   CubitStatus get reviewReportStatus;
   @override

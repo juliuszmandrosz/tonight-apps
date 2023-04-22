@@ -1,8 +1,8 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:clubs/infrastructure/filters/filter/city_filter.dart';
 import 'package:clubs/infrastructure/filters/filter/currency_filter.dart';
 import 'package:clubs/infrastructure/filters/filter/max_distance_filter.dart';
 import 'package:clubs/infrastructure/filters/filter/phrase_filter.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'club_filters_entity.freezed.dart';
 
@@ -19,16 +19,9 @@ abstract class ClubFilters with _$ClubFilters {
 
   factory ClubFilters.empty() => ClubFilters(
         phraseFilter: PhraseFilter(phrase: ''),
-        maxDistanceFilter: MaxDistanceFilter(
-          enabled: true,
-          userLocation: {},
-          maxDistance: 50,
-        ),
+        maxDistanceFilter: MaxDistanceFilter.empty(),
         currencyFilter: CurrencyFilter(currency: ''),
-        cityFilter: CityFilter(
-          cityId: '',
-          cityName: '',
-        ),
+        cityFilter: CityFilter.empty(),
       );
 
   String buildFilters() {

@@ -29,16 +29,16 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
 
   Future<void> _onReviewsFetched(
       _ReviewsFetched event, Emitter<ClubReviewsState> emit) async {
-    emit(state.copyWith(status: CubitStatus.loading));
+    emit(state.copyWith(getReviewsStatus: CubitStatus.loading));
 
     final failureOrSuccess = await _reviewFacade
         .getClubReviewsAsUser(event.clubId, pageSize: _pageSize);
 
     failureOrSuccess.fold(
-      (failure) => emit(state.copyWith(status: CubitStatus.failure)),
+      (failure) => emit(state.copyWith(getReviewsStatus: CubitStatus.failure)),
       (reviews) => emit(
         state.copyWith(
-          status: CubitStatus.success,
+          getReviewsStatus: CubitStatus.success,
           reviews: reviews,
           hasReachedMax: reviews.length != _pageSize,
           clubId: event.clubId,
@@ -51,18 +51,21 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
       _NextPageReviewsFetched event, Emitter<ClubReviewsState> emit) async {
     if (state.hasReachedMax) return;
 
+    emit(state.copyWith(nextPageReviewsStatus: CubitStatus.loading));
+
     final failureOrSuccess = await _reviewFacade.getClubReviewsAsUser(
-        state.clubId,
-        lastReview: state.reviews.last,
-        pageSize: _pageSize);
+      state.clubId,
+      lastReview: state.reviews.last,
+      pageSize: _pageSize,
+    );
 
     failureOrSuccess.fold(
       (failure) => emit(
-        state.copyWith(status: CubitStatus.failure),
+        state.copyWith(nextPageReviewsStatus: CubitStatus.failure),
       ),
       (reviews) => emit(
         state.copyWith(
-          status: CubitStatus.success,
+          nextPageReviewsStatus: CubitStatus.success,
           reviews: List.of(state.reviews)..addAll(reviews),
           hasReachedMax: reviews.length != _pageSize,
         ),

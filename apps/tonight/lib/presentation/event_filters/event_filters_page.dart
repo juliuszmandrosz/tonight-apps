@@ -1,19 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
+import 'package:events/domain/filters/event_filters_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight/application/core/places/places_cubit.dart';
 import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
+import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
-import 'package:tonight/presentation/event_filters/widgets/event_filters_city.dart';
-import 'package:tonight/presentation/event_filters/widgets/event_filters_currency.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_dress_code.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_is_concert.dart';
-import 'package:tonight/presentation/event_filters/widgets/event_filters_max_distance.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_min_age.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_music.dart';
-import 'package:tonight/presentation/event_filters/widgets/event_filters_place_option.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_price.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_submit_button.dart.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
@@ -21,9 +18,11 @@ import 'package:translations/translations.dart';
 
 class EventFiltersPage extends StatelessWidget {
   final BuildContext blocContext;
+  final EventFilters selectedFilters;
 
   const EventFiltersPage({
     required this.blocContext,
+    required this.selectedFilters,
     Key? key,
   }) : super(key: key);
 
@@ -31,14 +30,20 @@ class EventFiltersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (_) =>
+              getIt<EventFiltersCubit>()..initFilters(selectedFilters),
+        ),
         BlocProvider.value(
-          value: blocContext.read<EventFiltersCubit>(),
+          value: blocContext.read<EventsBloc>(),
         ),
         BlocProvider.value(
           value: blocContext.read<AvailableFiltersCubit>(),
         ),
       ],
       child: BlocListener<EventFiltersCubit, EventFiltersState>(
+        listenWhen: (previous, current) =>
+            previous.snackbarMessage != current.snackbarMessage,
         listener: (context, state) {
           state.snackbarMessage.fold(
             () {},
@@ -52,10 +57,11 @@ class EventFiltersPage extends StatelessWidget {
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,
             appBar: TonightAppBar(title: S().filters),
-            body: BlocConsumer<AvailableFiltersCubit, AvailableFiltersState>(
-              listener: (context, state) {
-                if (state.maybeWhen(
-                    orElse: () => false, loadFailure: (_) => true)) {
+            body: BlocBuilder<AvailableFiltersCubit, AvailableFiltersState>(
+              builder: (context, state) => state.map(
+                initial: (_) => const SizedBox.shrink(),
+                loadInProgress: (_) => const TicketLogoAnimation(),
+                loadFailure: (_) {
                   context.pushRoute(
                     FailureRoute(
                       retryCallback: () => context
@@ -63,33 +69,15 @@ class EventFiltersPage extends StatelessWidget {
                           .getAvailableFilters(),
                     ),
                   );
-                }
-              },
-              builder: (context, state) => state.map(
-                initial: (_) => Container(),
-                loadInProgress: (_) => const TicketLogoAnimation(),
-                loadFailure: (_) => Container(),
+                  return const SizedBox.shrink();
+                },
                 loadSuccess: (state) {
                   return SafeArea(
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.all(15),
+                      padding: const EdgeInsetsDirectional.all(16),
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
-                            const EventFiltersPlaceOption(),
-                            const SizedBox(height: 25),
-                            const EventFiltersMaxDistance(),
-                            BlocProvider(
-                              create: (context) => getIt<PlacesCubit>(),
-                              child: const EventFiltersCity(),
-                            ),
-                            const SizedBox(height: 25),
-                            EventFiltersCurrency(
-                              currencies: state.availableFilters.currencies,
-                            ),
-                            const SizedBox(height: 25),
-                            const EventFiltersPrice(),
-                            const SizedBox(height: 25),
                             EventFiltersMinAge(
                               availableMinAges: state.availableFilters.minAges,
                             ),
@@ -105,7 +93,9 @@ class EventFiltersPage extends StatelessWidget {
                             ),
                             const SizedBox(height: 25),
                             const EventFiltersIsConcert(),
-                            const SizedBox(height: 60),
+                            const SizedBox(height: 25),
+                            const EventFiltersPrice(),
+                            const SizedBox(height: 80),
                           ],
                         ),
                       ),

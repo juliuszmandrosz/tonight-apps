@@ -898,6 +898,7 @@ mixin _$EventOverviewState {
   List<Event> get events => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
   CubitStatus get status => throw _privateConstructorUsedError;
+  CubitStatus get nextPageStatus => throw _privateConstructorUsedError;
   EventFilters get eventFilters => throw _privateConstructorUsedError;
   EventSortModel get sortModel => throw _privateConstructorUsedError;
   Option<CommonEventFailure> get failure => throw _privateConstructorUsedError;
@@ -917,6 +918,7 @@ abstract class $EventOverviewStateCopyWith<$Res> {
       {List<Event> events,
       bool hasReachedMax,
       CubitStatus status,
+      CubitStatus nextPageStatus,
       EventFilters eventFilters,
       EventSortModel sortModel,
       Option<CommonEventFailure> failure});
@@ -941,6 +943,7 @@ class _$EventOverviewStateCopyWithImpl<$Res, $Val extends EventOverviewState>
     Object? events = null,
     Object? hasReachedMax = null,
     Object? status = null,
+    Object? nextPageStatus = null,
     Object? eventFilters = null,
     Object? sortModel = null,
     Object? failure = null,
@@ -957,6 +960,10 @@ class _$EventOverviewStateCopyWithImpl<$Res, $Val extends EventOverviewState>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      nextPageStatus: null == nextPageStatus
+          ? _value.nextPageStatus
+          : nextPageStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
       eventFilters: null == eventFilters
           ? _value.eventFilters
@@ -1002,6 +1009,7 @@ abstract class _$$_EventOverviewStateCopyWith<$Res>
       {List<Event> events,
       bool hasReachedMax,
       CubitStatus status,
+      CubitStatus nextPageStatus,
       EventFilters eventFilters,
       EventSortModel sortModel,
       Option<CommonEventFailure> failure});
@@ -1026,6 +1034,7 @@ class __$$_EventOverviewStateCopyWithImpl<$Res>
     Object? events = null,
     Object? hasReachedMax = null,
     Object? status = null,
+    Object? nextPageStatus = null,
     Object? eventFilters = null,
     Object? sortModel = null,
     Object? failure = null,
@@ -1042,6 +1051,10 @@ class __$$_EventOverviewStateCopyWithImpl<$Res>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      nextPageStatus: null == nextPageStatus
+          ? _value.nextPageStatus
+          : nextPageStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
       eventFilters: null == eventFilters
           ? _value.eventFilters
@@ -1066,6 +1079,7 @@ class _$_EventOverviewState extends _EventOverviewState {
       {required final List<Event> events,
       required this.hasReachedMax,
       required this.status,
+      required this.nextPageStatus,
       required this.eventFilters,
       required this.sortModel,
       required this.failure})
@@ -1085,6 +1099,8 @@ class _$_EventOverviewState extends _EventOverviewState {
   @override
   final CubitStatus status;
   @override
+  final CubitStatus nextPageStatus;
+  @override
   final EventFilters eventFilters;
   @override
   final EventSortModel sortModel;
@@ -1093,7 +1109,7 @@ class _$_EventOverviewState extends _EventOverviewState {
 
   @override
   String toString() {
-    return 'EventOverviewState(events: $events, hasReachedMax: $hasReachedMax, status: $status, eventFilters: $eventFilters, sortModel: $sortModel, failure: $failure)';
+    return 'EventOverviewState(events: $events, hasReachedMax: $hasReachedMax, status: $status, nextPageStatus: $nextPageStatus, eventFilters: $eventFilters, sortModel: $sortModel, failure: $failure)';
   }
 
   @override
@@ -1105,6 +1121,8 @@ class _$_EventOverviewState extends _EventOverviewState {
             (identical(other.hasReachedMax, hasReachedMax) ||
                 other.hasReachedMax == hasReachedMax) &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.nextPageStatus, nextPageStatus) ||
+                other.nextPageStatus == nextPageStatus) &&
             (identical(other.eventFilters, eventFilters) ||
                 other.eventFilters == eventFilters) &&
             (identical(other.sortModel, sortModel) ||
@@ -1118,6 +1136,7 @@ class _$_EventOverviewState extends _EventOverviewState {
       const DeepCollectionEquality().hash(_events),
       hasReachedMax,
       status,
+      nextPageStatus,
       eventFilters,
       sortModel,
       failure);
@@ -1135,6 +1154,7 @@ abstract class _EventOverviewState extends EventOverviewState {
           {required final List<Event> events,
           required final bool hasReachedMax,
           required final CubitStatus status,
+          required final CubitStatus nextPageStatus,
           required final EventFilters eventFilters,
           required final EventSortModel sortModel,
           required final Option<CommonEventFailure> failure}) =
@@ -1147,6 +1167,8 @@ abstract class _EventOverviewState extends EventOverviewState {
   bool get hasReachedMax;
   @override
   CubitStatus get status;
+  @override
+  CubitStatus get nextPageStatus;
   @override
   EventFilters get eventFilters;
   @override

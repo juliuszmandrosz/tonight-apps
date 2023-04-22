@@ -6,6 +6,8 @@ class MinAgesFilter implements IFilter {
 
   MinAgesFilter({required this.minAges});
 
+  factory MinAgesFilter.empty() => MinAgesFilter(minAges: []);
+
   @override
   String buildFilters(String query) {
     if (minAges.isEmpty) {

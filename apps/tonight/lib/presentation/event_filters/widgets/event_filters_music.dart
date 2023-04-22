@@ -20,36 +20,33 @@ class EventFiltersMusic extends StatelessWidget {
           previous.filters.musicalGenresFilter.musicalGenres !=
           current.filters.musicalGenresFilter.musicalGenres,
       builder: (context, state) {
-        return Column(
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: TonightHeadline(
-                text: S().music,
-                isSmallerVersion: true,
-              ),
+        return ListTileTheme(
+          contentPadding: const EdgeInsets.all(0),
+          dense: true,
+          child: ExpansionTile(
+            leading: TonightHeadline(
+              text: S().music,
+              isSmallerVersion: true,
             ),
-            const SizedBox(height: 10),
-            Column(
-              children: [
-                for (var genre in availableMusicalGenres)
-                  CheckboxListTile(
-                    activeColor: context.primaryColor,
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(
-                      genre.capitalize(),
-                      style: context.titleMedium,
-                    ),
-                    controlAffinity: ListTileControlAffinity.leading,
-                    value: state.filters.musicalGenresFilter.musicalGenres
-                        .contains(genre),
-                    onChanged: (value) => context
-                        .read<EventFiltersCubit>()
-                        .changeMusicalGenres(genre),
+            title: const SizedBox.shrink(),
+            children: [
+              for (var genre in availableMusicalGenres)
+                CheckboxListTile(
+                  activeColor: context.primaryColor,
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(
+                    genre.capitalize(),
+                    style: context.titleMedium,
                   ),
-              ],
-            ),
-          ],
+                  controlAffinity: ListTileControlAffinity.leading,
+                  value: state.filters.musicalGenresFilter.musicalGenres
+                      .contains(genre),
+                  onChanged: (value) => context
+                      .read<EventFiltersCubit>()
+                      .changeMusicalGenres(genre),
+                ),
+            ],
+          ),
         );
       },
     );

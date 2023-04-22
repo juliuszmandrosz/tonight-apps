@@ -6,6 +6,8 @@ class MusicalGenresFilter implements IFilter {
 
   MusicalGenresFilter({required this.musicalGenres});
 
+  factory MusicalGenresFilter.empty() => MusicalGenresFilter(musicalGenres: []);
+
   @override
   String buildFilters(String query) {
     if (musicalGenres.isEmpty) {

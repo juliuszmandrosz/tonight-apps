@@ -33,24 +33,26 @@ import 'package:tonight/application/add_wall_photo/add_wall_photo_cubit.dart';
 import 'package:tonight/application/app_settings/app_settings_cubit.dart';
 import 'package:tonight/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:tonight/application/auth/username/username_cubit.dart';
+import 'package:tonight/application/clubs/club_city_picker/club_city_picker_bloc.dart';
 import 'package:tonight/application/clubs/club_details/club_details_cubit.dart';
 import 'package:tonight/application/clubs/club_details/club_photos/club_photos_bloc.dart';
-import 'package:tonight/application/clubs/club_filters/club_filters_cubit.dart';
+import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
 import 'package:tonight/application/clubs/club_rewards/club_rewards_cubit.dart';
-import 'package:tonight/application/clubs/clubs_overview/clubs_overview_bloc.dart';
-import 'package:tonight/application/core/places/places_cubit.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/event_review/event_review_cubit.dart';
+import 'package:tonight/application/events/event_city_picker/event_city_picker_bloc.dart';
+import 'package:tonight/application/events/event_date_picker/event_date_picker_cubit.dart';
 import 'package:tonight/application/events/event_details/event_details_cubit.dart';
 import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
+import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:tonight/application/invoice_data/invoice_data_cubit.dart';
 import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:tonight/application/payment_method/payment_method_cubit.dart';
 import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
-import 'package:tonight/application/select_club/select_club_cubit.dart';
+import 'package:tonight/application/select_club/select_club_bloc.dart';
 import 'package:tonight/application/terms_of_service/terms_of_service_cubit.dart';
 import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
@@ -58,7 +60,7 @@ import 'package:tonight/application/ticket_qr/ticket_qr_cubit.dart';
 import 'package:tonight/application/update_profile_picture/update_profile_picture_cubit.dart';
 import 'package:tonight/application/user_details/user_details_cubit.dart';
 import 'package:tonight/application/vip_checkout/vip_checkout_cubit.dart';
-import 'package:tonight/application/wall_photos/wall_photos_cubit.dart';
+import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
 import 'package:tonight/domain/club_rewards/club_rewards_aggregator.dart';
 import 'package:tonight/domain/event_review/event_review_aggregator.dart';
 import 'package:tonight/domain/places/places_facade.dart';
@@ -94,12 +96,6 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerFactory(
-    () => PlacesCubit(
-      getIt(),
-    ),
-  );
-
   //Auth
   getIt.registerFactory(
     () => AuthCubit(
@@ -128,16 +124,13 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => ClubsOverviewBloc(
+    () => ClubsBloc(
       getIt(),
     ),
   );
 
-  getIt.registerFactoryParam(
-    (ClubsOverviewBloc clubsOverviewBloc, _) => ClubFiltersCubit(
-      clubsOverviewBloc,
-      getIt(),
-    ),
+  getIt.registerFactory(
+    () => ClubCityPickerBloc(),
   );
 
   getIt.registerFactory(
@@ -202,16 +195,21 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => EventOverviewBloc(
+    () => EventsBloc(
       getIt(),
     ),
   );
 
-  getIt.registerFactoryParam(
-    (EventOverviewBloc eventOverviewBloc, _) => EventFiltersCubit(
-      eventOverviewBloc,
-      getIt(),
-    ),
+  getIt.registerFactory(
+    () => EventFiltersCubit(),
+  );
+
+  getIt.registerFactory(
+    () => EventCityPickerBloc(),
+  );
+
+  getIt.registerFactory(
+    () => EventDatePickerCubit(),
   );
 
   //Network Check
@@ -300,7 +298,7 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => WallPhotosCubit(
+    () => WallPhotosBloc(
       getIt(),
     ),
   );
@@ -312,7 +310,7 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => SelectClubCubit(
+    () => SelectClubBloc(
       getIt(),
     ),
   );

@@ -1,4 +1,4 @@
-part of 'select_club_cubit.dart';
+part of 'select_club_bloc.dart';
 
 @freezed
 class SelectClubState with _$SelectClubState {

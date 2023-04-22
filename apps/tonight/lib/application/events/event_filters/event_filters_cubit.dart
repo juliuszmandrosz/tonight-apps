@@ -1,123 +1,64 @@
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
-import 'package:events/domain/filters/filter/currency_filter.dart';
 import 'package:events/events.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tonight/application/core/user_location/user_location_cubit.dart';
+import 'package:tonight/application/events/event_filters/menu_event_filter.dart';
 import 'package:translations/translations.dart';
 
 part 'event_filters_cubit.freezed.dart';
 part 'event_filters_state.dart';
 
 class EventFiltersCubit extends Cubit<EventFiltersState> {
-  final EventOverviewBloc _eventOverviewBloc;
-  final UserLocationCubit _userLocationCubit;
+  EventFiltersCubit() : super(EventFiltersState.initial());
 
-  EventFiltersCubit(this._eventOverviewBloc, this._userLocationCubit)
-      : super(EventFiltersState.initial());
-
-  void submitSearchField(String value) async {
-    final currentFilters = state.filters.copyWith(
-      phraseFilter: PhraseFilter(phrase: value),
-    );
-
-    emit(
-      state.copyWith(
-        filters: currentFilters,
-        isFilterApplied: true,
-      ),
-    );
-
-    if (state.filters.maxDistanceFilter.enabled) {
-      _setUserLocation();
-    }
-
-    _eventOverviewBloc.add(EventOverviewEvent.eventsFetched(
-      currentFilters,
-      _eventOverviewBloc.state.sortModel,
-    ));
+  initFilters(EventFilters filters) {
+    emit(state.copyWith(filters: filters));
   }
 
-  bool submitFilters({
-    bool isDateFilterApplied = false,
-    bool isMenuFilterApplied = false,
-  }) {
-    if (state.filters.maxDistanceFilter.enabled) {
-      _setUserLocation();
+  void submitMenuFilters() {
+    final appliedFilters = <MenuEventFilter, IFilter>{};
+    final minAgesFilter = state.filters.minAgesFilter;
+    final priceRangeFilter = state.filters.priceRangeFilter;
+    final showOnlyConcertsFilter = state.filters.showOnlyConcertsFilter;
+    final allowedOutfitsFilter = state.filters.allowedOutfitsFilter;
+    final musicalGenresFilter = state.filters.musicalGenresFilter;
+
+    if (minAgesFilter.minAges.isNotEmpty) {
+      appliedFilters[MenuEventFilter.minAge] = minAgesFilter;
+    }
+    if (priceRangeFilter.minPrice != 0 || priceRangeFilter.maxPrice != null) {
+      appliedFilters[MenuEventFilter.price] = priceRangeFilter;
+    }
+    if (showOnlyConcertsFilter.showOnlyConcerts) {
+      appliedFilters[MenuEventFilter.showOnlyConcerts] = showOnlyConcertsFilter;
+    }
+    if (allowedOutfitsFilter.allowedOutfits.isNotEmpty) {
+      appliedFilters[MenuEventFilter.dressCode] = allowedOutfitsFilter;
+    }
+    if (musicalGenresFilter.musicalGenres.isNotEmpty) {
+      appliedFilters[MenuEventFilter.music] = musicalGenresFilter;
     }
 
-    if (state.isDateFilterApplied) {
-      isDateFilterApplied = true;
-    }
-
-    if (state.isMenuFilterApplied) {
-      isMenuFilterApplied = true;
-    }
-
-    if (isMenuFilterApplied) {
+    if (appliedFilters.containsKey(MenuEventFilter.price)) {
       final price = state.filters.priceRangeFilter;
       if (price.maxPrice != null && price.maxPrice! < price.minPrice) {
         emit(state.copyWith(snackbarMessage: some(S().invalidPriceRange)));
         emit(state.copyWith(snackbarMessage: none()));
-        return false;
+        return;
       }
     }
 
-    emit(
-      state.copyWith(
-        isDateFilterApplied: isDateFilterApplied,
-        isMenuFilterApplied: isMenuFilterApplied,
-        isFilterApplied: true,
-      ),
-    );
-
-    _eventOverviewBloc.add(
-      EventOverviewEvent.eventsFetched(
-        state.filters,
-        _eventOverviewBloc.state.sortModel,
-      ),
-    );
-
-    return true;
-  }
-
-  void changeIsMaxDistanceOption(bool value) {
-    final currentFilters = state.filters.copyWith(
-        maxDistanceFilter:
-            state.filters.maxDistanceFilter.copyWith(enabled: value));
-    emit(state.copyWith(filters: currentFilters));
-  }
-
-  void changeMaxDistance(double value) {
-    final currentFilters = state.filters.copyWith(
-      maxDistanceFilter:
-          state.filters.maxDistanceFilter.copyWith(maxDistance: value),
-    );
-    emit(state.copyWith(filters: currentFilters));
-  }
-
-  void changeCity(String cityId, String cityName) {
-    final currentFilters = state.filters.copyWith(
-      cityFilter: CityFilter(
-        cityId: cityId,
-        cityName: cityName,
-      ),
-    );
-    emit(state.copyWith(filters: currentFilters));
-  }
-
-  void changeCityName(String value) {
-    final currentFilters = state.filters.copyWith(
-        cityFilter: state.filters.cityFilter.copyWith(cityName: value));
-    emit(state.copyWith(filters: currentFilters));
+    emit(state.copyWith(appliedFilters: appliedFilters));
   }
 
   void changePriceRange(int? minValue, int? maxValue) {
     final currentFilters = state.filters.copyWith(
-        priceRangeFilter: PriceRangeFilter(
-      minPrice: minValue ?? 0,
-      maxPrice: maxValue,
-    ));
+      priceRangeFilter: PriceRangeFilter(
+        minPrice: minValue ?? 0,
+        maxPrice: maxValue,
+      ),
+    );
     emit(state.copyWith(filters: currentFilters));
   }
 
@@ -129,8 +70,10 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
         ? minAgesCopy.remove(value)
         : minAgesCopy.add(value);
 
-    final currentFilters = state.filters
-        .copyWith(minAgesFilter: MinAgesFilter(minAges: minAgesCopy));
+    final currentFilters = state.filters.copyWith(
+      minAgesFilter: MinAgesFilter(minAges: minAgesCopy),
+    );
+
     emit(state.copyWith(filters: currentFilters));
   }
 
@@ -161,57 +104,15 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
       allowedOutfitsFilter:
           AllowedOutfitsFilter(allowedOutfits: allowedOutfitsCopy),
     );
+
     emit(state.copyWith(filters: currentFilters));
   }
 
   void changeIsConcertValue(bool value) {
-    final currentFilters = state.filters
-        .copyWith(isConcertFilter: IsConcertFilter(isConcert: value));
-    emit(state.copyWith(filters: currentFilters));
-  }
-
-  void changeDay(DateTime day) {
-    final currentFilters = state.filters
-        .copyWith(dateRangeFilter: DateRangeFilter(fromDate: day, toDate: day));
-    emit(state.copyWith(filters: currentFilters));
-  }
-
-  void changeCurrency(String value) {
     final currentFilters = state.filters.copyWith(
-      currencyFilter: CurrencyFilter(currency: value.toLowerCase()),
+      showOnlyConcertsFilter: ShowOnlyConcertsFilter(showOnlyConcerts: value),
     );
+
     emit(state.copyWith(filters: currentFilters));
-  }
-
-  void resetFilters() {
-    emit(
-      state.copyWith(
-        filters: EventFilters.empty(),
-        isFilterApplied: false,
-        isMenuFilterApplied: false,
-        isDateFilterApplied: false,
-      ),
-    );
-
-    _setUserLocation();
-    _eventOverviewBloc.add(
-      EventOverviewEvent.eventsFetched(state.filters, EventSortModel.empty()),
-    );
-  }
-
-  _setUserLocation() {
-    final locationState = _userLocationCubit.state;
-
-    locationState.userLocation.fold(
-      () => {},
-      (location) {
-        final currentFilters = state.filters.copyWith(
-          maxDistanceFilter:
-              state.filters.maxDistanceFilter.copyWith(userLocation: location),
-        );
-
-        emit(state.copyWith(filters: currentFilters));
-      },
-    );
   }
 }
