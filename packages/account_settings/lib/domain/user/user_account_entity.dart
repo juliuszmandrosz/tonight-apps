@@ -10,6 +10,7 @@ class UserAccount extends Equatable {
   final Map<String, int> attendance;
   final List<String> pushNotificationTokens;
   final int raverCoins;
+  final int ticketsCount;
 
   const UserAccount({
     required this.id,
@@ -21,6 +22,7 @@ class UserAccount extends Equatable {
     this.attendance = const {},
     this.pushNotificationTokens = const [],
     this.raverCoins = 0,
+    this.ticketsCount = 0,
   });
 
   @override
@@ -34,6 +36,7 @@ class UserAccount extends Equatable {
         attendance,
         pushNotificationTokens,
         raverCoins,
+        ticketsCount,
       ];
 
   UserAccount copyWith({
@@ -45,6 +48,7 @@ class UserAccount extends Equatable {
     Map<String, int>? attendance,
     List<String>? pushNotificationTokens,
     int? raverCoins,
+    int? ticketsCount,
   }) {
     return UserAccount(
       id: id,
@@ -57,6 +61,7 @@ class UserAccount extends Equatable {
       pushNotificationTokens:
           pushNotificationTokens ?? this.pushNotificationTokens,
       raverCoins: raverCoins ?? this.raverCoins,
+      ticketsCount: ticketsCount ?? this.ticketsCount,
     );
   }
 }

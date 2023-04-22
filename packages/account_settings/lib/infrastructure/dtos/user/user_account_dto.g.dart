@@ -28,6 +28,7 @@ _$_UserAccountDto _$$_UserAccountDtoFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
       raverCoins: json['raverCoins'] as int? ?? 0,
+      ticketsCount: json['ticketsCount'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_UserAccountDtoToJson(_$_UserAccountDto instance) =>
@@ -40,4 +41,5 @@ Map<String, dynamic> _$$_UserAccountDtoToJson(_$_UserAccountDto instance) =>
       'attendance': instance.attendance,
       'pushNotificationTokens': instance.pushNotificationTokens,
       'raverCoins': instance.raverCoins,
+      'ticketsCount': instance.ticketsCount,
     };

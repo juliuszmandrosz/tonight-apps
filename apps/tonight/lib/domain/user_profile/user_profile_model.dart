@@ -6,8 +6,9 @@ class UserProfile extends Equatable {
   final String email;
   final String username;
   final String profilePictureUrl;
-  final int favoriteClubsCount;
   final int raverCoins;
+  final int favoritesCount;
+  final int ticketsCount;
   final List<WallPhoto> userPhotos;
 
   const UserProfile({
@@ -15,8 +16,9 @@ class UserProfile extends Equatable {
     required this.email,
     this.profilePictureUrl = '',
     this.username = '',
-    this.favoriteClubsCount = 0,
     this.raverCoins = 0,
+    this.favoritesCount = 0,
+    this.ticketsCount = 0,
     this.userPhotos = const [],
   });
 
@@ -26,8 +28,9 @@ class UserProfile extends Equatable {
         email,
         username,
         profilePictureUrl,
-        favoriteClubsCount,
         raverCoins,
+        favoritesCount,
+        ticketsCount,
         userPhotos,
       ];
 
@@ -35,8 +38,9 @@ class UserProfile extends Equatable {
     String? email,
     String? username,
     String? profilePictureUrl,
-    int? favoriteClubsCount,
     int? raverCoins,
+    int? favoritesCount,
+    int? ticketsCount,
     List<WallPhoto>? userPhotos,
   }) {
     return UserProfile(
@@ -44,8 +48,9 @@ class UserProfile extends Equatable {
       email: email ?? this.email,
       profilePictureUrl: profilePictureUrl ?? this.profilePictureUrl,
       username: username ?? this.username,
-      favoriteClubsCount: favoriteClubsCount ?? this.favoriteClubsCount,
       raverCoins: raverCoins ?? this.raverCoins,
+      favoritesCount: favoritesCount ?? this.favoritesCount,
+      ticketsCount: ticketsCount ?? this.ticketsCount,
       userPhotos: userPhotos ?? this.userPhotos,
     );
   }

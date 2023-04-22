@@ -20,6 +20,7 @@ class UserAccountDto with _$UserAccountDto {
     @Default({}) Map<String, int> attendance,
     @Default([]) List<String> pushNotificationTokens,
     @Default(0) int raverCoins,
+    @Default(0) int ticketsCount,
   }) = _UserAccountDto;
 
   factory UserAccountDto.fromDomain(UserAccount user) {
@@ -33,6 +34,7 @@ class UserAccountDto with _$UserAccountDto {
       attendance: user.attendance,
       pushNotificationTokens: user.pushNotificationTokens,
       raverCoins: user.raverCoins,
+      ticketsCount: user.ticketsCount,
     );
   }
 
@@ -56,6 +58,7 @@ class UserAccountDto with _$UserAccountDto {
       attendance: attendance,
       pushNotificationTokens: pushNotificationTokens,
       raverCoins: raverCoins,
+      ticketsCount: ticketsCount,
     );
   }
 }
