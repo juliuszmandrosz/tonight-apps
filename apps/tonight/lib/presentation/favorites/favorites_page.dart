@@ -9,24 +9,35 @@ class FavoritesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15),
-      child: ListView(
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: TonightHeadline(text: S().favoriteClubs),
-          ),
-          const SizedBox(height: 20),
-          const FavoriteClubsList(),
-          const SizedBox(height: 30),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: TonightHeadline(text: S().favoriteEvents),
-          ),
-          const SizedBox(height: 20),
-          const FavoriteEventsList(),
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(S().favorites),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: ListView(
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TonightHeadline(
+                text: S().favoriteClubs,
+                isSmallerVersion: true,
+              ),
+            ),
+            const SizedBox(height: 20),
+            const FavoriteClubsList(),
+            const SizedBox(height: 30),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TonightHeadline(
+                text: S().favoriteEvents,
+                isSmallerVersion: true,
+              ),
+            ),
+            const SizedBox(height: 20),
+            const FavoriteEventsList(),
+          ],
+        ),
       ),
     );
   }

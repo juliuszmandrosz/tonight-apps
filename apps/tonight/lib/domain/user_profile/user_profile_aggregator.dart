@@ -10,9 +10,13 @@ import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 class UserProfileAggregator {
   final UserAccountFacade _userAccountFacade;
   final WallPhotoFacade _wallPhotoFacade;
-  List<WallPhoto> _userPhotos = [];
 
-  UserProfileAggregator(this._userAccountFacade, this._wallPhotoFacade);
+  var _userPhotos = <WallPhoto>[];
+
+  UserProfileAggregator(
+    this._userAccountFacade,
+    this._wallPhotoFacade,
+  );
 
   Stream<Either<UserProfileFailure, UserProfile>> getUserProfile({
     int photosPageSize = 20,
@@ -36,9 +40,11 @@ class UserProfileAggregator {
                 email: account.email,
                 raverCoins: account.raverCoins,
                 username: account.username,
-                favoriteClubsCount: account.favoriteClubIds.length,
+                favoritesCount: account.favoriteClubIds.length +
+                    account.favoriteEventIds.length,
                 profilePictureUrl: account.profilePictureUrl,
                 userPhotos: [..._userPhotos],
+                ticketsCount: account.ticketsCount,
               ),
             ),
           ),
