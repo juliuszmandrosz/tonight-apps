@@ -27,6 +27,7 @@ dependencies:
   dio:
   flutter_bloc:
   collection:
+  google_maps_flutter:
 
   common:
     path: ../common

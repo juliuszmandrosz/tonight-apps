@@ -16,8 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserLocationState {
-  Option<Map<String, double>> get userLocation =>
-      throw _privateConstructorUsedError;
+  Option<LatLng> get userLocation => throw _privateConstructorUsedError;
   bool get isPermissionGranted => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
@@ -33,9 +32,7 @@ abstract class $UserLocationStateCopyWith<$Res> {
       _$UserLocationStateCopyWithImpl<$Res, UserLocationState>;
   @useResult
   $Res call(
-      {Option<Map<String, double>> userLocation,
-      bool isPermissionGranted,
-      bool isLoading});
+      {Option<LatLng> userLocation, bool isPermissionGranted, bool isLoading});
 }
 
 /// @nodoc
@@ -59,7 +56,7 @@ class _$UserLocationStateCopyWithImpl<$Res, $Val extends UserLocationState>
       userLocation: null == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
-              as Option<Map<String, double>>,
+              as Option<LatLng>,
       isPermissionGranted: null == isPermissionGranted
           ? _value.isPermissionGranted
           : isPermissionGranted // ignore: cast_nullable_to_non_nullable
@@ -81,9 +78,7 @@ abstract class _$$_UserLocationStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Option<Map<String, double>> userLocation,
-      bool isPermissionGranted,
-      bool isLoading});
+      {Option<LatLng> userLocation, bool isPermissionGranted, bool isLoading});
 }
 
 /// @nodoc
@@ -105,7 +100,7 @@ class __$$_UserLocationStateCopyWithImpl<$Res>
       userLocation: null == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
-              as Option<Map<String, double>>,
+              as Option<LatLng>,
       isPermissionGranted: null == isPermissionGranted
           ? _value.isPermissionGranted
           : isPermissionGranted // ignore: cast_nullable_to_non_nullable
@@ -128,7 +123,7 @@ class _$_UserLocationState extends _UserLocationState {
       : super._();
 
   @override
-  final Option<Map<String, double>> userLocation;
+  final Option<LatLng> userLocation;
   @override
   final bool isPermissionGranted;
   @override
@@ -166,13 +161,13 @@ class _$_UserLocationState extends _UserLocationState {
 
 abstract class _UserLocationState extends UserLocationState {
   factory _UserLocationState(
-      {required final Option<Map<String, double>> userLocation,
+      {required final Option<LatLng> userLocation,
       required final bool isPermissionGranted,
       required final bool isLoading}) = _$_UserLocationState;
   _UserLocationState._() : super._();
 
   @override
-  Option<Map<String, double>> get userLocation;
+  Option<LatLng> get userLocation;
   @override
   bool get isPermissionGranted;
   @override

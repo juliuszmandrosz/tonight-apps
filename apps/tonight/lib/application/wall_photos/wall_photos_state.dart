@@ -1,4 +1,4 @@
-part of 'wall_photos_cubit.dart';
+part of 'wall_photos_bloc.dart';
 
 @freezed
 class WallPhotosState with _$WallPhotosState {

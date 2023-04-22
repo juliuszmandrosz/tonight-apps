@@ -6,6 +6,10 @@ class AllowedOutfitsFilter implements IFilter {
 
   AllowedOutfitsFilter({required this.allowedOutfits});
 
+  factory AllowedOutfitsFilter.empty() => AllowedOutfitsFilter(
+        allowedOutfits: [],
+      );
+
   @override
   String buildFilters(String query) {
     if (allowedOutfits.isEmpty) {

@@ -16,61 +16,58 @@ class OnboardingUserDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: BlocProvider(
-        create: (context) => getIt<OnboardingCubit>(),
-        child: BlocConsumer<OnboardingCubit, OnboardingState>(
-          listener: (context, state) {
-            state.errorMessage.fold(
-              () {},
-              (error) {
-                context.showSnackbarMessage(error);
-              },
-            );
+    return BlocProvider(
+      create: (context) => getIt<OnboardingCubit>(),
+      child: BlocConsumer<OnboardingCubit, OnboardingState>(
+        listener: (context, state) {
+          state.errorMessage.fold(
+            () {},
+            (error) {
+              context.showSnackbarMessage(error);
+            },
+          );
 
-            if (state.status.isSubmissionSuccess) {
-              context.router.replaceAll(
-                [const WelcomeLoaderRoute()],
-              );
-            }
-          },
-          builder: (context, state) {
-            return Scaffold(
-              body: SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: ListView(
-                          children: [
-                            const SizedBox(height: 50),
-                            const OnboardingProfilePicture(),
-                            const SizedBox(height: 40),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              // TODO - add translation
-                              child: TonightHeadline(
-                                  text:
-                                      "Wybierz swój pseudonim i zdjęcie profilowe"),
-                            ),
-                            const SizedBox(height: 30),
-                            const OnboardingUsernameInput(),
-                          ],
-                        ),
+          if (state.status.isSubmissionSuccess) {
+            context.router.replaceAll(
+              [const WelcomeLoaderRoute()],
+            );
+          }
+        },
+        builder: (context, state) {
+          return Scaffold(
+            body: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(15),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: ListView(
+                        children: [
+                          const SizedBox(height: 50),
+                          const OnboardingProfilePicture(),
+                          const SizedBox(height: 40),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            // TODO - add translation
+                            child: TonightHeadline(
+                                text:
+                                    "Wybierz swój pseudonim i zdjęcie profilowe"),
+                          ),
+                          const SizedBox(height: 30),
+                          const OnboardingUsernameInput(),
+                        ],
                       ),
-                      Visibility(
-                        visible: MediaQuery.of(context).viewInsets.bottom == 0,
-                        child: const SubmitButton(),
-                      ),
-                    ],
-                  ),
+                    ),
+                    Visibility(
+                      visible: MediaQuery.of(context).viewInsets.bottom == 0,
+                      child: const SubmitButton(),
+                    ),
+                  ],
                 ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

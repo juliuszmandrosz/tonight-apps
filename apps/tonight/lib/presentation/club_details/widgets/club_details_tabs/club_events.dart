@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
-import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/events/event_shimmer.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/events/event_tile.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
@@ -18,20 +18,20 @@ class ClubEvents extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          child: BlocConsumer<EventOverviewBloc, EventOverviewState>(
+          child: BlocConsumer<EventsBloc, EventsState>(
             listenWhen: (previous, current) =>
-                previous.status != current.status,
+                previous.getEventsStatus != current.getEventsStatus,
             listener: (context, state) {
-              if (state.status.isFailure()) {
+              if (state.getEventsStatus.isFailure()) {
                 context.pushRoute(
                   FailureRoute(
-                    retryCallback: () => _refreshEvents(context, state),
+                    retryCallback: () => _refreshEvents(context),
                   ),
                 );
               }
             },
             builder: (context, state) {
-              switch (state.status) {
+              switch (state.getEventsStatus) {
                 case CubitStatus.initial:
                   return Container();
 
@@ -57,7 +57,7 @@ class ClubEvents extends StatelessWidget {
                           ),
                           const SizedBox(height: 20),
                           OutlinedButton(
-                            onPressed: () => _refreshEvents(context, state),
+                            onPressed: () => _refreshEvents(context),
                             child: Text(S().refresh),
                           )
                         ],
@@ -65,21 +65,21 @@ class ClubEvents extends StatelessWidget {
                     );
                   }
                   return RefreshIndicator(
-                    onRefresh: () async => _refreshEvents(context, state),
-                    child: ListView.separated(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: state.events.length + 1,
+                    onRefresh: () async => _refreshEvents(context),
+                    child: InfiniteList(
                       separatorBuilder: (_, __) => const Divider(),
-                      itemBuilder: (ctx, i) => i >= state.events.length
-                          ? state.hasReachedMax
-                              ? const SizedBox()
-                              : const BottomLoader()
-                          : Center(
-                              child: EventTile(
-                                event: state.events[i],
-                              ),
-                            ),
+                      itemBuilder: (ctx, i) => Center(
+                        child: EventTile(
+                          event: state.events[i],
+                        ),
+                      ),
+                      itemCount: state.events.length,
+                      hasReachedMax: state.hasReachedMax,
+                      isLoading: state.nextPageStatus.isLoading(),
+                      hasError: state.nextPageStatus.isFailure(),
+                      onFetchData: () => context
+                          .read<EventsBloc>()
+                          .add(const EventsEvent.nextPageEventsFetched()),
                     ),
                   );
               }
@@ -90,12 +90,7 @@ class ClubEvents extends StatelessWidget {
     );
   }
 
-  _refreshEvents(BuildContext context, EventOverviewState state) {
-    context.read<EventOverviewBloc>().add(
-          EventOverviewEvent.eventsFetched(
-            state.eventFilters,
-            state.sortModel,
-          ),
-        );
+  _refreshEvents(BuildContext context) {
+    context.read<EventsBloc>().add(const EventsEvent.eventsRefreshed());
   }
 }

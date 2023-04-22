@@ -1,7 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
+import 'package:tonight/application/events/event_date_picker/event_date_picker_cubit.dart';
+import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:translations/translations.dart';
 
 class SubmitSelectedDateButton extends StatelessWidget {
@@ -9,20 +10,26 @@ class SubmitSelectedDateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<EventFiltersCubit, EventFiltersState>(
+    return BlocConsumer<EventDatePickerCubit, EventDatePickerState>(
+      listenWhen: (previous, current) =>
+          previous.isDateFilterApplied != current.isDateFilterApplied,
+      listener: (context, state) {
+        context
+            .read<EventsBloc>()
+            .add(EventsEvent.dateFilterApplied(state.filter));
+        context.popRoute();
+      },
       builder: (context, state) {
         return SizedBox(
           width: 300,
           child: ElevatedButton(
-            onPressed: state.filters.dateRangeFilter.fromDate != null
+            onPressed: state.filter.fromDate != null
                 ? () {
-                    final filtersCubit = context.read<EventFiltersCubit>();
+                    final filtersCubit = context.read<EventDatePickerCubit>();
                     filtersCubit.changeDay(
-                      state.filters.dateRangeFilter.toDate ??
-                          DateUtils.dateOnly(DateTime.now()),
+                      state.filter.toDate ?? DateUtils.dateOnly(DateTime.now()),
                     );
-                    filtersCubit.submitFilters(isDateFilterApplied: true);
-                    context.popRoute();
+                    filtersCubit.submitDateFilter();
                   }
                 : null,
             child: Text(S().applySelectedDate),

@@ -10,6 +10,8 @@ class CityFilter implements IFilter {
     required this.cityName,
   });
 
+  factory CityFilter.empty() => CityFilter(cityId: '', cityName: '');
+
   @override
   String buildFilters(String query) {
     if (cityId.isEmpty) return query;

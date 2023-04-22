@@ -19,8 +19,6 @@ class UserDetailsCubit extends Cubit<UserDetailsState> {
 
     final result = await _userDetailsRepository.getUserDetails(userId);
 
-    await Future.delayed(const Duration(milliseconds: 300));
-
     result.fold(
       (failure) => emit(state.copyWith(status: CubitStatus.failure)),
       (user) => emit(

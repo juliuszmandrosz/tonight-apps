@@ -37,7 +37,7 @@ class WallPhotoDetails extends StatelessWidget {
         Row(
           children: [
             const FaIcon(
-              FontAwesomeIcons.circleInfo,
+              FontAwesomeIcons.fire,
               size: 18,
             ),
             const SizedBox(width: 10),

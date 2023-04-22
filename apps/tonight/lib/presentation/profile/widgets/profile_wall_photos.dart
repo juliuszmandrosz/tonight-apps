@@ -9,8 +9,10 @@ import 'package:tonight/presentation/routes/app_router.gr.dart';
 class ProfileWallPhotos extends StatelessWidget {
   final ScrollController scrollController;
 
-  const ProfileWallPhotos({required this.scrollController, Key? key})
-      : super(key: key);
+  const ProfileWallPhotos({
+    required this.scrollController,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +23,11 @@ class ProfileWallPhotos extends StatelessWidget {
             ? const ProfileNoPhotosInfo()
             : InfiniteGrid(
                 shrinkWrap: true,
+                scrollController: scrollController,
                 itemCount: photos.length,
+                hasReachedMax: state.hasPhotosReachedMax,
                 isLoading: state.nextPagePhotosStatus.isLoading(),
                 hasError: state.nextPagePhotosStatus.isFailure(),
-                hasReachedMax: state.hasPhotosReachedMax,
                 onFetchData: () => context
                     .read<ProfileBloc>()
                     .add(const ProfileEvent.nextPhotosPageFetched()),
@@ -34,7 +37,6 @@ class ProfileWallPhotos extends StatelessWidget {
                   ),
                   child: NetworkPhoto(photoUrl: photos[i].photoUrl),
                 ),
-                scrollController: scrollController,
               );
       },
     );

@@ -1,4 +1,5 @@
-import 'package:common/common.dart';
+import 'package:common/extensions/color_extensions.dart';
+import 'package:common/extensions/typography_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
@@ -20,32 +21,32 @@ class EventFiltersMinAge extends StatelessWidget {
           previous.filters.minAgesFilter.minAges !=
           current.filters.minAgesFilter.minAges,
       builder: (context, state) {
-        return Column(
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: TonightHeadline(
-                text: S().age,
-                isSmallerVersion: true,
+        return ListTileTheme(
+          contentPadding: const EdgeInsets.all(0),
+          dense: true,
+          child: ExpansionTile(
+            leading: TonightHeadline(
+              text: S().age,
+              isSmallerVersion: true,
+            ),
+            title: const SizedBox.shrink(),
+            children: [
+              Column(
+                children: [
+                  for (var age in availableMinAges)
+                    CheckboxListTile(
+                      contentPadding: EdgeInsets.zero,
+                      activeColor: context.primaryColor,
+                      title: Text('$age+', style: context.titleMedium),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: state.filters.minAgesFilter.minAges.contains(age),
+                      onChanged: (value) =>
+                          context.read<EventFiltersCubit>().changeMinAges(age),
+                    ),
+                ],
               ),
-            ),
-            const SizedBox(height: 10),
-            Column(
-              children: [
-                for (var age in availableMinAges)
-                  CheckboxListTile(
-                    contentPadding: EdgeInsets.zero,
-                    activeColor: context.primaryColor,
-                    title: Text('$age+', style: context.titleMedium),
-                    controlAffinity: ListTileControlAffinity.leading,
-                    value: state.filters.minAgesFilter.minAges.contains(age),
-                    onChanged: (value) =>
-                        BlocProvider.of<EventFiltersCubit>(context)
-                            .changeMinAges(age),
-                  ),
-              ],
-            ),
-          ],
+            ],
+          ),
         );
       },
     );

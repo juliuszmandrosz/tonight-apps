@@ -15,7 +15,7 @@ class SplashPage extends StatelessWidget {
           initial: (_) {},
           authenticated: (_) =>
               context.replaceRoute(const WelcomeLoaderRoute()),
-          unauthenticated: (_) => context.replaceRoute(const SignInRoute()),
+          unauthenticated: (_) => context.replaceRoute(const OnboardingRoute()),
           deleteAccountSuccess: (_) => {},
           deleteAccountFailure: (_) => {},
           deleteAccountInProgress: (_) => {},
