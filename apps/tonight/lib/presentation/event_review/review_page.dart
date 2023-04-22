@@ -1,7 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:common/application/cubit_status.dart';
-import 'package:common/extensions/extensions.dart';
-import 'package:common/presentation/ticket_logo_animation.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -58,7 +56,7 @@ class ReviewPage extends StatelessWidget {
             case CubitStatus.initial:
               return Container();
             case CubitStatus.loading:
-              return const TicketLogoAnimation();
+              return const WaveLoadingIndicator();
             case CubitStatus.failure:
               return Container();
             case CubitStatus.success:

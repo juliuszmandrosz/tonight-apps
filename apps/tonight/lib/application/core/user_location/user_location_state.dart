@@ -5,7 +5,7 @@ class UserLocationState with _$UserLocationState {
   const UserLocationState._();
 
   factory UserLocationState({
-    required Option<Map<String, double>> userLocation,
+    required Option<LatLng> userLocation,
     required bool isPermissionGranted,
     required bool isLoading,
   }) = _UserLocationState;

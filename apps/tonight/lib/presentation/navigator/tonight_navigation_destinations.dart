@@ -1,4 +1,4 @@
-enum TonightNavigationDestinations {
+enum TonightNavigationDestination {
   wallPhotos,
   discover,
   add,

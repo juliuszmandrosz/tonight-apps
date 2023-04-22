@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'available_filters_cubit.dart';
 
@@ -27,10 +27,10 @@ mixin _$AvailableFiltersState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(AvailableFilters availableFilters)? loadSuccess,
-    TResult Function(AvailableFiltersFailure availableFiltersFailure)?
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(AvailableFilters availableFilters)? loadSuccess,
+    TResult? Function(AvailableFiltersFailure availableFiltersFailure)?
         loadFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,10 +54,10 @@ mixin _$AvailableFiltersState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,17 +75,19 @@ mixin _$AvailableFiltersState {
 abstract class $AvailableFiltersStateCopyWith<$Res> {
   factory $AvailableFiltersStateCopyWith(AvailableFiltersState value,
           $Res Function(AvailableFiltersState) then) =
-      _$AvailableFiltersStateCopyWithImpl<$Res>;
+      _$AvailableFiltersStateCopyWithImpl<$Res, AvailableFiltersState>;
 }
 
 /// @nodoc
-class _$AvailableFiltersStateCopyWithImpl<$Res>
+class _$AvailableFiltersStateCopyWithImpl<$Res,
+        $Val extends AvailableFiltersState>
     implements $AvailableFiltersStateCopyWith<$Res> {
   _$AvailableFiltersStateCopyWithImpl(this._value, this._then);
 
-  final AvailableFiltersState _value;
   // ignore: unused_field
-  final $Res Function(AvailableFiltersState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -97,13 +99,10 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$AvailableFiltersStateCopyWithImpl<$Res>
+    extends _$AvailableFiltersStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -140,10 +139,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(AvailableFilters availableFilters)? loadSuccess,
-    TResult Function(AvailableFiltersFailure availableFiltersFailure)?
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(AvailableFilters availableFilters)? loadSuccess,
+    TResult? Function(AvailableFiltersFailure availableFiltersFailure)?
         loadFailure,
   }) {
     return initial?.call();
@@ -179,10 +178,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return initial?.call(this);
   }
@@ -216,14 +215,11 @@ abstract class _$$_LoadInProgressCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadInProgressCopyWithImpl<$Res>
-    extends _$AvailableFiltersStateCopyWithImpl<$Res>
+    extends _$AvailableFiltersStateCopyWithImpl<$Res, _$_LoadInProgress>
     implements _$$_LoadInProgressCopyWith<$Res> {
   __$$_LoadInProgressCopyWithImpl(
       _$_LoadInProgress _value, $Res Function(_$_LoadInProgress) _then)
-      : super(_value, (v) => _then(v as _$_LoadInProgress));
-
-  @override
-  _$_LoadInProgress get _value => super._value as _$_LoadInProgress;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -260,10 +256,10 @@ class _$_LoadInProgress implements _LoadInProgress {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(AvailableFilters availableFilters)? loadSuccess,
-    TResult Function(AvailableFiltersFailure availableFiltersFailure)?
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(AvailableFilters availableFilters)? loadSuccess,
+    TResult? Function(AvailableFiltersFailure availableFiltersFailure)?
         loadFailure,
   }) {
     return loadInProgress?.call();
@@ -299,10 +295,10 @@ class _$_LoadInProgress implements _LoadInProgress {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return loadInProgress?.call(this);
   }
@@ -332,26 +328,25 @@ abstract class _$$_LoadSuccessCopyWith<$Res> {
   factory _$$_LoadSuccessCopyWith(
           _$_LoadSuccess value, $Res Function(_$_LoadSuccess) then) =
       __$$_LoadSuccessCopyWithImpl<$Res>;
+  @useResult
   $Res call({AvailableFilters availableFilters});
 }
 
 /// @nodoc
 class __$$_LoadSuccessCopyWithImpl<$Res>
-    extends _$AvailableFiltersStateCopyWithImpl<$Res>
+    extends _$AvailableFiltersStateCopyWithImpl<$Res, _$_LoadSuccess>
     implements _$$_LoadSuccessCopyWith<$Res> {
   __$$_LoadSuccessCopyWithImpl(
       _$_LoadSuccess _value, $Res Function(_$_LoadSuccess) _then)
-      : super(_value, (v) => _then(v as _$_LoadSuccess));
+      : super(_value, _then);
 
-  @override
-  _$_LoadSuccess get _value => super._value as _$_LoadSuccess;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? availableFilters = freezed,
+    Object? availableFilters = null,
   }) {
     return _then(_$_LoadSuccess(
-      availableFilters == freezed
+      null == availableFilters
           ? _value.availableFilters
           : availableFilters // ignore: cast_nullable_to_non_nullable
               as AvailableFilters,
@@ -377,16 +372,16 @@ class _$_LoadSuccess implements _LoadSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoadSuccess &&
-            const DeepCollectionEquality()
-                .equals(other.availableFilters, availableFilters));
+            (identical(other.availableFilters, availableFilters) ||
+                other.availableFilters == availableFilters));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(availableFilters));
+  int get hashCode => Object.hash(runtimeType, availableFilters);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
       __$$_LoadSuccessCopyWithImpl<_$_LoadSuccess>(this, _$identity);
 
@@ -405,10 +400,10 @@ class _$_LoadSuccess implements _LoadSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(AvailableFilters availableFilters)? loadSuccess,
-    TResult Function(AvailableFiltersFailure availableFiltersFailure)?
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(AvailableFilters availableFilters)? loadSuccess,
+    TResult? Function(AvailableFiltersFailure availableFiltersFailure)?
         loadFailure,
   }) {
     return loadSuccess?.call(availableFilters);
@@ -444,10 +439,10 @@ class _$_LoadSuccess implements _LoadSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return loadSuccess?.call(this);
   }
@@ -483,6 +478,7 @@ abstract class _$$_LoadFailureCopyWith<$Res> {
   factory _$$_LoadFailureCopyWith(
           _$_LoadFailure value, $Res Function(_$_LoadFailure) then) =
       __$$_LoadFailureCopyWithImpl<$Res>;
+  @useResult
   $Res call({AvailableFiltersFailure availableFiltersFailure});
 
   $AvailableFiltersFailureCopyWith<$Res> get availableFiltersFailure;
@@ -490,21 +486,19 @@ abstract class _$$_LoadFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadFailureCopyWithImpl<$Res>
-    extends _$AvailableFiltersStateCopyWithImpl<$Res>
+    extends _$AvailableFiltersStateCopyWithImpl<$Res, _$_LoadFailure>
     implements _$$_LoadFailureCopyWith<$Res> {
   __$$_LoadFailureCopyWithImpl(
       _$_LoadFailure _value, $Res Function(_$_LoadFailure) _then)
-      : super(_value, (v) => _then(v as _$_LoadFailure));
+      : super(_value, _then);
 
-  @override
-  _$_LoadFailure get _value => super._value as _$_LoadFailure;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? availableFiltersFailure = freezed,
+    Object? availableFiltersFailure = null,
   }) {
     return _then(_$_LoadFailure(
-      availableFiltersFailure == freezed
+      null == availableFiltersFailure
           ? _value.availableFiltersFailure
           : availableFiltersFailure // ignore: cast_nullable_to_non_nullable
               as AvailableFiltersFailure,
@@ -512,6 +506,7 @@ class __$$_LoadFailureCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AvailableFiltersFailureCopyWith<$Res> get availableFiltersFailure {
     return $AvailableFiltersFailureCopyWith<$Res>(
         _value.availableFiltersFailure, (value) {
@@ -538,16 +533,17 @@ class _$_LoadFailure implements _LoadFailure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoadFailure &&
-            const DeepCollectionEquality().equals(
-                other.availableFiltersFailure, availableFiltersFailure));
+            (identical(
+                    other.availableFiltersFailure, availableFiltersFailure) ||
+                other.availableFiltersFailure == availableFiltersFailure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(availableFiltersFailure));
+  int get hashCode => Object.hash(runtimeType, availableFiltersFailure);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
       __$$_LoadFailureCopyWithImpl<_$_LoadFailure>(this, _$identity);
 
@@ -566,10 +562,10 @@ class _$_LoadFailure implements _LoadFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(AvailableFilters availableFilters)? loadSuccess,
-    TResult Function(AvailableFiltersFailure availableFiltersFailure)?
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(AvailableFilters availableFilters)? loadSuccess,
+    TResult? Function(AvailableFiltersFailure availableFiltersFailure)?
         loadFailure,
   }) {
     return loadFailure?.call(availableFiltersFailure);
@@ -605,10 +601,10 @@ class _$_LoadFailure implements _LoadFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return loadFailure?.call(this);
   }

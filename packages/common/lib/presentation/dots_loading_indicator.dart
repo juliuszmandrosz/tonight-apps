@@ -9,9 +9,11 @@ class DotsLoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SpinKitThreeBounce(
-      color: context.onSurfaceColor,
-      size: size,
+    return Center(
+      child: SpinKitThreeBounce(
+        color: context.onSurfaceColor,
+        size: size,
+      ),
     );
   }
 }

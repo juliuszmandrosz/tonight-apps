@@ -40,7 +40,7 @@ class SignInPage extends StatelessWidget {
                   : context.loaderOverlay.hide();
 
               if (state.signInStatus.isSubmissionSuccess) {
-                context.replaceRoute(const WelcomeLoaderRoute());
+                context.router.replaceAll([const WelcomeLoaderRoute()]);
               }
             },
             child: Padding(

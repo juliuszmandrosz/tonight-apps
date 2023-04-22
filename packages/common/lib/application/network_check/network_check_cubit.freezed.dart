@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'network_check_cubit.dart';
 
@@ -27,29 +27,32 @@ mixin _$NetworkCheckState {
 abstract class $NetworkCheckStateCopyWith<$Res> {
   factory $NetworkCheckStateCopyWith(
           NetworkCheckState value, $Res Function(NetworkCheckState) then) =
-      _$NetworkCheckStateCopyWithImpl<$Res>;
+      _$NetworkCheckStateCopyWithImpl<$Res, NetworkCheckState>;
+  @useResult
   $Res call({bool isConnected});
 }
 
 /// @nodoc
-class _$NetworkCheckStateCopyWithImpl<$Res>
+class _$NetworkCheckStateCopyWithImpl<$Res, $Val extends NetworkCheckState>
     implements $NetworkCheckStateCopyWith<$Res> {
   _$NetworkCheckStateCopyWithImpl(this._value, this._then);
 
-  final NetworkCheckState _value;
   // ignore: unused_field
-  final $Res Function(NetworkCheckState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isConnected = freezed,
+    Object? isConnected = null,
   }) {
     return _then(_value.copyWith(
-      isConnected: isConnected == freezed
+      isConnected: null == isConnected
           ? _value.isConnected
           : isConnected // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -60,26 +63,25 @@ abstract class _$$_NetworkCheckStateCopyWith<$Res>
           $Res Function(_$_NetworkCheckState) then) =
       __$$_NetworkCheckStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({bool isConnected});
 }
 
 /// @nodoc
 class __$$_NetworkCheckStateCopyWithImpl<$Res>
-    extends _$NetworkCheckStateCopyWithImpl<$Res>
+    extends _$NetworkCheckStateCopyWithImpl<$Res, _$_NetworkCheckState>
     implements _$$_NetworkCheckStateCopyWith<$Res> {
   __$$_NetworkCheckStateCopyWithImpl(
       _$_NetworkCheckState _value, $Res Function(_$_NetworkCheckState) _then)
-      : super(_value, (v) => _then(v as _$_NetworkCheckState));
+      : super(_value, _then);
 
-  @override
-  _$_NetworkCheckState get _value => super._value as _$_NetworkCheckState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isConnected = freezed,
+    Object? isConnected = null,
   }) {
     return _then(_$_NetworkCheckState(
-      isConnected: isConnected == freezed
+      isConnected: null == isConnected
           ? _value.isConnected
           : isConnected // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -105,16 +107,16 @@ class _$_NetworkCheckState extends _NetworkCheckState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NetworkCheckState &&
-            const DeepCollectionEquality()
-                .equals(other.isConnected, isConnected));
+            (identical(other.isConnected, isConnected) ||
+                other.isConnected == isConnected));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(isConnected));
+  int get hashCode => Object.hash(runtimeType, isConnected);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_NetworkCheckStateCopyWith<_$_NetworkCheckState> get copyWith =>
       __$$_NetworkCheckStateCopyWithImpl<_$_NetworkCheckState>(
           this, _$identity);

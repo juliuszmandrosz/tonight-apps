@@ -8,6 +8,7 @@ class EventOverviewState with _$EventOverviewState {
     required List<Event> events,
     required bool hasReachedMax,
     required CubitStatus status,
+    required CubitStatus nextPageStatus,
     required EventFilters eventFilters,
     required EventSortModel sortModel,
     required Option<CommonEventFailure> failure,
@@ -16,6 +17,7 @@ class EventOverviewState with _$EventOverviewState {
   factory EventOverviewState.initial() => EventOverviewState(
         hasReachedMax: false,
         status: CubitStatus.initial,
+        nextPageStatus: CubitStatus.initial,
         events: [],
         eventFilters: EventFilters.empty(),
         sortModel: EventSortModel.empty(),

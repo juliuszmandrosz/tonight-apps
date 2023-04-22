@@ -6,17 +6,13 @@ class EventFiltersState with _$EventFiltersState {
 
   factory EventFiltersState({
     required EventFilters filters,
-    required bool isFilterApplied,
-    required bool isMenuFilterApplied,
-    required bool isDateFilterApplied,
     required Option<String> snackbarMessage,
+    required Map<MenuEventFilter, IFilter> appliedFilters,
   }) = _EventFiltersState;
 
   factory EventFiltersState.initial() => EventFiltersState(
         filters: EventFilters.empty(),
-        isFilterApplied: false,
-        isMenuFilterApplied: false,
-        isDateFilterApplied: false,
         snackbarMessage: none(),
+        appliedFilters: {},
       );
 }

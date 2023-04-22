@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'url_launch_failure.dart';
 
@@ -23,7 +23,7 @@ mixin _$UrlLaunchFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? launchError,
+    TResult? Function()? launchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,7 +39,7 @@ mixin _$UrlLaunchFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_LaunchError value)? launchError,
+    TResult? Function(_LaunchError value)? launchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,17 +54,18 @@ mixin _$UrlLaunchFailure {
 abstract class $UrlLaunchFailureCopyWith<$Res> {
   factory $UrlLaunchFailureCopyWith(
           UrlLaunchFailure value, $Res Function(UrlLaunchFailure) then) =
-      _$UrlLaunchFailureCopyWithImpl<$Res>;
+      _$UrlLaunchFailureCopyWithImpl<$Res, UrlLaunchFailure>;
 }
 
 /// @nodoc
-class _$UrlLaunchFailureCopyWithImpl<$Res>
+class _$UrlLaunchFailureCopyWithImpl<$Res, $Val extends UrlLaunchFailure>
     implements $UrlLaunchFailureCopyWith<$Res> {
   _$UrlLaunchFailureCopyWithImpl(this._value, this._then);
 
-  final UrlLaunchFailure _value;
   // ignore: unused_field
-  final $Res Function(UrlLaunchFailure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -76,14 +77,11 @@ abstract class _$$_LaunchErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LaunchErrorCopyWithImpl<$Res>
-    extends _$UrlLaunchFailureCopyWithImpl<$Res>
+    extends _$UrlLaunchFailureCopyWithImpl<$Res, _$_LaunchError>
     implements _$$_LaunchErrorCopyWith<$Res> {
   __$$_LaunchErrorCopyWithImpl(
       _$_LaunchError _value, $Res Function(_$_LaunchError) _then)
-      : super(_value, (v) => _then(v as _$_LaunchError));
-
-  @override
-  _$_LaunchError get _value => super._value as _$_LaunchError;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -116,7 +114,7 @@ class _$_LaunchError extends _LaunchError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? launchError,
+    TResult? Function()? launchError,
   }) {
     return launchError?.call();
   }
@@ -144,7 +142,7 @@ class _$_LaunchError extends _LaunchError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_LaunchError value)? launchError,
+    TResult? Function(_LaunchError value)? launchError,
   }) {
     return launchError?.call(this);
   }

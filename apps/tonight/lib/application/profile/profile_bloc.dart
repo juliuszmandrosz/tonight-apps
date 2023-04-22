@@ -1,8 +1,6 @@
 import 'dart:async';
 
-import 'package:common/application/bloc_throttle_debounce.dart';
-import 'package:common/application/cubit_status.dart';
-import 'package:common/extensions/option_extensions.dart';
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -33,7 +31,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ) async {
     emit(state.copyWith(initialStatus: CubitStatus.loading));
     await emit.forEach(
-      _userProfileAggregator.getUserProfile(),
+      _userProfileAggregator.getUserProfile(photosPageSize: _photosPageSize),
       onData: (result) => result.fold(
         (_) => state.copyWith(initialStatus: CubitStatus.failure),
         (profile) => state.copyWith(
@@ -88,7 +86,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       (photos) => emit(
         state.copyWith(
           nextPagePhotosStatus: CubitStatus.success,
-          userProfile: some(userProfile.copyWith(userPhotos: photos)),
+          userProfile: some(
+            userProfile.copyWith(
+              userPhotos: [...userProfile.userPhotos, ...photos],
+            ),
+          ),
           hasPhotosReachedMax: photos.length != _photosPageSize,
         ),
       ),

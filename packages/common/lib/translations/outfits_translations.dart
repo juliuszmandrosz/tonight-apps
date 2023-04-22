@@ -5,4 +5,5 @@ final outfitsTranslations = {
   'elegant': S().elegant,
   'no dress code': S().noDressCode,
   'no sport': S().noSport,
+  'custom': 'Custom',
 };

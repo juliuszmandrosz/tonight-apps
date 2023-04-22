@@ -27,7 +27,8 @@ mixin _$EventFilters {
   CityFilter get cityFilter => throw _privateConstructorUsedError;
   ClubFilter get clubFilter => throw _privateConstructorUsedError;
   DateRangeFilter get dateRangeFilter => throw _privateConstructorUsedError;
-  IsConcertFilter get isConcertFilter => throw _privateConstructorUsedError;
+  ShowOnlyConcertsFilter get showOnlyConcertsFilter =>
+      throw _privateConstructorUsedError;
   ShowOnlyFilter get showOnlyFilter => throw _privateConstructorUsedError;
   DateIncludesFilter get dateIncludesFilter =>
       throw _privateConstructorUsedError;
@@ -55,7 +56,7 @@ abstract class $EventFiltersCopyWith<$Res> {
       CityFilter cityFilter,
       ClubFilter clubFilter,
       DateRangeFilter dateRangeFilter,
-      IsConcertFilter isConcertFilter,
+      ShowOnlyConcertsFilter showOnlyConcertsFilter,
       ShowOnlyFilter showOnlyFilter,
       DateIncludesFilter dateIncludesFilter,
       CurrencyFilter currencyFilter,
@@ -84,7 +85,7 @@ class _$EventFiltersCopyWithImpl<$Res, $Val extends EventFilters>
     Object? cityFilter = null,
     Object? clubFilter = null,
     Object? dateRangeFilter = null,
-    Object? isConcertFilter = null,
+    Object? showOnlyConcertsFilter = null,
     Object? showOnlyFilter = null,
     Object? dateIncludesFilter = null,
     Object? currencyFilter = null,
@@ -127,10 +128,10 @@ class _$EventFiltersCopyWithImpl<$Res, $Val extends EventFilters>
           ? _value.dateRangeFilter
           : dateRangeFilter // ignore: cast_nullable_to_non_nullable
               as DateRangeFilter,
-      isConcertFilter: null == isConcertFilter
-          ? _value.isConcertFilter
-          : isConcertFilter // ignore: cast_nullable_to_non_nullable
-              as IsConcertFilter,
+      showOnlyConcertsFilter: null == showOnlyConcertsFilter
+          ? _value.showOnlyConcertsFilter
+          : showOnlyConcertsFilter // ignore: cast_nullable_to_non_nullable
+              as ShowOnlyConcertsFilter,
       showOnlyFilter: null == showOnlyFilter
           ? _value.showOnlyFilter
           : showOnlyFilter // ignore: cast_nullable_to_non_nullable
@@ -169,7 +170,7 @@ abstract class _$$_EventFiltersCopyWith<$Res>
       CityFilter cityFilter,
       ClubFilter clubFilter,
       DateRangeFilter dateRangeFilter,
-      IsConcertFilter isConcertFilter,
+      ShowOnlyConcertsFilter showOnlyConcertsFilter,
       ShowOnlyFilter showOnlyFilter,
       DateIncludesFilter dateIncludesFilter,
       CurrencyFilter currencyFilter,
@@ -196,7 +197,7 @@ class __$$_EventFiltersCopyWithImpl<$Res>
     Object? cityFilter = null,
     Object? clubFilter = null,
     Object? dateRangeFilter = null,
-    Object? isConcertFilter = null,
+    Object? showOnlyConcertsFilter = null,
     Object? showOnlyFilter = null,
     Object? dateIncludesFilter = null,
     Object? currencyFilter = null,
@@ -239,10 +240,10 @@ class __$$_EventFiltersCopyWithImpl<$Res>
           ? _value.dateRangeFilter
           : dateRangeFilter // ignore: cast_nullable_to_non_nullable
               as DateRangeFilter,
-      isConcertFilter: null == isConcertFilter
-          ? _value.isConcertFilter
-          : isConcertFilter // ignore: cast_nullable_to_non_nullable
-              as IsConcertFilter,
+      showOnlyConcertsFilter: null == showOnlyConcertsFilter
+          ? _value.showOnlyConcertsFilter
+          : showOnlyConcertsFilter // ignore: cast_nullable_to_non_nullable
+              as ShowOnlyConcertsFilter,
       showOnlyFilter: null == showOnlyFilter
           ? _value.showOnlyFilter
           : showOnlyFilter // ignore: cast_nullable_to_non_nullable
@@ -276,7 +277,7 @@ class _$_EventFilters extends _EventFilters {
       required this.cityFilter,
       required this.clubFilter,
       required this.dateRangeFilter,
-      required this.isConcertFilter,
+      required this.showOnlyConcertsFilter,
       required this.showOnlyFilter,
       required this.dateIncludesFilter,
       required this.currencyFilter,
@@ -302,7 +303,7 @@ class _$_EventFilters extends _EventFilters {
   @override
   final DateRangeFilter dateRangeFilter;
   @override
-  final IsConcertFilter isConcertFilter;
+  final ShowOnlyConcertsFilter showOnlyConcertsFilter;
   @override
   final ShowOnlyFilter showOnlyFilter;
   @override
@@ -314,7 +315,7 @@ class _$_EventFilters extends _EventFilters {
 
   @override
   String toString() {
-    return 'EventFilters(phraseFilter: $phraseFilter, priceRangeFilter: $priceRangeFilter, minAgesFilter: $minAgesFilter, musicalGenresFilter: $musicalGenresFilter, allowedOutfitsFilter: $allowedOutfitsFilter, maxDistanceFilter: $maxDistanceFilter, cityFilter: $cityFilter, clubFilter: $clubFilter, dateRangeFilter: $dateRangeFilter, isConcertFilter: $isConcertFilter, showOnlyFilter: $showOnlyFilter, dateIncludesFilter: $dateIncludesFilter, currencyFilter: $currencyFilter, isCanceledFilter: $isCanceledFilter)';
+    return 'EventFilters(phraseFilter: $phraseFilter, priceRangeFilter: $priceRangeFilter, minAgesFilter: $minAgesFilter, musicalGenresFilter: $musicalGenresFilter, allowedOutfitsFilter: $allowedOutfitsFilter, maxDistanceFilter: $maxDistanceFilter, cityFilter: $cityFilter, clubFilter: $clubFilter, dateRangeFilter: $dateRangeFilter, showOnlyConcertsFilter: $showOnlyConcertsFilter, showOnlyFilter: $showOnlyFilter, dateIncludesFilter: $dateIncludesFilter, currencyFilter: $currencyFilter, isCanceledFilter: $isCanceledFilter)';
   }
 
   @override
@@ -340,8 +341,8 @@ class _$_EventFilters extends _EventFilters {
                 other.clubFilter == clubFilter) &&
             (identical(other.dateRangeFilter, dateRangeFilter) ||
                 other.dateRangeFilter == dateRangeFilter) &&
-            (identical(other.isConcertFilter, isConcertFilter) ||
-                other.isConcertFilter == isConcertFilter) &&
+            (identical(other.showOnlyConcertsFilter, showOnlyConcertsFilter) ||
+                other.showOnlyConcertsFilter == showOnlyConcertsFilter) &&
             (identical(other.showOnlyFilter, showOnlyFilter) ||
                 other.showOnlyFilter == showOnlyFilter) &&
             (identical(other.dateIncludesFilter, dateIncludesFilter) ||
@@ -364,7 +365,7 @@ class _$_EventFilters extends _EventFilters {
       cityFilter,
       clubFilter,
       dateRangeFilter,
-      isConcertFilter,
+      showOnlyConcertsFilter,
       showOnlyFilter,
       dateIncludesFilter,
       currencyFilter,
@@ -388,7 +389,7 @@ abstract class _EventFilters extends EventFilters {
       required final CityFilter cityFilter,
       required final ClubFilter clubFilter,
       required final DateRangeFilter dateRangeFilter,
-      required final IsConcertFilter isConcertFilter,
+      required final ShowOnlyConcertsFilter showOnlyConcertsFilter,
       required final ShowOnlyFilter showOnlyFilter,
       required final DateIncludesFilter dateIncludesFilter,
       required final CurrencyFilter currencyFilter,
@@ -414,7 +415,7 @@ abstract class _EventFilters extends EventFilters {
   @override
   DateRangeFilter get dateRangeFilter;
   @override
-  IsConcertFilter get isConcertFilter;
+  ShowOnlyConcertsFilter get showOnlyConcertsFilter;
   @override
   ShowOnlyFilter get showOnlyFilter;
   @override

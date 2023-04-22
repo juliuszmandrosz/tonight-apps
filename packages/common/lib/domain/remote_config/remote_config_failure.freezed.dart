@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'remote_config_failure.dart';
 
@@ -23,7 +23,7 @@ mixin _$RemoteConfigFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
+    TResult? Function()? unexpected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,7 +39,7 @@ mixin _$RemoteConfigFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RemoteConfigUnexpected value)? unexpected,
+    TResult? Function(_RemoteConfigUnexpected value)? unexpected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,17 +54,18 @@ mixin _$RemoteConfigFailure {
 abstract class $RemoteConfigFailureCopyWith<$Res> {
   factory $RemoteConfigFailureCopyWith(
           RemoteConfigFailure value, $Res Function(RemoteConfigFailure) then) =
-      _$RemoteConfigFailureCopyWithImpl<$Res>;
+      _$RemoteConfigFailureCopyWithImpl<$Res, RemoteConfigFailure>;
 }
 
 /// @nodoc
-class _$RemoteConfigFailureCopyWithImpl<$Res>
+class _$RemoteConfigFailureCopyWithImpl<$Res, $Val extends RemoteConfigFailure>
     implements $RemoteConfigFailureCopyWith<$Res> {
   _$RemoteConfigFailureCopyWithImpl(this._value, this._then);
 
-  final RemoteConfigFailure _value;
   // ignore: unused_field
-  final $Res Function(RemoteConfigFailure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -76,15 +77,11 @@ abstract class _$$_RemoteConfigUnexpectedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_RemoteConfigUnexpectedCopyWithImpl<$Res>
-    extends _$RemoteConfigFailureCopyWithImpl<$Res>
+    extends _$RemoteConfigFailureCopyWithImpl<$Res, _$_RemoteConfigUnexpected>
     implements _$$_RemoteConfigUnexpectedCopyWith<$Res> {
   __$$_RemoteConfigUnexpectedCopyWithImpl(_$_RemoteConfigUnexpected _value,
       $Res Function(_$_RemoteConfigUnexpected) _then)
-      : super(_value, (v) => _then(v as _$_RemoteConfigUnexpected));
-
-  @override
-  _$_RemoteConfigUnexpected get _value =>
-      super._value as _$_RemoteConfigUnexpected;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -118,7 +115,7 @@ class _$_RemoteConfigUnexpected implements _RemoteConfigUnexpected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
+    TResult? Function()? unexpected,
   }) {
     return unexpected?.call();
   }
@@ -146,7 +143,7 @@ class _$_RemoteConfigUnexpected implements _RemoteConfigUnexpected {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_RemoteConfigUnexpected value)? unexpected,
+    TResult? Function(_RemoteConfigUnexpected value)? unexpected,
   }) {
     return unexpected?.call(this);
   }

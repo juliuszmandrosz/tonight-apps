@@ -1,4 +1,4 @@
-import 'package:common/common.dart';
+import 'package:common/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
@@ -12,37 +12,44 @@ class EventFiltersIsConcert extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<EventFiltersCubit, EventFiltersState>(
       buildWhen: (previous, current) =>
-          previous.filters.isConcertFilter.isConcert !=
-          current.filters.isConcertFilter.isConcert,
+          previous.filters.showOnlyConcertsFilter.showOnlyConcerts !=
+          current.filters.showOnlyConcertsFilter.showOnlyConcerts,
       builder: (context, state) {
-        return Column(
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: TonightHeadline(
-                text: S().isConcert,
-                isSmallerVersion: true,
+        return ListTileTheme(
+          contentPadding: const EdgeInsets.all(0),
+          dense: true,
+          child: ExpansionTile(
+            leading: TonightHeadline(
+              // TODO - add translation
+              text: 'Pokazuj tylko koncerty',
+              isSmallerVersion: true,
+            ),
+            title: const SizedBox.shrink(),
+            children: [
+              RadioListTile<bool?>(
+                contentPadding: EdgeInsets.zero,
+                activeColor: context.primaryColor,
+                title: Text(S().yes),
+                value: true,
+                groupValue:
+                    state.filters.showOnlyConcertsFilter.showOnlyConcerts,
+                onChanged: (value) => context
+                    .read<EventFiltersCubit>()
+                    .changeIsConcertValue(true),
               ),
-            ),
-            RadioListTile<bool>(
-              contentPadding: EdgeInsets.zero,
-              activeColor: context.primaryColor,
-              title: Text(S().yes),
-              value: true,
-              groupValue: state.filters.isConcertFilter.isConcert,
-              onChanged: (value) => BlocProvider.of<EventFiltersCubit>(context)
-                  .changeIsConcertValue(true),
-            ),
-            RadioListTile<bool>(
-              contentPadding: EdgeInsets.zero,
-              activeColor: context.primaryColor,
-              title: Text(S().no),
-              value: false,
-              groupValue: state.filters.isConcertFilter.isConcert,
-              onChanged: (value) => BlocProvider.of<EventFiltersCubit>(context)
-                  .changeIsConcertValue(false),
-            ),
-          ],
+              RadioListTile<bool?>(
+                contentPadding: EdgeInsets.zero,
+                activeColor: context.primaryColor,
+                title: Text(S().no),
+                value: false,
+                groupValue:
+                    state.filters.showOnlyConcertsFilter.showOnlyConcerts,
+                onChanged: (value) => context
+                    .read<EventFiltersCubit>()
+                    .changeIsConcertValue(false),
+              ),
+            ],
+          ),
         );
       },
     );

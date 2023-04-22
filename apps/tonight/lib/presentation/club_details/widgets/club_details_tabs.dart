@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_details.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_events.dart';
-import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_opinions.dart';
+import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_reviews.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_rewards.dart';
 import 'package:translations/translations.dart';
 
@@ -24,7 +24,7 @@ class ClubDetailsTabs extends StatelessWidget {
       children: [
         TabBar(
           controller: tabController,
-          labelPadding: const EdgeInsets.symmetric(horizontal: 5.0),
+          labelPadding: const EdgeInsets.symmetric(horizontal: 4.0),
           tabs: [
             Tab(
               icon: const FaIcon(FontAwesomeIcons.fire),
@@ -75,7 +75,7 @@ class ClubDetailsTabs extends StatelessWidget {
                 phoneNumber: club.phoneNumber,
                 socialMedia: club.socialMedia,
               ),
-              ClubOpinions(
+              ClubReviews(
                 clubId: club.id,
               ),
             ],

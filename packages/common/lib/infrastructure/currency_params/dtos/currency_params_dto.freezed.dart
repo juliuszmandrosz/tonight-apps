@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'currency_params_dto.dart';
 
@@ -34,40 +34,43 @@ mixin _$CurrencyParamsDto {
 abstract class $CurrencyParamsDtoCopyWith<$Res> {
   factory $CurrencyParamsDtoCopyWith(
           CurrencyParamsDto value, $Res Function(CurrencyParamsDto) then) =
-      _$CurrencyParamsDtoCopyWithImpl<$Res>;
+      _$CurrencyParamsDtoCopyWithImpl<$Res, CurrencyParamsDto>;
+  @useResult
   $Res call(
       {int minTicketPrice, int maxTicketPrice, double minServiceFeeAmount});
 }
 
 /// @nodoc
-class _$CurrencyParamsDtoCopyWithImpl<$Res>
+class _$CurrencyParamsDtoCopyWithImpl<$Res, $Val extends CurrencyParamsDto>
     implements $CurrencyParamsDtoCopyWith<$Res> {
   _$CurrencyParamsDtoCopyWithImpl(this._value, this._then);
 
-  final CurrencyParamsDto _value;
   // ignore: unused_field
-  final $Res Function(CurrencyParamsDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? minTicketPrice = freezed,
-    Object? maxTicketPrice = freezed,
-    Object? minServiceFeeAmount = freezed,
+    Object? minTicketPrice = null,
+    Object? maxTicketPrice = null,
+    Object? minServiceFeeAmount = null,
   }) {
     return _then(_value.copyWith(
-      minTicketPrice: minTicketPrice == freezed
+      minTicketPrice: null == minTicketPrice
           ? _value.minTicketPrice
           : minTicketPrice // ignore: cast_nullable_to_non_nullable
               as int,
-      maxTicketPrice: maxTicketPrice == freezed
+      maxTicketPrice: null == maxTicketPrice
           ? _value.maxTicketPrice
           : maxTicketPrice // ignore: cast_nullable_to_non_nullable
               as int,
-      minServiceFeeAmount: minServiceFeeAmount == freezed
+      minServiceFeeAmount: null == minServiceFeeAmount
           ? _value.minServiceFeeAmount
           : minServiceFeeAmount // ignore: cast_nullable_to_non_nullable
               as double,
-    ));
+    ) as $Val);
   }
 }
 
@@ -78,37 +81,36 @@ abstract class _$$_CurrencyParamsDtoCopyWith<$Res>
           $Res Function(_$_CurrencyParamsDto) then) =
       __$$_CurrencyParamsDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int minTicketPrice, int maxTicketPrice, double minServiceFeeAmount});
 }
 
 /// @nodoc
 class __$$_CurrencyParamsDtoCopyWithImpl<$Res>
-    extends _$CurrencyParamsDtoCopyWithImpl<$Res>
+    extends _$CurrencyParamsDtoCopyWithImpl<$Res, _$_CurrencyParamsDto>
     implements _$$_CurrencyParamsDtoCopyWith<$Res> {
   __$$_CurrencyParamsDtoCopyWithImpl(
       _$_CurrencyParamsDto _value, $Res Function(_$_CurrencyParamsDto) _then)
-      : super(_value, (v) => _then(v as _$_CurrencyParamsDto));
+      : super(_value, _then);
 
-  @override
-  _$_CurrencyParamsDto get _value => super._value as _$_CurrencyParamsDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? minTicketPrice = freezed,
-    Object? maxTicketPrice = freezed,
-    Object? minServiceFeeAmount = freezed,
+    Object? minTicketPrice = null,
+    Object? maxTicketPrice = null,
+    Object? minServiceFeeAmount = null,
   }) {
     return _then(_$_CurrencyParamsDto(
-      minTicketPrice: minTicketPrice == freezed
+      minTicketPrice: null == minTicketPrice
           ? _value.minTicketPrice
           : minTicketPrice // ignore: cast_nullable_to_non_nullable
               as int,
-      maxTicketPrice: maxTicketPrice == freezed
+      maxTicketPrice: null == maxTicketPrice
           ? _value.maxTicketPrice
           : maxTicketPrice // ignore: cast_nullable_to_non_nullable
               as int,
-      minServiceFeeAmount: minServiceFeeAmount == freezed
+      minServiceFeeAmount: null == minServiceFeeAmount
           ? _value.minServiceFeeAmount
           : minServiceFeeAmount // ignore: cast_nullable_to_non_nullable
               as double,
@@ -146,31 +148,31 @@ class _$_CurrencyParamsDto extends _CurrencyParamsDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CurrencyParamsDto &&
-            const DeepCollectionEquality()
-                .equals(other.minTicketPrice, minTicketPrice) &&
-            const DeepCollectionEquality()
-                .equals(other.maxTicketPrice, maxTicketPrice) &&
-            const DeepCollectionEquality()
-                .equals(other.minServiceFeeAmount, minServiceFeeAmount));
+            (identical(other.minTicketPrice, minTicketPrice) ||
+                other.minTicketPrice == minTicketPrice) &&
+            (identical(other.maxTicketPrice, maxTicketPrice) ||
+                other.maxTicketPrice == maxTicketPrice) &&
+            (identical(other.minServiceFeeAmount, minServiceFeeAmount) ||
+                other.minServiceFeeAmount == minServiceFeeAmount));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(minTicketPrice),
-      const DeepCollectionEquality().hash(maxTicketPrice),
-      const DeepCollectionEquality().hash(minServiceFeeAmount));
+      runtimeType, minTicketPrice, maxTicketPrice, minServiceFeeAmount);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CurrencyParamsDtoCopyWith<_$_CurrencyParamsDto> get copyWith =>
       __$$_CurrencyParamsDtoCopyWithImpl<_$_CurrencyParamsDto>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CurrencyParamsDtoToJson(this);
+    return _$$_CurrencyParamsDtoToJson(
+      this,
+    );
   }
 }
 

@@ -26,8 +26,6 @@ class EventDetailsCubit extends Cubit<EventDetailsState> {
 
     final failureOrSuccess = await _eventFacade.getEventById(eventId);
 
-    await Future.delayed(const Duration(milliseconds: 300));
-
     failureOrSuccess.fold(
       (failure) => emit(state.copyWith(status: CubitStatus.failure)),
       (event) {

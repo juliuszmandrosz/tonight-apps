@@ -63,8 +63,10 @@ class ReviewTitle extends StatelessWidget {
                       const SizedBox(height: 5),
                       RatingBarIndicator(
                         rating: review.userRate,
-                        itemBuilder: (context, index) =>
-                            const FaIcon(FontAwesomeIcons.solidStar),
+                        itemBuilder: (context, index) => FaIcon(
+                          FontAwesomeIcons.solidStar,
+                          color: context.onSurfaceColor,
+                        ),
                         itemCount: 5,
                         itemSize: 18,
                         direction: Axis.horizontal,

@@ -45,7 +45,7 @@ class UserDetailsPage extends StatelessWidget {
                   case CubitStatus.failure:
                     return Container();
                   case CubitStatus.loading:
-                    return const TicketLogoAnimation();
+                    return const WaveLoadingIndicator();
                   case CubitStatus.success:
                     final user = state.user.getOrCrash();
                     return Padding(
