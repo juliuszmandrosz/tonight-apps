@@ -65,16 +65,6 @@ const animationDuration = 300;
           durationInMilliseconds: animationDuration,
         ),
         CustomRoute(
-          page: TicketsPage,
-          transitionsBuilder: slideLeftTransition,
-          durationInMilliseconds: animationDuration,
-        ),
-        CustomRoute(
-          page: FavoritesPage,
-          transitionsBuilder: slideLeftTransition,
-          durationInMilliseconds: animationDuration,
-        ),
-        CustomRoute(
           page: ProfilePage,
           transitionsBuilder: slideLeftTransition,
           durationInMilliseconds: animationDuration,
@@ -210,6 +200,16 @@ const animationDuration = 300;
     ),
     CustomRoute<Club>(
       page: SelectClubPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: TicketsPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: FavoritesPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
