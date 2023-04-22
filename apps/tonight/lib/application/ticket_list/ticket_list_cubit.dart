@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:common/common.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:logger/logger.dart';
 import 'package:tickets/tickets.dart';
 
 part 'ticket_list_cubit.freezed.dart';
@@ -63,6 +64,7 @@ class TicketListCubit extends Cubit<TicketListState> {
     _upcomingLiveTicketsSubscription =
         _ticketFacade.getUpcomingAndLiveUserTickets().listen(
       (result) {
+        Logger().i(result);
         result.fold(
           (failure) => emit(
             state.copyWith(initialStatus: CubitStatus.failure),

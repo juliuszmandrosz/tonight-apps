@@ -6,12 +6,16 @@ class TonightAppBar extends StatelessWidget with PreferredSizeWidget {
   final String? title;
   final List<Widget>? actions;
 
-  const TonightAppBar({this.title, this.actions, Key? key}) : super(key: key);
+  const TonightAppBar({
+    this.title,
+    this.actions,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: title != null && title!.isNotEmpty
+      title: title != null
           ? AutoSizeText(
               title!,
               maxLines: 1,

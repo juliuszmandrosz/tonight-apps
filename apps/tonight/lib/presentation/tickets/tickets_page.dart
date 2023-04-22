@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
@@ -31,9 +30,13 @@ class _TicketsPageState extends State<TicketsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(15),
+    context.read<TicketListCubit>().fetchTickets();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(S().tickets(2)),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
         child: BlocConsumer<TicketListCubit, TicketListState>(
             listenWhen: (previous, current) =>
                 previous.initialStatus != current.initialStatus,
@@ -50,18 +53,13 @@ class _TicketsPageState extends State<TicketsPage> {
             builder: (context, state) {
               switch (state.initialStatus) {
                 case CubitStatus.initial:
-                  return Container();
+                  return const SizedBox.shrink();
 
                 case CubitStatus.loading:
-                  return Center(
-                    child: SpinKitThreeBounce(
-                      color: context.onSurfaceColor,
-                      size: 30,
-                    ),
-                  );
+                  return const WaveLoadingIndicator();
 
                 case CubitStatus.failure:
-                  return Container();
+                  return const SizedBox.shrink();
 
                 case CubitStatus.success:
                   return state.upcomingLiveTickets.isEmpty &&
@@ -85,7 +83,9 @@ class _TicketsPageState extends State<TicketsPage> {
                                     Align(
                                       alignment: Alignment.centerLeft,
                                       child: TonightHeadline(
-                                          text: S().upcomingAndLive),
+                                        text: S().upcomingAndLive,
+                                        isSmallerVersion: true,
+                                      ),
                                     ),
                                     const SizedBox(height: 20),
                                   ],
@@ -108,7 +108,9 @@ class _TicketsPageState extends State<TicketsPage> {
                                     Align(
                                       alignment: Alignment.centerLeft,
                                       child: TonightHeadline(
-                                          text: S().pastTickets),
+                                        text: S().pastTickets,
+                                        isSmallerVersion: true,
+                                      ),
                                     ),
                                     const SizedBox(height: 20),
                                   ],
