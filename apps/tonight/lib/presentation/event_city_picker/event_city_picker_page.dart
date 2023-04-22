@@ -1,0 +1,84 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
+import 'package:events/domain/filters/filter/city_filter.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tonight/application/events/event_city_picker/event_city_picker_bloc.dart';
+import 'package:tonight/application/events/event_list/events_bloc.dart';
+import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/core/tonight_app_bar.dart';
+import 'package:tonight/presentation/event_city_picker/widgets/event_city_picker_prediction_list.dart';
+import 'package:tonight/presentation/event_city_picker/widgets/event_picker_text_field.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
+
+class EventCityPickerPage extends StatelessWidget {
+  final BuildContext blocContext;
+  final CityFilter selectedCity;
+
+  const EventCityPickerPage({
+    required this.blocContext,
+    required this.selectedCity,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // TODO - add translations
+      appBar: const TonightAppBar(title: 'Miejsce'),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider.value(
+            value: blocContext.read<AvailableFiltersCubit>(),
+          ),
+          BlocProvider.value(
+            value: blocContext.read<EventsBloc>(),
+          ),
+        ],
+        child: BlocBuilder<AvailableFiltersCubit, AvailableFiltersState>(
+          builder: (context, state) {
+            return state.when(
+              initial: () => const SizedBox.shrink(),
+              loadInProgress: () => const WaveLoadingIndicator(),
+              loadFailure: (_) {
+                context.pushRoute(
+                  FailureRoute(
+                    retryCallback: () => context
+                        .read<AvailableFiltersCubit>()
+                        .getAvailableFilters(),
+                  ),
+                );
+                return const SizedBox.shrink();
+              },
+              loadSuccess: (filters) => BlocProvider(
+                create: (context) => getIt<EventCityPickerBloc>()
+                  ..add(
+                    EventCityPickerEvent.pickerInitialized(
+                      filter: selectedCity,
+                      availableCities: filters.cities,
+                    ),
+                  ),
+                child: BlocBuilder<EventCityPickerBloc, EventCityPickerState>(
+                  builder: (context, state) {
+                    return Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: const [
+                            EventPickerTextField(),
+                            SizedBox(height: 20),
+                            EventCityPickerPredictionList(),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}

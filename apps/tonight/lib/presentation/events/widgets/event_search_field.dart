@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
+import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:translations/translations.dart';
 
 class EventSearchField extends StatelessWidget {
@@ -8,26 +8,28 @@ class EventSearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<EventFiltersCubit, EventFiltersState>(
+    return BlocBuilder<EventsBloc, EventsState>(
       builder: (context, state) {
         return Column(
           children: [
             TextField(
+              textAlignVertical: TextAlignVertical.center,
               controller: TextEditingController(
-                text: state.filters.phraseFilter.phrase,
+                text: state.eventFilters.phraseFilter.phrase,
               ),
-              onSubmitted: (value) =>
-                  context.read<EventFiltersCubit>().submitSearchField(value),
+              onSubmitted: (value) => context
+                  .read<EventsBloc>()
+                  .add(EventsEvent.phraseFilterApplied(value)),
               decoration: InputDecoration(
                 hintMaxLines: 1,
                 hintText: S().startSearching,
-                prefixIcon: const Icon(Icons.search),
-                suffixIcon: state.filters.phraseFilter.phrase.isEmpty
+                prefixIcon: const Icon(Icons.search, size: 22),
+                suffixIcon: state.eventFilters.phraseFilter.phrase.isEmpty
                     ? null
                     : InkWell(
                         onTap: () => context
-                            .read<EventFiltersCubit>()
-                            .submitSearchField(''),
+                            .read<EventsBloc>()
+                            .add(const EventsEvent.phraseFilterApplied('')),
                         child: const Icon(Icons.clear),
                       ),
               ),

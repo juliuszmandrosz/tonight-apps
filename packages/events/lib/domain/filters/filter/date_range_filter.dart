@@ -12,6 +12,11 @@ class DateRangeFilter implements IFilter {
     required this.toDate,
   });
 
+  factory DateRangeFilter.empty() => DateRangeFilter(
+        fromDate: DateTime.now(),
+        toDate: null,
+      );
+
   @override
   String buildFilters(String query) {
     if (fromDate == null) return query;

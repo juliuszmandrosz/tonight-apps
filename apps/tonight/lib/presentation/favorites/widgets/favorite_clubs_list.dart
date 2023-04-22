@@ -28,10 +28,14 @@ class FavoriteClubsList extends StatelessWidget {
       },
       builder: (context, state) {
         switch (state.status) {
+          case CubitStatus.failure:
+            return const SizedBox.shrink();
+
+          case CubitStatus.initial:
+            return const SizedBox.shrink();
+
           case CubitStatus.loading:
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const WaveLoadingIndicator();
 
           case CubitStatus.success:
             return state.favoriteClubs.isEmpty
@@ -68,12 +72,6 @@ class FavoriteClubsList extends StatelessWidget {
                       },
                     ),
                   );
-
-          case CubitStatus.failure:
-            return Container();
-
-          case CubitStatus.initial:
-            return Container();
         }
       },
     );

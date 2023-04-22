@@ -11,33 +11,36 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: IntroductionScreen(
-        next: const FaIcon(FontAwesomeIcons.arrowRight),
-        done: Text(S().start),
-        onDone: () => context.pushRoute(const OnboardingUserDetailsRoute()),
-        pages: [
-          onboardingPageView(
-            context: context,
-            icon: FontAwesomeIcons.fire,
-            title: S().welcomeToTonight,
-            body: S().discoverClubs,
-          ),
-          onboardingPageView(
-            context: context,
-            icon: FontAwesomeIcons.trophy,
-            title: S().receiveRewards,
-            body: S().collectBenefitsInClubs,
-          ),
-          onboardingPageView(
-            context: context,
-            icon: FontAwesomeIcons.building,
-            title: S().stayUpdated,
-            body: S().addClubToFavoritesAndReceiveNotifications,
-          ),
-        ],
+    return IntroductionScreen(
+      next: const FaIcon(FontAwesomeIcons.arrowRight),
+      done: Text(S().start),
+      onDone: () => context.pushRoute(const SignInRoute()),
+      showSkipButton: true,
+      skip: TextButton(
+        onPressed: () => context.pushRoute(const SignInRoute()),
+        // TODO - add translations
+        child: Text('Pomiń'),
       ),
+      pages: [
+        onboardingPageView(
+          context: context,
+          icon: FontAwesomeIcons.fire,
+          title: S().welcomeToTonight,
+          body: S().discoverClubs,
+        ),
+        onboardingPageView(
+          context: context,
+          icon: FontAwesomeIcons.trophy,
+          title: S().receiveRewards,
+          body: S().collectBenefitsInClubs,
+        ),
+        onboardingPageView(
+          context: context,
+          icon: FontAwesomeIcons.building,
+          title: S().stayUpdated,
+          body: S().addClubToFavoritesAndReceiveNotifications,
+        ),
+      ],
     ); //Material App
   }
 }

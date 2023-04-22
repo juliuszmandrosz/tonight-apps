@@ -17,10 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$EventFiltersState {
   EventFilters get filters => throw _privateConstructorUsedError;
-  bool get isFilterApplied => throw _privateConstructorUsedError;
-  bool get isMenuFilterApplied => throw _privateConstructorUsedError;
-  bool get isDateFilterApplied => throw _privateConstructorUsedError;
   Option<String> get snackbarMessage => throw _privateConstructorUsedError;
+  Map<MenuEventFilter, IFilter> get appliedFilters =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventFiltersStateCopyWith<EventFiltersState> get copyWith =>
@@ -35,10 +34,8 @@ abstract class $EventFiltersStateCopyWith<$Res> {
   @useResult
   $Res call(
       {EventFilters filters,
-      bool isFilterApplied,
-      bool isMenuFilterApplied,
-      bool isDateFilterApplied,
-      Option<String> snackbarMessage});
+      Option<String> snackbarMessage,
+      Map<MenuEventFilter, IFilter> appliedFilters});
 
   $EventFiltersCopyWith<$Res> get filters;
 }
@@ -57,32 +54,22 @@ class _$EventFiltersStateCopyWithImpl<$Res, $Val extends EventFiltersState>
   @override
   $Res call({
     Object? filters = null,
-    Object? isFilterApplied = null,
-    Object? isMenuFilterApplied = null,
-    Object? isDateFilterApplied = null,
     Object? snackbarMessage = null,
+    Object? appliedFilters = null,
   }) {
     return _then(_value.copyWith(
       filters: null == filters
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
               as EventFilters,
-      isFilterApplied: null == isFilterApplied
-          ? _value.isFilterApplied
-          : isFilterApplied // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isMenuFilterApplied: null == isMenuFilterApplied
-          ? _value.isMenuFilterApplied
-          : isMenuFilterApplied // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isDateFilterApplied: null == isDateFilterApplied
-          ? _value.isDateFilterApplied
-          : isDateFilterApplied // ignore: cast_nullable_to_non_nullable
-              as bool,
       snackbarMessage: null == snackbarMessage
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      appliedFilters: null == appliedFilters
+          ? _value.appliedFilters
+          : appliedFilters // ignore: cast_nullable_to_non_nullable
+              as Map<MenuEventFilter, IFilter>,
     ) as $Val);
   }
 
@@ -105,10 +92,8 @@ abstract class _$$_EventFiltersStateCopyWith<$Res>
   @useResult
   $Res call(
       {EventFilters filters,
-      bool isFilterApplied,
-      bool isMenuFilterApplied,
-      bool isDateFilterApplied,
-      Option<String> snackbarMessage});
+      Option<String> snackbarMessage,
+      Map<MenuEventFilter, IFilter> appliedFilters});
 
   @override
   $EventFiltersCopyWith<$Res> get filters;
@@ -126,32 +111,22 @@ class __$$_EventFiltersStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? filters = null,
-    Object? isFilterApplied = null,
-    Object? isMenuFilterApplied = null,
-    Object? isDateFilterApplied = null,
     Object? snackbarMessage = null,
+    Object? appliedFilters = null,
   }) {
     return _then(_$_EventFiltersState(
       filters: null == filters
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
               as EventFilters,
-      isFilterApplied: null == isFilterApplied
-          ? _value.isFilterApplied
-          : isFilterApplied // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isMenuFilterApplied: null == isMenuFilterApplied
-          ? _value.isMenuFilterApplied
-          : isMenuFilterApplied // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isDateFilterApplied: null == isDateFilterApplied
-          ? _value.isDateFilterApplied
-          : isDateFilterApplied // ignore: cast_nullable_to_non_nullable
-              as bool,
       snackbarMessage: null == snackbarMessage
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      appliedFilters: null == appliedFilters
+          ? _value._appliedFilters
+          : appliedFilters // ignore: cast_nullable_to_non_nullable
+              as Map<MenuEventFilter, IFilter>,
     ));
   }
 }
@@ -161,26 +136,26 @@ class __$$_EventFiltersStateCopyWithImpl<$Res>
 class _$_EventFiltersState extends _EventFiltersState {
   _$_EventFiltersState(
       {required this.filters,
-      required this.isFilterApplied,
-      required this.isMenuFilterApplied,
-      required this.isDateFilterApplied,
-      required this.snackbarMessage})
-      : super._();
+      required this.snackbarMessage,
+      required final Map<MenuEventFilter, IFilter> appliedFilters})
+      : _appliedFilters = appliedFilters,
+        super._();
 
   @override
   final EventFilters filters;
   @override
-  final bool isFilterApplied;
-  @override
-  final bool isMenuFilterApplied;
-  @override
-  final bool isDateFilterApplied;
-  @override
   final Option<String> snackbarMessage;
+  final Map<MenuEventFilter, IFilter> _appliedFilters;
+  @override
+  Map<MenuEventFilter, IFilter> get appliedFilters {
+    if (_appliedFilters is EqualUnmodifiableMapView) return _appliedFilters;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_appliedFilters);
+  }
 
   @override
   String toString() {
-    return 'EventFiltersState(filters: $filters, isFilterApplied: $isFilterApplied, isMenuFilterApplied: $isMenuFilterApplied, isDateFilterApplied: $isDateFilterApplied, snackbarMessage: $snackbarMessage)';
+    return 'EventFiltersState(filters: $filters, snackbarMessage: $snackbarMessage, appliedFilters: $appliedFilters)';
   }
 
   @override
@@ -189,19 +164,15 @@ class _$_EventFiltersState extends _EventFiltersState {
         (other.runtimeType == runtimeType &&
             other is _$_EventFiltersState &&
             (identical(other.filters, filters) || other.filters == filters) &&
-            (identical(other.isFilterApplied, isFilterApplied) ||
-                other.isFilterApplied == isFilterApplied) &&
-            (identical(other.isMenuFilterApplied, isMenuFilterApplied) ||
-                other.isMenuFilterApplied == isMenuFilterApplied) &&
-            (identical(other.isDateFilterApplied, isDateFilterApplied) ||
-                other.isDateFilterApplied == isDateFilterApplied) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
-                other.snackbarMessage == snackbarMessage));
+                other.snackbarMessage == snackbarMessage) &&
+            const DeepCollectionEquality()
+                .equals(other._appliedFilters, _appliedFilters));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, filters, isFilterApplied,
-      isMenuFilterApplied, isDateFilterApplied, snackbarMessage);
+  int get hashCode => Object.hash(runtimeType, filters, snackbarMessage,
+      const DeepCollectionEquality().hash(_appliedFilters));
 
   @JsonKey(ignore: true)
   @override
@@ -213,23 +184,18 @@ class _$_EventFiltersState extends _EventFiltersState {
 
 abstract class _EventFiltersState extends EventFiltersState {
   factory _EventFiltersState(
-      {required final EventFilters filters,
-      required final bool isFilterApplied,
-      required final bool isMenuFilterApplied,
-      required final bool isDateFilterApplied,
-      required final Option<String> snackbarMessage}) = _$_EventFiltersState;
+          {required final EventFilters filters,
+          required final Option<String> snackbarMessage,
+          required final Map<MenuEventFilter, IFilter> appliedFilters}) =
+      _$_EventFiltersState;
   _EventFiltersState._() : super._();
 
   @override
   EventFilters get filters;
   @override
-  bool get isFilterApplied;
-  @override
-  bool get isMenuFilterApplied;
-  @override
-  bool get isDateFilterApplied;
-  @override
   Option<String> get snackbarMessage;
+  @override
+  Map<MenuEventFilter, IFilter> get appliedFilters;
   @override
   @JsonKey(ignore: true)
   _$$_EventFiltersStateCopyWith<_$_EventFiltersState> get copyWith =>

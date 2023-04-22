@@ -39,15 +39,13 @@ class UserLocationCubit extends Cubit<UserLocationState> {
   Future<LatLng> getCurrentLatLngOrCrash() async {
     await setLocationIfPermissionIsGranted();
     if (!state.isPermissionGranted) throw InvalidOperationError();
-    final location = state.userLocation.getOrCrash();
-    return LatLng(location[latitude]!, location[longitude]!);
+    return state.userLocation.getOrCrash();
   }
 
   Future<LatLng?> getCurrentLatLngOrNull() async {
     await setLocationIfPermissionIsGranted();
     if (!state.isPermissionGranted) return null;
-    final location = state.userLocation.getOrCrash();
-    return LatLng(location[latitude]!, location[longitude]!);
+    return state.userLocation.getOrCrash();
   }
 
   Future<void> setLocationIfPermissionIsGranted() async {
@@ -67,10 +65,12 @@ class UserLocationCubit extends Cubit<UserLocationState> {
 
     emit(
       state.copyWith(
-        userLocation: some({
-          latitude: userLocation.latitude,
-          longitude: userLocation.longitude,
-        }),
+        userLocation: some(
+          LatLng(
+            userLocation.latitude,
+            userLocation.longitude,
+          ),
+        ),
         isLoading: false,
         isPermissionGranted: true,
       ),

@@ -23,27 +23,27 @@ class EventFiltersPrice extends StatelessWidget {
             ? '(${getCurrencySymbolFromCode(currentCurrency)})'
             : '';
 
-        return Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TonightHeadline(
-                  text: '${S().priceRange} $currencyHeadline',
-                  isSmallerVersion: true,
-                ),
-              ],
+        return ListTileTheme(
+          contentPadding: const EdgeInsets.all(0),
+          dense: true,
+          child: ExpansionTile(
+            leading: TonightHeadline(
+              text: '${S().priceRange} $currencyHeadline',
+              isSmallerVersion: true,
             ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: const [
-                Expanded(child: EventFiltersMinPrice()),
-                SizedBox(width: 20),
-                Expanded(child: EventFiltersMaxPrice()),
-              ],
-            ),
-          ],
+            title: const SizedBox.shrink(),
+            children: [
+              const SizedBox(height: 20),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  Expanded(child: EventFiltersMinPrice()),
+                  SizedBox(width: 20),
+                  Expanded(child: EventFiltersMaxPrice()),
+                ],
+              ),
+            ],
+          ),
         );
       },
     );

@@ -3,7 +3,6 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:tonight/application/app_settings/app_settings_cubit.dart';
 import 'package:tonight/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
@@ -30,10 +29,10 @@ class TonightApp extends StatelessWidget {
           create: (ctx) => getIt<UserLocationCubit>(),
         ),
         BlocProvider(
-          create: (ctx) => getIt<RemoteConfigCubit>(),
+          create: (ctx) => getIt<NetworkCheckCubit>()..initNetworkListener(),
         ),
         BlocProvider(
-          create: (ctx) => getIt<NetworkCheckCubit>()..initNetworkListener(),
+          create: (ctx) => getIt<TicketListCubit>(),
         ),
         BlocProvider(
           create: (ctx) => getIt<EventFavoriteCubit>(),
@@ -42,35 +41,26 @@ class TonightApp extends StatelessWidget {
           create: (ctx) => getIt<ClubFavoriteCubit>(),
         ),
         BlocProvider(
+          create: (context) => getIt<AvailableFiltersCubit>(),
+        ),
+        BlocProvider(
           create: (context) => getIt<ProfileBloc>(),
         ),
-        BlocProvider(
-          create: (context) => getIt<AppSettingsCubit>(),
-        ),
-        BlocProvider(
-          create: (context) => getIt<TicketListCubit>(),
-        ),
       ],
-      child: BlocBuilder<AppSettingsCubit, AppSettingsState>(
-        buildWhen: (previous, current) =>
-            previous.appSettings.locale != current.appSettings.locale,
-        builder: (context, state) {
-          return MaterialApp.router(
-            title: S().tonight,
-            theme: darkTheme,
-            routerDelegate: _appRouter.delegate(),
-            routeInformationParser: _appRouter.defaultRouteParser(),
-            debugShowCheckedModeBanner: false,
-            localizationsDelegates: const [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-            localeListResolutionCallback: localeConfig,
-          );
-        },
+      child: MaterialApp.router(
+        title: S().tonight,
+        theme: darkTheme,
+        routerDelegate: _appRouter.delegate(),
+        routeInformationParser: _appRouter.defaultRouteParser(),
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        localeListResolutionCallback: localeConfig,
       ),
     );
   }

@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/clubs/club_details/club_details_cubit.dart';
 import 'package:tonight/application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
 import 'package:tonight/application/clubs/club_rewards/club_rewards_cubit.dart';
+import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/club_details/widgets/club_description.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs.dart';
@@ -32,16 +33,11 @@ class ClubDetailsPage extends StatefulWidget {
 
 class _ClubDetailsPageState extends State<ClubDetailsPage>
     with SingleTickerProviderStateMixin {
-  final _scrollThreshold = 0.95;
-  late final ClubReviewsBloc _clubReviewsBloc;
-  late final EventOverviewBloc _eventOverviewBloc;
-  late final ScrollController _scrollController;
   late final TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController()..addListener(_onScroll);
     _tabController = TabController(length: 4, vsync: this);
   }
 
@@ -63,37 +59,23 @@ class _ClubDetailsPageState extends State<ClubDetailsPage>
             ..getRewards(widget.clubId ?? widget.club!.id),
         ),
         BlocProvider(
-          create: (context) {
-            final reviewsBloc = getIt<ClubReviewsBloc>();
-
-            reviewsBloc.add(
+          create: (context) => getIt<ClubReviewsBloc>()
+            ..add(
               ClubReviewsEvent.reviewsFetched(widget.clubId ?? widget.club!.id),
-            );
-
-            _clubReviewsBloc = reviewsBloc;
-
-            return reviewsBloc;
-          },
+            ),
         ),
         BlocProvider(
-          create: (context) {
-            final eventsBloc = getIt<EventOverviewBloc>();
-            eventsBloc.add(
-              EventOverviewEvent.eventsFetched(
-                EventFilters.empty().copyWith(
-                  clubFilter:
-                      ClubFilter(clubId: widget.clubId ?? widget.club!.id),
-                  dateRangeFilter: DateRangeFilter(
-                    fromDate: DateTime.now(),
-                    toDate: null,
+          create: (context) => getIt<EventsBloc>()
+            ..add(
+              EventsEvent.menuFiltersApplied(
+                filters: EventFilters.empty().copyWith(
+                  clubFilter: ClubFilter(
+                    clubId: widget.clubId ?? widget.club!.id,
                   ),
                 ),
-                EventSortModel.empty(),
+                appliedFilters: {},
               ),
-            );
-            _eventOverviewBloc = eventsBloc;
-            return eventsBloc;
-          },
+            ),
         ),
       ],
       child: BlocConsumer<ClubDetailsCubit, ClubDetailsState>(
@@ -111,13 +93,13 @@ class _ClubDetailsPageState extends State<ClubDetailsPage>
         builder: (context, state) {
           return state.map(
             initial: (_) => Container(),
-            loadInProgress: (_) => const TicketLogoAnimation(),
+            loadInProgress: (_) => const WaveLoadingIndicator(),
+            loadFailure: (state) => const SizedBox.shrink(),
             loadSuccess: (state) {
               final club = state.club;
               return Scaffold(
                 body: SafeArea(
                   child: NestedScrollView(
-                    controller: _scrollController,
                     headerSliverBuilder: (context, value) {
                       return [
                         SliverAppBar(
@@ -153,41 +135,14 @@ class _ClubDetailsPageState extends State<ClubDetailsPage>
                 ),
               );
             },
-            loadFailure: (state) => Container(),
           );
         },
       ),
     );
   }
 
-  void _onScroll() {
-    final selectedIndex = _tabController.index;
-
-    if (selectedIndex == 1 && selectedIndex == 2) return;
-
-    if (!_isBottom) return;
-
-    if (selectedIndex == 0) {
-      _eventOverviewBloc.add(const EventOverviewEvent.nextEventsPageFetched());
-    }
-
-    if (selectedIndex == 3) {
-      _clubReviewsBloc.add(const ClubReviewsEvent.nextPageReviewsFetched());
-    }
-  }
-
-  bool get _isBottom {
-    if (!_scrollController.hasClients) return false;
-    final maxScroll = _scrollController.position.maxScrollExtent;
-    final currentScroll = _scrollController.offset;
-    return currentScroll >= (maxScroll * _scrollThreshold);
-  }
-
   @override
   void dispose() {
-    _scrollController
-      ..removeListener(_onScroll)
-      ..dispose();
     _tabController.dispose();
     super.dispose();
   }

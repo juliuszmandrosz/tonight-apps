@@ -97,7 +97,6 @@ dependencies:
   loader_overlay: ^2.1.0
   flutter_svg: ^2.0.3
   flutter_rating_bar: ^4.0.1
-  very_good_infinite_list: ^0.7.0
 
   # Cupertino UI icons
   cupertino_icons: ^1.0.5

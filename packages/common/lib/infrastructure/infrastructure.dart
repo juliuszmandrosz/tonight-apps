@@ -1,5 +1,5 @@
 export 'algolia_query_builder.dart';
-export 'available_filters/available_filters_dto.dart';
+export 'available_filters/dtos/available_filters_dto.dart';
 export 'available_filters/firebase_available_filters_facade.dart';
 export 'core/handle_dio_error.dart';
 export 'core/handle_firebase_error.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight/application/wall_photos/wall_photos_cubit.dart';
+import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
 import 'package:translations/translations.dart';
 
 class RefreshWallPhotosButton extends StatelessWidget {
@@ -18,7 +18,9 @@ class RefreshWallPhotosButton extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         OutlinedButton(
-          onPressed: () => context.read<WallPhotosCubit>().getPhotos(),
+          onPressed: () => context.read<WallPhotosBloc>().add(
+                const WallPhotosEvent.wallPhotosFetched(),
+              ),
           child: Text(S().refresh),
         ),
       ],

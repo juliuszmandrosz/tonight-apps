@@ -3,12 +3,11 @@ import 'package:clubs/domain/club/club_entity.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight/application/select_club/select_club_cubit.dart';
+import 'package:tonight/application/select_club/select_club_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/select_club/widgets/select_club_list.dart';
-import 'package:tonight/presentation/select_club/widgets/select_club_no_filtered_clubs_info.dart';
 import 'package:tonight/presentation/select_club/widgets/select_club_search_field.dart';
 
 class SelectClubPage extends StatelessWidget {
@@ -22,14 +21,16 @@ class SelectClubPage extends StatelessWidget {
       // TODO - add translation
       appBar: const TonightAppBar(title: 'Wybierz klub'),
       body: BlocProvider(
-        create: (ctx) => getIt<SelectClubCubit>()..fetchClubs(),
-        child: BlocListener<SelectClubCubit, SelectClubState>(
+        create: (ctx) =>
+            getIt<SelectClubBloc>()..add(const SelectClubEvent.clubsFetched()),
+        child: BlocListener<SelectClubBloc, SelectClubState>(
           listener: (context, selectClubState) async {
             if (selectClubState.initialStatus.isFailure()) {
               context.pushRoute(
                 FailureRoute(
-                  retryCallback: () =>
-                      context.read<SelectClubCubit>().fetchClubs(),
+                  retryCallback: () => context
+                      .read<SelectClubBloc>()
+                      .add(const SelectClubEvent.clubsFetched()),
                 ),
               );
             }
@@ -46,30 +47,28 @@ class SelectClubPage extends StatelessWidget {
           },
           child: Padding(
             padding: const EdgeInsets.all(16),
-            child: BlocBuilder<SelectClubCubit, SelectClubState>(
+            child: BlocBuilder<SelectClubBloc, SelectClubState>(
               builder: (context, state) {
                 switch (state.initialStatus) {
                   case CubitStatus.initial:
                     return Container();
                   case CubitStatus.loading:
-                    return const TicketLogoAnimation();
+                    return const WaveLoadingIndicator();
                   case CubitStatus.failure:
                     return Container();
                   case CubitStatus.success:
-                    return state.clubs.isEmpty
-                        ? const SelectClubNoFilteredClubsInfo()
-                        : RefreshIndicator(
-                            onRefresh: () async => await context
-                                .read<SelectClubCubit>()
-                                .fetchClubs(),
-                            child: Column(
-                              children: const [
-                                SelectClubSearchField(),
-                                SizedBox(height: 16),
-                                SelectClubList(),
-                              ],
-                            ),
-                          );
+                    return RefreshIndicator(
+                      onRefresh: () async => context
+                          .read<SelectClubBloc>()
+                          .add(const SelectClubEvent.clubsFetched()),
+                      child: Column(
+                        children: const [
+                          SelectClubSearchField(),
+                          SizedBox(height: 16),
+                          SelectClubList(),
+                        ],
+                      ),
+                    );
                 }
               },
             ),

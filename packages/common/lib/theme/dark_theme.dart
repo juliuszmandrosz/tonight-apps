@@ -66,7 +66,6 @@ TextTheme get textTheme => TextTheme(
 
 NavigationBarThemeData get navigationBarTheme => NavigationBarThemeData(
       backgroundColor: colors.surface,
-      elevation: 0,
     );
 
 TabBarTheme get tabBarTheme => TabBarTheme(
@@ -83,13 +82,11 @@ TabBarTheme get tabBarTheme => TabBarTheme(
     );
 
 AppBarTheme get appBarTheme => AppBarTheme(
-      elevation: 0,
       backgroundColor: colors.surface,
       foregroundColor: colors.onSurface,
     );
 
 CardTheme get cardTheme => CardTheme(
-      elevation: 0,
       shape: shapeMedium,
       clipBehavior: Clip.antiAlias,
     );
@@ -100,6 +97,10 @@ ListTileThemeData get listTileTheme => ListTileThemeData(
     );
 
 InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
+      isDense: true,
+      // hintStyle: textTheme.titleSmall!.copyWith(color: colors.outline),
+      constraints: const BoxConstraints(minHeight: 50, maxHeight: 50),
+      alignLabelWithHint: true,
       border: OutlineInputBorder(
         borderRadius: borderRadiusShapeMedium,
         borderSide: BorderSide(color: colors.primary),

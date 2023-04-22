@@ -1,5 +1,4 @@
 import 'package:clubs/clubs.dart';
-import 'package:common/constants/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -88,14 +87,13 @@ class ClubsApiImpl implements ClubsApi {
   String _getEventsSortBy(ClubFilters clubFilters) {
     final userLocation = clubFilters.maxDistanceFilter.userLocation;
 
-    if (userLocation.isNotEmpty) {
-      return _getSortByLocationString(
-        latitude: userLocation[latitude]!,
-        longitude: userLocation[longitude]!,
-      );
-    }
-
-    return 'reviewCount:desc, reviewAvg:desc';
+    return userLocation.fold(
+      () => 'reviewCount:desc, reviewAvg:desc',
+      (location) => _getSortByLocationString(
+        latitude: location.latitude,
+        longitude: location.longitude,
+      ),
+    );
   }
 
   _getSortByLocationString({

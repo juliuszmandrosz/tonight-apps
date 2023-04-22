@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PlacesState {
-  List<City> get cities => throw _privateConstructorUsedError;
+  List<Place> get places => throw _privateConstructorUsedError;
   String get previousSearch => throw _privateConstructorUsedError;
   CubitStatus get status => throw _privateConstructorUsedError;
 
@@ -31,7 +31,7 @@ abstract class $PlacesStateCopyWith<$Res> {
           PlacesState value, $Res Function(PlacesState) then) =
       _$PlacesStateCopyWithImpl<$Res, PlacesState>;
   @useResult
-  $Res call({List<City> cities, String previousSearch, CubitStatus status});
+  $Res call({List<Place> places, String previousSearch, CubitStatus status});
 }
 
 /// @nodoc
@@ -47,15 +47,15 @@ class _$PlacesStateCopyWithImpl<$Res, $Val extends PlacesState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cities = null,
+    Object? places = null,
     Object? previousSearch = null,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
-      cities: null == cities
-          ? _value.cities
-          : cities // ignore: cast_nullable_to_non_nullable
-              as List<City>,
+      places: null == places
+          ? _value.places
+          : places // ignore: cast_nullable_to_non_nullable
+              as List<Place>,
       previousSearch: null == previousSearch
           ? _value.previousSearch
           : previousSearch // ignore: cast_nullable_to_non_nullable
@@ -76,7 +76,7 @@ abstract class _$$_PlacesStateCopyWith<$Res>
       __$$_PlacesStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<City> cities, String previousSearch, CubitStatus status});
+  $Res call({List<Place> places, String previousSearch, CubitStatus status});
 }
 
 /// @nodoc
@@ -90,15 +90,15 @@ class __$$_PlacesStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cities = null,
+    Object? places = null,
     Object? previousSearch = null,
     Object? status = null,
   }) {
     return _then(_$_PlacesState(
-      cities: null == cities
-          ? _value._cities
-          : cities // ignore: cast_nullable_to_non_nullable
-              as List<City>,
+      places: null == places
+          ? _value._places
+          : places // ignore: cast_nullable_to_non_nullable
+              as List<Place>,
       previousSearch: null == previousSearch
           ? _value.previousSearch
           : previousSearch // ignore: cast_nullable_to_non_nullable
@@ -115,18 +115,18 @@ class __$$_PlacesStateCopyWithImpl<$Res>
 
 class _$_PlacesState extends _PlacesState {
   _$_PlacesState(
-      {required final List<City> cities,
+      {required final List<Place> places,
       required this.previousSearch,
       required this.status})
-      : _cities = cities,
+      : _places = places,
         super._();
 
-  final List<City> _cities;
+  final List<Place> _places;
   @override
-  List<City> get cities {
-    if (_cities is EqualUnmodifiableListView) return _cities;
+  List<Place> get places {
+    if (_places is EqualUnmodifiableListView) return _places;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_cities);
+    return EqualUnmodifiableListView(_places);
   }
 
   @override
@@ -136,7 +136,7 @@ class _$_PlacesState extends _PlacesState {
 
   @override
   String toString() {
-    return 'PlacesState(cities: $cities, previousSearch: $previousSearch, status: $status)';
+    return 'PlacesState(places: $places, previousSearch: $previousSearch, status: $status)';
   }
 
   @override
@@ -144,7 +144,7 @@ class _$_PlacesState extends _PlacesState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PlacesState &&
-            const DeepCollectionEquality().equals(other._cities, _cities) &&
+            const DeepCollectionEquality().equals(other._places, _places) &&
             (identical(other.previousSearch, previousSearch) ||
                 other.previousSearch == previousSearch) &&
             (identical(other.status, status) || other.status == status));
@@ -152,7 +152,7 @@ class _$_PlacesState extends _PlacesState {
 
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_cities), previousSearch, status);
+      const DeepCollectionEquality().hash(_places), previousSearch, status);
 
   @JsonKey(ignore: true)
   @override
@@ -163,13 +163,13 @@ class _$_PlacesState extends _PlacesState {
 
 abstract class _PlacesState extends PlacesState {
   factory _PlacesState(
-      {required final List<City> cities,
+      {required final List<Place> places,
       required final String previousSearch,
       required final CubitStatus status}) = _$_PlacesState;
   _PlacesState._() : super._();
 
   @override
-  List<City> get cities;
+  List<Place> get places;
   @override
   String get previousSearch;
   @override
