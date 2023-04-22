@@ -24,14 +24,14 @@ import '../app_settings/app_settings_page.dart' as _i24;
 import '../club_city_picker/club_city_picker_page.dart' as _i12;
 import '../club_details/club_details_page.dart' as _i8;
 import '../contact/contact_page.dart' as _i25;
-import '../discover/discover_page.dart' as _i31;
+import '../discover/discover_page.dart' as _i33;
 import '../event_city_picker/event_city_picker_page.dart' as _i11;
 import '../event_date_picker/event_date_picker_page.dart' as _i10;
 import '../event_filters/event_filters_page.dart' as _i5;
 import '../event_review/review_page.dart' as _i23;
 import '../events_details/event_details_page.dart' as _i6;
 import '../failure/failure_page.dart' as _i20;
-import '../favorites/favorites_page.dart' as _i33;
+import '../favorites/favorites_page.dart' as _i31;
 import '../invoice_data/invoice_data_page.dart' as _i19;
 import '../network_lost/network_lost_page.dart' as _i4;
 import '../onboarding/onboarding_page.dart' as _i18;
@@ -45,14 +45,14 @@ import '../ticket_checkout/ticket_checkout_page.dart' as _i13;
 import '../ticket_payment_confirm/ticket_payment_confirm_page.dart' as _i15;
 import '../ticket_qr/ticket_qr_page.dart' as _i9;
 import '../ticket_scan_confirm/ticket_scan_confirm_page.dart' as _i16;
-import '../tickets/tickets_page.dart' as _i32;
+import '../tickets/tickets_page.dart' as _i30;
 import '../update_profile_picture/update_profile_picture_page.dart' as _i22;
 import '../update_username/update_username_page.dart' as _i21;
 import '../user_details/user_details_page.dart' as _i7;
 import '../vip_checkout/vip_checkout_page.dart' as _i14;
 import '../wall_photo_camera_preview/wall_photo_camera_preview_page.dart'
     as _i27;
-import '../wall_photos/wall_photos_page.dart' as _i30;
+import '../wall_photos/wall_photos_page.dart' as _i32;
 import '../welcome_loader/welcome_loader_page.dart' as _i3;
 import 'page_transitions/fade_in_transition.dart' as _i39;
 import 'page_transitions/slide_left_transition.dart' as _i37;
@@ -436,30 +436,10 @@ class AppRouter extends _i35.RootStackRouter {
         barrierDismissible: false,
       );
     },
-    WallPhotosRoute.name: (routeData) {
-      return _i35.CustomPage<dynamic>(
-        routeData: routeData,
-        child: const _i30.WallPhotosPage(),
-        transitionsBuilder: _i37.slideLeftTransition,
-        durationInMilliseconds: 300,
-        opaque: true,
-        barrierDismissible: false,
-      );
-    },
-    DiscoverRoute.name: (routeData) {
-      return _i35.CustomPage<dynamic>(
-        routeData: routeData,
-        child: const _i31.DiscoverPage(),
-        transitionsBuilder: _i37.slideLeftTransition,
-        durationInMilliseconds: 300,
-        opaque: true,
-        barrierDismissible: false,
-      );
-    },
     TicketsRoute.name: (routeData) {
       return _i35.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i32.TicketsPage(),
+        child: const _i30.TicketsPage(),
         transitionsBuilder: _i37.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
@@ -469,7 +449,27 @@ class AppRouter extends _i35.RootStackRouter {
     FavoritesRoute.name: (routeData) {
       return _i35.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i33.FavoritesPage(),
+        child: const _i31.FavoritesPage(),
+        transitionsBuilder: _i37.slideLeftTransition,
+        durationInMilliseconds: 300,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    WallPhotosRoute.name: (routeData) {
+      return _i35.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i32.WallPhotosPage(),
+        transitionsBuilder: _i37.slideLeftTransition,
+        durationInMilliseconds: 300,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    DiscoverRoute.name: (routeData) {
+      return _i35.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i33.DiscoverPage(),
         transitionsBuilder: _i37.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
@@ -510,16 +510,6 @@ class AppRouter extends _i35.RootStackRouter {
             _i35.RouteConfig(
               DiscoverRoute.name,
               path: 'discover-page',
-              parent: WelcomeLoaderRoute.name,
-            ),
-            _i35.RouteConfig(
-              TicketsRoute.name,
-              path: 'tickets-page',
-              parent: WelcomeLoaderRoute.name,
-            ),
-            _i35.RouteConfig(
-              FavoritesRoute.name,
-              path: 'favorites-page',
               parent: WelcomeLoaderRoute.name,
             ),
             _i35.RouteConfig(
@@ -632,6 +622,14 @@ class AppRouter extends _i35.RootStackRouter {
         _i35.RouteConfig(
           SelectClubRoute.name,
           path: '/select-club-page',
+        ),
+        _i35.RouteConfig(
+          TicketsRoute.name,
+          path: '/tickets-page',
+        ),
+        _i35.RouteConfig(
+          FavoritesRoute.name,
+          path: '/favorites-page',
         ),
       ];
 }
@@ -1441,7 +1439,31 @@ class SelectClubRoute extends _i35.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i30.WallPhotosPage]
+/// [_i30.TicketsPage]
+class TicketsRoute extends _i35.PageRouteInfo<void> {
+  const TicketsRoute()
+      : super(
+          TicketsRoute.name,
+          path: '/tickets-page',
+        );
+
+  static const String name = 'TicketsRoute';
+}
+
+/// generated route for
+/// [_i31.FavoritesPage]
+class FavoritesRoute extends _i35.PageRouteInfo<void> {
+  const FavoritesRoute()
+      : super(
+          FavoritesRoute.name,
+          path: '/favorites-page',
+        );
+
+  static const String name = 'FavoritesRoute';
+}
+
+/// generated route for
+/// [_i32.WallPhotosPage]
 class WallPhotosRoute extends _i35.PageRouteInfo<void> {
   const WallPhotosRoute()
       : super(
@@ -1453,7 +1475,7 @@ class WallPhotosRoute extends _i35.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i31.DiscoverPage]
+/// [_i33.DiscoverPage]
 class DiscoverRoute extends _i35.PageRouteInfo<void> {
   const DiscoverRoute()
       : super(
@@ -1462,30 +1484,6 @@ class DiscoverRoute extends _i35.PageRouteInfo<void> {
         );
 
   static const String name = 'DiscoverRoute';
-}
-
-/// generated route for
-/// [_i32.TicketsPage]
-class TicketsRoute extends _i35.PageRouteInfo<void> {
-  const TicketsRoute()
-      : super(
-          TicketsRoute.name,
-          path: 'tickets-page',
-        );
-
-  static const String name = 'TicketsRoute';
-}
-
-/// generated route for
-/// [_i33.FavoritesPage]
-class FavoritesRoute extends _i35.PageRouteInfo<void> {
-  const FavoritesRoute()
-      : super(
-          FavoritesRoute.name,
-          path: 'favorites-page',
-        );
-
-  static const String name = 'FavoritesRoute';
 }
 
 /// generated route for

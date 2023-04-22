@@ -48,36 +48,38 @@ class ProfilePage extends HookWidget {
             return Container();
           case CubitStatus.success:
             final userProfile = state.userProfile.getOrCrash();
-            return Padding(
-              padding: const EdgeInsets.all(16),
-              child: RefreshIndicator(
-                onRefresh: () async => context
-                    .read<ProfileBloc>()
-                    .add(const ProfileEvent.photosRefreshed()),
-                child: SingleChildScrollView(
-                  controller: scrollController,
-                  child: Column(
-                    children: [
-                      ProfileUserPicture(
-                        profilePictureUrl: userProfile.profilePictureUrl,
-                        username: userProfile.username,
+            return RefreshIndicator(
+              onRefresh: () async => context
+                  .read<ProfileBloc>()
+                  .add(const ProfileEvent.photosRefreshed()),
+              child: SingleChildScrollView(
+                controller: scrollController,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 40),
+                    ProfileUserPicture(
+                      profilePictureUrl: userProfile.profilePictureUrl,
+                      username: userProfile.username,
+                    ),
+                    const SizedBox(height: 30),
+                    UsernameRow(username: userProfile.username),
+                    const SizedBox(height: 20),
+                    AutoSizeText(
+                      userProfile.email,
+                      style: context.titleMedium.copyWith(
+                        color: context.secondaryColor,
                       ),
-                      const SizedBox(height: 30),
-                      UsernameRow(username: userProfile.username),
-                      const SizedBox(height: 20),
-                      AutoSizeText(
-                        userProfile.email,
-                        style: context.titleMedium.copyWith(
-                          color: context.secondaryColor,
-                        ),
-                        maxLines: 1,
-                      ),
-                      const SizedBox(height: 40),
-                      UserProfileStatsRow(userProfile: userProfile),
-                      const SizedBox(height: 40),
-                      ProfileWallPhotos(scrollController: scrollController),
-                    ],
-                  ),
+                      maxLines: 1,
+                    ),
+                    const SizedBox(height: 40),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: UserProfileStatsRow(userProfile: userProfile),
+                    ),
+                    const SizedBox(height: 32),
+                    ProfileWallPhotos(scrollController: scrollController),
+                    const SizedBox(height: 16),
+                  ],
                 ),
               ),
             );

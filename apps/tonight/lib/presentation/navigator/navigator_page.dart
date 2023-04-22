@@ -22,13 +22,14 @@ class _NavigatorPageState extends State<NavigatorPage> {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
-      drawer: const TonightDrawer(),
+      drawer: _selectedIndex == TonightNavigationDestination.profile.index
+          ? null
+          : const TonightDrawer(),
       appBarBuilder: _buildAppBar,
       routes: const [
         WallPhotosRoute(),
         DiscoverRoute(),
         WallPhotosRoute(),
-        FavoritesRoute(),
         ProfileRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
@@ -71,10 +72,6 @@ class _NavigatorPageState extends State<NavigatorPage> {
               label: 'Opublikuj',
             ),
             NavigationDestination(
-              icon: const FaIcon(FontAwesomeIcons.heart),
-              label: S().favorites,
-            ),
-            NavigationDestination(
               icon: const FaIcon(FontAwesomeIcons.user),
               label: S().profile,
             ),
@@ -86,9 +83,18 @@ class _NavigatorPageState extends State<NavigatorPage> {
 
   PreferredSizeWidget _buildAppBar(
     BuildContext context,
-    TabsRouter tabsRouter,
+    TabsRouter router,
   ) {
-    if (tabsRouter.activeIndex == TonightNavigationDestination.discover.index) {
+    if (router.activeIndex == TonightNavigationDestination.profile.index) {
+      return PreferredSize(
+        preferredSize: Size.fromHeight(MediaQuery.of(context).padding.top),
+        child: Container(
+          color: context.backgroundColor,
+          height: MediaQuery.of(context).padding.top,
+        ),
+      );
+    }
+    if (router.activeIndex == TonightNavigationDestination.discover.index) {
       return PreferredSize(
         preferredSize: Size.fromHeight(MediaQuery.of(context).padding.top),
         child: Container(
