@@ -21,63 +21,67 @@ class _NavigatorPageState extends State<NavigatorPage> {
 
   @override
   Widget build(BuildContext context) {
-    return AutoTabsScaffold(
-      drawer: _selectedIndex == TonightNavigationDestination.profile.index
-          ? null
-          : const TonightDrawer(),
-      appBarBuilder: _buildAppBar,
-      routes: const [
-        WallPhotosRoute(),
-        DiscoverRoute(),
-        WallPhotosRoute(),
-        ProfileRoute(),
-      ],
-      bottomNavigationBuilder: (_, tabsRouter) {
-        return NavigationBar(
-          selectedIndex: tabsRouter.activeIndex,
-          onDestinationSelected: (i) async {
-            if (i == TonightNavigationDestination.add.index) {
-              if (context.mounted) {
-                context.pushRoute(
-                  const WallPhotoCameraPreviewRoute(),
-                );
-                i = _selectedIndex;
+    return GestureDetector(
+      onTap: () => context.unfocus(),
+      child: AutoTabsScaffold(
+        drawer: _selectedIndex == TonightNavigationDestination.profile.index
+            ? null
+            : const TonightDrawer(),
+        appBarBuilder: _buildAppBar,
+        routes: const [
+          WallPhotosRoute(),
+          DiscoverRoute(),
+          WallPhotosRoute(),
+          ProfileRoute(),
+        ],
+        bottomNavigationBuilder: (_, tabsRouter) {
+          return NavigationBar(
+            selectedIndex: tabsRouter.activeIndex,
+            onDestinationSelected: (i) async {
+              context.unfocus();
+              if (i == TonightNavigationDestination.add.index) {
+                if (context.mounted) {
+                  context.pushRoute(
+                    const WallPhotoCameraPreviewRoute(),
+                  );
+                  i = _selectedIndex;
+                }
               }
-            }
 
-            setState(() {
-              _selectedIndex = i;
-            });
-            tabsRouter.setActiveIndex(i);
-          },
-          destinations: [
-            NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/icon_logo_transparent.svg',
-                semanticsLabel: 'Icon Logo',
-                height: 32,
+              setState(() {
+                _selectedIndex = i;
+              });
+              tabsRouter.setActiveIndex(i);
+            },
+            destinations: [
+              NavigationDestination(
+                icon: SvgPicture.asset(
+                  'assets/icons/icon_logo_transparent.svg',
+                  semanticsLabel: 'Icon Logo',
+                  height: 32,
+                ),
+                label: 'Tonight',
               ),
-              label: 'Tonight',
-            ),
-            const NavigationDestination(
-              icon: FaIcon(FontAwesomeIcons.compass),
-              // TODO - add translation
-              label: 'Odkrywaj',
-            ),
-            const NavigationDestination(
-              icon: FaIcon(
-                FontAwesomeIcons.paperPlane,
+              const NavigationDestination(
+                icon: FaIcon(FontAwesomeIcons.compass),
+                // TODO - add translation
+                label: 'Odkrywaj',
               ),
-              // TODO - add translation
-              label: 'Opublikuj',
-            ),
-            NavigationDestination(
-              icon: const FaIcon(FontAwesomeIcons.user),
-              label: S().profile,
-            ),
-          ],
-        );
-      },
+              const NavigationDestination(
+                icon: FaIcon(
+                  FontAwesomeIcons.paperPlane,
+                ),
+                // TODO - add translation
+                label: 'Opublikuj',
+              ),
+              NavigationDestination(
+                icon: const FaIcon(FontAwesomeIcons.user),
+                label: S().profile,
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 
