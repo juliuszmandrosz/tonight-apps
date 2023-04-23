@@ -13,64 +13,61 @@ class WallPhotosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: BlocProvider(
-        create: (context) => getIt<WallPhotosBloc>()
-          ..add(const WallPhotosEvent.wallPhotosFetched()),
-        child: Builder(
-          builder: (context) {
-            return BlocConsumer<WallPhotosBloc, WallPhotosState>(
-              listenWhen: (previous, current) =>
-                  previous.getPhotosStatus != current.getPhotosStatus,
-              listener: (ctx, state) {
-                if (state.getPhotosStatus.isFailure()) {
-                  context.pushRoute(
-                    FailureRoute(
-                      retryCallback: () => context.read<WallPhotosBloc>().add(
-                            const WallPhotosEvent.wallPhotosFetched(),
-                          ),
-                    ),
-                  );
-                }
-              },
-              builder: (ctx, state) {
-                switch (state.getPhotosStatus) {
-                  case CubitStatus.initial:
-                    return const SizedBox.shrink();
-                  case CubitStatus.failure:
-                    return const SizedBox.shrink();
-                  case CubitStatus.loading:
-                    return const WaveLoadingIndicator();
-                  case CubitStatus.success:
-                    return state.photos.isEmpty
-                        ? const RefreshWallPhotosButton()
-                        : RefreshIndicator(
-                            onRefresh: () async => context
+    return BlocProvider(
+      create: (context) => getIt<WallPhotosBloc>()
+        ..add(const WallPhotosEvent.wallPhotosFetched()),
+      child: Builder(
+        builder: (context) {
+          return BlocConsumer<WallPhotosBloc, WallPhotosState>(
+            listenWhen: (previous, current) =>
+                previous.getPhotosStatus != current.getPhotosStatus,
+            listener: (ctx, state) {
+              if (state.getPhotosStatus.isFailure()) {
+                context.pushRoute(
+                  FailureRoute(
+                    retryCallback: () => context.read<WallPhotosBloc>().add(
+                          const WallPhotosEvent.wallPhotosFetched(),
+                        ),
+                  ),
+                );
+              }
+            },
+            builder: (ctx, state) {
+              switch (state.getPhotosStatus) {
+                case CubitStatus.initial:
+                  return const SizedBox.shrink();
+                case CubitStatus.failure:
+                  return const SizedBox.shrink();
+                case CubitStatus.loading:
+                  return const WaveLoadingIndicator();
+                case CubitStatus.success:
+                  return state.photos.isEmpty
+                      ? const RefreshWallPhotosButton()
+                      : RefreshIndicator(
+                          onRefresh: () async => context
+                              .read<WallPhotosBloc>()
+                              .add(const WallPhotosEvent.wallPhotosFetched()),
+                          child: InfiniteList(
+                            itemCount: state.photos.length,
+                            hasReachedMax: state.hasReachedMax,
+                            isLoading: state.getPhotosStatus.isLoading(),
+                            hasError: state.getPhotosStatus.isFailure(),
+                            onFetchData: () => context
                                 .read<WallPhotosBloc>()
-                                .add(const WallPhotosEvent.wallPhotosFetched()),
-                            child: InfiniteList(
-                              itemCount: state.photos.length,
-                              hasReachedMax: state.hasReachedMax,
-                              isLoading: state.getPhotosStatus.isLoading(),
-                              hasError: state.getPhotosStatus.isFailure(),
-                              onFetchData: () =>
-                                  context.read<WallPhotosBloc>().add(
-                                        const WallPhotosEvent
-                                            .nextPagePhotosFetched(),
-                                      ),
-                              separatorBuilder: (context, index) =>
-                                  const SizedBox(height: 16),
-                              itemBuilder: (_, i) => WallPhotoCard(
-                                wallPhoto: state.photos[i],
-                              ),
+                                .add(
+                                  const WallPhotosEvent.nextPagePhotosFetched(),
+                                ),
+                            separatorBuilder: (context, index) =>
+                                const SizedBox(height: 16),
+                            itemBuilder: (_, i) => WallPhotoCard(
+                              wallPhoto: state.photos[i],
                             ),
-                          );
-                }
-              },
-            );
-          },
-        ),
+                          ),
+                        );
+              }
+            },
+          );
+        },
       ),
     );
   }
