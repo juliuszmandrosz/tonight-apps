@@ -3,13 +3,13 @@ import 'package:common/extensions/typography_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class UserProfileDetailTile extends StatelessWidget {
+class UserDetailTile extends StatelessWidget {
   final String label;
   final int value;
   final IconData icon;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
-  const UserProfileDetailTile({
+  const UserDetailTile({
     required this.label,
     required this.value,
     required this.icon,
