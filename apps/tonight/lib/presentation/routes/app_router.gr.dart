@@ -418,6 +418,7 @@ class AppRouter extends _i35.RootStackRouter {
         child: _i28.AddWallPhotoPage(
           photoPath: args.photoPath,
           heroTag: args.heroTag,
+          isSelfie: args.isSelfie,
           key: args.key,
         ),
         transitionsBuilder: _i37.slideLeftTransition,
@@ -1393,6 +1394,7 @@ class AddWallPhotoRoute extends _i35.PageRouteInfo<AddWallPhotoRouteArgs> {
   AddWallPhotoRoute({
     required String photoPath,
     required String heroTag,
+    required bool isSelfie,
     _i36.Key? key,
   }) : super(
           AddWallPhotoRoute.name,
@@ -1400,6 +1402,7 @@ class AddWallPhotoRoute extends _i35.PageRouteInfo<AddWallPhotoRouteArgs> {
           args: AddWallPhotoRouteArgs(
             photoPath: photoPath,
             heroTag: heroTag,
+            isSelfie: isSelfie,
             key: key,
           ),
         );
@@ -1411,6 +1414,7 @@ class AddWallPhotoRouteArgs {
   const AddWallPhotoRouteArgs({
     required this.photoPath,
     required this.heroTag,
+    required this.isSelfie,
     this.key,
   });
 
@@ -1418,11 +1422,13 @@ class AddWallPhotoRouteArgs {
 
   final String heroTag;
 
+  final bool isSelfie;
+
   final _i36.Key? key;
 
   @override
   String toString() {
-    return 'AddWallPhotoRouteArgs{photoPath: $photoPath, heroTag: $heroTag, key: $key}';
+    return 'AddWallPhotoRouteArgs{photoPath: $photoPath, heroTag: $heroTag, isSelfie: $isSelfie, key: $key}';
   }
 }
 

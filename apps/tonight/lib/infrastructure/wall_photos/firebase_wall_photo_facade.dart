@@ -50,7 +50,7 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
       final userDoc = await _firestore.getCurrentUserDocRef(_auth).get();
       final user = UserAccountDto.fromFirebase(userDoc);
       final photoUrl = await _uploadPhoto(
-        clubId: clubId,
+        eventId: eventId,
         photo: photo,
       );
       final wallPhoto = WallPhoto(
@@ -187,11 +187,11 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   }
 
   Future<String> _uploadPhoto({
-    required String clubId,
+    required String eventId,
     required Uint8List photo,
   }) async {
     final photoId = const Uuid().v1();
-    final storageRef = _storage.ref('clubs/$clubId/wall_photos/$photoId');
+    final storageRef = _storage.ref('events/$eventId/wall_photos/$photoId');
     final metadata = SettableMetadata(contentType: 'image/jpeg');
     final uploadTask = await storageRef.putData(photo, metadata);
     return uploadTask.ref.getDownloadURL();

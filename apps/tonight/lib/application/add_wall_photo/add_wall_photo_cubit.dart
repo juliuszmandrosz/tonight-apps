@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:clubs/domain/club/club_entity.dart';
 import 'package:clubs/domain/club/user_club_facade.dart';
@@ -26,9 +27,15 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     this._wallPhotoFacade,
   ) : super(AddWallPhotoState.initial());
 
-  addPhotoToState(String photoPath) {
+  addPhotoToState({
+    required String photoPath,
+    required bool isSelfie,
+  }) {
     emit(
-      state.copyWith(photo: some(File(photoPath))),
+      state.copyWith(
+        photo: some(File(photoPath)),
+        isSelfie: isSelfie,
+      ),
     );
   }
 
@@ -97,15 +104,8 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     }
     emit(state.copyWith(addPhotoStatus: CubitStatus.loading));
     final selectedEvent = state.selectedEvent.getOrCrash();
-    final photoBytes = await state.photo.getOrCrash().readAsBytes();
-    final compressedPhoto = await compressImage(
-      photoBytes,
-      quality: 90,
-      minHeight: 1350,
-      minWidth: 1024,
-    );
-    final flippedPhoto = await flipImageHorizontallyAsync(compressedPhoto);
-    if (flippedPhoto.isNone()) {
+    final processedPhoto = await _processPhoto();
+    if (processedPhoto.isNone()) {
       emit(state.copyWith(addPhotoStatus: CubitStatus.failure));
       // TODO - add translation
       _showSnackbarMessage('Nie udało się dodać zdjęcia');
@@ -117,7 +117,7 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
       eventId: selectedEvent.id,
       eventName: selectedEvent.eventName,
       eventEndDateTime: selectedEvent.eventEndDateTime,
-      photo: flippedPhoto.getOrCrash(),
+      photo: processedPhoto.getOrCrash(),
       location: state.userLocation.fold(() => null, (location) => location),
     );
     result.fold(
@@ -132,5 +132,21 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
   _showSnackbarMessage(String message) {
     emit(state.copyWith(snackbarMessage: some(message)));
     emit(state.copyWith(snackbarMessage: none()));
+  }
+
+  Future<Option<Uint8List>> _processPhoto() async {
+    final photoBytes = await state.photo.getOrCrash().readAsBytes();
+    final compressedPhoto = await compressImage(
+      photoBytes,
+      quality: 90,
+      minHeight: 1350,
+      minWidth: 1024,
+    );
+    if (!state.isSelfie) return some(compressedPhoto);
+    final flippedPhoto = await flipImageHorizontallyAsync(compressedPhoto);
+    return flippedPhoto.fold(
+      () => none(),
+      (photo) => some(photo),
+    );
   }
 }
