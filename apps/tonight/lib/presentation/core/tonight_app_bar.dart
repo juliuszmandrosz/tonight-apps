@@ -18,19 +18,17 @@ class TonightAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: backgroundColor,
+      centerTitle: true,
       title: title != null
           ? AutoSizeText(
               title!,
               maxLines: 1,
             )
-          : Align(
+          : SvgPicture.asset(
+              'assets/icons/text_logo.svg',
+              semanticsLabel: 'Tonight Logo',
               alignment: Alignment.centerLeft,
-              child: SvgPicture.asset(
-                'assets/icons/text_logo.svg',
-                semanticsLabel: 'Tonight Logo',
-                alignment: Alignment.centerLeft,
-                height: kToolbarHeight * 1.5,
-              ),
+              height: kToolbarHeight * 1.5,
             ),
       actions: actions,
     );
