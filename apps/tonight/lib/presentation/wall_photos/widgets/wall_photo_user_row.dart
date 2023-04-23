@@ -14,28 +14,27 @@ class WallPhotoUserRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const containerSize = 40.0;
+    const containerSize = 20.0;
     return InkWell(
       onTap: () => context.pushRoute(
         UserDetailsRoute(userId: wallPhoto.userId),
       ),
       child: Row(
         children: [
-          Container(
-            padding: EdgeInsets.zero,
-            height: containerSize,
-            width: containerSize,
-            decoration: BoxDecoration(
-              color: context.onSurfaceColor,
-              shape: BoxShape.circle,
-            ),
-            child: wallPhoto.userProfilePhotoUrl.isNotNullOrEmpty
-                ? CircleNetworkPhoto(
-                    photoUrl: wallPhoto.userProfilePhotoUrl!,
-                    containerSize: containerSize,
-                    loaderSize: 12,
-                  )
-                : Center(
+          wallPhoto.userProfilePhotoUrl.isNotNullOrEmpty
+              ? CircleNetworkPhoto(
+                  photoUrl: wallPhoto.userProfilePhotoUrl!,
+                  containerSize: containerSize,
+                  loaderSize: 12,
+                )
+              : Container(
+                  height: containerSize * 2,
+                  width: containerSize * 2,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: context.onSurfaceColor,
+                  ),
+                  child: Center(
                     child: Text(
                       wallPhoto.username.toUpperCase().substring(0, 2),
                       style: context.titleSmall.copyWith(
@@ -43,7 +42,7 @@ class WallPhotoUserRow extends StatelessWidget {
                       ),
                     ),
                   ),
-          ),
+                ),
           const SizedBox(width: 16),
           Expanded(
             child: Column(
