@@ -1,5 +1,6 @@
-import 'package:common/common.dart';
+import 'package:common/presentation/user_detail_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/domain/user_details/user_details_model.dart';
 import 'package:translations/translations.dart';
 
@@ -17,41 +18,22 @@ class UserDetailsStatsRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Column(
-            children: [
-              Text(
-                '${user.raverCoins}',
-                style: context.titleMedium,
-              ),
-              const SizedBox(height: 5),
-              Text(
-                // TODO - add translation
-                "Raver Coins",
-                style: context.titleMedium.copyWith(
-                  color: colors.secondary,
-                ),
-              ),
-            ],
+          UserDetailTile(
+            label: 'Raver Coins',
+            value: user.raverCoins,
+            icon: FontAwesomeIcons.coins,
+            onTap: null,
           ),
           const VerticalDivider(
             width: 20,
             thickness: 1,
             // color: context.,
           ),
-          Column(
-            children: [
-              Text(
-                '${user.favoriteClubs.length}',
-                style: context.titleMedium,
-              ),
-              const SizedBox(height: 5),
-              Text(
-                S().favoriteClubs,
-                style: context.titleMedium.copyWith(
-                  color: colors.secondary,
-                ),
-              ),
-            ],
+          UserDetailTile(
+            label: S().favoriteClubs,
+            value: user.favoriteClubs.length,
+            icon: FontAwesomeIcons.solidHeart,
+            onTap: null,
           ),
         ],
       ),
