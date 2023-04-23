@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/favorites/widgets/favorite_clubs_list.dart';
 import 'package:tonight/presentation/favorites/widgets/favorite_events_list.dart';
@@ -10,9 +11,7 @@ class FavoritesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S().favorites),
-      ),
+      appBar: TonightAppBar(title: S().favorites),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView(
