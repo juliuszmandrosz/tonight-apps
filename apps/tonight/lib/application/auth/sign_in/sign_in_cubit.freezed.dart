@@ -20,6 +20,7 @@ mixin _$SignInState {
   FormzStatus get signInStatus => throw _privateConstructorUsedError;
   Option<String> get errorMessage => throw _privateConstructorUsedError;
   Option<String> get linkSentMessage => throw _privateConstructorUsedError;
+  bool get isNewUser => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SignInStateCopyWith<SignInState> get copyWith =>
@@ -36,7 +37,8 @@ abstract class $SignInStateCopyWith<$Res> {
       {EmailInput email,
       FormzStatus signInStatus,
       Option<String> errorMessage,
-      Option<String> linkSentMessage});
+      Option<String> linkSentMessage,
+      bool isNewUser});
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
     Object? signInStatus = null,
     Object? errorMessage = null,
     Object? linkSentMessage = null,
+    Object? isNewUser = null,
   }) {
     return _then(_value.copyWith(
       email: null == email
@@ -74,6 +77,10 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
           ? _value.linkSentMessage
           : linkSentMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      isNewUser: null == isNewUser
+          ? _value.isNewUser
+          : isNewUser // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -90,7 +97,8 @@ abstract class _$$_SignInStateCopyWith<$Res>
       {EmailInput email,
       FormzStatus signInStatus,
       Option<String> errorMessage,
-      Option<String> linkSentMessage});
+      Option<String> linkSentMessage,
+      bool isNewUser});
 }
 
 /// @nodoc
@@ -108,6 +116,7 @@ class __$$_SignInStateCopyWithImpl<$Res>
     Object? signInStatus = null,
     Object? errorMessage = null,
     Object? linkSentMessage = null,
+    Object? isNewUser = null,
   }) {
     return _then(_$_SignInState(
       email: null == email
@@ -126,6 +135,10 @@ class __$$_SignInStateCopyWithImpl<$Res>
           ? _value.linkSentMessage
           : linkSentMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      isNewUser: null == isNewUser
+          ? _value.isNewUser
+          : isNewUser // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -137,7 +150,8 @@ class _$_SignInState implements _SignInState {
       {required this.email,
       required this.signInStatus,
       required this.errorMessage,
-      required this.linkSentMessage});
+      required this.linkSentMessage,
+      required this.isNewUser});
 
   @override
   final EmailInput email;
@@ -147,10 +161,12 @@ class _$_SignInState implements _SignInState {
   final Option<String> errorMessage;
   @override
   final Option<String> linkSentMessage;
+  @override
+  final bool isNewUser;
 
   @override
   String toString() {
-    return 'SignInState(email: $email, signInStatus: $signInStatus, errorMessage: $errorMessage, linkSentMessage: $linkSentMessage)';
+    return 'SignInState(email: $email, signInStatus: $signInStatus, errorMessage: $errorMessage, linkSentMessage: $linkSentMessage, isNewUser: $isNewUser)';
   }
 
   @override
@@ -164,12 +180,14 @@ class _$_SignInState implements _SignInState {
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.linkSentMessage, linkSentMessage) ||
-                other.linkSentMessage == linkSentMessage));
+                other.linkSentMessage == linkSentMessage) &&
+            (identical(other.isNewUser, isNewUser) ||
+                other.isNewUser == isNewUser));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, email, signInStatus, errorMessage, linkSentMessage);
+  int get hashCode => Object.hash(runtimeType, email, signInStatus,
+      errorMessage, linkSentMessage, isNewUser);
 
   @JsonKey(ignore: true)
   @override
@@ -183,7 +201,8 @@ abstract class _SignInState implements SignInState {
       {required final EmailInput email,
       required final FormzStatus signInStatus,
       required final Option<String> errorMessage,
-      required final Option<String> linkSentMessage}) = _$_SignInState;
+      required final Option<String> linkSentMessage,
+      required final bool isNewUser}) = _$_SignInState;
 
   @override
   EmailInput get email;
@@ -193,6 +212,8 @@ abstract class _SignInState implements SignInState {
   Option<String> get errorMessage;
   @override
   Option<String> get linkSentMessage;
+  @override
+  bool get isNewUser;
   @override
   @JsonKey(ignore: true)
   _$$_SignInStateCopyWith<_$_SignInState> get copyWith =>
