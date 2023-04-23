@@ -54,7 +54,7 @@ class UserDetailsPage extends StatelessWidget {
                         child: Center(
                           child: Column(
                             children: [
-                              const SizedBox(height: 30),
+                              const SizedBox(height: 20),
                               ProfilePictureContainer(
                                 imageSize: 130,
                                 username: user.username,
