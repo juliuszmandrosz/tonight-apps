@@ -7,6 +7,7 @@ class SignInState with _$SignInState {
     required FormzStatus signInStatus,
     required Option<String> errorMessage,
     required Option<String> linkSentMessage,
+    required bool isNewUser,
   }) = _SignInState;
 
   factory SignInState.initial() => SignInState(
@@ -14,5 +15,6 @@ class SignInState with _$SignInState {
         signInStatus: FormzStatus.pure,
         errorMessage: none(),
         linkSentMessage: none(),
+        isNewUser: false,
       );
 }
