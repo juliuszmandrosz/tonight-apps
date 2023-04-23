@@ -3,6 +3,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
+import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/tickets/widgets/ticket_card.dart';
@@ -32,9 +33,7 @@ class _TicketsPageState extends State<TicketsPage> {
   Widget build(BuildContext context) {
     context.read<TicketListCubit>().fetchTickets();
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S().tickets(2)),
-      ),
+      appBar: TonightAppBar(title: S().tickets(2)),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: BlocConsumer<TicketListCubit, TicketListState>(

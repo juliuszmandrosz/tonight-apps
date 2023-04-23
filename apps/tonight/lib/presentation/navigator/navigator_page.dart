@@ -24,14 +24,12 @@ class _NavigatorPageState extends State<NavigatorPage> {
     return GestureDetector(
       onTap: () => context.unfocus(),
       child: AutoTabsScaffold(
-        drawer: _selectedIndex == TonightNavigationDestination.profile.index
-            ? null
-            : const TonightDrawer(),
+        drawer: const TonightDrawer(),
         appBarBuilder: _buildAppBar,
         routes: const [
-          WallPhotosRoute(),
+          TonightRoute(),
           DiscoverRoute(),
-          WallPhotosRoute(),
+          TonightRoute(),
           ProfileRoute(),
         ],
         bottomNavigationBuilder: (_, tabsRouter) {
@@ -89,24 +87,29 @@ class _NavigatorPageState extends State<NavigatorPage> {
     BuildContext context,
     TabsRouter router,
   ) {
-    if (router.activeIndex == TonightNavigationDestination.profile.index) {
-      return PreferredSize(
-        preferredSize: Size.fromHeight(MediaQuery.of(context).padding.top),
-        child: Container(
-          color: context.backgroundColor,
-          height: MediaQuery.of(context).padding.top,
-        ),
-      );
+    switch (TonightNavigationDestination.values[router.activeIndex]) {
+      case TonightNavigationDestination.wallPhotos:
+        return TonightAppBar(
+          backgroundColor: context.backgroundColor,
+        );
+      case TonightNavigationDestination.discover:
+        return PreferredSize(
+          preferredSize: Size.fromHeight(MediaQuery.of(context).padding.top),
+          child: Container(
+            color: context.surfaceColor,
+            height: MediaQuery.of(context).padding.top,
+          ),
+        );
+      case TonightNavigationDestination.add:
+        return const TonightAppBar();
+      case TonightNavigationDestination.profile:
+        return PreferredSize(
+          preferredSize: Size.fromHeight(MediaQuery.of(context).padding.top),
+          child: Container(
+            color: context.backgroundColor,
+            height: MediaQuery.of(context).padding.top,
+          ),
+        );
     }
-    if (router.activeIndex == TonightNavigationDestination.discover.index) {
-      return PreferredSize(
-        preferredSize: Size.fromHeight(MediaQuery.of(context).padding.top),
-        child: Container(
-          color: context.surfaceColor,
-          height: MediaQuery.of(context).padding.top,
-        ),
-      );
-    }
-    return const TonightAppBar();
   }
 }

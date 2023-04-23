@@ -61,9 +61,9 @@ class ProfilePage extends HookWidget {
                       profilePictureUrl: userProfile.profilePictureUrl,
                       username: userProfile.username,
                     ),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 24),
                     UsernameRow(username: userProfile.username),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 12),
                     AutoSizeText(
                       userProfile.email,
                       style: context.titleMedium.copyWith(

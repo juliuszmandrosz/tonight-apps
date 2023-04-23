@@ -5,16 +5,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 class TonightAppBar extends StatelessWidget with PreferredSizeWidget {
   final String? title;
   final List<Widget>? actions;
+  final Color? backgroundColor;
 
   const TonightAppBar({
     this.title,
     this.actions,
+    this.backgroundColor,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: backgroundColor,
       title: title != null
           ? AutoSizeText(
               title!,
