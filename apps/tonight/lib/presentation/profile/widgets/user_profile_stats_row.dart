@@ -3,7 +3,6 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/domain/user_profile/user_profile_model.dart';
-import 'package:tonight/presentation/profile/widgets/user_profile_details_tile.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
@@ -21,7 +20,7 @@ class UserProfileStatsRow extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: UserProfileDetailTile(
+            child: UserDetailTile(
               onTap: () => context.showSnackbarMessage(
                 // TODO - add translation
                 'Wkrótce będziesz mógł wymieniać coinsy na nagrody!',
@@ -37,7 +36,7 @@ class UserProfileStatsRow extends StatelessWidget {
             // color: context.,
           ),
           Expanded(
-            child: UserProfileDetailTile(
+            child: UserDetailTile(
               onTap: () => context.pushRoute(const FavoritesRoute()),
               value: userProfile.favoritesCount,
               label: S().favorites,
@@ -50,7 +49,7 @@ class UserProfileStatsRow extends StatelessWidget {
             // color: context.,
           ),
           Expanded(
-            child: UserProfileDetailTile(
+            child: UserDetailTile(
               onTap: () => context.pushRoute(const TicketsRoute()),
               value: userProfile.ticketsCount,
               label: S().tickets(2),
