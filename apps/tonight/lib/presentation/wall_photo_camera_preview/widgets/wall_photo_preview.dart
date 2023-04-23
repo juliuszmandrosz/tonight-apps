@@ -1,8 +1,7 @@
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:common/extensions/typography_extensions.dart';
-import 'package:common/presentation/transform_horizontally.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
@@ -13,12 +12,14 @@ class WallPhotoPreview extends StatefulWidget {
   final String heroTag;
   final double height;
   final VoidCallback onRetry;
+  final bool isSelfie;
 
   const WallPhotoPreview({
     required this.photoPath,
     required this.heroTag,
     required this.height,
     required this.onRetry,
+    required this.isSelfie,
     Key? key,
   }) : super(key: key);
 
@@ -52,6 +53,12 @@ class _WallPhotoPreviewState extends State<WallPhotoPreview>
     super.dispose();
   }
 
+  Widget get _photo => Image.file(
+        File(widget.photoPath),
+        fit: BoxFit.cover,
+        filterQuality: FilterQuality.high,
+      );
+
   @override
   Widget build(BuildContext context) {
     return FadeTransition(
@@ -61,13 +68,9 @@ class _WallPhotoPreviewState extends State<WallPhotoPreview>
           Expanded(
             child: Hero(
               tag: widget.heroTag,
-              child: TransformHorizontally(
-                child: Image.file(
-                  File(widget.photoPath),
-                  fit: BoxFit.cover,
-                  filterQuality: FilterQuality.high,
-                ),
-              ),
+              child: widget.isSelfie
+                  ? TransformHorizontally(child: _photo)
+                  : _photo,
             ),
           ),
           SizedBox(
@@ -99,6 +102,7 @@ class _WallPhotoPreviewState extends State<WallPhotoPreview>
                       AddWallPhotoRoute(
                         photoPath: widget.photoPath,
                         heroTag: widget.heroTag,
+                        isSelfie: widget.isSelfie,
                       ),
                     ),
                     icon: const FaIcon(

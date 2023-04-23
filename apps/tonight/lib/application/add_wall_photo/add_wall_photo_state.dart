@@ -4,6 +4,7 @@ part of 'add_wall_photo_cubit.dart';
 class AddWallPhotoState with _$AddWallPhotoState {
   const factory AddWallPhotoState({
     required Option<File> photo,
+    required bool isSelfie,
     required List<Club> nearestClubs,
     required List<Event> liveEventsFromSelectedClub,
     required Option<LatLng> userLocation,
@@ -17,6 +18,7 @@ class AddWallPhotoState with _$AddWallPhotoState {
 
   factory AddWallPhotoState.initial() => AddWallPhotoState(
         photo: none(),
+        isSelfie: true,
         nearestClubs: [],
         liveEventsFromSelectedClub: [],
         userLocation: none(),
