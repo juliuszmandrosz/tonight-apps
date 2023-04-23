@@ -100,7 +100,10 @@ class AddWallPhotoClubTile extends StatelessWidget {
                     containerSize: 18,
                     loaderSize: 16,
                   ),
-                  title: Text(club.clubName),
+                  title: Text(
+                    club.clubName,
+                    style: context.titleSmall,
+                  ),
                   onTap: () {
                     context.read<AddWallPhotoCubit>().selectClub(club);
                     context.popRoute();

@@ -19,6 +19,7 @@ class _WallPhotoCameraPreviewPageState
     extends State<WallPhotoCameraPreviewPage> {
   String? _photoPath;
   var _flashScreen = false;
+  var _isSelfie = true;
   static const _photoHeroTag = 'wallPhotoCameraPreviewHero';
 
   @override
@@ -44,6 +45,7 @@ class _WallPhotoCameraPreviewPageState
                     photoPath: _photoPath!,
                     heroTag: _photoHeroTag,
                     height: bottomHeight,
+                    isSelfie: _isSelfie,
                     onRetry: () {
                       setState(() {
                         _photoPath = null;
@@ -98,6 +100,9 @@ class _WallPhotoCameraPreviewPageState
                       }),
                       onRetryTap: () => setState(() {
                         _photoPath = null;
+                      }),
+                      onSwitchCameraTap: () => setState(() {
+                        _isSelfie = !_isSelfie;
                       }),
                       photoHeroTag: _photoHeroTag,
                     ),

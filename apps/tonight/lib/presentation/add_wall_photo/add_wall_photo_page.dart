@@ -13,10 +13,12 @@ import 'package:tonight/presentation/core/tonight_app_bar.dart';
 class AddWallPhotoPage extends StatelessWidget {
   final String photoPath;
   final String heroTag;
+  final bool isSelfie;
 
   const AddWallPhotoPage({
     required this.photoPath,
     required this.heroTag,
+    required this.isSelfie,
     Key? key,
   }) : super(key: key);
 
@@ -27,7 +29,10 @@ class AddWallPhotoPage extends StatelessWidget {
       create: (context) {
         final locationCubit = context.read<UserLocationCubit>();
         final photoCubit = getIt<AddWallPhotoCubit>();
-        photoCubit.addPhotoToState(photoPath);
+        photoCubit.addPhotoToState(
+          photoPath: photoPath,
+          isSelfie: isSelfie,
+        );
         if (locationCubit.state.isPermissionGranted) {
           photoCubit.fetchNearestClubs(
             locationCubit.getCurrentLatLngOrCrash(),
@@ -48,6 +53,7 @@ class AddWallPhotoPage extends StatelessWidget {
                 AddWallPhotoPreview(
                   photoPath: photoPath,
                   heroTag: heroTag,
+                  isSelfie: isSelfie,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
