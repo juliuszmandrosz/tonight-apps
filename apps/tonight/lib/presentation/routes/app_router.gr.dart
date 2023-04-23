@@ -46,13 +46,13 @@ import '../ticket_payment_confirm/ticket_payment_confirm_page.dart' as _i15;
 import '../ticket_qr/ticket_qr_page.dart' as _i9;
 import '../ticket_scan_confirm/ticket_scan_confirm_page.dart' as _i16;
 import '../tickets/tickets_page.dart' as _i30;
+import '../tonight/tonight_page.dart' as _i32;
 import '../update_profile_picture/update_profile_picture_page.dart' as _i22;
 import '../update_username/update_username_page.dart' as _i21;
 import '../user_details/user_details_page.dart' as _i7;
 import '../vip_checkout/vip_checkout_page.dart' as _i14;
 import '../wall_photo_camera_preview/wall_photo_camera_preview_page.dart'
     as _i27;
-import '../wall_photos/wall_photos_page.dart' as _i32;
 import '../welcome_loader/welcome_loader_page.dart' as _i3;
 import 'page_transitions/fade_in_transition.dart' as _i39;
 import 'page_transitions/slide_left_transition.dart' as _i37;
@@ -457,10 +457,10 @@ class AppRouter extends _i35.RootStackRouter {
         barrierDismissible: false,
       );
     },
-    WallPhotosRoute.name: (routeData) {
+    TonightRoute.name: (routeData) {
       return _i35.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i32.WallPhotosPage(),
+        child: const _i32.TonightPage(),
         transitionsBuilder: _i37.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
@@ -504,8 +504,8 @@ class AppRouter extends _i35.RootStackRouter {
           path: '/welcome-loader-page',
           children: [
             _i35.RouteConfig(
-              WallPhotosRoute.name,
-              path: 'wall-photos-page',
+              TonightRoute.name,
+              path: 'tonight-page',
               parent: WelcomeLoaderRoute.name,
             ),
             _i35.RouteConfig(
@@ -1469,15 +1469,15 @@ class FavoritesRoute extends _i35.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i32.WallPhotosPage]
-class WallPhotosRoute extends _i35.PageRouteInfo<void> {
-  const WallPhotosRoute()
+/// [_i32.TonightPage]
+class TonightRoute extends _i35.PageRouteInfo<void> {
+  const TonightRoute()
       : super(
-          WallPhotosRoute.name,
-          path: 'wall-photos-page',
+          TonightRoute.name,
+          path: 'tonight-page',
         );
 
-  static const String name = 'WallPhotosRoute';
+  static const String name = 'TonightRoute';
 }
 
 /// generated route for

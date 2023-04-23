@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/discover/widgets/clubs_sliver_app_bar.dart';
 import 'package:tonight/presentation/discover/widgets/events_sliver_app_bar.dart';
@@ -23,8 +24,9 @@ class _DiscoverSliverAppBarState extends State<DiscoverSliverAppBar> {
   Widget build(BuildContext context) {
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      expandedHeight: 195,
+      expandedHeight: 190,
       forceElevated: widget.innerBoxIsScrolled,
+      backgroundColor: context.backgroundColor,
       flexibleSpace: FlexibleSpaceBar(
         collapseMode: CollapseMode.pin,
         background: Padding(
@@ -45,30 +47,48 @@ class _DiscoverSliverAppBarState extends State<DiscoverSliverAppBar> {
           ),
         ),
       ),
-      bottom: TabBar(
-        dividerColor: Colors.transparent,
-        isScrollable: false,
-        labelPadding: const EdgeInsets.symmetric(horizontal: 10.0),
-        padding: const EdgeInsets.only(bottom: 12),
-        onTap: (i) => setState(() {
-          _selectedTabIndex = i;
-        }),
-        tabs: [
-          Tab(
-            child: AutoSizeText(
-              S().events(2),
-              textAlign: TextAlign.center,
-              maxLines: 1,
+      bottom: PreferredSize(
+        preferredSize: const Size.fromHeight(48),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: TabBar(
+            dividerColor: Colors.transparent,
+            isScrollable: true,
+            labelPadding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.only(bottom: 4),
+            labelColor: context.secondaryColor,
+            labelStyle: context.titleSmall,
+            unselectedLabelColor: context.secondaryColor.withOpacity(0.6),
+            indicatorColor: context.secondaryColor,
+            indicator: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: context.secondaryColor,
+                  width: 1,
+                ),
+              ),
             ),
+            onTap: (i) => setState(() {
+              _selectedTabIndex = i;
+            }),
+            tabs: [
+              Tab(
+                child: AutoSizeText(
+                  S().events(2),
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                ),
+              ),
+              Tab(
+                child: AutoSizeText(
+                  S().clubs(2),
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                ),
+              ),
+            ],
           ),
-          Tab(
-            child: AutoSizeText(
-              S().clubs(2),
-              textAlign: TextAlign.center,
-              maxLines: 1,
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
