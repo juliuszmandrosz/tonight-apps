@@ -33,7 +33,8 @@ class FirebaseAuthFacade
     required Logger logger,
     required AuthCloudFunctionsFacade authCloudFunctionsFacade,
     required FirebaseCrashlytics crashlytics,
-  })  : _firebaseAuth = firebaseAuth,
+  })
+      : _firebaseAuth = firebaseAuth,
         _googleSignIn = googleSignIn,
         _logger = logger,
         _authCloudFunctionsFacade = authCloudFunctionsFacade,
@@ -151,8 +152,7 @@ class FirebaseAuthFacade
 
   @override
   Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForUser(
-    String email,
-  ) async {
+      String email,) async {
     try {
       await _authCloudFunctionsFacade.checkIfUserCanSignIn(email);
       await _sendSignInLinkForUser(email);
@@ -173,7 +173,7 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithEmailLinkAsUser({
+  Future<Either<AuthFailure, bool>> signInWithEmailLinkAsUser({
     required String email,
     required Uri link,
   }) async {
@@ -183,9 +183,9 @@ class FirebaseAuthFacade
       }
 
       final result = await _signInWithEmailLink(email, link.toString());
-
+      final isNewUser = result.additionalUserInfo!.isNewUser;
       await _addUserToFirestoreIfNotExists(result);
-      return right(unit);
+      return right(isNewUser);
     } on FirebaseAuthException catch (e) {
       _logger.e(
         "Auth Exception signing in with email link as user EXCEPTION: $e",
@@ -202,7 +202,7 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithGoogleAsUser() async {
+  Future<Either<AuthFailure, bool>> signInWithGoogleAsUser() async {
     try {
       final googleUser = await _googleSignIn.signIn();
 
@@ -216,13 +216,15 @@ class FirebaseAuthFacade
 
       final email = result.user!.email!;
 
-      if (!result.additionalUserInfo!.isNewUser) {
+      final isNewUser = result.additionalUserInfo!.isNewUser;
+
+      if (!isNewUser) {
         await _authCloudFunctionsFacade.checkIfUserCanSignIn(email);
       }
 
       await _addUserToFirestoreIfNotExists(result);
 
-      return right(unit);
+      return right(isNewUser);
     } on FirebaseAuthException catch (e) {
       _logger.e(
         "Exception  signing in with Google as user EXCEPTION: $e",
@@ -245,7 +247,7 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithAppleAsUser() async {
+  Future<Either<AuthFailure, bool>> signInWithAppleAsUser() async {
     try {
       final rawNonce = _generateNonce();
       final nonce = _getShaFromString(rawNonce);
@@ -271,13 +273,15 @@ class FirebaseAuthFacade
 
       final email = result.user!.email!;
 
-      if (!result.additionalUserInfo!.isNewUser) {
+      final isNewUser = result.additionalUserInfo!.isNewUser;
+
+      if (!isNewUser) {
         await _authCloudFunctionsFacade.checkIfUserCanSignIn(email);
       }
 
       await _addUserToFirestoreIfNotExists(result);
 
-      return right(unit);
+      return right(isNewUser);
     } on FirebaseAuthException catch (e) {
       _logger.e(
         'Firebase Auth Exception signing in with Apple as user EXCEPTION: $e',
@@ -414,8 +418,7 @@ class FirebaseAuthFacade
   }
 
   Future<void> _addUserToFirestoreIfNotExists(
-    UserCredential userCredential,
-  ) async {
+      UserCredential userCredential,) async {
     final isNewUser = userCredential.additionalUserInfo!.isNewUser;
 
     if (isNewUser) {
@@ -475,10 +478,8 @@ class FirebaseAuthFacade
     return user.email ?? user.providerData.first.email!;
   }
 
-  Future<UserCredential> _signInWithEmailLink(
-    String email,
-    String link,
-  ) async {
+  Future<UserCredential> _signInWithEmailLink(String email,
+      String link,) async {
     return _firebaseAuth.signInWithEmailLink(
       email: email,
       emailLink: link.toString(),
@@ -542,8 +543,7 @@ class FirebaseAuthFacade
   }
 
   Future<AuthFailure> _handleFirebaseException(
-    FirebaseException exception,
-  ) async {
+      FirebaseException exception,) async {
     final failure = _getAuthFailureOrNull(exception);
 
     if (failure != null) {
@@ -571,7 +571,7 @@ class FirebaseAuthFacade
     final random = Random.secure();
     return List.generate(
       length,
-      (_) => charset[random.nextInt(charset.length)],
+          (_) => charset[random.nextInt(charset.length)],
     ).join();
   }
 

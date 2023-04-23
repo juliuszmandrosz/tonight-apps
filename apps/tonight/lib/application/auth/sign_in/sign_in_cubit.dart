@@ -33,8 +33,11 @@ class SignInCubit extends Cubit<SignInState> {
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(failure),
-      (success) => emit(
-        state.copyWith(signInStatus: FormzStatus.submissionSuccess),
+      (isNewUser) => emit(
+        state.copyWith(
+          signInStatus: FormzStatus.submissionSuccess,
+          isNewUser: isNewUser,
+        ),
       ),
     );
   }
@@ -46,8 +49,11 @@ class SignInCubit extends Cubit<SignInState> {
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(failure),
-      (success) => emit(
-        state.copyWith(signInStatus: FormzStatus.submissionSuccess),
+      (isNewUser) => emit(
+        state.copyWith(
+          signInStatus: FormzStatus.submissionSuccess,
+          isNewUser: isNewUser,
+        ),
       ),
     );
   }
@@ -95,9 +101,10 @@ class SignInCubit extends Cubit<SignInState> {
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(failure),
-      (success) => emit(
+      (isNewUser) => emit(
         state.copyWith(
           signInStatus: FormzStatus.submissionSuccess,
+          isNewUser: isNewUser,
         ),
       ),
     );

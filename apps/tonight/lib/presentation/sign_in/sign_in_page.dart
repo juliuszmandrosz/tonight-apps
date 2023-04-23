@@ -40,7 +40,10 @@ class SignInPage extends StatelessWidget {
                   : context.loaderOverlay.hide();
 
               if (state.signInStatus.isSubmissionSuccess) {
-                context.router.replaceAll([const WelcomeLoaderRoute()]);
+                final route = state.isNewUser
+                    ? const OnboardingUserDetailsRoute()
+                    : const WelcomeLoaderRoute();
+                context.router.replaceAll([route]);
               }
             },
             child: Padding(
