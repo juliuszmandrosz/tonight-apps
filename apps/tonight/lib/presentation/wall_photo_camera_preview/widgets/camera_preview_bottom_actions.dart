@@ -8,6 +8,7 @@ class CameraPreviewBottomActions extends StatelessWidget {
   final Function() onCaptureTap;
   final Function(String photoPath) onResult;
   final VoidCallback onRetryTap;
+  final VoidCallback onSwitchCameraTap;
   final String photoHeroTag;
 
   const CameraPreviewBottomActions({
@@ -16,6 +17,7 @@ class CameraPreviewBottomActions extends StatelessWidget {
     required this.onCaptureTap,
     required this.onResult,
     required this.onRetryTap,
+    required this.onSwitchCameraTap,
     required this.photoHeroTag,
     Key? key,
   }) : super(key: key);
@@ -27,7 +29,15 @@ class CameraPreviewBottomActions extends StatelessWidget {
       child: AwesomeBottomActions(
         state: cameraState,
         padding: const EdgeInsets.symmetric(vertical: 8),
-        left: const SizedBox.shrink(),
+        left: StreamBuilder<MediaCapture?>(
+          stream: cameraState.captureState$,
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return AwesomeFlashButton(state: cameraState);
+            }
+            return const SizedBox.shrink();
+          },
+        ),
         captureButton: cameraState.when(
           onPhotoMode: (photoState) => CameraPreviewTakePhotoButton(
             onTap: () async {
@@ -40,24 +50,26 @@ class CameraPreviewBottomActions extends StatelessWidget {
             },
           ),
         ),
-        right: cameraState.when(
-          onPhotoMode: (photoState) => StreamBuilder<MediaCapture?>(
-            stream: photoState.captureState$,
-            builder: (context, snapshot) {
-              if (!snapshot.hasData) {
-                return const SizedBox(width: 70, height: 70);
-              }
-              return SizedBox(
-                width: 70,
-                child: AwesomeMediaPreview(
-                  mediaCapture: snapshot.requireData,
-                  onMediaTap: (media) {
-                    photoState.setState(CaptureMode.preview);
-                  },
-                ),
+        right: StreamBuilder<MediaCapture?>(
+          stream: cameraState.captureState$,
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return AwesomeCameraSwitchButton(
+                state: cameraState,
+                onSwitchTap: (state) async {
+                  onSwitchCameraTap();
+                  await state.switchCameraSensor();
+                },
               );
-            },
-          ),
+            }
+            return SizedBox(
+              width: 70,
+              child: AwesomeMediaPreview(
+                mediaCapture: snapshot.requireData,
+                onMediaTap: (_) {},
+              ),
+            );
+          },
         ),
       ),
     );
