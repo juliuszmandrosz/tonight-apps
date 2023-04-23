@@ -79,7 +79,10 @@ class AddWallPhotoEventTile extends StatelessWidget {
                     containerSize: 18,
                     loaderSize: 16,
                   ),
-                  title: Text(event.eventName),
+                  title: Text(
+                    event.eventName,
+                    style: context.titleSmall,
+                  ),
                   onTap: () {
                     context.read<AddWallPhotoCubit>().selectEvent(event);
                     context.popRoute();

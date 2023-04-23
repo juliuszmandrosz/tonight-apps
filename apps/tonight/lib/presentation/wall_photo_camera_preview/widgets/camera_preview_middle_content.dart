@@ -21,16 +21,14 @@ class CameraPreviewMiddleContent extends StatelessWidget {
       state: cameraState,
       padding: EdgeInsets.zero,
       alignment: Alignment.center,
-      interfaceBuilder: (cameraState, _, __) => cameraState.when(
-        onPhotoMode: (photoState) => IgnorePointer(
-          ignoring: flashScreen,
-          child: AnimatedOpacity(
-            opacity: flashScreen ? 1.0 : 0.0,
-            duration: const Duration(milliseconds: 100),
-            curve: Curves.easeInOut,
-            onEnd: onShutterAnimationEnd,
-            child: Container(color: Colors.white),
-          ),
+      interfaceBuilder: (cameraState, _, __) => IgnorePointer(
+        ignoring: flashScreen,
+        child: AnimatedOpacity(
+          opacity: flashScreen ? 1.0 : 0.0,
+          duration: const Duration(milliseconds: 100),
+          curve: Curves.easeInOut,
+          onEnd: onShutterAnimationEnd,
+          child: Container(color: Colors.white),
         ),
       ),
     );
