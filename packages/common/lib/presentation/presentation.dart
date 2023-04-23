@@ -6,6 +6,7 @@ export 'drawer_tile.dart';
 export 'failure_page.dart';
 export 'infinite_grid.dart';
 export 'infinite_list.dart';
+export 'infinite_paged_list.dart';
 export 'network_photo.dart';
 export 'next_page_error.dart';
 export 'outlined_loader_button.dart';
