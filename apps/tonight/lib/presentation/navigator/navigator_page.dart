@@ -96,7 +96,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
         return PreferredSize(
           preferredSize: Size.fromHeight(MediaQuery.of(context).padding.top),
           child: Container(
-            color: context.surfaceColor,
+            color: context.backgroundColor,
             height: MediaQuery.of(context).padding.top,
           ),
         );
