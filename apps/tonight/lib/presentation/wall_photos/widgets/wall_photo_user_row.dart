@@ -14,7 +14,7 @@ class WallPhotoUserRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const containerSize = 50.0;
+    const containerSize = 40.0;
     return InkWell(
       onTap: () => context.pushRoute(
         UserDetailsRoute(userId: wallPhoto.userId),
@@ -38,7 +38,7 @@ class WallPhotoUserRow extends StatelessWidget {
                 : Center(
                     child: Text(
                       wallPhoto.username.toUpperCase().substring(0, 2),
-                      style: context.titleMedium.copyWith(
+                      style: context.titleSmall.copyWith(
                         color: context.surfaceColor,
                       ),
                     ),
@@ -54,12 +54,12 @@ class WallPhotoUserRow extends StatelessWidget {
                   style: context.titleMedium,
                   maxLines: 1,
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 4),
                 Text(
-                  timeago.format(
+                  '${wallPhoto.clubName} • ${timeago.format(
                     wallPhoto.createdAt,
                     locale: Intl.getCurrentLocale(),
-                  ),
+                  )}',
                   style: context.titleSmall.copyWith(
                     color: context.secondaryColor,
                   ),
