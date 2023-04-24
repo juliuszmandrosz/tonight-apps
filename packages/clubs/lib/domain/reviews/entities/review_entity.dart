@@ -11,6 +11,7 @@ class Review extends Equatable {
   final String eventId;
   final String eventName;
   final String? userPictureUrl;
+  final bool isUserDeleted;
 
   Review({
     String? id,
@@ -22,6 +23,7 @@ class Review extends Equatable {
     required this.eventId,
     required this.eventName,
     this.userPictureUrl,
+    this.isUserDeleted = false,
   })  : id = id ?? const Uuid().v1(),
         dateAdded = dateAdded ?? DateTime.now();
 
@@ -36,5 +38,6 @@ class Review extends Equatable {
         eventId,
         eventName,
         userPictureUrl,
+        isUserDeleted,
       ];
 }

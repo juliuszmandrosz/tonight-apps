@@ -22,7 +22,7 @@ class UserDetailsCubit extends Cubit<UserDetailsState> {
     result.fold(
       (failure) => emit(state.copyWith(status: CubitStatus.failure)),
       (user) => emit(
-        state.copyWith(status: CubitStatus.success, user: some(user)),
+        state.copyWith(status: CubitStatus.success, user: user),
       ),
     );
   }
