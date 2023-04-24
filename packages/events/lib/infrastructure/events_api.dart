@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:events/domain/domain.dart';
+import 'package:logger/logger.dart';
 
 abstract class EventsApi {
   Future<List<dynamic>> getEvents(
@@ -11,6 +12,12 @@ abstract class EventsApi {
 
   Future<List<dynamic>> getLiveEventsFromClub(
     EventFilters filters,
+  );
+
+  Future<List<dynamic>> getTonightEvents(
+    EventFilters filters,
+    int pageSize,
+    int offset,
   );
 }
 
@@ -49,6 +56,7 @@ class EventsApiImpl implements EventsApi {
   @override
   Future<List> getLiveEventsFromClub(EventFilters filters) async {
     const endpoint = 'events/getEvents';
+    Logger().i(filters.buildFilters());
     final data = {
       'query': '',
       'queryBy': '',
@@ -56,6 +64,30 @@ class EventsApiImpl implements EventsApi {
       'pageNumber': 1,
       'pageSize': 10,
       'sortBy': '',
+    };
+    final result = await _dio.post(endpoint, data: data);
+    return result.data as List<dynamic>;
+  }
+
+  @override
+  Future<List> getTonightEvents(
+    EventFilters filters,
+    int pageSize,
+    int offset,
+  ) async {
+    final pageNumber = ((offset + 1) / pageSize).ceil();
+    final sortBy = _getSortBy(
+      EventSortModel(fieldName: attending, direction: SortDirection.desc),
+    );
+    Logger().i(filters.buildFilters());
+    const endpoint = 'events/getEvents';
+    final data = {
+      'query': '',
+      'queryBy': '',
+      'filterBy': filters.buildFilters(),
+      'pageNumber': pageNumber,
+      'pageSize': pageSize,
+      'sortBy': sortBy,
     };
     final result = await _dio.post(endpoint, data: data);
     return result.data as List<dynamic>;

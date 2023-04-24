@@ -16,4 +16,9 @@ abstract class UserEventFacade {
   Future<Either<UserEventFailure, List<Event>>> fetchLiveEventsFromClub(
     String clubId,
   );
+
+  Future<Either<UserEventFailure, List<Event>>> fetchTonightEvents({
+    int pageSize = 20,
+    int offset = 0,
+  });
 }

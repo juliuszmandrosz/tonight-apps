@@ -49,11 +49,7 @@ class EventFilters with _$EventFilters {
         dateRangeFilter: DateRangeFilter.empty(),
         showOnlyConcertsFilter: ShowOnlyConcertsFilter.empty(),
         clubFilter: ClubFilter.empty(),
-        showOnlyFilter: ShowOnlyFilter(
-          showOnlyPast: false,
-          showOnlyLive: false,
-          showOnlyUpcoming: false,
-        ),
+        showOnlyFilter: ShowOnlyFilter(),
         dateIncludesFilter: DateIncludesFilter(
           fromDate: null,
           toDate: null,

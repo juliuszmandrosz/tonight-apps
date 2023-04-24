@@ -509,6 +509,39 @@ class FirebaseEventFacade
     }
   }
 
+  @override
+  Future<Either<UserEventFailure, List<Event>>> fetchTonightEvents({
+    int pageSize = 20,
+    int offset = 0,
+  }) async {
+    try {
+      final filters = EventFilters.empty().copyWith(
+        showOnlyFilter: ShowOnlyFilter(showOnlyTonight: true),
+      );
+
+      final result = await _eventsApi.getTonightEvents(
+        filters,
+        pageSize,
+        offset,
+      );
+
+      return right<UserEventFailure, List<Event>>(
+        result.map((doc) => EventDto.fromApi(doc).toDomain()).toList(),
+      );
+    } on DioError catch (e) {
+      return left(
+        await handleDioError(
+          error: e,
+          crashlytics: _crashlytics,
+          logger: _logger,
+          message: 'Dio error fetching tonight events EXCEPTION: $e',
+          unexpectedFailure: const UserEventFailure.unexpected(),
+          socketFailure: const UserEventFailure.noConnection(),
+        ),
+      );
+    }
+  }
+
   Future<PartnerEventFailure> _handleFirebaseFunctionsException(
     FirebaseFunctionsException exception,
   ) async {
