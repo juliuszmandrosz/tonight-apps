@@ -11,7 +11,7 @@ part 'wall_photos_bloc.freezed.dart';
 part 'wall_photos_event.dart';
 part 'wall_photos_state.dart';
 
-const _pageSize = 10;
+const _pageSize = 15;
 
 class WallPhotosBloc extends Bloc<WallPhotosEvent, WallPhotosState> {
   final WallPhotoFacade _wallPhotoFacade;
