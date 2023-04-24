@@ -6,5 +6,6 @@ export 'double_extensions.dart';
 export 'either_extensions.dart';
 export 'list_extensions.dart';
 export 'option_extensions.dart';
+export 'responsive_extensions.dart';
 export 'string_extensions.dart';
 export 'typography_extensions.dart';
