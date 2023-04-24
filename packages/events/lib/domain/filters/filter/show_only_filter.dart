@@ -1,22 +1,20 @@
 import 'package:common/common.dart';
 
 class ShowOnlyFilter implements IFilter {
-  late final bool showOnlyPast;
-  late final bool showOnlyUpcoming;
-  late final bool showOnlyLive;
+  final bool showOnlyPast;
+  final bool showOnlyUpcoming;
+  final bool showOnlyLive;
+  final bool showOnlyTonight;
 
   static const String eventStartDateTimeFieldName = 'eventStartDateTime';
   static const String eventEndDateTimeFieldName = 'eventEndDateTime';
 
   ShowOnlyFilter({
-    bool? showOnlyPast,
-    bool? showOnlyUpcoming,
-    bool? showOnlyLive,
-  }) {
-    this.showOnlyPast = showOnlyPast ?? false;
-    this.showOnlyUpcoming = showOnlyUpcoming ?? false;
-    this.showOnlyLive = showOnlyLive ?? false;
-  }
+    this.showOnlyPast = false,
+    this.showOnlyUpcoming = false,
+    this.showOnlyLive = false,
+    this.showOnlyTonight = false,
+  });
 
   @override
   String buildFilters(String query) {
@@ -52,6 +50,24 @@ class ShowOnlyFilter implements IFilter {
         than: now,
       );
     }
+    if (showOnlyTonight) {
+      final now = DateTime.now();
+      final previousDay = now.subtract(const Duration(days: 1));
+      query = TypesenseQueryBuilder.setNumericBetween(
+        query: query,
+        field: eventStartDateTimeFieldName,
+        from: previousDay.startOfDay.millisecondsSinceEpoch,
+        to: now.endOfDay.millisecondsSinceEpoch,
+      );
+
+      query += ' && ';
+
+      return TypesenseQueryBuilder.setNumericHigherEqualThan(
+        query: query,
+        field: eventEndDateTimeFieldName,
+        than: now.millisecondsSinceEpoch,
+      );
+    }
     return query;
   }
 
@@ -63,11 +79,13 @@ class ShowOnlyFilter implements IFilter {
     bool? showOnlyPast,
     bool? showOnlyUpcoming,
     bool? showOnlyLive,
+    bool? showOnlyTonight,
   }) {
     return ShowOnlyFilter(
-      showOnlyPast: showOnlyPast ?? false,
-      showOnlyLive: showOnlyLive ?? false,
-      showOnlyUpcoming: showOnlyUpcoming ?? false,
+      showOnlyPast: showOnlyPast ?? this.showOnlyPast,
+      showOnlyLive: showOnlyLive ?? this.showOnlyLive,
+      showOnlyUpcoming: showOnlyUpcoming ?? this.showOnlyUpcoming,
+      showOnlyTonight: showOnlyTonight ?? this.showOnlyTonight,
     );
   }
 }
