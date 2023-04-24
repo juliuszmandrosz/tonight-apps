@@ -11,13 +11,16 @@ class UserDetailsAggregator {
 
   UserDetailsAggregator(this._userAccountFacade, this._userClubFacade);
 
-  Future<Either<UserDetailsFailure, UserDetails>> getUserDetails(
+  Future<Either<UserDetailsFailure, Option<UserDetails>>> getUserDetails(
     String userId,
   ) async {
     final userResult = await _userAccountFacade.getUserById(userId);
 
     if (userResult.isLeft()) {
-      return left(const UserDetailsFailure.unexpected());
+      return userResult.getLeftOrCrash().maybeWhen(
+            userNotFound: () => right(none()),
+            orElse: () => left(const UserDetailsFailure.unexpected()),
+          );
     }
 
     final user = userResult.getRightOrCrash();
@@ -35,6 +38,6 @@ class UserDetailsAggregator {
       favoriteClubs: clubs.getRightOrCrash(),
     );
 
-    return right(result);
+    return right(some(result));
   }
 }

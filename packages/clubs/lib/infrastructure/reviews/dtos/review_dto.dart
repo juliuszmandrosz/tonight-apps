@@ -20,6 +20,7 @@ class ReviewDto with _$ReviewDto {
     required String eventName,
     @TimestampJsonConverter() required DateTime dateAdded,
     String? userPictureUrl,
+    @Default(false) bool isUserDeleted,
   }) = _ReviewDto;
 
   factory ReviewDto.fromDomain(Review review) {
@@ -32,6 +33,7 @@ class ReviewDto with _$ReviewDto {
       eventId: review.eventId,
       eventName: review.eventName,
       userPictureUrl: review.userPictureUrl,
+      isUserDeleted: review.isUserDeleted,
     );
   }
 
@@ -54,6 +56,7 @@ class ReviewDto with _$ReviewDto {
       dateAdded: dateAdded,
       eventName: eventName,
       userPictureUrl: userPictureUrl,
+      isUserDeleted: isUserDeleted,
     );
   }
 }
