@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tonight/application/tonight_events/tonight_events_bloc.dart';
 import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/tonight/widgets/tonight_sliver_app_bar.dart';
+import 'package:tonight/presentation/tonight_events/tonight_events_page.dart';
 import 'package:tonight/presentation/wall_photos/wall_photos_page.dart';
 
 class TonightPage extends StatelessWidget {
@@ -16,6 +18,10 @@ class TonightPage extends StatelessWidget {
           create: (context) => getIt<WallPhotosBloc>()
             ..add(const WallPhotosEvent.wallPhotosFetched()),
         ),
+        BlocProvider(
+          create: (context) => getIt<TonightEventsBloc>()
+            ..add(const TonightEventsEvent.eventsFetched()),
+        ),
       ],
       child: DefaultTabController(
         length: 2,
@@ -26,7 +32,7 @@ class TonightPage extends StatelessWidget {
           body: const TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [
-              SizedBox.shrink(),
+              TonightEventsPage(),
               WallPhotosPage(),
             ],
           ),
