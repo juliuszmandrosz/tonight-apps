@@ -47,7 +47,6 @@ class UserDetailsPage extends StatelessWidget {
                   case CubitStatus.loading:
                     return const WaveLoadingIndicator();
                   case CubitStatus.success:
-                    final user = state.user.getOrCrash();
                     return Padding(
                       padding: const EdgeInsets.all(16),
                       child: SingleChildScrollView(
@@ -57,19 +56,45 @@ class UserDetailsPage extends StatelessWidget {
                               const SizedBox(height: 20),
                               ProfilePictureContainer(
                                 imageSize: 130,
-                                username: user.username,
-                                profilePictureUrl: user.profilePictureUrl,
+                                username: state.user.fold(
+                                  // TODO - add translation
+                                  () => 'Użytkownik Tonight',
+                                  (user) => user.username,
+                                ),
+                                profilePictureUrl: state.user.fold(
+                                  () => null,
+                                  (user) => user.profilePictureUrl,
+                                ),
+                                showPlaceholder: true,
+                                textStyle: context.headlineMedium,
                               ),
                               const SizedBox(height: 30),
                               TonightHeadline(
-                                text: user.username,
+                                text: state.user.fold(
+                                  () => 'Użytkownik Tonight',
+                                  (user) => user.username,
+                                ),
                                 isSmallerVersion: true,
                               ),
                               const SizedBox(height: 40),
-                              UserDetailsStatsRow(user: user),
-                              const SizedBox(height: 40),
-                              UserDetailsFavoriteClubs(
-                                favoriteClubs: user.favoriteClubs,
+                              state.user.fold(
+                                () => Text(
+                                  // TODO - add translation
+                                  'Te konto zostało usunięte.',
+                                  style: context.titleMedium.copyWith(
+                                    color: context.secondaryColor,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                (user) => Column(
+                                  children: [
+                                    UserDetailsStatsRow(user: user),
+                                    const SizedBox(height: 40),
+                                    UserDetailsFavoriteClubs(
+                                      favoriteClubs: user.favoriteClubs,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),

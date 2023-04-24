@@ -23,6 +23,7 @@ class TonightDrawerHeader extends StatelessWidget {
                 username: profile.username,
                 profilePictureUrl: profile.profilePictureUrl,
                 isOnSurfaceColor: true,
+                textStyle: context.headlineMedium,
               ),
               const SizedBox(height: 16),
               TonightHeadline(

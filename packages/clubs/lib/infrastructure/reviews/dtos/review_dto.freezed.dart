@@ -31,6 +31,7 @@ mixin _$ReviewDto {
   @TimestampJsonConverter()
   DateTime get dateAdded => throw _privateConstructorUsedError;
   String? get userPictureUrl => throw _privateConstructorUsedError;
+  bool get isUserDeleted => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +53,8 @@ abstract class $ReviewDtoCopyWith<$Res> {
       String eventId,
       String eventName,
       @TimestampJsonConverter() DateTime dateAdded,
-      String? userPictureUrl});
+      String? userPictureUrl,
+      bool isUserDeleted});
 }
 
 /// @nodoc
@@ -77,6 +79,7 @@ class _$ReviewDtoCopyWithImpl<$Res, $Val extends ReviewDto>
     Object? eventName = null,
     Object? dateAdded = null,
     Object? userPictureUrl = freezed,
+    Object? isUserDeleted = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -115,6 +118,10 @@ class _$ReviewDtoCopyWithImpl<$Res, $Val extends ReviewDto>
           ? _value.userPictureUrl
           : userPictureUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      isUserDeleted: null == isUserDeleted
+          ? _value.isUserDeleted
+          : isUserDeleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -135,7 +142,8 @@ abstract class _$$_ReviewDtoCopyWith<$Res> implements $ReviewDtoCopyWith<$Res> {
       String eventId,
       String eventName,
       @TimestampJsonConverter() DateTime dateAdded,
-      String? userPictureUrl});
+      String? userPictureUrl,
+      bool isUserDeleted});
 }
 
 /// @nodoc
@@ -158,6 +166,7 @@ class __$$_ReviewDtoCopyWithImpl<$Res>
     Object? eventName = null,
     Object? dateAdded = null,
     Object? userPictureUrl = freezed,
+    Object? isUserDeleted = null,
   }) {
     return _then(_$_ReviewDto(
       id: freezed == id
@@ -196,6 +205,10 @@ class __$$_ReviewDtoCopyWithImpl<$Res>
           ? _value.userPictureUrl
           : userPictureUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      isUserDeleted: null == isUserDeleted
+          ? _value.isUserDeleted
+          : isUserDeleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -212,7 +225,8 @@ class _$_ReviewDto extends _ReviewDto {
       required this.eventId,
       required this.eventName,
       @TimestampJsonConverter() required this.dateAdded,
-      this.userPictureUrl})
+      this.userPictureUrl,
+      this.isUserDeleted = false})
       : super._();
 
   factory _$_ReviewDto.fromJson(Map<String, dynamic> json) =>
@@ -238,10 +252,13 @@ class _$_ReviewDto extends _ReviewDto {
   final DateTime dateAdded;
   @override
   final String? userPictureUrl;
+  @override
+  @JsonKey()
+  final bool isUserDeleted;
 
   @override
   String toString() {
-    return 'ReviewDto(id: $id, userOpinion: $userOpinion, userRate: $userRate, userId: $userId, username: $username, eventId: $eventId, eventName: $eventName, dateAdded: $dateAdded, userPictureUrl: $userPictureUrl)';
+    return 'ReviewDto(id: $id, userOpinion: $userOpinion, userRate: $userRate, userId: $userId, username: $username, eventId: $eventId, eventName: $eventName, dateAdded: $dateAdded, userPictureUrl: $userPictureUrl, isUserDeleted: $isUserDeleted)';
   }
 
   @override
@@ -263,13 +280,25 @@ class _$_ReviewDto extends _ReviewDto {
             (identical(other.dateAdded, dateAdded) ||
                 other.dateAdded == dateAdded) &&
             (identical(other.userPictureUrl, userPictureUrl) ||
-                other.userPictureUrl == userPictureUrl));
+                other.userPictureUrl == userPictureUrl) &&
+            (identical(other.isUserDeleted, isUserDeleted) ||
+                other.isUserDeleted == isUserDeleted));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, userOpinion, userRate,
-      userId, username, eventId, eventName, dateAdded, userPictureUrl);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      userOpinion,
+      userRate,
+      userId,
+      username,
+      eventId,
+      eventName,
+      dateAdded,
+      userPictureUrl,
+      isUserDeleted);
 
   @JsonKey(ignore: true)
   @override
@@ -295,7 +324,8 @@ abstract class _ReviewDto extends ReviewDto {
       required final String eventId,
       required final String eventName,
       @TimestampJsonConverter() required final DateTime dateAdded,
-      final String? userPictureUrl}) = _$_ReviewDto;
+      final String? userPictureUrl,
+      final bool isUserDeleted}) = _$_ReviewDto;
   const _ReviewDto._() : super._();
 
   factory _ReviewDto.fromJson(Map<String, dynamic> json) =
@@ -321,6 +351,8 @@ abstract class _ReviewDto extends ReviewDto {
   DateTime get dateAdded;
   @override
   String? get userPictureUrl;
+  @override
+  bool get isUserDeleted;
   @override
   @JsonKey(ignore: true)
   _$$_ReviewDtoCopyWith<_$_ReviewDto> get copyWith =>
