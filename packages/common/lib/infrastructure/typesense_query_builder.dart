@@ -1,4 +1,12 @@
 class TypesenseQueryBuilder {
+  static String setNumericEquals({
+    required String query,
+    required String field,
+    required int value,
+  }) {
+    return query += '$field:=$value';
+  }
+
   static String setNumericBetween({
     required String query,
     required String field,
