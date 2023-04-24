@@ -1,0 +1,22 @@
+part of 'tonight_events_bloc.dart';
+
+@freezed
+class TonightEventsState with _$TonightEventsState {
+  const factory TonightEventsState({
+    required CubitStatus getEventsStatus,
+    required CubitStatus nextPageStatus,
+    required Option<String> errorMessage,
+    required List<Event> events,
+    required bool hasReachedMax,
+    required String filterPhrase,
+  }) = _TonightEventsState;
+
+  factory TonightEventsState.initial() => TonightEventsState(
+        getEventsStatus: CubitStatus.initial,
+        nextPageStatus: CubitStatus.initial,
+        errorMessage: none(),
+        hasReachedMax: false,
+        events: [],
+        filterPhrase: '',
+      );
+}
