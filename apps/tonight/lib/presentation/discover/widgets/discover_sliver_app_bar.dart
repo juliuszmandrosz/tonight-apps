@@ -24,7 +24,7 @@ class _DiscoverSliverAppBarState extends State<DiscoverSliverAppBar> {
   Widget build(BuildContext context) {
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      expandedHeight: 190,
+      expandedHeight: 195,
       forceElevated: widget.innerBoxIsScrolled,
       backgroundColor: context.backgroundColor,
       flexibleSpace: FlexibleSpaceBar(
@@ -55,7 +55,7 @@ class _DiscoverSliverAppBarState extends State<DiscoverSliverAppBar> {
             dividerColor: Colors.transparent,
             isScrollable: true,
             labelPadding: const EdgeInsets.symmetric(horizontal: 16),
-            padding: const EdgeInsets.only(bottom: 4),
+            padding: const EdgeInsets.only(bottom: 12),
             labelColor: context.secondaryColor,
             labelStyle: context.titleSmall,
             unselectedLabelColor: context.secondaryColor.withOpacity(0.6),
