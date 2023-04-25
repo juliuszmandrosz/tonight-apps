@@ -89,7 +89,7 @@ class VipCheckoutPage extends StatelessWidget {
           }
 
           return state.initialStatus.isLoading()
-              ? const TicketLogoAnimation()
+              ? const WaveLoadingIndicator()
               : Scaffold(
                   appBar: TonightAppBar(title: S().checkout),
                   floatingActionButton: const VipProceedToPayButton(),

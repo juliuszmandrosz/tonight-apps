@@ -52,13 +52,13 @@ class SignInPage extends StatelessWidget {
                 slivers: [
                   SliverToBoxAdapter(
                     child: Column(
-                      children: const [
-                        SizedBox(height: 10),
-                        TonightLogo(),
-                        SignInEmailInput(),
-                        SizedBox(height: 20),
-                        TermsOfServiceInfo(),
-                        SizedBox(height: 30),
+                      children: [
+                        TonightLogo(height: context.height * 0.3),
+                        SizedBox(height: context.height * 0.07),
+                        const SignInEmailInput(),
+                        const SizedBox(height: 30),
+                        const TermsOfServiceInfo(),
+                        const SizedBox(height: 30),
                       ],
                     ),
                   ),
