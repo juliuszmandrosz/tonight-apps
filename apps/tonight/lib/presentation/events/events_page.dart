@@ -17,7 +17,6 @@ class EventsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 8),
         const Align(
           alignment: Alignment.centerLeft,
           child: EventFiltersChips(),

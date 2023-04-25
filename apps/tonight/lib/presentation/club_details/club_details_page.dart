@@ -114,7 +114,7 @@ class _ClubDetailsPageState extends State<ClubDetailsPage>
                                 DetailsHeroImage(
                                   imageUrl: club.clubImageUrl,
                                   heroTag: widget.heroTag,
-                                  sharePath: 'clubs?clubId=${club.id}',
+                                  height: 250,
                                 ),
                                 const SizedBox(height: 10),
                                 ClubDescription(club: club),

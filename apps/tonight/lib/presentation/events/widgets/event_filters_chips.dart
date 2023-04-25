@@ -20,6 +20,7 @@ class EventFiltersChips extends StatelessWidget {
             children: [
               const SizedBox(width: 12),
               InputChip(
+                backgroundColor: context.backgroundColor,
                 label: state.appliedMenuFilters.isNotEmpty
                     ? Text(
                         '${S().filters} (${state.appliedMenuFilters.length})')
@@ -44,6 +45,7 @@ class EventFiltersChips extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4),
                   child: InputChip(
+                    backgroundColor: context.backgroundColor,
                     label: Text(filter.label),
                     onDeleted: () => context
                         .read<EventsBloc>()

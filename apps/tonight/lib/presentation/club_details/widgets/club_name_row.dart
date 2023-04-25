@@ -17,7 +17,7 @@ class ClubNameRow extends StatelessWidget {
         Expanded(
           child: AutoSizeText(
             club.clubName,
-            style: context.headlineSmall,
+            style: context.titleLarge,
             maxLines: 3,
           ),
         ),

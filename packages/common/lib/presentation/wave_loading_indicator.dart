@@ -5,7 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 class WaveLoadingIndicator extends StatelessWidget {
   final double size;
 
-  const WaveLoadingIndicator({this.size = 30, Key? key}) : super(key: key);
+  const WaveLoadingIndicator({this.size = 40, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +13,7 @@ class WaveLoadingIndicator extends StatelessWidget {
       child: SpinKitWave(
         color: context.onSurfaceColor,
         size: size,
+        duration: const Duration(milliseconds: 1000),
       ),
     );
   }
