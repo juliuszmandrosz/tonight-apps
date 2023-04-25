@@ -57,7 +57,7 @@ class _WallPhotoCameraPreviewPageState
                     enablePhysicalButton: true,
                     sensor: Sensors.front,
                     showPreview: false,
-                    progressIndicator: const TicketLogoAnimation(),
+                    progressIndicator: const WaveLoadingIndicator(),
                     exifPreferences: ExifPreferences(
                       saveGPSLocation: false,
                     ),

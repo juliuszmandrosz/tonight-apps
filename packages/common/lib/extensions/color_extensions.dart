@@ -15,189 +15,75 @@ extension ColorUtils on Color {
 
     final hsl = HSLColor.fromColor(this);
     final hslLight =
-    hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
+        hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
 
     return hslLight.toColor();
   }
 }
 
 extension ColorExtensions on BuildContext {
-  Color get primaryColor =>
-      Theme
-          .of(this)
-          .colorScheme
-          .primary;
+  Color get primaryColor => Theme.of(this).colorScheme.primary;
 
-  Color get secondaryColor =>
-      Theme
-          .of(this)
-          .colorScheme
-          .secondary;
+  Color get secondaryColor => Theme.of(this).colorScheme.secondary;
 
-  Color get tertiaryColor =>
-      Theme
-          .of(this)
-          .colorScheme
-          .tertiary;
+  Color get tertiaryColor => Theme.of(this).colorScheme.tertiary;
 
-  Color get surfaceColor =>
-      Theme
-          .of(this)
-          .colorScheme
-          .surface;
+  Color get surfaceColor => Theme.of(this).colorScheme.surface;
 
-  Color get surfaceVariantColor =>
-      Theme
-          .of(this)
-          .colorScheme
-          .surfaceVariant;
+  Color get surfaceVariantColor => Theme.of(this).colorScheme.surfaceVariant;
 
-  Color get onSurfaceColor =>
-      Theme
-          .of(this)
-          .colorScheme
-          .onSurface;
+  Color get onSurfaceColor => Theme.of(this).colorScheme.onSurface;
 
   Color get onSurfaceVariantColor =>
-      Theme
-          .of(this)
-          .colorScheme
-          .onSurfaceVariant;
+      Theme.of(this).colorScheme.onSurfaceVariant;
 
-  Color get shadowColor =>
-      Theme
-          .of(this)
-          .colorScheme
-          .shadow;
+  Color get shadowColor => Theme.of(this).colorScheme.shadow;
 
-  Color get errorColor =>
-      Theme
-          .of(this)
-          .colorScheme
-          .error;
+  Color get errorColor => Theme.of(this).colorScheme.error;
 
-  Color get backgroundColor =>
-      Theme
-          .of(this)
-          .colorScheme
-          .background;
+  Color get backgroundColor => Theme.of(this).colorScheme.background;
 
-  Color get outlineColor =>
-      Theme
-          .of(this)
-          .colorScheme
-          .outline;
+  Color get outlineColor => Theme.of(this).colorScheme.outline;
 
-  Color get onBackground =>
-      Theme
-          .of(this)
-          .colorScheme
-          .onBackground;
+  Color get onBackground => Theme.of(this).colorScheme.onBackground;
 
-  Color get onPrimary =>
-      Theme
-          .of(this)
-          .colorScheme
-          .onPrimary;
+  Color get onPrimary => Theme.of(this).colorScheme.onPrimary;
 
-  Color get onSecondary =>
-      Theme
-          .of(this)
-          .colorScheme
-          .onSecondary;
+  Color get onSecondary => Theme.of(this).colorScheme.onSecondary;
 
-  Color get onTertiary =>
-      Theme
-          .of(this)
-          .colorScheme
-          .onTertiary;
+  Color get onTertiary => Theme.of(this).colorScheme.onTertiary;
 
-  Color get onError =>
-      Theme
-          .of(this)
-          .colorScheme
-          .onError;
+  Color get onError => Theme.of(this).colorScheme.onError;
 
-  Color get primaryContainer =>
-      Theme
-          .of(this)
-          .colorScheme
-          .primaryContainer;
+  Color get primaryContainer => Theme.of(this).colorScheme.primaryContainer;
 
-  Color get secondaryContainer =>
-      Theme
-          .of(this)
-          .colorScheme
-          .secondaryContainer;
+  Color get secondaryContainer => Theme.of(this).colorScheme.secondaryContainer;
 
-  Color get tertiaryContainer =>
-      Theme
-          .of(this)
-          .colorScheme
-          .tertiaryContainer;
+  Color get tertiaryContainer => Theme.of(this).colorScheme.tertiaryContainer;
 
-  Color get onPrimaryContainer =>
-      Theme
-          .of(this)
-          .colorScheme
-          .onPrimaryContainer;
+  Color get onPrimaryContainer => Theme.of(this).colorScheme.onPrimaryContainer;
 
   Color get onSecondaryContainer =>
-      Theme
-          .of(this)
-          .colorScheme
-          .onSecondaryContainer;
+      Theme.of(this).colorScheme.onSecondaryContainer;
 
   Color get onTertiaryContainer =>
-      Theme
-          .of(this)
-          .colorScheme
-          .onTertiaryContainer;
+      Theme.of(this).colorScheme.onTertiaryContainer;
 
-  Color get primaryVariant =>
-      Theme
-          .of(this)
-          .colorScheme
-          .errorContainer;
+  Color get primaryVariant => Theme.of(this).colorScheme.errorContainer;
 
-  Color get secondaryVariant =>
-      Theme
-          .of(this)
-          .colorScheme
-          .onErrorContainer;
+  Color get secondaryVariant => Theme.of(this).colorScheme.onErrorContainer;
 
-  Color get tertiaryVariant =>
-      Theme
-          .of(this)
-          .colorScheme
-          .onErrorContainer;
+  Color get tertiaryVariant => Theme.of(this).colorScheme.onErrorContainer;
 
-  Color get surfaceTint =>
-      Theme
-          .of(this)
-          .colorScheme
-          .surfaceTint;
+  Color get surfaceTint => Theme.of(this).colorScheme.surfaceTint;
 
-  Color get inverseSurface =>
-      Theme
-          .of(this)
-          .colorScheme
-          .inverseSurface;
+  Color get inverseSurface => Theme.of(this).colorScheme.inverseSurface;
 
-  Color get onInverseSurface =>
-      Theme
-          .of(this)
-          .colorScheme
-          .onInverseSurface;
+  Color get onInverseSurface => Theme.of(this).colorScheme.onInverseSurface;
 
-  Color get outlineVariant =>
-      Theme
-          .of(this)
-          .colorScheme
-          .outlineVariant;
+  Color get outlineVariant => Theme.of(this).colorScheme.outlineVariant;
 
-  Color get hintColor =>
-      Theme
-          .of(this)
-          .hintColor;
+  Color get hintColor => Theme.of(this).hintColor;
+
+  Color get dividerColor => Theme.of(this).dividerColor;
 }

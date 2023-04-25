@@ -98,8 +98,7 @@ ListTileThemeData get listTileTheme => ListTileThemeData(
 
 InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
       isDense: true,
-      // hintStyle: textTheme.titleSmall!.copyWith(color: colors.outline),
-      constraints: const BoxConstraints(minHeight: 50, maxHeight: 50),
+      constraints: const BoxConstraints(minHeight: 50, maxHeight: 80),
       alignLabelWithHint: true,
       border: OutlineInputBorder(
         borderRadius: borderRadiusShapeMedium,
@@ -221,7 +220,7 @@ FloatingActionButtonThemeData get floatingActionButtonTheme =>
       backgroundColor: colors.primary,
     );
 
-DividerThemeData get dividerTheme => const DividerThemeData(thickness: 2);
+DividerThemeData get dividerTheme => const DividerThemeData(thickness: 1);
 
 SliderThemeData get sliderTheme => SliderThemeData(
       overlayShape: SliderComponentShape.noOverlay,
