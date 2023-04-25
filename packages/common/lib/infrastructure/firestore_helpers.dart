@@ -38,6 +38,8 @@ extension FirestoreX on FirebaseFirestore {
 
   CollectionReference get wallPhotos => collection('wallPhotos');
 
+  CollectionReference get messages => collection('messages');
+
   DocumentReference getCurrentUserDocRef(FirebaseAuth auth) {
     final firebaseUser = auth.tryGetFirebaseUser();
 
