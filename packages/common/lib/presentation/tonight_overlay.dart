@@ -1,5 +1,4 @@
-import 'package:common/extensions/color_extensions.dart';
-import 'package:common/presentation/ticket_logo_animation.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
@@ -15,7 +14,7 @@ class TonightOverlay extends StatelessWidget {
   Widget build(BuildContext context) {
     return LoaderOverlay(
       overlayOpacity: .7,
-      overlayWidget: const TicketLogoAnimation(),
+      overlayWidget: const WaveLoadingIndicator(),
       overlayColor: context.shadowColor,
       useDefaultLoading: false,
       child: child,

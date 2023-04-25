@@ -36,19 +36,22 @@ class TermsOfServiceInfo extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const FaIcon(FontAwesomeIcons.circleInfo),
+              const FaIcon(
+                FontAwesomeIcons.circleInfo,
+                size: 18,
+              ),
               const SizedBox(width: 15),
               Flexible(
                 child: RichText(
                   text: TextSpan(
                     text: '${S().byContinuingYouAgreeTo} ',
-                    style: context.bodyMedium.copyWith(
+                    style: context.titleSmall.copyWith(
                       color: context.secondaryColor,
                     ),
                     children: [
                       TextSpan(
                         text: S().termsOfService.toLowerCase(),
-                        style: context.bodyMedium.copyWith(
+                        style: context.titleSmall.copyWith(
                           color: context.primaryColor,
                         ),
                         recognizer: TapGestureRecognizer()
@@ -58,13 +61,13 @@ class TermsOfServiceInfo extends StatelessWidget {
                       ),
                       TextSpan(
                         text: ' ${S().and} ',
-                        style: context.bodyMedium.copyWith(
+                        style: context.titleSmall.copyWith(
                           color: context.secondaryColor,
                         ),
                       ),
                       TextSpan(
                         text: S().onPrivacyPolicy.toLowerCase(),
-                        style: context.bodyMedium.copyWith(
+                        style: context.titleSmall.copyWith(
                           color: context.primaryColor,
                         ),
                         recognizer: TapGestureRecognizer()

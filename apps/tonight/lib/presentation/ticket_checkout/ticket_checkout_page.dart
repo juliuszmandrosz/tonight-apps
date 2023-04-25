@@ -94,7 +94,7 @@ class _TicketCheckoutPageState extends State<TicketCheckoutPage> {
             return Container();
           }
           return state.initialStatus.isLoading()
-              ? const TicketLogoAnimation()
+              ? const WaveLoadingIndicator()
               : Scaffold(
                   floatingActionButtonLocation:
                       FloatingActionButtonLocation.centerFloat,

@@ -2,7 +2,6 @@ import 'package:common/common.dart';
 import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
-import 'package:tonight/presentation/events_details/widgets/event_details_favorite_button.dart';
 import 'package:translations/translations.dart';
 
 class EventDetailsEventName extends StatelessWidget {
@@ -28,12 +27,6 @@ class EventDetailsEventName extends StatelessWidget {
           event.eventName,
           style: context.titleMedium.copyWith(color: context.secondaryColor),
         ),
-      ),
-      trailing: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          EventDetailsFavoriteButton(event: event),
-        ],
       ),
     );
   }

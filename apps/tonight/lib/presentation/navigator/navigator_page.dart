@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/drawer/tonight_drawer.dart';
@@ -33,50 +32,56 @@ class _NavigatorPageState extends State<NavigatorPage> {
           ProfileRoute(),
         ],
         bottomNavigationBuilder: (_, tabsRouter) {
-          return NavigationBar(
-            selectedIndex: tabsRouter.activeIndex,
-            onDestinationSelected: (i) async {
-              context.unfocus();
-              if (i == TonightNavigationDestination.add.index) {
-                if (context.mounted) {
-                  context.pushRoute(
-                    const WallPhotoCameraPreviewRoute(),
-                  );
-                  i = _selectedIndex;
+          return Container(
+            decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(
+                  color: context.dividerColor,
+                ),
+              ),
+            ),
+            child: NavigationBar(
+              backgroundColor: context.backgroundColor,
+              selectedIndex: tabsRouter.activeIndex,
+              onDestinationSelected: (i) async {
+                context.unfocus();
+                if (i == TonightNavigationDestination.add.index) {
+                  if (context.mounted) {
+                    context.pushRoute(
+                      const WallPhotoCameraPreviewRoute(),
+                    );
+                    i = _selectedIndex;
+                  }
                 }
-              }
 
-              setState(() {
-                _selectedIndex = i;
-              });
-              tabsRouter.setActiveIndex(i);
-            },
-            destinations: [
-              NavigationDestination(
-                icon: SvgPicture.asset(
-                  'assets/icons/icon_logo_transparent.svg',
-                  semanticsLabel: 'Icon Logo',
-                  height: 32,
+                setState(() {
+                  _selectedIndex = i;
+                });
+                tabsRouter.setActiveIndex(i);
+              },
+              destinations: [
+                const NavigationDestination(
+                  icon: FaIcon(FontAwesomeIcons.fire),
+                  label: 'Tonight',
                 ),
-                label: 'Tonight',
-              ),
-              const NavigationDestination(
-                icon: FaIcon(FontAwesomeIcons.compass),
-                // TODO - add translation
-                label: 'Odkrywaj',
-              ),
-              const NavigationDestination(
-                icon: FaIcon(
-                  FontAwesomeIcons.paperPlane,
+                const NavigationDestination(
+                  icon: FaIcon(FontAwesomeIcons.compass),
+                  // TODO - add translation
+                  label: 'Odkrywaj',
                 ),
-                // TODO - add translation
-                label: 'Opublikuj',
-              ),
-              NavigationDestination(
-                icon: const FaIcon(FontAwesomeIcons.user),
-                label: S().profile,
-              ),
-            ],
+                const NavigationDestination(
+                  icon: FaIcon(
+                    FontAwesomeIcons.paperPlane,
+                  ),
+                  // TODO - add translation
+                  label: 'Opublikuj',
+                ),
+                NavigationDestination(
+                  icon: const FaIcon(FontAwesomeIcons.user),
+                  label: S().profile,
+                ),
+              ],
+            ),
           );
         },
       ),

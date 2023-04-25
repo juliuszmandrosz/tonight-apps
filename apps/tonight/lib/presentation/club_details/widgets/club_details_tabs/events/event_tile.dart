@@ -20,7 +20,7 @@ class EventTile extends StatelessWidget {
       },
       title: AutoSizeText(
         event.eventName,
-        style: context.titleLarge.copyWith(color: context.onSurfaceColor),
+        style: context.titleMedium.copyWith(color: context.onSurfaceColor),
         maxLines: 2,
         softWrap: false,
         overflow: TextOverflow.ellipsis,
@@ -29,7 +29,7 @@ class EventTile extends StatelessWidget {
         padding: const EdgeInsets.only(top: 10),
         child: Text(
           context.formatDateTimeToLocaleYMDHM(event.eventStartDateTime),
-          style: context.titleMedium.copyWith(
+          style: context.titleSmall.copyWith(
             color: context.secondaryColor,
           ),
         ),
