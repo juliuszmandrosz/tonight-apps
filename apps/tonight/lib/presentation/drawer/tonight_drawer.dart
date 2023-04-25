@@ -1,11 +1,7 @@
 import 'package:auth/auth.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:common/application/network_check/network_check_cubit.dart';
-import 'package:common/extensions/build_context_extensions.dart';
-import 'package:common/extensions/cubit_status_extensions.dart';
-import 'package:common/extensions/option_extensions.dart';
-import 'package:common/utils/url_utils.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -47,7 +43,7 @@ class _TonightDrawerState extends State<TonightDrawer> {
       label: S().privacyPolicy,
     ),
     DrawerDestination(
-      icon: FontAwesomeIcons.rightFromBracket,
+      icon: FontAwesomeIcons.arrowRightFromBracket,
       label: S().signOut,
     ),
     DrawerDestination(
@@ -82,6 +78,7 @@ class _TonightDrawerState extends State<TonightDrawer> {
             return NavigationDrawer(
               onDestinationSelected: (i) => _handleOnTap(i, ctx),
               selectedIndex: selectedIndex,
+              backgroundColor: context.backgroundColor,
               children: [
                 const SizedBox(height: 32),
                 const Padding(

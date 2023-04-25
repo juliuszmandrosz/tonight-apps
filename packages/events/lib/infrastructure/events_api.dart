@@ -41,7 +41,7 @@ class EventsApiImpl implements EventsApi {
 
     final data = {
       'query': filters.phraseFilter.phrase,
-      'queryBy': 'eventName, artistName, clubName',
+      'queryBy': 'eventName, artistName, clubName, musicalGenres',
       'filterBy': filterBy,
       'pageNumber': pageNumber,
       'pageSize': pageSize,

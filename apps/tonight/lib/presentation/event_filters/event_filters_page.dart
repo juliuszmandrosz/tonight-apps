@@ -60,7 +60,7 @@ class EventFiltersPage extends StatelessWidget {
             body: BlocBuilder<AvailableFiltersCubit, AvailableFiltersState>(
               builder: (context, state) => state.map(
                 initial: (_) => const SizedBox.shrink(),
-                loadInProgress: (_) => const TicketLogoAnimation(),
+                loadInProgress: (_) => const WaveLoadingIndicator(),
                 loadFailure: (_) {
                   context.pushRoute(
                     FailureRoute(

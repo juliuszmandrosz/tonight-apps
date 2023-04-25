@@ -16,6 +16,7 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_upgrade_alert.dart';
 import 'package:tonight/presentation/navigator/navigator_page.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/sign_in/widgets/tonight_logo.dart';
 import 'package:translations/translations.dart';
 
 class WelcomeLoaderPage extends StatefulWidget {
@@ -84,7 +85,12 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
             child: BlocBuilder<WelcomeLoadingCubit, WelcomeLoadingState>(
               builder: (context, state) {
                 if (state.status.isLoading()) {
-                  return const TicketLogoAnimation();
+                  return Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Center(
+                      child: TonightLogo(height: context.height * 0.3),
+                    ),
+                  );
                 }
 
                 return const NavigatorPage();

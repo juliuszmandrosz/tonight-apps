@@ -11,6 +11,7 @@ class SignInButtons extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: const [
         SignInButton(),
         SizedBox(height: 30),

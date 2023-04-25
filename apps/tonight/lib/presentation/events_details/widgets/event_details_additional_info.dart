@@ -3,7 +3,6 @@ import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/commons/icons/social_icon_with_title.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
-import 'package:tonight/presentation/events_details/widgets/event_location_row.dart';
 import 'package:translations/translations.dart';
 
 class EventDetailsAdditionalInfo extends StatelessWidget {
@@ -33,9 +32,7 @@ class EventDetailsAdditionalInfo extends StatelessWidget {
             isSmallerVersion: true,
           ),
         ),
-        const SizedBox(height: 10),
-        EventLocationRow(event: event),
-        const Divider(),
+        const SizedBox(height: 5),
         if (socialMediaIcons.isNotEmpty)
           ListView.separated(
             shrinkWrap: true,
