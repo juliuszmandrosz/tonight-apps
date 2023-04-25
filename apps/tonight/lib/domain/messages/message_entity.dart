@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:uuid/uuid.dart';
 
@@ -6,9 +7,9 @@ class Message extends Equatable {
   final String roomId;
   final String userId;
   final String username;
-  final String userPictureUrl;
   final String text;
   final DateTime createdAt;
+  final String? userPictureUrl;
 
   Message({
     String? id,
@@ -16,8 +17,8 @@ class Message extends Equatable {
     required this.roomId,
     required this.userId,
     required this.username,
-    required this.userPictureUrl,
     required this.text,
+    this.userPictureUrl,
   })  : id = id ?? const Uuid().v1(),
         createdAt = createdAt ?? DateTime.now();
 
@@ -36,7 +37,7 @@ class Message extends Equatable {
     String? roomId,
     String? userId,
     String? username,
-    String? userPictureUrl,
+    Option<String>? userPictureUrl,
     String? text,
   }) {
     return Message(
@@ -45,8 +46,13 @@ class Message extends Equatable {
       roomId: roomId ?? this.roomId,
       userId: userId ?? this.userId,
       username: username ?? this.username,
-      userPictureUrl: userPictureUrl ?? this.userPictureUrl,
       text: text ?? this.text,
+      userPictureUrl: userPictureUrl != null
+          ? userPictureUrl.fold(
+              () => null,
+              (url) => url,
+            )
+          : this.userPictureUrl,
     );
   }
 }
