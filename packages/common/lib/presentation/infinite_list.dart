@@ -10,6 +10,7 @@ class InfiniteList extends StatefulWidget {
   final Widget Function(BuildContext context, int index) itemBuilder;
   final Widget Function(BuildContext context, int index) separatorBuilder;
   final bool shrinkWrap;
+  final bool isReversed;
 
   const InfiniteList({
     required this.itemCount,
@@ -20,6 +21,7 @@ class InfiniteList extends StatefulWidget {
     required this.itemBuilder,
     required this.separatorBuilder,
     this.shrinkWrap = false,
+    this.isReversed = false,
     Key? key,
   }) : super(key: key);
 
@@ -33,6 +35,7 @@ class _InfiniteListState extends State<InfiniteList> {
     return NotificationListener<ScrollNotification>(
       onNotification: _onScroll,
       child: ListView.separated(
+        reverse: widget.isReversed,
         shrinkWrap: widget.shrinkWrap,
         physics:
             widget.shrinkWrap ? const NeverScrollableScrollPhysics() : null,
@@ -59,20 +62,28 @@ class _InfiniteListState extends State<InfiniteList> {
 
   bool _onScroll(ScrollNotification notification) {
     if (widget.isLoading) return false;
-    if (_isBottom(notification) && !widget.hasError) {
+    if (_isAtEdge(notification) && !widget.hasError) {
       widget.onFetchData();
     }
     return false;
   }
 
-  bool _isBottom(ScrollNotification notification) {
+  bool _isAtEdge(ScrollNotification notification) {
     if (!notification.metrics.atEdge) return false;
     return notification.metrics.pixels != 0;
   }
 
   EdgeInsetsGeometry _getPadding(int index) {
-    if (index == 0) return const EdgeInsets.only(top: 8);
-    if (index == widget.itemCount - 1) return const EdgeInsets.only(bottom: 8);
+    if (index == 0) {
+      return widget.isReversed
+          ? const EdgeInsets.only(bottom: 8)
+          : const EdgeInsets.only(top: 8);
+    }
+    if (index == widget.itemCount - 1) {
+      return widget.isReversed
+          ? const EdgeInsets.only(top: 8)
+          : const EdgeInsets.only(bottom: 8);
+    }
     return EdgeInsets.zero;
   }
 }
