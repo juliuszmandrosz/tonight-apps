@@ -7,6 +7,7 @@ import 'package:tonight/domain/messages/message_entity.dart';
 import 'package:tonight/domain/messages/message_facade.dart';
 import 'package:tonight/domain/messages/message_failure.dart';
 import 'package:tonight/infrastructure/messages/dto/message_dto.dart';
+import 'package:uuid/uuid.dart';
 
 class FirebaseMessageFacade implements MessageFacade {
   final FirebaseFirestore _firestore;
@@ -29,16 +30,15 @@ class FirebaseMessageFacade implements MessageFacade {
         .orderBy('createdAt', descending: true)
         .limit(pageSize);
 
-    yield* messagesRef
-        .snapshots()
-        .map(
-          (snapshot) => right<MessageFailure, List<Message>>(
-            snapshot.docs
-                .map((doc) => MessageDto.fromFirebase(doc).toDomain())
-                .toList(),
-          ),
-        )
-        .handleError((e) {
+    yield* messagesRef.snapshots().map(
+      (snapshot) {
+        return right<MessageFailure, List<Message>>(
+          snapshot.docs
+              .map((doc) => MessageDto.fromFirebase(doc).toDomain())
+              .toList(),
+        );
+      },
+    ).handleError((e) {
       if (e is FirebaseException) {
         _logger.e(e);
         _crashlytics.recordError(e, StackTrace.current);
@@ -111,6 +111,7 @@ class FirebaseMessageFacade implements MessageFacade {
         return right(unit);
       }
       final messageDto = MessageDto(
+        id: const Uuid().v1(),
         userId: userId,
         username: username,
         text: 'joined',
@@ -118,7 +119,7 @@ class FirebaseMessageFacade implements MessageFacade {
         isJoinedInfo: true,
         createdAt: DateTime.now(),
       );
-      await _firestore.messages.add(messageDto.toJson());
+      await _firestore.messages.doc(messageDto.id).set(messageDto.toJson());
       return right(unit);
     } on FirebaseException catch (e) {
       _logger.e(e);
