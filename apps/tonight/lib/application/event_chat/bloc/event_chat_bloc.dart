@@ -44,8 +44,10 @@ class EventChatBloc extends Bloc<EventChatEvent, EventChatState> {
         (_) => state.copyWith(initialStatus: CubitStatus.failure),
         (result) {
           final messages = result.value2;
-          if (state.displayedMessages
-              .any((msg) => msg.id == messages.first.id)) {
+          if (messages.isNotEmpty &&
+              state.displayedMessages.any(
+                (msg) => msg.id == messages.first.id,
+              )) {
             return state;
           }
           return state.copyWith(
