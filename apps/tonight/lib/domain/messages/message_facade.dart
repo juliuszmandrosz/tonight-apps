@@ -11,6 +11,11 @@ abstract class MessageFacade {
   Stream<Either<MessageFailure, List<Message>>> listenToMessages({
     required String roomId,
     int pageSize = 20,
+  });
+
+  Future<Either<MessageFailure, List<Message>>> fetchMessages({
+    required String roomId,
+    int pageSize = 20,
     Message? lastMessage,
   });
 }
