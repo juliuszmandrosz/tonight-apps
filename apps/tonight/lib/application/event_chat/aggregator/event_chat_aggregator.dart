@@ -5,13 +5,20 @@ import 'package:tonight/application/event_chat/aggregator/event_chat_failure.dar
 import 'package:tonight/application/event_chat/models/chat_message_model.dart';
 import 'package:tonight/application/event_chat/models/chat_user_model.dart';
 import 'package:tonight/domain/messages/message_facade.dart';
+import 'package:tonight/domain/participants/participant_entity.dart';
+import 'package:tonight/domain/participants/participant_facade.dart';
 import 'package:uuid/uuid.dart';
 
 class EventChatAggregator {
   final UserAccountFacade _userAccountFacade;
   final MessageFacade _messageFacade;
+  final ParticipantFacade _participantFacade;
 
-  EventChatAggregator(this._userAccountFacade, this._messageFacade);
+  EventChatAggregator(
+    this._userAccountFacade,
+    this._messageFacade,
+    this._participantFacade,
+  );
 
   Stream<Either<ChatMessage, ChatMessage>> sendMessage({
     required String roomId,
@@ -23,7 +30,6 @@ class EventChatAggregator {
     final messageId = const Uuid().v1();
     final message = ChatMessage(
       id: messageId,
-      roomId: roomId,
       user: currentUser,
       text: text,
       isCurrentUser: true,
@@ -77,12 +83,16 @@ class EventChatAggregator {
     final currentUser = ChatUser.fromDomain(
       userResult.getRightOrCrash(),
     );
-    final joinToChatResult = await _messageFacade.joinToChat(
-      roomId: roomId,
+    final participant = Participant(
       userId: currentUser.userId,
       username: currentUser.username,
+      profilePictureUrl: currentUser.userPictureUrl,
     );
-    if (joinToChatResult.isLeft()) {
+    final addParticipantResult = await _participantFacade.addParticipant(
+      participant: participant,
+      roomId: roomId,
+    );
+    if (addParticipantResult.isLeft()) {
       yield left(const EventChatFailure.unexpected());
       return;
     }

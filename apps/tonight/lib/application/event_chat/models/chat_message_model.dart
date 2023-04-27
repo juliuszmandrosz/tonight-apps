@@ -11,7 +11,6 @@ class ChatMessage with _$ChatMessage {
 
   const factory ChatMessage({
     required String id,
-    required String roomId,
     required String text,
     required DateTime createdAt,
     required bool isCurrentUser,
@@ -23,6 +22,7 @@ class ChatMessage with _$ChatMessage {
     @Default(false) bool isSending,
     @Default(false) bool hasError,
     @Default(false) bool isJoinedInfo,
+    @Default(false) bool isLeftInfo,
   }) = _ChatMessage;
 
   factory ChatMessage.fromDomain({
@@ -52,7 +52,6 @@ class ChatMessage with _$ChatMessage {
     );
     return ChatMessage(
       id: message.id,
-      roomId: message.roomId,
       text: message.text,
       createdAt: message.createdAt,
       isCurrentUser: message.userId == currentUserId,
@@ -62,19 +61,20 @@ class ChatMessage with _$ChatMessage {
       isSameUserAsPrevious: isSameUserAsPrevious,
       isFirstMessageFromDay: isFirstMessageFromDay,
       isJoinedInfo: message.isJoinedInfo,
+      isLeftInfo: message.isLeftInfo,
     );
   }
 
   Message toDomain() {
     return Message(
       id: id,
-      roomId: roomId,
       userId: user.userId,
       username: user.username,
       text: text,
       userPictureUrl: user.userPictureUrl,
       createdAt: createdAt,
       isJoinedInfo: isJoinedInfo,
+      isLeftInfo: isLeftInfo,
     );
   }
 
