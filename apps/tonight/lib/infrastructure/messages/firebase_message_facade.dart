@@ -7,7 +7,6 @@ import 'package:tonight/domain/messages/message_entity.dart';
 import 'package:tonight/domain/messages/message_facade.dart';
 import 'package:tonight/domain/messages/message_failure.dart';
 import 'package:tonight/infrastructure/messages/dto/message_dto.dart';
-import 'package:uuid/uuid.dart';
 
 class FirebaseMessageFacade implements MessageFacade {
   final FirebaseFirestore _firestore;
@@ -25,8 +24,9 @@ class FirebaseMessageFacade implements MessageFacade {
     required String roomId,
     int pageSize = 20,
   }) async* {
-    final messagesRef = _firestore.messages
-        .where('roomId', isEqualTo: roomId)
+    final messagesRef = _firestore.rooms
+        .doc(roomId)
+        .messages
         .orderBy('createdAt', descending: true)
         .limit(pageSize);
 
@@ -54,7 +54,11 @@ class FirebaseMessageFacade implements MessageFacade {
   }) async {
     try {
       final messageDto = MessageDto.fromDomain(message);
-      await _firestore.messages.doc(message.id).set(messageDto.toJson());
+      await _firestore.rooms
+          .doc(roomId)
+          .messages
+          .doc(message.id)
+          .set(messageDto.toJson());
       return right(unit);
     } on FirebaseException catch (e) {
       _logger.e(e);
@@ -70,8 +74,9 @@ class FirebaseMessageFacade implements MessageFacade {
     Message? lastMessage,
   }) async {
     try {
-      var messagesRef = _firestore.messages
-          .where('roomId', isEqualTo: roomId)
+      var messagesRef = _firestore.rooms
+          .doc(roomId)
+          .messages
           .orderBy('createdAt', descending: true)
           .limit(pageSize);
 
@@ -86,41 +91,6 @@ class FirebaseMessageFacade implements MessageFacade {
             .map((doc) => MessageDto.fromFirebase(doc).toDomain())
             .toList(),
       );
-    } on FirebaseException catch (e) {
-      _logger.e(e);
-      _crashlytics.recordError(e, StackTrace.current);
-      return left(const MessageFailure.unexpected());
-    }
-  }
-
-  @override
-  Future<Either<MessageFailure, Unit>> joinToChat({
-    required String roomId,
-    required String userId,
-    required String username,
-  }) async {
-    try {
-      final userJoinedMessages = await _firestore.messages
-          .where('roomId', isEqualTo: roomId)
-          .where('userId', isEqualTo: userId)
-          .where('isJoinedInfo', isEqualTo: true)
-          .count()
-          .get();
-      if (userJoinedMessages.count > 0) {
-        // User already joined this room before
-        return right(unit);
-      }
-      final messageDto = MessageDto(
-        id: const Uuid().v1(),
-        userId: userId,
-        username: username,
-        text: 'joined',
-        roomId: roomId,
-        isJoinedInfo: true,
-        createdAt: DateTime.now(),
-      );
-      await _firestore.messages.doc(messageDto.id).set(messageDto.toJson());
-      return right(unit);
     } on FirebaseException catch (e) {
       _logger.e(e);
       _crashlytics.recordError(e, StackTrace.current);

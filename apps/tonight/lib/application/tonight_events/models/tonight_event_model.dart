@@ -1,11 +1,15 @@
+import 'package:dartz/dartz.dart';
 import 'package:events/domain/events/event_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tonight/application/tonight_events/models/event_participant_model.dart';
 import 'package:tonight/domain/participants/participant_entity.dart';
 
 part 'tonight_event_model.freezed.dart';
 
 @freezed
 class TonightEvent with _$TonightEvent {
+  const TonightEvent._();
+
   const factory TonightEvent({
     required String eventId,
     required String eventName,
@@ -22,14 +26,16 @@ class TonightEvent with _$TonightEvent {
     required Map<String, double> location,
     required Map<String, String> urlLinks,
     required bool isConcert,
-    required List<Participant> participants,
+    required Option<List<EventParticipant>> firstParticipants,
+    required int totalParticipants,
     String? artistName,
     String? description,
   }) = _TonightEvent;
 
   factory TonightEvent.fromDomain({
     required Event event,
-    required List<Participant> participants,
+    required Option<List<Participant>> firstParticipants,
+    required int totalParticipants,
   }) =>
       TonightEvent(
         eventId: event.id,
@@ -49,6 +55,36 @@ class TonightEvent with _$TonightEvent {
         isConcert: event.isConcert,
         artistName: event.artistName,
         description: event.description,
-        participants: participants,
+        firstParticipants: firstParticipants.fold(
+          () => none(),
+          (participants) => some(
+            participants.map((p) => EventParticipant.fromDomain(p)).toList(),
+          ),
+        ),
+        totalParticipants: totalParticipants,
+      );
+
+  Event toDomain() => Event(
+        id: eventId,
+        clubId: clubId,
+        eventName: eventName,
+        clubName: clubName,
+        eventStartDateTime: eventStartDateTime,
+        eventEndDateTime: eventEndDateTime,
+        minAge: minAge,
+        price: price,
+        currency: currency,
+        eventPhotoUrl: eventPhotoUrl,
+        allowedOutfit: allowedOutfit,
+        musicalGenres: musicalGenres,
+        location: location,
+        artistName: artistName,
+        description: description,
+        urlLinks: urlLinks,
+        isConcert: isConcert,
+        originalStartDateTime: eventStartDateTime,
+        attending: totalParticipants,
+        // TODO - change event entity to have optional city id
+        cityId: '',
       );
 }

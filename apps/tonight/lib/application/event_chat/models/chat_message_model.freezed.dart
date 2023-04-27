@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ChatMessage {
   String get id => throw _privateConstructorUsedError;
-  String get roomId => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   bool get isCurrentUser => throw _privateConstructorUsedError;
@@ -29,6 +28,7 @@ mixin _$ChatMessage {
   bool get isSending => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
   bool get isJoinedInfo => throw _privateConstructorUsedError;
+  bool get isLeftInfo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChatMessageCopyWith<ChatMessage> get copyWith =>
@@ -43,7 +43,6 @@ abstract class $ChatMessageCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String roomId,
       String text,
       DateTime createdAt,
       bool isCurrentUser,
@@ -54,7 +53,8 @@ abstract class $ChatMessageCopyWith<$Res> {
       bool isFirstMessageFromDay,
       bool isSending,
       bool hasError,
-      bool isJoinedInfo});
+      bool isJoinedInfo,
+      bool isLeftInfo});
 
   $ChatUserCopyWith<$Res> get user;
 }
@@ -73,7 +73,6 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
   @override
   $Res call({
     Object? id = null,
-    Object? roomId = null,
     Object? text = null,
     Object? createdAt = null,
     Object? isCurrentUser = null,
@@ -85,15 +84,12 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
     Object? isSending = null,
     Object? hasError = null,
     Object? isJoinedInfo = null,
+    Object? isLeftInfo = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      roomId: null == roomId
-          ? _value.roomId
-          : roomId // ignore: cast_nullable_to_non_nullable
               as String,
       text: null == text
           ? _value.text
@@ -138,6 +134,10 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
       isJoinedInfo: null == isJoinedInfo
           ? _value.isJoinedInfo
           : isJoinedInfo // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLeftInfo: null == isLeftInfo
+          ? _value.isLeftInfo
+          : isLeftInfo // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -161,7 +161,6 @@ abstract class _$$_ChatMessageCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      String roomId,
       String text,
       DateTime createdAt,
       bool isCurrentUser,
@@ -172,7 +171,8 @@ abstract class _$$_ChatMessageCopyWith<$Res>
       bool isFirstMessageFromDay,
       bool isSending,
       bool hasError,
-      bool isJoinedInfo});
+      bool isJoinedInfo,
+      bool isLeftInfo});
 
   @override
   $ChatUserCopyWith<$Res> get user;
@@ -190,7 +190,6 @@ class __$$_ChatMessageCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? roomId = null,
     Object? text = null,
     Object? createdAt = null,
     Object? isCurrentUser = null,
@@ -202,15 +201,12 @@ class __$$_ChatMessageCopyWithImpl<$Res>
     Object? isSending = null,
     Object? hasError = null,
     Object? isJoinedInfo = null,
+    Object? isLeftInfo = null,
   }) {
     return _then(_$_ChatMessage(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      roomId: null == roomId
-          ? _value.roomId
-          : roomId // ignore: cast_nullable_to_non_nullable
               as String,
       text: null == text
           ? _value.text
@@ -256,6 +252,10 @@ class __$$_ChatMessageCopyWithImpl<$Res>
           ? _value.isJoinedInfo
           : isJoinedInfo // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLeftInfo: null == isLeftInfo
+          ? _value.isLeftInfo
+          : isLeftInfo // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -265,7 +265,6 @@ class __$$_ChatMessageCopyWithImpl<$Res>
 class _$_ChatMessage extends _ChatMessage {
   const _$_ChatMessage(
       {required this.id,
-      required this.roomId,
       required this.text,
       required this.createdAt,
       required this.isCurrentUser,
@@ -276,13 +275,12 @@ class _$_ChatMessage extends _ChatMessage {
       this.isFirstMessageFromDay = false,
       this.isSending = false,
       this.hasError = false,
-      this.isJoinedInfo = false})
+      this.isJoinedInfo = false,
+      this.isLeftInfo = false})
       : super._();
 
   @override
   final String id;
-  @override
-  final String roomId;
   @override
   final String text;
   @override
@@ -312,10 +310,13 @@ class _$_ChatMessage extends _ChatMessage {
   @override
   @JsonKey()
   final bool isJoinedInfo;
+  @override
+  @JsonKey()
+  final bool isLeftInfo;
 
   @override
   String toString() {
-    return 'ChatMessage(id: $id, roomId: $roomId, text: $text, createdAt: $createdAt, isCurrentUser: $isCurrentUser, user: $user, isLastMessageByUser: $isLastMessageByUser, isFirstMessageByUser: $isFirstMessageByUser, isSameUserAsPrevious: $isSameUserAsPrevious, isFirstMessageFromDay: $isFirstMessageFromDay, isSending: $isSending, hasError: $hasError, isJoinedInfo: $isJoinedInfo)';
+    return 'ChatMessage(id: $id, text: $text, createdAt: $createdAt, isCurrentUser: $isCurrentUser, user: $user, isLastMessageByUser: $isLastMessageByUser, isFirstMessageByUser: $isFirstMessageByUser, isSameUserAsPrevious: $isSameUserAsPrevious, isFirstMessageFromDay: $isFirstMessageFromDay, isSending: $isSending, hasError: $hasError, isJoinedInfo: $isJoinedInfo, isLeftInfo: $isLeftInfo)';
   }
 
   @override
@@ -324,7 +325,6 @@ class _$_ChatMessage extends _ChatMessage {
         (other.runtimeType == runtimeType &&
             other is _$_ChatMessage &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.roomId, roomId) || other.roomId == roomId) &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -344,14 +344,15 @@ class _$_ChatMessage extends _ChatMessage {
             (identical(other.hasError, hasError) ||
                 other.hasError == hasError) &&
             (identical(other.isJoinedInfo, isJoinedInfo) ||
-                other.isJoinedInfo == isJoinedInfo));
+                other.isJoinedInfo == isJoinedInfo) &&
+            (identical(other.isLeftInfo, isLeftInfo) ||
+                other.isLeftInfo == isLeftInfo));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      roomId,
       text,
       createdAt,
       isCurrentUser,
@@ -362,7 +363,8 @@ class _$_ChatMessage extends _ChatMessage {
       isFirstMessageFromDay,
       isSending,
       hasError,
-      isJoinedInfo);
+      isJoinedInfo,
+      isLeftInfo);
 
   @JsonKey(ignore: true)
   @override
@@ -374,7 +376,6 @@ class _$_ChatMessage extends _ChatMessage {
 abstract class _ChatMessage extends ChatMessage {
   const factory _ChatMessage(
       {required final String id,
-      required final String roomId,
       required final String text,
       required final DateTime createdAt,
       required final bool isCurrentUser,
@@ -385,13 +386,12 @@ abstract class _ChatMessage extends ChatMessage {
       final bool isFirstMessageFromDay,
       final bool isSending,
       final bool hasError,
-      final bool isJoinedInfo}) = _$_ChatMessage;
+      final bool isJoinedInfo,
+      final bool isLeftInfo}) = _$_ChatMessage;
   const _ChatMessage._() : super._();
 
   @override
   String get id;
-  @override
-  String get roomId;
   @override
   String get text;
   @override
@@ -414,6 +414,8 @@ abstract class _ChatMessage extends ChatMessage {
   bool get hasError;
   @override
   bool get isJoinedInfo;
+  @override
+  bool get isLeftInfo;
   @override
   @JsonKey(ignore: true)
   _$$_ChatMessageCopyWith<_$_ChatMessage> get copyWith =>
