@@ -286,7 +286,7 @@ mixin _$TonightEventsState {
   CubitStatus get getEventsStatus => throw _privateConstructorUsedError;
   CubitStatus get nextPageStatus => throw _privateConstructorUsedError;
   Option<String> get errorMessage => throw _privateConstructorUsedError;
-  List<Event> get events => throw _privateConstructorUsedError;
+  List<TonightEvent> get events => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
   String get filterPhrase => throw _privateConstructorUsedError;
 
@@ -305,7 +305,7 @@ abstract class $TonightEventsStateCopyWith<$Res> {
       {CubitStatus getEventsStatus,
       CubitStatus nextPageStatus,
       Option<String> errorMessage,
-      List<Event> events,
+      List<TonightEvent> events,
       bool hasReachedMax,
       String filterPhrase});
 }
@@ -346,7 +346,7 @@ class _$TonightEventsStateCopyWithImpl<$Res, $Val extends TonightEventsState>
       events: null == events
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
-              as List<Event>,
+              as List<TonightEvent>,
       hasReachedMax: null == hasReachedMax
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
@@ -371,7 +371,7 @@ abstract class _$$_TonightEventsStateCopyWith<$Res>
       {CubitStatus getEventsStatus,
       CubitStatus nextPageStatus,
       Option<String> errorMessage,
-      List<Event> events,
+      List<TonightEvent> events,
       bool hasReachedMax,
       String filterPhrase});
 }
@@ -410,7 +410,7 @@ class __$$_TonightEventsStateCopyWithImpl<$Res>
       events: null == events
           ? _value._events
           : events // ignore: cast_nullable_to_non_nullable
-              as List<Event>,
+              as List<TonightEvent>,
       hasReachedMax: null == hasReachedMax
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
@@ -430,7 +430,7 @@ class _$_TonightEventsState implements _TonightEventsState {
       {required this.getEventsStatus,
       required this.nextPageStatus,
       required this.errorMessage,
-      required final List<Event> events,
+      required final List<TonightEvent> events,
       required this.hasReachedMax,
       required this.filterPhrase})
       : _events = events;
@@ -441,9 +441,9 @@ class _$_TonightEventsState implements _TonightEventsState {
   final CubitStatus nextPageStatus;
   @override
   final Option<String> errorMessage;
-  final List<Event> _events;
+  final List<TonightEvent> _events;
   @override
-  List<Event> get events {
+  List<TonightEvent> get events {
     if (_events is EqualUnmodifiableListView) return _events;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_events);
@@ -500,7 +500,7 @@ abstract class _TonightEventsState implements TonightEventsState {
       {required final CubitStatus getEventsStatus,
       required final CubitStatus nextPageStatus,
       required final Option<String> errorMessage,
-      required final List<Event> events,
+      required final List<TonightEvent> events,
       required final bool hasReachedMax,
       required final String filterPhrase}) = _$_TonightEventsState;
 
@@ -511,7 +511,7 @@ abstract class _TonightEventsState implements TonightEventsState {
   @override
   Option<String> get errorMessage;
   @override
-  List<Event> get events;
+  List<TonightEvent> get events;
   @override
   bool get hasReachedMax;
   @override

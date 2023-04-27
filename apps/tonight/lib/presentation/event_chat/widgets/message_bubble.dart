@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tonight/application/event_chat/models/chat_message_model.dart';
 import 'package:tonight/presentation/event_chat/widgets/event_chat_date.dart';
-import 'package:tonight/presentation/event_chat/widgets/event_chat_joined_info.dart';
 import 'package:tonight/presentation/event_chat/widgets/event_chat_message_bubble.dart';
+import 'package:tonight/presentation/event_chat/widgets/event_chat_system_info.dart';
 import 'package:tonight/presentation/event_chat/widgets/event_chat_user_container.dart';
 
 class MessageBubble extends StatelessWidget {
@@ -21,7 +21,8 @@ class MessageBubble extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           if (message.isFirstMessageFromDay) EventChatDate(message: message),
-          if (message.isJoinedInfo) EventChatJoinedInfo(message: message),
+          if (message.isJoinedInfo || message.isLeftInfo)
+            EventChatSystemInfo(message: message),
           if (!message.isJoinedInfo)
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

@@ -11,6 +11,7 @@ import 'package:tonight/presentation/event_chat/event_chat_page.dart';
 import 'package:tonight/presentation/event_city_picker/event_city_picker_page.dart';
 import 'package:tonight/presentation/event_date_picker/event_date_picker_page.dart';
 import 'package:tonight/presentation/event_filters/event_filters_page.dart';
+import 'package:tonight/presentation/event_participants/event_participants_page.dart';
 import 'package:tonight/presentation/event_review/review_page.dart';
 import 'package:tonight/presentation/events_details/event_details_page.dart';
 import 'package:tonight/presentation/failure/failure_page.dart';
@@ -216,6 +217,11 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: EventChatPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: EventParticipantsPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),

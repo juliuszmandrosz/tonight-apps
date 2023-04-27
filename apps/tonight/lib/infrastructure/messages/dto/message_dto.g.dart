@@ -8,7 +8,6 @@ part of 'message_dto.dart';
 
 _$_MessageDto _$$_MessageDtoFromJson(Map<String, dynamic> json) =>
     _$_MessageDto(
-      roomId: json['roomId'] as String,
       userId: json['userId'] as String,
       username: json['username'] as String,
       text: json['text'] as String,
@@ -16,11 +15,11 @@ _$_MessageDto _$$_MessageDtoFromJson(Map<String, dynamic> json) =>
       createdAt: const FirebaseTimestampJsonConverter()
           .fromJson(json['createdAt'] as Timestamp),
       isJoinedInfo: json['isJoinedInfo'] ?? false,
+      isLeftInfo: json['isLeftInfo'] ?? false,
     );
 
 Map<String, dynamic> _$$_MessageDtoToJson(_$_MessageDto instance) =>
     <String, dynamic>{
-      'roomId': instance.roomId,
       'userId': instance.userId,
       'username': instance.username,
       'text': instance.text,
@@ -28,4 +27,5 @@ Map<String, dynamic> _$$_MessageDtoToJson(_$_MessageDto instance) =>
       'createdAt':
           const FirebaseTimestampJsonConverter().toJson(instance.createdAt),
       'isJoinedInfo': instance.isJoinedInfo,
+      'isLeftInfo': instance.isLeftInfo,
     };
