@@ -1,0 +1,535 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'tonight_event_model.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+mixin _$TonightEvent {
+  String get eventId => throw _privateConstructorUsedError;
+  String get eventName => throw _privateConstructorUsedError;
+  String get clubId => throw _privateConstructorUsedError;
+  String get clubName => throw _privateConstructorUsedError;
+  DateTime get eventStartDateTime => throw _privateConstructorUsedError;
+  DateTime get eventEndDateTime => throw _privateConstructorUsedError;
+  int get minAge => throw _privateConstructorUsedError;
+  int get price => throw _privateConstructorUsedError;
+  String get currency => throw _privateConstructorUsedError;
+  String get eventPhotoUrl => throw _privateConstructorUsedError;
+  String get allowedOutfit => throw _privateConstructorUsedError;
+  List<String> get musicalGenres => throw _privateConstructorUsedError;
+  Map<String, double> get location => throw _privateConstructorUsedError;
+  Map<String, String> get urlLinks => throw _privateConstructorUsedError;
+  bool get isConcert => throw _privateConstructorUsedError;
+  List<Participant> get participants => throw _privateConstructorUsedError;
+  String? get artistName => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $TonightEventCopyWith<TonightEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TonightEventCopyWith<$Res> {
+  factory $TonightEventCopyWith(
+          TonightEvent value, $Res Function(TonightEvent) then) =
+      _$TonightEventCopyWithImpl<$Res, TonightEvent>;
+  @useResult
+  $Res call(
+      {String eventId,
+      String eventName,
+      String clubId,
+      String clubName,
+      DateTime eventStartDateTime,
+      DateTime eventEndDateTime,
+      int minAge,
+      int price,
+      String currency,
+      String eventPhotoUrl,
+      String allowedOutfit,
+      List<String> musicalGenres,
+      Map<String, double> location,
+      Map<String, String> urlLinks,
+      bool isConcert,
+      List<Participant> participants,
+      String? artistName,
+      String? description});
+}
+
+/// @nodoc
+class _$TonightEventCopyWithImpl<$Res, $Val extends TonightEvent>
+    implements $TonightEventCopyWith<$Res> {
+  _$TonightEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? eventId = null,
+    Object? eventName = null,
+    Object? clubId = null,
+    Object? clubName = null,
+    Object? eventStartDateTime = null,
+    Object? eventEndDateTime = null,
+    Object? minAge = null,
+    Object? price = null,
+    Object? currency = null,
+    Object? eventPhotoUrl = null,
+    Object? allowedOutfit = null,
+    Object? musicalGenres = null,
+    Object? location = null,
+    Object? urlLinks = null,
+    Object? isConcert = null,
+    Object? participants = null,
+    Object? artistName = freezed,
+    Object? description = freezed,
+  }) {
+    return _then(_value.copyWith(
+      eventId: null == eventId
+          ? _value.eventId
+          : eventId // ignore: cast_nullable_to_non_nullable
+              as String,
+      eventName: null == eventName
+          ? _value.eventName
+          : eventName // ignore: cast_nullable_to_non_nullable
+              as String,
+      clubId: null == clubId
+          ? _value.clubId
+          : clubId // ignore: cast_nullable_to_non_nullable
+              as String,
+      clubName: null == clubName
+          ? _value.clubName
+          : clubName // ignore: cast_nullable_to_non_nullable
+              as String,
+      eventStartDateTime: null == eventStartDateTime
+          ? _value.eventStartDateTime
+          : eventStartDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      eventEndDateTime: null == eventEndDateTime
+          ? _value.eventEndDateTime
+          : eventEndDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      minAge: null == minAge
+          ? _value.minAge
+          : minAge // ignore: cast_nullable_to_non_nullable
+              as int,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
+      eventPhotoUrl: null == eventPhotoUrl
+          ? _value.eventPhotoUrl
+          : eventPhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      allowedOutfit: null == allowedOutfit
+          ? _value.allowedOutfit
+          : allowedOutfit // ignore: cast_nullable_to_non_nullable
+              as String,
+      musicalGenres: null == musicalGenres
+          ? _value.musicalGenres
+          : musicalGenres // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as Map<String, double>,
+      urlLinks: null == urlLinks
+          ? _value.urlLinks
+          : urlLinks // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+      isConcert: null == isConcert
+          ? _value.isConcert
+          : isConcert // ignore: cast_nullable_to_non_nullable
+              as bool,
+      participants: null == participants
+          ? _value.participants
+          : participants // ignore: cast_nullable_to_non_nullable
+              as List<Participant>,
+      artistName: freezed == artistName
+          ? _value.artistName
+          : artistName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_TonightEventCopyWith<$Res>
+    implements $TonightEventCopyWith<$Res> {
+  factory _$$_TonightEventCopyWith(
+          _$_TonightEvent value, $Res Function(_$_TonightEvent) then) =
+      __$$_TonightEventCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String eventId,
+      String eventName,
+      String clubId,
+      String clubName,
+      DateTime eventStartDateTime,
+      DateTime eventEndDateTime,
+      int minAge,
+      int price,
+      String currency,
+      String eventPhotoUrl,
+      String allowedOutfit,
+      List<String> musicalGenres,
+      Map<String, double> location,
+      Map<String, String> urlLinks,
+      bool isConcert,
+      List<Participant> participants,
+      String? artistName,
+      String? description});
+}
+
+/// @nodoc
+class __$$_TonightEventCopyWithImpl<$Res>
+    extends _$TonightEventCopyWithImpl<$Res, _$_TonightEvent>
+    implements _$$_TonightEventCopyWith<$Res> {
+  __$$_TonightEventCopyWithImpl(
+      _$_TonightEvent _value, $Res Function(_$_TonightEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? eventId = null,
+    Object? eventName = null,
+    Object? clubId = null,
+    Object? clubName = null,
+    Object? eventStartDateTime = null,
+    Object? eventEndDateTime = null,
+    Object? minAge = null,
+    Object? price = null,
+    Object? currency = null,
+    Object? eventPhotoUrl = null,
+    Object? allowedOutfit = null,
+    Object? musicalGenres = null,
+    Object? location = null,
+    Object? urlLinks = null,
+    Object? isConcert = null,
+    Object? participants = null,
+    Object? artistName = freezed,
+    Object? description = freezed,
+  }) {
+    return _then(_$_TonightEvent(
+      eventId: null == eventId
+          ? _value.eventId
+          : eventId // ignore: cast_nullable_to_non_nullable
+              as String,
+      eventName: null == eventName
+          ? _value.eventName
+          : eventName // ignore: cast_nullable_to_non_nullable
+              as String,
+      clubId: null == clubId
+          ? _value.clubId
+          : clubId // ignore: cast_nullable_to_non_nullable
+              as String,
+      clubName: null == clubName
+          ? _value.clubName
+          : clubName // ignore: cast_nullable_to_non_nullable
+              as String,
+      eventStartDateTime: null == eventStartDateTime
+          ? _value.eventStartDateTime
+          : eventStartDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      eventEndDateTime: null == eventEndDateTime
+          ? _value.eventEndDateTime
+          : eventEndDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      minAge: null == minAge
+          ? _value.minAge
+          : minAge // ignore: cast_nullable_to_non_nullable
+              as int,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
+      eventPhotoUrl: null == eventPhotoUrl
+          ? _value.eventPhotoUrl
+          : eventPhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      allowedOutfit: null == allowedOutfit
+          ? _value.allowedOutfit
+          : allowedOutfit // ignore: cast_nullable_to_non_nullable
+              as String,
+      musicalGenres: null == musicalGenres
+          ? _value._musicalGenres
+          : musicalGenres // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      location: null == location
+          ? _value._location
+          : location // ignore: cast_nullable_to_non_nullable
+              as Map<String, double>,
+      urlLinks: null == urlLinks
+          ? _value._urlLinks
+          : urlLinks // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+      isConcert: null == isConcert
+          ? _value.isConcert
+          : isConcert // ignore: cast_nullable_to_non_nullable
+              as bool,
+      participants: null == participants
+          ? _value._participants
+          : participants // ignore: cast_nullable_to_non_nullable
+              as List<Participant>,
+      artistName: freezed == artistName
+          ? _value.artistName
+          : artistName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_TonightEvent implements _TonightEvent {
+  const _$_TonightEvent(
+      {required this.eventId,
+      required this.eventName,
+      required this.clubId,
+      required this.clubName,
+      required this.eventStartDateTime,
+      required this.eventEndDateTime,
+      required this.minAge,
+      required this.price,
+      required this.currency,
+      required this.eventPhotoUrl,
+      required this.allowedOutfit,
+      required final List<String> musicalGenres,
+      required final Map<String, double> location,
+      required final Map<String, String> urlLinks,
+      required this.isConcert,
+      required final List<Participant> participants,
+      this.artistName,
+      this.description})
+      : _musicalGenres = musicalGenres,
+        _location = location,
+        _urlLinks = urlLinks,
+        _participants = participants;
+
+  @override
+  final String eventId;
+  @override
+  final String eventName;
+  @override
+  final String clubId;
+  @override
+  final String clubName;
+  @override
+  final DateTime eventStartDateTime;
+  @override
+  final DateTime eventEndDateTime;
+  @override
+  final int minAge;
+  @override
+  final int price;
+  @override
+  final String currency;
+  @override
+  final String eventPhotoUrl;
+  @override
+  final String allowedOutfit;
+  final List<String> _musicalGenres;
+  @override
+  List<String> get musicalGenres {
+    if (_musicalGenres is EqualUnmodifiableListView) return _musicalGenres;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_musicalGenres);
+  }
+
+  final Map<String, double> _location;
+  @override
+  Map<String, double> get location {
+    if (_location is EqualUnmodifiableMapView) return _location;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_location);
+  }
+
+  final Map<String, String> _urlLinks;
+  @override
+  Map<String, String> get urlLinks {
+    if (_urlLinks is EqualUnmodifiableMapView) return _urlLinks;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_urlLinks);
+  }
+
+  @override
+  final bool isConcert;
+  final List<Participant> _participants;
+  @override
+  List<Participant> get participants {
+    if (_participants is EqualUnmodifiableListView) return _participants;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_participants);
+  }
+
+  @override
+  final String? artistName;
+  @override
+  final String? description;
+
+  @override
+  String toString() {
+    return 'TonightEvent(eventId: $eventId, eventName: $eventName, clubId: $clubId, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, location: $location, urlLinks: $urlLinks, isConcert: $isConcert, participants: $participants, artistName: $artistName, description: $description)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TonightEvent &&
+            (identical(other.eventId, eventId) || other.eventId == eventId) &&
+            (identical(other.eventName, eventName) ||
+                other.eventName == eventName) &&
+            (identical(other.clubId, clubId) || other.clubId == clubId) &&
+            (identical(other.clubName, clubName) ||
+                other.clubName == clubName) &&
+            (identical(other.eventStartDateTime, eventStartDateTime) ||
+                other.eventStartDateTime == eventStartDateTime) &&
+            (identical(other.eventEndDateTime, eventEndDateTime) ||
+                other.eventEndDateTime == eventEndDateTime) &&
+            (identical(other.minAge, minAge) || other.minAge == minAge) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.eventPhotoUrl, eventPhotoUrl) ||
+                other.eventPhotoUrl == eventPhotoUrl) &&
+            (identical(other.allowedOutfit, allowedOutfit) ||
+                other.allowedOutfit == allowedOutfit) &&
+            const DeepCollectionEquality()
+                .equals(other._musicalGenres, _musicalGenres) &&
+            const DeepCollectionEquality().equals(other._location, _location) &&
+            const DeepCollectionEquality().equals(other._urlLinks, _urlLinks) &&
+            (identical(other.isConcert, isConcert) ||
+                other.isConcert == isConcert) &&
+            const DeepCollectionEquality()
+                .equals(other._participants, _participants) &&
+            (identical(other.artistName, artistName) ||
+                other.artistName == artistName) &&
+            (identical(other.description, description) ||
+                other.description == description));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      eventId,
+      eventName,
+      clubId,
+      clubName,
+      eventStartDateTime,
+      eventEndDateTime,
+      minAge,
+      price,
+      currency,
+      eventPhotoUrl,
+      allowedOutfit,
+      const DeepCollectionEquality().hash(_musicalGenres),
+      const DeepCollectionEquality().hash(_location),
+      const DeepCollectionEquality().hash(_urlLinks),
+      isConcert,
+      const DeepCollectionEquality().hash(_participants),
+      artistName,
+      description);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TonightEventCopyWith<_$_TonightEvent> get copyWith =>
+      __$$_TonightEventCopyWithImpl<_$_TonightEvent>(this, _$identity);
+}
+
+abstract class _TonightEvent implements TonightEvent {
+  const factory _TonightEvent(
+      {required final String eventId,
+      required final String eventName,
+      required final String clubId,
+      required final String clubName,
+      required final DateTime eventStartDateTime,
+      required final DateTime eventEndDateTime,
+      required final int minAge,
+      required final int price,
+      required final String currency,
+      required final String eventPhotoUrl,
+      required final String allowedOutfit,
+      required final List<String> musicalGenres,
+      required final Map<String, double> location,
+      required final Map<String, String> urlLinks,
+      required final bool isConcert,
+      required final List<Participant> participants,
+      final String? artistName,
+      final String? description}) = _$_TonightEvent;
+
+  @override
+  String get eventId;
+  @override
+  String get eventName;
+  @override
+  String get clubId;
+  @override
+  String get clubName;
+  @override
+  DateTime get eventStartDateTime;
+  @override
+  DateTime get eventEndDateTime;
+  @override
+  int get minAge;
+  @override
+  int get price;
+  @override
+  String get currency;
+  @override
+  String get eventPhotoUrl;
+  @override
+  String get allowedOutfit;
+  @override
+  List<String> get musicalGenres;
+  @override
+  Map<String, double> get location;
+  @override
+  Map<String, String> get urlLinks;
+  @override
+  bool get isConcert;
+  @override
+  List<Participant> get participants;
+  @override
+  String? get artistName;
+  @override
+  String? get description;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TonightEventCopyWith<_$_TonightEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
