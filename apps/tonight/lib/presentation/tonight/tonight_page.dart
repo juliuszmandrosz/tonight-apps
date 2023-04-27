@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight/application/tonight_events/tonight_events_bloc.dart';
+import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
 import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/tonight/widgets/tonight_sliver_app_bar.dart';

@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight/application/tonight_events/tonight_events_bloc.dart';
+import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/tonight_events/widgets/tonight_event_card.dart';
 import 'package:tonight/presentation/wall_photos/widgets/refresh_wall_photos_button.dart';
