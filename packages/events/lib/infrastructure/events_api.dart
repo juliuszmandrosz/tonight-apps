@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:events/domain/domain.dart';
-import 'package:logger/logger.dart';
 
 abstract class EventsApi {
   Future<List<dynamic>> getEvents(
@@ -56,7 +55,6 @@ class EventsApiImpl implements EventsApi {
   @override
   Future<List> getLiveEventsFromClub(EventFilters filters) async {
     const endpoint = 'events/getEvents';
-    Logger().i(filters.buildFilters());
     final data = {
       'query': '',
       'queryBy': '',

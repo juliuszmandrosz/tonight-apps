@@ -1,4 +1,3 @@
-import 'package:common/extensions/color_extensions.dart';
 import 'package:common/extensions/string_extensions.dart';
 import 'package:common/presentation/circle_network_photo.dart';
 import 'package:flutter/material.dart';
@@ -9,15 +8,17 @@ class ProfilePictureContainer extends StatelessWidget {
   final String username;
   final String? profilePictureUrl;
   final TextStyle textStyle;
-  final bool isOnSurfaceColor;
   final bool showPlaceholder;
+  final Color backgroundColor;
+  final Color textColor;
 
   const ProfilePictureContainer({
     required this.imageSize,
     required this.profilePictureUrl,
     required this.username,
     required this.textStyle,
-    this.isOnSurfaceColor = false,
+    required this.backgroundColor,
+    required this.textColor,
     this.showPlaceholder = false,
     Key? key,
   }) : super(key: key);
@@ -29,7 +30,7 @@ class ProfilePictureContainer extends StatelessWidget {
       width: imageSize,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: isOnSurfaceColor ? context.onSurfaceColor : context.surfaceColor,
+        color: backgroundColor,
       ),
       child: Center(
         child: _buildContent(context),
@@ -39,11 +40,8 @@ class ProfilePictureContainer extends StatelessWidget {
 
   Widget _buildContent(BuildContext context) {
     if (showPlaceholder) {
-      return FaIcon(
-        FontAwesomeIcons.user,
-        size: imageSize / 2,
-        color: isOnSurfaceColor ? context.surfaceColor : context.onSurfaceColor,
-      );
+      return FaIcon(FontAwesomeIcons.user,
+          size: imageSize / 2, color: textColor);
     }
 
     return profilePictureUrl.isNotNullOrEmpty
@@ -58,9 +56,7 @@ class ProfilePictureContainer extends StatelessWidget {
                 : username.length == 1
                     ? username[0].toUpperCase()
                     : username.substring(0, 2).toUpperCase(),
-            style: isOnSurfaceColor
-                ? textStyle.copyWith(color: context.surfaceColor)
-                : textStyle,
+            style: textStyle.copyWith(color: textColor),
           );
   }
 }

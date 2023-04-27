@@ -31,6 +31,8 @@ class ReviewTitle extends StatelessWidget {
                 username: review.username,
                 textStyle: context.titleSmall,
                 showPlaceholder: review.isUserDeleted,
+                backgroundColor: context.surfaceColor,
+                textColor: context.onSurfaceColor,
               ),
             ],
           ),
