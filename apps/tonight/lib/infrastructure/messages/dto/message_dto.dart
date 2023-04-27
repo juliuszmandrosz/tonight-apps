@@ -13,13 +13,13 @@ class MessageDto with _$MessageDto {
   @JsonSerializable()
   const factory MessageDto({
     @JsonKey(ignore: true) String? id,
-    required String roomId,
     required String userId,
     required String username,
     required String text,
     String? userPictureUrl,
     @FirebaseTimestampJsonConverter() required DateTime createdAt,
     @Default(false) isJoinedInfo,
+    @Default(false) isLeftInfo,
   }) = _MessageDto;
 
   factory MessageDto.fromJson(Map<String, dynamic> json) =>
@@ -33,26 +33,26 @@ class MessageDto with _$MessageDto {
   factory MessageDto.fromDomain(Message message) {
     return MessageDto(
       id: message.id,
-      roomId: message.roomId,
       userId: message.userId,
       username: message.username,
       text: message.text,
       userPictureUrl: message.userPictureUrl,
       createdAt: message.createdAt,
       isJoinedInfo: message.isJoinedInfo,
+      isLeftInfo: message.isLeftInfo,
     );
   }
 
   Message toDomain() {
     return Message(
       id: id!,
-      roomId: roomId,
       userId: userId,
       username: username,
       text: text,
       userPictureUrl: userPictureUrl,
       createdAt: createdAt,
       isJoinedInfo: isJoinedInfo,
+      isLeftInfo: isLeftInfo,
     );
   }
 }

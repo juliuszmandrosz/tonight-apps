@@ -38,7 +38,7 @@ extension FirestoreX on FirebaseFirestore {
 
   CollectionReference get wallPhotos => collection('wallPhotos');
 
-  CollectionReference get messages => collection('messages');
+  CollectionReference get rooms => collection('rooms');
 
   DocumentReference getCurrentUserDocRef(FirebaseAuth auth) {
     final firebaseUser = auth.tryGetFirebaseUser();
@@ -173,4 +173,8 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get eventReview => collection('eventReview');
 
   CollectionReference get appliedDiscounts => collection('appliedDiscounts');
+
+  CollectionReference get messages => collection('messages');
+
+  CollectionReference get participants => collection('participants');
 }

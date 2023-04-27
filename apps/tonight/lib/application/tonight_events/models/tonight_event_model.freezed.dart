@@ -31,7 +31,9 @@ mixin _$TonightEvent {
   Map<String, double> get location => throw _privateConstructorUsedError;
   Map<String, String> get urlLinks => throw _privateConstructorUsedError;
   bool get isConcert => throw _privateConstructorUsedError;
-  List<Participant> get participants => throw _privateConstructorUsedError;
+  Option<List<EventParticipant>> get firstParticipants =>
+      throw _privateConstructorUsedError;
+  int get totalParticipants => throw _privateConstructorUsedError;
   String? get artistName => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
 
@@ -62,7 +64,8 @@ abstract class $TonightEventCopyWith<$Res> {
       Map<String, double> location,
       Map<String, String> urlLinks,
       bool isConcert,
-      List<Participant> participants,
+      Option<List<EventParticipant>> firstParticipants,
+      int totalParticipants,
       String? artistName,
       String? description});
 }
@@ -95,7 +98,8 @@ class _$TonightEventCopyWithImpl<$Res, $Val extends TonightEvent>
     Object? location = null,
     Object? urlLinks = null,
     Object? isConcert = null,
-    Object? participants = null,
+    Object? firstParticipants = null,
+    Object? totalParticipants = null,
     Object? artistName = freezed,
     Object? description = freezed,
   }) {
@@ -160,10 +164,14 @@ class _$TonightEventCopyWithImpl<$Res, $Val extends TonightEvent>
           ? _value.isConcert
           : isConcert // ignore: cast_nullable_to_non_nullable
               as bool,
-      participants: null == participants
-          ? _value.participants
-          : participants // ignore: cast_nullable_to_non_nullable
-              as List<Participant>,
+      firstParticipants: null == firstParticipants
+          ? _value.firstParticipants
+          : firstParticipants // ignore: cast_nullable_to_non_nullable
+              as Option<List<EventParticipant>>,
+      totalParticipants: null == totalParticipants
+          ? _value.totalParticipants
+          : totalParticipants // ignore: cast_nullable_to_non_nullable
+              as int,
       artistName: freezed == artistName
           ? _value.artistName
           : artistName // ignore: cast_nullable_to_non_nullable
@@ -200,7 +208,8 @@ abstract class _$$_TonightEventCopyWith<$Res>
       Map<String, double> location,
       Map<String, String> urlLinks,
       bool isConcert,
-      List<Participant> participants,
+      Option<List<EventParticipant>> firstParticipants,
+      int totalParticipants,
       String? artistName,
       String? description});
 }
@@ -231,7 +240,8 @@ class __$$_TonightEventCopyWithImpl<$Res>
     Object? location = null,
     Object? urlLinks = null,
     Object? isConcert = null,
-    Object? participants = null,
+    Object? firstParticipants = null,
+    Object? totalParticipants = null,
     Object? artistName = freezed,
     Object? description = freezed,
   }) {
@@ -296,10 +306,14 @@ class __$$_TonightEventCopyWithImpl<$Res>
           ? _value.isConcert
           : isConcert // ignore: cast_nullable_to_non_nullable
               as bool,
-      participants: null == participants
-          ? _value._participants
-          : participants // ignore: cast_nullable_to_non_nullable
-              as List<Participant>,
+      firstParticipants: null == firstParticipants
+          ? _value.firstParticipants
+          : firstParticipants // ignore: cast_nullable_to_non_nullable
+              as Option<List<EventParticipant>>,
+      totalParticipants: null == totalParticipants
+          ? _value.totalParticipants
+          : totalParticipants // ignore: cast_nullable_to_non_nullable
+              as int,
       artistName: freezed == artistName
           ? _value.artistName
           : artistName // ignore: cast_nullable_to_non_nullable
@@ -314,7 +328,7 @@ class __$$_TonightEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TonightEvent implements _TonightEvent {
+class _$_TonightEvent extends _TonightEvent {
   const _$_TonightEvent(
       {required this.eventId,
       required this.eventName,
@@ -331,13 +345,14 @@ class _$_TonightEvent implements _TonightEvent {
       required final Map<String, double> location,
       required final Map<String, String> urlLinks,
       required this.isConcert,
-      required final List<Participant> participants,
+      required this.firstParticipants,
+      required this.totalParticipants,
       this.artistName,
       this.description})
       : _musicalGenres = musicalGenres,
         _location = location,
         _urlLinks = urlLinks,
-        _participants = participants;
+        super._();
 
   @override
   final String eventId;
@@ -387,14 +402,10 @@ class _$_TonightEvent implements _TonightEvent {
 
   @override
   final bool isConcert;
-  final List<Participant> _participants;
   @override
-  List<Participant> get participants {
-    if (_participants is EqualUnmodifiableListView) return _participants;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_participants);
-  }
-
+  final Option<List<EventParticipant>> firstParticipants;
+  @override
+  final int totalParticipants;
   @override
   final String? artistName;
   @override
@@ -402,7 +413,7 @@ class _$_TonightEvent implements _TonightEvent {
 
   @override
   String toString() {
-    return 'TonightEvent(eventId: $eventId, eventName: $eventName, clubId: $clubId, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, location: $location, urlLinks: $urlLinks, isConcert: $isConcert, participants: $participants, artistName: $artistName, description: $description)';
+    return 'TonightEvent(eventId: $eventId, eventName: $eventName, clubId: $clubId, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, location: $location, urlLinks: $urlLinks, isConcert: $isConcert, firstParticipants: $firstParticipants, totalParticipants: $totalParticipants, artistName: $artistName, description: $description)';
   }
 
   @override
@@ -434,8 +445,10 @@ class _$_TonightEvent implements _TonightEvent {
             const DeepCollectionEquality().equals(other._urlLinks, _urlLinks) &&
             (identical(other.isConcert, isConcert) ||
                 other.isConcert == isConcert) &&
-            const DeepCollectionEquality()
-                .equals(other._participants, _participants) &&
+            (identical(other.firstParticipants, firstParticipants) ||
+                other.firstParticipants == firstParticipants) &&
+            (identical(other.totalParticipants, totalParticipants) ||
+                other.totalParticipants == totalParticipants) &&
             (identical(other.artistName, artistName) ||
                 other.artistName == artistName) &&
             (identical(other.description, description) ||
@@ -443,26 +456,28 @@ class _$_TonightEvent implements _TonightEvent {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      eventId,
-      eventName,
-      clubId,
-      clubName,
-      eventStartDateTime,
-      eventEndDateTime,
-      minAge,
-      price,
-      currency,
-      eventPhotoUrl,
-      allowedOutfit,
-      const DeepCollectionEquality().hash(_musicalGenres),
-      const DeepCollectionEquality().hash(_location),
-      const DeepCollectionEquality().hash(_urlLinks),
-      isConcert,
-      const DeepCollectionEquality().hash(_participants),
-      artistName,
-      description);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        eventId,
+        eventName,
+        clubId,
+        clubName,
+        eventStartDateTime,
+        eventEndDateTime,
+        minAge,
+        price,
+        currency,
+        eventPhotoUrl,
+        allowedOutfit,
+        const DeepCollectionEquality().hash(_musicalGenres),
+        const DeepCollectionEquality().hash(_location),
+        const DeepCollectionEquality().hash(_urlLinks),
+        isConcert,
+        firstParticipants,
+        totalParticipants,
+        artistName,
+        description
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -471,7 +486,7 @@ class _$_TonightEvent implements _TonightEvent {
       __$$_TonightEventCopyWithImpl<_$_TonightEvent>(this, _$identity);
 }
 
-abstract class _TonightEvent implements TonightEvent {
+abstract class _TonightEvent extends TonightEvent {
   const factory _TonightEvent(
       {required final String eventId,
       required final String eventName,
@@ -488,9 +503,11 @@ abstract class _TonightEvent implements TonightEvent {
       required final Map<String, double> location,
       required final Map<String, String> urlLinks,
       required final bool isConcert,
-      required final List<Participant> participants,
+      required final Option<List<EventParticipant>> firstParticipants,
+      required final int totalParticipants,
       final String? artistName,
       final String? description}) = _$_TonightEvent;
+  const _TonightEvent._() : super._();
 
   @override
   String get eventId;
@@ -523,7 +540,9 @@ abstract class _TonightEvent implements TonightEvent {
   @override
   bool get isConcert;
   @override
-  List<Participant> get participants;
+  Option<List<EventParticipant>> get firstParticipants;
+  @override
+  int get totalParticipants;
   @override
   String? get artistName;
   @override

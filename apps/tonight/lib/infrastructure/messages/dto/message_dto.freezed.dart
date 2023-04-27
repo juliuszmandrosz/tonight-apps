@@ -22,7 +22,6 @@ MessageDto _$MessageDtoFromJson(Map<String, dynamic> json) {
 mixin _$MessageDto {
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
-  String get roomId => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
@@ -30,6 +29,7 @@ mixin _$MessageDto {
   @FirebaseTimestampJsonConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
   dynamic get isJoinedInfo => throw _privateConstructorUsedError;
+  dynamic get isLeftInfo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,13 +45,13 @@ abstract class $MessageDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
-      String roomId,
       String userId,
       String username,
       String text,
       String? userPictureUrl,
       @FirebaseTimestampJsonConverter() DateTime createdAt,
-      dynamic isJoinedInfo});
+      dynamic isJoinedInfo,
+      dynamic isLeftInfo});
 }
 
 /// @nodoc
@@ -68,23 +68,19 @@ class _$MessageDtoCopyWithImpl<$Res, $Val extends MessageDto>
   @override
   $Res call({
     Object? id = freezed,
-    Object? roomId = null,
     Object? userId = null,
     Object? username = null,
     Object? text = null,
     Object? userPictureUrl = freezed,
     Object? createdAt = null,
     Object? isJoinedInfo = freezed,
+    Object? isLeftInfo = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      roomId: null == roomId
-          ? _value.roomId
-          : roomId // ignore: cast_nullable_to_non_nullable
-              as String,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -109,6 +105,10 @@ class _$MessageDtoCopyWithImpl<$Res, $Val extends MessageDto>
           ? _value.isJoinedInfo
           : isJoinedInfo // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      isLeftInfo: freezed == isLeftInfo
+          ? _value.isLeftInfo
+          : isLeftInfo // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ) as $Val);
   }
 }
@@ -123,13 +123,13 @@ abstract class _$$_MessageDtoCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
-      String roomId,
       String userId,
       String username,
       String text,
       String? userPictureUrl,
       @FirebaseTimestampJsonConverter() DateTime createdAt,
-      dynamic isJoinedInfo});
+      dynamic isJoinedInfo,
+      dynamic isLeftInfo});
 }
 
 /// @nodoc
@@ -144,23 +144,19 @@ class __$$_MessageDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? roomId = null,
     Object? userId = null,
     Object? username = null,
     Object? text = null,
     Object? userPictureUrl = freezed,
     Object? createdAt = null,
     Object? isJoinedInfo = freezed,
+    Object? isLeftInfo = freezed,
   }) {
     return _then(_$_MessageDto(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      roomId: null == roomId
-          ? _value.roomId
-          : roomId // ignore: cast_nullable_to_non_nullable
-              as String,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -183,6 +179,7 @@ class __$$_MessageDtoCopyWithImpl<$Res>
               as DateTime,
       isJoinedInfo:
           freezed == isJoinedInfo ? _value.isJoinedInfo! : isJoinedInfo,
+      isLeftInfo: freezed == isLeftInfo ? _value.isLeftInfo! : isLeftInfo,
     ));
   }
 }
@@ -193,13 +190,13 @@ class __$$_MessageDtoCopyWithImpl<$Res>
 class _$_MessageDto extends _MessageDto {
   const _$_MessageDto(
       {@JsonKey(ignore: true) this.id,
-      required this.roomId,
       required this.userId,
       required this.username,
       required this.text,
       this.userPictureUrl,
       @FirebaseTimestampJsonConverter() required this.createdAt,
-      this.isJoinedInfo = false})
+      this.isJoinedInfo = false,
+      this.isLeftInfo = false})
       : super._();
 
   factory _$_MessageDto.fromJson(Map<String, dynamic> json) =>
@@ -208,8 +205,6 @@ class _$_MessageDto extends _MessageDto {
   @override
   @JsonKey(ignore: true)
   final String? id;
-  @override
-  final String roomId;
   @override
   final String userId;
   @override
@@ -224,10 +219,13 @@ class _$_MessageDto extends _MessageDto {
   @override
   @JsonKey()
   final dynamic isJoinedInfo;
+  @override
+  @JsonKey()
+  final dynamic isLeftInfo;
 
   @override
   String toString() {
-    return 'MessageDto(id: $id, roomId: $roomId, userId: $userId, username: $username, text: $text, userPictureUrl: $userPictureUrl, createdAt: $createdAt, isJoinedInfo: $isJoinedInfo)';
+    return 'MessageDto(id: $id, userId: $userId, username: $username, text: $text, userPictureUrl: $userPictureUrl, createdAt: $createdAt, isJoinedInfo: $isJoinedInfo, isLeftInfo: $isLeftInfo)';
   }
 
   @override
@@ -236,7 +234,6 @@ class _$_MessageDto extends _MessageDto {
         (other.runtimeType == runtimeType &&
             other is _$_MessageDto &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.roomId, roomId) || other.roomId == roomId) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.username, username) ||
                 other.username == username) &&
@@ -246,7 +243,9 @@ class _$_MessageDto extends _MessageDto {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             const DeepCollectionEquality()
-                .equals(other.isJoinedInfo, isJoinedInfo));
+                .equals(other.isJoinedInfo, isJoinedInfo) &&
+            const DeepCollectionEquality()
+                .equals(other.isLeftInfo, isLeftInfo));
   }
 
   @JsonKey(ignore: true)
@@ -254,13 +253,13 @@ class _$_MessageDto extends _MessageDto {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      roomId,
       userId,
       username,
       text,
       userPictureUrl,
       createdAt,
-      const DeepCollectionEquality().hash(isJoinedInfo));
+      const DeepCollectionEquality().hash(isJoinedInfo),
+      const DeepCollectionEquality().hash(isLeftInfo));
 
   @JsonKey(ignore: true)
   @override
@@ -279,13 +278,13 @@ class _$_MessageDto extends _MessageDto {
 abstract class _MessageDto extends MessageDto {
   const factory _MessageDto(
       {@JsonKey(ignore: true) final String? id,
-      required final String roomId,
       required final String userId,
       required final String username,
       required final String text,
       final String? userPictureUrl,
       @FirebaseTimestampJsonConverter() required final DateTime createdAt,
-      final dynamic isJoinedInfo}) = _$_MessageDto;
+      final dynamic isJoinedInfo,
+      final dynamic isLeftInfo}) = _$_MessageDto;
   const _MessageDto._() : super._();
 
   factory _MessageDto.fromJson(Map<String, dynamic> json) =
@@ -294,8 +293,6 @@ abstract class _MessageDto extends MessageDto {
   @override
   @JsonKey(ignore: true)
   String? get id;
-  @override
-  String get roomId;
   @override
   String get userId;
   @override
@@ -309,6 +306,8 @@ abstract class _MessageDto extends MessageDto {
   DateTime get createdAt;
   @override
   dynamic get isJoinedInfo;
+  @override
+  dynamic get isLeftInfo;
   @override
   @JsonKey(ignore: true)
   _$$_MessageDtoCopyWith<_$_MessageDto> get copyWith =>
