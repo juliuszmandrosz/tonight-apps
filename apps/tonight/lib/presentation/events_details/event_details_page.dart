@@ -77,7 +77,9 @@ class EventDetailsPage extends StatelessWidget {
                   FloatingActionButtonLocation.endContained,
               floatingActionButton: _checkIfBottomBarIsAvailable(event)
                   ? FloatingActionButton(
-                      onPressed: () {},
+                      onPressed: () => context.pushRoute(
+                        EventChatRoute(event: event),
+                      ),
                       child: const FaIcon(FontAwesomeIcons.arrowRightToBracket),
                     )
                   : null,

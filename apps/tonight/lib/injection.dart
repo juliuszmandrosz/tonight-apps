@@ -39,6 +39,8 @@ import 'package:tonight/application/clubs/club_details/club_photos/club_photos_b
 import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
 import 'package:tonight/application/clubs/club_rewards/club_rewards_cubit.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
+import 'package:tonight/application/event_chat/aggregator/event_chat_aggregator.dart';
+import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
 import 'package:tonight/application/event_review/event_review_cubit.dart';
 import 'package:tonight/application/events/event_city_picker/event_city_picker_bloc.dart';
 import 'package:tonight/application/events/event_date_picker/event_date_picker_cubit.dart';
@@ -64,11 +66,13 @@ import 'package:tonight/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
 import 'package:tonight/domain/club_rewards/club_rewards_aggregator.dart';
 import 'package:tonight/domain/event_review/event_review_aggregator.dart';
+import 'package:tonight/domain/messages/message_facade.dart';
 import 'package:tonight/domain/places/places_facade.dart';
 import 'package:tonight/domain/user_details/user_details_aggregator.dart';
 import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/infrastructure/google_places/google_places_facade.dart';
+import 'package:tonight/infrastructure/messages/firebase_message_facade.dart';
 import 'package:tonight/infrastructure/wall_photos/firebase_wall_photo_facade.dart';
 
 import 'application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
@@ -329,6 +333,12 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  getIt.registerFactory(
+    () => EventChatBloc(
+      getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
@@ -528,6 +538,14 @@ void _registerFacades() {
       getIt(),
     ),
   );
+
+  getIt.registerLazySingleton<MessageFacade>(
+    () => FirebaseMessageFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
 }
 
 void _registerAggregators() {
@@ -557,6 +575,13 @@ void _registerAggregators() {
       accountFacade: getIt(),
       reviewFacade: getIt(),
       eventFacade: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
+    () => EventChatAggregator(
+      getIt(),
+      getIt(),
     ),
   );
 }
