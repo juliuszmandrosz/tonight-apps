@@ -6,7 +6,7 @@ class TonightEventsState with _$TonightEventsState {
     required CubitStatus getEventsStatus,
     required CubitStatus nextPageStatus,
     required Option<String> errorMessage,
-    required List<Event> events,
+    required List<TonightEvent> events,
     required bool hasReachedMax,
     required String filterPhrase,
   }) = _TonightEventsState;
