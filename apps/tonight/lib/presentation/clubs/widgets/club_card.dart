@@ -39,6 +39,7 @@ class ClubCard extends StatelessWidget {
         );
       },
       child: Card(
+        color: context.backgroundColor,
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
@@ -83,7 +84,7 @@ class ClubCard extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(12),
               child: Column(
                 children: [
                   Row(
