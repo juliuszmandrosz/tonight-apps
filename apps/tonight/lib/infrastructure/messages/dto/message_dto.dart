@@ -19,6 +19,7 @@ class MessageDto with _$MessageDto {
     required String text,
     String? userPictureUrl,
     @FirebaseTimestampJsonConverter() required DateTime createdAt,
+    @Default(false) isJoinedInfo,
   }) = _MessageDto;
 
   factory MessageDto.fromJson(Map<String, dynamic> json) =>
@@ -38,6 +39,7 @@ class MessageDto with _$MessageDto {
       text: message.text,
       userPictureUrl: message.userPictureUrl,
       createdAt: message.createdAt,
+      isJoinedInfo: message.isJoinedInfo,
     );
   }
 
@@ -50,6 +52,7 @@ class MessageDto with _$MessageDto {
       text: text,
       userPictureUrl: userPictureUrl,
       createdAt: createdAt,
+      isJoinedInfo: isJoinedInfo,
     );
   }
 }

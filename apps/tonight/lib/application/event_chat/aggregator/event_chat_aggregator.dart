@@ -65,7 +65,7 @@ class EventChatAggregator {
   }
 
   Stream<Either<EventChatFailure, Tuple2<ChatUser, List<ChatMessage>>>>
-      fetchUserAndListenToMessages({
+      joinToChat({
     required String roomId,
     int pageSize = 20,
   }) async* {
@@ -77,6 +77,15 @@ class EventChatAggregator {
     final currentUser = ChatUser.fromDomain(
       userResult.getRightOrCrash(),
     );
+    final joinToChatResult = await _messageFacade.joinToChat(
+      roomId: roomId,
+      userId: currentUser.userId,
+      username: currentUser.username,
+    );
+    if (joinToChatResult.isLeft()) {
+      yield left(const EventChatFailure.unexpected());
+      return;
+    }
     yield* _messageFacade
         .listenToMessages(roomId: roomId, pageSize: pageSize)
         .map(
