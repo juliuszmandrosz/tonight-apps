@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,6 +58,7 @@ class EventCard extends StatelessWidget {
             );
           },
           child: Card(
+            color: context.backgroundColor,
             clipBehavior: Clip.antiAlias,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24),
@@ -121,7 +123,7 @@ class EventCard extends StatelessWidget {
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(12),
                       child: Column(
                         children: [
                           if (event.isConcert && !isFavoriteCard)
