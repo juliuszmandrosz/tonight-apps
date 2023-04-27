@@ -18,4 +18,10 @@ abstract class MessageFacade {
     int pageSize = 20,
     Message? lastMessage,
   });
+
+  Future<Either<MessageFailure, Unit>> joinToChat({
+    required String roomId,
+    required String userId,
+    required String username,
+  });
 }

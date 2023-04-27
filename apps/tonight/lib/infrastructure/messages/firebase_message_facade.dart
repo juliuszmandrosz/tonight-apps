@@ -92,4 +92,38 @@ class FirebaseMessageFacade implements MessageFacade {
       return left(const MessageFailure.unexpected());
     }
   }
+
+  @override
+  Future<Either<MessageFailure, Unit>> joinToChat({
+    required String roomId,
+    required String userId,
+    required String username,
+  }) async {
+    try {
+      final userJoinedMessages = await _firestore.messages
+          .where('roomId', isEqualTo: roomId)
+          .where('userId', isEqualTo: userId)
+          .where('isJoinedInfo', isEqualTo: true)
+          .count()
+          .get();
+      if (userJoinedMessages.count > 0) {
+        // User already joined this room before
+        return right(unit);
+      }
+      final messageDto = MessageDto(
+        userId: userId,
+        username: username,
+        text: 'joined',
+        roomId: roomId,
+        isJoinedInfo: true,
+        createdAt: DateTime.now(),
+      );
+      await _firestore.messages.add(messageDto.toJson());
+      return right(unit);
+    } on FirebaseException catch (e) {
+      _logger.e(e);
+      _crashlytics.recordError(e, StackTrace.current);
+      return left(const MessageFailure.unexpected());
+    }
+  }
 }
