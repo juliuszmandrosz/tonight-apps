@@ -28,9 +28,9 @@ class EventDetailsBottomBar extends StatelessWidget {
         ),
         child: Row(
           children: [
-            EventDetailsBottomBarFavorite(event: event),
             EventDetailsBottomBarShare(event: event),
             EventDetailsBottomBarLocation(event: event),
+            EventDetailsBottomBarFavorite(event: event),
             EventDetailsBottomBarCheckout(event: event),
           ],
         ),
