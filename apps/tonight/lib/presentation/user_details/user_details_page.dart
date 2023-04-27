@@ -56,6 +56,8 @@ class UserDetailsPage extends StatelessWidget {
                               const SizedBox(height: 20),
                               ProfilePictureContainer(
                                 imageSize: 130,
+                                backgroundColor: context.surfaceColor,
+                                textColor: context.onSurfaceColor,
                                 username: state.user.fold(
                                   // TODO - add translation
                                   () => 'Użytkownik Tonight',
