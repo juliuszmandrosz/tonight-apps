@@ -22,6 +22,7 @@ class ChatMessage with _$ChatMessage {
     @Default(false) bool isFirstMessageFromDay,
     @Default(false) bool isSending,
     @Default(false) bool hasError,
+    @Default(false) bool isJoinedInfo,
   }) = _ChatMessage;
 
   factory ChatMessage.fromDomain({
@@ -34,12 +35,16 @@ class ChatMessage with _$ChatMessage {
   }) {
     final isLastMessageByUser =
         isFirstMessage || previousMessage?.userId != message.userId;
-    final isFirstMessageByUser =
-        isLastMessage || nextMessage?.userId != message.userId;
+    final isFirstMessageByUser = _checkIfFirstMessageByUser(
+      message: message,
+      nextMessage: nextMessage,
+      isLastMessage: isLastMessage,
+    );
     final isSameUserAsPrevious = _checkIfUserIsSameAsPrevious(
       previousMessage: previousMessage,
       nextMessage: nextMessage,
       message: message,
+      isJoinedInfo: message.isJoinedInfo,
     );
     final isFirstMessageFromDay = _checkIfFirstMessageFromDay(
       nextMessage: nextMessage,
@@ -56,6 +61,7 @@ class ChatMessage with _$ChatMessage {
       isLastMessageByUser: isLastMessageByUser,
       isSameUserAsPrevious: isSameUserAsPrevious,
       isFirstMessageFromDay: isFirstMessageFromDay,
+      isJoinedInfo: message.isJoinedInfo,
     );
   }
 
@@ -68,6 +74,7 @@ class ChatMessage with _$ChatMessage {
       text: text,
       userPictureUrl: user.userPictureUrl,
       createdAt: createdAt,
+      isJoinedInfo: isJoinedInfo,
     );
   }
 
@@ -75,13 +82,35 @@ class ChatMessage with _$ChatMessage {
     required Message message,
     required Message? previousMessage,
     required Message? nextMessage,
+    required bool isJoinedInfo,
   }) {
+    if (isJoinedInfo) {
+      return false;
+    }
+
     if (nextMessage != null) {
       return nextMessage.userId == message.userId;
     }
 
     if (previousMessage != null) {
-      return previousMessage.userId == message.userId;
+      return previousMessage.isJoinedInfo ||
+          previousMessage.userId == message.userId;
+    }
+
+    return false;
+  }
+
+  static bool _checkIfFirstMessageByUser({
+    required bool isLastMessage,
+    required Message message,
+    required Message? nextMessage,
+  }) {
+    if (isLastMessage) {
+      return true;
+    }
+
+    if (nextMessage != null) {
+      return nextMessage.isJoinedInfo || nextMessage.userId != message.userId;
     }
 
     return false;

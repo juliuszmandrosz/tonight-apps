@@ -28,6 +28,7 @@ mixin _$ChatMessage {
   bool get isFirstMessageFromDay => throw _privateConstructorUsedError;
   bool get isSending => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
+  bool get isJoinedInfo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChatMessageCopyWith<ChatMessage> get copyWith =>
@@ -52,7 +53,8 @@ abstract class $ChatMessageCopyWith<$Res> {
       bool isSameUserAsPrevious,
       bool isFirstMessageFromDay,
       bool isSending,
-      bool hasError});
+      bool hasError,
+      bool isJoinedInfo});
 
   $ChatUserCopyWith<$Res> get user;
 }
@@ -82,6 +84,7 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
     Object? isFirstMessageFromDay = null,
     Object? isSending = null,
     Object? hasError = null,
+    Object? isJoinedInfo = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -132,6 +135,10 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
+      isJoinedInfo: null == isJoinedInfo
+          ? _value.isJoinedInfo
+          : isJoinedInfo // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -164,7 +171,8 @@ abstract class _$$_ChatMessageCopyWith<$Res>
       bool isSameUserAsPrevious,
       bool isFirstMessageFromDay,
       bool isSending,
-      bool hasError});
+      bool hasError,
+      bool isJoinedInfo});
 
   @override
   $ChatUserCopyWith<$Res> get user;
@@ -193,6 +201,7 @@ class __$$_ChatMessageCopyWithImpl<$Res>
     Object? isFirstMessageFromDay = null,
     Object? isSending = null,
     Object? hasError = null,
+    Object? isJoinedInfo = null,
   }) {
     return _then(_$_ChatMessage(
       id: null == id
@@ -243,6 +252,10 @@ class __$$_ChatMessageCopyWithImpl<$Res>
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
+      isJoinedInfo: null == isJoinedInfo
+          ? _value.isJoinedInfo
+          : isJoinedInfo // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -262,7 +275,8 @@ class _$_ChatMessage extends _ChatMessage {
       this.isSameUserAsPrevious = false,
       this.isFirstMessageFromDay = false,
       this.isSending = false,
-      this.hasError = false})
+      this.hasError = false,
+      this.isJoinedInfo = false})
       : super._();
 
   @override
@@ -295,10 +309,13 @@ class _$_ChatMessage extends _ChatMessage {
   @override
   @JsonKey()
   final bool hasError;
+  @override
+  @JsonKey()
+  final bool isJoinedInfo;
 
   @override
   String toString() {
-    return 'ChatMessage(id: $id, roomId: $roomId, text: $text, createdAt: $createdAt, isCurrentUser: $isCurrentUser, user: $user, isLastMessageByUser: $isLastMessageByUser, isFirstMessageByUser: $isFirstMessageByUser, isSameUserAsPrevious: $isSameUserAsPrevious, isFirstMessageFromDay: $isFirstMessageFromDay, isSending: $isSending, hasError: $hasError)';
+    return 'ChatMessage(id: $id, roomId: $roomId, text: $text, createdAt: $createdAt, isCurrentUser: $isCurrentUser, user: $user, isLastMessageByUser: $isLastMessageByUser, isFirstMessageByUser: $isFirstMessageByUser, isSameUserAsPrevious: $isSameUserAsPrevious, isFirstMessageFromDay: $isFirstMessageFromDay, isSending: $isSending, hasError: $hasError, isJoinedInfo: $isJoinedInfo)';
   }
 
   @override
@@ -325,7 +342,9 @@ class _$_ChatMessage extends _ChatMessage {
             (identical(other.isSending, isSending) ||
                 other.isSending == isSending) &&
             (identical(other.hasError, hasError) ||
-                other.hasError == hasError));
+                other.hasError == hasError) &&
+            (identical(other.isJoinedInfo, isJoinedInfo) ||
+                other.isJoinedInfo == isJoinedInfo));
   }
 
   @override
@@ -342,7 +361,8 @@ class _$_ChatMessage extends _ChatMessage {
       isSameUserAsPrevious,
       isFirstMessageFromDay,
       isSending,
-      hasError);
+      hasError,
+      isJoinedInfo);
 
   @JsonKey(ignore: true)
   @override
@@ -364,7 +384,8 @@ abstract class _ChatMessage extends ChatMessage {
       final bool isSameUserAsPrevious,
       final bool isFirstMessageFromDay,
       final bool isSending,
-      final bool hasError}) = _$_ChatMessage;
+      final bool hasError,
+      final bool isJoinedInfo}) = _$_ChatMessage;
   const _ChatMessage._() : super._();
 
   @override
@@ -391,6 +412,8 @@ abstract class _ChatMessage extends ChatMessage {
   bool get isSending;
   @override
   bool get hasError;
+  @override
+  bool get isJoinedInfo;
   @override
   @JsonKey(ignore: true)
   _$$_ChatMessageCopyWith<_$_ChatMessage> get copyWith =>
