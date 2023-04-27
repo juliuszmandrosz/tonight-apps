@@ -15,6 +15,7 @@ _$_MessageDto _$$_MessageDtoFromJson(Map<String, dynamic> json) =>
       userPictureUrl: json['userPictureUrl'] as String?,
       createdAt: const FirebaseTimestampJsonConverter()
           .fromJson(json['createdAt'] as Timestamp),
+      isJoinedInfo: json['isJoinedInfo'] ?? false,
     );
 
 Map<String, dynamic> _$$_MessageDtoToJson(_$_MessageDto instance) =>
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$_MessageDtoToJson(_$_MessageDto instance) =>
       'userPictureUrl': instance.userPictureUrl,
       'createdAt':
           const FirebaseTimestampJsonConverter().toJson(instance.createdAt),
+      'isJoinedInfo': instance.isJoinedInfo,
     };

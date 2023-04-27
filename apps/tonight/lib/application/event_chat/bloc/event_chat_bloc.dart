@@ -36,7 +36,7 @@ class EventChatBloc extends Bloc<EventChatEvent, EventChatState> {
   ) async {
     emit(state.copyWith(initialStatus: CubitStatus.loading));
     await emit.forEach(
-      _eventChatAggregator.fetchUserAndListenToMessages(
+      _eventChatAggregator.joinToChat(
         roomId: event.event.id,
         pageSize: _pageSize,
       ),
