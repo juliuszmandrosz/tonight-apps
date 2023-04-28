@@ -36,6 +36,8 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
     on<_EventsRefreshed>(_onEventsRefreshed);
     on<_MenuFiltersApplied>(_onMenuFiltersApplied);
     on<_MenuFilterRemoved>(_onMenuFilterRemoved);
+    on<_EventsTabSelected>(_onEventsTabSelected);
+    on<_EventsTabUnselected>(_onEventsTabUnselected);
   }
 
   FutureOr<void> _onEventsFetched(
@@ -265,5 +267,19 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
         appliedMenuFilters: appliedFilterCopy,
       ),
     );
+  }
+
+  FutureOr<void> _onEventsTabSelected(
+    _EventsTabSelected event,
+    Emitter<TonightEventsState> emit,
+  ) {
+    emit(state.copyWith(isEventsTabSelected: true));
+  }
+
+  FutureOr<void> _onEventsTabUnselected(
+    _EventsTabUnselected event,
+    Emitter<TonightEventsState> emit,
+  ) {
+    emit(state.copyWith(isEventsTabSelected: false));
   }
 }

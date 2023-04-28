@@ -11,6 +11,7 @@ class TonightEventsState with _$TonightEventsState {
     required String filterPhrase,
     required EventFilters eventFilters,
     required Map<MenuEventFilter, IFilter> appliedMenuFilters,
+    required bool isEventsTabSelected,
   }) = _TonightEventsState;
 
   factory TonightEventsState.initial() => TonightEventsState(
@@ -24,5 +25,6 @@ class TonightEventsState with _$TonightEventsState {
         eventFilters: EventFilters.empty().copyWith(
           showOnlyFilter: ShowOnlyFilter(showOnlyTonight: true),
         ),
+        isEventsTabSelected: true,
       );
 }
