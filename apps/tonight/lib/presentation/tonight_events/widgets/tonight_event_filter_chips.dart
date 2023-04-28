@@ -1,19 +1,19 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:common/extensions/color_extensions.dart';
+import 'package:common/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/events/event_filters/event_filters_page_type.dart';
-import 'package:tonight/application/events/event_list/events_bloc.dart';
+import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
-class EventFiltersChips extends StatelessWidget {
-  const EventFiltersChips({Key? key}) : super(key: key);
+class TonightEventFilterChips extends StatelessWidget {
+  const TonightEventFilterChips({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<EventsBloc, EventsState>(
+    return BlocBuilder<TonightEventsBloc, TonightEventsState>(
       builder: (context, state) {
         return SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -30,7 +30,7 @@ class EventFiltersChips extends StatelessWidget {
                   EventFiltersRoute(
                     blocContext: context,
                     selectedFilters: state.eventFilters,
-                    eventFiltersPageType: EventFiltersPageType.discover,
+                    eventFiltersPageType: EventFiltersPageType.tonight,
                   ),
                 ),
                 avatar: FaIcon(
@@ -50,8 +50,8 @@ class EventFiltersChips extends StatelessWidget {
                     backgroundColor: context.backgroundColor,
                     label: Text(filter.label),
                     onDeleted: () => context
-                        .read<EventsBloc>()
-                        .add(EventsEvent.menuFilterRemoved(filter)),
+                        .read<TonightEventsBloc>()
+                        .add(TonightEventsEvent.menuFilterRemoved(filter)),
                   ),
                 ),
             ],

@@ -28,6 +28,8 @@ class TonightEvent with _$TonightEvent {
     required bool isConcert,
     required Option<List<EventParticipant>> firstParticipants,
     required int totalParticipants,
+    String? locationString,
+    String? clubPhotoUrl,
     String? artistName,
     String? description,
   }) = _TonightEvent;
@@ -86,5 +88,7 @@ class TonightEvent with _$TonightEvent {
         attending: totalParticipants,
         // TODO - change event entity to have optional city id
         cityId: '',
+        clubPhotoUrl: clubPhotoUrl,
+        locationString: locationString,
       );
 }

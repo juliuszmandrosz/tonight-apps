@@ -34,6 +34,8 @@ mixin _$TonightEvent {
   Option<List<EventParticipant>> get firstParticipants =>
       throw _privateConstructorUsedError;
   int get totalParticipants => throw _privateConstructorUsedError;
+  String? get locationString => throw _privateConstructorUsedError;
+  String? get clubPhotoUrl => throw _privateConstructorUsedError;
   String? get artistName => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
 
@@ -66,6 +68,8 @@ abstract class $TonightEventCopyWith<$Res> {
       bool isConcert,
       Option<List<EventParticipant>> firstParticipants,
       int totalParticipants,
+      String? locationString,
+      String? clubPhotoUrl,
       String? artistName,
       String? description});
 }
@@ -100,6 +104,8 @@ class _$TonightEventCopyWithImpl<$Res, $Val extends TonightEvent>
     Object? isConcert = null,
     Object? firstParticipants = null,
     Object? totalParticipants = null,
+    Object? locationString = freezed,
+    Object? clubPhotoUrl = freezed,
     Object? artistName = freezed,
     Object? description = freezed,
   }) {
@@ -172,6 +178,14 @@ class _$TonightEventCopyWithImpl<$Res, $Val extends TonightEvent>
           ? _value.totalParticipants
           : totalParticipants // ignore: cast_nullable_to_non_nullable
               as int,
+      locationString: freezed == locationString
+          ? _value.locationString
+          : locationString // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clubPhotoUrl: freezed == clubPhotoUrl
+          ? _value.clubPhotoUrl
+          : clubPhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       artistName: freezed == artistName
           ? _value.artistName
           : artistName // ignore: cast_nullable_to_non_nullable
@@ -210,6 +224,8 @@ abstract class _$$_TonightEventCopyWith<$Res>
       bool isConcert,
       Option<List<EventParticipant>> firstParticipants,
       int totalParticipants,
+      String? locationString,
+      String? clubPhotoUrl,
       String? artistName,
       String? description});
 }
@@ -242,6 +258,8 @@ class __$$_TonightEventCopyWithImpl<$Res>
     Object? isConcert = null,
     Object? firstParticipants = null,
     Object? totalParticipants = null,
+    Object? locationString = freezed,
+    Object? clubPhotoUrl = freezed,
     Object? artistName = freezed,
     Object? description = freezed,
   }) {
@@ -314,6 +332,14 @@ class __$$_TonightEventCopyWithImpl<$Res>
           ? _value.totalParticipants
           : totalParticipants // ignore: cast_nullable_to_non_nullable
               as int,
+      locationString: freezed == locationString
+          ? _value.locationString
+          : locationString // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clubPhotoUrl: freezed == clubPhotoUrl
+          ? _value.clubPhotoUrl
+          : clubPhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       artistName: freezed == artistName
           ? _value.artistName
           : artistName // ignore: cast_nullable_to_non_nullable
@@ -347,6 +373,8 @@ class _$_TonightEvent extends _TonightEvent {
       required this.isConcert,
       required this.firstParticipants,
       required this.totalParticipants,
+      this.locationString,
+      this.clubPhotoUrl,
       this.artistName,
       this.description})
       : _musicalGenres = musicalGenres,
@@ -407,13 +435,17 @@ class _$_TonightEvent extends _TonightEvent {
   @override
   final int totalParticipants;
   @override
+  final String? locationString;
+  @override
+  final String? clubPhotoUrl;
+  @override
   final String? artistName;
   @override
   final String? description;
 
   @override
   String toString() {
-    return 'TonightEvent(eventId: $eventId, eventName: $eventName, clubId: $clubId, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, location: $location, urlLinks: $urlLinks, isConcert: $isConcert, firstParticipants: $firstParticipants, totalParticipants: $totalParticipants, artistName: $artistName, description: $description)';
+    return 'TonightEvent(eventId: $eventId, eventName: $eventName, clubId: $clubId, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, location: $location, urlLinks: $urlLinks, isConcert: $isConcert, firstParticipants: $firstParticipants, totalParticipants: $totalParticipants, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl, artistName: $artistName, description: $description)';
   }
 
   @override
@@ -449,6 +481,10 @@ class _$_TonightEvent extends _TonightEvent {
                 other.firstParticipants == firstParticipants) &&
             (identical(other.totalParticipants, totalParticipants) ||
                 other.totalParticipants == totalParticipants) &&
+            (identical(other.locationString, locationString) ||
+                other.locationString == locationString) &&
+            (identical(other.clubPhotoUrl, clubPhotoUrl) ||
+                other.clubPhotoUrl == clubPhotoUrl) &&
             (identical(other.artistName, artistName) ||
                 other.artistName == artistName) &&
             (identical(other.description, description) ||
@@ -475,6 +511,8 @@ class _$_TonightEvent extends _TonightEvent {
         isConcert,
         firstParticipants,
         totalParticipants,
+        locationString,
+        clubPhotoUrl,
         artistName,
         description
       ]);
@@ -505,6 +543,8 @@ abstract class _TonightEvent extends TonightEvent {
       required final bool isConcert,
       required final Option<List<EventParticipant>> firstParticipants,
       required final int totalParticipants,
+      final String? locationString,
+      final String? clubPhotoUrl,
       final String? artistName,
       final String? description}) = _$_TonightEvent;
   const _TonightEvent._() : super._();
@@ -543,6 +583,10 @@ abstract class _TonightEvent extends TonightEvent {
   Option<List<EventParticipant>> get firstParticipants;
   @override
   int get totalParticipants;
+  @override
+  String? get locationString;
+  @override
+  String? get clubPhotoUrl;
   @override
   String? get artistName;
   @override

@@ -8,9 +8,9 @@ class ProfilePictureContainer extends StatelessWidget {
   final String username;
   final String? profilePictureUrl;
   final TextStyle textStyle;
-  final bool showPlaceholder;
   final Color backgroundColor;
   final Color textColor;
+  final bool isUserDeleted;
 
   const ProfilePictureContainer({
     required this.imageSize,
@@ -19,29 +19,24 @@ class ProfilePictureContainer extends StatelessWidget {
     required this.textStyle,
     required this.backgroundColor,
     required this.textColor,
-    this.showPlaceholder = false,
+    this.isUserDeleted = false,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: imageSize,
-      width: imageSize,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: backgroundColor,
-      ),
-      child: Center(
-        child: _buildContent(context),
-      ),
-    );
+    return _buildContent(context);
   }
 
   Widget _buildContent(BuildContext context) {
-    if (showPlaceholder) {
-      return FaIcon(FontAwesomeIcons.user,
-          size: imageSize / 2, color: textColor);
+    if (isUserDeleted) {
+      return _buildUserPlaceholder(
+        FaIcon(
+          FontAwesomeIcons.user,
+          size: imageSize / 2,
+          color: textColor,
+        ),
+      );
     }
 
     return profilePictureUrl.isNotNullOrEmpty
@@ -50,13 +45,29 @@ class ProfilePictureContainer extends StatelessWidget {
             containerSize: imageSize,
             loaderSize: 16,
           )
-        : Text(
-            username.isEmpty
-                ? ''
-                : username.length == 1
-                    ? username[0].toUpperCase()
-                    : username.substring(0, 2).toUpperCase(),
-            style: textStyle.copyWith(color: textColor),
+        : _buildUserPlaceholder(
+            Text(
+              username.isEmpty
+                  ? ''
+                  : username.length == 1
+                      ? username[0].toUpperCase()
+                      : username.substring(0, 2).toUpperCase(),
+              style: textStyle.copyWith(color: textColor),
+            ),
           );
+  }
+
+  _buildUserPlaceholder(Widget child) {
+    return Container(
+      height: imageSize,
+      width: imageSize,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: backgroundColor,
+      ),
+      child: Center(
+        child: child,
+      ),
+    );
   }
 }

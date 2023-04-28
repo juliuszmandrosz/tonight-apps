@@ -54,10 +54,7 @@ class _InfiniteListState extends State<InfiniteList> {
           : const BottomLoader();
     }
 
-    return Padding(
-      padding: _getPadding(index),
-      child: widget.itemBuilder(context, index),
-    );
+    return widget.itemBuilder(context, index);
   }
 
   bool _onScroll(ScrollNotification notification) {
@@ -71,19 +68,5 @@ class _InfiniteListState extends State<InfiniteList> {
   bool _isAtEdge(ScrollNotification notification) {
     if (!notification.metrics.atEdge) return false;
     return notification.metrics.pixels != 0;
-  }
-
-  EdgeInsetsGeometry _getPadding(int index) {
-    if (index == 0) {
-      return widget.isReversed
-          ? const EdgeInsets.only(bottom: 8)
-          : const EdgeInsets.only(top: 8);
-    }
-    if (index == widget.itemCount - 1) {
-      return widget.isReversed
-          ? const EdgeInsets.only(top: 8)
-          : const EdgeInsets.only(bottom: 8);
-    }
-    return EdgeInsets.zero;
   }
 }

@@ -1,6 +1,6 @@
+import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:common/common.dart';
 import 'package:uuid/uuid.dart';
 
 class Event extends Equatable {
@@ -26,6 +26,8 @@ class Event extends Equatable {
   final int attending;
   final bool isCanceled;
   final bool isBeingPostponed;
+  final String? clubPhotoUrl;
+  final String? locationString;
 
   Event({
     String? id,
@@ -45,6 +47,8 @@ class Event extends Equatable {
     required this.cityId,
     this.description,
     this.artistName,
+    this.clubPhotoUrl,
+    this.locationString,
     this.urlLinks = const {},
     this.isConcert = false,
     this.attending = 0,
@@ -84,6 +88,8 @@ class Event extends Equatable {
         attending,
         isCanceled,
         isBeingPostponed,
+        clubPhotoUrl,
+        locationString,
       ];
 
   Event copyWith({
@@ -108,6 +114,8 @@ class Event extends Equatable {
     Option<String>? artistName,
     bool? isCanceled,
     bool? isBeingPostponed,
+    Option<String>? clubPhotoUrl,
+    Option<String>? locationString,
   }) {
     return Event(
       id: id,
@@ -143,6 +151,18 @@ class Event extends Equatable {
               (name) => name,
             )
           : this.artistName,
+      clubPhotoUrl: clubPhotoUrl != null
+          ? clubPhotoUrl.fold(
+              () => null,
+              (url) => url,
+            )
+          : this.clubPhotoUrl,
+      locationString: locationString != null
+          ? locationString.fold(
+              () => null,
+              (location) => location,
+            )
+          : this.locationString,
     );
   }
 }

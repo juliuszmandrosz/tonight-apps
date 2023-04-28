@@ -21,11 +21,14 @@ class LastTicketsLeftInfo extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const FaIcon(FontAwesomeIcons.circleExclamation),
+            const FaIcon(
+              FontAwesomeIcons.circleExclamation,
+              size: 18,
+            ),
             const SizedBox(width: 10),
             Text(
               S().lastTicketsInPool,
-              style: context.bodyLarge,
+              style: context.titleSmall,
             ),
           ],
         ),

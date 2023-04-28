@@ -19,7 +19,7 @@ class EventTagsInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 15),
+        const SizedBox(height: 12),
         Row(
           children: [
             const FaIcon(
@@ -33,7 +33,7 @@ class EventTagsInfo extends StatelessWidget {
                 event,
                 eventTickets,
               ),
-              style: context.titleMedium,
+              style: context.titleSmall,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
             ),
