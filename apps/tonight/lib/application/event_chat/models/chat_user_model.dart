@@ -1,5 +1,5 @@
 import 'package:account_settings/domain/user/user_account_entity.dart';
-import 'package:common/application/utils/generate_user_color.dart';
+import 'package:common/utils/generate_user_color.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/domain/messages/message_entity.dart';

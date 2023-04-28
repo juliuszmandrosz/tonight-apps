@@ -4,6 +4,7 @@ export 'cubit_status_extensions.dart';
 export 'date_time_extensions.dart';
 export 'double_extensions.dart';
 export 'either_extensions.dart';
+export 'lat_lng_extensions.dart';
 export 'list_extensions.dart';
 export 'option_extensions.dart';
 export 'responsive_extensions.dart';

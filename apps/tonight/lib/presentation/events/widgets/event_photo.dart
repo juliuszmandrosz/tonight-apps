@@ -1,16 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:common/common.dart';
 import 'package:events/events.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class EventPhoto extends StatelessWidget {
   final Event event;
   final String heroTag;
+  final double height;
 
   const EventPhoto({
     required this.event,
     required this.heroTag,
+    required this.height,
     Key? key,
   }) : super(key: key);
 
@@ -20,7 +22,7 @@ class EventPhoto extends StatelessWidget {
       tag: heroTag,
       child: CachedNetworkImage(
         progressIndicatorBuilder: (context, url, downloadProgress) => SizedBox(
-          height: 250,
+          height: height,
           child: Center(
             child: SpinKitThreeBounce(
               color: context.onSurfaceColor,
@@ -31,7 +33,7 @@ class EventPhoto extends StatelessWidget {
         imageUrl: event.eventPhotoUrl,
         errorWidget: (context, url, error) => const Icon(Icons.error),
         imageBuilder: (context, imageProvider) => Container(
-          height: 250,
+          height: height,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: imageProvider,

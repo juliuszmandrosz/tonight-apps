@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:common/infrastructure/infrastructure.dart';
 import 'package:events/domain/events/event_entity.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'event_dto.freezed.dart';
-
 part 'event_dto.g.dart';
 
 @freezed
@@ -35,6 +34,8 @@ class EventDto with _$EventDto {
     @Default(0) int attending,
     @Default(false) bool isCanceled,
     @Default(false) bool isBeingPostponed,
+    String? locationString,
+    String? clubPhotoUrl,
   }) = _EventDto;
 
   factory EventDto.fromDomain(Event event) {
@@ -61,6 +62,8 @@ class EventDto with _$EventDto {
       isConcert: event.isConcert,
       isCanceled: event.isCanceled,
       isBeingPostponed: event.isBeingPostponed,
+      clubPhotoUrl: event.clubPhotoUrl,
+      locationString: event.locationString,
     );
   }
 
@@ -104,6 +107,8 @@ class EventDto with _$EventDto {
       artistName: artistName,
       isCanceled: isCanceled,
       isBeingPostponed: isBeingPostponed,
+      clubPhotoUrl: clubPhotoUrl,
+      locationString: locationString,
     );
   }
 }

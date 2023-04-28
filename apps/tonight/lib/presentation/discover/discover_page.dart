@@ -32,7 +32,7 @@ class DiscoverPage extends StatelessWidget {
             DiscoverSliverAppBar(innerBoxIsScrolled: innerBoxIsScrolled),
           ],
           body: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
+            padding: EdgeInsets.only(left: 8, right: 8, bottom: 8),
             child: TabBarView(
               physics: NeverScrollableScrollPhysics(),
               children: [

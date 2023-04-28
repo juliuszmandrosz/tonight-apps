@@ -5,12 +5,13 @@ import 'package:dartz/dartz.dart';
 import 'package:events/domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tonight/application/events/event_filters/menu_event_filter.dart';
 
 part 'events_bloc.freezed.dart';
+
 part 'events_event.dart';
+
 part 'events_state.dart';
 
 const _pageSize = 15;
@@ -32,29 +33,28 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     );
   }
 
-  FutureOr<void> _onEventsFetched(
-    _EventsFetched event,
-    Emitter<EventsState> emit,
-  ) async {
+  FutureOr<void> _onEventsFetched(_EventsFetched event,
+      Emitter<EventsState> emit,) async {
     emit(state.copyWith(getEventsStatus: CubitStatus.loading));
 
     var cityName = '';
 
     if (event.userLocation.isSome()) {
       final location = event.userLocation.getOrCrash();
-      cityName = await _getCityNameFromLocation(location);
+      cityName = await location.getCityName();
     }
 
     final filters = event.userLocation.fold(
-      () => EventFilters.empty(),
-      (location) => EventFilters.empty().copyWith(
-        maxDistanceFilter: MaxDistanceFilter.empty().copyWith(
-          userLocation: some(location),
-        ),
-        cityFilter: CityFilter.empty().copyWith(
-          cityName: cityName,
-        ),
-      ),
+          () => EventFilters.empty(),
+          (location) =>
+          EventFilters.empty().copyWith(
+            maxDistanceFilter: MaxDistanceFilter.empty().copyWith(
+              userLocation: some(location),
+            ),
+            cityFilter: CityFilter.empty().copyWith(
+              cityName: cityName,
+            ),
+          ),
     );
 
     emit(state.copyWith(eventFilters: filters));
@@ -66,21 +66,21 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
-      (events) => emit(
-        state.copyWith(
-          getEventsStatus: CubitStatus.success,
-          events: events,
-          hasReachedMax: events.length != _pageSize,
-        ),
-      ),
+          (failure) =>
+          emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
+          (events) =>
+          emit(
+            state.copyWith(
+              getEventsStatus: CubitStatus.success,
+              events: events,
+              hasReachedMax: events.length != _pageSize,
+            ),
+          ),
     );
   }
 
-  FutureOr<void> _onPhraseFilterApplied(
-    _PhraseFilterApplied event,
-    Emitter<EventsState> emit,
-  ) async {
+  FutureOr<void> _onPhraseFilterApplied(_PhraseFilterApplied event,
+      Emitter<EventsState> emit,) async {
     emit(state.copyWith(getEventsStatus: CubitStatus.loading));
 
     final filters = state.eventFilters.copyWith(
@@ -96,21 +96,21 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
-      (events) => emit(
-        state.copyWith(
-          getEventsStatus: CubitStatus.success,
-          events: events,
-          hasReachedMax: events.length != _pageSize,
-        ),
-      ),
+          (failure) =>
+          emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
+          (events) =>
+          emit(
+            state.copyWith(
+              getEventsStatus: CubitStatus.success,
+              events: events,
+              hasReachedMax: events.length != _pageSize,
+            ),
+          ),
     );
   }
 
-  FutureOr<void> _onMenuFiltersApplied(
-    _MenuFiltersApplied event,
-    Emitter<EventsState> emit,
-  ) async {
+  FutureOr<void> _onMenuFiltersApplied(_MenuFiltersApplied event,
+      Emitter<EventsState> emit,) async {
     emit(state.copyWith(getEventsStatus: CubitStatus.loading));
 
     final filters = state.eventFilters.copyWith(
@@ -131,22 +131,22 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
-      (events) => emit(
-        state.copyWith(
-          getEventsStatus: CubitStatus.success,
-          events: events,
-          hasReachedMax: events.length != _pageSize,
-          eventFilters: filters,
-        ),
-      ),
+          (failure) =>
+          emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
+          (events) =>
+          emit(
+            state.copyWith(
+              getEventsStatus: CubitStatus.success,
+              events: events,
+              hasReachedMax: events.length != _pageSize,
+              eventFilters: filters,
+            ),
+          ),
     );
   }
 
-  FutureOr<void> _onMenuFilterRemoved(
-    _MenuFilterRemoved event,
-    Emitter<EventsState> emit,
-  ) async {
+  FutureOr<void> _onMenuFilterRemoved(_MenuFilterRemoved event,
+      Emitter<EventsState> emit,) async {
     emit(state.copyWith(getEventsStatus: CubitStatus.loading));
 
     switch (event.filter) {
@@ -174,21 +174,21 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
-      (events) => emit(
-        state.copyWith(
-          getEventsStatus: CubitStatus.success,
-          events: events,
-          hasReachedMax: events.length != _pageSize,
-        ),
-      ),
+          (failure) =>
+          emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
+          (events) =>
+          emit(
+            state.copyWith(
+              getEventsStatus: CubitStatus.success,
+              events: events,
+              hasReachedMax: events.length != _pageSize,
+            ),
+          ),
     );
   }
 
-  FutureOr<void> _onDateFilterApplied(
-    _DateFilterApplied event,
-    Emitter<EventsState> emit,
-  ) async {
+  FutureOr<void> _onDateFilterApplied(_DateFilterApplied event,
+      Emitter<EventsState> emit,) async {
     emit(state.copyWith(getEventsStatus: CubitStatus.loading));
 
     final filters = state.eventFilters.copyWith(
@@ -204,21 +204,21 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
-      (events) => emit(
-        state.copyWith(
-          getEventsStatus: CubitStatus.success,
-          events: events,
-          hasReachedMax: events.length != _pageSize,
-        ),
-      ),
+          (failure) =>
+          emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
+          (events) =>
+          emit(
+            state.copyWith(
+              getEventsStatus: CubitStatus.success,
+              events: events,
+              hasReachedMax: events.length != _pageSize,
+            ),
+          ),
     );
   }
 
-  FutureOr<void> _onCityFilterApplied(
-    _CityFilterApplied event,
-    Emitter<EventsState> emit,
-  ) async {
+  FutureOr<void> _onCityFilterApplied(_CityFilterApplied event,
+      Emitter<EventsState> emit,) async {
     emit(state.copyWith(getEventsStatus: CubitStatus.loading));
 
     final filters = state.eventFilters.copyWith(
@@ -237,21 +237,21 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
-      (events) => emit(
-        state.copyWith(
-          getEventsStatus: CubitStatus.success,
-          events: events,
-          hasReachedMax: events.length != _pageSize,
-        ),
-      ),
+          (failure) =>
+          emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
+          (events) =>
+          emit(
+            state.copyWith(
+              getEventsStatus: CubitStatus.success,
+              events: events,
+              hasReachedMax: events.length != _pageSize,
+            ),
+          ),
     );
   }
 
-  FutureOr<void> _onEventsRefreshed(
-    _EventsRefreshed event,
-    Emitter<EventsState> emit,
-  ) async {
+  FutureOr<void> _onEventsRefreshed(_EventsRefreshed event,
+      Emitter<EventsState> emit,) async {
     emit(state.copyWith(getEventsStatus: CubitStatus.loading));
 
     final result = await _eventFacade.getEvents(
@@ -261,21 +261,21 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
-      (events) => emit(
-        state.copyWith(
-          getEventsStatus: CubitStatus.success,
-          events: events,
-          hasReachedMax: events.length != _pageSize,
-        ),
-      ),
+          (failure) =>
+          emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
+          (events) =>
+          emit(
+            state.copyWith(
+              getEventsStatus: CubitStatus.success,
+              events: events,
+              hasReachedMax: events.length != _pageSize,
+            ),
+          ),
     );
   }
 
-  FutureOr<void> _onNextPageEventsFetched(
-    _NextPageEventsFetched event,
-    Emitter<EventsState> emit,
-  ) async {
+  FutureOr<void> _onNextPageEventsFetched(_NextPageEventsFetched event,
+      Emitter<EventsState> emit,) async {
     if (state.hasReachedMax || state.events.isEmpty) return;
 
     emit(state.copyWith(nextPageStatus: CubitStatus.loading));
@@ -288,14 +288,16 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(nextPageStatus: CubitStatus.failure)),
-      (events) => emit(
-        state.copyWith(
-          nextPageStatus: CubitStatus.success,
-          events: [...state.events, ...events],
-          hasReachedMax: events.length != _pageSize,
-        ),
-      ),
+          (failure) =>
+          emit(state.copyWith(nextPageStatus: CubitStatus.failure)),
+          (events) =>
+          emit(
+            state.copyWith(
+              nextPageStatus: CubitStatus.success,
+              events: [...state.events, ...events],
+              hasReachedMax: events.length != _pageSize,
+            ),
+          ),
     );
   }
 
@@ -369,11 +371,4 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     );
   }
 
-  Future<String> _getCityNameFromLocation(LatLng location) async {
-    final placemarks = await placemarkFromCoordinates(
-      location.latitude,
-      location.longitude,
-    );
-    return placemarks.first.locality ?? '';
-  }
 }

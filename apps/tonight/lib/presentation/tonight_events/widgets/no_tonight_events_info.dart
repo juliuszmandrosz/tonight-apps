@@ -1,20 +1,15 @@
 import 'package:common/extensions/typography_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight/application/events/event_list/events_bloc.dart';
+import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
 import 'package:translations/translations.dart';
 
-class NoEventsInfo extends StatelessWidget {
-  final Function(BuildContext context) onEventsRefreshed;
-
-  const NoEventsInfo({
-    required this.onEventsRefreshed,
-    Key? key,
-  }) : super(key: key);
+class NoTonightEventsInfo extends StatelessWidget {
+  const NoTonightEventsInfo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<EventsBloc, EventsState>(
+    return BlocBuilder<TonightEventsBloc, TonightEventsState>(
       builder: (context, state) {
         return Center(
           child: Column(
@@ -29,7 +24,9 @@ class NoEventsInfo extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               OutlinedButton(
-                onPressed: () => onEventsRefreshed(context),
+                onPressed: () => context
+                    .read<TonightEventsBloc>()
+                    .add(const TonightEventsEvent.eventsRefreshed()),
                 child: Text(S().refresh),
               ),
             ],

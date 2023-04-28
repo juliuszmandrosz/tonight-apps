@@ -1,3 +1,5 @@
+import 'package:common/extensions/color_extensions.dart';
+import 'package:common/extensions/typography_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
@@ -21,6 +23,8 @@ class ClubSearchField extends StatelessWidget {
                   .add(ClubsEvent.phraseFilterApplied(value)),
               decoration: InputDecoration(
                 hintMaxLines: 1,
+                hintStyle:
+                    context.titleSmall.copyWith(color: context.hintColor),
                 hintText: S().startSearching,
                 prefixIcon: const Icon(Icons.search, size: 22),
                 suffixIcon: state.clubFilters.phraseFilter.phrase.isEmpty

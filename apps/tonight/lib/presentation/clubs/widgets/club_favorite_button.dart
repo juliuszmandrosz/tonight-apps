@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/clubs/club_favorite/club_favorite_cubit.dart';
-import 'package:tonight/presentation/commons/icons/tonight_toggle_icon.dart';
 
 class ClubFavoriteButton extends StatelessWidget {
   final Club club;
@@ -33,23 +32,32 @@ class ClubFavoriteButton extends StatelessWidget {
                   padding: const EdgeInsets.all(4),
                   child: SpinKitThreeBounce(
                     color: context.onSurfaceColor,
-                    size: 24,
+                    size: 18,
                   ),
                 )
               : Container(
+                  height: 45.0,
+                  width: 45.0,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: context.surfaceColor,
                   ),
-                  child: TonightToggleIcon(
-                    onIcon: const FaIcon(FontAwesomeIcons.solidHeart),
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: isFavorite
+                        ? const FaIcon(
+                            FontAwesomeIcons.solidHeart,
+                            size: 25,
+                          )
+                        : const FaIcon(
+                            FontAwesomeIcons.heart,
+                            size: 25,
+                          ),
                     onPressed: () => state.isChangingFavoriteStatus
                         ? null
                         : context
                             .read<ClubFavoriteCubit>()
                             .toggleClubFavoriteStatus(club),
-                    offIcon: const FaIcon(FontAwesomeIcons.heart),
-                    value: isFavorite,
                   ),
                 ),
         );

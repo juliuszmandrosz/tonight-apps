@@ -8,6 +8,7 @@ class ShowPhotosFromClubsFilter implements IFilter {
 
   @override
   String buildFilters(String query) {
+    if (clubIds.isEmpty) return query;
     return TypesenseQueryBuilder.setFacetListFilter(
       query: query,
       field: fieldName,
