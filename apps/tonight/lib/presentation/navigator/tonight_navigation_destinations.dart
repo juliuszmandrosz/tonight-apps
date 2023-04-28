@@ -1,5 +1,5 @@
 enum TonightNavigationDestination {
-  wallPhotos,
+  tonight,
   discover,
   add,
   profile,
