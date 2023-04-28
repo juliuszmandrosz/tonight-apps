@@ -511,14 +511,11 @@ class FirebaseEventFacade
 
   @override
   Future<Either<UserEventFailure, List<Event>>> fetchTonightEvents({
+    required EventFilters filters,
     int pageSize = 20,
     int offset = 0,
   }) async {
     try {
-      final filters = EventFilters.empty().copyWith(
-        showOnlyFilter: ShowOnlyFilter(showOnlyTonight: true),
-      );
-
       final result = await _eventsApi.getTonightEvents(
         filters,
         pageSize,

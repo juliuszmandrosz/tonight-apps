@@ -140,6 +140,9 @@ dependencies:
   # Image functions
   image: ^4.0.15
 
+  # Place from location
+  geocoding: ^2.1.0
+
   # Inherited packages
   intl:
 

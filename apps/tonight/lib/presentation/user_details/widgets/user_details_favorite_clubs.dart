@@ -1,6 +1,7 @@
 import 'package:clubs/domain/club/club_entity.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/clubs/widgets/club_card.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:translations/translations.dart';
@@ -19,14 +20,20 @@ class UserDetailsFavoriteClubs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Align(
-          alignment: Alignment.centerLeft,
-          child: TonightHeadline(
-            text: S().favoriteClubs,
-            isSmallerVersion: true,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TonightHeadline(
+              text: S().favoriteClubs,
+              isSmallerVersion: true,
+            ),
+            const FaIcon(
+              FontAwesomeIcons.chevronRight,
+              size: 16,
+            ),
+          ],
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 16),
         favoriteClubs.isEmpty
             ? Align(
                 alignment: Alignment.centerLeft,
@@ -39,25 +46,15 @@ class UserDetailsFavoriteClubs extends StatelessWidget {
                 ),
               )
             : SizedBox(
-                height: 245,
+                height: 280,
                 child: PageView.builder(
-                  controller: PageController(
-                    viewportFraction: favoriteClubs.length > 1 ? 0.9 : 1.0,
-                  ),
                   itemCount: favoriteClubs.length,
                   itemBuilder: (ctx, i) {
-                    return Padding(
-                      padding: i == 0
-                          ? const EdgeInsets.only(right: 5)
-                          : i == favoriteClubs.length - 1
-                              ? const EdgeInsets.only(left: 5)
-                              : const EdgeInsets.symmetric(horizontal: 5),
-                      child: ClubCard(
-                        club: favoriteClubs[i],
-                        heroPhrase: heroPhrase,
-                        isFavoriteCard: true,
-                        height: 150,
-                      ),
+                    return ClubCard(
+                      club: favoriteClubs[i],
+                      heroPhrase: heroPhrase,
+                      isFavoriteCard: true,
+                      height: 200,
                     );
                   },
                 ),

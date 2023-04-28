@@ -14,59 +14,51 @@ class WallPhotoUserRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const containerSize = 20.0;
-    return InkWell(
-      onTap: () => context.pushRoute(
-        UserDetailsRoute(userId: wallPhoto.userId),
-      ),
-      child: Row(
-        children: [
-          wallPhoto.userProfilePhotoUrl.isNotNullOrEmpty
-              ? CircleNetworkPhoto(
-                  photoUrl: wallPhoto.userProfilePhotoUrl!,
-                  containerSize: containerSize,
-                  loaderSize: 12,
-                )
-              : Container(
-                  height: containerSize * 2,
-                  width: containerSize * 2,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: context.onSurfaceColor,
-                  ),
-                  child: Center(
-                    child: Text(
-                      wallPhoto.username.toUpperCase().substring(0, 2),
-                      style: context.titleSmall.copyWith(
-                        color: context.surfaceColor,
-                      ),
-                    ),
-                  ),
-                ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AutoSizeText(
-                  wallPhoto.username,
-                  style: context.titleMedium,
-                  maxLines: 1,
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  '${wallPhoto.clubName} • ${timeago.format(
-                    wallPhoto.createdAt,
-                    locale: Intl.getCurrentLocale(),
-                  )}',
-                  style: context.titleSmall.copyWith(
-                    color: context.secondaryColor,
-                  ),
-                ),
-              ],
+    const containerSize = 40.0;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+      child: InkWell(
+        onTap: () => context.pushRoute(
+          UserDetailsRoute(userId: wallPhoto.userId),
+        ),
+        child: Row(
+          children: [
+            ProfilePictureContainer(
+              imageSize: containerSize,
+              profilePictureUrl: wallPhoto.userProfilePhotoUrl,
+              username: wallPhoto.username,
+              textStyle: context.titleSmall,
+              backgroundColor: context.surfaceColor,
+              textColor: context.onSurfaceColor,
             ),
-          ),
-        ],
+            const SizedBox(width: 8),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AutoSizeText(
+                    wallPhoto.username,
+                    style: context.titleSmall,
+                    maxLines: 1,
+                  ),
+                  const SizedBox(height: 4),
+                  AutoSizeText(
+                    '${wallPhoto.clubName} • ${timeago.format(
+                      wallPhoto.createdAt,
+                      locale: Intl.getCurrentLocale(),
+                    )}',
+                    style: context.labelSmall.copyWith(
+                      color: context.secondaryColor,
+                    ),
+                    maxLines: 1,
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

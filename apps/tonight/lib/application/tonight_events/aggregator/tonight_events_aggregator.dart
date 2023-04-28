@@ -12,10 +12,12 @@ class TonightEventsAggregator {
   TonightEventsAggregator(this._eventFacade, this._participantFacade);
 
   Future<Either<TonightEventsFailure, List<TonightEvent>>> fetchTonightEvents({
+    required EventFilters filters,
     int pageSize = 10,
     int offset = 0,
   }) async {
     final eventsResult = await _eventFacade.fetchTonightEvents(
+      filters: filters,
       pageSize: pageSize,
       offset: offset,
     );
@@ -26,7 +28,10 @@ class TonightEventsAggregator {
       [
         for (final event in eventsResult.getRightOrCrash())
           _participantFacade
-              .fetchFirstParticipantsAndTotalCount(eventId: event.id)
+              .fetchFirstParticipantsAndTotalCount(
+                eventId: event.id,
+                participantsLimit: 3,
+              )
               .then(
                 (participantsResult) => participantsResult.fold(
                   (failure) => TonightEvent.fromDomain(

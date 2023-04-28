@@ -21,11 +21,14 @@ class EventSoldOutInfo extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const FaIcon(FontAwesomeIcons.circleXmark),
+            const FaIcon(
+              FontAwesomeIcons.circleXmark,
+              size: 18,
+            ),
             const SizedBox(width: 10),
             Text(
               S().soldOut.toUpperCase(),
-              style: context.bodyLarge,
+              style: context.titleSmall,
             ),
           ],
         ),

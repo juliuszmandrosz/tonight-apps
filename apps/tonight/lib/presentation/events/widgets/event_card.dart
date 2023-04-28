@@ -11,7 +11,7 @@ import 'package:tonight/presentation/events/widgets/event_club_info.dart';
 import 'package:tonight/presentation/events/widgets/event_concert_info.dart';
 import 'package:tonight/presentation/events/widgets/event_date_info.dart';
 import 'package:tonight/presentation/events/widgets/event_favorite_button.dart';
-import 'package:tonight/presentation/events/widgets/event_live_info.dart';
+import 'package:tonight/presentation/events/widgets/event_location_info.dart';
 import 'package:tonight/presentation/events/widgets/event_name_bar.dart';
 import 'package:tonight/presentation/events/widgets/event_photo.dart';
 import 'package:tonight/presentation/events/widgets/event_sold_out_info.dart';
@@ -23,12 +23,14 @@ class EventCard extends StatelessWidget {
   final Event event;
   final bool isFavoriteCard;
   final String heroTag;
+  final double height;
 
   EventCard({
     Key? key,
     required this.event,
     required String heroPhrase,
     this.isFavoriteCard = false,
+    this.height = 250,
   })  : heroTag = '$heroPhrase-${event.id}',
         super(key: key);
 
@@ -45,7 +47,7 @@ class EventCard extends StatelessWidget {
           onTap: () {
             final eventTickets =
                 context.read<EventTicketsCubit>().state.eventTickets;
-            FocusScope.of(context).unfocus();
+            context.unfocus();
             context.pushRoute(
               EventDetailsRoute(
                 event: event,
@@ -77,10 +79,11 @@ class EventCard extends StatelessWidget {
                         EventPhoto(
                           event: event,
                           heroTag: heroTag,
+                          height: height,
                         ),
                         Positioned(
-                          top: 15,
-                          right: 15,
+                          top: 10,
+                          right: 10,
                           child: EventFavoriteButton(event: event),
                         ),
                         if (event.isCanceled)
@@ -89,19 +92,13 @@ class EventCard extends StatelessWidget {
                             left: 15,
                             child: EventCanceledInfo(),
                           ),
-                        if (checkIfEventIsLive(event))
-                          const Positioned(
-                            top: 15,
-                            left: 15,
-                            child: EventLiveInfo(),
-                          ),
                         if (state.eventTickets.fold(
                           () => false,
                           (tickets) =>
                               tickets.isSoldOut && !tickets.isSaleOnlyAtGate,
                         ))
                           Positioned(
-                            top: checkIfEventIsLive(event) ? 70 : 15,
+                            top: 15,
                             left: 15,
                             child: EventSoldOutInfo(event: event),
                           ),
@@ -110,7 +107,7 @@ class EventCard extends StatelessWidget {
                           eventTickets,
                         ))
                           Positioned(
-                            top: checkIfEventIsLive(event) ? 70 : 15,
+                            top: 15,
                             left: 15,
                             child: LastTicketsLeftInfo(event: event),
                           ),
@@ -128,10 +125,12 @@ class EventCard extends StatelessWidget {
                         children: [
                           if (event.isConcert && !isFavoriteCard)
                             EventConcertInfo(event: event),
-                          EventClubInfo(event: event),
-                          const SizedBox(height: 15),
                           EventDateInfo(event: event),
-                          if (!isFavoriteCard)
+                          const SizedBox(height: 12),
+                          if (event.locationString.isNotNullOrEmpty)
+                            EventLocationInfo(event: event),
+                          EventClubInfo(event: event),
+                          if (!isFavoriteCard && event.locationString == null)
                             EventTagsInfo(
                               event: event,
                               eventTickets: eventTickets,

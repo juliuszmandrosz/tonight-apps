@@ -48,25 +48,15 @@ class FavoriteEventsList extends StatelessWidget {
                     ),
                   )
                 : SizedBox(
-                    height: 345,
+                    height: 280,
                     child: PageView.builder(
-                      controller: PageController(
-                        viewportFraction:
-                            state.favoriteEvents.length > 1 ? 0.9 : 1.0,
-                      ),
                       itemCount: state.favoriteEvents.length,
                       itemBuilder: (ctx, i) {
-                        return Padding(
-                          padding: i == 0
-                              ? const EdgeInsets.only(right: 5)
-                              : i == state.favoriteEvents.length - 1
-                                  ? const EdgeInsets.only(left: 5)
-                                  : const EdgeInsets.symmetric(horizontal: 5),
-                          child: EventCard(
-                            event: state.favoriteEvents[i],
-                            isFavoriteCard: true,
-                            heroPhrase: heroPhrase,
-                          ),
+                        return EventCard(
+                          event: state.favoriteEvents[i],
+                          isFavoriteCard: true,
+                          heroPhrase: heroPhrase,
+                          height: 200,
                         );
                       },
                     ),
