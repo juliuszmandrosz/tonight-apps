@@ -47,20 +47,28 @@ class EventParticipantsPage extends StatelessWidget {
                             style: context.titleMedium,
                           ),
                         )
-                      : InfiniteList(
-                          itemCount: state.participants.length,
-                          hasReachedMax: state.hasReachedMax,
-                          hasError: state.fetchParticipantsStatus.isFailure(),
-                          isLoading: state.fetchParticipantsStatus.isLoading(),
-                          separatorBuilder: (_, __) => const Divider(),
-                          itemBuilder: (_, i) => EventParticipantListTile(
-                            participant: state.participants[i],
-                          ),
-                          onFetchData: () =>
+                      : RefreshIndicator(
+                          onRefresh: () async =>
                               context.read<EventParticipantsBloc>().add(
-                                    const EventParticipantsEvent
-                                        .nextPageParticipantsFetched(),
+                                    EventParticipantsEvent.participantsFetched(
+                                        eventId),
                                   ),
+                          child: InfiniteList(
+                            itemCount: state.participants.length,
+                            hasReachedMax: state.hasReachedMax,
+                            hasError: state.fetchParticipantsStatus.isFailure(),
+                            isLoading:
+                                state.fetchParticipantsStatus.isLoading(),
+                            separatorBuilder: (_, __) => const Divider(height: 20),
+                            itemBuilder: (_, i) => EventParticipantListTile(
+                              participant: state.participants[i],
+                            ),
+                            onFetchData: () =>
+                                context.read<EventParticipantsBloc>().add(
+                                      const EventParticipantsEvent
+                                          .nextPageParticipantsFetched(),
+                                    ),
+                          ),
                         ),
                 );
             }
