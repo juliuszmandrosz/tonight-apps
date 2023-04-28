@@ -137,17 +137,17 @@ class FirebaseParticipantFacade implements ParticipantFacade {
   }) async {
     try {
       final participantsRef =
-          _firestore.rooms.doc(eventId).participants.limit(participantsLimit);
+          _firestore.rooms.doc(eventId).participants;
 
-      final participantsSnapshot = await participantsRef.get();
+      final participantsSnapshot = await participantsRef.limit(participantsLimit).get();
 
       final participants = participantsSnapshot.docs
           .map((doc) => ParticipantDto.fromFirebase(doc).toDomain())
           .toList();
 
-      final totalCount = participantsSnapshot.size;
+      final totalParticipants = await participantsRef.count().get();
 
-      return right(Tuple2(participants, totalCount));
+      return right(Tuple2(participants, totalParticipants.count));
     } on FirebaseException catch (e) {
       _logger.e(e);
       _crashlytics.recordError(e, StackTrace.current);
