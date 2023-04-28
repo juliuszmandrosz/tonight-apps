@@ -3,12 +3,12 @@ import 'package:common/common.dart';
 import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/events/event_details/event_details_cubit.dart';
 import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/details_hero_image.dart';
 import 'package:tonight/presentation/events_details/widgets/bottom_bar/event_details_bottom_bar.dart';
+import 'package:tonight/presentation/events_details/widgets/bottom_bar/event_details_join_button.dart';
 import 'package:tonight/presentation/events_details/widgets/canceled_event_message.dart';
 import 'package:tonight/presentation/events_details/widgets/event_details_additional_info.dart';
 import 'package:tonight/presentation/events_details/widgets/event_details_artist_name.dart';
@@ -76,12 +76,7 @@ class EventDetailsPage extends StatelessWidget {
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.endContained,
               floatingActionButton: _checkIfBottomBarIsAvailable(event)
-                  ? FloatingActionButton(
-                      onPressed: () => context.pushRoute(
-                        EventChatRoute(event: event),
-                      ),
-                      child: const FaIcon(FontAwesomeIcons.arrowRightToBracket),
-                    )
+                  ? EventDetailsJoinButton(event: event)
                   : null,
               bottomNavigationBar: _checkIfBottomBarIsAvailable(event)
                   ? EventDetailsBottomBar(event: event)
