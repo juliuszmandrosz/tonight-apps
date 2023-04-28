@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/extensions/color_extensions.dart';
+import 'package:common/extensions/typography_extensions.dart';
 import 'package:events/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,6 +35,7 @@ class EventCityPickerField extends HookWidget {
           readOnly: true,
           decoration: InputDecoration(
             hintMaxLines: 1,
+            hintStyle: context.titleSmall.copyWith(color: context.hintColor),
             // TODO - add translation
             hintText: 'Gdzie?',
             prefixIcon: state.eventFilters.cityFilter.cityName.isNotEmpty

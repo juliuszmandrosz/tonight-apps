@@ -18,6 +18,7 @@ abstract class UserEventFacade {
   );
 
   Future<Either<UserEventFailure, List<Event>>> fetchTonightEvents({
+    required EventFilters filters,
     int pageSize = 20,
     int offset = 0,
   });

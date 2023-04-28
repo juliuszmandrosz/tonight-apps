@@ -30,7 +30,7 @@ class ReviewTitle extends StatelessWidget {
                 profilePictureUrl: review.userPictureUrl,
                 username: review.username,
                 textStyle: context.titleSmall,
-                showPlaceholder: review.isUserDeleted,
+                isUserDeleted: review.isUserDeleted,
                 backgroundColor: context.surfaceColor,
                 textColor: context.onSurfaceColor,
               ),

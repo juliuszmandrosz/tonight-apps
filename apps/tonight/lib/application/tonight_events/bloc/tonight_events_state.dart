@@ -9,6 +9,8 @@ class TonightEventsState with _$TonightEventsState {
     required List<TonightEvent> events,
     required bool hasReachedMax,
     required String filterPhrase,
+    required EventFilters eventFilters,
+    required Map<MenuEventFilter, IFilter> appliedMenuFilters,
   }) = _TonightEventsState;
 
   factory TonightEventsState.initial() => TonightEventsState(
@@ -18,5 +20,9 @@ class TonightEventsState with _$TonightEventsState {
         hasReachedMax: false,
         events: [],
         filterPhrase: '',
+        appliedMenuFilters: {},
+        eventFilters: EventFilters.empty().copyWith(
+          showOnlyFilter: ShowOnlyFilter(showOnlyTonight: true),
+        ),
       );
 }

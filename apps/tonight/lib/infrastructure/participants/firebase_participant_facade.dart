@@ -74,7 +74,8 @@ class FirebaseParticipantFacade implements ParticipantFacade {
           .limit(pageSize);
 
       if (lastParticipant != null) {
-        participantsRef = participantsRef.startAfter([lastParticipant.username]);
+        participantsRef =
+            participantsRef.startAfter([lastParticipant.username]);
       }
 
       final participantsSnapshot = await participantsRef.get();
@@ -136,10 +137,10 @@ class FirebaseParticipantFacade implements ParticipantFacade {
     int participantsLimit = 4,
   }) async {
     try {
-      final participantsRef =
-          _firestore.rooms.doc(eventId).participants;
+      final participantsRef = _firestore.rooms.doc(eventId).participants;
 
-      final participantsSnapshot = await participantsRef.limit(participantsLimit).get();
+      final participantsSnapshot =
+          await participantsRef.limit(participantsLimit).get();
 
       final participants = participantsSnapshot.docs
           .map((doc) => ParticipantDto.fromFirebase(doc).toDomain())

@@ -33,8 +33,11 @@ class ChatMessage with _$ChatMessage {
     required bool isLastMessage,
     required bool isFirstMessage,
   }) {
-    final isLastMessageByUser =
-        isFirstMessage || previousMessage?.userId != message.userId;
+    final isLastMessageByUser = _checkIfLastMessageByUser(
+      isFirstMessage: isFirstMessage,
+      message: message,
+      previousMessage: previousMessage,
+    );
     final isFirstMessageByUser = _checkIfFirstMessageByUser(
       message: message,
       nextMessage: nextMessage,
@@ -110,7 +113,27 @@ class ChatMessage with _$ChatMessage {
     }
 
     if (nextMessage != null) {
-      return nextMessage.isJoinedInfo || nextMessage.userId != message.userId;
+      return nextMessage.isJoinedInfo ||
+          nextMessage.isLeftInfo ||
+          nextMessage.userId != message.userId;
+    }
+
+    return false;
+  }
+
+  static bool _checkIfLastMessageByUser({
+    required bool isFirstMessage,
+    required Message message,
+    required Message? previousMessage,
+  }) {
+    if (isFirstMessage) {
+      return true;
+    }
+
+    if (previousMessage != null) {
+      return previousMessage.isJoinedInfo ||
+          previousMessage.isLeftInfo ||
+          previousMessage.userId != message.userId;
     }
 
     return false;
