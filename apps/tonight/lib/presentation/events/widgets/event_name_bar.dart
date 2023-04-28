@@ -19,7 +19,7 @@ class EventNameBar extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: AutoSizeText(
           event.eventName,
-          style: context.titleLarge,
+          style: context.titleSmall,
           textAlign: TextAlign.center,
           softWrap: true,
           maxLines: 2,

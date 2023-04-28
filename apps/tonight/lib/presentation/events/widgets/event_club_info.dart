@@ -20,7 +20,7 @@ class EventClubInfo extends StatelessWidget {
         Expanded(
           child: Text(
             event.clubName,
-            style: context.titleMedium,
+            style: context.titleSmall,
             overflow: TextOverflow.fade,
             maxLines: 1,
             softWrap: false,

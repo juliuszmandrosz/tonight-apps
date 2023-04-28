@@ -21,6 +21,7 @@ class EventsPage extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: EventFiltersChips(),
         ),
+        const SizedBox(height: 8),
         BlocConsumer<EventsBloc, EventsState>(
           listenWhen: (previous, current) =>
               previous.getEventsStatus != current.getEventsStatus,

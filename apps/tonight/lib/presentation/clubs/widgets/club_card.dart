@@ -77,8 +77,8 @@ class ClubCard extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 10,
-                  right: 15,
+                  top: 5,
+                  right: 5,
                   child: ClubFavoriteButton(club: _club),
                 ),
               ],
@@ -97,7 +97,7 @@ class ClubCard extends StatelessWidget {
                       Expanded(
                         child: Text(
                           _club.clubName,
-                          style: context.titleMedium,
+                          style: context.titleSmall,
                           softWrap: false,
                           overflow: TextOverflow.fade,
                           maxLines: 1,
@@ -105,7 +105,7 @@ class ClubCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 12),
                   Row(
                     children: [
                       const FaIcon(
@@ -116,7 +116,7 @@ class ClubCard extends StatelessWidget {
                       Expanded(
                         child: Text(
                           _club.locationString,
-                          style: context.titleMedium,
+                          style: context.titleSmall,
                           softWrap: false,
                           overflow: TextOverflow.fade,
                           maxLines: 1,
@@ -127,7 +127,7 @@ class ClubCard extends StatelessWidget {
                   if (!isFavoriteCard)
                     Column(
                       children: [
-                        const SizedBox(height: 15),
+                        const SizedBox(height: 12),
                         Row(
                           children: [
                             RatingBarIndicator(
@@ -142,7 +142,7 @@ class ClubCard extends StatelessWidget {
                               padding: const EdgeInsets.only(left: 10),
                               child: Text(
                                 clubReviewAvg.toStringAsFixed(1),
-                                style: context.bodyMedium,
+                                style: context.titleSmall,
                               ),
                             ),
                             Expanded(
@@ -150,7 +150,7 @@ class ClubCard extends StatelessWidget {
                                 padding: const EdgeInsets.only(left: 10),
                                 child: Text(
                                   '${_club.reviewCount} ${S().opinions(_club.reviewCount)}',
-                                  style: context.bodyMedium,
+                                  style: context.titleSmall,
                                   softWrap: false,
                                   overflow: TextOverflow.fade,
                                   maxLines: 1,

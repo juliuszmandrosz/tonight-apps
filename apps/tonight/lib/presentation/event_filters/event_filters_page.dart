@@ -4,7 +4,9 @@ import 'package:events/domain/filters/event_filters_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
+import 'package:tonight/application/events/event_filters/event_filters_page_type.dart';
 import 'package:tonight/application/events/event_list/events_bloc.dart';
+import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_dress_code.dart';
@@ -19,10 +21,12 @@ import 'package:translations/translations.dart';
 class EventFiltersPage extends StatelessWidget {
   final BuildContext blocContext;
   final EventFilters selectedFilters;
+  final EventFiltersPageType eventFiltersPageType;
 
   const EventFiltersPage({
     required this.blocContext,
     required this.selectedFilters,
+    required this.eventFiltersPageType,
     Key? key,
   }) : super(key: key);
 
@@ -34,9 +38,14 @@ class EventFiltersPage extends StatelessWidget {
           create: (_) =>
               getIt<EventFiltersCubit>()..initFilters(selectedFilters),
         ),
-        BlocProvider.value(
-          value: blocContext.read<EventsBloc>(),
-        ),
+        if (eventFiltersPageType == EventFiltersPageType.tonight)
+          BlocProvider.value(
+            value: blocContext.read<TonightEventsBloc>(),
+          ),
+        if (eventFiltersPageType == EventFiltersPageType.discover)
+          BlocProvider.value(
+            value: blocContext.read<EventsBloc>(),
+          ),
         BlocProvider.value(
           value: blocContext.read<AvailableFiltersCubit>(),
         ),
@@ -53,7 +62,9 @@ class EventFiltersPage extends StatelessWidget {
         child: GestureDetector(
           onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
           child: Scaffold(
-            floatingActionButton: const EventFiltersSubmitButton(),
+            floatingActionButton: EventFiltersSubmitButton(
+              eventFiltersPageType: eventFiltersPageType,
+            ),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,
             appBar: TonightAppBar(title: S().filters),

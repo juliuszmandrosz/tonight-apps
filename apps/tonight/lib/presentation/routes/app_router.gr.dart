@@ -13,12 +13,14 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i37;
 import 'package:clubs/domain/club/club_entity.dart' as _i44;
-import 'package:clubs/infrastructure/filters/filter/city_filter.dart' as _i47;
+import 'package:clubs/infrastructure/filters/filter/city_filter.dart' as _i48;
 import 'package:events/events.dart' as _i45;
 import 'package:flutter/material.dart' as _i38;
 import 'package:payments/domain/domain.dart' as _i42;
-import 'package:tickets/tickets.dart' as _i46;
+import 'package:tickets/tickets.dart' as _i47;
 
+import '../../application/events/event_filters/event_filters_page_type.dart'
+    as _i46;
 import '../add_wall_photo/add_wall_photo_page.dart' as _i28;
 import '../app_settings/app_settings_page.dart' as _i24;
 import '../club_city_picker/club_city_picker_page.dart' as _i12;
@@ -110,6 +112,7 @@ class AppRouter extends _i37.RootStackRouter {
         child: _i5.EventFiltersPage(
           blocContext: args.blocContext,
           selectedFilters: args.selectedFilters,
+          eventFiltersPageType: args.eventFiltersPageType,
           key: args.key,
         ),
         transitionsBuilder: _i39.slideLeftTransition,
@@ -728,6 +731,7 @@ class EventFiltersRoute extends _i37.PageRouteInfo<EventFiltersRouteArgs> {
   EventFiltersRoute({
     required _i38.BuildContext blocContext,
     required _i45.EventFilters selectedFilters,
+    required _i46.EventFiltersPageType eventFiltersPageType,
     _i38.Key? key,
   }) : super(
           EventFiltersRoute.name,
@@ -735,6 +739,7 @@ class EventFiltersRoute extends _i37.PageRouteInfo<EventFiltersRouteArgs> {
           args: EventFiltersRouteArgs(
             blocContext: blocContext,
             selectedFilters: selectedFilters,
+            eventFiltersPageType: eventFiltersPageType,
             key: key,
           ),
         );
@@ -746,6 +751,7 @@ class EventFiltersRouteArgs {
   const EventFiltersRouteArgs({
     required this.blocContext,
     required this.selectedFilters,
+    required this.eventFiltersPageType,
     this.key,
   });
 
@@ -753,11 +759,13 @@ class EventFiltersRouteArgs {
 
   final _i45.EventFilters selectedFilters;
 
+  final _i46.EventFiltersPageType eventFiltersPageType;
+
   final _i38.Key? key;
 
   @override
   String toString() {
-    return 'EventFiltersRouteArgs{blocContext: $blocContext, selectedFilters: $selectedFilters, key: $key}';
+    return 'EventFiltersRouteArgs{blocContext: $blocContext, selectedFilters: $selectedFilters, eventFiltersPageType: $eventFiltersPageType, key: $key}';
   }
 }
 
@@ -892,7 +900,7 @@ class ClubDetailsRouteArgs {
 /// [_i9.TicketQrPage]
 class TicketQrRoute extends _i37.PageRouteInfo<TicketQrRouteArgs> {
   TicketQrRoute({
-    required _i46.Ticket ticket,
+    required _i47.Ticket ticket,
     _i38.Key? key,
   }) : super(
           TicketQrRoute.name,
@@ -912,7 +920,7 @@ class TicketQrRouteArgs {
     this.key,
   });
 
-  final _i46.Ticket ticket;
+  final _i47.Ticket ticket;
 
   final _i38.Key? key;
 
@@ -1007,7 +1015,7 @@ class EventCityPickerRouteArgs {
 class ClubCityPickerRoute extends _i37.PageRouteInfo<ClubCityPickerRouteArgs> {
   ClubCityPickerRoute({
     required _i38.BuildContext blocContext,
-    required _i47.CityFilter selectedCity,
+    required _i48.CityFilter selectedCity,
     _i38.Key? key,
   }) : super(
           ClubCityPickerRoute.name,
@@ -1031,7 +1039,7 @@ class ClubCityPickerRouteArgs {
 
   final _i38.BuildContext blocContext;
 
-  final _i47.CityFilter selectedCity;
+  final _i48.CityFilter selectedCity;
 
   final _i38.Key? key;
 
@@ -1079,7 +1087,7 @@ class TicketCheckoutRouteArgs {
 /// [_i14.VipCheckoutPage]
 class VipCheckoutRoute extends _i37.PageRouteInfo<VipCheckoutRouteArgs> {
   VipCheckoutRoute({
-    required _i46.Ticket ticket,
+    required _i47.Ticket ticket,
     _i38.Key? key,
   }) : super(
           VipCheckoutRoute.name,
@@ -1099,7 +1107,7 @@ class VipCheckoutRouteArgs {
     this.key,
   });
 
-  final _i46.Ticket ticket;
+  final _i47.Ticket ticket;
 
   final _i38.Key? key;
 
@@ -1114,7 +1122,7 @@ class VipCheckoutRouteArgs {
 class TicketPaymentConfirmRoute
     extends _i37.PageRouteInfo<TicketPaymentConfirmRouteArgs> {
   TicketPaymentConfirmRoute({
-    required _i46.Ticket ticket,
+    required _i47.Ticket ticket,
     _i38.Key? key,
   }) : super(
           TicketPaymentConfirmRoute.name,
@@ -1134,7 +1142,7 @@ class TicketPaymentConfirmRouteArgs {
     this.key,
   });
 
-  final _i46.Ticket ticket;
+  final _i47.Ticket ticket;
 
   final _i38.Key? key;
 

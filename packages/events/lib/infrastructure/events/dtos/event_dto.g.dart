@@ -36,6 +36,8 @@ _$_EventDto _$$_EventDtoFromJson(Map<String, dynamic> json) => _$_EventDto(
       attending: json['attending'] as int? ?? 0,
       isCanceled: json['isCanceled'] as bool? ?? false,
       isBeingPostponed: json['isBeingPostponed'] as bool? ?? false,
+      locationString: json['locationString'] as String?,
+      clubPhotoUrl: json['clubPhotoUrl'] as String?,
     );
 
 Map<String, dynamic> _$$_EventDtoToJson(_$_EventDto instance) =>
@@ -64,4 +66,6 @@ Map<String, dynamic> _$$_EventDtoToJson(_$_EventDto instance) =>
       'attending': instance.attending,
       'isCanceled': instance.isCanceled,
       'isBeingPostponed': instance.isBeingPostponed,
+      'locationString': instance.locationString,
+      'clubPhotoUrl': instance.clubPhotoUrl,
     };

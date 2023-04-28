@@ -44,6 +44,7 @@ class EventDatePickerField extends HookWidget {
             hintMaxLines: 1,
             // TODO - add translation
             hintText: 'Kiedy?',
+            hintStyle: context.titleSmall.copyWith(color: context.hintColor),
             suffixIcon: state.eventFilters.dateRangeFilter.toDate != null
                 ? IconButton(
                     onPressed: () => context.read<EventsBloc>().add(

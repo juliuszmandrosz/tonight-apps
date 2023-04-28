@@ -67,7 +67,10 @@ class UserDetailsPage extends StatelessWidget {
                                   () => null,
                                   (user) => user.profilePictureUrl,
                                 ),
-                                showPlaceholder: true,
+                                isUserDeleted: state.user.fold(
+                                  () => true,
+                                  (_) => false,
+                                ),
                                 textStyle: context.headlineMedium,
                               ),
                               const SizedBox(height: 30),

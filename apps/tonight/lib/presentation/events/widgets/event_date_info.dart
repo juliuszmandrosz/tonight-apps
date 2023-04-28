@@ -23,7 +23,7 @@ class EventDateInfo extends StatelessWidget {
             event.eventStartDateTime,
           ),
           textAlign: TextAlign.center,
-          style: context.titleMedium,
+          style: context.titleSmall,
           maxLines: 1,
         ),
       ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
 import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
 import 'package:tonight/injection.dart';
@@ -12,6 +13,7 @@ class TonightPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final location = context.read<UserLocationCubit>().state.userLocation;
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -20,7 +22,7 @@ class TonightPage extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<TonightEventsBloc>()
-            ..add(const TonightEventsEvent.eventsFetched()),
+            ..add(TonightEventsEvent.eventsFetched(location)),
         ),
       ],
       child: DefaultTabController(
@@ -29,12 +31,15 @@ class TonightPage extends StatelessWidget {
           headerSliverBuilder: (_, innerBoxIsScrolled) => [
             TonightSliverAppBar(innerBoxIsScrolled: innerBoxIsScrolled),
           ],
-          body: const TabBarView(
-            physics: NeverScrollableScrollPhysics(),
-            children: [
-              TonightEventsPage(),
-              WallPhotosPage(),
-            ],
+          body: const Padding(
+            padding: EdgeInsets.only(bottom: 8),
+            child: TabBarView(
+              physics: NeverScrollableScrollPhysics(),
+              children: [
+                TonightEventsPage(),
+                WallPhotosPage(),
+              ],
+            ),
           ),
         ),
       ),

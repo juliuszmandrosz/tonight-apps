@@ -27,10 +27,9 @@ class WallPhotoCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: WallPhotoUserRow(wallPhoto: wallPhoto),
-            ),
+            const SizedBox(height: 8),
+            WallPhotoUserRow(wallPhoto: wallPhoto),
+            const SizedBox(height: 8),
             WallPhotoImage(wallPhoto: wallPhoto),
           ],
         ),
