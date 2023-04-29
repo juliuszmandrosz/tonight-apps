@@ -19,9 +19,9 @@ class WallPhotosPage extends StatelessWidget {
         if (state.getPhotosStatus.isFailure()) {
           context.pushRoute(
             FailureRoute(
-              retryCallback: () => context.read<WallPhotosBloc>().add(
-                    const WallPhotosEvent.wallPhotosFetched(),
-                  ),
+              retryCallback: () => context
+                  .read<WallPhotosBloc>()
+                  .add(const WallPhotosEvent.wallPhotosRefreshed()),
             ),
           );
         }
@@ -40,15 +40,15 @@ class WallPhotosPage extends StatelessWidget {
                 : RefreshIndicator(
                     onRefresh: () async => context
                         .read<WallPhotosBloc>()
-                        .add(const WallPhotosEvent.wallPhotosFetched()),
+                        .add(const WallPhotosEvent.wallPhotosRefreshed()),
                     child: InfiniteList(
                       itemCount: state.photos.length,
                       hasReachedMax: state.hasReachedMax,
                       isLoading: state.getPhotosStatus.isLoading(),
                       hasError: state.getPhotosStatus.isFailure(),
-                      onFetchData: () => context.read<WallPhotosBloc>().add(
-                            const WallPhotosEvent.nextPagePhotosFetched(),
-                          ),
+                      onFetchData: () => context
+                          .read<WallPhotosBloc>()
+                          .add(const WallPhotosEvent.nextPagePhotosFetched()),
                       separatorBuilder: (context, index) =>
                           const SizedBox(height: 16),
                       itemBuilder: (_, i) => WallPhotoCard(

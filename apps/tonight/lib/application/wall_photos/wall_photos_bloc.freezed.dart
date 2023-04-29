@@ -18,20 +18,23 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$WallPhotosEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() wallPhotosFetched,
+    required TResult Function(Option<LatLng> userLocation) wallPhotosFetched,
     required TResult Function() nextPagePhotosFetched,
+    required TResult Function() wallPhotosRefreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? wallPhotosFetched,
+    TResult? Function(Option<LatLng> userLocation)? wallPhotosFetched,
     TResult? Function()? nextPagePhotosFetched,
+    TResult? Function()? wallPhotosRefreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? wallPhotosFetched,
+    TResult Function(Option<LatLng> userLocation)? wallPhotosFetched,
     TResult Function()? nextPagePhotosFetched,
+    TResult Function()? wallPhotosRefreshed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,18 +43,21 @@ mixin _$WallPhotosEvent {
     required TResult Function(_WallPhotosFetched value) wallPhotosFetched,
     required TResult Function(_NextPagePhotosFetched value)
         nextPagePhotosFetched,
+    required TResult Function(_WallPhotosRefreshed value) wallPhotosRefreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WallPhotosFetched value)? wallPhotosFetched,
     TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult? Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WallPhotosFetched value)? wallPhotosFetched,
     TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -80,6 +86,8 @@ abstract class _$$_WallPhotosFetchedCopyWith<$Res> {
   factory _$$_WallPhotosFetchedCopyWith(_$_WallPhotosFetched value,
           $Res Function(_$_WallPhotosFetched) then) =
       __$$_WallPhotosFetchedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Option<LatLng> userLocation});
 }
 
 /// @nodoc
@@ -89,54 +97,83 @@ class __$$_WallPhotosFetchedCopyWithImpl<$Res>
   __$$_WallPhotosFetchedCopyWithImpl(
       _$_WallPhotosFetched _value, $Res Function(_$_WallPhotosFetched) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userLocation = null,
+  }) {
+    return _then(_$_WallPhotosFetched(
+      null == userLocation
+          ? _value.userLocation
+          : userLocation // ignore: cast_nullable_to_non_nullable
+              as Option<LatLng>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_WallPhotosFetched implements _WallPhotosFetched {
-  const _$_WallPhotosFetched();
+  const _$_WallPhotosFetched(this.userLocation);
+
+  @override
+  final Option<LatLng> userLocation;
 
   @override
   String toString() {
-    return 'WallPhotosEvent.wallPhotosFetched()';
+    return 'WallPhotosEvent.wallPhotosFetched(userLocation: $userLocation)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_WallPhotosFetched);
+        (other.runtimeType == runtimeType &&
+            other is _$_WallPhotosFetched &&
+            (identical(other.userLocation, userLocation) ||
+                other.userLocation == userLocation));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, userLocation);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_WallPhotosFetchedCopyWith<_$_WallPhotosFetched> get copyWith =>
+      __$$_WallPhotosFetchedCopyWithImpl<_$_WallPhotosFetched>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() wallPhotosFetched,
+    required TResult Function(Option<LatLng> userLocation) wallPhotosFetched,
     required TResult Function() nextPagePhotosFetched,
+    required TResult Function() wallPhotosRefreshed,
   }) {
-    return wallPhotosFetched();
+    return wallPhotosFetched(userLocation);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? wallPhotosFetched,
+    TResult? Function(Option<LatLng> userLocation)? wallPhotosFetched,
     TResult? Function()? nextPagePhotosFetched,
+    TResult? Function()? wallPhotosRefreshed,
   }) {
-    return wallPhotosFetched?.call();
+    return wallPhotosFetched?.call(userLocation);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? wallPhotosFetched,
+    TResult Function(Option<LatLng> userLocation)? wallPhotosFetched,
     TResult Function()? nextPagePhotosFetched,
+    TResult Function()? wallPhotosRefreshed,
     required TResult orElse(),
   }) {
     if (wallPhotosFetched != null) {
-      return wallPhotosFetched();
+      return wallPhotosFetched(userLocation);
     }
     return orElse();
   }
@@ -147,6 +184,7 @@ class _$_WallPhotosFetched implements _WallPhotosFetched {
     required TResult Function(_WallPhotosFetched value) wallPhotosFetched,
     required TResult Function(_NextPagePhotosFetched value)
         nextPagePhotosFetched,
+    required TResult Function(_WallPhotosRefreshed value) wallPhotosRefreshed,
   }) {
     return wallPhotosFetched(this);
   }
@@ -156,6 +194,7 @@ class _$_WallPhotosFetched implements _WallPhotosFetched {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WallPhotosFetched value)? wallPhotosFetched,
     TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult? Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
   }) {
     return wallPhotosFetched?.call(this);
   }
@@ -165,6 +204,7 @@ class _$_WallPhotosFetched implements _WallPhotosFetched {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WallPhotosFetched value)? wallPhotosFetched,
     TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
     required TResult orElse(),
   }) {
     if (wallPhotosFetched != null) {
@@ -175,7 +215,13 @@ class _$_WallPhotosFetched implements _WallPhotosFetched {
 }
 
 abstract class _WallPhotosFetched implements WallPhotosEvent {
-  const factory _WallPhotosFetched() = _$_WallPhotosFetched;
+  const factory _WallPhotosFetched(final Option<LatLng> userLocation) =
+      _$_WallPhotosFetched;
+
+  Option<LatLng> get userLocation;
+  @JsonKey(ignore: true)
+  _$$_WallPhotosFetchedCopyWith<_$_WallPhotosFetched> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -216,8 +262,9 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() wallPhotosFetched,
+    required TResult Function(Option<LatLng> userLocation) wallPhotosFetched,
     required TResult Function() nextPagePhotosFetched,
+    required TResult Function() wallPhotosRefreshed,
   }) {
     return nextPagePhotosFetched();
   }
@@ -225,8 +272,9 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? wallPhotosFetched,
+    TResult? Function(Option<LatLng> userLocation)? wallPhotosFetched,
     TResult? Function()? nextPagePhotosFetched,
+    TResult? Function()? wallPhotosRefreshed,
   }) {
     return nextPagePhotosFetched?.call();
   }
@@ -234,8 +282,9 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? wallPhotosFetched,
+    TResult Function(Option<LatLng> userLocation)? wallPhotosFetched,
     TResult Function()? nextPagePhotosFetched,
+    TResult Function()? wallPhotosRefreshed,
     required TResult orElse(),
   }) {
     if (nextPagePhotosFetched != null) {
@@ -250,6 +299,7 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
     required TResult Function(_WallPhotosFetched value) wallPhotosFetched,
     required TResult Function(_NextPagePhotosFetched value)
         nextPagePhotosFetched,
+    required TResult Function(_WallPhotosRefreshed value) wallPhotosRefreshed,
   }) {
     return nextPagePhotosFetched(this);
   }
@@ -259,6 +309,7 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_WallPhotosFetched value)? wallPhotosFetched,
     TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult? Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
   }) {
     return nextPagePhotosFetched?.call(this);
   }
@@ -268,6 +319,7 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_WallPhotosFetched value)? wallPhotosFetched,
     TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
     required TResult orElse(),
   }) {
     if (nextPagePhotosFetched != null) {
@@ -282,6 +334,115 @@ abstract class _NextPagePhotosFetched implements WallPhotosEvent {
 }
 
 /// @nodoc
+abstract class _$$_WallPhotosRefreshedCopyWith<$Res> {
+  factory _$$_WallPhotosRefreshedCopyWith(_$_WallPhotosRefreshed value,
+          $Res Function(_$_WallPhotosRefreshed) then) =
+      __$$_WallPhotosRefreshedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_WallPhotosRefreshedCopyWithImpl<$Res>
+    extends _$WallPhotosEventCopyWithImpl<$Res, _$_WallPhotosRefreshed>
+    implements _$$_WallPhotosRefreshedCopyWith<$Res> {
+  __$$_WallPhotosRefreshedCopyWithImpl(_$_WallPhotosRefreshed _value,
+      $Res Function(_$_WallPhotosRefreshed) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_WallPhotosRefreshed implements _WallPhotosRefreshed {
+  const _$_WallPhotosRefreshed();
+
+  @override
+  String toString() {
+    return 'WallPhotosEvent.wallPhotosRefreshed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_WallPhotosRefreshed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Option<LatLng> userLocation) wallPhotosFetched,
+    required TResult Function() nextPagePhotosFetched,
+    required TResult Function() wallPhotosRefreshed,
+  }) {
+    return wallPhotosRefreshed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Option<LatLng> userLocation)? wallPhotosFetched,
+    TResult? Function()? nextPagePhotosFetched,
+    TResult? Function()? wallPhotosRefreshed,
+  }) {
+    return wallPhotosRefreshed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Option<LatLng> userLocation)? wallPhotosFetched,
+    TResult Function()? nextPagePhotosFetched,
+    TResult Function()? wallPhotosRefreshed,
+    required TResult orElse(),
+  }) {
+    if (wallPhotosRefreshed != null) {
+      return wallPhotosRefreshed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WallPhotosFetched value) wallPhotosFetched,
+    required TResult Function(_NextPagePhotosFetched value)
+        nextPagePhotosFetched,
+    required TResult Function(_WallPhotosRefreshed value) wallPhotosRefreshed,
+  }) {
+    return wallPhotosRefreshed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_WallPhotosFetched value)? wallPhotosFetched,
+    TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult? Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
+  }) {
+    return wallPhotosRefreshed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WallPhotosFetched value)? wallPhotosFetched,
+    TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
+    required TResult orElse(),
+  }) {
+    if (wallPhotosRefreshed != null) {
+      return wallPhotosRefreshed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WallPhotosRefreshed implements WallPhotosEvent {
+  const factory _WallPhotosRefreshed() = _$_WallPhotosRefreshed;
+}
+
+/// @nodoc
 mixin _$WallPhotosState {
   CubitStatus get getPhotosStatus => throw _privateConstructorUsedError;
   CubitStatus get nextPageStatus => throw _privateConstructorUsedError;
@@ -289,6 +450,7 @@ mixin _$WallPhotosState {
   List<WallPhoto> get photos => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
   String get filterPhrase => throw _privateConstructorUsedError;
+  Option<LatLng> get userLocation => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WallPhotosStateCopyWith<WallPhotosState> get copyWith =>
@@ -307,7 +469,8 @@ abstract class $WallPhotosStateCopyWith<$Res> {
       Option<String> errorMessage,
       List<WallPhoto> photos,
       bool hasReachedMax,
-      String filterPhrase});
+      String filterPhrase,
+      Option<LatLng> userLocation});
 }
 
 /// @nodoc
@@ -329,6 +492,7 @@ class _$WallPhotosStateCopyWithImpl<$Res, $Val extends WallPhotosState>
     Object? photos = null,
     Object? hasReachedMax = null,
     Object? filterPhrase = null,
+    Object? userLocation = null,
   }) {
     return _then(_value.copyWith(
       getPhotosStatus: null == getPhotosStatus
@@ -355,6 +519,10 @@ class _$WallPhotosStateCopyWithImpl<$Res, $Val extends WallPhotosState>
           ? _value.filterPhrase
           : filterPhrase // ignore: cast_nullable_to_non_nullable
               as String,
+      userLocation: null == userLocation
+          ? _value.userLocation
+          : userLocation // ignore: cast_nullable_to_non_nullable
+              as Option<LatLng>,
     ) as $Val);
   }
 }
@@ -373,7 +541,8 @@ abstract class _$$_WallPhotosStateCopyWith<$Res>
       Option<String> errorMessage,
       List<WallPhoto> photos,
       bool hasReachedMax,
-      String filterPhrase});
+      String filterPhrase,
+      Option<LatLng> userLocation});
 }
 
 /// @nodoc
@@ -393,6 +562,7 @@ class __$$_WallPhotosStateCopyWithImpl<$Res>
     Object? photos = null,
     Object? hasReachedMax = null,
     Object? filterPhrase = null,
+    Object? userLocation = null,
   }) {
     return _then(_$_WallPhotosState(
       getPhotosStatus: null == getPhotosStatus
@@ -419,6 +589,10 @@ class __$$_WallPhotosStateCopyWithImpl<$Res>
           ? _value.filterPhrase
           : filterPhrase // ignore: cast_nullable_to_non_nullable
               as String,
+      userLocation: null == userLocation
+          ? _value.userLocation
+          : userLocation // ignore: cast_nullable_to_non_nullable
+              as Option<LatLng>,
     ));
   }
 }
@@ -432,7 +606,8 @@ class _$_WallPhotosState implements _WallPhotosState {
       required this.errorMessage,
       required final List<WallPhoto> photos,
       required this.hasReachedMax,
-      required this.filterPhrase})
+      required this.filterPhrase,
+      required this.userLocation})
       : _photos = photos;
 
   @override
@@ -453,10 +628,12 @@ class _$_WallPhotosState implements _WallPhotosState {
   final bool hasReachedMax;
   @override
   final String filterPhrase;
+  @override
+  final Option<LatLng> userLocation;
 
   @override
   String toString() {
-    return 'WallPhotosState(getPhotosStatus: $getPhotosStatus, nextPageStatus: $nextPageStatus, errorMessage: $errorMessage, photos: $photos, hasReachedMax: $hasReachedMax, filterPhrase: $filterPhrase)';
+    return 'WallPhotosState(getPhotosStatus: $getPhotosStatus, nextPageStatus: $nextPageStatus, errorMessage: $errorMessage, photos: $photos, hasReachedMax: $hasReachedMax, filterPhrase: $filterPhrase, userLocation: $userLocation)';
   }
 
   @override
@@ -474,7 +651,9 @@ class _$_WallPhotosState implements _WallPhotosState {
             (identical(other.hasReachedMax, hasReachedMax) ||
                 other.hasReachedMax == hasReachedMax) &&
             (identical(other.filterPhrase, filterPhrase) ||
-                other.filterPhrase == filterPhrase));
+                other.filterPhrase == filterPhrase) &&
+            (identical(other.userLocation, userLocation) ||
+                other.userLocation == userLocation));
   }
 
   @override
@@ -485,7 +664,8 @@ class _$_WallPhotosState implements _WallPhotosState {
       errorMessage,
       const DeepCollectionEquality().hash(_photos),
       hasReachedMax,
-      filterPhrase);
+      filterPhrase,
+      userLocation);
 
   @JsonKey(ignore: true)
   @override
@@ -501,7 +681,8 @@ abstract class _WallPhotosState implements WallPhotosState {
       required final Option<String> errorMessage,
       required final List<WallPhoto> photos,
       required final bool hasReachedMax,
-      required final String filterPhrase}) = _$_WallPhotosState;
+      required final String filterPhrase,
+      required final Option<LatLng> userLocation}) = _$_WallPhotosState;
 
   @override
   CubitStatus get getPhotosStatus;
@@ -515,6 +696,8 @@ abstract class _WallPhotosState implements WallPhotosState {
   bool get hasReachedMax;
   @override
   String get filterPhrase;
+  @override
+  Option<LatLng> get userLocation;
   @override
   @JsonKey(ignore: true)
   _$$_WallPhotosStateCopyWith<_$_WallPhotosState> get copyWith =>
