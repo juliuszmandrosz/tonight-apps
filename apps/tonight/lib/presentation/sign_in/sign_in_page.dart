@@ -53,7 +53,7 @@ class SignInPage extends StatelessWidget {
                   SliverToBoxAdapter(
                     child: Column(
                       children: [
-                        TonightLogo(height: context.height * 0.3),
+                        TonightLogo(height: context.height * 0.33),
                         SizedBox(height: context.height * 0.07),
                         const SignInEmailInput(),
                         const SizedBox(height: 30),

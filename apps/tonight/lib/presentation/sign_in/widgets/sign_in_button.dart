@@ -13,7 +13,7 @@ class SignInButton extends StatelessWidget {
           previous.signInStatus != current.signInStatus,
       builder: (context, state) {
         return SizedBox(
-          width: 300,
+          width: double.infinity,
           child: ElevatedButton(
             onPressed: () => context.read<SignInCubit>().sendSignInEmailLink(),
             child: Text(S().signIn),

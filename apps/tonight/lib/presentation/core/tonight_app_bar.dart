@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tonight/presentation/sign_in/widgets/tonight_logo.dart';
 
 class TonightAppBar extends StatelessWidget with PreferredSizeWidget {
   final String? title;
@@ -24,12 +24,7 @@ class TonightAppBar extends StatelessWidget with PreferredSizeWidget {
               title!,
               maxLines: 1,
             )
-          : SvgPicture.asset(
-              'assets/icons/text_logo.svg',
-              semanticsLabel: 'Tonight Logo',
-              alignment: Alignment.centerLeft,
-              height: kToolbarHeight * 1.5,
-            ),
+          : const TonightLogo(height: kToolbarHeight * 3),
       actions: actions,
     );
   }
