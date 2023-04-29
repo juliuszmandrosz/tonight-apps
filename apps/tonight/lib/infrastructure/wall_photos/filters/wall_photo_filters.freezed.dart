@@ -17,11 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$WallPhotoFilters {
   WallPhotoPhraseFilter get phraseFilter => throw _privateConstructorUsedError;
-  ShowPhotosFromClubsFilter get showPhotosFromClubsFilter =>
-      throw _privateConstructorUsedError;
   ShowPhotosFromLiveEventsFilter get showPhotosFromLiveEventsFilter =>
       throw _privateConstructorUsedError;
   ShowOnlyOtherUsersPhotosFilter get showOnlyOtherUsersPhotosFilter =>
+      throw _privateConstructorUsedError;
+  ShowPhotosFromClubsInRangeFilter get showPhotosFromClubsInRangeFilter =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -37,9 +37,9 @@ abstract class $WallPhotoFiltersCopyWith<$Res> {
   @useResult
   $Res call(
       {WallPhotoPhraseFilter phraseFilter,
-      ShowPhotosFromClubsFilter showPhotosFromClubsFilter,
       ShowPhotosFromLiveEventsFilter showPhotosFromLiveEventsFilter,
-      ShowOnlyOtherUsersPhotosFilter showOnlyOtherUsersPhotosFilter});
+      ShowOnlyOtherUsersPhotosFilter showOnlyOtherUsersPhotosFilter,
+      ShowPhotosFromClubsInRangeFilter showPhotosFromClubsInRangeFilter});
 }
 
 /// @nodoc
@@ -56,19 +56,15 @@ class _$WallPhotoFiltersCopyWithImpl<$Res, $Val extends WallPhotoFilters>
   @override
   $Res call({
     Object? phraseFilter = null,
-    Object? showPhotosFromClubsFilter = null,
     Object? showPhotosFromLiveEventsFilter = null,
     Object? showOnlyOtherUsersPhotosFilter = null,
+    Object? showPhotosFromClubsInRangeFilter = null,
   }) {
     return _then(_value.copyWith(
       phraseFilter: null == phraseFilter
           ? _value.phraseFilter
           : phraseFilter // ignore: cast_nullable_to_non_nullable
               as WallPhotoPhraseFilter,
-      showPhotosFromClubsFilter: null == showPhotosFromClubsFilter
-          ? _value.showPhotosFromClubsFilter
-          : showPhotosFromClubsFilter // ignore: cast_nullable_to_non_nullable
-              as ShowPhotosFromClubsFilter,
       showPhotosFromLiveEventsFilter: null == showPhotosFromLiveEventsFilter
           ? _value.showPhotosFromLiveEventsFilter
           : showPhotosFromLiveEventsFilter // ignore: cast_nullable_to_non_nullable
@@ -77,6 +73,10 @@ class _$WallPhotoFiltersCopyWithImpl<$Res, $Val extends WallPhotoFilters>
           ? _value.showOnlyOtherUsersPhotosFilter
           : showOnlyOtherUsersPhotosFilter // ignore: cast_nullable_to_non_nullable
               as ShowOnlyOtherUsersPhotosFilter,
+      showPhotosFromClubsInRangeFilter: null == showPhotosFromClubsInRangeFilter
+          ? _value.showPhotosFromClubsInRangeFilter
+          : showPhotosFromClubsInRangeFilter // ignore: cast_nullable_to_non_nullable
+              as ShowPhotosFromClubsInRangeFilter,
     ) as $Val);
   }
 }
@@ -91,9 +91,9 @@ abstract class _$$_WallPhotoFiltersCopyWith<$Res>
   @useResult
   $Res call(
       {WallPhotoPhraseFilter phraseFilter,
-      ShowPhotosFromClubsFilter showPhotosFromClubsFilter,
       ShowPhotosFromLiveEventsFilter showPhotosFromLiveEventsFilter,
-      ShowOnlyOtherUsersPhotosFilter showOnlyOtherUsersPhotosFilter});
+      ShowOnlyOtherUsersPhotosFilter showOnlyOtherUsersPhotosFilter,
+      ShowPhotosFromClubsInRangeFilter showPhotosFromClubsInRangeFilter});
 }
 
 /// @nodoc
@@ -108,19 +108,15 @@ class __$$_WallPhotoFiltersCopyWithImpl<$Res>
   @override
   $Res call({
     Object? phraseFilter = null,
-    Object? showPhotosFromClubsFilter = null,
     Object? showPhotosFromLiveEventsFilter = null,
     Object? showOnlyOtherUsersPhotosFilter = null,
+    Object? showPhotosFromClubsInRangeFilter = null,
   }) {
     return _then(_$_WallPhotoFilters(
       phraseFilter: null == phraseFilter
           ? _value.phraseFilter
           : phraseFilter // ignore: cast_nullable_to_non_nullable
               as WallPhotoPhraseFilter,
-      showPhotosFromClubsFilter: null == showPhotosFromClubsFilter
-          ? _value.showPhotosFromClubsFilter
-          : showPhotosFromClubsFilter // ignore: cast_nullable_to_non_nullable
-              as ShowPhotosFromClubsFilter,
       showPhotosFromLiveEventsFilter: null == showPhotosFromLiveEventsFilter
           ? _value.showPhotosFromLiveEventsFilter
           : showPhotosFromLiveEventsFilter // ignore: cast_nullable_to_non_nullable
@@ -129,6 +125,10 @@ class __$$_WallPhotoFiltersCopyWithImpl<$Res>
           ? _value.showOnlyOtherUsersPhotosFilter
           : showOnlyOtherUsersPhotosFilter // ignore: cast_nullable_to_non_nullable
               as ShowOnlyOtherUsersPhotosFilter,
+      showPhotosFromClubsInRangeFilter: null == showPhotosFromClubsInRangeFilter
+          ? _value.showPhotosFromClubsInRangeFilter
+          : showPhotosFromClubsInRangeFilter // ignore: cast_nullable_to_non_nullable
+              as ShowPhotosFromClubsInRangeFilter,
     ));
   }
 }
@@ -138,23 +138,23 @@ class __$$_WallPhotoFiltersCopyWithImpl<$Res>
 class _$_WallPhotoFilters extends _WallPhotoFilters {
   _$_WallPhotoFilters(
       {required this.phraseFilter,
-      required this.showPhotosFromClubsFilter,
       required this.showPhotosFromLiveEventsFilter,
-      required this.showOnlyOtherUsersPhotosFilter})
+      required this.showOnlyOtherUsersPhotosFilter,
+      required this.showPhotosFromClubsInRangeFilter})
       : super._();
 
   @override
   final WallPhotoPhraseFilter phraseFilter;
   @override
-  final ShowPhotosFromClubsFilter showPhotosFromClubsFilter;
-  @override
   final ShowPhotosFromLiveEventsFilter showPhotosFromLiveEventsFilter;
   @override
   final ShowOnlyOtherUsersPhotosFilter showOnlyOtherUsersPhotosFilter;
+  @override
+  final ShowPhotosFromClubsInRangeFilter showPhotosFromClubsInRangeFilter;
 
   @override
   String toString() {
-    return 'WallPhotoFilters(phraseFilter: $phraseFilter, showPhotosFromClubsFilter: $showPhotosFromClubsFilter, showPhotosFromLiveEventsFilter: $showPhotosFromLiveEventsFilter, showOnlyOtherUsersPhotosFilter: $showOnlyOtherUsersPhotosFilter)';
+    return 'WallPhotoFilters(phraseFilter: $phraseFilter, showPhotosFromLiveEventsFilter: $showPhotosFromLiveEventsFilter, showOnlyOtherUsersPhotosFilter: $showOnlyOtherUsersPhotosFilter, showPhotosFromClubsInRangeFilter: $showPhotosFromClubsInRangeFilter)';
   }
 
   @override
@@ -164,9 +164,6 @@ class _$_WallPhotoFilters extends _WallPhotoFilters {
             other is _$_WallPhotoFilters &&
             (identical(other.phraseFilter, phraseFilter) ||
                 other.phraseFilter == phraseFilter) &&
-            (identical(other.showPhotosFromClubsFilter,
-                    showPhotosFromClubsFilter) ||
-                other.showPhotosFromClubsFilter == showPhotosFromClubsFilter) &&
             (identical(other.showPhotosFromLiveEventsFilter,
                     showPhotosFromLiveEventsFilter) ||
                 other.showPhotosFromLiveEventsFilter ==
@@ -174,16 +171,20 @@ class _$_WallPhotoFilters extends _WallPhotoFilters {
             (identical(other.showOnlyOtherUsersPhotosFilter,
                     showOnlyOtherUsersPhotosFilter) ||
                 other.showOnlyOtherUsersPhotosFilter ==
-                    showOnlyOtherUsersPhotosFilter));
+                    showOnlyOtherUsersPhotosFilter) &&
+            (identical(other.showPhotosFromClubsInRangeFilter,
+                    showPhotosFromClubsInRangeFilter) ||
+                other.showPhotosFromClubsInRangeFilter ==
+                    showPhotosFromClubsInRangeFilter));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       phraseFilter,
-      showPhotosFromClubsFilter,
       showPhotosFromLiveEventsFilter,
-      showOnlyOtherUsersPhotosFilter);
+      showOnlyOtherUsersPhotosFilter,
+      showPhotosFromClubsInRangeFilter);
 
   @JsonKey(ignore: true)
   @override
@@ -195,21 +196,22 @@ class _$_WallPhotoFilters extends _WallPhotoFilters {
 abstract class _WallPhotoFilters extends WallPhotoFilters {
   factory _WallPhotoFilters(
       {required final WallPhotoPhraseFilter phraseFilter,
-      required final ShowPhotosFromClubsFilter showPhotosFromClubsFilter,
       required final ShowPhotosFromLiveEventsFilter
           showPhotosFromLiveEventsFilter,
       required final ShowOnlyOtherUsersPhotosFilter
-          showOnlyOtherUsersPhotosFilter}) = _$_WallPhotoFilters;
+          showOnlyOtherUsersPhotosFilter,
+      required final ShowPhotosFromClubsInRangeFilter
+          showPhotosFromClubsInRangeFilter}) = _$_WallPhotoFilters;
   _WallPhotoFilters._() : super._();
 
   @override
   WallPhotoPhraseFilter get phraseFilter;
   @override
-  ShowPhotosFromClubsFilter get showPhotosFromClubsFilter;
-  @override
   ShowPhotosFromLiveEventsFilter get showPhotosFromLiveEventsFilter;
   @override
   ShowOnlyOtherUsersPhotosFilter get showOnlyOtherUsersPhotosFilter;
+  @override
+  ShowPhotosFromClubsInRangeFilter get showPhotosFromClubsInRangeFilter;
   @override
   @JsonKey(ignore: true)
   _$$_WallPhotoFiltersCopyWith<_$_WallPhotoFilters> get copyWith =>

@@ -35,12 +35,13 @@ class EventsApiImpl implements EventsApi {
     final filterBy = filters.buildFilters();
     final pageNumber = ((offset + 1) / pageSize).ceil();
     final sortBy = _getSortBy(sortModel);
+    final queryBy = _getQueryBy();
 
     const endpoint = 'events/getEvents';
 
     final data = {
       'query': filters.phraseFilter.phrase,
-      'queryBy': 'eventName, artistName, clubName, musicalGenres',
+      'queryBy': queryBy,
       'filterBy': filterBy,
       'pageNumber': pageNumber,
       'pageSize': pageSize,
@@ -90,7 +91,7 @@ class EventsApiImpl implements EventsApi {
     return result.data as List<dynamic>;
   }
 
-  _getSortBy(EventSortModel sortModel) {
+  String _getSortBy(EventSortModel sortModel) {
     if (sortModel.fieldName == eventStartDateTime) {
       return sortModel.direction == SortDirection.desc
           ? 'eventStartDateTime:desc'
@@ -98,5 +99,9 @@ class EventsApiImpl implements EventsApi {
     }
 
     return '';
+  }
+
+  String _getQueryBy() {
+    return 'eventName, artistName, clubName, musicalGenres, locationString';
   }
 }

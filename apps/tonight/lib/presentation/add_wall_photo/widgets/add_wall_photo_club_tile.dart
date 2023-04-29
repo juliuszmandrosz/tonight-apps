@@ -30,22 +30,24 @@ class AddWallPhotoClubTile extends StatelessWidget {
               enabled: _enabled(state),
               onTap: () => _onTap(context: context, state: state),
               leading: FaIcon(
-                FontAwesomeIcons.building,
+                FontAwesomeIcons.locationDot,
                 color: context.secondaryColor,
+                size: 20,
               ),
               title: Text(
                 state.selectedClub.fold(
                   () => S().clubName,
                   (club) => club.clubName,
                 ),
-                style:
-                    context.titleMedium.copyWith(color: context.secondaryColor),
+                style: context.titleSmall.copyWith(
+                  color: context.secondaryColor,
+                ),
               ),
               trailing: state.fetchNearestClubStatus.isLoading()
                   ? const SizedBox(
                       height: 20,
                       width: 20,
-                      child: CircularProgressIndicator(),
+                      child: CircleLoadingIndicator(size: 20),
                     )
                   : FaIcon(
                       FontAwesomeIcons.chevronRight,
