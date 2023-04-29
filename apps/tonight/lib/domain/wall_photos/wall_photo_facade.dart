@@ -9,11 +9,12 @@ abstract class WallPhotoFacade {
   Future<Either<WallPhotoFailure, Unit>> addPhoto({
     required String clubId,
     required String clubName,
+    required LatLng clubLocation,
     required String eventId,
     required String eventName,
     required DateTime eventEndDateTime,
     required Uint8List photo,
-    required LatLng? location,
+    required LatLng? photoLocation,
   });
 
   Future<Either<WallPhotoFailure, List<WallPhoto>>> getPhotos({
