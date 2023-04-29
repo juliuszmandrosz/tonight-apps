@@ -44,6 +44,7 @@ dependencies:
   screen_brightness: ^0.2.2
   flutter_local_notifications: ^9.9.1
   upgrader: ^6.2.0
+  flutter_native_splash: ^2.2.19
 
   # Inherited packages
   auto_route:
@@ -62,14 +63,12 @@ dependencies:
   lottie:
   flutter_dotenv:
   google_fonts:
-  flutter_native_splash:
   launch_review:
   firebase_core:
   cloud_firestore:
   firebase_auth:
   firebase_storage:
   firebase_crashlytics:
-  firebase_app_check:
   firebase_performance:
   firebase_analytics:
   firebase_dynamic_links:
@@ -139,6 +138,7 @@ dev_dependencies:
   freezed:
   flutter_lints:
   json_serializable:
+  flutter_launcher_icons: ^0.13.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -158,6 +158,7 @@ flutter:
     - assets/google_fonts/montserrat/
     - assets/images/
     - assets/map_styles/
+    - assets/launcher_icons/
     - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -189,8 +190,8 @@ flutter:
 flutter_native_splash:
   color: '#000000'
   color_dark: '#000000'
-  image: 'assets/images/ticket_logo.png'
-  image_dark: 'assets/images/ticket_logo.png'
+  image: 'assets/images/text_logo_transparent.png'
+  image_dark: 'assets/images/text_logo_transparent.png'
   fullscreen: true
   web: false
   android: true
@@ -199,9 +200,15 @@ flutter_native_splash:
 android_12:
   color: '#000000'
   color_dark: '#000000'
-  image: 'assets/images/ticket_logo.png'
-  image_dark: 'assets/images/ticket_logo.png'
+  image: 'assets/images/text_logo_transparent.png'
+  image_dark: 'assets/images/text_logo_transparent.png'
   fullscreen: true
   web: false
   android: true
   ios: true
+
+flutter_launcher_icons:
+  android: false
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/images/text_logo.png"
