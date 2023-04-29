@@ -6,4 +6,6 @@ extension ResponsiveX on BuildContext {
   double get width => MediaQuery.of(this).size.width;
 
   EdgeInsets get padding => MediaQuery.of(this).padding;
+
+  EdgeInsets get viewInsets => MediaQuery.of(this).viewInsets;
 }
