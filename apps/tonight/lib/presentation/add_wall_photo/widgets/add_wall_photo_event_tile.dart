@@ -76,7 +76,7 @@ class AddWallPhotoEventTile extends StatelessWidget {
                 child: ListTile(
                   leading: CircleNetworkPhoto(
                     photoUrl: event.eventPhotoUrl,
-                    containerSize: 18,
+                    containerSize: 40,
                     loaderSize: 16,
                   ),
                   title: Text(
