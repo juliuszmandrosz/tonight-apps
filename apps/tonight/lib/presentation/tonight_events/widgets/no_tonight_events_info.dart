@@ -18,9 +18,11 @@ class NoTonightEventsInfo extends StatelessWidget {
               Text(
                 state.eventFilters.maxDistanceFilter.userLocation.isSome() &&
                         state.eventFilters.maxDistanceFilter.enabled
-                    ? S().noEventsNearYou
+                    // TODO - add translation
+                    ? 'Brak wydarzeń w pobliżu, odkrywaj wydarzenia w innych miastach'
                     : S().events(0),
                 style: context.titleSmall,
+                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
               OutlinedButton(
