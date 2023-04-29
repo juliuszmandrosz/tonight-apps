@@ -20,29 +20,13 @@ class ProfileUserPicture extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Container(
-          height: imageSize,
-          width: imageSize,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: context.surfaceColor,
-          ),
-          child: Center(
-            child: profilePictureUrl.isNotEmpty
-                ? CircleNetworkPhoto(
-                    photoUrl: profilePictureUrl,
-                    containerSize: imageSize,
-                    loaderSize: 16,
-                  )
-                : Text(
-                    username.isEmpty
-                        ? ''
-                        : username.length == 1
-                            ? username[0].toUpperCase()
-                            : username.substring(0, 2).toUpperCase(),
-                    style: context.headlineMedium,
-                  ),
-          ),
+        ProfilePictureContainer(
+          imageSize: imageSize,
+          profilePictureUrl: profilePictureUrl,
+          username: username,
+          textStyle: context.headlineMedium,
+          backgroundColor: context.surfaceColor,
+          textColor: context.onSurfaceColor,
         ),
         Positioned(
           bottom: 0,
@@ -52,7 +36,7 @@ class ProfileUserPicture extends StatelessWidget {
             width: buttonSize,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: colors.secondaryContainer,
+              color: context.secondaryContainer,
             ),
             child: IconButton(
               icon: const Icon(Icons.edit),
@@ -62,7 +46,7 @@ class ProfileUserPicture extends StatelessWidget {
                   username: username,
                 ),
               ),
-              color: colors.onSecondaryContainer,
+              color: context.onSecondaryContainer,
             ),
           ),
         ),
