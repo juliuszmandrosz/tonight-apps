@@ -8,4 +8,6 @@ extension ResponsiveX on BuildContext {
   EdgeInsets get padding => MediaQuery.of(this).padding;
 
   EdgeInsets get viewInsets => MediaQuery.of(this).viewInsets;
+
+  bool get isKeyboardOpen => viewInsets.bottom > 0;
 }
