@@ -89,7 +89,7 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
                   return Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Center(
-                      child: TonightLogo(height: context.height * 0.3),
+                      child: TonightLogo(height: context.height),
                     ),
                   );
                 }
