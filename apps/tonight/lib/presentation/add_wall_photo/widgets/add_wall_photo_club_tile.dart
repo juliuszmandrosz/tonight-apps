@@ -97,7 +97,7 @@ class AddWallPhotoClubTile extends StatelessWidget {
                 child: ListTile(
                   leading: CircleNetworkPhoto(
                     photoUrl: club.clubImageUrl,
-                    containerSize: 18,
+                    containerSize: 40,
                     loaderSize: 16,
                   ),
                   title: Text(
