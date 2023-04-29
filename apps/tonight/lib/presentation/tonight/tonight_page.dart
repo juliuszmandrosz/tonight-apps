@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/tonight/widgets/tonight_sliver_app_bar.dart';
@@ -11,9 +12,10 @@ class TonightPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final location = context.read<UserLocationCubit>().state.userLocation;
     return BlocProvider(
       create: (context) => getIt<WallPhotosBloc>()
-        ..add(const WallPhotosEvent.wallPhotosFetched()),
+        ..add(WallPhotosEvent.wallPhotosFetched(location)),
       child: DefaultTabController(
         length: 2,
         child: NestedScrollView(

@@ -4,6 +4,7 @@ import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 
@@ -22,15 +23,24 @@ class WallPhotosBloc extends Bloc<WallPhotosEvent, WallPhotosState> {
       _onNextPagePhotosFetched,
       transformer: throttleDroppable(),
     );
+    on<_WallPhotosRefreshed>(_onWallPhotosRefreshed);
   }
 
   FutureOr<void> _onWallPhotosFetched(
     _WallPhotosFetched event,
     Emitter<WallPhotosState> emit,
   ) async {
-    emit(state.copyWith(getPhotosStatus: CubitStatus.loading));
+    emit(
+      state.copyWith(
+        getPhotosStatus: CubitStatus.loading,
+        userLocation: event.userLocation,
+      ),
+    );
 
-    final result = await _wallPhotoFacade.getPhotos(pageSize: _pageSize);
+    final result = await _wallPhotoFacade.getPhotos(
+      userLocation: event.userLocation,
+      pageSize: _pageSize,
+    );
 
     result.fold(
       (failure) => emit(state.copyWith(getPhotosStatus: CubitStatus.failure)),
@@ -53,6 +63,7 @@ class WallPhotosBloc extends Bloc<WallPhotosEvent, WallPhotosState> {
     emit(state.copyWith(nextPageStatus: CubitStatus.loading));
 
     final result = await _wallPhotoFacade.getPhotos(
+      userLocation: state.userLocation,
       pageSize: _pageSize,
       offset: state.photos.length,
     );
@@ -63,6 +74,31 @@ class WallPhotosBloc extends Bloc<WallPhotosEvent, WallPhotosState> {
         state.copyWith(
           nextPageStatus: CubitStatus.success,
           photos: [...state.photos, ...photos],
+          hasReachedMax: photos.length != _pageSize,
+        ),
+      ),
+    );
+  }
+
+  FutureOr<void> _onWallPhotosRefreshed(
+    _WallPhotosRefreshed event,
+    Emitter<WallPhotosState> emit,
+  ) async {
+    emit(
+      state.copyWith(getPhotosStatus: CubitStatus.loading),
+    );
+
+    final result = await _wallPhotoFacade.getPhotos(
+      userLocation: state.userLocation,
+      pageSize: _pageSize,
+    );
+
+    result.fold(
+      (failure) => emit(state.copyWith(getPhotosStatus: CubitStatus.failure)),
+      (photos) => emit(
+        state.copyWith(
+          getPhotosStatus: CubitStatus.success,
+          photos: photos,
           hasReachedMax: photos.length != _pageSize,
         ),
       ),
