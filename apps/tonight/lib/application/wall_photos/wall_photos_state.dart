@@ -9,6 +9,7 @@ class WallPhotosState with _$WallPhotosState {
     required List<WallPhoto> photos,
     required bool hasReachedMax,
     required String filterPhrase,
+    required Option<LatLng> userLocation,
   }) = _WallPhotosState;
 
   factory WallPhotosState.initial() => WallPhotosState(
@@ -18,5 +19,6 @@ class WallPhotosState with _$WallPhotosState {
         hasReachedMax: false,
         photos: [],
         filterPhrase: '',
+        userLocation: none(),
       );
 }

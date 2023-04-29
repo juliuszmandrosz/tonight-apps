@@ -19,19 +19,20 @@ class AddWallPhotoEventTile extends StatelessWidget {
           leading: FaIcon(
             FontAwesomeIcons.fire,
             color: context.secondaryColor,
+            size: 20,
           ),
           title: Text(
             state.selectedEvent.fold(
               () => S().eventName,
               (event) => event.eventName,
             ),
-            style: context.titleMedium.copyWith(color: context.secondaryColor),
+            style: context.titleSmall.copyWith(color: context.secondaryColor),
           ),
           trailing: state.fetchLiveEventsStatus.isLoading()
               ? const SizedBox(
                   height: 20,
                   width: 20,
-                  child: CircularProgressIndicator(),
+                  child: CircleLoadingIndicator(size: 20),
                 )
               : FaIcon(
                   FontAwesomeIcons.chevronRight,
