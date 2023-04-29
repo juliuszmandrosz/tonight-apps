@@ -25,6 +25,8 @@ mixin _$WallPhotoDto {
   String get photoUrl => throw _privateConstructorUsedError;
   String get clubId => throw _privateConstructorUsedError;
   String get clubName => throw _privateConstructorUsedError;
+  @LatLngConverter()
+  LatLng get clubLocation => throw _privateConstructorUsedError;
   String get eventId => throw _privateConstructorUsedError;
   String get eventName => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
@@ -35,7 +37,7 @@ mixin _$WallPhotoDto {
   DateTime get createdAt => throw _privateConstructorUsedError;
   String? get userProfilePhotoUrl => throw _privateConstructorUsedError;
   @NullableLatLngConverter()
-  LatLng? get location => throw _privateConstructorUsedError;
+  LatLng? get photoLocation => throw _privateConstructorUsedError;
   bool get isVerified => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -55,6 +57,7 @@ abstract class $WallPhotoDtoCopyWith<$Res> {
       String photoUrl,
       String clubId,
       String clubName,
+      @LatLngConverter() LatLng clubLocation,
       String eventId,
       String eventName,
       String userId,
@@ -62,7 +65,7 @@ abstract class $WallPhotoDtoCopyWith<$Res> {
       @TimestampJsonConverter() DateTime eventEndDateTime,
       @TimestampJsonConverter() DateTime createdAt,
       String? userProfilePhotoUrl,
-      @NullableLatLngConverter() LatLng? location,
+      @NullableLatLngConverter() LatLng? photoLocation,
       bool isVerified});
 }
 
@@ -83,6 +86,7 @@ class _$WallPhotoDtoCopyWithImpl<$Res, $Val extends WallPhotoDto>
     Object? photoUrl = null,
     Object? clubId = null,
     Object? clubName = null,
+    Object? clubLocation = null,
     Object? eventId = null,
     Object? eventName = null,
     Object? userId = null,
@@ -90,7 +94,7 @@ class _$WallPhotoDtoCopyWithImpl<$Res, $Val extends WallPhotoDto>
     Object? eventEndDateTime = null,
     Object? createdAt = null,
     Object? userProfilePhotoUrl = freezed,
-    Object? location = freezed,
+    Object? photoLocation = freezed,
     Object? isVerified = null,
   }) {
     return _then(_value.copyWith(
@@ -110,6 +114,10 @@ class _$WallPhotoDtoCopyWithImpl<$Res, $Val extends WallPhotoDto>
           ? _value.clubName
           : clubName // ignore: cast_nullable_to_non_nullable
               as String,
+      clubLocation: null == clubLocation
+          ? _value.clubLocation
+          : clubLocation // ignore: cast_nullable_to_non_nullable
+              as LatLng,
       eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
@@ -138,9 +146,9 @@ class _$WallPhotoDtoCopyWithImpl<$Res, $Val extends WallPhotoDto>
           ? _value.userProfilePhotoUrl
           : userProfilePhotoUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      location: freezed == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
+      photoLocation: freezed == photoLocation
+          ? _value.photoLocation
+          : photoLocation // ignore: cast_nullable_to_non_nullable
               as LatLng?,
       isVerified: null == isVerified
           ? _value.isVerified
@@ -163,6 +171,7 @@ abstract class _$$_WallPhotoDtoCopyWith<$Res>
       String photoUrl,
       String clubId,
       String clubName,
+      @LatLngConverter() LatLng clubLocation,
       String eventId,
       String eventName,
       String userId,
@@ -170,7 +179,7 @@ abstract class _$$_WallPhotoDtoCopyWith<$Res>
       @TimestampJsonConverter() DateTime eventEndDateTime,
       @TimestampJsonConverter() DateTime createdAt,
       String? userProfilePhotoUrl,
-      @NullableLatLngConverter() LatLng? location,
+      @NullableLatLngConverter() LatLng? photoLocation,
       bool isVerified});
 }
 
@@ -189,6 +198,7 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
     Object? photoUrl = null,
     Object? clubId = null,
     Object? clubName = null,
+    Object? clubLocation = null,
     Object? eventId = null,
     Object? eventName = null,
     Object? userId = null,
@@ -196,7 +206,7 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
     Object? eventEndDateTime = null,
     Object? createdAt = null,
     Object? userProfilePhotoUrl = freezed,
-    Object? location = freezed,
+    Object? photoLocation = freezed,
     Object? isVerified = null,
   }) {
     return _then(_$_WallPhotoDto(
@@ -216,6 +226,10 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
           ? _value.clubName
           : clubName // ignore: cast_nullable_to_non_nullable
               as String,
+      clubLocation: null == clubLocation
+          ? _value.clubLocation
+          : clubLocation // ignore: cast_nullable_to_non_nullable
+              as LatLng,
       eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
@@ -244,9 +258,9 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
           ? _value.userProfilePhotoUrl
           : userProfilePhotoUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      location: freezed == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
+      photoLocation: freezed == photoLocation
+          ? _value.photoLocation
+          : photoLocation // ignore: cast_nullable_to_non_nullable
               as LatLng?,
       isVerified: null == isVerified
           ? _value.isVerified
@@ -265,6 +279,7 @@ class _$_WallPhotoDto extends _WallPhotoDto {
       required this.photoUrl,
       required this.clubId,
       required this.clubName,
+      @LatLngConverter() required this.clubLocation,
       required this.eventId,
       required this.eventName,
       required this.userId,
@@ -272,7 +287,7 @@ class _$_WallPhotoDto extends _WallPhotoDto {
       @TimestampJsonConverter() required this.eventEndDateTime,
       @TimestampJsonConverter() required this.createdAt,
       this.userProfilePhotoUrl,
-      @NullableLatLngConverter() this.location,
+      @NullableLatLngConverter() this.photoLocation,
       this.isVerified = false})
       : super._();
 
@@ -288,6 +303,9 @@ class _$_WallPhotoDto extends _WallPhotoDto {
   final String clubId;
   @override
   final String clubName;
+  @override
+  @LatLngConverter()
+  final LatLng clubLocation;
   @override
   final String eventId;
   @override
@@ -306,14 +324,14 @@ class _$_WallPhotoDto extends _WallPhotoDto {
   final String? userProfilePhotoUrl;
   @override
   @NullableLatLngConverter()
-  final LatLng? location;
+  final LatLng? photoLocation;
   @override
   @JsonKey()
   final bool isVerified;
 
   @override
   String toString() {
-    return 'WallPhotoDto(id: $id, photoUrl: $photoUrl, clubId: $clubId, clubName: $clubName, eventId: $eventId, eventName: $eventName, userId: $userId, username: $username, eventEndDateTime: $eventEndDateTime, createdAt: $createdAt, userProfilePhotoUrl: $userProfilePhotoUrl, location: $location, isVerified: $isVerified)';
+    return 'WallPhotoDto(id: $id, photoUrl: $photoUrl, clubId: $clubId, clubName: $clubName, clubLocation: $clubLocation, eventId: $eventId, eventName: $eventName, userId: $userId, username: $username, eventEndDateTime: $eventEndDateTime, createdAt: $createdAt, userProfilePhotoUrl: $userProfilePhotoUrl, photoLocation: $photoLocation, isVerified: $isVerified)';
   }
 
   @override
@@ -327,6 +345,8 @@ class _$_WallPhotoDto extends _WallPhotoDto {
             (identical(other.clubId, clubId) || other.clubId == clubId) &&
             (identical(other.clubName, clubName) ||
                 other.clubName == clubName) &&
+            (identical(other.clubLocation, clubLocation) ||
+                other.clubLocation == clubLocation) &&
             (identical(other.eventId, eventId) || other.eventId == eventId) &&
             (identical(other.eventName, eventName) ||
                 other.eventName == eventName) &&
@@ -339,8 +359,8 @@ class _$_WallPhotoDto extends _WallPhotoDto {
                 other.createdAt == createdAt) &&
             (identical(other.userProfilePhotoUrl, userProfilePhotoUrl) ||
                 other.userProfilePhotoUrl == userProfilePhotoUrl) &&
-            (identical(other.location, location) ||
-                other.location == location) &&
+            (identical(other.photoLocation, photoLocation) ||
+                other.photoLocation == photoLocation) &&
             (identical(other.isVerified, isVerified) ||
                 other.isVerified == isVerified));
   }
@@ -353,6 +373,7 @@ class _$_WallPhotoDto extends _WallPhotoDto {
       photoUrl,
       clubId,
       clubName,
+      clubLocation,
       eventId,
       eventName,
       userId,
@@ -360,7 +381,7 @@ class _$_WallPhotoDto extends _WallPhotoDto {
       eventEndDateTime,
       createdAt,
       userProfilePhotoUrl,
-      location,
+      photoLocation,
       isVerified);
 
   @JsonKey(ignore: true)
@@ -383,6 +404,7 @@ abstract class _WallPhotoDto extends WallPhotoDto {
       required final String photoUrl,
       required final String clubId,
       required final String clubName,
+      @LatLngConverter() required final LatLng clubLocation,
       required final String eventId,
       required final String eventName,
       required final String userId,
@@ -390,7 +412,7 @@ abstract class _WallPhotoDto extends WallPhotoDto {
       @TimestampJsonConverter() required final DateTime eventEndDateTime,
       @TimestampJsonConverter() required final DateTime createdAt,
       final String? userProfilePhotoUrl,
-      @NullableLatLngConverter() final LatLng? location,
+      @NullableLatLngConverter() final LatLng? photoLocation,
       final bool isVerified}) = _$_WallPhotoDto;
   const _WallPhotoDto._() : super._();
 
@@ -406,6 +428,9 @@ abstract class _WallPhotoDto extends WallPhotoDto {
   String get clubId;
   @override
   String get clubName;
+  @override
+  @LatLngConverter()
+  LatLng get clubLocation;
   @override
   String get eventId;
   @override
@@ -424,7 +449,7 @@ abstract class _WallPhotoDto extends WallPhotoDto {
   String? get userProfilePhotoUrl;
   @override
   @NullableLatLngConverter()
-  LatLng? get location;
+  LatLng? get photoLocation;
   @override
   bool get isVerified;
   @override
