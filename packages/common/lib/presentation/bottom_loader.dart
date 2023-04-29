@@ -1,3 +1,4 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 
 class BottomLoader extends StatelessWidget {
@@ -11,7 +12,7 @@ class BottomLoader extends StatelessWidget {
         child: SizedBox(
           height: 24,
           width: 24,
-          child: CircularProgressIndicator(strokeWidth: 1.5),
+          child: CircleLoadingIndicator(size: 20),
         ),
       ),
     );
