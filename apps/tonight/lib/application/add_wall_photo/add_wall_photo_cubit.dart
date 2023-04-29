@@ -104,6 +104,7 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     }
     emit(state.copyWith(addPhotoStatus: CubitStatus.loading));
     final selectedEvent = state.selectedEvent.getOrCrash();
+    final clubLocation = state.selectedClub.getOrCrash().location;
     final processedPhoto = await _processPhoto();
     if (processedPhoto.isNone()) {
       emit(state.copyWith(addPhotoStatus: CubitStatus.failure));
@@ -118,7 +119,11 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
       eventName: selectedEvent.eventName,
       eventEndDateTime: selectedEvent.eventEndDateTime,
       photo: processedPhoto.getOrCrash(),
-      location: state.userLocation.fold(() => null, (location) => location),
+      clubLocation: LatLng(clubLocation[latitude]!, clubLocation[longitude]!),
+      photoLocation: state.userLocation.fold(
+        () => null,
+        (location) => location,
+      ),
     );
     result.fold(
       (failure) {

@@ -40,11 +40,12 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   Future<Either<WallPhotoFailure, Unit>> addPhoto({
     required String clubId,
     required String clubName,
+    required LatLng clubLocation,
     required String eventId,
     required String eventName,
     required DateTime eventEndDateTime,
     required Uint8List photo,
-    required LatLng? location,
+    required LatLng? photoLocation,
   }) async {
     try {
       final userDoc = await _firestore.getCurrentUserDocRef(_auth).get();
@@ -57,11 +58,12 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
         photoUrl: photoUrl,
         clubId: clubId,
         clubName: clubName,
+        clubLocation: clubLocation,
         eventId: eventId,
         eventName: eventName,
         userId: user.id!,
         eventEndDateTime: eventEndDateTime,
-        location: location,
+        photoLocation: photoLocation,
         username: user.username,
         userProfilePhotoUrl: user.profilePictureUrl,
       );

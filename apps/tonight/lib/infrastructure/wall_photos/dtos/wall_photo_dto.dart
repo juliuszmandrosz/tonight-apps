@@ -17,6 +17,7 @@ class WallPhotoDto with _$WallPhotoDto {
     required String photoUrl,
     required String clubId,
     required String clubName,
+    @LatLngConverter() required LatLng clubLocation,
     required String eventId,
     required String eventName,
     required String userId,
@@ -24,7 +25,7 @@ class WallPhotoDto with _$WallPhotoDto {
     @TimestampJsonConverter() required DateTime eventEndDateTime,
     @TimestampJsonConverter() required DateTime createdAt,
     String? userProfilePhotoUrl,
-    @NullableLatLngConverter() LatLng? location,
+    @NullableLatLngConverter() LatLng? photoLocation,
     @Default(false) bool isVerified,
   }) = _WallPhotoDto;
 
@@ -34,6 +35,7 @@ class WallPhotoDto with _$WallPhotoDto {
       photoUrl: wallPhoto.photoUrl,
       clubId: wallPhoto.clubId,
       clubName: wallPhoto.clubName,
+      clubLocation: wallPhoto.clubLocation,
       username: wallPhoto.username,
       userId: wallPhoto.userId,
       eventId: wallPhoto.eventId,
@@ -42,7 +44,7 @@ class WallPhotoDto with _$WallPhotoDto {
       createdAt: wallPhoto.createdAt,
       userProfilePhotoUrl: wallPhoto.userProfilePhotoUrl,
       isVerified: wallPhoto.isVerified,
-      location: wallPhoto.location,
+      photoLocation: wallPhoto.photoLocation,
     );
   }
 
@@ -67,6 +69,7 @@ class WallPhotoDto with _$WallPhotoDto {
       photoUrl: photoUrl,
       clubId: clubId,
       clubName: clubName,
+      clubLocation: clubLocation,
       eventId: eventId,
       eventName: eventName,
       userId: userId,
@@ -75,7 +78,7 @@ class WallPhotoDto with _$WallPhotoDto {
       createdAt: createdAt,
       userProfilePhotoUrl: userProfilePhotoUrl,
       isVerified: isVerified,
-      location: location,
+      photoLocation: photoLocation,
     );
   }
 }
