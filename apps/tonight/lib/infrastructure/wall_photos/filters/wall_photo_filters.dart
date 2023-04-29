@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/show_only_other_users_photos_filter.dart';
-import 'package:tonight/infrastructure/wall_photos/filters/show_photos_from_clubs_filter.dart';
+import 'package:tonight/infrastructure/wall_photos/filters/show_photos_from_clubs_in_range_filter.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/show_photos_from_live_events_filter.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/wall_photo_phrase_filter.dart';
 
@@ -12,25 +12,24 @@ class WallPhotoFilters with _$WallPhotoFilters {
 
   factory WallPhotoFilters({
     required WallPhotoPhraseFilter phraseFilter,
-    required ShowPhotosFromClubsFilter showPhotosFromClubsFilter,
     required ShowPhotosFromLiveEventsFilter showPhotosFromLiveEventsFilter,
     required ShowOnlyOtherUsersPhotosFilter showOnlyOtherUsersPhotosFilter,
+    required ShowPhotosFromClubsInRangeFilter showPhotosFromClubsInRangeFilter,
   }) = _WallPhotoFilters;
 
   factory WallPhotoFilters.empty() => WallPhotoFilters(
-        phraseFilter: WallPhotoPhraseFilter(phrase: ''),
-        showPhotosFromClubsFilter: ShowPhotosFromClubsFilter(clubIds: []),
+        phraseFilter: WallPhotoPhraseFilter.empty(),
         showPhotosFromLiveEventsFilter: ShowPhotosFromLiveEventsFilter(),
-        showOnlyOtherUsersPhotosFilter: ShowOnlyOtherUsersPhotosFilter(
-          currentUserId: '',
-        ),
+        showOnlyOtherUsersPhotosFilter: ShowOnlyOtherUsersPhotosFilter.empty(),
+        showPhotosFromClubsInRangeFilter:
+            ShowPhotosFromClubsInRangeFilter.empty(),
       );
 
   String buildFilters() {
     var query = '';
 
     final filterList = [
-      showPhotosFromClubsFilter,
+      showPhotosFromClubsInRangeFilter,
       showPhotosFromLiveEventsFilter,
       showOnlyOtherUsersPhotosFilter
     ];

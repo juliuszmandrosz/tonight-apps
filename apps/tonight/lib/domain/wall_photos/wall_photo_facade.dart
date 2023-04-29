@@ -18,6 +18,7 @@ abstract class WallPhotoFacade {
   });
 
   Future<Either<WallPhotoFailure, List<WallPhoto>>> getPhotos({
+    required Option<LatLng> userLocation,
     int pageSize = 20,
     int offset = 0,
   });
