@@ -10,7 +10,6 @@ import 'package:events/events.dart';
 import 'package:events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
 import 'package:events/infrastructure/events_api.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -622,8 +621,6 @@ void _registerModules() {
   getIt.registerLazySingleton(() => FirebaseAuth.instance);
 
   getIt.registerLazySingleton(() => FirebaseMessaging.instance);
-
-  getIt.registerLazySingleton(() => FirebaseAppCheck.instance);
 
   getIt.registerLazySingleton(() => FirebaseAnalytics.instance);
 
