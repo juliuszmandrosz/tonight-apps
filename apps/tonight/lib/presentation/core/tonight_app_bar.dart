@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/sign_in/widgets/tonight_logo.dart';
 
@@ -17,6 +18,7 @@ class TonightAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      scrolledUnderElevation: title.isNullOrEmpty ? 0 : null,
       backgroundColor: backgroundColor,
       centerTitle: true,
       title: title != null
