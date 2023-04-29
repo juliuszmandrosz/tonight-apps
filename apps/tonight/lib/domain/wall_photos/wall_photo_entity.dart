@@ -8,6 +8,7 @@ class WallPhoto extends Equatable {
   final String photoUrl;
   final String clubId;
   final String clubName;
+  final LatLng clubLocation;
   final String eventId;
   final String eventName;
   final String userId;
@@ -15,7 +16,7 @@ class WallPhoto extends Equatable {
   final DateTime eventEndDateTime;
   final DateTime createdAt;
   final String? userProfilePhotoUrl;
-  final LatLng? location;
+  final LatLng? photoLocation;
   final bool isVerified;
 
   WallPhoto({
@@ -24,13 +25,14 @@ class WallPhoto extends Equatable {
     required this.photoUrl,
     required this.clubId,
     required this.clubName,
+    required this.clubLocation,
     required this.eventId,
     required this.eventName,
     required this.userId,
     required this.username,
     required this.eventEndDateTime,
     this.userProfilePhotoUrl,
-    this.location,
+    this.photoLocation,
     this.isVerified = false,
   })  : id = id ?? const Uuid().v1(),
         createdAt = createdAt ?? DateTime.now();
@@ -41,6 +43,7 @@ class WallPhoto extends Equatable {
         photoUrl,
         clubId,
         clubName,
+        clubLocation,
         eventId,
         eventName,
         userId,
@@ -48,7 +51,7 @@ class WallPhoto extends Equatable {
         eventEndDateTime,
         createdAt,
         userProfilePhotoUrl,
-        location,
+        photoLocation,
         isVerified,
       ];
 
@@ -56,13 +59,14 @@ class WallPhoto extends Equatable {
     String? photoUrl,
     String? clubId,
     String? clubName,
+    LatLng? clubLocation,
     String? eventId,
     String? eventName,
     String? userId,
     String? username,
     DateTime? eventEndDateTime,
     Option<String>? userProfilePhotoUrl,
-    Option<LatLng>? location,
+    Option<LatLng>? photoLocation,
     bool? isVerified,
   }) {
     return WallPhoto(
@@ -71,6 +75,7 @@ class WallPhoto extends Equatable {
       photoUrl: photoUrl ?? this.photoUrl,
       clubId: clubId ?? this.clubId,
       clubName: clubName ?? this.clubName,
+      clubLocation: clubLocation ?? this.clubLocation,
       eventId: eventId ?? this.eventId,
       eventName: eventName ?? this.eventName,
       userId: userId ?? this.userId,
@@ -82,12 +87,12 @@ class WallPhoto extends Equatable {
               (url) => url,
             )
           : this.userProfilePhotoUrl,
-      location: location != null
-          ? location.fold(
+      photoLocation: photoLocation != null
+          ? photoLocation.fold(
               () => null,
               (location) => location,
             )
-          : this.location,
+          : this.photoLocation,
       isVerified: isVerified ?? this.isVerified,
     );
   }
