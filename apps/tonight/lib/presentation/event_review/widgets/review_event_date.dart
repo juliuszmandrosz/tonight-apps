@@ -27,7 +27,11 @@ class ReviewEventDate extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10),
-        const FaIcon(FontAwesomeIcons.arrowRight),
+        FaIcon(
+          FontAwesomeIcons.arrowRight,
+          color: context.secondaryColor,
+          size: 16,
+        ),
         const SizedBox(width: 10),
         Flexible(
           child: AutoSizeText(

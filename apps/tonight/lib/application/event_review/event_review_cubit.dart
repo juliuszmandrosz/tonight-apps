@@ -53,7 +53,10 @@ class EventReviewCubit extends Cubit<EventReviewState> {
     if (!_validateForm()) return;
     emit(state.copyWith(submittingStatus: FormzStatus.submissionInProgress));
     final result = await _eventReviewAggregator.submitReview(
-      state.eventReviewForm.getOrCrash(),
+      state.eventReviewForm.getOrCrash().copyWith(
+            reviewValue: state.reviewValue,
+            reviewContent: state.reviewContent.value,
+          ),
     );
     result.fold(
       (failure) => _emitSubmitReviewFailure(),
