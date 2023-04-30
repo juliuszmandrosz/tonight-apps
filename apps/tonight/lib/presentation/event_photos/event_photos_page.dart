@@ -41,8 +41,9 @@ class EventPhotosPage extends StatelessWidget {
                       hasReachedMax: state.hasReachedMax,
                       isLoading: state.nextPageStatus.isLoading(),
                       hasError: state.nextPageStatus.isFailure(),
-                      itemBuilder: (_, i) =>
-                          EventPhotoCard(photo: state.photos[i]),
+                      itemBuilder: (_, i) => EventPhotoCard(
+                        photo: state.photos[i],
+                      ),
                       separatorBuilder: (_, __) => const SizedBox(height: 12),
                     ),
                   );

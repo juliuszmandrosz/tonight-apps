@@ -5,7 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class ShowPhotosFromClubsInRangeFilter implements IFilter {
   final Option<LatLng> userLocation;
   final double maxDistance;
-  static const fieldName = 'clubLocation';
+  static const fieldName = 'venueLocation';
 
   ShowPhotosFromClubsInRangeFilter({
     required this.userLocation,

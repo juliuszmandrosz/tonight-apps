@@ -12,7 +12,8 @@ class EventRoomAggregator {
   EventRoomAggregator(this._userAccountFacade, this._participantFacade);
 
   Future<Either<EventRoomFailure, Participant>> joinToRoom(
-      String eventId) async {
+    String eventId,
+  ) async {
     final userResult = await _userAccountFacade.getUserAccount().first;
     if (userResult.isLeft()) {
       return left(const EventRoomFailure.unexpected());

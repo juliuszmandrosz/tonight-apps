@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
+import 'package:dartz/dartz.dart' as dartz;
+import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
@@ -13,6 +15,7 @@ class WallPhotoPreview extends StatefulWidget {
   final double height;
   final VoidCallback onRetry;
   final bool isSelfie;
+  final dartz.Option<Event> event;
 
   const WallPhotoPreview({
     required this.photoPath,
@@ -20,6 +23,7 @@ class WallPhotoPreview extends StatefulWidget {
     required this.height,
     required this.onRetry,
     required this.isSelfie,
+    required this.event,
     Key? key,
   }) : super(key: key);
 
@@ -53,7 +57,8 @@ class _WallPhotoPreviewState extends State<WallPhotoPreview>
     super.dispose();
   }
 
-  Widget get _photo => Image.file(
+  Widget get _photo =>
+      Image.file(
         File(widget.photoPath),
         fit: BoxFit.cover,
         filterQuality: FilterQuality.high,
@@ -98,13 +103,15 @@ class _WallPhotoPreviewState extends State<WallPhotoPreview>
                   width: 130,
                   height: 45,
                   child: ElevatedButton.icon(
-                    onPressed: () => context.pushRoute(
-                      AddWallPhotoRoute(
-                        photoPath: widget.photoPath,
-                        heroTag: widget.heroTag,
-                        isSelfie: widget.isSelfie,
-                      ),
-                    ),
+                    onPressed: () =>
+                        context.pushRoute(
+                          AddWallPhotoRoute(
+                            photoPath: widget.photoPath,
+                            heroTag: widget.heroTag,
+                            isSelfie: widget.isSelfie,
+                            event: widget.event,
+                          ),
+                        ),
                     icon: const FaIcon(
                       FontAwesomeIcons.forward,
                       size: 18,

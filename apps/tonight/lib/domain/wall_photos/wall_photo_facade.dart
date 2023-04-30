@@ -7,14 +7,13 @@ import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
 
 abstract class WallPhotoFacade {
   Future<Either<WallPhotoFailure, Unit>> addPhoto({
-    required String clubId,
-    required String clubName,
-    required LatLng clubLocation,
+    required String venueId,
+    required String venueName,
+    required LatLng venueLocation,
     required String eventId,
     required String eventName,
     required DateTime eventEndDateTime,
     required Uint8List photo,
-    required bool isFromClub,
     required LatLng? photoLocation,
   });
 

@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:clubs/domain/club/club_entity.dart';
 import 'package:clubs/domain/club/user_club_facade.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
@@ -10,6 +9,7 @@ import 'package:events/domain/events/user_event_facade.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:tonight/application/add_wall_photo/wall_photo_venue_model.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
 
@@ -27,14 +27,21 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     this._wallPhotoFacade,
   ) : super(AddWallPhotoState.initial());
 
-  addPhotoToState({
+  initState({
     required String photoPath,
     required bool isSelfie,
+    required Option<Event> event,
   }) {
     emit(
       state.copyWith(
         photo: some(File(photoPath)),
         isSelfie: isSelfie,
+        initialEvent: event,
+        selectedEvent: event,
+        selectedVenue: event.fold(
+          () => none(),
+          (v) => some(WallPhotoVenue.fromEvent(v)),
+        ),
       ),
     );
   }
@@ -45,7 +52,7 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     emit(state.copyWith(userLocation: some(location)));
     final result = await _clubFacade.fetchNearestClubsInRange(
       userLocation: location,
-      radius: 0.5,
+      radius: 1,
     );
 
     result.fold(
@@ -56,30 +63,32 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
       ),
       (clubs) => emit(
         state.copyWith(
-          nearestClubs: clubs,
+          nearestVenues: clubs.map((c) => WallPhotoVenue.fromClub(c)).toList(),
           fetchNearestClubStatus: CubitStatus.success,
-          selectedClub: clubs.isEmpty ? none() : some(clubs.first),
+          selectedVenue: clubs.isEmpty
+              ? none()
+              : some(WallPhotoVenue.fromClub(clubs.first)),
         ),
       ),
     );
   }
 
-  selectClub(Club club) async {
-    emit(state.copyWith(selectedClub: some(club)));
+  selectVenue(WallPhotoVenue venue) async {
+    emit(state.copyWith(selectedVenue: some(venue)));
   }
 
   selectEvent(Event event) {
     emit(state.copyWith(selectedEvent: some(event)));
   }
 
-  fetchLiveEventsFromClub(Club club) async {
+  fetchLiveEventsFromClub(WallPhotoVenue venue) async {
     emit(
       state.copyWith(
         fetchLiveEventsStatus: CubitStatus.loading,
         selectedEvent: none(),
       ),
     );
-    final result = await _eventFacade.fetchLiveEventsFromClub(club.id);
+    final result = await _eventFacade.fetchLiveEventsFromClub(venue.venueId);
     result.fold(
       (failure) => emit(
         state.copyWith(
@@ -104,7 +113,7 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     }
     emit(state.copyWith(addPhotoStatus: CubitStatus.loading));
     final selectedEvent = state.selectedEvent.getOrCrash();
-    final clubLocation = state.selectedClub.getOrCrash().location;
+    final venueLocation = state.selectedVenue.getOrCrash().venueLocation;
     final processedPhoto = await _processPhoto();
     if (processedPhoto.isNone()) {
       emit(state.copyWith(addPhotoStatus: CubitStatus.failure));
@@ -113,18 +122,17 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
       return;
     }
     final result = await _wallPhotoFacade.addPhoto(
-      clubId: selectedEvent.clubId,
-      clubName: selectedEvent.clubName,
+      venueId: selectedEvent.clubId,
+      venueName: selectedEvent.clubName,
       eventId: selectedEvent.id,
       eventName: selectedEvent.eventName,
       eventEndDateTime: selectedEvent.eventEndDateTime,
       photo: processedPhoto.getOrCrash(),
-      clubLocation: LatLng(clubLocation[latitude]!, clubLocation[longitude]!),
+      venueLocation: venueLocation,
       photoLocation: state.userLocation.fold(
         () => null,
         (location) => location,
       ),
-      isFromClub: true,
     );
     result.fold(
       (failure) {

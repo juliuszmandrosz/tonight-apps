@@ -1,4 +1,6 @@
 import 'package:common/common.dart';
+import 'package:dartz/dartz.dart';
+import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/add_wall_photo/add_wall_photo_cubit.dart';
@@ -14,11 +16,13 @@ class AddWallPhotoPage extends StatelessWidget {
   final String photoPath;
   final String heroTag;
   final bool isSelfie;
+  final Option<Event> event;
 
   const AddWallPhotoPage({
     required this.photoPath,
     required this.heroTag,
     required this.isSelfie,
+    required this.event,
     Key? key,
   }) : super(key: key);
 
@@ -29,11 +33,12 @@ class AddWallPhotoPage extends StatelessWidget {
       create: (context) {
         final locationCubit = context.read<UserLocationCubit>();
         final photoCubit = getIt<AddWallPhotoCubit>();
-        photoCubit.addPhotoToState(
+        photoCubit.initState(
           photoPath: photoPath,
           isSelfie: isSelfie,
+          event: event,
         );
-        if (locationCubit.state.isPermissionGranted) {
+        if (locationCubit.state.isPermissionGranted && event.isNone()) {
           photoCubit.fetchNearestClubs(
             locationCubit.getCurrentLatLngOrCrash(),
           );
