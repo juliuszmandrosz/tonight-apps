@@ -56,7 +56,6 @@ class ProfilePage extends HookWidget {
                 controller: scrollController,
                 child: Column(
                   children: [
-                    const SizedBox(height: 40),
                     ProfileUserPicture(
                       profilePictureUrl: userProfile.profilePictureUrl,
                       username: userProfile.username,
