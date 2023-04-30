@@ -1,4 +1,3 @@
-import 'package:account_settings/account_settings.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:tonight/application/event_chat/aggregator/event_chat_failure.dart';
@@ -6,19 +5,12 @@ import 'package:tonight/application/event_chat/models/chat_message_model.dart';
 import 'package:tonight/application/event_chat/models/chat_user_model.dart';
 import 'package:tonight/domain/messages/message_facade.dart';
 import 'package:tonight/domain/participants/participant_entity.dart';
-import 'package:tonight/domain/participants/participant_facade.dart';
 import 'package:uuid/uuid.dart';
 
 class EventChatAggregator {
-  final UserAccountFacade _userAccountFacade;
   final MessageFacade _messageFacade;
-  final ParticipantFacade _participantFacade;
 
-  EventChatAggregator(
-    this._userAccountFacade,
-    this._messageFacade,
-    this._participantFacade,
-  );
+  EventChatAggregator(this._messageFacade);
 
   Stream<Either<ChatMessage, ChatMessage>> sendMessage({
     required String roomId,
@@ -73,29 +65,9 @@ class EventChatAggregator {
   Stream<Either<EventChatFailure, Tuple2<ChatUser, List<ChatMessage>>>>
       joinToChat({
     required String roomId,
+    required Participant currentUser,
     int pageSize = 20,
   }) async* {
-    final userResult = await _userAccountFacade.getUserAccount().first;
-    if (userResult.isLeft()) {
-      yield left(const EventChatFailure.unexpected());
-      return;
-    }
-    final currentUser = ChatUser.fromDomain(
-      userResult.getRightOrCrash(),
-    );
-    final participant = Participant(
-      userId: currentUser.userId,
-      username: currentUser.username,
-      profilePictureUrl: currentUser.userPictureUrl,
-    );
-    final addParticipantResult = await _participantFacade.addParticipant(
-      participant: participant,
-      roomId: roomId,
-    );
-    if (addParticipantResult.isLeft()) {
-      yield left(const EventChatFailure.unexpected());
-      return;
-    }
     yield* _messageFacade
         .listenToMessages(roomId: roomId, pageSize: pageSize)
         .map(
@@ -115,7 +87,12 @@ class EventChatAggregator {
                   ),
                 )
                 .toList();
-            return right(Tuple2(currentUser, chatMessages));
+            return right(
+              Tuple2(
+                ChatUser.fromParticipant(currentUser),
+                chatMessages,
+              ),
+            );
           },
         );
       },

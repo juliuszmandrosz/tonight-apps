@@ -42,6 +42,8 @@ import 'package:tonight/application/event_chat/aggregator/event_chat_aggregator.
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
 import 'package:tonight/application/event_participants/event_participants_bloc.dart';
 import 'package:tonight/application/event_review/event_review_cubit.dart';
+import 'package:tonight/application/event_room/aggregator/event_room_aggregator.dart';
+import 'package:tonight/application/event_room/bloc/event_room_bloc.dart';
 import 'package:tonight/application/events/event_city_picker/event_city_picker_bloc.dart';
 import 'package:tonight/application/events/event_date_picker/event_date_picker_cubit.dart';
 import 'package:tonight/application/events/event_details/event_details_cubit.dart';
@@ -348,6 +350,12 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  getIt.registerFactory(
+    () => EventRoomBloc(
+      getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
@@ -596,9 +604,14 @@ void _registerAggregators() {
   );
 
   getIt.registerLazySingleton(
+    () => EventRoomAggregator(
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
     () => EventChatAggregator(
-      getIt(),
-      getIt(),
       getIt(),
     ),
   );
