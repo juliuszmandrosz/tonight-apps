@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventChatEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) chatInitialized,
+    required TResult Function(Event event, Participant participant)
+        chatInitialized,
     required TResult Function() nextPageMessagesFetched,
     required TResult Function() messageSent,
     required TResult Function(String message) inputMessageChanged,
@@ -27,7 +28,7 @@ mixin _$EventChatEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? chatInitialized,
+    TResult? Function(Event event, Participant participant)? chatInitialized,
     TResult? Function()? nextPageMessagesFetched,
     TResult? Function()? messageSent,
     TResult? Function(String message)? inputMessageChanged,
@@ -36,7 +37,7 @@ mixin _$EventChatEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? chatInitialized,
+    TResult Function(Event event, Participant participant)? chatInitialized,
     TResult Function()? nextPageMessagesFetched,
     TResult Function()? messageSent,
     TResult Function(String message)? inputMessageChanged,
@@ -99,7 +100,7 @@ abstract class _$$_ChatInitializedCopyWith<$Res> {
           _$_ChatInitialized value, $Res Function(_$_ChatInitialized) then) =
       __$$_ChatInitializedCopyWithImpl<$Res>;
   @useResult
-  $Res call({Event event});
+  $Res call({Event event, Participant participant});
 }
 
 /// @nodoc
@@ -114,12 +115,17 @@ class __$$_ChatInitializedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? event = null,
+    Object? participant = null,
   }) {
     return _then(_$_ChatInitialized(
-      null == event
+      event: null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
               as Event,
+      participant: null == participant
+          ? _value.participant
+          : participant // ignore: cast_nullable_to_non_nullable
+              as Participant,
     ));
   }
 }
@@ -127,14 +133,16 @@ class __$$_ChatInitializedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ChatInitialized implements _ChatInitialized {
-  const _$_ChatInitialized(this.event);
+  const _$_ChatInitialized({required this.event, required this.participant});
 
   @override
   final Event event;
+  @override
+  final Participant participant;
 
   @override
   String toString() {
-    return 'EventChatEvent.chatInitialized(event: $event)';
+    return 'EventChatEvent.chatInitialized(event: $event, participant: $participant)';
   }
 
   @override
@@ -142,11 +150,13 @@ class _$_ChatInitialized implements _ChatInitialized {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChatInitialized &&
-            (identical(other.event, event) || other.event == event));
+            (identical(other.event, event) || other.event == event) &&
+            (identical(other.participant, participant) ||
+                other.participant == participant));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, event);
+  int get hashCode => Object.hash(runtimeType, event, participant);
 
   @JsonKey(ignore: true)
   @override
@@ -157,31 +167,32 @@ class _$_ChatInitialized implements _ChatInitialized {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) chatInitialized,
+    required TResult Function(Event event, Participant participant)
+        chatInitialized,
     required TResult Function() nextPageMessagesFetched,
     required TResult Function() messageSent,
     required TResult Function(String message) inputMessageChanged,
     required TResult Function(ChatMessage message) messageResent,
   }) {
-    return chatInitialized(event);
+    return chatInitialized(event, participant);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? chatInitialized,
+    TResult? Function(Event event, Participant participant)? chatInitialized,
     TResult? Function()? nextPageMessagesFetched,
     TResult? Function()? messageSent,
     TResult? Function(String message)? inputMessageChanged,
     TResult? Function(ChatMessage message)? messageResent,
   }) {
-    return chatInitialized?.call(event);
+    return chatInitialized?.call(event, participant);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? chatInitialized,
+    TResult Function(Event event, Participant participant)? chatInitialized,
     TResult Function()? nextPageMessagesFetched,
     TResult Function()? messageSent,
     TResult Function(String message)? inputMessageChanged,
@@ -189,7 +200,7 @@ class _$_ChatInitialized implements _ChatInitialized {
     required TResult orElse(),
   }) {
     if (chatInitialized != null) {
-      return chatInitialized(event);
+      return chatInitialized(event, participant);
     }
     return orElse();
   }
@@ -237,9 +248,12 @@ class _$_ChatInitialized implements _ChatInitialized {
 }
 
 abstract class _ChatInitialized implements EventChatEvent {
-  const factory _ChatInitialized(final Event event) = _$_ChatInitialized;
+  const factory _ChatInitialized(
+      {required final Event event,
+      required final Participant participant}) = _$_ChatInitialized;
 
   Event get event;
+  Participant get participant;
   @JsonKey(ignore: true)
   _$$_ChatInitializedCopyWith<_$_ChatInitialized> get copyWith =>
       throw _privateConstructorUsedError;
@@ -284,7 +298,8 @@ class _$_NextPageMessagesFetched implements _NextPageMessagesFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) chatInitialized,
+    required TResult Function(Event event, Participant participant)
+        chatInitialized,
     required TResult Function() nextPageMessagesFetched,
     required TResult Function() messageSent,
     required TResult Function(String message) inputMessageChanged,
@@ -296,7 +311,7 @@ class _$_NextPageMessagesFetched implements _NextPageMessagesFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? chatInitialized,
+    TResult? Function(Event event, Participant participant)? chatInitialized,
     TResult? Function()? nextPageMessagesFetched,
     TResult? Function()? messageSent,
     TResult? Function(String message)? inputMessageChanged,
@@ -308,7 +323,7 @@ class _$_NextPageMessagesFetched implements _NextPageMessagesFetched {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? chatInitialized,
+    TResult Function(Event event, Participant participant)? chatInitialized,
     TResult Function()? nextPageMessagesFetched,
     TResult Function()? messageSent,
     TResult Function(String message)? inputMessageChanged,
@@ -405,7 +420,8 @@ class _$_MessageSent implements _MessageSent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) chatInitialized,
+    required TResult Function(Event event, Participant participant)
+        chatInitialized,
     required TResult Function() nextPageMessagesFetched,
     required TResult Function() messageSent,
     required TResult Function(String message) inputMessageChanged,
@@ -417,7 +433,7 @@ class _$_MessageSent implements _MessageSent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? chatInitialized,
+    TResult? Function(Event event, Participant participant)? chatInitialized,
     TResult? Function()? nextPageMessagesFetched,
     TResult? Function()? messageSent,
     TResult? Function(String message)? inputMessageChanged,
@@ -429,7 +445,7 @@ class _$_MessageSent implements _MessageSent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? chatInitialized,
+    TResult Function(Event event, Participant participant)? chatInitialized,
     TResult Function()? nextPageMessagesFetched,
     TResult Function()? messageSent,
     TResult Function(String message)? inputMessageChanged,
@@ -553,7 +569,8 @@ class _$_InputMessageChanged implements _InputMessageChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) chatInitialized,
+    required TResult Function(Event event, Participant participant)
+        chatInitialized,
     required TResult Function() nextPageMessagesFetched,
     required TResult Function() messageSent,
     required TResult Function(String message) inputMessageChanged,
@@ -565,7 +582,7 @@ class _$_InputMessageChanged implements _InputMessageChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? chatInitialized,
+    TResult? Function(Event event, Participant participant)? chatInitialized,
     TResult? Function()? nextPageMessagesFetched,
     TResult? Function()? messageSent,
     TResult? Function(String message)? inputMessageChanged,
@@ -577,7 +594,7 @@ class _$_InputMessageChanged implements _InputMessageChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? chatInitialized,
+    TResult Function(Event event, Participant participant)? chatInitialized,
     TResult Function()? nextPageMessagesFetched,
     TResult Function()? messageSent,
     TResult Function(String message)? inputMessageChanged,
@@ -716,7 +733,8 @@ class _$_MessageResent implements _MessageResent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) chatInitialized,
+    required TResult Function(Event event, Participant participant)
+        chatInitialized,
     required TResult Function() nextPageMessagesFetched,
     required TResult Function() messageSent,
     required TResult Function(String message) inputMessageChanged,
@@ -728,7 +746,7 @@ class _$_MessageResent implements _MessageResent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? chatInitialized,
+    TResult? Function(Event event, Participant participant)? chatInitialized,
     TResult? Function()? nextPageMessagesFetched,
     TResult? Function()? messageSent,
     TResult? Function(String message)? inputMessageChanged,
@@ -740,7 +758,7 @@ class _$_MessageResent implements _MessageResent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? chatInitialized,
+    TResult Function(Event event, Participant participant)? chatInitialized,
     TResult Function()? nextPageMessagesFetched,
     TResult Function()? messageSent,
     TResult Function(String message)? inputMessageChanged,

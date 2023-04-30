@@ -9,6 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/application/event_chat/aggregator/event_chat_aggregator.dart';
 import 'package:tonight/application/event_chat/models/chat_message_model.dart';
 import 'package:tonight/application/event_chat/models/chat_user_model.dart';
+import 'package:tonight/domain/participants/participant_entity.dart';
 
 part 'event_chat_bloc.freezed.dart';
 part 'event_chat_event.dart';
@@ -38,6 +39,7 @@ class EventChatBloc extends Bloc<EventChatEvent, EventChatState> {
     await emit.forEach(
       _eventChatAggregator.joinToChat(
         roomId: event.event.id,
+        currentUser: event.participant,
         pageSize: _pageSize,
       ),
       onData: (data) => data.fold(

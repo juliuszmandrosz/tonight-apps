@@ -7,12 +7,12 @@ import 'package:tonight/presentation/club_city_picker/club_city_picker_page.dart
 import 'package:tonight/presentation/club_details/club_details_page.dart';
 import 'package:tonight/presentation/contact/contact_page.dart';
 import 'package:tonight/presentation/discover/discover_page.dart';
-import 'package:tonight/presentation/event_chat/event_chat_page.dart';
 import 'package:tonight/presentation/event_city_picker/event_city_picker_page.dart';
 import 'package:tonight/presentation/event_date_picker/event_date_picker_page.dart';
 import 'package:tonight/presentation/event_filters/event_filters_page.dart';
 import 'package:tonight/presentation/event_participants/event_participants_page.dart';
 import 'package:tonight/presentation/event_review/review_page.dart';
+import 'package:tonight/presentation/event_room/event_room_page.dart';
 import 'package:tonight/presentation/events_details/event_details_page.dart';
 import 'package:tonight/presentation/failure/failure_page.dart';
 import 'package:tonight/presentation/favorites/favorites_page.dart';
@@ -216,7 +216,7 @@ const animationDuration = 300;
       durationInMilliseconds: animationDuration,
     ),
     CustomRoute(
-      page: EventChatPage,
+      page: EventRoomPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
