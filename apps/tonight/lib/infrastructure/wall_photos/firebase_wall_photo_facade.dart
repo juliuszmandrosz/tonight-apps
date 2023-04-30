@@ -126,7 +126,8 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
           .orderBy('createdAt', descending: true)
           .limit(pageSize);
       if (lastPhoto != null) {
-        query = query.startAfter([lastPhoto.createdAt]);
+        final lastDoc = await _firestore.wallPhotos.doc(lastPhoto.id).get();
+        query = query.startAfterDocument(lastDoc);
       }
       final result = await query.get();
       return right(
