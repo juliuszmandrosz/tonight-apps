@@ -20,7 +20,10 @@ class EventPhotosBloc extends Bloc<EventPhotosEvent, EventPhotosState> {
   EventPhotosBloc(this._wallPhotoFacade) : super(EventPhotosState.initial()) {
     on<_PhotosFetched>(_onPhotosFetched);
     on<_PhotosRefreshed>(_onPhotosRefreshed);
-    on<_NextPagePhotosFetched>(_onNextPagePhotosFetched);
+    on<_NextPagePhotosFetched>(
+      _onNextPagePhotosFetched,
+      transformer: throttleDroppable(),
+    );
     on<_PhotoAdded>(_onPhotoAdded);
   }
 
