@@ -15,9 +15,7 @@ class EventDetailsJoinButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
-      onPressed: () => context.pushRoute(
-        EventChatRoute(event: event),
-      ),
+      onPressed: () => context.pushRoute(EventRoomRoute(event: event)),
       icon: const FaIcon(FontAwesomeIcons.arrowRightToBracket),
       // TODO - add translation
       label: const Text('Dołącz'),

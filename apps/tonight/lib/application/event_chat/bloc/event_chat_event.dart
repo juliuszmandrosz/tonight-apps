@@ -2,7 +2,10 @@ part of 'event_chat_bloc.dart';
 
 @freezed
 class EventChatEvent with _$EventChatEvent {
-  const factory EventChatEvent.chatInitialized(Event event) = _ChatInitialized;
+  const factory EventChatEvent.chatInitialized({
+    required Event event,
+    required Participant participant,
+  }) = _ChatInitialized;
 
   const factory EventChatEvent.nextPageMessagesFetched() =
       _NextPageMessagesFetched;
