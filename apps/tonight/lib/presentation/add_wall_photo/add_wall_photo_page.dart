@@ -49,7 +49,7 @@ class AddWallPhotoPage extends StatelessWidget {
         child: Scaffold(
           // TODO - add translation
           appBar: const TonightAppBar(title: 'Opublikuj'),
-          floatingActionButton: const AddWallPhotoButton(),
+          floatingActionButton: AddWallPhotoButton(event: event),
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
