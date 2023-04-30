@@ -63,7 +63,7 @@ class _WallPhotoCameraPreviewPageState
                 : CameraAwesomeBuilder.awesome(
                     enableAudio: false,
                     enablePhysicalButton: true,
-                    sensor: Sensors.front,
+                    sensor: _isSelfie ? Sensors.front : Sensors.back,
                     showPreview: false,
                     progressIndicator: const WaveLoadingIndicator(),
                     exifPreferences: ExifPreferences(
