@@ -48,6 +48,7 @@ class ChatMessage with _$ChatMessage {
       nextMessage: nextMessage,
       message: message,
       isJoinedInfo: message.isJoinedInfo,
+      isLeftInfo: message.isLeftInfo,
     );
     final isFirstMessageFromDay = _checkIfFirstMessageFromDay(
       nextMessage: nextMessage,
@@ -86,8 +87,9 @@ class ChatMessage with _$ChatMessage {
     required Message? previousMessage,
     required Message? nextMessage,
     required bool isJoinedInfo,
+    required bool isLeftInfo,
   }) {
-    if (isJoinedInfo) {
+    if (isJoinedInfo || isLeftInfo) {
       return false;
     }
 
