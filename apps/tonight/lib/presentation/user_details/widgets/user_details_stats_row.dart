@@ -24,11 +24,7 @@ class UserDetailsStatsRow extends StatelessWidget {
             icon: FontAwesomeIcons.images,
             onTap: null,
           ),
-          const VerticalDivider(
-            // width: 20,
-            thickness: 1,
-            // color: context.,
-          ),
+          const VerticalDivider(width: 1),
           UserDetailTile(
             label: 'Kluby',
             value: user.favoriteClubs.length,
