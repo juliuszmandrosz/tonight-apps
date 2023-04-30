@@ -54,6 +54,7 @@ class ProfilePage extends HookWidget {
                   .add(const ProfileEvent.photosRefreshed()),
               child: SingleChildScrollView(
                 controller: scrollController,
+                physics: const AlwaysScrollableScrollPhysics(),
                 child: Column(
                   children: [
                     ProfileUserPicture(
