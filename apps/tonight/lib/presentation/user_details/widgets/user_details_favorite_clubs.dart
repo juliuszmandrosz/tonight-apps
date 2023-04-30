@@ -27,10 +27,11 @@ class UserDetailsFavoriteClubs extends StatelessWidget {
               text: S().favoriteClubs,
               isSmallerVersion: true,
             ),
-            const FaIcon(
-              FontAwesomeIcons.chevronRight,
-              size: 16,
-            ),
+            if (favoriteClubs.length > 1)
+              const FaIcon(
+                FontAwesomeIcons.chevronRight,
+                size: 16,
+              ),
           ],
         ),
         const SizedBox(height: 16),
