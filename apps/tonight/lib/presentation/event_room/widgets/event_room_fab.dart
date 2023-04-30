@@ -19,9 +19,19 @@ class EventRoomFab extends StatelessWidget {
         return state.selectedTab != EventRoomTab.photos
             ? const SizedBox.shrink()
             : FloatingActionButton(
-                onPressed: () => context.pushRoute(
-                  WallPhotoCameraPreviewRoute(event: event),
-                ),
+                onPressed: () {
+                  final eventStartDateTime =
+                      event.getOrCrash().eventStartDateTime;
+                  if (eventStartDateTime.isAfter(DateTime.now())) {
+                    context.showSnackbarMessage(
+                      'Wydarzenie jeszcze się nie rozpoczęło',
+                    );
+                    return;
+                  }
+                  context.pushRoute(
+                    WallPhotoCameraPreviewRoute(event: event),
+                  );
+                },
                 child: const FaIcon(FontAwesomeIcons.camera),
               );
       },
