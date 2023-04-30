@@ -13,16 +13,17 @@ class ReviewSubtitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: Text(
-              review.userOpinion,
-              style: context.titleMedium,
+        if (review.userOpinion.isNotNullOrEmpty)
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Text(
+                review.userOpinion,
+                style: context.titleMedium,
+              ),
             ),
           ),
-        ),
         const SizedBox(height: 10),
         Stack(
           alignment: Alignment.center,
