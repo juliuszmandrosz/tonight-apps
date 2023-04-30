@@ -27,12 +27,12 @@ import '../club_city_picker/club_city_picker_page.dart' as _i12;
 import '../club_details/club_details_page.dart' as _i8;
 import '../contact/contact_page.dart' as _i25;
 import '../discover/discover_page.dart' as _i35;
-import '../event_chat/event_chat_page.dart' as _i32;
 import '../event_city_picker/event_city_picker_page.dart' as _i11;
 import '../event_date_picker/event_date_picker_page.dart' as _i10;
 import '../event_filters/event_filters_page.dart' as _i5;
 import '../event_participants/event_participants_page.dart' as _i33;
 import '../event_review/review_page.dart' as _i23;
+import '../event_room/event_room_page.dart' as _i32;
 import '../events_details/event_details_page.dart' as _i6;
 import '../failure/failure_page.dart' as _i20;
 import '../favorites/favorites_page.dart' as _i31;
@@ -462,11 +462,11 @@ class AppRouter extends _i37.RootStackRouter {
         barrierDismissible: false,
       );
     },
-    EventChatRoute.name: (routeData) {
-      final args = routeData.argsAs<EventChatRouteArgs>();
+    EventRoomRoute.name: (routeData) {
+      final args = routeData.argsAs<EventRoomRouteArgs>();
       return _i37.CustomPage<dynamic>(
         routeData: routeData,
-        child: _i32.EventChatPage(
+        child: _i32.EventRoomPage(
           event: args.event,
           key: args.key,
         ),
@@ -666,8 +666,8 @@ class AppRouter extends _i37.RootStackRouter {
           path: '/favorites-page',
         ),
         _i37.RouteConfig(
-          EventChatRoute.name,
-          path: '/event-chat-page',
+          EventRoomRoute.name,
+          path: '/event-room-page',
         ),
         _i37.RouteConfig(
           EventParticipantsRoute.name,
@@ -1515,25 +1515,25 @@ class FavoritesRoute extends _i37.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i32.EventChatPage]
-class EventChatRoute extends _i37.PageRouteInfo<EventChatRouteArgs> {
-  EventChatRoute({
+/// [_i32.EventRoomPage]
+class EventRoomRoute extends _i37.PageRouteInfo<EventRoomRouteArgs> {
+  EventRoomRoute({
     required _i45.Event event,
     _i38.Key? key,
   }) : super(
-          EventChatRoute.name,
-          path: '/event-chat-page',
-          args: EventChatRouteArgs(
+          EventRoomRoute.name,
+          path: '/event-room-page',
+          args: EventRoomRouteArgs(
             event: event,
             key: key,
           ),
         );
 
-  static const String name = 'EventChatRoute';
+  static const String name = 'EventRoomRoute';
 }
 
-class EventChatRouteArgs {
-  const EventChatRouteArgs({
+class EventRoomRouteArgs {
+  const EventRoomRouteArgs({
     required this.event,
     this.key,
   });
@@ -1544,7 +1544,7 @@ class EventChatRouteArgs {
 
   @override
   String toString() {
-    return 'EventChatRouteArgs{event: $event, key: $key}';
+    return 'EventRoomRouteArgs{event: $event, key: $key}';
   }
 }
 

@@ -124,12 +124,13 @@ class __$$_ChatUserCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChatUser implements _ChatUser {
+class _$_ChatUser extends _ChatUser {
   const _$_ChatUser(
       {required this.color,
       required this.userId,
       required this.username,
-      this.userPictureUrl});
+      this.userPictureUrl})
+      : super._();
 
   @override
   final Color color;
@@ -169,12 +170,13 @@ class _$_ChatUser implements _ChatUser {
       __$$_ChatUserCopyWithImpl<_$_ChatUser>(this, _$identity);
 }
 
-abstract class _ChatUser implements ChatUser {
+abstract class _ChatUser extends ChatUser {
   const factory _ChatUser(
       {required final Color color,
       required final String userId,
       required final String username,
       final String? userPictureUrl}) = _$_ChatUser;
+  const _ChatUser._() : super._();
 
   @override
   Color get color;
