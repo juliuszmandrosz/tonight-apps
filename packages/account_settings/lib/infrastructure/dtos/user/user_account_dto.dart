@@ -21,6 +21,7 @@ class UserAccountDto with _$UserAccountDto {
     @Default([]) List<String> pushNotificationTokens,
     @Default(0) int raverCoins,
     @Default(0) int ticketsCount,
+    @Default(0) int photosCount,
   }) = _UserAccountDto;
 
   factory UserAccountDto.fromDomain(UserAccount user) {
@@ -35,6 +36,7 @@ class UserAccountDto with _$UserAccountDto {
       pushNotificationTokens: user.pushNotificationTokens,
       raverCoins: user.raverCoins,
       ticketsCount: user.ticketsCount,
+      photosCount: user.photosCount,
     );
   }
 
@@ -59,6 +61,7 @@ class UserAccountDto with _$UserAccountDto {
       pushNotificationTokens: pushNotificationTokens,
       raverCoins: raverCoins,
       ticketsCount: ticketsCount,
+      photosCount: photosCount,
     );
   }
 }

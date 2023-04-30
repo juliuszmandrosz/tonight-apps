@@ -31,6 +31,7 @@ mixin _$UserAccountDto {
   List<String> get pushNotificationTokens => throw _privateConstructorUsedError;
   int get raverCoins => throw _privateConstructorUsedError;
   int get ticketsCount => throw _privateConstructorUsedError;
+  int get photosCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +55,8 @@ abstract class $UserAccountDtoCopyWith<$Res> {
       Map<String, int> attendance,
       List<String> pushNotificationTokens,
       int raverCoins,
-      int ticketsCount});
+      int ticketsCount,
+      int photosCount});
 }
 
 /// @nodoc
@@ -80,6 +82,7 @@ class _$UserAccountDtoCopyWithImpl<$Res, $Val extends UserAccountDto>
     Object? pushNotificationTokens = null,
     Object? raverCoins = null,
     Object? ticketsCount = null,
+    Object? photosCount = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -122,6 +125,10 @@ class _$UserAccountDtoCopyWithImpl<$Res, $Val extends UserAccountDto>
           ? _value.ticketsCount
           : ticketsCount // ignore: cast_nullable_to_non_nullable
               as int,
+      photosCount: null == photosCount
+          ? _value.photosCount
+          : photosCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -144,7 +151,8 @@ abstract class _$$_UserAccountDtoCopyWith<$Res>
       Map<String, int> attendance,
       List<String> pushNotificationTokens,
       int raverCoins,
-      int ticketsCount});
+      int ticketsCount,
+      int photosCount});
 }
 
 /// @nodoc
@@ -168,6 +176,7 @@ class __$$_UserAccountDtoCopyWithImpl<$Res>
     Object? pushNotificationTokens = null,
     Object? raverCoins = null,
     Object? ticketsCount = null,
+    Object? photosCount = null,
   }) {
     return _then(_$_UserAccountDto(
       id: freezed == id
@@ -210,6 +219,10 @@ class __$$_UserAccountDtoCopyWithImpl<$Res>
           ? _value.ticketsCount
           : ticketsCount // ignore: cast_nullable_to_non_nullable
               as int,
+      photosCount: null == photosCount
+          ? _value.photosCount
+          : photosCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -228,7 +241,8 @@ class _$_UserAccountDto extends _UserAccountDto {
       final Map<String, int> attendance = const {},
       final List<String> pushNotificationTokens = const [],
       this.raverCoins = 0,
-      this.ticketsCount = 0})
+      this.ticketsCount = 0,
+      this.photosCount = 0})
       : _favoriteClubIds = favoriteClubIds,
         _favoriteEventIds = favoriteEventIds,
         _attendance = attendance,
@@ -293,10 +307,13 @@ class _$_UserAccountDto extends _UserAccountDto {
   @override
   @JsonKey()
   final int ticketsCount;
+  @override
+  @JsonKey()
+  final int photosCount;
 
   @override
   String toString() {
-    return 'UserAccountDto(id: $id, email: $email, profilePictureUrl: $profilePictureUrl, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens, raverCoins: $raverCoins, ticketsCount: $ticketsCount)';
+    return 'UserAccountDto(id: $id, email: $email, profilePictureUrl: $profilePictureUrl, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens, raverCoins: $raverCoins, ticketsCount: $ticketsCount, photosCount: $photosCount)';
   }
 
   @override
@@ -321,7 +338,9 @@ class _$_UserAccountDto extends _UserAccountDto {
             (identical(other.raverCoins, raverCoins) ||
                 other.raverCoins == raverCoins) &&
             (identical(other.ticketsCount, ticketsCount) ||
-                other.ticketsCount == ticketsCount));
+                other.ticketsCount == ticketsCount) &&
+            (identical(other.photosCount, photosCount) ||
+                other.photosCount == photosCount));
   }
 
   @JsonKey(ignore: true)
@@ -337,7 +356,8 @@ class _$_UserAccountDto extends _UserAccountDto {
       const DeepCollectionEquality().hash(_attendance),
       const DeepCollectionEquality().hash(_pushNotificationTokens),
       raverCoins,
-      ticketsCount);
+      ticketsCount,
+      photosCount);
 
   @JsonKey(ignore: true)
   @override
@@ -364,7 +384,8 @@ abstract class _UserAccountDto extends UserAccountDto {
       final Map<String, int> attendance,
       final List<String> pushNotificationTokens,
       final int raverCoins,
-      final int ticketsCount}) = _$_UserAccountDto;
+      final int ticketsCount,
+      final int photosCount}) = _$_UserAccountDto;
   const _UserAccountDto._() : super._();
 
   factory _UserAccountDto.fromJson(Map<String, dynamic> json) =
@@ -391,6 +412,8 @@ abstract class _UserAccountDto extends UserAccountDto {
   int get raverCoins;
   @override
   int get ticketsCount;
+  @override
+  int get photosCount;
   @override
   @JsonKey(ignore: true)
   _$$_UserAccountDtoCopyWith<_$_UserAccountDto> get copyWith =>

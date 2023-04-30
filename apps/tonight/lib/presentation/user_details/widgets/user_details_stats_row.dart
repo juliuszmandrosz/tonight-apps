@@ -19,18 +19,18 @@ class UserDetailsStatsRow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           UserDetailTile(
-            label: 'Raver Coins',
-            value: user.raverCoins,
-            icon: FontAwesomeIcons.coins,
+            label: S().photos(2),
+            value: user.totalPhotos,
+            icon: FontAwesomeIcons.images,
             onTap: null,
           ),
           const VerticalDivider(
-            width: 20,
+            // width: 20,
             thickness: 1,
             // color: context.,
           ),
           UserDetailTile(
-            label: S().favoriteClubs,
+            label: 'Kluby',
             value: user.favoriteClubs.length,
             icon: FontAwesomeIcons.solidHeart,
             onTap: null,
