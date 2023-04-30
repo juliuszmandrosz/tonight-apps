@@ -18,7 +18,7 @@ class OnboardingPage extends StatelessWidget {
       showSkipButton: true,
       skip: TextButton(
         onPressed: () => context.pushRoute(const SignInRoute()),
-        // TODO - add translations
+        // TODO - add translation
         child: Text('Pomiń'),
       ),
       pages: [
@@ -26,13 +26,23 @@ class OnboardingPage extends StatelessWidget {
           context: context,
           icon: FontAwesomeIcons.fire,
           title: S().welcomeToTonight,
-          body: S().discoverClubs,
+          // TODO - add translation
+          body: 'Znajdź najlepsze imprezy w swoim mieście',
         ),
         onboardingPageView(
           context: context,
           icon: FontAwesomeIcons.trophy,
           title: S().receiveRewards,
-          body: S().collectBenefitsInClubs,
+          // TODO - add translation
+          body:
+              'Kolekcjonuj benefity w klubach za dzieleniem się zdjęciami z imprez',
+        ),
+        onboardingPageView(
+          context: context,
+          icon: FontAwesomeIcons.peopleArrows,
+          // TODO - add translations
+          title: 'Poznawaj nowe osoby',
+          body: 'Dołącz do społeczności i umawiaj się na imprezy',
         ),
         onboardingPageView(
           context: context,
