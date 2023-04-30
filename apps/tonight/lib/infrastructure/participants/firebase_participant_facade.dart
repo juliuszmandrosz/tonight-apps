@@ -74,8 +74,12 @@ class FirebaseParticipantFacade implements ParticipantFacade {
           .limit(pageSize);
 
       if (lastParticipant != null) {
-        participantsRef =
-            participantsRef.startAfter([lastParticipant.username]);
+        final lastDoc = await _firestore.rooms
+            .doc(eventId)
+            .participants
+            .doc(lastParticipant.userId)
+            .get();
+        participantsRef = participantsRef.startAfterDocument(lastDoc);
       }
 
       final participantsSnapshot = await participantsRef.get();
