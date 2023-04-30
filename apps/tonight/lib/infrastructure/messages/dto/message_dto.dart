@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/domain/messages/message_entity.dart';
 
 part 'message_dto.freezed.dart';
+
 part 'message_dto.g.dart';
 
 @freezed
@@ -20,6 +21,7 @@ class MessageDto with _$MessageDto {
     @FirebaseTimestampJsonConverter() required DateTime createdAt,
     @Default(false) isJoinedInfo,
     @Default(false) isLeftInfo,
+    @Default(false) isUserDeleted,
   }) = _MessageDto;
 
   factory MessageDto.fromJson(Map<String, dynamic> json) =>
@@ -40,6 +42,7 @@ class MessageDto with _$MessageDto {
       createdAt: message.createdAt,
       isJoinedInfo: message.isJoinedInfo,
       isLeftInfo: message.isLeftInfo,
+      isUserDeleted: message.isUserDeleted,
     );
   }
 
@@ -53,6 +56,7 @@ class MessageDto with _$MessageDto {
       createdAt: createdAt,
       isJoinedInfo: isJoinedInfo,
       isLeftInfo: isLeftInfo,
+      isUserDeleted: isUserDeleted,
     );
   }
 }
