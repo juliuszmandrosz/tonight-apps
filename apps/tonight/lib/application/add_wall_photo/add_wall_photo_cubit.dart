@@ -124,6 +124,7 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
         () => null,
         (location) => location,
       ),
+      isFromClub: true,
     );
     result.fold(
       (failure) {

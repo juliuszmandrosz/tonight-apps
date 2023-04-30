@@ -1,0 +1,824 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'event_photos_bloc.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+mixin _$EventPhotosEvent {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Event event) photosFetched,
+    required TResult Function() photosRefreshed,
+    required TResult Function() nextPagePhotosFetched,
+    required TResult Function(WallPhoto photo) photoAdded,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Event event)? photosFetched,
+    TResult? Function()? photosRefreshed,
+    TResult? Function()? nextPagePhotosFetched,
+    TResult? Function(WallPhoto photo)? photoAdded,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Event event)? photosFetched,
+    TResult Function()? photosRefreshed,
+    TResult Function()? nextPagePhotosFetched,
+    TResult Function(WallPhoto photo)? photoAdded,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PhotosFetched value) photosFetched,
+    required TResult Function(_PhotosRefreshed value) photosRefreshed,
+    required TResult Function(_NextPagePhotosFetched value)
+        nextPagePhotosFetched,
+    required TResult Function(_PhotoAdded value) photoAdded,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PhotosFetched value)? photosFetched,
+    TResult? Function(_PhotosRefreshed value)? photosRefreshed,
+    TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult? Function(_PhotoAdded value)? photoAdded,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PhotosFetched value)? photosFetched,
+    TResult Function(_PhotosRefreshed value)? photosRefreshed,
+    TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult Function(_PhotoAdded value)? photoAdded,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EventPhotosEventCopyWith<$Res> {
+  factory $EventPhotosEventCopyWith(
+          EventPhotosEvent value, $Res Function(EventPhotosEvent) then) =
+      _$EventPhotosEventCopyWithImpl<$Res, EventPhotosEvent>;
+}
+
+/// @nodoc
+class _$EventPhotosEventCopyWithImpl<$Res, $Val extends EventPhotosEvent>
+    implements $EventPhotosEventCopyWith<$Res> {
+  _$EventPhotosEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$_PhotosFetchedCopyWith<$Res> {
+  factory _$$_PhotosFetchedCopyWith(
+          _$_PhotosFetched value, $Res Function(_$_PhotosFetched) then) =
+      __$$_PhotosFetchedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Event event});
+}
+
+/// @nodoc
+class __$$_PhotosFetchedCopyWithImpl<$Res>
+    extends _$EventPhotosEventCopyWithImpl<$Res, _$_PhotosFetched>
+    implements _$$_PhotosFetchedCopyWith<$Res> {
+  __$$_PhotosFetchedCopyWithImpl(
+      _$_PhotosFetched _value, $Res Function(_$_PhotosFetched) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? event = null,
+  }) {
+    return _then(_$_PhotosFetched(
+      null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as Event,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PhotosFetched implements _PhotosFetched {
+  const _$_PhotosFetched(this.event);
+
+  @override
+  final Event event;
+
+  @override
+  String toString() {
+    return 'EventPhotosEvent.photosFetched(event: $event)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PhotosFetched &&
+            (identical(other.event, event) || other.event == event));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, event);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PhotosFetchedCopyWith<_$_PhotosFetched> get copyWith =>
+      __$$_PhotosFetchedCopyWithImpl<_$_PhotosFetched>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Event event) photosFetched,
+    required TResult Function() photosRefreshed,
+    required TResult Function() nextPagePhotosFetched,
+    required TResult Function(WallPhoto photo) photoAdded,
+  }) {
+    return photosFetched(event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Event event)? photosFetched,
+    TResult? Function()? photosRefreshed,
+    TResult? Function()? nextPagePhotosFetched,
+    TResult? Function(WallPhoto photo)? photoAdded,
+  }) {
+    return photosFetched?.call(event);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Event event)? photosFetched,
+    TResult Function()? photosRefreshed,
+    TResult Function()? nextPagePhotosFetched,
+    TResult Function(WallPhoto photo)? photoAdded,
+    required TResult orElse(),
+  }) {
+    if (photosFetched != null) {
+      return photosFetched(event);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PhotosFetched value) photosFetched,
+    required TResult Function(_PhotosRefreshed value) photosRefreshed,
+    required TResult Function(_NextPagePhotosFetched value)
+        nextPagePhotosFetched,
+    required TResult Function(_PhotoAdded value) photoAdded,
+  }) {
+    return photosFetched(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PhotosFetched value)? photosFetched,
+    TResult? Function(_PhotosRefreshed value)? photosRefreshed,
+    TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult? Function(_PhotoAdded value)? photoAdded,
+  }) {
+    return photosFetched?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PhotosFetched value)? photosFetched,
+    TResult Function(_PhotosRefreshed value)? photosRefreshed,
+    TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult Function(_PhotoAdded value)? photoAdded,
+    required TResult orElse(),
+  }) {
+    if (photosFetched != null) {
+      return photosFetched(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PhotosFetched implements EventPhotosEvent {
+  const factory _PhotosFetched(final Event event) = _$_PhotosFetched;
+
+  Event get event;
+  @JsonKey(ignore: true)
+  _$$_PhotosFetchedCopyWith<_$_PhotosFetched> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_PhotosRefreshedCopyWith<$Res> {
+  factory _$$_PhotosRefreshedCopyWith(
+          _$_PhotosRefreshed value, $Res Function(_$_PhotosRefreshed) then) =
+      __$$_PhotosRefreshedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_PhotosRefreshedCopyWithImpl<$Res>
+    extends _$EventPhotosEventCopyWithImpl<$Res, _$_PhotosRefreshed>
+    implements _$$_PhotosRefreshedCopyWith<$Res> {
+  __$$_PhotosRefreshedCopyWithImpl(
+      _$_PhotosRefreshed _value, $Res Function(_$_PhotosRefreshed) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_PhotosRefreshed implements _PhotosRefreshed {
+  const _$_PhotosRefreshed();
+
+  @override
+  String toString() {
+    return 'EventPhotosEvent.photosRefreshed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PhotosRefreshed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Event event) photosFetched,
+    required TResult Function() photosRefreshed,
+    required TResult Function() nextPagePhotosFetched,
+    required TResult Function(WallPhoto photo) photoAdded,
+  }) {
+    return photosRefreshed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Event event)? photosFetched,
+    TResult? Function()? photosRefreshed,
+    TResult? Function()? nextPagePhotosFetched,
+    TResult? Function(WallPhoto photo)? photoAdded,
+  }) {
+    return photosRefreshed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Event event)? photosFetched,
+    TResult Function()? photosRefreshed,
+    TResult Function()? nextPagePhotosFetched,
+    TResult Function(WallPhoto photo)? photoAdded,
+    required TResult orElse(),
+  }) {
+    if (photosRefreshed != null) {
+      return photosRefreshed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PhotosFetched value) photosFetched,
+    required TResult Function(_PhotosRefreshed value) photosRefreshed,
+    required TResult Function(_NextPagePhotosFetched value)
+        nextPagePhotosFetched,
+    required TResult Function(_PhotoAdded value) photoAdded,
+  }) {
+    return photosRefreshed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PhotosFetched value)? photosFetched,
+    TResult? Function(_PhotosRefreshed value)? photosRefreshed,
+    TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult? Function(_PhotoAdded value)? photoAdded,
+  }) {
+    return photosRefreshed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PhotosFetched value)? photosFetched,
+    TResult Function(_PhotosRefreshed value)? photosRefreshed,
+    TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult Function(_PhotoAdded value)? photoAdded,
+    required TResult orElse(),
+  }) {
+    if (photosRefreshed != null) {
+      return photosRefreshed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PhotosRefreshed implements EventPhotosEvent {
+  const factory _PhotosRefreshed() = _$_PhotosRefreshed;
+}
+
+/// @nodoc
+abstract class _$$_NextPagePhotosFetchedCopyWith<$Res> {
+  factory _$$_NextPagePhotosFetchedCopyWith(_$_NextPagePhotosFetched value,
+          $Res Function(_$_NextPagePhotosFetched) then) =
+      __$$_NextPagePhotosFetchedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_NextPagePhotosFetchedCopyWithImpl<$Res>
+    extends _$EventPhotosEventCopyWithImpl<$Res, _$_NextPagePhotosFetched>
+    implements _$$_NextPagePhotosFetchedCopyWith<$Res> {
+  __$$_NextPagePhotosFetchedCopyWithImpl(_$_NextPagePhotosFetched _value,
+      $Res Function(_$_NextPagePhotosFetched) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
+  const _$_NextPagePhotosFetched();
+
+  @override
+  String toString() {
+    return 'EventPhotosEvent.nextPagePhotosFetched()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NextPagePhotosFetched);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Event event) photosFetched,
+    required TResult Function() photosRefreshed,
+    required TResult Function() nextPagePhotosFetched,
+    required TResult Function(WallPhoto photo) photoAdded,
+  }) {
+    return nextPagePhotosFetched();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Event event)? photosFetched,
+    TResult? Function()? photosRefreshed,
+    TResult? Function()? nextPagePhotosFetched,
+    TResult? Function(WallPhoto photo)? photoAdded,
+  }) {
+    return nextPagePhotosFetched?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Event event)? photosFetched,
+    TResult Function()? photosRefreshed,
+    TResult Function()? nextPagePhotosFetched,
+    TResult Function(WallPhoto photo)? photoAdded,
+    required TResult orElse(),
+  }) {
+    if (nextPagePhotosFetched != null) {
+      return nextPagePhotosFetched();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PhotosFetched value) photosFetched,
+    required TResult Function(_PhotosRefreshed value) photosRefreshed,
+    required TResult Function(_NextPagePhotosFetched value)
+        nextPagePhotosFetched,
+    required TResult Function(_PhotoAdded value) photoAdded,
+  }) {
+    return nextPagePhotosFetched(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PhotosFetched value)? photosFetched,
+    TResult? Function(_PhotosRefreshed value)? photosRefreshed,
+    TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult? Function(_PhotoAdded value)? photoAdded,
+  }) {
+    return nextPagePhotosFetched?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PhotosFetched value)? photosFetched,
+    TResult Function(_PhotosRefreshed value)? photosRefreshed,
+    TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult Function(_PhotoAdded value)? photoAdded,
+    required TResult orElse(),
+  }) {
+    if (nextPagePhotosFetched != null) {
+      return nextPagePhotosFetched(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NextPagePhotosFetched implements EventPhotosEvent {
+  const factory _NextPagePhotosFetched() = _$_NextPagePhotosFetched;
+}
+
+/// @nodoc
+abstract class _$$_PhotoAddedCopyWith<$Res> {
+  factory _$$_PhotoAddedCopyWith(
+          _$_PhotoAdded value, $Res Function(_$_PhotoAdded) then) =
+      __$$_PhotoAddedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({WallPhoto photo});
+}
+
+/// @nodoc
+class __$$_PhotoAddedCopyWithImpl<$Res>
+    extends _$EventPhotosEventCopyWithImpl<$Res, _$_PhotoAdded>
+    implements _$$_PhotoAddedCopyWith<$Res> {
+  __$$_PhotoAddedCopyWithImpl(
+      _$_PhotoAdded _value, $Res Function(_$_PhotoAdded) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? photo = null,
+  }) {
+    return _then(_$_PhotoAdded(
+      null == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as WallPhoto,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PhotoAdded implements _PhotoAdded {
+  const _$_PhotoAdded(this.photo);
+
+  @override
+  final WallPhoto photo;
+
+  @override
+  String toString() {
+    return 'EventPhotosEvent.photoAdded(photo: $photo)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PhotoAdded &&
+            (identical(other.photo, photo) || other.photo == photo));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, photo);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PhotoAddedCopyWith<_$_PhotoAdded> get copyWith =>
+      __$$_PhotoAddedCopyWithImpl<_$_PhotoAdded>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Event event) photosFetched,
+    required TResult Function() photosRefreshed,
+    required TResult Function() nextPagePhotosFetched,
+    required TResult Function(WallPhoto photo) photoAdded,
+  }) {
+    return photoAdded(photo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Event event)? photosFetched,
+    TResult? Function()? photosRefreshed,
+    TResult? Function()? nextPagePhotosFetched,
+    TResult? Function(WallPhoto photo)? photoAdded,
+  }) {
+    return photoAdded?.call(photo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Event event)? photosFetched,
+    TResult Function()? photosRefreshed,
+    TResult Function()? nextPagePhotosFetched,
+    TResult Function(WallPhoto photo)? photoAdded,
+    required TResult orElse(),
+  }) {
+    if (photoAdded != null) {
+      return photoAdded(photo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PhotosFetched value) photosFetched,
+    required TResult Function(_PhotosRefreshed value) photosRefreshed,
+    required TResult Function(_NextPagePhotosFetched value)
+        nextPagePhotosFetched,
+    required TResult Function(_PhotoAdded value) photoAdded,
+  }) {
+    return photoAdded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PhotosFetched value)? photosFetched,
+    TResult? Function(_PhotosRefreshed value)? photosRefreshed,
+    TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult? Function(_PhotoAdded value)? photoAdded,
+  }) {
+    return photoAdded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PhotosFetched value)? photosFetched,
+    TResult Function(_PhotosRefreshed value)? photosRefreshed,
+    TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult Function(_PhotoAdded value)? photoAdded,
+    required TResult orElse(),
+  }) {
+    if (photoAdded != null) {
+      return photoAdded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PhotoAdded implements EventPhotosEvent {
+  const factory _PhotoAdded(final WallPhoto photo) = _$_PhotoAdded;
+
+  WallPhoto get photo;
+  @JsonKey(ignore: true)
+  _$$_PhotoAddedCopyWith<_$_PhotoAdded> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$EventPhotosState {
+  CubitStatus get getPhotosStatus => throw _privateConstructorUsedError;
+  CubitStatus get nextPageStatus => throw _privateConstructorUsedError;
+  Option<Event> get event => throw _privateConstructorUsedError;
+  List<WallPhoto> get photos => throw _privateConstructorUsedError;
+  bool get hasReachedMax => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $EventPhotosStateCopyWith<EventPhotosState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EventPhotosStateCopyWith<$Res> {
+  factory $EventPhotosStateCopyWith(
+          EventPhotosState value, $Res Function(EventPhotosState) then) =
+      _$EventPhotosStateCopyWithImpl<$Res, EventPhotosState>;
+  @useResult
+  $Res call(
+      {CubitStatus getPhotosStatus,
+      CubitStatus nextPageStatus,
+      Option<Event> event,
+      List<WallPhoto> photos,
+      bool hasReachedMax});
+}
+
+/// @nodoc
+class _$EventPhotosStateCopyWithImpl<$Res, $Val extends EventPhotosState>
+    implements $EventPhotosStateCopyWith<$Res> {
+  _$EventPhotosStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? getPhotosStatus = null,
+    Object? nextPageStatus = null,
+    Object? event = null,
+    Object? photos = null,
+    Object? hasReachedMax = null,
+  }) {
+    return _then(_value.copyWith(
+      getPhotosStatus: null == getPhotosStatus
+          ? _value.getPhotosStatus
+          : getPhotosStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      nextPageStatus: null == nextPageStatus
+          ? _value.nextPageStatus
+          : nextPageStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as Option<Event>,
+      photos: null == photos
+          ? _value.photos
+          : photos // ignore: cast_nullable_to_non_nullable
+              as List<WallPhoto>,
+      hasReachedMax: null == hasReachedMax
+          ? _value.hasReachedMax
+          : hasReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_EventPhotosStateCopyWith<$Res>
+    implements $EventPhotosStateCopyWith<$Res> {
+  factory _$$_EventPhotosStateCopyWith(
+          _$_EventPhotosState value, $Res Function(_$_EventPhotosState) then) =
+      __$$_EventPhotosStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {CubitStatus getPhotosStatus,
+      CubitStatus nextPageStatus,
+      Option<Event> event,
+      List<WallPhoto> photos,
+      bool hasReachedMax});
+}
+
+/// @nodoc
+class __$$_EventPhotosStateCopyWithImpl<$Res>
+    extends _$EventPhotosStateCopyWithImpl<$Res, _$_EventPhotosState>
+    implements _$$_EventPhotosStateCopyWith<$Res> {
+  __$$_EventPhotosStateCopyWithImpl(
+      _$_EventPhotosState _value, $Res Function(_$_EventPhotosState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? getPhotosStatus = null,
+    Object? nextPageStatus = null,
+    Object? event = null,
+    Object? photos = null,
+    Object? hasReachedMax = null,
+  }) {
+    return _then(_$_EventPhotosState(
+      getPhotosStatus: null == getPhotosStatus
+          ? _value.getPhotosStatus
+          : getPhotosStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      nextPageStatus: null == nextPageStatus
+          ? _value.nextPageStatus
+          : nextPageStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      event: null == event
+          ? _value.event
+          : event // ignore: cast_nullable_to_non_nullable
+              as Option<Event>,
+      photos: null == photos
+          ? _value._photos
+          : photos // ignore: cast_nullable_to_non_nullable
+              as List<WallPhoto>,
+      hasReachedMax: null == hasReachedMax
+          ? _value.hasReachedMax
+          : hasReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_EventPhotosState extends _EventPhotosState {
+  const _$_EventPhotosState(
+      {required this.getPhotosStatus,
+      required this.nextPageStatus,
+      required this.event,
+      required final List<WallPhoto> photos,
+      required this.hasReachedMax})
+      : _photos = photos,
+        super._();
+
+  @override
+  final CubitStatus getPhotosStatus;
+  @override
+  final CubitStatus nextPageStatus;
+  @override
+  final Option<Event> event;
+  final List<WallPhoto> _photos;
+  @override
+  List<WallPhoto> get photos {
+    if (_photos is EqualUnmodifiableListView) return _photos;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_photos);
+  }
+
+  @override
+  final bool hasReachedMax;
+
+  @override
+  String toString() {
+    return 'EventPhotosState(getPhotosStatus: $getPhotosStatus, nextPageStatus: $nextPageStatus, event: $event, photos: $photos, hasReachedMax: $hasReachedMax)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_EventPhotosState &&
+            (identical(other.getPhotosStatus, getPhotosStatus) ||
+                other.getPhotosStatus == getPhotosStatus) &&
+            (identical(other.nextPageStatus, nextPageStatus) ||
+                other.nextPageStatus == nextPageStatus) &&
+            (identical(other.event, event) || other.event == event) &&
+            const DeepCollectionEquality().equals(other._photos, _photos) &&
+            (identical(other.hasReachedMax, hasReachedMax) ||
+                other.hasReachedMax == hasReachedMax));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, getPhotosStatus, nextPageStatus,
+      event, const DeepCollectionEquality().hash(_photos), hasReachedMax);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_EventPhotosStateCopyWith<_$_EventPhotosState> get copyWith =>
+      __$$_EventPhotosStateCopyWithImpl<_$_EventPhotosState>(this, _$identity);
+}
+
+abstract class _EventPhotosState extends EventPhotosState {
+  const factory _EventPhotosState(
+      {required final CubitStatus getPhotosStatus,
+      required final CubitStatus nextPageStatus,
+      required final Option<Event> event,
+      required final List<WallPhoto> photos,
+      required final bool hasReachedMax}) = _$_EventPhotosState;
+  const _EventPhotosState._() : super._();
+
+  @override
+  CubitStatus get getPhotosStatus;
+  @override
+  CubitStatus get nextPageStatus;
+  @override
+  Option<Event> get event;
+  @override
+  List<WallPhoto> get photos;
+  @override
+  bool get hasReachedMax;
+  @override
+  @JsonKey(ignore: true)
+  _$$_EventPhotosStateCopyWith<_$_EventPhotosState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
