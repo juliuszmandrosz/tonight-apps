@@ -41,6 +41,7 @@ import 'package:tonight/application/core/user_location/user_location_cubit.dart'
 import 'package:tonight/application/event_chat/aggregator/event_chat_aggregator.dart';
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
 import 'package:tonight/application/event_participants/event_participants_bloc.dart';
+import 'package:tonight/application/event_photos/event_photos_bloc.dart';
 import 'package:tonight/application/event_review/event_review_cubit.dart';
 import 'package:tonight/application/event_room/aggregator/event_room_aggregator.dart';
 import 'package:tonight/application/event_room/bloc/event_room_bloc.dart';
@@ -353,6 +354,12 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => EventRoomBloc(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => EventPhotosBloc(
       getIt(),
     ),
   );

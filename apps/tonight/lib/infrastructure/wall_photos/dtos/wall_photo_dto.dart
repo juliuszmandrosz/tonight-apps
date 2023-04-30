@@ -27,6 +27,7 @@ class WallPhotoDto with _$WallPhotoDto {
     String? userProfilePhotoUrl,
     @NullableLatLngConverter() LatLng? photoLocation,
     @Default(false) bool isVerified,
+    @Default(false) bool isFromClub,
   }) = _WallPhotoDto;
 
   factory WallPhotoDto.fromDomain(WallPhoto wallPhoto) {
@@ -45,6 +46,7 @@ class WallPhotoDto with _$WallPhotoDto {
       userProfilePhotoUrl: wallPhoto.userProfilePhotoUrl,
       isVerified: wallPhoto.isVerified,
       photoLocation: wallPhoto.photoLocation,
+      isFromClub: wallPhoto.isFromClub,
     );
   }
 
@@ -79,6 +81,7 @@ class WallPhotoDto with _$WallPhotoDto {
       userProfilePhotoUrl: userProfilePhotoUrl,
       isVerified: isVerified,
       photoLocation: photoLocation,
+      isFromClub: isFromClub,
     );
   }
 }
