@@ -37,7 +37,7 @@ class WallPhotosBloc extends Bloc<WallPhotosEvent, WallPhotosState> {
       ),
     );
 
-    final result = await _wallPhotoFacade.getPhotos(
+    final result = await _wallPhotoFacade.getWallPhotos(
       userLocation: event.userLocation,
       pageSize: _pageSize,
     );
@@ -62,7 +62,7 @@ class WallPhotosBloc extends Bloc<WallPhotosEvent, WallPhotosState> {
 
     emit(state.copyWith(nextPageStatus: CubitStatus.loading));
 
-    final result = await _wallPhotoFacade.getPhotos(
+    final result = await _wallPhotoFacade.getWallPhotos(
       userLocation: state.userLocation,
       pageSize: _pageSize,
       offset: state.photos.length,
@@ -88,7 +88,7 @@ class WallPhotosBloc extends Bloc<WallPhotosEvent, WallPhotosState> {
       state.copyWith(getPhotosStatus: CubitStatus.loading),
     );
 
-    final result = await _wallPhotoFacade.getPhotos(
+    final result = await _wallPhotoFacade.getWallPhotos(
       userLocation: state.userLocation,
       pageSize: _pageSize,
     );
