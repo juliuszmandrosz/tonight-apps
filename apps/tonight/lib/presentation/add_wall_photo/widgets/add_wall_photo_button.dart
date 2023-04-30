@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
+import 'package:dartz/dartz.dart';
+import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -8,7 +10,9 @@ import 'package:tonight/application/add_wall_photo/add_wall_photo_cubit.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class AddWallPhotoButton extends StatelessWidget {
-  const AddWallPhotoButton({Key? key}) : super(key: key);
+  final Option<Event> event;
+
+  const AddWallPhotoButton({required this.event, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +29,14 @@ class AddWallPhotoButton extends StatelessWidget {
 
         if (state.addPhotoStatus.isSuccess()) {
           // TODO - add translations
+          // TODO - notify event room about new photo
           context.showSnackbarMessage('Zdjęcie opublikowano pomyślnie');
-          await context.router.replaceAll([const WelcomeLoaderRoute()]);
+          event.fold(
+              () async => await context.router.replaceAll(
+                    [const WelcomeLoaderRoute()],
+                  ),
+              (_) async => context.router.popUntil(
+                  (route) => route.settings.name == EventRoomRoute.name));
         }
       },
       child: FloatingActionButton.extended(
