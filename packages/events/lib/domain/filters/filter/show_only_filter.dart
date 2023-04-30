@@ -57,7 +57,12 @@ class ShowOnlyFilter implements IFilter {
         query: query,
         field: eventStartDateTimeFieldName,
         from: previousDay.startOfDay.millisecondsSinceEpoch,
-        to: now.endOfDay.millisecondsSinceEpoch,
+        to: DateTime(
+          now.year,
+          now.month,
+          now.day,
+          now.hour + 16,
+        ).millisecondsSinceEpoch,
       );
 
       query += ' && ';
