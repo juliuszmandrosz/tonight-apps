@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:account_settings/domain/domain.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:common/common.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/application/core/deep_links_utils.dart';

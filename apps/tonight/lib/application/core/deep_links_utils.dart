@@ -31,5 +31,18 @@ Future<void> handleDeepLink(
         ClubDetailsRoute(clubId: clubId),
       ],
     );
+    return;
+  }
+
+  final eventToRateId = data['eventToRateId'];
+
+  if (eventToRateId != null) {
+    context.router.popUntilRoot();
+    await context.router.replaceAll(
+      [
+        const WelcomeLoaderRoute(),
+        ReviewRoute(eventId: eventToRateId),
+      ],
+    );
   }
 }
