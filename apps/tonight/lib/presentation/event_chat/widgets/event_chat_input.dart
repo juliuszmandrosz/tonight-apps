@@ -40,10 +40,9 @@ class EventChatInput extends HookWidget {
                     minLines: 1,
                     maxLines: null,
                     controller: textController,
-                    onChanged: (value) =>
-                        context
-                            .read<EventChatBloc>()
-                            .add(EventChatEvent.inputMessageChanged(value)),
+                    onChanged: (value) => context
+                        .read<EventChatBloc>()
+                        .add(EventChatEvent.inputMessageChanged(value)),
                     decoration: const InputDecoration(
                       // TODO - add translation
                       hintText: 'Napisz wiadomość',
@@ -56,6 +55,13 @@ class EventChatInput extends HookWidget {
               if (state.inputMessage.isNotEmpty)
                 IconButton(
                   onPressed: () {
+                    if (state.inputMessage.length > 1000) {
+                      context.showSnackbarMessage(
+                        // TODO - add translation
+                        'Wiadomość nie może być dłuższa niż 1000 znaków',
+                      );
+                      return;
+                    }
                     textController.text = '';
                     context
                         .read<EventChatBloc>()
