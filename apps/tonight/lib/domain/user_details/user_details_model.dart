@@ -6,14 +6,14 @@ class UserDetails extends Equatable {
   final String userId;
   final String username;
   final List<Club> favoriteClubs;
-  final int raverCoins;
+  final int totalPhotos;
   final String? profilePictureUrl;
 
   const UserDetails({
     required this.userId,
     required this.username,
     required this.favoriteClubs,
-    required this.raverCoins,
+    required this.totalPhotos,
     this.profilePictureUrl,
   });
 
@@ -22,21 +22,21 @@ class UserDetails extends Equatable {
         userId,
         username,
         profilePictureUrl,
-        raverCoins,
+        totalPhotos,
         favoriteClubs,
       ];
 
   UserDetails copyWith({
     String? username,
     List<Club>? favoriteClubs,
-    int? raverCoins,
+    int? totalPhotos,
     Option<String>? profilePictureUrl,
   }) {
     return UserDetails(
       userId: userId,
       username: username ?? this.username,
       favoriteClubs: favoriteClubs ?? this.favoriteClubs,
-      raverCoins: raverCoins ?? this.raverCoins,
+      totalPhotos: totalPhotos ?? this.totalPhotos,
       profilePictureUrl: profilePictureUrl != null
           ? profilePictureUrl.fold(
               () => null,
