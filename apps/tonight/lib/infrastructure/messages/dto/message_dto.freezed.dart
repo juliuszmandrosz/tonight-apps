@@ -30,6 +30,7 @@ mixin _$MessageDto {
   DateTime get createdAt => throw _privateConstructorUsedError;
   dynamic get isJoinedInfo => throw _privateConstructorUsedError;
   dynamic get isLeftInfo => throw _privateConstructorUsedError;
+  dynamic get isUserDeleted => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +52,8 @@ abstract class $MessageDtoCopyWith<$Res> {
       String? userPictureUrl,
       @FirebaseTimestampJsonConverter() DateTime createdAt,
       dynamic isJoinedInfo,
-      dynamic isLeftInfo});
+      dynamic isLeftInfo,
+      dynamic isUserDeleted});
 }
 
 /// @nodoc
@@ -75,6 +77,7 @@ class _$MessageDtoCopyWithImpl<$Res, $Val extends MessageDto>
     Object? createdAt = null,
     Object? isJoinedInfo = freezed,
     Object? isLeftInfo = freezed,
+    Object? isUserDeleted = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -109,6 +112,10 @@ class _$MessageDtoCopyWithImpl<$Res, $Val extends MessageDto>
           ? _value.isLeftInfo
           : isLeftInfo // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      isUserDeleted: freezed == isUserDeleted
+          ? _value.isUserDeleted
+          : isUserDeleted // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ) as $Val);
   }
 }
@@ -129,7 +136,8 @@ abstract class _$$_MessageDtoCopyWith<$Res>
       String? userPictureUrl,
       @FirebaseTimestampJsonConverter() DateTime createdAt,
       dynamic isJoinedInfo,
-      dynamic isLeftInfo});
+      dynamic isLeftInfo,
+      dynamic isUserDeleted});
 }
 
 /// @nodoc
@@ -151,6 +159,7 @@ class __$$_MessageDtoCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? isJoinedInfo = freezed,
     Object? isLeftInfo = freezed,
+    Object? isUserDeleted = freezed,
   }) {
     return _then(_$_MessageDto(
       id: freezed == id
@@ -180,6 +189,8 @@ class __$$_MessageDtoCopyWithImpl<$Res>
       isJoinedInfo:
           freezed == isJoinedInfo ? _value.isJoinedInfo! : isJoinedInfo,
       isLeftInfo: freezed == isLeftInfo ? _value.isLeftInfo! : isLeftInfo,
+      isUserDeleted:
+          freezed == isUserDeleted ? _value.isUserDeleted! : isUserDeleted,
     ));
   }
 }
@@ -196,7 +207,8 @@ class _$_MessageDto extends _MessageDto {
       this.userPictureUrl,
       @FirebaseTimestampJsonConverter() required this.createdAt,
       this.isJoinedInfo = false,
-      this.isLeftInfo = false})
+      this.isLeftInfo = false,
+      this.isUserDeleted = false})
       : super._();
 
   factory _$_MessageDto.fromJson(Map<String, dynamic> json) =>
@@ -222,10 +234,13 @@ class _$_MessageDto extends _MessageDto {
   @override
   @JsonKey()
   final dynamic isLeftInfo;
+  @override
+  @JsonKey()
+  final dynamic isUserDeleted;
 
   @override
   String toString() {
-    return 'MessageDto(id: $id, userId: $userId, username: $username, text: $text, userPictureUrl: $userPictureUrl, createdAt: $createdAt, isJoinedInfo: $isJoinedInfo, isLeftInfo: $isLeftInfo)';
+    return 'MessageDto(id: $id, userId: $userId, username: $username, text: $text, userPictureUrl: $userPictureUrl, createdAt: $createdAt, isJoinedInfo: $isJoinedInfo, isLeftInfo: $isLeftInfo, isUserDeleted: $isUserDeleted)';
   }
 
   @override
@@ -245,7 +260,9 @@ class _$_MessageDto extends _MessageDto {
             const DeepCollectionEquality()
                 .equals(other.isJoinedInfo, isJoinedInfo) &&
             const DeepCollectionEquality()
-                .equals(other.isLeftInfo, isLeftInfo));
+                .equals(other.isLeftInfo, isLeftInfo) &&
+            const DeepCollectionEquality()
+                .equals(other.isUserDeleted, isUserDeleted));
   }
 
   @JsonKey(ignore: true)
@@ -259,7 +276,8 @@ class _$_MessageDto extends _MessageDto {
       userPictureUrl,
       createdAt,
       const DeepCollectionEquality().hash(isJoinedInfo),
-      const DeepCollectionEquality().hash(isLeftInfo));
+      const DeepCollectionEquality().hash(isLeftInfo),
+      const DeepCollectionEquality().hash(isUserDeleted));
 
   @JsonKey(ignore: true)
   @override
@@ -284,7 +302,8 @@ abstract class _MessageDto extends MessageDto {
       final String? userPictureUrl,
       @FirebaseTimestampJsonConverter() required final DateTime createdAt,
       final dynamic isJoinedInfo,
-      final dynamic isLeftInfo}) = _$_MessageDto;
+      final dynamic isLeftInfo,
+      final dynamic isUserDeleted}) = _$_MessageDto;
   const _MessageDto._() : super._();
 
   factory _MessageDto.fromJson(Map<String, dynamic> json) =
@@ -308,6 +327,8 @@ abstract class _MessageDto extends MessageDto {
   dynamic get isJoinedInfo;
   @override
   dynamic get isLeftInfo;
+  @override
+  dynamic get isUserDeleted;
   @override
   @JsonKey(ignore: true)
   _$$_MessageDtoCopyWith<_$_MessageDto> get copyWith =>
