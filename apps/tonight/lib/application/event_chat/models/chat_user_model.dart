@@ -3,11 +3,14 @@ import 'package:common/utils/generate_user_color.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/domain/messages/message_entity.dart';
+import 'package:tonight/domain/participants/participant_entity.dart';
 
 part 'chat_user_model.freezed.dart';
 
 @freezed
 class ChatUser with _$ChatUser {
+  const ChatUser._();
+
   const factory ChatUser({
     required Color color,
     required String userId,
@@ -15,7 +18,7 @@ class ChatUser with _$ChatUser {
     String? userPictureUrl,
   }) = _ChatUser;
 
-  factory ChatUser.fromDomain(UserAccount userAccount) {
+  factory ChatUser.fromUserAccount(UserAccount userAccount) {
     return ChatUser(
       color: generateColorFromUserId(userAccount.id),
       userId: userAccount.id,
@@ -32,6 +35,15 @@ class ChatUser with _$ChatUser {
       userId: message.userId,
       username: message.username,
       userPictureUrl: message.userPictureUrl,
+    );
+  }
+
+  factory ChatUser.fromParticipant(Participant participant) {
+    return ChatUser(
+      color: generateColorFromUserId(participant.userId),
+      userId: participant.userId,
+      username: participant.username,
+      userPictureUrl: participant.profilePictureUrl,
     );
   }
 }
