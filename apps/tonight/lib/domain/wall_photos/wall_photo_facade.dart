@@ -14,16 +14,23 @@ abstract class WallPhotoFacade {
     required String eventName,
     required DateTime eventEndDateTime,
     required Uint8List photo,
+    required bool isFromClub,
     required LatLng? photoLocation,
   });
 
-  Future<Either<WallPhotoFailure, List<WallPhoto>>> getPhotos({
+  Future<Either<WallPhotoFailure, List<WallPhoto>>> getWallPhotos({
     required Option<LatLng> userLocation,
     int pageSize = 20,
     int offset = 0,
   });
 
   Future<Either<WallPhotoFailure, List<WallPhoto>>> getUserPhotos({
+    WallPhoto? lastPhoto,
+    int pageSize = 20,
+  });
+
+  Future<Either<WallPhotoFailure, List<WallPhoto>>> getEventPhotos({
+    required String eventId,
     WallPhoto? lastPhoto,
     int pageSize = 20,
   });
