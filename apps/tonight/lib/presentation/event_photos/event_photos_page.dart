@@ -44,7 +44,7 @@ class EventPhotosPage extends StatelessWidget {
                       itemBuilder: (_, i) => EventPhotoCard(
                         photo: state.photos[i],
                       ),
-                      separatorBuilder: (_, __) => const SizedBox(height: 12),
+                      separatorBuilder: (_, i) => const SizedBox(height: 12),
                     ),
                   );
         }
