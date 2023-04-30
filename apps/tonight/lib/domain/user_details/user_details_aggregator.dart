@@ -32,10 +32,10 @@ class UserDetailsAggregator {
 
     final result = UserDetails(
       userId: user.id,
-      raverCoins: user.raverCoins,
       username: user.username,
       profilePictureUrl: user.profilePictureUrl,
       favoriteClubs: clubs.getRightOrCrash(),
+      totalPhotos: user.photosCount,
     );
 
     return right(some(result));
