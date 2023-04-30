@@ -98,6 +98,12 @@ class EventsApiImpl implements EventsApi {
           : 'eventStartDateTime:asc';
     }
 
+    if (sortModel.fieldName == attending) {
+      return sortModel.direction == SortDirection.desc
+          ? 'attending:desc'
+          : 'attending:asc';
+    }
+
     return '';
   }
 
