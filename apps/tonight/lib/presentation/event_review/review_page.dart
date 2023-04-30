@@ -47,7 +47,8 @@ class ReviewPage extends StatelessWidget {
 
           if (state.submittingStatus.isSubmissionSuccess) {
             isReviewAddedSuccessfully = true;
-            context.showSnackbarMessage(S().reviewAdded);
+            // TODO - add translation
+            context.showSnackbarMessage('Opinia dodana, dziękujemy!');
             context.popRoute();
           }
         },

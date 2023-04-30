@@ -81,17 +81,11 @@ class EventRoomPage extends StatelessWidget {
                         isKeyboardOpen: context.isKeyboardOpen,
                       ),
                       floatingActionButton: const EventRoomFab(),
-                      body: Column(
-                        children: const [
-                          Expanded(
-                            child: TabBarView(
-                              physics: NeverScrollableScrollPhysics(),
-                              children: [
-                                EventChatPage(),
-                                EventPhotosPage(),
-                              ],
-                            ),
-                          ),
+                      body: const TabBarView(
+                        physics: NeverScrollableScrollPhysics(),
+                        children: [
+                          EventChatPage(),
+                          EventPhotosPage(),
                         ],
                       ),
                     ),
