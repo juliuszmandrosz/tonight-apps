@@ -20,6 +20,7 @@ mixin _$ChatUser {
   String get userId => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String? get userPictureUrl => throw _privateConstructorUsedError;
+  bool get isUserDeleted => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChatUserCopyWith<ChatUser> get copyWith =>
@@ -32,7 +33,11 @@ abstract class $ChatUserCopyWith<$Res> {
       _$ChatUserCopyWithImpl<$Res, ChatUser>;
   @useResult
   $Res call(
-      {Color color, String userId, String username, String? userPictureUrl});
+      {Color color,
+      String userId,
+      String username,
+      String? userPictureUrl,
+      bool isUserDeleted});
 }
 
 /// @nodoc
@@ -52,6 +57,7 @@ class _$ChatUserCopyWithImpl<$Res, $Val extends ChatUser>
     Object? userId = null,
     Object? username = null,
     Object? userPictureUrl = freezed,
+    Object? isUserDeleted = null,
   }) {
     return _then(_value.copyWith(
       color: null == color
@@ -70,6 +76,10 @@ class _$ChatUserCopyWithImpl<$Res, $Val extends ChatUser>
           ? _value.userPictureUrl
           : userPictureUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      isUserDeleted: null == isUserDeleted
+          ? _value.isUserDeleted
+          : isUserDeleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -82,7 +92,11 @@ abstract class _$$_ChatUserCopyWith<$Res> implements $ChatUserCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {Color color, String userId, String username, String? userPictureUrl});
+      {Color color,
+      String userId,
+      String username,
+      String? userPictureUrl,
+      bool isUserDeleted});
 }
 
 /// @nodoc
@@ -100,6 +114,7 @@ class __$$_ChatUserCopyWithImpl<$Res>
     Object? userId = null,
     Object? username = null,
     Object? userPictureUrl = freezed,
+    Object? isUserDeleted = null,
   }) {
     return _then(_$_ChatUser(
       color: null == color
@@ -118,6 +133,10 @@ class __$$_ChatUserCopyWithImpl<$Res>
           ? _value.userPictureUrl
           : userPictureUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      isUserDeleted: null == isUserDeleted
+          ? _value.isUserDeleted
+          : isUserDeleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -129,7 +148,8 @@ class _$_ChatUser extends _ChatUser {
       {required this.color,
       required this.userId,
       required this.username,
-      this.userPictureUrl})
+      this.userPictureUrl,
+      this.isUserDeleted = false})
       : super._();
 
   @override
@@ -140,10 +160,13 @@ class _$_ChatUser extends _ChatUser {
   final String username;
   @override
   final String? userPictureUrl;
+  @override
+  @JsonKey()
+  final bool isUserDeleted;
 
   @override
   String toString() {
-    return 'ChatUser(color: $color, userId: $userId, username: $username, userPictureUrl: $userPictureUrl)';
+    return 'ChatUser(color: $color, userId: $userId, username: $username, userPictureUrl: $userPictureUrl, isUserDeleted: $isUserDeleted)';
   }
 
   @override
@@ -156,12 +179,14 @@ class _$_ChatUser extends _ChatUser {
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.userPictureUrl, userPictureUrl) ||
-                other.userPictureUrl == userPictureUrl));
+                other.userPictureUrl == userPictureUrl) &&
+            (identical(other.isUserDeleted, isUserDeleted) ||
+                other.isUserDeleted == isUserDeleted));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, color, userId, username, userPictureUrl);
+  int get hashCode => Object.hash(
+      runtimeType, color, userId, username, userPictureUrl, isUserDeleted);
 
   @JsonKey(ignore: true)
   @override
@@ -175,7 +200,8 @@ abstract class _ChatUser extends ChatUser {
       {required final Color color,
       required final String userId,
       required final String username,
-      final String? userPictureUrl}) = _$_ChatUser;
+      final String? userPictureUrl,
+      final bool isUserDeleted}) = _$_ChatUser;
   const _ChatUser._() : super._();
 
   @override
@@ -186,6 +212,8 @@ abstract class _ChatUser extends ChatUser {
   String get username;
   @override
   String? get userPictureUrl;
+  @override
+  bool get isUserDeleted;
   @override
   @JsonKey(ignore: true)
   _$$_ChatUserCopyWith<_$_ChatUser> get copyWith =>

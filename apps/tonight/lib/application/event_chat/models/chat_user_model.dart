@@ -16,6 +16,7 @@ class ChatUser with _$ChatUser {
     required String userId,
     required String username,
     String? userPictureUrl,
+    @Default(false) bool isUserDeleted,
   }) = _ChatUser;
 
   factory ChatUser.fromUserAccount(UserAccount userAccount) {
@@ -32,9 +33,10 @@ class ChatUser with _$ChatUser {
   factory ChatUser.fromMessage(Message message) {
     return ChatUser(
       color: generateColorFromUserId(message.userId),
-      userId: message.userId,
-      username: message.username,
+      userId: message.isUserDeleted ? 'Użytkownik Tonight' : message.userId,
+      username: message.isUserDeleted ? 'Użytkownik Tonight' : message.username,
       userPictureUrl: message.userPictureUrl,
+      isUserDeleted: message.isUserDeleted,
     );
   }
 
