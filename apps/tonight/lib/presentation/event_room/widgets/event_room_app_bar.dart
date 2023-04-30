@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/event_room/bloc/event_room_bloc.dart';
+import 'package:tonight/application/event_room/bloc/event_room_tab.dart';
 import 'package:translations/translations.dart';
 
 class EventRoomAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -55,6 +56,12 @@ class EventRoomAppBar extends StatelessWidget with PreferredSizeWidget {
           : PreferredSize(
               preferredSize: const Size.fromHeight(kToolbarHeight),
               child: TabBar(
+                onTap: (index) {
+                  context.unfocus();
+                  context.read<EventRoomBloc>().add(
+                        EventRoomEvent.tabChanged(EventRoomTab.values[index]),
+                      );
+                },
                 dividerColor: Colors.transparent,
                 isScrollable: true,
                 labelPadding: const EdgeInsets.symmetric(horizontal: 20),

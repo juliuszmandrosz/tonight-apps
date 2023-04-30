@@ -18,51 +18,52 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SelectClubEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() clubsFetched,
-    required TResult Function() nextPageClubsFetched,
-    required TResult Function(Club club) clubSelected,
-    required TResult Function(String phrase) clubsFiltered,
+    required TResult Function() venuesFetched,
+    required TResult Function() nextPageVenuesFetched,
+    required TResult Function(WallPhotoVenue venue) venueSelected,
+    required TResult Function(String phrase) venuesFiltered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? clubsFetched,
-    TResult? Function()? nextPageClubsFetched,
-    TResult? Function(Club club)? clubSelected,
-    TResult? Function(String phrase)? clubsFiltered,
+    TResult? Function()? venuesFetched,
+    TResult? Function()? nextPageVenuesFetched,
+    TResult? Function(WallPhotoVenue venue)? venueSelected,
+    TResult? Function(String phrase)? venuesFiltered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? clubsFetched,
-    TResult Function()? nextPageClubsFetched,
-    TResult Function(Club club)? clubSelected,
-    TResult Function(String phrase)? clubsFiltered,
+    TResult Function()? venuesFetched,
+    TResult Function()? nextPageVenuesFetched,
+    TResult Function(WallPhotoVenue venue)? venueSelected,
+    TResult Function(String phrase)? venuesFiltered,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ClubsFetched value) clubsFetched,
-    required TResult Function(_NextPageClubsFetched value) nextPageClubsFetched,
-    required TResult Function(_ClubSelected value) clubSelected,
-    required TResult Function(_ClubsFiltered value) clubsFiltered,
+    required TResult Function(_VenuesFetched value) venuesFetched,
+    required TResult Function(_NextPageVenuesFetched value)
+        nextPageVenuesFetched,
+    required TResult Function(_VenueSelected value) venueSelected,
+    required TResult Function(_VenuesFiltered value) venuesFiltered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ClubsFetched value)? clubsFetched,
-    TResult? Function(_NextPageClubsFetched value)? nextPageClubsFetched,
-    TResult? Function(_ClubSelected value)? clubSelected,
-    TResult? Function(_ClubsFiltered value)? clubsFiltered,
+    TResult? Function(_VenuesFetched value)? venuesFetched,
+    TResult? Function(_NextPageVenuesFetched value)? nextPageVenuesFetched,
+    TResult? Function(_VenueSelected value)? venueSelected,
+    TResult? Function(_VenuesFiltered value)? venuesFiltered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ClubsFetched value)? clubsFetched,
-    TResult Function(_NextPageClubsFetched value)? nextPageClubsFetched,
-    TResult Function(_ClubSelected value)? clubSelected,
-    TResult Function(_ClubsFiltered value)? clubsFiltered,
+    TResult Function(_VenuesFetched value)? venuesFetched,
+    TResult Function(_NextPageVenuesFetched value)? nextPageVenuesFetched,
+    TResult Function(_VenueSelected value)? venueSelected,
+    TResult Function(_VenuesFiltered value)? venuesFiltered,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -87,35 +88,35 @@ class _$SelectClubEventCopyWithImpl<$Res, $Val extends SelectClubEvent>
 }
 
 /// @nodoc
-abstract class _$$_ClubsFetchedCopyWith<$Res> {
-  factory _$$_ClubsFetchedCopyWith(
-          _$_ClubsFetched value, $Res Function(_$_ClubsFetched) then) =
-      __$$_ClubsFetchedCopyWithImpl<$Res>;
+abstract class _$$_VenuesFetchedCopyWith<$Res> {
+  factory _$$_VenuesFetchedCopyWith(
+          _$_VenuesFetched value, $Res Function(_$_VenuesFetched) then) =
+      __$$_VenuesFetchedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ClubsFetchedCopyWithImpl<$Res>
-    extends _$SelectClubEventCopyWithImpl<$Res, _$_ClubsFetched>
-    implements _$$_ClubsFetchedCopyWith<$Res> {
-  __$$_ClubsFetchedCopyWithImpl(
-      _$_ClubsFetched _value, $Res Function(_$_ClubsFetched) _then)
+class __$$_VenuesFetchedCopyWithImpl<$Res>
+    extends _$SelectClubEventCopyWithImpl<$Res, _$_VenuesFetched>
+    implements _$$_VenuesFetchedCopyWith<$Res> {
+  __$$_VenuesFetchedCopyWithImpl(
+      _$_VenuesFetched _value, $Res Function(_$_VenuesFetched) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ClubsFetched implements _ClubsFetched {
-  const _$_ClubsFetched();
+class _$_VenuesFetched implements _VenuesFetched {
+  const _$_VenuesFetched();
 
   @override
   String toString() {
-    return 'SelectClubEvent.clubsFetched()';
+    return 'SelectClubEvent.venuesFetched()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ClubsFetched);
+        (other.runtimeType == runtimeType && other is _$_VenuesFetched);
   }
 
   @override
@@ -124,36 +125,36 @@ class _$_ClubsFetched implements _ClubsFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() clubsFetched,
-    required TResult Function() nextPageClubsFetched,
-    required TResult Function(Club club) clubSelected,
-    required TResult Function(String phrase) clubsFiltered,
+    required TResult Function() venuesFetched,
+    required TResult Function() nextPageVenuesFetched,
+    required TResult Function(WallPhotoVenue venue) venueSelected,
+    required TResult Function(String phrase) venuesFiltered,
   }) {
-    return clubsFetched();
+    return venuesFetched();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? clubsFetched,
-    TResult? Function()? nextPageClubsFetched,
-    TResult? Function(Club club)? clubSelected,
-    TResult? Function(String phrase)? clubsFiltered,
+    TResult? Function()? venuesFetched,
+    TResult? Function()? nextPageVenuesFetched,
+    TResult? Function(WallPhotoVenue venue)? venueSelected,
+    TResult? Function(String phrase)? venuesFiltered,
   }) {
-    return clubsFetched?.call();
+    return venuesFetched?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? clubsFetched,
-    TResult Function()? nextPageClubsFetched,
-    TResult Function(Club club)? clubSelected,
-    TResult Function(String phrase)? clubsFiltered,
+    TResult Function()? venuesFetched,
+    TResult Function()? nextPageVenuesFetched,
+    TResult Function(WallPhotoVenue venue)? venueSelected,
+    TResult Function(String phrase)? venuesFiltered,
     required TResult orElse(),
   }) {
-    if (clubsFetched != null) {
-      return clubsFetched();
+    if (venuesFetched != null) {
+      return venuesFetched();
     }
     return orElse();
   }
@@ -161,75 +162,76 @@ class _$_ClubsFetched implements _ClubsFetched {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ClubsFetched value) clubsFetched,
-    required TResult Function(_NextPageClubsFetched value) nextPageClubsFetched,
-    required TResult Function(_ClubSelected value) clubSelected,
-    required TResult Function(_ClubsFiltered value) clubsFiltered,
+    required TResult Function(_VenuesFetched value) venuesFetched,
+    required TResult Function(_NextPageVenuesFetched value)
+        nextPageVenuesFetched,
+    required TResult Function(_VenueSelected value) venueSelected,
+    required TResult Function(_VenuesFiltered value) venuesFiltered,
   }) {
-    return clubsFetched(this);
+    return venuesFetched(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ClubsFetched value)? clubsFetched,
-    TResult? Function(_NextPageClubsFetched value)? nextPageClubsFetched,
-    TResult? Function(_ClubSelected value)? clubSelected,
-    TResult? Function(_ClubsFiltered value)? clubsFiltered,
+    TResult? Function(_VenuesFetched value)? venuesFetched,
+    TResult? Function(_NextPageVenuesFetched value)? nextPageVenuesFetched,
+    TResult? Function(_VenueSelected value)? venueSelected,
+    TResult? Function(_VenuesFiltered value)? venuesFiltered,
   }) {
-    return clubsFetched?.call(this);
+    return venuesFetched?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ClubsFetched value)? clubsFetched,
-    TResult Function(_NextPageClubsFetched value)? nextPageClubsFetched,
-    TResult Function(_ClubSelected value)? clubSelected,
-    TResult Function(_ClubsFiltered value)? clubsFiltered,
+    TResult Function(_VenuesFetched value)? venuesFetched,
+    TResult Function(_NextPageVenuesFetched value)? nextPageVenuesFetched,
+    TResult Function(_VenueSelected value)? venueSelected,
+    TResult Function(_VenuesFiltered value)? venuesFiltered,
     required TResult orElse(),
   }) {
-    if (clubsFetched != null) {
-      return clubsFetched(this);
+    if (venuesFetched != null) {
+      return venuesFetched(this);
     }
     return orElse();
   }
 }
 
-abstract class _ClubsFetched implements SelectClubEvent {
-  const factory _ClubsFetched() = _$_ClubsFetched;
+abstract class _VenuesFetched implements SelectClubEvent {
+  const factory _VenuesFetched() = _$_VenuesFetched;
 }
 
 /// @nodoc
-abstract class _$$_NextPageClubsFetchedCopyWith<$Res> {
-  factory _$$_NextPageClubsFetchedCopyWith(_$_NextPageClubsFetched value,
-          $Res Function(_$_NextPageClubsFetched) then) =
-      __$$_NextPageClubsFetchedCopyWithImpl<$Res>;
+abstract class _$$_NextPageVenuesFetchedCopyWith<$Res> {
+  factory _$$_NextPageVenuesFetchedCopyWith(_$_NextPageVenuesFetched value,
+          $Res Function(_$_NextPageVenuesFetched) then) =
+      __$$_NextPageVenuesFetchedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPageClubsFetchedCopyWithImpl<$Res>
-    extends _$SelectClubEventCopyWithImpl<$Res, _$_NextPageClubsFetched>
-    implements _$$_NextPageClubsFetchedCopyWith<$Res> {
-  __$$_NextPageClubsFetchedCopyWithImpl(_$_NextPageClubsFetched _value,
-      $Res Function(_$_NextPageClubsFetched) _then)
+class __$$_NextPageVenuesFetchedCopyWithImpl<$Res>
+    extends _$SelectClubEventCopyWithImpl<$Res, _$_NextPageVenuesFetched>
+    implements _$$_NextPageVenuesFetchedCopyWith<$Res> {
+  __$$_NextPageVenuesFetchedCopyWithImpl(_$_NextPageVenuesFetched _value,
+      $Res Function(_$_NextPageVenuesFetched) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPageClubsFetched implements _NextPageClubsFetched {
-  const _$_NextPageClubsFetched();
+class _$_NextPageVenuesFetched implements _NextPageVenuesFetched {
+  const _$_NextPageVenuesFetched();
 
   @override
   String toString() {
-    return 'SelectClubEvent.nextPageClubsFetched()';
+    return 'SelectClubEvent.nextPageVenuesFetched()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NextPageClubsFetched);
+        (other.runtimeType == runtimeType && other is _$_NextPageVenuesFetched);
   }
 
   @override
@@ -238,36 +240,36 @@ class _$_NextPageClubsFetched implements _NextPageClubsFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() clubsFetched,
-    required TResult Function() nextPageClubsFetched,
-    required TResult Function(Club club) clubSelected,
-    required TResult Function(String phrase) clubsFiltered,
+    required TResult Function() venuesFetched,
+    required TResult Function() nextPageVenuesFetched,
+    required TResult Function(WallPhotoVenue venue) venueSelected,
+    required TResult Function(String phrase) venuesFiltered,
   }) {
-    return nextPageClubsFetched();
+    return nextPageVenuesFetched();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? clubsFetched,
-    TResult? Function()? nextPageClubsFetched,
-    TResult? Function(Club club)? clubSelected,
-    TResult? Function(String phrase)? clubsFiltered,
+    TResult? Function()? venuesFetched,
+    TResult? Function()? nextPageVenuesFetched,
+    TResult? Function(WallPhotoVenue venue)? venueSelected,
+    TResult? Function(String phrase)? venuesFiltered,
   }) {
-    return nextPageClubsFetched?.call();
+    return nextPageVenuesFetched?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? clubsFetched,
-    TResult Function()? nextPageClubsFetched,
-    TResult Function(Club club)? clubSelected,
-    TResult Function(String phrase)? clubsFiltered,
+    TResult Function()? venuesFetched,
+    TResult Function()? nextPageVenuesFetched,
+    TResult Function(WallPhotoVenue venue)? venueSelected,
+    TResult Function(String phrase)? venuesFiltered,
     required TResult orElse(),
   }) {
-    if (nextPageClubsFetched != null) {
-      return nextPageClubsFetched();
+    if (nextPageVenuesFetched != null) {
+      return nextPageVenuesFetched();
     }
     return orElse();
   }
@@ -275,139 +277,150 @@ class _$_NextPageClubsFetched implements _NextPageClubsFetched {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ClubsFetched value) clubsFetched,
-    required TResult Function(_NextPageClubsFetched value) nextPageClubsFetched,
-    required TResult Function(_ClubSelected value) clubSelected,
-    required TResult Function(_ClubsFiltered value) clubsFiltered,
+    required TResult Function(_VenuesFetched value) venuesFetched,
+    required TResult Function(_NextPageVenuesFetched value)
+        nextPageVenuesFetched,
+    required TResult Function(_VenueSelected value) venueSelected,
+    required TResult Function(_VenuesFiltered value) venuesFiltered,
   }) {
-    return nextPageClubsFetched(this);
+    return nextPageVenuesFetched(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ClubsFetched value)? clubsFetched,
-    TResult? Function(_NextPageClubsFetched value)? nextPageClubsFetched,
-    TResult? Function(_ClubSelected value)? clubSelected,
-    TResult? Function(_ClubsFiltered value)? clubsFiltered,
+    TResult? Function(_VenuesFetched value)? venuesFetched,
+    TResult? Function(_NextPageVenuesFetched value)? nextPageVenuesFetched,
+    TResult? Function(_VenueSelected value)? venueSelected,
+    TResult? Function(_VenuesFiltered value)? venuesFiltered,
   }) {
-    return nextPageClubsFetched?.call(this);
+    return nextPageVenuesFetched?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ClubsFetched value)? clubsFetched,
-    TResult Function(_NextPageClubsFetched value)? nextPageClubsFetched,
-    TResult Function(_ClubSelected value)? clubSelected,
-    TResult Function(_ClubsFiltered value)? clubsFiltered,
+    TResult Function(_VenuesFetched value)? venuesFetched,
+    TResult Function(_NextPageVenuesFetched value)? nextPageVenuesFetched,
+    TResult Function(_VenueSelected value)? venueSelected,
+    TResult Function(_VenuesFiltered value)? venuesFiltered,
     required TResult orElse(),
   }) {
-    if (nextPageClubsFetched != null) {
-      return nextPageClubsFetched(this);
+    if (nextPageVenuesFetched != null) {
+      return nextPageVenuesFetched(this);
     }
     return orElse();
   }
 }
 
-abstract class _NextPageClubsFetched implements SelectClubEvent {
-  const factory _NextPageClubsFetched() = _$_NextPageClubsFetched;
+abstract class _NextPageVenuesFetched implements SelectClubEvent {
+  const factory _NextPageVenuesFetched() = _$_NextPageVenuesFetched;
 }
 
 /// @nodoc
-abstract class _$$_ClubSelectedCopyWith<$Res> {
-  factory _$$_ClubSelectedCopyWith(
-          _$_ClubSelected value, $Res Function(_$_ClubSelected) then) =
-      __$$_ClubSelectedCopyWithImpl<$Res>;
+abstract class _$$_VenueSelectedCopyWith<$Res> {
+  factory _$$_VenueSelectedCopyWith(
+          _$_VenueSelected value, $Res Function(_$_VenueSelected) then) =
+      __$$_VenueSelectedCopyWithImpl<$Res>;
   @useResult
-  $Res call({Club club});
+  $Res call({WallPhotoVenue venue});
+
+  $WallPhotoVenueCopyWith<$Res> get venue;
 }
 
 /// @nodoc
-class __$$_ClubSelectedCopyWithImpl<$Res>
-    extends _$SelectClubEventCopyWithImpl<$Res, _$_ClubSelected>
-    implements _$$_ClubSelectedCopyWith<$Res> {
-  __$$_ClubSelectedCopyWithImpl(
-      _$_ClubSelected _value, $Res Function(_$_ClubSelected) _then)
+class __$$_VenueSelectedCopyWithImpl<$Res>
+    extends _$SelectClubEventCopyWithImpl<$Res, _$_VenueSelected>
+    implements _$$_VenueSelectedCopyWith<$Res> {
+  __$$_VenueSelectedCopyWithImpl(
+      _$_VenueSelected _value, $Res Function(_$_VenueSelected) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? club = null,
+    Object? venue = null,
   }) {
-    return _then(_$_ClubSelected(
-      null == club
-          ? _value.club
-          : club // ignore: cast_nullable_to_non_nullable
-              as Club,
+    return _then(_$_VenueSelected(
+      null == venue
+          ? _value.venue
+          : venue // ignore: cast_nullable_to_non_nullable
+              as WallPhotoVenue,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WallPhotoVenueCopyWith<$Res> get venue {
+    return $WallPhotoVenueCopyWith<$Res>(_value.venue, (value) {
+      return _then(_value.copyWith(venue: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$_ClubSelected implements _ClubSelected {
-  const _$_ClubSelected(this.club);
+class _$_VenueSelected implements _VenueSelected {
+  const _$_VenueSelected(this.venue);
 
   @override
-  final Club club;
+  final WallPhotoVenue venue;
 
   @override
   String toString() {
-    return 'SelectClubEvent.clubSelected(club: $club)';
+    return 'SelectClubEvent.venueSelected(venue: $venue)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClubSelected &&
-            (identical(other.club, club) || other.club == club));
+            other is _$_VenueSelected &&
+            (identical(other.venue, venue) || other.venue == venue));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, club);
+  int get hashCode => Object.hash(runtimeType, venue);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClubSelectedCopyWith<_$_ClubSelected> get copyWith =>
-      __$$_ClubSelectedCopyWithImpl<_$_ClubSelected>(this, _$identity);
+  _$$_VenueSelectedCopyWith<_$_VenueSelected> get copyWith =>
+      __$$_VenueSelectedCopyWithImpl<_$_VenueSelected>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() clubsFetched,
-    required TResult Function() nextPageClubsFetched,
-    required TResult Function(Club club) clubSelected,
-    required TResult Function(String phrase) clubsFiltered,
+    required TResult Function() venuesFetched,
+    required TResult Function() nextPageVenuesFetched,
+    required TResult Function(WallPhotoVenue venue) venueSelected,
+    required TResult Function(String phrase) venuesFiltered,
   }) {
-    return clubSelected(club);
+    return venueSelected(venue);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? clubsFetched,
-    TResult? Function()? nextPageClubsFetched,
-    TResult? Function(Club club)? clubSelected,
-    TResult? Function(String phrase)? clubsFiltered,
+    TResult? Function()? venuesFetched,
+    TResult? Function()? nextPageVenuesFetched,
+    TResult? Function(WallPhotoVenue venue)? venueSelected,
+    TResult? Function(String phrase)? venuesFiltered,
   }) {
-    return clubSelected?.call(club);
+    return venueSelected?.call(venue);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? clubsFetched,
-    TResult Function()? nextPageClubsFetched,
-    TResult Function(Club club)? clubSelected,
-    TResult Function(String phrase)? clubsFiltered,
+    TResult Function()? venuesFetched,
+    TResult Function()? nextPageVenuesFetched,
+    TResult Function(WallPhotoVenue venue)? venueSelected,
+    TResult Function(String phrase)? venuesFiltered,
     required TResult orElse(),
   }) {
-    if (clubSelected != null) {
-      return clubSelected(club);
+    if (venueSelected != null) {
+      return venueSelected(venue);
     }
     return orElse();
   }
@@ -415,65 +428,66 @@ class _$_ClubSelected implements _ClubSelected {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ClubsFetched value) clubsFetched,
-    required TResult Function(_NextPageClubsFetched value) nextPageClubsFetched,
-    required TResult Function(_ClubSelected value) clubSelected,
-    required TResult Function(_ClubsFiltered value) clubsFiltered,
+    required TResult Function(_VenuesFetched value) venuesFetched,
+    required TResult Function(_NextPageVenuesFetched value)
+        nextPageVenuesFetched,
+    required TResult Function(_VenueSelected value) venueSelected,
+    required TResult Function(_VenuesFiltered value) venuesFiltered,
   }) {
-    return clubSelected(this);
+    return venueSelected(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ClubsFetched value)? clubsFetched,
-    TResult? Function(_NextPageClubsFetched value)? nextPageClubsFetched,
-    TResult? Function(_ClubSelected value)? clubSelected,
-    TResult? Function(_ClubsFiltered value)? clubsFiltered,
+    TResult? Function(_VenuesFetched value)? venuesFetched,
+    TResult? Function(_NextPageVenuesFetched value)? nextPageVenuesFetched,
+    TResult? Function(_VenueSelected value)? venueSelected,
+    TResult? Function(_VenuesFiltered value)? venuesFiltered,
   }) {
-    return clubSelected?.call(this);
+    return venueSelected?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ClubsFetched value)? clubsFetched,
-    TResult Function(_NextPageClubsFetched value)? nextPageClubsFetched,
-    TResult Function(_ClubSelected value)? clubSelected,
-    TResult Function(_ClubsFiltered value)? clubsFiltered,
+    TResult Function(_VenuesFetched value)? venuesFetched,
+    TResult Function(_NextPageVenuesFetched value)? nextPageVenuesFetched,
+    TResult Function(_VenueSelected value)? venueSelected,
+    TResult Function(_VenuesFiltered value)? venuesFiltered,
     required TResult orElse(),
   }) {
-    if (clubSelected != null) {
-      return clubSelected(this);
+    if (venueSelected != null) {
+      return venueSelected(this);
     }
     return orElse();
   }
 }
 
-abstract class _ClubSelected implements SelectClubEvent {
-  const factory _ClubSelected(final Club club) = _$_ClubSelected;
+abstract class _VenueSelected implements SelectClubEvent {
+  const factory _VenueSelected(final WallPhotoVenue venue) = _$_VenueSelected;
 
-  Club get club;
+  WallPhotoVenue get venue;
   @JsonKey(ignore: true)
-  _$$_ClubSelectedCopyWith<_$_ClubSelected> get copyWith =>
+  _$$_VenueSelectedCopyWith<_$_VenueSelected> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ClubsFilteredCopyWith<$Res> {
-  factory _$$_ClubsFilteredCopyWith(
-          _$_ClubsFiltered value, $Res Function(_$_ClubsFiltered) then) =
-      __$$_ClubsFilteredCopyWithImpl<$Res>;
+abstract class _$$_VenuesFilteredCopyWith<$Res> {
+  factory _$$_VenuesFilteredCopyWith(
+          _$_VenuesFiltered value, $Res Function(_$_VenuesFiltered) then) =
+      __$$_VenuesFilteredCopyWithImpl<$Res>;
   @useResult
   $Res call({String phrase});
 }
 
 /// @nodoc
-class __$$_ClubsFilteredCopyWithImpl<$Res>
-    extends _$SelectClubEventCopyWithImpl<$Res, _$_ClubsFiltered>
-    implements _$$_ClubsFilteredCopyWith<$Res> {
-  __$$_ClubsFilteredCopyWithImpl(
-      _$_ClubsFiltered _value, $Res Function(_$_ClubsFiltered) _then)
+class __$$_VenuesFilteredCopyWithImpl<$Res>
+    extends _$SelectClubEventCopyWithImpl<$Res, _$_VenuesFiltered>
+    implements _$$_VenuesFilteredCopyWith<$Res> {
+  __$$_VenuesFilteredCopyWithImpl(
+      _$_VenuesFiltered _value, $Res Function(_$_VenuesFiltered) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -481,7 +495,7 @@ class __$$_ClubsFilteredCopyWithImpl<$Res>
   $Res call({
     Object? phrase = null,
   }) {
-    return _then(_$_ClubsFiltered(
+    return _then(_$_VenuesFiltered(
       null == phrase
           ? _value.phrase
           : phrase // ignore: cast_nullable_to_non_nullable
@@ -492,22 +506,22 @@ class __$$_ClubsFilteredCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClubsFiltered implements _ClubsFiltered {
-  const _$_ClubsFiltered(this.phrase);
+class _$_VenuesFiltered implements _VenuesFiltered {
+  const _$_VenuesFiltered(this.phrase);
 
   @override
   final String phrase;
 
   @override
   String toString() {
-    return 'SelectClubEvent.clubsFiltered(phrase: $phrase)';
+    return 'SelectClubEvent.venuesFiltered(phrase: $phrase)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClubsFiltered &&
+            other is _$_VenuesFiltered &&
             (identical(other.phrase, phrase) || other.phrase == phrase));
   }
 
@@ -517,42 +531,42 @@ class _$_ClubsFiltered implements _ClubsFiltered {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClubsFilteredCopyWith<_$_ClubsFiltered> get copyWith =>
-      __$$_ClubsFilteredCopyWithImpl<_$_ClubsFiltered>(this, _$identity);
+  _$$_VenuesFilteredCopyWith<_$_VenuesFiltered> get copyWith =>
+      __$$_VenuesFilteredCopyWithImpl<_$_VenuesFiltered>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() clubsFetched,
-    required TResult Function() nextPageClubsFetched,
-    required TResult Function(Club club) clubSelected,
-    required TResult Function(String phrase) clubsFiltered,
+    required TResult Function() venuesFetched,
+    required TResult Function() nextPageVenuesFetched,
+    required TResult Function(WallPhotoVenue venue) venueSelected,
+    required TResult Function(String phrase) venuesFiltered,
   }) {
-    return clubsFiltered(phrase);
+    return venuesFiltered(phrase);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? clubsFetched,
-    TResult? Function()? nextPageClubsFetched,
-    TResult? Function(Club club)? clubSelected,
-    TResult? Function(String phrase)? clubsFiltered,
+    TResult? Function()? venuesFetched,
+    TResult? Function()? nextPageVenuesFetched,
+    TResult? Function(WallPhotoVenue venue)? venueSelected,
+    TResult? Function(String phrase)? venuesFiltered,
   }) {
-    return clubsFiltered?.call(phrase);
+    return venuesFiltered?.call(phrase);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? clubsFetched,
-    TResult Function()? nextPageClubsFetched,
-    TResult Function(Club club)? clubSelected,
-    TResult Function(String phrase)? clubsFiltered,
+    TResult Function()? venuesFetched,
+    TResult Function()? nextPageVenuesFetched,
+    TResult Function(WallPhotoVenue venue)? venueSelected,
+    TResult Function(String phrase)? venuesFiltered,
     required TResult orElse(),
   }) {
-    if (clubsFiltered != null) {
-      return clubsFiltered(phrase);
+    if (venuesFiltered != null) {
+      return venuesFiltered(phrase);
     }
     return orElse();
   }
@@ -560,60 +574,62 @@ class _$_ClubsFiltered implements _ClubsFiltered {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ClubsFetched value) clubsFetched,
-    required TResult Function(_NextPageClubsFetched value) nextPageClubsFetched,
-    required TResult Function(_ClubSelected value) clubSelected,
-    required TResult Function(_ClubsFiltered value) clubsFiltered,
+    required TResult Function(_VenuesFetched value) venuesFetched,
+    required TResult Function(_NextPageVenuesFetched value)
+        nextPageVenuesFetched,
+    required TResult Function(_VenueSelected value) venueSelected,
+    required TResult Function(_VenuesFiltered value) venuesFiltered,
   }) {
-    return clubsFiltered(this);
+    return venuesFiltered(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ClubsFetched value)? clubsFetched,
-    TResult? Function(_NextPageClubsFetched value)? nextPageClubsFetched,
-    TResult? Function(_ClubSelected value)? clubSelected,
-    TResult? Function(_ClubsFiltered value)? clubsFiltered,
+    TResult? Function(_VenuesFetched value)? venuesFetched,
+    TResult? Function(_NextPageVenuesFetched value)? nextPageVenuesFetched,
+    TResult? Function(_VenueSelected value)? venueSelected,
+    TResult? Function(_VenuesFiltered value)? venuesFiltered,
   }) {
-    return clubsFiltered?.call(this);
+    return venuesFiltered?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ClubsFetched value)? clubsFetched,
-    TResult Function(_NextPageClubsFetched value)? nextPageClubsFetched,
-    TResult Function(_ClubSelected value)? clubSelected,
-    TResult Function(_ClubsFiltered value)? clubsFiltered,
+    TResult Function(_VenuesFetched value)? venuesFetched,
+    TResult Function(_NextPageVenuesFetched value)? nextPageVenuesFetched,
+    TResult Function(_VenueSelected value)? venueSelected,
+    TResult Function(_VenuesFiltered value)? venuesFiltered,
     required TResult orElse(),
   }) {
-    if (clubsFiltered != null) {
-      return clubsFiltered(this);
+    if (venuesFiltered != null) {
+      return venuesFiltered(this);
     }
     return orElse();
   }
 }
 
-abstract class _ClubsFiltered implements SelectClubEvent {
-  const factory _ClubsFiltered(final String phrase) = _$_ClubsFiltered;
+abstract class _VenuesFiltered implements SelectClubEvent {
+  const factory _VenuesFiltered(final String phrase) = _$_VenuesFiltered;
 
   String get phrase;
   @JsonKey(ignore: true)
-  _$$_ClubsFilteredCopyWith<_$_ClubsFiltered> get copyWith =>
+  _$$_VenuesFilteredCopyWith<_$_VenuesFiltered> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$SelectClubState {
-  List<Club> get clubs => throw _privateConstructorUsedError;
+  List<WallPhotoVenue> get venues => throw _privateConstructorUsedError;
   String get searchPhrase => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
   CubitStatus get initialStatus => throw _privateConstructorUsedError;
   CubitStatus get fetchNextPageStatus => throw _privateConstructorUsedError;
-  CubitStatus get filterClubsStatus => throw _privateConstructorUsedError;
+  CubitStatus get filterVenuesStatus => throw _privateConstructorUsedError;
   Option<String> get snackbarMessage => throw _privateConstructorUsedError;
-  Option<Club> get selectedClub => throw _privateConstructorUsedError;
+  Option<WallPhotoVenue> get selectedVenue =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SelectClubStateCopyWith<SelectClubState> get copyWith =>
@@ -627,14 +643,14 @@ abstract class $SelectClubStateCopyWith<$Res> {
       _$SelectClubStateCopyWithImpl<$Res, SelectClubState>;
   @useResult
   $Res call(
-      {List<Club> clubs,
+      {List<WallPhotoVenue> venues,
       String searchPhrase,
       bool hasReachedMax,
       CubitStatus initialStatus,
       CubitStatus fetchNextPageStatus,
-      CubitStatus filterClubsStatus,
+      CubitStatus filterVenuesStatus,
       Option<String> snackbarMessage,
-      Option<Club> selectedClub});
+      Option<WallPhotoVenue> selectedVenue});
 }
 
 /// @nodoc
@@ -650,20 +666,20 @@ class _$SelectClubStateCopyWithImpl<$Res, $Val extends SelectClubState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clubs = null,
+    Object? venues = null,
     Object? searchPhrase = null,
     Object? hasReachedMax = null,
     Object? initialStatus = null,
     Object? fetchNextPageStatus = null,
-    Object? filterClubsStatus = null,
+    Object? filterVenuesStatus = null,
     Object? snackbarMessage = null,
-    Object? selectedClub = null,
+    Object? selectedVenue = null,
   }) {
     return _then(_value.copyWith(
-      clubs: null == clubs
-          ? _value.clubs
-          : clubs // ignore: cast_nullable_to_non_nullable
-              as List<Club>,
+      venues: null == venues
+          ? _value.venues
+          : venues // ignore: cast_nullable_to_non_nullable
+              as List<WallPhotoVenue>,
       searchPhrase: null == searchPhrase
           ? _value.searchPhrase
           : searchPhrase // ignore: cast_nullable_to_non_nullable
@@ -680,18 +696,18 @@ class _$SelectClubStateCopyWithImpl<$Res, $Val extends SelectClubState>
           ? _value.fetchNextPageStatus
           : fetchNextPageStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      filterClubsStatus: null == filterClubsStatus
-          ? _value.filterClubsStatus
-          : filterClubsStatus // ignore: cast_nullable_to_non_nullable
+      filterVenuesStatus: null == filterVenuesStatus
+          ? _value.filterVenuesStatus
+          : filterVenuesStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
       snackbarMessage: null == snackbarMessage
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      selectedClub: null == selectedClub
-          ? _value.selectedClub
-          : selectedClub // ignore: cast_nullable_to_non_nullable
-              as Option<Club>,
+      selectedVenue: null == selectedVenue
+          ? _value.selectedVenue
+          : selectedVenue // ignore: cast_nullable_to_non_nullable
+              as Option<WallPhotoVenue>,
     ) as $Val);
   }
 }
@@ -705,14 +721,14 @@ abstract class _$$_SelectClubStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Club> clubs,
+      {List<WallPhotoVenue> venues,
       String searchPhrase,
       bool hasReachedMax,
       CubitStatus initialStatus,
       CubitStatus fetchNextPageStatus,
-      CubitStatus filterClubsStatus,
+      CubitStatus filterVenuesStatus,
       Option<String> snackbarMessage,
-      Option<Club> selectedClub});
+      Option<WallPhotoVenue> selectedVenue});
 }
 
 /// @nodoc
@@ -726,20 +742,20 @@ class __$$_SelectClubStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clubs = null,
+    Object? venues = null,
     Object? searchPhrase = null,
     Object? hasReachedMax = null,
     Object? initialStatus = null,
     Object? fetchNextPageStatus = null,
-    Object? filterClubsStatus = null,
+    Object? filterVenuesStatus = null,
     Object? snackbarMessage = null,
-    Object? selectedClub = null,
+    Object? selectedVenue = null,
   }) {
     return _then(_$_SelectClubState(
-      clubs: null == clubs
-          ? _value._clubs
-          : clubs // ignore: cast_nullable_to_non_nullable
-              as List<Club>,
+      venues: null == venues
+          ? _value._venues
+          : venues // ignore: cast_nullable_to_non_nullable
+              as List<WallPhotoVenue>,
       searchPhrase: null == searchPhrase
           ? _value.searchPhrase
           : searchPhrase // ignore: cast_nullable_to_non_nullable
@@ -756,18 +772,18 @@ class __$$_SelectClubStateCopyWithImpl<$Res>
           ? _value.fetchNextPageStatus
           : fetchNextPageStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      filterClubsStatus: null == filterClubsStatus
-          ? _value.filterClubsStatus
-          : filterClubsStatus // ignore: cast_nullable_to_non_nullable
+      filterVenuesStatus: null == filterVenuesStatus
+          ? _value.filterVenuesStatus
+          : filterVenuesStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
       snackbarMessage: null == snackbarMessage
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      selectedClub: null == selectedClub
-          ? _value.selectedClub
-          : selectedClub // ignore: cast_nullable_to_non_nullable
-              as Option<Club>,
+      selectedVenue: null == selectedVenue
+          ? _value.selectedVenue
+          : selectedVenue // ignore: cast_nullable_to_non_nullable
+              as Option<WallPhotoVenue>,
     ));
   }
 }
@@ -776,22 +792,22 @@ class __$$_SelectClubStateCopyWithImpl<$Res>
 
 class _$_SelectClubState implements _SelectClubState {
   _$_SelectClubState(
-      {required final List<Club> clubs,
+      {required final List<WallPhotoVenue> venues,
       required this.searchPhrase,
       required this.hasReachedMax,
       required this.initialStatus,
       required this.fetchNextPageStatus,
-      required this.filterClubsStatus,
+      required this.filterVenuesStatus,
       required this.snackbarMessage,
-      required this.selectedClub})
-      : _clubs = clubs;
+      required this.selectedVenue})
+      : _venues = venues;
 
-  final List<Club> _clubs;
+  final List<WallPhotoVenue> _venues;
   @override
-  List<Club> get clubs {
-    if (_clubs is EqualUnmodifiableListView) return _clubs;
+  List<WallPhotoVenue> get venues {
+    if (_venues is EqualUnmodifiableListView) return _venues;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_clubs);
+    return EqualUnmodifiableListView(_venues);
   }
 
   @override
@@ -803,15 +819,15 @@ class _$_SelectClubState implements _SelectClubState {
   @override
   final CubitStatus fetchNextPageStatus;
   @override
-  final CubitStatus filterClubsStatus;
+  final CubitStatus filterVenuesStatus;
   @override
   final Option<String> snackbarMessage;
   @override
-  final Option<Club> selectedClub;
+  final Option<WallPhotoVenue> selectedVenue;
 
   @override
   String toString() {
-    return 'SelectClubState(clubs: $clubs, searchPhrase: $searchPhrase, hasReachedMax: $hasReachedMax, initialStatus: $initialStatus, fetchNextPageStatus: $fetchNextPageStatus, filterClubsStatus: $filterClubsStatus, snackbarMessage: $snackbarMessage, selectedClub: $selectedClub)';
+    return 'SelectClubState(venues: $venues, searchPhrase: $searchPhrase, hasReachedMax: $hasReachedMax, initialStatus: $initialStatus, fetchNextPageStatus: $fetchNextPageStatus, filterVenuesStatus: $filterVenuesStatus, snackbarMessage: $snackbarMessage, selectedVenue: $selectedVenue)';
   }
 
   @override
@@ -819,7 +835,7 @@ class _$_SelectClubState implements _SelectClubState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SelectClubState &&
-            const DeepCollectionEquality().equals(other._clubs, _clubs) &&
+            const DeepCollectionEquality().equals(other._venues, _venues) &&
             (identical(other.searchPhrase, searchPhrase) ||
                 other.searchPhrase == searchPhrase) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
@@ -828,25 +844,25 @@ class _$_SelectClubState implements _SelectClubState {
                 other.initialStatus == initialStatus) &&
             (identical(other.fetchNextPageStatus, fetchNextPageStatus) ||
                 other.fetchNextPageStatus == fetchNextPageStatus) &&
-            (identical(other.filterClubsStatus, filterClubsStatus) ||
-                other.filterClubsStatus == filterClubsStatus) &&
+            (identical(other.filterVenuesStatus, filterVenuesStatus) ||
+                other.filterVenuesStatus == filterVenuesStatus) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
                 other.snackbarMessage == snackbarMessage) &&
-            (identical(other.selectedClub, selectedClub) ||
-                other.selectedClub == selectedClub));
+            (identical(other.selectedVenue, selectedVenue) ||
+                other.selectedVenue == selectedVenue));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_clubs),
+      const DeepCollectionEquality().hash(_venues),
       searchPhrase,
       hasReachedMax,
       initialStatus,
       fetchNextPageStatus,
-      filterClubsStatus,
+      filterVenuesStatus,
       snackbarMessage,
-      selectedClub);
+      selectedVenue);
 
   @JsonKey(ignore: true)
   @override
@@ -857,17 +873,18 @@ class _$_SelectClubState implements _SelectClubState {
 
 abstract class _SelectClubState implements SelectClubState {
   factory _SelectClubState(
-      {required final List<Club> clubs,
-      required final String searchPhrase,
-      required final bool hasReachedMax,
-      required final CubitStatus initialStatus,
-      required final CubitStatus fetchNextPageStatus,
-      required final CubitStatus filterClubsStatus,
-      required final Option<String> snackbarMessage,
-      required final Option<Club> selectedClub}) = _$_SelectClubState;
+          {required final List<WallPhotoVenue> venues,
+          required final String searchPhrase,
+          required final bool hasReachedMax,
+          required final CubitStatus initialStatus,
+          required final CubitStatus fetchNextPageStatus,
+          required final CubitStatus filterVenuesStatus,
+          required final Option<String> snackbarMessage,
+          required final Option<WallPhotoVenue> selectedVenue}) =
+      _$_SelectClubState;
 
   @override
-  List<Club> get clubs;
+  List<WallPhotoVenue> get venues;
   @override
   String get searchPhrase;
   @override
@@ -877,11 +894,11 @@ abstract class _SelectClubState implements SelectClubState {
   @override
   CubitStatus get fetchNextPageStatus;
   @override
-  CubitStatus get filterClubsStatus;
+  CubitStatus get filterVenuesStatus;
   @override
   Option<String> get snackbarMessage;
   @override
-  Option<Club> get selectedClub;
+  Option<WallPhotoVenue> get selectedVenue;
   @override
   @JsonKey(ignore: true)
   _$$_SelectClubStateCopyWith<_$_SelectClubState> get copyWith =>

@@ -11,6 +11,7 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/event_chat/event_chat_page.dart';
 import 'package:tonight/presentation/event_photos/event_photos_page.dart';
 import 'package:tonight/presentation/event_room/widgets/event_room_app_bar.dart';
+import 'package:tonight/presentation/event_room/widgets/event_room_fab.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class EventRoomPage extends StatelessWidget {
@@ -27,7 +28,7 @@ class EventRoomPage extends StatelessWidget {
           providers: [
             BlocProvider(
               create: (context) => getIt<EventRoomBloc>()
-                ..add(EventRoomEvent.joinedToEvent(event.id)),
+                ..add(EventRoomEvent.joinedToEvent(event)),
             ),
             BlocProvider(
               create: (context) => getIt<EventChatBloc>(),
@@ -45,7 +46,7 @@ class EventRoomPage extends StatelessWidget {
               );
               state.previousEvent.fold(
                 () {},
-                (previousEvent) => previousEvent.map(
+                (previousEvent) => previousEvent.maybeMap(
                   joinedToEvent: (_) {
                     if (!state.joinStatus.isSuccess()) return;
                     _initializeChat(context, state);
@@ -59,6 +60,7 @@ class EventRoomPage extends StatelessWidget {
                           route.settings.name == EventDetailsRoute.name);
                     }
                   },
+                  orElse: () {},
                 ),
               );
             },
@@ -78,6 +80,7 @@ class EventRoomPage extends StatelessWidget {
                         event: event,
                         isKeyboardOpen: context.isKeyboardOpen,
                       ),
+                      floatingActionButton: const EventRoomFab(),
                       body: Column(
                         children: const [
                           Expanded(

@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AddWallPhotoState {
   Option<File> get photo => throw _privateConstructorUsedError;
   bool get isSelfie => throw _privateConstructorUsedError;
-  List<Club> get nearestClubs => throw _privateConstructorUsedError;
+  List<WallPhotoVenue> get nearestVenues => throw _privateConstructorUsedError;
   List<Event> get liveEventsFromSelectedClub =>
       throw _privateConstructorUsedError;
   Option<LatLng> get userLocation => throw _privateConstructorUsedError;
@@ -26,8 +26,10 @@ mixin _$AddWallPhotoState {
   CubitStatus get fetchNearestClubStatus => throw _privateConstructorUsedError;
   CubitStatus get fetchLiveEventsStatus => throw _privateConstructorUsedError;
   Option<String> get snackbarMessage => throw _privateConstructorUsedError;
-  Option<Club> get selectedClub => throw _privateConstructorUsedError;
+  Option<WallPhotoVenue> get selectedVenue =>
+      throw _privateConstructorUsedError;
   Option<Event> get selectedEvent => throw _privateConstructorUsedError;
+  Option<Event> get initialEvent => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddWallPhotoStateCopyWith<AddWallPhotoState> get copyWith =>
@@ -43,15 +45,16 @@ abstract class $AddWallPhotoStateCopyWith<$Res> {
   $Res call(
       {Option<File> photo,
       bool isSelfie,
-      List<Club> nearestClubs,
+      List<WallPhotoVenue> nearestVenues,
       List<Event> liveEventsFromSelectedClub,
       Option<LatLng> userLocation,
       CubitStatus addPhotoStatus,
       CubitStatus fetchNearestClubStatus,
       CubitStatus fetchLiveEventsStatus,
       Option<String> snackbarMessage,
-      Option<Club> selectedClub,
-      Option<Event> selectedEvent});
+      Option<WallPhotoVenue> selectedVenue,
+      Option<Event> selectedEvent,
+      Option<Event> initialEvent});
 }
 
 /// @nodoc
@@ -69,15 +72,16 @@ class _$AddWallPhotoStateCopyWithImpl<$Res, $Val extends AddWallPhotoState>
   $Res call({
     Object? photo = null,
     Object? isSelfie = null,
-    Object? nearestClubs = null,
+    Object? nearestVenues = null,
     Object? liveEventsFromSelectedClub = null,
     Object? userLocation = null,
     Object? addPhotoStatus = null,
     Object? fetchNearestClubStatus = null,
     Object? fetchLiveEventsStatus = null,
     Object? snackbarMessage = null,
-    Object? selectedClub = null,
+    Object? selectedVenue = null,
     Object? selectedEvent = null,
+    Object? initialEvent = null,
   }) {
     return _then(_value.copyWith(
       photo: null == photo
@@ -88,10 +92,10 @@ class _$AddWallPhotoStateCopyWithImpl<$Res, $Val extends AddWallPhotoState>
           ? _value.isSelfie
           : isSelfie // ignore: cast_nullable_to_non_nullable
               as bool,
-      nearestClubs: null == nearestClubs
-          ? _value.nearestClubs
-          : nearestClubs // ignore: cast_nullable_to_non_nullable
-              as List<Club>,
+      nearestVenues: null == nearestVenues
+          ? _value.nearestVenues
+          : nearestVenues // ignore: cast_nullable_to_non_nullable
+              as List<WallPhotoVenue>,
       liveEventsFromSelectedClub: null == liveEventsFromSelectedClub
           ? _value.liveEventsFromSelectedClub
           : liveEventsFromSelectedClub // ignore: cast_nullable_to_non_nullable
@@ -116,13 +120,17 @@ class _$AddWallPhotoStateCopyWithImpl<$Res, $Val extends AddWallPhotoState>
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      selectedClub: null == selectedClub
-          ? _value.selectedClub
-          : selectedClub // ignore: cast_nullable_to_non_nullable
-              as Option<Club>,
+      selectedVenue: null == selectedVenue
+          ? _value.selectedVenue
+          : selectedVenue // ignore: cast_nullable_to_non_nullable
+              as Option<WallPhotoVenue>,
       selectedEvent: null == selectedEvent
           ? _value.selectedEvent
           : selectedEvent // ignore: cast_nullable_to_non_nullable
+              as Option<Event>,
+      initialEvent: null == initialEvent
+          ? _value.initialEvent
+          : initialEvent // ignore: cast_nullable_to_non_nullable
               as Option<Event>,
     ) as $Val);
   }
@@ -139,15 +147,16 @@ abstract class _$$_AddWallPhotoStateCopyWith<$Res>
   $Res call(
       {Option<File> photo,
       bool isSelfie,
-      List<Club> nearestClubs,
+      List<WallPhotoVenue> nearestVenues,
       List<Event> liveEventsFromSelectedClub,
       Option<LatLng> userLocation,
       CubitStatus addPhotoStatus,
       CubitStatus fetchNearestClubStatus,
       CubitStatus fetchLiveEventsStatus,
       Option<String> snackbarMessage,
-      Option<Club> selectedClub,
-      Option<Event> selectedEvent});
+      Option<WallPhotoVenue> selectedVenue,
+      Option<Event> selectedEvent,
+      Option<Event> initialEvent});
 }
 
 /// @nodoc
@@ -163,15 +172,16 @@ class __$$_AddWallPhotoStateCopyWithImpl<$Res>
   $Res call({
     Object? photo = null,
     Object? isSelfie = null,
-    Object? nearestClubs = null,
+    Object? nearestVenues = null,
     Object? liveEventsFromSelectedClub = null,
     Object? userLocation = null,
     Object? addPhotoStatus = null,
     Object? fetchNearestClubStatus = null,
     Object? fetchLiveEventsStatus = null,
     Object? snackbarMessage = null,
-    Object? selectedClub = null,
+    Object? selectedVenue = null,
     Object? selectedEvent = null,
+    Object? initialEvent = null,
   }) {
     return _then(_$_AddWallPhotoState(
       photo: null == photo
@@ -182,10 +192,10 @@ class __$$_AddWallPhotoStateCopyWithImpl<$Res>
           ? _value.isSelfie
           : isSelfie // ignore: cast_nullable_to_non_nullable
               as bool,
-      nearestClubs: null == nearestClubs
-          ? _value._nearestClubs
-          : nearestClubs // ignore: cast_nullable_to_non_nullable
-              as List<Club>,
+      nearestVenues: null == nearestVenues
+          ? _value._nearestVenues
+          : nearestVenues // ignore: cast_nullable_to_non_nullable
+              as List<WallPhotoVenue>,
       liveEventsFromSelectedClub: null == liveEventsFromSelectedClub
           ? _value._liveEventsFromSelectedClub
           : liveEventsFromSelectedClub // ignore: cast_nullable_to_non_nullable
@@ -210,13 +220,17 @@ class __$$_AddWallPhotoStateCopyWithImpl<$Res>
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      selectedClub: null == selectedClub
-          ? _value.selectedClub
-          : selectedClub // ignore: cast_nullable_to_non_nullable
-              as Option<Club>,
+      selectedVenue: null == selectedVenue
+          ? _value.selectedVenue
+          : selectedVenue // ignore: cast_nullable_to_non_nullable
+              as Option<WallPhotoVenue>,
       selectedEvent: null == selectedEvent
           ? _value.selectedEvent
           : selectedEvent // ignore: cast_nullable_to_non_nullable
+              as Option<Event>,
+      initialEvent: null == initialEvent
+          ? _value.initialEvent
+          : initialEvent // ignore: cast_nullable_to_non_nullable
               as Option<Event>,
     ));
   }
@@ -228,28 +242,29 @@ class _$_AddWallPhotoState implements _AddWallPhotoState {
   const _$_AddWallPhotoState(
       {required this.photo,
       required this.isSelfie,
-      required final List<Club> nearestClubs,
+      required final List<WallPhotoVenue> nearestVenues,
       required final List<Event> liveEventsFromSelectedClub,
       required this.userLocation,
       required this.addPhotoStatus,
       required this.fetchNearestClubStatus,
       required this.fetchLiveEventsStatus,
       required this.snackbarMessage,
-      required this.selectedClub,
-      required this.selectedEvent})
-      : _nearestClubs = nearestClubs,
+      required this.selectedVenue,
+      required this.selectedEvent,
+      required this.initialEvent})
+      : _nearestVenues = nearestVenues,
         _liveEventsFromSelectedClub = liveEventsFromSelectedClub;
 
   @override
   final Option<File> photo;
   @override
   final bool isSelfie;
-  final List<Club> _nearestClubs;
+  final List<WallPhotoVenue> _nearestVenues;
   @override
-  List<Club> get nearestClubs {
-    if (_nearestClubs is EqualUnmodifiableListView) return _nearestClubs;
+  List<WallPhotoVenue> get nearestVenues {
+    if (_nearestVenues is EqualUnmodifiableListView) return _nearestVenues;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_nearestClubs);
+    return EqualUnmodifiableListView(_nearestVenues);
   }
 
   final List<Event> _liveEventsFromSelectedClub;
@@ -272,13 +287,15 @@ class _$_AddWallPhotoState implements _AddWallPhotoState {
   @override
   final Option<String> snackbarMessage;
   @override
-  final Option<Club> selectedClub;
+  final Option<WallPhotoVenue> selectedVenue;
   @override
   final Option<Event> selectedEvent;
+  @override
+  final Option<Event> initialEvent;
 
   @override
   String toString() {
-    return 'AddWallPhotoState(photo: $photo, isSelfie: $isSelfie, nearestClubs: $nearestClubs, liveEventsFromSelectedClub: $liveEventsFromSelectedClub, userLocation: $userLocation, addPhotoStatus: $addPhotoStatus, fetchNearestClubStatus: $fetchNearestClubStatus, fetchLiveEventsStatus: $fetchLiveEventsStatus, snackbarMessage: $snackbarMessage, selectedClub: $selectedClub, selectedEvent: $selectedEvent)';
+    return 'AddWallPhotoState(photo: $photo, isSelfie: $isSelfie, nearestVenues: $nearestVenues, liveEventsFromSelectedClub: $liveEventsFromSelectedClub, userLocation: $userLocation, addPhotoStatus: $addPhotoStatus, fetchNearestClubStatus: $fetchNearestClubStatus, fetchLiveEventsStatus: $fetchLiveEventsStatus, snackbarMessage: $snackbarMessage, selectedVenue: $selectedVenue, selectedEvent: $selectedEvent, initialEvent: $initialEvent)';
   }
 
   @override
@@ -290,7 +307,7 @@ class _$_AddWallPhotoState implements _AddWallPhotoState {
             (identical(other.isSelfie, isSelfie) ||
                 other.isSelfie == isSelfie) &&
             const DeepCollectionEquality()
-                .equals(other._nearestClubs, _nearestClubs) &&
+                .equals(other._nearestVenues, _nearestVenues) &&
             const DeepCollectionEquality().equals(
                 other._liveEventsFromSelectedClub,
                 _liveEventsFromSelectedClub) &&
@@ -304,10 +321,12 @@ class _$_AddWallPhotoState implements _AddWallPhotoState {
                 other.fetchLiveEventsStatus == fetchLiveEventsStatus) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
                 other.snackbarMessage == snackbarMessage) &&
-            (identical(other.selectedClub, selectedClub) ||
-                other.selectedClub == selectedClub) &&
+            (identical(other.selectedVenue, selectedVenue) ||
+                other.selectedVenue == selectedVenue) &&
             (identical(other.selectedEvent, selectedEvent) ||
-                other.selectedEvent == selectedEvent));
+                other.selectedEvent == selectedEvent) &&
+            (identical(other.initialEvent, initialEvent) ||
+                other.initialEvent == initialEvent));
   }
 
   @override
@@ -315,15 +334,16 @@ class _$_AddWallPhotoState implements _AddWallPhotoState {
       runtimeType,
       photo,
       isSelfie,
-      const DeepCollectionEquality().hash(_nearestClubs),
+      const DeepCollectionEquality().hash(_nearestVenues),
       const DeepCollectionEquality().hash(_liveEventsFromSelectedClub),
       userLocation,
       addPhotoStatus,
       fetchNearestClubStatus,
       fetchLiveEventsStatus,
       snackbarMessage,
-      selectedClub,
-      selectedEvent);
+      selectedVenue,
+      selectedEvent,
+      initialEvent);
 
   @JsonKey(ignore: true)
   @override
@@ -337,22 +357,23 @@ abstract class _AddWallPhotoState implements AddWallPhotoState {
   const factory _AddWallPhotoState(
       {required final Option<File> photo,
       required final bool isSelfie,
-      required final List<Club> nearestClubs,
+      required final List<WallPhotoVenue> nearestVenues,
       required final List<Event> liveEventsFromSelectedClub,
       required final Option<LatLng> userLocation,
       required final CubitStatus addPhotoStatus,
       required final CubitStatus fetchNearestClubStatus,
       required final CubitStatus fetchLiveEventsStatus,
       required final Option<String> snackbarMessage,
-      required final Option<Club> selectedClub,
-      required final Option<Event> selectedEvent}) = _$_AddWallPhotoState;
+      required final Option<WallPhotoVenue> selectedVenue,
+      required final Option<Event> selectedEvent,
+      required final Option<Event> initialEvent}) = _$_AddWallPhotoState;
 
   @override
   Option<File> get photo;
   @override
   bool get isSelfie;
   @override
-  List<Club> get nearestClubs;
+  List<WallPhotoVenue> get nearestVenues;
   @override
   List<Event> get liveEventsFromSelectedClub;
   @override
@@ -366,9 +387,11 @@ abstract class _AddWallPhotoState implements AddWallPhotoState {
   @override
   Option<String> get snackbarMessage;
   @override
-  Option<Club> get selectedClub;
+  Option<WallPhotoVenue> get selectedVenue;
   @override
   Option<Event> get selectedEvent;
+  @override
+  Option<Event> get initialEvent;
   @override
   @JsonKey(ignore: true)
   _$$_AddWallPhotoStateCopyWith<_$_AddWallPhotoState> get copyWith =>

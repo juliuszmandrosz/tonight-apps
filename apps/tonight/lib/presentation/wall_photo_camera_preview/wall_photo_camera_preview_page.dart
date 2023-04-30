@@ -1,6 +1,8 @@
 import 'package:camerawesome/camerawesome_plugin.dart';
 import 'package:camerawesome/pigeon.dart';
 import 'package:common/common.dart';
+import 'package:dartz/dartz.dart' as dartz;
+import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tonight/presentation/wall_photo_camera_preview/widgets/camera_preview_bottom_actions.dart';
@@ -8,7 +10,12 @@ import 'package:tonight/presentation/wall_photo_camera_preview/widgets/camera_pr
 import 'package:tonight/presentation/wall_photo_camera_preview/widgets/wall_photo_preview.dart';
 
 class WallPhotoCameraPreviewPage extends StatefulWidget {
-  const WallPhotoCameraPreviewPage({Key? key}) : super(key: key);
+  final dartz.Option<Event> event;
+
+  const WallPhotoCameraPreviewPage({
+    required this.event,
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<WallPhotoCameraPreviewPage> createState() =>
@@ -46,6 +53,7 @@ class _WallPhotoCameraPreviewPageState
                     heroTag: _photoHeroTag,
                     height: bottomHeight,
                     isSelfie: _isSelfie,
+                    event: widget.event,
                     onRetry: () {
                       setState(() {
                         _photoPath = null;

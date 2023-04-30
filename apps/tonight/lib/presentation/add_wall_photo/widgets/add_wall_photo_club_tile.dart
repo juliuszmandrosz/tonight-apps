@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:clubs/domain/club/club_entity.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/add_wall_photo/add_wall_photo_cubit.dart';
+import 'package:tonight/application/add_wall_photo/wall_photo_venue_model.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
@@ -15,9 +15,9 @@ class AddWallPhotoClubTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AddWallPhotoCubit, AddWallPhotoState>(
       listenWhen: (previous, current) =>
-          previous.selectedClub != current.selectedClub,
+          previous.selectedVenue != current.selectedVenue,
       listener: (context, state) {
-        state.selectedClub.fold(
+        state.selectedVenue.fold(
           () => null,
           (club) =>
               context.read<AddWallPhotoCubit>().fetchLiveEventsFromClub(club),
@@ -35,25 +35,27 @@ class AddWallPhotoClubTile extends StatelessWidget {
                 size: 20,
               ),
               title: Text(
-                state.selectedClub.fold(
+                state.selectedVenue.fold(
                   () => S().clubName,
-                  (club) => club.clubName,
+                  (venue) => venue.venueName,
                 ),
                 style: context.titleSmall.copyWith(
                   color: context.secondaryColor,
                 ),
               ),
-              trailing: state.fetchNearestClubStatus.isLoading()
-                  ? const SizedBox(
-                      height: 20,
-                      width: 20,
-                      child: CircleLoadingIndicator(size: 20),
-                    )
-                  : FaIcon(
-                      FontAwesomeIcons.chevronRight,
-                      size: 16,
-                      color: context.secondaryColor,
-                    ),
+              trailing: state.initialEvent.isSome()
+                  ? const SizedBox.shrink()
+                  : state.fetchNearestClubStatus.isLoading()
+                      ? const SizedBox(
+                          height: 20,
+                          width: 20,
+                          child: CircleLoadingIndicator(size: 20),
+                        )
+                      : FaIcon(
+                          FontAwesomeIcons.chevronRight,
+                          size: 16,
+                          color: context.secondaryColor,
+                        ),
             );
           },
         );
@@ -62,7 +64,7 @@ class AddWallPhotoClubTile extends StatelessWidget {
   }
 
   bool _enabled(AddWallPhotoState state) =>
-      !state.fetchNearestClubStatus.isLoading();
+      state.initialEvent.isNone() && !state.fetchNearestClubStatus.isLoading();
 
   _onTap({
     required BuildContext context,
@@ -70,17 +72,18 @@ class AddWallPhotoClubTile extends StatelessWidget {
   }) async {
     if (!_enabled(state)) return;
 
-    if (state.userLocation.isSome() && state.nearestClubs.isEmpty) {
+    if (state.userLocation.isSome() && state.nearestVenues.isEmpty) {
       // TODO - add translation
       context.showSnackbarMessage('Nie znaleziono klubów w pobliżu');
       return;
     }
 
     if (state.userLocation.isNone()) {
-      final club = await context.pushRoute<Club>(const SelectClubRoute());
-      if (club == null) return;
+      final venue =
+          await context.pushRoute<WallPhotoVenue>(const SelectClubRoute());
+      if (venue == null) return;
       if (context.mounted) {
-        context.read<AddWallPhotoCubit>().selectClub(club);
+        context.read<AddWallPhotoCubit>().selectVenue(venue);
       }
       return;
     }
@@ -91,23 +94,26 @@ class AddWallPhotoClubTile extends StatelessWidget {
         return SizedBox(
           height: 200,
           child: ListView.builder(
-            itemCount: state.nearestClubs.length,
+            itemCount: state.nearestVenues.length,
             itemBuilder: (_, i) {
-              final club = state.nearestClubs[i];
+              final venue = state.nearestVenues[i];
               return Padding(
                 padding: EdgeInsets.only(top: i == 0 ? 8.0 : 0),
                 child: ListTile(
-                  leading: CircleNetworkPhoto(
-                    photoUrl: club.clubImageUrl,
-                    containerSize: 40,
-                    loaderSize: 16,
+                  leading: ProfilePictureContainer(
+                    profilePictureUrl: venue.venuePhotoUrl,
+                    imageSize: 40,
+                    backgroundColor: context.surfaceColor,
+                    textColor: context.onSurfaceColor,
+                    textStyle: context.titleSmall,
+                    username: venue.venueName,
                   ),
                   title: Text(
-                    club.clubName,
+                    venue.venueName,
                     style: context.titleSmall,
                   ),
                   onTap: () {
-                    context.read<AddWallPhotoCubit>().selectClub(club);
+                    context.read<AddWallPhotoCubit>().selectVenue(venue);
                     context.popRoute();
                   },
                 ),

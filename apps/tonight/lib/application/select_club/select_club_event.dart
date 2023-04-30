@@ -2,11 +2,13 @@ part of 'select_club_bloc.dart';
 
 @freezed
 class SelectClubEvent with _$SelectClubEvent {
-  const factory SelectClubEvent.clubsFetched() = _ClubsFetched;
+  const factory SelectClubEvent.venuesFetched() = _VenuesFetched;
 
-  const factory SelectClubEvent.nextPageClubsFetched() = _NextPageClubsFetched;
+  const factory SelectClubEvent.nextPageVenuesFetched() =
+      _NextPageVenuesFetched;
 
-  const factory SelectClubEvent.clubSelected(Club club) = _ClubSelected;
+  const factory SelectClubEvent.venueSelected(WallPhotoVenue venue) =
+      _VenueSelected;
 
-  const factory SelectClubEvent.clubsFiltered(String phrase) = _ClubsFiltered;
+  const factory SelectClubEvent.venuesFiltered(String phrase) = _VenuesFiltered;
 }
