@@ -29,7 +29,7 @@ class ClubsApiImpl implements ClubsApi {
   ) async {
     final filterBy = filters.buildFilters();
     final pageNumber = ((offset + 1) / pageSize).ceil();
-    final sortBy = _getEventsSortBy(filters);
+    final sortBy = _getClubsSortBy(filters);
     final queryBy = _getQueryBy(filters);
 
     const endpoint = 'clubs/getClubs';
@@ -84,7 +84,7 @@ class ClubsApiImpl implements ClubsApi {
     return 'clubName';
   }
 
-  String _getEventsSortBy(ClubFilters clubFilters) {
+  String _getClubsSortBy(ClubFilters clubFilters) {
     final userLocation = clubFilters.maxDistanceFilter.userLocation;
 
     return userLocation.fold(
