@@ -81,7 +81,12 @@ class FirebaseMessageFacade implements MessageFacade {
           .limit(pageSize);
 
       if (lastMessage != null) {
-        messagesRef = messagesRef.startAfter([lastMessage.createdAt]);
+        final lastDoc = await _firestore.rooms
+            .doc(roomId)
+            .messages
+            .doc(lastMessage.id)
+            .get();
+        messagesRef = messagesRef.startAfterDocument(lastDoc);
       }
 
       final snapshot = await messagesRef.get();
