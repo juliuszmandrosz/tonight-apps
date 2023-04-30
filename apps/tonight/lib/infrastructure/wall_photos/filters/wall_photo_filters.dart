@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/show_only_other_users_photos_filter.dart';
-import 'package:tonight/infrastructure/wall_photos/filters/show_only_photos_from_club_filter.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/show_photos_from_clubs_in_range_filter.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/show_photos_from_live_events_filter.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/wall_photo_phrase_filter.dart';
@@ -16,7 +15,6 @@ class WallPhotoFilters with _$WallPhotoFilters {
     required ShowPhotosFromLiveEventsFilter showPhotosFromLiveEventsFilter,
     required ShowOnlyOtherUsersPhotosFilter showOnlyOtherUsersPhotosFilter,
     required ShowPhotosFromClubsInRangeFilter showPhotosFromClubsInRangeFilter,
-    required ShowOnlyPhotosFromClubFilter showOnlyPhotosFromClubFilter,
   }) = _WallPhotoFilters;
 
   factory WallPhotoFilters.empty() => WallPhotoFilters(
@@ -25,7 +23,6 @@ class WallPhotoFilters with _$WallPhotoFilters {
         showOnlyOtherUsersPhotosFilter: ShowOnlyOtherUsersPhotosFilter.empty(),
         showPhotosFromClubsInRangeFilter:
             ShowPhotosFromClubsInRangeFilter.empty(),
-        showOnlyPhotosFromClubFilter: ShowOnlyPhotosFromClubFilter.empty(),
       );
 
   String buildFilters() {
@@ -35,7 +32,6 @@ class WallPhotoFilters with _$WallPhotoFilters {
       showPhotosFromClubsInRangeFilter,
       showPhotosFromLiveEventsFilter,
       showOnlyOtherUsersPhotosFilter,
-      showOnlyPhotosFromClubFilter,
     ];
 
     for (final filter in filterList) {

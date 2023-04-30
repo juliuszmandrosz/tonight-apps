@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:clubs/domain/club/club_entity.dart';
 import 'package:payments/domain/domain.dart';
+import 'package:tonight/application/add_wall_photo/wall_photo_venue_model.dart';
 import 'package:tonight/presentation/add_wall_photo/add_wall_photo_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
 import 'package:tonight/presentation/club_city_picker/club_city_picker_page.dart';
@@ -200,7 +200,7 @@ const animationDuration = 300;
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
-    CustomRoute<Club>(
+    CustomRoute<WallPhotoVenue>(
       page: SelectClubPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,

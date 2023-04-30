@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/application/event_room/aggregator/event_room_aggregator.dart';
+import 'package:tonight/application/event_room/bloc/event_room_tab.dart';
 import 'package:tonight/domain/participants/participant_entity.dart';
 import 'package:translations/translations.dart';
 
@@ -18,6 +20,7 @@ class EventRoomBloc extends Bloc<EventRoomEvent, EventRoomState> {
   EventRoomBloc(this._eventRoomAggregator) : super(EventRoomState.initial()) {
     on<_JoinedToEvent>(_onJoinedToEvent);
     on<_LeavedFromEvent>(_onLeavedFromEvent);
+    on<_TabChanged>(_onTabChanged);
   }
 
   FutureOr<void> _onJoinedToEvent(
@@ -31,14 +34,14 @@ class EventRoomBloc extends Bloc<EventRoomEvent, EventRoomState> {
       ),
     );
 
-    final result = await _eventRoomAggregator.joinToRoom(event.eventId);
+    final result = await _eventRoomAggregator.joinToRoom(event.event.id);
 
     result.fold(
       (_) => emit(state.copyWith(joinStatus: CubitStatus.failure)),
       (participant) => emit(
         state.copyWith(
           joinStatus: CubitStatus.success,
-          eventId: some(event.eventId),
+          event: some(event.event),
           participant: some(participant),
         ),
       ),
@@ -57,7 +60,7 @@ class EventRoomBloc extends Bloc<EventRoomEvent, EventRoomState> {
     );
 
     final result = await _eventRoomAggregator.leaveRoom(
-      eventId: state.eventId.getOrCrash(),
+      eventId: state.event.getOrCrash().id,
       participant: state.participant.getOrCrash(),
     );
 
@@ -73,6 +76,18 @@ class EventRoomBloc extends Bloc<EventRoomEvent, EventRoomState> {
       },
       (_) => emit(
         state.copyWith(leaveStatus: CubitStatus.success),
+      ),
+    );
+  }
+
+  FutureOr<void> _onTabChanged(
+    _TabChanged event,
+    Emitter<EventRoomState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        selectedTab: event.tab,
+        previousEvent: some(event),
       ),
     );
   }

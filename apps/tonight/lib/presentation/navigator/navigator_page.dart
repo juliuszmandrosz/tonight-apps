@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
+import 'package:dartz/dartz.dart' as dartz;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -53,7 +54,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
                 if (i == TonightNavigationDestination.add.index) {
                   if (context.mounted) {
                     context.pushRoute(
-                      const WallPhotoCameraPreviewRoute(),
+                      WallPhotoCameraPreviewRoute(event: dartz.none()),
                     );
                     i = _selectedIndex;
                   }

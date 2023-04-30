@@ -43,7 +43,7 @@ class WallPhotoUserRow extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   AutoSizeText(
-                    '${wallPhoto.clubName} • ${timeago.format(
+                    '${wallPhoto.venueName} • ${timeago.format(
                       wallPhoto.createdAt,
                       locale: Intl.getCurrentLocale(),
                     )}',

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:clubs/domain/club/club_entity.dart';
 import 'package:clubs/domain/club/user_club_facade.dart';
 import 'package:clubs/infrastructure/filters/club_filters_entity.dart';
 import 'package:clubs/infrastructure/filters/filter/phrase_filter.dart';
@@ -8,6 +7,7 @@ import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tonight/application/add_wall_photo/wall_photo_venue_model.dart';
 import 'package:translations/translations.dart';
 
 part 'select_club_bloc.freezed.dart';
@@ -20,17 +20,17 @@ class SelectClubBloc extends Bloc<SelectClubEvent, SelectClubState> {
   final UserClubFacade _clubFacade;
 
   SelectClubBloc(this._clubFacade) : super(SelectClubState.initial()) {
-    on<_ClubsFetched>(_onClubsFetched);
-    on<_NextPageClubsFetched>(
-      _onNextClubsPageFetched,
+    on<_VenuesFetched>(_onVenuesFetched);
+    on<_NextPageVenuesFetched>(
+      _onNextVenuesPageFetched,
       transformer: throttleDroppable(),
     );
-    on<_ClubSelected>(_onClubSelected);
-    on<_ClubsFiltered>(_onClubsFiltered);
+    on<_VenueSelected>(_onVenueSelected);
+    on<_VenuesFiltered>(_onVenuesFiltered);
   }
 
-  FutureOr<void> _onClubsFetched(
-    _ClubsFetched event,
+  FutureOr<void> _onVenuesFetched(
+    _VenuesFetched event,
     Emitter<SelectClubState> emit,
   ) async {
     emit(state.copyWith(initialStatus: CubitStatus.loading));
@@ -42,7 +42,7 @@ class SelectClubBloc extends Bloc<SelectClubEvent, SelectClubState> {
       (_) => emit(state.copyWith(initialStatus: CubitStatus.failure)),
       (clubs) => emit(
         state.copyWith(
-          clubs: clubs,
+          venues: clubs.map((c) => WallPhotoVenue.fromClub(c)).toList(),
           hasReachedMax: clubs.length < _pageSize,
           initialStatus: CubitStatus.success,
         ),
@@ -50,8 +50,8 @@ class SelectClubBloc extends Bloc<SelectClubEvent, SelectClubState> {
     );
   }
 
-  FutureOr<void> _onNextClubsPageFetched(
-    _NextPageClubsFetched event,
+  FutureOr<void> _onNextVenuesPageFetched(
+    _NextPageVenuesFetched event,
     Emitter<SelectClubState> emit,
   ) async {
     if (state.hasReachedMax) return;
@@ -59,13 +59,16 @@ class SelectClubBloc extends Bloc<SelectClubEvent, SelectClubState> {
     final result = await _clubFacade.getClubs(
       ClubFilters.empty(),
       pageSize: _pageSize,
-      offset: state.clubs.length,
+      offset: state.venues.length,
     );
     result.fold(
       (_) => emit(state.copyWith(fetchNextPageStatus: CubitStatus.failure)),
       (clubs) => emit(
         state.copyWith(
-          clubs: [...state.clubs, ...clubs],
+          venues: [
+            ...state.venues,
+            ...clubs.map((c) => WallPhotoVenue.fromClub(c))
+          ],
           hasReachedMax: clubs.length < _pageSize,
           fetchNextPageStatus: CubitStatus.success,
         ),
@@ -73,18 +76,18 @@ class SelectClubBloc extends Bloc<SelectClubEvent, SelectClubState> {
     );
   }
 
-  FutureOr<void> _onClubSelected(
-    _ClubSelected event,
+  FutureOr<void> _onVenueSelected(
+    _VenueSelected event,
     Emitter<SelectClubState> emit,
   ) {
-    emit(state.copyWith(selectedClub: some(event.club)));
+    emit(state.copyWith(selectedVenue: some(event.venue)));
   }
 
-  FutureOr<void> _onClubsFiltered(
-    _ClubsFiltered event,
+  FutureOr<void> _onVenuesFiltered(
+    _VenuesFiltered event,
     Emitter<SelectClubState> emit,
   ) async {
-    emit(state.copyWith(filterClubsStatus: CubitStatus.loading));
+    emit(state.copyWith(filterVenuesStatus: CubitStatus.loading));
     final filters = ClubFilters.empty().copyWith(
       phraseFilter: PhraseFilter(phrase: event.phrase),
     );
@@ -93,7 +96,7 @@ class SelectClubBloc extends Bloc<SelectClubEvent, SelectClubState> {
       (_) {
         emit(
           state.copyWith(
-            filterClubsStatus: CubitStatus.failure,
+            filterVenuesStatus: CubitStatus.failure,
             searchPhrase: event.phrase,
           ),
         );
@@ -104,9 +107,9 @@ class SelectClubBloc extends Bloc<SelectClubEvent, SelectClubState> {
       },
       (clubs) => emit(
         state.copyWith(
-          clubs: clubs,
+          venues: clubs.map((c) => WallPhotoVenue.fromClub(c)).toList(),
           hasReachedMax: clubs.length < _pageSize,
-          filterClubsStatus: CubitStatus.success,
+          filterVenuesStatus: CubitStatus.success,
           searchPhrase: event.phrase,
         ),
       ),

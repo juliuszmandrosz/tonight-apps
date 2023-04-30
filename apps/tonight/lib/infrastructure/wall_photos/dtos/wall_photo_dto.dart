@@ -15,38 +15,36 @@ class WallPhotoDto with _$WallPhotoDto {
   const factory WallPhotoDto({
     @JsonKey(ignore: true) String? id,
     required String photoUrl,
-    required String clubId,
-    required String clubName,
-    @LatLngConverter() required LatLng clubLocation,
-    required String eventId,
-    required String eventName,
+    required String venueId,
+    required String venueName,
+    @LatLngConverter() required LatLng venueLocation,
     required String userId,
     required String username,
+    required String eventId,
+    required String eventName,
     @TimestampJsonConverter() required DateTime eventEndDateTime,
     @TimestampJsonConverter() required DateTime createdAt,
     String? userProfilePhotoUrl,
     @NullableLatLngConverter() LatLng? photoLocation,
     @Default(false) bool isVerified,
-    @Default(false) bool isFromClub,
   }) = _WallPhotoDto;
 
   factory WallPhotoDto.fromDomain(WallPhoto wallPhoto) {
     return WallPhotoDto(
       id: wallPhoto.id,
       photoUrl: wallPhoto.photoUrl,
-      clubId: wallPhoto.clubId,
-      clubName: wallPhoto.clubName,
-      clubLocation: wallPhoto.clubLocation,
+      venueId: wallPhoto.venueId,
+      venueName: wallPhoto.venueName,
+      venueLocation: wallPhoto.venueLocation,
       username: wallPhoto.username,
       userId: wallPhoto.userId,
-      eventId: wallPhoto.eventId,
-      eventName: wallPhoto.eventName,
       eventEndDateTime: wallPhoto.eventEndDateTime,
       createdAt: wallPhoto.createdAt,
       userProfilePhotoUrl: wallPhoto.userProfilePhotoUrl,
       isVerified: wallPhoto.isVerified,
       photoLocation: wallPhoto.photoLocation,
-      isFromClub: wallPhoto.isFromClub,
+      eventId: wallPhoto.eventId,
+      eventName: wallPhoto.eventName,
     );
   }
 
@@ -69,9 +67,9 @@ class WallPhotoDto with _$WallPhotoDto {
     return WallPhoto(
       id: id,
       photoUrl: photoUrl,
-      clubId: clubId,
-      clubName: clubName,
-      clubLocation: clubLocation,
+      venueId: venueId,
+      venueName: venueName,
+      venueLocation: venueLocation,
       eventId: eventId,
       eventName: eventName,
       userId: userId,
@@ -81,7 +79,6 @@ class WallPhotoDto with _$WallPhotoDto {
       userProfilePhotoUrl: userProfilePhotoUrl,
       isVerified: isVerified,
       photoLocation: photoLocation,
-      isFromClub: isFromClub,
     );
   }
 }
