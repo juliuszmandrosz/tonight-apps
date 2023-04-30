@@ -23,7 +23,7 @@ class MessageBubble extends StatelessWidget {
           if (message.isFirstMessageFromDay) EventChatDate(message: message),
           if (message.isJoinedInfo || message.isLeftInfo)
             EventChatSystemInfo(message: message),
-          if (!message.isJoinedInfo)
+          if (!message.isJoinedInfo && !message.isLeftInfo)
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
