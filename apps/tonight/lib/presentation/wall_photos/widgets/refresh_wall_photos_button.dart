@@ -19,8 +19,8 @@ class RefreshWallPhotosButton extends StatelessWidget {
                 // TODO - add translation
                 state.userLocation.isSome()
                     // TODO - add translation
-                    ? "Brak zdjęć z dzisiejszego wieczoru w Twojej okolicy, bądź pierwszy i dodaj je!"
-                    : "Brak zdjęć z dzisiejszego wieczoru, bądź pierwszy i dodaj je!",
+                    ? "Brak zdjęć z dzisiejszego wieczoru z klubów w Twojej okolicy, bądź pierwszy i dodaj je!"
+                    : "Brak zdjęć z dzisiejszego wieczoru z klubów, bądź pierwszy i dodaj je!",
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),

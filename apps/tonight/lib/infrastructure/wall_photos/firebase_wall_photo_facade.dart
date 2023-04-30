@@ -14,7 +14,7 @@ import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
 import 'package:tonight/infrastructure/wall_photos/dtos/wall_photo_dto.dart';
-import 'package:tonight/infrastructure/wall_photos/filters/show_only_other_users_photos_filter.dart';
+import 'package:tonight/infrastructure/wall_photos/filters/show_only_photos_from_club_filter.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/show_photos_from_clubs_in_range_filter.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/wall_photo_filters.dart';
 import 'package:uuid/uuid.dart';
@@ -45,6 +45,7 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
     required String eventName,
     required DateTime eventEndDateTime,
     required Uint8List photo,
+    required bool isFromClub,
     required LatLng? photoLocation,
   }) async {
     try {
@@ -66,6 +67,7 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
         photoLocation: photoLocation,
         username: user.username,
         userProfilePhotoUrl: user.profilePictureUrl,
+        isFromClub: isFromClub,
       );
       final wallPhotoDto = WallPhotoDto.fromDomain(wallPhoto);
       await _firestore.wallPhotos.doc(wallPhoto.id).set(wallPhotoDto.toJson());
@@ -85,7 +87,7 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   }
 
   @override
-  Future<Either<WallPhotoFailure, List<WallPhoto>>> getPhotos({
+  Future<Either<WallPhotoFailure, List<WallPhoto>>> getWallPhotos({
     required Option<LatLng> userLocation,
     int pageSize = 20,
     int offset = 0,
@@ -127,8 +129,7 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
           .orderBy('createdAt', descending: true)
           .limit(pageSize);
       if (lastPhoto != null) {
-        final lastDoc = await _firestore.wallPhotos.doc(lastPhoto.id).get();
-        query = query.startAfterDocument(lastDoc);
+        query = query.startAfter([lastPhoto.createdAt]);
       }
       final result = await query.get();
       return right(
@@ -147,6 +148,33 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
           permissionDeniedFailure: const WallPhotoFailure.permissionDenied(),
         ),
       );
+    }
+  }
+
+  @override
+  Future<Either<WallPhotoFailure, List<WallPhoto>>> getEventPhotos({
+    required String eventId,
+    WallPhoto? lastPhoto,
+    int pageSize = 20,
+  }) async {
+    try {
+      var query = _firestore.wallPhotos
+          .where('eventId', isEqualTo: eventId)
+          .orderBy('createdAt', descending: true)
+          .limit(pageSize);
+      if (lastPhoto != null) {
+        query = query.startAfter([lastPhoto.createdAt]);
+      }
+      final result = await query.get();
+      return right(
+        result.docs
+            .map((doc) => WallPhotoDto.fromFirebase(doc).toDomain())
+            .toList(),
+      );
+    } on FirebaseException catch (e) {
+      _logger.e(e);
+      _crashlytics.recordError(e, StackTrace.current);
+      return left(const WallPhotoFailure.unexpected());
     }
   }
 
@@ -183,12 +211,12 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
     required String userId,
   }) {
     return WallPhotoFilters.empty().copyWith(
-      showOnlyOtherUsersPhotosFilter: ShowOnlyOtherUsersPhotosFilter(
-        currentUserId: userId,
-      ),
       showPhotosFromClubsInRangeFilter: ShowPhotosFromClubsInRangeFilter(
         userLocation: userLocation,
         maxDistance: 50,
+      ),
+      showOnlyPhotosFromClubFilter: ShowOnlyPhotosFromClubFilter(
+        showOnlyPhotosFromClub: true,
       ),
     );
   }
