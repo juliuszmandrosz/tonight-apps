@@ -43,7 +43,8 @@ class EventPhotoUserRow extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   AutoSizeText(
-                    '${photo.clubName} • ${timeago.format(
+                    // TODO - add translation
+                    '${photo.venueName} • ${timeago.format(
                       photo.createdAt,
                       locale: Intl.getCurrentLocale(),
                     )}',

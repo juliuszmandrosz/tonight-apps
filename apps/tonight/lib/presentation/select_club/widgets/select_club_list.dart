@@ -12,21 +12,21 @@ class SelectClubList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SelectClubBloc, SelectClubState>(
       builder: (context, state) {
-        return state.filterClubsStatus.isLoading()
+        return state.filterVenuesStatus.isLoading()
             ? const WaveLoadingIndicator()
-            : state.clubs.isEmpty
+            : state.venues.isEmpty
                 ? const SelectClubNoFilteredClubsInfo()
                 : Expanded(
                     child: InfiniteList(
-                      itemCount: state.clubs.length,
+                      itemCount: state.venues.length,
                       onFetchData: () => context
                           .read<SelectClubBloc>()
-                          .add(const SelectClubEvent.nextPageClubsFetched()),
+                          .add(const SelectClubEvent.nextPageVenuesFetched()),
                       hasReachedMax: state.hasReachedMax,
-                      isLoading: state.filterClubsStatus.isLoading(),
-                      hasError: state.filterClubsStatus.isFailure(),
+                      isLoading: state.filterVenuesStatus.isLoading(),
+                      hasError: state.filterVenuesStatus.isFailure(),
                       itemBuilder: (_, i) =>
-                          SelectClubTile(club: state.clubs[i]),
+                          SelectClubTile(venue: state.venues[i]),
                       separatorBuilder: (_, __) => const Divider(height: 32),
                     ),
                   );

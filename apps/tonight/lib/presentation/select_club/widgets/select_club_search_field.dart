@@ -11,7 +11,7 @@ class SelectClubSearchField extends StatelessWidget {
     return SearchField(
       onSubmit: (phrase) async => context
           .read<SelectClubBloc>()
-          .add(SelectClubEvent.clubsFiltered(phrase)),
+          .add(SelectClubEvent.venuesFiltered(phrase)),
     );
   }
 }
