@@ -36,6 +36,7 @@ class EventChatUserContainer extends StatelessWidget {
                     textStyle: context.titleSmall,
                     backgroundColor: message.user.color,
                     textColor: context.onSurfaceColor,
+                    isUserDeleted: message.user.isUserDeleted,
                   )
                 : const SizedBox.shrink(),
           ),

@@ -11,6 +11,7 @@ class Message extends Equatable {
   final String? userPictureUrl;
   final bool isJoinedInfo;
   final bool isLeftInfo;
+  final bool isUserDeleted;
 
   Message({
     String? id,
@@ -21,6 +22,7 @@ class Message extends Equatable {
     this.userPictureUrl,
     this.isJoinedInfo = false,
     this.isLeftInfo = false,
+    this.isUserDeleted = false,
   })  : id = id ?? const Uuid().v1(),
         createdAt = createdAt ?? DateTime.now();
 
@@ -34,6 +36,7 @@ class Message extends Equatable {
         createdAt,
         isJoinedInfo,
         isLeftInfo,
+        isUserDeleted,
       ];
 
   Message copyWith({
@@ -43,6 +46,7 @@ class Message extends Equatable {
     String? text,
     bool? isJoinedInfo,
     bool? isLeftInfo,
+    bool? isUserDeleted,
   }) {
     return Message(
       id: id,
@@ -58,6 +62,7 @@ class Message extends Equatable {
           : this.userPictureUrl,
       isJoinedInfo: isJoinedInfo ?? this.isJoinedInfo,
       isLeftInfo: isLeftInfo ?? this.isLeftInfo,
+      isUserDeleted: isUserDeleted ?? this.isUserDeleted,
     );
   }
 }

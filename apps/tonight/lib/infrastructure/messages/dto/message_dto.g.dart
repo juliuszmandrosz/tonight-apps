@@ -16,6 +16,7 @@ _$_MessageDto _$$_MessageDtoFromJson(Map<String, dynamic> json) =>
           .fromJson(json['createdAt'] as Timestamp),
       isJoinedInfo: json['isJoinedInfo'] ?? false,
       isLeftInfo: json['isLeftInfo'] ?? false,
+      isUserDeleted: json['isUserDeleted'] ?? false,
     );
 
 Map<String, dynamic> _$$_MessageDtoToJson(_$_MessageDto instance) =>
@@ -28,4 +29,5 @@ Map<String, dynamic> _$$_MessageDtoToJson(_$_MessageDto instance) =>
           const FirebaseTimestampJsonConverter().toJson(instance.createdAt),
       'isJoinedInfo': instance.isJoinedInfo,
       'isLeftInfo': instance.isLeftInfo,
+      'isUserDeleted': instance.isUserDeleted,
     };
