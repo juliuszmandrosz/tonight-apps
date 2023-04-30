@@ -9,15 +9,15 @@ part 'user_details_cubit.freezed.dart';
 part 'user_details_state.dart';
 
 class UserDetailsCubit extends Cubit<UserDetailsState> {
-  final UserDetailsAggregator _userDetailsRepository;
+  final UserDetailsAggregator _userDetailsAggregator;
 
-  UserDetailsCubit(this._userDetailsRepository)
+  UserDetailsCubit(this._userDetailsAggregator)
       : super(UserDetailsState.initial());
 
   Future<void> getUserById(String userId) async {
     emit(state.copyWith(status: CubitStatus.loading));
 
-    final result = await _userDetailsRepository.getUserDetails(userId);
+    final result = await _userDetailsAggregator.getUserDetails(userId);
 
     result.fold(
       (failure) => emit(state.copyWith(status: CubitStatus.failure)),
