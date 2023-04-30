@@ -14,7 +14,6 @@ import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
 import 'package:tonight/infrastructure/wall_photos/dtos/wall_photo_dto.dart';
-import 'package:tonight/infrastructure/wall_photos/filters/show_only_photos_from_club_filter.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/show_photos_from_clubs_in_range_filter.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/wall_photo_filters.dart';
 import 'package:uuid/uuid.dart';
@@ -38,14 +37,13 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
 
   @override
   Future<Either<WallPhotoFailure, Unit>> addPhoto({
-    required String clubId,
-    required String clubName,
-    required LatLng clubLocation,
+    required String venueId,
+    required String venueName,
+    required LatLng venueLocation,
     required String eventId,
     required String eventName,
     required DateTime eventEndDateTime,
     required Uint8List photo,
-    required bool isFromClub,
     required LatLng? photoLocation,
   }) async {
     try {
@@ -57,9 +55,9 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
       );
       final wallPhoto = WallPhoto(
         photoUrl: photoUrl,
-        clubId: clubId,
-        clubName: clubName,
-        clubLocation: clubLocation,
+        venueId: venueId,
+        venueName: venueName,
+        venueLocation: venueLocation,
         eventId: eventId,
         eventName: eventName,
         userId: user.id!,
@@ -67,7 +65,6 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
         photoLocation: photoLocation,
         username: user.username,
         userProfilePhotoUrl: user.profilePictureUrl,
-        isFromClub: isFromClub,
       );
       final wallPhotoDto = WallPhotoDto.fromDomain(wallPhoto);
       await _firestore.wallPhotos.doc(wallPhoto.id).set(wallPhotoDto.toJson());
@@ -193,7 +190,7 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
     Logger().i(filters.buildFilters());
     final data = {
       'query': '',
-      'queryBy': 'clubName',
+      'queryBy': 'venueName',
       'filterBy': filters.buildFilters(),
       'pageNumber': pageNumber,
       'pageSize': pageSize,
@@ -214,9 +211,6 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
       showPhotosFromClubsInRangeFilter: ShowPhotosFromClubsInRangeFilter(
         userLocation: userLocation,
         maxDistance: 50,
-      ),
-      showOnlyPhotosFromClubFilter: ShowOnlyPhotosFromClubFilter(
-        showOnlyPhotosFromClub: true,
       ),
     );
   }

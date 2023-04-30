@@ -6,27 +6,26 @@ import 'package:uuid/uuid.dart';
 class WallPhoto extends Equatable {
   final String id;
   final String photoUrl;
-  final String clubId;
-  final String clubName;
-  final LatLng clubLocation;
-  final String eventId;
-  final String eventName;
+  final String venueId;
+  final String venueName;
+  final LatLng venueLocation;
   final String userId;
   final String username;
+  final String eventId;
+  final String eventName;
   final DateTime eventEndDateTime;
   final DateTime createdAt;
   final String? userProfilePhotoUrl;
   final LatLng? photoLocation;
   final bool isVerified;
-  final bool isFromClub;
 
   WallPhoto({
     String? id,
     DateTime? createdAt,
     required this.photoUrl,
-    required this.clubId,
-    required this.clubName,
-    required this.clubLocation,
+    required this.venueId,
+    required this.venueName,
+    required this.venueLocation,
     required this.eventId,
     required this.eventName,
     required this.userId,
@@ -35,7 +34,6 @@ class WallPhoto extends Equatable {
     this.userProfilePhotoUrl,
     this.photoLocation,
     this.isVerified = false,
-    this.isFromClub = false,
   })  : id = id ?? const Uuid().v1(),
         createdAt = createdAt ?? DateTime.now();
 
@@ -43,9 +41,9 @@ class WallPhoto extends Equatable {
   List<Object?> get props => [
         id,
         photoUrl,
-        clubId,
-        clubName,
-        clubLocation,
+        venueId,
+        venueName,
+        venueLocation,
         eventId,
         eventName,
         userId,
@@ -55,33 +53,29 @@ class WallPhoto extends Equatable {
         userProfilePhotoUrl,
         photoLocation,
         isVerified,
-        isFromClub,
       ];
 
   WallPhoto copyWith({
     String? photoUrl,
-    String? clubId,
-    String? clubName,
-    LatLng? clubLocation,
-    String? eventId,
-    String? eventName,
+    String? venueId,
+    String? venueName,
+    LatLng? venueLocation,
     String? userId,
     String? username,
     DateTime? eventEndDateTime,
     Option<String>? userProfilePhotoUrl,
     Option<LatLng>? photoLocation,
     bool? isVerified,
-    bool? isFromClub,
+    String? eventId,
+    String? eventName,
   }) {
     return WallPhoto(
       id: id,
       createdAt: createdAt,
       photoUrl: photoUrl ?? this.photoUrl,
-      clubId: clubId ?? this.clubId,
-      clubName: clubName ?? this.clubName,
-      clubLocation: clubLocation ?? this.clubLocation,
-      eventId: eventId ?? this.eventId,
-      eventName: eventName ?? this.eventName,
+      venueId: venueId ?? this.venueId,
+      venueName: venueName ?? this.venueName,
+      venueLocation: venueLocation ?? this.venueLocation,
       userId: userId ?? this.userId,
       username: username ?? this.username,
       eventEndDateTime: eventEndDateTime ?? this.eventEndDateTime,
@@ -98,7 +92,8 @@ class WallPhoto extends Equatable {
             )
           : this.photoLocation,
       isVerified: isVerified ?? this.isVerified,
-      isFromClub: isFromClub ?? this.isFromClub,
+      eventId: eventId ?? this.eventId,
+      eventName: eventName ?? this.eventName,
     );
   }
 }

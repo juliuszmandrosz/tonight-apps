@@ -28,31 +28,33 @@ class AddWallPhotoEventTile extends StatelessWidget {
             ),
             style: context.titleSmall.copyWith(color: context.secondaryColor),
           ),
-          trailing: state.fetchLiveEventsStatus.isLoading()
-              ? const SizedBox(
-                  height: 20,
-                  width: 20,
-                  child: CircleLoadingIndicator(size: 20),
-                )
-              : FaIcon(
-                  FontAwesomeIcons.chevronRight,
-                  size: 16,
-                  color: context.secondaryColor,
-                ),
+          trailing: state.initialEvent.isSome()
+              ? const SizedBox.shrink()
+              : state.fetchLiveEventsStatus.isLoading()
+                  ? const SizedBox(
+                      height: 20,
+                      width: 20,
+                      child: CircleLoadingIndicator(size: 20),
+                    )
+                  : FaIcon(
+                      FontAwesomeIcons.chevronRight,
+                      size: 16,
+                      color: context.secondaryColor,
+                    ),
         );
       },
     );
   }
 
   bool _enabled(AddWallPhotoState state) =>
-      !state.fetchLiveEventsStatus.isLoading();
+      state.initialEvent.isNone() && !state.fetchLiveEventsStatus.isLoading();
 
   Future<void> _onTap({
     required AddWallPhotoState state,
     required BuildContext context,
   }) async {
     if (!_enabled(state)) return;
-    if (state.selectedClub.isNone()) {
+    if (state.selectedVenue.isNone()) {
       // TODO - add translation
       context.showSnackbarMessage('Najpierw wybierz klub');
       return;

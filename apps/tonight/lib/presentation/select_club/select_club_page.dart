@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:clubs/domain/club/club_entity.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tonight/application/add_wall_photo/wall_photo_venue_model.dart';
 import 'package:tonight/application/select_club/select_club_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
@@ -22,7 +22,7 @@ class SelectClubPage extends StatelessWidget {
       appBar: const TonightAppBar(title: 'Wybierz klub'),
       body: BlocProvider(
         create: (ctx) =>
-            getIt<SelectClubBloc>()..add(const SelectClubEvent.clubsFetched()),
+            getIt<SelectClubBloc>()..add(const SelectClubEvent.venuesFetched()),
         child: BlocListener<SelectClubBloc, SelectClubState>(
           listener: (context, selectClubState) async {
             if (selectClubState.initialStatus.isFailure()) {
@@ -30,7 +30,7 @@ class SelectClubPage extends StatelessWidget {
                 FailureRoute(
                   retryCallback: () => context
                       .read<SelectClubBloc>()
-                      .add(const SelectClubEvent.clubsFetched()),
+                      .add(const SelectClubEvent.venuesFetched()),
                 ),
               );
             }
@@ -39,9 +39,9 @@ class SelectClubPage extends StatelessWidget {
               (message) => context.showSnackbarMessage(message),
             );
 
-            if (selectClubState.selectedClub.isSome()) {
-              await context.popRoute<Club>(
-                selectClubState.selectedClub.getOrCrash(),
+            if (selectClubState.selectedVenue.isSome()) {
+              await context.popRoute<WallPhotoVenue>(
+                selectClubState.selectedVenue.getOrCrash(),
               );
             }
           },
@@ -60,7 +60,7 @@ class SelectClubPage extends StatelessWidget {
                     return RefreshIndicator(
                       onRefresh: () async => context
                           .read<SelectClubBloc>()
-                          .add(const SelectClubEvent.clubsFetched()),
+                          .add(const SelectClubEvent.venuesFetched()),
                       child: Column(
                         children: const [
                           SelectClubSearchField(),

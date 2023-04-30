@@ -12,13 +12,16 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i37;
-import 'package:clubs/domain/club/club_entity.dart' as _i44;
-import 'package:clubs/infrastructure/filters/filter/city_filter.dart' as _i48;
+import 'package:clubs/domain/club/club_entity.dart' as _i48;
+import 'package:clubs/infrastructure/filters/filter/city_filter.dart' as _i50;
+import 'package:dartz/dartz.dart' as _i51;
+import 'package:events/domain/events/event_entity.dart' as _i47;
 import 'package:events/events.dart' as _i45;
 import 'package:flutter/material.dart' as _i38;
 import 'package:payments/domain/domain.dart' as _i42;
-import 'package:tickets/tickets.dart' as _i47;
+import 'package:tickets/tickets.dart' as _i49;
 
+import '../../application/add_wall_photo/wall_photo_venue_model.dart' as _i44;
 import '../../application/events/event_filters/event_filters_page_type.dart'
     as _i46;
 import '../add_wall_photo/add_wall_photo_page.dart' as _i28;
@@ -407,9 +410,13 @@ class AppRouter extends _i37.RootStackRouter {
       );
     },
     WallPhotoCameraPreviewRoute.name: (routeData) {
+      final args = routeData.argsAs<WallPhotoCameraPreviewRouteArgs>();
       return _i37.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i27.WallPhotoCameraPreviewPage(),
+        child: _i27.WallPhotoCameraPreviewPage(
+          event: args.event,
+          key: args.key,
+        ),
         transitionsBuilder: _i43.slideUpTransition,
         durationInMilliseconds: 300,
         opaque: true,
@@ -424,6 +431,7 @@ class AppRouter extends _i37.RootStackRouter {
           photoPath: args.photoPath,
           heroTag: args.heroTag,
           isSelfie: args.isSelfie,
+          event: args.event,
           key: args.key,
         ),
         transitionsBuilder: _i39.slideLeftTransition,
@@ -433,7 +441,7 @@ class AppRouter extends _i37.RootStackRouter {
       );
     },
     SelectClubRoute.name: (routeData) {
-      return _i37.CustomPage<_i44.Club>(
+      return _i37.CustomPage<_i44.WallPhotoVenue>(
         routeData: routeData,
         child: const _i29.SelectClubPage(),
         transitionsBuilder: _i39.slideLeftTransition,
@@ -774,7 +782,7 @@ class EventFiltersRouteArgs {
 class EventDetailsRoute extends _i37.PageRouteInfo<EventDetailsRouteArgs> {
   EventDetailsRoute({
     String? eventId,
-    _i45.Event? event,
+    _i47.Event? event,
     String? heroTag,
     int? ticketPrice,
     _i38.Key? key,
@@ -804,7 +812,7 @@ class EventDetailsRouteArgs {
 
   final String? eventId;
 
-  final _i45.Event? event;
+  final _i47.Event? event;
 
   final String? heroTag;
 
@@ -858,7 +866,7 @@ class ClubDetailsRoute extends _i37.PageRouteInfo<ClubDetailsRouteArgs> {
   ClubDetailsRoute({
     _i38.Key? key,
     String? clubId,
-    _i44.Club? club,
+    _i48.Club? club,
     String? heroTag,
   }) : super(
           ClubDetailsRoute.name,
@@ -886,7 +894,7 @@ class ClubDetailsRouteArgs {
 
   final String? clubId;
 
-  final _i44.Club? club;
+  final _i48.Club? club;
 
   final String? heroTag;
 
@@ -900,7 +908,7 @@ class ClubDetailsRouteArgs {
 /// [_i9.TicketQrPage]
 class TicketQrRoute extends _i37.PageRouteInfo<TicketQrRouteArgs> {
   TicketQrRoute({
-    required _i47.Ticket ticket,
+    required _i49.Ticket ticket,
     _i38.Key? key,
   }) : super(
           TicketQrRoute.name,
@@ -920,7 +928,7 @@ class TicketQrRouteArgs {
     this.key,
   });
 
-  final _i47.Ticket ticket;
+  final _i49.Ticket ticket;
 
   final _i38.Key? key;
 
@@ -1015,7 +1023,7 @@ class EventCityPickerRouteArgs {
 class ClubCityPickerRoute extends _i37.PageRouteInfo<ClubCityPickerRouteArgs> {
   ClubCityPickerRoute({
     required _i38.BuildContext blocContext,
-    required _i48.CityFilter selectedCity,
+    required _i50.CityFilter selectedCity,
     _i38.Key? key,
   }) : super(
           ClubCityPickerRoute.name,
@@ -1039,7 +1047,7 @@ class ClubCityPickerRouteArgs {
 
   final _i38.BuildContext blocContext;
 
-  final _i48.CityFilter selectedCity;
+  final _i50.CityFilter selectedCity;
 
   final _i38.Key? key;
 
@@ -1053,7 +1061,7 @@ class ClubCityPickerRouteArgs {
 /// [_i13.TicketCheckoutPage]
 class TicketCheckoutRoute extends _i37.PageRouteInfo<TicketCheckoutRouteArgs> {
   TicketCheckoutRoute({
-    required _i45.Event event,
+    required _i47.Event event,
     _i38.Key? key,
   }) : super(
           TicketCheckoutRoute.name,
@@ -1073,7 +1081,7 @@ class TicketCheckoutRouteArgs {
     this.key,
   });
 
-  final _i45.Event event;
+  final _i47.Event event;
 
   final _i38.Key? key;
 
@@ -1087,7 +1095,7 @@ class TicketCheckoutRouteArgs {
 /// [_i14.VipCheckoutPage]
 class VipCheckoutRoute extends _i37.PageRouteInfo<VipCheckoutRouteArgs> {
   VipCheckoutRoute({
-    required _i47.Ticket ticket,
+    required _i49.Ticket ticket,
     _i38.Key? key,
   }) : super(
           VipCheckoutRoute.name,
@@ -1107,7 +1115,7 @@ class VipCheckoutRouteArgs {
     this.key,
   });
 
-  final _i47.Ticket ticket;
+  final _i49.Ticket ticket;
 
   final _i38.Key? key;
 
@@ -1122,7 +1130,7 @@ class VipCheckoutRouteArgs {
 class TicketPaymentConfirmRoute
     extends _i37.PageRouteInfo<TicketPaymentConfirmRouteArgs> {
   TicketPaymentConfirmRoute({
-    required _i47.Ticket ticket,
+    required _i49.Ticket ticket,
     _i38.Key? key,
   }) : super(
           TicketPaymentConfirmRoute.name,
@@ -1142,7 +1150,7 @@ class TicketPaymentConfirmRouteArgs {
     this.key,
   });
 
-  final _i47.Ticket ticket;
+  final _i49.Ticket ticket;
 
   final _i38.Key? key;
 
@@ -1424,14 +1432,37 @@ class PaymentMethodRouteArgs {
 
 /// generated route for
 /// [_i27.WallPhotoCameraPreviewPage]
-class WallPhotoCameraPreviewRoute extends _i37.PageRouteInfo<void> {
-  const WallPhotoCameraPreviewRoute()
-      : super(
+class WallPhotoCameraPreviewRoute
+    extends _i37.PageRouteInfo<WallPhotoCameraPreviewRouteArgs> {
+  WallPhotoCameraPreviewRoute({
+    required _i51.Option<_i47.Event> event,
+    _i38.Key? key,
+  }) : super(
           WallPhotoCameraPreviewRoute.name,
           path: '/wall-photo-camera-preview-page',
+          args: WallPhotoCameraPreviewRouteArgs(
+            event: event,
+            key: key,
+          ),
         );
 
   static const String name = 'WallPhotoCameraPreviewRoute';
+}
+
+class WallPhotoCameraPreviewRouteArgs {
+  const WallPhotoCameraPreviewRouteArgs({
+    required this.event,
+    this.key,
+  });
+
+  final _i51.Option<_i47.Event> event;
+
+  final _i38.Key? key;
+
+  @override
+  String toString() {
+    return 'WallPhotoCameraPreviewRouteArgs{event: $event, key: $key}';
+  }
 }
 
 /// generated route for
@@ -1441,6 +1472,7 @@ class AddWallPhotoRoute extends _i37.PageRouteInfo<AddWallPhotoRouteArgs> {
     required String photoPath,
     required String heroTag,
     required bool isSelfie,
+    required _i51.Option<_i47.Event> event,
     _i38.Key? key,
   }) : super(
           AddWallPhotoRoute.name,
@@ -1449,6 +1481,7 @@ class AddWallPhotoRoute extends _i37.PageRouteInfo<AddWallPhotoRouteArgs> {
             photoPath: photoPath,
             heroTag: heroTag,
             isSelfie: isSelfie,
+            event: event,
             key: key,
           ),
         );
@@ -1461,6 +1494,7 @@ class AddWallPhotoRouteArgs {
     required this.photoPath,
     required this.heroTag,
     required this.isSelfie,
+    required this.event,
     this.key,
   });
 
@@ -1470,11 +1504,13 @@ class AddWallPhotoRouteArgs {
 
   final bool isSelfie;
 
+  final _i51.Option<_i47.Event> event;
+
   final _i38.Key? key;
 
   @override
   String toString() {
-    return 'AddWallPhotoRouteArgs{photoPath: $photoPath, heroTag: $heroTag, isSelfie: $isSelfie, key: $key}';
+    return 'AddWallPhotoRouteArgs{photoPath: $photoPath, heroTag: $heroTag, isSelfie: $isSelfie, event: $event, key: $key}';
   }
 }
 
@@ -1518,7 +1554,7 @@ class FavoritesRoute extends _i37.PageRouteInfo<void> {
 /// [_i32.EventRoomPage]
 class EventRoomRoute extends _i37.PageRouteInfo<EventRoomRouteArgs> {
   EventRoomRoute({
-    required _i45.Event event,
+    required _i47.Event event,
     _i38.Key? key,
   }) : super(
           EventRoomRoute.name,
@@ -1538,7 +1574,7 @@ class EventRoomRouteArgs {
     this.key,
   });
 
-  final _i45.Event event;
+  final _i47.Event event;
 
   final _i38.Key? key;
 
