@@ -189,7 +189,6 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
       userId: userId,
       userLocation: userLocation,
     );
-    Logger().i(filters.buildFilters());
     final data = {
       'query': '',
       'queryBy': 'venueName',
