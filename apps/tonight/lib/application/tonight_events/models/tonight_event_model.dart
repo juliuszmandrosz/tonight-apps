@@ -64,6 +64,8 @@ class TonightEvent with _$TonightEvent {
           ),
         ),
         totalParticipants: totalParticipants,
+        locationString: event.locationString,
+        clubPhotoUrl: event.clubPhotoUrl,
       );
 
   Event toDomain() => Event(
