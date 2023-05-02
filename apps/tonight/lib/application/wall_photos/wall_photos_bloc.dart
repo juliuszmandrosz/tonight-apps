@@ -7,6 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
+import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
 
 part 'wall_photos_bloc.freezed.dart';
 part 'wall_photos_event.dart';
@@ -43,7 +44,12 @@ class WallPhotosBloc extends Bloc<WallPhotosEvent, WallPhotosState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getPhotosStatus: CubitStatus.failure)),
+      (failure) => emit(
+        state.copyWith(
+          getPhotosStatus: CubitStatus.failure,
+          failure: some(failure),
+        ),
+      ),
       (photos) => emit(
         state.copyWith(
           getPhotosStatus: CubitStatus.success,
@@ -94,7 +100,12 @@ class WallPhotosBloc extends Bloc<WallPhotosEvent, WallPhotosState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getPhotosStatus: CubitStatus.failure)),
+      (failure) => emit(
+        state.copyWith(
+          getPhotosStatus: CubitStatus.failure,
+          failure: some(failure),
+        ),
+      ),
       (photos) => emit(
         state.copyWith(
           getPhotosStatus: CubitStatus.success,

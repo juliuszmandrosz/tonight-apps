@@ -4,6 +4,7 @@ export 'circle_network_photo.dart';
 export 'dense_list_tile.dart';
 export 'dots_loading_indicator.dart';
 export 'drawer_tile.dart';
+export 'failure_info.dart';
 export 'failure_page.dart';
 export 'infinite_grid.dart';
 export 'infinite_list.dart';

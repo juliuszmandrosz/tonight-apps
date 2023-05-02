@@ -53,15 +53,6 @@ class _TicketCheckoutPageState extends State<TicketCheckoutPage> {
             previous.snackbarMessage != current.snackbarMessage ||
             previous.paymentFailure != current.paymentFailure,
         listener: (context, state) {
-          if (state.initialStatus.isFailure()) {
-            context.pushRoute(
-              FailureRoute(
-                retryCallback: () =>
-                    context.read<TicketCheckoutCubit>().initData(widget.event),
-              ),
-            );
-          }
-
           if (state.proceedingToPaymentStatus.isSuccess() &&
               state.purchasedTicket.isSome()) {
             context.replaceRoute(
@@ -89,10 +80,17 @@ class _TicketCheckoutPageState extends State<TicketCheckoutPage> {
           }
         },
         builder: (context, state) {
-          if (state.initialStatus.isInitial() ||
-              state.initialStatus.isFailure()) {
-            return Container();
+          if (state.initialStatus.isInitial()) {
+            return const SizedBox.shrink();
           }
+
+          if (state.initialStatus.isFailure()) {
+            return FailureInfo(
+              retryCallback: () =>
+                  context.read<TicketCheckoutCubit>().initData(widget.event),
+            );
+          }
+
           return state.initialStatus.isLoading()
               ? const WaveLoadingIndicator()
               : Scaffold(
