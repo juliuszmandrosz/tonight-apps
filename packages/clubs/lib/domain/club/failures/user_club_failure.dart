@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 part 'user_club_failure.freezed.dart';
 
@@ -21,9 +21,7 @@ extension UserClubFailureX on UserClubFailure {
       unexpected: (_) => S().serverError,
       noConnection: (_) => S().errorCheckInternetConnection,
       permissionDenied: (_) => S().operationNotAllowed,
-      moreThan20FavoriteClubs: (_) =>
-          // TODO - add translation
-          'You can\'t have more than 20 favorite clubs',
+      moreThan20FavoriteClubs: (_) => S().moreThan20FavoriteClubsError,
     );
   }
 }

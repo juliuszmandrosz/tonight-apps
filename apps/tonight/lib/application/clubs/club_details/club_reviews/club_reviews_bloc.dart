@@ -5,10 +5,12 @@ import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 part 'club_reviews_bloc.freezed.dart';
+
 part 'club_reviews_event.dart';
+
 part 'club_reviews_state.dart';
 
 const _pageSize = 20;

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:formz/formz.dart';
 import 'package:tonight/application/event_review/event_review_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class ReviewSubmitButton extends StatelessWidget {
   const ReviewSubmitButton({Key? key}) : super(key: key);

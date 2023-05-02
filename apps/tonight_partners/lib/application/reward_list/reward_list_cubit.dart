@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:common/application/application.dart';
 import 'package:rewards/rewards.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 part 'reward_list_cubit.freezed.dart';
 

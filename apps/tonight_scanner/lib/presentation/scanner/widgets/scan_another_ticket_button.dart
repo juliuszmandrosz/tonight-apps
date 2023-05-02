@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:common/common.dart';
 import 'package:tonight_scanner/application/scanner/scanner_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class ScanAnotherTicketButton extends StatelessWidget {
   const ScanAnotherTicketButton({Key? key}) : super(key: key);

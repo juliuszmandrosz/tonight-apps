@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
 import 'package:tonight_partners/application/add_event/form_inputs/price_at_gate.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class PriceAtGateInput extends HookWidget {
   const PriceAtGateInput({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:formz/formz.dart';
 import 'package:tonight_partners/application/add_edit_ticket_pool/add_edit_ticket_pool_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 enum TicketQuantityError { empty, tooLow, tooHigh }
 

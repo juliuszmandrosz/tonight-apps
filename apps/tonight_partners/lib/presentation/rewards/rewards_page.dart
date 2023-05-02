@@ -6,7 +6,7 @@ import 'package:tonight_partners/application/reward_list/reward_list_cubit.dart'
 import 'package:tonight_partners/injection.dart';
 import 'package:tonight_partners/presentation/rewards/widgets/reward_list_for_required_entries.dart';
 import 'package:tonight_partners/presentation/routes/app_router.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class RewardsPage extends StatelessWidget {
   const RewardsPage({Key? key}) : super(key: key);

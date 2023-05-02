@@ -3,7 +3,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight_partners/application/invite_selector/invite_selector_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class GenerateAccessCodeButton extends StatelessWidget {
   const GenerateAccessCodeButton({Key? key}) : super(key: key);

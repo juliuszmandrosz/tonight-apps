@@ -1,4 +1,4 @@
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 final outfitsTranslations = {
   'casual': S().casual,

@@ -13,7 +13,7 @@ import 'package:tonight/presentation/invoice_data/widgets/invoice_data_type_inpu
 import 'package:tonight/presentation/invoice_data/widgets/name_input.dart';
 import 'package:tonight/presentation/invoice_data/widgets/update_invoice_data_button.dart';
 import 'package:tonight/presentation/invoice_data/widgets/vat_number_input.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class InvoiceDataPage extends StatefulWidget {
   final CustomerData customerData;

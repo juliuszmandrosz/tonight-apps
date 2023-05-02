@@ -11,7 +11,7 @@ import 'package:tonight_scanner/presentation/scanner/widgets/qr_scanner.dart';
 import 'package:tonight_scanner/presentation/scanner/widgets/scan_another_ticket_button.dart';
 import 'package:tonight_scanner/presentation/scanner/widgets/scan_result.dart';
 import 'package:tonight_scanner/presentation/scanner/widgets/user_rewards.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class ScannerPage extends StatelessWidget {
   final BuildContext blocContext;

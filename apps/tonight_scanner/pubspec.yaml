@@ -66,9 +66,6 @@ dependencies:
   firebase_remote_config:
   cloud_functions:
 
-  translations:
-    path: ../../packages/translations
-
   common:
     path: ../../packages/common
 
@@ -86,6 +83,10 @@ dependencies:
 
   rewards:
     path: ../../packages/rewards
+
+  translations:
+    git:
+      url: git@github.com:juliuszmandrosz/RaverTranslations.git
 
 dev_dependencies:
   flutter_test:

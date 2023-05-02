@@ -9,7 +9,7 @@ import 'package:tonight_partners/application/upcoming_live_event/upcoming_live_e
 import 'package:tonight_partners/presentation/add_event/widgets/ticket_pools/event_ticket_pool_list_tile.dart';
 import 'package:tonight_partners/presentation/core/tonight_partners_headline.dart';
 import 'package:tonight_partners/presentation/routes/app_router.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventOverviewTicketPools extends StatelessWidget {
   const EventOverviewTicketPools({Key? key}) : super(key: key);

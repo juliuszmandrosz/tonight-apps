@@ -7,7 +7,7 @@ import 'package:payments/domain/domain.dart';
 import 'package:tonight/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:tonight/presentation/core/tonight_list_tile_with_title_and_subtitle.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class VipCheckoutInvoiceData extends StatelessWidget {
   const VipCheckoutInvoiceData({Key? key}) : super(key: key);

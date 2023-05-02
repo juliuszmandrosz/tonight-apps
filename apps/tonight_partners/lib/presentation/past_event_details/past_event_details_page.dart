@@ -6,7 +6,7 @@ import 'package:tonight_partners/application/past_event_details/past_event_detai
 import 'package:tonight_partners/injection.dart';
 import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart';
 import 'package:tonight_partners/presentation/past_event_details/widgets/past_event_details_list_view.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class PastEventDetailsPage extends StatelessWidget {
   final Event event;

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventChatInput extends HookWidget {
   const EventChatInput({Key? key}) : super(key: key);
@@ -43,9 +44,8 @@ class EventChatInput extends HookWidget {
                     onChanged: (value) => context
                         .read<EventChatBloc>()
                         .add(EventChatEvent.inputMessageChanged(value)),
-                    decoration: const InputDecoration(
-                      // TODO - add translation
-                      hintText: 'Napisz wiadomość',
+                    decoration: InputDecoration(
+                      hintText: S().writeMessage,
                       border: InputBorder.none,
                       focusedBorder: InputBorder.none,
                     ),
@@ -56,10 +56,7 @@ class EventChatInput extends HookWidget {
                 IconButton(
                   onPressed: () {
                     if (state.inputMessage.length > 1000) {
-                      context.showSnackbarMessage(
-                        // TODO - add translation
-                        'Wiadomość nie może być dłuższa niż 1000 znaków',
-                      );
+                      context.showSnackbarMessage(S().messageTooLong);
                       return;
                     }
                     textController.text = '';

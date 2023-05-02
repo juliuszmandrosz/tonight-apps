@@ -1,4 +1,4 @@
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 enum MenuEventFilter {
   dressCode(),
@@ -18,8 +18,7 @@ enum MenuEventFilter {
       case MenuEventFilter.price:
         return S().price;
       case MenuEventFilter.showOnlyConcerts:
-        // TODO - add translation
-        return 'Tylko koncerty';
+        return S().onlyConcerts;
     }
   }
 }

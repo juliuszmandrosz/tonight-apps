@@ -12,7 +12,7 @@ import 'package:tickets/tickets.dart';
 import 'package:tonight/application/core/get_payment_failure_message.dart';
 import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 part 'ticket_checkout_cubit.freezed.dart';
 

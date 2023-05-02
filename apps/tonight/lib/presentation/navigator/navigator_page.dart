@@ -10,7 +10,7 @@ import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/drawer/tonight_drawer.dart';
 import 'package:tonight/presentation/navigator/tonight_navigation_destinations.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class NavigatorPage extends StatefulWidget {
   const NavigatorPage({Key? key}) : super(key: key);
@@ -70,17 +70,15 @@ class _NavigatorPageState extends State<NavigatorPage> {
                   icon: FaIcon(FontAwesomeIcons.fire),
                   label: 'Tonight',
                 ),
-                const NavigationDestination(
-                  icon: FaIcon(FontAwesomeIcons.compass),
-                  // TODO - add translation
-                  label: 'Odkrywaj',
+                NavigationDestination(
+                  icon: const FaIcon(FontAwesomeIcons.compass),
+                  label: S().discover,
                 ),
-                const NavigationDestination(
-                  icon: FaIcon(
+                NavigationDestination(
+                  icon: const FaIcon(
                     FontAwesomeIcons.paperPlane,
                   ),
-                  // TODO - add translation
-                  label: 'Opublikuj',
+                  label: S().publish,
                 ),
                 NavigationDestination(
                   icon: const FaIcon(FontAwesomeIcons.user),

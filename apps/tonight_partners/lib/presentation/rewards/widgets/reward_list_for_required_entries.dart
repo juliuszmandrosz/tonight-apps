@@ -2,7 +2,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:rewards/rewards.dart';
 import 'package:tonight_partners/presentation/rewards/widgets/reward_list_tile.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class RewardListForRequiredEntries extends StatelessWidget {
   final int requiredEntries;

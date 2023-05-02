@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 part 'user_event_failure.freezed.dart';
 
@@ -25,9 +25,7 @@ extension UserEventFailureX on UserEventFailure {
       permissionDenied: (_) => S().operationNotAllowed,
       toggleFavoriteEventFailure: (_) => S().errorChangingEventStatus,
       noConnection: (_) => S().errorCheckInternetConnection,
-      moreThan20FavoriteEvents: (_) =>
-          // TODO - add translation
-          'You can\'t have more than 20 favorite events',
+      moreThan20FavoriteEvents: (_) => S().moreThan20FavoriteEventsError,
     );
   }
 }

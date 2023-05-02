@@ -8,6 +8,7 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/select_club/widgets/select_club_list.dart';
 import 'package:tonight/presentation/select_club/widgets/select_club_search_field.dart';
+import 'package:translations/raver_translations.dart';
 
 class SelectClubPage extends StatelessWidget {
   const SelectClubPage({
@@ -17,8 +18,7 @@ class SelectClubPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // TODO - add translation
-      appBar: const TonightAppBar(title: 'Wybierz klub'),
+      appBar: TonightAppBar(title: S().chooseClub),
       body: BlocProvider(
         create: (ctx) =>
             getIt<SelectClubBloc>()..add(const SelectClubEvent.venuesFetched()),

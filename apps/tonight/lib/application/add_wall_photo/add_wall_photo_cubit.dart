@@ -12,6 +12,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tonight/application/add_wall_photo/wall_photo_venue_model.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
+import 'package:translations/raver_translations.dart';
 
 part 'add_wall_photo_cubit.freezed.dart';
 part 'add_wall_photo_state.dart';
@@ -52,7 +53,7 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     emit(state.copyWith(userLocation: some(location)));
     final result = await _clubFacade.fetchNearestClubsInRange(
       userLocation: location,
-      radius: 5,
+      radius: 1,
     );
 
     result.fold(
@@ -107,8 +108,7 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
 
   Future<void> addPhoto() async {
     if (state.selectedEvent.isNone()) {
-      // TODO - add translation
-      _showSnackbarMessage('Proszę wybrać wydarzenie');
+      _showSnackbarMessage(S().pleaseSelectEvent);
       return;
     }
     emit(state.copyWith(addPhotoStatus: CubitStatus.loading));
@@ -117,8 +117,7 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     final processedPhoto = await _processPhoto();
     if (processedPhoto.isNone()) {
       emit(state.copyWith(addPhotoStatus: CubitStatus.failure));
-      // TODO - add translation
-      _showSnackbarMessage('Nie udało się dodać zdjęcia');
+      _showSnackbarMessage(S().errorAddingPhoto);
       return;
     }
     final result = await _wallPhotoFacade.addPhoto(

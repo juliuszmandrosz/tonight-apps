@@ -5,7 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:tonight_partners/application/past_event_details/past_event_details_cubit.dart';
 import 'package:tonight_partners/presentation/core/tonight_partners_headline.dart';
 import 'package:tonight_partners/presentation/past_event_details/widgets/review_list_tile.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class PastEventReviews extends StatelessWidget {
   const PastEventReviews({Key? key}) : super(key: key);

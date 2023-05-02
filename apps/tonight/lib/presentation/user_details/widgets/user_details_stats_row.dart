@@ -2,7 +2,7 @@ import 'package:common/presentation/user_detail_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/domain/user_details/user_details_model.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class UserDetailsStatsRow extends StatelessWidget {
   final UserDetails user;
