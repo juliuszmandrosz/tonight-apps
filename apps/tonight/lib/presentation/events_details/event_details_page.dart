@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:events/events.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +17,6 @@ import 'package:tonight/presentation/events_details/widgets/event_details_event_
 import 'package:tonight/presentation/events_details/widgets/event_details_event_name.dart';
 import 'package:tonight/presentation/events_details/widgets/event_details_ticket_pools.dart';
 import 'package:tonight/presentation/events_details/widgets/tiles/event_details_section.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class EventDetailsPage extends StatelessWidget {
   final String? eventId;
@@ -50,36 +48,34 @@ class EventDetailsPage extends StatelessWidget {
               : cubit.addEventToState(event!);
           return cubit;
         },
-        child: BlocConsumer<EventDetailsCubit, EventDetailsState>(
-          listener: (context, state) {
-            if (state.status.isFailure()) {
-              final cubit = context.read<EventDetailsCubit>();
-              final callback = eventId != null
-                  ? cubit.getEventById(eventId!)
-                  : cubit.addEventToState(event!);
-              context.pushRoute(
-                FailureRoute(retryCallback: () => callback),
-              );
-            }
-          },
+        child: BlocBuilder<EventDetailsCubit, EventDetailsState>(
           builder: (context, state) {
-            if (state.status.isInitial() || state.status.isFailure()) {
-              return Container();
+            if (state.status.isInitial()) {
+              return const SizedBox.shrink();
             }
 
             if (state.status.isLoading()) {
               return const WaveLoadingIndicator();
             }
 
-            final event = state.event.getOrCrash();
+            if (state.status.isFailure()) {
+              final cubit = context.read<EventDetailsCubit>();
+              final callback = eventId != null
+                  ? cubit.getEventById(eventId!)
+                  : cubit.addEventToState(event!);
+              return FailureInfo(retryCallback: () => callback);
+            }
+
+            final eventInState = state.event.getOrCrash();
+
             return Scaffold(
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.endContained,
-              floatingActionButton: _checkIfBottomBarIsAvailable(event)
-                  ? EventDetailsJoinButton(event: event)
+              floatingActionButton: _checkIfBottomBarIsAvailable(eventInState)
+                  ? EventDetailsJoinButton(event: eventInState)
                   : null,
-              bottomNavigationBar: _checkIfBottomBarIsAvailable(event)
-                  ? EventDetailsBottomBar(event: event)
+              bottomNavigationBar: _checkIfBottomBarIsAvailable(eventInState)
+                  ? EventDetailsBottomBar(event: eventInState)
                   : null,
               body: SafeArea(
                 child: LayoutBuilder(builder: (context, constraints) {
@@ -97,7 +93,7 @@ class EventDetailsPage extends StatelessWidget {
                             background: Column(
                               children: [
                                 DetailsHeroImage(
-                                  imageUrl: event.eventPhotoUrl,
+                                  imageUrl: eventInState.eventPhotoUrl,
                                   heroTag: heroTag,
                                   height: photoHeight,
                                 ),
@@ -110,40 +106,41 @@ class EventDetailsPage extends StatelessWidget {
                     body: SingleChildScrollView(
                       child: Column(
                         children: [
-                          if (event.isCanceled) const CanceledEventMessage(),
+                          if (eventInState.isCanceled)
+                            const CanceledEventMessage(),
                           Padding(
                             padding: const EdgeInsets.all(15),
                             child: Column(
                               children: [
-                                if (!event.isCanceled)
+                                if (!eventInState.isCanceled)
                                   Column(
                                     children: [
                                       EventDetailsSection(
-                                        event: event,
+                                        event: eventInState,
                                         ticketPrice: ticketPrice,
                                       ),
                                       const SizedBox(height: 20),
                                     ],
                                   ),
                                 const SizedBox(height: 10),
-                                EventDetailsEventName(event: event),
+                                EventDetailsEventName(event: eventInState),
                                 const SizedBox(height: 20),
-                                EventDetailsClubName(event: event),
+                                EventDetailsClubName(event: eventInState),
                                 const SizedBox(height: 20),
-                                if (event.isConcert)
-                                  EventDetailsArtistName(event: event),
-                                EventDetailsDateAndTime(event: event),
+                                if (eventInState.isConcert)
+                                  EventDetailsArtistName(event: eventInState),
+                                EventDetailsDateAndTime(event: eventInState),
                                 const SizedBox(height: 20),
-                                if (event.description != null &&
-                                    event.description!.isNotEmpty)
+                                if (eventInState.description != null &&
+                                    eventInState.description!.isNotEmpty)
                                   EventDetailsEventDescription(
-                                    event: event,
+                                    event: eventInState,
                                   ),
-                                EventDetailsAdditionalInfo(event: event),
-                                if (!event.isCanceled &&
-                                    event.eventEndDateTime
+                                EventDetailsAdditionalInfo(event: eventInState),
+                                if (!eventInState.isCanceled &&
+                                    eventInState.eventEndDateTime
                                         .isAfter(DateTime.now()))
-                                  EventDetailsTicketPools(event: event),
+                                  EventDetailsTicketPools(event: eventInState),
                               ],
                             ),
                           ),

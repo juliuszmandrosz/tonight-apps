@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,7 +5,6 @@ import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/presentation/events/widgets/event_card.dart';
 import 'package:tonight/presentation/events/widgets/event_filters_chips.dart';
 import 'package:tonight/presentation/events/widgets/no_events_info.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class EventsPage extends StatelessWidget {
   const EventsPage({Key? key}) : super(key: key);
@@ -22,18 +20,7 @@ class EventsPage extends StatelessWidget {
           child: EventFiltersChips(),
         ),
         const SizedBox(height: 8),
-        BlocConsumer<EventsBloc, EventsState>(
-          listenWhen: (previous, current) =>
-              previous.getEventsStatus != current.getEventsStatus,
-          listener: (context, state) {
-            if (state.getEventsStatus.isFailure()) {
-              context.pushRoute(
-                FailureRoute(
-                  retryCallback: () => _refreshEvents(context),
-                ),
-              );
-            }
-          },
+        BlocBuilder<EventsBloc, EventsState>(
           builder: (context, state) {
             switch (state.getEventsStatus) {
               case CubitStatus.initial:
@@ -43,7 +30,18 @@ class EventsPage extends StatelessWidget {
                 return const Expanded(child: WaveLoadingIndicator());
 
               case CubitStatus.failure:
-                return const SizedBox.shrink();
+                return Expanded(
+                  child: FailureInfo(
+                    retryCallback: () => _refreshEvents(context),
+                    isSocketException: state.failure.fold(
+                      () => false,
+                      (f) => f.maybeMap(
+                        noConnection: (_) => true,
+                        orElse: () => false,
+                      ),
+                    ),
+                  ),
+                );
 
               case CubitStatus.success:
                 return state.events.isEmpty

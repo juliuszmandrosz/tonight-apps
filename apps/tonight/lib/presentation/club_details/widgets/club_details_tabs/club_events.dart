@@ -1,11 +1,9 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/events/event_shimmer.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/events/event_tile.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
 class ClubEvents extends StatelessWidget {
@@ -18,18 +16,7 @@ class ClubEvents extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          child: BlocConsumer<EventsBloc, EventsState>(
-            listenWhen: (previous, current) =>
-                previous.getEventsStatus != current.getEventsStatus,
-            listener: (context, state) {
-              if (state.getEventsStatus.isFailure()) {
-                context.pushRoute(
-                  FailureRoute(
-                    retryCallback: () => _refreshEvents(context),
-                  ),
-                );
-              }
-            },
+          child: BlocBuilder<EventsBloc, EventsState>(
             builder: (context, state) {
               switch (state.getEventsStatus) {
                 case CubitStatus.initial:
@@ -43,7 +30,16 @@ class ClubEvents extends StatelessWidget {
                   );
 
                 case CubitStatus.failure:
-                  return Container();
+                  return FailureInfo(
+                    retryCallback: () => _refreshEvents(context),
+                    isSocketException: state.failure.fold(
+                      () => false,
+                      (f) => f.maybeMap(
+                        noConnection: (_) => true,
+                        orElse: () => false,
+                      ),
+                    ),
+                  );
 
                 case CubitStatus.success:
                   if (state.events.isEmpty) {

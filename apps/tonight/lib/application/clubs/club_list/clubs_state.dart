@@ -9,6 +9,7 @@ class ClubsState with _$ClubsState {
     required List<Club> clubs,
     required bool hasReachedMax,
     required ClubFilters clubFilters,
+    required Option<CommonClubFailure> failure,
   }) = _ClubsState;
 
   factory ClubsState.initial() => ClubsState(
@@ -18,5 +19,6 @@ class ClubsState with _$ClubsState {
         hasReachedMax: false,
         clubFilters: ClubFilters.empty(),
         clubs: [],
+        failure: none(),
       );
 }

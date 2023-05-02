@@ -1518,6 +1518,7 @@ mixin _$EventsState {
   EventSortModel get sortModel => throw _privateConstructorUsedError;
   Map<MenuEventFilter, IFilter> get appliedMenuFilters =>
       throw _privateConstructorUsedError;
+  Option<CommonEventFailure> get failure => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventsStateCopyWith<EventsState> get copyWith =>
@@ -1538,7 +1539,8 @@ abstract class $EventsStateCopyWith<$Res> {
       bool hasReachedMax,
       EventFilters eventFilters,
       EventSortModel sortModel,
-      Map<MenuEventFilter, IFilter> appliedMenuFilters});
+      Map<MenuEventFilter, IFilter> appliedMenuFilters,
+      Option<CommonEventFailure> failure});
 
   $EventFiltersCopyWith<$Res> get eventFilters;
   $EventSortModelCopyWith<$Res> get sortModel;
@@ -1565,6 +1567,7 @@ class _$EventsStateCopyWithImpl<$Res, $Val extends EventsState>
     Object? eventFilters = null,
     Object? sortModel = null,
     Object? appliedMenuFilters = null,
+    Object? failure = null,
   }) {
     return _then(_value.copyWith(
       getEventsStatus: null == getEventsStatus
@@ -1599,6 +1602,10 @@ class _$EventsStateCopyWithImpl<$Res, $Val extends EventsState>
           ? _value.appliedMenuFilters
           : appliedMenuFilters // ignore: cast_nullable_to_non_nullable
               as Map<MenuEventFilter, IFilter>,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<CommonEventFailure>,
     ) as $Val);
   }
 
@@ -1635,7 +1642,8 @@ abstract class _$$_EventsStateCopyWith<$Res>
       bool hasReachedMax,
       EventFilters eventFilters,
       EventSortModel sortModel,
-      Map<MenuEventFilter, IFilter> appliedMenuFilters});
+      Map<MenuEventFilter, IFilter> appliedMenuFilters,
+      Option<CommonEventFailure> failure});
 
   @override
   $EventFiltersCopyWith<$Res> get eventFilters;
@@ -1662,6 +1670,7 @@ class __$$_EventsStateCopyWithImpl<$Res>
     Object? eventFilters = null,
     Object? sortModel = null,
     Object? appliedMenuFilters = null,
+    Object? failure = null,
   }) {
     return _then(_$_EventsState(
       getEventsStatus: null == getEventsStatus
@@ -1696,6 +1705,10 @@ class __$$_EventsStateCopyWithImpl<$Res>
           ? _value._appliedMenuFilters
           : appliedMenuFilters // ignore: cast_nullable_to_non_nullable
               as Map<MenuEventFilter, IFilter>,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<CommonEventFailure>,
     ));
   }
 }
@@ -1711,7 +1724,8 @@ class _$_EventsState implements _EventsState {
       required this.hasReachedMax,
       required this.eventFilters,
       required this.sortModel,
-      required final Map<MenuEventFilter, IFilter> appliedMenuFilters})
+      required final Map<MenuEventFilter, IFilter> appliedMenuFilters,
+      required this.failure})
       : _events = events,
         _appliedMenuFilters = appliedMenuFilters;
 
@@ -1745,8 +1759,11 @@ class _$_EventsState implements _EventsState {
   }
 
   @override
+  final Option<CommonEventFailure> failure;
+
+  @override
   String toString() {
-    return 'EventsState(getEventsStatus: $getEventsStatus, nextPageStatus: $nextPageStatus, errorMessage: $errorMessage, events: $events, hasReachedMax: $hasReachedMax, eventFilters: $eventFilters, sortModel: $sortModel, appliedMenuFilters: $appliedMenuFilters)';
+    return 'EventsState(getEventsStatus: $getEventsStatus, nextPageStatus: $nextPageStatus, errorMessage: $errorMessage, events: $events, hasReachedMax: $hasReachedMax, eventFilters: $eventFilters, sortModel: $sortModel, appliedMenuFilters: $appliedMenuFilters, failure: $failure)';
   }
 
   @override
@@ -1768,7 +1785,8 @@ class _$_EventsState implements _EventsState {
             (identical(other.sortModel, sortModel) ||
                 other.sortModel == sortModel) &&
             const DeepCollectionEquality()
-                .equals(other._appliedMenuFilters, _appliedMenuFilters));
+                .equals(other._appliedMenuFilters, _appliedMenuFilters) &&
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
@@ -1781,7 +1799,8 @@ class _$_EventsState implements _EventsState {
       hasReachedMax,
       eventFilters,
       sortModel,
-      const DeepCollectionEquality().hash(_appliedMenuFilters));
+      const DeepCollectionEquality().hash(_appliedMenuFilters),
+      failure);
 
   @JsonKey(ignore: true)
   @override
@@ -1792,15 +1811,15 @@ class _$_EventsState implements _EventsState {
 
 abstract class _EventsState implements EventsState {
   const factory _EventsState(
-          {required final CubitStatus getEventsStatus,
-          required final CubitStatus nextPageStatus,
-          required final Option<String> errorMessage,
-          required final List<Event> events,
-          required final bool hasReachedMax,
-          required final EventFilters eventFilters,
-          required final EventSortModel sortModel,
-          required final Map<MenuEventFilter, IFilter> appliedMenuFilters}) =
-      _$_EventsState;
+      {required final CubitStatus getEventsStatus,
+      required final CubitStatus nextPageStatus,
+      required final Option<String> errorMessage,
+      required final List<Event> events,
+      required final bool hasReachedMax,
+      required final EventFilters eventFilters,
+      required final EventSortModel sortModel,
+      required final Map<MenuEventFilter, IFilter> appliedMenuFilters,
+      required final Option<CommonEventFailure> failure}) = _$_EventsState;
 
   @override
   CubitStatus get getEventsStatus;
@@ -1818,6 +1837,8 @@ abstract class _EventsState implements EventsState {
   EventSortModel get sortModel;
   @override
   Map<MenuEventFilter, IFilter> get appliedMenuFilters;
+  @override
+  Option<CommonEventFailure> get failure;
   @override
   @JsonKey(ignore: true)
   _$$_EventsStateCopyWith<_$_EventsState> get copyWith =>

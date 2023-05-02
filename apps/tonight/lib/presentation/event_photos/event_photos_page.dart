@@ -1,25 +1,16 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/event_photos/event_photos_bloc.dart';
 import 'package:tonight/presentation/event_photos/widgets/event_photo_card.dart';
 import 'package:tonight/presentation/event_photos/widgets/no_event_photos_info.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class EventPhotosPage extends StatelessWidget {
   const EventPhotosPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<EventPhotosBloc, EventPhotosState>(
-      listener: (context, state) {
-        if (state.getPhotosStatus.isFailure()) {
-          context.pushRoute(
-            FailureRoute(retryCallback: () => _refreshPhotos(context)),
-          );
-        }
-      },
+    return BlocBuilder<EventPhotosBloc, EventPhotosState>(
       builder: (context, state) {
         switch (state.getPhotosStatus) {
           case CubitStatus.initial:
@@ -27,7 +18,7 @@ class EventPhotosPage extends StatelessWidget {
           case CubitStatus.loading:
             return const WaveLoadingIndicator();
           case CubitStatus.failure:
-            return const SizedBox.shrink();
+            return FailureInfo(retryCallback: () => _refreshPhotos(context));
           case CubitStatus.success:
             return state.photos.isEmpty
                 ? const NoEventPhotosInfo()

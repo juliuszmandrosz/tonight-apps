@@ -8,7 +8,6 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/event_review/widgets/existing_review_form.dart';
 import 'package:tonight/presentation/event_review/widgets/new_review_form.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
 class ReviewPage extends StatelessWidget {
@@ -31,20 +30,10 @@ class ReviewPage extends StatelessWidget {
             previous.submittingStatus != current.submittingStatus ||
             previous.errorMessage != current.errorMessage,
         listener: (context, state) {
-          if (state.status.isFailure()) {
-            context.popRoute(
-              FailureRoute(
-                retryCallback: () => context
-                    .read<EventReviewCubit>()
-                    .getEventReviewForm(eventId),
-              ),
-            );
-          }
           state.errorMessage.fold(
             () {},
             (error) => context.showSnackbarMessage(error),
           );
-
           if (state.submittingStatus.isSubmissionSuccess) {
             isReviewAddedSuccessfully = true;
             // TODO - add translation
@@ -59,7 +48,11 @@ class ReviewPage extends StatelessWidget {
             case CubitStatus.loading:
               return const WaveLoadingIndicator();
             case CubitStatus.failure:
-              return Container();
+              return FailureInfo(
+                retryCallback: () => context
+                    .read<EventReviewCubit>()
+                    .getEventReviewForm(eventId),
+              );
             case CubitStatus.success:
               final eventReviewForm = state.eventReviewForm.getOrCrash();
               return Scaffold(

@@ -5,7 +5,6 @@ import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 part 'clubs_bloc.freezed.dart';
@@ -38,11 +37,7 @@ class ClubsBloc extends Bloc<ClubsEvent, ClubsState> {
 
     if (event.userLocation.isSome()) {
       final location = event.userLocation.getOrCrash();
-      final placemarks = await placemarkFromCoordinates(
-        location.latitude,
-        location.longitude,
-      );
-      cityName = placemarks.first.locality ?? '';
+      cityName = await location.getCityName();
     }
 
     final filters = event.userLocation.fold(
@@ -65,7 +60,12 @@ class ClubsBloc extends Bloc<ClubsEvent, ClubsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getClubsStatus: CubitStatus.failure)),
+      (failure) => emit(
+        state.copyWith(
+          getClubsStatus: CubitStatus.failure,
+          failure: some(failure),
+        ),
+      ),
       (clubs) => emit(
         state.copyWith(
           getClubsStatus: CubitStatus.success,
@@ -94,7 +94,12 @@ class ClubsBloc extends Bloc<ClubsEvent, ClubsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getClubsStatus: CubitStatus.failure)),
+      (failure) => emit(
+        state.copyWith(
+          getClubsStatus: CubitStatus.failure,
+          failure: some(failure),
+        ),
+      ),
       (clubs) => emit(
         state.copyWith(
           getClubsStatus: CubitStatus.success,
@@ -126,7 +131,12 @@ class ClubsBloc extends Bloc<ClubsEvent, ClubsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getClubsStatus: CubitStatus.failure)),
+      (failure) => emit(
+        state.copyWith(
+          getClubsStatus: CubitStatus.failure,
+          failure: some(failure),
+        ),
+      ),
       (clubs) => emit(
         state.copyWith(
           getClubsStatus: CubitStatus.success,
@@ -149,7 +159,12 @@ class ClubsBloc extends Bloc<ClubsEvent, ClubsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getClubsStatus: CubitStatus.failure)),
+      (failure) => emit(
+        state.copyWith(
+          getClubsStatus: CubitStatus.failure,
+          failure: some(failure),
+        ),
+      ),
       (clubs) => emit(
         state.copyWith(
           getClubsStatus: CubitStatus.success,

@@ -799,6 +799,7 @@ mixin _$ClubsState {
   List<Club> get clubs => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
   ClubFilters get clubFilters => throw _privateConstructorUsedError;
+  Option<CommonClubFailure> get failure => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ClubsStateCopyWith<ClubsState> get copyWith =>
@@ -817,7 +818,8 @@ abstract class $ClubsStateCopyWith<$Res> {
       Option<String> errorMessage,
       List<Club> clubs,
       bool hasReachedMax,
-      ClubFilters clubFilters});
+      ClubFilters clubFilters,
+      Option<CommonClubFailure> failure});
 
   $ClubFiltersCopyWith<$Res> get clubFilters;
 }
@@ -841,6 +843,7 @@ class _$ClubsStateCopyWithImpl<$Res, $Val extends ClubsState>
     Object? clubs = null,
     Object? hasReachedMax = null,
     Object? clubFilters = null,
+    Object? failure = null,
   }) {
     return _then(_value.copyWith(
       getClubsStatus: null == getClubsStatus
@@ -867,6 +870,10 @@ class _$ClubsStateCopyWithImpl<$Res, $Val extends ClubsState>
           ? _value.clubFilters
           : clubFilters // ignore: cast_nullable_to_non_nullable
               as ClubFilters,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<CommonClubFailure>,
     ) as $Val);
   }
 
@@ -893,7 +900,8 @@ abstract class _$$_ClubsStateCopyWith<$Res>
       Option<String> errorMessage,
       List<Club> clubs,
       bool hasReachedMax,
-      ClubFilters clubFilters});
+      ClubFilters clubFilters,
+      Option<CommonClubFailure> failure});
 
   @override
   $ClubFiltersCopyWith<$Res> get clubFilters;
@@ -916,6 +924,7 @@ class __$$_ClubsStateCopyWithImpl<$Res>
     Object? clubs = null,
     Object? hasReachedMax = null,
     Object? clubFilters = null,
+    Object? failure = null,
   }) {
     return _then(_$_ClubsState(
       getClubsStatus: null == getClubsStatus
@@ -942,6 +951,10 @@ class __$$_ClubsStateCopyWithImpl<$Res>
           ? _value.clubFilters
           : clubFilters // ignore: cast_nullable_to_non_nullable
               as ClubFilters,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<CommonClubFailure>,
     ));
   }
 }
@@ -955,7 +968,8 @@ class _$_ClubsState implements _ClubsState {
       required this.errorMessage,
       required final List<Club> clubs,
       required this.hasReachedMax,
-      required this.clubFilters})
+      required this.clubFilters,
+      required this.failure})
       : _clubs = clubs;
 
   @override
@@ -976,10 +990,12 @@ class _$_ClubsState implements _ClubsState {
   final bool hasReachedMax;
   @override
   final ClubFilters clubFilters;
+  @override
+  final Option<CommonClubFailure> failure;
 
   @override
   String toString() {
-    return 'ClubsState(getClubsStatus: $getClubsStatus, nextPageStatus: $nextPageStatus, errorMessage: $errorMessage, clubs: $clubs, hasReachedMax: $hasReachedMax, clubFilters: $clubFilters)';
+    return 'ClubsState(getClubsStatus: $getClubsStatus, nextPageStatus: $nextPageStatus, errorMessage: $errorMessage, clubs: $clubs, hasReachedMax: $hasReachedMax, clubFilters: $clubFilters, failure: $failure)';
   }
 
   @override
@@ -997,7 +1013,8 @@ class _$_ClubsState implements _ClubsState {
             (identical(other.hasReachedMax, hasReachedMax) ||
                 other.hasReachedMax == hasReachedMax) &&
             (identical(other.clubFilters, clubFilters) ||
-                other.clubFilters == clubFilters));
+                other.clubFilters == clubFilters) &&
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
@@ -1008,7 +1025,8 @@ class _$_ClubsState implements _ClubsState {
       errorMessage,
       const DeepCollectionEquality().hash(_clubs),
       hasReachedMax,
-      clubFilters);
+      clubFilters,
+      failure);
 
   @JsonKey(ignore: true)
   @override
@@ -1024,7 +1042,8 @@ abstract class _ClubsState implements ClubsState {
       required final Option<String> errorMessage,
       required final List<Club> clubs,
       required final bool hasReachedMax,
-      required final ClubFilters clubFilters}) = _$_ClubsState;
+      required final ClubFilters clubFilters,
+      required final Option<CommonClubFailure> failure}) = _$_ClubsState;
 
   @override
   CubitStatus get getClubsStatus;
@@ -1038,6 +1057,8 @@ abstract class _ClubsState implements ClubsState {
   bool get hasReachedMax;
   @override
   ClubFilters get clubFilters;
+  @override
+  Option<CommonClubFailure> get failure;
   @override
   @JsonKey(ignore: true)
   _$$_ClubsStateCopyWith<_$_ClubsState> get copyWith =>

@@ -108,7 +108,7 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
           error: e,
           message: 'Firebase Exception getting wall photos EXCEPTION: $e',
           unexpectedFailure: const WallPhotoFailure.unexpected(),
-          socketFailure: const WallPhotoFailure.permissionDenied(),
+          socketFailure: const WallPhotoFailure.noConnection(),
         ),
       );
     }

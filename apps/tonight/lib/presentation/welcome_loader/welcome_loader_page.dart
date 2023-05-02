@@ -49,37 +49,21 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
   Widget build(BuildContext context) {
     return TonightUpgradeAlert(
       child: TonightOverlay(
-        child: MultiBlocListener(
-          listeners: [
-            BlocListener<NetworkCheckCubit, NetworkCheckState>(
-              bloc: context.read<NetworkCheckCubit>(),
-              listener: (context, state) {
-                final currentRoute = context.router.current.name;
-                if (!state.isConnected &&
-                    currentRoute != NetworkLostRoute.name) {
-                  context.pushRoute(const NetworkLostRoute());
-                }
-              },
-            ),
-            BlocListener<AuthCubit, AuthState>(
-              bloc: context.read<AuthCubit>(),
-              listener: (context, state) => state.map(
-                initial: (_) => {},
-                authenticated: (_) => {},
-                unauthenticated: (_) =>
-                    context.replaceRoute(const SignInRoute()),
-                deleteAccountInProgress: (_) => context.loaderOverlay.show(),
-                deleteAccountFailure: (_) => {
-                  context.showSnackbarMessage(S().serverError),
-                  context.loaderOverlay.hide(),
-                },
-                deleteAccountSuccess: (_) => {
-                  context.replaceRoute(const SignInRoute()),
-                  context.loaderOverlay.hide(),
-                },
-              ),
-            )
-          ],
+        child: BlocListener<AuthCubit, AuthState>(
+          listener: (context, state) => state.map(
+            initial: (_) => {},
+            authenticated: (_) => {},
+            unauthenticated: (_) => context.replaceRoute(const SignInRoute()),
+            deleteAccountInProgress: (_) => context.loaderOverlay.show(),
+            deleteAccountFailure: (_) => {
+              context.showSnackbarMessage(S().serverError),
+              context.loaderOverlay.hide(),
+            },
+            deleteAccountSuccess: (_) => {
+              context.replaceRoute(const SignInRoute()),
+              context.loaderOverlay.hide(),
+            },
+          ),
           child: BlocProvider(
             create: (ctx) => (_welcomeLoadingCubit ?? _initWelcomeCubit(ctx))
               ..loadDependencies(context),

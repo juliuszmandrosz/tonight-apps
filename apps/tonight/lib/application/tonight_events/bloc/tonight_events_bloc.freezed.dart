@@ -1227,6 +1227,8 @@ mixin _$TonightEventsState {
   Map<MenuEventFilter, IFilter> get appliedMenuFilters =>
       throw _privateConstructorUsedError;
   bool get isEventsTabSelected => throw _privateConstructorUsedError;
+  Option<TonightEventsFailure> get failure =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TonightEventsStateCopyWith<TonightEventsState> get copyWith =>
@@ -1248,7 +1250,8 @@ abstract class $TonightEventsStateCopyWith<$Res> {
       String filterPhrase,
       EventFilters eventFilters,
       Map<MenuEventFilter, IFilter> appliedMenuFilters,
-      bool isEventsTabSelected});
+      bool isEventsTabSelected,
+      Option<TonightEventsFailure> failure});
 
   $EventFiltersCopyWith<$Res> get eventFilters;
 }
@@ -1275,6 +1278,7 @@ class _$TonightEventsStateCopyWithImpl<$Res, $Val extends TonightEventsState>
     Object? eventFilters = null,
     Object? appliedMenuFilters = null,
     Object? isEventsTabSelected = null,
+    Object? failure = null,
   }) {
     return _then(_value.copyWith(
       getEventsStatus: null == getEventsStatus
@@ -1313,6 +1317,10 @@ class _$TonightEventsStateCopyWithImpl<$Res, $Val extends TonightEventsState>
           ? _value.isEventsTabSelected
           : isEventsTabSelected // ignore: cast_nullable_to_non_nullable
               as bool,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<TonightEventsFailure>,
     ) as $Val);
   }
 
@@ -1342,7 +1350,8 @@ abstract class _$$_TonightEventsStateCopyWith<$Res>
       String filterPhrase,
       EventFilters eventFilters,
       Map<MenuEventFilter, IFilter> appliedMenuFilters,
-      bool isEventsTabSelected});
+      bool isEventsTabSelected,
+      Option<TonightEventsFailure> failure});
 
   @override
   $EventFiltersCopyWith<$Res> get eventFilters;
@@ -1368,6 +1377,7 @@ class __$$_TonightEventsStateCopyWithImpl<$Res>
     Object? eventFilters = null,
     Object? appliedMenuFilters = null,
     Object? isEventsTabSelected = null,
+    Object? failure = null,
   }) {
     return _then(_$_TonightEventsState(
       getEventsStatus: null == getEventsStatus
@@ -1406,6 +1416,10 @@ class __$$_TonightEventsStateCopyWithImpl<$Res>
           ? _value.isEventsTabSelected
           : isEventsTabSelected // ignore: cast_nullable_to_non_nullable
               as bool,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<TonightEventsFailure>,
     ));
   }
 }
@@ -1422,7 +1436,8 @@ class _$_TonightEventsState implements _TonightEventsState {
       required this.filterPhrase,
       required this.eventFilters,
       required final Map<MenuEventFilter, IFilter> appliedMenuFilters,
-      required this.isEventsTabSelected})
+      required this.isEventsTabSelected,
+      required this.failure})
       : _events = events,
         _appliedMenuFilters = appliedMenuFilters;
 
@@ -1457,10 +1472,12 @@ class _$_TonightEventsState implements _TonightEventsState {
 
   @override
   final bool isEventsTabSelected;
+  @override
+  final Option<TonightEventsFailure> failure;
 
   @override
   String toString() {
-    return 'TonightEventsState(getEventsStatus: $getEventsStatus, nextPageStatus: $nextPageStatus, errorMessage: $errorMessage, events: $events, hasReachedMax: $hasReachedMax, filterPhrase: $filterPhrase, eventFilters: $eventFilters, appliedMenuFilters: $appliedMenuFilters, isEventsTabSelected: $isEventsTabSelected)';
+    return 'TonightEventsState(getEventsStatus: $getEventsStatus, nextPageStatus: $nextPageStatus, errorMessage: $errorMessage, events: $events, hasReachedMax: $hasReachedMax, filterPhrase: $filterPhrase, eventFilters: $eventFilters, appliedMenuFilters: $appliedMenuFilters, isEventsTabSelected: $isEventsTabSelected, failure: $failure)';
   }
 
   @override
@@ -1484,7 +1501,8 @@ class _$_TonightEventsState implements _TonightEventsState {
             const DeepCollectionEquality()
                 .equals(other._appliedMenuFilters, _appliedMenuFilters) &&
             (identical(other.isEventsTabSelected, isEventsTabSelected) ||
-                other.isEventsTabSelected == isEventsTabSelected));
+                other.isEventsTabSelected == isEventsTabSelected) &&
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
@@ -1498,7 +1516,8 @@ class _$_TonightEventsState implements _TonightEventsState {
       filterPhrase,
       eventFilters,
       const DeepCollectionEquality().hash(_appliedMenuFilters),
-      isEventsTabSelected);
+      isEventsTabSelected,
+      failure);
 
   @JsonKey(ignore: true)
   @override
@@ -1510,15 +1529,17 @@ class _$_TonightEventsState implements _TonightEventsState {
 
 abstract class _TonightEventsState implements TonightEventsState {
   const factory _TonightEventsState(
-      {required final CubitStatus getEventsStatus,
-      required final CubitStatus nextPageStatus,
-      required final Option<String> errorMessage,
-      required final List<TonightEvent> events,
-      required final bool hasReachedMax,
-      required final String filterPhrase,
-      required final EventFilters eventFilters,
-      required final Map<MenuEventFilter, IFilter> appliedMenuFilters,
-      required final bool isEventsTabSelected}) = _$_TonightEventsState;
+          {required final CubitStatus getEventsStatus,
+          required final CubitStatus nextPageStatus,
+          required final Option<String> errorMessage,
+          required final List<TonightEvent> events,
+          required final bool hasReachedMax,
+          required final String filterPhrase,
+          required final EventFilters eventFilters,
+          required final Map<MenuEventFilter, IFilter> appliedMenuFilters,
+          required final bool isEventsTabSelected,
+          required final Option<TonightEventsFailure> failure}) =
+      _$_TonightEventsState;
 
   @override
   CubitStatus get getEventsStatus;
@@ -1538,6 +1559,8 @@ abstract class _TonightEventsState implements TonightEventsState {
   Map<MenuEventFilter, IFilter> get appliedMenuFilters;
   @override
   bool get isEventsTabSelected;
+  @override
+  Option<TonightEventsFailure> get failure;
   @override
   @JsonKey(ignore: true)
   _$$_TonightEventsStateCopyWith<_$_TonightEventsState> get copyWith =>
