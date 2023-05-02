@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:translations/raver_translations.dart';
 
 class NextPageError extends StatelessWidget {
   final VoidCallback retryCallback;
@@ -10,14 +11,13 @@ class NextPageError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO - add translations
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text('Error fetching next page,'),
+        Text('${S().nextPageError},'),
         TextButton(
           onPressed: retryCallback,
-          child: const Text('try again.'),
+          child: Text('${S().tryAgain.toLowerCase()}.'),
         ),
       ],
     );

@@ -8,6 +8,7 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/update_profile_picture/widgets/update_profile_picture_button.dart';
 import 'package:tonight/presentation/update_profile_picture/widgets/update_profile_picture_container.dart';
+import 'package:translations/raver_translations.dart';
 
 class UpdateProfilePicturePage extends StatelessWidget {
   final String currentProfilePictureUrl;
@@ -24,8 +25,7 @@ class UpdateProfilePicturePage extends StatelessWidget {
     return BlocProvider(
       create: (ctx) => getIt<UpdateProfilePictureCubit>(),
       child: Scaffold(
-        // TODO - add translation
-        appBar: TonightAppBar(title: 'Update profile picture'),
+        appBar: TonightAppBar(title: S().changeProfilePicture),
         body:
             BlocListener<UpdateProfilePictureCubit, UpdateProfilePictureState>(
           listener: (context, state) {
@@ -37,8 +37,7 @@ class UpdateProfilePicturePage extends StatelessWidget {
             );
 
             if (state.status.isSubmissionSuccess) {
-              // TODO - add translation
-              context.showSnackbarMessage('Profile picture updated');
+              context.showSnackbarMessage(S().profilePictureChanged);
               context.popRoute();
             }
           },

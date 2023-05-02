@@ -6,7 +6,7 @@ import 'package:tonight/application/events/event_filters/event_filters_cubit.dar
 import 'package:tonight/application/events/event_filters/event_filters_page_type.dart';
 import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventFiltersSubmitButton extends StatelessWidget {
   final EventFiltersPageType eventFiltersPageType;

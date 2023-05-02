@@ -7,9 +7,10 @@ import 'package:tonight/application/event_review/form_inputs/review_content_inpu
 import 'package:tonight/domain/event_review/event_review_aggregator.dart';
 import 'package:tonight/domain/event_review/event_review_form_failure.dart';
 import 'package:tonight/domain/event_review/event_review_form_model.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 part 'event_review_cubit.freezed.dart';
+
 part 'event_review_state.dart';
 
 class EventReviewCubit extends Cubit<EventReviewState> {

@@ -11,6 +11,7 @@ import 'package:tonight/presentation/add_wall_photo/widgets/add_wall_photo_club_
 import 'package:tonight/presentation/add_wall_photo/widgets/add_wall_photo_event_tile.dart';
 import 'package:tonight/presentation/add_wall_photo/widgets/add_wall_photo_preview.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
+import 'package:translations/raver_translations.dart';
 
 class AddWallPhotoPage extends StatelessWidget {
   final String photoPath;
@@ -47,8 +48,7 @@ class AddWallPhotoPage extends StatelessWidget {
       },
       child: TonightOverlay(
         child: Scaffold(
-          // TODO - add translation
-          appBar: const TonightAppBar(title: 'Opublikuj'),
+          appBar: TonightAppBar(title: S().publish),
           floatingActionButton: AddWallPhotoButton(event: event),
           body: SingleChildScrollView(
             child: Column(

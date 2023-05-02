@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:tonight/presentation/onboarding/widgets/onboarding_page_view.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({Key? key}) : super(key: key);
@@ -18,31 +18,26 @@ class OnboardingPage extends StatelessWidget {
       showSkipButton: true,
       skip: TextButton(
         onPressed: () => context.pushRoute(const SignInRoute()),
-        // TODO - add translation
-        child: Text('Pomiń'),
+        child: Text(S().skip),
       ),
       pages: [
         onboardingPageView(
           context: context,
           icon: FontAwesomeIcons.fire,
           title: S().welcomeToTonight,
-          // TODO - add translation
-          body: 'Znajdź najlepsze imprezy w swoim mieście',
+          body: S().findBestParties,
         ),
         onboardingPageView(
           context: context,
           icon: FontAwesomeIcons.trophy,
           title: S().receiveRewards,
-          // TODO - add translation
-          body:
-              'Kolekcjonuj benefity w klubach za dzieleniem się zdjęciami z imprez',
+          body: S().collectBenefits,
         ),
         onboardingPageView(
           context: context,
           icon: FontAwesomeIcons.peopleArrows,
-          // TODO - add translations
-          title: 'Poznawaj nowe osoby',
-          body: 'Dołącz do społeczności i umawiaj się na imprezy',
+          title: S().meetNewPeople,
+          body: S().joinCommunity,
         ),
         onboardingPageView(
           context: context,

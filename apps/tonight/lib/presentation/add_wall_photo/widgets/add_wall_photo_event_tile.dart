@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/add_wall_photo/add_wall_photo_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class AddWallPhotoEventTile extends StatelessWidget {
   const AddWallPhotoEventTile({Key? key}) : super(key: key);
@@ -55,14 +55,11 @@ class AddWallPhotoEventTile extends StatelessWidget {
   }) async {
     if (!_enabled(state)) return;
     if (state.selectedVenue.isNone()) {
-      // TODO - add translation
-      context.showSnackbarMessage('Najpierw wybierz klub');
+      context.showSnackbarMessage(S().firstSelectClub);
       return;
     }
     if (state.liveEventsFromSelectedClub.isEmpty) {
-      // TODO - add translation
-      context.showSnackbarMessage(
-          'W wybranym klubie nie ma aktualnie żadnych wydarzeń');
+      context.showSnackbarMessage(S().noEventsInSelectedClub);
       return;
     }
     await showModalBottomSheet(

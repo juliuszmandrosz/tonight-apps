@@ -1,6 +1,6 @@
 import 'package:formz/formz.dart';
 import 'package:tonight_partners/application/add_edit_reward/add_reward_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 enum RequiredEntriesError { empty, tooMuch }
 

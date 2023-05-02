@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/events/event_city_picker/event_city_picker_bloc.dart';
 import 'package:tonight/presentation/event_city_picker/widgets/event_city_picker_prediction_tile.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventCityPickerPredictionList extends StatelessWidget {
   const EventCityPickerPredictionList({Key? key}) : super(key: key);
@@ -11,9 +12,8 @@ class EventCityPickerPredictionList extends StatelessWidget {
     return BlocBuilder<EventCityPickerBloc, EventCityPickerState>(
       builder: (context, state) {
         return state.filteredCities.isEmpty
-            // TODO - add translation
-            ? const Text(
-                'Nie znaleziono miast dla podanej frazy',
+            ? Text(
+                S().noCitiesForPhrase,
                 textAlign: TextAlign.center,
               )
             : ListView.separated(

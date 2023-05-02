@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:formz/formz.dart';
 import 'package:tonight/application/invoice_data/form_inputs/vat_number.dart';
 import 'package:tonight/application/invoice_data/invoice_data_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class VatNumberInput extends HookWidget {
   const VatNumberInput({Key? key}) : super(key: key);

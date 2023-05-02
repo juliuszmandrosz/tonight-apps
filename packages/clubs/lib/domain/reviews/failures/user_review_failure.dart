@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 part 'user_review_failure.freezed.dart';
 
@@ -20,8 +20,7 @@ extension UserReviewFailureX on UserReviewFailure {
       unexpected: (_) => S().errorReportingReview,
       permissionDenied: (_) => S().operationNotAllowed,
       reportExists: (_) => S().reviewAlreadyReported,
-      // TODO - add translations
-      reviewNotFound: (_) => 'Review not found',
+      reviewNotFound: (_) => S().reviewNotFound,
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:common/extensions/typography_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/application/event_chat/models/chat_message_model.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventChatSystemInfo extends StatelessWidget {
   final ChatMessage message;
@@ -13,9 +14,7 @@ class EventChatSystemInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO - add translations
-    final text =
-        message.isJoinedInfo ? 'dołączył/a do czatu' : 'opuścił/a czat';
+    final text = message.isJoinedInfo ? S().joinedChat : S().leftChat;
     return InkWell(
       onTap: () {
         context.unfocus();
@@ -24,7 +23,6 @@ class EventChatSystemInfo extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 12, bottom: 16),
         child: Text(
-          // TODO - add translation
           '${message.user.username} $text',
           style: context.labelSmall,
         ),

@@ -4,7 +4,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/event_review/event_review_cubit.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class ReviewRatingBar extends StatelessWidget {
   const ReviewRatingBar({Key? key}) : super(key: key);

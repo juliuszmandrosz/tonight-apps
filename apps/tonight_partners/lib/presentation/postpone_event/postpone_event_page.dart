@@ -12,7 +12,7 @@ import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart
 import 'package:tonight_partners/presentation/postpone_event/widgets/confirm_postpone_event_button.dart';
 import 'package:tonight_partners/presentation/postpone_event/widgets/current_end_date_input.dart';
 import 'package:tonight_partners/presentation/postpone_event/widgets/current_start_date_input.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class PostponeEventPage extends StatelessWidget {
   final Event event;

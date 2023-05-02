@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventFiltersDressCode extends StatelessWidget {
   final List<String> availableOutfits;

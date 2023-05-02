@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/domain/club_rewards/club_rewards_with_attendance_model.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class UserAttendance extends StatelessWidget {
   final ClubRewardsWithAttendance clubRewardsWithAttendance;

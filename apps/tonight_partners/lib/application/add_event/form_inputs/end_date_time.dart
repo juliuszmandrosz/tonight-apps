@@ -1,5 +1,5 @@
 import 'package:formz/formz.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 enum EndDateTimeError { empty, beforeStart, startDateEmpty, tooShort, tooLong }
 

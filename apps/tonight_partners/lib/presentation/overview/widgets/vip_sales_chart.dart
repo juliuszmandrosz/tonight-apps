@@ -5,7 +5,7 @@ import 'package:tonight_partners/application/overview/overview_cubit.dart';
 import 'package:tonight_partners/presentation/overview/widgets/chart_data.dart';
 import 'package:tonight_partners/presentation/overview/widgets/statistics_update_info.dart';
 import 'package:tonight_partners/presentation/overview/widgets/tonight_partners_column_chart.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class VipSalesChart extends StatelessWidget {
   const VipSalesChart({Key? key}) : super(key: key);

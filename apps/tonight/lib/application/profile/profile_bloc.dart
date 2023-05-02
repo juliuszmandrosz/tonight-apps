@@ -6,9 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
 import 'package:tonight/domain/user_profile/user_profile_model.dart';
+import 'package:translations/raver_translations.dart';
 
 part 'profile_bloc.freezed.dart';
+
 part 'profile_event.dart';
+
 part 'profile_state.dart';
 
 const _photosPageSize = 9;
@@ -55,8 +58,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     result.fold(
       (_) {
         emit(state.copyWith(refreshPhotosStatus: CubitStatus.failure));
-        // TODO - add translations
-        _showSnackbarMessage(emit, 'Failed to refresh photos');
+        _showSnackbarMessage(emit, S().errorRefreshingPhotos);
       },
       (photos) => emit(
         state.copyWith(

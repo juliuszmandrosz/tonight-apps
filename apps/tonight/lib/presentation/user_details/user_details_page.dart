@@ -7,6 +7,7 @@ import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/user_details/widgets/user_details_favorite_clubs.dart';
 import 'package:tonight/presentation/user_details/widgets/user_details_stats_row.dart';
+import 'package:translations/raver_translations.dart';
 
 class UserDetailsPage extends StatelessWidget {
   final String userId;
@@ -21,8 +22,7 @@ class UserDetailsPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<UserDetailsCubit>()..getUserById(userId),
       child: Scaffold(
-        // TODO - add translation
-        appBar: const TonightAppBar(title: 'User Profile'),
+        appBar: TonightAppBar(title: S().userProfile),
         body: BlocBuilder<UserDetailsCubit, UserDetailsState>(
           builder: (context, state) {
             return BlocBuilder<UserDetailsCubit, UserDetailsState>(
@@ -50,8 +50,7 @@ class UserDetailsPage extends StatelessWidget {
                                 backgroundColor: context.surfaceColor,
                                 textColor: context.onSurfaceColor,
                                 username: state.user.fold(
-                                  // TODO - add translation
-                                  () => 'Użytkownik Tonight',
+                                  () => S().tonightUser,
                                   (user) => user.username,
                                 ),
                                 profilePictureUrl: state.user.fold(
@@ -67,7 +66,7 @@ class UserDetailsPage extends StatelessWidget {
                               const SizedBox(height: 30),
                               TonightHeadline(
                                 text: state.user.fold(
-                                  () => 'Użytkownik Tonight',
+                                  () => S().tonightUser,
                                   (user) => user.username,
                                 ),
                                 isSmallerVersion: true,
@@ -75,8 +74,7 @@ class UserDetailsPage extends StatelessWidget {
                               const SizedBox(height: 40),
                               state.user.fold(
                                 () => Text(
-                                  // TODO - add translation
-                                  'Te konto zostało usunięte.',
+                                  S().accountDeletedInfo,
                                   style: context.titleMedium.copyWith(
                                     color: context.secondaryColor,
                                   ),

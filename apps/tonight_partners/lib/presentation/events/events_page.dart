@@ -10,7 +10,7 @@ import 'package:tonight_partners/injection.dart';
 import 'package:tonight_partners/presentation/events/widgets/live_events_tab.dart';
 import 'package:tonight_partners/presentation/events/widgets/past_events_tab.dart';
 import 'package:tonight_partners/presentation/events/widgets/upcoming_events_tab.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventsPage extends StatelessWidget {
   const EventsPage({Key? key}) : super(key: key);

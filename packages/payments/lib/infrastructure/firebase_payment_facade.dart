@@ -16,7 +16,7 @@ import 'package:payments/infrastructure/cloud_functions/payment_cloud_functions_
 import 'package:payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
 import 'package:payments/infrastructure/cloud_functions/responses/create_payment_sheet_response.dart';
 import 'package:payments/infrastructure/dtos/customer_data_dto.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 import 'dtos/promotion_code_dto.dart';
 
@@ -409,8 +409,6 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
       const GooglePayInitParams(
         merchantName: 'Tonight',
         countryCode: 'PL',
-        // TODO - change
-        testEnv: true,
       ),
     );
 

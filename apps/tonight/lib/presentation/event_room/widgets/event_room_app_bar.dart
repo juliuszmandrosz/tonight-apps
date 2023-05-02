@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/event_room/bloc/event_room_bloc.dart';
 import 'package:tonight/application/event_room/bloc/event_room_tab.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventRoomAppBar extends StatelessWidget with PreferredSizeWidget {
   final Event event;
@@ -37,11 +37,8 @@ class EventRoomAppBar extends StatelessWidget with PreferredSizeWidget {
           ),
           onPressed: () async {
             context.unfocus();
-            // TODO - add translation
-            final result =
-                await context.showConfirmationDialogWithCustomMessage(
-              'Czy na pewno chcesz opuścić wydarzenie?',
-            );
+            final result = await context
+                .showConfirmationDialogWithCustomMessage(S().confirmEventLeave);
             if ((result ?? false) && context.mounted) {
               context.unfocus();
               context
@@ -80,8 +77,7 @@ class EventRoomAppBar extends StatelessWidget with PreferredSizeWidget {
                 tabs: [
                   Tab(
                     child: Text(
-                      // TODO - add translation
-                      'Czat',
+                      S().chat,
                       textAlign: TextAlign.center,
                     ),
                   ),

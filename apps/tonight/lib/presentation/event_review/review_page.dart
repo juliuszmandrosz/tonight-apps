@@ -8,7 +8,7 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/event_review/widgets/existing_review_form.dart';
 import 'package:tonight/presentation/event_review/widgets/new_review_form.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class ReviewPage extends StatelessWidget {
   final String eventId;
@@ -36,8 +36,7 @@ class ReviewPage extends StatelessWidget {
           );
           if (state.submittingStatus.isSubmissionSuccess) {
             isReviewAddedSuccessfully = true;
-            // TODO - add translation
-            context.showSnackbarMessage('Opinia dodana, dziękujemy!');
+            context.showSnackbarMessage(S().reviewAdded);
             context.popRoute();
           }
         },
