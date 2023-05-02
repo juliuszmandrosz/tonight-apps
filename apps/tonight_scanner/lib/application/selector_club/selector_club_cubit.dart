@@ -8,7 +8,7 @@ import 'package:clubs/domain/club/selector_club_facade.dart';
 import 'package:clubs/clubs.dart';
 import 'package:common/application/application.dart';
 import 'package:rewards/domain/domain.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 part 'selector_club_cubit.freezed.dart';
 

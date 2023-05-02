@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class UserWallPhotoRateButton extends StatelessWidget {
   final WallPhoto photo;
@@ -23,11 +23,7 @@ class UserWallPhotoRateButton extends StatelessWidget {
       child: ElevatedButton.icon(
         onPressed: () => photo.isVerified
             ? context.pushRoute(ReviewRoute(eventId: photo.eventId))
-            : context.showSnackbarMessage(
-                // TODO - add translation
-                'Twoje zdjęcie nie zostało jeszcze zweryfikowane, powiadomimy Cię jak tylko to nastąpi.',
-              ),
-        // TODO - add translation
+            : context.showSnackbarMessage(S().photoNotVerifiedYet),
         label: Text(S().rateEvent),
         icon: const FaIcon(
           FontAwesomeIcons.solidStar,

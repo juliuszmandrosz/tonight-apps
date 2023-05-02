@@ -11,7 +11,7 @@ import 'package:tonight_scanner/application/welcome_loader/welcome_loader_cubit.
 import 'package:tonight_scanner/injection.dart';
 import 'package:tonight_scanner/presentation/core/tonight_scanner_app_bar.dart';
 import 'package:tonight_scanner/presentation/routes/app_router.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class NavigatorPage extends StatefulWidget {
   const NavigatorPage({Key? key}) : super(key: key);

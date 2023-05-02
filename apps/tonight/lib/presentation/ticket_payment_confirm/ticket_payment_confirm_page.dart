@@ -4,7 +4,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:tickets/tickets.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class TicketPaymentConfirmPage extends StatelessWidget {
   final Ticket ticket;

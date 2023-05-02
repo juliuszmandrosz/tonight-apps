@@ -15,7 +15,7 @@ import 'package:tonight_scanner/presentation/event/widgets/no_live_event.dart';
 import 'package:tonight_scanner/presentation/event/widgets/refresh_icon.dart';
 import 'package:tonight_scanner/presentation/event/widgets/selector_club.dart';
 import 'package:tonight_scanner/presentation/routes/app_router.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventPage extends StatelessWidget {
   const EventPage({Key? key}) : super(key: key);

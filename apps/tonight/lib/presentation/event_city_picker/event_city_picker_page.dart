@@ -8,6 +8,7 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/event_city_picker/widgets/event_city_picker_prediction_list.dart';
 import 'package:tonight/presentation/event_city_picker/widgets/event_picker_text_field.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventCityPickerPage extends StatelessWidget {
   final BuildContext blocContext;
@@ -22,8 +23,7 @@ class EventCityPickerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // TODO - add translations
-      appBar: const TonightAppBar(title: 'Miejsce'),
+      appBar: TonightAppBar(title: S().place),
       body: MultiBlocProvider(
         providers: [
           BlocProvider.value(

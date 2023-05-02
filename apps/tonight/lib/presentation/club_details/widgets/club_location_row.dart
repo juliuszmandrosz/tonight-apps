@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:tonight/presentation/commons/icons/tonight_icon_button.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class ClubLocationRow extends StatelessWidget {
   final Club club;

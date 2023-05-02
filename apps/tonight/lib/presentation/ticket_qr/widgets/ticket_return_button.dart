@@ -2,7 +2,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/ticket_qr/ticket_qr_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class TicketReturnButton extends StatelessWidget {
   const TicketReturnButton({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EditEventAlertDialog extends StatelessWidget {
   final Widget content;

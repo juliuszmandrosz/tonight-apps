@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rewards/rewards.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/rewards/reward_list_tile.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class RewardListForRequiredEntries extends StatelessWidget {
   final int requiredEntries;

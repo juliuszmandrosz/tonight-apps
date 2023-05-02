@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:formz/formz.dart';
 import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
 import 'package:tonight_partners/application/add_event/form_inputs/event_name.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventNameInput extends HookWidget {
   const EventNameInput({Key? key}) : super(key: key);

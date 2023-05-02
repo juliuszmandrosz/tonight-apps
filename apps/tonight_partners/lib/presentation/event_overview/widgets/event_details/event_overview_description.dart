@@ -6,7 +6,7 @@ import 'package:tonight_partners/presentation/core/tonight_partners_headline.dar
 import 'package:tonight_partners/presentation/event_overview/widgets/dialogs/edit_event_description_dialog.dart';
 import 'package:tonight_partners/presentation/event_overview/widgets/event_details/delete_event_detail_button.dart';
 import 'package:tonight_partners/presentation/event_overview/widgets/event_details/show_edit_event_dialog_button.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventOverviewDescription extends StatelessWidget {
   const EventOverviewDescription({Key? key}) : super(key: key);

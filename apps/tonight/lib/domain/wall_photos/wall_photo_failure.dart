@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 part 'wall_photo_failure.freezed.dart';
 

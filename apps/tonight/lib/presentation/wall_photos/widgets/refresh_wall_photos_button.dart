@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class RefreshWallPhotosButton extends StatelessWidget {
   const RefreshWallPhotosButton({Key? key}) : super(key: key);
@@ -16,11 +16,9 @@ class RefreshWallPhotosButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                // TODO - add translation
                 state.userLocation.isSome()
-                    // TODO - add translation
-                    ? "Brak zdjęć z dzisiejszego wieczoru z klubów w Twojej okolicy, bądź pierwszy i dodaj je!"
-                    : "Brak zdjęć z dzisiejszego wieczoru z klubów, bądź pierwszy i dodaj je!",
+                    ? S().wallPhotosNearbyInfo
+                    : S().wallPhotosInfo,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),

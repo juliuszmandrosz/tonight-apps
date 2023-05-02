@@ -16,7 +16,7 @@ import 'package:tonight_partners/presentation/event_overview/widgets/event_overv
 import 'package:tonight_partners/presentation/event_overview/widgets/event_overview_ticket_pools.dart';
 import 'package:tonight_partners/presentation/event_overview/widgets/postpone_event_button.dart';
 import 'package:tonight_partners/presentation/routes/app_router.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventOverviewPage extends StatelessWidget {
   final BuildContext blocContext;

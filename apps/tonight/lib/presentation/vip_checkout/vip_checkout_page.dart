@@ -19,7 +19,7 @@ import 'package:tonight/presentation/vip_checkout/widgets/vip_checkout_promotion
 import 'package:tonight/presentation/vip_checkout/widgets/vip_checkout_summary.dart';
 import 'package:tonight/presentation/vip_checkout/widgets/vip_checkout_ticket_card.dart';
 import 'package:tonight/presentation/vip_checkout/widgets/vip_proceed_to_pay_button.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class VipCheckoutPage extends StatelessWidget {
   final Ticket ticket;
@@ -29,18 +29,16 @@ class VipCheckoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) =>
-      getIt<VipCheckoutCubit>(
+      create: (_) => getIt<VipCheckoutCubit>(
         param1: context.read<TicketListCubit>(),
-      )
-        ..initData(ticket),
+      )..initData(ticket),
       child: BlocConsumer<VipCheckoutCubit, VipCheckoutState>(
         buildWhen: (previous, current) =>
-        previous.initialStatus != current.initialStatus ||
+            previous.initialStatus != current.initialStatus ||
             previous.eventTickets != current.eventTickets ||
             previous.sendInvoice != current.sendInvoice,
         listenWhen: (previous, current) =>
-        previous.initialStatus != current.initialStatus ||
+            previous.initialStatus != current.initialStatus ||
             previous.proceedingToPaymentStatus !=
                 current.proceedingToPaymentStatus ||
             previous.snackbarMessage != current.snackbarMessage ||
@@ -61,8 +59,8 @@ class VipCheckoutPage extends StatelessWidget {
               : context.loaderOverlay.hide();
 
           state.snackbarMessage.fold(
-                () {},
-                (message) => context.showSnackbarMessage(message),
+            () {},
+            (message) => context.showSnackbarMessage(message),
           );
 
           if (state.isVipNoLongerAvailable) {
@@ -72,7 +70,7 @@ class VipCheckoutPage extends StatelessWidget {
           if (state.paymentFailure ==
               some(const UserPaymentFailure.paymentHasAlreadyBeenMade())) {
             context.router.popUntil(
-                  (route) => route.settings.name == TicketQrRoute.name,
+              (route) => route.settings.name == TicketQrRoute.name,
             );
           }
         },
@@ -88,39 +86,38 @@ class VipCheckoutPage extends StatelessWidget {
             );
           }
 
-
           return state.initialStatus.isLoading()
               ? const WaveLoadingIndicator()
               : Scaffold(
-            appBar: TonightAppBar(title: S().checkout),
-            floatingActionButton: const VipProceedToPayButton(),
-            floatingActionButtonLocation:
-            FloatingActionButtonLocation.centerFloat,
-            body: Padding(
-              padding: const EdgeInsets.all(15),
-              child: ListView(
-                children: [
-                  const VipCheckoutHeader(),
-                  const SizedBox(height: 20),
-                  const VipCheckoutTicketCard(),
-                  const SizedBox(height: 15),
-                  const Divider(),
-                  const SizedBox(height: 15),
-                  const VipCheckoutPaymentMethod(),
-                  const SizedBox(height: 20),
-                  const VipCheckoutSummary(),
-                  const SizedBox(height: 10),
-                  const Divider(),
-                  const SizedBox(height: 10),
-                  const VipCheckoutPromotionCode(),
-                  const SizedBox(height: 20),
-                  const VipCheckoutInvoiceCheckbox(),
-                  if (state.sendInvoice) const VipCheckoutInvoiceData(),
-                  const SizedBox(height: 80),
-                ],
-              ),
-            ),
-          );
+                  appBar: TonightAppBar(title: S().checkout),
+                  floatingActionButton: const VipProceedToPayButton(),
+                  floatingActionButtonLocation:
+                      FloatingActionButtonLocation.centerFloat,
+                  body: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: ListView(
+                      children: [
+                        const VipCheckoutHeader(),
+                        const SizedBox(height: 20),
+                        const VipCheckoutTicketCard(),
+                        const SizedBox(height: 15),
+                        const Divider(),
+                        const SizedBox(height: 15),
+                        const VipCheckoutPaymentMethod(),
+                        const SizedBox(height: 20),
+                        const VipCheckoutSummary(),
+                        const SizedBox(height: 10),
+                        const Divider(),
+                        const SizedBox(height: 10),
+                        const VipCheckoutPromotionCode(),
+                        const SizedBox(height: 20),
+                        const VipCheckoutInvoiceCheckbox(),
+                        if (state.sendInvoice) const VipCheckoutInvoiceData(),
+                        const SizedBox(height: 80),
+                      ],
+                    ),
+                  ),
+                );
         },
       ),
     );

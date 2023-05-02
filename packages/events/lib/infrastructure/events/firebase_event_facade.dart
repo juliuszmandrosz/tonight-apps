@@ -289,7 +289,7 @@ class FirebaseEventFacade
 
       final filters = EventFilters.empty().copyWith(
         clubFilter: ClubFilter(clubId: clubId),
-        showOnlyFilter: ShowOnlyFilter(showOnlyLive: true),
+        showOnlyFilter: ShowOnlyFilter(showOnlyUpcoming: true),
         dateRangeFilter: DateRangeFilter(fromDate: null, toDate: null),
       );
 

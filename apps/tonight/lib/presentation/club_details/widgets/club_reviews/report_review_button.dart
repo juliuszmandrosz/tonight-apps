@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tonight/application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class ReportReviewButton extends StatelessWidget {
   final Review review;

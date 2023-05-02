@@ -1,7 +1,7 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/application/tonight_events/models/event_participant_model.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class TonightEventParticipantsRow extends StatelessWidget {
   final int totalParticipants;

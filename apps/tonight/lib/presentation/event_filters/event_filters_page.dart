@@ -14,7 +14,7 @@ import 'package:tonight/presentation/event_filters/widgets/event_filters_min_age
 import 'package:tonight/presentation/event_filters/widgets/event_filters_music.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_price.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_submit_button.dart.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventFiltersPage extends StatelessWidget {
   final BuildContext blocContext;

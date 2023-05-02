@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/vip_checkout/vip_checkout_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class VipProceedToPayButton extends StatelessWidget {
   const VipProceedToPayButton({Key? key}) : super(key: key);

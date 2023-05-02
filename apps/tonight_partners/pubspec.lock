@@ -1727,9 +1727,11 @@ packages:
   translations:
     dependency: "direct main"
     description:
-      path: "../../packages/translations"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "76d9b0e6fbf7810676e977bcfb38da5c9a603587"
+      url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
+    source: git
     version: "0.0.1"
   tuple:
     dependency: transitive

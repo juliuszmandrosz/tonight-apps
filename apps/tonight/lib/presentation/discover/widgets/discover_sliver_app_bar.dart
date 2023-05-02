@@ -3,7 +3,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/discover/widgets/clubs_sliver_app_bar.dart';
 import 'package:tonight/presentation/discover/widgets/events_sliver_app_bar.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class DiscoverSliverAppBar extends StatefulWidget {
   final bool innerBoxIsScrolled;

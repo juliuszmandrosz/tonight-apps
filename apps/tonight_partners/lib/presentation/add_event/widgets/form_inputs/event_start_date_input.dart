@@ -6,7 +6,7 @@ import 'package:formz/formz.dart';
 import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
 import 'package:tonight_partners/application/add_event/form_inputs/start_date_time.dart';
 import 'package:tonight_partners/presentation/utils/get_date_time_from_user.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventStartDateInput extends StatelessWidget {
   const EventStartDateInput({Key? key}) : super(key: key);
