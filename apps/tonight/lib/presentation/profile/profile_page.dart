@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,6 @@ import 'package:tonight/presentation/profile/widgets/profile_user_picture_.dart'
 import 'package:tonight/presentation/profile/widgets/profile_wall_photos.dart';
 import 'package:tonight/presentation/profile/widgets/user_profile_stats_row.dart';
 import 'package:tonight/presentation/profile/widgets/username_row.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class ProfilePage extends HookWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -27,25 +25,19 @@ class ProfilePage extends HookWidget {
           () {},
           (message) => context.showSnackbarMessage(message),
         );
-
-        if (state.initialStatus.isFailure()) {
-          context.pushRoute(
-            FailureRoute(
-              retryCallback: () => context
-                  .read<ProfileBloc>()
-                  .add(const ProfileEvent.profileLoaded()),
-            ),
-          );
-        }
       },
       builder: (context, state) {
         switch (state.initialStatus) {
           case CubitStatus.initial:
-            return Container();
+            return const SizedBox.shrink();
           case CubitStatus.loading:
             return const WaveLoadingIndicator();
           case CubitStatus.failure:
-            return Container();
+            return FailureInfo(
+              retryCallback: () => context
+                  .read<ProfileBloc>()
+                  .add(const ProfileEvent.profileLoaded()),
+            );
           case CubitStatus.success:
             final userProfile = state.userProfile.getOrCrash();
             return RefreshIndicator(

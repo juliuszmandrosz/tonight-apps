@@ -1,10 +1,8 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:tonight/presentation/events/widgets/event_card.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
 class FavoriteEventsList extends StatelessWidget {
@@ -13,25 +11,17 @@ class FavoriteEventsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<EventFavoriteCubit, EventFavoriteState>(
-      listenWhen: (previous, current) => previous.status != current.status,
-      listener: (context, state) {
-        if (state.status.isFailure()) {
-          context.pushRoute(
-            FailureRoute(
-              retryCallback: () =>
-                  context.read<EventFavoriteCubit>().getFavoriteEvents(),
-            ),
-          );
-        }
-      },
+    return BlocBuilder<EventFavoriteCubit, EventFavoriteState>(
       builder: (context, state) {
         switch (state.status) {
           case CubitStatus.failure:
-            return Container();
+            return FailureInfo(
+              retryCallback:
+                  context.read<EventFavoriteCubit>().getFavoriteEvents,
+            );
 
           case CubitStatus.initial:
-            return Container();
+            return const SizedBox.shrink();
 
           case CubitStatus.loading:
             return const WaveLoadingIndicator();

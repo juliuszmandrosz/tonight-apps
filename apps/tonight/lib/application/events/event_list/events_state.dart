@@ -11,6 +11,7 @@ class EventsState with _$EventsState {
     required EventFilters eventFilters,
     required EventSortModel sortModel,
     required Map<MenuEventFilter, IFilter> appliedMenuFilters,
+    required Option<CommonEventFailure> failure,
   }) = _EventsState;
 
   factory EventsState.initial() => EventsState(
@@ -22,5 +23,6 @@ class EventsState with _$EventsState {
         sortModel: EventSortModel.empty(),
         events: [],
         appliedMenuFilters: {},
+        failure: none(),
       );
 }

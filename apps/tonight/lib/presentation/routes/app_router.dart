@@ -14,7 +14,6 @@ import 'package:tonight/presentation/event_participants/event_participants_page.
 import 'package:tonight/presentation/event_review/review_page.dart';
 import 'package:tonight/presentation/event_room/event_room_page.dart';
 import 'package:tonight/presentation/events_details/event_details_page.dart';
-import 'package:tonight/presentation/failure/failure_page.dart';
 import 'package:tonight/presentation/favorites/favorites_page.dart';
 import 'package:tonight/presentation/invoice_data/invoice_data_page.dart';
 import 'package:tonight/presentation/network_lost/network_lost_page.dart';
@@ -154,11 +153,6 @@ const animationDuration = 300;
     CustomRoute<CustomerData>(
       page: InvoiceDataPage,
       transitionsBuilder: slideLeftTransition,
-      durationInMilliseconds: animationDuration,
-    ),
-    CustomRoute(
-      page: FailurePage,
-      transitionsBuilder: zoomInTransition,
       durationInMilliseconds: animationDuration,
     ),
     CustomRoute(

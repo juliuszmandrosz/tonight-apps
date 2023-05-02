@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,7 +5,6 @@ import 'package:tonight/application/user_details/user_details_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/user_details/widgets/user_details_favorite_clubs.dart';
 import 'package:tonight/presentation/user_details/widgets/user_details_stats_row.dart';
 
@@ -25,25 +23,18 @@ class UserDetailsPage extends StatelessWidget {
       child: Scaffold(
         // TODO - add translation
         appBar: const TonightAppBar(title: 'User Profile'),
-        body: BlocConsumer<UserDetailsCubit, UserDetailsState>(
-          listener: (context, state) {
-            if (state.status.isFailure()) {
-              context.pushRoute(
-                FailureRoute(
-                  retryCallback: () =>
-                      context.read<UserDetailsCubit>().getUserById(userId),
-                ),
-              );
-            }
-          },
+        body: BlocBuilder<UserDetailsCubit, UserDetailsState>(
           builder: (context, state) {
             return BlocBuilder<UserDetailsCubit, UserDetailsState>(
               builder: (context, state) {
                 switch (state.status) {
                   case CubitStatus.initial:
-                    return Container();
+                    return const SizedBox.shrink();
                   case CubitStatus.failure:
-                    return Container();
+                    return FailureInfo(
+                      retryCallback: () =>
+                          context.read<UserDetailsCubit>().getUserById(userId),
+                    );
                   case CubitStatus.loading:
                     return const WaveLoadingIndicator();
                   case CubitStatus.success:
