@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart' as dartz;
 import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/wall_photo_camera_preview/widgets/camera_preview_bottom_actions.dart';
 import 'package:tonight/presentation/wall_photo_camera_preview/widgets/camera_preview_middle_content.dart';
 import 'package:tonight/presentation/wall_photo_camera_preview/widgets/wall_photo_preview.dart';
@@ -43,6 +44,10 @@ class _WallPhotoCameraPreviewPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: TonightAppBar(
+        title: '',
+        backgroundColor: context.backgroundColor,
+      ),
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
