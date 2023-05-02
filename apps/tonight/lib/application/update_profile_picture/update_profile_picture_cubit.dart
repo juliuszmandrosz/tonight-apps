@@ -6,9 +6,10 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 part 'update_profile_picture_cubit.freezed.dart';
+
 part 'update_profile_picture_state.dart';
 
 class UpdateProfilePictureCubit extends Cubit<UpdateProfilePictureState> {
@@ -19,8 +20,7 @@ class UpdateProfilePictureCubit extends Cubit<UpdateProfilePictureState> {
 
   Future<void> updateProfilePicture() async {
     if (state.profilePicture.isNone()) {
-      // TODO - add translation
-      _showErrorMessage("Please select a profile picture");
+      _showErrorMessage(S().selectProfilePicture);
     }
 
     emit(state.copyWith(status: FormzStatus.submissionInProgress));

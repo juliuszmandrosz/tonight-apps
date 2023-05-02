@@ -2,7 +2,7 @@ import 'package:common/extensions/typography_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class NoTonightEventsInfo extends StatelessWidget {
   const NoTonightEventsInfo({Key? key}) : super(key: key);
@@ -18,8 +18,7 @@ class NoTonightEventsInfo extends StatelessWidget {
               Text(
                 state.eventFilters.maxDistanceFilter.userLocation.isSome() &&
                         state.eventFilters.maxDistanceFilter.enabled
-                    // TODO - add translation
-                    ? 'Brak wydarzeń w pobliżu, odkrywaj wydarzenia w innych miastach'
+                    ? S().noEventsNearYou
                     : S().events(0),
                 style: context.titleSmall,
                 textAlign: TextAlign.center,

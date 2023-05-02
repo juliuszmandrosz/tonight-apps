@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventFiltersIsConcert extends StatelessWidget {
   const EventFiltersIsConcert({Key? key}) : super(key: key);
@@ -20,8 +20,7 @@ class EventFiltersIsConcert extends StatelessWidget {
           dense: true,
           child: ExpansionTile(
             leading: TonightHeadline(
-              // TODO - add translation
-              text: 'Pokazuj tylko koncerty',
+              text: S().showOnlyConcerts,
               isSmallerVersion: true,
             ),
             title: const SizedBox.shrink(),

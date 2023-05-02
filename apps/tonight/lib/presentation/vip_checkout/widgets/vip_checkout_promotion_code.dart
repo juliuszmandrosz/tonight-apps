@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tonight/application/vip_checkout/vip_checkout_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class VipCheckoutPromotionCode extends HookWidget {
   const VipCheckoutPromotionCode({Key? key}) : super(key: key);

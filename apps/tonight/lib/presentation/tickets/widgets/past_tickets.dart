@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
 import 'package:tonight/presentation/tickets/widgets/ticket_card.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class PastTickets extends StatefulWidget {
   const PastTickets({Key? key}) : super(key: key);

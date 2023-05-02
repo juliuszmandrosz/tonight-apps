@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:tonight/application/terms_of_service/terms_of_service_cubit.dart';
 import 'package:tonight/injection.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class TermsOfServiceInfo extends StatelessWidget {
   const TermsOfServiceInfo({Key? key}) : super(key: key);

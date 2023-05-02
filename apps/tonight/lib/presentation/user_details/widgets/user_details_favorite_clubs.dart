@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/clubs/widgets/club_card.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class UserDetailsFavoriteClubs extends StatelessWidget {
   final List<Club> favoriteClubs;
@@ -39,8 +39,7 @@ class UserDetailsFavoriteClubs extends StatelessWidget {
             ? Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  // TODO - add translation
-                  "User has no favorite clubs",
+                  S().userHasNoFavoriteClubs,
                   style: context.bodyMedium.copyWith(
                     color: context.secondaryColor,
                   ),

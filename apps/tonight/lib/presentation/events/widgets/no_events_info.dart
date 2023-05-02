@@ -1,6 +1,6 @@
 import 'package:common/extensions/typography_extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class NoEventsInfo extends StatelessWidget {
   final Function(BuildContext context) onEventsRefreshed;

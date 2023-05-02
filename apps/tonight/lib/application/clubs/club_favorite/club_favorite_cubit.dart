@@ -3,9 +3,10 @@ import 'package:common/application/cubit_status.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 part 'club_favorite_cubit.freezed.dart';
+
 part 'club_favorite_state.dart';
 
 class ClubFavoriteCubit extends Cubit<ClubFavoriteState> {

@@ -88,10 +88,7 @@ dependencies:
 
   events:
     path: ../../packages/events
-
-  translations:
-    path: ../../packages/translations
-
+  
   common:
     path: ../../packages/common
 
@@ -103,6 +100,10 @@ dependencies:
 
   payments:
     path: ../../packages/payments
+
+  translations:
+    git:
+      url: git@github.com:juliuszmandrosz/RaverTranslations.git
 
 
 dev_dependencies:

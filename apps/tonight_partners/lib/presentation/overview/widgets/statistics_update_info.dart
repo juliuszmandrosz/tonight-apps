@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class StatisticsUpdateInfo extends StatelessWidget {
   const StatisticsUpdateInfo({Key? key}) : super(key: key);

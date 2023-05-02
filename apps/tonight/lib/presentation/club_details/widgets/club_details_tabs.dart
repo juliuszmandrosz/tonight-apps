@@ -6,7 +6,7 @@ import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_events.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_reviews.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_rewards.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class ClubDetailsTabs extends StatelessWidget {
   final Club club;

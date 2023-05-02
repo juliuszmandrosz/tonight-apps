@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
 import 'package:tonight/presentation/club_details/widgets/club_reviews/club_review_list_tile.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class ClubReviews extends StatelessWidget {
   final String clubId;

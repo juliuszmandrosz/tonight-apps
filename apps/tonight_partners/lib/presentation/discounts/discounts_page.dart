@@ -7,7 +7,7 @@ import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart
 import 'package:tonight_partners/presentation/discounts/widgets/current_sales.dart';
 import 'package:tonight_partners/presentation/discounts/widgets/discount_list.dart';
 import 'package:tonight_partners/presentation/discounts/widgets/discounts_info.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class DiscountsPage extends StatelessWidget {
   final BuildContext blocContext;

@@ -10,6 +10,7 @@ import 'package:tonight/presentation/onboarding/widgets/onboarding_profile_pictu
 import 'package:tonight/presentation/onboarding/widgets/onboarding_username_input.dart';
 import 'package:tonight/presentation/onboarding/widgets/submit_button.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/raver_translations.dart';
 
 class OnboardingUserDetailsPage extends StatelessWidget {
   const OnboardingUserDetailsPage({Key? key}) : super(key: key);
@@ -48,10 +49,9 @@ class OnboardingUserDetailsPage extends StatelessWidget {
                           const SizedBox(height: 40),
                           Align(
                             alignment: Alignment.centerLeft,
-                            // TODO - add translation
                             child: TonightHeadline(
-                                text:
-                                    "Wybierz swój pseudonim i zdjęcie profilowe"),
+                              text: S().chooseUsernameAndProfilePhoto,
+                            ),
                           ),
                           const SizedBox(height: 30),
                           const OnboardingUsernameInput(),

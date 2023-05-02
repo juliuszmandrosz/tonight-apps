@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight_partners/application/sign_in/sign_in_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class SignInButton extends StatelessWidget {
   const SignInButton({Key? key}) : super(key: key);

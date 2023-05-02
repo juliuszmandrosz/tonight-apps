@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight_partners/application/event_filters/event_filters_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventsSearchField extends StatelessWidget {
   const EventsSearchField({Key? key}) : super(key: key);

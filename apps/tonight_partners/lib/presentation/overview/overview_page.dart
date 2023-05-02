@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight_partners/presentation/overview/widgets/revenue_chart.dart';
 import 'package:tonight_partners/presentation/overview/widgets/ticket_sales_chart.dart';
 import 'package:tonight_partners/presentation/overview/widgets/vip_sales_chart.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class OverviewPage extends StatelessWidget {
   const OverviewPage({Key? key}) : super(key: key);
