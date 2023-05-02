@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:events/domain/filters/event_filters_entity.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,6 @@ import 'package:tonight/presentation/event_filters/widgets/event_filters_min_age
 import 'package:tonight/presentation/event_filters/widgets/event_filters_music.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_price.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_submit_button.dart.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
 class EventFiltersPage extends StatelessWidget {
@@ -72,16 +70,10 @@ class EventFiltersPage extends StatelessWidget {
               builder: (context, state) => state.map(
                 initial: (_) => const SizedBox.shrink(),
                 loadInProgress: (_) => const WaveLoadingIndicator(),
-                loadFailure: (_) {
-                  context.pushRoute(
-                    FailureRoute(
-                      retryCallback: () => context
-                          .read<AvailableFiltersCubit>()
-                          .getAvailableFilters(),
-                    ),
-                  );
-                  return const SizedBox.shrink();
-                },
+                loadFailure: (_) => FailureInfo(
+                  retryCallback:
+                      context.read<AvailableFiltersCubit>().getAvailableFilters,
+                ),
                 loadSuccess: (state) {
                   return SafeArea(
                     child: Padding(

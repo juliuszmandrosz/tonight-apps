@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:clubs/clubs.dart';
 import 'package:common/common.dart';
 import 'package:events/events.dart';
@@ -12,7 +11,6 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/club_details/widgets/club_description.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs.dart';
 import 'package:tonight/presentation/core/details_hero_image.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class ClubDetailsPage extends StatefulWidget {
   final Club? club;
@@ -78,23 +76,15 @@ class _ClubDetailsPageState extends State<ClubDetailsPage>
             ),
         ),
       ],
-      child: BlocConsumer<ClubDetailsCubit, ClubDetailsState>(
-        listener: (context, state) {
-          if (state.maybeWhen(orElse: () => false, loadFailure: (_) => true)) {
-            context.pushRoute(
-              FailureRoute(
-                retryCallback: () => context
-                    .read<ClubDetailsCubit>()
-                    .getClubById(widget.clubId!),
-              ),
-            );
-          }
-        },
+      child: BlocBuilder<ClubDetailsCubit, ClubDetailsState>(
         builder: (context, state) {
           return state.map(
             initial: (_) => Container(),
             loadInProgress: (_) => const WaveLoadingIndicator(),
-            loadFailure: (state) => const SizedBox.shrink(),
+            loadFailure: (_) => FailureInfo(
+              retryCallback: () =>
+                  context.read<ClubDetailsCubit>().getClubById(widget.clubId!),
+            ),
             loadSuccess: (state) {
               final club = state.club;
               return Scaffold(

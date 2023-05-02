@@ -22,7 +22,12 @@ class TonightEventsAggregator {
       offset: offset,
     );
     if (eventsResult.isLeft()) {
-      return const Left(TonightEventsFailure.unexpected());
+      return eventsResult.getLeftOrCrash().maybeMap(
+            noConnection: (_) => left(
+              const TonightEventsFailure.noConnection(),
+            ),
+            orElse: () => left(const TonightEventsFailure.unexpected()),
+          );
     }
     final result = await Future.wait(
       [

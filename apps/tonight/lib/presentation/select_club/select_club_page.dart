@@ -6,7 +6,6 @@ import 'package:tonight/application/add_wall_photo/wall_photo_venue_model.dart';
 import 'package:tonight/application/select_club/select_club_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/select_club/widgets/select_club_list.dart';
 import 'package:tonight/presentation/select_club/widgets/select_club_search_field.dart';
 
@@ -25,15 +24,6 @@ class SelectClubPage extends StatelessWidget {
             getIt<SelectClubBloc>()..add(const SelectClubEvent.venuesFetched()),
         child: BlocListener<SelectClubBloc, SelectClubState>(
           listener: (context, selectClubState) async {
-            if (selectClubState.initialStatus.isFailure()) {
-              context.pushRoute(
-                FailureRoute(
-                  retryCallback: () => context
-                      .read<SelectClubBloc>()
-                      .add(const SelectClubEvent.venuesFetched()),
-                ),
-              );
-            }
             selectClubState.snackbarMessage.fold(
               () {},
               (message) => context.showSnackbarMessage(message),
@@ -51,9 +41,13 @@ class SelectClubPage extends StatelessWidget {
               builder: (context, state) {
                 switch (state.initialStatus) {
                   case CubitStatus.initial:
-                    return Container();
+                    return const SizedBox.shrink();
                   case CubitStatus.loading:
-                    return const WaveLoadingIndicator();
+                    return FailureInfo(
+                      retryCallback: () => context
+                          .read<SelectClubBloc>()
+                          .add(const SelectClubEvent.venuesFetched()),
+                    );
                   case CubitStatus.failure:
                     return Container();
                   case CubitStatus.success:

@@ -1,11 +1,9 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
 import 'package:tonight/presentation/clubs/widgets/club_card.dart';
 import 'package:tonight/presentation/clubs/widgets/no_clubs_info.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class ClubsPage extends StatelessWidget {
   const ClubsPage({Key? key}) : super(key: key);
@@ -14,18 +12,7 @@ class ClubsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ClubsBloc, ClubsState>(
-      listenWhen: (previous, current) =>
-          previous.getClubsStatus != current.getClubsStatus,
-      listener: (context, state) {
-        if (state.getClubsStatus.isFailure()) {
-          context.pushRoute(
-            FailureRoute(
-              retryCallback: () => _refreshClubs(context),
-            ),
-          );
-        }
-      },
+    return BlocBuilder<ClubsBloc, ClubsState>(
       builder: (context, state) {
         switch (state.getClubsStatus) {
           case CubitStatus.initial:
@@ -35,7 +22,16 @@ class ClubsPage extends StatelessWidget {
             return const WaveLoadingIndicator();
 
           case CubitStatus.failure:
-            return const SizedBox.shrink();
+            return FailureInfo(
+              retryCallback: () => _refreshClubs(context),
+              isSocketException: state.failure.fold(
+                () => false,
+                (f) => f.maybeMap(
+                  noConnection: (_) => true,
+                  orElse: () => false,
+                ),
+              ),
+            );
 
           case CubitStatus.success:
             return state.clubs.isEmpty

@@ -451,6 +451,7 @@ mixin _$WallPhotosState {
   bool get hasReachedMax => throw _privateConstructorUsedError;
   String get filterPhrase => throw _privateConstructorUsedError;
   Option<LatLng> get userLocation => throw _privateConstructorUsedError;
+  Option<WallPhotoFailure> get failure => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WallPhotosStateCopyWith<WallPhotosState> get copyWith =>
@@ -470,7 +471,8 @@ abstract class $WallPhotosStateCopyWith<$Res> {
       List<WallPhoto> photos,
       bool hasReachedMax,
       String filterPhrase,
-      Option<LatLng> userLocation});
+      Option<LatLng> userLocation,
+      Option<WallPhotoFailure> failure});
 }
 
 /// @nodoc
@@ -493,6 +495,7 @@ class _$WallPhotosStateCopyWithImpl<$Res, $Val extends WallPhotosState>
     Object? hasReachedMax = null,
     Object? filterPhrase = null,
     Object? userLocation = null,
+    Object? failure = null,
   }) {
     return _then(_value.copyWith(
       getPhotosStatus: null == getPhotosStatus
@@ -523,6 +526,10 @@ class _$WallPhotosStateCopyWithImpl<$Res, $Val extends WallPhotosState>
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
               as Option<LatLng>,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<WallPhotoFailure>,
     ) as $Val);
   }
 }
@@ -542,7 +549,8 @@ abstract class _$$_WallPhotosStateCopyWith<$Res>
       List<WallPhoto> photos,
       bool hasReachedMax,
       String filterPhrase,
-      Option<LatLng> userLocation});
+      Option<LatLng> userLocation,
+      Option<WallPhotoFailure> failure});
 }
 
 /// @nodoc
@@ -563,6 +571,7 @@ class __$$_WallPhotosStateCopyWithImpl<$Res>
     Object? hasReachedMax = null,
     Object? filterPhrase = null,
     Object? userLocation = null,
+    Object? failure = null,
   }) {
     return _then(_$_WallPhotosState(
       getPhotosStatus: null == getPhotosStatus
@@ -593,6 +602,10 @@ class __$$_WallPhotosStateCopyWithImpl<$Res>
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
               as Option<LatLng>,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<WallPhotoFailure>,
     ));
   }
 }
@@ -607,7 +620,8 @@ class _$_WallPhotosState implements _WallPhotosState {
       required final List<WallPhoto> photos,
       required this.hasReachedMax,
       required this.filterPhrase,
-      required this.userLocation})
+      required this.userLocation,
+      required this.failure})
       : _photos = photos;
 
   @override
@@ -630,10 +644,12 @@ class _$_WallPhotosState implements _WallPhotosState {
   final String filterPhrase;
   @override
   final Option<LatLng> userLocation;
+  @override
+  final Option<WallPhotoFailure> failure;
 
   @override
   String toString() {
-    return 'WallPhotosState(getPhotosStatus: $getPhotosStatus, nextPageStatus: $nextPageStatus, errorMessage: $errorMessage, photos: $photos, hasReachedMax: $hasReachedMax, filterPhrase: $filterPhrase, userLocation: $userLocation)';
+    return 'WallPhotosState(getPhotosStatus: $getPhotosStatus, nextPageStatus: $nextPageStatus, errorMessage: $errorMessage, photos: $photos, hasReachedMax: $hasReachedMax, filterPhrase: $filterPhrase, userLocation: $userLocation, failure: $failure)';
   }
 
   @override
@@ -653,7 +669,8 @@ class _$_WallPhotosState implements _WallPhotosState {
             (identical(other.filterPhrase, filterPhrase) ||
                 other.filterPhrase == filterPhrase) &&
             (identical(other.userLocation, userLocation) ||
-                other.userLocation == userLocation));
+                other.userLocation == userLocation) &&
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
@@ -665,7 +682,8 @@ class _$_WallPhotosState implements _WallPhotosState {
       const DeepCollectionEquality().hash(_photos),
       hasReachedMax,
       filterPhrase,
-      userLocation);
+      userLocation,
+      failure);
 
   @JsonKey(ignore: true)
   @override
@@ -682,7 +700,8 @@ abstract class _WallPhotosState implements WallPhotosState {
       required final List<WallPhoto> photos,
       required final bool hasReachedMax,
       required final String filterPhrase,
-      required final Option<LatLng> userLocation}) = _$_WallPhotosState;
+      required final Option<LatLng> userLocation,
+      required final Option<WallPhotoFailure> failure}) = _$_WallPhotosState;
 
   @override
   CubitStatus get getPhotosStatus;
@@ -698,6 +717,8 @@ abstract class _WallPhotosState implements WallPhotosState {
   String get filterPhrase;
   @override
   Option<LatLng> get userLocation;
+  @override
+  Option<WallPhotoFailure> get failure;
   @override
   @JsonKey(ignore: true)
   _$$_WallPhotosStateCopyWith<_$_WallPhotosState> get copyWith =>

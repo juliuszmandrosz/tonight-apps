@@ -1,9 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/tonight_events/widgets/no_tonight_events_info.dart';
 import 'package:tonight/presentation/tonight_events/widgets/tonight_event_card.dart';
 import 'package:tonight/presentation/tonight_events/widgets/tonight_event_filter_chips.dart';
@@ -21,26 +19,26 @@ class TonightEventsPage extends StatelessWidget {
           child: const TonightEventFilterChips(),
         ),
         const SizedBox(height: 8),
-        BlocConsumer<TonightEventsBloc, TonightEventsState>(
-          listenWhen: (previous, current) =>
-              previous.getEventsStatus != current.getEventsStatus,
-          listener: (ctx, state) {
-            if (state.getEventsStatus.isFailure()) {
-              context.pushRoute(
-                FailureRoute(
-                  retryCallback: () => context
-                      .read<TonightEventsBloc>()
-                      .add(const TonightEventsEvent.eventsRefreshed()),
-                ),
-              );
-            }
-          },
+        BlocBuilder<TonightEventsBloc, TonightEventsState>(
           builder: (ctx, state) {
             switch (state.getEventsStatus) {
               case CubitStatus.initial:
                 return const SizedBox.shrink();
               case CubitStatus.failure:
-                return const SizedBox.shrink();
+                return Expanded(
+                  child: FailureInfo(
+                    retryCallback: () => context
+                        .read<TonightEventsBloc>()
+                        .add(const TonightEventsEvent.eventsRefreshed()),
+                    isSocketException: state.failure.fold(
+                      () => false,
+                      (f) => f.when(
+                        unexpected: () => false,
+                        noConnection: () => true,
+                      ),
+                    ),
+                  ),
+                );
               case CubitStatus.loading:
                 return const Expanded(child: WaveLoadingIndicator());
               case CubitStatus.success:
