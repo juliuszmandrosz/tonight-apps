@@ -12,6 +12,7 @@ class TonightEventsState with _$TonightEventsState {
     required EventFilters eventFilters,
     required Map<MenuEventFilter, IFilter> appliedMenuFilters,
     required bool isEventsTabSelected,
+    required Option<TonightEventsFailure> failure,
   }) = _TonightEventsState;
 
   factory TonightEventsState.initial() => TonightEventsState(
@@ -26,5 +27,6 @@ class TonightEventsState with _$TonightEventsState {
           showOnlyFilter: ShowOnlyFilter(showOnlyTonight: true),
         ),
         isEventsTabSelected: true,
+        failure: none(),
       );
 }

@@ -1,9 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/wall_photos/widgets/refresh_wall_photos_button.dart';
 import 'package:tonight/presentation/wall_photos/widgets/wall_photo_card.dart';
 
@@ -12,26 +10,24 @@ class WallPhotosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<WallPhotosBloc, WallPhotosState>(
-      listenWhen: (previous, current) =>
-          previous.getPhotosStatus != current.getPhotosStatus,
-      listener: (ctx, state) {
-        if (state.getPhotosStatus.isFailure()) {
-          context.pushRoute(
-            FailureRoute(
-              retryCallback: () => context
-                  .read<WallPhotosBloc>()
-                  .add(const WallPhotosEvent.wallPhotosRefreshed()),
-            ),
-          );
-        }
-      },
+    return BlocBuilder<WallPhotosBloc, WallPhotosState>(
       builder: (ctx, state) {
         switch (state.getPhotosStatus) {
           case CubitStatus.initial:
             return const SizedBox.shrink();
           case CubitStatus.failure:
-            return const SizedBox.shrink();
+            return FailureInfo(
+              retryCallback: () => context
+                  .read<WallPhotosBloc>()
+                  .add(const WallPhotosEvent.wallPhotosRefreshed()),
+              isSocketException: state.failure.fold(
+                () => false,
+                (f) => f.maybeMap(
+                  noConnection: (_) => true,
+                  orElse: () => false,
+                ),
+              ),
+            );
           case CubitStatus.loading:
             return const WaveLoadingIndicator();
           case CubitStatus.success:

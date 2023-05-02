@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:clubs/infrastructure/filters/filter/city_filter.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,6 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/club_city_picker/widgets/club_city_picker_prediction_list.dart';
 import 'package:tonight/presentation/club_city_picker/widgets/club_picker_text_field.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class ClubCityPickerPage extends StatelessWidget {
   final BuildContext blocContext;
@@ -40,16 +38,10 @@ class ClubCityPickerPage extends StatelessWidget {
             return state.when(
               initial: () => const SizedBox.shrink(),
               loadInProgress: () => const WaveLoadingIndicator(),
-              loadFailure: (_) {
-                context.pushRoute(
-                  FailureRoute(
-                    retryCallback: () => context
-                        .read<AvailableFiltersCubit>()
-                        .getAvailableFilters(),
-                  ),
-                );
-                return const SizedBox.shrink();
-              },
+              loadFailure: (_) => FailureInfo(
+                retryCallback:
+                    context.read<AvailableFiltersCubit>().getAvailableFilters,
+              ),
               loadSuccess: (filters) => BlocProvider(
                 create: (context) => getIt<ClubCityPickerBloc>()
                   ..add(

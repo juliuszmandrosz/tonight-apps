@@ -15,6 +15,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tonight/application/events/event_filters/menu_event_filter.dart';
 import 'package:tonight/application/tonight_events/aggregator/tonight_events_aggregator.dart';
+import 'package:tonight/application/tonight_events/aggregator/tonight_events_failure.dart';
 import 'package:tonight/application/tonight_events/models/tonight_event_model.dart';
 
 part 'tonight_events_bloc.freezed.dart';
@@ -63,7 +64,12 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
+      (failure) => emit(
+        state.copyWith(
+          getEventsStatus: CubitStatus.failure,
+          failure: some(failure),
+        ),
+      ),
       (events) => emit(
         state.copyWith(
           getEventsStatus: CubitStatus.success,
@@ -112,7 +118,12 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
+      (failure) => emit(
+        state.copyWith(
+          getEventsStatus: CubitStatus.failure,
+          failure: some(failure),
+        ),
+      ),
       (events) => emit(
         state.copyWith(
           getEventsStatus: CubitStatus.success,
@@ -146,7 +157,12 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
+      (failure) => emit(
+        state.copyWith(
+          getEventsStatus: CubitStatus.failure,
+          failure: some(failure),
+        ),
+      ),
       (events) => emit(
         state.copyWith(
           getEventsStatus: CubitStatus.success,
@@ -188,7 +204,12 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
     );
 
     result.fold(
-      (failure) => emit(state.copyWith(getEventsStatus: CubitStatus.failure)),
+      (failure) => emit(
+        state.copyWith(
+          getEventsStatus: CubitStatus.failure,
+          failure: some(failure),
+        ),
+      ),
       (events) => emit(
         state.copyWith(
           getEventsStatus: CubitStatus.success,
