@@ -13,7 +13,7 @@ import 'package:tonight/presentation/drawer/drawer_destination.dart';
 import 'package:tonight/presentation/drawer/tonight_drawer_destination.dart';
 import 'package:tonight/presentation/drawer/tonight_drawer_header.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class TonightDrawer extends StatefulWidget {
   const TonightDrawer({Key? key}) : super(key: key);
@@ -92,6 +92,8 @@ class _TonightDrawerState extends State<TonightDrawer> {
                     label: AutoSizeText(
                       destination.label,
                       maxLines: 1,
+                      softWrap: true,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ),

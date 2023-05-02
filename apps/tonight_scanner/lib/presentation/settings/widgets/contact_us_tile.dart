@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight_scanner/presentation/routes/app_router.dart';
 import 'package:tonight_scanner/presentation/settings/widgets/settings_tile.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class ContactUsTile extends StatelessWidget {
   const ContactUsTile({Key? key}) : super(key: key);

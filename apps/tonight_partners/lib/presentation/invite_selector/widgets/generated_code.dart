@@ -7,7 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:tonight_partners/application/invite_selector/invite_selector_cubit.dart';
 import 'package:tonight_partners/presentation/core/tonight_partners_headline.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class GeneratedCode extends StatelessWidget {
   const GeneratedCode({Key? key}) : super(key: key);

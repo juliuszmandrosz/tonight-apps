@@ -9,7 +9,7 @@ import 'package:tonight_partners/presentation/add_reward/widgets/add_reward_butt
 import 'package:tonight_partners/presentation/add_reward/widgets/reward_description_input.dart';
 import 'package:tonight_partners/presentation/add_reward/widgets/reward_required_entries_input.dart';
 import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class AddRewardPage extends StatelessWidget {
   const AddRewardPage({Key? key}) : super(key: key);

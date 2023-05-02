@@ -5,7 +5,7 @@ import 'package:tonight/application/events/event_filters/event_filters_cubit.dar
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_max_price.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_min_price.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventFiltersPrice extends StatelessWidget {
   const EventFiltersPrice({Key? key}) : super(key: key);

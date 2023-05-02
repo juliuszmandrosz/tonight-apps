@@ -7,7 +7,7 @@ import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class WallPhotoPreview extends StatefulWidget {
   final String photoPath;
@@ -57,8 +57,7 @@ class _WallPhotoPreviewState extends State<WallPhotoPreview>
     super.dispose();
   }
 
-  Widget get _photo =>
-      Image.file(
+  Widget get _photo => Image.file(
         File(widget.photoPath),
         fit: BoxFit.cover,
         filterQuality: FilterQuality.high,
@@ -92,9 +91,8 @@ class _WallPhotoPreviewState extends State<WallPhotoPreview>
                       FontAwesomeIcons.arrowsRotate,
                       size: 18,
                     ),
-                    // TODO - add translation
                     label: Text(
-                      'Ponów',
+                      S().retry,
                       style: context.titleMedium,
                     ),
                   ),
@@ -103,15 +101,14 @@ class _WallPhotoPreviewState extends State<WallPhotoPreview>
                   width: 130,
                   height: 45,
                   child: ElevatedButton.icon(
-                    onPressed: () =>
-                        context.pushRoute(
-                          AddWallPhotoRoute(
-                            photoPath: widget.photoPath,
-                            heroTag: widget.heroTag,
-                            isSelfie: widget.isSelfie,
-                            event: widget.event,
-                          ),
-                        ),
+                    onPressed: () => context.pushRoute(
+                      AddWallPhotoRoute(
+                        photoPath: widget.photoPath,
+                        heroTag: widget.heroTag,
+                        isSelfie: widget.isSelfie,
+                        event: widget.event,
+                      ),
+                    ),
                     icon: const FaIcon(
                       FontAwesomeIcons.forward,
                       size: 18,

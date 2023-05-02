@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:tonight/application/add_wall_photo/add_wall_photo_cubit.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/raver_translations.dart';
 
 class AddWallPhotoButton extends StatelessWidget {
   final Option<Event> event;
@@ -28,9 +29,8 @@ class AddWallPhotoButton extends StatelessWidget {
             : context.loaderOverlay.hide();
 
         if (state.addPhotoStatus.isSuccess()) {
-          // TODO - add translations
           // TODO - notify event room about new photo
-          context.showSnackbarMessage('Zdjęcie opublikowano pomyślnie');
+          context.showSnackbarMessage(S().photoAddedSuccessfully);
           event.fold(
               () async => await context.router.replaceAll(
                     [const WelcomeLoaderRoute()],
@@ -42,8 +42,7 @@ class AddWallPhotoButton extends StatelessWidget {
       child: FloatingActionButton.extended(
         onPressed: () => context.read<AddWallPhotoCubit>().addPhoto(),
         icon: const FaIcon(FontAwesomeIcons.solidPaperPlane),
-        // TODO - add translation
-        label: const Text('Opublikuj'),
+        label: Text(S().publish),
       ),
     );
   }

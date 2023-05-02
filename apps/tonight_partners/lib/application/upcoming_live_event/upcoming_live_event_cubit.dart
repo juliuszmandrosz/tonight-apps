@@ -14,9 +14,10 @@ import 'package:tonight_partners/application/add_event/form_inputs/event_name.da
 import 'package:tonight_partners/application/add_event/form_inputs/facebook_url.dart';
 import 'package:tonight_partners/application/core/get_event_failure_message.dart';
 import 'package:tonight_partners/application/event_notifier/event_notifier_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 part 'upcoming_live_event_cubit.freezed.dart';
+
 part 'upcoming_live_event_state.dart';
 
 class UpcomingLiveEventCubit extends Cubit<UpcomingLiveEventState> {

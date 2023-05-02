@@ -12,9 +12,10 @@ import 'package:tonight_partners/application/add_edit_ticket_pool/form_inputs/ti
 import 'package:tonight_partners/application/add_edit_ticket_pool/form_inputs/ticket_quantity.dart';
 import 'package:tonight_partners/application/add_edit_ticket_pool/form_inputs/vip_price.dart';
 import 'package:tonight_partners/application/club_info/club_info_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 part 'add_edit_ticket_pool_cubit.freezed.dart';
+
 part 'add_edit_ticket_pool_state.dart';
 
 class AddEditTicketPoolCubit extends Cubit<AddEditTicketPoolState> {

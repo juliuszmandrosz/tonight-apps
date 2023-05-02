@@ -3,7 +3,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/profile/profile_bloc.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class ProfileNoPhotosInfo extends StatelessWidget {
   const ProfileNoPhotosInfo({Key? key}) : super(key: key);
@@ -14,9 +14,8 @@ class ProfileNoPhotosInfo extends StatelessWidget {
       padding: const EdgeInsets.only(top: 16),
       child: Column(
         children: [
-          // TODO - add translations
           AutoSizeText(
-            'Tutaj pojawią się Twoje zdjęcia z imprez',
+            S().profilePhotosInfo,
             style: context.titleSmall.copyWith(
               color: context.secondaryColor,
             ),

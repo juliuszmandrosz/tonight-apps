@@ -3,7 +3,7 @@ import 'package:common/extensions/typography_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/events/event_list/events_bloc.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventSearchField extends StatelessWidget {
   const EventSearchField({Key? key}) : super(key: key);

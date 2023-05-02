@@ -36,7 +36,8 @@ dependencies:
     path: ../common
 
   translations:
-    path: ../translations
+    git:
+      url: git@github.com:juliuszmandrosz/RaverTranslations.git
 
 dev_dependencies:
   flutter_test:

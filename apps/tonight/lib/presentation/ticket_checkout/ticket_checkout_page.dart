@@ -21,7 +21,7 @@ import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_pro
 import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_summary.dart';
 import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_ticket_card.dart';
 import 'package:tonight/presentation/ticket_checkout/widgets/vip_not_enabled_info.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class TicketCheckoutPage extends StatefulWidget {
   final Event event;

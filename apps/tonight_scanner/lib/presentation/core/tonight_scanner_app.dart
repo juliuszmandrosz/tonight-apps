@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tonight_scanner/injection.dart';
 import 'package:tonight_scanner/presentation/routes/app_router.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class TonightScannerApp extends StatelessWidget {
   final _appRouter = AppRouter();

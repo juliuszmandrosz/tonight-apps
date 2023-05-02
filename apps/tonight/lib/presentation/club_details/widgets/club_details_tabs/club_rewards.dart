@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/clubs/club_rewards/club_rewards_cubit.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/rewards/reward_list_for_required_entries.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/rewards/user_attendance.dart';
+import 'package:translations/raver_translations.dart';
 
 class ClubRewards extends StatelessWidget {
   const ClubRewards({Key? key}) : super(key: key);
@@ -39,7 +40,7 @@ class ClubRewards extends StatelessWidget {
                     const SizedBox(height: 30),
                     // TODO - add translation
                     Text(
-                      'Rewards will be available soon!',
+                      S().rewardsAvailableSoon,
                       style: context.titleMedium,
                       textAlign: TextAlign.center,
                     ),

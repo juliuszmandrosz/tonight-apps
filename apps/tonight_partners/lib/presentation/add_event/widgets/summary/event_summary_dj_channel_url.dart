@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
 import 'package:tonight_partners/application/add_event/add_event_step.dart';
 import 'package:tonight_partners/presentation/add_event/widgets/summary/event_summary_list_tile.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EventSummaryDjChannelUrl extends StatelessWidget {
   const EventSummaryDjChannelUrl({Key? key}) : super(key: key);

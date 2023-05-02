@@ -6,7 +6,7 @@ import 'package:formz/formz.dart';
 import 'package:tonight_partners/application/add_event/form_inputs/dj_channel_url.dart';
 import 'package:tonight_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
 import 'package:tonight_partners/presentation/event_overview/widgets/dialogs/edit_event_alert_dialog.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class EditEventDjChannelUrlDialog extends HookWidget {
   final BuildContext blocContext;

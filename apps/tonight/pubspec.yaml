@@ -96,8 +96,6 @@ dependencies:
   image:
   geocoding:
 
-  translations:
-    path: ../../packages/translations
 
   account_settings:
     path: ../../packages/account_settings
@@ -123,6 +121,9 @@ dependencies:
   payments:
     path: ../../packages/payments
 
+  translations:
+    git:
+      url: git@github.com:juliuszmandrosz/RaverTranslations.git
 
   camerawesome:
     git:

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight_partners/presentation/routes/app_router.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class SignOutDrawerTile extends StatelessWidget {
   const SignOutDrawerTile({Key? key}) : super(key: key);

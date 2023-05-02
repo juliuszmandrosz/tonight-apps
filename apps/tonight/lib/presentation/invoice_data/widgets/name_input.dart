@@ -5,7 +5,7 @@ import 'package:formz/formz.dart';
 import 'package:tonight/application/invoice_data/form_inputs/name.dart';
 import 'package:tonight/application/invoice_data/invoice_data_cubit.dart';
 import 'package:tonight/application/invoice_data/invoice_data_type.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class NameInput extends HookWidget {
   const NameInput({Key? key}) : super(key: key);

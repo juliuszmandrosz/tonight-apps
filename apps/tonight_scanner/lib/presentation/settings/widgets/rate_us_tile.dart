@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:launch_review/launch_review.dart';
 import 'package:tonight_scanner/presentation/settings/widgets/settings_tile.dart';
-import 'package:translations/translations.dart';
+import 'package:translations/raver_translations.dart';
 
 class RateUsTile extends StatelessWidget {
   const RateUsTile({Key? key}) : super(key: key);
