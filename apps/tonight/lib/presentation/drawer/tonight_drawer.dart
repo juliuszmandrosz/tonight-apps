@@ -89,11 +89,11 @@ class _TonightDrawerState extends State<TonightDrawer> {
                 ...destinations.map(
                   (destination) => NavigationDrawerDestination(
                     icon: FaIcon(destination.icon),
-                    label: AutoSizeText(
-                      destination.label,
-                      maxLines: 1,
-                      softWrap: true,
-                      overflow: TextOverflow.ellipsis,
+                    label: Expanded(
+                      child: AutoSizeText(
+                        destination.label,
+                        maxLines: 2,
+                      ),
                     ),
                   ),
                 ),
