@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:tonight/application/tonight_events/models/event_participant_model.dart';
+import 'package:tonight/application/event_room_participants/models/event_room_participant_model.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
-class EventParticipantListTile extends StatelessWidget {
-  final EventParticipant participant;
+class EventRoomParticipantListTile extends StatelessWidget {
+  final EventRoomParticipant participant;
 
-  const EventParticipantListTile({
+  const EventRoomParticipantListTile({
     required this.participant,
     Key? key,
   }) : super(key: key);
