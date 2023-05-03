@@ -20,8 +20,7 @@ ParticipantDto _$ParticipantDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ParticipantDto {
-  @JsonKey(ignore: true)
-  String? get userId => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String? get profilePictureUrl => throw _privateConstructorUsedError;
 
@@ -37,10 +36,7 @@ abstract class $ParticipantDtoCopyWith<$Res> {
           ParticipantDto value, $Res Function(ParticipantDto) then) =
       _$ParticipantDtoCopyWithImpl<$Res, ParticipantDto>;
   @useResult
-  $Res call(
-      {@JsonKey(ignore: true) String? userId,
-      String username,
-      String? profilePictureUrl});
+  $Res call({String userId, String username, String? profilePictureUrl});
 }
 
 /// @nodoc
@@ -56,15 +52,15 @@ class _$ParticipantDtoCopyWithImpl<$Res, $Val extends ParticipantDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = freezed,
+    Object? userId = null,
     Object? username = null,
     Object? profilePictureUrl = freezed,
   }) {
     return _then(_value.copyWith(
-      userId: freezed == userId
+      userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -85,10 +81,7 @@ abstract class _$$_ParticipantDtoCopyWith<$Res>
       __$$_ParticipantDtoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(ignore: true) String? userId,
-      String username,
-      String? profilePictureUrl});
+  $Res call({String userId, String username, String? profilePictureUrl});
 }
 
 /// @nodoc
@@ -102,15 +95,15 @@ class __$$_ParticipantDtoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = freezed,
+    Object? userId = null,
     Object? username = null,
     Object? profilePictureUrl = freezed,
   }) {
     return _then(_$_ParticipantDto(
-      userId: freezed == userId
+      userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -128,17 +121,14 @@ class __$$_ParticipantDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ParticipantDto extends _ParticipantDto {
   const _$_ParticipantDto(
-      {@JsonKey(ignore: true) this.userId,
-      required this.username,
-      this.profilePictureUrl})
+      {required this.userId, required this.username, this.profilePictureUrl})
       : super._();
 
   factory _$_ParticipantDto.fromJson(Map<String, dynamic> json) =>
       _$$_ParticipantDtoFromJson(json);
 
   @override
-  @JsonKey(ignore: true)
-  final String? userId;
+  final String userId;
   @override
   final String username;
   @override
@@ -182,7 +172,7 @@ class _$_ParticipantDto extends _ParticipantDto {
 
 abstract class _ParticipantDto extends ParticipantDto {
   const factory _ParticipantDto(
-      {@JsonKey(ignore: true) final String? userId,
+      {required final String userId,
       required final String username,
       final String? profilePictureUrl}) = _$_ParticipantDto;
   const _ParticipantDto._() : super._();
@@ -191,8 +181,7 @@ abstract class _ParticipantDto extends ParticipantDto {
       _$_ParticipantDto.fromJson;
 
   @override
-  @JsonKey(ignore: true)
-  String? get userId;
+  String get userId;
   @override
   String get username;
   @override

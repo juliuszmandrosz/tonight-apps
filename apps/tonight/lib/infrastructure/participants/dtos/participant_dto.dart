@@ -11,7 +11,7 @@ class ParticipantDto with _$ParticipantDto {
 
   @JsonSerializable()
   const factory ParticipantDto({
-    @JsonKey(ignore: true) String? userId,
+    required String userId,
     required String username,
     String? profilePictureUrl,
   }) = _ParticipantDto;
@@ -35,7 +35,7 @@ class ParticipantDto with _$ParticipantDto {
 
   Participant toDomain() {
     return Participant(
-      userId: userId!,
+      userId: userId,
       username: username,
       profilePictureUrl: profilePictureUrl,
     );
