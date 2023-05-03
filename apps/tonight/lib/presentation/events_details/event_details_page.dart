@@ -68,17 +68,18 @@ class EventDetailsPage extends StatelessWidget {
 
             final eventInState = state.event.getOrCrash();
 
-            return Scaffold(
-              floatingActionButtonLocation:
-                  FloatingActionButtonLocation.endContained,
-              floatingActionButton: _checkIfBottomBarIsAvailable(eventInState)
-                  ? EventDetailsJoinButton(event: eventInState)
-                  : null,
-              bottomNavigationBar: _checkIfBottomBarIsAvailable(eventInState)
-                  ? EventDetailsBottomBar(event: eventInState)
-                  : null,
-              body: SafeArea(
-                child: LayoutBuilder(builder: (context, constraints) {
+            return SafeArea(
+              child: Scaffold(
+                backgroundColor: context.backgroundColor,
+                floatingActionButtonLocation:
+                    FloatingActionButtonLocation.endContained,
+                floatingActionButton: _checkIfBottomBarIsAvailable(eventInState)
+                    ? EventDetailsJoinButton(event: eventInState)
+                    : null,
+                bottomNavigationBar: _checkIfBottomBarIsAvailable(eventInState)
+                    ? EventDetailsBottomBar(event: eventInState)
+                    : null,
+                body: LayoutBuilder(builder: (context, constraints) {
                   final photoHeight = constraints.maxHeight * 0.420;
                   return NestedScrollView(
                     headerSliverBuilder: (context, value) {
@@ -87,7 +88,6 @@ class EventDetailsPage extends StatelessWidget {
                           automaticallyImplyLeading: false,
                           expandedHeight: photoHeight,
                           floating: true,
-                          backgroundColor: context.backgroundColor,
                           flexibleSpace: FlexibleSpaceBar(
                             collapseMode: CollapseMode.pin,
                             background: Column(
