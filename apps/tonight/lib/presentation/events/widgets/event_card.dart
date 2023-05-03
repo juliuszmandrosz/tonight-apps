@@ -127,7 +127,8 @@ class EventCard extends StatelessWidget {
                             EventConcertInfo(event: event),
                           EventDateInfo(event: event),
                           const SizedBox(height: 12),
-                          if (event.locationString.isNotNullOrEmpty)
+                          if (event.locationString.isNotNullOrEmpty &&
+                              !isFavoriteCard)
                             EventLocationInfo(event: event),
                           EventClubInfo(event: event),
                           if (!isFavoriteCard && event.locationString == null)
