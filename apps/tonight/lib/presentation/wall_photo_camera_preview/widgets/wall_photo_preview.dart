@@ -7,7 +7,7 @@ import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class WallPhotoPreview extends StatefulWidget {
   final String photoPath;

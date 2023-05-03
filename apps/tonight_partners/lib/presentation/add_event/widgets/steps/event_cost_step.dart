@@ -7,7 +7,7 @@ import 'package:tonight_partners/presentation/add_event/widgets/cost/available_d
 import 'package:tonight_partners/presentation/add_event/widgets/cost/current_fee.dart';
 import 'package:tonight_partners/presentation/add_event/widgets/cost/exclusive_event_switch.dart';
 import 'package:tonight_partners/presentation/core/tonight_info_row.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventCostStep extends StatelessWidget {
   const EventCostStep({Key? key}) : super(key: key);

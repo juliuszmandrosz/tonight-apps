@@ -7,7 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight_partners/domain/selector_management/selector_entity.dart';
 import 'package:tonight_partners/domain/selector_management/selector_management_facade.dart';
 import 'package:tonight_partners/domain/selector_management/selector_management_failure.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 part 'selector_list_cubit.freezed.dart';
 

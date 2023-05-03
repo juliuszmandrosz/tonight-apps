@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:auth/auth.dart';
 import 'package:tonight_scanner/application/sign_in/sign_in_cubit.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class SignInEmailInput extends StatelessWidget {
   const SignInEmailInput({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class SignInEmailInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SignInCubit, SignInState>(
       buildWhen: (previous, current) =>
-      previous.email != current.email || previous.status != current.status,
+          previous.email != current.email || previous.status != current.status,
       builder: (context, state) {
         return TextField(
           onChanged: (email) => context.read<SignInCubit>().emailChanged(email),

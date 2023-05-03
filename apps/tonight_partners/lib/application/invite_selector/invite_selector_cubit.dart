@@ -3,7 +3,7 @@ import 'package:common/application/application.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight_partners/domain/selector_management/selector_management_facade.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 part 'invite_selector_cubit.freezed.dart';
 

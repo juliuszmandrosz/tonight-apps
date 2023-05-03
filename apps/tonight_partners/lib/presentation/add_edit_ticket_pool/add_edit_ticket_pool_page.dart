@@ -15,7 +15,7 @@ import 'package:tonight_partners/presentation/add_edit_ticket_pool/widgets/vip_a
 import 'package:tonight_partners/presentation/add_edit_ticket_pool/widgets/vip_info.dart';
 import 'package:tonight_partners/presentation/add_edit_ticket_pool/widgets/vip_price_input.dart';
 import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class AddEditTicketPoolPage extends StatelessWidget {
   final List<TicketPool> currentTicketPools;

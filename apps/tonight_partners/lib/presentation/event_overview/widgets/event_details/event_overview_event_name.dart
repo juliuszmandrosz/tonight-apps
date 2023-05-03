@@ -5,7 +5,7 @@ import 'package:tonight_partners/application/upcoming_live_event/upcoming_live_e
 import 'package:tonight_partners/presentation/core/tonight_partners_headline.dart';
 import 'package:tonight_partners/presentation/event_overview/widgets/dialogs/edit_event_name_dialog.dart';
 import 'package:tonight_partners/presentation/event_overview/widgets/event_details/show_edit_event_dialog_button.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventOverviewEventName extends StatelessWidget {
   const EventOverviewEventName({Key? key}) : super(key: key);

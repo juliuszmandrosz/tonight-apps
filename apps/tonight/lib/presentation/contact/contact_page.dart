@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/contact/contact_mail.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class ContactPage extends StatelessWidget {
   const ContactPage({Key? key}) : super(key: key);

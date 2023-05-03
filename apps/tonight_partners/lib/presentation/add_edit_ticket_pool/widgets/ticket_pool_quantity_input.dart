@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tonight_partners/application/add_edit_ticket_pool/add_edit_ticket_pool_cubit.dart';
 import 'package:tonight_partners/application/add_edit_ticket_pool/form_inputs/ticket_quantity.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class TicketPoolQuantityInput extends HookWidget {
   const TicketPoolQuantityInput({Key? key}) : super(key: key);

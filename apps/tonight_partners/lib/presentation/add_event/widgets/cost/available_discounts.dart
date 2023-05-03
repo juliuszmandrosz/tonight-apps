@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
 import 'package:tonight_partners/domain/discounts/partner_discount_entity.dart';
 import 'package:tonight_partners/presentation/add_event/widgets/cost/discount_list_tile.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class AvailableDiscounts extends StatelessWidget {
   const AvailableDiscounts({Key? key}) : super(key: key);

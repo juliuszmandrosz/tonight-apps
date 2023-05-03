@@ -28,7 +28,7 @@ import 'package:tonight_partners/application/core/get_event_failure_message.dart
 import 'package:tonight_partners/application/event_notifier/event_notifier_cubit.dart';
 import 'package:tonight_partners/domain/discounts/discount_facade.dart';
 import 'package:tonight_partners/domain/discounts/partner_discount_entity.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 import 'package:uuid/uuid.dart';
 
 part 'add_event_cubit.freezed.dart';

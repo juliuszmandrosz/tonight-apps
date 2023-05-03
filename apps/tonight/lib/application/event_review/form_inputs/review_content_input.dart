@@ -1,5 +1,5 @@
 import 'package:formz/formz.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 enum ReviewContentError {
   long,

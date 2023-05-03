@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tonight_partners/application/add_edit_reward/add_reward_cubit.dart';
 import 'package:tonight_partners/application/add_edit_reward/form_inputs/reward_description.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class RewardDescriptionInput extends HookWidget {
   const RewardDescriptionInput({Key? key}) : super(key: key);

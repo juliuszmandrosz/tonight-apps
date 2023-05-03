@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight_partners/application/privacy_policy/privacy_policy_cubit.dart';
 import 'package:tonight_partners/injection.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class PrivacyPolicyDrawerTile extends StatelessWidget {
   const PrivacyPolicyDrawerTile({Key? key}) : super(key: key);

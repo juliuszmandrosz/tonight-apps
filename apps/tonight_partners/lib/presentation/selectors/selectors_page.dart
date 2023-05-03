@@ -6,7 +6,7 @@ import 'package:tonight_partners/application/selector_list/selector_list_cubit.d
 import 'package:tonight_partners/injection.dart';
 import 'package:tonight_partners/presentation/routes/app_router.dart';
 import 'package:tonight_partners/presentation/selectors/widgets/selector_list_tile.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class SelectorsPage extends StatelessWidget {
   const SelectorsPage({Key? key}) : super(key: key);
