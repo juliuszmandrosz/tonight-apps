@@ -1,9 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
 import 'package:common/common.dart';
+import 'package:flutter/material.dart';
 
 class ImageBackButton extends StatelessWidget {
+  final bool isTransparent;
+
   const ImageBackButton({
+    this.isTransparent = false,
     Key? key,
   }) : super(key: key);
 
@@ -16,7 +19,7 @@ class ImageBackButton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: context.surfaceColor,
+          color: isTransparent ? Colors.transparent : context.surfaceColor,
         ),
         child: const Padding(
           padding: EdgeInsets.all(10),
