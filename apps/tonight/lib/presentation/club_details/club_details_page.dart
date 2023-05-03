@@ -115,7 +115,7 @@ class _ClubDetailsPageState extends State<ClubDetailsPage>
                       ];
                     },
                     body: Padding(
-                      padding: const EdgeInsets.fromLTRB(15, 10, 15, 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: ClubDetailsTabs(
                         club: club,
                         tabController: _tabController,
