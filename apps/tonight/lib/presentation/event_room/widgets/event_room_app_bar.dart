@@ -88,6 +88,13 @@ class EventRoomAppBar extends StatelessWidget with PreferredSizeWidget {
                       maxLines: 1,
                     ),
                   ),
+                  Tab(
+                    child: Text(
+                      S().persons,
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                    ),
+                  ),
                 ],
               ),
             ),
