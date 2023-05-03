@@ -33,10 +33,7 @@ class EventParticipantsPage extends StatelessWidget {
                 return const SizedBox.shrink();
               case CubitStatus.success:
                 return Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 8,
-                  ),
+                  padding: const EdgeInsets.all(8),
                   child: state.participants.isEmpty
                       ? Center(
                           child: Text(

@@ -1,13 +1,22 @@
 import 'package:common/common.dart';
+import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
+import 'package:tonight/domain/participants/participant_entity.dart';
 import 'package:tonight/presentation/event_chat/widgets/event_chat_input.dart';
 import 'package:tonight/presentation/event_chat/widgets/message_bubble.dart';
 import 'package:translations/translations.dart';
 
 class EventChatPage extends StatelessWidget {
-  const EventChatPage({Key? key}) : super(key: key);
+  final Participant currentUser;
+  final Event event;
+
+  const EventChatPage({
+    required this.currentUser,
+    required this.event,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +28,14 @@ class EventChatPage extends StatelessWidget {
           case CubitStatus.loading:
             return const WaveLoadingIndicator();
           case CubitStatus.failure:
-            return const SizedBox.shrink();
+            return FailureInfo(
+              retryCallback: () => context.read<EventChatBloc>().add(
+                    EventChatEvent.chatInitialized(
+                      event: event,
+                      participant: currentUser,
+                    ),
+                  ),
+            );
           case CubitStatus.success:
             return Column(
               children: [
