@@ -35,13 +35,19 @@ class OnboardingPage extends StatelessWidget {
         ),
         onboardingPageView(
           context: context,
+          icon: FontAwesomeIcons.camera,
+          title: S().temporaryPhotos,
+          body: S().temporaryPhotosInfo,
+        ),
+        onboardingPageView(
+          context: context,
           icon: FontAwesomeIcons.peopleArrows,
           title: S().meetNewPeople,
           body: S().joinCommunity,
         ),
         onboardingPageView(
           context: context,
-          icon: FontAwesomeIcons.building,
+          icon: FontAwesomeIcons.solidBell,
           title: S().stayUpdated,
           body: S().addClubToFavoritesAndReceiveNotifications,
         ),
