@@ -9,7 +9,7 @@ import 'package:tonight/application/payment_method/payment_method_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/payment_method/widgets/update_payment_method_button.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class PaymentMethodPage extends StatelessWidget {
   final CustomerData customerData;

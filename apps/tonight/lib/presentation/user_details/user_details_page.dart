@@ -7,7 +7,7 @@ import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/user_details/widgets/user_details_favorite_clubs.dart';
 import 'package:tonight/presentation/user_details/widgets/user_details_stats_row.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class UserDetailsPage extends StatelessWidget {
   final String userId;

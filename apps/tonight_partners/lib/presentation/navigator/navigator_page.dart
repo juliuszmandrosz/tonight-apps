@@ -13,7 +13,7 @@ import 'package:tonight_partners/presentation/core/tonight_partners_app_bar.dart
 import 'package:tonight_partners/presentation/core/tonight_partners_fab.dart';
 import 'package:tonight_partners/presentation/drawer/tonight_partners_drawer.dart';
 import 'package:tonight_partners/presentation/routes/app_router.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class NavigatorPage extends StatefulWidget {
   const NavigatorPage({Key? key}) : super(key: key);

@@ -4,7 +4,7 @@ import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/favorites/widgets/favorite_clubs_list.dart';
 import 'package:tonight/presentation/favorites/widgets/favorite_events_list.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({Key? key}) : super(key: key);

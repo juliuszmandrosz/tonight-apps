@@ -19,7 +19,7 @@ import 'package:tonight/presentation/vip_checkout/widgets/vip_checkout_promotion
 import 'package:tonight/presentation/vip_checkout/widgets/vip_checkout_summary.dart';
 import 'package:tonight/presentation/vip_checkout/widgets/vip_checkout_ticket_card.dart';
 import 'package:tonight/presentation/vip_checkout/widgets/vip_proceed_to_pay_button.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class VipCheckoutPage extends StatelessWidget {
   final Ticket ticket;

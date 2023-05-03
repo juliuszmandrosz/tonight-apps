@@ -4,7 +4,7 @@ import 'package:common/extensions/typography_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/application/event_chat/models/chat_message_model.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventChatSystemInfo extends StatelessWidget {
   final ChatMessage message;

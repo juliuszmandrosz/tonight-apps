@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class SignOutButton extends StatelessWidget {
   const SignOutButton({Key? key}) : super(key: key);

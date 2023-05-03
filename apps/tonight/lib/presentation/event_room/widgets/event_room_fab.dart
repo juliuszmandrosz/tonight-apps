@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/event_room/bloc/event_room_bloc.dart';
 import 'package:tonight/application/event_room/bloc/event_room_tab.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class EventRoomFab extends StatelessWidget {
   const EventRoomFab({Key? key}) : super(key: key);
@@ -23,9 +24,7 @@ class EventRoomFab extends StatelessWidget {
                   final eventStartDateTime =
                       event.getOrCrash().eventStartDateTime;
                   if (eventStartDateTime.isAfter(DateTime.now())) {
-                    context.showSnackbarMessage(
-                      'Wydarzenie jeszcze się nie rozpoczęło',
-                    );
+                    context.showSnackbarMessage(S().eventNotStartedYet);
                     return;
                   }
                   context.pushRoute(

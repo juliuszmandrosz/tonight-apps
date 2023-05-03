@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight_partners/presentation/core/revenue_tile.dart';
 import 'package:tonight_partners/presentation/core/tonight_partners_headline.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventRevenue extends StatelessWidget {
   final TicketSales ticketSales;

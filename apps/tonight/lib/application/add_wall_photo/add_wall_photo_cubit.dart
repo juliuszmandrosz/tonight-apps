@@ -12,7 +12,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tonight/application/add_wall_photo/wall_photo_venue_model.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 part 'add_wall_photo_cubit.freezed.dart';
 part 'add_wall_photo_state.dart';

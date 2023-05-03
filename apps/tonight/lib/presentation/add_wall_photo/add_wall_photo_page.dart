@@ -11,7 +11,7 @@ import 'package:tonight/presentation/add_wall_photo/widgets/add_wall_photo_club_
 import 'package:tonight/presentation/add_wall_photo/widgets/add_wall_photo_event_tile.dart';
 import 'package:tonight/presentation/add_wall_photo/widgets/add_wall_photo_preview.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class AddWallPhotoPage extends StatelessWidget {
   final String photoPath;

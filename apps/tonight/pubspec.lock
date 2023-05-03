@@ -1157,10 +1157,10 @@ packages:
     dependency: "direct main"
     description:
       name: google_maps_flutter
-      sha256: "24392ef192f3b00bcd93151375676805a9933574423a5bd5509a0ead2e8a4215"
+      sha256: "0a7e0bd1dfe594bc86892d2e69062e3f80b267e378042d82e6b87a8efc798013"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.5"
+    version: "2.2.6"
   google_maps_flutter_android:
     dependency: transitive
     description:
@@ -2088,7 +2088,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "76d9b0e6fbf7810676e977bcfb38da5c9a603587"
+      resolved-ref: d40e1c6fe2a0c359b6c7083633ae062aa9df3600
       url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"

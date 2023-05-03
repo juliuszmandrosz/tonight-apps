@@ -6,7 +6,7 @@ import 'package:formz/formz.dart';
 import 'package:tonight_partners/application/add_event/form_inputs/end_date_time.dart';
 import 'package:tonight_partners/application/postpone_event/postpone_event_cubit.dart';
 import 'package:tonight_partners/presentation/utils/get_date_time_from_user.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class CurrentEndDateInput extends StatelessWidget {
   const CurrentEndDateInput({Key? key}) : super(key: key);

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight_scanner/presentation/routes/app_router.dart';
 import 'package:tonight_scanner/presentation/settings/widgets/settings_tile.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class SignOutTile extends StatelessWidget {
   const SignOutTile({Key? key}) : super(key: key);

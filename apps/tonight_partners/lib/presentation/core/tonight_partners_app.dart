@@ -6,7 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tonight_partners/application/event_notifier/event_notifier_cubit.dart';
 import 'package:tonight_partners/injection.dart';
 import 'package:tonight_partners/presentation/routes/app_router.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class TonightPartnersApp extends StatelessWidget {
   final _appRouter = AppRouter();

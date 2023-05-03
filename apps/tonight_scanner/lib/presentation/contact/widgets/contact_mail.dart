@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:common/common.dart';
 import 'package:tonight_scanner/presentation/contact/widgets/contact_details_tile.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class ContactMail extends StatelessWidget {
   const ContactMail({Key? key}) : super(key: key);

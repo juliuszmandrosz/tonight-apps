@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/add_wall_photo/add_wall_photo_cubit.dart';
 import 'package:tonight/application/add_wall_photo/wall_photo_venue_model.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class AddWallPhotoClubTile extends StatelessWidget {
   const AddWallPhotoClubTile({Key? key}) : super(key: key);
