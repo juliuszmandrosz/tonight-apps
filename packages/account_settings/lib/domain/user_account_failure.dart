@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 part 'user_account_failure.freezed.dart';
 

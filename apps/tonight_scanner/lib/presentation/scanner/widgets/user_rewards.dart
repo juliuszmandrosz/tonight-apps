@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rewards/rewards.dart';
 import 'package:tonight_scanner/presentation/core/tonight_scanner_headline.dart';
 import 'package:tonight_scanner/presentation/scanner/widgets/reward_list_tile.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class UserRewards extends StatelessWidget {
   final List<Reward> userRewards;

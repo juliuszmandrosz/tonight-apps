@@ -1,5 +1,5 @@
 import 'package:auth/auth.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 String getAuthErrorMessage(AuthFailure authFailure) {
   return authFailure.map(

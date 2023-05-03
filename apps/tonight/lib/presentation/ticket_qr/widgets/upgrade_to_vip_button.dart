@@ -6,7 +6,7 @@ import 'package:screen_brightness/screen_brightness.dart';
 import 'package:tonight/application/ticket_qr/ticket_qr_cubit.dart';
 import 'package:tonight/presentation/core/vip_info.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class UpgradeToVipButton extends StatelessWidget {
   const UpgradeToVipButton({Key? key}) : super(key: key);

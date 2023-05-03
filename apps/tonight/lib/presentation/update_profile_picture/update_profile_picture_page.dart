@@ -8,7 +8,7 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/update_profile_picture/widgets/update_profile_picture_button.dart';
 import 'package:tonight/presentation/update_profile_picture/widgets/update_profile_picture_container.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class UpdateProfilePicturePage extends StatelessWidget {
   final String currentProfilePictureUrl;

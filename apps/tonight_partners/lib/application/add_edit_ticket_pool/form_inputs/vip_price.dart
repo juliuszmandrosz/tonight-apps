@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:formz/formz.dart';
 import 'package:tonight_partners/application/add_edit_ticket_pool/add_edit_ticket_pool_cubit.dart';
 import 'package:tonight_partners/application/add_edit_ticket_pool/form_inputs/price_utils.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 enum VipPriceError { empty, tooHigh, tooLow }
 

@@ -18,7 +18,7 @@ import 'package:tonight/presentation/core/tonight_upgrade_alert.dart';
 import 'package:tonight/presentation/navigator/navigator_page.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/sign_in/widgets/tonight_logo.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class WelcomeLoaderPage extends StatefulWidget {
   const WelcomeLoaderPage({Key? key}) : super(key: key);

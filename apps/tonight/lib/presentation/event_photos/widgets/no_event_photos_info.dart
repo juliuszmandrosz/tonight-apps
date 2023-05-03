@@ -2,7 +2,7 @@ import 'package:common/extensions/typography_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/event_photos/event_photos_bloc.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class NoEventPhotosInfo extends StatelessWidget {
   const NoEventPhotosInfo({Key? key}) : super(key: key);

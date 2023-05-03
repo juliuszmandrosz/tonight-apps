@@ -8,7 +8,7 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/event_city_picker/widgets/event_city_picker_prediction_list.dart';
 import 'package:tonight/presentation/event_city_picker/widgets/event_picker_text_field.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventCityPickerPage extends StatelessWidget {
   final BuildContext blocContext;

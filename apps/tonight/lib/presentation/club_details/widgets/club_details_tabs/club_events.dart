@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/events/event_shimmer.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/events/event_tile.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class ClubEvents extends StatelessWidget {
   final String clubId;

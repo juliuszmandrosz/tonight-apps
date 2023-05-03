@@ -3,7 +3,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/domain/event_review/event_review_form_model.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class ReadOnlyRatingIndicator extends StatelessWidget {
   final EventReviewForm eventReviewForm;

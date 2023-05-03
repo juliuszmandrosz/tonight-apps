@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
 import 'package:tonight/presentation/event_chat/widgets/event_chat_input.dart';
 import 'package:tonight/presentation/event_chat/widgets/message_bubble.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventChatPage extends StatelessWidget {
   const EventChatPage({Key? key}) : super(key: key);

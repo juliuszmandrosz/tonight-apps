@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rewards/rewards.dart';
 import 'package:tonight_partners/application/add_edit_reward/form_inputs/required_entries.dart';
 import 'package:tonight_partners/application/add_edit_reward/form_inputs/reward_description.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 part 'add_reward_cubit.freezed.dart';
 

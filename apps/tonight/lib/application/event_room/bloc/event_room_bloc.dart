@@ -8,7 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/application/event_room/aggregator/event_room_aggregator.dart';
 import 'package:tonight/application/event_room/bloc/event_room_tab.dart';
 import 'package:tonight/domain/participants/participant_entity.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 part 'event_room_bloc.freezed.dart';
 

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/add_wall_photo/add_wall_photo_cubit.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class AddWallPhotoEventTile extends StatelessWidget {
   const AddWallPhotoEventTile({Key? key}) : super(key: key);
