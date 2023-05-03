@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/clubs/club_city_picker/club_city_picker_bloc.dart';
 import 'package:tonight/presentation/club_city_picker/widgets/club_city_picker_prediction_tile.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class ClubCityPickerPredictionList extends StatelessWidget {
   const ClubCityPickerPredictionList({Key? key}) : super(key: key);

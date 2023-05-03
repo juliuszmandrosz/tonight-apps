@@ -8,7 +8,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/clubs/widgets/club_favorite_button.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class ClubCard extends StatelessWidget {
   final Club _club;

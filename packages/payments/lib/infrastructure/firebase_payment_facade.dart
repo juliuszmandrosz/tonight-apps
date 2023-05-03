@@ -16,7 +16,7 @@ import 'package:payments/infrastructure/cloud_functions/payment_cloud_functions_
 import 'package:payments/infrastructure/cloud_functions/payment_cloud_functions_facade.dart';
 import 'package:payments/infrastructure/cloud_functions/responses/create_payment_sheet_response.dart';
 import 'package:payments/infrastructure/dtos/customer_data_dto.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 import 'dtos/promotion_code_dto.dart';
 
@@ -35,7 +35,8 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     required FirebaseFirestore firestore,
     required FirebaseAuth firebaseAuth,
     required FirebaseCrashlytics firebaseCrashlytics,
-  })  : _logger = logger,
+  })
+      : _logger = logger,
         _stripe = stripe,
         _paymentCloudFunctionsFacade = paymentCloudFunctionsFacade,
         _firestore = firestore,
@@ -44,12 +45,11 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
   @override
   Future<Either<UserPaymentFailure, PromotionCode>> getPromotionCode(
-    String promotionCode,
-  ) async {
+      String promotionCode,) async {
     final userDoc = _firestore.getCurrentUserDocRef(_firebaseAuth);
     try {
       final result =
-          await userDoc.promotionCodesCollection.doc(promotionCode).get();
+      await userDoc.promotionCodesCollection.doc(promotionCode).get();
 
       if (result.data() == null) {
         return left(const UserPaymentFailure.invalidPromotionCode());
@@ -87,12 +87,14 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     bool sendInvoice = false,
   }) async {
     try {
-      final userId = _firestore.getCurrentUserDocRef(_firebaseAuth).id;
+      final userId = _firestore
+          .getCurrentUserDocRef(_firebaseAuth)
+          .id;
 
       final user = _firebaseAuth.tryGetFirebaseUser();
 
       final paymentIntent =
-          await _paymentCloudFunctionsFacade.createTicketPaymentSheet(
+      await _paymentCloudFunctionsFacade.createTicketPaymentSheet(
         eventId: eventId,
         userId: userId,
         sendInvoice: sendInvoice,
@@ -158,12 +160,14 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     bool sendInvoice = false,
   }) async {
     try {
-      final userId = _firestore.getCurrentUserDocRef(_firebaseAuth).id;
+      final userId = _firestore
+          .getCurrentUserDocRef(_firebaseAuth)
+          .id;
 
       final user = _firebaseAuth.tryGetFirebaseUser();
 
       final paymentIntent =
-          await _paymentCloudFunctionsFacade.createVipPaymentSheet(
+      await _paymentCloudFunctionsFacade.createVipPaymentSheet(
         ticketId: ticketId,
         promotionCode: promotionCode,
         sendInvoice: sendInvoice,
@@ -216,10 +220,11 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
   @override
   Future<Either<UserPaymentFailure, Unit>> updatePaymentMethod(
-    TonightPaymentMethod paymentMethod,
-  ) async {
+      TonightPaymentMethod paymentMethod,) async {
     try {
-      final userId = _firebaseAuth.tryGetFirebaseUser().uid;
+      final userId = _firebaseAuth
+          .tryGetFirebaseUser()
+          .uid;
       await _firestore.stripeCustomers.doc(userId).update(
         {'paymentMethod': paymentMethod.name},
       );
@@ -274,10 +279,10 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
   Future<Either<UserPaymentFailure, CustomerData>> getCustomerData() async {
     try {
       final userDoc =
-          await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
+      await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
 
       final customerData =
-          await _firestore.stripeCustomers.doc(userDoc.id).get();
+      await _firestore.stripeCustomers.doc(userDoc.id).get();
 
       final result = CustomerDataDto.fromFirebase(customerData).toDomain();
 
@@ -321,8 +326,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
   @override
   Future<Either<UserPaymentFailure, Unit>> cancelTicketReservation(
-    String sessionId,
-  ) async {
+      String sessionId,) async {
     try {
       await _paymentCloudFunctionsFacade.cancelTicketReservation(sessionId);
       return right(unit);
@@ -472,7 +476,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
   Future<UserPaymentFailure> _handleDioError(DioError error) async {
     final failure =
-        userPaymentCloudFunctionsErrors[error.response?.data['message']];
+    userPaymentCloudFunctionsErrors[error.response?.data['message']];
 
     if (failure != null) {
       return failure;

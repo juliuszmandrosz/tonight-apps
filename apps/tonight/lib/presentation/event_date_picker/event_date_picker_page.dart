@@ -7,7 +7,7 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/event_date_picker/widgets/event_date_picker.dart';
 import 'package:tonight/presentation/event_date_picker/widgets/submit_selected_date_button.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventDatePickerPage extends StatelessWidget {
   final BuildContext blocContext;

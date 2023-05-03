@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:payments/application/core/tonight_payment_method.dart';
 import 'package:payments/domain/domain.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 part 'payment_method_cubit.freezed.dart';
 

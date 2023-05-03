@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/clubs/club_details/club_photos/club_photos_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/photos/club_photo.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class ClubPhotos extends StatefulWidget {
   const ClubPhotos({

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:tonight/presentation/clubs/widgets/club_card.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class FavoriteClubsList extends StatelessWidget {
   static const heroPhrase = 'favoriteClubsHero';

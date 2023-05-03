@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ticket_widget/ticket_widget.dart';
 import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class TicketCheckoutTicketCard extends StatelessWidget {
   const TicketCheckoutTicketCard({Key? key}) : super(key: key);

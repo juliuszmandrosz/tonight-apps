@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/clubs/widgets/club_card.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class UserDetailsFavoriteClubs extends StatelessWidget {
   final List<Club> favoriteClubs;

@@ -10,7 +10,7 @@ import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class TonightApp extends StatelessWidget {
   final _appRouter = AppRouter();

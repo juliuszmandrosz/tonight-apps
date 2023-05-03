@@ -5,7 +5,7 @@ import 'package:common/common.dart';
 import 'package:tonight_scanner/application/privacy_policy/privacy_policy_cubit.dart';
 import 'package:tonight_scanner/injection.dart';
 import 'package:tonight_scanner/presentation/settings/widgets/settings_tile.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class PrivacyPolicyTile extends StatelessWidget {
   const PrivacyPolicyTile({Key? key}) : super(key: key);

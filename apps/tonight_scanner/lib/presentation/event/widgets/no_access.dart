@@ -4,7 +4,7 @@ import 'package:tonight_scanner/application/current_event/current_event_cubit.da
 import 'package:tonight_scanner/application/selector_club/selector_club_cubit.dart';
 import 'package:tonight_scanner/presentation/core/tonight_scanner_headline.dart';
 import 'package:tonight_scanner/presentation/event/widgets/enter_access_code_dialog.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class NoAccess extends StatelessWidget {
   const NoAccess({Key? key}) : super(key: key);

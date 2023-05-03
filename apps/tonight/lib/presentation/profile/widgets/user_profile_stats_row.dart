@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/domain/user_profile/user_profile_model.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class UserProfileStatsRow extends StatelessWidget {
   final UserProfile userProfile;

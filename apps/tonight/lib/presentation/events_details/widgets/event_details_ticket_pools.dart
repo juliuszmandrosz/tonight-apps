@@ -6,7 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/events_details/widgets/ticket_pool_list_tile.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventDetailsTicketPools extends StatelessWidget {
   final Event event;

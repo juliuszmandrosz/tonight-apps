@@ -17,7 +17,7 @@ import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/ticket_qr/widgets/ticket_return_button.dart';
 import 'package:tonight/presentation/ticket_qr/widgets/upgrade_to_vip_button.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class TicketQrPage extends StatefulWidget {
   final Ticket ticket;

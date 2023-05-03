@@ -5,7 +5,7 @@ import 'package:tonight/application/event_participants/event_participants_bloc.d
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/event_participants/widgets/event_participant_list_tile.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventParticipantsPage extends StatelessWidget {
   final String eventId;
