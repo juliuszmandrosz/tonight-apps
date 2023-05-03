@@ -7,11 +7,13 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
 import 'package:tonight/application/event_photos/event_photos_bloc.dart';
 import 'package:tonight/application/event_room/bloc/event_room_bloc.dart';
+import 'package:tonight/application/event_room_participants/event_room_participants_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/event_chat/event_chat_page.dart';
 import 'package:tonight/presentation/event_photos/event_photos_page.dart';
 import 'package:tonight/presentation/event_room/widgets/event_room_app_bar.dart';
 import 'package:tonight/presentation/event_room/widgets/event_room_fab.dart';
+import 'package:tonight/presentation/event_room_participants/event_room_participants_page.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class EventRoomPage extends StatelessWidget {
@@ -36,6 +38,10 @@ class EventRoomPage extends StatelessWidget {
             BlocProvider(
               create: (context) => getIt<EventPhotosBloc>()
                 ..add(EventPhotosEvent.photosFetched(event)),
+            ),
+            BlocProvider(
+              create: (context) => getIt<EventRoomParticipantsBloc>()
+                ..add(EventRoomParticipantsEvent.participantsFetched(event.id)),
             ),
           ],
           child: BlocConsumer<EventRoomBloc, EventRoomState>(
@@ -71,21 +77,29 @@ class EventRoomPage extends StatelessWidget {
                 case CubitStatus.loading:
                   return const WaveLoadingIndicator();
                 case CubitStatus.failure:
-                  return const SizedBox.shrink();
+                  return FailureInfo(
+                    retryCallback: () => context
+                        .read<EventRoomBloc>()
+                        .add(EventRoomEvent.joinedToEvent(event)),
+                  );
                 case CubitStatus.success:
                   return DefaultTabController(
-                    length: 2,
+                    length: 3,
                     child: Scaffold(
                       appBar: EventRoomAppBar(
                         event: event,
                         isKeyboardOpen: context.isKeyboardOpen,
                       ),
                       floatingActionButton: const EventRoomFab(),
-                      body: const TabBarView(
-                        physics: NeverScrollableScrollPhysics(),
+                      body: TabBarView(
+                        physics: const NeverScrollableScrollPhysics(),
                         children: [
-                          EventChatPage(),
-                          EventPhotosPage(),
+                          EventChatPage(
+                            event: event,
+                            currentUser: state.participant.getOrCrash(),
+                          ),
+                          const EventPhotosPage(),
+                          const EventRoomParticipantsPage(),
                         ],
                       ),
                     ),
