@@ -8,7 +8,7 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/update_username/widgets/submit_username_button.dart';
 import 'package:tonight/presentation/update_username/widgets/update_username_input.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class UpdateUsernamePage extends StatelessWidget {
   final String currentUsername;

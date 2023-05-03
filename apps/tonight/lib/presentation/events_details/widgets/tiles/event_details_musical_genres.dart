@@ -3,7 +3,7 @@ import 'package:common/common.dart';
 import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/events_details/utils/event_details_formatters.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventDetailsMusicalGenres extends StatelessWidget {
   final Event event;

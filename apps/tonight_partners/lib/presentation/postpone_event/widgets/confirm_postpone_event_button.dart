@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tonight_partners/application/postpone_event/postpone_event_cubit.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class ConfirmEventPostponeButton extends StatelessWidget {
   const ConfirmEventPostponeButton({Key? key}) : super(key: key);

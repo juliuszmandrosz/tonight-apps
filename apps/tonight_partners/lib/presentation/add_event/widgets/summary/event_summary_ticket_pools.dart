@@ -4,7 +4,7 @@ import 'package:tonight_partners/application/add_event/add_event_cubit.dart';
 import 'package:tonight_partners/application/add_event/add_event_step.dart';
 import 'package:tonight_partners/presentation/add_event/widgets/summary/event_summary_list_tile.dart';
 import 'package:tonight_partners/presentation/add_event/widgets/summary/event_summary_ticket_pool_list.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventSummaryTicketPools extends StatelessWidget {
   const EventSummaryTicketPools({Key? key}) : super(key: key);

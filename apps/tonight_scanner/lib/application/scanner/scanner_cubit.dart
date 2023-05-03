@@ -8,7 +8,7 @@ import 'package:rewards/rewards.dart';
 import 'package:tickets/tickets.dart';
 import 'package:tonight_scanner/application/current_event/current_event_cubit.dart';
 import 'package:tonight_scanner/application/selector_club/selector_club_cubit.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 part 'scanner_cubit.freezed.dart';
 

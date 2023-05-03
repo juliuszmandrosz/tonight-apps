@@ -4,7 +4,7 @@ import 'package:events/events.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/application/events/event_filters/menu_event_filter.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 part 'event_filters_cubit.freezed.dart';
 

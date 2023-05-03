@@ -2,7 +2,7 @@ import 'package:common/extensions/typography_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class NoTonightEventsInfo extends StatelessWidget {
   const NoTonightEventsInfo({Key? key}) : super(key: key);

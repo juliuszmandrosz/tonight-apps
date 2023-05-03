@@ -3,7 +3,7 @@ import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/commons/icons/social_icon_with_title.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventDetailsAdditionalInfo extends StatelessWidget {
   final Event event;

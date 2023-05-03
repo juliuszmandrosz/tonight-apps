@@ -3,7 +3,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight_partners/application/invite_selector/invite_selector_cubit.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class GenerateAccessCodeButton extends StatelessWidget {
   const GenerateAccessCodeButton({Key? key}) : super(key: key);
@@ -15,17 +15,18 @@ class GenerateAccessCodeButton extends StatelessWidget {
         return state.status.isLoading()
             ? const TicketLogoAnimation()
             : ElevatedButton(
-                onPressed: () => context
-                    .read<InviteSelectorCubit>()
-                    .createInvitationCodeForSelector(),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: AutoSizeText(
-                    S().generateAccessCode,
-                    maxLines: 1,
-                  ),
-                ),
-              );
+          onPressed: () =>
+              context
+                  .read<InviteSelectorCubit>()
+                  .createInvitationCodeForSelector(),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: AutoSizeText(
+              S().generateAccessCode,
+              maxLines: 1,
+            ),
+          ),
+        );
       },
     );
   }

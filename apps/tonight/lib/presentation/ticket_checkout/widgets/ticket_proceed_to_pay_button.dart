@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class TicketProceedToPayButton extends StatelessWidget {
   const TicketProceedToPayButton({Key? key}) : super(key: key);

@@ -8,7 +8,7 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/select_club/widgets/select_club_list.dart';
 import 'package:tonight/presentation/select_club/widgets/select_club_search_field.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class SelectClubPage extends StatelessWidget {
   const SelectClubPage({

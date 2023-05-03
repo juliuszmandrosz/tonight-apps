@@ -3,7 +3,7 @@ import 'package:common/common.dart';
 import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventDetailsEndDateTime extends StatelessWidget {
   final Event event;

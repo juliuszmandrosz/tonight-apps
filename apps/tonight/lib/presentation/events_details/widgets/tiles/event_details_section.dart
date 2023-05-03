@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:tonight/presentation/events_details/utils/event_details_formatters.dart';
 import 'package:tonight/presentation/events_details/widgets/tiles/event_detail_tile.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventDetailsSection extends StatelessWidget {
   final Event event;

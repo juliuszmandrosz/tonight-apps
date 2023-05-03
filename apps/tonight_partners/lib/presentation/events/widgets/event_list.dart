@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight_partners/presentation/events/widgets/event_list_tile.dart';
 import 'package:tonight_partners/presentation/routes/app_router.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventList extends StatefulWidget {
   const EventList({Key? key}) : super(key: key);

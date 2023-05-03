@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
-import 'package:translations/raver_translations.dart';
+import 'package:translations/translations.dart';
 
 class EventFiltersMaxPrice extends HookWidget {
   const EventFiltersMaxPrice({Key? key}) : super(key: key);
