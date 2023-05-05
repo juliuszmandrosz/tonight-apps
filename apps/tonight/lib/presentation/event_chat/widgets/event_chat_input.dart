@@ -55,6 +55,11 @@ class EventChatInput extends HookWidget {
               if (state.inputMessage.isNotEmpty)
                 IconButton(
                   onPressed: () {
+                    if (state.inputMessage.trim().isEmpty) {
+                      context.showSnackbarMessage(S().messageCannotBeEmpty);
+                      return;
+                    }
+
                     if (state.inputMessage.length > 1000) {
                       context.showSnackbarMessage(S().messageTooLong);
                       return;
