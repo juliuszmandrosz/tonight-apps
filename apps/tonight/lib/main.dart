@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:isolate';
 
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -26,6 +27,10 @@ Future<void> main() async {
 
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
+      );
+
+      await FirebaseAppCheck.instance.activate(
+        webRecaptchaSiteKey: 'recaptcha-v3-site-key',
       );
 
       FirebaseMessaging.onBackgroundMessage(_onBackgroundMessageHandler);

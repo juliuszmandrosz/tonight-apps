@@ -7,5 +7,7 @@ class AppUser with _$AppUser {
   const factory AppUser({
     required String id,
     required String providerId,
+    required bool isOnboardingCompleted,
+    required bool isPhoneNumberVerified,
   }) = _AppUser;
 }

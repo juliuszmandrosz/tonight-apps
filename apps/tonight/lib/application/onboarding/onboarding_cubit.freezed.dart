@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$OnboardingState {
   Username get username => throw _privateConstructorUsedError;
-  FormzStatus get status => throw _privateConstructorUsedError;
+  FormzStatus get submissionStatus => throw _privateConstructorUsedError;
   Option<String> get errorMessage => throw _privateConstructorUsedError;
   Option<Uint8List> get userPhoto => throw _privateConstructorUsedError;
 
@@ -34,7 +34,7 @@ abstract class $OnboardingStateCopyWith<$Res> {
   @useResult
   $Res call(
       {Username username,
-      FormzStatus status,
+      FormzStatus submissionStatus,
       Option<String> errorMessage,
       Option<Uint8List> userPhoto});
 }
@@ -53,7 +53,7 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
   @override
   $Res call({
     Object? username = null,
-    Object? status = null,
+    Object? submissionStatus = null,
     Object? errorMessage = null,
     Object? userPhoto = null,
   }) {
@@ -62,9 +62,9 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as Username,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      submissionStatus: null == submissionStatus
+          ? _value.submissionStatus
+          : submissionStatus // ignore: cast_nullable_to_non_nullable
               as FormzStatus,
       errorMessage: null == errorMessage
           ? _value.errorMessage
@@ -88,7 +88,7 @@ abstract class _$$_OnboardingStateCopyWith<$Res>
   @useResult
   $Res call(
       {Username username,
-      FormzStatus status,
+      FormzStatus submissionStatus,
       Option<String> errorMessage,
       Option<Uint8List> userPhoto});
 }
@@ -105,7 +105,7 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? username = null,
-    Object? status = null,
+    Object? submissionStatus = null,
     Object? errorMessage = null,
     Object? userPhoto = null,
   }) {
@@ -114,9 +114,9 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as Username,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      submissionStatus: null == submissionStatus
+          ? _value.submissionStatus
+          : submissionStatus // ignore: cast_nullable_to_non_nullable
               as FormzStatus,
       errorMessage: null == errorMessage
           ? _value.errorMessage
@@ -135,14 +135,14 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
 class _$_OnboardingState implements _OnboardingState {
   const _$_OnboardingState(
       {required this.username,
-      required this.status,
+      required this.submissionStatus,
       required this.errorMessage,
       required this.userPhoto});
 
   @override
   final Username username;
   @override
-  final FormzStatus status;
+  final FormzStatus submissionStatus;
   @override
   final Option<String> errorMessage;
   @override
@@ -150,7 +150,7 @@ class _$_OnboardingState implements _OnboardingState {
 
   @override
   String toString() {
-    return 'OnboardingState(username: $username, status: $status, errorMessage: $errorMessage, userPhoto: $userPhoto)';
+    return 'OnboardingState(username: $username, submissionStatus: $submissionStatus, errorMessage: $errorMessage, userPhoto: $userPhoto)';
   }
 
   @override
@@ -160,7 +160,8 @@ class _$_OnboardingState implements _OnboardingState {
             other is _$_OnboardingState &&
             (identical(other.username, username) ||
                 other.username == username) &&
-            (identical(other.status, status) || other.status == status) &&
+            (identical(other.submissionStatus, submissionStatus) ||
+                other.submissionStatus == submissionStatus) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.userPhoto, userPhoto) ||
@@ -168,8 +169,8 @@ class _$_OnboardingState implements _OnboardingState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, username, status, errorMessage, userPhoto);
+  int get hashCode => Object.hash(
+      runtimeType, username, submissionStatus, errorMessage, userPhoto);
 
   @JsonKey(ignore: true)
   @override
@@ -181,14 +182,14 @@ class _$_OnboardingState implements _OnboardingState {
 abstract class _OnboardingState implements OnboardingState {
   const factory _OnboardingState(
       {required final Username username,
-      required final FormzStatus status,
+      required final FormzStatus submissionStatus,
       required final Option<String> errorMessage,
       required final Option<Uint8List> userPhoto}) = _$_OnboardingState;
 
   @override
   Username get username;
   @override
-  FormzStatus get status;
+  FormzStatus get submissionStatus;
   @override
   Option<String> get errorMessage;
   @override

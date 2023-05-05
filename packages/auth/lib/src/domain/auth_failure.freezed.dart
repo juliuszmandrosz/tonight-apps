@@ -35,6 +35,11 @@ mixin _$AuthFailure {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +61,11 @@ mixin _$AuthFailure {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +87,11 @@ mixin _$AuthFailure {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -101,6 +116,11 @@ mixin _$AuthFailure {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -122,6 +142,11 @@ mixin _$AuthFailure {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -143,6 +168,11 @@ mixin _$AuthFailure {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -185,7 +215,7 @@ class __$$_UnexpectedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Unexpected implements _Unexpected {
-  _$_Unexpected();
+  const _$_Unexpected();
 
   @override
   String toString() {
@@ -221,6 +251,11 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return unexpected();
   }
@@ -245,6 +280,11 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return unexpected?.call();
   }
@@ -269,6 +309,11 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -299,6 +344,11 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return unexpected(this);
   }
@@ -323,6 +373,11 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return unexpected?.call(this);
   }
@@ -347,6 +402,11 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -357,7 +417,7 @@ class _$_Unexpected implements _Unexpected {
 }
 
 abstract class _Unexpected implements AuthFailure {
-  factory _Unexpected() = _$_Unexpected;
+  const factory _Unexpected() = _$_Unexpected;
 }
 
 /// @nodoc
@@ -415,6 +475,11 @@ class _$_OperationNotAllowed implements _OperationNotAllowed {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return operationNotAllowed();
   }
@@ -439,6 +504,11 @@ class _$_OperationNotAllowed implements _OperationNotAllowed {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return operationNotAllowed?.call();
   }
@@ -463,6 +533,11 @@ class _$_OperationNotAllowed implements _OperationNotAllowed {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (operationNotAllowed != null) {
@@ -493,6 +568,11 @@ class _$_OperationNotAllowed implements _OperationNotAllowed {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return operationNotAllowed(this);
   }
@@ -517,6 +597,11 @@ class _$_OperationNotAllowed implements _OperationNotAllowed {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return operationNotAllowed?.call(this);
   }
@@ -541,6 +626,11 @@ class _$_OperationNotAllowed implements _OperationNotAllowed {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (operationNotAllowed != null) {
@@ -609,6 +699,11 @@ class _$_AccountExists implements _AccountExists {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return accountExists();
   }
@@ -633,6 +728,11 @@ class _$_AccountExists implements _AccountExists {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return accountExists?.call();
   }
@@ -657,6 +757,11 @@ class _$_AccountExists implements _AccountExists {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (accountExists != null) {
@@ -687,6 +792,11 @@ class _$_AccountExists implements _AccountExists {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return accountExists(this);
   }
@@ -711,6 +821,11 @@ class _$_AccountExists implements _AccountExists {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return accountExists?.call(this);
   }
@@ -735,6 +850,11 @@ class _$_AccountExists implements _AccountExists {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (accountExists != null) {
@@ -803,6 +923,11 @@ class _$_InvalidCredential implements _InvalidCredential {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return invalidCredential();
   }
@@ -827,6 +952,11 @@ class _$_InvalidCredential implements _InvalidCredential {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return invalidCredential?.call();
   }
@@ -851,6 +981,11 @@ class _$_InvalidCredential implements _InvalidCredential {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (invalidCredential != null) {
@@ -881,6 +1016,11 @@ class _$_InvalidCredential implements _InvalidCredential {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return invalidCredential(this);
   }
@@ -905,6 +1045,11 @@ class _$_InvalidCredential implements _InvalidCredential {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return invalidCredential?.call(this);
   }
@@ -929,6 +1074,11 @@ class _$_InvalidCredential implements _InvalidCredential {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (invalidCredential != null) {
@@ -997,6 +1147,11 @@ class _$_InvalidEmail implements _InvalidEmail {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return invalidEmail();
   }
@@ -1021,6 +1176,11 @@ class _$_InvalidEmail implements _InvalidEmail {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return invalidEmail?.call();
   }
@@ -1045,6 +1205,11 @@ class _$_InvalidEmail implements _InvalidEmail {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -1075,6 +1240,11 @@ class _$_InvalidEmail implements _InvalidEmail {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return invalidEmail(this);
   }
@@ -1099,6 +1269,11 @@ class _$_InvalidEmail implements _InvalidEmail {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return invalidEmail?.call(this);
   }
@@ -1123,6 +1298,11 @@ class _$_InvalidEmail implements _InvalidEmail {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -1191,6 +1371,11 @@ class _$_UserDisabled implements _UserDisabled {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return userDisabled();
   }
@@ -1215,6 +1400,11 @@ class _$_UserDisabled implements _UserDisabled {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return userDisabled?.call();
   }
@@ -1239,6 +1429,11 @@ class _$_UserDisabled implements _UserDisabled {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
@@ -1269,6 +1464,11 @@ class _$_UserDisabled implements _UserDisabled {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return userDisabled(this);
   }
@@ -1293,6 +1493,11 @@ class _$_UserDisabled implements _UserDisabled {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return userDisabled?.call(this);
   }
@@ -1317,6 +1522,11 @@ class _$_UserDisabled implements _UserDisabled {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (userDisabled != null) {
@@ -1385,6 +1595,11 @@ class _$_EmailInUse implements _EmailInUse {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return emailInUse();
   }
@@ -1409,6 +1624,11 @@ class _$_EmailInUse implements _EmailInUse {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return emailInUse?.call();
   }
@@ -1433,6 +1653,11 @@ class _$_EmailInUse implements _EmailInUse {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (emailInUse != null) {
@@ -1463,6 +1688,11 @@ class _$_EmailInUse implements _EmailInUse {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return emailInUse(this);
   }
@@ -1487,6 +1717,11 @@ class _$_EmailInUse implements _EmailInUse {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return emailInUse?.call(this);
   }
@@ -1511,6 +1746,11 @@ class _$_EmailInUse implements _EmailInUse {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (emailInUse != null) {
@@ -1579,6 +1819,11 @@ class _$_WeakPassword implements _WeakPassword {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return weakPassword();
   }
@@ -1603,6 +1848,11 @@ class _$_WeakPassword implements _WeakPassword {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return weakPassword?.call();
   }
@@ -1627,6 +1877,11 @@ class _$_WeakPassword implements _WeakPassword {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (weakPassword != null) {
@@ -1657,6 +1912,11 @@ class _$_WeakPassword implements _WeakPassword {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return weakPassword(this);
   }
@@ -1681,6 +1941,11 @@ class _$_WeakPassword implements _WeakPassword {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return weakPassword?.call(this);
   }
@@ -1705,6 +1970,11 @@ class _$_WeakPassword implements _WeakPassword {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (weakPassword != null) {
@@ -1773,6 +2043,11 @@ class _$_UserNotFound implements _UserNotFound {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return userNotFound();
   }
@@ -1797,6 +2072,11 @@ class _$_UserNotFound implements _UserNotFound {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return userNotFound?.call();
   }
@@ -1821,6 +2101,11 @@ class _$_UserNotFound implements _UserNotFound {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (userNotFound != null) {
@@ -1851,6 +2136,11 @@ class _$_UserNotFound implements _UserNotFound {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return userNotFound(this);
   }
@@ -1875,6 +2165,11 @@ class _$_UserNotFound implements _UserNotFound {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return userNotFound?.call(this);
   }
@@ -1899,6 +2194,11 @@ class _$_UserNotFound implements _UserNotFound {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (userNotFound != null) {
@@ -1967,6 +2267,11 @@ class _$_WrongPassword implements _WrongPassword {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return wrongPassword();
   }
@@ -1991,6 +2296,11 @@ class _$_WrongPassword implements _WrongPassword {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return wrongPassword?.call();
   }
@@ -2015,6 +2325,11 @@ class _$_WrongPassword implements _WrongPassword {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (wrongPassword != null) {
@@ -2045,6 +2360,11 @@ class _$_WrongPassword implements _WrongPassword {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return wrongPassword(this);
   }
@@ -2069,6 +2389,11 @@ class _$_WrongPassword implements _WrongPassword {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return wrongPassword?.call(this);
   }
@@ -2093,6 +2418,11 @@ class _$_WrongPassword implements _WrongPassword {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (wrongPassword != null) {
@@ -2162,6 +2492,11 @@ class _$_InvalidVerificationCode implements _InvalidVerificationCode {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return invalidVerificationCode();
   }
@@ -2186,6 +2521,11 @@ class _$_InvalidVerificationCode implements _InvalidVerificationCode {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return invalidVerificationCode?.call();
   }
@@ -2210,6 +2550,11 @@ class _$_InvalidVerificationCode implements _InvalidVerificationCode {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (invalidVerificationCode != null) {
@@ -2240,6 +2585,11 @@ class _$_InvalidVerificationCode implements _InvalidVerificationCode {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return invalidVerificationCode(this);
   }
@@ -2264,6 +2614,11 @@ class _$_InvalidVerificationCode implements _InvalidVerificationCode {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return invalidVerificationCode?.call(this);
   }
@@ -2288,6 +2643,11 @@ class _$_InvalidVerificationCode implements _InvalidVerificationCode {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (invalidVerificationCode != null) {
@@ -2356,6 +2716,11 @@ class _$_InvalidVerificationId implements _InvalidVerificationId {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return invalidVerificationId();
   }
@@ -2380,6 +2745,11 @@ class _$_InvalidVerificationId implements _InvalidVerificationId {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return invalidVerificationId?.call();
   }
@@ -2404,6 +2774,11 @@ class _$_InvalidVerificationId implements _InvalidVerificationId {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (invalidVerificationId != null) {
@@ -2434,6 +2809,11 @@ class _$_InvalidVerificationId implements _InvalidVerificationId {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return invalidVerificationId(this);
   }
@@ -2458,6 +2838,11 @@ class _$_InvalidVerificationId implements _InvalidVerificationId {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return invalidVerificationId?.call(this);
   }
@@ -2482,6 +2867,11 @@ class _$_InvalidVerificationId implements _InvalidVerificationId {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (invalidVerificationId != null) {
@@ -2550,6 +2940,11 @@ class _$_UsernameExists implements _UsernameExists {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return usernameExists();
   }
@@ -2574,6 +2969,11 @@ class _$_UsernameExists implements _UsernameExists {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return usernameExists?.call();
   }
@@ -2598,6 +2998,11 @@ class _$_UsernameExists implements _UsernameExists {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (usernameExists != null) {
@@ -2628,6 +3033,11 @@ class _$_UsernameExists implements _UsernameExists {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return usernameExists(this);
   }
@@ -2652,6 +3062,11 @@ class _$_UsernameExists implements _UsernameExists {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return usernameExists?.call(this);
   }
@@ -2676,6 +3091,11 @@ class _$_UsernameExists implements _UsernameExists {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (usernameExists != null) {
@@ -2744,6 +3164,11 @@ class _$_CanceledByUser implements _CanceledByUser {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return canceledByUser();
   }
@@ -2768,6 +3193,11 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return canceledByUser?.call();
   }
@@ -2792,6 +3222,11 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (canceledByUser != null) {
@@ -2822,6 +3257,11 @@ class _$_CanceledByUser implements _CanceledByUser {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return canceledByUser(this);
   }
@@ -2846,6 +3286,11 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return canceledByUser?.call(this);
   }
@@ -2870,6 +3315,11 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (canceledByUser != null) {
@@ -2938,6 +3388,11 @@ class _$_InvalidAccessCode implements _InvalidAccessCode {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return invalidAccessCode();
   }
@@ -2962,6 +3417,11 @@ class _$_InvalidAccessCode implements _InvalidAccessCode {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return invalidAccessCode?.call();
   }
@@ -2986,6 +3446,11 @@ class _$_InvalidAccessCode implements _InvalidAccessCode {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (invalidAccessCode != null) {
@@ -3016,6 +3481,11 @@ class _$_InvalidAccessCode implements _InvalidAccessCode {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return invalidAccessCode(this);
   }
@@ -3040,6 +3510,11 @@ class _$_InvalidAccessCode implements _InvalidAccessCode {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return invalidAccessCode?.call(this);
   }
@@ -3064,6 +3539,11 @@ class _$_InvalidAccessCode implements _InvalidAccessCode {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (invalidAccessCode != null) {
@@ -3132,6 +3612,11 @@ class _$_InvalidLink implements _InvalidLink {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return invalidLink();
   }
@@ -3156,6 +3641,11 @@ class _$_InvalidLink implements _InvalidLink {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return invalidLink?.call();
   }
@@ -3180,6 +3670,11 @@ class _$_InvalidLink implements _InvalidLink {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (invalidLink != null) {
@@ -3210,6 +3705,11 @@ class _$_InvalidLink implements _InvalidLink {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return invalidLink(this);
   }
@@ -3234,6 +3734,11 @@ class _$_InvalidLink implements _InvalidLink {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return invalidLink?.call(this);
   }
@@ -3258,6 +3763,11 @@ class _$_InvalidLink implements _InvalidLink {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (invalidLink != null) {
@@ -3326,6 +3836,11 @@ class _$_Unavailable implements _Unavailable {
     required TResult Function() invalidAccessCode,
     required TResult Function() invalidLink,
     required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
   }) {
     return unavailable();
   }
@@ -3350,6 +3865,11 @@ class _$_Unavailable implements _Unavailable {
     TResult? Function()? invalidAccessCode,
     TResult? Function()? invalidLink,
     TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
   }) {
     return unavailable?.call();
   }
@@ -3374,6 +3894,11 @@ class _$_Unavailable implements _Unavailable {
     TResult Function()? invalidAccessCode,
     TResult Function()? invalidLink,
     TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (unavailable != null) {
@@ -3404,6 +3929,11 @@ class _$_Unavailable implements _Unavailable {
     required TResult Function(_InvalidAccessCode value) invalidAccessCode,
     required TResult Function(_InvalidLink value) invalidLink,
     required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
   }) {
     return unavailable(this);
   }
@@ -3428,6 +3958,11 @@ class _$_Unavailable implements _Unavailable {
     TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult? Function(_InvalidLink value)? invalidLink,
     TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
   }) {
     return unavailable?.call(this);
   }
@@ -3452,6 +3987,11 @@ class _$_Unavailable implements _Unavailable {
     TResult Function(_InvalidAccessCode value)? invalidAccessCode,
     TResult Function(_InvalidLink value)? invalidLink,
     TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
     required TResult orElse(),
   }) {
     if (unavailable != null) {
@@ -3463,4 +4003,1124 @@ class _$_Unavailable implements _Unavailable {
 
 abstract class _Unavailable implements AuthFailure {
   const factory _Unavailable() = _$_Unavailable;
+}
+
+/// @nodoc
+abstract class _$$_InvalidPhoneNumberCopyWith<$Res> {
+  factory _$$_InvalidPhoneNumberCopyWith(_$_InvalidPhoneNumber value,
+          $Res Function(_$_InvalidPhoneNumber) then) =
+      __$$_InvalidPhoneNumberCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_InvalidPhoneNumberCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_InvalidPhoneNumber>
+    implements _$$_InvalidPhoneNumberCopyWith<$Res> {
+  __$$_InvalidPhoneNumberCopyWithImpl(
+      _$_InvalidPhoneNumber _value, $Res Function(_$_InvalidPhoneNumber) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_InvalidPhoneNumber implements _InvalidPhoneNumber {
+  const _$_InvalidPhoneNumber();
+
+  @override
+  String toString() {
+    return 'AuthFailure.invalidPhoneNumber()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_InvalidPhoneNumber);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() operationNotAllowed,
+    required TResult Function() accountExists,
+    required TResult Function() invalidCredential,
+    required TResult Function() invalidEmail,
+    required TResult Function() userDisabled,
+    required TResult Function() emailInUse,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidVerificationCode,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() usernameExists,
+    required TResult Function() canceledByUser,
+    required TResult Function() invalidAccessCode,
+    required TResult Function() invalidLink,
+    required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
+  }) {
+    return invalidPhoneNumber();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
+  }) {
+    return invalidPhoneNumber?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? operationNotAllowed,
+    TResult Function()? accountExists,
+    TResult Function()? invalidCredential,
+    TResult Function()? invalidEmail,
+    TResult Function()? userDisabled,
+    TResult Function()? emailInUse,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidVerificationCode,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? usernameExists,
+    TResult Function()? canceledByUser,
+    TResult Function()? invalidAccessCode,
+    TResult Function()? invalidLink,
+    TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
+    required TResult orElse(),
+  }) {
+    if (invalidPhoneNumber != null) {
+      return invalidPhoneNumber();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(_AccountExists value) accountExists,
+    required TResult Function(_InvalidCredential value) invalidCredential,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_EmailInUse value) emailInUse,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidVerificationCode value)
+        invalidVerificationCode,
+    required TResult Function(_InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(_UsernameExists value) usernameExists,
+    required TResult Function(_CanceledByUser value) canceledByUser,
+    required TResult Function(_InvalidAccessCode value) invalidAccessCode,
+    required TResult Function(_InvalidLink value) invalidLink,
+    required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
+  }) {
+    return invalidPhoneNumber(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
+  }) {
+    return invalidPhoneNumber?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(_AccountExists value)? accountExists,
+    TResult Function(_InvalidCredential value)? invalidCredential,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_EmailInUse value)? emailInUse,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(_UsernameExists value)? usernameExists,
+    TResult Function(_CanceledByUser value)? canceledByUser,
+    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult Function(_InvalidLink value)? invalidLink,
+    TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
+    required TResult orElse(),
+  }) {
+    if (invalidPhoneNumber != null) {
+      return invalidPhoneNumber(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidPhoneNumber implements AuthFailure {
+  const factory _InvalidPhoneNumber() = _$_InvalidPhoneNumber;
+}
+
+/// @nodoc
+abstract class _$$_TooManyRequestsCopyWith<$Res> {
+  factory _$$_TooManyRequestsCopyWith(
+          _$_TooManyRequests value, $Res Function(_$_TooManyRequests) then) =
+      __$$_TooManyRequestsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_TooManyRequestsCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_TooManyRequests>
+    implements _$$_TooManyRequestsCopyWith<$Res> {
+  __$$_TooManyRequestsCopyWithImpl(
+      _$_TooManyRequests _value, $Res Function(_$_TooManyRequests) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_TooManyRequests implements _TooManyRequests {
+  const _$_TooManyRequests();
+
+  @override
+  String toString() {
+    return 'AuthFailure.tooManyRequests()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_TooManyRequests);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() operationNotAllowed,
+    required TResult Function() accountExists,
+    required TResult Function() invalidCredential,
+    required TResult Function() invalidEmail,
+    required TResult Function() userDisabled,
+    required TResult Function() emailInUse,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidVerificationCode,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() usernameExists,
+    required TResult Function() canceledByUser,
+    required TResult Function() invalidAccessCode,
+    required TResult Function() invalidLink,
+    required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
+  }) {
+    return tooManyRequests();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
+  }) {
+    return tooManyRequests?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? operationNotAllowed,
+    TResult Function()? accountExists,
+    TResult Function()? invalidCredential,
+    TResult Function()? invalidEmail,
+    TResult Function()? userDisabled,
+    TResult Function()? emailInUse,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidVerificationCode,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? usernameExists,
+    TResult Function()? canceledByUser,
+    TResult Function()? invalidAccessCode,
+    TResult Function()? invalidLink,
+    TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
+    required TResult orElse(),
+  }) {
+    if (tooManyRequests != null) {
+      return tooManyRequests();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(_AccountExists value) accountExists,
+    required TResult Function(_InvalidCredential value) invalidCredential,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_EmailInUse value) emailInUse,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidVerificationCode value)
+        invalidVerificationCode,
+    required TResult Function(_InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(_UsernameExists value) usernameExists,
+    required TResult Function(_CanceledByUser value) canceledByUser,
+    required TResult Function(_InvalidAccessCode value) invalidAccessCode,
+    required TResult Function(_InvalidLink value) invalidLink,
+    required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
+  }) {
+    return tooManyRequests(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
+  }) {
+    return tooManyRequests?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(_AccountExists value)? accountExists,
+    TResult Function(_InvalidCredential value)? invalidCredential,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_EmailInUse value)? emailInUse,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(_UsernameExists value)? usernameExists,
+    TResult Function(_CanceledByUser value)? canceledByUser,
+    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult Function(_InvalidLink value)? invalidLink,
+    TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
+    required TResult orElse(),
+  }) {
+    if (tooManyRequests != null) {
+      return tooManyRequests(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TooManyRequests implements AuthFailure {
+  const factory _TooManyRequests() = _$_TooManyRequests;
+}
+
+/// @nodoc
+abstract class _$$_DeviceNotSupportedCopyWith<$Res> {
+  factory _$$_DeviceNotSupportedCopyWith(_$_DeviceNotSupported value,
+          $Res Function(_$_DeviceNotSupported) then) =
+      __$$_DeviceNotSupportedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_DeviceNotSupportedCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_DeviceNotSupported>
+    implements _$$_DeviceNotSupportedCopyWith<$Res> {
+  __$$_DeviceNotSupportedCopyWithImpl(
+      _$_DeviceNotSupported _value, $Res Function(_$_DeviceNotSupported) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_DeviceNotSupported implements _DeviceNotSupported {
+  const _$_DeviceNotSupported();
+
+  @override
+  String toString() {
+    return 'AuthFailure.deviceNotSupported()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_DeviceNotSupported);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() operationNotAllowed,
+    required TResult Function() accountExists,
+    required TResult Function() invalidCredential,
+    required TResult Function() invalidEmail,
+    required TResult Function() userDisabled,
+    required TResult Function() emailInUse,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidVerificationCode,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() usernameExists,
+    required TResult Function() canceledByUser,
+    required TResult Function() invalidAccessCode,
+    required TResult Function() invalidLink,
+    required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
+  }) {
+    return deviceNotSupported();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
+  }) {
+    return deviceNotSupported?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? operationNotAllowed,
+    TResult Function()? accountExists,
+    TResult Function()? invalidCredential,
+    TResult Function()? invalidEmail,
+    TResult Function()? userDisabled,
+    TResult Function()? emailInUse,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidVerificationCode,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? usernameExists,
+    TResult Function()? canceledByUser,
+    TResult Function()? invalidAccessCode,
+    TResult Function()? invalidLink,
+    TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
+    required TResult orElse(),
+  }) {
+    if (deviceNotSupported != null) {
+      return deviceNotSupported();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(_AccountExists value) accountExists,
+    required TResult Function(_InvalidCredential value) invalidCredential,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_EmailInUse value) emailInUse,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidVerificationCode value)
+        invalidVerificationCode,
+    required TResult Function(_InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(_UsernameExists value) usernameExists,
+    required TResult Function(_CanceledByUser value) canceledByUser,
+    required TResult Function(_InvalidAccessCode value) invalidAccessCode,
+    required TResult Function(_InvalidLink value) invalidLink,
+    required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
+  }) {
+    return deviceNotSupported(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
+  }) {
+    return deviceNotSupported?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(_AccountExists value)? accountExists,
+    TResult Function(_InvalidCredential value)? invalidCredential,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_EmailInUse value)? emailInUse,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(_UsernameExists value)? usernameExists,
+    TResult Function(_CanceledByUser value)? canceledByUser,
+    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult Function(_InvalidLink value)? invalidLink,
+    TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
+    required TResult orElse(),
+  }) {
+    if (deviceNotSupported != null) {
+      return deviceNotSupported(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeviceNotSupported implements AuthFailure {
+  const factory _DeviceNotSupported() = _$_DeviceNotSupported;
+}
+
+/// @nodoc
+abstract class _$$_SmsTimeoutCopyWith<$Res> {
+  factory _$$_SmsTimeoutCopyWith(
+          _$_SmsTimeout value, $Res Function(_$_SmsTimeout) then) =
+      __$$_SmsTimeoutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SmsTimeoutCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_SmsTimeout>
+    implements _$$_SmsTimeoutCopyWith<$Res> {
+  __$$_SmsTimeoutCopyWithImpl(
+      _$_SmsTimeout _value, $Res Function(_$_SmsTimeout) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_SmsTimeout implements _SmsTimeout {
+  const _$_SmsTimeout();
+
+  @override
+  String toString() {
+    return 'AuthFailure.smsTimeout()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SmsTimeout);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() operationNotAllowed,
+    required TResult Function() accountExists,
+    required TResult Function() invalidCredential,
+    required TResult Function() invalidEmail,
+    required TResult Function() userDisabled,
+    required TResult Function() emailInUse,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidVerificationCode,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() usernameExists,
+    required TResult Function() canceledByUser,
+    required TResult Function() invalidAccessCode,
+    required TResult Function() invalidLink,
+    required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
+  }) {
+    return smsTimeout();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
+  }) {
+    return smsTimeout?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? operationNotAllowed,
+    TResult Function()? accountExists,
+    TResult Function()? invalidCredential,
+    TResult Function()? invalidEmail,
+    TResult Function()? userDisabled,
+    TResult Function()? emailInUse,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidVerificationCode,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? usernameExists,
+    TResult Function()? canceledByUser,
+    TResult Function()? invalidAccessCode,
+    TResult Function()? invalidLink,
+    TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
+    required TResult orElse(),
+  }) {
+    if (smsTimeout != null) {
+      return smsTimeout();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(_AccountExists value) accountExists,
+    required TResult Function(_InvalidCredential value) invalidCredential,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_EmailInUse value) emailInUse,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidVerificationCode value)
+        invalidVerificationCode,
+    required TResult Function(_InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(_UsernameExists value) usernameExists,
+    required TResult Function(_CanceledByUser value) canceledByUser,
+    required TResult Function(_InvalidAccessCode value) invalidAccessCode,
+    required TResult Function(_InvalidLink value) invalidLink,
+    required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
+  }) {
+    return smsTimeout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
+  }) {
+    return smsTimeout?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(_AccountExists value)? accountExists,
+    TResult Function(_InvalidCredential value)? invalidCredential,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_EmailInUse value)? emailInUse,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(_UsernameExists value)? usernameExists,
+    TResult Function(_CanceledByUser value)? canceledByUser,
+    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult Function(_InvalidLink value)? invalidLink,
+    TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
+    required TResult orElse(),
+  }) {
+    if (smsTimeout != null) {
+      return smsTimeout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SmsTimeout implements AuthFailure {
+  const factory _SmsTimeout() = _$_SmsTimeout;
+}
+
+/// @nodoc
+abstract class _$$_PhoneNumberInUseCopyWith<$Res> {
+  factory _$$_PhoneNumberInUseCopyWith(
+          _$_PhoneNumberInUse value, $Res Function(_$_PhoneNumberInUse) then) =
+      __$$_PhoneNumberInUseCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_PhoneNumberInUseCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_PhoneNumberInUse>
+    implements _$$_PhoneNumberInUseCopyWith<$Res> {
+  __$$_PhoneNumberInUseCopyWithImpl(
+      _$_PhoneNumberInUse _value, $Res Function(_$_PhoneNumberInUse) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_PhoneNumberInUse implements _PhoneNumberInUse {
+  const _$_PhoneNumberInUse();
+
+  @override
+  String toString() {
+    return 'AuthFailure.phoneNumberInUse()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PhoneNumberInUse);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() operationNotAllowed,
+    required TResult Function() accountExists,
+    required TResult Function() invalidCredential,
+    required TResult Function() invalidEmail,
+    required TResult Function() userDisabled,
+    required TResult Function() emailInUse,
+    required TResult Function() weakPassword,
+    required TResult Function() userNotFound,
+    required TResult Function() wrongPassword,
+    required TResult Function() invalidVerificationCode,
+    required TResult Function() invalidVerificationId,
+    required TResult Function() usernameExists,
+    required TResult Function() canceledByUser,
+    required TResult Function() invalidAccessCode,
+    required TResult Function() invalidLink,
+    required TResult Function() unavailable,
+    required TResult Function() invalidPhoneNumber,
+    required TResult Function() tooManyRequests,
+    required TResult Function() deviceNotSupported,
+    required TResult Function() smsTimeout,
+    required TResult Function() phoneNumberInUse,
+  }) {
+    return phoneNumberInUse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? operationNotAllowed,
+    TResult? Function()? accountExists,
+    TResult? Function()? invalidCredential,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? userDisabled,
+    TResult? Function()? emailInUse,
+    TResult? Function()? weakPassword,
+    TResult? Function()? userNotFound,
+    TResult? Function()? wrongPassword,
+    TResult? Function()? invalidVerificationCode,
+    TResult? Function()? invalidVerificationId,
+    TResult? Function()? usernameExists,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? invalidAccessCode,
+    TResult? Function()? invalidLink,
+    TResult? Function()? unavailable,
+    TResult? Function()? invalidPhoneNumber,
+    TResult? Function()? tooManyRequests,
+    TResult? Function()? deviceNotSupported,
+    TResult? Function()? smsTimeout,
+    TResult? Function()? phoneNumberInUse,
+  }) {
+    return phoneNumberInUse?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? operationNotAllowed,
+    TResult Function()? accountExists,
+    TResult Function()? invalidCredential,
+    TResult Function()? invalidEmail,
+    TResult Function()? userDisabled,
+    TResult Function()? emailInUse,
+    TResult Function()? weakPassword,
+    TResult Function()? userNotFound,
+    TResult Function()? wrongPassword,
+    TResult Function()? invalidVerificationCode,
+    TResult Function()? invalidVerificationId,
+    TResult Function()? usernameExists,
+    TResult Function()? canceledByUser,
+    TResult Function()? invalidAccessCode,
+    TResult Function()? invalidLink,
+    TResult Function()? unavailable,
+    TResult Function()? invalidPhoneNumber,
+    TResult Function()? tooManyRequests,
+    TResult Function()? deviceNotSupported,
+    TResult Function()? smsTimeout,
+    TResult Function()? phoneNumberInUse,
+    required TResult orElse(),
+  }) {
+    if (phoneNumberInUse != null) {
+      return phoneNumberInUse();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_OperationNotAllowed value) operationNotAllowed,
+    required TResult Function(_AccountExists value) accountExists,
+    required TResult Function(_InvalidCredential value) invalidCredential,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_UserDisabled value) userDisabled,
+    required TResult Function(_EmailInUse value) emailInUse,
+    required TResult Function(_WeakPassword value) weakPassword,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_WrongPassword value) wrongPassword,
+    required TResult Function(_InvalidVerificationCode value)
+        invalidVerificationCode,
+    required TResult Function(_InvalidVerificationId value)
+        invalidVerificationId,
+    required TResult Function(_UsernameExists value) usernameExists,
+    required TResult Function(_CanceledByUser value) canceledByUser,
+    required TResult Function(_InvalidAccessCode value) invalidAccessCode,
+    required TResult Function(_InvalidLink value) invalidLink,
+    required TResult Function(_Unavailable value) unavailable,
+    required TResult Function(_InvalidPhoneNumber value) invalidPhoneNumber,
+    required TResult Function(_TooManyRequests value) tooManyRequests,
+    required TResult Function(_DeviceNotSupported value) deviceNotSupported,
+    required TResult Function(_SmsTimeout value) smsTimeout,
+    required TResult Function(_PhoneNumberInUse value) phoneNumberInUse,
+  }) {
+    return phoneNumberInUse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult? Function(_AccountExists value)? accountExists,
+    TResult? Function(_InvalidCredential value)? invalidCredential,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_UserDisabled value)? userDisabled,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_WeakPassword value)? weakPassword,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_WrongPassword value)? wrongPassword,
+    TResult? Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult? Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult? Function(_UsernameExists value)? usernameExists,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult? Function(_InvalidLink value)? invalidLink,
+    TResult? Function(_Unavailable value)? unavailable,
+    TResult? Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult? Function(_TooManyRequests value)? tooManyRequests,
+    TResult? Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult? Function(_SmsTimeout value)? smsTimeout,
+    TResult? Function(_PhoneNumberInUse value)? phoneNumberInUse,
+  }) {
+    return phoneNumberInUse?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_OperationNotAllowed value)? operationNotAllowed,
+    TResult Function(_AccountExists value)? accountExists,
+    TResult Function(_InvalidCredential value)? invalidCredential,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_UserDisabled value)? userDisabled,
+    TResult Function(_EmailInUse value)? emailInUse,
+    TResult Function(_WeakPassword value)? weakPassword,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_WrongPassword value)? wrongPassword,
+    TResult Function(_InvalidVerificationCode value)? invalidVerificationCode,
+    TResult Function(_InvalidVerificationId value)? invalidVerificationId,
+    TResult Function(_UsernameExists value)? usernameExists,
+    TResult Function(_CanceledByUser value)? canceledByUser,
+    TResult Function(_InvalidAccessCode value)? invalidAccessCode,
+    TResult Function(_InvalidLink value)? invalidLink,
+    TResult Function(_Unavailable value)? unavailable,
+    TResult Function(_InvalidPhoneNumber value)? invalidPhoneNumber,
+    TResult Function(_TooManyRequests value)? tooManyRequests,
+    TResult Function(_DeviceNotSupported value)? deviceNotSupported,
+    TResult Function(_SmsTimeout value)? smsTimeout,
+    TResult Function(_PhoneNumberInUse value)? phoneNumberInUse,
+    required TResult orElse(),
+  }) {
+    if (phoneNumberInUse != null) {
+      return phoneNumberInUse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PhoneNumberInUse implements AuthFailure {
+  const factory _PhoneNumberInUse() = _$_PhoneNumberInUse;
 }

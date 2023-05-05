@@ -17,7 +17,8 @@ abstract class AuthCloudFunctionsFacade {
 
   Future<Unit> addUser({
     required String userId,
-    required String email,
+    String? email,
+    String? phoneNumber,
   });
 
   Future<Unit> addPartner({
@@ -57,13 +58,15 @@ class AuthCloudFunctionsFacadeImpl implements AuthCloudFunctionsFacade {
   @override
   Future<Unit> addUser({
     required String userId,
-    required String email,
+    String? email,
+    String? phoneNumber,
   }) async {
     const endpoint = 'auth/addUser';
 
     final data = {
       'userId': userId,
       'email': email,
+      'phoneNumber': phoneNumber,
       'locale': Intl.getCurrentLocale(),
     };
 

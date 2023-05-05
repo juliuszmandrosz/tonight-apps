@@ -8,7 +8,8 @@ part of 'user_account_dto.dart';
 
 _$_UserAccountDto _$$_UserAccountDtoFromJson(Map<String, dynamic> json) =>
     _$_UserAccountDto(
-      email: json['email'] as String,
+      email: json['email'] as String? ?? '',
+      phoneNumber: json['phoneNumber'] as String? ?? '',
       profilePictureUrl: json['profilePictureUrl'] as String? ?? '',
       username: json['username'] as String? ?? '',
       favoriteClubIds: (json['favoriteClubIds'] as List<dynamic>?)
@@ -35,6 +36,7 @@ _$_UserAccountDto _$$_UserAccountDtoFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_UserAccountDtoToJson(_$_UserAccountDto instance) =>
     <String, dynamic>{
       'email': instance.email,
+      'phoneNumber': instance.phoneNumber,
       'profilePictureUrl': instance.profilePictureUrl,
       'username': instance.username,
       'favoriteClubIds': instance.favoriteClubIds,

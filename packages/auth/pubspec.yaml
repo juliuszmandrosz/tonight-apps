@@ -35,6 +35,7 @@ dependencies:
   flutter_bloc:
   formz:
   intl:
+  rxdart:
 
   common:
     path: ../common
