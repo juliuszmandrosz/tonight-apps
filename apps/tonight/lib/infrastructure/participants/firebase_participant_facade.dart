@@ -55,7 +55,7 @@ class FirebaseParticipantFacade implements ParticipantFacade {
       return right(unit);
     } on FirebaseException catch (e) {
       _logger.e(e);
-      _crashlytics.recordError(e, StackTrace.current);
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const ParticipantFailure.unexpected());
     }
   }
@@ -91,7 +91,7 @@ class FirebaseParticipantFacade implements ParticipantFacade {
       return right(participants);
     } on FirebaseException catch (e) {
       _logger.e(e);
-      _crashlytics.recordError(e, StackTrace.current);
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const ParticipantFailure.unexpected());
     }
   }
@@ -129,7 +129,7 @@ class FirebaseParticipantFacade implements ParticipantFacade {
       return right(unit);
     } on FirebaseException catch (e) {
       _logger.e(e);
-      _crashlytics.recordError(e, StackTrace.current);
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const ParticipantFailure.unexpected());
     }
   }
@@ -155,7 +155,7 @@ class FirebaseParticipantFacade implements ParticipantFacade {
       return right(Tuple2(participants, totalParticipants.count));
     } on FirebaseException catch (e) {
       _logger.e(e);
-      _crashlytics.recordError(e, StackTrace.current);
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const ParticipantFailure.unexpected());
     }
   }

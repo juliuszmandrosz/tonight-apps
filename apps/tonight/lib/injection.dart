@@ -28,7 +28,8 @@ import 'package:rewards/domain/domain.dart';
 import 'package:rewards/infrastructure/firebase_reward_facade.dart';
 import 'package:tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
 import 'package:tickets/tickets.dart';
-import 'package:tonight/application/add_wall_photo/add_wall_photo_cubit.dart';
+import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_aggregator/add_wall_photo_aggregator.dart';
+import 'package:tonight/application/add_wall_photo/cubit/add_wall_photo_cubit.dart';
 import 'package:tonight/application/app_settings/app_settings_cubit.dart';
 import 'package:tonight/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:tonight/application/auth/username/username_cubit.dart';
@@ -59,6 +60,7 @@ import 'package:tonight/application/payment_method/payment_method_cubit.dart';
 import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
 import 'package:tonight/application/select_club/select_club_bloc.dart';
+import 'package:tonight/application/sign_in_with_phone_number/sign_in_with_phone_number_cubit.dart';
 import 'package:tonight/application/terms_of_service/terms_of_service_cubit.dart';
 import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
@@ -67,6 +69,7 @@ import 'package:tonight/application/tonight_events/aggregator/tonight_events_agg
 import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
 import 'package:tonight/application/update_profile_picture/update_profile_picture_cubit.dart';
 import 'package:tonight/application/user_details/user_details_cubit.dart';
+import 'package:tonight/application/verify_phone_number/verify_phone_number_cubit.dart';
 import 'package:tonight/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
 import 'package:tonight/domain/club_rewards/club_rewards_aggregator.dart';
@@ -111,6 +114,7 @@ void _registerCubits() {
   //Auth
   getIt.registerFactory(
     () => AuthCubit(
+      getIt(),
       getIt(),
     ),
   );
@@ -330,8 +334,6 @@ void _registerCubits() {
   getIt.registerFactory(
     () => AddWallPhotoCubit(
       getIt(),
-      getIt(),
-      getIt(),
     ),
   );
 
@@ -370,6 +372,18 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  getIt.registerFactory(
+    () => VerifyPhoneNumberCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => SignInWithPhoneNumberCubit(
+      getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
@@ -390,6 +404,7 @@ void _registerFacades() {
       logger: getIt(),
       authCloudFunctionsFacade: getIt(),
       crashlytics: getIt(),
+      firestore: getIt(),
     ),
   );
 
@@ -400,6 +415,7 @@ void _registerFacades() {
       logger: getIt(),
       authCloudFunctionsFacade: getIt(),
       crashlytics: getIt(),
+      firestore: getIt(),
     ),
   );
 
@@ -632,6 +648,15 @@ void _registerAggregators() {
 
   getIt.registerLazySingleton(
     () => TonightEventsAggregator(
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
+    () => AddWallPhotoAggregator(
+      getIt(),
+      getIt(),
       getIt(),
       getIt(),
     ),

@@ -18,5 +18,9 @@ const firebaseAuthMessages = {
   'not-found': AuthFailure.userNotFound(),
   'unavailable': AuthFailure.unavailable(),
   'invalid-action-code': AuthFailure.invalidLink(),
+  'invalid-phone-number': AuthFailure.invalidPhoneNumber(),
+  'too-many-requests': AuthFailure.tooManyRequests(),
+  'app-not-authorized': AuthFailure.deviceNotSupported(),
+  'credential-already-in-use': AuthFailure.phoneNumberInUse(),
   'unknown': AuthFailure.invalidLink(),
 };

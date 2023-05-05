@@ -28,7 +28,7 @@ PageViewModel onboardingPageView({
       child: Center(
         child: FaIcon(
           icon,
-          size: 200,
+          size: 150,
         ),
       ),
     ),

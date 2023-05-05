@@ -61,6 +61,7 @@ void _registerCubits() {
   getIt.registerFactory(
     () => AuthCubit(
       getIt(),
+      getIt(),
     ),
   );
 
@@ -213,6 +214,7 @@ void _registerFacades() {
       logger: getIt(),
       authCloudFunctionsFacade: getIt(),
       crashlytics: getIt(),
+      firestore: getIt(),
     ),
   );
 
@@ -223,6 +225,7 @@ void _registerFacades() {
       logger: getIt(),
       authCloudFunctionsFacade: getIt(),
       crashlytics: getIt(),
+      firestore: getIt(),
     ),
   );
 

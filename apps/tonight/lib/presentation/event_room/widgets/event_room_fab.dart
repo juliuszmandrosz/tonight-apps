@@ -1,3 +1,4 @@
+import 'package:auth/auth.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart' as dartz;
@@ -7,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/event_room/bloc/event_room_bloc.dart';
 import 'package:tonight/application/event_room/bloc/event_room_tab.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/utils/show_confirm_phone_number_dialog.dart';
 import 'package:translations/translations.dart';
 
 class EventRoomFab extends StatelessWidget {
@@ -15,23 +17,34 @@ class EventRoomFab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<EventRoomBloc, EventRoomState>(
-      builder: (context, state) {
-        final event = dartz.some(state.event.getOrCrash());
-        return state.selectedTab != EventRoomTab.photos
+      builder: (context, eventRoomState) {
+        final event = dartz.some(eventRoomState.event.getOrCrash());
+        return eventRoomState.selectedTab != EventRoomTab.photos
             ? const SizedBox.shrink()
-            : FloatingActionButton(
-                onPressed: () {
-                  final eventStartDateTime =
-                      event.getOrCrash().eventStartDateTime;
-                  if (eventStartDateTime.isAfter(DateTime.now())) {
-                    context.showSnackbarMessage(S().eventNotStartedYet);
-                    return;
-                  }
-                  context.pushRoute(
-                    WallPhotoCameraPreviewRoute(event: event),
+            : BlocBuilder<AuthCubit, AuthState>(
+                builder: (context, authState) {
+                  return FloatingActionButton(
+                    onPressed: () async {
+                      if (authState.maybeWhen(
+                          authenticated: (user) => user.isPhoneNumberVerified,
+                          orElse: () => false)) {
+                        final eventStartDateTime =
+                            event.getOrCrash().eventStartDateTime;
+                        if (eventStartDateTime.isAfter(DateTime.now())) {
+                          context.showSnackbarMessage(S().eventNotStartedYet);
+                          return;
+                        }
+                        context.pushRoute(
+                          WallPhotoCameraPreviewRoute(event: event),
+                        );
+                        return;
+                      }
+
+                      await showConfirmPhoneNumberDialog(context);
+                    },
+                    child: const FaIcon(FontAwesomeIcons.camera),
                   );
                 },
-                child: const FaIcon(FontAwesomeIcons.camera),
               );
       },
     );

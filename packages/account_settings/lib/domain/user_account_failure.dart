@@ -19,7 +19,6 @@ extension UserAccountFailureX on UserAccountFailure {
         unexpected: (_) => S().serverError,
         permissionDenied: (_) => S().operationNotAllowed,
         usernameExists: (_) => S().usernameAlreadyInUse,
-        // TODO - add translation
-        userNotFound: (_) => 'User not found',
+        userNotFound: (_) => S().userNotFound,
       );
 }

@@ -23,6 +23,7 @@ mixin _$UserAccountDto {
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String get phoneNumber => throw _privateConstructorUsedError;
   String get profilePictureUrl => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   List<String> get favoriteClubIds => throw _privateConstructorUsedError;
@@ -48,6 +49,7 @@ abstract class $UserAccountDtoCopyWith<$Res> {
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String email,
+      String phoneNumber,
       String profilePictureUrl,
       String username,
       List<String> favoriteClubIds,
@@ -74,6 +76,7 @@ class _$UserAccountDtoCopyWithImpl<$Res, $Val extends UserAccountDto>
   $Res call({
     Object? id = freezed,
     Object? email = null,
+    Object? phoneNumber = null,
     Object? profilePictureUrl = null,
     Object? username = null,
     Object? favoriteClubIds = null,
@@ -92,6 +95,10 @@ class _$UserAccountDtoCopyWithImpl<$Res, $Val extends UserAccountDto>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
       profilePictureUrl: null == profilePictureUrl
           ? _value.profilePictureUrl
@@ -144,6 +151,7 @@ abstract class _$$_UserAccountDtoCopyWith<$Res>
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String email,
+      String phoneNumber,
       String profilePictureUrl,
       String username,
       List<String> favoriteClubIds,
@@ -168,6 +176,7 @@ class __$$_UserAccountDtoCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? email = null,
+    Object? phoneNumber = null,
     Object? profilePictureUrl = null,
     Object? username = null,
     Object? favoriteClubIds = null,
@@ -186,6 +195,10 @@ class __$$_UserAccountDtoCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
       profilePictureUrl: null == profilePictureUrl
           ? _value.profilePictureUrl
@@ -233,7 +246,8 @@ class __$$_UserAccountDtoCopyWithImpl<$Res>
 class _$_UserAccountDto extends _UserAccountDto {
   const _$_UserAccountDto(
       {@JsonKey(ignore: true) this.id,
-      required this.email,
+      this.email = '',
+      this.phoneNumber = '',
       this.profilePictureUrl = '',
       this.username = '',
       final List<String> favoriteClubIds = const [],
@@ -256,7 +270,11 @@ class _$_UserAccountDto extends _UserAccountDto {
   @JsonKey(ignore: true)
   final String? id;
   @override
+  @JsonKey()
   final String email;
+  @override
+  @JsonKey()
+  final String phoneNumber;
   @override
   @JsonKey()
   final String profilePictureUrl;
@@ -313,7 +331,7 @@ class _$_UserAccountDto extends _UserAccountDto {
 
   @override
   String toString() {
-    return 'UserAccountDto(id: $id, email: $email, profilePictureUrl: $profilePictureUrl, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens, raverCoins: $raverCoins, ticketsCount: $ticketsCount, photosCount: $photosCount)';
+    return 'UserAccountDto(id: $id, email: $email, phoneNumber: $phoneNumber, profilePictureUrl: $profilePictureUrl, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens, raverCoins: $raverCoins, ticketsCount: $ticketsCount, photosCount: $photosCount)';
   }
 
   @override
@@ -323,6 +341,8 @@ class _$_UserAccountDto extends _UserAccountDto {
             other is _$_UserAccountDto &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
             (identical(other.profilePictureUrl, profilePictureUrl) ||
                 other.profilePictureUrl == profilePictureUrl) &&
             (identical(other.username, username) ||
@@ -349,6 +369,7 @@ class _$_UserAccountDto extends _UserAccountDto {
       runtimeType,
       id,
       email,
+      phoneNumber,
       profilePictureUrl,
       username,
       const DeepCollectionEquality().hash(_favoriteClubIds),
@@ -376,7 +397,8 @@ class _$_UserAccountDto extends _UserAccountDto {
 abstract class _UserAccountDto extends UserAccountDto {
   const factory _UserAccountDto(
       {@JsonKey(ignore: true) final String? id,
-      required final String email,
+      final String email,
+      final String phoneNumber,
       final String profilePictureUrl,
       final String username,
       final List<String> favoriteClubIds,
@@ -396,6 +418,8 @@ abstract class _UserAccountDto extends UserAccountDto {
   String? get id;
   @override
   String get email;
+  @override
+  String get phoneNumber;
   @override
   String get profilePictureUrl;
   @override

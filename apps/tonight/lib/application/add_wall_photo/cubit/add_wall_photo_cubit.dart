@@ -1,32 +1,25 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:clubs/domain/club/user_club_facade.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:events/domain/events/event_entity.dart';
-import 'package:events/domain/events/user_event_facade.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:tonight/application/add_wall_photo/wall_photo_venue_model.dart';
-import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
-import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
+import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_aggregator/add_wall_photo_aggregator.dart';
+import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_aggregator/add_wall_photo_failure.dart';
+import 'package:tonight/application/add_wall_photo/models/wall_photo_venue_model.dart';
 import 'package:translations/translations.dart';
 
 part 'add_wall_photo_cubit.freezed.dart';
 part 'add_wall_photo_state.dart';
 
 class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
-  final UserClubFacade _clubFacade;
-  final UserEventFacade _eventFacade;
-  final WallPhotoFacade _wallPhotoFacade;
+  final AddWallPhotoAggregator _addWallPhotoAggregator;
 
-  AddWallPhotoCubit(
-    this._clubFacade,
-    this._eventFacade,
-    this._wallPhotoFacade,
-  ) : super(AddWallPhotoState.initial());
+  AddWallPhotoCubit(this._addWallPhotoAggregator)
+      : super(AddWallPhotoState.initial());
 
   initState({
     required String photoPath,
@@ -51,24 +44,18 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     emit(state.copyWith(fetchNearestClubStatus: CubitStatus.loading));
     final location = await Future.value(userLocation);
     emit(state.copyWith(userLocation: some(location)));
-    final result = await _clubFacade.fetchNearestClubsInRange(
-      userLocation: location,
-      radius: 1,
-    );
-
+    final result = await _addWallPhotoAggregator.fetchNearestVenues(location);
     result.fold(
       (failure) => emit(
         state.copyWith(
           fetchNearestClubStatus: CubitStatus.failure,
         ),
       ),
-      (clubs) => emit(
+      (venues) => emit(
         state.copyWith(
-          nearestVenues: clubs.map((c) => WallPhotoVenue.fromClub(c)).toList(),
+          nearestVenues: venues,
           fetchNearestClubStatus: CubitStatus.success,
-          selectedVenue: clubs.isEmpty
-              ? none()
-              : some(WallPhotoVenue.fromClub(clubs.first)),
+          selectedVenue: venues.isEmpty ? none() : some(venues.first),
         ),
       ),
     );
@@ -89,7 +76,8 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
         selectedEvent: none(),
       ),
     );
-    final result = await _eventFacade.fetchLiveEventsFromClub(venue.venueId);
+    final result =
+        await _addWallPhotoAggregator.fetchLiveEventsFromVenue(venue.venueId);
     result.fold(
       (failure) => emit(
         state.copyWith(
@@ -113,21 +101,17 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     }
     emit(state.copyWith(addPhotoStatus: CubitStatus.loading));
     final selectedEvent = state.selectedEvent.getOrCrash();
-    final venueLocation = state.selectedVenue.getOrCrash().venueLocation;
+    final selectedVenue = state.selectedVenue.getOrCrash();
     final processedPhoto = await _processPhoto();
     if (processedPhoto.isNone()) {
       emit(state.copyWith(addPhotoStatus: CubitStatus.failure));
       _showSnackbarMessage(S().errorAddingPhoto);
       return;
     }
-    final result = await _wallPhotoFacade.addPhoto(
-      venueId: selectedEvent.clubId,
-      venueName: selectedEvent.clubName,
-      eventId: selectedEvent.id,
-      eventName: selectedEvent.eventName,
-      eventEndDateTime: selectedEvent.eventEndDateTime,
+    final result = await _addWallPhotoAggregator.addPhoto(
+      event: selectedEvent,
+      venue: selectedVenue,
       photo: processedPhoto.getOrCrash(),
-      venueLocation: venueLocation,
       photoLocation: state.userLocation.fold(
         () => null,
         (location) => location,

@@ -38,10 +38,10 @@ class FirebaseMessageFacade implements MessageFacade {
               .toList(),
         );
       },
-    ).handleError((e) {
+    ).handleError((e) async {
       if (e is FirebaseException) {
         _logger.e(e);
-        _crashlytics.recordError(e, StackTrace.current);
+        await _crashlytics.recordError(e, StackTrace.current);
         return left(const MessageFailure.unexpected());
       }
     });
@@ -62,7 +62,7 @@ class FirebaseMessageFacade implements MessageFacade {
       return right(unit);
     } on FirebaseException catch (e) {
       _logger.e(e);
-      _crashlytics.recordError(e, StackTrace.current);
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const MessageFailure.unexpected());
     }
   }
@@ -98,7 +98,7 @@ class FirebaseMessageFacade implements MessageFacade {
       );
     } on FirebaseException catch (e) {
       _logger.e(e);
-      _crashlytics.recordError(e, StackTrace.current);
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const MessageFailure.unexpected());
     }
   }
