@@ -43,7 +43,9 @@ class UpdateUsernamePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                const SizedBox(height: 30),
                 UpdateUsernameInput(currentUsername: currentUsername),
+                const Spacer(),
                 const SubmitUsernameButton(),
               ],
             ),

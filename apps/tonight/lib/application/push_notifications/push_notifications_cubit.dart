@@ -62,6 +62,10 @@ class PushNotificationsCubit extends Cubit<PushNotificationsState> {
     );
   }
 
+  addLastHandledMessageIdToState(String? messageId) {
+    emit(state.copyWith(lastHandledMessageId: messageId));
+  }
+
   showNotification(RemoteMessage message) async {
     await _notificationsPlugin.show(
       message.hashCode,
@@ -70,6 +74,7 @@ class PushNotificationsCubit extends Cubit<PushNotificationsState> {
       _getNotificationDetails(),
       payload: json.encode(message.data),
     );
+    addLastHandledMessageIdToState(message.messageId);
   }
 
   _getNotificationDetails() {

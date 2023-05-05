@@ -16,6 +16,7 @@ import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
 
 part 'welcome_loading_cubit.freezed.dart';
+
 part 'welcome_loading_state.dart';
 
 class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
@@ -37,7 +38,8 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     required FirebaseMessaging firebaseMessaging,
     required ProfileBloc profileBloc,
     required Stripe stripe,
-  })  : _pushNotificationsCubit = pushNotificationsCubit,
+  })
+      : _pushNotificationsCubit = pushNotificationsCubit,
         _userLocationCubit = userLocationCubit,
         _eventFavoriteCubit = eventFavoriteCubit,
         _clubFavoriteCubit = clubFavoriteCubit,
@@ -91,25 +93,38 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
         settings.authorizationStatus == AuthorizationStatus.authorized) {
       await _pushNotificationsCubit.initialize(context);
 
-      FirebaseMessaging.instance.getInitialMessage().then(
-        (message) async {
-          if (message?.data != null) {
-            await handleDeepLink(context, message!.data);
+      await FirebaseMessaging.instance.getInitialMessage().then(
+            (message) async {
+          final lastMessageId =
+              _pushNotificationsCubit.state.lastHandledMessageId;
+          if (message?.data != null && lastMessageId != message!.messageId) {
+            await handleDeepLink(context, message.data);
+            _pushNotificationsCubit
+                .addLastHandledMessageIdToState(message.messageId);
           }
         },
       );
 
       FirebaseMessaging.onMessage.listen(
-        (message) async {
-          if (message.notification != null) {
+            (message) async {
+          final lastMessageId =
+              _pushNotificationsCubit.state.lastHandledMessageId;
+          if (message.notification != null &&
+              lastMessageId != message.messageId) {
             await _pushNotificationsCubit.showNotification(message);
           }
         },
       );
 
       FirebaseMessaging.onMessageOpenedApp.listen(
-        (message) async {
-          await handleDeepLink(context, message.data);
+            (message) async {
+          final lastMessageId =
+              _pushNotificationsCubit.state.lastHandledMessageId;
+          if (lastMessageId != message.messageId) {
+            await handleDeepLink(context, message.data);
+            _pushNotificationsCubit
+                .addLastHandledMessageIdToState(message.messageId);
+          }
         },
       );
     }
@@ -123,7 +138,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     }
 
     FirebaseDynamicLinks.instance.onLink.listen(
-      (data) async {
+          (data) async {
         await handleDeepLink(context, data.link.queryParameters);
       },
     );

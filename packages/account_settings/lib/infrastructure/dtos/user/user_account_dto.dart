@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_account_dto.freezed.dart';
+
 part 'user_account_dto.g.dart';
 
 @freezed
@@ -12,7 +13,8 @@ class UserAccountDto with _$UserAccountDto {
   @JsonSerializable()
   const factory UserAccountDto({
     @JsonKey(ignore: true) String? id,
-    required String email,
+    @Default('') String email,
+    @Default('') String phoneNumber,
     @Default('') String profilePictureUrl,
     @Default('') String username,
     @Default([]) List<String> favoriteClubIds,
@@ -37,6 +39,7 @@ class UserAccountDto with _$UserAccountDto {
       raverCoins: user.raverCoins,
       ticketsCount: user.ticketsCount,
       photosCount: user.photosCount,
+      phoneNumber: user.phoneNumber,
     );
   }
 
@@ -62,6 +65,7 @@ class UserAccountDto with _$UserAccountDto {
       raverCoins: raverCoins,
       ticketsCount: ticketsCount,
       photosCount: photosCount,
+      phoneNumber: phoneNumber,
     );
   }
 }

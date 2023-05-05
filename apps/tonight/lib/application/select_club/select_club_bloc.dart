@@ -7,13 +7,11 @@ import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tonight/application/add_wall_photo/wall_photo_venue_model.dart';
+import 'package:tonight/application/add_wall_photo/models/wall_photo_venue_model.dart';
 import 'package:translations/translations.dart';
 
 part 'select_club_bloc.freezed.dart';
-
 part 'select_club_event.dart';
-
 part 'select_club_state.dart';
 
 const _pageSize = 20;

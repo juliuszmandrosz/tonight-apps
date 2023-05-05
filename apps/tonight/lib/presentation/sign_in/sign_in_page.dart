@@ -17,56 +17,59 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LoaderOverlay(
-      overlayColor: context.shadowColor,
-      overlayOpacity: .7,
-      child: Scaffold(
-        body: BlocProvider(
-          create: (context) => getIt<SignInCubit>(),
-          child: BlocListener<SignInCubit, SignInState>(
-            listener: (context, state) {
-              state.errorMessage.fold(
-                () {},
-                (error) => context.showSnackbarMessage(error),
-              );
+    return GestureDetector(
+      onTap: context.unfocus,
+      child: TonightOverlay(
+        child: Scaffold(
+          body: BlocProvider(
+            create: (context) => getIt<SignInCubit>(),
+            child: BlocListener<SignInCubit, SignInState>(
+              listener: (context, state) {
+                state.errorMessage.fold(
+                  () {},
+                  (error) => context.showSnackbarMessage(error),
+                );
 
-              state.linkSentMessage.fold(
-                () {},
-                (message) => context.showSnackbarMessage(message),
-              );
+                state.linkSentMessage.fold(
+                  () {},
+                  (message) => context.showSnackbarMessage(message),
+                );
 
-              state.signInStatus.isSubmissionInProgress
-                  ? context.loaderOverlay.show()
-                  : context.loaderOverlay.hide();
+                state.signInStatus.isSubmissionInProgress
+                    ? context.loaderOverlay.show()
+                    : context.loaderOverlay.hide();
 
-              if (state.signInStatus.isSubmissionSuccess) {
-                final route = state.isNewUser
-                    ? const OnboardingUserDetailsRoute()
-                    : const WelcomeLoaderRoute();
-                context.router.replaceAll([route]);
-              }
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: CustomScrollView(
-                slivers: [
-                  SliverToBoxAdapter(
-                    child: Column(
-                      children: [
-                        TonightLogo(height: context.height * 0.33),
-                        SizedBox(height: context.height * 0.07),
-                        const SignInEmailInput(),
-                        const SizedBox(height: 30),
-                        const TermsOfServiceInfo(),
-                        const SizedBox(height: 30),
-                      ],
+                if (state.signInStatus.isSubmissionSuccess &&
+                    state.user.isSome()) {
+                  final user = state.user.getOrCrash();
+                  final route = user.isOnboardingCompleted
+                      ? const WelcomeLoaderRoute()
+                      : const OnboardingUserDetailsRoute();
+                  context.router.replaceAll([route]);
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: CustomScrollView(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: Column(
+                        children: [
+                          TonightLogo(height: context.height * 0.33),
+                          SizedBox(height: context.height * 0.07),
+                          const SignInEmailInput(),
+                          const SizedBox(height: 30),
+                          const TermsOfServiceInfo(),
+                          const SizedBox(height: 30),
+                        ],
+                      ),
                     ),
-                  ),
-                  const SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: SignInButtons(),
-                  ),
-                ],
+                    const SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: SignInButtons(),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 class UserAccount extends Equatable {
   final String id;
   final String email;
+  final String phoneNumber;
   final String username;
   final String profilePictureUrl;
   final List<String> favoriteClubIds;
@@ -15,7 +16,8 @@ class UserAccount extends Equatable {
 
   const UserAccount({
     required this.id,
-    required this.email,
+    this.email = '',
+    this.phoneNumber = '',
     this.profilePictureUrl = '',
     this.username = '',
     this.favoriteClubIds = const [],
@@ -31,6 +33,7 @@ class UserAccount extends Equatable {
   List<Object?> get props => [
         id,
         email,
+        phoneNumber,
         username,
         profilePictureUrl,
         favoriteClubIds,
@@ -45,6 +48,7 @@ class UserAccount extends Equatable {
   UserAccount copyWith({
     String? email,
     String? username,
+    String? phoneNumber,
     String? profilePictureUrl,
     List<String>? favoriteClubIds,
     List<String>? favoriteEventIds,
@@ -53,10 +57,12 @@ class UserAccount extends Equatable {
     int? raverCoins,
     int? ticketsCount,
     int? photosCount,
+    bool? isPhoneNumberVerified,
   }) {
     return UserAccount(
       id: id,
       email: email ?? this.email,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
       profilePictureUrl: profilePictureUrl ?? this.profilePictureUrl,
       username: username ?? this.username,
       favoriteClubIds: favoriteClubIds ?? this.favoriteClubIds,

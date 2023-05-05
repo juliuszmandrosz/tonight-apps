@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PushNotificationsState {
   CubitStatus get status => throw _privateConstructorUsedError;
+  String? get lastHandledMessageId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PushNotificationsStateCopyWith<PushNotificationsState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $PushNotificationsStateCopyWith<$Res> {
           $Res Function(PushNotificationsState) then) =
       _$PushNotificationsStateCopyWithImpl<$Res, PushNotificationsState>;
   @useResult
-  $Res call({CubitStatus status});
+  $Res call({CubitStatus status, String? lastHandledMessageId});
 }
 
 /// @nodoc
@@ -47,12 +48,17 @@ class _$PushNotificationsStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? status = null,
+    Object? lastHandledMessageId = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
+      lastHandledMessageId: freezed == lastHandledMessageId
+          ? _value.lastHandledMessageId
+          : lastHandledMessageId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -65,7 +71,7 @@ abstract class _$$_PushNotificationsStateCopyWith<$Res>
       __$$_PushNotificationsStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({CubitStatus status});
+  $Res call({CubitStatus status, String? lastHandledMessageId});
 }
 
 /// @nodoc
@@ -81,12 +87,17 @@ class __$$_PushNotificationsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
+    Object? lastHandledMessageId = freezed,
   }) {
     return _then(_$_PushNotificationsState(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
+      lastHandledMessageId: freezed == lastHandledMessageId
+          ? _value.lastHandledMessageId
+          : lastHandledMessageId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -94,14 +105,18 @@ class __$$_PushNotificationsStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PushNotificationsState extends _PushNotificationsState {
-  _$_PushNotificationsState({required this.status}) : super._();
+  _$_PushNotificationsState(
+      {required this.status, required this.lastHandledMessageId})
+      : super._();
 
   @override
   final CubitStatus status;
+  @override
+  final String? lastHandledMessageId;
 
   @override
   String toString() {
-    return 'PushNotificationsState(status: $status)';
+    return 'PushNotificationsState(status: $status, lastHandledMessageId: $lastHandledMessageId)';
   }
 
   @override
@@ -109,11 +124,13 @@ class _$_PushNotificationsState extends _PushNotificationsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PushNotificationsState &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.lastHandledMessageId, lastHandledMessageId) ||
+                other.lastHandledMessageId == lastHandledMessageId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status);
+  int get hashCode => Object.hash(runtimeType, status, lastHandledMessageId);
 
   @JsonKey(ignore: true)
   @override
@@ -124,12 +141,15 @@ class _$_PushNotificationsState extends _PushNotificationsState {
 }
 
 abstract class _PushNotificationsState extends PushNotificationsState {
-  factory _PushNotificationsState({required final CubitStatus status}) =
-      _$_PushNotificationsState;
+  factory _PushNotificationsState(
+      {required final CubitStatus status,
+      required final String? lastHandledMessageId}) = _$_PushNotificationsState;
   _PushNotificationsState._() : super._();
 
   @override
   CubitStatus get status;
+  @override
+  String? get lastHandledMessageId;
   @override
   @JsonKey(ignore: true)
   _$$_PushNotificationsStateCopyWith<_$_PushNotificationsState> get copyWith =>

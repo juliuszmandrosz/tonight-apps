@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,19 +10,17 @@ class AppleSignInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isIOS
-        ? Container(
-            decoration: BoxDecoration(
-              color: context.surfaceColor,
-              shape: BoxShape.circle,
-            ),
-            width: 50,
-            height: 50,
-            child: TonightIconButton(
-              icon: const FaIcon(FontAwesomeIcons.apple),
-              onPressed: () => context.read<SignInCubit>().signInWithApple(),
-            ),
-          )
-        : Container();
+    return Container(
+      decoration: BoxDecoration(
+        color: context.surfaceColor,
+        shape: BoxShape.circle,
+      ),
+      width: 50,
+      height: 50,
+      child: TonightIconButton(
+        icon: const FaIcon(FontAwesomeIcons.apple),
+        onPressed: () => context.read<SignInCubit>().signInWithApple(),
+      ),
+    );
   }
 }

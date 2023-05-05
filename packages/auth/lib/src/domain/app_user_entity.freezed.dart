@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AppUser {
   String get id => throw _privateConstructorUsedError;
   String get providerId => throw _privateConstructorUsedError;
+  bool get isOnboardingCompleted => throw _privateConstructorUsedError;
+  bool get isPhoneNumberVerified => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppUserCopyWith<AppUser> get copyWith => throw _privateConstructorUsedError;
@@ -28,7 +30,11 @@ abstract class $AppUserCopyWith<$Res> {
   factory $AppUserCopyWith(AppUser value, $Res Function(AppUser) then) =
       _$AppUserCopyWithImpl<$Res, AppUser>;
   @useResult
-  $Res call({String id, String providerId});
+  $Res call(
+      {String id,
+      String providerId,
+      bool isOnboardingCompleted,
+      bool isPhoneNumberVerified});
 }
 
 /// @nodoc
@@ -46,6 +52,8 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
   $Res call({
     Object? id = null,
     Object? providerId = null,
+    Object? isOnboardingCompleted = null,
+    Object? isPhoneNumberVerified = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -56,6 +64,14 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
           ? _value.providerId
           : providerId // ignore: cast_nullable_to_non_nullable
               as String,
+      isOnboardingCompleted: null == isOnboardingCompleted
+          ? _value.isOnboardingCompleted
+          : isOnboardingCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isPhoneNumberVerified: null == isPhoneNumberVerified
+          ? _value.isPhoneNumberVerified
+          : isPhoneNumberVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -67,7 +83,11 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       __$$_AppUserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String providerId});
+  $Res call(
+      {String id,
+      String providerId,
+      bool isOnboardingCompleted,
+      bool isPhoneNumberVerified});
 }
 
 /// @nodoc
@@ -82,6 +102,8 @@ class __$$_AppUserCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? providerId = null,
+    Object? isOnboardingCompleted = null,
+    Object? isPhoneNumberVerified = null,
   }) {
     return _then(_$_AppUser(
       id: null == id
@@ -92,6 +114,14 @@ class __$$_AppUserCopyWithImpl<$Res>
           ? _value.providerId
           : providerId // ignore: cast_nullable_to_non_nullable
               as String,
+      isOnboardingCompleted: null == isOnboardingCompleted
+          ? _value.isOnboardingCompleted
+          : isOnboardingCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isPhoneNumberVerified: null == isPhoneNumberVerified
+          ? _value.isPhoneNumberVerified
+          : isPhoneNumberVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -99,16 +129,24 @@ class __$$_AppUserCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AppUser implements _AppUser {
-  const _$_AppUser({required this.id, required this.providerId});
+  const _$_AppUser(
+      {required this.id,
+      required this.providerId,
+      required this.isOnboardingCompleted,
+      required this.isPhoneNumberVerified});
 
   @override
   final String id;
   @override
   final String providerId;
+  @override
+  final bool isOnboardingCompleted;
+  @override
+  final bool isPhoneNumberVerified;
 
   @override
   String toString() {
-    return 'AppUser(id: $id, providerId: $providerId)';
+    return 'AppUser(id: $id, providerId: $providerId, isOnboardingCompleted: $isOnboardingCompleted, isPhoneNumberVerified: $isPhoneNumberVerified)';
   }
 
   @override
@@ -118,11 +156,16 @@ class _$_AppUser implements _AppUser {
             other is _$_AppUser &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.providerId, providerId) ||
-                other.providerId == providerId));
+                other.providerId == providerId) &&
+            (identical(other.isOnboardingCompleted, isOnboardingCompleted) ||
+                other.isOnboardingCompleted == isOnboardingCompleted) &&
+            (identical(other.isPhoneNumberVerified, isPhoneNumberVerified) ||
+                other.isPhoneNumberVerified == isPhoneNumberVerified));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, providerId);
+  int get hashCode => Object.hash(runtimeType, id, providerId,
+      isOnboardingCompleted, isPhoneNumberVerified);
 
   @JsonKey(ignore: true)
   @override
@@ -134,12 +177,18 @@ class _$_AppUser implements _AppUser {
 abstract class _AppUser implements AppUser {
   const factory _AppUser(
       {required final String id,
-      required final String providerId}) = _$_AppUser;
+      required final String providerId,
+      required final bool isOnboardingCompleted,
+      required final bool isPhoneNumberVerified}) = _$_AppUser;
 
   @override
   String get id;
   @override
   String get providerId;
+  @override
+  bool get isOnboardingCompleted;
+  @override
+  bool get isPhoneNumberVerified;
   @override
   @JsonKey(ignore: true)
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>

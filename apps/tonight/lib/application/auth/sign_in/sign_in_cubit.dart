@@ -9,7 +9,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:translations/translations.dart';
 
 part 'sign_in_cubit.freezed.dart';
-
 part 'sign_in_state.dart';
 
 class SignInCubit extends Cubit<SignInState> {
@@ -34,10 +33,10 @@ class SignInCubit extends Cubit<SignInState> {
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(failure),
-      (isNewUser) => emit(
+      (user) => emit(
         state.copyWith(
           signInStatus: FormzStatus.submissionSuccess,
-          isNewUser: isNewUser,
+          user: some(user),
         ),
       ),
     );
@@ -50,10 +49,10 @@ class SignInCubit extends Cubit<SignInState> {
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(failure),
-      (isNewUser) => emit(
+      (user) => emit(
         state.copyWith(
           signInStatus: FormzStatus.submissionSuccess,
-          isNewUser: isNewUser,
+          user: some(user),
         ),
       ),
     );
@@ -102,10 +101,10 @@ class SignInCubit extends Cubit<SignInState> {
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(failure),
-      (isNewUser) => emit(
+      (user) => emit(
         state.copyWith(
           signInStatus: FormzStatus.submissionSuccess,
-          isNewUser: isNewUser,
+          user: some(user),
         ),
       ),
     );

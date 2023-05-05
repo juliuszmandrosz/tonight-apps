@@ -4,7 +4,7 @@ import 'package:common/presentation/dense_list_tile.dart';
 import 'package:common/presentation/profile_picture_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight/application/add_wall_photo/wall_photo_venue_model.dart';
+import 'package:tonight/application/add_wall_photo/models/wall_photo_venue_model.dart';
 import 'package:tonight/application/select_club/select_club_bloc.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 

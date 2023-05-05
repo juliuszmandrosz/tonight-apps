@@ -17,28 +17,29 @@ class OnboardingUserDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<OnboardingCubit>(),
-      child: BlocConsumer<OnboardingCubit, OnboardingState>(
-        listener: (context, state) {
-          state.errorMessage.fold(
-            () {},
-            (error) {
-              context.showSnackbarMessage(error);
-            },
-          );
-
-          if (state.status.isSubmissionSuccess) {
-            context.router.replaceAll(
-              [const WelcomeLoaderRoute()],
+    return GestureDetector(
+      onTap: context.unfocus,
+      child: BlocProvider(
+        create: (context) => getIt<OnboardingCubit>(),
+        child: BlocListener<OnboardingCubit, OnboardingState>(
+          listener: (context, state) {
+            state.errorMessage.fold(
+              () {},
+              (error) {
+                context.showSnackbarMessage(error);
+              },
             );
-          }
-        },
-        builder: (context, state) {
-          return Scaffold(
+
+            if (state.submissionStatus.isSubmissionSuccess) {
+              context.router.replaceAll(
+                [const WelcomeLoaderRoute()],
+              );
+            }
+          },
+          child: Scaffold(
             body: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(16),
                 child: Column(
                   children: [
                     Expanded(
@@ -59,15 +60,15 @@ class OnboardingUserDetailsPage extends StatelessWidget {
                       ),
                     ),
                     Visibility(
-                      visible: MediaQuery.of(context).viewInsets.bottom == 0,
+                      visible: context.viewInsets.bottom == 0,
                       child: const SubmitButton(),
                     ),
                   ],
                 ),
               ),
             ),
-          );
-        },
+          ),
+        ),
       ),
     );
   }
