@@ -85,22 +85,24 @@ class EventRoomPage extends StatelessWidget {
                 case CubitStatus.success:
                   return DefaultTabController(
                     length: 3,
-                    child: Scaffold(
-                      appBar: EventRoomAppBar(
-                        event: event,
-                        isKeyboardOpen: context.isKeyboardOpen,
-                      ),
-                      floatingActionButton: const EventRoomFab(),
-                      body: TabBarView(
-                        physics: const NeverScrollableScrollPhysics(),
-                        children: [
-                          EventChatPage(
-                            event: event,
-                            currentUser: state.participant.getOrCrash(),
-                          ),
-                          const EventPhotosPage(),
-                          const EventRoomParticipantsPage(),
-                        ],
+                    child: SafeArea(
+                      child: Scaffold(
+                        appBar: EventRoomAppBar(
+                          event: event,
+                          isKeyboardOpen: context.isKeyboardOpen,
+                        ),
+                        floatingActionButton: const EventRoomFab(),
+                        body: TabBarView(
+                          physics: const NeverScrollableScrollPhysics(),
+                          children: [
+                            EventChatPage(
+                              event: event,
+                              currentUser: state.participant.getOrCrash(),
+                            ),
+                            const EventPhotosPage(),
+                            const EventRoomParticipantsPage(),
+                          ],
+                        ),
                       ),
                     ),
                   );
