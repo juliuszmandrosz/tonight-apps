@@ -8,7 +8,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:translations/translations.dart';
 
 part 'event_favorite_cubit.freezed.dart';
-
 part 'event_favorite_state.dart';
 
 class EventFavoriteCubit extends Cubit<EventFavoriteState> {
@@ -40,10 +39,10 @@ class EventFavoriteCubit extends Cubit<EventFavoriteState> {
     final favoriteEvents = state.favoriteEvents;
     final favoriteEventsCopy = [...favoriteEvents];
 
-    final currentStatus = favoriteEventsCopy.contains(event);
+    final currentStatus = favoriteEventsCopy.any((e) => e.id == event.id);
 
     currentStatus
-        ? favoriteEventsCopy.remove(event)
+        ? favoriteEventsCopy.removeWhere((e) => e.id == event.id)
         : favoriteEventsCopy.add(event);
 
     emit(state.copyWith(favoriteEvents: favoriteEventsCopy));
