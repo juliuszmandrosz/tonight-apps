@@ -22,32 +22,34 @@ class UpdateUsernamePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (ctx) => getIt<UsernameCubit>()..usernameChanged(currentUsername),
-      child: Scaffold(
-        appBar: TonightAppBar(title: S().changeUsername),
-        body: BlocListener<UsernameCubit, UsernameState>(
-          listener: (context, state) {
-            state.errorMessage.fold(
-              () {},
-              (error) {
-                context.showSnackbarMessage(error);
-              },
-            );
+      child: SafeArea(
+        child: Scaffold(
+          appBar: TonightAppBar(title: S().changeUsername),
+          body: BlocListener<UsernameCubit, UsernameState>(
+            listener: (context, state) {
+              state.errorMessage.fold(
+                () {},
+                (error) {
+                  context.showSnackbarMessage(error);
+                },
+              );
 
-            if (state.status.isSubmissionSuccess) {
-              context.showSnackbarMessage(S().usernameUpdatedMessage);
-              context.popRoute();
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const SizedBox(height: 30),
-                UpdateUsernameInput(currentUsername: currentUsername),
-                const Spacer(),
-                const SubmitUsernameButton(),
-              ],
+              if (state.status.isSubmissionSuccess) {
+                context.showSnackbarMessage(S().usernameUpdatedMessage);
+                context.popRoute();
+              }
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const SizedBox(height: 30),
+                  UpdateUsernameInput(currentUsername: currentUsername),
+                  const Spacer(),
+                  const SubmitUsernameButton(),
+                ],
+              ),
             ),
           ),
         ),
