@@ -61,6 +61,7 @@ class FirebaseAuthFacade
         streamController.add(right(result));
       },
       verificationFailed: (e) async {
+        _logger.e(e);
         final failure = await _handleFirebaseException(e);
         streamController.add(left(failure));
       },
