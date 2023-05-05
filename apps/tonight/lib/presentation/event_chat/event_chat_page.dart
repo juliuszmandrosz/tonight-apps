@@ -66,7 +66,7 @@ class EventChatPage extends StatelessWidget {
                           isReversed: true,
                         ),
                       ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 12),
                 const EventChatInput(),
               ],
             );

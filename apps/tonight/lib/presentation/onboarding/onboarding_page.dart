@@ -11,47 +11,49 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntroductionScreen(
-      next: const FaIcon(FontAwesomeIcons.arrowRight),
-      done: Text(S().start),
-      onDone: () => context.pushRoute(const SignInRoute()),
-      showSkipButton: true,
-      skip: TextButton(
-        onPressed: () => context.pushRoute(const SignInRoute()),
-        child: Text(S().skip),
+    return SafeArea(
+      child: IntroductionScreen(
+        next: const FaIcon(FontAwesomeIcons.arrowRight),
+        done: Text(S().start),
+        onDone: () => context.pushRoute(const SignInRoute()),
+        showSkipButton: true,
+        skip: TextButton(
+          onPressed: () => context.pushRoute(const SignInRoute()),
+          child: Text(S().skip),
+        ),
+        pages: [
+          onboardingPageView(
+            context: context,
+            icon: FontAwesomeIcons.fire,
+            title: S().welcomeToTonight,
+            body: S().findBestParties,
+          ),
+          onboardingPageView(
+            context: context,
+            icon: FontAwesomeIcons.trophy,
+            title: S().receiveRewards,
+            body: S().collectBenefits,
+          ),
+          onboardingPageView(
+            context: context,
+            icon: FontAwesomeIcons.camera,
+            title: S().temporaryPhotos,
+            body: S().temporaryPhotosInfo,
+          ),
+          onboardingPageView(
+            context: context,
+            icon: FontAwesomeIcons.peopleArrows,
+            title: S().meetNewPeople,
+            body: S().joinCommunity,
+          ),
+          onboardingPageView(
+            context: context,
+            icon: FontAwesomeIcons.solidBell,
+            title: S().stayUpdated,
+            body: S().addClubToFavoritesAndReceiveNotifications,
+          ),
+        ],
       ),
-      pages: [
-        onboardingPageView(
-          context: context,
-          icon: FontAwesomeIcons.fire,
-          title: S().welcomeToTonight,
-          body: S().findBestParties,
-        ),
-        onboardingPageView(
-          context: context,
-          icon: FontAwesomeIcons.trophy,
-          title: S().receiveRewards,
-          body: S().collectBenefits,
-        ),
-        onboardingPageView(
-          context: context,
-          icon: FontAwesomeIcons.camera,
-          title: S().temporaryPhotos,
-          body: S().temporaryPhotosInfo,
-        ),
-        onboardingPageView(
-          context: context,
-          icon: FontAwesomeIcons.peopleArrows,
-          title: S().meetNewPeople,
-          body: S().joinCommunity,
-        ),
-        onboardingPageView(
-          context: context,
-          icon: FontAwesomeIcons.solidBell,
-          title: S().stayUpdated,
-          body: S().addClubToFavoritesAndReceiveNotifications,
-        ),
-      ],
     ); //Material App
   }
 }
