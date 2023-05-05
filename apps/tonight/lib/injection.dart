@@ -69,6 +69,7 @@ import 'package:tonight/application/tonight_events/aggregator/tonight_events_agg
 import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
 import 'package:tonight/application/update_profile_picture/update_profile_picture_cubit.dart';
 import 'package:tonight/application/user_details/user_details_cubit.dart';
+import 'package:tonight/application/user_wall_photo_preview/user_wall_photo_preview_cubit.dart';
 import 'package:tonight/application/verify_phone_number/verify_phone_number_cubit.dart';
 import 'package:tonight/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
@@ -381,6 +382,12 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => SignInWithPhoneNumberCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => UserWallPhotoPreviewCubit(
       getIt(),
     ),
   );
