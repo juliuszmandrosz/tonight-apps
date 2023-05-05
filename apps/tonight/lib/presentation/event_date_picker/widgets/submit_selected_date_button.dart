@@ -21,7 +21,7 @@ class SubmitSelectedDateButton extends StatelessWidget {
       },
       builder: (context, state) {
         return SizedBox(
-          width: 300,
+          width: double.infinity,
           child: ElevatedButton(
             onPressed: state.filter.fromDate != null
                 ? () {
