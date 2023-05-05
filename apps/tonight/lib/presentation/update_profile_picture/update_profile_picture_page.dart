@@ -24,36 +24,38 @@ class UpdateProfilePicturePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (ctx) => getIt<UpdateProfilePictureCubit>(),
-      child: Scaffold(
-        appBar: TonightAppBar(title: S().changeProfilePicture),
-        body:
-            BlocListener<UpdateProfilePictureCubit, UpdateProfilePictureState>(
-          listener: (context, state) {
-            state.errorMessage.fold(
-              () {},
-              (error) {
-                context.showSnackbarMessage(error);
-              },
-            );
+      child: SafeArea(
+        child: Scaffold(
+          appBar: TonightAppBar(title: S().changeProfilePicture),
+          body: BlocListener<UpdateProfilePictureCubit,
+              UpdateProfilePictureState>(
+            listener: (context, state) {
+              state.errorMessage.fold(
+                () {},
+                (error) {
+                  context.showSnackbarMessage(error);
+                },
+              );
 
-            if (state.status.isSubmissionSuccess) {
-              context.showSnackbarMessage(S().profilePictureChanged);
-              context.popRoute();
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Center(
-              child: Column(
-                children: [
-                  const SizedBox(height: 30),
-                  UpdateProfilePictureContainer(
-                    username: username,
-                    currentProfilePictureUrl: currentProfilePictureUrl,
-                  ),
-                  const Spacer(),
-                  const UpdateProfilePictureButton(),
-                ],
+              if (state.status.isSubmissionSuccess) {
+                context.showSnackbarMessage(S().profilePictureChanged);
+                context.popRoute();
+              }
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Center(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 30),
+                    UpdateProfilePictureContainer(
+                      username: username,
+                      currentProfilePictureUrl: currentProfilePictureUrl,
+                    ),
+                    const Spacer(),
+                    const UpdateProfilePictureButton(),
+                  ],
+                ),
               ),
             ),
           ),
