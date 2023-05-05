@@ -135,9 +135,9 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     final photoBytes = await state.photo.getOrCrash().readAsBytes();
     final compressedPhoto = await compressImage(
       photoBytes,
-      quality: 90,
-      minHeight: 1350,
-      minWidth: 1024,
+      quality: 80,
+      minHeight: 1000,
+      minWidth: 1000,
     );
     if (!state.isSelfie) return some(compressedPhoto);
     final flippedPhoto = await flipImageHorizontallyAsync(compressedPhoto);

@@ -6,12 +6,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
 import 'package:tonight/domain/user_profile/user_profile_model.dart';
+import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:translations/translations.dart';
 
 part 'profile_bloc.freezed.dart';
-
 part 'profile_event.dart';
-
 part 'profile_state.dart';
 
 const _photosPageSize = 9;
@@ -26,6 +25,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       _onNextPhotosPageFetched,
       transformer: throttleDroppable(),
     );
+    on<_UserWallPhotoDeleted>(_onUserWallPhotoDeleted);
   }
 
   FutureOr<void> _onUserProfileLoaded(
@@ -94,6 +94,21 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
             ),
           ),
           hasPhotosReachedMax: photos.length != _photosPageSize,
+        ),
+      ),
+    );
+  }
+
+  FutureOr<void> _onUserWallPhotoDeleted(
+    _UserWallPhotoDeleted event,
+    Emitter<ProfileState> emit,
+  ) {
+    final userProfile = state.userProfile.getOrCrash();
+    final photos = _userProfileAggregator.deletePhotoFromState(event.photo);
+    emit(
+      state.copyWith(
+        userProfile: some(
+          userProfile.copyWith(userPhotos: photos),
         ),
       ),
     );

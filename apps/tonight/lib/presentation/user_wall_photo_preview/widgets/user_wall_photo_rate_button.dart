@@ -8,28 +8,21 @@ import 'package:translations/translations.dart';
 
 class UserWallPhotoRateButton extends StatelessWidget {
   final WallPhoto photo;
-  final double width;
 
-  const UserWallPhotoRateButton({
-    required this.photo,
-    required this.width,
-    Key? key,
-  }) : super(key: key);
+  const UserWallPhotoRateButton({required this.photo, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width,
-      child: ElevatedButton.icon(
-        onPressed: () => photo.isVerified
-            ? context.pushRoute(ReviewRoute(eventId: photo.eventId))
-            : context.showSnackbarMessage(S().photoNotVerifiedYet),
-        label: Text(S().rateEvent),
-        icon: const FaIcon(
-          FontAwesomeIcons.solidStar,
-          size: 20,
-        ),
+    return FloatingActionButton.extended(
+      onPressed: () => photo.isVerified
+          ? context.pushRoute(ReviewRoute(eventId: photo.eventId))
+          : context.showSnackbarMessage(S().photoNotVerifiedYet),
+      icon: const FaIcon(
+        FontAwesomeIcons.solidStar,
+        size: 20,
       ),
+      label: Text(S().rateEvent),
     );
   }
 }
