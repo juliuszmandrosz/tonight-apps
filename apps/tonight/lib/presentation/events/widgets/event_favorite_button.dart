@@ -24,7 +24,7 @@ class EventFavoriteButton extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        final isFavorite = state.favoriteEvents.contains(event);
+        final isFavorite = state.favoriteEvents.any((e) => e.id == event.id);
         return state.status == CubitStatus.loading
             ? Padding(
                 padding: const EdgeInsets.all(4),

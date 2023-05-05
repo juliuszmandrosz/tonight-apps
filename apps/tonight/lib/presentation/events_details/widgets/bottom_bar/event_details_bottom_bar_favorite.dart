@@ -24,7 +24,7 @@ class EventDetailsBottomBarFavorite extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        final isFavorite = state.favoriteEvents.contains(event);
+        final isFavorite = state.favoriteEvents.any((e) => e.id == event.id);
         return TonightToggleIcon(
           onIcon: const FaIcon(FontAwesomeIcons.solidHeart),
           onPressed: () => context
