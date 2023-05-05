@@ -11,7 +11,7 @@ String getAuthErrorMessage(AuthFailure authFailure) {
     userDisabled: (_) => S().userDisabled,
     emailInUse: (_) => S().emailAlreadyInUse,
     weakPassword: (_) => S().weakPassword,
-    userNotFound: (_) => S().userNotFound,
+    userNotFound: (_) => S().emailNotFound,
     wrongPassword: (_) => S().wrongPassword,
     invalidVerificationCode: (_) => S().invalidVerificationCode,
     invalidVerificationId: (_) => S().invalidVerificationId,
@@ -20,5 +20,10 @@ String getAuthErrorMessage(AuthFailure authFailure) {
     invalidAccessCode: (_) => S().invalidAccessCode,
     invalidLink: (_) => S().invalidSignInLink,
     unavailable: (_) => S().errorCheckInternetConnection,
+    deviceNotSupported: (_) => S().deviceNotSupported,
+    invalidPhoneNumber: (_) => S().invalidPhoneNumber,
+    smsTimeout: (_) => S().smsTimeout,
+    tooManyRequests: (_) => S().tooManyRequests,
+    phoneNumberInUse: (_) => S().phoneNumberInUse,
   );
 }

@@ -6,9 +6,11 @@ class PushNotificationsState with _$PushNotificationsState {
 
   factory PushNotificationsState({
     required CubitStatus status,
+    required String? lastHandledMessageId,
   }) = _PushNotificationsState;
 
   factory PushNotificationsState.initial() => PushNotificationsState(
         status: CubitStatus.initial,
+        lastHandledMessageId: null,
       );
 }

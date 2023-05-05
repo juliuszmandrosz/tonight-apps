@@ -32,7 +32,6 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
 
   WelcomeLoadingCubit _initWelcomeCubit(BuildContext context) {
     _welcomeLoadingCubit = WelcomeLoadingCubit(
-      pushNotificationsCubit: getIt<PushNotificationsCubit>(),
       stripe: getIt<Stripe>(),
       firebaseMessaging: getIt<FirebaseMessaging>(),
       availableFiltersCubit: context.read<AvailableFiltersCubit>(),
@@ -40,6 +39,7 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
       eventFavoriteCubit: context.read<EventFavoriteCubit>(),
       clubFavoriteCubit: context.read<ClubFavoriteCubit>(),
       profileBloc: context.read<ProfileBloc>(),
+      pushNotificationsCubit: context.read<PushNotificationsCubit>(),
     );
 
     return _welcomeLoadingCubit!;

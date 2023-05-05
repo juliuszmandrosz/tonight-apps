@@ -3,8 +3,8 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tonight/application/add_wall_photo/add_wall_photo_cubit.dart';
-import 'package:tonight/application/add_wall_photo/wall_photo_venue_model.dart';
+import 'package:tonight/application/add_wall_photo/cubit/add_wall_photo_cubit.dart';
+import 'package:tonight/application/add_wall_photo/models/wall_photo_venue_model.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
@@ -90,35 +90,32 @@ class AddWallPhotoClubTile extends StatelessWidget {
     await showModalBottomSheet(
       context: context,
       builder: (_) {
-        return SizedBox(
-          height: 200,
-          child: ListView.builder(
-            itemCount: state.nearestVenues.length,
-            itemBuilder: (_, i) {
-              final venue = state.nearestVenues[i];
-              return Padding(
-                padding: EdgeInsets.only(top: i == 0 ? 8.0 : 0),
-                child: ListTile(
-                  leading: ProfilePictureContainer(
-                    profilePictureUrl: venue.venuePhotoUrl,
-                    imageSize: 40,
-                    backgroundColor: context.surfaceColor,
-                    textColor: context.onSurfaceColor,
-                    textStyle: context.titleSmall,
-                    username: venue.venueName,
-                  ),
-                  title: Text(
-                    venue.venueName,
-                    style: context.titleSmall,
-                  ),
-                  onTap: () {
-                    context.read<AddWallPhotoCubit>().selectVenue(venue);
-                    context.popRoute();
-                  },
+        return ListView.builder(
+          itemCount: state.nearestVenues.length,
+          itemBuilder: (_, i) {
+            final venue = state.nearestVenues[i];
+            return Padding(
+              padding: EdgeInsets.only(top: i == 0 ? 8.0 : 0),
+              child: ListTile(
+                leading: ProfilePictureContainer(
+                  profilePictureUrl: venue.venuePhotoUrl,
+                  imageSize: 40,
+                  backgroundColor: context.surfaceColor,
+                  textColor: context.onSurfaceColor,
+                  textStyle: context.titleSmall,
+                  username: venue.venueName,
                 ),
-              );
-            },
-          ),
+                title: Text(
+                  venue.venueName,
+                  style: context.titleSmall,
+                ),
+                onTap: () {
+                  context.read<AddWallPhotoCubit>().selectVenue(venue);
+                  context.popRoute();
+                },
+              ),
+            );
+          },
         );
       },
     );

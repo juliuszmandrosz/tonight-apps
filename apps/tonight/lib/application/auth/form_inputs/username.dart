@@ -6,6 +6,7 @@ enum UsernameError {
   short,
   long,
   specialCharacters,
+  whiteSpaces,
 }
 
 final usernameErrorMessages = {
@@ -13,6 +14,7 @@ final usernameErrorMessages = {
   UsernameError.short: S().usernameTooShort,
   UsernameError.long: S().usernameTooLong,
   UsernameError.specialCharacters: S().usernameContainsSpecialCharacters,
+  UsernameError.whiteSpaces: S().whiteSpacesNotAllowedInUsername,
 };
 
 class Username extends FormzInput<String, UsernameError> {
@@ -36,6 +38,9 @@ class Username extends FormzInput<String, UsernameError> {
     }
     if (!RegExp("^[A-Za-z0-9 ]*\$").hasMatch(value)) {
       return UsernameError.specialCharacters;
+    }
+    if (value.contains(RegExp(r'\s'))) {
+      return UsernameError.whiteSpaces;
     }
     return null;
   }

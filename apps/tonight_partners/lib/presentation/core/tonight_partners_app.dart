@@ -18,7 +18,7 @@ class TonightPartnersApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt<AuthCubit>()..requestAuthCheck(),
+          create: (context) => getIt<AuthCubit>()..listenToAuthChanges(),
         ),
         BlocProvider(
           create: (context) => getIt<EventNotifierCubit>(),

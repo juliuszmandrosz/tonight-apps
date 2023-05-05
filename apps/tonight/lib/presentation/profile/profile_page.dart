@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,14 +54,6 @@ class ProfilePage extends HookWidget {
                     ),
                     const SizedBox(height: 24),
                     UsernameRow(username: userProfile.username),
-                    const SizedBox(height: 12),
-                    AutoSizeText(
-                      userProfile.email,
-                      style: context.titleMedium.copyWith(
-                        color: context.secondaryColor,
-                      ),
-                      maxLines: 1,
-                    ),
                     const SizedBox(height: 40),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),

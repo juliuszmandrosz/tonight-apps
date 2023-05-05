@@ -4,7 +4,7 @@ part 'auth_failure.freezed.dart';
 
 @freezed
 class AuthFailure with _$AuthFailure {
-  factory AuthFailure.unexpected() = _Unexpected;
+  const factory AuthFailure.unexpected() = _Unexpected;
 
   const factory AuthFailure.operationNotAllowed() = _OperationNotAllowed;
 
@@ -38,4 +38,14 @@ class AuthFailure with _$AuthFailure {
   const factory AuthFailure.invalidLink() = _InvalidLink;
 
   const factory AuthFailure.unavailable() = _Unavailable;
+
+  const factory AuthFailure.invalidPhoneNumber() = _InvalidPhoneNumber;
+
+  const factory AuthFailure.tooManyRequests() = _TooManyRequests;
+
+  const factory AuthFailure.deviceNotSupported() = _DeviceNotSupported;
+
+  const factory AuthFailure.smsTimeout() = _SmsTimeout;
+
+  const factory AuthFailure.phoneNumberInUse() = _PhoneNumberInUse;
 }

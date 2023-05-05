@@ -10,7 +10,6 @@ import 'package:tonight/application/auth/form_inputs/username.dart';
 import 'package:translations/translations.dart';
 
 part 'onboarding_cubit.freezed.dart';
-
 part 'onboarding_state.dart';
 
 class OnboardingCubit extends Cubit<OnboardingState> {
@@ -21,7 +20,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   Future<void> submitOnboarding() async {
     if (!_validateForm()) return;
 
-    emit(state.copyWith(status: FormzStatus.submissionInProgress));
+    emit(state.copyWith(submissionStatus: FormzStatus.submissionInProgress));
 
     final failureOrSuccess = await _userAccountFacade.submitOnboardingForUser(
       username: state.username.value,
@@ -30,7 +29,8 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
     failureOrSuccess.fold(
       _emitFailure,
-      (success) => emit(state.copyWith(status: FormzStatus.submissionSuccess)),
+      (success) =>
+          emit(state.copyWith(submissionStatus: FormzStatus.submissionSuccess)),
     );
   }
 
@@ -59,7 +59,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     final status = Formz.validate([
       state.username,
     ]);
-    emit(state.copyWith(status: status));
+    emit(state.copyWith(submissionStatus: status));
 
     return status.isValidated;
   }
@@ -68,7 +68,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     emit(
       state.copyWith(
         errorMessage: some(failure.message),
-        status: FormzStatus.submissionFailure,
+        submissionStatus: FormzStatus.submissionFailure,
       ),
     );
 

@@ -7,6 +7,7 @@ import 'package:tonight/application/clubs/club_favorite/club_favorite_cubit.dart
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:tonight/application/profile/profile_bloc.dart';
+import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
@@ -23,7 +24,7 @@ class TonightApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (ctx) => getIt<AuthCubit>()..requestAuthCheck(),
+          create: (ctx) => getIt<AuthCubit>()..listenToUserChanges(),
         ),
         BlocProvider(
           create: (ctx) => getIt<UserLocationCubit>(),
@@ -45,6 +46,9 @@ class TonightApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<ProfileBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<PushNotificationsCubit>(),
         ),
       ],
       child: MaterialApp.router(
