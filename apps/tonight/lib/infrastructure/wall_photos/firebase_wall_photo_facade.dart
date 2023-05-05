@@ -56,6 +56,7 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
           userId: photo.userId,
           profilePictureUrl: photo.userProfilePhotoUrl,
         );
+
         final messageId = const Uuid().v1();
         final messageDto = MessageDto(
           id: messageId,
@@ -73,6 +74,18 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
         tx.set(participantRef, participantDto.toJson());
         tx.set(messageRef, messageDto.toJson());
       });
+      return right(unit);
+    } on FirebaseException catch (e) {
+      _logger.e(e);
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const WallPhotoFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<WallPhotoFailure, Unit>> deleteWallPhoto(String photoId) async {
+    try {
+      await _firestore.wallPhotos.doc(photoId).delete();
       return right(unit);
     } on FirebaseException catch (e) {
       _logger.e(e);

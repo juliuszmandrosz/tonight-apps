@@ -7,4 +7,7 @@ class ProfileEvent with _$ProfileEvent {
   const factory ProfileEvent.photosRefreshed() = _PhotosRefreshed;
 
   const factory ProfileEvent.nextPhotosPageFetched() = _NextPhotosPageFetched;
+
+  const factory ProfileEvent.userWallPhotoDeleted(WallPhoto photo) =
+      _UserWallPhotoDeleted;
 }
