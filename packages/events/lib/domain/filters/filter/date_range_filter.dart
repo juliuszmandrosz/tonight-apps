@@ -13,19 +13,21 @@ class DateRangeFilter implements IFilter {
   });
 
   factory DateRangeFilter.empty() => DateRangeFilter(
-        fromDate: DateTime.now(),
+        fromDate: null,
         toDate: null,
       );
 
   @override
   String buildFilters(String query) {
-    if (fromDate == null) return query;
-
-    final startTimestamp = fromDate!.millisecondsSinceEpoch;
+    final startTimestamp = fromDate?.millisecondsSinceEpoch ??
+        DateTime.now().millisecondsSinceEpoch;
 
     if (toDate == null) {
       return TypesenseQueryBuilder.setNumericHigherEqualThan(
-          query: query, field: eventEndDateFieldName, than: startTimestamp);
+        query: query,
+        field: eventEndDateFieldName,
+        than: startTimestamp,
+      );
     }
 
     return TypesenseQueryBuilder.setNumericBetween(
