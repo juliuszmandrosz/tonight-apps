@@ -86,4 +86,11 @@ class UserProfileAggregator {
 
     return right(photos);
   }
+
+  List<WallPhoto> deletePhotoFromState(WallPhoto photo) {
+    final photosCopy = [..._userPhotos];
+    photosCopy.remove(photo);
+    _userPhotos = photosCopy;
+    return _userPhotos;
+  }
 }
