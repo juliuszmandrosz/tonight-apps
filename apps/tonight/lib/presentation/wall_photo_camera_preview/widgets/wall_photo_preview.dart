@@ -60,7 +60,6 @@ class _WallPhotoPreviewState extends State<WallPhotoPreview>
   Widget get _photo => Image.file(
         File(widget.photoPath),
         fit: BoxFit.cover,
-        filterQuality: FilterQuality.high,
       );
 
   @override
