@@ -57,9 +57,9 @@ class UserWallPhotoPreviewPage extends StatelessWidget {
               },
             ),
             const Positioned(
-              left: 5,
-              top: 5,
-              child: ImageBackButton(isTransparent: true),
+              left: 10,
+              top: 10,
+              child: ImageBackButton(),
             ),
           ],
         ),
