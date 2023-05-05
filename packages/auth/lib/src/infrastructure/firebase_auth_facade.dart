@@ -513,12 +513,13 @@ class FirebaseAuthFacade
   @override
   Future<Either<AuthFailure, Unit>> deleteAccount() async {
     try {
-      await _firebaseAuth.tryGetFirebaseUser().delete();
+      final firebaseUser = _firebaseAuth.tryGetFirebaseUser();
+      await _authCloudFunctionsFacade.deleteAccount(firebaseUser.uid);
+      await signOut();
       return right(unit);
-    } on FirebaseAuthException catch (e) {
-      _logger.e(e);
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const AuthFailure.unexpected());
+    } on DioError catch (e) {
+      _logger.e('Dio Error deleting account EXCEPTION: $e');
+      return left(await _handleDioError(e));
     }
   }
 
