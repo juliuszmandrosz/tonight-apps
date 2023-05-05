@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:translations/translations.dart';
 
-class PhoneNumberField extends StatelessWidget {
+class PhoneNumberField extends StatefulWidget {
   final Key formKey;
   final void Function(String?) onInputChanged;
 
@@ -15,12 +15,25 @@ class PhoneNumberField extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<PhoneNumberField> createState() => _PhoneNumberFieldState();
+}
+
+class _PhoneNumberFieldState extends State<PhoneNumberField> {
+  final _initialCountry = Intl.getCurrentLocale().toUpperCase();
+  late final PhoneNumber _initialNumber;
+
+  @override
+  void initState() {
+    super.initState();
+    _initialNumber = PhoneNumber(isoCode: _initialCountry);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final locale = Intl.getCurrentLocale().toUpperCase();
     return Form(
-      key: formKey,
+      key: widget.formKey,
       child: InternationalPhoneNumberInput(
-        onInputChanged: (s) => onInputChanged(s.phoneNumber),
+        onInputChanged: (s) => widget.onInputChanged(s.phoneNumber),
         selectorConfig: const SelectorConfig(
           selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
           useEmoji: true,
@@ -28,8 +41,8 @@ class PhoneNumberField extends StatelessWidget {
         autoFocus: true,
         textStyle: context.titleSmall,
         selectorTextStyle: context.titleSmall,
-        initialValue: PhoneNumber(isoCode: locale),
-        locale: locale,
+        initialValue: _initialNumber,
+        locale: _initialCountry,
         countries: _getAvailableCountries(),
         inputDecoration: InputDecoration(
           hintText: S().phoneNumber,
