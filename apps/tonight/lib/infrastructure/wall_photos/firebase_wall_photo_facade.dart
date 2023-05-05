@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:account_settings/infrastructure/dtos/user/user_account_dto.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
@@ -13,6 +12,8 @@ import 'package:logger/logger.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
+import 'package:tonight/infrastructure/messages/dto/message_dto.dart';
+import 'package:tonight/infrastructure/participants/dtos/participant_dto.dart';
 import 'package:tonight/infrastructure/wall_photos/dtos/wall_photo_dto.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/show_photos_from_clubs_in_range_filter.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/wall_photo_filters.dart';
@@ -36,50 +37,66 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   );
 
   @override
-  Future<Either<WallPhotoFailure, Unit>> addPhoto({
-    required String venueId,
-    required String venueName,
-    required LatLng venueLocation,
-    required String eventId,
-    required String eventName,
-    required DateTime eventEndDateTime,
-    required Uint8List photo,
-    required LatLng? photoLocation,
-  }) async {
+  Future<Either<WallPhotoFailure, Unit>> addWallPhoto(WallPhoto photo) async {
     try {
-      final userDoc = await _firestore.getCurrentUserDocRef(_auth).get();
-      final user = UserAccountDto.fromFirebase(userDoc);
-      final photoUrl = await _uploadPhoto(
-        eventId: eventId,
-        photo: photo,
-      );
-      final wallPhoto = WallPhoto(
-        photoUrl: photoUrl,
-        venueId: venueId,
-        venueName: venueName,
-        venueLocation: venueLocation,
-        eventId: eventId,
-        eventName: eventName,
-        userId: user.id!,
-        eventEndDateTime: eventEndDateTime,
-        photoLocation: photoLocation,
-        username: user.username,
-        userProfilePhotoUrl: user.profilePictureUrl,
-      );
-      final wallPhotoDto = WallPhotoDto.fromDomain(wallPhoto);
-      await _firestore.wallPhotos.doc(wallPhoto.id).set(wallPhotoDto.toJson());
+      await _firestore.runTransaction((tx) async {
+        final participantRef =
+            _firestore.rooms.doc(photo.eventId).participants.doc(photo.userId);
+        final existingParticipant = await tx.get(participantRef);
+
+        final wallPhotoDto = WallPhotoDto.fromDomain(photo);
+        final wallPhotoRef = _firestore.wallPhotos.doc(photo.id);
+
+        tx.set(wallPhotoRef, wallPhotoDto.toJson());
+
+        if (existingParticipant.exists) return;
+
+        final participantDto = ParticipantDto(
+          username: photo.username,
+          userId: photo.userId,
+          profilePictureUrl: photo.userProfilePhotoUrl,
+        );
+        final messageId = const Uuid().v1();
+        final messageDto = MessageDto(
+          id: messageId,
+          userId: photo.userId,
+          username: photo.username,
+          userPictureUrl: photo.userProfilePhotoUrl,
+          text: 'joined',
+          createdAt: DateTime.now(),
+          isJoinedInfo: true,
+        );
+
+        final messageRef =
+            _firestore.rooms.doc(photo.eventId).messages.doc(messageId);
+
+        tx.set(participantRef, participantDto.toJson());
+        tx.set(messageRef, messageDto.toJson());
+      });
       return right(unit);
     } on FirebaseException catch (e) {
-      return left(
-        await handleFirebaseError<WallPhotoFailure>(
-          logger: _logger,
-          crashlytics: _crashlytics,
-          exception: e,
-          message: 'Firebase Exception adding wall photo EXCEPTION: $e',
-          unexpectedFailure: const WallPhotoFailure.unexpected(),
-          permissionDeniedFailure: const WallPhotoFailure.permissionDenied(),
-        ),
-      );
+      _logger.e(e);
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const WallPhotoFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<WallPhotoFailure, String>> uploadPhoto({
+    required String eventId,
+    required Uint8List photo,
+  }) async {
+    try {
+      final photoId = const Uuid().v1();
+      final storageRef = _storage.ref('events/$eventId/wall_photos/$photoId');
+      final metadata = SettableMetadata(contentType: 'image/jpeg');
+      final uploadTask = await storageRef.putData(photo, metadata);
+      final result = await uploadTask.ref.getDownloadURL();
+      return right(result);
+    } on FirebaseException catch (e) {
+      _logger.e(e);
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const WallPhotoFailure.unexpected());
     }
   }
 
@@ -172,7 +189,7 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
       );
     } on FirebaseException catch (e) {
       _logger.e(e);
-      _crashlytics.recordError(e, StackTrace.current);
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const WallPhotoFailure.unexpected());
     }
   }
@@ -214,16 +231,5 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
         maxDistance: 50,
       ),
     );
-  }
-
-  Future<String> _uploadPhoto({
-    required String eventId,
-    required Uint8List photo,
-  }) async {
-    final photoId = const Uuid().v1();
-    final storageRef = _storage.ref('events/$eventId/wall_photos/$photoId');
-    final metadata = SettableMetadata(contentType: 'image/jpeg');
-    final uploadTask = await storageRef.putData(photo, metadata);
-    return uploadTask.ref.getDownloadURL();
   }
 }

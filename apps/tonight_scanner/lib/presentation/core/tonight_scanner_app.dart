@@ -17,7 +17,7 @@ class TonightScannerApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (ctx) => getIt<AuthCubit>()..requestAuthCheck(),
+          create: (ctx) => getIt<AuthCubit>()..listenToAuthChanges(),
         ),
         BlocProvider(
           create: (ctx) => getIt<NetworkCheckCubit>()..initNetworkListener(),

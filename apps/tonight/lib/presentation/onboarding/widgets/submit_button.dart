@@ -1,3 +1,4 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -11,8 +12,8 @@ class SubmitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<OnboardingCubit, OnboardingState>(
       builder: (context, state) {
-        return state.status.isSubmissionInProgress
-            ? const CircularProgressIndicator()
+        return state.submissionStatus.isSubmissionInProgress
+            ? const CircleLoadingIndicator()
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [

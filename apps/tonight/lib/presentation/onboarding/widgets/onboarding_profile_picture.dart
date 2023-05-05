@@ -1,7 +1,9 @@
+import 'package:auth/auth.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/onboarding/onboarding_cubit.dart';
+import 'package:tonight/presentation/utils/show_confirm_phone_number_dialog.dart';
 
 class OnboardingProfilePicture extends StatelessWidget {
   const OnboardingProfilePicture({Key? key}) : super(key: key);
@@ -58,11 +60,23 @@ class OnboardingProfilePicture extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: colors.secondaryContainer,
                   ),
-                  child: IconButton(
-                    icon: const Icon(Icons.edit),
-                    onPressed: () =>
-                        context.read<OnboardingCubit>().pickProfilePhoto(),
-                    color: colors.onSecondaryContainer,
+                  child: BlocBuilder<AuthCubit, AuthState>(
+                    builder: (context, state) {
+                      return IconButton(
+                        icon: const Icon(Icons.edit),
+                        onPressed: () async {
+                          if (state.maybeWhen(
+                              authenticated: (user) =>
+                                  user.isPhoneNumberVerified,
+                              orElse: () => false)) {
+                            context.read<OnboardingCubit>().pickProfilePhoto();
+                            return;
+                          }
+                          await showConfirmPhoneNumberDialog(context);
+                        },
+                        color: colors.onSecondaryContainer,
+                      );
+                    },
                   ),
                 ),
               ),

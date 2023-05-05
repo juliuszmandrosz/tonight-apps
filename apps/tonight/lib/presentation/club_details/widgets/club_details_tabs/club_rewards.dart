@@ -38,7 +38,6 @@ class ClubRewards extends StatelessWidget {
                       clubRewardsWithAttendance: clubRewardsWithAttendance,
                     ),
                     const SizedBox(height: 30),
-                    // TODO - add translation
                     Text(
                       S().rewardsAvailableSoon,
                       style: context.titleMedium,

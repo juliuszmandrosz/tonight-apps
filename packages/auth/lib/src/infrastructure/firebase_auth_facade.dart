@@ -1,7 +1,9 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
 import 'package:auth/auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:common/common.dart';
 import 'package:crypto/crypto.dart';
@@ -22,6 +24,7 @@ class FirebaseAuthFacade
         SelectorAuthFacade,
         CommonAuthFacade {
   final FirebaseAuth _firebaseAuth;
+  final FirebaseFirestore _firestore;
   final GoogleSignIn _googleSignIn;
   final Logger _logger;
   final AuthCloudFunctionsFacade _authCloudFunctionsFacade;
@@ -29,16 +32,84 @@ class FirebaseAuthFacade
 
   FirebaseAuthFacade({
     required FirebaseAuth firebaseAuth,
+    required FirebaseFirestore firestore,
     required GoogleSignIn googleSignIn,
     required Logger logger,
     required AuthCloudFunctionsFacade authCloudFunctionsFacade,
     required FirebaseCrashlytics crashlytics,
-  })
-      : _firebaseAuth = firebaseAuth,
+  })  : _firebaseAuth = firebaseAuth,
+        _firestore = firestore,
         _googleSignIn = googleSignIn,
         _logger = logger,
         _authCloudFunctionsFacade = authCloudFunctionsFacade,
         _crashlytics = crashlytics;
+
+  @override
+  Stream<Either<AuthFailure, Tuple2<String, int?>>>
+      sendSmsVerificationCodeForUser({
+    required String phoneNumber,
+    required int? resendToken,
+  }) async* {
+    final streamController =
+        StreamController<Either<AuthFailure, Tuple2<String, int?>>>();
+    await _firebaseAuth.verifyPhoneNumber(
+      phoneNumber: phoneNumber,
+      timeout: const Duration(seconds: 60),
+      forceResendingToken: resendToken,
+      codeSent: (verificationId, resendToken) async {
+        final result = Tuple2(verificationId, resendToken);
+        streamController.add(right(result));
+      },
+      verificationFailed: (e) async {
+        final failure = await _handleFirebaseException(e);
+        streamController.add(left(failure));
+      },
+      verificationCompleted: (phoneAuthCredential) {
+        // Android only
+      },
+      codeAutoRetrievalTimeout: (_) {
+        streamController.add(left(const AuthFailure.smsTimeout()));
+      },
+    );
+
+    yield* streamController.stream;
+  }
+
+  @override
+  Future<Either<AuthFailure, AppUser>> signInWithPhoneNumberAsUser({
+    required String verificationId,
+    required String smsCode,
+  }) async {
+    try {
+      final credential = PhoneAuthProvider.credential(
+        verificationId: verificationId,
+        smsCode: smsCode,
+      );
+      final result = await _firebaseAuth.signInWithCredential(credential);
+      await _addUserToFirestoreIfNotExists(result);
+      final appUser = await _mapFirebaseUserToDomain();
+      return right(appUser);
+    } on FirebaseAuthException catch (e) {
+      return left(await _handleFirebaseException(e));
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, Unit>> linkPhoneNumberForUser({
+    required String verificationId,
+    required String smsCode,
+  }) async {
+    try {
+      final credential = PhoneAuthProvider.credential(
+        verificationId: verificationId,
+        smsCode: smsCode,
+      );
+      await _firebaseAuth.tryGetFirebaseUser().linkWithCredential(credential);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      return left(await _handleFirebaseException(e));
+    }
+  }
 
   @override
   Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForPartner({
@@ -152,7 +223,8 @@ class FirebaseAuthFacade
 
   @override
   Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForUser(
-      String email,) async {
+    String email,
+  ) async {
     try {
       await _authCloudFunctionsFacade.checkIfUserCanSignIn(email);
       await _sendSignInLinkForUser(email);
@@ -173,7 +245,7 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Either<AuthFailure, bool>> signInWithEmailLinkAsUser({
+  Future<Either<AuthFailure, AppUser>> signInWithEmailLinkAsUser({
     required String email,
     required Uri link,
   }) async {
@@ -183,9 +255,9 @@ class FirebaseAuthFacade
       }
 
       final result = await _signInWithEmailLink(email, link.toString());
-      final isNewUser = result.additionalUserInfo!.isNewUser;
       await _addUserToFirestoreIfNotExists(result);
-      return right(isNewUser);
+      final appUser = await _mapFirebaseUserToDomain();
+      return right(appUser);
     } on FirebaseAuthException catch (e) {
       _logger.e(
         "Auth Exception signing in with email link as user EXCEPTION: $e",
@@ -202,7 +274,7 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Either<AuthFailure, bool>> signInWithGoogleAsUser() async {
+  Future<Either<AuthFailure, AppUser>> signInWithGoogleAsUser() async {
     try {
       final googleUser = await _googleSignIn.signIn();
 
@@ -224,7 +296,9 @@ class FirebaseAuthFacade
 
       await _addUserToFirestoreIfNotExists(result);
 
-      return right(isNewUser);
+      final appUser = await _mapFirebaseUserToDomain();
+
+      return right(appUser);
     } on FirebaseAuthException catch (e) {
       _logger.e(
         "Exception  signing in with Google as user EXCEPTION: $e",
@@ -247,7 +321,7 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Either<AuthFailure, bool>> signInWithAppleAsUser() async {
+  Future<Either<AuthFailure, AppUser>> signInWithAppleAsUser() async {
     try {
       final rawNonce = _generateNonce();
       final nonce = _getShaFromString(rawNonce);
@@ -281,7 +355,9 @@ class FirebaseAuthFacade
 
       await _addUserToFirestoreIfNotExists(result);
 
-      return right(isNewUser);
+      final appUser = await _mapFirebaseUserToDomain();
+
+      return right(appUser);
     } on FirebaseAuthException catch (e) {
       _logger.e(
         'Firebase Auth Exception signing in with Apple as user EXCEPTION: $e',
@@ -325,7 +401,9 @@ class FirebaseAuthFacade
 
       await _authCloudFunctionsFacade.checkIfUserCanSignIn(userEmail);
 
-      return some(firebaseUser.toDomain());
+      final result = await _mapFirebaseUserToDomain();
+
+      return some(result);
     } on DioError catch (e) {
       await signOut();
       _logger.e("Dio Error during getting signed user EXCEPTION: $e");
@@ -385,12 +463,43 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Stream<Option<AppUser>>> listenToAuthStateChange() async {
-    return Future.value(
-      _firebaseAuth
-          .authStateChanges()
-          .map((user) => user != null ? some(user.toDomain()) : none()),
-    );
+  Stream<Option<AppUser>> listenToAuthStateChange() async* {
+    yield* _firebaseAuth.authStateChanges().asyncExpand((user) async* {
+      if (user == null) {
+        yield none();
+        return;
+      }
+      try {
+        final result = await _mapFirebaseUserToDomain();
+        yield some(result);
+      } on NotAuthenticatedError {
+        yield none();
+      } on FirebaseAuthException {
+        yield none();
+      } on FirebaseException {
+        yield none();
+      }
+    });
+  }
+
+  @override
+  Stream<Option<AppUser>> listenToUserChanges() async* {
+    yield* _firebaseAuth.userChanges().asyncExpand((user) async* {
+      if (user == null) {
+        yield none();
+        return;
+      }
+      try {
+        final result = await _mapFirebaseUserToDomain();
+        yield some(result);
+      } on NotAuthenticatedError {
+        yield none();
+      } on FirebaseAuthException {
+        yield none();
+      } on FirebaseException {
+        yield none();
+      }
+    });
   }
 
   @override
@@ -404,28 +513,26 @@ class FirebaseAuthFacade
   @override
   Future<Either<AuthFailure, Unit>> deleteAccount() async {
     try {
-      final firebaseUser = _firebaseAuth.tryGetFirebaseUser();
-      await _authCloudFunctionsFacade.deleteAccount(
-        email: firebaseUser.email!,
-        accountId: firebaseUser.uid,
-      );
-      await signOut();
+      await _firebaseAuth.tryGetFirebaseUser().delete();
       return right(unit);
-    } on DioError catch (e) {
-      _logger.e('Dio Error deleting account EXCEPTION: $e');
-      return left(await _handleDioError(e));
+    } on FirebaseAuthException catch (e) {
+      _logger.e(e);
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const AuthFailure.unexpected());
     }
   }
 
   Future<void> _addUserToFirestoreIfNotExists(
-      UserCredential userCredential,) async {
+    UserCredential userCredential,
+  ) async {
     final isNewUser = userCredential.additionalUserInfo!.isNewUser;
 
     if (isNewUser) {
       final user = userCredential.user!;
       await _authCloudFunctionsFacade.addUser(
         userId: user.uid,
-        email: user.email!,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
       );
       await _refreshToken();
     }
@@ -478,8 +585,10 @@ class FirebaseAuthFacade
     return user.email ?? user.providerData.first.email!;
   }
 
-  Future<UserCredential> _signInWithEmailLink(String email,
-      String link,) async {
+  Future<UserCredential> _signInWithEmailLink(
+    String email,
+    String link,
+  ) async {
     return _firebaseAuth.signInWithEmailLink(
       email: email,
       emailLink: link.toString(),
@@ -539,11 +648,12 @@ class FirebaseAuthFacade
 
     await _crashlytics.recordError(error, StackTrace.current);
 
-    return AuthFailure.unexpected();
+    return const AuthFailure.unexpected();
   }
 
   Future<AuthFailure> _handleFirebaseException(
-      FirebaseException exception,) async {
+    FirebaseException exception,
+  ) async {
     final failure = _getAuthFailureOrNull(exception);
 
     if (failure != null) {
@@ -552,7 +662,7 @@ class FirebaseAuthFacade
 
     await _crashlytics.recordError(exception, StackTrace.current);
 
-    return AuthFailure.unexpected();
+    return const AuthFailure.unexpected();
   }
 
   AuthFailure? _getAuthFailureOrNull(FirebaseException exception) {
@@ -571,7 +681,7 @@ class FirebaseAuthFacade
     final random = Random.secure();
     return List.generate(
       length,
-          (_) => charset[random.nextInt(charset.length)],
+      (_) => charset[random.nextInt(charset.length)],
     ).join();
   }
 
@@ -585,5 +695,14 @@ class FirebaseAuthFacade
     final user = _firebaseAuth.tryGetFirebaseUser();
     await user.reload();
     await user.getIdToken(true);
+  }
+
+  Future<AppUser> _mapFirebaseUserToDomain() async {
+    final firebaseUser = _firebaseAuth.tryGetFirebaseUser();
+    final currentUser =
+        await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
+    final userData = currentUser.data() as Map<String, dynamic>;
+    final username = userData['username'] as String?;
+    return firebaseUser.toDomain(username: username);
   }
 }

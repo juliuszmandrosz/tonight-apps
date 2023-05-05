@@ -3,7 +3,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tonight/application/add_wall_photo/add_wall_photo_cubit.dart';
+import 'package:tonight/application/add_wall_photo/cubit/add_wall_photo_cubit.dart';
 import 'package:translations/translations.dart';
 
 class AddWallPhotoEventTile extends StatelessWidget {
@@ -65,32 +65,29 @@ class AddWallPhotoEventTile extends StatelessWidget {
     await showModalBottomSheet(
       context: context,
       builder: (_) {
-        return SizedBox(
-          height: 200,
-          child: ListView.builder(
-            itemCount: state.liveEventsFromSelectedClub.length,
-            itemBuilder: (_, i) {
-              final event = state.liveEventsFromSelectedClub[i];
-              return Padding(
-                padding: EdgeInsets.only(top: i == 0 ? 8.0 : 0),
-                child: ListTile(
-                  leading: CircleNetworkPhoto(
-                    photoUrl: event.eventPhotoUrl,
-                    containerSize: 40,
-                    loaderSize: 16,
-                  ),
-                  title: Text(
-                    event.eventName,
-                    style: context.titleSmall,
-                  ),
-                  onTap: () {
-                    context.read<AddWallPhotoCubit>().selectEvent(event);
-                    context.popRoute();
-                  },
+        return ListView.builder(
+          itemCount: state.liveEventsFromSelectedClub.length,
+          itemBuilder: (_, i) {
+            final event = state.liveEventsFromSelectedClub[i];
+            return Padding(
+              padding: EdgeInsets.only(top: i == 0 ? 8.0 : 0),
+              child: ListTile(
+                leading: CircleNetworkPhoto(
+                  photoUrl: event.eventPhotoUrl,
+                  containerSize: 40,
+                  loaderSize: 16,
                 ),
-              );
-            },
-          ),
+                title: Text(
+                  event.eventName,
+                  style: context.titleSmall,
+                ),
+                onTap: () {
+                  context.read<AddWallPhotoCubit>().selectEvent(event);
+                  context.popRoute();
+                },
+              ),
+            );
+          },
         );
       },
     );

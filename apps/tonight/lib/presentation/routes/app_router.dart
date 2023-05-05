@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:payments/domain/domain.dart';
-import 'package:tonight/application/add_wall_photo/wall_photo_venue_model.dart';
+import 'package:tonight/application/add_wall_photo/models/wall_photo_venue_model.dart';
 import 'package:tonight/presentation/add_wall_photo/add_wall_photo_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
 import 'package:tonight/presentation/club_city_picker/club_city_picker_page.dart';
@@ -27,6 +27,7 @@ import 'package:tonight/presentation/routes/page_transitions/slide_up_transition
 import 'package:tonight/presentation/routes/page_transitions/zoom_in_transition.dart';
 import 'package:tonight/presentation/select_club/select_club_page.dart';
 import 'package:tonight/presentation/sign_in/sign_in_page.dart';
+import 'package:tonight/presentation/sign_in_with_phone_number/sign_in_with_phone_number_page.dart';
 import 'package:tonight/presentation/splash/splash_page.dart';
 import 'package:tonight/presentation/ticket_checkout/ticket_checkout_page.dart';
 import 'package:tonight/presentation/ticket_payment_confirm/ticket_payment_confirm_page.dart';
@@ -38,6 +39,7 @@ import 'package:tonight/presentation/update_profile_picture/update_profile_pictu
 import 'package:tonight/presentation/update_username/update_username_page.dart';
 import 'package:tonight/presentation/user_details/user_details_page.dart';
 import 'package:tonight/presentation/user_wall_photo_preview/user_wall_photo_preview_page.dart';
+import 'package:tonight/presentation/verify_phone_number/verify_phone_number_page.dart';
 import 'package:tonight/presentation/vip_checkout/vip_checkout_page.dart';
 import 'package:tonight/presentation/wall_photo_camera_preview/wall_photo_camera_preview_page.dart';
 import 'package:tonight/presentation/welcome_loader/welcome_loader_page.dart';
@@ -223,6 +225,16 @@ const animationDuration = 300;
     CustomRoute(
       page: UserWallPhotoPreviewPage,
       transitionsBuilder: fadeInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: VerifyPhoneNumberPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: SignInWithPhoneNumberPage,
+      transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
   ],

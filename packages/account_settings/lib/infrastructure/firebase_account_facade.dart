@@ -186,13 +186,10 @@ class FirebaseAccountFacade implements UserAccountFacade {
             isEqualTo: id,
           )
           .get();
-
       if (result.docs.isEmpty) {
         return left(const UserAccountFailure.userNotFound());
       }
-
       final userDto = UserAccountDto.fromFirebase(result.docs.first);
-
       return right(userDto.toDomain());
     } on FirebaseException catch (e) {
       return left(

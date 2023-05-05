@@ -6,16 +6,13 @@ import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
 
 abstract class WallPhotoFacade {
-  Future<Either<WallPhotoFailure, Unit>> addPhoto({
-    required String venueId,
-    required String venueName,
-    required LatLng venueLocation,
+  /// Returns photo url
+  Future<Either<WallPhotoFailure, String>> uploadPhoto({
     required String eventId,
-    required String eventName,
-    required DateTime eventEndDateTime,
     required Uint8List photo,
-    required LatLng? photoLocation,
   });
+
+  Future<Either<WallPhotoFailure, Unit>> addWallPhoto(WallPhoto photo);
 
   Future<Either<WallPhotoFailure, List<WallPhoto>>> getWallPhotos({
     required Option<LatLng> userLocation,
