@@ -29,7 +29,7 @@ class _EventDetailsBottomBarShareState
     return SizedBox(
       width: 48,
       child: _isLoading
-          ? const DotsLoadingIndicator(size: 15)
+          ? const CircleLoadingIndicator(size: 24)
           : IconButton(
               icon: const FaIcon(FontAwesomeIcons.shareNodes),
               onPressed: _shareEvent,

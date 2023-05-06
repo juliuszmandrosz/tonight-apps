@@ -1,15 +1,14 @@
 import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:clubs/domain/domain.dart';
 import 'package:common/common.dart';
+import 'package:dartz/dartz.dart';
 import 'package:events/events.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:translations/translations.dart';
 
 part 'past_event_details_cubit.freezed.dart';
-
 part 'past_event_details_state.dart';
 
 class PastEventDetailsCubit extends Cubit<PastEventDetailsState> {
@@ -69,16 +68,15 @@ class PastEventDetailsCubit extends Cubit<PastEventDetailsState> {
     );
   }
 
-  Future<void> reportReview(String reviewId) async {
+  Future<void> reportReview(Review review) async {
     emit(
       state.copyWith(
         reviewReportStatus: CubitStatus.loading,
-        reportingReviewId: some(reviewId),
+        reportingReviewId: some(review.id),
       ),
     );
 
-    final failureOrSuccess =
-        await _reviewFacade.reportReviewAsPartner(reviewId);
+    final failureOrSuccess = await _reviewFacade.reportReviewAsPartner(review);
 
     failureOrSuccess.fold(
       (failure) => _emitReviewReportFailure(failure),

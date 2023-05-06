@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'wall_photo_report_dto.dart';
+part of 'message_report_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_WallPhotoReportDto _$$_WallPhotoReportDtoFromJson(
-        Map<String, dynamic> json) =>
-    _$_WallPhotoReportDto(
-      photoId: json['photoId'] as String,
+_$_MessageReportDto _$$_MessageReportDtoFromJson(Map<String, dynamic> json) =>
+    _$_MessageReportDto(
+      messageId: json['messageId'] as String,
+      roomId: json['roomId'] as String,
       reporterId: json['reporterId'] as String,
-      photoUrl: json['photoUrl'] as String,
+      messageContent: json['messageContent'] as String,
       createdAt: const FirebaseTimestampJsonConverter()
           .fromJson(json['createdAt'] as Timestamp),
     );
 
-Map<String, dynamic> _$$_WallPhotoReportDtoToJson(
-        _$_WallPhotoReportDto instance) =>
+Map<String, dynamic> _$$_MessageReportDtoToJson(_$_MessageReportDto instance) =>
     <String, dynamic>{
-      'photoId': instance.photoId,
+      'messageId': instance.messageId,
+      'roomId': instance.roomId,
       'reporterId': instance.reporterId,
-      'photoUrl': instance.photoUrl,
+      'messageContent': instance.messageContent,
       'createdAt':
           const FirebaseTimestampJsonConverter().toJson(instance.createdAt),
     };

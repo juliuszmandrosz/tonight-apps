@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:tonight/application/event_chat/aggregator/event_chat_failure.dart';
 import 'package:tonight/application/event_chat/models/chat_message_model.dart';
 import 'package:tonight/application/event_chat/models/chat_user_model.dart';
+import 'package:tonight/domain/messages/message_entity.dart';
 import 'package:tonight/domain/messages/message_facade.dart';
 import 'package:tonight/domain/participants/participant_entity.dart';
 import 'package:uuid/uuid.dart';
@@ -127,6 +128,25 @@ class EventChatAggregator {
             .toList();
         return right(chatMessages);
       },
+    );
+  }
+
+  Future<Either<EventChatFailure, Unit>> reportMessage({
+    required String roomId,
+    required Message message,
+  }) async {
+    final result = await _messageFacade.reportMessage(
+      roomId: roomId,
+      message: message,
+    );
+    return result.fold(
+      (failure) => left(
+        failure.maybeMap(
+          reportExists: (_) => const EventChatFailure.reportExists(),
+          orElse: () => const EventChatFailure.unexpected(),
+        ),
+      ),
+      (_) => right(unit),
     );
   }
 }

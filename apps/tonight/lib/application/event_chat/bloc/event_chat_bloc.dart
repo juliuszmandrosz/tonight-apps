@@ -7,6 +7,7 @@ import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/application/event_chat/aggregator/event_chat_aggregator.dart';
+import 'package:tonight/application/event_chat/aggregator/event_chat_failure.dart';
 import 'package:tonight/application/event_chat/models/chat_message_model.dart';
 import 'package:tonight/application/event_chat/models/chat_user_model.dart';
 import 'package:tonight/domain/participants/participant_entity.dart';
@@ -29,6 +30,7 @@ class EventChatBloc extends Bloc<EventChatEvent, EventChatState> {
     on<_MessageSent>(_onMessageSent);
     on<_InputMessageChanged>(_onInputMessageChanged);
     on<_MessageResent>(_onMessageResent);
+    on<_MessageReported>(_onMessageReported);
   }
 
   FutureOr<void> _onChatInitialized(
@@ -153,6 +155,47 @@ class EventChatBloc extends Bloc<EventChatEvent, EventChatState> {
         },
       ),
     );
+  }
+
+  Future<void> _onMessageReported(
+    _MessageReported event,
+    Emitter<EventChatState> emit,
+  ) async {
+    final photoIdsBeforeReport = [
+      ...state.reportingMessageIds,
+      event.message.id,
+    ];
+    emit(state.copyWith(reportingMessageIds: photoIdsBeforeReport));
+
+    final result = await _eventChatAggregator.reportMessage(
+      message: event.message.toDomain(),
+      roomId: state.event.getOrCrash().id,
+    );
+
+    final photoIdsAfterReport = [...state.reportingMessageIds]
+      ..remove(event.message.id);
+
+    emit(state.copyWith(reportingMessageIds: photoIdsAfterReport));
+
+    result.fold(
+      (failure) => _emitMessageReportFailure(failure, emit),
+      (success) => _emitMessageReportSuccess(emit),
+    );
+  }
+
+  _emitMessageReportSuccess(Emitter<EventChatState> emit) {
+    // TODO - add translation
+    emit(state.copyWith(
+        snackbarMessage: some('S().messageReportedSuccessfully')));
+    emit(state.copyWith(snackbarMessage: none()));
+  }
+
+  _emitMessageReportFailure(
+    EventChatFailure failure,
+    Emitter<EventChatState> emit,
+  ) {
+    emit(state.copyWith(snackbarMessage: some(failure.message)));
+    emit(state.copyWith(snackbarMessage: none()));
   }
 
   _updateNewMessageInState(ChatMessage message) {

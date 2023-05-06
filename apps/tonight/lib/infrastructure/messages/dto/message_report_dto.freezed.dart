@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'wall_photo_report_dto.dart';
+part of 'message_report_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,44 +14,46 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-WallPhotoReportDto _$WallPhotoReportDtoFromJson(Map<String, dynamic> json) {
-  return _WallPhotoReportDto.fromJson(json);
+MessageReportDto _$MessageReportDtoFromJson(Map<String, dynamic> json) {
+  return _MessageReportDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$WallPhotoReportDto {
+mixin _$MessageReportDto {
   @JsonKey(ignore: true)
   String? get id => throw _privateConstructorUsedError;
-  String get photoId => throw _privateConstructorUsedError;
+  String get messageId => throw _privateConstructorUsedError;
+  String get roomId => throw _privateConstructorUsedError;
   String get reporterId => throw _privateConstructorUsedError;
-  String get photoUrl => throw _privateConstructorUsedError;
+  String get messageContent => throw _privateConstructorUsedError;
   @FirebaseTimestampJsonConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $WallPhotoReportDtoCopyWith<WallPhotoReportDto> get copyWith =>
+  $MessageReportDtoCopyWith<MessageReportDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WallPhotoReportDtoCopyWith<$Res> {
-  factory $WallPhotoReportDtoCopyWith(
-          WallPhotoReportDto value, $Res Function(WallPhotoReportDto) then) =
-      _$WallPhotoReportDtoCopyWithImpl<$Res, WallPhotoReportDto>;
+abstract class $MessageReportDtoCopyWith<$Res> {
+  factory $MessageReportDtoCopyWith(
+          MessageReportDto value, $Res Function(MessageReportDto) then) =
+      _$MessageReportDtoCopyWithImpl<$Res, MessageReportDto>;
   @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
-      String photoId,
+      String messageId,
+      String roomId,
       String reporterId,
-      String photoUrl,
+      String messageContent,
       @FirebaseTimestampJsonConverter() DateTime createdAt});
 }
 
 /// @nodoc
-class _$WallPhotoReportDtoCopyWithImpl<$Res, $Val extends WallPhotoReportDto>
-    implements $WallPhotoReportDtoCopyWith<$Res> {
-  _$WallPhotoReportDtoCopyWithImpl(this._value, this._then);
+class _$MessageReportDtoCopyWithImpl<$Res, $Val extends MessageReportDto>
+    implements $MessageReportDtoCopyWith<$Res> {
+  _$MessageReportDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -62,9 +64,10 @@ class _$WallPhotoReportDtoCopyWithImpl<$Res, $Val extends WallPhotoReportDto>
   @override
   $Res call({
     Object? id = freezed,
-    Object? photoId = null,
+    Object? messageId = null,
+    Object? roomId = null,
     Object? reporterId = null,
-    Object? photoUrl = null,
+    Object? messageContent = null,
     Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
@@ -72,17 +75,21 @@ class _$WallPhotoReportDtoCopyWithImpl<$Res, $Val extends WallPhotoReportDto>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      photoId: null == photoId
-          ? _value.photoId
-          : photoId // ignore: cast_nullable_to_non_nullable
+      messageId: null == messageId
+          ? _value.messageId
+          : messageId // ignore: cast_nullable_to_non_nullable
+              as String,
+      roomId: null == roomId
+          ? _value.roomId
+          : roomId // ignore: cast_nullable_to_non_nullable
               as String,
       reporterId: null == reporterId
           ? _value.reporterId
           : reporterId // ignore: cast_nullable_to_non_nullable
               as String,
-      photoUrl: null == photoUrl
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
+      messageContent: null == messageContent
+          ? _value.messageContent
+          : messageContent // ignore: cast_nullable_to_non_nullable
               as String,
       createdAt: null == createdAt
           ? _value.createdAt
@@ -93,54 +100,60 @@ class _$WallPhotoReportDtoCopyWithImpl<$Res, $Val extends WallPhotoReportDto>
 }
 
 /// @nodoc
-abstract class _$$_WallPhotoReportDtoCopyWith<$Res>
-    implements $WallPhotoReportDtoCopyWith<$Res> {
-  factory _$$_WallPhotoReportDtoCopyWith(_$_WallPhotoReportDto value,
-          $Res Function(_$_WallPhotoReportDto) then) =
-      __$$_WallPhotoReportDtoCopyWithImpl<$Res>;
+abstract class _$$_MessageReportDtoCopyWith<$Res>
+    implements $MessageReportDtoCopyWith<$Res> {
+  factory _$$_MessageReportDtoCopyWith(
+          _$_MessageReportDto value, $Res Function(_$_MessageReportDto) then) =
+      __$$_MessageReportDtoCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
-      String photoId,
+      String messageId,
+      String roomId,
       String reporterId,
-      String photoUrl,
+      String messageContent,
       @FirebaseTimestampJsonConverter() DateTime createdAt});
 }
 
 /// @nodoc
-class __$$_WallPhotoReportDtoCopyWithImpl<$Res>
-    extends _$WallPhotoReportDtoCopyWithImpl<$Res, _$_WallPhotoReportDto>
-    implements _$$_WallPhotoReportDtoCopyWith<$Res> {
-  __$$_WallPhotoReportDtoCopyWithImpl(
-      _$_WallPhotoReportDto _value, $Res Function(_$_WallPhotoReportDto) _then)
+class __$$_MessageReportDtoCopyWithImpl<$Res>
+    extends _$MessageReportDtoCopyWithImpl<$Res, _$_MessageReportDto>
+    implements _$$_MessageReportDtoCopyWith<$Res> {
+  __$$_MessageReportDtoCopyWithImpl(
+      _$_MessageReportDto _value, $Res Function(_$_MessageReportDto) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? photoId = null,
+    Object? messageId = null,
+    Object? roomId = null,
     Object? reporterId = null,
-    Object? photoUrl = null,
+    Object? messageContent = null,
     Object? createdAt = null,
   }) {
-    return _then(_$_WallPhotoReportDto(
+    return _then(_$_MessageReportDto(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      photoId: null == photoId
-          ? _value.photoId
-          : photoId // ignore: cast_nullable_to_non_nullable
+      messageId: null == messageId
+          ? _value.messageId
+          : messageId // ignore: cast_nullable_to_non_nullable
+              as String,
+      roomId: null == roomId
+          ? _value.roomId
+          : roomId // ignore: cast_nullable_to_non_nullable
               as String,
       reporterId: null == reporterId
           ? _value.reporterId
           : reporterId // ignore: cast_nullable_to_non_nullable
               as String,
-      photoUrl: null == photoUrl
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
+      messageContent: null == messageContent
+          ? _value.messageContent
+          : messageContent // ignore: cast_nullable_to_non_nullable
               as String,
       createdAt: null == createdAt
           ? _value.createdAt
@@ -152,99 +165,106 @@ class __$$_WallPhotoReportDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_WallPhotoReportDto extends _WallPhotoReportDto {
-  const _$_WallPhotoReportDto(
+class _$_MessageReportDto extends _MessageReportDto {
+  const _$_MessageReportDto(
       {@JsonKey(ignore: true) this.id,
-      required this.photoId,
+      required this.messageId,
+      required this.roomId,
       required this.reporterId,
-      required this.photoUrl,
+      required this.messageContent,
       @FirebaseTimestampJsonConverter() required this.createdAt})
       : super._();
 
-  factory _$_WallPhotoReportDto.fromJson(Map<String, dynamic> json) =>
-      _$$_WallPhotoReportDtoFromJson(json);
+  factory _$_MessageReportDto.fromJson(Map<String, dynamic> json) =>
+      _$$_MessageReportDtoFromJson(json);
 
   @override
   @JsonKey(ignore: true)
   final String? id;
   @override
-  final String photoId;
+  final String messageId;
+  @override
+  final String roomId;
   @override
   final String reporterId;
   @override
-  final String photoUrl;
+  final String messageContent;
   @override
   @FirebaseTimestampJsonConverter()
   final DateTime createdAt;
 
   @override
   String toString() {
-    return 'WallPhotoReportDto(id: $id, photoId: $photoId, reporterId: $reporterId, photoUrl: $photoUrl, createdAt: $createdAt)';
+    return 'MessageReportDto(id: $id, messageId: $messageId, roomId: $roomId, reporterId: $reporterId, messageContent: $messageContent, createdAt: $createdAt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WallPhotoReportDto &&
+            other is _$_MessageReportDto &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.photoId, photoId) || other.photoId == photoId) &&
+            (identical(other.messageId, messageId) ||
+                other.messageId == messageId) &&
+            (identical(other.roomId, roomId) || other.roomId == roomId) &&
             (identical(other.reporterId, reporterId) ||
                 other.reporterId == reporterId) &&
-            (identical(other.photoUrl, photoUrl) ||
-                other.photoUrl == photoUrl) &&
+            (identical(other.messageContent, messageContent) ||
+                other.messageContent == messageContent) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, photoId, reporterId, photoUrl, createdAt);
+  int get hashCode => Object.hash(runtimeType, id, messageId, roomId,
+      reporterId, messageContent, createdAt);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WallPhotoReportDtoCopyWith<_$_WallPhotoReportDto> get copyWith =>
-      __$$_WallPhotoReportDtoCopyWithImpl<_$_WallPhotoReportDto>(
-          this, _$identity);
+  _$$_MessageReportDtoCopyWith<_$_MessageReportDto> get copyWith =>
+      __$$_MessageReportDtoCopyWithImpl<_$_MessageReportDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WallPhotoReportDtoToJson(
+    return _$$_MessageReportDtoToJson(
       this,
     );
   }
 }
 
-abstract class _WallPhotoReportDto extends WallPhotoReportDto {
-  const factory _WallPhotoReportDto(
+abstract class _MessageReportDto extends MessageReportDto {
+  const factory _MessageReportDto(
       {@JsonKey(ignore: true)
           final String? id,
-      required final String photoId,
+      required final String messageId,
+      required final String roomId,
       required final String reporterId,
-      required final String photoUrl,
+      required final String messageContent,
       @FirebaseTimestampJsonConverter()
-          required final DateTime createdAt}) = _$_WallPhotoReportDto;
-  const _WallPhotoReportDto._() : super._();
+          required final DateTime createdAt}) = _$_MessageReportDto;
+  const _MessageReportDto._() : super._();
 
-  factory _WallPhotoReportDto.fromJson(Map<String, dynamic> json) =
-      _$_WallPhotoReportDto.fromJson;
+  factory _MessageReportDto.fromJson(Map<String, dynamic> json) =
+      _$_MessageReportDto.fromJson;
 
   @override
   @JsonKey(ignore: true)
   String? get id;
   @override
-  String get photoId;
+  String get messageId;
+  @override
+  String get roomId;
   @override
   String get reporterId;
   @override
-  String get photoUrl;
+  String get messageContent;
   @override
   @FirebaseTimestampJsonConverter()
   DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
-  _$$_WallPhotoReportDtoCopyWith<_$_WallPhotoReportDto> get copyWith =>
+  _$$_MessageReportDtoCopyWith<_$_MessageReportDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
