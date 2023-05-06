@@ -476,12 +476,11 @@ abstract class _ReviewReported implements ClubReviewsEvent {
 mixin _$ClubReviewsState {
   CubitStatus get getReviewsStatus => throw _privateConstructorUsedError;
   CubitStatus get nextPageReviewsStatus => throw _privateConstructorUsedError;
-  CubitStatus get reviewReportStatus => throw _privateConstructorUsedError;
   String get clubId => throw _privateConstructorUsedError;
   List<Review> get reviews => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
   Option<String> get snackbarMessage => throw _privateConstructorUsedError;
-  Option<String> get reportingReviewId => throw _privateConstructorUsedError;
+  List<String> get reportingReviewIds => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ClubReviewsStateCopyWith<ClubReviewsState> get copyWith =>
@@ -497,12 +496,11 @@ abstract class $ClubReviewsStateCopyWith<$Res> {
   $Res call(
       {CubitStatus getReviewsStatus,
       CubitStatus nextPageReviewsStatus,
-      CubitStatus reviewReportStatus,
       String clubId,
       List<Review> reviews,
       bool hasReachedMax,
       Option<String> snackbarMessage,
-      Option<String> reportingReviewId});
+      List<String> reportingReviewIds});
 }
 
 /// @nodoc
@@ -520,12 +518,11 @@ class _$ClubReviewsStateCopyWithImpl<$Res, $Val extends ClubReviewsState>
   $Res call({
     Object? getReviewsStatus = null,
     Object? nextPageReviewsStatus = null,
-    Object? reviewReportStatus = null,
     Object? clubId = null,
     Object? reviews = null,
     Object? hasReachedMax = null,
     Object? snackbarMessage = null,
-    Object? reportingReviewId = null,
+    Object? reportingReviewIds = null,
   }) {
     return _then(_value.copyWith(
       getReviewsStatus: null == getReviewsStatus
@@ -535,10 +532,6 @@ class _$ClubReviewsStateCopyWithImpl<$Res, $Val extends ClubReviewsState>
       nextPageReviewsStatus: null == nextPageReviewsStatus
           ? _value.nextPageReviewsStatus
           : nextPageReviewsStatus // ignore: cast_nullable_to_non_nullable
-              as CubitStatus,
-      reviewReportStatus: null == reviewReportStatus
-          ? _value.reviewReportStatus
-          : reviewReportStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
       clubId: null == clubId
           ? _value.clubId
@@ -556,10 +549,10 @@ class _$ClubReviewsStateCopyWithImpl<$Res, $Val extends ClubReviewsState>
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      reportingReviewId: null == reportingReviewId
-          ? _value.reportingReviewId
-          : reportingReviewId // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
+      reportingReviewIds: null == reportingReviewIds
+          ? _value.reportingReviewIds
+          : reportingReviewIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -575,12 +568,11 @@ abstract class _$$_ClubReviewsStateCopyWith<$Res>
   $Res call(
       {CubitStatus getReviewsStatus,
       CubitStatus nextPageReviewsStatus,
-      CubitStatus reviewReportStatus,
       String clubId,
       List<Review> reviews,
       bool hasReachedMax,
       Option<String> snackbarMessage,
-      Option<String> reportingReviewId});
+      List<String> reportingReviewIds});
 }
 
 /// @nodoc
@@ -596,12 +588,11 @@ class __$$_ClubReviewsStateCopyWithImpl<$Res>
   $Res call({
     Object? getReviewsStatus = null,
     Object? nextPageReviewsStatus = null,
-    Object? reviewReportStatus = null,
     Object? clubId = null,
     Object? reviews = null,
     Object? hasReachedMax = null,
     Object? snackbarMessage = null,
-    Object? reportingReviewId = null,
+    Object? reportingReviewIds = null,
   }) {
     return _then(_$_ClubReviewsState(
       getReviewsStatus: null == getReviewsStatus
@@ -611,10 +602,6 @@ class __$$_ClubReviewsStateCopyWithImpl<$Res>
       nextPageReviewsStatus: null == nextPageReviewsStatus
           ? _value.nextPageReviewsStatus
           : nextPageReviewsStatus // ignore: cast_nullable_to_non_nullable
-              as CubitStatus,
-      reviewReportStatus: null == reviewReportStatus
-          ? _value.reviewReportStatus
-          : reviewReportStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
       clubId: null == clubId
           ? _value.clubId
@@ -632,10 +619,10 @@ class __$$_ClubReviewsStateCopyWithImpl<$Res>
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      reportingReviewId: null == reportingReviewId
-          ? _value.reportingReviewId
-          : reportingReviewId // ignore: cast_nullable_to_non_nullable
-              as Option<String>,
+      reportingReviewIds: null == reportingReviewIds
+          ? _value._reportingReviewIds
+          : reportingReviewIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -646,21 +633,19 @@ class _$_ClubReviewsState extends _ClubReviewsState {
   const _$_ClubReviewsState(
       {required this.getReviewsStatus,
       required this.nextPageReviewsStatus,
-      required this.reviewReportStatus,
       required this.clubId,
       required final List<Review> reviews,
       required this.hasReachedMax,
       required this.snackbarMessage,
-      required this.reportingReviewId})
+      required final List<String> reportingReviewIds})
       : _reviews = reviews,
+        _reportingReviewIds = reportingReviewIds,
         super._();
 
   @override
   final CubitStatus getReviewsStatus;
   @override
   final CubitStatus nextPageReviewsStatus;
-  @override
-  final CubitStatus reviewReportStatus;
   @override
   final String clubId;
   final List<Review> _reviews;
@@ -675,12 +660,18 @@ class _$_ClubReviewsState extends _ClubReviewsState {
   final bool hasReachedMax;
   @override
   final Option<String> snackbarMessage;
+  final List<String> _reportingReviewIds;
   @override
-  final Option<String> reportingReviewId;
+  List<String> get reportingReviewIds {
+    if (_reportingReviewIds is EqualUnmodifiableListView)
+      return _reportingReviewIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_reportingReviewIds);
+  }
 
   @override
   String toString() {
-    return 'ClubReviewsState(getReviewsStatus: $getReviewsStatus, nextPageReviewsStatus: $nextPageReviewsStatus, reviewReportStatus: $reviewReportStatus, clubId: $clubId, reviews: $reviews, hasReachedMax: $hasReachedMax, snackbarMessage: $snackbarMessage, reportingReviewId: $reportingReviewId)';
+    return 'ClubReviewsState(getReviewsStatus: $getReviewsStatus, nextPageReviewsStatus: $nextPageReviewsStatus, clubId: $clubId, reviews: $reviews, hasReachedMax: $hasReachedMax, snackbarMessage: $snackbarMessage, reportingReviewIds: $reportingReviewIds)';
   }
 
   @override
@@ -692,16 +683,14 @@ class _$_ClubReviewsState extends _ClubReviewsState {
                 other.getReviewsStatus == getReviewsStatus) &&
             (identical(other.nextPageReviewsStatus, nextPageReviewsStatus) ||
                 other.nextPageReviewsStatus == nextPageReviewsStatus) &&
-            (identical(other.reviewReportStatus, reviewReportStatus) ||
-                other.reviewReportStatus == reviewReportStatus) &&
             (identical(other.clubId, clubId) || other.clubId == clubId) &&
             const DeepCollectionEquality().equals(other._reviews, _reviews) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
                 other.hasReachedMax == hasReachedMax) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
                 other.snackbarMessage == snackbarMessage) &&
-            (identical(other.reportingReviewId, reportingReviewId) ||
-                other.reportingReviewId == reportingReviewId));
+            const DeepCollectionEquality()
+                .equals(other._reportingReviewIds, _reportingReviewIds));
   }
 
   @override
@@ -709,12 +698,11 @@ class _$_ClubReviewsState extends _ClubReviewsState {
       runtimeType,
       getReviewsStatus,
       nextPageReviewsStatus,
-      reviewReportStatus,
       clubId,
       const DeepCollectionEquality().hash(_reviews),
       hasReachedMax,
       snackbarMessage,
-      reportingReviewId);
+      const DeepCollectionEquality().hash(_reportingReviewIds));
 
   @JsonKey(ignore: true)
   @override
@@ -727,20 +715,17 @@ abstract class _ClubReviewsState extends ClubReviewsState {
   const factory _ClubReviewsState(
       {required final CubitStatus getReviewsStatus,
       required final CubitStatus nextPageReviewsStatus,
-      required final CubitStatus reviewReportStatus,
       required final String clubId,
       required final List<Review> reviews,
       required final bool hasReachedMax,
       required final Option<String> snackbarMessage,
-      required final Option<String> reportingReviewId}) = _$_ClubReviewsState;
+      required final List<String> reportingReviewIds}) = _$_ClubReviewsState;
   const _ClubReviewsState._() : super._();
 
   @override
   CubitStatus get getReviewsStatus;
   @override
   CubitStatus get nextPageReviewsStatus;
-  @override
-  CubitStatus get reviewReportStatus;
   @override
   String get clubId;
   @override
@@ -750,7 +735,7 @@ abstract class _ClubReviewsState extends ClubReviewsState {
   @override
   Option<String> get snackbarMessage;
   @override
-  Option<String> get reportingReviewId;
+  List<String> get reportingReviewIds;
   @override
   @JsonKey(ignore: true)
   _$$_ClubReviewsStateCopyWith<_$_ClubReviewsState> get copyWith =>
