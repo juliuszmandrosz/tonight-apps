@@ -40,13 +40,21 @@ class FavoriteClubsList extends StatelessWidget {
                 : SizedBox(
                     height: 280,
                     child: PageView.builder(
+                      padEnds: false,
+                      controller: PageController(viewportFraction: 0.85),
                       itemCount: state.favoriteClubs.length,
                       itemBuilder: (ctx, i) {
-                        return ClubCard(
-                          club: state.favoriteClubs[i],
-                          heroPhrase: heroPhrase,
-                          isFavoriteCard: true,
-                          height: 200,
+                        return Padding(
+                          padding: EdgeInsets.only(
+                            left: i == 0 ? 0 : 4,
+                            right: i == state.favoriteClubs.length - 1 ? 0 : 4,
+                          ),
+                          child: ClubCard(
+                            club: state.favoriteClubs[i],
+                            heroPhrase: heroPhrase,
+                            isFavoriteCard: true,
+                            height: 200,
+                          ),
                         );
                       },
                     ),

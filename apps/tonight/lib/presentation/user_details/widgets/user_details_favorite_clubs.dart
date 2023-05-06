@@ -1,7 +1,6 @@
 import 'package:clubs/domain/club/club_entity.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/clubs/widgets/club_card.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:translations/translations.dart';
@@ -20,19 +19,12 @@ class UserDetailsFavoriteClubs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            TonightHeadline(
-              text: S().favoriteClubs,
-              isSmallerVersion: true,
-            ),
-            if (favoriteClubs.length > 1)
-              const FaIcon(
-                FontAwesomeIcons.chevronRight,
-                size: 16,
-              ),
-          ],
+        Align(
+          alignment: Alignment.centerLeft,
+          child: TonightHeadline(
+            text: S().favoriteClubs,
+            isSmallerVersion: true,
+          ),
         ),
         const SizedBox(height: 16),
         favoriteClubs.isEmpty
@@ -48,13 +40,21 @@ class UserDetailsFavoriteClubs extends StatelessWidget {
             : SizedBox(
                 height: 280,
                 child: PageView.builder(
+                  padEnds: false,
+                  controller: PageController(viewportFraction: 0.85),
                   itemCount: favoriteClubs.length,
                   itemBuilder: (ctx, i) {
-                    return ClubCard(
-                      club: favoriteClubs[i],
-                      heroPhrase: heroPhrase,
-                      isFavoriteCard: true,
-                      height: 200,
+                    return Padding(
+                      padding: EdgeInsets.only(
+                        left: i == 0 ? 0 : 4,
+                        right: i == favoriteClubs.length - 1 ? 0 : 4,
+                      ),
+                      child: ClubCard(
+                        club: favoriteClubs[i],
+                        heroPhrase: heroPhrase,
+                        isFavoriteCard: true,
+                        height: 200,
+                      ),
                     );
                   },
                 ),
