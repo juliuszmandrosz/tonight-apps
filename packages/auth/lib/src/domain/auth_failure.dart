@@ -25,7 +25,7 @@ class AuthFailure with _$AuthFailure {
   const factory AuthFailure.wrongPassword() = _WrongPassword;
 
   const factory AuthFailure.invalidVerificationCode() =
-      _InvalidVerificationCode;
+  _InvalidVerificationCode;
 
   const factory AuthFailure.invalidVerificationId() = _InvalidVerificationId;
 
@@ -48,4 +48,6 @@ class AuthFailure with _$AuthFailure {
   const factory AuthFailure.smsTimeout() = _SmsTimeout;
 
   const factory AuthFailure.phoneNumberInUse() = _PhoneNumberInUse;
+
+  const factory AuthFailure.sessionExpired() = _SessionExpired;
 }
