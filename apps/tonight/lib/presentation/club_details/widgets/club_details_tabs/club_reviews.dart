@@ -18,8 +18,7 @@ class ClubReviews extends StatelessWidget {
     return BlocConsumer<ClubReviewsBloc, ClubReviewsState>(
       listenWhen: (previous, current) =>
           previous.getReviewsStatus != current.getReviewsStatus ||
-          previous.snackbarMessage != current.snackbarMessage ||
-          previous.reviewReportStatus != current.reviewReportStatus,
+          previous.snackbarMessage != current.snackbarMessage,
       listener: (context, state) {
         state.snackbarMessage.fold(
           () {},
