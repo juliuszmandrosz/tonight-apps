@@ -63,7 +63,7 @@ class EventCard extends StatelessWidget {
             color: context.backgroundColor,
             clipBehavior: Clip.antiAlias,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: BorderRadius.circular(12),
             ),
             child: BlocBuilder<EventTicketsCubit, EventTicketsState>(
               builder: (context, state) {
