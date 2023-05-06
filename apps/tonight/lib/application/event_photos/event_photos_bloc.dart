@@ -110,14 +110,14 @@ class EventPhotosBloc extends Bloc<EventPhotosEvent, EventPhotosState> {
     _PhotoReported event,
     Emitter<EventPhotosState> emit,
   ) async {
-    final photoIdsBeforeReport = [...state.reportingPhotoIds, event.photoId];
+    final photoIdsBeforeReport = [...state.reportingPhotoIds, event.photo.id];
     emit(state.copyWith(reportingPhotoIds: photoIdsBeforeReport));
 
     final failureOrSuccess =
-        await _wallPhotoFacade.reportWallPhoto(event.photoId);
+        await _wallPhotoFacade.reportWallPhoto(event.photo);
 
     final photoIdsAfterReport = [...state.reportingPhotoIds]
-      ..remove(event.photoId);
+      ..remove(event.photo.id);
 
     emit(state.copyWith(reportingPhotoIds: photoIdsAfterReport));
 

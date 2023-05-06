@@ -1,20 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:logger/logger.dart';
 import 'package:tonight/domain/messages/message_entity.dart';
 import 'package:tonight/domain/messages/message_facade.dart';
 import 'package:tonight/domain/messages/message_failure.dart';
 import 'package:tonight/infrastructure/messages/dto/message_dto.dart';
+import 'package:tonight/infrastructure/messages/dto/message_report_dto.dart';
+import 'package:uuid/uuid.dart';
 
 class FirebaseMessageFacade implements MessageFacade {
   final FirebaseFirestore _firestore;
+  final FirebaseAuth _auth;
   final FirebaseCrashlytics _crashlytics;
   final Logger _logger;
 
   FirebaseMessageFacade(
     this._firestore,
+    this._auth,
     this._crashlytics,
     this._logger,
   );
@@ -101,5 +106,47 @@ class FirebaseMessageFacade implements MessageFacade {
       await _crashlytics.recordError(e, StackTrace.current);
       return left(const MessageFailure.unexpected());
     }
+  }
+
+  @override
+  Future<Either<MessageFailure, Unit>> reportMessage({
+    required String roomId,
+    required Message message,
+  }) async {
+    try {
+      final currentUserId = _auth.tryGetFirebaseUser().uid;
+
+      final reportDto = MessageReportDto(
+        reporterId: currentUserId,
+        createdAt: DateTime.now(),
+        messageId: message.id,
+        messageContent: message.text,
+        roomId: roomId,
+      );
+
+      if (await _checkIfReportExists(reportDto)) {
+        return left(const MessageFailure.reportExists());
+      }
+
+      final reportId = const Uuid().v1();
+
+      await _firestore.messageReports.doc(reportId).set(reportDto.toJson());
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      _logger.e(e);
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const MessageFailure.unexpected());
+    }
+  }
+
+  Future<bool> _checkIfReportExists(MessageReportDto messageReportDto) async {
+    final existingReportQuery = await _firestore.messageReports
+        .where('reporterId', isEqualTo: messageReportDto.reporterId)
+        .where('messageId', isEqualTo: messageReportDto.messageId)
+        .count()
+        .get();
+
+    return existingReportQuery.count > 0;
   }
 }

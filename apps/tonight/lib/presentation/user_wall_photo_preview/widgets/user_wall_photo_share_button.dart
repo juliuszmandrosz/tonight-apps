@@ -20,7 +20,7 @@ class UserWallPhotoShareButton extends StatelessWidget {
         return SizedBox(
           width: 48,
           child: state.sharePhotoStatus.isLoading()
-              ? const DotsLoadingIndicator(size: 15)
+              ? const CircleLoadingIndicator(size: 24)
               : IconButton(
                   onPressed: () async => await context
                       .read<UserWallPhotoPreviewCubit>()

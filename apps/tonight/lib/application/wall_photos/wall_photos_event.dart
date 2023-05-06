@@ -10,6 +10,6 @@ class WallPhotosEvent with _$WallPhotosEvent {
 
   const factory WallPhotosEvent.wallPhotosRefreshed() = _WallPhotosRefreshed;
 
-  const factory WallPhotosEvent.wallPhotoReported(String photoId) =
+  const factory WallPhotosEvent.wallPhotoReported(WallPhoto photo) =
       _WallPhotoReported;
 }

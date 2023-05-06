@@ -6,12 +6,14 @@ class ReviewReport extends Equatable {
   final String reviewId;
   final String reporterId;
   final DateTime reportedAt;
+  final String reviewContent;
 
   ReviewReport({
     String? id,
     required this.reviewId,
     required this.reporterId,
     required this.reportedAt,
+    required this.reviewContent,
   }) : id = id ?? const Uuid().v1();
 
   @override
@@ -20,18 +22,21 @@ class ReviewReport extends Equatable {
         reviewId,
         reporterId,
         reportedAt,
+        reviewContent,
       ];
 
   ReviewReport copyWith({
     String? reviewId,
     String? reporterId,
     DateTime? reportedAt,
+    String? reviewContent,
   }) {
     return ReviewReport(
       id: id,
       reviewId: reviewId ?? this.reviewId,
       reporterId: reporterId ?? this.reporterId,
       reportedAt: reportedAt ?? this.reportedAt,
+      reviewContent: reviewContent ?? this.reviewContent,
     );
   }
 }

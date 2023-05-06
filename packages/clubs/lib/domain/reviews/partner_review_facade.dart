@@ -1,5 +1,5 @@
-import 'package:dartz/dartz.dart';
 import 'package:clubs/domain/reviews/entities/review_entity.dart';
+import 'package:dartz/dartz.dart';
 
 import 'failures/partner_review_failure.dart';
 
@@ -16,6 +16,6 @@ abstract class PartnerReviewFacade {
   });
 
   Future<Either<PartnerReviewFailure, Unit>> reportReviewAsPartner(
-    String reviewId,
+    Review review,
   );
 }
