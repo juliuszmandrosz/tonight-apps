@@ -36,7 +36,7 @@ class ReportReviewButton extends StatelessWidget {
                       if (context.mounted && (result ?? false)) {
                         context
                             .read<PastEventDetailsCubit>()
-                            .reportReview(review.id);
+                            .reportReview(review);
                       }
                     },
                     child: isReviewReporting

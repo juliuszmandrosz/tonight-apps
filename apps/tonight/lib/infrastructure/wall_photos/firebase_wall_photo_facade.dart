@@ -209,12 +209,15 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   }
 
   @override
-  Future<Either<WallPhotoFailure, Unit>> reportWallPhoto(String photoId) async {
+  Future<Either<WallPhotoFailure, Unit>> reportWallPhoto(
+    WallPhoto photo,
+  ) async {
     try {
       final currentUserId = _auth.tryGetFirebaseUser().uid;
 
       final reportDto = WallPhotoReportDto(
-        photoId: photoId,
+        photoId: photo.id,
+        photoUrl: photo.photoUrl,
         reporterId: currentUserId,
         createdAt: DateTime.now(),
       );

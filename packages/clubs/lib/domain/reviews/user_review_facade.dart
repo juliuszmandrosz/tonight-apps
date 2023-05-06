@@ -20,7 +20,5 @@ abstract class UserReviewFacade {
     Review? lastReview,
   });
 
-  Future<Either<UserReviewFailure, Unit>> reportReviewAsUser(
-    String reviewId,
-  );
+  Future<Either<UserReviewFailure, Unit>> reportReviewAsUser(Review review);
 }

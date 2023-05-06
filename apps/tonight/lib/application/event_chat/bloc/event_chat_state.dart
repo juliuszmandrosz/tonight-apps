@@ -12,6 +12,7 @@ class EventChatState with _$EventChatState {
     required List<ChatMessage> queuedMessages,
     required Option<Event> event,
     required String inputMessage,
+    required List<String> reportingMessageIds,
     required Option<String> snackbarMessage,
   }) = _EventChatState;
 
@@ -25,6 +26,7 @@ class EventChatState with _$EventChatState {
         queuedMessages: [],
         event: none(),
         inputMessage: '',
+        reportingMessageIds: [],
         snackbarMessage: none(),
       );
 }

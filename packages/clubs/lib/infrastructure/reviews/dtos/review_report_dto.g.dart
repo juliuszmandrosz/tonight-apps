@@ -12,6 +12,7 @@ _$_ReviewReportDto _$$_ReviewReportDtoFromJson(Map<String, dynamic> json) =>
       reporterId: json['reporterId'] as String,
       reportedAt: const FirebaseTimestampJsonConverter()
           .fromJson(json['reportedAt'] as Timestamp),
+      reviewContent: json['reviewContent'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_ReviewReportDtoToJson(_$_ReviewReportDto instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$_ReviewReportDtoToJson(_$_ReviewReportDto instance) =>
       'reporterId': instance.reporterId,
       'reportedAt':
           const FirebaseTimestampJsonConverter().toJson(instance.reportedAt),
+      'reviewContent': instance.reviewContent,
     };

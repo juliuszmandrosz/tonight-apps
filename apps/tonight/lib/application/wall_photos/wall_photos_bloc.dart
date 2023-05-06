@@ -123,15 +123,15 @@ class WallPhotosBloc extends Bloc<WallPhotosEvent, WallPhotosState> {
   ) async {
     final photoIdsBeforeReport = [
       ...state.reportingWallPhotoIds,
-      event.photoId
+      event.photo.id,
     ];
     emit(state.copyWith(reportingWallPhotoIds: photoIdsBeforeReport));
 
     final failureOrSuccess =
-        await _wallPhotoFacade.reportWallPhoto(event.photoId);
+        await _wallPhotoFacade.reportWallPhoto(event.photo);
 
     final photoIdsAfterReport = [...state.reportingWallPhotoIds]
-      ..remove(event.photoId);
+      ..remove(event.photo.id);
 
     emit(state.copyWith(reportingWallPhotoIds: photoIdsAfterReport));
 

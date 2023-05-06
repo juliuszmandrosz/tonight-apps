@@ -44,7 +44,7 @@ class EventPhotoReportButton extends StatelessWidget {
                     if (result == true && context.mounted) {
                       context
                           .read<EventPhotosBloc>()
-                          .add(EventPhotosEvent.photoReported(photo.id));
+                          .add(EventPhotosEvent.photoReported(photo));
                     }
                   },
                   icon: const FaIcon(
