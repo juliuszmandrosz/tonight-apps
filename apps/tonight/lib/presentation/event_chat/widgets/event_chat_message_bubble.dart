@@ -51,7 +51,7 @@ class EventChatMessageBubble extends StatelessWidget {
               child: Row(
                 children: [
                   if (message.hasError) EventChatRetryIcon(message: message),
-                  if (isReporting)
+                  if (isReporting && message.isCurrentUser)
                     const Padding(
                       padding: EdgeInsets.only(right: 8),
                       child: CircleLoadingIndicator(size: 16),
@@ -78,6 +78,11 @@ class EventChatMessageBubble extends StatelessWidget {
                       ),
                     ),
                   ),
+                  if (isReporting && !message.isCurrentUser)
+                    const Padding(
+                      padding: EdgeInsets.only(left: 8),
+                      child: CircleLoadingIndicator(size: 16),
+                    ),
                 ],
               ),
             ),
