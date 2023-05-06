@@ -46,7 +46,7 @@ class WallPhotosPage extends StatelessWidget {
                           .read<WallPhotosBloc>()
                           .add(const WallPhotosEvent.nextPagePhotosFetched()),
                       separatorBuilder: (context, index) =>
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 16),
                       itemBuilder: (_, i) => WallPhotoCard(
                         wallPhoto: state.photos[i],
                       ),
