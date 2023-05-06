@@ -44,7 +44,7 @@ class TermsOfServiceInfo extends StatelessWidget {
               Flexible(
                 child: RichText(
                   text: TextSpan(
-                    text: S().byContinuingYouAgreeTo,
+                    text: '${S().byContinuingYouAgreeTo} ',
                     style: context.titleSmall.copyWith(
                       color: context.secondaryColor,
                     ),
