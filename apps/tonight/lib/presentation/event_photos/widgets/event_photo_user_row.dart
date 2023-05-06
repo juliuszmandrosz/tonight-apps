@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
+import 'package:tonight/presentation/event_photos/widgets/event_photo_report_button.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class EventPhotoUserRow extends StatelessWidget {
@@ -43,10 +44,10 @@ class EventPhotoUserRow extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   AutoSizeText(
-                    '${photo.venueName} • ${timeago.format(
+                    timeago.format(
                       photo.createdAt,
                       locale: Intl.getCurrentLocale(),
-                    )}',
+                    ),
                     style: context.labelSmall.copyWith(
                       color: context.secondaryColor,
                     ),
@@ -57,6 +58,8 @@ class EventPhotoUserRow extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(width: 8),
+            EventPhotoReportButton(photo: photo),
           ],
         ),
       ),

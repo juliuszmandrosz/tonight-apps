@@ -2,10 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:timeago/timeago.dart' as timeago;
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/wall_photos/widgets/wall_photo_report_button.dart';
 
 class WallPhotoUserRow extends StatelessWidget {
   final WallPhoto wallPhoto;
@@ -43,10 +42,8 @@ class WallPhotoUserRow extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   AutoSizeText(
-                    '${wallPhoto.venueName} • ${timeago.format(
-                      wallPhoto.createdAt,
-                      locale: Intl.getCurrentLocale(),
-                    )}',
+                    '${wallPhoto.venueName} • '
+                    '${context.formatDateTimeToLocaleHM(wallPhoto.createdAt)}',
                     style: context.labelSmall.copyWith(
                       color: context.secondaryColor,
                     ),
@@ -57,6 +54,8 @@ class WallPhotoUserRow extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(width: 8),
+            WallPhotoReportButton(photo: wallPhoto),
           ],
         ),
       ),

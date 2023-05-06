@@ -9,4 +9,7 @@ class WallPhotosEvent with _$WallPhotosEvent {
       _NextPagePhotosFetched;
 
   const factory WallPhotosEvent.wallPhotosRefreshed() = _WallPhotosRefreshed;
+
+  const factory WallPhotosEvent.wallPhotoReported(String photoId) =
+      _WallPhotoReported;
 }
