@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/favorites/widgets/favorite_clubs_list.dart';
@@ -17,34 +16,22 @@ class FavoritesPage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: ListView(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TonightHeadline(
-                  text: S().favoriteClubs,
-                  isSmallerVersion: true,
-                ),
-                const FaIcon(
-                  FontAwesomeIcons.chevronRight,
-                  size: 16,
-                ),
-              ],
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TonightHeadline(
+                text: S().favoriteClubs,
+                isSmallerVersion: true,
+              ),
             ),
             const SizedBox(height: 20),
             const FavoriteClubsList(),
             const SizedBox(height: 30),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TonightHeadline(
-                  text: S().favoriteEvents,
-                  isSmallerVersion: true,
-                ),
-                const FaIcon(
-                  FontAwesomeIcons.chevronRight,
-                  size: 16,
-                ),
-              ],
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TonightHeadline(
+                text: S().favoriteEvents,
+                isSmallerVersion: true,
+              ),
             ),
             const SizedBox(height: 20),
             const FavoriteEventsList(),
