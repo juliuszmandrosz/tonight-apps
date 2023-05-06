@@ -8,9 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:translations/translations.dart';
 
 part 'club_reviews_bloc.freezed.dart';
-
 part 'club_reviews_event.dart';
-
 part 'club_reviews_state.dart';
 
 const _pageSize = 20;
@@ -79,15 +77,16 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
     _ReviewReported event,
     Emitter<ClubReviewsState> emit,
   ) async {
-    emit(
-      state.copyWith(
-        reviewReportStatus: CubitStatus.loading,
-        reportingReviewId: some(event.reviewId),
-      ),
-    );
+    final reviewIdsBeforeReport = [...state.reportingReviewIds, event.reviewId];
+    emit(state.copyWith(reportingReviewIds: reviewIdsBeforeReport));
 
     final failureOrSuccess =
         await _reviewFacade.reportReviewAsUser(event.reviewId);
+
+    final reviewIdsAfterReport = [...state.reportingReviewIds]
+      ..remove(event.reviewId);
+
+    emit(state.copyWith(reportingReviewIds: reviewIdsAfterReport));
 
     failureOrSuccess.fold(
       (failure) => _emitReviewReportFailure(failure, emit),
@@ -96,14 +95,7 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
   }
 
   _emitReviewReportSuccess(Emitter<ClubReviewsState> emit) {
-    emit(
-      state.copyWith(
-        snackbarMessage: some(S().reviewReportedSuccessfully),
-        reviewReportStatus: CubitStatus.success,
-        reportingReviewId: none(),
-      ),
-    );
-
+    emit(state.copyWith(snackbarMessage: some(S().reviewReportedSuccessfully)));
     emit(state.copyWith(snackbarMessage: none()));
   }
 
@@ -111,14 +103,7 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
     UserReviewFailure reviewFailure,
     Emitter<ClubReviewsState> emit,
   ) {
-    emit(
-      state.copyWith(
-        snackbarMessage: some(reviewFailure.message),
-        reviewReportStatus: CubitStatus.failure,
-        reportingReviewId: none(),
-      ),
-    );
-
+    emit(state.copyWith(snackbarMessage: some(reviewFailure.message)));
     emit(state.copyWith(snackbarMessage: none()));
   }
 }
