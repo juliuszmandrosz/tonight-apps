@@ -36,7 +36,7 @@ class ReportReviewButton extends StatelessWidget {
                       if (context.mounted && (result ?? false)) {
                         context
                             .read<ClubReviewsBloc>()
-                            .add(ClubReviewsEvent.reviewReported(review.id));
+                            .add(ClubReviewsEvent.reviewReported(review));
                       }
                     },
                     child: isReviewReporting

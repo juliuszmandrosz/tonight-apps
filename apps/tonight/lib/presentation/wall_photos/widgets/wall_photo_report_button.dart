@@ -44,7 +44,7 @@ class WallPhotoReportButton extends StatelessWidget {
                     if (result == true && context.mounted) {
                       context
                           .read<WallPhotosBloc>()
-                          .add(WallPhotosEvent.wallPhotoReported(photo.id));
+                          .add(WallPhotosEvent.wallPhotoReported(photo));
                     }
                   },
                   icon: const FaIcon(

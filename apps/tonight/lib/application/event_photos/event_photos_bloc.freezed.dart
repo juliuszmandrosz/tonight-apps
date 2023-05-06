@@ -22,7 +22,7 @@ mixin _$EventPhotosEvent {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
-    required TResult Function(String photoId) photoReported,
+    required TResult Function(WallPhoto photo) photoReported,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +31,7 @@ mixin _$EventPhotosEvent {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
-    TResult? Function(String photoId)? photoReported,
+    TResult? Function(WallPhoto photo)? photoReported,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +40,7 @@ mixin _$EventPhotosEvent {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
-    TResult Function(String photoId)? photoReported,
+    TResult Function(WallPhoto photo)? photoReported,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -161,7 +161,7 @@ class _$_PhotosFetched implements _PhotosFetched {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
-    required TResult Function(String photoId) photoReported,
+    required TResult Function(WallPhoto photo) photoReported,
   }) {
     return photosFetched(event);
   }
@@ -173,7 +173,7 @@ class _$_PhotosFetched implements _PhotosFetched {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
-    TResult? Function(String photoId)? photoReported,
+    TResult? Function(WallPhoto photo)? photoReported,
   }) {
     return photosFetched?.call(event);
   }
@@ -185,7 +185,7 @@ class _$_PhotosFetched implements _PhotosFetched {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
-    TResult Function(String photoId)? photoReported,
+    TResult Function(WallPhoto photo)? photoReported,
     required TResult orElse(),
   }) {
     if (photosFetched != null) {
@@ -287,7 +287,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
-    required TResult Function(String photoId) photoReported,
+    required TResult Function(WallPhoto photo) photoReported,
   }) {
     return photosRefreshed();
   }
@@ -299,7 +299,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
-    TResult? Function(String photoId)? photoReported,
+    TResult? Function(WallPhoto photo)? photoReported,
   }) {
     return photosRefreshed?.call();
   }
@@ -311,7 +311,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
-    TResult Function(String photoId)? photoReported,
+    TResult Function(WallPhoto photo)? photoReported,
     required TResult orElse(),
   }) {
     if (photosRefreshed != null) {
@@ -408,7 +408,7 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
-    required TResult Function(String photoId) photoReported,
+    required TResult Function(WallPhoto photo) photoReported,
   }) {
     return nextPagePhotosFetched();
   }
@@ -420,7 +420,7 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
-    TResult? Function(String photoId)? photoReported,
+    TResult? Function(WallPhoto photo)? photoReported,
   }) {
     return nextPagePhotosFetched?.call();
   }
@@ -432,7 +432,7 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
-    TResult Function(String photoId)? photoReported,
+    TResult Function(WallPhoto photo)? photoReported,
     required TResult orElse(),
   }) {
     if (nextPagePhotosFetched != null) {
@@ -555,7 +555,7 @@ class _$_PhotoAdded implements _PhotoAdded {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
-    required TResult Function(String photoId) photoReported,
+    required TResult Function(WallPhoto photo) photoReported,
   }) {
     return photoAdded(photo);
   }
@@ -567,7 +567,7 @@ class _$_PhotoAdded implements _PhotoAdded {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
-    TResult? Function(String photoId)? photoReported,
+    TResult? Function(WallPhoto photo)? photoReported,
   }) {
     return photoAdded?.call(photo);
   }
@@ -579,7 +579,7 @@ class _$_PhotoAdded implements _PhotoAdded {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
-    TResult Function(String photoId)? photoReported,
+    TResult Function(WallPhoto photo)? photoReported,
     required TResult orElse(),
   }) {
     if (photoAdded != null) {
@@ -645,7 +645,7 @@ abstract class _$$_PhotoReportedCopyWith<$Res> {
           _$_PhotoReported value, $Res Function(_$_PhotoReported) then) =
       __$$_PhotoReportedCopyWithImpl<$Res>;
   @useResult
-  $Res call({String photoId});
+  $Res call({WallPhoto photo});
 }
 
 /// @nodoc
@@ -659,13 +659,13 @@ class __$$_PhotoReportedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? photoId = null,
+    Object? photo = null,
   }) {
     return _then(_$_PhotoReported(
-      null == photoId
-          ? _value.photoId
-          : photoId // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as WallPhoto,
     ));
   }
 }
@@ -673,14 +673,14 @@ class __$$_PhotoReportedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PhotoReported implements _PhotoReported {
-  const _$_PhotoReported(this.photoId);
+  const _$_PhotoReported(this.photo);
 
   @override
-  final String photoId;
+  final WallPhoto photo;
 
   @override
   String toString() {
-    return 'EventPhotosEvent.photoReported(photoId: $photoId)';
+    return 'EventPhotosEvent.photoReported(photo: $photo)';
   }
 
   @override
@@ -688,11 +688,11 @@ class _$_PhotoReported implements _PhotoReported {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PhotoReported &&
-            (identical(other.photoId, photoId) || other.photoId == photoId));
+            (identical(other.photo, photo) || other.photo == photo));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, photoId);
+  int get hashCode => Object.hash(runtimeType, photo);
 
   @JsonKey(ignore: true)
   @override
@@ -707,9 +707,9 @@ class _$_PhotoReported implements _PhotoReported {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
-    required TResult Function(String photoId) photoReported,
+    required TResult Function(WallPhoto photo) photoReported,
   }) {
-    return photoReported(photoId);
+    return photoReported(photo);
   }
 
   @override
@@ -719,9 +719,9 @@ class _$_PhotoReported implements _PhotoReported {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
-    TResult? Function(String photoId)? photoReported,
+    TResult? Function(WallPhoto photo)? photoReported,
   }) {
-    return photoReported?.call(photoId);
+    return photoReported?.call(photo);
   }
 
   @override
@@ -731,11 +731,11 @@ class _$_PhotoReported implements _PhotoReported {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
-    TResult Function(String photoId)? photoReported,
+    TResult Function(WallPhoto photo)? photoReported,
     required TResult orElse(),
   }) {
     if (photoReported != null) {
-      return photoReported(photoId);
+      return photoReported(photo);
     }
     return orElse();
   }
@@ -783,9 +783,9 @@ class _$_PhotoReported implements _PhotoReported {
 }
 
 abstract class _PhotoReported implements EventPhotosEvent {
-  const factory _PhotoReported(final String photoId) = _$_PhotoReported;
+  const factory _PhotoReported(final WallPhoto photo) = _$_PhotoReported;
 
-  String get photoId;
+  WallPhoto get photo;
   @JsonKey(ignore: true)
   _$$_PhotoReportedCopyWith<_$_PhotoReported> get copyWith =>
       throw _privateConstructorUsedError;

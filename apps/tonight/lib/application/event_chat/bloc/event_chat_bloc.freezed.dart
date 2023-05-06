@@ -24,6 +24,7 @@ mixin _$EventChatEvent {
     required TResult Function() messageSent,
     required TResult Function(String message) inputMessageChanged,
     required TResult Function(ChatMessage message) messageResent,
+    required TResult Function(ChatMessage message) messageReported,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,6 +34,7 @@ mixin _$EventChatEvent {
     TResult? Function()? messageSent,
     TResult? Function(String message)? inputMessageChanged,
     TResult? Function(ChatMessage message)? messageResent,
+    TResult? Function(ChatMessage message)? messageReported,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,6 +44,7 @@ mixin _$EventChatEvent {
     TResult Function()? messageSent,
     TResult Function(String message)? inputMessageChanged,
     TResult Function(ChatMessage message)? messageResent,
+    TResult Function(ChatMessage message)? messageReported,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -53,6 +56,7 @@ mixin _$EventChatEvent {
     required TResult Function(_MessageSent value) messageSent,
     required TResult Function(_InputMessageChanged value) inputMessageChanged,
     required TResult Function(_MessageResent value) messageResent,
+    required TResult Function(_MessageReported value) messageReported,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +66,7 @@ mixin _$EventChatEvent {
     TResult? Function(_MessageSent value)? messageSent,
     TResult? Function(_InputMessageChanged value)? inputMessageChanged,
     TResult? Function(_MessageResent value)? messageResent,
+    TResult? Function(_MessageReported value)? messageReported,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +76,7 @@ mixin _$EventChatEvent {
     TResult Function(_MessageSent value)? messageSent,
     TResult Function(_InputMessageChanged value)? inputMessageChanged,
     TResult Function(_MessageResent value)? messageResent,
+    TResult Function(_MessageReported value)? messageReported,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -173,6 +179,7 @@ class _$_ChatInitialized implements _ChatInitialized {
     required TResult Function() messageSent,
     required TResult Function(String message) inputMessageChanged,
     required TResult Function(ChatMessage message) messageResent,
+    required TResult Function(ChatMessage message) messageReported,
   }) {
     return chatInitialized(event, participant);
   }
@@ -185,6 +192,7 @@ class _$_ChatInitialized implements _ChatInitialized {
     TResult? Function()? messageSent,
     TResult? Function(String message)? inputMessageChanged,
     TResult? Function(ChatMessage message)? messageResent,
+    TResult? Function(ChatMessage message)? messageReported,
   }) {
     return chatInitialized?.call(event, participant);
   }
@@ -197,6 +205,7 @@ class _$_ChatInitialized implements _ChatInitialized {
     TResult Function()? messageSent,
     TResult Function(String message)? inputMessageChanged,
     TResult Function(ChatMessage message)? messageResent,
+    TResult Function(ChatMessage message)? messageReported,
     required TResult orElse(),
   }) {
     if (chatInitialized != null) {
@@ -214,6 +223,7 @@ class _$_ChatInitialized implements _ChatInitialized {
     required TResult Function(_MessageSent value) messageSent,
     required TResult Function(_InputMessageChanged value) inputMessageChanged,
     required TResult Function(_MessageResent value) messageResent,
+    required TResult Function(_MessageReported value) messageReported,
   }) {
     return chatInitialized(this);
   }
@@ -226,6 +236,7 @@ class _$_ChatInitialized implements _ChatInitialized {
     TResult? Function(_MessageSent value)? messageSent,
     TResult? Function(_InputMessageChanged value)? inputMessageChanged,
     TResult? Function(_MessageResent value)? messageResent,
+    TResult? Function(_MessageReported value)? messageReported,
   }) {
     return chatInitialized?.call(this);
   }
@@ -238,6 +249,7 @@ class _$_ChatInitialized implements _ChatInitialized {
     TResult Function(_MessageSent value)? messageSent,
     TResult Function(_InputMessageChanged value)? inputMessageChanged,
     TResult Function(_MessageResent value)? messageResent,
+    TResult Function(_MessageReported value)? messageReported,
     required TResult orElse(),
   }) {
     if (chatInitialized != null) {
@@ -304,6 +316,7 @@ class _$_NextPageMessagesFetched implements _NextPageMessagesFetched {
     required TResult Function() messageSent,
     required TResult Function(String message) inputMessageChanged,
     required TResult Function(ChatMessage message) messageResent,
+    required TResult Function(ChatMessage message) messageReported,
   }) {
     return nextPageMessagesFetched();
   }
@@ -316,6 +329,7 @@ class _$_NextPageMessagesFetched implements _NextPageMessagesFetched {
     TResult? Function()? messageSent,
     TResult? Function(String message)? inputMessageChanged,
     TResult? Function(ChatMessage message)? messageResent,
+    TResult? Function(ChatMessage message)? messageReported,
   }) {
     return nextPageMessagesFetched?.call();
   }
@@ -328,6 +342,7 @@ class _$_NextPageMessagesFetched implements _NextPageMessagesFetched {
     TResult Function()? messageSent,
     TResult Function(String message)? inputMessageChanged,
     TResult Function(ChatMessage message)? messageResent,
+    TResult Function(ChatMessage message)? messageReported,
     required TResult orElse(),
   }) {
     if (nextPageMessagesFetched != null) {
@@ -345,6 +360,7 @@ class _$_NextPageMessagesFetched implements _NextPageMessagesFetched {
     required TResult Function(_MessageSent value) messageSent,
     required TResult Function(_InputMessageChanged value) inputMessageChanged,
     required TResult Function(_MessageResent value) messageResent,
+    required TResult Function(_MessageReported value) messageReported,
   }) {
     return nextPageMessagesFetched(this);
   }
@@ -357,6 +373,7 @@ class _$_NextPageMessagesFetched implements _NextPageMessagesFetched {
     TResult? Function(_MessageSent value)? messageSent,
     TResult? Function(_InputMessageChanged value)? inputMessageChanged,
     TResult? Function(_MessageResent value)? messageResent,
+    TResult? Function(_MessageReported value)? messageReported,
   }) {
     return nextPageMessagesFetched?.call(this);
   }
@@ -369,6 +386,7 @@ class _$_NextPageMessagesFetched implements _NextPageMessagesFetched {
     TResult Function(_MessageSent value)? messageSent,
     TResult Function(_InputMessageChanged value)? inputMessageChanged,
     TResult Function(_MessageResent value)? messageResent,
+    TResult Function(_MessageReported value)? messageReported,
     required TResult orElse(),
   }) {
     if (nextPageMessagesFetched != null) {
@@ -426,6 +444,7 @@ class _$_MessageSent implements _MessageSent {
     required TResult Function() messageSent,
     required TResult Function(String message) inputMessageChanged,
     required TResult Function(ChatMessage message) messageResent,
+    required TResult Function(ChatMessage message) messageReported,
   }) {
     return messageSent();
   }
@@ -438,6 +457,7 @@ class _$_MessageSent implements _MessageSent {
     TResult? Function()? messageSent,
     TResult? Function(String message)? inputMessageChanged,
     TResult? Function(ChatMessage message)? messageResent,
+    TResult? Function(ChatMessage message)? messageReported,
   }) {
     return messageSent?.call();
   }
@@ -450,6 +470,7 @@ class _$_MessageSent implements _MessageSent {
     TResult Function()? messageSent,
     TResult Function(String message)? inputMessageChanged,
     TResult Function(ChatMessage message)? messageResent,
+    TResult Function(ChatMessage message)? messageReported,
     required TResult orElse(),
   }) {
     if (messageSent != null) {
@@ -467,6 +488,7 @@ class _$_MessageSent implements _MessageSent {
     required TResult Function(_MessageSent value) messageSent,
     required TResult Function(_InputMessageChanged value) inputMessageChanged,
     required TResult Function(_MessageResent value) messageResent,
+    required TResult Function(_MessageReported value) messageReported,
   }) {
     return messageSent(this);
   }
@@ -479,6 +501,7 @@ class _$_MessageSent implements _MessageSent {
     TResult? Function(_MessageSent value)? messageSent,
     TResult? Function(_InputMessageChanged value)? inputMessageChanged,
     TResult? Function(_MessageResent value)? messageResent,
+    TResult? Function(_MessageReported value)? messageReported,
   }) {
     return messageSent?.call(this);
   }
@@ -491,6 +514,7 @@ class _$_MessageSent implements _MessageSent {
     TResult Function(_MessageSent value)? messageSent,
     TResult Function(_InputMessageChanged value)? inputMessageChanged,
     TResult Function(_MessageResent value)? messageResent,
+    TResult Function(_MessageReported value)? messageReported,
     required TResult orElse(),
   }) {
     if (messageSent != null) {
@@ -575,6 +599,7 @@ class _$_InputMessageChanged implements _InputMessageChanged {
     required TResult Function() messageSent,
     required TResult Function(String message) inputMessageChanged,
     required TResult Function(ChatMessage message) messageResent,
+    required TResult Function(ChatMessage message) messageReported,
   }) {
     return inputMessageChanged(message);
   }
@@ -587,6 +612,7 @@ class _$_InputMessageChanged implements _InputMessageChanged {
     TResult? Function()? messageSent,
     TResult? Function(String message)? inputMessageChanged,
     TResult? Function(ChatMessage message)? messageResent,
+    TResult? Function(ChatMessage message)? messageReported,
   }) {
     return inputMessageChanged?.call(message);
   }
@@ -599,6 +625,7 @@ class _$_InputMessageChanged implements _InputMessageChanged {
     TResult Function()? messageSent,
     TResult Function(String message)? inputMessageChanged,
     TResult Function(ChatMessage message)? messageResent,
+    TResult Function(ChatMessage message)? messageReported,
     required TResult orElse(),
   }) {
     if (inputMessageChanged != null) {
@@ -616,6 +643,7 @@ class _$_InputMessageChanged implements _InputMessageChanged {
     required TResult Function(_MessageSent value) messageSent,
     required TResult Function(_InputMessageChanged value) inputMessageChanged,
     required TResult Function(_MessageResent value) messageResent,
+    required TResult Function(_MessageReported value) messageReported,
   }) {
     return inputMessageChanged(this);
   }
@@ -628,6 +656,7 @@ class _$_InputMessageChanged implements _InputMessageChanged {
     TResult? Function(_MessageSent value)? messageSent,
     TResult? Function(_InputMessageChanged value)? inputMessageChanged,
     TResult? Function(_MessageResent value)? messageResent,
+    TResult? Function(_MessageReported value)? messageReported,
   }) {
     return inputMessageChanged?.call(this);
   }
@@ -640,6 +669,7 @@ class _$_InputMessageChanged implements _InputMessageChanged {
     TResult Function(_MessageSent value)? messageSent,
     TResult Function(_InputMessageChanged value)? inputMessageChanged,
     TResult Function(_MessageResent value)? messageResent,
+    TResult Function(_MessageReported value)? messageReported,
     required TResult orElse(),
   }) {
     if (inputMessageChanged != null) {
@@ -739,6 +769,7 @@ class _$_MessageResent implements _MessageResent {
     required TResult Function() messageSent,
     required TResult Function(String message) inputMessageChanged,
     required TResult Function(ChatMessage message) messageResent,
+    required TResult Function(ChatMessage message) messageReported,
   }) {
     return messageResent(message);
   }
@@ -751,6 +782,7 @@ class _$_MessageResent implements _MessageResent {
     TResult? Function()? messageSent,
     TResult? Function(String message)? inputMessageChanged,
     TResult? Function(ChatMessage message)? messageResent,
+    TResult? Function(ChatMessage message)? messageReported,
   }) {
     return messageResent?.call(message);
   }
@@ -763,6 +795,7 @@ class _$_MessageResent implements _MessageResent {
     TResult Function()? messageSent,
     TResult Function(String message)? inputMessageChanged,
     TResult Function(ChatMessage message)? messageResent,
+    TResult Function(ChatMessage message)? messageReported,
     required TResult orElse(),
   }) {
     if (messageResent != null) {
@@ -780,6 +813,7 @@ class _$_MessageResent implements _MessageResent {
     required TResult Function(_MessageSent value) messageSent,
     required TResult Function(_InputMessageChanged value) inputMessageChanged,
     required TResult Function(_MessageResent value) messageResent,
+    required TResult Function(_MessageReported value) messageReported,
   }) {
     return messageResent(this);
   }
@@ -792,6 +826,7 @@ class _$_MessageResent implements _MessageResent {
     TResult? Function(_MessageSent value)? messageSent,
     TResult? Function(_InputMessageChanged value)? inputMessageChanged,
     TResult? Function(_MessageResent value)? messageResent,
+    TResult? Function(_MessageReported value)? messageReported,
   }) {
     return messageResent?.call(this);
   }
@@ -804,6 +839,7 @@ class _$_MessageResent implements _MessageResent {
     TResult Function(_MessageSent value)? messageSent,
     TResult Function(_InputMessageChanged value)? inputMessageChanged,
     TResult Function(_MessageResent value)? messageResent,
+    TResult Function(_MessageReported value)? messageReported,
     required TResult orElse(),
   }) {
     if (messageResent != null) {
@@ -823,6 +859,176 @@ abstract class _MessageResent implements EventChatEvent {
 }
 
 /// @nodoc
+abstract class _$$_MessageReportedCopyWith<$Res> {
+  factory _$$_MessageReportedCopyWith(
+          _$_MessageReported value, $Res Function(_$_MessageReported) then) =
+      __$$_MessageReportedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ChatMessage message});
+
+  $ChatMessageCopyWith<$Res> get message;
+}
+
+/// @nodoc
+class __$$_MessageReportedCopyWithImpl<$Res>
+    extends _$EventChatEventCopyWithImpl<$Res, _$_MessageReported>
+    implements _$$_MessageReportedCopyWith<$Res> {
+  __$$_MessageReportedCopyWithImpl(
+      _$_MessageReported _value, $Res Function(_$_MessageReported) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$_MessageReported(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as ChatMessage,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ChatMessageCopyWith<$Res> get message {
+    return $ChatMessageCopyWith<$Res>(_value.message, (value) {
+      return _then(_value.copyWith(message: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_MessageReported implements _MessageReported {
+  const _$_MessageReported(this.message);
+
+  @override
+  final ChatMessage message;
+
+  @override
+  String toString() {
+    return 'EventChatEvent.messageReported(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MessageReported &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MessageReportedCopyWith<_$_MessageReported> get copyWith =>
+      __$$_MessageReportedCopyWithImpl<_$_MessageReported>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Event event, Participant participant)
+        chatInitialized,
+    required TResult Function() nextPageMessagesFetched,
+    required TResult Function() messageSent,
+    required TResult Function(String message) inputMessageChanged,
+    required TResult Function(ChatMessage message) messageResent,
+    required TResult Function(ChatMessage message) messageReported,
+  }) {
+    return messageReported(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Event event, Participant participant)? chatInitialized,
+    TResult? Function()? nextPageMessagesFetched,
+    TResult? Function()? messageSent,
+    TResult? Function(String message)? inputMessageChanged,
+    TResult? Function(ChatMessage message)? messageResent,
+    TResult? Function(ChatMessage message)? messageReported,
+  }) {
+    return messageReported?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Event event, Participant participant)? chatInitialized,
+    TResult Function()? nextPageMessagesFetched,
+    TResult Function()? messageSent,
+    TResult Function(String message)? inputMessageChanged,
+    TResult Function(ChatMessage message)? messageResent,
+    TResult Function(ChatMessage message)? messageReported,
+    required TResult orElse(),
+  }) {
+    if (messageReported != null) {
+      return messageReported(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChatInitialized value) chatInitialized,
+    required TResult Function(_NextPageMessagesFetched value)
+        nextPageMessagesFetched,
+    required TResult Function(_MessageSent value) messageSent,
+    required TResult Function(_InputMessageChanged value) inputMessageChanged,
+    required TResult Function(_MessageResent value) messageResent,
+    required TResult Function(_MessageReported value) messageReported,
+  }) {
+    return messageReported(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChatInitialized value)? chatInitialized,
+    TResult? Function(_NextPageMessagesFetched value)? nextPageMessagesFetched,
+    TResult? Function(_MessageSent value)? messageSent,
+    TResult? Function(_InputMessageChanged value)? inputMessageChanged,
+    TResult? Function(_MessageResent value)? messageResent,
+    TResult? Function(_MessageReported value)? messageReported,
+  }) {
+    return messageReported?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChatInitialized value)? chatInitialized,
+    TResult Function(_NextPageMessagesFetched value)? nextPageMessagesFetched,
+    TResult Function(_MessageSent value)? messageSent,
+    TResult Function(_InputMessageChanged value)? inputMessageChanged,
+    TResult Function(_MessageResent value)? messageResent,
+    TResult Function(_MessageReported value)? messageReported,
+    required TResult orElse(),
+  }) {
+    if (messageReported != null) {
+      return messageReported(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MessageReported implements EventChatEvent {
+  const factory _MessageReported(final ChatMessage message) =
+      _$_MessageReported;
+
+  ChatMessage get message;
+  @JsonKey(ignore: true)
+  _$$_MessageReportedCopyWith<_$_MessageReported> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$EventChatState {
   CubitStatus get initialStatus => throw _privateConstructorUsedError;
   CubitStatus get nextPageStatus => throw _privateConstructorUsedError;
@@ -833,6 +1039,7 @@ mixin _$EventChatState {
   List<ChatMessage> get queuedMessages => throw _privateConstructorUsedError;
   Option<Event> get event => throw _privateConstructorUsedError;
   String get inputMessage => throw _privateConstructorUsedError;
+  List<String> get reportingMessageIds => throw _privateConstructorUsedError;
   Option<String> get snackbarMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -856,6 +1063,7 @@ abstract class $EventChatStateCopyWith<$Res> {
       List<ChatMessage> queuedMessages,
       Option<Event> event,
       String inputMessage,
+      List<String> reportingMessageIds,
       Option<String> snackbarMessage});
 }
 
@@ -881,6 +1089,7 @@ class _$EventChatStateCopyWithImpl<$Res, $Val extends EventChatState>
     Object? queuedMessages = null,
     Object? event = null,
     Object? inputMessage = null,
+    Object? reportingMessageIds = null,
     Object? snackbarMessage = null,
   }) {
     return _then(_value.copyWith(
@@ -920,6 +1129,10 @@ class _$EventChatStateCopyWithImpl<$Res, $Val extends EventChatState>
           ? _value.inputMessage
           : inputMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      reportingMessageIds: null == reportingMessageIds
+          ? _value.reportingMessageIds
+          : reportingMessageIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       snackbarMessage: null == snackbarMessage
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
@@ -946,6 +1159,7 @@ abstract class _$$_EventChatStateCopyWith<$Res>
       List<ChatMessage> queuedMessages,
       Option<Event> event,
       String inputMessage,
+      List<String> reportingMessageIds,
       Option<String> snackbarMessage});
 }
 
@@ -969,6 +1183,7 @@ class __$$_EventChatStateCopyWithImpl<$Res>
     Object? queuedMessages = null,
     Object? event = null,
     Object? inputMessage = null,
+    Object? reportingMessageIds = null,
     Object? snackbarMessage = null,
   }) {
     return _then(_$_EventChatState(
@@ -1008,6 +1223,10 @@ class __$$_EventChatStateCopyWithImpl<$Res>
           ? _value.inputMessage
           : inputMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      reportingMessageIds: null == reportingMessageIds
+          ? _value._reportingMessageIds
+          : reportingMessageIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       snackbarMessage: null == snackbarMessage
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
@@ -1029,10 +1248,12 @@ class _$_EventChatState implements _EventChatState {
       required final List<ChatMessage> queuedMessages,
       required this.event,
       required this.inputMessage,
+      required final List<String> reportingMessageIds,
       required this.snackbarMessage})
       : _oldMessages = oldMessages,
         _displayedMessages = displayedMessages,
-        _queuedMessages = queuedMessages;
+        _queuedMessages = queuedMessages,
+        _reportingMessageIds = reportingMessageIds;
 
   @override
   final CubitStatus initialStatus;
@@ -1071,12 +1292,21 @@ class _$_EventChatState implements _EventChatState {
   final Option<Event> event;
   @override
   final String inputMessage;
+  final List<String> _reportingMessageIds;
+  @override
+  List<String> get reportingMessageIds {
+    if (_reportingMessageIds is EqualUnmodifiableListView)
+      return _reportingMessageIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_reportingMessageIds);
+  }
+
   @override
   final Option<String> snackbarMessage;
 
   @override
   String toString() {
-    return 'EventChatState(initialStatus: $initialStatus, nextPageStatus: $nextPageStatus, hasReachedMax: $hasReachedMax, currentUser: $currentUser, oldMessages: $oldMessages, displayedMessages: $displayedMessages, queuedMessages: $queuedMessages, event: $event, inputMessage: $inputMessage, snackbarMessage: $snackbarMessage)';
+    return 'EventChatState(initialStatus: $initialStatus, nextPageStatus: $nextPageStatus, hasReachedMax: $hasReachedMax, currentUser: $currentUser, oldMessages: $oldMessages, displayedMessages: $displayedMessages, queuedMessages: $queuedMessages, event: $event, inputMessage: $inputMessage, reportingMessageIds: $reportingMessageIds, snackbarMessage: $snackbarMessage)';
   }
 
   @override
@@ -1101,6 +1331,8 @@ class _$_EventChatState implements _EventChatState {
             (identical(other.event, event) || other.event == event) &&
             (identical(other.inputMessage, inputMessage) ||
                 other.inputMessage == inputMessage) &&
+            const DeepCollectionEquality()
+                .equals(other._reportingMessageIds, _reportingMessageIds) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
                 other.snackbarMessage == snackbarMessage));
   }
@@ -1117,6 +1349,7 @@ class _$_EventChatState implements _EventChatState {
       const DeepCollectionEquality().hash(_queuedMessages),
       event,
       inputMessage,
+      const DeepCollectionEquality().hash(_reportingMessageIds),
       snackbarMessage);
 
   @JsonKey(ignore: true)
@@ -1137,6 +1370,7 @@ abstract class _EventChatState implements EventChatState {
       required final List<ChatMessage> queuedMessages,
       required final Option<Event> event,
       required final String inputMessage,
+      required final List<String> reportingMessageIds,
       required final Option<String> snackbarMessage}) = _$_EventChatState;
 
   @override
@@ -1157,6 +1391,8 @@ abstract class _EventChatState implements EventChatState {
   Option<Event> get event;
   @override
   String get inputMessage;
+  @override
+  List<String> get reportingMessageIds;
   @override
   Option<String> get snackbarMessage;
   @override
