@@ -1,8 +1,10 @@
 import 'package:auth/auth.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:common/extensions/responsive_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/sign_in/widgets/tonight_logo.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -22,7 +24,12 @@ class SplashPage extends StatelessWidget {
           deleteAccountInProgress: (_) => {},
         );
       },
-      child: Container(),
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Center(
+          child: TonightLogo(height: context.height),
+        ),
+      ),
     );
   }
 }
