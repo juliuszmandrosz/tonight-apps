@@ -32,6 +32,10 @@ extension FirestoreX on FirebaseFirestore {
 
   CollectionReference get reviewReports => collection('reviewReports');
 
+  CollectionReference get wallPhotoReports => collection('wallPhotoReports');
+
+  CollectionReference get messageReports => collection('messageReports');
+
   CollectionReference get partnersDiscounts => collection('partnersDiscounts');
 
   CollectionReference get clubsSales => collection('clubsSales');
@@ -57,8 +61,7 @@ extension FirestoreX on FirebaseFirestore {
   }
 
   Future<DocumentReference> getCurrentPartnerClubDocRef(
-    FirebaseAuth auth,
-  ) async {
+      FirebaseAuth auth,) async {
     final partnerDoc = await getCurrentPartnerDocRef(auth).get();
 
     final clubId = partnerDoc.get('clubId');
@@ -89,9 +92,7 @@ extension FirestoreX on FirebaseFirestore {
 }
 
 extension CollectionReferenceX on CollectionReference {
-  Future<List<DocumentSnapshot>> getDocsByIdsWhereIn(
-    List<dynamic> ids,
-  ) async {
+  Future<List<DocumentSnapshot>> getDocsByIdsWhereIn(List<dynamic> ids,) async {
     final result = <DocumentSnapshot>[];
     final idsCopy = [...ids];
 
@@ -116,8 +117,7 @@ extension CollectionReferenceX on CollectionReference {
   }
 
   Future<List<DocumentSnapshot>> getDocsByIdsWhereNotIn(
-    List<dynamic> ids,
-  ) async {
+      List<dynamic> ids,) async {
     final result = <DocumentSnapshot>[];
     final idsCopy = [...ids];
 

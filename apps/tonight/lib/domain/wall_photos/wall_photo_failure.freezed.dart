@@ -21,6 +21,7 @@ mixin _$WallPhotoFailure {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() noConnection,
+    required TResult Function() reportExists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$WallPhotoFailure {
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
     TResult? Function()? noConnection,
+    TResult? Function()? reportExists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$WallPhotoFailure {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? noConnection,
+    TResult Function()? reportExists,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$WallPhotoFailure {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_ReportExists value) reportExists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$WallPhotoFailure {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_ReportExists value)? reportExists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$WallPhotoFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_ReportExists value)? reportExists,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() noConnection,
+    required TResult Function() reportExists,
   }) {
     return unexpected();
   }
@@ -131,6 +138,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
     TResult? Function()? noConnection,
+    TResult? Function()? reportExists,
   }) {
     return unexpected?.call();
   }
@@ -141,6 +149,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? noConnection,
+    TResult Function()? reportExists,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -155,6 +164,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_ReportExists value) reportExists,
   }) {
     return unexpected(this);
   }
@@ -165,6 +175,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_ReportExists value)? reportExists,
   }) {
     return unexpected?.call(this);
   }
@@ -175,6 +186,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_ReportExists value)? reportExists,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -229,6 +241,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() noConnection,
+    required TResult Function() reportExists,
   }) {
     return permissionDenied();
   }
@@ -239,6 +252,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
     TResult? Function()? noConnection,
+    TResult? Function()? reportExists,
   }) {
     return permissionDenied?.call();
   }
@@ -249,6 +263,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? noConnection,
+    TResult Function()? reportExists,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -263,6 +278,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_ReportExists value) reportExists,
   }) {
     return permissionDenied(this);
   }
@@ -273,6 +289,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_ReportExists value)? reportExists,
   }) {
     return permissionDenied?.call(this);
   }
@@ -283,6 +300,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_ReportExists value)? reportExists,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -337,6 +355,7 @@ class _$_NoConnection implements _NoConnection {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() noConnection,
+    required TResult Function() reportExists,
   }) {
     return noConnection();
   }
@@ -347,6 +366,7 @@ class _$_NoConnection implements _NoConnection {
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
     TResult? Function()? noConnection,
+    TResult? Function()? reportExists,
   }) {
     return noConnection?.call();
   }
@@ -357,6 +377,7 @@ class _$_NoConnection implements _NoConnection {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? noConnection,
+    TResult Function()? reportExists,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -371,6 +392,7 @@ class _$_NoConnection implements _NoConnection {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_ReportExists value) reportExists,
   }) {
     return noConnection(this);
   }
@@ -381,6 +403,7 @@ class _$_NoConnection implements _NoConnection {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_ReportExists value)? reportExists,
   }) {
     return noConnection?.call(this);
   }
@@ -391,6 +414,7 @@ class _$_NoConnection implements _NoConnection {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_ReportExists value)? reportExists,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -402,4 +426,118 @@ class _$_NoConnection implements _NoConnection {
 
 abstract class _NoConnection implements WallPhotoFailure {
   const factory _NoConnection() = _$_NoConnection;
+}
+
+/// @nodoc
+abstract class _$$_ReportExistsCopyWith<$Res> {
+  factory _$$_ReportExistsCopyWith(
+          _$_ReportExists value, $Res Function(_$_ReportExists) then) =
+      __$$_ReportExistsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ReportExistsCopyWithImpl<$Res>
+    extends _$WallPhotoFailureCopyWithImpl<$Res, _$_ReportExists>
+    implements _$$_ReportExistsCopyWith<$Res> {
+  __$$_ReportExistsCopyWithImpl(
+      _$_ReportExists _value, $Res Function(_$_ReportExists) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_ReportExists implements _ReportExists {
+  const _$_ReportExists();
+
+  @override
+  String toString() {
+    return 'WallPhotoFailure.reportExists()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ReportExists);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
+    required TResult Function() reportExists,
+  }) {
+    return reportExists();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
+    TResult? Function()? reportExists,
+  }) {
+    return reportExists?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
+    TResult Function()? reportExists,
+    required TResult orElse(),
+  }) {
+    if (reportExists != null) {
+      return reportExists();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_ReportExists value) reportExists,
+  }) {
+    return reportExists(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_ReportExists value)? reportExists,
+  }) {
+    return reportExists?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_ReportExists value)? reportExists,
+    required TResult orElse(),
+  }) {
+    if (reportExists != null) {
+      return reportExists(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ReportExists implements WallPhotoFailure {
+  const factory _ReportExists() = _$_ReportExists;
 }

@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
+import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
 
 part 'event_photos_bloc.freezed.dart';
 part 'event_photos_event.dart';
@@ -25,6 +26,7 @@ class EventPhotosBloc extends Bloc<EventPhotosEvent, EventPhotosState> {
       transformer: throttleDroppable(),
     );
     on<_PhotoAdded>(_onPhotoAdded);
+    on<_PhotoReported>(_onPhotoReported);
   }
 
   FutureOr<void> _onPhotosFetched(
@@ -102,5 +104,41 @@ class EventPhotosBloc extends Bloc<EventPhotosEvent, EventPhotosState> {
     Emitter<EventPhotosState> emit,
   ) {
     emit(state.copyWith(photos: [event.photo, ...state.photos]));
+  }
+
+  Future<void> _onPhotoReported(
+    _PhotoReported event,
+    Emitter<EventPhotosState> emit,
+  ) async {
+    final photoIdsBeforeReport = [...state.reportingPhotoIds, event.photoId];
+    emit(state.copyWith(reportingPhotoIds: photoIdsBeforeReport));
+
+    final failureOrSuccess =
+        await _wallPhotoFacade.reportWallPhoto(event.photoId);
+
+    final photoIdsAfterReport = [...state.reportingPhotoIds]
+      ..remove(event.photoId);
+
+    emit(state.copyWith(reportingPhotoIds: photoIdsAfterReport));
+
+    failureOrSuccess.fold(
+      (failure) => _emitPhotoReportFailure(failure, emit),
+      (success) => _emitPhotoReportSuccess(emit),
+    );
+  }
+
+  _emitPhotoReportSuccess(Emitter<EventPhotosState> emit) {
+    // TODO - add translation
+    emit(
+        state.copyWith(snackbarMessage: some('S().photoReportedSuccessfully')));
+    emit(state.copyWith(snackbarMessage: none()));
+  }
+
+  _emitPhotoReportFailure(
+    WallPhotoFailure failure,
+    Emitter<EventPhotosState> emit,
+  ) {
+    emit(state.copyWith(snackbarMessage: some(failure.message)));
+    emit(state.copyWith(snackbarMessage: none()));
   }
 }
