@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:clubs/clubs.dart';
 import 'package:common/common.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -15,11 +16,10 @@ class ReportReviewButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ClubReviewsBloc, ClubReviewsState>(
-      buildWhen: (previous, current) =>
-          previous.reviewReportStatus != current.reviewReportStatus,
+      buildWhen: (p, c) =>
+          !listEquals(p.reportingReviewIds, c.reportingReviewIds),
       builder: (context, state) {
-        final isReviewReporting = state.reviewReportStatus.isLoading() &&
-            state.reportingReviewId.getOrCrash() == review.id;
+        final isReviewReporting = state.reportingReviewIds.contains(review.id);
         return Stack(
           children: [
             LayoutBuilder(
