@@ -8,6 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
+import 'package:translations/translations.dart';
 
 part 'event_photos_bloc.freezed.dart';
 part 'event_photos_event.dart';
@@ -128,9 +129,7 @@ class EventPhotosBloc extends Bloc<EventPhotosEvent, EventPhotosState> {
   }
 
   _emitPhotoReportSuccess(Emitter<EventPhotosState> emit) {
-    // TODO - add translation
-    emit(
-        state.copyWith(snackbarMessage: some('S().photoReportedSuccessfully')));
+    emit(state.copyWith(snackbarMessage: some(S().photoReportedSuccessfully)));
     emit(state.copyWith(snackbarMessage: none()));
   }
 
