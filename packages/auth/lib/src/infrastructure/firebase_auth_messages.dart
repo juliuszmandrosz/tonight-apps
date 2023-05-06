@@ -22,5 +22,6 @@ const firebaseAuthMessages = {
   'too-many-requests': AuthFailure.tooManyRequests(),
   'app-not-authorized': AuthFailure.deviceNotSupported(),
   'credential-already-in-use': AuthFailure.phoneNumberInUse(),
+  'session-expired': AuthFailure.sessionExpired(),
   'unknown': AuthFailure.invalidLink(),
 };
