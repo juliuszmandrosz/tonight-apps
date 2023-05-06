@@ -17,4 +17,7 @@ class EventChatEvent with _$EventChatEvent {
 
   const factory EventChatEvent.messageResent(ChatMessage message) =
       _MessageResent;
+
+  const factory EventChatEvent.messageReported(ChatMessage message) =
+      _MessageReported;
 }

@@ -77,14 +77,17 @@ class ClubReviewsBloc extends Bloc<ClubReviewsEvent, ClubReviewsState> {
     _ReviewReported event,
     Emitter<ClubReviewsState> emit,
   ) async {
-    final reviewIdsBeforeReport = [...state.reportingReviewIds, event.reviewId];
+    final reviewIdsBeforeReport = [
+      ...state.reportingReviewIds,
+      event.review.id
+    ];
     emit(state.copyWith(reportingReviewIds: reviewIdsBeforeReport));
 
     final failureOrSuccess =
-        await _reviewFacade.reportReviewAsUser(event.reviewId);
+        await _reviewFacade.reportReviewAsUser(event.review);
 
     final reviewIdsAfterReport = [...state.reportingReviewIds]
-      ..remove(event.reviewId);
+      ..remove(event.review.id);
 
     emit(state.copyWith(reportingReviewIds: reviewIdsAfterReport));
 

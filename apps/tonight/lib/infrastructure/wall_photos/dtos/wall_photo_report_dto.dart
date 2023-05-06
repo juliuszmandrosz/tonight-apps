@@ -13,6 +13,7 @@ class WallPhotoReportDto with _$WallPhotoReportDto {
     @JsonKey(ignore: true) String? id,
     required String photoId,
     required String reporterId,
+    required String photoUrl,
     @FirebaseTimestampJsonConverter() required DateTime createdAt,
   }) = _WallPhotoReportDto;
 

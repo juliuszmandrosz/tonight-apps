@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:clubs/domain/domain.dart';
 import 'package:common/common.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'review_report_dto.freezed.dart';
-
 part 'review_report_dto.g.dart';
 
 @freezed
@@ -16,6 +15,7 @@ class ReviewReportDto with _$ReviewReportDto {
     required String reviewId,
     required String reporterId,
     @FirebaseTimestampJsonConverter() required DateTime reportedAt,
+    @Default('') String reviewContent,
   }) = _ReviewReportDto;
 
   factory ReviewReportDto.fromDomain(ReviewReport reviewReport) {
@@ -24,6 +24,7 @@ class ReviewReportDto with _$ReviewReportDto {
       reviewId: reviewReport.reviewId,
       reporterId: reviewReport.reporterId,
       reportedAt: reviewReport.reportedAt,
+      reviewContent: reviewReport.reviewContent,
     );
   }
 
@@ -42,6 +43,7 @@ class ReviewReportDto with _$ReviewReportDto {
       reviewId: reviewId,
       reporterId: reporterId,
       reportedAt: reportedAt,
+      reviewContent: reviewContent,
     );
   }
 }

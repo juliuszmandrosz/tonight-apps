@@ -187,7 +187,7 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
 
   @override
   Future<Either<PartnerReviewFailure, Unit>> reportReviewAsPartner(
-    String reviewId,
+    Review review,
   ) async {
     try {
       final partnerDoc =
@@ -195,11 +195,11 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
 
       final partnerId = partnerDoc.id;
 
-      if (await _checkIfReportExists(partnerId, reviewId)) {
+      if (await _checkIfReportExists(partnerId, review.id)) {
         return left(const PartnerReviewFailure.reportExists());
       }
 
-      await _addReviewReport(reviewId, partnerId);
+      await _addReviewReport(review, partnerId);
 
       return right(unit);
     } on FirebaseException catch (e) {
@@ -220,7 +220,7 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
 
   @override
   Future<Either<UserReviewFailure, Unit>> reportReviewAsUser(
-    String reviewId,
+    Review review,
   ) async {
     try {
       final userDoc =
@@ -228,11 +228,11 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
 
       final userId = userDoc.id;
 
-      if (await _checkIfReportExists(userId, reviewId)) {
+      if (await _checkIfReportExists(userId, review.id)) {
         return left(const UserReviewFailure.reportExists());
       }
 
-      await _addReviewReport(reviewId, userId);
+      await _addReviewReport(review, userId);
 
       return right(unit);
     } on FirebaseException catch (e) {
@@ -258,11 +258,12 @@ class FirebaseReviewFacade implements PartnerReviewFacade, UserReviewFacade {
     return existingReportQuery.size > 0;
   }
 
-  Future<void> _addReviewReport(String reviewId, String reporterId) async {
+  Future<void> _addReviewReport(Review review, String reporterId) async {
     final reviewReport = ReviewReport(
-      reviewId: reviewId,
+      reviewId: review.id,
       reporterId: reporterId,
       reportedAt: DateTime.now(),
+      reviewContent: review.userOpinion,
     );
 
     final reviewReportDto = ReviewReportDto.fromDomain(reviewReport);

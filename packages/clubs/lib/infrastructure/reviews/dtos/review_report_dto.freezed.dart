@@ -26,6 +26,7 @@ mixin _$ReviewReportDto {
   String get reporterId => throw _privateConstructorUsedError;
   @FirebaseTimestampJsonConverter()
   DateTime get reportedAt => throw _privateConstructorUsedError;
+  String get reviewContent => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +44,8 @@ abstract class $ReviewReportDtoCopyWith<$Res> {
       {@JsonKey(ignore: true) String? id,
       String reviewId,
       String reporterId,
-      @FirebaseTimestampJsonConverter() DateTime reportedAt});
+      @FirebaseTimestampJsonConverter() DateTime reportedAt,
+      String reviewContent});
 }
 
 /// @nodoc
@@ -63,6 +65,7 @@ class _$ReviewReportDtoCopyWithImpl<$Res, $Val extends ReviewReportDto>
     Object? reviewId = null,
     Object? reporterId = null,
     Object? reportedAt = null,
+    Object? reviewContent = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -81,6 +84,10 @@ class _$ReviewReportDtoCopyWithImpl<$Res, $Val extends ReviewReportDto>
           ? _value.reportedAt
           : reportedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      reviewContent: null == reviewContent
+          ? _value.reviewContent
+          : reviewContent // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -97,7 +104,8 @@ abstract class _$$_ReviewReportDtoCopyWith<$Res>
       {@JsonKey(ignore: true) String? id,
       String reviewId,
       String reporterId,
-      @FirebaseTimestampJsonConverter() DateTime reportedAt});
+      @FirebaseTimestampJsonConverter() DateTime reportedAt,
+      String reviewContent});
 }
 
 /// @nodoc
@@ -115,6 +123,7 @@ class __$$_ReviewReportDtoCopyWithImpl<$Res>
     Object? reviewId = null,
     Object? reporterId = null,
     Object? reportedAt = null,
+    Object? reviewContent = null,
   }) {
     return _then(_$_ReviewReportDto(
       id: freezed == id
@@ -133,6 +142,10 @@ class __$$_ReviewReportDtoCopyWithImpl<$Res>
           ? _value.reportedAt
           : reportedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      reviewContent: null == reviewContent
+          ? _value.reviewContent
+          : reviewContent // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -144,7 +157,8 @@ class _$_ReviewReportDto extends _ReviewReportDto {
       {@JsonKey(ignore: true) this.id,
       required this.reviewId,
       required this.reporterId,
-      @FirebaseTimestampJsonConverter() required this.reportedAt})
+      @FirebaseTimestampJsonConverter() required this.reportedAt,
+      this.reviewContent = ''})
       : super._();
 
   factory _$_ReviewReportDto.fromJson(Map<String, dynamic> json) =>
@@ -160,10 +174,13 @@ class _$_ReviewReportDto extends _ReviewReportDto {
   @override
   @FirebaseTimestampJsonConverter()
   final DateTime reportedAt;
+  @override
+  @JsonKey()
+  final String reviewContent;
 
   @override
   String toString() {
-    return 'ReviewReportDto(id: $id, reviewId: $reviewId, reporterId: $reporterId, reportedAt: $reportedAt)';
+    return 'ReviewReportDto(id: $id, reviewId: $reviewId, reporterId: $reporterId, reportedAt: $reportedAt, reviewContent: $reviewContent)';
   }
 
   @override
@@ -177,13 +194,15 @@ class _$_ReviewReportDto extends _ReviewReportDto {
             (identical(other.reporterId, reporterId) ||
                 other.reporterId == reporterId) &&
             (identical(other.reportedAt, reportedAt) ||
-                other.reportedAt == reportedAt));
+                other.reportedAt == reportedAt) &&
+            (identical(other.reviewContent, reviewContent) ||
+                other.reviewContent == reviewContent));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, reviewId, reporterId, reportedAt);
+  int get hashCode => Object.hash(
+      runtimeType, id, reviewId, reporterId, reportedAt, reviewContent);
 
   @JsonKey(ignore: true)
   @override
@@ -201,12 +220,11 @@ class _$_ReviewReportDto extends _ReviewReportDto {
 
 abstract class _ReviewReportDto extends ReviewReportDto {
   const factory _ReviewReportDto(
-      {@JsonKey(ignore: true)
-          final String? id,
+      {@JsonKey(ignore: true) final String? id,
       required final String reviewId,
       required final String reporterId,
-      @FirebaseTimestampJsonConverter()
-          required final DateTime reportedAt}) = _$_ReviewReportDto;
+      @FirebaseTimestampJsonConverter() required final DateTime reportedAt,
+      final String reviewContent}) = _$_ReviewReportDto;
   const _ReviewReportDto._() : super._();
 
   factory _ReviewReportDto.fromJson(Map<String, dynamic> json) =
@@ -222,6 +240,8 @@ abstract class _ReviewReportDto extends ReviewReportDto {
   @override
   @FirebaseTimestampJsonConverter()
   DateTime get reportedAt;
+  @override
+  String get reviewContent;
   @override
   @JsonKey(ignore: true)
   _$$_ReviewReportDtoCopyWith<_$_ReviewReportDto> get copyWith =>

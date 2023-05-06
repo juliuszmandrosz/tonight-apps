@@ -20,21 +20,21 @@ mixin _$ClubReviewsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String clubId) reviewsFetched,
     required TResult Function() nextPageReviewsFetched,
-    required TResult Function(String reviewId) reviewReported,
+    required TResult Function(Review review) reviewReported,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String clubId)? reviewsFetched,
     TResult? Function()? nextPageReviewsFetched,
-    TResult? Function(String reviewId)? reviewReported,
+    TResult? Function(Review review)? reviewReported,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String clubId)? reviewsFetched,
     TResult Function()? nextPageReviewsFetched,
-    TResult Function(String reviewId)? reviewReported,
+    TResult Function(Review review)? reviewReported,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -147,7 +147,7 @@ class _$_ReviewsFetched implements _ReviewsFetched {
   TResult when<TResult extends Object?>({
     required TResult Function(String clubId) reviewsFetched,
     required TResult Function() nextPageReviewsFetched,
-    required TResult Function(String reviewId) reviewReported,
+    required TResult Function(Review review) reviewReported,
   }) {
     return reviewsFetched(clubId);
   }
@@ -157,7 +157,7 @@ class _$_ReviewsFetched implements _ReviewsFetched {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String clubId)? reviewsFetched,
     TResult? Function()? nextPageReviewsFetched,
-    TResult? Function(String reviewId)? reviewReported,
+    TResult? Function(Review review)? reviewReported,
   }) {
     return reviewsFetched?.call(clubId);
   }
@@ -167,7 +167,7 @@ class _$_ReviewsFetched implements _ReviewsFetched {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String clubId)? reviewsFetched,
     TResult Function()? nextPageReviewsFetched,
-    TResult Function(String reviewId)? reviewReported,
+    TResult Function(Review review)? reviewReported,
     required TResult orElse(),
   }) {
     if (reviewsFetched != null) {
@@ -262,7 +262,7 @@ class _$_NextPageReviewsFetched implements _NextPageReviewsFetched {
   TResult when<TResult extends Object?>({
     required TResult Function(String clubId) reviewsFetched,
     required TResult Function() nextPageReviewsFetched,
-    required TResult Function(String reviewId) reviewReported,
+    required TResult Function(Review review) reviewReported,
   }) {
     return nextPageReviewsFetched();
   }
@@ -272,7 +272,7 @@ class _$_NextPageReviewsFetched implements _NextPageReviewsFetched {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String clubId)? reviewsFetched,
     TResult? Function()? nextPageReviewsFetched,
-    TResult? Function(String reviewId)? reviewReported,
+    TResult? Function(Review review)? reviewReported,
   }) {
     return nextPageReviewsFetched?.call();
   }
@@ -282,7 +282,7 @@ class _$_NextPageReviewsFetched implements _NextPageReviewsFetched {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String clubId)? reviewsFetched,
     TResult Function()? nextPageReviewsFetched,
-    TResult Function(String reviewId)? reviewReported,
+    TResult Function(Review review)? reviewReported,
     required TResult orElse(),
   }) {
     if (nextPageReviewsFetched != null) {
@@ -337,7 +337,7 @@ abstract class _$$_ReviewReportedCopyWith<$Res> {
           _$_ReviewReported value, $Res Function(_$_ReviewReported) then) =
       __$$_ReviewReportedCopyWithImpl<$Res>;
   @useResult
-  $Res call({String reviewId});
+  $Res call({Review review});
 }
 
 /// @nodoc
@@ -351,13 +351,13 @@ class __$$_ReviewReportedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? reviewId = null,
+    Object? review = null,
   }) {
     return _then(_$_ReviewReported(
-      null == reviewId
-          ? _value.reviewId
-          : reviewId // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == review
+          ? _value.review
+          : review // ignore: cast_nullable_to_non_nullable
+              as Review,
     ));
   }
 }
@@ -365,14 +365,14 @@ class __$$_ReviewReportedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ReviewReported implements _ReviewReported {
-  const _$_ReviewReported(this.reviewId);
+  const _$_ReviewReported(this.review);
 
   @override
-  final String reviewId;
+  final Review review;
 
   @override
   String toString() {
-    return 'ClubReviewsEvent.reviewReported(reviewId: $reviewId)';
+    return 'ClubReviewsEvent.reviewReported(review: $review)';
   }
 
   @override
@@ -380,12 +380,11 @@ class _$_ReviewReported implements _ReviewReported {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ReviewReported &&
-            (identical(other.reviewId, reviewId) ||
-                other.reviewId == reviewId));
+            (identical(other.review, review) || other.review == review));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reviewId);
+  int get hashCode => Object.hash(runtimeType, review);
 
   @JsonKey(ignore: true)
   @override
@@ -398,9 +397,9 @@ class _$_ReviewReported implements _ReviewReported {
   TResult when<TResult extends Object?>({
     required TResult Function(String clubId) reviewsFetched,
     required TResult Function() nextPageReviewsFetched,
-    required TResult Function(String reviewId) reviewReported,
+    required TResult Function(Review review) reviewReported,
   }) {
-    return reviewReported(reviewId);
+    return reviewReported(review);
   }
 
   @override
@@ -408,9 +407,9 @@ class _$_ReviewReported implements _ReviewReported {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String clubId)? reviewsFetched,
     TResult? Function()? nextPageReviewsFetched,
-    TResult? Function(String reviewId)? reviewReported,
+    TResult? Function(Review review)? reviewReported,
   }) {
-    return reviewReported?.call(reviewId);
+    return reviewReported?.call(review);
   }
 
   @override
@@ -418,11 +417,11 @@ class _$_ReviewReported implements _ReviewReported {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String clubId)? reviewsFetched,
     TResult Function()? nextPageReviewsFetched,
-    TResult Function(String reviewId)? reviewReported,
+    TResult Function(Review review)? reviewReported,
     required TResult orElse(),
   }) {
     if (reviewReported != null) {
-      return reviewReported(reviewId);
+      return reviewReported(review);
     }
     return orElse();
   }
@@ -464,9 +463,9 @@ class _$_ReviewReported implements _ReviewReported {
 }
 
 abstract class _ReviewReported implements ClubReviewsEvent {
-  const factory _ReviewReported(final String reviewId) = _$_ReviewReported;
+  const factory _ReviewReported(final Review review) = _$_ReviewReported;
 
-  String get reviewId;
+  Review get review;
   @JsonKey(ignore: true)
   _$$_ReviewReportedCopyWith<_$_ReviewReported> get copyWith =>
       throw _privateConstructorUsedError;
