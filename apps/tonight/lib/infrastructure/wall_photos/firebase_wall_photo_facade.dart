@@ -15,6 +15,7 @@ import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
 import 'package:tonight/infrastructure/messages/dto/message_dto.dart';
 import 'package:tonight/infrastructure/participants/dtos/participant_dto.dart';
 import 'package:tonight/infrastructure/wall_photos/dtos/wall_photo_dto.dart';
+import 'package:tonight/infrastructure/wall_photos/dtos/wall_photo_report_dto.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/show_photos_from_clubs_in_range_filter.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/wall_photo_filters.dart';
 import 'package:uuid/uuid.dart';
@@ -207,6 +208,33 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
     }
   }
 
+  @override
+  Future<Either<WallPhotoFailure, Unit>> reportWallPhoto(String photoId) async {
+    try {
+      final currentUserId = _auth.tryGetFirebaseUser().uid;
+
+      final reportDto = WallPhotoReportDto(
+        photoId: photoId,
+        reporterId: currentUserId,
+        createdAt: DateTime.now(),
+      );
+
+      if (await _checkIfReportExists(reportDto)) {
+        return left(const WallPhotoFailure.reportExists());
+      }
+
+      final reportId = const Uuid().v1();
+
+      await _firestore.wallPhotoReports.doc(reportId).set(reportDto.toJson());
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      _logger.e(e);
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const WallPhotoFailure.unexpected());
+    }
+  }
+
   Future<List<dynamic>> _getWallPhotosFromApi({
     required Option<LatLng> userLocation,
     required String userId,
@@ -244,5 +272,15 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
         maxDistance: 50,
       ),
     );
+  }
+
+  Future<bool> _checkIfReportExists(WallPhotoReportDto reportDto) async {
+    final existingReportQuery = await _firestore.wallPhotoReports
+        .where('reporterId', isEqualTo: reportDto.reporterId)
+        .where('photoId', isEqualTo: reportDto.photoId)
+        .count()
+        .get();
+
+    return existingReportQuery.count > 0;
   }
 }
