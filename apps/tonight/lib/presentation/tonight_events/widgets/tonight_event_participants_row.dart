@@ -6,8 +6,8 @@ import 'package:translations/translations.dart';
 class TonightEventParticipantsRow extends StatelessWidget {
   final int totalParticipants;
   final List<EventParticipant> firstParticipants;
-  static const _avatarSize = 30.0;
-  static const _avatarSpacing = 25.0;
+  static const _avatarSize = 25.0;
+  static const _avatarSpacing = 20.0;
 
   const TonightEventParticipantsRow({
     required this.totalParticipants,
@@ -100,9 +100,9 @@ class TonightEventParticipantsRow extends StatelessWidget {
     );
 
     return Container(
-      height: _avatarSize,
+      padding: const EdgeInsets.all(8),
+      height: _avatarSize + 16,
       width: context.width,
-      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Stack(
         clipBehavior: Clip.none,
         children: avatars,
