@@ -15,9 +15,15 @@ class TonightEventPhoto extends StatelessWidget {
   Widget build(BuildContext context) {
     return Hero(
       tag: heroTag,
-      child: NetworkPhoto(
-        photoUrl: photoUrl,
-        photoHeight: 250,
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(12),
+          bottomRight: Radius.circular(12),
+        ),
+        child: NetworkPhoto(
+          photoUrl: photoUrl,
+          photoHeight: 250,
+        ),
       ),
     );
   }

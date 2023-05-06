@@ -33,29 +33,38 @@ class TonightEventCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Column(
-          children: [
-            const SizedBox(height: 8),
-            TonightEventInfoRow(event: event),
-            const SizedBox(height: 8),
-            event.firstParticipants.fold(
-              () => const SizedBox.shrink(),
-              (participants) => InkWell(
-                onTap: () => context.pushRoute(
-                  EventParticipantsRoute(eventId: event.eventId),
-                ),
-                child: TonightEventParticipantsRow(
-                  firstParticipants: participants,
-                  totalParticipants: event.totalParticipants,
-                ),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(
+                color: context.surfaceColor,
+                width: 2,
               ),
             ),
-            const SizedBox(height: 8),
-            TonightEventPhoto(
-              photoUrl: event.eventPhotoUrl,
-              heroTag: heroTag,
-            ),
-          ],
+          ),
+          child: Column(
+            children: [
+              const SizedBox(height: 8),
+              TonightEventInfoRow(event: event),
+              const SizedBox(height: 8),
+              TonightEventPhoto(
+                photoUrl: event.eventPhotoUrl,
+                heroTag: heroTag,
+              ),
+              event.firstParticipants.fold(
+                () => const SizedBox.shrink(),
+                (participants) => InkWell(
+                  onTap: () => context.pushRoute(
+                    EventParticipantsRoute(eventId: event.eventId),
+                  ),
+                  child: TonightEventParticipantsRow(
+                    firstParticipants: participants,
+                    totalParticipants: event.totalParticipants,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
