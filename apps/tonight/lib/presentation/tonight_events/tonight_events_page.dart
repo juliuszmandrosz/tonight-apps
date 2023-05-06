@@ -60,7 +60,7 @@ class TonightEventsPage extends StatelessWidget {
                                           .nextPageEventsFetched(),
                                     ),
                             separatorBuilder: (context, index) =>
-                                const SizedBox(height: 32),
+                                const SizedBox(height: 16),
                             itemBuilder: (_, i) => TonightEventCard(
                               event: state.events[i],
                             ),
