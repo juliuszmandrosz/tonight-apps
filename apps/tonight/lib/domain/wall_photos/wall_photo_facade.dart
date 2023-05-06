@@ -32,4 +32,6 @@ abstract class WallPhotoFacade {
     WallPhoto? lastPhoto,
     int pageSize = 20,
   });
+
+  Future<Either<WallPhotoFailure, Unit>> reportWallPhoto(String photoId);
 }

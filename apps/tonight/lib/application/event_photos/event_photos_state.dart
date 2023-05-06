@@ -10,6 +10,8 @@ class EventPhotosState with _$EventPhotosState {
     required Option<Event> event,
     required List<WallPhoto> photos,
     required bool hasReachedMax,
+    required List<String> reportingPhotoIds,
+    required Option<String> snackbarMessage,
   }) = _EventPhotosState;
 
   factory EventPhotosState.initial() => EventPhotosState(
@@ -18,5 +20,7 @@ class EventPhotosState with _$EventPhotosState {
         event: none(),
         photos: [],
         hasReachedMax: false,
+        reportingPhotoIds: [],
+        snackbarMessage: none(),
       );
 }

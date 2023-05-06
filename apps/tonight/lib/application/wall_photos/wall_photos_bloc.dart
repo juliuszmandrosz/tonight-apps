@@ -25,6 +25,7 @@ class WallPhotosBloc extends Bloc<WallPhotosEvent, WallPhotosState> {
       transformer: throttleDroppable(),
     );
     on<_WallPhotosRefreshed>(_onWallPhotosRefreshed);
+    on<_WallPhotoReported>(_onWallPhotoReported);
   }
 
   FutureOr<void> _onWallPhotosFetched(
@@ -114,5 +115,44 @@ class WallPhotosBloc extends Bloc<WallPhotosEvent, WallPhotosState> {
         ),
       ),
     );
+  }
+
+  Future<void> _onWallPhotoReported(
+    _WallPhotoReported event,
+    Emitter<WallPhotosState> emit,
+  ) async {
+    final photoIdsBeforeReport = [
+      ...state.reportingWallPhotoIds,
+      event.photoId
+    ];
+    emit(state.copyWith(reportingWallPhotoIds: photoIdsBeforeReport));
+
+    final failureOrSuccess =
+        await _wallPhotoFacade.reportWallPhoto(event.photoId);
+
+    final photoIdsAfterReport = [...state.reportingWallPhotoIds]
+      ..remove(event.photoId);
+
+    emit(state.copyWith(reportingWallPhotoIds: photoIdsAfterReport));
+
+    failureOrSuccess.fold(
+      (failure) => _emitWallPhotoReportFailure(failure, emit),
+      (success) => _emitWallPhotoReportSuccess(emit),
+    );
+  }
+
+  _emitWallPhotoReportSuccess(Emitter<WallPhotosState> emit) {
+    // TODO - add translation
+    emit(
+        state.copyWith(snackbarMessage: some('S().photoReportedSuccessfully')));
+    emit(state.copyWith(snackbarMessage: none()));
+  }
+
+  _emitWallPhotoReportFailure(
+    WallPhotoFailure failure,
+    Emitter<WallPhotosState> emit,
+  ) {
+    emit(state.copyWith(snackbarMessage: some(failure.message)));
+    emit(state.copyWith(snackbarMessage: none()));
   }
 }

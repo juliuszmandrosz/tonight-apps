@@ -22,6 +22,7 @@ mixin _$EventPhotosEvent {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
+    required TResult Function(String photoId) photoReported,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$EventPhotosEvent {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
+    TResult? Function(String photoId)? photoReported,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$EventPhotosEvent {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
+    TResult Function(String photoId)? photoReported,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +51,7 @@ mixin _$EventPhotosEvent {
     required TResult Function(_NextPagePhotosFetched value)
         nextPagePhotosFetched,
     required TResult Function(_PhotoAdded value) photoAdded,
+    required TResult Function(_PhotoReported value) photoReported,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +60,7 @@ mixin _$EventPhotosEvent {
     TResult? Function(_PhotosRefreshed value)? photosRefreshed,
     TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult? Function(_PhotoAdded value)? photoAdded,
+    TResult? Function(_PhotoReported value)? photoReported,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +69,7 @@ mixin _$EventPhotosEvent {
     TResult Function(_PhotosRefreshed value)? photosRefreshed,
     TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult Function(_PhotoAdded value)? photoAdded,
+    TResult Function(_PhotoReported value)? photoReported,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,6 +161,7 @@ class _$_PhotosFetched implements _PhotosFetched {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
+    required TResult Function(String photoId) photoReported,
   }) {
     return photosFetched(event);
   }
@@ -166,6 +173,7 @@ class _$_PhotosFetched implements _PhotosFetched {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
+    TResult? Function(String photoId)? photoReported,
   }) {
     return photosFetched?.call(event);
   }
@@ -177,6 +185,7 @@ class _$_PhotosFetched implements _PhotosFetched {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
+    TResult Function(String photoId)? photoReported,
     required TResult orElse(),
   }) {
     if (photosFetched != null) {
@@ -193,6 +202,7 @@ class _$_PhotosFetched implements _PhotosFetched {
     required TResult Function(_NextPagePhotosFetched value)
         nextPagePhotosFetched,
     required TResult Function(_PhotoAdded value) photoAdded,
+    required TResult Function(_PhotoReported value) photoReported,
   }) {
     return photosFetched(this);
   }
@@ -204,6 +214,7 @@ class _$_PhotosFetched implements _PhotosFetched {
     TResult? Function(_PhotosRefreshed value)? photosRefreshed,
     TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult? Function(_PhotoAdded value)? photoAdded,
+    TResult? Function(_PhotoReported value)? photoReported,
   }) {
     return photosFetched?.call(this);
   }
@@ -215,6 +226,7 @@ class _$_PhotosFetched implements _PhotosFetched {
     TResult Function(_PhotosRefreshed value)? photosRefreshed,
     TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult Function(_PhotoAdded value)? photoAdded,
+    TResult Function(_PhotoReported value)? photoReported,
     required TResult orElse(),
   }) {
     if (photosFetched != null) {
@@ -275,6 +287,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
+    required TResult Function(String photoId) photoReported,
   }) {
     return photosRefreshed();
   }
@@ -286,6 +299,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
+    TResult? Function(String photoId)? photoReported,
   }) {
     return photosRefreshed?.call();
   }
@@ -297,6 +311,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
+    TResult Function(String photoId)? photoReported,
     required TResult orElse(),
   }) {
     if (photosRefreshed != null) {
@@ -313,6 +328,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
     required TResult Function(_NextPagePhotosFetched value)
         nextPagePhotosFetched,
     required TResult Function(_PhotoAdded value) photoAdded,
+    required TResult Function(_PhotoReported value) photoReported,
   }) {
     return photosRefreshed(this);
   }
@@ -324,6 +340,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
     TResult? Function(_PhotosRefreshed value)? photosRefreshed,
     TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult? Function(_PhotoAdded value)? photoAdded,
+    TResult? Function(_PhotoReported value)? photoReported,
   }) {
     return photosRefreshed?.call(this);
   }
@@ -335,6 +352,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
     TResult Function(_PhotosRefreshed value)? photosRefreshed,
     TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult Function(_PhotoAdded value)? photoAdded,
+    TResult Function(_PhotoReported value)? photoReported,
     required TResult orElse(),
   }) {
     if (photosRefreshed != null) {
@@ -390,6 +408,7 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
+    required TResult Function(String photoId) photoReported,
   }) {
     return nextPagePhotosFetched();
   }
@@ -401,6 +420,7 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
+    TResult? Function(String photoId)? photoReported,
   }) {
     return nextPagePhotosFetched?.call();
   }
@@ -412,6 +432,7 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
+    TResult Function(String photoId)? photoReported,
     required TResult orElse(),
   }) {
     if (nextPagePhotosFetched != null) {
@@ -428,6 +449,7 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
     required TResult Function(_NextPagePhotosFetched value)
         nextPagePhotosFetched,
     required TResult Function(_PhotoAdded value) photoAdded,
+    required TResult Function(_PhotoReported value) photoReported,
   }) {
     return nextPagePhotosFetched(this);
   }
@@ -439,6 +461,7 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
     TResult? Function(_PhotosRefreshed value)? photosRefreshed,
     TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult? Function(_PhotoAdded value)? photoAdded,
+    TResult? Function(_PhotoReported value)? photoReported,
   }) {
     return nextPagePhotosFetched?.call(this);
   }
@@ -450,6 +473,7 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
     TResult Function(_PhotosRefreshed value)? photosRefreshed,
     TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult Function(_PhotoAdded value)? photoAdded,
+    TResult Function(_PhotoReported value)? photoReported,
     required TResult orElse(),
   }) {
     if (nextPagePhotosFetched != null) {
@@ -531,6 +555,7 @@ class _$_PhotoAdded implements _PhotoAdded {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
+    required TResult Function(String photoId) photoReported,
   }) {
     return photoAdded(photo);
   }
@@ -542,6 +567,7 @@ class _$_PhotoAdded implements _PhotoAdded {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
+    TResult? Function(String photoId)? photoReported,
   }) {
     return photoAdded?.call(photo);
   }
@@ -553,6 +579,7 @@ class _$_PhotoAdded implements _PhotoAdded {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
+    TResult Function(String photoId)? photoReported,
     required TResult orElse(),
   }) {
     if (photoAdded != null) {
@@ -569,6 +596,7 @@ class _$_PhotoAdded implements _PhotoAdded {
     required TResult Function(_NextPagePhotosFetched value)
         nextPagePhotosFetched,
     required TResult Function(_PhotoAdded value) photoAdded,
+    required TResult Function(_PhotoReported value) photoReported,
   }) {
     return photoAdded(this);
   }
@@ -580,6 +608,7 @@ class _$_PhotoAdded implements _PhotoAdded {
     TResult? Function(_PhotosRefreshed value)? photosRefreshed,
     TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult? Function(_PhotoAdded value)? photoAdded,
+    TResult? Function(_PhotoReported value)? photoReported,
   }) {
     return photoAdded?.call(this);
   }
@@ -591,6 +620,7 @@ class _$_PhotoAdded implements _PhotoAdded {
     TResult Function(_PhotosRefreshed value)? photosRefreshed,
     TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult Function(_PhotoAdded value)? photoAdded,
+    TResult Function(_PhotoReported value)? photoReported,
     required TResult orElse(),
   }) {
     if (photoAdded != null) {
@@ -610,12 +640,166 @@ abstract class _PhotoAdded implements EventPhotosEvent {
 }
 
 /// @nodoc
+abstract class _$$_PhotoReportedCopyWith<$Res> {
+  factory _$$_PhotoReportedCopyWith(
+          _$_PhotoReported value, $Res Function(_$_PhotoReported) then) =
+      __$$_PhotoReportedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String photoId});
+}
+
+/// @nodoc
+class __$$_PhotoReportedCopyWithImpl<$Res>
+    extends _$EventPhotosEventCopyWithImpl<$Res, _$_PhotoReported>
+    implements _$$_PhotoReportedCopyWith<$Res> {
+  __$$_PhotoReportedCopyWithImpl(
+      _$_PhotoReported _value, $Res Function(_$_PhotoReported) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? photoId = null,
+  }) {
+    return _then(_$_PhotoReported(
+      null == photoId
+          ? _value.photoId
+          : photoId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PhotoReported implements _PhotoReported {
+  const _$_PhotoReported(this.photoId);
+
+  @override
+  final String photoId;
+
+  @override
+  String toString() {
+    return 'EventPhotosEvent.photoReported(photoId: $photoId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PhotoReported &&
+            (identical(other.photoId, photoId) || other.photoId == photoId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, photoId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PhotoReportedCopyWith<_$_PhotoReported> get copyWith =>
+      __$$_PhotoReportedCopyWithImpl<_$_PhotoReported>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Event event) photosFetched,
+    required TResult Function() photosRefreshed,
+    required TResult Function() nextPagePhotosFetched,
+    required TResult Function(WallPhoto photo) photoAdded,
+    required TResult Function(String photoId) photoReported,
+  }) {
+    return photoReported(photoId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Event event)? photosFetched,
+    TResult? Function()? photosRefreshed,
+    TResult? Function()? nextPagePhotosFetched,
+    TResult? Function(WallPhoto photo)? photoAdded,
+    TResult? Function(String photoId)? photoReported,
+  }) {
+    return photoReported?.call(photoId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Event event)? photosFetched,
+    TResult Function()? photosRefreshed,
+    TResult Function()? nextPagePhotosFetched,
+    TResult Function(WallPhoto photo)? photoAdded,
+    TResult Function(String photoId)? photoReported,
+    required TResult orElse(),
+  }) {
+    if (photoReported != null) {
+      return photoReported(photoId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PhotosFetched value) photosFetched,
+    required TResult Function(_PhotosRefreshed value) photosRefreshed,
+    required TResult Function(_NextPagePhotosFetched value)
+        nextPagePhotosFetched,
+    required TResult Function(_PhotoAdded value) photoAdded,
+    required TResult Function(_PhotoReported value) photoReported,
+  }) {
+    return photoReported(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PhotosFetched value)? photosFetched,
+    TResult? Function(_PhotosRefreshed value)? photosRefreshed,
+    TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult? Function(_PhotoAdded value)? photoAdded,
+    TResult? Function(_PhotoReported value)? photoReported,
+  }) {
+    return photoReported?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PhotosFetched value)? photosFetched,
+    TResult Function(_PhotosRefreshed value)? photosRefreshed,
+    TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult Function(_PhotoAdded value)? photoAdded,
+    TResult Function(_PhotoReported value)? photoReported,
+    required TResult orElse(),
+  }) {
+    if (photoReported != null) {
+      return photoReported(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PhotoReported implements EventPhotosEvent {
+  const factory _PhotoReported(final String photoId) = _$_PhotoReported;
+
+  String get photoId;
+  @JsonKey(ignore: true)
+  _$$_PhotoReportedCopyWith<_$_PhotoReported> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$EventPhotosState {
   CubitStatus get getPhotosStatus => throw _privateConstructorUsedError;
   CubitStatus get nextPageStatus => throw _privateConstructorUsedError;
   Option<Event> get event => throw _privateConstructorUsedError;
   List<WallPhoto> get photos => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
+  List<String> get reportingPhotoIds => throw _privateConstructorUsedError;
+  Option<String> get snackbarMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventPhotosStateCopyWith<EventPhotosState> get copyWith =>
@@ -633,7 +817,9 @@ abstract class $EventPhotosStateCopyWith<$Res> {
       CubitStatus nextPageStatus,
       Option<Event> event,
       List<WallPhoto> photos,
-      bool hasReachedMax});
+      bool hasReachedMax,
+      List<String> reportingPhotoIds,
+      Option<String> snackbarMessage});
 }
 
 /// @nodoc
@@ -654,6 +840,8 @@ class _$EventPhotosStateCopyWithImpl<$Res, $Val extends EventPhotosState>
     Object? event = null,
     Object? photos = null,
     Object? hasReachedMax = null,
+    Object? reportingPhotoIds = null,
+    Object? snackbarMessage = null,
   }) {
     return _then(_value.copyWith(
       getPhotosStatus: null == getPhotosStatus
@@ -676,6 +864,14 @@ class _$EventPhotosStateCopyWithImpl<$Res, $Val extends EventPhotosState>
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
               as bool,
+      reportingPhotoIds: null == reportingPhotoIds
+          ? _value.reportingPhotoIds
+          : reportingPhotoIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      snackbarMessage: null == snackbarMessage
+          ? _value.snackbarMessage
+          : snackbarMessage // ignore: cast_nullable_to_non_nullable
+              as Option<String>,
     ) as $Val);
   }
 }
@@ -693,7 +889,9 @@ abstract class _$$_EventPhotosStateCopyWith<$Res>
       CubitStatus nextPageStatus,
       Option<Event> event,
       List<WallPhoto> photos,
-      bool hasReachedMax});
+      bool hasReachedMax,
+      List<String> reportingPhotoIds,
+      Option<String> snackbarMessage});
 }
 
 /// @nodoc
@@ -712,6 +910,8 @@ class __$$_EventPhotosStateCopyWithImpl<$Res>
     Object? event = null,
     Object? photos = null,
     Object? hasReachedMax = null,
+    Object? reportingPhotoIds = null,
+    Object? snackbarMessage = null,
   }) {
     return _then(_$_EventPhotosState(
       getPhotosStatus: null == getPhotosStatus
@@ -734,6 +934,14 @@ class __$$_EventPhotosStateCopyWithImpl<$Res>
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
               as bool,
+      reportingPhotoIds: null == reportingPhotoIds
+          ? _value._reportingPhotoIds
+          : reportingPhotoIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      snackbarMessage: null == snackbarMessage
+          ? _value.snackbarMessage
+          : snackbarMessage // ignore: cast_nullable_to_non_nullable
+              as Option<String>,
     ));
   }
 }
@@ -746,8 +954,11 @@ class _$_EventPhotosState extends _EventPhotosState {
       required this.nextPageStatus,
       required this.event,
       required final List<WallPhoto> photos,
-      required this.hasReachedMax})
+      required this.hasReachedMax,
+      required final List<String> reportingPhotoIds,
+      required this.snackbarMessage})
       : _photos = photos,
+        _reportingPhotoIds = reportingPhotoIds,
         super._();
 
   @override
@@ -766,10 +977,21 @@ class _$_EventPhotosState extends _EventPhotosState {
 
   @override
   final bool hasReachedMax;
+  final List<String> _reportingPhotoIds;
+  @override
+  List<String> get reportingPhotoIds {
+    if (_reportingPhotoIds is EqualUnmodifiableListView)
+      return _reportingPhotoIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_reportingPhotoIds);
+  }
+
+  @override
+  final Option<String> snackbarMessage;
 
   @override
   String toString() {
-    return 'EventPhotosState(getPhotosStatus: $getPhotosStatus, nextPageStatus: $nextPageStatus, event: $event, photos: $photos, hasReachedMax: $hasReachedMax)';
+    return 'EventPhotosState(getPhotosStatus: $getPhotosStatus, nextPageStatus: $nextPageStatus, event: $event, photos: $photos, hasReachedMax: $hasReachedMax, reportingPhotoIds: $reportingPhotoIds, snackbarMessage: $snackbarMessage)';
   }
 
   @override
@@ -784,12 +1006,23 @@ class _$_EventPhotosState extends _EventPhotosState {
             (identical(other.event, event) || other.event == event) &&
             const DeepCollectionEquality().equals(other._photos, _photos) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
-                other.hasReachedMax == hasReachedMax));
+                other.hasReachedMax == hasReachedMax) &&
+            const DeepCollectionEquality()
+                .equals(other._reportingPhotoIds, _reportingPhotoIds) &&
+            (identical(other.snackbarMessage, snackbarMessage) ||
+                other.snackbarMessage == snackbarMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, getPhotosStatus, nextPageStatus,
-      event, const DeepCollectionEquality().hash(_photos), hasReachedMax);
+  int get hashCode => Object.hash(
+      runtimeType,
+      getPhotosStatus,
+      nextPageStatus,
+      event,
+      const DeepCollectionEquality().hash(_photos),
+      hasReachedMax,
+      const DeepCollectionEquality().hash(_reportingPhotoIds),
+      snackbarMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -804,7 +1037,9 @@ abstract class _EventPhotosState extends EventPhotosState {
       required final CubitStatus nextPageStatus,
       required final Option<Event> event,
       required final List<WallPhoto> photos,
-      required final bool hasReachedMax}) = _$_EventPhotosState;
+      required final bool hasReachedMax,
+      required final List<String> reportingPhotoIds,
+      required final Option<String> snackbarMessage}) = _$_EventPhotosState;
   const _EventPhotosState._() : super._();
 
   @override
@@ -817,6 +1052,10 @@ abstract class _EventPhotosState extends EventPhotosState {
   List<WallPhoto> get photos;
   @override
   bool get hasReachedMax;
+  @override
+  List<String> get reportingPhotoIds;
+  @override
+  Option<String> get snackbarMessage;
   @override
   @JsonKey(ignore: true)
   _$$_EventPhotosStateCopyWith<_$_EventPhotosState> get copyWith =>
