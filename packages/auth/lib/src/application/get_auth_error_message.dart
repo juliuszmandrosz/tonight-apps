@@ -25,5 +25,6 @@ String getAuthErrorMessage(AuthFailure authFailure) {
     smsTimeout: (_) => S().smsTimeout,
     tooManyRequests: (_) => S().tooManyRequests,
     phoneNumberInUse: (_) => S().phoneNumberInUse,
+    sessionExpired: (_) => S().sessionExpired,
   );
 }
