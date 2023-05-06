@@ -31,30 +31,27 @@ class WallPhotosPage extends StatelessWidget {
           case CubitStatus.loading:
             return const WaveLoadingIndicator();
           case CubitStatus.success:
-            return Padding(
-              padding: const EdgeInsets.only(top: 16),
-              child: state.photos.isEmpty
-                  ? const RefreshWallPhotosButton()
-                  : RefreshIndicator(
-                      onRefresh: () async => context
+            return state.photos.isEmpty
+                ? const RefreshWallPhotosButton()
+                : RefreshIndicator(
+                    onRefresh: () async => context
+                        .read<WallPhotosBloc>()
+                        .add(const WallPhotosEvent.wallPhotosRefreshed()),
+                    child: InfiniteList(
+                      itemCount: state.photos.length,
+                      hasReachedMax: state.hasReachedMax,
+                      isLoading: state.getPhotosStatus.isLoading(),
+                      hasError: state.getPhotosStatus.isFailure(),
+                      onFetchData: () => context
                           .read<WallPhotosBloc>()
-                          .add(const WallPhotosEvent.wallPhotosRefreshed()),
-                      child: InfiniteList(
-                        itemCount: state.photos.length,
-                        hasReachedMax: state.hasReachedMax,
-                        isLoading: state.getPhotosStatus.isLoading(),
-                        hasError: state.getPhotosStatus.isFailure(),
-                        onFetchData: () => context
-                            .read<WallPhotosBloc>()
-                            .add(const WallPhotosEvent.nextPagePhotosFetched()),
-                        separatorBuilder: (context, index) =>
-                            const SizedBox(height: 20),
-                        itemBuilder: (_, i) => WallPhotoCard(
-                          wallPhoto: state.photos[i],
-                        ),
+                          .add(const WallPhotosEvent.nextPagePhotosFetched()),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 20),
+                      itemBuilder: (_, i) => WallPhotoCard(
+                        wallPhoto: state.photos[i],
                       ),
                     ),
-            );
+                  );
         }
       },
     );
