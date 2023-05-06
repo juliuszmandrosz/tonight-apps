@@ -19,7 +19,6 @@ extension WallPhotoFailureX on WallPhotoFailure {
         unexpected: () => S().serverError,
         permissionDenied: () => S().operationNotAllowed,
         noConnection: () => S().errorCheckInternetConnection,
-        // TODO - add translation
-        reportExists: () => 'S().photoAlreadyReported',
+        reportExists: () => S().photoAlreadyReported,
       );
 }

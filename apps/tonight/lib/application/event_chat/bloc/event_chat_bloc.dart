@@ -11,6 +11,7 @@ import 'package:tonight/application/event_chat/aggregator/event_chat_failure.dar
 import 'package:tonight/application/event_chat/models/chat_message_model.dart';
 import 'package:tonight/application/event_chat/models/chat_user_model.dart';
 import 'package:tonight/domain/participants/participant_entity.dart';
+import 'package:translations/translations.dart';
 
 part 'event_chat_bloc.freezed.dart';
 part 'event_chat_event.dart';
@@ -184,9 +185,8 @@ class EventChatBloc extends Bloc<EventChatEvent, EventChatState> {
   }
 
   _emitMessageReportSuccess(Emitter<EventChatState> emit) {
-    // TODO - add translation
-    emit(state.copyWith(
-        snackbarMessage: some('S().messageReportedSuccessfully')));
+    emit(
+        state.copyWith(snackbarMessage: some(S().messageReportedSuccessfully)));
     emit(state.copyWith(snackbarMessage: none()));
   }
 

@@ -13,7 +13,6 @@ class EventChatFailure with _$EventChatFailure {
 extension EventChatFailureX on EventChatFailure {
   String get message => when(
         unexpected: () => S().serverError,
-        // TODO - add translation
-        reportExists: () => 'S().messageAlreadyReported',
+        reportExists: () => S().messageAlreadyReported,
       );
 }
