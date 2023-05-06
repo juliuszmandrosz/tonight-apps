@@ -44,8 +44,7 @@ class EventChatBottomSheet extends StatelessWidget {
                         const FaIcon(FontAwesomeIcons.shareNodes),
                         const SizedBox(height: 8),
                         Text(
-                          // TODO - add translation
-                          'Udostępnij',
+                          S().share,
                           style: context.titleSmall,
                         ),
                       ],
@@ -61,8 +60,7 @@ class EventChatBottomSheet extends StatelessWidget {
                           onPressed: () async {
                             final result = await context
                                 .showConfirmationDialogWithCustomMessage(
-                              // TODO - add translation
-                              'S().confirmMessageReport',
+                              S().confirmMessageReport,
                             );
 
                             if (result == true && context.mounted) {

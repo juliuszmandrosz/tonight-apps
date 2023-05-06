@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/event_photos/event_photos_bloc.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
+import 'package:translations/translations.dart';
 
 class EventPhotoReportButton extends StatelessWidget {
   final WallPhoto photo;
@@ -37,8 +38,7 @@ class EventPhotoReportButton extends StatelessWidget {
                   onPressed: () async {
                     final result =
                         await context.showConfirmationDialogWithCustomMessage(
-                      // TODO - add translation
-                      'S().confirmPhotoReport',
+                      S().confirmPhotoReport,
                     );
 
                     if (result == true && context.mounted) {
