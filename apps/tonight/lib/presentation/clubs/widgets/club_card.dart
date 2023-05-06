@@ -42,7 +42,7 @@ class ClubCard extends StatelessWidget {
         color: context.backgroundColor,
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
           children: [
