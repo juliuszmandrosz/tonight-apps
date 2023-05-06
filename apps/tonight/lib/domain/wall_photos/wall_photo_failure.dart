@@ -10,6 +10,8 @@ class WallPhotoFailure with _$WallPhotoFailure {
   const factory WallPhotoFailure.permissionDenied() = _PermissionDenied;
 
   const factory WallPhotoFailure.noConnection() = _NoConnection;
+
+  const factory WallPhotoFailure.reportExists() = _ReportExists;
 }
 
 extension WallPhotoFailureX on WallPhotoFailure {
@@ -17,5 +19,7 @@ extension WallPhotoFailureX on WallPhotoFailure {
         unexpected: () => S().serverError,
         permissionDenied: () => S().operationNotAllowed,
         noConnection: () => S().errorCheckInternetConnection,
+        // TODO - add translation
+        reportExists: () => 'S().photoAlreadyReported',
       );
 }
