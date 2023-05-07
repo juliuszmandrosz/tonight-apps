@@ -3,20 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinput/pinput.dart';
 import 'package:tonight/application/sign_in_with_phone_number/sign_in_with_phone_number_cubit.dart';
-import 'package:tonight/presentation/commons/widgets/countdown_timer.dart';
+import 'package:tonight/presentation/sign_in_with_phone_number/widgets/sign_in_with_phone_number_countdown.dart';
 import 'package:translations/translations.dart';
 
-class SignInWithPhoneNumberSmsCodeForm extends StatefulWidget {
+class SignInWithPhoneNumberSmsCodeForm extends StatelessWidget {
   const SignInWithPhoneNumberSmsCodeForm({Key? key}) : super(key: key);
-
-  @override
-  State<SignInWithPhoneNumberSmsCodeForm> createState() =>
-      _SignInWithPhoneNumberSmsCodeFormState();
-}
-
-class _SignInWithPhoneNumberSmsCodeFormState
-    extends State<SignInWithPhoneNumberSmsCodeForm> {
-  var _secondsLeft = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -53,16 +44,7 @@ class _SignInWithPhoneNumberSmsCodeFormState
               ),
             ),
             const SizedBox(height: 10),
-            Row(
-              children: [
-                const Spacer(),
-                CountdownTimer(
-                  secondsLeft: _secondsLeft,
-                  onTimerCompleted:
-                      context.read<SignInWithPhoneNumberCubit>().reset,
-                ),
-              ],
-            ),
+            const SignInWithPhoneNumberCountdown(),
             const SizedBox(height: 20),
             Text(
               S().notReceivedCode,
@@ -71,14 +53,9 @@ class _SignInWithPhoneNumberSmsCodeFormState
             ),
             const SizedBox(height: 8),
             TextButton(
-              onPressed: () {
-                setState(() {
-                  _secondsLeft = _secondsLeft;
-                });
-                context
-                    .read<SignInWithPhoneNumberCubit>()
-                    .sendSmsVerificationCode();
-              },
+              onPressed: context
+                  .read<SignInWithPhoneNumberCubit>()
+                  .sendSmsVerificationCode,
               child: state.sendSmsStatus.isLoading()
                   ? const DotsLoadingIndicator(size: 18)
                   : Text(
