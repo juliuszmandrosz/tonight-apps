@@ -119,10 +119,6 @@ class FirebaseEventFacade
           ? userFavorites.remove(eventId)
           : userFavorites.add(eventId);
 
-      if (userFavorites.length > 20) {
-        return left(const UserEventFailure.moreThan20FavoriteEvents());
-      }
-
       await userRef.update({'favoriteEventIds': userFavorites});
 
       return right(unit);
