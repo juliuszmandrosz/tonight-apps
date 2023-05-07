@@ -7,10 +7,12 @@ import 'package:translations/translations.dart';
 class PhoneNumberField extends StatefulWidget {
   final Key formKey;
   final void Function(String?) onInputChanged;
+  final bool enabled;
 
   const PhoneNumberField({
     required this.formKey,
     required this.onInputChanged,
+    this.enabled = true,
     Key? key,
   }) : super(key: key);
 
@@ -33,6 +35,7 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
     return Form(
       key: widget.formKey,
       child: InternationalPhoneNumberInput(
+        isEnabled: widget.enabled,
         onInputChanged: (s) => widget.onInputChanged(s.phoneNumber),
         selectorConfig: const SelectorConfig(
           selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
