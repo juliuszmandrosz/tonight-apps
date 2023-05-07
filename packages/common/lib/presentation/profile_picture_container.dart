@@ -43,7 +43,7 @@ class ProfilePictureContainer extends StatelessWidget {
         ? CircleNetworkPhoto(
             photoUrl: profilePictureUrl!,
             containerSize: imageSize,
-            loaderSize: 16,
+            loaderSize: 12,
           )
         : _buildUserPlaceholder(
             Text(
