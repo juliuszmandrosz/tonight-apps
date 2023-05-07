@@ -50,7 +50,12 @@ const animationDuration = 300;
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    AutoRoute(page: SplashPage, initial: true),
+    CustomRoute(
+      page: SplashPage,
+      initial: true,
+      transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
     CustomRoute(
       page: SignInPage,
       transitionsBuilder: slideLeftTransition,
