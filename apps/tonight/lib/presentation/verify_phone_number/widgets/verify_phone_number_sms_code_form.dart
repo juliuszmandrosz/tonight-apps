@@ -3,20 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinput/pinput.dart';
 import 'package:tonight/application/verify_phone_number/verify_phone_number_cubit.dart';
-import 'package:tonight/presentation/commons/widgets/countdown_timer.dart';
+import 'package:tonight/presentation/verify_phone_number/widgets/verify_phone_number_countdown.dart';
 import 'package:translations/translations.dart';
 
-class VerifyPhoneNumberSmsCodeForm extends StatefulWidget {
+class VerifyPhoneNumberSmsCodeForm extends StatelessWidget {
   const VerifyPhoneNumberSmsCodeForm({Key? key}) : super(key: key);
-
-  @override
-  State<VerifyPhoneNumberSmsCodeForm> createState() =>
-      _VerifyPhoneNumberSmsCodeFormState();
-}
-
-class _VerifyPhoneNumberSmsCodeFormState
-    extends State<VerifyPhoneNumberSmsCodeForm> {
-  var _secondsLeft = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -52,16 +43,7 @@ class _VerifyPhoneNumberSmsCodeFormState
               ),
             ),
             const SizedBox(height: 10),
-            Row(
-              children: [
-                const Spacer(),
-                CountdownTimer(
-                  secondsLeft: _secondsLeft,
-                  onTimerCompleted:
-                      context.read<VerifyPhoneNumberCubit>().reset,
-                ),
-              ],
-            ),
+            const VerifyPhoneNumberCountdown(),
             const SizedBox(height: 20),
             Text(
               S().notReceivedCode,
@@ -70,14 +52,9 @@ class _VerifyPhoneNumberSmsCodeFormState
             ),
             const SizedBox(height: 8),
             TextButton(
-              onPressed: () {
-                setState(() {
-                  _secondsLeft = _secondsLeft;
-                });
-                context
-                    .read<VerifyPhoneNumberCubit>()
-                    .sendSmsVerificationCode();
-              },
+              onPressed: context
+                  .read<VerifyPhoneNumberCubit>()
+                  .sendSmsVerificationCode,
               child: state.sendSmsStatus.isLoading()
                   ? const DotsLoadingIndicator(size: 18)
                   : Text(

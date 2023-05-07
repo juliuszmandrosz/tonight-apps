@@ -46,6 +46,10 @@ class VerifyPhoneNumberCubit extends Cubit<VerifyPhoneNumberState> {
       (failureOrSuccess) {
         failureOrSuccess.fold(
           (failure) {
+            if (failure.maybeWhen(
+                smsTimeout: () => true, orElse: () => false)) {
+              emit(state.copyWith(verificationId: none()));
+            }
             emit(
               state.copyWith(
                 sendSmsStatus: CubitStatus.failure,
