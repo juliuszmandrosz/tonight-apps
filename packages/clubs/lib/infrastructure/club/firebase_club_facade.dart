@@ -14,7 +14,7 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:google_maps_flutter_platform_interface/src/types/location.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:logger/logger.dart';
 
 class FirebaseClubFacade
@@ -107,10 +107,6 @@ class FirebaseClubFacade
       userFavorites.contains(clubId)
           ? userFavorites.remove(clubId)
           : userFavorites.add(clubId);
-
-      if (userFavorites.length > 20) {
-        return left(const UserClubFailure.moreThan20FavoriteClubs());
-      }
 
       await userRef.update({'favoriteClubIds': userFavorites});
 
