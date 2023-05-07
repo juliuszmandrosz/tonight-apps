@@ -2,6 +2,7 @@ import 'package:common/common.dart';
 import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:logger/logger.dart';
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
 import 'package:tonight/domain/participants/participant_entity.dart';
 import 'package:tonight/presentation/event_chat/widgets/event_chat_input.dart';
@@ -20,7 +21,15 @@ class EventChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<EventChatBloc, EventChatState>(
+    return BlocConsumer<EventChatBloc, EventChatState>(
+      listenWhen: (p, c) => p.snackbarMessage != c.snackbarMessage,
+      listener: (context, state) {
+        Logger().i(state.snackbarMessage);
+        state.snackbarMessage.fold(
+          () {},
+          (message) => context.showSnackbarMessage(message),
+        );
+      },
       builder: (context, state) {
         switch (state.initialStatus) {
           case CubitStatus.initial:
