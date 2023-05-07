@@ -21,14 +21,7 @@ class EventChatMessageBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     final messageAlignment =
         message.isCurrentUser ? Alignment.topRight : Alignment.topLeft;
-    return BlocConsumer<EventChatBloc, EventChatState>(
-      listenWhen: (p, c) => p.snackbarMessage != c.snackbarMessage,
-      listener: (context, state) {
-        state.snackbarMessage.fold(
-          () {},
-          (message) => context.showSnackbarMessage(message),
-        );
-      },
+    return BlocBuilder<EventChatBloc, EventChatState>(
       buildWhen: (p, c) =>
           !listEquals(p.reportingMessageIds, c.reportingMessageIds),
       builder: (context, state) {
