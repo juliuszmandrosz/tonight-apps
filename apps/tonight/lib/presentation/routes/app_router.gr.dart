@@ -70,9 +70,9 @@ import '../wall_photo_camera_preview/wall_photo_camera_preview_page.dart'
 import '../wall_photos_filters/wall_photos_filters_page.dart' as _i36;
 import '../welcome_loader/welcome_loader_page.dart' as _i3;
 import 'page_transitions/fade_in_transition.dart' as _i44;
-import 'page_transitions/slide_left_transition.dart' as _i42;
+import 'page_transitions/slide_left_transition.dart' as _i43;
 import 'page_transitions/slide_up_transition.dart' as _i46;
-import 'page_transitions/zoom_in_transition.dart' as _i43;
+import 'page_transitions/zoom_in_transition.dart' as _i42;
 
 class AppRouter extends _i40.RootStackRouter {
   AppRouter([_i41.GlobalKey<_i41.NavigatorState>? navigatorKey])
@@ -81,16 +81,20 @@ class AppRouter extends _i40.RootStackRouter {
   @override
   final Map<String, _i40.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
-      return _i40.MaterialPageX<dynamic>(
+      return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i1.SplashPage(),
+        transitionsBuilder: _i42.zoomInTransition,
+        durationInMilliseconds: 300,
+        opaque: true,
+        barrierDismissible: false,
       );
     },
     SignInRoute.name: (routeData) {
       return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i2.SignInPage(),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -100,7 +104,7 @@ class AppRouter extends _i40.RootStackRouter {
       return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i3.WelcomeLoaderPage(),
-        transitionsBuilder: _i43.zoomInTransition,
+        transitionsBuilder: _i42.zoomInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -110,7 +114,7 @@ class AppRouter extends _i40.RootStackRouter {
       return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i4.NetworkLostPage(),
-        transitionsBuilder: _i43.zoomInTransition,
+        transitionsBuilder: _i42.zoomInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -126,7 +130,7 @@ class AppRouter extends _i40.RootStackRouter {
           eventFiltersPageType: args.eventFiltersPageType,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -144,7 +148,7 @@ class AppRouter extends _i40.RootStackRouter {
           ticketPrice: args.ticketPrice,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -158,7 +162,7 @@ class AppRouter extends _i40.RootStackRouter {
           userId: args.userId,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -189,7 +193,7 @@ class AppRouter extends _i40.RootStackRouter {
           ticket: args.ticket,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -204,7 +208,7 @@ class AppRouter extends _i40.RootStackRouter {
           selectedDate: args.selectedDate,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -219,7 +223,7 @@ class AppRouter extends _i40.RootStackRouter {
           selectedCity: args.selectedCity,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -234,7 +238,7 @@ class AppRouter extends _i40.RootStackRouter {
           selectedCity: args.selectedCity,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -248,7 +252,7 @@ class AppRouter extends _i40.RootStackRouter {
           event: args.event,
           key: args.key,
         ),
-        transitionsBuilder: _i43.zoomInTransition,
+        transitionsBuilder: _i42.zoomInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -262,7 +266,7 @@ class AppRouter extends _i40.RootStackRouter {
           ticket: args.ticket,
           key: args.key,
         ),
-        transitionsBuilder: _i43.zoomInTransition,
+        transitionsBuilder: _i42.zoomInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -276,7 +280,7 @@ class AppRouter extends _i40.RootStackRouter {
           ticket: args.ticket,
           key: args.key,
         ),
-        transitionsBuilder: _i43.zoomInTransition,
+        transitionsBuilder: _i42.zoomInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -286,7 +290,7 @@ class AppRouter extends _i40.RootStackRouter {
       return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i16.TicketScanConfirmPage(),
-        transitionsBuilder: _i43.zoomInTransition,
+        transitionsBuilder: _i42.zoomInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -296,7 +300,7 @@ class AppRouter extends _i40.RootStackRouter {
       return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i17.OnboardingUserDetailsPage(),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -306,7 +310,7 @@ class AppRouter extends _i40.RootStackRouter {
       return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i18.OnboardingPage(),
-        transitionsBuilder: _i43.zoomInTransition,
+        transitionsBuilder: _i42.zoomInTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -320,7 +324,7 @@ class AppRouter extends _i40.RootStackRouter {
           customerData: args.customerData,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -334,7 +338,7 @@ class AppRouter extends _i40.RootStackRouter {
           currentUsername: args.currentUsername,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -349,7 +353,7 @@ class AppRouter extends _i40.RootStackRouter {
           username: args.username,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -363,7 +367,7 @@ class AppRouter extends _i40.RootStackRouter {
           eventId: args.eventId,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -373,7 +377,7 @@ class AppRouter extends _i40.RootStackRouter {
       return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i23.AppSettingsPage(),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -383,7 +387,7 @@ class AppRouter extends _i40.RootStackRouter {
       return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i24.ContactPage(),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -397,7 +401,7 @@ class AppRouter extends _i40.RootStackRouter {
           customerData: args.customerData,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -428,7 +432,7 @@ class AppRouter extends _i40.RootStackRouter {
           event: args.event,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -438,7 +442,7 @@ class AppRouter extends _i40.RootStackRouter {
       return _i40.CustomPage<_i47.WallPhotoVenue>(
         routeData: routeData,
         child: const _i28.SelectClubPage(),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -448,7 +452,7 @@ class AppRouter extends _i40.RootStackRouter {
       return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i29.TicketsPage(),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -458,7 +462,7 @@ class AppRouter extends _i40.RootStackRouter {
       return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i30.FavoritesPage(),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -472,7 +476,7 @@ class AppRouter extends _i40.RootStackRouter {
           event: args.event,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -486,7 +490,7 @@ class AppRouter extends _i40.RootStackRouter {
           eventId: args.eventId,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -511,7 +515,7 @@ class AppRouter extends _i40.RootStackRouter {
       return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i34.VerifyPhoneNumberPage(),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -521,7 +525,7 @@ class AppRouter extends _i40.RootStackRouter {
       return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i35.SignInWithPhoneNumberPage(),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -536,7 +540,7 @@ class AppRouter extends _i40.RootStackRouter {
           selectedFilters: args.selectedFilters,
           key: args.key,
         ),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -546,7 +550,7 @@ class AppRouter extends _i40.RootStackRouter {
       return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i37.TonightPage(),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -556,7 +560,7 @@ class AppRouter extends _i40.RootStackRouter {
       return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i38.DiscoverPage(),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
@@ -566,7 +570,7 @@ class AppRouter extends _i40.RootStackRouter {
       return _i40.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i39.ProfilePage(),
-        transitionsBuilder: _i42.slideLeftTransition,
+        transitionsBuilder: _i43.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
         barrierDismissible: false,
