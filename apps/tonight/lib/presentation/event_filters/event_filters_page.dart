@@ -14,6 +14,7 @@ import 'package:tonight/presentation/event_filters/widgets/event_filters_min_age
 import 'package:tonight/presentation/event_filters/widgets/event_filters_music.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_price.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_submit_button.dart.dart';
+import 'package:tonight/presentation/event_filters/widgets/event_filters_whole_world.dart';
 import 'package:translations/translations.dart';
 
 class EventFiltersPage extends StatelessWidget {
@@ -95,9 +96,15 @@ class EventFiltersPage extends StatelessWidget {
                                   state.availableFilters.allowedOutfits,
                             ),
                             const SizedBox(height: 25),
-                            const EventFiltersIsConcert(),
-                            const SizedBox(height: 25),
                             const EventFiltersPrice(),
+                            const SizedBox(height: 25),
+                            const EventFiltersIsConcert(),
+                            if (eventFiltersPageType ==
+                                EventFiltersPageType.tonight)
+                              const Padding(
+                                padding: EdgeInsets.only(top: 25),
+                                child: EventFiltersShowWholeWorld(),
+                              ),
                             const SizedBox(height: 80),
                           ],
                         ),

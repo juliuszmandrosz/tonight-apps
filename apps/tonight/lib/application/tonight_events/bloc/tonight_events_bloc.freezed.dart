@@ -25,8 +25,6 @@ mixin _$TonightEventsEvent {
         menuFiltersApplied,
     required TResult Function(MenuEventFilter filter) menuFilterRemoved,
     required TResult Function() eventsRefreshed,
-    required TResult Function() eventsTabSelected,
-    required TResult Function() eventsTabUnselected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,8 +36,6 @@ mixin _$TonightEventsEvent {
         menuFiltersApplied,
     TResult? Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult? Function()? eventsRefreshed,
-    TResult? Function()? eventsTabSelected,
-    TResult? Function()? eventsTabUnselected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,8 +47,6 @@ mixin _$TonightEventsEvent {
         menuFiltersApplied,
     TResult Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult Function()? eventsRefreshed,
-    TResult Function()? eventsTabSelected,
-    TResult Function()? eventsTabUnselected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,8 +58,6 @@ mixin _$TonightEventsEvent {
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_EventsRefreshed value) eventsRefreshed,
-    required TResult Function(_EventsTabSelected value) eventsTabSelected,
-    required TResult Function(_EventsTabUnselected value) eventsTabUnselected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,8 +67,6 @@ mixin _$TonightEventsEvent {
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult? Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult? Function(_EventsTabUnselected value)? eventsTabUnselected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -86,8 +76,6 @@ mixin _$TonightEventsEvent {
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult Function(_EventsTabUnselected value)? eventsTabUnselected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -183,8 +171,6 @@ class _$_EventsFetched implements _EventsFetched {
         menuFiltersApplied,
     required TResult Function(MenuEventFilter filter) menuFilterRemoved,
     required TResult Function() eventsRefreshed,
-    required TResult Function() eventsTabSelected,
-    required TResult Function() eventsTabUnselected,
   }) {
     return eventsFetched(userLocation);
   }
@@ -199,8 +185,6 @@ class _$_EventsFetched implements _EventsFetched {
         menuFiltersApplied,
     TResult? Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult? Function()? eventsRefreshed,
-    TResult? Function()? eventsTabSelected,
-    TResult? Function()? eventsTabUnselected,
   }) {
     return eventsFetched?.call(userLocation);
   }
@@ -215,8 +199,6 @@ class _$_EventsFetched implements _EventsFetched {
         menuFiltersApplied,
     TResult Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult Function()? eventsRefreshed,
-    TResult Function()? eventsTabSelected,
-    TResult Function()? eventsTabUnselected,
     required TResult orElse(),
   }) {
     if (eventsFetched != null) {
@@ -234,8 +216,6 @@ class _$_EventsFetched implements _EventsFetched {
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_EventsRefreshed value) eventsRefreshed,
-    required TResult Function(_EventsTabSelected value) eventsTabSelected,
-    required TResult Function(_EventsTabUnselected value) eventsTabUnselected,
   }) {
     return eventsFetched(this);
   }
@@ -248,8 +228,6 @@ class _$_EventsFetched implements _EventsFetched {
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult? Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult? Function(_EventsTabUnselected value)? eventsTabUnselected,
   }) {
     return eventsFetched?.call(this);
   }
@@ -262,8 +240,6 @@ class _$_EventsFetched implements _EventsFetched {
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult Function(_EventsTabUnselected value)? eventsTabUnselected,
     required TResult orElse(),
   }) {
     if (eventsFetched != null) {
@@ -328,8 +304,6 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
         menuFiltersApplied,
     required TResult Function(MenuEventFilter filter) menuFilterRemoved,
     required TResult Function() eventsRefreshed,
-    required TResult Function() eventsTabSelected,
-    required TResult Function() eventsTabUnselected,
   }) {
     return nextPageEventsFetched();
   }
@@ -344,8 +318,6 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
         menuFiltersApplied,
     TResult? Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult? Function()? eventsRefreshed,
-    TResult? Function()? eventsTabSelected,
-    TResult? Function()? eventsTabUnselected,
   }) {
     return nextPageEventsFetched?.call();
   }
@@ -360,8 +332,6 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
         menuFiltersApplied,
     TResult Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult Function()? eventsRefreshed,
-    TResult Function()? eventsTabSelected,
-    TResult Function()? eventsTabUnselected,
     required TResult orElse(),
   }) {
     if (nextPageEventsFetched != null) {
@@ -379,8 +349,6 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_EventsRefreshed value) eventsRefreshed,
-    required TResult Function(_EventsTabSelected value) eventsTabSelected,
-    required TResult Function(_EventsTabUnselected value) eventsTabUnselected,
   }) {
     return nextPageEventsFetched(this);
   }
@@ -393,8 +361,6 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult? Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult? Function(_EventsTabUnselected value)? eventsTabUnselected,
   }) {
     return nextPageEventsFetched?.call(this);
   }
@@ -407,8 +373,6 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult Function(_EventsTabUnselected value)? eventsTabUnselected,
     required TResult orElse(),
   }) {
     if (nextPageEventsFetched != null) {
@@ -523,8 +487,6 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
         menuFiltersApplied,
     required TResult Function(MenuEventFilter filter) menuFilterRemoved,
     required TResult Function() eventsRefreshed,
-    required TResult Function() eventsTabSelected,
-    required TResult Function() eventsTabUnselected,
   }) {
     return menuFiltersApplied(filters, appliedFilters);
   }
@@ -539,8 +501,6 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
         menuFiltersApplied,
     TResult? Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult? Function()? eventsRefreshed,
-    TResult? Function()? eventsTabSelected,
-    TResult? Function()? eventsTabUnselected,
   }) {
     return menuFiltersApplied?.call(filters, appliedFilters);
   }
@@ -555,8 +515,6 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
         menuFiltersApplied,
     TResult Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult Function()? eventsRefreshed,
-    TResult Function()? eventsTabSelected,
-    TResult Function()? eventsTabUnselected,
     required TResult orElse(),
   }) {
     if (menuFiltersApplied != null) {
@@ -574,8 +532,6 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_EventsRefreshed value) eventsRefreshed,
-    required TResult Function(_EventsTabSelected value) eventsTabSelected,
-    required TResult Function(_EventsTabUnselected value) eventsTabUnselected,
   }) {
     return menuFiltersApplied(this);
   }
@@ -588,8 +544,6 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult? Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult? Function(_EventsTabUnselected value)? eventsTabUnselected,
   }) {
     return menuFiltersApplied?.call(this);
   }
@@ -602,8 +556,6 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult Function(_EventsTabUnselected value)? eventsTabUnselected,
     required TResult orElse(),
   }) {
     if (menuFiltersApplied != null) {
@@ -698,8 +650,6 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
         menuFiltersApplied,
     required TResult Function(MenuEventFilter filter) menuFilterRemoved,
     required TResult Function() eventsRefreshed,
-    required TResult Function() eventsTabSelected,
-    required TResult Function() eventsTabUnselected,
   }) {
     return menuFilterRemoved(filter);
   }
@@ -714,8 +664,6 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
         menuFiltersApplied,
     TResult? Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult? Function()? eventsRefreshed,
-    TResult? Function()? eventsTabSelected,
-    TResult? Function()? eventsTabUnselected,
   }) {
     return menuFilterRemoved?.call(filter);
   }
@@ -730,8 +678,6 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
         menuFiltersApplied,
     TResult Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult Function()? eventsRefreshed,
-    TResult Function()? eventsTabSelected,
-    TResult Function()? eventsTabUnselected,
     required TResult orElse(),
   }) {
     if (menuFilterRemoved != null) {
@@ -749,8 +695,6 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_EventsRefreshed value) eventsRefreshed,
-    required TResult Function(_EventsTabSelected value) eventsTabSelected,
-    required TResult Function(_EventsTabUnselected value) eventsTabUnselected,
   }) {
     return menuFilterRemoved(this);
   }
@@ -763,8 +707,6 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult? Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult? Function(_EventsTabUnselected value)? eventsTabUnselected,
   }) {
     return menuFilterRemoved?.call(this);
   }
@@ -777,8 +719,6 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult Function(_EventsTabUnselected value)? eventsTabUnselected,
     required TResult orElse(),
   }) {
     if (menuFilterRemoved != null) {
@@ -843,8 +783,6 @@ class _$_EventsRefreshed implements _EventsRefreshed {
         menuFiltersApplied,
     required TResult Function(MenuEventFilter filter) menuFilterRemoved,
     required TResult Function() eventsRefreshed,
-    required TResult Function() eventsTabSelected,
-    required TResult Function() eventsTabUnselected,
   }) {
     return eventsRefreshed();
   }
@@ -859,8 +797,6 @@ class _$_EventsRefreshed implements _EventsRefreshed {
         menuFiltersApplied,
     TResult? Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult? Function()? eventsRefreshed,
-    TResult? Function()? eventsTabSelected,
-    TResult? Function()? eventsTabUnselected,
   }) {
     return eventsRefreshed?.call();
   }
@@ -875,8 +811,6 @@ class _$_EventsRefreshed implements _EventsRefreshed {
         menuFiltersApplied,
     TResult Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult Function()? eventsRefreshed,
-    TResult Function()? eventsTabSelected,
-    TResult Function()? eventsTabUnselected,
     required TResult orElse(),
   }) {
     if (eventsRefreshed != null) {
@@ -894,8 +828,6 @@ class _$_EventsRefreshed implements _EventsRefreshed {
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_EventsRefreshed value) eventsRefreshed,
-    required TResult Function(_EventsTabSelected value) eventsTabSelected,
-    required TResult Function(_EventsTabUnselected value) eventsTabUnselected,
   }) {
     return eventsRefreshed(this);
   }
@@ -908,8 +840,6 @@ class _$_EventsRefreshed implements _EventsRefreshed {
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult? Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult? Function(_EventsTabUnselected value)? eventsTabUnselected,
   }) {
     return eventsRefreshed?.call(this);
   }
@@ -922,8 +852,6 @@ class _$_EventsRefreshed implements _EventsRefreshed {
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult Function(_EventsTabUnselected value)? eventsTabUnselected,
     required TResult orElse(),
   }) {
     if (eventsRefreshed != null) {
@@ -938,284 +866,6 @@ abstract class _EventsRefreshed implements TonightEventsEvent {
 }
 
 /// @nodoc
-abstract class _$$_EventsTabSelectedCopyWith<$Res> {
-  factory _$$_EventsTabSelectedCopyWith(_$_EventsTabSelected value,
-          $Res Function(_$_EventsTabSelected) then) =
-      __$$_EventsTabSelectedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_EventsTabSelectedCopyWithImpl<$Res>
-    extends _$TonightEventsEventCopyWithImpl<$Res, _$_EventsTabSelected>
-    implements _$$_EventsTabSelectedCopyWith<$Res> {
-  __$$_EventsTabSelectedCopyWithImpl(
-      _$_EventsTabSelected _value, $Res Function(_$_EventsTabSelected) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_EventsTabSelected implements _EventsTabSelected {
-  const _$_EventsTabSelected();
-
-  @override
-  String toString() {
-    return 'TonightEventsEvent.eventsTabSelected()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_EventsTabSelected);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function() nextPageEventsFetched,
-    required TResult Function(
-            EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
-        menuFiltersApplied,
-    required TResult Function(MenuEventFilter filter) menuFilterRemoved,
-    required TResult Function() eventsRefreshed,
-    required TResult Function() eventsTabSelected,
-    required TResult Function() eventsTabUnselected,
-  }) {
-    return eventsTabSelected();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function()? nextPageEventsFetched,
-    TResult? Function(
-            EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
-        menuFiltersApplied,
-    TResult? Function(MenuEventFilter filter)? menuFilterRemoved,
-    TResult? Function()? eventsRefreshed,
-    TResult? Function()? eventsTabSelected,
-    TResult? Function()? eventsTabUnselected,
-  }) {
-    return eventsTabSelected?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function()? nextPageEventsFetched,
-    TResult Function(
-            EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
-        menuFiltersApplied,
-    TResult Function(MenuEventFilter filter)? menuFilterRemoved,
-    TResult Function()? eventsRefreshed,
-    TResult Function()? eventsTabSelected,
-    TResult Function()? eventsTabUnselected,
-    required TResult orElse(),
-  }) {
-    if (eventsTabSelected != null) {
-      return eventsTabSelected();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_NextPageEventsFetched value)
-        nextPageEventsFetched,
-    required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
-    required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
-    required TResult Function(_EventsRefreshed value) eventsRefreshed,
-    required TResult Function(_EventsTabSelected value) eventsTabSelected,
-    required TResult Function(_EventsTabUnselected value) eventsTabUnselected,
-  }) {
-    return eventsTabSelected(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_NextPageEventsFetched value)? nextPageEventsFetched,
-    TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
-    TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
-    TResult? Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult? Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult? Function(_EventsTabUnselected value)? eventsTabUnselected,
-  }) {
-    return eventsTabSelected?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_NextPageEventsFetched value)? nextPageEventsFetched,
-    TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
-    TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
-    TResult Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult Function(_EventsTabUnselected value)? eventsTabUnselected,
-    required TResult orElse(),
-  }) {
-    if (eventsTabSelected != null) {
-      return eventsTabSelected(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _EventsTabSelected implements TonightEventsEvent {
-  const factory _EventsTabSelected() = _$_EventsTabSelected;
-}
-
-/// @nodoc
-abstract class _$$_EventsTabUnselectedCopyWith<$Res> {
-  factory _$$_EventsTabUnselectedCopyWith(_$_EventsTabUnselected value,
-          $Res Function(_$_EventsTabUnselected) then) =
-      __$$_EventsTabUnselectedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_EventsTabUnselectedCopyWithImpl<$Res>
-    extends _$TonightEventsEventCopyWithImpl<$Res, _$_EventsTabUnselected>
-    implements _$$_EventsTabUnselectedCopyWith<$Res> {
-  __$$_EventsTabUnselectedCopyWithImpl(_$_EventsTabUnselected _value,
-      $Res Function(_$_EventsTabUnselected) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_EventsTabUnselected implements _EventsTabUnselected {
-  const _$_EventsTabUnselected();
-
-  @override
-  String toString() {
-    return 'TonightEventsEvent.eventsTabUnselected()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_EventsTabUnselected);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Option<LatLng> userLocation) eventsFetched,
-    required TResult Function() nextPageEventsFetched,
-    required TResult Function(
-            EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
-        menuFiltersApplied,
-    required TResult Function(MenuEventFilter filter) menuFilterRemoved,
-    required TResult Function() eventsRefreshed,
-    required TResult Function() eventsTabSelected,
-    required TResult Function() eventsTabUnselected,
-  }) {
-    return eventsTabUnselected();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult? Function()? nextPageEventsFetched,
-    TResult? Function(
-            EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
-        menuFiltersApplied,
-    TResult? Function(MenuEventFilter filter)? menuFilterRemoved,
-    TResult? Function()? eventsRefreshed,
-    TResult? Function()? eventsTabSelected,
-    TResult? Function()? eventsTabUnselected,
-  }) {
-    return eventsTabUnselected?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<LatLng> userLocation)? eventsFetched,
-    TResult Function()? nextPageEventsFetched,
-    TResult Function(
-            EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
-        menuFiltersApplied,
-    TResult Function(MenuEventFilter filter)? menuFilterRemoved,
-    TResult Function()? eventsRefreshed,
-    TResult Function()? eventsTabSelected,
-    TResult Function()? eventsTabUnselected,
-    required TResult orElse(),
-  }) {
-    if (eventsTabUnselected != null) {
-      return eventsTabUnselected();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_EventsFetched value) eventsFetched,
-    required TResult Function(_NextPageEventsFetched value)
-        nextPageEventsFetched,
-    required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
-    required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
-    required TResult Function(_EventsRefreshed value) eventsRefreshed,
-    required TResult Function(_EventsTabSelected value) eventsTabSelected,
-    required TResult Function(_EventsTabUnselected value) eventsTabUnselected,
-  }) {
-    return eventsTabUnselected(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_EventsFetched value)? eventsFetched,
-    TResult? Function(_NextPageEventsFetched value)? nextPageEventsFetched,
-    TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
-    TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
-    TResult? Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult? Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult? Function(_EventsTabUnselected value)? eventsTabUnselected,
-  }) {
-    return eventsTabUnselected?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_EventsFetched value)? eventsFetched,
-    TResult Function(_NextPageEventsFetched value)? nextPageEventsFetched,
-    TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
-    TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
-    TResult Function(_EventsRefreshed value)? eventsRefreshed,
-    TResult Function(_EventsTabSelected value)? eventsTabSelected,
-    TResult Function(_EventsTabUnselected value)? eventsTabUnselected,
-    required TResult orElse(),
-  }) {
-    if (eventsTabUnselected != null) {
-      return eventsTabUnselected(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _EventsTabUnselected implements TonightEventsEvent {
-  const factory _EventsTabUnselected() = _$_EventsTabUnselected;
-}
-
-/// @nodoc
 mixin _$TonightEventsState {
   CubitStatus get getEventsStatus => throw _privateConstructorUsedError;
   CubitStatus get nextPageStatus => throw _privateConstructorUsedError;
@@ -1226,7 +876,6 @@ mixin _$TonightEventsState {
   EventFilters get eventFilters => throw _privateConstructorUsedError;
   Map<MenuEventFilter, IFilter> get appliedMenuFilters =>
       throw _privateConstructorUsedError;
-  bool get isEventsTabSelected => throw _privateConstructorUsedError;
   Option<TonightEventsFailure> get failure =>
       throw _privateConstructorUsedError;
 
@@ -1250,7 +899,6 @@ abstract class $TonightEventsStateCopyWith<$Res> {
       String filterPhrase,
       EventFilters eventFilters,
       Map<MenuEventFilter, IFilter> appliedMenuFilters,
-      bool isEventsTabSelected,
       Option<TonightEventsFailure> failure});
 
   $EventFiltersCopyWith<$Res> get eventFilters;
@@ -1277,7 +925,6 @@ class _$TonightEventsStateCopyWithImpl<$Res, $Val extends TonightEventsState>
     Object? filterPhrase = null,
     Object? eventFilters = null,
     Object? appliedMenuFilters = null,
-    Object? isEventsTabSelected = null,
     Object? failure = null,
   }) {
     return _then(_value.copyWith(
@@ -1313,10 +960,6 @@ class _$TonightEventsStateCopyWithImpl<$Res, $Val extends TonightEventsState>
           ? _value.appliedMenuFilters
           : appliedMenuFilters // ignore: cast_nullable_to_non_nullable
               as Map<MenuEventFilter, IFilter>,
-      isEventsTabSelected: null == isEventsTabSelected
-          ? _value.isEventsTabSelected
-          : isEventsTabSelected // ignore: cast_nullable_to_non_nullable
-              as bool,
       failure: null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -1350,7 +993,6 @@ abstract class _$$_TonightEventsStateCopyWith<$Res>
       String filterPhrase,
       EventFilters eventFilters,
       Map<MenuEventFilter, IFilter> appliedMenuFilters,
-      bool isEventsTabSelected,
       Option<TonightEventsFailure> failure});
 
   @override
@@ -1376,7 +1018,6 @@ class __$$_TonightEventsStateCopyWithImpl<$Res>
     Object? filterPhrase = null,
     Object? eventFilters = null,
     Object? appliedMenuFilters = null,
-    Object? isEventsTabSelected = null,
     Object? failure = null,
   }) {
     return _then(_$_TonightEventsState(
@@ -1412,10 +1053,6 @@ class __$$_TonightEventsStateCopyWithImpl<$Res>
           ? _value._appliedMenuFilters
           : appliedMenuFilters // ignore: cast_nullable_to_non_nullable
               as Map<MenuEventFilter, IFilter>,
-      isEventsTabSelected: null == isEventsTabSelected
-          ? _value.isEventsTabSelected
-          : isEventsTabSelected // ignore: cast_nullable_to_non_nullable
-              as bool,
       failure: null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -1436,7 +1073,6 @@ class _$_TonightEventsState implements _TonightEventsState {
       required this.filterPhrase,
       required this.eventFilters,
       required final Map<MenuEventFilter, IFilter> appliedMenuFilters,
-      required this.isEventsTabSelected,
       required this.failure})
       : _events = events,
         _appliedMenuFilters = appliedMenuFilters;
@@ -1471,13 +1107,11 @@ class _$_TonightEventsState implements _TonightEventsState {
   }
 
   @override
-  final bool isEventsTabSelected;
-  @override
   final Option<TonightEventsFailure> failure;
 
   @override
   String toString() {
-    return 'TonightEventsState(getEventsStatus: $getEventsStatus, nextPageStatus: $nextPageStatus, errorMessage: $errorMessage, events: $events, hasReachedMax: $hasReachedMax, filterPhrase: $filterPhrase, eventFilters: $eventFilters, appliedMenuFilters: $appliedMenuFilters, isEventsTabSelected: $isEventsTabSelected, failure: $failure)';
+    return 'TonightEventsState(getEventsStatus: $getEventsStatus, nextPageStatus: $nextPageStatus, errorMessage: $errorMessage, events: $events, hasReachedMax: $hasReachedMax, filterPhrase: $filterPhrase, eventFilters: $eventFilters, appliedMenuFilters: $appliedMenuFilters, failure: $failure)';
   }
 
   @override
@@ -1500,8 +1134,6 @@ class _$_TonightEventsState implements _TonightEventsState {
                 other.eventFilters == eventFilters) &&
             const DeepCollectionEquality()
                 .equals(other._appliedMenuFilters, _appliedMenuFilters) &&
-            (identical(other.isEventsTabSelected, isEventsTabSelected) ||
-                other.isEventsTabSelected == isEventsTabSelected) &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
@@ -1516,7 +1148,6 @@ class _$_TonightEventsState implements _TonightEventsState {
       filterPhrase,
       eventFilters,
       const DeepCollectionEquality().hash(_appliedMenuFilters),
-      isEventsTabSelected,
       failure);
 
   @JsonKey(ignore: true)
@@ -1537,7 +1168,6 @@ abstract class _TonightEventsState implements TonightEventsState {
           required final String filterPhrase,
           required final EventFilters eventFilters,
           required final Map<MenuEventFilter, IFilter> appliedMenuFilters,
-          required final bool isEventsTabSelected,
           required final Option<TonightEventsFailure> failure}) =
       _$_TonightEventsState;
 
@@ -1557,8 +1187,6 @@ abstract class _TonightEventsState implements TonightEventsState {
   EventFilters get eventFilters;
   @override
   Map<MenuEventFilter, IFilter> get appliedMenuFilters;
-  @override
-  bool get isEventsTabSelected;
   @override
   Option<TonightEventsFailure> get failure;
   @override

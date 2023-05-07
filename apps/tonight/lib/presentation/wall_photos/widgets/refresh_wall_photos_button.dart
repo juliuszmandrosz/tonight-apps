@@ -16,7 +16,11 @@ class RefreshWallPhotosButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                state.userLocation.isSome()
+                state.wallPhotoFilters.showPhotosFromClubsInRangeFilter
+                            .userLocation
+                            .isSome() &&
+                        state.wallPhotoFilters.showPhotosFromClubsInRangeFilter
+                            .enabled
                     ? S().wallPhotosNearbyInfo
                     : S().wallPhotosInfo,
                 textAlign: TextAlign.center,

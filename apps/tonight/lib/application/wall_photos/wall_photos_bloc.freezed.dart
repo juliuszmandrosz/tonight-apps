@@ -22,6 +22,10 @@ mixin _$WallPhotosEvent {
     required TResult Function() nextPagePhotosFetched,
     required TResult Function() wallPhotosRefreshed,
     required TResult Function(WallPhoto photo) wallPhotoReported,
+    required TResult Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)
+        menuFiltersApplied,
+    required TResult Function(MenuWallPhotoFilter filter) menuFilterRemoved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +34,10 @@ mixin _$WallPhotosEvent {
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function()? wallPhotosRefreshed,
     TResult? Function(WallPhoto photo)? wallPhotoReported,
+    TResult? Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult? Function(MenuWallPhotoFilter filter)? menuFilterRemoved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +46,10 @@ mixin _$WallPhotosEvent {
     TResult Function()? nextPagePhotosFetched,
     TResult Function()? wallPhotosRefreshed,
     TResult Function(WallPhoto photo)? wallPhotoReported,
+    TResult Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult Function(MenuWallPhotoFilter filter)? menuFilterRemoved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +60,8 @@ mixin _$WallPhotosEvent {
         nextPagePhotosFetched,
     required TResult Function(_WallPhotosRefreshed value) wallPhotosRefreshed,
     required TResult Function(_WallPhotoReported value) wallPhotoReported,
+    required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
+    required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +70,8 @@ mixin _$WallPhotosEvent {
     TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult? Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
     TResult? Function(_WallPhotoReported value)? wallPhotoReported,
+    TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +80,8 @@ mixin _$WallPhotosEvent {
     TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
     TResult Function(_WallPhotoReported value)? wallPhotoReported,
+    TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -157,6 +175,10 @@ class _$_WallPhotosFetched implements _WallPhotosFetched {
     required TResult Function() nextPagePhotosFetched,
     required TResult Function() wallPhotosRefreshed,
     required TResult Function(WallPhoto photo) wallPhotoReported,
+    required TResult Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)
+        menuFiltersApplied,
+    required TResult Function(MenuWallPhotoFilter filter) menuFilterRemoved,
   }) {
     return wallPhotosFetched(userLocation);
   }
@@ -168,6 +190,10 @@ class _$_WallPhotosFetched implements _WallPhotosFetched {
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function()? wallPhotosRefreshed,
     TResult? Function(WallPhoto photo)? wallPhotoReported,
+    TResult? Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult? Function(MenuWallPhotoFilter filter)? menuFilterRemoved,
   }) {
     return wallPhotosFetched?.call(userLocation);
   }
@@ -179,6 +205,10 @@ class _$_WallPhotosFetched implements _WallPhotosFetched {
     TResult Function()? nextPagePhotosFetched,
     TResult Function()? wallPhotosRefreshed,
     TResult Function(WallPhoto photo)? wallPhotoReported,
+    TResult Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult Function(MenuWallPhotoFilter filter)? menuFilterRemoved,
     required TResult orElse(),
   }) {
     if (wallPhotosFetched != null) {
@@ -195,6 +225,8 @@ class _$_WallPhotosFetched implements _WallPhotosFetched {
         nextPagePhotosFetched,
     required TResult Function(_WallPhotosRefreshed value) wallPhotosRefreshed,
     required TResult Function(_WallPhotoReported value) wallPhotoReported,
+    required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
+    required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
   }) {
     return wallPhotosFetched(this);
   }
@@ -206,6 +238,8 @@ class _$_WallPhotosFetched implements _WallPhotosFetched {
     TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult? Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
     TResult? Function(_WallPhotoReported value)? wallPhotoReported,
+    TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
   }) {
     return wallPhotosFetched?.call(this);
   }
@@ -217,6 +251,8 @@ class _$_WallPhotosFetched implements _WallPhotosFetched {
     TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
     TResult Function(_WallPhotoReported value)? wallPhotoReported,
+    TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     required TResult orElse(),
   }) {
     if (wallPhotosFetched != null) {
@@ -278,6 +314,10 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
     required TResult Function() nextPagePhotosFetched,
     required TResult Function() wallPhotosRefreshed,
     required TResult Function(WallPhoto photo) wallPhotoReported,
+    required TResult Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)
+        menuFiltersApplied,
+    required TResult Function(MenuWallPhotoFilter filter) menuFilterRemoved,
   }) {
     return nextPagePhotosFetched();
   }
@@ -289,6 +329,10 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function()? wallPhotosRefreshed,
     TResult? Function(WallPhoto photo)? wallPhotoReported,
+    TResult? Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult? Function(MenuWallPhotoFilter filter)? menuFilterRemoved,
   }) {
     return nextPagePhotosFetched?.call();
   }
@@ -300,6 +344,10 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
     TResult Function()? nextPagePhotosFetched,
     TResult Function()? wallPhotosRefreshed,
     TResult Function(WallPhoto photo)? wallPhotoReported,
+    TResult Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult Function(MenuWallPhotoFilter filter)? menuFilterRemoved,
     required TResult orElse(),
   }) {
     if (nextPagePhotosFetched != null) {
@@ -316,6 +364,8 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
         nextPagePhotosFetched,
     required TResult Function(_WallPhotosRefreshed value) wallPhotosRefreshed,
     required TResult Function(_WallPhotoReported value) wallPhotoReported,
+    required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
+    required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
   }) {
     return nextPagePhotosFetched(this);
   }
@@ -327,6 +377,8 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
     TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult? Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
     TResult? Function(_WallPhotoReported value)? wallPhotoReported,
+    TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
   }) {
     return nextPagePhotosFetched?.call(this);
   }
@@ -338,6 +390,8 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
     TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
     TResult Function(_WallPhotoReported value)? wallPhotoReported,
+    TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     required TResult orElse(),
   }) {
     if (nextPagePhotosFetched != null) {
@@ -393,6 +447,10 @@ class _$_WallPhotosRefreshed implements _WallPhotosRefreshed {
     required TResult Function() nextPagePhotosFetched,
     required TResult Function() wallPhotosRefreshed,
     required TResult Function(WallPhoto photo) wallPhotoReported,
+    required TResult Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)
+        menuFiltersApplied,
+    required TResult Function(MenuWallPhotoFilter filter) menuFilterRemoved,
   }) {
     return wallPhotosRefreshed();
   }
@@ -404,6 +462,10 @@ class _$_WallPhotosRefreshed implements _WallPhotosRefreshed {
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function()? wallPhotosRefreshed,
     TResult? Function(WallPhoto photo)? wallPhotoReported,
+    TResult? Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult? Function(MenuWallPhotoFilter filter)? menuFilterRemoved,
   }) {
     return wallPhotosRefreshed?.call();
   }
@@ -415,6 +477,10 @@ class _$_WallPhotosRefreshed implements _WallPhotosRefreshed {
     TResult Function()? nextPagePhotosFetched,
     TResult Function()? wallPhotosRefreshed,
     TResult Function(WallPhoto photo)? wallPhotoReported,
+    TResult Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult Function(MenuWallPhotoFilter filter)? menuFilterRemoved,
     required TResult orElse(),
   }) {
     if (wallPhotosRefreshed != null) {
@@ -431,6 +497,8 @@ class _$_WallPhotosRefreshed implements _WallPhotosRefreshed {
         nextPagePhotosFetched,
     required TResult Function(_WallPhotosRefreshed value) wallPhotosRefreshed,
     required TResult Function(_WallPhotoReported value) wallPhotoReported,
+    required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
+    required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
   }) {
     return wallPhotosRefreshed(this);
   }
@@ -442,6 +510,8 @@ class _$_WallPhotosRefreshed implements _WallPhotosRefreshed {
     TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult? Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
     TResult? Function(_WallPhotoReported value)? wallPhotoReported,
+    TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
   }) {
     return wallPhotosRefreshed?.call(this);
   }
@@ -453,6 +523,8 @@ class _$_WallPhotosRefreshed implements _WallPhotosRefreshed {
     TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
     TResult Function(_WallPhotoReported value)? wallPhotoReported,
+    TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     required TResult orElse(),
   }) {
     if (wallPhotosRefreshed != null) {
@@ -535,6 +607,10 @@ class _$_WallPhotoReported implements _WallPhotoReported {
     required TResult Function() nextPagePhotosFetched,
     required TResult Function() wallPhotosRefreshed,
     required TResult Function(WallPhoto photo) wallPhotoReported,
+    required TResult Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)
+        menuFiltersApplied,
+    required TResult Function(MenuWallPhotoFilter filter) menuFilterRemoved,
   }) {
     return wallPhotoReported(photo);
   }
@@ -546,6 +622,10 @@ class _$_WallPhotoReported implements _WallPhotoReported {
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function()? wallPhotosRefreshed,
     TResult? Function(WallPhoto photo)? wallPhotoReported,
+    TResult? Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult? Function(MenuWallPhotoFilter filter)? menuFilterRemoved,
   }) {
     return wallPhotoReported?.call(photo);
   }
@@ -557,6 +637,10 @@ class _$_WallPhotoReported implements _WallPhotoReported {
     TResult Function()? nextPagePhotosFetched,
     TResult Function()? wallPhotosRefreshed,
     TResult Function(WallPhoto photo)? wallPhotoReported,
+    TResult Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult Function(MenuWallPhotoFilter filter)? menuFilterRemoved,
     required TResult orElse(),
   }) {
     if (wallPhotoReported != null) {
@@ -573,6 +657,8 @@ class _$_WallPhotoReported implements _WallPhotoReported {
         nextPagePhotosFetched,
     required TResult Function(_WallPhotosRefreshed value) wallPhotosRefreshed,
     required TResult Function(_WallPhotoReported value) wallPhotoReported,
+    required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
+    required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
   }) {
     return wallPhotoReported(this);
   }
@@ -584,6 +670,8 @@ class _$_WallPhotoReported implements _WallPhotoReported {
     TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult? Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
     TResult? Function(_WallPhotoReported value)? wallPhotoReported,
+    TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
   }) {
     return wallPhotoReported?.call(this);
   }
@@ -595,6 +683,8 @@ class _$_WallPhotoReported implements _WallPhotoReported {
     TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
     TResult Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
     TResult Function(_WallPhotoReported value)? wallPhotoReported,
+    TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     required TResult orElse(),
   }) {
     if (wallPhotoReported != null) {
@@ -615,16 +705,383 @@ abstract class _WallPhotoReported implements WallPhotosEvent {
 }
 
 /// @nodoc
+abstract class _$$_MenuFiltersAppliedCopyWith<$Res> {
+  factory _$$_MenuFiltersAppliedCopyWith(_$_MenuFiltersApplied value,
+          $Res Function(_$_MenuFiltersApplied) then) =
+      __$$_MenuFiltersAppliedCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {WallPhotoFilters filters,
+      Map<MenuWallPhotoFilter, IFilter> appliedFilters});
+
+  $WallPhotoFiltersCopyWith<$Res> get filters;
+}
+
+/// @nodoc
+class __$$_MenuFiltersAppliedCopyWithImpl<$Res>
+    extends _$WallPhotosEventCopyWithImpl<$Res, _$_MenuFiltersApplied>
+    implements _$$_MenuFiltersAppliedCopyWith<$Res> {
+  __$$_MenuFiltersAppliedCopyWithImpl(
+      _$_MenuFiltersApplied _value, $Res Function(_$_MenuFiltersApplied) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? filters = null,
+    Object? appliedFilters = null,
+  }) {
+    return _then(_$_MenuFiltersApplied(
+      filters: null == filters
+          ? _value.filters
+          : filters // ignore: cast_nullable_to_non_nullable
+              as WallPhotoFilters,
+      appliedFilters: null == appliedFilters
+          ? _value._appliedFilters
+          : appliedFilters // ignore: cast_nullable_to_non_nullable
+              as Map<MenuWallPhotoFilter, IFilter>,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WallPhotoFiltersCopyWith<$Res> get filters {
+    return $WallPhotoFiltersCopyWith<$Res>(_value.filters, (value) {
+      return _then(_value.copyWith(filters: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_MenuFiltersApplied implements _MenuFiltersApplied {
+  const _$_MenuFiltersApplied(
+      {required this.filters,
+      required final Map<MenuWallPhotoFilter, IFilter> appliedFilters})
+      : _appliedFilters = appliedFilters;
+
+  @override
+  final WallPhotoFilters filters;
+  final Map<MenuWallPhotoFilter, IFilter> _appliedFilters;
+  @override
+  Map<MenuWallPhotoFilter, IFilter> get appliedFilters {
+    if (_appliedFilters is EqualUnmodifiableMapView) return _appliedFilters;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_appliedFilters);
+  }
+
+  @override
+  String toString() {
+    return 'WallPhotosEvent.menuFiltersApplied(filters: $filters, appliedFilters: $appliedFilters)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MenuFiltersApplied &&
+            (identical(other.filters, filters) || other.filters == filters) &&
+            const DeepCollectionEquality()
+                .equals(other._appliedFilters, _appliedFilters));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, filters,
+      const DeepCollectionEquality().hash(_appliedFilters));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MenuFiltersAppliedCopyWith<_$_MenuFiltersApplied> get copyWith =>
+      __$$_MenuFiltersAppliedCopyWithImpl<_$_MenuFiltersApplied>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Option<LatLng> userLocation) wallPhotosFetched,
+    required TResult Function() nextPagePhotosFetched,
+    required TResult Function() wallPhotosRefreshed,
+    required TResult Function(WallPhoto photo) wallPhotoReported,
+    required TResult Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)
+        menuFiltersApplied,
+    required TResult Function(MenuWallPhotoFilter filter) menuFilterRemoved,
+  }) {
+    return menuFiltersApplied(filters, appliedFilters);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Option<LatLng> userLocation)? wallPhotosFetched,
+    TResult? Function()? nextPagePhotosFetched,
+    TResult? Function()? wallPhotosRefreshed,
+    TResult? Function(WallPhoto photo)? wallPhotoReported,
+    TResult? Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult? Function(MenuWallPhotoFilter filter)? menuFilterRemoved,
+  }) {
+    return menuFiltersApplied?.call(filters, appliedFilters);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Option<LatLng> userLocation)? wallPhotosFetched,
+    TResult Function()? nextPagePhotosFetched,
+    TResult Function()? wallPhotosRefreshed,
+    TResult Function(WallPhoto photo)? wallPhotoReported,
+    TResult Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult Function(MenuWallPhotoFilter filter)? menuFilterRemoved,
+    required TResult orElse(),
+  }) {
+    if (menuFiltersApplied != null) {
+      return menuFiltersApplied(filters, appliedFilters);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WallPhotosFetched value) wallPhotosFetched,
+    required TResult Function(_NextPagePhotosFetched value)
+        nextPagePhotosFetched,
+    required TResult Function(_WallPhotosRefreshed value) wallPhotosRefreshed,
+    required TResult Function(_WallPhotoReported value) wallPhotoReported,
+    required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
+    required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
+  }) {
+    return menuFiltersApplied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_WallPhotosFetched value)? wallPhotosFetched,
+    TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult? Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
+    TResult? Function(_WallPhotoReported value)? wallPhotoReported,
+    TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
+  }) {
+    return menuFiltersApplied?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WallPhotosFetched value)? wallPhotosFetched,
+    TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
+    TResult Function(_WallPhotoReported value)? wallPhotoReported,
+    TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
+    required TResult orElse(),
+  }) {
+    if (menuFiltersApplied != null) {
+      return menuFiltersApplied(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MenuFiltersApplied implements WallPhotosEvent {
+  const factory _MenuFiltersApplied(
+          {required final WallPhotoFilters filters,
+          required final Map<MenuWallPhotoFilter, IFilter> appliedFilters}) =
+      _$_MenuFiltersApplied;
+
+  WallPhotoFilters get filters;
+  Map<MenuWallPhotoFilter, IFilter> get appliedFilters;
+  @JsonKey(ignore: true)
+  _$$_MenuFiltersAppliedCopyWith<_$_MenuFiltersApplied> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_MenuFilterRemovedCopyWith<$Res> {
+  factory _$$_MenuFilterRemovedCopyWith(_$_MenuFilterRemoved value,
+          $Res Function(_$_MenuFilterRemoved) then) =
+      __$$_MenuFilterRemovedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({MenuWallPhotoFilter filter});
+}
+
+/// @nodoc
+class __$$_MenuFilterRemovedCopyWithImpl<$Res>
+    extends _$WallPhotosEventCopyWithImpl<$Res, _$_MenuFilterRemoved>
+    implements _$$_MenuFilterRemovedCopyWith<$Res> {
+  __$$_MenuFilterRemovedCopyWithImpl(
+      _$_MenuFilterRemoved _value, $Res Function(_$_MenuFilterRemoved) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? filter = null,
+  }) {
+    return _then(_$_MenuFilterRemoved(
+      null == filter
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as MenuWallPhotoFilter,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_MenuFilterRemoved implements _MenuFilterRemoved {
+  const _$_MenuFilterRemoved(this.filter);
+
+  @override
+  final MenuWallPhotoFilter filter;
+
+  @override
+  String toString() {
+    return 'WallPhotosEvent.menuFilterRemoved(filter: $filter)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MenuFilterRemoved &&
+            (identical(other.filter, filter) || other.filter == filter));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, filter);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MenuFilterRemovedCopyWith<_$_MenuFilterRemoved> get copyWith =>
+      __$$_MenuFilterRemovedCopyWithImpl<_$_MenuFilterRemoved>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Option<LatLng> userLocation) wallPhotosFetched,
+    required TResult Function() nextPagePhotosFetched,
+    required TResult Function() wallPhotosRefreshed,
+    required TResult Function(WallPhoto photo) wallPhotoReported,
+    required TResult Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)
+        menuFiltersApplied,
+    required TResult Function(MenuWallPhotoFilter filter) menuFilterRemoved,
+  }) {
+    return menuFilterRemoved(filter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Option<LatLng> userLocation)? wallPhotosFetched,
+    TResult? Function()? nextPagePhotosFetched,
+    TResult? Function()? wallPhotosRefreshed,
+    TResult? Function(WallPhoto photo)? wallPhotoReported,
+    TResult? Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult? Function(MenuWallPhotoFilter filter)? menuFilterRemoved,
+  }) {
+    return menuFilterRemoved?.call(filter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Option<LatLng> userLocation)? wallPhotosFetched,
+    TResult Function()? nextPagePhotosFetched,
+    TResult Function()? wallPhotosRefreshed,
+    TResult Function(WallPhoto photo)? wallPhotoReported,
+    TResult Function(WallPhotoFilters filters,
+            Map<MenuWallPhotoFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult Function(MenuWallPhotoFilter filter)? menuFilterRemoved,
+    required TResult orElse(),
+  }) {
+    if (menuFilterRemoved != null) {
+      return menuFilterRemoved(filter);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WallPhotosFetched value) wallPhotosFetched,
+    required TResult Function(_NextPagePhotosFetched value)
+        nextPagePhotosFetched,
+    required TResult Function(_WallPhotosRefreshed value) wallPhotosRefreshed,
+    required TResult Function(_WallPhotoReported value) wallPhotoReported,
+    required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
+    required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
+  }) {
+    return menuFilterRemoved(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_WallPhotosFetched value)? wallPhotosFetched,
+    TResult? Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult? Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
+    TResult? Function(_WallPhotoReported value)? wallPhotoReported,
+    TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
+  }) {
+    return menuFilterRemoved?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WallPhotosFetched value)? wallPhotosFetched,
+    TResult Function(_NextPagePhotosFetched value)? nextPagePhotosFetched,
+    TResult Function(_WallPhotosRefreshed value)? wallPhotosRefreshed,
+    TResult Function(_WallPhotoReported value)? wallPhotoReported,
+    TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
+    required TResult orElse(),
+  }) {
+    if (menuFilterRemoved != null) {
+      return menuFilterRemoved(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MenuFilterRemoved implements WallPhotosEvent {
+  const factory _MenuFilterRemoved(final MenuWallPhotoFilter filter) =
+      _$_MenuFilterRemoved;
+
+  MenuWallPhotoFilter get filter;
+  @JsonKey(ignore: true)
+  _$$_MenuFilterRemovedCopyWith<_$_MenuFilterRemoved> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$WallPhotosState {
   CubitStatus get getPhotosStatus => throw _privateConstructorUsedError;
   CubitStatus get nextPageStatus => throw _privateConstructorUsedError;
   List<WallPhoto> get photos => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
   String get filterPhrase => throw _privateConstructorUsedError;
-  Option<LatLng> get userLocation => throw _privateConstructorUsedError;
   Option<WallPhotoFailure> get failure => throw _privateConstructorUsedError;
   List<String> get reportingWallPhotoIds => throw _privateConstructorUsedError;
   Option<String> get snackbarMessage => throw _privateConstructorUsedError;
+  WallPhotoFilters get wallPhotoFilters => throw _privateConstructorUsedError;
+  Map<MenuWallPhotoFilter, IFilter> get appliedMenuFilters =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WallPhotosStateCopyWith<WallPhotosState> get copyWith =>
@@ -643,10 +1100,13 @@ abstract class $WallPhotosStateCopyWith<$Res> {
       List<WallPhoto> photos,
       bool hasReachedMax,
       String filterPhrase,
-      Option<LatLng> userLocation,
       Option<WallPhotoFailure> failure,
       List<String> reportingWallPhotoIds,
-      Option<String> snackbarMessage});
+      Option<String> snackbarMessage,
+      WallPhotoFilters wallPhotoFilters,
+      Map<MenuWallPhotoFilter, IFilter> appliedMenuFilters});
+
+  $WallPhotoFiltersCopyWith<$Res> get wallPhotoFilters;
 }
 
 /// @nodoc
@@ -667,10 +1127,11 @@ class _$WallPhotosStateCopyWithImpl<$Res, $Val extends WallPhotosState>
     Object? photos = null,
     Object? hasReachedMax = null,
     Object? filterPhrase = null,
-    Object? userLocation = null,
     Object? failure = null,
     Object? reportingWallPhotoIds = null,
     Object? snackbarMessage = null,
+    Object? wallPhotoFilters = null,
+    Object? appliedMenuFilters = null,
   }) {
     return _then(_value.copyWith(
       getPhotosStatus: null == getPhotosStatus
@@ -693,10 +1154,6 @@ class _$WallPhotosStateCopyWithImpl<$Res, $Val extends WallPhotosState>
           ? _value.filterPhrase
           : filterPhrase // ignore: cast_nullable_to_non_nullable
               as String,
-      userLocation: null == userLocation
-          ? _value.userLocation
-          : userLocation // ignore: cast_nullable_to_non_nullable
-              as Option<LatLng>,
       failure: null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -709,7 +1166,23 @@ class _$WallPhotosStateCopyWithImpl<$Res, $Val extends WallPhotosState>
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      wallPhotoFilters: null == wallPhotoFilters
+          ? _value.wallPhotoFilters
+          : wallPhotoFilters // ignore: cast_nullable_to_non_nullable
+              as WallPhotoFilters,
+      appliedMenuFilters: null == appliedMenuFilters
+          ? _value.appliedMenuFilters
+          : appliedMenuFilters // ignore: cast_nullable_to_non_nullable
+              as Map<MenuWallPhotoFilter, IFilter>,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WallPhotoFiltersCopyWith<$Res> get wallPhotoFilters {
+    return $WallPhotoFiltersCopyWith<$Res>(_value.wallPhotoFilters, (value) {
+      return _then(_value.copyWith(wallPhotoFilters: value) as $Val);
+    });
   }
 }
 
@@ -727,10 +1200,14 @@ abstract class _$$_WallPhotosStateCopyWith<$Res>
       List<WallPhoto> photos,
       bool hasReachedMax,
       String filterPhrase,
-      Option<LatLng> userLocation,
       Option<WallPhotoFailure> failure,
       List<String> reportingWallPhotoIds,
-      Option<String> snackbarMessage});
+      Option<String> snackbarMessage,
+      WallPhotoFilters wallPhotoFilters,
+      Map<MenuWallPhotoFilter, IFilter> appliedMenuFilters});
+
+  @override
+  $WallPhotoFiltersCopyWith<$Res> get wallPhotoFilters;
 }
 
 /// @nodoc
@@ -749,10 +1226,11 @@ class __$$_WallPhotosStateCopyWithImpl<$Res>
     Object? photos = null,
     Object? hasReachedMax = null,
     Object? filterPhrase = null,
-    Object? userLocation = null,
     Object? failure = null,
     Object? reportingWallPhotoIds = null,
     Object? snackbarMessage = null,
+    Object? wallPhotoFilters = null,
+    Object? appliedMenuFilters = null,
   }) {
     return _then(_$_WallPhotosState(
       getPhotosStatus: null == getPhotosStatus
@@ -775,10 +1253,6 @@ class __$$_WallPhotosStateCopyWithImpl<$Res>
           ? _value.filterPhrase
           : filterPhrase // ignore: cast_nullable_to_non_nullable
               as String,
-      userLocation: null == userLocation
-          ? _value.userLocation
-          : userLocation // ignore: cast_nullable_to_non_nullable
-              as Option<LatLng>,
       failure: null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -791,6 +1265,14 @@ class __$$_WallPhotosStateCopyWithImpl<$Res>
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      wallPhotoFilters: null == wallPhotoFilters
+          ? _value.wallPhotoFilters
+          : wallPhotoFilters // ignore: cast_nullable_to_non_nullable
+              as WallPhotoFilters,
+      appliedMenuFilters: null == appliedMenuFilters
+          ? _value._appliedMenuFilters
+          : appliedMenuFilters // ignore: cast_nullable_to_non_nullable
+              as Map<MenuWallPhotoFilter, IFilter>,
     ));
   }
 }
@@ -804,12 +1286,14 @@ class _$_WallPhotosState implements _WallPhotosState {
       required final List<WallPhoto> photos,
       required this.hasReachedMax,
       required this.filterPhrase,
-      required this.userLocation,
       required this.failure,
       required final List<String> reportingWallPhotoIds,
-      required this.snackbarMessage})
+      required this.snackbarMessage,
+      required this.wallPhotoFilters,
+      required final Map<MenuWallPhotoFilter, IFilter> appliedMenuFilters})
       : _photos = photos,
-        _reportingWallPhotoIds = reportingWallPhotoIds;
+        _reportingWallPhotoIds = reportingWallPhotoIds,
+        _appliedMenuFilters = appliedMenuFilters;
 
   @override
   final CubitStatus getPhotosStatus;
@@ -828,8 +1312,6 @@ class _$_WallPhotosState implements _WallPhotosState {
   @override
   final String filterPhrase;
   @override
-  final Option<LatLng> userLocation;
-  @override
   final Option<WallPhotoFailure> failure;
   final List<String> _reportingWallPhotoIds;
   @override
@@ -842,10 +1324,20 @@ class _$_WallPhotosState implements _WallPhotosState {
 
   @override
   final Option<String> snackbarMessage;
+  @override
+  final WallPhotoFilters wallPhotoFilters;
+  final Map<MenuWallPhotoFilter, IFilter> _appliedMenuFilters;
+  @override
+  Map<MenuWallPhotoFilter, IFilter> get appliedMenuFilters {
+    if (_appliedMenuFilters is EqualUnmodifiableMapView)
+      return _appliedMenuFilters;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_appliedMenuFilters);
+  }
 
   @override
   String toString() {
-    return 'WallPhotosState(getPhotosStatus: $getPhotosStatus, nextPageStatus: $nextPageStatus, photos: $photos, hasReachedMax: $hasReachedMax, filterPhrase: $filterPhrase, userLocation: $userLocation, failure: $failure, reportingWallPhotoIds: $reportingWallPhotoIds, snackbarMessage: $snackbarMessage)';
+    return 'WallPhotosState(getPhotosStatus: $getPhotosStatus, nextPageStatus: $nextPageStatus, photos: $photos, hasReachedMax: $hasReachedMax, filterPhrase: $filterPhrase, failure: $failure, reportingWallPhotoIds: $reportingWallPhotoIds, snackbarMessage: $snackbarMessage, wallPhotoFilters: $wallPhotoFilters, appliedMenuFilters: $appliedMenuFilters)';
   }
 
   @override
@@ -862,13 +1354,15 @@ class _$_WallPhotosState implements _WallPhotosState {
                 other.hasReachedMax == hasReachedMax) &&
             (identical(other.filterPhrase, filterPhrase) ||
                 other.filterPhrase == filterPhrase) &&
-            (identical(other.userLocation, userLocation) ||
-                other.userLocation == userLocation) &&
             (identical(other.failure, failure) || other.failure == failure) &&
             const DeepCollectionEquality()
                 .equals(other._reportingWallPhotoIds, _reportingWallPhotoIds) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
-                other.snackbarMessage == snackbarMessage));
+                other.snackbarMessage == snackbarMessage) &&
+            (identical(other.wallPhotoFilters, wallPhotoFilters) ||
+                other.wallPhotoFilters == wallPhotoFilters) &&
+            const DeepCollectionEquality()
+                .equals(other._appliedMenuFilters, _appliedMenuFilters));
   }
 
   @override
@@ -879,10 +1373,11 @@ class _$_WallPhotosState implements _WallPhotosState {
       const DeepCollectionEquality().hash(_photos),
       hasReachedMax,
       filterPhrase,
-      userLocation,
       failure,
       const DeepCollectionEquality().hash(_reportingWallPhotoIds),
-      snackbarMessage);
+      snackbarMessage,
+      wallPhotoFilters,
+      const DeepCollectionEquality().hash(_appliedMenuFilters));
 
   @JsonKey(ignore: true)
   @override
@@ -898,10 +1393,12 @@ abstract class _WallPhotosState implements WallPhotosState {
       required final List<WallPhoto> photos,
       required final bool hasReachedMax,
       required final String filterPhrase,
-      required final Option<LatLng> userLocation,
       required final Option<WallPhotoFailure> failure,
       required final List<String> reportingWallPhotoIds,
-      required final Option<String> snackbarMessage}) = _$_WallPhotosState;
+      required final Option<String> snackbarMessage,
+      required final WallPhotoFilters wallPhotoFilters,
+      required final Map<MenuWallPhotoFilter, IFilter>
+          appliedMenuFilters}) = _$_WallPhotosState;
 
   @override
   CubitStatus get getPhotosStatus;
@@ -914,13 +1411,15 @@ abstract class _WallPhotosState implements WallPhotosState {
   @override
   String get filterPhrase;
   @override
-  Option<LatLng> get userLocation;
-  @override
   Option<WallPhotoFailure> get failure;
   @override
   List<String> get reportingWallPhotoIds;
   @override
   Option<String> get snackbarMessage;
+  @override
+  WallPhotoFilters get wallPhotoFilters;
+  @override
+  Map<MenuWallPhotoFilter, IFilter> get appliedMenuFilters;
   @override
   @JsonKey(ignore: true)
   _$$_WallPhotosStateCopyWith<_$_WallPhotosState> get copyWith =>
