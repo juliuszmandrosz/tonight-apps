@@ -27,7 +27,6 @@ class _CountdownTimerState extends State<CountdownTimer> {
     super.initState();
   }
 
-
   @override
   void didUpdateWidget(covariant CountdownTimer oldWidget) {
     setState(() {
@@ -39,7 +38,7 @@ class _CountdownTimerState extends State<CountdownTimer> {
   void _startTimer() {
     _timer = Timer.periodic(
       const Duration(seconds: 1),
-          (timer) {
+      (timer) {
         if (_seconds == widget.secondsLeft) {
           timer.cancel();
           widget.onTimerCompleted();
