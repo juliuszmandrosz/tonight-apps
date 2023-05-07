@@ -24,6 +24,8 @@ mixin _$InvoiceDataState {
   Option<CustomerData> get updatedCustomerData =>
       throw _privateConstructorUsedError;
   Option<String> get errorMessage => throw _privateConstructorUsedError;
+  Option<CustomerData> get initialCustomerData =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $InvoiceDataStateCopyWith<InvoiceDataState> get copyWith =>
@@ -43,7 +45,8 @@ abstract class $InvoiceDataStateCopyWith<$Res> {
       CountryCode countryCode,
       InvoiceDataType invoiceDataType,
       Option<CustomerData> updatedCustomerData,
-      Option<String> errorMessage});
+      Option<String> errorMessage,
+      Option<CustomerData> initialCustomerData});
 }
 
 /// @nodoc
@@ -66,6 +69,7 @@ class _$InvoiceDataStateCopyWithImpl<$Res, $Val extends InvoiceDataState>
     Object? invoiceDataType = null,
     Object? updatedCustomerData = null,
     Object? errorMessage = null,
+    Object? initialCustomerData = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -96,6 +100,10 @@ class _$InvoiceDataStateCopyWithImpl<$Res, $Val extends InvoiceDataState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      initialCustomerData: null == initialCustomerData
+          ? _value.initialCustomerData
+          : initialCustomerData // ignore: cast_nullable_to_non_nullable
+              as Option<CustomerData>,
     ) as $Val);
   }
 }
@@ -115,7 +123,8 @@ abstract class _$$_InvoiceDataStateCopyWith<$Res>
       CountryCode countryCode,
       InvoiceDataType invoiceDataType,
       Option<CustomerData> updatedCustomerData,
-      Option<String> errorMessage});
+      Option<String> errorMessage,
+      Option<CustomerData> initialCustomerData});
 }
 
 /// @nodoc
@@ -136,6 +145,7 @@ class __$$_InvoiceDataStateCopyWithImpl<$Res>
     Object? invoiceDataType = null,
     Object? updatedCustomerData = null,
     Object? errorMessage = null,
+    Object? initialCustomerData = null,
   }) {
     return _then(_$_InvoiceDataState(
       status: null == status
@@ -166,6 +176,10 @@ class __$$_InvoiceDataStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      initialCustomerData: null == initialCustomerData
+          ? _value.initialCustomerData
+          : initialCustomerData // ignore: cast_nullable_to_non_nullable
+              as Option<CustomerData>,
     ));
   }
 }
@@ -180,7 +194,8 @@ class _$_InvoiceDataState extends _InvoiceDataState {
       required this.countryCode,
       required this.invoiceDataType,
       required this.updatedCustomerData,
-      required this.errorMessage})
+      required this.errorMessage,
+      required this.initialCustomerData})
       : super._();
 
   @override
@@ -197,10 +212,12 @@ class _$_InvoiceDataState extends _InvoiceDataState {
   final Option<CustomerData> updatedCustomerData;
   @override
   final Option<String> errorMessage;
+  @override
+  final Option<CustomerData> initialCustomerData;
 
   @override
   String toString() {
-    return 'InvoiceDataState(status: $status, name: $name, vatNumber: $vatNumber, countryCode: $countryCode, invoiceDataType: $invoiceDataType, updatedCustomerData: $updatedCustomerData, errorMessage: $errorMessage)';
+    return 'InvoiceDataState(status: $status, name: $name, vatNumber: $vatNumber, countryCode: $countryCode, invoiceDataType: $invoiceDataType, updatedCustomerData: $updatedCustomerData, errorMessage: $errorMessage, initialCustomerData: $initialCustomerData)';
   }
 
   @override
@@ -219,12 +236,22 @@ class _$_InvoiceDataState extends _InvoiceDataState {
             (identical(other.updatedCustomerData, updatedCustomerData) ||
                 other.updatedCustomerData == updatedCustomerData) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.initialCustomerData, initialCustomerData) ||
+                other.initialCustomerData == initialCustomerData));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, name, vatNumber,
-      countryCode, invoiceDataType, updatedCustomerData, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      name,
+      vatNumber,
+      countryCode,
+      invoiceDataType,
+      updatedCustomerData,
+      errorMessage,
+      initialCustomerData);
 
   @JsonKey(ignore: true)
   @override
@@ -235,13 +262,15 @@ class _$_InvoiceDataState extends _InvoiceDataState {
 
 abstract class _InvoiceDataState extends InvoiceDataState {
   factory _InvoiceDataState(
-      {required final FormzStatus status,
-      required final Name name,
-      required final VatNumber vatNumber,
-      required final CountryCode countryCode,
-      required final InvoiceDataType invoiceDataType,
-      required final Option<CustomerData> updatedCustomerData,
-      required final Option<String> errorMessage}) = _$_InvoiceDataState;
+          {required final FormzStatus status,
+          required final Name name,
+          required final VatNumber vatNumber,
+          required final CountryCode countryCode,
+          required final InvoiceDataType invoiceDataType,
+          required final Option<CustomerData> updatedCustomerData,
+          required final Option<String> errorMessage,
+          required final Option<CustomerData> initialCustomerData}) =
+      _$_InvoiceDataState;
   _InvoiceDataState._() : super._();
 
   @override
@@ -258,6 +287,8 @@ abstract class _InvoiceDataState extends InvoiceDataState {
   Option<CustomerData> get updatedCustomerData;
   @override
   Option<String> get errorMessage;
+  @override
+  Option<CustomerData> get initialCustomerData;
   @override
   @JsonKey(ignore: true)
   _$$_InvoiceDataStateCopyWith<_$_InvoiceDataState> get copyWith =>
