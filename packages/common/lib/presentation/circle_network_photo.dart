@@ -20,19 +20,19 @@ class CircleNetworkPhoto extends StatelessWidget {
     return CachedNetworkImage(
       progressIndicatorBuilder: (context, url, downloadProgress) =>
           CircleAvatar(
-            radius: containerSize / 2,
-            child: SpinKitThreeBounce(
-              color: context.onSurfaceColor,
-              size: loaderSize,
-            ),
-          ),
+        backgroundColor: context.surfaceColor,
+        radius: containerSize / 2,
+        child: SpinKitThreeBounce(
+          color: context.onSurfaceColor,
+          size: loaderSize,
+        ),
+      ),
       imageUrl: photoUrl,
       errorWidget: (context, url, error) => const Icon(Icons.error),
-      imageBuilder: (context, imageProvider) =>
-          CircleAvatar(
-            radius: containerSize / 2,
-            backgroundImage: imageProvider,
-          ),
+      imageBuilder: (context, imageProvider) => CircleAvatar(
+        radius: containerSize / 2,
+        backgroundImage: imageProvider,
+      ),
     );
   }
 }
