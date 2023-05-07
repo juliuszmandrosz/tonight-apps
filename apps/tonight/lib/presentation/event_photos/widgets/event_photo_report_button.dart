@@ -17,14 +17,7 @@ class EventPhotoReportButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<EventPhotosBloc, EventPhotosState>(
-      listenWhen: (p, c) => p.snackbarMessage != c.snackbarMessage,
-      listener: (context, state) {
-        state.snackbarMessage.fold(
-          () {},
-          (message) => context.showSnackbarMessage(message),
-        );
-      },
+    return BlocBuilder<EventPhotosBloc, EventPhotosState>(
       buildWhen: (p, c) =>
           !listEquals(p.reportingPhotoIds, c.reportingPhotoIds),
       builder: (context, state) {
