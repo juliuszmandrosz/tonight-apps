@@ -5,7 +5,8 @@ enum MenuEventFilter {
   music,
   minAge,
   price,
-  showOnlyConcerts;
+  showOnlyConcerts,
+  showWholeWorld;
 
   String get label {
     switch (this) {
@@ -19,6 +20,8 @@ enum MenuEventFilter {
         return S().price;
       case MenuEventFilter.showOnlyConcerts:
         return S().onlyConcerts;
+      case MenuEventFilter.showWholeWorld:
+        return S().wholeWorld;
     }
   }
 }

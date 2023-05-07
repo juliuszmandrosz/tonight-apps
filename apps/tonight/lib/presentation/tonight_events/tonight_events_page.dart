@@ -14,11 +14,14 @@ class TonightEventsPage extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.only(
+            left: 8,
+            right: 8,
+            bottom: 8,
+          ),
           alignment: Alignment.centerLeft,
           child: const TonightEventFilterChips(),
         ),
-        const SizedBox(height: 8),
         BlocBuilder<TonightEventsBloc, TonightEventsState>(
           builder: (ctx, state) {
             switch (state.getEventsStatus) {

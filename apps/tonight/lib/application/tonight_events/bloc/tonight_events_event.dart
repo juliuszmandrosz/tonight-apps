@@ -17,8 +17,4 @@ class TonightEventsEvent with _$TonightEventsEvent {
       _MenuFilterRemoved;
 
   const factory TonightEventsEvent.eventsRefreshed() = _EventsRefreshed;
-
-  const factory TonightEventsEvent.eventsTabSelected() = _EventsTabSelected;
-
-  const factory TonightEventsEvent.eventsTabUnselected() = _EventsTabUnselected;
 }

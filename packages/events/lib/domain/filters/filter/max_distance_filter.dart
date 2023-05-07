@@ -14,7 +14,7 @@ class MaxDistanceFilter implements IFilter {
   });
 
   factory MaxDistanceFilter.empty() => MaxDistanceFilter(
-        enabled: true,
+        enabled: false,
         userLocation: none(),
         maxDistance: 50,
       );
