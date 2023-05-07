@@ -10,7 +10,14 @@ class WallPhotosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WallPhotosBloc, WallPhotosState>(
+    return BlocConsumer<WallPhotosBloc, WallPhotosState>(
+      listenWhen: (p, c) => p.snackbarMessage != c.snackbarMessage,
+      listener: (context, state) {
+        state.snackbarMessage.fold(
+          () {},
+          (message) => context.showSnackbarMessage(message),
+        );
+      },
       builder: (ctx, state) {
         switch (state.getPhotosStatus) {
           case CubitStatus.initial:
