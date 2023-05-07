@@ -12,4 +12,12 @@ class WallPhotosEvent with _$WallPhotosEvent {
 
   const factory WallPhotosEvent.wallPhotoReported(WallPhoto photo) =
       _WallPhotoReported;
+
+  const factory WallPhotosEvent.menuFiltersApplied({
+    required WallPhotoFilters filters,
+    required Map<MenuWallPhotoFilter, IFilter> appliedFilters,
+  }) = _MenuFiltersApplied;
+
+  const factory WallPhotosEvent.menuFilterRemoved(MenuWallPhotoFilter filter) =
+      _MenuFilterRemoved;
 }

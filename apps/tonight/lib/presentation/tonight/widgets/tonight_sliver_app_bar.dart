@@ -1,7 +1,8 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
+import 'package:tonight/application/tonight/tonight_cubit.dart';
+import 'package:tonight/application/tonight/tonight_tab.dart';
 import 'package:translations/translations.dart';
 
 class TonightSliverAppBar extends StatelessWidget {
@@ -22,12 +23,8 @@ class TonightSliverAppBar extends StatelessWidget {
       bottom: TabBar(
         onTap: (i) {
           i == 0
-              ? context
-                  .read<TonightEventsBloc>()
-                  .add(const TonightEventsEvent.eventsTabSelected())
-              : context
-                  .read<TonightEventsBloc>()
-                  .add(const TonightEventsEvent.eventsTabUnselected());
+              ? context.read<TonightCubit>().selectTab(TonightTab.events)
+              : context.read<TonightCubit>().selectTab(TonightTab.photos);
         },
         dividerColor: Colors.transparent,
         isScrollable: true,

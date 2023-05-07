@@ -7,7 +7,6 @@ import 'package:tonight/application/events/event_filters/menu_event_filter.dart'
 import 'package:translations/translations.dart';
 
 part 'event_filters_cubit.freezed.dart';
-
 part 'event_filters_state.dart';
 
 class EventFiltersCubit extends Cubit<EventFiltersState> {
@@ -24,6 +23,7 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
     final showOnlyConcertsFilter = state.filters.showOnlyConcertsFilter;
     final allowedOutfitsFilter = state.filters.allowedOutfitsFilter;
     final musicalGenresFilter = state.filters.musicalGenresFilter;
+    final maxDistanceFilter = state.filters.maxDistanceFilter;
 
     if (minAgesFilter.minAges.isNotEmpty) {
       appliedFilters[MenuEventFilter.minAge] = minAgesFilter;
@@ -40,6 +40,9 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
     if (musicalGenresFilter.musicalGenres.isNotEmpty) {
       appliedFilters[MenuEventFilter.music] = musicalGenresFilter;
     }
+    if (!maxDistanceFilter.enabled && maxDistanceFilter.userLocation.isSome()) {
+      appliedFilters[MenuEventFilter.showWholeWorld] = maxDistanceFilter;
+    }
 
     if (appliedFilters.containsKey(MenuEventFilter.price)) {
       final price = state.filters.priceRangeFilter;
@@ -50,7 +53,12 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
       }
     }
 
-    emit(state.copyWith(appliedFilters: appliedFilters));
+    emit(
+      state.copyWith(
+        appliedFilters: appliedFilters,
+        isSubmitting: true,
+      ),
+    );
   }
 
   void changePriceRange(int? minValue, int? maxValue) {
@@ -114,6 +122,21 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
       showOnlyConcertsFilter: ShowOnlyConcertsFilter(showOnlyConcerts: value),
     );
 
+    emit(state.copyWith(filters: currentFilters));
+  }
+
+  void changeShowWholeWorldValue(bool value) {
+    final maxDistanceFilter = state.filters.maxDistanceFilter;
+    if (maxDistanceFilter.userLocation.isNone() && !value) {
+      emit(
+        state.copyWith(snackbarMessage: some(S().enableLocationAndResetApp)),
+      );
+      emit(state.copyWith(snackbarMessage: none()));
+      return;
+    }
+    final currentFilters = state.filters.copyWith(
+      maxDistanceFilter: maxDistanceFilter.copyWith(enabled: !value),
+    );
     emit(state.copyWith(filters: currentFilters));
   }
 }

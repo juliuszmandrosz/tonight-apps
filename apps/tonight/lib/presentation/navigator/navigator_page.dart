@@ -6,7 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/events/event_filters/event_filters_page_type.dart';
+import 'package:tonight/application/tonight/tonight_cubit.dart';
+import 'package:tonight/application/tonight/tonight_tab.dart';
 import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
+import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/drawer/tonight_drawer.dart';
 import 'package:tonight/presentation/navigator/tonight_navigation_destinations.dart';
@@ -101,13 +104,12 @@ class _NavigatorPageState extends State<NavigatorPage> {
   ) {
     switch (TonightNavigationDestination.values[router.activeIndex]) {
       case TonightNavigationDestination.tonight:
-        final isEventsTabSelected = context
-            .select((TonightEventsBloc bloc) => bloc.state.isEventsTabSelected);
+        final selectedTab =
+            context.select((TonightCubit bloc) => bloc.state.selectedTab);
         return TonightAppBar(
           backgroundColor: context.backgroundColor,
-          actions: !isEventsTabSelected
-              ? null
-              : [
+          actions: selectedTab == TonightTab.events
+              ? [
                   IconButton(
                     icon: const FaIcon(
                       FontAwesomeIcons.sliders,
@@ -121,6 +123,23 @@ class _NavigatorPageState extends State<NavigatorPage> {
                             .state
                             .eventFilters,
                         eventFiltersPageType: EventFiltersPageType.tonight,
+                      ),
+                    ),
+                  ),
+                ]
+              : [
+                  IconButton(
+                    icon: const FaIcon(
+                      FontAwesomeIcons.sliders,
+                      size: 20,
+                    ),
+                    onPressed: () => context.pushRoute(
+                      WallPhotoFiltersRoute(
+                        blocContext: context,
+                        selectedFilters: context
+                            .read<WallPhotosBloc>()
+                            .state
+                            .wallPhotoFilters,
                       ),
                     ),
                   ),

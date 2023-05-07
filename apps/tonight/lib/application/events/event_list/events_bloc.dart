@@ -49,6 +49,7 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
       (location) => EventFilters.empty().copyWith(
         maxDistanceFilter: MaxDistanceFilter.empty().copyWith(
           userLocation: some(location),
+          enabled: true,
         ),
         cityFilter: CityFilter.empty().copyWith(
           cityName: cityName,
@@ -131,7 +132,12 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
       clubFilter: event.filters.clubFilter,
     );
 
-    emit(state.copyWith(appliedMenuFilters: event.appliedFilters));
+    emit(
+      state.copyWith(
+        appliedMenuFilters: event.appliedFilters,
+        eventFilters: filters,
+      ),
+    );
 
     final result = await _eventFacade.getEvents(
       filters,
@@ -151,7 +157,6 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
           getEventsStatus: CubitStatus.success,
           events: events,
           hasReachedMax: events.length != _pageSize,
-          eventFilters: filters,
         ),
       ),
     );
@@ -178,6 +183,8 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
         break;
       case MenuEventFilter.showOnlyConcerts:
         _resetIsConcertFilter(emit);
+        break;
+      case MenuEventFilter.showWholeWorld:
         break;
     }
 

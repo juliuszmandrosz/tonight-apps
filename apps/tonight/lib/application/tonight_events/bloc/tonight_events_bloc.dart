@@ -37,8 +37,6 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
     on<_EventsRefreshed>(_onEventsRefreshed);
     on<_MenuFiltersApplied>(_onMenuFiltersApplied);
     on<_MenuFilterRemoved>(_onMenuFilterRemoved);
-    on<_EventsTabSelected>(_onEventsTabSelected);
-    on<_EventsTabUnselected>(_onEventsTabUnselected);
   }
 
   FutureOr<void> _onEventsFetched(
@@ -52,6 +50,7 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
       (location) => state.eventFilters.copyWith(
         maxDistanceFilter: MaxDistanceFilter.empty().copyWith(
           userLocation: some(location),
+          enabled: true,
         ),
       ),
     );
@@ -147,9 +146,15 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
       showOnlyConcertsFilter: event.filters.showOnlyConcertsFilter,
       minAgesFilter: event.filters.minAgesFilter,
       clubFilter: event.filters.clubFilter,
+      maxDistanceFilter: event.filters.maxDistanceFilter,
     );
 
-    emit(state.copyWith(appliedMenuFilters: event.appliedFilters));
+    emit(
+      state.copyWith(
+        appliedMenuFilters: event.appliedFilters,
+        eventFilters: filters,
+      ),
+    );
 
     final result = await _tonightEventsAggregator.fetchTonightEvents(
       filters: filters,
@@ -168,7 +173,6 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
           getEventsStatus: CubitStatus.success,
           events: events,
           hasReachedMax: events.length != _pageSize,
-          eventFilters: filters,
         ),
       ),
     );
@@ -195,6 +199,9 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
         break;
       case MenuEventFilter.showOnlyConcerts:
         _resetIsConcertFilter(emit);
+        break;
+      case MenuEventFilter.showWholeWorld:
+        _resetMaxDistanceFilter(emit);
         break;
     }
 
@@ -290,17 +297,20 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
     );
   }
 
-  FutureOr<void> _onEventsTabSelected(
-    _EventsTabSelected event,
-    Emitter<TonightEventsState> emit,
-  ) {
-    emit(state.copyWith(isEventsTabSelected: true));
-  }
-
-  FutureOr<void> _onEventsTabUnselected(
-    _EventsTabUnselected event,
-    Emitter<TonightEventsState> emit,
-  ) {
-    emit(state.copyWith(isEventsTabSelected: false));
+  _resetMaxDistanceFilter(Emitter<TonightEventsState> emit) {
+    final maxDistanceFilter = state.eventFilters.maxDistanceFilter;
+    final currentFilters = state.eventFilters.copyWith(
+      maxDistanceFilter: maxDistanceFilter.copyWith(
+        enabled: maxDistanceFilter.userLocation.isSome(),
+      ),
+    );
+    final appliedFilterCopy = {...state.appliedMenuFilters}
+      ..remove(MenuEventFilter.showWholeWorld);
+    emit(
+      state.copyWith(
+        eventFilters: currentFilters,
+        appliedMenuFilters: appliedFilterCopy,
+      ),
+    );
   }
 }
