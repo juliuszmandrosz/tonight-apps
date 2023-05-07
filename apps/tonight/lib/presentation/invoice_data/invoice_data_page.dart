@@ -30,66 +30,69 @@ class _InvoiceDataPageState extends State<InvoiceDataPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          getIt<InvoiceDataCubit>()..initInvoiceData(widget.customerData),
-      child: BlocConsumer<InvoiceDataCubit, InvoiceDataState>(
-        listenWhen: (previous, current) =>
-            previous.errorMessage != current.errorMessage ||
-            previous.status != current.status,
-        buildWhen: (previous, current) =>
-            previous.invoiceDataType != current.invoiceDataType ||
-            previous.status != current.status,
-        listener: (context, state) async {
-          state.errorMessage.fold(
-            () {},
-            (error) => context.showSnackbarMessage(error),
-          );
-
-          setState(() {
-            _isLoading = state.status.isSubmissionInProgress;
-          });
-
-          if (state.status.isSubmissionSuccess) {
-            await context.popRoute<CustomerData>(
-              state.updatedCustomerData.getOrCrash(),
+    return GestureDetector(
+      onTap: context.unfocus,
+      child: BlocProvider(
+        create: (context) =>
+            getIt<InvoiceDataCubit>()..initInvoiceData(widget.customerData),
+        child: BlocConsumer<InvoiceDataCubit, InvoiceDataState>(
+          listenWhen: (previous, current) =>
+              previous.errorMessage != current.errorMessage ||
+              previous.status != current.status,
+          buildWhen: (previous, current) =>
+              previous.invoiceDataType != current.invoiceDataType ||
+              previous.status != current.status,
+          listener: (context, state) async {
+            state.errorMessage.fold(
+              () {},
+              (error) => context.showSnackbarMessage(error),
             );
 
-            if (context.mounted) {
-              context.showSnackbarMessage(S().invoiceDataUpdatedSuccessfully);
+            setState(() {
+              _isLoading = state.status.isSubmissionInProgress;
+            });
+
+            if (state.status.isSubmissionSuccess) {
+              await context.popRoute<CustomerData>(
+                state.updatedCustomerData.getOrCrash(),
+              );
+
+              if (context.mounted) {
+                context.showSnackbarMessage(S().invoiceDataUpdatedSuccessfully);
+              }
             }
-          }
-        },
-        builder: (context, state) {
-          return WillPopScope(
-            onWillPop: () async {
-              return !_isLoading;
-            },
-            child: Scaffold(
-              appBar: TonightAppBar(title: S().invoiceData),
-              floatingActionButton: const UpdateInvoiceDataButton(),
-              body: Padding(
-                padding: const EdgeInsets.all(15),
-                child: ListView(
-                  children: [
-                    const InvoiceDataTypeInput(),
-                    const SizedBox(height: 20),
-                    const NameInput(),
-                    if (state.invoiceDataType.isCompany)
-                      Column(
-                        children: const [
-                          SizedBox(height: 20),
-                          VatNumberInput(),
-                          SizedBox(height: 20),
-                          CountryCodeInput(),
-                        ],
-                      ),
-                  ],
+          },
+          builder: (context, state) {
+            return WillPopScope(
+              onWillPop: () async {
+                return !_isLoading;
+              },
+              child: Scaffold(
+                appBar: TonightAppBar(title: S().invoiceData),
+                floatingActionButton: const UpdateInvoiceDataButton(),
+                body: Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: ListView(
+                    children: [
+                      const InvoiceDataTypeInput(),
+                      const SizedBox(height: 20),
+                      const NameInput(),
+                      if (state.invoiceDataType.isCompany)
+                        Column(
+                          children: const [
+                            SizedBox(height: 20),
+                            VatNumberInput(),
+                            SizedBox(height: 20),
+                            CountryCodeInput(),
+                          ],
+                        ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
