@@ -23,31 +23,32 @@ class EventDetailsAdditionalInfo extends StatelessWidget {
         )
         .toList();
 
-    return Column(
-      children: [
-        Align(
-          alignment: Alignment.centerLeft,
-          child: TonightHeadline(
-            text: S().urlLinks,
-            isSmallerVersion: true,
-          ),
-        ),
-        const SizedBox(height: 5),
-        if (socialMediaIcons.isNotEmpty)
-          ListView.separated(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: socialMediaIcons.length + 1,
-            separatorBuilder: (context, i) => const Divider(),
-            itemBuilder: (context, i) => i >= socialMediaIcons.length
-                ? const SizedBox()
-                : SocialIconWithTitle(
-                    socialMedia: eventSocialMedia[socialMediaIcons[i].key]!,
-                    url: socialMediaIcons[i].value,
-                  ),
-          ),
-        const SizedBox(height: 10),
-      ],
-    );
+    return socialMediaIcons.isEmpty
+        ? const SizedBox.shrink()
+        : Column(
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TonightHeadline(
+                  text: S().urlLinks,
+                  isSmallerVersion: true,
+                ),
+              ),
+              const SizedBox(height: 5),
+              ListView.separated(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: socialMediaIcons.length + 1,
+                separatorBuilder: (context, i) => const Divider(),
+                itemBuilder: (context, i) => i >= socialMediaIcons.length
+                    ? const SizedBox()
+                    : SocialIconWithTitle(
+                        socialMedia: eventSocialMedia[socialMediaIcons[i].key]!,
+                        url: socialMediaIcons[i].value,
+                      ),
+              ),
+              const SizedBox(height: 10),
+            ],
+          );
   }
 }
