@@ -10,7 +10,14 @@ class EventPhotosPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<EventPhotosBloc, EventPhotosState>(
+    return BlocConsumer<EventPhotosBloc, EventPhotosState>(
+      listenWhen: (p, c) => p.snackbarMessage != c.snackbarMessage,
+      listener: (context, state) {
+        state.snackbarMessage.fold(
+          () {},
+          (message) => context.showSnackbarMessage(message),
+        );
+      },
       builder: (context, state) {
         switch (state.getPhotosStatus) {
           case CubitStatus.initial:
