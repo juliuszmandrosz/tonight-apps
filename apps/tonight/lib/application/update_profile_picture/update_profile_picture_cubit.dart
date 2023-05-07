@@ -9,7 +9,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:translations/translations.dart';
 
 part 'update_profile_picture_cubit.freezed.dart';
-
 part 'update_profile_picture_state.dart';
 
 class UpdateProfilePictureCubit extends Cubit<UpdateProfilePictureState> {
@@ -21,6 +20,7 @@ class UpdateProfilePictureCubit extends Cubit<UpdateProfilePictureState> {
   Future<void> updateProfilePicture() async {
     if (state.profilePicture.isNone()) {
       _showErrorMessage(S().selectProfilePicture);
+      return;
     }
 
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
