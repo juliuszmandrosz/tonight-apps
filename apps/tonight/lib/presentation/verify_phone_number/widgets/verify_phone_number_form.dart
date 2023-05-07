@@ -17,6 +17,7 @@ class VerifyPhoneNumberForm extends StatelessWidget {
           children: [
             const Spacer(),
             PhoneNumberField(
+              enabled: !state.sendSmsStatus.isLoading(),
               formKey: phoneFormKey,
               onInputChanged: (value) => context
                   .read<VerifyPhoneNumberCubit>()
