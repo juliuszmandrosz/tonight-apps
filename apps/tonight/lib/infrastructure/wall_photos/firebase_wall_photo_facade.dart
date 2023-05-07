@@ -7,7 +7,6 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:logger/logger.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
@@ -16,7 +15,6 @@ import 'package:tonight/infrastructure/messages/dto/message_dto.dart';
 import 'package:tonight/infrastructure/participants/dtos/participant_dto.dart';
 import 'package:tonight/infrastructure/wall_photos/dtos/wall_photo_dto.dart';
 import 'package:tonight/infrastructure/wall_photos/dtos/wall_photo_report_dto.dart';
-import 'package:tonight/infrastructure/wall_photos/filters/show_photos_from_clubs_in_range_filter.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/wall_photo_filters.dart';
 import 'package:uuid/uuid.dart';
 
@@ -116,14 +114,14 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
 
   @override
   Future<Either<WallPhotoFailure, List<WallPhoto>>> getWallPhotos({
-    required Option<LatLng> userLocation,
+    required WallPhotoFilters filters,
     int pageSize = 20,
     int offset = 0,
   }) async {
     try {
       final userDoc = await _firestore.getCurrentUserDocRef(_auth).get();
       final result = await _getWallPhotosFromApi(
-        userLocation: userLocation,
+        filters: filters,
         userId: userDoc.id,
         offset: offset,
         pageSize: pageSize,
@@ -239,17 +237,13 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   }
 
   Future<List<dynamic>> _getWallPhotosFromApi({
-    required Option<LatLng> userLocation,
+    required WallPhotoFilters filters,
     required String userId,
     required int pageSize,
     required int offset,
   }) async {
     const endpoint = 'wallPhotos/getPhotos';
     final pageNumber = ((offset + 1) / pageSize).ceil();
-    final filters = _getWallPhotoFilters(
-      userId: userId,
-      userLocation: userLocation,
-    );
     final data = {
       'query': '',
       'queryBy': 'venueName',
@@ -263,18 +257,6 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
       data: data,
     );
     return response.data as List<dynamic>;
-  }
-
-  WallPhotoFilters _getWallPhotoFilters({
-    required Option<LatLng> userLocation,
-    required String userId,
-  }) {
-    return WallPhotoFilters.empty().copyWith(
-      showPhotosFromClubsInRangeFilter: ShowPhotosFromClubsInRangeFilter(
-        userLocation: userLocation,
-        maxDistance: 50,
-      ),
-    );
   }
 
   Future<bool> _checkIfReportExists(WallPhotoReportDto reportDto) async {

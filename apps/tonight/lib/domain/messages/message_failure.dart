@@ -14,8 +14,7 @@ extension MessageFailureX on MessageFailure {
   String get message {
     return when(
       unexpected: () => S().serverError,
-      // TODO - add translation
-      reportExists: () => 'S().messageAlreadyReported',
+      reportExists: () => S().messageAlreadyReported,
     );
   }
 }
