@@ -17,14 +17,7 @@ class WallPhotoReportButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<WallPhotosBloc, WallPhotosState>(
-      listenWhen: (p, c) => p.snackbarMessage != c.snackbarMessage,
-      listener: (context, state) {
-        state.snackbarMessage.fold(
-          () {},
-          (message) => context.showSnackbarMessage(message),
-        );
-      },
+    return BlocBuilder<WallPhotosBloc, WallPhotosState>(
       buildWhen: (p, c) =>
           !listEquals(p.reportingWallPhotoIds, c.reportingWallPhotoIds),
       builder: (context, state) {
