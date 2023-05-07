@@ -1,0 +1,1 @@
+const kSmsCodeTimeoutDurationInSeconds = 60;

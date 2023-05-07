@@ -46,6 +46,10 @@ class SignInWithPhoneNumberCubit extends Cubit<SignInWithPhoneNumberState> {
       (failureOrSuccess) {
         failureOrSuccess.fold(
           (failure) {
+            if (failure.maybeWhen(
+                smsTimeout: () => true, orElse: () => false)) {
+              emit(state.copyWith(verificationId: none()));
+            }
             emit(
               state.copyWith(
                 sendSmsStatus: CubitStatus.failure,
@@ -54,14 +58,16 @@ class SignInWithPhoneNumberCubit extends Cubit<SignInWithPhoneNumberState> {
             );
             emit(state.copyWith(failureMessage: none()));
           },
-          (result) => emit(
-            state.copyWith(
-              sendSmsStatus: CubitStatus.success,
-              verificationId: some(result.value1),
-              resendToken:
-                  result.value2 != null ? some(result.value2!) : none(),
-            ),
-          ),
+          (result) {
+            emit(
+              state.copyWith(
+                sendSmsStatus: CubitStatus.success,
+                verificationId: some(result.value1),
+                resendToken:
+                    result.value2 != null ? some(result.value2!) : none(),
+              ),
+            );
+          },
         );
       },
     );

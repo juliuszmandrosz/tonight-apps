@@ -54,7 +54,7 @@ class FirebaseAuthFacade
         StreamController<Either<AuthFailure, Tuple2<String, int?>>>();
     await _firebaseAuth.verifyPhoneNumber(
       phoneNumber: phoneNumber,
-      timeout: const Duration(seconds: 60),
+      timeout: const Duration(seconds: kSmsCodeTimeoutDurationInSeconds),
       forceResendingToken: resendToken,
       codeSent: (verificationId, resendToken) async {
         final result = Tuple2(verificationId, resendToken);
@@ -65,7 +65,7 @@ class FirebaseAuthFacade
         final failure = await _handleFirebaseException(e);
         streamController.add(left(failure));
       },
-      verificationCompleted: (phoneAuthCredential) {
+      verificationCompleted: (_) {
         // Android only
       },
       codeAutoRetrievalTimeout: (_) {
