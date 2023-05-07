@@ -28,97 +28,100 @@ class VipCheckoutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<VipCheckoutCubit>(
-        param1: context.read<TicketListCubit>(),
-      )..initData(ticket),
-      child: BlocConsumer<VipCheckoutCubit, VipCheckoutState>(
-        buildWhen: (previous, current) =>
-            previous.initialStatus != current.initialStatus ||
-            previous.eventTickets != current.eventTickets ||
-            previous.sendInvoice != current.sendInvoice,
-        listenWhen: (previous, current) =>
-            previous.initialStatus != current.initialStatus ||
-            previous.proceedingToPaymentStatus !=
-                current.proceedingToPaymentStatus ||
-            previous.snackbarMessage != current.snackbarMessage ||
-            previous.isVipNoLongerAvailable != current.isVipNoLongerAvailable ||
-            previous.paymentFailure != current.paymentFailure,
-        listener: (context, state) {
-          if (state.proceedingToPaymentStatus.isSuccess() &&
-              state.upgradedTicket.isSome()) {
-            context.replaceRoute(
-              TicketPaymentConfirmRoute(
-                ticket: state.upgradedTicket.getOrCrash(),
-              ),
+    return TonightOverlay(
+      child: BlocProvider(
+        create: (_) => getIt<VipCheckoutCubit>(
+          param1: context.read<TicketListCubit>(),
+        )..initData(ticket),
+        child: BlocConsumer<VipCheckoutCubit, VipCheckoutState>(
+          buildWhen: (previous, current) =>
+              previous.initialStatus != current.initialStatus ||
+              previous.eventTickets != current.eventTickets ||
+              previous.sendInvoice != current.sendInvoice,
+          listenWhen: (previous, current) =>
+              previous.initialStatus != current.initialStatus ||
+              previous.proceedingToPaymentStatus !=
+                  current.proceedingToPaymentStatus ||
+              previous.snackbarMessage != current.snackbarMessage ||
+              previous.isVipNoLongerAvailable !=
+                  current.isVipNoLongerAvailable ||
+              previous.paymentFailure != current.paymentFailure,
+          listener: (context, state) {
+            if (state.proceedingToPaymentStatus.isSuccess() &&
+                state.upgradedTicket.isSome()) {
+              context.replaceRoute(
+                TicketPaymentConfirmRoute(
+                  ticket: state.upgradedTicket.getOrCrash(),
+                ),
+              );
+            }
+
+            state.proceedingToPaymentStatus.isLoading()
+                ? context.loaderOverlay.show()
+                : context.loaderOverlay.hide();
+
+            state.snackbarMessage.fold(
+              () {},
+              (message) => context.showSnackbarMessage(message),
             );
-          }
 
-          state.proceedingToPaymentStatus.isLoading()
-              ? context.loaderOverlay.show()
-              : context.loaderOverlay.hide();
+            if (state.isVipNoLongerAvailable) {
+              context.popRoute();
+            }
 
-          state.snackbarMessage.fold(
-            () {},
-            (message) => context.showSnackbarMessage(message),
-          );
+            if (state.paymentFailure ==
+                some(const UserPaymentFailure.paymentHasAlreadyBeenMade())) {
+              context.router.popUntil(
+                (route) => route.settings.name == TicketQrRoute.name,
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state.initialStatus.isInitial()) {
+              return const SizedBox.shrink();
+            }
 
-          if (state.isVipNoLongerAvailable) {
-            context.popRoute();
-          }
+            if (state.initialStatus.isFailure()) {
+              return FailureInfo(
+                retryCallback: () =>
+                    context.read<VipCheckoutCubit>().initData(ticket),
+              );
+            }
 
-          if (state.paymentFailure ==
-              some(const UserPaymentFailure.paymentHasAlreadyBeenMade())) {
-            context.router.popUntil(
-              (route) => route.settings.name == TicketQrRoute.name,
-            );
-          }
-        },
-        builder: (context, state) {
-          if (state.initialStatus.isInitial()) {
-            return const SizedBox.shrink();
-          }
-
-          if (state.initialStatus.isFailure()) {
-            return FailureInfo(
-              retryCallback: () =>
-                  context.read<VipCheckoutCubit>().initData(ticket),
-            );
-          }
-
-          return state.initialStatus.isLoading()
-              ? const WaveLoadingIndicator()
-              : Scaffold(
-                  appBar: TonightAppBar(title: S().checkout),
-                  floatingActionButton: const VipProceedToPayButton(),
-                  floatingActionButtonLocation:
-                      FloatingActionButtonLocation.centerFloat,
-                  body: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: ListView(
-                      children: [
-                        const VipCheckoutHeader(),
-                        const SizedBox(height: 20),
-                        const VipCheckoutTicketCard(),
-                        const SizedBox(height: 15),
-                        const Divider(),
-                        const SizedBox(height: 15),
-                        const VipCheckoutPaymentMethod(),
-                        const SizedBox(height: 20),
-                        const VipCheckoutSummary(),
-                        const SizedBox(height: 10),
-                        const Divider(),
-                        const SizedBox(height: 10),
-                        const VipCheckoutPromotionCode(),
-                        const SizedBox(height: 20),
-                        const VipCheckoutInvoiceCheckbox(),
-                        if (state.sendInvoice) const VipCheckoutInvoiceData(),
-                        const SizedBox(height: 80),
-                      ],
+            return state.initialStatus.isLoading()
+                ? const WaveLoadingIndicator()
+                : Scaffold(
+                    appBar: TonightAppBar(title: S().checkout),
+                    floatingActionButton: const VipProceedToPayButton(),
+                    floatingActionButtonLocation:
+                        FloatingActionButtonLocation.centerFloat,
+                    body: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: ListView(
+                        children: [
+                          const VipCheckoutHeader(),
+                          const SizedBox(height: 20),
+                          const VipCheckoutTicketCard(),
+                          const SizedBox(height: 15),
+                          const Divider(),
+                          const SizedBox(height: 15),
+                          const VipCheckoutPaymentMethod(),
+                          const SizedBox(height: 20),
+                          const VipCheckoutSummary(),
+                          const SizedBox(height: 10),
+                          const Divider(),
+                          const SizedBox(height: 10),
+                          const VipCheckoutPromotionCode(),
+                          const SizedBox(height: 20),
+                          const VipCheckoutInvoiceCheckbox(),
+                          if (state.sendInvoice) const VipCheckoutInvoiceData(),
+                          const SizedBox(height: 80),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-        },
+                  );
+          },
+        ),
       ),
     );
   }

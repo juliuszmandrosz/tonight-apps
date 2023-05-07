@@ -12,6 +12,7 @@ abstract class InvoiceDataState with _$InvoiceDataState {
     required InvoiceDataType invoiceDataType,
     required Option<CustomerData> updatedCustomerData,
     required Option<String> errorMessage,
+    required Option<CustomerData> initialCustomerData,
   }) = _InvoiceDataState;
 
   factory InvoiceDataState.initial() => InvoiceDataState(
@@ -22,5 +23,6 @@ abstract class InvoiceDataState with _$InvoiceDataState {
         invoiceDataType: InvoiceDataType.individual,
         updatedCustomerData: none(),
         errorMessage: none(),
+        initialCustomerData: none(),
       );
 }
