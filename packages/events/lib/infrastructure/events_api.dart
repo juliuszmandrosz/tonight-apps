@@ -78,6 +78,7 @@ class EventsApiImpl implements EventsApi {
     final sortBy = _getSortBy(
       EventSortModel(fieldName: attending, direction: SortDirection.desc),
     );
+
     const endpoint = 'events/getEvents';
     final data = {
       'query': '',

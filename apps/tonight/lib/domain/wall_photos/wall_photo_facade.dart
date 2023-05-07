@@ -1,9 +1,9 @@
 import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
+import 'package:tonight/infrastructure/wall_photos/filters/wall_photo_filters.dart';
 
 abstract class WallPhotoFacade {
   /// Returns photo url
@@ -17,7 +17,7 @@ abstract class WallPhotoFacade {
   Future<Either<WallPhotoFailure, Unit>> deleteWallPhoto(String photoId);
 
   Future<Either<WallPhotoFailure, List<WallPhoto>>> getWallPhotos({
-    required Option<LatLng> userLocation,
+    required WallPhotoFilters filters,
     int pageSize = 20,
     int offset = 0,
   });

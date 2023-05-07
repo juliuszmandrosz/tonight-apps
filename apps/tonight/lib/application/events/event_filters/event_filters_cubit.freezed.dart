@@ -20,6 +20,7 @@ mixin _$EventFiltersState {
   Option<String> get snackbarMessage => throw _privateConstructorUsedError;
   Map<MenuEventFilter, IFilter> get appliedFilters =>
       throw _privateConstructorUsedError;
+  bool get isSubmitting => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventFiltersStateCopyWith<EventFiltersState> get copyWith =>
@@ -35,7 +36,8 @@ abstract class $EventFiltersStateCopyWith<$Res> {
   $Res call(
       {EventFilters filters,
       Option<String> snackbarMessage,
-      Map<MenuEventFilter, IFilter> appliedFilters});
+      Map<MenuEventFilter, IFilter> appliedFilters,
+      bool isSubmitting});
 
   $EventFiltersCopyWith<$Res> get filters;
 }
@@ -56,6 +58,7 @@ class _$EventFiltersStateCopyWithImpl<$Res, $Val extends EventFiltersState>
     Object? filters = null,
     Object? snackbarMessage = null,
     Object? appliedFilters = null,
+    Object? isSubmitting = null,
   }) {
     return _then(_value.copyWith(
       filters: null == filters
@@ -70,6 +73,10 @@ class _$EventFiltersStateCopyWithImpl<$Res, $Val extends EventFiltersState>
           ? _value.appliedFilters
           : appliedFilters // ignore: cast_nullable_to_non_nullable
               as Map<MenuEventFilter, IFilter>,
+      isSubmitting: null == isSubmitting
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -93,7 +100,8 @@ abstract class _$$_EventFiltersStateCopyWith<$Res>
   $Res call(
       {EventFilters filters,
       Option<String> snackbarMessage,
-      Map<MenuEventFilter, IFilter> appliedFilters});
+      Map<MenuEventFilter, IFilter> appliedFilters,
+      bool isSubmitting});
 
   @override
   $EventFiltersCopyWith<$Res> get filters;
@@ -113,6 +121,7 @@ class __$$_EventFiltersStateCopyWithImpl<$Res>
     Object? filters = null,
     Object? snackbarMessage = null,
     Object? appliedFilters = null,
+    Object? isSubmitting = null,
   }) {
     return _then(_$_EventFiltersState(
       filters: null == filters
@@ -127,6 +136,10 @@ class __$$_EventFiltersStateCopyWithImpl<$Res>
           ? _value._appliedFilters
           : appliedFilters // ignore: cast_nullable_to_non_nullable
               as Map<MenuEventFilter, IFilter>,
+      isSubmitting: null == isSubmitting
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -137,7 +150,8 @@ class _$_EventFiltersState extends _EventFiltersState {
   _$_EventFiltersState(
       {required this.filters,
       required this.snackbarMessage,
-      required final Map<MenuEventFilter, IFilter> appliedFilters})
+      required final Map<MenuEventFilter, IFilter> appliedFilters,
+      required this.isSubmitting})
       : _appliedFilters = appliedFilters,
         super._();
 
@@ -154,8 +168,11 @@ class _$_EventFiltersState extends _EventFiltersState {
   }
 
   @override
+  final bool isSubmitting;
+
+  @override
   String toString() {
-    return 'EventFiltersState(filters: $filters, snackbarMessage: $snackbarMessage, appliedFilters: $appliedFilters)';
+    return 'EventFiltersState(filters: $filters, snackbarMessage: $snackbarMessage, appliedFilters: $appliedFilters, isSubmitting: $isSubmitting)';
   }
 
   @override
@@ -167,12 +184,14 @@ class _$_EventFiltersState extends _EventFiltersState {
             (identical(other.snackbarMessage, snackbarMessage) ||
                 other.snackbarMessage == snackbarMessage) &&
             const DeepCollectionEquality()
-                .equals(other._appliedFilters, _appliedFilters));
+                .equals(other._appliedFilters, _appliedFilters) &&
+            (identical(other.isSubmitting, isSubmitting) ||
+                other.isSubmitting == isSubmitting));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, filters, snackbarMessage,
-      const DeepCollectionEquality().hash(_appliedFilters));
+      const DeepCollectionEquality().hash(_appliedFilters), isSubmitting);
 
   @JsonKey(ignore: true)
   @override
@@ -184,10 +203,10 @@ class _$_EventFiltersState extends _EventFiltersState {
 
 abstract class _EventFiltersState extends EventFiltersState {
   factory _EventFiltersState(
-          {required final EventFilters filters,
-          required final Option<String> snackbarMessage,
-          required final Map<MenuEventFilter, IFilter> appliedFilters}) =
-      _$_EventFiltersState;
+      {required final EventFilters filters,
+      required final Option<String> snackbarMessage,
+      required final Map<MenuEventFilter, IFilter> appliedFilters,
+      required final bool isSubmitting}) = _$_EventFiltersState;
   _EventFiltersState._() : super._();
 
   @override
@@ -196,6 +215,8 @@ abstract class _EventFiltersState extends EventFiltersState {
   Option<String> get snackbarMessage;
   @override
   Map<MenuEventFilter, IFilter> get appliedFilters;
+  @override
+  bool get isSubmitting;
   @override
   @JsonKey(ignore: true)
   _$$_EventFiltersStateCopyWith<_$_EventFiltersState> get copyWith =>
