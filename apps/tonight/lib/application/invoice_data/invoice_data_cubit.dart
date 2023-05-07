@@ -1,7 +1,8 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:payments/application/core/tonight_payment_method.dart';
 import 'package:payments/domain/domain.dart';
 import 'package:tonight/application/core/get_payment_failure_message.dart';
 import 'package:tonight/application/invoice_data/form_inputs/country_code.dart';
@@ -41,6 +42,7 @@ class InvoiceDataCubit extends Cubit<InvoiceDataState> {
     emit(
       state.copyWith(
         name: hasName ? Name.dirty(customerData.name!) : const Name.pure(),
+        initialCustomerData: some(customerData),
       ),
     );
   }
@@ -86,6 +88,10 @@ class InvoiceDataCubit extends Cubit<InvoiceDataState> {
           name: state.name.value,
           vatNumber:
               state.invoiceDataType.isCompany ? vatNumberWithCountryCode : '',
+          paymentMethod: state.initialCustomerData.fold(
+            () => TonightPaymentMethod.p24.name,
+            (data) => data.paymentMethod,
+          ),
         );
 
         emit(
