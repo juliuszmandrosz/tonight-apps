@@ -22,7 +22,10 @@ class UserWallPhotoDeleteButton extends StatelessWidget {
           S().confirmDeletePhoto,
         );
         if (result == true && context.mounted) {
-          await context.read<UserWallPhotoPreviewCubit>().deletePhoto(photo.id);
+          await context.read<UserWallPhotoPreviewCubit>().deletePhoto(
+                photoId: photo.id,
+                photoUrl: photo.photoUrl,
+              );
         }
       },
       icon: const FaIcon(FontAwesomeIcons.trashCan),
