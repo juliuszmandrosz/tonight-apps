@@ -30,11 +30,6 @@ class _WallPhotoCameraPreviewPageState
   var _isSelfie = true;
   static const _photoHeroTag = 'wallPhotoCameraPreviewHero';
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
   Future<String> get _path async {
     final dir = await getTemporaryDirectory();
     final name = DateTime.now().millisecondsSinceEpoch.toString();
