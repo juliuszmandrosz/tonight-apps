@@ -31,6 +31,10 @@ class AuthCubit extends Cubit<AuthState> {
         );
   }
 
+  bool checkIfPhoneNumberIsVerified() {
+    return _userAuthFacade.checkIfPhoneNumberIsVerified();
+  }
+
   void listenToUserChanges() {
     _userSubscription?.cancel();
     _userSubscription = _userAuthFacade
