@@ -6,6 +6,8 @@ abstract class UserAuthFacade {
 
   Future<Either<AuthFailure, Unit>> sendSignInEmailLinkForUser(String email);
 
+  bool checkIfPhoneNumberIsVerified();
+
   // Returns verification id and resend token
   Stream<Either<AuthFailure, Tuple2<String, int?>>>
       sendSmsVerificationCodeForUser({
