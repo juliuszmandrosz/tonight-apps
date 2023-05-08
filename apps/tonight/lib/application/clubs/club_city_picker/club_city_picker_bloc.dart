@@ -22,13 +22,11 @@ class ClubCityPickerBloc
     _PickerInitialized event,
     Emitter<ClubCityPickerState> emit,
   ) {
-    final sortedCities = [...event.availableCities]
-      ..sort((a, b) => a.name.compareTo(b.name));
     emit(
       state.copyWith(
         filter: event.filter,
-        availableCities: sortedCities,
-        filteredCities: sortedCities,
+        availableCities: event.availableCities,
+        filteredCities: event.availableCities,
       ),
     );
   }
@@ -64,7 +62,6 @@ class ClubCityPickerBloc
     final cities = state.availableCities
         .where((city) => city.name.toLowerCase().contains(lowerPhrase))
         .toList();
-    final sortedCities = [...cities]..sort((a, b) => a.name.compareTo(b.name));
-    emit(state.copyWith(filteredCities: sortedCities));
+    emit(state.copyWith(filteredCities: cities));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/domain/available_filters/entities/available_filters_entity.dart';
+import 'package:common/extensions/extensions.dart';
 import 'package:common/infrastructure/available_filters/dtos/city_dto.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -30,11 +31,11 @@ class AvailableFiltersDto with _$AvailableFiltersDto {
 
   AvailableFilters toDomain() {
     return AvailableFilters(
-      allowedOutfits: allowedOutfits,
-      musicalGenres: musicalGenres,
-      currencies: currencies,
-      minAges: minAges,
-      cities: cities.map((city) => city.toDomain()).toList(),
-    );
+        allowedOutfits: [...allowedOutfits]..sortAscending(),
+        musicalGenres: [...musicalGenres]..sortAscending(),
+        currencies: [...currencies]..sortAscending(),
+        minAges: [...minAges]..sortAscending(),
+        cities: [...cities.map((city) => city.toDomain())]
+          ..sortByStringFieldAscending(((c) => c.name)));
   }
 }
