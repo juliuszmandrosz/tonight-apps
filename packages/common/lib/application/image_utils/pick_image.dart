@@ -5,6 +5,7 @@ import 'package:common/application/image_utils/compress_image.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 
+/// Throws platform exception if there is no permission to access files.
 Future<Uint8List?> pickImage(String dialogTitle) async {
   final result = await FilePicker.platform.pickFiles(
     allowMultiple: false,
