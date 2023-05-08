@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:events/events.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tonight/application/events/event_filters/event_filters_page_type.dart';
 import 'package:tonight/application/events/event_filters/menu_event_filter.dart';
 import 'package:translations/translations.dart';
 
@@ -12,8 +13,16 @@ part 'event_filters_state.dart';
 class EventFiltersCubit extends Cubit<EventFiltersState> {
   EventFiltersCubit() : super(EventFiltersState.initial());
 
-  initFilters(EventFilters filters) {
-    emit(state.copyWith(filters: filters));
+  initFilters({
+    required EventFilters filters,
+    required EventFiltersPageType pageType,
+  }) {
+    emit(
+      state.copyWith(
+        filters: filters,
+        pageType: pageType,
+      ),
+    );
   }
 
   void submitMenuFilters() {
@@ -40,7 +49,9 @@ class EventFiltersCubit extends Cubit<EventFiltersState> {
     if (musicalGenresFilter.musicalGenres.isNotEmpty) {
       appliedFilters[MenuEventFilter.music] = musicalGenresFilter;
     }
-    if (!maxDistanceFilter.enabled && maxDistanceFilter.userLocation.isSome()) {
+    if (!maxDistanceFilter.enabled &&
+        maxDistanceFilter.userLocation.isSome() &&
+        state.pageType == EventFiltersPageType.tonight) {
       appliedFilters[MenuEventFilter.showWholeWorld] = maxDistanceFilter;
     }
 
