@@ -17,7 +17,7 @@ class UpdateProfilePictureCubit extends Cubit<UpdateProfilePictureState> {
   UpdateProfilePictureCubit(this._userAccountFacade)
       : super(UpdateProfilePictureState.initial());
 
-  Future<void> updateProfilePicture() async {
+  Future<void> updateProfilePicture(String currentPictureUrl) async {
     if (state.profilePicture.isNone()) {
       _showErrorMessage(S().selectProfilePicture);
       return;
@@ -25,11 +25,24 @@ class UpdateProfilePictureCubit extends Cubit<UpdateProfilePictureState> {
 
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
 
-    final failureOrSuccess = await _userAccountFacade.setProfilePictureForUser(
-      state.profilePicture.getOrCrash(),
+    final failureOrSuccess =
+        await _userAccountFacade.updateProfilePictureForUser(
+      newProfilePicture: state.profilePicture.getOrCrash(),
+      currentProfilePictureUrl: currentPictureUrl,
     );
 
     failureOrSuccess.fold(
+      _emitFailure,
+      (success) => emit(state.copyWith(status: FormzStatus.submissionSuccess)),
+    );
+  }
+
+  Future<void> deleteProfilePicture(String pictureUrl) async {
+    emit(state.copyWith(status: FormzStatus.submissionInProgress));
+
+    final result = await _userAccountFacade.deleteProfilePicture(pictureUrl);
+
+    result.fold(
       _emitFailure,
       (success) => emit(state.copyWith(status: FormzStatus.submissionSuccess)),
     );

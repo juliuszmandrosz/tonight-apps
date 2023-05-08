@@ -9,8 +9,6 @@ abstract class UserAccountFacade {
 
   Future<Either<UserAccountFailure, UserAccount>> getUserById(String id);
 
-  String getProviderForUser();
-
   Future<Either<UserAccountFailure, Unit>> setUsernameForUser(String username);
 
   Future<Either<UserAccountFailure, Unit>> submitOnboardingForUser({
@@ -18,8 +16,13 @@ abstract class UserAccountFacade {
     required Uint8List? profilePicture,
   });
 
-  Future<Either<UserAccountFailure, Unit>> setProfilePictureForUser(
-    Uint8List profilePicture,
+  Future<Either<UserAccountFailure, Unit>> updateProfilePictureForUser({
+    required Uint8List newProfilePicture,
+    required String currentProfilePictureUrl,
+  });
+
+  Future<Either<UserAccountFailure, Unit>> deleteProfilePicture(
+    String pictureUrl,
   );
 
   Future<Either<UserAccountFailure, Unit>> savePushNotificationsToken(
