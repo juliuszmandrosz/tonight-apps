@@ -1,8 +1,7 @@
-import 'dart:typed_data';
-
 import 'package:account_settings/account_settings.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -10,7 +9,6 @@ import 'package:tonight/application/auth/form_inputs/username.dart';
 import 'package:translations/translations.dart';
 
 part 'onboarding_cubit.freezed.dart';
-
 part 'onboarding_state.dart';
 
 class OnboardingCubit extends Cubit<OnboardingState> {
@@ -30,7 +28,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
     failureOrSuccess.fold(
       _emitFailure,
-          (success) =>
+      (success) =>
           emit(state.copyWith(submissionStatus: FormzStatus.submissionSuccess)),
     );
   }
@@ -41,9 +39,13 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   }
 
   Future<void> pickProfilePhoto() async {
-    final result = await pickImage(S().addPhoto);
-    if (result == null) return;
-    _userPhotoChanged(result);
+    try {
+      final result = await pickImage(S().addPhoto);
+      if (result == null) return;
+      _userPhotoChanged(result);
+    } on PlatformException {
+      _showErrorMessage(S().allowAccessToFiles);
+    }
   }
 
   deletePhoto() {
@@ -77,6 +79,11 @@ class OnboardingCubit extends Cubit<OnboardingState> {
       ),
     );
 
+    emit(state.copyWith(errorMessage: none()));
+  }
+
+  _showErrorMessage(String message) {
+    emit(state.copyWith(errorMessage: some(message)));
     emit(state.copyWith(errorMessage: none()));
   }
 }

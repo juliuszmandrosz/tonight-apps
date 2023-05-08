@@ -1,8 +1,7 @@
-import 'dart:typed_data';
-
 import 'package:account_settings/account_settings.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -49,9 +48,13 @@ class UpdateProfilePictureCubit extends Cubit<UpdateProfilePictureState> {
   }
 
   Future<void> pickProfilePicture() async {
-    final result = await pickImage(S().addPhoto);
-    if (result == null) return;
-    _changeProfilePicture(result);
+    try {
+      final result = await pickImage(S().addPhoto);
+      if (result == null) return;
+      _changeProfilePicture(result);
+    } on PlatformException {
+      _showErrorMessage(S().allowAccessToFiles);
+    }
   }
 
   void _changeProfilePicture(Uint8List value) {

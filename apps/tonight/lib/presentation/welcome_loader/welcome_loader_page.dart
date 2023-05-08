@@ -62,6 +62,7 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
               context.loaderOverlay.hide(),
             },
             deleteAccountSuccess: (_) => {
+              context.showSnackbarMessage(S().accountDeletedSuccessfully),
               context.replaceRoute(const SignInRoute()),
               context.loaderOverlay.hide(),
             },
