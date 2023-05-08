@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tonight/application/update_profile_picture/update_profile_picture_cubit.dart';
+import 'package:tonight/presentation/update_profile_picture/widgets/update_profile_picture_bottom_sheet.dart';
 
 class UpdateProfilePictureContainer extends StatelessWidget {
   final String currentProfilePictureUrl;
@@ -54,10 +55,17 @@ class UpdateProfilePictureContainer extends StatelessWidget {
                 ),
                 child: IconButton(
                   icon: const Icon(Icons.edit),
-                  onPressed: () =>
-                      context
+                  onPressed: () async => currentProfilePictureUrl.isEmpty
+                      ? await context
                           .read<UpdateProfilePictureCubit>()
-                          .pickProfilePicture(),
+                          .pickProfilePicture()
+                      : await showModalBottomSheet(
+                          context: context,
+                          builder: (_) => UpdateProfilePictureBottomSheet(
+                            blocContext: context,
+                            currentProfilePictureUrl: currentProfilePictureUrl,
+                          ),
+                        ),
                   color: colors.onSecondaryContainer,
                 ),
               ),
@@ -78,9 +86,7 @@ class UpdateProfilePictureContainer extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           image: DecorationImage(
-            image: Image
-                .memory(updatedPicture.getOrCrash())
-                .image,
+            image: Image.memory(updatedPicture.getOrCrash()).image,
             fit: BoxFit.cover,
           ),
         ),
@@ -89,21 +95,19 @@ class UpdateProfilePictureContainer extends StatelessWidget {
 
     if (currentProfilePictureUrl.isNotEmpty) {
       return CachedNetworkImage(
-        placeholder: (context, url) =>
-            CircleAvatar(
-              radius: imageSize,
-              child: SpinKitThreeBounce(
-                color: context.onSurfaceColor,
-                size: 16,
-              ),
-            ),
+        placeholder: (context, url) => CircleAvatar(
+          radius: imageSize,
+          child: SpinKitThreeBounce(
+            color: context.onSurfaceColor,
+            size: 16,
+          ),
+        ),
         imageUrl: currentProfilePictureUrl,
         errorWidget: (context, url, error) => const Icon(Icons.error),
-        imageBuilder: (context, image) =>
-            CircleAvatar(
-              radius: imageSize,
-              backgroundImage: image,
-            ),
+        imageBuilder: (context, image) => CircleAvatar(
+          radius: imageSize,
+          backgroundImage: image,
+        ),
       );
     }
 
@@ -111,8 +115,8 @@ class UpdateProfilePictureContainer extends StatelessWidget {
       username.isEmpty
           ? ''
           : username.length == 1
-          ? username[0].toUpperCase()
-          : username.substring(0, 2).toUpperCase(),
+              ? username[0].toUpperCase()
+              : username.substring(0, 2).toUpperCase(),
       style: context.headlineMedium,
     );
   }
