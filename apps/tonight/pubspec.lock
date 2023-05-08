@@ -1149,10 +1149,10 @@ packages:
     dependency: "direct main"
     description:
       name: get_it
-      sha256: ca77bd0c23e609e09a70989726295a92978589745e129c27d354e61e4070f804
+      sha256: "43133b45f32f1d96bbaeb43ea35a50ce854981baa80f47c3e26ee2ad23bef113"
       url: "https://pub.dev"
     source: hosted
-    version: "7.4.1"
+    version: "7.5.0"
   glob:
     dependency: transitive
     description:
@@ -2160,7 +2160,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "2c16d858d5ff9a8b5e1866fe96f7499f25977687"
+      resolved-ref: "7019603776ee9540061d8a55ff2203fc54d36180"
       url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"

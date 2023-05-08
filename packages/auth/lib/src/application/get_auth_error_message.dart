@@ -23,7 +23,7 @@ String getAuthErrorMessage(AuthFailure authFailure) {
     deviceNotSupported: (_) => S().deviceNotSupported,
     invalidPhoneNumber: (_) => S().invalidPhoneNumber,
     smsTimeout: (_) => S().smsTimeout,
-    tooManyRequests: (_) => S().tooManyRequests,
+    tooManyRequests: (_) => S().tooManyRequestsForGivenPhoneNumber,
     phoneNumberInUse: (_) => S().phoneNumberInUse,
     sessionExpired: (_) => S().sessionExpired,
   );
