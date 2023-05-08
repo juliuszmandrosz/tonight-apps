@@ -61,7 +61,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
 
                     if (i == TonightNavigationDestination.add.index) {
                       i = _selectedIndex;
-                      await _handleAddPhotoNavigation(state);
+                      await _handleAddPhotoNavigation();
                     }
 
                     setState(() {
@@ -163,10 +163,8 @@ class _NavigatorPageState extends State<NavigatorPage> {
     }
   }
 
-  Future<void> _handleAddPhotoNavigation(AuthState state) async {
-    if (state.maybeWhen(
-        authenticated: (user) => user.isPhoneNumberVerified,
-        orElse: () => false)) {
+  Future<void> _handleAddPhotoNavigation() async {
+    if (context.read<AuthCubit>().checkIfPhoneNumberIsVerified()) {
       context.pushRoute(
         WallPhotoCameraPreviewRoute(event: dartz.none()),
       );

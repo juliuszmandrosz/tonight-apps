@@ -41,28 +41,22 @@ class ProfileUserPicture extends StatelessWidget {
               shape: BoxShape.circle,
               color: context.secondaryContainer,
             ),
-            child: BlocBuilder<AuthCubit, AuthState>(
-              builder: (context, state) {
-                return IconButton(
-                  icon: const Icon(Icons.edit),
-                  onPressed: () async {
-                    if (state.maybeWhen(
-                        authenticated: (user) => user.isPhoneNumberVerified,
-                        orElse: () => false)) {
-                      context.pushRoute(
-                        UpdateProfilePictureRoute(
-                          currentProfilePictureUrl: profilePictureUrl,
-                          username: username,
-                        ),
-                      );
-                      return;
-                    }
+            child: IconButton(
+              icon: const Icon(Icons.edit),
+              onPressed: () async {
+                if (context.read<AuthCubit>().checkIfPhoneNumberIsVerified()) {
+                  context.pushRoute(
+                    UpdateProfilePictureRoute(
+                      currentProfilePictureUrl: profilePictureUrl,
+                      username: username,
+                    ),
+                  );
+                  return;
+                }
 
-                    await showConfirmPhoneNumberDialog(context);
-                  },
-                  color: context.onSecondaryContainer,
-                );
+                await showConfirmPhoneNumberDialog(context);
               },
+              color: context.onSecondaryContainer,
             ),
           ),
         ),
