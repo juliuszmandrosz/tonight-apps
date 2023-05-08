@@ -10,6 +10,7 @@ import 'package:tonight/application/auth/form_inputs/username.dart';
 import 'package:translations/translations.dart';
 
 part 'onboarding_cubit.freezed.dart';
+
 part 'onboarding_state.dart';
 
 class OnboardingCubit extends Cubit<OnboardingState> {
@@ -29,7 +30,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
     failureOrSuccess.fold(
       _emitFailure,
-      (success) =>
+          (success) =>
           emit(state.copyWith(submissionStatus: FormzStatus.submissionSuccess)),
     );
   }
@@ -43,6 +44,10 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     final result = await pickImage(S().addPhoto);
     if (result == null) return;
     _userPhotoChanged(result);
+  }
+
+  deletePhoto() {
+    emit(state.copyWith(userPhoto: none()));
   }
 
   void _userPhotoChanged(Uint8List value) {
