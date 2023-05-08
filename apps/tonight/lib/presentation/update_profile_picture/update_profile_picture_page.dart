@@ -53,7 +53,9 @@ class UpdateProfilePicturePage extends StatelessWidget {
                       currentProfilePictureUrl: currentProfilePictureUrl,
                     ),
                     const Spacer(),
-                    const UpdateProfilePictureButton(),
+                    UpdateProfilePictureButton(
+                      currentProfilePictureUrl: currentProfilePictureUrl,
+                    ),
                   ],
                 ),
               ),

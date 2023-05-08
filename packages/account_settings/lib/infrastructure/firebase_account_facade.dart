@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:account_settings/domain/user/user_account_entity.dart';
 import 'package:account_settings/domain/user_account_facade.dart';
 import 'package:account_settings/domain/user_account_failure.dart';
-import 'package:auth/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
@@ -36,7 +35,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
 
   @override
   Stream<Either<UserAccountFailure, UserAccount>> getUserAccount() async* {
-    final userDocRef = _getUserDocRef();
+    final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
     yield* userDocRef
         .snapshots()
         .map((snapshot) => right<UserAccountFailure, UserAccount>(
@@ -59,12 +58,6 @@ class FirebaseAccountFacade implements UserAccountFacade {
   }
 
   @override
-  String getProviderForUser() {
-    final firestoreUser = _getFirestoreUser();
-    return firestoreUser.providerId;
-  }
-
-  @override
   Future<Either<UserAccountFailure, Unit>> submitOnboardingForUser({
     required String username,
     required Uint8List? profilePicture,
@@ -74,7 +67,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
         return left(const UserAccountFailure.usernameExists());
       }
       String? pictureUrl;
-      final userDocRef = _getUserDocRef();
+      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
       if (profilePicture != null) {
         pictureUrl = await _uploadProfilePicture(
           profilePicture: profilePicture,
@@ -108,7 +101,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
       if (await _checkIfUsernameExists(username)) {
         return left(const UserAccountFailure.usernameExists());
       }
-      final userDocRef = _getUserDocRef();
+      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
       await userDocRef.update({'username': username});
       return right(unit);
     } on FirebaseException catch (e) {
@@ -152,13 +145,15 @@ class FirebaseAccountFacade implements UserAccountFacade {
   }
 
   @override
-  Future<Either<UserAccountFailure, Unit>> setProfilePictureForUser(
-    Uint8List profilePicture,
-  ) async {
+  Future<Either<UserAccountFailure, Unit>> updateProfilePictureForUser({
+    required Uint8List newProfilePicture,
+    required String currentProfilePictureUrl,
+  }) async {
     try {
-      final userDocRef = _getUserDocRef();
+      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+      await _firebaseStorage.refFromURL(currentProfilePictureUrl).delete();
       final pictureUrl = await _uploadProfilePicture(
-        profilePicture: profilePicture,
+        profilePicture: newProfilePicture,
         userId: userDocRef.id,
       );
       await userDocRef.update({'profilePictureUrl': pictureUrl});
@@ -174,6 +169,22 @@ class FirebaseAccountFacade implements UserAccountFacade {
           permissionDeniedFailure: const UserAccountFailure.permissionDenied(),
         ),
       );
+    }
+  }
+
+  @override
+  Future<Either<UserAccountFailure, Unit>> deleteProfilePicture(
+    String pictureUrl,
+  ) async {
+    try {
+      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+      await userDocRef.update({'profilePictureUrl': null});
+      await _firebaseStorage.refFromURL(pictureUrl).delete();
+      return right(unit);
+    } on FirebaseException catch (e) {
+      _logger.e(e);
+      await _firebaseCrashlytics.recordError(e, StackTrace.current);
+      return left(const UserAccountFailure.unexpected());
     }
   }
 
@@ -228,17 +239,5 @@ class FirebaseAccountFacade implements UserAccountFacade {
     }
 
     return false;
-  }
-
-  DocumentReference _getUserDocRef() {
-    final firebaseUser = _firebaseAuth.currentUser;
-    if (firebaseUser == null) throw NotAuthenticatedError();
-    return _firestore.userCollection.doc(firebaseUser.uid);
-  }
-
-  AppUser _getFirestoreUser() {
-    final firebaseUser = _firebaseAuth.currentUser;
-    if (firebaseUser == null) throw NotAuthenticatedError();
-    return firebaseUser.toDomain();
   }
 }
