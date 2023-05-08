@@ -3,6 +3,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/onboarding/onboarding_cubit.dart';
+import 'package:tonight/presentation/onboarding/widgets/onboarding_user_details_bottom_sheet.dart';
 import 'package:tonight/presentation/utils/show_confirm_phone_number_dialog.dart';
 
 class OnboardingProfilePicture extends StatelessWidget {
@@ -11,9 +12,9 @@ class OnboardingProfilePicture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<OnboardingCubit, OnboardingState>(
-      builder: (context, state) {
-        final photo = state.userPhoto;
-        final username = state.username.value;
+      builder: (context, onboardingState) {
+        final photo = onboardingState.userPhoto;
+        final username = onboardingState.username.value;
         return LayoutBuilder(builder: (context, constraints) {
           final maxWidth = constraints.maxWidth;
           const imageSize = 150.0;
@@ -61,15 +62,28 @@ class OnboardingProfilePicture extends StatelessWidget {
                     color: colors.secondaryContainer,
                   ),
                   child: BlocBuilder<AuthCubit, AuthState>(
-                    builder: (context, state) {
+                    builder: (context, authState) {
                       return IconButton(
                         icon: const Icon(Icons.edit),
                         onPressed: () async {
-                          if (state.maybeWhen(
+                          if (authState.maybeWhen(
                               authenticated: (user) =>
                                   user.isPhoneNumberVerified,
                               orElse: () => false)) {
-                            context.read<OnboardingCubit>().pickProfilePhoto();
+                            photo.fold(
+                              context.read<OnboardingCubit>().pickProfilePhoto,
+                              (p) async {
+                                context.unfocus();
+                                await showModalBottomSheet(
+                                  context: context,
+                                  builder: (_) =>
+                                      OnboardingUserDetailsBottomSheet(
+                                    blocContext: context,
+                                  ),
+                                );
+                              },
+                            );
+
                             return;
                           }
                           await showConfirmPhoneNumberDialog(context);
