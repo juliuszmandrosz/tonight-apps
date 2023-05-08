@@ -124,6 +124,10 @@ class SignInCubit extends Cubit<SignInState> {
   }
 
   _emitFailure(AuthFailure failure) {
+    if (failure == const AuthFailure.canceledByUser()) {
+      emit(state.copyWith(signInStatus: FormzStatus.submissionFailure));
+      return;
+    }
     emit(
       state.copyWith(
         errorMessage: some(getAuthErrorMessage(failure)),
