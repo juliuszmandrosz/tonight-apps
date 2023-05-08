@@ -34,8 +34,11 @@ class EventFiltersPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) =>
-              getIt<EventFiltersCubit>()..initFilters(selectedFilters),
+          create: (_) => getIt<EventFiltersCubit>()
+            ..initFilters(
+              filters: selectedFilters,
+              pageType: eventFiltersPageType,
+            ),
         ),
         if (eventFiltersPageType == EventFiltersPageType.tonight)
           BlocProvider.value(
