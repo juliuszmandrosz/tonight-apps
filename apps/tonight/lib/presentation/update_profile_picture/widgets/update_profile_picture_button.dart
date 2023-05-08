@@ -6,7 +6,10 @@ import 'package:tonight/application/update_profile_picture/update_profile_pictur
 import 'package:translations/generated/l10n.dart';
 
 class UpdateProfilePictureButton extends StatelessWidget {
-  const UpdateProfilePictureButton({Key? key}) : super(key: key);
+  final String currentProfilePictureUrl;
+
+  const UpdateProfilePictureButton(
+      {required this.currentProfilePictureUrl, Key? key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +18,15 @@ class UpdateProfilePictureButton extends StatelessWidget {
         return state.status.isSubmissionInProgress
             ? const CircleLoadingIndicator()
             : SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  child: Text(S().submit),
-                  onPressed: () => context
-                      .read<UpdateProfilePictureCubit>()
-                      .updateProfilePicture(),
-                ),
-              );
+          width: double.infinity,
+          child: ElevatedButton(
+            child: Text(S().submit),
+            onPressed: () =>
+                context
+                    .read<UpdateProfilePictureCubit>()
+                    .updateProfilePicture(currentProfilePictureUrl),
+          ),
+        );
       },
     );
   }
