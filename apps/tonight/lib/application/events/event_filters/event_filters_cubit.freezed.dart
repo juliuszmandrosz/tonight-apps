@@ -21,6 +21,7 @@ mixin _$EventFiltersState {
   Map<MenuEventFilter, IFilter> get appliedFilters =>
       throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
+  EventFiltersPageType get pageType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventFiltersStateCopyWith<EventFiltersState> get copyWith =>
@@ -37,7 +38,8 @@ abstract class $EventFiltersStateCopyWith<$Res> {
       {EventFilters filters,
       Option<String> snackbarMessage,
       Map<MenuEventFilter, IFilter> appliedFilters,
-      bool isSubmitting});
+      bool isSubmitting,
+      EventFiltersPageType pageType});
 
   $EventFiltersCopyWith<$Res> get filters;
 }
@@ -59,6 +61,7 @@ class _$EventFiltersStateCopyWithImpl<$Res, $Val extends EventFiltersState>
     Object? snackbarMessage = null,
     Object? appliedFilters = null,
     Object? isSubmitting = null,
+    Object? pageType = null,
   }) {
     return _then(_value.copyWith(
       filters: null == filters
@@ -77,6 +80,10 @@ class _$EventFiltersStateCopyWithImpl<$Res, $Val extends EventFiltersState>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      pageType: null == pageType
+          ? _value.pageType
+          : pageType // ignore: cast_nullable_to_non_nullable
+              as EventFiltersPageType,
     ) as $Val);
   }
 
@@ -101,7 +108,8 @@ abstract class _$$_EventFiltersStateCopyWith<$Res>
       {EventFilters filters,
       Option<String> snackbarMessage,
       Map<MenuEventFilter, IFilter> appliedFilters,
-      bool isSubmitting});
+      bool isSubmitting,
+      EventFiltersPageType pageType});
 
   @override
   $EventFiltersCopyWith<$Res> get filters;
@@ -122,6 +130,7 @@ class __$$_EventFiltersStateCopyWithImpl<$Res>
     Object? snackbarMessage = null,
     Object? appliedFilters = null,
     Object? isSubmitting = null,
+    Object? pageType = null,
   }) {
     return _then(_$_EventFiltersState(
       filters: null == filters
@@ -140,6 +149,10 @@ class __$$_EventFiltersStateCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      pageType: null == pageType
+          ? _value.pageType
+          : pageType // ignore: cast_nullable_to_non_nullable
+              as EventFiltersPageType,
     ));
   }
 }
@@ -151,7 +164,8 @@ class _$_EventFiltersState extends _EventFiltersState {
       {required this.filters,
       required this.snackbarMessage,
       required final Map<MenuEventFilter, IFilter> appliedFilters,
-      required this.isSubmitting})
+      required this.isSubmitting,
+      required this.pageType})
       : _appliedFilters = appliedFilters,
         super._();
 
@@ -169,10 +183,12 @@ class _$_EventFiltersState extends _EventFiltersState {
 
   @override
   final bool isSubmitting;
+  @override
+  final EventFiltersPageType pageType;
 
   @override
   String toString() {
-    return 'EventFiltersState(filters: $filters, snackbarMessage: $snackbarMessage, appliedFilters: $appliedFilters, isSubmitting: $isSubmitting)';
+    return 'EventFiltersState(filters: $filters, snackbarMessage: $snackbarMessage, appliedFilters: $appliedFilters, isSubmitting: $isSubmitting, pageType: $pageType)';
   }
 
   @override
@@ -186,12 +202,19 @@ class _$_EventFiltersState extends _EventFiltersState {
             const DeepCollectionEquality()
                 .equals(other._appliedFilters, _appliedFilters) &&
             (identical(other.isSubmitting, isSubmitting) ||
-                other.isSubmitting == isSubmitting));
+                other.isSubmitting == isSubmitting) &&
+            (identical(other.pageType, pageType) ||
+                other.pageType == pageType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, filters, snackbarMessage,
-      const DeepCollectionEquality().hash(_appliedFilters), isSubmitting);
+  int get hashCode => Object.hash(
+      runtimeType,
+      filters,
+      snackbarMessage,
+      const DeepCollectionEquality().hash(_appliedFilters),
+      isSubmitting,
+      pageType);
 
   @JsonKey(ignore: true)
   @override
@@ -206,7 +229,8 @@ abstract class _EventFiltersState extends EventFiltersState {
       {required final EventFilters filters,
       required final Option<String> snackbarMessage,
       required final Map<MenuEventFilter, IFilter> appliedFilters,
-      required final bool isSubmitting}) = _$_EventFiltersState;
+      required final bool isSubmitting,
+      required final EventFiltersPageType pageType}) = _$_EventFiltersState;
   _EventFiltersState._() : super._();
 
   @override
@@ -217,6 +241,8 @@ abstract class _EventFiltersState extends EventFiltersState {
   Map<MenuEventFilter, IFilter> get appliedFilters;
   @override
   bool get isSubmitting;
+  @override
+  EventFiltersPageType get pageType;
   @override
   @JsonKey(ignore: true)
   _$$_EventFiltersStateCopyWith<_$_EventFiltersState> get copyWith =>

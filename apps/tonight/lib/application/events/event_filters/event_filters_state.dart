@@ -9,6 +9,7 @@ class EventFiltersState with _$EventFiltersState {
     required Option<String> snackbarMessage,
     required Map<MenuEventFilter, IFilter> appliedFilters,
     required bool isSubmitting,
+    required EventFiltersPageType pageType,
   }) = _EventFiltersState;
 
   factory EventFiltersState.initial() => EventFiltersState(
@@ -16,5 +17,6 @@ class EventFiltersState with _$EventFiltersState {
         snackbarMessage: none(),
         appliedFilters: {},
         isSubmitting: false,
+        pageType: EventFiltersPageType.tonight,
       );
 }
