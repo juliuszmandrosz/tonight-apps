@@ -21,30 +21,26 @@ class EventRoomFab extends StatelessWidget {
         final event = dartz.some(eventRoomState.event.getOrCrash());
         return eventRoomState.selectedTab != EventRoomTab.photos
             ? const SizedBox.shrink()
-            : BlocBuilder<AuthCubit, AuthState>(
-                builder: (context, authState) {
-                  return FloatingActionButton(
-                    onPressed: () async {
-                      if (authState.maybeWhen(
-                          authenticated: (user) => user.isPhoneNumberVerified,
-                          orElse: () => false)) {
-                        final eventStartDateTime =
-                            event.getOrCrash().eventStartDateTime;
-                        if (eventStartDateTime.isAfter(DateTime.now())) {
-                          context.showSnackbarMessage(S().eventNotStartedYet);
-                          return;
-                        }
-                        context.pushRoute(
-                          WallPhotoCameraPreviewRoute(event: event),
-                        );
-                        return;
-                      }
+            : FloatingActionButton(
+                onPressed: () async {
+                  if (context
+                      .read<AuthCubit>()
+                      .checkIfPhoneNumberIsVerified()) {
+                    final eventStartDateTime =
+                        event.getOrCrash().eventStartDateTime;
+                    if (eventStartDateTime.isAfter(DateTime.now())) {
+                      context.showSnackbarMessage(S().eventNotStartedYet);
+                      return;
+                    }
+                    context.pushRoute(
+                      WallPhotoCameraPreviewRoute(event: event),
+                    );
+                    return;
+                  }
 
-                      await showConfirmPhoneNumberDialog(context);
-                    },
-                    child: const FaIcon(FontAwesomeIcons.camera),
-                  );
+                  await showConfirmPhoneNumberDialog(context);
                 },
+                child: const FaIcon(FontAwesomeIcons.camera),
               );
       },
     );

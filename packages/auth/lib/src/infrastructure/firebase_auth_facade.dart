@@ -504,6 +504,11 @@ class FirebaseAuthFacade
   }
 
   @override
+  bool checkIfPhoneNumberIsVerified() {
+    return _firebaseAuth.tryGetFirebaseUser().phoneNumber.isNotNullOrEmpty;
+  }
+
+  @override
   Future<void> signOut() {
     return Future.wait([
       _googleSignIn.signOut(),

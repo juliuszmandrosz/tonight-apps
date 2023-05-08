@@ -61,36 +61,30 @@ class OnboardingProfilePicture extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: colors.secondaryContainer,
                   ),
-                  child: BlocBuilder<AuthCubit, AuthState>(
-                    builder: (context, authState) {
-                      return IconButton(
-                        icon: const Icon(Icons.edit),
-                        onPressed: () async {
-                          if (authState.maybeWhen(
-                              authenticated: (user) =>
-                                  user.isPhoneNumberVerified,
-                              orElse: () => false)) {
-                            photo.fold(
-                              context.read<OnboardingCubit>().pickProfilePhoto,
-                              (p) async {
-                                context.unfocus();
-                                await showModalBottomSheet(
-                                  context: context,
-                                  builder: (_) =>
-                                      OnboardingUserDetailsBottomSheet(
-                                    blocContext: context,
-                                  ),
-                                );
-                              },
+                  child: IconButton(
+                    icon: const Icon(Icons.edit),
+                    onPressed: () async {
+                      if (context
+                          .read<AuthCubit>()
+                          .checkIfPhoneNumberIsVerified()) {
+                        photo.fold(
+                          context.read<OnboardingCubit>().pickProfilePhoto,
+                          (p) async {
+                            context.unfocus();
+                            await showModalBottomSheet(
+                              context: context,
+                              builder: (_) => OnboardingUserDetailsBottomSheet(
+                                blocContext: context,
+                              ),
                             );
+                          },
+                        );
 
-                            return;
-                          }
-                          await showConfirmPhoneNumberDialog(context);
-                        },
-                        color: colors.onSecondaryContainer,
-                      );
+                        return;
+                      }
+                      await showConfirmPhoneNumberDialog(context);
                     },
+                    color: colors.onSecondaryContainer,
                   ),
                 ),
               ),
