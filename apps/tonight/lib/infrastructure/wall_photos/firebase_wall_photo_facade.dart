@@ -82,9 +82,15 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   }
 
   @override
-  Future<Either<WallPhotoFailure, Unit>> deleteWallPhoto(String photoId) async {
+  Future<Either<WallPhotoFailure, Unit>> deleteWallPhoto({
+    required String photoId,
+    required String photoUrl,
+  }) async {
     try {
       await _firestore.wallPhotos.doc(photoId).delete();
+      if (photoUrl.isNotEmpty) {
+        await _storage.refFromURL(photoUrl).delete();
+      }
       return right(unit);
     } on FirebaseException catch (e) {
       _logger.e(e);
@@ -100,7 +106,9 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   }) async {
     try {
       final photoId = const Uuid().v1();
-      final storageRef = _storage.ref('events/$eventId/wall_photos/$photoId');
+      final userId = _auth.tryGetFirebaseUser().uid;
+      final storageRef =
+          _storage.ref('events/$eventId/participants/$userId/photos/$photoId');
       final metadata = SettableMetadata(contentType: 'image/jpeg');
       final uploadTask = await storageRef.putData(photo, metadata);
       final result = await uploadTask.ref.getDownloadURL();
