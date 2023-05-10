@@ -59,6 +59,10 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
       await _initPushNotifications(context);
     }
 
+    if (context.mounted) {
+      await _initDynamicLinks(context);
+    }
+
     emit(state.copyWith(status: CubitStatus.success));
 
     _profileBloc.add(const ProfileEvent.profileLoaded());
@@ -70,10 +74,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     unawaited(_eventFavoriteCubit.getFavoriteEvents());
 
     unawaited(_initStripe());
-
-    if (context.mounted) {
-      unawaited(_initDynamicLinks(context));
-    }
   }
 
   Future<void> _initPushNotifications(BuildContext context) async {
