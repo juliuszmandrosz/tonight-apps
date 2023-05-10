@@ -16,7 +16,6 @@ import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
 
 part 'welcome_loading_cubit.freezed.dart';
-
 part 'welcome_loading_state.dart';
 
 class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
@@ -38,8 +37,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     required FirebaseMessaging firebaseMessaging,
     required ProfileBloc profileBloc,
     required Stripe stripe,
-  })
-      : _pushNotificationsCubit = pushNotificationsCubit,
+  })  : _pushNotificationsCubit = pushNotificationsCubit,
         _userLocationCubit = userLocationCubit,
         _eventFavoriteCubit = eventFavoriteCubit,
         _clubFavoriteCubit = clubFavoriteCubit,
@@ -57,6 +55,10 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
     await _userLocationCubit.requestUserLocationOnStart();
 
+    if (context.mounted) {
+      await _initPushNotifications(context);
+    }
+
     emit(state.copyWith(status: CubitStatus.success));
 
     _profileBloc.add(const ProfileEvent.profileLoaded());
@@ -71,10 +73,6 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
     if (context.mounted) {
       unawaited(_initDynamicLinks(context));
-    }
-
-    if (context.mounted) {
-      unawaited(_initPushNotifications(context));
     }
   }
 
@@ -94,7 +92,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
       await _pushNotificationsCubit.initialize(context);
 
       await FirebaseMessaging.instance.getInitialMessage().then(
-            (message) async {
+        (message) async {
           final lastMessageId =
               _pushNotificationsCubit.state.lastHandledMessageId;
           if (message?.data != null && lastMessageId != message!.messageId) {
@@ -106,7 +104,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
       );
 
       FirebaseMessaging.onMessage.listen(
-            (message) async {
+        (message) async {
           final lastMessageId =
               _pushNotificationsCubit.state.lastHandledMessageId;
           if (message.notification != null &&
@@ -117,7 +115,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
       );
 
       FirebaseMessaging.onMessageOpenedApp.listen(
-            (message) async {
+        (message) async {
           final lastMessageId =
               _pushNotificationsCubit.state.lastHandledMessageId;
           if (lastMessageId != message.messageId) {
@@ -138,7 +136,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     }
 
     FirebaseDynamicLinks.instance.onLink.listen(
-          (data) async {
+      (data) async {
         await handleDeepLink(context, data.link.queryParameters);
       },
     );
