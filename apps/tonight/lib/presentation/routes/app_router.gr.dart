@@ -516,7 +516,7 @@ class AppRouter extends _i41.RootStackRouter {
       );
     },
     VerifyPhoneNumberRoute.name: (routeData) {
-      return _i41.CustomPage<dynamic>(
+      return _i41.CustomPage<bool>(
         routeData: routeData,
         child: const _i34.VerifyPhoneNumberPage(),
         transitionsBuilder: _i44.slideLeftTransition,
