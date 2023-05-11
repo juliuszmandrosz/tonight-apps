@@ -23,7 +23,7 @@ class EventDetailsClubName extends StatelessWidget {
       contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
       title: Align(
         alignment: Alignment.centerLeft,
-        child: TonightHeadline(text: S().clubName, isSmallerVersion: true),
+        child: TonightHeadline(text: S().place, isSmallerVersion: true),
       ),
       subtitle: Padding(
         padding: const EdgeInsets.only(top: 15),

@@ -22,7 +22,7 @@ class UserWallPhotoRateButton extends StatelessWidget {
         FontAwesomeIcons.solidStar,
         size: 20,
       ),
-      label: Text(S().rateEvent),
+      label: Text(S().rate),
     );
   }
 }

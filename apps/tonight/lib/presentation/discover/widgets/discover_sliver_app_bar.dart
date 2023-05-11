@@ -81,7 +81,7 @@ class _DiscoverSliverAppBarState extends State<DiscoverSliverAppBar> {
               ),
               Tab(
                 child: AutoSizeText(
-                  S().clubs(2),
+                  S().spots,
                   textAlign: TextAlign.center,
                   maxLines: 1,
                 ),

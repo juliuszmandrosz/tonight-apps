@@ -166,7 +166,10 @@ class _NavigatorPageState extends State<NavigatorPage> {
   Future<void> _handleAddPhotoNavigation() async {
     if (context.read<AuthCubit>().checkIfPhoneNumberIsVerified()) {
       context.pushRoute(
-        WallPhotoCameraPreviewRoute(event: dartz.none()),
+        WallPhotoCameraPreviewRoute(
+          event: dartz.none(),
+          timeTask: dartz.none(),
+        ),
       );
       return;
     }

@@ -36,7 +36,7 @@ class AddWallPhotoClubTile extends StatelessWidget {
               ),
               title: Text(
                 state.selectedVenue.fold(
-                  () => S().clubName,
+                  () => S().place,
                   (venue) => venue.venueName,
                 ),
                 style: context.titleSmall.copyWith(

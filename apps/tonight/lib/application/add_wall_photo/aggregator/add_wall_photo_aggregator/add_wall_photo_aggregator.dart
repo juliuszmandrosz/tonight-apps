@@ -30,7 +30,7 @@ class AddWallPhotoAggregator {
   ) async {
     final result = await _clubFacade.fetchNearestClubsInRange(
       userLocation: userLocation,
-      radius: 1,
+      radius: 2,
     );
     return result.fold(
       (_) => left(const AddWallPhotoFailure.unexpected()),
@@ -50,11 +50,12 @@ class AddWallPhotoAggregator {
     );
   }
 
-  Future<Either<AddWallPhotoFailure, Unit>> addPhoto({
+  Future<Either<AddWallPhotoFailure, WallPhoto>> addPhoto({
     required Uint8List photo,
     required WallPhotoVenue venue,
     required Event event,
     required LatLng? photoLocation,
+    required String? timeTaskId,
   }) async {
     final userResult = await _userAccountFacade.getUserAccount().first;
     if (userResult.isLeft()) {
@@ -81,11 +82,12 @@ class AddWallPhotoAggregator {
       userId: currentUser.id,
       username: currentUser.username,
       userProfilePhotoUrl: currentUser.profilePictureUrl,
+      timeTaskId: timeTaskId,
     );
     final addPhotoResult = await _wallPhotoFacade.addWallPhoto(wallPhoto);
     if (addPhotoResult.isLeft()) {
       return left(const AddWallPhotoFailure.unexpected());
     }
-    return right(unit);
+    return right(wallPhoto);
   }
 }

@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:uuid/uuid.dart';
 
+// TODO - change name to party
 class Event extends Equatable {
   final String id;
   final String clubId;

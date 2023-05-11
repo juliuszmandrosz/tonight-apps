@@ -17,11 +17,11 @@ import 'package:translations/translations.dart';
 
 class UserWallPhotoPreviewPage extends StatelessWidget {
   final WallPhoto photo;
-  final String heroTag;
+  final String? heroTag;
 
   const UserWallPhotoPreviewPage({
     required this.photo,
-    required this.heroTag,
+    this.heroTag,
     Key? key,
   }) : super(key: key);
 
@@ -69,13 +69,18 @@ class UserWallPhotoPreviewPage extends StatelessWidget {
                       final photoHeight = constraints.maxWidth * 1.25;
                       return Column(
                         children: [
-                          Hero(
-                            tag: heroTag,
-                            child: NetworkPhoto(
-                              photoUrl: photo.photoUrl,
-                              photoHeight: photoHeight,
-                            ),
-                          ),
+                          heroTag.isNotNullOrEmpty
+                              ? Hero(
+                                  tag: heroTag!,
+                                  child: NetworkPhoto(
+                                    photoUrl: photo.photoUrl,
+                                    photoHeight: photoHeight,
+                                  ),
+                                )
+                              : NetworkPhoto(
+                                  photoUrl: photo.photoUrl,
+                                  photoHeight: photoHeight,
+                                ),
                           const SizedBox(height: 20),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
