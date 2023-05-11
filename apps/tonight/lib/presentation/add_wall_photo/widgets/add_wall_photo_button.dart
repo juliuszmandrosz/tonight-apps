@@ -28,9 +28,21 @@ class AddWallPhotoButton extends StatelessWidget {
             ? context.loaderOverlay.show()
             : context.loaderOverlay.hide();
 
-        if (state.addPhotoStatus.isSuccess()) {
+        if (state.addPhotoStatus.isSuccess() && state.result.isSome()) {
+          final photo = state.result.getOrCrash();
           // TODO - notify event room about new photo
           context.showSnackbarMessage(S().photoAddedSuccessfully);
+          if (state.timeTask.isSome()) {
+            await context.router.replaceAll(
+              [
+                const WelcomeLoaderRoute(),
+                UserWallPhotoPreviewRoute(photo: photo),
+                QrRewardRoute(photo: photo),
+              ],
+            );
+            return;
+          }
+
           event.fold(
               () async => await context.router.replaceAll(
                     [const WelcomeLoaderRoute()],
@@ -40,7 +52,7 @@ class AddWallPhotoButton extends StatelessWidget {
         }
       },
       child: FloatingActionButton.extended(
-        onPressed: () => context.read<AddWallPhotoCubit>().addPhoto(),
+        onPressed: () => context.read<AddWallPhotoCubit>().addPhoto(context),
         icon: const FaIcon(FontAwesomeIcons.solidPaperPlane),
         label: Text(S().publish),
       ),

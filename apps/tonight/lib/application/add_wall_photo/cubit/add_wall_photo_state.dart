@@ -15,6 +15,8 @@ class AddWallPhotoState with _$AddWallPhotoState {
     required Option<WallPhotoVenue> selectedVenue,
     required Option<Event> selectedEvent,
     required Option<Event> initialEvent,
+    required Option<TimeTask> timeTask,
+    required Option<WallPhoto> result,
   }) = _AddWallPhotoState;
 
   factory AddWallPhotoState.initial() => AddWallPhotoState(
@@ -30,5 +32,7 @@ class AddWallPhotoState with _$AddWallPhotoState {
         selectedVenue: none(),
         selectedEvent: none(),
         initialEvent: none(),
+        timeTask: none(),
+        result: none(),
       );
 }

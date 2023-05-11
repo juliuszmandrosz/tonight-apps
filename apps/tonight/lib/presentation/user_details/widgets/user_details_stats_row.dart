@@ -26,7 +26,7 @@ class UserDetailsStatsRow extends StatelessWidget {
           ),
           const VerticalDivider(width: 1),
           UserDetailTile(
-            label: 'Kluby',
+            label: S().spots,
             value: user.favoriteClubs.length,
             icon: FontAwesomeIcons.solidHeart,
             onTap: null,
