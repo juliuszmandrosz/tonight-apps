@@ -24,9 +24,12 @@ class EventDetailsCubit extends Cubit<EventDetailsState> {
 
     failureOrSuccess.fold(
       (failure) => emit(state.copyWith(status: CubitStatus.failure)),
-      (event) {
-        emit(state.copyWith(event: some(event)));
-      },
+      (event) => emit(
+        state.copyWith(
+          event: some(event),
+          status: CubitStatus.success,
+        ),
+      ),
     );
   }
 
