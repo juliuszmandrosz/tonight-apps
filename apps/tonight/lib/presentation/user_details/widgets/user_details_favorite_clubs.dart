@@ -31,7 +31,7 @@ class UserDetailsFavoriteClubs extends StatelessWidget {
             ? Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  S().userHasNoFavoriteClubs,
+                  S().userHasNoFavoriteSpots,
                   style: context.bodyMedium.copyWith(
                     color: context.secondaryColor,
                   ),
