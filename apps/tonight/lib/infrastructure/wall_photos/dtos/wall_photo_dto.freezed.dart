@@ -36,6 +36,7 @@ mixin _$WallPhotoDto {
   @TimestampJsonConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
   String? get userProfilePhotoUrl => throw _privateConstructorUsedError;
+  String? get timeTaskId => throw _privateConstructorUsedError;
   @NullableLatLngConverter()
   LatLng? get photoLocation => throw _privateConstructorUsedError;
   bool get isVerified => throw _privateConstructorUsedError;
@@ -65,6 +66,7 @@ abstract class $WallPhotoDtoCopyWith<$Res> {
       @TimestampJsonConverter() DateTime eventEndDateTime,
       @TimestampJsonConverter() DateTime createdAt,
       String? userProfilePhotoUrl,
+      String? timeTaskId,
       @NullableLatLngConverter() LatLng? photoLocation,
       bool isVerified});
 }
@@ -94,6 +96,7 @@ class _$WallPhotoDtoCopyWithImpl<$Res, $Val extends WallPhotoDto>
     Object? eventEndDateTime = null,
     Object? createdAt = null,
     Object? userProfilePhotoUrl = freezed,
+    Object? timeTaskId = freezed,
     Object? photoLocation = freezed,
     Object? isVerified = null,
   }) {
@@ -146,6 +149,10 @@ class _$WallPhotoDtoCopyWithImpl<$Res, $Val extends WallPhotoDto>
           ? _value.userProfilePhotoUrl
           : userProfilePhotoUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      timeTaskId: freezed == timeTaskId
+          ? _value.timeTaskId
+          : timeTaskId // ignore: cast_nullable_to_non_nullable
+              as String?,
       photoLocation: freezed == photoLocation
           ? _value.photoLocation
           : photoLocation // ignore: cast_nullable_to_non_nullable
@@ -179,6 +186,7 @@ abstract class _$$_WallPhotoDtoCopyWith<$Res>
       @TimestampJsonConverter() DateTime eventEndDateTime,
       @TimestampJsonConverter() DateTime createdAt,
       String? userProfilePhotoUrl,
+      String? timeTaskId,
       @NullableLatLngConverter() LatLng? photoLocation,
       bool isVerified});
 }
@@ -206,6 +214,7 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
     Object? eventEndDateTime = null,
     Object? createdAt = null,
     Object? userProfilePhotoUrl = freezed,
+    Object? timeTaskId = freezed,
     Object? photoLocation = freezed,
     Object? isVerified = null,
   }) {
@@ -258,6 +267,10 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
           ? _value.userProfilePhotoUrl
           : userProfilePhotoUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      timeTaskId: freezed == timeTaskId
+          ? _value.timeTaskId
+          : timeTaskId // ignore: cast_nullable_to_non_nullable
+              as String?,
       photoLocation: freezed == photoLocation
           ? _value.photoLocation
           : photoLocation // ignore: cast_nullable_to_non_nullable
@@ -287,6 +300,7 @@ class _$_WallPhotoDto extends _WallPhotoDto {
       @TimestampJsonConverter() required this.eventEndDateTime,
       @TimestampJsonConverter() required this.createdAt,
       this.userProfilePhotoUrl,
+      this.timeTaskId,
       @NullableLatLngConverter() this.photoLocation,
       this.isVerified = false})
       : super._();
@@ -323,6 +337,8 @@ class _$_WallPhotoDto extends _WallPhotoDto {
   @override
   final String? userProfilePhotoUrl;
   @override
+  final String? timeTaskId;
+  @override
   @NullableLatLngConverter()
   final LatLng? photoLocation;
   @override
@@ -331,7 +347,7 @@ class _$_WallPhotoDto extends _WallPhotoDto {
 
   @override
   String toString() {
-    return 'WallPhotoDto(id: $id, photoUrl: $photoUrl, venueId: $venueId, venueName: $venueName, venueLocation: $venueLocation, userId: $userId, username: $username, eventId: $eventId, eventName: $eventName, eventEndDateTime: $eventEndDateTime, createdAt: $createdAt, userProfilePhotoUrl: $userProfilePhotoUrl, photoLocation: $photoLocation, isVerified: $isVerified)';
+    return 'WallPhotoDto(id: $id, photoUrl: $photoUrl, venueId: $venueId, venueName: $venueName, venueLocation: $venueLocation, userId: $userId, username: $username, eventId: $eventId, eventName: $eventName, eventEndDateTime: $eventEndDateTime, createdAt: $createdAt, userProfilePhotoUrl: $userProfilePhotoUrl, timeTaskId: $timeTaskId, photoLocation: $photoLocation, isVerified: $isVerified)';
   }
 
   @override
@@ -359,6 +375,8 @@ class _$_WallPhotoDto extends _WallPhotoDto {
                 other.createdAt == createdAt) &&
             (identical(other.userProfilePhotoUrl, userProfilePhotoUrl) ||
                 other.userProfilePhotoUrl == userProfilePhotoUrl) &&
+            (identical(other.timeTaskId, timeTaskId) ||
+                other.timeTaskId == timeTaskId) &&
             (identical(other.photoLocation, photoLocation) ||
                 other.photoLocation == photoLocation) &&
             (identical(other.isVerified, isVerified) ||
@@ -381,6 +399,7 @@ class _$_WallPhotoDto extends _WallPhotoDto {
       eventEndDateTime,
       createdAt,
       userProfilePhotoUrl,
+      timeTaskId,
       photoLocation,
       isVerified);
 
@@ -412,6 +431,7 @@ abstract class _WallPhotoDto extends WallPhotoDto {
       @TimestampJsonConverter() required final DateTime eventEndDateTime,
       @TimestampJsonConverter() required final DateTime createdAt,
       final String? userProfilePhotoUrl,
+      final String? timeTaskId,
       @NullableLatLngConverter() final LatLng? photoLocation,
       final bool isVerified}) = _$_WallPhotoDto;
   const _WallPhotoDto._() : super._();
@@ -447,6 +467,8 @@ abstract class _WallPhotoDto extends WallPhotoDto {
   DateTime get createdAt;
   @override
   String? get userProfilePhotoUrl;
+  @override
+  String? get timeTaskId;
   @override
   @NullableLatLngConverter()
   LatLng? get photoLocation;

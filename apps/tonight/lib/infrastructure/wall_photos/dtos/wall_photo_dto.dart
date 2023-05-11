@@ -25,6 +25,7 @@ class WallPhotoDto with _$WallPhotoDto {
     @TimestampJsonConverter() required DateTime eventEndDateTime,
     @TimestampJsonConverter() required DateTime createdAt,
     String? userProfilePhotoUrl,
+    String? timeTaskId,
     @NullableLatLngConverter() LatLng? photoLocation,
     @Default(false) bool isVerified,
   }) = _WallPhotoDto;
@@ -44,6 +45,7 @@ class WallPhotoDto with _$WallPhotoDto {
       isVerified: wallPhoto.isVerified,
       photoLocation: wallPhoto.photoLocation,
       eventId: wallPhoto.eventId,
+      timeTaskId: wallPhoto.timeTaskId,
       eventName: wallPhoto.eventName,
     );
   }
@@ -79,6 +81,7 @@ class WallPhotoDto with _$WallPhotoDto {
       userProfilePhotoUrl: userProfilePhotoUrl,
       isVerified: isVerified,
       photoLocation: photoLocation,
+      timeTaskId: timeTaskId,
     );
   }
 }

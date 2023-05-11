@@ -4,12 +4,15 @@ import 'dart:typed_data';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:events/domain/events/event_entity.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_aggregator/add_wall_photo_aggregator.dart';
 import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_aggregator/add_wall_photo_failure.dart';
 import 'package:tonight/application/add_wall_photo/models/wall_photo_venue_model.dart';
+import 'package:tonight/application/core/deep_links_utils.dart';
+import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:translations/translations.dart';
 
 part 'add_wall_photo_cubit.freezed.dart';
@@ -25,6 +28,7 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     required String photoPath,
     required bool isSelfie,
     required Option<Event> event,
+    required Option<TimeTask> timeTask,
   }) {
     emit(
       state.copyWith(
@@ -36,11 +40,12 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
           () => none(),
           (v) => some(WallPhotoVenue.fromEvent(v)),
         ),
+        timeTask: timeTask,
       ),
     );
   }
 
-  Future<void> fetchNearestClubs(Future<LatLng> userLocation) async {
+  Future<void> fetchNearestVenues(Future<LatLng> userLocation) async {
     emit(state.copyWith(fetchNearestClubStatus: CubitStatus.loading));
     final location = await Future.value(userLocation);
     emit(state.copyWith(userLocation: some(location)));
@@ -94,7 +99,19 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     );
   }
 
-  Future<void> addPhoto() async {
+  Future<void> addPhoto(BuildContext context) async {
+    if (state.timeTask.isSome()) {
+      final task = state.timeTask.getOrCrash();
+      final now = DateTime.now();
+      final durationInMilliseconds = task.durationInMinutes * 60 * 1000;
+      final diff = now.difference(task.createdAt.toDate()).inMilliseconds;
+
+      if (diff > durationInMilliseconds) {
+        context.showSnackbarMessage('${S().timeTaskExpired} 😉');
+        return;
+      }
+    }
+
     if (state.selectedEvent.isNone()) {
       _showSnackbarMessage(S().pleaseSelectEvent);
       return;
@@ -116,13 +133,22 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
         () => null,
         (location) => location,
       ),
+      timeTaskId: state.timeTask.fold(
+        () => null,
+        (task) => task.id,
+      ),
     );
     result.fold(
       (failure) {
         emit(state.copyWith(addPhotoStatus: CubitStatus.failure));
         _showSnackbarMessage(failure.message);
       },
-      (_) => emit(state.copyWith(addPhotoStatus: CubitStatus.success)),
+      (photo) => emit(
+        state.copyWith(
+          addPhotoStatus: CubitStatus.success,
+          result: some(photo),
+        ),
+      ),
     );
   }
 

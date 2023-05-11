@@ -33,7 +33,10 @@ class EventRoomFab extends StatelessWidget {
                       return;
                     }
                     context.pushRoute(
-                      WallPhotoCameraPreviewRoute(event: event),
+                      WallPhotoCameraPreviewRoute(
+                        event: event,
+                        timeTask: dartz.none(),
+                      ),
                     );
                     return;
                   }

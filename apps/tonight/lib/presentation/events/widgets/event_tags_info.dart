@@ -7,11 +7,9 @@ import 'package:tonight/presentation/events_details/utils/event_details_formatte
 
 class EventTagsInfo extends StatelessWidget {
   final Event event;
-  final EventTickets? eventTickets;
 
   const EventTagsInfo({
     required this.event,
-    this.eventTickets,
     Key? key,
   }) : super(key: key);
 
@@ -31,7 +29,6 @@ class EventTagsInfo extends StatelessWidget {
               displayEventTags(
                 context,
                 event,
-                eventTickets,
               ),
               style: context.titleSmall,
               overflow: TextOverflow.ellipsis,

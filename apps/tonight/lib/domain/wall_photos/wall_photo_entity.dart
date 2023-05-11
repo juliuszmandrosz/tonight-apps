@@ -17,6 +17,7 @@ class WallPhoto extends Equatable {
   final DateTime createdAt;
   final String? userProfilePhotoUrl;
   final LatLng? photoLocation;
+  final String? timeTaskId;
   final bool isVerified;
 
   WallPhoto({
@@ -32,6 +33,7 @@ class WallPhoto extends Equatable {
     required this.username,
     required this.eventEndDateTime,
     this.userProfilePhotoUrl,
+    this.timeTaskId,
     this.photoLocation,
     this.isVerified = false,
   })  : id = id ?? const Uuid().v1(),
@@ -51,6 +53,7 @@ class WallPhoto extends Equatable {
         eventEndDateTime,
         createdAt,
         userProfilePhotoUrl,
+        timeTaskId,
         photoLocation,
         isVerified,
       ];
@@ -65,6 +68,7 @@ class WallPhoto extends Equatable {
     DateTime? eventEndDateTime,
     Option<String>? userProfilePhotoUrl,
     Option<LatLng>? photoLocation,
+    Option<String>? timeTaskId,
     bool? isVerified,
     String? eventId,
     String? eventName,
@@ -79,6 +83,12 @@ class WallPhoto extends Equatable {
       userId: userId ?? this.userId,
       username: username ?? this.username,
       eventEndDateTime: eventEndDateTime ?? this.eventEndDateTime,
+      timeTaskId: timeTaskId != null
+          ? timeTaskId.fold(
+              () => null,
+              (id) => id,
+            )
+          : this.timeTaskId,
       userProfilePhotoUrl: userProfilePhotoUrl != null
           ? userProfilePhotoUrl.fold(
               () => null,

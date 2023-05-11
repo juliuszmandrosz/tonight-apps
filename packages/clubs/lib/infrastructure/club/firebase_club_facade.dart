@@ -306,6 +306,7 @@ class FirebaseClubFacade
       final result = await _clubsApi.fetchNearestClubsInRange(
         userLocation: userLocation,
         radius: radius,
+        pageSize: pageSize,
       );
       return right<UserClubFailure, List<Club>>(
         result.map((doc) => ClubDto.fromApi(doc).toDomain()).toList(),
