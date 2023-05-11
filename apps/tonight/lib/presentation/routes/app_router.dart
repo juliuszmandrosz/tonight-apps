@@ -234,7 +234,9 @@ const animationDuration = 300;
       transitionsBuilder: fadeInTransition,
       durationInMilliseconds: animationDuration,
     ),
-    CustomRoute(
+
+    /// Returns true if phone number is verified successfully
+    CustomRoute<bool>(
       page: VerifyPhoneNumberPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
