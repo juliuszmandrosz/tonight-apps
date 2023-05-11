@@ -21,6 +21,7 @@ import 'package:tonight/presentation/onboarding/onboarding_page.dart';
 import 'package:tonight/presentation/onboarding/onboarding_user_details_page.dart';
 import 'package:tonight/presentation/payment_method/payment_method_page.dart';
 import 'package:tonight/presentation/profile/profile_page.dart';
+import 'package:tonight/presentation/qr_reward/qr_reward_page.dart';
 import 'package:tonight/presentation/routes/page_transitions/fade_in_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/slide_left_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/slide_up_transition.dart';
@@ -245,6 +246,11 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: WallPhotoFiltersPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: QrRewardPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),

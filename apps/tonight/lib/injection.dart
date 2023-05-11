@@ -77,12 +77,14 @@ import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
 import 'package:tonight/application/wall_photos_filters/wall_photos_filters_cubit.dart';
 import 'package:tonight/domain/club_rewards/club_rewards_aggregator.dart';
 import 'package:tonight/domain/event_review/event_review_aggregator.dart';
+import 'package:tonight/domain/festivals/festival_facade.dart';
 import 'package:tonight/domain/messages/message_facade.dart';
 import 'package:tonight/domain/participants/participant_facade.dart';
 import 'package:tonight/domain/places/places_facade.dart';
 import 'package:tonight/domain/user_details/user_details_aggregator.dart';
 import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
+import 'package:tonight/infrastructure/festivals/firebase_festival_facade.dart';
 import 'package:tonight/infrastructure/google_places/google_places_facade.dart';
 import 'package:tonight/infrastructure/messages/firebase_message_facade.dart';
 import 'package:tonight/infrastructure/participants/firebase_participant_facade.dart';
@@ -200,9 +202,8 @@ void _registerCubits() {
   );
 
   //Events
-  getIt.registerFactoryParam(
-    (EventTicketsCubit eventTicketsCubit, _) => EventDetailsCubit(
-      eventTicketsCubit: eventTicketsCubit,
+  getIt.registerFactory(
+    () => EventDetailsCubit(
       userEventFacade: getIt(),
     ),
   );
@@ -618,6 +619,10 @@ void _registerFacades() {
       getIt(),
       getIt(),
     ),
+  );
+
+  getIt.registerLazySingleton<FestivalFacade>(
+    () => FirebaseFestivalFacade(),
   );
 }
 

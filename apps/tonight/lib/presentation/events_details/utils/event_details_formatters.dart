@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:common/common.dart';
 import 'package:events/events.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:translations/translations.dart';
 
 String displayMusicalGenres(
@@ -18,20 +18,18 @@ String displayMusicalGenres(
 }
 
 String displayEventTags(
-    BuildContext context, Event event, EventTickets? eventTickets) {
-  var price = '${_getPrice(event, eventTickets)}'
+  BuildContext context,
+  Event event,
+) {
+  var price = '${_getPrice(event)}'
       '${getCurrencySymbolFromCode(event.currency)}';
   final minAge = '${event.minAge}+';
 
   return '${S().age} $minAge, ${S().entry.toLowerCase()} $price';
 }
 
-_getPrice(Event event, EventTickets? eventTickets) {
-  if (eventTickets == null) {
-    return event.price;
-  }
-
-  return eventTickets.getCurrentTicketPrice();
+_getPrice(Event event) {
+  return event.price;
 }
 
 String _addSeparator(EventDetailsSeparator separator) {

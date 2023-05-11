@@ -19,7 +19,7 @@ class FavoritesPage extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: TonightHeadline(
-                text: S().favoriteClubs,
+                text: S().favoriteSpots,
                 isSmallerVersion: true,
               ),
             ),

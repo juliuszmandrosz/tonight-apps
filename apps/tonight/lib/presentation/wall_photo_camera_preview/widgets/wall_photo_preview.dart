@@ -6,6 +6,7 @@ import 'package:dartz/dartz.dart' as dartz;
 import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tonight/application/core/deep_links_utils.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
@@ -16,6 +17,7 @@ class WallPhotoPreview extends StatefulWidget {
   final VoidCallback onRetry;
   final bool isSelfie;
   final dartz.Option<Event> event;
+  final dartz.Option<TimeTask> timeTask;
 
   const WallPhotoPreview({
     required this.photoPath,
@@ -24,6 +26,7 @@ class WallPhotoPreview extends StatefulWidget {
     required this.onRetry,
     required this.isSelfie,
     required this.event,
+    required this.timeTask,
     Key? key,
   }) : super(key: key);
 
@@ -106,6 +109,7 @@ class _WallPhotoPreviewState extends State<WallPhotoPreview>
                         heroTag: widget.heroTag,
                         isSelfie: widget.isSelfie,
                         event: widget.event,
+                        timeTask: widget.timeTask,
                       ),
                     ),
                     icon: const FaIcon(

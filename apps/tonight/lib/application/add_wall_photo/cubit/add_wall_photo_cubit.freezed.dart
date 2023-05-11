@@ -30,6 +30,8 @@ mixin _$AddWallPhotoState {
       throw _privateConstructorUsedError;
   Option<Event> get selectedEvent => throw _privateConstructorUsedError;
   Option<Event> get initialEvent => throw _privateConstructorUsedError;
+  Option<TimeTask> get timeTask => throw _privateConstructorUsedError;
+  Option<WallPhoto> get result => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddWallPhotoStateCopyWith<AddWallPhotoState> get copyWith =>
@@ -54,7 +56,9 @@ abstract class $AddWallPhotoStateCopyWith<$Res> {
       Option<String> snackbarMessage,
       Option<WallPhotoVenue> selectedVenue,
       Option<Event> selectedEvent,
-      Option<Event> initialEvent});
+      Option<Event> initialEvent,
+      Option<TimeTask> timeTask,
+      Option<WallPhoto> result});
 }
 
 /// @nodoc
@@ -82,6 +86,8 @@ class _$AddWallPhotoStateCopyWithImpl<$Res, $Val extends AddWallPhotoState>
     Object? selectedVenue = null,
     Object? selectedEvent = null,
     Object? initialEvent = null,
+    Object? timeTask = null,
+    Object? result = null,
   }) {
     return _then(_value.copyWith(
       photo: null == photo
@@ -132,6 +138,14 @@ class _$AddWallPhotoStateCopyWithImpl<$Res, $Val extends AddWallPhotoState>
           ? _value.initialEvent
           : initialEvent // ignore: cast_nullable_to_non_nullable
               as Option<Event>,
+      timeTask: null == timeTask
+          ? _value.timeTask
+          : timeTask // ignore: cast_nullable_to_non_nullable
+              as Option<TimeTask>,
+      result: null == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as Option<WallPhoto>,
     ) as $Val);
   }
 }
@@ -156,7 +170,9 @@ abstract class _$$_AddWallPhotoStateCopyWith<$Res>
       Option<String> snackbarMessage,
       Option<WallPhotoVenue> selectedVenue,
       Option<Event> selectedEvent,
-      Option<Event> initialEvent});
+      Option<Event> initialEvent,
+      Option<TimeTask> timeTask,
+      Option<WallPhoto> result});
 }
 
 /// @nodoc
@@ -182,6 +198,8 @@ class __$$_AddWallPhotoStateCopyWithImpl<$Res>
     Object? selectedVenue = null,
     Object? selectedEvent = null,
     Object? initialEvent = null,
+    Object? timeTask = null,
+    Object? result = null,
   }) {
     return _then(_$_AddWallPhotoState(
       photo: null == photo
@@ -232,6 +250,14 @@ class __$$_AddWallPhotoStateCopyWithImpl<$Res>
           ? _value.initialEvent
           : initialEvent // ignore: cast_nullable_to_non_nullable
               as Option<Event>,
+      timeTask: null == timeTask
+          ? _value.timeTask
+          : timeTask // ignore: cast_nullable_to_non_nullable
+              as Option<TimeTask>,
+      result: null == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
+              as Option<WallPhoto>,
     ));
   }
 }
@@ -251,7 +277,9 @@ class _$_AddWallPhotoState implements _AddWallPhotoState {
       required this.snackbarMessage,
       required this.selectedVenue,
       required this.selectedEvent,
-      required this.initialEvent})
+      required this.initialEvent,
+      required this.timeTask,
+      required this.result})
       : _nearestVenues = nearestVenues,
         _liveEventsFromSelectedClub = liveEventsFromSelectedClub;
 
@@ -292,10 +320,14 @@ class _$_AddWallPhotoState implements _AddWallPhotoState {
   final Option<Event> selectedEvent;
   @override
   final Option<Event> initialEvent;
+  @override
+  final Option<TimeTask> timeTask;
+  @override
+  final Option<WallPhoto> result;
 
   @override
   String toString() {
-    return 'AddWallPhotoState(photo: $photo, isSelfie: $isSelfie, nearestVenues: $nearestVenues, liveEventsFromSelectedClub: $liveEventsFromSelectedClub, userLocation: $userLocation, addPhotoStatus: $addPhotoStatus, fetchNearestClubStatus: $fetchNearestClubStatus, fetchLiveEventsStatus: $fetchLiveEventsStatus, snackbarMessage: $snackbarMessage, selectedVenue: $selectedVenue, selectedEvent: $selectedEvent, initialEvent: $initialEvent)';
+    return 'AddWallPhotoState(photo: $photo, isSelfie: $isSelfie, nearestVenues: $nearestVenues, liveEventsFromSelectedClub: $liveEventsFromSelectedClub, userLocation: $userLocation, addPhotoStatus: $addPhotoStatus, fetchNearestClubStatus: $fetchNearestClubStatus, fetchLiveEventsStatus: $fetchLiveEventsStatus, snackbarMessage: $snackbarMessage, selectedVenue: $selectedVenue, selectedEvent: $selectedEvent, initialEvent: $initialEvent, timeTask: $timeTask, result: $result)';
   }
 
   @override
@@ -326,7 +358,10 @@ class _$_AddWallPhotoState implements _AddWallPhotoState {
             (identical(other.selectedEvent, selectedEvent) ||
                 other.selectedEvent == selectedEvent) &&
             (identical(other.initialEvent, initialEvent) ||
-                other.initialEvent == initialEvent));
+                other.initialEvent == initialEvent) &&
+            (identical(other.timeTask, timeTask) ||
+                other.timeTask == timeTask) &&
+            (identical(other.result, result) || other.result == result));
   }
 
   @override
@@ -343,7 +378,9 @@ class _$_AddWallPhotoState implements _AddWallPhotoState {
       snackbarMessage,
       selectedVenue,
       selectedEvent,
-      initialEvent);
+      initialEvent,
+      timeTask,
+      result);
 
   @JsonKey(ignore: true)
   @override
@@ -366,7 +403,9 @@ abstract class _AddWallPhotoState implements AddWallPhotoState {
       required final Option<String> snackbarMessage,
       required final Option<WallPhotoVenue> selectedVenue,
       required final Option<Event> selectedEvent,
-      required final Option<Event> initialEvent}) = _$_AddWallPhotoState;
+      required final Option<Event> initialEvent,
+      required final Option<TimeTask> timeTask,
+      required final Option<WallPhoto> result}) = _$_AddWallPhotoState;
 
   @override
   Option<File> get photo;
@@ -392,6 +431,10 @@ abstract class _AddWallPhotoState implements AddWallPhotoState {
   Option<Event> get selectedEvent;
   @override
   Option<Event> get initialEvent;
+  @override
+  Option<TimeTask> get timeTask;
+  @override
+  Option<WallPhoto> get result;
   @override
   @JsonKey(ignore: true)
   _$$_AddWallPhotoStateCopyWith<_$_AddWallPhotoState> get copyWith =>

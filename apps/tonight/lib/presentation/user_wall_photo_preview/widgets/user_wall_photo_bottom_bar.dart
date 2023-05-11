@@ -1,7 +1,8 @@
-import 'package:common/extensions/color_extensions.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/presentation/user_wall_photo_preview/widgets/user_wall_photo_delete_button.dart';
+import 'package:tonight/presentation/user_wall_photo_preview/widgets/user_wall_photo_reward_button.dart';
 import 'package:tonight/presentation/user_wall_photo_preview/widgets/user_wall_photo_share_button.dart';
 
 class UserWallPhotoBottomBar extends StatelessWidget {
@@ -28,6 +29,8 @@ class UserWallPhotoBottomBar extends StatelessWidget {
           children: [
             UserWallPhotoShareButton(photo: photo),
             UserWallPhotoDeleteButton(photo: photo),
+            if (photo.timeTaskId.isNotNullOrEmpty)
+              UserWallPhotoRewardButton(photo: photo),
           ],
         ),
       ),

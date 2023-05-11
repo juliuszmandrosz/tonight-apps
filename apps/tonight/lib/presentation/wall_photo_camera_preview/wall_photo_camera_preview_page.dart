@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart' as dartz;
 import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:tonight/application/core/deep_links_utils.dart';
 import 'package:tonight/presentation/core/image_back_button.dart';
 import 'package:tonight/presentation/wall_photo_camera_preview/widgets/camera_preview_bottom_actions.dart';
 import 'package:tonight/presentation/wall_photo_camera_preview/widgets/camera_preview_middle_content.dart';
@@ -12,9 +13,11 @@ import 'package:tonight/presentation/wall_photo_camera_preview/widgets/wall_phot
 
 class WallPhotoCameraPreviewPage extends StatefulWidget {
   final dartz.Option<Event> event;
+  final dartz.Option<TimeTask> timeTask;
 
   const WallPhotoCameraPreviewPage({
     required this.event,
+    required this.timeTask,
     Key? key,
   }) : super(key: key);
 
@@ -52,6 +55,7 @@ class _WallPhotoCameraPreviewPageState
                         height: bottomHeight,
                         isSelfie: _isSelfie,
                         event: widget.event,
+                        timeTask: widget.timeTask,
                         onRetry: () {
                           setState(() {
                             _photoPath = null;
