@@ -1,3 +1,4 @@
+import 'package:auth/auth.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/extensions/build_context_extensions.dart';
@@ -5,7 +6,9 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:events/infrastructure/events/dtos/event_dto.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/utils/show_confirm_phone_number_dialog.dart';
 import 'package:translations/translations.dart';
 
 Future<void> handleDeepLink(
@@ -68,6 +71,14 @@ Future<void> handleTimeTask({
 
   if (!task.exists) return;
 
+  if (context.mounted) {
+    if (!context.read<AuthCubit>().checkIfPhoneNumberIsVerified()) {
+      final isPhoneNumberVerified = await showConfirmPhoneNumberDialog(context);
+      if (!isPhoneNumberVerified) {
+        return;
+      }
+    }
+  }
   if (context.mounted) {
     final data = task.data() as Map<String, dynamic>;
     final eventId = data['eventId'] as String;

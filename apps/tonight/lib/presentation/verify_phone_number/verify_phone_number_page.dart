@@ -25,7 +25,7 @@ class VerifyPhoneNumberPage extends StatelessWidget {
 
           if (state.verifySmsStatus.isSuccess()) {
             context.showSnackbarMessage(S().phoneNumberVerified);
-            context.popRoute();
+            context.popRoute<bool>(true);
           }
         },
         builder: (context, state) {
