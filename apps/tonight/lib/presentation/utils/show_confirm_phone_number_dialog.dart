@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
-Future<void> showConfirmPhoneNumberDialog(BuildContext context) async {
-  final result = await showDialog(
+Future<bool> showConfirmPhoneNumberDialog(BuildContext context) async {
+  final confirmNumberResult = await showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
@@ -25,8 +25,12 @@ Future<void> showConfirmPhoneNumberDialog(BuildContext context) async {
     },
   );
 
-  if (result == true && context.mounted) {
+  if (confirmNumberResult == true && context.mounted) {
     context.unfocus();
-    await context.pushRoute(const VerifyPhoneNumberRoute());
+    final result = await context.pushRoute<bool>(
+        const VerifyPhoneNumberRoute());
+    return result ?? false;
   }
+
+  return false;
 }
