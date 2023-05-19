@@ -11,10 +11,8 @@ import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/utils/show_confirm_phone_number_dialog.dart';
 import 'package:translations/translations.dart';
 
-Future<void> handleDeepLink(
-  BuildContext context,
-  Map<String, dynamic>? data,
-) async {
+Future<void> handleDeepLink(BuildContext context,
+    Map<String, dynamic>? data,) async {
   if (data == null) return;
 
   final eventId = data['eventId'];
@@ -58,7 +56,9 @@ Future<void> handleDeepLink(
 
   final taskId = data['taskId'];
 
-  await handleTimeTask(taskId: taskId, context: context);
+  if (taskId != null) {
+    await handleTimeTask(taskId: taskId, context: context);
+  }
 }
 
 // TODO - refactor
@@ -67,7 +67,7 @@ Future<void> handleTimeTask({
   required BuildContext context,
 }) async {
   final task =
-      await FirebaseFirestore.instance.collection('tasks').doc(taskId).get();
+  await FirebaseFirestore.instance.collection('tasks').doc(taskId).get();
 
   if (!task.exists) return;
 
@@ -86,7 +86,9 @@ Future<void> handleTimeTask({
     final duration = data['durationInMinutes'] as int;
     final durationInMilliseconds = duration * 60 * 1000;
     final now = DateTime.now();
-    final diff = now.difference(createdAt.toDate()).inMilliseconds;
+    final diff = now
+        .difference(createdAt.toDate())
+        .inMilliseconds;
     if (diff > durationInMilliseconds) {
       context.showSnackbarMessage('${S().timeTaskExpired} 😉');
       return;
@@ -132,7 +134,8 @@ class TimeTask extends Equatable {
   });
 
   @override
-  List<Object?> get props => [
+  List<Object?> get props =>
+      [
         id,
         eventId,
         createdAt,
