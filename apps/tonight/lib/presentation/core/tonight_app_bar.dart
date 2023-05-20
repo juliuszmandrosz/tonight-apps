@@ -3,7 +3,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/sign_in/widgets/tonight_logo.dart';
 
-class TonightAppBar extends StatelessWidget with PreferredSizeWidget {
+class TonightAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final List<Widget>? actions;
   final Color? backgroundColor;

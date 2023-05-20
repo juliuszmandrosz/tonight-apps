@@ -8,7 +8,7 @@ import 'package:tonight/application/event_room/bloc/event_room_bloc.dart';
 import 'package:tonight/application/event_room/bloc/event_room_tab.dart';
 import 'package:translations/translations.dart';
 
-class EventRoomAppBar extends StatelessWidget with PreferredSizeWidget {
+class EventRoomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Event event;
   final bool isKeyboardOpen;
 
