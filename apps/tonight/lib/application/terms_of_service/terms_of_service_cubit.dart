@@ -2,42 +2,29 @@ import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tonight/domain/user_app_links/user_app_links_facade.dart';
 import 'package:translations/translations.dart';
 
 part 'terms_of_service_cubit.freezed.dart';
-
 part 'terms_of_service_state.dart';
 
 class TermsOfServiceCubit extends Cubit<TermsOfServiceState> {
-  final UserTermsOfServiceFacade _termsOfServiceFacade;
-  final NetworkCheckCubit _networkCheckCubit;
+  final UserAppLinksFacade _appLinksFacade;
 
-  TermsOfServiceCubit({
-    required UserTermsOfServiceFacade userTermsOfServiceFacade,
-    required NetworkCheckCubit networkCheckCubit,
-  })  : _termsOfServiceFacade = userTermsOfServiceFacade,
-        _networkCheckCubit = networkCheckCubit,
-        super(TermsOfServiceState.initial());
+  TermsOfServiceCubit(this._appLinksFacade)
+      : super(TermsOfServiceState.initial());
 
   Future<void> getTermsOfService() async {
     emit(state.copyWith(status: CubitStatus.loading));
 
-    final connectionStatus = await _networkCheckCubit.checkNetworkConnection();
+    final result = await _appLinksFacade.getUserAppLinks();
 
-    if (!connectionStatus) {
-      _emitFailure(S().errorCheckInternetConnection);
-      return;
-    }
-
-    final failureOrSuccess =
-        await _termsOfServiceFacade.getTermsOfServiceForUser();
-
-    failureOrSuccess.fold(
+    result.fold(
       (_) => _emitFailure(S().serverError),
-      (url) => emit(
+      (links) => emit(
         state.copyWith(
           status: CubitStatus.success,
-          documentUrl: some(url),
+          documentUrl: some(links.termsOfService),
         ),
       ),
     );
@@ -46,22 +33,14 @@ class TermsOfServiceCubit extends Cubit<TermsOfServiceState> {
   Future<void> getPrivacyPolicy() async {
     emit(state.copyWith(status: CubitStatus.loading));
 
-    final connectionStatus = await _networkCheckCubit.checkNetworkConnection();
+    final result = await _appLinksFacade.getUserAppLinks();
 
-    if (!connectionStatus) {
-      _emitFailure(S().errorCheckInternetConnection);
-      return;
-    }
-
-    final failureOrSuccess =
-        await _termsOfServiceFacade.getPrivacyPolicyForUser();
-
-    failureOrSuccess.fold(
+    result.fold(
       (_) => _emitFailure(S().serverError),
-      (url) => emit(
+      (links) => emit(
         state.copyWith(
           status: CubitStatus.success,
-          documentUrl: some(url),
+          documentUrl: some(links.privacyPolicy),
         ),
       ),
     );

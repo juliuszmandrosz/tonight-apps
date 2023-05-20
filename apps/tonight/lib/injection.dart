@@ -81,6 +81,7 @@ import 'package:tonight/domain/festivals/festival_facade.dart';
 import 'package:tonight/domain/messages/message_facade.dart';
 import 'package:tonight/domain/participants/participant_facade.dart';
 import 'package:tonight/domain/places/places_facade.dart';
+import 'package:tonight/domain/user_app_links/user_app_links_facade.dart';
 import 'package:tonight/domain/user_details/user_details_aggregator.dart';
 import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
@@ -88,6 +89,7 @@ import 'package:tonight/infrastructure/festivals/firebase_festival_facade.dart';
 import 'package:tonight/infrastructure/google_places/google_places_facade.dart';
 import 'package:tonight/infrastructure/messages/firebase_message_facade.dart';
 import 'package:tonight/infrastructure/participants/firebase_participant_facade.dart';
+import 'package:tonight/infrastructure/user_app_links/firebase_user_app_links_facade.dart';
 import 'package:tonight/infrastructure/wall_photos/firebase_wall_photo_facade.dart';
 
 import 'application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
@@ -292,10 +294,9 @@ void _registerCubits() {
     ),
   );
 
-  getIt.registerFactoryParam(
-    (NetworkCheckCubit networkCheckCubit, _) => TermsOfServiceCubit(
-      networkCheckCubit: networkCheckCubit,
-      userTermsOfServiceFacade: getIt(),
+  getIt.registerFactory(
+    () => TermsOfServiceCubit(
+      getIt(),
     ),
   );
 
@@ -577,11 +578,11 @@ void _registerFacades() {
     ),
   );
 
-  getIt.registerLazySingleton<UserTermsOfServiceFacade>(
-    () => FirebaseTermsOfServiceFacade(
-      firebaseStorage: getIt(),
-      logger: getIt(),
-      firebaseCrashlytics: getIt(),
+  getIt.registerLazySingleton<UserAppLinksFacade>(
+    () => FirebaseUserAppLinksFacade(
+      getIt(),
+      getIt(),
+      getIt(),
     ),
   );
 
