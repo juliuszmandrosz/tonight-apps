@@ -200,12 +200,9 @@ class _NavigatorPageState extends State<NavigatorPage> {
       case TonightNavigationDestination.add:
         return const TonightAppBar();
       case TonightNavigationDestination.chats:
-        return PreferredSize(
-          preferredSize: Size.fromHeight(context.padding.top),
-          child: Container(
-            color: context.backgroundColor,
-            height: context.padding.top,
-          ),
+        return TonightAppBar(
+          title: S().chats,
+          backgroundColor: context.backgroundColor,
         );
       case TonightNavigationDestination.profile:
         return TonightAppBar(
