@@ -40,6 +40,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
           TonightRoute(),
           DiscoverRoute(),
           TonightRoute(),
+          ChatsRoute(),
           ProfileRoute(),
         ],
         bottomNavigationBuilder: (_, tabsRouter) {
@@ -83,6 +84,12 @@ class _NavigatorPageState extends State<NavigatorPage> {
                         FontAwesomeIcons.paperPlane,
                       ),
                       label: S().publish,
+                    ),
+                    NavigationDestination(
+                      icon: const FaIcon(
+                        FontAwesomeIcons.comments,
+                      ),
+                      label: S().chats,
                     ),
                     NavigationDestination(
                       icon: const FaIcon(FontAwesomeIcons.user),
@@ -155,6 +162,14 @@ class _NavigatorPageState extends State<NavigatorPage> {
         );
       case TonightNavigationDestination.add:
         return const TonightAppBar();
+      case TonightNavigationDestination.chats:
+        return PreferredSize(
+          preferredSize: Size.fromHeight(context.padding.top),
+          child: Container(
+            color: context.backgroundColor,
+            height: context.padding.top,
+          ),
+        );
       case TonightNavigationDestination.profile:
         return TonightAppBar(
           title: '',

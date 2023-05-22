@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:events/domain/events/event_entity.dart';
+import 'package:events/domain/events/user_event_facade.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
@@ -18,8 +19,10 @@ const _pageSize = 15;
 
 class EventPhotosBloc extends Bloc<EventPhotosEvent, EventPhotosState> {
   final WallPhotoFacade _wallPhotoFacade;
+  final UserEventFacade _eventFacade;
 
-  EventPhotosBloc(this._wallPhotoFacade) : super(EventPhotosState.initial()) {
+  EventPhotosBloc(this._wallPhotoFacade, this._eventFacade)
+      : super(EventPhotosState.initial()) {
     on<_PhotosFetched>(_onPhotosFetched);
     on<_PhotosRefreshed>(_onPhotosRefreshed);
     on<_NextPagePhotosFetched>(
@@ -34,14 +37,15 @@ class EventPhotosBloc extends Bloc<EventPhotosEvent, EventPhotosState> {
     _PhotosFetched event,
     Emitter<EventPhotosState> emit,
   ) async {
-    emit(
-      state.copyWith(
-        getPhotosStatus: CubitStatus.loading,
-        event: some(event.event),
-      ),
+    final initEventResult = await _initEventInState(
+      emit: emit,
+      eventId: event.eventId,
+      event: event.event,
     );
+    if (initEventResult == null) return;
+    emit(state.copyWith(getPhotosStatus: CubitStatus.loading));
     final result = await _wallPhotoFacade.getEventPhotos(
-      eventId: event.event.id,
+      eventId: event.eventId,
       pageSize: _pageSize,
     );
     result.fold(
@@ -139,5 +143,27 @@ class EventPhotosBloc extends Bloc<EventPhotosEvent, EventPhotosState> {
   ) {
     emit(state.copyWith(snackbarMessage: some(failure.message)));
     emit(state.copyWith(snackbarMessage: none()));
+  }
+
+  Future<Event?> _initEventInState({
+    required Emitter<EventPhotosState> emit,
+    required String eventId,
+    Event? event,
+  }) async {
+    if (event != null) {
+      emit(state.copyWith(event: some(event)));
+      return event;
+    }
+    final result = await _eventFacade.getEventById(eventId);
+    return result.fold(
+      (_) {
+        emit(state.copyWith(getPhotosStatus: CubitStatus.failure));
+        return null;
+      },
+      (event) {
+        emit(state.copyWith(event: some(event)));
+        return event;
+      },
+    );
   }
 }

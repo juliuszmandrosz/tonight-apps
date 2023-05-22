@@ -30,15 +30,33 @@ class EventParticipantsPage extends StatelessWidget {
               case CubitStatus.loading:
                 return const WaveLoadingIndicator();
               case CubitStatus.failure:
-                return const SizedBox.shrink();
+                return FailureInfo(
+                  retryCallback: () => context
+                      .read<EventParticipantsBloc>()
+                      .add(EventParticipantsEvent.participantsFetched(eventId)),
+                );
               case CubitStatus.success:
                 return Padding(
                   padding: const EdgeInsets.all(8),
                   child: state.participants.isEmpty
                       ? Center(
-                          child: Text(
-                            S().noParticipants,
-                            style: context.titleMedium,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                S().noParticipants,
+                                style: context.titleSmall,
+                              ),
+                              const SizedBox(height: 20),
+                              OutlinedButton(
+                                onPressed: () =>
+                                    context.read<EventParticipantsBloc>().add(
+                                          EventParticipantsEvent
+                                              .participantsFetched(eventId),
+                                        ),
+                                child: Text(S().refresh),
+                              ),
+                            ],
                           ),
                         )
                       : RefreshIndicator(
@@ -50,9 +68,8 @@ class EventParticipantsPage extends StatelessWidget {
                           child: InfiniteList(
                             itemCount: state.participants.length,
                             hasReachedMax: state.hasReachedMax,
-                            hasError: state.fetchParticipantsStatus.isFailure(),
-                            isLoading:
-                                state.fetchParticipantsStatus.isLoading(),
+                            hasError: state.nextPageStatus.isFailure(),
+                            isLoading: state.nextPageStatus.isLoading(),
                             separatorBuilder: (_, __) =>
                                 const Divider(height: 20),
                             itemBuilder: (_, i) => EventParticipantListTile(

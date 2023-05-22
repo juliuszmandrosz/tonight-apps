@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventPhotosEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) photosFetched,
+    required TResult Function(String eventId, Event? event) photosFetched,
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
@@ -27,7 +27,7 @@ mixin _$EventPhotosEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? photosFetched,
+    TResult? Function(String eventId, Event? event)? photosFetched,
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
@@ -36,7 +36,7 @@ mixin _$EventPhotosEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? photosFetched,
+    TResult Function(String eventId, Event? event)? photosFetched,
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
@@ -99,7 +99,7 @@ abstract class _$$_PhotosFetchedCopyWith<$Res> {
           _$_PhotosFetched value, $Res Function(_$_PhotosFetched) then) =
       __$$_PhotosFetchedCopyWithImpl<$Res>;
   @useResult
-  $Res call({Event event});
+  $Res call({String eventId, Event? event});
 }
 
 /// @nodoc
@@ -113,13 +113,18 @@ class __$$_PhotosFetchedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? event = null,
+    Object? eventId = null,
+    Object? event = freezed,
   }) {
     return _then(_$_PhotosFetched(
-      null == event
+      eventId: null == eventId
+          ? _value.eventId
+          : eventId // ignore: cast_nullable_to_non_nullable
+              as String,
+      event: freezed == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
-              as Event,
+              as Event?,
     ));
   }
 }
@@ -127,14 +132,16 @@ class __$$_PhotosFetchedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PhotosFetched implements _PhotosFetched {
-  const _$_PhotosFetched(this.event);
+  const _$_PhotosFetched({required this.eventId, this.event});
 
   @override
-  final Event event;
+  final String eventId;
+  @override
+  final Event? event;
 
   @override
   String toString() {
-    return 'EventPhotosEvent.photosFetched(event: $event)';
+    return 'EventPhotosEvent.photosFetched(eventId: $eventId, event: $event)';
   }
 
   @override
@@ -142,11 +149,12 @@ class _$_PhotosFetched implements _PhotosFetched {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PhotosFetched &&
+            (identical(other.eventId, eventId) || other.eventId == eventId) &&
             (identical(other.event, event) || other.event == event));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, event);
+  int get hashCode => Object.hash(runtimeType, eventId, event);
 
   @JsonKey(ignore: true)
   @override
@@ -157,31 +165,31 @@ class _$_PhotosFetched implements _PhotosFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) photosFetched,
+    required TResult Function(String eventId, Event? event) photosFetched,
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
     required TResult Function(WallPhoto photo) photoReported,
   }) {
-    return photosFetched(event);
+    return photosFetched(eventId, event);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? photosFetched,
+    TResult? Function(String eventId, Event? event)? photosFetched,
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
     TResult? Function(WallPhoto photo)? photoReported,
   }) {
-    return photosFetched?.call(event);
+    return photosFetched?.call(eventId, event);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? photosFetched,
+    TResult Function(String eventId, Event? event)? photosFetched,
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
@@ -189,7 +197,7 @@ class _$_PhotosFetched implements _PhotosFetched {
     required TResult orElse(),
   }) {
     if (photosFetched != null) {
-      return photosFetched(event);
+      return photosFetched(eventId, event);
     }
     return orElse();
   }
@@ -237,9 +245,11 @@ class _$_PhotosFetched implements _PhotosFetched {
 }
 
 abstract class _PhotosFetched implements EventPhotosEvent {
-  const factory _PhotosFetched(final Event event) = _$_PhotosFetched;
+  const factory _PhotosFetched(
+      {required final String eventId, final Event? event}) = _$_PhotosFetched;
 
-  Event get event;
+  String get eventId;
+  Event? get event;
   @JsonKey(ignore: true)
   _$$_PhotosFetchedCopyWith<_$_PhotosFetched> get copyWith =>
       throw _privateConstructorUsedError;
@@ -283,7 +293,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) photosFetched,
+    required TResult Function(String eventId, Event? event) photosFetched,
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
@@ -295,7 +305,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? photosFetched,
+    TResult? Function(String eventId, Event? event)? photosFetched,
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
@@ -307,7 +317,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? photosFetched,
+    TResult Function(String eventId, Event? event)? photosFetched,
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
@@ -404,7 +414,7 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) photosFetched,
+    required TResult Function(String eventId, Event? event) photosFetched,
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
@@ -416,7 +426,7 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? photosFetched,
+    TResult? Function(String eventId, Event? event)? photosFetched,
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
@@ -428,7 +438,7 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? photosFetched,
+    TResult Function(String eventId, Event? event)? photosFetched,
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
@@ -551,7 +561,7 @@ class _$_PhotoAdded implements _PhotoAdded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) photosFetched,
+    required TResult Function(String eventId, Event? event) photosFetched,
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
@@ -563,7 +573,7 @@ class _$_PhotoAdded implements _PhotoAdded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? photosFetched,
+    TResult? Function(String eventId, Event? event)? photosFetched,
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
@@ -575,7 +585,7 @@ class _$_PhotoAdded implements _PhotoAdded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? photosFetched,
+    TResult Function(String eventId, Event? event)? photosFetched,
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
@@ -703,7 +713,7 @@ class _$_PhotoReported implements _PhotoReported {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) photosFetched,
+    required TResult Function(String eventId, Event? event) photosFetched,
     required TResult Function() photosRefreshed,
     required TResult Function() nextPagePhotosFetched,
     required TResult Function(WallPhoto photo) photoAdded,
@@ -715,7 +725,7 @@ class _$_PhotoReported implements _PhotoReported {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? photosFetched,
+    TResult? Function(String eventId, Event? event)? photosFetched,
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPagePhotosFetched,
     TResult? Function(WallPhoto photo)? photoAdded,
@@ -727,7 +737,7 @@ class _$_PhotoReported implements _PhotoReported {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? photosFetched,
+    TResult Function(String eventId, Event? event)? photosFetched,
     TResult Function()? photosRefreshed,
     TResult Function()? nextPagePhotosFetched,
     TResult Function(WallPhoto photo)? photoAdded,
