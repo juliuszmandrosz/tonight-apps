@@ -82,8 +82,12 @@ class EventRoomPage extends StatelessWidget {
                         ? context.loaderOverlay.show()
                         : context.loaderOverlay.hide();
                     if (state.leaveStatus.isSuccess()) {
-                      context.router.popUntil((route) =>
-                          route.settings.name == EventDetailsRoute.name);
+                      context.router.popUntil((route) {
+                        final popUntilRoute = event != null
+                            ? EventDetailsRoute.name
+                            : WelcomeLoaderRoute.name;
+                        return route.settings.name == popUntilRoute;
+                      });
                     }
                   },
                   orElse: () {},
