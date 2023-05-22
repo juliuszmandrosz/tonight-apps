@@ -2,7 +2,10 @@ part of 'event_photos_bloc.dart';
 
 @freezed
 class EventPhotosEvent with _$EventPhotosEvent {
-  const factory EventPhotosEvent.photosFetched(Event event) = _PhotosFetched;
+  const factory EventPhotosEvent.photosFetched({
+    required String eventId,
+    Event? event,
+  }) = _PhotosFetched;
 
   const factory EventPhotosEvent.photosRefreshed() = _PhotosRefreshed;
 

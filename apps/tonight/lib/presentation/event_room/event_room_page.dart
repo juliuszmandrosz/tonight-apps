@@ -17,9 +17,15 @@ import 'package:tonight/presentation/event_room_participants/event_room_particip
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class EventRoomPage extends StatelessWidget {
-  final Event event;
+  final Event? event;
+  final String? eventId;
 
-  const EventRoomPage({required this.event, Key? key}) : super(key: key);
+  const EventRoomPage({
+    this.event,
+    this.eventId,
+    Key? key,
+  })  : assert((eventId != null || event != null), 'Event is not available'),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +36,32 @@ class EventRoomPage extends StatelessWidget {
           providers: [
             BlocProvider(
               create: (context) => getIt<EventRoomBloc>()
-                ..add(EventRoomEvent.joinedToEvent(event)),
+                ..add(
+                  EventRoomEvent.joinedToEvent(
+                    eventId: event?.id ?? eventId!,
+                    event: event,
+                  ),
+                ),
             ),
             BlocProvider(
               create: (context) => getIt<EventChatBloc>(),
             ),
             BlocProvider(
               create: (context) => getIt<EventPhotosBloc>()
-                ..add(EventPhotosEvent.photosFetched(event)),
+                ..add(
+                  EventPhotosEvent.photosFetched(
+                    eventId: event?.id ?? eventId!,
+                    event: event,
+                  ),
+                ),
             ),
             BlocProvider(
               create: (context) => getIt<EventRoomParticipantsBloc>()
-                ..add(EventRoomParticipantsEvent.participantsFetched(event.id)),
+                ..add(
+                  EventRoomParticipantsEvent.participantsFetched(
+                    event?.id ?? eventId!,
+                  ),
+                ),
             ),
           ],
           child: BlocConsumer<EventRoomBloc, EventRoomState>(
@@ -78,28 +98,35 @@ class EventRoomPage extends StatelessWidget {
                   return const WaveLoadingIndicator();
                 case CubitStatus.failure:
                   return FailureInfo(
-                    retryCallback: () => context
-                        .read<EventRoomBloc>()
-                        .add(EventRoomEvent.joinedToEvent(event)),
+                    retryCallback: () => context.read<EventRoomBloc>().add(
+                          EventRoomEvent.joinedToEvent(
+                            eventId: event?.id ?? eventId!,
+                            event: event,
+                          ),
+                        ),
                   );
                 case CubitStatus.success:
+                  final eventInState = state.event.getOrCrash();
+                  final isEventEnded =
+                      eventInState.eventEndDateTime.isBefore(DateTime.now());
                   return DefaultTabController(
-                    length: 3,
+                    length: isEventEnded ? 2 : 3,
                     child: SafeArea(
                       child: Scaffold(
                         appBar: EventRoomAppBar(
-                          event: event,
+                          event: eventInState,
                           isKeyboardOpen: context.isKeyboardOpen,
+                          isEventEnded: isEventEnded,
                         ),
                         floatingActionButton: const EventRoomFab(),
                         body: TabBarView(
                           physics: const NeverScrollableScrollPhysics(),
                           children: [
                             EventChatPage(
-                              event: event,
+                              event: eventInState,
                               currentUser: state.participant.getOrCrash(),
                             ),
-                            const EventPhotosPage(),
+                            if (!isEventEnded) const EventPhotosPage(),
                             const EventRoomParticipantsPage(),
                           ],
                         ),
@@ -117,7 +144,7 @@ class EventRoomPage extends StatelessWidget {
   _initializeChat(BuildContext context, EventRoomState state) {
     context.read<EventChatBloc>().add(
           EventChatEvent.chatInitialized(
-            event: event,
+            event: state.event.getOrCrash(),
             participant: state.participant.getOrCrash(),
           ),
         );

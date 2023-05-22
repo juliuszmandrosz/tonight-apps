@@ -1,3 +1,4 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:translations/translations.dart';
 
@@ -11,13 +12,21 @@ class NextPageError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Wrap(
+      alignment: WrapAlignment.center,
       children: [
-        Text('${S().nextPageError},'),
+        Text(
+          '${S().nextPageError},',
+          style: context.bodySmall,
+        ),
         TextButton(
           onPressed: retryCallback,
-          child: Text('${S().tryAgain.toLowerCase()}.'),
+          child: Text(
+            '${S().tryAgain.toLowerCase()}.',
+            style: context.bodySmall.copyWith(
+              color: context.primaryColor,
+            ),
+          ),
         ),
       ],
     );

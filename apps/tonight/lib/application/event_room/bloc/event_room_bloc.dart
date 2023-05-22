@@ -11,9 +11,7 @@ import 'package:tonight/domain/participants/participant_entity.dart';
 import 'package:translations/translations.dart';
 
 part 'event_room_bloc.freezed.dart';
-
 part 'event_room_event.dart';
-
 part 'event_room_state.dart';
 
 class EventRoomBloc extends Bloc<EventRoomEvent, EventRoomState> {
@@ -36,15 +34,18 @@ class EventRoomBloc extends Bloc<EventRoomEvent, EventRoomState> {
       ),
     );
 
-    final result = await _eventRoomAggregator.joinToRoom(event.event.id);
+    final result = await _eventRoomAggregator.joinToRoom(
+      eventId: event.eventId,
+      event: event.event,
+    );
 
     result.fold(
       (_) => emit(state.copyWith(joinStatus: CubitStatus.failure)),
-      (participant) => emit(
+      (tuple) => emit(
         state.copyWith(
           joinStatus: CubitStatus.success,
-          event: some(event.event),
-          participant: some(participant),
+          participant: some(tuple.value1),
+          event: some(tuple.value2),
         ),
       ),
     );

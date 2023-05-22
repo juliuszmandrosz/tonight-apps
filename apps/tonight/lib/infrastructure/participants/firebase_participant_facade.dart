@@ -48,9 +48,22 @@ class FirebaseParticipantFacade implements ParticipantFacade {
         final participantDto = ParticipantDto.fromDomain(participant);
 
         final messageRef = _firestore.rooms.doc(roomId).messages.doc(messageId);
+        final roomRef = _firestore.rooms.doc(roomId);
 
         tx.set(participantRef, participantDto.toJson());
         tx.set(messageRef, messageDto.toJson());
+        tx.set(
+          roomRef,
+          {
+            'participantIds': FieldValue.arrayUnion([participant.userId]),
+            'lastMessageId': messageDto.id,
+            'lastMessageText': messageDto.text,
+            'lastMessageUsername': messageDto.username,
+            'lastMessageCreatedAt': Timestamp.fromDate(messageDto.createdAt),
+            'isLastMessageJoinedInfo': true,
+          },
+          SetOptions(merge: true),
+        );
       });
       return right(unit);
     } on FirebaseException catch (e) {
@@ -122,9 +135,22 @@ class FirebaseParticipantFacade implements ParticipantFacade {
         );
 
         final messageRef = _firestore.rooms.doc(roomId).messages.doc(messageId);
+        final roomRef = _firestore.rooms.doc(roomId);
 
         tx.delete(participantRef);
         tx.set(messageRef, messageDto.toJson());
+        tx.set(
+          roomRef,
+          {
+            'participantIds': FieldValue.arrayRemove([participant.userId]),
+            'lastMessageId': messageDto.id,
+            'lastMessageText': messageDto.text,
+            'lastMessageUsername': messageDto.username,
+            'lastMessageCreatedAt': Timestamp.fromDate(messageDto.createdAt),
+            'isLastMessageLeftInfo': true,
+          },
+          SetOptions(merge: true),
+        );
       });
       return right(unit);
     } on FirebaseException catch (e) {
