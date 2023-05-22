@@ -37,7 +37,7 @@ class _QrRewardPageState extends State<QrRewardPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              QrImage(
+              QrImageView(
                 data: _getData(context),
                 version: QrVersions.auto,
                 size: 300,
