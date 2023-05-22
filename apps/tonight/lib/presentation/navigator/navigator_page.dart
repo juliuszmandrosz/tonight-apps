@@ -88,37 +88,40 @@ class _NavigatorPageState extends State<NavigatorPage> {
                     ),
                     BlocBuilder<ChatsBloc, ChatsState>(
                       builder: (context, state) {
+                        final unreadMessages =
+                            state.chats.where((c) => c.hasUnreadMessage).length;
                         return NavigationDestination(
                           icon: Stack(
                             clipBehavior: Clip.none,
                             children: [
                               const FaIcon(FontAwesomeIcons.comments),
-                              Positioned(
-                                right: -6,
-                                top: -6,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: context.primaryColor,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  constraints: const BoxConstraints(
-                                    minWidth: 16,
-                                    minHeight: 16,
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(2.0),
-                                    child: Center(
-                                      child: Text(
-                                        '${state.chats.where((c) => c.hasUnreadMessage).length}',
-                                        textAlign: TextAlign.center,
-                                        style: context.bodySmall.copyWith(
-                                          fontSize: 10,
+                              if (unreadMessages > 0)
+                                Positioned(
+                                  right: -6,
+                                  top: -6,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: context.primaryColor,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    constraints: const BoxConstraints(
+                                      minWidth: 16,
+                                      minHeight: 16,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(2.0),
+                                      child: Center(
+                                        child: Text(
+                                          '$unreadMessages',
+                                          textAlign: TextAlign.center,
+                                          style: context.bodySmall.copyWith(
+                                            fontSize: 10,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
                             ],
                           ),
                           label: S().chats,
