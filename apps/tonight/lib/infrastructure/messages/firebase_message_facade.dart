@@ -58,12 +58,23 @@ class FirebaseMessageFacade implements MessageFacade {
     required String roomId,
   }) async {
     try {
-      final messageDto = MessageDto.fromDomain(message);
-      await _firestore.rooms
-          .doc(roomId)
-          .messages
-          .doc(message.id)
-          .set(messageDto.toJson());
+      await _firestore.runTransaction((tx) async {
+        final messageRef =
+            _firestore.rooms.doc(roomId).messages.doc(message.id);
+        final roomRef = _firestore.rooms.doc(roomId);
+        final messageDto = MessageDto.fromDomain(message);
+        tx.set(messageRef, messageDto.toJson());
+        tx.set(
+          roomRef,
+          {
+            'lastMessageId': message.id,
+            'lastMessageText': message.text,
+            'lastMessageUsername': message.username,
+            'lastMessageCreatedAt': Timestamp.fromDate(message.createdAt),
+          },
+          SetOptions(merge: true),
+        );
+      });
       return right(unit);
     } on FirebaseException catch (e) {
       _logger.e(e);

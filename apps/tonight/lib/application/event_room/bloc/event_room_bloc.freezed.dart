@@ -18,21 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventRoomEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) joinedToEvent,
+    required TResult Function(String eventId, Event? event) joinedToEvent,
     required TResult Function() leavedFromEvent,
     required TResult Function(EventRoomTab tab) tabChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? joinedToEvent,
+    TResult? Function(String eventId, Event? event)? joinedToEvent,
     TResult? Function()? leavedFromEvent,
     TResult? Function(EventRoomTab tab)? tabChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? joinedToEvent,
+    TResult Function(String eventId, Event? event)? joinedToEvent,
     TResult Function()? leavedFromEvent,
     TResult Function(EventRoomTab tab)? tabChanged,
     required TResult orElse(),
@@ -86,7 +86,7 @@ abstract class _$$_JoinedToEventCopyWith<$Res> {
           _$_JoinedToEvent value, $Res Function(_$_JoinedToEvent) then) =
       __$$_JoinedToEventCopyWithImpl<$Res>;
   @useResult
-  $Res call({Event event});
+  $Res call({String eventId, Event? event});
 }
 
 /// @nodoc
@@ -100,13 +100,18 @@ class __$$_JoinedToEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? event = null,
+    Object? eventId = null,
+    Object? event = freezed,
   }) {
     return _then(_$_JoinedToEvent(
-      null == event
+      eventId: null == eventId
+          ? _value.eventId
+          : eventId // ignore: cast_nullable_to_non_nullable
+              as String,
+      event: freezed == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
-              as Event,
+              as Event?,
     ));
   }
 }
@@ -114,14 +119,16 @@ class __$$_JoinedToEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_JoinedToEvent implements _JoinedToEvent {
-  const _$_JoinedToEvent(this.event);
+  const _$_JoinedToEvent({required this.eventId, this.event});
 
   @override
-  final Event event;
+  final String eventId;
+  @override
+  final Event? event;
 
   @override
   String toString() {
-    return 'EventRoomEvent.joinedToEvent(event: $event)';
+    return 'EventRoomEvent.joinedToEvent(eventId: $eventId, event: $event)';
   }
 
   @override
@@ -129,11 +136,12 @@ class _$_JoinedToEvent implements _JoinedToEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_JoinedToEvent &&
+            (identical(other.eventId, eventId) || other.eventId == eventId) &&
             (identical(other.event, event) || other.event == event));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, event);
+  int get hashCode => Object.hash(runtimeType, eventId, event);
 
   @JsonKey(ignore: true)
   @override
@@ -144,33 +152,33 @@ class _$_JoinedToEvent implements _JoinedToEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) joinedToEvent,
+    required TResult Function(String eventId, Event? event) joinedToEvent,
     required TResult Function() leavedFromEvent,
     required TResult Function(EventRoomTab tab) tabChanged,
   }) {
-    return joinedToEvent(event);
+    return joinedToEvent(eventId, event);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? joinedToEvent,
+    TResult? Function(String eventId, Event? event)? joinedToEvent,
     TResult? Function()? leavedFromEvent,
     TResult? Function(EventRoomTab tab)? tabChanged,
   }) {
-    return joinedToEvent?.call(event);
+    return joinedToEvent?.call(eventId, event);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? joinedToEvent,
+    TResult Function(String eventId, Event? event)? joinedToEvent,
     TResult Function()? leavedFromEvent,
     TResult Function(EventRoomTab tab)? tabChanged,
     required TResult orElse(),
   }) {
     if (joinedToEvent != null) {
-      return joinedToEvent(event);
+      return joinedToEvent(eventId, event);
     }
     return orElse();
   }
@@ -211,9 +219,11 @@ class _$_JoinedToEvent implements _JoinedToEvent {
 }
 
 abstract class _JoinedToEvent implements EventRoomEvent {
-  const factory _JoinedToEvent(final Event event) = _$_JoinedToEvent;
+  const factory _JoinedToEvent(
+      {required final String eventId, final Event? event}) = _$_JoinedToEvent;
 
-  Event get event;
+  String get eventId;
+  Event? get event;
   @JsonKey(ignore: true)
   _$$_JoinedToEventCopyWith<_$_JoinedToEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -257,7 +267,7 @@ class _$_LeavedFromEvent implements _LeavedFromEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) joinedToEvent,
+    required TResult Function(String eventId, Event? event) joinedToEvent,
     required TResult Function() leavedFromEvent,
     required TResult Function(EventRoomTab tab) tabChanged,
   }) {
@@ -267,7 +277,7 @@ class _$_LeavedFromEvent implements _LeavedFromEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? joinedToEvent,
+    TResult? Function(String eventId, Event? event)? joinedToEvent,
     TResult? Function()? leavedFromEvent,
     TResult? Function(EventRoomTab tab)? tabChanged,
   }) {
@@ -277,7 +287,7 @@ class _$_LeavedFromEvent implements _LeavedFromEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? joinedToEvent,
+    TResult Function(String eventId, Event? event)? joinedToEvent,
     TResult Function()? leavedFromEvent,
     TResult Function(EventRoomTab tab)? tabChanged,
     required TResult orElse(),
@@ -391,7 +401,7 @@ class _$_TabChanged implements _TabChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event) joinedToEvent,
+    required TResult Function(String eventId, Event? event) joinedToEvent,
     required TResult Function() leavedFromEvent,
     required TResult Function(EventRoomTab tab) tabChanged,
   }) {
@@ -401,7 +411,7 @@ class _$_TabChanged implements _TabChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event)? joinedToEvent,
+    TResult? Function(String eventId, Event? event)? joinedToEvent,
     TResult? Function()? leavedFromEvent,
     TResult? Function(EventRoomTab tab)? tabChanged,
   }) {
@@ -411,7 +421,7 @@ class _$_TabChanged implements _TabChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event)? joinedToEvent,
+    TResult Function(String eventId, Event? event)? joinedToEvent,
     TResult Function()? leavedFromEvent,
     TResult Function(EventRoomTab tab)? tabChanged,
     required TResult orElse(),
