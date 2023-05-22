@@ -61,6 +61,7 @@ class FirebaseParticipantFacade implements ParticipantFacade {
             'lastMessageUsername': messageDto.username,
             'lastMessageCreatedAt': Timestamp.fromDate(messageDto.createdAt),
             'isLastMessageJoinedInfo': true,
+            'isLastMessageLeftInfo': false,
           },
           SetOptions(merge: true),
         );
@@ -148,6 +149,7 @@ class FirebaseParticipantFacade implements ParticipantFacade {
             'lastMessageUsername': messageDto.username,
             'lastMessageCreatedAt': Timestamp.fromDate(messageDto.createdAt),
             'isLastMessageLeftInfo': true,
+            'isLastMessageJoinedInfo': false,
           },
           SetOptions(merge: true),
         );

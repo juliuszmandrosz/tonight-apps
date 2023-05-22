@@ -71,6 +71,8 @@ class FirebaseMessageFacade implements MessageFacade {
             'lastMessageText': message.text,
             'lastMessageUsername': message.username,
             'lastMessageCreatedAt': Timestamp.fromDate(message.createdAt),
+            'isLastMessageJoinedInfo': false,
+            'isLastMessageLeftInfo': false,
           },
           SetOptions(merge: true),
         );
