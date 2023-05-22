@@ -41,14 +41,16 @@ class _TicketQrPageState extends State<TicketQrPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<TicketQrCubit>(
+      create: (context) =>
+      getIt<TicketQrCubit>(
         param1: context.read<TicketListCubit>(),
-      )..initTicketData(widget.ticket),
+      )
+        ..initTicketData(widget.ticket),
       child: BlocConsumer<TicketQrCubit, TicketQrState>(
         listener: (context, state) {
           state.snackbarMessage.fold(
-            () => null,
-            (message) => context.showSnackbarMessage(message),
+                () => null,
+                (message) => context.showSnackbarMessage(message),
           );
 
           state.ticketReturnStatus.isLoading()
@@ -65,7 +67,7 @@ class _TicketQrPageState extends State<TicketQrPage> {
           }
         },
         buildWhen: (previous, current) =>
-            previous.isVipEnabled != current.isVipEnabled ||
+        previous.isVipEnabled != current.isVipEnabled ||
             previous.ticket != current.ticket,
         builder: (context, state) {
           final ticketInState = state.ticket.getOrCrash();
@@ -77,7 +79,7 @@ class _TicketQrPageState extends State<TicketQrPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    QrImage(
+                    QrImageView(
                       data: _getData(context),
                       version: QrVersions.auto,
                       size: 300,
@@ -92,8 +94,8 @@ class _TicketQrPageState extends State<TicketQrPage> {
                     if (!ticketInState.isVip && state.isVipEnabled)
                       const UpgradeToVipButton(),
                     if (ticketInState.eventStartDateTime.isAfter(
-                          DateTime.now(),
-                        ) &&
+                      DateTime.now(),
+                    ) &&
                         ticketInState.isReturnable)
                       const TicketReturnButton(),
                   ],
@@ -108,7 +110,12 @@ class _TicketQrPageState extends State<TicketQrPage> {
 
   _getData(BuildContext context) {
     final userId =
-        context.read<ProfileBloc>().state.userProfile.getOrCrash().userId;
+        context
+            .read<ProfileBloc>()
+            .state
+            .userProfile
+            .getOrCrash()
+            .userId;
     final data = {
       'ticketId': widget.ticket.id,
       'userId': userId,
