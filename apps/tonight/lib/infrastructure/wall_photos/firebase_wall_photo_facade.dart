@@ -82,6 +82,7 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
             'lastMessageUsername': messageDto.username,
             'lastMessageCreatedAt': Timestamp.fromDate(messageDto.createdAt),
             'isLastMessageJoinedInfo': true,
+            'isLastMessageLeftInfo': false,
           },
           SetOptions(merge: true),
         );
