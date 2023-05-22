@@ -9,7 +9,7 @@ class Participant extends Equatable {
   const Participant({
     required this.userId,
     required this.username,
-    required this.profilePictureUrl,
+    this.profilePictureUrl,
   });
 
   @override

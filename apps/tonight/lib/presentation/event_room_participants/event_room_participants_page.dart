@@ -30,9 +30,23 @@ class EventRoomParticipantsPage extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               child: state.participants.isEmpty
                   ? Center(
-                      child: Text(
-                        S().noParticipants,
-                        style: context.titleMedium,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            S().noParticipants,
+                            style: context.titleSmall,
+                          ),
+                          const SizedBox(height: 20),
+                          OutlinedButton(
+                            onPressed: () =>
+                                context.read<EventRoomParticipantsBloc>().add(
+                                      const EventRoomParticipantsEvent
+                                          .participantsRefreshed(),
+                                    ),
+                            child: Text(S().refresh),
+                          ),
+                        ],
                       ),
                     )
                   : RefreshIndicator(
@@ -44,8 +58,8 @@ class EventRoomParticipantsPage extends StatelessWidget {
                       child: InfiniteList(
                         itemCount: state.participants.length,
                         hasReachedMax: state.hasReachedMax,
-                        hasError: state.fetchParticipantsStatus.isFailure(),
-                        isLoading: state.fetchParticipantsStatus.isLoading(),
+                        hasError: state.nextPageStatus.isFailure(),
+                        isLoading: state.nextPageStatus.isLoading(),
                         separatorBuilder: (_, __) => const Divider(height: 20),
                         itemBuilder: (_, i) => EventRoomParticipantListTile(
                           participant: state.participants[i],

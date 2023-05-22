@@ -69,9 +69,22 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
 
         final messageRef =
             _firestore.rooms.doc(photo.eventId).messages.doc(messageId);
+        final roomRef = _firestore.rooms.doc(photo.eventId);
 
         tx.set(participantRef, participantDto.toJson());
         tx.set(messageRef, messageDto.toJson());
+        tx.set(
+          roomRef,
+          {
+            'participantIds': FieldValue.arrayUnion([photo.userId]),
+            'lastMessageId': messageDto.id,
+            'lastMessageText': messageDto.text,
+            'lastMessageUsername': messageDto.username,
+            'lastMessageCreatedAt': Timestamp.fromDate(messageDto.createdAt),
+            'isLastMessageJoinedInfo': true,
+          },
+          SetOptions(merge: true),
+        );
       });
       return right(unit);
     } on FirebaseException catch (e) {

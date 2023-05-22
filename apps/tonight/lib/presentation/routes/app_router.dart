@@ -3,6 +3,7 @@ import 'package:payments/domain/domain.dart';
 import 'package:tonight/application/add_wall_photo/models/wall_photo_venue_model.dart';
 import 'package:tonight/presentation/add_wall_photo/add_wall_photo_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
+import 'package:tonight/presentation/chats/chats_page.dart';
 import 'package:tonight/presentation/club_city_picker/club_city_picker_page.dart';
 import 'package:tonight/presentation/club_details/club_details_page.dart';
 import 'package:tonight/presentation/contact/contact_page.dart';
@@ -72,6 +73,11 @@ const animationDuration = 300;
         ),
         CustomRoute(
           page: DiscoverPage,
+          transitionsBuilder: slideLeftTransition,
+          durationInMilliseconds: animationDuration,
+        ),
+        CustomRoute(
+          page: ChatsPage,
           transitionsBuilder: slideLeftTransition,
           durationInMilliseconds: animationDuration,
         ),
