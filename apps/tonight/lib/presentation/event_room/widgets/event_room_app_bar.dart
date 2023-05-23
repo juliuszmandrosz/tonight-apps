@@ -5,6 +5,7 @@ import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tonight/application/chats/bloc/chats_bloc.dart';
 import 'package:tonight/application/event_room/bloc/event_room_bloc.dart';
 import 'package:tonight/application/event_room/bloc/event_room_tab.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
@@ -58,6 +59,7 @@ class EventRoomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 .showConfirmationDialogWithCustomMessage(S().confirmEventLeave);
             if ((result ?? false) && context.mounted) {
               context.unfocus();
+              context.read<ChatsBloc>().add(ChatsEvent.chatLeft(event.id));
               context
                   .read<EventRoomBloc>()
                   .add(const EventRoomEvent.leavedFromEvent());

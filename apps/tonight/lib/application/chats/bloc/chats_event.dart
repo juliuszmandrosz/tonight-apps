@@ -5,4 +5,6 @@ class ChatsEvent with _$ChatsEvent {
   const factory ChatsEvent.chatsFetched() = _ChatsFetched;
 
   const factory ChatsEvent.nextPageFetched() = _NextPageFetched;
+
+  const factory ChatsEvent.chatLeft(String chatId) = _ChatLeft;
 }

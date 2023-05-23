@@ -20,18 +20,21 @@ mixin _$ChatsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() chatsFetched,
     required TResult Function() nextPageFetched,
+    required TResult Function(String chatId) chatLeft,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? chatsFetched,
     TResult? Function()? nextPageFetched,
+    TResult? Function(String chatId)? chatLeft,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? chatsFetched,
     TResult Function()? nextPageFetched,
+    TResult Function(String chatId)? chatLeft,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$ChatsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_ChatsFetched value) chatsFetched,
     required TResult Function(_NextPageFetched value) nextPageFetched,
+    required TResult Function(_ChatLeft value) chatLeft,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ChatsFetched value)? chatsFetched,
     TResult? Function(_NextPageFetched value)? nextPageFetched,
+    TResult? Function(_ChatLeft value)? chatLeft,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ChatsFetched value)? chatsFetched,
     TResult Function(_NextPageFetched value)? nextPageFetched,
+    TResult Function(_ChatLeft value)? chatLeft,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$_ChatsFetched implements _ChatsFetched {
   TResult when<TResult extends Object?>({
     required TResult Function() chatsFetched,
     required TResult Function() nextPageFetched,
+    required TResult Function(String chatId) chatLeft,
   }) {
     return chatsFetched();
   }
@@ -123,6 +130,7 @@ class _$_ChatsFetched implements _ChatsFetched {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? chatsFetched,
     TResult? Function()? nextPageFetched,
+    TResult? Function(String chatId)? chatLeft,
   }) {
     return chatsFetched?.call();
   }
@@ -132,6 +140,7 @@ class _$_ChatsFetched implements _ChatsFetched {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? chatsFetched,
     TResult Function()? nextPageFetched,
+    TResult Function(String chatId)? chatLeft,
     required TResult orElse(),
   }) {
     if (chatsFetched != null) {
@@ -145,6 +154,7 @@ class _$_ChatsFetched implements _ChatsFetched {
   TResult map<TResult extends Object?>({
     required TResult Function(_ChatsFetched value) chatsFetched,
     required TResult Function(_NextPageFetched value) nextPageFetched,
+    required TResult Function(_ChatLeft value) chatLeft,
   }) {
     return chatsFetched(this);
   }
@@ -154,6 +164,7 @@ class _$_ChatsFetched implements _ChatsFetched {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ChatsFetched value)? chatsFetched,
     TResult? Function(_NextPageFetched value)? nextPageFetched,
+    TResult? Function(_ChatLeft value)? chatLeft,
   }) {
     return chatsFetched?.call(this);
   }
@@ -163,6 +174,7 @@ class _$_ChatsFetched implements _ChatsFetched {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ChatsFetched value)? chatsFetched,
     TResult Function(_NextPageFetched value)? nextPageFetched,
+    TResult Function(_ChatLeft value)? chatLeft,
     required TResult orElse(),
   }) {
     if (chatsFetched != null) {
@@ -216,6 +228,7 @@ class _$_NextPageFetched implements _NextPageFetched {
   TResult when<TResult extends Object?>({
     required TResult Function() chatsFetched,
     required TResult Function() nextPageFetched,
+    required TResult Function(String chatId) chatLeft,
   }) {
     return nextPageFetched();
   }
@@ -225,6 +238,7 @@ class _$_NextPageFetched implements _NextPageFetched {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? chatsFetched,
     TResult? Function()? nextPageFetched,
+    TResult? Function(String chatId)? chatLeft,
   }) {
     return nextPageFetched?.call();
   }
@@ -234,6 +248,7 @@ class _$_NextPageFetched implements _NextPageFetched {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? chatsFetched,
     TResult Function()? nextPageFetched,
+    TResult Function(String chatId)? chatLeft,
     required TResult orElse(),
   }) {
     if (nextPageFetched != null) {
@@ -247,6 +262,7 @@ class _$_NextPageFetched implements _NextPageFetched {
   TResult map<TResult extends Object?>({
     required TResult Function(_ChatsFetched value) chatsFetched,
     required TResult Function(_NextPageFetched value) nextPageFetched,
+    required TResult Function(_ChatLeft value) chatLeft,
   }) {
     return nextPageFetched(this);
   }
@@ -256,6 +272,7 @@ class _$_NextPageFetched implements _NextPageFetched {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ChatsFetched value)? chatsFetched,
     TResult? Function(_NextPageFetched value)? nextPageFetched,
+    TResult? Function(_ChatLeft value)? chatLeft,
   }) {
     return nextPageFetched?.call(this);
   }
@@ -265,6 +282,7 @@ class _$_NextPageFetched implements _NextPageFetched {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ChatsFetched value)? chatsFetched,
     TResult Function(_NextPageFetched value)? nextPageFetched,
+    TResult Function(_ChatLeft value)? chatLeft,
     required TResult orElse(),
   }) {
     if (nextPageFetched != null) {
@@ -276,6 +294,145 @@ class _$_NextPageFetched implements _NextPageFetched {
 
 abstract class _NextPageFetched implements ChatsEvent {
   const factory _NextPageFetched() = _$_NextPageFetched;
+}
+
+/// @nodoc
+abstract class _$$_ChatLeftCopyWith<$Res> {
+  factory _$$_ChatLeftCopyWith(
+          _$_ChatLeft value, $Res Function(_$_ChatLeft) then) =
+      __$$_ChatLeftCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String chatId});
+}
+
+/// @nodoc
+class __$$_ChatLeftCopyWithImpl<$Res>
+    extends _$ChatsEventCopyWithImpl<$Res, _$_ChatLeft>
+    implements _$$_ChatLeftCopyWith<$Res> {
+  __$$_ChatLeftCopyWithImpl(
+      _$_ChatLeft _value, $Res Function(_$_ChatLeft) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? chatId = null,
+  }) {
+    return _then(_$_ChatLeft(
+      null == chatId
+          ? _value.chatId
+          : chatId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ChatLeft implements _ChatLeft {
+  const _$_ChatLeft(this.chatId);
+
+  @override
+  final String chatId;
+
+  @override
+  String toString() {
+    return 'ChatsEvent.chatLeft(chatId: $chatId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ChatLeft &&
+            (identical(other.chatId, chatId) || other.chatId == chatId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, chatId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ChatLeftCopyWith<_$_ChatLeft> get copyWith =>
+      __$$_ChatLeftCopyWithImpl<_$_ChatLeft>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() chatsFetched,
+    required TResult Function() nextPageFetched,
+    required TResult Function(String chatId) chatLeft,
+  }) {
+    return chatLeft(chatId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? chatsFetched,
+    TResult? Function()? nextPageFetched,
+    TResult? Function(String chatId)? chatLeft,
+  }) {
+    return chatLeft?.call(chatId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? chatsFetched,
+    TResult Function()? nextPageFetched,
+    TResult Function(String chatId)? chatLeft,
+    required TResult orElse(),
+  }) {
+    if (chatLeft != null) {
+      return chatLeft(chatId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChatsFetched value) chatsFetched,
+    required TResult Function(_NextPageFetched value) nextPageFetched,
+    required TResult Function(_ChatLeft value) chatLeft,
+  }) {
+    return chatLeft(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChatsFetched value)? chatsFetched,
+    TResult? Function(_NextPageFetched value)? nextPageFetched,
+    TResult? Function(_ChatLeft value)? chatLeft,
+  }) {
+    return chatLeft?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChatsFetched value)? chatsFetched,
+    TResult Function(_NextPageFetched value)? nextPageFetched,
+    TResult Function(_ChatLeft value)? chatLeft,
+    required TResult orElse(),
+  }) {
+    if (chatLeft != null) {
+      return chatLeft(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChatLeft implements ChatsEvent {
+  const factory _ChatLeft(final String chatId) = _$_ChatLeft;
+
+  String get chatId;
+  @JsonKey(ignore: true)
+  _$$_ChatLeftCopyWith<_$_ChatLeft> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
