@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:common/common.dart';
 import 'package:events/domain/events/event_entity.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/event_room/bloc/event_room_bloc.dart';
 import 'package:tonight/application/event_room/bloc/event_room_tab.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
 class EventRoomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -32,6 +34,19 @@ class EventRoomAppBar extends StatelessWidget implements PreferredSizeWidget {
         overflow: TextOverflow.ellipsis,
       ),
       actions: [
+        IconButton(
+          icon: const FaIcon(
+            FontAwesomeIcons.circleInfo,
+            size: 20,
+          ),
+          onPressed: () async {
+            context.unfocus();
+            final previousRouteName = context.previousRoute?.name;
+            previousRouteName == EventDetailsRoute.name
+                ? context.popRoute()
+                : context.pushRoute(EventDetailsRoute(event: event));
+          },
+        ),
         IconButton(
           icon: const FaIcon(
             FontAwesomeIcons.userXmark,

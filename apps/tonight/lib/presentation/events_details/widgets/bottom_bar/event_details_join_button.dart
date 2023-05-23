@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/extensions/router_extensions.dart';
 import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,7 +17,12 @@ class EventDetailsJoinButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
-      onPressed: () => context.pushRoute(EventRoomRoute(event: event)),
+      onPressed: () {
+        final previousRouteName = context.previousRoute?.name;
+        previousRouteName == EventRoomRoute.name
+            ? context.popRoute()
+            : context.pushRoute(EventRoomRoute(event: event));
+      },
       icon: const FaIcon(FontAwesomeIcons.arrowRightToBracket),
       label: Text(S().join),
     );
