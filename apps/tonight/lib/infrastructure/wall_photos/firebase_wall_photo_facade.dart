@@ -73,7 +73,7 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
 
         tx.set(participantRef, participantDto.toJson());
         tx.set(messageRef, messageDto.toJson());
-        tx.set(
+        tx.update(
           roomRef,
           {
             'participantIds': FieldValue.arrayUnion([photo.userId]),
@@ -85,7 +85,6 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
             'isLastMessageLeftInfo': false,
             'participantReadStatuses.${photo.userId}': true,
           },
-          SetOptions(merge: true),
         );
       });
       return right(unit);
