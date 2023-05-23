@@ -71,7 +71,9 @@ class EventChatBloc extends Bloc<EventChatEvent, EventChatState> {
     _NextPageMessagesFetched event,
     Emitter<EventChatState> emit,
   ) async {
-    if (state.hasReachedMax || state.displayedMessages.isEmpty) return;
+    if (state.hasReachedMax ||
+        state.displayedMessages.isEmpty ||
+        state.nextPageStatus.isLoading()) return;
     emit(state.copyWith(nextPageStatus: CubitStatus.loading));
     final result = await _eventChatAggregator.fetchNextPageMessages(
       roomId: state.event.getOrCrash().id,
