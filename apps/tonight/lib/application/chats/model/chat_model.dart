@@ -22,7 +22,7 @@ class Chat with _$Chat {
 
   factory Chat.fromDomain({
     required Room room,
-    required String? lastReadMessageId,
+    required String userId,
   }) =>
       Chat(
         roomId: room.id,
@@ -32,8 +32,8 @@ class Chat with _$Chat {
         lastMessageText: room.lastMessageText,
         lastMessageCreatedAt: room.lastMessageCreatedAt,
         lastMessageUsername: room.lastMessageUsername,
-        hasUnreadMessage: room.lastMessageId != lastReadMessageId,
         isLastMessageLeftInfo: room.isLastMessageLeftInfo,
         isLastMessageJoinedInfo: room.isLastMessageJoinedInfo,
+        hasUnreadMessage: room.participantReadStatuses[userId] == false,
       );
 }

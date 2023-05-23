@@ -80,7 +80,6 @@ import 'package:tonight/application/wall_photos_filters/wall_photos_filters_cubi
 import 'package:tonight/domain/club_rewards/club_rewards_aggregator.dart';
 import 'package:tonight/domain/event_review/event_review_aggregator.dart';
 import 'package:tonight/domain/festivals/festival_facade.dart';
-import 'package:tonight/domain/last_read_messages/last_read_message_facade.dart';
 import 'package:tonight/domain/messages/message_facade.dart';
 import 'package:tonight/domain/participants/participant_facade.dart';
 import 'package:tonight/domain/places/places_facade.dart';
@@ -91,7 +90,6 @@ import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/infrastructure/festivals/firebase_festival_facade.dart';
 import 'package:tonight/infrastructure/google_places/google_places_facade.dart';
-import 'package:tonight/infrastructure/last_read_messages/firebase_last_read_message_facade.dart';
 import 'package:tonight/infrastructure/messages/firebase_message_facade.dart';
 import 'package:tonight/infrastructure/participants/firebase_participant_facade.dart';
 import 'package:tonight/infrastructure/rooms/firebase_room_facade.dart';
@@ -641,15 +639,6 @@ void _registerFacades() {
 
   getIt.registerLazySingleton<RoomFacade>(
     () => FirebaseRoomFacade(
-      getIt(),
-      getIt(),
-      getIt(),
-      getIt(),
-    ),
-  );
-
-  getIt.registerLazySingleton<LastReadMessageFacade>(
-    () => FirebaseLastReadMessageFacade(
       getIt(),
       getIt(),
       getIt(),
