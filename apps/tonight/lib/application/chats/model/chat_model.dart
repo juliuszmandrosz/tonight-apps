@@ -34,6 +34,8 @@ class Chat with _$Chat {
         lastMessageUsername: room.lastMessageUsername,
         isLastMessageLeftInfo: room.isLastMessageLeftInfo,
         isLastMessageJoinedInfo: room.isLastMessageJoinedInfo,
-        hasUnreadMessage: room.participantReadStatuses[userId] == false,
+        hasUnreadMessage: room.participantReadStatuses.containsKey(userId)
+            ? room.participantReadStatuses[userId] == false
+            : true,
       );
 }
