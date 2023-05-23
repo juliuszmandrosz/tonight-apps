@@ -64,7 +64,7 @@ class FirebaseMessageFacade implements MessageFacade {
         final roomRef = _firestore.rooms.doc(roomId);
         final messageDto = MessageDto.fromDomain(message);
         tx.set(messageRef, messageDto.toJson());
-        tx.set(
+        tx.update(
           roomRef,
           {
             'lastMessageId': message.id,
@@ -74,7 +74,6 @@ class FirebaseMessageFacade implements MessageFacade {
             'isLastMessageJoinedInfo': false,
             'isLastMessageLeftInfo': false,
           },
-          SetOptions(merge: true),
         );
       });
       return right(unit);
