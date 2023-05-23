@@ -18,33 +18,39 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ChatsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() chatsInitialized,
+    required TResult Function() chatsFetched,
+    required TResult Function() nextPageFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? chatsInitialized,
+    TResult? Function()? chatsFetched,
+    TResult? Function()? nextPageFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? chatsInitialized,
+    TResult Function()? chatsFetched,
+    TResult Function()? nextPageFetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ChatsInitialized value) chatsInitialized,
+    required TResult Function(_ChatsFetched value) chatsFetched,
+    required TResult Function(_NextPageFetched value) nextPageFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ChatsInitialized value)? chatsInitialized,
+    TResult? Function(_ChatsFetched value)? chatsFetched,
+    TResult? Function(_NextPageFetched value)? nextPageFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ChatsInitialized value)? chatsInitialized,
+    TResult Function(_ChatsFetched value)? chatsFetched,
+    TResult Function(_NextPageFetched value)? nextPageFetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,35 +75,35 @@ class _$ChatsEventCopyWithImpl<$Res, $Val extends ChatsEvent>
 }
 
 /// @nodoc
-abstract class _$$_ChatsInitializedCopyWith<$Res> {
-  factory _$$_ChatsInitializedCopyWith(
-          _$_ChatsInitialized value, $Res Function(_$_ChatsInitialized) then) =
-      __$$_ChatsInitializedCopyWithImpl<$Res>;
+abstract class _$$_ChatsFetchedCopyWith<$Res> {
+  factory _$$_ChatsFetchedCopyWith(
+          _$_ChatsFetched value, $Res Function(_$_ChatsFetched) then) =
+      __$$_ChatsFetchedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ChatsInitializedCopyWithImpl<$Res>
-    extends _$ChatsEventCopyWithImpl<$Res, _$_ChatsInitialized>
-    implements _$$_ChatsInitializedCopyWith<$Res> {
-  __$$_ChatsInitializedCopyWithImpl(
-      _$_ChatsInitialized _value, $Res Function(_$_ChatsInitialized) _then)
+class __$$_ChatsFetchedCopyWithImpl<$Res>
+    extends _$ChatsEventCopyWithImpl<$Res, _$_ChatsFetched>
+    implements _$$_ChatsFetchedCopyWith<$Res> {
+  __$$_ChatsFetchedCopyWithImpl(
+      _$_ChatsFetched _value, $Res Function(_$_ChatsFetched) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ChatsInitialized implements _ChatsInitialized {
-  const _$_ChatsInitialized();
+class _$_ChatsFetched implements _ChatsFetched {
+  const _$_ChatsFetched();
 
   @override
   String toString() {
-    return 'ChatsEvent.chatsInitialized()';
+    return 'ChatsEvent.chatsFetched()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ChatsInitialized);
+        (other.runtimeType == runtimeType && other is _$_ChatsFetched);
   }
 
   @override
@@ -106,27 +112,30 @@ class _$_ChatsInitialized implements _ChatsInitialized {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() chatsInitialized,
+    required TResult Function() chatsFetched,
+    required TResult Function() nextPageFetched,
   }) {
-    return chatsInitialized();
+    return chatsFetched();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? chatsInitialized,
+    TResult? Function()? chatsFetched,
+    TResult? Function()? nextPageFetched,
   }) {
-    return chatsInitialized?.call();
+    return chatsFetched?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? chatsInitialized,
+    TResult Function()? chatsFetched,
+    TResult Function()? nextPageFetched,
     required TResult orElse(),
   }) {
-    if (chatsInitialized != null) {
-      return chatsInitialized();
+    if (chatsFetched != null) {
+      return chatsFetched();
     }
     return orElse();
   }
@@ -134,40 +143,147 @@ class _$_ChatsInitialized implements _ChatsInitialized {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ChatsInitialized value) chatsInitialized,
+    required TResult Function(_ChatsFetched value) chatsFetched,
+    required TResult Function(_NextPageFetched value) nextPageFetched,
   }) {
-    return chatsInitialized(this);
+    return chatsFetched(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ChatsInitialized value)? chatsInitialized,
+    TResult? Function(_ChatsFetched value)? chatsFetched,
+    TResult? Function(_NextPageFetched value)? nextPageFetched,
   }) {
-    return chatsInitialized?.call(this);
+    return chatsFetched?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ChatsInitialized value)? chatsInitialized,
+    TResult Function(_ChatsFetched value)? chatsFetched,
+    TResult Function(_NextPageFetched value)? nextPageFetched,
     required TResult orElse(),
   }) {
-    if (chatsInitialized != null) {
-      return chatsInitialized(this);
+    if (chatsFetched != null) {
+      return chatsFetched(this);
     }
     return orElse();
   }
 }
 
-abstract class _ChatsInitialized implements ChatsEvent {
-  const factory _ChatsInitialized() = _$_ChatsInitialized;
+abstract class _ChatsFetched implements ChatsEvent {
+  const factory _ChatsFetched() = _$_ChatsFetched;
+}
+
+/// @nodoc
+abstract class _$$_NextPageFetchedCopyWith<$Res> {
+  factory _$$_NextPageFetchedCopyWith(
+          _$_NextPageFetched value, $Res Function(_$_NextPageFetched) then) =
+      __$$_NextPageFetchedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_NextPageFetchedCopyWithImpl<$Res>
+    extends _$ChatsEventCopyWithImpl<$Res, _$_NextPageFetched>
+    implements _$$_NextPageFetchedCopyWith<$Res> {
+  __$$_NextPageFetchedCopyWithImpl(
+      _$_NextPageFetched _value, $Res Function(_$_NextPageFetched) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_NextPageFetched implements _NextPageFetched {
+  const _$_NextPageFetched();
+
+  @override
+  String toString() {
+    return 'ChatsEvent.nextPageFetched()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_NextPageFetched);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() chatsFetched,
+    required TResult Function() nextPageFetched,
+  }) {
+    return nextPageFetched();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? chatsFetched,
+    TResult? Function()? nextPageFetched,
+  }) {
+    return nextPageFetched?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? chatsFetched,
+    TResult Function()? nextPageFetched,
+    required TResult orElse(),
+  }) {
+    if (nextPageFetched != null) {
+      return nextPageFetched();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChatsFetched value) chatsFetched,
+    required TResult Function(_NextPageFetched value) nextPageFetched,
+  }) {
+    return nextPageFetched(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChatsFetched value)? chatsFetched,
+    TResult? Function(_NextPageFetched value)? nextPageFetched,
+  }) {
+    return nextPageFetched?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChatsFetched value)? chatsFetched,
+    TResult Function(_NextPageFetched value)? nextPageFetched,
+    required TResult orElse(),
+  }) {
+    if (nextPageFetched != null) {
+      return nextPageFetched(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NextPageFetched implements ChatsEvent {
+  const factory _NextPageFetched() = _$_NextPageFetched;
 }
 
 /// @nodoc
 mixin _$ChatsState {
   List<Chat> get chats => throw _privateConstructorUsedError;
-  CubitStatus get status => throw _privateConstructorUsedError;
+  CubitStatus get fetchChatsStatus => throw _privateConstructorUsedError;
+  CubitStatus get fetchNextPageStatus => throw _privateConstructorUsedError;
+  bool get hasReachedMax => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChatsStateCopyWith<ChatsState> get copyWith =>
@@ -180,7 +296,11 @@ abstract class $ChatsStateCopyWith<$Res> {
           ChatsState value, $Res Function(ChatsState) then) =
       _$ChatsStateCopyWithImpl<$Res, ChatsState>;
   @useResult
-  $Res call({List<Chat> chats, CubitStatus status});
+  $Res call(
+      {List<Chat> chats,
+      CubitStatus fetchChatsStatus,
+      CubitStatus fetchNextPageStatus,
+      bool hasReachedMax});
 }
 
 /// @nodoc
@@ -197,17 +317,27 @@ class _$ChatsStateCopyWithImpl<$Res, $Val extends ChatsState>
   @override
   $Res call({
     Object? chats = null,
-    Object? status = null,
+    Object? fetchChatsStatus = null,
+    Object? fetchNextPageStatus = null,
+    Object? hasReachedMax = null,
   }) {
     return _then(_value.copyWith(
       chats: null == chats
           ? _value.chats
           : chats // ignore: cast_nullable_to_non_nullable
               as List<Chat>,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      fetchChatsStatus: null == fetchChatsStatus
+          ? _value.fetchChatsStatus
+          : fetchChatsStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
+      fetchNextPageStatus: null == fetchNextPageStatus
+          ? _value.fetchNextPageStatus
+          : fetchNextPageStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      hasReachedMax: null == hasReachedMax
+          ? _value.hasReachedMax
+          : hasReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -220,7 +350,11 @@ abstract class _$$_ChatsStateCopyWith<$Res>
       __$$_ChatsStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Chat> chats, CubitStatus status});
+  $Res call(
+      {List<Chat> chats,
+      CubitStatus fetchChatsStatus,
+      CubitStatus fetchNextPageStatus,
+      bool hasReachedMax});
 }
 
 /// @nodoc
@@ -235,17 +369,27 @@ class __$$_ChatsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? chats = null,
-    Object? status = null,
+    Object? fetchChatsStatus = null,
+    Object? fetchNextPageStatus = null,
+    Object? hasReachedMax = null,
   }) {
     return _then(_$_ChatsState(
       chats: null == chats
           ? _value._chats
           : chats // ignore: cast_nullable_to_non_nullable
               as List<Chat>,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      fetchChatsStatus: null == fetchChatsStatus
+          ? _value.fetchChatsStatus
+          : fetchChatsStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
+      fetchNextPageStatus: null == fetchNextPageStatus
+          ? _value.fetchNextPageStatus
+          : fetchNextPageStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      hasReachedMax: null == hasReachedMax
+          ? _value.hasReachedMax
+          : hasReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -253,7 +397,11 @@ class __$$_ChatsStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ChatsState implements _ChatsState {
-  const _$_ChatsState({required final List<Chat> chats, required this.status})
+  const _$_ChatsState(
+      {required final List<Chat> chats,
+      required this.fetchChatsStatus,
+      required this.fetchNextPageStatus,
+      required this.hasReachedMax})
       : _chats = chats;
 
   final List<Chat> _chats;
@@ -265,11 +413,15 @@ class _$_ChatsState implements _ChatsState {
   }
 
   @override
-  final CubitStatus status;
+  final CubitStatus fetchChatsStatus;
+  @override
+  final CubitStatus fetchNextPageStatus;
+  @override
+  final bool hasReachedMax;
 
   @override
   String toString() {
-    return 'ChatsState(chats: $chats, status: $status)';
+    return 'ChatsState(chats: $chats, fetchChatsStatus: $fetchChatsStatus, fetchNextPageStatus: $fetchNextPageStatus, hasReachedMax: $hasReachedMax)';
   }
 
   @override
@@ -278,12 +430,21 @@ class _$_ChatsState implements _ChatsState {
         (other.runtimeType == runtimeType &&
             other is _$_ChatsState &&
             const DeepCollectionEquality().equals(other._chats, _chats) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.fetchChatsStatus, fetchChatsStatus) ||
+                other.fetchChatsStatus == fetchChatsStatus) &&
+            (identical(other.fetchNextPageStatus, fetchNextPageStatus) ||
+                other.fetchNextPageStatus == fetchNextPageStatus) &&
+            (identical(other.hasReachedMax, hasReachedMax) ||
+                other.hasReachedMax == hasReachedMax));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_chats), status);
+      runtimeType,
+      const DeepCollectionEquality().hash(_chats),
+      fetchChatsStatus,
+      fetchNextPageStatus,
+      hasReachedMax);
 
   @JsonKey(ignore: true)
   @override
@@ -295,12 +456,18 @@ class _$_ChatsState implements _ChatsState {
 abstract class _ChatsState implements ChatsState {
   const factory _ChatsState(
       {required final List<Chat> chats,
-      required final CubitStatus status}) = _$_ChatsState;
+      required final CubitStatus fetchChatsStatus,
+      required final CubitStatus fetchNextPageStatus,
+      required final bool hasReachedMax}) = _$_ChatsState;
 
   @override
   List<Chat> get chats;
   @override
-  CubitStatus get status;
+  CubitStatus get fetchChatsStatus;
+  @override
+  CubitStatus get fetchNextPageStatus;
+  @override
+  bool get hasReachedMax;
   @override
   @JsonKey(ignore: true)
   _$$_ChatsStateCopyWith<_$_ChatsState> get copyWith =>

@@ -711,7 +711,6 @@ void _registerAggregators() {
   getIt.registerLazySingleton(
     () => ChatsAggregator(
       getIt(),
-      getIt(),
     ),
   );
 }

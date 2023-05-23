@@ -11,7 +11,6 @@ class Chat with _$Chat {
     required String roomId,
     required String roomName,
     required String roomPhotoUrl,
-    required bool hasUnreadMessage,
     required String? lastMessageId,
     required String? lastMessageText,
     required String? lastMessageUsername,
@@ -20,11 +19,7 @@ class Chat with _$Chat {
     @Default(false) bool isLastMessageJoinedInfo,
   }) = _Chat;
 
-  factory Chat.fromDomain({
-    required Room room,
-    required String userId,
-  }) =>
-      Chat(
+  factory Chat.fromRoom(Room room) => Chat(
         roomId: room.id,
         roomName: room.roomName,
         roomPhotoUrl: room.roomPhotoUrl,
@@ -34,8 +29,5 @@ class Chat with _$Chat {
         lastMessageUsername: room.lastMessageUsername,
         isLastMessageLeftInfo: room.isLastMessageLeftInfo,
         isLastMessageJoinedInfo: room.isLastMessageJoinedInfo,
-        hasUnreadMessage: room.participantReadStatuses.containsKey(userId)
-            ? room.participantReadStatuses[userId] == false
-            : true,
       );
 }
