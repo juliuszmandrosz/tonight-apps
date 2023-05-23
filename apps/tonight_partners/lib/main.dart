@@ -18,43 +18,35 @@ Future<void> main() async {
 
   await dotenv.load();
 
-  await runZonedGuarded(
-    () async {
-      WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
 
-      _configureTimeAgo();
+  _configureTimeAgo();
 
-      await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
-
-      await FirebaseAppCheck.instance.activate(
-        webRecaptchaSiteKey: 'recaptcha-v3-site-key',
-      );
-
-      registerDependencies();
-
-      SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-        DeviceOrientation.portraitDown,
-      ]);
-
-      _configureTimeAgo();
-
-      runApp(TonightPartnersApp());
-    },
-    (error, stack) =>
-        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true),
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  final crashlytics = getIt<FirebaseCrashlytics>();
+  await FirebaseAppCheck.instance.activate(
+    webRecaptchaSiteKey: 'recaptcha-v3-site-key',
+  );
 
-  FlutterError.onError = crashlytics.recordFlutterFatalError;
+  registerDependencies();
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  _configureTimeAgo();
+
+  runApp(TonightPartnersApp());
+
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
   Isolate.current.addErrorListener(
     RawReceivePort((pair) async {
       final List<dynamic> errorAndStacktrace = pair;
-      await crashlytics.recordError(
+      await FirebaseCrashlytics.instance.recordError(
         errorAndStacktrace.first,
         errorAndStacktrace.last,
         fatal: true,
