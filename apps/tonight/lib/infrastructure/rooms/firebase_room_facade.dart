@@ -23,48 +23,30 @@ class FirebaseRoomFacade implements RoomFacade {
   );
 
   @override
-  Stream<Either<RoomFailure, List<Room>>> listenToUserRooms() async* {
-    final currentUserId = _auth.tryGetFirebaseUser().uid;
-
-    final roomsRef = _firestore.rooms
-        .where('participantIds', arrayContains: currentUserId)
-        .orderBy('lastMessageCreatedAt', descending: true);
-
-    yield* roomsRef.snapshots().map(
-      (snapshot) {
-        return right<RoomFailure, List<Room>>(
-          snapshot.docs
-              .map((doc) => RoomDto.fromFirebase(doc).toDomain())
-              .toList(),
-        );
-      },
-    ).handleError((e) async {
-      if (e is FirebaseException) {
-        return left(
-          handleFirebaseError<RoomFailure>(
-            logger: _logger,
-            crashlytics: _crashlytics,
-            exception: e,
-            message: '$e',
-            unexpectedFailure: const RoomFailure.unexpected(),
-            permissionDeniedFailure: const RoomFailure.permissionDenied(),
-          ),
-        );
-      }
-    });
-  }
-
-  @override
-  Future<Either<RoomFailure, Unit>> markMessageAsRead({
-    required String roomId,
-    required String messageId,
+  Future<Either<RoomFailure, List<Room>>> getUserRooms({
+    int pageSize = 20,
+    String? lastRoomId,
   }) async {
     try {
       final currentUserId = _auth.tryGetFirebaseUser().uid;
-      await _firestore.rooms.doc(roomId).update({
-        'participantReadStatuses.$currentUserId': true,
-      });
-      return right(unit);
+
+      var query = _firestore.rooms
+          .where('participantIds', arrayContains: currentUserId)
+          .orderBy('lastMessageCreatedAt', descending: true)
+          .limit(pageSize);
+
+      if (lastRoomId != null) {
+        final lastRoomDoc = await _firestore.rooms.doc(lastRoomId).get();
+        query = query.startAfterDocument(lastRoomDoc);
+      }
+
+      final snapshot = await query.get();
+
+      return right<RoomFailure, List<Room>>(
+        snapshot.docs
+            .map((doc) => RoomDto.fromFirebase(doc).toDomain())
+            .toList(),
+      );
     } on FirebaseException catch (e) {
       await _crashlytics.recordError(e, StackTrace.current);
       _logger.e(e);

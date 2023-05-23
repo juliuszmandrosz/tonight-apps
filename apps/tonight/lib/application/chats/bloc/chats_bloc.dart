@@ -10,25 +10,60 @@ part 'chats_bloc.freezed.dart';
 part 'chats_event.dart';
 part 'chats_state.dart';
 
+const _pageSize = 20;
+
 class ChatsBloc extends Bloc<ChatsEvent, ChatsState> {
   final ChatsAggregator _chatsAggregator;
 
   ChatsBloc(this._chatsAggregator) : super(ChatsState.initial()) {
-    on<_ChatsInitialized>(_onChatsInitialized);
+    on<_ChatsFetched>(_onChatsFetched);
+    on<_NextPageFetched>(
+      _onNextPageFetched,
+      transformer: throttleDroppable(),
+    );
   }
 
-  FutureOr<void> _onChatsInitialized(
-    _ChatsInitialized event,
+  FutureOr<void> _onChatsFetched(
+    _ChatsFetched event,
     Emitter<ChatsState> emit,
   ) async {
-    emit(state.copyWith(status: CubitStatus.loading));
-    await emit.forEach(
-      _chatsAggregator.listenToUserChats(),
-      onData: (data) => data.fold(
-        (_) => state.copyWith(status: CubitStatus.failure),
-        (chats) => state.copyWith(
-          status: CubitStatus.success,
+    emit(state.copyWith(fetchChatsStatus: CubitStatus.loading));
+    final result = await _chatsAggregator.getUserChats(pageSize: _pageSize);
+    result.fold(
+      (failure) => emit(state.copyWith(fetchChatsStatus: CubitStatus.failure)),
+      (chats) => emit(
+        state.copyWith(
+          fetchChatsStatus: CubitStatus.success,
           chats: chats,
+          hasReachedMax: chats.length < _pageSize,
+        ),
+      ),
+    );
+  }
+
+  FutureOr<void> _onNextPageFetched(
+    _NextPageFetched event,
+    Emitter<ChatsState> emit,
+  ) async {
+    if (state.chats.isEmpty ||
+        state.hasReachedMax ||
+        state.fetchNextPageStatus.isLoading()) {
+      return;
+    }
+
+    final result = await _chatsAggregator.getUserChats(
+      pageSize: _pageSize,
+      lastRoomId: state.chats.last.roomId,
+    );
+
+    result.fold(
+      (failure) =>
+          emit(state.copyWith(fetchNextPageStatus: CubitStatus.failure)),
+      (chats) => emit(
+        state.copyWith(
+          fetchNextPageStatus: CubitStatus.success,
+          chats: [...state.chats, ...chats],
+          hasReachedMax: chats.length < _pageSize,
         ),
       ),
     );
