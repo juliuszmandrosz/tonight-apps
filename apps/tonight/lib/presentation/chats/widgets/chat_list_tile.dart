@@ -23,9 +23,7 @@ class ChatListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DenseListTile(
-      onTap: () => context.pushRoute(
-        EventRoomRoute(eventId: chat.roomId),
-      ),
+      onTap: () => context.pushRoute(EventRoomRoute(eventId: chat.roomId)),
       leading: ProfilePictureContainer(
         username: chat.roomName,
         profilePictureUrl: chat.roomPhotoUrl,
