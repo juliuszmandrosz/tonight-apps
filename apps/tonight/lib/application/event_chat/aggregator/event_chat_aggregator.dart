@@ -73,17 +73,11 @@ class EventChatAggregator {
   }) async* {
     yield* _messageFacade
         .listenToMessages(roomId: roomId, pageSize: pageSize)
-        .asyncMap(
+        .map(
       (messagesResult) {
         return messagesResult.fold(
           (_) => left(const EventChatFailure.unexpected()),
-          (messages) async {
-            if (messages.isNotEmpty) {
-              await _roomFacade.markMessageAsRead(
-                roomId: roomId,
-                messageId: messages.first.id,
-              );
-            }
+          (messages) {
             final chatMessages = messages
                 .map(
                   (msg) => ChatMessage.fromDomain(

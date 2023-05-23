@@ -19,7 +19,6 @@ mixin _$Chat {
   String get roomId => throw _privateConstructorUsedError;
   String get roomName => throw _privateConstructorUsedError;
   String get roomPhotoUrl => throw _privateConstructorUsedError;
-  bool get hasUnreadMessage => throw _privateConstructorUsedError;
   String? get lastMessageId => throw _privateConstructorUsedError;
   String? get lastMessageText => throw _privateConstructorUsedError;
   String? get lastMessageUsername => throw _privateConstructorUsedError;
@@ -40,7 +39,6 @@ abstract class $ChatCopyWith<$Res> {
       {String roomId,
       String roomName,
       String roomPhotoUrl,
-      bool hasUnreadMessage,
       String? lastMessageId,
       String? lastMessageText,
       String? lastMessageUsername,
@@ -65,7 +63,6 @@ class _$ChatCopyWithImpl<$Res, $Val extends Chat>
     Object? roomId = null,
     Object? roomName = null,
     Object? roomPhotoUrl = null,
-    Object? hasUnreadMessage = null,
     Object? lastMessageId = freezed,
     Object? lastMessageText = freezed,
     Object? lastMessageUsername = freezed,
@@ -86,10 +83,6 @@ class _$ChatCopyWithImpl<$Res, $Val extends Chat>
           ? _value.roomPhotoUrl
           : roomPhotoUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      hasUnreadMessage: null == hasUnreadMessage
-          ? _value.hasUnreadMessage
-          : hasUnreadMessage // ignore: cast_nullable_to_non_nullable
-              as bool,
       lastMessageId: freezed == lastMessageId
           ? _value.lastMessageId
           : lastMessageId // ignore: cast_nullable_to_non_nullable
@@ -128,7 +121,6 @@ abstract class _$$_ChatCopyWith<$Res> implements $ChatCopyWith<$Res> {
       {String roomId,
       String roomName,
       String roomPhotoUrl,
-      bool hasUnreadMessage,
       String? lastMessageId,
       String? lastMessageText,
       String? lastMessageUsername,
@@ -149,7 +141,6 @@ class __$$_ChatCopyWithImpl<$Res> extends _$ChatCopyWithImpl<$Res, _$_Chat>
     Object? roomId = null,
     Object? roomName = null,
     Object? roomPhotoUrl = null,
-    Object? hasUnreadMessage = null,
     Object? lastMessageId = freezed,
     Object? lastMessageText = freezed,
     Object? lastMessageUsername = freezed,
@@ -170,10 +161,6 @@ class __$$_ChatCopyWithImpl<$Res> extends _$ChatCopyWithImpl<$Res, _$_Chat>
           ? _value.roomPhotoUrl
           : roomPhotoUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      hasUnreadMessage: null == hasUnreadMessage
-          ? _value.hasUnreadMessage
-          : hasUnreadMessage // ignore: cast_nullable_to_non_nullable
-              as bool,
       lastMessageId: freezed == lastMessageId
           ? _value.lastMessageId
           : lastMessageId // ignore: cast_nullable_to_non_nullable
@@ -209,7 +196,6 @@ class _$_Chat extends _Chat {
       {required this.roomId,
       required this.roomName,
       required this.roomPhotoUrl,
-      required this.hasUnreadMessage,
       required this.lastMessageId,
       required this.lastMessageText,
       required this.lastMessageUsername,
@@ -224,8 +210,6 @@ class _$_Chat extends _Chat {
   final String roomName;
   @override
   final String roomPhotoUrl;
-  @override
-  final bool hasUnreadMessage;
   @override
   final String? lastMessageId;
   @override
@@ -243,7 +227,7 @@ class _$_Chat extends _Chat {
 
   @override
   String toString() {
-    return 'Chat(roomId: $roomId, roomName: $roomName, roomPhotoUrl: $roomPhotoUrl, hasUnreadMessage: $hasUnreadMessage, lastMessageId: $lastMessageId, lastMessageText: $lastMessageText, lastMessageUsername: $lastMessageUsername, lastMessageCreatedAt: $lastMessageCreatedAt, isLastMessageLeftInfo: $isLastMessageLeftInfo, isLastMessageJoinedInfo: $isLastMessageJoinedInfo)';
+    return 'Chat(roomId: $roomId, roomName: $roomName, roomPhotoUrl: $roomPhotoUrl, lastMessageId: $lastMessageId, lastMessageText: $lastMessageText, lastMessageUsername: $lastMessageUsername, lastMessageCreatedAt: $lastMessageCreatedAt, isLastMessageLeftInfo: $isLastMessageLeftInfo, isLastMessageJoinedInfo: $isLastMessageJoinedInfo)';
   }
 
   @override
@@ -256,8 +240,6 @@ class _$_Chat extends _Chat {
                 other.roomName == roomName) &&
             (identical(other.roomPhotoUrl, roomPhotoUrl) ||
                 other.roomPhotoUrl == roomPhotoUrl) &&
-            (identical(other.hasUnreadMessage, hasUnreadMessage) ||
-                other.hasUnreadMessage == hasUnreadMessage) &&
             (identical(other.lastMessageId, lastMessageId) ||
                 other.lastMessageId == lastMessageId) &&
             (identical(other.lastMessageText, lastMessageText) ||
@@ -279,7 +261,6 @@ class _$_Chat extends _Chat {
       roomId,
       roomName,
       roomPhotoUrl,
-      hasUnreadMessage,
       lastMessageId,
       lastMessageText,
       lastMessageUsername,
@@ -299,7 +280,6 @@ abstract class _Chat extends Chat {
       {required final String roomId,
       required final String roomName,
       required final String roomPhotoUrl,
-      required final bool hasUnreadMessage,
       required final String? lastMessageId,
       required final String? lastMessageText,
       required final String? lastMessageUsername,
@@ -314,8 +294,6 @@ abstract class _Chat extends Chat {
   String get roomName;
   @override
   String get roomPhotoUrl;
-  @override
-  bool get hasUnreadMessage;
   @override
   String? get lastMessageId;
   @override

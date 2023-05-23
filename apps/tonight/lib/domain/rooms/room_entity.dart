@@ -7,9 +7,6 @@ class Room extends Equatable {
   final String roomName;
   final String roomPhotoUrl;
   final List<String> participantIds;
-
-  /// Key is participantId, value is if participant read last message
-  final Map<String, bool> participantReadStatuses;
   final String? lastMessageId;
   final String? lastMessageText;
   final String? lastMessageUsername;
@@ -26,7 +23,6 @@ class Room extends Equatable {
     this.lastMessageUsername,
     this.lastMessageCreatedAt,
     this.participantIds = const [],
-    this.participantReadStatuses = const {},
     this.isLastMessageJoinedInfo = false,
     this.isLastMessageLeftInfo = false,
   }) : id = id ?? const Uuid().v1();
@@ -37,7 +33,6 @@ class Room extends Equatable {
         roomName,
         roomPhotoUrl,
         participantIds,
-        participantReadStatuses,
         lastMessageId,
         lastMessageText,
         lastMessageUsername,

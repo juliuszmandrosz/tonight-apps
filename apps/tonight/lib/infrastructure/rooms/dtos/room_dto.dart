@@ -22,9 +22,6 @@ class RoomDto with _$RoomDto {
     @Default(false) bool isLastMessageLeftInfo,
     @Default(false) bool isLastMessageJoinedInfo,
     @Default([]) List<String> participantIds,
-
-    /// Key is participantId, value is if participant read last message
-    @Default({}) Map<String, bool> participantReadStatuses,
   }) = _RoomDto;
 
   factory RoomDto.fromJson(Map<String, dynamic> json) =>
@@ -41,7 +38,6 @@ class RoomDto with _$RoomDto {
       roomName: room.roomName,
       roomPhotoUrl: room.roomPhotoUrl,
       participantIds: room.participantIds,
-      participantReadStatuses: room.participantReadStatuses,
       lastMessageId: room.lastMessageId,
       lastMessageText: room.lastMessageText,
       lastMessageUsername: room.lastMessageUsername,
@@ -57,7 +53,6 @@ class RoomDto with _$RoomDto {
       roomName: roomName,
       roomPhotoUrl: roomPhotoUrl,
       participantIds: participantIds,
-      participantReadStatuses: participantReadStatuses,
       lastMessageId: lastMessageId,
       lastMessageText: lastMessageText,
       lastMessageUsername: lastMessageUsername,
