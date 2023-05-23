@@ -62,6 +62,11 @@ class FirebaseMessageFacade implements MessageFacade {
         final messageRef =
             _firestore.rooms.doc(roomId).messages.doc(message.id);
         final roomRef = _firestore.rooms.doc(roomId);
+        final roomSnapshot = await tx.get(roomRef);
+        final participantReadStatuses =
+            roomSnapshot['participantReadStatuses'].cast<String, bool>();
+        participantReadStatuses.updateAll((key, value) => false);
+        participantReadStatuses[message.userId] = true;
         final messageDto = MessageDto.fromDomain(message);
         tx.set(messageRef, messageDto.toJson());
         tx.set(
@@ -73,7 +78,7 @@ class FirebaseMessageFacade implements MessageFacade {
             'lastMessageCreatedAt': Timestamp.fromDate(message.createdAt),
             'isLastMessageJoinedInfo': false,
             'isLastMessageLeftInfo': false,
-            'participantReadStatuses.${message.userId}': true,
+            'participantReadStatuses': participantReadStatuses,
           },
           SetOptions(merge: true),
         );
