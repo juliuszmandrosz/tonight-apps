@@ -21,6 +21,7 @@ class ChatsBloc extends Bloc<ChatsEvent, ChatsState> {
       _onNextPageFetched,
       transformer: throttleDroppable(),
     );
+    on<_ChatLeft>(_onChatLeft);
   }
 
   FutureOr<void> _onChatsFetched(
@@ -67,5 +68,14 @@ class ChatsBloc extends Bloc<ChatsEvent, ChatsState> {
         ),
       ),
     );
+  }
+
+  FutureOr<void> _onChatLeft(
+    _ChatLeft event,
+    Emitter<ChatsState> emit,
+  ) {
+    final updatedChats = [...state.chats]
+      ..removeWhere((c) => c.roomId == event.chatId);
+    emit(state.copyWith(chats: updatedChats));
   }
 }
