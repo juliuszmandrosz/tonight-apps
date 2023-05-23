@@ -34,11 +34,7 @@ class ChatListTile extends StatelessWidget {
       ),
       title: Text(
         chat.roomName,
-        style: chat.hasUnreadMessage
-            ? context.titleSmall.copyWith(
-                fontWeight: FontWeight.bold,
-              )
-            : context.titleSmall,
+        style: context.titleSmall,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
@@ -47,14 +43,9 @@ class ChatListTile extends StatelessWidget {
               padding: const EdgeInsets.only(top: 8),
               child: Text(
                 _messageText,
-                style: chat.hasUnreadMessage
-                    ? context.bodySmall.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: context.secondaryColor,
-                      )
-                    : context.bodySmall.copyWith(
-                        color: context.secondaryColor,
-                      ),
+                style: context.bodySmall.copyWith(
+                  color: context.secondaryColor,
+                ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -72,16 +63,6 @@ class ChatListTile extends StatelessWidget {
                           .formatDateTimeToLocaleHM(chat.lastMessageCreatedAt!),
                   style: context.labelSmall,
                 ),
-                if (chat.hasUnreadMessage)
-                  Container(
-                    margin: const EdgeInsets.only(top: 8),
-                    width: 10,
-                    height: 10,
-                    decoration: BoxDecoration(
-                      color: context.primaryColor,
-                      shape: BoxShape.circle,
-                    ),
-                  ),
               ],
             )
           : null,

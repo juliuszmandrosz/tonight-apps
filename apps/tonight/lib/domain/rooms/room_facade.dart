@@ -3,10 +3,8 @@ import 'package:tonight/domain/rooms/room_entity.dart';
 import 'package:tonight/domain/rooms/room_failure.dart';
 
 abstract class RoomFacade {
-  Stream<Either<RoomFailure, List<Room>>> listenToUserRooms();
-
-  Future<Either<RoomFailure, Unit>> markMessageAsRead({
-    required String roomId,
-    required String messageId,
+  Future<Either<RoomFailure, List<Room>>> getUserRooms({
+    int pageSize = 20,
+    String? lastRoomId,
   });
 }
