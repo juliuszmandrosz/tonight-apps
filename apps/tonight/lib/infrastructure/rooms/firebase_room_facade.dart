@@ -53,4 +53,22 @@ class FirebaseRoomFacade implements RoomFacade {
       }
     });
   }
+
+  @override
+  Future<Either<RoomFailure, Unit>> markMessageAsRead({
+    required String roomId,
+    required String messageId,
+  }) async {
+    try {
+      final currentUserId = _auth.tryGetFirebaseUser().uid;
+      await _firestore.rooms.doc(roomId).update({
+        'participantReadStatuses.$currentUserId': true,
+      });
+      return right(unit);
+    } on FirebaseException catch (e) {
+      await _crashlytics.recordError(e, StackTrace.current);
+      _logger.e(e);
+      return left(const RoomFailure.unexpected());
+    }
+  }
 }

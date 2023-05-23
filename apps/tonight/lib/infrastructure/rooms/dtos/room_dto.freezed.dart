@@ -33,6 +33,10 @@ mixin _$RoomDto {
   bool get isLastMessageJoinedInfo => throw _privateConstructorUsedError;
   List<String> get participantIds => throw _privateConstructorUsedError;
 
+  /// Key is participantId, value is if participant read last message
+  Map<String, bool> get participantReadStatuses =>
+      throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $RoomDtoCopyWith<RoomDto> get copyWith => throw _privateConstructorUsedError;
@@ -53,7 +57,8 @@ abstract class $RoomDtoCopyWith<$Res> {
       @FirebaseNullableTimestampJsonConverter() DateTime? lastMessageCreatedAt,
       bool isLastMessageLeftInfo,
       bool isLastMessageJoinedInfo,
-      List<String> participantIds});
+      List<String> participantIds,
+      Map<String, bool> participantReadStatuses});
 }
 
 /// @nodoc
@@ -79,6 +84,7 @@ class _$RoomDtoCopyWithImpl<$Res, $Val extends RoomDto>
     Object? isLastMessageLeftInfo = null,
     Object? isLastMessageJoinedInfo = null,
     Object? participantIds = null,
+    Object? participantReadStatuses = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -121,6 +127,10 @@ class _$RoomDtoCopyWithImpl<$Res, $Val extends RoomDto>
           ? _value.participantIds
           : participantIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      participantReadStatuses: null == participantReadStatuses
+          ? _value.participantReadStatuses
+          : participantReadStatuses // ignore: cast_nullable_to_non_nullable
+              as Map<String, bool>,
     ) as $Val);
   }
 }
@@ -142,7 +152,8 @@ abstract class _$$_RoomDtoCopyWith<$Res> implements $RoomDtoCopyWith<$Res> {
       @FirebaseNullableTimestampJsonConverter() DateTime? lastMessageCreatedAt,
       bool isLastMessageLeftInfo,
       bool isLastMessageJoinedInfo,
-      List<String> participantIds});
+      List<String> participantIds,
+      Map<String, bool> participantReadStatuses});
 }
 
 /// @nodoc
@@ -165,6 +176,7 @@ class __$$_RoomDtoCopyWithImpl<$Res>
     Object? isLastMessageLeftInfo = null,
     Object? isLastMessageJoinedInfo = null,
     Object? participantIds = null,
+    Object? participantReadStatuses = null,
   }) {
     return _then(_$_RoomDto(
       id: freezed == id
@@ -207,6 +219,10 @@ class __$$_RoomDtoCopyWithImpl<$Res>
           ? _value._participantIds
           : participantIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      participantReadStatuses: null == participantReadStatuses
+          ? _value._participantReadStatuses
+          : participantReadStatuses // ignore: cast_nullable_to_non_nullable
+              as Map<String, bool>,
     ));
   }
 }
@@ -225,8 +241,10 @@ class _$_RoomDto extends _RoomDto {
       @FirebaseNullableTimestampJsonConverter() this.lastMessageCreatedAt,
       this.isLastMessageLeftInfo = false,
       this.isLastMessageJoinedInfo = false,
-      final List<String> participantIds = const []})
+      final List<String> participantIds = const [],
+      final Map<String, bool> participantReadStatuses = const {}})
       : _participantIds = participantIds,
+        _participantReadStatuses = participantReadStatuses,
         super._();
 
   factory _$_RoomDto.fromJson(Map<String, dynamic> json) =>
@@ -263,9 +281,22 @@ class _$_RoomDto extends _RoomDto {
     return EqualUnmodifiableListView(_participantIds);
   }
 
+  /// Key is participantId, value is if participant read last message
+  final Map<String, bool> _participantReadStatuses;
+
+  /// Key is participantId, value is if participant read last message
+  @override
+  @JsonKey()
+  Map<String, bool> get participantReadStatuses {
+    if (_participantReadStatuses is EqualUnmodifiableMapView)
+      return _participantReadStatuses;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_participantReadStatuses);
+  }
+
   @override
   String toString() {
-    return 'RoomDto(id: $id, roomName: $roomName, roomPhotoUrl: $roomPhotoUrl, lastMessageId: $lastMessageId, lastMessageText: $lastMessageText, lastMessageUsername: $lastMessageUsername, lastMessageCreatedAt: $lastMessageCreatedAt, isLastMessageLeftInfo: $isLastMessageLeftInfo, isLastMessageJoinedInfo: $isLastMessageJoinedInfo, participantIds: $participantIds)';
+    return 'RoomDto(id: $id, roomName: $roomName, roomPhotoUrl: $roomPhotoUrl, lastMessageId: $lastMessageId, lastMessageText: $lastMessageText, lastMessageUsername: $lastMessageUsername, lastMessageCreatedAt: $lastMessageCreatedAt, isLastMessageLeftInfo: $isLastMessageLeftInfo, isLastMessageJoinedInfo: $isLastMessageJoinedInfo, participantIds: $participantIds, participantReadStatuses: $participantReadStatuses)';
   }
 
   @override
@@ -292,7 +323,9 @@ class _$_RoomDto extends _RoomDto {
                     other.isLastMessageJoinedInfo, isLastMessageJoinedInfo) ||
                 other.isLastMessageJoinedInfo == isLastMessageJoinedInfo) &&
             const DeepCollectionEquality()
-                .equals(other._participantIds, _participantIds));
+                .equals(other._participantIds, _participantIds) &&
+            const DeepCollectionEquality().equals(
+                other._participantReadStatuses, _participantReadStatuses));
   }
 
   @JsonKey(ignore: true)
@@ -308,7 +341,8 @@ class _$_RoomDto extends _RoomDto {
       lastMessageCreatedAt,
       isLastMessageLeftInfo,
       isLastMessageJoinedInfo,
-      const DeepCollectionEquality().hash(_participantIds));
+      const DeepCollectionEquality().hash(_participantIds),
+      const DeepCollectionEquality().hash(_participantReadStatuses));
 
   @JsonKey(ignore: true)
   @override
@@ -337,7 +371,8 @@ abstract class _RoomDto extends RoomDto {
           final DateTime? lastMessageCreatedAt,
       final bool isLastMessageLeftInfo,
       final bool isLastMessageJoinedInfo,
-      final List<String> participantIds}) = _$_RoomDto;
+      final List<String> participantIds,
+      final Map<String, bool> participantReadStatuses}) = _$_RoomDto;
   const _RoomDto._() : super._();
 
   factory _RoomDto.fromJson(Map<String, dynamic> json) = _$_RoomDto.fromJson;
@@ -364,6 +399,10 @@ abstract class _RoomDto extends RoomDto {
   bool get isLastMessageJoinedInfo;
   @override
   List<String> get participantIds;
+  @override
+
+  /// Key is participantId, value is if participant read last message
+  Map<String, bool> get participantReadStatuses;
   @override
   @JsonKey(ignore: true)
   _$$_RoomDtoCopyWith<_$_RoomDto> get copyWith =>
