@@ -21,6 +21,11 @@ _$_RoomDto _$$_RoomDtoFromJson(Map<String, dynamic> json) => _$_RoomDto(
               ?.map((e) => e as String)
               .toList() ??
           const [],
+      participantReadStatuses:
+          (json['participantReadStatuses'] as Map<String, dynamic>?)?.map(
+                (k, e) => MapEntry(k, e as bool),
+              ) ??
+              const {},
     );
 
 Map<String, dynamic> _$$_RoomDtoToJson(_$_RoomDto instance) =>
@@ -35,4 +40,5 @@ Map<String, dynamic> _$$_RoomDtoToJson(_$_RoomDto instance) =>
       'isLastMessageLeftInfo': instance.isLastMessageLeftInfo,
       'isLastMessageJoinedInfo': instance.isLastMessageJoinedInfo,
       'participantIds': instance.participantIds,
+      'participantReadStatuses': instance.participantReadStatuses,
     };

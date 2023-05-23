@@ -3,17 +3,17 @@ import 'package:dartz/dartz.dart';
 import 'package:tonight/application/event_chat/aggregator/event_chat_failure.dart';
 import 'package:tonight/application/event_chat/models/chat_message_model.dart';
 import 'package:tonight/application/event_chat/models/chat_user_model.dart';
-import 'package:tonight/domain/last_read_messages/last_read_message_facade.dart';
 import 'package:tonight/domain/messages/message_entity.dart';
 import 'package:tonight/domain/messages/message_facade.dart';
 import 'package:tonight/domain/participants/participant_entity.dart';
+import 'package:tonight/domain/rooms/room_facade.dart';
 import 'package:uuid/uuid.dart';
 
 class EventChatAggregator {
   final MessageFacade _messageFacade;
-  final LastReadMessageFacade _lastReadMessageFacade;
+  final RoomFacade _roomFacade;
 
-  EventChatAggregator(this._messageFacade, this._lastReadMessageFacade);
+  EventChatAggregator(this._messageFacade, this._roomFacade);
 
   Stream<Either<ChatMessage, ChatMessage>> sendMessage({
     required String roomId,
@@ -79,7 +79,7 @@ class EventChatAggregator {
           (_) => left(const EventChatFailure.unexpected()),
           (messages) async {
             if (messages.isNotEmpty) {
-              await _lastReadMessageFacade.updateLastReadMessageId(
+              await _roomFacade.markMessageAsRead(
                 roomId: roomId,
                 messageId: messages.first.id,
               );

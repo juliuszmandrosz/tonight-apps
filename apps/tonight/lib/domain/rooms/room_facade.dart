@@ -4,4 +4,9 @@ import 'package:tonight/domain/rooms/room_failure.dart';
 
 abstract class RoomFacade {
   Stream<Either<RoomFailure, List<Room>>> listenToUserRooms();
+
+  Future<Either<RoomFailure, Unit>> markMessageAsRead({
+    required String roomId,
+    required String messageId,
+  });
 }
