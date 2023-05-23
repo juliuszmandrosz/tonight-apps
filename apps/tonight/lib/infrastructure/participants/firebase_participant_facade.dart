@@ -52,7 +52,7 @@ class FirebaseParticipantFacade implements ParticipantFacade {
 
         tx.set(participantRef, participantDto.toJson());
         tx.set(messageRef, messageDto.toJson());
-        tx.set(
+        tx.update(
           roomRef,
           {
             'participantIds': FieldValue.arrayUnion([participant.userId]),
@@ -64,7 +64,6 @@ class FirebaseParticipantFacade implements ParticipantFacade {
             'isLastMessageLeftInfo': false,
             'participantReadStatuses.${participant.userId}': true,
           },
-          SetOptions(merge: true),
         );
       });
       return right(unit);
@@ -141,7 +140,7 @@ class FirebaseParticipantFacade implements ParticipantFacade {
 
         tx.delete(participantRef);
         tx.set(messageRef, messageDto.toJson());
-        tx.set(
+        tx.update(
           roomRef,
           {
             'participantIds': FieldValue.arrayRemove([participant.userId]),
@@ -153,7 +152,6 @@ class FirebaseParticipantFacade implements ParticipantFacade {
             'isLastMessageJoinedInfo': false,
             'participantReadStatuses.${participant.userId}': FieldValue.delete()
           },
-          SetOptions(merge: true),
         );
       });
       return right(unit);
