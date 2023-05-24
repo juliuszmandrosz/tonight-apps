@@ -49,6 +49,7 @@ class ScanQrPage extends StatelessWidget {
                         RewardsScanResult(
                           color: context.primaryColor.lighten(),
                           icon: FontAwesomeIcons.check,
+                          // TODO - add translation
                           message: "Ważna nagroda",
                         ),
                         const SizedBox(height: 20),
