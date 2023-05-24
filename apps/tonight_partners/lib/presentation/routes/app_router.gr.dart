@@ -198,6 +198,16 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
+    ScanQrRoute.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: const ScanQrPage(),
+        transitionsBuilder: slideLeftTransition,
+        durationInMilliseconds: 300,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     OverviewRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -307,6 +317,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           SendTimeTaskRoute.name,
           path: '/send-time-task-page',
+        ),
+        RouteConfig(
+          ScanQrRoute.name,
+          path: '/scan-qr-page',
         ),
       ];
 }
@@ -681,6 +695,18 @@ class SendTimeTaskRouteArgs {
   String toString() {
     return 'SendTimeTaskRouteArgs{event: $event, key: $key}';
   }
+}
+
+/// generated route for
+/// [ScanQrPage]
+class ScanQrRoute extends PageRouteInfo<void> {
+  const ScanQrRoute()
+      : super(
+          ScanQrRoute.name,
+          path: '/scan-qr-page',
+        );
+
+  static const String name = 'ScanQrRoute';
 }
 
 /// generated route for

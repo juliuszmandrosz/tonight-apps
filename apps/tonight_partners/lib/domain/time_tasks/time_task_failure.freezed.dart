@@ -19,32 +19,39 @@ mixin _$TimeTaskFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() rewardAlreadyAcquired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unexpected,
+    TResult? Function()? rewardAlreadyAcquired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? rewardAlreadyAcquired,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_RewardAlreadyAcquired value)
+        rewardAlreadyAcquired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_RewardAlreadyAcquired value)? rewardAlreadyAcquired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_RewardAlreadyAcquired value)? rewardAlreadyAcquired,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +114,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
+    required TResult Function() rewardAlreadyAcquired,
   }) {
     return unexpected();
   }
@@ -115,6 +123,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? unexpected,
+    TResult? Function()? rewardAlreadyAcquired,
   }) {
     return unexpected?.call();
   }
@@ -123,6 +132,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
+    TResult Function()? rewardAlreadyAcquired,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -135,6 +145,8 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_RewardAlreadyAcquired value)
+        rewardAlreadyAcquired,
   }) {
     return unexpected(this);
   }
@@ -143,6 +155,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_RewardAlreadyAcquired value)? rewardAlreadyAcquired,
   }) {
     return unexpected?.call(this);
   }
@@ -151,6 +164,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_RewardAlreadyAcquired value)? rewardAlreadyAcquired,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -162,4 +176,107 @@ class _$_Unexpected implements _Unexpected {
 
 abstract class _Unexpected implements TimeTaskFailure {
   const factory _Unexpected() = _$_Unexpected;
+}
+
+/// @nodoc
+abstract class _$$_RewardAlreadyAcquiredCopyWith<$Res> {
+  factory _$$_RewardAlreadyAcquiredCopyWith(_$_RewardAlreadyAcquired value,
+          $Res Function(_$_RewardAlreadyAcquired) then) =
+      __$$_RewardAlreadyAcquiredCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_RewardAlreadyAcquiredCopyWithImpl<$Res>
+    extends _$TimeTaskFailureCopyWithImpl<$Res, _$_RewardAlreadyAcquired>
+    implements _$$_RewardAlreadyAcquiredCopyWith<$Res> {
+  __$$_RewardAlreadyAcquiredCopyWithImpl(_$_RewardAlreadyAcquired _value,
+      $Res Function(_$_RewardAlreadyAcquired) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_RewardAlreadyAcquired implements _RewardAlreadyAcquired {
+  const _$_RewardAlreadyAcquired();
+
+  @override
+  String toString() {
+    return 'TimeTaskFailure.rewardAlreadyAcquired()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_RewardAlreadyAcquired);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() rewardAlreadyAcquired,
+  }) {
+    return rewardAlreadyAcquired();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? rewardAlreadyAcquired,
+  }) {
+    return rewardAlreadyAcquired?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? rewardAlreadyAcquired,
+    required TResult orElse(),
+  }) {
+    if (rewardAlreadyAcquired != null) {
+      return rewardAlreadyAcquired();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_RewardAlreadyAcquired value)
+        rewardAlreadyAcquired,
+  }) {
+    return rewardAlreadyAcquired(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_RewardAlreadyAcquired value)? rewardAlreadyAcquired,
+  }) {
+    return rewardAlreadyAcquired?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_RewardAlreadyAcquired value)? rewardAlreadyAcquired,
+    required TResult orElse(),
+  }) {
+    if (rewardAlreadyAcquired != null) {
+      return rewardAlreadyAcquired(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RewardAlreadyAcquired implements TimeTaskFailure {
+  const factory _RewardAlreadyAcquired() = _$_RewardAlreadyAcquired;
 }

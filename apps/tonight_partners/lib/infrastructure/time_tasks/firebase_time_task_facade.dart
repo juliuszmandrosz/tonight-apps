@@ -31,4 +31,40 @@ class FirebaseTimeTaskFacade implements TimeTaskFacade {
       return left(const TimeTaskFailure.unexpected());
     }
   }
+
+  @override
+  Future<Either<TimeTaskFailure, Tuple2<TimeTask, String>>> scanTimeTaskReward(
+    String wallPhotoId,
+  ) async {
+    try {
+      return await _firestore.runTransaction((tx) async {
+        final wallPhotoRef = _firestore.wallPhotos.doc(wallPhotoId);
+        final wallPhotoDoc = await tx.get(wallPhotoRef);
+        if (!wallPhotoDoc.exists) {
+          return left(const TimeTaskFailure.unexpected());
+        }
+        final wallPhotoData = wallPhotoDoc.data() as Map<String, dynamic>;
+        final timeTaskId = wallPhotoData['timeTaskId'] as String?;
+        if (timeTaskId == null) {
+          return left(const TimeTaskFailure.unexpected());
+        }
+        final timeTaskRef = _firestore.tasks.doc(timeTaskId);
+        final timeTaskDoc = await tx.get(timeTaskRef);
+        final timeTaskDto = TimeTaskDto.fromFirebase(timeTaskDoc);
+        if (timeTaskDto.isRewardAcquired) {
+          return left(const TimeTaskFailure.rewardAlreadyAcquired());
+        }
+        final photoUrl = wallPhotoData['photoUrl'] as String;
+        tx.update(
+          timeTaskRef,
+          timeTaskDto.copyWith(isRewardAcquired: true).toJson(),
+        );
+        return right(tuple2(timeTaskDto.toDomain(), photoUrl));
+      });
+    } on FirebaseException catch (e) {
+      await _crashlytics.recordError(e, StackTrace.current);
+      _logger.e(e);
+      return left(const TimeTaskFailure.unexpected());
+    }
+  }
 }

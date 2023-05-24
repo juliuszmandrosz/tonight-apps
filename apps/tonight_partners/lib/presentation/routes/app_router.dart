@@ -17,6 +17,7 @@ import 'package:tonight_partners/presentation/overview/overview_page.dart';
 import 'package:tonight_partners/presentation/past_event_details/past_event_details_page.dart';
 import 'package:tonight_partners/presentation/postpone_event/postpone_event_page.dart';
 import 'package:tonight_partners/presentation/rewards/rewards_page.dart';
+import 'package:tonight_partners/presentation/scan_qr/scan_qr_page.dart';
 import 'package:tonight_partners/presentation/selectors/selectors_page.dart';
 import 'package:tonight_partners/presentation/send_time_task/send_time_task_page.dart';
 import 'package:tonight_partners/presentation/sign_in/sign_in_page.dart';
@@ -103,6 +104,11 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: SendTimeTaskPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: ScanQrPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),

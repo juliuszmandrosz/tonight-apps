@@ -17,6 +17,8 @@ extension FirestoreX on FirebaseFirestore {
 
   CollectionReference get tasks => collection('tasks');
 
+  CollectionReference get wallPhotos => collection('wallPhotos');
+
   CollectionReference get userFavoriteEventsCollection =>
       collection('userFavoriteEvents');
 

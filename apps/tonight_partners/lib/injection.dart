@@ -37,6 +37,7 @@ import 'package:tonight_partners/application/past_event_details/past_event_detai
 import 'package:tonight_partners/application/postpone_event/postpone_event_cubit.dart';
 import 'package:tonight_partners/application/privacy_policy/privacy_policy_cubit.dart';
 import 'package:tonight_partners/application/reward_list/reward_list_cubit.dart';
+import 'package:tonight_partners/application/scan_qr/scan_qr_cubit.dart';
 import 'package:tonight_partners/application/selector_list/selector_list_cubit.dart';
 import 'package:tonight_partners/application/send_time_task/send_time_task_cubit.dart';
 import 'package:tonight_partners/application/sign_in/sign_in_cubit.dart';
@@ -209,6 +210,12 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => SendTimeTaskCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => ScanQrCubit(
       getIt(),
     ),
   );

@@ -111,6 +111,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
                 EventsRoute(),
                 RewardsRoute(),
                 SelectorsRoute(),
+                SelectorsRoute(),
               ],
               drawer: const TonightPartnersDrawer(),
               floatingActionButton: selectedPage != SelectedPage.overview
@@ -120,6 +121,11 @@ class _NavigatorPageState extends State<NavigatorPage> {
                 return NavigationBar(
                   selectedIndex: tabsRouter.activeIndex,
                   onDestinationSelected: (i) {
+                    if (i == SelectedPage.scanQr.index) {
+                      context.pushRoute(const ScanQrRoute());
+                      i = tabsRouter.activeIndex;
+                    }
+
                     setState(() {
                       switch (i) {
                         case (0):
@@ -133,6 +139,9 @@ class _NavigatorPageState extends State<NavigatorPage> {
                           break;
                         case (3):
                           selectedPage = SelectedPage.selectors;
+                          break;
+                        case (4):
+                          selectedPage = SelectedPage.scanQr;
                           break;
                       }
                     });

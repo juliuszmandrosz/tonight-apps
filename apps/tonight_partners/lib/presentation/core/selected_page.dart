@@ -3,4 +3,5 @@ enum SelectedPage {
   events,
   rewards,
   selectors,
+  scanQr,
 }
