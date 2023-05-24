@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'invite_selector_cubit.dart';
 
@@ -29,7 +29,8 @@ mixin _$InviteSelectorState {
 abstract class $InviteSelectorStateCopyWith<$Res> {
   factory $InviteSelectorStateCopyWith(
           InviteSelectorState value, $Res Function(InviteSelectorState) then) =
-      _$InviteSelectorStateCopyWithImpl<$Res>;
+      _$InviteSelectorStateCopyWithImpl<$Res, InviteSelectorState>;
+  @useResult
   $Res call(
       {CubitStatus status,
       Option<String> errorMessage,
@@ -37,34 +38,36 @@ abstract class $InviteSelectorStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$InviteSelectorStateCopyWithImpl<$Res>
+class _$InviteSelectorStateCopyWithImpl<$Res, $Val extends InviteSelectorState>
     implements $InviteSelectorStateCopyWith<$Res> {
   _$InviteSelectorStateCopyWithImpl(this._value, this._then);
 
-  final InviteSelectorState _value;
   // ignore: unused_field
-  final $Res Function(InviteSelectorState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? errorMessage = freezed,
-    Object? accessCode = freezed,
+    Object? status = null,
+    Object? errorMessage = null,
+    Object? accessCode = null,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      errorMessage: errorMessage == freezed
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      accessCode: accessCode == freezed
+      accessCode: null == accessCode
           ? _value.accessCode
           : accessCode // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -75,6 +78,7 @@ abstract class _$$_InviteSelectorStateCopyWith<$Res>
           $Res Function(_$_InviteSelectorState) then) =
       __$$_InviteSelectorStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {CubitStatus status,
       Option<String> errorMessage,
@@ -83,31 +87,29 @@ abstract class _$$_InviteSelectorStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_InviteSelectorStateCopyWithImpl<$Res>
-    extends _$InviteSelectorStateCopyWithImpl<$Res>
+    extends _$InviteSelectorStateCopyWithImpl<$Res, _$_InviteSelectorState>
     implements _$$_InviteSelectorStateCopyWith<$Res> {
   __$$_InviteSelectorStateCopyWithImpl(_$_InviteSelectorState _value,
       $Res Function(_$_InviteSelectorState) _then)
-      : super(_value, (v) => _then(v as _$_InviteSelectorState));
+      : super(_value, _then);
 
-  @override
-  _$_InviteSelectorState get _value => super._value as _$_InviteSelectorState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? errorMessage = freezed,
-    Object? accessCode = freezed,
+    Object? status = null,
+    Object? errorMessage = null,
+    Object? accessCode = null,
   }) {
     return _then(_$_InviteSelectorState(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      errorMessage: errorMessage == freezed
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      accessCode: accessCode == freezed
+      accessCode: null == accessCode
           ? _value.accessCode
           : accessCode // ignore: cast_nullable_to_non_nullable
               as Option<String>,
@@ -140,22 +142,20 @@ class _$_InviteSelectorState implements _InviteSelectorState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_InviteSelectorState &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage) &&
-            const DeepCollectionEquality()
-                .equals(other.accessCode, accessCode));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.accessCode, accessCode) ||
+                other.accessCode == accessCode));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(errorMessage),
-      const DeepCollectionEquality().hash(accessCode));
+  int get hashCode =>
+      Object.hash(runtimeType, status, errorMessage, accessCode);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_InviteSelectorStateCopyWith<_$_InviteSelectorState> get copyWith =>
       __$$_InviteSelectorStateCopyWithImpl<_$_InviteSelectorState>(
           this, _$identity);

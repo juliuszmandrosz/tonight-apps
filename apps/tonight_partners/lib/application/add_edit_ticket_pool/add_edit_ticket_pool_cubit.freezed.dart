@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'add_edit_ticket_pool_cubit.dart';
 
@@ -37,7 +37,8 @@ mixin _$AddEditTicketPoolState {
 abstract class $AddEditTicketPoolStateCopyWith<$Res> {
   factory $AddEditTicketPoolStateCopyWith(AddEditTicketPoolState value,
           $Res Function(AddEditTicketPoolState) then) =
-      _$AddEditTicketPoolStateCopyWithImpl<$Res>;
+      _$AddEditTicketPoolStateCopyWithImpl<$Res, AddEditTicketPoolState>;
+  @useResult
   $Res call(
       {List<TicketPool> currentTicketPools,
       Option<Club> clubInfo,
@@ -52,69 +53,72 @@ abstract class $AddEditTicketPoolStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AddEditTicketPoolStateCopyWithImpl<$Res>
+class _$AddEditTicketPoolStateCopyWithImpl<$Res,
+        $Val extends AddEditTicketPoolState>
     implements $AddEditTicketPoolStateCopyWith<$Res> {
   _$AddEditTicketPoolStateCopyWithImpl(this._value, this._then);
 
-  final AddEditTicketPoolState _value;
   // ignore: unused_field
-  final $Res Function(AddEditTicketPoolState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentTicketPools = freezed,
-    Object? clubInfo = freezed,
-    Object? ticketQuantity = freezed,
-    Object? ticketPrice = freezed,
-    Object? vipPrice = freezed,
-    Object? editingTicketPool = freezed,
-    Object? status = freezed,
-    Object? errorMessage = freezed,
-    Object? result = freezed,
-    Object? isVipEnabled = freezed,
+    Object? currentTicketPools = null,
+    Object? clubInfo = null,
+    Object? ticketQuantity = null,
+    Object? ticketPrice = null,
+    Object? vipPrice = null,
+    Object? editingTicketPool = null,
+    Object? status = null,
+    Object? errorMessage = null,
+    Object? result = null,
+    Object? isVipEnabled = null,
   }) {
     return _then(_value.copyWith(
-      currentTicketPools: currentTicketPools == freezed
+      currentTicketPools: null == currentTicketPools
           ? _value.currentTicketPools
           : currentTicketPools // ignore: cast_nullable_to_non_nullable
               as List<TicketPool>,
-      clubInfo: clubInfo == freezed
+      clubInfo: null == clubInfo
           ? _value.clubInfo
           : clubInfo // ignore: cast_nullable_to_non_nullable
               as Option<Club>,
-      ticketQuantity: ticketQuantity == freezed
+      ticketQuantity: null == ticketQuantity
           ? _value.ticketQuantity
           : ticketQuantity // ignore: cast_nullable_to_non_nullable
               as TicketQuantity,
-      ticketPrice: ticketPrice == freezed
+      ticketPrice: null == ticketPrice
           ? _value.ticketPrice
           : ticketPrice // ignore: cast_nullable_to_non_nullable
               as TicketPoolPrice,
-      vipPrice: vipPrice == freezed
+      vipPrice: null == vipPrice
           ? _value.vipPrice
           : vipPrice // ignore: cast_nullable_to_non_nullable
               as VipPrice,
-      editingTicketPool: editingTicketPool == freezed
+      editingTicketPool: null == editingTicketPool
           ? _value.editingTicketPool
           : editingTicketPool // ignore: cast_nullable_to_non_nullable
               as Option<TicketPool>,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FormzStatus,
-      errorMessage: errorMessage == freezed
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as Option<TicketPool>,
-      isVipEnabled: isVipEnabled == freezed
+      isVipEnabled: null == isVipEnabled
           ? _value.isVipEnabled
           : isVipEnabled // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -125,6 +129,7 @@ abstract class _$$_AddEditTicketPoolStateCopyWith<$Res>
           $Res Function(_$_AddEditTicketPoolState) then) =
       __$$_AddEditTicketPoolStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {List<TicketPool> currentTicketPools,
       Option<Club> clubInfo,
@@ -140,67 +145,65 @@ abstract class _$$_AddEditTicketPoolStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_AddEditTicketPoolStateCopyWithImpl<$Res>
-    extends _$AddEditTicketPoolStateCopyWithImpl<$Res>
+    extends _$AddEditTicketPoolStateCopyWithImpl<$Res,
+        _$_AddEditTicketPoolState>
     implements _$$_AddEditTicketPoolStateCopyWith<$Res> {
   __$$_AddEditTicketPoolStateCopyWithImpl(_$_AddEditTicketPoolState _value,
       $Res Function(_$_AddEditTicketPoolState) _then)
-      : super(_value, (v) => _then(v as _$_AddEditTicketPoolState));
+      : super(_value, _then);
 
-  @override
-  _$_AddEditTicketPoolState get _value =>
-      super._value as _$_AddEditTicketPoolState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentTicketPools = freezed,
-    Object? clubInfo = freezed,
-    Object? ticketQuantity = freezed,
-    Object? ticketPrice = freezed,
-    Object? vipPrice = freezed,
-    Object? editingTicketPool = freezed,
-    Object? status = freezed,
-    Object? errorMessage = freezed,
-    Object? result = freezed,
-    Object? isVipEnabled = freezed,
+    Object? currentTicketPools = null,
+    Object? clubInfo = null,
+    Object? ticketQuantity = null,
+    Object? ticketPrice = null,
+    Object? vipPrice = null,
+    Object? editingTicketPool = null,
+    Object? status = null,
+    Object? errorMessage = null,
+    Object? result = null,
+    Object? isVipEnabled = null,
   }) {
     return _then(_$_AddEditTicketPoolState(
-      currentTicketPools: currentTicketPools == freezed
+      currentTicketPools: null == currentTicketPools
           ? _value._currentTicketPools
           : currentTicketPools // ignore: cast_nullable_to_non_nullable
               as List<TicketPool>,
-      clubInfo: clubInfo == freezed
+      clubInfo: null == clubInfo
           ? _value.clubInfo
           : clubInfo // ignore: cast_nullable_to_non_nullable
               as Option<Club>,
-      ticketQuantity: ticketQuantity == freezed
+      ticketQuantity: null == ticketQuantity
           ? _value.ticketQuantity
           : ticketQuantity // ignore: cast_nullable_to_non_nullable
               as TicketQuantity,
-      ticketPrice: ticketPrice == freezed
+      ticketPrice: null == ticketPrice
           ? _value.ticketPrice
           : ticketPrice // ignore: cast_nullable_to_non_nullable
               as TicketPoolPrice,
-      vipPrice: vipPrice == freezed
+      vipPrice: null == vipPrice
           ? _value.vipPrice
           : vipPrice // ignore: cast_nullable_to_non_nullable
               as VipPrice,
-      editingTicketPool: editingTicketPool == freezed
+      editingTicketPool: null == editingTicketPool
           ? _value.editingTicketPool
           : editingTicketPool // ignore: cast_nullable_to_non_nullable
               as Option<TicketPool>,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FormzStatus,
-      errorMessage: errorMessage == freezed
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      result: result == freezed
+      result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as Option<TicketPool>,
-      isVipEnabled: isVipEnabled == freezed
+      isVipEnabled: null == isVipEnabled
           ? _value.isVipEnabled
           : isVipEnabled // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -227,6 +230,8 @@ class _$_AddEditTicketPoolState implements _AddEditTicketPoolState {
   final List<TicketPool> _currentTicketPools;
   @override
   List<TicketPool> get currentTicketPools {
+    if (_currentTicketPools is EqualUnmodifiableListView)
+      return _currentTicketPools;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_currentTicketPools);
   }
@@ -262,38 +267,41 @@ class _$_AddEditTicketPoolState implements _AddEditTicketPoolState {
             other is _$_AddEditTicketPoolState &&
             const DeepCollectionEquality()
                 .equals(other._currentTicketPools, _currentTicketPools) &&
-            const DeepCollectionEquality().equals(other.clubInfo, clubInfo) &&
-            const DeepCollectionEquality()
-                .equals(other.ticketQuantity, ticketQuantity) &&
-            const DeepCollectionEquality()
-                .equals(other.ticketPrice, ticketPrice) &&
-            const DeepCollectionEquality().equals(other.vipPrice, vipPrice) &&
-            const DeepCollectionEquality()
-                .equals(other.editingTicketPool, editingTicketPool) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage) &&
-            const DeepCollectionEquality().equals(other.result, result) &&
-            const DeepCollectionEquality()
-                .equals(other.isVipEnabled, isVipEnabled));
+            (identical(other.clubInfo, clubInfo) ||
+                other.clubInfo == clubInfo) &&
+            (identical(other.ticketQuantity, ticketQuantity) ||
+                other.ticketQuantity == ticketQuantity) &&
+            (identical(other.ticketPrice, ticketPrice) ||
+                other.ticketPrice == ticketPrice) &&
+            (identical(other.vipPrice, vipPrice) ||
+                other.vipPrice == vipPrice) &&
+            (identical(other.editingTicketPool, editingTicketPool) ||
+                other.editingTicketPool == editingTicketPool) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.result, result) || other.result == result) &&
+            (identical(other.isVipEnabled, isVipEnabled) ||
+                other.isVipEnabled == isVipEnabled));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_currentTicketPools),
-      const DeepCollectionEquality().hash(clubInfo),
-      const DeepCollectionEquality().hash(ticketQuantity),
-      const DeepCollectionEquality().hash(ticketPrice),
-      const DeepCollectionEquality().hash(vipPrice),
-      const DeepCollectionEquality().hash(editingTicketPool),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(errorMessage),
-      const DeepCollectionEquality().hash(result),
-      const DeepCollectionEquality().hash(isVipEnabled));
+      clubInfo,
+      ticketQuantity,
+      ticketPrice,
+      vipPrice,
+      editingTicketPool,
+      status,
+      errorMessage,
+      result,
+      isVipEnabled);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AddEditTicketPoolStateCopyWith<_$_AddEditTicketPoolState> get copyWith =>
       __$$_AddEditTicketPoolStateCopyWithImpl<_$_AddEditTicketPoolState>(
           this, _$identity);

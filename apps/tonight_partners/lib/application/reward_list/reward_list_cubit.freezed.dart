@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'reward_list_cubit.dart';
 
@@ -30,7 +30,8 @@ mixin _$RewardListState {
 abstract class $RewardListStateCopyWith<$Res> {
   factory $RewardListStateCopyWith(
           RewardListState value, $Res Function(RewardListState) then) =
-      _$RewardListStateCopyWithImpl<$Res>;
+      _$RewardListStateCopyWithImpl<$Res, RewardListState>;
+  @useResult
   $Res call(
       {CubitStatus initialStatus,
       CubitStatus deletingStatus,
@@ -39,39 +40,41 @@ abstract class $RewardListStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RewardListStateCopyWithImpl<$Res>
+class _$RewardListStateCopyWithImpl<$Res, $Val extends RewardListState>
     implements $RewardListStateCopyWith<$Res> {
   _$RewardListStateCopyWithImpl(this._value, this._then);
 
-  final RewardListState _value;
   // ignore: unused_field
-  final $Res Function(RewardListState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? initialStatus = freezed,
-    Object? deletingStatus = freezed,
-    Object? rewards = freezed,
-    Object? errorMessage = freezed,
+    Object? initialStatus = null,
+    Object? deletingStatus = null,
+    Object? rewards = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
-      initialStatus: initialStatus == freezed
+      initialStatus: null == initialStatus
           ? _value.initialStatus
           : initialStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      deletingStatus: deletingStatus == freezed
+      deletingStatus: null == deletingStatus
           ? _value.deletingStatus
           : deletingStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      rewards: rewards == freezed
+      rewards: null == rewards
           ? _value.rewards
           : rewards // ignore: cast_nullable_to_non_nullable
               as List<Reward>,
-      errorMessage: errorMessage == freezed
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -82,6 +85,7 @@ abstract class _$$_RewardListStateCopyWith<$Res>
           _$_RewardListState value, $Res Function(_$_RewardListState) then) =
       __$$_RewardListStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {CubitStatus initialStatus,
       CubitStatus deletingStatus,
@@ -91,36 +95,34 @@ abstract class _$$_RewardListStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_RewardListStateCopyWithImpl<$Res>
-    extends _$RewardListStateCopyWithImpl<$Res>
+    extends _$RewardListStateCopyWithImpl<$Res, _$_RewardListState>
     implements _$$_RewardListStateCopyWith<$Res> {
   __$$_RewardListStateCopyWithImpl(
       _$_RewardListState _value, $Res Function(_$_RewardListState) _then)
-      : super(_value, (v) => _then(v as _$_RewardListState));
+      : super(_value, _then);
 
-  @override
-  _$_RewardListState get _value => super._value as _$_RewardListState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? initialStatus = freezed,
-    Object? deletingStatus = freezed,
-    Object? rewards = freezed,
-    Object? errorMessage = freezed,
+    Object? initialStatus = null,
+    Object? deletingStatus = null,
+    Object? rewards = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$_RewardListState(
-      initialStatus: initialStatus == freezed
+      initialStatus: null == initialStatus
           ? _value.initialStatus
           : initialStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      deletingStatus: deletingStatus == freezed
+      deletingStatus: null == deletingStatus
           ? _value.deletingStatus
           : deletingStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      rewards: rewards == freezed
+      rewards: null == rewards
           ? _value._rewards
           : rewards // ignore: cast_nullable_to_non_nullable
               as List<Reward>,
-      errorMessage: errorMessage == freezed
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
@@ -146,6 +148,7 @@ class _$_RewardListState extends _RewardListState {
   final List<Reward> _rewards;
   @override
   List<Reward> get rewards {
+    if (_rewards is EqualUnmodifiableListView) return _rewards;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_rewards);
   }
@@ -163,25 +166,22 @@ class _$_RewardListState extends _RewardListState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RewardListState &&
-            const DeepCollectionEquality()
-                .equals(other.initialStatus, initialStatus) &&
-            const DeepCollectionEquality()
-                .equals(other.deletingStatus, deletingStatus) &&
+            (identical(other.initialStatus, initialStatus) ||
+                other.initialStatus == initialStatus) &&
+            (identical(other.deletingStatus, deletingStatus) ||
+                other.deletingStatus == deletingStatus) &&
             const DeepCollectionEquality().equals(other._rewards, _rewards) &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(initialStatus),
-      const DeepCollectionEquality().hash(deletingStatus),
-      const DeepCollectionEquality().hash(_rewards),
-      const DeepCollectionEquality().hash(errorMessage));
+  int get hashCode => Object.hash(runtimeType, initialStatus, deletingStatus,
+      const DeepCollectionEquality().hash(_rewards), errorMessage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RewardListStateCopyWith<_$_RewardListState> get copyWith =>
       __$$_RewardListStateCopyWithImpl<_$_RewardListState>(this, _$identity);
 }

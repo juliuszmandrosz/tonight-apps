@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'club_sales_dto.dart';
 
@@ -38,7 +38,8 @@ mixin _$ClubSalesDto {
 abstract class $ClubSalesDtoCopyWith<$Res> {
   factory $ClubSalesDtoCopyWith(
           ClubSalesDto value, $Res Function(ClubSalesDto) then) =
-      _$ClubSalesDtoCopyWithImpl<$Res>;
+      _$ClubSalesDtoCopyWithImpl<$Res, ClubSalesDto>;
+  @useResult
   $Res call(
       {String currency,
       double totalRevenue,
@@ -50,53 +51,56 @@ abstract class $ClubSalesDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClubSalesDtoCopyWithImpl<$Res> implements $ClubSalesDtoCopyWith<$Res> {
+class _$ClubSalesDtoCopyWithImpl<$Res, $Val extends ClubSalesDto>
+    implements $ClubSalesDtoCopyWith<$Res> {
   _$ClubSalesDtoCopyWithImpl(this._value, this._then);
 
-  final ClubSalesDto _value;
   // ignore: unused_field
-  final $Res Function(ClubSalesDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currency = freezed,
-    Object? totalRevenue = freezed,
-    Object? exclusiveEventsRevenue = freezed,
-    Object? ticketsSold = freezed,
-    Object? vipsSold = freezed,
-    Object? exclusiveTicketsSold = freezed,
-    Object? exclusiveVipsSold = freezed,
+    Object? currency = null,
+    Object? totalRevenue = null,
+    Object? exclusiveEventsRevenue = null,
+    Object? ticketsSold = null,
+    Object? vipsSold = null,
+    Object? exclusiveTicketsSold = null,
+    Object? exclusiveVipsSold = null,
   }) {
     return _then(_value.copyWith(
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      totalRevenue: totalRevenue == freezed
+      totalRevenue: null == totalRevenue
           ? _value.totalRevenue
           : totalRevenue // ignore: cast_nullable_to_non_nullable
               as double,
-      exclusiveEventsRevenue: exclusiveEventsRevenue == freezed
+      exclusiveEventsRevenue: null == exclusiveEventsRevenue
           ? _value.exclusiveEventsRevenue
           : exclusiveEventsRevenue // ignore: cast_nullable_to_non_nullable
               as double,
-      ticketsSold: ticketsSold == freezed
+      ticketsSold: null == ticketsSold
           ? _value.ticketsSold
           : ticketsSold // ignore: cast_nullable_to_non_nullable
               as int,
-      vipsSold: vipsSold == freezed
+      vipsSold: null == vipsSold
           ? _value.vipsSold
           : vipsSold // ignore: cast_nullable_to_non_nullable
               as int,
-      exclusiveTicketsSold: exclusiveTicketsSold == freezed
+      exclusiveTicketsSold: null == exclusiveTicketsSold
           ? _value.exclusiveTicketsSold
           : exclusiveTicketsSold // ignore: cast_nullable_to_non_nullable
               as int,
-      exclusiveVipsSold: exclusiveVipsSold == freezed
+      exclusiveVipsSold: null == exclusiveVipsSold
           ? _value.exclusiveVipsSold
           : exclusiveVipsSold // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -107,6 +111,7 @@ abstract class _$$_ClubSalesDtoCopyWith<$Res>
           _$_ClubSalesDto value, $Res Function(_$_ClubSalesDto) then) =
       __$$_ClubSalesDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String currency,
       double totalRevenue,
@@ -119,51 +124,49 @@ abstract class _$$_ClubSalesDtoCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClubSalesDtoCopyWithImpl<$Res>
-    extends _$ClubSalesDtoCopyWithImpl<$Res>
+    extends _$ClubSalesDtoCopyWithImpl<$Res, _$_ClubSalesDto>
     implements _$$_ClubSalesDtoCopyWith<$Res> {
   __$$_ClubSalesDtoCopyWithImpl(
       _$_ClubSalesDto _value, $Res Function(_$_ClubSalesDto) _then)
-      : super(_value, (v) => _then(v as _$_ClubSalesDto));
+      : super(_value, _then);
 
-  @override
-  _$_ClubSalesDto get _value => super._value as _$_ClubSalesDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currency = freezed,
-    Object? totalRevenue = freezed,
-    Object? exclusiveEventsRevenue = freezed,
-    Object? ticketsSold = freezed,
-    Object? vipsSold = freezed,
-    Object? exclusiveTicketsSold = freezed,
-    Object? exclusiveVipsSold = freezed,
+    Object? currency = null,
+    Object? totalRevenue = null,
+    Object? exclusiveEventsRevenue = null,
+    Object? ticketsSold = null,
+    Object? vipsSold = null,
+    Object? exclusiveTicketsSold = null,
+    Object? exclusiveVipsSold = null,
   }) {
     return _then(_$_ClubSalesDto(
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      totalRevenue: totalRevenue == freezed
+      totalRevenue: null == totalRevenue
           ? _value.totalRevenue
           : totalRevenue // ignore: cast_nullable_to_non_nullable
               as double,
-      exclusiveEventsRevenue: exclusiveEventsRevenue == freezed
+      exclusiveEventsRevenue: null == exclusiveEventsRevenue
           ? _value.exclusiveEventsRevenue
           : exclusiveEventsRevenue // ignore: cast_nullable_to_non_nullable
               as double,
-      ticketsSold: ticketsSold == freezed
+      ticketsSold: null == ticketsSold
           ? _value.ticketsSold
           : ticketsSold // ignore: cast_nullable_to_non_nullable
               as int,
-      vipsSold: vipsSold == freezed
+      vipsSold: null == vipsSold
           ? _value.vipsSold
           : vipsSold // ignore: cast_nullable_to_non_nullable
               as int,
-      exclusiveTicketsSold: exclusiveTicketsSold == freezed
+      exclusiveTicketsSold: null == exclusiveTicketsSold
           ? _value.exclusiveTicketsSold
           : exclusiveTicketsSold // ignore: cast_nullable_to_non_nullable
               as int,
-      exclusiveVipsSold: exclusiveVipsSold == freezed
+      exclusiveVipsSold: null == exclusiveVipsSold
           ? _value.exclusiveVipsSold
           : exclusiveVipsSold // ignore: cast_nullable_to_non_nullable
               as int,
@@ -219,34 +222,37 @@ class _$_ClubSalesDto extends _ClubSalesDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClubSalesDto &&
-            const DeepCollectionEquality().equals(other.currency, currency) &&
-            const DeepCollectionEquality()
-                .equals(other.totalRevenue, totalRevenue) &&
-            const DeepCollectionEquality()
-                .equals(other.exclusiveEventsRevenue, exclusiveEventsRevenue) &&
-            const DeepCollectionEquality()
-                .equals(other.ticketsSold, ticketsSold) &&
-            const DeepCollectionEquality().equals(other.vipsSold, vipsSold) &&
-            const DeepCollectionEquality()
-                .equals(other.exclusiveTicketsSold, exclusiveTicketsSold) &&
-            const DeepCollectionEquality()
-                .equals(other.exclusiveVipsSold, exclusiveVipsSold));
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.totalRevenue, totalRevenue) ||
+                other.totalRevenue == totalRevenue) &&
+            (identical(other.exclusiveEventsRevenue, exclusiveEventsRevenue) ||
+                other.exclusiveEventsRevenue == exclusiveEventsRevenue) &&
+            (identical(other.ticketsSold, ticketsSold) ||
+                other.ticketsSold == ticketsSold) &&
+            (identical(other.vipsSold, vipsSold) ||
+                other.vipsSold == vipsSold) &&
+            (identical(other.exclusiveTicketsSold, exclusiveTicketsSold) ||
+                other.exclusiveTicketsSold == exclusiveTicketsSold) &&
+            (identical(other.exclusiveVipsSold, exclusiveVipsSold) ||
+                other.exclusiveVipsSold == exclusiveVipsSold));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(currency),
-      const DeepCollectionEquality().hash(totalRevenue),
-      const DeepCollectionEquality().hash(exclusiveEventsRevenue),
-      const DeepCollectionEquality().hash(ticketsSold),
-      const DeepCollectionEquality().hash(vipsSold),
-      const DeepCollectionEquality().hash(exclusiveTicketsSold),
-      const DeepCollectionEquality().hash(exclusiveVipsSold));
+      currency,
+      totalRevenue,
+      exclusiveEventsRevenue,
+      ticketsSold,
+      vipsSold,
+      exclusiveTicketsSold,
+      exclusiveVipsSold);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClubSalesDtoCopyWith<_$_ClubSalesDto> get copyWith =>
       __$$_ClubSalesDtoCopyWithImpl<_$_ClubSalesDto>(this, _$identity);
 

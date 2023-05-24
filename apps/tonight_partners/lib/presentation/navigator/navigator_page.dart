@@ -153,7 +153,13 @@ class _NavigatorPageState extends State<NavigatorPage> {
                     ),
                     NavigationDestination(
                       icon: const FaIcon(FontAwesomeIcons.userGroup),
-                      label: S().selectors(2),
+                      // TODO - add translations
+                      label: 'Kadra',
+                    ),
+                    NavigationDestination(
+                      icon: const FaIcon(FontAwesomeIcons.qrcode),
+                      // TODO - add translations
+                      label: 'Skanuj',
                     ),
                   ],
                 );

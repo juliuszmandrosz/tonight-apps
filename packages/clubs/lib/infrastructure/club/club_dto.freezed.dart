@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'club_dto.dart';
 
@@ -29,7 +29,7 @@ mixin _$ClubDto {
   String get locationString => throw _privateConstructorUsedError;
   String get cityId => throw _privateConstructorUsedError;
   String get acceptedCurrency => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
   @LocationConverter()
   Map<String, double> get location => throw _privateConstructorUsedError;
   Map<String, String> get socialMedia => throw _privateConstructorUsedError;
@@ -54,7 +54,7 @@ abstract class $ClubDtoCopyWith<$Res> {
       String locationString,
       String cityId,
       String acceptedCurrency,
-      String phoneNumber,
+      String? phoneNumber,
       @LocationConverter() Map<String, double> location,
       Map<String, String> socialMedia,
       String? aboutUs});
@@ -81,7 +81,7 @@ class _$ClubDtoCopyWithImpl<$Res, $Val extends ClubDto>
     Object? locationString = null,
     Object? cityId = null,
     Object? acceptedCurrency = null,
-    Object? phoneNumber = null,
+    Object? phoneNumber = freezed,
     Object? location = null,
     Object? socialMedia = null,
     Object? aboutUs = freezed,
@@ -119,10 +119,10 @@ class _$ClubDtoCopyWithImpl<$Res, $Val extends ClubDto>
           ? _value.acceptedCurrency
           : acceptedCurrency // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: null == phoneNumber
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -155,7 +155,7 @@ abstract class _$$_ClubDtoCopyWith<$Res> implements $ClubDtoCopyWith<$Res> {
       String locationString,
       String cityId,
       String acceptedCurrency,
-      String phoneNumber,
+      String? phoneNumber,
       @LocationConverter() Map<String, double> location,
       Map<String, String> socialMedia,
       String? aboutUs});
@@ -179,7 +179,7 @@ class __$$_ClubDtoCopyWithImpl<$Res>
     Object? locationString = null,
     Object? cityId = null,
     Object? acceptedCurrency = null,
-    Object? phoneNumber = null,
+    Object? phoneNumber = freezed,
     Object? location = null,
     Object? socialMedia = null,
     Object? aboutUs = freezed,
@@ -217,10 +217,10 @@ class __$$_ClubDtoCopyWithImpl<$Res>
           ? _value.acceptedCurrency
           : acceptedCurrency // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: null == phoneNumber
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       location: null == location
           ? _value._location
           : location // ignore: cast_nullable_to_non_nullable
@@ -250,7 +250,7 @@ class _$_ClubDto extends _ClubDto {
       required this.locationString,
       required this.cityId,
       required this.acceptedCurrency,
-      required this.phoneNumber,
+      this.phoneNumber,
       @LocationConverter() required final Map<String, double> location,
       final Map<String, String> socialMedia = const {},
       this.aboutUs})
@@ -281,11 +281,12 @@ class _$_ClubDto extends _ClubDto {
   @override
   final String acceptedCurrency;
   @override
-  final String phoneNumber;
+  final String? phoneNumber;
   final Map<String, double> _location;
   @override
   @LocationConverter()
   Map<String, double> get location {
+    if (_location is EqualUnmodifiableMapView) return _location;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_location);
   }
@@ -294,6 +295,7 @@ class _$_ClubDto extends _ClubDto {
   @override
   @JsonKey()
   Map<String, String> get socialMedia {
+    if (_socialMedia is EqualUnmodifiableMapView) return _socialMedia;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_socialMedia);
   }
@@ -374,7 +376,7 @@ abstract class _ClubDto extends ClubDto {
       required final String locationString,
       required final String cityId,
       required final String acceptedCurrency,
-      required final String phoneNumber,
+      final String? phoneNumber,
       @LocationConverter() required final Map<String, double> location,
       final Map<String, String> socialMedia,
       final String? aboutUs}) = _$_ClubDto;
@@ -400,7 +402,7 @@ abstract class _ClubDto extends ClubDto {
   @override
   String get acceptedCurrency;
   @override
-  String get phoneNumber;
+  String? get phoneNumber;
   @override
   @LocationConverter()
   Map<String, double> get location;

@@ -14,7 +14,7 @@ _$_ClubDto _$$_ClubDtoFromJson(Map<String, dynamic> json) => _$_ClubDto(
       locationString: json['locationString'] as String,
       cityId: json['cityId'] as String,
       acceptedCurrency: json['acceptedCurrency'] as String,
-      phoneNumber: json['phoneNumber'] as String,
+      phoneNumber: json['phoneNumber'] as String?,
       location: const LocationConverter().fromJson(json['location'] as List),
       socialMedia: (json['socialMedia'] as Map<String, dynamic>?)?.map(
             (k, e) => MapEntry(k, e as String),

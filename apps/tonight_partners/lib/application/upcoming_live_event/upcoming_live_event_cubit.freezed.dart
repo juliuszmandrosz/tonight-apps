@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'upcoming_live_event_cubit.dart';
 
@@ -39,7 +39,8 @@ mixin _$UpcomingLiveEventState {
 abstract class $UpcomingLiveEventStateCopyWith<$Res> {
   factory $UpcomingLiveEventStateCopyWith(UpcomingLiveEventState value,
           $Res Function(UpcomingLiveEventState) then) =
-      _$UpcomingLiveEventStateCopyWithImpl<$Res>;
+      _$UpcomingLiveEventStateCopyWithImpl<$Res, UpcomingLiveEventState>;
+  @useResult
   $Res call(
       {CubitStatus initialStatus,
       CubitStatus ticketPoolStatus,
@@ -57,84 +58,87 @@ abstract class $UpcomingLiveEventStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UpcomingLiveEventStateCopyWithImpl<$Res>
+class _$UpcomingLiveEventStateCopyWithImpl<$Res,
+        $Val extends UpcomingLiveEventState>
     implements $UpcomingLiveEventStateCopyWith<$Res> {
   _$UpcomingLiveEventStateCopyWithImpl(this._value, this._then);
 
-  final UpcomingLiveEventState _value;
   // ignore: unused_field
-  final $Res Function(UpcomingLiveEventState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? initialStatus = freezed,
-    Object? ticketPoolStatus = freezed,
-    Object? cancelEventStatus = freezed,
-    Object? eventCostsStatus = freezed,
-    Object? editEventDetailsStatus = freezed,
-    Object? snackbarMessage = freezed,
-    Object? eventTickets = freezed,
-    Object? eventCosts = freezed,
-    Object? event = freezed,
-    Object? eventName = freezed,
-    Object? description = freezed,
-    Object? facebookUrl = freezed,
-    Object? djChannelUrl = freezed,
+    Object? initialStatus = null,
+    Object? ticketPoolStatus = null,
+    Object? cancelEventStatus = null,
+    Object? eventCostsStatus = null,
+    Object? editEventDetailsStatus = null,
+    Object? snackbarMessage = null,
+    Object? eventTickets = null,
+    Object? eventCosts = null,
+    Object? event = null,
+    Object? eventName = null,
+    Object? description = null,
+    Object? facebookUrl = null,
+    Object? djChannelUrl = null,
   }) {
     return _then(_value.copyWith(
-      initialStatus: initialStatus == freezed
+      initialStatus: null == initialStatus
           ? _value.initialStatus
           : initialStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      ticketPoolStatus: ticketPoolStatus == freezed
+      ticketPoolStatus: null == ticketPoolStatus
           ? _value.ticketPoolStatus
           : ticketPoolStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      cancelEventStatus: cancelEventStatus == freezed
+      cancelEventStatus: null == cancelEventStatus
           ? _value.cancelEventStatus
           : cancelEventStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      eventCostsStatus: eventCostsStatus == freezed
+      eventCostsStatus: null == eventCostsStatus
           ? _value.eventCostsStatus
           : eventCostsStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      editEventDetailsStatus: editEventDetailsStatus == freezed
+      editEventDetailsStatus: null == editEventDetailsStatus
           ? _value.editEventDetailsStatus
           : editEventDetailsStatus // ignore: cast_nullable_to_non_nullable
               as FormzStatus,
-      snackbarMessage: snackbarMessage == freezed
+      snackbarMessage: null == snackbarMessage
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      eventTickets: eventTickets == freezed
+      eventTickets: null == eventTickets
           ? _value.eventTickets
           : eventTickets // ignore: cast_nullable_to_non_nullable
               as Option<EventTickets>,
-      eventCosts: eventCosts == freezed
+      eventCosts: null == eventCosts
           ? _value.eventCosts
           : eventCosts // ignore: cast_nullable_to_non_nullable
               as Option<EventCosts>,
-      event: event == freezed
+      event: null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
               as Option<Event>,
-      eventName: eventName == freezed
+      eventName: null == eventName
           ? _value.eventName
           : eventName // ignore: cast_nullable_to_non_nullable
               as EventName,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as Description,
-      facebookUrl: facebookUrl == freezed
+      facebookUrl: null == facebookUrl
           ? _value.facebookUrl
           : facebookUrl // ignore: cast_nullable_to_non_nullable
               as FacebookUrl,
-      djChannelUrl: djChannelUrl == freezed
+      djChannelUrl: null == djChannelUrl
           ? _value.djChannelUrl
           : djChannelUrl // ignore: cast_nullable_to_non_nullable
               as DjChannelUrl,
-    ));
+    ) as $Val);
   }
 }
 
@@ -145,6 +149,7 @@ abstract class _$$_UpcomingLiveEventStateCopyWith<$Res>
           $Res Function(_$_UpcomingLiveEventState) then) =
       __$$_UpcomingLiveEventStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {CubitStatus initialStatus,
       CubitStatus ticketPoolStatus,
@@ -163,82 +168,80 @@ abstract class _$$_UpcomingLiveEventStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_UpcomingLiveEventStateCopyWithImpl<$Res>
-    extends _$UpcomingLiveEventStateCopyWithImpl<$Res>
+    extends _$UpcomingLiveEventStateCopyWithImpl<$Res,
+        _$_UpcomingLiveEventState>
     implements _$$_UpcomingLiveEventStateCopyWith<$Res> {
   __$$_UpcomingLiveEventStateCopyWithImpl(_$_UpcomingLiveEventState _value,
       $Res Function(_$_UpcomingLiveEventState) _then)
-      : super(_value, (v) => _then(v as _$_UpcomingLiveEventState));
+      : super(_value, _then);
 
-  @override
-  _$_UpcomingLiveEventState get _value =>
-      super._value as _$_UpcomingLiveEventState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? initialStatus = freezed,
-    Object? ticketPoolStatus = freezed,
-    Object? cancelEventStatus = freezed,
-    Object? eventCostsStatus = freezed,
-    Object? editEventDetailsStatus = freezed,
-    Object? snackbarMessage = freezed,
-    Object? eventTickets = freezed,
-    Object? eventCosts = freezed,
-    Object? event = freezed,
-    Object? eventName = freezed,
-    Object? description = freezed,
-    Object? facebookUrl = freezed,
-    Object? djChannelUrl = freezed,
+    Object? initialStatus = null,
+    Object? ticketPoolStatus = null,
+    Object? cancelEventStatus = null,
+    Object? eventCostsStatus = null,
+    Object? editEventDetailsStatus = null,
+    Object? snackbarMessage = null,
+    Object? eventTickets = null,
+    Object? eventCosts = null,
+    Object? event = null,
+    Object? eventName = null,
+    Object? description = null,
+    Object? facebookUrl = null,
+    Object? djChannelUrl = null,
   }) {
     return _then(_$_UpcomingLiveEventState(
-      initialStatus: initialStatus == freezed
+      initialStatus: null == initialStatus
           ? _value.initialStatus
           : initialStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      ticketPoolStatus: ticketPoolStatus == freezed
+      ticketPoolStatus: null == ticketPoolStatus
           ? _value.ticketPoolStatus
           : ticketPoolStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      cancelEventStatus: cancelEventStatus == freezed
+      cancelEventStatus: null == cancelEventStatus
           ? _value.cancelEventStatus
           : cancelEventStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      eventCostsStatus: eventCostsStatus == freezed
+      eventCostsStatus: null == eventCostsStatus
           ? _value.eventCostsStatus
           : eventCostsStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      editEventDetailsStatus: editEventDetailsStatus == freezed
+      editEventDetailsStatus: null == editEventDetailsStatus
           ? _value.editEventDetailsStatus
           : editEventDetailsStatus // ignore: cast_nullable_to_non_nullable
               as FormzStatus,
-      snackbarMessage: snackbarMessage == freezed
+      snackbarMessage: null == snackbarMessage
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      eventTickets: eventTickets == freezed
+      eventTickets: null == eventTickets
           ? _value.eventTickets
           : eventTickets // ignore: cast_nullable_to_non_nullable
               as Option<EventTickets>,
-      eventCosts: eventCosts == freezed
+      eventCosts: null == eventCosts
           ? _value.eventCosts
           : eventCosts // ignore: cast_nullable_to_non_nullable
               as Option<EventCosts>,
-      event: event == freezed
+      event: null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
               as Option<Event>,
-      eventName: eventName == freezed
+      eventName: null == eventName
           ? _value.eventName
           : eventName // ignore: cast_nullable_to_non_nullable
               as EventName,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as Description,
-      facebookUrl: facebookUrl == freezed
+      facebookUrl: null == facebookUrl
           ? _value.facebookUrl
           : facebookUrl // ignore: cast_nullable_to_non_nullable
               as FacebookUrl,
-      djChannelUrl: djChannelUrl == freezed
+      djChannelUrl: null == djChannelUrl
           ? _value.djChannelUrl
           : djChannelUrl // ignore: cast_nullable_to_non_nullable
               as DjChannelUrl,
@@ -301,51 +304,53 @@ class _$_UpcomingLiveEventState implements _UpcomingLiveEventState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpcomingLiveEventState &&
-            const DeepCollectionEquality()
-                .equals(other.initialStatus, initialStatus) &&
-            const DeepCollectionEquality()
-                .equals(other.ticketPoolStatus, ticketPoolStatus) &&
-            const DeepCollectionEquality()
-                .equals(other.cancelEventStatus, cancelEventStatus) &&
-            const DeepCollectionEquality()
-                .equals(other.eventCostsStatus, eventCostsStatus) &&
-            const DeepCollectionEquality()
-                .equals(other.editEventDetailsStatus, editEventDetailsStatus) &&
-            const DeepCollectionEquality()
-                .equals(other.snackbarMessage, snackbarMessage) &&
-            const DeepCollectionEquality()
-                .equals(other.eventTickets, eventTickets) &&
-            const DeepCollectionEquality()
-                .equals(other.eventCosts, eventCosts) &&
-            const DeepCollectionEquality().equals(other.event, event) &&
-            const DeepCollectionEquality().equals(other.eventName, eventName) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality()
-                .equals(other.facebookUrl, facebookUrl) &&
-            const DeepCollectionEquality()
-                .equals(other.djChannelUrl, djChannelUrl));
+            (identical(other.initialStatus, initialStatus) ||
+                other.initialStatus == initialStatus) &&
+            (identical(other.ticketPoolStatus, ticketPoolStatus) ||
+                other.ticketPoolStatus == ticketPoolStatus) &&
+            (identical(other.cancelEventStatus, cancelEventStatus) ||
+                other.cancelEventStatus == cancelEventStatus) &&
+            (identical(other.eventCostsStatus, eventCostsStatus) ||
+                other.eventCostsStatus == eventCostsStatus) &&
+            (identical(other.editEventDetailsStatus, editEventDetailsStatus) ||
+                other.editEventDetailsStatus == editEventDetailsStatus) &&
+            (identical(other.snackbarMessage, snackbarMessage) ||
+                other.snackbarMessage == snackbarMessage) &&
+            (identical(other.eventTickets, eventTickets) ||
+                other.eventTickets == eventTickets) &&
+            (identical(other.eventCosts, eventCosts) ||
+                other.eventCosts == eventCosts) &&
+            (identical(other.event, event) || other.event == event) &&
+            (identical(other.eventName, eventName) ||
+                other.eventName == eventName) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.facebookUrl, facebookUrl) ||
+                other.facebookUrl == facebookUrl) &&
+            (identical(other.djChannelUrl, djChannelUrl) ||
+                other.djChannelUrl == djChannelUrl));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(initialStatus),
-      const DeepCollectionEquality().hash(ticketPoolStatus),
-      const DeepCollectionEquality().hash(cancelEventStatus),
-      const DeepCollectionEquality().hash(eventCostsStatus),
-      const DeepCollectionEquality().hash(editEventDetailsStatus),
-      const DeepCollectionEquality().hash(snackbarMessage),
-      const DeepCollectionEquality().hash(eventTickets),
-      const DeepCollectionEquality().hash(eventCosts),
-      const DeepCollectionEquality().hash(event),
-      const DeepCollectionEquality().hash(eventName),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(facebookUrl),
-      const DeepCollectionEquality().hash(djChannelUrl));
+      initialStatus,
+      ticketPoolStatus,
+      cancelEventStatus,
+      eventCostsStatus,
+      editEventDetailsStatus,
+      snackbarMessage,
+      eventTickets,
+      eventCosts,
+      event,
+      eventName,
+      description,
+      facebookUrl,
+      djChannelUrl);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UpcomingLiveEventStateCopyWith<_$_UpcomingLiveEventState> get copyWith =>
       __$$_UpcomingLiveEventStateCopyWithImpl<_$_UpcomingLiveEventState>(
           this, _$identity);

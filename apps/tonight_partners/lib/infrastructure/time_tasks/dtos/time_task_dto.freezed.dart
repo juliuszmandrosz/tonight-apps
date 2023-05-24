@@ -1,0 +1,319 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'time_task_dto.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+TimeTaskDto _$TimeTaskDtoFromJson(Map<String, dynamic> json) {
+  return _TimeTaskDto.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TimeTaskDto {
+  @JsonKey(ignore: true)
+  String? get id => throw _privateConstructorUsedError;
+  String get eventId => throw _privateConstructorUsedError;
+  String get eventName => throw _privateConstructorUsedError;
+  @FirebaseTimestampJsonConverter()
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  int get durationInMinutes => throw _privateConstructorUsedError;
+  String get descriptionPl => throw _privateConstructorUsedError;
+  String get descriptionEn => throw _privateConstructorUsedError;
+  dynamic get isRewardAcquired => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TimeTaskDtoCopyWith<TimeTaskDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TimeTaskDtoCopyWith<$Res> {
+  factory $TimeTaskDtoCopyWith(
+          TimeTaskDto value, $Res Function(TimeTaskDto) then) =
+      _$TimeTaskDtoCopyWithImpl<$Res, TimeTaskDto>;
+  @useResult
+  $Res call(
+      {@JsonKey(ignore: true) String? id,
+      String eventId,
+      String eventName,
+      @FirebaseTimestampJsonConverter() DateTime createdAt,
+      int durationInMinutes,
+      String descriptionPl,
+      String descriptionEn,
+      dynamic isRewardAcquired});
+}
+
+/// @nodoc
+class _$TimeTaskDtoCopyWithImpl<$Res, $Val extends TimeTaskDto>
+    implements $TimeTaskDtoCopyWith<$Res> {
+  _$TimeTaskDtoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? eventId = null,
+    Object? eventName = null,
+    Object? createdAt = null,
+    Object? durationInMinutes = null,
+    Object? descriptionPl = null,
+    Object? descriptionEn = null,
+    Object? isRewardAcquired = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventId: null == eventId
+          ? _value.eventId
+          : eventId // ignore: cast_nullable_to_non_nullable
+              as String,
+      eventName: null == eventName
+          ? _value.eventName
+          : eventName // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      durationInMinutes: null == durationInMinutes
+          ? _value.durationInMinutes
+          : durationInMinutes // ignore: cast_nullable_to_non_nullable
+              as int,
+      descriptionPl: null == descriptionPl
+          ? _value.descriptionPl
+          : descriptionPl // ignore: cast_nullable_to_non_nullable
+              as String,
+      descriptionEn: null == descriptionEn
+          ? _value.descriptionEn
+          : descriptionEn // ignore: cast_nullable_to_non_nullable
+              as String,
+      isRewardAcquired: freezed == isRewardAcquired
+          ? _value.isRewardAcquired
+          : isRewardAcquired // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_TimeTaskDtoCopyWith<$Res>
+    implements $TimeTaskDtoCopyWith<$Res> {
+  factory _$$_TimeTaskDtoCopyWith(
+          _$_TimeTaskDto value, $Res Function(_$_TimeTaskDto) then) =
+      __$$_TimeTaskDtoCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(ignore: true) String? id,
+      String eventId,
+      String eventName,
+      @FirebaseTimestampJsonConverter() DateTime createdAt,
+      int durationInMinutes,
+      String descriptionPl,
+      String descriptionEn,
+      dynamic isRewardAcquired});
+}
+
+/// @nodoc
+class __$$_TimeTaskDtoCopyWithImpl<$Res>
+    extends _$TimeTaskDtoCopyWithImpl<$Res, _$_TimeTaskDto>
+    implements _$$_TimeTaskDtoCopyWith<$Res> {
+  __$$_TimeTaskDtoCopyWithImpl(
+      _$_TimeTaskDto _value, $Res Function(_$_TimeTaskDto) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? eventId = null,
+    Object? eventName = null,
+    Object? createdAt = null,
+    Object? durationInMinutes = null,
+    Object? descriptionPl = null,
+    Object? descriptionEn = null,
+    Object? isRewardAcquired = freezed,
+  }) {
+    return _then(_$_TimeTaskDto(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eventId: null == eventId
+          ? _value.eventId
+          : eventId // ignore: cast_nullable_to_non_nullable
+              as String,
+      eventName: null == eventName
+          ? _value.eventName
+          : eventName // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      durationInMinutes: null == durationInMinutes
+          ? _value.durationInMinutes
+          : durationInMinutes // ignore: cast_nullable_to_non_nullable
+              as int,
+      descriptionPl: null == descriptionPl
+          ? _value.descriptionPl
+          : descriptionPl // ignore: cast_nullable_to_non_nullable
+              as String,
+      descriptionEn: null == descriptionEn
+          ? _value.descriptionEn
+          : descriptionEn // ignore: cast_nullable_to_non_nullable
+              as String,
+      isRewardAcquired: freezed == isRewardAcquired
+          ? _value.isRewardAcquired!
+          : isRewardAcquired,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable()
+class _$_TimeTaskDto extends _TimeTaskDto {
+  const _$_TimeTaskDto(
+      {@JsonKey(ignore: true) this.id,
+      required this.eventId,
+      required this.eventName,
+      @FirebaseTimestampJsonConverter() required this.createdAt,
+      required this.durationInMinutes,
+      required this.descriptionPl,
+      required this.descriptionEn,
+      this.isRewardAcquired = false})
+      : super._();
+
+  factory _$_TimeTaskDto.fromJson(Map<String, dynamic> json) =>
+      _$$_TimeTaskDtoFromJson(json);
+
+  @override
+  @JsonKey(ignore: true)
+  final String? id;
+  @override
+  final String eventId;
+  @override
+  final String eventName;
+  @override
+  @FirebaseTimestampJsonConverter()
+  final DateTime createdAt;
+  @override
+  final int durationInMinutes;
+  @override
+  final String descriptionPl;
+  @override
+  final String descriptionEn;
+  @override
+  @JsonKey()
+  final dynamic isRewardAcquired;
+
+  @override
+  String toString() {
+    return 'TimeTaskDto(id: $id, eventId: $eventId, eventName: $eventName, createdAt: $createdAt, durationInMinutes: $durationInMinutes, descriptionPl: $descriptionPl, descriptionEn: $descriptionEn, isRewardAcquired: $isRewardAcquired)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TimeTaskDto &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.eventId, eventId) || other.eventId == eventId) &&
+            (identical(other.eventName, eventName) ||
+                other.eventName == eventName) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.durationInMinutes, durationInMinutes) ||
+                other.durationInMinutes == durationInMinutes) &&
+            (identical(other.descriptionPl, descriptionPl) ||
+                other.descriptionPl == descriptionPl) &&
+            (identical(other.descriptionEn, descriptionEn) ||
+                other.descriptionEn == descriptionEn) &&
+            const DeepCollectionEquality()
+                .equals(other.isRewardAcquired, isRewardAcquired));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      eventId,
+      eventName,
+      createdAt,
+      durationInMinutes,
+      descriptionPl,
+      descriptionEn,
+      const DeepCollectionEquality().hash(isRewardAcquired));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TimeTaskDtoCopyWith<_$_TimeTaskDto> get copyWith =>
+      __$$_TimeTaskDtoCopyWithImpl<_$_TimeTaskDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TimeTaskDtoToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TimeTaskDto extends TimeTaskDto {
+  const factory _TimeTaskDto(
+      {@JsonKey(ignore: true) final String? id,
+      required final String eventId,
+      required final String eventName,
+      @FirebaseTimestampJsonConverter() required final DateTime createdAt,
+      required final int durationInMinutes,
+      required final String descriptionPl,
+      required final String descriptionEn,
+      final dynamic isRewardAcquired}) = _$_TimeTaskDto;
+  const _TimeTaskDto._() : super._();
+
+  factory _TimeTaskDto.fromJson(Map<String, dynamic> json) =
+      _$_TimeTaskDto.fromJson;
+
+  @override
+  @JsonKey(ignore: true)
+  String? get id;
+  @override
+  String get eventId;
+  @override
+  String get eventName;
+  @override
+  @FirebaseTimestampJsonConverter()
+  DateTime get createdAt;
+  @override
+  int get durationInMinutes;
+  @override
+  String get descriptionPl;
+  @override
+  String get descriptionEn;
+  @override
+  dynamic get isRewardAcquired;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TimeTaskDtoCopyWith<_$_TimeTaskDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}

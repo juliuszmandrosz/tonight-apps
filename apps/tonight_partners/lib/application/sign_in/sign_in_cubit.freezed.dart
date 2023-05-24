@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'sign_in_cubit.dart';
 
@@ -31,7 +31,8 @@ mixin _$SignInState {
 abstract class $SignInStateCopyWith<$Res> {
   factory $SignInStateCopyWith(
           SignInState value, $Res Function(SignInState) then) =
-      _$SignInStateCopyWithImpl<$Res>;
+      _$SignInStateCopyWithImpl<$Res, SignInState>;
+  @useResult
   $Res call(
       {EmailInput email,
       String accessCode,
@@ -41,43 +42,46 @@ abstract class $SignInStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SignInStateCopyWithImpl<$Res> implements $SignInStateCopyWith<$Res> {
+class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
+    implements $SignInStateCopyWith<$Res> {
   _$SignInStateCopyWithImpl(this._value, this._then);
 
-  final SignInState _value;
   // ignore: unused_field
-  final $Res Function(SignInState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = freezed,
-    Object? accessCode = freezed,
-    Object? status = freezed,
-    Object? errorMessage = freezed,
-    Object? linkSentMessage = freezed,
+    Object? email = null,
+    Object? accessCode = null,
+    Object? status = null,
+    Object? errorMessage = null,
+    Object? linkSentMessage = null,
   }) {
     return _then(_value.copyWith(
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as EmailInput,
-      accessCode: accessCode == freezed
+      accessCode: null == accessCode
           ? _value.accessCode
           : accessCode // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FormzStatus,
-      errorMessage: errorMessage == freezed
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      linkSentMessage: linkSentMessage == freezed
+      linkSentMessage: null == linkSentMessage
           ? _value.linkSentMessage
           : linkSentMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -88,6 +92,7 @@ abstract class _$$_SignInStateCopyWith<$Res>
           _$_SignInState value, $Res Function(_$_SignInState) then) =
       __$$_SignInStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {EmailInput email,
       String accessCode,
@@ -97,41 +102,40 @@ abstract class _$$_SignInStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SignInStateCopyWithImpl<$Res> extends _$SignInStateCopyWithImpl<$Res>
+class __$$_SignInStateCopyWithImpl<$Res>
+    extends _$SignInStateCopyWithImpl<$Res, _$_SignInState>
     implements _$$_SignInStateCopyWith<$Res> {
   __$$_SignInStateCopyWithImpl(
       _$_SignInState _value, $Res Function(_$_SignInState) _then)
-      : super(_value, (v) => _then(v as _$_SignInState));
+      : super(_value, _then);
 
-  @override
-  _$_SignInState get _value => super._value as _$_SignInState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = freezed,
-    Object? accessCode = freezed,
-    Object? status = freezed,
-    Object? errorMessage = freezed,
-    Object? linkSentMessage = freezed,
+    Object? email = null,
+    Object? accessCode = null,
+    Object? status = null,
+    Object? errorMessage = null,
+    Object? linkSentMessage = null,
   }) {
     return _then(_$_SignInState(
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as EmailInput,
-      accessCode: accessCode == freezed
+      accessCode: null == accessCode
           ? _value.accessCode
           : accessCode // ignore: cast_nullable_to_non_nullable
               as String,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FormzStatus,
-      errorMessage: errorMessage == freezed
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      linkSentMessage: linkSentMessage == freezed
+      linkSentMessage: null == linkSentMessage
           ? _value.linkSentMessage
           : linkSentMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
@@ -170,27 +174,23 @@ class _$_SignInState implements _SignInState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SignInState &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality()
-                .equals(other.accessCode, accessCode) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage) &&
-            const DeepCollectionEquality()
-                .equals(other.linkSentMessage, linkSentMessage));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.accessCode, accessCode) ||
+                other.accessCode == accessCode) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.linkSentMessage, linkSentMessage) ||
+                other.linkSentMessage == linkSentMessage));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(accessCode),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(errorMessage),
-      const DeepCollectionEquality().hash(linkSentMessage));
+      runtimeType, email, accessCode, status, errorMessage, linkSentMessage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SignInStateCopyWith<_$_SignInState> get copyWith =>
       __$$_SignInStateCopyWithImpl<_$_SignInState>(this, _$identity);
 }

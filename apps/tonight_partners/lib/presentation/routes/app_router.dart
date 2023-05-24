@@ -18,6 +18,7 @@ import 'package:tonight_partners/presentation/past_event_details/past_event_deta
 import 'package:tonight_partners/presentation/postpone_event/postpone_event_page.dart';
 import 'package:tonight_partners/presentation/rewards/rewards_page.dart';
 import 'package:tonight_partners/presentation/selectors/selectors_page.dart';
+import 'package:tonight_partners/presentation/send_time_task/send_time_task_page.dart';
 import 'package:tonight_partners/presentation/sign_in/sign_in_page.dart';
 import 'package:tonight_partners/presentation/splash/splash_page.dart';
 
@@ -98,6 +99,11 @@ const animationDuration = 300;
     CustomRoute(
       page: FailurePage,
       transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: SendTimeTaskPage,
+      transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
   ],

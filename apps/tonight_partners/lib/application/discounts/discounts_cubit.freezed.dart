@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'discounts_cubit.dart';
 
@@ -29,7 +29,8 @@ mixin _$DiscountsState {
 abstract class $DiscountsStateCopyWith<$Res> {
   factory $DiscountsStateCopyWith(
           DiscountsState value, $Res Function(DiscountsState) then) =
-      _$DiscountsStateCopyWithImpl<$Res>;
+      _$DiscountsStateCopyWithImpl<$Res, DiscountsState>;
+  @useResult
   $Res call(
       {CubitStatus status,
       Option<ClubSales> clubSales,
@@ -37,34 +38,36 @@ abstract class $DiscountsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DiscountsStateCopyWithImpl<$Res>
+class _$DiscountsStateCopyWithImpl<$Res, $Val extends DiscountsState>
     implements $DiscountsStateCopyWith<$Res> {
   _$DiscountsStateCopyWithImpl(this._value, this._then);
 
-  final DiscountsState _value;
   // ignore: unused_field
-  final $Res Function(DiscountsState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? clubSales = freezed,
-    Object? discounts = freezed,
+    Object? status = null,
+    Object? clubSales = null,
+    Object? discounts = null,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      clubSales: clubSales == freezed
+      clubSales: null == clubSales
           ? _value.clubSales
           : clubSales // ignore: cast_nullable_to_non_nullable
               as Option<ClubSales>,
-      discounts: discounts == freezed
+      discounts: null == discounts
           ? _value.discounts
           : discounts // ignore: cast_nullable_to_non_nullable
               as List<PartnerDiscount>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -75,6 +78,7 @@ abstract class _$$_DiscountsStateCopyWith<$Res>
           _$_DiscountsState value, $Res Function(_$_DiscountsState) then) =
       __$$_DiscountsStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {CubitStatus status,
       Option<ClubSales> clubSales,
@@ -83,31 +87,29 @@ abstract class _$$_DiscountsStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_DiscountsStateCopyWithImpl<$Res>
-    extends _$DiscountsStateCopyWithImpl<$Res>
+    extends _$DiscountsStateCopyWithImpl<$Res, _$_DiscountsState>
     implements _$$_DiscountsStateCopyWith<$Res> {
   __$$_DiscountsStateCopyWithImpl(
       _$_DiscountsState _value, $Res Function(_$_DiscountsState) _then)
-      : super(_value, (v) => _then(v as _$_DiscountsState));
+      : super(_value, _then);
 
-  @override
-  _$_DiscountsState get _value => super._value as _$_DiscountsState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? clubSales = freezed,
-    Object? discounts = freezed,
+    Object? status = null,
+    Object? clubSales = null,
+    Object? discounts = null,
   }) {
     return _then(_$_DiscountsState(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      clubSales: clubSales == freezed
+      clubSales: null == clubSales
           ? _value.clubSales
           : clubSales // ignore: cast_nullable_to_non_nullable
               as Option<ClubSales>,
-      discounts: discounts == freezed
+      discounts: null == discounts
           ? _value._discounts
           : discounts // ignore: cast_nullable_to_non_nullable
               as List<PartnerDiscount>,
@@ -131,6 +133,7 @@ class _$_DiscountsState implements _DiscountsState {
   final List<PartnerDiscount> _discounts;
   @override
   List<PartnerDiscount> get discounts {
+    if (_discounts is EqualUnmodifiableListView) return _discounts;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_discounts);
   }
@@ -145,21 +148,20 @@ class _$_DiscountsState implements _DiscountsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DiscountsState &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.clubSales, clubSales) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.clubSales, clubSales) ||
+                other.clubSales == clubSales) &&
             const DeepCollectionEquality()
                 .equals(other._discounts, _discounts));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(clubSales),
+  int get hashCode => Object.hash(runtimeType, status, clubSales,
       const DeepCollectionEquality().hash(_discounts));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DiscountsStateCopyWith<_$_DiscountsState> get copyWith =>
       __$$_DiscountsStateCopyWithImpl<_$_DiscountsState>(this, _$identity);
 }

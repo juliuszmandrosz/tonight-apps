@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event_filters_cubit.dart';
 
@@ -27,37 +27,41 @@ mixin _$EventFiltersState {
 abstract class $EventFiltersStateCopyWith<$Res> {
   factory $EventFiltersStateCopyWith(
           EventFiltersState value, $Res Function(EventFiltersState) then) =
-      _$EventFiltersStateCopyWithImpl<$Res>;
+      _$EventFiltersStateCopyWithImpl<$Res, EventFiltersState>;
+  @useResult
   $Res call({EventFilters filters});
 
   $EventFiltersCopyWith<$Res> get filters;
 }
 
 /// @nodoc
-class _$EventFiltersStateCopyWithImpl<$Res>
+class _$EventFiltersStateCopyWithImpl<$Res, $Val extends EventFiltersState>
     implements $EventFiltersStateCopyWith<$Res> {
   _$EventFiltersStateCopyWithImpl(this._value, this._then);
 
-  final EventFiltersState _value;
   // ignore: unused_field
-  final $Res Function(EventFiltersState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? filters = freezed,
+    Object? filters = null,
   }) {
     return _then(_value.copyWith(
-      filters: filters == freezed
+      filters: null == filters
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
               as EventFilters,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $EventFiltersCopyWith<$Res> get filters {
     return $EventFiltersCopyWith<$Res>(_value.filters, (value) {
-      return _then(_value.copyWith(filters: value));
+      return _then(_value.copyWith(filters: value) as $Val);
     });
   }
 }
@@ -69,6 +73,7 @@ abstract class _$$_EventFiltersStateCopyWith<$Res>
           $Res Function(_$_EventFiltersState) then) =
       __$$_EventFiltersStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({EventFilters filters});
 
   @override
@@ -77,21 +82,19 @@ abstract class _$$_EventFiltersStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_EventFiltersStateCopyWithImpl<$Res>
-    extends _$EventFiltersStateCopyWithImpl<$Res>
+    extends _$EventFiltersStateCopyWithImpl<$Res, _$_EventFiltersState>
     implements _$$_EventFiltersStateCopyWith<$Res> {
   __$$_EventFiltersStateCopyWithImpl(
       _$_EventFiltersState _value, $Res Function(_$_EventFiltersState) _then)
-      : super(_value, (v) => _then(v as _$_EventFiltersState));
+      : super(_value, _then);
 
-  @override
-  _$_EventFiltersState get _value => super._value as _$_EventFiltersState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? filters = freezed,
+    Object? filters = null,
   }) {
     return _then(_$_EventFiltersState(
-      filters: filters == freezed
+      filters: null == filters
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
               as EventFilters,
@@ -117,15 +120,15 @@ class _$_EventFiltersState extends _EventFiltersState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EventFiltersState &&
-            const DeepCollectionEquality().equals(other.filters, filters));
+            (identical(other.filters, filters) || other.filters == filters));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(filters));
+  int get hashCode => Object.hash(runtimeType, filters);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventFiltersStateCopyWith<_$_EventFiltersState> get copyWith =>
       __$$_EventFiltersStateCopyWithImpl<_$_EventFiltersState>(
           this, _$identity);

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event_notifier_cubit.dart';
 
@@ -31,7 +31,8 @@ mixin _$EventNotifierState {
 abstract class $EventNotifierStateCopyWith<$Res> {
   factory $EventNotifierStateCopyWith(
           EventNotifierState value, $Res Function(EventNotifierState) then) =
-      _$EventNotifierStateCopyWithImpl<$Res>;
+      _$EventNotifierStateCopyWithImpl<$Res, EventNotifierState>;
+  @useResult
   $Res call(
       {Option<Event> lastAddedEvent,
       Option<Tuple2<Event, Event>> lastEditedEvent,
@@ -39,34 +40,36 @@ abstract class $EventNotifierStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EventNotifierStateCopyWithImpl<$Res>
+class _$EventNotifierStateCopyWithImpl<$Res, $Val extends EventNotifierState>
     implements $EventNotifierStateCopyWith<$Res> {
   _$EventNotifierStateCopyWithImpl(this._value, this._then);
 
-  final EventNotifierState _value;
   // ignore: unused_field
-  final $Res Function(EventNotifierState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lastAddedEvent = freezed,
-    Object? lastEditedEvent = freezed,
-    Object? lastDeletedEvent = freezed,
+    Object? lastAddedEvent = null,
+    Object? lastEditedEvent = null,
+    Object? lastDeletedEvent = null,
   }) {
     return _then(_value.copyWith(
-      lastAddedEvent: lastAddedEvent == freezed
+      lastAddedEvent: null == lastAddedEvent
           ? _value.lastAddedEvent
           : lastAddedEvent // ignore: cast_nullable_to_non_nullable
               as Option<Event>,
-      lastEditedEvent: lastEditedEvent == freezed
+      lastEditedEvent: null == lastEditedEvent
           ? _value.lastEditedEvent
           : lastEditedEvent // ignore: cast_nullable_to_non_nullable
               as Option<Tuple2<Event, Event>>,
-      lastDeletedEvent: lastDeletedEvent == freezed
+      lastDeletedEvent: null == lastDeletedEvent
           ? _value.lastDeletedEvent
           : lastDeletedEvent // ignore: cast_nullable_to_non_nullable
               as Option<Event>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -77,6 +80,7 @@ abstract class _$$_EventNotifierStateCopyWith<$Res>
           $Res Function(_$_EventNotifierState) then) =
       __$$_EventNotifierStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Option<Event> lastAddedEvent,
       Option<Tuple2<Event, Event>> lastEditedEvent,
@@ -85,31 +89,29 @@ abstract class _$$_EventNotifierStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_EventNotifierStateCopyWithImpl<$Res>
-    extends _$EventNotifierStateCopyWithImpl<$Res>
+    extends _$EventNotifierStateCopyWithImpl<$Res, _$_EventNotifierState>
     implements _$$_EventNotifierStateCopyWith<$Res> {
   __$$_EventNotifierStateCopyWithImpl(
       _$_EventNotifierState _value, $Res Function(_$_EventNotifierState) _then)
-      : super(_value, (v) => _then(v as _$_EventNotifierState));
+      : super(_value, _then);
 
-  @override
-  _$_EventNotifierState get _value => super._value as _$_EventNotifierState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lastAddedEvent = freezed,
-    Object? lastEditedEvent = freezed,
-    Object? lastDeletedEvent = freezed,
+    Object? lastAddedEvent = null,
+    Object? lastEditedEvent = null,
+    Object? lastDeletedEvent = null,
   }) {
     return _then(_$_EventNotifierState(
-      lastAddedEvent: lastAddedEvent == freezed
+      lastAddedEvent: null == lastAddedEvent
           ? _value.lastAddedEvent
           : lastAddedEvent // ignore: cast_nullable_to_non_nullable
               as Option<Event>,
-      lastEditedEvent: lastEditedEvent == freezed
+      lastEditedEvent: null == lastEditedEvent
           ? _value.lastEditedEvent
           : lastEditedEvent // ignore: cast_nullable_to_non_nullable
               as Option<Tuple2<Event, Event>>,
-      lastDeletedEvent: lastDeletedEvent == freezed
+      lastDeletedEvent: null == lastDeletedEvent
           ? _value.lastDeletedEvent
           : lastDeletedEvent // ignore: cast_nullable_to_non_nullable
               as Option<Event>,
@@ -143,23 +145,21 @@ class _$_EventNotifierState implements _EventNotifierState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EventNotifierState &&
-            const DeepCollectionEquality()
-                .equals(other.lastAddedEvent, lastAddedEvent) &&
-            const DeepCollectionEquality()
-                .equals(other.lastEditedEvent, lastEditedEvent) &&
-            const DeepCollectionEquality()
-                .equals(other.lastDeletedEvent, lastDeletedEvent));
+            (identical(other.lastAddedEvent, lastAddedEvent) ||
+                other.lastAddedEvent == lastAddedEvent) &&
+            (identical(other.lastEditedEvent, lastEditedEvent) ||
+                other.lastEditedEvent == lastEditedEvent) &&
+            (identical(other.lastDeletedEvent, lastDeletedEvent) ||
+                other.lastDeletedEvent == lastDeletedEvent));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(lastAddedEvent),
-      const DeepCollectionEquality().hash(lastEditedEvent),
-      const DeepCollectionEquality().hash(lastDeletedEvent));
+      runtimeType, lastAddedEvent, lastEditedEvent, lastDeletedEvent);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventNotifierStateCopyWith<_$_EventNotifierState> get copyWith =>
       __$$_EventNotifierStateCopyWithImpl<_$_EventNotifierState>(
           this, _$identity);

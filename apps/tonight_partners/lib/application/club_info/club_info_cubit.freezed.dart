@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'club_info_cubit.dart';
 
@@ -30,7 +30,8 @@ mixin _$ClubInfoState {
 abstract class $ClubInfoStateCopyWith<$Res> {
   factory $ClubInfoStateCopyWith(
           ClubInfoState value, $Res Function(ClubInfoState) then) =
-      _$ClubInfoStateCopyWithImpl<$Res>;
+      _$ClubInfoStateCopyWithImpl<$Res, ClubInfoState>;
+  @useResult
   $Res call(
       {CubitStatus status,
       Option<Club> club,
@@ -38,34 +39,36 @@ abstract class $ClubInfoStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClubInfoStateCopyWithImpl<$Res>
+class _$ClubInfoStateCopyWithImpl<$Res, $Val extends ClubInfoState>
     implements $ClubInfoStateCopyWith<$Res> {
   _$ClubInfoStateCopyWithImpl(this._value, this._then);
 
-  final ClubInfoState _value;
   // ignore: unused_field
-  final $Res Function(ClubInfoState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? club = freezed,
-    Object? currencyParams = freezed,
+    Object? status = null,
+    Object? club = null,
+    Object? currencyParams = null,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      club: club == freezed
+      club: null == club
           ? _value.club
           : club // ignore: cast_nullable_to_non_nullable
               as Option<Club>,
-      currencyParams: currencyParams == freezed
+      currencyParams: null == currencyParams
           ? _value.currencyParams
           : currencyParams // ignore: cast_nullable_to_non_nullable
               as Option<CurrencyParams>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -76,6 +79,7 @@ abstract class _$$_ClubInfoStateCopyWith<$Res>
           _$_ClubInfoState value, $Res Function(_$_ClubInfoState) then) =
       __$$_ClubInfoStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {CubitStatus status,
       Option<Club> club,
@@ -84,31 +88,29 @@ abstract class _$$_ClubInfoStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClubInfoStateCopyWithImpl<$Res>
-    extends _$ClubInfoStateCopyWithImpl<$Res>
+    extends _$ClubInfoStateCopyWithImpl<$Res, _$_ClubInfoState>
     implements _$$_ClubInfoStateCopyWith<$Res> {
   __$$_ClubInfoStateCopyWithImpl(
       _$_ClubInfoState _value, $Res Function(_$_ClubInfoState) _then)
-      : super(_value, (v) => _then(v as _$_ClubInfoState));
+      : super(_value, _then);
 
-  @override
-  _$_ClubInfoState get _value => super._value as _$_ClubInfoState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? club = freezed,
-    Object? currencyParams = freezed,
+    Object? status = null,
+    Object? club = null,
+    Object? currencyParams = null,
   }) {
     return _then(_$_ClubInfoState(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      club: club == freezed
+      club: null == club
           ? _value.club
           : club // ignore: cast_nullable_to_non_nullable
               as Option<Club>,
-      currencyParams: currencyParams == freezed
+      currencyParams: null == currencyParams
           ? _value.currencyParams
           : currencyParams // ignore: cast_nullable_to_non_nullable
               as Option<CurrencyParams>,
@@ -139,21 +141,18 @@ class _$_ClubInfoState implements _ClubInfoState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClubInfoState &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.club, club) &&
-            const DeepCollectionEquality()
-                .equals(other.currencyParams, currencyParams));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.club, club) || other.club == club) &&
+            (identical(other.currencyParams, currencyParams) ||
+                other.currencyParams == currencyParams));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(club),
-      const DeepCollectionEquality().hash(currencyParams));
+  int get hashCode => Object.hash(runtimeType, status, club, currencyParams);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClubInfoStateCopyWith<_$_ClubInfoState> get copyWith =>
       __$$_ClubInfoStateCopyWithImpl<_$_ClubInfoState>(this, _$identity);
 }

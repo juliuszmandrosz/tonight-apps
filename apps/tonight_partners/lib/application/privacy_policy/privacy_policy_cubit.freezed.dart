@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'privacy_policy_cubit.dart';
 
@@ -29,7 +29,8 @@ mixin _$PrivacyPolicyState {
 abstract class $PrivacyPolicyStateCopyWith<$Res> {
   factory $PrivacyPolicyStateCopyWith(
           PrivacyPolicyState value, $Res Function(PrivacyPolicyState) then) =
-      _$PrivacyPolicyStateCopyWithImpl<$Res>;
+      _$PrivacyPolicyStateCopyWithImpl<$Res, PrivacyPolicyState>;
+  @useResult
   $Res call(
       {Option<String> documentUrl,
       CubitStatus status,
@@ -37,34 +38,36 @@ abstract class $PrivacyPolicyStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PrivacyPolicyStateCopyWithImpl<$Res>
+class _$PrivacyPolicyStateCopyWithImpl<$Res, $Val extends PrivacyPolicyState>
     implements $PrivacyPolicyStateCopyWith<$Res> {
   _$PrivacyPolicyStateCopyWithImpl(this._value, this._then);
 
-  final PrivacyPolicyState _value;
   // ignore: unused_field
-  final $Res Function(PrivacyPolicyState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? documentUrl = freezed,
-    Object? status = freezed,
-    Object? snackbarMessage = freezed,
+    Object? documentUrl = null,
+    Object? status = null,
+    Object? snackbarMessage = null,
   }) {
     return _then(_value.copyWith(
-      documentUrl: documentUrl == freezed
+      documentUrl: null == documentUrl
           ? _value.documentUrl
           : documentUrl // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      snackbarMessage: snackbarMessage == freezed
+      snackbarMessage: null == snackbarMessage
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -75,6 +78,7 @@ abstract class _$$_PrivacyPolicyStateCopyWith<$Res>
           $Res Function(_$_PrivacyPolicyState) then) =
       __$$_PrivacyPolicyStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {Option<String> documentUrl,
       CubitStatus status,
@@ -83,31 +87,29 @@ abstract class _$$_PrivacyPolicyStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_PrivacyPolicyStateCopyWithImpl<$Res>
-    extends _$PrivacyPolicyStateCopyWithImpl<$Res>
+    extends _$PrivacyPolicyStateCopyWithImpl<$Res, _$_PrivacyPolicyState>
     implements _$$_PrivacyPolicyStateCopyWith<$Res> {
   __$$_PrivacyPolicyStateCopyWithImpl(
       _$_PrivacyPolicyState _value, $Res Function(_$_PrivacyPolicyState) _then)
-      : super(_value, (v) => _then(v as _$_PrivacyPolicyState));
+      : super(_value, _then);
 
-  @override
-  _$_PrivacyPolicyState get _value => super._value as _$_PrivacyPolicyState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? documentUrl = freezed,
-    Object? status = freezed,
-    Object? snackbarMessage = freezed,
+    Object? documentUrl = null,
+    Object? status = null,
+    Object? snackbarMessage = null,
   }) {
     return _then(_$_PrivacyPolicyState(
-      documentUrl: documentUrl == freezed
+      documentUrl: null == documentUrl
           ? _value.documentUrl
           : documentUrl // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      snackbarMessage: snackbarMessage == freezed
+      snackbarMessage: null == snackbarMessage
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
@@ -141,22 +143,20 @@ class _$_PrivacyPolicyState extends _PrivacyPolicyState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PrivacyPolicyState &&
-            const DeepCollectionEquality()
-                .equals(other.documentUrl, documentUrl) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.snackbarMessage, snackbarMessage));
+            (identical(other.documentUrl, documentUrl) ||
+                other.documentUrl == documentUrl) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.snackbarMessage, snackbarMessage) ||
+                other.snackbarMessage == snackbarMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(documentUrl),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(snackbarMessage));
+  int get hashCode =>
+      Object.hash(runtimeType, documentUrl, status, snackbarMessage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PrivacyPolicyStateCopyWith<_$_PrivacyPolicyState> get copyWith =>
       __$$_PrivacyPolicyStateCopyWithImpl<_$_PrivacyPolicyState>(
           this, _$identity);

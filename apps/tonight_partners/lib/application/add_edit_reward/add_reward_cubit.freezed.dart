@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'add_reward_cubit.dart';
 
@@ -30,7 +30,8 @@ mixin _$AddRewardState {
 abstract class $AddRewardStateCopyWith<$Res> {
   factory $AddRewardStateCopyWith(
           AddRewardState value, $Res Function(AddRewardState) then) =
-      _$AddRewardStateCopyWithImpl<$Res>;
+      _$AddRewardStateCopyWithImpl<$Res, AddRewardState>;
+  @useResult
   $Res call(
       {RequiredEntries requiredEntries,
       RewardDescription rewardDescription,
@@ -39,39 +40,41 @@ abstract class $AddRewardStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AddRewardStateCopyWithImpl<$Res>
+class _$AddRewardStateCopyWithImpl<$Res, $Val extends AddRewardState>
     implements $AddRewardStateCopyWith<$Res> {
   _$AddRewardStateCopyWithImpl(this._value, this._then);
 
-  final AddRewardState _value;
   // ignore: unused_field
-  final $Res Function(AddRewardState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? requiredEntries = freezed,
-    Object? rewardDescription = freezed,
-    Object? status = freezed,
-    Object? errorMessage = freezed,
+    Object? requiredEntries = null,
+    Object? rewardDescription = null,
+    Object? status = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
-      requiredEntries: requiredEntries == freezed
+      requiredEntries: null == requiredEntries
           ? _value.requiredEntries
           : requiredEntries // ignore: cast_nullable_to_non_nullable
               as RequiredEntries,
-      rewardDescription: rewardDescription == freezed
+      rewardDescription: null == rewardDescription
           ? _value.rewardDescription
           : rewardDescription // ignore: cast_nullable_to_non_nullable
               as RewardDescription,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FormzStatus,
-      errorMessage: errorMessage == freezed
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -82,6 +85,7 @@ abstract class _$$_AddRewardStateCopyWith<$Res>
           _$_AddRewardState value, $Res Function(_$_AddRewardState) then) =
       __$$_AddRewardStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {RequiredEntries requiredEntries,
       RewardDescription rewardDescription,
@@ -91,36 +95,34 @@ abstract class _$$_AddRewardStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_AddRewardStateCopyWithImpl<$Res>
-    extends _$AddRewardStateCopyWithImpl<$Res>
+    extends _$AddRewardStateCopyWithImpl<$Res, _$_AddRewardState>
     implements _$$_AddRewardStateCopyWith<$Res> {
   __$$_AddRewardStateCopyWithImpl(
       _$_AddRewardState _value, $Res Function(_$_AddRewardState) _then)
-      : super(_value, (v) => _then(v as _$_AddRewardState));
+      : super(_value, _then);
 
-  @override
-  _$_AddRewardState get _value => super._value as _$_AddRewardState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? requiredEntries = freezed,
-    Object? rewardDescription = freezed,
-    Object? status = freezed,
-    Object? errorMessage = freezed,
+    Object? requiredEntries = null,
+    Object? rewardDescription = null,
+    Object? status = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$_AddRewardState(
-      requiredEntries: requiredEntries == freezed
+      requiredEntries: null == requiredEntries
           ? _value.requiredEntries
           : requiredEntries // ignore: cast_nullable_to_non_nullable
               as RequiredEntries,
-      rewardDescription: rewardDescription == freezed
+      rewardDescription: null == rewardDescription
           ? _value.rewardDescription
           : rewardDescription // ignore: cast_nullable_to_non_nullable
               as RewardDescription,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FormzStatus,
-      errorMessage: errorMessage == freezed
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
@@ -156,25 +158,22 @@ class _$_AddRewardState implements _AddRewardState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AddRewardState &&
-            const DeepCollectionEquality()
-                .equals(other.requiredEntries, requiredEntries) &&
-            const DeepCollectionEquality()
-                .equals(other.rewardDescription, rewardDescription) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+            (identical(other.requiredEntries, requiredEntries) ||
+                other.requiredEntries == requiredEntries) &&
+            (identical(other.rewardDescription, rewardDescription) ||
+                other.rewardDescription == rewardDescription) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(requiredEntries),
-      const DeepCollectionEquality().hash(rewardDescription),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(errorMessage));
+      runtimeType, requiredEntries, rewardDescription, status, errorMessage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AddRewardStateCopyWith<_$_AddRewardState> get copyWith =>
       __$$_AddRewardStateCopyWithImpl<_$_AddRewardState>(this, _$identity);
 }

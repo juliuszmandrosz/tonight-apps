@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'past_event_details_cubit.dart';
 
@@ -36,7 +36,8 @@ mixin _$PastEventDetailsState {
 abstract class $PastEventDetailsStateCopyWith<$Res> {
   factory $PastEventDetailsStateCopyWith(PastEventDetailsState value,
           $Res Function(PastEventDetailsState) then) =
-      _$PastEventDetailsStateCopyWithImpl<$Res>;
+      _$PastEventDetailsStateCopyWithImpl<$Res, PastEventDetailsState>;
+  @useResult
   $Res call(
       {CubitStatus status,
       CubitStatus reviewReportStatus,
@@ -51,69 +52,72 @@ abstract class $PastEventDetailsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PastEventDetailsStateCopyWithImpl<$Res>
+class _$PastEventDetailsStateCopyWithImpl<$Res,
+        $Val extends PastEventDetailsState>
     implements $PastEventDetailsStateCopyWith<$Res> {
   _$PastEventDetailsStateCopyWithImpl(this._value, this._then);
 
-  final PastEventDetailsState _value;
   // ignore: unused_field
-  final $Res Function(PastEventDetailsState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? reviewReportStatus = freezed,
-    Object? event = freezed,
-    Object? eventTickets = freezed,
-    Object? eventReview = freezed,
-    Object? reviews = freezed,
-    Object? hasReachedMax = freezed,
-    Object? errorMessage = freezed,
-    Object? reportingReviewId = freezed,
-    Object? fetchNextPageStatus = freezed,
+    Object? status = null,
+    Object? reviewReportStatus = null,
+    Object? event = null,
+    Object? eventTickets = null,
+    Object? eventReview = null,
+    Object? reviews = null,
+    Object? hasReachedMax = null,
+    Object? errorMessage = null,
+    Object? reportingReviewId = null,
+    Object? fetchNextPageStatus = null,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      reviewReportStatus: reviewReportStatus == freezed
+      reviewReportStatus: null == reviewReportStatus
           ? _value.reviewReportStatus
           : reviewReportStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      event: event == freezed
+      event: null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
               as Option<Event>,
-      eventTickets: eventTickets == freezed
+      eventTickets: null == eventTickets
           ? _value.eventTickets
           : eventTickets // ignore: cast_nullable_to_non_nullable
               as Option<EventTickets>,
-      eventReview: eventReview == freezed
+      eventReview: null == eventReview
           ? _value.eventReview
           : eventReview // ignore: cast_nullable_to_non_nullable
               as Option<EventReview>,
-      reviews: reviews == freezed
+      reviews: null == reviews
           ? _value.reviews
           : reviews // ignore: cast_nullable_to_non_nullable
               as List<Review>,
-      hasReachedMax: hasReachedMax == freezed
+      hasReachedMax: null == hasReachedMax
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
               as bool,
-      errorMessage: errorMessage == freezed
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      reportingReviewId: reportingReviewId == freezed
+      reportingReviewId: null == reportingReviewId
           ? _value.reportingReviewId
           : reportingReviewId // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      fetchNextPageStatus: fetchNextPageStatus == freezed
+      fetchNextPageStatus: null == fetchNextPageStatus
           ? _value.fetchNextPageStatus
           : fetchNextPageStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-    ));
+    ) as $Val);
   }
 }
 
@@ -124,6 +128,7 @@ abstract class _$$_PastEventDetailsStateCopyWith<$Res>
           $Res Function(_$_PastEventDetailsState) then) =
       __$$_PastEventDetailsStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {CubitStatus status,
       CubitStatus reviewReportStatus,
@@ -139,67 +144,64 @@ abstract class _$$_PastEventDetailsStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_PastEventDetailsStateCopyWithImpl<$Res>
-    extends _$PastEventDetailsStateCopyWithImpl<$Res>
+    extends _$PastEventDetailsStateCopyWithImpl<$Res, _$_PastEventDetailsState>
     implements _$$_PastEventDetailsStateCopyWith<$Res> {
   __$$_PastEventDetailsStateCopyWithImpl(_$_PastEventDetailsState _value,
       $Res Function(_$_PastEventDetailsState) _then)
-      : super(_value, (v) => _then(v as _$_PastEventDetailsState));
+      : super(_value, _then);
 
-  @override
-  _$_PastEventDetailsState get _value =>
-      super._value as _$_PastEventDetailsState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? reviewReportStatus = freezed,
-    Object? event = freezed,
-    Object? eventTickets = freezed,
-    Object? eventReview = freezed,
-    Object? reviews = freezed,
-    Object? hasReachedMax = freezed,
-    Object? errorMessage = freezed,
-    Object? reportingReviewId = freezed,
-    Object? fetchNextPageStatus = freezed,
+    Object? status = null,
+    Object? reviewReportStatus = null,
+    Object? event = null,
+    Object? eventTickets = null,
+    Object? eventReview = null,
+    Object? reviews = null,
+    Object? hasReachedMax = null,
+    Object? errorMessage = null,
+    Object? reportingReviewId = null,
+    Object? fetchNextPageStatus = null,
   }) {
     return _then(_$_PastEventDetailsState(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      reviewReportStatus: reviewReportStatus == freezed
+      reviewReportStatus: null == reviewReportStatus
           ? _value.reviewReportStatus
           : reviewReportStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      event: event == freezed
+      event: null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
               as Option<Event>,
-      eventTickets: eventTickets == freezed
+      eventTickets: null == eventTickets
           ? _value.eventTickets
           : eventTickets // ignore: cast_nullable_to_non_nullable
               as Option<EventTickets>,
-      eventReview: eventReview == freezed
+      eventReview: null == eventReview
           ? _value.eventReview
           : eventReview // ignore: cast_nullable_to_non_nullable
               as Option<EventReview>,
-      reviews: reviews == freezed
+      reviews: null == reviews
           ? _value._reviews
           : reviews // ignore: cast_nullable_to_non_nullable
               as List<Review>,
-      hasReachedMax: hasReachedMax == freezed
+      hasReachedMax: null == hasReachedMax
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
               as bool,
-      errorMessage: errorMessage == freezed
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      reportingReviewId: reportingReviewId == freezed
+      reportingReviewId: null == reportingReviewId
           ? _value.reportingReviewId
           : reportingReviewId // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      fetchNextPageStatus: fetchNextPageStatus == freezed
+      fetchNextPageStatus: null == fetchNextPageStatus
           ? _value.fetchNextPageStatus
           : fetchNextPageStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
@@ -236,6 +238,7 @@ class _$_PastEventDetailsState implements _PastEventDetailsState {
   final List<Review> _reviews;
   @override
   List<Review> get reviews {
+    if (_reviews is EqualUnmodifiableListView) return _reviews;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_reviews);
   }
@@ -259,41 +262,42 @@ class _$_PastEventDetailsState implements _PastEventDetailsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PastEventDetailsState &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.reviewReportStatus, reviewReportStatus) &&
-            const DeepCollectionEquality().equals(other.event, event) &&
-            const DeepCollectionEquality()
-                .equals(other.eventTickets, eventTickets) &&
-            const DeepCollectionEquality()
-                .equals(other.eventReview, eventReview) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.reviewReportStatus, reviewReportStatus) ||
+                other.reviewReportStatus == reviewReportStatus) &&
+            (identical(other.event, event) || other.event == event) &&
+            (identical(other.eventTickets, eventTickets) ||
+                other.eventTickets == eventTickets) &&
+            (identical(other.eventReview, eventReview) ||
+                other.eventReview == eventReview) &&
             const DeepCollectionEquality().equals(other._reviews, _reviews) &&
-            const DeepCollectionEquality()
-                .equals(other.hasReachedMax, hasReachedMax) &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage) &&
-            const DeepCollectionEquality()
-                .equals(other.reportingReviewId, reportingReviewId) &&
-            const DeepCollectionEquality()
-                .equals(other.fetchNextPageStatus, fetchNextPageStatus));
+            (identical(other.hasReachedMax, hasReachedMax) ||
+                other.hasReachedMax == hasReachedMax) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.reportingReviewId, reportingReviewId) ||
+                other.reportingReviewId == reportingReviewId) &&
+            (identical(other.fetchNextPageStatus, fetchNextPageStatus) ||
+                other.fetchNextPageStatus == fetchNextPageStatus));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(reviewReportStatus),
-      const DeepCollectionEquality().hash(event),
-      const DeepCollectionEquality().hash(eventTickets),
-      const DeepCollectionEquality().hash(eventReview),
+      status,
+      reviewReportStatus,
+      event,
+      eventTickets,
+      eventReview,
       const DeepCollectionEquality().hash(_reviews),
-      const DeepCollectionEquality().hash(hasReachedMax),
-      const DeepCollectionEquality().hash(errorMessage),
-      const DeepCollectionEquality().hash(reportingReviewId),
-      const DeepCollectionEquality().hash(fetchNextPageStatus));
+      hasReachedMax,
+      errorMessage,
+      reportingReviewId,
+      fetchNextPageStatus);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PastEventDetailsStateCopyWith<_$_PastEventDetailsState> get copyWith =>
       __$$_PastEventDetailsStateCopyWithImpl<_$_PastEventDetailsState>(
           this, _$identity);

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'selector_dto.dart';
 
@@ -34,33 +34,37 @@ mixin _$SelectorDto {
 abstract class $SelectorDtoCopyWith<$Res> {
   factory $SelectorDtoCopyWith(
           SelectorDto value, $Res Function(SelectorDto) then) =
-      _$SelectorDtoCopyWithImpl<$Res>;
+      _$SelectorDtoCopyWithImpl<$Res, SelectorDto>;
+  @useResult
   $Res call({@JsonKey(ignore: true) String? id, String email});
 }
 
 /// @nodoc
-class _$SelectorDtoCopyWithImpl<$Res> implements $SelectorDtoCopyWith<$Res> {
+class _$SelectorDtoCopyWithImpl<$Res, $Val extends SelectorDto>
+    implements $SelectorDtoCopyWith<$Res> {
   _$SelectorDtoCopyWithImpl(this._value, this._then);
 
-  final SelectorDto _value;
   // ignore: unused_field
-  final $Res Function(SelectorDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? email = freezed,
+    Object? email = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -71,30 +75,30 @@ abstract class _$$_SelectorDtoCopyWith<$Res>
           _$_SelectorDto value, $Res Function(_$_SelectorDto) then) =
       __$$_SelectorDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({@JsonKey(ignore: true) String? id, String email});
 }
 
 /// @nodoc
-class __$$_SelectorDtoCopyWithImpl<$Res> extends _$SelectorDtoCopyWithImpl<$Res>
+class __$$_SelectorDtoCopyWithImpl<$Res>
+    extends _$SelectorDtoCopyWithImpl<$Res, _$_SelectorDto>
     implements _$$_SelectorDtoCopyWith<$Res> {
   __$$_SelectorDtoCopyWithImpl(
       _$_SelectorDto _value, $Res Function(_$_SelectorDto) _then)
-      : super(_value, (v) => _then(v as _$_SelectorDto));
+      : super(_value, _then);
 
-  @override
-  _$_SelectorDto get _value => super._value as _$_SelectorDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? email = freezed,
+    Object? email = null,
   }) {
     return _then(_$_SelectorDto(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
@@ -128,19 +132,17 @@ class _$_SelectorDto extends _SelectorDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SelectorDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.email, email));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(email));
+  int get hashCode => Object.hash(runtimeType, id, email);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SelectorDtoCopyWith<_$_SelectorDto> get copyWith =>
       __$$_SelectorDtoCopyWithImpl<_$_SelectorDto>(this, _$identity);
 

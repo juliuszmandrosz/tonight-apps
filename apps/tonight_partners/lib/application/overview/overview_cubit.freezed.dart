@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'overview_cubit.dart';
 
@@ -28,34 +28,37 @@ mixin _$OverviewState {
 abstract class $OverviewStateCopyWith<$Res> {
   factory $OverviewStateCopyWith(
           OverviewState value, $Res Function(OverviewState) then) =
-      _$OverviewStateCopyWithImpl<$Res>;
+      _$OverviewStateCopyWithImpl<$Res, OverviewState>;
+  @useResult
   $Res call({CubitStatus status, Option<ClubSales> clubSales});
 }
 
 /// @nodoc
-class _$OverviewStateCopyWithImpl<$Res>
+class _$OverviewStateCopyWithImpl<$Res, $Val extends OverviewState>
     implements $OverviewStateCopyWith<$Res> {
   _$OverviewStateCopyWithImpl(this._value, this._then);
 
-  final OverviewState _value;
   // ignore: unused_field
-  final $Res Function(OverviewState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? clubSales = freezed,
+    Object? status = null,
+    Object? clubSales = null,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      clubSales: clubSales == freezed
+      clubSales: null == clubSales
           ? _value.clubSales
           : clubSales // ignore: cast_nullable_to_non_nullable
               as Option<ClubSales>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -66,31 +69,30 @@ abstract class _$$_OverviewStateCopyWith<$Res>
           _$_OverviewState value, $Res Function(_$_OverviewState) then) =
       __$$_OverviewStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({CubitStatus status, Option<ClubSales> clubSales});
 }
 
 /// @nodoc
 class __$$_OverviewStateCopyWithImpl<$Res>
-    extends _$OverviewStateCopyWithImpl<$Res>
+    extends _$OverviewStateCopyWithImpl<$Res, _$_OverviewState>
     implements _$$_OverviewStateCopyWith<$Res> {
   __$$_OverviewStateCopyWithImpl(
       _$_OverviewState _value, $Res Function(_$_OverviewState) _then)
-      : super(_value, (v) => _then(v as _$_OverviewState));
+      : super(_value, _then);
 
-  @override
-  _$_OverviewState get _value => super._value as _$_OverviewState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? clubSales = freezed,
+    Object? status = null,
+    Object? clubSales = null,
   }) {
     return _then(_$_OverviewState(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      clubSales: clubSales == freezed
+      clubSales: null == clubSales
           ? _value.clubSales
           : clubSales // ignore: cast_nullable_to_non_nullable
               as Option<ClubSales>,
@@ -118,18 +120,17 @@ class _$_OverviewState implements _OverviewState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OverviewState &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.clubSales, clubSales));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.clubSales, clubSales) ||
+                other.clubSales == clubSales));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(clubSales));
+  int get hashCode => Object.hash(runtimeType, status, clubSales);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_OverviewStateCopyWith<_$_OverviewState> get copyWith =>
       __$$_OverviewStateCopyWithImpl<_$_OverviewState>(this, _$identity);
 }

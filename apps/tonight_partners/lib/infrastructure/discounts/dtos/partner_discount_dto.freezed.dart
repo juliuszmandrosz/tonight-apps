@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'partner_discount_dto.dart';
 
@@ -35,7 +35,8 @@ mixin _$PartnerDiscountDto {
 abstract class $PartnerDiscountDtoCopyWith<$Res> {
   factory $PartnerDiscountDtoCopyWith(
           PartnerDiscountDto value, $Res Function(PartnerDiscountDto) then) =
-      _$PartnerDiscountDtoCopyWithImpl<$Res>;
+      _$PartnerDiscountDtoCopyWithImpl<$Res, PartnerDiscountDto>;
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       int requiredExclusiveEventsSales,
@@ -43,34 +44,36 @@ abstract class $PartnerDiscountDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PartnerDiscountDtoCopyWithImpl<$Res>
+class _$PartnerDiscountDtoCopyWithImpl<$Res, $Val extends PartnerDiscountDto>
     implements $PartnerDiscountDtoCopyWith<$Res> {
   _$PartnerDiscountDtoCopyWithImpl(this._value, this._then);
 
-  final PartnerDiscountDto _value;
   // ignore: unused_field
-  final $Res Function(PartnerDiscountDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? requiredExclusiveEventsSales = freezed,
-    Object? percentageOff = freezed,
+    Object? requiredExclusiveEventsSales = null,
+    Object? percentageOff = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      requiredExclusiveEventsSales: requiredExclusiveEventsSales == freezed
+      requiredExclusiveEventsSales: null == requiredExclusiveEventsSales
           ? _value.requiredExclusiveEventsSales
           : requiredExclusiveEventsSales // ignore: cast_nullable_to_non_nullable
               as int,
-      percentageOff: percentageOff == freezed
+      percentageOff: null == percentageOff
           ? _value.percentageOff
           : percentageOff // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -81,6 +84,7 @@ abstract class _$$_PartnerDiscountDtoCopyWith<$Res>
           $Res Function(_$_PartnerDiscountDto) then) =
       __$$_PartnerDiscountDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       int requiredExclusiveEventsSales,
@@ -89,31 +93,29 @@ abstract class _$$_PartnerDiscountDtoCopyWith<$Res>
 
 /// @nodoc
 class __$$_PartnerDiscountDtoCopyWithImpl<$Res>
-    extends _$PartnerDiscountDtoCopyWithImpl<$Res>
+    extends _$PartnerDiscountDtoCopyWithImpl<$Res, _$_PartnerDiscountDto>
     implements _$$_PartnerDiscountDtoCopyWith<$Res> {
   __$$_PartnerDiscountDtoCopyWithImpl(
       _$_PartnerDiscountDto _value, $Res Function(_$_PartnerDiscountDto) _then)
-      : super(_value, (v) => _then(v as _$_PartnerDiscountDto));
+      : super(_value, _then);
 
-  @override
-  _$_PartnerDiscountDto get _value => super._value as _$_PartnerDiscountDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? requiredExclusiveEventsSales = freezed,
-    Object? percentageOff = freezed,
+    Object? requiredExclusiveEventsSales = null,
+    Object? percentageOff = null,
   }) {
     return _then(_$_PartnerDiscountDto(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      requiredExclusiveEventsSales: requiredExclusiveEventsSales == freezed
+      requiredExclusiveEventsSales: null == requiredExclusiveEventsSales
           ? _value.requiredExclusiveEventsSales
           : requiredExclusiveEventsSales // ignore: cast_nullable_to_non_nullable
               as int,
-      percentageOff: percentageOff == freezed
+      percentageOff: null == percentageOff
           ? _value.percentageOff
           : percentageOff // ignore: cast_nullable_to_non_nullable
               as int,
@@ -152,24 +154,23 @@ class _$_PartnerDiscountDto extends _PartnerDiscountDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PartnerDiscountDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(
-                other.requiredExclusiveEventsSales,
-                requiredExclusiveEventsSales) &&
-            const DeepCollectionEquality()
-                .equals(other.percentageOff, percentageOff));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.requiredExclusiveEventsSales,
+                    requiredExclusiveEventsSales) ||
+                other.requiredExclusiveEventsSales ==
+                    requiredExclusiveEventsSales) &&
+            (identical(other.percentageOff, percentageOff) ||
+                other.percentageOff == percentageOff));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(requiredExclusiveEventsSales),
-      const DeepCollectionEquality().hash(percentageOff));
+  int get hashCode =>
+      Object.hash(runtimeType, id, requiredExclusiveEventsSales, percentageOff);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PartnerDiscountDtoCopyWith<_$_PartnerDiscountDto> get copyWith =>
       __$$_PartnerDiscountDtoCopyWithImpl<_$_PartnerDiscountDto>(
           this, _$identity);

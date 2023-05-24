@@ -3,6 +3,7 @@ import 'package:common/common.dart';
 import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:formz/formz.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:tonight_partners/application/club_info/club_info_cubit.dart';
@@ -53,6 +54,14 @@ class EventOverviewPage extends StatelessWidget {
         useDefaultLoading: false,
         overlayOpacity: .7,
         child: Scaffold(
+          floatingActionButton: FloatingActionButton.extended(
+            onPressed: () {
+              context.pushRoute(SendTimeTaskRoute(event: event));
+            },
+            icon: const FaIcon(FontAwesomeIcons.solidBell),
+            // TODO - add translation
+            label: Text('Wyślij zadanie'),
+          ),
           appBar: TonightPartnersAppBar(title: S().eventOverview),
           body: Padding(
             padding: const EdgeInsets.all(15),
@@ -147,6 +156,7 @@ class EventOverviewPage extends StatelessWidget {
                             ),
                           ],
                         ),
+                      const SizedBox(height: 70),
                     ],
                   ),
                 );

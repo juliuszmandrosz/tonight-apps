@@ -184,6 +184,20 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
+    SendTimeTaskRoute.name: (routeData) {
+      final args = routeData.argsAs<SendTimeTaskRouteArgs>();
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: SendTimeTaskPage(
+          event: args.event,
+          key: args.key,
+        ),
+        transitionsBuilder: slideLeftTransition,
+        durationInMilliseconds: 300,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     OverviewRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -289,6 +303,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           FailureRoute.name,
           path: '/failure-page',
+        ),
+        RouteConfig(
+          SendTimeTaskRoute.name,
+          path: '/send-time-task-page',
         ),
       ];
 }
@@ -628,6 +646,40 @@ class FailureRouteArgs {
   @override
   String toString() {
     return 'FailureRouteArgs{retryCallback: $retryCallback, key: $key}';
+  }
+}
+
+/// generated route for
+/// [SendTimeTaskPage]
+class SendTimeTaskRoute extends PageRouteInfo<SendTimeTaskRouteArgs> {
+  SendTimeTaskRoute({
+    required Event event,
+    Key? key,
+  }) : super(
+          SendTimeTaskRoute.name,
+          path: '/send-time-task-page',
+          args: SendTimeTaskRouteArgs(
+            event: event,
+            key: key,
+          ),
+        );
+
+  static const String name = 'SendTimeTaskRoute';
+}
+
+class SendTimeTaskRouteArgs {
+  const SendTimeTaskRouteArgs({
+    required this.event,
+    this.key,
+  });
+
+  final Event event;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'SendTimeTaskRouteArgs{event: $event, key: $key}';
   }
 }
 

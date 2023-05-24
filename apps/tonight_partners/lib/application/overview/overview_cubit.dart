@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight_partners/domain/club_sales/club_sales_entity.dart';
 import 'package:tonight_partners/domain/club_sales/club_sales_facade.dart';
@@ -20,20 +20,26 @@ class OverviewCubit extends Cubit<OverviewState> {
         super(OverviewState.initial());
 
   Future<void> getClubSales() async {
-    emit(state.copyWith(status: CubitStatus.loading));
-
-    _clubSalesSub = _clubSalesFacade.getClubSales().listen(
-      (result) {
-        result.fold(
-          (_) => emit(state.copyWith(status: CubitStatus.failure)),
-          (sales) => emit(
-            state.copyWith(
-              clubSales: some(sales),
-              status: CubitStatus.success,
-            ),
-          ),
-        );
-      },
+    // emit(state.copyWith(status: CubitStatus.loading));
+    //
+    // _clubSalesSub = _clubSalesFacade.getClubSales().listen(
+    //   (result) {
+    //     result.fold(
+    //       (_) => emit(state.copyWith(status: CubitStatus.failure)),
+    //       (sales) => emit(
+    //         state.copyWith(
+    //           clubSales: some(sales),
+    //           status: CubitStatus.success,
+    //         ),
+    //       ),
+    //     );
+    //   },
+    // );
+    emit(
+      state.copyWith(
+        status: CubitStatus.success,
+        clubSales: some(const ClubSales(currency: 'pln')),
+      ),
     );
   }
 

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:common/common.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 extension FirestoreX on FirebaseFirestore {
   CollectionReference get clubCollection => collection('clubs');
@@ -14,6 +14,8 @@ extension FirestoreX on FirebaseFirestore {
   CollectionReference get selectorsCollection => collection('selectors');
 
   CollectionReference get eventCollection => collection('events');
+
+  CollectionReference get tasks => collection('tasks');
 
   CollectionReference get userFavoriteEventsCollection =>
       collection('userFavoriteEvents');
@@ -53,8 +55,7 @@ extension FirestoreX on FirebaseFirestore {
   }
 
   Future<DocumentReference> getCurrentPartnerClubDocRef(
-    FirebaseAuth auth,
-  ) async {
+      FirebaseAuth auth,) async {
     final partnerDoc = await getCurrentPartnerDocRef(auth).get();
 
     final clubId = partnerDoc.get('clubId');

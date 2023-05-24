@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'selector_list_cubit.dart';
 
@@ -30,7 +30,8 @@ mixin _$SelectorListState {
 abstract class $SelectorListStateCopyWith<$Res> {
   factory $SelectorListStateCopyWith(
           SelectorListState value, $Res Function(SelectorListState) then) =
-      _$SelectorListStateCopyWithImpl<$Res>;
+      _$SelectorListStateCopyWithImpl<$Res, SelectorListState>;
+  @useResult
   $Res call(
       {CubitStatus initialStatus,
       CubitStatus deletingStatus,
@@ -39,39 +40,41 @@ abstract class $SelectorListStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SelectorListStateCopyWithImpl<$Res>
+class _$SelectorListStateCopyWithImpl<$Res, $Val extends SelectorListState>
     implements $SelectorListStateCopyWith<$Res> {
   _$SelectorListStateCopyWithImpl(this._value, this._then);
 
-  final SelectorListState _value;
   // ignore: unused_field
-  final $Res Function(SelectorListState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? initialStatus = freezed,
-    Object? deletingStatus = freezed,
-    Object? selectors = freezed,
-    Object? errorMessage = freezed,
+    Object? initialStatus = null,
+    Object? deletingStatus = null,
+    Object? selectors = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
-      initialStatus: initialStatus == freezed
+      initialStatus: null == initialStatus
           ? _value.initialStatus
           : initialStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      deletingStatus: deletingStatus == freezed
+      deletingStatus: null == deletingStatus
           ? _value.deletingStatus
           : deletingStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      selectors: selectors == freezed
+      selectors: null == selectors
           ? _value.selectors
           : selectors // ignore: cast_nullable_to_non_nullable
               as List<Selector>,
-      errorMessage: errorMessage == freezed
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -82,6 +85,7 @@ abstract class _$$_SelectorListStateCopyWith<$Res>
           $Res Function(_$_SelectorListState) then) =
       __$$_SelectorListStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {CubitStatus initialStatus,
       CubitStatus deletingStatus,
@@ -91,36 +95,34 @@ abstract class _$$_SelectorListStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_SelectorListStateCopyWithImpl<$Res>
-    extends _$SelectorListStateCopyWithImpl<$Res>
+    extends _$SelectorListStateCopyWithImpl<$Res, _$_SelectorListState>
     implements _$$_SelectorListStateCopyWith<$Res> {
   __$$_SelectorListStateCopyWithImpl(
       _$_SelectorListState _value, $Res Function(_$_SelectorListState) _then)
-      : super(_value, (v) => _then(v as _$_SelectorListState));
+      : super(_value, _then);
 
-  @override
-  _$_SelectorListState get _value => super._value as _$_SelectorListState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? initialStatus = freezed,
-    Object? deletingStatus = freezed,
-    Object? selectors = freezed,
-    Object? errorMessage = freezed,
+    Object? initialStatus = null,
+    Object? deletingStatus = null,
+    Object? selectors = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$_SelectorListState(
-      initialStatus: initialStatus == freezed
+      initialStatus: null == initialStatus
           ? _value.initialStatus
           : initialStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      deletingStatus: deletingStatus == freezed
+      deletingStatus: null == deletingStatus
           ? _value.deletingStatus
           : deletingStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
-      selectors: selectors == freezed
+      selectors: null == selectors
           ? _value._selectors
           : selectors // ignore: cast_nullable_to_non_nullable
               as List<Selector>,
-      errorMessage: errorMessage == freezed
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
@@ -146,6 +148,7 @@ class _$_SelectorListState extends _SelectorListState {
   final List<Selector> _selectors;
   @override
   List<Selector> get selectors {
+    if (_selectors is EqualUnmodifiableListView) return _selectors;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_selectors);
   }
@@ -163,26 +166,23 @@ class _$_SelectorListState extends _SelectorListState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SelectorListState &&
-            const DeepCollectionEquality()
-                .equals(other.initialStatus, initialStatus) &&
-            const DeepCollectionEquality()
-                .equals(other.deletingStatus, deletingStatus) &&
+            (identical(other.initialStatus, initialStatus) ||
+                other.initialStatus == initialStatus) &&
+            (identical(other.deletingStatus, deletingStatus) ||
+                other.deletingStatus == deletingStatus) &&
             const DeepCollectionEquality()
                 .equals(other._selectors, _selectors) &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(initialStatus),
-      const DeepCollectionEquality().hash(deletingStatus),
-      const DeepCollectionEquality().hash(_selectors),
-      const DeepCollectionEquality().hash(errorMessage));
+  int get hashCode => Object.hash(runtimeType, initialStatus, deletingStatus,
+      const DeepCollectionEquality().hash(_selectors), errorMessage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SelectorListStateCopyWith<_$_SelectorListState> get copyWith =>
       __$$_SelectorListStateCopyWithImpl<_$_SelectorListState>(
           this, _$identity);

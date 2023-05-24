@@ -38,16 +38,19 @@ import 'package:tonight_partners/application/postpone_event/postpone_event_cubit
 import 'package:tonight_partners/application/privacy_policy/privacy_policy_cubit.dart';
 import 'package:tonight_partners/application/reward_list/reward_list_cubit.dart';
 import 'package:tonight_partners/application/selector_list/selector_list_cubit.dart';
+import 'package:tonight_partners/application/send_time_task/send_time_task_cubit.dart';
 import 'package:tonight_partners/application/sign_in/sign_in_cubit.dart';
 import 'package:tonight_partners/application/upcoming_live_event/upcoming_live_event_cubit.dart';
 import 'package:tonight_partners/application/welcome_loader/welcome_loader_cubit.dart';
 import 'package:tonight_partners/domain/club_sales/club_sales_facade.dart';
 import 'package:tonight_partners/domain/discounts/discount_facade.dart';
 import 'package:tonight_partners/domain/selector_management/selector_management_facade.dart';
+import 'package:tonight_partners/domain/time_tasks/time_tasks_facade.dart';
 import 'package:tonight_partners/infrastructure/club_sales/firebase_club_sales_facade.dart';
 import 'package:tonight_partners/infrastructure/discounts/firebase_discount_facade.dart';
 import 'package:tonight_partners/infrastructure/selector_management/cloud_functions/selector_cloud_functions_facade.dart';
 import 'package:tonight_partners/infrastructure/selector_management/firebase_selector_management_facade.dart';
+import 'package:tonight_partners/infrastructure/time_tasks/firebase_time_task_facade.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -201,6 +204,12 @@ void _registerCubits() {
     (NetworkCheckCubit networkCheckCubit, _) => PrivacyPolicyCubit(
       networkCheckCubit: networkCheckCubit,
       partnerTermsOfServiceFacade: getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => SendTimeTaskCubit(
+      getIt(),
     ),
   );
 }
@@ -394,6 +403,14 @@ void _registerFacades() {
     () => PaymentCloudFunctionsFacadeImpl(
       firebaseFunctions: getIt(),
       dio: getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<TimeTaskFacade>(
+    () => FirebaseTimeTaskFacade(
+      getIt(),
+      getIt(),
+      getIt(),
     ),
   );
 }
