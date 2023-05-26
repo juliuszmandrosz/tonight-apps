@@ -1,6 +1,7 @@
 import 'package:common/common.dart';
 import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:tonight/presentation/events_details/widgets/bottom_bar/event_details_bottom_bar_checkout.dart';
 import 'package:tonight/presentation/events_details/widgets/bottom_bar/event_details_bottom_bar_favorite.dart';
 import 'package:tonight/presentation/events_details/widgets/bottom_bar/event_details_bottom_bar_location.dart';
 import 'package:tonight/presentation/events_details/widgets/bottom_bar/event_details_bottom_bar_share.dart';
@@ -27,10 +28,11 @@ class EventDetailsBottomBar extends StatelessWidget {
         ),
         child: Row(
           children: [
+            EventDetailsBottomBarFavorite(event: event),
             EventDetailsBottomBarShare(event: event),
             EventDetailsBottomBarLocation(event: event),
-            EventDetailsBottomBarFavorite(event: event),
-            // EventDetailsBottomBarCheckout(event: event),
+            if (event.ticketsUrl.isNotNullOrEmpty)
+              EventDetailsBottomBarCheckout(event: event),
           ],
         ),
       ),

@@ -12,7 +12,7 @@ class EventDto with _$EventDto {
 
   @JsonSerializable()
   const factory EventDto({
-    @JsonKey(ignore: true) String? id,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? id,
     required String clubId,
     required String eventName,
     required String clubName,
@@ -36,6 +36,7 @@ class EventDto with _$EventDto {
     @Default(false) bool isBeingPostponed,
     String? locationString,
     String? clubPhotoUrl,
+    String? ticketsUrl,
   }) = _EventDto;
 
   factory EventDto.fromDomain(Event event) {
@@ -64,6 +65,7 @@ class EventDto with _$EventDto {
       isBeingPostponed: event.isBeingPostponed,
       clubPhotoUrl: event.clubPhotoUrl,
       locationString: event.locationString,
+      ticketsUrl: event.ticketsUrl,
     );
   }
 
@@ -109,6 +111,7 @@ class EventDto with _$EventDto {
       isBeingPostponed: isBeingPostponed,
       clubPhotoUrl: clubPhotoUrl,
       locationString: locationString,
+      ticketsUrl: ticketsUrl,
     );
   }
 }

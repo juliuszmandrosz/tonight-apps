@@ -29,6 +29,7 @@ class Event extends Equatable {
   final bool isBeingPostponed;
   final String? clubPhotoUrl;
   final String? locationString;
+  final String? ticketsUrl;
 
   Event({
     String? id,
@@ -55,6 +56,7 @@ class Event extends Equatable {
     this.attending = 0,
     this.isCanceled = false,
     this.isBeingPostponed = false,
+    this.ticketsUrl,
   }) : id = id ?? const Uuid().v1();
 
   double getLatitude() {
@@ -91,6 +93,7 @@ class Event extends Equatable {
         isBeingPostponed,
         clubPhotoUrl,
         locationString,
+        ticketsUrl,
       ];
 
   Event copyWith({
@@ -117,6 +120,7 @@ class Event extends Equatable {
     bool? isBeingPostponed,
     Option<String>? clubPhotoUrl,
     Option<String>? locationString,
+    Option<String>? ticketsUrl,
   }) {
     return Event(
       id: id,
@@ -164,6 +168,12 @@ class Event extends Equatable {
               (location) => location,
             )
           : this.locationString,
+      ticketsUrl: ticketsUrl != null
+          ? ticketsUrl.fold(
+              () => null,
+              (url) => url,
+            )
+          : this.ticketsUrl,
     );
   }
 }
