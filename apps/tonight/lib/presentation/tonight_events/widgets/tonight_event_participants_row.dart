@@ -42,47 +42,15 @@ class TonightEventParticipantsRow extends StatelessWidget {
       );
     }
 
-    if (totalParticipants > firstParticipants.length) {
-      avatars.add(
-        Positioned(
-          left: firstParticipants.length * _avatarSpacing,
-          child: Row(
-            children: [
-              Container(
-                height: _avatarSize,
-                width: _avatarSize,
-                decoration: BoxDecoration(
-                  color: context.surfaceColor,
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: context.dividerColor,
-                    width: 1,
-                  ),
-                ),
-                child: Center(
-                  child: Text(
-                    '+${totalParticipants - firstParticipants.length}',
-                    style: context.labelSmall,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-    }
-
     avatars.add(
       Positioned(
-        left: totalParticipants > firstParticipants.length
-            ? (firstParticipants.length + 1) * _avatarSpacing + 12
-            : firstParticipants.length * _avatarSpacing + 12,
+        left: firstParticipants.length * _avatarSpacing + 12,
         child: SizedBox(
           height: _avatarSize,
           child: Center(
             child: totalParticipants > firstParticipants.length
                 ? Text(
-                    S().attending(2).toLowerCase(),
+                    '+${totalParticipants - firstParticipants.length} ${S().attending(2).toLowerCase()}',
                     style: context.labelSmall.copyWith(
                       color: context.secondaryColor,
                     ),
