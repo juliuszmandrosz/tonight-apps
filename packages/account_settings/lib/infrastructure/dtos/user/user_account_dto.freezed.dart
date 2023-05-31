@@ -33,6 +33,8 @@ mixin _$UserAccountDto {
   int get raverCoins => throw _privateConstructorUsedError;
   int get ticketsCount => throw _privateConstructorUsedError;
   int get photosCount => throw _privateConstructorUsedError;
+  @FirebaseNullableTimestampJsonConverter()
+  DateTime? get lastDailySpinAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -58,7 +60,8 @@ abstract class $UserAccountDtoCopyWith<$Res> {
       List<String> pushNotificationTokens,
       int raverCoins,
       int ticketsCount,
-      int photosCount});
+      int photosCount,
+      @FirebaseNullableTimestampJsonConverter() DateTime? lastDailySpinAt});
 }
 
 /// @nodoc
@@ -86,6 +89,7 @@ class _$UserAccountDtoCopyWithImpl<$Res, $Val extends UserAccountDto>
     Object? raverCoins = null,
     Object? ticketsCount = null,
     Object? photosCount = null,
+    Object? lastDailySpinAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -136,6 +140,10 @@ class _$UserAccountDtoCopyWithImpl<$Res, $Val extends UserAccountDto>
           ? _value.photosCount
           : photosCount // ignore: cast_nullable_to_non_nullable
               as int,
+      lastDailySpinAt: freezed == lastDailySpinAt
+          ? _value.lastDailySpinAt
+          : lastDailySpinAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -160,7 +168,8 @@ abstract class _$$_UserAccountDtoCopyWith<$Res>
       List<String> pushNotificationTokens,
       int raverCoins,
       int ticketsCount,
-      int photosCount});
+      int photosCount,
+      @FirebaseNullableTimestampJsonConverter() DateTime? lastDailySpinAt});
 }
 
 /// @nodoc
@@ -186,6 +195,7 @@ class __$$_UserAccountDtoCopyWithImpl<$Res>
     Object? raverCoins = null,
     Object? ticketsCount = null,
     Object? photosCount = null,
+    Object? lastDailySpinAt = freezed,
   }) {
     return _then(_$_UserAccountDto(
       id: freezed == id
@@ -236,6 +246,10 @@ class __$$_UserAccountDtoCopyWithImpl<$Res>
           ? _value.photosCount
           : photosCount // ignore: cast_nullable_to_non_nullable
               as int,
+      lastDailySpinAt: freezed == lastDailySpinAt
+          ? _value.lastDailySpinAt
+          : lastDailySpinAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -256,7 +270,8 @@ class _$_UserAccountDto extends _UserAccountDto {
       final List<String> pushNotificationTokens = const [],
       this.raverCoins = 0,
       this.ticketsCount = 0,
-      this.photosCount = 0})
+      this.photosCount = 0,
+      @FirebaseNullableTimestampJsonConverter() this.lastDailySpinAt})
       : _favoriteClubIds = favoriteClubIds,
         _favoriteEventIds = favoriteEventIds,
         _attendance = attendance,
@@ -328,10 +343,13 @@ class _$_UserAccountDto extends _UserAccountDto {
   @override
   @JsonKey()
   final int photosCount;
+  @override
+  @FirebaseNullableTimestampJsonConverter()
+  final DateTime? lastDailySpinAt;
 
   @override
   String toString() {
-    return 'UserAccountDto(id: $id, email: $email, phoneNumber: $phoneNumber, profilePictureUrl: $profilePictureUrl, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens, raverCoins: $raverCoins, ticketsCount: $ticketsCount, photosCount: $photosCount)';
+    return 'UserAccountDto(id: $id, email: $email, phoneNumber: $phoneNumber, profilePictureUrl: $profilePictureUrl, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens, raverCoins: $raverCoins, ticketsCount: $ticketsCount, photosCount: $photosCount, lastDailySpinAt: $lastDailySpinAt)';
   }
 
   @override
@@ -360,7 +378,9 @@ class _$_UserAccountDto extends _UserAccountDto {
             (identical(other.ticketsCount, ticketsCount) ||
                 other.ticketsCount == ticketsCount) &&
             (identical(other.photosCount, photosCount) ||
-                other.photosCount == photosCount));
+                other.photosCount == photosCount) &&
+            (identical(other.lastDailySpinAt, lastDailySpinAt) ||
+                other.lastDailySpinAt == lastDailySpinAt));
   }
 
   @JsonKey(ignore: true)
@@ -378,7 +398,8 @@ class _$_UserAccountDto extends _UserAccountDto {
       const DeepCollectionEquality().hash(_pushNotificationTokens),
       raverCoins,
       ticketsCount,
-      photosCount);
+      photosCount,
+      lastDailySpinAt);
 
   @JsonKey(ignore: true)
   @override
@@ -396,7 +417,8 @@ class _$_UserAccountDto extends _UserAccountDto {
 
 abstract class _UserAccountDto extends UserAccountDto {
   const factory _UserAccountDto(
-      {@JsonKey(ignore: true) final String? id,
+      {@JsonKey(ignore: true)
+          final String? id,
       final String email,
       final String phoneNumber,
       final String profilePictureUrl,
@@ -407,7 +429,9 @@ abstract class _UserAccountDto extends UserAccountDto {
       final List<String> pushNotificationTokens,
       final int raverCoins,
       final int ticketsCount,
-      final int photosCount}) = _$_UserAccountDto;
+      final int photosCount,
+      @FirebaseNullableTimestampJsonConverter()
+          final DateTime? lastDailySpinAt}) = _$_UserAccountDto;
   const _UserAccountDto._() : super._();
 
   factory _UserAccountDto.fromJson(Map<String, dynamic> json) =
@@ -438,6 +462,9 @@ abstract class _UserAccountDto extends UserAccountDto {
   int get ticketsCount;
   @override
   int get photosCount;
+  @override
+  @FirebaseNullableTimestampJsonConverter()
+  DateTime? get lastDailySpinAt;
   @override
   @JsonKey(ignore: true)
   _$$_UserAccountDtoCopyWith<_$_UserAccountDto> get copyWith =>

@@ -9,5 +9,6 @@ class AppUser with _$AppUser {
     required String providerId,
     required bool isOnboardingCompleted,
     required bool isPhoneNumberVerified,
+    DateTime? lastDailySpinAt,
   }) = _AppUser;
 }

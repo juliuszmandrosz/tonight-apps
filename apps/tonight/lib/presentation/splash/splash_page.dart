@@ -1,6 +1,6 @@
 import 'package:auth/auth.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:common/extensions/responsive_extensions.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
@@ -15,9 +15,9 @@ class SplashPage extends StatelessWidget {
       listener: (ctx, state) {
         state.map(
           initial: (_) {},
-          authenticated: (state) => state.user.isOnboardingCompleted
-              ? context.replaceRoute(const WelcomeLoaderRoute())
-              : context.replaceRoute(const OnboardingUserDetailsRoute()),
+          authenticated: (state) => context.replaceRoute(
+            _getAuthenticatedRoute(state.user),
+          ),
           unauthenticated: (_) => context.replaceRoute(const OnboardingRoute()),
           deleteAccountSuccess: (_) => {},
           deleteAccountFailure: (_) => {},
@@ -31,5 +31,14 @@ class SplashPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  PageRouteInfo _getAuthenticatedRoute(AppUser user) {
+    if (!user.isOnboardingCompleted) return const OnboardingUserDetailsRoute();
+    if (user.lastDailySpinAt == null ||
+        user.lastDailySpinAt!.isBefore(DateTime.now().startOfDay)) {
+      return const DailySpinRoute();
+    }
+    return const WelcomeLoaderRoute();
   }
 }

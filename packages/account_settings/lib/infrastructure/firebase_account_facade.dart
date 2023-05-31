@@ -18,7 +18,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
   final FirebaseFirestore _firestore;
   final FirebaseStorage _firebaseStorage;
   final FirebaseAuth _firebaseAuth;
-  final FirebaseCrashlytics _firebaseCrashlytics;
+  final FirebaseCrashlytics _crashlytics;
   final Logger _logger;
 
   FirebaseAccountFacade({
@@ -27,10 +27,9 @@ class FirebaseAccountFacade implements UserAccountFacade {
     required FirebaseCrashlytics firebaseCrashlytics,
     required FirebaseStorage firebaseStorage,
     required Logger logger,
-  })
-      : _firestore = firestore,
+  })  : _firestore = firestore,
         _firebaseAuth = firebaseAuth,
-        _firebaseCrashlytics = firebaseCrashlytics,
+        _crashlytics = firebaseCrashlytics,
         _firebaseStorage = firebaseStorage,
         _logger = logger;
 
@@ -39,20 +38,19 @@ class FirebaseAccountFacade implements UserAccountFacade {
     final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
     yield* userDocRef
         .snapshots()
-        .map((snapshot) =>
-        right<UserAccountFailure, UserAccount>(
+        .map((snapshot) => right<UserAccountFailure, UserAccount>(
             UserAccountDto.fromFirebase(snapshot).toDomain()))
         .handleError((e) {
       if (e is FirebaseException) {
         return left(
           handleFirebaseError<UserAccountFailure>(
             logger: _logger,
-            crashlytics: _firebaseCrashlytics,
+            crashlytics: _crashlytics,
             exception: e,
             message: 'Firebase Exception getting profile EXCEPTION: $e',
             unexpectedFailure: const UserAccountFailure.unexpected(),
             permissionDeniedFailure:
-            const UserAccountFailure.permissionDenied(),
+                const UserAccountFailure.permissionDenied(),
           ),
         );
       }
@@ -85,7 +83,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
       return left(
         await handleFirebaseError<UserAccountFailure>(
           logger: _logger,
-          crashlytics: _firebaseCrashlytics,
+          crashlytics: _crashlytics,
           exception: e,
           message: 'Firebase Exception submitting onboarding for EXCEPTION: $e',
           unexpectedFailure: const UserAccountFailure.unexpected(),
@@ -97,7 +95,8 @@ class FirebaseAccountFacade implements UserAccountFacade {
 
   @override
   Future<Either<UserAccountFailure, Unit>> setUsernameForUser(
-      String username,) async {
+    String username,
+  ) async {
     try {
       if (await _checkIfUsernameExists(username)) {
         return left(const UserAccountFailure.usernameExists());
@@ -109,7 +108,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
       return left(
         await handleFirebaseError<UserAccountFailure>(
           logger: _logger,
-          crashlytics: _firebaseCrashlytics,
+          crashlytics: _crashlytics,
           exception: e,
           message: 'Firebase Exception setting username for user EXCEPTION: $e',
           unexpectedFailure: const UserAccountFailure.unexpected(),
@@ -121,7 +120,8 @@ class FirebaseAccountFacade implements UserAccountFacade {
 
   @override
   Future<Either<UserAccountFailure, Unit>> savePushNotificationsToken(
-      String token,) async {
+    String token,
+  ) async {
     try {
       final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
       final userDoc = await userDocRef.get();
@@ -133,10 +133,10 @@ class FirebaseAccountFacade implements UserAccountFacade {
       return left(
         await handleFirebaseError<UserAccountFailure>(
           logger: _logger,
-          crashlytics: _firebaseCrashlytics,
+          crashlytics: _crashlytics,
           exception: e,
           message:
-          'Firebase Exception saving push notifications token EXCEPTION: $e',
+              'Firebase Exception saving push notifications token EXCEPTION: $e',
           unexpectedFailure: const UserAccountFailure.unexpected(),
           permissionDeniedFailure: const UserAccountFailure.permissionDenied(),
         ),
@@ -164,7 +164,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
       return left(
         await handleFirebaseError<UserAccountFailure>(
           logger: _logger,
-          crashlytics: _firebaseCrashlytics,
+          crashlytics: _crashlytics,
           exception: e,
           message: 'Firebase Exception uploading profile picture EXCEPTION: $e',
           unexpectedFailure: const UserAccountFailure.unexpected(),
@@ -176,7 +176,8 @@ class FirebaseAccountFacade implements UserAccountFacade {
 
   @override
   Future<Either<UserAccountFailure, Unit>> deleteProfilePicture(
-      String pictureUrl,) async {
+    String pictureUrl,
+  ) async {
     try {
       final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
       await userDocRef.update({'profilePictureUrl': null});
@@ -186,7 +187,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
       return right(unit);
     } on FirebaseException catch (e) {
       _logger.e(e);
-      await _firebaseCrashlytics.recordError(e, StackTrace.current);
+      await _crashlytics.recordError(e, StackTrace.current);
       return left(const UserAccountFailure.unexpected());
     }
   }
@@ -196,9 +197,9 @@ class FirebaseAccountFacade implements UserAccountFacade {
     try {
       final result = await _firestore.userCollection
           .where(
-        FieldPath.documentId,
-        isEqualTo: id,
-      )
+            FieldPath.documentId,
+            isEqualTo: id,
+          )
           .get();
       if (result.docs.isEmpty) {
         return left(const UserAccountFailure.userNotFound());
@@ -209,7 +210,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
       return left(
         await handleFirebaseError<UserAccountFailure>(
           logger: _logger,
-          crashlytics: _firebaseCrashlytics,
+          crashlytics: _crashlytics,
           exception: e,
           message: 'Firebase Exception getting user by id EXCEPTION: $e',
           unexpectedFailure: const UserAccountFailure.unexpected(),
@@ -225,7 +226,7 @@ class FirebaseAccountFacade implements UserAccountFacade {
   }) async {
     final photoId = const Uuid().v1();
     final storageRef =
-    _firebaseStorage.ref('users/$userId/profile_pictures/$photoId');
+        _firebaseStorage.ref('users/$userId/profile_pictures/$photoId');
     final metadata = SettableMetadata(contentType: 'image/jpeg');
     final uploadTask = await storageRef.putData(profilePicture, metadata);
     return uploadTask.ref.getDownloadURL();

@@ -48,6 +48,7 @@ dependencies:
   intl_phone_number_input: ^0.7.3+1
   pinput: ^2.2.31
   http: ^0.13.6
+  flutter_fortune_wheel: ^1.2.1
 
   # Inherited packages
   auto_route:

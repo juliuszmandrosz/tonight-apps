@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 class UserAccount extends Equatable {
@@ -13,9 +14,11 @@ class UserAccount extends Equatable {
   final int raverCoins;
   final int ticketsCount;
   final int photosCount;
+  final DateTime? lastDailySpinAt;
 
   const UserAccount({
     required this.id,
+    this.lastDailySpinAt,
     this.email = '',
     this.phoneNumber = '',
     this.profilePictureUrl = '',
@@ -43,6 +46,7 @@ class UserAccount extends Equatable {
         raverCoins,
         ticketsCount,
         photosCount,
+        lastDailySpinAt,
       ];
 
   UserAccount copyWith({
@@ -58,6 +62,7 @@ class UserAccount extends Equatable {
     int? ticketsCount,
     int? photosCount,
     bool? isPhoneNumberVerified,
+    Option<DateTime>? lastDailySpinAt,
   }) {
     return UserAccount(
       id: id,
@@ -73,6 +78,12 @@ class UserAccount extends Equatable {
       raverCoins: raverCoins ?? this.raverCoins,
       ticketsCount: ticketsCount ?? this.ticketsCount,
       photosCount: photosCount ?? this.photosCount,
+      lastDailySpinAt: lastDailySpinAt != null
+          ? lastDailySpinAt.fold(
+              () => null,
+              (value) => value,
+            )
+          : this.lastDailySpinAt,
     );
   }
 }
