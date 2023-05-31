@@ -1,9 +1,9 @@
 import 'package:account_settings/domain/user/user_account_entity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:common/common.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_account_dto.freezed.dart';
-
 part 'user_account_dto.g.dart';
 
 @freezed
@@ -24,11 +24,13 @@ class UserAccountDto with _$UserAccountDto {
     @Default(0) int raverCoins,
     @Default(0) int ticketsCount,
     @Default(0) int photosCount,
+    @FirebaseNullableTimestampJsonConverter() DateTime? lastDailySpinAt,
   }) = _UserAccountDto;
 
   factory UserAccountDto.fromDomain(UserAccount user) {
     return UserAccountDto(
       id: user.id,
+      lastDailySpinAt: user.lastDailySpinAt,
       email: user.email,
       profilePictureUrl: user.profilePictureUrl,
       username: user.username,
@@ -66,6 +68,7 @@ class UserAccountDto with _$UserAccountDto {
       ticketsCount: ticketsCount,
       photosCount: photosCount,
       phoneNumber: phoneNumber,
+      lastDailySpinAt: lastDailySpinAt,
     );
   }
 }

@@ -710,6 +710,10 @@ class FirebaseAuthFacade
         await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
     final userData = currentUser.data() as Map<String, dynamic>;
     final username = userData['username'] as String?;
-    return firebaseUser.toDomain(username: username);
+    final lastDailySpinAt = userData['lastDailySpinAt'] as Timestamp?;
+    return firebaseUser.toDomain(
+      username: username,
+      lastDailySpinAt: lastDailySpinAt?.toDate(),
+    );
   }
 }

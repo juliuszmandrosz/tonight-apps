@@ -7,6 +7,7 @@ import 'package:tonight/presentation/chats/chats_page.dart';
 import 'package:tonight/presentation/club_city_picker/club_city_picker_page.dart';
 import 'package:tonight/presentation/club_details/club_details_page.dart';
 import 'package:tonight/presentation/contact/contact_page.dart';
+import 'package:tonight/presentation/daily_spin_page/daily_spin_page.dart';
 import 'package:tonight/presentation/discover/discover_page.dart';
 import 'package:tonight/presentation/event_city_picker/event_city_picker_page.dart';
 import 'package:tonight/presentation/event_date_picker/event_date_picker_page.dart';
@@ -61,6 +62,11 @@ const animationDuration = 300;
     CustomRoute(
       page: SignInPage,
       transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: DailySpinPage,
+      transitionsBuilder: zoomInTransition,
       durationInMilliseconds: animationDuration,
     ),
     CustomRoute(
