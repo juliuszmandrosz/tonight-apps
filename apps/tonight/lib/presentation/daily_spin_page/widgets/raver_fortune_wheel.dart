@@ -113,7 +113,7 @@ class RaverFortuneWheel extends HookWidget {
                   : state.spinStatus.isSuccess()
                       ? ElevatedButton(
                           onPressed: () =>
-                              context.pushRoute(const WelcomeLoaderRoute()),
+                              context.replaceRoute(const WelcomeLoaderRoute()),
                           child: Text(S().next),
                         )
                       : ElevatedButton(
