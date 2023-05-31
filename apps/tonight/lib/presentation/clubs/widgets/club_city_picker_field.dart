@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class ClubCityPickerField extends HookWidget {
   const ClubCityPickerField({Key? key}) : super(key: key);
@@ -35,8 +36,7 @@ class ClubCityPickerField extends HookWidget {
           readOnly: true,
           decoration: InputDecoration(
             hintMaxLines: 1,
-            // TODO - add translation
-            hintText: 'Gdzie?',
+            hintText: S().where,
             hintStyle: context.titleSmall.copyWith(color: context.hintColor),
             prefixIcon: const Icon(Icons.location_pin),
             suffixIcon: state.clubFilters.cityFilter.cityName.isNotEmpty

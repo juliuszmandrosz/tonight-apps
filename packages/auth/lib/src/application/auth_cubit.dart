@@ -24,11 +24,12 @@ class AuthCubit extends Cubit<AuthState> {
         .listenToAuthStateChange()
         .debounceTime(const Duration(milliseconds: 300))
         .listen(
-          (result) => result.fold(
-            () => emit(const AuthState.unauthenticated()),
-            (user) => emit(AuthState.authenticated(user)),
+          (result) =>
+          result.fold(
+                () => emit(const AuthState.unauthenticated()),
+                (user) => emit(AuthState.authenticated(user)),
           ),
-        );
+    );
   }
 
   bool checkIfPhoneNumberIsVerified() {
@@ -41,11 +42,12 @@ class AuthCubit extends Cubit<AuthState> {
         .listenToUserChanges()
         .debounceTime(const Duration(milliseconds: 300))
         .listen(
-          (result) => result.fold(
-            () => emit(const AuthState.unauthenticated()),
-            (user) => emit(AuthState.authenticated(user)),
+          (result) =>
+          result.fold(
+                () => emit(const AuthState.unauthenticated()),
+                (user) => emit(AuthState.authenticated(user)),
           ),
-        );
+    );
   }
 
   void signOut() async {
@@ -57,8 +59,8 @@ class AuthCubit extends Cubit<AuthState> {
     emit(const AuthState.deleteAccountInProgress());
     final result = await _commonAuthFacade.deleteAccount();
     result.fold(
-      (_) => emit(const AuthState.deleteAccountFailure()),
-      (_) => emit(const AuthState.deleteAccountSuccess()),
+          (_) => emit(const AuthState.deleteAccountFailure()),
+          (_) => emit(const AuthState.deleteAccountSuccess()),
     );
   }
 

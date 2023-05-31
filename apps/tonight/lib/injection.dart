@@ -41,6 +41,7 @@ import 'package:tonight/application/clubs/club_details/club_photos/club_photos_b
 import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
 import 'package:tonight/application/clubs/club_rewards/club_rewards_cubit.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
+import 'package:tonight/application/daily_spin/daily_spin_cubit.dart';
 import 'package:tonight/application/event_chat/aggregator/event_chat_aggregator.dart';
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
 import 'package:tonight/application/event_participants/event_participants_bloc.dart';
@@ -78,6 +79,7 @@ import 'package:tonight/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
 import 'package:tonight/application/wall_photos_filters/wall_photos_filters_cubit.dart';
 import 'package:tonight/domain/club_rewards/club_rewards_aggregator.dart';
+import 'package:tonight/domain/daily_spin/daily_spin_facade.dart';
 import 'package:tonight/domain/event_review/event_review_aggregator.dart';
 import 'package:tonight/domain/festivals/festival_facade.dart';
 import 'package:tonight/domain/messages/message_facade.dart';
@@ -88,6 +90,7 @@ import 'package:tonight/domain/user_app_links/user_app_links_facade.dart';
 import 'package:tonight/domain/user_details/user_details_aggregator.dart';
 import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
+import 'package:tonight/infrastructure/daily_spin/firebase_daily_spin_facade.dart';
 import 'package:tonight/infrastructure/festivals/firebase_festival_facade.dart';
 import 'package:tonight/infrastructure/google_places/google_places_facade.dart';
 import 'package:tonight/infrastructure/messages/firebase_message_facade.dart';
@@ -414,6 +417,12 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  getIt.registerFactory(
+    () => DailySpinCubit(
+      getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
@@ -639,6 +648,15 @@ void _registerFacades() {
 
   getIt.registerLazySingleton<RoomFacade>(
     () => FirebaseRoomFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<DailySpinFacade>(
+    () => FirebaseDailySpinFacade(
       getIt(),
       getIt(),
       getIt(),
