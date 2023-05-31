@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class EventCityPickerField extends HookWidget {
   const EventCityPickerField({Key? key}) : super(key: key);
@@ -36,8 +37,7 @@ class EventCityPickerField extends HookWidget {
           decoration: InputDecoration(
             hintMaxLines: 1,
             hintStyle: context.titleSmall.copyWith(color: context.hintColor),
-            // TODO - add translation
-            hintText: 'Gdzie?',
+            hintText: S().where,
             prefixIcon: state.eventFilters.cityFilter.cityName.isNotEmpty
                 ? null
                 : const Icon(Icons.location_pin),

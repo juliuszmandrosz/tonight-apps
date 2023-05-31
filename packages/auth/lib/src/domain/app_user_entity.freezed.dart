@@ -20,6 +20,7 @@ mixin _$AppUser {
   String get providerId => throw _privateConstructorUsedError;
   bool get isOnboardingCompleted => throw _privateConstructorUsedError;
   bool get isPhoneNumberVerified => throw _privateConstructorUsedError;
+  DateTime? get lastDailySpinAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppUserCopyWith<AppUser> get copyWith => throw _privateConstructorUsedError;
@@ -34,7 +35,8 @@ abstract class $AppUserCopyWith<$Res> {
       {String id,
       String providerId,
       bool isOnboardingCompleted,
-      bool isPhoneNumberVerified});
+      bool isPhoneNumberVerified,
+      DateTime? lastDailySpinAt});
 }
 
 /// @nodoc
@@ -54,6 +56,7 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
     Object? providerId = null,
     Object? isOnboardingCompleted = null,
     Object? isPhoneNumberVerified = null,
+    Object? lastDailySpinAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -72,6 +75,10 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
           ? _value.isPhoneNumberVerified
           : isPhoneNumberVerified // ignore: cast_nullable_to_non_nullable
               as bool,
+      lastDailySpinAt: freezed == lastDailySpinAt
+          ? _value.lastDailySpinAt
+          : lastDailySpinAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -87,7 +94,8 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       {String id,
       String providerId,
       bool isOnboardingCompleted,
-      bool isPhoneNumberVerified});
+      bool isPhoneNumberVerified,
+      DateTime? lastDailySpinAt});
 }
 
 /// @nodoc
@@ -104,6 +112,7 @@ class __$$_AppUserCopyWithImpl<$Res>
     Object? providerId = null,
     Object? isOnboardingCompleted = null,
     Object? isPhoneNumberVerified = null,
+    Object? lastDailySpinAt = freezed,
   }) {
     return _then(_$_AppUser(
       id: null == id
@@ -122,6 +131,10 @@ class __$$_AppUserCopyWithImpl<$Res>
           ? _value.isPhoneNumberVerified
           : isPhoneNumberVerified // ignore: cast_nullable_to_non_nullable
               as bool,
+      lastDailySpinAt: freezed == lastDailySpinAt
+          ? _value.lastDailySpinAt
+          : lastDailySpinAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -133,7 +146,8 @@ class _$_AppUser implements _AppUser {
       {required this.id,
       required this.providerId,
       required this.isOnboardingCompleted,
-      required this.isPhoneNumberVerified});
+      required this.isPhoneNumberVerified,
+      this.lastDailySpinAt});
 
   @override
   final String id;
@@ -143,10 +157,12 @@ class _$_AppUser implements _AppUser {
   final bool isOnboardingCompleted;
   @override
   final bool isPhoneNumberVerified;
+  @override
+  final DateTime? lastDailySpinAt;
 
   @override
   String toString() {
-    return 'AppUser(id: $id, providerId: $providerId, isOnboardingCompleted: $isOnboardingCompleted, isPhoneNumberVerified: $isPhoneNumberVerified)';
+    return 'AppUser(id: $id, providerId: $providerId, isOnboardingCompleted: $isOnboardingCompleted, isPhoneNumberVerified: $isPhoneNumberVerified, lastDailySpinAt: $lastDailySpinAt)';
   }
 
   @override
@@ -160,12 +176,14 @@ class _$_AppUser implements _AppUser {
             (identical(other.isOnboardingCompleted, isOnboardingCompleted) ||
                 other.isOnboardingCompleted == isOnboardingCompleted) &&
             (identical(other.isPhoneNumberVerified, isPhoneNumberVerified) ||
-                other.isPhoneNumberVerified == isPhoneNumberVerified));
+                other.isPhoneNumberVerified == isPhoneNumberVerified) &&
+            (identical(other.lastDailySpinAt, lastDailySpinAt) ||
+                other.lastDailySpinAt == lastDailySpinAt));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, providerId,
-      isOnboardingCompleted, isPhoneNumberVerified);
+      isOnboardingCompleted, isPhoneNumberVerified, lastDailySpinAt);
 
   @JsonKey(ignore: true)
   @override
@@ -179,7 +197,8 @@ abstract class _AppUser implements AppUser {
       {required final String id,
       required final String providerId,
       required final bool isOnboardingCompleted,
-      required final bool isPhoneNumberVerified}) = _$_AppUser;
+      required final bool isPhoneNumberVerified,
+      final DateTime? lastDailySpinAt}) = _$_AppUser;
 
   @override
   String get id;
@@ -189,6 +208,8 @@ abstract class _AppUser implements AppUser {
   bool get isOnboardingCompleted;
   @override
   bool get isPhoneNumberVerified;
+  @override
+  DateTime? get lastDailySpinAt;
   @override
   @JsonKey(ignore: true)
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>

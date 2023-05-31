@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class EventDatePickerField extends HookWidget {
   const EventDatePickerField({Key? key}) : super(key: key);
@@ -42,8 +43,7 @@ class EventDatePickerField extends HookWidget {
                 ? null
                 : const Icon(Icons.calendar_month),
             hintMaxLines: 1,
-            // TODO - add translation
-            hintText: 'Kiedy?',
+            hintText: S().when,
             hintStyle: context.titleSmall.copyWith(color: context.hintColor),
             suffixIcon: state.eventFilters.dateRangeFilter.toDate != null
                 ? IconButton(
