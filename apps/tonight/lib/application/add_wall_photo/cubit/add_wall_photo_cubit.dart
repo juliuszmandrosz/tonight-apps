@@ -1,19 +1,23 @@
+import 'dart:async';
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_aggregator/add_wall_photo_aggregator.dart';
 import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_aggregator/add_wall_photo_failure.dart';
 import 'package:tonight/application/add_wall_photo/models/wall_photo_venue_model.dart';
 import 'package:tonight/application/core/deep_links_utils.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:translations/translations.dart';
+import 'package:uuid/uuid.dart';
 
 part 'add_wall_photo_cubit.freezed.dart';
 part 'add_wall_photo_state.dart';
@@ -43,6 +47,10 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
         timeTask: timeTask,
       ),
     );
+
+    emit(state.copyWith(processPhotoTask: some(_processPhoto())));
+
+    unawaited(state.processPhotoTask.getOrCrash());
   }
 
   Future<void> fetchNearestVenues(Future<LatLng> userLocation) async {
@@ -119,10 +127,14 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     emit(state.copyWith(addPhotoStatus: CubitStatus.loading));
     final selectedEvent = state.selectedEvent.getOrCrash();
     final selectedVenue = state.selectedVenue.getOrCrash();
-    final processedPhoto = await _processPhoto();
+    final processedPhoto = await state.processPhotoTask.getOrCrash();
     if (processedPhoto.isNone()) {
       emit(state.copyWith(addPhotoStatus: CubitStatus.failure));
       _showSnackbarMessage(S().errorAddingPhoto);
+      if (!state.processPhotoStatus.isLoading()) {
+        emit(state.copyWith(processPhotoTask: some(_processPhoto())));
+        unawaited(state.processPhotoTask.getOrCrash());
+      }
       return;
     }
     final result = await _addWallPhotoAggregator.addPhoto(
@@ -152,12 +164,28 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
     );
   }
 
-  _showSnackbarMessage(String message) {
-    emit(state.copyWith(snackbarMessage: some(message)));
-    emit(state.copyWith(snackbarMessage: none()));
+  Future<void> sharePhoto() async {
+    emit(state.copyWith(sharePhotoStatus: CubitStatus.loading));
+    final processedPhoto = await state.processPhotoTask.getOrCrash();
+    if (processedPhoto.isNone()) {
+      emit(state.copyWith(sharePhotoStatus: CubitStatus.failure));
+      _showSnackbarMessage(S().errorSharingPhoto);
+      if (!state.processPhotoStatus.isLoading()) {
+        emit(state.copyWith(processPhotoTask: some(_processPhoto())));
+        unawaited(state.processPhotoTask.getOrCrash());
+      }
+      return;
+    }
+    final tempDir = await getTemporaryDirectory();
+    final filePath = '${tempDir.path}/${const Uuid().v1()}}.jpg';
+    final file = File(filePath);
+    await file.writeAsBytes(processedPhoto.getOrCrash());
+    await Share.shareFiles([file.path]);
+    emit(state.copyWith(sharePhotoStatus: CubitStatus.success));
   }
 
   Future<Option<Uint8List>> _processPhoto() async {
+    emit(state.copyWith(processPhotoStatus: CubitStatus.loading));
     final photoBytes = await state.photo.getOrCrash().readAsBytes();
     final compressedPhoto = await compressImage(
       photoBytes,
@@ -165,11 +193,25 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
       minHeight: 1350,
       minWidth: 1024,
     );
-    if (!state.isSelfie) return some(compressedPhoto);
+    if (!state.isSelfie) {
+      emit(state.copyWith(processPhotoStatus: CubitStatus.success));
+      return some(compressedPhoto);
+    }
     final flippedPhoto = await flipImageHorizontallyAsync(compressedPhoto);
     return flippedPhoto.fold(
-      () => none(),
-      (photo) => some(photo),
+      () {
+        emit(state.copyWith(processPhotoStatus: CubitStatus.failure));
+        return none();
+      },
+      (photo) {
+        emit(state.copyWith(processPhotoStatus: CubitStatus.success));
+        return some(photo);
+      },
     );
+  }
+
+  _showSnackbarMessage(String message) {
+    emit(state.copyWith(snackbarMessage: some(message)));
+    emit(state.copyWith(snackbarMessage: none()));
   }
 }
