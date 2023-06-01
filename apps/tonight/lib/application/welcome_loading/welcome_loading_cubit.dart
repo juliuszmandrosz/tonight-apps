@@ -57,15 +57,11 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
     emit(state.copyWith(status: CubitStatus.loading));
 
-    await _userLocationCubit.requestUserLocationOnStart();
-
-    if (context.mounted) {
-      await _initPushNotifications(context);
-    }
-
-    if (context.mounted) {
-      await _initDynamicLinks(context);
-    }
+    await Future.wait([
+      _userLocationCubit.requestUserLocationOnStart(),
+      _initPushNotifications(context),
+      _initDynamicLinks(context),
+    ]);
 
     emit(state.copyWith(status: CubitStatus.success));
 
