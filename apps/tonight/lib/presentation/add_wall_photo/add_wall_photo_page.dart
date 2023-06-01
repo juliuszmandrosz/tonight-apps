@@ -7,6 +7,7 @@ import 'package:tonight/application/add_wall_photo/cubit/add_wall_photo_cubit.da
 import 'package:tonight/application/core/deep_links_utils.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/add_wall_photo/widgets/add_wall_photo_bottom_bar.dart';
 import 'package:tonight/presentation/add_wall_photo/widgets/add_wall_photo_button.dart';
 import 'package:tonight/presentation/add_wall_photo/widgets/add_wall_photo_club_tile.dart';
 import 'package:tonight/presentation/add_wall_photo/widgets/add_wall_photo_event_tile.dart';
@@ -53,27 +54,30 @@ class AddWallPhotoPage extends StatelessWidget {
       child: TonightOverlay(
         child: Scaffold(
           appBar: TonightAppBar(title: S().publish),
+          bottomNavigationBar: const AddWallPhotoBottomBar(),
           floatingActionButton: AddWallPhotoButton(event: event),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.endContained,
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 AddWallPhotoPreview(
                   photoPath: photoPath,
                   heroTag: heroTag,
                   isSelfie: isSelfie,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
-                    children: const [
-                      SizedBox(height: 30),
+                    children: [
+                      SizedBox(height: 20),
                       Divider(),
-                      SizedBox(height: 16),
+                      SizedBox(height: 4),
                       AddWallPhotoClubTile(),
                       AddWallPhotoEventTile(),
-                      SizedBox(height: 80),
+                      SizedBox(height: 150),
                     ],
                   ),
                 ),
