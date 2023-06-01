@@ -11,12 +11,15 @@ class AddWallPhotoState with _$AddWallPhotoState {
     required CubitStatus addPhotoStatus,
     required CubitStatus fetchNearestClubStatus,
     required CubitStatus fetchLiveEventsStatus,
+    required CubitStatus sharePhotoStatus,
+    required CubitStatus processPhotoStatus,
     required Option<String> snackbarMessage,
     required Option<WallPhotoVenue> selectedVenue,
     required Option<Event> selectedEvent,
     required Option<Event> initialEvent,
     required Option<TimeTask> timeTask,
     required Option<WallPhoto> result,
+    required Option<Future<Option<Uint8List>>> processPhotoTask,
   }) = _AddWallPhotoState;
 
   factory AddWallPhotoState.initial() => AddWallPhotoState(
@@ -28,11 +31,14 @@ class AddWallPhotoState with _$AddWallPhotoState {
         addPhotoStatus: CubitStatus.initial,
         fetchNearestClubStatus: CubitStatus.initial,
         fetchLiveEventsStatus: CubitStatus.initial,
+        sharePhotoStatus: CubitStatus.initial,
+        processPhotoStatus: CubitStatus.initial,
         snackbarMessage: none(),
         selectedVenue: none(),
         selectedEvent: none(),
         initialEvent: none(),
         timeTask: none(),
         result: none(),
+        processPhotoTask: none(),
       );
 }
