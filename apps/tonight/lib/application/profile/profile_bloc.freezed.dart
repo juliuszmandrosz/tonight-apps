@@ -22,6 +22,7 @@ mixin _$ProfileEvent {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPhotosPageFetched,
     required TResult Function(WallPhoto photo) userWallPhotoDeleted,
+    required TResult Function(WallPhoto photo) userWallPhotoUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$ProfileEvent {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPhotosPageFetched,
     TResult? Function(WallPhoto photo)? userWallPhotoDeleted,
+    TResult? Function(WallPhoto photo)? userWallPhotoUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$ProfileEvent {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPhotosPageFetched,
     TResult Function(WallPhoto photo)? userWallPhotoDeleted,
+    TResult Function(WallPhoto photo)? userWallPhotoUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +51,7 @@ mixin _$ProfileEvent {
     required TResult Function(_NextPhotosPageFetched value)
         nextPhotosPageFetched,
     required TResult Function(_UserWallPhotoDeleted value) userWallPhotoDeleted,
+    required TResult Function(_UserWallPhotoUpdated value) userWallPhotoUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +60,7 @@ mixin _$ProfileEvent {
     TResult? Function(_PhotosRefreshed value)? photosRefreshed,
     TResult? Function(_NextPhotosPageFetched value)? nextPhotosPageFetched,
     TResult? Function(_UserWallPhotoDeleted value)? userWallPhotoDeleted,
+    TResult? Function(_UserWallPhotoUpdated value)? userWallPhotoUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +69,7 @@ mixin _$ProfileEvent {
     TResult Function(_PhotosRefreshed value)? photosRefreshed,
     TResult Function(_NextPhotosPageFetched value)? nextPhotosPageFetched,
     TResult Function(_UserWallPhotoDeleted value)? userWallPhotoDeleted,
+    TResult Function(_UserWallPhotoUpdated value)? userWallPhotoUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -129,6 +135,7 @@ class _$_ProfileLoaded implements _ProfileLoaded {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPhotosPageFetched,
     required TResult Function(WallPhoto photo) userWallPhotoDeleted,
+    required TResult Function(WallPhoto photo) userWallPhotoUpdated,
   }) {
     return profileLoaded();
   }
@@ -140,6 +147,7 @@ class _$_ProfileLoaded implements _ProfileLoaded {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPhotosPageFetched,
     TResult? Function(WallPhoto photo)? userWallPhotoDeleted,
+    TResult? Function(WallPhoto photo)? userWallPhotoUpdated,
   }) {
     return profileLoaded?.call();
   }
@@ -151,6 +159,7 @@ class _$_ProfileLoaded implements _ProfileLoaded {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPhotosPageFetched,
     TResult Function(WallPhoto photo)? userWallPhotoDeleted,
+    TResult Function(WallPhoto photo)? userWallPhotoUpdated,
     required TResult orElse(),
   }) {
     if (profileLoaded != null) {
@@ -167,6 +176,7 @@ class _$_ProfileLoaded implements _ProfileLoaded {
     required TResult Function(_NextPhotosPageFetched value)
         nextPhotosPageFetched,
     required TResult Function(_UserWallPhotoDeleted value) userWallPhotoDeleted,
+    required TResult Function(_UserWallPhotoUpdated value) userWallPhotoUpdated,
   }) {
     return profileLoaded(this);
   }
@@ -178,6 +188,7 @@ class _$_ProfileLoaded implements _ProfileLoaded {
     TResult? Function(_PhotosRefreshed value)? photosRefreshed,
     TResult? Function(_NextPhotosPageFetched value)? nextPhotosPageFetched,
     TResult? Function(_UserWallPhotoDeleted value)? userWallPhotoDeleted,
+    TResult? Function(_UserWallPhotoUpdated value)? userWallPhotoUpdated,
   }) {
     return profileLoaded?.call(this);
   }
@@ -189,6 +200,7 @@ class _$_ProfileLoaded implements _ProfileLoaded {
     TResult Function(_PhotosRefreshed value)? photosRefreshed,
     TResult Function(_NextPhotosPageFetched value)? nextPhotosPageFetched,
     TResult Function(_UserWallPhotoDeleted value)? userWallPhotoDeleted,
+    TResult Function(_UserWallPhotoUpdated value)? userWallPhotoUpdated,
     required TResult orElse(),
   }) {
     if (profileLoaded != null) {
@@ -244,6 +256,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPhotosPageFetched,
     required TResult Function(WallPhoto photo) userWallPhotoDeleted,
+    required TResult Function(WallPhoto photo) userWallPhotoUpdated,
   }) {
     return photosRefreshed();
   }
@@ -255,6 +268,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPhotosPageFetched,
     TResult? Function(WallPhoto photo)? userWallPhotoDeleted,
+    TResult? Function(WallPhoto photo)? userWallPhotoUpdated,
   }) {
     return photosRefreshed?.call();
   }
@@ -266,6 +280,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPhotosPageFetched,
     TResult Function(WallPhoto photo)? userWallPhotoDeleted,
+    TResult Function(WallPhoto photo)? userWallPhotoUpdated,
     required TResult orElse(),
   }) {
     if (photosRefreshed != null) {
@@ -282,6 +297,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
     required TResult Function(_NextPhotosPageFetched value)
         nextPhotosPageFetched,
     required TResult Function(_UserWallPhotoDeleted value) userWallPhotoDeleted,
+    required TResult Function(_UserWallPhotoUpdated value) userWallPhotoUpdated,
   }) {
     return photosRefreshed(this);
   }
@@ -293,6 +309,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
     TResult? Function(_PhotosRefreshed value)? photosRefreshed,
     TResult? Function(_NextPhotosPageFetched value)? nextPhotosPageFetched,
     TResult? Function(_UserWallPhotoDeleted value)? userWallPhotoDeleted,
+    TResult? Function(_UserWallPhotoUpdated value)? userWallPhotoUpdated,
   }) {
     return photosRefreshed?.call(this);
   }
@@ -304,6 +321,7 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
     TResult Function(_PhotosRefreshed value)? photosRefreshed,
     TResult Function(_NextPhotosPageFetched value)? nextPhotosPageFetched,
     TResult Function(_UserWallPhotoDeleted value)? userWallPhotoDeleted,
+    TResult Function(_UserWallPhotoUpdated value)? userWallPhotoUpdated,
     required TResult orElse(),
   }) {
     if (photosRefreshed != null) {
@@ -359,6 +377,7 @@ class _$_NextPhotosPageFetched implements _NextPhotosPageFetched {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPhotosPageFetched,
     required TResult Function(WallPhoto photo) userWallPhotoDeleted,
+    required TResult Function(WallPhoto photo) userWallPhotoUpdated,
   }) {
     return nextPhotosPageFetched();
   }
@@ -370,6 +389,7 @@ class _$_NextPhotosPageFetched implements _NextPhotosPageFetched {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPhotosPageFetched,
     TResult? Function(WallPhoto photo)? userWallPhotoDeleted,
+    TResult? Function(WallPhoto photo)? userWallPhotoUpdated,
   }) {
     return nextPhotosPageFetched?.call();
   }
@@ -381,6 +401,7 @@ class _$_NextPhotosPageFetched implements _NextPhotosPageFetched {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPhotosPageFetched,
     TResult Function(WallPhoto photo)? userWallPhotoDeleted,
+    TResult Function(WallPhoto photo)? userWallPhotoUpdated,
     required TResult orElse(),
   }) {
     if (nextPhotosPageFetched != null) {
@@ -397,6 +418,7 @@ class _$_NextPhotosPageFetched implements _NextPhotosPageFetched {
     required TResult Function(_NextPhotosPageFetched value)
         nextPhotosPageFetched,
     required TResult Function(_UserWallPhotoDeleted value) userWallPhotoDeleted,
+    required TResult Function(_UserWallPhotoUpdated value) userWallPhotoUpdated,
   }) {
     return nextPhotosPageFetched(this);
   }
@@ -408,6 +430,7 @@ class _$_NextPhotosPageFetched implements _NextPhotosPageFetched {
     TResult? Function(_PhotosRefreshed value)? photosRefreshed,
     TResult? Function(_NextPhotosPageFetched value)? nextPhotosPageFetched,
     TResult? Function(_UserWallPhotoDeleted value)? userWallPhotoDeleted,
+    TResult? Function(_UserWallPhotoUpdated value)? userWallPhotoUpdated,
   }) {
     return nextPhotosPageFetched?.call(this);
   }
@@ -419,6 +442,7 @@ class _$_NextPhotosPageFetched implements _NextPhotosPageFetched {
     TResult Function(_PhotosRefreshed value)? photosRefreshed,
     TResult Function(_NextPhotosPageFetched value)? nextPhotosPageFetched,
     TResult Function(_UserWallPhotoDeleted value)? userWallPhotoDeleted,
+    TResult Function(_UserWallPhotoUpdated value)? userWallPhotoUpdated,
     required TResult orElse(),
   }) {
     if (nextPhotosPageFetched != null) {
@@ -501,6 +525,7 @@ class _$_UserWallPhotoDeleted implements _UserWallPhotoDeleted {
     required TResult Function() photosRefreshed,
     required TResult Function() nextPhotosPageFetched,
     required TResult Function(WallPhoto photo) userWallPhotoDeleted,
+    required TResult Function(WallPhoto photo) userWallPhotoUpdated,
   }) {
     return userWallPhotoDeleted(photo);
   }
@@ -512,6 +537,7 @@ class _$_UserWallPhotoDeleted implements _UserWallPhotoDeleted {
     TResult? Function()? photosRefreshed,
     TResult? Function()? nextPhotosPageFetched,
     TResult? Function(WallPhoto photo)? userWallPhotoDeleted,
+    TResult? Function(WallPhoto photo)? userWallPhotoUpdated,
   }) {
     return userWallPhotoDeleted?.call(photo);
   }
@@ -523,6 +549,7 @@ class _$_UserWallPhotoDeleted implements _UserWallPhotoDeleted {
     TResult Function()? photosRefreshed,
     TResult Function()? nextPhotosPageFetched,
     TResult Function(WallPhoto photo)? userWallPhotoDeleted,
+    TResult Function(WallPhoto photo)? userWallPhotoUpdated,
     required TResult orElse(),
   }) {
     if (userWallPhotoDeleted != null) {
@@ -539,6 +566,7 @@ class _$_UserWallPhotoDeleted implements _UserWallPhotoDeleted {
     required TResult Function(_NextPhotosPageFetched value)
         nextPhotosPageFetched,
     required TResult Function(_UserWallPhotoDeleted value) userWallPhotoDeleted,
+    required TResult Function(_UserWallPhotoUpdated value) userWallPhotoUpdated,
   }) {
     return userWallPhotoDeleted(this);
   }
@@ -550,6 +578,7 @@ class _$_UserWallPhotoDeleted implements _UserWallPhotoDeleted {
     TResult? Function(_PhotosRefreshed value)? photosRefreshed,
     TResult? Function(_NextPhotosPageFetched value)? nextPhotosPageFetched,
     TResult? Function(_UserWallPhotoDeleted value)? userWallPhotoDeleted,
+    TResult? Function(_UserWallPhotoUpdated value)? userWallPhotoUpdated,
   }) {
     return userWallPhotoDeleted?.call(this);
   }
@@ -561,6 +590,7 @@ class _$_UserWallPhotoDeleted implements _UserWallPhotoDeleted {
     TResult Function(_PhotosRefreshed value)? photosRefreshed,
     TResult Function(_NextPhotosPageFetched value)? nextPhotosPageFetched,
     TResult Function(_UserWallPhotoDeleted value)? userWallPhotoDeleted,
+    TResult Function(_UserWallPhotoUpdated value)? userWallPhotoUpdated,
     required TResult orElse(),
   }) {
     if (userWallPhotoDeleted != null) {
@@ -577,6 +607,160 @@ abstract class _UserWallPhotoDeleted implements ProfileEvent {
   WallPhoto get photo;
   @JsonKey(ignore: true)
   _$$_UserWallPhotoDeletedCopyWith<_$_UserWallPhotoDeleted> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_UserWallPhotoUpdatedCopyWith<$Res> {
+  factory _$$_UserWallPhotoUpdatedCopyWith(_$_UserWallPhotoUpdated value,
+          $Res Function(_$_UserWallPhotoUpdated) then) =
+      __$$_UserWallPhotoUpdatedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({WallPhoto photo});
+}
+
+/// @nodoc
+class __$$_UserWallPhotoUpdatedCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$_UserWallPhotoUpdated>
+    implements _$$_UserWallPhotoUpdatedCopyWith<$Res> {
+  __$$_UserWallPhotoUpdatedCopyWithImpl(_$_UserWallPhotoUpdated _value,
+      $Res Function(_$_UserWallPhotoUpdated) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? photo = null,
+  }) {
+    return _then(_$_UserWallPhotoUpdated(
+      null == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as WallPhoto,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UserWallPhotoUpdated implements _UserWallPhotoUpdated {
+  const _$_UserWallPhotoUpdated(this.photo);
+
+  @override
+  final WallPhoto photo;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.userWallPhotoUpdated(photo: $photo)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UserWallPhotoUpdated &&
+            (identical(other.photo, photo) || other.photo == photo));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, photo);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UserWallPhotoUpdatedCopyWith<_$_UserWallPhotoUpdated> get copyWith =>
+      __$$_UserWallPhotoUpdatedCopyWithImpl<_$_UserWallPhotoUpdated>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() profileLoaded,
+    required TResult Function() photosRefreshed,
+    required TResult Function() nextPhotosPageFetched,
+    required TResult Function(WallPhoto photo) userWallPhotoDeleted,
+    required TResult Function(WallPhoto photo) userWallPhotoUpdated,
+  }) {
+    return userWallPhotoUpdated(photo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? profileLoaded,
+    TResult? Function()? photosRefreshed,
+    TResult? Function()? nextPhotosPageFetched,
+    TResult? Function(WallPhoto photo)? userWallPhotoDeleted,
+    TResult? Function(WallPhoto photo)? userWallPhotoUpdated,
+  }) {
+    return userWallPhotoUpdated?.call(photo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? profileLoaded,
+    TResult Function()? photosRefreshed,
+    TResult Function()? nextPhotosPageFetched,
+    TResult Function(WallPhoto photo)? userWallPhotoDeleted,
+    TResult Function(WallPhoto photo)? userWallPhotoUpdated,
+    required TResult orElse(),
+  }) {
+    if (userWallPhotoUpdated != null) {
+      return userWallPhotoUpdated(photo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ProfileLoaded value) profileLoaded,
+    required TResult Function(_PhotosRefreshed value) photosRefreshed,
+    required TResult Function(_NextPhotosPageFetched value)
+        nextPhotosPageFetched,
+    required TResult Function(_UserWallPhotoDeleted value) userWallPhotoDeleted,
+    required TResult Function(_UserWallPhotoUpdated value) userWallPhotoUpdated,
+  }) {
+    return userWallPhotoUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ProfileLoaded value)? profileLoaded,
+    TResult? Function(_PhotosRefreshed value)? photosRefreshed,
+    TResult? Function(_NextPhotosPageFetched value)? nextPhotosPageFetched,
+    TResult? Function(_UserWallPhotoDeleted value)? userWallPhotoDeleted,
+    TResult? Function(_UserWallPhotoUpdated value)? userWallPhotoUpdated,
+  }) {
+    return userWallPhotoUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ProfileLoaded value)? profileLoaded,
+    TResult Function(_PhotosRefreshed value)? photosRefreshed,
+    TResult Function(_NextPhotosPageFetched value)? nextPhotosPageFetched,
+    TResult Function(_UserWallPhotoDeleted value)? userWallPhotoDeleted,
+    TResult Function(_UserWallPhotoUpdated value)? userWallPhotoUpdated,
+    required TResult orElse(),
+  }) {
+    if (userWallPhotoUpdated != null) {
+      return userWallPhotoUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserWallPhotoUpdated implements ProfileEvent {
+  const factory _UserWallPhotoUpdated(final WallPhoto photo) =
+      _$_UserWallPhotoUpdated;
+
+  WallPhoto get photo;
+  @JsonKey(ignore: true)
+  _$$_UserWallPhotoUpdatedCopyWith<_$_UserWallPhotoUpdated> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

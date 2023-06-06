@@ -5,6 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 
 part 'wall_photo_dto.freezed.dart';
+
 part 'wall_photo_dto.g.dart';
 
 @freezed
@@ -28,7 +29,24 @@ class WallPhotoDto with _$WallPhotoDto {
     String? timeTaskId,
     @NullableLatLngConverter() LatLng? photoLocation,
     @Default(false) bool isVerified,
+    @Default(false) bool isRewardAcquired,
   }) = _WallPhotoDto;
+
+
+  factory WallPhotoDto.fromJson(Map<String, dynamic> json) =>
+      _$WallPhotoDtoFromJson(json);
+
+  factory WallPhotoDto.fromApi(Map<String, dynamic> documentSnapshot) {
+    return WallPhotoDto.fromJson(documentSnapshot).copyWith(
+      id: documentSnapshot['id'],
+    );
+  }
+
+  factory WallPhotoDto.fromFirebase(DocumentSnapshot documentSnapshot) {
+    return WallPhotoDto.fromJson(
+        documentSnapshot.data() as Map<String, dynamic>)
+        .copyWith(id: documentSnapshot.id);
+  }
 
   factory WallPhotoDto.fromDomain(WallPhoto wallPhoto) {
     return WallPhotoDto(
@@ -47,22 +65,8 @@ class WallPhotoDto with _$WallPhotoDto {
       eventId: wallPhoto.eventId,
       timeTaskId: wallPhoto.timeTaskId,
       eventName: wallPhoto.eventName,
+      isRewardAcquired: wallPhoto.isRewardAcquired,
     );
-  }
-
-  factory WallPhotoDto.fromJson(Map<String, dynamic> json) =>
-      _$WallPhotoDtoFromJson(json);
-
-  factory WallPhotoDto.fromApi(Map<String, dynamic> documentSnapshot) {
-    return WallPhotoDto.fromJson(documentSnapshot).copyWith(
-      id: documentSnapshot['id'],
-    );
-  }
-
-  factory WallPhotoDto.fromFirebase(DocumentSnapshot documentSnapshot) {
-    return WallPhotoDto.fromJson(
-            documentSnapshot.data() as Map<String, dynamic>)
-        .copyWith(id: documentSnapshot.id);
   }
 
   WallPhoto toDomain() {
@@ -82,6 +86,7 @@ class WallPhotoDto with _$WallPhotoDto {
       isVerified: isVerified,
       photoLocation: photoLocation,
       timeTaskId: timeTaskId,
+      isRewardAcquired: isRewardAcquired,
     );
   }
 }

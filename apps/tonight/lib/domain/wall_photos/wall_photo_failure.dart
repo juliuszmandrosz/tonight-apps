@@ -12,6 +12,8 @@ class WallPhotoFailure with _$WallPhotoFailure {
   const factory WallPhotoFailure.noConnection() = _NoConnection;
 
   const factory WallPhotoFailure.reportExists() = _ReportExists;
+
+  const factory WallPhotoFailure.timeTaskLimitReached() = _TimeTaskLimitReached;
 }
 
 extension WallPhotoFailureX on WallPhotoFailure {
@@ -20,5 +22,7 @@ extension WallPhotoFailureX on WallPhotoFailure {
         permissionDenied: () => S().operationNotAllowed,
         noConnection: () => S().errorCheckInternetConnection,
         reportExists: () => S().photoAlreadyReported,
+        // TODO - add translation
+        timeTaskLimitReached: () => 'S().timeTaskLimitReached',
       );
 }

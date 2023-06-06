@@ -21,6 +21,7 @@ mixin _$AddWallPhotoFailure {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() cannotUploadPhoto,
+    required TResult Function() timeTaskLimitReached,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$AddWallPhotoFailure {
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
     TResult? Function()? cannotUploadPhoto,
+    TResult? Function()? timeTaskLimitReached,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$AddWallPhotoFailure {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? cannotUploadPhoto,
+    TResult Function()? timeTaskLimitReached,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$AddWallPhotoFailure {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_CannotUploadPhoto value) cannotUploadPhoto,
+    required TResult Function(_TimeTaskLimitReached value) timeTaskLimitReached,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$AddWallPhotoFailure {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_CannotUploadPhoto value)? cannotUploadPhoto,
+    TResult? Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$AddWallPhotoFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CannotUploadPhoto value)? cannotUploadPhoto,
+    TResult Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() cannotUploadPhoto,
+    required TResult Function() timeTaskLimitReached,
   }) {
     return unexpected();
   }
@@ -131,6 +138,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
     TResult? Function()? cannotUploadPhoto,
+    TResult? Function()? timeTaskLimitReached,
   }) {
     return unexpected?.call();
   }
@@ -141,6 +149,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? cannotUploadPhoto,
+    TResult Function()? timeTaskLimitReached,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -155,6 +164,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_CannotUploadPhoto value) cannotUploadPhoto,
+    required TResult Function(_TimeTaskLimitReached value) timeTaskLimitReached,
   }) {
     return unexpected(this);
   }
@@ -165,6 +175,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_CannotUploadPhoto value)? cannotUploadPhoto,
+    TResult? Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
   }) {
     return unexpected?.call(this);
   }
@@ -175,6 +186,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CannotUploadPhoto value)? cannotUploadPhoto,
+    TResult Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -229,6 +241,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() cannotUploadPhoto,
+    required TResult Function() timeTaskLimitReached,
   }) {
     return permissionDenied();
   }
@@ -239,6 +252,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
     TResult? Function()? cannotUploadPhoto,
+    TResult? Function()? timeTaskLimitReached,
   }) {
     return permissionDenied?.call();
   }
@@ -249,6 +263,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? cannotUploadPhoto,
+    TResult Function()? timeTaskLimitReached,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -263,6 +278,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_CannotUploadPhoto value) cannotUploadPhoto,
+    required TResult Function(_TimeTaskLimitReached value) timeTaskLimitReached,
   }) {
     return permissionDenied(this);
   }
@@ -273,6 +289,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_CannotUploadPhoto value)? cannotUploadPhoto,
+    TResult? Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
   }) {
     return permissionDenied?.call(this);
   }
@@ -283,6 +300,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CannotUploadPhoto value)? cannotUploadPhoto,
+    TResult Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -337,6 +355,7 @@ class _$_CannotUploadPhoto implements _CannotUploadPhoto {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() cannotUploadPhoto,
+    required TResult Function() timeTaskLimitReached,
   }) {
     return cannotUploadPhoto();
   }
@@ -347,6 +366,7 @@ class _$_CannotUploadPhoto implements _CannotUploadPhoto {
     TResult? Function()? unexpected,
     TResult? Function()? permissionDenied,
     TResult? Function()? cannotUploadPhoto,
+    TResult? Function()? timeTaskLimitReached,
   }) {
     return cannotUploadPhoto?.call();
   }
@@ -357,6 +377,7 @@ class _$_CannotUploadPhoto implements _CannotUploadPhoto {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? cannotUploadPhoto,
+    TResult Function()? timeTaskLimitReached,
     required TResult orElse(),
   }) {
     if (cannotUploadPhoto != null) {
@@ -371,6 +392,7 @@ class _$_CannotUploadPhoto implements _CannotUploadPhoto {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_CannotUploadPhoto value) cannotUploadPhoto,
+    required TResult Function(_TimeTaskLimitReached value) timeTaskLimitReached,
   }) {
     return cannotUploadPhoto(this);
   }
@@ -381,6 +403,7 @@ class _$_CannotUploadPhoto implements _CannotUploadPhoto {
     TResult? Function(_Unexpected value)? unexpected,
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_CannotUploadPhoto value)? cannotUploadPhoto,
+    TResult? Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
   }) {
     return cannotUploadPhoto?.call(this);
   }
@@ -391,6 +414,7 @@ class _$_CannotUploadPhoto implements _CannotUploadPhoto {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_CannotUploadPhoto value)? cannotUploadPhoto,
+    TResult Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
     required TResult orElse(),
   }) {
     if (cannotUploadPhoto != null) {
@@ -402,4 +426,118 @@ class _$_CannotUploadPhoto implements _CannotUploadPhoto {
 
 abstract class _CannotUploadPhoto implements AddWallPhotoFailure {
   const factory _CannotUploadPhoto() = _$_CannotUploadPhoto;
+}
+
+/// @nodoc
+abstract class _$$_TimeTaskLimitReachedCopyWith<$Res> {
+  factory _$$_TimeTaskLimitReachedCopyWith(_$_TimeTaskLimitReached value,
+          $Res Function(_$_TimeTaskLimitReached) then) =
+      __$$_TimeTaskLimitReachedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_TimeTaskLimitReachedCopyWithImpl<$Res>
+    extends _$AddWallPhotoFailureCopyWithImpl<$Res, _$_TimeTaskLimitReached>
+    implements _$$_TimeTaskLimitReachedCopyWith<$Res> {
+  __$$_TimeTaskLimitReachedCopyWithImpl(_$_TimeTaskLimitReached _value,
+      $Res Function(_$_TimeTaskLimitReached) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_TimeTaskLimitReached implements _TimeTaskLimitReached {
+  const _$_TimeTaskLimitReached();
+
+  @override
+  String toString() {
+    return 'AddWallPhotoFailure.timeTaskLimitReached()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_TimeTaskLimitReached);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() cannotUploadPhoto,
+    required TResult Function() timeTaskLimitReached,
+  }) {
+    return timeTaskLimitReached();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? cannotUploadPhoto,
+    TResult? Function()? timeTaskLimitReached,
+  }) {
+    return timeTaskLimitReached?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? cannotUploadPhoto,
+    TResult Function()? timeTaskLimitReached,
+    required TResult orElse(),
+  }) {
+    if (timeTaskLimitReached != null) {
+      return timeTaskLimitReached();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_CannotUploadPhoto value) cannotUploadPhoto,
+    required TResult Function(_TimeTaskLimitReached value) timeTaskLimitReached,
+  }) {
+    return timeTaskLimitReached(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_CannotUploadPhoto value)? cannotUploadPhoto,
+    TResult? Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
+  }) {
+    return timeTaskLimitReached?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_CannotUploadPhoto value)? cannotUploadPhoto,
+    TResult Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
+    required TResult orElse(),
+  }) {
+    if (timeTaskLimitReached != null) {
+      return timeTaskLimitReached(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TimeTaskLimitReached implements AddWallPhotoFailure {
+  const factory _TimeTaskLimitReached() = _$_TimeTaskLimitReached;
 }

@@ -1,0 +1,14 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'time_task_failure.freezed.dart';
+
+@freezed
+class TimeTaskFailure with _$TimeTaskFailure {
+  const factory TimeTaskFailure.unexpected() = _Unexpected;
+
+  const factory TimeTaskFailure.taskNotExists() = _TaskNotExists;
+
+  const factory TimeTaskFailure.timeTaskExpired() = _TimeTaskExpired;
+
+  const factory TimeTaskFailure.timeTaskLimitReached() = _TimeTaskLimitReached;
+}

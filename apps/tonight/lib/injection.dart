@@ -28,6 +28,7 @@ import 'package:rewards/domain/domain.dart';
 import 'package:rewards/infrastructure/firebase_reward_facade.dart';
 import 'package:tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
 import 'package:tickets/tickets.dart';
+import 'package:tonight/application/activate_time_task_reward/activate_time_task_reward_cubit.dart';
 import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_aggregator/add_wall_photo_aggregator.dart';
 import 'package:tonight/application/add_wall_photo/cubit/add_wall_photo_cubit.dart';
 import 'package:tonight/application/app_settings/app_settings_cubit.dart';
@@ -86,6 +87,8 @@ import 'package:tonight/domain/messages/message_facade.dart';
 import 'package:tonight/domain/participants/participant_facade.dart';
 import 'package:tonight/domain/places/places_facade.dart';
 import 'package:tonight/domain/rooms/room_facade.dart';
+import 'package:tonight/domain/time_task_vouchers/time_task_voucher_facade.dart';
+import 'package:tonight/domain/time_tasks/time_task_facade.dart';
 import 'package:tonight/domain/user_app_links/user_app_links_facade.dart';
 import 'package:tonight/domain/user_details/user_details_aggregator.dart';
 import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
@@ -96,6 +99,8 @@ import 'package:tonight/infrastructure/google_places/google_places_facade.dart';
 import 'package:tonight/infrastructure/messages/firebase_message_facade.dart';
 import 'package:tonight/infrastructure/participants/firebase_participant_facade.dart';
 import 'package:tonight/infrastructure/rooms/firebase_room_facade.dart';
+import 'package:tonight/infrastructure/time_task_vouchers/firebase_time_task_voucher_facade.dart';
+import 'package:tonight/infrastructure/time_tasks/firebase_time_task_facade.dart';
 import 'package:tonight/infrastructure/user_app_links/firebase_user_app_links_facade.dart';
 import 'package:tonight/infrastructure/wall_photos/firebase_wall_photo_facade.dart';
 
@@ -423,6 +428,12 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  getIt.registerFactory(
+    () => ActivateTimeTaskRewardCubit(
+      getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
@@ -657,6 +668,23 @@ void _registerFacades() {
 
   getIt.registerLazySingleton<DailySpinFacade>(
     () => FirebaseDailySpinFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<TimeTaskFacade>(
+    () => FirebaseTimeTaskFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<TimeTaskVoucherFacade>(
+    () => FirebaseTimeTaskVoucherFacade(
       getIt(),
       getIt(),
       getIt(),

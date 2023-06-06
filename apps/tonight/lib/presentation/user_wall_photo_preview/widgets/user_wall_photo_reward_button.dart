@@ -13,8 +13,10 @@ class UserWallPhotoRewardButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () => context.pushRoute(QrRewardRoute(photo: photo)),
-      icon: const FaIcon(FontAwesomeIcons.trophy),
+      onPressed: () => context.pushRoute(
+        ActivateTimeTaskRewardRoute(photo: photo),
+      ),
+      icon: const FaIcon(FontAwesomeIcons.gift),
     );
   }
 }

@@ -10,6 +10,9 @@ class AddWallPhotoFailure with _$AddWallPhotoFailure {
   const factory AddWallPhotoFailure.permissionDenied() = _PermissionDenied;
 
   const factory AddWallPhotoFailure.cannotUploadPhoto() = _CannotUploadPhoto;
+
+  const factory AddWallPhotoFailure.timeTaskLimitReached() =
+      _TimeTaskLimitReached;
 }
 
 extension AddWallPhotoFailureX on AddWallPhotoFailure {
@@ -17,5 +20,7 @@ extension AddWallPhotoFailureX on AddWallPhotoFailure {
         unexpected: () => S().serverError,
         permissionDenied: () => S().operationNotAllowed,
         cannotUploadPhoto: () => S().errorAddingPhoto,
+        // TODO - add translation
+        timeTaskLimitReached: () => 'S().timeTaskLimitReached',
       );
 }

@@ -36,6 +36,7 @@ mixin _$AddWallPhotoState {
   Option<WallPhoto> get result => throw _privateConstructorUsedError;
   Option<Future<Option<Uint8List>>> get processPhotoTask =>
       throw _privateConstructorUsedError;
+  Option<AddWallPhotoFailure> get failure => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddWallPhotoStateCopyWith<AddWallPhotoState> get copyWith =>
@@ -65,7 +66,8 @@ abstract class $AddWallPhotoStateCopyWith<$Res> {
       Option<Event> initialEvent,
       Option<TimeTask> timeTask,
       Option<WallPhoto> result,
-      Option<Future<Option<Uint8List>>> processPhotoTask});
+      Option<Future<Option<Uint8List>>> processPhotoTask,
+      Option<AddWallPhotoFailure> failure});
 }
 
 /// @nodoc
@@ -98,6 +100,7 @@ class _$AddWallPhotoStateCopyWithImpl<$Res, $Val extends AddWallPhotoState>
     Object? timeTask = null,
     Object? result = null,
     Object? processPhotoTask = null,
+    Object? failure = null,
   }) {
     return _then(_value.copyWith(
       photo: null == photo
@@ -168,6 +171,10 @@ class _$AddWallPhotoStateCopyWithImpl<$Res, $Val extends AddWallPhotoState>
           ? _value.processPhotoTask
           : processPhotoTask // ignore: cast_nullable_to_non_nullable
               as Option<Future<Option<Uint8List>>>,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<AddWallPhotoFailure>,
     ) as $Val);
   }
 }
@@ -197,7 +204,8 @@ abstract class _$$_AddWallPhotoStateCopyWith<$Res>
       Option<Event> initialEvent,
       Option<TimeTask> timeTask,
       Option<WallPhoto> result,
-      Option<Future<Option<Uint8List>>> processPhotoTask});
+      Option<Future<Option<Uint8List>>> processPhotoTask,
+      Option<AddWallPhotoFailure> failure});
 }
 
 /// @nodoc
@@ -228,6 +236,7 @@ class __$$_AddWallPhotoStateCopyWithImpl<$Res>
     Object? timeTask = null,
     Object? result = null,
     Object? processPhotoTask = null,
+    Object? failure = null,
   }) {
     return _then(_$_AddWallPhotoState(
       photo: null == photo
@@ -298,6 +307,10 @@ class __$$_AddWallPhotoStateCopyWithImpl<$Res>
           ? _value.processPhotoTask
           : processPhotoTask // ignore: cast_nullable_to_non_nullable
               as Option<Future<Option<Uint8List>>>,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Option<AddWallPhotoFailure>,
     ));
   }
 }
@@ -322,7 +335,8 @@ class _$_AddWallPhotoState implements _AddWallPhotoState {
       required this.initialEvent,
       required this.timeTask,
       required this.result,
-      required this.processPhotoTask})
+      required this.processPhotoTask,
+      required this.failure})
       : _nearestVenues = nearestVenues,
         _liveEventsFromSelectedClub = liveEventsFromSelectedClub;
 
@@ -373,10 +387,12 @@ class _$_AddWallPhotoState implements _AddWallPhotoState {
   final Option<WallPhoto> result;
   @override
   final Option<Future<Option<Uint8List>>> processPhotoTask;
+  @override
+  final Option<AddWallPhotoFailure> failure;
 
   @override
   String toString() {
-    return 'AddWallPhotoState(photo: $photo, isSelfie: $isSelfie, nearestVenues: $nearestVenues, liveEventsFromSelectedClub: $liveEventsFromSelectedClub, userLocation: $userLocation, addPhotoStatus: $addPhotoStatus, fetchNearestClubStatus: $fetchNearestClubStatus, fetchLiveEventsStatus: $fetchLiveEventsStatus, sharePhotoStatus: $sharePhotoStatus, processPhotoStatus: $processPhotoStatus, snackbarMessage: $snackbarMessage, selectedVenue: $selectedVenue, selectedEvent: $selectedEvent, initialEvent: $initialEvent, timeTask: $timeTask, result: $result, processPhotoTask: $processPhotoTask)';
+    return 'AddWallPhotoState(photo: $photo, isSelfie: $isSelfie, nearestVenues: $nearestVenues, liveEventsFromSelectedClub: $liveEventsFromSelectedClub, userLocation: $userLocation, addPhotoStatus: $addPhotoStatus, fetchNearestClubStatus: $fetchNearestClubStatus, fetchLiveEventsStatus: $fetchLiveEventsStatus, sharePhotoStatus: $sharePhotoStatus, processPhotoStatus: $processPhotoStatus, snackbarMessage: $snackbarMessage, selectedVenue: $selectedVenue, selectedEvent: $selectedEvent, initialEvent: $initialEvent, timeTask: $timeTask, result: $result, processPhotoTask: $processPhotoTask, failure: $failure)';
   }
 
   @override
@@ -416,7 +432,8 @@ class _$_AddWallPhotoState implements _AddWallPhotoState {
                 other.timeTask == timeTask) &&
             (identical(other.result, result) || other.result == result) &&
             (identical(other.processPhotoTask, processPhotoTask) ||
-                other.processPhotoTask == processPhotoTask));
+                other.processPhotoTask == processPhotoTask) &&
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
@@ -438,7 +455,8 @@ class _$_AddWallPhotoState implements _AddWallPhotoState {
       initialEvent,
       timeTask,
       result,
-      processPhotoTask);
+      processPhotoTask,
+      failure);
 
   @JsonKey(ignore: true)
   @override
@@ -466,7 +484,8 @@ abstract class _AddWallPhotoState implements AddWallPhotoState {
           required final Option<Event> initialEvent,
           required final Option<TimeTask> timeTask,
           required final Option<WallPhoto> result,
-          required final Option<Future<Option<Uint8List>>> processPhotoTask}) =
+          required final Option<Future<Option<Uint8List>>> processPhotoTask,
+          required final Option<AddWallPhotoFailure> failure}) =
       _$_AddWallPhotoState;
 
   @override
@@ -503,6 +522,8 @@ abstract class _AddWallPhotoState implements AddWallPhotoState {
   Option<WallPhoto> get result;
   @override
   Option<Future<Option<Uint8List>>> get processPhotoTask;
+  @override
+  Option<AddWallPhotoFailure> get failure;
   @override
   @JsonKey(ignore: true)
   _$$_AddWallPhotoStateCopyWith<_$_AddWallPhotoState> get copyWith =>
