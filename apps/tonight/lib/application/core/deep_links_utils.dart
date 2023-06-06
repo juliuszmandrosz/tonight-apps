@@ -1,18 +1,20 @@
 import 'package:auth/auth.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/extensions/build_context_extensions.dart';
 import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
-import 'package:events/infrastructure/events/dtos/event_dto.dart';
+import 'package:events/domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tonight/domain/time_tasks/time_task_facade.dart';
+import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/utils/show_confirm_phone_number_dialog.dart';
 import 'package:translations/translations.dart';
 
-Future<void> handleDeepLink(BuildContext context,
-    Map<String, dynamic>? data,) async {
+Future<void> handleDeepLink(
+  BuildContext context,
+  Map<String, dynamic>? data,
+) async {
   if (data == null) return;
 
   final eventId = data['eventId'];
@@ -66,79 +68,47 @@ Future<void> handleTimeTask({
   required String taskId,
   required BuildContext context,
 }) async {
-  final task =
-  await FirebaseFirestore.instance.collection('tasks').doc(taskId).get();
+  final timeTaskFacade = getIt<TimeTaskFacade>();
+  final timeTaskResult = await timeTaskFacade.getTimeTaskById(taskId);
 
-  if (!task.exists) return;
-
-  if (context.mounted) {
-    if (!context.read<AuthCubit>().checkIfPhoneNumberIsVerified()) {
-      final isPhoneNumberVerified = await showConfirmPhoneNumberDialog(context);
-      if (!isPhoneNumberVerified) {
-        return;
+  timeTaskResult.fold(
+    (failure) => failure.map(
+      unexpected: (_) => context.showSnackbarMessage(S().serverError),
+      // TODO - add translation
+      taskNotExists: (_) => context.showSnackbarMessage('S().taskNotExists'),
+      timeTaskExpired: (_) =>
+          context.showSnackbarMessage('${S().timeTaskExpired} 😉'),
+      timeTaskLimitReached: (_) => // TODO - add translation
+          context.showSnackbarMessage('${'S().timeTaskLimitReached'} 😉'),
+    ),
+    (task) async {
+      if (!context.read<AuthCubit>().checkIfPhoneNumberIsVerified()) {
+        final isPhoneNumberVerified =
+            await showConfirmPhoneNumberDialog(context);
+        if (!isPhoneNumberVerified) {
+          return;
+        }
       }
-    }
-  }
-  if (context.mounted) {
-    final data = task.data() as Map<String, dynamic>;
-    final eventId = data['eventId'] as String;
-    final createdAt = data['createdAt'] as Timestamp;
-    final duration = data['durationInMinutes'] as int;
-    final durationInMilliseconds = duration * 60 * 1000;
-    final now = DateTime.now();
-    final diff = now
-        .difference(createdAt.toDate())
-        .inMilliseconds;
-    if (diff > durationInMilliseconds) {
-      context.showSnackbarMessage('${S().timeTaskExpired} 😉');
-      return;
-    }
 
-    final event = await FirebaseFirestore.instance
-        .collection('events')
-        .doc(eventId)
-        .get();
+      final eventFacade = getIt<UserEventFacade>();
 
-    if (context.mounted) {
-      final task = TimeTask(
-        id: taskId,
-        eventId: eventId,
-        createdAt: createdAt,
-        durationInMinutes: duration,
+      final eventResult = await eventFacade.getEventById(task.eventId);
+
+      eventResult.fold(
+        (_) => context.showSnackbarMessage(S().serverError),
+        (event) async {
+          context.router.popUntilRoot();
+          await context.router.replaceAll(
+            [
+              const WelcomeLoaderRoute(),
+              WallPhotoCameraPreviewRoute(
+                event: some(event),
+                timeTask: some(task),
+              ),
+            ],
+          );
+        },
       );
-      context.router.popUntilRoot();
-      await context.router.replaceAll(
-        [
-          const WelcomeLoaderRoute(),
-          WallPhotoCameraPreviewRoute(
-            event: some(EventDto.fromFirebase(event).toDomain()),
-            timeTask: some(task),
-          ),
-        ],
-      );
-    }
-  }
-}
-
-class TimeTask extends Equatable {
-  final String id;
-  final String eventId;
-  final Timestamp createdAt;
-  final int durationInMinutes;
-
-  const TimeTask({
-    required this.id,
-    required this.eventId,
-    required this.createdAt,
-    required this.durationInMinutes,
-  });
-
-  @override
-  List<Object?> get props =>
-      [
-        id,
-        eventId,
-        createdAt,
-        durationInMinutes,
-      ];
+    },
+  );
 }

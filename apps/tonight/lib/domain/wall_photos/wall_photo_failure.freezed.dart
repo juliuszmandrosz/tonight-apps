@@ -22,6 +22,7 @@ mixin _$WallPhotoFailure {
     required TResult Function() permissionDenied,
     required TResult Function() noConnection,
     required TResult Function() reportExists,
+    required TResult Function() timeTaskLimitReached,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$WallPhotoFailure {
     TResult? Function()? permissionDenied,
     TResult? Function()? noConnection,
     TResult? Function()? reportExists,
+    TResult? Function()? timeTaskLimitReached,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$WallPhotoFailure {
     TResult Function()? permissionDenied,
     TResult Function()? noConnection,
     TResult Function()? reportExists,
+    TResult Function()? timeTaskLimitReached,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$WallPhotoFailure {
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_ReportExists value) reportExists,
+    required TResult Function(_TimeTaskLimitReached value) timeTaskLimitReached,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$WallPhotoFailure {
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_ReportExists value)? reportExists,
+    TResult? Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$WallPhotoFailure {
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_ReportExists value)? reportExists,
+    TResult Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +134,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() permissionDenied,
     required TResult Function() noConnection,
     required TResult Function() reportExists,
+    required TResult Function() timeTaskLimitReached,
   }) {
     return unexpected();
   }
@@ -139,6 +146,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function()? permissionDenied,
     TResult? Function()? noConnection,
     TResult? Function()? reportExists,
+    TResult? Function()? timeTaskLimitReached,
   }) {
     return unexpected?.call();
   }
@@ -150,6 +158,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? permissionDenied,
     TResult Function()? noConnection,
     TResult Function()? reportExists,
+    TResult Function()? timeTaskLimitReached,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -165,6 +174,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_ReportExists value) reportExists,
+    required TResult Function(_TimeTaskLimitReached value) timeTaskLimitReached,
   }) {
     return unexpected(this);
   }
@@ -176,6 +186,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_ReportExists value)? reportExists,
+    TResult? Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
   }) {
     return unexpected?.call(this);
   }
@@ -187,6 +198,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_ReportExists value)? reportExists,
+    TResult Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -242,6 +254,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     required TResult Function() permissionDenied,
     required TResult Function() noConnection,
     required TResult Function() reportExists,
+    required TResult Function() timeTaskLimitReached,
   }) {
     return permissionDenied();
   }
@@ -253,6 +266,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult? Function()? permissionDenied,
     TResult? Function()? noConnection,
     TResult? Function()? reportExists,
+    TResult? Function()? timeTaskLimitReached,
   }) {
     return permissionDenied?.call();
   }
@@ -264,6 +278,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function()? permissionDenied,
     TResult Function()? noConnection,
     TResult Function()? reportExists,
+    TResult Function()? timeTaskLimitReached,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -279,6 +294,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_ReportExists value) reportExists,
+    required TResult Function(_TimeTaskLimitReached value) timeTaskLimitReached,
   }) {
     return permissionDenied(this);
   }
@@ -290,6 +306,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_ReportExists value)? reportExists,
+    TResult? Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
   }) {
     return permissionDenied?.call(this);
   }
@@ -301,6 +318,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_ReportExists value)? reportExists,
+    TResult Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -356,6 +374,7 @@ class _$_NoConnection implements _NoConnection {
     required TResult Function() permissionDenied,
     required TResult Function() noConnection,
     required TResult Function() reportExists,
+    required TResult Function() timeTaskLimitReached,
   }) {
     return noConnection();
   }
@@ -367,6 +386,7 @@ class _$_NoConnection implements _NoConnection {
     TResult? Function()? permissionDenied,
     TResult? Function()? noConnection,
     TResult? Function()? reportExists,
+    TResult? Function()? timeTaskLimitReached,
   }) {
     return noConnection?.call();
   }
@@ -378,6 +398,7 @@ class _$_NoConnection implements _NoConnection {
     TResult Function()? permissionDenied,
     TResult Function()? noConnection,
     TResult Function()? reportExists,
+    TResult Function()? timeTaskLimitReached,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -393,6 +414,7 @@ class _$_NoConnection implements _NoConnection {
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_ReportExists value) reportExists,
+    required TResult Function(_TimeTaskLimitReached value) timeTaskLimitReached,
   }) {
     return noConnection(this);
   }
@@ -404,6 +426,7 @@ class _$_NoConnection implements _NoConnection {
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_ReportExists value)? reportExists,
+    TResult? Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
   }) {
     return noConnection?.call(this);
   }
@@ -415,6 +438,7 @@ class _$_NoConnection implements _NoConnection {
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_ReportExists value)? reportExists,
+    TResult Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
     required TResult orElse(),
   }) {
     if (noConnection != null) {
@@ -470,6 +494,7 @@ class _$_ReportExists implements _ReportExists {
     required TResult Function() permissionDenied,
     required TResult Function() noConnection,
     required TResult Function() reportExists,
+    required TResult Function() timeTaskLimitReached,
   }) {
     return reportExists();
   }
@@ -481,6 +506,7 @@ class _$_ReportExists implements _ReportExists {
     TResult? Function()? permissionDenied,
     TResult? Function()? noConnection,
     TResult? Function()? reportExists,
+    TResult? Function()? timeTaskLimitReached,
   }) {
     return reportExists?.call();
   }
@@ -492,6 +518,7 @@ class _$_ReportExists implements _ReportExists {
     TResult Function()? permissionDenied,
     TResult Function()? noConnection,
     TResult Function()? reportExists,
+    TResult Function()? timeTaskLimitReached,
     required TResult orElse(),
   }) {
     if (reportExists != null) {
@@ -507,6 +534,7 @@ class _$_ReportExists implements _ReportExists {
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NoConnection value) noConnection,
     required TResult Function(_ReportExists value) reportExists,
+    required TResult Function(_TimeTaskLimitReached value) timeTaskLimitReached,
   }) {
     return reportExists(this);
   }
@@ -518,6 +546,7 @@ class _$_ReportExists implements _ReportExists {
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_NoConnection value)? noConnection,
     TResult? Function(_ReportExists value)? reportExists,
+    TResult? Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
   }) {
     return reportExists?.call(this);
   }
@@ -529,6 +558,7 @@ class _$_ReportExists implements _ReportExists {
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NoConnection value)? noConnection,
     TResult Function(_ReportExists value)? reportExists,
+    TResult Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
     required TResult orElse(),
   }) {
     if (reportExists != null) {
@@ -540,4 +570,124 @@ class _$_ReportExists implements _ReportExists {
 
 abstract class _ReportExists implements WallPhotoFailure {
   const factory _ReportExists() = _$_ReportExists;
+}
+
+/// @nodoc
+abstract class _$$_TimeTaskLimitReachedCopyWith<$Res> {
+  factory _$$_TimeTaskLimitReachedCopyWith(_$_TimeTaskLimitReached value,
+          $Res Function(_$_TimeTaskLimitReached) then) =
+      __$$_TimeTaskLimitReachedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_TimeTaskLimitReachedCopyWithImpl<$Res>
+    extends _$WallPhotoFailureCopyWithImpl<$Res, _$_TimeTaskLimitReached>
+    implements _$$_TimeTaskLimitReachedCopyWith<$Res> {
+  __$$_TimeTaskLimitReachedCopyWithImpl(_$_TimeTaskLimitReached _value,
+      $Res Function(_$_TimeTaskLimitReached) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_TimeTaskLimitReached implements _TimeTaskLimitReached {
+  const _$_TimeTaskLimitReached();
+
+  @override
+  String toString() {
+    return 'WallPhotoFailure.timeTaskLimitReached()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_TimeTaskLimitReached);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() noConnection,
+    required TResult Function() reportExists,
+    required TResult Function() timeTaskLimitReached,
+  }) {
+    return timeTaskLimitReached();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? noConnection,
+    TResult? Function()? reportExists,
+    TResult? Function()? timeTaskLimitReached,
+  }) {
+    return timeTaskLimitReached?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? noConnection,
+    TResult Function()? reportExists,
+    TResult Function()? timeTaskLimitReached,
+    required TResult orElse(),
+  }) {
+    if (timeTaskLimitReached != null) {
+      return timeTaskLimitReached();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NoConnection value) noConnection,
+    required TResult Function(_ReportExists value) reportExists,
+    required TResult Function(_TimeTaskLimitReached value) timeTaskLimitReached,
+  }) {
+    return timeTaskLimitReached(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NoConnection value)? noConnection,
+    TResult? Function(_ReportExists value)? reportExists,
+    TResult? Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
+  }) {
+    return timeTaskLimitReached?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NoConnection value)? noConnection,
+    TResult Function(_ReportExists value)? reportExists,
+    TResult Function(_TimeTaskLimitReached value)? timeTaskLimitReached,
+    required TResult orElse(),
+  }) {
+    if (timeTaskLimitReached != null) {
+      return timeTaskLimitReached(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TimeTaskLimitReached implements WallPhotoFailure {
+  const factory _TimeTaskLimitReached() = _$_TimeTaskLimitReached;
 }

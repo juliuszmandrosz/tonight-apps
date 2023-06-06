@@ -29,7 +29,7 @@ class UserWallPhotoBottomBar extends StatelessWidget {
           children: [
             UserWallPhotoShareButton(photo: photo),
             UserWallPhotoDeleteButton(photo: photo),
-            if (photo.timeTaskId.isNotNullOrEmpty)
+            if (photo.timeTaskId.isNotNullOrEmpty && !photo.isRewardAcquired)
               UserWallPhotoRewardButton(photo: photo),
           ],
         ),

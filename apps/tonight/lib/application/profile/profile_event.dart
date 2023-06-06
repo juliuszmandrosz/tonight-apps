@@ -10,4 +10,8 @@ class ProfileEvent with _$ProfileEvent {
 
   const factory ProfileEvent.userWallPhotoDeleted(WallPhoto photo) =
       _UserWallPhotoDeleted;
+
+  const factory ProfileEvent.userWallPhotoUpdated(
+    WallPhoto photo,
+  ) = _UserWallPhotoUpdated;
 }

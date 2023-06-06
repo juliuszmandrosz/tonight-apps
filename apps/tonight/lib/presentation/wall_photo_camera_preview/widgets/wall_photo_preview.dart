@@ -6,14 +6,14 @@ import 'package:dartz/dartz.dart' as dartz;
 import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tonight/application/core/deep_links_utils.dart';
+import 'package:tonight/domain/time_tasks/time_task_entity.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
 class WallPhotoPreview extends StatefulWidget {
   final String photoPath;
   final String heroTag;
-  final double height;
+  final double bottomHeight;
   final VoidCallback onRetry;
   final bool isSelfie;
   final dartz.Option<Event> event;
@@ -22,7 +22,7 @@ class WallPhotoPreview extends StatefulWidget {
   const WallPhotoPreview({
     required this.photoPath,
     required this.heroTag,
-    required this.height,
+    required this.bottomHeight,
     required this.onRetry,
     required this.isSelfie,
     required this.event,
@@ -80,7 +80,7 @@ class _WallPhotoPreviewState extends State<WallPhotoPreview>
             ),
           ),
           SizedBox(
-            height: widget.height,
+            height: widget.bottomHeight,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
