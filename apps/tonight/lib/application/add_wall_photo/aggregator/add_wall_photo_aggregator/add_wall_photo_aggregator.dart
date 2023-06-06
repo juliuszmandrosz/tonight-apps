@@ -9,6 +9,7 @@ import 'package:events/domain/events/user_event_facade.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_aggregator/add_wall_photo_failure.dart';
 import 'package:tonight/application/add_wall_photo/models/wall_photo_venue_model.dart';
+import 'package:tonight/domain/time_tasks/time_task_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 
@@ -55,7 +56,7 @@ class AddWallPhotoAggregator {
     required WallPhotoVenue venue,
     required Event event,
     required LatLng? photoLocation,
-    required String? timeTaskId,
+    required TimeTask? timeTask,
   }) async {
     final userResult = await _userAccountFacade.getUserAccount().first;
     if (userResult.isLeft()) {
@@ -82,12 +83,16 @@ class AddWallPhotoAggregator {
       userId: currentUser.id,
       username: currentUser.username,
       userProfilePhotoUrl: currentUser.profilePictureUrl,
-      timeTaskId: timeTaskId,
+      timeTaskId: timeTask?.id,
     );
     final addPhotoResult = await _wallPhotoFacade.addWallPhoto(wallPhoto);
-    if (addPhotoResult.isLeft()) {
-      return left(const AddWallPhotoFailure.unexpected());
-    }
-    return right(wallPhoto);
+    return addPhotoResult.fold(
+      (failure) => failure.maybeWhen(
+        timeTaskLimitReached: () =>
+            left(const AddWallPhotoFailure.timeTaskLimitReached()),
+        orElse: () => left(const AddWallPhotoFailure.unexpected()),
+      ),
+      (_) => right(wallPhoto),
+    );
   }
 }

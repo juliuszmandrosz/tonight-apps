@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:payments/domain/domain.dart';
 import 'package:tonight/application/add_wall_photo/models/wall_photo_venue_model.dart';
+import 'package:tonight/presentation/activate_time_task_reward/activate_time_task_reward_page.dart';
 import 'package:tonight/presentation/add_wall_photo/add_wall_photo_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
 import 'package:tonight/presentation/chats/chats_page.dart';
@@ -23,7 +24,6 @@ import 'package:tonight/presentation/onboarding/onboarding_page.dart';
 import 'package:tonight/presentation/onboarding/onboarding_user_details_page.dart';
 import 'package:tonight/presentation/payment_method/payment_method_page.dart';
 import 'package:tonight/presentation/profile/profile_page.dart';
-import 'package:tonight/presentation/qr_reward/qr_reward_page.dart';
 import 'package:tonight/presentation/routes/page_transitions/fade_in_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/slide_left_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/slide_up_transition.dart';
@@ -264,7 +264,7 @@ const animationDuration = 300;
       durationInMilliseconds: animationDuration,
     ),
     CustomRoute(
-      page: QrRewardPage,
+      page: ActivateTimeTaskRewardPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),

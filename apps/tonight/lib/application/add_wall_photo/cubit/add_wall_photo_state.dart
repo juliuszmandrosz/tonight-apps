@@ -20,6 +20,7 @@ class AddWallPhotoState with _$AddWallPhotoState {
     required Option<TimeTask> timeTask,
     required Option<WallPhoto> result,
     required Option<Future<Option<Uint8List>>> processPhotoTask,
+    required Option<AddWallPhotoFailure> failure,
   }) = _AddWallPhotoState;
 
   factory AddWallPhotoState.initial() => AddWallPhotoState(
@@ -40,5 +41,6 @@ class AddWallPhotoState with _$AddWallPhotoState {
         timeTask: none(),
         result: none(),
         processPhotoTask: none(),
+        failure: none(),
       );
 }

@@ -23,12 +23,14 @@ import 'package:tickets/tickets.dart' as _i55;
 
 import '../../application/add_wall_photo/models/wall_photo_venue_model.dart'
     as _i50;
-import '../../application/core/deep_links_utils.dart' as _i58;
 import '../../application/events/event_filters/event_filters_page_type.dart'
     as _i52;
+import '../../domain/time_tasks/time_task_entity.dart' as _i58;
 import '../../domain/wall_photos/wall_photo_entity.dart' as _i59;
 import '../../infrastructure/wall_photos/filters/wall_photo_filters.dart'
     as _i60;
+import '../activate_time_task_reward/activate_time_task_reward_page.dart'
+    as _i38;
 import '../add_wall_photo/add_wall_photo_page.dart' as _i28;
 import '../app_settings/app_settings_page.dart' as _i24;
 import '../chats/chats_page.dart' as _i41;
@@ -51,7 +53,6 @@ import '../onboarding/onboarding_page.dart' as _i19;
 import '../onboarding/onboarding_user_details_page.dart' as _i18;
 import '../payment_method/payment_method_page.dart' as _i26;
 import '../profile/profile_page.dart' as _i42;
-import '../qr_reward/qr_reward_page.dart' as _i38;
 import '../select_club/select_club_page.dart' as _i29;
 import '../sign_in/sign_in_page.dart' as _i2;
 import '../sign_in_with_phone_number/sign_in_with_phone_number_page.dart'
@@ -564,11 +565,11 @@ class AppRouter extends _i43.RootStackRouter {
         barrierDismissible: false,
       );
     },
-    QrRewardRoute.name: (routeData) {
-      final args = routeData.argsAs<QrRewardRouteArgs>();
+    ActivateTimeTaskRewardRoute.name: (routeData) {
+      final args = routeData.argsAs<ActivateTimeTaskRewardRouteArgs>();
       return _i43.CustomPage<dynamic>(
         routeData: routeData,
-        child: _i38.QrRewardPage(
+        child: _i38.ActivateTimeTaskRewardPage(
           photo: args.photo,
           key: args.key,
         ),
@@ -793,8 +794,8 @@ class AppRouter extends _i43.RootStackRouter {
           path: '/wall-photo-filters-page',
         ),
         _i43.RouteConfig(
-          QrRewardRoute.name,
-          path: '/qr-reward-page',
+          ActivateTimeTaskRewardRoute.name,
+          path: '/activate-time-task-reward-page',
         ),
       ];
 }
@@ -1832,25 +1833,26 @@ class WallPhotoFiltersRouteArgs {
 }
 
 /// generated route for
-/// [_i38.QrRewardPage]
-class QrRewardRoute extends _i43.PageRouteInfo<QrRewardRouteArgs> {
-  QrRewardRoute({
+/// [_i38.ActivateTimeTaskRewardPage]
+class ActivateTimeTaskRewardRoute
+    extends _i43.PageRouteInfo<ActivateTimeTaskRewardRouteArgs> {
+  ActivateTimeTaskRewardRoute({
     required _i59.WallPhoto photo,
     _i44.Key? key,
   }) : super(
-          QrRewardRoute.name,
-          path: '/qr-reward-page',
-          args: QrRewardRouteArgs(
+          ActivateTimeTaskRewardRoute.name,
+          path: '/activate-time-task-reward-page',
+          args: ActivateTimeTaskRewardRouteArgs(
             photo: photo,
             key: key,
           ),
         );
 
-  static const String name = 'QrRewardRoute';
+  static const String name = 'ActivateTimeTaskRewardRoute';
 }
 
-class QrRewardRouteArgs {
-  const QrRewardRouteArgs({
+class ActivateTimeTaskRewardRouteArgs {
+  const ActivateTimeTaskRewardRouteArgs({
     required this.photo,
     this.key,
   });
@@ -1861,7 +1863,7 @@ class QrRewardRouteArgs {
 
   @override
   String toString() {
-    return 'QrRewardRouteArgs{photo: $photo, key: $key}';
+    return 'ActivateTimeTaskRewardRouteArgs{photo: $photo, key: $key}';
   }
 }
 

@@ -40,6 +40,7 @@ mixin _$WallPhotoDto {
   @NullableLatLngConverter()
   LatLng? get photoLocation => throw _privateConstructorUsedError;
   bool get isVerified => throw _privateConstructorUsedError;
+  bool get isRewardAcquired => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -68,7 +69,8 @@ abstract class $WallPhotoDtoCopyWith<$Res> {
       String? userProfilePhotoUrl,
       String? timeTaskId,
       @NullableLatLngConverter() LatLng? photoLocation,
-      bool isVerified});
+      bool isVerified,
+      bool isRewardAcquired});
 }
 
 /// @nodoc
@@ -99,6 +101,7 @@ class _$WallPhotoDtoCopyWithImpl<$Res, $Val extends WallPhotoDto>
     Object? timeTaskId = freezed,
     Object? photoLocation = freezed,
     Object? isVerified = null,
+    Object? isRewardAcquired = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -161,6 +164,10 @@ class _$WallPhotoDtoCopyWithImpl<$Res, $Val extends WallPhotoDto>
           ? _value.isVerified
           : isVerified // ignore: cast_nullable_to_non_nullable
               as bool,
+      isRewardAcquired: null == isRewardAcquired
+          ? _value.isRewardAcquired
+          : isRewardAcquired // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -188,7 +195,8 @@ abstract class _$$_WallPhotoDtoCopyWith<$Res>
       String? userProfilePhotoUrl,
       String? timeTaskId,
       @NullableLatLngConverter() LatLng? photoLocation,
-      bool isVerified});
+      bool isVerified,
+      bool isRewardAcquired});
 }
 
 /// @nodoc
@@ -217,6 +225,7 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
     Object? timeTaskId = freezed,
     Object? photoLocation = freezed,
     Object? isVerified = null,
+    Object? isRewardAcquired = null,
   }) {
     return _then(_$_WallPhotoDto(
       id: freezed == id
@@ -279,6 +288,10 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
           ? _value.isVerified
           : isVerified // ignore: cast_nullable_to_non_nullable
               as bool,
+      isRewardAcquired: null == isRewardAcquired
+          ? _value.isRewardAcquired
+          : isRewardAcquired // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -302,7 +315,8 @@ class _$_WallPhotoDto extends _WallPhotoDto {
       this.userProfilePhotoUrl,
       this.timeTaskId,
       @NullableLatLngConverter() this.photoLocation,
-      this.isVerified = false})
+      this.isVerified = false,
+      this.isRewardAcquired = false})
       : super._();
 
   factory _$_WallPhotoDto.fromJson(Map<String, dynamic> json) =>
@@ -344,10 +358,13 @@ class _$_WallPhotoDto extends _WallPhotoDto {
   @override
   @JsonKey()
   final bool isVerified;
+  @override
+  @JsonKey()
+  final bool isRewardAcquired;
 
   @override
   String toString() {
-    return 'WallPhotoDto(id: $id, photoUrl: $photoUrl, venueId: $venueId, venueName: $venueName, venueLocation: $venueLocation, userId: $userId, username: $username, eventId: $eventId, eventName: $eventName, eventEndDateTime: $eventEndDateTime, createdAt: $createdAt, userProfilePhotoUrl: $userProfilePhotoUrl, timeTaskId: $timeTaskId, photoLocation: $photoLocation, isVerified: $isVerified)';
+    return 'WallPhotoDto(id: $id, photoUrl: $photoUrl, venueId: $venueId, venueName: $venueName, venueLocation: $venueLocation, userId: $userId, username: $username, eventId: $eventId, eventName: $eventName, eventEndDateTime: $eventEndDateTime, createdAt: $createdAt, userProfilePhotoUrl: $userProfilePhotoUrl, timeTaskId: $timeTaskId, photoLocation: $photoLocation, isVerified: $isVerified, isRewardAcquired: $isRewardAcquired)';
   }
 
   @override
@@ -380,7 +397,9 @@ class _$_WallPhotoDto extends _WallPhotoDto {
             (identical(other.photoLocation, photoLocation) ||
                 other.photoLocation == photoLocation) &&
             (identical(other.isVerified, isVerified) ||
-                other.isVerified == isVerified));
+                other.isVerified == isVerified) &&
+            (identical(other.isRewardAcquired, isRewardAcquired) ||
+                other.isRewardAcquired == isRewardAcquired));
   }
 
   @JsonKey(ignore: true)
@@ -401,7 +420,8 @@ class _$_WallPhotoDto extends _WallPhotoDto {
       userProfilePhotoUrl,
       timeTaskId,
       photoLocation,
-      isVerified);
+      isVerified,
+      isRewardAcquired);
 
   @JsonKey(ignore: true)
   @override
@@ -433,7 +453,8 @@ abstract class _WallPhotoDto extends WallPhotoDto {
       final String? userProfilePhotoUrl,
       final String? timeTaskId,
       @NullableLatLngConverter() final LatLng? photoLocation,
-      final bool isVerified}) = _$_WallPhotoDto;
+      final bool isVerified,
+      final bool isRewardAcquired}) = _$_WallPhotoDto;
   const _WallPhotoDto._() : super._();
 
   factory _WallPhotoDto.fromJson(Map<String, dynamic> json) =
@@ -474,6 +495,8 @@ abstract class _WallPhotoDto extends WallPhotoDto {
   LatLng? get photoLocation;
   @override
   bool get isVerified;
+  @override
+  bool get isRewardAcquired;
   @override
   @JsonKey(ignore: true)
   _$$_WallPhotoDtoCopyWith<_$_WallPhotoDto> get copyWith =>
