@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 class CountdownTimer extends StatefulWidget {
   final int secondsLeft;
   final void Function() onTimerCompleted;
+  final TextStyle textStyle;
 
   const CountdownTimer({
     required this.secondsLeft,
     required this.onTimerCompleted,
+    this.textStyle = const TextStyle(color: Colors.grey),
     Key? key,
   }) : super(key: key);
 
@@ -66,7 +68,7 @@ class _CountdownTimerState extends State<CountdownTimer> {
   Widget build(BuildContext context) {
     return Text(
       formatSeconds(widget.secondsLeft - _seconds),
-      style: const TextStyle(color: Colors.grey),
+      style: widget.textStyle,
     );
   }
 }

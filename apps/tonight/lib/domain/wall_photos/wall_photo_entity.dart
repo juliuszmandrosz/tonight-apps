@@ -19,6 +19,7 @@ class WallPhoto extends Equatable {
   final LatLng? photoLocation;
   final String? timeTaskId;
   final bool isVerified;
+  final bool isRewardAcquired;
 
   WallPhoto({
     String? id,
@@ -36,6 +37,7 @@ class WallPhoto extends Equatable {
     this.timeTaskId,
     this.photoLocation,
     this.isVerified = false,
+    this.isRewardAcquired = false,
   })  : id = id ?? const Uuid().v1(),
         createdAt = createdAt ?? DateTime.now();
 
@@ -56,6 +58,7 @@ class WallPhoto extends Equatable {
         timeTaskId,
         photoLocation,
         isVerified,
+        isRewardAcquired,
       ];
 
   WallPhoto copyWith({
@@ -72,6 +75,7 @@ class WallPhoto extends Equatable {
     bool? isVerified,
     String? eventId,
     String? eventName,
+    bool? isRewardAcquired,
   }) {
     return WallPhoto(
       id: id,
@@ -104,6 +108,7 @@ class WallPhoto extends Equatable {
       isVerified: isVerified ?? this.isVerified,
       eventId: eventId ?? this.eventId,
       eventName: eventName ?? this.eventName,
+      isRewardAcquired: isRewardAcquired ?? this.isRewardAcquired,
     );
   }
 }

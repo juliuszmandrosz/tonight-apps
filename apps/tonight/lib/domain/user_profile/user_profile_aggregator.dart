@@ -93,4 +93,12 @@ class UserProfileAggregator {
     _userPhotos = photosCopy;
     return _userPhotos;
   }
+
+  List<WallPhoto> updatePhotoInState(WallPhoto photo) {
+    final photosCopy = [..._userPhotos];
+    final index = photosCopy.indexWhere((element) => element.id == photo.id);
+    photosCopy[index] = photo;
+    _userPhotos = photosCopy;
+    return _userPhotos;
+  }
 }

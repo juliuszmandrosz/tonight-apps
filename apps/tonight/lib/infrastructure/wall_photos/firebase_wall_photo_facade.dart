@@ -13,6 +13,8 @@ import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_failure.dart';
 import 'package:tonight/infrastructure/messages/dto/message_dto.dart';
 import 'package:tonight/infrastructure/participants/dtos/participant_dto.dart';
+import 'package:tonight/infrastructure/time_task_vouchers/dtos/time_task_voucher_dto.dart';
+import 'package:tonight/infrastructure/time_tasks/dtos/time_task_dto.dart';
 import 'package:tonight/infrastructure/wall_photos/dtos/wall_photo_dto.dart';
 import 'package:tonight/infrastructure/wall_photos/dtos/wall_photo_report_dto.dart';
 import 'package:tonight/infrastructure/wall_photos/filters/wall_photo_filters.dart';
@@ -38,17 +40,41 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   @override
   Future<Either<WallPhotoFailure, Unit>> addWallPhoto(WallPhoto photo) async {
     try {
-      await _firestore.runTransaction((tx) async {
+      return await _firestore.runTransaction((tx) async {
         final participantRef =
             _firestore.rooms.doc(photo.eventId).participants.doc(photo.userId);
         final existingParticipant = await tx.get(participantRef);
+
+        if (photo.timeTaskId != null) {
+          final timeTaskRef = _firestore.tasks.doc(photo.timeTaskId);
+          final timeTaskDoc = await tx.get(timeTaskRef);
+          final timeTaskDto = TimeTaskDto.fromFirebase(timeTaskDoc);
+          if (timeTaskDto.currentUsage >= timeTaskDto.poolLimit) {
+            return left(const WallPhotoFailure.timeTaskLimitReached());
+          }
+          tx.update(timeTaskRef, {'currentUsage': FieldValue.increment(1)});
+          final voucher = TimeTaskVoucherDto(
+            voucherName: timeTaskDto.voucherName,
+            validUntil: photo.eventEndDateTime,
+            timeTaskName: timeTaskDto.timeTaskName,
+            venueId: photo.venueId,
+            venueName: photo.venueName,
+            wallPhotoId: photo.id,
+          );
+          final voucherRef = _firestore.userCollection
+              .doc(photo.userId)
+              .timeTaskVouchers
+              .doc(photo.timeTaskId!);
+
+          tx.set(voucherRef, voucher.toJson());
+        }
 
         final wallPhotoDto = WallPhotoDto.fromDomain(photo);
         final wallPhotoRef = _firestore.wallPhotos.doc(photo.id);
 
         tx.set(wallPhotoRef, wallPhotoDto.toJson());
 
-        if (existingParticipant.exists) return;
+        if (existingParticipant.exists) return right(unit);
 
         final participantDto = ParticipantDto(
           username: photo.username,
@@ -85,8 +111,8 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
             'isLastMessageLeftInfo': false,
           },
         );
+        return right(unit);
       });
-      return right(unit);
     } on FirebaseException catch (e) {
       _logger.e(e);
       await _crashlytics.recordError(e, StackTrace.current);

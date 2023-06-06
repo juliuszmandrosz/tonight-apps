@@ -26,6 +26,7 @@ _$_WallPhotoDto _$$_WallPhotoDtoFromJson(Map<String, dynamic> json) =>
       photoLocation: const NullableLatLngConverter()
           .fromJson(json['photoLocation'] as List?),
       isVerified: json['isVerified'] as bool? ?? false,
+      isRewardAcquired: json['isRewardAcquired'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_WallPhotoDtoToJson(_$_WallPhotoDto instance) =>
@@ -46,4 +47,5 @@ Map<String, dynamic> _$$_WallPhotoDtoToJson(_$_WallPhotoDto instance) =>
       'photoLocation':
           const NullableLatLngConverter().toJson(instance.photoLocation),
       'isVerified': instance.isVerified,
+      'isRewardAcquired': instance.isRewardAcquired,
     };

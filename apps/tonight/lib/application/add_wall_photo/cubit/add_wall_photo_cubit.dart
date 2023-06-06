@@ -14,7 +14,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_aggregator/add_wall_photo_aggregator.dart';
 import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_aggregator/add_wall_photo_failure.dart';
 import 'package:tonight/application/add_wall_photo/models/wall_photo_venue_model.dart';
-import 'package:tonight/application/core/deep_links_utils.dart';
+import 'package:tonight/domain/time_tasks/time_task_entity.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:translations/translations.dart';
 import 'package:uuid/uuid.dart';
@@ -112,7 +112,7 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
       final task = state.timeTask.getOrCrash();
       final now = DateTime.now();
       final durationInMilliseconds = task.durationInMinutes * 60 * 1000;
-      final diff = now.difference(task.createdAt.toDate()).inMilliseconds;
+      final diff = now.difference(task.createdAt).inMilliseconds;
 
       if (diff > durationInMilliseconds) {
         context.showSnackbarMessage('${S().timeTaskExpired} 😉');
@@ -145,14 +145,19 @@ class AddWallPhotoCubit extends Cubit<AddWallPhotoState> {
         () => null,
         (location) => location,
       ),
-      timeTaskId: state.timeTask.fold(
+      timeTask: state.timeTask.fold(
         () => null,
-        (task) => task.id,
+        (task) => task,
       ),
     );
     result.fold(
       (failure) {
-        emit(state.copyWith(addPhotoStatus: CubitStatus.failure));
+        emit(
+          state.copyWith(
+            addPhotoStatus: CubitStatus.failure,
+            failure: some(failure),
+          ),
+        );
         _showSnackbarMessage(failure.message);
       },
       (photo) => emit(

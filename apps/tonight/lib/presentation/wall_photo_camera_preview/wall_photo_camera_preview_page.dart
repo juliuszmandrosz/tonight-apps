@@ -4,8 +4,9 @@ import 'package:common/common.dart';
 import 'package:dartz/dartz.dart' as dartz;
 import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:tonight/application/core/deep_links_utils.dart';
+import 'package:tonight/domain/time_tasks/time_task_entity.dart';
 import 'package:tonight/presentation/core/image_back_button.dart';
 import 'package:tonight/presentation/wall_photo_camera_preview/widgets/camera_preview_bottom_actions.dart';
 import 'package:tonight/presentation/wall_photo_camera_preview/widgets/camera_preview_middle_content.dart';
@@ -52,7 +53,7 @@ class _WallPhotoCameraPreviewPageState
                     ? WallPhotoPreview(
                         photoPath: _photoPath!,
                         heroTag: _photoHeroTag,
-                        height: bottomHeight,
+                        bottomHeight: bottomHeight,
                         isSelfie: _isSelfie,
                         event: widget.event,
                         timeTask: widget.timeTask,
@@ -78,7 +79,32 @@ class _WallPhotoCameraPreviewPageState
                           onTapPainter: (_) => const SizedBox.shrink(),
                           onTap: (_, __, ___) => {},
                         ),
-                        topActionsBuilder: (_) => const SizedBox.shrink(),
+                        topActionsBuilder: (_) => widget.timeTask.fold(
+                          () => const SizedBox.shrink(),
+                          (task) => Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            child: Row(
+                              children: [
+                                const ImageBackButton(isTransparent: true),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 4,
+                                    ),
+                                    child: Text(
+                                      Intl.getCurrentLocale().toUpperCase() ==
+                                              'PL'
+                                          ? task.descriptionPl
+                                          : task.descriptionEn,
+                                      style: context.titleMedium,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                         middleContentBuilder: (cameraState) => WillPopScope(
                           onWillPop: () async {
                             if (_photoPath == null) return true;
@@ -118,11 +144,12 @@ class _WallPhotoCameraPreviewPageState
                       );
               },
             ),
-            const Positioned(
-              left: 5,
-              top: 5,
-              child: ImageBackButton(isTransparent: true),
-            ),
+            if (widget.timeTask.isNone())
+              const Positioned(
+                left: 5,
+                top: 5,
+                child: ImageBackButton(isTransparent: true),
+              ),
           ],
         ),
       ),
