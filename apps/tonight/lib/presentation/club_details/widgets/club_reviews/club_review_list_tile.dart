@@ -16,7 +16,10 @@ class ClubReviewListTile extends StatelessWidget {
     return ListTile(
         dense: true,
         contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
-        title: ReviewTitle(review: review),
+        title: Padding(
+          padding: const EdgeInsets.only(right: 8),
+          child: ReviewTitle(review: review),
+        ),
         subtitle: ReviewSubtitle(review: review));
   }
 }

@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventDetailsState {
   Option<Event> get event => throw _privateConstructorUsedError;
   CubitStatus get status => throw _privateConstructorUsedError;
+  CubitStatus get useVoucherStatus => throw _privateConstructorUsedError;
+  Option<String> get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventDetailsStateCopyWith<EventDetailsState> get copyWith =>
@@ -30,7 +32,11 @@ abstract class $EventDetailsStateCopyWith<$Res> {
           EventDetailsState value, $Res Function(EventDetailsState) then) =
       _$EventDetailsStateCopyWithImpl<$Res, EventDetailsState>;
   @useResult
-  $Res call({Option<Event> event, CubitStatus status});
+  $Res call(
+      {Option<Event> event,
+      CubitStatus status,
+      CubitStatus useVoucherStatus,
+      Option<String> errorMessage});
 }
 
 /// @nodoc
@@ -48,6 +54,8 @@ class _$EventDetailsStateCopyWithImpl<$Res, $Val extends EventDetailsState>
   $Res call({
     Object? event = null,
     Object? status = null,
+    Object? useVoucherStatus = null,
+    Object? errorMessage = null,
   }) {
     return _then(_value.copyWith(
       event: null == event
@@ -58,6 +66,14 @@ class _$EventDetailsStateCopyWithImpl<$Res, $Val extends EventDetailsState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
+      useVoucherStatus: null == useVoucherStatus
+          ? _value.useVoucherStatus
+          : useVoucherStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as Option<String>,
     ) as $Val);
   }
 }
@@ -70,7 +86,11 @@ abstract class _$$_EventDetailsStateCopyWith<$Res>
       __$$_EventDetailsStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Option<Event> event, CubitStatus status});
+  $Res call(
+      {Option<Event> event,
+      CubitStatus status,
+      CubitStatus useVoucherStatus,
+      Option<String> errorMessage});
 }
 
 /// @nodoc
@@ -86,6 +106,8 @@ class __$$_EventDetailsStateCopyWithImpl<$Res>
   $Res call({
     Object? event = null,
     Object? status = null,
+    Object? useVoucherStatus = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$_EventDetailsState(
       event: null == event
@@ -96,6 +118,14 @@ class __$$_EventDetailsStateCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
+      useVoucherStatus: null == useVoucherStatus
+          ? _value.useVoucherStatus
+          : useVoucherStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as Option<String>,
     ));
   }
 }
@@ -103,16 +133,24 @@ class __$$_EventDetailsStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_EventDetailsState implements _EventDetailsState {
-  const _$_EventDetailsState({required this.event, required this.status});
+  const _$_EventDetailsState(
+      {required this.event,
+      required this.status,
+      required this.useVoucherStatus,
+      required this.errorMessage});
 
   @override
   final Option<Event> event;
   @override
   final CubitStatus status;
+  @override
+  final CubitStatus useVoucherStatus;
+  @override
+  final Option<String> errorMessage;
 
   @override
   String toString() {
-    return 'EventDetailsState(event: $event, status: $status)';
+    return 'EventDetailsState(event: $event, status: $status, useVoucherStatus: $useVoucherStatus, errorMessage: $errorMessage)';
   }
 
   @override
@@ -121,11 +159,16 @@ class _$_EventDetailsState implements _EventDetailsState {
         (other.runtimeType == runtimeType &&
             other is _$_EventDetailsState &&
             (identical(other.event, event) || other.event == event) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.useVoucherStatus, useVoucherStatus) ||
+                other.useVoucherStatus == useVoucherStatus) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, event, status);
+  int get hashCode =>
+      Object.hash(runtimeType, event, status, useVoucherStatus, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -138,12 +181,18 @@ class _$_EventDetailsState implements _EventDetailsState {
 abstract class _EventDetailsState implements EventDetailsState {
   const factory _EventDetailsState(
       {required final Option<Event> event,
-      required final CubitStatus status}) = _$_EventDetailsState;
+      required final CubitStatus status,
+      required final CubitStatus useVoucherStatus,
+      required final Option<String> errorMessage}) = _$_EventDetailsState;
 
   @override
   Option<Event> get event;
   @override
   CubitStatus get status;
+  @override
+  CubitStatus get useVoucherStatus;
+  @override
+  Option<String> get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$_EventDetailsStateCopyWith<_$_EventDetailsState> get copyWith =>

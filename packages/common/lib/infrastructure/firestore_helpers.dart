@@ -191,4 +191,6 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get participants => collection('participants');
 
   CollectionReference get timeTaskVouchers => collection('timeTaskVouchers');
+
+  CollectionReference get tonightVouchers => collection('tonightVouchers');
 }

@@ -63,6 +63,7 @@ import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:tonight/application/payment_method/payment_method_cubit.dart';
 import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
+import 'package:tonight/application/redeem_tonight_voucher/redeem_tonight_voucher_cubit.dart';
 import 'package:tonight/application/select_club/select_club_bloc.dart';
 import 'package:tonight/application/sign_in_with_phone_number/sign_in_with_phone_number_cubit.dart';
 import 'package:tonight/application/terms_of_service/terms_of_service_cubit.dart';
@@ -77,6 +78,8 @@ import 'package:tonight/application/user_details/user_details_cubit.dart';
 import 'package:tonight/application/user_wall_photo_preview/user_wall_photo_preview_cubit.dart';
 import 'package:tonight/application/verify_phone_number/verify_phone_number_cubit.dart';
 import 'package:tonight/application/vip_checkout/vip_checkout_cubit.dart';
+import 'package:tonight/application/vouchers/aggregator/vouchers_aggregator.dart';
+import 'package:tonight/application/vouchers/bloc/vouchers_bloc.dart';
 import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
 import 'package:tonight/application/wall_photos_filters/wall_photos_filters_cubit.dart';
 import 'package:tonight/domain/club_rewards/club_rewards_aggregator.dart';
@@ -89,9 +92,11 @@ import 'package:tonight/domain/places/places_facade.dart';
 import 'package:tonight/domain/rooms/room_facade.dart';
 import 'package:tonight/domain/time_task_vouchers/time_task_voucher_facade.dart';
 import 'package:tonight/domain/time_tasks/time_task_facade.dart';
+import 'package:tonight/domain/tonight_vouchers/tonight_voucher_facade.dart';
 import 'package:tonight/domain/user_app_links/user_app_links_facade.dart';
 import 'package:tonight/domain/user_details/user_details_aggregator.dart';
 import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
+import 'package:tonight/domain/user_tonight_vouchers/user_tonight_voucher_facade.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/infrastructure/daily_spin/firebase_daily_spin_facade.dart';
 import 'package:tonight/infrastructure/festivals/firebase_festival_facade.dart';
@@ -101,7 +106,9 @@ import 'package:tonight/infrastructure/participants/firebase_participant_facade.
 import 'package:tonight/infrastructure/rooms/firebase_room_facade.dart';
 import 'package:tonight/infrastructure/time_task_vouchers/firebase_time_task_voucher_facade.dart';
 import 'package:tonight/infrastructure/time_tasks/firebase_time_task_facade.dart';
+import 'package:tonight/infrastructure/tonight_vouchers/firebase_tonight_voucher_facade.dart';
 import 'package:tonight/infrastructure/user_app_links/firebase_user_app_links_facade.dart';
+import 'package:tonight/infrastructure/user_tonight_vouchers/firebase_user_tonight_voucher_facade.dart';
 import 'package:tonight/infrastructure/wall_photos/firebase_wall_photo_facade.dart';
 
 import 'application/clubs/club_details/club_reviews/club_reviews_bloc.dart';
@@ -218,7 +225,8 @@ void _registerCubits() {
   //Events
   getIt.registerFactory(
     () => EventDetailsCubit(
-      userEventFacade: getIt(),
+      getIt(),
+      getIt(),
     ),
   );
 
@@ -431,6 +439,18 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => ActivateTimeTaskRewardCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => RedeemTonightVoucherCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => VouchersBloc(
       getIt(),
     ),
   );
@@ -691,6 +711,24 @@ void _registerFacades() {
       getIt(),
     ),
   );
+
+  getIt.registerLazySingleton<TonightVoucherFacade>(
+    () => FirebaseTonightVoucherFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<UserTonightVoucherFacade>(
+    () => FirebaseUserTonightVoucherFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
 }
 
 void _registerAggregators() {
@@ -742,6 +780,8 @@ void _registerAggregators() {
     () => TonightEventsAggregator(
       getIt(),
       getIt(),
+      getIt(),
+      getIt(),
     ),
   );
 
@@ -756,6 +796,13 @@ void _registerAggregators() {
 
   getIt.registerLazySingleton(
     () => ChatsAggregator(
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
+    () => VouchersAggregator(
+      getIt(),
       getIt(),
     ),
   );

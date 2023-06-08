@@ -15,18 +15,21 @@ class EventConcertInfo extends StatelessWidget {
       children: [
         Row(
           children: [
-            const FaIcon(
+            FaIcon(
               FontAwesomeIcons.microphoneLines,
               size: 18,
+              color: context.secondaryColor,
             ),
             const SizedBox(width: 10),
             Expanded(
               child: Text(
                 '${S().concert} - ${event.artistName}',
-                style: context.titleSmall,
                 overflow: TextOverflow.fade,
                 maxLines: 1,
                 softWrap: false,
+                style: context.titleSmall.copyWith(
+                  color: context.secondaryColor,
+                ),
               ),
             ),
           ],

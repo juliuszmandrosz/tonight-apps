@@ -37,6 +37,7 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
     on<_EventsRefreshed>(_onEventsRefreshed);
     on<_MenuFiltersApplied>(_onMenuFiltersApplied);
     on<_MenuFilterRemoved>(_onMenuFilterRemoved);
+    on<_EventVoucherUsed>(_onEventVoucherUsed);
   }
 
   FutureOr<void> _onEventsFetched(
@@ -227,6 +228,21 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
     );
   }
 
+  FutureOr<void> _onEventVoucherUsed(
+    _EventVoucherUsed event,
+    Emitter<TonightEventsState> emit,
+  ) async {
+    emit(state.copyWith(useVoucherStatus: CubitStatus.loading));
+    final result = await _tonightEventsAggregator.useVoucher(event.eventId);
+    result.fold(
+      (failure) {
+        emit(state.copyWith(useVoucherStatus: CubitStatus.failure));
+        _showSnackbar(emit, failure.message);
+      },
+      (_) => emit(state.copyWith(useVoucherStatus: CubitStatus.success)),
+    );
+  }
+
   _resetAllowedOutfitsFilter(Emitter<TonightEventsState> emit) {
     final currentFilters = state.eventFilters.copyWith(
       allowedOutfitsFilter: AllowedOutfitsFilter.empty(),
@@ -312,5 +328,13 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
         appliedMenuFilters: appliedFilterCopy,
       ),
     );
+  }
+
+  _showSnackbar(
+    Emitter<TonightEventsState> emit,
+    String message,
+  ) {
+    emit(state.copyWith(errorMessage: some(message)));
+    emit(state.copyWith(errorMessage: none()));
   }
 }

@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class ReviewTitle extends StatelessWidget {
   final Review review;
@@ -50,7 +51,7 @@ class ReviewTitle extends StatelessWidget {
                       children: [
                         Text(
                           review.isUserDeleted
-                              ? 'Użytkownik Tonight'
+                              ? S().tonightUser
                               : review.username,
                           style: context.titleSmall.copyWith(
                             color: context.secondaryColor,
@@ -78,7 +79,7 @@ class ReviewTitle extends StatelessWidget {
                           review.dateAdded,
                           locale: Intl.getCurrentLocale(),
                         ),
-                        style: context.bodyLarge.copyWith(
+                        style: context.labelSmall.copyWith(
                           color: context.secondaryColor,
                         ),
                       ),

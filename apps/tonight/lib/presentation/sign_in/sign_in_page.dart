@@ -1,3 +1,4 @@
+import 'package:auth/auth.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
@@ -43,9 +44,7 @@ class SignInPage extends StatelessWidget {
                   if (state.signInStatus.isSubmissionSuccess &&
                       state.user.isSome()) {
                     final user = state.user.getOrCrash();
-                    final route = user.isOnboardingCompleted
-                        ? const WelcomeLoaderRoute()
-                        : const OnboardingUserDetailsRoute();
+                    final route = _getAuthenticatedRoute(user);
                     context.router.replaceAll([route]);
                   }
                 },
@@ -78,5 +77,14 @@ class SignInPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  PageRouteInfo _getAuthenticatedRoute(AppUser user) {
+    if (!user.isOnboardingCompleted) return const OnboardingUserDetailsRoute();
+    if (user.lastDailySpinAt == null ||
+        user.lastDailySpinAt!.isBefore(DateTime.now().startOfDay)) {
+      return const DailySpinRoute();
+    }
+    return const WelcomeLoaderRoute();
   }
 }

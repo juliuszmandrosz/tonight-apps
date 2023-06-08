@@ -25,6 +25,7 @@ mixin _$TonightEventsEvent {
         menuFiltersApplied,
     required TResult Function(MenuEventFilter filter) menuFilterRemoved,
     required TResult Function() eventsRefreshed,
+    required TResult Function(String eventId) eventVoucherUsed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +37,7 @@ mixin _$TonightEventsEvent {
         menuFiltersApplied,
     TResult? Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult? Function()? eventsRefreshed,
+    TResult? Function(String eventId)? eventVoucherUsed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +49,7 @@ mixin _$TonightEventsEvent {
         menuFiltersApplied,
     TResult Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult Function()? eventsRefreshed,
+    TResult Function(String eventId)? eventVoucherUsed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -58,6 +61,7 @@ mixin _$TonightEventsEvent {
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_EventsRefreshed value) eventsRefreshed,
+    required TResult Function(_EventVoucherUsed value) eventVoucherUsed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +71,7 @@ mixin _$TonightEventsEvent {
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_EventsRefreshed value)? eventsRefreshed,
+    TResult? Function(_EventVoucherUsed value)? eventVoucherUsed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -76,6 +81,7 @@ mixin _$TonightEventsEvent {
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_EventsRefreshed value)? eventsRefreshed,
+    TResult Function(_EventVoucherUsed value)? eventVoucherUsed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -171,6 +177,7 @@ class _$_EventsFetched implements _EventsFetched {
         menuFiltersApplied,
     required TResult Function(MenuEventFilter filter) menuFilterRemoved,
     required TResult Function() eventsRefreshed,
+    required TResult Function(String eventId) eventVoucherUsed,
   }) {
     return eventsFetched(userLocation);
   }
@@ -185,6 +192,7 @@ class _$_EventsFetched implements _EventsFetched {
         menuFiltersApplied,
     TResult? Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult? Function()? eventsRefreshed,
+    TResult? Function(String eventId)? eventVoucherUsed,
   }) {
     return eventsFetched?.call(userLocation);
   }
@@ -199,6 +207,7 @@ class _$_EventsFetched implements _EventsFetched {
         menuFiltersApplied,
     TResult Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult Function()? eventsRefreshed,
+    TResult Function(String eventId)? eventVoucherUsed,
     required TResult orElse(),
   }) {
     if (eventsFetched != null) {
@@ -216,6 +225,7 @@ class _$_EventsFetched implements _EventsFetched {
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_EventsRefreshed value) eventsRefreshed,
+    required TResult Function(_EventVoucherUsed value) eventVoucherUsed,
   }) {
     return eventsFetched(this);
   }
@@ -228,6 +238,7 @@ class _$_EventsFetched implements _EventsFetched {
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_EventsRefreshed value)? eventsRefreshed,
+    TResult? Function(_EventVoucherUsed value)? eventVoucherUsed,
   }) {
     return eventsFetched?.call(this);
   }
@@ -240,6 +251,7 @@ class _$_EventsFetched implements _EventsFetched {
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_EventsRefreshed value)? eventsRefreshed,
+    TResult Function(_EventVoucherUsed value)? eventVoucherUsed,
     required TResult orElse(),
   }) {
     if (eventsFetched != null) {
@@ -304,6 +316,7 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
         menuFiltersApplied,
     required TResult Function(MenuEventFilter filter) menuFilterRemoved,
     required TResult Function() eventsRefreshed,
+    required TResult Function(String eventId) eventVoucherUsed,
   }) {
     return nextPageEventsFetched();
   }
@@ -318,6 +331,7 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
         menuFiltersApplied,
     TResult? Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult? Function()? eventsRefreshed,
+    TResult? Function(String eventId)? eventVoucherUsed,
   }) {
     return nextPageEventsFetched?.call();
   }
@@ -332,6 +346,7 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
         menuFiltersApplied,
     TResult Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult Function()? eventsRefreshed,
+    TResult Function(String eventId)? eventVoucherUsed,
     required TResult orElse(),
   }) {
     if (nextPageEventsFetched != null) {
@@ -349,6 +364,7 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_EventsRefreshed value) eventsRefreshed,
+    required TResult Function(_EventVoucherUsed value) eventVoucherUsed,
   }) {
     return nextPageEventsFetched(this);
   }
@@ -361,6 +377,7 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_EventsRefreshed value)? eventsRefreshed,
+    TResult? Function(_EventVoucherUsed value)? eventVoucherUsed,
   }) {
     return nextPageEventsFetched?.call(this);
   }
@@ -373,6 +390,7 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_EventsRefreshed value)? eventsRefreshed,
+    TResult Function(_EventVoucherUsed value)? eventVoucherUsed,
     required TResult orElse(),
   }) {
     if (nextPageEventsFetched != null) {
@@ -487,6 +505,7 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
         menuFiltersApplied,
     required TResult Function(MenuEventFilter filter) menuFilterRemoved,
     required TResult Function() eventsRefreshed,
+    required TResult Function(String eventId) eventVoucherUsed,
   }) {
     return menuFiltersApplied(filters, appliedFilters);
   }
@@ -501,6 +520,7 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
         menuFiltersApplied,
     TResult? Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult? Function()? eventsRefreshed,
+    TResult? Function(String eventId)? eventVoucherUsed,
   }) {
     return menuFiltersApplied?.call(filters, appliedFilters);
   }
@@ -515,6 +535,7 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
         menuFiltersApplied,
     TResult Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult Function()? eventsRefreshed,
+    TResult Function(String eventId)? eventVoucherUsed,
     required TResult orElse(),
   }) {
     if (menuFiltersApplied != null) {
@@ -532,6 +553,7 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_EventsRefreshed value) eventsRefreshed,
+    required TResult Function(_EventVoucherUsed value) eventVoucherUsed,
   }) {
     return menuFiltersApplied(this);
   }
@@ -544,6 +566,7 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_EventsRefreshed value)? eventsRefreshed,
+    TResult? Function(_EventVoucherUsed value)? eventVoucherUsed,
   }) {
     return menuFiltersApplied?.call(this);
   }
@@ -556,6 +579,7 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_EventsRefreshed value)? eventsRefreshed,
+    TResult Function(_EventVoucherUsed value)? eventVoucherUsed,
     required TResult orElse(),
   }) {
     if (menuFiltersApplied != null) {
@@ -650,6 +674,7 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
         menuFiltersApplied,
     required TResult Function(MenuEventFilter filter) menuFilterRemoved,
     required TResult Function() eventsRefreshed,
+    required TResult Function(String eventId) eventVoucherUsed,
   }) {
     return menuFilterRemoved(filter);
   }
@@ -664,6 +689,7 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
         menuFiltersApplied,
     TResult? Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult? Function()? eventsRefreshed,
+    TResult? Function(String eventId)? eventVoucherUsed,
   }) {
     return menuFilterRemoved?.call(filter);
   }
@@ -678,6 +704,7 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
         menuFiltersApplied,
     TResult Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult Function()? eventsRefreshed,
+    TResult Function(String eventId)? eventVoucherUsed,
     required TResult orElse(),
   }) {
     if (menuFilterRemoved != null) {
@@ -695,6 +722,7 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_EventsRefreshed value) eventsRefreshed,
+    required TResult Function(_EventVoucherUsed value) eventVoucherUsed,
   }) {
     return menuFilterRemoved(this);
   }
@@ -707,6 +735,7 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_EventsRefreshed value)? eventsRefreshed,
+    TResult? Function(_EventVoucherUsed value)? eventVoucherUsed,
   }) {
     return menuFilterRemoved?.call(this);
   }
@@ -719,6 +748,7 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_EventsRefreshed value)? eventsRefreshed,
+    TResult Function(_EventVoucherUsed value)? eventVoucherUsed,
     required TResult orElse(),
   }) {
     if (menuFilterRemoved != null) {
@@ -783,6 +813,7 @@ class _$_EventsRefreshed implements _EventsRefreshed {
         menuFiltersApplied,
     required TResult Function(MenuEventFilter filter) menuFilterRemoved,
     required TResult Function() eventsRefreshed,
+    required TResult Function(String eventId) eventVoucherUsed,
   }) {
     return eventsRefreshed();
   }
@@ -797,6 +828,7 @@ class _$_EventsRefreshed implements _EventsRefreshed {
         menuFiltersApplied,
     TResult? Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult? Function()? eventsRefreshed,
+    TResult? Function(String eventId)? eventVoucherUsed,
   }) {
     return eventsRefreshed?.call();
   }
@@ -811,6 +843,7 @@ class _$_EventsRefreshed implements _EventsRefreshed {
         menuFiltersApplied,
     TResult Function(MenuEventFilter filter)? menuFilterRemoved,
     TResult Function()? eventsRefreshed,
+    TResult Function(String eventId)? eventVoucherUsed,
     required TResult orElse(),
   }) {
     if (eventsRefreshed != null) {
@@ -828,6 +861,7 @@ class _$_EventsRefreshed implements _EventsRefreshed {
     required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
     required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
     required TResult Function(_EventsRefreshed value) eventsRefreshed,
+    required TResult Function(_EventVoucherUsed value) eventVoucherUsed,
   }) {
     return eventsRefreshed(this);
   }
@@ -840,6 +874,7 @@ class _$_EventsRefreshed implements _EventsRefreshed {
     TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult? Function(_EventsRefreshed value)? eventsRefreshed,
+    TResult? Function(_EventVoucherUsed value)? eventVoucherUsed,
   }) {
     return eventsRefreshed?.call(this);
   }
@@ -852,6 +887,7 @@ class _$_EventsRefreshed implements _EventsRefreshed {
     TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
     TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
     TResult Function(_EventsRefreshed value)? eventsRefreshed,
+    TResult Function(_EventVoucherUsed value)? eventVoucherUsed,
     required TResult orElse(),
   }) {
     if (eventsRefreshed != null) {
@@ -866,9 +902,174 @@ abstract class _EventsRefreshed implements TonightEventsEvent {
 }
 
 /// @nodoc
+abstract class _$$_EventVoucherUsedCopyWith<$Res> {
+  factory _$$_EventVoucherUsedCopyWith(
+          _$_EventVoucherUsed value, $Res Function(_$_EventVoucherUsed) then) =
+      __$$_EventVoucherUsedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String eventId});
+}
+
+/// @nodoc
+class __$$_EventVoucherUsedCopyWithImpl<$Res>
+    extends _$TonightEventsEventCopyWithImpl<$Res, _$_EventVoucherUsed>
+    implements _$$_EventVoucherUsedCopyWith<$Res> {
+  __$$_EventVoucherUsedCopyWithImpl(
+      _$_EventVoucherUsed _value, $Res Function(_$_EventVoucherUsed) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? eventId = null,
+  }) {
+    return _then(_$_EventVoucherUsed(
+      null == eventId
+          ? _value.eventId
+          : eventId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_EventVoucherUsed implements _EventVoucherUsed {
+  const _$_EventVoucherUsed(this.eventId);
+
+  @override
+  final String eventId;
+
+  @override
+  String toString() {
+    return 'TonightEventsEvent.eventVoucherUsed(eventId: $eventId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_EventVoucherUsed &&
+            (identical(other.eventId, eventId) || other.eventId == eventId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, eventId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_EventVoucherUsedCopyWith<_$_EventVoucherUsed> get copyWith =>
+      __$$_EventVoucherUsedCopyWithImpl<_$_EventVoucherUsed>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Option<LatLng> userLocation) eventsFetched,
+    required TResult Function() nextPageEventsFetched,
+    required TResult Function(
+            EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)
+        menuFiltersApplied,
+    required TResult Function(MenuEventFilter filter) menuFilterRemoved,
+    required TResult Function() eventsRefreshed,
+    required TResult Function(String eventId) eventVoucherUsed,
+  }) {
+    return eventVoucherUsed(eventId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Option<LatLng> userLocation)? eventsFetched,
+    TResult? Function()? nextPageEventsFetched,
+    TResult? Function(
+            EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult? Function(MenuEventFilter filter)? menuFilterRemoved,
+    TResult? Function()? eventsRefreshed,
+    TResult? Function(String eventId)? eventVoucherUsed,
+  }) {
+    return eventVoucherUsed?.call(eventId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Option<LatLng> userLocation)? eventsFetched,
+    TResult Function()? nextPageEventsFetched,
+    TResult Function(
+            EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters)?
+        menuFiltersApplied,
+    TResult Function(MenuEventFilter filter)? menuFilterRemoved,
+    TResult Function()? eventsRefreshed,
+    TResult Function(String eventId)? eventVoucherUsed,
+    required TResult orElse(),
+  }) {
+    if (eventVoucherUsed != null) {
+      return eventVoucherUsed(eventId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EventsFetched value) eventsFetched,
+    required TResult Function(_NextPageEventsFetched value)
+        nextPageEventsFetched,
+    required TResult Function(_MenuFiltersApplied value) menuFiltersApplied,
+    required TResult Function(_MenuFilterRemoved value) menuFilterRemoved,
+    required TResult Function(_EventsRefreshed value) eventsRefreshed,
+    required TResult Function(_EventVoucherUsed value) eventVoucherUsed,
+  }) {
+    return eventVoucherUsed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EventsFetched value)? eventsFetched,
+    TResult? Function(_NextPageEventsFetched value)? nextPageEventsFetched,
+    TResult? Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult? Function(_MenuFilterRemoved value)? menuFilterRemoved,
+    TResult? Function(_EventsRefreshed value)? eventsRefreshed,
+    TResult? Function(_EventVoucherUsed value)? eventVoucherUsed,
+  }) {
+    return eventVoucherUsed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EventsFetched value)? eventsFetched,
+    TResult Function(_NextPageEventsFetched value)? nextPageEventsFetched,
+    TResult Function(_MenuFiltersApplied value)? menuFiltersApplied,
+    TResult Function(_MenuFilterRemoved value)? menuFilterRemoved,
+    TResult Function(_EventsRefreshed value)? eventsRefreshed,
+    TResult Function(_EventVoucherUsed value)? eventVoucherUsed,
+    required TResult orElse(),
+  }) {
+    if (eventVoucherUsed != null) {
+      return eventVoucherUsed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EventVoucherUsed implements TonightEventsEvent {
+  const factory _EventVoucherUsed(final String eventId) = _$_EventVoucherUsed;
+
+  String get eventId;
+  @JsonKey(ignore: true)
+  _$$_EventVoucherUsedCopyWith<_$_EventVoucherUsed> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$TonightEventsState {
   CubitStatus get getEventsStatus => throw _privateConstructorUsedError;
   CubitStatus get nextPageStatus => throw _privateConstructorUsedError;
+  CubitStatus get useVoucherStatus => throw _privateConstructorUsedError;
   Option<String> get errorMessage => throw _privateConstructorUsedError;
   List<TonightEvent> get events => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
@@ -893,6 +1094,7 @@ abstract class $TonightEventsStateCopyWith<$Res> {
   $Res call(
       {CubitStatus getEventsStatus,
       CubitStatus nextPageStatus,
+      CubitStatus useVoucherStatus,
       Option<String> errorMessage,
       List<TonightEvent> events,
       bool hasReachedMax,
@@ -919,6 +1121,7 @@ class _$TonightEventsStateCopyWithImpl<$Res, $Val extends TonightEventsState>
   $Res call({
     Object? getEventsStatus = null,
     Object? nextPageStatus = null,
+    Object? useVoucherStatus = null,
     Object? errorMessage = null,
     Object? events = null,
     Object? hasReachedMax = null,
@@ -935,6 +1138,10 @@ class _$TonightEventsStateCopyWithImpl<$Res, $Val extends TonightEventsState>
       nextPageStatus: null == nextPageStatus
           ? _value.nextPageStatus
           : nextPageStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      useVoucherStatus: null == useVoucherStatus
+          ? _value.useVoucherStatus
+          : useVoucherStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
       errorMessage: null == errorMessage
           ? _value.errorMessage
@@ -987,6 +1194,7 @@ abstract class _$$_TonightEventsStateCopyWith<$Res>
   $Res call(
       {CubitStatus getEventsStatus,
       CubitStatus nextPageStatus,
+      CubitStatus useVoucherStatus,
       Option<String> errorMessage,
       List<TonightEvent> events,
       bool hasReachedMax,
@@ -1012,6 +1220,7 @@ class __$$_TonightEventsStateCopyWithImpl<$Res>
   $Res call({
     Object? getEventsStatus = null,
     Object? nextPageStatus = null,
+    Object? useVoucherStatus = null,
     Object? errorMessage = null,
     Object? events = null,
     Object? hasReachedMax = null,
@@ -1028,6 +1237,10 @@ class __$$_TonightEventsStateCopyWithImpl<$Res>
       nextPageStatus: null == nextPageStatus
           ? _value.nextPageStatus
           : nextPageStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      useVoucherStatus: null == useVoucherStatus
+          ? _value.useVoucherStatus
+          : useVoucherStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
       errorMessage: null == errorMessage
           ? _value.errorMessage
@@ -1067,6 +1280,7 @@ class _$_TonightEventsState implements _TonightEventsState {
   const _$_TonightEventsState(
       {required this.getEventsStatus,
       required this.nextPageStatus,
+      required this.useVoucherStatus,
       required this.errorMessage,
       required final List<TonightEvent> events,
       required this.hasReachedMax,
@@ -1081,6 +1295,8 @@ class _$_TonightEventsState implements _TonightEventsState {
   final CubitStatus getEventsStatus;
   @override
   final CubitStatus nextPageStatus;
+  @override
+  final CubitStatus useVoucherStatus;
   @override
   final Option<String> errorMessage;
   final List<TonightEvent> _events;
@@ -1111,7 +1327,7 @@ class _$_TonightEventsState implements _TonightEventsState {
 
   @override
   String toString() {
-    return 'TonightEventsState(getEventsStatus: $getEventsStatus, nextPageStatus: $nextPageStatus, errorMessage: $errorMessage, events: $events, hasReachedMax: $hasReachedMax, filterPhrase: $filterPhrase, eventFilters: $eventFilters, appliedMenuFilters: $appliedMenuFilters, failure: $failure)';
+    return 'TonightEventsState(getEventsStatus: $getEventsStatus, nextPageStatus: $nextPageStatus, useVoucherStatus: $useVoucherStatus, errorMessage: $errorMessage, events: $events, hasReachedMax: $hasReachedMax, filterPhrase: $filterPhrase, eventFilters: $eventFilters, appliedMenuFilters: $appliedMenuFilters, failure: $failure)';
   }
 
   @override
@@ -1123,6 +1339,8 @@ class _$_TonightEventsState implements _TonightEventsState {
                 other.getEventsStatus == getEventsStatus) &&
             (identical(other.nextPageStatus, nextPageStatus) ||
                 other.nextPageStatus == nextPageStatus) &&
+            (identical(other.useVoucherStatus, useVoucherStatus) ||
+                other.useVoucherStatus == useVoucherStatus) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             const DeepCollectionEquality().equals(other._events, _events) &&
@@ -1142,6 +1360,7 @@ class _$_TonightEventsState implements _TonightEventsState {
       runtimeType,
       getEventsStatus,
       nextPageStatus,
+      useVoucherStatus,
       errorMessage,
       const DeepCollectionEquality().hash(_events),
       hasReachedMax,
@@ -1162,6 +1381,7 @@ abstract class _TonightEventsState implements TonightEventsState {
   const factory _TonightEventsState(
           {required final CubitStatus getEventsStatus,
           required final CubitStatus nextPageStatus,
+          required final CubitStatus useVoucherStatus,
           required final Option<String> errorMessage,
           required final List<TonightEvent> events,
           required final bool hasReachedMax,
@@ -1175,6 +1395,8 @@ abstract class _TonightEventsState implements TonightEventsState {
   CubitStatus get getEventsStatus;
   @override
   CubitStatus get nextPageStatus;
+  @override
+  CubitStatus get useVoucherStatus;
   @override
   Option<String> get errorMessage;
   @override
