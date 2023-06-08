@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/domain/messages/message_entity.dart';
 import 'package:tonight/domain/participants/participant_entity.dart';
+import 'package:translations/translations.dart';
 
 part 'chat_user_model.freezed.dart';
 
@@ -33,8 +34,8 @@ class ChatUser with _$ChatUser {
   factory ChatUser.fromMessage(Message message) {
     return ChatUser(
       color: generateColorFromUserId(message.userId),
-      userId: message.isUserDeleted ? 'Użytkownik Tonight' : message.userId,
-      username: message.isUserDeleted ? 'Użytkownik Tonight' : message.username,
+      userId: message.isUserDeleted ? S().tonightUser : message.userId,
+      username: message.isUserDeleted ? S().tonightUser : message.username,
       userPictureUrl: message.userPictureUrl,
       isUserDeleted: message.isUserDeleted,
     );

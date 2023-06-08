@@ -12,18 +12,21 @@ class EventClubInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const FaIcon(
+        FaIcon(
           FontAwesomeIcons.building,
           size: 18,
+          color: context.secondaryColor,
         ),
         const SizedBox(width: 10),
         Expanded(
           child: Text(
             event.clubName,
-            style: context.titleSmall,
             overflow: TextOverflow.fade,
             maxLines: 1,
             softWrap: false,
+            style: context.titleSmall.copyWith(
+              color: context.secondaryColor,
+            ),
           ),
         ),
       ],

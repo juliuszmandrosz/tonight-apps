@@ -45,6 +45,11 @@ class FirebaseAuthFacade
         _crashlytics = crashlytics;
 
   @override
+  String getCurrentUserId() {
+    return _firebaseAuth.tryGetFirebaseUser().uid;
+  }
+
+  @override
   Stream<Either<AuthFailure, Tuple2<String, int?>>>
       sendSmsVerificationCodeForUser({
     required String phoneNumber,
@@ -392,30 +397,6 @@ class FirebaseAuthFacade
   }
 
   @override
-  Future<Option<AppUser>> getSignedUser() async {
-    try {
-      final firebaseUser = _firebaseAuth.currentUser;
-
-      if (firebaseUser == null) return none();
-
-      final userEmail = _getUserEmail(firebaseUser);
-
-      await _authCloudFunctionsFacade.checkIfUserCanSignIn(userEmail);
-
-      final result = await _mapFirebaseUserToDomain();
-
-      return some(result);
-    } on DioError catch (e) {
-      await signOut();
-      _logger.e("Dio Error during getting signed user EXCEPTION: $e");
-
-      await _handleDioError(e);
-
-      return none();
-    }
-  }
-
-  @override
   Future<Option<AppUser>> getSignedPartner() async {
     try {
       final firebaseUser = _firebaseAuth.currentUser;
@@ -586,10 +567,6 @@ class FirebaseAuthFacade
       accessToken: googleAuth.accessToken,
     );
     return _firebaseAuth.signInWithCredential(authCredential);
-  }
-
-  String _getUserEmail(User user) {
-    return user.email ?? user.providerData.first.email!;
   }
 
   Future<UserCredential> _signInWithEmailLink(

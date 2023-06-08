@@ -117,6 +117,7 @@ class Event extends Equatable {
     bool? isBeingPostponed,
     Option<String>? clubPhotoUrl,
     Option<String>? locationString,
+    Option<String>? voucherName,
   }) {
     return Event(
       id: id,

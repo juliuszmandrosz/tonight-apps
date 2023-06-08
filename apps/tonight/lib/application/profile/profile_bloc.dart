@@ -26,7 +26,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       transformer: throttleDroppable(),
     );
     on<_UserWallPhotoDeleted>(_onUserWallPhotoDeleted);
-    on<_UserWallPhotoUpdated>(_onUserWallPhotoUpdated);
+    on<_WallPhotoRewardRedeemed>(_onWallPhotoRewardRedeemed);
   }
 
   FutureOr<void> _onUserProfileLoaded(
@@ -115,12 +115,15 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     );
   }
 
-  FutureOr<void> _onUserWallPhotoUpdated(
-    _UserWallPhotoUpdated event,
-    Emitter<ProfileState> emit,
-  ) {
+  FutureOr<void> _onWallPhotoRewardRedeemed(
+      _WallPhotoRewardRedeemed event, Emitter<ProfileState> emit) {
     final userProfile = state.userProfile.getOrCrash();
-    final photos = _userProfileAggregator.updatePhotoInState(event.photo);
+    final photo = userProfile.userPhotos.firstWhere(
+      (p) => p.id == event.photoId,
+    );
+    final photos = _userProfileAggregator.updatePhotoInState(
+      photo.copyWith(isRewardAcquired: true),
+    );
     emit(
       state.copyWith(
         userProfile: some(

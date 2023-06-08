@@ -46,6 +46,7 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
         final existingParticipant = await tx.get(participantRef);
 
         if (photo.timeTaskId != null) {
+          final currentUserRef = _firestore.getCurrentUserDocRef(_auth);
           final timeTaskRef = _firestore.tasks.doc(photo.timeTaskId);
           final timeTaskDoc = await tx.get(timeTaskRef);
           final timeTaskDto = TimeTaskDto.fromFirebase(timeTaskDoc);
@@ -60,6 +61,8 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
             venueId: photo.venueId,
             venueName: photo.venueName,
             wallPhotoId: photo.id,
+            wallPhotoUrl: photo.photoUrl,
+            createdAt: DateTime.now(),
           );
           final voucherRef = _firestore.userCollection
               .doc(photo.userId)
@@ -67,6 +70,7 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
               .doc(photo.timeTaskId!);
 
           tx.set(voucherRef, voucher.toJson());
+          tx.update(currentUserRef, {'ticketsCount': FieldValue.increment(1)});
         }
 
         final wallPhotoDto = WallPhotoDto.fromDomain(photo);
@@ -121,14 +125,19 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
   }
 
   @override
-  Future<Either<WallPhotoFailure, Unit>> deleteWallPhoto({
-    required String photoId,
-    required String photoUrl,
-  }) async {
+  Future<Either<WallPhotoFailure, Unit>> deleteWallPhoto(
+      WallPhoto photo) async {
     try {
-      await _firestore.wallPhotos.doc(photoId).delete();
-      if (photoUrl.isNotEmpty) {
-        await _storage.refFromURL(photoUrl).delete();
+      await _firestore.wallPhotos.doc(photo.id).delete();
+      if (photo.photoUrl.isNotEmpty) {
+        await _storage.refFromURL(photo.photoUrl).delete();
+      }
+      if (photo.timeTaskId.isNotNullOrEmpty) {
+        await _firestore.userCollection
+            .doc(photo.userId)
+            .timeTaskVouchers
+            .doc(photo.timeTaskId!)
+            .delete();
       }
       return right(unit);
     } on FirebaseException catch (e) {

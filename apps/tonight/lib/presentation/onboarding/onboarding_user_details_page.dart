@@ -31,9 +31,7 @@ class OnboardingUserDetailsPage extends StatelessWidget {
             );
 
             if (state.submissionStatus.isSubmissionSuccess) {
-              context.router.replaceAll(
-                [const WelcomeLoaderRoute()],
-              );
+              context.router.replaceAll([const DailySpinRoute()]);
             }
           },
           child: Scaffold(

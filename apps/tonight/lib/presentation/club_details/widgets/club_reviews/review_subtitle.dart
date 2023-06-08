@@ -20,7 +20,7 @@ class ReviewSubtitle extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20),
               child: Text(
                 review.userOpinion,
-                style: context.titleMedium,
+                style: context.titleSmall,
               ),
             ),
           ),
