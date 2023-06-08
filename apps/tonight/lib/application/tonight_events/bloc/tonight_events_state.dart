@@ -5,6 +5,7 @@ class TonightEventsState with _$TonightEventsState {
   const factory TonightEventsState({
     required CubitStatus getEventsStatus,
     required CubitStatus nextPageStatus,
+    required CubitStatus useVoucherStatus,
     required Option<String> errorMessage,
     required List<TonightEvent> events,
     required bool hasReachedMax,
@@ -17,6 +18,7 @@ class TonightEventsState with _$TonightEventsState {
   factory TonightEventsState.initial() => TonightEventsState(
         getEventsStatus: CubitStatus.initial,
         nextPageStatus: CubitStatus.initial,
+        useVoucherStatus: CubitStatus.initial,
         errorMessage: none(),
         hasReachedMax: false,
         events: [],

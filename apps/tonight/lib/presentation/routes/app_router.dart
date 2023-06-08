@@ -24,6 +24,7 @@ import 'package:tonight/presentation/onboarding/onboarding_page.dart';
 import 'package:tonight/presentation/onboarding/onboarding_user_details_page.dart';
 import 'package:tonight/presentation/payment_method/payment_method_page.dart';
 import 'package:tonight/presentation/profile/profile_page.dart';
+import 'package:tonight/presentation/redeem_tonight_voucher/redeem_tonight_voucher_page.dart';
 import 'package:tonight/presentation/routes/page_transitions/fade_in_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/slide_left_transition.dart';
 import 'package:tonight/presentation/routes/page_transitions/slide_up_transition.dart';
@@ -36,7 +37,7 @@ import 'package:tonight/presentation/ticket_checkout/ticket_checkout_page.dart';
 import 'package:tonight/presentation/ticket_payment_confirm/ticket_payment_confirm_page.dart';
 import 'package:tonight/presentation/ticket_qr/ticket_qr_page.dart';
 import 'package:tonight/presentation/ticket_scan_confirm/ticket_scan_confirm_page.dart';
-import 'package:tonight/presentation/tickets/tickets_page.dart';
+import 'package:tonight/presentation/tickets_and_vouchers/tickets_and_vouchers_page.dart';
 import 'package:tonight/presentation/tonight/tonight_page.dart';
 import 'package:tonight/presentation/update_profile_picture/update_profile_picture_page.dart';
 import 'package:tonight/presentation/update_username/update_username_page.dart';
@@ -222,7 +223,7 @@ const animationDuration = 300;
       durationInMilliseconds: animationDuration,
     ),
     CustomRoute(
-      page: TicketsPage,
+      page: TicketsAndVouchersPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
@@ -265,6 +266,11 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: ActivateTimeTaskRewardPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: RedeemTonightVoucherPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),

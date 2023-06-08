@@ -14,10 +14,7 @@ abstract class WallPhotoFacade {
 
   Future<Either<WallPhotoFailure, Unit>> addWallPhoto(WallPhoto photo);
 
-  Future<Either<WallPhotoFailure, Unit>> deleteWallPhoto({
-    required String photoId,
-    required String photoUrl,
-  });
+  Future<Either<WallPhotoFailure, Unit>> deleteWallPhoto(WallPhoto photo);
 
   Future<Either<WallPhotoFailure, List<WallPhoto>>> getWallPhotos({
     required WallPhotoFilters filters,

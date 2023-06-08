@@ -33,6 +33,7 @@ class UserDetailTile extends StatelessWidget {
             style: context.titleSmall.copyWith(
               color: context.secondaryColor,
             ),
+            textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
           Text(

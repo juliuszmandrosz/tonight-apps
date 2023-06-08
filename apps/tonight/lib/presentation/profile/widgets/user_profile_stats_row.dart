@@ -34,10 +34,11 @@ class UserProfileStatsRow extends StatelessWidget {
           ),
           Expanded(
             child: UserDetailTile(
-              onTap: () => context.pushRoute(const FavoritesRoute()),
-              value: userProfile.favoritesCount,
-              label: S().favorites,
-              icon: FontAwesomeIcons.solidHeart,
+              onTap: () => context.pushRoute(const TicketsAndVouchersRoute()),
+              value: userProfile.ticketsCount,
+              // TODO - add translation
+              label: '${S().tickets(2)} i vouchery',
+              icon: FontAwesomeIcons.ticket,
             ),
           ),
           const VerticalDivider(
@@ -47,10 +48,10 @@ class UserProfileStatsRow extends StatelessWidget {
           ),
           Expanded(
             child: UserDetailTile(
-              onTap: () => context.pushRoute(const TicketsRoute()),
-              value: userProfile.ticketsCount,
-              label: S().tickets(2),
-              icon: FontAwesomeIcons.ticket,
+              onTap: () => context.pushRoute(const FavoritesRoute()),
+              value: userProfile.favoritesCount,
+              label: S().favorites,
+              icon: FontAwesomeIcons.solidHeart,
             ),
           ),
         ],

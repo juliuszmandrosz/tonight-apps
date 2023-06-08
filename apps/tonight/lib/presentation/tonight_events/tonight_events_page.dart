@@ -22,7 +22,14 @@ class TonightEventsPage extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: const TonightEventFilterChips(),
         ),
-        BlocBuilder<TonightEventsBloc, TonightEventsState>(
+        BlocConsumer<TonightEventsBloc, TonightEventsState>(
+          listenWhen: (p, c) => p.errorMessage != c.errorMessage,
+          listener: (ctx, state) {
+            state.errorMessage.fold(
+              () {},
+              (message) => context.showSnackbarMessage(message),
+            );
+          },
           builder: (ctx, state) {
             switch (state.getEventsStatus) {
               case CubitStatus.initial:
@@ -35,9 +42,9 @@ class TonightEventsPage extends StatelessWidget {
                         .add(const TonightEventsEvent.eventsRefreshed()),
                     isSocketException: state.failure.fold(
                       () => false,
-                      (f) => f.when(
-                        unexpected: () => false,
+                      (f) => f.maybeWhen(
                         noConnection: () => true,
+                        orElse: () => false,
                       ),
                     ),
                   ),

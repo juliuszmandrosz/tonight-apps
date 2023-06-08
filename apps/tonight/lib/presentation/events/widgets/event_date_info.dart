@@ -13,9 +13,10 @@ class EventDateInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const FaIcon(
+        FaIcon(
           FontAwesomeIcons.calendar,
           size: 18,
+          color: context.secondaryColor,
         ),
         const SizedBox(width: 10),
         AutoSizeText(
@@ -23,7 +24,9 @@ class EventDateInfo extends StatelessWidget {
             event.eventStartDateTime,
           ),
           textAlign: TextAlign.center,
-          style: context.titleSmall,
+          style: context.titleSmall.copyWith(
+            color: context.secondaryColor,
+          ),
           maxLines: 1,
         ),
       ],

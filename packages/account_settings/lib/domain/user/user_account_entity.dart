@@ -15,10 +15,12 @@ class UserAccount extends Equatable {
   final int ticketsCount;
   final int photosCount;
   final DateTime? lastDailySpinAt;
+  final DateTime? lastTonightVoucherUseAt;
 
   const UserAccount({
     required this.id,
     this.lastDailySpinAt,
+    this.lastTonightVoucherUseAt,
     this.email = '',
     this.phoneNumber = '',
     this.profilePictureUrl = '',
@@ -47,6 +49,7 @@ class UserAccount extends Equatable {
         ticketsCount,
         photosCount,
         lastDailySpinAt,
+        lastTonightVoucherUseAt,
       ];
 
   UserAccount copyWith({
@@ -63,6 +66,7 @@ class UserAccount extends Equatable {
     int? photosCount,
     bool? isPhoneNumberVerified,
     Option<DateTime>? lastDailySpinAt,
+    Option<DateTime>? lastTonightVoucherUseAt,
   }) {
     return UserAccount(
       id: id,
@@ -84,6 +88,12 @@ class UserAccount extends Equatable {
               (value) => value,
             )
           : this.lastDailySpinAt,
+      lastTonightVoucherUseAt: lastTonightVoucherUseAt != null
+          ? lastTonightVoucherUseAt.fold(
+              () => null,
+              (value) => value,
+            )
+          : this.lastTonightVoucherUseAt,
     );
   }
 }

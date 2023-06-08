@@ -18,15 +18,9 @@ class UserWallPhotoPreviewCubit extends Cubit<UserWallPhotoPreviewState> {
   UserWallPhotoPreviewCubit(this._wallPhotoFacade)
       : super(UserWallPhotoPreviewState.initial());
 
-  Future<void> deletePhoto({
-    required String photoId,
-    required String photoUrl,
-  }) async {
+  Future<void> deletePhoto(WallPhoto photo) async {
     emit(state.copyWith(deletePhotoStatus: CubitStatus.loading));
-    final result = await _wallPhotoFacade.deleteWallPhoto(
-      photoId: photoId,
-      photoUrl: photoUrl,
-    );
+    final result = await _wallPhotoFacade.deleteWallPhoto(photo);
     result.fold(
       (_) => emit(
         state.copyWith(deletePhotoStatus: CubitStatus.failure),

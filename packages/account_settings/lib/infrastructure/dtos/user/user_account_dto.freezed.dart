@@ -35,6 +35,8 @@ mixin _$UserAccountDto {
   int get photosCount => throw _privateConstructorUsedError;
   @FirebaseNullableTimestampJsonConverter()
   DateTime? get lastDailySpinAt => throw _privateConstructorUsedError;
+  @FirebaseNullableTimestampJsonConverter()
+  DateTime? get lastTonightVoucherUseAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +51,8 @@ abstract class $UserAccountDtoCopyWith<$Res> {
       _$UserAccountDtoCopyWithImpl<$Res, UserAccountDto>;
   @useResult
   $Res call(
-      {@JsonKey(ignore: true) String? id,
+      {@JsonKey(ignore: true)
+          String? id,
       String email,
       String phoneNumber,
       String profilePictureUrl,
@@ -61,7 +64,10 @@ abstract class $UserAccountDtoCopyWith<$Res> {
       int raverCoins,
       int ticketsCount,
       int photosCount,
-      @FirebaseNullableTimestampJsonConverter() DateTime? lastDailySpinAt});
+      @FirebaseNullableTimestampJsonConverter()
+          DateTime? lastDailySpinAt,
+      @FirebaseNullableTimestampJsonConverter()
+          DateTime? lastTonightVoucherUseAt});
 }
 
 /// @nodoc
@@ -90,6 +96,7 @@ class _$UserAccountDtoCopyWithImpl<$Res, $Val extends UserAccountDto>
     Object? ticketsCount = null,
     Object? photosCount = null,
     Object? lastDailySpinAt = freezed,
+    Object? lastTonightVoucherUseAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -144,6 +151,10 @@ class _$UserAccountDtoCopyWithImpl<$Res, $Val extends UserAccountDto>
           ? _value.lastDailySpinAt
           : lastDailySpinAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      lastTonightVoucherUseAt: freezed == lastTonightVoucherUseAt
+          ? _value.lastTonightVoucherUseAt
+          : lastTonightVoucherUseAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -157,7 +168,8 @@ abstract class _$$_UserAccountDtoCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(ignore: true) String? id,
+      {@JsonKey(ignore: true)
+          String? id,
       String email,
       String phoneNumber,
       String profilePictureUrl,
@@ -169,7 +181,10 @@ abstract class _$$_UserAccountDtoCopyWith<$Res>
       int raverCoins,
       int ticketsCount,
       int photosCount,
-      @FirebaseNullableTimestampJsonConverter() DateTime? lastDailySpinAt});
+      @FirebaseNullableTimestampJsonConverter()
+          DateTime? lastDailySpinAt,
+      @FirebaseNullableTimestampJsonConverter()
+          DateTime? lastTonightVoucherUseAt});
 }
 
 /// @nodoc
@@ -196,6 +211,7 @@ class __$$_UserAccountDtoCopyWithImpl<$Res>
     Object? ticketsCount = null,
     Object? photosCount = null,
     Object? lastDailySpinAt = freezed,
+    Object? lastTonightVoucherUseAt = freezed,
   }) {
     return _then(_$_UserAccountDto(
       id: freezed == id
@@ -250,6 +266,10 @@ class __$$_UserAccountDtoCopyWithImpl<$Res>
           ? _value.lastDailySpinAt
           : lastDailySpinAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      lastTonightVoucherUseAt: freezed == lastTonightVoucherUseAt
+          ? _value.lastTonightVoucherUseAt
+          : lastTonightVoucherUseAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -271,7 +291,8 @@ class _$_UserAccountDto extends _UserAccountDto {
       this.raverCoins = 0,
       this.ticketsCount = 0,
       this.photosCount = 0,
-      @FirebaseNullableTimestampJsonConverter() this.lastDailySpinAt})
+      @FirebaseNullableTimestampJsonConverter() this.lastDailySpinAt,
+      @FirebaseNullableTimestampJsonConverter() this.lastTonightVoucherUseAt})
       : _favoriteClubIds = favoriteClubIds,
         _favoriteEventIds = favoriteEventIds,
         _attendance = attendance,
@@ -346,10 +367,13 @@ class _$_UserAccountDto extends _UserAccountDto {
   @override
   @FirebaseNullableTimestampJsonConverter()
   final DateTime? lastDailySpinAt;
+  @override
+  @FirebaseNullableTimestampJsonConverter()
+  final DateTime? lastTonightVoucherUseAt;
 
   @override
   String toString() {
-    return 'UserAccountDto(id: $id, email: $email, phoneNumber: $phoneNumber, profilePictureUrl: $profilePictureUrl, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens, raverCoins: $raverCoins, ticketsCount: $ticketsCount, photosCount: $photosCount, lastDailySpinAt: $lastDailySpinAt)';
+    return 'UserAccountDto(id: $id, email: $email, phoneNumber: $phoneNumber, profilePictureUrl: $profilePictureUrl, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens, raverCoins: $raverCoins, ticketsCount: $ticketsCount, photosCount: $photosCount, lastDailySpinAt: $lastDailySpinAt, lastTonightVoucherUseAt: $lastTonightVoucherUseAt)';
   }
 
   @override
@@ -380,7 +404,10 @@ class _$_UserAccountDto extends _UserAccountDto {
             (identical(other.photosCount, photosCount) ||
                 other.photosCount == photosCount) &&
             (identical(other.lastDailySpinAt, lastDailySpinAt) ||
-                other.lastDailySpinAt == lastDailySpinAt));
+                other.lastDailySpinAt == lastDailySpinAt) &&
+            (identical(
+                    other.lastTonightVoucherUseAt, lastTonightVoucherUseAt) ||
+                other.lastTonightVoucherUseAt == lastTonightVoucherUseAt));
   }
 
   @JsonKey(ignore: true)
@@ -399,7 +426,8 @@ class _$_UserAccountDto extends _UserAccountDto {
       raverCoins,
       ticketsCount,
       photosCount,
-      lastDailySpinAt);
+      lastDailySpinAt,
+      lastTonightVoucherUseAt);
 
   @JsonKey(ignore: true)
   @override
@@ -431,7 +459,9 @@ abstract class _UserAccountDto extends UserAccountDto {
       final int ticketsCount,
       final int photosCount,
       @FirebaseNullableTimestampJsonConverter()
-          final DateTime? lastDailySpinAt}) = _$_UserAccountDto;
+          final DateTime? lastDailySpinAt,
+      @FirebaseNullableTimestampJsonConverter()
+          final DateTime? lastTonightVoucherUseAt}) = _$_UserAccountDto;
   const _UserAccountDto._() : super._();
 
   factory _UserAccountDto.fromJson(Map<String, dynamic> json) =
@@ -465,6 +495,9 @@ abstract class _UserAccountDto extends UserAccountDto {
   @override
   @FirebaseNullableTimestampJsonConverter()
   DateTime? get lastDailySpinAt;
+  @override
+  @FirebaseNullableTimestampJsonConverter()
+  DateTime? get lastTonightVoucherUseAt;
   @override
   @JsonKey(ignore: true)
   _$$_UserAccountDtoCopyWith<_$_UserAccountDto> get copyWith =>

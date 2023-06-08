@@ -10,7 +10,7 @@ abstract class UserAuthFacade {
 
   // Returns verification id and resend token
   Stream<Either<AuthFailure, Tuple2<String, int?>>>
-      sendSmsVerificationCodeForUser({
+  sendSmsVerificationCodeForUser({
     required String phoneNumber,
     required int? resendToken,
   });
@@ -34,5 +34,5 @@ abstract class UserAuthFacade {
 
   Future<Either<AuthFailure, AppUser>> signInWithAppleAsUser();
 
-  Future<Option<AppUser>> getSignedUser();
+  String getCurrentUserId();
 }

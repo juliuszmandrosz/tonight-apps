@@ -1,4 +1,4 @@
-import 'package:common/extensions/typography_extensions.dart';
+import 'package:common/common.dart';
 import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,18 +17,21 @@ class EventLocationInfo extends StatelessWidget {
       children: [
         Row(
           children: [
-            const FaIcon(
+            FaIcon(
               FontAwesomeIcons.locationDot,
               size: 18,
+              color: context.secondaryColor,
             ),
             const SizedBox(width: 10),
             Expanded(
               child: Text(
                 event.locationString!,
-                style: context.titleSmall,
                 softWrap: false,
                 overflow: TextOverflow.fade,
                 maxLines: 1,
+                style: context.titleSmall.copyWith(
+                  color: context.secondaryColor,
+                ),
               ),
             ),
           ],
