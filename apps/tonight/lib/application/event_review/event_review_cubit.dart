@@ -10,7 +10,6 @@ import 'package:tonight/domain/event_review/event_review_form_model.dart';
 import 'package:translations/translations.dart';
 
 part 'event_review_cubit.freezed.dart';
-
 part 'event_review_state.dart';
 
 class EventReviewCubit extends Cubit<EventReviewState> {
@@ -40,7 +39,10 @@ class EventReviewCubit extends Cubit<EventReviewState> {
   void reviewContentChanged(String value) {
     emit(
       state.copyWith(
-        reviewContent: ReviewContentInput.dirty(value),
+        reviewContent: ReviewContentInput.dirty(
+          value: value,
+          numberOfStars: state.reviewValue,
+        ),
         errorMessage: none(),
       ),
     );
@@ -51,7 +53,16 @@ class EventReviewCubit extends Cubit<EventReviewState> {
       _showErrorMessage(S().selectNumberOfStars);
       return;
     }
+
+    if (state.reviewValue < 5 && state.reviewContent.value.length < 10) {
+      _showErrorMessage(
+        // TODO - add translation
+        'W przypadku oceny poniżej 5 gwiazdek, prosimy o podzielenie się swoją opinią na temat możliwych do poprawy aspektów. (minimum 10 znaków)',
+      );
+    }
+
     if (!_validateForm()) return;
+
     emit(state.copyWith(submittingStatus: FormzStatus.submissionInProgress));
     final result = await _eventReviewAggregator.submitReview(
       state.eventReviewForm.getOrCrash().copyWith(
@@ -88,16 +99,16 @@ class EventReviewCubit extends Cubit<EventReviewState> {
     emit(state.copyWith(errorMessage: none()));
   }
 
-  _validateForm() {
-    emit(
-      state.copyWith(
-        reviewContent: ReviewContentInput.dirty(state.reviewContent.value),
-      ),
+  bool _validateForm() {
+    final content = ReviewContentInput.dirty(
+      value: state.reviewContent.value,
+      numberOfStars: state.reviewValue,
     );
 
-    final status = Formz.validate([
-      state.reviewContent,
-    ]);
+    emit(state.copyWith(reviewContent: content));
+
+    final status = Formz.validate([content]);
+
     emit(state.copyWith(submittingStatus: status));
 
     return status.isValidated;
