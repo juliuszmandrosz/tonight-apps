@@ -2,23 +2,36 @@ import 'package:formz/formz.dart';
 import 'package:translations/translations.dart';
 
 enum ReviewContentError {
-  long,
+  tooLong,
+  tooShort,
 }
 
 final reviewContentInputErrorMessages = {
-  ReviewContentError.long: S().reviewContentTooLong
+  ReviewContentError.tooLong: S().reviewContentTooLong,
+  // TODO - add translation
+  ReviewContentError.tooShort: 'Minimum 10 znaków'
 };
 
 class ReviewContentInput extends FormzInput<String, ReviewContentError> {
-  const ReviewContentInput.pure() : super.pure('');
+  final double numberOfStars;
 
-  const ReviewContentInput.dirty([String value = '']) : super.dirty(value);
+  const ReviewContentInput.pure([this.numberOfStars = 0]) : super.pure('');
+
+  const ReviewContentInput.dirty({
+    required this.numberOfStars,
+    String value = '',
+  }) : super.dirty(value);
 
   @override
   ReviewContentError? validator(String value) {
     if (value.length > 1000) {
-      return ReviewContentError.long;
+      return ReviewContentError.tooLong;
     }
+
+    if (numberOfStars < 5 && value.length < 10) {
+      return ReviewContentError.tooShort;
+    }
+
     return null;
   }
 }
