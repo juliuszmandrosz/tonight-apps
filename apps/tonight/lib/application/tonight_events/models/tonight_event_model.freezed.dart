@@ -34,6 +34,7 @@ mixin _$TonightEvent {
   Option<List<EventParticipant>> get firstParticipants =>
       throw _privateConstructorUsedError;
   int get totalParticipants => throw _privateConstructorUsedError;
+  Option<EventVoucher> get voucher => throw _privateConstructorUsedError;
   String? get locationString => throw _privateConstructorUsedError;
   String? get clubPhotoUrl => throw _privateConstructorUsedError;
   String? get artistName => throw _privateConstructorUsedError;
@@ -68,6 +69,7 @@ abstract class $TonightEventCopyWith<$Res> {
       bool isConcert,
       Option<List<EventParticipant>> firstParticipants,
       int totalParticipants,
+      Option<EventVoucher> voucher,
       String? locationString,
       String? clubPhotoUrl,
       String? artistName,
@@ -104,6 +106,7 @@ class _$TonightEventCopyWithImpl<$Res, $Val extends TonightEvent>
     Object? isConcert = null,
     Object? firstParticipants = null,
     Object? totalParticipants = null,
+    Object? voucher = null,
     Object? locationString = freezed,
     Object? clubPhotoUrl = freezed,
     Object? artistName = freezed,
@@ -178,6 +181,10 @@ class _$TonightEventCopyWithImpl<$Res, $Val extends TonightEvent>
           ? _value.totalParticipants
           : totalParticipants // ignore: cast_nullable_to_non_nullable
               as int,
+      voucher: null == voucher
+          ? _value.voucher
+          : voucher // ignore: cast_nullable_to_non_nullable
+              as Option<EventVoucher>,
       locationString: freezed == locationString
           ? _value.locationString
           : locationString // ignore: cast_nullable_to_non_nullable
@@ -224,6 +231,7 @@ abstract class _$$_TonightEventCopyWith<$Res>
       bool isConcert,
       Option<List<EventParticipant>> firstParticipants,
       int totalParticipants,
+      Option<EventVoucher> voucher,
       String? locationString,
       String? clubPhotoUrl,
       String? artistName,
@@ -258,6 +266,7 @@ class __$$_TonightEventCopyWithImpl<$Res>
     Object? isConcert = null,
     Object? firstParticipants = null,
     Object? totalParticipants = null,
+    Object? voucher = null,
     Object? locationString = freezed,
     Object? clubPhotoUrl = freezed,
     Object? artistName = freezed,
@@ -332,6 +341,10 @@ class __$$_TonightEventCopyWithImpl<$Res>
           ? _value.totalParticipants
           : totalParticipants // ignore: cast_nullable_to_non_nullable
               as int,
+      voucher: null == voucher
+          ? _value.voucher
+          : voucher // ignore: cast_nullable_to_non_nullable
+              as Option<EventVoucher>,
       locationString: freezed == locationString
           ? _value.locationString
           : locationString // ignore: cast_nullable_to_non_nullable
@@ -373,6 +386,7 @@ class _$_TonightEvent extends _TonightEvent {
       required this.isConcert,
       required this.firstParticipants,
       required this.totalParticipants,
+      required this.voucher,
       this.locationString,
       this.clubPhotoUrl,
       this.artistName,
@@ -435,6 +449,8 @@ class _$_TonightEvent extends _TonightEvent {
   @override
   final int totalParticipants;
   @override
+  final Option<EventVoucher> voucher;
+  @override
   final String? locationString;
   @override
   final String? clubPhotoUrl;
@@ -445,7 +461,7 @@ class _$_TonightEvent extends _TonightEvent {
 
   @override
   String toString() {
-    return 'TonightEvent(eventId: $eventId, eventName: $eventName, clubId: $clubId, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, location: $location, urlLinks: $urlLinks, isConcert: $isConcert, firstParticipants: $firstParticipants, totalParticipants: $totalParticipants, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl, artistName: $artistName, description: $description)';
+    return 'TonightEvent(eventId: $eventId, eventName: $eventName, clubId: $clubId, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, location: $location, urlLinks: $urlLinks, isConcert: $isConcert, firstParticipants: $firstParticipants, totalParticipants: $totalParticipants, voucher: $voucher, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl, artistName: $artistName, description: $description)';
   }
 
   @override
@@ -481,6 +497,7 @@ class _$_TonightEvent extends _TonightEvent {
                 other.firstParticipants == firstParticipants) &&
             (identical(other.totalParticipants, totalParticipants) ||
                 other.totalParticipants == totalParticipants) &&
+            (identical(other.voucher, voucher) || other.voucher == voucher) &&
             (identical(other.locationString, locationString) ||
                 other.locationString == locationString) &&
             (identical(other.clubPhotoUrl, clubPhotoUrl) ||
@@ -511,6 +528,7 @@ class _$_TonightEvent extends _TonightEvent {
         isConcert,
         firstParticipants,
         totalParticipants,
+        voucher,
         locationString,
         clubPhotoUrl,
         artistName,
@@ -543,6 +561,7 @@ abstract class _TonightEvent extends TonightEvent {
       required final bool isConcert,
       required final Option<List<EventParticipant>> firstParticipants,
       required final int totalParticipants,
+      required final Option<EventVoucher> voucher,
       final String? locationString,
       final String? clubPhotoUrl,
       final String? artistName,
@@ -583,6 +602,8 @@ abstract class _TonightEvent extends TonightEvent {
   Option<List<EventParticipant>> get firstParticipants;
   @override
   int get totalParticipants;
+  @override
+  Option<EventVoucher> get voucher;
   @override
   String? get locationString;
   @override

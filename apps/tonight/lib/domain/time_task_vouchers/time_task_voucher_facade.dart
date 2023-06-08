@@ -14,4 +14,10 @@ abstract class TimeTaskVoucherFacade {
     required String wallPhotoId,
     required String timeTaskId,
   });
+
+  Future<Either<TimeTaskVoucherFailure, List<TimeTaskVoucher>>>
+      fetchUserVouchers({
+    int pageSize = 20,
+    String? lastVoucherId,
+  });
 }

@@ -2,7 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:events/domain/events/event_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/application/tonight_events/models/event_participant_model.dart';
+import 'package:tonight/application/tonight_events/models/event_voucher_model.dart';
 import 'package:tonight/domain/participants/participant_entity.dart';
+import 'package:tonight/domain/participants/participant_failure.dart';
+import 'package:tonight/domain/tonight_vouchers/tonight_voucher_entity.dart';
+import 'package:tonight/domain/tonight_vouchers/tonight_voucher_failure.dart';
 
 part 'tonight_event_model.freezed.dart';
 
@@ -28,6 +32,7 @@ class TonightEvent with _$TonightEvent {
     required bool isConcert,
     required Option<List<EventParticipant>> firstParticipants,
     required int totalParticipants,
+    required Option<EventVoucher> voucher,
     String? locationString,
     String? clubPhotoUrl,
     String? artistName,
@@ -36,8 +41,11 @@ class TonightEvent with _$TonightEvent {
 
   factory TonightEvent.fromDomain({
     required Event event,
-    required Option<List<Participant>> firstParticipants,
-    required int totalParticipants,
+    required Either<ParticipantFailure, Tuple2<List<Participant>, int>>
+        participantsResult,
+    required Either<TonightVoucherFailure, Option<TonightVoucher>>
+        tonightVoucherResult,
+    required String currentUserId,
   }) =>
       TonightEvent(
         eventId: event.id,
@@ -57,15 +65,30 @@ class TonightEvent with _$TonightEvent {
         isConcert: event.isConcert,
         artistName: event.artistName,
         description: event.description,
-        firstParticipants: firstParticipants.fold(
-          () => none(),
-          (participants) => some(
-            participants.map((p) => EventParticipant.fromDomain(p)).toList(),
-          ),
-        ),
-        totalParticipants: totalParticipants,
         locationString: event.locationString,
         clubPhotoUrl: event.clubPhotoUrl,
+        totalParticipants: participantsResult.fold(
+          (_) => 0,
+          (participants) => participants.value2,
+        ),
+        firstParticipants: participantsResult.fold(
+          (_) => none(),
+          (participants) => some(
+            [...participants.value1.map((p) => EventParticipant.fromDomain(p))],
+          ),
+        ),
+        voucher: tonightVoucherResult.fold(
+          (_) => none(),
+          (voucherOption) => voucherOption.fold(
+            () => none(),
+            (voucher) => some(
+              EventVoucher.fromDomain(
+                voucher: voucher,
+                currentUserId: currentUserId,
+              ),
+            ),
+          ),
+        ),
       );
 
   Event toDomain() => Event(

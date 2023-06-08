@@ -46,7 +46,9 @@ class AddWallPhotoButton extends StatelessWidget {
               [
                 const WelcomeLoaderRoute(),
                 UserWallPhotoPreviewRoute(photo: photo),
-                ActivateTimeTaskRewardRoute(photo: photo),
+                ActivateTimeTaskRewardRoute(
+                  timeTaskId: state.timeTask.getOrCrash().id,
+                ),
               ],
             );
             return;

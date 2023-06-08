@@ -25,12 +25,12 @@ class UserAccountDto with _$UserAccountDto {
     @Default(0) int ticketsCount,
     @Default(0) int photosCount,
     @FirebaseNullableTimestampJsonConverter() DateTime? lastDailySpinAt,
+    @FirebaseNullableTimestampJsonConverter() DateTime? lastTonightVoucherUseAt,
   }) = _UserAccountDto;
 
   factory UserAccountDto.fromDomain(UserAccount user) {
     return UserAccountDto(
       id: user.id,
-      lastDailySpinAt: user.lastDailySpinAt,
       email: user.email,
       profilePictureUrl: user.profilePictureUrl,
       username: user.username,
@@ -42,6 +42,8 @@ class UserAccountDto with _$UserAccountDto {
       ticketsCount: user.ticketsCount,
       photosCount: user.photosCount,
       phoneNumber: user.phoneNumber,
+      lastDailySpinAt: user.lastDailySpinAt,
+      lastTonightVoucherUseAt: user.lastTonightVoucherUseAt,
     );
   }
 
@@ -69,6 +71,7 @@ class UserAccountDto with _$UserAccountDto {
       photosCount: photosCount,
       phoneNumber: phoneNumber,
       lastDailySpinAt: lastDailySpinAt,
+      lastTonightVoucherUseAt: lastTonightVoucherUseAt,
     );
   }
 }

@@ -101,4 +101,33 @@ class FirebaseTimeTaskVoucherFacade implements TimeTaskVoucherFacade {
       return left(const TimeTaskVoucherFailure.unexpected());
     }
   }
+
+  @override
+  Future<Either<TimeTaskVoucherFailure, List<TimeTaskVoucher>>>
+      fetchUserVouchers({
+    int pageSize = 20,
+    String? lastVoucherId,
+  }) async {
+    try {
+      final currentUserRef = _firestore.getCurrentUserDocRef(_auth);
+      var query = currentUserRef.timeTaskVouchers
+          .orderBy('createdAt', descending: true)
+          .limit(pageSize);
+      if (lastVoucherId != null) {
+        final lastVoucherRef =
+            currentUserRef.timeTaskVouchers.doc(lastVoucherId);
+        final lastVoucherDoc = await lastVoucherRef.get();
+        query = query.startAfterDocument(lastVoucherDoc);
+      }
+      final vouchers = await query.get();
+      final result = vouchers.docs
+          .map((doc) => TimeTaskVoucherDto.fromFirebase(doc).toDomain())
+          .toList();
+      return right(result);
+    } on FirebaseException catch (e) {
+      _logger.e(e);
+      await _crashlytics.recordError(e, StackTrace.current);
+      return left(const TimeTaskVoucherFailure.unexpected());
+    }
+  }
 }

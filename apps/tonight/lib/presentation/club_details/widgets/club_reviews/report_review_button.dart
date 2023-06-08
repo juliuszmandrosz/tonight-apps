@@ -26,6 +26,7 @@ class ReportReviewButton extends StatelessWidget {
               builder: (context, constraints) {
                 return SizedBox(
                   width: constraints.maxWidth * 0.25,
+                  height: constraints.maxWidth * 0.1,
                   child: OutlinedButton(
                     onPressed: () async {
                       final result =
@@ -56,7 +57,7 @@ class ReportReviewButton extends StatelessWidget {
             if (isReviewReporting)
               Positioned.fill(
                 child: SpinKitThreeBounce(
-                  size: 18,
+                  size: 16,
                   color: context.onSurfaceColor,
                 ),
               )

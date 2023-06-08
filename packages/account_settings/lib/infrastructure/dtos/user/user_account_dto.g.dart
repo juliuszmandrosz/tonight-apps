@@ -33,6 +33,8 @@ _$_UserAccountDto _$$_UserAccountDtoFromJson(Map<String, dynamic> json) =>
       photosCount: json['photosCount'] as int? ?? 0,
       lastDailySpinAt: const FirebaseNullableTimestampJsonConverter()
           .fromJson(json['lastDailySpinAt'] as Timestamp?),
+      lastTonightVoucherUseAt: const FirebaseNullableTimestampJsonConverter()
+          .fromJson(json['lastTonightVoucherUseAt'] as Timestamp?),
     );
 
 Map<String, dynamic> _$$_UserAccountDtoToJson(_$_UserAccountDto instance) =>
@@ -50,4 +52,6 @@ Map<String, dynamic> _$$_UserAccountDtoToJson(_$_UserAccountDto instance) =>
       'photosCount': instance.photosCount,
       'lastDailySpinAt': const FirebaseNullableTimestampJsonConverter()
           .toJson(instance.lastDailySpinAt),
+      'lastTonightVoucherUseAt': const FirebaseNullableTimestampJsonConverter()
+          .toJson(instance.lastTonightVoucherUseAt),
     };

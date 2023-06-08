@@ -5,8 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:screen_brightness/screen_brightness.dart';
 import 'package:tonight/application/activate_time_task_reward/activate_time_task_reward_cubit.dart';
 import 'package:tonight/application/profile/profile_bloc.dart';
-import 'package:tonight/domain/time_task_vouchers/time_task_voucher_entity.dart';
-import 'package:tonight/domain/wall_photos/wall_photo_entity.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/activate_time_task_reward/widgets/activate_time_task_reward_button.dart';
 import 'package:tonight/presentation/activate_time_task_reward/widgets/activate_time_task_reward_name_info.dart';
@@ -20,10 +18,10 @@ import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class ActivateTimeTaskRewardPage extends StatefulWidget {
-  final WallPhoto photo;
+  final String timeTaskId;
 
   const ActivateTimeTaskRewardPage({
-    required this.photo,
+    required this.timeTaskId,
     Key? key,
   }) : super(key: key);
 
@@ -44,7 +42,7 @@ class _ActivateTimeTaskRewardPageState
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<ActivateTimeTaskRewardCubit>()
-        ..getVoucherByTimeTaskId(widget.photo.timeTaskId!),
+        ..getVoucherByTimeTaskId(widget.timeTaskId),
       child: BlocListener<ActivateTimeTaskRewardCubit,
           ActivateTimeTaskRewardState>(
         listener: (context, state) {
@@ -58,8 +56,8 @@ class _ActivateTimeTaskRewardPageState
               (route) => route.settings.name == WelcomeLoaderRoute.name,
             );
             context.read<ProfileBloc>().add(
-                  ProfileEvent.userWallPhotoUpdated(
-                    widget.photo.copyWith(isRewardAcquired: true),
+                  ProfileEvent.wallPhotoRewardRedeemed(
+                    state.voucher.getOrCrash().wallPhotoId,
                   ),
                 );
             // TODO - add translation
@@ -86,7 +84,7 @@ class _ActivateTimeTaskRewardPageState
                         orElse: () => FailureInfo(
                           retryCallback: () => context
                               .read<ActivateTimeTaskRewardCubit>()
-                              .getVoucherByTimeTaskId(widget.photo.timeTaskId!),
+                              .getVoucherByTimeTaskId(widget.timeTaskId),
                         ),
                       );
                 case CubitStatus.success:
@@ -95,9 +93,7 @@ class _ActivateTimeTaskRewardPageState
                       ?.add(const Duration(minutes: 10))
                       .difference(DateTime.now())
                       .inSeconds;
-                  final isVoucherExpired = _checkIfVoucherExpired(
-                      voucher, secondsLeftForReceiveReward);
-                  return isVoucherExpired
+                  return voucher.isExpired
                       ? const TimeTaskVoucherExpiredInfo()
                       : Column(
                           children: [
@@ -124,7 +120,7 @@ class _ActivateTimeTaskRewardPageState
                             ),
                             const SizedBox(height: 20),
                             ActivateTimeTaskRewardPhoto(
-                              photoUrl: widget.photo.photoUrl,
+                              photoUrl: voucher.wallPhotoUrl,
                             ),
                             if (!voucher.isActivated)
                               const SizedBox(height: 20),
@@ -146,19 +142,6 @@ class _ActivateTimeTaskRewardPageState
         ),
       ),
     );
-  }
-
-  bool _checkIfVoucherExpired(
-    TimeTaskVoucher voucher,
-    int? secondsLeftForReceiveReward,
-  ) {
-    if (voucher.validUntil.isBefore(DateTime.now())) return true;
-
-    if (voucher.isRewardAcquired) return true;
-
-    if (voucher.isActivated && secondsLeftForReceiveReward! <= 0) return true;
-
-    return false;
   }
 
   @override

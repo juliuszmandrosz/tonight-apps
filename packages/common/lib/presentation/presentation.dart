@@ -17,6 +17,7 @@ export 'page_transitions/slide_left_transition.dart';
 export 'page_transitions/slide_right_transition.dart';
 export 'page_transitions/zoom_in_transition.dart';
 export 'profile_picture_container.dart';
+export 'pulsating_dot.dart';
 export 'search_field.dart';
 export 'social_media_button.dart';
 export 'ticket_logo_animation.dart';

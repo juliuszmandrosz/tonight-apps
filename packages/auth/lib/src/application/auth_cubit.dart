@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'auth_cubit.freezed.dart';
+
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
@@ -31,6 +32,8 @@ class AuthCubit extends Cubit<AuthState> {
           ),
     );
   }
+
+  String get currentUserId => _userAuthFacade.getCurrentUserId();
 
   bool checkIfPhoneNumberIsVerified() {
     return _userAuthFacade.checkIfPhoneNumberIsVerified();

@@ -24,10 +24,12 @@ mixin _$TimeTaskVoucherDto {
   String? get timeTaskId => throw _privateConstructorUsedError;
   String get venueId => throw _privateConstructorUsedError;
   String get wallPhotoId => throw _privateConstructorUsedError;
+  String get wallPhotoUrl => throw _privateConstructorUsedError;
   String get timeTaskName => throw _privateConstructorUsedError;
   String get venueName => throw _privateConstructorUsedError;
   String get voucherName => throw _privateConstructorUsedError;
   DateTime get validUntil => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
   bool get isActivated => throw _privateConstructorUsedError;
   bool get isRewardAcquired => throw _privateConstructorUsedError;
   @FirebaseNullableTimestampJsonConverter()
@@ -50,10 +52,12 @@ abstract class $TimeTaskVoucherDtoCopyWith<$Res> {
           String? timeTaskId,
       String venueId,
       String wallPhotoId,
+      String wallPhotoUrl,
       String timeTaskName,
       String venueName,
       String voucherName,
       DateTime validUntil,
+      DateTime createdAt,
       bool isActivated,
       bool isRewardAcquired,
       @FirebaseNullableTimestampJsonConverter()
@@ -76,10 +80,12 @@ class _$TimeTaskVoucherDtoCopyWithImpl<$Res, $Val extends TimeTaskVoucherDto>
     Object? timeTaskId = freezed,
     Object? venueId = null,
     Object? wallPhotoId = null,
+    Object? wallPhotoUrl = null,
     Object? timeTaskName = null,
     Object? venueName = null,
     Object? voucherName = null,
     Object? validUntil = null,
+    Object? createdAt = null,
     Object? isActivated = null,
     Object? isRewardAcquired = null,
     Object? usedAt = freezed,
@@ -97,6 +103,10 @@ class _$TimeTaskVoucherDtoCopyWithImpl<$Res, $Val extends TimeTaskVoucherDto>
           ? _value.wallPhotoId
           : wallPhotoId // ignore: cast_nullable_to_non_nullable
               as String,
+      wallPhotoUrl: null == wallPhotoUrl
+          ? _value.wallPhotoUrl
+          : wallPhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       timeTaskName: null == timeTaskName
           ? _value.timeTaskName
           : timeTaskName // ignore: cast_nullable_to_non_nullable
@@ -112,6 +122,10 @@ class _$TimeTaskVoucherDtoCopyWithImpl<$Res, $Val extends TimeTaskVoucherDto>
       validUntil: null == validUntil
           ? _value.validUntil
           : validUntil // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
       isActivated: null == isActivated
           ? _value.isActivated
@@ -142,10 +156,12 @@ abstract class _$$_TimeTaskVoucherDtoCopyWith<$Res>
           String? timeTaskId,
       String venueId,
       String wallPhotoId,
+      String wallPhotoUrl,
       String timeTaskName,
       String venueName,
       String voucherName,
       DateTime validUntil,
+      DateTime createdAt,
       bool isActivated,
       bool isRewardAcquired,
       @FirebaseNullableTimestampJsonConverter()
@@ -166,10 +182,12 @@ class __$$_TimeTaskVoucherDtoCopyWithImpl<$Res>
     Object? timeTaskId = freezed,
     Object? venueId = null,
     Object? wallPhotoId = null,
+    Object? wallPhotoUrl = null,
     Object? timeTaskName = null,
     Object? venueName = null,
     Object? voucherName = null,
     Object? validUntil = null,
+    Object? createdAt = null,
     Object? isActivated = null,
     Object? isRewardAcquired = null,
     Object? usedAt = freezed,
@@ -187,6 +205,10 @@ class __$$_TimeTaskVoucherDtoCopyWithImpl<$Res>
           ? _value.wallPhotoId
           : wallPhotoId // ignore: cast_nullable_to_non_nullable
               as String,
+      wallPhotoUrl: null == wallPhotoUrl
+          ? _value.wallPhotoUrl
+          : wallPhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       timeTaskName: null == timeTaskName
           ? _value.timeTaskName
           : timeTaskName // ignore: cast_nullable_to_non_nullable
@@ -202,6 +224,10 @@ class __$$_TimeTaskVoucherDtoCopyWithImpl<$Res>
       validUntil: null == validUntil
           ? _value.validUntil
           : validUntil // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
       isActivated: null == isActivated
           ? _value.isActivated
@@ -226,10 +252,12 @@ class _$_TimeTaskVoucherDto extends _TimeTaskVoucherDto {
       {@JsonKey(includeToJson: false, includeFromJson: false) this.timeTaskId,
       required this.venueId,
       required this.wallPhotoId,
+      required this.wallPhotoUrl,
       required this.timeTaskName,
       required this.venueName,
       required this.voucherName,
       required this.validUntil,
+      required this.createdAt,
       this.isActivated = false,
       this.isRewardAcquired = false,
       @FirebaseNullableTimestampJsonConverter() this.usedAt})
@@ -246,6 +274,8 @@ class _$_TimeTaskVoucherDto extends _TimeTaskVoucherDto {
   @override
   final String wallPhotoId;
   @override
+  final String wallPhotoUrl;
+  @override
   final String timeTaskName;
   @override
   final String venueName;
@@ -253,6 +283,8 @@ class _$_TimeTaskVoucherDto extends _TimeTaskVoucherDto {
   final String voucherName;
   @override
   final DateTime validUntil;
+  @override
+  final DateTime createdAt;
   @override
   @JsonKey()
   final bool isActivated;
@@ -265,7 +297,7 @@ class _$_TimeTaskVoucherDto extends _TimeTaskVoucherDto {
 
   @override
   String toString() {
-    return 'TimeTaskVoucherDto(timeTaskId: $timeTaskId, venueId: $venueId, wallPhotoId: $wallPhotoId, timeTaskName: $timeTaskName, venueName: $venueName, voucherName: $voucherName, validUntil: $validUntil, isActivated: $isActivated, isRewardAcquired: $isRewardAcquired, usedAt: $usedAt)';
+    return 'TimeTaskVoucherDto(timeTaskId: $timeTaskId, venueId: $venueId, wallPhotoId: $wallPhotoId, wallPhotoUrl: $wallPhotoUrl, timeTaskName: $timeTaskName, venueName: $venueName, voucherName: $voucherName, validUntil: $validUntil, createdAt: $createdAt, isActivated: $isActivated, isRewardAcquired: $isRewardAcquired, usedAt: $usedAt)';
   }
 
   @override
@@ -278,6 +310,8 @@ class _$_TimeTaskVoucherDto extends _TimeTaskVoucherDto {
             (identical(other.venueId, venueId) || other.venueId == venueId) &&
             (identical(other.wallPhotoId, wallPhotoId) ||
                 other.wallPhotoId == wallPhotoId) &&
+            (identical(other.wallPhotoUrl, wallPhotoUrl) ||
+                other.wallPhotoUrl == wallPhotoUrl) &&
             (identical(other.timeTaskName, timeTaskName) ||
                 other.timeTaskName == timeTaskName) &&
             (identical(other.venueName, venueName) ||
@@ -286,6 +320,8 @@ class _$_TimeTaskVoucherDto extends _TimeTaskVoucherDto {
                 other.voucherName == voucherName) &&
             (identical(other.validUntil, validUntil) ||
                 other.validUntil == validUntil) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             (identical(other.isActivated, isActivated) ||
                 other.isActivated == isActivated) &&
             (identical(other.isRewardAcquired, isRewardAcquired) ||
@@ -300,10 +336,12 @@ class _$_TimeTaskVoucherDto extends _TimeTaskVoucherDto {
       timeTaskId,
       venueId,
       wallPhotoId,
+      wallPhotoUrl,
       timeTaskName,
       venueName,
       voucherName,
       validUntil,
+      createdAt,
       isActivated,
       isRewardAcquired,
       usedAt);
@@ -329,10 +367,12 @@ abstract class _TimeTaskVoucherDto extends TimeTaskVoucherDto {
           final String? timeTaskId,
       required final String venueId,
       required final String wallPhotoId,
+      required final String wallPhotoUrl,
       required final String timeTaskName,
       required final String venueName,
       required final String voucherName,
       required final DateTime validUntil,
+      required final DateTime createdAt,
       final bool isActivated,
       final bool isRewardAcquired,
       @FirebaseNullableTimestampJsonConverter()
@@ -350,6 +390,8 @@ abstract class _TimeTaskVoucherDto extends TimeTaskVoucherDto {
   @override
   String get wallPhotoId;
   @override
+  String get wallPhotoUrl;
+  @override
   String get timeTaskName;
   @override
   String get venueName;
@@ -357,6 +399,8 @@ abstract class _TimeTaskVoucherDto extends TimeTaskVoucherDto {
   String get voucherName;
   @override
   DateTime get validUntil;
+  @override
+  DateTime get createdAt;
   @override
   bool get isActivated;
   @override
