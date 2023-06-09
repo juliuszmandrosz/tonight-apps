@@ -23,6 +23,7 @@ import 'package:tonight/presentation/events_details/widgets/event_details_ticket
 import 'package:tonight/presentation/events_details/widgets/tiles/event_details_section.dart';
 import 'package:tonight/presentation/events_details/widgets/voucher_modal.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class EventDetailsPage extends HookWidget {
   final String? eventId;
@@ -87,8 +88,7 @@ class EventDetailsPage extends HookWidget {
               (message) => showDialog(
                 context: context,
                 builder: (_) => AlertDialog(
-                  // TODO - add translations
-                  title: Text('Informacja'),
+                  title: Text(S().information),
                   content: Text(message),
                   actions: [
                     TextButton(

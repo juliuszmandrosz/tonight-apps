@@ -25,10 +25,9 @@ extension TonightEventsFailureX on TonightEventsFailure {
   String get message => when(
         unexpected: () => S().serverError,
         noConnection: () => S().errorCheckInternetConnection,
-        // TODO - add translations
-        voucherAlreadyUsedTonight: () => 'Voucher already used tonight',
-        voucherAlreadyUsedOnEvent: () => 'Voucher already used on event',
-        voucherExpired: () => 'Voucher expired',
-        voucherUsageLimitReached: () => 'Voucher usage limit reached',
+        voucherAlreadyUsedTonight: () => S().voucherUsedTonight,
+        voucherAlreadyUsedOnEvent: () => S().voucherUsedOnEvent,
+        voucherExpired: () => S().voucherExpired,
+        voucherUsageLimitReached: () => S().voucherLimitReached,
       );
 }

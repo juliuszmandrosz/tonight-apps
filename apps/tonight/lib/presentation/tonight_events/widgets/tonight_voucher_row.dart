@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
 import 'package:tonight/application/tonight_events/models/event_voucher_model.dart';
 import 'package:tonight/presentation/utils/show_confirm_phone_number_dialog.dart';
+import 'package:translations/translations.dart';
 
 class TonightVoucherRow extends StatelessWidget {
   final EventVoucher voucher;
@@ -25,10 +26,8 @@ class TonightVoucherRow extends StatelessWidget {
         }
 
         if (context.mounted) {
-          // TODO - add translation
           final result = await context.showConfirmationDialogWithCustomMessage(
-            'Czy na pewno chcesz wykorzystać ten voucher? Mozesz wykorzystać jeden '
-                'voucher specjalny raz na 12 godzin. Po aktywacji jest wazny przez 10 minut, upewnij się, ze zdazysz do baru.',
+            S().confirmTonightVoucherUse,
           );
 
           if (result != true) return;

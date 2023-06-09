@@ -2,6 +2,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/activate_time_task_reward/activate_time_task_reward_cubit.dart';
+import 'package:translations/translations.dart';
 
 class ActivateTimeTaskRewardButton extends StatelessWidget {
   const ActivateTimeTaskRewardButton({Key? key}) : super(key: key);
@@ -22,8 +23,7 @@ class ActivateTimeTaskRewardButton extends StatelessWidget {
                       : () async {
                           final result = await context
                               .showConfirmationDialogWithCustomMessage(
-                            // TODO - add translation
-                            'Czy na pewno chcesz aktywować nagrodę? Będzie ważna przez 10 minut. Upewnij się, że zdążysz do baru.',
+                            S().confirmTimeTaskVoucherUse,
                           );
 
                           if (result == true && context.mounted) {
@@ -33,8 +33,7 @@ class ActivateTimeTaskRewardButton extends StatelessWidget {
                           }
                         },
                   icon: const Icon(Icons.check),
-                  // TODO - add translation
-                  label: const Text('Aktywuj'),
+                  label: Text(S().activate),
                 ),
               );
       },

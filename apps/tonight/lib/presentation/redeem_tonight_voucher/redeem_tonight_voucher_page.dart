@@ -12,6 +12,7 @@ import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/redeem_tonight_voucher/widgets/redeem_tonight_voucher_button.dart';
 import 'package:tonight/presentation/redeem_tonight_voucher/widgets/user_tonight_voucher_expired_info.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class RedeemTonightVoucherPage extends StatefulWidget {
   final UserTonightVoucher voucher;
@@ -49,8 +50,7 @@ class _RedeemTonightVoucherPageState extends State<RedeemTonightVoucherPage> {
               (route) => route.settings.name == WelcomeLoaderRoute.name,
             );
 
-            // TODO - add translation
-            context.showSnackbarMessage('Na zdrowie! 🍻');
+            context.showSnackbarMessage('${S().cheers} 🍻');
           }
         },
         child: Scaffold(
@@ -72,9 +72,8 @@ class _RedeemTonightVoucherPageState extends State<RedeemTonightVoucherPage> {
                                 .difference(DateTime.now())
                                 .inSeconds,
                             onTimerCompleted: () {
-                              // TODO - add translation
                               context.showSnackbarMessage(
-                                'Czas na odebranie nagrody minął',
+                                S().timeForCollectingRewardPassed,
                               );
                               context.popRoute();
                             },
