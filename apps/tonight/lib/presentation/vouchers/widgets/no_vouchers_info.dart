@@ -14,8 +14,7 @@ class NoVouchersInfo extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            // TODO - add translation
-            'Brak voucherów',
+            S().vouchers(0),
             style: context.titleSmall,
           ),
           const SizedBox(height: 20),

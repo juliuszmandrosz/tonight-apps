@@ -40,8 +40,7 @@ class TicketsAndVouchersTabBar extends StatelessWidget {
         tabs: [
           Tab(
             child: Text(
-              // TODO - add translation
-              'Vouchery',
+              S().vouchers(2),
               textAlign: TextAlign.center,
               maxLines: 1,
             ),

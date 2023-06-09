@@ -63,7 +63,6 @@ Future<void> handleDeepLink(
   }
 }
 
-// TODO - refactor
 Future<void> handleTimeTask({
   required String taskId,
   required BuildContext context,
@@ -74,12 +73,11 @@ Future<void> handleTimeTask({
   timeTaskResult.fold(
     (failure) => failure.map(
       unexpected: (_) => context.showSnackbarMessage(S().serverError),
-      // TODO - add translation
-      taskNotExists: (_) => context.showSnackbarMessage('S().taskNotExists'),
+      taskNotExists: (_) => context.showSnackbarMessage(S().taskNotExists),
       timeTaskExpired: (_) =>
           context.showSnackbarMessage('${S().timeTaskExpired} 😉'),
-      timeTaskLimitReached: (_) => // TODO - add translation
-          context.showSnackbarMessage('${'S().timeTaskLimitReached'} 😉'),
+      timeTaskLimitReached: (_) =>
+          context.showSnackbarMessage('${S().timeTaskLimitReached} 😉'),
     ),
     (task) async {
       if (!context.read<AuthCubit>().checkIfPhoneNumberIsVerified()) {

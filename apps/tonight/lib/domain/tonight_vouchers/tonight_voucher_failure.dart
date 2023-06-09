@@ -20,12 +20,11 @@ class TonightVoucherFailure with _$TonightVoucherFailure {
 }
 
 extension TonightVoucherFailureX on TonightVoucherFailure {
-  // TODO - add translations
   String get message => when(
         unexpected: () => S().serverError,
-        voucherAlreadyUsedTonight: () => 'Voucher already used tonight',
-        voucherAlreadyUsedOnEvent: () => 'Voucher already used on this event',
-        voucherExpired: () => 'Voucher expired',
-        voucherUsageLimitReached: () => 'Voucher usage limit reached',
+        voucherAlreadyUsedTonight: () => S().voucherUsedTonight,
+        voucherAlreadyUsedOnEvent: () => S().voucherUsedOnEvent,
+        voucherExpired: () => S().voucherExpired,
+        voucherUsageLimitReached: () => S().voucherLimitReached,
       );
 }

@@ -55,10 +55,7 @@ class EventReviewCubit extends Cubit<EventReviewState> {
     }
 
     if (state.reviewValue < 5 && state.reviewContent.value.length < 10) {
-      _showErrorMessage(
-        // TODO - add translation
-        'W przypadku oceny poniżej 5 gwiazdek, prosimy o podzielenie się swoją opinią na temat możliwych do poprawy aspektów. (minimum 10 znaków)',
-      );
+      _showErrorMessage(S().addReviewContent);
     }
 
     if (!_validateForm()) return;

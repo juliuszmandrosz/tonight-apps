@@ -36,8 +36,7 @@ class UserProfileStatsRow extends StatelessWidget {
             child: UserDetailTile(
               onTap: () => context.pushRoute(const TicketsAndVouchersRoute()),
               value: userProfile.ticketsCount,
-              // TODO - add translation
-              label: '${S().tickets(2)} i vouchery',
+              label: S().ticketsAndVouchers,
               icon: FontAwesomeIcons.ticket,
             ),
           ),
