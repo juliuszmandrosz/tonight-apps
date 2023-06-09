@@ -1,6 +1,7 @@
 import 'package:common/extensions/build_context_extensions.dart';
 import 'package:common/extensions/typography_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:translations/translations.dart';
 
 class ActivateTimeTaskRewardValidUntilInfo extends StatelessWidget {
   final DateTime validUntil;
@@ -13,8 +14,7 @@ class ActivateTimeTaskRewardValidUntilInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      // TODO - add translation
-      'Czas na aktywację do: ${context.formatDateTimeToLocaleYMDHM(validUntil)}',
+      '${S().timeForActivationTo}: ${context.formatDateTimeToLocaleYMDHM(validUntil)}',
       style: context.titleSmall,
       textAlign: TextAlign.center,
     );

@@ -2,6 +2,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/redeem_tonight_voucher/redeem_tonight_voucher_cubit.dart';
+import 'package:translations/translations.dart';
 
 class RedeemTonightVoucherButton extends StatelessWidget {
   final String eventId;
@@ -24,8 +25,7 @@ class RedeemTonightVoucherButton extends StatelessWidget {
                   onPressed: () async {
                     final result =
                         await context.showConfirmationDialogWithCustomMessage(
-                      // TODO - add translation
-                      'Czy na pewno nagroda została odebrana?',
+                      S().confirmRewardReceived,
                     );
 
                     if (result == true && context.mounted) {
@@ -35,8 +35,7 @@ class RedeemTonightVoucherButton extends StatelessWidget {
                     }
                   },
                   icon: const Icon(Icons.check),
-                  // TODO - add translation
-                  label: const Text('Nagroda odebrana'),
+                  label: Text(S().rewardReceived),
                 ),
               );
       },

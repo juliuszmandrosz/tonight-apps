@@ -22,7 +22,6 @@ extension WallPhotoFailureX on WallPhotoFailure {
         permissionDenied: () => S().operationNotAllowed,
         noConnection: () => S().errorCheckInternetConnection,
         reportExists: () => S().photoAlreadyReported,
-        // TODO - add translation
-        timeTaskLimitReached: () => 'S().timeTaskLimitReached',
+        timeTaskLimitReached: () => S().timeTaskLimitReached,
       );
 }

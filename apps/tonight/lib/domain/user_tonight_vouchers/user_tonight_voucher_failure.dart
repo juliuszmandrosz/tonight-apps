@@ -13,7 +13,6 @@ class UserTonightVoucherFailure with _$UserTonightVoucherFailure {
 extension UserTonightVoucherFailureX on UserTonightVoucherFailure {
   String get message => when(
         unexpected: () => S().serverError,
-        // TODO - add translation
-        voucherExpired: () => 'Voucher expired',
+        voucherExpired: () => S().voucherExpired,
       );
 }

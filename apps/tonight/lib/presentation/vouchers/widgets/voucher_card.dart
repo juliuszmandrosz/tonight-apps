@@ -6,6 +6,7 @@ import 'package:ticket_widget/ticket_widget.dart';
 import 'package:tonight/application/vouchers/models/voucher_model.dart';
 import 'package:tonight/application/vouchers/models/voucher_type.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class VoucherCard extends StatelessWidget {
   final Voucher voucher;
@@ -66,8 +67,7 @@ class VoucherCard extends StatelessWidget {
                     ),
                     if (!voucher.isExpired)
                       AutoSizeText(
-                        // TODO - add translation
-                        '${voucher.isActivated ? 'Aktywny do' : 'Ważny do'} ${context.formatDateTimeToLocaleYMDHM(voucher.validUntil)}',
+                        '${voucher.isActivated ? S().activeUntil : S().validUntil} ${context.formatDateTimeToLocaleYMDHM(voucher.validUntil)}',
                         style: context.labelSmall
                             .copyWith(color: context.secondaryColor),
                         maxLines: 1,
