@@ -16,6 +16,7 @@ import 'package:tonight/presentation/activate_time_task_reward/widgets/time_task
 import 'package:tonight/presentation/commons/widgets/countdown_timer.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class ActivateTimeTaskRewardPage extends StatefulWidget {
   final String timeTaskId;
@@ -60,8 +61,7 @@ class _ActivateTimeTaskRewardPageState
                     state.voucher.getOrCrash().wallPhotoId,
                   ),
                 );
-            // TODO - add translation
-            context.showSnackbarMessage('Na zdrowie! 🍻');
+            context.showSnackbarMessage('${S().cheers} 🍻');
           }
         },
         child: Scaffold(
@@ -102,9 +102,8 @@ class _ActivateTimeTaskRewardPageState
                               CountdownTimer(
                                 secondsLeft: secondsLeftForReceiveReward,
                                 onTimerCompleted: () {
-                                  // TODO - add translation
                                   context.showSnackbarMessage(
-                                    'Czas na odebranie nagrody minął',
+                                    S().timeForCollectingRewardPassed,
                                   );
                                   context.popRoute();
                                 },

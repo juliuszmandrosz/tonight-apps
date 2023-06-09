@@ -16,9 +16,8 @@ extension TimeTaskVoucherFailureX on TimeTaskVoucherFailure {
   String get message {
     return when(
       unexpected: () => S().serverError,
-      // TODO - add translations
-      voucherExpired: () => 'Voucher expired',
-      voucherNotExists: () => 'S().voucherNotExists',
+      voucherExpired: () => S().voucherExpired,
+      voucherNotExists: () => S().voucherNotExists,
     );
   }
 }

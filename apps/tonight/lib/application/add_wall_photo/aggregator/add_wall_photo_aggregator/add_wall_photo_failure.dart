@@ -20,7 +20,6 @@ extension AddWallPhotoFailureX on AddWallPhotoFailure {
         unexpected: () => S().serverError,
         permissionDenied: () => S().operationNotAllowed,
         cannotUploadPhoto: () => S().errorAddingPhoto,
-        // TODO - add translation
-        timeTaskLimitReached: () => 'S().timeTaskLimitReached',
+        timeTaskLimitReached: () => '${S().timeTaskLimitReached} 😉',
       );
 }

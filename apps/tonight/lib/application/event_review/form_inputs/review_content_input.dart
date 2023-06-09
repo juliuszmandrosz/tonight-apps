@@ -8,8 +8,7 @@ enum ReviewContentError {
 
 final reviewContentInputErrorMessages = {
   ReviewContentError.tooLong: S().reviewContentTooLong,
-  // TODO - add translation
-  ReviewContentError.tooShort: 'Minimum 10 znaków'
+  ReviewContentError.tooShort: S().reviewContentTooShort,
 };
 
 class ReviewContentInput extends FormzInput<String, ReviewContentError> {
