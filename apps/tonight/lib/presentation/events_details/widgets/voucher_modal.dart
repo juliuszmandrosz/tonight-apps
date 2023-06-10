@@ -118,8 +118,8 @@ class _VoucherModalState extends State<VoucherModal> {
                       ),
                     ),
                     Positioned(
-                      top: -18,
-                      right: 5,
+                      top: -20,
+                      right: 10,
                       child: Center(
                         child: IconButton(
                           onPressed: () => setState(() {
