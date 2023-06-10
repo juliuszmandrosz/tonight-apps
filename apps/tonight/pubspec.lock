@@ -1533,10 +1533,10 @@ packages:
     dependency: transitive
     description:
       name: mockito
-      sha256: "8b46d7eb40abdda92d62edd01546051f0c27365e65608c284de336dccfef88cc"
+      sha256: "7d5b53bcd556c1bc7ffbe4e4d5a19c3e112b7e925e9e172dd7c6ad0630812616"
       url: "https://pub.dev"
     source: hosted
-    version: "5.4.1"
+    version: "5.4.2"
   money2:
     dependency: transitive
     description:
@@ -2200,7 +2200,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: bb8d6c87ed3ee6b1af8573dfb4b02939f286f685
+      resolved-ref: "443a19d3a98a64ded63217609eab9df91cb3d13d"
       url: "git@github.com:juliuszmandrosz/RaverTranslations.git"
     source: git
     version: "0.0.1"
