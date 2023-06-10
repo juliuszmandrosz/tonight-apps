@@ -53,6 +53,7 @@ class AddWallPhotoPage extends StatelessWidget {
       },
       child: TonightOverlay(
         child: Scaffold(
+          backgroundColor: context.backgroundColor,
           appBar: TonightAppBar(title: S().publish),
           bottomNavigationBar: const AddWallPhotoBottomBar(),
           floatingActionButton: AddWallPhotoButton(event: event),
