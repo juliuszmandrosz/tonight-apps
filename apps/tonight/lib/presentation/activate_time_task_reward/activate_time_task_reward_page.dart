@@ -105,7 +105,11 @@ class _ActivateTimeTaskRewardPageState
                                   context.showSnackbarMessage(
                                     S().timeForCollectingRewardPassed,
                                   );
-                                  context.popRoute();
+                                  context.router.popUntil(
+                                    (route) =>
+                                        route.settings.name ==
+                                        WelcomeLoaderRoute.name,
+                                  );
                                 },
                                 textStyle: context.headlineMedium,
                               ),
