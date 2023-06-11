@@ -73,16 +73,18 @@ class AddWallPhotoPage extends StatelessWidget {
                     heroTag: heroTag,
                     isSelfie: isSelfie,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       children: [
-                        SizedBox(height: 20),
-                        Divider(),
-                        SizedBox(height: 4),
-                        AddWallPhotoClubTile(),
-                        AddWallPhotoEventTile(),
-                        SizedBox(height: 150),
+                        const SizedBox(height: 20),
+                        Divider(
+                          color: context.dividerColor,
+                        ),
+                        const SizedBox(height: 4),
+                        const AddWallPhotoClubTile(),
+                        const AddWallPhotoEventTile(),
+                        const SizedBox(height: 150),
                       ],
                     ),
                   ),
