@@ -35,7 +35,7 @@ class TonightVoucherRow extends StatelessWidget {
           if (context.mounted) {
             context
                 .read<TonightEventsBloc>()
-                .add(TonightEventsEvent.eventVoucherUsed(voucher.id));
+                .add(TonightEventsEvent.eventVoucherUsed(voucher));
           }
         }
       },
