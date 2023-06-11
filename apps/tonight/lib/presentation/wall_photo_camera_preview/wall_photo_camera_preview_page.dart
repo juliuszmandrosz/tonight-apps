@@ -50,18 +50,28 @@ class _WallPhotoCameraPreviewPageState
               builder: (context, constraints) {
                 final bottomHeight = constraints.maxHeight * 0.15;
                 return _photoPath != null
-                    ? WallPhotoPreview(
-                        photoPath: _photoPath!,
-                        heroTag: _photoHeroTag,
-                        bottomHeight: bottomHeight,
-                        isSelfie: _isSelfie,
-                        event: widget.event,
-                        timeTask: widget.timeTask,
-                        onRetry: () {
-                          setState(() {
-                            _photoPath = null;
-                          });
-                        },
+                    ? Stack(
+                        children: [
+                          WallPhotoPreview(
+                            photoPath: _photoPath!,
+                            heroTag: _photoHeroTag,
+                            bottomHeight: bottomHeight,
+                            isSelfie: _isSelfie,
+                            event: widget.event,
+                            timeTask: widget.timeTask,
+                            onRetry: () {
+                              setState(() {
+                                _photoPath = null;
+                              });
+                            },
+                          ),
+                          if (widget.timeTask.isSome())
+                            const Positioned(
+                              left: 5,
+                              top: 5,
+                              child: ImageBackButton(isTransparent: true),
+                            ),
+                        ],
                       )
                     : CameraAwesomeBuilder.awesome(
                         enableAudio: false,
