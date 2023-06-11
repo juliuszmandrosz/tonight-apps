@@ -13,6 +13,7 @@ class TonightEventsState with _$TonightEventsState {
     required EventFilters eventFilters,
     required Map<MenuEventFilter, IFilter> appliedMenuFilters,
     required Option<TonightEventsFailure> failure,
+    required Option<EventVoucher> usedVoucher,
   }) = _TonightEventsState;
 
   factory TonightEventsState.initial() => TonightEventsState(
@@ -28,5 +29,6 @@ class TonightEventsState with _$TonightEventsState {
           showOnlyFilter: ShowOnlyFilter(showOnlyTonight: true),
         ),
         failure: none(),
+        usedVoucher: none(),
       );
 }
