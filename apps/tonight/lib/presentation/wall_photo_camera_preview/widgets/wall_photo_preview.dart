@@ -6,7 +6,9 @@ import 'package:dartz/dartz.dart' as dartz;
 import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:tonight/domain/time_tasks/time_task_entity.dart';
+import 'package:tonight/presentation/core/image_back_button.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
 
@@ -71,6 +73,29 @@ class _WallPhotoPreviewState extends State<WallPhotoPreview>
       opacity: _animation,
       child: Column(
         children: [
+          if (widget.timeTask.isSome())
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              child: Row(
+                children: [
+                  const ImageBackButton(isTransparent: true),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 4,
+                      ),
+                      child: Text(
+                        Intl.getCurrentLocale().toUpperCase() == 'PL'
+                            ? widget.timeTask.getOrCrash().descriptionPl
+                            : widget.timeTask.getOrCrash().descriptionEn,
+                        style: context.titleMedium,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           Expanded(
             child: Hero(
               tag: widget.heroTag,
