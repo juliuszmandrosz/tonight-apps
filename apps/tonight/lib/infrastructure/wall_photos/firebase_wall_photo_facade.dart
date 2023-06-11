@@ -133,11 +133,17 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
         await _storage.refFromURL(photo.photoUrl).delete();
       }
       if (photo.timeTaskId.isNotNullOrEmpty) {
-        await _firestore.userCollection
-            .doc(photo.userId)
-            .timeTaskVouchers
-            .doc(photo.timeTaskId!)
-            .delete();
+        await _firestore.runTransaction((tx) async {
+          final timeTaskRef = _firestore.userCollection
+              .doc(photo.userId)
+              .timeTaskVouchers
+              .doc(photo.timeTaskId!);
+
+          final currentUserRef = _firestore.getCurrentUserDocRef(_auth);
+
+          tx.delete(timeTaskRef);
+          tx.update(currentUserRef, {'ticketsCount': FieldValue.increment(-1)});
+        });
       }
       return right(unit);
     } on FirebaseException catch (e) {
