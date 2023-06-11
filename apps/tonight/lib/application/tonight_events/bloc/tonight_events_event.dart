@@ -18,6 +18,6 @@ class TonightEventsEvent with _$TonightEventsEvent {
 
   const factory TonightEventsEvent.eventsRefreshed() = _EventsRefreshed;
 
-  const factory TonightEventsEvent.eventVoucherUsed(String eventId) =
+  const factory TonightEventsEvent.eventVoucherUsed(EventVoucher voucher) =
       _EventVoucherUsed;
 }
