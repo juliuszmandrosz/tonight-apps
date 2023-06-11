@@ -16,6 +16,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tonight/application/events/event_filters/menu_event_filter.dart';
 import 'package:tonight/application/tonight_events/aggregator/tonight_events_aggregator.dart';
 import 'package:tonight/application/tonight_events/aggregator/tonight_events_failure.dart';
+import 'package:tonight/application/tonight_events/models/event_voucher_model.dart';
 import 'package:tonight/application/tonight_events/models/tonight_event_model.dart';
 
 part 'tonight_events_bloc.freezed.dart';
@@ -233,13 +234,21 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
     Emitter<TonightEventsState> emit,
   ) async {
     emit(state.copyWith(useVoucherStatus: CubitStatus.loading));
-    final result = await _tonightEventsAggregator.useVoucher(event.eventId);
+    final result = await _tonightEventsAggregator.useVoucher(event.voucher.id);
     result.fold(
       (failure) {
         emit(state.copyWith(useVoucherStatus: CubitStatus.failure));
         _showSnackbar(emit, failure.message);
       },
-      (_) => emit(state.copyWith(useVoucherStatus: CubitStatus.success)),
+      (_) {
+        emit(
+          state.copyWith(
+            useVoucherStatus: CubitStatus.success,
+            usedVoucher: some(event.voucher),
+          ),
+        );
+        emit(state.copyWith(usedVoucher: none()));
+      },
     );
   }
 
