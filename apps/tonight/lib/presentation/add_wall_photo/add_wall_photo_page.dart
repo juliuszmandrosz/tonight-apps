@@ -52,37 +52,42 @@ class AddWallPhotoPage extends StatelessWidget {
         return photoCubit;
       },
       child: TonightOverlay(
-        child: Scaffold(
-          backgroundColor: context.backgroundColor,
-          appBar: TonightAppBar(title: S().publish),
-          bottomNavigationBar: const AddWallPhotoBottomBar(),
-          floatingActionButton: AddWallPhotoButton(event: event),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.endContained,
-          body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const SizedBox(height: 20),
-                AddWallPhotoPreview(
-                  photoPath: photoPath,
-                  heroTag: heroTag,
-                  isSelfie: isSelfie,
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 20),
-                      Divider(),
-                      SizedBox(height: 4),
-                      AddWallPhotoClubTile(),
-                      AddWallPhotoEventTile(),
-                      SizedBox(height: 150),
-                    ],
+        child: SafeArea(
+          child: Scaffold(
+            backgroundColor: context.backgroundColor,
+            appBar: TonightAppBar(
+              title: S().publish,
+              backgroundColor: context.backgroundColor,
+            ),
+            bottomNavigationBar: const AddWallPhotoBottomBar(),
+            floatingActionButton: AddWallPhotoButton(event: event),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.endContained,
+            body: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const SizedBox(height: 20),
+                  AddWallPhotoPreview(
+                    photoPath: photoPath,
+                    heroTag: heroTag,
+                    isSelfie: isSelfie,
                   ),
-                ),
-              ],
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      children: [
+                        SizedBox(height: 20),
+                        Divider(),
+                        SizedBox(height: 4),
+                        AddWallPhotoClubTile(),
+                        AddWallPhotoEventTile(),
+                        SizedBox(height: 150),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
