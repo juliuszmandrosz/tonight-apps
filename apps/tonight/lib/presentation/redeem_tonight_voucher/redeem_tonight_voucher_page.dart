@@ -53,86 +53,89 @@ class _RedeemTonightVoucherPageState extends State<RedeemTonightVoucherPage> {
             context.showSnackbarMessage('${S().cheers} 🍻');
           }
         },
-        child: Scaffold(
-          appBar: TonightAppBar(
-            title: '',
-            backgroundColor: context.backgroundColor,
-          ),
-          body:
-              BlocBuilder<RedeemTonightVoucherCubit, RedeemTonightVoucherState>(
-            builder: (context, state) {
-              return Padding(
-                padding: const EdgeInsets.all(16),
-                child: widget.voucher.isExpired
-                    ? const UserTonightVoucherExpiredInfo()
-                    : Column(
-                        children: [
-                          CountdownTimer(
-                            secondsLeft: widget.voucher.validUntil
-                                .difference(DateTime.now())
-                                .inSeconds,
-                            onTimerCompleted: () {
-                              context.showSnackbarMessage(
-                                S().timeForCollectingRewardPassed,
-                              );
-                              context.router.popUntil(
-                                (route) =>
-                                    route.settings.name ==
-                                    WelcomeLoaderRoute.name,
-                              );
-                            },
-                            textStyle: context.headlineMedium,
-                          ),
-                          const SizedBox(height: 30),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const FaIcon(FontAwesomeIcons.gift, size: 20),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: Text(
-                                  widget.voucher.voucherName,
-                                  style: context.titleLarge,
+        child: SafeArea(
+          child: Scaffold(
+            appBar: TonightAppBar(
+              title: '',
+              backgroundColor: context.backgroundColor,
+            ),
+            body: BlocBuilder<RedeemTonightVoucherCubit,
+                RedeemTonightVoucherState>(
+              builder: (context, state) {
+                return Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: widget.voucher.isExpired
+                      ? const UserTonightVoucherExpiredInfo()
+                      : Column(
+                          children: [
+                            CountdownTimer(
+                              secondsLeft: widget.voucher.validUntil
+                                  .difference(DateTime.now())
+                                  .inSeconds,
+                              onTimerCompleted: () {
+                                context.showSnackbarMessage(
+                                  S().timeForCollectingRewardPassed,
+                                );
+                                context.router.popUntil(
+                                  (route) =>
+                                      route.settings.name ==
+                                      WelcomeLoaderRoute.name,
+                                );
+                              },
+                              textStyle: context.headlineMedium,
+                            ),
+                            const SizedBox(height: 30),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const FaIcon(FontAwesomeIcons.gift, size: 20),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: Text(
+                                    widget.voucher.voucherName,
+                                    style: context.titleLarge,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 30),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const FaIcon(FontAwesomeIcons.building, size: 20),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: Text(
-                                  widget.voucher.venueName,
-                                  style: context.titleLarge,
+                              ],
+                            ),
+                            const SizedBox(height: 30),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const FaIcon(FontAwesomeIcons.building,
+                                    size: 20),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: Text(
+                                    widget.voucher.venueName,
+                                    style: context.titleLarge,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 30),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const FaIcon(FontAwesomeIcons.fire, size: 20),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: Text(
-                                  widget.voucher.eventName,
-                                  style: context.titleLarge,
+                              ],
+                            ),
+                            const SizedBox(height: 30),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const FaIcon(FontAwesomeIcons.fire, size: 20),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: Text(
+                                    widget.voucher.eventName,
+                                    style: context.titleLarge,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          const Spacer(),
-                          RedeemTonightVoucherButton(
-                            eventId: widget.voucher.eventId,
-                          ),
-                        ],
-                      ),
-              );
-            },
+                              ],
+                            ),
+                            const Spacer(),
+                            RedeemTonightVoucherButton(
+                              eventId: widget.voucher.eventId,
+                            ),
+                          ],
+                        ),
+                );
+              },
+            ),
           ),
         ),
       ),
