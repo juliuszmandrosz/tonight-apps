@@ -18,34 +18,28 @@ Future<void> main() async {
 
   await dotenv.load();
 
-  await runZonedGuarded(
-    () async {
-      WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
 
-      _configureTimeAgo();
+  _configureTimeAgo();
 
-      await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
-
-      await FirebaseAppCheck.instance.activate(
-        webRecaptchaSiteKey: 'recaptcha-v3-site-key',
-      );
-
-      registerDependencies();
-
-      SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-        DeviceOrientation.portraitDown,
-      ]);
-
-      _configureTimeAgo();
-
-      runApp(TonightPartnersApp());
-    },
-    (error, stack) =>
-        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true),
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await FirebaseAppCheck.instance.activate(
+    webRecaptchaSiteKey: 'recaptcha-v3-site-key',
+  );
+
+  registerDependencies();
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  _configureTimeAgo();
+
+  runApp(TonightPartnersApp());
 
   final crashlytics = getIt<FirebaseCrashlytics>();
 
