@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -118,9 +119,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   FutureOr<void> _onWallPhotoRewardRedeemed(
       _WallPhotoRewardRedeemed event, Emitter<ProfileState> emit) {
     final userProfile = state.userProfile.getOrCrash();
-    final photo = userProfile.userPhotos.firstWhere(
+    final photo = userProfile.userPhotos.firstWhereOrNull(
       (p) => p.id == event.photoId,
     );
+    if (photo == null) return null;
     final photos = _userProfileAggregator.updatePhotoInState(
       photo.copyWith(isRewardAcquired: true),
     );
