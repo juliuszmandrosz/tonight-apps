@@ -107,7 +107,9 @@ class _NavigatorPageState extends State<NavigatorPage> {
 
             return AutoTabsScaffold(
               resizeToAvoidBottomInset: false,
-              appBarBuilder: (_, tabsRouter) => const TonightPartnersAppBar(),
+              appBarBuilder: (_, tabsRouter) => TonightPartnersAppBar(
+                backgroundColor: context.backgroundColor,
+              ),
               routes: const [
                 OverviewRoute(),
                 EventsRoute(),
@@ -121,6 +123,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
               bottomNavigationBuilder: (_, tabsRouter) {
                 return NavigationBar(
                   selectedIndex: tabsRouter.activeIndex,
+                  backgroundColor: context.backgroundColor,
                   onDestinationSelected: (i) {
                     setState(() {
                       switch (i) {
