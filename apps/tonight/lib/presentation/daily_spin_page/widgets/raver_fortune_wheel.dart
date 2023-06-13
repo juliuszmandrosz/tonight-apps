@@ -54,7 +54,7 @@ class RaverFortuneWheel extends HookWidget {
               height: 420,
               child: FortuneWheel(
                 curve: Curves.linear,
-                duration: const Duration(seconds: 4),
+                duration: const Duration(seconds: 3),
                 rotationCount: 8,
                 animateFirst: false,
                 onAnimationStart: () => isAnimating.value = true,
