@@ -6,9 +6,14 @@ class TonightPartnersAppBar extends StatelessWidget
     implements PreferredSizeWidget {
   final String? title;
   final List<Widget>? actions;
+  final Color? backgroundColor;
 
-  const TonightPartnersAppBar({this.title, this.actions, Key? key})
-      : super(key: key);
+  const TonightPartnersAppBar({
+    this.title,
+    this.actions,
+    this.backgroundColor,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +30,7 @@ class TonightPartnersAppBar extends StatelessWidget
             ),
       actions: actions,
       centerTitle: title == null || title!.isEmpty,
+      backgroundColor: backgroundColor,
     );
   }
 
