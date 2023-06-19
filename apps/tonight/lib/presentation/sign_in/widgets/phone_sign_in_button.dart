@@ -13,7 +13,7 @@ class PhoneSignInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: context.surfaceColor,
+        color: context.primaryColor,
         shape: BoxShape.circle,
       ),
       width: 50,
