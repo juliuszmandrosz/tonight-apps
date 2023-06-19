@@ -27,7 +27,7 @@ class SplashPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Center(
-          child: TonightLogo(height: context.height),
+          child: TonightLogo(height: context.height * 0.15),
         ),
       ),
     );
