@@ -1,1 +1,1 @@
-const kButtonHeight = 50.0;
+const kButtonHeight = 45.0;

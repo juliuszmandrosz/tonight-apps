@@ -1,4 +1,4 @@
-import 'package:common/constants/ui_constants.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/auth/sign_in/sign_in_cubit.dart';
