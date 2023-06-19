@@ -7,8 +7,8 @@ class EventFiltersRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: const [
+    return const Row(
+      children: [
         Flexible(
           flex: 3,
           child: EventDatePickerField(),
