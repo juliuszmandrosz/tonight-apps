@@ -7,8 +7,8 @@ class EventsSliverAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
+    return const Column(
+      children: [
         EventSearchField(),
         SizedBox(height: 12),
         EventFiltersRow(),
