@@ -17,10 +17,13 @@ class SubmitButton extends StatelessWidget {
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  ElevatedButton(
-                    child: Text(S().submit),
-                    onPressed: () =>
-                        context.read<OnboardingCubit>().submitOnboarding(),
+                  SizedBox(
+                    height: kButtonHeight,
+                    child: ElevatedButton(
+                      child: Text(S().submit),
+                      onPressed: () =>
+                          context.read<OnboardingCubit>().submitOnboarding(),
+                    ),
                   ),
                 ],
               );
