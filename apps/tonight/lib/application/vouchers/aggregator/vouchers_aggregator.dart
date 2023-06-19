@@ -48,6 +48,6 @@ class VouchersAggregator {
       ...timeTaskVouchers.map((v) => Voucher.fromTimeTaskVoucher(v)),
     ];
 
-    return right(vouchers);
+    return right(vouchers..sortByDateFieldDescending((v) => v.createdAt));
   }
 }
