@@ -6,7 +6,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'auth_cubit.freezed.dart';
-
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
@@ -23,14 +22,13 @@ class AuthCubit extends Cubit<AuthState> {
     _authStateSubscription?.cancel();
     _authStateSubscription = _commonAuthFacade
         .listenToAuthStateChange()
-        .debounceTime(const Duration(milliseconds: 300))
+        .debounceTime(const Duration(milliseconds: 50))
         .listen(
-          (result) =>
-          result.fold(
-                () => emit(const AuthState.unauthenticated()),
-                (user) => emit(AuthState.authenticated(user)),
+          (result) => result.fold(
+            () => emit(const AuthState.unauthenticated()),
+            (user) => emit(AuthState.authenticated(user)),
           ),
-    );
+        );
   }
 
   String get currentUserId => _userAuthFacade.getCurrentUserId();
@@ -43,14 +41,13 @@ class AuthCubit extends Cubit<AuthState> {
     _userSubscription?.cancel();
     _userSubscription = _userAuthFacade
         .listenToUserChanges()
-        .debounceTime(const Duration(milliseconds: 300))
+        .debounceTime(const Duration(milliseconds: 50))
         .listen(
-          (result) =>
-          result.fold(
-                () => emit(const AuthState.unauthenticated()),
-                (user) => emit(AuthState.authenticated(user)),
+          (result) => result.fold(
+            () => emit(const AuthState.unauthenticated()),
+            (user) => emit(AuthState.authenticated(user)),
           ),
-    );
+        );
   }
 
   void signOut() async {
@@ -62,8 +59,8 @@ class AuthCubit extends Cubit<AuthState> {
     emit(const AuthState.deleteAccountInProgress());
     final result = await _commonAuthFacade.deleteAccount();
     result.fold(
-          (_) => emit(const AuthState.deleteAccountFailure()),
-          (_) => emit(const AuthState.deleteAccountSuccess()),
+      (_) => emit(const AuthState.deleteAccountFailure()),
+      (_) => emit(const AuthState.deleteAccountSuccess()),
     );
   }
 
