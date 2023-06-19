@@ -1,3 +1,4 @@
+import 'package:common/extensions/build_context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
@@ -31,18 +32,28 @@ class WallPhotoFiltersPage extends StatelessWidget {
               getIt<WallPhotosFiltersCubit>()..initFilters(selectedFilters),
         ),
       ],
-      child: Scaffold(
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        appBar: TonightAppBar(title: S().filters),
-        floatingActionButton: const WallPhotoFiltersSubmitButton(),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: const [
-                WallPhotoFiltersShowWholeWorld(),
-                SizedBox(height: 80),
-              ],
+      child: BlocListener<WallPhotosFiltersCubit, WallPhotosFiltersState>(
+        listenWhen: (p, c) => p.snackbarMessage != c.snackbarMessage,
+        listener: (context, state) {
+          state.snackbarMessage.fold(
+            () {},
+            (message) => context.showSnackbarMessage(message),
+          );
+        },
+        child: Scaffold(
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
+          appBar: TonightAppBar(title: S().filters),
+          floatingActionButton: const WallPhotoFiltersSubmitButton(),
+          body: const SafeArea(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  WallPhotoFiltersShowWholeWorld(),
+                  SizedBox(height: 80),
+                ],
+              ),
             ),
           ),
         ),
