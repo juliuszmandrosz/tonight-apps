@@ -38,4 +38,20 @@ extension ListX<T> on List<T> {
       return fieldB.compareTo(fieldA);
     });
   }
+
+  void sortByDateFieldAscending(DateTime Function(T) getField) {
+    sort((a, b) {
+      final fieldA = getField(a);
+      final fieldB = getField(b);
+      return fieldA.compareTo(fieldB);
+    });
+  }
+
+  void sortByDateFieldDescending(DateTime Function(T) getField) {
+    sort((a, b) {
+      final fieldA = getField(a);
+      final fieldB = getField(b);
+      return fieldB.compareTo(fieldA);
+    });
+  }
 }
