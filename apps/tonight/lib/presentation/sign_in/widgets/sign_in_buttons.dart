@@ -8,11 +8,11 @@ class SignInButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: const [
+      children: [
         SignInButton(),
         SizedBox(height: 30),
         OrContinueWith(),
