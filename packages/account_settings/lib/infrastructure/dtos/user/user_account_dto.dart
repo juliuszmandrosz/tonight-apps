@@ -12,7 +12,7 @@ class UserAccountDto with _$UserAccountDto {
 
   @JsonSerializable()
   const factory UserAccountDto({
-    @JsonKey(ignore: true) String? id,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? id,
     @Default('') String email,
     @Default('') String phoneNumber,
     @Default('') String profilePictureUrl,
@@ -26,6 +26,8 @@ class UserAccountDto with _$UserAccountDto {
     @Default(0) int photosCount,
     @FirebaseNullableTimestampJsonConverter() DateTime? lastDailySpinAt,
     @FirebaseNullableTimestampJsonConverter() DateTime? lastTonightVoucherUseAt,
+    @FirebaseNullableTimestampJsonConverter() DateTime? dateOfBirth,
+    String? gender,
   }) = _UserAccountDto;
 
   factory UserAccountDto.fromDomain(UserAccount user) {
@@ -44,6 +46,8 @@ class UserAccountDto with _$UserAccountDto {
       phoneNumber: user.phoneNumber,
       lastDailySpinAt: user.lastDailySpinAt,
       lastTonightVoucherUseAt: user.lastTonightVoucherUseAt,
+      dateOfBirth: user.dateOfBirth,
+      gender: user.gender,
     );
   }
 
@@ -72,6 +76,8 @@ class UserAccountDto with _$UserAccountDto {
       phoneNumber: phoneNumber,
       lastDailySpinAt: lastDailySpinAt,
       lastTonightVoucherUseAt: lastTonightVoucherUseAt,
+      dateOfBirth: dateOfBirth,
+      gender: gender,
     );
   }
 }
