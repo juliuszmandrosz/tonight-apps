@@ -1,3 +1,4 @@
+import 'package:common/constants/ui_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/auth/sign_in/sign_in_cubit.dart';
@@ -14,6 +15,7 @@ class SignInButton extends StatelessWidget {
       builder: (context, state) {
         return SizedBox(
           width: double.infinity,
+          height: kButtonHeight,
           child: ElevatedButton(
             onPressed: () => context.read<SignInCubit>().sendSignInEmailLink(),
             child: Text(S().signIn),
