@@ -16,6 +16,8 @@ class UserAccount extends Equatable {
   final int photosCount;
   final DateTime? lastDailySpinAt;
   final DateTime? lastTonightVoucherUseAt;
+  final DateTime? dateOfBirth;
+  final String? gender;
 
   const UserAccount({
     required this.id,
@@ -32,6 +34,8 @@ class UserAccount extends Equatable {
     this.raverCoins = 0,
     this.ticketsCount = 0,
     this.photosCount = 0,
+    this.dateOfBirth,
+    this.gender,
   });
 
   @override
@@ -50,6 +54,8 @@ class UserAccount extends Equatable {
         photosCount,
         lastDailySpinAt,
         lastTonightVoucherUseAt,
+        dateOfBirth,
+        gender,
       ];
 
   UserAccount copyWith({
@@ -67,6 +73,8 @@ class UserAccount extends Equatable {
     bool? isPhoneNumberVerified,
     Option<DateTime>? lastDailySpinAt,
     Option<DateTime>? lastTonightVoucherUseAt,
+    Option<DateTime>? dateOfBirth,
+    Option<String>? gender,
   }) {
     return UserAccount(
       id: id,
@@ -94,6 +102,18 @@ class UserAccount extends Equatable {
               (value) => value,
             )
           : this.lastTonightVoucherUseAt,
+      dateOfBirth: dateOfBirth != null
+          ? dateOfBirth.fold(
+              () => null,
+              (value) => value,
+            )
+          : this.dateOfBirth,
+      gender: gender != null
+          ? gender.fold(
+              () => null,
+              (value) => value,
+            )
+          : this.gender,
     );
   }
 }
