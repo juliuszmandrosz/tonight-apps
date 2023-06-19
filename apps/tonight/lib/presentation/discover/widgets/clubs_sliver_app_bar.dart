@@ -7,8 +7,8 @@ class ClubsSliverAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
+    return const Column(
+      children: [
         ClubSearchField(),
         SizedBox(height: 12),
         ClubCityPickerField(),
