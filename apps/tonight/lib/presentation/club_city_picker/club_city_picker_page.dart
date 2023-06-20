@@ -52,11 +52,11 @@ class ClubCityPickerPage extends StatelessWidget {
                   ),
                 child: BlocBuilder<ClubCityPickerBloc, ClubCityPickerState>(
                   builder: (context, state) {
-                    return Padding(
-                      padding: const EdgeInsets.all(16.0),
+                    return const Padding(
+                      padding: EdgeInsets.all(16.0),
                       child: SingleChildScrollView(
                         child: Column(
-                          children: const [
+                          children: [
                             ClubPickerTextField(),
                             SizedBox(height: 20),
                             ClubCityPickerPredictionList(),

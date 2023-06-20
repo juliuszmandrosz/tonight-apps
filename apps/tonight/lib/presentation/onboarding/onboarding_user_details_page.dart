@@ -6,11 +6,13 @@ import 'package:formz/formz.dart';
 import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:tonight/presentation/onboarding/widgets/onboarding_birthdate_input.dart';
+import 'package:tonight/presentation/onboarding/widgets/onboarding_city_input.dart';
+import 'package:tonight/presentation/onboarding/widgets/onboarding_gender_input.dart';
 import 'package:tonight/presentation/onboarding/widgets/onboarding_profile_picture.dart';
 import 'package:tonight/presentation/onboarding/widgets/onboarding_username_input.dart';
 import 'package:tonight/presentation/onboarding/widgets/submit_button.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/translations.dart';
 
 class OnboardingUserDetailsPage extends StatelessWidget {
   const OnboardingUserDetailsPage({Key? key}) : super(key: key);
@@ -47,13 +49,22 @@ class OnboardingUserDetailsPage extends StatelessWidget {
                           const OnboardingProfilePicture(),
                           const SizedBox(height: 40),
                           Align(
-                            alignment: Alignment.centerLeft,
+                            alignment: Alignment.center,
                             child: TonightHeadline(
-                              text: S().chooseUsernameAndProfilePhoto,
+                              // TODO - add translation
+                              text: 'Almost there! 🎉',
+                              isSmallerVersion: true,
                             ),
                           ),
                           const SizedBox(height: 30),
                           const OnboardingUsernameInput(),
+                          const SizedBox(height: 30),
+                          const OnboardingCityInput(),
+                          const SizedBox(height: 30),
+                          const OnboardingBirthdateInput(),
+                          const SizedBox(height: 30),
+                          const OnboardingGenderInput(),
+                          const SizedBox(height: 30),
                         ],
                       ),
                     ),
