@@ -60,6 +60,10 @@ class FirebaseAccountFacade implements UserAccountFacade {
   @override
   Future<Either<UserAccountFailure, Unit>> submitOnboardingForUser({
     required String username,
+    required String cityId,
+    required String cityName,
+    required DateTime birthdate,
+    required String gender,
     required Uint8List? profilePicture,
   }) async {
     try {
@@ -77,6 +81,10 @@ class FirebaseAccountFacade implements UserAccountFacade {
       await userDocRef.update({
         'username': username,
         'profilePictureUrl': pictureUrl,
+        'cityId': cityId,
+        'cityName': cityName,
+        'birthdate': Timestamp.fromDate(birthdate),
+        'gender': gender,
       });
       return right(unit);
     } on FirebaseException catch (e) {

@@ -1,3 +1,4 @@
+import 'package:common/infrastructure/core/handle_dio_error.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -42,9 +43,16 @@ class GooglePlacesFacade implements PlacesFacade {
         cities.map((city) => PlaceDto.fromJson(city).toDomain()).toList(),
       );
     } on DioError catch (e) {
-      _logger.e('Dio error getting cities EXCEPTION: $e');
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const PlacesFailure.unexpected());
+      return left(
+        await handleDioError(
+          error: e,
+          crashlytics: _crashlytics,
+          logger: _logger,
+          message: e.message,
+          unexpectedFailure: const PlacesFailure.unexpected(),
+          socketFailure: const PlacesFailure.noConnection(),
+        ),
+      );
     }
   }
 }

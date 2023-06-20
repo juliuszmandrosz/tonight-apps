@@ -52,11 +52,11 @@ class EventCityPickerPage extends StatelessWidget {
                   ),
                 child: BlocBuilder<EventCityPickerBloc, EventCityPickerState>(
                   builder: (context, state) {
-                    return Padding(
-                      padding: const EdgeInsets.all(16.0),
+                    return const Padding(
+                      padding: EdgeInsets.all(16.0),
                       child: SingleChildScrollView(
                         child: Column(
-                          children: const [
+                          children: [
                             EventPickerTextField(),
                             SizedBox(height: 20),
                             EventCityPickerPredictionList(),

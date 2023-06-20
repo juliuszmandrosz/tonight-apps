@@ -74,6 +74,7 @@ import 'package:tonight/application/tonight/tonight_cubit.dart';
 import 'package:tonight/application/tonight_events/aggregator/tonight_events_aggregator.dart';
 import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
 import 'package:tonight/application/update_profile_picture/update_profile_picture_cubit.dart';
+import 'package:tonight/application/user_city_picker/user_city_picker_bloc.dart';
 import 'package:tonight/application/user_details/user_details_cubit.dart';
 import 'package:tonight/application/user_wall_photo_preview/user_wall_photo_preview_cubit.dart';
 import 'package:tonight/application/verify_phone_number/verify_phone_number_cubit.dart';
@@ -451,6 +452,12 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => VouchersBloc(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => UserCityPickerBloc(
       getIt(),
     ),
   );

@@ -2,6 +2,7 @@ import 'package:auth/auth.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:tonight/presentation/onboarding/widgets/onboarding_user_details_bottom_sheet.dart';
 import 'package:tonight/presentation/utils/show_confirm_phone_number_dialog.dart';
@@ -41,14 +42,19 @@ class OnboardingProfilePicture extends StatelessWidget {
                             ),
                           ),
                         )
-                      : Text(
-                          username.isEmpty
-                              ? ''
-                              : username.length == 1
-                                  ? username[0].toUpperCase()
-                                  : username.substring(0, 2).toUpperCase(),
-                          style: context.headlineMedium,
-                        ),
+                      : username.isEmpty
+                          ? const FaIcon(
+                              FontAwesomeIcons.solidUser,
+                              size: 48,
+                            )
+                          : Text(
+                              username.isEmpty
+                                  ? ''
+                                  : username.length == 1
+                                      ? username[0].toUpperCase()
+                                      : username.substring(0, 2).toUpperCase(),
+                              style: context.headlineMedium,
+                            ),
                 ),
               ),
               Positioned(
@@ -64,6 +70,7 @@ class OnboardingProfilePicture extends StatelessWidget {
                   child: IconButton(
                     icon: const Icon(Icons.edit),
                     onPressed: () async {
+                      context.unfocus();
                       if (context
                           .read<AuthCubit>()
                           .checkIfPhoneNumberIsVerified()) {

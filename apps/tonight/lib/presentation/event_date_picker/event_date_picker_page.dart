@@ -35,12 +35,12 @@ class EventDatePickerPage extends StatelessWidget {
             value: blocContext.read<EventsBloc>(),
           ),
         ],
-        child: SafeArea(
+        child: const SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(15),
+            padding: EdgeInsets.all(16),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 Flexible(
                   flex: 6,
                   child: EventDatePicker(),
