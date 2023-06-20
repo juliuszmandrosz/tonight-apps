@@ -35,9 +35,11 @@ _$_UserAccountDto _$$_UserAccountDtoFromJson(Map<String, dynamic> json) =>
           .fromJson(json['lastDailySpinAt'] as Timestamp?),
       lastTonightVoucherUseAt: const FirebaseNullableTimestampJsonConverter()
           .fromJson(json['lastTonightVoucherUseAt'] as Timestamp?),
-      dateOfBirth: const FirebaseNullableTimestampJsonConverter()
-          .fromJson(json['dateOfBirth'] as Timestamp?),
+      birthdate: const FirebaseNullableTimestampJsonConverter()
+          .fromJson(json['birthdate'] as Timestamp?),
       gender: json['gender'] as String?,
+      cityId: json['cityId'] as String?,
+      cityName: json['cityName'] as String?,
     );
 
 Map<String, dynamic> _$$_UserAccountDtoToJson(_$_UserAccountDto instance) =>
@@ -57,7 +59,9 @@ Map<String, dynamic> _$$_UserAccountDtoToJson(_$_UserAccountDto instance) =>
           .toJson(instance.lastDailySpinAt),
       'lastTonightVoucherUseAt': const FirebaseNullableTimestampJsonConverter()
           .toJson(instance.lastTonightVoucherUseAt),
-      'dateOfBirth': const FirebaseNullableTimestampJsonConverter()
-          .toJson(instance.dateOfBirth),
+      'birthdate': const FirebaseNullableTimestampJsonConverter()
+          .toJson(instance.birthdate),
       'gender': instance.gender,
+      'cityId': instance.cityId,
+      'cityName': instance.cityName,
     };

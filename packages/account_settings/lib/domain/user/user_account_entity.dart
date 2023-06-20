@@ -16,8 +16,10 @@ class UserAccount extends Equatable {
   final int photosCount;
   final DateTime? lastDailySpinAt;
   final DateTime? lastTonightVoucherUseAt;
-  final DateTime? dateOfBirth;
+  final DateTime? birthdate;
   final String? gender;
+  final String? cityId;
+  final String? cityName;
 
   const UserAccount({
     required this.id,
@@ -34,8 +36,10 @@ class UserAccount extends Equatable {
     this.raverCoins = 0,
     this.ticketsCount = 0,
     this.photosCount = 0,
-    this.dateOfBirth,
+    this.birthdate,
     this.gender,
+    this.cityId,
+    this.cityName,
   });
 
   @override
@@ -54,8 +58,10 @@ class UserAccount extends Equatable {
         photosCount,
         lastDailySpinAt,
         lastTonightVoucherUseAt,
-        dateOfBirth,
+        birthdate,
         gender,
+        cityId,
+        cityName,
       ];
 
   UserAccount copyWith({
@@ -73,8 +79,10 @@ class UserAccount extends Equatable {
     bool? isPhoneNumberVerified,
     Option<DateTime>? lastDailySpinAt,
     Option<DateTime>? lastTonightVoucherUseAt,
-    Option<DateTime>? dateOfBirth,
+    Option<DateTime>? birthdate,
     Option<String>? gender,
+    Option<String>? cityId,
+    Option<String>? cityName,
   }) {
     return UserAccount(
       id: id,
@@ -102,18 +110,30 @@ class UserAccount extends Equatable {
               (value) => value,
             )
           : this.lastTonightVoucherUseAt,
-      dateOfBirth: dateOfBirth != null
-          ? dateOfBirth.fold(
+      birthdate: birthdate != null
+          ? birthdate.fold(
               () => null,
               (value) => value,
             )
-          : this.dateOfBirth,
+          : this.birthdate,
       gender: gender != null
           ? gender.fold(
               () => null,
               (value) => value,
             )
           : this.gender,
+      cityId: cityId != null
+          ? cityId.fold(
+              () => null,
+              (value) => value,
+            )
+          : this.cityId,
+      cityName: cityName != null
+          ? cityName.fold(
+              () => null,
+              (value) => value,
+            )
+          : this.cityName,
     );
   }
 }
