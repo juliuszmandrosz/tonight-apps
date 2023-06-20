@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:formz/formz.dart';
 import 'package:tonight/application/auth/form_inputs/username.dart';
 import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:translations/generated/l10n.dart';
 
 class OnboardingUsernameInput extends HookWidget {
-  final String currentUsername;
-
-  const OnboardingUsernameInput({
-    this.currentUsername = '',
-    Key? key,
-  }) : super(key: key);
+  const OnboardingUsernameInput({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final textController = useTextEditingController(text: currentUsername);
+    final textController = useTextEditingController();
 
     return BlocBuilder<OnboardingCubit, OnboardingState>(
       buildWhen: (previous, current) =>
@@ -28,6 +24,10 @@ class OnboardingUsernameInput extends HookWidget {
           onChanged: (username) =>
               context.read<OnboardingCubit>().usernameChanged(username),
           decoration: InputDecoration(
+            prefixIcon: const Icon(
+              FontAwesomeIcons.at,
+              size: 16,
+            ),
             labelText: S().username,
             errorText: _getUsernameInputErrorMessage(state),
             errorMaxLines: 2,

@@ -41,6 +41,7 @@ import 'package:tonight/presentation/tickets_and_vouchers/tickets_and_vouchers_p
 import 'package:tonight/presentation/tonight/tonight_page.dart';
 import 'package:tonight/presentation/update_profile_picture/update_profile_picture_page.dart';
 import 'package:tonight/presentation/update_username/update_username_page.dart';
+import 'package:tonight/presentation/user_city_picker/user_city_picker_page.dart';
 import 'package:tonight/presentation/user_details/user_details_page.dart';
 import 'package:tonight/presentation/user_wall_photo_preview/user_wall_photo_preview_page.dart';
 import 'package:tonight/presentation/verify_phone_number/verify_phone_number_page.dart';
@@ -271,6 +272,11 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: RedeemTonightVoucherPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: UserCityPickerPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),

@@ -6,6 +6,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/application/auth/form_inputs/username.dart';
+import 'package:tonight/application/onboarding/form_inputs/birthdate_value_object.dart';
+import 'package:tonight/application/onboarding/form_inputs/city_value_object.dart';
+import 'package:tonight/application/onboarding/form_inputs/gender_value_object.dart';
+import 'package:tonight/application/onboarding/gender.dart';
+import 'package:tonight/domain/places/place_entity.dart';
 import 'package:translations/translations.dart';
 
 part 'onboarding_cubit.freezed.dart';
@@ -23,6 +28,10 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
     final failureOrSuccess = await _userAccountFacade.submitOnboardingForUser(
       username: state.username.value,
+      gender: state.gender.value!.name,
+      birthdate: state.birthdate.value!,
+      cityId: state.city.value!.id,
+      cityName: state.city.value!.name,
       profilePicture: state.userPhoto.fold(() => null, (picture) => picture),
     );
 
@@ -36,6 +45,21 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   void usernameChanged(String value) {
     final username = Username.dirty(value);
     emit(state.copyWith(username: username));
+  }
+
+  void cityChanged(Place value) {
+    final city = CityValueObject.dirty(value);
+    emit(state.copyWith(city: city));
+  }
+
+  void birthdateChanged(DateTime value) {
+    final birthdate = BirthdateValueObject.dirty(value);
+    emit(state.copyWith(birthdate: birthdate));
+  }
+
+  void genderChanged(Gender value) {
+    final gender = GenderValueObject.dirty(value);
+    emit(state.copyWith(gender: gender));
   }
 
   Future<void> pickProfilePhoto() async {
@@ -52,7 +76,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     emit(state.copyWith(userPhoto: none()));
   }
 
-  void _userPhotoChanged(Uint8List value) {
+  _userPhotoChanged(Uint8List value) {
     emit(state.copyWith(userPhoto: some(value)));
   }
 
@@ -63,9 +87,14 @@ class OnboardingCubit extends Cubit<OnboardingState> {
       ),
     );
 
-    final status = Formz.validate([
-      state.username,
-    ]);
+    final status = Formz.validate(
+      [
+        state.username,
+        state.city,
+        state.birthdate,
+        state.gender,
+      ],
+    );
     emit(state.copyWith(submissionStatus: status));
 
     return status.isValidated;

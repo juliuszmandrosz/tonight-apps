@@ -24,13 +24,4 @@ class EventDatePickerCubit extends Cubit<EventDatePickerState> {
   submitDateFilter() {
     emit(state.copyWith(isDateFilterApplied: true));
   }
-
-  resetDateFilter() {
-    emit(
-      state.copyWith(
-        filter: DateRangeFilter.empty(),
-        isDateFilterApplied: false,
-      ),
-    );
-  }
 }
