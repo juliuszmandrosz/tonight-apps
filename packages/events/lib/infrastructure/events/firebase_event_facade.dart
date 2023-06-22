@@ -18,6 +18,7 @@ import 'package:events/infrastructure/events_api.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:logger/logger.dart';
 import 'package:uuid/uuid.dart';
 
@@ -491,6 +492,38 @@ class FirebaseEventFacade
       return right<UserEventFailure, List<Event>>(
         result.map((doc) => EventDto.fromApi(doc).toDomain()).toList(),
       );
+    } on DioError catch (e) {
+      return left(
+        await handleDioError(
+          error: e,
+          crashlytics: _crashlytics,
+          logger: _logger,
+          message: 'Dio error fetching live events from club EXCEPTION: $e',
+          unexpectedFailure: const UserEventFailure.unexpected(),
+          socketFailure: const UserEventFailure.noConnection(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<UserEventFailure, DateTime?>> getNearestEventStartDateTime(
+      Option<LatLng> userLocation) async {
+    try {
+      var filters = EventFilters.empty();
+      filters = filters.copyWith(
+        showOnlyFilter: ShowOnlyFilter(showOnlyUpcoming: true),
+        maxDistanceFilter: filters.maxDistanceFilter.copyWith(
+          userLocation: userLocation,
+          enabled: true,
+        ),
+      );
+      final sort = EventSortModel.empty();
+      final result = await _eventsApi.getEvents(filters, sort, 1, 0);
+      final event =
+          result.map((doc) => EventDto.fromApi(doc).toDomain()).firstOrNull;
+
+      return right(event?.eventStartDateTime);
     } on DioError catch (e) {
       return left(
         await handleDioError(

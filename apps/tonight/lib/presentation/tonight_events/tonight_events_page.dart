@@ -75,14 +75,14 @@ class TonightEventsPage extends StatelessWidget {
               case CubitStatus.loading:
                 return const Expanded(child: WaveLoadingIndicator());
               case CubitStatus.success:
-                return state.events.isEmpty
-                    ? const Expanded(child: NoTonightEventsInfo())
-                    : Expanded(
-                        child: RefreshIndicator(
-                          onRefresh: () async => context
-                              .read<TonightEventsBloc>()
-                              .add(const TonightEventsEvent.eventsRefreshed()),
-                          child: InfiniteList(
+                return Expanded(
+                  child: RefreshIndicator(
+                    onRefresh: () async => context
+                        .read<TonightEventsBloc>()
+                        .add(const TonightEventsEvent.eventsRefreshed()),
+                    child: state.events.isEmpty
+                        ? const NoTonightEventsInfo()
+                        : InfiniteList(
                             itemCount: state.events.length,
                             hasReachedMax: state.hasReachedMax,
                             isLoading: state.getEventsStatus.isLoading(),
@@ -98,8 +98,8 @@ class TonightEventsPage extends StatelessWidget {
                               event: state.events[i],
                             ),
                           ),
-                        ),
-                      );
+                  ),
+                );
             }
           },
         ),
