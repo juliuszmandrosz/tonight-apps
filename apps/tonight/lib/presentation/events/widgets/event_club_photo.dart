@@ -9,22 +9,27 @@ import 'package:tonight/presentation/routes/app_router.gr.dart';
 class EventClubPhoto extends StatelessWidget {
   final Event event;
 
-  const EventClubPhoto({required this.event, Key? key,}) : super(key: key);
+  const EventClubPhoto({
+    required this.event,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () =>
-          context.pushRoute(
-            ClubDetailsRoute(clubId: event.clubId),
-          ),
-      child: ProfilePictureContainer(
-        imageSize: 45,
-        profilePictureUrl: event.clubPhotoUrl,
-        username: event.clubName,
-        textStyle: context.titleSmall,
-        backgroundColor: context.surfaceColor,
-        textColor: context.onSurfaceColor,
+    return Opacity(
+      opacity: 0.9,
+      child: InkWell(
+        onTap: () => context.pushRoute(
+          ClubDetailsRoute(clubId: event.clubId),
+        ),
+        child: ProfilePictureContainer(
+          imageSize: 45,
+          profilePictureUrl: event.clubPhotoUrl,
+          username: event.clubName,
+          textStyle: context.titleSmall,
+          backgroundColor: context.surfaceColor,
+          textColor: context.onSurfaceColor,
+        ),
       ),
     );
   }
