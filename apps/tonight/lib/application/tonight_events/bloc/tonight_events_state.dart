@@ -8,6 +8,7 @@ class TonightEventsState with _$TonightEventsState {
     required CubitStatus useVoucherStatus,
     required Option<String> errorMessage,
     required List<TonightEvent> events,
+    required Option<DateTime?> nearestEventStartDateTime,
     required bool hasReachedMax,
     required String filterPhrase,
     required EventFilters eventFilters,
@@ -23,6 +24,7 @@ class TonightEventsState with _$TonightEventsState {
         errorMessage: none(),
         hasReachedMax: false,
         events: [],
+        nearestEventStartDateTime: none(),
         filterPhrase: '',
         appliedMenuFilters: {},
         eventFilters: EventFilters.empty().copyWith(

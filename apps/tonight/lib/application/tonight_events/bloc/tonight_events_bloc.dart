@@ -59,7 +59,8 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
 
     emit(state.copyWith(eventFilters: filters));
 
-    final result = await _tonightEventsAggregator.fetchTonightEvents(
+    final result = await _tonightEventsAggregator
+        .fetchTonightEventsOrNearestEventStartDateTime(
       filters: filters,
       pageSize: _pageSize,
     );
@@ -71,11 +72,20 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
           failure: some(failure),
         ),
       ),
-      (events) => emit(
-        state.copyWith(
-          getEventsStatus: CubitStatus.success,
-          events: events,
-          hasReachedMax: events.length != _pageSize,
+      (success) => success.fold(
+        (events) => emit(
+          state.copyWith(
+            getEventsStatus: CubitStatus.success,
+            events: events,
+            hasReachedMax: events.length != _pageSize,
+          ),
+        ),
+        (dateTime) => emit(
+          state.copyWith(
+            getEventsStatus: CubitStatus.success,
+            nearestEventStartDateTime: some(dateTime),
+            events: [],
+          ),
         ),
       ),
     );
@@ -113,7 +123,8 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
   ) async {
     emit(state.copyWith(getEventsStatus: CubitStatus.loading));
 
-    final result = await _tonightEventsAggregator.fetchTonightEvents(
+    final result = await _tonightEventsAggregator
+        .fetchTonightEventsOrNearestEventStartDateTime(
       filters: state.eventFilters,
       pageSize: _pageSize,
     );
@@ -125,11 +136,21 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
           failure: some(failure),
         ),
       ),
-      (events) => emit(
-        state.copyWith(
-          getEventsStatus: CubitStatus.success,
-          events: events,
-          hasReachedMax: events.length != _pageSize,
+      (success) => success.fold(
+        (events) => emit(
+          state.copyWith(
+            getEventsStatus: CubitStatus.success,
+            events: events,
+            hasReachedMax: events.length != _pageSize,
+            nearestEventStartDateTime: none(),
+          ),
+        ),
+        (dateTime) => emit(
+          state.copyWith(
+            getEventsStatus: CubitStatus.success,
+            nearestEventStartDateTime: some(dateTime),
+            events: [],
+          ),
         ),
       ),
     );
@@ -207,7 +228,8 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
         break;
     }
 
-    final result = await _tonightEventsAggregator.fetchTonightEvents(
+    final result = await _tonightEventsAggregator
+        .fetchTonightEventsOrNearestEventStartDateTime(
       filters: state.eventFilters,
       pageSize: _pageSize,
     );
@@ -219,11 +241,21 @@ class TonightEventsBloc extends Bloc<TonightEventsEvent, TonightEventsState> {
           failure: some(failure),
         ),
       ),
-      (events) => emit(
-        state.copyWith(
-          getEventsStatus: CubitStatus.success,
-          events: events,
-          hasReachedMax: events.length != _pageSize,
+      (success) => success.fold(
+        (events) => emit(
+          state.copyWith(
+            getEventsStatus: CubitStatus.success,
+            events: events,
+            hasReachedMax: events.length != _pageSize,
+            nearestEventStartDateTime: none(),
+          ),
+        ),
+        (dateTime) => emit(
+          state.copyWith(
+            getEventsStatus: CubitStatus.success,
+            nearestEventStartDateTime: some(dateTime),
+            events: [],
+          ),
         ),
       ),
     );
