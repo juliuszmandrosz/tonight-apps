@@ -1083,6 +1083,8 @@ mixin _$TonightEventsState {
   CubitStatus get useVoucherStatus => throw _privateConstructorUsedError;
   Option<String> get errorMessage => throw _privateConstructorUsedError;
   List<TonightEvent> get events => throw _privateConstructorUsedError;
+  Option<DateTime?> get nearestEventStartDateTime =>
+      throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
   String get filterPhrase => throw _privateConstructorUsedError;
   EventFilters get eventFilters => throw _privateConstructorUsedError;
@@ -1109,6 +1111,7 @@ abstract class $TonightEventsStateCopyWith<$Res> {
       CubitStatus useVoucherStatus,
       Option<String> errorMessage,
       List<TonightEvent> events,
+      Option<DateTime?> nearestEventStartDateTime,
       bool hasReachedMax,
       String filterPhrase,
       EventFilters eventFilters,
@@ -1137,6 +1140,7 @@ class _$TonightEventsStateCopyWithImpl<$Res, $Val extends TonightEventsState>
     Object? useVoucherStatus = null,
     Object? errorMessage = null,
     Object? events = null,
+    Object? nearestEventStartDateTime = null,
     Object? hasReachedMax = null,
     Object? filterPhrase = null,
     Object? eventFilters = null,
@@ -1165,6 +1169,10 @@ class _$TonightEventsStateCopyWithImpl<$Res, $Val extends TonightEventsState>
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
               as List<TonightEvent>,
+      nearestEventStartDateTime: null == nearestEventStartDateTime
+          ? _value.nearestEventStartDateTime
+          : nearestEventStartDateTime // ignore: cast_nullable_to_non_nullable
+              as Option<DateTime?>,
       hasReachedMax: null == hasReachedMax
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
@@ -1215,6 +1223,7 @@ abstract class _$$_TonightEventsStateCopyWith<$Res>
       CubitStatus useVoucherStatus,
       Option<String> errorMessage,
       List<TonightEvent> events,
+      Option<DateTime?> nearestEventStartDateTime,
       bool hasReachedMax,
       String filterPhrase,
       EventFilters eventFilters,
@@ -1242,6 +1251,7 @@ class __$$_TonightEventsStateCopyWithImpl<$Res>
     Object? useVoucherStatus = null,
     Object? errorMessage = null,
     Object? events = null,
+    Object? nearestEventStartDateTime = null,
     Object? hasReachedMax = null,
     Object? filterPhrase = null,
     Object? eventFilters = null,
@@ -1270,6 +1280,10 @@ class __$$_TonightEventsStateCopyWithImpl<$Res>
           ? _value._events
           : events // ignore: cast_nullable_to_non_nullable
               as List<TonightEvent>,
+      nearestEventStartDateTime: null == nearestEventStartDateTime
+          ? _value.nearestEventStartDateTime
+          : nearestEventStartDateTime // ignore: cast_nullable_to_non_nullable
+              as Option<DateTime?>,
       hasReachedMax: null == hasReachedMax
           ? _value.hasReachedMax
           : hasReachedMax // ignore: cast_nullable_to_non_nullable
@@ -1307,6 +1321,7 @@ class _$_TonightEventsState implements _TonightEventsState {
       required this.useVoucherStatus,
       required this.errorMessage,
       required final List<TonightEvent> events,
+      required this.nearestEventStartDateTime,
       required this.hasReachedMax,
       required this.filterPhrase,
       required this.eventFilters,
@@ -1333,6 +1348,8 @@ class _$_TonightEventsState implements _TonightEventsState {
   }
 
   @override
+  final Option<DateTime?> nearestEventStartDateTime;
+  @override
   final bool hasReachedMax;
   @override
   final String filterPhrase;
@@ -1354,7 +1371,7 @@ class _$_TonightEventsState implements _TonightEventsState {
 
   @override
   String toString() {
-    return 'TonightEventsState(getEventsStatus: $getEventsStatus, nextPageStatus: $nextPageStatus, useVoucherStatus: $useVoucherStatus, errorMessage: $errorMessage, events: $events, hasReachedMax: $hasReachedMax, filterPhrase: $filterPhrase, eventFilters: $eventFilters, appliedMenuFilters: $appliedMenuFilters, failure: $failure, usedVoucher: $usedVoucher)';
+    return 'TonightEventsState(getEventsStatus: $getEventsStatus, nextPageStatus: $nextPageStatus, useVoucherStatus: $useVoucherStatus, errorMessage: $errorMessage, events: $events, nearestEventStartDateTime: $nearestEventStartDateTime, hasReachedMax: $hasReachedMax, filterPhrase: $filterPhrase, eventFilters: $eventFilters, appliedMenuFilters: $appliedMenuFilters, failure: $failure, usedVoucher: $usedVoucher)';
   }
 
   @override
@@ -1371,6 +1388,9 @@ class _$_TonightEventsState implements _TonightEventsState {
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             const DeepCollectionEquality().equals(other._events, _events) &&
+            (identical(other.nearestEventStartDateTime,
+                    nearestEventStartDateTime) ||
+                other.nearestEventStartDateTime == nearestEventStartDateTime) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
                 other.hasReachedMax == hasReachedMax) &&
             (identical(other.filterPhrase, filterPhrase) ||
@@ -1392,6 +1412,7 @@ class _$_TonightEventsState implements _TonightEventsState {
       useVoucherStatus,
       errorMessage,
       const DeepCollectionEquality().hash(_events),
+      nearestEventStartDateTime,
       hasReachedMax,
       filterPhrase,
       eventFilters,
@@ -1414,6 +1435,7 @@ abstract class _TonightEventsState implements TonightEventsState {
       required final CubitStatus useVoucherStatus,
       required final Option<String> errorMessage,
       required final List<TonightEvent> events,
+      required final Option<DateTime?> nearestEventStartDateTime,
       required final bool hasReachedMax,
       required final String filterPhrase,
       required final EventFilters eventFilters,
@@ -1431,6 +1453,8 @@ abstract class _TonightEventsState implements TonightEventsState {
   Option<String> get errorMessage;
   @override
   List<TonightEvent> get events;
+  @override
+  Option<DateTime?> get nearestEventStartDateTime;
   @override
   bool get hasReachedMax;
   @override

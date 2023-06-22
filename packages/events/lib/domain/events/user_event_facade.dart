@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:events/domain/domain.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 abstract class UserEventFacade {
   Future<Either<UserEventFailure, Event>> getEventById(String eventId);
@@ -22,4 +23,8 @@ abstract class UserEventFacade {
     int pageSize = 20,
     int offset = 0,
   });
+
+  Future<Either<UserEventFailure, DateTime?>> getNearestEventStartDateTime(
+    Option<LatLng> userLocation,
+  );
 }
