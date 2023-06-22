@@ -27,7 +27,7 @@ class _VoucherModalState extends State<VoucherModal> {
 
   @override
   Widget build(BuildContext context) {
-    const radius = 50.0;
+    const radius = 24.0;
 
     return Material(
       color: Colors.transparent,
@@ -83,7 +83,7 @@ class _VoucherModalState extends State<VoucherModal> {
                   clipBehavior: Clip.none,
                   children: [
                     LayoutBuilder(builder: (context, constraints) {
-                      final modalHeight = constraints.maxWidth * 0.3;
+                      final modalHeight = constraints.maxWidth * 0.25;
                       return Container(
                         height: modalHeight,
                         width: double.infinity,
@@ -118,14 +118,17 @@ class _VoucherModalState extends State<VoucherModal> {
                       ),
                     ),
                     Positioned(
-                      top: -20,
-                      right: 10,
+                      top: -8,
+                      right: 0,
                       child: Center(
                         child: IconButton(
                           onPressed: () => setState(() {
                             isClosed = true;
                           }),
-                          icon: const FaIcon(FontAwesomeIcons.xmark),
+                          icon: const FaIcon(
+                            FontAwesomeIcons.xmark,
+                            size: 18,
+                          ),
                         ),
                       ),
                     ),
