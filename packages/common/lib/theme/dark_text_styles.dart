@@ -48,10 +48,18 @@ class DarkTextStyles {
 }
 
 extension TextStylex on TextStyle {
-  copyWithOnSurfaceColorAndW400() {
+  TextStyle copyWithOnSurfaceColorAndW400() {
     return copyWith(
       color: colors.onSurface,
       fontWeight: FontWeight.w400,
     );
+  }
+
+  TextStyle copyWithPrimaryColor() {
+    return copyWith(color: colors.primary);
+  }
+
+  TextStyle copyWithSecondaryColor() {
+    return copyWith(color: colors.secondary);
   }
 }
