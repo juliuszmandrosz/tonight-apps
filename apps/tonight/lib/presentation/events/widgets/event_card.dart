@@ -4,9 +4,9 @@ import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/events/widgets/event_canceled_info.dart';
 import 'package:tonight/presentation/events/widgets/event_club_info.dart';
+import 'package:tonight/presentation/events/widgets/event_club_photo.dart';
 import 'package:tonight/presentation/events/widgets/event_concert_info.dart';
 import 'package:tonight/presentation/events/widgets/event_date_info.dart';
-import 'package:tonight/presentation/events/widgets/event_favorite_button.dart';
 import 'package:tonight/presentation/events/widgets/event_location_info.dart';
 import 'package:tonight/presentation/events/widgets/event_name_bar.dart';
 import 'package:tonight/presentation/events/widgets/event_photo.dart';
@@ -61,8 +61,8 @@ class EventCard extends StatelessWidget {
                     ),
                     Positioned(
                       top: 10,
-                      right: 10,
-                      child: EventFavoriteButton(event: event),
+                      left: 10,
+                      child: EventClubPhoto(event: event),
                     ),
                     if (event.isCanceled)
                       const Positioned(
