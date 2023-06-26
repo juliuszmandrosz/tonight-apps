@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TermsOfServiceState {
-  Option<String> get documentUrl => throw _privateConstructorUsedError;
+  Option<String> get url => throw _privateConstructorUsedError;
   CubitStatus get status => throw _privateConstructorUsedError;
   Option<String> get snackbarMessage => throw _privateConstructorUsedError;
 
@@ -32,9 +32,7 @@ abstract class $TermsOfServiceStateCopyWith<$Res> {
       _$TermsOfServiceStateCopyWithImpl<$Res, TermsOfServiceState>;
   @useResult
   $Res call(
-      {Option<String> documentUrl,
-      CubitStatus status,
-      Option<String> snackbarMessage});
+      {Option<String> url, CubitStatus status, Option<String> snackbarMessage});
 }
 
 /// @nodoc
@@ -50,14 +48,14 @@ class _$TermsOfServiceStateCopyWithImpl<$Res, $Val extends TermsOfServiceState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? documentUrl = null,
+    Object? url = null,
     Object? status = null,
     Object? snackbarMessage = null,
   }) {
     return _then(_value.copyWith(
-      documentUrl: null == documentUrl
-          ? _value.documentUrl
-          : documentUrl // ignore: cast_nullable_to_non_nullable
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
               as Option<String>,
       status: null == status
           ? _value.status
@@ -80,9 +78,7 @@ abstract class _$$_TermsOfServiceStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Option<String> documentUrl,
-      CubitStatus status,
-      Option<String> snackbarMessage});
+      {Option<String> url, CubitStatus status, Option<String> snackbarMessage});
 }
 
 /// @nodoc
@@ -96,14 +92,14 @@ class __$$_TermsOfServiceStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? documentUrl = null,
+    Object? url = null,
     Object? status = null,
     Object? snackbarMessage = null,
   }) {
     return _then(_$_TermsOfServiceState(
-      documentUrl: null == documentUrl
-          ? _value.documentUrl
-          : documentUrl // ignore: cast_nullable_to_non_nullable
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
               as Option<String>,
       status: null == status
           ? _value.status
@@ -121,13 +117,11 @@ class __$$_TermsOfServiceStateCopyWithImpl<$Res>
 
 class _$_TermsOfServiceState extends _TermsOfServiceState {
   _$_TermsOfServiceState(
-      {required this.documentUrl,
-      required this.status,
-      required this.snackbarMessage})
+      {required this.url, required this.status, required this.snackbarMessage})
       : super._();
 
   @override
-  final Option<String> documentUrl;
+  final Option<String> url;
   @override
   final CubitStatus status;
   @override
@@ -135,7 +129,7 @@ class _$_TermsOfServiceState extends _TermsOfServiceState {
 
   @override
   String toString() {
-    return 'TermsOfServiceState(documentUrl: $documentUrl, status: $status, snackbarMessage: $snackbarMessage)';
+    return 'TermsOfServiceState(url: $url, status: $status, snackbarMessage: $snackbarMessage)';
   }
 
   @override
@@ -143,16 +137,14 @@ class _$_TermsOfServiceState extends _TermsOfServiceState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TermsOfServiceState &&
-            (identical(other.documentUrl, documentUrl) ||
-                other.documentUrl == documentUrl) &&
+            (identical(other.url, url) || other.url == url) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
                 other.snackbarMessage == snackbarMessage));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, documentUrl, status, snackbarMessage);
+  int get hashCode => Object.hash(runtimeType, url, status, snackbarMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -164,13 +156,13 @@ class _$_TermsOfServiceState extends _TermsOfServiceState {
 
 abstract class _TermsOfServiceState extends TermsOfServiceState {
   factory _TermsOfServiceState(
-      {required final Option<String> documentUrl,
+      {required final Option<String> url,
       required final CubitStatus status,
       required final Option<String> snackbarMessage}) = _$_TermsOfServiceState;
   _TermsOfServiceState._() : super._();
 
   @override
-  Option<String> get documentUrl;
+  Option<String> get url;
   @override
   CubitStatus get status;
   @override

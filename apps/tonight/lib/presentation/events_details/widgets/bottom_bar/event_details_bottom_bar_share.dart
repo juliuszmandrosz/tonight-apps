@@ -49,14 +49,14 @@ class _EventDetailsBottomBarShareState
       link: Uri.parse(link),
       uriPrefix: dotenv.get(dynamicLinkUrl),
       androidParameters: AndroidParameters(
-        packageName: packageName,
-        fallbackUrl: Uri.parse(tonightAppUrl),
+        packageName: kPackageName,
+        fallbackUrl: Uri.parse(kTonightAppUrl),
         minimumVersion: 1,
       ),
       iosParameters: IOSParameters(
-        bundleId: packageName,
-        appStoreId: appStoreId,
-        fallbackUrl: Uri.parse(tonightAppUrl),
+        bundleId: kPackageName,
+        appStoreId: kAppStoreId,
+        fallbackUrl: Uri.parse(kTonightAppUrl),
         minimumVersion: '1',
       ),
     );
