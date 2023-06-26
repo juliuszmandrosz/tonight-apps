@@ -31,6 +31,7 @@ import 'package:tickets/tickets.dart';
 import 'package:tonight/application/activate_time_task_reward/activate_time_task_reward_cubit.dart';
 import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_aggregator/add_wall_photo_aggregator.dart';
 import 'package:tonight/application/add_wall_photo/cubit/add_wall_photo_cubit.dart';
+import 'package:tonight/application/app_links/terms_of_service_cubit.dart';
 import 'package:tonight/application/app_settings/app_settings_cubit.dart';
 import 'package:tonight/application/auth/sign_in/sign_in_cubit.dart';
 import 'package:tonight/application/auth/username/username_cubit.dart';
@@ -66,7 +67,6 @@ import 'package:tonight/application/push_notifications/push_notifications_cubit.
 import 'package:tonight/application/redeem_tonight_voucher/redeem_tonight_voucher_cubit.dart';
 import 'package:tonight/application/select_club/select_club_bloc.dart';
 import 'package:tonight/application/sign_in_with_phone_number/sign_in_with_phone_number_cubit.dart';
-import 'package:tonight/application/terms_of_service/terms_of_service_cubit.dart';
 import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
 import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
 import 'package:tonight/application/ticket_qr/ticket_qr_cubit.dart';
@@ -316,7 +316,7 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => TermsOfServiceCubit(
+    () => AppLinksCubit(
       getIt(),
     ),
   );

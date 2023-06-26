@@ -5,13 +5,13 @@ class TermsOfServiceState with _$TermsOfServiceState {
   const TermsOfServiceState._();
 
   factory TermsOfServiceState({
-    required Option<String> documentUrl,
+    required Option<String> url,
     required CubitStatus status,
     required Option<String> snackbarMessage,
   }) = _TermsOfServiceState;
 
   factory TermsOfServiceState.initial() => TermsOfServiceState(
-        documentUrl: none(),
+        url: none(),
         status: CubitStatus.initial,
         snackbarMessage: none(),
       );

@@ -23,6 +23,7 @@ mixin _$UserAppLinksDto {
   String get facebook => throw _privateConstructorUsedError;
   String get instagram => throw _privateConstructorUsedError;
   String get tikTok => throw _privateConstructorUsedError;
+  String get discord => throw _privateConstructorUsedError;
   String get privacyPolicy => throw _privateConstructorUsedError;
   String get termsOfService => throw _privateConstructorUsedError;
 
@@ -42,6 +43,7 @@ abstract class $UserAppLinksDtoCopyWith<$Res> {
       {String facebook,
       String instagram,
       String tikTok,
+      String discord,
       String privacyPolicy,
       String termsOfService});
 }
@@ -62,6 +64,7 @@ class _$UserAppLinksDtoCopyWithImpl<$Res, $Val extends UserAppLinksDto>
     Object? facebook = null,
     Object? instagram = null,
     Object? tikTok = null,
+    Object? discord = null,
     Object? privacyPolicy = null,
     Object? termsOfService = null,
   }) {
@@ -77,6 +80,10 @@ class _$UserAppLinksDtoCopyWithImpl<$Res, $Val extends UserAppLinksDto>
       tikTok: null == tikTok
           ? _value.tikTok
           : tikTok // ignore: cast_nullable_to_non_nullable
+              as String,
+      discord: null == discord
+          ? _value.discord
+          : discord // ignore: cast_nullable_to_non_nullable
               as String,
       privacyPolicy: null == privacyPolicy
           ? _value.privacyPolicy
@@ -102,6 +109,7 @@ abstract class _$$_UserAppLinksDtoCopyWith<$Res>
       {String facebook,
       String instagram,
       String tikTok,
+      String discord,
       String privacyPolicy,
       String termsOfService});
 }
@@ -120,6 +128,7 @@ class __$$_UserAppLinksDtoCopyWithImpl<$Res>
     Object? facebook = null,
     Object? instagram = null,
     Object? tikTok = null,
+    Object? discord = null,
     Object? privacyPolicy = null,
     Object? termsOfService = null,
   }) {
@@ -135,6 +144,10 @@ class __$$_UserAppLinksDtoCopyWithImpl<$Res>
       tikTok: null == tikTok
           ? _value.tikTok
           : tikTok // ignore: cast_nullable_to_non_nullable
+              as String,
+      discord: null == discord
+          ? _value.discord
+          : discord // ignore: cast_nullable_to_non_nullable
               as String,
       privacyPolicy: null == privacyPolicy
           ? _value.privacyPolicy
@@ -155,6 +168,7 @@ class _$_UserAppLinksDto extends _UserAppLinksDto {
       {required this.facebook,
       required this.instagram,
       required this.tikTok,
+      required this.discord,
       required this.privacyPolicy,
       required this.termsOfService})
       : super._();
@@ -169,13 +183,15 @@ class _$_UserAppLinksDto extends _UserAppLinksDto {
   @override
   final String tikTok;
   @override
+  final String discord;
+  @override
   final String privacyPolicy;
   @override
   final String termsOfService;
 
   @override
   String toString() {
-    return 'UserAppLinksDto(facebook: $facebook, instagram: $instagram, tikTok: $tikTok, privacyPolicy: $privacyPolicy, termsOfService: $termsOfService)';
+    return 'UserAppLinksDto(facebook: $facebook, instagram: $instagram, tikTok: $tikTok, discord: $discord, privacyPolicy: $privacyPolicy, termsOfService: $termsOfService)';
   }
 
   @override
@@ -188,6 +204,7 @@ class _$_UserAppLinksDto extends _UserAppLinksDto {
             (identical(other.instagram, instagram) ||
                 other.instagram == instagram) &&
             (identical(other.tikTok, tikTok) || other.tikTok == tikTok) &&
+            (identical(other.discord, discord) || other.discord == discord) &&
             (identical(other.privacyPolicy, privacyPolicy) ||
                 other.privacyPolicy == privacyPolicy) &&
             (identical(other.termsOfService, termsOfService) ||
@@ -196,8 +213,8 @@ class _$_UserAppLinksDto extends _UserAppLinksDto {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, facebook, instagram, tikTok, privacyPolicy, termsOfService);
+  int get hashCode => Object.hash(runtimeType, facebook, instagram, tikTok,
+      discord, privacyPolicy, termsOfService);
 
   @JsonKey(ignore: true)
   @override
@@ -218,6 +235,7 @@ abstract class _UserAppLinksDto extends UserAppLinksDto {
       {required final String facebook,
       required final String instagram,
       required final String tikTok,
+      required final String discord,
       required final String privacyPolicy,
       required final String termsOfService}) = _$_UserAppLinksDto;
   const _UserAppLinksDto._() : super._();
@@ -231,6 +249,8 @@ abstract class _UserAppLinksDto extends UserAppLinksDto {
   String get instagram;
   @override
   String get tikTok;
+  @override
+  String get discord;
   @override
   String get privacyPolicy;
   @override
