@@ -37,7 +37,7 @@ class NoTonightEventsInfo extends StatelessWidget {
                               state.nearestEventStartDateTime.getOrCrash() !=
                                   null)
                             Padding(
-                              padding: const EdgeInsets.only(bottom: 25),
+                              padding: const EdgeInsets.only(bottom: 40),
                               child: Text(
                                 // TODO - add translation
                                 state.eventFilters.maxDistanceFilter.enabled
@@ -45,10 +45,9 @@ class NoTonightEventsInfo extends StatelessWidget {
                                     : 'DO NAJBLIŻSZEGO WYDARZENIA POZOSTAŁO',
                                 style: context.titleMedium.copyWith(
                                   fontWeight: FontWeight.bold,
-                                  letterSpacing: 2.0, // Increase letter spacing
+                                  letterSpacing: 2.0,
                                   shadows: [
                                     Shadow(
-                                      // Add a shadow for a 3D effect
                                       offset: const Offset(1.0, 1.0),
                                       blurRadius: 2.0,
                                       color: Colors.black.withOpacity(0.5),
@@ -72,7 +71,7 @@ class NoTonightEventsInfo extends StatelessWidget {
                                         .inSeconds,
                                   ),
                           ),
-                          const SizedBox(height: 30),
+                          const SizedBox(height: 40),
                           SizedBox(
                             height: kButtonHeight,
                             child: ElevatedButton.icon(

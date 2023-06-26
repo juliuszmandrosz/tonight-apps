@@ -66,10 +66,10 @@ class _TonightEventCountdownState extends State<TonightEventCountdown> {
     final seconds = value % 60;
     // TODO - add translations
     return {
-      'DZIEń': days,
-      'GODZINY': hours,
-      'MINUTY': minutes,
-      'SEKUNDY': seconds,
+      'DNI': days,
+      'GODZIN': hours,
+      'MINUT': minutes,
+      'SEKUND': seconds,
     };
   }
 
@@ -84,12 +84,12 @@ class _TonightEventCountdownState extends State<TonightEventCountdown> {
             child: Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
                   child: Column(
                     children: [
                       Text(
                         '${e.value}',
-                        style: context.titleMedium.copyWithSecondaryColor(),
+                        style: context.headlineSmall.copyWithSecondaryColor(),
                       ),
                       const SizedBox(height: 4),
                       Text(
