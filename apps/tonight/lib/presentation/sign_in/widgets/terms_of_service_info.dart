@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:tonight/application/terms_of_service/terms_of_service_cubit.dart';
+import 'package:tonight/application/app_links/terms_of_service_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:translations/translations.dart';
 
@@ -14,11 +14,11 @@ class TermsOfServiceInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<TermsOfServiceCubit>(
+      create: (context) => getIt<AppLinksCubit>(
         param1: context.read<NetworkCheckCubit>(),
       ),
       child: Builder(builder: (context) {
-        return BlocListener<TermsOfServiceCubit, TermsOfServiceState>(
+        return BlocListener<AppLinksCubit, TermsOfServiceState>(
           listener: (context, state) {
             state.snackbarMessage.fold(
               () {},
@@ -29,8 +29,8 @@ class TermsOfServiceInfo extends StatelessWidget {
                 ? context.loaderOverlay.show()
                 : context.loaderOverlay.hide();
 
-            if (state.status.isSuccess() && state.documentUrl.isSome()) {
-              launchURL(Uri.parse(state.documentUrl.getOrCrash()));
+            if (state.status.isSuccess() && state.url.isSome()) {
+              launchURL(Uri.parse(state.url.getOrCrash()));
             }
           },
           child: Row(
@@ -56,8 +56,8 @@ class TermsOfServiceInfo extends StatelessWidget {
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () => context
-                              .read<TermsOfServiceCubit>()
-                              .getTermsOfService(),
+                              .read<AppLinksCubit>()
+                              .launchTermsOfService(),
                       ),
                       TextSpan(
                         text: ' ${S().and} ',
@@ -72,8 +72,8 @@ class TermsOfServiceInfo extends StatelessWidget {
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () => context
-                              .read<TermsOfServiceCubit>()
-                              .getPrivacyPolicy(),
+                              .read<AppLinksCubit>()
+                              .launchPrivacyPolicy(),
                       ),
                     ],
                   ),

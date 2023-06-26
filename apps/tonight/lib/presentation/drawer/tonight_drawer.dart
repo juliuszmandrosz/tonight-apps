@@ -7,7 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:launch_review/launch_review.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:tonight/application/terms_of_service/terms_of_service_cubit.dart';
+import 'package:tonight/application/app_links/terms_of_service_cubit.dart';
+import 'package:tonight/application/core/tonight_constants.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/drawer/drawer_destination.dart';
 import 'package:tonight/presentation/drawer/tonight_drawer_destination.dart';
@@ -24,6 +25,7 @@ class TonightDrawer extends StatefulWidget {
 
 class _TonightDrawerState extends State<TonightDrawer> {
   var selectedIndex = 0;
+  static const socialMediaIconSize = 45.0;
 
   final destinations = [
     DrawerDestination(
@@ -55,18 +57,19 @@ class _TonightDrawerState extends State<TonightDrawer> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<TermsOfServiceCubit>(
-        param1: context.read<NetworkCheckCubit>(),
-      ),
-      child: BlocListener<TermsOfServiceCubit, TermsOfServiceState>(
+      create: (context) =>
+          getIt<AppLinksCubit>(
+            param1: context.read<NetworkCheckCubit>(),
+          ),
+      child: BlocListener<AppLinksCubit, TermsOfServiceState>(
         listener: (context, state) {
           state.snackbarMessage.fold(
-            () {},
-            (message) => context.showSnackbarMessage(message),
+                () {},
+                (message) => context.showSnackbarMessage(message),
           );
 
-          if (state.status.isSuccess() && state.documentUrl.isSome()) {
-            launchURL(Uri.parse(state.documentUrl.getOrCrash()));
+          if (state.status.isSuccess() && state.url.isSome()) {
+            launchURL(Uri.parse(state.url.getOrCrash()));
           }
 
           state.status.isLoading()
@@ -87,20 +90,71 @@ class _TonightDrawerState extends State<TonightDrawer> {
                 ),
                 const SizedBox(height: 44),
                 ...destinations.map(
-                  (destination) => NavigationDrawerDestination(
-                    icon: FaIcon(destination.icon),
-                    label: Expanded(
-                      child: AutoSizeText(
-                        destination.label,
-                        maxLines: 2,
+                      (destination) =>
+                      NavigationDrawerDestination(
+                        icon: FaIcon(destination.icon),
+                        label: Expanded(
+                          child: AutoSizeText(
+                            destination.label,
+                            maxLines: 2,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
                 ),
                 const SizedBox(height: 16),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 28),
                   child: Divider(),
+                ),
+                const SizedBox(height: 16),
+                Center(
+                  child: Text(
+                    // TODO: Add translations
+                    'Dołącz do naszej społeczności!',
+                    style: context.titleMedium.copyWithSecondaryColor(),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 14),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      CircleIconButton(
+                        icon: FontAwesomeIcons.instagram,
+                        onPressed: ctx
+                            .read<AppLinksCubit>()
+                            .launchInstagram,
+                        color: const Color(0xFFE1306C),
+                        size: socialMediaIconSize,
+                      ),
+                      CircleIconButton(
+                        icon: FontAwesomeIcons.tiktok,
+                        onPressed: ctx
+                            .read<AppLinksCubit>()
+                            .launchTikTok,
+                        color: const Color(0xFF69C9D0),
+                        size: socialMediaIconSize,
+                      ),
+                      CircleIconButton(
+                        icon: FontAwesomeIcons.facebookF,
+                        onPressed: ctx
+                            .read<AppLinksCubit>()
+                            .launchFacebook,
+                        color: const Color(0xFF4267B2),
+                        size: socialMediaIconSize,
+                      ),
+                      CircleIconButton(
+                        icon: FontAwesomeIcons.discord,
+                        onPressed: ctx
+                            .read<AppLinksCubit>()
+                            .launchDiscord,
+                        color: const Color(0xFF7289DA),
+                        size: socialMediaIconSize,
+                      ),
+
+                    ],
+                  ),
                 ),
               ],
             );
@@ -118,18 +172,18 @@ class _TonightDrawerState extends State<TonightDrawer> {
     switch (TonightDrawerDestination.values[index]) {
       case TonightDrawerDestination.rateUs:
         await LaunchReview.launch(
-          iOSAppId: '1629723394',
-          androidAppId: 'com.raverteam.tonight',
+          iOSAppId: kAppStoreId,
+          androidAppId: kPackageName,
         );
         break;
       case TonightDrawerDestination.contact:
         ctx.pushRoute(const ContactRoute());
         break;
       case TonightDrawerDestination.termsOfService:
-        ctx.read<TermsOfServiceCubit>().getTermsOfService();
+        ctx.read<AppLinksCubit>().launchTermsOfService();
         break;
       case TonightDrawerDestination.privacyPolicy:
-        ctx.read<TermsOfServiceCubit>().getPrivacyPolicy();
+        ctx.read<AppLinksCubit>().launchPrivacyPolicy();
         break;
       case TonightDrawerDestination.signOut:
         _handleSignOut(ctx);

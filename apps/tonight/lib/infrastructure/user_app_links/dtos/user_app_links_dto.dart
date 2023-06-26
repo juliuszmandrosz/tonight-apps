@@ -13,6 +13,7 @@ class UserAppLinksDto with _$UserAppLinksDto {
     required String facebook,
     required String instagram,
     required String tikTok,
+    required String discord,
     required String privacyPolicy,
     required String termsOfService,
   }) = _UserAppLinksDto;
@@ -30,6 +31,7 @@ class UserAppLinksDto with _$UserAppLinksDto {
       facebook: facebook,
       instagram: instagram,
       tikTok: tikTok,
+      discord: discord,
       privacyPolicy: privacyPolicy,
       termsOfService: termsOfService,
     );

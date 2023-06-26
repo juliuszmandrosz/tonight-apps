@@ -1,4 +1,5 @@
 export 'bottom_loader.dart';
+export 'circle_icon_button.dart';
 export 'circle_loading_indicator.dart';
 export 'circle_network_photo.dart';
 export 'dense_list_tile.dart';
