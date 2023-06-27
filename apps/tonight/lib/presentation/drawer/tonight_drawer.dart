@@ -57,15 +57,14 @@ class _TonightDrawerState extends State<TonightDrawer> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          getIt<AppLinksCubit>(
-            param1: context.read<NetworkCheckCubit>(),
-          ),
+      create: (context) => getIt<AppLinksCubit>(
+        param1: context.read<NetworkCheckCubit>(),
+      ),
       child: BlocListener<AppLinksCubit, TermsOfServiceState>(
         listener: (context, state) {
           state.snackbarMessage.fold(
-                () {},
-                (message) => context.showSnackbarMessage(message),
+            () {},
+            (message) => context.showSnackbarMessage(message),
           );
 
           if (state.status.isSuccess() && state.url.isSome()) {
@@ -90,16 +89,15 @@ class _TonightDrawerState extends State<TonightDrawer> {
                 ),
                 const SizedBox(height: 44),
                 ...destinations.map(
-                      (destination) =>
-                      NavigationDrawerDestination(
-                        icon: FaIcon(destination.icon),
-                        label: Expanded(
-                          child: AutoSizeText(
-                            destination.label,
-                            maxLines: 2,
-                          ),
-                        ),
+                  (destination) => NavigationDrawerDestination(
+                    icon: FaIcon(destination.icon),
+                    label: Expanded(
+                      child: AutoSizeText(
+                        destination.label,
+                        maxLines: 2,
                       ),
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 16),
                 const Padding(
@@ -116,43 +114,30 @@ class _TonightDrawerState extends State<TonightDrawer> {
                 ),
                 const SizedBox(height: 16),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 14),
+                  padding: const EdgeInsets.symmetric(horizontal: 28),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CircleIconButton(
                         icon: FontAwesomeIcons.instagram,
-                        onPressed: ctx
-                            .read<AppLinksCubit>()
-                            .launchInstagram,
-                        color: const Color(0xFFE1306C),
+                        onPressed: ctx.read<AppLinksCubit>().launchInstagram,
                         size: socialMediaIconSize,
                       ),
                       CircleIconButton(
                         icon: FontAwesomeIcons.tiktok,
-                        onPressed: ctx
-                            .read<AppLinksCubit>()
-                            .launchTikTok,
-                        color: const Color(0xFF69C9D0),
+                        onPressed: ctx.read<AppLinksCubit>().launchTikTok,
                         size: socialMediaIconSize,
                       ),
                       CircleIconButton(
                         icon: FontAwesomeIcons.facebookF,
-                        onPressed: ctx
-                            .read<AppLinksCubit>()
-                            .launchFacebook,
-                        color: const Color(0xFF4267B2),
+                        onPressed: ctx.read<AppLinksCubit>().launchFacebook,
                         size: socialMediaIconSize,
                       ),
                       CircleIconButton(
                         icon: FontAwesomeIcons.discord,
-                        onPressed: ctx
-                            .read<AppLinksCubit>()
-                            .launchDiscord,
-                        color: const Color(0xFF7289DA),
+                        onPressed: ctx.read<AppLinksCubit>().launchDiscord,
                         size: socialMediaIconSize,
                       ),
-
                     ],
                   ),
                 ),
