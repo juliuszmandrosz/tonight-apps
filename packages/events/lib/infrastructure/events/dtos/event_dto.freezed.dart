@@ -47,7 +47,8 @@ mixin _$EventDto {
   int get attending => throw _privateConstructorUsedError;
   bool get isCanceled => throw _privateConstructorUsedError;
   bool get isBeingPostponed => throw _privateConstructorUsedError;
-  String get priceInfo => throw _privateConstructorUsedError;
+  String get entryFee => throw _privateConstructorUsedError;
+  String get priceList => throw _privateConstructorUsedError;
   String? get locationString => throw _privateConstructorUsedError;
   String? get clubPhotoUrl => throw _privateConstructorUsedError;
 
@@ -85,7 +86,8 @@ abstract class $EventDtoCopyWith<$Res> {
       int attending,
       bool isCanceled,
       bool isBeingPostponed,
-      String priceInfo,
+      String entryFee,
+      String priceList,
       String? locationString,
       String? clubPhotoUrl});
 }
@@ -125,7 +127,8 @@ class _$EventDtoCopyWithImpl<$Res, $Val extends EventDto>
     Object? attending = null,
     Object? isCanceled = null,
     Object? isBeingPostponed = null,
-    Object? priceInfo = null,
+    Object? entryFee = null,
+    Object? priceList = null,
     Object? locationString = freezed,
     Object? clubPhotoUrl = freezed,
   }) {
@@ -218,9 +221,13 @@ class _$EventDtoCopyWithImpl<$Res, $Val extends EventDto>
           ? _value.isBeingPostponed
           : isBeingPostponed // ignore: cast_nullable_to_non_nullable
               as bool,
-      priceInfo: null == priceInfo
-          ? _value.priceInfo
-          : priceInfo // ignore: cast_nullable_to_non_nullable
+      entryFee: null == entryFee
+          ? _value.entryFee
+          : entryFee // ignore: cast_nullable_to_non_nullable
+              as String,
+      priceList: null == priceList
+          ? _value.priceList
+          : priceList // ignore: cast_nullable_to_non_nullable
               as String,
       locationString: freezed == locationString
           ? _value.locationString
@@ -264,7 +271,8 @@ abstract class _$$_EventDtoCopyWith<$Res> implements $EventDtoCopyWith<$Res> {
       int attending,
       bool isCanceled,
       bool isBeingPostponed,
-      String priceInfo,
+      String entryFee,
+      String priceList,
       String? locationString,
       String? clubPhotoUrl});
 }
@@ -302,7 +310,8 @@ class __$$_EventDtoCopyWithImpl<$Res>
     Object? attending = null,
     Object? isCanceled = null,
     Object? isBeingPostponed = null,
-    Object? priceInfo = null,
+    Object? entryFee = null,
+    Object? priceList = null,
     Object? locationString = freezed,
     Object? clubPhotoUrl = freezed,
   }) {
@@ -395,9 +404,13 @@ class __$$_EventDtoCopyWithImpl<$Res>
           ? _value.isBeingPostponed
           : isBeingPostponed // ignore: cast_nullable_to_non_nullable
               as bool,
-      priceInfo: null == priceInfo
-          ? _value.priceInfo
-          : priceInfo // ignore: cast_nullable_to_non_nullable
+      entryFee: null == entryFee
+          ? _value.entryFee
+          : entryFee // ignore: cast_nullable_to_non_nullable
+              as String,
+      priceList: null == priceList
+          ? _value.priceList
+          : priceList // ignore: cast_nullable_to_non_nullable
               as String,
       locationString: freezed == locationString
           ? _value.locationString
@@ -438,7 +451,8 @@ class _$_EventDto extends _EventDto {
       this.attending = 0,
       this.isCanceled = false,
       this.isBeingPostponed = false,
-      this.priceInfo = '',
+      this.entryFee = '',
+      this.priceList = '',
       this.locationString,
       this.clubPhotoUrl})
       : _musicalGenres = musicalGenres,
@@ -523,7 +537,10 @@ class _$_EventDto extends _EventDto {
   final bool isBeingPostponed;
   @override
   @JsonKey()
-  final String priceInfo;
+  final String entryFee;
+  @override
+  @JsonKey()
+  final String priceList;
   @override
   final String? locationString;
   @override
@@ -531,7 +548,7 @@ class _$_EventDto extends _EventDto {
 
   @override
   String toString() {
-    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, originalStartDateTime: $originalStartDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, urlLinks: $urlLinks, isConcert: $isConcert, attending: $attending, isCanceled: $isCanceled, isBeingPostponed: $isBeingPostponed, priceInfo: $priceInfo, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl)';
+    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, originalStartDateTime: $originalStartDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, urlLinks: $urlLinks, isConcert: $isConcert, attending: $attending, isCanceled: $isCanceled, isBeingPostponed: $isBeingPostponed, entryFee: $entryFee, priceList: $priceList, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl)';
   }
 
   @override
@@ -576,8 +593,10 @@ class _$_EventDto extends _EventDto {
                 other.isCanceled == isCanceled) &&
             (identical(other.isBeingPostponed, isBeingPostponed) ||
                 other.isBeingPostponed == isBeingPostponed) &&
-            (identical(other.priceInfo, priceInfo) ||
-                other.priceInfo == priceInfo) &&
+            (identical(other.entryFee, entryFee) ||
+                other.entryFee == entryFee) &&
+            (identical(other.priceList, priceList) ||
+                other.priceList == priceList) &&
             (identical(other.locationString, locationString) ||
                 other.locationString == locationString) &&
             (identical(other.clubPhotoUrl, clubPhotoUrl) ||
@@ -610,7 +629,8 @@ class _$_EventDto extends _EventDto {
         attending,
         isCanceled,
         isBeingPostponed,
-        priceInfo,
+        entryFee,
+        priceList,
         locationString,
         clubPhotoUrl
       ]);
@@ -653,7 +673,8 @@ abstract class _EventDto extends EventDto {
       final int attending,
       final bool isCanceled,
       final bool isBeingPostponed,
-      final String priceInfo,
+      final String entryFee,
+      final String priceList,
       final String? locationString,
       final String? clubPhotoUrl}) = _$_EventDto;
   const _EventDto._() : super._();
@@ -710,7 +731,9 @@ abstract class _EventDto extends EventDto {
   @override
   bool get isBeingPostponed;
   @override
-  String get priceInfo;
+  String get entryFee;
+  @override
+  String get priceList;
   @override
   String? get locationString;
   @override

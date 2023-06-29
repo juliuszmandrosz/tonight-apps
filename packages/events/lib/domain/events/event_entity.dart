@@ -14,7 +14,8 @@ class Event extends Equatable {
   final DateTime originalStartDateTime;
   final int minAge;
   final int price;
-  final String priceInfo;
+  final String entryFee;
+  final String priceList;
   final String currency;
   final String eventPhotoUrl;
   final String allowedOutfit;
@@ -41,7 +42,8 @@ class Event extends Equatable {
     required this.originalStartDateTime,
     required this.minAge,
     required this.price,
-    required this.priceInfo,
+    required this.entryFee,
+    required this.priceList,
     required this.currency,
     required this.eventPhotoUrl,
     required this.allowedOutfit,
@@ -78,6 +80,8 @@ class Event extends Equatable {
         originalStartDateTime,
         minAge,
         price,
+        entryFee,
+        priceList,
         currency,
         allowedOutfit,
         musicalGenres,
@@ -93,7 +97,6 @@ class Event extends Equatable {
         isBeingPostponed,
         clubPhotoUrl,
         locationString,
-        priceInfo,
       ];
 
   Event copyWith({
@@ -105,6 +108,8 @@ class Event extends Equatable {
     DateTime? originalStartDateTime,
     int? minAge,
     int? price,
+    String? entryFee,
+    String? priceList,
     String? currency,
     String? eventPhotoUrl,
     String? allowedOutfit,
@@ -118,7 +123,6 @@ class Event extends Equatable {
     Option<String>? artistName,
     bool? isCanceled,
     bool? isBeingPostponed,
-    String? priceInfo,
     Option<String>? clubPhotoUrl,
     Option<String>? locationString,
   }) {
@@ -133,6 +137,8 @@ class Event extends Equatable {
           originalStartDateTime ?? this.originalStartDateTime,
       minAge: minAge ?? this.minAge,
       price: price ?? this.price,
+      entryFee: entryFee ?? this.entryFee,
+      priceList: priceList ?? this.priceList,
       currency: currency ?? this.currency,
       eventPhotoUrl: eventPhotoUrl ?? this.eventPhotoUrl,
       allowedOutfit: allowedOutfit ?? this.allowedOutfit,
@@ -144,7 +150,6 @@ class Event extends Equatable {
       isConcert: isConcert ?? this.isConcert,
       isCanceled: isCanceled ?? this.isCanceled,
       isBeingPostponed: isBeingPostponed ?? this.isBeingPostponed,
-      priceInfo: priceInfo ?? this.priceInfo,
       description: description != null
           ? description.fold(
               () => null,

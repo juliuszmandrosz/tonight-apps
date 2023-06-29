@@ -27,6 +27,9 @@ class EventDetailsAdditionalInfo extends StatelessWidget {
         ? const SizedBox.shrink()
         : Column(
             children: [
+              const SizedBox(height: 12),
+              const Divider(thickness: .420),
+              const SizedBox(height: 16),
               Align(
                 alignment: Alignment.centerLeft,
                 child: TonightHeadline(
@@ -34,12 +37,15 @@ class EventDetailsAdditionalInfo extends StatelessWidget {
                   isSmallerVersion: true,
                 ),
               ),
-              const SizedBox(height: 5),
+              const SizedBox(height: 8),
               ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: socialMediaIcons.length + 1,
-                separatorBuilder: (context, i) => const Divider(),
+                separatorBuilder: (context, i) =>
+                    i == socialMediaIcons.length - 1
+                        ? const SizedBox.shrink()
+                        : const SizedBox(height: 5),
                 itemBuilder: (context, i) => i >= socialMediaIcons.length
                     ? const SizedBox()
                     : SocialIconWithTitle(
@@ -47,7 +53,6 @@ class EventDetailsAdditionalInfo extends StatelessWidget {
                         url: socialMediaIcons[i].value,
                       ),
               ),
-              const SizedBox(height: 10),
             ],
           );
   }
