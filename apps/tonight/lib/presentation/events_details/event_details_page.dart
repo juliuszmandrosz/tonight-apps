@@ -173,7 +173,6 @@ class EventDetailsPage extends HookWidget {
                                         children: [
                                           EventDetailsSection(
                                             event: eventInState,
-                                            ticketPrice: ticketPrice,
                                           ),
                                           const SizedBox(height: 20),
                                         ],

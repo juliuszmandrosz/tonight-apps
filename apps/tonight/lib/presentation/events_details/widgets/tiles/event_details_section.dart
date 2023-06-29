@@ -1,4 +1,3 @@
-import 'package:common/common.dart';
 import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -8,13 +7,17 @@ import 'package:translations/translations.dart';
 
 class EventDetailsSection extends StatelessWidget {
   final Event event;
-  final int? ticketPrice;
 
-  const EventDetailsSection({
-    required this.event,
-    required this.ticketPrice,
-    Key? key,
-  }) : super(key: key);
+  const EventDetailsSection({required this.event, Key? key}) : super(key: key);
+
+  String get price {
+    if (event.priceInfo.isNotEmpty) {
+      return event.priceInfo;
+    }
+
+    // TODO - add translations
+    return event.price == 0 ? 'free' : 'płatne';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +32,8 @@ class EventDetailsSection extends StatelessWidget {
           children: [
             EventDetailTile(
               icon: FontAwesomeIcons.ticket,
-              value: '${event.price}'
-                  '${getCurrencySymbolFromCode(event.currency)}',
-              label: S().price,
+              value: price,
+              label: S().entry,
             ),
             EventDetailTile(
               icon: FontAwesomeIcons.solidUser,
