@@ -19,7 +19,7 @@ import 'package:tonight/presentation/events_details/widgets/event_details_club_n
 import 'package:tonight/presentation/events_details/widgets/event_details_date_and_time.dart';
 import 'package:tonight/presentation/events_details/widgets/event_details_event_description.dart';
 import 'package:tonight/presentation/events_details/widgets/event_details_event_name.dart';
-import 'package:tonight/presentation/events_details/widgets/event_details_ticket_pools.dart';
+import 'package:tonight/presentation/events_details/widgets/event_details_price_list.dart';
 import 'package:tonight/presentation/events_details/widgets/tiles/event_details_section.dart';
 import 'package:tonight/presentation/events_details/widgets/voucher_modal.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
@@ -165,7 +165,7 @@ class EventDetailsPage extends HookWidget {
                               if (eventInState.isCanceled)
                                 const CanceledEventMessage(),
                               Padding(
-                                padding: const EdgeInsets.all(15),
+                                padding: const EdgeInsets.all(12),
                                 child: Column(
                                   children: [
                                     if (!eventInState.isCanceled)
@@ -179,27 +179,39 @@ class EventDetailsPage extends HookWidget {
                                       ),
                                     const SizedBox(height: 10),
                                     EventDetailsEventName(event: eventInState),
-                                    const SizedBox(height: 20),
+                                    _sectionDivider,
                                     EventDetailsClubName(event: eventInState),
-                                    const SizedBox(height: 20),
-                                    if (eventInState.isConcert)
+                                    if (eventInState.isConcert &&
+                                        eventInState
+                                            .artistName.isNotNullOrEmpty)
+                                      _sectionDivider,
+                                    if (eventInState.isConcert &&
+                                        eventInState
+                                            .artistName.isNotNullOrEmpty)
                                       EventDetailsArtistName(
-                                          event: eventInState),
+                                        event: eventInState,
+                                      ),
+                                    _sectionDivider,
                                     EventDetailsDateAndTime(
-                                        event: eventInState),
-                                    const SizedBox(height: 20),
-                                    if (eventInState.description != null &&
-                                        eventInState.description!.isNotEmpty)
-                                      EventDetailsEventDescription(
+                                      event: eventInState,
+                                    ),
+                                    if (eventInState.priceList.isNotEmpty)
+                                      _sectionDivider,
+                                    if (eventInState.priceList.isNotEmpty)
+                                      EventDetailsPriceList(
                                         event: eventInState,
                                       ),
                                     EventDetailsAdditionalInfo(
-                                        event: eventInState),
-                                    if (!eventInState.isCanceled &&
-                                        eventInState.eventEndDateTime
-                                            .isAfter(DateTime.now()))
-                                      EventDetailsTicketPools(
-                                          event: eventInState),
+                                      event: eventInState,
+                                    ),
+                                    if (eventInState
+                                        .description.isNotNullOrEmpty)
+                                      _sectionDivider,
+                                    if (eventInState
+                                        .description.isNotNullOrEmpty)
+                                      EventDetailsEventDescription(
+                                        event: eventInState,
+                                      ),
                                   ],
                                 ),
                               ),
@@ -227,6 +239,14 @@ class EventDetailsPage extends HookWidget {
       ),
     );
   }
+
+  Widget get _sectionDivider => const Column(
+        children: [
+          SizedBox(height: 10),
+          Divider(thickness: .420),
+          SizedBox(height: 10),
+        ],
+      );
 }
 
 bool _checkIfBottomBarIsAvailable(Event event) {
