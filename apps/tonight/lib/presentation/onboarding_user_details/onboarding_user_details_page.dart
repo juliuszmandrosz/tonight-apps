@@ -6,13 +6,11 @@ import 'package:formz/formz.dart';
 import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
-import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_birthdate_input.dart';
-import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_city_input.dart';
-import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_gender_input.dart';
 import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_profile_picture.dart';
 import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_username_input.dart';
 import 'package:tonight/presentation/onboarding_user_details/widgets/submit_button.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class OnboardingUserDetailsPage extends StatelessWidget {
   const OnboardingUserDetailsPage({Key? key}) : super(key: key);
@@ -49,23 +47,31 @@ class OnboardingUserDetailsPage extends StatelessWidget {
                           const SizedBox(height: 50),
                           const OnboardingProfilePicture(),
                           const SizedBox(height: 40),
+                          // Align(
+                          //   alignment: Alignment.center,
+                          //   child: TonightHeadline(
+                          //     // TODO - add translation
+                          //     text: 'Almost there! 🎉',
+                          //     isSmallerVersion: true,
+                          //   ),
+                          // ),
                           Align(
                             alignment: Alignment.center,
                             child: TonightHeadline(
                               // TODO - add translation
-                              text: 'Almost there! 🎉',
+                              text: S().chooseUsernameAndProfilePhoto,
                               isSmallerVersion: true,
                             ),
                           ),
                           const SizedBox(height: 30),
                           const OnboardingUsernameInput(),
-                          const SizedBox(height: 30),
-                          const OnboardingCityInput(),
-                          const SizedBox(height: 30),
-                          const OnboardingBirthdateInput(),
-                          const SizedBox(height: 30),
-                          const OnboardingGenderInput(),
-                          const SizedBox(height: 30),
+                          // const SizedBox(height: 30),
+                          // const OnboardingCityInput(),
+                          // const SizedBox(height: 30),
+                          // const OnboardingBirthdateInput(),
+                          // const SizedBox(height: 30),
+                          // const OnboardingGenderInput(),
+                          // const SizedBox(height: 30),
                         ],
                       ),
                     ),
