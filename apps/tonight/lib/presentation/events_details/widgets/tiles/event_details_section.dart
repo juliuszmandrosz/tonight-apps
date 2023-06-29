@@ -8,11 +8,14 @@ import 'package:translations/translations.dart';
 class EventDetailsSection extends StatelessWidget {
   final Event event;
 
-  const EventDetailsSection({required this.event, Key? key}) : super(key: key);
+  const EventDetailsSection({
+    required this.event,
+    Key? key,
+  }) : super(key: key);
 
   String get price {
-    if (event.priceInfo.isNotEmpty) {
-      return event.priceInfo;
+    if (event.entryFee.isNotEmpty) {
+      return event.entryFee;
     }
 
     // TODO - add translations

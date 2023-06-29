@@ -32,7 +32,6 @@ import 'package:translations/translations.dart';
 import 'package:uuid/uuid.dart';
 
 part 'add_event_cubit.freezed.dart';
-
 part 'add_event_state.dart';
 
 class AddEventCubit extends Cubit<AddEventState> {
@@ -510,6 +509,8 @@ class AddEventCubit extends Cubit<AddEventState> {
       artistName: state.artistName.value,
       isConcert: state.isConcert,
       eventPhotoUrl: eventPhotoUrl.getRightOrCrash(),
+      entryFee: '',
+      priceList: '',
     );
 
     final ticketPools = state.isSaleOnlyAtGate

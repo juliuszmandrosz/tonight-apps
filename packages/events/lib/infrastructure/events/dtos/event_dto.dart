@@ -34,7 +34,8 @@ class EventDto with _$EventDto {
     @Default(0) int attending,
     @Default(false) bool isCanceled,
     @Default(false) bool isBeingPostponed,
-    @Default('') String priceInfo,
+    @Default('') String entryFee,
+    @Default('') String priceList,
     String? locationString,
     String? clubPhotoUrl,
   }) = _EventDto;
@@ -63,7 +64,8 @@ class EventDto with _$EventDto {
       isConcert: event.isConcert,
       isCanceled: event.isCanceled,
       isBeingPostponed: event.isBeingPostponed,
-      priceInfo: event.priceInfo,
+      entryFee: event.entryFee,
+      priceList: event.priceList,
       clubPhotoUrl: event.clubPhotoUrl,
       locationString: event.locationString,
     );
@@ -109,7 +111,8 @@ class EventDto with _$EventDto {
       artistName: artistName,
       isCanceled: isCanceled,
       isBeingPostponed: isBeingPostponed,
-      priceInfo: priceInfo,
+      entryFee: entryFee,
+      priceList: priceList,
       clubPhotoUrl: clubPhotoUrl,
       locationString: locationString,
     );
