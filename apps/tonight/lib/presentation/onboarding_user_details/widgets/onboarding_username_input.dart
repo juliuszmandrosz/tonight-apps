@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:formz/formz.dart';
 import 'package:tonight/application/auth/form_inputs/username.dart';
-import 'package:tonight/application/onboarding/onboarding_cubit.dart';
+import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
 import 'package:translations/generated/l10n.dart';
 
 class OnboardingUsernameInput extends HookWidget {
@@ -14,15 +14,16 @@ class OnboardingUsernameInput extends HookWidget {
   Widget build(BuildContext context) {
     final textController = useTextEditingController();
 
-    return BlocBuilder<OnboardingCubit, OnboardingState>(
+    return BlocBuilder<OnboardingUserDetailsCubit, OnboardingUserDetailsState>(
       buildWhen: (previous, current) =>
           previous.username != current.username ||
           previous.submissionStatus != current.submissionStatus,
       builder: (context, state) {
         return TextField(
           controller: textController,
-          onChanged: (username) =>
-              context.read<OnboardingCubit>().usernameChanged(username),
+          onChanged: (username) => context
+              .read<OnboardingUserDetailsCubit>()
+              .usernameChanged(username),
           decoration: InputDecoration(
             prefixIcon: const Icon(
               FontAwesomeIcons.at,
@@ -37,7 +38,7 @@ class OnboardingUsernameInput extends HookWidget {
     );
   }
 
-  String? _getUsernameInputErrorMessage(OnboardingState state) {
+  String? _getUsernameInputErrorMessage(OnboardingUserDetailsState state) {
     if (state.username.valid || state.submissionStatus != FormzStatus.invalid) {
       return null;
     }

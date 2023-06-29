@@ -25,7 +25,7 @@ class ChatsPage extends StatelessWidget {
             );
           case CubitStatus.success:
             return Padding(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               child: state.chats.isEmpty
                   ? Center(
                       child: Column(

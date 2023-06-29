@@ -37,6 +37,14 @@ class AuthCubit extends Cubit<AuthState> {
     return _userAuthFacade.checkIfPhoneNumberIsVerified();
   }
 
+  bool checkIfUserIsAnonymous() {
+    return _userAuthFacade.checkIfUserIsAnonymous();
+  }
+
+  bool checkIfUserIsSignedIn() {
+    return _userAuthFacade.checkIfUserIsSignedIn();
+  }
+
   void listenToUserChanges() {
     _userSubscription?.cancel();
     _userSubscription = _userAuthFacade

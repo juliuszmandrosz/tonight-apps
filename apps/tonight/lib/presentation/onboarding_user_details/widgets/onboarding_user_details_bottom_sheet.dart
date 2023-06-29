@@ -3,7 +3,7 @@ import 'package:common/extensions/typography_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tonight/application/onboarding/onboarding_cubit.dart';
+import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
 import 'package:translations/translations.dart';
 
 class OnboardingUserDetailsBottomSheet extends StatelessWidget {
@@ -15,8 +15,9 @@ class OnboardingUserDetailsBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: blocContext.read<OnboardingCubit>(),
-      child: BlocBuilder<OnboardingCubit, OnboardingState>(
+      value: blocContext.read<OnboardingUserDetailsCubit>(),
+      child:
+          BlocBuilder<OnboardingUserDetailsCubit, OnboardingUserDetailsState>(
         builder: (ctx, state) {
           return SizedBox(
             height: 100,
@@ -31,7 +32,7 @@ class OnboardingUserDetailsBottomSheet extends StatelessWidget {
                     onPressed: () async {
                       context.popRoute();
                       await blocContext
-                          .read<OnboardingCubit>()
+                          .read<OnboardingUserDetailsCubit>()
                           .pickProfilePhoto();
                     },
                     icon: Column(
@@ -53,7 +54,9 @@ class OnboardingUserDetailsBottomSheet extends StatelessWidget {
                   child: IconButton(
                     onPressed: () async {
                       context.popRoute();
-                      await blocContext.read<OnboardingCubit>().deletePhoto();
+                      await blocContext
+                          .read<OnboardingUserDetailsCubit>()
+                          .deletePhoto();
                     },
                     icon: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

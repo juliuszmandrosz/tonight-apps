@@ -9,7 +9,6 @@ extension FirebaseUserDomainExtension on User {
   }) {
     return AppUser(
       id: uid,
-      providerId: providerData[0].providerId,
       isOnboardingCompleted: username.isNotNullOrEmpty,
       isPhoneNumberVerified: phoneNumber.isNotNullOrEmpty,
       lastDailySpinAt: lastDailySpinAt,

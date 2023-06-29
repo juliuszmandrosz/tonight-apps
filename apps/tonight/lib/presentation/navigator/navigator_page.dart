@@ -40,7 +40,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
           TonightRoute(),
           DiscoverRoute(),
           TonightRoute(),
-          ChatsRoute(),
+          MessagesRoute(),
           ProfileRoute(),
         ],
         bottomNavigationBuilder: (_, tabsRouter) {
@@ -65,6 +65,15 @@ class _NavigatorPageState extends State<NavigatorPage> {
                       await _handleAddPhotoNavigation();
                     }
 
+                    if (i == TonightNavigationDestination.messages.index ||
+                        i == TonightNavigationDestination.profile.index) {
+                      final result =
+                          await _handleMessagesAndProfileNavigation();
+                      if (!result) {
+                        i = _selectedIndex;
+                      }
+                    }
+
                     setState(() {
                       _selectedIndex = i;
                     });
@@ -81,13 +90,14 @@ class _NavigatorPageState extends State<NavigatorPage> {
                     ),
                     NavigationDestination(
                       icon: const FaIcon(
-                        FontAwesomeIcons.paperPlane,
+                        FontAwesomeIcons.circlePlus,
                       ),
-                      label: S().publish,
+                      label: S().add,
                     ),
                     NavigationDestination(
-                      icon: const FaIcon(FontAwesomeIcons.comments),
-                      label: S().chats,
+                      icon: const FaIcon(FontAwesomeIcons.envelope),
+                      // TODO - add translations
+                      label: 'Wiadomości',
                     ),
                     NavigationDestination(
                       icon: const FaIcon(FontAwesomeIcons.user),
@@ -160,10 +170,13 @@ class _NavigatorPageState extends State<NavigatorPage> {
         );
       case TonightNavigationDestination.add:
         return const TonightAppBar();
-      case TonightNavigationDestination.chats:
-        return TonightAppBar(
-          title: S().chats,
-          backgroundColor: context.backgroundColor,
+      case TonightNavigationDestination.messages:
+        return PreferredSize(
+          preferredSize: Size.fromHeight(context.padding.top),
+          child: Container(
+            color: context.backgroundColor,
+            height: context.padding.top,
+          ),
         );
       case TonightNavigationDestination.profile:
         return TonightAppBar(
@@ -173,17 +186,27 @@ class _NavigatorPageState extends State<NavigatorPage> {
     }
   }
 
-  Future<void> _handleAddPhotoNavigation() async {
-    if (context.read<AuthCubit>().checkIfPhoneNumberIsVerified()) {
-      context.pushRoute(
-        WallPhotoCameraPreviewRoute(
-          event: dartz.none(),
-          timeTask: dartz.none(),
-        ),
-      );
-      return;
+  Future<bool> _handleAddPhotoNavigation() async {
+    if (!context.read<AuthCubit>().checkIfPhoneNumberIsVerified()) {
+      await showConfirmPhoneNumberDialog(context);
+      return false;
     }
 
-    await showConfirmPhoneNumberDialog(context);
+    context.pushRoute(
+      WallPhotoCameraPreviewRoute(
+        event: dartz.none(),
+        timeTask: dartz.none(),
+      ),
+    );
+
+    return true;
+  }
+
+  Future<bool> _handleMessagesAndProfileNavigation() async {
+    // if (context.read<AuthCubit>().checkIfUserIsAnonymous()) {
+    //   await showSignInDialog(context);
+    //   return false;
+    // }
+    return true;
   }
 }

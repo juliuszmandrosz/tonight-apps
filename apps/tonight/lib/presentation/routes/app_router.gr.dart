@@ -37,7 +37,6 @@ import '../activate_time_task_reward/activate_time_task_reward_page.dart'
     as _i38;
 import '../add_wall_photo/add_wall_photo_page.dart' as _i28;
 import '../app_settings/app_settings_page.dart' as _i24;
-import '../chats/chats_page.dart' as _i43;
 import '../club_city_picker/club_city_picker_page.dart' as _i13;
 import '../club_details/club_details_page.dart' as _i9;
 import '../contact/contact_page.dart' as _i25;
@@ -52,9 +51,10 @@ import '../event_room/event_room_page.dart' as _i32;
 import '../events_details/event_details_page.dart' as _i7;
 import '../favorites/favorites_page.dart' as _i31;
 import '../invoice_data/invoice_data_page.dart' as _i20;
+import '../messages/messages_page.dart' as _i43;
 import '../network_lost/network_lost_page.dart' as _i5;
 import '../onboarding/onboarding_page.dart' as _i19;
-import '../onboarding/onboarding_user_details_page.dart' as _i18;
+import '../onboarding_user_details/onboarding_user_details_page.dart' as _i18;
 import '../payment_method/payment_method_page.dart' as _i26;
 import '../profile/profile_page.dart' as _i44;
 import '../redeem_tonight_voucher/redeem_tonight_voucher_page.dart' as _i39;
@@ -634,10 +634,10 @@ class AppRouter extends _i45.RootStackRouter {
         barrierDismissible: false,
       );
     },
-    ChatsRoute.name: (routeData) {
+    MessagesRoute.name: (routeData) {
       return _i45.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i43.ChatsPage(),
+        child: const _i43.MessagesPage(),
         transitionsBuilder: _i48.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
@@ -685,8 +685,8 @@ class AppRouter extends _i45.RootStackRouter {
               parent: WelcomeLoaderRoute.name,
             ),
             _i45.RouteConfig(
-              ChatsRoute.name,
-              path: 'chats-page',
+              MessagesRoute.name,
+              path: 'messages-page',
               parent: WelcomeLoaderRoute.name,
             ),
             _i45.RouteConfig(
@@ -2009,15 +2009,15 @@ class DiscoverRoute extends _i45.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i43.ChatsPage]
-class ChatsRoute extends _i45.PageRouteInfo<void> {
-  const ChatsRoute()
+/// [_i43.MessagesPage]
+class MessagesRoute extends _i45.PageRouteInfo<void> {
+  const MessagesRoute()
       : super(
-          ChatsRoute.name,
-          path: 'chats-page',
+          MessagesRoute.name,
+          path: 'messages-page',
         );
 
-  static const String name = 'ChatsRoute';
+  static const String name = 'MessagesRoute';
 }
 
 /// generated route for
