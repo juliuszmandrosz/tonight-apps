@@ -13,10 +13,10 @@ abstract class UserAccountFacade {
 
   Future<Either<UserAccountFailure, Unit>> submitOnboardingForUser({
     required String username,
-    required String cityId,
-    required String cityName,
-    required DateTime birthdate,
-    required String gender,
+    // required String cityId,
+    // required String cityName,
+    // required DateTime birthdate,
+    // required String gender,
     required Uint8List? profilePicture,
   });
 
