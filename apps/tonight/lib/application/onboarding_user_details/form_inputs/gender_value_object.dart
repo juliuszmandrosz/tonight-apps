@@ -1,5 +1,5 @@
 import 'package:formz/formz.dart';
-import 'package:tonight/application/onboarding/gender.dart';
+import 'package:tonight/application/onboarding_user_details/gender.dart';
 
 enum GenderError {
   empty,

@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:formz/formz.dart';
-import 'package:tonight/application/onboarding/form_inputs/gender_value_object.dart';
-import 'package:tonight/application/onboarding/gender.dart';
-import 'package:tonight/application/onboarding/onboarding_cubit.dart';
+import 'package:tonight/application/onboarding_user_details/form_inputs/gender_value_object.dart';
+import 'package:tonight/application/onboarding_user_details/gender.dart';
+import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
 
 class OnboardingGenderInput extends HookWidget {
   const OnboardingGenderInput({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class OnboardingGenderInput extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = useTextEditingController();
-    return BlocBuilder<OnboardingCubit, OnboardingState>(
+    return BlocBuilder<OnboardingUserDetailsCubit, OnboardingUserDetailsState>(
       buildWhen: (previous, current) =>
           previous.gender != current.gender ||
           previous.submissionStatus != current.submissionStatus,
@@ -27,7 +27,7 @@ class OnboardingGenderInput extends HookWidget {
           onTap: () async {
             final gender = await _showGenderDialog(context);
             if (gender != null && context.mounted) {
-              context.read<OnboardingCubit>().genderChanged(gender);
+              context.read<OnboardingUserDetailsCubit>().genderChanged(gender);
               controller.text = gender.label;
             }
           },
@@ -86,7 +86,7 @@ class OnboardingGenderInput extends HookWidget {
     );
   }
 
-  String? _getGenderInputErrorMessage(OnboardingState state) {
+  String? _getGenderInputErrorMessage(OnboardingUserDetailsState state) {
     if (state.gender.valid || state.submissionStatus != FormzStatus.invalid) {
       return null;
     }

@@ -16,13 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$OnboardingState {
-  Username get username => throw _privateConstructorUsedError;
-  BirthdateValueObject get birthdate => throw _privateConstructorUsedError;
-  GenderValueObject get gender => throw _privateConstructorUsedError;
-  CityValueObject get city => throw _privateConstructorUsedError;
-  FormzStatus get submissionStatus => throw _privateConstructorUsedError;
+  CubitStatus get signInStatus => throw _privateConstructorUsedError;
   Option<String> get errorMessage => throw _privateConstructorUsedError;
-  Option<Uint8List> get userPhoto => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OnboardingStateCopyWith<OnboardingState> get copyWith =>
@@ -35,14 +30,7 @@ abstract class $OnboardingStateCopyWith<$Res> {
           OnboardingState value, $Res Function(OnboardingState) then) =
       _$OnboardingStateCopyWithImpl<$Res, OnboardingState>;
   @useResult
-  $Res call(
-      {Username username,
-      BirthdateValueObject birthdate,
-      GenderValueObject gender,
-      CityValueObject city,
-      FormzStatus submissionStatus,
-      Option<String> errorMessage,
-      Option<Uint8List> userPhoto});
+  $Res call({CubitStatus signInStatus, Option<String> errorMessage});
 }
 
 /// @nodoc
@@ -58,43 +46,18 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
-    Object? birthdate = null,
-    Object? gender = null,
-    Object? city = null,
-    Object? submissionStatus = null,
+    Object? signInStatus = null,
     Object? errorMessage = null,
-    Object? userPhoto = null,
   }) {
     return _then(_value.copyWith(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as Username,
-      birthdate: null == birthdate
-          ? _value.birthdate
-          : birthdate // ignore: cast_nullable_to_non_nullable
-              as BirthdateValueObject,
-      gender: null == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as GenderValueObject,
-      city: null == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as CityValueObject,
-      submissionStatus: null == submissionStatus
-          ? _value.submissionStatus
-          : submissionStatus // ignore: cast_nullable_to_non_nullable
-              as FormzStatus,
+      signInStatus: null == signInStatus
+          ? _value.signInStatus
+          : signInStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      userPhoto: null == userPhoto
-          ? _value.userPhoto
-          : userPhoto // ignore: cast_nullable_to_non_nullable
-              as Option<Uint8List>,
     ) as $Val);
   }
 }
@@ -107,14 +70,7 @@ abstract class _$$_OnboardingStateCopyWith<$Res>
       __$$_OnboardingStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Username username,
-      BirthdateValueObject birthdate,
-      GenderValueObject gender,
-      CityValueObject city,
-      FormzStatus submissionStatus,
-      Option<String> errorMessage,
-      Option<Uint8List> userPhoto});
+  $Res call({CubitStatus signInStatus, Option<String> errorMessage});
 }
 
 /// @nodoc
@@ -128,43 +84,18 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
-    Object? birthdate = null,
-    Object? gender = null,
-    Object? city = null,
-    Object? submissionStatus = null,
+    Object? signInStatus = null,
     Object? errorMessage = null,
-    Object? userPhoto = null,
   }) {
     return _then(_$_OnboardingState(
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as Username,
-      birthdate: null == birthdate
-          ? _value.birthdate
-          : birthdate // ignore: cast_nullable_to_non_nullable
-              as BirthdateValueObject,
-      gender: null == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as GenderValueObject,
-      city: null == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as CityValueObject,
-      submissionStatus: null == submissionStatus
-          ? _value.submissionStatus
-          : submissionStatus // ignore: cast_nullable_to_non_nullable
-              as FormzStatus,
+      signInStatus: null == signInStatus
+          ? _value.signInStatus
+          : signInStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
-      userPhoto: null == userPhoto
-          ? _value.userPhoto
-          : userPhoto // ignore: cast_nullable_to_non_nullable
-              as Option<Uint8List>,
     ));
   }
 }
@@ -173,32 +104,16 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
 
 class _$_OnboardingState implements _OnboardingState {
   const _$_OnboardingState(
-      {required this.username,
-      required this.birthdate,
-      required this.gender,
-      required this.city,
-      required this.submissionStatus,
-      required this.errorMessage,
-      required this.userPhoto});
+      {required this.signInStatus, required this.errorMessage});
 
   @override
-  final Username username;
-  @override
-  final BirthdateValueObject birthdate;
-  @override
-  final GenderValueObject gender;
-  @override
-  final CityValueObject city;
-  @override
-  final FormzStatus submissionStatus;
+  final CubitStatus signInStatus;
   @override
   final Option<String> errorMessage;
-  @override
-  final Option<Uint8List> userPhoto;
 
   @override
   String toString() {
-    return 'OnboardingState(username: $username, birthdate: $birthdate, gender: $gender, city: $city, submissionStatus: $submissionStatus, errorMessage: $errorMessage, userPhoto: $userPhoto)';
+    return 'OnboardingState(signInStatus: $signInStatus, errorMessage: $errorMessage)';
   }
 
   @override
@@ -206,23 +121,14 @@ class _$_OnboardingState implements _OnboardingState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnboardingState &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.birthdate, birthdate) ||
-                other.birthdate == birthdate) &&
-            (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.city, city) || other.city == city) &&
-            (identical(other.submissionStatus, submissionStatus) ||
-                other.submissionStatus == submissionStatus) &&
+            (identical(other.signInStatus, signInStatus) ||
+                other.signInStatus == signInStatus) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage) &&
-            (identical(other.userPhoto, userPhoto) ||
-                other.userPhoto == userPhoto));
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, username, birthdate, gender,
-      city, submissionStatus, errorMessage, userPhoto);
+  int get hashCode => Object.hash(runtimeType, signInStatus, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -233,28 +139,13 @@ class _$_OnboardingState implements _OnboardingState {
 
 abstract class _OnboardingState implements OnboardingState {
   const factory _OnboardingState(
-      {required final Username username,
-      required final BirthdateValueObject birthdate,
-      required final GenderValueObject gender,
-      required final CityValueObject city,
-      required final FormzStatus submissionStatus,
-      required final Option<String> errorMessage,
-      required final Option<Uint8List> userPhoto}) = _$_OnboardingState;
+      {required final CubitStatus signInStatus,
+      required final Option<String> errorMessage}) = _$_OnboardingState;
 
   @override
-  Username get username;
-  @override
-  BirthdateValueObject get birthdate;
-  @override
-  GenderValueObject get gender;
-  @override
-  CityValueObject get city;
-  @override
-  FormzStatus get submissionStatus;
+  CubitStatus get signInStatus;
   @override
   Option<String> get errorMessage;
-  @override
-  Option<Uint8List> get userPhoto;
   @override
   @JsonKey(ignore: true)
   _$$_OnboardingStateCopyWith<_$_OnboardingState> get copyWith =>

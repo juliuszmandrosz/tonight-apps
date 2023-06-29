@@ -2,7 +2,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:tonight/application/onboarding/onboarding_cubit.dart';
+import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
 import 'package:translations/generated/l10n.dart';
 
 class SubmitButton extends StatelessWidget {
@@ -10,7 +10,7 @@ class SubmitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OnboardingCubit, OnboardingState>(
+    return BlocBuilder<OnboardingUserDetailsCubit, OnboardingUserDetailsState>(
       builder: (context, state) {
         return state.submissionStatus.isSubmissionInProgress
             ? const CircleLoadingIndicator()
@@ -21,8 +21,9 @@ class SubmitButton extends StatelessWidget {
                     height: kButtonHeight,
                     child: ElevatedButton(
                       child: Text(S().submit),
-                      onPressed: () =>
-                          context.read<OnboardingCubit>().submitOnboarding(),
+                      onPressed: () => context
+                          .read<OnboardingUserDetailsCubit>()
+                          .submitOnboarding(),
                     ),
                   ),
                 ],

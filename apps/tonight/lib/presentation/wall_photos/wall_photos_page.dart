@@ -2,7 +2,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
-import 'package:tonight/presentation/wall_photos/widgets/refresh_wall_photos_button.dart';
+import 'package:tonight/presentation/wall_photos/widgets/no_wall_photos_info.dart';
 import 'package:tonight/presentation/wall_photos/widgets/wall_photo_card.dart';
 import 'package:tonight/presentation/wall_photos/widgets/wall_photos_filter_chips.dart';
 
@@ -53,7 +53,7 @@ class WallPhotosPage extends StatelessWidget {
                 return const Expanded(child: WaveLoadingIndicator());
               case CubitStatus.success:
                 return state.photos.isEmpty
-                    ? const Expanded(child: RefreshWallPhotosButton())
+                    ? const Expanded(child: NoWallPhotosInfo())
                     : Expanded(
                         child: RefreshIndicator(
                           onRefresh: () async => context

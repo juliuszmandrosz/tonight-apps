@@ -181,10 +181,8 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
     int offset = 0,
   }) async {
     try {
-      final userDoc = await _firestore.getCurrentUserDocRef(_auth).get();
       final result = await _getWallPhotosFromApi(
         filters: filters,
-        userId: userDoc.id,
         offset: offset,
         pageSize: pageSize,
       );
@@ -300,7 +298,6 @@ class FirebaseWallPhotoFacade implements WallPhotoFacade {
 
   Future<List<dynamic>> _getWallPhotosFromApi({
     required WallPhotoFilters filters,
-    required String userId,
     required int pageSize,
     required int offset,
   }) async {

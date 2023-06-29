@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight/application/onboarding/onboarding_cubit.dart';
+import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
 import 'package:tonight/application/user_city_picker/user_city_picker_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
@@ -25,7 +25,7 @@ class UserCityPickerPage extends StatelessWidget {
             create: (_) => getIt<UserCityPickerBloc>(),
           ),
           BlocProvider.value(
-            value: blocContext.read<OnboardingCubit>(),
+            value: blocContext.read<OnboardingUserDetailsCubit>(),
           ),
         ],
         child: BlocListener<UserCityPickerBloc, UserCityPickerState>(
@@ -35,7 +35,7 @@ class UserCityPickerPage extends StatelessWidget {
               () {},
               (place) {
                 context.popRoute();
-                context.read<OnboardingCubit>().cityChanged(place);
+                context.read<OnboardingUserDetailsCubit>().cityChanged(place);
               },
             );
           },
