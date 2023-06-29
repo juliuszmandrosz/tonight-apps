@@ -24,6 +24,7 @@ mixin _$TonightEvent {
   DateTime get eventEndDateTime => throw _privateConstructorUsedError;
   int get minAge => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
+  String get priceInfo => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
   String get eventPhotoUrl => throw _privateConstructorUsedError;
   String get allowedOutfit => throw _privateConstructorUsedError;
@@ -60,6 +61,7 @@ abstract class $TonightEventCopyWith<$Res> {
       DateTime eventEndDateTime,
       int minAge,
       int price,
+      String priceInfo,
       String currency,
       String eventPhotoUrl,
       String allowedOutfit,
@@ -97,6 +99,7 @@ class _$TonightEventCopyWithImpl<$Res, $Val extends TonightEvent>
     Object? eventEndDateTime = null,
     Object? minAge = null,
     Object? price = null,
+    Object? priceInfo = null,
     Object? currency = null,
     Object? eventPhotoUrl = null,
     Object? allowedOutfit = null,
@@ -145,6 +148,10 @@ class _$TonightEventCopyWithImpl<$Res, $Val extends TonightEvent>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      priceInfo: null == priceInfo
+          ? _value.priceInfo
+          : priceInfo // ignore: cast_nullable_to_non_nullable
+              as String,
       currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
@@ -222,6 +229,7 @@ abstract class _$$_TonightEventCopyWith<$Res>
       DateTime eventEndDateTime,
       int minAge,
       int price,
+      String priceInfo,
       String currency,
       String eventPhotoUrl,
       String allowedOutfit,
@@ -257,6 +265,7 @@ class __$$_TonightEventCopyWithImpl<$Res>
     Object? eventEndDateTime = null,
     Object? minAge = null,
     Object? price = null,
+    Object? priceInfo = null,
     Object? currency = null,
     Object? eventPhotoUrl = null,
     Object? allowedOutfit = null,
@@ -305,6 +314,10 @@ class __$$_TonightEventCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      priceInfo: null == priceInfo
+          ? _value.priceInfo
+          : priceInfo // ignore: cast_nullable_to_non_nullable
+              as String,
       currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
@@ -377,6 +390,7 @@ class _$_TonightEvent extends _TonightEvent {
       required this.eventEndDateTime,
       required this.minAge,
       required this.price,
+      required this.priceInfo,
       required this.currency,
       required this.eventPhotoUrl,
       required this.allowedOutfit,
@@ -412,6 +426,8 @@ class _$_TonightEvent extends _TonightEvent {
   final int minAge;
   @override
   final int price;
+  @override
+  final String priceInfo;
   @override
   final String currency;
   @override
@@ -461,7 +477,7 @@ class _$_TonightEvent extends _TonightEvent {
 
   @override
   String toString() {
-    return 'TonightEvent(eventId: $eventId, eventName: $eventName, clubId: $clubId, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, location: $location, urlLinks: $urlLinks, isConcert: $isConcert, firstParticipants: $firstParticipants, totalParticipants: $totalParticipants, voucher: $voucher, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl, artistName: $artistName, description: $description)';
+    return 'TonightEvent(eventId: $eventId, eventName: $eventName, clubId: $clubId, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, priceInfo: $priceInfo, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, location: $location, urlLinks: $urlLinks, isConcert: $isConcert, firstParticipants: $firstParticipants, totalParticipants: $totalParticipants, voucher: $voucher, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl, artistName: $artistName, description: $description)';
   }
 
   @override
@@ -481,6 +497,8 @@ class _$_TonightEvent extends _TonightEvent {
                 other.eventEndDateTime == eventEndDateTime) &&
             (identical(other.minAge, minAge) || other.minAge == minAge) &&
             (identical(other.price, price) || other.price == price) &&
+            (identical(other.priceInfo, priceInfo) ||
+                other.priceInfo == priceInfo) &&
             (identical(other.currency, currency) ||
                 other.currency == currency) &&
             (identical(other.eventPhotoUrl, eventPhotoUrl) ||
@@ -519,6 +537,7 @@ class _$_TonightEvent extends _TonightEvent {
         eventEndDateTime,
         minAge,
         price,
+        priceInfo,
         currency,
         eventPhotoUrl,
         allowedOutfit,
@@ -552,6 +571,7 @@ abstract class _TonightEvent extends TonightEvent {
       required final DateTime eventEndDateTime,
       required final int minAge,
       required final int price,
+      required final String priceInfo,
       required final String currency,
       required final String eventPhotoUrl,
       required final String allowedOutfit,
@@ -584,6 +604,8 @@ abstract class _TonightEvent extends TonightEvent {
   int get minAge;
   @override
   int get price;
+  @override
+  String get priceInfo;
   @override
   String get currency;
   @override

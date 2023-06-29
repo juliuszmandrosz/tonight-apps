@@ -12,7 +12,7 @@ class EventDto with _$EventDto {
 
   @JsonSerializable()
   const factory EventDto({
-    @JsonKey(ignore: true) String? id,
+    @JsonKey(includeToJson: false, includeFromJson: false) String? id,
     required String clubId,
     required String eventName,
     required String clubName,
@@ -34,6 +34,7 @@ class EventDto with _$EventDto {
     @Default(0) int attending,
     @Default(false) bool isCanceled,
     @Default(false) bool isBeingPostponed,
+    @Default('') String priceInfo,
     String? locationString,
     String? clubPhotoUrl,
   }) = _EventDto;
@@ -62,6 +63,7 @@ class EventDto with _$EventDto {
       isConcert: event.isConcert,
       isCanceled: event.isCanceled,
       isBeingPostponed: event.isBeingPostponed,
+      priceInfo: event.priceInfo,
       clubPhotoUrl: event.clubPhotoUrl,
       locationString: event.locationString,
     );
@@ -107,6 +109,7 @@ class EventDto with _$EventDto {
       artistName: artistName,
       isCanceled: isCanceled,
       isBeingPostponed: isBeingPostponed,
+      priceInfo: priceInfo,
       clubPhotoUrl: clubPhotoUrl,
       locationString: locationString,
     );
