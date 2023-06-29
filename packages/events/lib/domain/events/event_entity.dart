@@ -14,6 +14,7 @@ class Event extends Equatable {
   final DateTime originalStartDateTime;
   final int minAge;
   final int price;
+  final String priceInfo;
   final String currency;
   final String eventPhotoUrl;
   final String allowedOutfit;
@@ -40,6 +41,7 @@ class Event extends Equatable {
     required this.originalStartDateTime,
     required this.minAge,
     required this.price,
+    required this.priceInfo,
     required this.currency,
     required this.eventPhotoUrl,
     required this.allowedOutfit,
@@ -91,6 +93,7 @@ class Event extends Equatable {
         isBeingPostponed,
         clubPhotoUrl,
         locationString,
+        priceInfo,
       ];
 
   Event copyWith({
@@ -115,9 +118,9 @@ class Event extends Equatable {
     Option<String>? artistName,
     bool? isCanceled,
     bool? isBeingPostponed,
+    String? priceInfo,
     Option<String>? clubPhotoUrl,
     Option<String>? locationString,
-    Option<String>? voucherName,
   }) {
     return Event(
       id: id,
@@ -141,6 +144,7 @@ class Event extends Equatable {
       isConcert: isConcert ?? this.isConcert,
       isCanceled: isCanceled ?? this.isCanceled,
       isBeingPostponed: isBeingPostponed ?? this.isBeingPostponed,
+      priceInfo: priceInfo ?? this.priceInfo,
       description: description != null
           ? description.fold(
               () => null,
