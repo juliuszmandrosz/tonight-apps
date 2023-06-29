@@ -12,7 +12,6 @@ import 'package:tonight/presentation/event_filters/widgets/event_filters_dress_c
 import 'package:tonight/presentation/event_filters/widgets/event_filters_is_concert.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_min_age.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_music.dart';
-import 'package:tonight/presentation/event_filters/widgets/event_filters_price.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_submit_button.dart.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_whole_world.dart';
 import 'package:translations/translations.dart';
@@ -98,8 +97,6 @@ class EventFiltersPage extends StatelessWidget {
                               availableOutfits:
                                   state.availableFilters.allowedOutfits,
                             ),
-                            const SizedBox(height: 25),
-                            const EventFiltersPrice(),
                             const SizedBox(height: 25),
                             const EventFiltersIsConcert(),
                             if (eventFiltersPageType ==
