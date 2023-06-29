@@ -1,4 +1,5 @@
 import 'package:auth/auth.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -83,7 +84,7 @@ class _VoucherModalState extends State<VoucherModal> {
                   clipBehavior: Clip.none,
                   children: [
                     LayoutBuilder(builder: (context, constraints) {
-                      final modalHeight = constraints.maxWidth * 0.25;
+                      final modalHeight = constraints.maxWidth * 0.27;
                       return Container(
                         height: modalHeight,
                         width: double.infinity,
@@ -95,11 +96,11 @@ class _VoucherModalState extends State<VoucherModal> {
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          padding: const EdgeInsets.all(8.0),
                           child: Center(
-                            child: Text(
+                            child: AutoSizeText(
                               widget.voucher.voucherName,
-                              style: context.titleLarge,
+                              style: context.titleMedium,
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -118,7 +119,7 @@ class _VoucherModalState extends State<VoucherModal> {
                       ),
                     ),
                     Positioned(
-                      top: -8,
+                      top: -10,
                       right: 0,
                       child: Center(
                         child: IconButton(
