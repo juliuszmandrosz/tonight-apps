@@ -107,8 +107,7 @@ class _TonightDrawerState extends State<TonightDrawer> {
                 const SizedBox(height: 16),
                 Center(
                   child: Text(
-                    // TODO: Add translations
-                    'Dołącz do naszej społeczności!',
+                    S().joinOurCommunity,
                     style: context.titleMedium.copyWithSecondaryColor(),
                   ),
                 ),

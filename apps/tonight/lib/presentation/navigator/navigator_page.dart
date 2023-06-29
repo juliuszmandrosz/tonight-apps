@@ -96,8 +96,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
                     ),
                     NavigationDestination(
                       icon: const FaIcon(FontAwesomeIcons.envelope),
-                      // TODO - add translations
-                      label: 'Wiadomości',
+                      label: S().messages,
                     ),
                     NavigationDestination(
                       icon: const FaIcon(FontAwesomeIcons.user),
