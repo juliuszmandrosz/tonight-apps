@@ -61,6 +61,7 @@ import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:tonight/application/invoice_data/invoice_data_cubit.dart';
 import 'package:tonight/application/onboarding/onboarding_cubit.dart';
+import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
 import 'package:tonight/application/payment_method/payment_method_cubit.dart';
 import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
@@ -328,7 +329,7 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => OnboardingCubit(
+    () => OnboardingUserDetailsCubit(
       getIt(),
     ),
   );
@@ -458,6 +459,12 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => UserCityPickerBloc(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => OnboardingCubit(
       getIt(),
     ),
   );

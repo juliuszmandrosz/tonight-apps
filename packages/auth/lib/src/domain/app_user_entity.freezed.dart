@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AppUser {
   String get id => throw _privateConstructorUsedError;
-  String get providerId => throw _privateConstructorUsedError;
   bool get isOnboardingCompleted => throw _privateConstructorUsedError;
   bool get isPhoneNumberVerified => throw _privateConstructorUsedError;
   DateTime? get lastDailySpinAt => throw _privateConstructorUsedError;
@@ -33,7 +32,6 @@ abstract class $AppUserCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String providerId,
       bool isOnboardingCompleted,
       bool isPhoneNumberVerified,
       DateTime? lastDailySpinAt});
@@ -53,7 +51,6 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
   @override
   $Res call({
     Object? id = null,
-    Object? providerId = null,
     Object? isOnboardingCompleted = null,
     Object? isPhoneNumberVerified = null,
     Object? lastDailySpinAt = freezed,
@@ -62,10 +59,6 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      providerId: null == providerId
-          ? _value.providerId
-          : providerId // ignore: cast_nullable_to_non_nullable
               as String,
       isOnboardingCompleted: null == isOnboardingCompleted
           ? _value.isOnboardingCompleted
@@ -92,7 +85,6 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String providerId,
       bool isOnboardingCompleted,
       bool isPhoneNumberVerified,
       DateTime? lastDailySpinAt});
@@ -109,7 +101,6 @@ class __$$_AppUserCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? providerId = null,
     Object? isOnboardingCompleted = null,
     Object? isPhoneNumberVerified = null,
     Object? lastDailySpinAt = freezed,
@@ -118,10 +109,6 @@ class __$$_AppUserCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      providerId: null == providerId
-          ? _value.providerId
-          : providerId // ignore: cast_nullable_to_non_nullable
               as String,
       isOnboardingCompleted: null == isOnboardingCompleted
           ? _value.isOnboardingCompleted
@@ -144,15 +131,12 @@ class __$$_AppUserCopyWithImpl<$Res>
 class _$_AppUser implements _AppUser {
   const _$_AppUser(
       {required this.id,
-      required this.providerId,
       required this.isOnboardingCompleted,
       required this.isPhoneNumberVerified,
       this.lastDailySpinAt});
 
   @override
   final String id;
-  @override
-  final String providerId;
   @override
   final bool isOnboardingCompleted;
   @override
@@ -162,7 +146,7 @@ class _$_AppUser implements _AppUser {
 
   @override
   String toString() {
-    return 'AppUser(id: $id, providerId: $providerId, isOnboardingCompleted: $isOnboardingCompleted, isPhoneNumberVerified: $isPhoneNumberVerified, lastDailySpinAt: $lastDailySpinAt)';
+    return 'AppUser(id: $id, isOnboardingCompleted: $isOnboardingCompleted, isPhoneNumberVerified: $isPhoneNumberVerified, lastDailySpinAt: $lastDailySpinAt)';
   }
 
   @override
@@ -171,8 +155,6 @@ class _$_AppUser implements _AppUser {
         (other.runtimeType == runtimeType &&
             other is _$_AppUser &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.providerId, providerId) ||
-                other.providerId == providerId) &&
             (identical(other.isOnboardingCompleted, isOnboardingCompleted) ||
                 other.isOnboardingCompleted == isOnboardingCompleted) &&
             (identical(other.isPhoneNumberVerified, isPhoneNumberVerified) ||
@@ -182,8 +164,8 @@ class _$_AppUser implements _AppUser {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, providerId,
-      isOnboardingCompleted, isPhoneNumberVerified, lastDailySpinAt);
+  int get hashCode => Object.hash(runtimeType, id, isOnboardingCompleted,
+      isPhoneNumberVerified, lastDailySpinAt);
 
   @JsonKey(ignore: true)
   @override
@@ -195,15 +177,12 @@ class _$_AppUser implements _AppUser {
 abstract class _AppUser implements AppUser {
   const factory _AppUser(
       {required final String id,
-      required final String providerId,
       required final bool isOnboardingCompleted,
       required final bool isPhoneNumberVerified,
       final DateTime? lastDailySpinAt}) = _$_AppUser;
 
   @override
   String get id;
-  @override
-  String get providerId;
   @override
   bool get isOnboardingCompleted;
   @override

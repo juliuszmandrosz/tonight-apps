@@ -3,8 +3,8 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tonight/application/onboarding/onboarding_cubit.dart';
-import 'package:tonight/presentation/onboarding/widgets/onboarding_user_details_bottom_sheet.dart';
+import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
+import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_user_details_bottom_sheet.dart';
 import 'package:tonight/presentation/utils/show_confirm_phone_number_dialog.dart';
 
 class OnboardingProfilePicture extends StatelessWidget {
@@ -12,7 +12,7 @@ class OnboardingProfilePicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OnboardingCubit, OnboardingState>(
+    return BlocBuilder<OnboardingUserDetailsCubit, OnboardingUserDetailsState>(
       builder: (context, onboardingState) {
         final photo = onboardingState.userPhoto;
         final username = onboardingState.username.value;
@@ -75,7 +75,9 @@ class OnboardingProfilePicture extends StatelessWidget {
                           .read<AuthCubit>()
                           .checkIfPhoneNumberIsVerified()) {
                         photo.fold(
-                          context.read<OnboardingCubit>().pickProfilePhoto,
+                          context
+                              .read<OnboardingUserDetailsCubit>()
+                              .pickProfilePhoto,
                           (p) async {
                             context.unfocus();
                             await showModalBottomSheet(

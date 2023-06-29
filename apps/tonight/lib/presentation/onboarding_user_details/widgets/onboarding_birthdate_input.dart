@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:formz/formz.dart';
-import 'package:tonight/application/onboarding/form_inputs/birthdate_value_object.dart';
-import 'package:tonight/application/onboarding/onboarding_cubit.dart';
+import 'package:tonight/application/onboarding_user_details/form_inputs/birthdate_value_object.dart';
+import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
 
 class OnboardingBirthdateInput extends HookWidget {
   const OnboardingBirthdateInput({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class OnboardingBirthdateInput extends HookWidget {
     final controller = useTextEditingController();
     final now = DateTime.now();
     final initialDate = DateTime(now.year - 18, now.month, now.day);
-    return BlocBuilder<OnboardingCubit, OnboardingState>(
+    return BlocBuilder<OnboardingUserDetailsCubit, OnboardingUserDetailsState>(
       buildWhen: (previous, current) =>
           previous.birthdate != current.birthdate ||
           previous.submissionStatus != current.submissionStatus,
@@ -33,7 +33,7 @@ class OnboardingBirthdateInput extends HookWidget {
             );
             if (date != null && context.mounted) {
               controller.text = context.formatDateTimeToLocaleYMD(date);
-              context.read<OnboardingCubit>().birthdateChanged(date);
+              context.read<OnboardingUserDetailsCubit>().birthdateChanged(date);
             }
           },
           decoration: InputDecoration(
@@ -51,7 +51,7 @@ class OnboardingBirthdateInput extends HookWidget {
     );
   }
 
-  String? _getBirthdateInputErrorMessage(OnboardingState state) {
+  String? _getBirthdateInputErrorMessage(OnboardingUserDetailsState state) {
     if (state.birthdate.valid ||
         state.submissionStatus != FormzStatus.invalid) {
       return null;

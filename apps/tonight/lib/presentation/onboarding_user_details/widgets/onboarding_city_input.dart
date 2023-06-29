@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:formz/formz.dart';
-import 'package:tonight/application/onboarding/form_inputs/city_value_object.dart';
-import 'package:tonight/application/onboarding/onboarding_cubit.dart';
+import 'package:tonight/application/onboarding_user_details/form_inputs/city_value_object.dart';
+import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/generated/l10n.dart';
 
@@ -16,7 +16,7 @@ class OnboardingCityInput extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final textController = useTextEditingController();
-    return BlocBuilder<OnboardingCubit, OnboardingState>(
+    return BlocBuilder<OnboardingUserDetailsCubit, OnboardingUserDetailsState>(
       buildWhen: (previous, current) =>
           previous.city != current.city ||
           previous.submissionStatus != current.submissionStatus,
@@ -45,7 +45,7 @@ class OnboardingCityInput extends HookWidget {
     );
   }
 
-  String? _getCityInputErrorMessage(OnboardingState state) {
+  String? _getCityInputErrorMessage(OnboardingUserDetailsState state) {
     if (state.city.valid || state.submissionStatus != FormzStatus.invalid) {
       return null;
     }

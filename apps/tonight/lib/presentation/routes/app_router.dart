@@ -4,7 +4,6 @@ import 'package:tonight/application/add_wall_photo/models/wall_photo_venue_model
 import 'package:tonight/presentation/activate_time_task_reward/activate_time_task_reward_page.dart';
 import 'package:tonight/presentation/add_wall_photo/add_wall_photo_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
-import 'package:tonight/presentation/chats/chats_page.dart';
 import 'package:tonight/presentation/club_city_picker/club_city_picker_page.dart';
 import 'package:tonight/presentation/club_details/club_details_page.dart';
 import 'package:tonight/presentation/contact/contact_page.dart';
@@ -19,9 +18,10 @@ import 'package:tonight/presentation/event_room/event_room_page.dart';
 import 'package:tonight/presentation/events_details/event_details_page.dart';
 import 'package:tonight/presentation/favorites/favorites_page.dart';
 import 'package:tonight/presentation/invoice_data/invoice_data_page.dart';
+import 'package:tonight/presentation/messages/messages_page.dart';
 import 'package:tonight/presentation/network_lost/network_lost_page.dart';
 import 'package:tonight/presentation/onboarding/onboarding_page.dart';
-import 'package:tonight/presentation/onboarding/onboarding_user_details_page.dart';
+import 'package:tonight/presentation/onboarding_user_details/onboarding_user_details_page.dart';
 import 'package:tonight/presentation/payment_method/payment_method_page.dart';
 import 'package:tonight/presentation/profile/profile_page.dart';
 import 'package:tonight/presentation/redeem_tonight_voucher/redeem_tonight_voucher_page.dart';
@@ -85,7 +85,7 @@ const animationDuration = 300;
           durationInMilliseconds: animationDuration,
         ),
         CustomRoute(
-          page: ChatsPage,
+          page: MessagesPage,
           transitionsBuilder: slideLeftTransition,
           durationInMilliseconds: animationDuration,
         ),

@@ -6,7 +6,6 @@ part 'app_user_entity.freezed.dart';
 class AppUser with _$AppUser {
   const factory AppUser({
     required String id,
-    required String providerId,
     required bool isOnboardingCompleted,
     required bool isPhoneNumberVerified,
     DateTime? lastDailySpinAt,

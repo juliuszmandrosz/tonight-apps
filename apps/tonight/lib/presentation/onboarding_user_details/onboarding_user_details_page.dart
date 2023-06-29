@@ -3,15 +3,15 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:tonight/application/onboarding/onboarding_cubit.dart';
+import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
-import 'package:tonight/presentation/onboarding/widgets/onboarding_birthdate_input.dart';
-import 'package:tonight/presentation/onboarding/widgets/onboarding_city_input.dart';
-import 'package:tonight/presentation/onboarding/widgets/onboarding_gender_input.dart';
-import 'package:tonight/presentation/onboarding/widgets/onboarding_profile_picture.dart';
-import 'package:tonight/presentation/onboarding/widgets/onboarding_username_input.dart';
-import 'package:tonight/presentation/onboarding/widgets/submit_button.dart';
+import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_birthdate_input.dart';
+import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_city_input.dart';
+import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_gender_input.dart';
+import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_profile_picture.dart';
+import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_username_input.dart';
+import 'package:tonight/presentation/onboarding_user_details/widgets/submit_button.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class OnboardingUserDetailsPage extends StatelessWidget {
@@ -22,8 +22,9 @@ class OnboardingUserDetailsPage extends StatelessWidget {
     return GestureDetector(
       onTap: context.unfocus,
       child: BlocProvider(
-        create: (context) => getIt<OnboardingCubit>(),
-        child: BlocListener<OnboardingCubit, OnboardingState>(
+        create: (context) => getIt<OnboardingUserDetailsCubit>(),
+        child: BlocListener<OnboardingUserDetailsCubit,
+            OnboardingUserDetailsState>(
           listener: (context, state) {
             state.errorMessage.fold(
               () {},

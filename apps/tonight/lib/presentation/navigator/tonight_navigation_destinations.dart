@@ -2,6 +2,6 @@ enum TonightNavigationDestination {
   tonight,
   discover,
   add,
-  chats,
+  messages,
   profile,
 }
