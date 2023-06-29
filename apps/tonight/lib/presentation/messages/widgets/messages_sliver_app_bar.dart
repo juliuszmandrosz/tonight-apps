@@ -40,11 +40,12 @@ class _MessagesAppBarState extends State<MessagesAppBar> {
           Tab(
             icon: FaIcon(
               selectedIndex == 0
-                  ? FontAwesomeIcons.solidBell
-                  : FontAwesomeIcons.bell,
+                  ? FontAwesomeIcons.solidComments
+                  : FontAwesomeIcons.comments,
             ),
             child: AutoSizeText(
-              S().notifications,
+              // TODO - add translation
+              'Twoje ${S().chats.toLowerCase()}',
               textAlign: TextAlign.center,
               maxLines: 1,
             ),
@@ -52,12 +53,11 @@ class _MessagesAppBarState extends State<MessagesAppBar> {
           Tab(
             icon: FaIcon(
               selectedIndex == 1
-                  ? FontAwesomeIcons.solidComments
-                  : FontAwesomeIcons.comments,
+                  ? FontAwesomeIcons.solidBell
+                  : FontAwesomeIcons.bell,
             ),
             child: AutoSizeText(
-              // TODO - add translation
-              'Twoje ${S().chats.toLowerCase()}',
+              S().notifications,
               textAlign: TextAlign.center,
               maxLines: 1,
             ),

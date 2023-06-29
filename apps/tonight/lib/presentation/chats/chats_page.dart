@@ -24,49 +24,46 @@ class ChatsPage extends StatelessWidget {
                   .add(const ChatsEvent.chatsFetched()),
             );
           case CubitStatus.success:
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: state.chats.isEmpty
-                  ? Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            S().noChats,
-                            style: context.titleSmall,
-                          ),
-                          const SizedBox(height: 20),
-                          OutlinedButton(
-                            onPressed: () => context
-                                .read<ChatsBloc>()
-                                .add(const ChatsEvent.chatsFetched()),
-                            child: Text(S().refresh),
-                          ),
-                        ],
+            return state.chats.isEmpty
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          S().noChats,
+                          style: context.titleSmall,
+                        ),
+                        const SizedBox(height: 20),
+                        OutlinedButton(
+                          onPressed: () => context
+                              .read<ChatsBloc>()
+                              .add(const ChatsEvent.chatsFetched()),
+                          child: Text(S().refresh),
+                        ),
+                      ],
+                    ),
+                  )
+                : RefreshIndicator(
+                    onRefresh: () async => context
+                        .read<ChatsBloc>()
+                        .add(const ChatsEvent.chatsFetched()),
+                    child: InfiniteList(
+                      isLoading: state.fetchNextPageStatus.isLoading(),
+                      hasReachedMax: state.hasReachedMax,
+                      hasError: state.fetchNextPageStatus.isFailure(),
+                      itemCount: state.chats.length,
+                      separatorBuilder: (_, __) => const Divider(
+                        height: 25,
+                        thickness: .5,
                       ),
-                    )
-                  : RefreshIndicator(
-                      onRefresh: () async => context
+                      onFetchData: () => context
                           .read<ChatsBloc>()
-                          .add(const ChatsEvent.chatsFetched()),
-                      child: InfiniteList(
-                        isLoading: state.fetchNextPageStatus.isLoading(),
-                        hasReachedMax: state.hasReachedMax,
-                        hasError: state.fetchNextPageStatus.isFailure(),
-                        itemCount: state.chats.length,
-                        separatorBuilder: (_, __) => const Divider(
-                          height: 25,
-                          thickness: .5,
-                        ),
-                        onFetchData: () => context
-                            .read<ChatsBloc>()
-                            .add(const ChatsEvent.nextPageFetched()),
-                        itemBuilder: (_, i) => ChatListTile(
-                          chat: state.chats[i],
-                        ),
+                          .add(const ChatsEvent.nextPageFetched()),
+                      itemBuilder: (_, i) => ChatListTile(
+                        chat: state.chats[i],
                       ),
                     ),
-            );
+                  );
         }
       },
     );
