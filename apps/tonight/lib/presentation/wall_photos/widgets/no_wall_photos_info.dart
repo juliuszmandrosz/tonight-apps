@@ -17,51 +17,56 @@ class NoWallPhotosInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WallPhotosBloc, WallPhotosState>(
-      builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                state.wallPhotoFilters.showPhotosFromClubsInRangeFilter
-                            .userLocation
-                            .isSome() &&
-                        state.wallPhotoFilters.showPhotosFromClubsInRangeFilter
-                            .enabled
-                    ? S().wallPhotosNearbyInfo
-                    : S().wallPhotosInfo,
-                textAlign: TextAlign.center,
-                style: context.titleMedium.copyWithSecondaryColor(),
-              ),
-              const SizedBox(height: 20),
-              SizedBox(
-                height: kButtonHeight,
-                child: ElevatedButton.icon(
-                  onPressed: () async {
-                    if (context
-                        .read<AuthCubit>()
-                        .checkIfPhoneNumberIsVerified()) {
-                      context.pushRoute(
-                        WallPhotoCameraPreviewRoute(
-                          event: none(),
-                          timeTask: none(),
-                        ),
-                      );
-                      return;
-                    }
+    return Stack(
+      children: [
+        ListView(),
+        BlocBuilder<WallPhotosBloc, WallPhotosState>(
+          builder: (context, state) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    state.wallPhotoFilters.showPhotosFromClubsInRangeFilter
+                                .userLocation
+                                .isSome() &&
+                            state.wallPhotoFilters
+                                .showPhotosFromClubsInRangeFilter.enabled
+                        ? S().wallPhotosNearbyInfo
+                        : S().wallPhotosInfo,
+                    textAlign: TextAlign.center,
+                    style: context.titleMedium.copyWithSecondaryColor(),
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    height: kButtonHeight,
+                    child: ElevatedButton.icon(
+                      onPressed: () async {
+                        if (context
+                            .read<AuthCubit>()
+                            .checkIfPhoneNumberIsVerified()) {
+                          context.pushRoute(
+                            WallPhotoCameraPreviewRoute(
+                              event: none(),
+                              timeTask: none(),
+                            ),
+                          );
+                          return;
+                        }
 
-                    await showConfirmPhoneNumberDialog(context);
-                  },
-                  label: Text(S().add),
-                  icon: const FaIcon(FontAwesomeIcons.camera),
-                ),
+                        await showConfirmPhoneNumberDialog(context);
+                      },
+                      label: Text(S().add),
+                      icon: const FaIcon(FontAwesomeIcons.camera),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        );
-      },
+            );
+          },
+        ),
+      ],
     );
   }
 }

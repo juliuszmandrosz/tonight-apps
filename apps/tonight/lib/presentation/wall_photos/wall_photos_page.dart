@@ -52,14 +52,14 @@ class WallPhotosPage extends StatelessWidget {
               case CubitStatus.loading:
                 return const Expanded(child: WaveLoadingIndicator());
               case CubitStatus.success:
-                return state.photos.isEmpty
-                    ? const Expanded(child: NoWallPhotosInfo())
-                    : Expanded(
-                        child: RefreshIndicator(
-                          onRefresh: () async => context
-                              .read<WallPhotosBloc>()
-                              .add(const WallPhotosEvent.wallPhotosRefreshed()),
-                          child: InfiniteList(
+                return Expanded(
+                  child: RefreshIndicator(
+                    onRefresh: () async => context
+                        .read<WallPhotosBloc>()
+                        .add(const WallPhotosEvent.wallPhotosRefreshed()),
+                    child: state.photos.isEmpty
+                        ? const NoWallPhotosInfo()
+                        : InfiniteList(
                             itemCount: state.photos.length,
                             hasReachedMax: state.hasReachedMax,
                             isLoading: state.getPhotosStatus.isLoading(),
@@ -74,8 +74,8 @@ class WallPhotosPage extends StatelessWidget {
                               wallPhoto: state.photos[i],
                             ),
                           ),
-                        ),
-                      );
+                  ),
+                );
             }
           },
         ),
