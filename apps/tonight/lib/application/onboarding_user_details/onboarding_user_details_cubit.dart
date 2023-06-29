@@ -29,10 +29,10 @@ class OnboardingUserDetailsCubit extends Cubit<OnboardingUserDetailsState> {
 
     final failureOrSuccess = await _userAccountFacade.submitOnboardingForUser(
       username: state.username.value,
-      gender: state.gender.value!.name,
-      birthdate: state.birthdate.value!,
-      cityId: state.city.value!.id,
-      cityName: state.city.value!.name,
+      // gender: state.gender.value!.name,
+      // birthdate: state.birthdate.value!,
+      // cityId: state.city.value!.id,
+      // cityName: state.city.value!.name,
       profilePicture: state.userPhoto.fold(() => null, (picture) => picture),
     );
 
@@ -85,15 +85,18 @@ class OnboardingUserDetailsCubit extends Cubit<OnboardingUserDetailsState> {
     emit(
       state.copyWith(
         username: Username.dirty(state.username.value),
+        // city: CityValueObject.dirty(state.city.value),
+        // gender: GenderValueObject.dirty(state.gender.value),
+        // birthdate: BirthdateValueObject.dirty(state.birthdate.value),
       ),
     );
 
     final status = Formz.validate(
       [
         state.username,
-        state.city,
-        state.birthdate,
-        state.gender,
+        // state.city,
+        // state.birthdate,
+        // state.gender,
       ],
     );
     emit(state.copyWith(submissionStatus: status));
