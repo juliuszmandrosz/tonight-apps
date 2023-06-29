@@ -44,8 +44,7 @@ class _MessagesAppBarState extends State<MessagesAppBar> {
                   : FontAwesomeIcons.comments,
             ),
             child: AutoSizeText(
-              // TODO - add translation
-              'Twoje ${S().chats.toLowerCase()}',
+              '${S().your} ${S().chats.toLowerCase()}',
               textAlign: TextAlign.center,
               maxLines: 1,
             ),

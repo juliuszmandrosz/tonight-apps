@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
+import 'package:translations/translations.dart';
 
 class TonightEventCountdown extends StatefulWidget {
   final int secondsLeft;
@@ -64,12 +65,11 @@ class _TonightEventCountdownState extends State<TonightEventCountdown> {
     final hours = (value % 86400) ~/ 3600;
     final minutes = (value % 3600) ~/ 60;
     final seconds = value % 60;
-    // TODO - add translations
     return {
-      'DNI': days,
-      'GODZIN': hours,
-      'MINUT': minutes,
-      'SEKUND': seconds,
+      S().days.toUpperCase(): days,
+      S().hours.toUpperCase(): hours,
+      S().minutes.toUpperCase(): minutes,
+      S().seconds.toUpperCase(): seconds,
     };
   }
 

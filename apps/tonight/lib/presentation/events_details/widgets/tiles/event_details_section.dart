@@ -15,11 +15,10 @@ class EventDetailsSection extends StatelessWidget {
 
   String get price {
     if (event.entryFee.isNotEmpty) {
-      return event.entryFee;
+      return event.entryFee.toLowerCase();
     }
 
-    // TODO - add translations
-    return event.price == 0 ? 'free' : 'płatne';
+    return event.price == 0 ? S().free.toLowerCase() : S().paid.toLowerCase();
   }
 
   @override
