@@ -397,6 +397,21 @@ class FirebaseAuthFacade
   }
 
   @override
+  Future<Either<AuthFailure, AppUser>> signInAnonymouslyAsUser() async {
+    try {
+      final userCredential = await _firebaseAuth.signInAnonymously();
+      final user = userCredential.user!;
+      return right(user.toDomain());
+    } on FirebaseAuthException catch (e) {
+      _logger.e(
+        'Firebase Auth Exception signing in anonymously as user EXCEPTION: $e',
+      );
+
+      return left(await _handleFirebaseException(e));
+    }
+  }
+
+  @override
   Future<Option<AppUser>> getSignedPartner() async {
     try {
       final firebaseUser = _firebaseAuth.currentUser;
@@ -487,6 +502,16 @@ class FirebaseAuthFacade
   @override
   bool checkIfPhoneNumberIsVerified() {
     return _firebaseAuth.tryGetFirebaseUser().phoneNumber.isNotNullOrEmpty;
+  }
+
+  @override
+  bool checkIfUserIsAnonymous() {
+    return _firebaseAuth.tryGetFirebaseUser().isAnonymous;
+  }
+
+  @override
+  bool checkIfUserIsSignedIn() {
+    return _firebaseAuth.currentUser != null;
   }
 
   @override
