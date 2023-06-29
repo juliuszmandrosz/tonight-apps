@@ -58,7 +58,6 @@ class OnboardingUserDetailsPage extends StatelessWidget {
                           Align(
                             alignment: Alignment.center,
                             child: TonightHeadline(
-                              // TODO - add translation
                               text: S().chooseUsernameAndProfilePhoto,
                               isSmallerVersion: true,
                             ),

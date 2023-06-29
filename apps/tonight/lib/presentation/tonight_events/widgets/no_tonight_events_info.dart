@@ -23,8 +23,7 @@ class NoTonightEventsInfo extends StatelessWidget {
               child: state.appliedMenuFilters.isNotEmpty
                   ? Center(
                       child: Text(
-                        // TODO - add translation
-                        'Brak wydarzeń spełniających kryteria wyszukiwania',
+                        S().noEventsMatchingCriteria,
                         style: context.titleMedium.copyWithSecondaryColor(),
                         textAlign: TextAlign.center,
                       ),
@@ -39,10 +38,11 @@ class NoTonightEventsInfo extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(bottom: 40),
                               child: Text(
-                                // TODO - add translation
                                 state.eventFilters.maxDistanceFilter.enabled
-                                    ? 'DO NAJBLIŻSZEGO WYDARZENIA W POBLIŻU POZOSTAŁO'
-                                    : 'DO NAJBLIŻSZEGO WYDARZENIA POZOSTAŁO',
+                                    ? S()
+                                        .untilNextEventInAreaRemains
+                                        .toUpperCase()
+                                    : S().untilNextEventRemains.toUpperCase(),
                                 style: context.titleMedium.copyWith(
                                   fontWeight: FontWeight.bold,
                                   letterSpacing: 2.0,
