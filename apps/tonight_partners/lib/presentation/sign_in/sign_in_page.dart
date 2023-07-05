@@ -43,15 +43,15 @@ class SignInPage extends StatelessWidget {
         child: LoaderOverlay(
           overlayColor: context.shadowColor,
           overlayOpacity: .7,
-          child: Scaffold(
+          child: const Scaffold(
             body: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.all(20),
+                padding: EdgeInsets.all(20),
                 child: CustomScrollView(
                   slivers: [
                     SliverToBoxAdapter(
                       child: Column(
-                        children: const [
+                        children: [
                           SizedBox(height: 10),
                           PartnersLogo(),
                           SizedBox(height: 10),
@@ -69,7 +69,7 @@ class SignInPage extends StatelessWidget {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.end,
-                        children: const [
+                        children: [
                           SignInButton(),
                         ],
                       ),
