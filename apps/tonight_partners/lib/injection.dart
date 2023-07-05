@@ -229,17 +229,6 @@ void _registerFacades() {
     ),
   );
 
-  getIt.registerLazySingleton<UserAuthFacade>(
-    () => FirebaseAuthFacade(
-      firebaseAuth: getIt(),
-      googleSignIn: getIt(),
-      logger: getIt(),
-      authCloudFunctionsFacade: getIt(),
-      crashlytics: getIt(),
-      firestore: getIt(),
-    ),
-  );
-
   getIt.registerLazySingleton<AuthCloudFunctionsFacade>(
     () => AuthCloudFunctionsFacadeImpl(
       getIt(),
