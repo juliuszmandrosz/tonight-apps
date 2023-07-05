@@ -493,7 +493,7 @@ void _registerFacades() {
   );
 
   getIt.registerLazySingleton<UserAuthFacade>(
-    () => FirebaseAuthFacade(
+    () => FirebaseUserAuthFacade(
       firebaseAuth: getIt(),
       googleSignIn: getIt(),
       logger: getIt(),
