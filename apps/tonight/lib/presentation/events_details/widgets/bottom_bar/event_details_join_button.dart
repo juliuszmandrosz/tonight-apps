@@ -1,9 +1,12 @@
+import 'package:auth/auth.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:common/extensions/router_extensions.dart';
 import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/utils/show_sign_in_dialog.dart';
 import 'package:translations/translations.dart';
 
 class EventDetailsJoinButton extends StatelessWidget {
@@ -17,7 +20,11 @@ class EventDetailsJoinButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
-      onPressed: () {
+      onPressed: () async {
+        if (context.read<AuthCubit>().checkIfUserIsAnonymous()) {
+          await showSignInDialog(context);
+          return;
+        }
         final previousRouteName = context.previousRoute?.name;
         previousRouteName == EventRoomRoute.name
             ? context.popRoute()

@@ -10,6 +10,7 @@ class VerifyPhoneNumberState with _$VerifyPhoneNumberState {
     required Option<int> resendToken,
     required CubitStatus sendSmsStatus,
     required CubitStatus verifySmsStatus,
+    required Option<AppUser> user,
   }) = _VerifyPhoneNumberState;
 
   factory VerifyPhoneNumberState.initial() => VerifyPhoneNumberState(
@@ -20,5 +21,6 @@ class VerifyPhoneNumberState with _$VerifyPhoneNumberState {
         resendToken: none(),
         sendSmsStatus: CubitStatus.initial,
         verifySmsStatus: CubitStatus.initial,
+        user: none(),
       );
 }

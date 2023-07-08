@@ -1,16 +1,18 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
 import 'package:tonight/injection.dart';
-import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_birthdate_input.dart';
+import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_city_input.dart';
+import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_gender_input.dart';
 import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_profile_picture.dart';
 import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_username_input.dart';
 import 'package:tonight/presentation/onboarding_user_details/widgets/submit_button.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/translations.dart';
 
 class OnboardingUserDetailsPage extends StatelessWidget {
   const OnboardingUserDetailsPage({Key? key}) : super(key: key);
@@ -46,31 +48,28 @@ class OnboardingUserDetailsPage extends StatelessWidget {
                         children: [
                           const SizedBox(height: 50),
                           const OnboardingProfilePicture(),
-                          const SizedBox(height: 40),
-                          // Align(
-                          //   alignment: Alignment.center,
-                          //   child: TonightHeadline(
-                          //     // TODO - add translation
-                          //     text: 'Almost there! 🎉',
-                          //     isSmallerVersion: true,
-                          //   ),
-                          // ),
+                          const SizedBox(height: 30),
                           Align(
                             alignment: Alignment.center,
-                            child: TonightHeadline(
-                              text: S().chooseUsernameAndProfilePhoto,
-                              isSmallerVersion: true,
+                            child: AutoSizeText(
+                              // TODO - add translation
+                              'Podaj swoją nazwę użytkownika i opcjonalnie resztę danych, '
+                              'aby pomóc nam lepiej personalizować aplikację dla Ciebie 🎉',
+                              maxLines: 3,
+                              textAlign: TextAlign.center,
+                              style:
+                                  context.titleSmall.copyWithSecondaryColor(),
                             ),
                           ),
                           const SizedBox(height: 30),
                           const OnboardingUsernameInput(),
-                          // const SizedBox(height: 30),
-                          // const OnboardingCityInput(),
-                          // const SizedBox(height: 30),
-                          // const OnboardingBirthdateInput(),
-                          // const SizedBox(height: 30),
-                          // const OnboardingGenderInput(),
-                          // const SizedBox(height: 30),
+                          const SizedBox(height: 30),
+                          const OnboardingCityInput(),
+                          const SizedBox(height: 30),
+                          const OnboardingBirthdateInput(),
+                          const SizedBox(height: 30),
+                          const OnboardingGenderInput(),
+                          const SizedBox(height: 30),
                         ],
                       ),
                     ),

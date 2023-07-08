@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:tonight/application/clubs/club_favorite/club_favorite_cubit.dart';
+import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/presentation/profile/widgets/profile_user_picture_.dart';
 import 'package:tonight/presentation/profile/widgets/profile_wall_photos.dart';
@@ -14,6 +18,17 @@ class ProfilePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final scrollController = useScrollController();
+
+    useEffect(
+      () {
+        context.read<ProfileBloc>().add(const ProfileEvent.profileLoaded());
+        unawaited(context.read<EventFavoriteCubit>().getFavoriteEvents());
+        unawaited(context.read<ClubFavoriteCubit>().getFavoriteClubs());
+        return null;
+      },
+      const [],
+    );
+
     return BlocConsumer<ProfileBloc, ProfileState>(
       listenWhen: (previous, current) =>
           previous.initialStatus != current.initialStatus ||

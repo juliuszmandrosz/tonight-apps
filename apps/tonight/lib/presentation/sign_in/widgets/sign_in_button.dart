@@ -1,8 +1,7 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight/application/auth/sign_in/sign_in_cubit.dart';
-import 'package:translations/translations.dart';
+import 'package:tonight/application/auth/sign_in/cubit/sign_in_cubit.dart';
 
 class SignInButton extends StatelessWidget {
   const SignInButton({Key? key}) : super(key: key);
@@ -18,7 +17,8 @@ class SignInButton extends StatelessWidget {
           height: kButtonHeight,
           child: ElevatedButton(
             onPressed: () => context.read<SignInCubit>().sendSignInEmailLink(),
-            child: Text(S().signIn),
+            // TODO - add translation
+            child: Text('Wyślij link logowania'),
           ),
         );
       },

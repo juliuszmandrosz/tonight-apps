@@ -2,10 +2,12 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:clubs/clubs.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tonight/application/core/extensions/bloc_extensions.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_details.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_events.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_reviews.dart';
 import 'package:tonight/presentation/club_details/widgets/club_details_tabs/club_rewards.dart';
+import 'package:tonight/presentation/utils/show_sign_in_dialog.dart';
 import 'package:translations/translations.dart';
 
 class ClubDetailsTabs extends StatelessWidget {
@@ -23,6 +25,12 @@ class ClubDetailsTabs extends StatelessWidget {
     return Column(
       children: [
         TabBar(
+          onTap: (index) async {
+            if (index == 1 && context.readAuthCubit.checkIfUserIsAnonymous()) {
+              tabController.animateTo(tabController.previousIndex);
+              await showSignInDialog(context);
+            }
+          },
           controller: tabController,
           labelPadding: const EdgeInsets.symmetric(horizontal: 4.0),
           tabs: [

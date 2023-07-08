@@ -8,6 +8,7 @@ class AppUser with _$AppUser {
     required String id,
     required bool isOnboardingCompleted,
     required bool isPhoneNumberVerified,
+    @Default(false) bool isAnonymous,
     DateTime? lastDailySpinAt,
   }) = _AppUser;
 }
