@@ -40,11 +40,12 @@ class TermsOfServiceInfo extends StatelessWidget {
                 FontAwesomeIcons.circleInfo,
                 size: 18,
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 12),
               Flexible(
                 child: RichText(
                   text: TextSpan(
-                    text: '${S().byContinuingYouAgreeTo} ',
+                    // TODO - add translation
+                    text: 'Przechodząc dalej zgadzasz się na ',
                     style: context.titleSmall.copyWith(
                       color: context.secondaryColor,
                     ),

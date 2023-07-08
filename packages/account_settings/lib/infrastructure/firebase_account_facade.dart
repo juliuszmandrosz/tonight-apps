@@ -60,10 +60,10 @@ class FirebaseAccountFacade implements UserAccountFacade {
   @override
   Future<Either<UserAccountFailure, Unit>> submitOnboardingForUser({
     required String username,
-    // required String cityId,
-    // required String cityName,
-    // required DateTime birthdate,
-    // required String gender,
+    required String? cityId,
+    required String? cityName,
+    required DateTime? birthdate,
+    required String? gender,
     required Uint8List? profilePicture,
   }) async {
     try {
@@ -81,10 +81,10 @@ class FirebaseAccountFacade implements UserAccountFacade {
       await userDocRef.update({
         'username': username,
         'profilePictureUrl': pictureUrl,
-        // 'cityId': cityId,
-        // 'cityName': cityName,
-        // 'birthdate': Timestamp.fromDate(birthdate),
-        // 'gender': gender,
+        'cityId': cityId,
+        'cityName': cityName,
+        'birthdate': birthdate != null ? Timestamp.fromDate(birthdate) : null,
+        'gender': gender,
       });
       return right(unit);
     } on FirebaseException catch (e) {
@@ -203,16 +203,11 @@ class FirebaseAccountFacade implements UserAccountFacade {
   @override
   Future<Either<UserAccountFailure, UserAccount>> getUserById(String id) async {
     try {
-      final result = await _firestore.userCollection
-          .where(
-            FieldPath.documentId,
-            isEqualTo: id,
-          )
-          .get();
-      if (result.docs.isEmpty) {
+      final result = await _firestore.userCollection.doc(id).get();
+      if (!result.exists) {
         return left(const UserAccountFailure.userNotFound());
       }
-      final userDto = UserAccountDto.fromFirebase(result.docs.first);
+      final userDto = UserAccountDto.fromFirebase(result);
       return right(userDto.toDomain());
     } on FirebaseException catch (e) {
       return left(

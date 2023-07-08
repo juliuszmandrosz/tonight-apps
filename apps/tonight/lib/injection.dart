@@ -33,7 +33,8 @@ import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_agg
 import 'package:tonight/application/add_wall_photo/cubit/add_wall_photo_cubit.dart';
 import 'package:tonight/application/app_links/terms_of_service_cubit.dart';
 import 'package:tonight/application/app_settings/app_settings_cubit.dart';
-import 'package:tonight/application/auth/sign_in/sign_in_cubit.dart';
+import 'package:tonight/application/auth/sign_in/aggregator/sign_in_aggregator.dart';
+import 'package:tonight/application/auth/sign_in/cubit/sign_in_cubit.dart';
 import 'package:tonight/application/auth/username/username_cubit.dart';
 import 'package:tonight/application/chats/aggregator/chats_aggregator.dart';
 import 'package:tonight/application/chats/bloc/chats_bloc.dart';
@@ -149,8 +150,8 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => SignInCubit(
-      firebaseDynamicLinks: getIt(),
-      authFacade: getIt(),
+      getIt(),
+      getIt(),
     ),
   );
 
@@ -817,6 +818,12 @@ void _registerAggregators() {
   getIt.registerLazySingleton(
     () => VouchersAggregator(
       getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
+    () => SignInAggregator(
       getIt(),
     ),
   );

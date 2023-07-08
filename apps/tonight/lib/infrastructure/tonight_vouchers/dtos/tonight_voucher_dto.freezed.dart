@@ -295,14 +295,13 @@ class _$_TonightVoucherDto extends _TonightVoucherDto {
 abstract class _TonightVoucherDto extends TonightVoucherDto {
   const factory _TonightVoucherDto(
       {@JsonKey(includeToJson: false, includeFromJson: false)
-          final String? eventId,
+      final String? eventId,
       required final String venueId,
       required final String venueName,
       required final String eventName,
       required final String voucherName,
       required final int poolLimit,
-      @FirebaseTimestampJsonConverter()
-          required final DateTime validUntil,
+      @FirebaseTimestampJsonConverter() required final DateTime validUntil,
       final List<String> usedBy}) = _$_TonightVoucherDto;
   const _TonightVoucherDto._() : super._();
 

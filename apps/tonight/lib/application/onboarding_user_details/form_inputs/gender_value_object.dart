@@ -1,14 +1,9 @@
 import 'package:formz/formz.dart';
 import 'package:tonight/application/onboarding_user_details/gender.dart';
 
-enum GenderError {
-  empty,
-}
+enum GenderError { empty }
 
-final genderErrorMessages = {
-  // TODO - add translations
-  GenderError.empty: 'Please enter your gender',
-};
+final genderErrorMessages = {};
 
 class GenderValueObject extends FormzInput<Gender?, GenderError> {
   const GenderValueObject.pure() : super.pure(null);
@@ -17,10 +12,6 @@ class GenderValueObject extends FormzInput<Gender?, GenderError> {
 
   @override
   GenderError? validator(Gender? value) {
-    if (value == null) {
-      return GenderError.empty;
-    }
-
     return null;
   }
 }

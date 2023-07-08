@@ -8,12 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tonight/application/chats/bloc/chats_bloc.dart';
-import 'package:tonight/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:tonight/application/core/deep_links_utils.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
-import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
-import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
 
 part 'welcome_loading_cubit.freezed.dart';
@@ -23,31 +19,19 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
   final PushNotificationsCubit _pushNotificationsCubit;
   final UserLocationCubit _userLocationCubit;
   final AvailableFiltersCubit _availableFiltersCubit;
-  final EventFavoriteCubit _eventFavoriteCubit;
-  final ClubFavoriteCubit _clubFavoriteCubit;
   final FirebaseMessaging _firebaseMessaging;
-  final ProfileBloc _profileBloc;
-  final ChatsBloc _chatsBloc;
   final Stripe _stripe;
 
   WelcomeLoadingCubit({
     required PushNotificationsCubit pushNotificationsCubit,
     required AvailableFiltersCubit availableFiltersCubit,
     required UserLocationCubit userLocationCubit,
-    required EventFavoriteCubit eventFavoriteCubit,
-    required ClubFavoriteCubit clubFavoriteCubit,
     required FirebaseMessaging firebaseMessaging,
-    required ProfileBloc profileBloc,
-    required ChatsBloc chatsBloc,
     required Stripe stripe,
   })  : _pushNotificationsCubit = pushNotificationsCubit,
         _userLocationCubit = userLocationCubit,
-        _eventFavoriteCubit = eventFavoriteCubit,
-        _clubFavoriteCubit = clubFavoriteCubit,
         _availableFiltersCubit = availableFiltersCubit,
         _firebaseMessaging = firebaseMessaging,
-        _profileBloc = profileBloc,
-        _chatsBloc = chatsBloc,
         _stripe = stripe,
         super(WelcomeLoadingState.initial());
 
@@ -65,15 +49,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
 
     emit(state.copyWith(status: CubitStatus.success));
 
-    _profileBloc.add(const ProfileEvent.profileLoaded());
-
-    _chatsBloc.add(const ChatsEvent.chatsFetched());
-
     unawaited(_availableFiltersCubit.getAvailableFilters());
-
-    unawaited(_clubFavoriteCubit.getFavoriteClubs());
-
-    unawaited(_eventFavoriteCubit.getFavoriteEvents());
 
     unawaited(_initStripe());
   }

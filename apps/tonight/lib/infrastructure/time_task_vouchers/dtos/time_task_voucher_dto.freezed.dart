@@ -49,7 +49,7 @@ abstract class $TimeTaskVoucherDtoCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(includeToJson: false, includeFromJson: false)
-          String? timeTaskId,
+      String? timeTaskId,
       String venueId,
       String wallPhotoId,
       String wallPhotoUrl,
@@ -60,8 +60,7 @@ abstract class $TimeTaskVoucherDtoCopyWith<$Res> {
       DateTime createdAt,
       bool isActivated,
       bool isRewardAcquired,
-      @FirebaseNullableTimestampJsonConverter()
-          DateTime? usedAt});
+      @FirebaseNullableTimestampJsonConverter() DateTime? usedAt});
 }
 
 /// @nodoc
@@ -153,7 +152,7 @@ abstract class _$$_TimeTaskVoucherDtoCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(includeToJson: false, includeFromJson: false)
-          String? timeTaskId,
+      String? timeTaskId,
       String venueId,
       String wallPhotoId,
       String wallPhotoUrl,
@@ -164,8 +163,7 @@ abstract class _$$_TimeTaskVoucherDtoCopyWith<$Res>
       DateTime createdAt,
       bool isActivated,
       bool isRewardAcquired,
-      @FirebaseNullableTimestampJsonConverter()
-          DateTime? usedAt});
+      @FirebaseNullableTimestampJsonConverter() DateTime? usedAt});
 }
 
 /// @nodoc
@@ -363,20 +361,20 @@ class _$_TimeTaskVoucherDto extends _TimeTaskVoucherDto {
 
 abstract class _TimeTaskVoucherDto extends TimeTaskVoucherDto {
   const factory _TimeTaskVoucherDto(
-      {@JsonKey(includeToJson: false, includeFromJson: false)
+          {@JsonKey(includeToJson: false, includeFromJson: false)
           final String? timeTaskId,
-      required final String venueId,
-      required final String wallPhotoId,
-      required final String wallPhotoUrl,
-      required final String timeTaskName,
-      required final String venueName,
-      required final String voucherName,
-      required final DateTime validUntil,
-      required final DateTime createdAt,
-      final bool isActivated,
-      final bool isRewardAcquired,
-      @FirebaseNullableTimestampJsonConverter()
-          final DateTime? usedAt}) = _$_TimeTaskVoucherDto;
+          required final String venueId,
+          required final String wallPhotoId,
+          required final String wallPhotoUrl,
+          required final String timeTaskName,
+          required final String venueName,
+          required final String voucherName,
+          required final DateTime validUntil,
+          required final DateTime createdAt,
+          final bool isActivated,
+          final bool isRewardAcquired,
+          @FirebaseNullableTimestampJsonConverter() final DateTime? usedAt}) =
+      _$_TimeTaskVoucherDto;
   const _TimeTaskVoucherDto._() : super._();
 
   factory _TimeTaskVoucherDto.fromJson(Map<String, dynamic> json) =

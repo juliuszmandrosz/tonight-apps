@@ -75,10 +75,16 @@ class SignInWithPhoneNumberCubit extends Cubit<SignInWithPhoneNumberState> {
 
   Future<void> verifySmsCode() async {
     emit(state.copyWith(verifySmsStatus: CubitStatus.loading));
-    final result = await _authFacade.signInWithPhoneNumberAsUser(
-      smsCode: state.smsCode,
-      verificationId: state.verificationId.getOrCrash(),
-    );
+    final result = _authFacade.checkIfUserIsSignedIn()
+        ? await _authFacade.linkPhoneNumberForUser(
+            smsCode: state.smsCode,
+            verificationId: state.verificationId.getOrCrash(),
+            phoneNumber: state.phoneNumber,
+          )
+        : await _authFacade.signInWithPhoneNumberAsUser(
+            smsCode: state.smsCode,
+            verificationId: state.verificationId.getOrCrash(),
+          );
     result.fold(
       (failure) {
         emit(

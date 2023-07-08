@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/sign_in_with_phone_number/sign_in_with_phone_number_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
-import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/routes/get_authenticated_route.dart';
 import 'package:tonight/presentation/sign_in_with_phone_number/widgets/sign_in_with_phone_number_form.dart';
 import 'package:tonight/presentation/sign_in_with_phone_number/widgets/sign_in_with_phone_number_sms_code_form.dart';
 
@@ -30,9 +30,7 @@ class SignInWithPhoneNumberPage extends StatelessWidget {
 
           if (state.verifySmsStatus.isSuccess() && state.user.isSome()) {
             final user = state.user.getOrCrash();
-            final route = user.isOnboardingCompleted
-                ? const WelcomeLoaderRoute()
-                : const OnboardingUserDetailsRoute();
+            final route = getAuthenticatedRoute(user);
             context.router.replaceAll([route]);
           }
         },

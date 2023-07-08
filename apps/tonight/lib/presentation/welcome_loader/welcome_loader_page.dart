@@ -6,11 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:tonight/application/chats/bloc/chats_bloc.dart';
-import 'package:tonight/application/clubs/club_favorite/club_favorite_cubit.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
-import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
-import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
 import 'package:tonight/application/tonight/tonight_cubit.dart';
 import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
@@ -39,11 +35,7 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
       firebaseMessaging: getIt<FirebaseMessaging>(),
       availableFiltersCubit: context.read<AvailableFiltersCubit>(),
       userLocationCubit: context.read<UserLocationCubit>(),
-      eventFavoriteCubit: context.read<EventFavoriteCubit>(),
-      clubFavoriteCubit: context.read<ClubFavoriteCubit>(),
-      profileBloc: context.read<ProfileBloc>(),
       pushNotificationsCubit: context.read<PushNotificationsCubit>(),
-      chatsBloc: context.read<ChatsBloc>(),
     );
 
     return _welcomeLoadingCubit!;

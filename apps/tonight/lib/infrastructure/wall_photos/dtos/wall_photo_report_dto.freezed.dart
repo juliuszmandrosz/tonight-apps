@@ -219,13 +219,12 @@ class _$_WallPhotoReportDto extends _WallPhotoReportDto {
 
 abstract class _WallPhotoReportDto extends WallPhotoReportDto {
   const factory _WallPhotoReportDto(
-      {@JsonKey(ignore: true)
-          final String? id,
+      {@JsonKey(ignore: true) final String? id,
       required final String photoId,
       required final String reporterId,
       required final String photoUrl,
       @FirebaseTimestampJsonConverter()
-          required final DateTime createdAt}) = _$_WallPhotoReportDto;
+      required final DateTime createdAt}) = _$_WallPhotoReportDto;
   const _WallPhotoReportDto._() : super._();
 
   factory _WallPhotoReportDto.fromJson(Map<String, dynamic> json) =

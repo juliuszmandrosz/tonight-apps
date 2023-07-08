@@ -40,8 +40,7 @@ class UserProfileAggregator {
                 email: account.email,
                 raverCoins: account.raverCoins,
                 username: account.username,
-                favoritesCount: account.favoriteClubIds.length +
-                    account.favoriteEventIds.length,
+                favoritesCount: account.favoriteClubIds.length,
                 profilePictureUrl: account.profilePictureUrl,
                 userPhotos: [..._userPhotos],
                 ticketsCount: account.ticketsCount,

@@ -1,3 +1,4 @@
+import 'package:auth/auth.dart';
 import 'package:common/extensions/build_context_extensions.dart';
 import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:tonight/presentation/commons/icons/tonight_toggle_icon.dart';
+import 'package:tonight/presentation/utils/show_sign_in_dialog.dart';
 
 class EventDetailsBottomBarFavorite extends StatelessWidget {
   final Event event;
@@ -27,9 +29,13 @@ class EventDetailsBottomBarFavorite extends StatelessWidget {
         final isFavorite = state.favoriteEvents.any((e) => e.id == event.id);
         return TonightToggleIcon(
           onIcon: const FaIcon(FontAwesomeIcons.solidHeart),
-          onPressed: () => context
-              .read<EventFavoriteCubit>()
-              .toggleEventFavoriteStatus(event),
+          onPressed: () async {
+            if (context.read<AuthCubit>().checkIfUserIsAnonymous()) {
+              await showSignInDialog(context);
+              return;
+            }
+            context.read<EventFavoriteCubit>().toggleEventFavoriteStatus(event);
+          },
           offIcon: const FaIcon(FontAwesomeIcons.heart),
           value: isFavorite,
         );
