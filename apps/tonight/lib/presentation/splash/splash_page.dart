@@ -4,6 +4,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/routes/get_authenticated_route.dart';
 import 'package:tonight/presentation/sign_in/widgets/tonight_logo.dart';
 
 class SplashPage extends StatelessWidget {
@@ -16,7 +17,7 @@ class SplashPage extends StatelessWidget {
         state.map(
           initial: (_) {},
           authenticated: (state) => context.replaceRoute(
-            _getAuthenticatedRoute(state.user),
+            getAuthenticatedRoute(state.user),
           ),
           unauthenticated: (_) => context.replaceRoute(const OnboardingRoute()),
           deleteAccountSuccess: (_) => {},
@@ -31,14 +32,5 @@ class SplashPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  PageRouteInfo _getAuthenticatedRoute(AppUser user) {
-    if (!user.isOnboardingCompleted) return const OnboardingUserDetailsRoute();
-    if (user.lastDailySpinAt == null ||
-        user.lastDailySpinAt!.isBefore(DateTime.now().startOfDay)) {
-      return const DailySpinRoute();
-    }
-    return const WelcomeLoaderRoute();
   }
 }

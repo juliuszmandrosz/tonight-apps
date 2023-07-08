@@ -1,15 +1,21 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tonight/application/chats/bloc/chats_bloc.dart';
 import 'package:tonight/presentation/chats/widgets/chat_list_tile.dart';
 import 'package:translations/translations.dart';
 
-class ChatsPage extends StatelessWidget {
+class ChatsPage extends HookWidget {
   const ChatsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    useEffect(() {
+      context.read<ChatsBloc>().add(const ChatsEvent.chatsFetched());
+      return null;
+    }, const []);
+
     return BlocBuilder<ChatsBloc, ChatsState>(
       builder: (context, state) {
         switch (state.fetchChatsStatus) {

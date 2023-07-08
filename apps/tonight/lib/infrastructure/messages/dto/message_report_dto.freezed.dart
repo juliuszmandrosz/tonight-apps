@@ -236,14 +236,13 @@ class _$_MessageReportDto extends _MessageReportDto {
 
 abstract class _MessageReportDto extends MessageReportDto {
   const factory _MessageReportDto(
-      {@JsonKey(ignore: true)
-          final String? id,
+      {@JsonKey(ignore: true) final String? id,
       required final String messageId,
       required final String roomId,
       required final String reporterId,
       required final String messageContent,
       @FirebaseTimestampJsonConverter()
-          required final DateTime createdAt}) = _$_MessageReportDto;
+      required final DateTime createdAt}) = _$_MessageReportDto;
   const _MessageReportDto._() : super._();
 
   factory _MessageReportDto.fromJson(Map<String, dynamic> json) =

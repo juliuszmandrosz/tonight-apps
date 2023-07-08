@@ -67,6 +67,7 @@ class VerifyPhoneNumberSmsCodeForm extends StatelessWidget {
             const Spacer(),
             SizedBox(
               width: double.infinity,
+              height: kButtonHeight,
               child: state.verifySmsStatus.isLoading()
                   ? const CircleLoadingIndicator()
                   : ElevatedButton(

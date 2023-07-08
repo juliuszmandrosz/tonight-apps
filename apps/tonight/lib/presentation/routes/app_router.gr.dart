@@ -538,9 +538,14 @@ class AppRouter extends _i45.RootStackRouter {
       );
     },
     VerifyPhoneNumberRoute.name: (routeData) {
+      final args = routeData.argsAs<VerifyPhoneNumberRouteArgs>(
+          orElse: () => const VerifyPhoneNumberRouteArgs());
       return _i45.CustomPage<bool>(
         routeData: routeData,
-        child: const _i35.VerifyPhoneNumberPage(),
+        child: _i35.VerifyPhoneNumberPage(
+          isUserAnonymous: args.isUserAnonymous,
+          key: args.key,
+        ),
         transitionsBuilder: _i48.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
@@ -1818,14 +1823,37 @@ class UserWallPhotoPreviewRouteArgs {
 
 /// generated route for
 /// [_i35.VerifyPhoneNumberPage]
-class VerifyPhoneNumberRoute extends _i45.PageRouteInfo<void> {
-  const VerifyPhoneNumberRoute()
-      : super(
+class VerifyPhoneNumberRoute
+    extends _i45.PageRouteInfo<VerifyPhoneNumberRouteArgs> {
+  VerifyPhoneNumberRoute({
+    bool isUserAnonymous = false,
+    _i46.Key? key,
+  }) : super(
           VerifyPhoneNumberRoute.name,
           path: '/verify-phone-number-page',
+          args: VerifyPhoneNumberRouteArgs(
+            isUserAnonymous: isUserAnonymous,
+            key: key,
+          ),
         );
 
   static const String name = 'VerifyPhoneNumberRoute';
+}
+
+class VerifyPhoneNumberRouteArgs {
+  const VerifyPhoneNumberRouteArgs({
+    this.isUserAnonymous = false,
+    this.key,
+  });
+
+  final bool isUserAnonymous;
+
+  final _i46.Key? key;
+
+  @override
+  String toString() {
+    return 'VerifyPhoneNumberRouteArgs{isUserAnonymous: $isUserAnonymous, key: $key}';
+  }
 }
 
 /// generated route for

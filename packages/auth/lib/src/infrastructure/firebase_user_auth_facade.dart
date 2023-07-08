@@ -82,12 +82,13 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
     required String smsCode,
   }) async {
     try {
-      final credential = PhoneAuthProvider.credential(
+      final phoneAuthCredential = PhoneAuthProvider.credential(
         verificationId: verificationId,
         smsCode: smsCode,
       );
-      final result = await _firebaseAuth.signInWithCredential(credential);
-      await _addUserToFirestoreIfNotExists(result);
+      final userCredential =
+          await _firebaseAuth.signInWithCredential(phoneAuthCredential);
+      await _addUserToFirestoreIfNotExists(userCredential);
       final appUser = await _mapFirebaseUserToDomain();
       return right(appUser);
     } on FirebaseAuthException catch (e) {
@@ -96,18 +97,24 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> linkPhoneNumberForUser({
+  Future<Either<AuthFailure, AppUser>> linkPhoneNumberForUser({
     required String verificationId,
     required String smsCode,
+    required String phoneNumber,
   }) async {
     try {
       final phoneAuthCredential = PhoneAuthProvider.credential(
         verificationId: verificationId,
         smsCode: smsCode,
       );
-      final userCredential = await _linkWithCredential(phoneAuthCredential);
+      final isPhoneNumberInUse =
+          await _checkIfPhoneNumberIsAlreadyInUse(phoneNumber);
+      final userCredential = isPhoneNumberInUse
+          ? await _firebaseAuth.signInWithCredential(phoneAuthCredential)
+          : await _linkWithCredential(phoneAuthCredential);
       await _addUserToFirestoreIfNotExists(userCredential);
-      return right(unit);
+      final result = await _mapFirebaseUserToDomain();
+      return right(result);
     } on FirebaseAuthException catch (e) {
       return left(await _handleFirebaseException(e));
     }
@@ -160,8 +167,13 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
       if (!_firebaseAuth.isSignInWithEmailLink(link.toString())) {
         return left(const AuthFailure.invalidLink());
       }
-      final userCredential =
-          await _linkWithEmailCredential(email: email, link: link);
+      final isEmailInUse = await _checkIfEmailIsAlreadyInUse(email);
+      final userCredential = isEmailInUse
+          ? await _firebaseAuth.signInWithEmailLink(
+              email: email,
+              emailLink: link.toString(),
+            )
+          : await _linkWithEmailCredential(email: email, link: link);
       await _addUserToFirestoreIfNotExists(userCredential);
       final appUser = await _mapFirebaseUserToDomain();
       return right(appUser);
@@ -204,7 +216,13 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
         return left(const AuthFailure.canceledByUser());
       }
       final googleAuth = await googleUser.authentication;
-      final userCredential = await _linkWithWithGoogleCredential(googleAuth);
+      final isEmailInUse = await _checkIfEmailIsAlreadyInUse(googleUser.email);
+      final userCredential = isEmailInUse
+          ? await _signInWithGoogleCredential(googleAuth)
+          : await _linkWithWithGoogleCredential(googleAuth);
+      if (isEmailInUse) {
+        await _checkIfUserCanSignIn(userCredential);
+      }
       await _addUserToFirestoreIfNotExists(userCredential);
       final appUser = await _mapFirebaseUserToDomain();
       return right(appUser);
@@ -222,9 +240,9 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
   @override
   Future<Either<AuthFailure, AppUser>> signInWithAppleAsUser() async {
     try {
-      final oAuthCredential = await _getAppleOAuthCredential();
+      final appleAuthResult = await _getAppleOAuthCredentialAndEmail();
       final userCredential =
-          await _firebaseAuth.signInWithCredential(oAuthCredential);
+          await _firebaseAuth.signInWithCredential(appleAuthResult.value1);
       await _checkIfUserCanSignIn(userCredential);
       await _addUserToFirestoreIfNotExists(userCredential);
       final appUser = await _mapFirebaseUserToDomain();
@@ -249,9 +267,15 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
   @override
   Future<Either<AuthFailure, AppUser>> linkAppleForUser() async {
     try {
-      final oAuthCredential = await _getAppleOAuthCredential();
-      final userCredential =
-          await _linkWithWithAppleCredential(oAuthCredential);
+      final appleAuthResult = await _getAppleOAuthCredentialAndEmail();
+      final isEmailInUse =
+          await _checkIfEmailIsAlreadyInUse(appleAuthResult.value2);
+      final userCredential = isEmailInUse
+          ? await _firebaseAuth.signInWithCredential(appleAuthResult.value1)
+          : await _linkWithWithAppleCredential(appleAuthResult.value1);
+      if (isEmailInUse) {
+        await _checkIfUserCanSignIn(userCredential);
+      }
       await _addUserToFirestoreIfNotExists(userCredential);
       final appUser = await _mapFirebaseUserToDomain();
       return right(appUser);
@@ -326,28 +350,25 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
   }
 
   Future<void> _checkIfUserCanSignIn(UserCredential userCredential) async {
-    final email = userCredential.user!.email!;
-    final isNewUser = userCredential.additionalUserInfo!.isNewUser;
-    if (!isNewUser) {
-      await _authCloudFunctionsFacade.checkIfUserCanSignIn(email);
+    final user = userCredential.user!;
+    final userExists = await _checkIfUserExists(user);
+    if (userExists) {
+      await _authCloudFunctionsFacade.checkIfUserCanSignIn(user.email!);
     }
   }
 
   Future<void> _addUserToFirestoreIfNotExists(
     UserCredential userCredential,
   ) async {
-    final isNewUser = userCredential.additionalUserInfo!.isNewUser ||
-        userCredential.user!.isAnonymous;
-
-    if (isNewUser) {
-      final user = userCredential.user!;
-      await _authCloudFunctionsFacade.addUser(
-        userId: user.uid,
-        email: user.email,
-        phoneNumber: user.phoneNumber,
-      );
-      await _refreshToken();
-    }
+    final userExists = await _checkIfUserExists(userCredential.user!);
+    if (userExists) return;
+    final user = userCredential.user!;
+    await _authCloudFunctionsFacade.addUser(
+      userId: user.uid,
+      email: user.email,
+      phoneNumber: user.phoneNumber,
+    );
+    await _refreshToken();
   }
 
   Future<UserCredential> _signInWithGoogleCredential(
@@ -389,7 +410,8 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
     return _linkWithCredential(authCredential);
   }
 
-  Future<OAuthCredential> _getAppleOAuthCredential() async {
+  Future<Tuple2<OAuthCredential, String?>>
+      _getAppleOAuthCredentialAndEmail() async {
     final rawNonce = _generateNonce();
     final nonce = _getShaFromString(rawNonce);
     final appleCredential = await SignInWithApple.getAppleIDCredential(
@@ -403,10 +425,13 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
         redirectUri: Uri.parse(dotenv.get(appleSignInCallbackUrl)),
       ),
     );
-    return OAuthProvider('apple.com').credential(
+
+    final oAuthCredential = OAuthProvider('apple.com').credential(
       idToken: appleCredential.identityToken,
       rawNonce: rawNonce,
     );
+
+    return tuple2(oAuthCredential, appleCredential.email);
   }
 
   Future<void> _sendSignInLinkForUser(String email) async {
@@ -482,8 +507,17 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
 
   Future<AppUser> _mapFirebaseUserToDomain() async {
     final firebaseUser = _firebaseAuth.tryGetFirebaseUser();
+    if (firebaseUser.isAnonymous) {
+      return firebaseUser.toDomain(isAnonymous: true);
+    }
+
     final currentUser =
         await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
+
+    if (!currentUser.exists) {
+      return firebaseUser.toDomain();
+    }
+
     final userData = currentUser.data() as Map<String, dynamic>;
     final username = userData['username'] as String?;
     final lastDailySpinAt = userData['lastDailySpinAt'] as Timestamp?;
@@ -495,5 +529,23 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
 
   Future<UserCredential> _linkWithCredential(AuthCredential credential) {
     return _firebaseAuth.tryGetFirebaseUser().linkWithCredential(credential);
+  }
+
+  Future<bool> _checkIfEmailIsAlreadyInUse(String? email) async {
+    if (email == null) return false;
+    final methods = await _firebaseAuth.fetchSignInMethodsForEmail(email);
+    return methods.isNotEmpty;
+  }
+
+  Future<bool> _checkIfPhoneNumberIsAlreadyInUse(String phoneNumber) async {
+    final phoneNumberQuery = await _firestore.userCollection
+        .where('phoneNumber', isEqualTo: phoneNumber)
+        .get();
+
+    return phoneNumberQuery.docs.isNotEmpty;
+  }
+
+  Future<bool> _checkIfUserExists(User user) async {
+    return _firestore.userCollection.doc(user.uid).exists;
   }
 }

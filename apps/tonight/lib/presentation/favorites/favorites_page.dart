@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/core/tonight_headline.dart';
 import 'package:tonight/presentation/favorites/widgets/favorite_clubs_list.dart';
-import 'package:tonight/presentation/favorites/widgets/favorite_events_list.dart';
 import 'package:translations/translations.dart';
 
 class FavoritesPage extends StatelessWidget {
@@ -25,16 +24,6 @@ class FavoritesPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             const FavoriteClubsList(),
-            const SizedBox(height: 30),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: TonightHeadline(
-                text: S().favoriteEvents,
-                isSmallerVersion: true,
-              ),
-            ),
-            const SizedBox(height: 20),
-            const FavoriteEventsList(),
           ],
         ),
       ),
