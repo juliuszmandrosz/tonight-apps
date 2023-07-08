@@ -2,7 +2,7 @@ import 'package:auth/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:tonight/application/auth/sign_in/sign_in_cubit.dart';
+import 'package:tonight/application/auth/sign_in/cubit/sign_in_cubit.dart';
 import 'package:translations/translations.dart';
 
 class SignInEmailInput extends StatelessWidget {

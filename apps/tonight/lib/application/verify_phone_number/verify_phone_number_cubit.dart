@@ -76,6 +76,7 @@ class VerifyPhoneNumberCubit extends Cubit<VerifyPhoneNumberState> {
     final result = await _authFacade.linkPhoneNumberForUser(
       smsCode: state.smsCode,
       verificationId: state.verificationId.getOrCrash(),
+      phoneNumber: state.phoneNumber,
     );
     result.fold(
       (failure) {
@@ -87,7 +88,12 @@ class VerifyPhoneNumberCubit extends Cubit<VerifyPhoneNumberState> {
         );
         emit(state.copyWith(failureMessage: none()));
       },
-      (_) => emit(state.copyWith(verifySmsStatus: CubitStatus.success)),
+      (user) => emit(
+        state.copyWith(
+          verifySmsStatus: CubitStatus.success,
+          user: some(user),
+        ),
+      ),
     );
   }
 

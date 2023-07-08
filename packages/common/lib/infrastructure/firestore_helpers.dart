@@ -193,4 +193,9 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get timeTaskVouchers => collection('timeTaskVouchers');
 
   CollectionReference get tonightVouchers => collection('tonightVouchers');
+
+  Future<bool> get exists async {
+    final doc = await get();
+    return doc.exists;
+  }
 }

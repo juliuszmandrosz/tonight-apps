@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:account_settings/domain/domain.dart';
+import 'package:auth/auth.dart';
 import 'package:common/common.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
@@ -49,17 +50,26 @@ class PushNotificationsCubit extends Cubit<PushNotificationsState> {
 
     final token = await _messaging.getToken();
 
-    _messaging.onTokenRefresh.listen(
-      (token) async => await _accountFacade.savePushNotificationsToken(token),
-    );
+    if (context.mounted) {
+      _messaging.onTokenRefresh.listen(
+        (token) async {
+          if (context.read<AuthCubit>().checkIfUserIsAnonymous()) return;
+          await _accountFacade.savePushNotificationsToken(token);
+        },
+      );
 
-    final failureOrSuccess =
-        await _accountFacade.savePushNotificationsToken(token!);
+      if (context.read<AuthCubit>().checkIfUserIsAnonymous()) {
+        return emit(state.copyWith(status: CubitStatus.success));
+      }
 
-    failureOrSuccess.fold(
-      (failure) => emit(state.copyWith(status: CubitStatus.failure)),
-      (success) => emit(state.copyWith(status: CubitStatus.success)),
-    );
+      final failureOrSuccess =
+          await _accountFacade.savePushNotificationsToken(token!);
+
+      failureOrSuccess.fold(
+        (failure) => emit(state.copyWith(status: CubitStatus.failure)),
+        (success) => emit(state.copyWith(status: CubitStatus.success)),
+      );
+    }
   }
 
   addLastHandledMessageIdToState(String? messageId) {

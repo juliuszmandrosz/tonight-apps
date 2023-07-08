@@ -1,13 +1,11 @@
 import 'package:formz/formz.dart';
 
 enum BirthdateError {
-  empty,
   notOldEnough,
 }
 
 final birthdateErrorMessages = {
   // TODO - add translations
-  BirthdateError.empty: 'Please enter your birthdate',
   BirthdateError.notOldEnough: 'You must be at least 18 years old',
 };
 
@@ -19,7 +17,7 @@ class BirthdateValueObject extends FormzInput<DateTime?, BirthdateError> {
   @override
   BirthdateError? validator(DateTime? value) {
     if (value == null) {
-      return BirthdateError.empty;
+      return null;
     }
 
     final now = DateTime.now();

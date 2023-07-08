@@ -1,3 +1,4 @@
+import 'package:auth/auth.dart';
 import 'package:clubs/clubs.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/clubs/club_favorite/club_favorite_cubit.dart';
+import 'package:tonight/presentation/utils/show_sign_in_dialog.dart';
 
 class ClubFavoriteButton extends StatelessWidget {
   final Club club;
@@ -53,11 +55,19 @@ class ClubFavoriteButton extends StatelessWidget {
                             FontAwesomeIcons.heart,
                             size: 25,
                           ),
-                    onPressed: () => state.isChangingFavoriteStatus
+                    onPressed: state.isChangingFavoriteStatus
                         ? null
-                        : context
-                            .read<ClubFavoriteCubit>()
-                            .toggleClubFavoriteStatus(club),
+                        : () async {
+                            if (context
+                                .read<AuthCubit>()
+                                .checkIfUserIsAnonymous()) {
+                              await showSignInDialog(context);
+                              return;
+                            }
+                            context
+                                .read<ClubFavoriteCubit>()
+                                .toggleClubFavoriteStatus(club);
+                          },
                   ),
                 ),
         );

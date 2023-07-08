@@ -276,7 +276,7 @@ class _$_UserTonightVoucherDto extends _UserTonightVoucherDto {
 abstract class _UserTonightVoucherDto extends UserTonightVoucherDto {
   const factory _UserTonightVoucherDto(
       {@JsonKey(includeFromJson: false, includeToJson: false)
-          final String? eventId,
+      final String? eventId,
       required final String venueId,
       required final String eventName,
       required final String venueName,

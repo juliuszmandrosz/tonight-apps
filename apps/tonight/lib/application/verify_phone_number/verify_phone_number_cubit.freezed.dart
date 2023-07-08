@@ -23,6 +23,7 @@ mixin _$VerifyPhoneNumberState {
   Option<int> get resendToken => throw _privateConstructorUsedError;
   CubitStatus get sendSmsStatus => throw _privateConstructorUsedError;
   CubitStatus get verifySmsStatus => throw _privateConstructorUsedError;
+  Option<AppUser> get user => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $VerifyPhoneNumberStateCopyWith<VerifyPhoneNumberState> get copyWith =>
@@ -42,7 +43,8 @@ abstract class $VerifyPhoneNumberStateCopyWith<$Res> {
       Option<String> verificationId,
       Option<int> resendToken,
       CubitStatus sendSmsStatus,
-      CubitStatus verifySmsStatus});
+      CubitStatus verifySmsStatus,
+      Option<AppUser> user});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$VerifyPhoneNumberStateCopyWithImpl<$Res,
     Object? resendToken = null,
     Object? sendSmsStatus = null,
     Object? verifySmsStatus = null,
+    Object? user = null,
   }) {
     return _then(_value.copyWith(
       phoneNumber: null == phoneNumber
@@ -96,6 +99,10 @@ class _$VerifyPhoneNumberStateCopyWithImpl<$Res,
           ? _value.verifySmsStatus
           : verifySmsStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as Option<AppUser>,
     ) as $Val);
   }
 }
@@ -115,7 +122,8 @@ abstract class _$$_VerifyPhoneNumberStateCopyWith<$Res>
       Option<String> verificationId,
       Option<int> resendToken,
       CubitStatus sendSmsStatus,
-      CubitStatus verifySmsStatus});
+      CubitStatus verifySmsStatus,
+      Option<AppUser> user});
 }
 
 /// @nodoc
@@ -137,6 +145,7 @@ class __$$_VerifyPhoneNumberStateCopyWithImpl<$Res>
     Object? resendToken = null,
     Object? sendSmsStatus = null,
     Object? verifySmsStatus = null,
+    Object? user = null,
   }) {
     return _then(_$_VerifyPhoneNumberState(
       phoneNumber: null == phoneNumber
@@ -167,6 +176,10 @@ class __$$_VerifyPhoneNumberStateCopyWithImpl<$Res>
           ? _value.verifySmsStatus
           : verifySmsStatus // ignore: cast_nullable_to_non_nullable
               as CubitStatus,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as Option<AppUser>,
     ));
   }
 }
@@ -181,7 +194,8 @@ class _$_VerifyPhoneNumberState implements _VerifyPhoneNumberState {
       required this.verificationId,
       required this.resendToken,
       required this.sendSmsStatus,
-      required this.verifySmsStatus});
+      required this.verifySmsStatus,
+      required this.user});
 
   @override
   final String phoneNumber;
@@ -197,10 +211,12 @@ class _$_VerifyPhoneNumberState implements _VerifyPhoneNumberState {
   final CubitStatus sendSmsStatus;
   @override
   final CubitStatus verifySmsStatus;
+  @override
+  final Option<AppUser> user;
 
   @override
   String toString() {
-    return 'VerifyPhoneNumberState(phoneNumber: $phoneNumber, smsCode: $smsCode, failureMessage: $failureMessage, verificationId: $verificationId, resendToken: $resendToken, sendSmsStatus: $sendSmsStatus, verifySmsStatus: $verifySmsStatus)';
+    return 'VerifyPhoneNumberState(phoneNumber: $phoneNumber, smsCode: $smsCode, failureMessage: $failureMessage, verificationId: $verificationId, resendToken: $resendToken, sendSmsStatus: $sendSmsStatus, verifySmsStatus: $verifySmsStatus, user: $user)';
   }
 
   @override
@@ -220,7 +236,8 @@ class _$_VerifyPhoneNumberState implements _VerifyPhoneNumberState {
             (identical(other.sendSmsStatus, sendSmsStatus) ||
                 other.sendSmsStatus == sendSmsStatus) &&
             (identical(other.verifySmsStatus, verifySmsStatus) ||
-                other.verifySmsStatus == verifySmsStatus));
+                other.verifySmsStatus == verifySmsStatus) &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
@@ -232,7 +249,8 @@ class _$_VerifyPhoneNumberState implements _VerifyPhoneNumberState {
       verificationId,
       resendToken,
       sendSmsStatus,
-      verifySmsStatus);
+      verifySmsStatus,
+      user);
 
   @JsonKey(ignore: true)
   @override
@@ -250,7 +268,8 @@ abstract class _VerifyPhoneNumberState implements VerifyPhoneNumberState {
       required final Option<String> verificationId,
       required final Option<int> resendToken,
       required final CubitStatus sendSmsStatus,
-      required final CubitStatus verifySmsStatus}) = _$_VerifyPhoneNumberState;
+      required final CubitStatus verifySmsStatus,
+      required final Option<AppUser> user}) = _$_VerifyPhoneNumberState;
 
   @override
   String get phoneNumber;
@@ -266,6 +285,8 @@ abstract class _VerifyPhoneNumberState implements VerifyPhoneNumberState {
   CubitStatus get sendSmsStatus;
   @override
   CubitStatus get verifySmsStatus;
+  @override
+  Option<AppUser> get user;
   @override
   @JsonKey(ignore: true)
   _$$_VerifyPhoneNumberStateCopyWith<_$_VerifyPhoneNumberState> get copyWith =>

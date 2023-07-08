@@ -10,6 +10,7 @@ export 'num_list_extensions.dart';
 export 'option_extensions.dart';
 export 'responsive_extensions.dart';
 export 'router_extensions.dart';
+export 'scroll_notification_extensions.dart';
 export 'string_extensions.dart';
 export 'string_list_extensions.dart';
 export 'typography_extensions.dart';

@@ -15,6 +15,7 @@ import 'package:tonight/presentation/drawer/tonight_drawer.dart';
 import 'package:tonight/presentation/navigator/tonight_navigation_destinations.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/utils/show_confirm_phone_number_dialog.dart';
+import 'package:tonight/presentation/utils/show_sign_in_dialog.dart';
 import 'package:translations/translations.dart';
 
 class NavigatorPage extends StatefulWidget {
@@ -202,10 +203,10 @@ class _NavigatorPageState extends State<NavigatorPage> {
   }
 
   Future<bool> _handleMessagesAndProfileNavigation() async {
-    // if (context.read<AuthCubit>().checkIfUserIsAnonymous()) {
-    //   await showSignInDialog(context);
-    //   return false;
-    // }
+    if (context.read<AuthCubit>().checkIfUserIsAnonymous()) {
+      await showSignInDialog(context);
+      return false;
+    }
     return true;
   }
 }

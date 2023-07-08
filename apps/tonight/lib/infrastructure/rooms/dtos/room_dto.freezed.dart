@@ -326,15 +326,14 @@ class _$_RoomDto extends _RoomDto {
 
 abstract class _RoomDto extends RoomDto {
   const factory _RoomDto(
-      {@JsonKey(includeToJson: false, includeFromJson: false)
-          final String? id,
+      {@JsonKey(includeToJson: false, includeFromJson: false) final String? id,
       required final String roomName,
       required final String roomPhotoUrl,
       final String? lastMessageId,
       final String? lastMessageText,
       final String? lastMessageUsername,
       @FirebaseNullableTimestampJsonConverter()
-          final DateTime? lastMessageCreatedAt,
+      final DateTime? lastMessageCreatedAt,
       final bool isLastMessageLeftInfo,
       final bool isLastMessageJoinedInfo,
       final List<String> participantIds}) = _$_RoomDto;

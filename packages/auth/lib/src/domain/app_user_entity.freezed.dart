@@ -19,6 +19,7 @@ mixin _$AppUser {
   String get id => throw _privateConstructorUsedError;
   bool get isOnboardingCompleted => throw _privateConstructorUsedError;
   bool get isPhoneNumberVerified => throw _privateConstructorUsedError;
+  bool get isAnonymous => throw _privateConstructorUsedError;
   DateTime? get lastDailySpinAt => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -34,6 +35,7 @@ abstract class $AppUserCopyWith<$Res> {
       {String id,
       bool isOnboardingCompleted,
       bool isPhoneNumberVerified,
+      bool isAnonymous,
       DateTime? lastDailySpinAt});
 }
 
@@ -53,6 +55,7 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
     Object? id = null,
     Object? isOnboardingCompleted = null,
     Object? isPhoneNumberVerified = null,
+    Object? isAnonymous = null,
     Object? lastDailySpinAt = freezed,
   }) {
     return _then(_value.copyWith(
@@ -67,6 +70,10 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
       isPhoneNumberVerified: null == isPhoneNumberVerified
           ? _value.isPhoneNumberVerified
           : isPhoneNumberVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isAnonymous: null == isAnonymous
+          ? _value.isAnonymous
+          : isAnonymous // ignore: cast_nullable_to_non_nullable
               as bool,
       lastDailySpinAt: freezed == lastDailySpinAt
           ? _value.lastDailySpinAt
@@ -87,6 +94,7 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       {String id,
       bool isOnboardingCompleted,
       bool isPhoneNumberVerified,
+      bool isAnonymous,
       DateTime? lastDailySpinAt});
 }
 
@@ -103,6 +111,7 @@ class __$$_AppUserCopyWithImpl<$Res>
     Object? id = null,
     Object? isOnboardingCompleted = null,
     Object? isPhoneNumberVerified = null,
+    Object? isAnonymous = null,
     Object? lastDailySpinAt = freezed,
   }) {
     return _then(_$_AppUser(
@@ -117,6 +126,10 @@ class __$$_AppUserCopyWithImpl<$Res>
       isPhoneNumberVerified: null == isPhoneNumberVerified
           ? _value.isPhoneNumberVerified
           : isPhoneNumberVerified // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isAnonymous: null == isAnonymous
+          ? _value.isAnonymous
+          : isAnonymous // ignore: cast_nullable_to_non_nullable
               as bool,
       lastDailySpinAt: freezed == lastDailySpinAt
           ? _value.lastDailySpinAt
@@ -133,6 +146,7 @@ class _$_AppUser implements _AppUser {
       {required this.id,
       required this.isOnboardingCompleted,
       required this.isPhoneNumberVerified,
+      this.isAnonymous = false,
       this.lastDailySpinAt});
 
   @override
@@ -142,11 +156,14 @@ class _$_AppUser implements _AppUser {
   @override
   final bool isPhoneNumberVerified;
   @override
+  @JsonKey()
+  final bool isAnonymous;
+  @override
   final DateTime? lastDailySpinAt;
 
   @override
   String toString() {
-    return 'AppUser(id: $id, isOnboardingCompleted: $isOnboardingCompleted, isPhoneNumberVerified: $isPhoneNumberVerified, lastDailySpinAt: $lastDailySpinAt)';
+    return 'AppUser(id: $id, isOnboardingCompleted: $isOnboardingCompleted, isPhoneNumberVerified: $isPhoneNumberVerified, isAnonymous: $isAnonymous, lastDailySpinAt: $lastDailySpinAt)';
   }
 
   @override
@@ -159,13 +176,15 @@ class _$_AppUser implements _AppUser {
                 other.isOnboardingCompleted == isOnboardingCompleted) &&
             (identical(other.isPhoneNumberVerified, isPhoneNumberVerified) ||
                 other.isPhoneNumberVerified == isPhoneNumberVerified) &&
+            (identical(other.isAnonymous, isAnonymous) ||
+                other.isAnonymous == isAnonymous) &&
             (identical(other.lastDailySpinAt, lastDailySpinAt) ||
                 other.lastDailySpinAt == lastDailySpinAt));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, isOnboardingCompleted,
-      isPhoneNumberVerified, lastDailySpinAt);
+      isPhoneNumberVerified, isAnonymous, lastDailySpinAt);
 
   @JsonKey(ignore: true)
   @override
@@ -179,6 +198,7 @@ abstract class _AppUser implements AppUser {
       {required final String id,
       required final bool isOnboardingCompleted,
       required final bool isPhoneNumberVerified,
+      final bool isAnonymous,
       final DateTime? lastDailySpinAt}) = _$_AppUser;
 
   @override
@@ -187,6 +207,8 @@ abstract class _AppUser implements AppUser {
   bool get isOnboardingCompleted;
   @override
   bool get isPhoneNumberVerified;
+  @override
+  bool get isAnonymous;
   @override
   DateTime? get lastDailySpinAt;
   @override
