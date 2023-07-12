@@ -1,13 +1,12 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:payments/application/core/tonight_payment_method.dart';
 import 'package:payments/domain/domain.dart';
 import 'package:translations/translations.dart';
 
 part 'payment_method_cubit.freezed.dart';
-
 part 'payment_method_state.dart';
 
 class PaymentMethodCubit extends Cubit<PaymentMethodState> {

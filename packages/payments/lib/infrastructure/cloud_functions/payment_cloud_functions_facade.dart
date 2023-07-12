@@ -10,8 +10,8 @@ abstract class PaymentCloudFunctionsFacade {
   Future<CreatePaymentSheetResponse> createTicketPaymentSheet({
     required String eventId,
     required String userId,
+    required int quantity,
     String? promotionCode,
-    bool isVip = false,
     bool sendInvoice = false,
   });
 
@@ -50,8 +50,8 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
   Future<CreatePaymentSheetResponse> createTicketPaymentSheet({
     required String eventId,
     required String userId,
+    required int quantity,
     String? promotionCode,
-    bool isVip = false,
     bool sendInvoice = false,
   }) async {
     const endpoint = 'payments/createTicketPaymentSheet';
@@ -60,7 +60,7 @@ class PaymentCloudFunctionsFacadeImpl implements PaymentCloudFunctionsFacade {
       'eventId': eventId,
       'userId': userId,
       'promotionCode': promotionCode,
-      'isVip': isVip,
+      'quantity': quantity,
       'sendInvoice': sendInvoice,
     };
 

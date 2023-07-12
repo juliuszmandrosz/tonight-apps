@@ -1,7 +1,19 @@
 import 'package:formz/formz.dart';
 import 'package:translations/generated/generated.dart';
 
-enum EmailInputError { empty, invalid }
+enum EmailInputError {
+  empty,
+  invalid;
+
+  String get message {
+    switch (this) {
+      case EmailInputError.empty:
+        return S().enterEmail;
+      case EmailInputError.invalid:
+        return S().invalidEmail;
+    }
+  }
+}
 
 final emailInputErrorMessages = {
   EmailInputError.empty: S().enterEmail,

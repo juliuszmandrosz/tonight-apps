@@ -9,7 +9,7 @@ import 'package:tonight/application/core/user_location/user_location_cubit.dart'
 import 'package:tonight/application/events/event_favorite/event_favorite_cubit.dart';
 import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
-import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
+import 'package:tonight/application/tickets/tickets_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
@@ -34,7 +34,7 @@ class TonightApp extends StatelessWidget {
           create: (ctx) => getIt<NetworkCheckCubit>()..initNetworkListener(),
         ),
         BlocProvider(
-          create: (ctx) => getIt<TicketListCubit>(),
+          create: (ctx) => getIt<TicketsBloc>(),
         ),
         BlocProvider(
           create: (ctx) => getIt<EventFavoriteCubit>(),

@@ -1,14 +1,13 @@
 import 'dart:async';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:common/application/application.dart';
+import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rewards/rewards.dart';
 import 'package:translations/translations.dart';
 
 part 'reward_list_cubit.freezed.dart';
-
 part 'reward_list_state.dart';
 
 class RewardListCubit extends Cubit<RewardListState> {
@@ -68,8 +67,8 @@ class RewardListCubit extends Cubit<RewardListState> {
   }
 
   @override
-  Future<void> close() {
-    rewardsSubscription.cancel();
+  Future<void> close() async {
+    await rewardsSubscription.cancel();
     return super.close();
   }
 }

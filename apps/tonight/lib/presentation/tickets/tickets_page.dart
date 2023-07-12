@@ -2,8 +2,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
-import 'package:tonight/presentation/core/tonight_headline.dart';
+import 'package:tonight/application/tickets/tickets_bloc.dart';
 import 'package:tonight/presentation/tickets/widgets/ticket_card.dart';
 import 'package:translations/translations.dart';
 
@@ -12,28 +11,25 @@ class TicketsPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scrollController = useScrollController();
     useEffect(() {
-      context.read<TicketListCubit>().fetchTickets();
+      context.read<TicketsBloc>().add(const TicketsEvent.ticketsFetched());
       return null;
     }, const []);
-    return BlocBuilder<TicketListCubit, TicketListState>(
+    return BlocBuilder<TicketsBloc, TicketsState>(
       builder: (context, state) {
-        switch (state.initialStatus) {
+        switch (state.fetchTicketsStatus) {
           case CubitStatus.initial:
             return const SizedBox.shrink();
-
           case CubitStatus.loading:
             return const WaveLoadingIndicator();
-
           case CubitStatus.failure:
             return FailureInfo(
-              retryCallback: context.read<TicketListCubit>().fetchTickets,
+              retryCallback: () => context
+                  .read<TicketsBloc>()
+                  .add(const TicketsEvent.ticketsFetched()),
             );
-
           case CubitStatus.success:
-            return state.upcomingLiveTickets.isEmpty &&
-                    state.pastTickets.isEmpty
+            return state.tickets.isEmpty
                 ? Center(
                     child: Text(
                       S().tickets(0),
@@ -41,78 +37,20 @@ class TicketsPage extends HookWidget {
                     ),
                   )
                 : RefreshIndicator(
-                    onRefresh: () async =>
-                        context.read<TicketListCubit>().fetchTickets(),
-                    child: NotificationListener<ScrollNotification>(
-                      onNotification: (notification) {
-                        if (notification.isAtEdge) {
-                          context
-                              .read<TicketListCubit>()
-                              .fetchNextPagePastTickets();
-                        }
-                        return false;
-                      },
-                      child: ListView(
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        controller: scrollController,
-                        children: [
-                          if (state.upcomingLiveTickets.isNotEmpty)
-                            Column(
-                              children: [
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: TonightHeadline(
-                                    text: S().upcomingAndLive,
-                                    isSmallerVersion: true,
-                                  ),
-                                ),
-                                const SizedBox(height: 20),
-                              ],
-                            ),
-                          ListView.separated(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: state.upcomingLiveTickets.length,
-                            itemBuilder: (ctx, i) => TicketCard(
-                              ticket: state.upcomingLiveTickets[i],
-                            ),
-                            separatorBuilder: (ctx, i) =>
-                                const SizedBox(height: 20),
-                          ),
-                          if (state.upcomingLiveTickets.isNotEmpty)
-                            const SizedBox(height: 30),
-                          if (state.pastTickets.isNotEmpty)
-                            Column(
-                              children: [
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: TonightHeadline(
-                                    text: S().pastTickets,
-                                    isSmallerVersion: true,
-                                  ),
-                                ),
-                                const SizedBox(height: 20),
-                              ],
-                            ),
-                          ListView.separated(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: state.hasReachedMax
-                                ? state.pastTickets.length
-                                : state.pastTickets.length + 1,
-                            itemBuilder: (ctx, i) =>
-                                i >= state.pastTickets.length
-                                    ? const BottomLoader()
-                                    : Center(
-                                        child: TicketCard(
-                                          ticket: state.pastTickets[i],
-                                        ),
-                                      ),
-                            separatorBuilder: (ctx, i) =>
-                                const SizedBox(height: 20),
-                          ),
-                        ],
-                      ),
+                    onRefresh: () async => context
+                        .read<TicketsBloc>()
+                        .add(const TicketsEvent.ticketsFetched()),
+                    child: InfiniteList(
+                      hasError: state.nextPageStatus.isFailure(),
+                      hasReachedMax: state.hasReachedMax,
+                      isLoading: state.nextPageStatus.isLoading(),
+                      itemCount: state.tickets.length,
+                      separatorBuilder: (_, __) => const SizedBox(height: 20),
+                      onFetchData: () => context
+                          .read<TicketsBloc>()
+                          .add(const TicketsEvent.nextPageTicketsFetched()),
+                      itemBuilder: (_, i) =>
+                          TicketCard(ticket: state.tickets[i]),
                     ),
                   );
         }

@@ -22,7 +22,7 @@ class TonightEventParticipantsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (totalParticipants == 0) {
-      return const SizedBox.shrink();
+      return const SizedBox(height: 4);
     }
 
     final avatars = <Widget>[];

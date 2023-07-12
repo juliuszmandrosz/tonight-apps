@@ -65,12 +65,12 @@ class EventTickets extends Equatable {
       return priceAtGate!;
     }
 
-    final currentPool = getCurrentPool()!;
+    final currentPool = getCurrentOrLastPool();
     return currentPool.ticketPrice;
   }
 
-  TicketPool? getCurrentPool() {
+  TicketPool getCurrentOrLastPool() {
     return ticketPools.firstWhereOrNull((pool) => pool.isCurrent) ??
-        ticketPools.lastOrNull;
+        ticketPools.last;
   }
 }

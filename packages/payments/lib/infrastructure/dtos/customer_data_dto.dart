@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:payments/domain/domain.dart';
 
 part 'customer_data_dto.freezed.dart';
-
 part 'customer_data_dto.g.dart';
 
 @freezed
@@ -15,13 +14,15 @@ class CustomerDataDto with _$CustomerDataDto {
     required String? paymentMethod,
     required String? name,
     required String? vatNumber,
+    required String? email,
   }) = _CustomerDataDto;
 
-  factory CustomerDataDto.fromDomain(CustomerData invoiceData) {
+  factory CustomerDataDto.fromDomain(CustomerData customerData) {
     return CustomerDataDto(
-      paymentMethod: invoiceData.paymentMethod,
-      name: invoiceData.name,
-      vatNumber: invoiceData.vatNumber,
+      paymentMethod: customerData.paymentMethod,
+      name: customerData.name,
+      vatNumber: customerData.vatNumber,
+      email: customerData.email,
     );
   }
 
@@ -39,6 +40,7 @@ class CustomerDataDto with _$CustomerDataDto {
       paymentMethod: paymentMethod,
       name: name,
       vatNumber: vatNumber,
+      email: email,
     );
   }
 }

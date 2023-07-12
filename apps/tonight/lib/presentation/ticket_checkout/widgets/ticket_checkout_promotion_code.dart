@@ -2,7 +2,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
+import 'package:tonight/application/ticket_checkout/bloc/ticket_checkout_bloc.dart';
 import 'package:translations/translations.dart';
 
 class TicketCheckoutPromotionCode extends HookWidget {
@@ -11,14 +11,16 @@ class TicketCheckoutPromotionCode extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = useTextEditingController(
-      text: context.read<TicketCheckoutCubit>().state.promotionCode.code,
+      text: context.read<TicketCheckoutBloc>().state.promotionCode.code,
     );
 
     Widget? getSuffixIcon(TicketCheckoutState state) {
       if (state.invalidPromotionCodeMessage.isSome() ||
           state.promotionCodeStatus.isSuccess()) {
         return InkWell(
-          onTap: () => context.read<TicketCheckoutCubit>().resetPromotionCode(),
+          onTap: () => context
+              .read<TicketCheckoutBloc>()
+              .add(const TicketCheckoutEvent.promotionCodeResetted()),
           child: const Icon(Icons.clear),
         );
       }
@@ -44,8 +46,10 @@ class TicketCheckoutPromotionCode extends HookWidget {
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
           onPressed: () {
-            FocusManager.instance.primaryFocus?.unfocus();
-            context.read<TicketCheckoutCubit>().getPromotionCode();
+            context.unfocus();
+            context
+                .read<TicketCheckoutBloc>()
+                .add(const TicketCheckoutEvent.promotionCodeFetched());
           },
           child: Text(S().apply),
         );
@@ -54,20 +58,15 @@ class TicketCheckoutPromotionCode extends HookWidget {
       return null;
     }
 
-    return BlocBuilder<TicketCheckoutCubit, TicketCheckoutState>(
+    return BlocBuilder<TicketCheckoutBloc, TicketCheckoutState>(
       buildWhen: (previous, current) =>
           previous.promotionCode != current.promotionCode ||
           previous.promotionCodeStatus != current.promotionCodeStatus ||
           previous.invalidPromotionCodeMessage !=
               current.invalidPromotionCodeMessage,
       builder: (context, state) {
-        if (state.promotionCode.code.isEmpty) {
-          controller.text = '';
-          FocusManager.instance.primaryFocus?.unfocus();
-        }
-
         if (state.promotionCodeStatus.isSuccess()) {
-          FocusManager.instance.primaryFocus?.unfocus();
+          context.unfocus();
         }
 
         return state.promotionCodeStatus.isSuccess()
@@ -99,8 +98,8 @@ class TicketCheckoutPromotionCode extends HookWidget {
                     ),
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     onDeleted: () => context
-                        .read<TicketCheckoutCubit>()
-                        .resetPromotionCode(),
+                        .read<TicketCheckoutBloc>()
+                        .add(const TicketCheckoutEvent.promotionCodeResetted()),
                   ),
                 ),
               )
@@ -108,8 +107,8 @@ class TicketCheckoutPromotionCode extends HookWidget {
                 controller: controller,
                 textCapitalization: TextCapitalization.characters,
                 onChanged: (value) => context
-                    .read<TicketCheckoutCubit>()
-                    .promotionCodeChanged(value),
+                    .read<TicketCheckoutBloc>()
+                    .add(TicketCheckoutEvent.promotionCodeChanged(value)),
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   labelText: S().addPromotionCode,

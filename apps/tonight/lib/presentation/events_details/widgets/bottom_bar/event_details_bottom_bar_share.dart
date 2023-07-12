@@ -42,7 +42,6 @@ class _EventDetailsBottomBarShareState
     setState(() {
       _isLoading = true;
     });
-    await Future.delayed(const Duration(milliseconds: 500));
     final sharePath = 'events?eventId=${widget.event.id}';
     final link = '${dotenv.get(dynamicLinkUrl)}/$sharePath';
     final dynamicLinkParams = DynamicLinkParameters(
@@ -68,4 +67,26 @@ class _EventDetailsBottomBarShareState
     });
     Share.share(shortLink.shortUrl.toString());
   }
+
+// _shareEvent2() async {
+//   if (_isLoading) return;
+//   setState(() {
+//     _isLoading = true;
+//   });
+//
+//   final linkUrl = dotenv.get(dynamicLinkUrl);
+//   final eventId = widget.event.id;
+//   final link = '$linkUrl/events?eventId=$eventId';
+//   final dynamicLink = Uri.parse('$linkUrl/?'
+//       'link=${Uri.encodeComponent(link)}&'
+//       'apn=$kPackageName&'
+//       'ibi=$kPackageName&'
+//       'isi=$kAppStoreId&'
+//       'ofl=$kTonightAppUrl');
+//
+//   setState(() {
+//     _isLoading = false;
+//   });
+//   Share.share(dynamicLink.toString());
+// }
 }

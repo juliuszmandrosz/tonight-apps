@@ -17,14 +17,18 @@ _$_TicketDto _$$_TicketDtoFromJson(Map<String, dynamic> json) => _$_TicketDto(
           .fromJson(json['eventEndDateTime'] as Timestamp),
       price: json['price'] as int,
       currency: json['currency'] as String,
-      isVip: json['isVip'] as bool,
       ticketPaymentId: json['ticketPaymentId'] as String,
-      vipPaymentId: json['vipPaymentId'] as String?,
       isExpired: json['isExpired'] as bool? ?? false,
       isEventCanceled: json['isEventCanceled'] as bool? ?? false,
       isReturnable: json['isReturnable'] as bool? ?? false,
       isReturned: json['isReturned'] as bool? ?? false,
       reviewId: json['reviewId'] as String? ?? '',
+      quantity: json['quantity'] as int? ?? 1,
+      isActivated: json['isActivated'] as bool? ?? false,
+      createdAt: const FirebaseTimestampJsonConverter()
+          .fromJson(json['createdAt'] as Timestamp),
+      usedAt: const FirebaseNullableTimestampJsonConverter()
+          .fromJson(json['usedAt'] as Timestamp?),
     );
 
 Map<String, dynamic> _$$_TicketDtoToJson(_$_TicketDto instance) =>
@@ -39,12 +43,16 @@ Map<String, dynamic> _$$_TicketDtoToJson(_$_TicketDto instance) =>
           .toJson(instance.eventEndDateTime),
       'price': instance.price,
       'currency': instance.currency,
-      'isVip': instance.isVip,
       'ticketPaymentId': instance.ticketPaymentId,
-      'vipPaymentId': instance.vipPaymentId,
       'isExpired': instance.isExpired,
       'isEventCanceled': instance.isEventCanceled,
       'isReturnable': instance.isReturnable,
       'isReturned': instance.isReturned,
       'reviewId': instance.reviewId,
+      'quantity': instance.quantity,
+      'isActivated': instance.isActivated,
+      'createdAt':
+          const FirebaseTimestampJsonConverter().toJson(instance.createdAt),
+      'usedAt': const FirebaseNullableTimestampJsonConverter()
+          .toJson(instance.usedAt),
     };

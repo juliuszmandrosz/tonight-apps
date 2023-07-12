@@ -34,10 +34,12 @@ class EventDto with _$EventDto {
     @Default(0) int attending,
     @Default(false) bool isCanceled,
     @Default(false) bool isBeingPostponed,
+    @Default(false) bool areTicketsAvailableInApp,
     @Default('') String entryFee,
     @Default('') String priceList,
     String? locationString,
     String? clubPhotoUrl,
+    String? externalTicketsUrl,
   }) = _EventDto;
 
   factory EventDto.fromDomain(Event event) {
@@ -68,6 +70,8 @@ class EventDto with _$EventDto {
       priceList: event.priceList,
       clubPhotoUrl: event.clubPhotoUrl,
       locationString: event.locationString,
+      externalTicketsUrl: event.externalTicketsUrl,
+      areTicketsAvailableInApp: event.areTicketsAvailableInApp,
     );
   }
 
@@ -115,6 +119,8 @@ class EventDto with _$EventDto {
       priceList: priceList,
       clubPhotoUrl: clubPhotoUrl,
       locationString: locationString,
+      externalTicketsUrl: externalTicketsUrl,
+      areTicketsAvailableInApp: areTicketsAvailableInApp,
     );
   }
 }

@@ -1,5 +1,4 @@
-import 'package:common/extensions/build_context_extensions.dart';
-import 'package:common/extensions/typography_extensions.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:translations/translations.dart';
 
@@ -15,7 +14,7 @@ class ActivateTimeTaskRewardValidUntilInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       '${S().timeForActivationTo}: ${context.formatDateTimeToLocaleYMDHM(validUntil)}',
-      style: context.titleSmall,
+      style: context.labelSmall.copyWithSecondaryColor(),
       textAlign: TextAlign.center,
     );
   }

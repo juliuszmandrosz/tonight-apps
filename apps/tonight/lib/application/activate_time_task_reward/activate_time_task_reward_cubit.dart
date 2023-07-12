@@ -19,11 +19,11 @@ class ActivateTimeTaskRewardCubit extends Cubit<ActivateTimeTaskRewardState> {
   ActivateTimeTaskRewardCubit(this._timeTaskVoucherFacade)
       : super(ActivateTimeTaskRewardState.initial());
 
-  Future<void> getVoucherByTimeTaskId(String timeTaskId) async {
+  Future<void> listenVoucherByTimeTaskId(String timeTaskId) async {
     emit(state.copyWith(getVoucherStatus: CubitStatus.loading));
     _voucherStreamSubscription?.cancel();
     _voucherStreamSubscription =
-        _timeTaskVoucherFacade.getVoucherByTimeTaskId(timeTaskId).listen(
+        _timeTaskVoucherFacade.listenVoucherByTimeTaskId(timeTaskId).listen(
               (result) => result.fold(
                 (failure) => emit(
                   state.copyWith(
@@ -77,8 +77,8 @@ class ActivateTimeTaskRewardCubit extends Cubit<ActivateTimeTaskRewardState> {
   }
 
   @override
-  Future<void> close() {
-    _voucherStreamSubscription?.cancel();
+  Future<void> close() async {
+    await _voucherStreamSubscription?.cancel();
     return super.close();
   }
 }

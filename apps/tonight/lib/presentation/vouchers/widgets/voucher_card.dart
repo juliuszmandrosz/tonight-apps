@@ -60,14 +60,12 @@ class VoucherCard extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: context.bodyLarge.copyWith(
                         color: context.secondaryColor,
-                        decoration: voucher.isExpired
-                            ? TextDecoration.lineThrough
-                            : null,
                       ),
                     ),
                     if (!voucher.isExpired)
                       AutoSizeText(
-                        '${voucher.isActivated ? S().activeUntil : S().validUntil} ${context.formatDateTimeToLocaleYMDHM(voucher.validUntil)}',
+                        '${voucher.isActivated ? S().activeUntil : S().validUntil} '
+                        '${context.formatDateTimeToLocaleYMDHM(voucher.validUntil)}',
                         style: context.labelSmall
                             .copyWith(color: context.secondaryColor),
                         maxLines: 1,

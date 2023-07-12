@@ -53,13 +53,10 @@ class _RedeemTonightVoucherPageState extends State<RedeemTonightVoucherPage> {
             context.showSnackbarMessage('${S().cheers} 🍻');
           }
         },
-        child: SafeArea(
-          child: Scaffold(
-            appBar: TonightAppBar(
-              title: '',
-              backgroundColor: context.backgroundColor,
-            ),
-            body: BlocBuilder<RedeemTonightVoucherCubit,
+        child: Scaffold(
+          appBar: TonightAppBar(title: S().vouchers(1)),
+          body: SafeArea(
+            child: BlocBuilder<RedeemTonightVoucherCubit,
                 RedeemTonightVoucherState>(
               builder: (context, state) {
                 return Padding(
@@ -68,6 +65,7 @@ class _RedeemTonightVoucherPageState extends State<RedeemTonightVoucherPage> {
                       ? const UserTonightVoucherExpiredInfo()
                       : Column(
                           children: [
+                            const SizedBox(height: 10),
                             CountdownTimer(
                               secondsLeft: widget.voucher.validUntil
                                   .difference(DateTime.now())
@@ -88,12 +86,15 @@ class _RedeemTonightVoucherPageState extends State<RedeemTonightVoucherPage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const FaIcon(FontAwesomeIcons.gift, size: 20),
-                                const SizedBox(width: 12),
+                                const FaIcon(
+                                  FontAwesomeIcons.gift,
+                                  size: 24,
+                                ),
+                                const SizedBox(width: 16),
                                 Expanded(
                                   child: Text(
                                     widget.voucher.voucherName,
-                                    style: context.titleLarge,
+                                    style: context.headlineSmall,
                                   ),
                                 ),
                               ],
@@ -102,13 +103,15 @@ class _RedeemTonightVoucherPageState extends State<RedeemTonightVoucherPage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const FaIcon(FontAwesomeIcons.building,
-                                    size: 20),
-                                const SizedBox(width: 12),
+                                const FaIcon(
+                                  FontAwesomeIcons.building,
+                                  size: 24,
+                                ),
+                                const SizedBox(width: 16),
                                 Expanded(
                                   child: Text(
                                     widget.voucher.venueName,
-                                    style: context.titleLarge,
+                                    style: context.headlineSmall,
                                   ),
                                 ),
                               ],
@@ -117,12 +120,15 @@ class _RedeemTonightVoucherPageState extends State<RedeemTonightVoucherPage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const FaIcon(FontAwesomeIcons.fire, size: 20),
-                                const SizedBox(width: 12),
+                                const FaIcon(
+                                  FontAwesomeIcons.fire,
+                                  size: 24,
+                                ),
+                                const SizedBox(width: 16),
                                 Expanded(
                                   child: Text(
                                     widget.voucher.eventName,
-                                    style: context.titleLarge,
+                                    style: context.headlineSmall,
                                   ),
                                 ),
                               ],

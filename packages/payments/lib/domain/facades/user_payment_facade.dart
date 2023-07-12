@@ -8,16 +8,8 @@ abstract class UserPaymentFacade {
     required String currency,
     required TonightPaymentMethod paymentMethod,
     required double amount,
-    String? promotionCode,
-    bool isVip = false,
-    bool sendInvoice = false,
-  });
-
-  Future<Either<UserPaymentFailure, Unit>> proceedToPayForVip({
-    required String ticketId,
-    required String currency,
-    required TonightPaymentMethod paymentMethod,
-    required double amount,
+    required int quantity,
+    required String customerEmail,
     String? promotionCode,
     bool sendInvoice = false,
   });
@@ -37,11 +29,9 @@ abstract class UserPaymentFacade {
     bool isCompany = false,
   });
 
+  Future<Either<UserPaymentFailure, Unit>> updateCustomerEmail(String email);
+
   Future<Either<UserPaymentFailure, CustomerData>> getCustomerData();
 
   Future<Either<UserPaymentFailure, double>> getServiceFee();
-
-  Future<Either<UserPaymentFailure, Unit>> cancelTicketReservation(
-    String sessionId,
-  );
 }

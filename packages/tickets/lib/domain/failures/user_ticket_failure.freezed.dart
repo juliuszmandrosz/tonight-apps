@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'user_ticket_failure.dart';
 
@@ -21,13 +21,17 @@ mixin _$UserTicketFailure {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() returnTimeIsOver,
+    required TResult Function() ticketExpired,
+    required TResult Function() ticketNotExists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? returnTimeIsOver,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? returnTimeIsOver,
+    TResult? Function()? ticketExpired,
+    TResult? Function()? ticketNotExists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +39,8 @@ mixin _$UserTicketFailure {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketExpired,
+    TResult Function()? ticketNotExists,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,13 +49,17 @@ mixin _$UserTicketFailure {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
+    required TResult Function(_TicketExpired value) ticketExpired,
+    required TResult Function(_TicketNotExists value) ticketNotExists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult? Function(_TicketExpired value)? ticketExpired,
+    TResult? Function(_TicketNotExists value)? ticketNotExists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +67,8 @@ mixin _$UserTicketFailure {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketExpired value)? ticketExpired,
+    TResult Function(_TicketNotExists value)? ticketNotExists,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,17 +78,18 @@ mixin _$UserTicketFailure {
 abstract class $UserTicketFailureCopyWith<$Res> {
   factory $UserTicketFailureCopyWith(
           UserTicketFailure value, $Res Function(UserTicketFailure) then) =
-      _$UserTicketFailureCopyWithImpl<$Res>;
+      _$UserTicketFailureCopyWithImpl<$Res, UserTicketFailure>;
 }
 
 /// @nodoc
-class _$UserTicketFailureCopyWithImpl<$Res>
+class _$UserTicketFailureCopyWithImpl<$Res, $Val extends UserTicketFailure>
     implements $UserTicketFailureCopyWith<$Res> {
   _$UserTicketFailureCopyWithImpl(this._value, this._then);
 
-  final UserTicketFailure _value;
   // ignore: unused_field
-  final $Res Function(UserTicketFailure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -88,14 +101,11 @@ abstract class _$$_UnexpectedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$UserTicketFailureCopyWithImpl<$Res>
+    extends _$UserTicketFailureCopyWithImpl<$Res, _$_Unexpected>
     implements _$$_UnexpectedCopyWith<$Res> {
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
-      : super(_value, (v) => _then(v as _$_Unexpected));
-
-  @override
-  _$_Unexpected get _value => super._value as _$_Unexpected;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -123,6 +133,8 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() returnTimeIsOver,
+    required TResult Function() ticketExpired,
+    required TResult Function() ticketNotExists,
   }) {
     return unexpected();
   }
@@ -130,9 +142,11 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? returnTimeIsOver,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? returnTimeIsOver,
+    TResult? Function()? ticketExpired,
+    TResult? Function()? ticketNotExists,
   }) {
     return unexpected?.call();
   }
@@ -143,6 +157,8 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketExpired,
+    TResult Function()? ticketNotExists,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -157,6 +173,8 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
+    required TResult Function(_TicketExpired value) ticketExpired,
+    required TResult Function(_TicketNotExists value) ticketNotExists,
   }) {
     return unexpected(this);
   }
@@ -164,9 +182,11 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult? Function(_TicketExpired value)? ticketExpired,
+    TResult? Function(_TicketNotExists value)? ticketNotExists,
   }) {
     return unexpected?.call(this);
   }
@@ -177,6 +197,8 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketExpired value)? ticketExpired,
+    TResult Function(_TicketNotExists value)? ticketNotExists,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -199,14 +221,11 @@ abstract class _$$_PermissionDeniedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PermissionDeniedCopyWithImpl<$Res>
-    extends _$UserTicketFailureCopyWithImpl<$Res>
+    extends _$UserTicketFailureCopyWithImpl<$Res, _$_PermissionDenied>
     implements _$$_PermissionDeniedCopyWith<$Res> {
   __$$_PermissionDeniedCopyWithImpl(
       _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
-      : super(_value, (v) => _then(v as _$_PermissionDenied));
-
-  @override
-  _$_PermissionDenied get _value => super._value as _$_PermissionDenied;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -234,6 +253,8 @@ class _$_PermissionDenied implements _PermissionDenied {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() returnTimeIsOver,
+    required TResult Function() ticketExpired,
+    required TResult Function() ticketNotExists,
   }) {
     return permissionDenied();
   }
@@ -241,9 +262,11 @@ class _$_PermissionDenied implements _PermissionDenied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? returnTimeIsOver,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? returnTimeIsOver,
+    TResult? Function()? ticketExpired,
+    TResult? Function()? ticketNotExists,
   }) {
     return permissionDenied?.call();
   }
@@ -254,6 +277,8 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketExpired,
+    TResult Function()? ticketNotExists,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -268,6 +293,8 @@ class _$_PermissionDenied implements _PermissionDenied {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
+    required TResult Function(_TicketExpired value) ticketExpired,
+    required TResult Function(_TicketNotExists value) ticketNotExists,
   }) {
     return permissionDenied(this);
   }
@@ -275,9 +302,11 @@ class _$_PermissionDenied implements _PermissionDenied {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult? Function(_TicketExpired value)? ticketExpired,
+    TResult? Function(_TicketNotExists value)? ticketNotExists,
   }) {
     return permissionDenied?.call(this);
   }
@@ -288,6 +317,8 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketExpired value)? ticketExpired,
+    TResult Function(_TicketNotExists value)? ticketNotExists,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -310,14 +341,11 @@ abstract class _$$_ReturnTimeIsOverCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ReturnTimeIsOverCopyWithImpl<$Res>
-    extends _$UserTicketFailureCopyWithImpl<$Res>
+    extends _$UserTicketFailureCopyWithImpl<$Res, _$_ReturnTimeIsOver>
     implements _$$_ReturnTimeIsOverCopyWith<$Res> {
   __$$_ReturnTimeIsOverCopyWithImpl(
       _$_ReturnTimeIsOver _value, $Res Function(_$_ReturnTimeIsOver) _then)
-      : super(_value, (v) => _then(v as _$_ReturnTimeIsOver));
-
-  @override
-  _$_ReturnTimeIsOver get _value => super._value as _$_ReturnTimeIsOver;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -345,6 +373,8 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
     required TResult Function() unexpected,
     required TResult Function() permissionDenied,
     required TResult Function() returnTimeIsOver,
+    required TResult Function() ticketExpired,
+    required TResult Function() ticketNotExists,
   }) {
     return returnTimeIsOver();
   }
@@ -352,9 +382,11 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function()? returnTimeIsOver,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? returnTimeIsOver,
+    TResult? Function()? ticketExpired,
+    TResult? Function()? ticketNotExists,
   }) {
     return returnTimeIsOver?.call();
   }
@@ -365,6 +397,8 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
     TResult Function()? unexpected,
     TResult Function()? permissionDenied,
     TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketExpired,
+    TResult Function()? ticketNotExists,
     required TResult orElse(),
   }) {
     if (returnTimeIsOver != null) {
@@ -379,6 +413,8 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
     required TResult Function(_Unexpected value) unexpected,
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
+    required TResult Function(_TicketExpired value) ticketExpired,
+    required TResult Function(_TicketNotExists value) ticketNotExists,
   }) {
     return returnTimeIsOver(this);
   }
@@ -386,9 +422,11 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult? Function(_TicketExpired value)? ticketExpired,
+    TResult? Function(_TicketNotExists value)? ticketNotExists,
   }) {
     return returnTimeIsOver?.call(this);
   }
@@ -399,6 +437,8 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
     TResult Function(_Unexpected value)? unexpected,
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketExpired value)? ticketExpired,
+    TResult Function(_TicketNotExists value)? ticketNotExists,
     required TResult orElse(),
   }) {
     if (returnTimeIsOver != null) {
@@ -410,4 +450,244 @@ class _$_ReturnTimeIsOver implements _ReturnTimeIsOver {
 
 abstract class _ReturnTimeIsOver implements UserTicketFailure {
   const factory _ReturnTimeIsOver() = _$_ReturnTimeIsOver;
+}
+
+/// @nodoc
+abstract class _$$_TicketExpiredCopyWith<$Res> {
+  factory _$$_TicketExpiredCopyWith(
+          _$_TicketExpired value, $Res Function(_$_TicketExpired) then) =
+      __$$_TicketExpiredCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_TicketExpiredCopyWithImpl<$Res>
+    extends _$UserTicketFailureCopyWithImpl<$Res, _$_TicketExpired>
+    implements _$$_TicketExpiredCopyWith<$Res> {
+  __$$_TicketExpiredCopyWithImpl(
+      _$_TicketExpired _value, $Res Function(_$_TicketExpired) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_TicketExpired implements _TicketExpired {
+  const _$_TicketExpired();
+
+  @override
+  String toString() {
+    return 'UserTicketFailure.ticketExpired()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_TicketExpired);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() returnTimeIsOver,
+    required TResult Function() ticketExpired,
+    required TResult Function() ticketNotExists,
+  }) {
+    return ticketExpired();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? returnTimeIsOver,
+    TResult? Function()? ticketExpired,
+    TResult? Function()? ticketNotExists,
+  }) {
+    return ticketExpired?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketExpired,
+    TResult Function()? ticketNotExists,
+    required TResult orElse(),
+  }) {
+    if (ticketExpired != null) {
+      return ticketExpired();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
+    required TResult Function(_TicketExpired value) ticketExpired,
+    required TResult Function(_TicketNotExists value) ticketNotExists,
+  }) {
+    return ticketExpired(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult? Function(_TicketExpired value)? ticketExpired,
+    TResult? Function(_TicketNotExists value)? ticketNotExists,
+  }) {
+    return ticketExpired?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketExpired value)? ticketExpired,
+    TResult Function(_TicketNotExists value)? ticketNotExists,
+    required TResult orElse(),
+  }) {
+    if (ticketExpired != null) {
+      return ticketExpired(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TicketExpired implements UserTicketFailure {
+  const factory _TicketExpired() = _$_TicketExpired;
+}
+
+/// @nodoc
+abstract class _$$_TicketNotExistsCopyWith<$Res> {
+  factory _$$_TicketNotExistsCopyWith(
+          _$_TicketNotExists value, $Res Function(_$_TicketNotExists) then) =
+      __$$_TicketNotExistsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_TicketNotExistsCopyWithImpl<$Res>
+    extends _$UserTicketFailureCopyWithImpl<$Res, _$_TicketNotExists>
+    implements _$$_TicketNotExistsCopyWith<$Res> {
+  __$$_TicketNotExistsCopyWithImpl(
+      _$_TicketNotExists _value, $Res Function(_$_TicketNotExists) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_TicketNotExists implements _TicketNotExists {
+  const _$_TicketNotExists();
+
+  @override
+  String toString() {
+    return 'UserTicketFailure.ticketNotExists()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_TicketNotExists);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() returnTimeIsOver,
+    required TResult Function() ticketExpired,
+    required TResult Function() ticketNotExists,
+  }) {
+    return ticketNotExists();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? returnTimeIsOver,
+    TResult? Function()? ticketExpired,
+    TResult? Function()? ticketNotExists,
+  }) {
+    return ticketNotExists?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? returnTimeIsOver,
+    TResult Function()? ticketExpired,
+    TResult Function()? ticketNotExists,
+    required TResult orElse(),
+  }) {
+    if (ticketNotExists != null) {
+      return ticketNotExists();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_ReturnTimeIsOver value) returnTimeIsOver,
+    required TResult Function(_TicketExpired value) ticketExpired,
+    required TResult Function(_TicketNotExists value) ticketNotExists,
+  }) {
+    return ticketNotExists(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult? Function(_TicketExpired value)? ticketExpired,
+    TResult? Function(_TicketNotExists value)? ticketNotExists,
+  }) {
+    return ticketNotExists?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_ReturnTimeIsOver value)? returnTimeIsOver,
+    TResult Function(_TicketExpired value)? ticketExpired,
+    TResult Function(_TicketNotExists value)? ticketNotExists,
+    required TResult orElse(),
+  }) {
+    if (ticketNotExists != null) {
+      return ticketNotExists(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TicketNotExists implements UserTicketFailure {
+  const factory _TicketNotExists() = _$_TicketNotExists;
 }
