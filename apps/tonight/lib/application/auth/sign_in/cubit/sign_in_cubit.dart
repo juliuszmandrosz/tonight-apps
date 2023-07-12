@@ -6,19 +6,18 @@ import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tonight/application/auth/sign_in/aggregator/sign_in_aggregator.dart';
 import 'package:translations/translations.dart';
 
 part 'sign_in_cubit.freezed.dart';
 part 'sign_in_state.dart';
 
 class SignInCubit extends Cubit<SignInState> {
-  final SignInAggregator _signInAggregator;
+  final UserAuthFacade _userAuthFacade;
   final FirebaseDynamicLinks _dynamicLinks;
 
   late final StreamSubscription _linkSub;
 
-  SignInCubit(this._signInAggregator, this._dynamicLinks)
+  SignInCubit(this._userAuthFacade, this._dynamicLinks)
       : super(SignInState.initial()) {
     _subscribeToDynamicLinks();
   }
@@ -26,7 +25,7 @@ class SignInCubit extends Cubit<SignInState> {
   Future<void> signInWithGoogle() async {
     emit(state.copyWith(signInStatus: FormzStatus.submissionInProgress));
 
-    final failureOrSuccess = await _signInAggregator.signInWithGoogle();
+    final failureOrSuccess = await _userAuthFacade.signInWithGoogleAsUser();
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(failure),
@@ -42,7 +41,7 @@ class SignInCubit extends Cubit<SignInState> {
   Future<void> signInWithApple() async {
     emit(state.copyWith(signInStatus: FormzStatus.submissionInProgress));
 
-    final failureOrSuccess = await _signInAggregator.signInWithApple();
+    final failureOrSuccess = await _userAuthFacade.signInWithAppleAsUser();
 
     failureOrSuccess.fold(
       (failure) => _emitFailure(failure),
@@ -60,7 +59,7 @@ class SignInCubit extends Cubit<SignInState> {
 
     emit(state.copyWith(signInStatus: FormzStatus.submissionInProgress));
 
-    final failureOrSuccess = await _signInAggregator.sendSignInEmailLink(
+    final failureOrSuccess = await _userAuthFacade.sendSignInEmailLinkForUser(
       state.email.value,
     );
 
@@ -91,7 +90,7 @@ class SignInCubit extends Cubit<SignInState> {
   Future<void> _signInWithEmailLink(Uri link) async {
     emit(state.copyWith(signInStatus: FormzStatus.submissionInProgress));
 
-    final failureOrSuccess = await _signInAggregator.signInWithEmail(
+    final failureOrSuccess = await _userAuthFacade.signInWithEmailLinkAsUser(
       email: state.email.value,
       link: link,
     );
