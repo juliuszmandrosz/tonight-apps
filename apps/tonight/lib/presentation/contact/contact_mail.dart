@@ -27,7 +27,7 @@ class ContactMail extends StatelessWidget {
           style: context.titleMedium.copyWith(color: context.secondaryColor),
         ),
       ),
-      trailing: const FaIcon(FontAwesomeIcons.envelope),
+      trailing: const FaIcon(FontAwesomeIcons.solidEnvelope),
       onTap: () => launchEmail(supportEmail),
     );
   }
