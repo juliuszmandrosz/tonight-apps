@@ -272,7 +272,7 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
           await _checkIfEmailIsAlreadyInUse(appleAuthResult.value2);
       final userCredential = isEmailInUse
           ? await _firebaseAuth.signInWithCredential(appleAuthResult.value1)
-          : await _linkWithWithAppleCredential(appleAuthResult.value1);
+          : await _linkWithCredential(appleAuthResult.value1);
       if (isEmailInUse) {
         await _checkIfUserCanSignIn(userCredential);
       }
@@ -399,14 +399,6 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
       idToken: googleAuth.idToken,
       accessToken: googleAuth.accessToken,
     );
-    return _linkWithCredential(authCredential);
-  }
-
-  Future<UserCredential> _linkWithWithAppleCredential(
-    OAuthCredential credential,
-  ) async {
-    final authCredential =
-        AppleAuthProvider.credential(credential.accessToken!);
     return _linkWithCredential(authCredential);
   }
 
