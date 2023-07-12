@@ -3,7 +3,6 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:uuid/uuid.dart';
 
-// TODO - change name to party
 class Event extends Equatable {
   final String id;
   final String clubId;
@@ -29,8 +28,10 @@ class Event extends Equatable {
   final int attending;
   final bool isCanceled;
   final bool isBeingPostponed;
+  final bool areTicketsAvailableInApp;
   final String? clubPhotoUrl;
   final String? locationString;
+  final String? externalTicketsUrl;
 
   Event({
     String? id,
@@ -59,6 +60,8 @@ class Event extends Equatable {
     this.attending = 0,
     this.isCanceled = false,
     this.isBeingPostponed = false,
+    this.areTicketsAvailableInApp = false,
+    this.externalTicketsUrl,
   }) : id = id ?? const Uuid().v1();
 
   double getLatitude() {
@@ -97,6 +100,8 @@ class Event extends Equatable {
         isBeingPostponed,
         clubPhotoUrl,
         locationString,
+        areTicketsAvailableInApp,
+        externalTicketsUrl,
       ];
 
   Event copyWith({
@@ -125,6 +130,8 @@ class Event extends Equatable {
     bool? isBeingPostponed,
     Option<String>? clubPhotoUrl,
     Option<String>? locationString,
+    bool? areTicketsAvailableInApp,
+    Option<String>? externalTicketsUrl,
   }) {
     return Event(
       id: id,
@@ -174,6 +181,14 @@ class Event extends Equatable {
               (location) => location,
             )
           : this.locationString,
+      areTicketsAvailableInApp:
+          areTicketsAvailableInApp ?? this.areTicketsAvailableInApp,
+      externalTicketsUrl: externalTicketsUrl != null
+          ? externalTicketsUrl.fold(
+              () => null,
+              (url) => url,
+            )
+          : this.externalTicketsUrl,
     );
   }
 }

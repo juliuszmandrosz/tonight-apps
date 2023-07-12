@@ -35,6 +35,8 @@ class TonightEvent with _$TonightEvent {
     required Option<List<EventParticipant>> firstParticipants,
     required int totalParticipants,
     required Option<EventVoucher> voucher,
+    @Default(false) bool areTicketsAvailableInApp,
+    String? externalTicketsUrl,
     String? locationString,
     String? clubPhotoUrl,
     String? artistName,
@@ -70,6 +72,8 @@ class TonightEvent with _$TonightEvent {
         artistName: event.artistName,
         description: event.description,
         locationString: event.locationString,
+        areTicketsAvailableInApp: event.areTicketsAvailableInApp,
+        externalTicketsUrl: event.externalTicketsUrl,
         clubPhotoUrl: event.clubPhotoUrl,
         totalParticipants: participantsResult.fold(
           (_) => 0,
@@ -121,5 +125,7 @@ class TonightEvent with _$TonightEvent {
         cityId: '',
         clubPhotoUrl: clubPhotoUrl,
         locationString: locationString,
+        areTicketsAvailableInApp: areTicketsAvailableInApp,
+        externalTicketsUrl: externalTicketsUrl,
       );
 }

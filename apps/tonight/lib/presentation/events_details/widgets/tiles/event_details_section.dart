@@ -36,6 +36,8 @@ class EventDetailsSection extends StatelessWidget {
               icon: FontAwesomeIcons.ticket,
               value: price,
               label: S().entry,
+              event: event,
+              isEntryFee: true,
             ),
             EventDetailTile(
               icon: FontAwesomeIcons.solidUser,

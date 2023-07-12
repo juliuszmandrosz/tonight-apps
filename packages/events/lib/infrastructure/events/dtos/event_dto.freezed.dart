@@ -47,10 +47,12 @@ mixin _$EventDto {
   int get attending => throw _privateConstructorUsedError;
   bool get isCanceled => throw _privateConstructorUsedError;
   bool get isBeingPostponed => throw _privateConstructorUsedError;
+  bool get areTicketsAvailableInApp => throw _privateConstructorUsedError;
   String get entryFee => throw _privateConstructorUsedError;
   String get priceList => throw _privateConstructorUsedError;
   String? get locationString => throw _privateConstructorUsedError;
   String? get clubPhotoUrl => throw _privateConstructorUsedError;
+  String? get externalTicketsUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -86,10 +88,12 @@ abstract class $EventDtoCopyWith<$Res> {
       int attending,
       bool isCanceled,
       bool isBeingPostponed,
+      bool areTicketsAvailableInApp,
       String entryFee,
       String priceList,
       String? locationString,
-      String? clubPhotoUrl});
+      String? clubPhotoUrl,
+      String? externalTicketsUrl});
 }
 
 /// @nodoc
@@ -127,10 +131,12 @@ class _$EventDtoCopyWithImpl<$Res, $Val extends EventDto>
     Object? attending = null,
     Object? isCanceled = null,
     Object? isBeingPostponed = null,
+    Object? areTicketsAvailableInApp = null,
     Object? entryFee = null,
     Object? priceList = null,
     Object? locationString = freezed,
     Object? clubPhotoUrl = freezed,
+    Object? externalTicketsUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -221,6 +227,10 @@ class _$EventDtoCopyWithImpl<$Res, $Val extends EventDto>
           ? _value.isBeingPostponed
           : isBeingPostponed // ignore: cast_nullable_to_non_nullable
               as bool,
+      areTicketsAvailableInApp: null == areTicketsAvailableInApp
+          ? _value.areTicketsAvailableInApp
+          : areTicketsAvailableInApp // ignore: cast_nullable_to_non_nullable
+              as bool,
       entryFee: null == entryFee
           ? _value.entryFee
           : entryFee // ignore: cast_nullable_to_non_nullable
@@ -236,6 +246,10 @@ class _$EventDtoCopyWithImpl<$Res, $Val extends EventDto>
       clubPhotoUrl: freezed == clubPhotoUrl
           ? _value.clubPhotoUrl
           : clubPhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      externalTicketsUrl: freezed == externalTicketsUrl
+          ? _value.externalTicketsUrl
+          : externalTicketsUrl // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -271,10 +285,12 @@ abstract class _$$_EventDtoCopyWith<$Res> implements $EventDtoCopyWith<$Res> {
       int attending,
       bool isCanceled,
       bool isBeingPostponed,
+      bool areTicketsAvailableInApp,
       String entryFee,
       String priceList,
       String? locationString,
-      String? clubPhotoUrl});
+      String? clubPhotoUrl,
+      String? externalTicketsUrl});
 }
 
 /// @nodoc
@@ -310,10 +326,12 @@ class __$$_EventDtoCopyWithImpl<$Res>
     Object? attending = null,
     Object? isCanceled = null,
     Object? isBeingPostponed = null,
+    Object? areTicketsAvailableInApp = null,
     Object? entryFee = null,
     Object? priceList = null,
     Object? locationString = freezed,
     Object? clubPhotoUrl = freezed,
+    Object? externalTicketsUrl = freezed,
   }) {
     return _then(_$_EventDto(
       id: freezed == id
@@ -404,6 +422,10 @@ class __$$_EventDtoCopyWithImpl<$Res>
           ? _value.isBeingPostponed
           : isBeingPostponed // ignore: cast_nullable_to_non_nullable
               as bool,
+      areTicketsAvailableInApp: null == areTicketsAvailableInApp
+          ? _value.areTicketsAvailableInApp
+          : areTicketsAvailableInApp // ignore: cast_nullable_to_non_nullable
+              as bool,
       entryFee: null == entryFee
           ? _value.entryFee
           : entryFee // ignore: cast_nullable_to_non_nullable
@@ -419,6 +441,10 @@ class __$$_EventDtoCopyWithImpl<$Res>
       clubPhotoUrl: freezed == clubPhotoUrl
           ? _value.clubPhotoUrl
           : clubPhotoUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      externalTicketsUrl: freezed == externalTicketsUrl
+          ? _value.externalTicketsUrl
+          : externalTicketsUrl // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -451,10 +477,12 @@ class _$_EventDto extends _EventDto {
       this.attending = 0,
       this.isCanceled = false,
       this.isBeingPostponed = false,
+      this.areTicketsAvailableInApp = false,
       this.entryFee = '',
       this.priceList = '',
       this.locationString,
-      this.clubPhotoUrl})
+      this.clubPhotoUrl,
+      this.externalTicketsUrl})
       : _musicalGenres = musicalGenres,
         _location = location,
         _urlLinks = urlLinks,
@@ -537,6 +565,9 @@ class _$_EventDto extends _EventDto {
   final bool isBeingPostponed;
   @override
   @JsonKey()
+  final bool areTicketsAvailableInApp;
+  @override
+  @JsonKey()
   final String entryFee;
   @override
   @JsonKey()
@@ -545,10 +576,12 @@ class _$_EventDto extends _EventDto {
   final String? locationString;
   @override
   final String? clubPhotoUrl;
+  @override
+  final String? externalTicketsUrl;
 
   @override
   String toString() {
-    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, originalStartDateTime: $originalStartDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, urlLinks: $urlLinks, isConcert: $isConcert, attending: $attending, isCanceled: $isCanceled, isBeingPostponed: $isBeingPostponed, entryFee: $entryFee, priceList: $priceList, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl)';
+    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, originalStartDateTime: $originalStartDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, urlLinks: $urlLinks, isConcert: $isConcert, attending: $attending, isCanceled: $isCanceled, isBeingPostponed: $isBeingPostponed, areTicketsAvailableInApp: $areTicketsAvailableInApp, entryFee: $entryFee, priceList: $priceList, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl, externalTicketsUrl: $externalTicketsUrl)';
   }
 
   @override
@@ -593,6 +626,9 @@ class _$_EventDto extends _EventDto {
                 other.isCanceled == isCanceled) &&
             (identical(other.isBeingPostponed, isBeingPostponed) ||
                 other.isBeingPostponed == isBeingPostponed) &&
+            (identical(
+                    other.areTicketsAvailableInApp, areTicketsAvailableInApp) ||
+                other.areTicketsAvailableInApp == areTicketsAvailableInApp) &&
             (identical(other.entryFee, entryFee) ||
                 other.entryFee == entryFee) &&
             (identical(other.priceList, priceList) ||
@@ -600,7 +636,9 @@ class _$_EventDto extends _EventDto {
             (identical(other.locationString, locationString) ||
                 other.locationString == locationString) &&
             (identical(other.clubPhotoUrl, clubPhotoUrl) ||
-                other.clubPhotoUrl == clubPhotoUrl));
+                other.clubPhotoUrl == clubPhotoUrl) &&
+            (identical(other.externalTicketsUrl, externalTicketsUrl) ||
+                other.externalTicketsUrl == externalTicketsUrl));
   }
 
   @JsonKey(ignore: true)
@@ -629,10 +667,12 @@ class _$_EventDto extends _EventDto {
         attending,
         isCanceled,
         isBeingPostponed,
+        areTicketsAvailableInApp,
         entryFee,
         priceList,
         locationString,
-        clubPhotoUrl
+        clubPhotoUrl,
+        externalTicketsUrl
       ]);
 
   @JsonKey(ignore: true)
@@ -673,10 +713,12 @@ abstract class _EventDto extends EventDto {
       final int attending,
       final bool isCanceled,
       final bool isBeingPostponed,
+      final bool areTicketsAvailableInApp,
       final String entryFee,
       final String priceList,
       final String? locationString,
-      final String? clubPhotoUrl}) = _$_EventDto;
+      final String? clubPhotoUrl,
+      final String? externalTicketsUrl}) = _$_EventDto;
   const _EventDto._() : super._();
 
   factory _EventDto.fromJson(Map<String, dynamic> json) = _$_EventDto.fromJson;
@@ -731,6 +773,8 @@ abstract class _EventDto extends EventDto {
   @override
   bool get isBeingPostponed;
   @override
+  bool get areTicketsAvailableInApp;
+  @override
   String get entryFee;
   @override
   String get priceList;
@@ -738,6 +782,8 @@ abstract class _EventDto extends EventDto {
   String? get locationString;
   @override
   String? get clubPhotoUrl;
+  @override
+  String? get externalTicketsUrl;
   @override
   @JsonKey(ignore: true)
   _$$_EventDtoCopyWith<_$_EventDto> get copyWith =>

@@ -16,8 +16,7 @@ class ReceiveTimeTaskVoucherRewardButton extends StatelessWidget {
             ? const CircleLoadingIndicator()
             : SizedBox(
                 width: 300,
-                height: 50,
-                child: ElevatedButton.icon(
+                child: FloatingActionButton.extended(
                   onPressed: state.voucher.isNone()
                       ? null
                       : () async {

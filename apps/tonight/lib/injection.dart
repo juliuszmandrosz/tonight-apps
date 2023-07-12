@@ -28,6 +28,7 @@ import 'package:rewards/domain/domain.dart';
 import 'package:rewards/infrastructure/firebase_reward_facade.dart';
 import 'package:tickets/infrastructure/cloud_functions/ticket_cloud_functions_facade.dart';
 import 'package:tickets/tickets.dart';
+import 'package:tonight/application/activate_ticket/activate_ticket_cubit.dart';
 import 'package:tonight/application/activate_time_task_reward/activate_time_task_reward_cubit.dart';
 import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_aggregator/add_wall_photo_aggregator.dart';
 import 'package:tonight/application/add_wall_photo/cubit/add_wall_photo_cubit.dart';
@@ -44,6 +45,7 @@ import 'package:tonight/application/clubs/club_details/club_photos/club_photos_b
 import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
 import 'package:tonight/application/clubs/club_rewards/club_rewards_cubit.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
+import 'package:tonight/application/customer_email/customer_email_cubit.dart';
 import 'package:tonight/application/daily_spin/daily_spin_cubit.dart';
 import 'package:tonight/application/event_chat/aggregator/event_chat_aggregator.dart';
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
@@ -69,9 +71,9 @@ import 'package:tonight/application/push_notifications/push_notifications_cubit.
 import 'package:tonight/application/redeem_tonight_voucher/redeem_tonight_voucher_cubit.dart';
 import 'package:tonight/application/select_club/select_club_bloc.dart';
 import 'package:tonight/application/sign_in_with_phone_number/sign_in_with_phone_number_cubit.dart';
-import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
-import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
-import 'package:tonight/application/ticket_qr/ticket_qr_cubit.dart';
+import 'package:tonight/application/ticket_checkout/aggregator/ticket_checkout_aggregator.dart';
+import 'package:tonight/application/ticket_checkout/bloc/ticket_checkout_bloc.dart';
+import 'package:tonight/application/tickets/tickets_bloc.dart';
 import 'package:tonight/application/tonight/tonight_cubit.dart';
 import 'package:tonight/application/tonight_events/aggregator/tonight_events_aggregator.dart';
 import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
@@ -80,7 +82,6 @@ import 'package:tonight/application/user_city_picker/user_city_picker_bloc.dart'
 import 'package:tonight/application/user_details/user_details_cubit.dart';
 import 'package:tonight/application/user_wall_photo_preview/user_wall_photo_preview_cubit.dart';
 import 'package:tonight/application/verify_phone_number/verify_phone_number_cubit.dart';
-import 'package:tonight/application/vip_checkout/vip_checkout_cubit.dart';
 import 'package:tonight/application/vouchers/aggregator/vouchers_aggregator.dart';
 import 'package:tonight/application/vouchers/bloc/vouchers_bloc.dart';
 import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
@@ -190,25 +191,10 @@ void _registerCubits() {
     ),
   );
 
-  //Tickets
-  getIt.registerFactory(
-    () => TicketListCubit(
-      getIt(),
-    ),
-  );
-
   //Event ticket pools
   getIt.registerFactory(
     () => EventTicketsCubit(
       getIt(),
-    ),
-  );
-
-  getIt.registerFactoryParam(
-    (TicketListCubit ticketListCubit, _) => TicketQrCubit(
-      ticketFacade: getIt(),
-      ticketListCubit: ticketListCubit,
-      eventTicketsCubit: getIt(),
     ),
   );
 
@@ -228,6 +214,7 @@ void _registerCubits() {
   //Events
   getIt.registerFactory(
     () => EventDetailsCubit(
+      getIt(),
       getIt(),
       getIt(),
     ),
@@ -276,25 +263,6 @@ void _registerCubits() {
 
   //App settings
   getIt.registerFactory(() => AppSettingsCubit());
-
-  //Payment
-  getIt.registerFactoryParam(
-    (TicketListCubit ticketListCubit, _) => TicketCheckoutCubit(
-      paymentFacade: getIt(),
-      eventTicketsCubit: getIt(),
-      ticketListCubit: ticketListCubit,
-      currencyParamsFacade: getIt(),
-    ),
-  );
-
-  getIt.registerFactoryParam(
-    (TicketListCubit ticketListCubit, _) => VipCheckoutCubit(
-      paymentFacade: getIt(),
-      eventTicketsCubit: getIt(),
-      ticketListCubit: ticketListCubit,
-      currencyParamsFacade: getIt(),
-    ),
-  );
 
   //Rewards
   getIt.registerFactory(
@@ -466,6 +434,30 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => OnboardingCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => ActivateTicketCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => TicketsBloc(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => TicketCheckoutBloc(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => CustomerEmailCubit(
       getIt(),
     ),
   );
@@ -824,6 +816,15 @@ void _registerAggregators() {
 
   getIt.registerLazySingleton(
     () => SignInAggregator(
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton(
+    () => TicketCheckoutAggregator(
+      getIt(),
+      getIt(),
+      getIt(),
       getIt(),
     ),
   );

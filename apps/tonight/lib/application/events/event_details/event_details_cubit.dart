@@ -14,9 +14,13 @@ part 'event_details_state.dart';
 class EventDetailsCubit extends Cubit<EventDetailsState> {
   final UserEventFacade _eventFacade;
   final TonightVoucherFacade _tonightVoucherFacade;
+  final UserEventTicketsFacade _eventTicketsFacade;
 
-  EventDetailsCubit(this._eventFacade, this._tonightVoucherFacade)
-      : super(EventDetailsState.initial());
+  EventDetailsCubit(
+    this._eventFacade,
+    this._tonightVoucherFacade,
+    this._eventTicketsFacade,
+  ) : super(EventDetailsState.initial());
 
   Future<void> getEventById(String eventId) async {
     emit(state.copyWith(status: CubitStatus.loading));

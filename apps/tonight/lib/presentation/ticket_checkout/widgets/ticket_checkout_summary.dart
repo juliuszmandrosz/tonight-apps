@@ -1,7 +1,7 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
+import 'package:tonight/application/ticket_checkout/bloc/ticket_checkout_bloc.dart';
 import 'package:translations/translations.dart';
 
 class TicketCheckoutSummary extends StatelessWidget {
@@ -9,15 +9,18 @@ class TicketCheckoutSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TicketCheckoutCubit, TicketCheckoutState>(
-      buildWhen: (previous, current) =>
-          previous.ticketPrice != current.ticketPrice ||
-          previous.serviceFeeAmount != current.serviceFeeAmount,
+    return BlocBuilder<TicketCheckoutBloc, TicketCheckoutState>(
+      buildWhen: (p, c) =>
+          p.ticketCheckoutData != c.ticketCheckoutData ||
+          p.ticketQuantity != c.ticketQuantity ||
+          p.totalAmount != c.totalAmount ||
+          p.serviceFeeAmount != c.serviceFeeAmount ||
+          p.promotionCode != c.promotionCode,
       builder: (context, state) {
-        final currency = state.event.getOrCrash().currency;
-        final serviceFeeAmount = state.serviceFeeAmount.getOrCrash();
+        final data = state.ticketCheckoutData.getOrCrash();
         final totalAmount = state.totalAmount.getOrCrash();
-        final ticketPrice = state.ticketPrice.getOrCrash();
+        final serviceFeeAmount = state.serviceFeeAmount.getOrCrash();
+        final currency = data.currency;
         return Card(
           color: context.surfaceColor,
           margin: EdgeInsets.zero,
@@ -29,37 +32,43 @@ class TicketCheckoutSummary extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      S().subtotal,
+                      '${state.ticketQuantity} x ${S().poolNo} '
+                      '${data.currentTicketPool.poolNumber}',
                       style: context.bodyMedium.copyWith(
                         color: context.secondaryColor,
                       ),
                     ),
                     Text(
-                      formatDoubleToMoney(ticketPrice.toDouble(), currency),
+                      formatDoubleToMoney(
+                        data.currentTicketPool.ticketPrice.toDouble() *
+                            state.ticketQuantity,
+                        currency,
+                      ),
                       style: context.bodyMedium.copyWith(
                         color: context.secondaryColor,
                       ),
                     )
                   ],
                 ),
-                const SizedBox(height: 15),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      S().serviceFee,
-                      style: context.bodyMedium.copyWith(
-                        color: context.secondaryColor,
+                if (serviceFeeAmount > 0) const SizedBox(height: 15),
+                if (serviceFeeAmount > 0)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        S().serviceFee,
+                        style: context.bodyMedium.copyWith(
+                          color: context.secondaryColor,
+                        ),
                       ),
-                    ),
-                    Text(
-                      formatDoubleToMoney(serviceFeeAmount, currency),
-                      style: context.bodyMedium.copyWith(
-                        color: context.secondaryColor,
-                      ),
-                    )
-                  ],
-                ),
+                      Text(
+                        formatDoubleToMoney(serviceFeeAmount, currency),
+                        style: context.bodyMedium.copyWith(
+                          color: context.secondaryColor,
+                        ),
+                      )
+                    ],
+                  ),
                 const SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

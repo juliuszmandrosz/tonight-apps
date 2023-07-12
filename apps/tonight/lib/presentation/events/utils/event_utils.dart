@@ -16,9 +16,7 @@ bool checkIfShouldShowLastTicketsMessage(
     return false;
   }
 
-  final currentPool = eventTickets.getCurrentPool();
-
-  if (currentPool == null) return false;
+  final currentPool = eventTickets.getCurrentOrLastPool();
 
   final ticketQuantity = currentPool.ticketQuantity;
   final ticketsSold = currentPool.ticketsSold;
