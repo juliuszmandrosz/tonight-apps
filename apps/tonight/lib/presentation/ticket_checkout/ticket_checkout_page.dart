@@ -59,9 +59,9 @@ class TicketCheckoutPage extends StatelessWidget {
                 return const WaveLoadingIndicator();
               case CubitStatus.failure:
                 return FailureInfo(
-                  retryCallback: () => context.read<TicketCheckoutBloc>().add(
-                        TicketCheckoutEvent.stateInitialized(event),
-                      ),
+                  retryCallback: () => context
+                      .read<TicketCheckoutBloc>()
+                      .add(TicketCheckoutEvent.stateInitialized(event)),
                 );
               case CubitStatus.success:
                 return GestureDetector(
