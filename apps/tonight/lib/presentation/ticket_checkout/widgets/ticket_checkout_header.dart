@@ -9,7 +9,7 @@ class TicketCheckoutHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerLeft,
-      child: TonightHeadline(text: S().tickets(1)),
+      child: TonightHeadline(text: S().tickets(2)),
     );
   }
 }

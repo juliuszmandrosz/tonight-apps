@@ -10,6 +10,7 @@ import 'package:tonight/presentation/activate_time_task_reward/widgets/activate_
 import 'package:tonight/presentation/activate_time_task_reward/widgets/activate_time_task_reward_name_info.dart';
 import 'package:tonight/presentation/activate_time_task_reward/widgets/activate_time_task_reward_photo.dart';
 import 'package:tonight/presentation/activate_time_task_reward/widgets/activate_time_task_reward_valid_until_info.dart';
+import 'package:tonight/presentation/activate_time_task_reward/widgets/activate_time_task_reward_venue_name_info.dart';
 import 'package:tonight/presentation/activate_time_task_reward/widgets/activate_time_task_reward_voucher_info.dart';
 import 'package:tonight/presentation/activate_time_task_reward/widgets/receive_time_task_voucher_reward_button.dart';
 import 'package:tonight/presentation/activate_time_task_reward/widgets/time_task_voucher_expired_info.dart';
@@ -43,7 +44,7 @@ class _ActivateTimeTaskRewardPageState
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<ActivateTimeTaskRewardCubit>()
-        ..getVoucherByTimeTaskId(widget.timeTaskId),
+        ..listenVoucherByTimeTaskId(widget.timeTaskId),
       child: BlocListener<ActivateTimeTaskRewardCubit,
           ActivateTimeTaskRewardState>(
         listener: (context, state) {
@@ -64,86 +65,95 @@ class _ActivateTimeTaskRewardPageState
             context.showSnackbarMessage('${S().cheers} 🍻');
           }
         },
-        child: SafeArea(
-          child: Scaffold(
-            appBar: TonightAppBar(
-              title: '',
-              backgroundColor: context.backgroundColor,
-            ),
-            body: BlocBuilder<ActivateTimeTaskRewardCubit,
-                ActivateTimeTaskRewardState>(
-              builder: (context, state) {
-                switch (state.getVoucherStatus) {
-                  case CubitStatus.initial:
-                    return const SizedBox.shrink();
-                  case CubitStatus.loading:
-                    return const WaveLoadingIndicator();
-                  case CubitStatus.failure:
-                    return state.failure.getOrCrash().maybeWhen(
-                          voucherNotExists: () =>
-                              const TimeTaskVoucherExpiredInfo(),
-                          orElse: () => FailureInfo(
-                            retryCallback: () => context
-                                .read<ActivateTimeTaskRewardCubit>()
-                                .getVoucherByTimeTaskId(widget.timeTaskId),
-                          ),
-                        );
-                  case CubitStatus.success:
-                    final voucher = state.voucher.getOrCrash();
-                    final secondsLeftForReceiveReward = voucher.usedAt
-                        ?.add(const Duration(minutes: 10))
-                        .difference(DateTime.now())
-                        .inSeconds;
-                    return voucher.isExpired
+        child: BlocBuilder<ActivateTimeTaskRewardCubit,
+            ActivateTimeTaskRewardState>(
+          builder: (context, state) {
+            switch (state.getVoucherStatus) {
+              case CubitStatus.initial:
+                return const SizedBox.shrink();
+              case CubitStatus.loading:
+                return const WaveLoadingIndicator();
+              case CubitStatus.failure:
+                return state.failure.getOrCrash().maybeWhen(
+                      voucherNotExists: () =>
+                          const TimeTaskVoucherExpiredInfo(),
+                      orElse: () => FailureInfo(
+                        retryCallback: () => context
+                            .read<ActivateTimeTaskRewardCubit>()
+                            .listenVoucherByTimeTaskId(widget.timeTaskId),
+                      ),
+                    );
+              case CubitStatus.success:
+                final voucher = state.voucher.getOrCrash();
+                final secondsLeftForReceiveReward = voucher.usedAt
+                    ?.add(const Duration(minutes: 10))
+                    .difference(DateTime.now())
+                    .inSeconds;
+                final isTimerVisible =
+                    voucher.isActivated && secondsLeftForReceiveReward! > 0;
+                return SafeArea(
+                  child: Scaffold(
+                    appBar: TonightAppBar(
+                      title: '',
+                      backgroundColor: context.backgroundColor,
+                    ),
+                    floatingActionButtonLocation:
+                        FloatingActionButtonLocation.centerFloat,
+                    floatingActionButton:
+                        voucher.isActivated && secondsLeftForReceiveReward! > 0
+                            ? const ReceiveTimeTaskVoucherRewardButton()
+                            : const ActivateTimeTaskRewardButton(),
+                    body: voucher.isExpired
                         ? const TimeTaskVoucherExpiredInfo()
-                        : Column(
-                            children: [
-                              if (voucher.isActivated &&
-                                  secondsLeftForReceiveReward! > 0)
-                                CountdownTimer(
-                                  secondsLeft: secondsLeftForReceiveReward,
-                                  onTimerCompleted: () {
-                                    context.showSnackbarMessage(
-                                      S().timeForCollectingRewardPassed,
-                                    );
-                                    context.router.popUntil(
-                                      (route) =>
-                                          route.settings.name ==
-                                          WelcomeLoaderRoute.name,
-                                    );
-                                  },
-                                  textStyle: context.headlineMedium,
+                        : SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                if (!isTimerVisible) const SizedBox(height: 10),
+                                if (isTimerVisible)
+                                  CountdownTimer(
+                                    secondsLeft: secondsLeftForReceiveReward,
+                                    onTimerCompleted: () {
+                                      context.showSnackbarMessage(
+                                        S().timeForCollectingRewardPassed,
+                                      );
+                                      context.router.popUntil(
+                                        (route) =>
+                                            route.settings.name ==
+                                            WelcomeLoaderRoute.name,
+                                      );
+                                    },
+                                    textStyle: context.headlineMedium,
+                                  ),
+                                if (isTimerVisible) const SizedBox(height: 20),
+                                ActivateTimeTaskRewardVoucherInfo(
+                                  voucherName: voucher.voucherName,
                                 ),
-                              const SizedBox(height: 20),
-                              ActivateTimeTaskRewardVoucherInfo(
-                                voucherName: voucher.voucherName,
-                              ),
-                              const SizedBox(height: 20),
-                              ActivateTimeTaskRewardNameInfo(
-                                timeTaskName: voucher.timeTaskName,
-                              ),
-                              const SizedBox(height: 20),
-                              ActivateTimeTaskRewardPhoto(
-                                photoUrl: voucher.wallPhotoUrl,
-                              ),
-                              if (!voucher.isActivated)
                                 const SizedBox(height: 20),
-                              if (!voucher.isActivated)
-                                ActivateTimeTaskRewardValidUntilInfo(
-                                  validUntil: voucher.validUntil,
+                                ActivateTimeTaskRewardNameInfo(
+                                  timeTaskName: voucher.timeTaskName,
                                 ),
-                              const Spacer(),
-                              voucher.isActivated &&
-                                      secondsLeftForReceiveReward! > 0
-                                  ? const ReceiveTimeTaskVoucherRewardButton()
-                                  : const ActivateTimeTaskRewardButton(),
-                              const SizedBox(height: 12),
-                            ],
-                          );
-                }
-              },
-            ),
-          ),
+                                const SizedBox(height: 20),
+                                ActivateTimeTaskRewardVenueNameInfo(
+                                  venueName: voucher.venueName,
+                                ),
+                                const SizedBox(height: 20),
+                                ActivateTimeTaskRewardPhoto(
+                                  photoUrl: voucher.wallPhotoUrl,
+                                ),
+                                if (!voucher.isActivated)
+                                  const SizedBox(height: 10),
+                                if (!voucher.isActivated)
+                                  ActivateTimeTaskRewardValidUntilInfo(
+                                    validUntil: voucher.validUntil,
+                                  ),
+                                const SizedBox(height: 90),
+                              ],
+                            ),
+                          ),
+                  ),
+                );
+            }
+          },
         ),
       ),
     );

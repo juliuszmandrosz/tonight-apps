@@ -4,7 +4,7 @@ import 'package:tonight/domain/time_task_vouchers/time_task_voucher_failure.dart
 
 abstract class TimeTaskVoucherFacade {
   Stream<Either<TimeTaskVoucherFailure, TimeTaskVoucher>>
-      getVoucherByTimeTaskId(String timeTaskId);
+      listenVoucherByTimeTaskId(String timeTaskId);
 
   Future<Either<TimeTaskVoucherFailure, Unit>> activateVoucher(
     String timeTaskId,

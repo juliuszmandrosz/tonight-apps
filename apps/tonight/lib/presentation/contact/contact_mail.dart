@@ -9,6 +9,7 @@ class ContactMail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO - get from db
     const supportEmail = 'support@tonightapp.pl';
     return ListTile(
       dense: true,
@@ -26,7 +27,7 @@ class ContactMail extends StatelessWidget {
           style: context.titleMedium.copyWith(color: context.secondaryColor),
         ),
       ),
-      trailing: const FaIcon(FontAwesomeIcons.solidPaperPlane),
+      trailing: const FaIcon(FontAwesomeIcons.envelope),
       onTap: () => launchEmail(supportEmail),
     );
   }

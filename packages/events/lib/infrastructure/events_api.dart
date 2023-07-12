@@ -76,7 +76,9 @@ class EventsApiImpl implements EventsApi {
   ) async {
     final pageNumber = ((offset + 1) / pageSize).ceil();
     final sortBy = _getSortBy(
-      EventSortModel(fieldName: attending, direction: SortDirection.desc),
+      // TODO - change this !!!
+      EventSortModel(
+          fieldName: eventStartDateTime, direction: SortDirection.asc),
     );
 
     const endpoint = 'events/getEvents';
@@ -109,6 +111,7 @@ class EventsApiImpl implements EventsApi {
   }
 
   String _getQueryBy() {
-    return 'eventName, artistName, clubName, musicalGenres, locationString';
+    // TODO - change this !!!
+    return 'eventName, artistName, clubName, musicalGenres';
   }
 }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'customer_data_dto.dart';
 
@@ -23,6 +23,7 @@ mixin _$CustomerDataDto {
   String? get paymentMethod => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get vatNumber => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,39 +35,48 @@ mixin _$CustomerDataDto {
 abstract class $CustomerDataDtoCopyWith<$Res> {
   factory $CustomerDataDtoCopyWith(
           CustomerDataDto value, $Res Function(CustomerDataDto) then) =
-      _$CustomerDataDtoCopyWithImpl<$Res>;
-  $Res call({String? paymentMethod, String? name, String? vatNumber});
+      _$CustomerDataDtoCopyWithImpl<$Res, CustomerDataDto>;
+  @useResult
+  $Res call(
+      {String? paymentMethod, String? name, String? vatNumber, String? email});
 }
 
 /// @nodoc
-class _$CustomerDataDtoCopyWithImpl<$Res>
+class _$CustomerDataDtoCopyWithImpl<$Res, $Val extends CustomerDataDto>
     implements $CustomerDataDtoCopyWith<$Res> {
   _$CustomerDataDtoCopyWithImpl(this._value, this._then);
 
-  final CustomerDataDto _value;
   // ignore: unused_field
-  final $Res Function(CustomerDataDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? paymentMethod = freezed,
     Object? name = freezed,
     Object? vatNumber = freezed,
+    Object? email = freezed,
   }) {
     return _then(_value.copyWith(
-      paymentMethod: paymentMethod == freezed
+      paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      vatNumber: vatNumber == freezed
+      vatNumber: freezed == vatNumber
           ? _value.vatNumber
           : vatNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
@@ -77,38 +87,43 @@ abstract class _$$_CustomerDataDtoCopyWith<$Res>
           _$_CustomerDataDto value, $Res Function(_$_CustomerDataDto) then) =
       __$$_CustomerDataDtoCopyWithImpl<$Res>;
   @override
-  $Res call({String? paymentMethod, String? name, String? vatNumber});
+  @useResult
+  $Res call(
+      {String? paymentMethod, String? name, String? vatNumber, String? email});
 }
 
 /// @nodoc
 class __$$_CustomerDataDtoCopyWithImpl<$Res>
-    extends _$CustomerDataDtoCopyWithImpl<$Res>
+    extends _$CustomerDataDtoCopyWithImpl<$Res, _$_CustomerDataDto>
     implements _$$_CustomerDataDtoCopyWith<$Res> {
   __$$_CustomerDataDtoCopyWithImpl(
       _$_CustomerDataDto _value, $Res Function(_$_CustomerDataDto) _then)
-      : super(_value, (v) => _then(v as _$_CustomerDataDto));
+      : super(_value, _then);
 
-  @override
-  _$_CustomerDataDto get _value => super._value as _$_CustomerDataDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? paymentMethod = freezed,
     Object? name = freezed,
     Object? vatNumber = freezed,
+    Object? email = freezed,
   }) {
     return _then(_$_CustomerDataDto(
-      paymentMethod: paymentMethod == freezed
+      paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      vatNumber: vatNumber == freezed
+      vatNumber: freezed == vatNumber
           ? _value.vatNumber
           : vatNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -121,7 +136,8 @@ class _$_CustomerDataDto extends _CustomerDataDto {
   const _$_CustomerDataDto(
       {required this.paymentMethod,
       required this.name,
-      required this.vatNumber})
+      required this.vatNumber,
+      required this.email})
       : super._();
 
   factory _$_CustomerDataDto.fromJson(Map<String, dynamic> json) =>
@@ -133,10 +149,12 @@ class _$_CustomerDataDto extends _CustomerDataDto {
   final String? name;
   @override
   final String? vatNumber;
+  @override
+  final String? email;
 
   @override
   String toString() {
-    return 'CustomerDataDto(paymentMethod: $paymentMethod, name: $name, vatNumber: $vatNumber)';
+    return 'CustomerDataDto(paymentMethod: $paymentMethod, name: $name, vatNumber: $vatNumber, email: $email)';
   }
 
   @override
@@ -144,22 +162,22 @@ class _$_CustomerDataDto extends _CustomerDataDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CustomerDataDto &&
-            const DeepCollectionEquality()
-                .equals(other.paymentMethod, paymentMethod) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.vatNumber, vatNumber));
+            (identical(other.paymentMethod, paymentMethod) ||
+                other.paymentMethod == paymentMethod) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.vatNumber, vatNumber) ||
+                other.vatNumber == vatNumber) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(paymentMethod),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(vatNumber));
+  int get hashCode =>
+      Object.hash(runtimeType, paymentMethod, name, vatNumber, email);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CustomerDataDtoCopyWith<_$_CustomerDataDto> get copyWith =>
       __$$_CustomerDataDtoCopyWithImpl<_$_CustomerDataDto>(this, _$identity);
 
@@ -175,7 +193,8 @@ abstract class _CustomerDataDto extends CustomerDataDto {
   const factory _CustomerDataDto(
       {required final String? paymentMethod,
       required final String? name,
-      required final String? vatNumber}) = _$_CustomerDataDto;
+      required final String? vatNumber,
+      required final String? email}) = _$_CustomerDataDto;
   const _CustomerDataDto._() : super._();
 
   factory _CustomerDataDto.fromJson(Map<String, dynamic> json) =
@@ -187,6 +206,8 @@ abstract class _CustomerDataDto extends CustomerDataDto {
   String? get name;
   @override
   String? get vatNumber;
+  @override
+  String? get email;
   @override
   @JsonKey(ignore: true)
   _$$_CustomerDataDtoCopyWith<_$_CustomerDataDto> get copyWith =>

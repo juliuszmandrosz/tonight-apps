@@ -31,82 +31,6 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
         _logger = logger;
 
   @override
-  Stream<Either<UserTicketFailure, List<Ticket>>>
-      getUpcomingAndLiveUserTickets() async* {
-    final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
-
-    final ticketsQuery = userDocRef.ticketCollection
-        .where('eventEndDateTime', isGreaterThan: Timestamp.now())
-        .orderBy('eventEndDateTime');
-
-    yield* ticketsQuery
-        .snapshots()
-        .map(
-          (snapshot) => right<UserTicketFailure, List<Ticket>>(
-            snapshot.docs
-                .map((doc) => TicketDto.fromFirebase(doc).toDomain())
-                .toList(),
-          ),
-        )
-        .handleError((e) {
-      if (e is FirebaseException) {
-        return left(
-          handleFirebaseError<UserTicketFailure>(
-            logger: _logger,
-            crashlytics: _crashlytics,
-            exception: e,
-            message:
-                'Firebase Exception getting upcoming and live user tickets EXCEPTION: $e',
-            unexpectedFailure: const UserTicketFailure.unexpected(),
-            permissionDeniedFailure: const UserTicketFailure.permissionDenied(),
-          ),
-        );
-      }
-    });
-  }
-
-  @override
-  Future<Either<UserTicketFailure, List<Ticket>>> getPastUserTickets({
-    int pageSize = 20,
-    Ticket? lastTicket,
-  }) async {
-    try {
-      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
-
-      var query = userDocRef.ticketCollection
-          .where('eventEndDateTime', isLessThanOrEqualTo: Timestamp.now())
-          .orderBy('eventEndDateTime', descending: true)
-          .limit(pageSize);
-
-      if (lastTicket != null) {
-        final lastDoc =
-            await userDocRef.ticketCollection.doc(lastTicket.id).get();
-
-        query = query.startAfterDocument(lastDoc);
-      }
-
-      final result = await query.get();
-
-      return right<UserTicketFailure, List<Ticket>>(
-        result.docs
-            .map((doc) => TicketDto.fromFirebase(doc).toDomain())
-            .toList(),
-      );
-    } on FirebaseException catch (e) {
-      return left(
-        await handleFirebaseError<UserTicketFailure>(
-          logger: _logger,
-          crashlytics: _crashlytics,
-          exception: e,
-          message: 'Firebase Exception getting past user tickets EXCEPTION: $e',
-          unexpectedFailure: const UserTicketFailure.unexpected(),
-          permissionDeniedFailure: const UserTicketFailure.permissionDenied(),
-        ),
-      );
-    }
-  }
-
-  @override
   Future<Either<SelectorTicketFailure, Tuple2<Ticket, int>>> scanTicket(
     String ticketId,
     String currentEventId,
@@ -221,5 +145,162 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
 
       return left(const UserTicketFailure.unexpected());
     }
+  }
+
+  @override
+  Future<Either<UserTicketFailure, Unit>> activateTicket(
+    String ticketId,
+  ) async {
+    try {
+      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+      final ticketDocRef = userDocRef.ticketCollection.doc(ticketId);
+      return _firestore.runTransaction((tx) async {
+        final ticketDoc = await tx.get(ticketDocRef);
+        if (!ticketDoc.exists) {
+          return left(const UserTicketFailure.ticketNotExists());
+        }
+        var ticketDto = TicketDto.fromFirebase(ticketDoc);
+        final isValidTicket = !ticketDto.isReturned && !ticketDto.isExpired;
+        if (!isValidTicket) {
+          return left(const UserTicketFailure.ticketExpired());
+        }
+        ticketDto = ticketDto.copyWith(
+          isActivated: true,
+          usedAt: DateTime.now(),
+        );
+        tx.update(
+          ticketDocRef,
+          ticketDto.toJson(),
+        );
+        return right(unit);
+      });
+    } on FirebaseException catch (e) {
+      return left(
+        await handleFirebaseError<UserTicketFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          unexpectedFailure: const UserTicketFailure.unexpected(),
+          permissionDeniedFailure: const UserTicketFailure.permissionDenied(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<Either<UserTicketFailure, Unit>> receiveTicket(String ticketId) async {
+    try {
+      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+      final ticketDocRef = userDocRef.ticketCollection.doc(ticketId);
+      await ticketDocRef.update({'isExpired': true});
+      // TODO - update attendance
+      return right(unit);
+    } on FirebaseException catch (e) {
+      return left(
+        await handleFirebaseError<UserTicketFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          unexpectedFailure: const UserTicketFailure.unexpected(),
+          permissionDeniedFailure: const UserTicketFailure.permissionDenied(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Stream<Either<UserTicketFailure, Ticket>> listenTicketById(
+    String ticketId,
+  ) async* {
+    final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+    final ticketDocRef = userDocRef.ticketCollection.doc(ticketId);
+    yield* ticketDocRef.snapshots().map(
+      (snapshot) {
+        if (!snapshot.exists) {
+          return left<UserTicketFailure, Ticket>(
+              const UserTicketFailure.ticketNotExists());
+        }
+        final ticketDto = TicketDto.fromFirebase(snapshot);
+        return right<UserTicketFailure, Ticket>(ticketDto.toDomain());
+      },
+    ).handleError((e) {
+      if (e is FirebaseException) {
+        return left(
+          handleFirebaseError<UserTicketFailure>(
+            logger: _logger,
+            crashlytics: _crashlytics,
+            exception: e,
+            unexpectedFailure: const UserTicketFailure.unexpected(),
+            permissionDeniedFailure: const UserTicketFailure.permissionDenied(),
+          ),
+        );
+      }
+    });
+  }
+
+  @override
+  Future<Either<UserTicketFailure, List<Ticket>>> getUserTickets({
+    int pageSize = 20,
+    Ticket? lastTicket,
+  }) async {
+    try {
+      final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+
+      var query = userDocRef.ticketCollection
+          .orderBy('createdAt', descending: true)
+          .limit(pageSize);
+
+      if (lastTicket != null) {
+        final lastDoc =
+            await userDocRef.ticketCollection.doc(lastTicket.id).get();
+
+        query = query.startAfterDocument(lastDoc);
+      }
+
+      final result = await query.get();
+
+      return right<UserTicketFailure, List<Ticket>>(
+        result.docs
+            .map((doc) => TicketDto.fromFirebase(doc).toDomain())
+            .toList(),
+      );
+    } on FirebaseException catch (e) {
+      return left(
+        await handleFirebaseError<UserTicketFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          unexpectedFailure: const UserTicketFailure.unexpected(),
+          permissionDeniedFailure: const UserTicketFailure.permissionDenied(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Stream<Either<UserTicketFailure, Ticket>> waitForTicketToBeCreated() async* {
+    final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
+    final ticketsQuery = userDocRef.ticketCollection
+        .where('createdAt', isGreaterThan: DateTime.now())
+        .orderBy('createdAt', descending: true)
+        .limit(1);
+    yield* ticketsQuery.snapshots().skipWhile((s) => s.docs.isEmpty).map(
+      (snapshot) {
+        final ticketDto = TicketDto.fromFirebase(snapshot.docs.first);
+        return right<UserTicketFailure, Ticket>(ticketDto.toDomain());
+      },
+    ).handleError((e) {
+      if (e is FirebaseException) {
+        return left(
+          handleFirebaseError<UserTicketFailure>(
+            logger: _logger,
+            crashlytics: _crashlytics,
+            exception: e,
+            unexpectedFailure: const UserTicketFailure.unexpected(),
+            permissionDeniedFailure: const UserTicketFailure.permissionDenied(),
+          ),
+        );
+      }
+    });
   }
 }

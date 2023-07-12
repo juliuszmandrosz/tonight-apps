@@ -21,6 +21,8 @@ String getPaymentFailureMessage(UserPaymentFailure failure) {
     userAlreadyHasTicket: (_) => S().userAlreadyHasTicket,
     paymentHasAlreadyBeenMade: (_) => S().paymentHasAlreadyBeenMade,
     paymentSessionHasExpired: (_) => S().paymentSessionExpired,
+    // TODO - add translation
+    customerEmailIsEmpty: (_) => 'S().customerEmailIsEmpty',
     canceledByUser: (_) => '',
   );
 }

@@ -11,6 +11,7 @@ _$_CustomerDataDto _$$_CustomerDataDtoFromJson(Map<String, dynamic> json) =>
       paymentMethod: json['paymentMethod'] as String?,
       name: json['name'] as String?,
       vatNumber: json['vatNumber'] as String?,
+      email: json['email'] as String?,
     );
 
 Map<String, dynamic> _$$_CustomerDataDtoToJson(_$_CustomerDataDto instance) =>
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$_CustomerDataDtoToJson(_$_CustomerDataDto instance) =>
       'paymentMethod': instance.paymentMethod,
       'name': instance.name,
       'vatNumber': instance.vatNumber,
+      'email': instance.email,
     };

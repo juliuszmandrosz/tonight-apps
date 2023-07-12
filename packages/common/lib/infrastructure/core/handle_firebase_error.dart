@@ -6,17 +6,20 @@ Future<T> handleFirebaseError<T>({
   required Logger logger,
   required FirebaseCrashlytics crashlytics,
   required FirebaseException exception,
-  required String message,
   required T unexpectedFailure,
   required T permissionDeniedFailure,
+  String? message,
 }) async {
-  logger.e(message);
+  logger.e(message ?? exception.toString());
 
   if (exception.code == 'permission-denied') {
     return permissionDeniedFailure;
   }
 
-  await crashlytics.recordError(message, StackTrace.current);
+  await crashlytics.recordError(
+    message ?? exception.toString(),
+    StackTrace.current,
+  );
 
   return unexpectedFailure;
 }

@@ -47,27 +47,18 @@ class TicketPaymentConfirmPage extends StatelessWidget {
               const Spacer(),
               SizedBox(
                 width: 300,
+                height: kButtonHeight,
                 child: ElevatedButton(
                   onPressed: () {
                     context.router.replaceAll(
                       [
                         const WelcomeLoaderRoute(),
-                        EventDetailsRoute(eventId: ticket.eventId),
-                        TicketQrRoute(ticket: ticket),
+                        const TicketsAndVouchersRoute(),
+                        ActivateTicketRoute(ticket: ticket),
                       ],
                     );
                   },
-                  child: Text(S().showTicketQrCode),
-                ),
-              ),
-              const SizedBox(height: 20),
-              SizedBox(
-                width: 300,
-                child: ElevatedButton(
-                  onPressed: () => context.router.replaceAll(
-                    [const WelcomeLoaderRoute()],
-                  ),
-                  child: Text(S().backToHomePage),
+                  child: Text(S().showTicket),
                 ),
               ),
             ],

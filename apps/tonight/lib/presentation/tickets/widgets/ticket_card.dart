@@ -15,23 +15,34 @@ class TicketCard extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+  String get additionalInfo {
+    if (ticket.isEventCanceled) {
+      return S().canceled;
+    }
+
+    if (ticket.isReturned) {
+      return S().returned;
+    }
+
+    if (ticket.isReturnable) {
+      return S().postponed;
+    }
+
+    return '';
+  }
+
   @override
   Widget build(BuildContext context) {
+    final hasAdditionalInfo =
+        ticket.isReturned || ticket.isEventCanceled || ticket.isReturnable;
+    final showPulsatingDot = ticket.isActivated && ticket.isValid;
     return InkWell(
       onTap: () =>
-          // TODO: Add case when user has not been on event but give him ability to show photos
           ticket.isExpired && ticket.eventEndDateTime.isBefore(DateTime.now())
-              ? context.pushRoute(
-                  ReviewRoute(eventId: ticket.eventId),
-                )
-              : context.pushRoute(
-                  EventDetailsRoute(eventId: ticket.eventId),
-                ),
+              ? context.pushRoute(ReviewRoute(eventId: ticket.eventId))
+              : context.pushRoute(ActivateTicketRoute(ticket: ticket)),
       child: TicketWidget(
-        height:
-            ticket.isReturned || ticket.isEventCanceled || ticket.isReturnable
-                ? 140
-                : 120,
+        height: hasAdditionalInfo ? 140 : 120,
         width: double.infinity,
         color: context.surfaceColor,
         isCornerRounded: true,
@@ -46,31 +57,36 @@ class TicketCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   AutoSizeText(
-                    ticket.eventName,
-                    style: context.titleLarge,
+                    '${ticket.quantity}x ${ticket.eventName}',
                     maxLines: 3,
                     textAlign: TextAlign.center,
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
+                    style: context.titleLarge.copyWith(
+                      decoration:
+                          !ticket.isValid ? TextDecoration.lineThrough : null,
+                    ),
                   ),
+                  if (!hasAdditionalInfo)
+                    AutoSizeText(
+                      ticket.clubName,
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                      style: context.bodyLarge.copyWith(
+                        color: context.secondaryColor,
+                      ),
+                    ),
                   AutoSizeText(
                     context.formatDateTimeToLocaleYMDHM(
                       ticket.eventStartDateTime,
                     ),
-                    style: context.bodyLarge
+                    style: context.labelSmall
                         .copyWith(color: context.secondaryColor),
                     maxLines: 1,
                   ),
-                  if (ticket.isReturned ||
-                      ticket.isEventCanceled ||
-                      ticket.isReturnable)
+                  if (hasAdditionalInfo)
                     Text(
-                      // TODO - ref
-                      ticket.isEventCanceled
-                          ? S().canceled.toUpperCase()
-                          : ticket.isReturned
-                              ? S().returned.toUpperCase()
-                              : S().postponed.toUpperCase(),
+                      additionalInfo.toUpperCase(),
                       style: context.titleMedium.copyWith(
                         color: context.tertiaryColor,
                       ),
@@ -78,25 +94,17 @@ class TicketCard extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(width: 20),
-            AutoSizeText(
-              '${ticket.price}'
-              '${getCurrencySymbolFromCode(ticket.currency)}',
-              style: context.titleLarge,
-              maxLines: 1,
-            ),
-            const SizedBox(width: 10),
-            const VerticalDivider(thickness: 2),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Text(
-                ticket.isVip ? S().vipVertical : '',
-                textAlign: TextAlign.center,
-                style: context.titleMedium.copyWith(
-                  color: context.tertiaryColor,
+            if (showPulsatingDot)
+              Flexible(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 8),
+                  child: PulsatingDot(
+                    color: context.primaryColor,
+                    size: 16,
+                  ),
                 ),
               ),
-            ),
           ],
         ),
       ),

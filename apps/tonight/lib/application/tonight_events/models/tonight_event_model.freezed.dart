@@ -37,6 +37,8 @@ mixin _$TonightEvent {
       throw _privateConstructorUsedError;
   int get totalParticipants => throw _privateConstructorUsedError;
   Option<EventVoucher> get voucher => throw _privateConstructorUsedError;
+  bool get areTicketsAvailableInApp => throw _privateConstructorUsedError;
+  String? get externalTicketsUrl => throw _privateConstructorUsedError;
   String? get locationString => throw _privateConstructorUsedError;
   String? get clubPhotoUrl => throw _privateConstructorUsedError;
   String? get artistName => throw _privateConstructorUsedError;
@@ -74,6 +76,8 @@ abstract class $TonightEventCopyWith<$Res> {
       Option<List<EventParticipant>> firstParticipants,
       int totalParticipants,
       Option<EventVoucher> voucher,
+      bool areTicketsAvailableInApp,
+      String? externalTicketsUrl,
       String? locationString,
       String? clubPhotoUrl,
       String? artistName,
@@ -113,6 +117,8 @@ class _$TonightEventCopyWithImpl<$Res, $Val extends TonightEvent>
     Object? firstParticipants = null,
     Object? totalParticipants = null,
     Object? voucher = null,
+    Object? areTicketsAvailableInApp = null,
+    Object? externalTicketsUrl = freezed,
     Object? locationString = freezed,
     Object? clubPhotoUrl = freezed,
     Object? artistName = freezed,
@@ -199,6 +205,14 @@ class _$TonightEventCopyWithImpl<$Res, $Val extends TonightEvent>
           ? _value.voucher
           : voucher // ignore: cast_nullable_to_non_nullable
               as Option<EventVoucher>,
+      areTicketsAvailableInApp: null == areTicketsAvailableInApp
+          ? _value.areTicketsAvailableInApp
+          : areTicketsAvailableInApp // ignore: cast_nullable_to_non_nullable
+              as bool,
+      externalTicketsUrl: freezed == externalTicketsUrl
+          ? _value.externalTicketsUrl
+          : externalTicketsUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       locationString: freezed == locationString
           ? _value.locationString
           : locationString // ignore: cast_nullable_to_non_nullable
@@ -248,6 +262,8 @@ abstract class _$$_TonightEventCopyWith<$Res>
       Option<List<EventParticipant>> firstParticipants,
       int totalParticipants,
       Option<EventVoucher> voucher,
+      bool areTicketsAvailableInApp,
+      String? externalTicketsUrl,
       String? locationString,
       String? clubPhotoUrl,
       String? artistName,
@@ -285,6 +301,8 @@ class __$$_TonightEventCopyWithImpl<$Res>
     Object? firstParticipants = null,
     Object? totalParticipants = null,
     Object? voucher = null,
+    Object? areTicketsAvailableInApp = null,
+    Object? externalTicketsUrl = freezed,
     Object? locationString = freezed,
     Object? clubPhotoUrl = freezed,
     Object? artistName = freezed,
@@ -371,6 +389,14 @@ class __$$_TonightEventCopyWithImpl<$Res>
           ? _value.voucher
           : voucher // ignore: cast_nullable_to_non_nullable
               as Option<EventVoucher>,
+      areTicketsAvailableInApp: null == areTicketsAvailableInApp
+          ? _value.areTicketsAvailableInApp
+          : areTicketsAvailableInApp // ignore: cast_nullable_to_non_nullable
+              as bool,
+      externalTicketsUrl: freezed == externalTicketsUrl
+          ? _value.externalTicketsUrl
+          : externalTicketsUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       locationString: freezed == locationString
           ? _value.locationString
           : locationString // ignore: cast_nullable_to_non_nullable
@@ -415,6 +441,8 @@ class _$_TonightEvent extends _TonightEvent {
       required this.firstParticipants,
       required this.totalParticipants,
       required this.voucher,
+      this.areTicketsAvailableInApp = false,
+      this.externalTicketsUrl,
       this.locationString,
       this.clubPhotoUrl,
       this.artistName,
@@ -483,6 +511,11 @@ class _$_TonightEvent extends _TonightEvent {
   @override
   final Option<EventVoucher> voucher;
   @override
+  @JsonKey()
+  final bool areTicketsAvailableInApp;
+  @override
+  final String? externalTicketsUrl;
+  @override
   final String? locationString;
   @override
   final String? clubPhotoUrl;
@@ -493,7 +526,7 @@ class _$_TonightEvent extends _TonightEvent {
 
   @override
   String toString() {
-    return 'TonightEvent(eventId: $eventId, eventName: $eventName, clubId: $clubId, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, entryFee: $entryFee, priceList: $priceList, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, location: $location, urlLinks: $urlLinks, isConcert: $isConcert, firstParticipants: $firstParticipants, totalParticipants: $totalParticipants, voucher: $voucher, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl, artistName: $artistName, description: $description)';
+    return 'TonightEvent(eventId: $eventId, eventName: $eventName, clubId: $clubId, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, minAge: $minAge, price: $price, entryFee: $entryFee, priceList: $priceList, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, location: $location, urlLinks: $urlLinks, isConcert: $isConcert, firstParticipants: $firstParticipants, totalParticipants: $totalParticipants, voucher: $voucher, areTicketsAvailableInApp: $areTicketsAvailableInApp, externalTicketsUrl: $externalTicketsUrl, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl, artistName: $artistName, description: $description)';
   }
 
   @override
@@ -534,6 +567,11 @@ class _$_TonightEvent extends _TonightEvent {
             (identical(other.totalParticipants, totalParticipants) ||
                 other.totalParticipants == totalParticipants) &&
             (identical(other.voucher, voucher) || other.voucher == voucher) &&
+            (identical(
+                    other.areTicketsAvailableInApp, areTicketsAvailableInApp) ||
+                other.areTicketsAvailableInApp == areTicketsAvailableInApp) &&
+            (identical(other.externalTicketsUrl, externalTicketsUrl) ||
+                other.externalTicketsUrl == externalTicketsUrl) &&
             (identical(other.locationString, locationString) ||
                 other.locationString == locationString) &&
             (identical(other.clubPhotoUrl, clubPhotoUrl) ||
@@ -567,6 +605,8 @@ class _$_TonightEvent extends _TonightEvent {
         firstParticipants,
         totalParticipants,
         voucher,
+        areTicketsAvailableInApp,
+        externalTicketsUrl,
         locationString,
         clubPhotoUrl,
         artistName,
@@ -602,6 +642,8 @@ abstract class _TonightEvent extends TonightEvent {
       required final Option<List<EventParticipant>> firstParticipants,
       required final int totalParticipants,
       required final Option<EventVoucher> voucher,
+      final bool areTicketsAvailableInApp,
+      final String? externalTicketsUrl,
       final String? locationString,
       final String? clubPhotoUrl,
       final String? artistName,
@@ -648,6 +690,10 @@ abstract class _TonightEvent extends TonightEvent {
   int get totalParticipants;
   @override
   Option<EventVoucher> get voucher;
+  @override
+  bool get areTicketsAvailableInApp;
+  @override
+  String? get externalTicketsUrl;
   @override
   String? get locationString;
   @override

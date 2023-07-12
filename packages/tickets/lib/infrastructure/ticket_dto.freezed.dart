@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'ticket_dto.dart';
 
@@ -32,14 +32,18 @@ mixin _$TicketDto {
   DateTime get eventEndDateTime => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
-  bool get isVip => throw _privateConstructorUsedError;
   String get ticketPaymentId => throw _privateConstructorUsedError;
-  String? get vipPaymentId => throw _privateConstructorUsedError;
   bool get isExpired => throw _privateConstructorUsedError;
   bool get isEventCanceled => throw _privateConstructorUsedError;
   bool get isReturnable => throw _privateConstructorUsedError;
   bool get isReturned => throw _privateConstructorUsedError;
   String get reviewId => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
+  bool get isActivated => throw _privateConstructorUsedError;
+  @FirebaseTimestampJsonConverter()
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  @FirebaseNullableTimestampJsonConverter()
+  DateTime? get usedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,7 +54,8 @@ mixin _$TicketDto {
 /// @nodoc
 abstract class $TicketDtoCopyWith<$Res> {
   factory $TicketDtoCopyWith(TicketDto value, $Res Function(TicketDto) then) =
-      _$TicketDtoCopyWithImpl<$Res>;
+      _$TicketDtoCopyWithImpl<$Res, TicketDto>;
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String eventId,
@@ -61,114 +66,129 @@ abstract class $TicketDtoCopyWith<$Res> {
       @FirebaseTimestampJsonConverter() DateTime eventEndDateTime,
       int price,
       String currency,
-      bool isVip,
       String ticketPaymentId,
-      String? vipPaymentId,
       bool isExpired,
       bool isEventCanceled,
       bool isReturnable,
       bool isReturned,
-      String reviewId});
+      String reviewId,
+      int quantity,
+      bool isActivated,
+      @FirebaseTimestampJsonConverter() DateTime createdAt,
+      @FirebaseNullableTimestampJsonConverter() DateTime? usedAt});
 }
 
 /// @nodoc
-class _$TicketDtoCopyWithImpl<$Res> implements $TicketDtoCopyWith<$Res> {
+class _$TicketDtoCopyWithImpl<$Res, $Val extends TicketDto>
+    implements $TicketDtoCopyWith<$Res> {
   _$TicketDtoCopyWithImpl(this._value, this._then);
 
-  final TicketDto _value;
   // ignore: unused_field
-  final $Res Function(TicketDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? eventId = freezed,
-    Object? clubId = freezed,
-    Object? clubName = freezed,
-    Object? eventName = freezed,
-    Object? eventStartDateTime = freezed,
-    Object? eventEndDateTime = freezed,
-    Object? price = freezed,
-    Object? currency = freezed,
-    Object? isVip = freezed,
-    Object? ticketPaymentId = freezed,
-    Object? vipPaymentId = freezed,
-    Object? isExpired = freezed,
-    Object? isEventCanceled = freezed,
-    Object? isReturnable = freezed,
-    Object? isReturned = freezed,
-    Object? reviewId = freezed,
+    Object? eventId = null,
+    Object? clubId = null,
+    Object? clubName = null,
+    Object? eventName = null,
+    Object? eventStartDateTime = null,
+    Object? eventEndDateTime = null,
+    Object? price = null,
+    Object? currency = null,
+    Object? ticketPaymentId = null,
+    Object? isExpired = null,
+    Object? isEventCanceled = null,
+    Object? isReturnable = null,
+    Object? isReturned = null,
+    Object? reviewId = null,
+    Object? quantity = null,
+    Object? isActivated = null,
+    Object? createdAt = null,
+    Object? usedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      eventId: eventId == freezed
+      eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
               as String,
-      clubId: clubId == freezed
+      clubId: null == clubId
           ? _value.clubId
           : clubId // ignore: cast_nullable_to_non_nullable
               as String,
-      clubName: clubName == freezed
+      clubName: null == clubName
           ? _value.clubName
           : clubName // ignore: cast_nullable_to_non_nullable
               as String,
-      eventName: eventName == freezed
+      eventName: null == eventName
           ? _value.eventName
           : eventName // ignore: cast_nullable_to_non_nullable
               as String,
-      eventStartDateTime: eventStartDateTime == freezed
+      eventStartDateTime: null == eventStartDateTime
           ? _value.eventStartDateTime
           : eventStartDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      eventEndDateTime: eventEndDateTime == freezed
+      eventEndDateTime: null == eventEndDateTime
           ? _value.eventEndDateTime
           : eventEndDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      price: price == freezed
+      price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      isVip: isVip == freezed
-          ? _value.isVip
-          : isVip // ignore: cast_nullable_to_non_nullable
-              as bool,
-      ticketPaymentId: ticketPaymentId == freezed
+      ticketPaymentId: null == ticketPaymentId
           ? _value.ticketPaymentId
           : ticketPaymentId // ignore: cast_nullable_to_non_nullable
               as String,
-      vipPaymentId: vipPaymentId == freezed
-          ? _value.vipPaymentId
-          : vipPaymentId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isExpired: isExpired == freezed
+      isExpired: null == isExpired
           ? _value.isExpired
           : isExpired // ignore: cast_nullable_to_non_nullable
               as bool,
-      isEventCanceled: isEventCanceled == freezed
+      isEventCanceled: null == isEventCanceled
           ? _value.isEventCanceled
           : isEventCanceled // ignore: cast_nullable_to_non_nullable
               as bool,
-      isReturnable: isReturnable == freezed
+      isReturnable: null == isReturnable
           ? _value.isReturnable
           : isReturnable // ignore: cast_nullable_to_non_nullable
               as bool,
-      isReturned: isReturned == freezed
+      isReturned: null == isReturned
           ? _value.isReturned
           : isReturned // ignore: cast_nullable_to_non_nullable
               as bool,
-      reviewId: reviewId == freezed
+      reviewId: null == reviewId
           ? _value.reviewId
           : reviewId // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+      isActivated: null == isActivated
+          ? _value.isActivated
+          : isActivated // ignore: cast_nullable_to_non_nullable
+              as bool,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      usedAt: freezed == usedAt
+          ? _value.usedAt
+          : usedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
   }
 }
 
@@ -178,6 +198,7 @@ abstract class _$$_TicketDtoCopyWith<$Res> implements $TicketDtoCopyWith<$Res> {
           _$_TicketDto value, $Res Function(_$_TicketDto) then) =
       __$$_TicketDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? id,
       String eventId,
@@ -188,115 +209,126 @@ abstract class _$$_TicketDtoCopyWith<$Res> implements $TicketDtoCopyWith<$Res> {
       @FirebaseTimestampJsonConverter() DateTime eventEndDateTime,
       int price,
       String currency,
-      bool isVip,
       String ticketPaymentId,
-      String? vipPaymentId,
       bool isExpired,
       bool isEventCanceled,
       bool isReturnable,
       bool isReturned,
-      String reviewId});
+      String reviewId,
+      int quantity,
+      bool isActivated,
+      @FirebaseTimestampJsonConverter() DateTime createdAt,
+      @FirebaseNullableTimestampJsonConverter() DateTime? usedAt});
 }
 
 /// @nodoc
-class __$$_TicketDtoCopyWithImpl<$Res> extends _$TicketDtoCopyWithImpl<$Res>
+class __$$_TicketDtoCopyWithImpl<$Res>
+    extends _$TicketDtoCopyWithImpl<$Res, _$_TicketDto>
     implements _$$_TicketDtoCopyWith<$Res> {
   __$$_TicketDtoCopyWithImpl(
       _$_TicketDto _value, $Res Function(_$_TicketDto) _then)
-      : super(_value, (v) => _then(v as _$_TicketDto));
+      : super(_value, _then);
 
-  @override
-  _$_TicketDto get _value => super._value as _$_TicketDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? eventId = freezed,
-    Object? clubId = freezed,
-    Object? clubName = freezed,
-    Object? eventName = freezed,
-    Object? eventStartDateTime = freezed,
-    Object? eventEndDateTime = freezed,
-    Object? price = freezed,
-    Object? currency = freezed,
-    Object? isVip = freezed,
-    Object? ticketPaymentId = freezed,
-    Object? vipPaymentId = freezed,
-    Object? isExpired = freezed,
-    Object? isEventCanceled = freezed,
-    Object? isReturnable = freezed,
-    Object? isReturned = freezed,
-    Object? reviewId = freezed,
+    Object? eventId = null,
+    Object? clubId = null,
+    Object? clubName = null,
+    Object? eventName = null,
+    Object? eventStartDateTime = null,
+    Object? eventEndDateTime = null,
+    Object? price = null,
+    Object? currency = null,
+    Object? ticketPaymentId = null,
+    Object? isExpired = null,
+    Object? isEventCanceled = null,
+    Object? isReturnable = null,
+    Object? isReturned = null,
+    Object? reviewId = null,
+    Object? quantity = null,
+    Object? isActivated = null,
+    Object? createdAt = null,
+    Object? usedAt = freezed,
   }) {
     return _then(_$_TicketDto(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      eventId: eventId == freezed
+      eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
               as String,
-      clubId: clubId == freezed
+      clubId: null == clubId
           ? _value.clubId
           : clubId // ignore: cast_nullable_to_non_nullable
               as String,
-      clubName: clubName == freezed
+      clubName: null == clubName
           ? _value.clubName
           : clubName // ignore: cast_nullable_to_non_nullable
               as String,
-      eventName: eventName == freezed
+      eventName: null == eventName
           ? _value.eventName
           : eventName // ignore: cast_nullable_to_non_nullable
               as String,
-      eventStartDateTime: eventStartDateTime == freezed
+      eventStartDateTime: null == eventStartDateTime
           ? _value.eventStartDateTime
           : eventStartDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      eventEndDateTime: eventEndDateTime == freezed
+      eventEndDateTime: null == eventEndDateTime
           ? _value.eventEndDateTime
           : eventEndDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      price: price == freezed
+      price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      isVip: isVip == freezed
-          ? _value.isVip
-          : isVip // ignore: cast_nullable_to_non_nullable
-              as bool,
-      ticketPaymentId: ticketPaymentId == freezed
+      ticketPaymentId: null == ticketPaymentId
           ? _value.ticketPaymentId
           : ticketPaymentId // ignore: cast_nullable_to_non_nullable
               as String,
-      vipPaymentId: vipPaymentId == freezed
-          ? _value.vipPaymentId
-          : vipPaymentId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isExpired: isExpired == freezed
+      isExpired: null == isExpired
           ? _value.isExpired
           : isExpired // ignore: cast_nullable_to_non_nullable
               as bool,
-      isEventCanceled: isEventCanceled == freezed
+      isEventCanceled: null == isEventCanceled
           ? _value.isEventCanceled
           : isEventCanceled // ignore: cast_nullable_to_non_nullable
               as bool,
-      isReturnable: isReturnable == freezed
+      isReturnable: null == isReturnable
           ? _value.isReturnable
           : isReturnable // ignore: cast_nullable_to_non_nullable
               as bool,
-      isReturned: isReturned == freezed
+      isReturned: null == isReturned
           ? _value.isReturned
           : isReturned // ignore: cast_nullable_to_non_nullable
               as bool,
-      reviewId: reviewId == freezed
+      reviewId: null == reviewId
           ? _value.reviewId
           : reviewId // ignore: cast_nullable_to_non_nullable
               as String,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+      isActivated: null == isActivated
+          ? _value.isActivated
+          : isActivated // ignore: cast_nullable_to_non_nullable
+              as bool,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      usedAt: freezed == usedAt
+          ? _value.usedAt
+          : usedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -315,14 +347,16 @@ class _$_TicketDto extends _TicketDto {
       @FirebaseTimestampJsonConverter() required this.eventEndDateTime,
       required this.price,
       required this.currency,
-      required this.isVip,
       required this.ticketPaymentId,
-      this.vipPaymentId,
       this.isExpired = false,
       this.isEventCanceled = false,
       this.isReturnable = false,
       this.isReturned = false,
-      this.reviewId = ''})
+      this.reviewId = '',
+      this.quantity = 1,
+      this.isActivated = false,
+      @FirebaseTimestampJsonConverter() required this.createdAt,
+      @FirebaseNullableTimestampJsonConverter() this.usedAt})
       : super._();
 
   factory _$_TicketDto.fromJson(Map<String, dynamic> json) =>
@@ -350,11 +384,7 @@ class _$_TicketDto extends _TicketDto {
   @override
   final String currency;
   @override
-  final bool isVip;
-  @override
   final String ticketPaymentId;
-  @override
-  final String? vipPaymentId;
   @override
   @JsonKey()
   final bool isExpired;
@@ -370,10 +400,22 @@ class _$_TicketDto extends _TicketDto {
   @override
   @JsonKey()
   final String reviewId;
+  @override
+  @JsonKey()
+  final int quantity;
+  @override
+  @JsonKey()
+  final bool isActivated;
+  @override
+  @FirebaseTimestampJsonConverter()
+  final DateTime createdAt;
+  @override
+  @FirebaseNullableTimestampJsonConverter()
+  final DateTime? usedAt;
 
   @override
   String toString() {
-    return 'TicketDto(id: $id, eventId: $eventId, clubId: $clubId, clubName: $clubName, eventName: $eventName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, price: $price, currency: $currency, isVip: $isVip, ticketPaymentId: $ticketPaymentId, vipPaymentId: $vipPaymentId, isExpired: $isExpired, isEventCanceled: $isEventCanceled, isReturnable: $isReturnable, isReturned: $isReturned, reviewId: $reviewId)';
+    return 'TicketDto(id: $id, eventId: $eventId, clubId: $clubId, clubName: $clubName, eventName: $eventName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, price: $price, currency: $currency, ticketPaymentId: $ticketPaymentId, isExpired: $isExpired, isEventCanceled: $isEventCanceled, isReturnable: $isReturnable, isReturned: $isReturned, reviewId: $reviewId, quantity: $quantity, isActivated: $isActivated, createdAt: $createdAt, usedAt: $usedAt)';
   }
 
   @override
@@ -381,62 +423,77 @@ class _$_TicketDto extends _TicketDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TicketDto &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.eventId, eventId) &&
-            const DeepCollectionEquality().equals(other.clubId, clubId) &&
-            const DeepCollectionEquality().equals(other.clubName, clubName) &&
-            const DeepCollectionEquality().equals(other.eventName, eventName) &&
-            const DeepCollectionEquality()
-                .equals(other.eventStartDateTime, eventStartDateTime) &&
-            const DeepCollectionEquality()
-                .equals(other.eventEndDateTime, eventEndDateTime) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality().equals(other.currency, currency) &&
-            const DeepCollectionEquality().equals(other.isVip, isVip) &&
-            const DeepCollectionEquality()
-                .equals(other.ticketPaymentId, ticketPaymentId) &&
-            const DeepCollectionEquality()
-                .equals(other.vipPaymentId, vipPaymentId) &&
-            const DeepCollectionEquality().equals(other.isExpired, isExpired) &&
-            const DeepCollectionEquality()
-                .equals(other.isEventCanceled, isEventCanceled) &&
-            const DeepCollectionEquality()
-                .equals(other.isReturnable, isReturnable) &&
-            const DeepCollectionEquality()
-                .equals(other.isReturned, isReturned) &&
-            const DeepCollectionEquality().equals(other.reviewId, reviewId));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.eventId, eventId) || other.eventId == eventId) &&
+            (identical(other.clubId, clubId) || other.clubId == clubId) &&
+            (identical(other.clubName, clubName) ||
+                other.clubName == clubName) &&
+            (identical(other.eventName, eventName) ||
+                other.eventName == eventName) &&
+            (identical(other.eventStartDateTime, eventStartDateTime) ||
+                other.eventStartDateTime == eventStartDateTime) &&
+            (identical(other.eventEndDateTime, eventEndDateTime) ||
+                other.eventEndDateTime == eventEndDateTime) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.ticketPaymentId, ticketPaymentId) ||
+                other.ticketPaymentId == ticketPaymentId) &&
+            (identical(other.isExpired, isExpired) ||
+                other.isExpired == isExpired) &&
+            (identical(other.isEventCanceled, isEventCanceled) ||
+                other.isEventCanceled == isEventCanceled) &&
+            (identical(other.isReturnable, isReturnable) ||
+                other.isReturnable == isReturnable) &&
+            (identical(other.isReturned, isReturned) ||
+                other.isReturned == isReturned) &&
+            (identical(other.reviewId, reviewId) ||
+                other.reviewId == reviewId) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity) &&
+            (identical(other.isActivated, isActivated) ||
+                other.isActivated == isActivated) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.usedAt, usedAt) || other.usedAt == usedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(eventId),
-      const DeepCollectionEquality().hash(clubId),
-      const DeepCollectionEquality().hash(clubName),
-      const DeepCollectionEquality().hash(eventName),
-      const DeepCollectionEquality().hash(eventStartDateTime),
-      const DeepCollectionEquality().hash(eventEndDateTime),
-      const DeepCollectionEquality().hash(price),
-      const DeepCollectionEquality().hash(currency),
-      const DeepCollectionEquality().hash(isVip),
-      const DeepCollectionEquality().hash(ticketPaymentId),
-      const DeepCollectionEquality().hash(vipPaymentId),
-      const DeepCollectionEquality().hash(isExpired),
-      const DeepCollectionEquality().hash(isEventCanceled),
-      const DeepCollectionEquality().hash(isReturnable),
-      const DeepCollectionEquality().hash(isReturned),
-      const DeepCollectionEquality().hash(reviewId));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        eventId,
+        clubId,
+        clubName,
+        eventName,
+        eventStartDateTime,
+        eventEndDateTime,
+        price,
+        currency,
+        ticketPaymentId,
+        isExpired,
+        isEventCanceled,
+        isReturnable,
+        isReturned,
+        reviewId,
+        quantity,
+        isActivated,
+        createdAt,
+        usedAt
+      ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TicketDtoCopyWith<_$_TicketDto> get copyWith =>
       __$$_TicketDtoCopyWithImpl<_$_TicketDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TicketDtoToJson(this);
+    return _$$_TicketDtoToJson(
+      this,
+    );
   }
 }
 
@@ -454,14 +511,18 @@ abstract class _TicketDto extends TicketDto {
           required final DateTime eventEndDateTime,
       required final int price,
       required final String currency,
-      required final bool isVip,
       required final String ticketPaymentId,
-      final String? vipPaymentId,
       final bool isExpired,
       final bool isEventCanceled,
       final bool isReturnable,
       final bool isReturned,
-      final String reviewId}) = _$_TicketDto;
+      final String reviewId,
+      final int quantity,
+      final bool isActivated,
+      @FirebaseTimestampJsonConverter()
+          required final DateTime createdAt,
+      @FirebaseNullableTimestampJsonConverter()
+          final DateTime? usedAt}) = _$_TicketDto;
   const _TicketDto._() : super._();
 
   factory _TicketDto.fromJson(Map<String, dynamic> json) =
@@ -469,41 +530,47 @@ abstract class _TicketDto extends TicketDto {
 
   @override
   @JsonKey(ignore: true)
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
-  String get eventId => throw _privateConstructorUsedError;
+  String get eventId;
   @override
-  String get clubId => throw _privateConstructorUsedError;
+  String get clubId;
   @override
-  String get clubName => throw _privateConstructorUsedError;
+  String get clubName;
   @override
-  String get eventName => throw _privateConstructorUsedError;
-  @override
-  @FirebaseTimestampJsonConverter()
-  DateTime get eventStartDateTime => throw _privateConstructorUsedError;
+  String get eventName;
   @override
   @FirebaseTimestampJsonConverter()
-  DateTime get eventEndDateTime => throw _privateConstructorUsedError;
+  DateTime get eventStartDateTime;
   @override
-  int get price => throw _privateConstructorUsedError;
+  @FirebaseTimestampJsonConverter()
+  DateTime get eventEndDateTime;
   @override
-  String get currency => throw _privateConstructorUsedError;
+  int get price;
   @override
-  bool get isVip => throw _privateConstructorUsedError;
+  String get currency;
   @override
-  String get ticketPaymentId => throw _privateConstructorUsedError;
+  String get ticketPaymentId;
   @override
-  String? get vipPaymentId => throw _privateConstructorUsedError;
+  bool get isExpired;
   @override
-  bool get isExpired => throw _privateConstructorUsedError;
+  bool get isEventCanceled;
   @override
-  bool get isEventCanceled => throw _privateConstructorUsedError;
+  bool get isReturnable;
   @override
-  bool get isReturnable => throw _privateConstructorUsedError;
+  bool get isReturned;
   @override
-  bool get isReturned => throw _privateConstructorUsedError;
+  String get reviewId;
   @override
-  String get reviewId => throw _privateConstructorUsedError;
+  int get quantity;
+  @override
+  bool get isActivated;
+  @override
+  @FirebaseTimestampJsonConverter()
+  DateTime get createdAt;
+  @override
+  @FirebaseNullableTimestampJsonConverter()
+  DateTime? get usedAt;
   @override
   @JsonKey(ignore: true)
   _$$_TicketDtoCopyWith<_$_TicketDto> get copyWith =>
