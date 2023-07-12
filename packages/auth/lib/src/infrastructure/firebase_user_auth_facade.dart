@@ -240,9 +240,9 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
   @override
   Future<Either<AuthFailure, AppUser>> signInWithAppleAsUser() async {
     try {
-      final appleAuthResult = await _getAppleOAuthCredentialAndEmail();
+      final appleCredential = await _getAppleOAuthCredential();
       final userCredential =
-          await _firebaseAuth.signInWithCredential(appleAuthResult.value1);
+          await _firebaseAuth.signInWithCredential(appleCredential);
       await _checkIfUserCanSignIn(userCredential);
       await _addUserToFirestoreIfNotExists(userCredential);
       final appUser = await _mapFirebaseUserToDomain();
@@ -267,32 +267,36 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
   @override
   Future<Either<AuthFailure, AppUser>> linkAppleForUser() async {
     try {
-      final appleAuthResult = await _getAppleOAuthCredentialAndEmail();
-      final isEmailInUse =
-          await _checkIfEmailIsAlreadyInUse(appleAuthResult.value2);
-      final userCredential = isEmailInUse
-          ? await _firebaseAuth.signInWithCredential(appleAuthResult.value1)
-          : await _linkWithCredential(appleAuthResult.value1);
-      if (isEmailInUse) {
-        await _checkIfUserCanSignIn(userCredential);
+      final appleCredential = await _getAppleOAuthCredential();
+      try {
+        final userCredential = await _linkWithCredential(appleCredential);
+        await _addUserToFirestoreIfNotExists(userCredential);
+        final appUser = await _mapFirebaseUserToDomain();
+        return right(appUser);
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'account-exists-with-different-credential') {
+          final userCredential =
+              await _firebaseAuth.signInWithCredential(appleCredential);
+          await _checkIfUserCanSignIn(userCredential);
+          final appUser = await _mapFirebaseUserToDomain();
+          return right(appUser);
+        }
+        return left(await _handleFirebaseException(e));
       }
-      await _addUserToFirestoreIfNotExists(userCredential);
-      final appUser = await _mapFirebaseUserToDomain();
-      return right(appUser);
-    } on FirebaseAuthException catch (e) {
-      return left(await _handleFirebaseException(e));
-    } on PlatformException catch (e) {
-      _logger.e(e);
-      return left(const AuthFailure.unavailable());
-    } on DioError catch (e) {
-      await _signOut();
-      return left(await _handleDioError(e));
     } on SignInWithAppleAuthorizationException catch (e) {
       _logger.e(e);
       if (e.code == AuthorizationErrorCode.canceled) {
         return left(const AuthFailure.canceledByUser());
       }
       return left(const AuthFailure.unavailable());
+    } on PlatformException catch (e) {
+      _logger.e(e);
+      return left(const AuthFailure.unavailable());
+    } on DioError catch (e) {
+      await _signOut();
+      return left(await _handleDioError(e));
+    } on FirebaseAuthException catch (e) {
+      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -402,8 +406,7 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
     return _linkWithCredential(authCredential);
   }
 
-  Future<Tuple2<OAuthCredential, String?>>
-      _getAppleOAuthCredentialAndEmail() async {
+  Future<OAuthCredential> _getAppleOAuthCredential() async {
     final rawNonce = _generateNonce();
     final nonce = _getShaFromString(rawNonce);
     final appleCredential = await SignInWithApple.getAppleIDCredential(
@@ -418,12 +421,10 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
       ),
     );
 
-    final oAuthCredential = OAuthProvider('apple.com').credential(
+    return OAuthProvider('apple.com').credential(
       idToken: appleCredential.identityToken,
       rawNonce: rawNonce,
     );
-
-    return tuple2(oAuthCredential, appleCredential.email);
   }
 
   Future<void> _sendSignInLinkForUser(String email) async {
