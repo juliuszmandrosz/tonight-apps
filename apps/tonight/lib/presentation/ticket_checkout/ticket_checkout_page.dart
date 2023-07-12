@@ -71,28 +71,30 @@ class TicketCheckoutPage extends StatelessWidget {
                         FloatingActionButtonLocation.centerFloat,
                     floatingActionButton: const TicketProceedToPayButton(),
                     appBar: TonightAppBar(title: S().checkout),
-                    body: const Padding(
-                      padding: EdgeInsets.all(16),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            TicketCheckoutHeader(),
-                            SizedBox(height: 20),
-                            TicketCheckoutTicketCard(),
-                            SizedBox(height: 15),
-                            Divider(),
-                            SizedBox(height: 15),
-                            TicketCheckoutPaymentMethod(),
-                            SizedBox(height: 20),
-                            TicketCheckoutEmail(),
-                            SizedBox(height: 20),
-                            TicketCheckoutSummary(),
-                            SizedBox(height: 15),
-                            Divider(),
-                            SizedBox(height: 15),
-                            TicketCheckoutPromotionCode(),
-                            SizedBox(height: 80),
-                          ],
+                    body: const SafeArea(
+                      child: Padding(
+                        padding: EdgeInsets.all(16),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              TicketCheckoutHeader(),
+                              SizedBox(height: 20),
+                              TicketCheckoutTicketCard(),
+                              SizedBox(height: 15),
+                              Divider(),
+                              SizedBox(height: 15),
+                              TicketCheckoutPaymentMethod(),
+                              SizedBox(height: 20),
+                              TicketCheckoutEmail(),
+                              SizedBox(height: 20),
+                              TicketCheckoutSummary(),
+                              SizedBox(height: 15),
+                              Divider(),
+                              SizedBox(height: 15),
+                              TicketCheckoutPromotionCode(),
+                              SizedBox(height: 80),
+                            ],
+                          ),
                         ),
                       ),
                     ),
