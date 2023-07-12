@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'promotion_code_dto.dart';
 
@@ -40,7 +40,8 @@ mixin _$PromotionCodeDto {
 abstract class $PromotionCodeDtoCopyWith<$Res> {
   factory $PromotionCodeDtoCopyWith(
           PromotionCodeDto value, $Res Function(PromotionCodeDto) then) =
-      _$PromotionCodeDtoCopyWithImpl<$Res>;
+      _$PromotionCodeDtoCopyWithImpl<$Res, PromotionCodeDto>;
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? code,
       bool isValid,
@@ -52,54 +53,56 @@ abstract class $PromotionCodeDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PromotionCodeDtoCopyWithImpl<$Res>
+class _$PromotionCodeDtoCopyWithImpl<$Res, $Val extends PromotionCodeDto>
     implements $PromotionCodeDtoCopyWith<$Res> {
   _$PromotionCodeDtoCopyWithImpl(this._value, this._then);
 
-  final PromotionCodeDto _value;
   // ignore: unused_field
-  final $Res Function(PromotionCodeDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? code = freezed,
-    Object? isValid = freezed,
-    Object? amountOff = freezed,
-    Object? currency = freezed,
+    Object? isValid = null,
+    Object? amountOff = null,
+    Object? currency = null,
     Object? maxRedemptions = freezed,
     Object? expirationDateTime = freezed,
-    Object? timesRedeemed = freezed,
+    Object? timesRedeemed = null,
   }) {
     return _then(_value.copyWith(
-      code: code == freezed
+      code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String?,
-      isValid: isValid == freezed
+      isValid: null == isValid
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
               as bool,
-      amountOff: amountOff == freezed
+      amountOff: null == amountOff
           ? _value.amountOff
           : amountOff // ignore: cast_nullable_to_non_nullable
               as int,
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      maxRedemptions: maxRedemptions == freezed
+      maxRedemptions: freezed == maxRedemptions
           ? _value.maxRedemptions
           : maxRedemptions // ignore: cast_nullable_to_non_nullable
               as int?,
-      expirationDateTime: expirationDateTime == freezed
+      expirationDateTime: freezed == expirationDateTime
           ? _value.expirationDateTime
           : expirationDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      timesRedeemed: timesRedeemed == freezed
+      timesRedeemed: null == timesRedeemed
           ? _value.timesRedeemed
           : timesRedeemed // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -110,6 +113,7 @@ abstract class _$$_PromotionCodeDtoCopyWith<$Res>
           _$_PromotionCodeDto value, $Res Function(_$_PromotionCodeDto) then) =
       __$$_PromotionCodeDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) String? code,
       bool isValid,
@@ -122,51 +126,49 @@ abstract class _$$_PromotionCodeDtoCopyWith<$Res>
 
 /// @nodoc
 class __$$_PromotionCodeDtoCopyWithImpl<$Res>
-    extends _$PromotionCodeDtoCopyWithImpl<$Res>
+    extends _$PromotionCodeDtoCopyWithImpl<$Res, _$_PromotionCodeDto>
     implements _$$_PromotionCodeDtoCopyWith<$Res> {
   __$$_PromotionCodeDtoCopyWithImpl(
       _$_PromotionCodeDto _value, $Res Function(_$_PromotionCodeDto) _then)
-      : super(_value, (v) => _then(v as _$_PromotionCodeDto));
+      : super(_value, _then);
 
-  @override
-  _$_PromotionCodeDto get _value => super._value as _$_PromotionCodeDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? code = freezed,
-    Object? isValid = freezed,
-    Object? amountOff = freezed,
-    Object? currency = freezed,
+    Object? isValid = null,
+    Object? amountOff = null,
+    Object? currency = null,
     Object? maxRedemptions = freezed,
     Object? expirationDateTime = freezed,
-    Object? timesRedeemed = freezed,
+    Object? timesRedeemed = null,
   }) {
     return _then(_$_PromotionCodeDto(
-      code: code == freezed
+      code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String?,
-      isValid: isValid == freezed
+      isValid: null == isValid
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
               as bool,
-      amountOff: amountOff == freezed
+      amountOff: null == amountOff
           ? _value.amountOff
           : amountOff // ignore: cast_nullable_to_non_nullable
               as int,
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      maxRedemptions: maxRedemptions == freezed
+      maxRedemptions: freezed == maxRedemptions
           ? _value.maxRedemptions
           : maxRedemptions // ignore: cast_nullable_to_non_nullable
               as int?,
-      expirationDateTime: expirationDateTime == freezed
+      expirationDateTime: freezed == expirationDateTime
           ? _value.expirationDateTime
           : expirationDateTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      timesRedeemed: timesRedeemed == freezed
+      timesRedeemed: null == timesRedeemed
           ? _value.timesRedeemed
           : timesRedeemed // ignore: cast_nullable_to_non_nullable
               as int,
@@ -218,32 +220,28 @@ class _$_PromotionCodeDto extends _PromotionCodeDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PromotionCodeDto &&
-            const DeepCollectionEquality().equals(other.code, code) &&
-            const DeepCollectionEquality().equals(other.isValid, isValid) &&
-            const DeepCollectionEquality().equals(other.amountOff, amountOff) &&
-            const DeepCollectionEquality().equals(other.currency, currency) &&
-            const DeepCollectionEquality()
-                .equals(other.maxRedemptions, maxRedemptions) &&
-            const DeepCollectionEquality()
-                .equals(other.expirationDateTime, expirationDateTime) &&
-            const DeepCollectionEquality()
-                .equals(other.timesRedeemed, timesRedeemed));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.isValid, isValid) || other.isValid == isValid) &&
+            (identical(other.amountOff, amountOff) ||
+                other.amountOff == amountOff) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.maxRedemptions, maxRedemptions) ||
+                other.maxRedemptions == maxRedemptions) &&
+            (identical(other.expirationDateTime, expirationDateTime) ||
+                other.expirationDateTime == expirationDateTime) &&
+            (identical(other.timesRedeemed, timesRedeemed) ||
+                other.timesRedeemed == timesRedeemed));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(code),
-      const DeepCollectionEquality().hash(isValid),
-      const DeepCollectionEquality().hash(amountOff),
-      const DeepCollectionEquality().hash(currency),
-      const DeepCollectionEquality().hash(maxRedemptions),
-      const DeepCollectionEquality().hash(expirationDateTime),
-      const DeepCollectionEquality().hash(timesRedeemed));
+  int get hashCode => Object.hash(runtimeType, code, isValid, amountOff,
+      currency, maxRedemptions, expirationDateTime, timesRedeemed);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PromotionCodeDtoCopyWith<_$_PromotionCodeDto> get copyWith =>
       __$$_PromotionCodeDtoCopyWithImpl<_$_PromotionCodeDto>(this, _$identity);
 

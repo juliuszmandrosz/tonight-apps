@@ -36,10 +36,13 @@ _$_EventDto _$$_EventDtoFromJson(Map<String, dynamic> json) => _$_EventDto(
       attending: json['attending'] as int? ?? 0,
       isCanceled: json['isCanceled'] as bool? ?? false,
       isBeingPostponed: json['isBeingPostponed'] as bool? ?? false,
+      areTicketsAvailableInApp:
+          json['areTicketsAvailableInApp'] as bool? ?? false,
       entryFee: json['entryFee'] as String? ?? '',
       priceList: json['priceList'] as String? ?? '',
       locationString: json['locationString'] as String?,
       clubPhotoUrl: json['clubPhotoUrl'] as String?,
+      externalTicketsUrl: json['externalTicketsUrl'] as String?,
     );
 
 Map<String, dynamic> _$$_EventDtoToJson(_$_EventDto instance) =>
@@ -68,8 +71,10 @@ Map<String, dynamic> _$$_EventDtoToJson(_$_EventDto instance) =>
       'attending': instance.attending,
       'isCanceled': instance.isCanceled,
       'isBeingPostponed': instance.isBeingPostponed,
+      'areTicketsAvailableInApp': instance.areTicketsAvailableInApp,
       'entryFee': instance.entryFee,
       'priceList': instance.priceList,
       'locationString': instance.locationString,
       'clubPhotoUrl': instance.clubPhotoUrl,
+      'externalTicketsUrl': instance.externalTicketsUrl,
     };

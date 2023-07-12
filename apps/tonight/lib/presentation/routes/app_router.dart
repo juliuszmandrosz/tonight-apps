@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:payments/domain/domain.dart';
 import 'package:tonight/application/add_wall_photo/models/wall_photo_venue_model.dart';
+import 'package:tonight/presentation/activate_ticket/activate_ticket_page.dart';
 import 'package:tonight/presentation/activate_time_task_reward/activate_time_task_reward_page.dart';
 import 'package:tonight/presentation/add_wall_photo/add_wall_photo_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
@@ -35,17 +36,16 @@ import 'package:tonight/presentation/sign_in_with_phone_number/sign_in_with_phon
 import 'package:tonight/presentation/splash/splash_page.dart';
 import 'package:tonight/presentation/ticket_checkout/ticket_checkout_page.dart';
 import 'package:tonight/presentation/ticket_payment_confirm/ticket_payment_confirm_page.dart';
-import 'package:tonight/presentation/ticket_qr/ticket_qr_page.dart';
 import 'package:tonight/presentation/ticket_scan_confirm/ticket_scan_confirm_page.dart';
 import 'package:tonight/presentation/tickets_and_vouchers/tickets_and_vouchers_page.dart';
 import 'package:tonight/presentation/tonight/tonight_page.dart';
+import 'package:tonight/presentation/update_customer_email/update_customer_email_page.dart';
 import 'package:tonight/presentation/update_profile_picture/update_profile_picture_page.dart';
 import 'package:tonight/presentation/update_username/update_username_page.dart';
 import 'package:tonight/presentation/user_city_picker/user_city_picker_page.dart';
 import 'package:tonight/presentation/user_details/user_details_page.dart';
 import 'package:tonight/presentation/user_wall_photo_preview/user_wall_photo_preview_page.dart';
 import 'package:tonight/presentation/verify_phone_number/verify_phone_number_page.dart';
-import 'package:tonight/presentation/vip_checkout/vip_checkout_page.dart';
 import 'package:tonight/presentation/wall_photo_camera_preview/wall_photo_camera_preview_page.dart';
 import 'package:tonight/presentation/wall_photos_filters/wall_photos_filters_page.dart';
 import 'package:tonight/presentation/welcome_loader/welcome_loader_page.dart';
@@ -124,11 +124,6 @@ const animationDuration = 300;
       durationInMilliseconds: animationDuration,
     ),
     CustomRoute(
-      page: TicketQrPage,
-      transitionsBuilder: slideLeftTransition,
-      durationInMilliseconds: animationDuration,
-    ),
-    CustomRoute(
       page: EventDatePickerPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
@@ -145,12 +140,7 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: TicketCheckoutPage,
-      transitionsBuilder: zoomInTransition,
-      durationInMilliseconds: animationDuration,
-    ),
-    CustomRoute(
-      page: VipCheckoutPage,
-      transitionsBuilder: zoomInTransition,
+      transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
     CustomRoute(
@@ -277,6 +267,16 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: UserCityPickerPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: ActivateTicketPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute<CustomerData>(
+      page: UpdateCustomerEmailPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),

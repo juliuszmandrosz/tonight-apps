@@ -68,15 +68,9 @@ class ScannerPage extends StatelessWidget {
                           child: ListView(
                             children: [
                               ScanResult(
-                                color: ticket.isVip
-                                    ? Colors.blue.lighten()
-                                    : Colors.green.lighten(),
-                                icon: ticket.isVip
-                                    ? FontAwesomeIcons.crown
-                                    : FontAwesomeIcons.check,
-                                message: ticket.isVip
-                                    ? S().vipValidTicket
-                                    : S().validTicket,
+                                color: Colors.green.lighten(),
+                                icon: FontAwesomeIcons.check,
+                                message: S().validTicket,
                               ),
                               if (state.userRewards.isNotEmpty)
                                 UserRewards(

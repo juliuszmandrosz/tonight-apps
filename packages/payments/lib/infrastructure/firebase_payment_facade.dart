@@ -35,8 +35,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     required FirebaseFirestore firestore,
     required FirebaseAuth firebaseAuth,
     required FirebaseCrashlytics firebaseCrashlytics,
-  })
-      : _logger = logger,
+  })  : _logger = logger,
         _stripe = stripe,
         _paymentCloudFunctionsFacade = paymentCloudFunctionsFacade,
         _firestore = firestore,
@@ -45,22 +44,20 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
   @override
   Future<Either<UserPaymentFailure, PromotionCode>> getPromotionCode(
-      String promotionCode,) async {
+    String promotionCode,
+  ) async {
     final userDoc = _firestore.getCurrentUserDocRef(_firebaseAuth);
     try {
-      final result =
-      await userDoc.promotionCodesCollection.doc(promotionCode).get();
-
+      final result = await userDoc.promotionCodesCollection
+          .doc(promotionCode.toUpperCase())
+          .get();
       if (result.data() == null) {
         return left(const UserPaymentFailure.invalidPromotionCode());
       }
-
       final code = PromotionCodeDto.fromFirebase(result).toDomain();
-
       if (!code.isValid) {
         return left(const UserPaymentFailure.promotionCodeExpired());
       }
-
       return right(code);
     } on FirebaseException catch (e) {
       return left(
@@ -68,7 +65,6 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
           logger: _logger,
           crashlytics: _crashlytics,
           exception: e,
-          message: 'Firebase Exception getting promotion code EXCEPTION: $e',
           unexpectedFailure: const UserPaymentFailure.unexpected(),
           permissionDeniedFailure: const UserPaymentFailure.permissionDenied(),
         ),
@@ -82,52 +78,43 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     required String currency,
     required TonightPaymentMethod paymentMethod,
     required double amount,
+    required int quantity,
+    required String customerEmail,
     String? promotionCode,
-    bool isVip = false,
     bool sendInvoice = false,
   }) async {
     try {
-      final userId = _firestore
-          .getCurrentUserDocRef(_firebaseAuth)
-          .id;
-
-      final user = _firebaseAuth.tryGetFirebaseUser();
-
+      final userId = _firebaseAuth.tryGetFirebaseUser().uid;
       final paymentIntent =
-      await _paymentCloudFunctionsFacade.createTicketPaymentSheet(
+          await _paymentCloudFunctionsFacade.createTicketPaymentSheet(
         eventId: eventId,
         userId: userId,
         sendInvoice: sendInvoice,
         promotionCode: promotionCode,
-        isVip: isVip,
+        quantity: quantity,
       );
-
       try {
         await _initPayment(
-          userEmail: user.email!,
           amount: amount,
           currency: currency,
           paymentMethod: paymentMethod,
           paymentIntent: paymentIntent,
+          quantity: quantity,
+          email: customerEmail,
         );
       } on StripeException catch (e) {
-        _logger.e(
-          "Stripe exception proceeding to pay for ticket EXCEPTION: $e",
-        );
+        _logger.e(e);
         if (e.error.code == FailureCode.Canceled) {
           await _paymentCloudFunctionsFacade
               .cancelTicketReservation(paymentIntent.paymentIntentId);
           return left(const UserPaymentFailure.canceledByUser());
         }
-
         if (_checkIfPaymentAlreadyBeenMade(e)) {
           return left(const UserPaymentFailure.paymentHasAlreadyBeenMade());
         }
-
-        if (_checkIfSessionIsNotExpired(e)) {
+        if (_checkIfPaymentIsExpired(e)) {
           return left(const UserPaymentFailure.paymentSessionHasExpired());
         }
-
         await _crashlytics.recordError(e, StackTrace.current);
         return left(UserPaymentFailure.stripeError(
           '${e.error.localizedMessage}',
@@ -138,96 +125,26 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
               .cancelTicketReservation(paymentIntent.paymentIntentId);
           return left(const UserPaymentFailure.canceledByUser());
         }
-
         await _crashlytics.recordError(e, StackTrace.current);
         return left(const UserPaymentFailure.unexpected());
       }
 
       return right(unit);
     } on DioError catch (e) {
-      _logger.e("Dio error proceeding to pay for ticket EXCEPTION: $e");
+      _logger.e(e);
       return left(await _handleDioError(e));
-    }
-  }
-
-  @override
-  Future<Either<UserPaymentFailure, Unit>> proceedToPayForVip({
-    required String ticketId,
-    required String currency,
-    required TonightPaymentMethod paymentMethod,
-    required double amount,
-    String? promotionCode,
-    bool sendInvoice = false,
-  }) async {
-    try {
-      final userId = _firestore
-          .getCurrentUserDocRef(_firebaseAuth)
-          .id;
-
-      final user = _firebaseAuth.tryGetFirebaseUser();
-
-      final paymentIntent =
-      await _paymentCloudFunctionsFacade.createVipPaymentSheet(
-        ticketId: ticketId,
-        promotionCode: promotionCode,
-        sendInvoice: sendInvoice,
-        userId: userId,
-      );
-
-      await _initPayment(
-        userEmail: user.email!,
-        amount: amount,
-        currency: currency,
-        paymentMethod: paymentMethod,
-        paymentIntent: paymentIntent,
-      );
-
-      return right(unit);
-    } on DioError catch (e) {
-      _logger.e("Dio error proceeding to pay for vip EXCEPTION: $e");
-      return left(await _handleDioError(e));
-    } on StripeException catch (e) {
-      _logger.e(
-        "Stripe exception proceeding to pay for vip EXCEPTION: $e",
-      );
-      if (e.error.code == FailureCode.Canceled) {
-        return left(const UserPaymentFailure.canceledByUser());
-      }
-
-      if (_checkIfPaymentAlreadyBeenMade(e)) {
-        return left(const UserPaymentFailure.paymentHasAlreadyBeenMade());
-      }
-
-      if (_checkIfSessionIsNotExpired(e)) {
-        return left(const UserPaymentFailure.paymentSessionHasExpired());
-      }
-
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(
-        UserPaymentFailure.stripeError(
-          '${e.error.localizedMessage}',
-        ),
-      );
-    } on PlatformException catch (e) {
-      if (e.code == 'Canceled') {
-        return left(const UserPaymentFailure.canceledByUser());
-      }
-
-      await _crashlytics.recordError(e, StackTrace.current);
-      return left(const UserPaymentFailure.unexpected());
     }
   }
 
   @override
   Future<Either<UserPaymentFailure, Unit>> updatePaymentMethod(
-      TonightPaymentMethod paymentMethod,) async {
+    TonightPaymentMethod paymentMethod,
+  ) async {
     try {
-      final userId = _firebaseAuth
-          .tryGetFirebaseUser()
-          .uid;
-      await _firestore.stripeCustomers.doc(userId).update(
-        {'paymentMethod': paymentMethod.name},
-      );
+      final userId = _firebaseAuth.tryGetFirebaseUser().uid;
+      await _firestore.stripeCustomers
+          .doc(userId)
+          .update({'paymentMethod': paymentMethod.name});
       return right(unit);
     } on FirebaseException catch (e) {
       return left(
@@ -235,7 +152,6 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
           logger: _logger,
           crashlytics: _crashlytics,
           exception: e,
-          message: 'Firebase Exception updating invoice data EXCEPTION: $e',
           unexpectedFailure: const UserPaymentFailure.unexpected(),
           permissionDeniedFailure: const UserPaymentFailure.permissionDenied(),
         ),
@@ -260,18 +176,35 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
       return right(unit);
     } on FirebaseFunctionsException catch (e) {
-      _logger.e(
-        'Firebase Functions Exception updating invoice data EXCEPTION: $e',
-      );
-
+      _logger.e(e);
       final failure = userPaymentCloudFunctionsErrors[e.details];
-
       if (failure != null) {
         return left(failure);
       }
-
       await _crashlytics.recordError(e, StackTrace.current);
       return left(const UserPaymentFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<UserPaymentFailure, Unit>> updateCustomerEmail(
+    String email,
+  ) async {
+    try {
+      final currentUserId = _firebaseAuth.tryGetFirebaseUser().uid;
+      final customerDocRef = _firestore.stripeCustomers.doc(currentUserId);
+      await customerDocRef.update({'email': email});
+      return right(unit);
+    } on FirebaseException catch (e) {
+      return left(
+        await handleFirebaseError(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          unexpectedFailure: const UserPaymentFailure.unexpected(),
+          permissionDeniedFailure: const UserPaymentFailure.permissionDenied(),
+        ),
+      );
     }
   }
 
@@ -279,13 +212,10 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
   Future<Either<UserPaymentFailure, CustomerData>> getCustomerData() async {
     try {
       final userDoc =
-      await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
-
+          await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
       final customerData =
-      await _firestore.stripeCustomers.doc(userDoc.id).get();
-
+          await _firestore.stripeCustomers.doc(userDoc.id).get();
       final result = CustomerDataDto.fromFirebase(customerData).toDomain();
-
       return right(result);
     } on FirebaseException catch (e) {
       return left(
@@ -293,7 +223,6 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
           logger: _logger,
           crashlytics: _crashlytics,
           exception: e,
-          message: 'Firebase Exception getting customer data EXCEPTION: $e',
           unexpectedFailure: const UserPaymentFailure.unexpected(),
           permissionDeniedFailure: const UserPaymentFailure.permissionDenied(),
         ),
@@ -307,7 +236,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
       final result = await _paymentCloudFunctionsFacade.getServiceFee();
       return right(result);
     } on DioError catch (e) {
-      _logger.e('Dio error getting service fee: $e');
+      _logger.e(e);
       return left(await _handleDioError(e));
     }
   }
@@ -318,21 +247,9 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
       final result = await _paymentCloudFunctionsFacade.getEventFees();
       return right(result);
     } on DioError catch (e) {
-      _logger.e('Dio error getting event fees: $e');
+      _logger.e(e);
       await _crashlytics.recordError(e.response, StackTrace.current);
       return left(const PartnerPaymentFailure.unexpected());
-    }
-  }
-
-  @override
-  Future<Either<UserPaymentFailure, Unit>> cancelTicketReservation(
-      String sessionId,) async {
-    try {
-      await _paymentCloudFunctionsFacade.cancelTicketReservation(sessionId);
-      return right(unit);
-    } on DioError catch (e) {
-      _logger.e('Dio error canceling ticket reservation EXCEPTION: $e');
-      return left(await _handleDioError(e));
     }
   }
 
@@ -341,7 +258,8 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     required String currency,
     required CreatePaymentSheetResponse paymentIntent,
     required double amount,
-    required String userEmail,
+    required int quantity,
+    required String email,
   }) async {
     switch (paymentMethod) {
       case TonightPaymentMethod.wallet:
@@ -349,12 +267,13 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
           currency: currency,
           paymentIntentSecret: paymentIntent.paymentIntentSecret,
           amount: amount,
+          quantity: quantity,
         );
         break;
       case TonightPaymentMethod.p24:
         await _presentP24Payment(
           paymentIntentSecret: paymentIntent.paymentIntentSecret,
-          userEmail: userEmail,
+          email: email,
         );
         break;
       case TonightPaymentMethod.card:
@@ -363,7 +282,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
           customerId: paymentIntent.customerId,
           paymentIntentSecret: paymentIntent.paymentIntentSecret,
           ephemeralKeySecret: paymentIntent.ephemeralKeySecret,
-          userEmail: userEmail,
+          email: email,
         );
         break;
     }
@@ -371,15 +290,13 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
   Future<void> _presentP24Payment({
     required String paymentIntentSecret,
-    required String userEmail,
+    required String email,
   }) async {
     await _stripe.confirmPayment(
       paymentIntentSecret,
       PaymentMethodParams.p24(
         paymentMethodData: PaymentMethodData(
-          billingDetails: BillingDetails(
-            email: userEmail,
-          ),
+          billingDetails: BillingDetails(email: email),
         ),
       ),
     );
@@ -389,13 +306,14 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     required String currency,
     required String paymentIntentSecret,
     required double amount,
+    required int quantity,
   }) async {
     if (Platform.isIOS) {
       await _stripe.presentApplePay(
         ApplePayPresentParams(
           cartItems: [
             ApplePayCartSummaryItem.immediate(
-              label: S().tickets(1),
+              label: S().tickets(quantity),
               amount: '$amount',
             ),
           ],
@@ -413,6 +331,7 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
       const GooglePayInitParams(
         merchantName: 'Tonight',
         countryCode: 'PL',
+        testEnv: true,
       ),
     );
 
@@ -429,46 +348,47 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
     required String customerId,
     required String paymentIntentSecret,
     required String ephemeralKeySecret,
-    required String userEmail,
+    required String email,
   }) async {
     await _stripe.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
-          customerId: customerId,
-          paymentIntentClientSecret: paymentIntentSecret,
-          customerEphemeralKeySecret: ephemeralKeySecret,
-          merchantDisplayName: 'Tonight',
-          appearance: PaymentSheetAppearance(
-            shapes: const PaymentSheetShape(borderRadius: 8),
-            colors: PaymentSheetAppearanceColors(
-              icon: colors.onSurface,
-              background: colors.background,
-              error: colors.error,
-              primary: colors.primary,
-              componentBackground: colors.surface,
-              primaryText: colors.onSurface,
-              placeholderText: colors.outline,
-              secondaryText: colors.onSurface,
-              componentBorder: colors.outline,
-              componentDivider: colors.outline,
-              componentText: colors.onSurface,
-            ),
-            primaryButton: PaymentSheetPrimaryButtonAppearance(
-              shapes: const PaymentSheetPrimaryButtonShape(blurRadius: 20),
-              colors: PaymentSheetPrimaryButtonTheme(
-                light: PaymentSheetPrimaryButtonThemeColors(
-                  text: colors.onSurface,
-                  background: colors.primary,
-                  border: colors.primary,
-                ),
-                dark: PaymentSheetPrimaryButtonThemeColors(
-                  text: colors.onSurface,
-                  background: colors.primary,
-                  border: colors.primary,
-                ),
+        customerId: customerId,
+        paymentIntentClientSecret: paymentIntentSecret,
+        customerEphemeralKeySecret: ephemeralKeySecret,
+        merchantDisplayName: 'Tonight',
+        appearance: PaymentSheetAppearance(
+          shapes: const PaymentSheetShape(borderRadius: 8),
+          colors: PaymentSheetAppearanceColors(
+            icon: colors.onSurface,
+            background: colors.background,
+            error: colors.error,
+            primary: colors.primary,
+            componentBackground: colors.surface,
+            primaryText: colors.onSurface,
+            placeholderText: colors.outline,
+            secondaryText: colors.onSurface,
+            componentBorder: colors.outline,
+            componentDivider: colors.outline,
+            componentText: colors.onSurface,
+          ),
+          primaryButton: PaymentSheetPrimaryButtonAppearance(
+            shapes: const PaymentSheetPrimaryButtonShape(blurRadius: 20),
+            colors: PaymentSheetPrimaryButtonTheme(
+              light: PaymentSheetPrimaryButtonThemeColors(
+                text: colors.onSurface,
+                background: colors.primary,
+                border: colors.primary,
+              ),
+              dark: PaymentSheetPrimaryButtonThemeColors(
+                text: colors.onSurface,
+                background: colors.primary,
+                border: colors.primary,
               ),
             ),
           ),
-          billingDetails: BillingDetails(email: userEmail)),
+        ),
+        billingDetails: BillingDetails(email: email),
+      ),
     );
 
     await _stripe.presentPaymentSheet();
@@ -476,37 +396,25 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
 
   Future<UserPaymentFailure> _handleDioError(DioError error) async {
     final failure =
-    userPaymentCloudFunctionsErrors[error.response?.data['message']];
-
+        userPaymentCloudFunctionsErrors[error.response?.data['message']];
     if (failure != null) {
       return failure;
     }
-
     await _crashlytics.recordError(error.response, StackTrace.current);
     return const UserPaymentFailure.unexpected();
   }
 
   bool _checkIfPaymentAlreadyBeenMade(StripeException exception) {
     final message = exception.error.localizedMessage;
-
     if (message == null) return false;
-
-    if (message.contains('succeeded')) {
-      return true;
-    }
-
+    if (message.contains('succeeded')) return true;
     return false;
   }
 
-  bool _checkIfSessionIsNotExpired(StripeException exception) {
+  bool _checkIfPaymentIsExpired(StripeException exception) {
     final message = exception.error.localizedMessage;
-
     if (message == null) return false;
-
-    if (message.contains('canceled')) {
-      return true;
-    }
-
+    if (message.contains('canceled')) return true;
     return false;
   }
 }

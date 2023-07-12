@@ -24,7 +24,7 @@ class FirebaseTimeTaskVoucherFacade implements TimeTaskVoucherFacade {
 
   @override
   Stream<Either<TimeTaskVoucherFailure, TimeTaskVoucher>>
-      getVoucherByTimeTaskId(
+      listenVoucherByTimeTaskId(
     String timeTaskId,
   ) async* {
     final currentUserRef = _firestore.getCurrentUserDocRef(_auth);

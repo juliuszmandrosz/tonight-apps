@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'user_payment_failure.dart';
 
@@ -37,29 +37,31 @@ mixin _$UserPaymentFailure {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +85,7 @@ mixin _$UserPaymentFailure {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -109,30 +112,33 @@ mixin _$UserPaymentFailure {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -157,6 +163,7 @@ mixin _$UserPaymentFailure {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -166,17 +173,18 @@ mixin _$UserPaymentFailure {
 abstract class $UserPaymentFailureCopyWith<$Res> {
   factory $UserPaymentFailureCopyWith(
           UserPaymentFailure value, $Res Function(UserPaymentFailure) then) =
-      _$UserPaymentFailureCopyWithImpl<$Res>;
+      _$UserPaymentFailureCopyWithImpl<$Res, UserPaymentFailure>;
 }
 
 /// @nodoc
-class _$UserPaymentFailureCopyWithImpl<$Res>
+class _$UserPaymentFailureCopyWithImpl<$Res, $Val extends UserPaymentFailure>
     implements $UserPaymentFailureCopyWith<$Res> {
   _$UserPaymentFailureCopyWithImpl(this._value, this._then);
 
-  final UserPaymentFailure _value;
   // ignore: unused_field
-  final $Res Function(UserPaymentFailure) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -188,14 +196,11 @@ abstract class _$$_UnexpectedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_Unexpected>
     implements _$$_UnexpectedCopyWith<$Res> {
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
-      : super(_value, (v) => _then(v as _$_Unexpected));
-
-  @override
-  _$_Unexpected get _value => super._value as _$_Unexpected;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -239,6 +244,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return unexpected();
   }
@@ -246,25 +252,26 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return unexpected?.call();
   }
@@ -291,6 +298,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -323,6 +331,7 @@ class _$_Unexpected implements _Unexpected {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return unexpected(this);
   }
@@ -330,26 +339,28 @@ class _$_Unexpected implements _Unexpected {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return unexpected?.call(this);
   }
@@ -377,6 +388,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -399,14 +411,11 @@ abstract class _$$_PermissionDeniedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PermissionDeniedCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_PermissionDenied>
     implements _$$_PermissionDeniedCopyWith<$Res> {
   __$$_PermissionDeniedCopyWithImpl(
       _$_PermissionDenied _value, $Res Function(_$_PermissionDenied) _then)
-      : super(_value, (v) => _then(v as _$_PermissionDenied));
-
-  @override
-  _$_PermissionDenied get _value => super._value as _$_PermissionDenied;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -450,6 +459,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return permissionDenied();
   }
@@ -457,25 +467,26 @@ class _$_PermissionDenied implements _PermissionDenied {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return permissionDenied?.call();
   }
@@ -502,6 +513,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -534,6 +546,7 @@ class _$_PermissionDenied implements _PermissionDenied {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return permissionDenied(this);
   }
@@ -541,26 +554,28 @@ class _$_PermissionDenied implements _PermissionDenied {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return permissionDenied?.call(this);
   }
@@ -588,6 +603,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -606,26 +622,25 @@ abstract class _$$_StripeErrorCopyWith<$Res> {
   factory _$$_StripeErrorCopyWith(
           _$_StripeError value, $Res Function(_$_StripeError) then) =
       __$$_StripeErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
 class __$$_StripeErrorCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_StripeError>
     implements _$$_StripeErrorCopyWith<$Res> {
   __$$_StripeErrorCopyWithImpl(
       _$_StripeError _value, $Res Function(_$_StripeError) _then)
-      : super(_value, (v) => _then(v as _$_StripeError));
+      : super(_value, _then);
 
-  @override
-  _$_StripeError get _value => super._value as _$_StripeError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? message = freezed,
   }) {
     return _then(_$_StripeError(
-      message == freezed
+      freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -651,15 +666,15 @@ class _$_StripeError implements _StripeError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StripeError &&
-            const DeepCollectionEquality().equals(other.message, message));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_StripeErrorCopyWith<_$_StripeError> get copyWith =>
       __$$_StripeErrorCopyWithImpl<_$_StripeError>(this, _$identity);
 
@@ -685,6 +700,7 @@ class _$_StripeError implements _StripeError {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return stripeError(message);
   }
@@ -692,25 +708,26 @@ class _$_StripeError implements _StripeError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return stripeError?.call(message);
   }
@@ -737,6 +754,7 @@ class _$_StripeError implements _StripeError {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (stripeError != null) {
@@ -769,6 +787,7 @@ class _$_StripeError implements _StripeError {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return stripeError(this);
   }
@@ -776,26 +795,28 @@ class _$_StripeError implements _StripeError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return stripeError?.call(this);
   }
@@ -823,6 +844,7 @@ class _$_StripeError implements _StripeError {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (stripeError != null) {
@@ -850,14 +872,11 @@ abstract class _$$_InvalidPromotionCodeCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InvalidPromotionCodeCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_InvalidPromotionCode>
     implements _$$_InvalidPromotionCodeCopyWith<$Res> {
   __$$_InvalidPromotionCodeCopyWithImpl(_$_InvalidPromotionCode _value,
       $Res Function(_$_InvalidPromotionCode) _then)
-      : super(_value, (v) => _then(v as _$_InvalidPromotionCode));
-
-  @override
-  _$_InvalidPromotionCode get _value => super._value as _$_InvalidPromotionCode;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -901,6 +920,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return invalidPromotionCode();
   }
@@ -908,25 +928,26 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return invalidPromotionCode?.call();
   }
@@ -953,6 +974,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (invalidPromotionCode != null) {
@@ -985,6 +1007,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return invalidPromotionCode(this);
   }
@@ -992,26 +1015,28 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return invalidPromotionCode?.call(this);
   }
@@ -1039,6 +1064,7 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (invalidPromotionCode != null) {
@@ -1061,14 +1087,11 @@ abstract class _$$_PromotionCodeExpiredCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PromotionCodeExpiredCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_PromotionCodeExpired>
     implements _$$_PromotionCodeExpiredCopyWith<$Res> {
   __$$_PromotionCodeExpiredCopyWithImpl(_$_PromotionCodeExpired _value,
       $Res Function(_$_PromotionCodeExpired) _then)
-      : super(_value, (v) => _then(v as _$_PromotionCodeExpired));
-
-  @override
-  _$_PromotionCodeExpired get _value => super._value as _$_PromotionCodeExpired;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1112,6 +1135,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return promotionCodeExpired();
   }
@@ -1119,25 +1143,26 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return promotionCodeExpired?.call();
   }
@@ -1164,6 +1189,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (promotionCodeExpired != null) {
@@ -1196,6 +1222,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return promotionCodeExpired(this);
   }
@@ -1203,26 +1230,28 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return promotionCodeExpired?.call(this);
   }
@@ -1250,6 +1279,7 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (promotionCodeExpired != null) {
@@ -1272,14 +1302,11 @@ abstract class _$$_InvalidEventCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InvalidEventCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_InvalidEvent>
     implements _$$_InvalidEventCopyWith<$Res> {
   __$$_InvalidEventCopyWithImpl(
       _$_InvalidEvent _value, $Res Function(_$_InvalidEvent) _then)
-      : super(_value, (v) => _then(v as _$_InvalidEvent));
-
-  @override
-  _$_InvalidEvent get _value => super._value as _$_InvalidEvent;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1323,6 +1350,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return invalidEvent();
   }
@@ -1330,25 +1358,26 @@ class _$_InvalidEvent implements _InvalidEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return invalidEvent?.call();
   }
@@ -1375,6 +1404,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (invalidEvent != null) {
@@ -1407,6 +1437,7 @@ class _$_InvalidEvent implements _InvalidEvent {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return invalidEvent(this);
   }
@@ -1414,26 +1445,28 @@ class _$_InvalidEvent implements _InvalidEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return invalidEvent?.call(this);
   }
@@ -1461,6 +1494,7 @@ class _$_InvalidEvent implements _InvalidEvent {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (invalidEvent != null) {
@@ -1483,14 +1517,11 @@ abstract class _$$_CanceledByUserCopyWith<$Res> {
 
 /// @nodoc
 class __$$_CanceledByUserCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_CanceledByUser>
     implements _$$_CanceledByUserCopyWith<$Res> {
   __$$_CanceledByUserCopyWithImpl(
       _$_CanceledByUser _value, $Res Function(_$_CanceledByUser) _then)
-      : super(_value, (v) => _then(v as _$_CanceledByUser));
-
-  @override
-  _$_CanceledByUser get _value => super._value as _$_CanceledByUser;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1534,6 +1565,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return canceledByUser();
   }
@@ -1541,25 +1573,26 @@ class _$_CanceledByUser implements _CanceledByUser {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return canceledByUser?.call();
   }
@@ -1586,6 +1619,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (canceledByUser != null) {
@@ -1618,6 +1652,7 @@ class _$_CanceledByUser implements _CanceledByUser {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return canceledByUser(this);
   }
@@ -1625,26 +1660,28 @@ class _$_CanceledByUser implements _CanceledByUser {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return canceledByUser?.call(this);
   }
@@ -1672,6 +1709,7 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (canceledByUser != null) {
@@ -1694,14 +1732,11 @@ abstract class _$$_TicketAlreadyHasVipCopyWith<$Res> {
 
 /// @nodoc
 class __$$_TicketAlreadyHasVipCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_TicketAlreadyHasVip>
     implements _$$_TicketAlreadyHasVipCopyWith<$Res> {
   __$$_TicketAlreadyHasVipCopyWithImpl(_$_TicketAlreadyHasVip _value,
       $Res Function(_$_TicketAlreadyHasVip) _then)
-      : super(_value, (v) => _then(v as _$_TicketAlreadyHasVip));
-
-  @override
-  _$_TicketAlreadyHasVip get _value => super._value as _$_TicketAlreadyHasVip;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1745,6 +1780,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return ticketAlreadyHasVip();
   }
@@ -1752,25 +1788,26 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return ticketAlreadyHasVip?.call();
   }
@@ -1797,6 +1834,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (ticketAlreadyHasVip != null) {
@@ -1829,6 +1867,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return ticketAlreadyHasVip(this);
   }
@@ -1836,26 +1875,28 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return ticketAlreadyHasVip?.call(this);
   }
@@ -1883,6 +1924,7 @@ class _$_TicketAlreadyHasVip implements _TicketAlreadyHasVip {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (ticketAlreadyHasVip != null) {
@@ -1905,14 +1947,11 @@ abstract class _$$_EventCanceledCopyWith<$Res> {
 
 /// @nodoc
 class __$$_EventCanceledCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_EventCanceled>
     implements _$$_EventCanceledCopyWith<$Res> {
   __$$_EventCanceledCopyWithImpl(
       _$_EventCanceled _value, $Res Function(_$_EventCanceled) _then)
-      : super(_value, (v) => _then(v as _$_EventCanceled));
-
-  @override
-  _$_EventCanceled get _value => super._value as _$_EventCanceled;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1956,6 +1995,7 @@ class _$_EventCanceled implements _EventCanceled {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return eventCanceled();
   }
@@ -1963,25 +2003,26 @@ class _$_EventCanceled implements _EventCanceled {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return eventCanceled?.call();
   }
@@ -2008,6 +2049,7 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (eventCanceled != null) {
@@ -2040,6 +2082,7 @@ class _$_EventCanceled implements _EventCanceled {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return eventCanceled(this);
   }
@@ -2047,26 +2090,28 @@ class _$_EventCanceled implements _EventCanceled {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return eventCanceled?.call(this);
   }
@@ -2094,6 +2139,7 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (eventCanceled != null) {
@@ -2116,14 +2162,11 @@ abstract class _$$_EventBeingPostponedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_EventBeingPostponedCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_EventBeingPostponed>
     implements _$$_EventBeingPostponedCopyWith<$Res> {
   __$$_EventBeingPostponedCopyWithImpl(_$_EventBeingPostponed _value,
       $Res Function(_$_EventBeingPostponed) _then)
-      : super(_value, (v) => _then(v as _$_EventBeingPostponed));
-
-  @override
-  _$_EventBeingPostponed get _value => super._value as _$_EventBeingPostponed;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -2167,6 +2210,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return eventBeingPostponed();
   }
@@ -2174,25 +2218,26 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return eventBeingPostponed?.call();
   }
@@ -2219,6 +2264,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (eventBeingPostponed != null) {
@@ -2251,6 +2297,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return eventBeingPostponed(this);
   }
@@ -2258,26 +2305,28 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return eventBeingPostponed?.call(this);
   }
@@ -2305,6 +2354,7 @@ class _$_EventBeingPostponed implements _EventBeingPostponed {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (eventBeingPostponed != null) {
@@ -2327,14 +2377,11 @@ abstract class _$$_ReturnTimeExpiredCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ReturnTimeExpiredCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_ReturnTimeExpired>
     implements _$$_ReturnTimeExpiredCopyWith<$Res> {
   __$$_ReturnTimeExpiredCopyWithImpl(
       _$_ReturnTimeExpired _value, $Res Function(_$_ReturnTimeExpired) _then)
-      : super(_value, (v) => _then(v as _$_ReturnTimeExpired));
-
-  @override
-  _$_ReturnTimeExpired get _value => super._value as _$_ReturnTimeExpired;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -2378,6 +2425,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return returnTimeExpired();
   }
@@ -2385,25 +2433,26 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return returnTimeExpired?.call();
   }
@@ -2430,6 +2479,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (returnTimeExpired != null) {
@@ -2462,6 +2512,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return returnTimeExpired(this);
   }
@@ -2469,26 +2520,28 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return returnTimeExpired?.call(this);
   }
@@ -2516,6 +2569,7 @@ class _$_ReturnTimeExpired implements _ReturnTimeExpired {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (returnTimeExpired != null) {
@@ -2538,14 +2592,11 @@ abstract class _$$_InvalidCountryCodeCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InvalidCountryCodeCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_InvalidCountryCode>
     implements _$$_InvalidCountryCodeCopyWith<$Res> {
   __$$_InvalidCountryCodeCopyWithImpl(
       _$_InvalidCountryCode _value, $Res Function(_$_InvalidCountryCode) _then)
-      : super(_value, (v) => _then(v as _$_InvalidCountryCode));
-
-  @override
-  _$_InvalidCountryCode get _value => super._value as _$_InvalidCountryCode;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -2589,6 +2640,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return invalidCountryCode();
   }
@@ -2596,25 +2648,26 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return invalidCountryCode?.call();
   }
@@ -2641,6 +2694,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (invalidCountryCode != null) {
@@ -2673,6 +2727,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return invalidCountryCode(this);
   }
@@ -2680,26 +2735,28 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return invalidCountryCode?.call(this);
   }
@@ -2727,6 +2784,7 @@ class _$_InvalidCountryCode implements _InvalidCountryCode {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (invalidCountryCode != null) {
@@ -2749,14 +2807,11 @@ abstract class _$$_InvalidVatNumberCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InvalidVatNumberCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_InvalidVatNumber>
     implements _$$_InvalidVatNumberCopyWith<$Res> {
   __$$_InvalidVatNumberCopyWithImpl(
       _$_InvalidVatNumber _value, $Res Function(_$_InvalidVatNumber) _then)
-      : super(_value, (v) => _then(v as _$_InvalidVatNumber));
-
-  @override
-  _$_InvalidVatNumber get _value => super._value as _$_InvalidVatNumber;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -2800,6 +2855,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return invalidVatNumber();
   }
@@ -2807,25 +2863,26 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return invalidVatNumber?.call();
   }
@@ -2852,6 +2909,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (invalidVatNumber != null) {
@@ -2884,6 +2942,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return invalidVatNumber(this);
   }
@@ -2891,26 +2950,28 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return invalidVatNumber?.call(this);
   }
@@ -2938,6 +2999,7 @@ class _$_InvalidVatNumber implements _InvalidVatNumber {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (invalidVatNumber != null) {
@@ -2960,14 +3022,11 @@ abstract class _$$_VipNoLongerAvailableCopyWith<$Res> {
 
 /// @nodoc
 class __$$_VipNoLongerAvailableCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_VipNoLongerAvailable>
     implements _$$_VipNoLongerAvailableCopyWith<$Res> {
   __$$_VipNoLongerAvailableCopyWithImpl(_$_VipNoLongerAvailable _value,
       $Res Function(_$_VipNoLongerAvailable) _then)
-      : super(_value, (v) => _then(v as _$_VipNoLongerAvailable));
-
-  @override
-  _$_VipNoLongerAvailable get _value => super._value as _$_VipNoLongerAvailable;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -3011,6 +3070,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return vipNoLongerAvailable();
   }
@@ -3018,25 +3078,26 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return vipNoLongerAvailable?.call();
   }
@@ -3063,6 +3124,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (vipNoLongerAvailable != null) {
@@ -3095,6 +3157,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return vipNoLongerAvailable(this);
   }
@@ -3102,26 +3165,28 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return vipNoLongerAvailable?.call(this);
   }
@@ -3149,6 +3214,7 @@ class _$_VipNoLongerAvailable implements _VipNoLongerAvailable {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (vipNoLongerAvailable != null) {
@@ -3171,14 +3237,11 @@ abstract class _$$_EventHasEndedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_EventHasEndedCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_EventHasEnded>
     implements _$$_EventHasEndedCopyWith<$Res> {
   __$$_EventHasEndedCopyWithImpl(
       _$_EventHasEnded _value, $Res Function(_$_EventHasEnded) _then)
-      : super(_value, (v) => _then(v as _$_EventHasEnded));
-
-  @override
-  _$_EventHasEnded get _value => super._value as _$_EventHasEnded;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -3222,6 +3285,7 @@ class _$_EventHasEnded implements _EventHasEnded {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return eventHasEnded();
   }
@@ -3229,25 +3293,26 @@ class _$_EventHasEnded implements _EventHasEnded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return eventHasEnded?.call();
   }
@@ -3274,6 +3339,7 @@ class _$_EventHasEnded implements _EventHasEnded {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (eventHasEnded != null) {
@@ -3306,6 +3372,7 @@ class _$_EventHasEnded implements _EventHasEnded {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return eventHasEnded(this);
   }
@@ -3313,26 +3380,28 @@ class _$_EventHasEnded implements _EventHasEnded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return eventHasEnded?.call(this);
   }
@@ -3360,6 +3429,7 @@ class _$_EventHasEnded implements _EventHasEnded {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (eventHasEnded != null) {
@@ -3382,14 +3452,11 @@ abstract class _$$_EventSoldOutCopyWith<$Res> {
 
 /// @nodoc
 class __$$_EventSoldOutCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_EventSoldOut>
     implements _$$_EventSoldOutCopyWith<$Res> {
   __$$_EventSoldOutCopyWithImpl(
       _$_EventSoldOut _value, $Res Function(_$_EventSoldOut) _then)
-      : super(_value, (v) => _then(v as _$_EventSoldOut));
-
-  @override
-  _$_EventSoldOut get _value => super._value as _$_EventSoldOut;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -3433,6 +3500,7 @@ class _$_EventSoldOut implements _EventSoldOut {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return eventSoldOut();
   }
@@ -3440,25 +3508,26 @@ class _$_EventSoldOut implements _EventSoldOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return eventSoldOut?.call();
   }
@@ -3485,6 +3554,7 @@ class _$_EventSoldOut implements _EventSoldOut {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (eventSoldOut != null) {
@@ -3517,6 +3587,7 @@ class _$_EventSoldOut implements _EventSoldOut {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return eventSoldOut(this);
   }
@@ -3524,26 +3595,28 @@ class _$_EventSoldOut implements _EventSoldOut {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return eventSoldOut?.call(this);
   }
@@ -3571,6 +3644,7 @@ class _$_EventSoldOut implements _EventSoldOut {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (eventSoldOut != null) {
@@ -3593,14 +3667,11 @@ abstract class _$$_UserAlreadyHasTicketCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UserAlreadyHasTicketCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_UserAlreadyHasTicket>
     implements _$$_UserAlreadyHasTicketCopyWith<$Res> {
   __$$_UserAlreadyHasTicketCopyWithImpl(_$_UserAlreadyHasTicket _value,
       $Res Function(_$_UserAlreadyHasTicket) _then)
-      : super(_value, (v) => _then(v as _$_UserAlreadyHasTicket));
-
-  @override
-  _$_UserAlreadyHasTicket get _value => super._value as _$_UserAlreadyHasTicket;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -3644,6 +3715,7 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return userAlreadyHasTicket();
   }
@@ -3651,25 +3723,26 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return userAlreadyHasTicket?.call();
   }
@@ -3696,6 +3769,7 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (userAlreadyHasTicket != null) {
@@ -3728,6 +3802,7 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return userAlreadyHasTicket(this);
   }
@@ -3735,26 +3810,28 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return userAlreadyHasTicket?.call(this);
   }
@@ -3782,6 +3859,7 @@ class _$_UserAlreadyHasTicket implements _UserAlreadyHasTicket {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (userAlreadyHasTicket != null) {
@@ -3805,16 +3883,12 @@ abstract class _$$_PaymentHasAlreadyBeenMadeCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PaymentHasAlreadyBeenMadeCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_PaymentHasAlreadyBeenMade>
     implements _$$_PaymentHasAlreadyBeenMadeCopyWith<$Res> {
   __$$_PaymentHasAlreadyBeenMadeCopyWithImpl(
       _$_PaymentHasAlreadyBeenMade _value,
       $Res Function(_$_PaymentHasAlreadyBeenMade) _then)
-      : super(_value, (v) => _then(v as _$_PaymentHasAlreadyBeenMade));
-
-  @override
-  _$_PaymentHasAlreadyBeenMade get _value =>
-      super._value as _$_PaymentHasAlreadyBeenMade;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -3859,6 +3933,7 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return paymentHasAlreadyBeenMade();
   }
@@ -3866,25 +3941,26 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return paymentHasAlreadyBeenMade?.call();
   }
@@ -3911,6 +3987,7 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (paymentHasAlreadyBeenMade != null) {
@@ -3943,6 +4020,7 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return paymentHasAlreadyBeenMade(this);
   }
@@ -3950,26 +4028,28 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return paymentHasAlreadyBeenMade?.call(this);
   }
@@ -3997,6 +4077,7 @@ class _$_PaymentHasAlreadyBeenMade implements _PaymentHasAlreadyBeenMade {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (paymentHasAlreadyBeenMade != null) {
@@ -4020,15 +4101,11 @@ abstract class _$$_PaymentSessionHasExpiredCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PaymentSessionHasExpiredCopyWithImpl<$Res>
-    extends _$UserPaymentFailureCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_PaymentSessionHasExpired>
     implements _$$_PaymentSessionHasExpiredCopyWith<$Res> {
   __$$_PaymentSessionHasExpiredCopyWithImpl(_$_PaymentSessionHasExpired _value,
       $Res Function(_$_PaymentSessionHasExpired) _then)
-      : super(_value, (v) => _then(v as _$_PaymentSessionHasExpired));
-
-  @override
-  _$_PaymentSessionHasExpired get _value =>
-      super._value as _$_PaymentSessionHasExpired;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -4073,6 +4150,7 @@ class _$_PaymentSessionHasExpired implements _PaymentSessionHasExpired {
     required TResult Function() userAlreadyHasTicket,
     required TResult Function() paymentHasAlreadyBeenMade,
     required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
   }) {
     return paymentSessionHasExpired();
   }
@@ -4080,25 +4158,26 @@ class _$_PaymentSessionHasExpired implements _PaymentSessionHasExpired {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? permissionDenied,
-    TResult Function(String? message)? stripeError,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? invalidEvent,
-    TResult Function()? canceledByUser,
-    TResult Function()? ticketAlreadyHasVip,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventBeingPostponed,
-    TResult Function()? returnTimeExpired,
-    TResult Function()? invalidCountryCode,
-    TResult Function()? invalidVatNumber,
-    TResult Function()? vipNoLongerAvailable,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventSoldOut,
-    TResult Function()? userAlreadyHasTicket,
-    TResult Function()? paymentHasAlreadyBeenMade,
-    TResult Function()? paymentSessionHasExpired,
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
   }) {
     return paymentSessionHasExpired?.call();
   }
@@ -4125,6 +4204,7 @@ class _$_PaymentSessionHasExpired implements _PaymentSessionHasExpired {
     TResult Function()? userAlreadyHasTicket,
     TResult Function()? paymentHasAlreadyBeenMade,
     TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (paymentSessionHasExpired != null) {
@@ -4157,6 +4237,7 @@ class _$_PaymentSessionHasExpired implements _PaymentSessionHasExpired {
         paymentHasAlreadyBeenMade,
     required TResult Function(_PaymentSessionHasExpired value)
         paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return paymentSessionHasExpired(this);
   }
@@ -4164,26 +4245,28 @@ class _$_PaymentSessionHasExpired implements _PaymentSessionHasExpired {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PermissionDenied value)? permissionDenied,
-    TResult Function(_StripeError value)? stripeError,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_InvalidEvent value)? invalidEvent,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
-    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
-    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
-    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
-    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
-    TResult Function(_PaymentHasAlreadyBeenMade value)?
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
-    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return paymentSessionHasExpired?.call(this);
   }
@@ -4211,6 +4294,7 @@ class _$_PaymentSessionHasExpired implements _PaymentSessionHasExpired {
     TResult Function(_PaymentHasAlreadyBeenMade value)?
         paymentHasAlreadyBeenMade,
     TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (paymentSessionHasExpired != null) {
@@ -4222,4 +4306,219 @@ class _$_PaymentSessionHasExpired implements _PaymentSessionHasExpired {
 
 abstract class _PaymentSessionHasExpired implements UserPaymentFailure {
   const factory _PaymentSessionHasExpired() = _$_PaymentSessionHasExpired;
+}
+
+/// @nodoc
+abstract class _$$_CustomerEmailIsEmptyCopyWith<$Res> {
+  factory _$$_CustomerEmailIsEmptyCopyWith(_$_CustomerEmailIsEmpty value,
+          $Res Function(_$_CustomerEmailIsEmpty) then) =
+      __$$_CustomerEmailIsEmptyCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_CustomerEmailIsEmptyCopyWithImpl<$Res>
+    extends _$UserPaymentFailureCopyWithImpl<$Res, _$_CustomerEmailIsEmpty>
+    implements _$$_CustomerEmailIsEmptyCopyWith<$Res> {
+  __$$_CustomerEmailIsEmptyCopyWithImpl(_$_CustomerEmailIsEmpty _value,
+      $Res Function(_$_CustomerEmailIsEmpty) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_CustomerEmailIsEmpty implements _CustomerEmailIsEmpty {
+  const _$_CustomerEmailIsEmpty();
+
+  @override
+  String toString() {
+    return 'UserPaymentFailure.customerEmailIsEmpty()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_CustomerEmailIsEmpty);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function(String? message) stripeError,
+    required TResult Function() invalidPromotionCode,
+    required TResult Function() promotionCodeExpired,
+    required TResult Function() invalidEvent,
+    required TResult Function() canceledByUser,
+    required TResult Function() ticketAlreadyHasVip,
+    required TResult Function() eventCanceled,
+    required TResult Function() eventBeingPostponed,
+    required TResult Function() returnTimeExpired,
+    required TResult Function() invalidCountryCode,
+    required TResult Function() invalidVatNumber,
+    required TResult Function() vipNoLongerAvailable,
+    required TResult Function() eventHasEnded,
+    required TResult Function() eventSoldOut,
+    required TResult Function() userAlreadyHasTicket,
+    required TResult Function() paymentHasAlreadyBeenMade,
+    required TResult Function() paymentSessionHasExpired,
+    required TResult Function() customerEmailIsEmpty,
+  }) {
+    return customerEmailIsEmpty();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function(String? message)? stripeError,
+    TResult? Function()? invalidPromotionCode,
+    TResult? Function()? promotionCodeExpired,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? canceledByUser,
+    TResult? Function()? ticketAlreadyHasVip,
+    TResult? Function()? eventCanceled,
+    TResult? Function()? eventBeingPostponed,
+    TResult? Function()? returnTimeExpired,
+    TResult? Function()? invalidCountryCode,
+    TResult? Function()? invalidVatNumber,
+    TResult? Function()? vipNoLongerAvailable,
+    TResult? Function()? eventHasEnded,
+    TResult? Function()? eventSoldOut,
+    TResult? Function()? userAlreadyHasTicket,
+    TResult? Function()? paymentHasAlreadyBeenMade,
+    TResult? Function()? paymentSessionHasExpired,
+    TResult? Function()? customerEmailIsEmpty,
+  }) {
+    return customerEmailIsEmpty?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function(String? message)? stripeError,
+    TResult Function()? invalidPromotionCode,
+    TResult Function()? promotionCodeExpired,
+    TResult Function()? invalidEvent,
+    TResult Function()? canceledByUser,
+    TResult Function()? ticketAlreadyHasVip,
+    TResult Function()? eventCanceled,
+    TResult Function()? eventBeingPostponed,
+    TResult Function()? returnTimeExpired,
+    TResult Function()? invalidCountryCode,
+    TResult Function()? invalidVatNumber,
+    TResult Function()? vipNoLongerAvailable,
+    TResult Function()? eventHasEnded,
+    TResult Function()? eventSoldOut,
+    TResult Function()? userAlreadyHasTicket,
+    TResult Function()? paymentHasAlreadyBeenMade,
+    TResult Function()? paymentSessionHasExpired,
+    TResult Function()? customerEmailIsEmpty,
+    required TResult orElse(),
+  }) {
+    if (customerEmailIsEmpty != null) {
+      return customerEmailIsEmpty();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_StripeError value) stripeError,
+    required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
+    required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
+    required TResult Function(_InvalidEvent value) invalidEvent,
+    required TResult Function(_CanceledByUser value) canceledByUser,
+    required TResult Function(_TicketAlreadyHasVip value) ticketAlreadyHasVip,
+    required TResult Function(_EventCanceled value) eventCanceled,
+    required TResult Function(_EventBeingPostponed value) eventBeingPostponed,
+    required TResult Function(_ReturnTimeExpired value) returnTimeExpired,
+    required TResult Function(_InvalidCountryCode value) invalidCountryCode,
+    required TResult Function(_InvalidVatNumber value) invalidVatNumber,
+    required TResult Function(_VipNoLongerAvailable value) vipNoLongerAvailable,
+    required TResult Function(_EventHasEnded value) eventHasEnded,
+    required TResult Function(_EventSoldOut value) eventSoldOut,
+    required TResult Function(_UserAlreadyHasTicket value) userAlreadyHasTicket,
+    required TResult Function(_PaymentHasAlreadyBeenMade value)
+        paymentHasAlreadyBeenMade,
+    required TResult Function(_PaymentSessionHasExpired value)
+        paymentSessionHasExpired,
+    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
+  }) {
+    return customerEmailIsEmpty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_StripeError value)? stripeError,
+    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_CanceledByUser value)? canceledByUser,
+    TResult? Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult? Function(_EventCanceled value)? eventCanceled,
+    TResult? Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult? Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult? Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult? Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult? Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult? Function(_EventHasEnded value)? eventHasEnded,
+    TResult? Function(_EventSoldOut value)? eventSoldOut,
+    TResult? Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult? Function(_PaymentHasAlreadyBeenMade value)?
+        paymentHasAlreadyBeenMade,
+    TResult? Function(_PaymentSessionHasExpired value)?
+        paymentSessionHasExpired,
+    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
+  }) {
+    return customerEmailIsEmpty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_StripeError value)? stripeError,
+    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
+    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_CanceledByUser value)? canceledByUser,
+    TResult Function(_TicketAlreadyHasVip value)? ticketAlreadyHasVip,
+    TResult Function(_EventCanceled value)? eventCanceled,
+    TResult Function(_EventBeingPostponed value)? eventBeingPostponed,
+    TResult Function(_ReturnTimeExpired value)? returnTimeExpired,
+    TResult Function(_InvalidCountryCode value)? invalidCountryCode,
+    TResult Function(_InvalidVatNumber value)? invalidVatNumber,
+    TResult Function(_VipNoLongerAvailable value)? vipNoLongerAvailable,
+    TResult Function(_EventHasEnded value)? eventHasEnded,
+    TResult Function(_EventSoldOut value)? eventSoldOut,
+    TResult Function(_UserAlreadyHasTicket value)? userAlreadyHasTicket,
+    TResult Function(_PaymentHasAlreadyBeenMade value)?
+        paymentHasAlreadyBeenMade,
+    TResult Function(_PaymentSessionHasExpired value)? paymentSessionHasExpired,
+    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
+    required TResult orElse(),
+  }) {
+    if (customerEmailIsEmpty != null) {
+      return customerEmailIsEmpty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CustomerEmailIsEmpty implements UserPaymentFailure {
+  const factory _CustomerEmailIsEmpty() = _$_CustomerEmailIsEmpty;
 }

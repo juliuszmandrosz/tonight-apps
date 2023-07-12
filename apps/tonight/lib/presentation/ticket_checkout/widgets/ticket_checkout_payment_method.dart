@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payments/application/core/tonight_payment_method.dart';
 import 'package:payments/domain/domain.dart';
 import 'package:tonight/application/core/payment_methods_translations.dart';
-import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
+import 'package:tonight/application/ticket_checkout/bloc/ticket_checkout_bloc.dart';
 import 'package:tonight/presentation/core/tonight_list_tile_with_title_and_subtitle.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
@@ -15,14 +15,12 @@ class TicketCheckoutPaymentMethod extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TicketCheckoutCubit, TicketCheckoutState>(
-      buildWhen: (previous, current) =>
-          previous.customerData != current.customerData,
+    return BlocBuilder<TicketCheckoutBloc, TicketCheckoutState>(
+      buildWhen: (p, c) => p.ticketCheckoutData != c.ticketCheckoutData,
       builder: (context, state) {
-        final customerData = state.customerData.getOrCrash();
-        final paymentMethod = getPaymentMethodFromString(
-          customerData.paymentMethod,
-        );
+        final customerData = state.ticketCheckoutData.getOrCrash().customerData;
+        final paymentMethod =
+            getPaymentMethodFromString(customerData.paymentMethod);
         return Column(
           children: [
             Card(
@@ -54,16 +52,15 @@ class TicketCheckoutPaymentMethod extends StatelessWidget {
                             onPressed: () async {
                               final result =
                                   await context.pushRoute<CustomerData>(
-                                PaymentMethodRoute(
-                                  customerData: state.customerData.getOrCrash(),
-                                ),
+                                PaymentMethodRoute(customerData: customerData),
                               );
 
                               if (context.mounted && result != null) {
-                                final ticketCheckoutCubit =
-                                    context.read<TicketCheckoutCubit>();
-
-                                ticketCheckoutCubit.customerDataChanged(result);
+                                context.read<TicketCheckoutBloc>().add(
+                                      TicketCheckoutEvent.customerDataChanged(
+                                        result,
+                                      ),
+                                    );
                               }
                             },
                             icon: Icon(

@@ -5,11 +5,13 @@ class CustomerData extends Equatable {
   final String? paymentMethod;
   final String? name;
   final String? vatNumber;
+  final String? email;
 
   const CustomerData({
     this.paymentMethod,
     this.name,
     this.vatNumber,
+    this.email,
   });
 
   @override
@@ -17,12 +19,14 @@ class CustomerData extends Equatable {
         paymentMethod,
         name,
         vatNumber,
+        email,
       ];
 
   CustomerData copyWith({
     Option<String>? paymentMethod,
     Option<String>? name,
     Option<String>? vatNumber,
+    Option<String>? email,
   }) {
     return CustomerData(
       paymentMethod: paymentMethod != null
@@ -43,6 +47,12 @@ class CustomerData extends Equatable {
               (vat) => vat,
             )
           : this.vatNumber,
+      email: email != null
+          ? email.fold(
+              () => null,
+              (email) => email,
+            )
+          : this.email,
     );
   }
 }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'event_fees_dto.dart';
 
@@ -33,33 +33,37 @@ mixin _$EventFeesDto {
 abstract class $EventFeesDtoCopyWith<$Res> {
   factory $EventFeesDtoCopyWith(
           EventFeesDto value, $Res Function(EventFeesDto) then) =
-      _$EventFeesDtoCopyWithImpl<$Res>;
+      _$EventFeesDtoCopyWithImpl<$Res, EventFeesDto>;
+  @useResult
   $Res call({double normal, double exclusive});
 }
 
 /// @nodoc
-class _$EventFeesDtoCopyWithImpl<$Res> implements $EventFeesDtoCopyWith<$Res> {
+class _$EventFeesDtoCopyWithImpl<$Res, $Val extends EventFeesDto>
+    implements $EventFeesDtoCopyWith<$Res> {
   _$EventFeesDtoCopyWithImpl(this._value, this._then);
 
-  final EventFeesDto _value;
   // ignore: unused_field
-  final $Res Function(EventFeesDto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? normal = freezed,
-    Object? exclusive = freezed,
+    Object? normal = null,
+    Object? exclusive = null,
   }) {
     return _then(_value.copyWith(
-      normal: normal == freezed
+      normal: null == normal
           ? _value.normal
           : normal // ignore: cast_nullable_to_non_nullable
               as double,
-      exclusive: exclusive == freezed
+      exclusive: null == exclusive
           ? _value.exclusive
           : exclusive // ignore: cast_nullable_to_non_nullable
               as double,
-    ));
+    ) as $Val);
   }
 }
 
@@ -70,31 +74,30 @@ abstract class _$$_EventFeesDtoCopyWith<$Res>
           _$_EventFeesDto value, $Res Function(_$_EventFeesDto) then) =
       __$$_EventFeesDtoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({double normal, double exclusive});
 }
 
 /// @nodoc
 class __$$_EventFeesDtoCopyWithImpl<$Res>
-    extends _$EventFeesDtoCopyWithImpl<$Res>
+    extends _$EventFeesDtoCopyWithImpl<$Res, _$_EventFeesDto>
     implements _$$_EventFeesDtoCopyWith<$Res> {
   __$$_EventFeesDtoCopyWithImpl(
       _$_EventFeesDto _value, $Res Function(_$_EventFeesDto) _then)
-      : super(_value, (v) => _then(v as _$_EventFeesDto));
+      : super(_value, _then);
 
-  @override
-  _$_EventFeesDto get _value => super._value as _$_EventFeesDto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? normal = freezed,
-    Object? exclusive = freezed,
+    Object? normal = null,
+    Object? exclusive = null,
   }) {
     return _then(_$_EventFeesDto(
-      normal: normal == freezed
+      normal: null == normal
           ? _value.normal
           : normal // ignore: cast_nullable_to_non_nullable
               as double,
-      exclusive: exclusive == freezed
+      exclusive: null == exclusive
           ? _value.exclusive
           : exclusive // ignore: cast_nullable_to_non_nullable
               as double,
@@ -127,19 +130,18 @@ class _$_EventFeesDto extends _EventFeesDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EventFeesDto &&
-            const DeepCollectionEquality().equals(other.normal, normal) &&
-            const DeepCollectionEquality().equals(other.exclusive, exclusive));
+            (identical(other.normal, normal) || other.normal == normal) &&
+            (identical(other.exclusive, exclusive) ||
+                other.exclusive == exclusive));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(normal),
-      const DeepCollectionEquality().hash(exclusive));
+  int get hashCode => Object.hash(runtimeType, normal, exclusive);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventFeesDtoCopyWith<_$_EventFeesDto> get copyWith =>
       __$$_EventFeesDtoCopyWithImpl<_$_EventFeesDto>(this, _$identity);
 

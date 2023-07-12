@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:translations/translations.dart';
 
 part 'user_ticket_failure.freezed.dart';
 
@@ -9,4 +10,21 @@ class UserTicketFailure with _$UserTicketFailure {
   const factory UserTicketFailure.permissionDenied() = _PermissionDenied;
 
   const factory UserTicketFailure.returnTimeIsOver() = _ReturnTimeIsOver;
+
+  const factory UserTicketFailure.ticketExpired() = _TicketExpired;
+
+  const factory UserTicketFailure.ticketNotExists() = _TicketNotExists;
+}
+
+extension UserTicketFailureX on UserTicketFailure {
+  String get message {
+    return when(
+      unexpected: () => S().serverError,
+      returnTimeIsOver: () => S().returnTimeIsOver,
+      permissionDenied: () => S().operationNotAllowed,
+      ticketExpired: () => S().ticketExpired,
+      // TODO - add translation
+      ticketNotExists: () => 'Bilet nie istnieje',
+    );
+  }
 }

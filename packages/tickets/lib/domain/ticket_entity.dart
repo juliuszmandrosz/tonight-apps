@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:uuid/uuid.dart';
 
@@ -11,17 +12,20 @@ class Ticket extends Equatable {
   final DateTime eventEndDateTime;
   final int price;
   final String currency;
-  final bool isVip;
   final String ticketPaymentId;
-  final String? vipPaymentId;
   final bool isExpired;
   final bool isEventCanceled;
   final bool isReturnable;
   final bool isReturned;
   final String reviewId;
+  final int quantity;
+  final bool isActivated;
+  final DateTime createdAt;
+  final DateTime? usedAt;
 
   Ticket({
     String? id,
+    DateTime? createdAt,
     required this.eventId,
     required this.clubId,
     required this.clubName,
@@ -30,15 +34,17 @@ class Ticket extends Equatable {
     required this.eventEndDateTime,
     required this.price,
     required this.currency,
-    required this.isVip,
     required this.ticketPaymentId,
-    this.vipPaymentId,
     this.isExpired = false,
     this.isEventCanceled = false,
     this.isReturnable = false,
     this.isReturned = false,
     this.reviewId = '',
-  }) : id = id ?? const Uuid().v1();
+    this.quantity = 1,
+    this.isActivated = false,
+    this.usedAt,
+  })  : id = id ?? const Uuid().v1(),
+        createdAt = createdAt ?? DateTime.now();
 
   @override
   List<Object?> get props => [
@@ -51,14 +57,16 @@ class Ticket extends Equatable {
         eventEndDateTime,
         price,
         currency,
-        isVip,
         ticketPaymentId,
-        vipPaymentId,
         isExpired,
         isEventCanceled,
         isReturnable,
         isReturned,
-        reviewId
+        reviewId,
+        quantity,
+        isActivated,
+        createdAt,
+        usedAt,
       ];
 
   Ticket copyWith({
@@ -66,18 +74,20 @@ class Ticket extends Equatable {
     String? clubId,
     int? price,
     String? currency,
-    bool? isVip,
     DateTime? eventStartDateTime,
     DateTime? eventEndDateTime,
     String? eventName,
     String? clubName,
     String? ticketPaymentId,
-    String? vipPaymentId,
     bool? isExpired,
     bool? isEventCanceled,
     bool? isReturnable,
     bool? isReturned,
     String? reviewId,
+    int? quantity,
+    bool? isActivated,
+    DateTime? createdAt,
+    Option<DateTime>? usedAt,
   }) {
     return Ticket(
       id: id,
@@ -85,18 +95,36 @@ class Ticket extends Equatable {
       clubId: clubId ?? this.clubId,
       price: price ?? this.price,
       currency: currency ?? this.currency,
-      isVip: isVip ?? this.isVip,
       clubName: clubName ?? this.clubName,
       eventName: eventName ?? this.eventName,
       eventStartDateTime: eventStartDateTime ?? this.eventStartDateTime,
       eventEndDateTime: eventEndDateTime ?? this.eventEndDateTime,
       ticketPaymentId: ticketPaymentId ?? this.ticketPaymentId,
-      vipPaymentId: vipPaymentId ?? this.vipPaymentId,
       isExpired: isExpired ?? this.isExpired,
       isEventCanceled: isEventCanceled ?? this.isEventCanceled,
       isReturnable: isReturnable ?? this.isReturnable,
       isReturned: isReturned ?? this.isReturned,
       reviewId: reviewId ?? this.reviewId,
+      quantity: quantity ?? this.quantity,
+      createdAt: createdAt ?? this.createdAt,
+      isActivated: isActivated ?? this.isActivated,
+      usedAt: usedAt != null
+          ? usedAt.fold(
+              () => null,
+              (value) => value,
+            )
+          : this.usedAt,
     );
+  }
+
+  bool get isValid {
+    if (isExpired) return false;
+    if (isEventCanceled) return false;
+    if (isReturned) return false;
+    if (isActivated &&
+        usedAt!.add(const Duration(minutes: 10)).isBefore(DateTime.now())) {
+      return false;
+    }
+    return true;
   }
 }

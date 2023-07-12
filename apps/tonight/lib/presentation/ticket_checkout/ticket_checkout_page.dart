@@ -1,59 +1,47 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
-import 'package:dartz/dartz.dart' as dartz;
 import 'package:events/events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:payments/domain/domain.dart';
-import 'package:tonight/application/ticket_checkout/ticket_checkout_cubit.dart';
-import 'package:tonight/application/ticket_list/ticket_list_cubit.dart';
+import 'package:tonight/application/ticket_checkout/bloc/ticket_checkout_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_email.dart';
 import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_header.dart';
-import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_invoice_checkbox.dart';
-import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_invoice_data.dart';
-import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_is_vip_switch.dart';
-import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_pay_section.dart';
 import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_payment_method.dart';
 import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_promotion_code.dart';
 import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_summary.dart';
 import 'package:tonight/presentation/ticket_checkout/widgets/ticket_checkout_ticket_card.dart';
-import 'package:tonight/presentation/ticket_checkout/widgets/vip_not_enabled_info.dart';
+import 'package:tonight/presentation/ticket_checkout/widgets/ticket_proceed_to_pay_button.dart';
 import 'package:translations/translations.dart';
 
-class TicketCheckoutPage extends StatefulWidget {
+class TicketCheckoutPage extends StatelessWidget {
   final Event event;
 
   const TicketCheckoutPage({required this.event, Key? key}) : super(key: key);
 
   @override
-  State<TicketCheckoutPage> createState() => _TicketCheckoutPageState();
-}
-
-class _TicketCheckoutPageState extends State<TicketCheckoutPage> {
-  @override
   Widget build(BuildContext context) {
     return TonightOverlay(
       child: BlocProvider(
-        create: (_) => getIt<TicketCheckoutCubit>(
-          param1: context.read<TicketListCubit>(),
-        )..initData(
-            widget.event,
-          ),
-        child: BlocConsumer<TicketCheckoutCubit, TicketCheckoutState>(
-          buildWhen: (previous, current) =>
-              previous.initialStatus != current.initialStatus ||
-              previous.eventTickets != current.eventTickets ||
-              previous.sendInvoice != current.sendInvoice,
-          listenWhen: (previous, current) =>
-              previous.initialStatus != current.initialStatus ||
-              previous.proceedingToPaymentStatus !=
-                  current.proceedingToPaymentStatus ||
-              previous.snackbarMessage != current.snackbarMessage ||
-              previous.paymentFailure != current.paymentFailure,
+        create: (_) => getIt<TicketCheckoutBloc>()
+          ..add(TicketCheckoutEvent.stateInitialized(event)),
+        child: BlocConsumer<TicketCheckoutBloc, TicketCheckoutState>(
+          buildWhen: (p, c) => p.initialStatus != c.initialStatus,
+          listenWhen: (p, c) =>
+              p.proceedingToPaymentStatus != c.proceedingToPaymentStatus ||
+              p.snackbarMessage != c.snackbarMessage ||
+              p.purchasedTicket != c.purchasedTicket,
           listener: (context, state) {
+            state.proceedingToPaymentStatus.isLoading()
+                ? context.loaderOverlay.show()
+                : context.loaderOverlay.hide();
+            state.snackbarMessage.fold(
+              () {},
+              (message) => context.showSnackbarMessage(message),
+            );
             if (state.proceedingToPaymentStatus.isSuccess() &&
                 state.purchasedTicket.isSome()) {
               context.replaceRoute(
@@ -62,91 +50,58 @@ class _TicketCheckoutPageState extends State<TicketCheckoutPage> {
                 ),
               );
             }
-
-            state.proceedingToPaymentStatus.isLoading()
-                ? context.loaderOverlay.show()
-                : context.loaderOverlay.hide();
-
-            state.snackbarMessage.fold(
-              () {},
-              (message) => context.showSnackbarMessage(message),
-            );
-
-            if (state.paymentFailure ==
-                dartz.some(
-                    const UserPaymentFailure.paymentHasAlreadyBeenMade())) {
-              context.router.popUntil(
-                (route) => route.settings.name == EventDetailsRoute.name,
-              );
-            }
           },
           builder: (context, state) {
-            if (state.initialStatus.isInitial()) {
-              return const SizedBox.shrink();
-            }
-
-            if (state.initialStatus.isFailure()) {
-              return FailureInfo(
-                retryCallback: () =>
-                    context.read<TicketCheckoutCubit>().initData(widget.event),
-              );
-            }
-
-            return state.initialStatus.isLoading()
-                ? const WaveLoadingIndicator()
-                : Scaffold(
+            switch (state.initialStatus) {
+              case CubitStatus.initial:
+                return const SizedBox.shrink();
+              case CubitStatus.loading:
+                return const WaveLoadingIndicator();
+              case CubitStatus.failure:
+                return FailureInfo(
+                  retryCallback: () => context.read<TicketCheckoutBloc>().add(
+                        TicketCheckoutEvent.stateInitialized(event),
+                      ),
+                );
+              case CubitStatus.success:
+                return GestureDetector(
+                  onTap: () => context.unfocus(),
+                  child: Scaffold(
                     floatingActionButtonLocation:
                         FloatingActionButtonLocation.centerFloat,
-                    floatingActionButton: const TicketCheckoutPaySection(),
+                    floatingActionButton: const TicketProceedToPayButton(),
                     appBar: TonightAppBar(title: S().checkout),
-                    body: Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: ListView(
-                        children: [
-                          const TicketCheckoutHeader(),
-                          const SizedBox(height: 20),
-                          const TicketCheckoutTicketCard(),
-                          const SizedBox(height: 30),
-                          if (_checkIfVipIsNotEnabled(state))
-                            const VipNotEnabledInfo(),
-                          if (_checkIfVipSwitchIsVisible(state))
-                            const TicketCheckoutIsVipSwitch(),
-                          const Divider(),
-                          const SizedBox(height: 10),
-                          const TicketCheckoutPaymentMethod(),
-                          const SizedBox(height: 20),
-                          const TicketCheckoutSummary(),
-                          const SizedBox(height: 10),
-                          const Divider(),
-                          const SizedBox(height: 10),
-                          if (!state.eventTickets.getOrCrash().isSoldOut)
-                            const TicketCheckoutPromotionCode(),
-                          const SizedBox(height: 20),
-                          const TicketCheckoutInvoiceCheckbox(),
-                          if (state.sendInvoice)
-                            const TicketCheckoutInvoiceData(),
-                          const SizedBox(height: 80),
-                        ],
+                    body: const Padding(
+                      padding: EdgeInsets.all(16),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            TicketCheckoutHeader(),
+                            SizedBox(height: 20),
+                            TicketCheckoutTicketCard(),
+                            SizedBox(height: 15),
+                            Divider(),
+                            SizedBox(height: 15),
+                            TicketCheckoutPaymentMethod(),
+                            SizedBox(height: 20),
+                            TicketCheckoutEmail(),
+                            SizedBox(height: 20),
+                            TicketCheckoutSummary(),
+                            SizedBox(height: 15),
+                            Divider(),
+                            SizedBox(height: 15),
+                            TicketCheckoutPromotionCode(),
+                            SizedBox(height: 80),
+                          ],
+                        ),
                       ),
                     ),
-                  );
+                  ),
+                );
+            }
           },
         ),
       ),
     );
-  }
-
-  bool _checkIfVipSwitchIsVisible(TicketCheckoutState state) {
-    final eventTickets = state.eventTickets.getOrCrash();
-    if (eventTickets.isSaleOnlyAtGate) return false;
-    return !eventTickets.isSoldOut &&
-        eventTickets.getCurrentPool()!.isVipEnabled;
-  }
-
-  bool _checkIfVipIsNotEnabled(TicketCheckoutState state) {
-    final eventTickets = state.eventTickets.getOrCrash();
-    if (eventTickets.isSaleOnlyAtGate) return false;
-    return !eventTickets.isSoldOut &&
-        !eventTickets.getCurrentPool()!.isVipEnabled;
   }
 }
