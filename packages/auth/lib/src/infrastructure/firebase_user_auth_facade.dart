@@ -159,32 +159,6 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, AppUser>> linkEmailForUser({
-    required String email,
-    required Uri link,
-  }) async {
-    try {
-      if (!_firebaseAuth.isSignInWithEmailLink(link.toString())) {
-        return left(const AuthFailure.invalidLink());
-      }
-      final isEmailInUse = await _checkIfEmailIsAlreadyInUse(email);
-      final userCredential = isEmailInUse
-          ? await _firebaseAuth.signInWithEmailLink(
-              email: email,
-              emailLink: link.toString(),
-            )
-          : await _linkWithEmailCredential(email: email, link: link);
-      await _addUserToFirestoreIfNotExists(userCredential);
-      final appUser = await _mapFirebaseUserToDomain();
-      return right(appUser);
-    } on FirebaseAuthException catch (e) {
-      return left(await _handleFirebaseException(e));
-    } on DioError catch (e) {
-      return left(await _handleDioError(e));
-    }
-  }
-
-  @override
   Future<Either<AuthFailure, AppUser>> signInWithGoogleAsUser() async {
     try {
       final googleUser = await _googleSignIn.signIn();
@@ -194,35 +168,6 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
       final googleAuth = await googleUser.authentication;
       final userCredential = await _signInWithGoogleCredential(googleAuth);
       await _checkIfUserCanSignIn(userCredential);
-      await _addUserToFirestoreIfNotExists(userCredential);
-      final appUser = await _mapFirebaseUserToDomain();
-      return right(appUser);
-    } on FirebaseAuthException catch (e) {
-      return left(await _handleFirebaseException(e));
-    } on DioError catch (e) {
-      await _signOut();
-      return left(await _handleDioError(e));
-    } on PlatformException catch (e) {
-      _logger.e(e);
-      return left(const AuthFailure.unavailable());
-    }
-  }
-
-  @override
-  Future<Either<AuthFailure, AppUser>> linkGoogleForUser() async {
-    try {
-      final googleUser = await _googleSignIn.signIn();
-      if (googleUser == null) {
-        return left(const AuthFailure.canceledByUser());
-      }
-      final googleAuth = await googleUser.authentication;
-      final isEmailInUse = await _checkIfEmailIsAlreadyInUse(googleUser.email);
-      final userCredential = isEmailInUse
-          ? await _signInWithGoogleCredential(googleAuth)
-          : await _linkWithWithGoogleCredential(googleAuth);
-      if (isEmailInUse) {
-        await _checkIfUserCanSignIn(userCredential);
-      }
       await _addUserToFirestoreIfNotExists(userCredential);
       final appUser = await _mapFirebaseUserToDomain();
       return right(appUser);
@@ -261,42 +206,6 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
         return left(const AuthFailure.canceledByUser());
       }
       return left(const AuthFailure.unavailable());
-    }
-  }
-
-  @override
-  Future<Either<AuthFailure, AppUser>> linkAppleForUser() async {
-    try {
-      final appleCredential = await _getAppleOAuthCredential();
-      try {
-        final userCredential = await _linkWithCredential(appleCredential);
-        await _addUserToFirestoreIfNotExists(userCredential);
-        final appUser = await _mapFirebaseUserToDomain();
-        return right(appUser);
-      } on FirebaseAuthException catch (e) {
-        if (e.code == 'account-exists-with-different-credential') {
-          final userCredential =
-              await _firebaseAuth.signInWithCredential(appleCredential);
-          await _checkIfUserCanSignIn(userCredential);
-          final appUser = await _mapFirebaseUserToDomain();
-          return right(appUser);
-        }
-        return left(await _handleFirebaseException(e));
-      }
-    } on SignInWithAppleAuthorizationException catch (e) {
-      _logger.e(e);
-      if (e.code == AuthorizationErrorCode.canceled) {
-        return left(const AuthFailure.canceledByUser());
-      }
-      return left(const AuthFailure.unavailable());
-    } on PlatformException catch (e) {
-      _logger.e(e);
-      return left(const AuthFailure.unavailable());
-    } on DioError catch (e) {
-      await _signOut();
-      return left(await _handleDioError(e));
-    } on FirebaseAuthException catch (e) {
-      return left(await _handleFirebaseException(e));
     }
   }
 
@@ -383,27 +292,6 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
       accessToken: googleAuth.accessToken,
     );
     return _firebaseAuth.signInWithCredential(authCredential);
-  }
-
-  Future<UserCredential> _linkWithEmailCredential({
-    required String email,
-    required Uri link,
-  }) async {
-    final emailCredential = EmailAuthProvider.credentialWithLink(
-      email: email,
-      emailLink: link.toString(),
-    );
-    return _linkWithCredential(emailCredential);
-  }
-
-  Future<UserCredential> _linkWithWithGoogleCredential(
-    GoogleSignInAuthentication googleAuth,
-  ) async {
-    final authCredential = GoogleAuthProvider.credential(
-      idToken: googleAuth.idToken,
-      accessToken: googleAuth.accessToken,
-    );
-    return _linkWithCredential(authCredential);
   }
 
   Future<OAuthCredential> _getAppleOAuthCredential() async {
@@ -522,12 +410,6 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
 
   Future<UserCredential> _linkWithCredential(AuthCredential credential) {
     return _firebaseAuth.tryGetFirebaseUser().linkWithCredential(credential);
-  }
-
-  Future<bool> _checkIfEmailIsAlreadyInUse(String? email) async {
-    if (email == null) return false;
-    final methods = await _firebaseAuth.fetchSignInMethodsForEmail(email);
-    return methods.isNotEmpty;
   }
 
   Future<bool> _checkIfPhoneNumberIsAlreadyInUse(String phoneNumber) async {
