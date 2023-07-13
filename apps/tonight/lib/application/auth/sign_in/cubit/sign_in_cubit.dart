@@ -112,12 +112,9 @@ class SignInCubit extends Cubit<SignInState> {
         email: EmailInput.dirty(state.email.value),
       ),
     );
-
     final status = Formz.validate([state.email]);
-
     emit(state.copyWith(signInStatus: status));
-    // TODO - check this
-    return status.isValidated;
+    return status.isValid;
   }
 
   _emitFailure(AuthFailure failure) {

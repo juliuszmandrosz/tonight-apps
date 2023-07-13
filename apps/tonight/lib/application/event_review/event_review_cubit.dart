@@ -101,13 +101,9 @@ class EventReviewCubit extends Cubit<EventReviewState> {
       value: state.reviewContent.value,
       numberOfStars: state.reviewValue,
     );
-
     emit(state.copyWith(reviewContent: content));
-
     final status = Formz.validate([content]);
-
     emit(state.copyWith(submittingStatus: status));
-
-    return status.isValidated;
+    return status.isValid;
   }
 }

@@ -38,13 +38,11 @@ class UsernameCubit extends Cubit<UsernameState> {
         username: Username.dirty(state.username.value),
       ),
     );
-
     final status = Formz.validate([
       state.username,
     ]);
     emit(state.copyWith(status: status));
-
-    return status.isValidated;
+    return status.isValid;
   }
 
   _emitFailure(UserAccountFailure failure) {
