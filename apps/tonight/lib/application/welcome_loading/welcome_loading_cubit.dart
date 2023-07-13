@@ -8,7 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tonight/application/core/deep_links_utils.dart';
+import 'package:tonight/application/core/handle_dynamic_link.dart';
+import 'package:tonight/application/core/handle_push_notification.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
 
@@ -74,7 +75,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
           final lastMessageId =
               _pushNotificationsCubit.state.lastHandledMessageId;
           if (message?.data != null && lastMessageId != message!.messageId) {
-            await handleDeepLink(context, message.data);
+            await handlePushNotification(context, message.data);
             _pushNotificationsCubit
                 .addLastHandledMessageIdToState(message.messageId);
           }
@@ -97,7 +98,7 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
           final lastMessageId =
               _pushNotificationsCubit.state.lastHandledMessageId;
           if (lastMessageId != message.messageId) {
-            await handleDeepLink(context, message.data);
+            await handlePushNotification(context, message.data);
             _pushNotificationsCubit
                 .addLastHandledMessageIdToState(message.messageId);
           }
@@ -110,12 +111,12 @@ class WelcomeLoadingCubit extends Cubit<WelcomeLoadingState> {
     final initialLink = await FirebaseDynamicLinks.instance.getInitialLink();
 
     if (context.mounted && initialLink != null) {
-      await handleDeepLink(context, initialLink.link.queryParameters);
+      await handleDynamicLink(context, initialLink.link.queryParameters);
     }
 
     FirebaseDynamicLinks.instance.onLink.listen(
       (data) async {
-        await handleDeepLink(context, data.link.queryParameters);
+        await handleDynamicLink(context, data.link.queryParameters);
       },
     );
   }
