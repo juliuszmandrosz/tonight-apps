@@ -103,10 +103,12 @@ class _ActivateTicketPageState extends State<ActivateTicketPage> {
                                   ),
                                 if (isTimerVisible) const SizedBox(height: 30),
                                 ActivateTicketQuantityInfo(
-                                    quantity: ticket.quantity),
+                                  quantity: ticket.quantity,
+                                ),
                                 const SizedBox(height: 30),
                                 ActivateTicketClubNameInfo(
-                                    clubName: ticket.clubName),
+                                  clubName: ticket.clubName,
+                                ),
                                 const SizedBox(height: 30),
                                 ActivateTicketEventNameInfo(
                                   eventName: ticket.eventName,
