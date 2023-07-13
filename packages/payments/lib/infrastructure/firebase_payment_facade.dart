@@ -331,7 +331,6 @@ class FirebasePaymentFacade implements UserPaymentFacade, PartnerPaymentFacade {
       const GooglePayInitParams(
         merchantName: 'Tonight',
         countryCode: 'PL',
-        testEnv: true,
       ),
     );
 
