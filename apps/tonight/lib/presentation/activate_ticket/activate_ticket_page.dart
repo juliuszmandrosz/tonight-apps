@@ -86,7 +86,7 @@ class _ActivateTicketPageState extends State<ActivateTicketPage> {
                           ? const TicketExpiredInfo()
                           : Column(
                               children: [
-                                if (isTimerVisible) const SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 if (isTimerVisible)
                                   CountdownTimer(
                                     secondsLeft: secondsLeftForReceiveTicket,
