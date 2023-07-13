@@ -86,7 +86,6 @@ class _RedeemTonightVoucherPageState extends State<RedeemTonightVoucherPage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const SizedBox(width: 10),
                                 const FaIcon(
                                   FontAwesomeIcons.gift,
                                   size: 24,
@@ -104,7 +103,6 @@ class _RedeemTonightVoucherPageState extends State<RedeemTonightVoucherPage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const SizedBox(width: 10),
                                 const FaIcon(
                                   FontAwesomeIcons.building,
                                   size: 24,
@@ -122,7 +120,6 @@ class _RedeemTonightVoucherPageState extends State<RedeemTonightVoucherPage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const SizedBox(width: 10),
                                 const FaIcon(
                                   FontAwesomeIcons.fire,
                                   size: 24,
