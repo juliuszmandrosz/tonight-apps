@@ -11,10 +11,10 @@ class UserPaymentFailure with _$UserPaymentFailure {
   factory UserPaymentFailure.stripeError(String? message) = _StripeError;
 
   const factory UserPaymentFailure.invalidPromotionCode() =
-  _InvalidPromotionCode;
+      _InvalidPromotionCode;
 
   const factory UserPaymentFailure.promotionCodeExpired() =
-  _PromotionCodeExpired;
+      _PromotionCodeExpired;
 
   const factory UserPaymentFailure.invalidEvent() = _InvalidEvent;
 
@@ -33,21 +33,18 @@ class UserPaymentFailure with _$UserPaymentFailure {
   const factory UserPaymentFailure.invalidVatNumber() = _InvalidVatNumber;
 
   const factory UserPaymentFailure.vipNoLongerAvailable() =
-  _VipNoLongerAvailable;
+      _VipNoLongerAvailable;
 
   const factory UserPaymentFailure.eventHasEnded() = _EventHasEnded;
 
   const factory UserPaymentFailure.eventSoldOut() = _EventSoldOut;
 
   const factory UserPaymentFailure.userAlreadyHasTicket() =
-  _UserAlreadyHasTicket;
+      _UserAlreadyHasTicket;
 
   const factory UserPaymentFailure.paymentHasAlreadyBeenMade() =
-  _PaymentHasAlreadyBeenMade;
+      _PaymentHasAlreadyBeenMade;
 
   const factory UserPaymentFailure.paymentSessionHasExpired() =
-  _PaymentSessionHasExpired;
-
-  const factory UserPaymentFailure.customerEmailIsEmpty () =
-  _CustomerEmailIsEmpty;
+      _PaymentSessionHasExpired;
 }

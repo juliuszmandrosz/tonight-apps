@@ -15,7 +15,7 @@ class SignInButtons extends StatelessWidget {
       children: [
         SignInButton(),
         SizedBox(height: 30),
-        OrContinueWith(),
+        OrSignInWith(),
         SizedBox(height: 30),
         AuthProviders(),
       ],

@@ -7,6 +7,7 @@ import 'package:formz/formz.dart';
 import 'package:tonight/application/onboarding_user_details/form_inputs/gender_value_object.dart';
 import 'package:tonight/application/onboarding_user_details/gender.dart';
 import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
+import 'package:translations/translations.dart';
 
 class OnboardingGenderInput extends HookWidget {
   const OnboardingGenderInput({Key? key}) : super(key: key);
@@ -37,9 +38,8 @@ class OnboardingGenderInput extends HookWidget {
               size: 16,
             ),
             hintMaxLines: 1,
-            // TODO - add translation
-            hintText: 'Płeć',
-            labelText: 'Płeć',
+            hintText: S().gender,
+            labelText: S().gender,
             hintStyle: context.titleSmall.copyWith(color: context.hintColor),
             errorText: _getGenderInputErrorMessage(state),
             errorMaxLines: 2,
@@ -54,8 +54,7 @@ class OnboardingGenderInput extends HookWidget {
       context: context,
       builder: (context) {
         return SimpleDialog(
-          // TODO - add translation
-          title: Text('Wybierz płeć'),
+          title: Text(S().selectGender),
           children: [
             ...Gender.values.map(
               (gender) => SimpleDialogOption(

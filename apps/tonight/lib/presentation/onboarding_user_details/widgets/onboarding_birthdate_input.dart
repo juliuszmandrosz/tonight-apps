@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:formz/formz.dart';
 import 'package:tonight/application/onboarding_user_details/form_inputs/birthdate_value_object.dart';
 import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
+import 'package:translations/translations.dart';
 
 class OnboardingBirthdateInput extends HookWidget {
   const OnboardingBirthdateInput({Key? key}) : super(key: key);
@@ -39,9 +40,8 @@ class OnboardingBirthdateInput extends HookWidget {
           decoration: InputDecoration(
             prefixIcon: const Icon(Icons.calendar_month),
             hintMaxLines: 1,
-            // TODO - add translation
-            hintText: 'Data urodzenia',
-            labelText: 'Data urodzenia',
+            hintText: S().birthdate,
+            labelText: S().birthdate,
             hintStyle: context.titleSmall.copyWith(color: context.hintColor),
             errorText: _getBirthdateInputErrorMessage(state),
             errorMaxLines: 2,
