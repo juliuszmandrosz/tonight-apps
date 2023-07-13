@@ -14,7 +14,7 @@ abstract class UserAuthFacade {
 
   // Returns verification id and resend token
   Stream<Either<AuthFailure, Tuple2<String, int?>>>
-      sendSmsVerificationCodeForUser({
+  sendSmsVerificationCodeForUser({
     required String phoneNumber,
     required int? resendToken,
   });
@@ -34,19 +34,10 @@ abstract class UserAuthFacade {
     required String email,
     required Uri link,
   });
-
-  Future<Either<AuthFailure, AppUser>> linkEmailForUser({
-    required String email,
-    required Uri link,
-  });
-
+  
   Future<Either<AuthFailure, AppUser>> signInWithGoogleAsUser();
 
-  Future<Either<AuthFailure, AppUser>> linkGoogleForUser();
-
   Future<Either<AuthFailure, AppUser>> signInWithAppleAsUser();
-
-  Future<Either<AuthFailure, AppUser>> linkAppleForUser();
 
   Future<Either<AuthFailure, AppUser>> signInAnonymouslyAsUser();
 
