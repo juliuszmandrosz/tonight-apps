@@ -22,10 +22,10 @@ class UpdateUsernamePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (ctx) => getIt<UsernameCubit>()..usernameChanged(currentUsername),
-      child: SafeArea(
-        child: Scaffold(
-          appBar: TonightAppBar(title: S().changeUsername),
-          body: BlocListener<UsernameCubit, UsernameState>(
+      child: Scaffold(
+        appBar: TonightAppBar(title: S().changeUsername),
+        body: SafeArea(
+          child: BlocListener<UsernameCubit, UsernameState>(
             listener: (context, state) {
               state.errorMessage.fold(
                 () {},
