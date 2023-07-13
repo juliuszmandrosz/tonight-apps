@@ -15,7 +15,6 @@ class ActivateTicketClubNameInfo extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const SizedBox(width: 10),
         const FaIcon(FontAwesomeIcons.building, size: 24),
         const SizedBox(width: 16),
         Expanded(
