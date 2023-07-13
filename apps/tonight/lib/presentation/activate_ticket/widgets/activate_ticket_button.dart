@@ -22,8 +22,7 @@ class ActivateTicketButton extends StatelessWidget {
                       : () async {
                           final result = await context
                               .showConfirmationDialogWithCustomMessage(
-                            // TODO - add translation
-                            'Czy na pewno chcesz aktywować bilet? Będzie wazny przez 10 minut.',
+                            S().confirmTicketActivation,
                           );
 
                           if (result == true && context.mounted) {

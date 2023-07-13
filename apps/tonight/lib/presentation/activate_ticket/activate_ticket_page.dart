@@ -53,8 +53,7 @@ class _ActivateTicketPageState extends State<ActivateTicketPage> {
               (route) => route.settings.name == WelcomeLoaderRoute.name,
             );
 
-            // TODO - add translation
-            context.showSnackbarMessage('Baw się dobrze! 🎉');
+            context.showSnackbarMessage('${S().haveFun} 🎉');
           }
         },
         child: Scaffold(
@@ -92,8 +91,7 @@ class _ActivateTicketPageState extends State<ActivateTicketPage> {
                                     secondsLeft: secondsLeftForReceiveTicket,
                                     onTimerCompleted: () {
                                       context.showSnackbarMessage(
-                                        // TODO - add translation
-                                        'Czas na wykorzystanie biletu minął',
+                                        S().timeForReceivingTicketHasPassed,
                                       );
                                       context.router.popUntil(
                                         (route) =>

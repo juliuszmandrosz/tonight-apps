@@ -44,8 +44,7 @@ class TermsOfServiceInfo extends StatelessWidget {
               Flexible(
                 child: RichText(
                   text: TextSpan(
-                    // TODO - add translation
-                    text: 'Przechodząc dalej zgadzasz się na ',
+                    text: '${S().byContinuingYouAgreeTo} ',
                     style: context.titleSmall.copyWith(
                       color: context.secondaryColor,
                     ),

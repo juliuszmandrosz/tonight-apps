@@ -13,6 +13,7 @@ import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_
 import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_username_input.dart';
 import 'package:tonight/presentation/onboarding_user_details/widgets/submit_button.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class OnboardingUserDetailsPage extends StatelessWidget {
   const OnboardingUserDetailsPage({Key? key}) : super(key: key);
@@ -52,9 +53,7 @@ class OnboardingUserDetailsPage extends StatelessWidget {
                           Align(
                             alignment: Alignment.center,
                             child: AutoSizeText(
-                              // TODO - add translation
-                              'Podaj swoją nazwę użytkownika i opcjonalnie resztę danych, '
-                              'aby pomóc nam lepiej personalizować aplikację dla Ciebie 🎉',
+                              '${S().enterUsernameAndOtherDetails} 🎉',
                               maxLines: 3,
                               textAlign: TextAlign.center,
                               style:
