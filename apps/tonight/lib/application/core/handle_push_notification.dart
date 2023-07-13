@@ -11,7 +11,7 @@ import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/utils/show_confirm_phone_number_dialog.dart';
 import 'package:translations/translations.dart';
 
-Future<void> handleDeepLink(
+Future<void> handlePushNotification(
   BuildContext context,
   Map<String, dynamic>? data,
 ) async {
