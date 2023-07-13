@@ -188,12 +188,17 @@ class FirebaseTicketFacade implements UserTicketFacade, SelectorTicketFacade {
   }
 
   @override
-  Future<Either<UserTicketFailure, Unit>> receiveTicket(String ticketId) async {
+  Future<Either<UserTicketFailure, Unit>> receiveTicket({
+    required String ticketId,
+    required String clubId,
+  }) async {
     try {
       final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
       final ticketDocRef = userDocRef.ticketCollection.doc(ticketId);
-      await ticketDocRef.update({'isExpired': true});
-      // TODO - update attendance
+      await _firestore.runTransaction((tx) async {
+        ticketDocRef.update({'isExpired': true});
+        userDocRef.update({'attendance.$clubId': FieldValue.increment(1)});
+      });
       return right(unit);
     } on FirebaseException catch (e) {
       return left(

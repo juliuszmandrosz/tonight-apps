@@ -15,6 +15,7 @@ class ActivateTicketQuantityInfo extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        const SizedBox(width: 10),
         const FaIcon(FontAwesomeIcons.ticket, size: 24),
         const SizedBox(width: 16),
         Expanded(

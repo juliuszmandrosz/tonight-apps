@@ -8,16 +8,19 @@ abstract class UserTicketFacade {
     Ticket? lastTicket,
   });
 
-  Future<Either<UserTicketFailure, Unit>> returnTicket(String ticketPaymentId,
-      String ticketId,);
+  Future<Either<UserTicketFailure, Unit>> returnTicket(
+    String ticketPaymentId,
+    String ticketId,
+  );
 
   Future<Either<UserTicketFailure, Unit>> activateTicket(String ticketId);
 
-  Future<Either<UserTicketFailure, Unit>> receiveTicket(String ticketId);
+  Future<Either<UserTicketFailure, Unit>> receiveTicket({
+    required String ticketId,
+    required String clubId,
+  });
 
   Stream<Either<UserTicketFailure, Ticket>> listenTicketById(String ticketId);
 
   Stream<Either<UserTicketFailure, Ticket>> waitForTicketToBeCreated();
-
-
 }

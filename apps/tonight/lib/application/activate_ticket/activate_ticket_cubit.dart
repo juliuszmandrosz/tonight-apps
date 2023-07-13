@@ -56,7 +56,10 @@ class ActivateTicketCubit extends Cubit<ActivateTicketState> {
   Future<void> receiveTicket() async {
     emit(state.copyWith(receiveTicketStatus: CubitStatus.loading));
     final ticket = state.ticket.getOrCrash();
-    final result = await _userTicketFacade.receiveTicket(ticket.id);
+    final result = await _userTicketFacade.receiveTicket(
+      ticketId: ticket.id,
+      clubId: ticket.clubId,
+    );
     result.fold(
       (failure) {
         emit(state.copyWith(receiveTicketStatus: CubitStatus.failure));
