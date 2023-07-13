@@ -7,6 +7,7 @@ import 'package:tonight/application/core/extensions/bloc_extensions.dart';
 import 'package:tonight/application/tonight_events/models/tonight_event_model.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/utils/show_sign_in_dialog.dart';
+import 'package:translations/translations.dart';
 
 class TonightTicketRow extends StatelessWidget {
   final TonightEvent event;
@@ -42,8 +43,7 @@ class TonightTicketRow extends StatelessWidget {
             const SizedBox(width: 8),
             Expanded(
               child: Text(
-                // TODO - add translation
-                'Bilety dostępne w aplikacji za ${event.price}${event.currency}',
+                '${S().ticketsAvailableInAppFor} ${event.price}${event.currency}',
                 style: context.labelSmall.copyWith(
                   color: context.secondaryColor,
                 ),

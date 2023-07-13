@@ -12,10 +12,11 @@ Future<bool> showConfirmPhoneNumberDialog(BuildContext context) async {
     builder: (context) {
       return AlertDialog(
         title: Text(isUserAnonymous ? S().signIn : S().verify),
-        content: Text(isUserAnonymous
-            // TODO - add translation
-            ? 'Aby dodać zdjęcie i móc zdobywać nagrody nalezy zalogowac sie do aplikacji za pomocą numeru telefonu'
-            : S().verifyPhoneNumberExplanation),
+        content: Text(
+          isUserAnonymous
+              ? S().signInWithPhoneNumberToContinue
+              : S().verifyPhoneNumberExplanation,
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),

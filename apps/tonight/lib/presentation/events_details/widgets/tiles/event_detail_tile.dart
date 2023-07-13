@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/core/extensions/bloc_extensions.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:tonight/presentation/utils/show_sign_in_dialog.dart';
+import 'package:translations/translations.dart';
 
 class EventDetailTile extends StatelessWidget {
   final IconData icon;
@@ -77,8 +78,7 @@ class EventDetailTile extends StatelessWidget {
                         context.pushRoute(TicketCheckoutRoute(event: event!));
                       },
                       child: Text(
-                        // TODO - add translation
-                        'Kup bilet',
+                        S().buyTicket,
                         style: context.bodyMedium.copyWith(
                           color: context.onSurfaceColor,
                         ),

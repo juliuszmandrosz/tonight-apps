@@ -23,8 +23,7 @@ extension UserTicketFailureX on UserTicketFailure {
       returnTimeIsOver: () => S().returnTimeIsOver,
       permissionDenied: () => S().operationNotAllowed,
       ticketExpired: () => S().ticketExpired,
-      // TODO - add translation
-      ticketNotExists: () => 'Bilet nie istnieje',
+      ticketNotExists: () => S().ticketNotExists,
     );
   }
 }
