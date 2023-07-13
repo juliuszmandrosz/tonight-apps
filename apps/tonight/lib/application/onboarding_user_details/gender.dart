@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:translations/translations.dart';
 
 enum Gender {
   male,
@@ -7,14 +8,13 @@ enum Gender {
   other;
 
   String get label {
-    // TODO - add translations
     switch (this) {
       case Gender.male:
-        return 'Mezczyzna';
+        return S().male;
       case Gender.female:
-        return 'Kobieta';
+        return S().female;
       case Gender.other:
-        return 'Inna';
+        return S().otherGender;
     }
   }
 

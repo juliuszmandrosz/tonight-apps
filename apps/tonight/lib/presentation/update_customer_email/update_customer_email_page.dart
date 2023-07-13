@@ -6,6 +6,7 @@ import 'package:formz/formz.dart';
 import 'package:payments/domain/entities/customer_data_entity.dart';
 import 'package:tonight/application/customer_email/customer_email_cubit.dart';
 import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/update_customer_email/widgets/update_customer_email_button.dart';
 import 'package:translations/translations.dart';
 
@@ -25,13 +26,14 @@ class UpdateCustomerEmailPage extends StatelessWidget {
         listener: (context, state) {
           if (state.status.isSubmissionSuccess) {
             context.popRoute<CustomerData>(state.customerData.getOrCrash());
-            // TODO - add translation
-            context.showSnackbarMessage('Pomyślnie zaktualizowano email');
+            context.showSnackbarMessage(S().emailUpdatedSuccessfully);
           }
         },
         child: Scaffold(
-          // TODO - add translation
-          appBar: AppBar(title: Text('Podaj adres email')),
+          appBar: TonightAppBar(
+            title: '',
+            backgroundColor: context.backgroundColor,
+          ),
           floatingActionButton: const UpdateCustomerEmailButton(),
           body: BlocBuilder<CustomerEmailCubit, CustomerEmailState>(
             builder: (context, state) {

@@ -14,9 +14,8 @@ class UserCityPickerPredictionList extends StatelessWidget {
       builder: (context, state) {
         switch (state.searchPlacesStatus) {
           case CubitStatus.initial:
-            // TODO - add translation
             return Text(
-              'Wpisz minimum 3 znaki',
+              S().enterThreeCharacters,
               style: context.titleSmall,
               textAlign: TextAlign.center,
             );

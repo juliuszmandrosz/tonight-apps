@@ -2,6 +2,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/activate_ticket/activate_ticket_cubit.dart';
+import 'package:translations/translations.dart';
 
 class ReceiveTicketButton extends StatelessWidget {
   const ReceiveTicketButton({Key? key}) : super(key: key);
@@ -21,8 +22,7 @@ class ReceiveTicketButton extends StatelessWidget {
                       : () async {
                           final result = await context
                               .showConfirmationDialogWithCustomMessage(
-                            // TODO - add translation
-                            'Czy na pewno bilet został odebrany?',
+                            S().confirmTicketReception,
                           );
 
                           if (result == true && context.mounted) {
@@ -30,8 +30,7 @@ class ReceiveTicketButton extends StatelessWidget {
                           }
                         },
                   icon: const Icon(Icons.check),
-                  // TODO - add translation
-                  label: Text('Bilet odebrany'),
+                  label: Text(S().ticketReceived),
                 ),
               );
       },

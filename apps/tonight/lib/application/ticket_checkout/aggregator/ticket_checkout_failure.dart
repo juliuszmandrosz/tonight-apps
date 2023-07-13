@@ -30,11 +30,6 @@ class TicketCheckoutFailure with _$TicketCheckoutFailure {
 
   const factory TicketCheckoutFailure.eventSoldOut() = _EventSoldOut;
 
-  const factory TicketCheckoutFailure.customerEmailIsEmpty() =
-      _CustomerEmailIsEmpty;
-
-  // TODO - add payment already been made
-
   factory TicketCheckoutFailure.fromDomain(UserPaymentFailure failure) =>
       failure.maybeWhen(
         canceledByUser: () => const TicketCheckoutFailure.canceledByUser(),
@@ -49,8 +44,6 @@ class TicketCheckoutFailure with _$TicketCheckoutFailure {
             const TicketCheckoutFailure.sessionExpired(),
         stripeError: (message) =>
             TicketCheckoutFailure.paymentFailed(message ?? S().paymentError),
-        customerEmailIsEmpty: () =>
-            const TicketCheckoutFailure.customerEmailIsEmpty(),
         orElse: () => const TicketCheckoutFailure.unexpected(),
       );
 }
@@ -65,10 +58,7 @@ extension TicketCheckoutFailureX on TicketCheckoutFailure {
         eventHasEnded: (_) => S().eventHasEnded,
         eventSoldOut: (_) => S().eventSoldOut,
         sessionExpired: (_) => S().paymentSessionExpired,
-        ticketCreationFailed: (_) =>
-            // TODO - add translations
-            'Błąd podczas dodawania biletu, sprawdź swój profil czy bilet został dodany, jeśli nie dzwoń pod 512 263 472',
-        customerEmailIsEmpty: (_) => 'Nie podano adresu email',
+        ticketCreationFailed: (_) => S().ticketCreationFailed,
         canceledByUser: (_) => '',
       );
 }

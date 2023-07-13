@@ -10,8 +10,7 @@ Future<void> showSignInDialog(BuildContext context) async {
     builder: (context) {
       return AlertDialog(
         title: Text(S().signIn),
-        // TODO - add translations
-        content: Text('You must sign in to continue.'),
+        content: Text(S().signInToContinue),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),

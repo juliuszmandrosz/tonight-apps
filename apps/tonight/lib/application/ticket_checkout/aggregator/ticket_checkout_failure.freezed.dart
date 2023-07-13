@@ -28,7 +28,6 @@ mixin _$TicketCheckoutFailure {
     required TResult Function() eventHasEnded,
     required TResult Function() eventCanceled,
     required TResult Function() eventSoldOut,
-    required TResult Function() customerEmailIsEmpty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,7 +42,6 @@ mixin _$TicketCheckoutFailure {
     TResult? Function()? eventHasEnded,
     TResult? Function()? eventCanceled,
     TResult? Function()? eventSoldOut,
-    TResult? Function()? customerEmailIsEmpty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,7 +56,6 @@ mixin _$TicketCheckoutFailure {
     TResult Function()? eventHasEnded,
     TResult Function()? eventCanceled,
     TResult Function()? eventSoldOut,
-    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -74,7 +71,6 @@ mixin _$TicketCheckoutFailure {
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventCanceled value) eventCanceled,
     required TResult Function(_EventSoldOut value) eventSoldOut,
-    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -89,7 +85,6 @@ mixin _$TicketCheckoutFailure {
     TResult? Function(_EventHasEnded value)? eventHasEnded,
     TResult? Function(_EventCanceled value)? eventCanceled,
     TResult? Function(_EventSoldOut value)? eventSoldOut,
-    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -104,7 +99,6 @@ mixin _$TicketCheckoutFailure {
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventCanceled value)? eventCanceled,
     TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -177,7 +171,6 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() eventHasEnded,
     required TResult Function() eventCanceled,
     required TResult Function() eventSoldOut,
-    required TResult Function() customerEmailIsEmpty,
   }) {
     return unexpected();
   }
@@ -195,7 +188,6 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function()? eventHasEnded,
     TResult? Function()? eventCanceled,
     TResult? Function()? eventSoldOut,
-    TResult? Function()? customerEmailIsEmpty,
   }) {
     return unexpected?.call();
   }
@@ -213,7 +205,6 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? eventHasEnded,
     TResult Function()? eventCanceled,
     TResult Function()? eventSoldOut,
-    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -235,7 +226,6 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventCanceled value) eventCanceled,
     required TResult Function(_EventSoldOut value) eventSoldOut,
-    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return unexpected(this);
   }
@@ -253,7 +243,6 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function(_EventHasEnded value)? eventHasEnded,
     TResult? Function(_EventCanceled value)? eventCanceled,
     TResult? Function(_EventSoldOut value)? eventSoldOut,
-    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return unexpected?.call(this);
   }
@@ -271,7 +260,6 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventCanceled value)? eventCanceled,
     TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -359,7 +347,6 @@ class _$_PaymentFailed implements _PaymentFailed {
     required TResult Function() eventHasEnded,
     required TResult Function() eventCanceled,
     required TResult Function() eventSoldOut,
-    required TResult Function() customerEmailIsEmpty,
   }) {
     return paymentFailed(message);
   }
@@ -377,7 +364,6 @@ class _$_PaymentFailed implements _PaymentFailed {
     TResult? Function()? eventHasEnded,
     TResult? Function()? eventCanceled,
     TResult? Function()? eventSoldOut,
-    TResult? Function()? customerEmailIsEmpty,
   }) {
     return paymentFailed?.call(message);
   }
@@ -395,7 +381,6 @@ class _$_PaymentFailed implements _PaymentFailed {
     TResult Function()? eventHasEnded,
     TResult Function()? eventCanceled,
     TResult Function()? eventSoldOut,
-    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (paymentFailed != null) {
@@ -417,7 +402,6 @@ class _$_PaymentFailed implements _PaymentFailed {
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventCanceled value) eventCanceled,
     required TResult Function(_EventSoldOut value) eventSoldOut,
-    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return paymentFailed(this);
   }
@@ -435,7 +419,6 @@ class _$_PaymentFailed implements _PaymentFailed {
     TResult? Function(_EventHasEnded value)? eventHasEnded,
     TResult? Function(_EventCanceled value)? eventCanceled,
     TResult? Function(_EventSoldOut value)? eventSoldOut,
-    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return paymentFailed?.call(this);
   }
@@ -453,7 +436,6 @@ class _$_PaymentFailed implements _PaymentFailed {
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventCanceled value)? eventCanceled,
     TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (paymentFailed != null) {
@@ -520,7 +502,6 @@ class _$_SessionExpired implements _SessionExpired {
     required TResult Function() eventHasEnded,
     required TResult Function() eventCanceled,
     required TResult Function() eventSoldOut,
-    required TResult Function() customerEmailIsEmpty,
   }) {
     return sessionExpired();
   }
@@ -538,7 +519,6 @@ class _$_SessionExpired implements _SessionExpired {
     TResult? Function()? eventHasEnded,
     TResult? Function()? eventCanceled,
     TResult? Function()? eventSoldOut,
-    TResult? Function()? customerEmailIsEmpty,
   }) {
     return sessionExpired?.call();
   }
@@ -556,7 +536,6 @@ class _$_SessionExpired implements _SessionExpired {
     TResult Function()? eventHasEnded,
     TResult Function()? eventCanceled,
     TResult Function()? eventSoldOut,
-    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (sessionExpired != null) {
@@ -578,7 +557,6 @@ class _$_SessionExpired implements _SessionExpired {
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventCanceled value) eventCanceled,
     required TResult Function(_EventSoldOut value) eventSoldOut,
-    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return sessionExpired(this);
   }
@@ -596,7 +574,6 @@ class _$_SessionExpired implements _SessionExpired {
     TResult? Function(_EventHasEnded value)? eventHasEnded,
     TResult? Function(_EventCanceled value)? eventCanceled,
     TResult? Function(_EventSoldOut value)? eventSoldOut,
-    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return sessionExpired?.call(this);
   }
@@ -614,7 +591,6 @@ class _$_SessionExpired implements _SessionExpired {
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventCanceled value)? eventCanceled,
     TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (sessionExpired != null) {
@@ -676,7 +652,6 @@ class _$_TicketCreationFailed implements _TicketCreationFailed {
     required TResult Function() eventHasEnded,
     required TResult Function() eventCanceled,
     required TResult Function() eventSoldOut,
-    required TResult Function() customerEmailIsEmpty,
   }) {
     return ticketCreationFailed();
   }
@@ -694,7 +669,6 @@ class _$_TicketCreationFailed implements _TicketCreationFailed {
     TResult? Function()? eventHasEnded,
     TResult? Function()? eventCanceled,
     TResult? Function()? eventSoldOut,
-    TResult? Function()? customerEmailIsEmpty,
   }) {
     return ticketCreationFailed?.call();
   }
@@ -712,7 +686,6 @@ class _$_TicketCreationFailed implements _TicketCreationFailed {
     TResult Function()? eventHasEnded,
     TResult Function()? eventCanceled,
     TResult Function()? eventSoldOut,
-    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (ticketCreationFailed != null) {
@@ -734,7 +707,6 @@ class _$_TicketCreationFailed implements _TicketCreationFailed {
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventCanceled value) eventCanceled,
     required TResult Function(_EventSoldOut value) eventSoldOut,
-    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return ticketCreationFailed(this);
   }
@@ -752,7 +724,6 @@ class _$_TicketCreationFailed implements _TicketCreationFailed {
     TResult? Function(_EventHasEnded value)? eventHasEnded,
     TResult? Function(_EventCanceled value)? eventCanceled,
     TResult? Function(_EventSoldOut value)? eventSoldOut,
-    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return ticketCreationFailed?.call(this);
   }
@@ -770,7 +741,6 @@ class _$_TicketCreationFailed implements _TicketCreationFailed {
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventCanceled value)? eventCanceled,
     TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (ticketCreationFailed != null) {
@@ -832,7 +802,6 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     required TResult Function() eventHasEnded,
     required TResult Function() eventCanceled,
     required TResult Function() eventSoldOut,
-    required TResult Function() customerEmailIsEmpty,
   }) {
     return invalidPromotionCode();
   }
@@ -850,7 +819,6 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult? Function()? eventHasEnded,
     TResult? Function()? eventCanceled,
     TResult? Function()? eventSoldOut,
-    TResult? Function()? customerEmailIsEmpty,
   }) {
     return invalidPromotionCode?.call();
   }
@@ -868,7 +836,6 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function()? eventHasEnded,
     TResult Function()? eventCanceled,
     TResult Function()? eventSoldOut,
-    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (invalidPromotionCode != null) {
@@ -890,7 +857,6 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventCanceled value) eventCanceled,
     required TResult Function(_EventSoldOut value) eventSoldOut,
-    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return invalidPromotionCode(this);
   }
@@ -908,7 +874,6 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult? Function(_EventHasEnded value)? eventHasEnded,
     TResult? Function(_EventCanceled value)? eventCanceled,
     TResult? Function(_EventSoldOut value)? eventSoldOut,
-    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return invalidPromotionCode?.call(this);
   }
@@ -926,7 +891,6 @@ class _$_InvalidPromotionCode implements _InvalidPromotionCode {
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventCanceled value)? eventCanceled,
     TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (invalidPromotionCode != null) {
@@ -988,7 +952,6 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     required TResult Function() eventHasEnded,
     required TResult Function() eventCanceled,
     required TResult Function() eventSoldOut,
-    required TResult Function() customerEmailIsEmpty,
   }) {
     return promotionCodeExpired();
   }
@@ -1006,7 +969,6 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult? Function()? eventHasEnded,
     TResult? Function()? eventCanceled,
     TResult? Function()? eventSoldOut,
-    TResult? Function()? customerEmailIsEmpty,
   }) {
     return promotionCodeExpired?.call();
   }
@@ -1024,7 +986,6 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function()? eventHasEnded,
     TResult Function()? eventCanceled,
     TResult Function()? eventSoldOut,
-    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (promotionCodeExpired != null) {
@@ -1046,7 +1007,6 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventCanceled value) eventCanceled,
     required TResult Function(_EventSoldOut value) eventSoldOut,
-    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return promotionCodeExpired(this);
   }
@@ -1064,7 +1024,6 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult? Function(_EventHasEnded value)? eventHasEnded,
     TResult? Function(_EventCanceled value)? eventCanceled,
     TResult? Function(_EventSoldOut value)? eventSoldOut,
-    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return promotionCodeExpired?.call(this);
   }
@@ -1082,7 +1041,6 @@ class _$_PromotionCodeExpired implements _PromotionCodeExpired {
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventCanceled value)? eventCanceled,
     TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (promotionCodeExpired != null) {
@@ -1144,7 +1102,6 @@ class _$_CanceledByUser implements _CanceledByUser {
     required TResult Function() eventHasEnded,
     required TResult Function() eventCanceled,
     required TResult Function() eventSoldOut,
-    required TResult Function() customerEmailIsEmpty,
   }) {
     return canceledByUser();
   }
@@ -1162,7 +1119,6 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult? Function()? eventHasEnded,
     TResult? Function()? eventCanceled,
     TResult? Function()? eventSoldOut,
-    TResult? Function()? customerEmailIsEmpty,
   }) {
     return canceledByUser?.call();
   }
@@ -1180,7 +1136,6 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function()? eventHasEnded,
     TResult Function()? eventCanceled,
     TResult Function()? eventSoldOut,
-    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (canceledByUser != null) {
@@ -1202,7 +1157,6 @@ class _$_CanceledByUser implements _CanceledByUser {
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventCanceled value) eventCanceled,
     required TResult Function(_EventSoldOut value) eventSoldOut,
-    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return canceledByUser(this);
   }
@@ -1220,7 +1174,6 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult? Function(_EventHasEnded value)? eventHasEnded,
     TResult? Function(_EventCanceled value)? eventCanceled,
     TResult? Function(_EventSoldOut value)? eventSoldOut,
-    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return canceledByUser?.call(this);
   }
@@ -1238,7 +1191,6 @@ class _$_CanceledByUser implements _CanceledByUser {
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventCanceled value)? eventCanceled,
     TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (canceledByUser != null) {
@@ -1300,7 +1252,6 @@ class _$_EventHasEnded implements _EventHasEnded {
     required TResult Function() eventHasEnded,
     required TResult Function() eventCanceled,
     required TResult Function() eventSoldOut,
-    required TResult Function() customerEmailIsEmpty,
   }) {
     return eventHasEnded();
   }
@@ -1318,7 +1269,6 @@ class _$_EventHasEnded implements _EventHasEnded {
     TResult? Function()? eventHasEnded,
     TResult? Function()? eventCanceled,
     TResult? Function()? eventSoldOut,
-    TResult? Function()? customerEmailIsEmpty,
   }) {
     return eventHasEnded?.call();
   }
@@ -1336,7 +1286,6 @@ class _$_EventHasEnded implements _EventHasEnded {
     TResult Function()? eventHasEnded,
     TResult Function()? eventCanceled,
     TResult Function()? eventSoldOut,
-    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (eventHasEnded != null) {
@@ -1358,7 +1307,6 @@ class _$_EventHasEnded implements _EventHasEnded {
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventCanceled value) eventCanceled,
     required TResult Function(_EventSoldOut value) eventSoldOut,
-    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return eventHasEnded(this);
   }
@@ -1376,7 +1324,6 @@ class _$_EventHasEnded implements _EventHasEnded {
     TResult? Function(_EventHasEnded value)? eventHasEnded,
     TResult? Function(_EventCanceled value)? eventCanceled,
     TResult? Function(_EventSoldOut value)? eventSoldOut,
-    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return eventHasEnded?.call(this);
   }
@@ -1394,7 +1341,6 @@ class _$_EventHasEnded implements _EventHasEnded {
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventCanceled value)? eventCanceled,
     TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (eventHasEnded != null) {
@@ -1456,7 +1402,6 @@ class _$_EventCanceled implements _EventCanceled {
     required TResult Function() eventHasEnded,
     required TResult Function() eventCanceled,
     required TResult Function() eventSoldOut,
-    required TResult Function() customerEmailIsEmpty,
   }) {
     return eventCanceled();
   }
@@ -1474,7 +1419,6 @@ class _$_EventCanceled implements _EventCanceled {
     TResult? Function()? eventHasEnded,
     TResult? Function()? eventCanceled,
     TResult? Function()? eventSoldOut,
-    TResult? Function()? customerEmailIsEmpty,
   }) {
     return eventCanceled?.call();
   }
@@ -1492,7 +1436,6 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function()? eventHasEnded,
     TResult Function()? eventCanceled,
     TResult Function()? eventSoldOut,
-    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (eventCanceled != null) {
@@ -1514,7 +1457,6 @@ class _$_EventCanceled implements _EventCanceled {
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventCanceled value) eventCanceled,
     required TResult Function(_EventSoldOut value) eventSoldOut,
-    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return eventCanceled(this);
   }
@@ -1532,7 +1474,6 @@ class _$_EventCanceled implements _EventCanceled {
     TResult? Function(_EventHasEnded value)? eventHasEnded,
     TResult? Function(_EventCanceled value)? eventCanceled,
     TResult? Function(_EventSoldOut value)? eventSoldOut,
-    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return eventCanceled?.call(this);
   }
@@ -1550,7 +1491,6 @@ class _$_EventCanceled implements _EventCanceled {
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventCanceled value)? eventCanceled,
     TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (eventCanceled != null) {
@@ -1612,7 +1552,6 @@ class _$_EventSoldOut implements _EventSoldOut {
     required TResult Function() eventHasEnded,
     required TResult Function() eventCanceled,
     required TResult Function() eventSoldOut,
-    required TResult Function() customerEmailIsEmpty,
   }) {
     return eventSoldOut();
   }
@@ -1630,7 +1569,6 @@ class _$_EventSoldOut implements _EventSoldOut {
     TResult? Function()? eventHasEnded,
     TResult? Function()? eventCanceled,
     TResult? Function()? eventSoldOut,
-    TResult? Function()? customerEmailIsEmpty,
   }) {
     return eventSoldOut?.call();
   }
@@ -1648,7 +1586,6 @@ class _$_EventSoldOut implements _EventSoldOut {
     TResult Function()? eventHasEnded,
     TResult Function()? eventCanceled,
     TResult Function()? eventSoldOut,
-    TResult Function()? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (eventSoldOut != null) {
@@ -1670,7 +1607,6 @@ class _$_EventSoldOut implements _EventSoldOut {
     required TResult Function(_EventHasEnded value) eventHasEnded,
     required TResult Function(_EventCanceled value) eventCanceled,
     required TResult Function(_EventSoldOut value) eventSoldOut,
-    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
   }) {
     return eventSoldOut(this);
   }
@@ -1688,7 +1624,6 @@ class _$_EventSoldOut implements _EventSoldOut {
     TResult? Function(_EventHasEnded value)? eventHasEnded,
     TResult? Function(_EventCanceled value)? eventCanceled,
     TResult? Function(_EventSoldOut value)? eventSoldOut,
-    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
   }) {
     return eventSoldOut?.call(this);
   }
@@ -1706,7 +1641,6 @@ class _$_EventSoldOut implements _EventSoldOut {
     TResult Function(_EventHasEnded value)? eventHasEnded,
     TResult Function(_EventCanceled value)? eventCanceled,
     TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
     required TResult orElse(),
   }) {
     if (eventSoldOut != null) {
@@ -1718,160 +1652,4 @@ class _$_EventSoldOut implements _EventSoldOut {
 
 abstract class _EventSoldOut implements TicketCheckoutFailure {
   const factory _EventSoldOut() = _$_EventSoldOut;
-}
-
-/// @nodoc
-abstract class _$$_CustomerEmailIsEmptyCopyWith<$Res> {
-  factory _$$_CustomerEmailIsEmptyCopyWith(_$_CustomerEmailIsEmpty value,
-          $Res Function(_$_CustomerEmailIsEmpty) then) =
-      __$$_CustomerEmailIsEmptyCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_CustomerEmailIsEmptyCopyWithImpl<$Res>
-    extends _$TicketCheckoutFailureCopyWithImpl<$Res, _$_CustomerEmailIsEmpty>
-    implements _$$_CustomerEmailIsEmptyCopyWith<$Res> {
-  __$$_CustomerEmailIsEmptyCopyWithImpl(_$_CustomerEmailIsEmpty _value,
-      $Res Function(_$_CustomerEmailIsEmpty) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_CustomerEmailIsEmpty implements _CustomerEmailIsEmpty {
-  const _$_CustomerEmailIsEmpty();
-
-  @override
-  String toString() {
-    return 'TicketCheckoutFailure.customerEmailIsEmpty()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_CustomerEmailIsEmpty);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() unexpected,
-    required TResult Function(String message) paymentFailed,
-    required TResult Function() sessionExpired,
-    required TResult Function() ticketCreationFailed,
-    required TResult Function() invalidPromotionCode,
-    required TResult Function() promotionCodeExpired,
-    required TResult Function() canceledByUser,
-    required TResult Function() eventHasEnded,
-    required TResult Function() eventCanceled,
-    required TResult Function() eventSoldOut,
-    required TResult Function() customerEmailIsEmpty,
-  }) {
-    return customerEmailIsEmpty();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? unexpected,
-    TResult? Function(String message)? paymentFailed,
-    TResult? Function()? sessionExpired,
-    TResult? Function()? ticketCreationFailed,
-    TResult? Function()? invalidPromotionCode,
-    TResult? Function()? promotionCodeExpired,
-    TResult? Function()? canceledByUser,
-    TResult? Function()? eventHasEnded,
-    TResult? Function()? eventCanceled,
-    TResult? Function()? eventSoldOut,
-    TResult? Function()? customerEmailIsEmpty,
-  }) {
-    return customerEmailIsEmpty?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function(String message)? paymentFailed,
-    TResult Function()? sessionExpired,
-    TResult Function()? ticketCreationFailed,
-    TResult Function()? invalidPromotionCode,
-    TResult Function()? promotionCodeExpired,
-    TResult Function()? canceledByUser,
-    TResult Function()? eventHasEnded,
-    TResult Function()? eventCanceled,
-    TResult Function()? eventSoldOut,
-    TResult Function()? customerEmailIsEmpty,
-    required TResult orElse(),
-  }) {
-    if (customerEmailIsEmpty != null) {
-      return customerEmailIsEmpty();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Unexpected value) unexpected,
-    required TResult Function(_PaymentFailed value) paymentFailed,
-    required TResult Function(_SessionExpired value) sessionExpired,
-    required TResult Function(_TicketCreationFailed value) ticketCreationFailed,
-    required TResult Function(_InvalidPromotionCode value) invalidPromotionCode,
-    required TResult Function(_PromotionCodeExpired value) promotionCodeExpired,
-    required TResult Function(_CanceledByUser value) canceledByUser,
-    required TResult Function(_EventHasEnded value) eventHasEnded,
-    required TResult Function(_EventCanceled value) eventCanceled,
-    required TResult Function(_EventSoldOut value) eventSoldOut,
-    required TResult Function(_CustomerEmailIsEmpty value) customerEmailIsEmpty,
-  }) {
-    return customerEmailIsEmpty(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Unexpected value)? unexpected,
-    TResult? Function(_PaymentFailed value)? paymentFailed,
-    TResult? Function(_SessionExpired value)? sessionExpired,
-    TResult? Function(_TicketCreationFailed value)? ticketCreationFailed,
-    TResult? Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult? Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult? Function(_CanceledByUser value)? canceledByUser,
-    TResult? Function(_EventHasEnded value)? eventHasEnded,
-    TResult? Function(_EventCanceled value)? eventCanceled,
-    TResult? Function(_EventSoldOut value)? eventSoldOut,
-    TResult? Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
-  }) {
-    return customerEmailIsEmpty?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_PaymentFailed value)? paymentFailed,
-    TResult Function(_SessionExpired value)? sessionExpired,
-    TResult Function(_TicketCreationFailed value)? ticketCreationFailed,
-    TResult Function(_InvalidPromotionCode value)? invalidPromotionCode,
-    TResult Function(_PromotionCodeExpired value)? promotionCodeExpired,
-    TResult Function(_CanceledByUser value)? canceledByUser,
-    TResult Function(_EventHasEnded value)? eventHasEnded,
-    TResult Function(_EventCanceled value)? eventCanceled,
-    TResult Function(_EventSoldOut value)? eventSoldOut,
-    TResult Function(_CustomerEmailIsEmpty value)? customerEmailIsEmpty,
-    required TResult orElse(),
-  }) {
-    if (customerEmailIsEmpty != null) {
-      return customerEmailIsEmpty(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _CustomerEmailIsEmpty implements TicketCheckoutFailure {
-  const factory _CustomerEmailIsEmpty() = _$_CustomerEmailIsEmpty;
 }
