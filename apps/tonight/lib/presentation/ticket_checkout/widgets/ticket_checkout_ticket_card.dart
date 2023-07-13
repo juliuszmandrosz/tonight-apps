@@ -20,7 +20,7 @@ class TicketCheckoutTicketCard extends StatelessWidget {
         final currentPool = data.currentTicketPool;
         final isSoldOut = currentPool.isSoldOut;
         return TicketWidget(
-          height: isSoldOut ? 170 : 150,
+          height: isSoldOut ? 130 : 150,
           width: double.infinity,
           color: context.surfaceColor,
           isCornerRounded: true,
@@ -60,32 +60,33 @@ class TicketCheckoutTicketCard extends StatelessWidget {
                     color: context.tertiaryColor,
                   ),
                 ),
-              const SizedBox(height: 12),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  OutlinedButton(
-                    onPressed: () => context
-                        .read<TicketCheckoutBloc>()
-                        .add(TicketCheckoutEvent.ticketQuantityChanged(
-                          state.ticketQuantity - 1,
-                        )),
-                    child: const FaIcon(FontAwesomeIcons.minus),
-                  ),
-                  Text(
-                    '${state.ticketQuantity}',
-                    style: context.titleLarge,
-                  ),
-                  OutlinedButton(
-                    onPressed: () => context
-                        .read<TicketCheckoutBloc>()
-                        .add(TicketCheckoutEvent.ticketQuantityChanged(
-                          state.ticketQuantity + 1,
-                        )),
-                    child: const FaIcon(FontAwesomeIcons.plus),
-                  ),
-                ],
-              )
+              if (!isSoldOut) const SizedBox(height: 12),
+              if (!isSoldOut)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    OutlinedButton(
+                      onPressed: () => context
+                          .read<TicketCheckoutBloc>()
+                          .add(TicketCheckoutEvent.ticketQuantityChanged(
+                            state.ticketQuantity - 1,
+                          )),
+                      child: const FaIcon(FontAwesomeIcons.minus),
+                    ),
+                    Text(
+                      '${state.ticketQuantity}',
+                      style: context.titleLarge,
+                    ),
+                    OutlinedButton(
+                      onPressed: () => context
+                          .read<TicketCheckoutBloc>()
+                          .add(TicketCheckoutEvent.ticketQuantityChanged(
+                            state.ticketQuantity + 1,
+                          )),
+                      child: const FaIcon(FontAwesomeIcons.plus),
+                    ),
+                  ],
+                )
             ],
           ),
         );

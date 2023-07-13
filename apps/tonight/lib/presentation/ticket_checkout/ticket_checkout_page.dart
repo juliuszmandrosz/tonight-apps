@@ -29,7 +29,9 @@ class TicketCheckoutPage extends StatelessWidget {
         create: (_) => getIt<TicketCheckoutBloc>()
           ..add(TicketCheckoutEvent.stateInitialized(event)),
         child: BlocConsumer<TicketCheckoutBloc, TicketCheckoutState>(
-          buildWhen: (p, c) => p.initialStatus != c.initialStatus,
+          buildWhen: (p, c) =>
+              p.initialStatus != c.initialStatus ||
+              p.ticketCheckoutData != c.ticketCheckoutData,
           listenWhen: (p, c) =>
               p.proceedingToPaymentStatus != c.proceedingToPaymentStatus ||
               p.snackbarMessage != c.snackbarMessage ||
@@ -64,6 +66,10 @@ class TicketCheckoutPage extends StatelessWidget {
                       .add(TicketCheckoutEvent.stateInitialized(event)),
                 );
               case CubitStatus.success:
+                final isSoldOut = state.ticketCheckoutData
+                    .getOrCrash()
+                    .currentTicketPool
+                    .isSoldOut;
                 return GestureDetector(
                   onTap: () => context.unfocus(),
                   child: Scaffold(
@@ -71,28 +77,29 @@ class TicketCheckoutPage extends StatelessWidget {
                         FloatingActionButtonLocation.centerFloat,
                     floatingActionButton: const TicketProceedToPayButton(),
                     appBar: TonightAppBar(title: S().checkout),
-                    body: const SafeArea(
+                    body: SafeArea(
                       child: Padding(
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(16),
                         child: SingleChildScrollView(
                           child: Column(
                             children: [
-                              TicketCheckoutHeader(),
-                              SizedBox(height: 20),
-                              TicketCheckoutTicketCard(),
-                              SizedBox(height: 15),
-                              Divider(),
-                              SizedBox(height: 15),
-                              TicketCheckoutPaymentMethod(),
-                              SizedBox(height: 20),
-                              TicketCheckoutEmail(),
-                              SizedBox(height: 20),
-                              TicketCheckoutSummary(),
-                              SizedBox(height: 15),
-                              Divider(),
-                              SizedBox(height: 15),
-                              TicketCheckoutPromotionCode(),
-                              SizedBox(height: 80),
+                              const TicketCheckoutHeader(),
+                              const SizedBox(height: 20),
+                              const TicketCheckoutTicketCard(),
+                              const SizedBox(height: 15),
+                              const Divider(),
+                              const SizedBox(height: 15),
+                              const TicketCheckoutPaymentMethod(),
+                              const SizedBox(height: 20),
+                              const TicketCheckoutEmail(),
+                              const SizedBox(height: 20),
+                              const TicketCheckoutSummary(),
+                              const SizedBox(height: 15),
+                              const Divider(),
+                              if (!isSoldOut) const SizedBox(height: 15),
+                              if (!isSoldOut)
+                                const TicketCheckoutPromotionCode(),
+                              if (!isSoldOut) const SizedBox(height: 80),
                             ],
                           ),
                         ),
