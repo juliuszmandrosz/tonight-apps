@@ -90,7 +90,6 @@ class OnboardingUserDetailsCubit extends Cubit<OnboardingUserDetailsState> {
         birthdate: BirthdateValueObject.dirty(state.birthdate.value),
       ),
     );
-
     final status = Formz.validate(
       [
         state.username,
@@ -100,8 +99,7 @@ class OnboardingUserDetailsCubit extends Cubit<OnboardingUserDetailsState> {
       ],
     );
     emit(state.copyWith(submissionStatus: status));
-
-    return status.isValidated;
+    return status.isValid;
   }
 
   _emitFailure(UserAccountFailure failure) {
