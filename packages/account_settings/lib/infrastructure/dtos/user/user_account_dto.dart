@@ -24,6 +24,7 @@ class UserAccountDto with _$UserAccountDto {
     @Default(0) int raverCoins,
     @Default(0) int ticketsCount,
     @Default(0) int photosCount,
+    @Default(false) bool isNewsletterSubscribed,
     @FirebaseNullableTimestampJsonConverter() DateTime? lastDailySpinAt,
     @FirebaseNullableTimestampJsonConverter() DateTime? lastTonightVoucherUseAt,
     @FirebaseNullableTimestampJsonConverter() DateTime? birthdate,
@@ -52,6 +53,7 @@ class UserAccountDto with _$UserAccountDto {
       gender: user.gender,
       cityId: user.cityId,
       cityName: user.cityName,
+      isNewsletterSubscribed: user.isNewsletterSubscribed,
     );
   }
 
@@ -84,6 +86,7 @@ class UserAccountDto with _$UserAccountDto {
       gender: gender,
       cityId: cityId,
       cityName: cityName,
+      isNewsletterSubscribed: isNewsletterSubscribed,
     );
   }
 }
