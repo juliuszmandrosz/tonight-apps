@@ -11,10 +11,11 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:auth/auth.dart' as _i60;
 import 'package:auto_route/auto_route.dart' as _i45;
 import 'package:clubs/domain/club/club_entity.dart' as _i57;
 import 'package:clubs/infrastructure/filters/filter/city_filter.dart' as _i58;
-import 'package:dartz/dartz.dart' as _i60;
+import 'package:dartz/dartz.dart' as _i61;
 import 'package:events/domain/events/event_entity.dart' as _i55;
 import 'package:events/events.dart' as _i53;
 import 'package:flutter/material.dart' as _i46;
@@ -27,12 +28,12 @@ import '../../application/events/event_filters/event_filters_page_type.dart'
     as _i54;
 import '../../application/tonight_events/models/event_voucher_model.dart'
     as _i56;
-import '../../domain/time_tasks/time_task_entity.dart' as _i61;
+import '../../domain/time_tasks/time_task_entity.dart' as _i62;
 import '../../domain/user_tonight_vouchers/user_tonight_voucher_entity.dart'
-    as _i64;
-import '../../domain/wall_photos/wall_photo_entity.dart' as _i62;
+    as _i65;
+import '../../domain/wall_photos/wall_photo_entity.dart' as _i63;
 import '../../infrastructure/wall_photos/filters/wall_photo_filters.dart'
-    as _i63;
+    as _i64;
 import '../activate_ticket/activate_ticket_page.dart' as _i39;
 import '../activate_time_task_reward/activate_time_task_reward_page.dart'
     as _i36;
@@ -291,9 +292,13 @@ class AppRouter extends _i45.RootStackRouter {
       );
     },
     OnboardingUserDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<OnboardingUserDetailsRouteArgs>();
       return _i45.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i16.OnboardingUserDetailsPage(),
+        child: _i16.OnboardingUserDetailsPage(
+          user: args.user,
+          key: args.key,
+        ),
         transitionsBuilder: _i48.slideLeftTransition,
         durationInMilliseconds: 300,
         opaque: true,
@@ -1287,14 +1292,37 @@ class TicketScanConfirmRoute extends _i45.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i16.OnboardingUserDetailsPage]
-class OnboardingUserDetailsRoute extends _i45.PageRouteInfo<void> {
-  const OnboardingUserDetailsRoute()
-      : super(
+class OnboardingUserDetailsRoute
+    extends _i45.PageRouteInfo<OnboardingUserDetailsRouteArgs> {
+  OnboardingUserDetailsRoute({
+    required _i60.AppUser user,
+    _i46.Key? key,
+  }) : super(
           OnboardingUserDetailsRoute.name,
           path: '/onboarding-user-details-page',
+          args: OnboardingUserDetailsRouteArgs(
+            user: user,
+            key: key,
+          ),
         );
 
   static const String name = 'OnboardingUserDetailsRoute';
+}
+
+class OnboardingUserDetailsRouteArgs {
+  const OnboardingUserDetailsRouteArgs({
+    required this.user,
+    this.key,
+  });
+
+  final _i60.AppUser user;
+
+  final _i46.Key? key;
+
+  @override
+  String toString() {
+    return 'OnboardingUserDetailsRouteArgs{user: $user, key: $key}';
+  }
 }
 
 /// generated route for
@@ -1514,8 +1542,8 @@ class PaymentMethodRouteArgs {
 class WallPhotoCameraPreviewRoute
     extends _i45.PageRouteInfo<WallPhotoCameraPreviewRouteArgs> {
   WallPhotoCameraPreviewRoute({
-    required _i60.Option<_i55.Event> event,
-    required _i60.Option<_i61.TimeTask> timeTask,
+    required _i61.Option<_i55.Event> event,
+    required _i61.Option<_i62.TimeTask> timeTask,
     _i46.Key? key,
   }) : super(
           WallPhotoCameraPreviewRoute.name,
@@ -1537,9 +1565,9 @@ class WallPhotoCameraPreviewRouteArgs {
     this.key,
   });
 
-  final _i60.Option<_i55.Event> event;
+  final _i61.Option<_i55.Event> event;
 
-  final _i60.Option<_i61.TimeTask> timeTask;
+  final _i61.Option<_i62.TimeTask> timeTask;
 
   final _i46.Key? key;
 
@@ -1556,8 +1584,8 @@ class AddWallPhotoRoute extends _i45.PageRouteInfo<AddWallPhotoRouteArgs> {
     required String photoPath,
     required String heroTag,
     required bool isSelfie,
-    required _i60.Option<_i55.Event> event,
-    required _i60.Option<_i61.TimeTask> timeTask,
+    required _i61.Option<_i55.Event> event,
+    required _i61.Option<_i62.TimeTask> timeTask,
     _i46.Key? key,
   }) : super(
           AddWallPhotoRoute.name,
@@ -1591,9 +1619,9 @@ class AddWallPhotoRouteArgs {
 
   final bool isSelfie;
 
-  final _i60.Option<_i55.Event> event;
+  final _i61.Option<_i55.Event> event;
 
-  final _i60.Option<_i61.TimeTask> timeTask;
+  final _i61.Option<_i62.TimeTask> timeTask;
 
   final _i46.Key? key;
 
@@ -1718,7 +1746,7 @@ class EventParticipantsRouteArgs {
 class UserWallPhotoPreviewRoute
     extends _i45.PageRouteInfo<UserWallPhotoPreviewRouteArgs> {
   UserWallPhotoPreviewRoute({
-    required _i62.WallPhoto photo,
+    required _i63.WallPhoto photo,
     String? heroTag,
     _i46.Key? key,
   }) : super(
@@ -1741,7 +1769,7 @@ class UserWallPhotoPreviewRouteArgs {
     this.key,
   });
 
-  final _i62.WallPhoto photo;
+  final _i63.WallPhoto photo;
 
   final String? heroTag;
 
@@ -1806,7 +1834,7 @@ class WallPhotoFiltersRoute
     extends _i45.PageRouteInfo<WallPhotoFiltersRouteArgs> {
   WallPhotoFiltersRoute({
     required _i46.BuildContext blocContext,
-    required _i63.WallPhotoFilters selectedFilters,
+    required _i64.WallPhotoFilters selectedFilters,
     _i46.Key? key,
   }) : super(
           WallPhotoFiltersRoute.name,
@@ -1830,7 +1858,7 @@ class WallPhotoFiltersRouteArgs {
 
   final _i46.BuildContext blocContext;
 
-  final _i63.WallPhotoFilters selectedFilters;
+  final _i64.WallPhotoFilters selectedFilters;
 
   final _i46.Key? key;
 
@@ -1880,7 +1908,7 @@ class ActivateTimeTaskRewardRouteArgs {
 class RedeemTonightVoucherRoute
     extends _i45.PageRouteInfo<RedeemTonightVoucherRouteArgs> {
   RedeemTonightVoucherRoute({
-    required _i64.UserTonightVoucher voucher,
+    required _i65.UserTonightVoucher voucher,
     _i46.Key? key,
   }) : super(
           RedeemTonightVoucherRoute.name,
@@ -1900,7 +1928,7 @@ class RedeemTonightVoucherRouteArgs {
     this.key,
   });
 
-  final _i64.UserTonightVoucher voucher;
+  final _i65.UserTonightVoucher voucher;
 
   final _i46.Key? key;
 

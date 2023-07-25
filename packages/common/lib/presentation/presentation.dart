@@ -7,6 +7,7 @@ export 'dots_loading_indicator.dart';
 export 'drawer_tile.dart';
 export 'failure_info.dart';
 export 'failure_page.dart';
+export 'form_inputs/tonight_checkbox_list_tile.dart';
 export 'form_inputs/tonight_text_input.dart';
 export 'infinite_grid.dart';
 export 'infinite_list.dart';

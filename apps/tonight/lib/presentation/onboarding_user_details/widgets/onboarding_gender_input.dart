@@ -18,7 +18,7 @@ class OnboardingGenderInput extends HookWidget {
     return BlocBuilder<OnboardingUserDetailsCubit, OnboardingUserDetailsState>(
       buildWhen: (previous, current) =>
           previous.gender != current.gender ||
-          previous.submissionStatus != current.submissionStatus,
+          previous.formStatus != current.formStatus,
       builder: (context, state) {
         return TextField(
           controller: controller,
@@ -86,7 +86,7 @@ class OnboardingGenderInput extends HookWidget {
   }
 
   String? _getGenderInputErrorMessage(OnboardingUserDetailsState state) {
-    if (state.gender.valid || state.submissionStatus != FormzStatus.invalid) {
+    if (state.gender.valid || state.formStatus != FormzStatus.invalid) {
       return null;
     }
 

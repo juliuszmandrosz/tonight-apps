@@ -18,7 +18,7 @@ class OnboardingBirthdateInput extends HookWidget {
     return BlocBuilder<OnboardingUserDetailsCubit, OnboardingUserDetailsState>(
       buildWhen: (previous, current) =>
           previous.birthdate != current.birthdate ||
-          previous.submissionStatus != current.submissionStatus,
+          previous.formStatus != current.formStatus,
       builder: (context, state) {
         return TextField(
           controller: controller,
@@ -52,8 +52,7 @@ class OnboardingBirthdateInput extends HookWidget {
   }
 
   String? _getBirthdateInputErrorMessage(OnboardingUserDetailsState state) {
-    if (state.birthdate.valid ||
-        state.submissionStatus != FormzStatus.invalid) {
+    if (state.birthdate.valid || state.formStatus != FormzStatus.invalid) {
       return null;
     }
 
