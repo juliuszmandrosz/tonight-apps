@@ -13,11 +13,13 @@ abstract class UserAccountFacade {
 
   Future<Either<UserAccountFailure, Unit>> submitOnboardingForUser({
     required String username,
+    required bool isNewsletterSubscribed,
     required String? cityId,
     required String? cityName,
     required DateTime? birthdate,
     required String? gender,
     required Uint8List? profilePicture,
+    required String? email,
   });
 
   Future<Either<UserAccountFailure, Unit>> updateProfilePictureForUser({

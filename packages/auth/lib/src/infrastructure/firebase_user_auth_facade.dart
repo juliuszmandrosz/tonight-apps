@@ -401,9 +401,11 @@ class FirebaseUserAuthFacade implements UserAuthFacade {
 
     final userData = currentUser.data() as Map<String, dynamic>;
     final username = userData['username'] as String?;
+    final email = userData['email'] as String?;
     final lastDailySpinAt = userData['lastDailySpinAt'] as Timestamp?;
     return firebaseUser.toDomain(
       username: username,
+      email: email,
       lastDailySpinAt: lastDailySpinAt?.toDate(),
     );
   }

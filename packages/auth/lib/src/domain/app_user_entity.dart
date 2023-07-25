@@ -10,5 +10,6 @@ class AppUser with _$AppUser {
     required bool isPhoneNumberVerified,
     @Default(false) bool isAnonymous,
     DateTime? lastDailySpinAt,
+    String? email,
   }) = _AppUser;
 }

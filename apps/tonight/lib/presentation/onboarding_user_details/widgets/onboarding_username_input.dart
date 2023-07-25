@@ -17,7 +17,7 @@ class OnboardingUsernameInput extends HookWidget {
     return BlocBuilder<OnboardingUserDetailsCubit, OnboardingUserDetailsState>(
       buildWhen: (previous, current) =>
           previous.username != current.username ||
-          previous.submissionStatus != current.submissionStatus,
+          previous.formStatus != current.formStatus,
       builder: (context, state) {
         return TextField(
           controller: textController,
@@ -39,7 +39,7 @@ class OnboardingUsernameInput extends HookWidget {
   }
 
   String? _getUsernameInputErrorMessage(OnboardingUserDetailsState state) {
-    if (state.username.valid || state.submissionStatus != FormzStatus.invalid) {
+    if (state.username.valid || state.formStatus != FormzStatus.invalid) {
       return null;
     }
 
