@@ -28,8 +28,8 @@ class DailySpinPage extends StatelessWidget {
 
               if (state.getRewardsStatus.isFailure()) {
                 return FailureInfo(
-                  retryCallback: () =>
-                      context.read<DailySpinCubit>().getAvailableRewards(),
+                  retryCallback:
+                      context.read<DailySpinCubit>().getAvailableRewards,
                 );
               }
 
