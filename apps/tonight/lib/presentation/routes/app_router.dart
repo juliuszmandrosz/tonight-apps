@@ -19,6 +19,9 @@ import 'package:tonight/presentation/event_room/event_room_page.dart';
 import 'package:tonight/presentation/events_details/event_details_page.dart';
 import 'package:tonight/presentation/favorites/favorites_page.dart';
 import 'package:tonight/presentation/invoice_data/invoice_data_page.dart';
+import 'package:tonight/presentation/marketplace_discount_details/marketplace_discount_details_page.dart';
+import 'package:tonight/presentation/marketplace_discounts/marketplace_discounts_page.dart';
+import 'package:tonight/presentation/marketplace_product/marketplace_product_page.dart';
 import 'package:tonight/presentation/messages/messages_page.dart';
 import 'package:tonight/presentation/network_lost/network_lost_page.dart';
 import 'package:tonight/presentation/onboarding/onboarding_page.dart';
@@ -44,6 +47,7 @@ import 'package:tonight/presentation/update_profile_picture/update_profile_pictu
 import 'package:tonight/presentation/update_username/update_username_page.dart';
 import 'package:tonight/presentation/user_city_picker/user_city_picker_page.dart';
 import 'package:tonight/presentation/user_details/user_details_page.dart';
+import 'package:tonight/presentation/user_marketplace_discount_details/user_marketplace_discount_details_page.dart';
 import 'package:tonight/presentation/user_wall_photo_preview/user_wall_photo_preview_page.dart';
 import 'package:tonight/presentation/verify_phone_number/verify_phone_number_page.dart';
 import 'package:tonight/presentation/wall_photo_camera_preview/wall_photo_camera_preview_page.dart';
@@ -277,6 +281,26 @@ const animationDuration = 300;
     ),
     CustomRoute<CustomerData>(
       page: UpdateCustomerEmailPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: MarketplaceDiscountsPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: MarketplaceDiscountDetailsPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: UserMarketplaceDiscountDetailsPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: MarketplaceProductPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),

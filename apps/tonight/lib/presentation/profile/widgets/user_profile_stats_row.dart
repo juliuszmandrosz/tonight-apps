@@ -21,7 +21,11 @@ class UserProfileStatsRow extends StatelessWidget {
         children: [
           Expanded(
             child: UserDetailTile(
-              onTap: () => context.showSnackbarMessage(S().coinsInfo),
+              onTap: () => context.pushRoute(
+                MarketplaceDiscountsRoute(
+                  availableRaverCoins: userProfile.raverCoins,
+                ),
+              ),
               value: userProfile.raverCoins,
               label: 'Raver Coins',
               icon: FontAwesomeIcons.coins,

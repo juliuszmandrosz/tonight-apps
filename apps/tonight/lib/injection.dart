@@ -62,6 +62,8 @@ import 'package:tonight/application/events/event_filters/event_filters_cubit.dar
 import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:tonight/application/invoice_data/invoice_data_cubit.dart';
+import 'package:tonight/application/marketplace_discount_details/marketplace_discount_details_cubit.dart';
+import 'package:tonight/application/marketplace_discounts/marketplace_discounts_bloc.dart';
 import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
 import 'package:tonight/application/payment_method/payment_method_cubit.dart';
@@ -89,6 +91,7 @@ import 'package:tonight/domain/club_rewards/club_rewards_aggregator.dart';
 import 'package:tonight/domain/daily_spin/daily_spin_facade.dart';
 import 'package:tonight/domain/event_review/event_review_aggregator.dart';
 import 'package:tonight/domain/festivals/festival_facade.dart';
+import 'package:tonight/domain/marketplace_discounts/marketplace_discount_facade.dart';
 import 'package:tonight/domain/messages/message_facade.dart';
 import 'package:tonight/domain/participants/participant_facade.dart';
 import 'package:tonight/domain/places/places_facade.dart';
@@ -98,12 +101,14 @@ import 'package:tonight/domain/time_tasks/time_task_facade.dart';
 import 'package:tonight/domain/tonight_vouchers/tonight_voucher_facade.dart';
 import 'package:tonight/domain/user_app_links/user_app_links_facade.dart';
 import 'package:tonight/domain/user_details/user_details_aggregator.dart';
+import 'package:tonight/domain/user_marketplace_discounts/user_marketplace_discount_facade.dart';
 import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
 import 'package:tonight/domain/user_tonight_vouchers/user_tonight_voucher_facade.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/infrastructure/daily_spin/firebase_daily_spin_facade.dart';
 import 'package:tonight/infrastructure/festivals/firebase_festival_facade.dart';
 import 'package:tonight/infrastructure/google_places/google_places_facade.dart';
+import 'package:tonight/infrastructure/marketplace_discounts/firebase_marketplace_discounts_facade.dart';
 import 'package:tonight/infrastructure/messages/firebase_message_facade.dart';
 import 'package:tonight/infrastructure/participants/firebase_participant_facade.dart';
 import 'package:tonight/infrastructure/rooms/firebase_room_facade.dart';
@@ -111,6 +116,7 @@ import 'package:tonight/infrastructure/time_task_vouchers/firebase_time_task_vou
 import 'package:tonight/infrastructure/time_tasks/firebase_time_task_facade.dart';
 import 'package:tonight/infrastructure/tonight_vouchers/firebase_tonight_voucher_facade.dart';
 import 'package:tonight/infrastructure/user_app_links/firebase_user_app_links_facade.dart';
+import 'package:tonight/infrastructure/user_marketplace_discounts/firebase_user_marketplace_discount_facade.dart';
 import 'package:tonight/infrastructure/user_tonight_vouchers/firebase_user_tonight_voucher_facade.dart';
 import 'package:tonight/infrastructure/wall_photos/firebase_wall_photo_facade.dart';
 
@@ -460,6 +466,19 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  getIt.registerFactory(
+    () => MarketplaceDiscountsBloc(
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => MarketplaceDiscountDetailsCubit(
+      getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
@@ -729,6 +748,24 @@ void _registerFacades() {
 
   getIt.registerLazySingleton<UserTonightVoucherFacade>(
     () => FirebaseUserTonightVoucherFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<MarketplaceDiscountFacade>(
+    () => FirebaseMarketplaceDiscountFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<UserMarketplaceDiscountFacade>(
+    () => FirebaseUserMarketplaceDiscountFacade(
+      getIt(),
       getIt(),
       getIt(),
       getIt(),

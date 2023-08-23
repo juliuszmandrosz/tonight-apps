@@ -49,6 +49,7 @@ dependencies:
   pinput: ^2.2.31
   http: ^0.13.6
   flutter_fortune_wheel: ^1.2.1
+  webview_flutter: ^4.2.2
 
   # Inherited packages
   auto_route:
