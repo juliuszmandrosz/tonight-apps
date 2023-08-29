@@ -8,9 +8,6 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
-import 'package:tonight/application/tonight/tonight_cubit.dart';
-import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
-import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
 import 'package:tonight/application/welcome_loading/welcome_loading_cubit.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_upgrade_alert.dart';
@@ -74,24 +71,7 @@ class _WelcomeLoaderPageState extends State<WelcomeLoaderPage> {
                     ),
                   );
                 }
-                final location =
-                    context.read<UserLocationCubit>().state.userLocation;
-                return MultiBlocProvider(
-                  providers: [
-                    BlocProvider(
-                      create: (context) => getIt<TonightCubit>(),
-                    ),
-                    BlocProvider(
-                      create: (context) => getIt<TonightEventsBloc>()
-                        ..add(TonightEventsEvent.eventsFetched(location)),
-                    ),
-                    BlocProvider(
-                      create: (context) => getIt<WallPhotosBloc>()
-                        ..add(WallPhotosEvent.wallPhotosFetched(location)),
-                    ),
-                  ],
-                  child: const NavigatorPage(),
-                );
+                return const NavigatorPage();
               },
             ),
           ),

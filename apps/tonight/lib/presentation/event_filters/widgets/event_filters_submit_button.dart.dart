@@ -3,10 +3,10 @@ import 'package:common/extensions/responsive_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tonight/application/dashboard/bloc/tonight_events_from_venues_bloc.dart';
 import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
 import 'package:tonight/application/events/event_filters/event_filters_page_type.dart';
 import 'package:tonight/application/events/event_list/events_bloc.dart';
-import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
 import 'package:translations/translations.dart';
 
 class EventFiltersSubmitButton extends StatelessWidget {
@@ -25,8 +25,8 @@ class EventFiltersSubmitButton extends StatelessWidget {
       listener: (context, state) {
         switch (eventFiltersPageType) {
           case EventFiltersPageType.tonight:
-            context.read<TonightEventsBloc>().add(
-                  TonightEventsEvent.menuFiltersApplied(
+            context.read<TonightEventsFromVenuesBloc>().add(
+                  TonightEventsFromVenuesEvent.menuFiltersApplied(
                     filters: state.filters,
                     appliedFilters: state.appliedFilters,
                   ),

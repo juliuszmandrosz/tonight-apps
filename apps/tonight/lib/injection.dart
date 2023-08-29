@@ -46,6 +46,9 @@ import 'package:tonight/application/clubs/club_rewards/club_rewards_cubit.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/customer_email/customer_email_cubit.dart';
 import 'package:tonight/application/daily_spin/daily_spin_cubit.dart';
+import 'package:tonight/application/dashboard/aggregator/dashboard_aggregator.dart';
+import 'package:tonight/application/dashboard/bloc/dashboard_bloc.dart';
+import 'package:tonight/application/dashboard/bloc/tonight_events_from_venues_bloc.dart';
 import 'package:tonight/application/event_chat/aggregator/event_chat_aggregator.dart';
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
 import 'package:tonight/application/event_participants/event_participants_bloc.dart';
@@ -75,9 +78,6 @@ import 'package:tonight/application/sign_in_with_phone_number/sign_in_with_phone
 import 'package:tonight/application/ticket_checkout/aggregator/ticket_checkout_aggregator.dart';
 import 'package:tonight/application/ticket_checkout/bloc/ticket_checkout_bloc.dart';
 import 'package:tonight/application/tickets/tickets_bloc.dart';
-import 'package:tonight/application/tonight/tonight_cubit.dart';
-import 'package:tonight/application/tonight_events/aggregator/tonight_events_aggregator.dart';
-import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
 import 'package:tonight/application/update_profile_picture/update_profile_picture_cubit.dart';
 import 'package:tonight/application/user_city_picker/user_city_picker_bloc.dart';
 import 'package:tonight/application/user_details/user_details_cubit.dart';
@@ -339,7 +339,7 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => TonightEventsBloc(
+    () => TonightEventsFromVenuesBloc(
       getIt(),
     ),
   );
@@ -398,7 +398,9 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => TonightCubit(),
+    () => DashboardBloc(
+      getIt(),
+    ),
   );
 
   getIt.registerFactory(
@@ -820,7 +822,9 @@ void _registerAggregators() {
   );
 
   getIt.registerLazySingleton(
-    () => TonightEventsAggregator(
+    () => DashboardAggregator(
+      getIt(),
+      getIt(),
       getIt(),
       getIt(),
       getIt(),

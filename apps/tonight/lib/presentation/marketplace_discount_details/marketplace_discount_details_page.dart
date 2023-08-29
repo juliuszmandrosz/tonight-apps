@@ -16,11 +16,15 @@ class MarketplaceDiscountDetailsPage extends StatelessWidget {
   final MarketplaceDiscount discount;
   final int availableRaverCoins;
   final BuildContext blocContext;
+  final bool isNavigatedFromDashboard;
+  final String? heroTag;
 
   const MarketplaceDiscountDetailsPage({
     required this.discount,
     required this.blocContext,
     required this.availableRaverCoins,
+    this.isNavigatedFromDashboard = false,
+    this.heroTag,
     Key? key,
   }) : super(key: key);
 
@@ -32,9 +36,10 @@ class MarketplaceDiscountDetailsPage extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<MarketplaceDiscountDetailsCubit>(),
         ),
-        BlocProvider.value(
-          value: blocContext.read<MarketplaceDiscountsBloc>(),
-        ),
+        if (!isNavigatedFromDashboard)
+          BlocProvider.value(
+            value: blocContext.read<MarketplaceDiscountsBloc>(),
+          ),
       ],
       child: Builder(builder: (context) {
         return Scaffold(
@@ -60,8 +65,19 @@ class MarketplaceDiscountDetailsPage extends StatelessWidget {
                     ? context.loaderOverlay.show()
                     : context.loaderOverlay.hide();
 
-                if (state.redeemDiscountStatus.isSuccess() &&
-                    state.redeemedDiscount.isSome()) {
+                if (!state.redeemDiscountStatus.isSuccess() ||
+                    state.redeemedDiscount.isNone()) return;
+
+                if (isNavigatedFromDashboard) {
+                  context.router.popUntil(
+                    (route) => route.settings.name == WelcomeLoaderRoute.name,
+                  );
+                  context.pushRoute(
+                    UserMarketplaceDiscountDetailsRoute(
+                      discount: state.redeemedDiscount.getOrCrash(),
+                    ),
+                  );
+                } else {
                   context.read<MarketplaceDiscountsBloc>().add(
                       MarketplaceDiscountsEvent.discountRedeemed(discount));
                   context.router.popUntil((route) =>
@@ -76,10 +92,13 @@ class MarketplaceDiscountDetailsPage extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    NetworkPhoto(
-                      photoUrl: discount.imageUrl,
-                      photoHeight: context.height * 0.5,
-                      loaderSize: 32,
+                    Hero(
+                      tag: heroTag ?? '',
+                      child: NetworkPhoto(
+                        photoUrl: discount.imageUrl,
+                        photoHeight: context.height * 0.5,
+                        loaderSize: 32,
+                      ),
                     ),
                     const SizedBox(height: 10),
                     Padding(

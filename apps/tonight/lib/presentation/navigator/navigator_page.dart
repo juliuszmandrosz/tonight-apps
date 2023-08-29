@@ -4,12 +4,6 @@ import 'package:common/common.dart';
 import 'package:dartz/dartz.dart' as dartz;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tonight/application/events/event_filters/event_filters_page_type.dart';
-import 'package:tonight/application/tonight/tonight_cubit.dart';
-import 'package:tonight/application/tonight/tonight_tab.dart';
-import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
-import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/drawer/tonight_drawer.dart';
 import 'package:tonight/presentation/navigator/tonight_navigation_destinations.dart';
@@ -30,6 +24,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
 
   @override
   Widget build(BuildContext context) {
+    const iconSize = 28.0;
     return GestureDetector(
       onTap: () => context.unfocus(),
       child: AutoTabsScaffold(
@@ -38,10 +33,9 @@ class _NavigatorPageState extends State<NavigatorPage> {
             : null,
         appBarBuilder: _buildAppBar,
         routes: const [
-          TonightRoute(),
+          DashboardRoute(),
           DiscoverRoute(),
-          TonightRoute(),
-          MessagesRoute(),
+          DashboardRoute(),
           ProfileRoute(),
         ],
         bottomNavigationBuilder: (_, tabsRouter) {
@@ -58,6 +52,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
                 return NavigationBar(
                   backgroundColor: context.backgroundColor,
                   selectedIndex: tabsRouter.activeIndex,
+                  labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
                   onDestinationSelected: (i) async {
                     context.unfocus();
 
@@ -82,25 +77,32 @@ class _NavigatorPageState extends State<NavigatorPage> {
                   },
                   destinations: [
                     const NavigationDestination(
-                      icon: FaIcon(FontAwesomeIcons.fire),
+                      icon: Icon(
+                        Icons.home_outlined,
+                        size: iconSize,
+                      ),
                       label: 'Tonight',
                     ),
                     NavigationDestination(
-                      icon: const FaIcon(FontAwesomeIcons.compass),
+                      icon: const Icon(
+                        Icons.explore_outlined,
+                        size: iconSize,
+                      ),
                       label: S().discover,
                     ),
-                    NavigationDestination(
-                      icon: const FaIcon(
-                        FontAwesomeIcons.circlePlus,
+                    const NavigationDestination(
+                      icon: Icon(
+                        Icons.checklist_outlined,
+                        size: iconSize,
                       ),
-                      label: S().add,
+                      // TODO - add translation
+                      label: 'Zadania',
                     ),
                     NavigationDestination(
-                      icon: const FaIcon(FontAwesomeIcons.envelope),
-                      label: S().messages,
-                    ),
-                    NavigationDestination(
-                      icon: const FaIcon(FontAwesomeIcons.user),
+                      icon: const Icon(
+                        Icons.person_outline,
+                        size: iconSize,
+                      ),
                       label: S().profile,
                     ),
                   ],
@@ -119,47 +121,7 @@ class _NavigatorPageState extends State<NavigatorPage> {
   ) {
     switch (TonightNavigationDestination.values[router.activeIndex]) {
       case TonightNavigationDestination.tonight:
-        final selectedTab =
-            context.select((TonightCubit bloc) => bloc.state.selectedTab);
-        return TonightAppBar(
-          backgroundColor: context.backgroundColor,
-          actions: selectedTab == TonightTab.events
-              ? [
-                  IconButton(
-                    icon: const FaIcon(
-                      FontAwesomeIcons.sliders,
-                      size: 20,
-                    ),
-                    onPressed: () => context.pushRoute(
-                      EventFiltersRoute(
-                        blocContext: context,
-                        selectedFilters: context
-                            .read<TonightEventsBloc>()
-                            .state
-                            .eventFilters,
-                        eventFiltersPageType: EventFiltersPageType.tonight,
-                      ),
-                    ),
-                  ),
-                ]
-              : [
-                  IconButton(
-                    icon: const FaIcon(
-                      FontAwesomeIcons.sliders,
-                      size: 20,
-                    ),
-                    onPressed: () => context.pushRoute(
-                      WallPhotoFiltersRoute(
-                        blocContext: context,
-                        selectedFilters: context
-                            .read<WallPhotosBloc>()
-                            .state
-                            .wallPhotoFilters,
-                      ),
-                    ),
-                  ),
-                ],
-        );
+        return TonightAppBar(backgroundColor: context.backgroundColor);
       case TonightNavigationDestination.discover:
         return PreferredSize(
           preferredSize: Size.fromHeight(context.padding.top),

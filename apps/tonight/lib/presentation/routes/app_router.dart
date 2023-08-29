@@ -9,6 +9,7 @@ import 'package:tonight/presentation/club_city_picker/club_city_picker_page.dart
 import 'package:tonight/presentation/club_details/club_details_page.dart';
 import 'package:tonight/presentation/contact/contact_page.dart';
 import 'package:tonight/presentation/daily_spin_page/daily_spin_page.dart';
+import 'package:tonight/presentation/dashboard/dashboard_page.dart';
 import 'package:tonight/presentation/discover/discover_page.dart';
 import 'package:tonight/presentation/event_city_picker/event_city_picker_page.dart';
 import 'package:tonight/presentation/event_date_picker/event_date_picker_page.dart';
@@ -41,13 +42,13 @@ import 'package:tonight/presentation/ticket_checkout/ticket_checkout_page.dart';
 import 'package:tonight/presentation/ticket_payment_confirm/ticket_payment_confirm_page.dart';
 import 'package:tonight/presentation/ticket_scan_confirm/ticket_scan_confirm_page.dart';
 import 'package:tonight/presentation/tickets_and_vouchers/tickets_and_vouchers_page.dart';
-import 'package:tonight/presentation/tonight/tonight_page.dart';
 import 'package:tonight/presentation/update_customer_email/update_customer_email_page.dart';
 import 'package:tonight/presentation/update_profile_picture/update_profile_picture_page.dart';
 import 'package:tonight/presentation/update_username/update_username_page.dart';
 import 'package:tonight/presentation/user_city_picker/user_city_picker_page.dart';
 import 'package:tonight/presentation/user_details/user_details_page.dart';
 import 'package:tonight/presentation/user_marketplace_discount_details/user_marketplace_discount_details_page.dart';
+import 'package:tonight/presentation/user_stories/user_stories_page.dart';
 import 'package:tonight/presentation/user_wall_photo_preview/user_wall_photo_preview_page.dart';
 import 'package:tonight/presentation/verify_phone_number/verify_phone_number_page.dart';
 import 'package:tonight/presentation/wall_photo_camera_preview/wall_photo_camera_preview_page.dart';
@@ -79,7 +80,7 @@ const animationDuration = 300;
       page: WelcomeLoaderPage,
       children: [
         CustomRoute(
-          page: TonightPage,
+          page: DashboardPage,
           transitionsBuilder: slideLeftTransition,
           durationInMilliseconds: animationDuration,
         ),
@@ -301,6 +302,11 @@ const animationDuration = 300;
     ),
     CustomRoute(
       page: MarketplaceProductPage,
+      transitionsBuilder: slideLeftTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: UserStoriesPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),

@@ -35,6 +35,11 @@ class FirebaseAccountFacade implements UserAccountFacade {
 
   @override
   Stream<Either<UserAccountFailure, UserAccount>> getUserAccount() async* {
+    if (_firebaseAuth.currentUser == null ||
+        _firebaseAuth.currentUser!.isAnonymous) {
+      yield left(const UserAccountFailure.permissionDenied());
+      return;
+    }
     final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
     yield* userDocRef
         .snapshots()

@@ -18,11 +18,15 @@ abstract class UserEventFacade {
     String clubId,
   );
 
-  Future<Either<UserEventFailure, List<Event>>> fetchTonightEvents({
+  Future<Either<UserEventFailure, List<Event>>> fetchTonightEventsFromVenues({
     required EventFilters filters,
     int pageSize = 20,
     int offset = 0,
   });
+
+  Future<Either<UserEventFailure, List<Event>>> fetchTonightEvents(
+    Option<LatLng> userLocation,
+  );
 
   Future<Either<UserEventFailure, DateTime?>> getNearestEventStartDateTime(
     Option<LatLng> userLocation,

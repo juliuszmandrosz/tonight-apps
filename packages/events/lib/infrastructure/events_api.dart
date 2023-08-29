@@ -1,5 +1,7 @@
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:events/domain/domain.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 abstract class EventsApi {
   Future<List<dynamic>> getEvents(
@@ -13,10 +15,14 @@ abstract class EventsApi {
     EventFilters filters,
   );
 
-  Future<List<dynamic>> getTonightEvents(
+  Future<List<dynamic>> fetchTonightEventsFromVenues(
     EventFilters filters,
     int pageSize,
     int offset,
+  );
+
+  Future<List<dynamic>> getTonightEvents(
+    Option<LatLng> userLocation,
   );
 }
 
@@ -69,7 +75,7 @@ class EventsApiImpl implements EventsApi {
   }
 
   @override
-  Future<List> getTonightEvents(
+  Future<List> fetchTonightEventsFromVenues(
     EventFilters filters,
     int pageSize,
     int offset,
@@ -78,7 +84,6 @@ class EventsApiImpl implements EventsApi {
     final sortBy = _getSortBy(
       EventSortModel(fieldName: attending, direction: SortDirection.desc),
     );
-
     const endpoint = 'events/getEvents';
     final data = {
       'query': '',
@@ -86,6 +91,28 @@ class EventsApiImpl implements EventsApi {
       'filterBy': filters.buildFilters(),
       'pageNumber': pageNumber,
       'pageSize': pageSize,
+      'sortBy': sortBy,
+    };
+    final result = await _dio.post(endpoint, data: data);
+    return result.data as List<dynamic>;
+  }
+
+  @override
+  Future<List> getTonightEvents(Option<LatLng> userLocation) async {
+    final filters = EventFilters.empty().copyWith(
+      isTonightEventFilter: IsTonightEventFilter(isTonightEvent: true),
+    );
+    final sortBy = userLocation.fold(
+      () => 'attending:desc',
+      (loc) => 'location(${loc.latitude}, ${loc.longitude}):asc',
+    );
+    const endpoint = 'events/getEvents';
+    final data = {
+      'query': '',
+      'queryBy': '',
+      'filterBy': filters.buildFilters(),
+      'pageNumber': 1,
+      'pageSize': 100,
       'sortBy': sortBy,
     };
     final result = await _dio.post(endpoint, data: data);

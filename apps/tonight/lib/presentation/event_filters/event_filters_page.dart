@@ -2,10 +2,10 @@ import 'package:common/common.dart';
 import 'package:events/domain/filters/event_filters_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tonight/application/dashboard/bloc/tonight_events_from_venues_bloc.dart';
 import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
 import 'package:tonight/application/events/event_filters/event_filters_page_type.dart';
 import 'package:tonight/application/events/event_list/events_bloc.dart';
-import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/event_filters/widgets/event_filters_dress_code.dart';
@@ -41,7 +41,7 @@ class EventFiltersPage extends StatelessWidget {
         ),
         if (eventFiltersPageType == EventFiltersPageType.tonight)
           BlocProvider.value(
-            value: blocContext.read<TonightEventsBloc>(),
+            value: blocContext.read<TonightEventsFromVenuesBloc>(),
           ),
         if (eventFiltersPageType == EventFiltersPageType.discover)
           BlocProvider.value(
