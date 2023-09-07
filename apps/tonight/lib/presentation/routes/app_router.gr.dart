@@ -11,9 +11,10 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:account_settings/account_settings.dart' as _i79;
 import 'package:auth/auth.dart' as _i71;
 import 'package:auto_route/auto_route.dart' as _i55;
-import 'package:camera/camera.dart' as _i80;
+import 'package:camera/camera.dart' as _i81;
 import 'package:clubs/domain/club/club_entity.dart' as _i68;
 import 'package:clubs/infrastructure/filters/filter/city_filter.dart' as _i69;
 import 'package:dartz/dartz.dart' as _i72;
@@ -30,10 +31,10 @@ import '../../application/dashboard/models/user_stories_with_interactions.dart'
     as _i63;
 import '../../application/events/event_filters/event_filters_page_type.dart'
     as _i65;
-import '../../domain/challenges/challenge_entity.dart' as _i79;
+import '../../domain/challenges/challenge_entity.dart' as _i80;
 import '../../domain/marketplace_discounts/marketplace_discount_entity.dart'
     as _i77;
-import '../../domain/participants/participant_entity.dart' as _i81;
+import '../../domain/participants/participant_entity.dart' as _i82;
 import '../../domain/time_tasks/time_task_entity.dart' as _i73;
 import '../../domain/user_marketplace_discounts/user_marketplace_discount_entity.dart'
     as _i78;
@@ -712,6 +713,7 @@ class AppRouter extends _i55.RootStackRouter {
           userStories: args.userStories,
           initialStoryIndex: args.initialStoryIndex,
           isCurrentUser: args.isCurrentUser,
+          currentUser: args.currentUser,
           key: args.key,
         ),
         transitionsBuilder: _i57.zoomInTransition,
@@ -2419,6 +2421,7 @@ class ChallengeStoriesRoute
     required List<_i63.UserStoriesWithInteractions> userStories,
     required int initialStoryIndex,
     required bool isCurrentUser,
+    required _i72.Option<_i79.UserAccount> currentUser,
     _i56.Key? key,
   }) : super(
           ChallengeStoriesRoute.name,
@@ -2427,6 +2430,7 @@ class ChallengeStoriesRoute
             userStories: userStories,
             initialStoryIndex: initialStoryIndex,
             isCurrentUser: isCurrentUser,
+            currentUser: currentUser,
             key: key,
           ),
         );
@@ -2439,6 +2443,7 @@ class ChallengeStoriesRouteArgs {
     required this.userStories,
     required this.initialStoryIndex,
     required this.isCurrentUser,
+    required this.currentUser,
     this.key,
   });
 
@@ -2448,11 +2453,13 @@ class ChallengeStoriesRouteArgs {
 
   final bool isCurrentUser;
 
+  final _i72.Option<_i79.UserAccount> currentUser;
+
   final _i56.Key? key;
 
   @override
   String toString() {
-    return 'ChallengeStoriesRouteArgs{userStories: $userStories, initialStoryIndex: $initialStoryIndex, isCurrentUser: $isCurrentUser, key: $key}';
+    return 'ChallengeStoriesRouteArgs{userStories: $userStories, initialStoryIndex: $initialStoryIndex, isCurrentUser: $isCurrentUser, currentUser: $currentUser, key: $key}';
   }
 }
 
@@ -2461,8 +2468,8 @@ class ChallengeStoriesRouteArgs {
 class AddChallengeStoryRoute
     extends _i55.PageRouteInfo<AddChallengeStoryRouteArgs> {
   AddChallengeStoryRoute({
-    required _i79.Challenge challenge,
-    required List<_i80.CameraDescription> cameras,
+    required _i80.Challenge challenge,
+    required List<_i81.CameraDescription> cameras,
     _i56.Key? key,
   }) : super(
           AddChallengeStoryRoute.name,
@@ -2484,9 +2491,9 @@ class AddChallengeStoryRouteArgs {
     this.key,
   });
 
-  final _i79.Challenge challenge;
+  final _i80.Challenge challenge;
 
-  final List<_i80.CameraDescription> cameras;
+  final List<_i81.CameraDescription> cameras;
 
   final _i56.Key? key;
 
@@ -2500,8 +2507,8 @@ class AddChallengeStoryRouteArgs {
 /// [_i47.PhotoPreviewPage]
 class PhotoPreviewRoute extends _i55.PageRouteInfo<PhotoPreviewRouteArgs> {
   PhotoPreviewRoute({
-    required _i80.XFile photo,
-    required _i79.Challenge challenge,
+    required _i81.XFile photo,
+    required _i80.Challenge challenge,
     required bool isSelfie,
     _i56.Key? key,
   }) : super(
@@ -2526,9 +2533,9 @@ class PhotoPreviewRouteArgs {
     this.key,
   });
 
-  final _i80.XFile photo;
+  final _i81.XFile photo;
 
-  final _i79.Challenge challenge;
+  final _i80.Challenge challenge;
 
   final bool isSelfie;
 
@@ -2544,8 +2551,8 @@ class PhotoPreviewRouteArgs {
 /// [_i48.VideoPreviewPage]
 class VideoPreviewRoute extends _i55.PageRouteInfo<VideoPreviewRouteArgs> {
   VideoPreviewRoute({
-    required _i80.XFile video,
-    required _i79.Challenge challenge,
+    required _i81.XFile video,
+    required _i80.Challenge challenge,
     required bool isSelfie,
     _i56.Key? key,
   }) : super(
@@ -2570,9 +2577,9 @@ class VideoPreviewRouteArgs {
     this.key,
   });
 
-  final _i80.XFile video;
+  final _i81.XFile video;
 
-  final _i79.Challenge challenge;
+  final _i80.Challenge challenge;
 
   final bool isSelfie;
 
@@ -2589,7 +2596,7 @@ class VideoPreviewRouteArgs {
 class StoryCommentsRoute extends _i55.PageRouteInfo<StoryCommentsRouteArgs> {
   StoryCommentsRoute({
     required String storyId,
-    required _i81.Participant currentUser,
+    required _i82.Participant currentUser,
     required _i56.BuildContext blocContext,
     _i56.Key? key,
   }) : super(
@@ -2616,7 +2623,7 @@ class StoryCommentsRouteArgs {
 
   final String storyId;
 
-  final _i81.Participant currentUser;
+  final _i82.Participant currentUser;
 
   final _i56.BuildContext blocContext;
 

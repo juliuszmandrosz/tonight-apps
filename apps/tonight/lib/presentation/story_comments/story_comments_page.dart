@@ -1,10 +1,4 @@
-import 'package:common/application/cubit_status.dart';
-import 'package:common/extensions/build_context_extensions.dart';
-import 'package:common/extensions/cubit_status_extensions.dart';
-import 'package:common/extensions/typography_extensions.dart';
-import 'package:common/presentation/failure_info.dart';
-import 'package:common/presentation/infinite_list.dart';
-import 'package:common/presentation/wave_loading_indicator.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/challenge_story/cubit/challenge_story_cubit.dart';
@@ -30,7 +24,10 @@ class StoryCommentsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TonightAppBar(title: ''),
+      appBar: TonightAppBar(
+        title: '',
+        backgroundColor: context.backgroundColor,
+      ),
       body: MultiBlocProvider(
         providers: [
           BlocProvider(

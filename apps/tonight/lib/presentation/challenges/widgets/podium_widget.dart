@@ -95,7 +95,10 @@ class PodiumWidget extends StatelessWidget {
         );
       }
       return InkWell(
-        onTap: () => context.pushRoute(UserDetailsRoute(userId: winner.id)),
+        onTap: () {
+          if (winner.id.isEmpty) return;
+          context.pushRoute(UserDetailsRoute(userId: winner.id));
+        },
         child: SizedBox(
           width: 100 * scale,
           child: Column(
@@ -105,10 +108,11 @@ class PodiumWidget extends StatelessWidget {
               ProfilePictureContainer(
                 username: winner.username,
                 profilePictureUrl: winner.profilePictureUrl,
-                textColor: Colors.black,
-                backgroundColor: Colors.white,
+                textColor: context.surfaceColor,
+                backgroundColor: context.onSurfaceColor,
                 textStyle: TextStyle(fontSize: 18 * scale),
                 imageSize: 60 * scale,
+                isUserDeleted: winner.id.isEmpty,
               ),
               SizedBox(height: 10 * scale),
               AutoSizeText(
@@ -117,7 +121,7 @@ class PodiumWidget extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: 8),
               Text(
                 // TODO - add translation
                 '$position miejsce',
@@ -125,6 +129,11 @@ class PodiumWidget extends StatelessWidget {
                   fontSize: 16 * scale,
                   fontWeight: FontWeight.bold,
                 ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                '${winner.likesCount} głosów',
+                style: context.bodySmall.copyWithSecondaryColor(),
               ),
             ],
           ),

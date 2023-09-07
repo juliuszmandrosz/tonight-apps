@@ -40,7 +40,7 @@ class AvailableDiscountListTile extends StatelessWidget {
         padding: const EdgeInsets.only(top: 8),
         child: Text(
           '${discount.price} '
-          'tonight tokens',
+          'Tonight Tokens',
           style: context.titleSmall.copyWithSecondaryColor(),
         ),
       ),

@@ -35,13 +35,15 @@ class ChallengeStoriesRow extends StatelessWidget {
                             userStories: data.currentUserStories,
                             initialStoryIndex: 0,
                             isCurrentUser: true,
+                            currentUser: data.currentUser,
                           ),
                         );
 
                         if (stories != null && context.mounted) {
                           context.read<DashboardBloc>().add(
                                 DashboardEvent.currentUserStoriesUpdated(
-                                    stories),
+                                  stories,
+                                ),
                               );
                         }
                         return;
@@ -81,6 +83,7 @@ class ChallengeStoriesRow extends StatelessWidget {
                       userStories: data.otherUsersStories,
                       initialStoryIndex: storyIndex,
                       isCurrentUser: false,
+                      currentUser: data.currentUser,
                     ),
                   );
 

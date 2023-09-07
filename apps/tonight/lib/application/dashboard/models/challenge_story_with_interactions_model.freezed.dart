@@ -21,6 +21,7 @@ mixin _$ChallengeStoryWithInteractions {
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get storyUrl => throw _privateConstructorUsedError;
   bool get isVideo => throw _privateConstructorUsedError;
+  bool get isSelfie => throw _privateConstructorUsedError;
   int get likesCount => throw _privateConstructorUsedError;
   int get commentsCount => throw _privateConstructorUsedError;
   String get challengeTitle => throw _privateConstructorUsedError;
@@ -49,6 +50,7 @@ abstract class $ChallengeStoryWithInteractionsCopyWith<$Res> {
       DateTime createdAt,
       String storyUrl,
       bool isVideo,
+      bool isSelfie,
       int likesCount,
       int commentsCount,
       String challengeTitle,
@@ -78,6 +80,7 @@ class _$ChallengeStoryWithInteractionsCopyWithImpl<$Res,
     Object? createdAt = null,
     Object? storyUrl = null,
     Object? isVideo = null,
+    Object? isSelfie = null,
     Object? likesCount = null,
     Object? commentsCount = null,
     Object? challengeTitle = null,
@@ -107,6 +110,10 @@ class _$ChallengeStoryWithInteractionsCopyWithImpl<$Res,
       isVideo: null == isVideo
           ? _value.isVideo
           : isVideo // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSelfie: null == isSelfie
+          ? _value.isSelfie
+          : isSelfie // ignore: cast_nullable_to_non_nullable
               as bool,
       likesCount: null == likesCount
           ? _value.likesCount
@@ -159,6 +166,7 @@ abstract class _$$_ChallengeStoryWithInteractionsCopyWith<$Res>
       DateTime createdAt,
       String storyUrl,
       bool isVideo,
+      bool isSelfie,
       int likesCount,
       int commentsCount,
       String challengeTitle,
@@ -187,6 +195,7 @@ class __$$_ChallengeStoryWithInteractionsCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? storyUrl = null,
     Object? isVideo = null,
+    Object? isSelfie = null,
     Object? likesCount = null,
     Object? commentsCount = null,
     Object? challengeTitle = null,
@@ -216,6 +225,10 @@ class __$$_ChallengeStoryWithInteractionsCopyWithImpl<$Res>
       isVideo: null == isVideo
           ? _value.isVideo
           : isVideo // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isSelfie: null == isSelfie
+          ? _value.isSelfie
+          : isSelfie // ignore: cast_nullable_to_non_nullable
               as bool,
       likesCount: null == likesCount
           ? _value.likesCount
@@ -263,6 +276,7 @@ class _$_ChallengeStoryWithInteractions
       required this.createdAt,
       required this.storyUrl,
       required this.isVideo,
+      required this.isSelfie,
       required this.likesCount,
       required this.commentsCount,
       required this.challengeTitle,
@@ -283,6 +297,8 @@ class _$_ChallengeStoryWithInteractions
   @override
   final bool isVideo;
   @override
+  final bool isSelfie;
+  @override
   final int likesCount;
   @override
   final int commentsCount;
@@ -301,7 +317,7 @@ class _$_ChallengeStoryWithInteractions
 
   @override
   String toString() {
-    return 'ChallengeStoryWithInteractions(id: $id, interactionId: $interactionId, createdAt: $createdAt, storyUrl: $storyUrl, isVideo: $isVideo, likesCount: $likesCount, commentsCount: $commentsCount, challengeTitle: $challengeTitle, liked: $liked, seen: $seen, periodNumber: $periodNumber, seenAt: $seenAt, videoDurationInMilliseconds: $videoDurationInMilliseconds)';
+    return 'ChallengeStoryWithInteractions(id: $id, interactionId: $interactionId, createdAt: $createdAt, storyUrl: $storyUrl, isVideo: $isVideo, isSelfie: $isSelfie, likesCount: $likesCount, commentsCount: $commentsCount, challengeTitle: $challengeTitle, liked: $liked, seen: $seen, periodNumber: $periodNumber, seenAt: $seenAt, videoDurationInMilliseconds: $videoDurationInMilliseconds)';
   }
 
   @override
@@ -317,6 +333,8 @@ class _$_ChallengeStoryWithInteractions
             (identical(other.storyUrl, storyUrl) ||
                 other.storyUrl == storyUrl) &&
             (identical(other.isVideo, isVideo) || other.isVideo == isVideo) &&
+            (identical(other.isSelfie, isSelfie) ||
+                other.isSelfie == isSelfie) &&
             (identical(other.likesCount, likesCount) ||
                 other.likesCount == likesCount) &&
             (identical(other.commentsCount, commentsCount) ||
@@ -342,6 +360,7 @@ class _$_ChallengeStoryWithInteractions
       createdAt,
       storyUrl,
       isVideo,
+      isSelfie,
       likesCount,
       commentsCount,
       challengeTitle,
@@ -367,6 +386,7 @@ abstract class _ChallengeStoryWithInteractions
           required final DateTime createdAt,
           required final String storyUrl,
           required final bool isVideo,
+          required final bool isSelfie,
           required final int likesCount,
           required final int commentsCount,
           required final String challengeTitle,
@@ -387,6 +407,8 @@ abstract class _ChallengeStoryWithInteractions
   String get storyUrl;
   @override
   bool get isVideo;
+  @override
+  bool get isSelfie;
   @override
   int get likesCount;
   @override

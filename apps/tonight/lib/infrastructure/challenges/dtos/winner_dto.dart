@@ -16,6 +16,7 @@ class WinnerDto with _$WinnerDto {
     required String profilePictureUrl,
     required int place,
     required int reward,
+    @Default(0) int likesCount,
   }) = _WinnerDto;
 
   factory WinnerDto.fromJson(Map<String, dynamic> json) =>
@@ -32,6 +33,7 @@ class WinnerDto with _$WinnerDto {
       profilePictureUrl: winner.profilePictureUrl,
       place: winner.place,
       reward: winner.reward,
+      likesCount: winner.likesCount,
     );
   }
 
@@ -42,6 +44,7 @@ class WinnerDto with _$WinnerDto {
       profilePictureUrl: profilePictureUrl,
       place: place,
       reward: reward,
+      likesCount: likesCount,
     );
   }
 }

@@ -50,6 +50,7 @@ class VideoPreviewCubit extends Cubit<VideoPreviewState> {
       challengeStartDate: challenge.startDate,
       challengeEndDate: challenge.endDate,
       videoDurationInMilliseconds: durationInMilliseconds,
+      isSelfie: isSelfie,
     );
     final processedVideo = await _processVideo(video, isSelfie);
     if (processedVideo.isNone()) {

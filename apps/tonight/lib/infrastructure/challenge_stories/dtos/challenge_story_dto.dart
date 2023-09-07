@@ -25,6 +25,7 @@ class ChallengeStoryDto with _$ChallengeStoryDto {
     @FirebaseTimestampJsonConverter() required DateTime challengeEndDate,
     @Default(0) int likesCount,
     @Default(0) int commentsCount,
+    @Default(false) bool isSelfie,
     int? videoDurationInMilliseconds,
   }) = _ChallengeStoryDto;
 
@@ -54,6 +55,7 @@ class ChallengeStoryDto with _$ChallengeStoryDto {
       likesCount: challengeStory.likesCount,
       commentsCount: challengeStory.commentsCount,
       videoDurationInMilliseconds: challengeStory.videoDurationInMilliseconds,
+      isSelfie: challengeStory.isSelfie,
     );
   }
 
@@ -74,6 +76,7 @@ class ChallengeStoryDto with _$ChallengeStoryDto {
       likesCount: likesCount,
       commentsCount: commentsCount,
       videoDurationInMilliseconds: videoDurationInMilliseconds,
+      isSelfie: isSelfie,
     );
   }
 }

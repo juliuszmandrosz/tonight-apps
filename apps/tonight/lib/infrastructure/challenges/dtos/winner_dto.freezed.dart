@@ -25,6 +25,7 @@ mixin _$WinnerDto {
   String get profilePictureUrl => throw _privateConstructorUsedError;
   int get place => throw _privateConstructorUsedError;
   int get reward => throw _privateConstructorUsedError;
+  int get likesCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +43,8 @@ abstract class $WinnerDtoCopyWith<$Res> {
       String username,
       String profilePictureUrl,
       int place,
-      int reward});
+      int reward,
+      int likesCount});
 }
 
 /// @nodoc
@@ -63,6 +65,7 @@ class _$WinnerDtoCopyWithImpl<$Res, $Val extends WinnerDto>
     Object? profilePictureUrl = null,
     Object? place = null,
     Object? reward = null,
+    Object? likesCount = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -85,6 +88,10 @@ class _$WinnerDtoCopyWithImpl<$Res, $Val extends WinnerDto>
           ? _value.reward
           : reward // ignore: cast_nullable_to_non_nullable
               as int,
+      likesCount: null == likesCount
+          ? _value.likesCount
+          : likesCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -101,7 +108,8 @@ abstract class _$$_WinnerDtoCopyWith<$Res> implements $WinnerDtoCopyWith<$Res> {
       String username,
       String profilePictureUrl,
       int place,
-      int reward});
+      int reward,
+      int likesCount});
 }
 
 /// @nodoc
@@ -120,6 +128,7 @@ class __$$_WinnerDtoCopyWithImpl<$Res>
     Object? profilePictureUrl = null,
     Object? place = null,
     Object? reward = null,
+    Object? likesCount = null,
   }) {
     return _then(_$_WinnerDto(
       id: null == id
@@ -142,6 +151,10 @@ class __$$_WinnerDtoCopyWithImpl<$Res>
           ? _value.reward
           : reward // ignore: cast_nullable_to_non_nullable
               as int,
+      likesCount: null == likesCount
+          ? _value.likesCount
+          : likesCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -155,7 +168,8 @@ class _$_WinnerDto extends _WinnerDto {
       required this.username,
       required this.profilePictureUrl,
       required this.place,
-      required this.reward})
+      required this.reward,
+      this.likesCount = 0})
       : super._();
 
   factory _$_WinnerDto.fromJson(Map<String, dynamic> json) =>
@@ -171,10 +185,13 @@ class _$_WinnerDto extends _WinnerDto {
   final int place;
   @override
   final int reward;
+  @override
+  @JsonKey()
+  final int likesCount;
 
   @override
   String toString() {
-    return 'WinnerDto(id: $id, username: $username, profilePictureUrl: $profilePictureUrl, place: $place, reward: $reward)';
+    return 'WinnerDto(id: $id, username: $username, profilePictureUrl: $profilePictureUrl, place: $place, reward: $reward, likesCount: $likesCount)';
   }
 
   @override
@@ -188,13 +205,15 @@ class _$_WinnerDto extends _WinnerDto {
             (identical(other.profilePictureUrl, profilePictureUrl) ||
                 other.profilePictureUrl == profilePictureUrl) &&
             (identical(other.place, place) || other.place == place) &&
-            (identical(other.reward, reward) || other.reward == reward));
+            (identical(other.reward, reward) || other.reward == reward) &&
+            (identical(other.likesCount, likesCount) ||
+                other.likesCount == likesCount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, username, profilePictureUrl, place, reward);
+  int get hashCode => Object.hash(
+      runtimeType, id, username, profilePictureUrl, place, reward, likesCount);
 
   @JsonKey(ignore: true)
   @override
@@ -216,7 +235,8 @@ abstract class _WinnerDto extends WinnerDto {
       required final String username,
       required final String profilePictureUrl,
       required final int place,
-      required final int reward}) = _$_WinnerDto;
+      required final int reward,
+      final int likesCount}) = _$_WinnerDto;
   const _WinnerDto._() : super._();
 
   factory _WinnerDto.fromJson(Map<String, dynamic> json) =
@@ -232,6 +252,8 @@ abstract class _WinnerDto extends WinnerDto {
   int get place;
   @override
   int get reward;
+  @override
+  int get likesCount;
   @override
   @JsonKey(ignore: true)
   _$$_WinnerDtoCopyWith<_$_WinnerDto> get copyWith =>

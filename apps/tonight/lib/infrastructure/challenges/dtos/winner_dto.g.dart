@@ -12,6 +12,7 @@ _$_WinnerDto _$$_WinnerDtoFromJson(Map<String, dynamic> json) => _$_WinnerDto(
       profilePictureUrl: json['profilePictureUrl'] as String,
       place: json['place'] as int,
       reward: json['reward'] as int,
+      likesCount: json['likesCount'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_WinnerDtoToJson(_$_WinnerDto instance) =>
@@ -21,4 +22,5 @@ Map<String, dynamic> _$$_WinnerDtoToJson(_$_WinnerDto instance) =>
       'profilePictureUrl': instance.profilePictureUrl,
       'place': instance.place,
       'reward': instance.reward,
+      'likesCount': instance.likesCount,
     };

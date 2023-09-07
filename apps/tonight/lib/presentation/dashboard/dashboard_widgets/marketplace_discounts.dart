@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/dashboard/bloc/dashboard_bloc.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/marketplace_discount_card.dart';
+import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class MarketplaceDiscounts extends StatelessWidget {
   const MarketplaceDiscounts({Key? key}) : super(key: key);
@@ -16,15 +18,33 @@ class MarketplaceDiscounts extends StatelessWidget {
         return Column(
           children: [
             // TODO - add translation
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Zniżki w Marketplace',
-                  style: context.titleMedium.copyWithSecondaryColor(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Text(
+                    'Zniżki w Marketplace',
+                    style: context.titleMedium.copyWithSecondaryColor(),
+                  ),
                 ),
-              ),
+                TextButton(
+                  onPressed: () => context.pushRoute(
+                    MarketplaceDiscountsRoute(
+                      availableRaverCoins: user.fold(
+                        () => 0,
+                        (u) => u.raverCoins,
+                      ),
+                    ),
+                  ),
+                  child: Text(
+                    'Zobacz więcej',
+                    style: context.bodyMedium.copyWith(
+                      color: context.primaryColor.lighten(.1),
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 12),
             SizedBox(

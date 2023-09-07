@@ -39,7 +39,7 @@ class NotEnoughRaverCoinsInfo extends StatelessWidget {
                     // TODO - add translation
                     context.readAuthCubit.checkIfUserIsAnonymous()
                         ? 'Aby móc zdobywać nagrody, zaloguj sie do aplikacji'
-                        : 'Brakuje Ci ${discountPrice - availableRaverCoins} tonight tokens, '
+                        : 'Brakuje Ci ${discountPrice - availableRaverCoins} Tonight Tokens, '
                             'aby odebrać tę zniżkę.',
                     style: context.titleMedium,
                     textAlign: TextAlign.center,

@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:account_settings/account_settings.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
+import 'package:dartz/dartz.dart' as dartz;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -13,6 +15,7 @@ import 'package:tonight/domain/participants/participant_entity.dart';
 import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:tonight/presentation/utils/show_sign_in_dialog.dart';
 import 'package:video_player/video_player.dart';
 
 // class ProgressBar extends StatefulWidget {
@@ -82,11 +85,13 @@ class ChallengeStoriesPage extends StatefulWidget {
   final List<UserStoriesWithInteractions> userStories;
   final int initialStoryIndex;
   final bool isCurrentUser;
+  final dartz.Option<UserAccount> currentUser;
 
   const ChallengeStoriesPage({
     required this.userStories,
     required this.initialStoryIndex,
     required this.isCurrentUser,
+    required this.currentUser,
     Key? key,
   }) : super(key: key);
 
@@ -178,6 +183,7 @@ class _ChallengeStoriesPageState extends State<ChallengeStoriesPage> {
                     username: user.username,
                     userId: user.userId,
                     userProfilePictureUrl: user.userProfilePhotoUrl,
+                    currentUser: widget.currentUser,
                   ),
                 ),
               ),
@@ -241,6 +247,7 @@ class StoryWidget extends StatefulWidget {
   final String username;
   final String userProfilePictureUrl;
   final Function onStoryCompleted;
+  final dartz.Option<UserAccount> currentUser;
 
   const StoryWidget({
     Key? key,
@@ -249,6 +256,7 @@ class StoryWidget extends StatefulWidget {
     required this.username,
     required this.userProfilePictureUrl,
     required this.onStoryCompleted,
+    required this.currentUser,
   }) : super(key: key);
 
   @override
@@ -283,7 +291,7 @@ class _StoryWidgetState extends State<StoryWidget> {
       _controller =
           VideoPlayerController.networkUrl(Uri.parse(widget.story.storyUrl));
       await _controller!.initialize();
-      _controller!.play();
+      await _controller!.play();
       _controller!.addListener(_checkVideoCompletion);
       // _controller!.addListener(_videoProgressListener);
       setState(() {
@@ -334,6 +342,7 @@ class _StoryWidgetState extends State<StoryWidget> {
   @override
   void didUpdateWidget(StoryWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
+    _imageTimer?.cancel();
     if (widget.story.storyUrl != oldWidget.story.storyUrl) {
       if (_controller != null) {
         _controller!.removeListener(_checkVideoCompletion);
@@ -376,7 +385,10 @@ class _StoryWidgetState extends State<StoryWidget> {
                     AspectRatio(
                       aspectRatio: 9 / 16,
                       child: widget.story.isVideo
-                          ? VideoPlayer(_controller!)
+                          ? widget.story.isSelfie
+                              ? TransformHorizontally(
+                                  child: VideoPlayer(_controller!))
+                              : VideoPlayer(_controller!)
                           : NetworkPhoto(
                               photoUrl: widget.story.storyUrl,
                               loaderSize: 20,
@@ -446,15 +458,27 @@ class _StoryWidgetState extends State<StoryWidget> {
                         children: [
                           IconButton(
                             onPressed: () async {
+                              if (context.readAuthCubit
+                                  .checkIfUserIsAnonymous()) {
+                                _pauseStory();
+                                await showSignInDialog(context);
+                                _resumeStory();
+                                return;
+                              }
                               _pauseStory();
                               await context.pushRoute(
                                 StoryCommentsRoute(
                                   storyId: widget.story.id,
-                                  currentUser: Participant(
-                                    userId: widget.userId,
-                                    username: widget.username,
-                                    profilePictureUrl:
-                                        widget.userProfilePictureUrl,
+                                  currentUser: widget.currentUser.fold(
+                                    () => const Participant(
+                                      userId: '',
+                                      username: '',
+                                    ),
+                                    (u) => Participant(
+                                      userId: u.id,
+                                      username: u.username,
+                                      profilePictureUrl: u.profilePictureUrl,
+                                    ),
                                   ),
                                   blocContext: context,
                                 ),
@@ -476,13 +500,22 @@ class _StoryWidgetState extends State<StoryWidget> {
                       child: Column(
                         children: [
                           IconButton(
-                            onPressed: () => widget.story.liked
-                                ? context
-                                    .read<ChallengeStoryCubit>()
-                                    .unlikeStory(widget.userId, widget.story)
-                                : context
-                                    .read<ChallengeStoryCubit>()
-                                    .likeStory(widget.userId, widget.story),
+                            onPressed: () async {
+                              if (context.readAuthCubit
+                                  .checkIfUserIsAnonymous()) {
+                                _pauseStory();
+                                await showSignInDialog(context);
+                                _resumeStory();
+                                return;
+                              }
+                              widget.story.liked
+                                  ? context
+                                      .read<ChallengeStoryCubit>()
+                                      .unlikeStory(widget.userId, widget.story)
+                                  : context
+                                      .read<ChallengeStoryCubit>()
+                                      .likeStory(widget.userId, widget.story);
+                            },
                             icon: widget.story.liked
                                 ? const FaIcon(
                                     FontAwesomeIcons.solidHeart,
@@ -500,13 +533,6 @@ class _StoryWidgetState extends State<StoryWidget> {
                   ],
                 ),
               ),
-              // Center(
-              //   child: Text(
-              //     widget.story.challengeTitle,
-              //     style: context.titleLarge,
-              //   ),
-              // ),
-              // const SizedBox(height: 30),
             ],
           ),
         );

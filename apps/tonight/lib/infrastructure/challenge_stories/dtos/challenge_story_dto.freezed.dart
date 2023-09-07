@@ -38,6 +38,7 @@ mixin _$ChallengeStoryDto {
   DateTime get challengeEndDate => throw _privateConstructorUsedError;
   int get likesCount => throw _privateConstructorUsedError;
   int get commentsCount => throw _privateConstructorUsedError;
+  bool get isSelfie => throw _privateConstructorUsedError;
   int? get videoDurationInMilliseconds => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -67,6 +68,7 @@ abstract class $ChallengeStoryDtoCopyWith<$Res> {
       @FirebaseTimestampJsonConverter() DateTime challengeEndDate,
       int likesCount,
       int commentsCount,
+      bool isSelfie,
       int? videoDurationInMilliseconds});
 }
 
@@ -97,6 +99,7 @@ class _$ChallengeStoryDtoCopyWithImpl<$Res, $Val extends ChallengeStoryDto>
     Object? challengeEndDate = null,
     Object? likesCount = null,
     Object? commentsCount = null,
+    Object? isSelfie = null,
     Object? videoDurationInMilliseconds = freezed,
   }) {
     return _then(_value.copyWith(
@@ -156,6 +159,10 @@ class _$ChallengeStoryDtoCopyWithImpl<$Res, $Val extends ChallengeStoryDto>
           ? _value.commentsCount
           : commentsCount // ignore: cast_nullable_to_non_nullable
               as int,
+      isSelfie: null == isSelfie
+          ? _value.isSelfie
+          : isSelfie // ignore: cast_nullable_to_non_nullable
+              as bool,
       videoDurationInMilliseconds: freezed == videoDurationInMilliseconds
           ? _value.videoDurationInMilliseconds
           : videoDurationInMilliseconds // ignore: cast_nullable_to_non_nullable
@@ -187,6 +194,7 @@ abstract class _$$_ChallengeStoryDtoCopyWith<$Res>
       @FirebaseTimestampJsonConverter() DateTime challengeEndDate,
       int likesCount,
       int commentsCount,
+      bool isSelfie,
       int? videoDurationInMilliseconds});
 }
 
@@ -215,6 +223,7 @@ class __$$_ChallengeStoryDtoCopyWithImpl<$Res>
     Object? challengeEndDate = null,
     Object? likesCount = null,
     Object? commentsCount = null,
+    Object? isSelfie = null,
     Object? videoDurationInMilliseconds = freezed,
   }) {
     return _then(_$_ChallengeStoryDto(
@@ -274,6 +283,10 @@ class __$$_ChallengeStoryDtoCopyWithImpl<$Res>
           ? _value.commentsCount
           : commentsCount // ignore: cast_nullable_to_non_nullable
               as int,
+      isSelfie: null == isSelfie
+          ? _value.isSelfie
+          : isSelfie // ignore: cast_nullable_to_non_nullable
+              as bool,
       videoDurationInMilliseconds: freezed == videoDurationInMilliseconds
           ? _value.videoDurationInMilliseconds
           : videoDurationInMilliseconds // ignore: cast_nullable_to_non_nullable
@@ -300,6 +313,7 @@ class _$_ChallengeStoryDto extends _ChallengeStoryDto {
       @FirebaseTimestampJsonConverter() required this.challengeEndDate,
       this.likesCount = 0,
       this.commentsCount = 0,
+      this.isSelfie = false,
       this.videoDurationInMilliseconds})
       : super._();
 
@@ -341,11 +355,14 @@ class _$_ChallengeStoryDto extends _ChallengeStoryDto {
   @JsonKey()
   final int commentsCount;
   @override
+  @JsonKey()
+  final bool isSelfie;
+  @override
   final int? videoDurationInMilliseconds;
 
   @override
   String toString() {
-    return 'ChallengeStoryDto(id: $id, createdAt: $createdAt, userId: $userId, username: $username, userProfilePhotoUrl: $userProfilePhotoUrl, storyUrl: $storyUrl, isVideo: $isVideo, challengeId: $challengeId, challengeTitle: $challengeTitle, periodNumber: $periodNumber, challengeStartDate: $challengeStartDate, challengeEndDate: $challengeEndDate, likesCount: $likesCount, commentsCount: $commentsCount, videoDurationInMilliseconds: $videoDurationInMilliseconds)';
+    return 'ChallengeStoryDto(id: $id, createdAt: $createdAt, userId: $userId, username: $username, userProfilePhotoUrl: $userProfilePhotoUrl, storyUrl: $storyUrl, isVideo: $isVideo, challengeId: $challengeId, challengeTitle: $challengeTitle, periodNumber: $periodNumber, challengeStartDate: $challengeStartDate, challengeEndDate: $challengeEndDate, likesCount: $likesCount, commentsCount: $commentsCount, isSelfie: $isSelfie, videoDurationInMilliseconds: $videoDurationInMilliseconds)';
   }
 
   @override
@@ -378,6 +395,8 @@ class _$_ChallengeStoryDto extends _ChallengeStoryDto {
                 other.likesCount == likesCount) &&
             (identical(other.commentsCount, commentsCount) ||
                 other.commentsCount == commentsCount) &&
+            (identical(other.isSelfie, isSelfie) ||
+                other.isSelfie == isSelfie) &&
             (identical(other.videoDurationInMilliseconds,
                     videoDurationInMilliseconds) ||
                 other.videoDurationInMilliseconds ==
@@ -402,6 +421,7 @@ class _$_ChallengeStoryDto extends _ChallengeStoryDto {
       challengeEndDate,
       likesCount,
       commentsCount,
+      isSelfie,
       videoDurationInMilliseconds);
 
   @JsonKey(ignore: true)
@@ -437,6 +457,7 @@ abstract class _ChallengeStoryDto extends ChallengeStoryDto {
       required final DateTime challengeEndDate,
       final int likesCount,
       final int commentsCount,
+      final bool isSelfie,
       final int? videoDurationInMilliseconds}) = _$_ChallengeStoryDto;
   const _ChallengeStoryDto._() : super._();
 
@@ -475,6 +496,8 @@ abstract class _ChallengeStoryDto extends ChallengeStoryDto {
   int get likesCount;
   @override
   int get commentsCount;
+  @override
+  bool get isSelfie;
   @override
   int? get videoDurationInMilliseconds;
   @override

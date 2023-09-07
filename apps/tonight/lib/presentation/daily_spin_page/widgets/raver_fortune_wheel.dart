@@ -42,10 +42,10 @@ class RaverFortuneWheel extends HookWidget {
               child: Text(
                 state.spinStatus.isSuccess()
                     ? '${S().congratsYouWin} ${state.reward.getOrCrash()} '
-                        'tonight tokens!'
+                        'Tonight Tokens!'
                     : '${S().youGetDailySpin}.\n'
                         // TODO - add translation
-                        'zakręć i wygraj tonight tokeny!',
+                        'zakręć i wygraj Tonigh Tokeny!',
                 style: context.titleLarge,
                 textAlign: TextAlign.center,
               ),

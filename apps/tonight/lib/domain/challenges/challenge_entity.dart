@@ -27,6 +27,43 @@ class Challenge extends Equatable {
   })  : id = id ?? const Uuid().v1(),
         createdAt = createdAt ?? DateTime.now();
 
+  factory Challenge.empty() {
+    return Challenge(
+      // TODO - add translation
+      title: 'Tu pojawią się zwycięzcy',
+      rewards: {},
+      startDate: DateTime.now(),
+      endDate: DateTime.now(),
+      periodNumber: 0,
+      winners: const [
+        Winner(
+          id: '',
+          username: 'username1',
+          profilePictureUrl: '',
+          place: 1,
+          reward: 100,
+          likesCount: 60,
+        ),
+        Winner(
+          id: '',
+          username: 'username2',
+          profilePictureUrl: '',
+          place: 2,
+          reward: 50,
+          likesCount: 30,
+        ),
+        Winner(
+          id: '',
+          username: 'username3',
+          profilePictureUrl: '',
+          place: 3,
+          reward: 25,
+          likesCount: 10,
+        ),
+      ],
+    );
+  }
+
   @override
   List<Object?> get props => [
         id,

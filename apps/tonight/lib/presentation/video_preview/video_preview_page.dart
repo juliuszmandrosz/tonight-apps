@@ -99,7 +99,11 @@ class _VideoPreviewPageState extends State<VideoPreviewPage> {
                     children: [
                       AspectRatio(
                         aspectRatio: _videoController.value.aspectRatio,
-                        child: VideoPlayer(_videoController),
+                        child: widget.isSelfie
+                            ? TransformHorizontally(
+                                child: VideoPlayer(_videoController),
+                              )
+                            : VideoPlayer(_videoController),
                       ),
                       const Positioned(
                         top: 5,

@@ -13,18 +13,24 @@ class PreviousChallengesWinners extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 230,
+      height: 251,
       child: PageView.builder(
         padEnds: false,
-        itemCount: previousChallenges.length,
-        controller: PageController(viewportFraction: 0.85),
+        itemCount: previousChallenges.isEmpty ? 1 : previousChallenges.length,
+        controller: PageController(
+          viewportFraction: previousChallenges.length <= 1 ? 1 : 0.85,
+        ),
         itemBuilder: (context, i) {
           return Padding(
             padding: EdgeInsets.only(
               left: i == 0 ? 4 : 8,
               right: i == previousChallenges.length - 1 ? 4 : 8,
             ),
-            child: PodiumWidget(challenge: previousChallenges[i]),
+            child: PodiumWidget(
+              challenge: previousChallenges.isEmpty
+                  ? Challenge.empty()
+                  : previousChallenges[i],
+            ),
           );
         },
       ),

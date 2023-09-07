@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
@@ -27,13 +28,12 @@ class MarketplaceBanner extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Positioned.fill(
+            const Positioned.fill(
               child: Opacity(
                 opacity: 0.6,
-                child: Image.network(
-                  'https://cdn.shopify.com/s/files/1/0729/3137/7478/files/hero-1.png',
-                  // Ścieżka do twojego zdjęcia w assets
-                  fit: BoxFit.cover,
+                child: NetworkPhoto(
+                  photoUrl:
+                      'https://cdn.shopify.com/s/files/1/0729/3137/7478/files/hero-1.png',
                 ),
               ),
             ),

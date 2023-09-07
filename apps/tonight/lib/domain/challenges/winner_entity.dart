@@ -6,6 +6,7 @@ class Winner extends Equatable {
   final String profilePictureUrl;
   final int place;
   final int reward;
+  final int likesCount;
 
   const Winner({
     required this.id,
@@ -13,6 +14,7 @@ class Winner extends Equatable {
     required this.profilePictureUrl,
     required this.place,
     required this.reward,
+    this.likesCount = 0,
   });
 
   @override
@@ -22,6 +24,7 @@ class Winner extends Equatable {
         profilePictureUrl,
         place,
         reward,
+        likesCount,
       ];
 
   Winner copyWith({
@@ -29,6 +32,7 @@ class Winner extends Equatable {
     String? profilePictureUrl,
     int? place,
     int? reward,
+    int? likesCount,
   }) {
     return Winner(
       id: id,
@@ -36,6 +40,7 @@ class Winner extends Equatable {
       profilePictureUrl: profilePictureUrl ?? this.profilePictureUrl,
       place: place ?? this.place,
       reward: reward ?? this.reward,
+      likesCount: likesCount ?? this.likesCount,
     );
   }
 }

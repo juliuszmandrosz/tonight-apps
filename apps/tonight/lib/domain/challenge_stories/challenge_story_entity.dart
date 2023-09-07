@@ -17,6 +17,7 @@ class ChallengeStory extends Equatable {
   final int periodNumber;
   final DateTime challengeStartDate;
   final DateTime challengeEndDate;
+  final bool isSelfie;
   final int? videoDurationInMilliseconds;
 
   ChallengeStory({
@@ -32,6 +33,7 @@ class ChallengeStory extends Equatable {
     required this.periodNumber,
     required this.challengeStartDate,
     required this.challengeEndDate,
+    this.isSelfie = false,
     this.likesCount = 0,
     this.commentsCount = 0,
     this.videoDurationInMilliseconds,
@@ -55,6 +57,7 @@ class ChallengeStory extends Equatable {
         likesCount,
         commentsCount,
         videoDurationInMilliseconds,
+        isSelfie,
       ];
 
   ChallengeStory copyWith({
@@ -71,6 +74,7 @@ class ChallengeStory extends Equatable {
     int? likesCount,
     int? commentsCount,
     Option<int>? videoDurationInMilliseconds,
+    bool? isSelfie,
   }) {
     return ChallengeStory(
       id: id,
@@ -93,6 +97,7 @@ class ChallengeStory extends Equatable {
               (duration) => duration,
             )
           : this.videoDurationInMilliseconds,
+      isSelfie: isSelfie ?? this.isSelfie,
     );
   }
 }

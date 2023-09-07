@@ -55,7 +55,8 @@ class _NavigatorPageState extends State<NavigatorPage> {
                   onDestinationSelected: (i) async {
                     context.unfocus();
 
-                    if (i == TonightNavigationDestination.profile.index) {
+                    if (i == TonightNavigationDestination.profile.index ||
+                        i == TonightNavigationDestination.messages.index) {
                       final result = await _handleProfileNavigation();
                       if (!result) {
                         i = _selectedIndex;

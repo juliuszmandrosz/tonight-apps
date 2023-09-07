@@ -24,6 +24,7 @@ _$_ChallengeStoryDto _$$_ChallengeStoryDtoFromJson(Map<String, dynamic> json) =>
           .fromJson(json['challengeEndDate'] as Timestamp),
       likesCount: json['likesCount'] as int? ?? 0,
       commentsCount: json['commentsCount'] as int? ?? 0,
+      isSelfie: json['isSelfie'] as bool? ?? false,
       videoDurationInMilliseconds: json['videoDurationInMilliseconds'] as int?,
     );
 
@@ -46,5 +47,6 @@ Map<String, dynamic> _$$_ChallengeStoryDtoToJson(
           .toJson(instance.challengeEndDate),
       'likesCount': instance.likesCount,
       'commentsCount': instance.commentsCount,
+      'isSelfie': instance.isSelfie,
       'videoDurationInMilliseconds': instance.videoDurationInMilliseconds,
     };

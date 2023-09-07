@@ -60,10 +60,8 @@ class ChallengesPage extends HookWidget {
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
                                 colors: [
-                                  Color(0xFF6B5FE7),
+                                  const Color(0xFF6B5FE7),
                                   Colors.purple.shade300,
-
-                                  // Dodatkowy kolor gradientu
                                 ],
                               ),
                             ),
@@ -77,12 +75,14 @@ class ChallengesPage extends HookWidget {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
+                                          // TODO - add translation
                                           'Wyróżnij sie na imprezie.',
                                           style: context.titleLarge,
                                           textAlign: TextAlign.center,
                                         ),
                                         const SizedBox(height: 8),
                                         Text(
+                                          // TODO - add translation
                                           'Wykonuj wyzwania i zdobywaj nagrody!',
                                           style: context.titleLarge,
                                           textAlign: TextAlign.center,
@@ -95,27 +95,24 @@ class ChallengesPage extends HookWidget {
                             ),
                           ),
                         ),
-
-                        const SizedBox(height: 20),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              // TODO - add translation
-                              "Poprzedni zwycięzcy",
-                              style: context.titleLarge,
-                            ),
-                          ),
-                        ),
                         const SizedBox(height: 10),
                         if (state.previousChallenges.isNotEmpty)
-                          PreviousChallengesWinners(
-                            previousChallenges: state.previousChallenges,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, top: 8),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                // TODO - add translation
+                                "Poprzedni zwycięzcy",
+                                style: context.titleMedium,
+                              ),
+                            ),
                           ),
-
+                        const SizedBox(height: 10),
+                        PreviousChallengesWinners(
+                          previousChallenges: state.previousChallenges,
+                        ),
                         const SizedBox(height: 20),
-
                         ChallengesCountdownTimer(
                           secondsLeft: secondsLeft,
                           onTimerCompleted: () {
