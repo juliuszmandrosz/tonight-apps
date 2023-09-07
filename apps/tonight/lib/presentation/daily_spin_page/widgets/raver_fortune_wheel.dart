@@ -45,7 +45,7 @@ class RaverFortuneWheel extends HookWidget {
                         'Tonight Tokens!'
                     : '${S().youGetDailySpin}.\n'
                         // TODO - add translation
-                        'zakręć i wygraj Tonigh Tokeny!',
+                        'zakręć i wygraj Tonight Tokeny!',
                 style: context.titleLarge,
                 textAlign: TextAlign.center,
               ),
