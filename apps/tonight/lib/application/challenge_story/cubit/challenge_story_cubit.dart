@@ -9,6 +9,7 @@ import 'package:tonight/domain/story_interactions/story_interactions_facade.dart
 import 'package:translations/translations.dart';
 
 part 'challenge_story_cubit.freezed.dart';
+
 part 'challenge_story_state.dart';
 
 class ChallengeStoryCubit extends Cubit<ChallengeStoryState> {
@@ -112,10 +113,12 @@ class ChallengeStoryCubit extends Cubit<ChallengeStoryState> {
   onCommentAdded(String userId, String storyId) async {
     final index =
         state.userStoriesWithInteractions.indexWhere((s) => s.userId == userId);
+
     final userStoriesWithInteractions = [...state.userStoriesWithInteractions];
     final storyIndex = userStoriesWithInteractions[index]
         .stories
         .indexWhere((s) => s.id == storyId);
+
     final story = userStoriesWithInteractions[index].stories[storyIndex];
     final updatedStory = story.copyWith(
       commentsCount: story.commentsCount + 1,

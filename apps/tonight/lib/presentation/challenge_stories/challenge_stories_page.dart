@@ -468,6 +468,7 @@ class _StoryWidgetState extends State<StoryWidget> {
                               _pauseStory();
                               await context.pushRoute(
                                 StoryCommentsRoute(
+                                  storyOwnerId: widget.userId,
                                   storyId: widget.story.id,
                                   currentUser: widget.currentUser.fold(
                                     () => const Participant(

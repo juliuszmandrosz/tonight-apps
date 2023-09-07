@@ -11,11 +11,13 @@ import 'package:tonight/presentation/event_chat/widgets/message_bubble.dart';
 
 class StoryCommentsPage extends StatelessWidget {
   final String storyId;
+  final String storyOwnerId;
   final Participant currentUser;
   final BuildContext blocContext;
 
   const StoryCommentsPage({
     required this.storyId,
+    required this.storyOwnerId,
     required this.currentUser,
     required this.blocContext,
     Key? key,
@@ -57,7 +59,7 @@ class StoryCommentsPage extends StatelessWidget {
               () {},
               (_) => context
                   .read<ChallengeStoryCubit>()
-                  .onCommentAdded(currentUser.userId, storyId),
+                  .onCommentAdded(storyOwnerId, storyId),
             );
           },
           builder: (context, state) {

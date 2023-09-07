@@ -775,6 +775,7 @@ class AppRouter extends _i55.RootStackRouter {
         routeData: routeData,
         child: _i49.StoryCommentsPage(
           storyId: args.storyId,
+          storyOwnerId: args.storyOwnerId,
           currentUser: args.currentUser,
           blocContext: args.blocContext,
           key: args.key,
@@ -2596,6 +2597,7 @@ class VideoPreviewRouteArgs {
 class StoryCommentsRoute extends _i55.PageRouteInfo<StoryCommentsRouteArgs> {
   StoryCommentsRoute({
     required String storyId,
+    required String storyOwnerId,
     required _i82.Participant currentUser,
     required _i56.BuildContext blocContext,
     _i56.Key? key,
@@ -2604,6 +2606,7 @@ class StoryCommentsRoute extends _i55.PageRouteInfo<StoryCommentsRouteArgs> {
           path: '/story-comments-page',
           args: StoryCommentsRouteArgs(
             storyId: storyId,
+            storyOwnerId: storyOwnerId,
             currentUser: currentUser,
             blocContext: blocContext,
             key: key,
@@ -2616,12 +2619,15 @@ class StoryCommentsRoute extends _i55.PageRouteInfo<StoryCommentsRouteArgs> {
 class StoryCommentsRouteArgs {
   const StoryCommentsRouteArgs({
     required this.storyId,
+    required this.storyOwnerId,
     required this.currentUser,
     required this.blocContext,
     this.key,
   });
 
   final String storyId;
+
+  final String storyOwnerId;
 
   final _i82.Participant currentUser;
 
@@ -2631,7 +2637,7 @@ class StoryCommentsRouteArgs {
 
   @override
   String toString() {
-    return 'StoryCommentsRouteArgs{storyId: $storyId, currentUser: $currentUser, blocContext: $blocContext, key: $key}';
+    return 'StoryCommentsRouteArgs{storyId: $storyId, storyOwnerId: $storyOwnerId, currentUser: $currentUser, blocContext: $blocContext, key: $key}';
   }
 }
 
