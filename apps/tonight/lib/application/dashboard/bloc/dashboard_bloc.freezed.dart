@@ -20,18 +20,33 @@ mixin _$DashboardEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<LatLng> userLocation) dataInitialized,
     required TResult Function(EventVoucher voucher) eventVoucherUsed,
+    required TResult Function() nextPageChallengeStoriesFetched,
+    required TResult Function(List<UserStoriesWithInteractions> stories)
+        otherUserStoriesUpdated,
+    required TResult Function(List<UserStoriesWithInteractions> stories)
+        currentUserStoriesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Option<LatLng> userLocation)? dataInitialized,
     TResult? Function(EventVoucher voucher)? eventVoucherUsed,
+    TResult? Function()? nextPageChallengeStoriesFetched,
+    TResult? Function(List<UserStoriesWithInteractions> stories)?
+        otherUserStoriesUpdated,
+    TResult? Function(List<UserStoriesWithInteractions> stories)?
+        currentUserStoriesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<LatLng> userLocation)? dataInitialized,
     TResult Function(EventVoucher voucher)? eventVoucherUsed,
+    TResult Function()? nextPageChallengeStoriesFetched,
+    TResult Function(List<UserStoriesWithInteractions> stories)?
+        otherUserStoriesUpdated,
+    TResult Function(List<UserStoriesWithInteractions> stories)?
+        currentUserStoriesUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +54,34 @@ mixin _$DashboardEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_DataInitialized value) dataInitialized,
     required TResult Function(_EventVoucherUsed value) eventVoucherUsed,
+    required TResult Function(_NextPageChallengeStoriesFetched value)
+        nextPageChallengeStoriesFetched,
+    required TResult Function(_OtherUserStoriesUpdated value)
+        otherUserStoriesUpdated,
+    required TResult Function(_CurrentUserStoriesUpdated value)
+        currentUserStoriesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_DataInitialized value)? dataInitialized,
     TResult? Function(_EventVoucherUsed value)? eventVoucherUsed,
+    TResult? Function(_NextPageChallengeStoriesFetched value)?
+        nextPageChallengeStoriesFetched,
+    TResult? Function(_OtherUserStoriesUpdated value)? otherUserStoriesUpdated,
+    TResult? Function(_CurrentUserStoriesUpdated value)?
+        currentUserStoriesUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_DataInitialized value)? dataInitialized,
     TResult Function(_EventVoucherUsed value)? eventVoucherUsed,
+    TResult Function(_NextPageChallengeStoriesFetched value)?
+        nextPageChallengeStoriesFetched,
+    TResult Function(_OtherUserStoriesUpdated value)? otherUserStoriesUpdated,
+    TResult Function(_CurrentUserStoriesUpdated value)?
+        currentUserStoriesUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,6 +172,11 @@ class _$_DataInitialized implements _DataInitialized {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<LatLng> userLocation) dataInitialized,
     required TResult Function(EventVoucher voucher) eventVoucherUsed,
+    required TResult Function() nextPageChallengeStoriesFetched,
+    required TResult Function(List<UserStoriesWithInteractions> stories)
+        otherUserStoriesUpdated,
+    required TResult Function(List<UserStoriesWithInteractions> stories)
+        currentUserStoriesUpdated,
   }) {
     return dataInitialized(userLocation);
   }
@@ -150,6 +186,11 @@ class _$_DataInitialized implements _DataInitialized {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Option<LatLng> userLocation)? dataInitialized,
     TResult? Function(EventVoucher voucher)? eventVoucherUsed,
+    TResult? Function()? nextPageChallengeStoriesFetched,
+    TResult? Function(List<UserStoriesWithInteractions> stories)?
+        otherUserStoriesUpdated,
+    TResult? Function(List<UserStoriesWithInteractions> stories)?
+        currentUserStoriesUpdated,
   }) {
     return dataInitialized?.call(userLocation);
   }
@@ -159,6 +200,11 @@ class _$_DataInitialized implements _DataInitialized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<LatLng> userLocation)? dataInitialized,
     TResult Function(EventVoucher voucher)? eventVoucherUsed,
+    TResult Function()? nextPageChallengeStoriesFetched,
+    TResult Function(List<UserStoriesWithInteractions> stories)?
+        otherUserStoriesUpdated,
+    TResult Function(List<UserStoriesWithInteractions> stories)?
+        currentUserStoriesUpdated,
     required TResult orElse(),
   }) {
     if (dataInitialized != null) {
@@ -172,6 +218,12 @@ class _$_DataInitialized implements _DataInitialized {
   TResult map<TResult extends Object?>({
     required TResult Function(_DataInitialized value) dataInitialized,
     required TResult Function(_EventVoucherUsed value) eventVoucherUsed,
+    required TResult Function(_NextPageChallengeStoriesFetched value)
+        nextPageChallengeStoriesFetched,
+    required TResult Function(_OtherUserStoriesUpdated value)
+        otherUserStoriesUpdated,
+    required TResult Function(_CurrentUserStoriesUpdated value)
+        currentUserStoriesUpdated,
   }) {
     return dataInitialized(this);
   }
@@ -181,6 +233,11 @@ class _$_DataInitialized implements _DataInitialized {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_DataInitialized value)? dataInitialized,
     TResult? Function(_EventVoucherUsed value)? eventVoucherUsed,
+    TResult? Function(_NextPageChallengeStoriesFetched value)?
+        nextPageChallengeStoriesFetched,
+    TResult? Function(_OtherUserStoriesUpdated value)? otherUserStoriesUpdated,
+    TResult? Function(_CurrentUserStoriesUpdated value)?
+        currentUserStoriesUpdated,
   }) {
     return dataInitialized?.call(this);
   }
@@ -190,6 +247,11 @@ class _$_DataInitialized implements _DataInitialized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_DataInitialized value)? dataInitialized,
     TResult Function(_EventVoucherUsed value)? eventVoucherUsed,
+    TResult Function(_NextPageChallengeStoriesFetched value)?
+        nextPageChallengeStoriesFetched,
+    TResult Function(_OtherUserStoriesUpdated value)? otherUserStoriesUpdated,
+    TResult Function(_CurrentUserStoriesUpdated value)?
+        currentUserStoriesUpdated,
     required TResult orElse(),
   }) {
     if (dataInitialized != null) {
@@ -285,6 +347,11 @@ class _$_EventVoucherUsed implements _EventVoucherUsed {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<LatLng> userLocation) dataInitialized,
     required TResult Function(EventVoucher voucher) eventVoucherUsed,
+    required TResult Function() nextPageChallengeStoriesFetched,
+    required TResult Function(List<UserStoriesWithInteractions> stories)
+        otherUserStoriesUpdated,
+    required TResult Function(List<UserStoriesWithInteractions> stories)
+        currentUserStoriesUpdated,
   }) {
     return eventVoucherUsed(voucher);
   }
@@ -294,6 +361,11 @@ class _$_EventVoucherUsed implements _EventVoucherUsed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Option<LatLng> userLocation)? dataInitialized,
     TResult? Function(EventVoucher voucher)? eventVoucherUsed,
+    TResult? Function()? nextPageChallengeStoriesFetched,
+    TResult? Function(List<UserStoriesWithInteractions> stories)?
+        otherUserStoriesUpdated,
+    TResult? Function(List<UserStoriesWithInteractions> stories)?
+        currentUserStoriesUpdated,
   }) {
     return eventVoucherUsed?.call(voucher);
   }
@@ -303,6 +375,11 @@ class _$_EventVoucherUsed implements _EventVoucherUsed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<LatLng> userLocation)? dataInitialized,
     TResult Function(EventVoucher voucher)? eventVoucherUsed,
+    TResult Function()? nextPageChallengeStoriesFetched,
+    TResult Function(List<UserStoriesWithInteractions> stories)?
+        otherUserStoriesUpdated,
+    TResult Function(List<UserStoriesWithInteractions> stories)?
+        currentUserStoriesUpdated,
     required TResult orElse(),
   }) {
     if (eventVoucherUsed != null) {
@@ -316,6 +393,12 @@ class _$_EventVoucherUsed implements _EventVoucherUsed {
   TResult map<TResult extends Object?>({
     required TResult Function(_DataInitialized value) dataInitialized,
     required TResult Function(_EventVoucherUsed value) eventVoucherUsed,
+    required TResult Function(_NextPageChallengeStoriesFetched value)
+        nextPageChallengeStoriesFetched,
+    required TResult Function(_OtherUserStoriesUpdated value)
+        otherUserStoriesUpdated,
+    required TResult Function(_CurrentUserStoriesUpdated value)
+        currentUserStoriesUpdated,
   }) {
     return eventVoucherUsed(this);
   }
@@ -325,6 +408,11 @@ class _$_EventVoucherUsed implements _EventVoucherUsed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_DataInitialized value)? dataInitialized,
     TResult? Function(_EventVoucherUsed value)? eventVoucherUsed,
+    TResult? Function(_NextPageChallengeStoriesFetched value)?
+        nextPageChallengeStoriesFetched,
+    TResult? Function(_OtherUserStoriesUpdated value)? otherUserStoriesUpdated,
+    TResult? Function(_CurrentUserStoriesUpdated value)?
+        currentUserStoriesUpdated,
   }) {
     return eventVoucherUsed?.call(this);
   }
@@ -334,6 +422,11 @@ class _$_EventVoucherUsed implements _EventVoucherUsed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_DataInitialized value)? dataInitialized,
     TResult Function(_EventVoucherUsed value)? eventVoucherUsed,
+    TResult Function(_NextPageChallengeStoriesFetched value)?
+        nextPageChallengeStoriesFetched,
+    TResult Function(_OtherUserStoriesUpdated value)? otherUserStoriesUpdated,
+    TResult Function(_CurrentUserStoriesUpdated value)?
+        currentUserStoriesUpdated,
     required TResult orElse(),
   }) {
     if (eventVoucherUsed != null) {
@@ -354,6 +447,498 @@ abstract class _EventVoucherUsed implements DashboardEvent {
 }
 
 /// @nodoc
+abstract class _$$_NextPageChallengeStoriesFetchedCopyWith<$Res> {
+  factory _$$_NextPageChallengeStoriesFetchedCopyWith(
+          _$_NextPageChallengeStoriesFetched value,
+          $Res Function(_$_NextPageChallengeStoriesFetched) then) =
+      __$$_NextPageChallengeStoriesFetchedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_NextPageChallengeStoriesFetchedCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res,
+        _$_NextPageChallengeStoriesFetched>
+    implements _$$_NextPageChallengeStoriesFetchedCopyWith<$Res> {
+  __$$_NextPageChallengeStoriesFetchedCopyWithImpl(
+      _$_NextPageChallengeStoriesFetched _value,
+      $Res Function(_$_NextPageChallengeStoriesFetched) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_NextPageChallengeStoriesFetched
+    implements _NextPageChallengeStoriesFetched {
+  const _$_NextPageChallengeStoriesFetched();
+
+  @override
+  String toString() {
+    return 'DashboardEvent.nextPageChallengeStoriesFetched()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_NextPageChallengeStoriesFetched);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Option<LatLng> userLocation) dataInitialized,
+    required TResult Function(EventVoucher voucher) eventVoucherUsed,
+    required TResult Function() nextPageChallengeStoriesFetched,
+    required TResult Function(List<UserStoriesWithInteractions> stories)
+        otherUserStoriesUpdated,
+    required TResult Function(List<UserStoriesWithInteractions> stories)
+        currentUserStoriesUpdated,
+  }) {
+    return nextPageChallengeStoriesFetched();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Option<LatLng> userLocation)? dataInitialized,
+    TResult? Function(EventVoucher voucher)? eventVoucherUsed,
+    TResult? Function()? nextPageChallengeStoriesFetched,
+    TResult? Function(List<UserStoriesWithInteractions> stories)?
+        otherUserStoriesUpdated,
+    TResult? Function(List<UserStoriesWithInteractions> stories)?
+        currentUserStoriesUpdated,
+  }) {
+    return nextPageChallengeStoriesFetched?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Option<LatLng> userLocation)? dataInitialized,
+    TResult Function(EventVoucher voucher)? eventVoucherUsed,
+    TResult Function()? nextPageChallengeStoriesFetched,
+    TResult Function(List<UserStoriesWithInteractions> stories)?
+        otherUserStoriesUpdated,
+    TResult Function(List<UserStoriesWithInteractions> stories)?
+        currentUserStoriesUpdated,
+    required TResult orElse(),
+  }) {
+    if (nextPageChallengeStoriesFetched != null) {
+      return nextPageChallengeStoriesFetched();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DataInitialized value) dataInitialized,
+    required TResult Function(_EventVoucherUsed value) eventVoucherUsed,
+    required TResult Function(_NextPageChallengeStoriesFetched value)
+        nextPageChallengeStoriesFetched,
+    required TResult Function(_OtherUserStoriesUpdated value)
+        otherUserStoriesUpdated,
+    required TResult Function(_CurrentUserStoriesUpdated value)
+        currentUserStoriesUpdated,
+  }) {
+    return nextPageChallengeStoriesFetched(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DataInitialized value)? dataInitialized,
+    TResult? Function(_EventVoucherUsed value)? eventVoucherUsed,
+    TResult? Function(_NextPageChallengeStoriesFetched value)?
+        nextPageChallengeStoriesFetched,
+    TResult? Function(_OtherUserStoriesUpdated value)? otherUserStoriesUpdated,
+    TResult? Function(_CurrentUserStoriesUpdated value)?
+        currentUserStoriesUpdated,
+  }) {
+    return nextPageChallengeStoriesFetched?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DataInitialized value)? dataInitialized,
+    TResult Function(_EventVoucherUsed value)? eventVoucherUsed,
+    TResult Function(_NextPageChallengeStoriesFetched value)?
+        nextPageChallengeStoriesFetched,
+    TResult Function(_OtherUserStoriesUpdated value)? otherUserStoriesUpdated,
+    TResult Function(_CurrentUserStoriesUpdated value)?
+        currentUserStoriesUpdated,
+    required TResult orElse(),
+  }) {
+    if (nextPageChallengeStoriesFetched != null) {
+      return nextPageChallengeStoriesFetched(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NextPageChallengeStoriesFetched implements DashboardEvent {
+  const factory _NextPageChallengeStoriesFetched() =
+      _$_NextPageChallengeStoriesFetched;
+}
+
+/// @nodoc
+abstract class _$$_OtherUserStoriesUpdatedCopyWith<$Res> {
+  factory _$$_OtherUserStoriesUpdatedCopyWith(_$_OtherUserStoriesUpdated value,
+          $Res Function(_$_OtherUserStoriesUpdated) then) =
+      __$$_OtherUserStoriesUpdatedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<UserStoriesWithInteractions> stories});
+}
+
+/// @nodoc
+class __$$_OtherUserStoriesUpdatedCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$_OtherUserStoriesUpdated>
+    implements _$$_OtherUserStoriesUpdatedCopyWith<$Res> {
+  __$$_OtherUserStoriesUpdatedCopyWithImpl(_$_OtherUserStoriesUpdated _value,
+      $Res Function(_$_OtherUserStoriesUpdated) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? stories = null,
+  }) {
+    return _then(_$_OtherUserStoriesUpdated(
+      null == stories
+          ? _value._stories
+          : stories // ignore: cast_nullable_to_non_nullable
+              as List<UserStoriesWithInteractions>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OtherUserStoriesUpdated implements _OtherUserStoriesUpdated {
+  const _$_OtherUserStoriesUpdated(
+      final List<UserStoriesWithInteractions> stories)
+      : _stories = stories;
+
+  final List<UserStoriesWithInteractions> _stories;
+  @override
+  List<UserStoriesWithInteractions> get stories {
+    if (_stories is EqualUnmodifiableListView) return _stories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_stories);
+  }
+
+  @override
+  String toString() {
+    return 'DashboardEvent.otherUserStoriesUpdated(stories: $stories)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OtherUserStoriesUpdated &&
+            const DeepCollectionEquality().equals(other._stories, _stories));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_stories));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_OtherUserStoriesUpdatedCopyWith<_$_OtherUserStoriesUpdated>
+      get copyWith =>
+          __$$_OtherUserStoriesUpdatedCopyWithImpl<_$_OtherUserStoriesUpdated>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Option<LatLng> userLocation) dataInitialized,
+    required TResult Function(EventVoucher voucher) eventVoucherUsed,
+    required TResult Function() nextPageChallengeStoriesFetched,
+    required TResult Function(List<UserStoriesWithInteractions> stories)
+        otherUserStoriesUpdated,
+    required TResult Function(List<UserStoriesWithInteractions> stories)
+        currentUserStoriesUpdated,
+  }) {
+    return otherUserStoriesUpdated(stories);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Option<LatLng> userLocation)? dataInitialized,
+    TResult? Function(EventVoucher voucher)? eventVoucherUsed,
+    TResult? Function()? nextPageChallengeStoriesFetched,
+    TResult? Function(List<UserStoriesWithInteractions> stories)?
+        otherUserStoriesUpdated,
+    TResult? Function(List<UserStoriesWithInteractions> stories)?
+        currentUserStoriesUpdated,
+  }) {
+    return otherUserStoriesUpdated?.call(stories);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Option<LatLng> userLocation)? dataInitialized,
+    TResult Function(EventVoucher voucher)? eventVoucherUsed,
+    TResult Function()? nextPageChallengeStoriesFetched,
+    TResult Function(List<UserStoriesWithInteractions> stories)?
+        otherUserStoriesUpdated,
+    TResult Function(List<UserStoriesWithInteractions> stories)?
+        currentUserStoriesUpdated,
+    required TResult orElse(),
+  }) {
+    if (otherUserStoriesUpdated != null) {
+      return otherUserStoriesUpdated(stories);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DataInitialized value) dataInitialized,
+    required TResult Function(_EventVoucherUsed value) eventVoucherUsed,
+    required TResult Function(_NextPageChallengeStoriesFetched value)
+        nextPageChallengeStoriesFetched,
+    required TResult Function(_OtherUserStoriesUpdated value)
+        otherUserStoriesUpdated,
+    required TResult Function(_CurrentUserStoriesUpdated value)
+        currentUserStoriesUpdated,
+  }) {
+    return otherUserStoriesUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DataInitialized value)? dataInitialized,
+    TResult? Function(_EventVoucherUsed value)? eventVoucherUsed,
+    TResult? Function(_NextPageChallengeStoriesFetched value)?
+        nextPageChallengeStoriesFetched,
+    TResult? Function(_OtherUserStoriesUpdated value)? otherUserStoriesUpdated,
+    TResult? Function(_CurrentUserStoriesUpdated value)?
+        currentUserStoriesUpdated,
+  }) {
+    return otherUserStoriesUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DataInitialized value)? dataInitialized,
+    TResult Function(_EventVoucherUsed value)? eventVoucherUsed,
+    TResult Function(_NextPageChallengeStoriesFetched value)?
+        nextPageChallengeStoriesFetched,
+    TResult Function(_OtherUserStoriesUpdated value)? otherUserStoriesUpdated,
+    TResult Function(_CurrentUserStoriesUpdated value)?
+        currentUserStoriesUpdated,
+    required TResult orElse(),
+  }) {
+    if (otherUserStoriesUpdated != null) {
+      return otherUserStoriesUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OtherUserStoriesUpdated implements DashboardEvent {
+  const factory _OtherUserStoriesUpdated(
+          final List<UserStoriesWithInteractions> stories) =
+      _$_OtherUserStoriesUpdated;
+
+  List<UserStoriesWithInteractions> get stories;
+  @JsonKey(ignore: true)
+  _$$_OtherUserStoriesUpdatedCopyWith<_$_OtherUserStoriesUpdated>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_CurrentUserStoriesUpdatedCopyWith<$Res> {
+  factory _$$_CurrentUserStoriesUpdatedCopyWith(
+          _$_CurrentUserStoriesUpdated value,
+          $Res Function(_$_CurrentUserStoriesUpdated) then) =
+      __$$_CurrentUserStoriesUpdatedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<UserStoriesWithInteractions> stories});
+}
+
+/// @nodoc
+class __$$_CurrentUserStoriesUpdatedCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$_CurrentUserStoriesUpdated>
+    implements _$$_CurrentUserStoriesUpdatedCopyWith<$Res> {
+  __$$_CurrentUserStoriesUpdatedCopyWithImpl(
+      _$_CurrentUserStoriesUpdated _value,
+      $Res Function(_$_CurrentUserStoriesUpdated) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? stories = null,
+  }) {
+    return _then(_$_CurrentUserStoriesUpdated(
+      null == stories
+          ? _value._stories
+          : stories // ignore: cast_nullable_to_non_nullable
+              as List<UserStoriesWithInteractions>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_CurrentUserStoriesUpdated implements _CurrentUserStoriesUpdated {
+  const _$_CurrentUserStoriesUpdated(
+      final List<UserStoriesWithInteractions> stories)
+      : _stories = stories;
+
+  final List<UserStoriesWithInteractions> _stories;
+  @override
+  List<UserStoriesWithInteractions> get stories {
+    if (_stories is EqualUnmodifiableListView) return _stories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_stories);
+  }
+
+  @override
+  String toString() {
+    return 'DashboardEvent.currentUserStoriesUpdated(stories: $stories)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_CurrentUserStoriesUpdated &&
+            const DeepCollectionEquality().equals(other._stories, _stories));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_stories));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CurrentUserStoriesUpdatedCopyWith<_$_CurrentUserStoriesUpdated>
+      get copyWith => __$$_CurrentUserStoriesUpdatedCopyWithImpl<
+          _$_CurrentUserStoriesUpdated>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Option<LatLng> userLocation) dataInitialized,
+    required TResult Function(EventVoucher voucher) eventVoucherUsed,
+    required TResult Function() nextPageChallengeStoriesFetched,
+    required TResult Function(List<UserStoriesWithInteractions> stories)
+        otherUserStoriesUpdated,
+    required TResult Function(List<UserStoriesWithInteractions> stories)
+        currentUserStoriesUpdated,
+  }) {
+    return currentUserStoriesUpdated(stories);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Option<LatLng> userLocation)? dataInitialized,
+    TResult? Function(EventVoucher voucher)? eventVoucherUsed,
+    TResult? Function()? nextPageChallengeStoriesFetched,
+    TResult? Function(List<UserStoriesWithInteractions> stories)?
+        otherUserStoriesUpdated,
+    TResult? Function(List<UserStoriesWithInteractions> stories)?
+        currentUserStoriesUpdated,
+  }) {
+    return currentUserStoriesUpdated?.call(stories);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Option<LatLng> userLocation)? dataInitialized,
+    TResult Function(EventVoucher voucher)? eventVoucherUsed,
+    TResult Function()? nextPageChallengeStoriesFetched,
+    TResult Function(List<UserStoriesWithInteractions> stories)?
+        otherUserStoriesUpdated,
+    TResult Function(List<UserStoriesWithInteractions> stories)?
+        currentUserStoriesUpdated,
+    required TResult orElse(),
+  }) {
+    if (currentUserStoriesUpdated != null) {
+      return currentUserStoriesUpdated(stories);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DataInitialized value) dataInitialized,
+    required TResult Function(_EventVoucherUsed value) eventVoucherUsed,
+    required TResult Function(_NextPageChallengeStoriesFetched value)
+        nextPageChallengeStoriesFetched,
+    required TResult Function(_OtherUserStoriesUpdated value)
+        otherUserStoriesUpdated,
+    required TResult Function(_CurrentUserStoriesUpdated value)
+        currentUserStoriesUpdated,
+  }) {
+    return currentUserStoriesUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DataInitialized value)? dataInitialized,
+    TResult? Function(_EventVoucherUsed value)? eventVoucherUsed,
+    TResult? Function(_NextPageChallengeStoriesFetched value)?
+        nextPageChallengeStoriesFetched,
+    TResult? Function(_OtherUserStoriesUpdated value)? otherUserStoriesUpdated,
+    TResult? Function(_CurrentUserStoriesUpdated value)?
+        currentUserStoriesUpdated,
+  }) {
+    return currentUserStoriesUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DataInitialized value)? dataInitialized,
+    TResult Function(_EventVoucherUsed value)? eventVoucherUsed,
+    TResult Function(_NextPageChallengeStoriesFetched value)?
+        nextPageChallengeStoriesFetched,
+    TResult Function(_OtherUserStoriesUpdated value)? otherUserStoriesUpdated,
+    TResult Function(_CurrentUserStoriesUpdated value)?
+        currentUserStoriesUpdated,
+    required TResult orElse(),
+  }) {
+    if (currentUserStoriesUpdated != null) {
+      return currentUserStoriesUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CurrentUserStoriesUpdated implements DashboardEvent {
+  const factory _CurrentUserStoriesUpdated(
+          final List<UserStoriesWithInteractions> stories) =
+      _$_CurrentUserStoriesUpdated;
+
+  List<UserStoriesWithInteractions> get stories;
+  @JsonKey(ignore: true)
+  _$$_CurrentUserStoriesUpdatedCopyWith<_$_CurrentUserStoriesUpdated>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$DashboardState {
   DashboardData get dashboardData => throw _privateConstructorUsedError;
   CubitStatus get initialStatus => throw _privateConstructorUsedError;
@@ -361,6 +946,9 @@ mixin _$DashboardState {
   Option<String> get errorMessage => throw _privateConstructorUsedError;
   Option<DashboardFailure> get failure => throw _privateConstructorUsedError;
   Option<EventVoucher> get usedVoucher => throw _privateConstructorUsedError;
+  CubitStatus get nextPageChallengeStoriesStatus =>
+      throw _privateConstructorUsedError;
+  bool get hasChallengeStoriesReachedMax => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DashboardStateCopyWith<DashboardState> get copyWith =>
@@ -379,7 +967,9 @@ abstract class $DashboardStateCopyWith<$Res> {
       CubitStatus useVoucherStatus,
       Option<String> errorMessage,
       Option<DashboardFailure> failure,
-      Option<EventVoucher> usedVoucher});
+      Option<EventVoucher> usedVoucher,
+      CubitStatus nextPageChallengeStoriesStatus,
+      bool hasChallengeStoriesReachedMax});
 
   $DashboardDataCopyWith<$Res> get dashboardData;
 }
@@ -403,6 +993,8 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
     Object? errorMessage = null,
     Object? failure = null,
     Object? usedVoucher = null,
+    Object? nextPageChallengeStoriesStatus = null,
+    Object? hasChallengeStoriesReachedMax = null,
   }) {
     return _then(_value.copyWith(
       dashboardData: null == dashboardData
@@ -429,6 +1021,14 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
           ? _value.usedVoucher
           : usedVoucher // ignore: cast_nullable_to_non_nullable
               as Option<EventVoucher>,
+      nextPageChallengeStoriesStatus: null == nextPageChallengeStoriesStatus
+          ? _value.nextPageChallengeStoriesStatus
+          : nextPageChallengeStoriesStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      hasChallengeStoriesReachedMax: null == hasChallengeStoriesReachedMax
+          ? _value.hasChallengeStoriesReachedMax
+          : hasChallengeStoriesReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -455,7 +1055,9 @@ abstract class _$$_DashboardStateCopyWith<$Res>
       CubitStatus useVoucherStatus,
       Option<String> errorMessage,
       Option<DashboardFailure> failure,
-      Option<EventVoucher> usedVoucher});
+      Option<EventVoucher> usedVoucher,
+      CubitStatus nextPageChallengeStoriesStatus,
+      bool hasChallengeStoriesReachedMax});
 
   @override
   $DashboardDataCopyWith<$Res> get dashboardData;
@@ -478,6 +1080,8 @@ class __$$_DashboardStateCopyWithImpl<$Res>
     Object? errorMessage = null,
     Object? failure = null,
     Object? usedVoucher = null,
+    Object? nextPageChallengeStoriesStatus = null,
+    Object? hasChallengeStoriesReachedMax = null,
   }) {
     return _then(_$_DashboardState(
       dashboardData: null == dashboardData
@@ -504,6 +1108,14 @@ class __$$_DashboardStateCopyWithImpl<$Res>
           ? _value.usedVoucher
           : usedVoucher // ignore: cast_nullable_to_non_nullable
               as Option<EventVoucher>,
+      nextPageChallengeStoriesStatus: null == nextPageChallengeStoriesStatus
+          ? _value.nextPageChallengeStoriesStatus
+          : nextPageChallengeStoriesStatus // ignore: cast_nullable_to_non_nullable
+              as CubitStatus,
+      hasChallengeStoriesReachedMax: null == hasChallengeStoriesReachedMax
+          ? _value.hasChallengeStoriesReachedMax
+          : hasChallengeStoriesReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -517,7 +1129,9 @@ class _$_DashboardState implements _DashboardState {
       required this.useVoucherStatus,
       required this.errorMessage,
       required this.failure,
-      required this.usedVoucher});
+      required this.usedVoucher,
+      required this.nextPageChallengeStoriesStatus,
+      required this.hasChallengeStoriesReachedMax});
 
   @override
   final DashboardData dashboardData;
@@ -531,10 +1145,14 @@ class _$_DashboardState implements _DashboardState {
   final Option<DashboardFailure> failure;
   @override
   final Option<EventVoucher> usedVoucher;
+  @override
+  final CubitStatus nextPageChallengeStoriesStatus;
+  @override
+  final bool hasChallengeStoriesReachedMax;
 
   @override
   String toString() {
-    return 'DashboardState(dashboardData: $dashboardData, initialStatus: $initialStatus, useVoucherStatus: $useVoucherStatus, errorMessage: $errorMessage, failure: $failure, usedVoucher: $usedVoucher)';
+    return 'DashboardState(dashboardData: $dashboardData, initialStatus: $initialStatus, useVoucherStatus: $useVoucherStatus, errorMessage: $errorMessage, failure: $failure, usedVoucher: $usedVoucher, nextPageChallengeStoriesStatus: $nextPageChallengeStoriesStatus, hasChallengeStoriesReachedMax: $hasChallengeStoriesReachedMax)';
   }
 
   @override
@@ -552,12 +1170,28 @@ class _$_DashboardState implements _DashboardState {
                 other.errorMessage == errorMessage) &&
             (identical(other.failure, failure) || other.failure == failure) &&
             (identical(other.usedVoucher, usedVoucher) ||
-                other.usedVoucher == usedVoucher));
+                other.usedVoucher == usedVoucher) &&
+            (identical(other.nextPageChallengeStoriesStatus,
+                    nextPageChallengeStoriesStatus) ||
+                other.nextPageChallengeStoriesStatus ==
+                    nextPageChallengeStoriesStatus) &&
+            (identical(other.hasChallengeStoriesReachedMax,
+                    hasChallengeStoriesReachedMax) ||
+                other.hasChallengeStoriesReachedMax ==
+                    hasChallengeStoriesReachedMax));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, dashboardData, initialStatus,
-      useVoucherStatus, errorMessage, failure, usedVoucher);
+  int get hashCode => Object.hash(
+      runtimeType,
+      dashboardData,
+      initialStatus,
+      useVoucherStatus,
+      errorMessage,
+      failure,
+      usedVoucher,
+      nextPageChallengeStoriesStatus,
+      hasChallengeStoriesReachedMax);
 
   @JsonKey(ignore: true)
   @override
@@ -573,7 +1207,9 @@ abstract class _DashboardState implements DashboardState {
       required final CubitStatus useVoucherStatus,
       required final Option<String> errorMessage,
       required final Option<DashboardFailure> failure,
-      required final Option<EventVoucher> usedVoucher}) = _$_DashboardState;
+      required final Option<EventVoucher> usedVoucher,
+      required final CubitStatus nextPageChallengeStoriesStatus,
+      required final bool hasChallengeStoriesReachedMax}) = _$_DashboardState;
 
   @override
   DashboardData get dashboardData;
@@ -587,6 +1223,10 @@ abstract class _DashboardState implements DashboardState {
   Option<DashboardFailure> get failure;
   @override
   Option<EventVoucher> get usedVoucher;
+  @override
+  CubitStatus get nextPageChallengeStoriesStatus;
+  @override
+  bool get hasChallengeStoriesReachedMax;
   @override
   @JsonKey(ignore: true)
   _$$_DashboardStateCopyWith<_$_DashboardState> get copyWith =>

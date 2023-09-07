@@ -6,7 +6,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/marketplace_discounts/marketplace_discounts_bloc.dart';
 import 'package:tonight/domain/marketplace_discounts/marketplace_discount_entity.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
-import 'package:translations/translations.dart';
 
 class AvailableDiscountListTile extends StatelessWidget {
   final MarketplaceDiscount discount;
@@ -41,7 +40,7 @@ class AvailableDiscountListTile extends StatelessWidget {
         padding: const EdgeInsets.only(top: 8),
         child: Text(
           '${discount.price} '
-          '${S().raverCoinsReward(discount.price)}',
+          'tonight tokens',
           style: context.titleSmall.copyWithSecondaryColor(),
         ),
       ),

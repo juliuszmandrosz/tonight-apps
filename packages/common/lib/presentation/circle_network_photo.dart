@@ -32,6 +32,7 @@ class CircleNetworkPhoto extends StatelessWidget {
       imageBuilder: (context, imageProvider) => CircleAvatar(
         radius: containerSize / 2,
         backgroundImage: imageProvider,
+        backgroundColor: Colors.transparent,
       ),
     );
   }

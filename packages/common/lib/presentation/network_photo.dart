@@ -7,11 +7,13 @@ class NetworkPhoto extends StatelessWidget {
   final String photoUrl;
   final double photoHeight;
   final double loaderSize;
+  final Widget? loaderWidget;
 
   const NetworkPhoto({
     required this.photoUrl,
     this.photoHeight = 160,
     this.loaderSize = 16,
+    this.loaderWidget,
     Key? key,
   }) : super(key: key);
 
@@ -21,10 +23,11 @@ class NetworkPhoto extends StatelessWidget {
       progressIndicatorBuilder: (context, url, downloadProgress) => SizedBox(
         height: photoHeight,
         child: Center(
-          child: SpinKitThreeBounce(
-            color: context.onSurfaceColor,
-            size: loaderSize,
-          ),
+          child: loaderWidget ??
+              SpinKitThreeBounce(
+                color: context.onSurfaceColor,
+                size: loaderSize,
+              ),
         ),
       ),
       imageUrl: photoUrl,

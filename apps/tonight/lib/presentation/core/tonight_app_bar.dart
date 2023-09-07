@@ -26,7 +26,7 @@ class TonightAppBar extends StatelessWidget implements PreferredSizeWidget {
               title!,
               maxLines: 1,
             )
-          : const TonightLogo(height: kToolbarHeight * 1.3),
+          : const TonightLogo(height: kToolbarHeight * 0.5),
       actions: actions,
     );
   }

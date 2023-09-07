@@ -7,7 +7,13 @@ import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
 import 'package:translations/translations.dart';
 
 class EventChatInput extends HookWidget {
-  const EventChatInput({Key? key}) : super(key: key);
+  // TODO - change this maan
+  final bool isComment;
+
+  const EventChatInput({
+    this.isComment = false,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +73,7 @@ class EventChatInput extends HookWidget {
                     textController.text = '';
                     context
                         .read<EventChatBloc>()
-                        .add(const EventChatEvent.messageSent());
+                        .add(EventChatEvent.messageSent(isComment));
                   },
                   icon: const FaIcon(FontAwesomeIcons.solidPaperPlane),
                 ),

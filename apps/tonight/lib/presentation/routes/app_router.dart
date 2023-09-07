@@ -1,10 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:payments/domain/domain.dart';
 import 'package:tonight/application/add_wall_photo/models/wall_photo_venue_model.dart';
+import 'package:tonight/application/dashboard/models/user_stories_with_interactions.dart';
 import 'package:tonight/presentation/activate_ticket/activate_ticket_page.dart';
 import 'package:tonight/presentation/activate_time_task_reward/activate_time_task_reward_page.dart';
+import 'package:tonight/presentation/add_challenge_story/add_challenge_story_page.dart';
 import 'package:tonight/presentation/add_wall_photo/add_wall_photo_page.dart';
 import 'package:tonight/presentation/app_settings/app_settings_page.dart';
+import 'package:tonight/presentation/challenge_stories/challenge_stories_page.dart';
+import 'package:tonight/presentation/challenges/challenges_page.dart';
 import 'package:tonight/presentation/club_city_picker/club_city_picker_page.dart';
 import 'package:tonight/presentation/club_details/club_details_page.dart';
 import 'package:tonight/presentation/contact/contact_page.dart';
@@ -28,6 +32,7 @@ import 'package:tonight/presentation/network_lost/network_lost_page.dart';
 import 'package:tonight/presentation/onboarding/onboarding_page.dart';
 import 'package:tonight/presentation/onboarding_user_details/onboarding_user_details_page.dart';
 import 'package:tonight/presentation/payment_method/payment_method_page.dart';
+import 'package:tonight/presentation/photo_preview/photo_preview_page.dart';
 import 'package:tonight/presentation/profile/profile_page.dart';
 import 'package:tonight/presentation/redeem_tonight_voucher/redeem_tonight_voucher_page.dart';
 import 'package:tonight/presentation/routes/page_transitions/fade_in_transition.dart';
@@ -38,6 +43,7 @@ import 'package:tonight/presentation/select_club/select_club_page.dart';
 import 'package:tonight/presentation/sign_in/sign_in_page.dart';
 import 'package:tonight/presentation/sign_in_with_phone_number/sign_in_with_phone_number_page.dart';
 import 'package:tonight/presentation/splash/splash_page.dart';
+import 'package:tonight/presentation/story_comments/story_comments_page.dart';
 import 'package:tonight/presentation/ticket_checkout/ticket_checkout_page.dart';
 import 'package:tonight/presentation/ticket_payment_confirm/ticket_payment_confirm_page.dart';
 import 'package:tonight/presentation/ticket_scan_confirm/ticket_scan_confirm_page.dart';
@@ -48,9 +54,9 @@ import 'package:tonight/presentation/update_username/update_username_page.dart';
 import 'package:tonight/presentation/user_city_picker/user_city_picker_page.dart';
 import 'package:tonight/presentation/user_details/user_details_page.dart';
 import 'package:tonight/presentation/user_marketplace_discount_details/user_marketplace_discount_details_page.dart';
-import 'package:tonight/presentation/user_stories/user_stories_page.dart';
 import 'package:tonight/presentation/user_wall_photo_preview/user_wall_photo_preview_page.dart';
 import 'package:tonight/presentation/verify_phone_number/verify_phone_number_page.dart';
+import 'package:tonight/presentation/video_preview/video_preview_page.dart';
 import 'package:tonight/presentation/wall_photo_camera_preview/wall_photo_camera_preview_page.dart';
 import 'package:tonight/presentation/wall_photos_filters/wall_photos_filters_page.dart';
 import 'package:tonight/presentation/welcome_loader/welcome_loader_page.dart';
@@ -86,6 +92,11 @@ const animationDuration = 300;
         ),
         CustomRoute(
           page: DiscoverPage,
+          transitionsBuilder: slideLeftTransition,
+          durationInMilliseconds: animationDuration,
+        ),
+        CustomRoute(
+          page: ChallengesPage,
           transitionsBuilder: slideLeftTransition,
           durationInMilliseconds: animationDuration,
         ),
@@ -305,8 +316,28 @@ const animationDuration = 300;
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),
+    CustomRoute<List<UserStoriesWithInteractions>>(
+      page: ChallengeStoriesPage,
+      transitionsBuilder: zoomInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
     CustomRoute(
-      page: UserStoriesPage,
+      page: AddChallengeStoryPage,
+      transitionsBuilder: slideUpTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: PhotoPreviewPage,
+      transitionsBuilder: fadeInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: VideoPreviewPage,
+      transitionsBuilder: fadeInTransition,
+      durationInMilliseconds: animationDuration,
+    ),
+    CustomRoute(
+      page: StoryCommentsPage,
       transitionsBuilder: slideLeftTransition,
       durationInMilliseconds: animationDuration,
     ),

@@ -54,7 +54,7 @@ class MarketplaceDiscountCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    '${discount.price} raver coins',
+                    '${discount.price} tonight tokens',
                     style: context.titleSmall.copyWithSecondaryColor(),
                   ),
                 ],

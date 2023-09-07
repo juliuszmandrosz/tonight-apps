@@ -55,6 +55,14 @@ extension FirestoreX on FirebaseFirestore {
   CollectionReference get marketplaceDiscounts =>
       collection('marketplaceDiscounts');
 
+  CollectionReference get challenges => collection('challenges');
+
+  CollectionReference get appSettings => collection('appSettings');
+
+  CollectionReference get challengeStories => collection('challengeStories');
+
+  CollectionReference get storyInteractions => collection('storyInteractions');
+
   DocumentReference getCurrentUserDocRef(FirebaseAuth auth) {
     final firebaseUser = auth.tryGetFirebaseUser();
 
@@ -72,7 +80,8 @@ extension FirestoreX on FirebaseFirestore {
   }
 
   Future<DocumentReference> getCurrentPartnerClubDocRef(
-      FirebaseAuth auth,) async {
+    FirebaseAuth auth,
+  ) async {
     final partnerDoc = await getCurrentPartnerDocRef(auth).get();
 
     final clubId = partnerDoc.get('clubId');
@@ -100,10 +109,17 @@ extension FirestoreX on FirebaseFirestore {
 
     return clubCollection.doc(selectorClubId);
   }
+
+  Future<int> getCurrentChallengePeriodNumber() async {
+    final doc = await appSettings.doc('settings').get();
+    return doc.get('currentChallengePeriod') as int;
+  }
 }
 
 extension CollectionReferenceX on CollectionReference {
-  Future<List<DocumentSnapshot>> getDocsByIdsWhereIn(List<dynamic> ids,) async {
+  Future<List<DocumentSnapshot>> getDocsByIdsWhereIn(
+    List<dynamic> ids,
+  ) async {
     final result = <DocumentSnapshot>[];
     final idsCopy = [...ids];
 
@@ -128,7 +144,8 @@ extension CollectionReferenceX on CollectionReference {
   }
 
   Future<List<DocumentSnapshot>> getDocsByIdsWhereNotIn(
-      List<dynamic> ids,) async {
+    List<dynamic> ids,
+  ) async {
     final result = <DocumentSnapshot>[];
     final idsCopy = [...ids];
 

@@ -56,6 +56,7 @@ class FirebaseMessageFacade implements MessageFacade {
   Future<Either<MessageFailure, Unit>> sendMessage({
     required Message message,
     required String roomId,
+    bool isComment = false,
   }) async {
     try {
       await _firestore.runTransaction((tx) async {
@@ -63,6 +64,14 @@ class FirebaseMessageFacade implements MessageFacade {
             _firestore.rooms.doc(roomId).messages.doc(message.id);
         final roomRef = _firestore.rooms.doc(roomId);
         final messageDto = MessageDto.fromDomain(message);
+
+        if (isComment) {
+          final storyRef = _firestore.challengeStories.doc(roomId);
+          tx.update(
+            storyRef,
+            {'commentsCount': FieldValue.increment(1)},
+          );
+        }
         tx.set(messageRef, messageDto.toJson());
         tx.update(
           roomRef,

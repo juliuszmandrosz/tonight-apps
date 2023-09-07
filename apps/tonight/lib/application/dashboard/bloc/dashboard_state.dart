@@ -9,6 +9,8 @@ class DashboardState with _$DashboardState {
     required Option<String> errorMessage,
     required Option<DashboardFailure> failure,
     required Option<EventVoucher> usedVoucher,
+    required CubitStatus nextPageChallengeStoriesStatus,
+    required bool hasChallengeStoriesReachedMax,
   }) = _DashboardState;
 
   factory DashboardState.initial() => DashboardState(
@@ -18,5 +20,7 @@ class DashboardState with _$DashboardState {
         errorMessage: none(),
         failure: none(),
         usedVoucher: none(),
+        nextPageChallengeStoriesStatus: CubitStatus.initial,
+        hasChallengeStoriesReachedMax: false,
       );
 }

@@ -21,7 +21,7 @@ class UserRaverCoinsBalance extends StatelessWidget {
             child: Center(
               child: AutoSizeText(
                 // TODO - add translation
-                'Twoja ilość Raver Coinów: $availableRaverCoins',
+                'Twoja ilość tonight tokens: $availableRaverCoins',
                 maxLines: 1,
                 style: context.titleMedium,
               ),

@@ -18,32 +18,33 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventChatEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event, Participant participant)
+    required TResult Function(String roomId, Participant participant)
         chatInitialized,
     required TResult Function() nextPageMessagesFetched,
-    required TResult Function() messageSent,
+    required TResult Function(bool isComment) messageSent,
     required TResult Function(String message) inputMessageChanged,
-    required TResult Function(ChatMessage message) messageResent,
+    required TResult Function(ChatMessage message, bool isComment)
+        messageResent,
     required TResult Function(ChatMessage message) messageReported,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event, Participant participant)? chatInitialized,
+    TResult? Function(String roomId, Participant participant)? chatInitialized,
     TResult? Function()? nextPageMessagesFetched,
-    TResult? Function()? messageSent,
+    TResult? Function(bool isComment)? messageSent,
     TResult? Function(String message)? inputMessageChanged,
-    TResult? Function(ChatMessage message)? messageResent,
+    TResult? Function(ChatMessage message, bool isComment)? messageResent,
     TResult? Function(ChatMessage message)? messageReported,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event, Participant participant)? chatInitialized,
+    TResult Function(String roomId, Participant participant)? chatInitialized,
     TResult Function()? nextPageMessagesFetched,
-    TResult Function()? messageSent,
+    TResult Function(bool isComment)? messageSent,
     TResult Function(String message)? inputMessageChanged,
-    TResult Function(ChatMessage message)? messageResent,
+    TResult Function(ChatMessage message, bool isComment)? messageResent,
     TResult Function(ChatMessage message)? messageReported,
     required TResult orElse(),
   }) =>
@@ -106,7 +107,7 @@ abstract class _$$_ChatInitializedCopyWith<$Res> {
           _$_ChatInitialized value, $Res Function(_$_ChatInitialized) then) =
       __$$_ChatInitializedCopyWithImpl<$Res>;
   @useResult
-  $Res call({Event event, Participant participant});
+  $Res call({String roomId, Participant participant});
 }
 
 /// @nodoc
@@ -120,14 +121,14 @@ class __$$_ChatInitializedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? event = null,
+    Object? roomId = null,
     Object? participant = null,
   }) {
     return _then(_$_ChatInitialized(
-      event: null == event
-          ? _value.event
-          : event // ignore: cast_nullable_to_non_nullable
-              as Event,
+      roomId: null == roomId
+          ? _value.roomId
+          : roomId // ignore: cast_nullable_to_non_nullable
+              as String,
       participant: null == participant
           ? _value.participant
           : participant // ignore: cast_nullable_to_non_nullable
@@ -139,16 +140,16 @@ class __$$_ChatInitializedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ChatInitialized implements _ChatInitialized {
-  const _$_ChatInitialized({required this.event, required this.participant});
+  const _$_ChatInitialized({required this.roomId, required this.participant});
 
   @override
-  final Event event;
+  final String roomId;
   @override
   final Participant participant;
 
   @override
   String toString() {
-    return 'EventChatEvent.chatInitialized(event: $event, participant: $participant)';
+    return 'EventChatEvent.chatInitialized(roomId: $roomId, participant: $participant)';
   }
 
   @override
@@ -156,13 +157,13 @@ class _$_ChatInitialized implements _ChatInitialized {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChatInitialized &&
-            (identical(other.event, event) || other.event == event) &&
+            (identical(other.roomId, roomId) || other.roomId == roomId) &&
             (identical(other.participant, participant) ||
                 other.participant == participant));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, event, participant);
+  int get hashCode => Object.hash(runtimeType, roomId, participant);
 
   @JsonKey(ignore: true)
   @override
@@ -173,43 +174,44 @@ class _$_ChatInitialized implements _ChatInitialized {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event, Participant participant)
+    required TResult Function(String roomId, Participant participant)
         chatInitialized,
     required TResult Function() nextPageMessagesFetched,
-    required TResult Function() messageSent,
+    required TResult Function(bool isComment) messageSent,
     required TResult Function(String message) inputMessageChanged,
-    required TResult Function(ChatMessage message) messageResent,
+    required TResult Function(ChatMessage message, bool isComment)
+        messageResent,
     required TResult Function(ChatMessage message) messageReported,
   }) {
-    return chatInitialized(event, participant);
+    return chatInitialized(roomId, participant);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event, Participant participant)? chatInitialized,
+    TResult? Function(String roomId, Participant participant)? chatInitialized,
     TResult? Function()? nextPageMessagesFetched,
-    TResult? Function()? messageSent,
+    TResult? Function(bool isComment)? messageSent,
     TResult? Function(String message)? inputMessageChanged,
-    TResult? Function(ChatMessage message)? messageResent,
+    TResult? Function(ChatMessage message, bool isComment)? messageResent,
     TResult? Function(ChatMessage message)? messageReported,
   }) {
-    return chatInitialized?.call(event, participant);
+    return chatInitialized?.call(roomId, participant);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event, Participant participant)? chatInitialized,
+    TResult Function(String roomId, Participant participant)? chatInitialized,
     TResult Function()? nextPageMessagesFetched,
-    TResult Function()? messageSent,
+    TResult Function(bool isComment)? messageSent,
     TResult Function(String message)? inputMessageChanged,
-    TResult Function(ChatMessage message)? messageResent,
+    TResult Function(ChatMessage message, bool isComment)? messageResent,
     TResult Function(ChatMessage message)? messageReported,
     required TResult orElse(),
   }) {
     if (chatInitialized != null) {
-      return chatInitialized(event, participant);
+      return chatInitialized(roomId, participant);
     }
     return orElse();
   }
@@ -261,10 +263,10 @@ class _$_ChatInitialized implements _ChatInitialized {
 
 abstract class _ChatInitialized implements EventChatEvent {
   const factory _ChatInitialized(
-      {required final Event event,
+      {required final String roomId,
       required final Participant participant}) = _$_ChatInitialized;
 
-  Event get event;
+  String get roomId;
   Participant get participant;
   @JsonKey(ignore: true)
   _$$_ChatInitializedCopyWith<_$_ChatInitialized> get copyWith =>
@@ -310,12 +312,13 @@ class _$_NextPageMessagesFetched implements _NextPageMessagesFetched {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event, Participant participant)
+    required TResult Function(String roomId, Participant participant)
         chatInitialized,
     required TResult Function() nextPageMessagesFetched,
-    required TResult Function() messageSent,
+    required TResult Function(bool isComment) messageSent,
     required TResult Function(String message) inputMessageChanged,
-    required TResult Function(ChatMessage message) messageResent,
+    required TResult Function(ChatMessage message, bool isComment)
+        messageResent,
     required TResult Function(ChatMessage message) messageReported,
   }) {
     return nextPageMessagesFetched();
@@ -324,11 +327,11 @@ class _$_NextPageMessagesFetched implements _NextPageMessagesFetched {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event, Participant participant)? chatInitialized,
+    TResult? Function(String roomId, Participant participant)? chatInitialized,
     TResult? Function()? nextPageMessagesFetched,
-    TResult? Function()? messageSent,
+    TResult? Function(bool isComment)? messageSent,
     TResult? Function(String message)? inputMessageChanged,
-    TResult? Function(ChatMessage message)? messageResent,
+    TResult? Function(ChatMessage message, bool isComment)? messageResent,
     TResult? Function(ChatMessage message)? messageReported,
   }) {
     return nextPageMessagesFetched?.call();
@@ -337,11 +340,11 @@ class _$_NextPageMessagesFetched implements _NextPageMessagesFetched {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event, Participant participant)? chatInitialized,
+    TResult Function(String roomId, Participant participant)? chatInitialized,
     TResult Function()? nextPageMessagesFetched,
-    TResult Function()? messageSent,
+    TResult Function(bool isComment)? messageSent,
     TResult Function(String message)? inputMessageChanged,
-    TResult Function(ChatMessage message)? messageResent,
+    TResult Function(ChatMessage message, bool isComment)? messageResent,
     TResult Function(ChatMessage message)? messageReported,
     required TResult orElse(),
   }) {
@@ -405,6 +408,8 @@ abstract class _$$_MessageSentCopyWith<$Res> {
   factory _$$_MessageSentCopyWith(
           _$_MessageSent value, $Res Function(_$_MessageSent) then) =
       __$$_MessageSentCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isComment});
 }
 
 /// @nodoc
@@ -414,67 +419,93 @@ class __$$_MessageSentCopyWithImpl<$Res>
   __$$_MessageSentCopyWithImpl(
       _$_MessageSent _value, $Res Function(_$_MessageSent) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isComment = null,
+  }) {
+    return _then(_$_MessageSent(
+      null == isComment
+          ? _value.isComment
+          : isComment // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_MessageSent implements _MessageSent {
-  const _$_MessageSent();
+  const _$_MessageSent(this.isComment);
+
+  @override
+  final bool isComment;
 
   @override
   String toString() {
-    return 'EventChatEvent.messageSent()';
+    return 'EventChatEvent.messageSent(isComment: $isComment)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MessageSent);
+        (other.runtimeType == runtimeType &&
+            other is _$_MessageSent &&
+            (identical(other.isComment, isComment) ||
+                other.isComment == isComment));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isComment);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MessageSentCopyWith<_$_MessageSent> get copyWith =>
+      __$$_MessageSentCopyWithImpl<_$_MessageSent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event, Participant participant)
+    required TResult Function(String roomId, Participant participant)
         chatInitialized,
     required TResult Function() nextPageMessagesFetched,
-    required TResult Function() messageSent,
+    required TResult Function(bool isComment) messageSent,
     required TResult Function(String message) inputMessageChanged,
-    required TResult Function(ChatMessage message) messageResent,
+    required TResult Function(ChatMessage message, bool isComment)
+        messageResent,
     required TResult Function(ChatMessage message) messageReported,
   }) {
-    return messageSent();
+    return messageSent(isComment);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event, Participant participant)? chatInitialized,
+    TResult? Function(String roomId, Participant participant)? chatInitialized,
     TResult? Function()? nextPageMessagesFetched,
-    TResult? Function()? messageSent,
+    TResult? Function(bool isComment)? messageSent,
     TResult? Function(String message)? inputMessageChanged,
-    TResult? Function(ChatMessage message)? messageResent,
+    TResult? Function(ChatMessage message, bool isComment)? messageResent,
     TResult? Function(ChatMessage message)? messageReported,
   }) {
-    return messageSent?.call();
+    return messageSent?.call(isComment);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event, Participant participant)? chatInitialized,
+    TResult Function(String roomId, Participant participant)? chatInitialized,
     TResult Function()? nextPageMessagesFetched,
-    TResult Function()? messageSent,
+    TResult Function(bool isComment)? messageSent,
     TResult Function(String message)? inputMessageChanged,
-    TResult Function(ChatMessage message)? messageResent,
+    TResult Function(ChatMessage message, bool isComment)? messageResent,
     TResult Function(ChatMessage message)? messageReported,
     required TResult orElse(),
   }) {
     if (messageSent != null) {
-      return messageSent();
+      return messageSent(isComment);
     }
     return orElse();
   }
@@ -525,7 +556,12 @@ class _$_MessageSent implements _MessageSent {
 }
 
 abstract class _MessageSent implements EventChatEvent {
-  const factory _MessageSent() = _$_MessageSent;
+  const factory _MessageSent(final bool isComment) = _$_MessageSent;
+
+  bool get isComment;
+  @JsonKey(ignore: true)
+  _$$_MessageSentCopyWith<_$_MessageSent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -593,12 +629,13 @@ class _$_InputMessageChanged implements _InputMessageChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event, Participant participant)
+    required TResult Function(String roomId, Participant participant)
         chatInitialized,
     required TResult Function() nextPageMessagesFetched,
-    required TResult Function() messageSent,
+    required TResult Function(bool isComment) messageSent,
     required TResult Function(String message) inputMessageChanged,
-    required TResult Function(ChatMessage message) messageResent,
+    required TResult Function(ChatMessage message, bool isComment)
+        messageResent,
     required TResult Function(ChatMessage message) messageReported,
   }) {
     return inputMessageChanged(message);
@@ -607,11 +644,11 @@ class _$_InputMessageChanged implements _InputMessageChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event, Participant participant)? chatInitialized,
+    TResult? Function(String roomId, Participant participant)? chatInitialized,
     TResult? Function()? nextPageMessagesFetched,
-    TResult? Function()? messageSent,
+    TResult? Function(bool isComment)? messageSent,
     TResult? Function(String message)? inputMessageChanged,
-    TResult? Function(ChatMessage message)? messageResent,
+    TResult? Function(ChatMessage message, bool isComment)? messageResent,
     TResult? Function(ChatMessage message)? messageReported,
   }) {
     return inputMessageChanged?.call(message);
@@ -620,11 +657,11 @@ class _$_InputMessageChanged implements _InputMessageChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event, Participant participant)? chatInitialized,
+    TResult Function(String roomId, Participant participant)? chatInitialized,
     TResult Function()? nextPageMessagesFetched,
-    TResult Function()? messageSent,
+    TResult Function(bool isComment)? messageSent,
     TResult Function(String message)? inputMessageChanged,
-    TResult Function(ChatMessage message)? messageResent,
+    TResult Function(ChatMessage message, bool isComment)? messageResent,
     TResult Function(ChatMessage message)? messageReported,
     required TResult orElse(),
   }) {
@@ -695,7 +732,7 @@ abstract class _$$_MessageResentCopyWith<$Res> {
           _$_MessageResent value, $Res Function(_$_MessageResent) then) =
       __$$_MessageResentCopyWithImpl<$Res>;
   @useResult
-  $Res call({ChatMessage message});
+  $Res call({ChatMessage message, bool isComment});
 
   $ChatMessageCopyWith<$Res> get message;
 }
@@ -712,12 +749,17 @@ class __$$_MessageResentCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = null,
+    Object? isComment = null,
   }) {
     return _then(_$_MessageResent(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as ChatMessage,
+      null == isComment
+          ? _value.isComment
+          : isComment // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -733,14 +775,16 @@ class __$$_MessageResentCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MessageResent implements _MessageResent {
-  const _$_MessageResent(this.message);
+  const _$_MessageResent(this.message, this.isComment);
 
   @override
   final ChatMessage message;
+  @override
+  final bool isComment;
 
   @override
   String toString() {
-    return 'EventChatEvent.messageResent(message: $message)';
+    return 'EventChatEvent.messageResent(message: $message, isComment: $isComment)';
   }
 
   @override
@@ -748,11 +792,13 @@ class _$_MessageResent implements _MessageResent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MessageResent &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.isComment, isComment) ||
+                other.isComment == isComment));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, isComment);
 
   @JsonKey(ignore: true)
   @override
@@ -763,43 +809,44 @@ class _$_MessageResent implements _MessageResent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event, Participant participant)
+    required TResult Function(String roomId, Participant participant)
         chatInitialized,
     required TResult Function() nextPageMessagesFetched,
-    required TResult Function() messageSent,
+    required TResult Function(bool isComment) messageSent,
     required TResult Function(String message) inputMessageChanged,
-    required TResult Function(ChatMessage message) messageResent,
+    required TResult Function(ChatMessage message, bool isComment)
+        messageResent,
     required TResult Function(ChatMessage message) messageReported,
   }) {
-    return messageResent(message);
+    return messageResent(message, isComment);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event, Participant participant)? chatInitialized,
+    TResult? Function(String roomId, Participant participant)? chatInitialized,
     TResult? Function()? nextPageMessagesFetched,
-    TResult? Function()? messageSent,
+    TResult? Function(bool isComment)? messageSent,
     TResult? Function(String message)? inputMessageChanged,
-    TResult? Function(ChatMessage message)? messageResent,
+    TResult? Function(ChatMessage message, bool isComment)? messageResent,
     TResult? Function(ChatMessage message)? messageReported,
   }) {
-    return messageResent?.call(message);
+    return messageResent?.call(message, isComment);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event, Participant participant)? chatInitialized,
+    TResult Function(String roomId, Participant participant)? chatInitialized,
     TResult Function()? nextPageMessagesFetched,
-    TResult Function()? messageSent,
+    TResult Function(bool isComment)? messageSent,
     TResult Function(String message)? inputMessageChanged,
-    TResult Function(ChatMessage message)? messageResent,
+    TResult Function(ChatMessage message, bool isComment)? messageResent,
     TResult Function(ChatMessage message)? messageReported,
     required TResult orElse(),
   }) {
     if (messageResent != null) {
-      return messageResent(message);
+      return messageResent(message, isComment);
     }
     return orElse();
   }
@@ -850,9 +897,11 @@ class _$_MessageResent implements _MessageResent {
 }
 
 abstract class _MessageResent implements EventChatEvent {
-  const factory _MessageResent(final ChatMessage message) = _$_MessageResent;
+  const factory _MessageResent(
+      final ChatMessage message, final bool isComment) = _$_MessageResent;
 
   ChatMessage get message;
+  bool get isComment;
   @JsonKey(ignore: true)
   _$$_MessageResentCopyWith<_$_MessageResent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -932,12 +981,13 @@ class _$_MessageReported implements _MessageReported {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Event event, Participant participant)
+    required TResult Function(String roomId, Participant participant)
         chatInitialized,
     required TResult Function() nextPageMessagesFetched,
-    required TResult Function() messageSent,
+    required TResult Function(bool isComment) messageSent,
     required TResult Function(String message) inputMessageChanged,
-    required TResult Function(ChatMessage message) messageResent,
+    required TResult Function(ChatMessage message, bool isComment)
+        messageResent,
     required TResult Function(ChatMessage message) messageReported,
   }) {
     return messageReported(message);
@@ -946,11 +996,11 @@ class _$_MessageReported implements _MessageReported {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Event event, Participant participant)? chatInitialized,
+    TResult? Function(String roomId, Participant participant)? chatInitialized,
     TResult? Function()? nextPageMessagesFetched,
-    TResult? Function()? messageSent,
+    TResult? Function(bool isComment)? messageSent,
     TResult? Function(String message)? inputMessageChanged,
-    TResult? Function(ChatMessage message)? messageResent,
+    TResult? Function(ChatMessage message, bool isComment)? messageResent,
     TResult? Function(ChatMessage message)? messageReported,
   }) {
     return messageReported?.call(message);
@@ -959,11 +1009,11 @@ class _$_MessageReported implements _MessageReported {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Event event, Participant participant)? chatInitialized,
+    TResult Function(String roomId, Participant participant)? chatInitialized,
     TResult Function()? nextPageMessagesFetched,
-    TResult Function()? messageSent,
+    TResult Function(bool isComment)? messageSent,
     TResult Function(String message)? inputMessageChanged,
-    TResult Function(ChatMessage message)? messageResent,
+    TResult Function(ChatMessage message, bool isComment)? messageResent,
     TResult Function(ChatMessage message)? messageReported,
     required TResult orElse(),
   }) {
@@ -1037,10 +1087,11 @@ mixin _$EventChatState {
   List<ChatMessage> get oldMessages => throw _privateConstructorUsedError;
   List<ChatMessage> get displayedMessages => throw _privateConstructorUsedError;
   List<ChatMessage> get queuedMessages => throw _privateConstructorUsedError;
-  Option<Event> get event => throw _privateConstructorUsedError;
+  Option<String> get roomId => throw _privateConstructorUsedError;
   String get inputMessage => throw _privateConstructorUsedError;
   List<String> get reportingMessageIds => throw _privateConstructorUsedError;
   Option<String> get snackbarMessage => throw _privateConstructorUsedError;
+  Option<ChatMessage> get newMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventChatStateCopyWith<EventChatState> get copyWith =>
@@ -1061,10 +1112,11 @@ abstract class $EventChatStateCopyWith<$Res> {
       List<ChatMessage> oldMessages,
       List<ChatMessage> displayedMessages,
       List<ChatMessage> queuedMessages,
-      Option<Event> event,
+      Option<String> roomId,
       String inputMessage,
       List<String> reportingMessageIds,
-      Option<String> snackbarMessage});
+      Option<String> snackbarMessage,
+      Option<ChatMessage> newMessage});
 }
 
 /// @nodoc
@@ -1087,10 +1139,11 @@ class _$EventChatStateCopyWithImpl<$Res, $Val extends EventChatState>
     Object? oldMessages = null,
     Object? displayedMessages = null,
     Object? queuedMessages = null,
-    Object? event = null,
+    Object? roomId = null,
     Object? inputMessage = null,
     Object? reportingMessageIds = null,
     Object? snackbarMessage = null,
+    Object? newMessage = null,
   }) {
     return _then(_value.copyWith(
       initialStatus: null == initialStatus
@@ -1121,10 +1174,10 @@ class _$EventChatStateCopyWithImpl<$Res, $Val extends EventChatState>
           ? _value.queuedMessages
           : queuedMessages // ignore: cast_nullable_to_non_nullable
               as List<ChatMessage>,
-      event: null == event
-          ? _value.event
-          : event // ignore: cast_nullable_to_non_nullable
-              as Option<Event>,
+      roomId: null == roomId
+          ? _value.roomId
+          : roomId // ignore: cast_nullable_to_non_nullable
+              as Option<String>,
       inputMessage: null == inputMessage
           ? _value.inputMessage
           : inputMessage // ignore: cast_nullable_to_non_nullable
@@ -1137,6 +1190,10 @@ class _$EventChatStateCopyWithImpl<$Res, $Val extends EventChatState>
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      newMessage: null == newMessage
+          ? _value.newMessage
+          : newMessage // ignore: cast_nullable_to_non_nullable
+              as Option<ChatMessage>,
     ) as $Val);
   }
 }
@@ -1157,10 +1214,11 @@ abstract class _$$_EventChatStateCopyWith<$Res>
       List<ChatMessage> oldMessages,
       List<ChatMessage> displayedMessages,
       List<ChatMessage> queuedMessages,
-      Option<Event> event,
+      Option<String> roomId,
       String inputMessage,
       List<String> reportingMessageIds,
-      Option<String> snackbarMessage});
+      Option<String> snackbarMessage,
+      Option<ChatMessage> newMessage});
 }
 
 /// @nodoc
@@ -1181,10 +1239,11 @@ class __$$_EventChatStateCopyWithImpl<$Res>
     Object? oldMessages = null,
     Object? displayedMessages = null,
     Object? queuedMessages = null,
-    Object? event = null,
+    Object? roomId = null,
     Object? inputMessage = null,
     Object? reportingMessageIds = null,
     Object? snackbarMessage = null,
+    Object? newMessage = null,
   }) {
     return _then(_$_EventChatState(
       initialStatus: null == initialStatus
@@ -1215,10 +1274,10 @@ class __$$_EventChatStateCopyWithImpl<$Res>
           ? _value._queuedMessages
           : queuedMessages // ignore: cast_nullable_to_non_nullable
               as List<ChatMessage>,
-      event: null == event
-          ? _value.event
-          : event // ignore: cast_nullable_to_non_nullable
-              as Option<Event>,
+      roomId: null == roomId
+          ? _value.roomId
+          : roomId // ignore: cast_nullable_to_non_nullable
+              as Option<String>,
       inputMessage: null == inputMessage
           ? _value.inputMessage
           : inputMessage // ignore: cast_nullable_to_non_nullable
@@ -1231,6 +1290,10 @@ class __$$_EventChatStateCopyWithImpl<$Res>
           ? _value.snackbarMessage
           : snackbarMessage // ignore: cast_nullable_to_non_nullable
               as Option<String>,
+      newMessage: null == newMessage
+          ? _value.newMessage
+          : newMessage // ignore: cast_nullable_to_non_nullable
+              as Option<ChatMessage>,
     ));
   }
 }
@@ -1246,10 +1309,11 @@ class _$_EventChatState implements _EventChatState {
       required final List<ChatMessage> oldMessages,
       required final List<ChatMessage> displayedMessages,
       required final List<ChatMessage> queuedMessages,
-      required this.event,
+      required this.roomId,
       required this.inputMessage,
       required final List<String> reportingMessageIds,
-      required this.snackbarMessage})
+      required this.snackbarMessage,
+      required this.newMessage})
       : _oldMessages = oldMessages,
         _displayedMessages = displayedMessages,
         _queuedMessages = queuedMessages,
@@ -1289,7 +1353,7 @@ class _$_EventChatState implements _EventChatState {
   }
 
   @override
-  final Option<Event> event;
+  final Option<String> roomId;
   @override
   final String inputMessage;
   final List<String> _reportingMessageIds;
@@ -1303,10 +1367,12 @@ class _$_EventChatState implements _EventChatState {
 
   @override
   final Option<String> snackbarMessage;
+  @override
+  final Option<ChatMessage> newMessage;
 
   @override
   String toString() {
-    return 'EventChatState(initialStatus: $initialStatus, nextPageStatus: $nextPageStatus, hasReachedMax: $hasReachedMax, currentUser: $currentUser, oldMessages: $oldMessages, displayedMessages: $displayedMessages, queuedMessages: $queuedMessages, event: $event, inputMessage: $inputMessage, reportingMessageIds: $reportingMessageIds, snackbarMessage: $snackbarMessage)';
+    return 'EventChatState(initialStatus: $initialStatus, nextPageStatus: $nextPageStatus, hasReachedMax: $hasReachedMax, currentUser: $currentUser, oldMessages: $oldMessages, displayedMessages: $displayedMessages, queuedMessages: $queuedMessages, roomId: $roomId, inputMessage: $inputMessage, reportingMessageIds: $reportingMessageIds, snackbarMessage: $snackbarMessage, newMessage: $newMessage)';
   }
 
   @override
@@ -1328,13 +1394,15 @@ class _$_EventChatState implements _EventChatState {
                 .equals(other._displayedMessages, _displayedMessages) &&
             const DeepCollectionEquality()
                 .equals(other._queuedMessages, _queuedMessages) &&
-            (identical(other.event, event) || other.event == event) &&
+            (identical(other.roomId, roomId) || other.roomId == roomId) &&
             (identical(other.inputMessage, inputMessage) ||
                 other.inputMessage == inputMessage) &&
             const DeepCollectionEquality()
                 .equals(other._reportingMessageIds, _reportingMessageIds) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
-                other.snackbarMessage == snackbarMessage));
+                other.snackbarMessage == snackbarMessage) &&
+            (identical(other.newMessage, newMessage) ||
+                other.newMessage == newMessage));
   }
 
   @override
@@ -1347,10 +1415,11 @@ class _$_EventChatState implements _EventChatState {
       const DeepCollectionEquality().hash(_oldMessages),
       const DeepCollectionEquality().hash(_displayedMessages),
       const DeepCollectionEquality().hash(_queuedMessages),
-      event,
+      roomId,
       inputMessage,
       const DeepCollectionEquality().hash(_reportingMessageIds),
-      snackbarMessage);
+      snackbarMessage,
+      newMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -1368,10 +1437,11 @@ abstract class _EventChatState implements EventChatState {
       required final List<ChatMessage> oldMessages,
       required final List<ChatMessage> displayedMessages,
       required final List<ChatMessage> queuedMessages,
-      required final Option<Event> event,
+      required final Option<String> roomId,
       required final String inputMessage,
       required final List<String> reportingMessageIds,
-      required final Option<String> snackbarMessage}) = _$_EventChatState;
+      required final Option<String> snackbarMessage,
+      required final Option<ChatMessage> newMessage}) = _$_EventChatState;
 
   @override
   CubitStatus get initialStatus;
@@ -1388,13 +1458,15 @@ abstract class _EventChatState implements EventChatState {
   @override
   List<ChatMessage> get queuedMessages;
   @override
-  Option<Event> get event;
+  Option<String> get roomId;
   @override
   String get inputMessage;
   @override
   List<String> get reportingMessageIds;
   @override
   Option<String> get snackbarMessage;
+  @override
+  Option<ChatMessage> get newMessage;
   @override
   @JsonKey(ignore: true)
   _$$_EventChatStateCopyWith<_$_EventChatState> get copyWith =>

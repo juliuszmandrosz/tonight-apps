@@ -11,46 +11,46 @@ class MarketplaceDiscounts extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DashboardBloc, DashboardState>(
       builder: (context, state) {
-        return state.dashboardData.marketplaceDiscounts.fold(
-          (_) => const SizedBox.shrink(),
-          (discounts) => Column(
-            children: [
-              // TODO - add translation
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Znizki w Marketplace',
-                    style: context.titleMedium.copyWithSecondaryColor(),
-                  ),
+        final discounts = state.dashboardData.marketplaceDiscounts;
+        final user = state.dashboardData.currentUser;
+        return Column(
+          children: [
+            // TODO - add translation
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Zniżki w Marketplace',
+                  style: context.titleMedium.copyWithSecondaryColor(),
                 ),
               ),
-              const SizedBox(height: 4),
-              SizedBox(
-                height: 240,
-                child: PageView.builder(
-                  padEnds: false,
-                  controller: PageController(viewportFraction: 0.420),
-                  itemCount: discounts.length,
-                  itemBuilder: (ctx, i) {
-                    return Padding(
-                      padding: EdgeInsets.only(
-                        left: i == 0 ? 0 : 4,
-                        right: i == discounts.length - 1 ? 0 : 4,
+            ),
+            const SizedBox(height: 12),
+            SizedBox(
+              height: 240,
+              child: PageView.builder(
+                padEnds: false,
+                controller: PageController(viewportFraction: 0.460),
+                itemCount: discounts.length,
+                itemBuilder: (ctx, i) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      left: i == 0 ? 0 : 4,
+                      right: i == discounts.length - 1 ? 0 : 4,
+                    ),
+                    child: MarketplaceDiscountCard(
+                      discount: discounts[i],
+                      availableRaverCoins: user.fold(
+                        () => 0,
+                        (data) => data.raverCoins,
                       ),
-                      child: MarketplaceDiscountCard(
-                        discount: discounts[i],
-                        availableRaverCoins: state
-                            .dashboardData.availableRaverCoins
-                            .fold((_) => 0, (coins) => coins),
-                      ),
-                    );
-                  },
-                ),
+                    ),
+                  );
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         );
       },
     );

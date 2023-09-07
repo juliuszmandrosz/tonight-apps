@@ -6,6 +6,7 @@ abstract class MessageFacade {
   Future<Either<MessageFailure, Unit>> sendMessage({
     required Message message,
     required String roomId,
+    bool isComment = false,
   });
 
   Stream<Either<MessageFailure, List<Message>>> listenToMessages({

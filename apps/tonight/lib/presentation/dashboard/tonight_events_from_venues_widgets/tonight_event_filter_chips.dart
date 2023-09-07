@@ -20,29 +20,28 @@ class TonightEventFilterChips extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              if (state.appliedMenuFilters.isNotEmpty)
-                InputChip(
-                  backgroundColor: context.backgroundColor,
-                  label: state.appliedMenuFilters.isNotEmpty
-                      ? Text(
-                          '${S().filters} (${state.appliedMenuFilters.length})')
-                      : Text(S().filters),
-                  onPressed: () => context.pushRoute(
-                    EventFiltersRoute(
-                      blocContext: context,
-                      selectedFilters: state.eventFilters,
-                      eventFiltersPageType: EventFiltersPageType.tonight,
-                    ),
+              InputChip(
+                backgroundColor: context.backgroundColor,
+                label: state.appliedMenuFilters.isNotEmpty
+                    ? Text(
+                        '${S().filters} (${state.appliedMenuFilters.length})')
+                    : Text(S().filters),
+                onPressed: () => context.pushRoute(
+                  EventFiltersRoute(
+                    blocContext: context,
+                    selectedFilters: state.eventFilters,
+                    eventFiltersPageType: EventFiltersPageType.tonight,
                   ),
-                  avatar: FaIcon(
-                    FontAwesomeIcons.sliders,
-                    color: state.appliedMenuFilters.isNotEmpty
-                        ? context.primaryColor
-                        : context.onSurfaceColor,
-                    size: 16,
-                  ),
-                  showCheckmark: false,
                 ),
+                avatar: FaIcon(
+                  FontAwesomeIcons.sliders,
+                  color: state.appliedMenuFilters.isNotEmpty
+                      ? context.primaryColor
+                      : context.onSurfaceColor,
+                  size: 16,
+                ),
+                showCheckmark: false,
+              ),
               const SizedBox(width: 4),
               for (var filter in state.appliedMenuFilters.keys)
                 Padding(

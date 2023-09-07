@@ -31,7 +31,7 @@ class MarketplaceBanner extends StatelessWidget {
               child: Opacity(
                 opacity: 0.6,
                 child: Image.network(
-                  'https://scontent.fqyy1-1.fna.fbcdn.net/v/t1.6435-9/133847545_685580328800220_7594081977589282224_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=EcsfW9pRb9kAX-pMgpw&_nc_ht=scontent.fqyy1-1.fna&oh=00_AfBXDC57X-IuVRboxdtT5MO_hHhQneBecP_F2ZP9ueH3aQ&oe=650F226A',
+                  'https://cdn.shopify.com/s/files/1/0729/3137/7478/files/hero-1.png?v=1693413682',
                   // Ścieżka do twojego zdjęcia w assets
                   fit: BoxFit.cover,
                 ),
@@ -42,7 +42,8 @@ class MarketplaceBanner extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Podnieś poziom swojej imprezy.',
+                    // TODO - add translation
+                    'Wyróżnij sie na imprezie.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 22,

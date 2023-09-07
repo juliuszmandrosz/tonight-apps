@@ -13,83 +13,76 @@ class NoTonightEventsInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        ListView(),
-        BlocBuilder<TonightEventsFromVenuesBloc, TonightEventsFromVenuesState>(
-          builder: (context, state) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: state.appliedMenuFilters.isNotEmpty
-                  ? Center(
-                      child: Text(
-                        S().noEventsMatchingCriteria,
-                        style: context.titleMedium.copyWithSecondaryColor(),
-                        textAlign: TextAlign.center,
-                      ),
-                    )
-                  : Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          if (state.nearestEventStartDateTime.isSome() &&
-                              state.nearestEventStartDateTime.getOrCrash() !=
-                                  null)
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 40),
-                              child: Text(
-                                state.eventFilters.maxDistanceFilter.enabled
-                                    ? S()
-                                        .untilNextEventInAreaRemains
-                                        .toUpperCase()
-                                    : S().untilNextEventRemains.toUpperCase(),
-                                style: context.titleMedium.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 2.0,
-                                  shadows: [
-                                    Shadow(
-                                      offset: const Offset(1.0, 1.0),
-                                      blurRadius: 2.0,
-                                      color: Colors.black.withOpacity(0.5),
-                                    ),
-                                  ],
+    return BlocBuilder<TonightEventsFromVenuesBloc,
+        TonightEventsFromVenuesState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          child: state.appliedMenuFilters.isNotEmpty
+              ? Center(
+                  child: Text(
+                    S().noEventsMatchingCriteria,
+                    style: context.titleMedium.copyWithSecondaryColor(),
+                    textAlign: TextAlign.center,
+                  ),
+                )
+              : Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (state.nearestEventStartDateTime.isSome() &&
+                          state.nearestEventStartDateTime.getOrCrash() != null)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 30),
+                          child: Text(
+                            state.eventFilters.maxDistanceFilter.enabled
+                                ? S().untilNextEventInAreaRemains.toUpperCase()
+                                : S().untilNextEventRemains.toUpperCase(),
+                            style: context.titleMedium.copyWith(
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 2.0,
+                              shadows: [
+                                Shadow(
+                                  offset: const Offset(1.0, 1.0),
+                                  blurRadius: 2.0,
+                                  color: Colors.black.withOpacity(0.5),
                                 ),
-                                textAlign: TextAlign.center,
-                              ),
+                              ],
                             ),
-                          state.nearestEventStartDateTime.fold(
-                            () => _buildNoEventsText(state, context),
-                            (dateTime) => dateTime == null
-                                ? _buildNoEventsText(state, context)
-                                : TonightEventCountdown(
-                                    onTimerCompleted: () => context
-                                        .read<TonightEventsFromVenuesBloc>()
-                                        .add(const TonightEventsFromVenuesEvent
-                                            .eventsRefreshed()),
-                                    secondsLeft: dateTime
-                                        .difference(DateTime.now())
-                                        .inSeconds,
-                                  ),
+                            textAlign: TextAlign.center,
                           ),
-                          const SizedBox(height: 40),
-                          SizedBox(
-                            height: kButtonHeight,
-                            child: ElevatedButton.icon(
-                              onPressed: () =>
-                                  AutoTabsRouter.of(context).setActiveIndex(
-                                TonightNavigationDestination.discover.index,
+                        ),
+                      state.nearestEventStartDateTime.fold(
+                        () => _buildNoEventsText(state, context),
+                        (dateTime) => dateTime == null
+                            ? _buildNoEventsText(state, context)
+                            : TonightEventCountdown(
+                                onTimerCompleted: () => context
+                                    .read<TonightEventsFromVenuesBloc>()
+                                    .add(const TonightEventsFromVenuesEvent
+                                        .eventsRefreshed()),
+                                secondsLeft: dateTime
+                                    .difference(DateTime.now())
+                                    .inSeconds,
                               ),
-                              label: Text(S().discover),
-                              icon: const FaIcon(FontAwesomeIcons.compass),
-                            ),
-                          ),
-                        ],
                       ),
-                    ),
-            );
-          },
-        ),
-      ],
+                      const SizedBox(height: 30),
+                      SizedBox(
+                        height: kButtonHeight,
+                        child: ElevatedButton.icon(
+                          onPressed: () =>
+                              AutoTabsRouter.of(context).setActiveIndex(
+                            TonightNavigationDestination.discover.index,
+                          ),
+                          label: Text(S().discover),
+                          icon: const FaIcon(FontAwesomeIcons.compass),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+        );
+      },
     );
   }
 

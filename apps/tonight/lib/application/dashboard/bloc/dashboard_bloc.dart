@@ -7,8 +7,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tonight/application/dashboard/aggregator/dashboard_aggregator.dart';
 import 'package:tonight/application/dashboard/aggregator/dashboard_failure.dart';
-import 'package:tonight/application/dashboard/models/dashboard_data.dart';
+import 'package:tonight/application/dashboard/models/dashboard_data_model.dart';
 import 'package:tonight/application/dashboard/models/event_voucher_model.dart';
+import 'package:tonight/application/dashboard/models/user_stories_with_interactions.dart';
 
 part 'dashboard_bloc.freezed.dart';
 part 'dashboard_event.dart';
@@ -20,6 +21,8 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   DashboardBloc(this._dashboardAggregator) : super(DashboardState.initial()) {
     on<_DataInitialized>(_onDataInitialized);
     on<_EventVoucherUsed>(_onEventVoucherUsed);
+    on<_OtherUserStoriesUpdated>(_onOtherUserStoriesUpdated);
+    on<_CurrentUserStoriesUpdated>(_onCurrentUserStoriesUpdated);
   }
 
   FutureOr<void> _onDataInitialized(
@@ -28,10 +31,18 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   ) async {
     emit(state.copyWith(initialStatus: CubitStatus.loading));
     final result = await _dashboardAggregator.initData(event.userLocation);
-    emit(
-      state.copyWith(
-        initialStatus: CubitStatus.success,
-        dashboardData: result,
+    result.fold(
+      (failure) => emit(
+        state.copyWith(
+          initialStatus: CubitStatus.failure,
+          failure: some(failure),
+        ),
+      ),
+      (data) => emit(
+        state.copyWith(
+          initialStatus: CubitStatus.success,
+          dashboardData: data,
+        ),
       ),
     );
   }
@@ -65,5 +76,22 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   ) {
     emit(state.copyWith(errorMessage: some(message)));
     emit(state.copyWith(errorMessage: none()));
+  }
+
+  FutureOr<void> _onOtherUserStoriesUpdated(
+    _OtherUserStoriesUpdated event,
+    Emitter<DashboardState> emit,
+  ) {
+    final data = state.dashboardData.copyWith(otherUsersStories: event.stories);
+    emit(state.copyWith(dashboardData: data));
+  }
+
+  FutureOr<void> _onCurrentUserStoriesUpdated(
+    _CurrentUserStoriesUpdated event,
+    Emitter<DashboardState> emit,
+  ) {
+    final data =
+        state.dashboardData.copyWith(currentUserStories: event.stories);
+    emit(state.copyWith(dashboardData: data));
   }
 }

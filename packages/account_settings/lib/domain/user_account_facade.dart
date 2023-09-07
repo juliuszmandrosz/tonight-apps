@@ -7,6 +7,8 @@ import 'package:dartz/dartz.dart';
 abstract class UserAccountFacade {
   Stream<Either<UserAccountFailure, UserAccount>> getUserAccount();
 
+  Future<Either<UserAccountFailure, Option<UserAccount>>> getCurrentUser();
+
   Future<Either<UserAccountFailure, UserAccount>> getUserById(String id);
 
   Future<Either<UserAccountFailure, Unit>> setUsernameForUser(String username);

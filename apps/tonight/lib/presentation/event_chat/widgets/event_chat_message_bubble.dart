@@ -11,9 +11,11 @@ import 'package:tonight/presentation/event_chat/widgets/event_chat_retry_icon.da
 
 class EventChatMessageBubble extends StatelessWidget {
   final ChatMessage message;
+  final bool isComment;
 
   const EventChatMessageBubble({
     required this.message,
+    required this.isComment,
     Key? key,
   }) : super(key: key);
 
@@ -43,7 +45,8 @@ class EventChatMessageBubble extends StatelessWidget {
               widthFactor: message.hasError || isReporting ? 0.9 : 0.8,
               child: Row(
                 children: [
-                  if (message.hasError) EventChatRetryIcon(message: message),
+                  if (message.hasError)
+                    EventChatRetryIcon(message: message, isComment: isComment),
                   if (isReporting && message.isCurrentUser)
                     const Padding(
                       padding: EdgeInsets.only(right: 8),

@@ -5,10 +5,10 @@ import 'package:tonight/application/core/user_location/user_location_cubit.dart'
 import 'package:tonight/application/dashboard/bloc/dashboard_bloc.dart';
 import 'package:tonight/application/dashboard/bloc/tonight_events_from_venues_bloc.dart';
 import 'package:tonight/injection.dart';
+import 'package:tonight/presentation/dashboard/dashboard_widgets/challenge_stories_row.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/marketplace_banner.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/marketplace_discounts.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/upcoming_tonight_events.dart';
-import 'package:tonight/presentation/dashboard/dashboard_widgets/user_stories_row.dart';
 import 'package:tonight/presentation/dashboard/tonight_events_from_venues_widgets/tonight_events_from_venues.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -37,6 +37,13 @@ class DashboardPage extends StatelessWidget {
               return const WaveLoadingIndicator();
             case CubitStatus.failure:
               return FailureInfo(
+                  isSocketException: state.failure.fold(
+                    () => false,
+                    (f) => f.maybeWhen(
+                      noConnection: () => true,
+                      orElse: () => false,
+                    ),
+                  ),
                   retryCallback: () => context
                       .read<DashboardBloc>()
                       .add(DashboardEvent.dataInitialized(userLocation)));
@@ -54,13 +61,7 @@ class DashboardPage extends StatelessWidget {
                   child: const SingleChildScrollView(
                     child: Column(
                       children: [
-                        StoriesRow(
-                          userImages: [
-                            'https://picsum.photos/id/237/200/300',
-                            'https://fastly.picsum.photos/id/27/3264/1836.jpg?hmac=p3BVIgKKQpHhfGRRCbsi2MCAzw8mWBCayBsKxxtWO8g',
-                            'https://fastly.picsum.photos/id/29/4000/2670.jpg?hmac=rCbRAl24FzrSzwlR5tL-Aqzyu5tX_PA95VJtnUXegGU',
-                          ],
-                        ),
+                        ChallengeStoriesRow(),
                         SizedBox(height: 20),
                         UpcomingTonightEvents(),
                         SizedBox(height: 20),

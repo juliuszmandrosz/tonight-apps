@@ -27,7 +27,7 @@ class UserProfileStatsRow extends StatelessWidget {
                 ),
               ),
               value: userProfile.raverCoins,
-              label: 'Raver Coins',
+              label: 'Tonight Tokens',
               icon: FontAwesomeIcons.coins,
             ),
           ),

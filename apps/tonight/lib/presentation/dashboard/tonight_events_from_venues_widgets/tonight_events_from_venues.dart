@@ -17,13 +17,18 @@ class TonightEventsFromVenues extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            'Imprezy w poblizu',
-            style: context.titleMedium.copyWithSecondaryColor(),
+        Padding(
+          padding: const EdgeInsets.only(left: 8),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              // TODO - add translations
+              'Inne imprezy w pobliżu',
+              style: context.titleMedium.copyWithSecondaryColor(),
+            ),
           ),
         ),
+        const SizedBox(height: 12),
         Container(
           padding: const EdgeInsets.only(
             left: 8,
@@ -33,6 +38,7 @@ class TonightEventsFromVenues extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: const TonightEventFilterChips(),
         ),
+        const SizedBox(height: 8),
         BlocConsumer<TonightEventsFromVenuesBloc, TonightEventsFromVenuesState>(
           listenWhen: (p, c) =>
               p.errorMessage != c.errorMessage ||
@@ -83,7 +89,7 @@ class TonightEventsFromVenues extends StatelessWidget {
               case CubitStatus.success:
                 return state.events.isEmpty
                     ? const SizedBox(
-                        height: 300,
+                        height: 220,
                         child: NoTonightEventsInfo(),
                       )
                     : InfiniteList(

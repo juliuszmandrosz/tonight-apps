@@ -6,4 +6,9 @@ extension FirebaseAuthX on FirebaseAuth {
     if (currentUser == null) throw NotAuthenticatedError();
     return currentUser!;
   }
+
+  String tryGetCurrentUserId() {
+    if (currentUser == null) throw NotAuthenticatedError();
+    return currentUser!.uid;
+  }
 }
