@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:tonight/domain/challenges/challenge_entity.dart';
 import 'package:tonight/presentation/add_challenge_story/widgets/add_challenge_story_capture_button.dart';
+import 'package:tonight/presentation/core/image_back_button.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class AddChallengeStoryPage extends StatefulWidget {
@@ -208,67 +209,77 @@ class _AddChallengeStoryPageState extends State<AddChallengeStoryPage>
     return Scaffold(
       body: SafeArea(
         child: !_isSwitchingCameras && _cameraController.value.isInitialized
-            ? Column(
+            ? Stack(
                 children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onDoubleTap: _switchCamera,
-                      child: AspectRatio(
-                        aspectRatio: 9 / 16,
-                        child: CameraPreview(_cameraController),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        IconButton(
-                          icon: Icon(_flashIcon),
-                          onPressed: _toggleFlash,
-                        ),
-                        GestureDetector(
-                          onTap: _takePicture,
-                          onLongPress: () async {
-                            _pressStartTime = DateTime.now();
-                            await _startVideoRecording();
-                          },
-                          onLongPressEnd: (_) async {
-                            if (_pressStartTime == null) return;
-                            final pressDuration =
-                                DateTime.now().difference(_pressStartTime!);
-                            await _stopVideoRecording(pressDuration);
-                            if (pressDuration.inMilliseconds <
-                                minimumVideoDurationInMilliseconds) {
-                              await _takePicture();
-                            }
-                          },
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              SizedBox(
-                                height: 90,
-                                width: 90,
-                                child: ValueListenableBuilder(
-                                  valueListenable: _recordAnimationController,
-                                  builder: (context, value, child) =>
-                                      CircularProgressIndicator(
-                                    value: _isRecording ? value : 0,
-                                    strokeWidth: 6,
-                                  ),
-                                ),
-                              ),
-                              const AddChallengeStoryCaptureButton(),
-                            ],
+                  Column(
+                    children: [
+                      Expanded(
+                        child: GestureDetector(
+                          onDoubleTap: _switchCamera,
+                          child: AspectRatio(
+                            aspectRatio: 9 / 16,
+                            child: CameraPreview(_cameraController),
                           ),
                         ),
-                        IconButton(
-                          icon: const Icon(Icons.cameraswitch),
-                          onPressed: _switchCamera,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            IconButton(
+                              icon: Icon(_flashIcon),
+                              onPressed: _toggleFlash,
+                            ),
+                            GestureDetector(
+                              onTap: _takePicture,
+                              onLongPress: () async {
+                                _pressStartTime = DateTime.now();
+                                await _startVideoRecording();
+                              },
+                              onLongPressEnd: (_) async {
+                                if (_pressStartTime == null) return;
+                                final pressDuration =
+                                    DateTime.now().difference(_pressStartTime!);
+                                await _stopVideoRecording(pressDuration);
+                                if (pressDuration.inMilliseconds <
+                                    minimumVideoDurationInMilliseconds) {
+                                  await _takePicture();
+                                }
+                              },
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  SizedBox(
+                                    height: 90,
+                                    width: 90,
+                                    child: ValueListenableBuilder(
+                                      valueListenable:
+                                          _recordAnimationController,
+                                      builder: (context, value, child) =>
+                                          CircularProgressIndicator(
+                                        value: _isRecording ? value : 0,
+                                        strokeWidth: 6,
+                                      ),
+                                    ),
+                                  ),
+                                  const AddChallengeStoryCaptureButton(),
+                                ],
+                              ),
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.cameraswitch),
+                              onPressed: _switchCamera,
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
+                  ),
+                  const Positioned(
+                    top: 5,
+                    left: 5,
+                    child: ImageBackButton(isTransparent: true),
                   ),
                 ],
               )
