@@ -17,9 +17,9 @@ class PodiumWidget extends StatelessWidget {
     Color getMedalColor(int place) {
       switch (place) {
         case 1:
-          return const Color(0xFFD1B280);
+          return const Color(0xFFFFD700).darken(.05);
         case 2:
-          return const Color(0xFFB0B0B0);
+          return const Color(0xFFC0C0C0);
         case 3:
           return const Color(0xFFA67D3D);
         default:
@@ -30,7 +30,7 @@ class PodiumWidget extends StatelessWidget {
     Color getHighlightMedalColor(int place) {
       switch (place) {
         case 1:
-          return const Color(0xFFFFD9A5);
+          return const Color(0xFFFFE4B5);
         case 2:
           return const Color(0xFFD6D6D6);
         case 3:
