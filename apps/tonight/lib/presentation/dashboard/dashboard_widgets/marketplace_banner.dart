@@ -31,7 +31,7 @@ class MarketplaceBanner extends StatelessWidget {
               child: Opacity(
                 opacity: 0.6,
                 child: Image.network(
-                  'https://cdn.shopify.com/s/files/1/0729/3137/7478/files/hero-1.png?v=1693413682',
+                  'https://cdn.shopify.com/s/files/1/0729/3137/7478/files/hero-1.png',
                   // Ścieżka do twojego zdjęcia w assets
                   fit: BoxFit.cover,
                 ),
