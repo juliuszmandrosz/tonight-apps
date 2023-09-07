@@ -21,7 +21,7 @@ class MarketplaceBanner extends StatelessWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Color(0xFF6B5FE7),
+              const Color(0xFF6B5FE7),
               Colors.purple.shade300, // Dodatkowy kolor gradientu
             ],
           ),
@@ -53,12 +53,12 @@ class MarketplaceBanner extends StatelessWidget {
                         Shadow(
                           blurRadius: 4.0,
                           color: Colors.black.withOpacity(0.25),
-                          offset: Offset(2.0, 2.0),
+                          offset: const Offset(2.0, 2.0),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     'Odkryj nasz sklep.',
                     textAlign: TextAlign.center,
@@ -69,7 +69,7 @@ class MarketplaceBanner extends StatelessWidget {
                         Shadow(
                           blurRadius: 2.0,
                           color: Colors.black.withOpacity(0.15),
-                          offset: Offset(1.0, 1.0),
+                          offset: const Offset(1.0, 1.0),
                         ),
                       ],
                     ),

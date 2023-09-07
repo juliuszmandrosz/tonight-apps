@@ -23,6 +23,8 @@ import 'package:tonight/domain/story_interactions/story_interactions_facade.dart
 import 'package:tonight/domain/tonight_vouchers/tonight_voucher_entity.dart';
 import 'package:tonight/domain/tonight_vouchers/tonight_voucher_facade.dart';
 import 'package:tonight/domain/tonight_vouchers/tonight_voucher_failure.dart';
+import 'package:tonight/domain/user_app_links/user_app_links_entity.dart';
+import 'package:tonight/domain/user_app_links/user_app_links_facade.dart';
 
 class DashboardAggregator {
   final UserEventFacade _eventFacade;
@@ -34,6 +36,7 @@ class DashboardAggregator {
   final ChallengeStoryFacade _challengeStoryFacade;
   final StoryInteractionsFacade _storyInteractionsFacade;
   final AppSettingsFacade _appSettingsFacade;
+  final UserAppLinksFacade _appLinksFacade;
 
   DashboardAggregator(
     this._eventFacade,
@@ -45,6 +48,7 @@ class DashboardAggregator {
     this._challengeStoryFacade,
     this._storyInteractionsFacade,
     this._appSettingsFacade,
+    this._appLinksFacade,
   );
 
   Future<Either<DashboardFailure, DashboardData>> initData(
@@ -65,6 +69,7 @@ class DashboardAggregator {
       _userAccountFacade.getCurrentUser(),
       _challengeStoryFacade.getStories(currentChallengePeriod),
       _storyInteractionsFacade.getUserInteractions(currentChallengePeriod),
+      _appLinksFacade.getUserAppLinks(),
     ]);
 
     if (results[0].isLeft()) {
@@ -85,6 +90,7 @@ class DashboardAggregator {
     final stories = results[3].getRightOrCrash() as List<ChallengeStory>;
     final interactions =
         results[4].getRightOrCrash() as List<StoryInteractions>;
+    final links = results[5].getRightOrCrash() as UserAppLinks;
 
     final tonightEvents = await _mapEventsToTonightEvents(events);
     final storiesWithInteractions =
@@ -97,6 +103,7 @@ class DashboardAggregator {
       marketplaceDiscounts: discounts,
       tonightEvents: tonightEvents,
       periodNumber: currentChallengePeriod,
+      links: links,
     );
 
     return right(data);

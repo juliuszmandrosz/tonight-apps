@@ -38,7 +38,7 @@ class TonightEventsFromVenues extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: const TonightEventFilterChips(),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 4),
         BlocConsumer<TonightEventsFromVenuesBloc, TonightEventsFromVenuesState>(
           listenWhen: (p, c) =>
               p.errorMessage != c.errorMessage ||

@@ -8,6 +8,7 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/challenge_stories_row.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/marketplace_banner.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/marketplace_discounts.dart';
+import 'package:tonight/presentation/dashboard/dashboard_widgets/social_media_row.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/upcoming_tonight_events.dart';
 import 'package:tonight/presentation/dashboard/tonight_events_from_venues_widgets/tonight_events_from_venues.dart';
 
@@ -58,18 +59,32 @@ class DashboardPage extends StatelessWidget {
                         .read<DashboardBloc>()
                         .add(DashboardEvent.dataInitialized(userLocation));
                   },
-                  child: const SingleChildScrollView(
+                  child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        ChallengeStoriesRow(),
-                        SizedBox(height: 20),
-                        UpcomingTonightEvents(),
-                        SizedBox(height: 20),
-                        MarketplaceBanner(),
-                        SizedBox(height: 20),
-                        MarketplaceDiscounts(),
-                        SizedBox(height: 20),
-                        TonightEventsFromVenues(),
+                        const ChallengeStoriesRow(),
+                        const SizedBox(height: 20),
+                        const UpcomingTonightEvents(),
+                        const SizedBox(height: 20),
+                        const MarketplaceBanner(),
+                        const SizedBox(height: 20),
+                        const MarketplaceDiscounts(),
+                        if (state.dashboardData.tonightEvents.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: 20,
+                              top: 20,
+                            ),
+                            child: SocialMediaRow(
+                              colors: [
+                                const Color(0xFF6B5FE7),
+                                Colors.purple.shade300,
+                              ],
+                              iconSize: 50,
+                            ),
+                          ),
+                        const SizedBox(height: 20),
+                        const TonightEventsFromVenues(),
                       ],
                     ),
                   ),

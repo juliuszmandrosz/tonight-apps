@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/application/dashboard/models/tonight_event_model.dart';
 import 'package:tonight/application/dashboard/models/user_stories_with_interactions.dart';
 import 'package:tonight/domain/marketplace_discounts/marketplace_discount_entity.dart';
+import 'package:tonight/domain/user_app_links/user_app_links_entity.dart';
 
 part 'dashboard_data_model.freezed.dart';
 
@@ -16,6 +17,7 @@ class DashboardData with _$DashboardData {
     required List<UserStoriesWithInteractions> currentUserStories,
     required List<UserStoriesWithInteractions> otherUsersStories,
     required int periodNumber,
+    required UserAppLinks links,
   }) = _DashboardData;
 
   factory DashboardData.empty() => DashboardData(
@@ -25,5 +27,6 @@ class DashboardData with _$DashboardData {
         currentUserStories: [],
         otherUsersStories: [],
         periodNumber: 0,
+        links: UserAppLinks.empty(),
       );
 }

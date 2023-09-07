@@ -914,6 +914,7 @@ void _registerAggregators() {
       getIt(),
       getIt(),
       getIt(),
+      getIt(),
     ),
   );
 

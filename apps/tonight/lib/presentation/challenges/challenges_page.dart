@@ -45,7 +45,6 @@ class ChallengesPage extends HookWidget {
                     physics: const AlwaysScrollableScrollPhysics(),
                     child: Column(
                       children: [
-                        // Informacja o nagrodach i przekierowanie do sklepu
                         GestureDetector(
                           onTap: () => scrollController.animateTo(
                             scrollController.position.maxScrollExtent,
@@ -65,33 +64,51 @@ class ChallengesPage extends HookWidget {
                                 ],
                               ),
                             ),
-                            child: Stack(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: Center(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          // TODO - add translation
-                                          'Wyróżnij sie na imprezie.',
-                                          style: context.titleLarge,
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        const SizedBox(height: 8),
-                                        Text(
-                                          // TODO - add translation
-                                          'Wykonuj wyzwania i zdobywaj nagrody!',
-                                          style: context.titleLarge,
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ],
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      // TODO - add translation
+                                      'Wyróżnij sie na imprezie.',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                        shadows: [
+                                          Shadow(
+                                            blurRadius: 4.0,
+                                            color:
+                                                Colors.black.withOpacity(0.25),
+                                            offset: const Offset(2.0, 2.0),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      // TODO - add translation
+                                      'Wykonuj wyzwania i zdobywaj nagrody!',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        shadows: [
+                                          Shadow(
+                                            blurRadius: 2.0,
+                                            color:
+                                                Colors.black.withOpacity(0.15),
+                                            offset: const Offset(1.0, 1.0),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
                           ),
                         ),

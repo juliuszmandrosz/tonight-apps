@@ -25,6 +25,7 @@ mixin _$DashboardData {
   List<UserStoriesWithInteractions> get otherUsersStories =>
       throw _privateConstructorUsedError;
   int get periodNumber => throw _privateConstructorUsedError;
+  UserAppLinks get links => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DashboardDataCopyWith<DashboardData> get copyWith =>
@@ -43,7 +44,8 @@ abstract class $DashboardDataCopyWith<$Res> {
       Option<UserAccount> currentUser,
       List<UserStoriesWithInteractions> currentUserStories,
       List<UserStoriesWithInteractions> otherUsersStories,
-      int periodNumber});
+      int periodNumber,
+      UserAppLinks links});
 }
 
 /// @nodoc
@@ -65,6 +67,7 @@ class _$DashboardDataCopyWithImpl<$Res, $Val extends DashboardData>
     Object? currentUserStories = null,
     Object? otherUsersStories = null,
     Object? periodNumber = null,
+    Object? links = null,
   }) {
     return _then(_value.copyWith(
       tonightEvents: null == tonightEvents
@@ -91,6 +94,10 @@ class _$DashboardDataCopyWithImpl<$Res, $Val extends DashboardData>
           ? _value.periodNumber
           : periodNumber // ignore: cast_nullable_to_non_nullable
               as int,
+      links: null == links
+          ? _value.links
+          : links // ignore: cast_nullable_to_non_nullable
+              as UserAppLinks,
     ) as $Val);
   }
 }
@@ -109,7 +116,8 @@ abstract class _$$_DashboardDataCopyWith<$Res>
       Option<UserAccount> currentUser,
       List<UserStoriesWithInteractions> currentUserStories,
       List<UserStoriesWithInteractions> otherUsersStories,
-      int periodNumber});
+      int periodNumber,
+      UserAppLinks links});
 }
 
 /// @nodoc
@@ -129,6 +137,7 @@ class __$$_DashboardDataCopyWithImpl<$Res>
     Object? currentUserStories = null,
     Object? otherUsersStories = null,
     Object? periodNumber = null,
+    Object? links = null,
   }) {
     return _then(_$_DashboardData(
       tonightEvents: null == tonightEvents
@@ -155,6 +164,10 @@ class __$$_DashboardDataCopyWithImpl<$Res>
           ? _value.periodNumber
           : periodNumber // ignore: cast_nullable_to_non_nullable
               as int,
+      links: null == links
+          ? _value.links
+          : links // ignore: cast_nullable_to_non_nullable
+              as UserAppLinks,
     ));
   }
 }
@@ -168,7 +181,8 @@ class _$_DashboardData implements _DashboardData {
       required this.currentUser,
       required final List<UserStoriesWithInteractions> currentUserStories,
       required final List<UserStoriesWithInteractions> otherUsersStories,
-      required this.periodNumber})
+      required this.periodNumber,
+      required this.links})
       : _tonightEvents = tonightEvents,
         _marketplaceDiscounts = marketplaceDiscounts,
         _currentUserStories = currentUserStories,
@@ -213,10 +227,12 @@ class _$_DashboardData implements _DashboardData {
 
   @override
   final int periodNumber;
+  @override
+  final UserAppLinks links;
 
   @override
   String toString() {
-    return 'DashboardData(tonightEvents: $tonightEvents, marketplaceDiscounts: $marketplaceDiscounts, currentUser: $currentUser, currentUserStories: $currentUserStories, otherUsersStories: $otherUsersStories, periodNumber: $periodNumber)';
+    return 'DashboardData(tonightEvents: $tonightEvents, marketplaceDiscounts: $marketplaceDiscounts, currentUser: $currentUser, currentUserStories: $currentUserStories, otherUsersStories: $otherUsersStories, periodNumber: $periodNumber, links: $links)';
   }
 
   @override
@@ -235,7 +251,8 @@ class _$_DashboardData implements _DashboardData {
             const DeepCollectionEquality()
                 .equals(other._otherUsersStories, _otherUsersStories) &&
             (identical(other.periodNumber, periodNumber) ||
-                other.periodNumber == periodNumber));
+                other.periodNumber == periodNumber) &&
+            (identical(other.links, links) || other.links == links));
   }
 
   @override
@@ -246,7 +263,8 @@ class _$_DashboardData implements _DashboardData {
       currentUser,
       const DeepCollectionEquality().hash(_currentUserStories),
       const DeepCollectionEquality().hash(_otherUsersStories),
-      periodNumber);
+      periodNumber,
+      links);
 
   @JsonKey(ignore: true)
   @override
@@ -262,7 +280,8 @@ abstract class _DashboardData implements DashboardData {
       required final Option<UserAccount> currentUser,
       required final List<UserStoriesWithInteractions> currentUserStories,
       required final List<UserStoriesWithInteractions> otherUsersStories,
-      required final int periodNumber}) = _$_DashboardData;
+      required final int periodNumber,
+      required final UserAppLinks links}) = _$_DashboardData;
 
   @override
   List<TonightEvent> get tonightEvents;
@@ -276,6 +295,8 @@ abstract class _DashboardData implements DashboardData {
   List<UserStoriesWithInteractions> get otherUsersStories;
   @override
   int get periodNumber;
+  @override
+  UserAppLinks get links;
   @override
   @JsonKey(ignore: true)
   _$$_DashboardDataCopyWith<_$_DashboardData> get copyWith =>
