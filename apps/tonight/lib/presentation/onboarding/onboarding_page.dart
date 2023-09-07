@@ -50,33 +50,24 @@ class OnboardingPage extends StatelessWidget {
                   pages: [
                     onboardingPageView(
                       context: context,
-                      icon: FontAwesomeIcons.fire,
-                      title: S().welcomeToTonight,
-                      body: S().findBestParties,
-                    ),
-                    onboardingPageView(
-                      context: context,
-                      icon: FontAwesomeIcons.trophy,
-                      title: S().receiveRewards,
-                      body: S().collectBenefits,
-                    ),
-                    onboardingPageView(
-                      context: context,
-                      icon: FontAwesomeIcons.camera,
-                      title: S().temporaryPhotos,
-                      body: S().temporaryPhotosInfo,
-                    ),
-                    onboardingPageView(
-                      context: context,
-                      icon: FontAwesomeIcons.solidBell,
-                      title: S().performTimeTasks,
-                      body: S().performTimeTasksExplanation,
-                    ),
-                    onboardingPageView(
-                      context: context,
                       icon: FontAwesomeIcons.peopleArrows,
-                      title: S().meetNewPeople,
-                      body: S().joinCommunity,
+                      title: 'Imprezy dopasowane pod Ciebie',
+                      body:
+                          'Dołącz do społeczności Tonight i miej wpływ na to co dzieję się w Twoim mieście!',
+                    ),
+                    onboardingPageView(
+                      context: context,
+                      icon: FontAwesomeIcons.coins,
+                      title: 'Oszczędzaj pieniądze',
+                      body:
+                          'Kupuj tańsze bilety w aplikacji i odbieraj vouchery podczas imprez',
+                    ),
+                    onboardingPageView(
+                      context: context,
+                      icon: FontAwesomeIcons.glasses,
+                      title: 'Wyróżnij się na imprezie',
+                      body:
+                          'Wykonuj wyzwania i wymieniaj tokeny na asortyment imprezowy',
                     ),
                   ],
                 ),
