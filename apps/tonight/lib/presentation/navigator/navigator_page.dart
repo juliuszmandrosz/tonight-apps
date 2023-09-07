@@ -122,7 +122,10 @@ class _NavigatorPageState extends State<NavigatorPage> {
   ) {
     switch (TonightNavigationDestination.values[router.activeIndex]) {
       case TonightNavigationDestination.tonight:
-        return TonightAppBar(backgroundColor: context.backgroundColor);
+        return TonightAppBar(
+          backgroundColor: context.backgroundColor,
+          isClassicLogo: false,
+        );
       case TonightNavigationDestination.discover:
         return PreferredSize(
           preferredSize: Size.fromHeight(context.padding.top),
