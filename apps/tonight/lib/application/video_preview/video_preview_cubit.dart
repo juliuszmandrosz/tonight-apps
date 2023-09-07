@@ -79,7 +79,7 @@ class VideoPreviewCubit extends Cubit<VideoPreviewState> {
     await VideoCompress.setLogLevel(0);
     final info = await VideoCompress.compressVideo(
       video.path,
-      quality: VideoQuality.MediumQuality,
+      quality: VideoQuality.DefaultQuality,
       deleteOrigin: false,
       includeAudio: true,
     );
