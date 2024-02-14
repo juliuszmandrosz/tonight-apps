@@ -33,7 +33,6 @@ class _NavigatorPageState extends State<NavigatorPage> {
         routes: const [
           DashboardRoute(),
           DiscoverRoute(),
-          ChallengesRoute(),
           MessagesRoute(),
           ProfileRoute(),
         ],
@@ -51,7 +50,6 @@ class _NavigatorPageState extends State<NavigatorPage> {
                 return NavigationBar(
                   backgroundColor: context.backgroundColor,
                   selectedIndex: tabsRouter.activeIndex,
-                  labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
                   onDestinationSelected: (i) async {
                     context.unfocus();
                     if (i == TonightNavigationDestination.profile.index ||
@@ -82,20 +80,20 @@ class _NavigatorPageState extends State<NavigatorPage> {
                       ),
                       label: S().discover,
                     ),
-                    NavigationDestination(
-                      icon: const Icon(
-                        Icons.checklist_outlined,
-                        size: iconSize,
-                      ),
-                      label: S().challenge(2).capitalize(),
-                    ),
+                    // NavigationDestination(
+                    //   icon: const Icon(
+                    //     Icons.checklist_outlined,
+                    //     size: iconSize,
+                    //   ),
+                    //   label: S().challenge(2).capitalize(),
+                    // ),
                     const NavigationDestination(
                       icon: Icon(
-                        Icons.event,
+                        Icons.chat_bubble_outline,
                         size: iconSize,
                       ),
                       // TODO - add translation
-                      label: 'Dołączone',
+                      label: 'Czaty',
                     ),
                     NavigationDestination(
                       icon: const Icon(
@@ -133,14 +131,14 @@ class _NavigatorPageState extends State<NavigatorPage> {
           ),
         );
 
-      case TonightNavigationDestination.challenges:
-        return PreferredSize(
-          preferredSize: Size.fromHeight(context.padding.top),
-          child: Container(
-            color: context.backgroundColor,
-            height: context.padding.top,
-          ),
-        );
+      // case TonightNavigationDestination.challenges:
+      //   return PreferredSize(
+      //     preferredSize: Size.fromHeight(context.padding.top),
+      //     child: Container(
+      //       color: context.backgroundColor,
+      //       height: context.padding.top,
+      //     ),
+      //   );
       case TonightNavigationDestination.profile:
         return TonightAppBar(
           title: '',
