@@ -5,7 +5,6 @@ import 'package:tonight/application/dashboard/bloc/dashboard_bloc.dart';
 import 'package:tonight/application/dashboard/models/dashboard_data_model.dart';
 import 'package:tonight/application/dashboard/models/user_stories_with_interactions.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/story_circle_avatar.dart';
-import 'package:tonight/presentation/navigator/tonight_navigation_destinations.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class ChallengeStoriesRow extends StatelessWidget {
@@ -48,8 +47,8 @@ class ChallengeStoriesRow extends StatelessWidget {
                         }
                         return;
                       }
-                      context.tabsRouter.setActiveIndex(
-                          TonightNavigationDestination.challenges.index);
+                      // context.tabsRouter.setActiveIndex(
+                      //     TonightNavigationDestination.challenges.index);
                     },
                     child: StoryCircleAvatar(
                       username: data.currentUser.fold(
