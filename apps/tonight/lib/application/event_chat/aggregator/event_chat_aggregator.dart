@@ -20,6 +20,7 @@ class EventChatAggregator {
     required String text,
     required ChatUser currentUser,
     required ChatMessage? previousMessage,
+    bool isComment = false,
   }) async* {
     final createdAt = DateTime.now();
     final messageId = const Uuid().v1();
@@ -37,6 +38,7 @@ class EventChatAggregator {
     final result = await _messageFacade.sendMessage(
       message: message.toDomain(),
       roomId: roomId,
+      isComment: isComment,
     );
     yield result.fold(
       (_) => left(message.copyWith(isSending: false, hasError: true)),
@@ -47,6 +49,7 @@ class EventChatAggregator {
   Stream<Either<ChatMessage, ChatMessage>> resendMessage({
     required String roomId,
     required ChatMessage message,
+    bool isComment = false,
   }) async* {
     final createdAt = DateTime.now();
     final newMessage = message.copyWith(
@@ -58,6 +61,7 @@ class EventChatAggregator {
     final result = await _messageFacade.sendMessage(
       message: message.toDomain(),
       roomId: roomId,
+      isComment: isComment,
     );
     yield result.fold(
       (_) => left(newMessage.copyWith(isSending: false, hasError: true)),

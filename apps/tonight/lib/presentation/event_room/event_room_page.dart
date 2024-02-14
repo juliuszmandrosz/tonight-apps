@@ -107,16 +107,14 @@ class EventRoomPage extends StatelessWidget {
                   );
                 case CubitStatus.success:
                   final eventInState = state.event.getOrCrash();
-                  final isEventEnded =
-                      eventInState.eventEndDateTime.isBefore(DateTime.now());
+
                   return DefaultTabController(
-                    length: isEventEnded ? 2 : 3,
+                    length: 3,
                     child: SafeArea(
                       child: Scaffold(
                         appBar: EventRoomAppBar(
                           event: eventInState,
                           isKeyboardOpen: context.isKeyboardOpen,
-                          isEventEnded: isEventEnded,
                         ),
                         floatingActionButton: const EventRoomFab(),
                         body: TabBarView(
@@ -127,7 +125,7 @@ class EventRoomPage extends StatelessWidget {
                               currentUser: state.participant.getOrCrash(),
                             ),
                             const EventRoomParticipantsPage(),
-                            if (!isEventEnded) const EventPhotosPage(),
+                            EventPhotosPage(),
                           ],
                         ),
                       ),
@@ -144,7 +142,7 @@ class EventRoomPage extends StatelessWidget {
   _initializeChat(BuildContext context, EventRoomState state) {
     context.read<EventChatBloc>().add(
           EventChatEvent.chatInitialized(
-            event: state.event.getOrCrash(),
+            roomId: state.event.getOrCrash().id,
             participant: state.participant.getOrCrash(),
           ),
         );

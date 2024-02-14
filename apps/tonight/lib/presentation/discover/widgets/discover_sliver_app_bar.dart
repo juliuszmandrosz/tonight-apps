@@ -10,8 +10,8 @@ class DiscoverSliverAppBar extends StatefulWidget {
 
   const DiscoverSliverAppBar({
     required this.innerBoxIsScrolled,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<DiscoverSliverAppBar> createState() => _DiscoverSliverAppBarState();

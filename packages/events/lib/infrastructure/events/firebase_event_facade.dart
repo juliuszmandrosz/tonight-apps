@@ -539,18 +539,40 @@ class FirebaseEventFacade
   }
 
   @override
-  Future<Either<UserEventFailure, List<Event>>> fetchTonightEvents({
+  Future<Either<UserEventFailure, List<Event>>> fetchTonightEventsFromVenues({
     required EventFilters filters,
     int pageSize = 20,
     int offset = 0,
   }) async {
     try {
-      final result = await _eventsApi.getTonightEvents(
+      final result = await _eventsApi.fetchTonightEventsFromVenues(
         filters,
         pageSize,
         offset,
       );
+      return right<UserEventFailure, List<Event>>(
+        result.map((doc) => EventDto.fromApi(doc).toDomain()).toList(),
+      );
+    } on DioError catch (e) {
+      return left(
+        await handleDioError(
+          error: e,
+          crashlytics: _crashlytics,
+          logger: _logger,
+          message: 'Dio error fetching events from tonight EXCEPTION: $e',
+          unexpectedFailure: const UserEventFailure.unexpected(),
+          socketFailure: const UserEventFailure.noConnection(),
+        ),
+      );
+    }
+  }
 
+  @override
+  Future<Either<UserEventFailure, List<Event>>> fetchTonightEvents(
+    Option<LatLng> userLocation,
+  ) async {
+    try {
+      final result = await _eventsApi.getTonightEvents(userLocation);
       return right<UserEventFailure, List<Event>>(
         result.map((doc) => EventDto.fromApi(doc).toDomain()).toList(),
       );

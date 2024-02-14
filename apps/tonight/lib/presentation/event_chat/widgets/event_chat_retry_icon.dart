@@ -7,8 +7,13 @@ import 'package:tonight/application/event_chat/models/chat_message_model.dart';
 
 class EventChatRetryIcon extends StatelessWidget {
   final ChatMessage message;
+  final bool isComment;
 
-  const EventChatRetryIcon({required this.message, Key? key}) : super(key: key);
+  const EventChatRetryIcon({
+    required this.message,
+    required this.isComment,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +25,7 @@ class EventChatRetryIcon extends StatelessWidget {
         padding: EdgeInsets.zero,
         onPressed: () => context
             .read<EventChatBloc>()
-            .add(EventChatEvent.messageResent(message)),
+            .add(EventChatEvent.messageResent(message, isComment)),
         icon: FaIcon(
           FontAwesomeIcons.arrowsRotate,
           color: context.errorColor,

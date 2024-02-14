@@ -13,12 +13,10 @@ import 'package:translations/translations.dart';
 
 class EventRoomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Event event;
-  final bool isEventEnded;
   final bool isKeyboardOpen;
 
   const EventRoomAppBar({
     required this.event,
-    required this.isEventEnded,
     required this.isKeyboardOpen,
     Key? key,
   }) : super(key: key);
@@ -107,14 +105,13 @@ class EventRoomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       maxLines: 1,
                     ),
                   ),
-                  if (!isEventEnded)
-                    Tab(
-                      child: Text(
-                        S().photos(2),
-                        textAlign: TextAlign.center,
-                        maxLines: 1,
-                      ),
+                  Tab(
+                    child: Text(
+                      S().photos(2),
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
                     ),
+                  ),
                 ],
               ),
             ),

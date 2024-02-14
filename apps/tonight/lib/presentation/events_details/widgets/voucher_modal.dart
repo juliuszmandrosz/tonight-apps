@@ -4,8 +4,8 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tonight/application/dashboard/models/event_voucher_model.dart';
 import 'package:tonight/application/events/event_details/event_details_cubit.dart';
-import 'package:tonight/application/tonight_events/models/event_voucher_model.dart';
 import 'package:tonight/presentation/utils/show_confirm_phone_number_dialog.dart';
 import 'package:translations/translations.dart';
 

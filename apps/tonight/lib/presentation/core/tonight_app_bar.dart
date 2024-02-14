@@ -7,11 +7,13 @@ class TonightAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final List<Widget>? actions;
   final Color? backgroundColor;
+  final bool isClassicLogo;
 
   const TonightAppBar({
     this.title,
     this.actions,
     this.backgroundColor,
+    this.isClassicLogo = true,
     Key? key,
   }) : super(key: key);
 
@@ -26,7 +28,10 @@ class TonightAppBar extends StatelessWidget implements PreferredSizeWidget {
               title!,
               maxLines: 1,
             )
-          : const TonightLogo(height: kToolbarHeight * 1.3),
+          : TonightLogo(
+              height: kToolbarHeight * (isClassicLogo ? 1.3 : 0.5),
+              isClassic: isClassicLogo,
+            ),
       actions: actions,
     );
   }

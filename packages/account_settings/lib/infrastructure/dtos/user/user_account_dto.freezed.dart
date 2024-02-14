@@ -33,6 +33,7 @@ mixin _$UserAccountDto {
   int get raverCoins => throw _privateConstructorUsedError;
   int get ticketsCount => throw _privateConstructorUsedError;
   int get photosCount => throw _privateConstructorUsedError;
+  bool get isNewsletterSubscribed => throw _privateConstructorUsedError;
   @FirebaseNullableTimestampJsonConverter()
   DateTime? get lastDailySpinAt => throw _privateConstructorUsedError;
   @FirebaseNullableTimestampJsonConverter()
@@ -69,6 +70,7 @@ abstract class $UserAccountDtoCopyWith<$Res> {
       int raverCoins,
       int ticketsCount,
       int photosCount,
+      bool isNewsletterSubscribed,
       @FirebaseNullableTimestampJsonConverter()
           DateTime? lastDailySpinAt,
       @FirebaseNullableTimestampJsonConverter()
@@ -105,6 +107,7 @@ class _$UserAccountDtoCopyWithImpl<$Res, $Val extends UserAccountDto>
     Object? raverCoins = null,
     Object? ticketsCount = null,
     Object? photosCount = null,
+    Object? isNewsletterSubscribed = null,
     Object? lastDailySpinAt = freezed,
     Object? lastTonightVoucherUseAt = freezed,
     Object? birthdate = freezed,
@@ -161,6 +164,10 @@ class _$UserAccountDtoCopyWithImpl<$Res, $Val extends UserAccountDto>
           ? _value.photosCount
           : photosCount // ignore: cast_nullable_to_non_nullable
               as int,
+      isNewsletterSubscribed: null == isNewsletterSubscribed
+          ? _value.isNewsletterSubscribed
+          : isNewsletterSubscribed // ignore: cast_nullable_to_non_nullable
+              as bool,
       lastDailySpinAt: freezed == lastDailySpinAt
           ? _value.lastDailySpinAt
           : lastDailySpinAt // ignore: cast_nullable_to_non_nullable
@@ -211,6 +218,7 @@ abstract class _$$_UserAccountDtoCopyWith<$Res>
       int raverCoins,
       int ticketsCount,
       int photosCount,
+      bool isNewsletterSubscribed,
       @FirebaseNullableTimestampJsonConverter()
           DateTime? lastDailySpinAt,
       @FirebaseNullableTimestampJsonConverter()
@@ -245,6 +253,7 @@ class __$$_UserAccountDtoCopyWithImpl<$Res>
     Object? raverCoins = null,
     Object? ticketsCount = null,
     Object? photosCount = null,
+    Object? isNewsletterSubscribed = null,
     Object? lastDailySpinAt = freezed,
     Object? lastTonightVoucherUseAt = freezed,
     Object? birthdate = freezed,
@@ -301,6 +310,10 @@ class __$$_UserAccountDtoCopyWithImpl<$Res>
           ? _value.photosCount
           : photosCount // ignore: cast_nullable_to_non_nullable
               as int,
+      isNewsletterSubscribed: null == isNewsletterSubscribed
+          ? _value.isNewsletterSubscribed
+          : isNewsletterSubscribed // ignore: cast_nullable_to_non_nullable
+              as bool,
       lastDailySpinAt: freezed == lastDailySpinAt
           ? _value.lastDailySpinAt
           : lastDailySpinAt // ignore: cast_nullable_to_non_nullable
@@ -346,6 +359,7 @@ class _$_UserAccountDto extends _UserAccountDto {
       this.raverCoins = 0,
       this.ticketsCount = 0,
       this.photosCount = 0,
+      this.isNewsletterSubscribed = false,
       @FirebaseNullableTimestampJsonConverter() this.lastDailySpinAt,
       @FirebaseNullableTimestampJsonConverter() this.lastTonightVoucherUseAt,
       @FirebaseNullableTimestampJsonConverter() this.birthdate,
@@ -424,6 +438,9 @@ class _$_UserAccountDto extends _UserAccountDto {
   @JsonKey()
   final int photosCount;
   @override
+  @JsonKey()
+  final bool isNewsletterSubscribed;
+  @override
   @FirebaseNullableTimestampJsonConverter()
   final DateTime? lastDailySpinAt;
   @override
@@ -441,7 +458,7 @@ class _$_UserAccountDto extends _UserAccountDto {
 
   @override
   String toString() {
-    return 'UserAccountDto(id: $id, email: $email, phoneNumber: $phoneNumber, profilePictureUrl: $profilePictureUrl, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens, raverCoins: $raverCoins, ticketsCount: $ticketsCount, photosCount: $photosCount, lastDailySpinAt: $lastDailySpinAt, lastTonightVoucherUseAt: $lastTonightVoucherUseAt, birthdate: $birthdate, gender: $gender, cityId: $cityId, cityName: $cityName)';
+    return 'UserAccountDto(id: $id, email: $email, phoneNumber: $phoneNumber, profilePictureUrl: $profilePictureUrl, username: $username, favoriteClubIds: $favoriteClubIds, favoriteEventIds: $favoriteEventIds, attendance: $attendance, pushNotificationTokens: $pushNotificationTokens, raverCoins: $raverCoins, ticketsCount: $ticketsCount, photosCount: $photosCount, isNewsletterSubscribed: $isNewsletterSubscribed, lastDailySpinAt: $lastDailySpinAt, lastTonightVoucherUseAt: $lastTonightVoucherUseAt, birthdate: $birthdate, gender: $gender, cityId: $cityId, cityName: $cityName)';
   }
 
   @override
@@ -471,6 +488,8 @@ class _$_UserAccountDto extends _UserAccountDto {
                 other.ticketsCount == ticketsCount) &&
             (identical(other.photosCount, photosCount) ||
                 other.photosCount == photosCount) &&
+            (identical(other.isNewsletterSubscribed, isNewsletterSubscribed) ||
+                other.isNewsletterSubscribed == isNewsletterSubscribed) &&
             (identical(other.lastDailySpinAt, lastDailySpinAt) ||
                 other.lastDailySpinAt == lastDailySpinAt) &&
             (identical(
@@ -486,26 +505,28 @@ class _$_UserAccountDto extends _UserAccountDto {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      email,
-      phoneNumber,
-      profilePictureUrl,
-      username,
-      const DeepCollectionEquality().hash(_favoriteClubIds),
-      const DeepCollectionEquality().hash(_favoriteEventIds),
-      const DeepCollectionEquality().hash(_attendance),
-      const DeepCollectionEquality().hash(_pushNotificationTokens),
-      raverCoins,
-      ticketsCount,
-      photosCount,
-      lastDailySpinAt,
-      lastTonightVoucherUseAt,
-      birthdate,
-      gender,
-      cityId,
-      cityName);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        email,
+        phoneNumber,
+        profilePictureUrl,
+        username,
+        const DeepCollectionEquality().hash(_favoriteClubIds),
+        const DeepCollectionEquality().hash(_favoriteEventIds),
+        const DeepCollectionEquality().hash(_attendance),
+        const DeepCollectionEquality().hash(_pushNotificationTokens),
+        raverCoins,
+        ticketsCount,
+        photosCount,
+        isNewsletterSubscribed,
+        lastDailySpinAt,
+        lastTonightVoucherUseAt,
+        birthdate,
+        gender,
+        cityId,
+        cityName
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -536,6 +557,7 @@ abstract class _UserAccountDto extends UserAccountDto {
       final int raverCoins,
       final int ticketsCount,
       final int photosCount,
+      final bool isNewsletterSubscribed,
       @FirebaseNullableTimestampJsonConverter()
           final DateTime? lastDailySpinAt,
       @FirebaseNullableTimestampJsonConverter()
@@ -575,6 +597,8 @@ abstract class _UserAccountDto extends UserAccountDto {
   int get ticketsCount;
   @override
   int get photosCount;
+  @override
+  bool get isNewsletterSubscribed;
   @override
   @FirebaseNullableTimestampJsonConverter()
   DateTime? get lastDailySpinAt;

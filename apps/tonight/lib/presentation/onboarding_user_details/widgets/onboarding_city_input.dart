@@ -19,7 +19,7 @@ class OnboardingCityInput extends HookWidget {
     return BlocBuilder<OnboardingUserDetailsCubit, OnboardingUserDetailsState>(
       buildWhen: (previous, current) =>
           previous.city != current.city ||
-          previous.submissionStatus != current.submissionStatus,
+          previous.formStatus != current.formStatus,
       builder: (context, state) {
         textController.text = state.city.value?.name ?? '';
         return TextField(
@@ -46,7 +46,7 @@ class OnboardingCityInput extends HookWidget {
   }
 
   String? _getCityInputErrorMessage(OnboardingUserDetailsState state) {
-    if (state.city.valid || state.submissionStatus != FormzStatus.invalid) {
+    if (state.city.valid || state.formStatus != FormzStatus.invalid) {
       return null;
     }
 

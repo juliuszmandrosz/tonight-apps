@@ -38,7 +38,7 @@ class VerifyPhoneNumberPage extends StatelessWidget {
             user.isOnboardingCompleted
                 ? context.popRoute<bool>(true)
                 : context.router
-                    .replaceAll([const OnboardingUserDetailsRoute()]);
+                    .replaceAll([OnboardingUserDetailsRoute(user: user)]);
           }
         },
         builder: (context, state) {

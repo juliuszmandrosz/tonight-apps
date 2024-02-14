@@ -3,8 +3,8 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 
 ThemeData darkTheme = ThemeData.dark().copyWith(
-  pageTransitionsTheme: transitions,
   useMaterial3: true,
+  pageTransitionsTheme: transitions,
   colorScheme: colors,
   scaffoldBackgroundColor: colors.background,
   appBarTheme: appBarTheme,

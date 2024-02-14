@@ -4,5 +4,5 @@ class DarkColors {
   const DarkColors._();
 
   static const Color backgroundColor = Color(0xFF000000);
-  static const Color primaryColor = Color(0xFF6B5FE7);
+  static const Color primaryColor = Color(0xFF9457EB);
 }

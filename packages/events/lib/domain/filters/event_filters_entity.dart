@@ -6,6 +6,7 @@ import 'package:events/domain/filters/filter/date_includes_filter.dart';
 import 'package:events/domain/filters/filter/date_range_filter.dart';
 import 'package:events/domain/filters/filter/event_filters_show_only_concerts.dart';
 import 'package:events/domain/filters/filter/is_canceled_filter.dart';
+import 'package:events/domain/filters/filter/is_tonight_event_filter.dart';
 import 'package:events/domain/filters/filter/max_distance_filter.dart';
 import 'package:events/domain/filters/filter/min_ages_filter.dart';
 import 'package:events/domain/filters/filter/musical_genres_filter.dart';
@@ -36,6 +37,7 @@ class EventFilters with _$EventFilters {
     required DateIncludesFilter dateIncludesFilter,
     required CurrencyFilter currencyFilter,
     required IsCanceledFilter isCanceledFilter,
+    required IsTonightEventFilter isTonightEventFilter,
   }) = _EventFilters;
 
   factory EventFilters.empty() => EventFilters(
@@ -56,6 +58,7 @@ class EventFilters with _$EventFilters {
         ),
         currencyFilter: CurrencyFilter(currency: ''),
         isCanceledFilter: IsCanceledFilter(isCanceled: false),
+        isTonightEventFilter: IsTonightEventFilter(isTonightEvent: false),
       );
 
   String buildFilters() {
@@ -75,6 +78,7 @@ class EventFilters with _$EventFilters {
       dateIncludesFilter,
       currencyFilter,
       isCanceledFilter,
+      isTonightEventFilter,
     ];
     for (final filter in filterList) {
       final previousQuery = query;

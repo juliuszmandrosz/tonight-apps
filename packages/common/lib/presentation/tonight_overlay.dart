@@ -4,16 +4,18 @@ import 'package:loader_overlay/loader_overlay.dart';
 
 class TonightOverlay extends StatelessWidget {
   final Widget child;
+  final double overlayOpacity;
 
   const TonightOverlay({
     required this.child,
+    this.overlayOpacity = .7,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return LoaderOverlay(
-      overlayOpacity: .7,
+      overlayOpacity: overlayOpacity,
       overlayWidget: const WaveLoadingIndicator(),
       overlayColor: context.shadowColor,
       useDefaultLoading: false,

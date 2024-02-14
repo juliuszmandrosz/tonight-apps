@@ -56,8 +56,6 @@
 		</array>
 		<key>LSRequiresIPhoneOS</key>
 		<true/>
-		<key>NSCameraUsageDescription</key>
-		<string>Turning on camera access allows us to scan your card and allow us to fill card data automatically for you.</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
 		<string>Turning on location services allows us to show nearby clubs and events</string>
         <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
@@ -65,7 +63,7 @@
 		<key>NSPhotoLibraryUsageDescription</key>
 		<string>To add a profile photo this app needs to access your gallery</string>
 		<key>NSCameraUsageDescription</key>
-		<string>To add a wall photo this app needs to access your camera</string>
+		<string>To add a story, this app needs to access your camera</string>
 		<key>NSMicrophoneUsageDescription</key>
         <string>To record a video this app needs to access your microphone</string>
 		<key>UIBackgroundModes</key>

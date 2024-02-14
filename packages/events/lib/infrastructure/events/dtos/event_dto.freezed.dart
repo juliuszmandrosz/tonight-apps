@@ -48,6 +48,7 @@ mixin _$EventDto {
   bool get isCanceled => throw _privateConstructorUsedError;
   bool get isBeingPostponed => throw _privateConstructorUsedError;
   bool get areTicketsAvailableInApp => throw _privateConstructorUsedError;
+  bool get isTonightEvent => throw _privateConstructorUsedError;
   String get entryFee => throw _privateConstructorUsedError;
   String get priceList => throw _privateConstructorUsedError;
   String? get locationString => throw _privateConstructorUsedError;
@@ -89,6 +90,7 @@ abstract class $EventDtoCopyWith<$Res> {
       bool isCanceled,
       bool isBeingPostponed,
       bool areTicketsAvailableInApp,
+      bool isTonightEvent,
       String entryFee,
       String priceList,
       String? locationString,
@@ -132,6 +134,7 @@ class _$EventDtoCopyWithImpl<$Res, $Val extends EventDto>
     Object? isCanceled = null,
     Object? isBeingPostponed = null,
     Object? areTicketsAvailableInApp = null,
+    Object? isTonightEvent = null,
     Object? entryFee = null,
     Object? priceList = null,
     Object? locationString = freezed,
@@ -231,6 +234,10 @@ class _$EventDtoCopyWithImpl<$Res, $Val extends EventDto>
           ? _value.areTicketsAvailableInApp
           : areTicketsAvailableInApp // ignore: cast_nullable_to_non_nullable
               as bool,
+      isTonightEvent: null == isTonightEvent
+          ? _value.isTonightEvent
+          : isTonightEvent // ignore: cast_nullable_to_non_nullable
+              as bool,
       entryFee: null == entryFee
           ? _value.entryFee
           : entryFee // ignore: cast_nullable_to_non_nullable
@@ -286,6 +293,7 @@ abstract class _$$_EventDtoCopyWith<$Res> implements $EventDtoCopyWith<$Res> {
       bool isCanceled,
       bool isBeingPostponed,
       bool areTicketsAvailableInApp,
+      bool isTonightEvent,
       String entryFee,
       String priceList,
       String? locationString,
@@ -327,6 +335,7 @@ class __$$_EventDtoCopyWithImpl<$Res>
     Object? isCanceled = null,
     Object? isBeingPostponed = null,
     Object? areTicketsAvailableInApp = null,
+    Object? isTonightEvent = null,
     Object? entryFee = null,
     Object? priceList = null,
     Object? locationString = freezed,
@@ -426,6 +435,10 @@ class __$$_EventDtoCopyWithImpl<$Res>
           ? _value.areTicketsAvailableInApp
           : areTicketsAvailableInApp // ignore: cast_nullable_to_non_nullable
               as bool,
+      isTonightEvent: null == isTonightEvent
+          ? _value.isTonightEvent
+          : isTonightEvent // ignore: cast_nullable_to_non_nullable
+              as bool,
       entryFee: null == entryFee
           ? _value.entryFee
           : entryFee // ignore: cast_nullable_to_non_nullable
@@ -478,6 +491,7 @@ class _$_EventDto extends _EventDto {
       this.isCanceled = false,
       this.isBeingPostponed = false,
       this.areTicketsAvailableInApp = false,
+      this.isTonightEvent = false,
       this.entryFee = '',
       this.priceList = '',
       this.locationString,
@@ -568,6 +582,9 @@ class _$_EventDto extends _EventDto {
   final bool areTicketsAvailableInApp;
   @override
   @JsonKey()
+  final bool isTonightEvent;
+  @override
+  @JsonKey()
   final String entryFee;
   @override
   @JsonKey()
@@ -581,7 +598,7 @@ class _$_EventDto extends _EventDto {
 
   @override
   String toString() {
-    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, originalStartDateTime: $originalStartDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, urlLinks: $urlLinks, isConcert: $isConcert, attending: $attending, isCanceled: $isCanceled, isBeingPostponed: $isBeingPostponed, areTicketsAvailableInApp: $areTicketsAvailableInApp, entryFee: $entryFee, priceList: $priceList, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl, externalTicketsUrl: $externalTicketsUrl)';
+    return 'EventDto(id: $id, clubId: $clubId, eventName: $eventName, clubName: $clubName, eventStartDateTime: $eventStartDateTime, eventEndDateTime: $eventEndDateTime, originalStartDateTime: $originalStartDateTime, minAge: $minAge, price: $price, currency: $currency, eventPhotoUrl: $eventPhotoUrl, allowedOutfit: $allowedOutfit, musicalGenres: $musicalGenres, description: $description, artistName: $artistName, location: $location, cityId: $cityId, urlLinks: $urlLinks, isConcert: $isConcert, attending: $attending, isCanceled: $isCanceled, isBeingPostponed: $isBeingPostponed, areTicketsAvailableInApp: $areTicketsAvailableInApp, isTonightEvent: $isTonightEvent, entryFee: $entryFee, priceList: $priceList, locationString: $locationString, clubPhotoUrl: $clubPhotoUrl, externalTicketsUrl: $externalTicketsUrl)';
   }
 
   @override
@@ -629,6 +646,8 @@ class _$_EventDto extends _EventDto {
             (identical(
                     other.areTicketsAvailableInApp, areTicketsAvailableInApp) ||
                 other.areTicketsAvailableInApp == areTicketsAvailableInApp) &&
+            (identical(other.isTonightEvent, isTonightEvent) ||
+                other.isTonightEvent == isTonightEvent) &&
             (identical(other.entryFee, entryFee) ||
                 other.entryFee == entryFee) &&
             (identical(other.priceList, priceList) ||
@@ -668,6 +687,7 @@ class _$_EventDto extends _EventDto {
         isCanceled,
         isBeingPostponed,
         areTicketsAvailableInApp,
+        isTonightEvent,
         entryFee,
         priceList,
         locationString,
@@ -714,6 +734,7 @@ abstract class _EventDto extends EventDto {
       final bool isCanceled,
       final bool isBeingPostponed,
       final bool areTicketsAvailableInApp,
+      final bool isTonightEvent,
       final String entryFee,
       final String priceList,
       final String? locationString,
@@ -774,6 +795,8 @@ abstract class _EventDto extends EventDto {
   bool get isBeingPostponed;
   @override
   bool get areTicketsAvailableInApp;
+  @override
+  bool get isTonightEvent;
   @override
   String get entryFee;
   @override

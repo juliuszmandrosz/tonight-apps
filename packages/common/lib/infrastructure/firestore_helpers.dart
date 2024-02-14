@@ -52,6 +52,17 @@ extension FirestoreX on FirebaseFirestore {
 
   CollectionReference get tonightVouchers => collection('tonightVouchers');
 
+  CollectionReference get marketplaceDiscounts =>
+      collection('marketplaceDiscounts');
+
+  CollectionReference get challenges => collection('challenges');
+
+  CollectionReference get appSettings => collection('appSettings');
+
+  CollectionReference get challengeStories => collection('challengeStories');
+
+  CollectionReference get storyInteractions => collection('storyInteractions');
+
   DocumentReference getCurrentUserDocRef(FirebaseAuth auth) {
     final firebaseUser = auth.tryGetFirebaseUser();
 
@@ -97,6 +108,11 @@ extension FirestoreX on FirebaseFirestore {
     final selectorClubId = selectorDoc.get('clubId');
 
     return clubCollection.doc(selectorClubId);
+  }
+
+  Future<int> getCurrentChallengePeriodNumber() async {
+    final doc = await appSettings.doc('settings').get();
+    return doc.get('currentChallengePeriod') as int;
   }
 }
 
@@ -193,6 +209,9 @@ extension DocumentReferenceX on DocumentReference {
   CollectionReference get timeTaskVouchers => collection('timeTaskVouchers');
 
   CollectionReference get tonightVouchers => collection('tonightVouchers');
+
+  CollectionReference get marketplaceDiscounts =>
+      collection('marketplaceDiscounts');
 
   Future<bool> get exists async {
     final doc = await get();

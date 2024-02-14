@@ -19,68 +19,63 @@ class OnboardingPage extends StatelessWidget {
     return TonightOverlay(
       child: BlocProvider(
         create: (context) => getIt<OnboardingCubit>(),
-        child: Builder(builder: (context) {
-          return BlocListener<OnboardingCubit, OnboardingState>(
-            listener: (context, state) {
-              state.errorMessage.fold(
-                () {},
-                (message) => context.showSnackbarMessage(message),
-              );
+        child: Builder(
+          builder: (context) {
+            return BlocListener<OnboardingCubit, OnboardingState>(
+              listener: (context, state) {
+                state.errorMessage.fold(
+                  () {},
+                  (message) => context.showSnackbarMessage(message),
+                );
 
-              state.signInStatus.isLoading()
-                  ? context.loaderOverlay.show()
-                  : context.loaderOverlay.hide();
+                state.signInStatus.isLoading()
+                    ? context.loaderOverlay.show()
+                    : context.loaderOverlay.hide();
 
-              if (state.signInStatus.isSuccess()) {
-                context.replaceRoute(const WelcomeLoaderRoute());
-              }
-            },
-            child: SafeArea(
-              child: IntroductionScreen(
-                next: const FaIcon(FontAwesomeIcons.arrowRight),
-                done: Text(S().start),
-                onDone: context.read<OnboardingCubit>().signInAnonymously,
-                showSkipButton: true,
-                skip: TextButton(
-                  onPressed: context.read<OnboardingCubit>().signInAnonymously,
-                  child: Text(S().skip),
+                if (state.signInStatus.isSuccess()) {
+                  context.replaceRoute(const WelcomeLoaderRoute());
+                }
+              },
+              child: SafeArea(
+                child: IntroductionScreen(
+                  next: const FaIcon(FontAwesomeIcons.arrowRight),
+                  done: Text(S().start),
+                  onDone: context.read<OnboardingCubit>().signInAnonymously,
+                  showSkipButton: true,
+                  skip: TextButton(
+                    onPressed:
+                        context.read<OnboardingCubit>().signInAnonymously,
+                    child: Text(S().skip),
+                  ),
+                  pages: [
+                    // TODO - add translations, change onboarding
+                    onboardingPageView(
+                      context: context,
+                      icon: FontAwesomeIcons.peopleArrows,
+                      title: 'Imprezy dopasowane pod Ciebie',
+                      body:
+                          'Dołącz do społeczności Tonight i miej wpływ na to co dzieję się w Twoim mieście!',
+                    ),
+                    onboardingPageView(
+                      context: context,
+                      icon: FontAwesomeIcons.coins,
+                      title: 'Oszczędzaj pieniądze',
+                      body:
+                          'Kupuj tańsze bilety w aplikacji i odbieraj vouchery podczas imprez',
+                    ),
+                    onboardingPageView(
+                      context: context,
+                      icon: FontAwesomeIcons.glasses,
+                      title: 'Wyróżnij się na imprezie',
+                      body:
+                          'Wykonuj wyzwania i wymieniaj tokeny na asortyment imprezowy',
+                    ),
+                  ],
                 ),
-                pages: [
-                  onboardingPageView(
-                    context: context,
-                    icon: FontAwesomeIcons.fire,
-                    title: S().welcomeToTonight,
-                    body: S().findBestParties,
-                  ),
-                  onboardingPageView(
-                    context: context,
-                    icon: FontAwesomeIcons.trophy,
-                    title: S().receiveRewards,
-                    body: S().collectBenefits,
-                  ),
-                  onboardingPageView(
-                    context: context,
-                    icon: FontAwesomeIcons.camera,
-                    title: S().temporaryPhotos,
-                    body: S().temporaryPhotosInfo,
-                  ),
-                  onboardingPageView(
-                    context: context,
-                    icon: FontAwesomeIcons.solidBell,
-                    title: S().performTimeTasks,
-                    body: S().performTimeTasksExplanation,
-                  ),
-                  onboardingPageView(
-                    context: context,
-                    icon: FontAwesomeIcons.peopleArrows,
-                    title: S().meetNewPeople,
-                    body: S().joinCommunity,
-                  ),
-                ],
               ),
-            ),
-          );
-        }),
+            );
+          },
+        ),
       ),
     ); //Material App
   }
