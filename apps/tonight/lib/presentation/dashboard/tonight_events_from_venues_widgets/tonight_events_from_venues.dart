@@ -9,6 +9,7 @@ import 'package:tonight/presentation/dashboard/tonight_events_from_venues_widget
 import 'package:tonight/presentation/dashboard/tonight_events_from_venues_widgets/tonight_event_card.dart';
 import 'package:tonight/presentation/dashboard/tonight_events_from_venues_widgets/tonight_event_filter_chips.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class TonightEventsFromVenues extends StatelessWidget {
   const TonightEventsFromVenues({Key? key}) : super(key: key);
@@ -22,8 +23,7 @@ class TonightEventsFromVenues extends StatelessWidget {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              // TODO - add translations
-              'Inne imprezy w pobliżu',
+              S().otherEventsNearby,
               style: context.titleMedium.copyWithSecondaryColor(),
             ),
           ),

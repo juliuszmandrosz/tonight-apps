@@ -24,8 +24,7 @@ class RedeemDiscountButton extends StatelessWidget {
       child: FloatingActionButton.extended(
         onPressed: () async {
           final result = await context.showConfirmationDialogWithCustomMessage(
-            // TODO - add translation
-            'Czy na pewno chcesz odebrać tę znizke?',
+            S().areYouSureYouWantThisDiscount,
           );
           if (result == true && context.mounted) {
             await context
@@ -34,8 +33,7 @@ class RedeemDiscountButton extends StatelessWidget {
           }
         },
         label: Text(
-          // TODO - add translation
-          'Kup za '
+          '${S().redeemFor} '
           '${discount.price} '
           '${S().raverCoinsReward(discount.price)}',
         ),

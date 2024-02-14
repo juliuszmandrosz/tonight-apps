@@ -2,6 +2,7 @@ import 'package:common/extensions/color_extensions.dart';
 import 'package:common/extensions/typography_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/core/image_back_button.dart';
+import 'package:translations/translations.dart';
 
 class MarketplaceDiscountsTabBar extends StatelessWidget {
   const MarketplaceDiscountsTabBar({Key? key}) : super(key: key);
@@ -29,17 +30,16 @@ class MarketplaceDiscountsTabBar extends StatelessWidget {
             ),
           ),
           tabs: [
-            // TODO - add translations
             Tab(
               child: Text(
-                'Dostępne zniżki',
+                S().availableDiscounts,
                 textAlign: TextAlign.center,
                 maxLines: 1,
               ),
             ),
             Tab(
               child: Text(
-                'Twoje zniżki',
+                S().yourDiscounts,
                 textAlign: TextAlign.center,
               ),
             ),

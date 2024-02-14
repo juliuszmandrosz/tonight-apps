@@ -55,8 +55,7 @@ class PhotoPreviewPage extends StatelessWidget {
                   if (state.addStoryStatus.isSuccess()) {
                     context.router.popUntil((route) =>
                         route.settings.name == WelcomeLoaderRoute.name);
-                    // TODO - add translation
-                    context.showSnackbarMessage('Dodano Story!');
+                    context.showSnackbarMessage(S().storyAdded);
                   }
                 },
                 child: SafeArea(

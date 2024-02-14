@@ -8,6 +8,7 @@ import 'package:tonight/injection.dart';
 import 'package:tonight/presentation/core/tonight_app_bar.dart';
 import 'package:tonight/presentation/event_chat/widgets/event_chat_input.dart';
 import 'package:tonight/presentation/event_chat/widgets/message_bubble.dart';
+import 'package:translations/translations.dart';
 
 class StoryCommentsPage extends StatelessWidget {
   final String storyId;
@@ -84,8 +85,7 @@ class StoryCommentsPage extends StatelessWidget {
                         ? Expanded(
                             child: Center(
                               child: Text(
-                                // TODO - add translation
-                                'Brak komentarzy',
+                                S().noComments,
                                 style: context.titleMedium,
                               ),
                             ),

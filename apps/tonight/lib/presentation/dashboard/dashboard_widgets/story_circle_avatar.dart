@@ -3,6 +3,7 @@ import 'package:common/extensions/typography_extensions.dart';
 import 'package:common/presentation/profile_picture_container.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:translations/translations.dart';
 
 class StoryCircleAvatar extends StatelessWidget {
   final String username;
@@ -67,8 +68,7 @@ class StoryCircleAvatar extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Text(
-          // TODO - add translation
-          isCurrentUser ? 'Twoja relacja' : username,
+          isCurrentUser ? S().yourStory : username,
           style: context.bodySmall,
         ),
       ],

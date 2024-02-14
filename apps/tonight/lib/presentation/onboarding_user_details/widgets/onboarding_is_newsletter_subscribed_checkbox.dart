@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
 import 'package:tonight/presentation/onboarding_user_details/widgets/onboarding_user_details_email_dialog.dart';
+import 'package:translations/translations.dart';
 
 class OnboardingIsNewsletterSubscribedCheckbox extends StatelessWidget {
   const OnboardingIsNewsletterSubscribedCheckbox({
@@ -38,8 +39,7 @@ class OnboardingIsNewsletterSubscribedCheckbox extends StatelessWidget {
                   .isNewsletterSubscribedChanged(result);
             }
           },
-          // TODO - add translation,
-          title: 'Chcę otrzymywać na maila ciekawe treści o imprezach',
+          title: S().newsletterAgreement,
         );
       },
     );

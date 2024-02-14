@@ -38,16 +38,17 @@ class DashboardPage extends StatelessWidget {
               return const WaveLoadingIndicator();
             case CubitStatus.failure:
               return FailureInfo(
-                  isSocketException: state.failure.fold(
-                    () => false,
-                    (f) => f.maybeWhen(
-                      noConnection: () => true,
-                      orElse: () => false,
-                    ),
+                isSocketException: state.failure.fold(
+                  () => false,
+                  (f) => f.maybeWhen(
+                    noConnection: () => true,
+                    orElse: () => false,
                   ),
-                  retryCallback: () => context
-                      .read<DashboardBloc>()
-                      .add(DashboardEvent.dataInitialized(userLocation)));
+                ),
+                retryCallback: () => context.read<DashboardBloc>().add(
+                      DashboardEvent.dataInitialized(userLocation),
+                    ),
+              );
             case CubitStatus.success:
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),

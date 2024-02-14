@@ -61,7 +61,6 @@ class ChallengeListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO - add translations
     return Stack(
       children: [
         Shimmer.fromColors(
@@ -83,12 +82,6 @@ class ChallengeListTile extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               title: Text(
                 challenge.title,
-                // style: TextStyle(
-                //   fontSize: 16,
-                //   fontWeight: FontWeight.w600,
-                //   color: Colors.transparent, // Ukryj tekst
-                //   background: Paint()..color = Colors.white,
-                // ),
                 style: context.titleMedium.copyWith(color: Colors.transparent),
               ),
               subtitle: Padding(
@@ -106,7 +99,8 @@ class ChallengeListTile extends StatelessWidget {
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            '${e.key} miejsce -  ${e.value} tokenów',
+                            '${e.key} ${S().place.toLowerCase()} '
+                            '- ${e.value} ${S().tokens(e.value)}',
                             style: context.titleSmall.copyWith(
                               color: Colors.transparent,
                             ),
@@ -124,9 +118,9 @@ class ChallengeListTile extends StatelessWidget {
                   shadowColor: Colors.transparent,
                   side: const BorderSide(color: Colors.transparent),
                 ),
-                child: const Text(
-                  'Dołącz',
-                  style: TextStyle(color: Colors.transparent),
+                child: Text(
+                  S().join,
+                  style: const TextStyle(color: Colors.transparent),
                 ),
               ),
             ),
@@ -151,7 +145,8 @@ class ChallengeListTile extends StatelessWidget {
                       buildShimmeringMedal(e.key),
                       const SizedBox(width: 8),
                       Text(
-                        '${e.key} miejsce -  ${e.value} tokenów',
+                        '${e.key} ${S().place.toLowerCase()} '
+                        '- ${e.value} ${S().tokens(e.value)}',
                         style: context.titleSmall,
                       ),
                     ],
@@ -178,9 +173,7 @@ class ChallengeListTile extends StatelessWidget {
 
                 if (alreadyAttendedResult.getRightOrCrash() &&
                     context.mounted) {
-                  // TODO - add translation
-                  context.showSnackbarMessage(
-                      'Uczestniczysz już w tym wyzwaniu, usuń swoją story aby dołączyć ponownie');
+                  context.showSnackbarMessage(S().alreadyInChallenge);
                   return;
                 }
                 final cameras = await availableCameras();

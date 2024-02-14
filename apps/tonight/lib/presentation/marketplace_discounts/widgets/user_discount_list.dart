@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tonight/application/marketplace_discounts/marketplace_discounts_bloc.dart';
 import 'package:tonight/presentation/marketplace_discounts/widgets/user_discount_list_tile.dart';
+import 'package:translations/translations.dart';
 
 class UserDiscountList extends HookWidget {
   const UserDiscountList({Key? key}) : super(key: key);
@@ -38,8 +39,7 @@ class UserDiscountList extends HookWidget {
           case CubitStatus.success:
             if (state.userDiscounts.isEmpty) {
               return NoResults(
-                // TODO - add translation
-                message: 'Brak odebranych zniżek',
+                message: S().noDiscountsClaimed,
                 onRefresh: () => context.read<MarketplaceDiscountsBloc>().add(
                       const MarketplaceDiscountsEvent.userDiscountsFetched(),
                     ),

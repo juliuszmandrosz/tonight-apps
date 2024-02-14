@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class MarketplaceBanner extends StatelessWidget {
   const MarketplaceBanner({Key? key}) : super(key: key);
@@ -42,8 +43,7 @@ class MarketplaceBanner extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    // TODO - add translation
-                    'Wyróżnij sie na imprezie.',
+                    S().standOutAtTheParty,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 22,
@@ -60,7 +60,7 @@ class MarketplaceBanner extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    'Odkryj nasz sklep.',
+                    S().discoverOurMarketplace,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 18,

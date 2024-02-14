@@ -1,6 +1,5 @@
 import 'package:auth/auth.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:common/extensions/date_time_extensions.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 PageRouteInfo getAuthenticatedRoute(AppUser user) {
@@ -8,11 +7,11 @@ PageRouteInfo getAuthenticatedRoute(AppUser user) {
   if (!user.isOnboardingCompleted) {
     return OnboardingUserDetailsRoute(user: user);
   }
-  if (user.lastDailySpinAt == null ||
-      user.lastDailySpinAt!.isBefore(DateTime
-          .now()
-          .startOfDay)) {
-    return const DailySpinRoute();
-  }
+  // if (user.lastDailySpinAt == null ||
+  //     user.lastDailySpinAt!.isBefore(DateTime
+  //         .now()
+  //         .startOfDay)) {
+  //   return const DailySpinRoute();
+  // }
   return const WelcomeLoaderRoute();
 }

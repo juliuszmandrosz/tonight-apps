@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/dashboard/bloc/dashboard_bloc.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/social_media_row.dart';
 import 'package:tonight/presentation/dashboard/tonight_events_from_venues_widgets/tonight_event_card.dart';
+import 'package:translations/translations.dart';
 
 class UpcomingTonightEvents extends StatelessWidget {
   const UpcomingTonightEvents({Key? key}) : super(key: key);
@@ -16,14 +17,13 @@ class UpcomingTonightEvents extends StatelessWidget {
         final events = state.dashboardData.tonightEvents;
         return Column(
           children: [
-            // TODO - add translation
             if (events.isNotEmpty)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Nadchodzące imprezy Tonight',
+                    S().upcomingTonightEvents,
                     style: context.titleMedium.copyWithSecondaryColor(),
                   ),
                 ),
@@ -69,8 +69,7 @@ class UpcomingTonightEvents extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                // TODO - add translation
-                                'Przygotowujemy kolejne',
+                                S().weArePreparing,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 20,
@@ -87,8 +86,7 @@ class UpcomingTonightEvents extends StatelessWidget {
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                // TODO - add translation
-                                'wydarzenie dla Ciebie.',
+                                S().nextEventForYou,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 20,
@@ -105,8 +103,7 @@ class UpcomingTonightEvents extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               Text(
-                                // TODO - add translation
-                                'Obserwuj nas aby być na bieżąco!',
+                                S().followUs,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 16,
@@ -115,7 +112,7 @@ class UpcomingTonightEvents extends StatelessWidget {
                                     Shadow(
                                       blurRadius: 2.0,
                                       color: Colors.black.withOpacity(0.15),
-                                      offset: Offset(1.0, 1.0),
+                                      offset: const Offset(1.0, 1.0),
                                     ),
                                   ],
                                 ),

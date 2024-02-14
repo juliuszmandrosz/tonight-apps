@@ -54,7 +54,6 @@ class _NavigatorPageState extends State<NavigatorPage> {
                   labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
                   onDestinationSelected: (i) async {
                     context.unfocus();
-
                     if (i == TonightNavigationDestination.profile.index ||
                         i == TonightNavigationDestination.messages.index) {
                       final result = await _handleProfileNavigation();
@@ -83,13 +82,12 @@ class _NavigatorPageState extends State<NavigatorPage> {
                       ),
                       label: S().discover,
                     ),
-                    const NavigationDestination(
-                      icon: Icon(
+                    NavigationDestination(
+                      icon: const Icon(
                         Icons.checklist_outlined,
                         size: iconSize,
                       ),
-                      // TODO - add translation
-                      label: 'Wyzwania',
+                      label: S().challenge(2).capitalize(),
                     ),
                     const NavigationDestination(
                       icon: Icon(

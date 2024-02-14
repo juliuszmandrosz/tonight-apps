@@ -8,6 +8,7 @@ import 'package:tonight/presentation/challenges/widgets/challenge_list_tile.dart
 import 'package:tonight/presentation/challenges/widgets/challenges_countdown_timer.dart';
 import 'package:tonight/presentation/challenges/widgets/no_challenges_info.dart';
 import 'package:tonight/presentation/challenges/widgets/previous_challenges_winners.dart';
+import 'package:translations/translations.dart';
 
 class ChallengesPage extends HookWidget {
   const ChallengesPage({Key? key}) : super(key: key);
@@ -71,8 +72,7 @@ class ChallengesPage extends HookWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      // TODO - add translation
-                                      'Wyróżnij sie na imprezie.',
+                                      S().standOutAtTheParty,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontSize: 20,
@@ -90,8 +90,7 @@ class ChallengesPage extends HookWidget {
                                     ),
                                     const SizedBox(height: 8),
                                     Text(
-                                      // TODO - add translation
-                                      'Wykonuj wyzwania i zdobywaj nagrody!',
+                                      S().completeChallenges,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontSize: 16,
@@ -119,8 +118,7 @@ class ChallengesPage extends HookWidget {
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                // TODO - add translation
-                                "Poprzedni zwycięzcy",
+                                S().previousWinners,
                                 style: context.titleMedium,
                               ),
                             ),

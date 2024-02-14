@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/domain/user_marketplace_discounts/user_marketplace_discount_entity.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class UserDiscountListTile extends StatelessWidget {
   final UserMarketplaceDiscount discount;
@@ -30,8 +31,7 @@ class UserDiscountListTile extends StatelessWidget {
       subtitle: Padding(
         padding: const EdgeInsets.only(top: 8),
         child: Text(
-          // TODO - add translation
-          'CODE: ${discount.code}',
+          '${S().code}: ${discount.code}'.toUpperCase(),
           style: context.titleSmall.copyWithSecondaryColor(),
         ),
       ),

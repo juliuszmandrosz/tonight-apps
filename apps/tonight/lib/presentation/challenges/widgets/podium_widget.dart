@@ -6,6 +6,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:tonight/domain/challenges/challenge_entity.dart';
 import 'package:tonight/domain/challenges/winner_entity.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class PodiumWidget extends StatelessWidget {
   final Challenge challenge;
@@ -76,15 +77,14 @@ class PodiumWidget extends StatelessWidget {
               ),
               SizedBox(height: 10 * scale),
               AutoSizeText(
-                'Brak',
+                S().nobody,
                 style: TextStyle(fontSize: 18 * scale),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 4),
               Text(
-                // TODO - add translation
-                '$position miejsce',
+                '$position ${S().place.toLowerCase()}',
                 style: TextStyle(
                   fontSize: 16 * scale,
                   fontWeight: FontWeight.bold,
@@ -123,8 +123,7 @@ class PodiumWidget extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                // TODO - add translation
-                '$position miejsce',
+                '$position ${S().place}',
                 style: TextStyle(
                   fontSize: 16 * scale,
                   fontWeight: FontWeight.bold,
@@ -132,7 +131,7 @@ class PodiumWidget extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                '${winner.likesCount} głosów',
+                '${winner.likesCount} ${S().votes(winner.likesCount)}',
                 style: context.bodySmall.copyWithSecondaryColor(),
               ),
             ],
@@ -160,7 +159,7 @@ class PodiumWidget extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.2),
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
             blurRadius: 8.0,
           ),
         ],
@@ -175,7 +174,7 @@ class PodiumWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              buildWinnerTile(secondPlace, 2, 0.8, Color(0xFFC0C0C0)),
+              buildWinnerTile(secondPlace, 2, 0.8, const Color(0xFFC0C0C0)),
               buildWinnerTile(firstPlace, 1, 1.0, const Color(0xFFD4AF37)),
               buildWinnerTile(thirdPlace, 3, 0.7, const Color(0xFFCD7F32)),
             ],

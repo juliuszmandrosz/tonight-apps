@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tonight/application/core/extensions/bloc_extensions.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class NotEnoughRaverCoinsInfo extends StatelessWidget {
   final int discountPrice;
@@ -36,11 +37,11 @@ class NotEnoughRaverCoinsInfo extends StatelessWidget {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    // TODO - add translation
                     context.readAuthCubit.checkIfUserIsAnonymous()
-                        ? 'Aby móc zdobywać nagrody, zaloguj sie do aplikacji'
-                        : 'Brakuje Ci ${discountPrice - availableRaverCoins} Tonight Tokens, '
-                            'aby odebrać tę zniżkę.',
+                        ? S().toEarnRewardsLogin
+                        : '${S().youAreMissing} ${discountPrice - availableRaverCoins} '
+                            'Tonight ${S().tokens(discountPrice - availableRaverCoins)}, '
+                            '${S().toClaimThisDiscount}',
                     style: context.titleMedium,
                     textAlign: TextAlign.center,
                   ),

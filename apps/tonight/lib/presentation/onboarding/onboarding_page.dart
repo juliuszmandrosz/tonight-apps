@@ -48,6 +48,7 @@ class OnboardingPage extends StatelessWidget {
                     child: Text(S().skip),
                   ),
                   pages: [
+                    // TODO - add translations, change onboarding
                     onboardingPageView(
                       context: context,
                       icon: FontAwesomeIcons.peopleArrows,

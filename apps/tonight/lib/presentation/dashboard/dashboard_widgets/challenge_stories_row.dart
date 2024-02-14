@@ -52,7 +52,6 @@ class ChallengeStoriesRow extends StatelessWidget {
                           TonightNavigationDestination.challenges.index);
                     },
                     child: StoryCircleAvatar(
-                      // TODO - add translations
                       username: data.currentUser.fold(
                         () => '',
                         (a) => a.username,

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/dashboard/bloc/dashboard_bloc.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/marketplace_discount_card.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
+import 'package:translations/translations.dart';
 
 class MarketplaceDiscounts extends StatelessWidget {
   const MarketplaceDiscounts({Key? key}) : super(key: key);
@@ -17,14 +18,13 @@ class MarketplaceDiscounts extends StatelessWidget {
         final user = state.dashboardData.currentUser;
         return Column(
           children: [
-            // TODO - add translation
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Text(
-                    'Zniżki w Marketplace',
+                    S().discountsInMarketplace,
                     style: context.titleMedium.copyWithSecondaryColor(),
                   ),
                 ),
@@ -38,7 +38,7 @@ class MarketplaceDiscounts extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'Zobacz więcej',
+                    S().seeMore,
                     style: context.bodyMedium.copyWith(
                       color: context.primaryColor.lighten(.1),
                     ),

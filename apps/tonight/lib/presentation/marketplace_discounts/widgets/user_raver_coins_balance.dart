@@ -3,6 +3,7 @@ import 'package:common/extensions/typography_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tonight/application/marketplace_discounts/marketplace_discounts_bloc.dart';
+import 'package:translations/translations.dart';
 
 class UserRaverCoinsBalance extends StatelessWidget {
   const UserRaverCoinsBalance({
@@ -20,8 +21,7 @@ class UserRaverCoinsBalance extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Center(
               child: AutoSizeText(
-                // TODO - add translation
-                'Twoja ilość Tonight Tokens: $availableRaverCoins',
+                '${S().yourQuantityOf} Tonight ${S().tokens}: $availableRaverCoins',
                 maxLines: 1,
                 style: context.titleMedium,
               ),

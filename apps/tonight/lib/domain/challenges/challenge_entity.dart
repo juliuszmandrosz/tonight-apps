@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:tonight/domain/challenges/winner_entity.dart';
+import 'package:translations/translations.dart';
 import 'package:uuid/uuid.dart';
 
 class Challenge extends Equatable {
@@ -29,8 +30,7 @@ class Challenge extends Equatable {
 
   factory Challenge.empty() {
     return Challenge(
-      // TODO - add translation
-      title: 'Tu pojawią się zwycięzcy',
+      title: S().theWinnersWillApearHere,
       rewards: {},
       startDate: DateTime.now(),
       endDate: DateTime.now(),

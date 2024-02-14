@@ -29,8 +29,7 @@ class UserMarketplaceDiscountDetailsPage extends StatelessWidget {
             onPressed: () => context.pushRoute(
               MarketplaceProductRoute(url: discount.marketplaceUrl),
             ),
-            // TODO - add translation
-            label: Text('Przejdź do sklepu'),
+            label: Text(S().goToStore),
             icon: const FaIcon(FontAwesomeIcons.cartShopping),
           ),
         ),
@@ -48,8 +47,7 @@ class UserMarketplaceDiscountDetailsPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      // TODO - add translation
-                      'Twój kod -  ${discount.code}',
+                      '${S().yourCode} -  ${discount.code}',
                       style: context.titleLarge,
                     ),
                     const SizedBox(width: 8),

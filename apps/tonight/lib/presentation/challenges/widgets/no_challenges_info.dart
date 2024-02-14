@@ -13,8 +13,7 @@ class NoChallengesInfo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          // TODO - add translation
-          'No challenges yet.',
+          S().challenge(0),
           style: context.titleSmall,
           textAlign: TextAlign.center,
         ),

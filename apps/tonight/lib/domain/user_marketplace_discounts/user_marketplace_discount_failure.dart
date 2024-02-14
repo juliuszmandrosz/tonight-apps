@@ -15,9 +15,7 @@ extension UserMarketplaceDiscountFailureX on UserMarketplaceDiscountFailure {
   String get message {
     return when(
       unexpected: () => S().serverError,
-      insufficientRaverCoins: () =>
-          // TODO - add translation
-          'You do not have enough Raver Coins to redeem this discount.',
+      insufficientRaverCoins: () => S().notEnoughRaverCoins,
     );
   }
 }
