@@ -5,7 +5,6 @@ import 'package:tonight/application/core/user_location/user_location_cubit.dart'
 import 'package:tonight/application/dashboard/bloc/dashboard_bloc.dart';
 import 'package:tonight/application/dashboard/bloc/tonight_events_from_venues_bloc.dart';
 import 'package:tonight/injection.dart';
-import 'package:tonight/presentation/dashboard/dashboard_widgets/challenge_stories_row.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/marketplace_banner.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/marketplace_discounts.dart';
 import 'package:tonight/presentation/dashboard/dashboard_widgets/social_media_row.dart';
@@ -63,8 +62,8 @@ class DashboardPage extends StatelessWidget {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        const ChallengeStoriesRow(),
-                        const SizedBox(height: 20),
+                        // const ChallengeStoriesRow(),
+                        // const SizedBox(height: 20),
                         const UpcomingTonightEvents(),
                         const SizedBox(height: 20),
                         const MarketplaceBanner(),
