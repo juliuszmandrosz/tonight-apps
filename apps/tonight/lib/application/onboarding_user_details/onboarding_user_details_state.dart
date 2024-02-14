@@ -7,9 +7,13 @@ class OnboardingUserDetailsState with _$OnboardingUserDetailsState {
     required BirthdateValueObject birthdate,
     required GenderValueObject gender,
     required CityValueObject city,
-    required FormzStatus submissionStatus,
+    required FormzStatus formStatus,
+    required FormzStatus emailDialogStatus,
     required Option<String> errorMessage,
     required Option<Uint8List> userPhoto,
+    required bool isNewsletterSubscribed,
+    required EmailInput email,
+    required bool isSignedInWithEmail,
   }) = _OnboardingUserDetailsState;
 
   factory OnboardingUserDetailsState.initial() => OnboardingUserDetailsState(
@@ -17,8 +21,12 @@ class OnboardingUserDetailsState with _$OnboardingUserDetailsState {
         birthdate: const BirthdateValueObject.pure(),
         gender: const GenderValueObject.pure(),
         city: const CityValueObject.pure(),
-        submissionStatus: FormzStatus.pure,
+        formStatus: FormzStatus.pure,
+        emailDialogStatus: FormzStatus.pure,
         errorMessage: none(),
         userPhoto: none(),
+        isNewsletterSubscribed: false,
+        email: const EmailInput.pure(),
+        isSignedInWithEmail: false,
       );
 }

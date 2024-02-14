@@ -12,21 +12,20 @@ class SubmitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<OnboardingUserDetailsCubit, OnboardingUserDetailsState>(
       builder: (context, state) {
-        return state.submissionStatus.isSubmissionInProgress
+        return state.formStatus.isSubmissionInProgress
             ? const CircleLoadingIndicator()
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  SizedBox(
-                    height: kButtonHeight,
-                    child: ElevatedButton(
-                      child: Text(S().submit),
-                      onPressed: () => context
-                          .read<OnboardingUserDetailsCubit>()
-                          .submitOnboarding(),
-                    ),
+            : Visibility(
+                visible: context.viewInsets.bottom == 0,
+                child: SizedBox(
+                  height: kButtonHeight,
+                  width: 300,
+                  child: ElevatedButton(
+                    onPressed: context
+                        .read<OnboardingUserDetailsCubit>()
+                        .submitOnboarding,
+                    child: Text(S().submit),
                   ),
-                ],
+                ),
               );
       },
     );

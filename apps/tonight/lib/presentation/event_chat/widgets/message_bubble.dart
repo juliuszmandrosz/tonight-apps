@@ -7,9 +7,11 @@ import 'package:tonight/presentation/event_chat/widgets/event_chat_user_containe
 
 class MessageBubble extends StatelessWidget {
   final ChatMessage message;
+  final bool isComment;
 
   const MessageBubble({
     required this.message,
+    this.isComment = false,
     Key? key,
   }) : super(key: key);
 
@@ -30,7 +32,7 @@ class MessageBubble extends StatelessWidget {
               children: [
                 EventChatUserContainer(message: message),
                 const SizedBox(width: 8.0),
-                EventChatMessageBubble(message: message),
+                EventChatMessageBubble(message: message, isComment: isComment),
               ],
             ),
         ],

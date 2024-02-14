@@ -1,4 +1,5 @@
 import 'package:account_settings/account_settings.dart';
+import 'package:auth/auth.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
@@ -22,10 +23,22 @@ class OnboardingUserDetailsCubit extends Cubit<OnboardingUserDetailsState> {
   OnboardingUserDetailsCubit(this._userAccountFacade)
       : super(OnboardingUserDetailsState.initial());
 
+  initState(AppUser user) {
+    final email = user.email != null
+        ? EmailInput.dirty(user.email!)
+        : const EmailInput.pure();
+    emit(
+      state.copyWith(
+        email: email,
+        isSignedInWithEmail: user.email.isNotNullOrEmpty,
+      ),
+    );
+  }
+
   Future<void> submitOnboarding() async {
     if (!_validateForm()) return;
 
-    emit(state.copyWith(submissionStatus: FormzStatus.submissionInProgress));
+    emit(state.copyWith(formStatus: FormzStatus.submissionInProgress));
 
     final failureOrSuccess = await _userAccountFacade.submitOnboardingForUser(
       username: state.username.value,
@@ -34,12 +47,15 @@ class OnboardingUserDetailsCubit extends Cubit<OnboardingUserDetailsState> {
       cityId: state.city.value?.id,
       cityName: state.city.value?.name,
       profilePicture: state.userPhoto.fold(() => null, (picture) => picture),
+      isNewsletterSubscribed: state.isNewsletterSubscribed,
+      email: state.email.value,
     );
 
     failureOrSuccess.fold(
-      _emitFailure,
-      (success) =>
-          emit(state.copyWith(submissionStatus: FormzStatus.submissionSuccess)),
+      _emitOnboardingFailure,
+      (success) => emit(
+        state.copyWith(formStatus: FormzStatus.submissionSuccess),
+      ),
     );
   }
 
@@ -61,6 +77,30 @@ class OnboardingUserDetailsCubit extends Cubit<OnboardingUserDetailsState> {
   void genderChanged(Gender value) {
     final gender = GenderValueObject.dirty(value);
     emit(state.copyWith(gender: gender));
+  }
+
+  void isNewsletterSubscribedChanged(bool? value) {
+    final email = !state.isSignedInWithEmail && value != true
+        ? const EmailInput.pure()
+        : state.email;
+    emit(
+      state.copyWith(
+        isNewsletterSubscribed: value ?? false,
+        email: email,
+      ),
+    );
+  }
+
+  void emailChanged(String value) {
+    final email = EmailInput.dirty(value);
+    emit(state.copyWith(email: email));
+  }
+
+  bool validateEmail() {
+    emit(state.copyWith(email: EmailInput.dirty(state.email.value)));
+    final status = Formz.validate([state.email]);
+    emit(state.copyWith(emailDialogStatus: status));
+    return status.isValid;
   }
 
   Future<void> pickProfilePhoto() async {
@@ -98,15 +138,15 @@ class OnboardingUserDetailsCubit extends Cubit<OnboardingUserDetailsState> {
         state.gender,
       ],
     );
-    emit(state.copyWith(submissionStatus: status));
+    emit(state.copyWith(formStatus: status));
     return status.isValid;
   }
 
-  _emitFailure(UserAccountFailure failure) {
+  _emitOnboardingFailure(UserAccountFailure failure) {
     emit(
       state.copyWith(
         errorMessage: some(failure.message),
-        submissionStatus: FormzStatus.submissionFailure,
+        formStatus: FormzStatus.submissionFailure,
       ),
     );
 

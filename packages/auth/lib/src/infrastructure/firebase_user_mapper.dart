@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 extension FirebaseUserDomainExtension on User {
   AppUser toDomain({
     String? username,
+    String? email,
     DateTime? lastDailySpinAt,
     bool isAnonymous = false,
   }) {
@@ -14,6 +15,7 @@ extension FirebaseUserDomainExtension on User {
       isOnboardingCompleted: username.isNotNullOrEmpty,
       isPhoneNumberVerified: phoneNumber.isNotNullOrEmpty,
       lastDailySpinAt: lastDailySpinAt,
+      email: email,
     );
   }
 }

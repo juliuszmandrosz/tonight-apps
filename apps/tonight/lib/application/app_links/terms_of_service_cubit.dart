@@ -6,6 +6,7 @@ import 'package:tonight/domain/user_app_links/user_app_links_facade.dart';
 import 'package:translations/translations.dart';
 
 part 'terms_of_service_cubit.freezed.dart';
+
 part 'terms_of_service_state.dart';
 
 class AppLinksCubit extends Cubit<TermsOfServiceState> {
@@ -13,19 +14,21 @@ class AppLinksCubit extends Cubit<TermsOfServiceState> {
 
   AppLinksCubit(this._appLinksFacade) : super(TermsOfServiceState.initial());
 
+
   Future<void> launchInstagram() async {
     emit(state.copyWith(status: CubitStatus.loading));
 
     final result = await _appLinksFacade.getUserAppLinks();
 
     result.fold(
-      (_) => _emitFailure(S().serverError),
-      (links) => emit(
-        state.copyWith(
-          status: CubitStatus.success,
-          url: some(links.instagram),
-        ),
-      ),
+          (_) => _emitFailure(S().serverError),
+          (links) =>
+          emit(
+            state.copyWith(
+              status: CubitStatus.success,
+              url: some(links.instagram),
+            ),
+          ),
     );
   }
 
@@ -35,13 +38,14 @@ class AppLinksCubit extends Cubit<TermsOfServiceState> {
     final result = await _appLinksFacade.getUserAppLinks();
 
     result.fold(
-      (_) => _emitFailure(S().serverError),
-      (links) => emit(
-        state.copyWith(
-          status: CubitStatus.success,
-          url: some(links.tikTok),
-        ),
-      ),
+          (_) => _emitFailure(S().serverError),
+          (links) =>
+          emit(
+            state.copyWith(
+              status: CubitStatus.success,
+              url: some(links.tikTok),
+            ),
+          ),
     );
   }
 
@@ -51,13 +55,14 @@ class AppLinksCubit extends Cubit<TermsOfServiceState> {
     final result = await _appLinksFacade.getUserAppLinks();
 
     result.fold(
-      (_) => _emitFailure(S().serverError),
-      (links) => emit(
-        state.copyWith(
-          status: CubitStatus.success,
-          url: some(links.facebook),
-        ),
-      ),
+          (_) => _emitFailure(S().serverError),
+          (links) =>
+          emit(
+            state.copyWith(
+              status: CubitStatus.success,
+              url: some(links.facebook),
+            ),
+          ),
     );
   }
 
@@ -67,13 +72,14 @@ class AppLinksCubit extends Cubit<TermsOfServiceState> {
     final result = await _appLinksFacade.getUserAppLinks();
 
     result.fold(
-      (_) => _emitFailure(S().serverError),
-      (links) => emit(
-        state.copyWith(
-          status: CubitStatus.success,
-          url: some(links.discord),
-        ),
-      ),
+          (_) => _emitFailure(S().serverError),
+          (links) =>
+          emit(
+            state.copyWith(
+              status: CubitStatus.success,
+              url: some(links.discord),
+            ),
+          ),
     );
   }
 
@@ -83,13 +89,14 @@ class AppLinksCubit extends Cubit<TermsOfServiceState> {
     final result = await _appLinksFacade.getUserAppLinks();
 
     result.fold(
-      (_) => _emitFailure(S().serverError),
-      (links) => emit(
-        state.copyWith(
-          status: CubitStatus.success,
-          url: some(links.termsOfService),
-        ),
-      ),
+          (_) => _emitFailure(S().serverError),
+          (links) =>
+          emit(
+            state.copyWith(
+              status: CubitStatus.success,
+              url: some(links.termsOfService),
+            ),
+          ),
     );
   }
 
@@ -99,13 +106,14 @@ class AppLinksCubit extends Cubit<TermsOfServiceState> {
     final result = await _appLinksFacade.getUserAppLinks();
 
     result.fold(
-      (_) => _emitFailure(S().serverError),
-      (links) => emit(
-        state.copyWith(
-          status: CubitStatus.success,
-          url: some(links.privacyPolicy),
-        ),
-      ),
+          (_) => _emitFailure(S().serverError),
+          (links) =>
+          emit(
+            state.copyWith(
+              status: CubitStatus.success,
+              url: some(links.privacyPolicy),
+            ),
+          ),
     );
   }
 

@@ -17,6 +17,15 @@ class UserAppLinks extends Equatable {
     required this.termsOfService,
   });
 
+  factory UserAppLinks.empty() => const UserAppLinks(
+        facebook: '',
+        instagram: '',
+        tikTok: '',
+        discord: '',
+        privacyPolicy: '',
+        termsOfService: '',
+      );
+
   @override
   List<Object?> get props => [
         facebook,

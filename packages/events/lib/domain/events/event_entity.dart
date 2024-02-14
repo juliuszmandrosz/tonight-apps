@@ -29,6 +29,7 @@ class Event extends Equatable {
   final bool isCanceled;
   final bool isBeingPostponed;
   final bool areTicketsAvailableInApp;
+  final bool isTonightEvent;
   final String? clubPhotoUrl;
   final String? locationString;
   final String? externalTicketsUrl;
@@ -61,6 +62,7 @@ class Event extends Equatable {
     this.isCanceled = false,
     this.isBeingPostponed = false,
     this.areTicketsAvailableInApp = false,
+    this.isTonightEvent = false,
     this.externalTicketsUrl,
   }) : id = id ?? const Uuid().v1();
 
@@ -102,6 +104,7 @@ class Event extends Equatable {
         locationString,
         areTicketsAvailableInApp,
         externalTicketsUrl,
+        isTonightEvent,
       ];
 
   Event copyWith({
@@ -131,6 +134,7 @@ class Event extends Equatable {
     Option<String>? clubPhotoUrl,
     Option<String>? locationString,
     bool? areTicketsAvailableInApp,
+    bool? isTonightEvent,
     Option<String>? externalTicketsUrl,
   }) {
     return Event(
@@ -183,6 +187,7 @@ class Event extends Equatable {
           : this.locationString,
       areTicketsAvailableInApp:
           areTicketsAvailableInApp ?? this.areTicketsAvailableInApp,
+      isTonightEvent: isTonightEvent ?? this.isTonightEvent,
       externalTicketsUrl: externalTicketsUrl != null
           ? externalTicketsUrl.fold(
               () => null,

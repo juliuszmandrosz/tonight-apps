@@ -20,9 +20,13 @@ mixin _$OnboardingUserDetailsState {
   BirthdateValueObject get birthdate => throw _privateConstructorUsedError;
   GenderValueObject get gender => throw _privateConstructorUsedError;
   CityValueObject get city => throw _privateConstructorUsedError;
-  FormzStatus get submissionStatus => throw _privateConstructorUsedError;
+  FormzStatus get formStatus => throw _privateConstructorUsedError;
+  FormzStatus get emailDialogStatus => throw _privateConstructorUsedError;
   Option<String> get errorMessage => throw _privateConstructorUsedError;
   Option<Uint8List> get userPhoto => throw _privateConstructorUsedError;
+  bool get isNewsletterSubscribed => throw _privateConstructorUsedError;
+  EmailInput get email => throw _privateConstructorUsedError;
+  bool get isSignedInWithEmail => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OnboardingUserDetailsStateCopyWith<OnboardingUserDetailsState>
@@ -41,9 +45,13 @@ abstract class $OnboardingUserDetailsStateCopyWith<$Res> {
       BirthdateValueObject birthdate,
       GenderValueObject gender,
       CityValueObject city,
-      FormzStatus submissionStatus,
+      FormzStatus formStatus,
+      FormzStatus emailDialogStatus,
       Option<String> errorMessage,
-      Option<Uint8List> userPhoto});
+      Option<Uint8List> userPhoto,
+      bool isNewsletterSubscribed,
+      EmailInput email,
+      bool isSignedInWithEmail});
 }
 
 /// @nodoc
@@ -64,9 +72,13 @@ class _$OnboardingUserDetailsStateCopyWithImpl<$Res,
     Object? birthdate = null,
     Object? gender = null,
     Object? city = null,
-    Object? submissionStatus = null,
+    Object? formStatus = null,
+    Object? emailDialogStatus = null,
     Object? errorMessage = null,
     Object? userPhoto = null,
+    Object? isNewsletterSubscribed = null,
+    Object? email = null,
+    Object? isSignedInWithEmail = null,
   }) {
     return _then(_value.copyWith(
       username: null == username
@@ -85,9 +97,13 @@ class _$OnboardingUserDetailsStateCopyWithImpl<$Res,
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as CityValueObject,
-      submissionStatus: null == submissionStatus
-          ? _value.submissionStatus
-          : submissionStatus // ignore: cast_nullable_to_non_nullable
+      formStatus: null == formStatus
+          ? _value.formStatus
+          : formStatus // ignore: cast_nullable_to_non_nullable
+              as FormzStatus,
+      emailDialogStatus: null == emailDialogStatus
+          ? _value.emailDialogStatus
+          : emailDialogStatus // ignore: cast_nullable_to_non_nullable
               as FormzStatus,
       errorMessage: null == errorMessage
           ? _value.errorMessage
@@ -97,6 +113,18 @@ class _$OnboardingUserDetailsStateCopyWithImpl<$Res,
           ? _value.userPhoto
           : userPhoto // ignore: cast_nullable_to_non_nullable
               as Option<Uint8List>,
+      isNewsletterSubscribed: null == isNewsletterSubscribed
+          ? _value.isNewsletterSubscribed
+          : isNewsletterSubscribed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as EmailInput,
+      isSignedInWithEmail: null == isSignedInWithEmail
+          ? _value.isSignedInWithEmail
+          : isSignedInWithEmail // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -115,9 +143,13 @@ abstract class _$$_OnboardingUserDetailsStateCopyWith<$Res>
       BirthdateValueObject birthdate,
       GenderValueObject gender,
       CityValueObject city,
-      FormzStatus submissionStatus,
+      FormzStatus formStatus,
+      FormzStatus emailDialogStatus,
       Option<String> errorMessage,
-      Option<Uint8List> userPhoto});
+      Option<Uint8List> userPhoto,
+      bool isNewsletterSubscribed,
+      EmailInput email,
+      bool isSignedInWithEmail});
 }
 
 /// @nodoc
@@ -137,9 +169,13 @@ class __$$_OnboardingUserDetailsStateCopyWithImpl<$Res>
     Object? birthdate = null,
     Object? gender = null,
     Object? city = null,
-    Object? submissionStatus = null,
+    Object? formStatus = null,
+    Object? emailDialogStatus = null,
     Object? errorMessage = null,
     Object? userPhoto = null,
+    Object? isNewsletterSubscribed = null,
+    Object? email = null,
+    Object? isSignedInWithEmail = null,
   }) {
     return _then(_$_OnboardingUserDetailsState(
       username: null == username
@@ -158,9 +194,13 @@ class __$$_OnboardingUserDetailsStateCopyWithImpl<$Res>
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as CityValueObject,
-      submissionStatus: null == submissionStatus
-          ? _value.submissionStatus
-          : submissionStatus // ignore: cast_nullable_to_non_nullable
+      formStatus: null == formStatus
+          ? _value.formStatus
+          : formStatus // ignore: cast_nullable_to_non_nullable
+              as FormzStatus,
+      emailDialogStatus: null == emailDialogStatus
+          ? _value.emailDialogStatus
+          : emailDialogStatus // ignore: cast_nullable_to_non_nullable
               as FormzStatus,
       errorMessage: null == errorMessage
           ? _value.errorMessage
@@ -170,6 +210,18 @@ class __$$_OnboardingUserDetailsStateCopyWithImpl<$Res>
           ? _value.userPhoto
           : userPhoto // ignore: cast_nullable_to_non_nullable
               as Option<Uint8List>,
+      isNewsletterSubscribed: null == isNewsletterSubscribed
+          ? _value.isNewsletterSubscribed
+          : isNewsletterSubscribed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as EmailInput,
+      isSignedInWithEmail: null == isSignedInWithEmail
+          ? _value.isSignedInWithEmail
+          : isSignedInWithEmail // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -182,9 +234,13 @@ class _$_OnboardingUserDetailsState implements _OnboardingUserDetailsState {
       required this.birthdate,
       required this.gender,
       required this.city,
-      required this.submissionStatus,
+      required this.formStatus,
+      required this.emailDialogStatus,
       required this.errorMessage,
-      required this.userPhoto});
+      required this.userPhoto,
+      required this.isNewsletterSubscribed,
+      required this.email,
+      required this.isSignedInWithEmail});
 
   @override
   final Username username;
@@ -195,15 +251,23 @@ class _$_OnboardingUserDetailsState implements _OnboardingUserDetailsState {
   @override
   final CityValueObject city;
   @override
-  final FormzStatus submissionStatus;
+  final FormzStatus formStatus;
+  @override
+  final FormzStatus emailDialogStatus;
   @override
   final Option<String> errorMessage;
   @override
   final Option<Uint8List> userPhoto;
+  @override
+  final bool isNewsletterSubscribed;
+  @override
+  final EmailInput email;
+  @override
+  final bool isSignedInWithEmail;
 
   @override
   String toString() {
-    return 'OnboardingUserDetailsState(username: $username, birthdate: $birthdate, gender: $gender, city: $city, submissionStatus: $submissionStatus, errorMessage: $errorMessage, userPhoto: $userPhoto)';
+    return 'OnboardingUserDetailsState(username: $username, birthdate: $birthdate, gender: $gender, city: $city, formStatus: $formStatus, emailDialogStatus: $emailDialogStatus, errorMessage: $errorMessage, userPhoto: $userPhoto, isNewsletterSubscribed: $isNewsletterSubscribed, email: $email, isSignedInWithEmail: $isSignedInWithEmail)';
   }
 
   @override
@@ -217,17 +281,35 @@ class _$_OnboardingUserDetailsState implements _OnboardingUserDetailsState {
                 other.birthdate == birthdate) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.city, city) || other.city == city) &&
-            (identical(other.submissionStatus, submissionStatus) ||
-                other.submissionStatus == submissionStatus) &&
+            (identical(other.formStatus, formStatus) ||
+                other.formStatus == formStatus) &&
+            (identical(other.emailDialogStatus, emailDialogStatus) ||
+                other.emailDialogStatus == emailDialogStatus) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.userPhoto, userPhoto) ||
-                other.userPhoto == userPhoto));
+                other.userPhoto == userPhoto) &&
+            (identical(other.isNewsletterSubscribed, isNewsletterSubscribed) ||
+                other.isNewsletterSubscribed == isNewsletterSubscribed) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.isSignedInWithEmail, isSignedInWithEmail) ||
+                other.isSignedInWithEmail == isSignedInWithEmail));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, username, birthdate, gender,
-      city, submissionStatus, errorMessage, userPhoto);
+  int get hashCode => Object.hash(
+      runtimeType,
+      username,
+      birthdate,
+      gender,
+      city,
+      formStatus,
+      emailDialogStatus,
+      errorMessage,
+      userPhoto,
+      isNewsletterSubscribed,
+      email,
+      isSignedInWithEmail);
 
   @JsonKey(ignore: true)
   @override
@@ -240,14 +322,17 @@ class _$_OnboardingUserDetailsState implements _OnboardingUserDetailsState {
 abstract class _OnboardingUserDetailsState
     implements OnboardingUserDetailsState {
   const factory _OnboardingUserDetailsState(
-          {required final Username username,
-          required final BirthdateValueObject birthdate,
-          required final GenderValueObject gender,
-          required final CityValueObject city,
-          required final FormzStatus submissionStatus,
-          required final Option<String> errorMessage,
-          required final Option<Uint8List> userPhoto}) =
-      _$_OnboardingUserDetailsState;
+      {required final Username username,
+      required final BirthdateValueObject birthdate,
+      required final GenderValueObject gender,
+      required final CityValueObject city,
+      required final FormzStatus formStatus,
+      required final FormzStatus emailDialogStatus,
+      required final Option<String> errorMessage,
+      required final Option<Uint8List> userPhoto,
+      required final bool isNewsletterSubscribed,
+      required final EmailInput email,
+      required final bool isSignedInWithEmail}) = _$_OnboardingUserDetailsState;
 
   @override
   Username get username;
@@ -258,11 +343,19 @@ abstract class _OnboardingUserDetailsState
   @override
   CityValueObject get city;
   @override
-  FormzStatus get submissionStatus;
+  FormzStatus get formStatus;
+  @override
+  FormzStatus get emailDialogStatus;
   @override
   Option<String> get errorMessage;
   @override
   Option<Uint8List> get userPhoto;
+  @override
+  bool get isNewsletterSubscribed;
+  @override
+  EmailInput get email;
+  @override
+  bool get isSignedInWithEmail;
   @override
   @JsonKey(ignore: true)
   _$$_OnboardingUserDetailsStateCopyWith<_$_OnboardingUserDetailsState>

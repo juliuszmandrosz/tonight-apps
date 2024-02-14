@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 import 'package:common/common.dart';
 import 'package:dartz/dartz.dart';
-import 'package:events/domain/events/event_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tonight/application/event_chat/aggregator/event_chat_aggregator.dart';
@@ -41,7 +40,7 @@ class EventChatBloc extends Bloc<EventChatEvent, EventChatState> {
     emit(state.copyWith(initialStatus: CubitStatus.loading));
     await emit.forEach(
       _eventChatAggregator.joinToChat(
-        roomId: event.event.id,
+        roomId: event.roomId,
         currentUser: event.participant,
         pageSize: _pageSize,
       ),
@@ -49,6 +48,10 @@ class EventChatBloc extends Bloc<EventChatEvent, EventChatState> {
         (_) => state.copyWith(initialStatus: CubitStatus.failure),
         (result) {
           final messages = result.value2;
+          if (!state.initialStatus.isLoading()) {
+            emit(state.copyWith(newMessage: some(messages.first)));
+            emit(state.copyWith(newMessage: none()));
+          }
           if (messages.isNotEmpty &&
               state.displayedMessages.any(
                 (msg) => msg.id == messages.first.id,
@@ -60,7 +63,7 @@ class EventChatBloc extends Bloc<EventChatEvent, EventChatState> {
             displayedMessages: [...messages, ...state.oldMessages],
             hasReachedMax: messages.length != _pageSize,
             currentUser: some(result.value1),
-            event: some(event.event),
+            roomId: some(event.roomId),
           );
         },
       ),
@@ -76,7 +79,7 @@ class EventChatBloc extends Bloc<EventChatEvent, EventChatState> {
         state.nextPageStatus.isLoading()) return;
     emit(state.copyWith(nextPageStatus: CubitStatus.loading));
     final result = await _eventChatAggregator.fetchNextPageMessages(
-      roomId: state.event.getOrCrash().id,
+      roomId: state.roomId.getOrCrash(),
       currentUserId: state.currentUser.getOrCrash().userId,
       pageSize: _pageSize,
       lastMessage: state.displayedMessages.lastOrNull,
@@ -110,8 +113,9 @@ class EventChatBloc extends Bloc<EventChatEvent, EventChatState> {
       _eventChatAggregator.sendMessage(
         text: state.inputMessage,
         currentUser: state.currentUser.getOrCrash(),
-        roomId: state.event.getOrCrash().id,
+        roomId: state.roomId.getOrCrash(),
         previousMessage: state.displayedMessages.firstOrNull,
+        isComment: event.isComment,
       ),
       onData: (data) => data.fold(
         (message) => _updateNewMessageInState(message),
@@ -135,8 +139,9 @@ class EventChatBloc extends Bloc<EventChatEvent, EventChatState> {
   ) async {
     await emit.forEach(
       _eventChatAggregator.resendMessage(
-        roomId: state.event.getOrCrash().id,
+        roomId: state.roomId.getOrCrash(),
         message: event.message,
+        isComment: event.isComment,
       ),
       onData: (data) => data.fold(
         (message) => _updateNewMessageInState(message),
@@ -172,7 +177,7 @@ class EventChatBloc extends Bloc<EventChatEvent, EventChatState> {
 
     final result = await _eventChatAggregator.reportMessage(
       message: event.message.toDomain(),
-      roomId: state.event.getOrCrash().id,
+      roomId: state.roomId.getOrCrash(),
     );
 
     final photoIdsAfterReport = [...state.reportingMessageIds]

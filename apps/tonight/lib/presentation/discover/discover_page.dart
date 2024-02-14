@@ -9,7 +9,7 @@ import 'package:tonight/presentation/discover/widgets/discover_sliver_app_bar.da
 import 'package:tonight/presentation/events/events_page.dart';
 
 class DiscoverPage extends StatelessWidget {
-  const DiscoverPage({Key? key}) : super(key: key);
+  const DiscoverPage({super.key});
 
   @override
   Widget build(BuildContext context) {

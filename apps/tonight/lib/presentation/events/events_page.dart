@@ -7,7 +7,7 @@ import 'package:tonight/presentation/events/widgets/event_filters_chips.dart';
 import 'package:tonight/presentation/events/widgets/no_events_info.dart';
 
 class EventsPage extends StatelessWidget {
-  const EventsPage({Key? key}) : super(key: key);
+  const EventsPage({super.key});
 
   static const heroPhrase = 'eventsPageHero';
 

@@ -35,6 +35,7 @@ class EventDto with _$EventDto {
     @Default(false) bool isCanceled,
     @Default(false) bool isBeingPostponed,
     @Default(false) bool areTicketsAvailableInApp,
+    @Default(false) bool isTonightEvent,
     @Default('') String entryFee,
     @Default('') String priceList,
     String? locationString,
@@ -72,6 +73,7 @@ class EventDto with _$EventDto {
       locationString: event.locationString,
       externalTicketsUrl: event.externalTicketsUrl,
       areTicketsAvailableInApp: event.areTicketsAvailableInApp,
+      isTonightEvent: event.isTonightEvent,
     );
   }
 
@@ -121,6 +123,7 @@ class EventDto with _$EventDto {
       locationString: locationString,
       externalTicketsUrl: externalTicketsUrl,
       areTicketsAvailableInApp: areTicketsAvailableInApp,
+      isTonightEvent: isTonightEvent,
     );
   }
 }
