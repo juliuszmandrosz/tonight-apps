@@ -30,12 +30,15 @@ import 'package:tickets/infrastructure/cloud_functions/ticket_cloud_functions_fa
 import 'package:tickets/tickets.dart';
 import 'package:tonight/application/activate_ticket/activate_ticket_cubit.dart';
 import 'package:tonight/application/activate_time_task_reward/activate_time_task_reward_cubit.dart';
+import 'package:tonight/application/add_challenge_story/add_challenge_story_cubit.dart';
 import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_aggregator/add_wall_photo_aggregator.dart';
 import 'package:tonight/application/add_wall_photo/cubit/add_wall_photo_cubit.dart';
 import 'package:tonight/application/app_links/terms_of_service_cubit.dart';
 import 'package:tonight/application/app_settings/app_settings_cubit.dart';
 import 'package:tonight/application/auth/sign_in/cubit/sign_in_cubit.dart';
 import 'package:tonight/application/auth/username/username_cubit.dart';
+import 'package:tonight/application/challenge_story/cubit/challenge_story_cubit.dart';
+import 'package:tonight/application/challenges/challenges_cubit.dart';
 import 'package:tonight/application/chats/aggregator/chats_aggregator.dart';
 import 'package:tonight/application/chats/bloc/chats_bloc.dart';
 import 'package:tonight/application/clubs/club_city_picker/club_city_picker_bloc.dart';
@@ -46,6 +49,9 @@ import 'package:tonight/application/clubs/club_rewards/club_rewards_cubit.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/customer_email/customer_email_cubit.dart';
 import 'package:tonight/application/daily_spin/daily_spin_cubit.dart';
+import 'package:tonight/application/dashboard/aggregator/dashboard_aggregator.dart';
+import 'package:tonight/application/dashboard/bloc/dashboard_bloc.dart';
+import 'package:tonight/application/dashboard/bloc/tonight_events_from_venues_bloc.dart';
 import 'package:tonight/application/event_chat/aggregator/event_chat_aggregator.dart';
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
 import 'package:tonight/application/event_participants/event_participants_bloc.dart';
@@ -62,9 +68,12 @@ import 'package:tonight/application/events/event_filters/event_filters_cubit.dar
 import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/application/events/event_tickets/event_tickets_cubit.dart';
 import 'package:tonight/application/invoice_data/invoice_data_cubit.dart';
+import 'package:tonight/application/marketplace_discount_details/marketplace_discount_details_cubit.dart';
+import 'package:tonight/application/marketplace_discounts/marketplace_discounts_bloc.dart';
 import 'package:tonight/application/onboarding/onboarding_cubit.dart';
 import 'package:tonight/application/onboarding_user_details/onboarding_user_details_cubit.dart';
 import 'package:tonight/application/payment_method/payment_method_cubit.dart';
+import 'package:tonight/application/photo_preview/photo_preview_cubit.dart';
 import 'package:tonight/application/profile/profile_bloc.dart';
 import 'package:tonight/application/push_notifications/push_notifications_cubit.dart';
 import 'package:tonight/application/redeem_tonight_voucher/redeem_tonight_voucher_cubit.dart';
@@ -73,44 +82,54 @@ import 'package:tonight/application/sign_in_with_phone_number/sign_in_with_phone
 import 'package:tonight/application/ticket_checkout/aggregator/ticket_checkout_aggregator.dart';
 import 'package:tonight/application/ticket_checkout/bloc/ticket_checkout_bloc.dart';
 import 'package:tonight/application/tickets/tickets_bloc.dart';
-import 'package:tonight/application/tonight/tonight_cubit.dart';
-import 'package:tonight/application/tonight_events/aggregator/tonight_events_aggregator.dart';
-import 'package:tonight/application/tonight_events/bloc/tonight_events_bloc.dart';
 import 'package:tonight/application/update_profile_picture/update_profile_picture_cubit.dart';
 import 'package:tonight/application/user_city_picker/user_city_picker_bloc.dart';
 import 'package:tonight/application/user_details/user_details_cubit.dart';
 import 'package:tonight/application/user_wall_photo_preview/user_wall_photo_preview_cubit.dart';
 import 'package:tonight/application/verify_phone_number/verify_phone_number_cubit.dart';
+import 'package:tonight/application/video_preview/video_preview_cubit.dart';
 import 'package:tonight/application/vouchers/aggregator/vouchers_aggregator.dart';
 import 'package:tonight/application/vouchers/bloc/vouchers_bloc.dart';
 import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
 import 'package:tonight/application/wall_photos_filters/wall_photos_filters_cubit.dart';
+import 'package:tonight/domain/app_settings/app_settings_facade.dart';
+import 'package:tonight/domain/challenge_stories/challenge_story_facade.dart';
+import 'package:tonight/domain/challenges/challenge_facade.dart';
 import 'package:tonight/domain/club_rewards/club_rewards_aggregator.dart';
 import 'package:tonight/domain/daily_spin/daily_spin_facade.dart';
 import 'package:tonight/domain/event_review/event_review_aggregator.dart';
 import 'package:tonight/domain/festivals/festival_facade.dart';
+import 'package:tonight/domain/marketplace_discounts/marketplace_discount_facade.dart';
 import 'package:tonight/domain/messages/message_facade.dart';
 import 'package:tonight/domain/participants/participant_facade.dart';
 import 'package:tonight/domain/places/places_facade.dart';
 import 'package:tonight/domain/rooms/room_facade.dart';
+import 'package:tonight/domain/story_interactions/story_interactions_facade.dart';
 import 'package:tonight/domain/time_task_vouchers/time_task_voucher_facade.dart';
 import 'package:tonight/domain/time_tasks/time_task_facade.dart';
 import 'package:tonight/domain/tonight_vouchers/tonight_voucher_facade.dart';
 import 'package:tonight/domain/user_app_links/user_app_links_facade.dart';
 import 'package:tonight/domain/user_details/user_details_aggregator.dart';
+import 'package:tonight/domain/user_marketplace_discounts/user_marketplace_discount_facade.dart';
 import 'package:tonight/domain/user_profile/user_profile_aggregator.dart';
 import 'package:tonight/domain/user_tonight_vouchers/user_tonight_voucher_facade.dart';
 import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
+import 'package:tonight/infrastructure/app_settings/firebase_app_settings_facade.dart';
+import 'package:tonight/infrastructure/challenge_stories/firebase_challenge_story_facade.dart';
+import 'package:tonight/infrastructure/challenges/firebase_challenge_facade.dart';
 import 'package:tonight/infrastructure/daily_spin/firebase_daily_spin_facade.dart';
 import 'package:tonight/infrastructure/festivals/firebase_festival_facade.dart';
 import 'package:tonight/infrastructure/google_places/google_places_facade.dart';
+import 'package:tonight/infrastructure/marketplace_discounts/firebase_marketplace_discounts_facade.dart';
 import 'package:tonight/infrastructure/messages/firebase_message_facade.dart';
 import 'package:tonight/infrastructure/participants/firebase_participant_facade.dart';
 import 'package:tonight/infrastructure/rooms/firebase_room_facade.dart';
+import 'package:tonight/infrastructure/story_interactions/firebase_story_interactions_facade.dart';
 import 'package:tonight/infrastructure/time_task_vouchers/firebase_time_task_voucher_facade.dart';
 import 'package:tonight/infrastructure/time_tasks/firebase_time_task_facade.dart';
 import 'package:tonight/infrastructure/tonight_vouchers/firebase_tonight_voucher_facade.dart';
 import 'package:tonight/infrastructure/user_app_links/firebase_user_app_links_facade.dart';
+import 'package:tonight/infrastructure/user_marketplace_discounts/firebase_user_marketplace_discount_facade.dart';
 import 'package:tonight/infrastructure/user_tonight_vouchers/firebase_user_tonight_voucher_facade.dart';
 import 'package:tonight/infrastructure/wall_photos/firebase_wall_photo_facade.dart';
 
@@ -333,7 +352,7 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => TonightEventsBloc(
+    () => TonightEventsFromVenuesBloc(
       getIt(),
     ),
   );
@@ -392,7 +411,9 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => TonightCubit(),
+    () => DashboardBloc(
+      getIt(),
+    ),
   );
 
   getIt.registerFactory(
@@ -457,6 +478,53 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => CustomerEmailCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => MarketplaceDiscountsBloc(
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => MarketplaceDiscountDetailsCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => AddChallengeStoryCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => ChallengeStoryCubit(
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => ChallengesCubit(
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => VideoPreviewCubit(
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => PhotoPreviewCubit(
+      getIt(),
       getIt(),
     ),
   );
@@ -735,6 +803,59 @@ void _registerFacades() {
       getIt(),
     ),
   );
+
+  getIt.registerLazySingleton<MarketplaceDiscountFacade>(
+    () => FirebaseMarketplaceDiscountFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<UserMarketplaceDiscountFacade>(
+    () => FirebaseUserMarketplaceDiscountFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<ChallengeFacade>(
+    () => FirebaseChallengeFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<ChallengeStoryFacade>(
+    () => FirebaseChallengeStoryFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<StoryInteractionsFacade>(
+    () => FirebaseStoryInteractionsFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<AppSettingsFacade>(
+    () => FirebaseAppSettingsFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
 }
 
 void _registerAggregators() {
@@ -783,7 +904,13 @@ void _registerAggregators() {
   );
 
   getIt.registerLazySingleton(
-    () => TonightEventsAggregator(
+    () => DashboardAggregator(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
       getIt(),
       getIt(),
       getIt(),

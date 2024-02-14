@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:tonight/application/tonight_events/models/event_participant_model.dart';
+import 'package:tonight/application/dashboard/models/event_participant_model.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 
 class EventParticipantListTile extends StatelessWidget {

@@ -10,8 +10,8 @@ class CircleNetworkPhoto extends StatelessWidget {
 
   const CircleNetworkPhoto({
     required this.photoUrl,
-    required this.containerSize,
-    required this.loaderSize,
+    this.containerSize = 40,
+    this.loaderSize = 16,
     Key? key,
   }) : super(key: key);
 
@@ -32,6 +32,7 @@ class CircleNetworkPhoto extends StatelessWidget {
       imageBuilder: (context, imageProvider) => CircleAvatar(
         radius: containerSize / 2,
         backgroundImage: imageProvider,
+        backgroundColor: Colors.transparent,
       ),
     );
   }

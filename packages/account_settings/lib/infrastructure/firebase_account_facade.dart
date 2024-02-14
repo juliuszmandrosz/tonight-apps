@@ -35,6 +35,11 @@ class FirebaseAccountFacade implements UserAccountFacade {
 
   @override
   Stream<Either<UserAccountFailure, UserAccount>> getUserAccount() async* {
+    if (_firebaseAuth.currentUser == null ||
+        _firebaseAuth.currentUser!.isAnonymous) {
+      yield left(const UserAccountFailure.permissionDenied());
+      return;
+    }
     final userDocRef = _firestore.getCurrentUserDocRef(_firebaseAuth);
     yield* userDocRef
         .snapshots()
@@ -58,13 +63,39 @@ class FirebaseAccountFacade implements UserAccountFacade {
   }
 
   @override
+  Future<Either<UserAccountFailure, Option<UserAccount>>>
+      getCurrentUser() async {
+    try {
+      if (_firebaseAuth.currentUser == null ||
+          _firebaseAuth.currentUser!.isAnonymous) {
+        return right(none());
+      }
+      final user = await _firestore.getCurrentUserDocRef(_firebaseAuth).get();
+      return right(some(UserAccountDto.fromFirebase(user).toDomain()));
+    } on FirebaseException catch (e) {
+      return left(
+        await handleFirebaseError<UserAccountFailure>(
+          logger: _logger,
+          crashlytics: _crashlytics,
+          exception: e,
+          message: 'Firebase Exception getting current user EXCEPTION: $e',
+          unexpectedFailure: const UserAccountFailure.unexpected(),
+          permissionDeniedFailure: const UserAccountFailure.permissionDenied(),
+        ),
+      );
+    }
+  }
+
+  @override
   Future<Either<UserAccountFailure, Unit>> submitOnboardingForUser({
     required String username,
+    required bool isNewsletterSubscribed,
     required String? cityId,
     required String? cityName,
     required DateTime? birthdate,
     required String? gender,
     required Uint8List? profilePicture,
+    required String? email,
   }) async {
     try {
       if (await _checkIfUsernameExists(username)) {
@@ -85,6 +116,8 @@ class FirebaseAccountFacade implements UserAccountFacade {
         'cityName': cityName,
         'birthdate': birthdate != null ? Timestamp.fromDate(birthdate) : null,
         'gender': gender,
+        'isNewsletterSubscribed': isNewsletterSubscribed,
+        'email': email,
       });
       return right(unit);
     } on FirebaseException catch (e) {

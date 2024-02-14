@@ -6,6 +6,7 @@ class DenseListTile extends StatelessWidget {
   final Widget? subtitle;
   final Widget? trailing;
   final VoidCallback? onTap;
+  final EdgeInsetsGeometry? contentPadding;
   final bool enabled;
 
   const DenseListTile({
@@ -14,6 +15,7 @@ class DenseListTile extends StatelessWidget {
     this.subtitle,
     this.trailing,
     this.onTap,
+    this.contentPadding,
     this.enabled = true,
     Key? key,
   }) : super(key: key);
@@ -24,7 +26,8 @@ class DenseListTile extends StatelessWidget {
       enabled: enabled,
       onTap: onTap,
       dense: true,
-      contentPadding: const EdgeInsets.only(left: 0.0, right: 0.0),
+      contentPadding:
+          contentPadding ?? const EdgeInsets.only(left: 0.0, right: 0.0),
       title: title,
       subtitle: subtitle,
       trailing: trailing,

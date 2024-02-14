@@ -38,7 +38,7 @@ class EventChatPage extends StatelessWidget {
             return FailureInfo(
               retryCallback: () => context.read<EventChatBloc>().add(
                     EventChatEvent.chatInitialized(
-                      event: event,
+                      roomId: event.id,
                       participant: currentUser,
                     ),
                   ),

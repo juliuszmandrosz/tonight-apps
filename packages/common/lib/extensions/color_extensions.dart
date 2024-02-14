@@ -21,6 +21,41 @@ extension ColorUtils on Color {
   }
 }
 
+extension MedalColors on Color {
+  static const gold = Color(0xFFD4AF37);
+  static const silver = Color(0xFFC0C0C0);
+  static const bronze = Color(0xFFCD7F32);
+  static const goldHighlight = Color(0xFFF6E58F);
+  static const silverHighlight = Color(0xFFE8E8E8);
+  static const bronzeHighlight = Color(0xFFE5A772);
+
+  Color getMedalColor(int place) {
+    switch (place) {
+      case 1:
+        return gold;
+      case 2:
+        return silver;
+      case 3:
+        return bronze;
+      default:
+        return Colors.grey[200]!;
+    }
+  }
+
+  Color getHighlightMedalColor(int place) {
+    switch (place) {
+      case 1:
+        return goldHighlight;
+      case 2:
+        return silverHighlight;
+      case 3:
+        return bronzeHighlight;
+      default:
+        return Colors.grey[200]!;
+    }
+  }
+}
+
 extension ColorExtensions on BuildContext {
   Color get primaryColor => Theme.of(this).colorScheme.primary;
 

@@ -41,10 +41,11 @@ class RaverFortuneWheel extends HookWidget {
               height: 50,
               child: Text(
                 state.spinStatus.isSuccess()
+                    // TODO - add translation
                     ? '${S().congratsYouWin} ${state.reward.getOrCrash()} '
-                        '${S().raverCoinsReward(state.reward.getOrCrash())}!'
+                        'Tonight ${S().tokens(state.reward.getOrCrash())}!'
                     : '${S().youGetDailySpin}.\n'
-                        '${S().spinAndWinCoins}!',
+                        'zakręć i wygraj Tonight ${S().tokens(2)}!',
                 style: context.titleLarge,
                 textAlign: TextAlign.center,
               ),
@@ -95,7 +96,7 @@ class RaverFortuneWheel extends HookWidget {
                           ),
                           SvgPicture.asset(
                             'assets/icons/raver_coin.svg',
-                            semanticsLabel: 'Raver Coin',
+                            semanticsLabel: 'Tonight Token',
                             height: 60,
                           ),
                         ],

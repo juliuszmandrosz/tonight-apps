@@ -14,6 +14,7 @@ class UserAccount extends Equatable {
   final int raverCoins;
   final int ticketsCount;
   final int photosCount;
+  final bool isNewsletterSubscribed;
   final DateTime? lastDailySpinAt;
   final DateTime? lastTonightVoucherUseAt;
   final DateTime? birthdate;
@@ -36,6 +37,7 @@ class UserAccount extends Equatable {
     this.raverCoins = 0,
     this.ticketsCount = 0,
     this.photosCount = 0,
+    this.isNewsletterSubscribed = false,
     this.birthdate,
     this.gender,
     this.cityId,
@@ -62,6 +64,7 @@ class UserAccount extends Equatable {
         gender,
         cityId,
         cityName,
+        isNewsletterSubscribed,
       ];
 
   UserAccount copyWith({
@@ -83,6 +86,7 @@ class UserAccount extends Equatable {
     Option<String>? gender,
     Option<String>? cityId,
     Option<String>? cityName,
+    bool? isNewsletterSubscribed,
   }) {
     return UserAccount(
       id: id,
@@ -134,6 +138,8 @@ class UserAccount extends Equatable {
               (value) => value,
             )
           : this.cityName,
+      isNewsletterSubscribed:
+          isNewsletterSubscribed ?? this.isNewsletterSubscribed,
     );
   }
 }

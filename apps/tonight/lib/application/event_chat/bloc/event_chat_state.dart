@@ -10,10 +10,11 @@ class EventChatState with _$EventChatState {
     required List<ChatMessage> oldMessages,
     required List<ChatMessage> displayedMessages,
     required List<ChatMessage> queuedMessages,
-    required Option<Event> event,
+    required Option<String> roomId,
     required String inputMessage,
     required List<String> reportingMessageIds,
     required Option<String> snackbarMessage,
+    required Option<ChatMessage> newMessage,
   }) = _EventChatState;
 
   factory EventChatState.initial() => EventChatState(
@@ -24,9 +25,10 @@ class EventChatState with _$EventChatState {
         oldMessages: [],
         displayedMessages: [],
         queuedMessages: [],
-        event: none(),
+        roomId: none(),
         inputMessage: '',
         reportingMessageIds: [],
         snackbarMessage: none(),
+        newMessage: none(),
       );
 }
