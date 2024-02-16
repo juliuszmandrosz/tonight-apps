@@ -66,12 +66,12 @@ class _NavigatorPageState extends State<NavigatorPage> {
                     tabsRouter.setActiveIndex(i);
                   },
                   destinations: [
-                    const NavigationDestination(
-                      icon: Icon(
+                    NavigationDestination(
+                      icon: const Icon(
                         Icons.home_outlined,
                         size: iconSize,
                       ),
-                      label: 'Tonight',
+                      label: S().home,
                     ),
                     NavigationDestination(
                       icon: const Icon(

@@ -130,12 +130,12 @@ class _$OnboardingUserDetailsStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_OnboardingUserDetailsStateCopyWith<$Res>
+abstract class _$$OnboardingUserDetailsStateImplCopyWith<$Res>
     implements $OnboardingUserDetailsStateCopyWith<$Res> {
-  factory _$$_OnboardingUserDetailsStateCopyWith(
-          _$_OnboardingUserDetailsState value,
-          $Res Function(_$_OnboardingUserDetailsState) then) =
-      __$$_OnboardingUserDetailsStateCopyWithImpl<$Res>;
+  factory _$$OnboardingUserDetailsStateImplCopyWith(
+          _$OnboardingUserDetailsStateImpl value,
+          $Res Function(_$OnboardingUserDetailsStateImpl) then) =
+      __$$OnboardingUserDetailsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -153,13 +153,13 @@ abstract class _$$_OnboardingUserDetailsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OnboardingUserDetailsStateCopyWithImpl<$Res>
+class __$$OnboardingUserDetailsStateImplCopyWithImpl<$Res>
     extends _$OnboardingUserDetailsStateCopyWithImpl<$Res,
-        _$_OnboardingUserDetailsState>
-    implements _$$_OnboardingUserDetailsStateCopyWith<$Res> {
-  __$$_OnboardingUserDetailsStateCopyWithImpl(
-      _$_OnboardingUserDetailsState _value,
-      $Res Function(_$_OnboardingUserDetailsState) _then)
+        _$OnboardingUserDetailsStateImpl>
+    implements _$$OnboardingUserDetailsStateImplCopyWith<$Res> {
+  __$$OnboardingUserDetailsStateImplCopyWithImpl(
+      _$OnboardingUserDetailsStateImpl _value,
+      $Res Function(_$OnboardingUserDetailsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -177,7 +177,7 @@ class __$$_OnboardingUserDetailsStateCopyWithImpl<$Res>
     Object? email = null,
     Object? isSignedInWithEmail = null,
   }) {
-    return _then(_$_OnboardingUserDetailsState(
+    return _then(_$OnboardingUserDetailsStateImpl(
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -228,8 +228,8 @@ class __$$_OnboardingUserDetailsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnboardingUserDetailsState implements _OnboardingUserDetailsState {
-  const _$_OnboardingUserDetailsState(
+class _$OnboardingUserDetailsStateImpl implements _OnboardingUserDetailsState {
+  const _$OnboardingUserDetailsStateImpl(
       {required this.username,
       required this.birthdate,
       required this.gender,
@@ -271,10 +271,10 @@ class _$_OnboardingUserDetailsState implements _OnboardingUserDetailsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnboardingUserDetailsState &&
+            other is _$OnboardingUserDetailsStateImpl &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.birthdate, birthdate) ||
@@ -314,25 +314,26 @@ class _$_OnboardingUserDetailsState implements _OnboardingUserDetailsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnboardingUserDetailsStateCopyWith<_$_OnboardingUserDetailsState>
-      get copyWith => __$$_OnboardingUserDetailsStateCopyWithImpl<
-          _$_OnboardingUserDetailsState>(this, _$identity);
+  _$$OnboardingUserDetailsStateImplCopyWith<_$OnboardingUserDetailsStateImpl>
+      get copyWith => __$$OnboardingUserDetailsStateImplCopyWithImpl<
+          _$OnboardingUserDetailsStateImpl>(this, _$identity);
 }
 
 abstract class _OnboardingUserDetailsState
     implements OnboardingUserDetailsState {
   const factory _OnboardingUserDetailsState(
-      {required final Username username,
-      required final BirthdateValueObject birthdate,
-      required final GenderValueObject gender,
-      required final CityValueObject city,
-      required final FormzStatus formStatus,
-      required final FormzStatus emailDialogStatus,
-      required final Option<String> errorMessage,
-      required final Option<Uint8List> userPhoto,
-      required final bool isNewsletterSubscribed,
-      required final EmailInput email,
-      required final bool isSignedInWithEmail}) = _$_OnboardingUserDetailsState;
+          {required final Username username,
+          required final BirthdateValueObject birthdate,
+          required final GenderValueObject gender,
+          required final CityValueObject city,
+          required final FormzStatus formStatus,
+          required final FormzStatus emailDialogStatus,
+          required final Option<String> errorMessage,
+          required final Option<Uint8List> userPhoto,
+          required final bool isNewsletterSubscribed,
+          required final EmailInput email,
+          required final bool isSignedInWithEmail}) =
+      _$OnboardingUserDetailsStateImpl;
 
   @override
   Username get username;
@@ -358,6 +359,6 @@ abstract class _OnboardingUserDetailsState
   bool get isSignedInWithEmail;
   @override
   @JsonKey(ignore: true)
-  _$$_OnboardingUserDetailsStateCopyWith<_$_OnboardingUserDetailsState>
+  _$$OnboardingUserDetailsStateImplCopyWith<_$OnboardingUserDetailsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

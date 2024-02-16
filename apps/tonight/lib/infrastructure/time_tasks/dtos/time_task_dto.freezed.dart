@@ -135,11 +135,11 @@ class _$TimeTaskDtoCopyWithImpl<$Res, $Val extends TimeTaskDto>
 }
 
 /// @nodoc
-abstract class _$$_TimeTaskDtoCopyWith<$Res>
+abstract class _$$TimeTaskDtoImplCopyWith<$Res>
     implements $TimeTaskDtoCopyWith<$Res> {
-  factory _$$_TimeTaskDtoCopyWith(
-          _$_TimeTaskDto value, $Res Function(_$_TimeTaskDto) then) =
-      __$$_TimeTaskDtoCopyWithImpl<$Res>;
+  factory _$$TimeTaskDtoImplCopyWith(
+          _$TimeTaskDtoImpl value, $Res Function(_$TimeTaskDtoImpl) then) =
+      __$$TimeTaskDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -157,11 +157,11 @@ abstract class _$$_TimeTaskDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TimeTaskDtoCopyWithImpl<$Res>
-    extends _$TimeTaskDtoCopyWithImpl<$Res, _$_TimeTaskDto>
-    implements _$$_TimeTaskDtoCopyWith<$Res> {
-  __$$_TimeTaskDtoCopyWithImpl(
-      _$_TimeTaskDto _value, $Res Function(_$_TimeTaskDto) _then)
+class __$$TimeTaskDtoImplCopyWithImpl<$Res>
+    extends _$TimeTaskDtoCopyWithImpl<$Res, _$TimeTaskDtoImpl>
+    implements _$$TimeTaskDtoImplCopyWith<$Res> {
+  __$$TimeTaskDtoImplCopyWithImpl(
+      _$TimeTaskDtoImpl _value, $Res Function(_$TimeTaskDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -179,7 +179,7 @@ class __$$_TimeTaskDtoCopyWithImpl<$Res>
     Object? poolLimit = null,
     Object? currentUsage = null,
   }) {
-    return _then(_$_TimeTaskDto(
+    return _then(_$TimeTaskDtoImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -231,8 +231,8 @@ class __$$_TimeTaskDtoCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable()
-class _$_TimeTaskDto extends _TimeTaskDto {
-  const _$_TimeTaskDto(
+class _$TimeTaskDtoImpl extends _TimeTaskDto {
+  const _$TimeTaskDtoImpl(
       {@JsonKey(includeToJson: false, includeFromJson: false) this.id,
       required this.eventId,
       required this.eventName,
@@ -246,8 +246,8 @@ class _$_TimeTaskDto extends _TimeTaskDto {
       required this.currentUsage})
       : super._();
 
-  factory _$_TimeTaskDto.fromJson(Map<String, dynamic> json) =>
-      _$$_TimeTaskDtoFromJson(json);
+  factory _$TimeTaskDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TimeTaskDtoImplFromJson(json);
 
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
@@ -280,10 +280,10 @@ class _$_TimeTaskDto extends _TimeTaskDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TimeTaskDto &&
+            other is _$TimeTaskDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.eventId, eventId) || other.eventId == eventId) &&
             (identical(other.eventName, eventName) ||
@@ -325,12 +325,12 @@ class _$_TimeTaskDto extends _TimeTaskDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TimeTaskDtoCopyWith<_$_TimeTaskDto> get copyWith =>
-      __$$_TimeTaskDtoCopyWithImpl<_$_TimeTaskDto>(this, _$identity);
+  _$$TimeTaskDtoImplCopyWith<_$TimeTaskDtoImpl> get copyWith =>
+      __$$TimeTaskDtoImplCopyWithImpl<_$TimeTaskDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TimeTaskDtoToJson(
+    return _$$TimeTaskDtoImplToJson(
       this,
     );
   }
@@ -348,11 +348,11 @@ abstract class _TimeTaskDto extends TimeTaskDto {
       required final String descriptionPl,
       required final String descriptionEn,
       required final int poolLimit,
-      required final int currentUsage}) = _$_TimeTaskDto;
+      required final int currentUsage}) = _$TimeTaskDtoImpl;
   const _TimeTaskDto._() : super._();
 
   factory _TimeTaskDto.fromJson(Map<String, dynamic> json) =
-      _$_TimeTaskDto.fromJson;
+      _$TimeTaskDtoImpl.fromJson;
 
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
@@ -380,6 +380,6 @@ abstract class _TimeTaskDto extends TimeTaskDto {
   int get currentUsage;
   @override
   @JsonKey(ignore: true)
-  _$$_TimeTaskDtoCopyWith<_$_TimeTaskDto> get copyWith =>
+  _$$TimeTaskDtoImplCopyWith<_$TimeTaskDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

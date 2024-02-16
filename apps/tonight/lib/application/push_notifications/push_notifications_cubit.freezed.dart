@@ -64,23 +64,25 @@ class _$PushNotificationsStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_PushNotificationsStateCopyWith<$Res>
+abstract class _$$PushNotificationsStateImplCopyWith<$Res>
     implements $PushNotificationsStateCopyWith<$Res> {
-  factory _$$_PushNotificationsStateCopyWith(_$_PushNotificationsState value,
-          $Res Function(_$_PushNotificationsState) then) =
-      __$$_PushNotificationsStateCopyWithImpl<$Res>;
+  factory _$$PushNotificationsStateImplCopyWith(
+          _$PushNotificationsStateImpl value,
+          $Res Function(_$PushNotificationsStateImpl) then) =
+      __$$PushNotificationsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({CubitStatus status, String? lastHandledMessageId});
 }
 
 /// @nodoc
-class __$$_PushNotificationsStateCopyWithImpl<$Res>
+class __$$PushNotificationsStateImplCopyWithImpl<$Res>
     extends _$PushNotificationsStateCopyWithImpl<$Res,
-        _$_PushNotificationsState>
-    implements _$$_PushNotificationsStateCopyWith<$Res> {
-  __$$_PushNotificationsStateCopyWithImpl(_$_PushNotificationsState _value,
-      $Res Function(_$_PushNotificationsState) _then)
+        _$PushNotificationsStateImpl>
+    implements _$$PushNotificationsStateImplCopyWith<$Res> {
+  __$$PushNotificationsStateImplCopyWithImpl(
+      _$PushNotificationsStateImpl _value,
+      $Res Function(_$PushNotificationsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -89,7 +91,7 @@ class __$$_PushNotificationsStateCopyWithImpl<$Res>
     Object? status = null,
     Object? lastHandledMessageId = freezed,
   }) {
-    return _then(_$_PushNotificationsState(
+    return _then(_$PushNotificationsStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -104,8 +106,8 @@ class __$$_PushNotificationsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PushNotificationsState extends _PushNotificationsState {
-  _$_PushNotificationsState(
+class _$PushNotificationsStateImpl extends _PushNotificationsState {
+  _$PushNotificationsStateImpl(
       {required this.status, required this.lastHandledMessageId})
       : super._();
 
@@ -120,10 +122,10 @@ class _$_PushNotificationsState extends _PushNotificationsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PushNotificationsState &&
+            other is _$PushNotificationsStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.lastHandledMessageId, lastHandledMessageId) ||
                 other.lastHandledMessageId == lastHandledMessageId));
@@ -135,15 +137,16 @@ class _$_PushNotificationsState extends _PushNotificationsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PushNotificationsStateCopyWith<_$_PushNotificationsState> get copyWith =>
-      __$$_PushNotificationsStateCopyWithImpl<_$_PushNotificationsState>(
-          this, _$identity);
+  _$$PushNotificationsStateImplCopyWith<_$PushNotificationsStateImpl>
+      get copyWith => __$$PushNotificationsStateImplCopyWithImpl<
+          _$PushNotificationsStateImpl>(this, _$identity);
 }
 
 abstract class _PushNotificationsState extends PushNotificationsState {
   factory _PushNotificationsState(
-      {required final CubitStatus status,
-      required final String? lastHandledMessageId}) = _$_PushNotificationsState;
+          {required final CubitStatus status,
+          required final String? lastHandledMessageId}) =
+      _$PushNotificationsStateImpl;
   _PushNotificationsState._() : super._();
 
   @override
@@ -152,6 +155,6 @@ abstract class _PushNotificationsState extends PushNotificationsState {
   String? get lastHandledMessageId;
   @override
   @JsonKey(ignore: true)
-  _$$_PushNotificationsStateCopyWith<_$_PushNotificationsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PushNotificationsStateImplCopyWith<_$PushNotificationsStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

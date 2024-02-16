@@ -106,20 +106,20 @@ class _$WallPhotosEventCopyWithImpl<$Res, $Val extends WallPhotosEvent>
 }
 
 /// @nodoc
-abstract class _$$_WallPhotosFetchedCopyWith<$Res> {
-  factory _$$_WallPhotosFetchedCopyWith(_$_WallPhotosFetched value,
-          $Res Function(_$_WallPhotosFetched) then) =
-      __$$_WallPhotosFetchedCopyWithImpl<$Res>;
+abstract class _$$WallPhotosFetchedImplCopyWith<$Res> {
+  factory _$$WallPhotosFetchedImplCopyWith(_$WallPhotosFetchedImpl value,
+          $Res Function(_$WallPhotosFetchedImpl) then) =
+      __$$WallPhotosFetchedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Option<LatLng> userLocation});
 }
 
 /// @nodoc
-class __$$_WallPhotosFetchedCopyWithImpl<$Res>
-    extends _$WallPhotosEventCopyWithImpl<$Res, _$_WallPhotosFetched>
-    implements _$$_WallPhotosFetchedCopyWith<$Res> {
-  __$$_WallPhotosFetchedCopyWithImpl(
-      _$_WallPhotosFetched _value, $Res Function(_$_WallPhotosFetched) _then)
+class __$$WallPhotosFetchedImplCopyWithImpl<$Res>
+    extends _$WallPhotosEventCopyWithImpl<$Res, _$WallPhotosFetchedImpl>
+    implements _$$WallPhotosFetchedImplCopyWith<$Res> {
+  __$$WallPhotosFetchedImplCopyWithImpl(_$WallPhotosFetchedImpl _value,
+      $Res Function(_$WallPhotosFetchedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -127,7 +127,7 @@ class __$$_WallPhotosFetchedCopyWithImpl<$Res>
   $Res call({
     Object? userLocation = null,
   }) {
-    return _then(_$_WallPhotosFetched(
+    return _then(_$WallPhotosFetchedImpl(
       null == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
@@ -138,8 +138,8 @@ class __$$_WallPhotosFetchedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WallPhotosFetched implements _WallPhotosFetched {
-  const _$_WallPhotosFetched(this.userLocation);
+class _$WallPhotosFetchedImpl implements _WallPhotosFetched {
+  const _$WallPhotosFetchedImpl(this.userLocation);
 
   @override
   final Option<LatLng> userLocation;
@@ -150,10 +150,10 @@ class _$_WallPhotosFetched implements _WallPhotosFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WallPhotosFetched &&
+            other is _$WallPhotosFetchedImpl &&
             (identical(other.userLocation, userLocation) ||
                 other.userLocation == userLocation));
   }
@@ -164,8 +164,8 @@ class _$_WallPhotosFetched implements _WallPhotosFetched {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WallPhotosFetchedCopyWith<_$_WallPhotosFetched> get copyWith =>
-      __$$_WallPhotosFetchedCopyWithImpl<_$_WallPhotosFetched>(
+  _$$WallPhotosFetchedImplCopyWith<_$WallPhotosFetchedImpl> get copyWith =>
+      __$$WallPhotosFetchedImplCopyWithImpl<_$WallPhotosFetchedImpl>(
           this, _$identity);
 
   @override
@@ -264,34 +264,35 @@ class _$_WallPhotosFetched implements _WallPhotosFetched {
 
 abstract class _WallPhotosFetched implements WallPhotosEvent {
   const factory _WallPhotosFetched(final Option<LatLng> userLocation) =
-      _$_WallPhotosFetched;
+      _$WallPhotosFetchedImpl;
 
   Option<LatLng> get userLocation;
   @JsonKey(ignore: true)
-  _$$_WallPhotosFetchedCopyWith<_$_WallPhotosFetched> get copyWith =>
+  _$$WallPhotosFetchedImplCopyWith<_$WallPhotosFetchedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NextPagePhotosFetchedCopyWith<$Res> {
-  factory _$$_NextPagePhotosFetchedCopyWith(_$_NextPagePhotosFetched value,
-          $Res Function(_$_NextPagePhotosFetched) then) =
-      __$$_NextPagePhotosFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPagePhotosFetchedImplCopyWith<$Res> {
+  factory _$$NextPagePhotosFetchedImplCopyWith(
+          _$NextPagePhotosFetchedImpl value,
+          $Res Function(_$NextPagePhotosFetchedImpl) then) =
+      __$$NextPagePhotosFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPagePhotosFetchedCopyWithImpl<$Res>
-    extends _$WallPhotosEventCopyWithImpl<$Res, _$_NextPagePhotosFetched>
-    implements _$$_NextPagePhotosFetchedCopyWith<$Res> {
-  __$$_NextPagePhotosFetchedCopyWithImpl(_$_NextPagePhotosFetched _value,
-      $Res Function(_$_NextPagePhotosFetched) _then)
+class __$$NextPagePhotosFetchedImplCopyWithImpl<$Res>
+    extends _$WallPhotosEventCopyWithImpl<$Res, _$NextPagePhotosFetchedImpl>
+    implements _$$NextPagePhotosFetchedImplCopyWith<$Res> {
+  __$$NextPagePhotosFetchedImplCopyWithImpl(_$NextPagePhotosFetchedImpl _value,
+      $Res Function(_$NextPagePhotosFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
-  const _$_NextPagePhotosFetched();
+class _$NextPagePhotosFetchedImpl implements _NextPagePhotosFetched {
+  const _$NextPagePhotosFetchedImpl();
 
   @override
   String toString() {
@@ -299,9 +300,10 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NextPagePhotosFetched);
+        (other.runtimeType == runtimeType &&
+            other is _$NextPagePhotosFetchedImpl);
   }
 
   @override
@@ -402,29 +404,29 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
 }
 
 abstract class _NextPagePhotosFetched implements WallPhotosEvent {
-  const factory _NextPagePhotosFetched() = _$_NextPagePhotosFetched;
+  const factory _NextPagePhotosFetched() = _$NextPagePhotosFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_WallPhotosRefreshedCopyWith<$Res> {
-  factory _$$_WallPhotosRefreshedCopyWith(_$_WallPhotosRefreshed value,
-          $Res Function(_$_WallPhotosRefreshed) then) =
-      __$$_WallPhotosRefreshedCopyWithImpl<$Res>;
+abstract class _$$WallPhotosRefreshedImplCopyWith<$Res> {
+  factory _$$WallPhotosRefreshedImplCopyWith(_$WallPhotosRefreshedImpl value,
+          $Res Function(_$WallPhotosRefreshedImpl) then) =
+      __$$WallPhotosRefreshedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_WallPhotosRefreshedCopyWithImpl<$Res>
-    extends _$WallPhotosEventCopyWithImpl<$Res, _$_WallPhotosRefreshed>
-    implements _$$_WallPhotosRefreshedCopyWith<$Res> {
-  __$$_WallPhotosRefreshedCopyWithImpl(_$_WallPhotosRefreshed _value,
-      $Res Function(_$_WallPhotosRefreshed) _then)
+class __$$WallPhotosRefreshedImplCopyWithImpl<$Res>
+    extends _$WallPhotosEventCopyWithImpl<$Res, _$WallPhotosRefreshedImpl>
+    implements _$$WallPhotosRefreshedImplCopyWith<$Res> {
+  __$$WallPhotosRefreshedImplCopyWithImpl(_$WallPhotosRefreshedImpl _value,
+      $Res Function(_$WallPhotosRefreshedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_WallPhotosRefreshed implements _WallPhotosRefreshed {
-  const _$_WallPhotosRefreshed();
+class _$WallPhotosRefreshedImpl implements _WallPhotosRefreshed {
+  const _$WallPhotosRefreshedImpl();
 
   @override
   String toString() {
@@ -432,9 +434,10 @@ class _$_WallPhotosRefreshed implements _WallPhotosRefreshed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_WallPhotosRefreshed);
+        (other.runtimeType == runtimeType &&
+            other is _$WallPhotosRefreshedImpl);
   }
 
   @override
@@ -535,24 +538,24 @@ class _$_WallPhotosRefreshed implements _WallPhotosRefreshed {
 }
 
 abstract class _WallPhotosRefreshed implements WallPhotosEvent {
-  const factory _WallPhotosRefreshed() = _$_WallPhotosRefreshed;
+  const factory _WallPhotosRefreshed() = _$WallPhotosRefreshedImpl;
 }
 
 /// @nodoc
-abstract class _$$_WallPhotoReportedCopyWith<$Res> {
-  factory _$$_WallPhotoReportedCopyWith(_$_WallPhotoReported value,
-          $Res Function(_$_WallPhotoReported) then) =
-      __$$_WallPhotoReportedCopyWithImpl<$Res>;
+abstract class _$$WallPhotoReportedImplCopyWith<$Res> {
+  factory _$$WallPhotoReportedImplCopyWith(_$WallPhotoReportedImpl value,
+          $Res Function(_$WallPhotoReportedImpl) then) =
+      __$$WallPhotoReportedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({WallPhoto photo});
 }
 
 /// @nodoc
-class __$$_WallPhotoReportedCopyWithImpl<$Res>
-    extends _$WallPhotosEventCopyWithImpl<$Res, _$_WallPhotoReported>
-    implements _$$_WallPhotoReportedCopyWith<$Res> {
-  __$$_WallPhotoReportedCopyWithImpl(
-      _$_WallPhotoReported _value, $Res Function(_$_WallPhotoReported) _then)
+class __$$WallPhotoReportedImplCopyWithImpl<$Res>
+    extends _$WallPhotosEventCopyWithImpl<$Res, _$WallPhotoReportedImpl>
+    implements _$$WallPhotoReportedImplCopyWith<$Res> {
+  __$$WallPhotoReportedImplCopyWithImpl(_$WallPhotoReportedImpl _value,
+      $Res Function(_$WallPhotoReportedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -560,7 +563,7 @@ class __$$_WallPhotoReportedCopyWithImpl<$Res>
   $Res call({
     Object? photo = null,
   }) {
-    return _then(_$_WallPhotoReported(
+    return _then(_$WallPhotoReportedImpl(
       null == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
@@ -571,8 +574,8 @@ class __$$_WallPhotoReportedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WallPhotoReported implements _WallPhotoReported {
-  const _$_WallPhotoReported(this.photo);
+class _$WallPhotoReportedImpl implements _WallPhotoReported {
+  const _$WallPhotoReportedImpl(this.photo);
 
   @override
   final WallPhoto photo;
@@ -583,10 +586,10 @@ class _$_WallPhotoReported implements _WallPhotoReported {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WallPhotoReported &&
+            other is _$WallPhotoReportedImpl &&
             (identical(other.photo, photo) || other.photo == photo));
   }
 
@@ -596,8 +599,8 @@ class _$_WallPhotoReported implements _WallPhotoReported {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WallPhotoReportedCopyWith<_$_WallPhotoReported> get copyWith =>
-      __$$_WallPhotoReportedCopyWithImpl<_$_WallPhotoReported>(
+  _$$WallPhotoReportedImplCopyWith<_$WallPhotoReportedImpl> get copyWith =>
+      __$$WallPhotoReportedImplCopyWithImpl<_$WallPhotoReportedImpl>(
           this, _$identity);
 
   @override
@@ -696,19 +699,19 @@ class _$_WallPhotoReported implements _WallPhotoReported {
 
 abstract class _WallPhotoReported implements WallPhotosEvent {
   const factory _WallPhotoReported(final WallPhoto photo) =
-      _$_WallPhotoReported;
+      _$WallPhotoReportedImpl;
 
   WallPhoto get photo;
   @JsonKey(ignore: true)
-  _$$_WallPhotoReportedCopyWith<_$_WallPhotoReported> get copyWith =>
+  _$$WallPhotoReportedImplCopyWith<_$WallPhotoReportedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_MenuFiltersAppliedCopyWith<$Res> {
-  factory _$$_MenuFiltersAppliedCopyWith(_$_MenuFiltersApplied value,
-          $Res Function(_$_MenuFiltersApplied) then) =
-      __$$_MenuFiltersAppliedCopyWithImpl<$Res>;
+abstract class _$$MenuFiltersAppliedImplCopyWith<$Res> {
+  factory _$$MenuFiltersAppliedImplCopyWith(_$MenuFiltersAppliedImpl value,
+          $Res Function(_$MenuFiltersAppliedImpl) then) =
+      __$$MenuFiltersAppliedImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {WallPhotoFilters filters,
@@ -718,11 +721,11 @@ abstract class _$$_MenuFiltersAppliedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_MenuFiltersAppliedCopyWithImpl<$Res>
-    extends _$WallPhotosEventCopyWithImpl<$Res, _$_MenuFiltersApplied>
-    implements _$$_MenuFiltersAppliedCopyWith<$Res> {
-  __$$_MenuFiltersAppliedCopyWithImpl(
-      _$_MenuFiltersApplied _value, $Res Function(_$_MenuFiltersApplied) _then)
+class __$$MenuFiltersAppliedImplCopyWithImpl<$Res>
+    extends _$WallPhotosEventCopyWithImpl<$Res, _$MenuFiltersAppliedImpl>
+    implements _$$MenuFiltersAppliedImplCopyWith<$Res> {
+  __$$MenuFiltersAppliedImplCopyWithImpl(_$MenuFiltersAppliedImpl _value,
+      $Res Function(_$MenuFiltersAppliedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -731,7 +734,7 @@ class __$$_MenuFiltersAppliedCopyWithImpl<$Res>
     Object? filters = null,
     Object? appliedFilters = null,
   }) {
-    return _then(_$_MenuFiltersApplied(
+    return _then(_$MenuFiltersAppliedImpl(
       filters: null == filters
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
@@ -754,8 +757,8 @@ class __$$_MenuFiltersAppliedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MenuFiltersApplied implements _MenuFiltersApplied {
-  const _$_MenuFiltersApplied(
+class _$MenuFiltersAppliedImpl implements _MenuFiltersApplied {
+  const _$MenuFiltersAppliedImpl(
       {required this.filters,
       required final Map<MenuWallPhotoFilter, IFilter> appliedFilters})
       : _appliedFilters = appliedFilters;
@@ -776,10 +779,10 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MenuFiltersApplied &&
+            other is _$MenuFiltersAppliedImpl &&
             (identical(other.filters, filters) || other.filters == filters) &&
             const DeepCollectionEquality()
                 .equals(other._appliedFilters, _appliedFilters));
@@ -792,8 +795,8 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MenuFiltersAppliedCopyWith<_$_MenuFiltersApplied> get copyWith =>
-      __$$_MenuFiltersAppliedCopyWithImpl<_$_MenuFiltersApplied>(
+  _$$MenuFiltersAppliedImplCopyWith<_$MenuFiltersAppliedImpl> get copyWith =>
+      __$$MenuFiltersAppliedImplCopyWithImpl<_$MenuFiltersAppliedImpl>(
           this, _$identity);
 
   @override
@@ -894,30 +897,30 @@ abstract class _MenuFiltersApplied implements WallPhotosEvent {
   const factory _MenuFiltersApplied(
           {required final WallPhotoFilters filters,
           required final Map<MenuWallPhotoFilter, IFilter> appliedFilters}) =
-      _$_MenuFiltersApplied;
+      _$MenuFiltersAppliedImpl;
 
   WallPhotoFilters get filters;
   Map<MenuWallPhotoFilter, IFilter> get appliedFilters;
   @JsonKey(ignore: true)
-  _$$_MenuFiltersAppliedCopyWith<_$_MenuFiltersApplied> get copyWith =>
+  _$$MenuFiltersAppliedImplCopyWith<_$MenuFiltersAppliedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_MenuFilterRemovedCopyWith<$Res> {
-  factory _$$_MenuFilterRemovedCopyWith(_$_MenuFilterRemoved value,
-          $Res Function(_$_MenuFilterRemoved) then) =
-      __$$_MenuFilterRemovedCopyWithImpl<$Res>;
+abstract class _$$MenuFilterRemovedImplCopyWith<$Res> {
+  factory _$$MenuFilterRemovedImplCopyWith(_$MenuFilterRemovedImpl value,
+          $Res Function(_$MenuFilterRemovedImpl) then) =
+      __$$MenuFilterRemovedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({MenuWallPhotoFilter filter});
 }
 
 /// @nodoc
-class __$$_MenuFilterRemovedCopyWithImpl<$Res>
-    extends _$WallPhotosEventCopyWithImpl<$Res, _$_MenuFilterRemoved>
-    implements _$$_MenuFilterRemovedCopyWith<$Res> {
-  __$$_MenuFilterRemovedCopyWithImpl(
-      _$_MenuFilterRemoved _value, $Res Function(_$_MenuFilterRemoved) _then)
+class __$$MenuFilterRemovedImplCopyWithImpl<$Res>
+    extends _$WallPhotosEventCopyWithImpl<$Res, _$MenuFilterRemovedImpl>
+    implements _$$MenuFilterRemovedImplCopyWith<$Res> {
+  __$$MenuFilterRemovedImplCopyWithImpl(_$MenuFilterRemovedImpl _value,
+      $Res Function(_$MenuFilterRemovedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -925,7 +928,7 @@ class __$$_MenuFilterRemovedCopyWithImpl<$Res>
   $Res call({
     Object? filter = null,
   }) {
-    return _then(_$_MenuFilterRemoved(
+    return _then(_$MenuFilterRemovedImpl(
       null == filter
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
@@ -936,8 +939,8 @@ class __$$_MenuFilterRemovedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MenuFilterRemoved implements _MenuFilterRemoved {
-  const _$_MenuFilterRemoved(this.filter);
+class _$MenuFilterRemovedImpl implements _MenuFilterRemoved {
+  const _$MenuFilterRemovedImpl(this.filter);
 
   @override
   final MenuWallPhotoFilter filter;
@@ -948,10 +951,10 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MenuFilterRemoved &&
+            other is _$MenuFilterRemovedImpl &&
             (identical(other.filter, filter) || other.filter == filter));
   }
 
@@ -961,8 +964,8 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MenuFilterRemovedCopyWith<_$_MenuFilterRemoved> get copyWith =>
-      __$$_MenuFilterRemovedCopyWithImpl<_$_MenuFilterRemoved>(
+  _$$MenuFilterRemovedImplCopyWith<_$MenuFilterRemovedImpl> get copyWith =>
+      __$$MenuFilterRemovedImplCopyWithImpl<_$MenuFilterRemovedImpl>(
           this, _$identity);
 
   @override
@@ -1061,11 +1064,11 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
 
 abstract class _MenuFilterRemoved implements WallPhotosEvent {
   const factory _MenuFilterRemoved(final MenuWallPhotoFilter filter) =
-      _$_MenuFilterRemoved;
+      _$MenuFilterRemovedImpl;
 
   MenuWallPhotoFilter get filter;
   @JsonKey(ignore: true)
-  _$$_MenuFilterRemovedCopyWith<_$_MenuFilterRemoved> get copyWith =>
+  _$$MenuFilterRemovedImplCopyWith<_$MenuFilterRemovedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1187,11 +1190,11 @@ class _$WallPhotosStateCopyWithImpl<$Res, $Val extends WallPhotosState>
 }
 
 /// @nodoc
-abstract class _$$_WallPhotosStateCopyWith<$Res>
+abstract class _$$WallPhotosStateImplCopyWith<$Res>
     implements $WallPhotosStateCopyWith<$Res> {
-  factory _$$_WallPhotosStateCopyWith(
-          _$_WallPhotosState value, $Res Function(_$_WallPhotosState) then) =
-      __$$_WallPhotosStateCopyWithImpl<$Res>;
+  factory _$$WallPhotosStateImplCopyWith(_$WallPhotosStateImpl value,
+          $Res Function(_$WallPhotosStateImpl) then) =
+      __$$WallPhotosStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1211,11 +1214,11 @@ abstract class _$$_WallPhotosStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_WallPhotosStateCopyWithImpl<$Res>
-    extends _$WallPhotosStateCopyWithImpl<$Res, _$_WallPhotosState>
-    implements _$$_WallPhotosStateCopyWith<$Res> {
-  __$$_WallPhotosStateCopyWithImpl(
-      _$_WallPhotosState _value, $Res Function(_$_WallPhotosState) _then)
+class __$$WallPhotosStateImplCopyWithImpl<$Res>
+    extends _$WallPhotosStateCopyWithImpl<$Res, _$WallPhotosStateImpl>
+    implements _$$WallPhotosStateImplCopyWith<$Res> {
+  __$$WallPhotosStateImplCopyWithImpl(
+      _$WallPhotosStateImpl _value, $Res Function(_$WallPhotosStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1232,7 +1235,7 @@ class __$$_WallPhotosStateCopyWithImpl<$Res>
     Object? wallPhotoFilters = null,
     Object? appliedMenuFilters = null,
   }) {
-    return _then(_$_WallPhotosState(
+    return _then(_$WallPhotosStateImpl(
       getPhotosStatus: null == getPhotosStatus
           ? _value.getPhotosStatus
           : getPhotosStatus // ignore: cast_nullable_to_non_nullable
@@ -1279,8 +1282,8 @@ class __$$_WallPhotosStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WallPhotosState implements _WallPhotosState {
-  const _$_WallPhotosState(
+class _$WallPhotosStateImpl implements _WallPhotosState {
+  const _$WallPhotosStateImpl(
       {required this.getPhotosStatus,
       required this.nextPageStatus,
       required final List<WallPhoto> photos,
@@ -1341,10 +1344,10 @@ class _$_WallPhotosState implements _WallPhotosState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WallPhotosState &&
+            other is _$WallPhotosStateImpl &&
             (identical(other.getPhotosStatus, getPhotosStatus) ||
                 other.getPhotosStatus == getPhotosStatus) &&
             (identical(other.nextPageStatus, nextPageStatus) ||
@@ -1382,8 +1385,9 @@ class _$_WallPhotosState implements _WallPhotosState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WallPhotosStateCopyWith<_$_WallPhotosState> get copyWith =>
-      __$$_WallPhotosStateCopyWithImpl<_$_WallPhotosState>(this, _$identity);
+  _$$WallPhotosStateImplCopyWith<_$WallPhotosStateImpl> get copyWith =>
+      __$$WallPhotosStateImplCopyWithImpl<_$WallPhotosStateImpl>(
+          this, _$identity);
 }
 
 abstract class _WallPhotosState implements WallPhotosState {
@@ -1398,7 +1402,7 @@ abstract class _WallPhotosState implements WallPhotosState {
       required final Option<String> snackbarMessage,
       required final WallPhotoFilters wallPhotoFilters,
       required final Map<MenuWallPhotoFilter, IFilter>
-          appliedMenuFilters}) = _$_WallPhotosState;
+          appliedMenuFilters}) = _$WallPhotosStateImpl;
 
   @override
   CubitStatus get getPhotosStatus;
@@ -1422,6 +1426,6 @@ abstract class _WallPhotosState implements WallPhotosState {
   Map<MenuWallPhotoFilter, IFilter> get appliedMenuFilters;
   @override
   @JsonKey(ignore: true)
-  _$$_WallPhotosStateCopyWith<_$_WallPhotosState> get copyWith =>
+  _$$WallPhotosStateImplCopyWith<_$WallPhotosStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

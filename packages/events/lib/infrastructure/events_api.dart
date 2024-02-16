@@ -100,8 +100,8 @@ class EventsApiImpl implements EventsApi {
   @override
   Future<List> getTonightEvents(Option<LatLng> userLocation) async {
     final filters = EventFilters.empty().copyWith(
-      isTonightEventFilter: IsTonightEventFilter(isTonightEvent: true),
-    );
+        // isTonightEventFilter: IsTonightEventFilter(isTonightEvent: true),
+        );
     final sortBy = userLocation.fold(
       () => 'attending:desc',
       (loc) => 'location(${loc.latitude}, ${loc.longitude}):asc',

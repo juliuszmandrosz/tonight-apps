@@ -86,11 +86,11 @@ class _$DailySpinStateCopyWithImpl<$Res, $Val extends DailySpinState>
 }
 
 /// @nodoc
-abstract class _$$_DailySpinStateCopyWith<$Res>
+abstract class _$$DailySpinStateImplCopyWith<$Res>
     implements $DailySpinStateCopyWith<$Res> {
-  factory _$$_DailySpinStateCopyWith(
-          _$_DailySpinState value, $Res Function(_$_DailySpinState) then) =
-      __$$_DailySpinStateCopyWithImpl<$Res>;
+  factory _$$DailySpinStateImplCopyWith(_$DailySpinStateImpl value,
+          $Res Function(_$DailySpinStateImpl) then) =
+      __$$DailySpinStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_DailySpinStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DailySpinStateCopyWithImpl<$Res>
-    extends _$DailySpinStateCopyWithImpl<$Res, _$_DailySpinState>
-    implements _$$_DailySpinStateCopyWith<$Res> {
-  __$$_DailySpinStateCopyWithImpl(
-      _$_DailySpinState _value, $Res Function(_$_DailySpinState) _then)
+class __$$DailySpinStateImplCopyWithImpl<$Res>
+    extends _$DailySpinStateCopyWithImpl<$Res, _$DailySpinStateImpl>
+    implements _$$DailySpinStateImplCopyWith<$Res> {
+  __$$DailySpinStateImplCopyWithImpl(
+      _$DailySpinStateImpl _value, $Res Function(_$DailySpinStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_DailySpinStateCopyWithImpl<$Res>
     Object? reward = null,
     Object? availableRewards = null,
   }) {
-    return _then(_$_DailySpinState(
+    return _then(_$DailySpinStateImpl(
       getRewardsStatus: null == getRewardsStatus
           ? _value.getRewardsStatus
           : getRewardsStatus // ignore: cast_nullable_to_non_nullable
@@ -145,8 +145,8 @@ class __$$_DailySpinStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DailySpinState implements _DailySpinState {
-  const _$_DailySpinState(
+class _$DailySpinStateImpl implements _DailySpinState {
+  const _$DailySpinStateImpl(
       {required this.getRewardsStatus,
       required this.spinStatus,
       required this.snackbarMessage,
@@ -170,10 +170,10 @@ class _$_DailySpinState implements _DailySpinState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DailySpinState &&
+            other is _$DailySpinStateImpl &&
             (identical(other.getRewardsStatus, getRewardsStatus) ||
                 other.getRewardsStatus == getRewardsStatus) &&
             (identical(other.spinStatus, spinStatus) ||
@@ -192,8 +192,9 @@ class _$_DailySpinState implements _DailySpinState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DailySpinStateCopyWith<_$_DailySpinState> get copyWith =>
-      __$$_DailySpinStateCopyWithImpl<_$_DailySpinState>(this, _$identity);
+  _$$DailySpinStateImplCopyWith<_$DailySpinStateImpl> get copyWith =>
+      __$$DailySpinStateImplCopyWithImpl<_$DailySpinStateImpl>(
+          this, _$identity);
 }
 
 abstract class _DailySpinState implements DailySpinState {
@@ -202,7 +203,7 @@ abstract class _DailySpinState implements DailySpinState {
       required final CubitStatus spinStatus,
       required final Option<String> snackbarMessage,
       required final Option<int> reward,
-      required final DailySpinRewards availableRewards}) = _$_DailySpinState;
+      required final DailySpinRewards availableRewards}) = _$DailySpinStateImpl;
 
   @override
   CubitStatus get getRewardsStatus;
@@ -216,6 +217,6 @@ abstract class _DailySpinState implements DailySpinState {
   DailySpinRewards get availableRewards;
   @override
   @JsonKey(ignore: true)
-  _$$_DailySpinStateCopyWith<_$_DailySpinState> get copyWith =>
+  _$$DailySpinStateImplCopyWith<_$DailySpinStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

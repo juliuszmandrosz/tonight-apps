@@ -35,6 +35,7 @@ import 'package:tonight/application/add_wall_photo/aggregator/add_wall_photo_agg
 import 'package:tonight/application/add_wall_photo/cubit/add_wall_photo_cubit.dart';
 import 'package:tonight/application/app_links/terms_of_service_cubit.dart';
 import 'package:tonight/application/app_settings/app_settings_cubit.dart';
+import 'package:tonight/application/artists/artists_cubit.dart';
 import 'package:tonight/application/auth/sign_in/cubit/sign_in_cubit.dart';
 import 'package:tonight/application/auth/username/username_cubit.dart';
 import 'package:tonight/application/challenge_story/cubit/challenge_story_cubit.dart';
@@ -46,6 +47,7 @@ import 'package:tonight/application/clubs/club_details/club_details_cubit.dart';
 import 'package:tonight/application/clubs/club_details/club_photos/club_photos_bloc.dart';
 import 'package:tonight/application/clubs/club_list/clubs_bloc.dart';
 import 'package:tonight/application/clubs/club_rewards/club_rewards_cubit.dart';
+import 'package:tonight/application/collectives/collectives_cubit.dart';
 import 'package:tonight/application/core/user_location/user_location_cubit.dart';
 import 'package:tonight/application/customer_email/customer_email_cubit.dart';
 import 'package:tonight/application/daily_spin/daily_spin_cubit.dart';
@@ -96,6 +98,7 @@ import 'package:tonight/domain/app_settings/app_settings_facade.dart';
 import 'package:tonight/domain/challenge_stories/challenge_story_facade.dart';
 import 'package:tonight/domain/challenges/challenge_facade.dart';
 import 'package:tonight/domain/club_rewards/club_rewards_aggregator.dart';
+import 'package:tonight/domain/collectives/collective_facade.dart';
 import 'package:tonight/domain/daily_spin/daily_spin_facade.dart';
 import 'package:tonight/domain/event_review/event_review_aggregator.dart';
 import 'package:tonight/domain/festivals/festival_facade.dart';
@@ -117,6 +120,7 @@ import 'package:tonight/domain/wall_photos/wall_photo_facade.dart';
 import 'package:tonight/infrastructure/app_settings/firebase_app_settings_facade.dart';
 import 'package:tonight/infrastructure/challenge_stories/firebase_challenge_story_facade.dart';
 import 'package:tonight/infrastructure/challenges/firebase_challenge_facade.dart';
+import 'package:tonight/infrastructure/collectives/firebase_collective_facade.dart';
 import 'package:tonight/infrastructure/daily_spin/firebase_daily_spin_facade.dart';
 import 'package:tonight/infrastructure/festivals/firebase_festival_facade.dart';
 import 'package:tonight/infrastructure/google_places/google_places_facade.dart';
@@ -528,6 +532,18 @@ void _registerCubits() {
       getIt(),
     ),
   );
+
+  getIt.registerFactory(
+    () => CollectivesCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerFactory(
+    () => ArtistsCubit(
+      getIt(),
+    ),
+  );
 }
 
 void _registerFacades() {
@@ -851,6 +867,14 @@ void _registerFacades() {
 
   getIt.registerLazySingleton<AppSettingsFacade>(
     () => FirebaseAppSettingsFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<CollectiveFacade>(
+    () => FirebaseCollectiveFacade(
       getIt(),
       getIt(),
       getIt(),

@@ -107,20 +107,20 @@ class _$TicketCheckoutEventCopyWithImpl<$Res, $Val extends TicketCheckoutEvent>
 }
 
 /// @nodoc
-abstract class _$$_StateInitializedCopyWith<$Res> {
-  factory _$$_StateInitializedCopyWith(
-          _$_StateInitialized value, $Res Function(_$_StateInitialized) then) =
-      __$$_StateInitializedCopyWithImpl<$Res>;
+abstract class _$$StateInitializedImplCopyWith<$Res> {
+  factory _$$StateInitializedImplCopyWith(_$StateInitializedImpl value,
+          $Res Function(_$StateInitializedImpl) then) =
+      __$$StateInitializedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Event event});
 }
 
 /// @nodoc
-class __$$_StateInitializedCopyWithImpl<$Res>
-    extends _$TicketCheckoutEventCopyWithImpl<$Res, _$_StateInitialized>
-    implements _$$_StateInitializedCopyWith<$Res> {
-  __$$_StateInitializedCopyWithImpl(
-      _$_StateInitialized _value, $Res Function(_$_StateInitialized) _then)
+class __$$StateInitializedImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutEventCopyWithImpl<$Res, _$StateInitializedImpl>
+    implements _$$StateInitializedImplCopyWith<$Res> {
+  __$$StateInitializedImplCopyWithImpl(_$StateInitializedImpl _value,
+      $Res Function(_$StateInitializedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -128,7 +128,7 @@ class __$$_StateInitializedCopyWithImpl<$Res>
   $Res call({
     Object? event = null,
   }) {
-    return _then(_$_StateInitialized(
+    return _then(_$StateInitializedImpl(
       null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
@@ -139,8 +139,8 @@ class __$$_StateInitializedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StateInitialized implements _StateInitialized {
-  const _$_StateInitialized(this.event);
+class _$StateInitializedImpl implements _StateInitialized {
+  const _$StateInitializedImpl(this.event);
 
   @override
   final Event event;
@@ -151,10 +151,10 @@ class _$_StateInitialized implements _StateInitialized {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StateInitialized &&
+            other is _$StateInitializedImpl &&
             (identical(other.event, event) || other.event == event));
   }
 
@@ -164,8 +164,9 @@ class _$_StateInitialized implements _StateInitialized {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StateInitializedCopyWith<_$_StateInitialized> get copyWith =>
-      __$$_StateInitializedCopyWithImpl<_$_StateInitialized>(this, _$identity);
+  _$$StateInitializedImplCopyWith<_$StateInitializedImpl> get copyWith =>
+      __$$StateInitializedImplCopyWithImpl<_$StateInitializedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -263,34 +264,34 @@ class _$_StateInitialized implements _StateInitialized {
 }
 
 abstract class _StateInitialized implements TicketCheckoutEvent {
-  const factory _StateInitialized(final Event event) = _$_StateInitialized;
+  const factory _StateInitialized(final Event event) = _$StateInitializedImpl;
 
   Event get event;
   @JsonKey(ignore: true)
-  _$$_StateInitializedCopyWith<_$_StateInitialized> get copyWith =>
+  _$$StateInitializedImplCopyWith<_$StateInitializedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ProceededToPaymentCopyWith<$Res> {
-  factory _$$_ProceededToPaymentCopyWith(_$_ProceededToPayment value,
-          $Res Function(_$_ProceededToPayment) then) =
-      __$$_ProceededToPaymentCopyWithImpl<$Res>;
+abstract class _$$ProceededToPaymentImplCopyWith<$Res> {
+  factory _$$ProceededToPaymentImplCopyWith(_$ProceededToPaymentImpl value,
+          $Res Function(_$ProceededToPaymentImpl) then) =
+      __$$ProceededToPaymentImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ProceededToPaymentCopyWithImpl<$Res>
-    extends _$TicketCheckoutEventCopyWithImpl<$Res, _$_ProceededToPayment>
-    implements _$$_ProceededToPaymentCopyWith<$Res> {
-  __$$_ProceededToPaymentCopyWithImpl(
-      _$_ProceededToPayment _value, $Res Function(_$_ProceededToPayment) _then)
+class __$$ProceededToPaymentImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutEventCopyWithImpl<$Res, _$ProceededToPaymentImpl>
+    implements _$$ProceededToPaymentImplCopyWith<$Res> {
+  __$$ProceededToPaymentImplCopyWithImpl(_$ProceededToPaymentImpl _value,
+      $Res Function(_$ProceededToPaymentImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ProceededToPayment implements _ProceededToPayment {
-  const _$_ProceededToPayment();
+class _$ProceededToPaymentImpl implements _ProceededToPayment {
+  const _$ProceededToPaymentImpl();
 
   @override
   String toString() {
@@ -298,9 +299,9 @@ class _$_ProceededToPayment implements _ProceededToPayment {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ProceededToPayment);
+        (other.runtimeType == runtimeType && other is _$ProceededToPaymentImpl);
   }
 
   @override
@@ -402,29 +403,29 @@ class _$_ProceededToPayment implements _ProceededToPayment {
 }
 
 abstract class _ProceededToPayment implements TicketCheckoutEvent {
-  const factory _ProceededToPayment() = _$_ProceededToPayment;
+  const factory _ProceededToPayment() = _$ProceededToPaymentImpl;
 }
 
 /// @nodoc
-abstract class _$$_PromotionCodeFetchedCopyWith<$Res> {
-  factory _$$_PromotionCodeFetchedCopyWith(_$_PromotionCodeFetched value,
-          $Res Function(_$_PromotionCodeFetched) then) =
-      __$$_PromotionCodeFetchedCopyWithImpl<$Res>;
+abstract class _$$PromotionCodeFetchedImplCopyWith<$Res> {
+  factory _$$PromotionCodeFetchedImplCopyWith(_$PromotionCodeFetchedImpl value,
+          $Res Function(_$PromotionCodeFetchedImpl) then) =
+      __$$PromotionCodeFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PromotionCodeFetchedCopyWithImpl<$Res>
-    extends _$TicketCheckoutEventCopyWithImpl<$Res, _$_PromotionCodeFetched>
-    implements _$$_PromotionCodeFetchedCopyWith<$Res> {
-  __$$_PromotionCodeFetchedCopyWithImpl(_$_PromotionCodeFetched _value,
-      $Res Function(_$_PromotionCodeFetched) _then)
+class __$$PromotionCodeFetchedImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutEventCopyWithImpl<$Res, _$PromotionCodeFetchedImpl>
+    implements _$$PromotionCodeFetchedImplCopyWith<$Res> {
+  __$$PromotionCodeFetchedImplCopyWithImpl(_$PromotionCodeFetchedImpl _value,
+      $Res Function(_$PromotionCodeFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_PromotionCodeFetched implements _PromotionCodeFetched {
-  const _$_PromotionCodeFetched();
+class _$PromotionCodeFetchedImpl implements _PromotionCodeFetched {
+  const _$PromotionCodeFetchedImpl();
 
   @override
   String toString() {
@@ -432,9 +433,10 @@ class _$_PromotionCodeFetched implements _PromotionCodeFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PromotionCodeFetched);
+        (other.runtimeType == runtimeType &&
+            other is _$PromotionCodeFetchedImpl);
   }
 
   @override
@@ -536,24 +538,24 @@ class _$_PromotionCodeFetched implements _PromotionCodeFetched {
 }
 
 abstract class _PromotionCodeFetched implements TicketCheckoutEvent {
-  const factory _PromotionCodeFetched() = _$_PromotionCodeFetched;
+  const factory _PromotionCodeFetched() = _$PromotionCodeFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_PromotionCodeChangedCopyWith<$Res> {
-  factory _$$_PromotionCodeChangedCopyWith(_$_PromotionCodeChanged value,
-          $Res Function(_$_PromotionCodeChanged) then) =
-      __$$_PromotionCodeChangedCopyWithImpl<$Res>;
+abstract class _$$PromotionCodeChangedImplCopyWith<$Res> {
+  factory _$$PromotionCodeChangedImplCopyWith(_$PromotionCodeChangedImpl value,
+          $Res Function(_$PromotionCodeChangedImpl) then) =
+      __$$PromotionCodeChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String code});
 }
 
 /// @nodoc
-class __$$_PromotionCodeChangedCopyWithImpl<$Res>
-    extends _$TicketCheckoutEventCopyWithImpl<$Res, _$_PromotionCodeChanged>
-    implements _$$_PromotionCodeChangedCopyWith<$Res> {
-  __$$_PromotionCodeChangedCopyWithImpl(_$_PromotionCodeChanged _value,
-      $Res Function(_$_PromotionCodeChanged) _then)
+class __$$PromotionCodeChangedImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutEventCopyWithImpl<$Res, _$PromotionCodeChangedImpl>
+    implements _$$PromotionCodeChangedImplCopyWith<$Res> {
+  __$$PromotionCodeChangedImplCopyWithImpl(_$PromotionCodeChangedImpl _value,
+      $Res Function(_$PromotionCodeChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -561,7 +563,7 @@ class __$$_PromotionCodeChangedCopyWithImpl<$Res>
   $Res call({
     Object? code = null,
   }) {
-    return _then(_$_PromotionCodeChanged(
+    return _then(_$PromotionCodeChangedImpl(
       null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -572,8 +574,8 @@ class __$$_PromotionCodeChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PromotionCodeChanged implements _PromotionCodeChanged {
-  const _$_PromotionCodeChanged(this.code);
+class _$PromotionCodeChangedImpl implements _PromotionCodeChanged {
+  const _$PromotionCodeChangedImpl(this.code);
 
   @override
   final String code;
@@ -584,10 +586,10 @@ class _$_PromotionCodeChanged implements _PromotionCodeChanged {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PromotionCodeChanged &&
+            other is _$PromotionCodeChangedImpl &&
             (identical(other.code, code) || other.code == code));
   }
 
@@ -597,9 +599,10 @@ class _$_PromotionCodeChanged implements _PromotionCodeChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PromotionCodeChangedCopyWith<_$_PromotionCodeChanged> get copyWith =>
-      __$$_PromotionCodeChangedCopyWithImpl<_$_PromotionCodeChanged>(
-          this, _$identity);
+  _$$PromotionCodeChangedImplCopyWith<_$PromotionCodeChangedImpl>
+      get copyWith =>
+          __$$PromotionCodeChangedImplCopyWithImpl<_$PromotionCodeChangedImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -698,29 +701,30 @@ class _$_PromotionCodeChanged implements _PromotionCodeChanged {
 
 abstract class _PromotionCodeChanged implements TicketCheckoutEvent {
   const factory _PromotionCodeChanged(final String code) =
-      _$_PromotionCodeChanged;
+      _$PromotionCodeChangedImpl;
 
   String get code;
   @JsonKey(ignore: true)
-  _$$_PromotionCodeChangedCopyWith<_$_PromotionCodeChanged> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PromotionCodeChangedImplCopyWith<_$PromotionCodeChangedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_TicketQuantityChangedCopyWith<$Res> {
-  factory _$$_TicketQuantityChangedCopyWith(_$_TicketQuantityChanged value,
-          $Res Function(_$_TicketQuantityChanged) then) =
-      __$$_TicketQuantityChangedCopyWithImpl<$Res>;
+abstract class _$$TicketQuantityChangedImplCopyWith<$Res> {
+  factory _$$TicketQuantityChangedImplCopyWith(
+          _$TicketQuantityChangedImpl value,
+          $Res Function(_$TicketQuantityChangedImpl) then) =
+      __$$TicketQuantityChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int quantity});
 }
 
 /// @nodoc
-class __$$_TicketQuantityChangedCopyWithImpl<$Res>
-    extends _$TicketCheckoutEventCopyWithImpl<$Res, _$_TicketQuantityChanged>
-    implements _$$_TicketQuantityChangedCopyWith<$Res> {
-  __$$_TicketQuantityChangedCopyWithImpl(_$_TicketQuantityChanged _value,
-      $Res Function(_$_TicketQuantityChanged) _then)
+class __$$TicketQuantityChangedImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutEventCopyWithImpl<$Res, _$TicketQuantityChangedImpl>
+    implements _$$TicketQuantityChangedImplCopyWith<$Res> {
+  __$$TicketQuantityChangedImplCopyWithImpl(_$TicketQuantityChangedImpl _value,
+      $Res Function(_$TicketQuantityChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -728,7 +732,7 @@ class __$$_TicketQuantityChangedCopyWithImpl<$Res>
   $Res call({
     Object? quantity = null,
   }) {
-    return _then(_$_TicketQuantityChanged(
+    return _then(_$TicketQuantityChangedImpl(
       null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -739,8 +743,8 @@ class __$$_TicketQuantityChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TicketQuantityChanged implements _TicketQuantityChanged {
-  const _$_TicketQuantityChanged(this.quantity);
+class _$TicketQuantityChangedImpl implements _TicketQuantityChanged {
+  const _$TicketQuantityChangedImpl(this.quantity);
 
   @override
   final int quantity;
@@ -751,10 +755,10 @@ class _$_TicketQuantityChanged implements _TicketQuantityChanged {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TicketQuantityChanged &&
+            other is _$TicketQuantityChangedImpl &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity));
   }
@@ -765,9 +769,9 @@ class _$_TicketQuantityChanged implements _TicketQuantityChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TicketQuantityChangedCopyWith<_$_TicketQuantityChanged> get copyWith =>
-      __$$_TicketQuantityChangedCopyWithImpl<_$_TicketQuantityChanged>(
-          this, _$identity);
+  _$$TicketQuantityChangedImplCopyWith<_$TicketQuantityChangedImpl>
+      get copyWith => __$$TicketQuantityChangedImplCopyWithImpl<
+          _$TicketQuantityChangedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -866,34 +870,35 @@ class _$_TicketQuantityChanged implements _TicketQuantityChanged {
 
 abstract class _TicketQuantityChanged implements TicketCheckoutEvent {
   const factory _TicketQuantityChanged(final int quantity) =
-      _$_TicketQuantityChanged;
+      _$TicketQuantityChangedImpl;
 
   int get quantity;
   @JsonKey(ignore: true)
-  _$$_TicketQuantityChangedCopyWith<_$_TicketQuantityChanged> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$TicketQuantityChangedImplCopyWith<_$TicketQuantityChangedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PromotionCodeResettedCopyWith<$Res> {
-  factory _$$_PromotionCodeResettedCopyWith(_$_PromotionCodeResetted value,
-          $Res Function(_$_PromotionCodeResetted) then) =
-      __$$_PromotionCodeResettedCopyWithImpl<$Res>;
+abstract class _$$PromotionCodeResettedImplCopyWith<$Res> {
+  factory _$$PromotionCodeResettedImplCopyWith(
+          _$PromotionCodeResettedImpl value,
+          $Res Function(_$PromotionCodeResettedImpl) then) =
+      __$$PromotionCodeResettedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PromotionCodeResettedCopyWithImpl<$Res>
-    extends _$TicketCheckoutEventCopyWithImpl<$Res, _$_PromotionCodeResetted>
-    implements _$$_PromotionCodeResettedCopyWith<$Res> {
-  __$$_PromotionCodeResettedCopyWithImpl(_$_PromotionCodeResetted _value,
-      $Res Function(_$_PromotionCodeResetted) _then)
+class __$$PromotionCodeResettedImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutEventCopyWithImpl<$Res, _$PromotionCodeResettedImpl>
+    implements _$$PromotionCodeResettedImplCopyWith<$Res> {
+  __$$PromotionCodeResettedImplCopyWithImpl(_$PromotionCodeResettedImpl _value,
+      $Res Function(_$PromotionCodeResettedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_PromotionCodeResetted implements _PromotionCodeResetted {
-  const _$_PromotionCodeResetted();
+class _$PromotionCodeResettedImpl implements _PromotionCodeResetted {
+  const _$PromotionCodeResettedImpl();
 
   @override
   String toString() {
@@ -901,9 +906,10 @@ class _$_PromotionCodeResetted implements _PromotionCodeResetted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PromotionCodeResetted);
+        (other.runtimeType == runtimeType &&
+            other is _$PromotionCodeResettedImpl);
   }
 
   @override
@@ -1005,24 +1011,24 @@ class _$_PromotionCodeResetted implements _PromotionCodeResetted {
 }
 
 abstract class _PromotionCodeResetted implements TicketCheckoutEvent {
-  const factory _PromotionCodeResetted() = _$_PromotionCodeResetted;
+  const factory _PromotionCodeResetted() = _$PromotionCodeResettedImpl;
 }
 
 /// @nodoc
-abstract class _$$_CustomerDataChangedCopyWith<$Res> {
-  factory _$$_CustomerDataChangedCopyWith(_$_CustomerDataChanged value,
-          $Res Function(_$_CustomerDataChanged) then) =
-      __$$_CustomerDataChangedCopyWithImpl<$Res>;
+abstract class _$$CustomerDataChangedImplCopyWith<$Res> {
+  factory _$$CustomerDataChangedImplCopyWith(_$CustomerDataChangedImpl value,
+          $Res Function(_$CustomerDataChangedImpl) then) =
+      __$$CustomerDataChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CustomerData data});
 }
 
 /// @nodoc
-class __$$_CustomerDataChangedCopyWithImpl<$Res>
-    extends _$TicketCheckoutEventCopyWithImpl<$Res, _$_CustomerDataChanged>
-    implements _$$_CustomerDataChangedCopyWith<$Res> {
-  __$$_CustomerDataChangedCopyWithImpl(_$_CustomerDataChanged _value,
-      $Res Function(_$_CustomerDataChanged) _then)
+class __$$CustomerDataChangedImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutEventCopyWithImpl<$Res, _$CustomerDataChangedImpl>
+    implements _$$CustomerDataChangedImplCopyWith<$Res> {
+  __$$CustomerDataChangedImplCopyWithImpl(_$CustomerDataChangedImpl _value,
+      $Res Function(_$CustomerDataChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1030,7 +1036,7 @@ class __$$_CustomerDataChangedCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$_CustomerDataChanged(
+    return _then(_$CustomerDataChangedImpl(
       null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -1041,8 +1047,8 @@ class __$$_CustomerDataChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CustomerDataChanged implements _CustomerDataChanged {
-  const _$_CustomerDataChanged(this.data);
+class _$CustomerDataChangedImpl implements _CustomerDataChanged {
+  const _$CustomerDataChangedImpl(this.data);
 
   @override
   final CustomerData data;
@@ -1053,10 +1059,10 @@ class _$_CustomerDataChanged implements _CustomerDataChanged {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CustomerDataChanged &&
+            other is _$CustomerDataChangedImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -1066,8 +1072,8 @@ class _$_CustomerDataChanged implements _CustomerDataChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CustomerDataChangedCopyWith<_$_CustomerDataChanged> get copyWith =>
-      __$$_CustomerDataChangedCopyWithImpl<_$_CustomerDataChanged>(
+  _$$CustomerDataChangedImplCopyWith<_$CustomerDataChangedImpl> get copyWith =>
+      __$$CustomerDataChangedImplCopyWithImpl<_$CustomerDataChangedImpl>(
           this, _$identity);
 
   @override
@@ -1167,11 +1173,11 @@ class _$_CustomerDataChanged implements _CustomerDataChanged {
 
 abstract class _CustomerDataChanged implements TicketCheckoutEvent {
   const factory _CustomerDataChanged(final CustomerData data) =
-      _$_CustomerDataChanged;
+      _$CustomerDataChangedImpl;
 
   CustomerData get data;
   @JsonKey(ignore: true)
-  _$$_CustomerDataChangedCopyWith<_$_CustomerDataChanged> get copyWith =>
+  _$$CustomerDataChangedImplCopyWith<_$CustomerDataChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1292,11 +1298,11 @@ class _$TicketCheckoutStateCopyWithImpl<$Res, $Val extends TicketCheckoutState>
 }
 
 /// @nodoc
-abstract class _$$_TicketCheckoutStateCopyWith<$Res>
+abstract class _$$TicketCheckoutStateImplCopyWith<$Res>
     implements $TicketCheckoutStateCopyWith<$Res> {
-  factory _$$_TicketCheckoutStateCopyWith(_$_TicketCheckoutState value,
-          $Res Function(_$_TicketCheckoutState) then) =
-      __$$_TicketCheckoutStateCopyWithImpl<$Res>;
+  factory _$$TicketCheckoutStateImplCopyWith(_$TicketCheckoutStateImpl value,
+          $Res Function(_$TicketCheckoutStateImpl) then) =
+      __$$TicketCheckoutStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1314,11 +1320,11 @@ abstract class _$$_TicketCheckoutStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TicketCheckoutStateCopyWithImpl<$Res>
-    extends _$TicketCheckoutStateCopyWithImpl<$Res, _$_TicketCheckoutState>
-    implements _$$_TicketCheckoutStateCopyWith<$Res> {
-  __$$_TicketCheckoutStateCopyWithImpl(_$_TicketCheckoutState _value,
-      $Res Function(_$_TicketCheckoutState) _then)
+class __$$TicketCheckoutStateImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutStateCopyWithImpl<$Res, _$TicketCheckoutStateImpl>
+    implements _$$TicketCheckoutStateImplCopyWith<$Res> {
+  __$$TicketCheckoutStateImplCopyWithImpl(_$TicketCheckoutStateImpl _value,
+      $Res Function(_$TicketCheckoutStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1336,7 +1342,7 @@ class __$$_TicketCheckoutStateCopyWithImpl<$Res>
     Object? serviceFeeAmount = null,
     Object? ticketCheckoutData = null,
   }) {
-    return _then(_$_TicketCheckoutState(
+    return _then(_$TicketCheckoutStateImpl(
       promotionCode: null == promotionCode
           ? _value.promotionCode
           : promotionCode // ignore: cast_nullable_to_non_nullable
@@ -1387,8 +1393,8 @@ class __$$_TicketCheckoutStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TicketCheckoutState implements _TicketCheckoutState {
-  const _$_TicketCheckoutState(
+class _$TicketCheckoutStateImpl implements _TicketCheckoutState {
+  const _$TicketCheckoutStateImpl(
       {required this.promotionCode,
       required this.invalidPromotionCodeMessage,
       required this.ticketQuantity,
@@ -1430,10 +1436,10 @@ class _$_TicketCheckoutState implements _TicketCheckoutState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TicketCheckoutState &&
+            other is _$TicketCheckoutStateImpl &&
             (identical(other.promotionCode, promotionCode) ||
                 other.promotionCode == promotionCode) &&
             (identical(other.invalidPromotionCodeMessage,
@@ -1479,8 +1485,8 @@ class _$_TicketCheckoutState implements _TicketCheckoutState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TicketCheckoutStateCopyWith<_$_TicketCheckoutState> get copyWith =>
-      __$$_TicketCheckoutStateCopyWithImpl<_$_TicketCheckoutState>(
+  _$$TicketCheckoutStateImplCopyWith<_$TicketCheckoutStateImpl> get copyWith =>
+      __$$TicketCheckoutStateImplCopyWithImpl<_$TicketCheckoutStateImpl>(
           this, _$identity);
 }
 
@@ -1497,7 +1503,7 @@ abstract class _TicketCheckoutState implements TicketCheckoutState {
           required final Option<double> totalAmount,
           required final Option<double> serviceFeeAmount,
           required final Option<TicketCheckoutData> ticketCheckoutData}) =
-      _$_TicketCheckoutState;
+      _$TicketCheckoutStateImpl;
 
   @override
   PromotionCode get promotionCode;
@@ -1523,6 +1529,6 @@ abstract class _TicketCheckoutState implements TicketCheckoutState {
   Option<TicketCheckoutData> get ticketCheckoutData;
   @override
   @JsonKey(ignore: true)
-  _$$_TicketCheckoutStateCopyWith<_$_TicketCheckoutState> get copyWith =>
+  _$$TicketCheckoutStateImplCopyWith<_$TicketCheckoutStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

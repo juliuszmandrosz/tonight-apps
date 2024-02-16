@@ -83,25 +83,25 @@ class _$FestivalsEventCopyWithImpl<$Res, $Val extends FestivalsEvent>
 }
 
 /// @nodoc
-abstract class _$$_FestivalsFetchedCopyWith<$Res> {
-  factory _$$_FestivalsFetchedCopyWith(
-          _$_FestivalsFetched value, $Res Function(_$_FestivalsFetched) then) =
-      __$$_FestivalsFetchedCopyWithImpl<$Res>;
+abstract class _$$FestivalsFetchedImplCopyWith<$Res> {
+  factory _$$FestivalsFetchedImplCopyWith(_$FestivalsFetchedImpl value,
+          $Res Function(_$FestivalsFetchedImpl) then) =
+      __$$FestivalsFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FestivalsFetchedCopyWithImpl<$Res>
-    extends _$FestivalsEventCopyWithImpl<$Res, _$_FestivalsFetched>
-    implements _$$_FestivalsFetchedCopyWith<$Res> {
-  __$$_FestivalsFetchedCopyWithImpl(
-      _$_FestivalsFetched _value, $Res Function(_$_FestivalsFetched) _then)
+class __$$FestivalsFetchedImplCopyWithImpl<$Res>
+    extends _$FestivalsEventCopyWithImpl<$Res, _$FestivalsFetchedImpl>
+    implements _$$FestivalsFetchedImplCopyWith<$Res> {
+  __$$FestivalsFetchedImplCopyWithImpl(_$FestivalsFetchedImpl _value,
+      $Res Function(_$FestivalsFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_FestivalsFetched implements _FestivalsFetched {
-  const _$_FestivalsFetched();
+class _$FestivalsFetchedImpl implements _FestivalsFetched {
+  const _$FestivalsFetchedImpl();
 
   @override
   String toString() {
@@ -109,9 +109,9 @@ class _$_FestivalsFetched implements _FestivalsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FestivalsFetched);
+        (other.runtimeType == runtimeType && other is _$FestivalsFetchedImpl);
   }
 
   @override
@@ -189,30 +189,31 @@ class _$_FestivalsFetched implements _FestivalsFetched {
 }
 
 abstract class _FestivalsFetched implements FestivalsEvent {
-  const factory _FestivalsFetched() = _$_FestivalsFetched;
+  const factory _FestivalsFetched() = _$FestivalsFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_NextPageFestivalsFetchedCopyWith<$Res> {
-  factory _$$_NextPageFestivalsFetchedCopyWith(
-          _$_NextPageFestivalsFetched value,
-          $Res Function(_$_NextPageFestivalsFetched) then) =
-      __$$_NextPageFestivalsFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPageFestivalsFetchedImplCopyWith<$Res> {
+  factory _$$NextPageFestivalsFetchedImplCopyWith(
+          _$NextPageFestivalsFetchedImpl value,
+          $Res Function(_$NextPageFestivalsFetchedImpl) then) =
+      __$$NextPageFestivalsFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPageFestivalsFetchedCopyWithImpl<$Res>
-    extends _$FestivalsEventCopyWithImpl<$Res, _$_NextPageFestivalsFetched>
-    implements _$$_NextPageFestivalsFetchedCopyWith<$Res> {
-  __$$_NextPageFestivalsFetchedCopyWithImpl(_$_NextPageFestivalsFetched _value,
-      $Res Function(_$_NextPageFestivalsFetched) _then)
+class __$$NextPageFestivalsFetchedImplCopyWithImpl<$Res>
+    extends _$FestivalsEventCopyWithImpl<$Res, _$NextPageFestivalsFetchedImpl>
+    implements _$$NextPageFestivalsFetchedImplCopyWith<$Res> {
+  __$$NextPageFestivalsFetchedImplCopyWithImpl(
+      _$NextPageFestivalsFetchedImpl _value,
+      $Res Function(_$NextPageFestivalsFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPageFestivalsFetched implements _NextPageFestivalsFetched {
-  const _$_NextPageFestivalsFetched();
+class _$NextPageFestivalsFetchedImpl implements _NextPageFestivalsFetched {
+  const _$NextPageFestivalsFetchedImpl();
 
   @override
   String toString() {
@@ -220,10 +221,10 @@ class _$_NextPageFestivalsFetched implements _NextPageFestivalsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NextPageFestivalsFetched);
+            other is _$NextPageFestivalsFetchedImpl);
   }
 
   @override
@@ -301,29 +302,29 @@ class _$_NextPageFestivalsFetched implements _NextPageFestivalsFetched {
 }
 
 abstract class _NextPageFestivalsFetched implements FestivalsEvent {
-  const factory _NextPageFestivalsFetched() = _$_NextPageFestivalsFetched;
+  const factory _NextPageFestivalsFetched() = _$NextPageFestivalsFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_FestivalsRefreshedCopyWith<$Res> {
-  factory _$$_FestivalsRefreshedCopyWith(_$_FestivalsRefreshed value,
-          $Res Function(_$_FestivalsRefreshed) then) =
-      __$$_FestivalsRefreshedCopyWithImpl<$Res>;
+abstract class _$$FestivalsRefreshedImplCopyWith<$Res> {
+  factory _$$FestivalsRefreshedImplCopyWith(_$FestivalsRefreshedImpl value,
+          $Res Function(_$FestivalsRefreshedImpl) then) =
+      __$$FestivalsRefreshedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FestivalsRefreshedCopyWithImpl<$Res>
-    extends _$FestivalsEventCopyWithImpl<$Res, _$_FestivalsRefreshed>
-    implements _$$_FestivalsRefreshedCopyWith<$Res> {
-  __$$_FestivalsRefreshedCopyWithImpl(
-      _$_FestivalsRefreshed _value, $Res Function(_$_FestivalsRefreshed) _then)
+class __$$FestivalsRefreshedImplCopyWithImpl<$Res>
+    extends _$FestivalsEventCopyWithImpl<$Res, _$FestivalsRefreshedImpl>
+    implements _$$FestivalsRefreshedImplCopyWith<$Res> {
+  __$$FestivalsRefreshedImplCopyWithImpl(_$FestivalsRefreshedImpl _value,
+      $Res Function(_$FestivalsRefreshedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_FestivalsRefreshed implements _FestivalsRefreshed {
-  const _$_FestivalsRefreshed();
+class _$FestivalsRefreshedImpl implements _FestivalsRefreshed {
+  const _$FestivalsRefreshedImpl();
 
   @override
   String toString() {
@@ -331,9 +332,9 @@ class _$_FestivalsRefreshed implements _FestivalsRefreshed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FestivalsRefreshed);
+        (other.runtimeType == runtimeType && other is _$FestivalsRefreshedImpl);
   }
 
   @override
@@ -411,7 +412,7 @@ class _$_FestivalsRefreshed implements _FestivalsRefreshed {
 }
 
 abstract class _FestivalsRefreshed implements FestivalsEvent {
-  const factory _FestivalsRefreshed() = _$_FestivalsRefreshed;
+  const factory _FestivalsRefreshed() = _$FestivalsRefreshedImpl;
 }
 
 /// @nodoc
@@ -493,11 +494,11 @@ class _$FestivalsStateCopyWithImpl<$Res, $Val extends FestivalsState>
 }
 
 /// @nodoc
-abstract class _$$_FestivalsStateCopyWith<$Res>
+abstract class _$$FestivalsStateImplCopyWith<$Res>
     implements $FestivalsStateCopyWith<$Res> {
-  factory _$$_FestivalsStateCopyWith(
-          _$_FestivalsState value, $Res Function(_$_FestivalsState) then) =
-      __$$_FestivalsStateCopyWithImpl<$Res>;
+  factory _$$FestivalsStateImplCopyWith(_$FestivalsStateImpl value,
+          $Res Function(_$FestivalsStateImpl) then) =
+      __$$FestivalsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -510,11 +511,11 @@ abstract class _$$_FestivalsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_FestivalsStateCopyWithImpl<$Res>
-    extends _$FestivalsStateCopyWithImpl<$Res, _$_FestivalsState>
-    implements _$$_FestivalsStateCopyWith<$Res> {
-  __$$_FestivalsStateCopyWithImpl(
-      _$_FestivalsState _value, $Res Function(_$_FestivalsState) _then)
+class __$$FestivalsStateImplCopyWithImpl<$Res>
+    extends _$FestivalsStateCopyWithImpl<$Res, _$FestivalsStateImpl>
+    implements _$$FestivalsStateImplCopyWith<$Res> {
+  __$$FestivalsStateImplCopyWithImpl(
+      _$FestivalsStateImpl _value, $Res Function(_$FestivalsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -527,7 +528,7 @@ class __$$_FestivalsStateCopyWithImpl<$Res>
     Object? hasReachedMax = null,
     Object? failure = null,
   }) {
-    return _then(_$_FestivalsState(
+    return _then(_$FestivalsStateImpl(
       getFestivalsStatus: null == getFestivalsStatus
           ? _value.getFestivalsStatus
           : getFestivalsStatus // ignore: cast_nullable_to_non_nullable
@@ -558,8 +559,8 @@ class __$$_FestivalsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FestivalsState implements _FestivalsState {
-  const _$_FestivalsState(
+class _$FestivalsStateImpl implements _FestivalsState {
+  const _$FestivalsStateImpl(
       {required this.getFestivalsStatus,
       required this.nextPageStatus,
       required this.errorMessage,
@@ -593,10 +594,10 @@ class _$_FestivalsState implements _FestivalsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FestivalsState &&
+            other is _$FestivalsStateImpl &&
             (identical(other.getFestivalsStatus, getFestivalsStatus) ||
                 other.getFestivalsStatus == getFestivalsStatus) &&
             (identical(other.nextPageStatus, nextPageStatus) ||
@@ -623,8 +624,9 @@ class _$_FestivalsState implements _FestivalsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FestivalsStateCopyWith<_$_FestivalsState> get copyWith =>
-      __$$_FestivalsStateCopyWithImpl<_$_FestivalsState>(this, _$identity);
+  _$$FestivalsStateImplCopyWith<_$FestivalsStateImpl> get copyWith =>
+      __$$FestivalsStateImplCopyWithImpl<_$FestivalsStateImpl>(
+          this, _$identity);
 }
 
 abstract class _FestivalsState implements FestivalsState {
@@ -634,7 +636,7 @@ abstract class _FestivalsState implements FestivalsState {
       required final Option<String> errorMessage,
       required final List<Festival> festivals,
       required final bool hasReachedMax,
-      required final Option<FestivalFailure> failure}) = _$_FestivalsState;
+      required final Option<FestivalFailure> failure}) = _$FestivalsStateImpl;
 
   @override
   CubitStatus get getFestivalsStatus;
@@ -650,6 +652,6 @@ abstract class _FestivalsState implements FestivalsState {
   Option<FestivalFailure> get failure;
   @override
   @JsonKey(ignore: true)
-  _$$_FestivalsStateCopyWith<_$_FestivalsState> get copyWith =>
+  _$$FestivalsStateImplCopyWith<_$FestivalsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

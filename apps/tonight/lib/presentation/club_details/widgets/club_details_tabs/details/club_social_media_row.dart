@@ -1,6 +1,6 @@
+import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:common/common.dart';
 
 class ClubSocialMediaRow extends StatelessWidget {
   final Map<String, String> socialMedia;
@@ -16,9 +16,9 @@ class ClubSocialMediaRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         for (var medium in socialMedia.entries.where(
-            (e) => clubSocialMedia.containsKey(e.key) && e.value.isNotEmpty))
+            (e) => socialMediaMap.containsKey(e.key) && e.value.isNotEmpty))
           SocialMediaButton(
-            icon: FaIcon(clubSocialMedia[medium.key]!.icon),
+            icon: FaIcon(socialMediaMap[medium.key]!.icon),
             url: medium.value,
           )
       ],

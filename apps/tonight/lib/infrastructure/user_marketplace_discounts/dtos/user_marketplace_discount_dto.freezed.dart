@@ -110,12 +110,12 @@ class _$UserMarketplaceDiscountDtoCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UserMarketplaceDiscountDtoCopyWith<$Res>
+abstract class _$$UserMarketplaceDiscountDtoImplCopyWith<$Res>
     implements $UserMarketplaceDiscountDtoCopyWith<$Res> {
-  factory _$$_UserMarketplaceDiscountDtoCopyWith(
-          _$_UserMarketplaceDiscountDto value,
-          $Res Function(_$_UserMarketplaceDiscountDto) then) =
-      __$$_UserMarketplaceDiscountDtoCopyWithImpl<$Res>;
+  factory _$$UserMarketplaceDiscountDtoImplCopyWith(
+          _$UserMarketplaceDiscountDtoImpl value,
+          $Res Function(_$UserMarketplaceDiscountDtoImpl) then) =
+      __$$UserMarketplaceDiscountDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -129,13 +129,13 @@ abstract class _$$_UserMarketplaceDiscountDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserMarketplaceDiscountDtoCopyWithImpl<$Res>
+class __$$UserMarketplaceDiscountDtoImplCopyWithImpl<$Res>
     extends _$UserMarketplaceDiscountDtoCopyWithImpl<$Res,
-        _$_UserMarketplaceDiscountDto>
-    implements _$$_UserMarketplaceDiscountDtoCopyWith<$Res> {
-  __$$_UserMarketplaceDiscountDtoCopyWithImpl(
-      _$_UserMarketplaceDiscountDto _value,
-      $Res Function(_$_UserMarketplaceDiscountDto) _then)
+        _$UserMarketplaceDiscountDtoImpl>
+    implements _$$UserMarketplaceDiscountDtoImplCopyWith<$Res> {
+  __$$UserMarketplaceDiscountDtoImplCopyWithImpl(
+      _$UserMarketplaceDiscountDtoImpl _value,
+      $Res Function(_$UserMarketplaceDiscountDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -149,7 +149,7 @@ class __$$_UserMarketplaceDiscountDtoCopyWithImpl<$Res>
     Object? code = null,
     Object? redeemedAt = null,
   }) {
-    return _then(_$_UserMarketplaceDiscountDto(
+    return _then(_$UserMarketplaceDiscountDtoImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -184,8 +184,8 @@ class __$$_UserMarketplaceDiscountDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserMarketplaceDiscountDto extends _UserMarketplaceDiscountDto {
-  const _$_UserMarketplaceDiscountDto(
+class _$UserMarketplaceDiscountDtoImpl extends _UserMarketplaceDiscountDto {
+  const _$UserMarketplaceDiscountDtoImpl(
       {@JsonKey(includeFromJson: false, includeToJson: false) this.id,
       required this.name,
       required this.description,
@@ -195,8 +195,9 @@ class _$_UserMarketplaceDiscountDto extends _UserMarketplaceDiscountDto {
       @FirebaseTimestampJsonConverter() required this.redeemedAt})
       : super._();
 
-  factory _$_UserMarketplaceDiscountDto.fromJson(Map<String, dynamic> json) =>
-      _$$_UserMarketplaceDiscountDtoFromJson(json);
+  factory _$UserMarketplaceDiscountDtoImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$UserMarketplaceDiscountDtoImplFromJson(json);
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -221,10 +222,10 @@ class _$_UserMarketplaceDiscountDto extends _UserMarketplaceDiscountDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserMarketplaceDiscountDto &&
+            other is _$UserMarketplaceDiscountDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
@@ -246,13 +247,13 @@ class _$_UserMarketplaceDiscountDto extends _UserMarketplaceDiscountDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserMarketplaceDiscountDtoCopyWith<_$_UserMarketplaceDiscountDto>
-      get copyWith => __$$_UserMarketplaceDiscountDtoCopyWithImpl<
-          _$_UserMarketplaceDiscountDto>(this, _$identity);
+  _$$UserMarketplaceDiscountDtoImplCopyWith<_$UserMarketplaceDiscountDtoImpl>
+      get copyWith => __$$UserMarketplaceDiscountDtoImplCopyWithImpl<
+          _$UserMarketplaceDiscountDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserMarketplaceDiscountDtoToJson(
+    return _$$UserMarketplaceDiscountDtoImplToJson(
       this,
     );
   }
@@ -267,11 +268,11 @@ abstract class _UserMarketplaceDiscountDto extends UserMarketplaceDiscountDto {
       required final String marketplaceUrl,
       required final String code,
       @FirebaseTimestampJsonConverter()
-      required final DateTime redeemedAt}) = _$_UserMarketplaceDiscountDto;
+      required final DateTime redeemedAt}) = _$UserMarketplaceDiscountDtoImpl;
   const _UserMarketplaceDiscountDto._() : super._();
 
   factory _UserMarketplaceDiscountDto.fromJson(Map<String, dynamic> json) =
-      _$_UserMarketplaceDiscountDto.fromJson;
+      _$UserMarketplaceDiscountDtoImpl.fromJson;
 
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -291,6 +292,6 @@ abstract class _UserMarketplaceDiscountDto extends UserMarketplaceDiscountDto {
   DateTime get redeemedAt;
   @override
   @JsonKey(ignore: true)
-  _$$_UserMarketplaceDiscountDtoCopyWith<_$_UserMarketplaceDiscountDto>
+  _$$UserMarketplaceDiscountDtoImplCopyWith<_$UserMarketplaceDiscountDtoImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

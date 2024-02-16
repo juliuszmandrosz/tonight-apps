@@ -81,20 +81,20 @@ class _$UserCityPickerEventCopyWithImpl<$Res, $Val extends UserCityPickerEvent>
 }
 
 /// @nodoc
-abstract class _$$_PlacePickedCopyWith<$Res> {
-  factory _$$_PlacePickedCopyWith(
-          _$_PlacePicked value, $Res Function(_$_PlacePicked) then) =
-      __$$_PlacePickedCopyWithImpl<$Res>;
+abstract class _$$PlacePickedImplCopyWith<$Res> {
+  factory _$$PlacePickedImplCopyWith(
+          _$PlacePickedImpl value, $Res Function(_$PlacePickedImpl) then) =
+      __$$PlacePickedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Place place});
 }
 
 /// @nodoc
-class __$$_PlacePickedCopyWithImpl<$Res>
-    extends _$UserCityPickerEventCopyWithImpl<$Res, _$_PlacePicked>
-    implements _$$_PlacePickedCopyWith<$Res> {
-  __$$_PlacePickedCopyWithImpl(
-      _$_PlacePicked _value, $Res Function(_$_PlacePicked) _then)
+class __$$PlacePickedImplCopyWithImpl<$Res>
+    extends _$UserCityPickerEventCopyWithImpl<$Res, _$PlacePickedImpl>
+    implements _$$PlacePickedImplCopyWith<$Res> {
+  __$$PlacePickedImplCopyWithImpl(
+      _$PlacePickedImpl _value, $Res Function(_$PlacePickedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -102,7 +102,7 @@ class __$$_PlacePickedCopyWithImpl<$Res>
   $Res call({
     Object? place = null,
   }) {
-    return _then(_$_PlacePicked(
+    return _then(_$PlacePickedImpl(
       null == place
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
@@ -113,8 +113,8 @@ class __$$_PlacePickedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PlacePicked implements _PlacePicked {
-  const _$_PlacePicked(this.place);
+class _$PlacePickedImpl implements _PlacePicked {
+  const _$PlacePickedImpl(this.place);
 
   @override
   final Place place;
@@ -125,10 +125,10 @@ class _$_PlacePicked implements _PlacePicked {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlacePicked &&
+            other is _$PlacePickedImpl &&
             (identical(other.place, place) || other.place == place));
   }
 
@@ -138,8 +138,8 @@ class _$_PlacePicked implements _PlacePicked {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlacePickedCopyWith<_$_PlacePicked> get copyWith =>
-      __$$_PlacePickedCopyWithImpl<_$_PlacePicked>(this, _$identity);
+  _$$PlacePickedImplCopyWith<_$PlacePickedImpl> get copyWith =>
+      __$$PlacePickedImplCopyWithImpl<_$PlacePickedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -211,34 +211,34 @@ class _$_PlacePicked implements _PlacePicked {
 }
 
 abstract class _PlacePicked implements UserCityPickerEvent {
-  const factory _PlacePicked(final Place place) = _$_PlacePicked;
+  const factory _PlacePicked(final Place place) = _$PlacePickedImpl;
 
   Place get place;
   @JsonKey(ignore: true)
-  _$$_PlacePickedCopyWith<_$_PlacePicked> get copyWith =>
+  _$$PlacePickedImplCopyWith<_$PlacePickedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SearchResettedCopyWith<$Res> {
-  factory _$$_SearchResettedCopyWith(
-          _$_SearchResetted value, $Res Function(_$_SearchResetted) then) =
-      __$$_SearchResettedCopyWithImpl<$Res>;
+abstract class _$$SearchResettedImplCopyWith<$Res> {
+  factory _$$SearchResettedImplCopyWith(_$SearchResettedImpl value,
+          $Res Function(_$SearchResettedImpl) then) =
+      __$$SearchResettedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SearchResettedCopyWithImpl<$Res>
-    extends _$UserCityPickerEventCopyWithImpl<$Res, _$_SearchResetted>
-    implements _$$_SearchResettedCopyWith<$Res> {
-  __$$_SearchResettedCopyWithImpl(
-      _$_SearchResetted _value, $Res Function(_$_SearchResetted) _then)
+class __$$SearchResettedImplCopyWithImpl<$Res>
+    extends _$UserCityPickerEventCopyWithImpl<$Res, _$SearchResettedImpl>
+    implements _$$SearchResettedImplCopyWith<$Res> {
+  __$$SearchResettedImplCopyWithImpl(
+      _$SearchResettedImpl _value, $Res Function(_$SearchResettedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_SearchResetted implements _SearchResetted {
-  const _$_SearchResetted();
+class _$SearchResettedImpl implements _SearchResetted {
+  const _$SearchResettedImpl();
 
   @override
   String toString() {
@@ -246,9 +246,9 @@ class _$_SearchResetted implements _SearchResetted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SearchResetted);
+        (other.runtimeType == runtimeType && other is _$SearchResettedImpl);
   }
 
   @override
@@ -324,24 +324,24 @@ class _$_SearchResetted implements _SearchResetted {
 }
 
 abstract class _SearchResetted implements UserCityPickerEvent {
-  const factory _SearchResetted() = _$_SearchResetted;
+  const factory _SearchResetted() = _$SearchResettedImpl;
 }
 
 /// @nodoc
-abstract class _$$_SearchChangedCopyWith<$Res> {
-  factory _$$_SearchChangedCopyWith(
-          _$_SearchChanged value, $Res Function(_$_SearchChanged) then) =
-      __$$_SearchChangedCopyWithImpl<$Res>;
+abstract class _$$SearchChangedImplCopyWith<$Res> {
+  factory _$$SearchChangedImplCopyWith(
+          _$SearchChangedImpl value, $Res Function(_$SearchChangedImpl) then) =
+      __$$SearchChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String phrase});
 }
 
 /// @nodoc
-class __$$_SearchChangedCopyWithImpl<$Res>
-    extends _$UserCityPickerEventCopyWithImpl<$Res, _$_SearchChanged>
-    implements _$$_SearchChangedCopyWith<$Res> {
-  __$$_SearchChangedCopyWithImpl(
-      _$_SearchChanged _value, $Res Function(_$_SearchChanged) _then)
+class __$$SearchChangedImplCopyWithImpl<$Res>
+    extends _$UserCityPickerEventCopyWithImpl<$Res, _$SearchChangedImpl>
+    implements _$$SearchChangedImplCopyWith<$Res> {
+  __$$SearchChangedImplCopyWithImpl(
+      _$SearchChangedImpl _value, $Res Function(_$SearchChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -349,7 +349,7 @@ class __$$_SearchChangedCopyWithImpl<$Res>
   $Res call({
     Object? phrase = null,
   }) {
-    return _then(_$_SearchChanged(
+    return _then(_$SearchChangedImpl(
       null == phrase
           ? _value.phrase
           : phrase // ignore: cast_nullable_to_non_nullable
@@ -360,8 +360,8 @@ class __$$_SearchChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SearchChanged implements _SearchChanged {
-  const _$_SearchChanged(this.phrase);
+class _$SearchChangedImpl implements _SearchChanged {
+  const _$SearchChangedImpl(this.phrase);
 
   @override
   final String phrase;
@@ -372,10 +372,10 @@ class _$_SearchChanged implements _SearchChanged {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SearchChanged &&
+            other is _$SearchChangedImpl &&
             (identical(other.phrase, phrase) || other.phrase == phrase));
   }
 
@@ -385,8 +385,8 @@ class _$_SearchChanged implements _SearchChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchChangedCopyWith<_$_SearchChanged> get copyWith =>
-      __$$_SearchChangedCopyWithImpl<_$_SearchChanged>(this, _$identity);
+  _$$SearchChangedImplCopyWith<_$SearchChangedImpl> get copyWith =>
+      __$$SearchChangedImplCopyWithImpl<_$SearchChangedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -458,11 +458,11 @@ class _$_SearchChanged implements _SearchChanged {
 }
 
 abstract class _SearchChanged implements UserCityPickerEvent {
-  const factory _SearchChanged(final String phrase) = _$_SearchChanged;
+  const factory _SearchChanged(final String phrase) = _$SearchChangedImpl;
 
   String get phrase;
   @JsonKey(ignore: true)
-  _$$_SearchChangedCopyWith<_$_SearchChanged> get copyWith =>
+  _$$SearchChangedImplCopyWith<_$SearchChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -538,11 +538,11 @@ class _$UserCityPickerStateCopyWithImpl<$Res, $Val extends UserCityPickerState>
 }
 
 /// @nodoc
-abstract class _$$_UserCityPickerStateCopyWith<$Res>
+abstract class _$$UserCityPickerStateImplCopyWith<$Res>
     implements $UserCityPickerStateCopyWith<$Res> {
-  factory _$$_UserCityPickerStateCopyWith(_$_UserCityPickerState value,
-          $Res Function(_$_UserCityPickerState) then) =
-      __$$_UserCityPickerStateCopyWithImpl<$Res>;
+  factory _$$UserCityPickerStateImplCopyWith(_$UserCityPickerStateImpl value,
+          $Res Function(_$UserCityPickerStateImpl) then) =
+      __$$UserCityPickerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -554,11 +554,11 @@ abstract class _$$_UserCityPickerStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserCityPickerStateCopyWithImpl<$Res>
-    extends _$UserCityPickerStateCopyWithImpl<$Res, _$_UserCityPickerState>
-    implements _$$_UserCityPickerStateCopyWith<$Res> {
-  __$$_UserCityPickerStateCopyWithImpl(_$_UserCityPickerState _value,
-      $Res Function(_$_UserCityPickerState) _then)
+class __$$UserCityPickerStateImplCopyWithImpl<$Res>
+    extends _$UserCityPickerStateCopyWithImpl<$Res, _$UserCityPickerStateImpl>
+    implements _$$UserCityPickerStateImplCopyWith<$Res> {
+  __$$UserCityPickerStateImplCopyWithImpl(_$UserCityPickerStateImpl _value,
+      $Res Function(_$UserCityPickerStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -570,7 +570,7 @@ class __$$_UserCityPickerStateCopyWithImpl<$Res>
     Object? selectedPlace = null,
     Object? placesFailure = null,
   }) {
-    return _then(_$_UserCityPickerState(
+    return _then(_$UserCityPickerStateImpl(
       places: null == places
           ? _value._places
           : places // ignore: cast_nullable_to_non_nullable
@@ -597,8 +597,8 @@ class __$$_UserCityPickerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserCityPickerState implements _UserCityPickerState {
-  const _$_UserCityPickerState(
+class _$UserCityPickerStateImpl implements _UserCityPickerState {
+  const _$UserCityPickerStateImpl(
       {required final List<Place> places,
       required this.previousPlacesSearch,
       required this.searchPlacesStatus,
@@ -629,10 +629,10 @@ class _$_UserCityPickerState implements _UserCityPickerState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserCityPickerState &&
+            other is _$UserCityPickerStateImpl &&
             const DeepCollectionEquality().equals(other._places, _places) &&
             (identical(other.previousPlacesSearch, previousPlacesSearch) ||
                 other.previousPlacesSearch == previousPlacesSearch) &&
@@ -656,8 +656,8 @@ class _$_UserCityPickerState implements _UserCityPickerState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserCityPickerStateCopyWith<_$_UserCityPickerState> get copyWith =>
-      __$$_UserCityPickerStateCopyWithImpl<_$_UserCityPickerState>(
+  _$$UserCityPickerStateImplCopyWith<_$UserCityPickerStateImpl> get copyWith =>
+      __$$UserCityPickerStateImplCopyWithImpl<_$UserCityPickerStateImpl>(
           this, _$identity);
 }
 
@@ -668,7 +668,7 @@ abstract class _UserCityPickerState implements UserCityPickerState {
           required final CubitStatus searchPlacesStatus,
           required final Option<Place> selectedPlace,
           required final Option<PlacesFailure> placesFailure}) =
-      _$_UserCityPickerState;
+      _$UserCityPickerStateImpl;
 
   @override
   List<Place> get places;
@@ -682,6 +682,6 @@ abstract class _UserCityPickerState implements UserCityPickerState {
   Option<PlacesFailure> get placesFailure;
   @override
   @JsonKey(ignore: true)
-  _$$_UserCityPickerStateCopyWith<_$_UserCityPickerState> get copyWith =>
+  _$$UserCityPickerStateImplCopyWith<_$UserCityPickerStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

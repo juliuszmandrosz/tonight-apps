@@ -94,11 +94,11 @@ class _$EventReviewStateCopyWithImpl<$Res, $Val extends EventReviewState>
 }
 
 /// @nodoc
-abstract class _$$_EventReviewStateCopyWith<$Res>
+abstract class _$$EventReviewStateImplCopyWith<$Res>
     implements $EventReviewStateCopyWith<$Res> {
-  factory _$$_EventReviewStateCopyWith(
-          _$_EventReviewState value, $Res Function(_$_EventReviewState) then) =
-      __$$_EventReviewStateCopyWithImpl<$Res>;
+  factory _$$EventReviewStateImplCopyWith(_$EventReviewStateImpl value,
+          $Res Function(_$EventReviewStateImpl) then) =
+      __$$EventReviewStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -111,11 +111,11 @@ abstract class _$$_EventReviewStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EventReviewStateCopyWithImpl<$Res>
-    extends _$EventReviewStateCopyWithImpl<$Res, _$_EventReviewState>
-    implements _$$_EventReviewStateCopyWith<$Res> {
-  __$$_EventReviewStateCopyWithImpl(
-      _$_EventReviewState _value, $Res Function(_$_EventReviewState) _then)
+class __$$EventReviewStateImplCopyWithImpl<$Res>
+    extends _$EventReviewStateCopyWithImpl<$Res, _$EventReviewStateImpl>
+    implements _$$EventReviewStateImplCopyWith<$Res> {
+  __$$EventReviewStateImplCopyWithImpl(_$EventReviewStateImpl _value,
+      $Res Function(_$EventReviewStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -128,7 +128,7 @@ class __$$_EventReviewStateCopyWithImpl<$Res>
     Object? errorMessage = null,
     Object? eventReviewForm = null,
   }) {
-    return _then(_$_EventReviewState(
+    return _then(_$EventReviewStateImpl(
       reviewValue: null == reviewValue
           ? _value.reviewValue
           : reviewValue // ignore: cast_nullable_to_non_nullable
@@ -159,8 +159,8 @@ class __$$_EventReviewStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventReviewState extends _EventReviewState {
-  const _$_EventReviewState(
+class _$EventReviewStateImpl extends _EventReviewState {
+  const _$EventReviewStateImpl(
       {required this.reviewValue,
       required this.reviewContent,
       required this.submittingStatus,
@@ -188,10 +188,10 @@ class _$_EventReviewState extends _EventReviewState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventReviewState &&
+            other is _$EventReviewStateImpl &&
             (identical(other.reviewValue, reviewValue) ||
                 other.reviewValue == reviewValue) &&
             (identical(other.reviewContent, reviewContent) ||
@@ -212,8 +212,9 @@ class _$_EventReviewState extends _EventReviewState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventReviewStateCopyWith<_$_EventReviewState> get copyWith =>
-      __$$_EventReviewStateCopyWithImpl<_$_EventReviewState>(this, _$identity);
+  _$$EventReviewStateImplCopyWith<_$EventReviewStateImpl> get copyWith =>
+      __$$EventReviewStateImplCopyWithImpl<_$EventReviewStateImpl>(
+          this, _$identity);
 }
 
 abstract class _EventReviewState extends EventReviewState {
@@ -224,7 +225,7 @@ abstract class _EventReviewState extends EventReviewState {
           required final CubitStatus status,
           required final Option<String> errorMessage,
           required final Option<EventReviewForm> eventReviewForm}) =
-      _$_EventReviewState;
+      _$EventReviewStateImpl;
   const _EventReviewState._() : super._();
 
   @override
@@ -241,6 +242,6 @@ abstract class _EventReviewState extends EventReviewState {
   Option<EventReviewForm> get eventReviewForm;
   @override
   @JsonKey(ignore: true)
-  _$$_EventReviewStateCopyWith<_$_EventReviewState> get copyWith =>
+  _$$EventReviewStateImplCopyWith<_$EventReviewStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
