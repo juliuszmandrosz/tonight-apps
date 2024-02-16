@@ -73,12 +73,12 @@ class _$UpdateProfilePictureStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UpdateProfilePictureStateCopyWith<$Res>
+abstract class _$$UpdateProfilePictureStateImplCopyWith<$Res>
     implements $UpdateProfilePictureStateCopyWith<$Res> {
-  factory _$$_UpdateProfilePictureStateCopyWith(
-          _$_UpdateProfilePictureState value,
-          $Res Function(_$_UpdateProfilePictureState) then) =
-      __$$_UpdateProfilePictureStateCopyWithImpl<$Res>;
+  factory _$$UpdateProfilePictureStateImplCopyWith(
+          _$UpdateProfilePictureStateImpl value,
+          $Res Function(_$UpdateProfilePictureStateImpl) then) =
+      __$$UpdateProfilePictureStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -88,13 +88,13 @@ abstract class _$$_UpdateProfilePictureStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UpdateProfilePictureStateCopyWithImpl<$Res>
+class __$$UpdateProfilePictureStateImplCopyWithImpl<$Res>
     extends _$UpdateProfilePictureStateCopyWithImpl<$Res,
-        _$_UpdateProfilePictureState>
-    implements _$$_UpdateProfilePictureStateCopyWith<$Res> {
-  __$$_UpdateProfilePictureStateCopyWithImpl(
-      _$_UpdateProfilePictureState _value,
-      $Res Function(_$_UpdateProfilePictureState) _then)
+        _$UpdateProfilePictureStateImpl>
+    implements _$$UpdateProfilePictureStateImplCopyWith<$Res> {
+  __$$UpdateProfilePictureStateImplCopyWithImpl(
+      _$UpdateProfilePictureStateImpl _value,
+      $Res Function(_$UpdateProfilePictureStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -104,7 +104,7 @@ class __$$_UpdateProfilePictureStateCopyWithImpl<$Res>
     Object? errorMessage = null,
     Object? profilePicture = null,
   }) {
-    return _then(_$_UpdateProfilePictureState(
+    return _then(_$UpdateProfilePictureStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -123,8 +123,8 @@ class __$$_UpdateProfilePictureStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateProfilePictureState implements _UpdateProfilePictureState {
-  const _$_UpdateProfilePictureState(
+class _$UpdateProfilePictureStateImpl implements _UpdateProfilePictureState {
+  const _$UpdateProfilePictureStateImpl(
       {required this.status,
       required this.errorMessage,
       required this.profilePicture});
@@ -142,10 +142,10 @@ class _$_UpdateProfilePictureState implements _UpdateProfilePictureState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateProfilePictureState &&
+            other is _$UpdateProfilePictureStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
@@ -160,9 +160,9 @@ class _$_UpdateProfilePictureState implements _UpdateProfilePictureState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateProfilePictureStateCopyWith<_$_UpdateProfilePictureState>
-      get copyWith => __$$_UpdateProfilePictureStateCopyWithImpl<
-          _$_UpdateProfilePictureState>(this, _$identity);
+  _$$UpdateProfilePictureStateImplCopyWith<_$UpdateProfilePictureStateImpl>
+      get copyWith => __$$UpdateProfilePictureStateImplCopyWithImpl<
+          _$UpdateProfilePictureStateImpl>(this, _$identity);
 }
 
 abstract class _UpdateProfilePictureState implements UpdateProfilePictureState {
@@ -170,7 +170,7 @@ abstract class _UpdateProfilePictureState implements UpdateProfilePictureState {
           {required final FormzStatus status,
           required final Option<String> errorMessage,
           required final Option<Uint8List> profilePicture}) =
-      _$_UpdateProfilePictureState;
+      _$UpdateProfilePictureStateImpl;
 
   @override
   FormzStatus get status;
@@ -180,6 +180,6 @@ abstract class _UpdateProfilePictureState implements UpdateProfilePictureState {
   Option<Uint8List> get profilePicture;
   @override
   @JsonKey(ignore: true)
-  _$$_UpdateProfilePictureStateCopyWith<_$_UpdateProfilePictureState>
+  _$$UpdateProfilePictureStateImplCopyWith<_$UpdateProfilePictureStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

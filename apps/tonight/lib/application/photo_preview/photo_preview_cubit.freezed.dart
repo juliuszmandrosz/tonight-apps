@@ -63,22 +63,22 @@ class _$PhotoPreviewStateCopyWithImpl<$Res, $Val extends PhotoPreviewState>
 }
 
 /// @nodoc
-abstract class _$$_PhotoPreviewStateCopyWith<$Res>
+abstract class _$$PhotoPreviewStateImplCopyWith<$Res>
     implements $PhotoPreviewStateCopyWith<$Res> {
-  factory _$$_PhotoPreviewStateCopyWith(_$_PhotoPreviewState value,
-          $Res Function(_$_PhotoPreviewState) then) =
-      __$$_PhotoPreviewStateCopyWithImpl<$Res>;
+  factory _$$PhotoPreviewStateImplCopyWith(_$PhotoPreviewStateImpl value,
+          $Res Function(_$PhotoPreviewStateImpl) then) =
+      __$$PhotoPreviewStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({CubitStatus addStoryStatus, Option<String> snackbarMessage});
 }
 
 /// @nodoc
-class __$$_PhotoPreviewStateCopyWithImpl<$Res>
-    extends _$PhotoPreviewStateCopyWithImpl<$Res, _$_PhotoPreviewState>
-    implements _$$_PhotoPreviewStateCopyWith<$Res> {
-  __$$_PhotoPreviewStateCopyWithImpl(
-      _$_PhotoPreviewState _value, $Res Function(_$_PhotoPreviewState) _then)
+class __$$PhotoPreviewStateImplCopyWithImpl<$Res>
+    extends _$PhotoPreviewStateCopyWithImpl<$Res, _$PhotoPreviewStateImpl>
+    implements _$$PhotoPreviewStateImplCopyWith<$Res> {
+  __$$PhotoPreviewStateImplCopyWithImpl(_$PhotoPreviewStateImpl _value,
+      $Res Function(_$PhotoPreviewStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_PhotoPreviewStateCopyWithImpl<$Res>
     Object? addStoryStatus = null,
     Object? snackbarMessage = null,
   }) {
-    return _then(_$_PhotoPreviewState(
+    return _then(_$PhotoPreviewStateImpl(
       addStoryStatus: null == addStoryStatus
           ? _value.addStoryStatus
           : addStoryStatus // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_PhotoPreviewStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PhotoPreviewState implements _PhotoPreviewState {
-  const _$_PhotoPreviewState(
+class _$PhotoPreviewStateImpl implements _PhotoPreviewState {
+  const _$PhotoPreviewStateImpl(
       {required this.addStoryStatus, required this.snackbarMessage});
 
   @override
@@ -117,10 +117,10 @@ class _$_PhotoPreviewState implements _PhotoPreviewState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PhotoPreviewState &&
+            other is _$PhotoPreviewStateImpl &&
             (identical(other.addStoryStatus, addStoryStatus) ||
                 other.addStoryStatus == addStoryStatus) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
@@ -133,15 +133,15 @@ class _$_PhotoPreviewState implements _PhotoPreviewState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PhotoPreviewStateCopyWith<_$_PhotoPreviewState> get copyWith =>
-      __$$_PhotoPreviewStateCopyWithImpl<_$_PhotoPreviewState>(
+  _$$PhotoPreviewStateImplCopyWith<_$PhotoPreviewStateImpl> get copyWith =>
+      __$$PhotoPreviewStateImplCopyWithImpl<_$PhotoPreviewStateImpl>(
           this, _$identity);
 }
 
 abstract class _PhotoPreviewState implements PhotoPreviewState {
   const factory _PhotoPreviewState(
       {required final CubitStatus addStoryStatus,
-      required final Option<String> snackbarMessage}) = _$_PhotoPreviewState;
+      required final Option<String> snackbarMessage}) = _$PhotoPreviewStateImpl;
 
   @override
   CubitStatus get addStoryStatus;
@@ -149,6 +149,6 @@ abstract class _PhotoPreviewState implements PhotoPreviewState {
   Option<String> get snackbarMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_PhotoPreviewStateCopyWith<_$_PhotoPreviewState> get copyWith =>
+  _$$PhotoPreviewStateImplCopyWith<_$PhotoPreviewStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

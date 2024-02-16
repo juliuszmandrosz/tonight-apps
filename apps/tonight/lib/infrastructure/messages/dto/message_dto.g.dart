@@ -6,8 +6,8 @@ part of 'message_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MessageDto _$$_MessageDtoFromJson(Map<String, dynamic> json) =>
-    _$_MessageDto(
+_$MessageDtoImpl _$$MessageDtoImplFromJson(Map<String, dynamic> json) =>
+    _$MessageDtoImpl(
       userId: json['userId'] as String,
       username: json['username'] as String,
       text: json['text'] as String,
@@ -19,7 +19,7 @@ _$_MessageDto _$$_MessageDtoFromJson(Map<String, dynamic> json) =>
       isUserDeleted: json['isUserDeleted'] ?? false,
     );
 
-Map<String, dynamic> _$$_MessageDtoToJson(_$_MessageDto instance) =>
+Map<String, dynamic> _$$MessageDtoImplToJson(_$MessageDtoImpl instance) =>
     <String, dynamic>{
       'userId': instance.userId,
       'username': instance.username,

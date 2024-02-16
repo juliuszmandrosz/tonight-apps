@@ -63,6 +63,10 @@ extension FirestoreX on FirebaseFirestore {
 
   CollectionReference get storyInteractions => collection('storyInteractions');
 
+  CollectionReference get collectives => collection('collectives');
+
+  CollectionReference get artists => collection('artists');
+
   DocumentReference getCurrentUserDocRef(FirebaseAuth auth) {
     final firebaseUser = auth.tryGetFirebaseUser();
 

@@ -109,12 +109,12 @@ class _$SignInWithPhoneNumberStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SignInWithPhoneNumberStateCopyWith<$Res>
+abstract class _$$SignInWithPhoneNumberStateImplCopyWith<$Res>
     implements $SignInWithPhoneNumberStateCopyWith<$Res> {
-  factory _$$_SignInWithPhoneNumberStateCopyWith(
-          _$_SignInWithPhoneNumberState value,
-          $Res Function(_$_SignInWithPhoneNumberState) then) =
-      __$$_SignInWithPhoneNumberStateCopyWithImpl<$Res>;
+  factory _$$SignInWithPhoneNumberStateImplCopyWith(
+          _$SignInWithPhoneNumberStateImpl value,
+          $Res Function(_$SignInWithPhoneNumberStateImpl) then) =
+      __$$SignInWithPhoneNumberStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -129,13 +129,13 @@ abstract class _$$_SignInWithPhoneNumberStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SignInWithPhoneNumberStateCopyWithImpl<$Res>
+class __$$SignInWithPhoneNumberStateImplCopyWithImpl<$Res>
     extends _$SignInWithPhoneNumberStateCopyWithImpl<$Res,
-        _$_SignInWithPhoneNumberState>
-    implements _$$_SignInWithPhoneNumberStateCopyWith<$Res> {
-  __$$_SignInWithPhoneNumberStateCopyWithImpl(
-      _$_SignInWithPhoneNumberState _value,
-      $Res Function(_$_SignInWithPhoneNumberState) _then)
+        _$SignInWithPhoneNumberStateImpl>
+    implements _$$SignInWithPhoneNumberStateImplCopyWith<$Res> {
+  __$$SignInWithPhoneNumberStateImplCopyWithImpl(
+      _$SignInWithPhoneNumberStateImpl _value,
+      $Res Function(_$SignInWithPhoneNumberStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -150,7 +150,7 @@ class __$$_SignInWithPhoneNumberStateCopyWithImpl<$Res>
     Object? verifySmsStatus = null,
     Object? user = null,
   }) {
-    return _then(_$_SignInWithPhoneNumberState(
+    return _then(_$SignInWithPhoneNumberStateImpl(
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -189,8 +189,8 @@ class __$$_SignInWithPhoneNumberStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SignInWithPhoneNumberState implements _SignInWithPhoneNumberState {
-  const _$_SignInWithPhoneNumberState(
+class _$SignInWithPhoneNumberStateImpl implements _SignInWithPhoneNumberState {
+  const _$SignInWithPhoneNumberStateImpl(
       {required this.phoneNumber,
       required this.smsCode,
       required this.failureMessage,
@@ -223,10 +223,10 @@ class _$_SignInWithPhoneNumberState implements _SignInWithPhoneNumberState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SignInWithPhoneNumberState &&
+            other is _$SignInWithPhoneNumberStateImpl &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.smsCode, smsCode) || other.smsCode == smsCode) &&
@@ -258,9 +258,9 @@ class _$_SignInWithPhoneNumberState implements _SignInWithPhoneNumberState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SignInWithPhoneNumberStateCopyWith<_$_SignInWithPhoneNumberState>
-      get copyWith => __$$_SignInWithPhoneNumberStateCopyWithImpl<
-          _$_SignInWithPhoneNumberState>(this, _$identity);
+  _$$SignInWithPhoneNumberStateImplCopyWith<_$SignInWithPhoneNumberStateImpl>
+      get copyWith => __$$SignInWithPhoneNumberStateImplCopyWithImpl<
+          _$SignInWithPhoneNumberStateImpl>(this, _$identity);
 }
 
 abstract class _SignInWithPhoneNumberState
@@ -273,7 +273,7 @@ abstract class _SignInWithPhoneNumberState
       required final Option<int> resendToken,
       required final CubitStatus sendSmsStatus,
       required final CubitStatus verifySmsStatus,
-      required final Option<AppUser> user}) = _$_SignInWithPhoneNumberState;
+      required final Option<AppUser> user}) = _$SignInWithPhoneNumberStateImpl;
 
   @override
   String get phoneNumber;
@@ -293,6 +293,6 @@ abstract class _SignInWithPhoneNumberState
   Option<AppUser> get user;
   @override
   @JsonKey(ignore: true)
-  _$$_SignInWithPhoneNumberStateCopyWith<_$_SignInWithPhoneNumberState>
+  _$$SignInWithPhoneNumberStateImplCopyWith<_$SignInWithPhoneNumberStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -87,24 +87,25 @@ class _$ClubDetailsStateCopyWithImpl<$Res, $Val extends ClubDetailsState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$ClubDetailsStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$ClubDetailsStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial extends _Initial {
-  const _$_Initial() : super._();
+class _$InitialImpl extends _Initial {
+  const _$InitialImpl() : super._();
 
   @override
   String toString() {
@@ -112,9 +113,9 @@ class _$_Initial extends _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -196,30 +197,30 @@ class _$_Initial extends _Initial {
 }
 
 abstract class _Initial extends ClubDetailsState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
   const _Initial._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_LoadInProgressCopyWith<$Res> {
-  factory _$$_LoadInProgressCopyWith(
-          _$_LoadInProgress value, $Res Function(_$_LoadInProgress) then) =
-      __$$_LoadInProgressCopyWithImpl<$Res>;
+abstract class _$$LoadInProgressImplCopyWith<$Res> {
+  factory _$$LoadInProgressImplCopyWith(_$LoadInProgressImpl value,
+          $Res Function(_$LoadInProgressImpl) then) =
+      __$$LoadInProgressImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadInProgressCopyWithImpl<$Res>
-    extends _$ClubDetailsStateCopyWithImpl<$Res, _$_LoadInProgress>
-    implements _$$_LoadInProgressCopyWith<$Res> {
-  __$$_LoadInProgressCopyWithImpl(
-      _$_LoadInProgress _value, $Res Function(_$_LoadInProgress) _then)
+class __$$LoadInProgressImplCopyWithImpl<$Res>
+    extends _$ClubDetailsStateCopyWithImpl<$Res, _$LoadInProgressImpl>
+    implements _$$LoadInProgressImplCopyWith<$Res> {
+  __$$LoadInProgressImplCopyWithImpl(
+      _$LoadInProgressImpl _value, $Res Function(_$LoadInProgressImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadInProgress extends _LoadInProgress {
-  const _$_LoadInProgress() : super._();
+class _$LoadInProgressImpl extends _LoadInProgress {
+  const _$LoadInProgressImpl() : super._();
 
   @override
   String toString() {
@@ -227,9 +228,9 @@ class _$_LoadInProgress extends _LoadInProgress {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadInProgress);
+        (other.runtimeType == runtimeType && other is _$LoadInProgressImpl);
   }
 
   @override
@@ -311,25 +312,25 @@ class _$_LoadInProgress extends _LoadInProgress {
 }
 
 abstract class _LoadInProgress extends ClubDetailsState {
-  const factory _LoadInProgress() = _$_LoadInProgress;
+  const factory _LoadInProgress() = _$LoadInProgressImpl;
   const _LoadInProgress._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_LoadSuccessCopyWith<$Res> {
-  factory _$$_LoadSuccessCopyWith(
-          _$_LoadSuccess value, $Res Function(_$_LoadSuccess) then) =
-      __$$_LoadSuccessCopyWithImpl<$Res>;
+abstract class _$$LoadSuccessImplCopyWith<$Res> {
+  factory _$$LoadSuccessImplCopyWith(
+          _$LoadSuccessImpl value, $Res Function(_$LoadSuccessImpl) then) =
+      __$$LoadSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Club club});
 }
 
 /// @nodoc
-class __$$_LoadSuccessCopyWithImpl<$Res>
-    extends _$ClubDetailsStateCopyWithImpl<$Res, _$_LoadSuccess>
-    implements _$$_LoadSuccessCopyWith<$Res> {
-  __$$_LoadSuccessCopyWithImpl(
-      _$_LoadSuccess _value, $Res Function(_$_LoadSuccess) _then)
+class __$$LoadSuccessImplCopyWithImpl<$Res>
+    extends _$ClubDetailsStateCopyWithImpl<$Res, _$LoadSuccessImpl>
+    implements _$$LoadSuccessImplCopyWith<$Res> {
+  __$$LoadSuccessImplCopyWithImpl(
+      _$LoadSuccessImpl _value, $Res Function(_$LoadSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -337,7 +338,7 @@ class __$$_LoadSuccessCopyWithImpl<$Res>
   $Res call({
     Object? club = null,
   }) {
-    return _then(_$_LoadSuccess(
+    return _then(_$LoadSuccessImpl(
       null == club
           ? _value.club
           : club // ignore: cast_nullable_to_non_nullable
@@ -348,8 +349,8 @@ class __$$_LoadSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadSuccess extends _LoadSuccess {
-  const _$_LoadSuccess(this.club) : super._();
+class _$LoadSuccessImpl extends _LoadSuccess {
+  const _$LoadSuccessImpl(this.club) : super._();
 
   @override
   final Club club;
@@ -360,10 +361,10 @@ class _$_LoadSuccess extends _LoadSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadSuccess &&
+            other is _$LoadSuccessImpl &&
             (identical(other.club, club) || other.club == club));
   }
 
@@ -373,8 +374,8 @@ class _$_LoadSuccess extends _LoadSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
-      __$$_LoadSuccessCopyWithImpl<_$_LoadSuccess>(this, _$identity);
+  _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
+      __$$LoadSuccessImplCopyWithImpl<_$LoadSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -452,20 +453,20 @@ class _$_LoadSuccess extends _LoadSuccess {
 }
 
 abstract class _LoadSuccess extends ClubDetailsState {
-  const factory _LoadSuccess(final Club club) = _$_LoadSuccess;
+  const factory _LoadSuccess(final Club club) = _$LoadSuccessImpl;
   const _LoadSuccess._() : super._();
 
   Club get club;
   @JsonKey(ignore: true)
-  _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
+  _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadFailureCopyWith<$Res> {
-  factory _$$_LoadFailureCopyWith(
-          _$_LoadFailure value, $Res Function(_$_LoadFailure) then) =
-      __$$_LoadFailureCopyWithImpl<$Res>;
+abstract class _$$LoadFailureImplCopyWith<$Res> {
+  factory _$$LoadFailureImplCopyWith(
+          _$LoadFailureImpl value, $Res Function(_$LoadFailureImpl) then) =
+      __$$LoadFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({UserClubFailure clubFailure});
 
@@ -473,11 +474,11 @@ abstract class _$$_LoadFailureCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadFailureCopyWithImpl<$Res>
-    extends _$ClubDetailsStateCopyWithImpl<$Res, _$_LoadFailure>
-    implements _$$_LoadFailureCopyWith<$Res> {
-  __$$_LoadFailureCopyWithImpl(
-      _$_LoadFailure _value, $Res Function(_$_LoadFailure) _then)
+class __$$LoadFailureImplCopyWithImpl<$Res>
+    extends _$ClubDetailsStateCopyWithImpl<$Res, _$LoadFailureImpl>
+    implements _$$LoadFailureImplCopyWith<$Res> {
+  __$$LoadFailureImplCopyWithImpl(
+      _$LoadFailureImpl _value, $Res Function(_$LoadFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -485,7 +486,7 @@ class __$$_LoadFailureCopyWithImpl<$Res>
   $Res call({
     Object? clubFailure = null,
   }) {
-    return _then(_$_LoadFailure(
+    return _then(_$LoadFailureImpl(
       null == clubFailure
           ? _value.clubFailure
           : clubFailure // ignore: cast_nullable_to_non_nullable
@@ -504,8 +505,8 @@ class __$$_LoadFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadFailure extends _LoadFailure {
-  const _$_LoadFailure(this.clubFailure) : super._();
+class _$LoadFailureImpl extends _LoadFailure {
+  const _$LoadFailureImpl(this.clubFailure) : super._();
 
   @override
   final UserClubFailure clubFailure;
@@ -516,10 +517,10 @@ class _$_LoadFailure extends _LoadFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadFailure &&
+            other is _$LoadFailureImpl &&
             (identical(other.clubFailure, clubFailure) ||
                 other.clubFailure == clubFailure));
   }
@@ -530,8 +531,8 @@ class _$_LoadFailure extends _LoadFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
-      __$$_LoadFailureCopyWithImpl<_$_LoadFailure>(this, _$identity);
+  _$$LoadFailureImplCopyWith<_$LoadFailureImpl> get copyWith =>
+      __$$LoadFailureImplCopyWithImpl<_$LoadFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -610,11 +611,11 @@ class _$_LoadFailure extends _LoadFailure {
 
 abstract class _LoadFailure extends ClubDetailsState {
   const factory _LoadFailure(final UserClubFailure clubFailure) =
-      _$_LoadFailure;
+      _$LoadFailureImpl;
   const _LoadFailure._() : super._();
 
   UserClubFailure get clubFailure;
   @JsonKey(ignore: true)
-  _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
+  _$$LoadFailureImplCopyWith<_$LoadFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

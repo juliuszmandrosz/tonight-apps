@@ -79,11 +79,11 @@ class _$EventFavoriteStateCopyWithImpl<$Res, $Val extends EventFavoriteState>
 }
 
 /// @nodoc
-abstract class _$$_EventFavoriteStateCopyWith<$Res>
+abstract class _$$EventFavoriteStateImplCopyWith<$Res>
     implements $EventFavoriteStateCopyWith<$Res> {
-  factory _$$_EventFavoriteStateCopyWith(_$_EventFavoriteState value,
-          $Res Function(_$_EventFavoriteState) then) =
-      __$$_EventFavoriteStateCopyWithImpl<$Res>;
+  factory _$$EventFavoriteStateImplCopyWith(_$EventFavoriteStateImpl value,
+          $Res Function(_$EventFavoriteStateImpl) then) =
+      __$$EventFavoriteStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -94,11 +94,11 @@ abstract class _$$_EventFavoriteStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EventFavoriteStateCopyWithImpl<$Res>
-    extends _$EventFavoriteStateCopyWithImpl<$Res, _$_EventFavoriteState>
-    implements _$$_EventFavoriteStateCopyWith<$Res> {
-  __$$_EventFavoriteStateCopyWithImpl(
-      _$_EventFavoriteState _value, $Res Function(_$_EventFavoriteState) _then)
+class __$$EventFavoriteStateImplCopyWithImpl<$Res>
+    extends _$EventFavoriteStateCopyWithImpl<$Res, _$EventFavoriteStateImpl>
+    implements _$$EventFavoriteStateImplCopyWith<$Res> {
+  __$$EventFavoriteStateImplCopyWithImpl(_$EventFavoriteStateImpl _value,
+      $Res Function(_$EventFavoriteStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +109,7 @@ class __$$_EventFavoriteStateCopyWithImpl<$Res>
     Object? isChangingFavoriteStatus = null,
     Object? snackbarMessage = null,
   }) {
-    return _then(_$_EventFavoriteState(
+    return _then(_$EventFavoriteStateImpl(
       favoriteEvents: null == favoriteEvents
           ? _value._favoriteEvents
           : favoriteEvents // ignore: cast_nullable_to_non_nullable
@@ -132,8 +132,8 @@ class __$$_EventFavoriteStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventFavoriteState implements _EventFavoriteState {
-  const _$_EventFavoriteState(
+class _$EventFavoriteStateImpl implements _EventFavoriteState {
+  const _$EventFavoriteStateImpl(
       {required final List<Event> favoriteEvents,
       required this.status,
       required this.isChangingFavoriteStatus,
@@ -161,10 +161,10 @@ class _$_EventFavoriteState implements _EventFavoriteState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventFavoriteState &&
+            other is _$EventFavoriteStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._favoriteEvents, _favoriteEvents) &&
             (identical(other.status, status) || other.status == status) &&
@@ -186,17 +186,18 @@ class _$_EventFavoriteState implements _EventFavoriteState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventFavoriteStateCopyWith<_$_EventFavoriteState> get copyWith =>
-      __$$_EventFavoriteStateCopyWithImpl<_$_EventFavoriteState>(
+  _$$EventFavoriteStateImplCopyWith<_$EventFavoriteStateImpl> get copyWith =>
+      __$$EventFavoriteStateImplCopyWithImpl<_$EventFavoriteStateImpl>(
           this, _$identity);
 }
 
 abstract class _EventFavoriteState implements EventFavoriteState {
   const factory _EventFavoriteState(
-      {required final List<Event> favoriteEvents,
-      required final CubitStatus status,
-      required final bool isChangingFavoriteStatus,
-      required final Option<String> snackbarMessage}) = _$_EventFavoriteState;
+          {required final List<Event> favoriteEvents,
+          required final CubitStatus status,
+          required final bool isChangingFavoriteStatus,
+          required final Option<String> snackbarMessage}) =
+      _$EventFavoriteStateImpl;
 
   @override
   List<Event> get favoriteEvents;
@@ -208,6 +209,6 @@ abstract class _EventFavoriteState implements EventFavoriteState {
   Option<String> get snackbarMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_EventFavoriteStateCopyWith<_$_EventFavoriteState> get copyWith =>
+  _$$EventFavoriteStateImplCopyWith<_$EventFavoriteStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -82,20 +82,20 @@ class _$ClubReviewsEventCopyWithImpl<$Res, $Val extends ClubReviewsEvent>
 }
 
 /// @nodoc
-abstract class _$$_ReviewsFetchedCopyWith<$Res> {
-  factory _$$_ReviewsFetchedCopyWith(
-          _$_ReviewsFetched value, $Res Function(_$_ReviewsFetched) then) =
-      __$$_ReviewsFetchedCopyWithImpl<$Res>;
+abstract class _$$ReviewsFetchedImplCopyWith<$Res> {
+  factory _$$ReviewsFetchedImplCopyWith(_$ReviewsFetchedImpl value,
+          $Res Function(_$ReviewsFetchedImpl) then) =
+      __$$ReviewsFetchedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String clubId});
 }
 
 /// @nodoc
-class __$$_ReviewsFetchedCopyWithImpl<$Res>
-    extends _$ClubReviewsEventCopyWithImpl<$Res, _$_ReviewsFetched>
-    implements _$$_ReviewsFetchedCopyWith<$Res> {
-  __$$_ReviewsFetchedCopyWithImpl(
-      _$_ReviewsFetched _value, $Res Function(_$_ReviewsFetched) _then)
+class __$$ReviewsFetchedImplCopyWithImpl<$Res>
+    extends _$ClubReviewsEventCopyWithImpl<$Res, _$ReviewsFetchedImpl>
+    implements _$$ReviewsFetchedImplCopyWith<$Res> {
+  __$$ReviewsFetchedImplCopyWithImpl(
+      _$ReviewsFetchedImpl _value, $Res Function(_$ReviewsFetchedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -103,7 +103,7 @@ class __$$_ReviewsFetchedCopyWithImpl<$Res>
   $Res call({
     Object? clubId = null,
   }) {
-    return _then(_$_ReviewsFetched(
+    return _then(_$ReviewsFetchedImpl(
       null == clubId
           ? _value.clubId
           : clubId // ignore: cast_nullable_to_non_nullable
@@ -114,8 +114,8 @@ class __$$_ReviewsFetchedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ReviewsFetched implements _ReviewsFetched {
-  const _$_ReviewsFetched(this.clubId);
+class _$ReviewsFetchedImpl implements _ReviewsFetched {
+  const _$ReviewsFetchedImpl(this.clubId);
 
   @override
   final String clubId;
@@ -126,10 +126,10 @@ class _$_ReviewsFetched implements _ReviewsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ReviewsFetched &&
+            other is _$ReviewsFetchedImpl &&
             (identical(other.clubId, clubId) || other.clubId == clubId));
   }
 
@@ -139,8 +139,9 @@ class _$_ReviewsFetched implements _ReviewsFetched {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ReviewsFetchedCopyWith<_$_ReviewsFetched> get copyWith =>
-      __$$_ReviewsFetchedCopyWithImpl<_$_ReviewsFetched>(this, _$identity);
+  _$$ReviewsFetchedImplCopyWith<_$ReviewsFetchedImpl> get copyWith =>
+      __$$ReviewsFetchedImplCopyWithImpl<_$ReviewsFetchedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -213,34 +214,36 @@ class _$_ReviewsFetched implements _ReviewsFetched {
 }
 
 abstract class _ReviewsFetched implements ClubReviewsEvent {
-  const factory _ReviewsFetched(final String clubId) = _$_ReviewsFetched;
+  const factory _ReviewsFetched(final String clubId) = _$ReviewsFetchedImpl;
 
   String get clubId;
   @JsonKey(ignore: true)
-  _$$_ReviewsFetchedCopyWith<_$_ReviewsFetched> get copyWith =>
+  _$$ReviewsFetchedImplCopyWith<_$ReviewsFetchedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NextPageReviewsFetchedCopyWith<$Res> {
-  factory _$$_NextPageReviewsFetchedCopyWith(_$_NextPageReviewsFetched value,
-          $Res Function(_$_NextPageReviewsFetched) then) =
-      __$$_NextPageReviewsFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPageReviewsFetchedImplCopyWith<$Res> {
+  factory _$$NextPageReviewsFetchedImplCopyWith(
+          _$NextPageReviewsFetchedImpl value,
+          $Res Function(_$NextPageReviewsFetchedImpl) then) =
+      __$$NextPageReviewsFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPageReviewsFetchedCopyWithImpl<$Res>
-    extends _$ClubReviewsEventCopyWithImpl<$Res, _$_NextPageReviewsFetched>
-    implements _$$_NextPageReviewsFetchedCopyWith<$Res> {
-  __$$_NextPageReviewsFetchedCopyWithImpl(_$_NextPageReviewsFetched _value,
-      $Res Function(_$_NextPageReviewsFetched) _then)
+class __$$NextPageReviewsFetchedImplCopyWithImpl<$Res>
+    extends _$ClubReviewsEventCopyWithImpl<$Res, _$NextPageReviewsFetchedImpl>
+    implements _$$NextPageReviewsFetchedImplCopyWith<$Res> {
+  __$$NextPageReviewsFetchedImplCopyWithImpl(
+      _$NextPageReviewsFetchedImpl _value,
+      $Res Function(_$NextPageReviewsFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPageReviewsFetched implements _NextPageReviewsFetched {
-  const _$_NextPageReviewsFetched();
+class _$NextPageReviewsFetchedImpl implements _NextPageReviewsFetched {
+  const _$NextPageReviewsFetchedImpl();
 
   @override
   String toString() {
@@ -248,10 +251,10 @@ class _$_NextPageReviewsFetched implements _NextPageReviewsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NextPageReviewsFetched);
+            other is _$NextPageReviewsFetchedImpl);
   }
 
   @override
@@ -328,24 +331,24 @@ class _$_NextPageReviewsFetched implements _NextPageReviewsFetched {
 }
 
 abstract class _NextPageReviewsFetched implements ClubReviewsEvent {
-  const factory _NextPageReviewsFetched() = _$_NextPageReviewsFetched;
+  const factory _NextPageReviewsFetched() = _$NextPageReviewsFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_ReviewReportedCopyWith<$Res> {
-  factory _$$_ReviewReportedCopyWith(
-          _$_ReviewReported value, $Res Function(_$_ReviewReported) then) =
-      __$$_ReviewReportedCopyWithImpl<$Res>;
+abstract class _$$ReviewReportedImplCopyWith<$Res> {
+  factory _$$ReviewReportedImplCopyWith(_$ReviewReportedImpl value,
+          $Res Function(_$ReviewReportedImpl) then) =
+      __$$ReviewReportedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Review review});
 }
 
 /// @nodoc
-class __$$_ReviewReportedCopyWithImpl<$Res>
-    extends _$ClubReviewsEventCopyWithImpl<$Res, _$_ReviewReported>
-    implements _$$_ReviewReportedCopyWith<$Res> {
-  __$$_ReviewReportedCopyWithImpl(
-      _$_ReviewReported _value, $Res Function(_$_ReviewReported) _then)
+class __$$ReviewReportedImplCopyWithImpl<$Res>
+    extends _$ClubReviewsEventCopyWithImpl<$Res, _$ReviewReportedImpl>
+    implements _$$ReviewReportedImplCopyWith<$Res> {
+  __$$ReviewReportedImplCopyWithImpl(
+      _$ReviewReportedImpl _value, $Res Function(_$ReviewReportedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -353,7 +356,7 @@ class __$$_ReviewReportedCopyWithImpl<$Res>
   $Res call({
     Object? review = null,
   }) {
-    return _then(_$_ReviewReported(
+    return _then(_$ReviewReportedImpl(
       null == review
           ? _value.review
           : review // ignore: cast_nullable_to_non_nullable
@@ -364,8 +367,8 @@ class __$$_ReviewReportedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ReviewReported implements _ReviewReported {
-  const _$_ReviewReported(this.review);
+class _$ReviewReportedImpl implements _ReviewReported {
+  const _$ReviewReportedImpl(this.review);
 
   @override
   final Review review;
@@ -376,10 +379,10 @@ class _$_ReviewReported implements _ReviewReported {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ReviewReported &&
+            other is _$ReviewReportedImpl &&
             (identical(other.review, review) || other.review == review));
   }
 
@@ -389,8 +392,9 @@ class _$_ReviewReported implements _ReviewReported {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ReviewReportedCopyWith<_$_ReviewReported> get copyWith =>
-      __$$_ReviewReportedCopyWithImpl<_$_ReviewReported>(this, _$identity);
+  _$$ReviewReportedImplCopyWith<_$ReviewReportedImpl> get copyWith =>
+      __$$ReviewReportedImplCopyWithImpl<_$ReviewReportedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -463,11 +467,11 @@ class _$_ReviewReported implements _ReviewReported {
 }
 
 abstract class _ReviewReported implements ClubReviewsEvent {
-  const factory _ReviewReported(final Review review) = _$_ReviewReported;
+  const factory _ReviewReported(final Review review) = _$ReviewReportedImpl;
 
   Review get review;
   @JsonKey(ignore: true)
-  _$$_ReviewReportedCopyWith<_$_ReviewReported> get copyWith =>
+  _$$ReviewReportedImplCopyWith<_$ReviewReportedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -557,11 +561,11 @@ class _$ClubReviewsStateCopyWithImpl<$Res, $Val extends ClubReviewsState>
 }
 
 /// @nodoc
-abstract class _$$_ClubReviewsStateCopyWith<$Res>
+abstract class _$$ClubReviewsStateImplCopyWith<$Res>
     implements $ClubReviewsStateCopyWith<$Res> {
-  factory _$$_ClubReviewsStateCopyWith(
-          _$_ClubReviewsState value, $Res Function(_$_ClubReviewsState) then) =
-      __$$_ClubReviewsStateCopyWithImpl<$Res>;
+  factory _$$ClubReviewsStateImplCopyWith(_$ClubReviewsStateImpl value,
+          $Res Function(_$ClubReviewsStateImpl) then) =
+      __$$ClubReviewsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -575,11 +579,11 @@ abstract class _$$_ClubReviewsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClubReviewsStateCopyWithImpl<$Res>
-    extends _$ClubReviewsStateCopyWithImpl<$Res, _$_ClubReviewsState>
-    implements _$$_ClubReviewsStateCopyWith<$Res> {
-  __$$_ClubReviewsStateCopyWithImpl(
-      _$_ClubReviewsState _value, $Res Function(_$_ClubReviewsState) _then)
+class __$$ClubReviewsStateImplCopyWithImpl<$Res>
+    extends _$ClubReviewsStateCopyWithImpl<$Res, _$ClubReviewsStateImpl>
+    implements _$$ClubReviewsStateImplCopyWith<$Res> {
+  __$$ClubReviewsStateImplCopyWithImpl(_$ClubReviewsStateImpl _value,
+      $Res Function(_$ClubReviewsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -593,7 +597,7 @@ class __$$_ClubReviewsStateCopyWithImpl<$Res>
     Object? snackbarMessage = null,
     Object? reportingReviewIds = null,
   }) {
-    return _then(_$_ClubReviewsState(
+    return _then(_$ClubReviewsStateImpl(
       getReviewsStatus: null == getReviewsStatus
           ? _value.getReviewsStatus
           : getReviewsStatus // ignore: cast_nullable_to_non_nullable
@@ -628,8 +632,8 @@ class __$$_ClubReviewsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClubReviewsState extends _ClubReviewsState {
-  const _$_ClubReviewsState(
+class _$ClubReviewsStateImpl extends _ClubReviewsState {
+  const _$ClubReviewsStateImpl(
       {required this.getReviewsStatus,
       required this.nextPageReviewsStatus,
       required this.clubId,
@@ -674,10 +678,10 @@ class _$_ClubReviewsState extends _ClubReviewsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClubReviewsState &&
+            other is _$ClubReviewsStateImpl &&
             (identical(other.getReviewsStatus, getReviewsStatus) ||
                 other.getReviewsStatus == getReviewsStatus) &&
             (identical(other.nextPageReviewsStatus, nextPageReviewsStatus) ||
@@ -706,8 +710,9 @@ class _$_ClubReviewsState extends _ClubReviewsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClubReviewsStateCopyWith<_$_ClubReviewsState> get copyWith =>
-      __$$_ClubReviewsStateCopyWithImpl<_$_ClubReviewsState>(this, _$identity);
+  _$$ClubReviewsStateImplCopyWith<_$ClubReviewsStateImpl> get copyWith =>
+      __$$ClubReviewsStateImplCopyWithImpl<_$ClubReviewsStateImpl>(
+          this, _$identity);
 }
 
 abstract class _ClubReviewsState extends ClubReviewsState {
@@ -718,7 +723,7 @@ abstract class _ClubReviewsState extends ClubReviewsState {
       required final List<Review> reviews,
       required final bool hasReachedMax,
       required final Option<String> snackbarMessage,
-      required final List<String> reportingReviewIds}) = _$_ClubReviewsState;
+      required final List<String> reportingReviewIds}) = _$ClubReviewsStateImpl;
   const _ClubReviewsState._() : super._();
 
   @override
@@ -737,6 +742,6 @@ abstract class _ClubReviewsState extends ClubReviewsState {
   List<String> get reportingReviewIds;
   @override
   @JsonKey(ignore: true)
-  _$$_ClubReviewsStateCopyWith<_$_ClubReviewsState> get copyWith =>
+  _$$ClubReviewsStateImplCopyWith<_$ClubReviewsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -81,25 +81,25 @@ class _$ChatsEventCopyWithImpl<$Res, $Val extends ChatsEvent>
 }
 
 /// @nodoc
-abstract class _$$_ChatsFetchedCopyWith<$Res> {
-  factory _$$_ChatsFetchedCopyWith(
-          _$_ChatsFetched value, $Res Function(_$_ChatsFetched) then) =
-      __$$_ChatsFetchedCopyWithImpl<$Res>;
+abstract class _$$ChatsFetchedImplCopyWith<$Res> {
+  factory _$$ChatsFetchedImplCopyWith(
+          _$ChatsFetchedImpl value, $Res Function(_$ChatsFetchedImpl) then) =
+      __$$ChatsFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ChatsFetchedCopyWithImpl<$Res>
-    extends _$ChatsEventCopyWithImpl<$Res, _$_ChatsFetched>
-    implements _$$_ChatsFetchedCopyWith<$Res> {
-  __$$_ChatsFetchedCopyWithImpl(
-      _$_ChatsFetched _value, $Res Function(_$_ChatsFetched) _then)
+class __$$ChatsFetchedImplCopyWithImpl<$Res>
+    extends _$ChatsEventCopyWithImpl<$Res, _$ChatsFetchedImpl>
+    implements _$$ChatsFetchedImplCopyWith<$Res> {
+  __$$ChatsFetchedImplCopyWithImpl(
+      _$ChatsFetchedImpl _value, $Res Function(_$ChatsFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ChatsFetched implements _ChatsFetched {
-  const _$_ChatsFetched();
+class _$ChatsFetchedImpl implements _ChatsFetched {
+  const _$ChatsFetchedImpl();
 
   @override
   String toString() {
@@ -107,9 +107,9 @@ class _$_ChatsFetched implements _ChatsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ChatsFetched);
+        (other.runtimeType == runtimeType && other is _$ChatsFetchedImpl);
   }
 
   @override
@@ -185,29 +185,29 @@ class _$_ChatsFetched implements _ChatsFetched {
 }
 
 abstract class _ChatsFetched implements ChatsEvent {
-  const factory _ChatsFetched() = _$_ChatsFetched;
+  const factory _ChatsFetched() = _$ChatsFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_NextPageFetchedCopyWith<$Res> {
-  factory _$$_NextPageFetchedCopyWith(
-          _$_NextPageFetched value, $Res Function(_$_NextPageFetched) then) =
-      __$$_NextPageFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPageFetchedImplCopyWith<$Res> {
+  factory _$$NextPageFetchedImplCopyWith(_$NextPageFetchedImpl value,
+          $Res Function(_$NextPageFetchedImpl) then) =
+      __$$NextPageFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPageFetchedCopyWithImpl<$Res>
-    extends _$ChatsEventCopyWithImpl<$Res, _$_NextPageFetched>
-    implements _$$_NextPageFetchedCopyWith<$Res> {
-  __$$_NextPageFetchedCopyWithImpl(
-      _$_NextPageFetched _value, $Res Function(_$_NextPageFetched) _then)
+class __$$NextPageFetchedImplCopyWithImpl<$Res>
+    extends _$ChatsEventCopyWithImpl<$Res, _$NextPageFetchedImpl>
+    implements _$$NextPageFetchedImplCopyWith<$Res> {
+  __$$NextPageFetchedImplCopyWithImpl(
+      _$NextPageFetchedImpl _value, $Res Function(_$NextPageFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPageFetched implements _NextPageFetched {
-  const _$_NextPageFetched();
+class _$NextPageFetchedImpl implements _NextPageFetched {
+  const _$NextPageFetchedImpl();
 
   @override
   String toString() {
@@ -215,9 +215,9 @@ class _$_NextPageFetched implements _NextPageFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NextPageFetched);
+        (other.runtimeType == runtimeType && other is _$NextPageFetchedImpl);
   }
 
   @override
@@ -293,24 +293,24 @@ class _$_NextPageFetched implements _NextPageFetched {
 }
 
 abstract class _NextPageFetched implements ChatsEvent {
-  const factory _NextPageFetched() = _$_NextPageFetched;
+  const factory _NextPageFetched() = _$NextPageFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_ChatLeftCopyWith<$Res> {
-  factory _$$_ChatLeftCopyWith(
-          _$_ChatLeft value, $Res Function(_$_ChatLeft) then) =
-      __$$_ChatLeftCopyWithImpl<$Res>;
+abstract class _$$ChatLeftImplCopyWith<$Res> {
+  factory _$$ChatLeftImplCopyWith(
+          _$ChatLeftImpl value, $Res Function(_$ChatLeftImpl) then) =
+      __$$ChatLeftImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String chatId});
 }
 
 /// @nodoc
-class __$$_ChatLeftCopyWithImpl<$Res>
-    extends _$ChatsEventCopyWithImpl<$Res, _$_ChatLeft>
-    implements _$$_ChatLeftCopyWith<$Res> {
-  __$$_ChatLeftCopyWithImpl(
-      _$_ChatLeft _value, $Res Function(_$_ChatLeft) _then)
+class __$$ChatLeftImplCopyWithImpl<$Res>
+    extends _$ChatsEventCopyWithImpl<$Res, _$ChatLeftImpl>
+    implements _$$ChatLeftImplCopyWith<$Res> {
+  __$$ChatLeftImplCopyWithImpl(
+      _$ChatLeftImpl _value, $Res Function(_$ChatLeftImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -318,7 +318,7 @@ class __$$_ChatLeftCopyWithImpl<$Res>
   $Res call({
     Object? chatId = null,
   }) {
-    return _then(_$_ChatLeft(
+    return _then(_$ChatLeftImpl(
       null == chatId
           ? _value.chatId
           : chatId // ignore: cast_nullable_to_non_nullable
@@ -329,8 +329,8 @@ class __$$_ChatLeftCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChatLeft implements _ChatLeft {
-  const _$_ChatLeft(this.chatId);
+class _$ChatLeftImpl implements _ChatLeft {
+  const _$ChatLeftImpl(this.chatId);
 
   @override
   final String chatId;
@@ -341,10 +341,10 @@ class _$_ChatLeft implements _ChatLeft {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChatLeft &&
+            other is _$ChatLeftImpl &&
             (identical(other.chatId, chatId) || other.chatId == chatId));
   }
 
@@ -354,8 +354,8 @@ class _$_ChatLeft implements _ChatLeft {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChatLeftCopyWith<_$_ChatLeft> get copyWith =>
-      __$$_ChatLeftCopyWithImpl<_$_ChatLeft>(this, _$identity);
+  _$$ChatLeftImplCopyWith<_$ChatLeftImpl> get copyWith =>
+      __$$ChatLeftImplCopyWithImpl<_$ChatLeftImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -427,11 +427,11 @@ class _$_ChatLeft implements _ChatLeft {
 }
 
 abstract class _ChatLeft implements ChatsEvent {
-  const factory _ChatLeft(final String chatId) = _$_ChatLeft;
+  const factory _ChatLeft(final String chatId) = _$ChatLeftImpl;
 
   String get chatId;
   @JsonKey(ignore: true)
-  _$$_ChatLeftCopyWith<_$_ChatLeft> get copyWith =>
+  _$$ChatLeftImplCopyWith<_$ChatLeftImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -500,11 +500,11 @@ class _$ChatsStateCopyWithImpl<$Res, $Val extends ChatsState>
 }
 
 /// @nodoc
-abstract class _$$_ChatsStateCopyWith<$Res>
+abstract class _$$ChatsStateImplCopyWith<$Res>
     implements $ChatsStateCopyWith<$Res> {
-  factory _$$_ChatsStateCopyWith(
-          _$_ChatsState value, $Res Function(_$_ChatsState) then) =
-      __$$_ChatsStateCopyWithImpl<$Res>;
+  factory _$$ChatsStateImplCopyWith(
+          _$ChatsStateImpl value, $Res Function(_$ChatsStateImpl) then) =
+      __$$ChatsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -515,11 +515,11 @@ abstract class _$$_ChatsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ChatsStateCopyWithImpl<$Res>
-    extends _$ChatsStateCopyWithImpl<$Res, _$_ChatsState>
-    implements _$$_ChatsStateCopyWith<$Res> {
-  __$$_ChatsStateCopyWithImpl(
-      _$_ChatsState _value, $Res Function(_$_ChatsState) _then)
+class __$$ChatsStateImplCopyWithImpl<$Res>
+    extends _$ChatsStateCopyWithImpl<$Res, _$ChatsStateImpl>
+    implements _$$ChatsStateImplCopyWith<$Res> {
+  __$$ChatsStateImplCopyWithImpl(
+      _$ChatsStateImpl _value, $Res Function(_$ChatsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -530,7 +530,7 @@ class __$$_ChatsStateCopyWithImpl<$Res>
     Object? fetchNextPageStatus = null,
     Object? hasReachedMax = null,
   }) {
-    return _then(_$_ChatsState(
+    return _then(_$ChatsStateImpl(
       chats: null == chats
           ? _value._chats
           : chats // ignore: cast_nullable_to_non_nullable
@@ -553,8 +553,8 @@ class __$$_ChatsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChatsState implements _ChatsState {
-  const _$_ChatsState(
+class _$ChatsStateImpl implements _ChatsState {
+  const _$ChatsStateImpl(
       {required final List<Chat> chats,
       required this.fetchChatsStatus,
       required this.fetchNextPageStatus,
@@ -582,10 +582,10 @@ class _$_ChatsState implements _ChatsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChatsState &&
+            other is _$ChatsStateImpl &&
             const DeepCollectionEquality().equals(other._chats, _chats) &&
             (identical(other.fetchChatsStatus, fetchChatsStatus) ||
                 other.fetchChatsStatus == fetchChatsStatus) &&
@@ -606,8 +606,8 @@ class _$_ChatsState implements _ChatsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChatsStateCopyWith<_$_ChatsState> get copyWith =>
-      __$$_ChatsStateCopyWithImpl<_$_ChatsState>(this, _$identity);
+  _$$ChatsStateImplCopyWith<_$ChatsStateImpl> get copyWith =>
+      __$$ChatsStateImplCopyWithImpl<_$ChatsStateImpl>(this, _$identity);
 }
 
 abstract class _ChatsState implements ChatsState {
@@ -615,7 +615,7 @@ abstract class _ChatsState implements ChatsState {
       {required final List<Chat> chats,
       required final CubitStatus fetchChatsStatus,
       required final CubitStatus fetchNextPageStatus,
-      required final bool hasReachedMax}) = _$_ChatsState;
+      required final bool hasReachedMax}) = _$ChatsStateImpl;
 
   @override
   List<Chat> get chats;
@@ -627,6 +627,6 @@ abstract class _ChatsState implements ChatsState {
   bool get hasReachedMax;
   @override
   @JsonKey(ignore: true)
-  _$$_ChatsStateCopyWith<_$_ChatsState> get copyWith =>
+  _$$ChatsStateImplCopyWith<_$ChatsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,7 +1,6 @@
 import 'package:common/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:translations/translations.dart';
 
 class SearchField extends HookWidget {
   final Future<void> Function(String phrase) onSubmit;
@@ -19,8 +18,17 @@ class SearchField extends HookWidget {
       controller: textController,
       onSubmitted: (phrase) async => await onSubmit(phrase),
       decoration: InputDecoration(
+        disabledBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          borderSide: BorderSide(color: context.shadowColor, width: .5),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          borderSide: BorderSide(color: context.shadowColor, width: .5),
+        ),
         hintMaxLines: 1,
-        hintText: S().startSearching,
+        hintText: 'Szukaj gatunków muzycznych, artystów, kolektywów...',
+        hintStyle: context.titleSmall.copyWith(color: context.hintColor),
         prefixIcon: const Icon(Icons.search),
         suffixIcon: phrase.isEmpty
             ? null

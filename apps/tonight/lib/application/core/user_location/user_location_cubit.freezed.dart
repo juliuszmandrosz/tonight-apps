@@ -70,11 +70,11 @@ class _$UserLocationStateCopyWithImpl<$Res, $Val extends UserLocationState>
 }
 
 /// @nodoc
-abstract class _$$_UserLocationStateCopyWith<$Res>
+abstract class _$$UserLocationStateImplCopyWith<$Res>
     implements $UserLocationStateCopyWith<$Res> {
-  factory _$$_UserLocationStateCopyWith(_$_UserLocationState value,
-          $Res Function(_$_UserLocationState) then) =
-      __$$_UserLocationStateCopyWithImpl<$Res>;
+  factory _$$UserLocationStateImplCopyWith(_$UserLocationStateImpl value,
+          $Res Function(_$UserLocationStateImpl) then) =
+      __$$UserLocationStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -82,11 +82,11 @@ abstract class _$$_UserLocationStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserLocationStateCopyWithImpl<$Res>
-    extends _$UserLocationStateCopyWithImpl<$Res, _$_UserLocationState>
-    implements _$$_UserLocationStateCopyWith<$Res> {
-  __$$_UserLocationStateCopyWithImpl(
-      _$_UserLocationState _value, $Res Function(_$_UserLocationState) _then)
+class __$$UserLocationStateImplCopyWithImpl<$Res>
+    extends _$UserLocationStateCopyWithImpl<$Res, _$UserLocationStateImpl>
+    implements _$$UserLocationStateImplCopyWith<$Res> {
+  __$$UserLocationStateImplCopyWithImpl(_$UserLocationStateImpl _value,
+      $Res Function(_$UserLocationStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +96,7 @@ class __$$_UserLocationStateCopyWithImpl<$Res>
     Object? isPermissionGranted = null,
     Object? isLoading = null,
   }) {
-    return _then(_$_UserLocationState(
+    return _then(_$UserLocationStateImpl(
       userLocation: null == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
@@ -115,8 +115,8 @@ class __$$_UserLocationStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserLocationState extends _UserLocationState {
-  _$_UserLocationState(
+class _$UserLocationStateImpl extends _UserLocationState {
+  _$UserLocationStateImpl(
       {required this.userLocation,
       required this.isPermissionGranted,
       required this.isLoading})
@@ -135,10 +135,10 @@ class _$_UserLocationState extends _UserLocationState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserLocationState &&
+            other is _$UserLocationStateImpl &&
             (identical(other.userLocation, userLocation) ||
                 other.userLocation == userLocation) &&
             (identical(other.isPermissionGranted, isPermissionGranted) ||
@@ -154,8 +154,8 @@ class _$_UserLocationState extends _UserLocationState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserLocationStateCopyWith<_$_UserLocationState> get copyWith =>
-      __$$_UserLocationStateCopyWithImpl<_$_UserLocationState>(
+  _$$UserLocationStateImplCopyWith<_$UserLocationStateImpl> get copyWith =>
+      __$$UserLocationStateImplCopyWithImpl<_$UserLocationStateImpl>(
           this, _$identity);
 }
 
@@ -163,7 +163,7 @@ abstract class _UserLocationState extends UserLocationState {
   factory _UserLocationState(
       {required final Option<LatLng> userLocation,
       required final bool isPermissionGranted,
-      required final bool isLoading}) = _$_UserLocationState;
+      required final bool isLoading}) = _$UserLocationStateImpl;
   _UserLocationState._() : super._();
 
   @override
@@ -174,6 +174,6 @@ abstract class _UserLocationState extends UserLocationState {
   bool get isLoading;
   @override
   @JsonKey(ignore: true)
-  _$$_UserLocationStateCopyWith<_$_UserLocationState> get copyWith =>
+  _$$UserLocationStateImplCopyWith<_$UserLocationStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

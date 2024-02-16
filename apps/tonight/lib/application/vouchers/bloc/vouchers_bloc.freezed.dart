@@ -76,25 +76,25 @@ class _$VouchersEventCopyWithImpl<$Res, $Val extends VouchersEvent>
 }
 
 /// @nodoc
-abstract class _$$_VouchersFetchedCopyWith<$Res> {
-  factory _$$_VouchersFetchedCopyWith(
-          _$_VouchersFetched value, $Res Function(_$_VouchersFetched) then) =
-      __$$_VouchersFetchedCopyWithImpl<$Res>;
+abstract class _$$VouchersFetchedImplCopyWith<$Res> {
+  factory _$$VouchersFetchedImplCopyWith(_$VouchersFetchedImpl value,
+          $Res Function(_$VouchersFetchedImpl) then) =
+      __$$VouchersFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_VouchersFetchedCopyWithImpl<$Res>
-    extends _$VouchersEventCopyWithImpl<$Res, _$_VouchersFetched>
-    implements _$$_VouchersFetchedCopyWith<$Res> {
-  __$$_VouchersFetchedCopyWithImpl(
-      _$_VouchersFetched _value, $Res Function(_$_VouchersFetched) _then)
+class __$$VouchersFetchedImplCopyWithImpl<$Res>
+    extends _$VouchersEventCopyWithImpl<$Res, _$VouchersFetchedImpl>
+    implements _$$VouchersFetchedImplCopyWith<$Res> {
+  __$$VouchersFetchedImplCopyWithImpl(
+      _$VouchersFetchedImpl _value, $Res Function(_$VouchersFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_VouchersFetched implements _VouchersFetched {
-  const _$_VouchersFetched();
+class _$VouchersFetchedImpl implements _VouchersFetched {
+  const _$VouchersFetchedImpl();
 
   @override
   String toString() {
@@ -102,9 +102,9 @@ class _$_VouchersFetched implements _VouchersFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_VouchersFetched);
+        (other.runtimeType == runtimeType && other is _$VouchersFetchedImpl);
   }
 
   @override
@@ -175,29 +175,31 @@ class _$_VouchersFetched implements _VouchersFetched {
 }
 
 abstract class _VouchersFetched implements VouchersEvent {
-  const factory _VouchersFetched() = _$_VouchersFetched;
+  const factory _VouchersFetched() = _$VouchersFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_NextPageVouchersFetchedCopyWith<$Res> {
-  factory _$$_NextPageVouchersFetchedCopyWith(_$_NextPageVouchersFetched value,
-          $Res Function(_$_NextPageVouchersFetched) then) =
-      __$$_NextPageVouchersFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPageVouchersFetchedImplCopyWith<$Res> {
+  factory _$$NextPageVouchersFetchedImplCopyWith(
+          _$NextPageVouchersFetchedImpl value,
+          $Res Function(_$NextPageVouchersFetchedImpl) then) =
+      __$$NextPageVouchersFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPageVouchersFetchedCopyWithImpl<$Res>
-    extends _$VouchersEventCopyWithImpl<$Res, _$_NextPageVouchersFetched>
-    implements _$$_NextPageVouchersFetchedCopyWith<$Res> {
-  __$$_NextPageVouchersFetchedCopyWithImpl(_$_NextPageVouchersFetched _value,
-      $Res Function(_$_NextPageVouchersFetched) _then)
+class __$$NextPageVouchersFetchedImplCopyWithImpl<$Res>
+    extends _$VouchersEventCopyWithImpl<$Res, _$NextPageVouchersFetchedImpl>
+    implements _$$NextPageVouchersFetchedImplCopyWith<$Res> {
+  __$$NextPageVouchersFetchedImplCopyWithImpl(
+      _$NextPageVouchersFetchedImpl _value,
+      $Res Function(_$NextPageVouchersFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPageVouchersFetched implements _NextPageVouchersFetched {
-  const _$_NextPageVouchersFetched();
+class _$NextPageVouchersFetchedImpl implements _NextPageVouchersFetched {
+  const _$NextPageVouchersFetchedImpl();
 
   @override
   String toString() {
@@ -205,10 +207,10 @@ class _$_NextPageVouchersFetched implements _NextPageVouchersFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NextPageVouchersFetched);
+            other is _$NextPageVouchersFetchedImpl);
   }
 
   @override
@@ -279,7 +281,7 @@ class _$_NextPageVouchersFetched implements _NextPageVouchersFetched {
 }
 
 abstract class _NextPageVouchersFetched implements VouchersEvent {
-  const factory _NextPageVouchersFetched() = _$_NextPageVouchersFetched;
+  const factory _NextPageVouchersFetched() = _$NextPageVouchersFetchedImpl;
 }
 
 /// @nodoc
@@ -347,11 +349,11 @@ class _$VouchersStateCopyWithImpl<$Res, $Val extends VouchersState>
 }
 
 /// @nodoc
-abstract class _$$_VouchersStateCopyWith<$Res>
+abstract class _$$VouchersStateImplCopyWith<$Res>
     implements $VouchersStateCopyWith<$Res> {
-  factory _$$_VouchersStateCopyWith(
-          _$_VouchersState value, $Res Function(_$_VouchersState) then) =
-      __$$_VouchersStateCopyWithImpl<$Res>;
+  factory _$$VouchersStateImplCopyWith(
+          _$VouchersStateImpl value, $Res Function(_$VouchersStateImpl) then) =
+      __$$VouchersStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -362,11 +364,11 @@ abstract class _$$_VouchersStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_VouchersStateCopyWithImpl<$Res>
-    extends _$VouchersStateCopyWithImpl<$Res, _$_VouchersState>
-    implements _$$_VouchersStateCopyWith<$Res> {
-  __$$_VouchersStateCopyWithImpl(
-      _$_VouchersState _value, $Res Function(_$_VouchersState) _then)
+class __$$VouchersStateImplCopyWithImpl<$Res>
+    extends _$VouchersStateCopyWithImpl<$Res, _$VouchersStateImpl>
+    implements _$$VouchersStateImplCopyWith<$Res> {
+  __$$VouchersStateImplCopyWithImpl(
+      _$VouchersStateImpl _value, $Res Function(_$VouchersStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -377,7 +379,7 @@ class __$$_VouchersStateCopyWithImpl<$Res>
     Object? fetchVouchersStatus = null,
     Object? nextPageStatus = null,
   }) {
-    return _then(_$_VouchersState(
+    return _then(_$VouchersStateImpl(
       vouchers: null == vouchers
           ? _value._vouchers
           : vouchers // ignore: cast_nullable_to_non_nullable
@@ -400,8 +402,8 @@ class __$$_VouchersStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_VouchersState implements _VouchersState {
-  const _$_VouchersState(
+class _$VouchersStateImpl implements _VouchersState {
+  const _$VouchersStateImpl(
       {required final List<Voucher> vouchers,
       required this.hasReachedMax,
       required this.fetchVouchersStatus,
@@ -429,10 +431,10 @@ class _$_VouchersState implements _VouchersState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VouchersState &&
+            other is _$VouchersStateImpl &&
             const DeepCollectionEquality().equals(other._vouchers, _vouchers) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
                 other.hasReachedMax == hasReachedMax) &&
@@ -453,8 +455,8 @@ class _$_VouchersState implements _VouchersState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VouchersStateCopyWith<_$_VouchersState> get copyWith =>
-      __$$_VouchersStateCopyWithImpl<_$_VouchersState>(this, _$identity);
+  _$$VouchersStateImplCopyWith<_$VouchersStateImpl> get copyWith =>
+      __$$VouchersStateImplCopyWithImpl<_$VouchersStateImpl>(this, _$identity);
 }
 
 abstract class _VouchersState implements VouchersState {
@@ -462,7 +464,7 @@ abstract class _VouchersState implements VouchersState {
       {required final List<Voucher> vouchers,
       required final bool hasReachedMax,
       required final CubitStatus fetchVouchersStatus,
-      required final CubitStatus nextPageStatus}) = _$_VouchersState;
+      required final CubitStatus nextPageStatus}) = _$VouchersStateImpl;
 
   @override
   List<Voucher> get vouchers;
@@ -474,6 +476,6 @@ abstract class _VouchersState implements VouchersState {
   CubitStatus get nextPageStatus;
   @override
   @JsonKey(ignore: true)
-  _$$_VouchersStateCopyWith<_$_VouchersState> get copyWith =>
+  _$$VouchersStateImplCopyWith<_$VouchersStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

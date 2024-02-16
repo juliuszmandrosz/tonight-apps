@@ -63,22 +63,22 @@ class _$VideoPreviewStateCopyWithImpl<$Res, $Val extends VideoPreviewState>
 }
 
 /// @nodoc
-abstract class _$$_VideoPreviewStateCopyWith<$Res>
+abstract class _$$VideoPreviewStateImplCopyWith<$Res>
     implements $VideoPreviewStateCopyWith<$Res> {
-  factory _$$_VideoPreviewStateCopyWith(_$_VideoPreviewState value,
-          $Res Function(_$_VideoPreviewState) then) =
-      __$$_VideoPreviewStateCopyWithImpl<$Res>;
+  factory _$$VideoPreviewStateImplCopyWith(_$VideoPreviewStateImpl value,
+          $Res Function(_$VideoPreviewStateImpl) then) =
+      __$$VideoPreviewStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({CubitStatus addStoryStatus, Option<String> snackbarMessage});
 }
 
 /// @nodoc
-class __$$_VideoPreviewStateCopyWithImpl<$Res>
-    extends _$VideoPreviewStateCopyWithImpl<$Res, _$_VideoPreviewState>
-    implements _$$_VideoPreviewStateCopyWith<$Res> {
-  __$$_VideoPreviewStateCopyWithImpl(
-      _$_VideoPreviewState _value, $Res Function(_$_VideoPreviewState) _then)
+class __$$VideoPreviewStateImplCopyWithImpl<$Res>
+    extends _$VideoPreviewStateCopyWithImpl<$Res, _$VideoPreviewStateImpl>
+    implements _$$VideoPreviewStateImplCopyWith<$Res> {
+  __$$VideoPreviewStateImplCopyWithImpl(_$VideoPreviewStateImpl _value,
+      $Res Function(_$VideoPreviewStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_VideoPreviewStateCopyWithImpl<$Res>
     Object? addStoryStatus = null,
     Object? snackbarMessage = null,
   }) {
-    return _then(_$_VideoPreviewState(
+    return _then(_$VideoPreviewStateImpl(
       addStoryStatus: null == addStoryStatus
           ? _value.addStoryStatus
           : addStoryStatus // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_VideoPreviewStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_VideoPreviewState implements _VideoPreviewState {
-  const _$_VideoPreviewState(
+class _$VideoPreviewStateImpl implements _VideoPreviewState {
+  const _$VideoPreviewStateImpl(
       {required this.addStoryStatus, required this.snackbarMessage});
 
   @override
@@ -117,10 +117,10 @@ class _$_VideoPreviewState implements _VideoPreviewState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VideoPreviewState &&
+            other is _$VideoPreviewStateImpl &&
             (identical(other.addStoryStatus, addStoryStatus) ||
                 other.addStoryStatus == addStoryStatus) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
@@ -133,15 +133,15 @@ class _$_VideoPreviewState implements _VideoPreviewState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VideoPreviewStateCopyWith<_$_VideoPreviewState> get copyWith =>
-      __$$_VideoPreviewStateCopyWithImpl<_$_VideoPreviewState>(
+  _$$VideoPreviewStateImplCopyWith<_$VideoPreviewStateImpl> get copyWith =>
+      __$$VideoPreviewStateImplCopyWithImpl<_$VideoPreviewStateImpl>(
           this, _$identity);
 }
 
 abstract class _VideoPreviewState implements VideoPreviewState {
   const factory _VideoPreviewState(
       {required final CubitStatus addStoryStatus,
-      required final Option<String> snackbarMessage}) = _$_VideoPreviewState;
+      required final Option<String> snackbarMessage}) = _$VideoPreviewStateImpl;
 
   @override
   CubitStatus get addStoryStatus;
@@ -149,6 +149,6 @@ abstract class _VideoPreviewState implements VideoPreviewState {
   Option<String> get snackbarMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_VideoPreviewStateCopyWith<_$_VideoPreviewState> get copyWith =>
+  _$$VideoPreviewStateImplCopyWith<_$VideoPreviewStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

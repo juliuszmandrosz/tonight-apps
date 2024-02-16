@@ -81,11 +81,11 @@ class _$PaymentMethodStateCopyWithImpl<$Res, $Val extends PaymentMethodState>
 }
 
 /// @nodoc
-abstract class _$$_PaymentMethodStateCopyWith<$Res>
+abstract class _$$PaymentMethodStateImplCopyWith<$Res>
     implements $PaymentMethodStateCopyWith<$Res> {
-  factory _$$_PaymentMethodStateCopyWith(_$_PaymentMethodState value,
-          $Res Function(_$_PaymentMethodState) then) =
-      __$$_PaymentMethodStateCopyWithImpl<$Res>;
+  factory _$$PaymentMethodStateImplCopyWith(_$PaymentMethodStateImpl value,
+          $Res Function(_$PaymentMethodStateImpl) then) =
+      __$$PaymentMethodStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -96,11 +96,11 @@ abstract class _$$_PaymentMethodStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentMethodStateCopyWithImpl<$Res>
-    extends _$PaymentMethodStateCopyWithImpl<$Res, _$_PaymentMethodState>
-    implements _$$_PaymentMethodStateCopyWith<$Res> {
-  __$$_PaymentMethodStateCopyWithImpl(
-      _$_PaymentMethodState _value, $Res Function(_$_PaymentMethodState) _then)
+class __$$PaymentMethodStateImplCopyWithImpl<$Res>
+    extends _$PaymentMethodStateCopyWithImpl<$Res, _$PaymentMethodStateImpl>
+    implements _$$PaymentMethodStateImplCopyWith<$Res> {
+  __$$PaymentMethodStateImplCopyWithImpl(_$PaymentMethodStateImpl _value,
+      $Res Function(_$PaymentMethodStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -111,7 +111,7 @@ class __$$_PaymentMethodStateCopyWithImpl<$Res>
     Object? cubitStatus = null,
     Object? errorMessage = null,
   }) {
-    return _then(_$_PaymentMethodState(
+    return _then(_$PaymentMethodStateImpl(
       updatedCustomerData: null == updatedCustomerData
           ? _value.updatedCustomerData
           : updatedCustomerData // ignore: cast_nullable_to_non_nullable
@@ -134,8 +134,8 @@ class __$$_PaymentMethodStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PaymentMethodState extends _PaymentMethodState {
-  _$_PaymentMethodState(
+class _$PaymentMethodStateImpl extends _PaymentMethodState {
+  _$PaymentMethodStateImpl(
       {required this.updatedCustomerData,
       required this.selectedPaymentMethod,
       required this.cubitStatus,
@@ -157,10 +157,10 @@ class _$_PaymentMethodState extends _PaymentMethodState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentMethodState &&
+            other is _$PaymentMethodStateImpl &&
             (identical(other.updatedCustomerData, updatedCustomerData) ||
                 other.updatedCustomerData == updatedCustomerData) &&
             (identical(other.selectedPaymentMethod, selectedPaymentMethod) ||
@@ -178,8 +178,8 @@ class _$_PaymentMethodState extends _PaymentMethodState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentMethodStateCopyWith<_$_PaymentMethodState> get copyWith =>
-      __$$_PaymentMethodStateCopyWithImpl<_$_PaymentMethodState>(
+  _$$PaymentMethodStateImplCopyWith<_$PaymentMethodStateImpl> get copyWith =>
+      __$$PaymentMethodStateImplCopyWithImpl<_$PaymentMethodStateImpl>(
           this, _$identity);
 }
 
@@ -188,7 +188,7 @@ abstract class _PaymentMethodState extends PaymentMethodState {
       {required final Option<CustomerData> updatedCustomerData,
       required final TonightPaymentMethod selectedPaymentMethod,
       required final CubitStatus cubitStatus,
-      required final Option<String> errorMessage}) = _$_PaymentMethodState;
+      required final Option<String> errorMessage}) = _$PaymentMethodStateImpl;
   _PaymentMethodState._() : super._();
 
   @override
@@ -201,6 +201,6 @@ abstract class _PaymentMethodState extends PaymentMethodState {
   Option<String> get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentMethodStateCopyWith<_$_PaymentMethodState> get copyWith =>
+  _$$PaymentMethodStateImplCopyWith<_$PaymentMethodStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

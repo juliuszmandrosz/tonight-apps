@@ -93,11 +93,11 @@ class _$TicketCheckoutDataCopyWithImpl<$Res, $Val extends TicketCheckoutData>
 }
 
 /// @nodoc
-abstract class _$$_TicketCheckoutDataCopyWith<$Res>
+abstract class _$$TicketCheckoutDataImplCopyWith<$Res>
     implements $TicketCheckoutDataCopyWith<$Res> {
-  factory _$$_TicketCheckoutDataCopyWith(_$_TicketCheckoutData value,
-          $Res Function(_$_TicketCheckoutData) then) =
-      __$$_TicketCheckoutDataCopyWithImpl<$Res>;
+  factory _$$TicketCheckoutDataImplCopyWith(_$TicketCheckoutDataImpl value,
+          $Res Function(_$TicketCheckoutDataImpl) then) =
+      __$$TicketCheckoutDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -110,11 +110,11 @@ abstract class _$$_TicketCheckoutDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TicketCheckoutDataCopyWithImpl<$Res>
-    extends _$TicketCheckoutDataCopyWithImpl<$Res, _$_TicketCheckoutData>
-    implements _$$_TicketCheckoutDataCopyWith<$Res> {
-  __$$_TicketCheckoutDataCopyWithImpl(
-      _$_TicketCheckoutData _value, $Res Function(_$_TicketCheckoutData) _then)
+class __$$TicketCheckoutDataImplCopyWithImpl<$Res>
+    extends _$TicketCheckoutDataCopyWithImpl<$Res, _$TicketCheckoutDataImpl>
+    implements _$$TicketCheckoutDataImplCopyWith<$Res> {
+  __$$TicketCheckoutDataImplCopyWithImpl(_$TicketCheckoutDataImpl _value,
+      $Res Function(_$TicketCheckoutDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -127,7 +127,7 @@ class __$$_TicketCheckoutDataCopyWithImpl<$Res>
     Object? minimumServiceFeeAmount = null,
     Object? customerData = null,
   }) {
-    return _then(_$_TicketCheckoutData(
+    return _then(_$TicketCheckoutDataImpl(
       eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
@@ -158,8 +158,8 @@ class __$$_TicketCheckoutDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TicketCheckoutData implements _TicketCheckoutData {
-  const _$_TicketCheckoutData(
+class _$TicketCheckoutDataImpl implements _TicketCheckoutData {
+  const _$TicketCheckoutDataImpl(
       {required this.eventId,
       required this.currency,
       required this.currentTicketPool,
@@ -186,10 +186,10 @@ class _$_TicketCheckoutData implements _TicketCheckoutData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TicketCheckoutData &&
+            other is _$TicketCheckoutDataImpl &&
             (identical(other.eventId, eventId) || other.eventId == eventId) &&
             (identical(other.currency, currency) ||
                 other.currency == currency) &&
@@ -211,8 +211,8 @@ class _$_TicketCheckoutData implements _TicketCheckoutData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TicketCheckoutDataCopyWith<_$_TicketCheckoutData> get copyWith =>
-      __$$_TicketCheckoutDataCopyWithImpl<_$_TicketCheckoutData>(
+  _$$TicketCheckoutDataImplCopyWith<_$TicketCheckoutDataImpl> get copyWith =>
+      __$$TicketCheckoutDataImplCopyWithImpl<_$TicketCheckoutDataImpl>(
           this, _$identity);
 }
 
@@ -223,7 +223,7 @@ abstract class _TicketCheckoutData implements TicketCheckoutData {
       required final TicketPool currentTicketPool,
       required final double serviceFee,
       required final double minimumServiceFeeAmount,
-      required final CustomerData customerData}) = _$_TicketCheckoutData;
+      required final CustomerData customerData}) = _$TicketCheckoutDataImpl;
 
   @override
   String get eventId;
@@ -239,6 +239,6 @@ abstract class _TicketCheckoutData implements TicketCheckoutData {
   CustomerData get customerData;
   @override
   @JsonKey(ignore: true)
-  _$$_TicketCheckoutDataCopyWith<_$_TicketCheckoutData> get copyWith =>
+  _$$TicketCheckoutDataImplCopyWith<_$TicketCheckoutDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
