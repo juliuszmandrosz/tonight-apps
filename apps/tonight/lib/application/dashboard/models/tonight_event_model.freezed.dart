@@ -234,11 +234,11 @@ class _$TonightEventCopyWithImpl<$Res, $Val extends TonightEvent>
 }
 
 /// @nodoc
-abstract class _$$_TonightEventCopyWith<$Res>
+abstract class _$$TonightEventImplCopyWith<$Res>
     implements $TonightEventCopyWith<$Res> {
-  factory _$$_TonightEventCopyWith(
-          _$_TonightEvent value, $Res Function(_$_TonightEvent) then) =
-      __$$_TonightEventCopyWithImpl<$Res>;
+  factory _$$TonightEventImplCopyWith(
+          _$TonightEventImpl value, $Res Function(_$TonightEventImpl) then) =
+      __$$TonightEventImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -271,11 +271,11 @@ abstract class _$$_TonightEventCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TonightEventCopyWithImpl<$Res>
-    extends _$TonightEventCopyWithImpl<$Res, _$_TonightEvent>
-    implements _$$_TonightEventCopyWith<$Res> {
-  __$$_TonightEventCopyWithImpl(
-      _$_TonightEvent _value, $Res Function(_$_TonightEvent) _then)
+class __$$TonightEventImplCopyWithImpl<$Res>
+    extends _$TonightEventCopyWithImpl<$Res, _$TonightEventImpl>
+    implements _$$TonightEventImplCopyWith<$Res> {
+  __$$TonightEventImplCopyWithImpl(
+      _$TonightEventImpl _value, $Res Function(_$TonightEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -308,7 +308,7 @@ class __$$_TonightEventCopyWithImpl<$Res>
     Object? artistName = freezed,
     Object? description = freezed,
   }) {
-    return _then(_$_TonightEvent(
+    return _then(_$TonightEventImpl(
       eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
@@ -419,8 +419,8 @@ class __$$_TonightEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TonightEvent extends _TonightEvent {
-  const _$_TonightEvent(
+class _$TonightEventImpl extends _TonightEvent {
+  const _$TonightEventImpl(
       {required this.eventId,
       required this.eventName,
       required this.clubId,
@@ -530,10 +530,10 @@ class _$_TonightEvent extends _TonightEvent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TonightEvent &&
+            other is _$TonightEventImpl &&
             (identical(other.eventId, eventId) || other.eventId == eventId) &&
             (identical(other.eventName, eventName) ||
                 other.eventName == eventName) &&
@@ -616,8 +616,8 @@ class _$_TonightEvent extends _TonightEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TonightEventCopyWith<_$_TonightEvent> get copyWith =>
-      __$$_TonightEventCopyWithImpl<_$_TonightEvent>(this, _$identity);
+  _$$TonightEventImplCopyWith<_$TonightEventImpl> get copyWith =>
+      __$$TonightEventImplCopyWithImpl<_$TonightEventImpl>(this, _$identity);
 }
 
 abstract class _TonightEvent extends TonightEvent {
@@ -647,7 +647,7 @@ abstract class _TonightEvent extends TonightEvent {
       final String? locationString,
       final String? clubPhotoUrl,
       final String? artistName,
-      final String? description}) = _$_TonightEvent;
+      final String? description}) = _$TonightEventImpl;
   const _TonightEvent._() : super._();
 
   @override
@@ -704,6 +704,6 @@ abstract class _TonightEvent extends TonightEvent {
   String? get description;
   @override
   @JsonKey(ignore: true)
-  _$$_TonightEventCopyWith<_$_TonightEvent> get copyWith =>
+  _$$TonightEventImplCopyWith<_$TonightEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

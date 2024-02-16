@@ -80,11 +80,11 @@ class _$ChallengeStoryStateCopyWithImpl<$Res, $Val extends ChallengeStoryState>
 }
 
 /// @nodoc
-abstract class _$$_ChallengeStoryStateCopyWith<$Res>
+abstract class _$$ChallengeStoryStateImplCopyWith<$Res>
     implements $ChallengeStoryStateCopyWith<$Res> {
-  factory _$$_ChallengeStoryStateCopyWith(_$_ChallengeStoryState value,
-          $Res Function(_$_ChallengeStoryState) then) =
-      __$$_ChallengeStoryStateCopyWithImpl<$Res>;
+  factory _$$ChallengeStoryStateImplCopyWith(_$ChallengeStoryStateImpl value,
+          $Res Function(_$ChallengeStoryStateImpl) then) =
+      __$$ChallengeStoryStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -95,11 +95,11 @@ abstract class _$$_ChallengeStoryStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ChallengeStoryStateCopyWithImpl<$Res>
-    extends _$ChallengeStoryStateCopyWithImpl<$Res, _$_ChallengeStoryState>
-    implements _$$_ChallengeStoryStateCopyWith<$Res> {
-  __$$_ChallengeStoryStateCopyWithImpl(_$_ChallengeStoryState _value,
-      $Res Function(_$_ChallengeStoryState) _then)
+class __$$ChallengeStoryStateImplCopyWithImpl<$Res>
+    extends _$ChallengeStoryStateCopyWithImpl<$Res, _$ChallengeStoryStateImpl>
+    implements _$$ChallengeStoryStateImplCopyWith<$Res> {
+  __$$ChallengeStoryStateImplCopyWithImpl(_$ChallengeStoryStateImpl _value,
+      $Res Function(_$ChallengeStoryStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -110,7 +110,7 @@ class __$$_ChallengeStoryStateCopyWithImpl<$Res>
     Object? snackbarMessage = null,
     Object? userStoriesWithInteractions = null,
   }) {
-    return _then(_$_ChallengeStoryState(
+    return _then(_$ChallengeStoryStateImpl(
       likeStoryStatus: null == likeStoryStatus
           ? _value.likeStoryStatus
           : likeStoryStatus // ignore: cast_nullable_to_non_nullable
@@ -133,8 +133,8 @@ class __$$_ChallengeStoryStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChallengeStoryState implements _ChallengeStoryState {
-  const _$_ChallengeStoryState(
+class _$ChallengeStoryStateImpl implements _ChallengeStoryState {
+  const _$ChallengeStoryStateImpl(
       {required this.likeStoryStatus,
       required this.deleteStoryStatus,
       required this.snackbarMessage,
@@ -163,10 +163,10 @@ class _$_ChallengeStoryState implements _ChallengeStoryState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChallengeStoryState &&
+            other is _$ChallengeStoryStateImpl &&
             (identical(other.likeStoryStatus, likeStoryStatus) ||
                 other.likeStoryStatus == likeStoryStatus) &&
             (identical(other.deleteStoryStatus, deleteStoryStatus) ||
@@ -189,8 +189,8 @@ class _$_ChallengeStoryState implements _ChallengeStoryState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChallengeStoryStateCopyWith<_$_ChallengeStoryState> get copyWith =>
-      __$$_ChallengeStoryStateCopyWithImpl<_$_ChallengeStoryState>(
+  _$$ChallengeStoryStateImplCopyWith<_$ChallengeStoryStateImpl> get copyWith =>
+      __$$ChallengeStoryStateImplCopyWithImpl<_$ChallengeStoryStateImpl>(
           this, _$identity);
 }
 
@@ -200,7 +200,7 @@ abstract class _ChallengeStoryState implements ChallengeStoryState {
       required final CubitStatus deleteStoryStatus,
       required final Option<String> snackbarMessage,
       required final List<UserStoriesWithInteractions>
-          userStoriesWithInteractions}) = _$_ChallengeStoryState;
+          userStoriesWithInteractions}) = _$ChallengeStoryStateImpl;
 
   @override
   CubitStatus get likeStoryStatus;
@@ -212,6 +212,6 @@ abstract class _ChallengeStoryState implements ChallengeStoryState {
   List<UserStoriesWithInteractions> get userStoriesWithInteractions;
   @override
   @JsonKey(ignore: true)
-  _$$_ChallengeStoryStateCopyWith<_$_ChallengeStoryState> get copyWith =>
+  _$$ChallengeStoryStateImplCopyWith<_$ChallengeStoryStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

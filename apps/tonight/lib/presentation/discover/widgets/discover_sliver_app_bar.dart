@@ -43,6 +43,11 @@ class _DiscoverSliverAppBarState extends State<DiscoverSliverAppBar> {
                 visible: _selectedTabIndex == 1,
                 child: const ClubsSliverAppBar(),
               ),
+              Visibility(
+                maintainState: true,
+                visible: _selectedTabIndex == 2,
+                child: const ClubsSliverAppBar(),
+              ),
             ],
           ),
         ),
@@ -75,6 +80,14 @@ class _DiscoverSliverAppBarState extends State<DiscoverSliverAppBar> {
               Tab(
                 child: AutoSizeText(
                   S().events(2),
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                ),
+              ),
+              const Tab(
+                child: AutoSizeText(
+                  // TODO - add translation
+                  'Collectives',
                   textAlign: TextAlign.center,
                   maxLines: 1,
                 ),

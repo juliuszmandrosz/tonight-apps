@@ -109,20 +109,20 @@ class _$TonightEventsFromVenuesEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_EventsFetchedCopyWith<$Res> {
-  factory _$$_EventsFetchedCopyWith(
-          _$_EventsFetched value, $Res Function(_$_EventsFetched) then) =
-      __$$_EventsFetchedCopyWithImpl<$Res>;
+abstract class _$$EventsFetchedImplCopyWith<$Res> {
+  factory _$$EventsFetchedImplCopyWith(
+          _$EventsFetchedImpl value, $Res Function(_$EventsFetchedImpl) then) =
+      __$$EventsFetchedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Option<LatLng> userLocation});
 }
 
 /// @nodoc
-class __$$_EventsFetchedCopyWithImpl<$Res>
-    extends _$TonightEventsFromVenuesEventCopyWithImpl<$Res, _$_EventsFetched>
-    implements _$$_EventsFetchedCopyWith<$Res> {
-  __$$_EventsFetchedCopyWithImpl(
-      _$_EventsFetched _value, $Res Function(_$_EventsFetched) _then)
+class __$$EventsFetchedImplCopyWithImpl<$Res>
+    extends _$TonightEventsFromVenuesEventCopyWithImpl<$Res,
+        _$EventsFetchedImpl> implements _$$EventsFetchedImplCopyWith<$Res> {
+  __$$EventsFetchedImplCopyWithImpl(
+      _$EventsFetchedImpl _value, $Res Function(_$EventsFetchedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -130,7 +130,7 @@ class __$$_EventsFetchedCopyWithImpl<$Res>
   $Res call({
     Object? userLocation = null,
   }) {
-    return _then(_$_EventsFetched(
+    return _then(_$EventsFetchedImpl(
       null == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
@@ -141,8 +141,8 @@ class __$$_EventsFetchedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventsFetched implements _EventsFetched {
-  const _$_EventsFetched(this.userLocation);
+class _$EventsFetchedImpl implements _EventsFetched {
+  const _$EventsFetchedImpl(this.userLocation);
 
   @override
   final Option<LatLng> userLocation;
@@ -153,10 +153,10 @@ class _$_EventsFetched implements _EventsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventsFetched &&
+            other is _$EventsFetchedImpl &&
             (identical(other.userLocation, userLocation) ||
                 other.userLocation == userLocation));
   }
@@ -167,8 +167,8 @@ class _$_EventsFetched implements _EventsFetched {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventsFetchedCopyWith<_$_EventsFetched> get copyWith =>
-      __$$_EventsFetchedCopyWithImpl<_$_EventsFetched>(this, _$identity);
+  _$$EventsFetchedImplCopyWith<_$EventsFetchedImpl> get copyWith =>
+      __$$EventsFetchedImplCopyWithImpl<_$EventsFetchedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -266,35 +266,36 @@ class _$_EventsFetched implements _EventsFetched {
 
 abstract class _EventsFetched implements TonightEventsFromVenuesEvent {
   const factory _EventsFetched(final Option<LatLng> userLocation) =
-      _$_EventsFetched;
+      _$EventsFetchedImpl;
 
   Option<LatLng> get userLocation;
   @JsonKey(ignore: true)
-  _$$_EventsFetchedCopyWith<_$_EventsFetched> get copyWith =>
+  _$$EventsFetchedImplCopyWith<_$EventsFetchedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NextPageEventsFetchedCopyWith<$Res> {
-  factory _$$_NextPageEventsFetchedCopyWith(_$_NextPageEventsFetched value,
-          $Res Function(_$_NextPageEventsFetched) then) =
-      __$$_NextPageEventsFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPageEventsFetchedImplCopyWith<$Res> {
+  factory _$$NextPageEventsFetchedImplCopyWith(
+          _$NextPageEventsFetchedImpl value,
+          $Res Function(_$NextPageEventsFetchedImpl) then) =
+      __$$NextPageEventsFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPageEventsFetchedCopyWithImpl<$Res>
+class __$$NextPageEventsFetchedImplCopyWithImpl<$Res>
     extends _$TonightEventsFromVenuesEventCopyWithImpl<$Res,
-        _$_NextPageEventsFetched>
-    implements _$$_NextPageEventsFetchedCopyWith<$Res> {
-  __$$_NextPageEventsFetchedCopyWithImpl(_$_NextPageEventsFetched _value,
-      $Res Function(_$_NextPageEventsFetched) _then)
+        _$NextPageEventsFetchedImpl>
+    implements _$$NextPageEventsFetchedImplCopyWith<$Res> {
+  __$$NextPageEventsFetchedImplCopyWithImpl(_$NextPageEventsFetchedImpl _value,
+      $Res Function(_$NextPageEventsFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPageEventsFetched implements _NextPageEventsFetched {
-  const _$_NextPageEventsFetched();
+class _$NextPageEventsFetchedImpl implements _NextPageEventsFetched {
+  const _$NextPageEventsFetchedImpl();
 
   @override
   String toString() {
@@ -302,9 +303,10 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NextPageEventsFetched);
+        (other.runtimeType == runtimeType &&
+            other is _$NextPageEventsFetchedImpl);
   }
 
   @override
@@ -405,14 +407,14 @@ class _$_NextPageEventsFetched implements _NextPageEventsFetched {
 }
 
 abstract class _NextPageEventsFetched implements TonightEventsFromVenuesEvent {
-  const factory _NextPageEventsFetched() = _$_NextPageEventsFetched;
+  const factory _NextPageEventsFetched() = _$NextPageEventsFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_MenuFiltersAppliedCopyWith<$Res> {
-  factory _$$_MenuFiltersAppliedCopyWith(_$_MenuFiltersApplied value,
-          $Res Function(_$_MenuFiltersApplied) then) =
-      __$$_MenuFiltersAppliedCopyWithImpl<$Res>;
+abstract class _$$MenuFiltersAppliedImplCopyWith<$Res> {
+  factory _$$MenuFiltersAppliedImplCopyWith(_$MenuFiltersAppliedImpl value,
+          $Res Function(_$MenuFiltersAppliedImpl) then) =
+      __$$MenuFiltersAppliedImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {EventFilters filters, Map<MenuEventFilter, IFilter> appliedFilters});
@@ -421,11 +423,12 @@ abstract class _$$_MenuFiltersAppliedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_MenuFiltersAppliedCopyWithImpl<$Res>
+class __$$MenuFiltersAppliedImplCopyWithImpl<$Res>
     extends _$TonightEventsFromVenuesEventCopyWithImpl<$Res,
-        _$_MenuFiltersApplied> implements _$$_MenuFiltersAppliedCopyWith<$Res> {
-  __$$_MenuFiltersAppliedCopyWithImpl(
-      _$_MenuFiltersApplied _value, $Res Function(_$_MenuFiltersApplied) _then)
+        _$MenuFiltersAppliedImpl>
+    implements _$$MenuFiltersAppliedImplCopyWith<$Res> {
+  __$$MenuFiltersAppliedImplCopyWithImpl(_$MenuFiltersAppliedImpl _value,
+      $Res Function(_$MenuFiltersAppliedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -434,7 +437,7 @@ class __$$_MenuFiltersAppliedCopyWithImpl<$Res>
     Object? filters = null,
     Object? appliedFilters = null,
   }) {
-    return _then(_$_MenuFiltersApplied(
+    return _then(_$MenuFiltersAppliedImpl(
       filters: null == filters
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
@@ -457,8 +460,8 @@ class __$$_MenuFiltersAppliedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MenuFiltersApplied implements _MenuFiltersApplied {
-  const _$_MenuFiltersApplied(
+class _$MenuFiltersAppliedImpl implements _MenuFiltersApplied {
+  const _$MenuFiltersAppliedImpl(
       {required this.filters,
       required final Map<MenuEventFilter, IFilter> appliedFilters})
       : _appliedFilters = appliedFilters;
@@ -479,10 +482,10 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MenuFiltersApplied &&
+            other is _$MenuFiltersAppliedImpl &&
             (identical(other.filters, filters) || other.filters == filters) &&
             const DeepCollectionEquality()
                 .equals(other._appliedFilters, _appliedFilters));
@@ -495,8 +498,8 @@ class _$_MenuFiltersApplied implements _MenuFiltersApplied {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MenuFiltersAppliedCopyWith<_$_MenuFiltersApplied> get copyWith =>
-      __$$_MenuFiltersAppliedCopyWithImpl<_$_MenuFiltersApplied>(
+  _$$MenuFiltersAppliedImplCopyWith<_$MenuFiltersAppliedImpl> get copyWith =>
+      __$$MenuFiltersAppliedImplCopyWithImpl<_$MenuFiltersAppliedImpl>(
           this, _$identity);
 
   @override
@@ -597,30 +600,31 @@ abstract class _MenuFiltersApplied implements TonightEventsFromVenuesEvent {
   const factory _MenuFiltersApplied(
           {required final EventFilters filters,
           required final Map<MenuEventFilter, IFilter> appliedFilters}) =
-      _$_MenuFiltersApplied;
+      _$MenuFiltersAppliedImpl;
 
   EventFilters get filters;
   Map<MenuEventFilter, IFilter> get appliedFilters;
   @JsonKey(ignore: true)
-  _$$_MenuFiltersAppliedCopyWith<_$_MenuFiltersApplied> get copyWith =>
+  _$$MenuFiltersAppliedImplCopyWith<_$MenuFiltersAppliedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_MenuFilterRemovedCopyWith<$Res> {
-  factory _$$_MenuFilterRemovedCopyWith(_$_MenuFilterRemoved value,
-          $Res Function(_$_MenuFilterRemoved) then) =
-      __$$_MenuFilterRemovedCopyWithImpl<$Res>;
+abstract class _$$MenuFilterRemovedImplCopyWith<$Res> {
+  factory _$$MenuFilterRemovedImplCopyWith(_$MenuFilterRemovedImpl value,
+          $Res Function(_$MenuFilterRemovedImpl) then) =
+      __$$MenuFilterRemovedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({MenuEventFilter filter});
 }
 
 /// @nodoc
-class __$$_MenuFilterRemovedCopyWithImpl<$Res>
+class __$$MenuFilterRemovedImplCopyWithImpl<$Res>
     extends _$TonightEventsFromVenuesEventCopyWithImpl<$Res,
-        _$_MenuFilterRemoved> implements _$$_MenuFilterRemovedCopyWith<$Res> {
-  __$$_MenuFilterRemovedCopyWithImpl(
-      _$_MenuFilterRemoved _value, $Res Function(_$_MenuFilterRemoved) _then)
+        _$MenuFilterRemovedImpl>
+    implements _$$MenuFilterRemovedImplCopyWith<$Res> {
+  __$$MenuFilterRemovedImplCopyWithImpl(_$MenuFilterRemovedImpl _value,
+      $Res Function(_$MenuFilterRemovedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -628,7 +632,7 @@ class __$$_MenuFilterRemovedCopyWithImpl<$Res>
   $Res call({
     Object? filter = null,
   }) {
-    return _then(_$_MenuFilterRemoved(
+    return _then(_$MenuFilterRemovedImpl(
       null == filter
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
@@ -639,8 +643,8 @@ class __$$_MenuFilterRemovedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MenuFilterRemoved implements _MenuFilterRemoved {
-  const _$_MenuFilterRemoved(this.filter);
+class _$MenuFilterRemovedImpl implements _MenuFilterRemoved {
+  const _$MenuFilterRemovedImpl(this.filter);
 
   @override
   final MenuEventFilter filter;
@@ -651,10 +655,10 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MenuFilterRemoved &&
+            other is _$MenuFilterRemovedImpl &&
             (identical(other.filter, filter) || other.filter == filter));
   }
 
@@ -664,8 +668,8 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MenuFilterRemovedCopyWith<_$_MenuFilterRemoved> get copyWith =>
-      __$$_MenuFilterRemovedCopyWithImpl<_$_MenuFilterRemoved>(
+  _$$MenuFilterRemovedImplCopyWith<_$MenuFilterRemovedImpl> get copyWith =>
+      __$$MenuFilterRemovedImplCopyWithImpl<_$MenuFilterRemovedImpl>(
           this, _$identity);
 
   @override
@@ -764,34 +768,34 @@ class _$_MenuFilterRemoved implements _MenuFilterRemoved {
 
 abstract class _MenuFilterRemoved implements TonightEventsFromVenuesEvent {
   const factory _MenuFilterRemoved(final MenuEventFilter filter) =
-      _$_MenuFilterRemoved;
+      _$MenuFilterRemovedImpl;
 
   MenuEventFilter get filter;
   @JsonKey(ignore: true)
-  _$$_MenuFilterRemovedCopyWith<_$_MenuFilterRemoved> get copyWith =>
+  _$$MenuFilterRemovedImplCopyWith<_$MenuFilterRemovedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_EventsRefreshedCopyWith<$Res> {
-  factory _$$_EventsRefreshedCopyWith(
-          _$_EventsRefreshed value, $Res Function(_$_EventsRefreshed) then) =
-      __$$_EventsRefreshedCopyWithImpl<$Res>;
+abstract class _$$EventsRefreshedImplCopyWith<$Res> {
+  factory _$$EventsRefreshedImplCopyWith(_$EventsRefreshedImpl value,
+          $Res Function(_$EventsRefreshedImpl) then) =
+      __$$EventsRefreshedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_EventsRefreshedCopyWithImpl<$Res>
-    extends _$TonightEventsFromVenuesEventCopyWithImpl<$Res, _$_EventsRefreshed>
-    implements _$$_EventsRefreshedCopyWith<$Res> {
-  __$$_EventsRefreshedCopyWithImpl(
-      _$_EventsRefreshed _value, $Res Function(_$_EventsRefreshed) _then)
+class __$$EventsRefreshedImplCopyWithImpl<$Res>
+    extends _$TonightEventsFromVenuesEventCopyWithImpl<$Res,
+        _$EventsRefreshedImpl> implements _$$EventsRefreshedImplCopyWith<$Res> {
+  __$$EventsRefreshedImplCopyWithImpl(
+      _$EventsRefreshedImpl _value, $Res Function(_$EventsRefreshedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_EventsRefreshed implements _EventsRefreshed {
-  const _$_EventsRefreshed();
+class _$EventsRefreshedImpl implements _EventsRefreshed {
+  const _$EventsRefreshedImpl();
 
   @override
   String toString() {
@@ -799,9 +803,9 @@ class _$_EventsRefreshed implements _EventsRefreshed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_EventsRefreshed);
+        (other.runtimeType == runtimeType && other is _$EventsRefreshedImpl);
   }
 
   @override
@@ -902,14 +906,14 @@ class _$_EventsRefreshed implements _EventsRefreshed {
 }
 
 abstract class _EventsRefreshed implements TonightEventsFromVenuesEvent {
-  const factory _EventsRefreshed() = _$_EventsRefreshed;
+  const factory _EventsRefreshed() = _$EventsRefreshedImpl;
 }
 
 /// @nodoc
-abstract class _$$_EventVoucherUsedCopyWith<$Res> {
-  factory _$$_EventVoucherUsedCopyWith(
-          _$_EventVoucherUsed value, $Res Function(_$_EventVoucherUsed) then) =
-      __$$_EventVoucherUsedCopyWithImpl<$Res>;
+abstract class _$$EventVoucherUsedImplCopyWith<$Res> {
+  factory _$$EventVoucherUsedImplCopyWith(_$EventVoucherUsedImpl value,
+          $Res Function(_$EventVoucherUsedImpl) then) =
+      __$$EventVoucherUsedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({EventVoucher voucher});
 
@@ -917,11 +921,12 @@ abstract class _$$_EventVoucherUsedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_EventVoucherUsedCopyWithImpl<$Res>
+class __$$EventVoucherUsedImplCopyWithImpl<$Res>
     extends _$TonightEventsFromVenuesEventCopyWithImpl<$Res,
-        _$_EventVoucherUsed> implements _$$_EventVoucherUsedCopyWith<$Res> {
-  __$$_EventVoucherUsedCopyWithImpl(
-      _$_EventVoucherUsed _value, $Res Function(_$_EventVoucherUsed) _then)
+        _$EventVoucherUsedImpl>
+    implements _$$EventVoucherUsedImplCopyWith<$Res> {
+  __$$EventVoucherUsedImplCopyWithImpl(_$EventVoucherUsedImpl _value,
+      $Res Function(_$EventVoucherUsedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -929,7 +934,7 @@ class __$$_EventVoucherUsedCopyWithImpl<$Res>
   $Res call({
     Object? voucher = null,
   }) {
-    return _then(_$_EventVoucherUsed(
+    return _then(_$EventVoucherUsedImpl(
       null == voucher
           ? _value.voucher
           : voucher // ignore: cast_nullable_to_non_nullable
@@ -948,8 +953,8 @@ class __$$_EventVoucherUsedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventVoucherUsed implements _EventVoucherUsed {
-  const _$_EventVoucherUsed(this.voucher);
+class _$EventVoucherUsedImpl implements _EventVoucherUsed {
+  const _$EventVoucherUsedImpl(this.voucher);
 
   @override
   final EventVoucher voucher;
@@ -960,10 +965,10 @@ class _$_EventVoucherUsed implements _EventVoucherUsed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventVoucherUsed &&
+            other is _$EventVoucherUsedImpl &&
             (identical(other.voucher, voucher) || other.voucher == voucher));
   }
 
@@ -973,8 +978,9 @@ class _$_EventVoucherUsed implements _EventVoucherUsed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventVoucherUsedCopyWith<_$_EventVoucherUsed> get copyWith =>
-      __$$_EventVoucherUsedCopyWithImpl<_$_EventVoucherUsed>(this, _$identity);
+  _$$EventVoucherUsedImplCopyWith<_$EventVoucherUsedImpl> get copyWith =>
+      __$$EventVoucherUsedImplCopyWithImpl<_$EventVoucherUsedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1072,11 +1078,11 @@ class _$_EventVoucherUsed implements _EventVoucherUsed {
 
 abstract class _EventVoucherUsed implements TonightEventsFromVenuesEvent {
   const factory _EventVoucherUsed(final EventVoucher voucher) =
-      _$_EventVoucherUsed;
+      _$EventVoucherUsedImpl;
 
   EventVoucher get voucher;
   @JsonKey(ignore: true)
-  _$$_EventVoucherUsedCopyWith<_$_EventVoucherUsed> get copyWith =>
+  _$$EventVoucherUsedImplCopyWith<_$EventVoucherUsedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1216,12 +1222,12 @@ class _$TonightEventsFromVenuesStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_TonightEventsFromVenuesStateCopyWith<$Res>
+abstract class _$$TonightEventsFromVenuesStateImplCopyWith<$Res>
     implements $TonightEventsFromVenuesStateCopyWith<$Res> {
-  factory _$$_TonightEventsFromVenuesStateCopyWith(
-          _$_TonightEventsFromVenuesState value,
-          $Res Function(_$_TonightEventsFromVenuesState) then) =
-      __$$_TonightEventsFromVenuesStateCopyWithImpl<$Res>;
+  factory _$$TonightEventsFromVenuesStateImplCopyWith(
+          _$TonightEventsFromVenuesStateImpl value,
+          $Res Function(_$TonightEventsFromVenuesStateImpl) then) =
+      __$$TonightEventsFromVenuesStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1243,13 +1249,13 @@ abstract class _$$_TonightEventsFromVenuesStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TonightEventsFromVenuesStateCopyWithImpl<$Res>
+class __$$TonightEventsFromVenuesStateImplCopyWithImpl<$Res>
     extends _$TonightEventsFromVenuesStateCopyWithImpl<$Res,
-        _$_TonightEventsFromVenuesState>
-    implements _$$_TonightEventsFromVenuesStateCopyWith<$Res> {
-  __$$_TonightEventsFromVenuesStateCopyWithImpl(
-      _$_TonightEventsFromVenuesState _value,
-      $Res Function(_$_TonightEventsFromVenuesState) _then)
+        _$TonightEventsFromVenuesStateImpl>
+    implements _$$TonightEventsFromVenuesStateImplCopyWith<$Res> {
+  __$$TonightEventsFromVenuesStateImplCopyWithImpl(
+      _$TonightEventsFromVenuesStateImpl _value,
+      $Res Function(_$TonightEventsFromVenuesStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1268,7 +1274,7 @@ class __$$_TonightEventsFromVenuesStateCopyWithImpl<$Res>
     Object? failure = null,
     Object? usedVoucher = null,
   }) {
-    return _then(_$_TonightEventsFromVenuesState(
+    return _then(_$TonightEventsFromVenuesStateImpl(
       getEventsStatus: null == getEventsStatus
           ? _value.getEventsStatus
           : getEventsStatus // ignore: cast_nullable_to_non_nullable
@@ -1323,8 +1329,9 @@ class __$$_TonightEventsFromVenuesStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TonightEventsFromVenuesState implements _TonightEventsFromVenuesState {
-  const _$_TonightEventsFromVenuesState(
+class _$TonightEventsFromVenuesStateImpl
+    implements _TonightEventsFromVenuesState {
+  const _$TonightEventsFromVenuesStateImpl(
       {required this.getEventsStatus,
       required this.nextPageStatus,
       required this.useVoucherStatus,
@@ -1384,10 +1391,10 @@ class _$_TonightEventsFromVenuesState implements _TonightEventsFromVenuesState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TonightEventsFromVenuesState &&
+            other is _$TonightEventsFromVenuesStateImpl &&
             (identical(other.getEventsStatus, getEventsStatus) ||
                 other.getEventsStatus == getEventsStatus) &&
             (identical(other.nextPageStatus, nextPageStatus) ||
@@ -1432,9 +1439,10 @@ class _$_TonightEventsFromVenuesState implements _TonightEventsFromVenuesState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TonightEventsFromVenuesStateCopyWith<_$_TonightEventsFromVenuesState>
-      get copyWith => __$$_TonightEventsFromVenuesStateCopyWithImpl<
-          _$_TonightEventsFromVenuesState>(this, _$identity);
+  _$$TonightEventsFromVenuesStateImplCopyWith<
+          _$TonightEventsFromVenuesStateImpl>
+      get copyWith => __$$TonightEventsFromVenuesStateImplCopyWithImpl<
+          _$TonightEventsFromVenuesStateImpl>(this, _$identity);
 }
 
 abstract class _TonightEventsFromVenuesState
@@ -1452,7 +1460,7 @@ abstract class _TonightEventsFromVenuesState
           required final Map<MenuEventFilter, IFilter> appliedMenuFilters,
           required final Option<DashboardFailure> failure,
           required final Option<EventVoucher> usedVoucher}) =
-      _$_TonightEventsFromVenuesState;
+      _$TonightEventsFromVenuesStateImpl;
 
   @override
   CubitStatus get getEventsStatus;
@@ -1480,6 +1488,7 @@ abstract class _TonightEventsFromVenuesState
   Option<EventVoucher> get usedVoucher;
   @override
   @JsonKey(ignore: true)
-  _$$_TonightEventsFromVenuesStateCopyWith<_$_TonightEventsFromVenuesState>
+  _$$TonightEventsFromVenuesStateImplCopyWith<
+          _$TonightEventsFromVenuesStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

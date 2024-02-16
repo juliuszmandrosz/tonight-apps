@@ -118,11 +118,11 @@ class _$ChallengeDtoCopyWithImpl<$Res, $Val extends ChallengeDto>
 }
 
 /// @nodoc
-abstract class _$$_ChallengeDtoCopyWith<$Res>
+abstract class _$$ChallengeDtoImplCopyWith<$Res>
     implements $ChallengeDtoCopyWith<$Res> {
-  factory _$$_ChallengeDtoCopyWith(
-          _$_ChallengeDto value, $Res Function(_$_ChallengeDto) then) =
-      __$$_ChallengeDtoCopyWithImpl<$Res>;
+  factory _$$ChallengeDtoImplCopyWith(
+          _$ChallengeDtoImpl value, $Res Function(_$ChallengeDtoImpl) then) =
+      __$$ChallengeDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -137,11 +137,11 @@ abstract class _$$_ChallengeDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ChallengeDtoCopyWithImpl<$Res>
-    extends _$ChallengeDtoCopyWithImpl<$Res, _$_ChallengeDto>
-    implements _$$_ChallengeDtoCopyWith<$Res> {
-  __$$_ChallengeDtoCopyWithImpl(
-      _$_ChallengeDto _value, $Res Function(_$_ChallengeDto) _then)
+class __$$ChallengeDtoImplCopyWithImpl<$Res>
+    extends _$ChallengeDtoCopyWithImpl<$Res, _$ChallengeDtoImpl>
+    implements _$$ChallengeDtoImplCopyWith<$Res> {
+  __$$ChallengeDtoImplCopyWithImpl(
+      _$ChallengeDtoImpl _value, $Res Function(_$ChallengeDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -156,7 +156,7 @@ class __$$_ChallengeDtoCopyWithImpl<$Res>
     Object? periodNumber = null,
     Object? winners = null,
   }) {
-    return _then(_$_ChallengeDto(
+    return _then(_$ChallengeDtoImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -196,8 +196,8 @@ class __$$_ChallengeDtoCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_ChallengeDto extends _ChallengeDto {
-  const _$_ChallengeDto(
+class _$ChallengeDtoImpl extends _ChallengeDto {
+  const _$ChallengeDtoImpl(
       {@JsonKey(includeToJson: false, includeFromJson: false) this.id,
       @FirebaseTimestampJsonConverter() required this.createdAt,
       required this.title,
@@ -210,8 +210,8 @@ class _$_ChallengeDto extends _ChallengeDto {
         _winners = winners,
         super._();
 
-  factory _$_ChallengeDto.fromJson(Map<String, dynamic> json) =>
-      _$$_ChallengeDtoFromJson(json);
+  factory _$ChallengeDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ChallengeDtoImplFromJson(json);
 
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
@@ -256,10 +256,10 @@ class _$_ChallengeDto extends _ChallengeDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChallengeDto &&
+            other is _$ChallengeDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
@@ -289,12 +289,12 @@ class _$_ChallengeDto extends _ChallengeDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChallengeDtoCopyWith<_$_ChallengeDto> get copyWith =>
-      __$$_ChallengeDtoCopyWithImpl<_$_ChallengeDto>(this, _$identity);
+  _$$ChallengeDtoImplCopyWith<_$ChallengeDtoImpl> get copyWith =>
+      __$$ChallengeDtoImplCopyWithImpl<_$ChallengeDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ChallengeDtoToJson(
+    return _$$ChallengeDtoImplToJson(
       this,
     );
   }
@@ -309,11 +309,11 @@ abstract class _ChallengeDto extends ChallengeDto {
       @FirebaseTimestampJsonConverter() required final DateTime startDate,
       @FirebaseTimestampJsonConverter() required final DateTime endDate,
       required final int periodNumber,
-      final List<WinnerDto> winners}) = _$_ChallengeDto;
+      final List<WinnerDto> winners}) = _$ChallengeDtoImpl;
   const _ChallengeDto._() : super._();
 
   factory _ChallengeDto.fromJson(Map<String, dynamic> json) =
-      _$_ChallengeDto.fromJson;
+      _$ChallengeDtoImpl.fromJson;
 
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
@@ -339,6 +339,6 @@ abstract class _ChallengeDto extends ChallengeDto {
   List<WinnerDto> get winners;
   @override
   @JsonKey(ignore: true)
-  _$$_ChallengeDtoCopyWith<_$_ChallengeDto> get copyWith =>
+  _$$ChallengeDtoImplCopyWith<_$ChallengeDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

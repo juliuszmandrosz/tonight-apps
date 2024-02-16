@@ -6,8 +6,8 @@ part of 'challenge_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ChallengeDto _$$_ChallengeDtoFromJson(Map<String, dynamic> json) =>
-    _$_ChallengeDto(
+_$ChallengeDtoImpl _$$ChallengeDtoImplFromJson(Map<String, dynamic> json) =>
+    _$ChallengeDtoImpl(
       createdAt: const FirebaseTimestampJsonConverter()
           .fromJson(json['createdAt'] as Timestamp),
       title: json['title'] as String,
@@ -25,7 +25,7 @@ _$_ChallengeDto _$$_ChallengeDtoFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$_ChallengeDtoToJson(_$_ChallengeDto instance) =>
+Map<String, dynamic> _$$ChallengeDtoImplToJson(_$ChallengeDtoImpl instance) =>
     <String, dynamic>{
       'createdAt':
           const FirebaseTimestampJsonConverter().toJson(instance.createdAt),

@@ -63,22 +63,22 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
 }
 
 /// @nodoc
-abstract class _$$_OnboardingStateCopyWith<$Res>
+abstract class _$$OnboardingStateImplCopyWith<$Res>
     implements $OnboardingStateCopyWith<$Res> {
-  factory _$$_OnboardingStateCopyWith(
-          _$_OnboardingState value, $Res Function(_$_OnboardingState) then) =
-      __$$_OnboardingStateCopyWithImpl<$Res>;
+  factory _$$OnboardingStateImplCopyWith(_$OnboardingStateImpl value,
+          $Res Function(_$OnboardingStateImpl) then) =
+      __$$OnboardingStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({CubitStatus signInStatus, Option<String> errorMessage});
 }
 
 /// @nodoc
-class __$$_OnboardingStateCopyWithImpl<$Res>
-    extends _$OnboardingStateCopyWithImpl<$Res, _$_OnboardingState>
-    implements _$$_OnboardingStateCopyWith<$Res> {
-  __$$_OnboardingStateCopyWithImpl(
-      _$_OnboardingState _value, $Res Function(_$_OnboardingState) _then)
+class __$$OnboardingStateImplCopyWithImpl<$Res>
+    extends _$OnboardingStateCopyWithImpl<$Res, _$OnboardingStateImpl>
+    implements _$$OnboardingStateImplCopyWith<$Res> {
+  __$$OnboardingStateImplCopyWithImpl(
+      _$OnboardingStateImpl _value, $Res Function(_$OnboardingStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
     Object? signInStatus = null,
     Object? errorMessage = null,
   }) {
-    return _then(_$_OnboardingState(
+    return _then(_$OnboardingStateImpl(
       signInStatus: null == signInStatus
           ? _value.signInStatus
           : signInStatus // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnboardingState implements _OnboardingState {
-  const _$_OnboardingState(
+class _$OnboardingStateImpl implements _OnboardingState {
+  const _$OnboardingStateImpl(
       {required this.signInStatus, required this.errorMessage});
 
   @override
@@ -117,10 +117,10 @@ class _$_OnboardingState implements _OnboardingState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnboardingState &&
+            other is _$OnboardingStateImpl &&
             (identical(other.signInStatus, signInStatus) ||
                 other.signInStatus == signInStatus) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -133,14 +133,15 @@ class _$_OnboardingState implements _OnboardingState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnboardingStateCopyWith<_$_OnboardingState> get copyWith =>
-      __$$_OnboardingStateCopyWithImpl<_$_OnboardingState>(this, _$identity);
+  _$$OnboardingStateImplCopyWith<_$OnboardingStateImpl> get copyWith =>
+      __$$OnboardingStateImplCopyWithImpl<_$OnboardingStateImpl>(
+          this, _$identity);
 }
 
 abstract class _OnboardingState implements OnboardingState {
   const factory _OnboardingState(
       {required final CubitStatus signInStatus,
-      required final Option<String> errorMessage}) = _$_OnboardingState;
+      required final Option<String> errorMessage}) = _$OnboardingStateImpl;
 
   @override
   CubitStatus get signInStatus;
@@ -148,6 +149,6 @@ abstract class _OnboardingState implements OnboardingState {
   Option<String> get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_OnboardingStateCopyWith<_$_OnboardingState> get copyWith =>
+  _$$OnboardingStateImplCopyWith<_$OnboardingStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -95,25 +95,25 @@ class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent>
 }
 
 /// @nodoc
-abstract class _$$_ProfileLoadedCopyWith<$Res> {
-  factory _$$_ProfileLoadedCopyWith(
-          _$_ProfileLoaded value, $Res Function(_$_ProfileLoaded) then) =
-      __$$_ProfileLoadedCopyWithImpl<$Res>;
+abstract class _$$ProfileLoadedImplCopyWith<$Res> {
+  factory _$$ProfileLoadedImplCopyWith(
+          _$ProfileLoadedImpl value, $Res Function(_$ProfileLoadedImpl) then) =
+      __$$ProfileLoadedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ProfileLoadedCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$_ProfileLoaded>
-    implements _$$_ProfileLoadedCopyWith<$Res> {
-  __$$_ProfileLoadedCopyWithImpl(
-      _$_ProfileLoaded _value, $Res Function(_$_ProfileLoaded) _then)
+class __$$ProfileLoadedImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$ProfileLoadedImpl>
+    implements _$$ProfileLoadedImplCopyWith<$Res> {
+  __$$ProfileLoadedImplCopyWithImpl(
+      _$ProfileLoadedImpl _value, $Res Function(_$ProfileLoadedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ProfileLoaded implements _ProfileLoaded {
-  const _$_ProfileLoaded();
+class _$ProfileLoadedImpl implements _ProfileLoaded {
+  const _$ProfileLoadedImpl();
 
   @override
   String toString() {
@@ -121,9 +121,9 @@ class _$_ProfileLoaded implements _ProfileLoaded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ProfileLoaded);
+        (other.runtimeType == runtimeType && other is _$ProfileLoadedImpl);
   }
 
   @override
@@ -213,29 +213,29 @@ class _$_ProfileLoaded implements _ProfileLoaded {
 }
 
 abstract class _ProfileLoaded implements ProfileEvent {
-  const factory _ProfileLoaded() = _$_ProfileLoaded;
+  const factory _ProfileLoaded() = _$ProfileLoadedImpl;
 }
 
 /// @nodoc
-abstract class _$$_PhotosRefreshedCopyWith<$Res> {
-  factory _$$_PhotosRefreshedCopyWith(
-          _$_PhotosRefreshed value, $Res Function(_$_PhotosRefreshed) then) =
-      __$$_PhotosRefreshedCopyWithImpl<$Res>;
+abstract class _$$PhotosRefreshedImplCopyWith<$Res> {
+  factory _$$PhotosRefreshedImplCopyWith(_$PhotosRefreshedImpl value,
+          $Res Function(_$PhotosRefreshedImpl) then) =
+      __$$PhotosRefreshedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PhotosRefreshedCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$_PhotosRefreshed>
-    implements _$$_PhotosRefreshedCopyWith<$Res> {
-  __$$_PhotosRefreshedCopyWithImpl(
-      _$_PhotosRefreshed _value, $Res Function(_$_PhotosRefreshed) _then)
+class __$$PhotosRefreshedImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$PhotosRefreshedImpl>
+    implements _$$PhotosRefreshedImplCopyWith<$Res> {
+  __$$PhotosRefreshedImplCopyWithImpl(
+      _$PhotosRefreshedImpl _value, $Res Function(_$PhotosRefreshedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_PhotosRefreshed implements _PhotosRefreshed {
-  const _$_PhotosRefreshed();
+class _$PhotosRefreshedImpl implements _PhotosRefreshed {
+  const _$PhotosRefreshedImpl();
 
   @override
   String toString() {
@@ -243,9 +243,9 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PhotosRefreshed);
+        (other.runtimeType == runtimeType && other is _$PhotosRefreshedImpl);
   }
 
   @override
@@ -335,29 +335,30 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
 }
 
 abstract class _PhotosRefreshed implements ProfileEvent {
-  const factory _PhotosRefreshed() = _$_PhotosRefreshed;
+  const factory _PhotosRefreshed() = _$PhotosRefreshedImpl;
 }
 
 /// @nodoc
-abstract class _$$_NextPhotosPageFetchedCopyWith<$Res> {
-  factory _$$_NextPhotosPageFetchedCopyWith(_$_NextPhotosPageFetched value,
-          $Res Function(_$_NextPhotosPageFetched) then) =
-      __$$_NextPhotosPageFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPhotosPageFetchedImplCopyWith<$Res> {
+  factory _$$NextPhotosPageFetchedImplCopyWith(
+          _$NextPhotosPageFetchedImpl value,
+          $Res Function(_$NextPhotosPageFetchedImpl) then) =
+      __$$NextPhotosPageFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPhotosPageFetchedCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$_NextPhotosPageFetched>
-    implements _$$_NextPhotosPageFetchedCopyWith<$Res> {
-  __$$_NextPhotosPageFetchedCopyWithImpl(_$_NextPhotosPageFetched _value,
-      $Res Function(_$_NextPhotosPageFetched) _then)
+class __$$NextPhotosPageFetchedImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$NextPhotosPageFetchedImpl>
+    implements _$$NextPhotosPageFetchedImplCopyWith<$Res> {
+  __$$NextPhotosPageFetchedImplCopyWithImpl(_$NextPhotosPageFetchedImpl _value,
+      $Res Function(_$NextPhotosPageFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPhotosPageFetched implements _NextPhotosPageFetched {
-  const _$_NextPhotosPageFetched();
+class _$NextPhotosPageFetchedImpl implements _NextPhotosPageFetched {
+  const _$NextPhotosPageFetchedImpl();
 
   @override
   String toString() {
@@ -365,9 +366,10 @@ class _$_NextPhotosPageFetched implements _NextPhotosPageFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NextPhotosPageFetched);
+        (other.runtimeType == runtimeType &&
+            other is _$NextPhotosPageFetchedImpl);
   }
 
   @override
@@ -457,24 +459,24 @@ class _$_NextPhotosPageFetched implements _NextPhotosPageFetched {
 }
 
 abstract class _NextPhotosPageFetched implements ProfileEvent {
-  const factory _NextPhotosPageFetched() = _$_NextPhotosPageFetched;
+  const factory _NextPhotosPageFetched() = _$NextPhotosPageFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_UserWallPhotoDeletedCopyWith<$Res> {
-  factory _$$_UserWallPhotoDeletedCopyWith(_$_UserWallPhotoDeleted value,
-          $Res Function(_$_UserWallPhotoDeleted) then) =
-      __$$_UserWallPhotoDeletedCopyWithImpl<$Res>;
+abstract class _$$UserWallPhotoDeletedImplCopyWith<$Res> {
+  factory _$$UserWallPhotoDeletedImplCopyWith(_$UserWallPhotoDeletedImpl value,
+          $Res Function(_$UserWallPhotoDeletedImpl) then) =
+      __$$UserWallPhotoDeletedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({WallPhoto photo});
 }
 
 /// @nodoc
-class __$$_UserWallPhotoDeletedCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$_UserWallPhotoDeleted>
-    implements _$$_UserWallPhotoDeletedCopyWith<$Res> {
-  __$$_UserWallPhotoDeletedCopyWithImpl(_$_UserWallPhotoDeleted _value,
-      $Res Function(_$_UserWallPhotoDeleted) _then)
+class __$$UserWallPhotoDeletedImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$UserWallPhotoDeletedImpl>
+    implements _$$UserWallPhotoDeletedImplCopyWith<$Res> {
+  __$$UserWallPhotoDeletedImplCopyWithImpl(_$UserWallPhotoDeletedImpl _value,
+      $Res Function(_$UserWallPhotoDeletedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -482,7 +484,7 @@ class __$$_UserWallPhotoDeletedCopyWithImpl<$Res>
   $Res call({
     Object? photo = null,
   }) {
-    return _then(_$_UserWallPhotoDeleted(
+    return _then(_$UserWallPhotoDeletedImpl(
       null == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
@@ -493,8 +495,8 @@ class __$$_UserWallPhotoDeletedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserWallPhotoDeleted implements _UserWallPhotoDeleted {
-  const _$_UserWallPhotoDeleted(this.photo);
+class _$UserWallPhotoDeletedImpl implements _UserWallPhotoDeleted {
+  const _$UserWallPhotoDeletedImpl(this.photo);
 
   @override
   final WallPhoto photo;
@@ -505,10 +507,10 @@ class _$_UserWallPhotoDeleted implements _UserWallPhotoDeleted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserWallPhotoDeleted &&
+            other is _$UserWallPhotoDeletedImpl &&
             (identical(other.photo, photo) || other.photo == photo));
   }
 
@@ -518,9 +520,10 @@ class _$_UserWallPhotoDeleted implements _UserWallPhotoDeleted {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserWallPhotoDeletedCopyWith<_$_UserWallPhotoDeleted> get copyWith =>
-      __$$_UserWallPhotoDeletedCopyWithImpl<_$_UserWallPhotoDeleted>(
-          this, _$identity);
+  _$$UserWallPhotoDeletedImplCopyWith<_$UserWallPhotoDeletedImpl>
+      get copyWith =>
+          __$$UserWallPhotoDeletedImplCopyWithImpl<_$UserWallPhotoDeletedImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -607,29 +610,31 @@ class _$_UserWallPhotoDeleted implements _UserWallPhotoDeleted {
 
 abstract class _UserWallPhotoDeleted implements ProfileEvent {
   const factory _UserWallPhotoDeleted(final WallPhoto photo) =
-      _$_UserWallPhotoDeleted;
+      _$UserWallPhotoDeletedImpl;
 
   WallPhoto get photo;
   @JsonKey(ignore: true)
-  _$$_UserWallPhotoDeletedCopyWith<_$_UserWallPhotoDeleted> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UserWallPhotoDeletedImplCopyWith<_$UserWallPhotoDeletedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_WallPhotoRewardRedeemedCopyWith<$Res> {
-  factory _$$_WallPhotoRewardRedeemedCopyWith(_$_WallPhotoRewardRedeemed value,
-          $Res Function(_$_WallPhotoRewardRedeemed) then) =
-      __$$_WallPhotoRewardRedeemedCopyWithImpl<$Res>;
+abstract class _$$WallPhotoRewardRedeemedImplCopyWith<$Res> {
+  factory _$$WallPhotoRewardRedeemedImplCopyWith(
+          _$WallPhotoRewardRedeemedImpl value,
+          $Res Function(_$WallPhotoRewardRedeemedImpl) then) =
+      __$$WallPhotoRewardRedeemedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String photoId});
 }
 
 /// @nodoc
-class __$$_WallPhotoRewardRedeemedCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$_WallPhotoRewardRedeemed>
-    implements _$$_WallPhotoRewardRedeemedCopyWith<$Res> {
-  __$$_WallPhotoRewardRedeemedCopyWithImpl(_$_WallPhotoRewardRedeemed _value,
-      $Res Function(_$_WallPhotoRewardRedeemed) _then)
+class __$$WallPhotoRewardRedeemedImplCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$WallPhotoRewardRedeemedImpl>
+    implements _$$WallPhotoRewardRedeemedImplCopyWith<$Res> {
+  __$$WallPhotoRewardRedeemedImplCopyWithImpl(
+      _$WallPhotoRewardRedeemedImpl _value,
+      $Res Function(_$WallPhotoRewardRedeemedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -637,7 +642,7 @@ class __$$_WallPhotoRewardRedeemedCopyWithImpl<$Res>
   $Res call({
     Object? photoId = null,
   }) {
-    return _then(_$_WallPhotoRewardRedeemed(
+    return _then(_$WallPhotoRewardRedeemedImpl(
       null == photoId
           ? _value.photoId
           : photoId // ignore: cast_nullable_to_non_nullable
@@ -648,8 +653,8 @@ class __$$_WallPhotoRewardRedeemedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WallPhotoRewardRedeemed implements _WallPhotoRewardRedeemed {
-  const _$_WallPhotoRewardRedeemed(this.photoId);
+class _$WallPhotoRewardRedeemedImpl implements _WallPhotoRewardRedeemed {
+  const _$WallPhotoRewardRedeemedImpl(this.photoId);
 
   @override
   final String photoId;
@@ -660,10 +665,10 @@ class _$_WallPhotoRewardRedeemed implements _WallPhotoRewardRedeemed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WallPhotoRewardRedeemed &&
+            other is _$WallPhotoRewardRedeemedImpl &&
             (identical(other.photoId, photoId) || other.photoId == photoId));
   }
 
@@ -673,10 +678,9 @@ class _$_WallPhotoRewardRedeemed implements _WallPhotoRewardRedeemed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WallPhotoRewardRedeemedCopyWith<_$_WallPhotoRewardRedeemed>
-      get copyWith =>
-          __$$_WallPhotoRewardRedeemedCopyWithImpl<_$_WallPhotoRewardRedeemed>(
-              this, _$identity);
+  _$$WallPhotoRewardRedeemedImplCopyWith<_$WallPhotoRewardRedeemedImpl>
+      get copyWith => __$$WallPhotoRewardRedeemedImplCopyWithImpl<
+          _$WallPhotoRewardRedeemedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -763,11 +767,11 @@ class _$_WallPhotoRewardRedeemed implements _WallPhotoRewardRedeemed {
 
 abstract class _WallPhotoRewardRedeemed implements ProfileEvent {
   const factory _WallPhotoRewardRedeemed(final String photoId) =
-      _$_WallPhotoRewardRedeemed;
+      _$WallPhotoRewardRedeemedImpl;
 
   String get photoId;
   @JsonKey(ignore: true)
-  _$$_WallPhotoRewardRedeemedCopyWith<_$_WallPhotoRewardRedeemed>
+  _$$WallPhotoRewardRedeemedImplCopyWith<_$WallPhotoRewardRedeemedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -850,11 +854,11 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
 }
 
 /// @nodoc
-abstract class _$$_ProfileStateCopyWith<$Res>
+abstract class _$$ProfileStateImplCopyWith<$Res>
     implements $ProfileStateCopyWith<$Res> {
-  factory _$$_ProfileStateCopyWith(
-          _$_ProfileState value, $Res Function(_$_ProfileState) then) =
-      __$$_ProfileStateCopyWithImpl<$Res>;
+  factory _$$ProfileStateImplCopyWith(
+          _$ProfileStateImpl value, $Res Function(_$ProfileStateImpl) then) =
+      __$$ProfileStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -867,11 +871,11 @@ abstract class _$$_ProfileStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ProfileStateCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$_ProfileState>
-    implements _$$_ProfileStateCopyWith<$Res> {
-  __$$_ProfileStateCopyWithImpl(
-      _$_ProfileState _value, $Res Function(_$_ProfileState) _then)
+class __$$ProfileStateImplCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$ProfileStateImpl>
+    implements _$$ProfileStateImplCopyWith<$Res> {
+  __$$ProfileStateImplCopyWithImpl(
+      _$ProfileStateImpl _value, $Res Function(_$ProfileStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -884,7 +888,7 @@ class __$$_ProfileStateCopyWithImpl<$Res>
     Object? snackbarMessage = null,
     Object? hasPhotosReachedMax = null,
   }) {
-    return _then(_$_ProfileState(
+    return _then(_$ProfileStateImpl(
       userProfile: null == userProfile
           ? _value.userProfile
           : userProfile // ignore: cast_nullable_to_non_nullable
@@ -915,8 +919,8 @@ class __$$_ProfileStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ProfileState extends _ProfileState {
-  _$_ProfileState(
+class _$ProfileStateImpl extends _ProfileState {
+  _$ProfileStateImpl(
       {required this.userProfile,
       required this.initialStatus,
       required this.nextPagePhotosStatus,
@@ -944,10 +948,10 @@ class _$_ProfileState extends _ProfileState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProfileState &&
+            other is _$ProfileStateImpl &&
             (identical(other.userProfile, userProfile) ||
                 other.userProfile == userProfile) &&
             (identical(other.initialStatus, initialStatus) ||
@@ -975,8 +979,8 @@ class _$_ProfileState extends _ProfileState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProfileStateCopyWith<_$_ProfileState> get copyWith =>
-      __$$_ProfileStateCopyWithImpl<_$_ProfileState>(this, _$identity);
+  _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>
+      __$$ProfileStateImplCopyWithImpl<_$ProfileStateImpl>(this, _$identity);
 }
 
 abstract class _ProfileState extends ProfileState {
@@ -986,7 +990,7 @@ abstract class _ProfileState extends ProfileState {
       required final CubitStatus nextPagePhotosStatus,
       required final CubitStatus refreshPhotosStatus,
       required final Option<String> snackbarMessage,
-      required final bool hasPhotosReachedMax}) = _$_ProfileState;
+      required final bool hasPhotosReachedMax}) = _$ProfileStateImpl;
   _ProfileState._() : super._();
 
   @override
@@ -1003,6 +1007,6 @@ abstract class _ProfileState extends ProfileState {
   bool get hasPhotosReachedMax;
   @override
   @JsonKey(ignore: true)
-  _$$_ProfileStateCopyWith<_$_ProfileState> get copyWith =>
+  _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

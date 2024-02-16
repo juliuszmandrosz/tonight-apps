@@ -91,11 +91,12 @@ class _$WallPhotosFiltersStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_WallPhotosFiltersStateCopyWith<$Res>
+abstract class _$$WallPhotosFiltersStateImplCopyWith<$Res>
     implements $WallPhotosFiltersStateCopyWith<$Res> {
-  factory _$$_WallPhotosFiltersStateCopyWith(_$_WallPhotosFiltersState value,
-          $Res Function(_$_WallPhotosFiltersState) then) =
-      __$$_WallPhotosFiltersStateCopyWithImpl<$Res>;
+  factory _$$WallPhotosFiltersStateImplCopyWith(
+          _$WallPhotosFiltersStateImpl value,
+          $Res Function(_$WallPhotosFiltersStateImpl) then) =
+      __$$WallPhotosFiltersStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -109,12 +110,13 @@ abstract class _$$_WallPhotosFiltersStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_WallPhotosFiltersStateCopyWithImpl<$Res>
+class __$$WallPhotosFiltersStateImplCopyWithImpl<$Res>
     extends _$WallPhotosFiltersStateCopyWithImpl<$Res,
-        _$_WallPhotosFiltersState>
-    implements _$$_WallPhotosFiltersStateCopyWith<$Res> {
-  __$$_WallPhotosFiltersStateCopyWithImpl(_$_WallPhotosFiltersState _value,
-      $Res Function(_$_WallPhotosFiltersState) _then)
+        _$WallPhotosFiltersStateImpl>
+    implements _$$WallPhotosFiltersStateImplCopyWith<$Res> {
+  __$$WallPhotosFiltersStateImplCopyWithImpl(
+      _$WallPhotosFiltersStateImpl _value,
+      $Res Function(_$WallPhotosFiltersStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +127,7 @@ class __$$_WallPhotosFiltersStateCopyWithImpl<$Res>
     Object? isSubmitting = null,
     Object? snackbarMessage = null,
   }) {
-    return _then(_$_WallPhotosFiltersState(
+    return _then(_$WallPhotosFiltersStateImpl(
       filters: null == filters
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
@@ -148,8 +150,8 @@ class __$$_WallPhotosFiltersStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WallPhotosFiltersState implements _WallPhotosFiltersState {
-  const _$_WallPhotosFiltersState(
+class _$WallPhotosFiltersStateImpl implements _WallPhotosFiltersState {
+  const _$WallPhotosFiltersStateImpl(
       {required this.filters,
       required final Map<MenuWallPhotoFilter, IFilter> appliedFilters,
       required this.isSubmitting,
@@ -177,10 +179,10 @@ class _$_WallPhotosFiltersState implements _WallPhotosFiltersState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WallPhotosFiltersState &&
+            other is _$WallPhotosFiltersStateImpl &&
             (identical(other.filters, filters) || other.filters == filters) &&
             const DeepCollectionEquality()
                 .equals(other._appliedFilters, _appliedFilters) &&
@@ -201,9 +203,9 @@ class _$_WallPhotosFiltersState implements _WallPhotosFiltersState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WallPhotosFiltersStateCopyWith<_$_WallPhotosFiltersState> get copyWith =>
-      __$$_WallPhotosFiltersStateCopyWithImpl<_$_WallPhotosFiltersState>(
-          this, _$identity);
+  _$$WallPhotosFiltersStateImplCopyWith<_$WallPhotosFiltersStateImpl>
+      get copyWith => __$$WallPhotosFiltersStateImplCopyWithImpl<
+          _$WallPhotosFiltersStateImpl>(this, _$identity);
 }
 
 abstract class _WallPhotosFiltersState implements WallPhotosFiltersState {
@@ -212,7 +214,7 @@ abstract class _WallPhotosFiltersState implements WallPhotosFiltersState {
           required final Map<MenuWallPhotoFilter, IFilter> appliedFilters,
           required final bool isSubmitting,
           required final Option<String> snackbarMessage}) =
-      _$_WallPhotosFiltersState;
+      _$WallPhotosFiltersStateImpl;
 
   @override
   WallPhotoFilters get filters;
@@ -224,6 +226,6 @@ abstract class _WallPhotosFiltersState implements WallPhotosFiltersState {
   Option<String> get snackbarMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_WallPhotosFiltersStateCopyWith<_$_WallPhotosFiltersState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$WallPhotosFiltersStateImplCopyWith<_$WallPhotosFiltersStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

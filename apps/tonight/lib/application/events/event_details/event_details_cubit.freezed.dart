@@ -79,11 +79,11 @@ class _$EventDetailsStateCopyWithImpl<$Res, $Val extends EventDetailsState>
 }
 
 /// @nodoc
-abstract class _$$_EventDetailsStateCopyWith<$Res>
+abstract class _$$EventDetailsStateImplCopyWith<$Res>
     implements $EventDetailsStateCopyWith<$Res> {
-  factory _$$_EventDetailsStateCopyWith(_$_EventDetailsState value,
-          $Res Function(_$_EventDetailsState) then) =
-      __$$_EventDetailsStateCopyWithImpl<$Res>;
+  factory _$$EventDetailsStateImplCopyWith(_$EventDetailsStateImpl value,
+          $Res Function(_$EventDetailsStateImpl) then) =
+      __$$EventDetailsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -94,11 +94,11 @@ abstract class _$$_EventDetailsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EventDetailsStateCopyWithImpl<$Res>
-    extends _$EventDetailsStateCopyWithImpl<$Res, _$_EventDetailsState>
-    implements _$$_EventDetailsStateCopyWith<$Res> {
-  __$$_EventDetailsStateCopyWithImpl(
-      _$_EventDetailsState _value, $Res Function(_$_EventDetailsState) _then)
+class __$$EventDetailsStateImplCopyWithImpl<$Res>
+    extends _$EventDetailsStateCopyWithImpl<$Res, _$EventDetailsStateImpl>
+    implements _$$EventDetailsStateImplCopyWith<$Res> {
+  __$$EventDetailsStateImplCopyWithImpl(_$EventDetailsStateImpl _value,
+      $Res Function(_$EventDetailsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +109,7 @@ class __$$_EventDetailsStateCopyWithImpl<$Res>
     Object? useVoucherStatus = null,
     Object? errorMessage = null,
   }) {
-    return _then(_$_EventDetailsState(
+    return _then(_$EventDetailsStateImpl(
       event: null == event
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
@@ -132,8 +132,8 @@ class __$$_EventDetailsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventDetailsState implements _EventDetailsState {
-  const _$_EventDetailsState(
+class _$EventDetailsStateImpl implements _EventDetailsState {
+  const _$EventDetailsStateImpl(
       {required this.event,
       required this.status,
       required this.useVoucherStatus,
@@ -154,10 +154,10 @@ class _$_EventDetailsState implements _EventDetailsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventDetailsState &&
+            other is _$EventDetailsStateImpl &&
             (identical(other.event, event) || other.event == event) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.useVoucherStatus, useVoucherStatus) ||
@@ -173,8 +173,8 @@ class _$_EventDetailsState implements _EventDetailsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventDetailsStateCopyWith<_$_EventDetailsState> get copyWith =>
-      __$$_EventDetailsStateCopyWithImpl<_$_EventDetailsState>(
+  _$$EventDetailsStateImplCopyWith<_$EventDetailsStateImpl> get copyWith =>
+      __$$EventDetailsStateImplCopyWithImpl<_$EventDetailsStateImpl>(
           this, _$identity);
 }
 
@@ -183,7 +183,7 @@ abstract class _EventDetailsState implements EventDetailsState {
       {required final Option<Event> event,
       required final CubitStatus status,
       required final CubitStatus useVoucherStatus,
-      required final Option<String> errorMessage}) = _$_EventDetailsState;
+      required final Option<String> errorMessage}) = _$EventDetailsStateImpl;
 
   @override
   Option<Event> get event;
@@ -195,6 +195,6 @@ abstract class _EventDetailsState implements EventDetailsState {
   Option<String> get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_EventDetailsStateCopyWith<_$_EventDetailsState> get copyWith =>
+  _$$EventDetailsStateImplCopyWith<_$EventDetailsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

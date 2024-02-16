@@ -82,11 +82,11 @@ class _$WallPhotoFiltersCopyWithImpl<$Res, $Val extends WallPhotoFilters>
 }
 
 /// @nodoc
-abstract class _$$_WallPhotoFiltersCopyWith<$Res>
+abstract class _$$WallPhotoFiltersImplCopyWith<$Res>
     implements $WallPhotoFiltersCopyWith<$Res> {
-  factory _$$_WallPhotoFiltersCopyWith(
-          _$_WallPhotoFilters value, $Res Function(_$_WallPhotoFilters) then) =
-      __$$_WallPhotoFiltersCopyWithImpl<$Res>;
+  factory _$$WallPhotoFiltersImplCopyWith(_$WallPhotoFiltersImpl value,
+          $Res Function(_$WallPhotoFiltersImpl) then) =
+      __$$WallPhotoFiltersImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -97,11 +97,11 @@ abstract class _$$_WallPhotoFiltersCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_WallPhotoFiltersCopyWithImpl<$Res>
-    extends _$WallPhotoFiltersCopyWithImpl<$Res, _$_WallPhotoFilters>
-    implements _$$_WallPhotoFiltersCopyWith<$Res> {
-  __$$_WallPhotoFiltersCopyWithImpl(
-      _$_WallPhotoFilters _value, $Res Function(_$_WallPhotoFilters) _then)
+class __$$WallPhotoFiltersImplCopyWithImpl<$Res>
+    extends _$WallPhotoFiltersCopyWithImpl<$Res, _$WallPhotoFiltersImpl>
+    implements _$$WallPhotoFiltersImplCopyWith<$Res> {
+  __$$WallPhotoFiltersImplCopyWithImpl(_$WallPhotoFiltersImpl _value,
+      $Res Function(_$WallPhotoFiltersImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +112,7 @@ class __$$_WallPhotoFiltersCopyWithImpl<$Res>
     Object? showOnlyOtherUsersPhotosFilter = null,
     Object? showPhotosFromClubsInRangeFilter = null,
   }) {
-    return _then(_$_WallPhotoFilters(
+    return _then(_$WallPhotoFiltersImpl(
       phraseFilter: null == phraseFilter
           ? _value.phraseFilter
           : phraseFilter // ignore: cast_nullable_to_non_nullable
@@ -135,8 +135,8 @@ class __$$_WallPhotoFiltersCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WallPhotoFilters extends _WallPhotoFilters {
-  _$_WallPhotoFilters(
+class _$WallPhotoFiltersImpl extends _WallPhotoFilters {
+  _$WallPhotoFiltersImpl(
       {required this.phraseFilter,
       required this.showPhotosFromLiveEventsFilter,
       required this.showOnlyOtherUsersPhotosFilter,
@@ -158,10 +158,10 @@ class _$_WallPhotoFilters extends _WallPhotoFilters {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WallPhotoFilters &&
+            other is _$WallPhotoFiltersImpl &&
             (identical(other.phraseFilter, phraseFilter) ||
                 other.phraseFilter == phraseFilter) &&
             (identical(other.showPhotosFromLiveEventsFilter,
@@ -189,8 +189,9 @@ class _$_WallPhotoFilters extends _WallPhotoFilters {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WallPhotoFiltersCopyWith<_$_WallPhotoFilters> get copyWith =>
-      __$$_WallPhotoFiltersCopyWithImpl<_$_WallPhotoFilters>(this, _$identity);
+  _$$WallPhotoFiltersImplCopyWith<_$WallPhotoFiltersImpl> get copyWith =>
+      __$$WallPhotoFiltersImplCopyWithImpl<_$WallPhotoFiltersImpl>(
+          this, _$identity);
 }
 
 abstract class _WallPhotoFilters extends WallPhotoFilters {
@@ -201,7 +202,7 @@ abstract class _WallPhotoFilters extends WallPhotoFilters {
       required final ShowOnlyOtherUsersPhotosFilter
           showOnlyOtherUsersPhotosFilter,
       required final ShowPhotosFromClubsInRangeFilter
-          showPhotosFromClubsInRangeFilter}) = _$_WallPhotoFilters;
+          showPhotosFromClubsInRangeFilter}) = _$WallPhotoFiltersImpl;
   _WallPhotoFilters._() : super._();
 
   @override
@@ -214,6 +215,6 @@ abstract class _WallPhotoFilters extends WallPhotoFilters {
   ShowPhotosFromClubsInRangeFilter get showPhotosFromClubsInRangeFilter;
   @override
   @JsonKey(ignore: true)
-  _$$_WallPhotoFiltersCopyWith<_$_WallPhotoFilters> get copyWith =>
+  _$$WallPhotoFiltersImplCopyWith<_$WallPhotoFiltersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

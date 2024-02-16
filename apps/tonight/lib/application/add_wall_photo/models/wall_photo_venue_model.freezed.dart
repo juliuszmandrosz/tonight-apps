@@ -79,11 +79,11 @@ class _$WallPhotoVenueCopyWithImpl<$Res, $Val extends WallPhotoVenue>
 }
 
 /// @nodoc
-abstract class _$$_WallPhotoVenueCopyWith<$Res>
+abstract class _$$WallPhotoVenueImplCopyWith<$Res>
     implements $WallPhotoVenueCopyWith<$Res> {
-  factory _$$_WallPhotoVenueCopyWith(
-          _$_WallPhotoVenue value, $Res Function(_$_WallPhotoVenue) then) =
-      __$$_WallPhotoVenueCopyWithImpl<$Res>;
+  factory _$$WallPhotoVenueImplCopyWith(_$WallPhotoVenueImpl value,
+          $Res Function(_$WallPhotoVenueImpl) then) =
+      __$$WallPhotoVenueImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -94,11 +94,11 @@ abstract class _$$_WallPhotoVenueCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_WallPhotoVenueCopyWithImpl<$Res>
-    extends _$WallPhotoVenueCopyWithImpl<$Res, _$_WallPhotoVenue>
-    implements _$$_WallPhotoVenueCopyWith<$Res> {
-  __$$_WallPhotoVenueCopyWithImpl(
-      _$_WallPhotoVenue _value, $Res Function(_$_WallPhotoVenue) _then)
+class __$$WallPhotoVenueImplCopyWithImpl<$Res>
+    extends _$WallPhotoVenueCopyWithImpl<$Res, _$WallPhotoVenueImpl>
+    implements _$$WallPhotoVenueImplCopyWith<$Res> {
+  __$$WallPhotoVenueImplCopyWithImpl(
+      _$WallPhotoVenueImpl _value, $Res Function(_$WallPhotoVenueImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +109,7 @@ class __$$_WallPhotoVenueCopyWithImpl<$Res>
     Object? venueLocation = null,
     Object? venuePhotoUrl = freezed,
   }) {
-    return _then(_$_WallPhotoVenue(
+    return _then(_$WallPhotoVenueImpl(
       venueId: null == venueId
           ? _value.venueId
           : venueId // ignore: cast_nullable_to_non_nullable
@@ -132,8 +132,8 @@ class __$$_WallPhotoVenueCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WallPhotoVenue implements _WallPhotoVenue {
-  const _$_WallPhotoVenue(
+class _$WallPhotoVenueImpl implements _WallPhotoVenue {
+  const _$WallPhotoVenueImpl(
       {required this.venueId,
       required this.venueName,
       required this.venueLocation,
@@ -154,10 +154,10 @@ class _$_WallPhotoVenue implements _WallPhotoVenue {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WallPhotoVenue &&
+            other is _$WallPhotoVenueImpl &&
             (identical(other.venueId, venueId) || other.venueId == venueId) &&
             (identical(other.venueName, venueName) ||
                 other.venueName == venueName) &&
@@ -174,8 +174,9 @@ class _$_WallPhotoVenue implements _WallPhotoVenue {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WallPhotoVenueCopyWith<_$_WallPhotoVenue> get copyWith =>
-      __$$_WallPhotoVenueCopyWithImpl<_$_WallPhotoVenue>(this, _$identity);
+  _$$WallPhotoVenueImplCopyWith<_$WallPhotoVenueImpl> get copyWith =>
+      __$$WallPhotoVenueImplCopyWithImpl<_$WallPhotoVenueImpl>(
+          this, _$identity);
 }
 
 abstract class _WallPhotoVenue implements WallPhotoVenue {
@@ -183,7 +184,7 @@ abstract class _WallPhotoVenue implements WallPhotoVenue {
       {required final String venueId,
       required final String venueName,
       required final LatLng venueLocation,
-      final String? venuePhotoUrl}) = _$_WallPhotoVenue;
+      final String? venuePhotoUrl}) = _$WallPhotoVenueImpl;
 
   @override
   String get venueId;
@@ -195,6 +196,6 @@ abstract class _WallPhotoVenue implements WallPhotoVenue {
   String? get venuePhotoUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_WallPhotoVenueCopyWith<_$_WallPhotoVenue> get copyWith =>
+  _$$WallPhotoVenueImplCopyWith<_$WallPhotoVenueImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

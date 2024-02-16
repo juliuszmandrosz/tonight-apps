@@ -1,6 +1,7 @@
 import 'package:common/extensions/color_extensions.dart';
 import 'package:common/extensions/typography_extensions.dart';
 import 'package:common/presentation/profile_picture_container.dart';
+import 'package:common/theme/dark_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:translations/translations.dart';
@@ -39,8 +40,8 @@ class StoryCircleAvatar extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Container(
-              width: 86,
-              height: 86,
+              width: 90,
+              height: 90,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: LinearGradient(
@@ -51,7 +52,7 @@ class StoryCircleAvatar extends StatelessWidget {
               ),
             ),
             ProfilePictureContainer(
-              imageSize: 80,
+              imageSize: 90,
               profilePictureUrl: userProfilePhotoUrl,
               username: username,
               textStyle: context.titleMedium,
@@ -69,7 +70,7 @@ class StoryCircleAvatar extends StatelessWidget {
         const SizedBox(height: 4),
         Text(
           isCurrentUser ? S().yourStory : username,
-          style: context.bodySmall,
+          style: context.titleSmall.copyWithSecondaryColor(),
         ),
       ],
     );

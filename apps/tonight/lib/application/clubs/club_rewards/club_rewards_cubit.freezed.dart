@@ -73,11 +73,11 @@ class _$ClubRewardsStateCopyWithImpl<$Res, $Val extends ClubRewardsState>
 }
 
 /// @nodoc
-abstract class _$$_ClubRewardsStateCopyWith<$Res>
+abstract class _$$ClubRewardsStateImplCopyWith<$Res>
     implements $ClubRewardsStateCopyWith<$Res> {
-  factory _$$_ClubRewardsStateCopyWith(
-          _$_ClubRewardsState value, $Res Function(_$_ClubRewardsState) then) =
-      __$$_ClubRewardsStateCopyWithImpl<$Res>;
+  factory _$$ClubRewardsStateImplCopyWith(_$ClubRewardsStateImpl value,
+          $Res Function(_$ClubRewardsStateImpl) then) =
+      __$$ClubRewardsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -87,11 +87,11 @@ abstract class _$$_ClubRewardsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClubRewardsStateCopyWithImpl<$Res>
-    extends _$ClubRewardsStateCopyWithImpl<$Res, _$_ClubRewardsState>
-    implements _$$_ClubRewardsStateCopyWith<$Res> {
-  __$$_ClubRewardsStateCopyWithImpl(
-      _$_ClubRewardsState _value, $Res Function(_$_ClubRewardsState) _then)
+class __$$ClubRewardsStateImplCopyWithImpl<$Res>
+    extends _$ClubRewardsStateCopyWithImpl<$Res, _$ClubRewardsStateImpl>
+    implements _$$ClubRewardsStateImplCopyWith<$Res> {
+  __$$ClubRewardsStateImplCopyWithImpl(_$ClubRewardsStateImpl _value,
+      $Res Function(_$ClubRewardsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -101,7 +101,7 @@ class __$$_ClubRewardsStateCopyWithImpl<$Res>
     Object? clubRewardsWithAttendance = null,
     Object? status = null,
   }) {
-    return _then(_$_ClubRewardsState(
+    return _then(_$ClubRewardsStateImpl(
       clubId: null == clubId
           ? _value.clubId
           : clubId // ignore: cast_nullable_to_non_nullable
@@ -120,8 +120,8 @@ class __$$_ClubRewardsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClubRewardsState implements _ClubRewardsState {
-  const _$_ClubRewardsState(
+class _$ClubRewardsStateImpl implements _ClubRewardsState {
+  const _$ClubRewardsStateImpl(
       {required this.clubId,
       required this.clubRewardsWithAttendance,
       required this.status});
@@ -139,10 +139,10 @@ class _$_ClubRewardsState implements _ClubRewardsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClubRewardsState &&
+            other is _$ClubRewardsStateImpl &&
             (identical(other.clubId, clubId) || other.clubId == clubId) &&
             (identical(other.clubRewardsWithAttendance,
                     clubRewardsWithAttendance) ||
@@ -157,8 +157,9 @@ class _$_ClubRewardsState implements _ClubRewardsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClubRewardsStateCopyWith<_$_ClubRewardsState> get copyWith =>
-      __$$_ClubRewardsStateCopyWithImpl<_$_ClubRewardsState>(this, _$identity);
+  _$$ClubRewardsStateImplCopyWith<_$ClubRewardsStateImpl> get copyWith =>
+      __$$ClubRewardsStateImplCopyWithImpl<_$ClubRewardsStateImpl>(
+          this, _$identity);
 }
 
 abstract class _ClubRewardsState implements ClubRewardsState {
@@ -166,7 +167,7 @@ abstract class _ClubRewardsState implements ClubRewardsState {
       {required final String clubId,
       required final Option<ClubRewardsWithAttendance>
           clubRewardsWithAttendance,
-      required final CubitStatus status}) = _$_ClubRewardsState;
+      required final CubitStatus status}) = _$ClubRewardsStateImpl;
 
   @override
   String get clubId;
@@ -176,6 +177,6 @@ abstract class _ClubRewardsState implements ClubRewardsState {
   CubitStatus get status;
   @override
   @JsonKey(ignore: true)
-  _$$_ClubRewardsStateCopyWith<_$_ClubRewardsState> get copyWith =>
+  _$$ClubRewardsStateImplCopyWith<_$ClubRewardsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

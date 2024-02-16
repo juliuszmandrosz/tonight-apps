@@ -6,9 +6,9 @@ part of 'story_interactions_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_StoryInteractionsDto _$$_StoryInteractionsDtoFromJson(
+_$StoryInteractionsDtoImpl _$$StoryInteractionsDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$_StoryInteractionsDto(
+    _$StoryInteractionsDtoImpl(
       userId: json['userId'] as String,
       storyId: json['storyId'] as String,
       periodNumber: json['periodNumber'] as int,
@@ -18,8 +18,8 @@ _$_StoryInteractionsDto _$$_StoryInteractionsDtoFromJson(
           .fromJson(json['seenAt'] as Timestamp?),
     );
 
-Map<String, dynamic> _$$_StoryInteractionsDtoToJson(
-        _$_StoryInteractionsDto instance) =>
+Map<String, dynamic> _$$StoryInteractionsDtoImplToJson(
+        _$StoryInteractionsDtoImpl instance) =>
     <String, dynamic>{
       'userId': instance.userId,
       'storyId': instance.storyId,

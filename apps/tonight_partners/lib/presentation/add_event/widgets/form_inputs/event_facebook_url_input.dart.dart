@@ -39,7 +39,7 @@ class EventFacebookUrlInput extends HookWidget {
                     IconButton(
                       padding: EdgeInsets.zero,
                       icon: FaIcon(
-                        eventSocialMedia[facebook]!.icon,
+                        socialMediaMap[facebook]!.icon,
                         size: 40,
                         color: state.isFacebookUrlEnabled
                             ? context.primaryColor
@@ -70,7 +70,7 @@ class EventFacebookUrlInput extends HookWidget {
                           .facebookUrlChanged(value),
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
-                        labelText: eventSocialMedia[facebook]!.label,
+                        labelText: socialMediaMap[facebook]!.label,
                         errorText: _getFacebookUrlErrorMessage(state),
                         errorMaxLines: 2,
                       ),

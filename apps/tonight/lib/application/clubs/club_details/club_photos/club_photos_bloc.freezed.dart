@@ -99,22 +99,22 @@ class _$ClubPhotosEventCopyWithImpl<$Res, $Val extends ClubPhotosEvent>
 }
 
 /// @nodoc
-abstract class _$$_ClubPhotosFetchedCopyWith<$Res>
+abstract class _$$ClubPhotosFetchedImplCopyWith<$Res>
     implements $ClubPhotosEventCopyWith<$Res> {
-  factory _$$_ClubPhotosFetchedCopyWith(_$_ClubPhotosFetched value,
-          $Res Function(_$_ClubPhotosFetched) then) =
-      __$$_ClubPhotosFetchedCopyWithImpl<$Res>;
+  factory _$$ClubPhotosFetchedImplCopyWith(_$ClubPhotosFetchedImpl value,
+          $Res Function(_$ClubPhotosFetchedImpl) then) =
+      __$$ClubPhotosFetchedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String clubId});
 }
 
 /// @nodoc
-class __$$_ClubPhotosFetchedCopyWithImpl<$Res>
-    extends _$ClubPhotosEventCopyWithImpl<$Res, _$_ClubPhotosFetched>
-    implements _$$_ClubPhotosFetchedCopyWith<$Res> {
-  __$$_ClubPhotosFetchedCopyWithImpl(
-      _$_ClubPhotosFetched _value, $Res Function(_$_ClubPhotosFetched) _then)
+class __$$ClubPhotosFetchedImplCopyWithImpl<$Res>
+    extends _$ClubPhotosEventCopyWithImpl<$Res, _$ClubPhotosFetchedImpl>
+    implements _$$ClubPhotosFetchedImplCopyWith<$Res> {
+  __$$ClubPhotosFetchedImplCopyWithImpl(_$ClubPhotosFetchedImpl _value,
+      $Res Function(_$ClubPhotosFetchedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +122,7 @@ class __$$_ClubPhotosFetchedCopyWithImpl<$Res>
   $Res call({
     Object? clubId = null,
   }) {
-    return _then(_$_ClubPhotosFetched(
+    return _then(_$ClubPhotosFetchedImpl(
       null == clubId
           ? _value.clubId
           : clubId // ignore: cast_nullable_to_non_nullable
@@ -133,8 +133,8 @@ class __$$_ClubPhotosFetchedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClubPhotosFetched implements _ClubPhotosFetched {
-  const _$_ClubPhotosFetched(this.clubId);
+class _$ClubPhotosFetchedImpl implements _ClubPhotosFetched {
+  const _$ClubPhotosFetchedImpl(this.clubId);
 
   @override
   final String clubId;
@@ -145,10 +145,10 @@ class _$_ClubPhotosFetched implements _ClubPhotosFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClubPhotosFetched &&
+            other is _$ClubPhotosFetchedImpl &&
             (identical(other.clubId, clubId) || other.clubId == clubId));
   }
 
@@ -158,8 +158,8 @@ class _$_ClubPhotosFetched implements _ClubPhotosFetched {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClubPhotosFetchedCopyWith<_$_ClubPhotosFetched> get copyWith =>
-      __$$_ClubPhotosFetchedCopyWithImpl<_$_ClubPhotosFetched>(
+  _$$ClubPhotosFetchedImplCopyWith<_$ClubPhotosFetchedImpl> get copyWith =>
+      __$$ClubPhotosFetchedImplCopyWithImpl<_$ClubPhotosFetchedImpl>(
           this, _$identity);
 
   @override
@@ -230,35 +230,36 @@ class _$_ClubPhotosFetched implements _ClubPhotosFetched {
 }
 
 abstract class _ClubPhotosFetched implements ClubPhotosEvent {
-  const factory _ClubPhotosFetched(final String clubId) = _$_ClubPhotosFetched;
+  const factory _ClubPhotosFetched(final String clubId) =
+      _$ClubPhotosFetchedImpl;
 
   @override
   String get clubId;
   @override
   @JsonKey(ignore: true)
-  _$$_ClubPhotosFetchedCopyWith<_$_ClubPhotosFetched> get copyWith =>
+  _$$ClubPhotosFetchedImplCopyWith<_$ClubPhotosFetchedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ClubPhotosNextPageFetchedCopyWith<$Res>
+abstract class _$$ClubPhotosNextPageFetchedImplCopyWith<$Res>
     implements $ClubPhotosEventCopyWith<$Res> {
-  factory _$$_ClubPhotosNextPageFetchedCopyWith(
-          _$_ClubPhotosNextPageFetched value,
-          $Res Function(_$_ClubPhotosNextPageFetched) then) =
-      __$$_ClubPhotosNextPageFetchedCopyWithImpl<$Res>;
+  factory _$$ClubPhotosNextPageFetchedImplCopyWith(
+          _$ClubPhotosNextPageFetchedImpl value,
+          $Res Function(_$ClubPhotosNextPageFetchedImpl) then) =
+      __$$ClubPhotosNextPageFetchedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String clubId, String? nextPageToken});
 }
 
 /// @nodoc
-class __$$_ClubPhotosNextPageFetchedCopyWithImpl<$Res>
-    extends _$ClubPhotosEventCopyWithImpl<$Res, _$_ClubPhotosNextPageFetched>
-    implements _$$_ClubPhotosNextPageFetchedCopyWith<$Res> {
-  __$$_ClubPhotosNextPageFetchedCopyWithImpl(
-      _$_ClubPhotosNextPageFetched _value,
-      $Res Function(_$_ClubPhotosNextPageFetched) _then)
+class __$$ClubPhotosNextPageFetchedImplCopyWithImpl<$Res>
+    extends _$ClubPhotosEventCopyWithImpl<$Res, _$ClubPhotosNextPageFetchedImpl>
+    implements _$$ClubPhotosNextPageFetchedImplCopyWith<$Res> {
+  __$$ClubPhotosNextPageFetchedImplCopyWithImpl(
+      _$ClubPhotosNextPageFetchedImpl _value,
+      $Res Function(_$ClubPhotosNextPageFetchedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -267,7 +268,7 @@ class __$$_ClubPhotosNextPageFetchedCopyWithImpl<$Res>
     Object? clubId = null,
     Object? nextPageToken = freezed,
   }) {
-    return _then(_$_ClubPhotosNextPageFetched(
+    return _then(_$ClubPhotosNextPageFetchedImpl(
       clubId: null == clubId
           ? _value.clubId
           : clubId // ignore: cast_nullable_to_non_nullable
@@ -282,8 +283,8 @@ class __$$_ClubPhotosNextPageFetchedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClubPhotosNextPageFetched implements _ClubPhotosNextPageFetched {
-  const _$_ClubPhotosNextPageFetched(
+class _$ClubPhotosNextPageFetchedImpl implements _ClubPhotosNextPageFetched {
+  const _$ClubPhotosNextPageFetchedImpl(
       {required this.clubId, this.nextPageToken});
 
   @override
@@ -297,10 +298,10 @@ class _$_ClubPhotosNextPageFetched implements _ClubPhotosNextPageFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClubPhotosNextPageFetched &&
+            other is _$ClubPhotosNextPageFetchedImpl &&
             (identical(other.clubId, clubId) || other.clubId == clubId) &&
             (identical(other.nextPageToken, nextPageToken) ||
                 other.nextPageToken == nextPageToken));
@@ -312,9 +313,9 @@ class _$_ClubPhotosNextPageFetched implements _ClubPhotosNextPageFetched {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClubPhotosNextPageFetchedCopyWith<_$_ClubPhotosNextPageFetched>
-      get copyWith => __$$_ClubPhotosNextPageFetchedCopyWithImpl<
-          _$_ClubPhotosNextPageFetched>(this, _$identity);
+  _$$ClubPhotosNextPageFetchedImplCopyWith<_$ClubPhotosNextPageFetchedImpl>
+      get copyWith => __$$ClubPhotosNextPageFetchedImplCopyWithImpl<
+          _$ClubPhotosNextPageFetchedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -386,14 +387,14 @@ class _$_ClubPhotosNextPageFetched implements _ClubPhotosNextPageFetched {
 abstract class _ClubPhotosNextPageFetched implements ClubPhotosEvent {
   const factory _ClubPhotosNextPageFetched(
       {required final String clubId,
-      final String? nextPageToken}) = _$_ClubPhotosNextPageFetched;
+      final String? nextPageToken}) = _$ClubPhotosNextPageFetchedImpl;
 
   @override
   String get clubId;
   String? get nextPageToken;
   @override
   @JsonKey(ignore: true)
-  _$$_ClubPhotosNextPageFetchedCopyWith<_$_ClubPhotosNextPageFetched>
+  _$$ClubPhotosNextPageFetchedImplCopyWith<_$ClubPhotosNextPageFetchedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -453,11 +454,11 @@ class _$ClubPhotosStateCopyWithImpl<$Res, $Val extends ClubPhotosState>
 }
 
 /// @nodoc
-abstract class _$$_ClubPhotosStateCopyWith<$Res>
+abstract class _$$ClubPhotosStateImplCopyWith<$Res>
     implements $ClubPhotosStateCopyWith<$Res> {
-  factory _$$_ClubPhotosStateCopyWith(
-          _$_ClubPhotosState value, $Res Function(_$_ClubPhotosState) then) =
-      __$$_ClubPhotosStateCopyWithImpl<$Res>;
+  factory _$$ClubPhotosStateImplCopyWith(_$ClubPhotosStateImpl value,
+          $Res Function(_$ClubPhotosStateImpl) then) =
+      __$$ClubPhotosStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -465,11 +466,11 @@ abstract class _$$_ClubPhotosStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClubPhotosStateCopyWithImpl<$Res>
-    extends _$ClubPhotosStateCopyWithImpl<$Res, _$_ClubPhotosState>
-    implements _$$_ClubPhotosStateCopyWith<$Res> {
-  __$$_ClubPhotosStateCopyWithImpl(
-      _$_ClubPhotosState _value, $Res Function(_$_ClubPhotosState) _then)
+class __$$ClubPhotosStateImplCopyWithImpl<$Res>
+    extends _$ClubPhotosStateCopyWithImpl<$Res, _$ClubPhotosStateImpl>
+    implements _$$ClubPhotosStateImplCopyWith<$Res> {
+  __$$ClubPhotosStateImplCopyWithImpl(
+      _$ClubPhotosStateImpl _value, $Res Function(_$ClubPhotosStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -479,7 +480,7 @@ class __$$_ClubPhotosStateCopyWithImpl<$Res>
     Object? photosUrls = null,
     Object? nextPageToken = freezed,
   }) {
-    return _then(_$_ClubPhotosState(
+    return _then(_$ClubPhotosStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -498,8 +499,8 @@ class __$$_ClubPhotosStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClubPhotosState extends _ClubPhotosState {
-  const _$_ClubPhotosState(
+class _$ClubPhotosStateImpl extends _ClubPhotosState {
+  const _$ClubPhotosStateImpl(
       {required this.status,
       required final List<String> photosUrls,
       required this.nextPageToken})
@@ -525,10 +526,10 @@ class _$_ClubPhotosState extends _ClubPhotosState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClubPhotosState &&
+            other is _$ClubPhotosStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
                 .equals(other._photosUrls, _photosUrls) &&
@@ -543,15 +544,16 @@ class _$_ClubPhotosState extends _ClubPhotosState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClubPhotosStateCopyWith<_$_ClubPhotosState> get copyWith =>
-      __$$_ClubPhotosStateCopyWithImpl<_$_ClubPhotosState>(this, _$identity);
+  _$$ClubPhotosStateImplCopyWith<_$ClubPhotosStateImpl> get copyWith =>
+      __$$ClubPhotosStateImplCopyWithImpl<_$ClubPhotosStateImpl>(
+          this, _$identity);
 }
 
 abstract class _ClubPhotosState extends ClubPhotosState {
   const factory _ClubPhotosState(
       {required final CubitStatus status,
       required final List<String> photosUrls,
-      required final String? nextPageToken}) = _$_ClubPhotosState;
+      required final String? nextPageToken}) = _$ClubPhotosStateImpl;
   const _ClubPhotosState._() : super._();
 
   @override
@@ -562,6 +564,6 @@ abstract class _ClubPhotosState extends ClubPhotosState {
   String? get nextPageToken;
   @override
   @JsonKey(ignore: true)
-  _$$_ClubPhotosStateCopyWith<_$_ClubPhotosState> get copyWith =>
+  _$$ClubPhotosStateImplCopyWith<_$ClubPhotosStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

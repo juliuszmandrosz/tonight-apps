@@ -63,22 +63,22 @@ class _$UserDetailsStateCopyWithImpl<$Res, $Val extends UserDetailsState>
 }
 
 /// @nodoc
-abstract class _$$_UserDetailsStateCopyWith<$Res>
+abstract class _$$UserDetailsStateImplCopyWith<$Res>
     implements $UserDetailsStateCopyWith<$Res> {
-  factory _$$_UserDetailsStateCopyWith(
-          _$_UserDetailsState value, $Res Function(_$_UserDetailsState) then) =
-      __$$_UserDetailsStateCopyWithImpl<$Res>;
+  factory _$$UserDetailsStateImplCopyWith(_$UserDetailsStateImpl value,
+          $Res Function(_$UserDetailsStateImpl) then) =
+      __$$UserDetailsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({CubitStatus status, Option<UserDetails> user});
 }
 
 /// @nodoc
-class __$$_UserDetailsStateCopyWithImpl<$Res>
-    extends _$UserDetailsStateCopyWithImpl<$Res, _$_UserDetailsState>
-    implements _$$_UserDetailsStateCopyWith<$Res> {
-  __$$_UserDetailsStateCopyWithImpl(
-      _$_UserDetailsState _value, $Res Function(_$_UserDetailsState) _then)
+class __$$UserDetailsStateImplCopyWithImpl<$Res>
+    extends _$UserDetailsStateCopyWithImpl<$Res, _$UserDetailsStateImpl>
+    implements _$$UserDetailsStateImplCopyWith<$Res> {
+  __$$UserDetailsStateImplCopyWithImpl(_$UserDetailsStateImpl _value,
+      $Res Function(_$UserDetailsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_UserDetailsStateCopyWithImpl<$Res>
     Object? status = null,
     Object? user = null,
   }) {
-    return _then(_$_UserDetailsState(
+    return _then(_$UserDetailsStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_UserDetailsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserDetailsState implements _UserDetailsState {
-  const _$_UserDetailsState({required this.status, required this.user});
+class _$UserDetailsStateImpl implements _UserDetailsState {
+  const _$UserDetailsStateImpl({required this.status, required this.user});
 
   @override
   final CubitStatus status;
@@ -116,10 +116,10 @@ class _$_UserDetailsState implements _UserDetailsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserDetailsState &&
+            other is _$UserDetailsStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.user, user) || other.user == user));
   }
@@ -130,14 +130,15 @@ class _$_UserDetailsState implements _UserDetailsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserDetailsStateCopyWith<_$_UserDetailsState> get copyWith =>
-      __$$_UserDetailsStateCopyWithImpl<_$_UserDetailsState>(this, _$identity);
+  _$$UserDetailsStateImplCopyWith<_$UserDetailsStateImpl> get copyWith =>
+      __$$UserDetailsStateImplCopyWithImpl<_$UserDetailsStateImpl>(
+          this, _$identity);
 }
 
 abstract class _UserDetailsState implements UserDetailsState {
   const factory _UserDetailsState(
       {required final CubitStatus status,
-      required final Option<UserDetails> user}) = _$_UserDetailsState;
+      required final Option<UserDetails> user}) = _$UserDetailsStateImpl;
 
   @override
   CubitStatus get status;
@@ -145,6 +146,6 @@ abstract class _UserDetailsState implements UserDetailsState {
   Option<UserDetails> get user;
   @override
   @JsonKey(ignore: true)
-  _$$_UserDetailsStateCopyWith<_$_UserDetailsState> get copyWith =>
+  _$$UserDetailsStateImplCopyWith<_$UserDetailsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
