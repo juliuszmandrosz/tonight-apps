@@ -64,25 +64,25 @@ class _$UserWallPhotoPreviewStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UserWallPhotoPreviewStateCopyWith<$Res>
+abstract class _$$UserWallPhotoPreviewStateImplCopyWith<$Res>
     implements $UserWallPhotoPreviewStateCopyWith<$Res> {
-  factory _$$_UserWallPhotoPreviewStateCopyWith(
-          _$_UserWallPhotoPreviewState value,
-          $Res Function(_$_UserWallPhotoPreviewState) then) =
-      __$$_UserWallPhotoPreviewStateCopyWithImpl<$Res>;
+  factory _$$UserWallPhotoPreviewStateImplCopyWith(
+          _$UserWallPhotoPreviewStateImpl value,
+          $Res Function(_$UserWallPhotoPreviewStateImpl) then) =
+      __$$UserWallPhotoPreviewStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({CubitStatus deletePhotoStatus, CubitStatus sharePhotoStatus});
 }
 
 /// @nodoc
-class __$$_UserWallPhotoPreviewStateCopyWithImpl<$Res>
+class __$$UserWallPhotoPreviewStateImplCopyWithImpl<$Res>
     extends _$UserWallPhotoPreviewStateCopyWithImpl<$Res,
-        _$_UserWallPhotoPreviewState>
-    implements _$$_UserWallPhotoPreviewStateCopyWith<$Res> {
-  __$$_UserWallPhotoPreviewStateCopyWithImpl(
-      _$_UserWallPhotoPreviewState _value,
-      $Res Function(_$_UserWallPhotoPreviewState) _then)
+        _$UserWallPhotoPreviewStateImpl>
+    implements _$$UserWallPhotoPreviewStateImplCopyWith<$Res> {
+  __$$UserWallPhotoPreviewStateImplCopyWithImpl(
+      _$UserWallPhotoPreviewStateImpl _value,
+      $Res Function(_$UserWallPhotoPreviewStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -91,7 +91,7 @@ class __$$_UserWallPhotoPreviewStateCopyWithImpl<$Res>
     Object? deletePhotoStatus = null,
     Object? sharePhotoStatus = null,
   }) {
-    return _then(_$_UserWallPhotoPreviewState(
+    return _then(_$UserWallPhotoPreviewStateImpl(
       deletePhotoStatus: null == deletePhotoStatus
           ? _value.deletePhotoStatus
           : deletePhotoStatus // ignore: cast_nullable_to_non_nullable
@@ -106,8 +106,8 @@ class __$$_UserWallPhotoPreviewStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserWallPhotoPreviewState implements _UserWallPhotoPreviewState {
-  const _$_UserWallPhotoPreviewState(
+class _$UserWallPhotoPreviewStateImpl implements _UserWallPhotoPreviewState {
+  const _$UserWallPhotoPreviewStateImpl(
       {required this.deletePhotoStatus, required this.sharePhotoStatus});
 
   @override
@@ -121,10 +121,10 @@ class _$_UserWallPhotoPreviewState implements _UserWallPhotoPreviewState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserWallPhotoPreviewState &&
+            other is _$UserWallPhotoPreviewStateImpl &&
             (identical(other.deletePhotoStatus, deletePhotoStatus) ||
                 other.deletePhotoStatus == deletePhotoStatus) &&
             (identical(other.sharePhotoStatus, sharePhotoStatus) ||
@@ -138,16 +138,16 @@ class _$_UserWallPhotoPreviewState implements _UserWallPhotoPreviewState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserWallPhotoPreviewStateCopyWith<_$_UserWallPhotoPreviewState>
-      get copyWith => __$$_UserWallPhotoPreviewStateCopyWithImpl<
-          _$_UserWallPhotoPreviewState>(this, _$identity);
+  _$$UserWallPhotoPreviewStateImplCopyWith<_$UserWallPhotoPreviewStateImpl>
+      get copyWith => __$$UserWallPhotoPreviewStateImplCopyWithImpl<
+          _$UserWallPhotoPreviewStateImpl>(this, _$identity);
 }
 
 abstract class _UserWallPhotoPreviewState implements UserWallPhotoPreviewState {
   const factory _UserWallPhotoPreviewState(
           {required final CubitStatus deletePhotoStatus,
           required final CubitStatus sharePhotoStatus}) =
-      _$_UserWallPhotoPreviewState;
+      _$UserWallPhotoPreviewStateImpl;
 
   @override
   CubitStatus get deletePhotoStatus;
@@ -155,6 +155,6 @@ abstract class _UserWallPhotoPreviewState implements UserWallPhotoPreviewState {
   CubitStatus get sharePhotoStatus;
   @override
   @JsonKey(ignore: true)
-  _$$_UserWallPhotoPreviewStateCopyWith<_$_UserWallPhotoPreviewState>
+  _$$UserWallPhotoPreviewStateImplCopyWith<_$UserWallPhotoPreviewStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

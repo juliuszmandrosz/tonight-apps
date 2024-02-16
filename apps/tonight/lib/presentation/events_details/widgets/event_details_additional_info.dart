@@ -18,7 +18,7 @@ class EventDetailsAdditionalInfo extends StatelessWidget {
     final socialMediaIcons = event.urlLinks.entries
         .where(
           (element) =>
-              eventSocialMedia.containsKey(element.key) &&
+              socialMediaMap.containsKey(element.key) &&
               element.value.isNotEmpty,
         )
         .toList();
@@ -49,7 +49,7 @@ class EventDetailsAdditionalInfo extends StatelessWidget {
                 itemBuilder: (context, i) => i >= socialMediaIcons.length
                     ? const SizedBox()
                     : SocialIconWithTitle(
-                        socialMedia: eventSocialMedia[socialMediaIcons[i].key]!,
+                        socialMedia: socialMediaMap[socialMediaIcons[i].key]!,
                         url: socialMediaIcons[i].value,
                       ),
               ),

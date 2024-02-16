@@ -6,8 +6,8 @@ part of 'time_task_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TimeTaskDto _$$_TimeTaskDtoFromJson(Map<String, dynamic> json) =>
-    _$_TimeTaskDto(
+_$TimeTaskDtoImpl _$$TimeTaskDtoImplFromJson(Map<String, dynamic> json) =>
+    _$TimeTaskDtoImpl(
       eventId: json['eventId'] as String,
       eventName: json['eventName'] as String,
       createdAt: const FirebaseTimestampJsonConverter()
@@ -21,7 +21,7 @@ _$_TimeTaskDto _$$_TimeTaskDtoFromJson(Map<String, dynamic> json) =>
       currentUsage: json['currentUsage'] as int,
     );
 
-Map<String, dynamic> _$$_TimeTaskDtoToJson(_$_TimeTaskDto instance) =>
+Map<String, dynamic> _$$TimeTaskDtoImplToJson(_$TimeTaskDtoImpl instance) =>
     <String, dynamic>{
       'eventId': instance.eventId,
       'eventName': instance.eventName,

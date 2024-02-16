@@ -79,20 +79,21 @@ class _$EventParticipantsEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ParticipantsFetchedCopyWith<$Res> {
-  factory _$$_ParticipantsFetchedCopyWith(_$_ParticipantsFetched value,
-          $Res Function(_$_ParticipantsFetched) then) =
-      __$$_ParticipantsFetchedCopyWithImpl<$Res>;
+abstract class _$$ParticipantsFetchedImplCopyWith<$Res> {
+  factory _$$ParticipantsFetchedImplCopyWith(_$ParticipantsFetchedImpl value,
+          $Res Function(_$ParticipantsFetchedImpl) then) =
+      __$$ParticipantsFetchedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String eventId});
 }
 
 /// @nodoc
-class __$$_ParticipantsFetchedCopyWithImpl<$Res>
-    extends _$EventParticipantsEventCopyWithImpl<$Res, _$_ParticipantsFetched>
-    implements _$$_ParticipantsFetchedCopyWith<$Res> {
-  __$$_ParticipantsFetchedCopyWithImpl(_$_ParticipantsFetched _value,
-      $Res Function(_$_ParticipantsFetched) _then)
+class __$$ParticipantsFetchedImplCopyWithImpl<$Res>
+    extends _$EventParticipantsEventCopyWithImpl<$Res,
+        _$ParticipantsFetchedImpl>
+    implements _$$ParticipantsFetchedImplCopyWith<$Res> {
+  __$$ParticipantsFetchedImplCopyWithImpl(_$ParticipantsFetchedImpl _value,
+      $Res Function(_$ParticipantsFetchedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +101,7 @@ class __$$_ParticipantsFetchedCopyWithImpl<$Res>
   $Res call({
     Object? eventId = null,
   }) {
-    return _then(_$_ParticipantsFetched(
+    return _then(_$ParticipantsFetchedImpl(
       null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
@@ -111,8 +112,8 @@ class __$$_ParticipantsFetchedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ParticipantsFetched implements _ParticipantsFetched {
-  const _$_ParticipantsFetched(this.eventId);
+class _$ParticipantsFetchedImpl implements _ParticipantsFetched {
+  const _$ParticipantsFetchedImpl(this.eventId);
 
   @override
   final String eventId;
@@ -123,10 +124,10 @@ class _$_ParticipantsFetched implements _ParticipantsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ParticipantsFetched &&
+            other is _$ParticipantsFetchedImpl &&
             (identical(other.eventId, eventId) || other.eventId == eventId));
   }
 
@@ -136,8 +137,8 @@ class _$_ParticipantsFetched implements _ParticipantsFetched {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ParticipantsFetchedCopyWith<_$_ParticipantsFetched> get copyWith =>
-      __$$_ParticipantsFetchedCopyWithImpl<_$_ParticipantsFetched>(
+  _$$ParticipantsFetchedImplCopyWith<_$ParticipantsFetchedImpl> get copyWith =>
+      __$$ParticipantsFetchedImplCopyWithImpl<_$ParticipantsFetchedImpl>(
           this, _$identity);
 
   @override
@@ -208,37 +209,38 @@ class _$_ParticipantsFetched implements _ParticipantsFetched {
 
 abstract class _ParticipantsFetched implements EventParticipantsEvent {
   const factory _ParticipantsFetched(final String eventId) =
-      _$_ParticipantsFetched;
+      _$ParticipantsFetchedImpl;
 
   String get eventId;
   @JsonKey(ignore: true)
-  _$$_ParticipantsFetchedCopyWith<_$_ParticipantsFetched> get copyWith =>
+  _$$ParticipantsFetchedImplCopyWith<_$ParticipantsFetchedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NextPageParticipantsFetchedCopyWith<$Res> {
-  factory _$$_NextPageParticipantsFetchedCopyWith(
-          _$_NextPageParticipantsFetched value,
-          $Res Function(_$_NextPageParticipantsFetched) then) =
-      __$$_NextPageParticipantsFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPageParticipantsFetchedImplCopyWith<$Res> {
+  factory _$$NextPageParticipantsFetchedImplCopyWith(
+          _$NextPageParticipantsFetchedImpl value,
+          $Res Function(_$NextPageParticipantsFetchedImpl) then) =
+      __$$NextPageParticipantsFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPageParticipantsFetchedCopyWithImpl<$Res>
+class __$$NextPageParticipantsFetchedImplCopyWithImpl<$Res>
     extends _$EventParticipantsEventCopyWithImpl<$Res,
-        _$_NextPageParticipantsFetched>
-    implements _$$_NextPageParticipantsFetchedCopyWith<$Res> {
-  __$$_NextPageParticipantsFetchedCopyWithImpl(
-      _$_NextPageParticipantsFetched _value,
-      $Res Function(_$_NextPageParticipantsFetched) _then)
+        _$NextPageParticipantsFetchedImpl>
+    implements _$$NextPageParticipantsFetchedImplCopyWith<$Res> {
+  __$$NextPageParticipantsFetchedImplCopyWithImpl(
+      _$NextPageParticipantsFetchedImpl _value,
+      $Res Function(_$NextPageParticipantsFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPageParticipantsFetched implements _NextPageParticipantsFetched {
-  const _$_NextPageParticipantsFetched();
+class _$NextPageParticipantsFetchedImpl
+    implements _NextPageParticipantsFetched {
+  const _$NextPageParticipantsFetchedImpl();
 
   @override
   String toString() {
@@ -246,10 +248,10 @@ class _$_NextPageParticipantsFetched implements _NextPageParticipantsFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NextPageParticipantsFetched);
+            other is _$NextPageParticipantsFetchedImpl);
   }
 
   @override
@@ -322,7 +324,8 @@ class _$_NextPageParticipantsFetched implements _NextPageParticipantsFetched {
 }
 
 abstract class _NextPageParticipantsFetched implements EventParticipantsEvent {
-  const factory _NextPageParticipantsFetched() = _$_NextPageParticipantsFetched;
+  const factory _NextPageParticipantsFetched() =
+      _$NextPageParticipantsFetchedImpl;
 }
 
 /// @nodoc
@@ -398,11 +401,12 @@ class _$EventParticipantsStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_EventParticipantsStateCopyWith<$Res>
+abstract class _$$EventParticipantsStateImplCopyWith<$Res>
     implements $EventParticipantsStateCopyWith<$Res> {
-  factory _$$_EventParticipantsStateCopyWith(_$_EventParticipantsState value,
-          $Res Function(_$_EventParticipantsState) then) =
-      __$$_EventParticipantsStateCopyWithImpl<$Res>;
+  factory _$$EventParticipantsStateImplCopyWith(
+          _$EventParticipantsStateImpl value,
+          $Res Function(_$EventParticipantsStateImpl) then) =
+      __$$EventParticipantsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -414,12 +418,13 @@ abstract class _$$_EventParticipantsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EventParticipantsStateCopyWithImpl<$Res>
+class __$$EventParticipantsStateImplCopyWithImpl<$Res>
     extends _$EventParticipantsStateCopyWithImpl<$Res,
-        _$_EventParticipantsState>
-    implements _$$_EventParticipantsStateCopyWith<$Res> {
-  __$$_EventParticipantsStateCopyWithImpl(_$_EventParticipantsState _value,
-      $Res Function(_$_EventParticipantsState) _then)
+        _$EventParticipantsStateImpl>
+    implements _$$EventParticipantsStateImplCopyWith<$Res> {
+  __$$EventParticipantsStateImplCopyWithImpl(
+      _$EventParticipantsStateImpl _value,
+      $Res Function(_$EventParticipantsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -431,7 +436,7 @@ class __$$_EventParticipantsStateCopyWithImpl<$Res>
     Object? nextPageStatus = null,
     Object? eventId = null,
   }) {
-    return _then(_$_EventParticipantsState(
+    return _then(_$EventParticipantsStateImpl(
       participants: null == participants
           ? _value._participants
           : participants // ignore: cast_nullable_to_non_nullable
@@ -458,8 +463,8 @@ class __$$_EventParticipantsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventParticipantsState implements _EventParticipantsState {
-  const _$_EventParticipantsState(
+class _$EventParticipantsStateImpl implements _EventParticipantsState {
+  const _$EventParticipantsStateImpl(
       {required final List<EventParticipant> participants,
       required this.hasReachedMax,
       required this.fetchParticipantsStatus,
@@ -490,10 +495,10 @@ class _$_EventParticipantsState implements _EventParticipantsState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventParticipantsState &&
+            other is _$EventParticipantsStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._participants, _participants) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
@@ -518,9 +523,9 @@ class _$_EventParticipantsState implements _EventParticipantsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventParticipantsStateCopyWith<_$_EventParticipantsState> get copyWith =>
-      __$$_EventParticipantsStateCopyWithImpl<_$_EventParticipantsState>(
-          this, _$identity);
+  _$$EventParticipantsStateImplCopyWith<_$EventParticipantsStateImpl>
+      get copyWith => __$$EventParticipantsStateImplCopyWithImpl<
+          _$EventParticipantsStateImpl>(this, _$identity);
 }
 
 abstract class _EventParticipantsState implements EventParticipantsState {
@@ -529,7 +534,7 @@ abstract class _EventParticipantsState implements EventParticipantsState {
       required final bool hasReachedMax,
       required final CubitStatus fetchParticipantsStatus,
       required final CubitStatus nextPageStatus,
-      required final Option<String> eventId}) = _$_EventParticipantsState;
+      required final Option<String> eventId}) = _$EventParticipantsStateImpl;
 
   @override
   List<EventParticipant> get participants;
@@ -543,6 +548,6 @@ abstract class _EventParticipantsState implements EventParticipantsState {
   Option<String> get eventId;
   @override
   @JsonKey(ignore: true)
-  _$$_EventParticipantsStateCopyWith<_$_EventParticipantsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EventParticipantsStateImplCopyWith<_$EventParticipantsStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

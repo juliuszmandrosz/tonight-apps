@@ -64,22 +64,22 @@ class _$EventDatePickerStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_EventDatePickerStateCopyWith<$Res>
+abstract class _$$EventDatePickerStateImplCopyWith<$Res>
     implements $EventDatePickerStateCopyWith<$Res> {
-  factory _$$_EventDatePickerStateCopyWith(_$_EventDatePickerState value,
-          $Res Function(_$_EventDatePickerState) then) =
-      __$$_EventDatePickerStateCopyWithImpl<$Res>;
+  factory _$$EventDatePickerStateImplCopyWith(_$EventDatePickerStateImpl value,
+          $Res Function(_$EventDatePickerStateImpl) then) =
+      __$$EventDatePickerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DateRangeFilter filter, bool isDateFilterApplied});
 }
 
 /// @nodoc
-class __$$_EventDatePickerStateCopyWithImpl<$Res>
-    extends _$EventDatePickerStateCopyWithImpl<$Res, _$_EventDatePickerState>
-    implements _$$_EventDatePickerStateCopyWith<$Res> {
-  __$$_EventDatePickerStateCopyWithImpl(_$_EventDatePickerState _value,
-      $Res Function(_$_EventDatePickerState) _then)
+class __$$EventDatePickerStateImplCopyWithImpl<$Res>
+    extends _$EventDatePickerStateCopyWithImpl<$Res, _$EventDatePickerStateImpl>
+    implements _$$EventDatePickerStateImplCopyWith<$Res> {
+  __$$EventDatePickerStateImplCopyWithImpl(_$EventDatePickerStateImpl _value,
+      $Res Function(_$EventDatePickerStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -88,7 +88,7 @@ class __$$_EventDatePickerStateCopyWithImpl<$Res>
     Object? filter = null,
     Object? isDateFilterApplied = null,
   }) {
-    return _then(_$_EventDatePickerState(
+    return _then(_$EventDatePickerStateImpl(
       filter: null == filter
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
@@ -103,8 +103,8 @@ class __$$_EventDatePickerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventDatePickerState implements _EventDatePickerState {
-  const _$_EventDatePickerState(
+class _$EventDatePickerStateImpl implements _EventDatePickerState {
+  const _$EventDatePickerStateImpl(
       {required this.filter, required this.isDateFilterApplied});
 
   @override
@@ -118,10 +118,10 @@ class _$_EventDatePickerState implements _EventDatePickerState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventDatePickerState &&
+            other is _$EventDatePickerStateImpl &&
             (identical(other.filter, filter) || other.filter == filter) &&
             (identical(other.isDateFilterApplied, isDateFilterApplied) ||
                 other.isDateFilterApplied == isDateFilterApplied));
@@ -133,15 +133,16 @@ class _$_EventDatePickerState implements _EventDatePickerState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventDatePickerStateCopyWith<_$_EventDatePickerState> get copyWith =>
-      __$$_EventDatePickerStateCopyWithImpl<_$_EventDatePickerState>(
-          this, _$identity);
+  _$$EventDatePickerStateImplCopyWith<_$EventDatePickerStateImpl>
+      get copyWith =>
+          __$$EventDatePickerStateImplCopyWithImpl<_$EventDatePickerStateImpl>(
+              this, _$identity);
 }
 
 abstract class _EventDatePickerState implements EventDatePickerState {
   const factory _EventDatePickerState(
       {required final DateRangeFilter filter,
-      required final bool isDateFilterApplied}) = _$_EventDatePickerState;
+      required final bool isDateFilterApplied}) = _$EventDatePickerStateImpl;
 
   @override
   DateRangeFilter get filter;
@@ -149,6 +150,6 @@ abstract class _EventDatePickerState implements EventDatePickerState {
   bool get isDateFilterApplied;
   @override
   @JsonKey(ignore: true)
-  _$$_EventDatePickerStateCopyWith<_$_EventDatePickerState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EventDatePickerStateImplCopyWith<_$EventDatePickerStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

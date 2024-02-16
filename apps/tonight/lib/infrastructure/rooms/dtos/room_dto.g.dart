@@ -6,7 +6,8 @@ part of 'room_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_RoomDto _$$_RoomDtoFromJson(Map<String, dynamic> json) => _$_RoomDto(
+_$RoomDtoImpl _$$RoomDtoImplFromJson(Map<String, dynamic> json) =>
+    _$RoomDtoImpl(
       roomName: json['roomName'] as String,
       roomPhotoUrl: json['roomPhotoUrl'] as String,
       lastMessageId: json['lastMessageId'] as String?,
@@ -23,7 +24,7 @@ _$_RoomDto _$$_RoomDtoFromJson(Map<String, dynamic> json) => _$_RoomDto(
           const [],
     );
 
-Map<String, dynamic> _$$_RoomDtoToJson(_$_RoomDto instance) =>
+Map<String, dynamic> _$$RoomDtoImplToJson(_$RoomDtoImpl instance) =>
     <String, dynamic>{
       'roomName': instance.roomName,
       'roomPhotoUrl': instance.roomPhotoUrl,

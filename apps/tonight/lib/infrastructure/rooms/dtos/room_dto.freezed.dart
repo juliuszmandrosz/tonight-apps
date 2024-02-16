@@ -126,10 +126,10 @@ class _$RoomDtoCopyWithImpl<$Res, $Val extends RoomDto>
 }
 
 /// @nodoc
-abstract class _$$_RoomDtoCopyWith<$Res> implements $RoomDtoCopyWith<$Res> {
-  factory _$$_RoomDtoCopyWith(
-          _$_RoomDto value, $Res Function(_$_RoomDto) then) =
-      __$$_RoomDtoCopyWithImpl<$Res>;
+abstract class _$$RoomDtoImplCopyWith<$Res> implements $RoomDtoCopyWith<$Res> {
+  factory _$$RoomDtoImplCopyWith(
+          _$RoomDtoImpl value, $Res Function(_$RoomDtoImpl) then) =
+      __$$RoomDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -146,10 +146,11 @@ abstract class _$$_RoomDtoCopyWith<$Res> implements $RoomDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_RoomDtoCopyWithImpl<$Res>
-    extends _$RoomDtoCopyWithImpl<$Res, _$_RoomDto>
-    implements _$$_RoomDtoCopyWith<$Res> {
-  __$$_RoomDtoCopyWithImpl(_$_RoomDto _value, $Res Function(_$_RoomDto) _then)
+class __$$RoomDtoImplCopyWithImpl<$Res>
+    extends _$RoomDtoCopyWithImpl<$Res, _$RoomDtoImpl>
+    implements _$$RoomDtoImplCopyWith<$Res> {
+  __$$RoomDtoImplCopyWithImpl(
+      _$RoomDtoImpl _value, $Res Function(_$RoomDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -166,7 +167,7 @@ class __$$_RoomDtoCopyWithImpl<$Res>
     Object? isLastMessageJoinedInfo = null,
     Object? participantIds = null,
   }) {
-    return _then(_$_RoomDto(
+    return _then(_$RoomDtoImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -214,8 +215,8 @@ class __$$_RoomDtoCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable()
-class _$_RoomDto extends _RoomDto {
-  const _$_RoomDto(
+class _$RoomDtoImpl extends _RoomDto {
+  const _$RoomDtoImpl(
       {@JsonKey(includeToJson: false, includeFromJson: false) this.id,
       required this.roomName,
       required this.roomPhotoUrl,
@@ -229,8 +230,8 @@ class _$_RoomDto extends _RoomDto {
       : _participantIds = participantIds,
         super._();
 
-  factory _$_RoomDto.fromJson(Map<String, dynamic> json) =>
-      _$$_RoomDtoFromJson(json);
+  factory _$RoomDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RoomDtoImplFromJson(json);
 
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
@@ -269,10 +270,10 @@ class _$_RoomDto extends _RoomDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RoomDto &&
+            other is _$RoomDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.roomName, roomName) ||
                 other.roomName == roomName) &&
@@ -313,12 +314,12 @@ class _$_RoomDto extends _RoomDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RoomDtoCopyWith<_$_RoomDto> get copyWith =>
-      __$$_RoomDtoCopyWithImpl<_$_RoomDto>(this, _$identity);
+  _$$RoomDtoImplCopyWith<_$RoomDtoImpl> get copyWith =>
+      __$$RoomDtoImplCopyWithImpl<_$RoomDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RoomDtoToJson(
+    return _$$RoomDtoImplToJson(
       this,
     );
   }
@@ -336,10 +337,10 @@ abstract class _RoomDto extends RoomDto {
       final DateTime? lastMessageCreatedAt,
       final bool isLastMessageLeftInfo,
       final bool isLastMessageJoinedInfo,
-      final List<String> participantIds}) = _$_RoomDto;
+      final List<String> participantIds}) = _$RoomDtoImpl;
   const _RoomDto._() : super._();
 
-  factory _RoomDto.fromJson(Map<String, dynamic> json) = _$_RoomDto.fromJson;
+  factory _RoomDto.fromJson(Map<String, dynamic> json) = _$RoomDtoImpl.fromJson;
 
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
@@ -365,6 +366,6 @@ abstract class _RoomDto extends RoomDto {
   List<String> get participantIds;
   @override
   @JsonKey(ignore: true)
-  _$$_RoomDtoCopyWith<_$_RoomDto> get copyWith =>
+  _$$RoomDtoImplCopyWith<_$RoomDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

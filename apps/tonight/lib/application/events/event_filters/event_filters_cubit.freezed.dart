@@ -97,11 +97,11 @@ class _$EventFiltersStateCopyWithImpl<$Res, $Val extends EventFiltersState>
 }
 
 /// @nodoc
-abstract class _$$_EventFiltersStateCopyWith<$Res>
+abstract class _$$EventFiltersStateImplCopyWith<$Res>
     implements $EventFiltersStateCopyWith<$Res> {
-  factory _$$_EventFiltersStateCopyWith(_$_EventFiltersState value,
-          $Res Function(_$_EventFiltersState) then) =
-      __$$_EventFiltersStateCopyWithImpl<$Res>;
+  factory _$$EventFiltersStateImplCopyWith(_$EventFiltersStateImpl value,
+          $Res Function(_$EventFiltersStateImpl) then) =
+      __$$EventFiltersStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -116,11 +116,11 @@ abstract class _$$_EventFiltersStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EventFiltersStateCopyWithImpl<$Res>
-    extends _$EventFiltersStateCopyWithImpl<$Res, _$_EventFiltersState>
-    implements _$$_EventFiltersStateCopyWith<$Res> {
-  __$$_EventFiltersStateCopyWithImpl(
-      _$_EventFiltersState _value, $Res Function(_$_EventFiltersState) _then)
+class __$$EventFiltersStateImplCopyWithImpl<$Res>
+    extends _$EventFiltersStateCopyWithImpl<$Res, _$EventFiltersStateImpl>
+    implements _$$EventFiltersStateImplCopyWith<$Res> {
+  __$$EventFiltersStateImplCopyWithImpl(_$EventFiltersStateImpl _value,
+      $Res Function(_$EventFiltersStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -132,7 +132,7 @@ class __$$_EventFiltersStateCopyWithImpl<$Res>
     Object? isSubmitting = null,
     Object? pageType = null,
   }) {
-    return _then(_$_EventFiltersState(
+    return _then(_$EventFiltersStateImpl(
       filters: null == filters
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
@@ -159,8 +159,8 @@ class __$$_EventFiltersStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventFiltersState extends _EventFiltersState {
-  _$_EventFiltersState(
+class _$EventFiltersStateImpl extends _EventFiltersState {
+  _$EventFiltersStateImpl(
       {required this.filters,
       required this.snackbarMessage,
       required final Map<MenuEventFilter, IFilter> appliedFilters,
@@ -192,10 +192,10 @@ class _$_EventFiltersState extends _EventFiltersState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventFiltersState &&
+            other is _$EventFiltersStateImpl &&
             (identical(other.filters, filters) || other.filters == filters) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
                 other.snackbarMessage == snackbarMessage) &&
@@ -219,8 +219,8 @@ class _$_EventFiltersState extends _EventFiltersState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventFiltersStateCopyWith<_$_EventFiltersState> get copyWith =>
-      __$$_EventFiltersStateCopyWithImpl<_$_EventFiltersState>(
+  _$$EventFiltersStateImplCopyWith<_$EventFiltersStateImpl> get copyWith =>
+      __$$EventFiltersStateImplCopyWithImpl<_$EventFiltersStateImpl>(
           this, _$identity);
 }
 
@@ -230,7 +230,7 @@ abstract class _EventFiltersState extends EventFiltersState {
       required final Option<String> snackbarMessage,
       required final Map<MenuEventFilter, IFilter> appliedFilters,
       required final bool isSubmitting,
-      required final EventFiltersPageType pageType}) = _$_EventFiltersState;
+      required final EventFiltersPageType pageType}) = _$EventFiltersStateImpl;
   _EventFiltersState._() : super._();
 
   @override
@@ -245,6 +245,6 @@ abstract class _EventFiltersState extends EventFiltersState {
   EventFiltersPageType get pageType;
   @override
   @JsonKey(ignore: true)
-  _$$_EventFiltersStateCopyWith<_$_EventFiltersState> get copyWith =>
+  _$$EventFiltersStateImplCopyWith<_$EventFiltersStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

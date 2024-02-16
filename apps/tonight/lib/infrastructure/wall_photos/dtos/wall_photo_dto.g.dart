@@ -6,8 +6,8 @@ part of 'wall_photo_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_WallPhotoDto _$$_WallPhotoDtoFromJson(Map<String, dynamic> json) =>
-    _$_WallPhotoDto(
+_$WallPhotoDtoImpl _$$WallPhotoDtoImplFromJson(Map<String, dynamic> json) =>
+    _$WallPhotoDtoImpl(
       photoUrl: json['photoUrl'] as String,
       venueId: json['venueId'] as String,
       venueName: json['venueName'] as String,
@@ -29,7 +29,7 @@ _$_WallPhotoDto _$$_WallPhotoDtoFromJson(Map<String, dynamic> json) =>
       isRewardAcquired: json['isRewardAcquired'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$_WallPhotoDtoToJson(_$_WallPhotoDto instance) =>
+Map<String, dynamic> _$$WallPhotoDtoImplToJson(_$WallPhotoDtoImpl instance) =>
     <String, dynamic>{
       'photoUrl': instance.photoUrl,
       'venueId': instance.venueId,

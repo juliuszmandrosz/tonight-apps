@@ -6,9 +6,9 @@ part of 'user_marketplace_discount_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserMarketplaceDiscountDto _$$_UserMarketplaceDiscountDtoFromJson(
+_$UserMarketplaceDiscountDtoImpl _$$UserMarketplaceDiscountDtoImplFromJson(
         Map<String, dynamic> json) =>
-    _$_UserMarketplaceDiscountDto(
+    _$UserMarketplaceDiscountDtoImpl(
       name: json['name'] as String,
       description: json['description'] as String,
       imageUrl: json['imageUrl'] as String,
@@ -18,8 +18,8 @@ _$_UserMarketplaceDiscountDto _$$_UserMarketplaceDiscountDtoFromJson(
           .fromJson(json['redeemedAt'] as Timestamp),
     );
 
-Map<String, dynamic> _$$_UserMarketplaceDiscountDtoToJson(
-        _$_UserMarketplaceDiscountDto instance) =>
+Map<String, dynamic> _$$UserMarketplaceDiscountDtoImplToJson(
+        _$UserMarketplaceDiscountDtoImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,

@@ -113,10 +113,10 @@ class _$VoucherCopyWithImpl<$Res, $Val extends Voucher>
 }
 
 /// @nodoc
-abstract class _$$_VoucherCopyWith<$Res> implements $VoucherCopyWith<$Res> {
-  factory _$$_VoucherCopyWith(
-          _$_Voucher value, $Res Function(_$_Voucher) then) =
-      __$$_VoucherCopyWithImpl<$Res>;
+abstract class _$$VoucherImplCopyWith<$Res> implements $VoucherCopyWith<$Res> {
+  factory _$$VoucherImplCopyWith(
+          _$VoucherImpl value, $Res Function(_$VoucherImpl) then) =
+      __$$VoucherImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -132,10 +132,11 @@ abstract class _$$_VoucherCopyWith<$Res> implements $VoucherCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_VoucherCopyWithImpl<$Res>
-    extends _$VoucherCopyWithImpl<$Res, _$_Voucher>
-    implements _$$_VoucherCopyWith<$Res> {
-  __$$_VoucherCopyWithImpl(_$_Voucher _value, $Res Function(_$_Voucher) _then)
+class __$$VoucherImplCopyWithImpl<$Res>
+    extends _$VoucherCopyWithImpl<$Res, _$VoucherImpl>
+    implements _$$VoucherImplCopyWith<$Res> {
+  __$$VoucherImplCopyWithImpl(
+      _$VoucherImpl _value, $Res Function(_$VoucherImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -151,7 +152,7 @@ class __$$_VoucherCopyWithImpl<$Res>
     Object? isActivated = null,
     Object? isExpired = null,
   }) {
-    return _then(_$_Voucher(
+    return _then(_$VoucherImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -194,8 +195,8 @@ class __$$_VoucherCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Voucher extends _Voucher {
-  const _$_Voucher(
+class _$VoucherImpl extends _Voucher {
+  const _$VoucherImpl(
       {required this.id,
       required this.voucherName,
       required this.venueName,
@@ -234,10 +235,10 @@ class _$_Voucher extends _Voucher {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Voucher &&
+            other is _$VoucherImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.voucherName, voucherName) ||
                 other.voucherName == voucherName) &&
@@ -274,8 +275,8 @@ class _$_Voucher extends _Voucher {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VoucherCopyWith<_$_Voucher> get copyWith =>
-      __$$_VoucherCopyWithImpl<_$_Voucher>(this, _$identity);
+  _$$VoucherImplCopyWith<_$VoucherImpl> get copyWith =>
+      __$$VoucherImplCopyWithImpl<_$VoucherImpl>(this, _$identity);
 }
 
 abstract class _Voucher extends Voucher {
@@ -289,7 +290,7 @@ abstract class _Voucher extends Voucher {
           userTonightVoucherDetails,
       required final DateTime createdAt,
       final bool isActivated,
-      final bool isExpired}) = _$_Voucher;
+      final bool isExpired}) = _$VoucherImpl;
   const _Voucher._() : super._();
 
   @override
@@ -312,6 +313,6 @@ abstract class _Voucher extends Voucher {
   bool get isExpired;
   @override
   @JsonKey(ignore: true)
-  _$$_VoucherCopyWith<_$_Voucher> get copyWith =>
+  _$$VoucherImplCopyWith<_$VoucherImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

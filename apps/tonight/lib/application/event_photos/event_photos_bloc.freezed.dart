@@ -94,20 +94,20 @@ class _$EventPhotosEventCopyWithImpl<$Res, $Val extends EventPhotosEvent>
 }
 
 /// @nodoc
-abstract class _$$_PhotosFetchedCopyWith<$Res> {
-  factory _$$_PhotosFetchedCopyWith(
-          _$_PhotosFetched value, $Res Function(_$_PhotosFetched) then) =
-      __$$_PhotosFetchedCopyWithImpl<$Res>;
+abstract class _$$PhotosFetchedImplCopyWith<$Res> {
+  factory _$$PhotosFetchedImplCopyWith(
+          _$PhotosFetchedImpl value, $Res Function(_$PhotosFetchedImpl) then) =
+      __$$PhotosFetchedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String eventId, Event? event});
 }
 
 /// @nodoc
-class __$$_PhotosFetchedCopyWithImpl<$Res>
-    extends _$EventPhotosEventCopyWithImpl<$Res, _$_PhotosFetched>
-    implements _$$_PhotosFetchedCopyWith<$Res> {
-  __$$_PhotosFetchedCopyWithImpl(
-      _$_PhotosFetched _value, $Res Function(_$_PhotosFetched) _then)
+class __$$PhotosFetchedImplCopyWithImpl<$Res>
+    extends _$EventPhotosEventCopyWithImpl<$Res, _$PhotosFetchedImpl>
+    implements _$$PhotosFetchedImplCopyWith<$Res> {
+  __$$PhotosFetchedImplCopyWithImpl(
+      _$PhotosFetchedImpl _value, $Res Function(_$PhotosFetchedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -116,7 +116,7 @@ class __$$_PhotosFetchedCopyWithImpl<$Res>
     Object? eventId = null,
     Object? event = freezed,
   }) {
-    return _then(_$_PhotosFetched(
+    return _then(_$PhotosFetchedImpl(
       eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
@@ -131,8 +131,8 @@ class __$$_PhotosFetchedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PhotosFetched implements _PhotosFetched {
-  const _$_PhotosFetched({required this.eventId, this.event});
+class _$PhotosFetchedImpl implements _PhotosFetched {
+  const _$PhotosFetchedImpl({required this.eventId, this.event});
 
   @override
   final String eventId;
@@ -145,10 +145,10 @@ class _$_PhotosFetched implements _PhotosFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PhotosFetched &&
+            other is _$PhotosFetchedImpl &&
             (identical(other.eventId, eventId) || other.eventId == eventId) &&
             (identical(other.event, event) || other.event == event));
   }
@@ -159,8 +159,8 @@ class _$_PhotosFetched implements _PhotosFetched {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PhotosFetchedCopyWith<_$_PhotosFetched> get copyWith =>
-      __$$_PhotosFetchedCopyWithImpl<_$_PhotosFetched>(this, _$identity);
+  _$$PhotosFetchedImplCopyWith<_$PhotosFetchedImpl> get copyWith =>
+      __$$PhotosFetchedImplCopyWithImpl<_$PhotosFetchedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -246,35 +246,36 @@ class _$_PhotosFetched implements _PhotosFetched {
 
 abstract class _PhotosFetched implements EventPhotosEvent {
   const factory _PhotosFetched(
-      {required final String eventId, final Event? event}) = _$_PhotosFetched;
+      {required final String eventId,
+      final Event? event}) = _$PhotosFetchedImpl;
 
   String get eventId;
   Event? get event;
   @JsonKey(ignore: true)
-  _$$_PhotosFetchedCopyWith<_$_PhotosFetched> get copyWith =>
+  _$$PhotosFetchedImplCopyWith<_$PhotosFetchedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PhotosRefreshedCopyWith<$Res> {
-  factory _$$_PhotosRefreshedCopyWith(
-          _$_PhotosRefreshed value, $Res Function(_$_PhotosRefreshed) then) =
-      __$$_PhotosRefreshedCopyWithImpl<$Res>;
+abstract class _$$PhotosRefreshedImplCopyWith<$Res> {
+  factory _$$PhotosRefreshedImplCopyWith(_$PhotosRefreshedImpl value,
+          $Res Function(_$PhotosRefreshedImpl) then) =
+      __$$PhotosRefreshedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PhotosRefreshedCopyWithImpl<$Res>
-    extends _$EventPhotosEventCopyWithImpl<$Res, _$_PhotosRefreshed>
-    implements _$$_PhotosRefreshedCopyWith<$Res> {
-  __$$_PhotosRefreshedCopyWithImpl(
-      _$_PhotosRefreshed _value, $Res Function(_$_PhotosRefreshed) _then)
+class __$$PhotosRefreshedImplCopyWithImpl<$Res>
+    extends _$EventPhotosEventCopyWithImpl<$Res, _$PhotosRefreshedImpl>
+    implements _$$PhotosRefreshedImplCopyWith<$Res> {
+  __$$PhotosRefreshedImplCopyWithImpl(
+      _$PhotosRefreshedImpl _value, $Res Function(_$PhotosRefreshedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_PhotosRefreshed implements _PhotosRefreshed {
-  const _$_PhotosRefreshed();
+class _$PhotosRefreshedImpl implements _PhotosRefreshed {
+  const _$PhotosRefreshedImpl();
 
   @override
   String toString() {
@@ -282,9 +283,9 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PhotosRefreshed);
+        (other.runtimeType == runtimeType && other is _$PhotosRefreshedImpl);
   }
 
   @override
@@ -373,29 +374,30 @@ class _$_PhotosRefreshed implements _PhotosRefreshed {
 }
 
 abstract class _PhotosRefreshed implements EventPhotosEvent {
-  const factory _PhotosRefreshed() = _$_PhotosRefreshed;
+  const factory _PhotosRefreshed() = _$PhotosRefreshedImpl;
 }
 
 /// @nodoc
-abstract class _$$_NextPagePhotosFetchedCopyWith<$Res> {
-  factory _$$_NextPagePhotosFetchedCopyWith(_$_NextPagePhotosFetched value,
-          $Res Function(_$_NextPagePhotosFetched) then) =
-      __$$_NextPagePhotosFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPagePhotosFetchedImplCopyWith<$Res> {
+  factory _$$NextPagePhotosFetchedImplCopyWith(
+          _$NextPagePhotosFetchedImpl value,
+          $Res Function(_$NextPagePhotosFetchedImpl) then) =
+      __$$NextPagePhotosFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPagePhotosFetchedCopyWithImpl<$Res>
-    extends _$EventPhotosEventCopyWithImpl<$Res, _$_NextPagePhotosFetched>
-    implements _$$_NextPagePhotosFetchedCopyWith<$Res> {
-  __$$_NextPagePhotosFetchedCopyWithImpl(_$_NextPagePhotosFetched _value,
-      $Res Function(_$_NextPagePhotosFetched) _then)
+class __$$NextPagePhotosFetchedImplCopyWithImpl<$Res>
+    extends _$EventPhotosEventCopyWithImpl<$Res, _$NextPagePhotosFetchedImpl>
+    implements _$$NextPagePhotosFetchedImplCopyWith<$Res> {
+  __$$NextPagePhotosFetchedImplCopyWithImpl(_$NextPagePhotosFetchedImpl _value,
+      $Res Function(_$NextPagePhotosFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
-  const _$_NextPagePhotosFetched();
+class _$NextPagePhotosFetchedImpl implements _NextPagePhotosFetched {
+  const _$NextPagePhotosFetchedImpl();
 
   @override
   String toString() {
@@ -403,9 +405,10 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NextPagePhotosFetched);
+        (other.runtimeType == runtimeType &&
+            other is _$NextPagePhotosFetchedImpl);
   }
 
   @override
@@ -494,24 +497,24 @@ class _$_NextPagePhotosFetched implements _NextPagePhotosFetched {
 }
 
 abstract class _NextPagePhotosFetched implements EventPhotosEvent {
-  const factory _NextPagePhotosFetched() = _$_NextPagePhotosFetched;
+  const factory _NextPagePhotosFetched() = _$NextPagePhotosFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_PhotoAddedCopyWith<$Res> {
-  factory _$$_PhotoAddedCopyWith(
-          _$_PhotoAdded value, $Res Function(_$_PhotoAdded) then) =
-      __$$_PhotoAddedCopyWithImpl<$Res>;
+abstract class _$$PhotoAddedImplCopyWith<$Res> {
+  factory _$$PhotoAddedImplCopyWith(
+          _$PhotoAddedImpl value, $Res Function(_$PhotoAddedImpl) then) =
+      __$$PhotoAddedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({WallPhoto photo});
 }
 
 /// @nodoc
-class __$$_PhotoAddedCopyWithImpl<$Res>
-    extends _$EventPhotosEventCopyWithImpl<$Res, _$_PhotoAdded>
-    implements _$$_PhotoAddedCopyWith<$Res> {
-  __$$_PhotoAddedCopyWithImpl(
-      _$_PhotoAdded _value, $Res Function(_$_PhotoAdded) _then)
+class __$$PhotoAddedImplCopyWithImpl<$Res>
+    extends _$EventPhotosEventCopyWithImpl<$Res, _$PhotoAddedImpl>
+    implements _$$PhotoAddedImplCopyWith<$Res> {
+  __$$PhotoAddedImplCopyWithImpl(
+      _$PhotoAddedImpl _value, $Res Function(_$PhotoAddedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -519,7 +522,7 @@ class __$$_PhotoAddedCopyWithImpl<$Res>
   $Res call({
     Object? photo = null,
   }) {
-    return _then(_$_PhotoAdded(
+    return _then(_$PhotoAddedImpl(
       null == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
@@ -530,8 +533,8 @@ class __$$_PhotoAddedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PhotoAdded implements _PhotoAdded {
-  const _$_PhotoAdded(this.photo);
+class _$PhotoAddedImpl implements _PhotoAdded {
+  const _$PhotoAddedImpl(this.photo);
 
   @override
   final WallPhoto photo;
@@ -542,10 +545,10 @@ class _$_PhotoAdded implements _PhotoAdded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PhotoAdded &&
+            other is _$PhotoAddedImpl &&
             (identical(other.photo, photo) || other.photo == photo));
   }
 
@@ -555,8 +558,8 @@ class _$_PhotoAdded implements _PhotoAdded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PhotoAddedCopyWith<_$_PhotoAdded> get copyWith =>
-      __$$_PhotoAddedCopyWithImpl<_$_PhotoAdded>(this, _$identity);
+  _$$PhotoAddedImplCopyWith<_$PhotoAddedImpl> get copyWith =>
+      __$$PhotoAddedImplCopyWithImpl<_$PhotoAddedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -641,29 +644,29 @@ class _$_PhotoAdded implements _PhotoAdded {
 }
 
 abstract class _PhotoAdded implements EventPhotosEvent {
-  const factory _PhotoAdded(final WallPhoto photo) = _$_PhotoAdded;
+  const factory _PhotoAdded(final WallPhoto photo) = _$PhotoAddedImpl;
 
   WallPhoto get photo;
   @JsonKey(ignore: true)
-  _$$_PhotoAddedCopyWith<_$_PhotoAdded> get copyWith =>
+  _$$PhotoAddedImplCopyWith<_$PhotoAddedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PhotoReportedCopyWith<$Res> {
-  factory _$$_PhotoReportedCopyWith(
-          _$_PhotoReported value, $Res Function(_$_PhotoReported) then) =
-      __$$_PhotoReportedCopyWithImpl<$Res>;
+abstract class _$$PhotoReportedImplCopyWith<$Res> {
+  factory _$$PhotoReportedImplCopyWith(
+          _$PhotoReportedImpl value, $Res Function(_$PhotoReportedImpl) then) =
+      __$$PhotoReportedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({WallPhoto photo});
 }
 
 /// @nodoc
-class __$$_PhotoReportedCopyWithImpl<$Res>
-    extends _$EventPhotosEventCopyWithImpl<$Res, _$_PhotoReported>
-    implements _$$_PhotoReportedCopyWith<$Res> {
-  __$$_PhotoReportedCopyWithImpl(
-      _$_PhotoReported _value, $Res Function(_$_PhotoReported) _then)
+class __$$PhotoReportedImplCopyWithImpl<$Res>
+    extends _$EventPhotosEventCopyWithImpl<$Res, _$PhotoReportedImpl>
+    implements _$$PhotoReportedImplCopyWith<$Res> {
+  __$$PhotoReportedImplCopyWithImpl(
+      _$PhotoReportedImpl _value, $Res Function(_$PhotoReportedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -671,7 +674,7 @@ class __$$_PhotoReportedCopyWithImpl<$Res>
   $Res call({
     Object? photo = null,
   }) {
-    return _then(_$_PhotoReported(
+    return _then(_$PhotoReportedImpl(
       null == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
@@ -682,8 +685,8 @@ class __$$_PhotoReportedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PhotoReported implements _PhotoReported {
-  const _$_PhotoReported(this.photo);
+class _$PhotoReportedImpl implements _PhotoReported {
+  const _$PhotoReportedImpl(this.photo);
 
   @override
   final WallPhoto photo;
@@ -694,10 +697,10 @@ class _$_PhotoReported implements _PhotoReported {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PhotoReported &&
+            other is _$PhotoReportedImpl &&
             (identical(other.photo, photo) || other.photo == photo));
   }
 
@@ -707,8 +710,8 @@ class _$_PhotoReported implements _PhotoReported {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PhotoReportedCopyWith<_$_PhotoReported> get copyWith =>
-      __$$_PhotoReportedCopyWithImpl<_$_PhotoReported>(this, _$identity);
+  _$$PhotoReportedImplCopyWith<_$PhotoReportedImpl> get copyWith =>
+      __$$PhotoReportedImplCopyWithImpl<_$PhotoReportedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -793,11 +796,11 @@ class _$_PhotoReported implements _PhotoReported {
 }
 
 abstract class _PhotoReported implements EventPhotosEvent {
-  const factory _PhotoReported(final WallPhoto photo) = _$_PhotoReported;
+  const factory _PhotoReported(final WallPhoto photo) = _$PhotoReportedImpl;
 
   WallPhoto get photo;
   @JsonKey(ignore: true)
-  _$$_PhotoReportedCopyWith<_$_PhotoReported> get copyWith =>
+  _$$PhotoReportedImplCopyWith<_$PhotoReportedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -887,11 +890,11 @@ class _$EventPhotosStateCopyWithImpl<$Res, $Val extends EventPhotosState>
 }
 
 /// @nodoc
-abstract class _$$_EventPhotosStateCopyWith<$Res>
+abstract class _$$EventPhotosStateImplCopyWith<$Res>
     implements $EventPhotosStateCopyWith<$Res> {
-  factory _$$_EventPhotosStateCopyWith(
-          _$_EventPhotosState value, $Res Function(_$_EventPhotosState) then) =
-      __$$_EventPhotosStateCopyWithImpl<$Res>;
+  factory _$$EventPhotosStateImplCopyWith(_$EventPhotosStateImpl value,
+          $Res Function(_$EventPhotosStateImpl) then) =
+      __$$EventPhotosStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -905,11 +908,11 @@ abstract class _$$_EventPhotosStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_EventPhotosStateCopyWithImpl<$Res>
-    extends _$EventPhotosStateCopyWithImpl<$Res, _$_EventPhotosState>
-    implements _$$_EventPhotosStateCopyWith<$Res> {
-  __$$_EventPhotosStateCopyWithImpl(
-      _$_EventPhotosState _value, $Res Function(_$_EventPhotosState) _then)
+class __$$EventPhotosStateImplCopyWithImpl<$Res>
+    extends _$EventPhotosStateCopyWithImpl<$Res, _$EventPhotosStateImpl>
+    implements _$$EventPhotosStateImplCopyWith<$Res> {
+  __$$EventPhotosStateImplCopyWithImpl(_$EventPhotosStateImpl _value,
+      $Res Function(_$EventPhotosStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -923,7 +926,7 @@ class __$$_EventPhotosStateCopyWithImpl<$Res>
     Object? reportingPhotoIds = null,
     Object? snackbarMessage = null,
   }) {
-    return _then(_$_EventPhotosState(
+    return _then(_$EventPhotosStateImpl(
       getPhotosStatus: null == getPhotosStatus
           ? _value.getPhotosStatus
           : getPhotosStatus // ignore: cast_nullable_to_non_nullable
@@ -958,8 +961,8 @@ class __$$_EventPhotosStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventPhotosState extends _EventPhotosState {
-  const _$_EventPhotosState(
+class _$EventPhotosStateImpl extends _EventPhotosState {
+  const _$EventPhotosStateImpl(
       {required this.getPhotosStatus,
       required this.nextPageStatus,
       required this.event,
@@ -1005,10 +1008,10 @@ class _$_EventPhotosState extends _EventPhotosState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventPhotosState &&
+            other is _$EventPhotosStateImpl &&
             (identical(other.getPhotosStatus, getPhotosStatus) ||
                 other.getPhotosStatus == getPhotosStatus) &&
             (identical(other.nextPageStatus, nextPageStatus) ||
@@ -1037,8 +1040,9 @@ class _$_EventPhotosState extends _EventPhotosState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventPhotosStateCopyWith<_$_EventPhotosState> get copyWith =>
-      __$$_EventPhotosStateCopyWithImpl<_$_EventPhotosState>(this, _$identity);
+  _$$EventPhotosStateImplCopyWith<_$EventPhotosStateImpl> get copyWith =>
+      __$$EventPhotosStateImplCopyWithImpl<_$EventPhotosStateImpl>(
+          this, _$identity);
 }
 
 abstract class _EventPhotosState extends EventPhotosState {
@@ -1049,7 +1053,7 @@ abstract class _EventPhotosState extends EventPhotosState {
       required final List<WallPhoto> photos,
       required final bool hasReachedMax,
       required final List<String> reportingPhotoIds,
-      required final Option<String> snackbarMessage}) = _$_EventPhotosState;
+      required final Option<String> snackbarMessage}) = _$EventPhotosStateImpl;
   const _EventPhotosState._() : super._();
 
   @override
@@ -1068,6 +1072,6 @@ abstract class _EventPhotosState extends EventPhotosState {
   Option<String> get snackbarMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_EventPhotosStateCopyWith<_$_EventPhotosState> get copyWith =>
+  _$$EventPhotosStateImplCopyWith<_$EventPhotosStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

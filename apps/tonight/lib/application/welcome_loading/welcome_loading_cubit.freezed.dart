@@ -57,22 +57,22 @@ class _$WelcomeLoadingStateCopyWithImpl<$Res, $Val extends WelcomeLoadingState>
 }
 
 /// @nodoc
-abstract class _$$_WelcomeLoadingStateCopyWith<$Res>
+abstract class _$$WelcomeLoadingStateImplCopyWith<$Res>
     implements $WelcomeLoadingStateCopyWith<$Res> {
-  factory _$$_WelcomeLoadingStateCopyWith(_$_WelcomeLoadingState value,
-          $Res Function(_$_WelcomeLoadingState) then) =
-      __$$_WelcomeLoadingStateCopyWithImpl<$Res>;
+  factory _$$WelcomeLoadingStateImplCopyWith(_$WelcomeLoadingStateImpl value,
+          $Res Function(_$WelcomeLoadingStateImpl) then) =
+      __$$WelcomeLoadingStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({CubitStatus status});
 }
 
 /// @nodoc
-class __$$_WelcomeLoadingStateCopyWithImpl<$Res>
-    extends _$WelcomeLoadingStateCopyWithImpl<$Res, _$_WelcomeLoadingState>
-    implements _$$_WelcomeLoadingStateCopyWith<$Res> {
-  __$$_WelcomeLoadingStateCopyWithImpl(_$_WelcomeLoadingState _value,
-      $Res Function(_$_WelcomeLoadingState) _then)
+class __$$WelcomeLoadingStateImplCopyWithImpl<$Res>
+    extends _$WelcomeLoadingStateCopyWithImpl<$Res, _$WelcomeLoadingStateImpl>
+    implements _$$WelcomeLoadingStateImplCopyWith<$Res> {
+  __$$WelcomeLoadingStateImplCopyWithImpl(_$WelcomeLoadingStateImpl _value,
+      $Res Function(_$WelcomeLoadingStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_WelcomeLoadingStateCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
   }) {
-    return _then(_$_WelcomeLoadingState(
+    return _then(_$WelcomeLoadingStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_WelcomeLoadingStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_WelcomeLoadingState extends _WelcomeLoadingState {
-  _$_WelcomeLoadingState({required this.status}) : super._();
+class _$WelcomeLoadingStateImpl extends _WelcomeLoadingState {
+  _$WelcomeLoadingStateImpl({required this.status}) : super._();
 
   @override
   final CubitStatus status;
@@ -103,10 +103,10 @@ class _$_WelcomeLoadingState extends _WelcomeLoadingState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WelcomeLoadingState &&
+            other is _$WelcomeLoadingStateImpl &&
             (identical(other.status, status) || other.status == status));
   }
 
@@ -116,20 +116,20 @@ class _$_WelcomeLoadingState extends _WelcomeLoadingState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WelcomeLoadingStateCopyWith<_$_WelcomeLoadingState> get copyWith =>
-      __$$_WelcomeLoadingStateCopyWithImpl<_$_WelcomeLoadingState>(
+  _$$WelcomeLoadingStateImplCopyWith<_$WelcomeLoadingStateImpl> get copyWith =>
+      __$$WelcomeLoadingStateImplCopyWithImpl<_$WelcomeLoadingStateImpl>(
           this, _$identity);
 }
 
 abstract class _WelcomeLoadingState extends WelcomeLoadingState {
   factory _WelcomeLoadingState({required final CubitStatus status}) =
-      _$_WelcomeLoadingState;
+      _$WelcomeLoadingStateImpl;
   _WelcomeLoadingState._() : super._();
 
   @override
   CubitStatus get status;
   @override
   @JsonKey(ignore: true)
-  _$$_WelcomeLoadingStateCopyWith<_$_WelcomeLoadingState> get copyWith =>
+  _$$WelcomeLoadingStateImplCopyWith<_$WelcomeLoadingStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

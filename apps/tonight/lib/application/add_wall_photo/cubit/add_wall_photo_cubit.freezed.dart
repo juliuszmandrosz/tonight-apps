@@ -180,11 +180,11 @@ class _$AddWallPhotoStateCopyWithImpl<$Res, $Val extends AddWallPhotoState>
 }
 
 /// @nodoc
-abstract class _$$_AddWallPhotoStateCopyWith<$Res>
+abstract class _$$AddWallPhotoStateImplCopyWith<$Res>
     implements $AddWallPhotoStateCopyWith<$Res> {
-  factory _$$_AddWallPhotoStateCopyWith(_$_AddWallPhotoState value,
-          $Res Function(_$_AddWallPhotoState) then) =
-      __$$_AddWallPhotoStateCopyWithImpl<$Res>;
+  factory _$$AddWallPhotoStateImplCopyWith(_$AddWallPhotoStateImpl value,
+          $Res Function(_$AddWallPhotoStateImpl) then) =
+      __$$AddWallPhotoStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -209,11 +209,11 @@ abstract class _$$_AddWallPhotoStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AddWallPhotoStateCopyWithImpl<$Res>
-    extends _$AddWallPhotoStateCopyWithImpl<$Res, _$_AddWallPhotoState>
-    implements _$$_AddWallPhotoStateCopyWith<$Res> {
-  __$$_AddWallPhotoStateCopyWithImpl(
-      _$_AddWallPhotoState _value, $Res Function(_$_AddWallPhotoState) _then)
+class __$$AddWallPhotoStateImplCopyWithImpl<$Res>
+    extends _$AddWallPhotoStateCopyWithImpl<$Res, _$AddWallPhotoStateImpl>
+    implements _$$AddWallPhotoStateImplCopyWith<$Res> {
+  __$$AddWallPhotoStateImplCopyWithImpl(_$AddWallPhotoStateImpl _value,
+      $Res Function(_$AddWallPhotoStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -238,7 +238,7 @@ class __$$_AddWallPhotoStateCopyWithImpl<$Res>
     Object? processPhotoTask = null,
     Object? failure = null,
   }) {
-    return _then(_$_AddWallPhotoState(
+    return _then(_$AddWallPhotoStateImpl(
       photo: null == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
@@ -317,8 +317,8 @@ class __$$_AddWallPhotoStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddWallPhotoState implements _AddWallPhotoState {
-  const _$_AddWallPhotoState(
+class _$AddWallPhotoStateImpl implements _AddWallPhotoState {
+  const _$AddWallPhotoStateImpl(
       {required this.photo,
       required this.isSelfie,
       required final List<WallPhotoVenue> nearestVenues,
@@ -396,10 +396,10 @@ class _$_AddWallPhotoState implements _AddWallPhotoState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddWallPhotoState &&
+            other is _$AddWallPhotoStateImpl &&
             (identical(other.photo, photo) || other.photo == photo) &&
             (identical(other.isSelfie, isSelfie) ||
                 other.isSelfie == isSelfie) &&
@@ -461,8 +461,8 @@ class _$_AddWallPhotoState implements _AddWallPhotoState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddWallPhotoStateCopyWith<_$_AddWallPhotoState> get copyWith =>
-      __$$_AddWallPhotoStateCopyWithImpl<_$_AddWallPhotoState>(
+  _$$AddWallPhotoStateImplCopyWith<_$AddWallPhotoStateImpl> get copyWith =>
+      __$$AddWallPhotoStateImplCopyWithImpl<_$AddWallPhotoStateImpl>(
           this, _$identity);
 }
 
@@ -486,7 +486,7 @@ abstract class _AddWallPhotoState implements AddWallPhotoState {
           required final Option<WallPhoto> result,
           required final Option<Future<Option<Uint8List>>> processPhotoTask,
           required final Option<AddWallPhotoFailure> failure}) =
-      _$_AddWallPhotoState;
+      _$AddWallPhotoStateImpl;
 
   @override
   Option<File> get photo;
@@ -526,6 +526,6 @@ abstract class _AddWallPhotoState implements AddWallPhotoState {
   Option<AddWallPhotoFailure> get failure;
   @override
   @JsonKey(ignore: true)
-  _$$_AddWallPhotoStateCopyWith<_$_AddWallPhotoState> get copyWith =>
+  _$$AddWallPhotoStateImplCopyWith<_$AddWallPhotoStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

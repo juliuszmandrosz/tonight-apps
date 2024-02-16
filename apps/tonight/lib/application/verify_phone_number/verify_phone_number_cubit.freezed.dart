@@ -108,11 +108,12 @@ class _$VerifyPhoneNumberStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_VerifyPhoneNumberStateCopyWith<$Res>
+abstract class _$$VerifyPhoneNumberStateImplCopyWith<$Res>
     implements $VerifyPhoneNumberStateCopyWith<$Res> {
-  factory _$$_VerifyPhoneNumberStateCopyWith(_$_VerifyPhoneNumberState value,
-          $Res Function(_$_VerifyPhoneNumberState) then) =
-      __$$_VerifyPhoneNumberStateCopyWithImpl<$Res>;
+  factory _$$VerifyPhoneNumberStateImplCopyWith(
+          _$VerifyPhoneNumberStateImpl value,
+          $Res Function(_$VerifyPhoneNumberStateImpl) then) =
+      __$$VerifyPhoneNumberStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -127,12 +128,13 @@ abstract class _$$_VerifyPhoneNumberStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_VerifyPhoneNumberStateCopyWithImpl<$Res>
+class __$$VerifyPhoneNumberStateImplCopyWithImpl<$Res>
     extends _$VerifyPhoneNumberStateCopyWithImpl<$Res,
-        _$_VerifyPhoneNumberState>
-    implements _$$_VerifyPhoneNumberStateCopyWith<$Res> {
-  __$$_VerifyPhoneNumberStateCopyWithImpl(_$_VerifyPhoneNumberState _value,
-      $Res Function(_$_VerifyPhoneNumberState) _then)
+        _$VerifyPhoneNumberStateImpl>
+    implements _$$VerifyPhoneNumberStateImplCopyWith<$Res> {
+  __$$VerifyPhoneNumberStateImplCopyWithImpl(
+      _$VerifyPhoneNumberStateImpl _value,
+      $Res Function(_$VerifyPhoneNumberStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -147,7 +149,7 @@ class __$$_VerifyPhoneNumberStateCopyWithImpl<$Res>
     Object? verifySmsStatus = null,
     Object? user = null,
   }) {
-    return _then(_$_VerifyPhoneNumberState(
+    return _then(_$VerifyPhoneNumberStateImpl(
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -186,8 +188,8 @@ class __$$_VerifyPhoneNumberStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_VerifyPhoneNumberState implements _VerifyPhoneNumberState {
-  const _$_VerifyPhoneNumberState(
+class _$VerifyPhoneNumberStateImpl implements _VerifyPhoneNumberState {
+  const _$VerifyPhoneNumberStateImpl(
       {required this.phoneNumber,
       required this.smsCode,
       required this.failureMessage,
@@ -220,10 +222,10 @@ class _$_VerifyPhoneNumberState implements _VerifyPhoneNumberState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VerifyPhoneNumberState &&
+            other is _$VerifyPhoneNumberStateImpl &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.smsCode, smsCode) || other.smsCode == smsCode) &&
@@ -255,9 +257,9 @@ class _$_VerifyPhoneNumberState implements _VerifyPhoneNumberState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VerifyPhoneNumberStateCopyWith<_$_VerifyPhoneNumberState> get copyWith =>
-      __$$_VerifyPhoneNumberStateCopyWithImpl<_$_VerifyPhoneNumberState>(
-          this, _$identity);
+  _$$VerifyPhoneNumberStateImplCopyWith<_$VerifyPhoneNumberStateImpl>
+      get copyWith => __$$VerifyPhoneNumberStateImplCopyWithImpl<
+          _$VerifyPhoneNumberStateImpl>(this, _$identity);
 }
 
 abstract class _VerifyPhoneNumberState implements VerifyPhoneNumberState {
@@ -269,7 +271,7 @@ abstract class _VerifyPhoneNumberState implements VerifyPhoneNumberState {
       required final Option<int> resendToken,
       required final CubitStatus sendSmsStatus,
       required final CubitStatus verifySmsStatus,
-      required final Option<AppUser> user}) = _$_VerifyPhoneNumberState;
+      required final Option<AppUser> user}) = _$VerifyPhoneNumberStateImpl;
 
   @override
   String get phoneNumber;
@@ -289,6 +291,6 @@ abstract class _VerifyPhoneNumberState implements VerifyPhoneNumberState {
   Option<AppUser> get user;
   @override
   @JsonKey(ignore: true)
-  _$$_VerifyPhoneNumberStateCopyWith<_$_VerifyPhoneNumberState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$VerifyPhoneNumberStateImplCopyWith<_$VerifyPhoneNumberStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

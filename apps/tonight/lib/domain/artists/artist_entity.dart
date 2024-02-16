@@ -1,5 +1,4 @@
 import 'package:common/domain/social_media/social_media_entity.dart';
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:uuid/uuid.dart';
 
@@ -7,50 +6,60 @@ class Artist extends Equatable {
   final String id;
   final String artistName;
   final String artistPhotoUrl;
-  final String musicalGenre;
+  final String cityId;
+  final String cityName;
+  final List<String> musicalGenres;
   final List<SocialMedia> socialMedia;
-  final String? artistDescription;
+  final String bio;
+  final List<DateTime> bookedDates;
+  final List<String> collectiveIds;
 
   Artist({
     String? id,
     required this.artistName,
     required this.artistPhotoUrl,
-    required this.musicalGenre,
+    required this.cityId,
+    required this.cityName,
+    required this.musicalGenres,
     required this.socialMedia,
-    required this.artistDescription,
+    this.bio = '',
+    this.collectiveIds = const [],
+    this.bookedDates = const [],
   }) : id = id ?? const Uuid().v1();
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         id,
         artistName,
+        cityId,
+        cityName,
         artistPhotoUrl,
-        musicalGenre,
+        musicalGenres,
         socialMedia,
-        artistDescription,
+        collectiveIds,
+        bio,
       ];
 
   Artist copyWith({
     String? artistName,
     String? artistPhotoUrl,
-    String? musicalGenre,
+    String? cityId,
+    String? cityName,
+    List<String>? musicalGenres,
+    String? bio,
     List<SocialMedia>? socialMedia,
-    Option<String>? artistDescription,
+    List<String>? collectiveIds,
   }) {
     return Artist(
       id: id,
       artistName: artistName ?? this.artistName,
+      cityId: cityId ?? this.cityId,
+      cityName: cityName ?? this.cityName,
       artistPhotoUrl: artistPhotoUrl ?? this.artistPhotoUrl,
-      musicalGenre: musicalGenre ?? this.musicalGenre,
+      musicalGenres: musicalGenres ?? this.musicalGenres,
+      bio: bio ?? this.bio,
       socialMedia: socialMedia ?? this.socialMedia,
-      artistDescription:
-      artistDescription != null
-          ? artistDescription.fold(
-            () => null,
-            (description) => description,
-      )
-          : this.artistDescription,
+      collectiveIds: collectiveIds ?? this.collectiveIds,
     );
   }
 }

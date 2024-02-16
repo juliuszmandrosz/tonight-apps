@@ -79,11 +79,11 @@ class _$ClubFavoriteStateCopyWithImpl<$Res, $Val extends ClubFavoriteState>
 }
 
 /// @nodoc
-abstract class _$$_ClubFavoriteStateCopyWith<$Res>
+abstract class _$$ClubFavoriteStateImplCopyWith<$Res>
     implements $ClubFavoriteStateCopyWith<$Res> {
-  factory _$$_ClubFavoriteStateCopyWith(_$_ClubFavoriteState value,
-          $Res Function(_$_ClubFavoriteState) then) =
-      __$$_ClubFavoriteStateCopyWithImpl<$Res>;
+  factory _$$ClubFavoriteStateImplCopyWith(_$ClubFavoriteStateImpl value,
+          $Res Function(_$ClubFavoriteStateImpl) then) =
+      __$$ClubFavoriteStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -94,11 +94,11 @@ abstract class _$$_ClubFavoriteStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClubFavoriteStateCopyWithImpl<$Res>
-    extends _$ClubFavoriteStateCopyWithImpl<$Res, _$_ClubFavoriteState>
-    implements _$$_ClubFavoriteStateCopyWith<$Res> {
-  __$$_ClubFavoriteStateCopyWithImpl(
-      _$_ClubFavoriteState _value, $Res Function(_$_ClubFavoriteState) _then)
+class __$$ClubFavoriteStateImplCopyWithImpl<$Res>
+    extends _$ClubFavoriteStateCopyWithImpl<$Res, _$ClubFavoriteStateImpl>
+    implements _$$ClubFavoriteStateImplCopyWith<$Res> {
+  __$$ClubFavoriteStateImplCopyWithImpl(_$ClubFavoriteStateImpl _value,
+      $Res Function(_$ClubFavoriteStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +109,7 @@ class __$$_ClubFavoriteStateCopyWithImpl<$Res>
     Object? isChangingFavoriteStatus = null,
     Object? snackbarMessage = null,
   }) {
-    return _then(_$_ClubFavoriteState(
+    return _then(_$ClubFavoriteStateImpl(
       favoriteClubs: null == favoriteClubs
           ? _value._favoriteClubs
           : favoriteClubs // ignore: cast_nullable_to_non_nullable
@@ -132,8 +132,8 @@ class __$$_ClubFavoriteStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClubFavoriteState implements _ClubFavoriteState {
-  const _$_ClubFavoriteState(
+class _$ClubFavoriteStateImpl implements _ClubFavoriteState {
+  const _$ClubFavoriteStateImpl(
       {required final List<Club> favoriteClubs,
       required this.status,
       required this.isChangingFavoriteStatus,
@@ -161,10 +161,10 @@ class _$_ClubFavoriteState implements _ClubFavoriteState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClubFavoriteState &&
+            other is _$ClubFavoriteStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._favoriteClubs, _favoriteClubs) &&
             (identical(other.status, status) || other.status == status) &&
@@ -186,8 +186,8 @@ class _$_ClubFavoriteState implements _ClubFavoriteState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClubFavoriteStateCopyWith<_$_ClubFavoriteState> get copyWith =>
-      __$$_ClubFavoriteStateCopyWithImpl<_$_ClubFavoriteState>(
+  _$$ClubFavoriteStateImplCopyWith<_$ClubFavoriteStateImpl> get copyWith =>
+      __$$ClubFavoriteStateImplCopyWithImpl<_$ClubFavoriteStateImpl>(
           this, _$identity);
 }
 
@@ -196,7 +196,7 @@ abstract class _ClubFavoriteState implements ClubFavoriteState {
       {required final List<Club> favoriteClubs,
       required final CubitStatus status,
       required final bool isChangingFavoriteStatus,
-      required final Option<String> snackbarMessage}) = _$_ClubFavoriteState;
+      required final Option<String> snackbarMessage}) = _$ClubFavoriteStateImpl;
 
   @override
   List<Club> get favoriteClubs;
@@ -208,6 +208,6 @@ abstract class _ClubFavoriteState implements ClubFavoriteState {
   Option<String> get snackbarMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_ClubFavoriteStateCopyWith<_$_ClubFavoriteState> get copyWith =>
+  _$$ClubFavoriteStateImplCopyWith<_$ClubFavoriteStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -70,11 +70,11 @@ class _$UsernameStateCopyWithImpl<$Res, $Val extends UsernameState>
 }
 
 /// @nodoc
-abstract class _$$_UsernameStateCopyWith<$Res>
+abstract class _$$UsernameStateImplCopyWith<$Res>
     implements $UsernameStateCopyWith<$Res> {
-  factory _$$_UsernameStateCopyWith(
-          _$_UsernameState value, $Res Function(_$_UsernameState) then) =
-      __$$_UsernameStateCopyWithImpl<$Res>;
+  factory _$$UsernameStateImplCopyWith(
+          _$UsernameStateImpl value, $Res Function(_$UsernameStateImpl) then) =
+      __$$UsernameStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -82,11 +82,11 @@ abstract class _$$_UsernameStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UsernameStateCopyWithImpl<$Res>
-    extends _$UsernameStateCopyWithImpl<$Res, _$_UsernameState>
-    implements _$$_UsernameStateCopyWith<$Res> {
-  __$$_UsernameStateCopyWithImpl(
-      _$_UsernameState _value, $Res Function(_$_UsernameState) _then)
+class __$$UsernameStateImplCopyWithImpl<$Res>
+    extends _$UsernameStateCopyWithImpl<$Res, _$UsernameStateImpl>
+    implements _$$UsernameStateImplCopyWith<$Res> {
+  __$$UsernameStateImplCopyWithImpl(
+      _$UsernameStateImpl _value, $Res Function(_$UsernameStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +96,7 @@ class __$$_UsernameStateCopyWithImpl<$Res>
     Object? status = null,
     Object? errorMessage = null,
   }) {
-    return _then(_$_UsernameState(
+    return _then(_$UsernameStateImpl(
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -115,8 +115,8 @@ class __$$_UsernameStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UsernameState implements _UsernameState {
-  const _$_UsernameState(
+class _$UsernameStateImpl implements _UsernameState {
+  const _$UsernameStateImpl(
       {required this.username,
       required this.status,
       required this.errorMessage});
@@ -134,10 +134,10 @@ class _$_UsernameState implements _UsernameState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UsernameState &&
+            other is _$UsernameStateImpl &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.status, status) || other.status == status) &&
@@ -151,15 +151,15 @@ class _$_UsernameState implements _UsernameState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UsernameStateCopyWith<_$_UsernameState> get copyWith =>
-      __$$_UsernameStateCopyWithImpl<_$_UsernameState>(this, _$identity);
+  _$$UsernameStateImplCopyWith<_$UsernameStateImpl> get copyWith =>
+      __$$UsernameStateImplCopyWithImpl<_$UsernameStateImpl>(this, _$identity);
 }
 
 abstract class _UsernameState implements UsernameState {
   const factory _UsernameState(
       {required final Username username,
       required final FormzStatus status,
-      required final Option<String> errorMessage}) = _$_UsernameState;
+      required final Option<String> errorMessage}) = _$UsernameStateImpl;
 
   @override
   Username get username;
@@ -169,6 +169,6 @@ abstract class _UsernameState implements UsernameState {
   Option<String> get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_UsernameStateCopyWith<_$_UsernameState> get copyWith =>
+  _$$UsernameStateImplCopyWith<_$UsernameStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

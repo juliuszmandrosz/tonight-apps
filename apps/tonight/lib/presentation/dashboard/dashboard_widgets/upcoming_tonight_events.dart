@@ -1,4 +1,4 @@
-import 'package:common/extensions/extensions.dart';
+import 'package:common/extensions/typography_extensions.dart';
 import 'package:common/theme/dark_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,15 +23,15 @@ class UpcomingTonightEvents extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    S().upcomingTonightEvents,
-                    style: context.titleMedium.copyWithSecondaryColor(),
+                    'Dla Ciebie',
+                    style: context.titleSmall.copyWithSecondaryColor(),
                   ),
                 ),
               ),
             if (events.isNotEmpty) const SizedBox(height: 12),
             events.isNotEmpty
                 ? SizedBox(
-                    height: 395,
+                    height: 330,
                     child: PageView.builder(
                       padEnds: false,
                       controller: PageController(

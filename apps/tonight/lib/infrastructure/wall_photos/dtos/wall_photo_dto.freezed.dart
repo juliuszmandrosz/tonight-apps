@@ -173,11 +173,11 @@ class _$WallPhotoDtoCopyWithImpl<$Res, $Val extends WallPhotoDto>
 }
 
 /// @nodoc
-abstract class _$$_WallPhotoDtoCopyWith<$Res>
+abstract class _$$WallPhotoDtoImplCopyWith<$Res>
     implements $WallPhotoDtoCopyWith<$Res> {
-  factory _$$_WallPhotoDtoCopyWith(
-          _$_WallPhotoDto value, $Res Function(_$_WallPhotoDto) then) =
-      __$$_WallPhotoDtoCopyWithImpl<$Res>;
+  factory _$$WallPhotoDtoImplCopyWith(
+          _$WallPhotoDtoImpl value, $Res Function(_$WallPhotoDtoImpl) then) =
+      __$$WallPhotoDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -200,11 +200,11 @@ abstract class _$$_WallPhotoDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_WallPhotoDtoCopyWithImpl<$Res>
-    extends _$WallPhotoDtoCopyWithImpl<$Res, _$_WallPhotoDto>
-    implements _$$_WallPhotoDtoCopyWith<$Res> {
-  __$$_WallPhotoDtoCopyWithImpl(
-      _$_WallPhotoDto _value, $Res Function(_$_WallPhotoDto) _then)
+class __$$WallPhotoDtoImplCopyWithImpl<$Res>
+    extends _$WallPhotoDtoCopyWithImpl<$Res, _$WallPhotoDtoImpl>
+    implements _$$WallPhotoDtoImplCopyWith<$Res> {
+  __$$WallPhotoDtoImplCopyWithImpl(
+      _$WallPhotoDtoImpl _value, $Res Function(_$WallPhotoDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -227,7 +227,7 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
     Object? isVerified = null,
     Object? isRewardAcquired = null,
   }) {
-    return _then(_$_WallPhotoDto(
+    return _then(_$WallPhotoDtoImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -299,8 +299,8 @@ class __$$_WallPhotoDtoCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable()
-class _$_WallPhotoDto extends _WallPhotoDto {
-  const _$_WallPhotoDto(
+class _$WallPhotoDtoImpl extends _WallPhotoDto {
+  const _$WallPhotoDtoImpl(
       {@JsonKey(ignore: true) this.id,
       required this.photoUrl,
       required this.venueId,
@@ -319,8 +319,8 @@ class _$_WallPhotoDto extends _WallPhotoDto {
       this.isRewardAcquired = false})
       : super._();
 
-  factory _$_WallPhotoDto.fromJson(Map<String, dynamic> json) =>
-      _$$_WallPhotoDtoFromJson(json);
+  factory _$WallPhotoDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$WallPhotoDtoImplFromJson(json);
 
   @override
   @JsonKey(ignore: true)
@@ -368,10 +368,10 @@ class _$_WallPhotoDto extends _WallPhotoDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_WallPhotoDto &&
+            other is _$WallPhotoDtoImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.photoUrl, photoUrl) ||
                 other.photoUrl == photoUrl) &&
@@ -426,12 +426,12 @@ class _$_WallPhotoDto extends _WallPhotoDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_WallPhotoDtoCopyWith<_$_WallPhotoDto> get copyWith =>
-      __$$_WallPhotoDtoCopyWithImpl<_$_WallPhotoDto>(this, _$identity);
+  _$$WallPhotoDtoImplCopyWith<_$WallPhotoDtoImpl> get copyWith =>
+      __$$WallPhotoDtoImplCopyWithImpl<_$WallPhotoDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WallPhotoDtoToJson(
+    return _$$WallPhotoDtoImplToJson(
       this,
     );
   }
@@ -454,11 +454,11 @@ abstract class _WallPhotoDto extends WallPhotoDto {
       final String? timeTaskId,
       @NullableLatLngConverter() final LatLng? photoLocation,
       final bool isVerified,
-      final bool isRewardAcquired}) = _$_WallPhotoDto;
+      final bool isRewardAcquired}) = _$WallPhotoDtoImpl;
   const _WallPhotoDto._() : super._();
 
   factory _WallPhotoDto.fromJson(Map<String, dynamic> json) =
-      _$_WallPhotoDto.fromJson;
+      _$WallPhotoDtoImpl.fromJson;
 
   @override
   @JsonKey(ignore: true)
@@ -499,6 +499,6 @@ abstract class _WallPhotoDto extends WallPhotoDto {
   bool get isRewardAcquired;
   @override
   @JsonKey(ignore: true)
-  _$$_WallPhotoDtoCopyWith<_$_WallPhotoDto> get copyWith =>
+  _$$WallPhotoDtoImplCopyWith<_$WallPhotoDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

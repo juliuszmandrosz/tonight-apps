@@ -70,11 +70,11 @@ class _$TermsOfServiceStateCopyWithImpl<$Res, $Val extends TermsOfServiceState>
 }
 
 /// @nodoc
-abstract class _$$_TermsOfServiceStateCopyWith<$Res>
+abstract class _$$TermsOfServiceStateImplCopyWith<$Res>
     implements $TermsOfServiceStateCopyWith<$Res> {
-  factory _$$_TermsOfServiceStateCopyWith(_$_TermsOfServiceState value,
-          $Res Function(_$_TermsOfServiceState) then) =
-      __$$_TermsOfServiceStateCopyWithImpl<$Res>;
+  factory _$$TermsOfServiceStateImplCopyWith(_$TermsOfServiceStateImpl value,
+          $Res Function(_$TermsOfServiceStateImpl) then) =
+      __$$TermsOfServiceStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -82,11 +82,11 @@ abstract class _$$_TermsOfServiceStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TermsOfServiceStateCopyWithImpl<$Res>
-    extends _$TermsOfServiceStateCopyWithImpl<$Res, _$_TermsOfServiceState>
-    implements _$$_TermsOfServiceStateCopyWith<$Res> {
-  __$$_TermsOfServiceStateCopyWithImpl(_$_TermsOfServiceState _value,
-      $Res Function(_$_TermsOfServiceState) _then)
+class __$$TermsOfServiceStateImplCopyWithImpl<$Res>
+    extends _$TermsOfServiceStateCopyWithImpl<$Res, _$TermsOfServiceStateImpl>
+    implements _$$TermsOfServiceStateImplCopyWith<$Res> {
+  __$$TermsOfServiceStateImplCopyWithImpl(_$TermsOfServiceStateImpl _value,
+      $Res Function(_$TermsOfServiceStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +96,7 @@ class __$$_TermsOfServiceStateCopyWithImpl<$Res>
     Object? status = null,
     Object? snackbarMessage = null,
   }) {
-    return _then(_$_TermsOfServiceState(
+    return _then(_$TermsOfServiceStateImpl(
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -115,8 +115,8 @@ class __$$_TermsOfServiceStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TermsOfServiceState extends _TermsOfServiceState {
-  _$_TermsOfServiceState(
+class _$TermsOfServiceStateImpl extends _TermsOfServiceState {
+  _$TermsOfServiceStateImpl(
       {required this.url, required this.status, required this.snackbarMessage})
       : super._();
 
@@ -133,10 +133,10 @@ class _$_TermsOfServiceState extends _TermsOfServiceState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TermsOfServiceState &&
+            other is _$TermsOfServiceStateImpl &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.snackbarMessage, snackbarMessage) ||
@@ -149,16 +149,17 @@ class _$_TermsOfServiceState extends _TermsOfServiceState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TermsOfServiceStateCopyWith<_$_TermsOfServiceState> get copyWith =>
-      __$$_TermsOfServiceStateCopyWithImpl<_$_TermsOfServiceState>(
+  _$$TermsOfServiceStateImplCopyWith<_$TermsOfServiceStateImpl> get copyWith =>
+      __$$TermsOfServiceStateImplCopyWithImpl<_$TermsOfServiceStateImpl>(
           this, _$identity);
 }
 
 abstract class _TermsOfServiceState extends TermsOfServiceState {
   factory _TermsOfServiceState(
-      {required final Option<String> url,
-      required final CubitStatus status,
-      required final Option<String> snackbarMessage}) = _$_TermsOfServiceState;
+          {required final Option<String> url,
+          required final CubitStatus status,
+          required final Option<String> snackbarMessage}) =
+      _$TermsOfServiceStateImpl;
   _TermsOfServiceState._() : super._();
 
   @override
@@ -169,6 +170,6 @@ abstract class _TermsOfServiceState extends TermsOfServiceState {
   Option<String> get snackbarMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_TermsOfServiceStateCopyWith<_$_TermsOfServiceState> get copyWith =>
+  _$$TermsOfServiceStateImplCopyWith<_$TermsOfServiceStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

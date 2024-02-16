@@ -97,12 +97,12 @@ class _$ActivateTimeTaskRewardStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ActivateTimeTaskRewardStateCopyWith<$Res>
+abstract class _$$ActivateTimeTaskRewardStateImplCopyWith<$Res>
     implements $ActivateTimeTaskRewardStateCopyWith<$Res> {
-  factory _$$_ActivateTimeTaskRewardStateCopyWith(
-          _$_ActivateTimeTaskRewardState value,
-          $Res Function(_$_ActivateTimeTaskRewardState) then) =
-      __$$_ActivateTimeTaskRewardStateCopyWithImpl<$Res>;
+  factory _$$ActivateTimeTaskRewardStateImplCopyWith(
+          _$ActivateTimeTaskRewardStateImpl value,
+          $Res Function(_$ActivateTimeTaskRewardStateImpl) then) =
+      __$$ActivateTimeTaskRewardStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -115,13 +115,13 @@ abstract class _$$_ActivateTimeTaskRewardStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ActivateTimeTaskRewardStateCopyWithImpl<$Res>
+class __$$ActivateTimeTaskRewardStateImplCopyWithImpl<$Res>
     extends _$ActivateTimeTaskRewardStateCopyWithImpl<$Res,
-        _$_ActivateTimeTaskRewardState>
-    implements _$$_ActivateTimeTaskRewardStateCopyWith<$Res> {
-  __$$_ActivateTimeTaskRewardStateCopyWithImpl(
-      _$_ActivateTimeTaskRewardState _value,
-      $Res Function(_$_ActivateTimeTaskRewardState) _then)
+        _$ActivateTimeTaskRewardStateImpl>
+    implements _$$ActivateTimeTaskRewardStateImplCopyWith<$Res> {
+  __$$ActivateTimeTaskRewardStateImplCopyWithImpl(
+      _$ActivateTimeTaskRewardStateImpl _value,
+      $Res Function(_$ActivateTimeTaskRewardStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -134,7 +134,7 @@ class __$$_ActivateTimeTaskRewardStateCopyWithImpl<$Res>
     Object? snackbarMessage = null,
     Object? failure = null,
   }) {
-    return _then(_$_ActivateTimeTaskRewardState(
+    return _then(_$ActivateTimeTaskRewardStateImpl(
       getVoucherStatus: null == getVoucherStatus
           ? _value.getVoucherStatus
           : getVoucherStatus // ignore: cast_nullable_to_non_nullable
@@ -165,8 +165,9 @@ class __$$_ActivateTimeTaskRewardStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ActivateTimeTaskRewardState implements _ActivateTimeTaskRewardState {
-  const _$_ActivateTimeTaskRewardState(
+class _$ActivateTimeTaskRewardStateImpl
+    implements _ActivateTimeTaskRewardState {
+  const _$ActivateTimeTaskRewardStateImpl(
       {required this.getVoucherStatus,
       required this.activateVoucherStatus,
       required this.receiveRewardStatus,
@@ -193,10 +194,10 @@ class _$_ActivateTimeTaskRewardState implements _ActivateTimeTaskRewardState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ActivateTimeTaskRewardState &&
+            other is _$ActivateTimeTaskRewardStateImpl &&
             (identical(other.getVoucherStatus, getVoucherStatus) ||
                 other.getVoucherStatus == getVoucherStatus) &&
             (identical(other.activateVoucherStatus, activateVoucherStatus) ||
@@ -222,9 +223,9 @@ class _$_ActivateTimeTaskRewardState implements _ActivateTimeTaskRewardState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ActivateTimeTaskRewardStateCopyWith<_$_ActivateTimeTaskRewardState>
-      get copyWith => __$$_ActivateTimeTaskRewardStateCopyWithImpl<
-          _$_ActivateTimeTaskRewardState>(this, _$identity);
+  _$$ActivateTimeTaskRewardStateImplCopyWith<_$ActivateTimeTaskRewardStateImpl>
+      get copyWith => __$$ActivateTimeTaskRewardStateImplCopyWithImpl<
+          _$ActivateTimeTaskRewardStateImpl>(this, _$identity);
 }
 
 abstract class _ActivateTimeTaskRewardState
@@ -236,7 +237,7 @@ abstract class _ActivateTimeTaskRewardState
           required final Option<TimeTaskVoucher> voucher,
           required final Option<String> snackbarMessage,
           required final Option<TimeTaskVoucherFailure> failure}) =
-      _$_ActivateTimeTaskRewardState;
+      _$ActivateTimeTaskRewardStateImpl;
 
   @override
   CubitStatus get getVoucherStatus;
@@ -252,6 +253,6 @@ abstract class _ActivateTimeTaskRewardState
   Option<TimeTaskVoucherFailure> get failure;
   @override
   @JsonKey(ignore: true)
-  _$$_ActivateTimeTaskRewardStateCopyWith<_$_ActivateTimeTaskRewardState>
+  _$$ActivateTimeTaskRewardStateImplCopyWith<_$ActivateTimeTaskRewardStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

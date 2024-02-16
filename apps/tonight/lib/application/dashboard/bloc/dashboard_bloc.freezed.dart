@@ -106,20 +106,20 @@ class _$DashboardEventCopyWithImpl<$Res, $Val extends DashboardEvent>
 }
 
 /// @nodoc
-abstract class _$$_DataInitializedCopyWith<$Res> {
-  factory _$$_DataInitializedCopyWith(
-          _$_DataInitialized value, $Res Function(_$_DataInitialized) then) =
-      __$$_DataInitializedCopyWithImpl<$Res>;
+abstract class _$$DataInitializedImplCopyWith<$Res> {
+  factory _$$DataInitializedImplCopyWith(_$DataInitializedImpl value,
+          $Res Function(_$DataInitializedImpl) then) =
+      __$$DataInitializedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Option<LatLng> userLocation});
 }
 
 /// @nodoc
-class __$$_DataInitializedCopyWithImpl<$Res>
-    extends _$DashboardEventCopyWithImpl<$Res, _$_DataInitialized>
-    implements _$$_DataInitializedCopyWith<$Res> {
-  __$$_DataInitializedCopyWithImpl(
-      _$_DataInitialized _value, $Res Function(_$_DataInitialized) _then)
+class __$$DataInitializedImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$DataInitializedImpl>
+    implements _$$DataInitializedImplCopyWith<$Res> {
+  __$$DataInitializedImplCopyWithImpl(
+      _$DataInitializedImpl _value, $Res Function(_$DataInitializedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -127,7 +127,7 @@ class __$$_DataInitializedCopyWithImpl<$Res>
   $Res call({
     Object? userLocation = null,
   }) {
-    return _then(_$_DataInitialized(
+    return _then(_$DataInitializedImpl(
       null == userLocation
           ? _value.userLocation
           : userLocation // ignore: cast_nullable_to_non_nullable
@@ -138,8 +138,8 @@ class __$$_DataInitializedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DataInitialized implements _DataInitialized {
-  const _$_DataInitialized(this.userLocation);
+class _$DataInitializedImpl implements _DataInitialized {
+  const _$DataInitializedImpl(this.userLocation);
 
   @override
   final Option<LatLng> userLocation;
@@ -150,10 +150,10 @@ class _$_DataInitialized implements _DataInitialized {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DataInitialized &&
+            other is _$DataInitializedImpl &&
             (identical(other.userLocation, userLocation) ||
                 other.userLocation == userLocation));
   }
@@ -164,8 +164,9 @@ class _$_DataInitialized implements _DataInitialized {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataInitializedCopyWith<_$_DataInitialized> get copyWith =>
-      __$$_DataInitializedCopyWithImpl<_$_DataInitialized>(this, _$identity);
+  _$$DataInitializedImplCopyWith<_$DataInitializedImpl> get copyWith =>
+      __$$DataInitializedImplCopyWithImpl<_$DataInitializedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -263,19 +264,19 @@ class _$_DataInitialized implements _DataInitialized {
 
 abstract class _DataInitialized implements DashboardEvent {
   const factory _DataInitialized(final Option<LatLng> userLocation) =
-      _$_DataInitialized;
+      _$DataInitializedImpl;
 
   Option<LatLng> get userLocation;
   @JsonKey(ignore: true)
-  _$$_DataInitializedCopyWith<_$_DataInitialized> get copyWith =>
+  _$$DataInitializedImplCopyWith<_$DataInitializedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_EventVoucherUsedCopyWith<$Res> {
-  factory _$$_EventVoucherUsedCopyWith(
-          _$_EventVoucherUsed value, $Res Function(_$_EventVoucherUsed) then) =
-      __$$_EventVoucherUsedCopyWithImpl<$Res>;
+abstract class _$$EventVoucherUsedImplCopyWith<$Res> {
+  factory _$$EventVoucherUsedImplCopyWith(_$EventVoucherUsedImpl value,
+          $Res Function(_$EventVoucherUsedImpl) then) =
+      __$$EventVoucherUsedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({EventVoucher voucher});
 
@@ -283,11 +284,11 @@ abstract class _$$_EventVoucherUsedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_EventVoucherUsedCopyWithImpl<$Res>
-    extends _$DashboardEventCopyWithImpl<$Res, _$_EventVoucherUsed>
-    implements _$$_EventVoucherUsedCopyWith<$Res> {
-  __$$_EventVoucherUsedCopyWithImpl(
-      _$_EventVoucherUsed _value, $Res Function(_$_EventVoucherUsed) _then)
+class __$$EventVoucherUsedImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$EventVoucherUsedImpl>
+    implements _$$EventVoucherUsedImplCopyWith<$Res> {
+  __$$EventVoucherUsedImplCopyWithImpl(_$EventVoucherUsedImpl _value,
+      $Res Function(_$EventVoucherUsedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -295,7 +296,7 @@ class __$$_EventVoucherUsedCopyWithImpl<$Res>
   $Res call({
     Object? voucher = null,
   }) {
-    return _then(_$_EventVoucherUsed(
+    return _then(_$EventVoucherUsedImpl(
       null == voucher
           ? _value.voucher
           : voucher // ignore: cast_nullable_to_non_nullable
@@ -314,8 +315,8 @@ class __$$_EventVoucherUsedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EventVoucherUsed implements _EventVoucherUsed {
-  const _$_EventVoucherUsed(this.voucher);
+class _$EventVoucherUsedImpl implements _EventVoucherUsed {
+  const _$EventVoucherUsedImpl(this.voucher);
 
   @override
   final EventVoucher voucher;
@@ -326,10 +327,10 @@ class _$_EventVoucherUsed implements _EventVoucherUsed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EventVoucherUsed &&
+            other is _$EventVoucherUsedImpl &&
             (identical(other.voucher, voucher) || other.voucher == voucher));
   }
 
@@ -339,8 +340,9 @@ class _$_EventVoucherUsed implements _EventVoucherUsed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EventVoucherUsedCopyWith<_$_EventVoucherUsed> get copyWith =>
-      __$$_EventVoucherUsedCopyWithImpl<_$_EventVoucherUsed>(this, _$identity);
+  _$$EventVoucherUsedImplCopyWith<_$EventVoucherUsedImpl> get copyWith =>
+      __$$EventVoucherUsedImplCopyWithImpl<_$EventVoucherUsedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -438,38 +440,38 @@ class _$_EventVoucherUsed implements _EventVoucherUsed {
 
 abstract class _EventVoucherUsed implements DashboardEvent {
   const factory _EventVoucherUsed(final EventVoucher voucher) =
-      _$_EventVoucherUsed;
+      _$EventVoucherUsedImpl;
 
   EventVoucher get voucher;
   @JsonKey(ignore: true)
-  _$$_EventVoucherUsedCopyWith<_$_EventVoucherUsed> get copyWith =>
+  _$$EventVoucherUsedImplCopyWith<_$EventVoucherUsedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NextPageChallengeStoriesFetchedCopyWith<$Res> {
-  factory _$$_NextPageChallengeStoriesFetchedCopyWith(
-          _$_NextPageChallengeStoriesFetched value,
-          $Res Function(_$_NextPageChallengeStoriesFetched) then) =
-      __$$_NextPageChallengeStoriesFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPageChallengeStoriesFetchedImplCopyWith<$Res> {
+  factory _$$NextPageChallengeStoriesFetchedImplCopyWith(
+          _$NextPageChallengeStoriesFetchedImpl value,
+          $Res Function(_$NextPageChallengeStoriesFetchedImpl) then) =
+      __$$NextPageChallengeStoriesFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPageChallengeStoriesFetchedCopyWithImpl<$Res>
+class __$$NextPageChallengeStoriesFetchedImplCopyWithImpl<$Res>
     extends _$DashboardEventCopyWithImpl<$Res,
-        _$_NextPageChallengeStoriesFetched>
-    implements _$$_NextPageChallengeStoriesFetchedCopyWith<$Res> {
-  __$$_NextPageChallengeStoriesFetchedCopyWithImpl(
-      _$_NextPageChallengeStoriesFetched _value,
-      $Res Function(_$_NextPageChallengeStoriesFetched) _then)
+        _$NextPageChallengeStoriesFetchedImpl>
+    implements _$$NextPageChallengeStoriesFetchedImplCopyWith<$Res> {
+  __$$NextPageChallengeStoriesFetchedImplCopyWithImpl(
+      _$NextPageChallengeStoriesFetchedImpl _value,
+      $Res Function(_$NextPageChallengeStoriesFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPageChallengeStoriesFetched
+class _$NextPageChallengeStoriesFetchedImpl
     implements _NextPageChallengeStoriesFetched {
-  const _$_NextPageChallengeStoriesFetched();
+  const _$NextPageChallengeStoriesFetchedImpl();
 
   @override
   String toString() {
@@ -477,10 +479,10 @@ class _$_NextPageChallengeStoriesFetched
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NextPageChallengeStoriesFetched);
+            other is _$NextPageChallengeStoriesFetchedImpl);
   }
 
   @override
@@ -582,24 +584,26 @@ class _$_NextPageChallengeStoriesFetched
 
 abstract class _NextPageChallengeStoriesFetched implements DashboardEvent {
   const factory _NextPageChallengeStoriesFetched() =
-      _$_NextPageChallengeStoriesFetched;
+      _$NextPageChallengeStoriesFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_OtherUserStoriesUpdatedCopyWith<$Res> {
-  factory _$$_OtherUserStoriesUpdatedCopyWith(_$_OtherUserStoriesUpdated value,
-          $Res Function(_$_OtherUserStoriesUpdated) then) =
-      __$$_OtherUserStoriesUpdatedCopyWithImpl<$Res>;
+abstract class _$$OtherUserStoriesUpdatedImplCopyWith<$Res> {
+  factory _$$OtherUserStoriesUpdatedImplCopyWith(
+          _$OtherUserStoriesUpdatedImpl value,
+          $Res Function(_$OtherUserStoriesUpdatedImpl) then) =
+      __$$OtherUserStoriesUpdatedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<UserStoriesWithInteractions> stories});
 }
 
 /// @nodoc
-class __$$_OtherUserStoriesUpdatedCopyWithImpl<$Res>
-    extends _$DashboardEventCopyWithImpl<$Res, _$_OtherUserStoriesUpdated>
-    implements _$$_OtherUserStoriesUpdatedCopyWith<$Res> {
-  __$$_OtherUserStoriesUpdatedCopyWithImpl(_$_OtherUserStoriesUpdated _value,
-      $Res Function(_$_OtherUserStoriesUpdated) _then)
+class __$$OtherUserStoriesUpdatedImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$OtherUserStoriesUpdatedImpl>
+    implements _$$OtherUserStoriesUpdatedImplCopyWith<$Res> {
+  __$$OtherUserStoriesUpdatedImplCopyWithImpl(
+      _$OtherUserStoriesUpdatedImpl _value,
+      $Res Function(_$OtherUserStoriesUpdatedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -607,7 +611,7 @@ class __$$_OtherUserStoriesUpdatedCopyWithImpl<$Res>
   $Res call({
     Object? stories = null,
   }) {
-    return _then(_$_OtherUserStoriesUpdated(
+    return _then(_$OtherUserStoriesUpdatedImpl(
       null == stories
           ? _value._stories
           : stories // ignore: cast_nullable_to_non_nullable
@@ -618,8 +622,8 @@ class __$$_OtherUserStoriesUpdatedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OtherUserStoriesUpdated implements _OtherUserStoriesUpdated {
-  const _$_OtherUserStoriesUpdated(
+class _$OtherUserStoriesUpdatedImpl implements _OtherUserStoriesUpdated {
+  const _$OtherUserStoriesUpdatedImpl(
       final List<UserStoriesWithInteractions> stories)
       : _stories = stories;
 
@@ -637,10 +641,10 @@ class _$_OtherUserStoriesUpdated implements _OtherUserStoriesUpdated {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OtherUserStoriesUpdated &&
+            other is _$OtherUserStoriesUpdatedImpl &&
             const DeepCollectionEquality().equals(other._stories, _stories));
   }
 
@@ -651,10 +655,9 @@ class _$_OtherUserStoriesUpdated implements _OtherUserStoriesUpdated {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OtherUserStoriesUpdatedCopyWith<_$_OtherUserStoriesUpdated>
-      get copyWith =>
-          __$$_OtherUserStoriesUpdatedCopyWithImpl<_$_OtherUserStoriesUpdated>(
-              this, _$identity);
+  _$$OtherUserStoriesUpdatedImplCopyWith<_$OtherUserStoriesUpdatedImpl>
+      get copyWith => __$$OtherUserStoriesUpdatedImplCopyWithImpl<
+          _$OtherUserStoriesUpdatedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -753,31 +756,31 @@ class _$_OtherUserStoriesUpdated implements _OtherUserStoriesUpdated {
 abstract class _OtherUserStoriesUpdated implements DashboardEvent {
   const factory _OtherUserStoriesUpdated(
           final List<UserStoriesWithInteractions> stories) =
-      _$_OtherUserStoriesUpdated;
+      _$OtherUserStoriesUpdatedImpl;
 
   List<UserStoriesWithInteractions> get stories;
   @JsonKey(ignore: true)
-  _$$_OtherUserStoriesUpdatedCopyWith<_$_OtherUserStoriesUpdated>
+  _$$OtherUserStoriesUpdatedImplCopyWith<_$OtherUserStoriesUpdatedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_CurrentUserStoriesUpdatedCopyWith<$Res> {
-  factory _$$_CurrentUserStoriesUpdatedCopyWith(
-          _$_CurrentUserStoriesUpdated value,
-          $Res Function(_$_CurrentUserStoriesUpdated) then) =
-      __$$_CurrentUserStoriesUpdatedCopyWithImpl<$Res>;
+abstract class _$$CurrentUserStoriesUpdatedImplCopyWith<$Res> {
+  factory _$$CurrentUserStoriesUpdatedImplCopyWith(
+          _$CurrentUserStoriesUpdatedImpl value,
+          $Res Function(_$CurrentUserStoriesUpdatedImpl) then) =
+      __$$CurrentUserStoriesUpdatedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<UserStoriesWithInteractions> stories});
 }
 
 /// @nodoc
-class __$$_CurrentUserStoriesUpdatedCopyWithImpl<$Res>
-    extends _$DashboardEventCopyWithImpl<$Res, _$_CurrentUserStoriesUpdated>
-    implements _$$_CurrentUserStoriesUpdatedCopyWith<$Res> {
-  __$$_CurrentUserStoriesUpdatedCopyWithImpl(
-      _$_CurrentUserStoriesUpdated _value,
-      $Res Function(_$_CurrentUserStoriesUpdated) _then)
+class __$$CurrentUserStoriesUpdatedImplCopyWithImpl<$Res>
+    extends _$DashboardEventCopyWithImpl<$Res, _$CurrentUserStoriesUpdatedImpl>
+    implements _$$CurrentUserStoriesUpdatedImplCopyWith<$Res> {
+  __$$CurrentUserStoriesUpdatedImplCopyWithImpl(
+      _$CurrentUserStoriesUpdatedImpl _value,
+      $Res Function(_$CurrentUserStoriesUpdatedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -785,7 +788,7 @@ class __$$_CurrentUserStoriesUpdatedCopyWithImpl<$Res>
   $Res call({
     Object? stories = null,
   }) {
-    return _then(_$_CurrentUserStoriesUpdated(
+    return _then(_$CurrentUserStoriesUpdatedImpl(
       null == stories
           ? _value._stories
           : stories // ignore: cast_nullable_to_non_nullable
@@ -796,8 +799,8 @@ class __$$_CurrentUserStoriesUpdatedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CurrentUserStoriesUpdated implements _CurrentUserStoriesUpdated {
-  const _$_CurrentUserStoriesUpdated(
+class _$CurrentUserStoriesUpdatedImpl implements _CurrentUserStoriesUpdated {
+  const _$CurrentUserStoriesUpdatedImpl(
       final List<UserStoriesWithInteractions> stories)
       : _stories = stories;
 
@@ -815,10 +818,10 @@ class _$_CurrentUserStoriesUpdated implements _CurrentUserStoriesUpdated {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CurrentUserStoriesUpdated &&
+            other is _$CurrentUserStoriesUpdatedImpl &&
             const DeepCollectionEquality().equals(other._stories, _stories));
   }
 
@@ -829,9 +832,9 @@ class _$_CurrentUserStoriesUpdated implements _CurrentUserStoriesUpdated {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CurrentUserStoriesUpdatedCopyWith<_$_CurrentUserStoriesUpdated>
-      get copyWith => __$$_CurrentUserStoriesUpdatedCopyWithImpl<
-          _$_CurrentUserStoriesUpdated>(this, _$identity);
+  _$$CurrentUserStoriesUpdatedImplCopyWith<_$CurrentUserStoriesUpdatedImpl>
+      get copyWith => __$$CurrentUserStoriesUpdatedImplCopyWithImpl<
+          _$CurrentUserStoriesUpdatedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -930,11 +933,11 @@ class _$_CurrentUserStoriesUpdated implements _CurrentUserStoriesUpdated {
 abstract class _CurrentUserStoriesUpdated implements DashboardEvent {
   const factory _CurrentUserStoriesUpdated(
           final List<UserStoriesWithInteractions> stories) =
-      _$_CurrentUserStoriesUpdated;
+      _$CurrentUserStoriesUpdatedImpl;
 
   List<UserStoriesWithInteractions> get stories;
   @JsonKey(ignore: true)
-  _$$_CurrentUserStoriesUpdatedCopyWith<_$_CurrentUserStoriesUpdated>
+  _$$CurrentUserStoriesUpdatedImplCopyWith<_$CurrentUserStoriesUpdatedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1042,11 +1045,11 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
 }
 
 /// @nodoc
-abstract class _$$_DashboardStateCopyWith<$Res>
+abstract class _$$DashboardStateImplCopyWith<$Res>
     implements $DashboardStateCopyWith<$Res> {
-  factory _$$_DashboardStateCopyWith(
-          _$_DashboardState value, $Res Function(_$_DashboardState) then) =
-      __$$_DashboardStateCopyWithImpl<$Res>;
+  factory _$$DashboardStateImplCopyWith(_$DashboardStateImpl value,
+          $Res Function(_$DashboardStateImpl) then) =
+      __$$DashboardStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1064,11 +1067,11 @@ abstract class _$$_DashboardStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DashboardStateCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_DashboardState>
-    implements _$$_DashboardStateCopyWith<$Res> {
-  __$$_DashboardStateCopyWithImpl(
-      _$_DashboardState _value, $Res Function(_$_DashboardState) _then)
+class __$$DashboardStateImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$DashboardStateImpl>
+    implements _$$DashboardStateImplCopyWith<$Res> {
+  __$$DashboardStateImplCopyWithImpl(
+      _$DashboardStateImpl _value, $Res Function(_$DashboardStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1083,7 +1086,7 @@ class __$$_DashboardStateCopyWithImpl<$Res>
     Object? nextPageChallengeStoriesStatus = null,
     Object? hasChallengeStoriesReachedMax = null,
   }) {
-    return _then(_$_DashboardState(
+    return _then(_$DashboardStateImpl(
       dashboardData: null == dashboardData
           ? _value.dashboardData
           : dashboardData // ignore: cast_nullable_to_non_nullable
@@ -1122,8 +1125,8 @@ class __$$_DashboardStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DashboardState implements _DashboardState {
-  const _$_DashboardState(
+class _$DashboardStateImpl implements _DashboardState {
+  const _$DashboardStateImpl(
       {required this.dashboardData,
       required this.initialStatus,
       required this.useVoucherStatus,
@@ -1156,10 +1159,10 @@ class _$_DashboardState implements _DashboardState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DashboardState &&
+            other is _$DashboardStateImpl &&
             (identical(other.dashboardData, dashboardData) ||
                 other.dashboardData == dashboardData) &&
             (identical(other.initialStatus, initialStatus) ||
@@ -1196,20 +1199,22 @@ class _$_DashboardState implements _DashboardState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DashboardStateCopyWith<_$_DashboardState> get copyWith =>
-      __$$_DashboardStateCopyWithImpl<_$_DashboardState>(this, _$identity);
+  _$$DashboardStateImplCopyWith<_$DashboardStateImpl> get copyWith =>
+      __$$DashboardStateImplCopyWithImpl<_$DashboardStateImpl>(
+          this, _$identity);
 }
 
 abstract class _DashboardState implements DashboardState {
   const factory _DashboardState(
-      {required final DashboardData dashboardData,
-      required final CubitStatus initialStatus,
-      required final CubitStatus useVoucherStatus,
-      required final Option<String> errorMessage,
-      required final Option<DashboardFailure> failure,
-      required final Option<EventVoucher> usedVoucher,
-      required final CubitStatus nextPageChallengeStoriesStatus,
-      required final bool hasChallengeStoriesReachedMax}) = _$_DashboardState;
+          {required final DashboardData dashboardData,
+          required final CubitStatus initialStatus,
+          required final CubitStatus useVoucherStatus,
+          required final Option<String> errorMessage,
+          required final Option<DashboardFailure> failure,
+          required final Option<EventVoucher> usedVoucher,
+          required final CubitStatus nextPageChallengeStoriesStatus,
+          required final bool hasChallengeStoriesReachedMax}) =
+      _$DashboardStateImpl;
 
   @override
   DashboardData get dashboardData;
@@ -1229,6 +1234,6 @@ abstract class _DashboardState implements DashboardState {
   bool get hasChallengeStoriesReachedMax;
   @override
   @JsonKey(ignore: true)
-  _$$_DashboardStateCopyWith<_$_DashboardState> get copyWith =>
+  _$$DashboardStateImplCopyWith<_$DashboardStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

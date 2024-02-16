@@ -88,25 +88,25 @@ class _$SelectClubEventCopyWithImpl<$Res, $Val extends SelectClubEvent>
 }
 
 /// @nodoc
-abstract class _$$_VenuesFetchedCopyWith<$Res> {
-  factory _$$_VenuesFetchedCopyWith(
-          _$_VenuesFetched value, $Res Function(_$_VenuesFetched) then) =
-      __$$_VenuesFetchedCopyWithImpl<$Res>;
+abstract class _$$VenuesFetchedImplCopyWith<$Res> {
+  factory _$$VenuesFetchedImplCopyWith(
+          _$VenuesFetchedImpl value, $Res Function(_$VenuesFetchedImpl) then) =
+      __$$VenuesFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_VenuesFetchedCopyWithImpl<$Res>
-    extends _$SelectClubEventCopyWithImpl<$Res, _$_VenuesFetched>
-    implements _$$_VenuesFetchedCopyWith<$Res> {
-  __$$_VenuesFetchedCopyWithImpl(
-      _$_VenuesFetched _value, $Res Function(_$_VenuesFetched) _then)
+class __$$VenuesFetchedImplCopyWithImpl<$Res>
+    extends _$SelectClubEventCopyWithImpl<$Res, _$VenuesFetchedImpl>
+    implements _$$VenuesFetchedImplCopyWith<$Res> {
+  __$$VenuesFetchedImplCopyWithImpl(
+      _$VenuesFetchedImpl _value, $Res Function(_$VenuesFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_VenuesFetched implements _VenuesFetched {
-  const _$_VenuesFetched();
+class _$VenuesFetchedImpl implements _VenuesFetched {
+  const _$VenuesFetchedImpl();
 
   @override
   String toString() {
@@ -114,9 +114,9 @@ class _$_VenuesFetched implements _VenuesFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_VenuesFetched);
+        (other.runtimeType == runtimeType && other is _$VenuesFetchedImpl);
   }
 
   @override
@@ -199,29 +199,30 @@ class _$_VenuesFetched implements _VenuesFetched {
 }
 
 abstract class _VenuesFetched implements SelectClubEvent {
-  const factory _VenuesFetched() = _$_VenuesFetched;
+  const factory _VenuesFetched() = _$VenuesFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_NextPageVenuesFetchedCopyWith<$Res> {
-  factory _$$_NextPageVenuesFetchedCopyWith(_$_NextPageVenuesFetched value,
-          $Res Function(_$_NextPageVenuesFetched) then) =
-      __$$_NextPageVenuesFetchedCopyWithImpl<$Res>;
+abstract class _$$NextPageVenuesFetchedImplCopyWith<$Res> {
+  factory _$$NextPageVenuesFetchedImplCopyWith(
+          _$NextPageVenuesFetchedImpl value,
+          $Res Function(_$NextPageVenuesFetchedImpl) then) =
+      __$$NextPageVenuesFetchedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NextPageVenuesFetchedCopyWithImpl<$Res>
-    extends _$SelectClubEventCopyWithImpl<$Res, _$_NextPageVenuesFetched>
-    implements _$$_NextPageVenuesFetchedCopyWith<$Res> {
-  __$$_NextPageVenuesFetchedCopyWithImpl(_$_NextPageVenuesFetched _value,
-      $Res Function(_$_NextPageVenuesFetched) _then)
+class __$$NextPageVenuesFetchedImplCopyWithImpl<$Res>
+    extends _$SelectClubEventCopyWithImpl<$Res, _$NextPageVenuesFetchedImpl>
+    implements _$$NextPageVenuesFetchedImplCopyWith<$Res> {
+  __$$NextPageVenuesFetchedImplCopyWithImpl(_$NextPageVenuesFetchedImpl _value,
+      $Res Function(_$NextPageVenuesFetchedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NextPageVenuesFetched implements _NextPageVenuesFetched {
-  const _$_NextPageVenuesFetched();
+class _$NextPageVenuesFetchedImpl implements _NextPageVenuesFetched {
+  const _$NextPageVenuesFetchedImpl();
 
   @override
   String toString() {
@@ -229,9 +230,10 @@ class _$_NextPageVenuesFetched implements _NextPageVenuesFetched {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NextPageVenuesFetched);
+        (other.runtimeType == runtimeType &&
+            other is _$NextPageVenuesFetchedImpl);
   }
 
   @override
@@ -314,14 +316,14 @@ class _$_NextPageVenuesFetched implements _NextPageVenuesFetched {
 }
 
 abstract class _NextPageVenuesFetched implements SelectClubEvent {
-  const factory _NextPageVenuesFetched() = _$_NextPageVenuesFetched;
+  const factory _NextPageVenuesFetched() = _$NextPageVenuesFetchedImpl;
 }
 
 /// @nodoc
-abstract class _$$_VenueSelectedCopyWith<$Res> {
-  factory _$$_VenueSelectedCopyWith(
-          _$_VenueSelected value, $Res Function(_$_VenueSelected) then) =
-      __$$_VenueSelectedCopyWithImpl<$Res>;
+abstract class _$$VenueSelectedImplCopyWith<$Res> {
+  factory _$$VenueSelectedImplCopyWith(
+          _$VenueSelectedImpl value, $Res Function(_$VenueSelectedImpl) then) =
+      __$$VenueSelectedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({WallPhotoVenue venue});
 
@@ -329,11 +331,11 @@ abstract class _$$_VenueSelectedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_VenueSelectedCopyWithImpl<$Res>
-    extends _$SelectClubEventCopyWithImpl<$Res, _$_VenueSelected>
-    implements _$$_VenueSelectedCopyWith<$Res> {
-  __$$_VenueSelectedCopyWithImpl(
-      _$_VenueSelected _value, $Res Function(_$_VenueSelected) _then)
+class __$$VenueSelectedImplCopyWithImpl<$Res>
+    extends _$SelectClubEventCopyWithImpl<$Res, _$VenueSelectedImpl>
+    implements _$$VenueSelectedImplCopyWith<$Res> {
+  __$$VenueSelectedImplCopyWithImpl(
+      _$VenueSelectedImpl _value, $Res Function(_$VenueSelectedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -341,7 +343,7 @@ class __$$_VenueSelectedCopyWithImpl<$Res>
   $Res call({
     Object? venue = null,
   }) {
-    return _then(_$_VenueSelected(
+    return _then(_$VenueSelectedImpl(
       null == venue
           ? _value.venue
           : venue // ignore: cast_nullable_to_non_nullable
@@ -360,8 +362,8 @@ class __$$_VenueSelectedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_VenueSelected implements _VenueSelected {
-  const _$_VenueSelected(this.venue);
+class _$VenueSelectedImpl implements _VenueSelected {
+  const _$VenueSelectedImpl(this.venue);
 
   @override
   final WallPhotoVenue venue;
@@ -372,10 +374,10 @@ class _$_VenueSelected implements _VenueSelected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VenueSelected &&
+            other is _$VenueSelectedImpl &&
             (identical(other.venue, venue) || other.venue == venue));
   }
 
@@ -385,8 +387,8 @@ class _$_VenueSelected implements _VenueSelected {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VenueSelectedCopyWith<_$_VenueSelected> get copyWith =>
-      __$$_VenueSelectedCopyWithImpl<_$_VenueSelected>(this, _$identity);
+  _$$VenueSelectedImplCopyWith<_$VenueSelectedImpl> get copyWith =>
+      __$$VenueSelectedImplCopyWithImpl<_$VenueSelectedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -465,29 +467,30 @@ class _$_VenueSelected implements _VenueSelected {
 }
 
 abstract class _VenueSelected implements SelectClubEvent {
-  const factory _VenueSelected(final WallPhotoVenue venue) = _$_VenueSelected;
+  const factory _VenueSelected(final WallPhotoVenue venue) =
+      _$VenueSelectedImpl;
 
   WallPhotoVenue get venue;
   @JsonKey(ignore: true)
-  _$$_VenueSelectedCopyWith<_$_VenueSelected> get copyWith =>
+  _$$VenueSelectedImplCopyWith<_$VenueSelectedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_VenuesFilteredCopyWith<$Res> {
-  factory _$$_VenuesFilteredCopyWith(
-          _$_VenuesFiltered value, $Res Function(_$_VenuesFiltered) then) =
-      __$$_VenuesFilteredCopyWithImpl<$Res>;
+abstract class _$$VenuesFilteredImplCopyWith<$Res> {
+  factory _$$VenuesFilteredImplCopyWith(_$VenuesFilteredImpl value,
+          $Res Function(_$VenuesFilteredImpl) then) =
+      __$$VenuesFilteredImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String phrase});
 }
 
 /// @nodoc
-class __$$_VenuesFilteredCopyWithImpl<$Res>
-    extends _$SelectClubEventCopyWithImpl<$Res, _$_VenuesFiltered>
-    implements _$$_VenuesFilteredCopyWith<$Res> {
-  __$$_VenuesFilteredCopyWithImpl(
-      _$_VenuesFiltered _value, $Res Function(_$_VenuesFiltered) _then)
+class __$$VenuesFilteredImplCopyWithImpl<$Res>
+    extends _$SelectClubEventCopyWithImpl<$Res, _$VenuesFilteredImpl>
+    implements _$$VenuesFilteredImplCopyWith<$Res> {
+  __$$VenuesFilteredImplCopyWithImpl(
+      _$VenuesFilteredImpl _value, $Res Function(_$VenuesFilteredImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -495,7 +498,7 @@ class __$$_VenuesFilteredCopyWithImpl<$Res>
   $Res call({
     Object? phrase = null,
   }) {
-    return _then(_$_VenuesFiltered(
+    return _then(_$VenuesFilteredImpl(
       null == phrase
           ? _value.phrase
           : phrase // ignore: cast_nullable_to_non_nullable
@@ -506,8 +509,8 @@ class __$$_VenuesFilteredCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_VenuesFiltered implements _VenuesFiltered {
-  const _$_VenuesFiltered(this.phrase);
+class _$VenuesFilteredImpl implements _VenuesFiltered {
+  const _$VenuesFilteredImpl(this.phrase);
 
   @override
   final String phrase;
@@ -518,10 +521,10 @@ class _$_VenuesFiltered implements _VenuesFiltered {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VenuesFiltered &&
+            other is _$VenuesFilteredImpl &&
             (identical(other.phrase, phrase) || other.phrase == phrase));
   }
 
@@ -531,8 +534,9 @@ class _$_VenuesFiltered implements _VenuesFiltered {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VenuesFilteredCopyWith<_$_VenuesFiltered> get copyWith =>
-      __$$_VenuesFilteredCopyWithImpl<_$_VenuesFiltered>(this, _$identity);
+  _$$VenuesFilteredImplCopyWith<_$VenuesFilteredImpl> get copyWith =>
+      __$$VenuesFilteredImplCopyWithImpl<_$VenuesFilteredImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -611,11 +615,11 @@ class _$_VenuesFiltered implements _VenuesFiltered {
 }
 
 abstract class _VenuesFiltered implements SelectClubEvent {
-  const factory _VenuesFiltered(final String phrase) = _$_VenuesFiltered;
+  const factory _VenuesFiltered(final String phrase) = _$VenuesFilteredImpl;
 
   String get phrase;
   @JsonKey(ignore: true)
-  _$$_VenuesFilteredCopyWith<_$_VenuesFiltered> get copyWith =>
+  _$$VenuesFilteredImplCopyWith<_$VenuesFilteredImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -713,11 +717,11 @@ class _$SelectClubStateCopyWithImpl<$Res, $Val extends SelectClubState>
 }
 
 /// @nodoc
-abstract class _$$_SelectClubStateCopyWith<$Res>
+abstract class _$$SelectClubStateImplCopyWith<$Res>
     implements $SelectClubStateCopyWith<$Res> {
-  factory _$$_SelectClubStateCopyWith(
-          _$_SelectClubState value, $Res Function(_$_SelectClubState) then) =
-      __$$_SelectClubStateCopyWithImpl<$Res>;
+  factory _$$SelectClubStateImplCopyWith(_$SelectClubStateImpl value,
+          $Res Function(_$SelectClubStateImpl) then) =
+      __$$SelectClubStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -732,11 +736,11 @@ abstract class _$$_SelectClubStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SelectClubStateCopyWithImpl<$Res>
-    extends _$SelectClubStateCopyWithImpl<$Res, _$_SelectClubState>
-    implements _$$_SelectClubStateCopyWith<$Res> {
-  __$$_SelectClubStateCopyWithImpl(
-      _$_SelectClubState _value, $Res Function(_$_SelectClubState) _then)
+class __$$SelectClubStateImplCopyWithImpl<$Res>
+    extends _$SelectClubStateCopyWithImpl<$Res, _$SelectClubStateImpl>
+    implements _$$SelectClubStateImplCopyWith<$Res> {
+  __$$SelectClubStateImplCopyWithImpl(
+      _$SelectClubStateImpl _value, $Res Function(_$SelectClubStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -751,7 +755,7 @@ class __$$_SelectClubStateCopyWithImpl<$Res>
     Object? snackbarMessage = null,
     Object? selectedVenue = null,
   }) {
-    return _then(_$_SelectClubState(
+    return _then(_$SelectClubStateImpl(
       venues: null == venues
           ? _value._venues
           : venues // ignore: cast_nullable_to_non_nullable
@@ -790,8 +794,8 @@ class __$$_SelectClubStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SelectClubState implements _SelectClubState {
-  _$_SelectClubState(
+class _$SelectClubStateImpl implements _SelectClubState {
+  _$SelectClubStateImpl(
       {required final List<WallPhotoVenue> venues,
       required this.searchPhrase,
       required this.hasReachedMax,
@@ -831,10 +835,10 @@ class _$_SelectClubState implements _SelectClubState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SelectClubState &&
+            other is _$SelectClubStateImpl &&
             const DeepCollectionEquality().equals(other._venues, _venues) &&
             (identical(other.searchPhrase, searchPhrase) ||
                 other.searchPhrase == searchPhrase) &&
@@ -867,8 +871,9 @@ class _$_SelectClubState implements _SelectClubState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SelectClubStateCopyWith<_$_SelectClubState> get copyWith =>
-      __$$_SelectClubStateCopyWithImpl<_$_SelectClubState>(this, _$identity);
+  _$$SelectClubStateImplCopyWith<_$SelectClubStateImpl> get copyWith =>
+      __$$SelectClubStateImplCopyWithImpl<_$SelectClubStateImpl>(
+          this, _$identity);
 }
 
 abstract class _SelectClubState implements SelectClubState {
@@ -881,7 +886,7 @@ abstract class _SelectClubState implements SelectClubState {
           required final CubitStatus filterVenuesStatus,
           required final Option<String> snackbarMessage,
           required final Option<WallPhotoVenue> selectedVenue}) =
-      _$_SelectClubState;
+      _$SelectClubStateImpl;
 
   @override
   List<WallPhotoVenue> get venues;
@@ -901,6 +906,6 @@ abstract class _SelectClubState implements SelectClubState {
   Option<WallPhotoVenue> get selectedVenue;
   @override
   @JsonKey(ignore: true)
-  _$$_SelectClubStateCopyWith<_$_SelectClubState> get copyWith =>
+  _$$SelectClubStateImplCopyWith<_$SelectClubStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

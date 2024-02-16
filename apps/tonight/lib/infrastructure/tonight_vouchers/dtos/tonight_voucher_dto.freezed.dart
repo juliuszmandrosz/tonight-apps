@@ -116,11 +116,11 @@ class _$TonightVoucherDtoCopyWithImpl<$Res, $Val extends TonightVoucherDto>
 }
 
 /// @nodoc
-abstract class _$$_TonightVoucherDtoCopyWith<$Res>
+abstract class _$$TonightVoucherDtoImplCopyWith<$Res>
     implements $TonightVoucherDtoCopyWith<$Res> {
-  factory _$$_TonightVoucherDtoCopyWith(_$_TonightVoucherDto value,
-          $Res Function(_$_TonightVoucherDto) then) =
-      __$$_TonightVoucherDtoCopyWithImpl<$Res>;
+  factory _$$TonightVoucherDtoImplCopyWith(_$TonightVoucherDtoImpl value,
+          $Res Function(_$TonightVoucherDtoImpl) then) =
+      __$$TonightVoucherDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -135,11 +135,11 @@ abstract class _$$_TonightVoucherDtoCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TonightVoucherDtoCopyWithImpl<$Res>
-    extends _$TonightVoucherDtoCopyWithImpl<$Res, _$_TonightVoucherDto>
-    implements _$$_TonightVoucherDtoCopyWith<$Res> {
-  __$$_TonightVoucherDtoCopyWithImpl(
-      _$_TonightVoucherDto _value, $Res Function(_$_TonightVoucherDto) _then)
+class __$$TonightVoucherDtoImplCopyWithImpl<$Res>
+    extends _$TonightVoucherDtoCopyWithImpl<$Res, _$TonightVoucherDtoImpl>
+    implements _$$TonightVoucherDtoImplCopyWith<$Res> {
+  __$$TonightVoucherDtoImplCopyWithImpl(_$TonightVoucherDtoImpl _value,
+      $Res Function(_$TonightVoucherDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -154,7 +154,7 @@ class __$$_TonightVoucherDtoCopyWithImpl<$Res>
     Object? validUntil = null,
     Object? usedBy = null,
   }) {
-    return _then(_$_TonightVoucherDto(
+    return _then(_$TonightVoucherDtoImpl(
       eventId: freezed == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
@@ -194,8 +194,8 @@ class __$$_TonightVoucherDtoCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable()
-class _$_TonightVoucherDto extends _TonightVoucherDto {
-  const _$_TonightVoucherDto(
+class _$TonightVoucherDtoImpl extends _TonightVoucherDto {
+  const _$TonightVoucherDtoImpl(
       {@JsonKey(includeToJson: false, includeFromJson: false) this.eventId,
       required this.venueId,
       required this.venueName,
@@ -207,8 +207,8 @@ class _$_TonightVoucherDto extends _TonightVoucherDto {
       : _usedBy = usedBy,
         super._();
 
-  factory _$_TonightVoucherDto.fromJson(Map<String, dynamic> json) =>
-      _$$_TonightVoucherDtoFromJson(json);
+  factory _$TonightVoucherDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TonightVoucherDtoImplFromJson(json);
 
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
@@ -245,10 +245,10 @@ class _$_TonightVoucherDto extends _TonightVoucherDto {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TonightVoucherDto &&
+            other is _$TonightVoucherDtoImpl &&
             (identical(other.eventId, eventId) || other.eventId == eventId) &&
             (identical(other.venueId, venueId) || other.venueId == venueId) &&
             (identical(other.venueName, venueName) ||
@@ -280,13 +280,13 @@ class _$_TonightVoucherDto extends _TonightVoucherDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TonightVoucherDtoCopyWith<_$_TonightVoucherDto> get copyWith =>
-      __$$_TonightVoucherDtoCopyWithImpl<_$_TonightVoucherDto>(
+  _$$TonightVoucherDtoImplCopyWith<_$TonightVoucherDtoImpl> get copyWith =>
+      __$$TonightVoucherDtoImplCopyWithImpl<_$TonightVoucherDtoImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TonightVoucherDtoToJson(
+    return _$$TonightVoucherDtoImplToJson(
       this,
     );
   }
@@ -302,11 +302,11 @@ abstract class _TonightVoucherDto extends TonightVoucherDto {
       required final String voucherName,
       required final int poolLimit,
       @FirebaseTimestampJsonConverter() required final DateTime validUntil,
-      final List<String> usedBy}) = _$_TonightVoucherDto;
+      final List<String> usedBy}) = _$TonightVoucherDtoImpl;
   const _TonightVoucherDto._() : super._();
 
   factory _TonightVoucherDto.fromJson(Map<String, dynamic> json) =
-      _$_TonightVoucherDto.fromJson;
+      _$TonightVoucherDtoImpl.fromJson;
 
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
@@ -330,6 +330,6 @@ abstract class _TonightVoucherDto extends TonightVoucherDto {
   List<String> get usedBy;
   @override
   @JsonKey(ignore: true)
-  _$$_TonightVoucherDtoCopyWith<_$_TonightVoucherDto> get copyWith =>
+  _$$TonightVoucherDtoImplCopyWith<_$TonightVoucherDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

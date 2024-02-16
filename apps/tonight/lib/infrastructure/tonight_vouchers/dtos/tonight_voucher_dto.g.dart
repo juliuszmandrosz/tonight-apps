@@ -6,8 +6,9 @@ part of 'tonight_voucher_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TonightVoucherDto _$$_TonightVoucherDtoFromJson(Map<String, dynamic> json) =>
-    _$_TonightVoucherDto(
+_$TonightVoucherDtoImpl _$$TonightVoucherDtoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TonightVoucherDtoImpl(
       venueId: json['venueId'] as String,
       venueName: json['venueName'] as String,
       eventName: json['eventName'] as String,
@@ -21,8 +22,8 @@ _$_TonightVoucherDto _$$_TonightVoucherDtoFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$_TonightVoucherDtoToJson(
-        _$_TonightVoucherDto instance) =>
+Map<String, dynamic> _$$TonightVoucherDtoImplToJson(
+        _$TonightVoucherDtoImpl instance) =>
     <String, dynamic>{
       'venueId': instance.venueId,
       'venueName': instance.venueName,
