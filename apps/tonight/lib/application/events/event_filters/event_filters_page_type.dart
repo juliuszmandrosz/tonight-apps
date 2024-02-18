@@ -1,4 +1,0 @@
-enum EventFiltersPageType {
-  tonight,
-  discover,
-}

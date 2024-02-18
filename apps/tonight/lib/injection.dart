@@ -8,7 +8,6 @@ import 'package:common/infrastructure/currency_params/firebase_currency_params_f
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:events/events.dart';
 import 'package:events/infrastructure/event_cloud_functions/event_cloud_functions_facade.dart';
-import 'package:events/infrastructure/events_api.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
@@ -53,7 +52,6 @@ import 'package:tonight/application/customer_email/customer_email_cubit.dart';
 import 'package:tonight/application/daily_spin/daily_spin_cubit.dart';
 import 'package:tonight/application/dashboard/aggregator/dashboard_aggregator.dart';
 import 'package:tonight/application/dashboard/bloc/dashboard_bloc.dart';
-import 'package:tonight/application/dashboard/bloc/tonight_events_from_venues_bloc.dart';
 import 'package:tonight/application/event_chat/aggregator/event_chat_aggregator.dart';
 import 'package:tonight/application/event_chat/bloc/event_chat_bloc.dart';
 import 'package:tonight/application/event_participants/event_participants_bloc.dart';
@@ -92,8 +90,6 @@ import 'package:tonight/application/verify_phone_number/verify_phone_number_cubi
 import 'package:tonight/application/video_preview/video_preview_cubit.dart';
 import 'package:tonight/application/vouchers/aggregator/vouchers_aggregator.dart';
 import 'package:tonight/application/vouchers/bloc/vouchers_bloc.dart';
-import 'package:tonight/application/wall_photos/wall_photos_bloc.dart';
-import 'package:tonight/application/wall_photos_filters/wall_photos_filters_cubit.dart';
 import 'package:tonight/domain/app_settings/app_settings_facade.dart';
 import 'package:tonight/domain/challenge_stories/challenge_story_facade.dart';
 import 'package:tonight/domain/challenges/challenge_facade.dart';
@@ -332,12 +328,6 @@ void _registerCubits() {
   );
 
   getIt.registerFactory(
-    () => WallPhotosBloc(
-      getIt(),
-    ),
-  );
-
-  getIt.registerFactory(
     () => UserDetailsCubit(
       getIt(),
     ),
@@ -351,12 +341,6 @@ void _registerCubits() {
 
   getIt.registerFactory(
     () => AddWallPhotoCubit(
-      getIt(),
-    ),
-  );
-
-  getIt.registerFactory(
-    () => TonightEventsFromVenuesBloc(
       getIt(),
     ),
   );
@@ -408,10 +392,6 @@ void _registerCubits() {
     () => UserWallPhotoPreviewCubit(
       getIt(),
     ),
-  );
-
-  getIt.registerFactory(
-    () => WallPhotosFiltersCubit(),
   );
 
   getIt.registerFactory(
@@ -628,7 +608,7 @@ void _registerFacades() {
   getIt.registerLazySingleton<UserEventFacade>(
     () => FirebaseEventFacade(
       firestore: getIt(),
-      eventsApi: getIt(),
+      searchApi: getIt(),
       logger: getIt(),
       firebaseAuth: getIt(),
       storage: getIt(),
@@ -649,7 +629,7 @@ void _registerFacades() {
   getIt.registerLazySingleton<CommonEventFacade>(
     () => FirebaseEventFacade(
       firestore: getIt(),
-      eventsApi: getIt(),
+      searchApi: getIt(),
       logger: getIt(),
       firebaseAuth: getIt(),
       storage: getIt(),
@@ -732,17 +712,6 @@ void _registerFacades() {
       dio: getIt(),
       logger: getIt(),
       firebaseCrashlytics: getIt(),
-    ),
-  );
-
-  getIt.registerLazySingleton<WallPhotoFacade>(
-    () => FirebaseWallPhotoFacade(
-      getIt(),
-      getIt(),
-      getIt(),
-      getIt(),
-      getIt(),
-      getIt(),
     ),
   );
 
@@ -880,6 +849,16 @@ void _registerFacades() {
       getIt(),
     ),
   );
+
+  getIt.registerLazySingleton<WallPhotoFacade>(
+    () => FirebaseWallPhotoFacade(
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+      getIt(),
+    ),
+  );
 }
 
 void _registerAggregators() {
@@ -947,7 +926,6 @@ void _registerAggregators() {
       getIt(),
       getIt(),
       getIt(),
-      getIt(),
     ),
   );
 
@@ -996,14 +974,14 @@ void _registerModules() {
 
   getIt.registerLazySingleton(crashlyticsConfig);
 
-  getIt.registerLazySingleton<EventsApi>(
-    () => EventsApiImpl(
+  getIt.registerLazySingleton<ClubsApi>(
+    () => ClubsApiImpl(
       getIt(),
     ),
   );
 
-  getIt.registerLazySingleton<ClubsApi>(
-    () => ClubsApiImpl(
+  getIt.registerLazySingleton<AlgoliaSearchApi>(
+    () => AlgoliaSearchApiImpl(
       getIt(),
     ),
   );

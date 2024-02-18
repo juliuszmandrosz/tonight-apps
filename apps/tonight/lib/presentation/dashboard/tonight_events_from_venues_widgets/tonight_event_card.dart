@@ -13,9 +13,8 @@ class TonightEventCard extends StatelessWidget {
   final TonightEvent event;
   final String heroTag;
 
-  TonightEventCard({required this.event, Key? key})
-      : heroTag = 'tonight-event-card-${event.eventId}',
-        super(key: key);
+  TonightEventCard({required this.event, super.key})
+      : heroTag = 'tonight-event-card-${event.eventId}';
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +34,7 @@ class TonightEventCard extends StatelessWidget {
       },
       child: Card(
         color: context.backgroundColor,
+        elevation: 0,
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),

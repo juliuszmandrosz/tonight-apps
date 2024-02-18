@@ -6,7 +6,7 @@ import 'package:tonight/presentation/event_photos/widgets/event_photo_card.dart'
 import 'package:tonight/presentation/event_photos/widgets/no_event_photos_info.dart';
 
 class EventPhotosPage extends StatelessWidget {
-  const EventPhotosPage({Key? key}) : super(key: key);
+  const EventPhotosPage({super.key});
 
   @override
   Widget build(BuildContext context) {

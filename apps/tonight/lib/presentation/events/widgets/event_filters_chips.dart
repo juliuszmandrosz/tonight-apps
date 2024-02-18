@@ -3,7 +3,6 @@ import 'package:common/extensions/color_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tonight/application/events/event_filters/event_filters_page_type.dart';
 import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:tonight/presentation/routes/app_router.gr.dart';
 import 'package:translations/translations.dart';
@@ -30,7 +29,6 @@ class EventFiltersChips extends StatelessWidget {
                   EventFiltersRoute(
                     blocContext: context,
                     selectedFilters: state.eventFilters,
-                    eventFiltersPageType: EventFiltersPageType.discover,
                   ),
                 ),
                 avatar: FaIcon(

@@ -3,19 +3,12 @@ import 'package:common/extensions/responsive_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tonight/application/dashboard/bloc/tonight_events_from_venues_bloc.dart';
 import 'package:tonight/application/events/event_filters/event_filters_cubit.dart';
-import 'package:tonight/application/events/event_filters/event_filters_page_type.dart';
 import 'package:tonight/application/events/event_list/events_bloc.dart';
 import 'package:translations/translations.dart';
 
 class EventFiltersSubmitButton extends StatelessWidget {
-  final EventFiltersPageType eventFiltersPageType;
-
-  const EventFiltersSubmitButton({
-    required this.eventFiltersPageType,
-    Key? key,
-  }) : super(key: key);
+  const EventFiltersSubmitButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,25 +16,12 @@ class EventFiltersSubmitButton extends StatelessWidget {
       listenWhen: (previous, current) =>
           previous.isSubmitting != current.isSubmitting,
       listener: (context, state) {
-        switch (eventFiltersPageType) {
-          case EventFiltersPageType.tonight:
-            context.read<TonightEventsFromVenuesBloc>().add(
-                  TonightEventsFromVenuesEvent.menuFiltersApplied(
-                    filters: state.filters,
-                    appliedFilters: state.appliedFilters,
-                  ),
-                );
-            break;
-          case EventFiltersPageType.discover:
-            context.read<EventsBloc>().add(
-                  EventsEvent.menuFiltersApplied(
-                    filters: state.filters,
-                    appliedFilters: state.appliedFilters,
-                  ),
-                );
-            break;
-        }
-
+        context.read<EventsBloc>().add(
+              EventsEvent.menuFiltersApplied(
+                filters: state.filters,
+                appliedFilters: state.appliedFilters,
+              ),
+            );
         context.popRoute();
       },
       child: Visibility(
